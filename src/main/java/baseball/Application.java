@@ -14,13 +14,7 @@ public class Application {
         String input = Console.readLine();
         if (isValidNumber(input)) {
             int inputNumber = Integer.parseInt(input);
-            int divisor = 100;
-            for (int i = 0; i < 3; i++) {
-                int digit = inputNumber / divisor;
-                userNumber.add(digit);
-                inputNumber %= divisor;
-                divisor /= 10;
-            }
+            userNumber = NumberToIntegerList(inputNumber);
         }
     }
 
@@ -34,16 +28,12 @@ public class Application {
         if (99 > inputNumber || 999 < inputNumber) {
             throw new IllegalArgumentException();
         }
-        List<Integer> digits = new ArrayList<>();
-        int divisor = 100;
-        for (int i = 0; i < 3; i++) {
-            int digit = (int) (inputNumber / divisor);
-            if (digit == 0 || digits.contains(digit)) {
-                throw new IllegalArgumentException();
-            }
-            digits.add(digit);
-            inputNumber %= divisor;
-            divisor /= 10;
+        List<Integer> inputNumberList = NumberToIntegerList(inputNumber);
+        if (inputNumberList.contains(0)) {
+            throw new IllegalArgumentException();
+        }
+        if (inputNumberList.size() != inputNumberList.stream().distinct().count()) {
+            throw new IllegalArgumentException();
         }
         return true;
     }
