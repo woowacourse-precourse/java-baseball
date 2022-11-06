@@ -42,6 +42,17 @@ class ApplicationTest extends NsTest {
         assertThat(test.charAt(1)).isNotEqualTo(test.charAt(2));
     }
 
+    @Test
+    void 정답비교_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("789", "189", "139", "781", "731", "753", "153", "513", "135");
+                    assertThat(output()).contains("낫싱", "1스트라이크", "2스트라이크", "1볼", "1볼 1스트라이크", "2볼", "2볼 1스트라이크", "3볼", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
