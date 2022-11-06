@@ -6,6 +6,11 @@ public class GameOutput {
     }
 
     public void printPlayingCount(int strikeCount, int ballCount) throws IllegalArgumentException{
+
+        if(!(0 <= strikeCount && strikeCount <= 3) || !(0 <= ballCount && ballCount <= 3)){
+            throw new IllegalArgumentException("strikeCount 나 ballCount 숫자가 0보다 작거나, 3보다 큽니다.");
+        }
+
         boolean isStrikeExists = (strikeCount > 0);
         boolean isBallExists = (ballCount > 0);
 

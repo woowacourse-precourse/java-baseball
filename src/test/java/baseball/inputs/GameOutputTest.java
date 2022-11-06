@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
-import org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameOutputTest{
     GameOutput output = new GameOutput();
@@ -67,5 +67,37 @@ class GameOutputTest{
         output.printPlayingCount(strike,ball);
         String expectedResult = "낫싱\n";
         Assertions.assertEquals(expectedResult,out.toString());
+    }
+
+    @Test
+    void printPlayingCount_error1() {
+        int strike = -1;
+        int ball = 0;
+        assertThatThrownBy(() -> output.printPlayingCount(strike,ball))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void printPlayingCount_error2() {
+        int strike = 4;
+        int ball = 1;
+        assertThatThrownBy(() -> output.printPlayingCount(strike,ball))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void printPlayingCount_error3() {
+        int strike = 2;
+        int ball = -1;
+        assertThatThrownBy(() -> output.printPlayingCount(strike,ball))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void printPlayingCount_error4() {
+        int strike = 1;
+        int ball = 5;
+        assertThatThrownBy(() -> output.printPlayingCount(strike,ball))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
