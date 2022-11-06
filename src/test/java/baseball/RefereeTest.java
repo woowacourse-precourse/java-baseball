@@ -3,12 +3,9 @@ package baseball;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -30,14 +27,17 @@ class RefereeTest {
         System.setOut(originalOut);
         System.setErr(originalErr);
     }
-
+//
 //    @Test
 //    @Order(1)
 //    void ReferenceTestOneStrike() {
+//        Referee referee = new Referee();
+//
+//
 //        Referee.testReferee("156", "123");
 //        Assertions.assertThat("1스트라이크").isEqualTo(outContent.toString().trim());
 //    }
-//
+
 //    @Test
 //    @Order(2)
 //    void ReferenceTestTwoStrike() {
