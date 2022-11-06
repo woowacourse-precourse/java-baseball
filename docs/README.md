@@ -20,4 +20,4 @@ Referee : 게임 결과를 알린다
 - plusGameCount : 게임 진행 횟수를 추가한다
 - isEnd : 게임이 3회 진행되어 끝났는지 알린다
 - initStatus : 게임 진행 상황을 초기화한다
-- scoring : 매개변수로 넘어온 숫자와 `Game`에게 얻은 숫자를 비교해 결과를 판정한다
+- scoring : 매개변수로 받은 answer와 userAnswer를 비교해 결과를 판정한다
