@@ -1,5 +1,6 @@
 package study;
 
+import baseball.ComputerNum;
 import baseball.Number;
 import org.junit.jupiter.api.Test;
 
@@ -34,5 +35,32 @@ public class TestCase {
         List<Integer> num = computerNumber.createNumber();
         assertThat(num.size()).isEqualTo(3);
     }
+
+    @Test
+    void 컴퓨터의_각_숫자가_1부터_9까지가_아닌_숫자가_들어왔을때_예외_발생() {
+        List<Integer> num = Arrays.asList(10, 2, 5);
+        Number computerNumber = new ComputerNum();
+        assertThatThrownBy(() -> computerNumber.verifyNumber(num))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 컴퓨터의_숫자간_중복이_있는_숫자가_들어왔을때_예외_발생() {
+        List<Integer> num = Arrays.asList(2, 2, 5);
+        Number computerNumber = new ComputerNum();
+        assertThatThrownBy(() -> computerNumber.verifyNumber(num))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 컴퓨터의_수가_3자리수가_아닌것이_들어왔을때_예외_발생() {
+        List<Integer> num = Arrays.asList(1, 3, 2, 5);
+        Number computerNumber = new ComputerNum();
+        assertThatThrownBy(() -> computerNumber.verifyNumber(num))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+
 
 }
