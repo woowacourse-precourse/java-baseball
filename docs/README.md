@@ -10,6 +10,6 @@
 - 게임 프로세스
     - 랜덤한 컴퓨터 숫자 추출
     - 사용자가 추측한 컴퓨터 숫자 입력
-    - 컴퓨터숫자, 추측한숫자 비교
+    - 컴퓨터숫자, 추측한숫자 비교 (process package - CompareNumber class - countStrike, countBall func)
   
 
