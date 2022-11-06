@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
+       game();
+    }
+    public static void game(){
         play();
         isNewGame();
     }
@@ -74,6 +77,13 @@ public class Application {
 
     }
     public static void isNewGame(){
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int isEnd= sc.nextInt();
+        if(isEnd==2){
+            return;
+        }else{
+            game();
+        }
     }
 }
