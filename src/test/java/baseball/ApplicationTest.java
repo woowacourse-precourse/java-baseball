@@ -1,14 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 import static baseball.Application.*;
@@ -19,28 +15,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    private ByteArrayOutputStream outputStreamCaptor;
-    private PrintStream standardOut;
-
     protected void systemIn(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
-    }
-
-    protected String getOutput() {
-        return outputStreamCaptor.toString();
-    }
-
-    @BeforeEach
-    void setUp() {
-        standardOut = System.out;
-        outputStreamCaptor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
-
-    @AfterEach
-    protected void printResult() {
-        System.setOut(standardOut);
-        System.out.println(getOutput());
     }
 
     @Test
@@ -60,7 +36,7 @@ class ApplicationTest extends NsTest {
     public void test2() {
         systemIn("123");
         Scanner scanner = new Scanner(System.in);
-        assertThat(getOutput().equals("123"));
+        assertThat(output().equals("123"));
     }
 
     @Test
@@ -109,8 +85,8 @@ class ApplicationTest extends NsTest {
     @DisplayName("4. 사용자가 컴퓨터가 선택한 숫자를 맞출 때 까지 반복")
     void test8() {
         assertRandomNumberInRangeTest(() -> {
-            run("246", "135");
-            assertThat(getOutput()).contains("낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            run("246", "135", "2");
+            assertThat(output()).contains("낫싱", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }, 1, 3, 5);
     }
 
@@ -119,7 +95,7 @@ class ApplicationTest extends NsTest {
     public void test9() {
         assertRandomNumberInRangeTest(() -> {
             run("246", "135", "1", "597", "589", "2");
-            assertThat(getOutput()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+            assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
         }, 1, 3, 5, 5, 8, 9);
     }
 
@@ -127,7 +103,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("5-1. 종료하려면 2 입력")
     public void test10() {
         continueOrFinish("2");
-        assertThat(getOutput().equals("게임을 종료합니다"));
+        assertThat(output().equals("게임을 종료합니다"));
     }
 
     @Test
