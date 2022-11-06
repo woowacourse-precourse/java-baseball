@@ -11,7 +11,7 @@ public class Baseballs {
     static final String NOT_THREE_LETTERS_MESSAGE = "입력한 숫자가 3글자가 아닙니다.";
     static final String DUPLICATE_MESSAGE = "중복된 숫자를 입력했습니다.";
 
-    private List<Baseball> baseballs;
+    private final List<Baseball> baseballs;
 
     public Baseballs(List<Baseball> baseballs) {
         this.baseballs = baseballs;
@@ -39,7 +39,11 @@ public class Baseballs {
     }
 
     private static List<Baseball> toBaseballs(String numbers) {
-        return numbers.chars().boxed().map(Baseball::of).collect(Collectors.toList());
+        return numbers.chars()
+                .boxed()
+                .map(Character::getNumericValue)
+                .map(Baseball::of)
+                .collect(Collectors.toList());
     }
 
     private static void validateNumber(List<Baseball> baseballs) {

@@ -3,8 +3,8 @@ package baseball.domain.baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Baseball {
-    static final int MIN_BASEBALL_NUMBER = '1';
-    static final int MAX_BASEBALL_NUMBER = '9';
+    static final int MIN_BASEBALL_NUMBER = 1;
+    static final int MAX_BASEBALL_NUMBER = 9;
     static final String OUT_OF_RANGE_MESSAGE = "입력이 1 ~ 9 까지 범위의 '숫자'가 아닙니다.";
 
     private final int number;
@@ -23,6 +23,7 @@ public class Baseball {
         }
         return new Baseball(number);
     }
+
 
     private static boolean isValidRange(int number) {
         return MIN_BASEBALL_NUMBER <= number && number <= MAX_BASEBALL_NUMBER;

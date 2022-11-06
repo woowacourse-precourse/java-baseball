@@ -4,20 +4,33 @@ import baseball.domain.baseball.Baseballs;
 import baseball.domain.game.Result;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballService {
+    public void run(boolean isFirstStart) {
+        OutputView.gameStartMessage();
+        run();
+    }
     public void run() {
-        InputView inputView = new InputView();
-
         Baseballs computerBaseballs = Baseballs.random();
-        playGame(inputView, computerBaseballs);
+
+        playGame(computerBaseballs);
+        OutputView.gameEndMessage();
+        OutputView.endOrRestartMessage();
+
+        int isRestart = InputView.endOrRestartInput();
+        if (isRestart == InputView.END) {
+            return;
+        }
+
+        run();
     }
 
-    private void playGame(InputView inputView, Baseballs computerBaseballs) {
-        OutputView.gameStartMessage();
+    private void playGame(Baseballs computerBaseballs) {
         while (true) {
             OutputView.inputNumberMessage();
-            Baseballs userBaseballs = Baseballs.valueOf(inputView.input());
+            String input = Console.readLine();
+            Baseballs userBaseballs = Baseballs.valueOf(input);
 
             GameService gameService = new GameService();
             Result result = gameService.progress(computerBaseballs, userBaseballs);
@@ -25,7 +38,6 @@ public class BaseballService {
             OutputView.print(result.toString());
 
             if (result.isFinish()) {
-                OutputView.gameEndMessage();
                 break;
             }
         }
