@@ -1,11 +1,14 @@
 package baseball.gamenumber;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Validation extends IllegalArgumentException {
     private static final String ZERO = "0";
+    private static final String REPLAY = "1";
+    private static final String EXIT = "2";
 
     public Validation() {
     }
@@ -37,7 +40,7 @@ public class Validation extends IllegalArgumentException {
     }
 
     public boolean isDuplicateString(String input) {
-        Set<String> stringSet = new HashSet<>(List.of(input));
+        Set<String> stringSet = new HashSet<>(Arrays.asList(input.split("")));
         if (stringSet.size() != 3) {
             return true;
         }
@@ -64,5 +67,11 @@ public class Validation extends IllegalArgumentException {
             return true;
         }
         return false;
+    }
+
+    public void isValidateReplayInput(String input) {
+        if (!input.equals(REPLAY) && !input.equals(EXIT)) {
+            throwError();
+        }
     }
 }
