@@ -13,10 +13,11 @@ import static baseball.baseballGame.Result.getResult;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
-    private static final String RE_GAME = "1";
-    private static final String STOP_GAME = "2";
-    private static final int ball = 0;
-    private static final int strike = 1;
+    private static final String RESTART = "1";
+    private static final String STOP = "2";
+
+    private final int ball = 0;
+    private final int strike = 1;
 
     private final int BALL_COUNT;
 
@@ -49,10 +50,10 @@ public class BaseballGame {
 
     public String getUserBalls() throws IllegalArgumentException {
         String input = getInput();
-        if (checkInputException(input)) {
+        if (inputException(input)) {
             throw new IllegalArgumentException("형식에 맞지 않음");
         }
-        if (checkInputDuplicateException(input)) {
+        if (inputDuplicateException(input)) {
             throw new IllegalArgumentException("중복 값 포함 됨");
         }
         return input;
@@ -72,12 +73,12 @@ public class BaseballGame {
         while (true) {
             printRestartMessage();
             String statusInput = getInput();
-            if (Objects.equals(statusInput, RE_GAME)) return true;
-            if (Objects.equals(statusInput, STOP_GAME)) return false;
+            if (Objects.equals(statusInput, RESTART)) return true;
+            if (Objects.equals(statusInput, STOP)) return false;
         }
     }
 
-    public Boolean checkInputException(String input) {
+    public Boolean inputException(String input) {
         if (input.length() != BALL_COUNT) {
             return true;
         }
@@ -88,7 +89,7 @@ public class BaseballGame {
         return false;
     }
 
-    public Boolean checkInputDuplicateException(String input) {
+    public Boolean inputDuplicateException(String input) {
         String[] inputArr = input.split("");
         Set<String> duplicate = new HashSet<>(Arrays.asList(inputArr));
         if (duplicate.size() == BALL_COUNT) {
