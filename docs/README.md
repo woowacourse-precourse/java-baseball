@@ -15,6 +15,7 @@
 - [x] (Result) 숫자 야구 결과(점수)를 받아 결과를 enum으로 반환하는 기능
   - 점수가 음수거나, 정의한 enum에 없는 경우 `IllegalArgumentException`
 - [x] (Status) 사용자의 옵션에 따라 게임의 상태를 반환하는 기능
+  - 옵션이 enum에 없는 경우 `IllegalArgumentException`
 
 # 🗝 필요한 자료 구조
 - 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`
