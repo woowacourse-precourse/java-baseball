@@ -1,6 +1,7 @@
 package game;
 
 import camp.nextstep.edu.missionutils.Console;
+import error.Examine;
 import game.player.Computer;
 
 public class BaseballGame {
@@ -24,6 +25,11 @@ public class BaseballGame {
 		do {
 			System.out.println("숫자를 입력해주세요 : ");
 			userNumbers = Console.readLine();
+			try {
+				Examine.hasDifferentNumbers(userNumbers);
+			} catch (IllegalArgumentException e) {
+				throw e;
+			}
 		} while ();
 	}
 }
