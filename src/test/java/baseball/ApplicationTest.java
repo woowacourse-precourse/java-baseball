@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,5 +35,39 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Nested
+    class StartNumberTest {
+        @ParameterizedTest
+        @ValueSource(strings = {"4a3", "abc", "9l1", "32k", "kk1", "76p"})
+        @DisplayName("입력에 문자가 포함된 경우 정상적으로 예외처리 되는지 테스트")
+        void isValidNumber_IncludingCharacter_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+
+        }
+
+        @DisplayName("세자리수가 아닌 경우 정상적으로 예외처리 되는지 테스트")
+        @ParameterizedTest
+        @ValueSource(strings = {"9325", "12", "31", "1", "34718", "56"})
+        void isValidNumber_NotThreeDigitNumber_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"112", "363", "633", "122", "989", "23156"})
+        @DisplayName("각 자릿수가 같은 경우 정상적으로 예외처리 되는지에 대한 테스트")
+        void isValidNumber_SameDigits_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"102", "380", "013", "106", "120", "320"})
+        @DisplayName("0을 포함하는 숫자를 입력받았을 경우 정상적으로 예외처리 되는지에 대한 테스트")
+        void isValidNumber_IncludingZero_ExceptionThrown(String input) {
+            assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
     }
 }
