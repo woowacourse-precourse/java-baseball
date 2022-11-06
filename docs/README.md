@@ -97,8 +97,7 @@
 <details>
 <summary>정답 비교</summary>
 
-- [ ] Rule 인터페이스 선언
-- [ ] Rule 인터페이스 구현체 구현
+- [x] Rule 인터페이스 선언
 - [ ] RuleChecker 구현
 
 ## 게임 규칙
