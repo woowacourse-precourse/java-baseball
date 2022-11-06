@@ -29,7 +29,7 @@ public class NumberBaseballGameServer {
         return gameNumberList;
     }
 
-    public NumberBaseballGameJudgedResultDto judgeInputNumber(int inputNumber) {
+    public NumberBaseballGameJudgedResultDto judgeInputNumber(int inputNumber, List<Integer> gameNumberList) {
         // 플레이어가 입력한 숫자를 받아 이에 대한 판별
         return new NumberBaseballGameJudgedResultDto();
     }
