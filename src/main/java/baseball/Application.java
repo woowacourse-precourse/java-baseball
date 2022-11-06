@@ -1,10 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -15,14 +10,14 @@ public class Application {
         while (user.getIsProgramEnd().equals(1)) {
             Game game = new Game();
 
-            computer.makeRandomNumber();
+            computer.setComputerNumber(computer.makeRandomNumber());
             while (!game.isGameEnd()) {
                 user.setUserInput(user.userInput());
                 game.checkValidNumber(user.getUserInput());
                 user.setUserInputStringToNumber(user.getUserInput());
 
-                computer.countBall(user.getUserInputNumber());
-                computer.countStrike(user.getUserInputNumber());
+                computer.setBall(user.getUserInputNumber());
+                computer.setStrike(user.getUserInputNumber());
                 computer.printResult();
                 
                 game.setGameEnd(computer.isAnswer());
