@@ -7,10 +7,17 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
-class UtilTest {
+public class UtilTest {
 
-    private RandomUtil randomUtil = new RandomUtil();
-    private CheckUtil checkUtil = new CheckUtil();
+    private static RandomUtil randomUtil;
+    private static CheckUtil checkUtil;
+
+    @BeforeAll
+    static void initAll(){
+        randomUtil = new RandomUtil();
+        checkUtil = new CheckUtil();
+    }
+
     @DisplayName("컴퓨터 랜덤값 길이 테스트")
     @Test
     void 컴퓨터_랜덤값_길이_테스트(){
