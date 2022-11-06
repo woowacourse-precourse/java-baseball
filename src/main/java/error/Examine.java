@@ -4,8 +4,16 @@ public class Examine {
 	public static void hasDifferentNumbers(String str) {
 		try {
 			isLengthThree(str);
+			isAllNumbers(str);
 		} catch (IllegalArgumentException e) {
 			throw e;
+		}
+	}
+	private static void isAllNumbers(String str) {
+		for (int i = 0; i < str.length(); ++i) {
+			if (!Character.isDigit(str.charAt(i))) {
+				throw new IllegalArgumentException();
+			}
 		}
 	}
 
