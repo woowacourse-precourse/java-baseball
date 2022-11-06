@@ -10,9 +10,7 @@ public class BaseballTest {
     Baseball baseball;
 
     @BeforeEach
-    void setUp() {
-        baseball = new Baseball();
-    }
+    void setUp() { baseball = new Baseball(); }
 
     @Test
     void input_유효한_경우_테스트(){
