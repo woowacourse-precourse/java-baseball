@@ -1,14 +1,14 @@
 package baseball;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
 
-@DisplayNameGeneration(ReplaceUnderscores.class)
+//@DisplayNameGeneration(ReplaceUnderscores.class)
 public class NumberTest {
 
     Number number;
@@ -75,5 +75,17 @@ public class NumberTest {
     void 세자리_중복_확인() {
         String test = "222";
         assertTrue(!number.isValid(test));
+    }
+
+    @Test
+    void 배열_설정_확인() {
+        String test = "123";
+        number.setDigits(test);
+        List<Integer> digits = number.getDigits();
+        ArrayList<Integer> target = new ArrayList<Integer>();
+        target.add(1);
+        target.add(2);
+        target.add(3);
+        assertEquals(target, digits);
     }
 }
