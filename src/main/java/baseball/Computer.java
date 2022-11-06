@@ -5,7 +5,6 @@ public class Computer {
     private static RandomNumber RandomValue;
     private static final int GAMESTARTMODE = 1;
     private static final int INPUTNUMBERMODE = 2;
-    private static final int GENERATERANDOMMODE = 3;
     private static final int CALCULATEDOUTPUTMODE = 4;
 
     public static void printGameStart() {
