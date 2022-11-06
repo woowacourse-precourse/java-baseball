@@ -5,7 +5,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.domain.Validation;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class UserNumberService {
