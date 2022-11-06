@@ -41,11 +41,14 @@ public class BaseballApplication {
     }
 
     public void run() {
-        computerController.createAnswer();
-        Restart restart = baseBallController.startGame();
+        outputView.printStartMessage();
+        while (true) {
+            computerController.createAnswer();
+            Restart restart = baseBallController.startGame();
 
-        if (restart == Restart.RESTART) {
-            run();
+            if (restart == Restart.EXIT) {
+                break;
+            }
         }
 
         doAfterRun();
@@ -70,5 +73,6 @@ public class BaseballApplication {
     private void doAfterRun() {
         AnswerHolder.clearHolder();
         ValidatorHolder.clearHolder();
+        ConverterHolder.clearHolder();
     }
 }

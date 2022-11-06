@@ -161,6 +161,22 @@ class ApplicationTest extends NsTest {
     @DisplayName("InputView 테스트")
     class InputViewTest {
         @Test
+        @DisplayName("게임 시작을 알리는 메시지를 출력한다.")
+        void whenRunningInputView_thenPrintsGameStartMessage() {
+            //given
+            ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStreamCaptor));
+            OutputView outputView = new OutputView();
+
+            //when
+            outputView.printStartMessage();
+
+            //then
+            assertThat(outputStreamCaptor.toString().trim())
+                    .isEqualTo(OutputView.GAME_START_MESSAGE.trim());
+        }
+
+        @Test
         @DisplayName("사용자로부터 숫자를 입력하도록 유도하는 메시지를 출력한다.")
         void whenRunningInputView_thenPrintsInputMessage() {
             // given
