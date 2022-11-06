@@ -22,12 +22,9 @@ public class BaseBallGame {
         return computer;
     }
 
-    public List<Integer> inputNumbers(){
+    public List<Integer> inputNumbers(String userNum){
          user = new ArrayList<>();
-        System.out.printf("숫자를 입력해주세요 : ");
-        String inputNum = Console.readLine();
-        System.out.println(inputNum);
-        String[] nums = inputNum.split("");
+        String[] nums = userNum.split("");
 
 
         if (nums.length != 3) {
@@ -83,14 +80,11 @@ public class BaseBallGame {
 
     public void reStart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
         String userInput = Console.readLine();
-        if(userInput.equals("1")){
-            run();
-        }else if(userInput.equals("2")){
-            return;
-        }else{
-            throw new IllegalStateException();
-        }
+        if(userInput.equals("1")) run();
+        else if(userInput.equals("2")) return;
+        else throw new IllegalStateException();
     }
 
     public void run() {
@@ -98,8 +92,11 @@ public class BaseBallGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            List<Integer> userNumber = inputNumbers();
+            System.out.printf("숫자를 입력해주세요 : ");
+            String userNum = Console.readLine();
+            List<Integer> userNumber = inputNumbers(userNum);
             List<Integer> strikeAndBall = findNumber(computerNumber, userNumber);
+
             String answer = numberToString(strikeAndBall);
             if(answer.equals("게임 종료")) break;
             else System.out.println(answer);
