@@ -5,17 +5,20 @@ import java.util.List;
 import static baseball.Constant.*;
 
 public class Game {
+    static int strike;
+    static int ball;
     public static void playGame() {
         System.out.println(START_MESSAGE);
         List<Integer> computerAnswer = Computer.generateNumber();
         boolean isCorrectAnswer = false;
         while (!isCorrectAnswer) {
-            isCorrectAnswer = checkAnswer(computerAnswer, Computer.getPlayerAnswer());
+            countStrikeBall(computerAnswer, Computer.getPlayerAnswer());
+            getResult();
         }
     }
-    public static boolean checkAnswer(List<Integer> computerAnswer, List<Integer> playerAnswer) {
-        int strike = 0;
-        int ball = 0;
+    public static void countStrikeBall(List<Integer> computerAnswer, List<Integer> playerAnswer) {
+        strike = 0;
+        ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {
             if (computerAnswer.get(i).equals(playerAnswer.get(i))) {
                 strike++;
@@ -23,21 +26,18 @@ public class Game {
                 ball++;
             }
         }
-        printResult(strike, ball);
-        if(strike == NUMBER_SIZE){
-            return true;
-        }else{
-            return false;
-        }
     }
-    private static void printResult(int strike, int ball) {
+    private static boolean getResult() {
         if (strike == NUMBER_SIZE) {
-            System.out.println("3스트라이크");
+            System.out.println(NUMBER_SIZE + STRIKE_MESSAGE);
             System.out.println(SUCCESS_MESSAGE);
+            return true;
         } else if (strike == 0 && ball == 0) {
             System.out.println(NOTHING_MESSAGE);
+            return false;
         } else {
             System.out.println(ball + BALL_MESSAGE + strike + STRIKE_MESSAGE);
+            return false;
         }
     }
 }
