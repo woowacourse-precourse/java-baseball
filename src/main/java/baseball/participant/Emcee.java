@@ -7,8 +7,11 @@ import static baseball.result.ResultType.*;
 public class Emcee {
 
     public void showStartingGuide(String playerName) {
-        System.out.println(playerName + "반갑습니다.");
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        String guide = "숫자 야구 게임을 시작합니다!\n" +
+                "타자는 3자리 숫자를 정합니다.\n" +
+                "투수는 3자리 숫자를 던져서 타자를 3진 아웃 시키면 됩니다!\n" +
+                "그러면 " + playerName + "선수! 투수 위치로 입장해주세요!";
+        System.out.println(guide);
     }
 
     public void showResultMessage(ResultType resultType, int numberOfBall, int numberOfStrike) {
