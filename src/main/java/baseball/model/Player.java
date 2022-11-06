@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Player {
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String INVALID_INPUT_TYPE_MESSAGE = "숫자를 입력해주세요.";
+    private static final String INVALID_INPUT_TYPE_MESSAGE = "숫자만 입력이 가능합니다.";
 
     public Balls generatePlayerBalls() {
         System.out.print(INPUT_NUMBER_MESSAGE);
@@ -18,17 +18,17 @@ public class Player {
     }
 
     private List<Integer> convertInputToBallList(String playerInput) {
-        validateParseStringToInt(playerInput);
+        validateParseStringToInteger(playerInput);
         String[] inputSplits = playerInput.split("");
 
-        List<Integer> playerBalls = new ArrayList<>();
+        List<Integer> playerValues = new ArrayList<>();
         for (String inputSplit : inputSplits) {
-            playerBalls.add(Integer.parseInt(inputSplit));
+            playerValues.add(Integer.parseInt(inputSplit));
         }
-        return playerBalls;
+        return playerValues;
     }
 
-    private void validateParseStringToInt(String playerInput) {
+    private void validateParseStringToInteger(String playerInput) {
         try {
             Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
