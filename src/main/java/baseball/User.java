@@ -7,11 +7,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
     private String userInput;
-    private List<Integer> userInputNumber = new ArrayList<>();
-    private boolean flag = false;
+    private List<Integer> userInputNumber;
     private Integer isProgramEnd = 1;
 
-    public String getUserNumber() {
+    public String userInput() {
         System.out.print("숫자를 입력해 주세요 : ");
         String userInput = readLine();
         return userInput;
@@ -30,10 +29,6 @@ public class User {
         this.userInput = userInput;
     }
 
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
-
     public void setIsProgramEnd(Integer isProgramEnd) {
         this.isProgramEnd = isProgramEnd;
     }
@@ -44,10 +39,6 @@ public class User {
 
     public String getUserInput() {
         return userInput;
-    }
-
-    public boolean isFlag() {
-        return flag;
     }
 
     public Integer getIsProgramEnd() {

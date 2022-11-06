@@ -23,7 +23,7 @@ public class Game {
         return true;
     }
 
-    public boolean checkValidNumber(String userInput){
+    public void checkValidNumber(String userInput) {
         if (userInput.length() != 3 || !isNumeric(userInput)) {
             throw new IllegalArgumentException();
         }
@@ -38,7 +38,6 @@ public class Game {
                 userInputNumber.add(tempNum);
             }
         }
-        return true;
     }
 
 }
