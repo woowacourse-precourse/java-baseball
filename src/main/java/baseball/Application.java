@@ -4,9 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
+
     public static void printMessage(String message){
         System.out.println(message);
     }
@@ -42,6 +44,14 @@ public class Application {
         if(inputStringToIntegerList.size()!=3)
             throw new IllegalArgumentException();
         return inputStringToIntegerList;
+    }
+
+    public static void checkInputDuplicate(List <Integer> input){
+        int cntFrequency=0;
+        for(int i=0; i<input.size(); i++){
+            cntFrequency = Collections.frequency(input, input.get(i));
+            if(cntFrequency!=1) throw new IllegalArgumentException();
+        }
     }
 
     public static void main(String[] args) {
