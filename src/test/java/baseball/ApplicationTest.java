@@ -60,6 +60,12 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
                     .isInstanceOf(IllegalArgumentException.class);
         }
+        @Test
+        void 사용자입력에_0이_있으면_오류발생() {
+            String inValidInput = "023";
+            assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Test
