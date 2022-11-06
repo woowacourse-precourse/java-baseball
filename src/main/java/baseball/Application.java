@@ -141,8 +141,24 @@ public class Application {
         // 반환할 값 초기화
         List<Integer> userNumber = new ArrayList<>();
 
-        // TOOD 입력값 검증하기
+        // TODO 입력값 검증하기
+
+        // 3자리 입력값이 아니라면 -> 예외발생
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
         for (int i = 0; i < 3; i++) {
+            // 1 ~ 9의 문자가 아니라면 -> 예외 발생
+            if (!('1' <= userInput.charAt(i) && userInput.charAt(i) <= '9')) {
+                throw new IllegalArgumentException();
+            }
+
+            // 같은 값이 들어왔다면 -> 예외 발생
+            if (userNumber.contains(userInput.charAt(i) - '0')) {
+                throw new IllegalArgumentException();
+            }
+
             userNumber.add(userInput.charAt(i) - '0');
         }
 
