@@ -10,7 +10,7 @@ public enum ReTry {
         this.name = name;
     }
 
-    static ReTry nameOf(String name) throws IllegalArgumentException {
+    public static ReTry nameOf(String name) throws IllegalArgumentException {
         for (ReTry reTry : ReTry.values()) {
             if (reTry.getName().equals(name)) {
                 return reTry;
