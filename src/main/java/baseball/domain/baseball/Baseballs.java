@@ -63,7 +63,15 @@ public class Baseballs {
     public int getStrike(Baseballs baseballs) {
         return (int) this.baseballs.stream()
                 .filter(baseball -> this.baseballs.indexOf(baseball) ==
-                        baseballs.getBaseballs().indexOf(baseball))
+                        baseballs.baseballs.indexOf(baseball))
+                .count();
+    }
+
+    public int getBall(Baseballs baseballs) {
+        return (int) this.baseballs.stream()
+                .filter(baseball -> baseballs.baseballs.contains(baseball) &&
+                        this.baseballs.indexOf(baseball) !=
+                                baseballs.baseballs.indexOf(baseball))
                 .count();
     }
 }

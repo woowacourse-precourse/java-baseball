@@ -86,8 +86,28 @@ class BaseballsTest {
     @Test
     void 스트라이크_갯수_세기() {
         Baseballs computerBaseballs = Baseballs.valueOf("123");
-        Baseballs userBaseballs = Baseballs.valueOf("123");
+        Baseballs userBaseballs1 = Baseballs.valueOf("145");
+        Baseballs userBaseballs2 = Baseballs.valueOf("163");
+        Baseballs userBaseballs3 = Baseballs.valueOf("123");
 
-        assertThat(computerBaseballs.getStrike(userBaseballs)).isEqualTo(3);
+        assertAll(
+                () -> assertThat(computerBaseballs.getStrike(userBaseballs1)).isEqualTo(1),
+                () -> assertThat(computerBaseballs.getStrike(userBaseballs2)).isEqualTo(2),
+                () -> assertThat(computerBaseballs.getStrike(userBaseballs3)).isEqualTo(3)
+        );
+    }
+
+    @Test
+    void 볼_갯수_세기() {
+        Baseballs computerBaseballs = Baseballs.valueOf("123");
+        Baseballs userBaseballs1 = Baseballs.valueOf("215");
+        Baseballs userBaseballs2 = Baseballs.valueOf("163");
+        Baseballs userBaseballs3 = Baseballs.valueOf("312");
+
+        assertAll(
+                () -> assertThat(computerBaseballs.getBall(userBaseballs1)).isEqualTo(2),
+                () -> assertThat(computerBaseballs.getBall(userBaseballs2)).isEqualTo(0),
+                () -> assertThat(computerBaseballs.getBall(userBaseballs3)).isEqualTo(3)
+        );
     }
 }
