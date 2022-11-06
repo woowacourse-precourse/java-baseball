@@ -28,6 +28,8 @@ public class GameHost extends BaseballNumber {
     }
 
     public void setHint(List<Integer> playerNumber) {
+        setHintDefault();
+
         for(int i = 0; i < super.BASEBALLNUMBERLENGTH; i++) {
             int playerNum = playerNumber.get(i);
             int baseballNum = this.baseballNumber.get(i);
@@ -42,6 +44,10 @@ public class GameHost extends BaseballNumber {
             }
             this.hint.put(NOTHING, this.hint.get(NOTHING) + 1);
         }
+    }
+
+    public void setHintDefault() {
+        this.hint.replaceAll((key, value) -> value = 0);
     }
 
     public void setBaseballNumber() {
