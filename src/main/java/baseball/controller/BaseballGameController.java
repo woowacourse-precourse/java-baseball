@@ -12,6 +12,8 @@ public class BaseballGameController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
 
+
+
     public void start() {
 
         inputView.printGameStart();
@@ -55,7 +57,4 @@ public class BaseballGameController {
         }
     }
 
-    public void setInputView(InputView inputView){
-        this.inputView = inputView;
-    }
 }

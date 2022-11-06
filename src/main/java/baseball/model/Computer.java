@@ -9,6 +9,9 @@ public class Computer {
     private static final int MIN_RANGE_NUMBER=1;
     private static final int MAX_RANGE_NUMBER = 9;
     private static final int COMPUTER_NUMBER_SIZE=3;
+    private static final String RESTART_NUMBER="1";
+    private static final String EXIT_NUMBER="0";
+
     private ArrayList<Integer> computerNumber;
 
     public void generateComputerNumberThree(){
@@ -38,7 +41,7 @@ public class Computer {
 
     public boolean isRestart(String restartInput){
         checkNotRestartInput(restartInput);
-        if(restartInput.equals("1")){
+        if(restartInput.equals(RESTART_NUMBER)){
             return true;
         }
         return false;
@@ -51,7 +54,7 @@ public class Computer {
     }
 
     private static boolean isNotRestartInput(String input) {
-        return !input.equals("1") && !input.equals("2");
+        return !input.equals(RESTART_NUMBER) && !input.equals(EXIT_NUMBER);
     }
 
     public int countStrike(ArrayList<Integer> computerNum, ArrayList<Integer> playerNum){
