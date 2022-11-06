@@ -3,7 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
@@ -39,5 +42,13 @@ class Game {
         } else {
             throw new IllegalArgumentException();
         }
+    }
+}
+class User {
+    static List getInput() {
+        String[] stringArr = camp.nextstep.edu.missionutils.Console.readLine().split("");
+        int[] intArr = Arrays.stream(stringArr).mapToInt(Integer::parseInt).toArray();
+        List result = Arrays.stream(intArr).boxed().collect(Collectors.toList());
+        return result;
     }
 }
