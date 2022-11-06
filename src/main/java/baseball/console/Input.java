@@ -48,4 +48,11 @@ public class Input {
         scanner.close();
         return number;
     }
+
+    private static boolean isValidRestartNumber(String number) {
+        if (!number.equals("1") && !number.equals("2")) {
+            return false;
+        }
+        return true;
+    }
 }
