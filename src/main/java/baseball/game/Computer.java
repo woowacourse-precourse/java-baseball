@@ -1,8 +1,8 @@
-package baseball.game.player;
+package baseball.game;
 
-import baseball.game.NumberFactory;
-import baseball.game.ScoreBoard;
-import baseball.game.ScoreCalculator;
+import baseball.game.utils.NumberFactory;
+import baseball.game.utils.ScoreBoard;
+import baseball.game.utils.ScoreCalculator;
 import java.util.List;
 
 public class Computer {
