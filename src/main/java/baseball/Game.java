@@ -9,6 +9,7 @@ public class Game {
     static final String NOTHING = "낫싱";
     static final String SOME_CORRECT = "%d볼 %d스트라이크\n";
     static final String ALL_CORRECT = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private Computer computer = new Computer();
     private User user = new User();
@@ -19,8 +20,11 @@ public class Game {
 
     public void startGame() {
         System.out.println(START_MESSAGE);
-        computerNumber = computer.makeComputerNumber();
-        playGame();
+        do {
+            computerNumber = computer.makeComputerNumber();
+            playGame();
+            System.out.println(END_MESSAGE);
+        } while (isFinish());
     }
 
     private void playGame() {
@@ -44,6 +48,18 @@ public class Game {
         }
     }
 
+    private boolean isFinish() {
+        int flag = Integer.parseInt(Console.readLine());
+
+        if (flag == 1) {
+            return true;
+        } else if (flag == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void printMessage(int strike, int ball) {
         if (strike == 3) {
             System.out.println(ALL_CORRECT);
@@ -59,6 +75,3 @@ public class Game {
         this.ball = 0;
     }
 }
-
-
-
