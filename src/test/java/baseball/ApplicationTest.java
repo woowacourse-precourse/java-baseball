@@ -16,6 +16,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
+    void evaluationToStringTest() {
+        List<Integer> evaluation1 = Arrays.asList(0, 0);
+        List<Integer> evaluation2 = Arrays.asList(1, 0);
+        List<Integer> evaluation3 = Arrays.asList(0, 1);
+        List<Integer> evaluation4 = Arrays.asList(2, 1);
+        List<Integer> evaluation5 = Arrays.asList(0, 3);
+
+        SoftAssertions softAssert = new SoftAssertions();
+        softAssert.assertThat(evaluation1).isEqualTo("낫싱\n");
+        softAssert.assertThat(evaluation2).isEqualTo("1볼\n");
+        softAssert.assertThat(evaluation3).isEqualTo("1스트라이크\n");
+        softAssert.assertThat(evaluation4).isEqualTo("2볼 1스트라이크\n");
+        softAssert.assertThat(evaluation5).isEqualTo("3스트라이크\n");
+    }
+
+    @Test
     void makeAnswerTest() {
         List<Integer> answer = Application.makeAnswer();
         Set<Integer> numbersInAnswer = new HashSet<>(answer);
