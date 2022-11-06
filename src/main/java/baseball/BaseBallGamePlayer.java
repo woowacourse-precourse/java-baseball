@@ -10,9 +10,7 @@ public class BaseBallGamePlayer {
     private static final String ESCAPE_NUMBER = "2";
     private final Printer printer;
     private final Receiver receiver;
-    private Result result;
-    private GameNumber computerNumber;
-    private GameNumber userNumber;
+    private final GameNumber computerNumber;
 
     public BaseBallGamePlayer() {
         printer = new Printer();
@@ -24,10 +22,11 @@ public class BaseBallGamePlayer {
         String restartNumber = "1";
         printer.greet();
 
-        while (restartNumber == "1") {
-            result = new Result(0, 0);
+        while (restartNumber.equals("1")) {
+            Result result = new Result(0, 0);
 
             playBall(result);
+            printer.requestReStart();
             restartNumber = receiver.receiveRestartNumber();
         }
     }
@@ -39,7 +38,7 @@ public class BaseBallGamePlayer {
         while (!result.isOut()) {
             printer.requestUserNumber();
 
-            userNumber = new GameNumber(receiver.receiveUserNumber());
+            GameNumber userNumber = new GameNumber(receiver.receiveUserNumber());
 
             result.calculateBallCount(computerNumber.getGameNumber(), userNumber.getGameNumber());
             printer.printBallCount(result);
@@ -49,7 +48,7 @@ public class BaseBallGamePlayer {
     }
 
     public static boolean isValidRestartNumber(String restartNumber) {
-        return (restartNumber == RESTART_NUMBER || restartNumber == ESCAPE_NUMBER);
+        return (restartNumber.equals(RESTART_NUMBER) || restartNumber.equals(ESCAPE_NUMBER));
     }
 
 
