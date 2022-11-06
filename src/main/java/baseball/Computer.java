@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Computer {
@@ -44,6 +46,12 @@ public class Computer {
         else
             System.out.println(ballCount + BALL  +" "+ strikeCount + STRIKE);
         return "아직 게임이 진행중 입니다";
+    }
+
+    public String closeGame() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        return input;
     }
 
     public void resetCount() {
