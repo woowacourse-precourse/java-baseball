@@ -57,4 +57,11 @@ public class Player {
             throw new IllegalArgumentException("서로 다른 3자리 숫자만 입력이 가능합니다.");
         }
     }
+
+    public void checkFormContinuation(String userInput) throws IllegalArgumentException {
+        int userContinuation = Integer.parseInt(userInput);
+        if(userContinuation != 1 && userContinuation != 2) {
+            throw new IllegalArgumentException("1(새로 시작), 2(게임 종료) 만 입력 가능합니다.");
+        }
+    }
 }
