@@ -175,8 +175,8 @@ while (computer.size() < 3) {
 
 
 - Receiver
-  - [ ] 사용자 입력
-    - [ ] 유효성 검사
+  - [x] 사용자 입력
+    - [x] 유효성 검사
 
 
 
