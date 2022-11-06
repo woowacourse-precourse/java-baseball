@@ -1,10 +1,16 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class Computer {
+    private final static int MIN_NUM = 1;
+    private final static int MAX__NUM = 9;
+    private final static int MAX_NUMBER_SIZE = 3;
     private List<Integer> randomNum;
     private int strike;
     private int ball;
@@ -18,14 +24,21 @@ public class Computer {
     }
 
     public List<Integer> generateRandomNumList(){
-        this.randomNum = new ArrayList<>();
-        while (randomNum.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNum.contains(randomNumber)) {
-                randomNum.add(randomNumber);
-            }
+        randomNum = new ArrayList<>();
+        HashSet<Integer> NotDuplicateHashset = new HashSet<>();
+        while (randomNum.size() < MAX_NUMBER_SIZE) {
+            int generatedNum = Randoms.pickNumberInRange(MIN_NUM, MAX__NUM);
+            addNotDuplicateNumToList(NotDuplicateHashset,generatedNum);
         }
+
         return this.randomNum;
+    }
+
+    private void addNotDuplicateNumToList(HashSet<Integer> hashSet,int num) {
+        if (!hashSet.contains(num)) {
+            randomNum.add(num);
+            hashSet.add(num);
+        }
     }
 
     public Computer compareUsersNum(List<Integer> usersNum) {
@@ -55,10 +68,12 @@ public class Computer {
     }
 
     private void checkBall(List<Integer> usersNum) {
+        HashSet<Integer> usersHashSet = new HashSet<>(Arrays.asList(usersNum.get(0), usersNum.get(1), usersNum.get(2)));
+
         for (int index = 0; index < randomNum.size(); index++) {
             Integer computerPerNum = randomNum.get(index);
             Integer userPerNum = usersNum.get(index);
-            if (usersNum.contains(computerPerNum) && userPerNum != computerPerNum) {
+            if (usersHashSet.contains(computerPerNum) && userPerNum != computerPerNum) {
                 ball++;
             }
         }
