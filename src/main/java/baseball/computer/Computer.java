@@ -12,10 +12,6 @@ public class Computer {
     private final List<Character> baseballNumber = new ArrayList<>();
     private final CounterBaseball counterBaseball = new CounterBaseball();
 
-    public List<Character> getBaseballNumber() {
-        return baseballNumber;
-    }
-
     public void makeRandomNumber() {
         baseballNumber.clear();
         while (baseballNumber.size() < DIGIT_MAX) {
@@ -43,7 +39,7 @@ public class Computer {
         }
         if ((ball == NO_BALL) && !(strike == NO_STRIKE)) {
             View.printStrike(strike);
-            if(strike == ALL_STRIKE){
+            if (strike == ALL_STRIKE) {
                 View.printCollect();
             }
         }
