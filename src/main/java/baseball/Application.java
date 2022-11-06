@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 
@@ -62,14 +63,13 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
         makeRandomValue(computer);
 
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
-            String input = scan.nextLine();
+            String input = readLine();
             checkInputNumber(input);
             List<Integer> user = makeList(input);
             int strikeNum = countStrike(computer, user);
