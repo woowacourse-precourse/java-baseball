@@ -91,4 +91,13 @@ class GameCycleTest {
         //when
         assertThrows(IllegalArgumentException.class, ()->game.playerInputNumber());
     }
+    @Test
+    public void countStrike() throws Exception {
+        //given
+        String answer = "123";
+        String input = "123";
+        //when
+        assertEquals(game.countStrike(answer, input), 3);
+        //then
+    }
 }

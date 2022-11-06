@@ -52,4 +52,11 @@ public class GameCycle {
         if (numberIsNotZero(playerNumber));
         return playerNumber;
     }
+    public int countStrike(String answer, String input) {
+        int strike = 0;
+        for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
+            if (input.charAt(inputIndex) == answer.charAt(inputIndex)) strike++;
+        }
+        return strike;
+    }
 }
