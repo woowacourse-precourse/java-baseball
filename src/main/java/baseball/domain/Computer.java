@@ -6,8 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private int LENGTH = 3;
+    private int LENGTH;
     private List<Integer> computerNumber = new ArrayList<>();
+
+    public Computer(int LENGTH) {
+        this.LENGTH = LENGTH;
+        initComputerNumber();
+    }
 
     private void initComputerNumber() {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
