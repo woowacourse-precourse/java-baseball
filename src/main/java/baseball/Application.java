@@ -16,6 +16,8 @@ public class Application {
             // 게임 시작
             startGame(computerNumber);
 
+            // 게임 재개 판단
+
 
         } while (true);
     }
@@ -49,39 +51,49 @@ public class Application {
             // 사용자로부터 입력된 3개의 숫자 배열
             List<Integer> userNumber = generateUserNumber();
 
-
+            // 사용자로부터 입력된 배열로부터 볼과 스트라이크 갯수 계산
             List<Integer> countResult = countBallAndStrike(computerNumber, userNumber);
 
-            int ballCount = countResult.get(0);
-            int strikeCount = countResult.get(1);
+            // 볼과 스트라이크 갯수로 결과 판단하기
+            boolean result = checkIsGameOver(countResult.get(0), countResult.get(1));
 
-
-            // ballCount, strikeCount 둘 다 0인 경우 -> "낫싱" 출력
-            if (ballCount == 0 && strikeCount == 0) {
-                System.out.print("낫싱");
-            }
-
-            // ballCount가 0이 아닌 경우
-            else if (ballCount != 0) {
-                System.out.printf("%d볼 ", ballCount);
-            }
-
-            // strikeCount가 0이 아닌 경우
-            else if (strikeCount != 0) {
-                System.out.printf("%d스트라이크", strikeCount);
-            }
-
-            // 개행
-            System.out.println();
-
-            // strikeCount가 3이면 -> 승리
-            if (strikeCount == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            // 게임오버(숫자를 맞췄다)라면 -> 종료
+            if (result) {
                 break;
             }
-
         }
 
+    }
+
+    /*
+    볼과 스트라이크 카운트로부터 게임오버 판단하기
+     */
+    static boolean checkIsGameOver(int ballCount, int strikeCount) {
+        // ballCount, strikeCount 둘 다 0인 경우 -> "낫싱" 출력
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.print("낫싱");
+        }
+
+        // ballCount가 0이 아닌 경우
+        else if (ballCount != 0) {
+            System.out.printf("%d볼 ", ballCount);
+        }
+
+        // strikeCount가 0이 아닌 경우
+        else if (strikeCount != 0) {
+            System.out.printf("%d스트라이크", strikeCount);
+        }
+
+        // 개행
+        System.out.println();
+
+        // strikeCount가 3이면 -> 승리
+        if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
     }
 
     /*
