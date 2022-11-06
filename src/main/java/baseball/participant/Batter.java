@@ -19,7 +19,8 @@ public class Batter {
 
     private void readyRandomDigit(List<Integer> randomDigits) {
         int randomDigit = Randoms.pickNumberInRange(1, 9);
-        if (!randomDigits.contains(randomDigit))
+        if (!randomDigits.contains(randomDigit)) {
             randomDigits.add(randomDigit);
+        }
     }
 }
