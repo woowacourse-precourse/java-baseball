@@ -7,6 +7,8 @@ import java.util.List;
 
 public class BaseballGame {
     private final int LENGTH_OF_NUMBER = 3;
+    private boolean isEnd = false;
+    private boolean isContinue = true;
     private Rival computer;
     private List<Integer> player;
 
@@ -15,12 +17,22 @@ public class BaseballGame {
     }
 
     public void play(){
+        isEnd = false;
         computer.createNumber();
         try{
-            getPlayerNumber();
+            while(true){
+                getPlayerNumber();
+                //게임 진행
+
+                /*
+                getPlayerOption(); //3스트라이크로 게임이 끝난 후
+                 */
+            }
         }catch(IllegalArgumentException e){
+            isContinue = false;
             System.out.println("잘못된 값을 입력하셨습니다. 게임 종료");
         }
+
     }
 
     private void getPlayerNumber() throws IllegalArgumentException {
@@ -48,5 +60,19 @@ public class BaseballGame {
         }
         return true;
     }
+
+    private void getPlayerOption(){
+        String input = Console.readLine();
+        if(input.equals("1")){
+            isContinue = true;
+        }else if(input.equals("2")){
+            isContinue = false;
+        }
+    }
+
+    public boolean getIsContinue(){
+        return isContinue;
+    }
+
 
 }
