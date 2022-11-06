@@ -54,12 +54,6 @@ public class Game {
     public boolean decideRestart() {
         int restartSign = Integer.parseInt(GameView.askRestart());
         InputValidator.hasValidRestartSign(restartSign);
-        if (restartSign == Constants.AGREE_RESTART_SIGN) {
-            return true;
-        }
-        if (restartSign == Constants.DISAGREE_RESTART_SIGN) {
-            return false;
-        }
-        throw new IllegalArgumentException();
+        return restartSign == Constants.AGREE_RESTART_SIGN;
     }
 }
