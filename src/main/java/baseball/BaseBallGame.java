@@ -1,6 +1,9 @@
 package baseball;
 
 import java.util.List;
+import java.util.regex.Pattern;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
     private static final int STRIKE_CODE= 1;
@@ -12,6 +15,9 @@ public class BaseBallGame {
     private static final String NOTHING = "낫싱";
 
     private static final String THREE_STRIKE_ANNOUNCE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+    private static final String EXIT_CODE = "2";
+    private static final String CONTINUE_OR_EXIT_ANNOUNCE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private List<Integer> player;
     private List<Integer> computer;
@@ -42,7 +48,7 @@ public class BaseBallGame {
             printResult();
             
             if(strike == GAME_NUMBER_SIZE) {
-                // 게임 시작 종료 물음
+                readyToExit(forComputer);
             }
         }
     }
@@ -70,6 +76,31 @@ public class BaseBallGame {
     private void resetScore() {
         strike = 0;
         ball = 0;
+    }
+
+    private void readyToExit(Number forComputer) {
+        String answer = questionAboutGameExiting();
+
+        if(EXIT_CODE.equals(answer)) {
+            exit = true;
+        } else {
+            forComputer.createRandomNumber();
+            computer = forComputer.getGameNumber();
+        }
+    }
+
+    private boolean isUserInputValid(String input) {
+        return Pattern.compile("[1-2]").matcher(input).matches();
+    }
+
+    private String questionAboutGameExiting() {
+        System.out.println(CONTINUE_OR_EXIT_ANNOUNCE);
+
+        String answer = Console.readLine();
+        if(!isUserInputValid(answer)) {
+            throw new IllegalArgumentException();
+        }
+        return answer;
     }
 
     private int isStrikeOrBall(int num, int idx) {
