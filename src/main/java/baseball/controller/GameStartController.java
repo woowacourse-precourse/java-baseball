@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GameStartController {
     public void gameStart() {
-
+        System.out.println("숫자 야구 게임을 시작하겠습니다.");
         ResultService resultService = new ResultService();
         RandomValue randomValue = new RandomValue();
 
