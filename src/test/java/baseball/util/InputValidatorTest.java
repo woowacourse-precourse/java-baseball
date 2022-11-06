@@ -1,4 +1,4 @@
-package baseball;
+package baseball.util;
 
 import baseball.util.GameNumberGenerator;
 import org.junit.jupiter.api.Test;

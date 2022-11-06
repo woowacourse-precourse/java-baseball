@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 
 import baseball.model.GameResult;
 import baseball.service.GameService;

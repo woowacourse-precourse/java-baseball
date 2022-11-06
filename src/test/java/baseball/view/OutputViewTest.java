@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 import baseball.util.GameNumberGenerator;
 import baseball.view.OutputView;
