@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import static baseball.Validator.*;
 import static baseball.Constants.*;
 
@@ -14,7 +15,9 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         gameStart();
-        playGame();
+        do {
+            playGame();
+        } while (reGameMessage());
     }
 
     static void playGame() {
@@ -29,7 +32,6 @@ public class Application {
 
             strikeResult = countStrike(userInput, computerNumberResult);
             ballResult = countBall(userInput, computerNumberResult);
-            System.out.println("컴퓨터 랜덤 숫자 : " + computerNumberResult);
             if (!checkedNotThing(ballResult, strikeResult)) {
                 if (ballResult != ZERO) {
                     System.out.print(ballResult+ "볼 ");
@@ -39,11 +41,20 @@ public class Application {
                 }
             }
             System.out.println();
-        } while (strikeResult != 3);
+        } while (strikeResult != 1);
         gameSet();
     }
 
-
+    public static boolean reGameMessage() {
+        String reGameInput = Console.readLine();
+        if (reGameInput.equals("1")) {
+            return true;
+        }
+        if (reGameInput.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException(ILLEGAL_ERR_MSG);
+    }
 
     static void checkedValidate(String input) {
         validateInputRange(input);
