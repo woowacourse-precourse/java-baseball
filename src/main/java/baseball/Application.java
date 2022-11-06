@@ -10,11 +10,23 @@ public class Application {
     public static void main(String[] args) {
         startMessage();
         String answer = createAnswer();
+
+        while (true) {
+            String input = getInput();
+        }
     }
     private static void startMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+    private static void inputMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+    public static String getInput() {
+        inputMessage();
+        String number = Console.readLine();
 
+        return number;
+    }
     private static String createAnswer () {
         List<String> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -25,5 +37,4 @@ public class Application {
         }
         return String.join("",computer);
     }
-
 }
