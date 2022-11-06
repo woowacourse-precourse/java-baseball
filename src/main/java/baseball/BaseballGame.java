@@ -3,7 +3,6 @@ package baseball;
 import baseball.constants.SystemConsole;
 import baseball.domain.GameResultScore;
 import baseball.domain.RandomGenerator;
-import baseball.player.Player;
 
 import java.util.List;
 
@@ -22,29 +21,27 @@ public class BaseballGame {
     }
 
     public void start() {
-        Player player = new Player();
         RandomGenerator randomGenerator = new RandomGenerator();
-
         systemConsole.baseballStartMessage();
-        conditionsBaseballGame(player, randomGenerator);
+        conditionsBaseballGame(randomGenerator);
     }
 
-    public void conditionsBaseballGame(Player player, RandomGenerator randomGenerator) {
+    public void conditionsBaseballGame(RandomGenerator randomGenerator) {
         String restartNumber = "1";
 
         while (restartNumber.equals(RESTART)) {
             List<Integer> computer = randomGenerator.createRandomNumbers();
-            guessComputerNumbers(player, computer);
+            guessComputerNumbers(computer);
             restartNumber = getRestart();
         }
     }
 
-    public void guessComputerNumbers(Player player, List<Integer> computer) {
+    public void guessComputerNumbers(List<Integer> computer) {
         String gameResultNumber = "";
 
         while (!(gameResultNumber.equals(GAME_WIN_CONDITIONS))) {
             systemConsole.PlayerInputMessage();
-            gameResultNumber = gameResultScore.getGameNumber(player, computer);
+            gameResultNumber = gameResultScore.getGameNumber(computer);
             systemConsole.gameResultNumberMessage(gameResultNumber);
         }
     }
