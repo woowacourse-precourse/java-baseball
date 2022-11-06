@@ -33,7 +33,7 @@
 - [x] 하나의 매개변수 안에 다른 매개변수의 요소가 포함되는 갯수를 checkedBallNumbers를 0으로 선언한다.
 - [x] 매개변수들의 길이 만큼 반복하여, Ball인지 확인.
 - [x] userNumbers의 요소가 computerNumbers에 포함되면, checkedBallNumbers에 1을 더함.
-- [ ] checkedBallNumbers를 리턴
+- [x] checkedBallNumbers를 리턴
 
 ## (int)calculatedStrikeBallNumber(List computerNumbers,List userNumbers)
 - [ ] skrike와 ball의 갯수를 저장할 map 타입의 checkedBaseballNumbers을 strike: 0, ball: 0으로 초기화
