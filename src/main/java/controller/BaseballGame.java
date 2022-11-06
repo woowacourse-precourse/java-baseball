@@ -9,31 +9,43 @@ public class BaseballGame {
 
     public static void startGame() {
         PlayerRepository playerRepository = new PlayerRepository();
-        Computer computer = new Computer();
+        Computer computer;
         boolean checkExit = false;
+        boolean isAnswer = false;
         String playerNumber;
+
+        Player.startPhrase();
+        computer = initiateComputer();
+
+        while (!checkExit) {
+            computer = anotherComputer(isAnswer, computer);
+            playerNumber = Player.numberInput();
+            checkException(playerNumber);
+
+            playerRepository.setPlayerNumber(playerNumber);
+            isAnswer = isCorrect(playerRepository, computer);
+            hintPrint(playerRepository, computer);
+            checkExit = Player.printEnd(isAnswer);
+        }
+
+    }
+
+    public static Computer initiateComputer() {
+        Computer computer = new Computer();
 
         while (computer.getLengthOfNumber() < 3) {
             computer.generateRandomNumber();
         }
 
-        Player.startPhrase();
-        System.out.println(computer.getComputerNumber());
+        return computer;
+    }
 
-        while (!checkExit) {
-            playerNumber = Player.numberInput();
-            checkException(playerNumber);
-
-            playerRepository.setPlayerNumber(playerNumber);
-            checkExit = isCorrect(playerRepository, computer);
-            hintPrint(playerRepository, computer, checkExit);
+    public static Computer anotherComputer(boolean again, Computer computer) {
+        if (again == true) {
+            return initiateComputer();
         }
 
-        Player.printEnd();
-        if (Player.endGame()) {
-            startGame();
-        }
-
+        return computer;
     }
 
     public static boolean isCorrect(PlayerRepository playerRepository, Computer computer) {
@@ -59,15 +71,11 @@ public class BaseballGame {
 
     }
 
-    public static void hintPrint(PlayerRepository playerRepository, Computer computer, boolean isRight) {
+    public static void hintPrint(PlayerRepository playerRepository, Computer computer) {
         int ball = 0;
         int strike = 0;
         int index = 0;
         String computerNumber;
-
-        if (isRight) {
-            return;
-        }
 
         computerNumber = Integer.toString(computer.getComputerNumber());
 

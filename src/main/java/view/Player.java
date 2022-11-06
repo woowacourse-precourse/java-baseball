@@ -37,10 +37,15 @@ public class Player {
         }
     }
 
-    public static void printEnd() {
-        System.out.println(GameConstant.THREE_STRIKE);
-        System.out.println(GameConstant.END_GAME);
-        System.out.println(GameConstant.AGAIN);
+    public static boolean printEnd(boolean isAnswer) {
+
+        if (isAnswer ==  true) {
+            System.out.println(GameConstant.END_GAME);
+            System.out.println(GameConstant.AGAIN);
+            return endGame();
+        }
+
+        return false;
     }
 
     public static boolean endGame() {
@@ -48,7 +53,7 @@ public class Player {
 
         again = Console.readLine();
 
-        return again.equals("1");
+        return again.equals("2");
     }
 }
 

@@ -9,7 +9,6 @@ public final class GameConstant {
     public static final String INPUT_BOUNDARY_EXCEPTION = "1과 9사이의 숫자가 아닙니다.";
     public static final String INPUT_REPEAT_EXCEPTION = "중복된 숫자가 있습니다.";
     public static final String END_GAME = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String THREE_STRIKE = "3스트라이크";
     public static final String BALL = "볼";
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";

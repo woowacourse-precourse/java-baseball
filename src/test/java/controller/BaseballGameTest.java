@@ -38,7 +38,7 @@ public class BaseballGameTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        BaseballGame.hintPrint(playerRepository, computer, false);
+        BaseballGame.hintPrint(playerRepository, computer);
 
         assertThat(out.toString().trim()).isEqualTo("3스트라이크");
     }
