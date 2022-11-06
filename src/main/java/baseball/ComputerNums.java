@@ -5,7 +5,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNums {
-    private List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> numbers = new ArrayList<>();
 
     public ComputerNums(int count){
         while (numbers.size() <count){

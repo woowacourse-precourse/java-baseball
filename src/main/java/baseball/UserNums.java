@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserNums {
 
-    private List<Integer> numbers = new ArrayList<>();
+    private final List<Integer> numbers = new ArrayList<>();
 
     public UserNums(String userinput) {
         if (userinput.length() != 3) {
@@ -17,7 +17,7 @@ public class UserNums {
 
     }
 
-    public void numbersAdd(char usernum) {
+    private void numbersAdd(char usernum) {
         if (!(usernum >= '0' && usernum <= '9')) {
             throw new IllegalArgumentException("숫자가 아닌 문자 입니다.");
         }
