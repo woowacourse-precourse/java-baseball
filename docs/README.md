@@ -21,6 +21,8 @@
    - [x] `initGame()`
    - [x] `playGameUntil3S()`
    - [x] `changeStatusByOption()`
+2. 메소드의 indent에 따른 메소드 추가 추출
+   - [ ] `calculateScore()`, `computeScoreIndex()`
 
 # 🗝 필요한 자료 구조
 - 컴퓨터 숫자의 각 자리별 인덱스를 저장하는 `Map<Character, Integer>`
