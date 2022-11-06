@@ -47,9 +47,9 @@
 ####사용자 입력값에서 각 자리 정수값을 획득한다
 `List<Integer> disassembleDigitNumber(int number)`
 - 메소드를 재사용한다
-####분해한 입력값을 차례대로 분석 프로세스에 전달한다
-`int analyzeNumber(int userDigitValue)`
-- 분해된 유저의 입력값과 컴퓨터 선택값에 대해 비교
+###획득한 입력값과 자릿수(상수)를 차례대로 분석 프로세스에 전달한다
+`String getScore(int number, int DIGIT)`
+- 유저의 입력값과 컴퓨터 선택값에 대해 비교
 
 ###결과를 출력한다
 `void printResult(List<Integer> result)`
