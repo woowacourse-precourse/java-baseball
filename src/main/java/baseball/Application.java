@@ -6,15 +6,15 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        String COIN = "1";
+        Coin coin = new Coin();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (COIN.equals("1")) {
+        while (coin.isCoin()) {
             Computer computer = new Computer();
 
             game(computer.getComputer());
 
-            COIN = inputCoin();
+            coin = inputCoin();
         }
     }
 
@@ -31,9 +31,9 @@ public class Application {
         }
     }
 
-    private static String inputCoin() {
+    private static Coin inputCoin() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Coin coin = new Coin(readLine());
-        return coin.getCoin();
+        return coin;
     }
 }
