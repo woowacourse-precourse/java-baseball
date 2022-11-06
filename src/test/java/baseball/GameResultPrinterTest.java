@@ -31,4 +31,11 @@ class GameResultPrinterTest {
         assertEquals(printer.convertGameResult(new ArrayList<>(Arrays.asList(2, 0, 0))), "2 스트라이크");
         assertEquals(printer.convertGameResult(new ArrayList<>(Arrays.asList(3, 0, 0))), "3 스트라이크");
     }
+    @Order(3)
+    @Test
+    void BallResultPrinter() {
+        assertEquals(printer.convertGameResult(new ArrayList<>(Arrays.asList(0, 1, 0))), "1 볼");
+        assertEquals(printer.convertGameResult(new ArrayList<>(Arrays.asList(0, 2, 0))), "2 볼");
+        assertEquals(printer.convertGameResult(new ArrayList<>(Arrays.asList(0, 3, 0))), "3 볼");
+    }
 }
