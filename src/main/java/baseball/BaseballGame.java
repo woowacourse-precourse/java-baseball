@@ -20,6 +20,11 @@ public class BaseballGame {
             countStrikeAndBall(userInput.getUserInput(), answerGenerator.getAnswer());
             printHint();
         }while(!isAnswer());
+
+        String Userchoice = userInput.inputRestartOrStop();
+        if ("1".equals(Userchoice)) {
+            start();
+        }
     }
 
     public boolean isAnswer() {
