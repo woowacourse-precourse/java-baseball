@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.utils.Constants.MINUS;
+import static baseball.utils.Constants.STRING_ZERO;
 import static baseball.utils.Constants.THREE;
 import static baseball.utils.ErrorMessages.BETWEEN_ONE_AND_NINE;
 import static baseball.utils.ErrorMessages.REQUIRE_THREE_DIGIT_NUMBER;
@@ -31,7 +33,7 @@ public class Player {
     }
 
     private boolean isNotBetweenOneAndNine(String string) {
-        return string.contains("-") || string.contains("0");
+        return string.contains(MINUS) || string.contains(STRING_ZERO);
     }
 
     private List<Integer> intToList(int number) {
