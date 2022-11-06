@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -11,14 +12,15 @@ public class Application {
         List<Integer> whatComputerInputs = new ArrayList<>();
         System.out.println(Referee.START_GAME.ordered());
         putRandomNumbersTo(whatComputerInputs);
-        playGame();
+        playGame(whatComputerInputs);
     }
 
-    public static void playGame() {
+    public static void playGame(List<Integer> whatComputerInputs) {
         String whatClientInputs;
         whatClientInputs = inputThreeDistinctNumbers();
         isValid(whatClientInputs);
-        checkNothing();
+        List<Integer> guessedNumbers = stringToIntegerList(whatClientInputs);
+        checkNothing(whatComputerInputs, guessedNumbers);
         checkBalls();
         checkStrikes();
     }
@@ -71,17 +73,31 @@ public class Application {
         throw exit_program;
     }
 
-    public static void checkNothing(List<Integer> numbersToGetRight, int GuessedNumbers){
-        if(numbersToGetRight.contains(GuessedNumbers/100)){
-            checkBalls();
+    public static List<Integer> stringToIntegerList(String numbers){
+        String[] temporaryArray = numbers.split("");
+        List<Integer> gussedNumbers = new ArrayList<>();
+        for(String stringNumber = temporaryArray){
+           gussedNumbers.add(Integer.parseInt(stringNumber));
         }
-        if(numbersToGetRight.contains((GuessedNumbers-(GuessedNumbers/100)*100)/10){
-            checkBalls();
+        return gussedNumbers;
+    }
+
+    public static void checkNothing(List<Integer> numbersToGetRight, List<Integer> guessedNumbers){
+        int ballOrStrike = 0;
+        for(int guessedNumber : guessedNumbers) {
+            if (numbersToGetRight.contains(guessedNumber)) {
+                ballOrStrike++;
+            }
         }
-        if(numbersToGetRight.contains((GuessedNumbers-(GuessedNumbers/100)*100)%10)){
-            checkBalls();
+        if(ballOrStrike==0){
+            System.out.println(Referee.NOTHING.ordered());
+            playGame(numbersToGetRight);
         }
-        playGame();
+        checkBalls(numbersToGetRight, ballOrStrike);
+    }
+
+    public static int checkBalls(List<Integer> numbersToGetRight, int ballOrStrike){
+
     }
 }
 
