@@ -36,6 +36,10 @@ public class GameService {
         return new Result(strike, ball);
     }
 
+    public void clearRandomBallNumber() {
+        randomBallNumber.randomNumbers.clear();
+    }
+
     private boolean existNumber(String randomNumber, String inputNumber) {
         return inputNumber.contains(randomNumber);
     }
