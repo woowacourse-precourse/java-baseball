@@ -30,7 +30,7 @@ public class RefereeTest {
 	}
 
 	@Test
-	@DisplayName("낫싱 성공 테스트")
+	@DisplayName("낫싱 성공 테스트: 일치하는공이 없을 때 낫싱 성공")
 	void 일치하는공이_없을_때_낫싱_성공() {
 		// when
 		playerBalls = makeBallsWithoutComputerBalls(computerBalls, playerBalls);
@@ -40,8 +40,13 @@ public class RefereeTest {
 		Assertions.assertThat(nothing).isEqualTo(true);
 	}
 
+	private static List<Integer> makeBallsWithoutComputerBalls(List<Integer> computerBalls, List<Integer> playerBalls) {
+		playerBalls.removeAll(computerBalls);
+		return playerBalls.subList(0, 3);
+	}
+
 	@Test
-	@DisplayName("낫싱 실패 테스트")
+	@DisplayName("낫싱 실패 테스트1: 일치하는공 하나일 때 낫싱 실패")
 	void 일치하는공_하나일_때_낫싱_실패() {
 		// when
 		playerBalls = makeOneSameBalls(computerBalls, playerBalls);
@@ -52,14 +57,28 @@ public class RefereeTest {
 		Assertions.assertThat(nothing).isEqualTo(false);
 	}
 
-	private static List<Integer> makeBallsWithoutComputerBalls(List<Integer> computerBalls, List<Integer> playerBalls) {
-		playerBalls.removeAll(computerBalls);
-		return playerBalls.subList(0, 3);
-	}
-
 	private static List<Integer> makeOneSameBalls(List<Integer> computerBalls, List<Integer> playerBalls) {
 		playerBalls.removeAll(computerBalls);
 		playerBalls.add(0, computerBalls.get(0));
+		return playerBalls.subList(0, 3);
+	}
+
+	@Test
+	@DisplayName("낫싱 실패 테스트2: 일치하는공 두개일 때 낫싱 실패")
+	void 일치하는공_두개일_때_낫싱_실패() {
+		// when
+		playerBalls = makeTwoSameBalls(computerBalls, playerBalls);
+		Collections.shuffle(playerBalls);
+
+		// then
+		boolean nothing = referee.isNothing(computerBalls, playerBalls);
+		Assertions.assertThat(nothing).isEqualTo(false);
+	}
+
+	private static List<Integer> makeTwoSameBalls(List<Integer> computerBalls, List<Integer> playerBalls) {
+		playerBalls.removeAll(computerBalls);
+		playerBalls.add(0, computerBalls.get(0));
+		playerBalls.add(0, computerBalls.get(1));
 		return playerBalls.subList(0, 3);
 	}
 }
