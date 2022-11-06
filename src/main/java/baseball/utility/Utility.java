@@ -5,6 +5,10 @@ public interface Utility {
     public static int ONE_ASCII = 49;
     public static int NINE_ASCII = 57;
 
+    public static String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    public static String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    public static String END_MESSAGE_1 = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static String END_MESSAGE_2 = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     public static String INPUT_EXECEPTION_MESSAGE = "잘못된 값을 입력하셨습니다! \n 애플리케이션이 종료됩니다.";
 
     public static String BALL_MESSAGE = "%d볼";
