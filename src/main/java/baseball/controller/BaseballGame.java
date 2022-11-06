@@ -15,6 +15,7 @@ public class BaseballGame {
     }
 
     private void init() {
+        computer.createRandomNumbers();
         gameView.startBaseballGame();
         while(true) {
             BaseballNumbers userBaseballNumbers = getUserInput();
