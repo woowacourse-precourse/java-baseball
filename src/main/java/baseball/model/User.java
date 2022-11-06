@@ -16,13 +16,13 @@ public class User {
     }
 
     public void hitTheBall() {
-        String inputNumbers = Console.readLine().strip();
+        String numbersValue = Console.readLine().strip();
 
-        if (!inputValueValidation.isValidInputNumber(inputNumbers)) {
+        if (!inputValueValidation.isValidNumber(numbersValue)) {
             throw new IllegalArgumentException();
         }
 
-        numbers = toListInteger(inputNumbers);
+        numbers = toListInteger(numbersValue);
     }
 
     private List<Integer> toListInteger(String number) {
@@ -32,7 +32,12 @@ public class User {
     }
 
     public boolean isReplayGame() {
-        int inputIsReplay = Integer.parseInt(Console.readLine().strip());
-        return inputIsReplay == GameState.START.ordinal();
+        int isReplayValue = Integer.parseInt(Console.readLine().strip());
+
+        if (!inputValueValidation.isValidReplay(isReplayValue)) {
+            throw new IllegalArgumentException();
+        }
+
+        return isReplayValue == GameState.START.ordinal();
     }
 }

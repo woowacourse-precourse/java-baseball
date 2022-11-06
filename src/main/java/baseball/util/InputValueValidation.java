@@ -1,13 +1,18 @@
 package baseball.util;
 
 import baseball.GameConstants;
+import baseball.GameState;
 import java.util.Arrays;
 import java.util.List;
 
 public class InputValueValidation {
 
-    public boolean isValidInputNumber(String inputValue) {
-        if (isNumber(inputValue) && isLengthThree(inputValue) && noDuplicates(inputValue)) {
+    public boolean isValidReplay(int replayValue) {
+        return replayValue == GameState.START.ordinal() || replayValue == GameState.END.ordinal();
+    }
+
+    public boolean isValidNumber(String numbersValue) {
+        if (isNumber(numbersValue) && isLengthThree(numbersValue) && noDuplicates(numbersValue)) {
             return true;
         }
         return false;
