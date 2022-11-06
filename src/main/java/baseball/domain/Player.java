@@ -38,7 +38,7 @@ public class Player {
             if (!Character.isDigit(ch)) {
                 throw new IllegalArgumentException(ErrorMessage.DIGIT);
             }
-            if (Objects.equals(Number.ZERO, ch)) {
+            if (Objects.equals(Number.ZERO, Character.getNumericValue(ch))) {
                 throw new IllegalArgumentException(ErrorMessage.NOT_ZERO);
             }
             if (used.contains(ch)) {
