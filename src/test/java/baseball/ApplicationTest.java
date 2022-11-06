@@ -1,8 +1,12 @@
 package baseball;
 
 import baseball.domain.Computer;
+
+import baseball.view.PrintView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -11,13 +15,20 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.BDDMockito.given;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import java.util.HashSet;
-import java.util.Optional;
 
 class ApplicationTest extends NsTest {
+
+	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+	@BeforeEach
+	public void setUp() {
+		System.setOut(new PrintStream(outputStreamCaptor));
+	}
 
 	@Test
 	void 세자리_수를_랜덤으로_생성() {
@@ -37,7 +48,7 @@ class ApplicationTest extends NsTest {
 
 	@Nested
 	@DisplayName("세자리 수를 입력 받음")
-	class inputNum{
+	class inputNum {
 
 		@Test
 		@DisplayName("숫자만 입력하지 않았을 때")
@@ -71,6 +82,14 @@ class ApplicationTest extends NsTest {
 				.hasMessageContaining("각 자리수의 범위를 맞춰주세요");
 		}
 
+	}
+
+	@Test
+	void 볼과_스트라이크_개수에_맞는_출력값을_출력한다() {
+
+		PrintView.printHint(1, 2);
+		Assertions.assertEquals("1볼 2스트라이크", outputStreamCaptor.toString()
+			.trim());
 	}
 
 	@Test
