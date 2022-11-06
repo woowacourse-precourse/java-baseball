@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        myThreeNum();
+//
 //        while (true) {
 //            startBaseball();
 //            if (endBaseball()) {
@@ -27,6 +27,7 @@ public class Application {
         System.out.println("숫자를 입력해주세요 :  ");
 
         String myPickNum = Console.readLine();
+
         for (int i = 0; i < myPickNum.length(); i++) {
             String temp = myPickNum.substring(i, i + 1);
             int myNum = Integer.parseInt(temp);
@@ -59,23 +60,30 @@ public class Application {
     public static void startBaseball() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        // computerThreeNum 호출
         // myThreeNum 호출
         // checkValidation 호출
-        // list A.containsAll(list B) 리스트 내용 비교
-        // computerThreeNum 과 myThreeNum 비교 결과를 출력
-        // computerThreeNum = [1,2,3]
-        // myThreeNum = [1,3,4]
+        // computerThreeNum 호출
+        List<Integer> myThreeNum = myThreeNum();
+        checkValidation(myThreeNum);
+        List<Integer> computerThreeNum = computerThreeNum();
+//        boolean equalList = equalList(computerThreeNum, myThreeNum);
+        int strike = strike(computerThreeNum, myThreeNum);
+        int ball = ball(computerThreeNum, myThreeNum);
+
     }
 
-    public static boolean equalList(List<Integer> computerThreeNum, List<Integer> myThreeNum) {
+    public static void equalList(List<Integer> computerThreeNum, List<Integer> myThreeNum) {
+        // list A.containsAll(list B) 리스트 내용 비교
+
         // index, 내용 같으면 true ------> 3스트라이크!
-        return true;
+
     }
 
     public static boolean endBaseball() {
+        return false;
+
         // TRUE-----------> 게임종료 or 재시작 여부
-        return true;
+
     }
 
     public static int strike(List<Integer> computerThreeNum, List<Integer> myThreeNum) {
@@ -93,7 +101,9 @@ public class Application {
     }
 
     public static void checkValidation(List<Integer> myThreeNum) {
-
+        if (myThreeNum.size() != 3) {
+            throw new IllegalArgumentException("입력오류. 게임을 종료합니다.");
+        }
         // myThreeNum 4자리 이상 입력되면 "예외처리" 후 게임 종료
     }
 }
