@@ -38,7 +38,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class StartNumberTest {
+    class UserNumberTest {
         @ParameterizedTest
         @ValueSource(strings = {"4a3", "abc", "9l1", "32k", "kk1", "76p"})
         @DisplayName("입력에 문자가 포함된 경우 정상적으로 예외처리 되는지 테스트")
