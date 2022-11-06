@@ -29,6 +29,8 @@ public class Application {
 
             Integer strike = calculationStrike(computer,user);
 
+            String result = printCurrentSituation(ball,strike);
+            System.out.println(result);
 
 
         }
