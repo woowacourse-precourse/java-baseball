@@ -416,7 +416,10 @@ class ApplicationTest extends NsTest {
     void 게임_진행의_값을_얻는_함수_테스트_1() throws Exception {
         //given
         User user = new User();
-        
+        // 입력을 담는다.
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
         // when
         user.InputProceedNum();
         String result = String.valueOf(user.getNumProceedUser());
@@ -428,6 +431,10 @@ class ApplicationTest extends NsTest {
     void 게임_진행의_값을_얻는_함수_테스트_2() throws Exception {
         //given
         User user = new User();
+        // 입력을 담는다.
+        String input = "2";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
         // when
         user.InputProceedNum();
         String result = String.valueOf(user.getNumProceedUser());
