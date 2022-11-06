@@ -9,7 +9,7 @@ public class AfterGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
     public String inputRestartOrFinish(){
-        return Console.readLine();
+        return Console.readLine().trim();
     }
     public boolean isRestartOrFinish(String input){
         if(input.equals("1"))return RESTART;
