@@ -23,6 +23,17 @@ public class BaseballGameService {
     public int getStrikeCount() {
         return strikeCount;
     }
+
+
+    public void updateBallCount(List<Integer> computerNumber, List<Integer> userNumber) {
+        ballCount = 0;
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (computerNumber.contains(userNumber.get(index)) &&
+                    !computerNumber.get(index).equals(userNumber.get(index))) {
+                ballCount++;
+            }
+        }
+    }
 }
 
 
