@@ -1,7 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.regex.Pattern;
+import java.util.Arrays;
+import java.util.List;
 
 public class Game {
     static final int NUMBER_LENGTH = 3;
@@ -11,16 +12,25 @@ public class Game {
     String INPUT_QUIT = "2";
     String OUTPUT_START = "숫자 야구 게임을 시작합니다.";
     String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    String OUTPUT_QUIT_OR_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    String OUTPUT_RESTART_OR_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private int strike;
     private int ball;
     private int randomNumber;
     private int userNumber;
     private boolean quit = false;
+    public String restartOrQuitInput;
+    public List<String> inputArrList;
 
     public Game() {
     }
+
+    // method for test code only
+    public void setRestartOrQuitInput(String input) {
+        this.restartOrQuitInput = input;
+        getValidation();
+    }
+
     public void play() {
         Computer computer = new Computer();
         User user = new User();
@@ -41,23 +51,26 @@ public class Game {
 
             if(strike == NUMBER_LENGTH) {
                 System.out.println(OUTPUT_SUCCESS);
-                System.out.println(OUTPUT_QUIT_OR_RESTART);
-                String input = Console.readLine();
-
-                // validation
-                String REGEX = "[1-2]";
-                boolean inputValidation = Pattern.matches(REGEX, input);
-                if(!inputValidation) {
-                    throw new IllegalArgumentException();
-                }
-                
-                if(input.equals(INPUT_QUIT)) {
+                System.out.println(OUTPUT_RESTART_OR_QUIT);
+                restartOrQuitInput = Console.readLine();
+                getValidation();
+                if(restartOrQuitInput.equals(INPUT_QUIT)) {
                     quit = true;
                     break;
                 }
                 computer.setRandomNumber();
                 randomNumber = computer.getRandomNumber();
             }
+        }
+    }
+
+    private void getValidation() {
+        // validation
+        String[] inputArr = {"1","2"};
+        inputArrList = Arrays.asList(inputArr);
+        boolean inputValidation = inputArrList.contains(restartOrQuitInput);
+        if(!inputValidation) {
+            throw new IllegalArgumentException();
         }
     }
 
