@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-class CoinTest{
+class CoinTest {
     @Test
     @DisplayName("정상 값")
-    void getInput() {
+    void checkValue() {
         //given
         //when
         Coin coin = new Coin("1");
@@ -21,8 +21,8 @@ class CoinTest{
     }
 
     @Test
-    @DisplayName("잘못된 길이")
-    void CheckLength() {
+    @DisplayName("잘못된 값")
+    void checkWrongValue() {
         //given
         //when
         //then
