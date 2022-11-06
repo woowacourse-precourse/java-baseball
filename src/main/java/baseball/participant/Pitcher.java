@@ -17,4 +17,8 @@ public class Pitcher {
     public String pitchNumberBall() {
         return Console.readLine();
     }
+
+    public String willReplay() {
+        return Console.readLine();
+    }
 }
