@@ -8,7 +8,7 @@ public class BaseballNumbers {
 
     List<BaseballNumber> ballNumbers;
 
-    BaseballNumbers(String numberString) {
+    public BaseballNumbers(String numberString) {
         validateSize(numberString);
         createBaseballNumber(numberString);
         validateDuplicateNumbers();
