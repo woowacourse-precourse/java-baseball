@@ -21,7 +21,7 @@ public class PlayGame {
             int beforeStrike = strike;
 
             countStrike(computerNumber.get(digit), userNumber.get(digit));
-            // 스트라이크 숫자 제거 기능
+            digit = exceptStrikeNumber(beforeStrike, digit);
 
             digit++;
             methodCallCount++;
@@ -32,5 +32,14 @@ public class PlayGame {
         if(computerStrikeNumber == userStrikeNumber){
             strike++;
         }
+    }
+
+    private int exceptStrikeNumber(int beforeStrike, int digit){
+        if(beforeStrike != strike){
+            computerNumber.remove(digit);
+            userNumber.remove(digit);
+            digit--;
+        }
+        return digit;
     }
 }

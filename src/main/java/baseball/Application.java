@@ -15,6 +15,6 @@ public class Application {
         String stringUserNumber = prepareGame.setUserNumber();
         List<Integer> userNumber = prepareGame.userNumberToList(stringUserNumber);
         PlayGame playGame = new PlayGame(computerNumber, userNumber);
-        playGame.compareNumber();
+        playGame.compareNumberForStrike();
     }
 }
