@@ -55,6 +55,19 @@ public class Application {
         Print_Result();
     }
 
+    private static void Compare_Answer(List<Integer> User, List<Integer> Computer){
+        //initialize in every game
+        strike = 0, ball = 0;
+        for(int idx = 0; idx < User.size(); idx++){
+            //if computer's index equal as i(gradually), get strike
+            if(Computer.indexOf(User.get(idx)) == idx) 
+                strike++; 
+            //if not strike but in it at other index, get ball
+            else if(Computer.contains(User.get(idx))) 
+                ball++;
+        }
+    }
+    
     private static void Print_Result(){
         //it has both strike and ball
         if(strike != 0 && ball != 0)
