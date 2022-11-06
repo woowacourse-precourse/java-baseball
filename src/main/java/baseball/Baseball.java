@@ -1,6 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,8 +38,7 @@ public class Baseball {
     }
 
     private void setPlayerNumbers() {
-        systemMessage.printInputNumber();
-        String playerNumber = Console.readLine();
+        String playerNumber = InputView.inputPlayerNumber();
         player.validatePlayerNumber(playerNumber);
 
         this.playerNumbers = toIntegerList(playerNumber);
@@ -76,8 +75,7 @@ public class Baseball {
     }
 
     private String getStateNumber() {
-        systemMessage.printInputState();
-        String stateNumber = Console.readLine();
+        String stateNumber = InputView.inputStateNumber();
         player.validateStateNumber(stateNumber);
 
         return stateNumber;
