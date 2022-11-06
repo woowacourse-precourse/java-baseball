@@ -136,3 +136,22 @@
   - **@Tag** : 테스트를 필터링할 때 사용한다.
   - **@Disabled** : 테스트 클래스나, 메소드의 테스트를 비활성화 한다.
   - **@Timeout** : 주어진 시간안에 테스트가 끝나지 않으면 실패한다.
+
+- ## if문 없이 분기 처리하기 [[참조](https://dublin-java.tistory.com/38)]
+
+  ```java
+  public class Calculator {
+  private static Map<String, BiFunction<Double, Double, Double>> operators = new HashMap<>();
+
+    static {
+      operators.put("+", (num1, num2) -> num1 + num2);
+      operators.put("-", (num1, num2) -> num1 - num2);
+      operators.put("*", (num1, num2) -> num1 * num2);
+      operators.put("/", (num1, num2) -> num1 / num2);
+      }
+    public static double calculate(String operator, double num1, double num2) {
+        return operators.get(operator).apply(num1, num2);
+    }
+  }
+  ```
+  분기의 **조건**들을 **해시맵의 키**로 설정하고 수행할 **함수**를 함수형 API를 사용해 **밸류**로 넣어주면, get과 apply 메서드로 함수를 실행할 수 있다.
