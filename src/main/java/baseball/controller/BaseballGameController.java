@@ -14,11 +14,18 @@ public class BaseballGameController {
 
     public void start() {
 
-        String hint="";
         inputView = new InputView();
         inputView.inputInit();
         computer.generateComputerNumberThree();
+        play();
+        outputView.printGameEnd();
+        restart();
 
+
+    }
+
+    private void play() {
+        String hint;
         do {
             String input = inputView.playerInput();
 
@@ -31,10 +38,6 @@ public class BaseballGameController {
             outputView = new OutputView();
             outputView.printHint(hint);
         } while (computer.isNotThreeStrike(hint));
-        outputView.printGameEnd();
-        restart();
-
-
     }
 
     private void restart() {
