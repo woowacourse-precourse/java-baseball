@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
+import org.junit.jupiter.api.Test;
 
 public class Application {
     static int inputSize = 3;
@@ -12,6 +13,11 @@ public class Application {
         RunGame game = new RunGame();
         data.setAnswer(game.answer);
         data.setUserInput(game.userInput());
+
+        CompareNumbers strikeBall = new CompareNumbers();
+        strikeBall.checkNumber(data.getUserInput(), data.getAnswer());
+        data.setBall(strikeBall.ball);
+        data.setStrike(strikeBall.strike);
     }
     static class RunGame {
         List<Integer> answer = new ArrayList<>();
@@ -23,7 +29,6 @@ public class Application {
                 }
             }
         }
-
         public List<Integer> userInput() {
             List<Integer> intUserInput = new ArrayList<>();
             String[] stringUserInput = {};
@@ -32,6 +37,24 @@ public class Application {
                 intUserInput.add(Integer.parseInt(number));
             }
             return intUserInput;
+        }
+    }
+}
+
+class CompareNumbers {
+    int strike = 0;
+    int ball = 0;
+    public void checkNumber(List<Integer> userInput, List<Integer> answer) {
+        for(int number : userInput) {
+            if (answer.contains(number)) {
+                ball++;
+            }
+        }
+        for(int i = 0; i < userInput.size(); i++) {
+            if(userInput.get(i) == answer.get(i)) {
+                strike++;
+                ball--;
+            }
         }
     }
 }
