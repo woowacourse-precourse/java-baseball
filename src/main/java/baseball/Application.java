@@ -110,6 +110,7 @@ public class Application {
 
     public static void availableUserAnswerIsChecked(String word){
         String userAnswer = word;
+        String regularExpression = "^[1-2]{1}$";
     }
 
     public static void main(String[] args) {
