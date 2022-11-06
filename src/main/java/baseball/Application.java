@@ -31,7 +31,7 @@ public class Application {
         String input = Console.readLine();
         // TODO: 입력 유효성 검사 2 호출
 
-        if (input == "1") {
+        if (input.equals("1")) {
             startGame();
         }
     }
