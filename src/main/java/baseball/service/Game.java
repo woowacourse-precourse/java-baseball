@@ -43,6 +43,8 @@ public class Game {
 			player.setPlayerNumbers(playerInputNumbers);
 
 			judgeStrikeAndBallCount();
+
+			printResult(strikeAndBall.getStrike(), strikeAndBall.getBall());
 		}
 	}
 
@@ -101,5 +103,24 @@ public class Game {
 			return 1;
 		}
 		return 0;
+	}
+
+	protected void printResult(int strike, int ball) {
+		if (strike == 0 && ball == 0) {
+			System.out.println("낫싱");
+		}
+		if (strike !=0 && ball == 0) {
+			System.out.printf("%d스트라이크\n", strike);
+		}
+		if (strike == 0 && ball != 0) {
+			System.out.printf("%d볼\n", ball);
+		}
+		if (strike !=0 && ball != 0) {
+			System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+		}
+	}
+
+	public void endGame() {
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}
 }
