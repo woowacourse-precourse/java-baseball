@@ -8,10 +8,7 @@ public class Number {
     }
 
     private static boolean validateLength(String number) {
-        if (number.length() != 3) {
-            return false;
-        }
-        return true;
+            return number.length() == 3;
     }
 
 
