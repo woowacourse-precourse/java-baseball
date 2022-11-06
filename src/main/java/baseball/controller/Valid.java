@@ -17,6 +17,21 @@ public class Valid {
         return true;
     }
 
+    public static boolean isValidRestartAns(String answer) {
+        int answerToInt;
+        try {
+            answerToInt = Integer.parseInt(answer);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (answerToInt == 1 || answerToInt == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     private static boolean isNumOneToNine(List<Integer> numList) {
         for (Integer num : numList) {

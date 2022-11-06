@@ -1,15 +1,25 @@
 package baseball.controller;
 
 import baseball.dto.NumListDto;
+import baseball.view.PrintConsole;
+
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReceiveConsole {
 
     public static int choiceGameContinue() {
-        String answer=Console.readLine();
-        return Integer.parseInt(answer);
+        String answer = Console.readLine();
+        
+        while (!Valid.isValidRestartAns(answer)) {
+            PrintConsole.reAnswer();
+            choiceGameContinue();
+        }
+        
+        int answerToInt = Integer.parseInt(answer);
+        return answerToInt;
     }
 
     public static NumListDto receiveNumIncludeAllException() throws IllegalArgumentException {
