@@ -1,4 +1,4 @@
-## 기능 목록
+## :pencil:  기능 목록
 - computer에서 랜덤 숫자 3개를 list에 담는다.
 - user가 입력한 input값을 검사한 다음 list에 담는다.
 - user와 computer를 비교한다.
