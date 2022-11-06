@@ -174,22 +174,15 @@ public class Application {
     }
 
     public static List<Integer> makeAnswer() {
-        int numOfPossibleNumbers = 9;
-        int[] possibleNumbers = new int[numOfPossibleNumbers];
-        for (int i = 0; i < 9; i++) {
-            possibleNumbers[i] = i+1;
-        }
-
-        int chosenIndex;
         List<Integer> answer = new ArrayList<>();
-        for (int times = 1; times <= 3; times++) {
-            chosenIndex = Randoms.pickNumberInRange(0, numOfPossibleNumbers - 1);
-            answer.add(possibleNumbers[chosenIndex]);
-            swap(possibleNumbers, 0, chosenIndex);
-            possibleNumbers = subArray(possibleNumbers, 1, numOfPossibleNumbers - 1);
-            numOfPossibleNumbers--;
+        int randomNumber;
+        while ( answer.size() < 3 ) {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (answer.contains(randomNumber)) {
+                continue;
+            }
+            answer.add(randomNumber);
         }
-
         return answer;
     }
 
