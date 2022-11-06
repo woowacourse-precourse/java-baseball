@@ -123,7 +123,7 @@ public class Application {
     }
 
     public static boolean hasZero (String input) {
-        return Pattern.matches("0", input);
+        return Pattern.matches(".*0.*", input);
     }
 
     public static List<Integer> makeAnswer() {
