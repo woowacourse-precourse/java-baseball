@@ -5,7 +5,7 @@ public class GameOutput {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void printPlayingCount(int strikeCount, int ballCount){
+    public void printPlayingCount(int strikeCount, int ballCount) throws IllegalArgumentException{
         boolean isStrikeExists = (strikeCount > 0);
         boolean isBallExists = (ballCount > 0);
 
@@ -14,7 +14,7 @@ public class GameOutput {
         boolean onlyHaveStrikes = isStrikeExists && !isBallExists;
 
         if(isNothing){
-            System.out.println("낫싱");
+            System.out.print("낫싱\n");
         }else if(onlyHaveBalls){
             System.out.printf("%d볼\n",ballCount);
         }else if(onlyHaveStrikes){
