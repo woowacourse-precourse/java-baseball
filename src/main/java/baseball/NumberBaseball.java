@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseball {
 
@@ -11,10 +12,18 @@ public class NumberBaseball {
 
     ArrayList<Integer> targetNumbers = new ArrayList<>();
 
+    String inputNumber;
+
     public void createTargetNumberList() {
         while (targetNumbers.size() < ARRAY_SIZE) {
             overlapNumberInNumberList(Randoms.pickNumberInRange(MIN_NUM,MAX_NUM));
         }
+    }
+
+    public void getPlayerNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
+
+        inputNumber = Console.readLine();
     }
 
     private void overlapNumberInNumberList(int number) {
