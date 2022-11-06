@@ -18,7 +18,17 @@ public class GameController {
         randomNumber = new GameNumber();
         receiver = new Receiver();
     }
-    public static boolean checkRestart(String restartNumber){
+
+    private void playGame(Result result) {
+        while (!result.isCorrect()) {
+            printer.requestNumber();
+            gameNumber = new GameNumber(receiver.receiveUserNumber());
+            result.countScore(randomNumber.getNumber(), gameNumber.getNumber());
+            printer.printResult(result);
+        }
+    }
+
+    public static boolean checkRestart(String restartNumber) {
         return restartNumber.equals("1") || restartNumber.equals("2");
     }
 
