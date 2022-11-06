@@ -72,4 +72,9 @@ public class DefaultBaseBallGameEngine implements BaseBallGameEngine {
     public Numbers generateAnswer() {
         return generator.generate(NUMBERS_SIZE);
     }
+
+    @Override
+    public boolean isCorrect(BallStatus ballStatus) {
+        return ballStatus.getStrike() == NUMBERS_SIZE;
+    }
 }

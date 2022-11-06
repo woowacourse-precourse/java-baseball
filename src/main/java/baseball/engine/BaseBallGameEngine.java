@@ -9,4 +9,6 @@ public interface BaseBallGameEngine {
     Numbers parseToNumbers(String number);
 
     Numbers generateAnswer();
+
+    boolean isCorrect(BallStatus ballStatus);
 }
