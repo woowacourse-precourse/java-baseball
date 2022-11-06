@@ -75,6 +75,21 @@ public class Application {
         answerTrialNum = Integer.parseInt(answerTrialInput);
         return answerTrialNum;
     }
+
+    public static int countStrike(int answerNum, int hundred, int ten, int one){
+        int strikeCnt = 0;
+
+        if(hundred == answerNum/100)
+            strikeCnt++;
+
+        if(ten == (answerNum%100)/10)
+            strikeCnt++;
+
+        if(one == answerNum%10)
+            strikeCnt++;
+
+        return strikeCnt;
+    }
 }
 
 
