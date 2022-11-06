@@ -40,7 +40,7 @@ public class BaseballGame {
 
     private boolean isSameNumber(String separatedInput) {
         boolean isSameNumber = false;
-        if (answer.get(separatedInput) != null) {
+        if (answer.getOrDefault(separatedInput, -1) > 0) {
             isSameNumber = true;
         }
         return isSameNumber;
