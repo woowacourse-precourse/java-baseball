@@ -20,7 +20,7 @@ public class Util {
     }
 
     public static void isCorrectInputRestart(int number){
-        if (number != 1 || number != 2) {
+        if (number != 1 && number != 2) {
             throw new IllegalArgumentException("1또는 2의 숫자를 입력하세요.");
         }
     }
