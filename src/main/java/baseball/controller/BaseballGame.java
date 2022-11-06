@@ -12,7 +12,7 @@ public class BaseballGame {
     private final Computer computer;
     private boolean isEnd = false;
 
-    BaseballGame() {
+    public BaseballGame() {
         gameView = new BaseballGameView();
         computer = new Computer();
     }
