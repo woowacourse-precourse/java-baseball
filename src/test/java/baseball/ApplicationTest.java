@@ -126,7 +126,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-        // 실수 입력받을때
+    @DisplayName("실수 입력받을때")
     void 문자_입력_예외_테스트_case_1() throws Exception {
         //given
         User user = new User();
@@ -140,7 +140,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-        // 음수 입력받을때
+    @DisplayName("음수 입력받을때")
     void 문자_입력_예외_테스트_case_2() throws Exception {
         //given
         User user = new User();
@@ -149,8 +149,7 @@ class ApplicationTest extends NsTest {
         System.setIn(in);
         // when
         // then
-        assertThrows(IllegalArgumentException.class,
-            user::inputNumOfUser);
+        assertThatThrownBy(user::inputNumOfUser).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
