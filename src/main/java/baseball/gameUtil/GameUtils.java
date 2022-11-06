@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public class GameUtils {
-    protected List<Integer> generateRandomNumber() {
+    public List<Integer> generateRandomNumber() {
         return Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 
