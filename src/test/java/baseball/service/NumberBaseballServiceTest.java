@@ -87,4 +87,18 @@ public class NumberBaseballServiceTest {
         // then
         assertThat(strikeCount).isEqualTo(2);
     }
+
+    @DisplayName("볼의 수 계산 테스트")
+    @Test
+    void getBallCount_success() {
+        // given
+        ComputerNumber computerNumber = new ComputerNumber(List.of(2, 3, 4));
+        String userInput = "325";
+
+        // when
+        int ballCount = numberBaseballService.getBallCount(computerNumber, userInput);
+
+        // then
+        assertThat(ballCount).isEqualTo(2);
+    }
 }
