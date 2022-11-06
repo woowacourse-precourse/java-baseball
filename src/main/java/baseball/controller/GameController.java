@@ -1,11 +1,15 @@
 package baseball.controller;
 
-import baseball.view.GameStart;
+import baseball.view.InputView;
+
+import java.util.ArrayList;
 
 public class GameController {
-    private static GameStart gameStart = new GameStart();
+    private static InputView inputView = new InputView();
+    private static RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
     public void GameController() {
-        gameStart.GameStart();
+        inputView.GameStart();
+        ArrayList<Integer> computer = randomNumberGenerator.RandomNumberGenerator();
     }
 }
