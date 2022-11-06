@@ -7,34 +7,34 @@ public class Game {
     static final int SIZE = 3;
     static final int START_INCLUSIVE = 1;
     static final int END_INCLUSIVE = 9;
-
     static final int RESTART = 1;
     static final int END = 2;
     Message message = new Message();
 
-    public void run(){
-        startGame();
-        endGame();
-    }
-
     public void init(){
-        message.setGameStartMsg();
+        message.gameStartMsg();
     }
 
-    public void startGame(){
-        String randomNumber = Integer.toString(getRandomNumber());
+    public void run(){
+        String randomNumber = startGame();
         playGame(randomNumber);
+        endGame();
+        restartGame();
+    }
+
+    public String startGame(){
+        return Integer.toString(getRandomNumber());
     }
 
     public void endGame(){
-        message.setRestartMsg();
-        inputRestartOrEnd();
+        message.restartMsg();
     }
 
     public void playGame(String randomNumber){
         int strike = 0;
         while (strike != 3){
-            String input = inputNumber();
+            message.numberInputMsg();
+            String input = Console.readLine();
             inputValidator(input);
             strike = count(randomNumber, input);
         }
@@ -42,18 +42,11 @@ public class Game {
 
     public int getRandomNumber() {
         int number = 0;
-
-        for (int i = 0; i < SIZE; i++) {
+        for (int digit = 0; digit < SIZE; digit++) {
             number *= 10;
             number += Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
         }
-
         return number;
-    }
-
-    public String inputNumber() {
-        message.setNumberInputMsg();
-        return Console.readLine();
     }
 
     public void inputValidator(String input) {
@@ -63,8 +56,8 @@ public class Game {
         if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2))
             throw new IllegalArgumentException();
         // 1~9 범위 외의 랜덤 숫자가 있는 경우
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) <= '0' && input.charAt(i) >= '9') throw new IllegalArgumentException();
+        for (int digit = 0; digit < input.length(); digit++) {
+            if (input.charAt(digit) <= '0' && input.charAt(digit) >= '9') throw new IllegalArgumentException();
         }
     }
 
@@ -72,14 +65,13 @@ public class Game {
         int ball = 0;
         int strike = 0;
 
-        for (int i = 0; i < SIZE; i++){
-            int inc = countStrike(randomNumber, input, i);
+        for (int digit = 0; digit < SIZE; digit++){
+            int inc = countStrike(randomNumber, input, digit);
             if (inc != 0){
                 strike += inc;
             } else {
-                ball += countBall(randomNumber, input, i);
+                ball += countBall(randomNumber, input, digit);
             }
-
         }
         message.countBallAndStrikeMsg(ball, strike);
         return strike;
@@ -102,7 +94,7 @@ public class Game {
     }
 
 
-    public void inputRestartOrEnd(){
+    public void restartGame(){
         int input = Integer.parseInt(Console.readLine());
 
         if (input == 0 || input > END) throw new IllegalArgumentException();
