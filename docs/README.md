@@ -17,6 +17,10 @@
 ## controller
 잘못된 입력이 들어오는 IllegalArgumentException 발생
 그 이후 종료
+
+### 0. init 요청
+- 데이터 초기화 요청
+
 ### 1. 숫자 입력
 - 3글자 숫자만 입력 가능
 
@@ -30,7 +34,8 @@
 - 게임 응답 VO(상태응답)
   - KEEP(계속 진행), RETRY(재확인), EXIT(종료)
 - 게입 진행 여부 입력(요청)
-  -  YES(다시 처음부터 시작), NO(종료)
+  - YES(다시 처음부터 시작), NO(종료)
+  - String -> vo 타입 변환 및 검증 기능
 ### 0. 게임 시작시 생성할 랜덤 데이터
 - randoms 값 추출은 pickNumberInRange()를 활용해야 함.
 
