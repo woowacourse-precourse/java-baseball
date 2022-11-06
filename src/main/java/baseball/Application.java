@@ -23,6 +23,22 @@ public class Application {
         return computer;
     }
 
+    public static List<Integer> breakInteger(int number) {
+        List<Integer> list = new ArrayList<>();
+        int reverse = 0;
+        // reverse the number
+        while (number != 0) {
+            int remainder = number % 10;
+            reverse = reverse * 10 + remainder;
+            number = number / 10;
+        }
+        while (reverse > 0) {
+            list.add(reverse % 10);
+            reverse /= 10;
+        }
+        return list;
+    }
+
     public static boolean hasZero(List<Integer> list) {
         int sum = 1;
         for (int elem : list) sum *= elem;
