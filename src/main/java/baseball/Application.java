@@ -80,4 +80,20 @@ public class Application {
         }
         return numberOfBall;
     }
+
+    public static void printResult(int numberOfStrike, int numberOfBall) {
+        if (numberOfStrike == 0 && numberOfBall == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (numberOfStrike == 0) {
+            System.out.println(numberOfBall + "볼");
+            return;
+        }
+        if (numberOfBall == 0) {
+            System.out.println(numberOfStrike + "스트라이크");
+            return;
+        }
+        System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
+    }
 }
