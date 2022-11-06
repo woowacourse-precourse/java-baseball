@@ -17,4 +17,10 @@ public class BaseballGameView {
             System.out.printf("%d볼 ", ballCount);
         }
     }
+
+    public void printNotThing(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.print("낫싱");
+        }
+    }
 }
