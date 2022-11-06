@@ -2,6 +2,8 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
+        BaseballGame game = new BaseballGame();
+        game.start();
         //야구 게임 시작
         //do while 문 시작
             //랜덤 수 생성
