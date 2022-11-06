@@ -11,11 +11,11 @@ public class Application {
 
         Scanner scanner = new Scanner(System.in);
 
-        List<Integer> targetValues = makeRandomWithoutDuplicate();
-        System.out.println(targetValues);
+        List<Integer> targetNumbers = makeRandomWithoutDuplicate();
+        System.out.println(targetNumbers);
         System.out.println("숫자 야구 게임을 시작합니다.");
         Game game = new Game(scanner);
-        game.play(targetValues);
+        game.play(targetNumbers);
 
     }
 
