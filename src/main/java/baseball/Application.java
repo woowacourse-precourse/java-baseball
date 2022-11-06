@@ -37,6 +37,10 @@ public class Application {
         System.out.println(ballCount + "볼");
     }
 
+    private static void justPrintStrike(int strikesCount) {
+        System.out.println(strikesCount + "스트라이크");
+    }
+
     private static int checkStrike(List<String> receivingNumbers, List<String> randomNumbers) {
         int strikesCount = 0;
         for (int index = 0; index < randomNumbers.size(); index++) {
