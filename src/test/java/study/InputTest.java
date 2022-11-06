@@ -17,7 +17,7 @@ public class InputTest {
     }
 
     @Test
-    void 사용자가_입력() {
+    void 사용자_입력과_출력이_정상작동하는지_검증() {
         String input = "123";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
