@@ -12,5 +12,22 @@ public class ComparisonResults {
 	int strike; 	//Strike의 갯수
 	int ball;		//ball의 갯수
 
-	
+	@Override
+	public String toString() {
+
+		String result = "";
+		if (ball > 0) {
+			result += ball + "볼";
+		}
+		if (strike > 0) {
+			if (ball > 0) {
+				result += " ";
+			}
+			result += strike + "스트라이크";
+		}
+		if (ball + strike == 0) {
+			result += "낫싱";
+		}
+		return result;
+	}	
 }
