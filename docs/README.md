@@ -34,3 +34,5 @@
 
 ---
 ## 흐름도
+
+![흐름도](../flowchart/woowa_precours_baseball_flowchart.png)
