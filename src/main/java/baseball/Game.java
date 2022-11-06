@@ -19,6 +19,7 @@ public class Game {
             System.out.print("숫자를 입력해 주세요 : ");
             player = new Player();
             swingBat(computer.getComputerNumbersList(),player.getPlayerNumbersList());
+            gameRound = getResultGame();
         }
     }
     private void initBallAndStrike() {
@@ -31,6 +32,19 @@ public class Game {
             if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i)))
                 strike++;
             else if (computerNumbers.contains(playerNumbers.get(i))) ball++;
+        }
+    }
+    public int getResultGame() {
+        if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return 1;
+        } else if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return 0;
+        } else {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+            return 1;
         }
     }
 }
