@@ -14,7 +14,7 @@ public class GameController {
     public GameController() {
         inputView = new InputView();
         outputView = new OutputView();
-        gameService = new GameService();
+        gameService = GameService.getInstance();
     }
 
     public void playGame() {

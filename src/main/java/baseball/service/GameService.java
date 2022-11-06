@@ -8,14 +8,18 @@ import java.util.Set;
 
 public class GameService {
 
+    private static GameService instance = new GameService();
     private String gameNumber;
 
     public void setGameNumber(String gameNumber) {
         this.gameNumber = gameNumber;
     }
 
-    public GameService() {
-        gameNumber = createNumber();
+    private GameService() {
+    }
+
+    public static GameService getInstance(){
+        return instance;
     }
 
     public GameResult judge(String playerInput) {

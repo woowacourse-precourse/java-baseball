@@ -12,7 +12,7 @@ public class GameServiceTest {
 
     @BeforeAll
     static void setup() {
-        gameService = new GameService();
+        gameService = GameService.getInstance();
     }
 
     @Test
