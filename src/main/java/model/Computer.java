@@ -114,7 +114,6 @@ public class Computer {
 
     public void checkThreeNum2GameOfUser(int numOfCompare) {
         ArrayList<Integer> splitNumOfCompare = splitEachDigitOfNum(numOfCompare);
-        isContainValueList(numThreeRanOfComputerList, splitNumOfCompare);
         checkStrikeBall(splitNumOfCompare);
     }
 
