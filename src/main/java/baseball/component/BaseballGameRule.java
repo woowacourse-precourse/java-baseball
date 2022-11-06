@@ -5,6 +5,9 @@ import java.util.List;
 
 public class BaseballGameRule {
 
+    public static final int BALL_COUNT_INDEX = 0;
+    public static final int STRIKE_COUNT_INDEX = 1;
+
     private List<Integer> computerNumbers;
 
     public BaseballGameRule(){
@@ -30,7 +33,7 @@ public class BaseballGameRule {
     }
 
     public boolean isWin(List<Integer> playerScore){
-        int strikeCount = playerScore.get(1);
+        int strikeCount = playerScore.get(STRIKE_COUNT_INDEX);
         if(strikeCount == 3){
             return true;
         }

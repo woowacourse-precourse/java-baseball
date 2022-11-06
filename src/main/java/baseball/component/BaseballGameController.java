@@ -57,8 +57,8 @@ public class BaseballGameController {
 
     private void printBallStrikeCountScore(List<Integer> score){
 
-        int ballCount = score.get(0);
-        int strikeCount = score.get(1);
+        int ballCount = score.get(BaseballGameRule.BALL_COUNT_INDEX);
+        int strikeCount = score.get(BaseballGameRule.STRIKE_COUNT_INDEX);
 
         String scoreMessage = generateScoreMessage(ballCount, strikeCount);
 
