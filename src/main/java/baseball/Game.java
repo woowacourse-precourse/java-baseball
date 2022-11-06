@@ -27,7 +27,7 @@ public class Game {
 	}
 
 	public void compare() {
-		user.scanInputWhenPlaying();
+		user.scanInput();
 
 		for(int index = 0; index < 3; index++) {
 			if(computer.getComputersList().contains(user.validatedUserInput.get(index))) {
