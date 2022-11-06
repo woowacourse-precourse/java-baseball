@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -34,6 +35,13 @@ class ApplicationTest extends NsTest {
                 1, 2,3
         );
 
+    }
+
+    @Test
+    void 볼_스트라이크_맞춘_경우 () {
+        Judge judge = new Judge();
+        assertSame(1, judge.countBall(List.of(1, 2, 3), List.of(7, 6, 1)));
+        assertSame(3, judge.countStrike(List.of(4, 5, 6), List.of(4, 5, 6)));
     }
 
     @Test
