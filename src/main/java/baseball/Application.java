@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class GameReadyMachine {
     private int answerValue = 100;
 
@@ -33,7 +36,19 @@ class GameReadyMachine {
     }
 
     public boolean setValue() {
-        answerValue = Randoms.pickNumberInRange(100, 999);
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int digit=0;digit<3;digit++)
+        {
+            stringBuilder.append(computer.get(digit));
+        }
+        answerValue = Integer.parseInt(stringBuilder.toString());
         if (answerValue >= 100 || answerValue <= 999)
             return true;
         else
@@ -178,16 +193,16 @@ class GameProcessor {
 
     public void stringMaker() {
         StringBuilder stringBuilder = new StringBuilder();
-        if (getStrike() > 0) {
-            stringBuilder.append(getStrike() + "스트라이크");
-        }
         if (getBall() > 0) {
+            stringBuilder.append(getBall() + "볼");
+        }
+        if (getStrike() > 0) {
             if (stringBuilder.length() == 0) {
 
             } else {
                 stringBuilder.append(" ");
             }
-            stringBuilder.append(getBall() + "볼");
+            stringBuilder.append(getStrike() + "스트라이크");
         }
         if (stringBuilder.length() == 0) {
             stringBuilder.append("낫싱");
