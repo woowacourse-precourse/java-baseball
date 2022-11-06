@@ -32,4 +32,13 @@ public class Rival {
         return false;
     }
 
+    public int getIndexOf(int n){
+        int index = -1;
+        for(int i = 0; i < LENGTH_OF_NUMBER; i++){
+            if(number.get(i) == n){
+                index = i;
+            }
+        }
+        return index;
+    }
 }
