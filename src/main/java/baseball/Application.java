@@ -2,16 +2,15 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computer = new ArrayList<>();
         computer = createComputerNumber(computer);
+        System.out.println(computer);
+
         while (true) {
             startGame(computer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -23,6 +22,24 @@ public class Application {
                 break;
             }
         }
+    }
+
+    private static Map<String, Integer> compareNumber(List<Integer> computer, String s) {
+        HashMap<String, Integer> map = new HashMap<>();
+        int ball = 0;
+        int strike = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int clientNumber = s.charAt(i) - '0';
+            if (computer.contains(clientNumber) && (computer.indexOf(clientNumber) == i)) {
+                strike++;
+            }
+            else if (computer.contains(clientNumber)) {
+                ball++;
+            }
+        }
+        map.put("ball", ball);
+        map.put("strike", strike);
+        return map;
     }
 
     private static boolean isNumberException(String s) {
@@ -41,6 +58,7 @@ public class Application {
         }
         return false;
     }
+
     private static void startGame(List<Integer> computer) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String s = "";
@@ -51,7 +69,7 @@ public class Application {
             if (isNumberException(s)) {
                 throw new IllegalArgumentException();
             }
-            map = compareNumber(computer,s);//비교하여 몇 볼, 몇 스트라이크인지 map으로 받음
+            map = compareNumber(computer, s);//비교하여 몇 볼, 몇 스트라이크인지 map으로 받음
             boolean result = printResult(map);//3스트라이크인지 확인 한 값 리턴
             if (result) {
                 System.out.println("3개의 숫자를 모두  맞히셨습니다! 게임 종료");
