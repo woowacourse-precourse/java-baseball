@@ -18,4 +18,15 @@ public class Computer {
             }
         }
     }
+
+    private static int countBall(String input) {
+        int ball = 0;
+        for(int i = 0; i < input.length(); i++) {
+            int num = Character.getNumericValue(input.charAt(i));
+            if(computer.get(i) != num && computer.contains(num)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
 }
