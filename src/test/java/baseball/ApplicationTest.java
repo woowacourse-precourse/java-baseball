@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 컴퓨터의_수_제대로_생성되었는지_확인() {
         for (int i = 0; i < 1000; i++) {
-            List<Integer> numArr = Application.makeComputerRandomNumber();
+            List<Integer> numArr = Computer.makeComputerRandomNumber();
             assertThat(numArr).hasSize(3);
 
             assertThat(numArr.get(0))
@@ -48,42 +48,42 @@ class ApplicationTest extends NsTest {
     void 잘못된_값을_입력했을_경우_예외처리가_정상적으로_이루어지는지_확인(){
         String input = "";
         boolean result = false;
-        assertThatThrownBy(() -> Application.checkTheNumber(input))
+        assertThatThrownBy(() -> User.checkTheNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void Str에서_int형으로_정상적으로_변환되는지_확인(){
         String number = "123";
         int result = 123;
-        assertThat(Application.changeStrToInt(number)).isEqualTo(result);
+        assertThat(InputException.changeStrToInt(number)).isEqualTo(result);
     }
 
     @Test
     void int형에서_list로_정상적으로_변환되는지_확인() {
         int number = 123;
         List<Integer> result = List.of(1, 2, 3);
-        assertThat(Application.changeIntToList(number)).isEqualTo(result);
+        assertThat(User.changeIntToList(number)).isEqualTo(result);
     }
 
     @Test
     void 중복된_숫자가_있는지_확인() {
         List<Integer> numArr = List.of(2, 1, 2);
         boolean result = true;
-        assertThat(Application.isOverlap(numArr)).isEqualTo(result);
+        assertThat(InputException.isOverlap(numArr)).isEqualTo(result);
     }
 
     @Test
     void 세자리_숫자가_맞는지_확인() {
         List<Integer> numArr = List.of(1, 2, 3, 4);
         boolean result = true;
-        assertThat(Application.isNotSizeThree(numArr)).isEqualTo(result);
+        assertThat(InputException.isNotSizeThree(numArr)).isEqualTo(result);
     }
 
     @Test
     void 입력에_0이_포함되어_있는지_확인() {
         List<Integer> numArr = List.of(0, 0, 1);
         boolean result = true;
-        assertThat(Application.hasZero(numArr)).isEqualTo(result);
+        assertThat(InputException.hasZero(numArr)).isEqualTo(result);
     }
 
     @Test
@@ -91,7 +91,7 @@ class ApplicationTest extends NsTest {
         List<Integer> input1 = List.of(1, 2, 3);
         List<Integer> input2 = List.of(2, 3, 4);
         int[] result = {0, 2, 1};
-        assertThat(Application.compareNumber(input1, input2)).isEqualTo(result);
+        assertThat(Judge.compareNumber(input1, input2)).isEqualTo(result);
     }
 
     @Override
