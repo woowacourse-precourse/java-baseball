@@ -1,10 +1,11 @@
 package baseball;
 
+import baseball.domain.Computer;
 import java.util.List;
 
 public class Game {
     public static void start() {
-        List<Integer> computerNumber = NumberGenerator.createNumbers();
+        List<Integer> computerNumber = Computer.createNumbers();
         while (true) {
             List<Integer> userNumber = NumberScanner.getNumbers();
             String result = Referee.compare(computerNumber, userNumber);
