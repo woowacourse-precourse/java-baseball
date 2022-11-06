@@ -17,7 +17,7 @@ public class Logic {
 
         while (isGameGoing) {
             List<Integer> playerNumbers = user.createThreeDifferentNumbers();
-            List<Integer> scores = Calculation.getScoresBy(dealerNumbers, playerNumbers);
+            List<Integer> scores = Calculation.getScoresByNumbers(dealerNumbers, playerNumbers);
             ResultView.printOut(scores);
             checkThreeStrikes(scores.get(STRIKE_INDEX));
         }
