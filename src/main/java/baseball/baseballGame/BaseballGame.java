@@ -1,13 +1,15 @@
-package baseball;
+package baseball.baseballGame;
 
 import baseball.computer.Controller;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Stream;
 
-import static baseball.AppConfig.BALL_COUNT;
-import static baseball.Message.*;
-import static baseball.Result.getResult;
+import static baseball.baseballGame.Message.*;
+import static baseball.baseballGame.Result.getResult;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class BaseballGame {
@@ -15,6 +17,12 @@ public class BaseballGame {
     private static final String STOP_GAME = "2";
     private static final int ball = 0;
     private static final int strike = 1;
+
+    private final int BALL_COUNT;
+
+    public BaseballGame(int BALL_COUNT) {
+        this.BALL_COUNT = BALL_COUNT;
+    }
 
     public void play() {
         printStartMessage();
@@ -24,7 +32,7 @@ public class BaseballGame {
     }
 
     public void runGame() {
-        int[] balls = new Controller().getBalls();
+        int[] balls = new Controller(BALL_COUNT).getBalls();
         int[] result;
         do {
             printInputMessage();
