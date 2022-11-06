@@ -266,7 +266,7 @@ class ApplicationTest extends NsTest {
         for (List<Integer> list : numInputUser) {
             for (int num : list) {
                 computer.initCntStrikeBall();
-                computer.isRealRightNumOfUser(num);
+                computer.checkThreeNum2GameOfUser(num);
             }
             ResultList.add(List.of(computer.getCntStrike(), computer.getCntBall()));
         }
@@ -318,7 +318,7 @@ class ApplicationTest extends NsTest {
         List<String> hintResult = new ArrayList<>();
         // when
         for (int num : numInputUser) {
-            computer.isRealRightNumOfUser(num);
+            computer.checkThreeNum2GameOfUser(num);
             hintResult.add(computer.toString());
             computer.initCntStrikeBall();
 
@@ -335,7 +335,7 @@ class ApplicationTest extends NsTest {
             1, 2, 3
         ));
         ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        computer.isRealRightNumOfUser(123);
+        computer.checkThreeNum2GameOfUser(123);
         boolean result = computer.isEndTheGame();
         assertThat(result).isTrue();
     }
@@ -351,7 +351,7 @@ class ApplicationTest extends NsTest {
             1, 2, 3
         ));
         ArrayList<Boolean> resultList = new ArrayList<>();
-        computer.isRealRightNumOfUser(testInt);
+        computer.checkThreeNum2GameOfUser(testInt);
         boolean result = computer.isEndTheGame();
         assertFalse(result);
     }

@@ -124,7 +124,7 @@ public class ComputerTest {
         for (List<Integer> list : numInputUser) {
             for (int num : list) {
                 computer.initCntStrikeBall();
-                computer.isRealRightNumOfUser(num);
+                computer.checkThreeNum2GameOfUser(num);
             }
             ResultList.add(List.of(computer.getCntStrike(), computer.getCntBall()));
         }
@@ -176,7 +176,7 @@ public class ComputerTest {
         List<String> hintResult = new ArrayList<>();
         // when
         for (int num : numInputUser) {
-            computer.isRealRightNumOfUser(num);
+            computer.checkThreeNum2GameOfUser(num);
             hintResult.add(computer.toString());
             computer.initCntStrikeBall();
         }
@@ -192,7 +192,7 @@ public class ComputerTest {
             1, 2, 3
         ));
         ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        computer.isRealRightNumOfUser(123);
+        computer.checkThreeNum2GameOfUser(123);
         boolean result = computer.isEndTheGame();
         assertThat(result).isTrue();
     }
@@ -209,7 +209,7 @@ public class ComputerTest {
         ArrayList<Boolean> resultList = new ArrayList<>();
         for (int num : testInt) {
             computer.initCntStrikeBall();
-            computer.isRealRightNumOfUser(num);
+            computer.checkThreeNum2GameOfUser(num);
             resultList.add(computer.isEndTheGame());
         }
 
