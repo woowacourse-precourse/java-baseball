@@ -24,8 +24,8 @@ public class Player {
     }
 
     public void checkException(){
-        checkNotInputNumberOrOverSize(this.input);
-        checkInputDuplicatedNumber(this.input);
+        checkNotInputNumberOrOverSize();
+        checkInputDuplicatedNumber();
 
     }
 
@@ -36,9 +36,9 @@ public class Player {
         }
     }
 
-    private static void checkInputDuplicatedNumber(String input) {
-        Set<Character> set = getCharacterInput(input);
-        if(isDuplicatedNumber(input, set)){
+    public  void checkInputDuplicatedNumber() {
+        Set<Character> set = getCharacterInput(this.input);
+        if(isDuplicatedNumber(this.input, set)){
             throw new IllegalArgumentException(INPUT_DUPLICATE_ERROR_MESSAGE);
         }
     }
@@ -55,8 +55,8 @@ public class Player {
         return set;
     }
 
-    private static void checkNotInputNumberOrOverSize(String input) {
-        if(isNotInputNumberOrOverSize(input)){
+    public void checkNotInputNumberOrOverSize() {
+        if(isNotInputNumberOrOverSize(this.input)){
             throw new IllegalArgumentException(INPUT_NUM_OR_SIZE_ERROR_MESSAGE);
         }
     }

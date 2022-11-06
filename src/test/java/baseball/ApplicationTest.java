@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.model.Computer;
+import baseball.model.Player;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.constValue.Constants.ExceptionMessage.RESTART_INPUT_ERROR_MESSAGE;
+import static baseball.constValue.Constants.ExceptionMessage.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -93,7 +94,7 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        void 재시작_종료_입력_조건_예외_테스트(){
+        void 재시작_종료_입력_조건_에러_예외_테스트(){
             Computer computer = new Computer();
             assertThatThrownBy(() -> {
                 computer.checkNotRestartInput("a");
@@ -104,7 +105,31 @@ class ApplicationTest extends NsTest {
 
     @Nested
     class PlayerFeatOrExceptionTest{
-//        @Test
-//        void
+        @Test
+        void 입력값_숫자_에러_예외_테스트(){
+            Player player = new Player("a");
+            assertThatThrownBy(() -> {
+                player.checkException();
+            }).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(INPUT_NUM_OR_SIZE_ERROR_MESSAGE);
+        }
+
+        @Test
+        void 입력값_사이즈_에러_예외_테스트(){
+            Player player = new Player("1234");
+            assertThatThrownBy(() -> {
+                player.checkNotInputNumberOrOverSize();
+            }).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(INPUT_NUM_OR_SIZE_ERROR_MESSAGE);
+        }
+
+        @Test
+        void 입력값_중복_숫자_예외_테스트(){
+            Player player = new Player("113");
+            assertThatThrownBy(() -> {
+                player.checkInputDuplicatedNumber();
+            }).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(INPUT_DUPLICATE_ERROR_MESSAGE);
+        }
     }
 }
