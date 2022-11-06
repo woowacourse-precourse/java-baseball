@@ -6,6 +6,10 @@ import java.util.List;
 
 public class Hint {
     private static final int LENGTH_OF_QUIZ = 3;
+    private static final String MESSAGE_OF_NOTHING = "낫싱";
+    private static final String MESSAGE_OF_STRIKE = "스트라이크";
+    private static final String MESSAGE_OF_BALL = "볼";
+    private static final String MESSAGE_OF_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static List<Integer> CompareTo(String quiz, String playerInput) {
         int strike = 0;
@@ -20,5 +24,17 @@ public class Hint {
         }
 
         return Arrays.asList(strike, ball);
+    }
+
+    public static void Print(List<Integer> compareResult){
+        String strike = Integer.toString(compareResult.get(0));
+        String ball = Integer.toString(compareResult.get(1));
+
+        if(!strike.equals("0"))
+            System.out.print(strike + MESSAGE_OF_STRIKE + " ");
+        if(!ball.equals("0"))
+            System.out.println(ball + MESSAGE_OF_BALL);
+        else if(strike.equals("0"))
+            System.out.println(MESSAGE_OF_NOTHING);
     }
 }

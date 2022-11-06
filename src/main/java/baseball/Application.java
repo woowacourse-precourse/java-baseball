@@ -12,10 +12,15 @@ public class Application {
 
     public static void main(String[] args) {
         String quiz = QuizMaker.NewQuiz();
-        String PlayerInput = "";
+        String playerInput = "";
+        List<Integer> hintList = new ArrayList<>();
 
+        System.out.println(quiz);
         System.out.println(MESSAGE_TO_START);
-        PlayerInput = Player.Input();
-        Player.ExceptionProcess(PlayerInput);
+        playerInput = Player.Input();
+        Player.ExceptionProcess(playerInput);
+
+        hintList = Hint.CompareTo(quiz, playerInput);
+        Hint.Print(hintList);
     }
 }
