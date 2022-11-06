@@ -30,6 +30,7 @@ public class Game {
             String input = inputView.inputUser();
             player.saveUserNumber(number.createUserNumber(input));
             int strike = referee.isStrike(player.getUser(), player.getComputer());
+            int ball = referee.isBall(player.getUser(), player.getComputer());
         }
     }
 }

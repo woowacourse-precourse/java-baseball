@@ -17,4 +17,14 @@ public class Referee {
         }
         return strike;
     }
+
+    public int isBall(List<Integer> user, List<Integer> computer) {
+        int ball = 0;
+        for (Integer integer : user) {
+            if (computer.contains(integer)) {
+                ball++;
+            }
+        }
+        return ball;
+    }
 }
