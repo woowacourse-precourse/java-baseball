@@ -1,4 +1,4 @@
-package baseball.Exception;
+package baseball.exception;
 
 public class RestartNumberException {
 	public static void validateRestartNumber(String inputRestartNumber, int restartNumber, int exitNumber) {

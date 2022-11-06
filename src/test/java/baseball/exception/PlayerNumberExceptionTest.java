@@ -1,6 +1,5 @@
-package baseball.controller;
+package baseball.exception;
 
-import baseball.Exception.PlayerNumberException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

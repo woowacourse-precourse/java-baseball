@@ -18,8 +18,6 @@ public class GameController {
 	private static void start() {
 		inputView.printGameStart();
 		RandomNumber randomNumber = new RandomNumber();
-		randomNumber.getNumbers().stream().forEach(e -> System.out.print(e));
-		System.out.println("");
 		playGame(randomNumber);
 	}
 

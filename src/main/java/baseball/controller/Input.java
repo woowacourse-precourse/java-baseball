@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.Exception.PlayerNumberException;
-import baseball.Exception.RestartNumberException;
+import baseball.exception.PlayerNumberException;
+import baseball.exception.RestartNumberException;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
