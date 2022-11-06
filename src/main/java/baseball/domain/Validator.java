@@ -3,7 +3,7 @@ package baseball.domain;
 public class Validator {
 
     private static final String FORBIDDEN_FORMAT_MESSAGE = "세자리 숫자만 입력해주세요";
-    private static final String CONTAIN_CHAR_REGEX = "";
+    private static final String CONTAIN_CHAR_REGEX = "^[a-zA-Z가-힣]*$";
     private static final String BLANK = " ";
 
     public static void validate(String input) {

@@ -1,10 +1,8 @@
 package baseball;
 
-import baseball.domain.Game;
 import baseball.domain.Player;
 import baseball.domain.Validator;
-import baseball.domain.game.baseBall.ConcreteGameBaseBall;
-import baseball.view.UserInput;
+import baseball.domain.game.baseball.ConcreteGameBaseBall;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
