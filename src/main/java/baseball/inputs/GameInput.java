@@ -21,19 +21,23 @@ public class GameInput {
         return numberMadeByComputer;
     }
     public String userPlayingInput(){
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
+        try{
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = Console.readLine();
 
-        boolean isInputLengthNotThree = (userInput.length() != 3);
-        boolean haveSameNumberInInput = haveSameNumbers(userInput);
+            boolean isInputLengthNotThree = (userInput.length() != 3);
+            boolean haveSameNumberInInput = haveSameNumbers(userInput);
 
-        boolean isViolatedRestrictions = isInputLengthNotThree || haveSameNumberInInput;
+            boolean isViolatedRestrictions = isInputLengthNotThree || haveSameNumberInInput;
 
-        if(isViolatedRestrictions){
-            throw new IllegalArgumentException("숫자의 길이가 3이 아니거나, 입력에 두개 이상의 같은 숫자를 포함하고 있습니다.");
+            if(isViolatedRestrictions){
+                throw new IllegalArgumentException("숫자의 길이가 3이 아니거나, 입력에 두개 이상의 같은 숫자를 포함하고 있습니다.");
+            }
+
+            return userInput;
+        }catch(NumberFormatException ex){
+            throw new IllegalArgumentException("입력에 숫자가 아닌 값이 들어갔습니다.");
         }
-
-        return userInput;
     }
 
     public boolean checkingAgainInput(){
