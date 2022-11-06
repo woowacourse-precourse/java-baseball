@@ -2,6 +2,7 @@ package baseball.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.domain.BaseballGameResult;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
@@ -31,7 +32,7 @@ class OutputViewTest {
     }
 
     @Nested
-    class startBaseballGame_메서드는 {
+    class printGameStart_메서드는 {
 
         @Nested
         class 숫자_야구_게임을_시작합니다_라는_문자를 {
@@ -39,7 +40,38 @@ class OutputViewTest {
 
             @Test
             void 화면에_출력한다() {
-                sut.startBaseballGame();
+                sut.printGameStart();
+                assertThat(output.toString()).isEqualTo(consolePrint);
+            }
+        }
+    }
+
+    @Nested
+    class printGameEnd_메서드는 {
+
+        @Nested
+        class _3개의_숫자를_모두_맞히셨습니다_게임_종료_라는_문자를 {
+            private final String consolePrint = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+
+            @Test
+            void 화면에_출력한다() {
+                sut.printGameEnd();
+                assertThat(output.toString()).isEqualTo(consolePrint);
+            }
+        }
+    }
+
+    @Nested
+    class printGameResult_메서드는 {
+
+        @Nested
+        class 게임의_결과를 {
+            private final String consolePrint = "2볼\n";
+
+            @Test
+            void 화면에_출력한다() {
+                BaseballGameResult baseballGameResult = BaseballGameResult._0_STRIKE_2_BALL;
+                sut.printGameResult(baseballGameResult);
                 assertThat(output.toString()).isEqualTo(consolePrint);
             }
         }
