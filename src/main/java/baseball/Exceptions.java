@@ -26,6 +26,6 @@ public class Exceptions {
 
     public static void checkOpinionMessage(String userOpinion) {
         if (!(userOpinion.equals("1") || userOpinion.equals("2")))
-            throw new IllegalArgumentException("1 : 게임 새로 시작, 2 : 게임 종료");
+            throw new IllegalArgumentException("잘못된 입력입니다. 1 : 게임 새로 시작, 2 : 게임 종료");
     }
 }
