@@ -12,21 +12,27 @@ public class BaseballController {
 
     public BaseballController() {
         this.baseballView = new BaseballView();
-        this.baseball = new Baseball();
     }
 
     public void startGame() {
         List<Integer> list;
+        baseball = new Baseball();
         do {
             baseballView.printGame();
             baseball.setUserNumber(Console.readLine());
             list = baseball.estimateScore();
             baseballView.printHint(list);
-        } while (list.get(1) == 3);
+        } while (list.get(1) != 3);
     }
 
     public boolean resumeGame() {
         baseballView.resumeOrQuitGame();
         return baseball.inputControllNumber(Console.readLine());
+    }
+
+    public void controllGame() {
+        do {
+            startGame();
+        } while (resumeGame());
     }
 }
