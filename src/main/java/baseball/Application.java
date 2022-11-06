@@ -43,6 +43,7 @@ public class Application {
     public static List<Integer> inputGuess() throws IOException {
         List<Integer> guess = new ArrayList<>();
         String[] inputArray = Console.readLine().split("");
+        isInputLengthThree(inputArray);
 
         for(String i : inputArray){
             guess.add(Integer.parseInt(i));
@@ -97,13 +98,19 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input = br.readLine();
+        String input = Console.readLine();
         if(input.equals("1")){
             return true;
         }else if(input.equals("2")){
             return false;
         }else return endGame();
+    }
+
+    public static boolean isInputLengthThree(String[] inputArray)throws IllegalArgumentException{
+        if(inputArray.length!=3){
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 
 }
