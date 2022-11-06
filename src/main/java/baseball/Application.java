@@ -46,10 +46,7 @@ public class Application {
         int gameFlagNubmer = 0;
 
         while (gameFlag) {
-            ShowMessage.showInputNumber(); // 숫자 입력 메세지 출력
-            List<Integer> userNumberList = gameController.inputUserNumber(); // 사용자 입력
-            System.out.println("입력값:" + userNumberList + ":");
-            numberVO.setUserNumber(userNumberList);
+            gameUserInput();
             gameFlagNubmer = gameResult(); // 게임 결과 체크
 
             if (gameFlagNubmer == 1 || gameFlagNubmer == 2) {
@@ -60,20 +57,32 @@ public class Application {
         return gameFlagNubmer;
     }
 
+    public static void gameUserInput(){
+        ShowMessage.showInputNumber(); // 숫자 입력 메세지 출력
+        List<Integer> userNumberList = gameController.inputUserNumber(); // 사용자 입력
+        System.out.println("입력값:" + userNumberList + ":");
+        numberVO.setUserNumber(userNumberList);
+    }
+
+
     public static void newGame() {
 
         boolean gameFlag = true;
+        int gameFlagNumber = 0;
 
         while (gameFlag) {
-            List<Integer> randomNumberList = randomNumber.createRandomNumber(); // 난수 생성
-            System.out.println("난수:" + randomNumberList + ":");
-            numberVO.setRandomNumber(randomNumberList);
-            int gameFlagNumber = keepGame();
+            gameRandomNumber();
+            gameFlagNumber = keepGame();
             if(gameFlagNumber == 2){
                 break;
             }
         }
     }
 
+    public static void gameRandomNumber(){
+        List<Integer> randomNumberList = randomNumber.createRandomNumber(); // 난수 생성
+        System.out.println("난수:" + randomNumberList + ":");
+        numberVO.setRandomNumber(randomNumberList);
+    }
 
 }
