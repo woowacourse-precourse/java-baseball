@@ -20,15 +20,19 @@ public class BaseballGame {
 
     public void play(){
         isEnd = false;
+        isContinue = true;
         computer.createNumber();
         printGameStartStatement();
         try{
             while(isEnd == false){
+                ballCount = 0;
+                strikeCount = 0;
                 printInputStatement();
                 getPlayerNumber();
                 //checkBall();
-                //checkStrike();
+                checkStrike();
                 printHint();
+                checkGameEnd();
             }
             printGameEndStatement();
             getPlayerOption();
@@ -116,6 +120,20 @@ public class BaseballGame {
     private void printStrike(){
         if(strikeCount != 0){
             System.out.println(strikeCount + "스트라이크");
+        }
+    }
+
+    private void checkStrike(){
+        for(int i = 0; i < LENGTH_OF_NUMBER; i++){
+            if(player.get(i) == computer.getNumber().get(i)){
+                strikeCount++;
+            }
+        }
+    }
+
+    private void checkGameEnd(){
+        if(strikeCount == 3){
+            isEnd = true;
         }
     }
 
