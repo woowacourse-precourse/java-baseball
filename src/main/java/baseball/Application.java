@@ -95,6 +95,10 @@ public class Application {
             boolean gameOver = gameOverCheck(strikeNum);
             if(gameOver)
                 break;
+            if(strikeNum == 3){
+                makeRandomValue(computer);
+                continue;
+            }
         }
     }
 }
