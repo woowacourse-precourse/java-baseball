@@ -15,9 +15,18 @@ public class Game {
         System.out.println(IO.computer);
         IO.User_enter();//Input_Output에서 받은 사용자의 수를 호출
         BaseNumber_Check(IO.computer,IO.Scan);
-        System.out.println(Print_Current_Game());
+        Checking_Game_Number();//게임이 끝났는지 혹은 끝나지 않았으면 숫자확인을 해준다.
 
     }
+
+    public void Checking_Game_Number()
+    {
+        if(Strike_count==3)
+            Ending_Progress();
+        else
+            System.out.println(Print_Current_Game());
+    }
+
     public String Print_Current_Game()
     {
         if(Strike_count>0 && Ball_count==0)
@@ -62,6 +71,11 @@ public class Game {
             return true;
 
         return false;
+    }
+
+    public void Ending_Progress()
+    {
+
     }
 
 
