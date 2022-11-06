@@ -11,14 +11,14 @@ public class GameCycle {
         List<String> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(number)) {
+            if (!randomNumbers.contains(String.valueOf(number))) {
                 randomNumbers.add(String.valueOf(number));
             }
         }
         String randomNumber = String.join("", randomNumbers);
         return randomNumber;
     }
-    public String inputNumber(){
+    public String inputNumber(){ // 분리하기
         System.out.print("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
@@ -93,6 +93,7 @@ public class GameCycle {
     }
     public void play(){
         String answer = drawNumber();
+        output(answer);
         while(true){
             String playerNumber = playerInputNumber();
             String countStatus = countResponse(answer, playerNumber);
