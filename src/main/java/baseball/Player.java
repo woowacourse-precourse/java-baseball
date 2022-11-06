@@ -18,8 +18,10 @@ public class Player {
         System.out.println(userInput);
         return userInput;
     }
-    private List<Integer> setPlayerNumberList(String inputNumber)
-    {   List<Integer> inputNumberList = Arrays.stream(inputNumber.split("",inputNumber.length())).map(Integer::parseInt).collect(Collectors.toList());
+    private List<Integer> setPlayerNumberList(String inputNumber) {
+        List<Integer> inputNumberList = Arrays.stream(inputNumber.split("",inputNumber.length()))
+                .map(Integer::parseInt).collect(Collectors.toList());
+        Exception.checkInputNumbers(inputNumberList);
         return inputNumberList;
     }
     public List<Integer> getPlayerNumbersList(){
