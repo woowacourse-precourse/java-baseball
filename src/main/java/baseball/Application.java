@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
 
     public static void baseballGameStart(){
@@ -25,10 +27,16 @@ public class Application {
     public static void userNumberMessagePrint(){
         System.out.print("숫자를 입력하세요 : ");
     }
+
+    public static String userNumberInput(){
+        String userNumber = readLine();
+        return userNumber;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
         randomNumberCreate();
         userNumberMessagePrint();
+        userNumberInput();
     }
 }
