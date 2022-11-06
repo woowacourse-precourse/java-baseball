@@ -3,6 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import camp.nextstep.edu.missionutils.*;
 
 /*camp.nextstep.edu.missionutils에서 제공하는 Randoms 
  * 및 Console API를 사용하여 구현해야 한다.*/
@@ -14,10 +15,23 @@ class baseball {
 	int temp;
 	int result_num;
 	List<Integer> cmp_List = new ArrayList<>(3);
+	List<Integer> correct = new ArrayList<>(3);
+	
 	baseball(){
 		System.out.println("숫자 야구 게임을 시작합니다.");
-		get_gamenum();
+		get_user_input_num();
+		getrandomNum();
 		result();
+	}
+	
+	void getrandomNum() {
+		
+		while (correct.size() < 3) {
+		    int randomNumber = Randoms.pickNumberInRange(1, 9);
+		    if (!correct.contains(randomNumber)) {
+		        correct.add(randomNumber);
+		    }
+		}		
 	}
 	
 	/*
@@ -28,7 +42,7 @@ class baseball {
 		
 	}
 	
-	int get_gamenum() {
+	int get_user_input_num() {
 		System.out.println("숫자를 입력해주세요 : "); // 세자리수 제한 구현필요
 		user_num = number.nextInt();
 		return user_num;
