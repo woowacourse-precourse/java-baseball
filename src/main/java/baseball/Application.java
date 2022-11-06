@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -26,10 +27,30 @@ public class Application {
         return userInputString;
     }
 
+    //  ball strike 판별
+    public static List<Integer> BallStrike(List<Integer> answer, List<Integer> user) {
+        List<Integer> ballstrike = new ArrayList<>(2);
+        int ball_cnt = 0;
+        int strike_cnt = 0;
+        for(int i = 0; i < user.size(); i++) {
+            for(int j = 0; j < answer.size(); j++) {
+                if(user.get(i) == answer.get(j) && i ==j) {
+                    strike_cnt ++;
+                } else if (user.get(i) == answer.get(j) && i != j) {
+                    ball_cnt ++;
+                }
+            }
+        }
+        ballstrike.add(ball_cnt);
+        ballstrike.add(strike_cnt);
+        return ballstrike;
+    }
+
     public static void main(String[] args) {
         List<Integer> answer = new ArrayList<>();
-        int user_input = Integer.MAX_VALUE;
         List<Integer> user = new ArrayList<>();
+        List<Integer> ballstrike = Arrays.asList(0,0);
+        int user_input = Integer.MAX_VALUE;
 
         game :while(true) {
             answer = Answer();
@@ -58,6 +79,7 @@ public class Application {
                 break game;
             }
 
+            ballstrike = BallStrike(answer, user);
 
         }
 
