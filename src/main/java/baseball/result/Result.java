@@ -9,6 +9,10 @@ public class Result {
         this.ball = ball;
     }
 
+    public void countScore(String randomNumber, String userNumber) {
+        countStrike(randomNumber, userNumber);
+        countBall(randomNumber, userNumber);
+    }
 
     private void countStrike(String randomNumber, String userNumber) {
         int count = 0;
