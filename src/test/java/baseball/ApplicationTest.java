@@ -11,6 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+	/**
+	 * 제공된 라이브러리를 이용할때 반복문에서 사용하면 Scanner.nextLine()에서
+	 * NoSuchElementException 오류 처리해버림..
+	 */
+	@DisplayName("예제")
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
