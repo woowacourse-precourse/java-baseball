@@ -2,7 +2,6 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class Application {
 		List<Integer> answer = compare_two_case(computer_num,input_num);
 		System.out.println(calculate_Result(answer));
 		if(answer.get(1)==3){
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			return false;
 		}else{
 			return true;
