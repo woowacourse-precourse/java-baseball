@@ -1,21 +1,26 @@
 package baseball;
 
-import java.util.*;
-import java.util.function.Function;
+import static baseball.Constants.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class Game extends abstracts.Game {
 
-    private final int ANSWER_NUMBER_COUNT = 3;
-    private final boolean PROCESS_CONTINUE = true;
-    private final boolean PROCESS_FINISH = false;
+    private int answerNumberCount;
     private List<Integer> answerNumbers;
 
     Game() {
         Messages.INIT.printMessage();
         this.gameName = "Baseball";
         this.status = Status.PLAYING;
+        this.answerNumberCount = DEFAULT_NUMBER_COUNT;
         this.initialize();
     }
 
@@ -40,7 +45,7 @@ public class Game extends abstracts.Game {
     @Override
     public void initialize() {
         setStatus(Status.PLAYING);
-        setAnswerNumbers(getRandomNumbersOf(ANSWER_NUMBER_COUNT));
+        setAnswerNumbers(getRandomNumbersOf(answerNumberCount));
         Messages.INPUT.printMessage();
     }
 
@@ -98,7 +103,7 @@ public class Game extends abstracts.Game {
     }
 
     private boolean isGameOver(HashMap<Result, Integer> turnResult) {
-        return turnResult.getOrDefault(Result.STRIKE, 0) == 3;
+        return turnResult.getOrDefault(Result.STRIKE, 0) == answerNumberCount;
     }
 
     private final Map<String, Supplier<Boolean>> optionMapper = new HashMap<>();
