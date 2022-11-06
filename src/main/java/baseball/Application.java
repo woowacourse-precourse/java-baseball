@@ -74,8 +74,13 @@ public class Application {
         return (count == 3);
     }
 
-    public static boolean isNumberAndLocationEquals(int RandomNumber, int inputNumber){
-        return (RandomNumber == inputNumber);
+    public static boolean isNumberAndLocationEquals(int[] RandomNumber, int[] inputNumber){
+        for(int i = 0; i <RandomNumber.length; i++){
+            if(RandomNumber[i] ==inputNumber[i]){
+                Strike++;
+            }
+        }
+        return (Strike>0);
     }
 
     public static int[] makeRandomizedArray(){
@@ -85,6 +90,8 @@ public class Application {
         }
         return RandomArray;
     }
+
+
 
 
 
