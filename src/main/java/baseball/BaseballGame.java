@@ -11,6 +11,32 @@ public class BaseballGame {
 
     private List<Integer> answerNums;
     private List<Integer> inputNums;
+    
+    public void gameStart() {
+        BaseballGameResult gameResult = new BaseballGameResult();
+        int gameEndSignal = 0;
+        this.answerNums = generateRandomAnswerNums();
+
+        while (gameEndSignal != 2) {
+            printGameStartMessage();
+
+            this.inputNums = getGameInput();
+
+            gameResult = new BaseballGameResult(answerNums, inputNums);
+
+            printGameResultMessage(gameResult);
+
+            if (gameResult.numOfStrikes() == 3) {
+                printGameEndMessage();
+                gameEndSignal = getGameRestartInput();
+            }
+
+            if (gameEndSignal == 1) {
+                this.answerNums = generateRandomAnswerNums();
+                gameEndSignal = 0;
+            }
+        }
+    }
 
     public void printGameStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -82,7 +108,7 @@ public class BaseballGame {
 
         List<Integer> removeDuplicateList = new ArrayList<>(new HashSet<>(checkList));
 
-        if (checkList.equals(removeDuplicateList)) {
+        if (checkList.size() == removeDuplicateList.size()) {
             return Boolean.FALSE;
         }
 
