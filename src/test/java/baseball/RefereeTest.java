@@ -14,7 +14,7 @@ public class RefereeTest {
         TestableGame game = new TestableGame();
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
-        String decision = referee.scoring(List.of(new Integer[]{2, 4, 5}));
+        String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{2, 4, 5}));
 
         assertThat(decision).isEqualTo("1볼");
     }
@@ -25,7 +25,7 @@ public class RefereeTest {
         TestableGame game = new TestableGame();
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
-        String decision = referee.scoring(List.of(new Integer[]{4, 2, 5}));
+        String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{4, 2, 5}));
 
         assertThat(decision).isEqualTo("1스트라이크");
     }
@@ -36,7 +36,7 @@ public class RefereeTest {
         TestableGame game = new TestableGame();
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
-        String decision = referee.scoring(List.of(new Integer[]{4, 2, 1}));
+        String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{4, 2, 1}));
 
         assertThat(decision).isEqualTo("1볼 1스트라이크");
     }
@@ -47,7 +47,7 @@ public class RefereeTest {
         TestableGame game = new TestableGame();
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
-        String decision = referee.scoring(List.of(new Integer[]{4, 5, 6}));
+        String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{4, 5, 6}));
 
         assertThat(decision).isEqualTo("낫싱");
     }
@@ -58,7 +58,7 @@ public class RefereeTest {
         TestableGame game = new TestableGame();
         game.setAnswer(List.of(new Integer[]{1, 2, 3}));
 
-        String decision = referee.scoring(List.of(new Integer[]{1, 2, 3}));
+        String decision = referee.scoring(game.getAnswer(), List.of(new Integer[]{1, 2, 3}));
 
         assertThat(decision).isEqualTo("3스트라이크\n" +
                 "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
