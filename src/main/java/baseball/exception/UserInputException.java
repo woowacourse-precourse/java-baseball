@@ -10,4 +10,13 @@ public class UserInputException {
         }
         return false;
     }
+
+    public boolean isNumber(String userInput) {
+        for (int userInputIndex = 0; userInputIndex < userInput.length(); userInputIndex++) {
+            if (!Character.isDigit(userInput.charAt(userInputIndex))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
