@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputValidator {
-    HashSet duplicateList = new HashSet<>();
+    HashSet duplicateList;
     public InputValidator() {
     }
 
     public boolean checkValidateNumber(String number) {
+        duplicateList = new HashSet<>();
         if(number.length() != 3) return false;
         String[] numberList = number.split("");
         Pattern pattern = Pattern.compile("[1-9]");
