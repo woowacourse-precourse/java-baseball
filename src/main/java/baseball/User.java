@@ -36,4 +36,13 @@ public class User {
             throw new IllegalArgumentException();
         }
     }
+
+    public void restartGame() {
+        Computer computer = new Computer();
+        number = Console.readLine();
+        int inputNumber = Integer.parseInt(number);
+        if (inputNumber == 1) {
+            computer.printGameResult();
+        }
+    }
 }

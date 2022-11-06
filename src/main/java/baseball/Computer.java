@@ -88,10 +88,14 @@ public class Computer {
     }
 
     public void printGameResult() {
+        User user = new User();
         while (true) {
             compareGameScore();
             if (strikeCount == 3) {
                 printGameOver();
+                computerNumbers.clear();
+                user.restartGame();
+                break;
             }
             if (ballCount > 0 && strikeCount > 0) {
                 System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
