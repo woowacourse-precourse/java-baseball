@@ -9,7 +9,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     static List<Integer> computer = new ArrayList<>();
-    static List<List<Integer>> Ball_Strike = new ArrayList<>();
     public static void main(String[] args) {
         getRandomNum();
         gameStart();
@@ -40,7 +39,7 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             number=scanner.next();
-            if(number =="2")
+            if(number == "2")
             {
                 System.out.println("게임 종료");
                 break;
@@ -54,6 +53,7 @@ public class Application {
     {
         numberLength3Check(number);
         number0To9(number);
+        numberSameIn(number);
     }
 
     public static void numberLength3Check(String number) {
@@ -81,12 +81,45 @@ public class Application {
         }
     }
 
-    public static boolean returnBallStrike(String number, int idxGame)
+    public static void numberSameIn(String number) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = i + 1; j < 3; j++) {
+                if (number.charAt(i) == number.charAt(j)) {
+                    try {
+                        throw new IllegalArgumentException();
+                    } catch (IllegalArgumentException e) {
+                        throw new IllegalArgumentException(e);
+                    }
+                }
+            }
+        }
+    }
+
+    public static boolean returnBallStrike(String number, int idxGame) // "246" 135 비교
     {
+        int ball=0;
+        int strike=0;
         for(int i=0; i<3; i++)
         {
-            char value = number.charAt(i);
-
+            char value = number.charAt(i); //2
+            String computerNum = String.valueOf(computer.get(idxGame)); //"135"
+            if (computerNum.indexOf(value) == i)
+            {
+                strike++;
+                continue;
+            }
+            if(computerNum.indexOf(value) != -1) ball++;
         }
+        if(strike==3)
+        {
+            System.out.println(strike+"스트라이크");
+            return true;
+        }
+        else if (strike !=0 || ball !=0) {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+            return false;
+        }
+        System.out.println("낫싱");
+        return false;
     }
 }
