@@ -18,9 +18,11 @@ public class PlayGame {
         compareNumberForBall();
     }
 
-    public void checkStrikeAndBallForTest(){
+    public List<Integer> checkStrikeAndBallForTest(){
         compareNumberForStrike();
         compareNumberForBall();
+        List<Integer> ballStrike = List.of(ball, strike);
+        return ballStrike;
     }
 
     private void compareNumberForStrike(){
