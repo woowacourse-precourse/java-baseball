@@ -68,4 +68,14 @@ public class BallsTest {
 		BallStatus status = com.compareTo(new Ball(2, 1));
 		assertThat(status).isEqualTo(BallStatus.BALL);
 	}
+
+	@DisplayName("숫자 비교 테스트 N:M - 낫싱")
+	@Test
+	void compareTo_숫자_비교_N_M_낫싱() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		Balls player = new Balls(List.of(7, 8, 9));
+
+		PlayResult result = com.compareTo(player);
+		assertThat(result.getResult()).isEqualTo("낫싱");
+	}
 }

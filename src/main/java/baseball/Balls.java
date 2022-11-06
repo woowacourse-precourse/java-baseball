@@ -43,4 +43,8 @@ public class Balls {
 			.findFirst()
 			.orElse(BallStatus.NOTHING);
 	}
+
+	public PlayResult compareTo(final Balls other) {
+		return new PlayResult();
+	}
 }
