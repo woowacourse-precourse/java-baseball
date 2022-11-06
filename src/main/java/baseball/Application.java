@@ -27,6 +27,15 @@ public class Application {
 
         return true;
     }
+
+    public static int makeAnswerNumber(){
+        int answerNum = Randoms.pickNumberInRange(123,987);
+
+        while (!isAnswerNumberValid(answerNum))
+            answerNum = Randoms.pickNumberInRange(123,987);
+
+        return answerNum;
+    }
 }
 
 
