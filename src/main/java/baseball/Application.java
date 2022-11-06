@@ -33,6 +33,16 @@ public class Application {
             user.add(Integer.parseInt(chr));
         }
     }
-    
+
+    /*3. 컴퓨터와 입력숫자를 비교해서 스트라이크 판정 Integer로 반환*/
+    public static void strike(List<Integer> user, List<Integer> computer) {
+        int countStrike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (user.get(i).equals(computer.get(i))) {
+                countStrike++;
+            }
+        }
+//        return countStrike;
+    }
 
 }
