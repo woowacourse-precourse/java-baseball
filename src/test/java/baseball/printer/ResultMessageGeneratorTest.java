@@ -1,5 +1,6 @@
 package baseball.printer;
 
+import baseball.console.output.ResultMessageGenerator;
 import baseball.core.dto.BallStrikeDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

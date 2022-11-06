@@ -2,20 +2,18 @@ package baseball.core;
 
 import baseball.console.GameConsole;
 import baseball.core.dto.BallStrikeDto;
-import baseball.core.opponent.ComputerOpponent;
 import baseball.core.opponent.RandomNumberGenerator;
-import baseball.printer.GameMessagePrinter;
+import baseball.console.output.ConsoleOutput;
 
 import java.util.List;
 
 public class BaseballGameCore {
 
-    private final ComputerOpponent opponent;
-    private final GameMessagePrinter messagePrinter;
+    private ComputerOpponent opponent;
+    private final ConsoleOutput messagePrinter;
     private final GameConsole console;
 
-    public BaseballGameCore(GameMessagePrinter messagePrinter, GameConsole console) {
-        this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
+    public BaseballGameCore(ConsoleOutput messagePrinter, GameConsole console) {
         this.messagePrinter = messagePrinter;
         this.console = console;
     }

@@ -1,7 +1,7 @@
 package baseball.console;
 
-import baseball.console.converter.RestartOrExitCodeConverter;
-import baseball.console.converter.ThreeNumberConverter;
+import baseball.console.input.converter.RestartOrExitCodeConverter;
+import baseball.console.input.converter.ThreeNumberConverter;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class GameConsole {
         return codeConverter.getRestartOrExitCode(inputString);
     }
 
-    public String input() {
+    private String input() {
         return Console.readLine();
     }
 }
