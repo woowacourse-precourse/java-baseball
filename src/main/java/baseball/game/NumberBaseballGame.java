@@ -54,8 +54,7 @@ public abstract class NumberBaseballGame {
     protected static void play() {
         do {
             inputPlayerNumberList();
-            countBall();
-            countStrike();
+            countBallAndStrike();
             printHint();
         } while(!isGameOver());
     }
@@ -96,18 +95,12 @@ public abstract class NumberBaseballGame {
         else return "각 자리의 숫자가 서로 다르도록 입력해주세요.";
     }
 
-    protected static void countBall() {
-        ball = 0;
+    protected static void countBallAndStrike() {
+        ball = 0; strike = 0;
         for (int i = 0; i < playerNumberList.size(); i++) {
             int playerNumber = playerNumberList.get(i);
-            if (!isStrike(i) && answerNumberList.contains(playerNumber)) ball++;
-        }
-    }
-
-    protected static void countStrike() {
-        strike = 0;
-        for (int i = 0; i < answerNumberList.size(); i++) {
             if (isStrike(i)) strike++;
+            else if (answerNumberList.contains(playerNumber)) ball++;
         }
     }
 
