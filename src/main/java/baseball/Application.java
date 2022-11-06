@@ -1,10 +1,8 @@
 package baseball;
 
 import baseball.numbers.ComputerNumbers;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
 import java.util.HashSet;
@@ -22,39 +20,38 @@ public class Application {
     }
 
     static String userInput() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("숫자를 입력해 주세요 : ");
         String inputString;
 
-        try {
-            inputString = br.readLine();
-        } catch (IOException ioException) {
-            throw new IllegalArgumentException(ioException);
-        }
+        inputString = Console.readLine();
 
-        isValidInput(inputString);
+        isNull(inputString);
         isValidSize(inputString);
+        isValidNumber(inputString);
         isContainsZero(inputString);
         isOverLap(inputString);
 
         return inputString;
     }
 
-    static void isValidInput(String inputString) {
+    static void isNull(String inputString) {
+        if (inputString == null) {
+            throw new IllegalArgumentException("입력된 숫자가 없습니다.");
+        }
+    }
+
+    static void isValidSize(String inputString) {
+        if (inputString.length() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해 주세요");
+        }
+    }
+
+    static void isValidNumber(String inputString) {
         ParsePosition parsePosition = new ParsePosition(0);
         NumberFormat.getInstance().parse(inputString, parsePosition);
 
         if (inputString.length() != parsePosition.getIndex()) {
             throw new IllegalArgumentException("숫자만 입력해 주세요");
-        }
-    }
-
-    static void isValidSize(String inputString) {
-        if (inputString.length() == 0) {
-            throw new IllegalArgumentException("입력된 숫자가 없습니다.");
-        }
-        if (inputString.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해 주세요");
         }
     }
 
