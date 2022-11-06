@@ -1,22 +1,25 @@
 package baseball;
 
-import abstracts.Game;
 import java.util.*;
 import java.util.function.Function;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.function.Supplier;
 
-public class BaseballGame extends Game {
+public class Game extends abstracts.Game {
 
     private final int ANSWER_NUMBER_COUNT = 3;
+    private final boolean PROCESS_CONTINUE = true;
+    private final boolean PROCESS_FINISH = false;
     private List<Integer> answerNumbers;
 
-    BaseballGame() {
+    Game() {
+        Messages.INIT.printMessage();
         this.gameName = "Baseball";
         this.status = Status.PLAYING;
         this.initialize();
     }
 
-    private List<Integer> getAnswerNumbers() {
+    public List<Integer> getAnswerNumbers() {
         return this.answerNumbers;
     }
 
@@ -38,6 +41,7 @@ public class BaseballGame extends Game {
     public void initialize() {
         setStatus(Status.PLAYING);
         setAnswerNumbers(getRandomNumbersOf(ANSWER_NUMBER_COUNT));
+        Messages.INPUT.printMessage();
     }
 
     @Override
@@ -49,11 +53,12 @@ public class BaseballGame extends Game {
     private final Map<Status, Function<String, Boolean>> operationMapper = new HashMap<>();
     {
         operationMapper.put(Status.PLAYING, this::playTurn);
-        operationMapper.put(Status.DONE, this::askNewGame);
+        operationMapper.put(Status.DONE, this::askAfterGameOption);
     }
 
     @Override
     public boolean operate(String input) {
+        System.out.println(input);
         return operationMapper
                 .get(this.status)
                 .apply(input);
@@ -63,9 +68,13 @@ public class BaseballGame extends Game {
         HashMap<Result, Integer> turnResult = getGuessResult(input);
         Messages.printScore(turnResult);
         if(isGameOver(turnResult)) {
+            Messages.END.printMessage();
             terminate();
+            Messages.ASK.printMessage();
+            return PROCESS_CONTINUE;
         }
-        return true;
+        Messages.INPUT.printMessage();
+        return PROCESS_CONTINUE;
     }
 
     private HashMap<Result, Integer> getGuessResult(String input) {
@@ -89,11 +98,24 @@ public class BaseballGame extends Game {
     }
 
     private boolean isGameOver(HashMap<Result, Integer> turnResult) {
-        return turnResult.get(Result.STRIKE) == 3;
+        return turnResult.getOrDefault(Result.STRIKE, 0) == 3;
     }
 
-    private boolean askNewGame(String input) {
-        System.out.println("stopped");
-        return false;
+    private final Map<String, Supplier<Boolean>> optionMapper = new HashMap<>();
+    {
+        optionMapper.put("1", this::restartProcess);
+        optionMapper.put("2", this::endProcess);
+    }
+    private Boolean restartProcess() {
+        this.initialize();
+        return PROCESS_CONTINUE;
+    }
+    private Boolean endProcess() {
+        return PROCESS_FINISH;
+    }
+
+    private boolean askAfterGameOption(String input) {
+        return optionMapper.get(input)
+                .get();
     }
 }
