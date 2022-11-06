@@ -46,6 +46,14 @@ public class Computer {
         }
     }
 
+    private boolean isThreeStrike(){
+        if (strike == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 }
