@@ -3,26 +3,16 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Application {
-	public static boolean game_play(String computer_num){
-		System.out.print("숫자를 입력해주세요 : ");
-		String input_num = Console.readLine();
-		//input에 따른 예외 처리 필요.
-		List<Integer> answer = compare_two_case(computer_num,input_num);
-		if(Collections.emptyList().equals(answer)){
-			System.out.println("낫싱");
-		}else{
-			System.out.println(calculate_Result(answer));
-		}
-		if(answer.get(1)==3){
-			System.out.println("축하합니다!");
-			return true;
-		}else{
-			return false;
+	public static void start_new_Baseball_Game() {
+		System.out.println("숫자 야구 게임을 시작합니다.");
+		String computer_num = select_Random_Number();
+		boolean game_continue = true;
+		while (game_continue){
+			game_continue = game_play(computer_num);
 		}
 	}
 	public static String select_Random_Number(){
@@ -35,18 +25,21 @@ public class Application {
 		}
 		return com_Random_Num;
 	}
-	public static int is_Strike_or_Ball(String com, String number, int index){
-		if(com.indexOf(number)==index){
-			return 1;
+	public static boolean game_play(String computer_num){
+		System.out.println("숫자를 입력해주세요 : ");
+		String input_num = Console.readLine();
+		//input에 따른 예외 처리 필요.
+		List<Integer> answer = compare_two_case(computer_num,input_num);
+		System.out.println(calculate_Result(answer));
+		if(answer.get(1)==3){
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+			return false;
 		}else{
-			return 0;
+			return true;
 		}
 	}
 	public static List<Integer> compare_two_case(String com, String user){
 		List<Integer> answer = Collections.emptyList();
-		if(com.equals(user)){
-			return answer;
-		}
 		answer = new LinkedList<>();
 		answer.add(0);
 		answer.add(0);
@@ -59,6 +52,14 @@ public class Application {
 		}
 		return answer;
 	}
+	public static int is_Strike_or_Ball(String com, String number, int index){
+		if(com.indexOf(number)==index){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
 	public static String calculate_Result(List<Integer> answer_list){
 		String ball_cnt ="";
 		String strike_cnt="";
@@ -70,6 +71,9 @@ public class Application {
 		if(strike!=0){
 			strike_cnt += strike+"스트라이크";
 		}
+		if(ball_cnt.equals("") && strike_cnt.equals("")){
+			return "낫싱";
+		}
 		if(ball_cnt.equals("")){
 			return strike_cnt;
 		}
@@ -78,22 +82,12 @@ public class Application {
 		}
 		return ball_cnt+" "+strike_cnt;
 	}
-    public static void start_new_Baseball_Game() {
-    	System.out.println("숫자 야구 게임을 시작합니다.");
-    	String computer_num = select_Random_Number();
-		boolean game_continue = true;
-		while (game_continue){
-			game_continue = game_play(computer_num);
-		}
-    }
 	public static  boolean continue_or_exit(){
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		int continue_or_exit = Integer.parseInt(Console.readLine());
-		if(continue_or_exit==1){
+		if(continue_or_exit==1)
 			return true;
-		}else {
-			return false;
-		}
+		return false;
 	}
 	public static void main(String[] args) {
         boolean is_contiue = true;
