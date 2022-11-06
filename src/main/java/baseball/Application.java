@@ -20,17 +20,23 @@ public class Application {
             }
         }
     }
+
+    static ArrayList<Integer> parse_string_into_integer(String guess) {
+        int guess_int_format = Integer.parseInt(guess);
+        ArrayList<Integer> parsed = new ArrayList<>();
+
+        for (int divisor=100; divisor!= 0; guess_int_format%=divisor, divisor /= 10) {
+            parsed.add(guess_int_format / divisor);
+        }
+        return parsed;
+    }
     static boolean guess_validity_check(String guess) throws IllegalArgumentException{
         Integer guess_int_format = Integer.parseInt(guess);
         if (guess_int_format < 123 || guess_int_format > 987) {
             throw new IllegalArgumentException("범위를 준수하지 않았습니다.");
         }
 
-        ArrayList<Integer> guess_parsed = new ArrayList<>();
-        for (int divisor=100; divisor!= 0; guess_int_format%=divisor, divisor /= 10) {
-            guess_parsed.add(guess_int_format / divisor);
-        }
-
+        ArrayList<Integer> guess_parsed = parse_string_into_integer(guess);
         for (Integer toCheck : guess_parsed) {
             if (toCheck == 0) {
                 throw new IllegalArgumentException("1부터 9까지의 수로만 이루어져야 합니다.");
