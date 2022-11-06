@@ -319,6 +319,16 @@ class BaseballTest {
 
             assertThat(gameController.compareBall(ball)).isInstanceOf(Integer.class);
         }
+
+        @Test
+        @DisplayName("receiveUserAction 메소드가 \"1\"을 입력받으면 Action 객체를 생성해 반환하는지 확인")
+        void receiveUserAction_test() {
+            String input = "1";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+
+            assertThat(gameController.receiveUserAction()).isInstanceOf(Action.class);
+        }
     }
 
     @Nested
