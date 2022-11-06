@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Game {
-    private List<Integer> answer = new ArrayList<>();
+    protected List<Integer> answer = new ArrayList<>();
 
     public void initAnswer() {
         answer.clear();
