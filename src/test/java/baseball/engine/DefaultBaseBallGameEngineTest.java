@@ -104,23 +104,23 @@ class DefaultBaseBallGameEngineTest {
     @Nested
     class DescribeIsCorrect {
         @Test
-        @DisplayName("스트라이크의 개수가 게임넘버와 같지 않으면 flase를 반환한다.")
+        @DisplayName("스트라이크의 개수가 게임넘버와 같지 않으면 true를 반환한다.")
         void isNotCorrect() {
             BallStatus ballStatus = new BallStatus(0, 0);
 
-            boolean expected = false;
-            boolean actual = gameEngine.isCorrect(ballStatus);
+            boolean expected = true;
+            boolean actual = gameEngine.isNotCorrect(ballStatus);
 
             Assertions.assertThat(actual).isEqualTo(expected);
         }
 
         @Test
-        @DisplayName("스트라이크의 개수가 게임넘버와 같으면 true를 반환한다.")
+        @DisplayName("스트라이크의 개수가 게임넘버와 같으면 false를 반환한다.")
         void isCorrect() {
             BallStatus ballStatus = new BallStatus(0, 3);
 
-            boolean expected = true;
-            boolean actual = gameEngine.isCorrect(ballStatus);
+            boolean expected = false;
+            boolean actual = gameEngine.isNotCorrect(ballStatus);
 
             Assertions.assertThat(actual).isEqualTo(expected);
         }
