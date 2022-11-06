@@ -20,7 +20,7 @@ public class PrintHintTest {
 
         return Stream.of(
                 DynamicTest.dynamicTest("아무것도 못맞췄을경우", () -> {
-                    List<Integer> targetList = List.of(0, 1);
+                    List<Integer> targetList = List.of(0, 0);
                     String result = numberMatchProcessor.printHint(targetList);
                     assertThat(result).isEqualTo("낫싱");
                 }),
