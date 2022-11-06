@@ -13,6 +13,7 @@ public class StringTest {
 
         assertThat(result).contains("2", "1");
         assertThat(result).containsExactly("1", "2");
+        assertThat(result).contains("3");
     }
 
     @Test
