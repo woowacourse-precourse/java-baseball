@@ -21,11 +21,20 @@ public class UserInput {
         return lst;
     }
 
+    private String getUserInput(){
+        return Console.readLine();
+    }
+
     private int charToInt(char c) {
         Validation.validateCharIsDigit(c);
         return c - '0';
     }
-    private String getUserInput(){
-        return Console.readLine();
+
+    public int getRestartOption(){
+        String userInput = getUserInput();
+        Validation.validateSize(userInput, 1);
+        int userInputNumber = charToInt(userInput.charAt(0));
+        Validation.validateOption(userInputNumber);
+        return userInputNumber;
     }
 }
