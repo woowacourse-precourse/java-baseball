@@ -12,6 +12,7 @@ public class BaseballController {
     private final Input input;
 
     public BaseballController() {
+        Output.start();
         this.input = new Input();
     }
 
