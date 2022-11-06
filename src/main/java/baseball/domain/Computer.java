@@ -7,7 +7,7 @@ import java.util.Map;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-    static final int MAX_SIZE_OF_NUMBER = 3;
+    private static final int MAX_SIZE_OF_NUMBER = 3;
     List<String> computersNumber = new ArrayList<>();
 
     public Computer() {
