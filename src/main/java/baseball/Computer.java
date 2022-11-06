@@ -2,14 +2,15 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static baseball.Constant.*;
 
 public class Computer {
     public static List<Integer> generateNumber() {
         List<Integer> computerAnswer = new ArrayList<>();
-        while (computerAnswer.size() < 3) {
+        while (computerAnswer.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerAnswer.contains(randomNumber)) {
                 computerAnswer.add(randomNumber);
@@ -18,7 +19,7 @@ public class Computer {
         return computerAnswer;
     }
     public static List<Integer> getPlayerAnswer() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         String playerAnswerStr = Console.readLine();
         List<Integer> playerAnswer = stringToIntegerList(playerAnswerStr);
 
@@ -37,7 +38,7 @@ public class Computer {
     }
     public static boolean validateNumber(List<Integer> playerAnswer) {
         //length check
-        if (playerAnswer.size() != 3) {
+        if (playerAnswer.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException("length error");
 
         }
