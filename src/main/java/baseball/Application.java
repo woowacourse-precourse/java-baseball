@@ -69,7 +69,7 @@ public class Application {
                 checkedStrikeNumbers++;
             }
         }
-        return 0;
+        return checkedStrikeNumbers;
     }
 
     public static void main(String[] args) {
