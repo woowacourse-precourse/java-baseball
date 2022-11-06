@@ -75,7 +75,7 @@ public class UseFunc {
         return false;
     }
 
-    public String getString() {
+    public static String getString() {
         return readLine();
     }
 }

@@ -1,7 +1,5 @@
 package model;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class User {
 
     final String MSG_INPUT_NUM_INDIVIDUALLY = "각각의 다른 숫자를 입력해주세요.";
@@ -21,7 +19,7 @@ public class User {
     }
 
     private int getInputAllRightNumOfUser() {
-        String strInput = getString();
+        String strInput = UseFunc.getString();
         int numInput = parseIntFromStr(strInput);
         isValidUser(strInput, numInput);
         return numInput;
@@ -33,9 +31,6 @@ public class User {
         isValidNumOfIndividually(strInput);
     }
 
-    private String getString() {
-        return readLine();
-    }
 
     private int parseIntFromStr(String str) {
         try {

@@ -1,7 +1,5 @@
 package view;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 import controller.GameController;
 import model.UseFunc;
 
@@ -40,7 +38,7 @@ public class GameView {
                 System.out.println(MSG_THREE_STRIKE);
                 System.out.println(MSG_CHOICE_PLAY_MORE_GAMES);
 
-                int numInputOfUser = parseIntFromStr(getString());
+                int numInputOfUser = parseIntFromStr(UseFunc.getString());
                 isValidUser(numInputOfUser);
                 if (isEndgameInputOfUser(gameController, numInputOfUser)) {
                     break;
@@ -83,9 +81,6 @@ public class GameView {
         }
     }
 
-    private String getString() {
-        return readLine();
-    }
 
     public void isValidUser(int numInput) {
         isValidRightNum(numInput);
