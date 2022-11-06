@@ -14,9 +14,12 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static baseball.common.Constant.MAX_STRIKE_SIZE;
+import static baseball.domain.Command.*;
 
 
 public class GameUtils {
+
+    private static boolean restart;
 
     private static List<Integer> answerNum;
 
@@ -29,14 +32,27 @@ public class GameUtils {
 
     public static void playBaseBallGame() {
         while (true) {
+            if (restart) {
+                answerNum = getComputerAnswerNum();
+                restart = false;
+            }
+
             playerNum = getPlayerInputNum();
             int strike = checkStrikeAndUpdateScore(answerNum, playerNum);
             int ball = checkBallAndUpdateScore(answerNum, playerNum);
             printResultOfGame(strike, ball);
 
-            String command;
+            String command = "";
             if (strike == MAX_STRIKE_SIZE) {
                 command = getCommandFromPlayer();
+            }
+
+            if (isExit(command)) {
+                return;
+            }
+
+            if (isRestart(command)) {
+                restart = true;
             }
         }
     }
@@ -108,5 +124,13 @@ public class GameUtils {
         String command = Console.readLine();
         NumberExceptionUtils.isValidCommandDigit(command);
         return command;
+    }
+
+    private static boolean isExit(String input) {
+        return input.equals(EXIT.commandNum());
+    }
+
+    private static boolean isRestart(String input) {
+        return input.equals(RESTART.commandNum());
     }
 }

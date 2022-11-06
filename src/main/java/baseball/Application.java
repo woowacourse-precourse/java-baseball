@@ -11,8 +11,6 @@ public class Application {
 
     public static void main(String[] args) {
         initBaseBallGame();
-        while (true) {
-            playBaseBallGame();
-        }
+        playBaseBallGame();
     }
 }
