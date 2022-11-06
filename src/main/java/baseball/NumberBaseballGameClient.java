@@ -55,8 +55,25 @@ public class NumberBaseballGameClient {
         return playerGameNumber;
     }
 
-    public static void showJudgedResult(NumberBaseballGameJudgedResultDto dto) {
-        // 입력된 숫자의 게임규칙에 따른 판별결과 출력
+    public static void showJudgedResult(NumberBaseballGameJudgedResultDto judgedResultDto) {
+        int countStrikes = judgedResultDto.countStrikes;
+        int countBalls = judgedResultDto.countBalls;
+
+        if (countBalls == 0 && countStrikes == 0) {
+            System.out.println(MSG_JUDGED_RESULT_NOTHING);
+            return;
+        }
+
+        String resultMessage = "";
+        if (countBalls != 0) {
+            resultMessage += countBalls + MSG_JUDGED_RESULT_BALLS + " ";
+
+        }
+        if (countStrikes != 0) {
+            resultMessage += countStrikes + MSG_JUDGED_RESULT_STRIKES;
+        }
+
+        System.out.println(resultMessage.strip());
     }
 
     public static void showGameEndMessage() {
