@@ -43,4 +43,10 @@ public class FunctionTest {
         boolean result = isPositiveNumber("-123");
         assertThat(result).isEqualTo(false);
     }
+
+    @Test
+    void changeStringtoList_문자열을_리스트로_변환(){
+        List<Integer> result = changeStringtoList("1234");
+        assertThat(result).isEqualTo(List.of(1, 2, 3,4));
+    }
 }

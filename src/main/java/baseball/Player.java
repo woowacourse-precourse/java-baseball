@@ -21,4 +21,14 @@ public class Player {
         }
         return result;
     }
+
+    public static List<Integer> changeStringtoList(String s){
+        List<Integer> result = new ArrayList<>();
+        for (int i=0; i<s.length(); i++){
+            result.add(Character.getNumericValue(s.charAt(i)));
+        }
+        return result;
+    }
+
+
 }
