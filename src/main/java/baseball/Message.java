@@ -10,11 +10,11 @@ public class Message {
     static final String VICTORY_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String RESTART_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public void setGameStartMsg(){
+    public void gameStartMsg(){
         System.out.println(GAME_START_MSG);
     }
 
-    public void setNumberInputMsg(){
+    public void numberInputMsg(){
         System.out.print(NUMBER_INPUT_MSG);
     }
 
@@ -38,7 +38,7 @@ public class Message {
         System.out.println(strike + STRIKE_MSG);
     }
 
-    public void setRestartMsg(){
+    public void restartMsg(){
         System.out.println(RESTART_MSG);
     }
 }
