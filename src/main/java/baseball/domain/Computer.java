@@ -28,4 +28,15 @@ public class Computer {
 
         return strike;
     }
+
+    private int countBall(List<Integer> userNumber) {
+        int ball = 0;
+
+        for(int i=0; i< userNumber.size(); i++) {
+            if(!computerNumber.get(i).equals(userNumber.get(i)) && computerNumber.contains(userNumber.get(i)))
+                ball++;
+        }
+
+        return ball;
+    }
 }
