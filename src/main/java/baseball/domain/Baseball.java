@@ -7,8 +7,8 @@ public class Baseball {
     private int[] result = new int[2];
     private final Computer computer;
 
-    public Baseball(Computer computer) {
-        this.computer = computer;
+    public Baseball() {
+        this.computer = new Computer();
     }
 
     public String getAnswer() {
