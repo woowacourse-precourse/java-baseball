@@ -7,7 +7,7 @@ public class BaseballGame {
     private static final char INTEGER_MAKER = '0';
     private static final String GAME_REPLAY = "1";
 
-    public void playGame() throws IllegalArgumentException {
+    public void playGame() {
         boolean gameStop = true;
 
         InputView.printGameStart();
@@ -37,9 +37,9 @@ public class BaseballGame {
         return getReplayOrNot();
     }
 
-    private boolean getReplayOrNot() throws IllegalArgumentException {
+    private boolean getReplayOrNot() {
         String replayInput = InputView.getReplayOrNotByInput();
-        
+
         NumberValidator.checkReplayInput(replayInput);
 
         return convertReplayInputToBool(replayInput);

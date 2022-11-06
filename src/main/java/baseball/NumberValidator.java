@@ -9,25 +9,25 @@ public class NumberValidator {
     private static final String GAME_TERMINATE = "2";
     private static final char ZERO = '0';
 
-    public static void checkInput(String userInput) throws IllegalArgumentException {
+    public static void checkInput(String userInput) {
         isNotThreeDigits(userInput);
         isDuplicated(userInput);
         isNotNumber(userInput);
         containsZeroes(userInput);
     }
 
-    public static void checkReplayInput(String replayInput) throws IllegalArgumentException {
+    public static void checkReplayInput(String replayInput) {
         isNotNumber(replayInput);
         isOneOrTwo(replayInput);
     }
 
-    private static void isNotThreeDigits(String userInput) throws IllegalArgumentException {
+    private static void isNotThreeDigits(String userInput) {
         if (userInput.length() != NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void isDuplicated(String userInput) throws IllegalArgumentException {
+    private static void isDuplicated(String userInput) {
         Set<Character> duplicateCheck = new HashSet<>();
 
         for (int index = 0; index < userInput.length(); index++) {
@@ -39,7 +39,7 @@ public class NumberValidator {
         }
     }
 
-    private static void isNotNumber(String userInput) throws IllegalArgumentException {
+    private static void isNotNumber(String userInput) {
         for (int index = 0; index < userInput.length(); index++) {
             char number = userInput.charAt(index);
 
@@ -49,7 +49,7 @@ public class NumberValidator {
         }
     }
 
-    private static void containsZeroes(String userInput) throws IllegalArgumentException {
+    private static void containsZeroes(String userInput) {
         for (int index = 0; index < userInput.length(); index++) {
             char number = userInput.charAt(index);
 
@@ -59,7 +59,7 @@ public class NumberValidator {
         }
     }
 
-    private static void isOneOrTwo(String userInput) throws IllegalArgumentException {
+    private static void isOneOrTwo(String userInput) {
         if (!userInput.equals(GAME_REPLAY) && !userInput.equals(GAME_TERMINATE)) {
             throw new IllegalArgumentException();
         }
