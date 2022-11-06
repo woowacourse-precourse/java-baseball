@@ -23,9 +23,10 @@ public class GameResultJudgement {
 
         for (int i = 0; i < maxLen; i++) {
             char ch = str2.charAt(i);
-            if (!(str1.charAt(i) == str2.charAt(i)) && str1.contains(ch + "")) {
+            boolean isOverlap = str1.charAt(i) == str2.charAt(i);
+            if (!isOverlap && str1.contains(ch + "")) {
                 ++ball;
-            } else if (str1.charAt(i) == str2.charAt(i)) {
+            } else if (isOverlap) {
                 ++strike;
             }
         }
