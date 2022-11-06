@@ -5,5 +5,5 @@ public interface NumberService {
 
     void enterNumbersByUser();
 
-    void evaluateNumbers();
+    Score evaluateNumbers();
 }
