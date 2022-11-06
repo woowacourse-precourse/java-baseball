@@ -2,6 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -19,6 +20,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NumberUtilTest {
+    @RepeatedTest(10)
+    @DisplayName("random 함수가 1부터 9 사이의 서로 다른 임의의 숫자 3개를 반환하는지 확인한다")
+    void randomTest() {
+        List<Integer> numbers = NumberUtil.random();
+        Assertions.assertAll(
+                () -> assertEquals(3, numbers.size()),
+                () -> assertTrue(numbers.stream().allMatch(i -> NumberUtil.NUMBER_START <= i && i <= NumberUtil.NUMBER_END)),
+                () -> assertEquals(NumberUtil.NUMBER_SIZE, numbers.stream().distinct().count())
+        );
+    }
+
     @Test
     @DisplayName("input 함수가 1부터 9 사이의 서로 다른 임의의 숫자 3개를 반환하는지 확인한다")
     void inputTest() {
