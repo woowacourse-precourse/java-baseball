@@ -18,6 +18,9 @@ public class Application {
         String whatClientInputs;
         whatClientInputs = inputThreeDistinctNumbers();
         isValid(whatClientInputs);
+        checkNothing();
+        checkBalls();
+        checkStrikes();
     }
 
     public static void putRandomNumbersTo(List<Integer> digitsToCompare) {
@@ -66,6 +69,19 @@ public class Application {
     public static void makeException() {
         IllegalArgumentException exit_program = new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
         throw exit_program;
+    }
+
+    public static void checkNothing(List<Integer> numbersToGetRight, int GuessedNumbers){
+        if(numbersToGetRight.contains(GuessedNumbers/100)){
+            checkBalls();
+        }
+        if(numbersToGetRight.contains((GuessedNumbers-(GuessedNumbers/100)*100)/10){
+            checkBalls();
+        }
+        if(numbersToGetRight.contains((GuessedNumbers-(GuessedNumbers/100)*100)%10)){
+            checkBalls();
+        }
+        playGame();
     }
 }
 
