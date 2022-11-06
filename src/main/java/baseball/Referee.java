@@ -39,7 +39,7 @@ public class Referee {
 
     private static int calculateStrike(String userInput, RandomNumber randNum) {
         int strikeCnt = 0;
-        strikeCnt = randNum.countExactSame(userInput, randNum);
+        strikeCnt = randNum.countExactSame(userInput);
         return strikeCnt;
     }
 
