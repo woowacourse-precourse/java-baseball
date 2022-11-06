@@ -1,11 +1,12 @@
 package baseball;
 
 public class Coin {
-    public static final String ABLE_COIN_TO_GAME = "1";
+    public static final String COIN_TO_GAME = "1";
+    public static final String COIN_TO_FINISH = "2";
     private String coin;
 
     public Coin() {
-        this.coin = ABLE_COIN_TO_GAME;
+        this.coin = COIN_TO_GAME;
     }
 
     public Coin(String coin) {
@@ -14,7 +15,7 @@ public class Coin {
     }
 
     public boolean isCoin() {
-        if (this.coin.equals(ABLE_COIN_TO_GAME)) return true;
+        if (this.coin.equals(COIN_TO_GAME)) return true;
         return false;
     }
 
@@ -23,7 +24,7 @@ public class Coin {
     }
 
     private void checkCoin(String coin) {
-        if (!coin.equals("1") && !coin.equals("2")) throw new IllegalArgumentException();
+        if (!coin.equals(COIN_TO_GAME) && !coin.equals(COIN_TO_FINISH)) throw new IllegalArgumentException();
     }
 
 }
