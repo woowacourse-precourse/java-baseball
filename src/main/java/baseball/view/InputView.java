@@ -6,11 +6,11 @@ import camp.nextstep.edu.missionutils.Console;
 public enum InputView {
     INSTANCE;
 
-    private static final String INPUT_BASEBALL_NUMBER = "숫자를 입력해주세요 : ";
-    private static final String INPUT_GAME_STATUS = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String INPUT_BASEBALL_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INPUT_GAME_STATUS_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public String inputBaseballNumber() {
-        System.out.print(INPUT_BASEBALL_NUMBER);
+        System.out.print(INPUT_BASEBALL_NUMBER_MESSAGE);
         String baseballNumber = Console.readLine();
 
         InputValidator.validateBaseballNumber(baseballNumber);
@@ -19,7 +19,7 @@ public enum InputView {
     }
 
     public BaseballGameStatus inputGameStatus() {
-        System.out.println(INPUT_GAME_STATUS);
+        System.out.println(INPUT_GAME_STATUS_MESSAGE);
         String gameStatus = Console.readLine();
 
         InputValidator.validateGameStatus(gameStatus);
