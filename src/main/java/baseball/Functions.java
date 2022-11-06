@@ -21,6 +21,7 @@ public class Functions {
 
         return targetNums;
     }
+
     public static List<Integer> stringToIntegerList(String str) {
         List<Integer> newList = new ArrayList<>();
         for (char x : str.toCharArray()) {
@@ -28,6 +29,7 @@ public class Functions {
         }
         return newList;
     }
+
     public static List<Integer> count_BallStrike(List<Integer> targetNums, List<Integer> userNums) {
         List<Integer> b_s_list = new ArrayList<>();
         int balls = commonNums(targetNums, userNums);
@@ -39,24 +41,26 @@ public class Functions {
         b_s_list.add(strikes);
         return b_s_list;
     }
+
     public static boolean isFullhit(List<Integer> ball_Strike) {
         if (ball_Strike.get(STRIKE) == Max_size) return true;
         return false;
     }
+
     public static void printResult(List<Integer> ball_Strike) {
         int ball = ball_Strike.get(BALL);
         int strike = ball_Strike.get(STRIKE);
-        String print ="";
-        if (ball != 0 ) {
+        String print = "";
+        if (ball != 0) {
             print += ball;
             print += "볼 ";
         }
-        if(strike!=0){
+        if (strike != 0) {
             print += strike;
             print += "스트라이크";
         }
         if (ball == 0 && strike == 0)
-            print ="낫싱";
+            print = "낫싱";
         System.out.println(print);
     }
 
@@ -65,6 +69,7 @@ public class Functions {
         list3.retainAll(list2);
         return list3.size();
     }
+
     private static int count_strikes(List<Integer> targetNums, List<Integer> userNums) {
         int strike = 0;
         for (int index = 0; index < targetNums.size(); index++) {

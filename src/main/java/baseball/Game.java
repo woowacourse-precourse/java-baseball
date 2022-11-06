@@ -11,18 +11,21 @@ public class Game {
     public final static int Max_size = 3;
     public final static String CONTINUE = "1";
     public final static String END = "2";
-    public static void start(){
+
+    public static void start() {
         begin_message();
         do {
             play();
             end_message();
         } while (askContinue());
     }
+
     private static void play() {
         //랜덤숫자 생성
         List<Integer> targetNums = createTargetNums();
         mainGame(targetNums);
     }
+
     private static void mainGame(List<Integer> targetNums) {
         while (true) {
             List<Integer> userNums = stringToIntegerList(numberInput());
@@ -32,6 +35,7 @@ public class Game {
                 break;
         }
     }
+
     private static boolean askContinue() {
         cont_message();
         String input = continueInput();
@@ -40,13 +44,16 @@ public class Game {
         }
         return false;
     }
-    private static void begin_message(){
+
+    private static void begin_message() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
-    private static void end_message(){
+
+    private static void end_message() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    private static void cont_message(){
+
+    private static void cont_message() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
