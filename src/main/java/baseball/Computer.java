@@ -30,8 +30,6 @@ public class Computer {
             printGameStart();
         } else if (mode == INPUTNUMBERMODE) {
             printInputNumber();
-        } else if (mode == GENERATERANDOMMODE) {
-            //    return RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
         } else if (mode == CALCULATEDOUTPUTMODE) {
             printCalculateResult(input);
         }
