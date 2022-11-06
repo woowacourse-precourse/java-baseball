@@ -3,9 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NumberGenerator {
-    private ArrayList<Integer> numbers = new ArrayList<>();
+    private List<Integer> numbers = new ArrayList<>();
 
     public void generateNumber() {
         while (numbers.size() < 3) {
@@ -20,7 +21,7 @@ public class NumberGenerator {
         this.numbers.clear();
     }
 
-    public ArrayList<Integer> getNumbers() {
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
 }

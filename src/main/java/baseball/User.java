@@ -2,16 +2,30 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
-    private String number;
+    private List<Integer> number;
 
     public void inputNumber() {
         String inputValue;
         System.out.print("숫자를 입력해주세요 : ");
         inputValue = Console.readLine();
 
-        if(validateInput(inputValue))
-            this.number = inputValue;
+        if(validateInput(inputValue)) {
+            this.number = parseIntList(inputValue);
+        }
+    }
+
+    public List<Integer> parseIntList(String inputValue) {
+        List<Integer> result = new ArrayList<>();
+
+        for(char c : inputValue.toCharArray()){
+            result.add(Character.digit(c, 10));
+        }
+
+        return result;
     }
 
     public boolean inputFlag() throws IllegalArgumentException {
@@ -73,7 +87,7 @@ public class User {
         return false;
     }
 
-    public String getNumber() {
+    public List<Integer> getNumber() {
         return this.number;
     }
 }
