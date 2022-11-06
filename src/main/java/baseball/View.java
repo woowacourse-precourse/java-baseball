@@ -34,6 +34,10 @@ public class View {
         System.out.println(CORRECT_SENTENCE + "\n" + RESTART_SENTENCE);
         number = Console.readLine();
 
+        if(number.equals("1") == false && number.equals("2") == false) {
+            throw new IllegalArgumentException();
+        }
+
         return number;
     }
 
