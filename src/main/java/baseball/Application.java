@@ -58,7 +58,7 @@ public class Application {
         for(String arrayElement : stringToArray){
             arrayToList.add(Integer.parseInt(arrayElement));
         }
-        return List.of(1,2,3);
+        return arrayToList;
     }
 
     public static void main(String[] args) {
