@@ -99,7 +99,7 @@ public class Application {
         return numberList;
     }
 
-    public static int checkBall(String computerNumber, String userNumber) {
+    public static int checkBallCount(String computerNumber, String userNumber) {
         List<Character> appeared = convertStringToArrayList(computerNumber);
         int ball = 0;
         for (int index = 0; index < computerNumber.length(); index++) {

@@ -151,7 +151,7 @@ class BaseballTest {
     @DisplayName("check ball")
     @ParameterizedTest(name = "{index}. {displayName} user={0} computer={1} ball={2}")
     @CsvSource({"'123','456',0", "'123','312',3", "'136','378',1", "'327','752',2"})
-    void checkBall_ball_몇인지_확인(String input1, String input2, int result) {
-        assertThat(checkBall(input1, input2)).isEqualTo(result);
+    void checkBallCount_ball_몇인지_확인(String input1, String input2, int result) {
+        assertThat(checkBallCount(input1, input2)).isEqualTo(result);
     }
 }
