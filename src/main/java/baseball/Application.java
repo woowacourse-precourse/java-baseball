@@ -204,11 +204,12 @@ class GameFinisher {
         return restartTrigger;
     }
 
-    public void reStartChecker() {
+    public void reStartChecker(GameReadyMachine gameReadyMachine) {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endValue = Console.readLine();
         if (endValue.equals("1")) {
             restartTrigger = true;
+            gameReadyMachine.gameReadyComplete();
         } else if (endValue.equals("2")) {
             //later add 3-3 method
         } else {
