@@ -34,6 +34,10 @@ public class Application {
         return filterUserNumbers.size() == 3;
     }
 
+    public static boolean numberInRange(Integer number, Integer startPoint, Integer endPoint){
+        return startPoint <= number && number <= endPoint;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
