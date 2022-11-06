@@ -14,23 +14,23 @@ public class Printer {
 
     public void printBallCount(Result result) {
         if (result.isNothing()) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
             return;
         }
         if (result.getBallCount() != 0) {
-            System.out.println(result.getBallCount() + "볼 ");
+            System.out.print(result.getBallCount() + "볼 ");
         }
         if (result.getStrikeCount() != 0) {
-            System.out.println(result.getStrikeCount() + "스트라이크");
+            System.out.print(result.getStrikeCount() + "스트라이크");
         }
         System.out.println();
     }
 
-    public void printWin(){
+    public void printWin() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public void requestReStart(){
+    public void requestReStart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
