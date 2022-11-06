@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,35 +9,35 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        ArrayList<Integer> cpuNumbers = new ArrayList<Integer>();
-        ArrayList<Integer> playerNumbers = new ArrayList<Integer>();
-        ArrayList<Integer> scoreSheet = new ArrayList<Integer>();
-
-        cpuNumbers = computersNumbers();
+        ArrayList<Integer> computersNumbers;
+        ArrayList<Integer> playersNumbers;
+        ArrayList<Integer> scoreSheet;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computersNumbers = randomNumbers();
         int playStatus = 0;
 
         while (playStatus == 0) {
-            playerNumbers = readUsersNumbers();
-            scoreSheet = comparing(cpuNumbers, playerNumbers);
+            playersNumbers = getNumbers();
+            scoreSheet = comparing(computersNumbers, playersNumbers);
             playStatus = gameResult(scoreSheet);
             if (playStatus == 1) {
                 playStatus = restartGame();
-                cpuNumbers = computersNumbers();
+                computersNumbers = randomNumbers();
             }
         }
     }
 
-    public static ArrayList<Integer> computersNumbers() {
+    public static ArrayList<Integer> randomNumbers() {
 
-        ArrayList<Integer> computerRandomNumbers = new ArrayList<Integer>();
-        while (computerRandomNumbers.size() < 3) {
+        ArrayList<Integer> randomlyPickedNumbers = new ArrayList<Integer>();
+        while (randomlyPickedNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerRandomNumbers.contains(randomNumber)) {
-                computerRandomNumbers.add(randomNumber);
+            if (!randomlyPickedNumbers.contains(randomNumber)) {
+                randomlyPickedNumbers.add(randomNumber);
             }
         }
-        System.out.print(computerRandomNumbers);
-        return computerRandomNumbers;
+        System.out.print(randomlyPickedNumbers);
+        return randomlyPickedNumbers;
     }
 
     public static boolean inputRequirements(int input1, int input2, int input3) {
@@ -51,7 +49,7 @@ public class Application {
         return false;
     }
 
-    public static ArrayList<Integer> readUsersNumbers() {
+    public static ArrayList<Integer> getNumbers() {
 
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> usersNumbers = new ArrayList<Integer>();
@@ -101,20 +99,20 @@ public class Application {
         return hintResult;
     }
 
-    public static int gameResult(ArrayList<Integer> hintScore) {
+    public static int gameResult(ArrayList<Integer> strikeAndBall) {
         int gameStatus = 0;
-        if (hintScore.get(0) == 3) {
+        if (strikeAndBall.get(0) == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             gameStatus = 1;
-        } else if (hintScore.get(0) == 0 && hintScore.get(1) == 0) {
+        } else if (strikeAndBall.get(0) == 0 && strikeAndBall.get(1) == 0) {
             System.out.println("낫싱");
         } else {
-            if (hintScore.get(0) == 0) {
-                System.out.printf("%d볼\n", hintScore.get(1));
-            } else if (hintScore.get(1) == 0) {
-                System.out.printf("%d스트라이크\n", hintScore.get(0));
+            if (strikeAndBall.get(0) == 0) {
+                System.out.printf("%d볼\n", strikeAndBall.get(1));
+            } else if (strikeAndBall.get(1) == 0) {
+                System.out.printf("%d스트라이크\n", strikeAndBall.get(0));
             } else {
-                System.out.printf("%1$d볼 %2$d스트라이크\n", hintScore.get(1), hintScore.get(0));
+                System.out.printf("%1$d볼 %2$d스트라이크\n", strikeAndBall.get(1), strikeAndBall.get(0));
             }
         }
         return gameStatus;
@@ -131,10 +129,7 @@ public class Application {
         } else {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
-
     }
-
-
 }
 
 
