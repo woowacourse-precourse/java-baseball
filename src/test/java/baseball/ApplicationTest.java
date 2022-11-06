@@ -10,8 +10,7 @@ import java.util.List;
 import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -96,6 +95,37 @@ class ApplicationTest extends NsTest {
         String result = "1볼 1스크라이크";
 
         assertThat(compareBall(computerBall, userBall)).isEqualTo(result);
+    }
+
+    @Test
+    void restartGame_에서_재시작의_경우_테스트(){
+        String input = "1";
+        computerBall = Arrays.asList(1,2,3);
+        List<Integer> result = Arrays.asList(1,2,3);
+
+        restartGame(input);
+
+        assertThat(computerBall.equals(result)).isFalse();
+    }
+
+    @Test
+    void restartGame_에서_종료의_경우_테스트(){
+        String input = "2";
+        restart = false;
+        boolean result = false;
+
+        restartGame(input);
+
+        assertThat(computerBall.equals(result)).isFalse();
+    }
+
+    @Test
+    void restartGame_에서_예외의_경우_테스트(){
+        String input = "4";
+
+        assertThatThrownBy(() ->{
+            restartGame(input);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
 

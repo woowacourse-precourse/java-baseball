@@ -5,15 +5,29 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
+    static List<Integer> computerBall = makeRandomBall();
+    static boolean restart = false;
+
     public static void main(String[] args) {
-        List<Integer> computerBall = makeRandomBall();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (true){
+        while (!restart){
+            System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userBall = StringToIntList(Console.readLine());
-
             String result = compareBall(computerBall, userBall);
+
+            if(result.equals("3스크라이크")){
+                System.out.println(result);
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String input = Console.readLine();
+                restartGame(input);
+            }else{
+                System.out.println(result);
+            }
         }
     }
 
@@ -55,5 +69,15 @@ public class Application {
         }
 
         return ball + "볼 " + strike + "스크라이크";
+    }
+
+    public static void restartGame(String input) {
+        if(Objects.equals(input, "1")){
+            computerBall = makeRandomBall();
+        }else if(Objects.equals(input, "2")){
+            restart = true;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 }
