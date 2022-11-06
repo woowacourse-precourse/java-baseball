@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 public class ValidCheck {
+    public static final int PROPER_SIZE = 3;
+    public static final int PROPER_LENGTH = 1;
+    public static final String CONTINUE_BUTTON = "1";
+    public static final String END_BUTTON = "2";
     public static void numberCheck(String inputNumber){
         for(int i = 0; i < inputNumber.length(); i++){
             if(!Character.isDigit(inputNumber.charAt(i)))
@@ -12,7 +16,7 @@ public class ValidCheck {
         }
     }
     public static void validInputNumber(List<Integer> userInput){
-        if(userInput.size() != 3){
+        if(userInput.size() != PROPER_SIZE){
             throw new IllegalArgumentException("3자리 숫자를 입력하십시오");
         }
         if(userInput.contains(0)){
@@ -24,10 +28,10 @@ public class ValidCheck {
         }
     }
     public static boolean isValidPress(String userResponse){
-        if(userResponse.length() == 1) {
-            if (userResponse.contains("1"))
+        if(userResponse.length() == PROPER_LENGTH) {
+            if (userResponse.contains(CONTINUE_BUTTON))
                 return true;
-            if (userResponse.contains("2"))
+            if (userResponse.contains(END_BUTTON))
                 return false;
         }
         throw new IllegalArgumentException("1, 2 의 숫자를 입력하셨습니다");

@@ -9,6 +9,8 @@ public class GameSet {
     public static int strikeCount;
     public static int ballCount;
 
+    public static final int MAX_COUNT = 3;
+
     public GameSet(){
         computerAnswer = CreateRandomNumber.setComputerAnswer();
     }
@@ -25,7 +27,7 @@ public class GameSet {
 
     // 게임이 끝났는지 물어보는 함수
     public boolean isGameEnd(){
-        if(strikeCount == 3){
+        if(strikeCount == MAX_COUNT){
             PrintMessage.answerMessage();
             PrintMessage.gameContinueMessage();
             if(ValidCheck.isValidPress(Console.readLine())){
