@@ -10,7 +10,7 @@ public class NumsInputFromUser {
 
         computeEach(input);
 
-        checkIfInputDuplicated(hundred, ten, one);
+        checkInputException(hundred, ten, one);
 
         int[] InputArr = toArr();
 
@@ -23,7 +23,7 @@ public class NumsInputFromUser {
         one     = ((input % 100) % 10);
     }
 
-    private void checkIfInputDuplicated(int hundred, int ten , int one) throws IllegalArgumentException {
+    private void checkInputException(int hundred, int ten , int one) throws IllegalArgumentException {
         IllegalArgumentException exception = new IllegalArgumentException();
 
         if (hundred > 9) throw exception;
