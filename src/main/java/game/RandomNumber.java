@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RandomNumber {
-    private List<Integer> randomNumber;
+    private final List<Integer> randomNumber;
     public RandomNumber() {
         randomNumber = new ArrayList<>();
     }

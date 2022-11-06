@@ -5,8 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EnterNumber {
-
-    private List<Integer> enterNumber;
+    private final List<Integer> enterNumber;
     public EnterNumber() {
         enterNumber = new ArrayList<>(Arrays.asList(0, 0, 0));
     }

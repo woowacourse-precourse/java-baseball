@@ -1,9 +1,9 @@
 package ballAndStrike;
 
 public class Hint {
-    private Count count;
-    public Hint(Count count1) {
-        count = count1;
+    private final Count count;
+    public Hint(Count getCount) {
+        count = getCount;
     }
     public void announceResult() {
         String announceBallAndStrike = "";

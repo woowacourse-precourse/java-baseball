@@ -5,17 +5,17 @@ import ballAndStrike.Hint;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    private RandomNumber randomNumber;
-    private EnterNumber enterNumber;
-    private Count count;
-    private Hint hint;
+    private final RandomNumber randomNumber;
+    private final EnterNumber enterNumber;
+    private final Count count;
+    private final Hint hint;
     public Game() {
         randomNumber = new RandomNumber();
         enterNumber = new EnterNumber();
         count = new Count();
         hint = new Hint(count);
     }
-    public void finishGame(String enterOneOrTwo) {
+    public void finishOrRestart(String enterOneOrTwo) {
         if (enterOneOrTwo.equals("1")) {
             randomNumber.resetNumber();
             count.resetCount();
@@ -28,14 +28,14 @@ public class Game {
     public void caseOfThreeStrike() {
         Announce.finishAnnounce();
         String oneOrTwo = Console.readLine();
-        finishGame(oneOrTwo);
+        finishOrRestart(oneOrTwo);
     }
     public void caseOfNotThreeStrike() {
         hint.announceResult();
         count.resetCount();
         repeatGameUntilSuccess();
     }
-    public void announceBallAndStrike() {
+    public void separateCase() {
         if (count.getStrikeNumber() == 3) {
             caseOfThreeStrike();
         }
@@ -47,13 +47,12 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         String userEnterNumber = Console.readLine();
         enterNumber.getList(userEnterNumber);
-
         count.calStrike(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
         count.calBall(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
-
-        announceBallAndStrike();
+        separateCase();
     }
     public void startGame() {
+        Announce.startAnnounce();
         randomNumber.getList();
         repeatGameUntilSuccess();
     }
