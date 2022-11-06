@@ -55,5 +55,18 @@ public class Application {
         Print_Result();
     }
 
-    
+    private static void Print_Result(){
+        //it has both strike and ball
+        if(strike != 0 && ball != 0)
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        //only ball(s)
+        else if(strike == 0 && ball != 0)
+            System.out.println(ball + "볼");
+        //only strike(s)
+        else if(strike != 0 && ball == 0)
+            System.out.println(strike + "스트라이크");
+        //neither strike nor ball
+        else
+            System.out.println("낫싱");
+    }
 }
