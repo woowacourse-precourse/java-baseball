@@ -3,12 +3,17 @@ package baseball.game;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static baseball.game.Const.*;
 
 public class Computer {
     private List<Integer> numbers;
+
+    public Computer() {
+        this.numbers = Collections.emptyList();
+    }
 
     public List<Integer> getNumbers() {
         return List.copyOf(numbers);

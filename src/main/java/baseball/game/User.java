@@ -1,6 +1,7 @@
 package baseball.game;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +9,10 @@ import static baseball.game.Const.*;
 
 public class User {
     private List<Integer> numbers;
+
+    public User() {
+        this.numbers = Collections.emptyList();
+    }
 
     public List<Integer> getNumbers() {
         return List.copyOf(numbers);
