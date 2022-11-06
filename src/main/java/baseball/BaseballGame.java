@@ -19,18 +19,25 @@ public class BaseballGame {
     private static final int ZERO = 0;
 
     public void playGame() throws IllegalArgumentException {
-        System.out.print(GAME_START_COMMENT);
-        String userInput = getUserInput();
-
-        NumberValidator.checkInput(userInput);
-
+        Boolean isRunning = true;
         List<Integer> computerNumbers = RandomNumberCreator.getRandomNumbers();
-        List<Integer> userNumbers = getNumbersByInput(userInput);
+        System.out.println(computerNumbers);
 
-        int ballCount = getBallCount(userNumbers, computerNumbers);
-        int strikeCount = getStrikeCount(userNumbers, computerNumbers);
+        System.out.print(GAME_START_COMMENT);
 
-        printGameResult(ballCount, strikeCount);
+        while (isRunning) {
+            String userInput = getUserInput();
+
+            NumberValidator.checkInput(userInput);
+
+            List<Integer> userNumbers = getNumbersByInput(userInput);
+
+            int ballCount = getBallCount(userNumbers, computerNumbers);
+            int strikeCount = getStrikeCount(userNumbers, computerNumbers);
+
+            isRunning = printGameResult(ballCount, strikeCount);
+        }
+
     }
 
     public String getUserInput() {
@@ -91,47 +98,59 @@ public class BaseballGame {
         return 0;
     }
 
-    private void printGameResult(int ballCount, int strikeCount) {
+    private Boolean printGameResult(int ballCount, int strikeCount) {
+        if (strikeCount == STRIKE_NUMBER) {
+            return printThreeStrikeResult();
+        }
+        
         if (strikeCount > ZERO && ballCount > ZERO) {
-            printBallAndStrikeResult(strikeCount, ballCount);
+            return printBallAndStrikeResult(strikeCount, ballCount);
         }
 
         if (strikeCount > ZERO && ballCount == ZERO) {
-            printStrikeResult(strikeCount);
+            return printStrikeResult(strikeCount);
         }
 
         if (strikeCount == ZERO && ballCount > ZERO) {
-            printBallResult(ballCount);
+            return printBallResult(ballCount);
         }
 
         if (strikeCount == ZERO && ballCount == ZERO) {
-            printNothingResult();
+            return printNothingResult();
         }
 
-        if (strikeCount == STRIKE_NUMBER) {
-            printThreeStrikeResult();
-        }
+        return true;
     }
 
-    private void printBallAndStrikeResult(int strikeCount, int ballCount) {
+    private Boolean printBallAndStrikeResult(int strikeCount, int ballCount) {
         System.out.printf(PRINT_BALL_AND_STRIKE, ballCount, strikeCount);
+
+        return true;
     }
 
-    private void printStrikeResult(int strikeCount) {
+    private Boolean printStrikeResult(int strikeCount) {
         System.out.printf(PRINT_STRIKE_COUNT, strikeCount);
+
+        return true;
     }
 
-    private void printBallResult(int ballCount) {
+    private Boolean printBallResult(int ballCount) {
         System.out.printf(PRINT_BALL_COUNT, ballCount);
+
+        return true;
     }
 
-    private void printNothingResult() {
+    private Boolean printNothingResult() {
         System.out.print(NOTHING);
+
+        return true;
     }
 
-    private void printThreeStrikeResult() {
+    private boolean printThreeStrikeResult() {
         System.out.printf(PRINT_STRIKE_COUNT, STRIKE_NUMBER);
         System.out.printf(GAME_TERMINATE, STRIKE_NUMBER);
+
+        return false;
     }
 
 }
