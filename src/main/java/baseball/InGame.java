@@ -61,7 +61,7 @@ public class InGame {
     }
 
     private int getUserInput() {
-        return 0;
+        return this.baseballUtil.readLineInt();
     }
 
     private boolean userInputValidation() {
