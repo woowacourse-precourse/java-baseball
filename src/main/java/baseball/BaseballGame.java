@@ -20,7 +20,7 @@ public class BaseballGame {
         printStartMessage();
         do {
             runGame();
-        } while (checkStatus());
+        } while (getAndCheckStatus());
     }
 
     public void runGame() {
@@ -30,8 +30,8 @@ public class BaseballGame {
             printInputMessage();
             int[] userBalls = stringToArray(getUserBalls());
             result = getResult(balls, userBalls);
-            printResultMessage(result[ball],result[strike]);
-        } while (checkResult(result));
+            printResultMessage(result[ball], result[strike]);
+        } while (!correct(result));
         printFinishMessage();
     }
 
@@ -56,14 +56,11 @@ public class BaseballGame {
                 .toArray();
     }
 
-    public Boolean checkResult(int[] result){
-        if (result[strike]==BALL_COUNT){
-            return false;
-        }
-        return true;
+    public Boolean correct(int[] result) {
+        return result[strike] == BALL_COUNT;
     }
 
-    public Boolean checkStatus() {
+    public Boolean getAndCheckStatus() {
         while (true) {
             printRestartMessage();
             String statusInput = getInput();
@@ -73,11 +70,9 @@ public class BaseballGame {
     }
 
     public Boolean checkInputException(String input) {
-        // 길이가 3이 아닐 경우
         if (input.length() != BALL_COUNT) {
             return true;
         }
-        // 모두 숫자가 아닐 경우
         boolean isNumeric = input.matches("[+-]?\\d*(\\.\\d+)?");
         if (!isNumeric) {
             return true;
@@ -85,10 +80,10 @@ public class BaseballGame {
         return false;
     }
 
-    public Boolean checkInputDuplicateException(String input){
+    public Boolean checkInputDuplicateException(String input) {
         String[] inputArr = input.split("");
         Set<String> duplicate = new HashSet<>(Arrays.asList(inputArr));
-        if (duplicate.size() ==BALL_COUNT){
+        if (duplicate.size() == BALL_COUNT) {
             return false;
         }
         return true;
