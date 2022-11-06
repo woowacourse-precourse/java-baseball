@@ -11,6 +11,6 @@ public class Player {
     }
 
     public void validateInput(String input) {
-        //TODO: 예외사항 처리 기능 구현
+        Exception.checkNumberFormatException(input);
     }
 }
