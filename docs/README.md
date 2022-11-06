@@ -28,17 +28,17 @@ userNumberToList()
 ```
 
 ### 게임 플레이 기능
-- [ ] 두 수의 자릿수의 숫자를 비교
+- [ ] 두 수의 숫자 비교
 ```
-compareNumberForStrike()
+compareNumber()
 ```
-- [ ] 두 수의 숫자를 비교
+- [ ] 스트라이크 확인
 ```
-compareNumberForBall()
+checkStrike()
 ```
-- [ ] 비교 후, 볼 or 스트라이크 확인
+- [ ] 볼 확인
 ```
-checkBallOrStrike()
+checkBall()
 ```
 - [ ] 결과 출력
 ```
@@ -61,12 +61,13 @@ isEachDigit()
 setUserNumber()
 isNumber()
 isThreeDigitNumber()
+userNumberToString
 ```
 - **PlayGame.class : 게임 실행 단계**
 ```
-compareNumberForStrike()
-compareNumberForBall()
-checkBallOrStrike()
+compareNumber()
+checkStrike()
+checkBall()
 outputResult()
 isGameExit()
 ```
