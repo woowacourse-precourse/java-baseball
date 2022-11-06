@@ -36,4 +36,8 @@ public class Application {
         }
         return true;
     }
+
+    public static boolean isNumberInRange(int number){
+        return ((number / 100 >= 1) && (number / 100 < 10));
+    }
 }
