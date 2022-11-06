@@ -33,6 +33,14 @@ public class BaseballGame {
 			}
 		} while (!computer.computeAndPrintResult(userNumbers));
 	}
+	private boolean again() {
+		try {
+			String str = Console.readLine();
+			Examine.isOneOrTwo(str);
+		} catch (IllegalArgumentException e) {
+			throw e;
+		}
+	}
 
 	private void printAllStrike() {
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

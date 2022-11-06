@@ -41,4 +41,15 @@ public class Examine {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public static int isOneOrTwo(String str) {
+		if (str.length() != 1) {
+			throw new IllegalArgumentException();
+		}
+		int number = Integer.parseInt(str);
+		if (number != 1 && number != 2) {
+			throw new IllegalArgumentException();
+		}
+		return number;
+	}
 }
