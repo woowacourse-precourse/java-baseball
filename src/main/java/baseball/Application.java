@@ -5,6 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
+    final static int DIGIT_1 = 0;
+    final static int DIGIT_10 = 1;
+    final static int DIGIT_100 = 2;
+
+    public static List<Integer> computerDigitValue;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
