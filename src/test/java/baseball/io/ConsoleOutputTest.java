@@ -72,4 +72,20 @@ public class ConsoleOutputTest {
             Assertions.assertThat(outputMessage.toString()).isEqualTo(expected);
         }
     }
+
+    @Nested
+    @DisplayName("printEndText 메서드는")
+    class DescribePrintEndText {
+        @Test
+        @DisplayName("맞힌 숫자 개수와 종료 안내 메세지를 출력한다.")
+        void isPrintCorrectNumberAndEndText() {
+            BallStatus ballStatus = new BallStatus(0, 3);
+            String expect = ballStatus.getStrike() + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+                    + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요\n";
+
+            output.printEndText(ballStatus);
+
+            Assertions.assertThat(outputMessage.toString()).isEqualTo(expect);
+        }
+    }
 }
