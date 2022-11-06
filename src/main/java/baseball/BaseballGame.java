@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.computer.Controller;
 
+import static baseball.Result.*;
 import static camp.nextstep.edu.missionutils.Console.*;
 import static baseball.Message.*;
 
@@ -25,6 +26,7 @@ public class BaseballGame {
 
     public Boolean runGame() {
         List<Integer> balls = new Controller().getBalls();
+        boolean status = true;
         do {
             printInputMessage();
             String input;
@@ -35,9 +37,9 @@ public class BaseballGame {
                 return false;
             }
             int[] userBalls = stringToArray(input);
+            status = getResult(balls, userBalls);
             //값 비교
-        } while (false);
-        // 모두 맞출때까지
+        } while (status);
         printFinishMessage();
         return true;
     }
@@ -59,7 +61,7 @@ public class BaseballGame {
     }
 
     public Boolean checkStatus() {
-        while (true){
+        while (true) {
             printRestartMessage();
             String statusInput = getInput();
             if (Objects.equals(statusInput, RE_GAME)) return true;
