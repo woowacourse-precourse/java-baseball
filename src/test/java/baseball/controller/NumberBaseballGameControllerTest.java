@@ -26,4 +26,16 @@ public class NumberBaseballGameControllerTest {
 
         assertThat(gameStatus).isEqualTo("play");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"2"})
+    void 게임_종료_시_gameStatus_end(String input) {
+        NumberBaseballGameController numberBaseballGameController = new NumberBaseballGameController();
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        numberBaseballGameController.gameRestartOrEnd();
+        String gameStatus = numberBaseballGameController.getGameStatus();
+
+        assertThat(gameStatus).isEqualTo("end");
+    }
 }
