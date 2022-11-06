@@ -128,7 +128,7 @@ public class NumberBaseball {
 
     private void setNumbers() {
         this.numbers.clear();
-        while (numbers.size() != 3) {
+        while (numbers.size() < 3) {
             int value = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
 
             Character character = Character.valueOf((char) (value + ASCII_ZERO));
