@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static baseball.constant.Rules.END_NUMBER;
+import static baseball.constant.Rules.FORBIDDEN_NUMBER;
 import static baseball.constant.Rules.PICK_COUNT;
 import static baseball.constant.Rules.START_NUMBER;
 
@@ -34,8 +35,8 @@ public class Staff {
         validateInputNull(input);
         validateInputLength(input);
         List<Integer> userNumbers = convertInputToUserNumbers(input);
-        validateUseForbiddenNumber(userNumbers);
-        validateDuplicateValues(userNumbers);
+        validateForbiddenNumber(userNumbers);
+        validateDuplicateValue(userNumbers);
 
         return userNumbers;
     }
@@ -59,6 +60,12 @@ public class Staff {
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력값을 숫자로 변환시킬 수 없습니다.");
+        }
+    }
+
+    private void validateForbiddenNumber(List<Integer> userNumbers) {
+        if (userNumbers.contains(FORBIDDEN_NUMBER)) {
+            throw new IllegalArgumentException("허용되지 않은 숫자 " + FORBIDDEN_NUMBER + "이 포함되어 있습니다.");
         }
     }
 }
