@@ -30,6 +30,13 @@ public class PrepareGame {
         return userNumber;
     }
 
+    public String setUserNumberForTest(String userNumber){
+        if(!isNumber(userNumber) || !isThreeDigitNumber(userNumber)){
+            throw new IllegalArgumentException("Please enter the correct value");
+        }
+        return userNumber;
+    }
+
     private Boolean isNumber(String number){
         return number.matches("-?\\d+");
     }

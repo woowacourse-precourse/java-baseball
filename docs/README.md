@@ -22,7 +22,7 @@ isNumber()
 ```
 isThreeDigitNumber()
 ```
-- [ ] 사용자 입력 값을 List 자료형으로 변환
+- [x] 사용자 입력 값을 List 자료형으로 변환
 ```
 userNumberToList()
 ```
