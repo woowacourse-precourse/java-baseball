@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    private List<Integer> userInputNumber;
+    private List<Integer> userInputNumbers;
+
+    public List<Integer> getUserInputNumbers() {
+        return userInputNumbers;
+    }
 
     public void selectUserNumber() {
-        userInputNumber = List.copyOf(stringListToIntList());
+        userInputNumbers = List.copyOf(stringListToIntList());
     }
 
     private static List<Integer> stringListToIntList() {
