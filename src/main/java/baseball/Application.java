@@ -4,16 +4,19 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     private static final int NUMBERS_SIZE = 3;
 
     public static void main(String[] args) {
+        Comments comments = new Comments(setComments());
         Player computer = new Player(selectComputerNumber());
-        printStartComment();
+        comments.printStartComment();
         while (true){
-            printInputNumberComment();
+            comments.printInputComment();
             Player user = new Player(toIntegers(split(Console.readLine())));
         }
 
@@ -30,14 +33,6 @@ public class Application {
         }
 
         return computer;
-    }
-
-    public static void printStartComment(){
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    public static void printInputNumberComment(){
-        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public static String[] split(String string){
@@ -82,5 +77,14 @@ public class Application {
                 return false;
         }
         return true;
+    }
+
+    public static Map<String, String> setComments(){
+        Map<String, String> comments = new HashMap<>();
+        comments.put("START", "숫자 야구 게임을 시작합니다.\n");
+        comments.put("INPUT","숫자를 입력해주세요 : ");
+        comments.put("FINISH", "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return comments;
     }
 }
