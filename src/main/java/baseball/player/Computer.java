@@ -2,6 +2,7 @@ package baseball.player;
 
 import baseball.number.Number;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -18,5 +19,9 @@ public class Computer {
 
   public Integer getSetSize(){
     return this.computer.size();
+  }
+
+  public List<Integer> getComputerNumberList() {
+    return List.copyOf(this.computer);
   }
 }
