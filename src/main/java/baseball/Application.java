@@ -18,6 +18,20 @@ public class Application {
         System.out.println("Computer's number: " + numOfComputer);
         System.out.println("Player's number: " + numOfPlayer);
 
+        CheckStrikes(numOfComputer, numOfPlayer);
+
+    }
+
+    public static void CheckStrikes(List<Integer> computer, List<Integer> player) {
+        int strikes = 0;
+
+        for(int i = 0; i < computer.size(); i++) {
+            if(computer.get(i) == player.get(i)) {
+                strikes++;
+            }
+        }
+
+        System.out.println(strikes);
     }
 
 
