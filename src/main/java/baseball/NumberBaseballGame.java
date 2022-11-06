@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballGame {
-    private static List<Integer> computerNumber;
-    private static List<Integer> userNumber;
-    private static int strike;
-    private static int ball;
+    private List<Integer> computerNumber;
+    private List<Integer> userNumber;
+    private int strike;
+    private int ball;
 
     public NumberBaseballGame() {
         computerNumber = new ArrayList<>();
@@ -20,7 +20,7 @@ public class NumberBaseballGame {
         getRandomThreeDigitNumber();
     }
 
-    public static void gameStart(){
+    public void gameStart() {
         System.out.print("숫자를 입력해주세요 :");
         String inputNumber = Console.readLine();
         userNumber = getUserNumberList(inputNumber);
@@ -28,22 +28,22 @@ public class NumberBaseballGame {
         System.out.println(getResultToString());
     }
 
-    public static boolean checkGameEnd(){
-        if(strike == 3){
+    public boolean checkGameEnd() {
+        if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String response = Console.readLine();
-            if(response == "1"){
+            if (response == "1") {
                 return true;
             }
-            if (response == "2"){
+            if (response == "2") {
                 return false;
             }
         }
         return true;
     }
 
-    public static void getRandomThreeDigitNumber() {
+    public void getRandomThreeDigitNumber() {
         for (int i = 0; i < 3; i++) {
             int num = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(num)) {
@@ -52,7 +52,7 @@ public class NumberBaseballGame {
         }
     }
 
-    public static List<Integer> getUserNumberList(String userNumber) {
+    public List<Integer> getUserNumberList(String userNumber) {
         String[] userNumberArray = userNumber.split("");
         List<Integer> userNumberList = new ArrayList<>();
         for (String number : userNumberArray) {
@@ -61,19 +61,19 @@ public class NumberBaseballGame {
         return userNumberList;
     }
 
-    public static void compareUserAndComputer() {
-        for (int i = 0; i<userNumber.size();i++){
-            if(computerNumber.indexOf(userNumber.get(i)) == i){
+    public void compareUserAndComputer() {
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (computerNumber.indexOf(userNumber.get(i)) == i) {
                 strike++;
                 continue;
             }
-            if(computerNumber.contains(userNumber.get(i))){
+            if (computerNumber.contains(userNumber.get(i))) {
                 ball++;
             }
         }
     }
 
-    public static String getResultToString() {
+    public String getResultToString() {
         if (ball != 0 && strike != 0) {
             return ball + "볼 " + strike + "스트라이크";
         }
