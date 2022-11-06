@@ -34,4 +34,11 @@ public class BaseballNumbersFactory {
                 .map(BaseballNumber::valueOf)
                 .collect(collectingAndThen(toList(), BaseballNumbers::new));
     }
+
+    public BaseballNumbers generate(String inputBaseballNumbers) {
+        return inputBaseballNumbers.chars()
+                .map(Character::getNumericValue)
+                .mapToObj(BaseballNumber::valueOf)
+                .collect(collectingAndThen(toList(), BaseballNumbers::new));
+    }
 }
