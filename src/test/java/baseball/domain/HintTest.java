@@ -26,5 +26,14 @@ class HintTest {
     void initTest(Score score) throws Exception {
         assertThat(hint.getScorePoint(score)).isEqualTo(0);
     }
+
+    @ParameterizedTest
+    @DisplayName("스코어 포인트 증가 테스트")
+    @EnumSource(names = {"STRIKE", "BALL"})
+    void increasePointTest(Score score) throws Exception {
+        hint.increasePoint(score);
+        assertThat(hint.getScorePoint(score)).isEqualTo(1);
+    }
+
 }
 
