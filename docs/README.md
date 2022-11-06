@@ -29,3 +29,4 @@
 
 - `restartGame` : 게임 재시작 여부를 입력받는 함수
   - 1이 입력되면 다시 게임 시작 함수 호출, 2가 입력되면 게임 종료
+  - `checkValidationRestartNumber` : 입력받은 재시작 수에 대해 검증하는 함수
