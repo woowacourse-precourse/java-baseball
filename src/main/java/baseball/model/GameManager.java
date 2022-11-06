@@ -55,6 +55,13 @@ public class GameManager {
         System.out.println(sb);
     }
 
+    public boolean isEnd(int strike){
+        if(strike == BASEBALL_NUMBER_SIZE){
+            return true;
+        }
+        return false;
+    }
+
     public List<Integer> toList(String number){
         return Arrays.stream(number.split(""))
                 .map(Integer::parseInt)
