@@ -146,15 +146,18 @@ class BaseBallGame {
 
         for (int currentDigitIdx = 0; currentDigitIdx < numLength; currentDigitIdx++) {
             int finalCurrentDigit = currentDigitIdx;
-            String otherDigit = IntStream.range(0, numLength)
+
+            String currentDigitOfUser = userNumList.get(currentDigitIdx);
+            String currentDigitOfComputer = computerNumList.get(currentDigitIdx);
+            String diffDigitsOfComputer = IntStream.range(0, numLength)
                     .filter(i -> i != finalCurrentDigit)
                     .mapToObj(computerNumList::get)
                     .collect(Collectors.joining(""));
 
-            if (userNumList.get(currentDigitIdx).equals(computerNumList.get(currentDigitIdx))) {
+            if (currentDigitOfUser.equals(currentDigitOfComputer)) {
                 strike++;
             }
-            if (otherDigit.contains(userNumList.get(currentDigitIdx))
+            if (diffDigitsOfComputer.contains(currentDigitOfUser)
             ) {
                 ball++;
             }
