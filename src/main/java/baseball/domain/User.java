@@ -16,6 +16,7 @@ public class User {
 
     public void setSelectNumber() {
         String InputNumber = readLine();
+        initList();
         for (int index = 0; index < InputNumber.length(); index++) {
             selectNumber.add(InputNumber.charAt(index) - '0');
         }
