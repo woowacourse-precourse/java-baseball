@@ -6,4 +6,9 @@ public class InputChecker {
         return input.length() == length;
     }
 
+    private static boolean hasDigitsOnly(String input) {
+        return input.chars()
+                .allMatch(Character::isDigit);
+    }
+
 }
