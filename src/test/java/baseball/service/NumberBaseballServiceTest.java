@@ -2,7 +2,9 @@ package baseball.service;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.domain.ComputerNumber;
 import baseball.sevice.NumberBaseballService;
+import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -72,4 +74,17 @@ public class NumberBaseballServiceTest {
                 .hasMessageContaining("3개의 숫자는 모두 달라야 합니다.");
     }
 
+    @DisplayName("스트라이크의 수 계산 테스트")
+    @Test
+    void getCountStrike() {
+        // given
+        ComputerNumber computerNumber = new ComputerNumber(List.of(2, 3, 4));
+        String userInput = "235";
+
+        // when
+        int strikeCount = numberBaseballService.getStrikeCount(computerNumber, userInput);
+
+        // then
+        assertThat(strikeCount).isEqualTo(2);
+    }
 }
