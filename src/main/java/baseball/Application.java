@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.hint.Hint;
 import baseball.inputdata.Player;
 import baseball.quiz.QuizMaker;
 
@@ -15,7 +16,6 @@ public class Application {
 
         System.out.println(MESSAGE_TO_START);
         PlayerInput = Player.Input();
-
         Player.ExceptionProcess(PlayerInput);
     }
 }
