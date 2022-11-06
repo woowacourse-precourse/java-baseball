@@ -54,7 +54,7 @@ public class BaseballGame {
     }
 
     public static void restartGame(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
         checkValidationRestartNumber(restartNumber);
         if (restartNumber.equals("1")) {
