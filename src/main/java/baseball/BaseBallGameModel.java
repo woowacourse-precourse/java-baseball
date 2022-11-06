@@ -1,18 +1,18 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGameModel {
+    private static final int MAX_NUMBER_SIZE = 3;
+
     private List<Integer> computerNumbers = new ArrayList<>();
     private boolean isFinish;
 
     public int ballCount(List<Integer> userNumbers) {
         int ball = 0;
 
-        for (int i = 0; i < computerNumbers.size(); i++) {
+        for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
             if (computerNumbers.contains(userNumbers.get(i))
                     && computerNumbers.get(i) != userNumbers.get(i))
                 ball++;
@@ -24,12 +24,12 @@ public class BaseBallGameModel {
     public int strikeCount(List<Integer> userNumbers) {
         int strike = 0;
 
-        for (int i = 0; i < computerNumbers.size(); i++) {
+        for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
             if (computerNumbers.get(i) == userNumbers.get(i))
                 strike++;
         }
 
-        if (strike == 3)
+        if (strike == MAX_NUMBER_SIZE)
             isFinish = true;
 
         return strike;
@@ -40,14 +40,9 @@ public class BaseBallGameModel {
     }
 
     public void createRandomNumber() {
-        computerNumbers.clear();
+        RandomNumber randomNumber = new RandomNumber();
         isFinish = false;
 
-        while (computerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if (!computerNumbers.contains(randomNumber))
-                computerNumbers.add(randomNumber);
-        }
+        computerNumbers = randomNumber.initialize(MAX_NUMBER_SIZE);
     }
 }
