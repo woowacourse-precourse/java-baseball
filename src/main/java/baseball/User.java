@@ -6,89 +6,78 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class User {
-	static final int MIN_PATTERN_VALUE_ON_PLAYING = 1;
-	static final int MAX_PATTERN_VALUE_ON_PLAYING = 9;
-	static final int MAX_NUMBERS_COUNT = 3;
-	static final int MIN_PATTERN_VALUE_ON_RESTARTING = 1;
-	static final int MAX_PATTERN_VALUE_ON_RESTARTING = 2;
-	static final int MIN_LIST_SIZE = 0;
-	static final int MIN_LIST_INDEX = 0;
-	static final int MAX_LIST_INDEX = 3;
+	private static final int MIN_PATTERN_VALUE_ON_PLAYING = 1;
+	private static final int MAX_PATTERN_VALUE_ON_PLAYING = 9;
+	private static final int MAX_NUMBERS_COUNT = 3;
+	private static final int MIN_PATTERN_VALUE_ON_RESTARTING = 1;
+	private static final int MAX_PATTERN_VALUE_ON_RESTARTING = 2;
+	private static final int MIN_LIST_SIZE = 0;
+	private static final int MIN_LIST_INDEX = 0;
+	private static final int MAX_LIST_INDEX = 3;
 
-	static final String PATTERN_ON_PLAYING =	"^[" + MIN_PATTERN_VALUE_ON_PLAYING +
-												"-" + MAX_PATTERN_VALUE_ON_PLAYING +
-												"]{" + MAX_NUMBERS_COUNT + "}?$";
-	static final String PATTERN_ON_RESTARTING =	"^[" + MIN_PATTERN_VALUE_ON_RESTARTING +
-												"-" + MAX_PATTERN_VALUE_ON_RESTARTING + "]?$";
-	static final String STATUS_PLAYING = "PLAYING";
-	static final String STATUS_TERMINATING = "TERMINATING";
-	String userInput;
-	String patternedUserInput;
-	List<Integer> validatedUserInput = new ArrayList<>();
+	private static final String PATTERN_ON_PLAYING =	"^[" + MIN_PATTERN_VALUE_ON_PLAYING +
+														"-" + MAX_PATTERN_VALUE_ON_PLAYING +
+														"]{" + MAX_NUMBERS_COUNT + "}$?";
+	private static final String PATTERN_ON_RESTARTING =	"^[" + MIN_PATTERN_VALUE_ON_RESTARTING +
+														"-" + MAX_PATTERN_VALUE_ON_RESTARTING + "]$?";
+
+	private static final String STATUS_PLAYING = "PLAYING";
+	private static final String STATUS_TERMINATING = "TERMINATING";
+
+	public String userInput;
+	public String patternedUserInput;
+	private List<Integer> validatedUserInput;
+
+	private Status status = new Status();
 
 	User() {}
 
-	public void scanInput() {
+	private void scanInput() {
 		userInput = Console.readLine();
 	}
 
 	public void patternValidateInput() {
-		if (!Pattern.matches(PATTERN_ON_PLAYING, userInput)) {
+		if(!Pattern.matches("^[1-9]{3}?$", userInput)) {
 			throw new IllegalArgumentException();
 		}
-
 		patternedUserInput = userInput;
 	}
 
 	public void duplicationValidateInput() {
-		initValidatedUserInput();
+		validatedUserInput = new ArrayList<>();
 
-		for (int indexNumber = MIN_LIST_INDEX; indexNumber < MAX_LIST_INDEX; indexNumber++) {
-			char charAtIndex = patternedUserInput.charAt(indexNumber);
-			int intIndex = Character.getNumericValue(charAtIndex);
-
-			if (validatedUserInput.contains(intIndex)) {
+		for(int i = 0; i < 3; i++) {
+			if(validatedUserInput.contains(Character.getNumericValue(patternedUserInput.charAt(i)))) {
 				throw new IllegalArgumentException();
 			}
-
-			validatedUserInput.add(intIndex);
+			validatedUserInput.add(Character.getNumericValue(patternedUserInput.charAt(i)));
 		}
 	}
 
-	public void initValidatedUserInput() {
-		if(validatedUserInput.size() > MIN_LIST_SIZE) {
-			validatedUserInput.clear();
-		}
-	}
-
-	public void scanInputWhenPlaying() {
-		initValidatedUserInput();
+	private void scanInputWhenPlaying() {
 		scanInput();
 		patternValidateInput();
 		duplicationValidateInput();
 	}
 
 	public void answerValidateInput() {
-		initValidatedUserInput();
-
-		if(!Pattern.matches(PATTERN_ON_RESTARTING, userInput)) {
+		if(!Pattern.matches("^[1-2]?$", userInput)) {
 			throw new IllegalArgumentException();
 		}
-
+		validatedUserInput = new ArrayList<>();
 		validatedUserInput.add(Integer.parseInt(userInput));
 	}
 
-	public void scanInputWhenTerminating() {
-		initValidatedUserInput();
+	private void scanInputWhenTerminating() {
 		scanInput();
 		answerValidateInput();
 	}
 
-	public void scanInputByStatus(String status) {
-		if(status.equals(STATUS_PLAYING)) {
+	public void scanInputByStatus(String nowStatus) {
+		if(nowStatus.equals("PLAYING")) {
 			scanInputWhenPlaying();
 		}
-		if(status.equals(STATUS_TERMINATING)) {
+		if(nowStatus.equals("TERMINATING")) {
 			scanInputWhenTerminating();
 		}
 	}

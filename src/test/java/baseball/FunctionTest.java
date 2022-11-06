@@ -24,12 +24,11 @@ public class FunctionTest extends NsTest {
 	@Test
 	void TestStatus() {
 		Status status = new Status();
-		status.initStatus();
-		assertThat(status.status).isEqualTo("INIT");
+		assertThat(status.getStatus()).isEqualTo("INIT");
 		status.setStatusPlaying();
-		assertThat(status.status).isEqualTo("PLAYING");
+		assertThat(status.getStatus()).isEqualTo("PLAYING");
 		status.setStatusTerminating();
-		assertThat(status.status).isEqualTo("TERMINATING");
+		assertThat(status.getStatus()).isEqualTo("TERMINATING");
 	}
 
 	@Test
@@ -65,7 +64,7 @@ public class FunctionTest extends NsTest {
 
 		user.patternedUserInput = "123";
 		user.duplicationValidateInput();
-		assertThat(user.validatedUserInput).containsExactly(1, 2, 3);
+		assertThat(user.getValidatedUserInput()).containsExactly(1, 2, 3);
 
 		user.patternedUserInput = "111";
 		assertThatThrownBy(() -> {user.duplicationValidateInput();}).isInstanceOf(IllegalArgumentException.class);
@@ -77,8 +76,8 @@ public class FunctionTest extends NsTest {
 
 		user.userInput = "1";
 		user.answerValidateInput();
-		assertThat(user.validatedUserInput).containsExactly(1);
-		assertThat(user.validatedUserInput.size()).isEqualTo(1);
+		assertThat(user.getValidatedUserInput()).containsExactly(1);
+		assertThat(user.getValidatedUserInput().size()).isEqualTo(1);
 
 		user.userInput = "111";
 		assertThatThrownBy(() -> {user.answerValidateInput();}).isInstanceOf(IllegalArgumentException.class);
