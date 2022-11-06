@@ -13,7 +13,6 @@ public class Computer {
 
     public void initComputerNumber() {
         this.computerNumber = numberGenerator.generateRandomNumber();
-        System.out.println("생성된 숫자!!"+computerNumber);
     }
 
     public String giveResult(List<Integer> playerNumber) {
