@@ -188,7 +188,7 @@ while (computer.size() < 3) {
 
 - BaseBallGamePlayer
   - [ ] 프로그램 실행
-    - [ ] 숫자야구 실행
+    - [x] 숫자야구 실행
     - [ ] 재시작 여부 확인
     - [ ] 유효성 검사
       - [ ] 숫자(1 , 2)
