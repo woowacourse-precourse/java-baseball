@@ -9,6 +9,7 @@ import baseball.view.Message;
 import static baseball.constant.Const.GAME_END_STRIKE_COUNT;
 
 public class BaseballGame {
+
     private Computer computer;
     private User user;
     private Referee referee;
@@ -39,7 +40,6 @@ public class BaseballGame {
             GameResult gameResult = referee.judge(computer.getAnswer(), user.getInputNumber());
             strikeCount = gameResult.getStrikeCount();
             gameResult.show();
-
         } while (strikeCount != GAME_END_STRIKE_COUNT);
     }
 

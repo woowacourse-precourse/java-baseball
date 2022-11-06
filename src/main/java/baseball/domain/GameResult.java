@@ -3,6 +3,7 @@ package baseball.domain;
 import baseball.view.Message;
 
 public class GameResult {
+
     private int strikeCount;
     private int ballCount;
 
