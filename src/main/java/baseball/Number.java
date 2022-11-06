@@ -42,14 +42,14 @@ public class Number {
     }
 
     public boolean isValid(String target) {
-        return is3digits(target) & is1to9(target) & isNotDuplicate(target);
+        return is3digits(target) & is1To9(target) & isNotDuplicate(target);
     }
 
     private boolean is3digits(String target) {
         return target.length() == DIGIT;
     }
 
-    private boolean is1to9(String target) {
+    private boolean is1To9(String target) {
         return Pattern.matches(regex, target);
     }
 
