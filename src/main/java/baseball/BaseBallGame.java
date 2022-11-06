@@ -7,6 +7,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.IntStream;
 import javax.lang.model.type.ArrayType;
 
 
@@ -67,7 +68,7 @@ class BaseBallGame {
 
     }
 
-    public boolean getSolveResult(int strike, int ball){
+    public boolean getSolveResult(int strike, int ball) {
         if (strike == GOAL) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -134,44 +135,38 @@ class BaseBallGame {
         return Integer.parseInt(randomDiff3DigitNumber);
     }
 
+    public List<Integer> ballAndStrikeCount(List<Integer> userNumList, List<Integer> computerNumList) {
+        int strike = 0;
+        int ball = 0;
+        List<Integer> ballAndStrike = new ArrayList<Integer>();
+        int numLength = userNumList.size();
+
+        for (int listIdx = 0; listIdx < numLength; listIdx++) {
+            if (userNumList.get(listIdx) == computerNumList.get(listIdx)) {
+                strike++;
+            }
+            if (userNumList.get(listIdx) == computerNumList.get((listIdx + 1) % numLength)
+                    || userNumList.get(listIdx) == computerNumList.get((listIdx + 2) % numLength)
+            ) {
+                ball++;
+            }
+
+        }
+        ballAndStrike.add(ball);
+        ballAndStrike.add(strike);
+        return ballAndStrike;
+    }
+
+
     public List<Integer> getHint(int userNumber, int computerNumber) {
         List<Integer> userNumList = new ArrayList<>(
                 Arrays.asList(userNumber / 100, userNumber % 100 / 10, userNumber % 10 / 1));
         List<Integer> computerNumList = new ArrayList<>(
                 Arrays.asList(computerNumber / 100, computerNumber % 100 / 10, computerNumber % 10 / 1));
 
-        List<Integer> hintList = new ArrayList<Integer>();
-        int ball = 0;
-        int strike = 0;
+        List<Integer> ballAndStrikeList = ballAndStrikeCount(userNumList, computerNumList);
 
-        if (userNumList.get(0) == computerNumList.get(0)) {
-            strike++;
-        } else {
-            if (userNumList.get(0) == computerNumList.get(1) || userNumList.get(0) == computerNumList.get(2)) {
-                ball++;
-            }
-        }
-
-        if (userNumList.get(1) == computerNumList.get(1)) {
-            strike++;
-        } else {
-            if (userNumList.get(1) == computerNumList.get(0) || userNumList.get(1) == computerNumList.get(2)) {
-                ball++;
-            }
-        }
-
-        if (userNumList.get(2) == computerNumList.get(2)) {
-            strike++;
-        } else {
-            if (userNumList.get(2) == computerNumList.get(0) || userNumList.get(2) == computerNumList.get(1)) {
-                ball++;
-            }
-        }
-
-        hintList.add(ball);
-        hintList.add(strike);
-
-        return hintList;
+        return ballAndStrikeList;
     }
 
 
