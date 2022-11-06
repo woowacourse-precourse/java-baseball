@@ -40,19 +40,4 @@ public class BaseballGame {
     }
   }
 
-  private void printScore(int strikeCount, int ballCount) {
-    if(scoreCounter.strikeCount == 3) {
-      printer.printlnMessage(strikeCount + InGameTerms.STRIKE.getTerm());
-      printer.printlnMessage(InGameMessages.GAME_END.getMessage());
-    } else if (ballCount > 0 && strikeCount > 0) {
-      printer.printlnMessage(ballCount + InGameTerms.BALL.getTerm() + " " + strikeCount + InGameTerms.STRIKE.getTerm());
-    } else if (ballCount > 0) {
-      printer.printlnMessage(ballCount + InGameTerms.BALL.getTerm());
-    } else if (strikeCount > 0) {
-      printer.printlnMessage(strikeCount + InGameTerms.STRIKE.getTerm());
-    } else {
-      printer.printlnMessage(InGameTerms.NOTHING.getTerm());
-    }
-  }
-
 }
