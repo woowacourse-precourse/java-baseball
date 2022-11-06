@@ -81,4 +81,11 @@ public class GameCycle {
         if (strike == 0 && ball == 0) response.append("낫싱");
         return response.toString();
     }
+    public boolean isThreeStrike(String request) {
+        if (request.equals("3스트라이크")) return true;
+        return false; //NOT 3 STRIKE
+    }
+    public void output(String message){
+        System.out.println(message);
+    }
 }

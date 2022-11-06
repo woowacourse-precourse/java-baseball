@@ -3,9 +3,9 @@ package baseball;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameCycleTest {
@@ -114,5 +114,15 @@ class GameCycleTest {
         assertEquals(game.countResponse("312", "123"), "3볼");
         assertEquals(game.countResponse("123", "145"), "1스트라이크");
         assertEquals(game.countResponse("123", "142"), "1볼 1스트라이크");
+    }
+    @Test
+    public void printResultTest() throws Exception {
+        //given
+        String input = "3스트라이크";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        game.output(input);
+        //expect
+        assertThat(input).isEqualTo(out.toString().trim());
     }
 }
