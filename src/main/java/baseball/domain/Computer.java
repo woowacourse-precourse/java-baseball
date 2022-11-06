@@ -12,10 +12,6 @@ public class Computer {
 
     private List<Integer> baseballNumber;
 
-    public Computer() {
-        init();
-    }
-
     public void createBaseballNumber() {
         while (baseballNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,6 +19,7 @@ public class Computer {
                 baseballNumber.add(randomNumber);
             }
         }
+        System.out.println("베이스볼 넘버 : "+ baseballNumber.get(0) + baseballNumber.get(1) + baseballNumber.get(2) );
     }
 
     public int checkStrike(List<Integer> question) {
@@ -60,6 +57,7 @@ public class Computer {
         if (baseballNumber == null) {
             baseballNumber = new ArrayList<>();
         }
+        baseballNumber.clear();
         createBaseballNumber();
     }
 }
