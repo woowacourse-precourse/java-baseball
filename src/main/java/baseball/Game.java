@@ -11,9 +11,9 @@ public class Game {
 
     private static String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static String INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
-    private static String INPUT_ERR = "입력이 잘못되었습니다.";
+    //private static String INPUT_ERR = "입력이 잘못되었습니다.";
     private static String GAMEOVER_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static String END_GAME = "게임종료.";
+    //private static String END_GAME = "게임 종료";
     private static Computer com = new Computer();
     private static Judge judge = new Judge();
     private static String outputStr = "";
@@ -27,21 +27,19 @@ public class Game {
         boolean gameStatus = true;
 
         System.out.println(START_MESSAGE); // 게임 시작
-        //System.out.println(com.getAnswer());
 
         while (gameStatus) {
 
-            System.out.println(INPUT_GUIDE_MESSAGE);
+            System.out.print(INPUT_GUIDE_MESSAGE);
             String inputStr = Console.readLine();
-
             // 입력 값 검증
             InputValidator valid = new InputValidator(inputStr);
             if (!valid.checkInput()) {
-                System.out.println(INPUT_ERR);
-                continue;
+                throw new IllegalArgumentException();
             }
 
             // 스코어 계산
+            judge.resetScore();
             judge.setAnswerToJudge(com.getAnswer(), inputStr);
             judge.getScore();
             outputStr = judge.makeResultString();
@@ -64,7 +62,7 @@ public class Game {
             judge.resetScore();
             return true;
         } else {
-            System.out.println(END_GAME);
+            //System.out.print(END_GAME);
             return false;
         }
     }

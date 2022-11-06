@@ -24,10 +24,18 @@ public class InputValidator {
     }
 
     public boolean checkInput() {
+        
+        if(!isRightLength())
+        {
+            return result;
+        }
+        if(!isRightNumber())
+        {
+            return result;
+        }
+        
         isInputDuplicated();
-        isRightLength();
-        isRightNumber();
-
+    
         return result;
     }
 

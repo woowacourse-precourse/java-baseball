@@ -15,6 +15,8 @@ public class Computer {
     private List<Integer> list = new ArrayList<Integer>();
 
     public void createNumber() {
+        answer = "";
+        list.clear();
         while (list.size() < INPUT_LENGTH) {
             int temp = Randoms.pickNumberInRange(1, 9);
             if (!list.contains(temp)) {
@@ -27,6 +29,6 @@ public class Computer {
     }
 
     public String getAnswer() {
-        return this.answer;
+        return answer;
     }
 }

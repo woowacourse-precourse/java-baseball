@@ -11,7 +11,7 @@ public class Judge {
     private String NOTHING = "낫싱";
     private String STRIKE = "스트라이크";
     private String BALL = "볼";
-    private String GAMEOVER = "3개의 숫자를 모두 맞히셨습니다! 게임종료";
+    private String GAMEOVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private List<String> answer = new ArrayList<String>();
     private List<String> input = new ArrayList<String>();
@@ -45,6 +45,7 @@ public class Judge {
     }
 
     public void getScore() {
+        resetScore();
         for (int i = 0; i < input.size(); i++) {
             int score = isStrikeOrBall(i);
             if (score == ballCode) {
@@ -76,11 +77,11 @@ public class Judge {
         {
             if(ball > 0)
             {
-                resultString += ball + " " + BALL;
+                resultString += ball + BALL + " ";
             }
             if(strike > 0)
             {
-                resultString += strike + " " + STRIKE;
+                resultString += strike + STRIKE;
             }
         }
 
