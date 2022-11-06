@@ -59,7 +59,7 @@ public class Player {
     }
 
     private BallStatus playRound(Ball otherBall) {
-        return this.balls.stream()
+        return balls.stream()
                 .map(ball -> ball.play(otherBall))
                 .filter(ballStatus -> !ballStatus.isNothing())
                 .findFirst()
