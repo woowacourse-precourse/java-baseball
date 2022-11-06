@@ -63,15 +63,15 @@ public class Game {
         List<Integer> user = new ArrayList<>();
         for (String number : Arrays.asList(input.split(""))) {
             if (!Character.isDigit(number.charAt(0))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("숫자 이외의 문자는 입력받지 않습니다.");
             }
             user.add(Integer.parseInt(number));
         }
 
         if (user.size() != 3)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자는 3개를 입력해야 합니다.");
         if (user.get(0) == user.get(1) || user.get(1) == user.get(2) || user.get(2) == user.get(0))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("서로 다른 숫자 3개를 입력해야 합니다.");
 
         return user;
     }
