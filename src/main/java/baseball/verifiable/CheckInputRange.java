@@ -2,21 +2,21 @@ package baseball.verifiable;
 
 public class CheckInputRange implements VerifiableRule {
     private final static int TEN_DECIMAL = 10;
-    private final char lowerNum;
-    private final char upperNum;
+    private final char lowerNumber;
+    private final char upperNumber;
 
-    public CheckInputRange(int lowerNum, int upperNum) {
-        this.lowerNum = intToChar(lowerNum);
-        this.upperNum = intToChar(upperNum);
+    public CheckInputRange(int lowerNumber, int upperNumber) {
+        this.lowerNumber = intToChar(lowerNumber);
+        this.upperNumber = intToChar(upperNumber);
     }
 
-    private char intToChar(int intNum) {
-        return (Character.forDigit(intNum, TEN_DECIMAL));
+    private char intToChar(int intNumber) {
+        return (Character.forDigit(intNumber, TEN_DECIMAL));
     }
 
     @Override
     public boolean validates(String input) {
         return input.codePoints()
-                .allMatch(unitNum -> (unitNum >= lowerNum) && (unitNum <= upperNum));
+                .allMatch(unitNum -> (unitNum >= lowerNumber) && (unitNum <= upperNumber));
     }
 }
