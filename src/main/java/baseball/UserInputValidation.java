@@ -6,6 +6,13 @@ import java.util.Set;
 public class UserInputValidation {
 
     private static final int NUMBER_LENGTH = 3;
+    private final String Error_Message = "잘못된 입력값 입니다.";
+
+    public void userInputValidation(String expectedAnswer) {
+        if (!isThreeLength(expectedAnswer) || !isInteger(expectedAnswer) || haveZero(expectedAnswer) ||!isNotDuplication(expectedAnswer)) {
+            throw new IllegalArgumentException(Error_Message);
+        }
+    }
 
     private boolean isThreeLength(String input) {
         if (input.length() == NUMBER_LENGTH) {
@@ -26,10 +33,10 @@ public class UserInputValidation {
     private boolean haveZero(String expectedAnswer) {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             if ('0' == expectedAnswer.charAt(i)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     private boolean isNotDuplication(String expectedAnswer) {
