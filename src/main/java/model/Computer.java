@@ -114,7 +114,7 @@ public class Computer {
     public void checkThreeNum2GameOfUser(int numOfCompare) {
         ArrayList<Integer> splitNumOfCompare = splitEachDigitOfNum(numOfCompare);
         checkStrikeBall(splitNumOfCompare);
-    }
+    }//
 
     private void checkStrikeBall(List<Integer> listSplitNum) {
         boolean isStrike = true, isBall = true;
@@ -169,7 +169,7 @@ public class Computer {
         }
         return isBall;
     }
-    
+
     private ArrayList<Integer> splitEachDigitOfNum(int numTosplit) {
         String[] strSplitArr = getSpitArr(parseStringFromNum(numTosplit));
         return getListOfIntegerFromStrArr(strSplitArr);
