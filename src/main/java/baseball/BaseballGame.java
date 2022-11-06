@@ -23,8 +23,8 @@ public class BaseballGame {
             printHint();
         }while(!isAnswer());
 
-        String Userchoice = userInput.inputRestartOrStop();
-        if ("1".equals(Userchoice)) {
+        String userChoice = userInput.inputRestartOrStop();
+        if ("1".equals(userChoice)) {
             start();
         }
     }
