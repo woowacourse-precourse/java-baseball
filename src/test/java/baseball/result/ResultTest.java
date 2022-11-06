@@ -41,11 +41,11 @@ class ResultTest {
 
     @Test
     void getStrikeCount() {
-        Integer strikeCount = 3;
+        Integer result = 3;
 
-        Result result = new Result(3, 0);
+        Result strikeCount = new Result(3, 0);
 
-        assertThat(result.getStrikeCount()).isEqualTo(strikeCount);
+        assertThat(strikeCount.getStrikeCount()).isEqualTo(result);
     }
 
     @Test
@@ -54,7 +54,7 @@ class ResultTest {
 
         Result ballCount = new Result(1, 2);
 
-        assertThat(ballCount.getBallCount()).isEqualTo(ballCount);
+        assertThat(ballCount.getBallCount()).isEqualTo(result);
     }
 
     @Test
