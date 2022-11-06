@@ -23,10 +23,17 @@ public class Game {
     private final String NOTHING = "낫싱";
 
     public Game() {
+    }
+
+    private void generateDigits() {
         digits = new ArrayList<>();
         while (digits.size() < 3) {
             addUniqueRandomDigit();
         }
+    }
+
+    public boolean isEnd() {
+        return state == State.END;
     }
 
     public void addUniqueRandomDigit() {
@@ -37,17 +44,15 @@ public class Game {
     }
 
     public void play() {
-        start();
         List<Integer> result;
         do {
             readInput();
             result = calculateResult();
             printResult(result);
         } while (!isCorrect(result));
-        pause();
     }
 
-    private void start() {
+    public void start() {
         System.out.println(START_MESSAGE);
 
         state = State.START;
@@ -120,7 +125,7 @@ public class Game {
         return result.get(1) == 3;
     }
 
-    private void pause() {
+    public void pause() {
         System.out.println(PAUSE_MESSAGE);
         state = State.PAUSE;
 
