@@ -7,14 +7,14 @@ public class PrintMessage {
     public static void inputMessage(){
         System.out.println("숫자를 입력해주세요 : ");
     }
-    public static void ballStrikeMessage(int ball, int strike){
-        if(strike != 3 && strike != 0 && ball == 0)
-            System.out.println(strike + "스트라이크");
-        if(strike != 0 && ball != 0)
-            System.out.println(ball + "볼" + " " + strike + "스트라이크");
-        if(strike == 0 && ball != 0)
-            System.out.println(ball + "볼");
-        if(strike == 0 && ball == 0)
+    public static void ballStrikeMessage(int ballCount, int strikeCount){
+        if(strikeCount != 3 && strikeCount != 0 && ballCount == 0)
+            System.out.println(strikeCount + "스트라이크");
+        if(strikeCount != 0 && ballCount != 0)
+            System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
+        if(strikeCount == 0 && ballCount != 0)
+            System.out.println(ballCount + "볼");
+        if(strikeCount == 0 && ballCount == 0)
             System.out.println("낫싱");
     }
     public static void answerMessage() {
