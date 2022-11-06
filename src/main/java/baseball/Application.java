@@ -10,11 +10,16 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int playStatus = 1;
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(computersNumbers());
-        readUsersNumbers();
-        comparing(computersNumbers(), readUsersNumbers());
+
+        ArrayList<Integer> cpuNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> playerNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> scoreSheet = new ArrayList<Integer>();
+        cpuNumbers = computersNumbers();
+        System.out.print(cpuNumbers);
+        playerNumbers = readUsersNumbers();
+
+        scoreSheet = comparing(cpuNumbers,playerNumbers);
+        gameResult(scoreSheet);
 
     }
 
@@ -77,7 +82,7 @@ public class Application {
         ball = ball - strike;
         hintResult.add(0, strike);
         hintResult.add(1, ball);
-        System.out.printf("strike : %1$d ball : %2$d", hintResult.get(0), hintResult.get(1));
+        System.out.printf("strike : %1$d ball : %2$d\n", hintResult.get(0), hintResult.get(1));
         return hintResult;
     }
 
