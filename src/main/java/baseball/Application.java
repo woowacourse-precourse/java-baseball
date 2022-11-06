@@ -185,16 +185,4 @@ public class Application {
         }
         return answer;
     }
-
-    public static int[] subArray (int[] numbers, int start, int end) {
-        return IntStream.rangeClosed(start, end)
-                .map(i -> numbers[i])
-                .toArray();
-    }
-
-    public static void swap (int[] numbers, int index1, int index2) {
-        int temp = numbers[index1];
-        numbers[index1] = numbers[index2];
-        numbers[index2] = temp;
-    }
 }
