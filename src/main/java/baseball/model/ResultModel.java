@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.view.AppView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,5 +73,32 @@ public class ResultModel {
         for(int idx=0 ; idx<3 ; idx++) {
             compareInputNumWithResultList(inputNumList.get(idx), resultNumList, idx);
         }
+    }
+
+    public boolean printResult() {
+        if(ballNum == 0 && strikeNum == 0) {
+            AppView.outputLine("낫싱");
+            return false;
+        }
+
+        if(strikeNum == 3) {
+            AppView.outputLine("3스트라이크");
+            return true;
+        }
+
+        if(ballNum != 0 && strikeNum != 0) {
+            AppView.outputLine(Integer.toString(ballNum)+"볼 " + Integer.toString(strikeNum)+"스트라이크");
+            return false;
+        }
+
+        if(ballNum == 0) {
+            AppView.outputLine(Integer.toString(strikeNum)+"스트라이크");
+        }
+
+        if(strikeNum == 0) {
+            AppView.outputLine(Integer.toString(ballNum)+"볼");
+        }
+
+        return false;
     }
 }
