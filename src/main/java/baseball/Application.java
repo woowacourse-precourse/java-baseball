@@ -41,13 +41,37 @@ public class Application {
     boolean result
      */
     static boolean checkStrike(List<Integer> computer, int number, int digit) {
-        if(computer.get(digit) == number){
+        if (computer.get(digit) == number) {
             return true;
         }
         return false;
     }
 
-    static boolean checkBall() {
+    /*
+    볼 체크하는 메소드
+    1의 자리 0
+    10의 자리 1
+    100의 자리 2
+
+    params
+    List<Integer> computer
+    int number
+    int digit
+
+    return
+    boolean result
+     */
+    static boolean checkBall(List<Integer> computer, int number, int digit) {
+        for (int i = 0; i < 2; i++) {
+            // 같은 자리는 체크하지 않는다.
+            if (i == digit) {
+                continue;
+            }
+            // 다른 자리에서 숫자가 같으면 -> ball처리
+            if (computer.get(i) == number) {
+                return true;
+            }
+        }
         return false;
     }
 
