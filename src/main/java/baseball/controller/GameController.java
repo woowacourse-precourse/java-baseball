@@ -29,6 +29,7 @@ public class GameController {
 
     void setGame(){
         gameService.setComputer();
+        clearScore();
     }
 
     void initializeGame(){
