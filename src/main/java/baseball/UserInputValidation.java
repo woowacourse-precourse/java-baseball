@@ -50,4 +50,10 @@ public class UserInputValidation {
         return false;
     }
 
+    public void restartInputValidation(String input) {
+        if ("1".equals(input) || "2".equals(input)) {
+            return;
+        }
+        throw new IllegalArgumentException(Error_Message);
+    }
 }

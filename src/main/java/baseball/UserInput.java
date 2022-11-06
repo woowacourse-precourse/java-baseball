@@ -35,6 +35,7 @@ public class UserInput {
     public String inputRestartOrStop() {
         System.out.println(InputRestartOrStop_Message);
         String restartInput = Console.readLine();
+        userInputValidation.restartInputValidation(restartInput);
         return restartInput;
     }
 }
