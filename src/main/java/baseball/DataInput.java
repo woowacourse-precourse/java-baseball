@@ -9,12 +9,10 @@ public class DataInput {
     private String inputString;
 
     DataInput() {
-        this.inputString = inputNumber();
     }
 
-    private String inputNumber() {
-        String inputString = Console.readLine();
-        return inputString;
+    public void inputNumber() {
+        this.inputString = Console.readLine();
     }
 
     private ArrayList<Integer> makeIntegerList() {
@@ -32,7 +30,7 @@ public class DataInput {
         ArrayList<Integer> result;
         ErrorCheck num_check = new ErrorCheck(this.inputString);
 
-        if (num_check.launchInputCheck() == false) {
+        if (num_check.launchErrorCheck() == false) {
             throw new IllegalArgumentException();
         }
         result = makeIntegerList();

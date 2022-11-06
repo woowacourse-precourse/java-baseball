@@ -8,10 +8,10 @@ public class ErrorCheck {
     }
 
     private boolean checkInputLenght() {
-        if (this.target.length() != 3) {
-            return false;
+        if (this.target.length() == 3 || this.target.length() == 1) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean checkIsNum() {
@@ -39,7 +39,7 @@ public class ErrorCheck {
         return true;
     }
 
-    public boolean launchInputCheck() {
+    public boolean launchErrorCheck() {
         if (checkInputLenght() == false) {
             return false;
         }

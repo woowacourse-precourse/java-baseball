@@ -12,6 +12,7 @@ public class DataProcessing {
     public static final int BALL_INDEX = 1;
 
     DataProcessing() {
+        makeRandomData();
     }
 
     public void setData(List<Integer> inputData){
@@ -56,8 +57,6 @@ public class DataProcessing {
 
     public int[] getProcessedData(){
         int[] dataProcessed = new int[2];
-        makeRandomData();
-
         dataProcessed[STRIKE_INDEX] = checkStrike();
         dataProcessed[BALL_INDEX] = checkBall() - dataProcessed[STRIKE_INDEX]; // 스트라이크와 중복 빼주기
         return dataProcessed;
