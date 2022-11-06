@@ -1,9 +1,12 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -25,6 +28,37 @@ public class Application {
         }
 
         return computerNumber;
+    }
+
+
+    //2. 플레이어 수 입력받기
+    public static String getPlayerNumber () throws IllegalArgumentException {
+        String input = Console.readLine().trim();
+        if(isValidNumber(input)){
+            return input;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    // 2-1. 유효성 체크 : 숫자인지
+    public static boolean isNumber(String input) {
+        return input.chars()
+                .allMatch(Character::isDigit) ;
+    }
+
+    // 2-2. 유효성 체크 : 1-9 사이의 /서로 다른 / 세 자리 수인지
+    public static boolean isValidNumber(String input){
+        if(!isNumber(input)) {
+            return false;
+        }
+        Set<Integer> numberSet = new HashSet<>();
+        int playerNumber =  Integer.parseInt(input);
+        while(playerNumber!=0){
+            numberSet.add(playerNumber%10);
+            playerNumber /=10;
+        }
+
+        return numberSet.size() == DIGITS ;
     }
 
 }
