@@ -8,9 +8,11 @@ public class User {
     final String MSG_INPUT_LENGTH_ONLY_THREE = "입력의 길이는 \"3\" 만 가능합니다.";
 
     private int numSelecUser;
+    private int numProceedUser;
 
     public User() {
         this.numSelecUser = 0;
+        this.numProceedUser = 0;
     }
 
     public void inputNumOfUser() {
@@ -22,6 +24,14 @@ public class User {
         int numInput = UseFunc.parseIntFromStr(strInput);
         isValidUser(strInput, numInput);
         return numInput;
+    }
+
+    public void InputProceedNum() {
+ 
+    }
+
+    public int getNumProceedUser() {
+        return numProceedUser;
     }
 
     private void isValidUser(String strInput, int numInput) {

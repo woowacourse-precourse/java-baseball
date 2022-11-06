@@ -103,11 +103,11 @@ class ApplicationTest extends NsTest {
 //    }
 
     // TODO: USER 테스트
-    private static User user;
+    private static User user_;
 
     @BeforeAll
     static void initAll() {
-        user = new User();
+        user_ = new User();
     }
 
     @Test
@@ -409,6 +409,68 @@ class ApplicationTest extends NsTest {
         // when
         // then
         assertThrows(IllegalArgumentException.class, () -> view.isValidUser(3));
+    }
+
+    // 게임 진행의 값을 얻는 함수 1 || 2
+    @Test
+    void 게임_진행의_값을_얻는_함수_테스트_1() throws Exception {
+        //given
+        User user = new User();
+        // when
+        user.InputProceedNum();
+        String result = String.valueOf(user.getNumProceedUser());
+        // then
+        assertThat(result).isEqualTo("1");
+    }
+
+    @Test
+    void 게임_진행의_값을_얻는_함수_테스트_2() throws Exception {
+        //given
+        User user = new User();
+        // when
+        user.InputProceedNum();
+        String result = String.valueOf(user.getNumProceedUser());
+        // then
+        assertThat(result).isEqualTo("2");
+    }
+
+    @Test
+    void 게임_진행의_값을_얻는_함수_예외테스트_1() throws Exception {
+        //given
+        User user = new User();
+        // 입력을 담는다.
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class, user::InputProceedNum);
+    }
+
+    @Test
+    void 게임_진행의_값을_얻는_함수_예외테스트_2() throws Exception {
+        //given
+        User user = new User();
+        // 입력을 담는다.
+        String input = "812";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class, user::InputProceedNum);
+    }
+
+    @Test
+    void 게임_진행의_값을_얻는_함수_예외테스트_3() throws Exception {
+        //given
+        User user = new User();
+        // 입력을 담는다.
+        String input = "asdsad";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // when
+        // then
+        assertThrows(IllegalArgumentException.class, user::InputProceedNum);
     }
 
     @Override
