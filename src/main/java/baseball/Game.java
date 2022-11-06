@@ -1,6 +1,10 @@
 package baseball;
 
-import static baseball.Constants.*;
+import static baseball.Constants.DEFAULT_NUMBER_COUNT;
+import static baseball.Constants.Messages;
+import static baseball.Constants.PROCESS_CONTINUE;
+import static baseball.Constants.PROCESS_FINISH;
+import static baseball.Constants.Result;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -33,15 +37,22 @@ public class Game extends abstracts.Game {
     }
 
     private List<Integer> getRandomNumbersOf(int count) {
-        List<Integer> answerNumbers = new ArrayList<>();
-        while (answerNumbers.size() < count) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answerNumbers.contains(randomNumber)) {
-                answerNumbers.add(randomNumber);
-            }
+        count = Math.max(1, Math.min(9, count));
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < count) {
+            addNewRandomNumberTo(numbers);
         }
-        return answerNumbers;
+        return numbers;
     }
+
+    private void addNewRandomNumberTo(List<Integer> numbers) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (numbers.contains(randomNumber)) {
+            return;
+        }
+        numbers.add(randomNumber);
+    }
+
     @Override
     public void initialize() {
         setStatus(Status.PLAYING);
