@@ -8,26 +8,23 @@ import java.util.List;
 
 public class Game {
     private final int LENGTH = 3;
-    private List<Integer> computer = new ArrayList<>();
-    private List<Integer> user = new ArrayList<>();
+    private List<Integer> computer = new ArrayList<Integer>();
+    private List<Integer> user = new ArrayList<Integer>();
     private String input;
     private String[] inputs;
-    
+
     public void run() {
         createComputerAnswer();
+        userInit();
 
         while(true){
             inputUserNumbers();
 
-            if (isCorrect()){
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (isCorrect())
                 break;
-            }
 
-            //1볼, 1스트라이크 이런거 찾기
-            // compare();
+            findBallAndStrike();
         }
-
     }
 
     private void createComputerAnswer() {
@@ -37,21 +34,22 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
+    }
 
-        System.out.println("computer : " + computer.toString());
+    private void userInit() {
+        for (int i = 0; i < LENGTH; i++)
+            user.add(0);
     }
 
     private void inputUserNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         input = Console.readLine();
-        System.out.println("input : " + input);
         inputs = input.split("");
 
         if (isValidInput()) {
             setUserList();
         }
         else {
-            System.out.println("is not valid input");
             throw new IllegalArgumentException();
         }
     }
@@ -83,7 +81,12 @@ public class Game {
     }
 
     private boolean isDifferentNumbers() {
-        if ((inputs[0] != inputs[1]) && (inputs[0] != inputs[2]) && (inputs[1] != inputs[2]))
+        int[] ints = new int[inputs.length];
+
+        for (int i = 0; i < inputs.length; i++)
+            ints[i] = Integer.parseInt(inputs[i]);
+
+        if ((ints[0] != ints[1]) && (ints[0] != ints[2]) && (ints[1] != ints[2]))
             return true;
 
         System.out.println("잘못된 입력값 입니다. 서로 다른 숫자를 입력하세요.");
@@ -92,20 +95,46 @@ public class Game {
 
     private void setUserList() {
         for (int i = 0; i < LENGTH; i++)
-            user.add(0);
-
-        for (int i = 0; i < LENGTH; i++)
             user.set(i, Integer.parseInt(inputs[i]));
-        System.out.println("user : " + user.toString());
     }
 
     private boolean isCorrect() {
-        if (Arrays.equals(user.toArray(), computer.toArray()))
+        if (Arrays.equals(user.toArray(), computer.toArray())){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
-
+        }
         return false;
     }
 
-    private void compare() {
+    private void findBallAndStrike() {
+        int ball, strike = 0;
+
+        // strike
+        for (int i = 0; i < LENGTH; i++) {
+            if (user.get(i) == computer.get(i))
+                strike++;
+        }
+
+        ball = getIntersection().size() - strike;
+
+        if (ball == 0 && strike == 0)
+            System.out.print("낫싱");
+
+        if (ball > 0)
+            System.out.print(ball + "볼 ");
+
+        if (strike > 0)
+            System.out.print(strike + "스트라이크");
+
+        System.out.println("");
+    }
+
+    private List<Integer> getIntersection() {
+        List<Integer> copy = new ArrayList<>();
+        for (int u : user)
+            copy.add(u);
+        copy.retainAll(computer); // copy는 교집합을 원소로 갖는 리스트가 된다.
+        return copy;
     }
 }

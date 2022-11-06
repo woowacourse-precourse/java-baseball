@@ -7,21 +7,15 @@ public class Application {
         final int QUIT = 2;
 
         while (true) {
-            try {
-                printInitial();
+            printInitial();
 
-                Game game = new Game();
-                game.run();
+            Game game = new Game();
+            game.run();
 
-                printFinish();
+            printFinish();
 
-                if(input() == QUIT)
-                    break;
-            }
-            catch (IllegalArgumentException e) {
-                System.out.println("프로그램을 종료합니다.");
+            if(input() == QUIT)
                 break;
-            }
         }
     }
 
