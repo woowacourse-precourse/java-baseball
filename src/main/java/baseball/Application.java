@@ -81,6 +81,15 @@ public class Application {
         }
     }
 
+    public static int countBall(List<Integer> computer, List<Integer> user){
+        int count = 0;
+        for(int i=0; i<3; i++){
+            if(computer.get(i) != user.get(i) && computer.contains(user.get(i)))
+                count++;
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> computer = new ArrayList<>();
@@ -99,6 +108,7 @@ public class Application {
                 makeRandomValue(computer);
                 continue;
             }
+            int ballNum = countBall(computer, user);
         }
     }
 }
