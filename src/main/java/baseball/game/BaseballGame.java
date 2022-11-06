@@ -43,13 +43,17 @@ public class BaseballGame {
             userNumber = userNumbers.get(i);
             computerNumber = computerNumbers.get(i);
             if (!includeSame(userNumber)) continue;
-            if (userNumber == computerNumber) strike++;
-            else if (userNumber != computerNumber) ball++;
+            countStrike(userNumber,computerNumber);
+            if (userNumber != computerNumber) ball++;
         }
     }
 
     public static boolean includeSame(int userNumber){
         return computerNumbers.contains(userNumber);
+    }
+
+    public static void countStrike(int userNumber, int computerNumber){
+        if (userNumber == computerNumber) strike++;
     }
 
     public static void userNumberResult(){
