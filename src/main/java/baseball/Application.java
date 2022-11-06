@@ -13,43 +13,58 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
         gameStart();
 
-        int intUserInput = Integer.parseInt(Console.readLine());
+        int strikeResult;
+        do {
+            String userInput = Console.readLine();
+            Validator validate = new Validator();
+            validate.validateInputRange(userInput);
+            validate.checkDuplicatedNumber(userInput);
+            validate.validateContainZero(userInput);
 
-        Validator validate = new Validator();
-        validate.validateInputRange(intUserInput);
-        validate.checkDuplicatedNumber(intUserInput);
-        validate.validateContainZero(intUserInput);
+//            String stringUserInput = toStringUserInput(userInput);
+            List<Integer> computerNumber = generateComputerNumber();
+            String computerNumberResult = computerNumberListToString(computerNumber);
 
-        String stringUserInput = toStringUserInput(intUserInput);
+            strikeResult = countStrike(userInput, computerNumberResult);
+            System.out.println("스트라이크 갯수  " + strikeResult);
+            int ballResult = countBall(userInput, computerNumberResult);
 
-        List<Integer> computerNumber = generateComputerNumber();
-        String computerNumberResult = computerNumberListToString(computerNumber);
+            System.out.println("컴퓨터 랜덤 숫자 : " + computerNumberResult);
 
-        int strikeResult = countStrike(stringUserInput,computerNumberResult);
-        int ballResult = countBall(stringUserInput, computerNumberResult);
-
-        System.out.println("컴퓨터 랜덤 숫자 : " + computerNumberResult);
-
-        if (!checkedNotThing(ballResult, strikeResult)) {
-            if (countBall(stringUserInput,computerNumberResult) != ZERO) {
-                System.out.println(countBall(stringUserInput,computerNumberResult) + "볼 ");
+            if (!checkedNotThing(ballResult, strikeResult)) {
+                if (countBall(userInput, computerNumberResult) != ZERO) {
+                    System.out.print(countBall(userInput, computerNumberResult) + "볼 ");
+                }
+                if (countStrike(userInput, computerNumberResult) != ZERO) {
+                    System.out.print(countStrike(userInput, computerNumberResult) + "스트라이크");
+                }
             }
-            if (countStrike(stringUserInput,computerNumberResult) != ZERO) {
-                System.out.println(countStrike(stringUserInput,computerNumberResult) + "스트라이크");
-            }
-        }
+        } while (strikeResult != 3);
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! ");
+        System.out.println("게임 종료");
+//        do {
+//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//        } while ();
+
     }
+
+//    public void play() {
+//        do {
+//
+//        }
+//    }
+//    public void
+//        int intUserInput = Integer.parseInt(Console.readLine());
+//
+//        Validator validate = new Validator();
+//        validate.validateInputRange(intUserInput);
+//        validate.checkDuplicatedNumber(intUserInput);
+//        validate.validateContainZero(intUserInput);
+
     static void gameStart() {
         System.out.println(GAME_START_MESSAGE);
-    }
-    /**
-     * 예외처리 후 String 으로 다시 변환함
-     */
-    static String toStringUserInput(int userNumber) {
-        return String.valueOf(userNumber);
     }
 
     /**
