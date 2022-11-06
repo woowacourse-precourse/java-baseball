@@ -12,6 +12,7 @@
         - 랜덤 컴퓨터 값 생성 / process package > InitGame class > createComputerNumber func
   2) 과정
         - 사용자가 추측한 컴퓨터 숫자 입력 / process package > MainGame class > inputGuessNumber func
+        - 사용자가 입력한 값 올바른지 판단 / process package > MainGame class > isRightInput func  
         - 컴퓨터값, 인풋값 Strike, Ball 판단 / process package > MainGame class > judge func 
   3) 끝
 
