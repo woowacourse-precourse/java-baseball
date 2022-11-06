@@ -22,8 +22,6 @@ public final class MessageConst {
 
     public static final String INPUT_LENGTH_EXCEPTION_MSG = NumberConst.INPUT_LENGTH + "글자를 입력해 주세요.";
 
-    public static final String INPUT_TYPE_EXCEPTION_MSG = "숫자만 입력할 수 있습니다.";
-
     public static final String INPUT_RANGE_EXCEPTION_MSG = NumberConst.FIRST_RANGE + "~" +
             NumberConst.LAST_RANGE + " 사이의 값을 입력해 주세요.";
 
