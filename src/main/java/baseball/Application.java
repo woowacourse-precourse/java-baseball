@@ -91,14 +91,14 @@ public class Application {
     return
     boolean result
      */
-    static boolean checkBall(List<Integer> computer, int number, int digit) {
+    static boolean checkBall(List<Integer> computerNumber, List<Integer> userNumber, int digit) {
         for (int i = 0; i < 3; i++) {
             // 같은 자리는 체크하지 않는다.
             if (i == digit) {
                 continue;
             }
             // 다른 자리에서 숫자가 같으면 -> ball 처리
-            if (computer.get(i) == number) {
+            if (computerNumber.get(i) == userNumber.get(digit)) {
                 return true;
             }
         }
