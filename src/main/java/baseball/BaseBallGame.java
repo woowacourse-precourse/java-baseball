@@ -12,6 +12,8 @@ import javax.lang.model.type.ArrayType;
 
 class BaseBallGame {
     private static BaseBallGame gameProgram = new BaseBallGame();
+    private static int GOAL = 3;
+    private static int ZERO = 0;
 
     private BaseBallGame() {
     }
@@ -61,18 +63,18 @@ class BaseBallGame {
         ball = hint.get(0);
         strike = hint.get(1);
 
-        if (strike == 3) {
+        if (strike == GOAL) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
-        if (ball == 0 && strike == 0) {
+        if (ball == ZERO && strike == ZERO) {
             System.out.println("낫싱");
         } else {
-            if (ball == 0) {
+            if (ball == ZERO) {
                 System.out.println(strike + "스트라이크");
-            } else if (strike == 0) {
+            } else if (strike == ZERO) {
                 System.out.println(ball + "볼");
             } else {
                 System.out.println(ball + "볼 " + strike + "스트라이크");
