@@ -39,4 +39,9 @@ public class ScoreBoard {
     public void setIsPlaying() {
         isPlaying = false;
     }
+
+    public void initialize() {
+        systemNumberBalls = NumberBall.systemNumberBalls();
+        isPlaying = true;
+    }
 }
