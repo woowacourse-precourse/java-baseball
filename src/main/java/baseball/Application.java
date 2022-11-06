@@ -18,12 +18,10 @@ public class Application {
         // 게임 진행 상태
         boolean usersAnswer = true;
 
-
         while (usersAnswer){
 
             // 컴퓨터가 3자리 숫자의 리스트 생성
             List<Integer> computerNumber = GenerateRandomNumber();
-
             // 유저의 문자 입력 받기
             String usersNumber = usersNumber();
 
@@ -33,18 +31,68 @@ public class Application {
                 throw new IllegalStateException();
             }
 
-
+            // 볼,스트라이크 체크
+            List<Integer> result = checkStrikeOrBall(computerNumber, usersNumber);
 
             // 정답 시 재시작/종료 탐색 기능
             usersAnswer = reGameOrEnd(usersNumber());
 
         }
 
-
-
-
-
     }
+
+
+
+    private static List<Integer> checkStrikeOrBall(List<Integer> computerNumber, String usersNumber) {
+
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < usersNumber.length(); i++) {
+
+            int number = Character.getNumericValue(usersNumber.charAt(i));
+
+            boolean isBall = isBall(computerNumber, number);
+            boolean isStrike = false;
+            
+            if(isBall){
+                isStrike = isStrike(computerNumber, number, i);
+            }
+
+            if(isStrike){
+                strike++;
+                continue;
+            }
+            
+            if(isBall){
+                ball++;
+            }
+
+        }
+
+        return List.of(ball, strike);
+    }
+
+    private static boolean isBall(List<Integer> computerNumber, int number) {
+        if (computerNumber.contains(number)){
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isStrike(List<Integer> computerNumber, int number , int index) {
+
+        if(!computerNumber.contains(number)){
+            return false;
+        }
+
+        if(computerNumber.indexOf(number) == index){
+            return true;
+        }
+
+        return false;
+    }
+
 
     private static boolean validationUsersNumber(String usersNumber) {
 
