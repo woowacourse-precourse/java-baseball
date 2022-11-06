@@ -73,6 +73,17 @@ public class Application {
         return isReStart;
     }
 
+    private static boolean isNothing(List<Integer> computer, List<Integer> player){
+        boolean check=true;
+        for(int i=0;i<player.size();i++){
+            if(computer.contains(player.get(i))){
+                check=false;
+                break;
+            }
+        }
+        return check;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -81,13 +92,19 @@ public class Application {
             List<Integer> computer = getRandomNumber();
 
             // 사용자 숫자 입력
+            List<Integer> player;
             try {
-                List<Integer> player = inputPlayerNumber();
+                player = inputPlayerNumber();
             } catch (IllegalArgumentException exception){
                 System.out.println(exception.getMessage());
                 break;
             }
 
+            if(isNothing(computer, player)){
+                System.out.println("낫싱");
+            } else{
+
+            }
 
             // 게임 재시작/종료 선택
             String isReStart = inputIsReStart();
