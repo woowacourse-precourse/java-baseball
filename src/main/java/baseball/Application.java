@@ -12,6 +12,14 @@ public class Application {
 
     public static void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computerList = createComputerNumbers();
+        List<Integer> playerList;
+
+        do {
+            int playerNumber = askUserTheNumber();
+            playerList = breakInteger(playerNumber);
+        } while (!(printScore(computerList, playerList)));
+
     }
 
     public static List<Integer> createComputerNumbers() {
