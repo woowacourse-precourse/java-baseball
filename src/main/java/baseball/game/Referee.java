@@ -1,24 +1,24 @@
 package baseball.game;
 
-
-import baseball.constant.Accuracy;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static baseball.constant.Rules.DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST;
+import static baseball.constant.Rules.CORRECT_ANSWER;
+import static baseball.constant.Rules.DEFAULT_VALUE;
 import static baseball.constant.Rules.PICK_COUNT;
+import static baseball.constant.Rules.SIMILAR_ANSWER;
+import static baseball.constant.Rules.WRONG_ANSWER;
 
 public class Referee {
 
     public boolean isPerfectAnswer(List<Integer> targetNumbers, List<Integer> userNumbers) {
         validateNumbersLength(targetNumbers, userNumbers);
 
-        Map<Accuracy, Integer> judgeAccuracy = getJudgeAccuracy(targetNumbers, userNumbers);
+        Map<String, Integer> judgeAccuracy = getJudgeAccuracy(targetNumbers, userNumbers);
         System.out.println(shout(judgeAccuracy));
 
-        return judgeAccuracy.get(Accuracy.CORRECT_ANSWER) == PICK_COUNT;
+        return judgeAccuracy.getOrDefault(CORRECT_ANSWER, DEFAULT_VALUE) == PICK_COUNT;
     }
 
     private void validateNumbersLength(List<Integer> targetNumbers, List<Integer> userNumbers) {
@@ -27,41 +27,41 @@ public class Referee {
         }
     }
 
-    private Map<Accuracy, Integer> getJudgeAccuracy(List<Integer> targetNumbers, List<Integer> userNumbers) {
-        Map<Accuracy, Integer> judgeAccuracy = new HashMap<>();
+    private Map<String, Integer> getJudgeAccuracy(List<Integer> targetNumbers, List<Integer> userNumbers) {
+        Map<String, Integer> judgeAccuracy = new HashMap<>();
 
         for (int idx = 0; idx < targetNumbers.size(); idx++) {
             int targetNumber = targetNumbers.get(idx);
             int userNumber = userNumbers.get(idx);
 
             if (targetNumber == userNumber) {
-                judge(judgeAccuracy, Accuracy.CORRECT_ANSWER);
+                judge(judgeAccuracy, CORRECT_ANSWER);
                 continue;
             }
 
             if (targetNumbers.contains(userNumber)) {
-                judge(judgeAccuracy, Accuracy.SIMILAR_ANSWER);
+                judge(judgeAccuracy, SIMILAR_ANSWER);
             }
         }
 
         return judgeAccuracy;
     }
 
-    private void judge(Map<Accuracy, Integer> judgeAccuracy, Accuracy accuracy) {
-        int count = judgeAccuracy.getOrDefault(accuracy, DEFAULT_VALUE_IF_KEY_DOES_NOT_EXIST);
+    private void judge(Map<String, Integer> judgeAccuracy, String accuracy) {
+        int count = judgeAccuracy.getOrDefault(accuracy, DEFAULT_VALUE);
         judgeAccuracy.put(accuracy, count + 1);
     }
 
-    private String shout(Map<Accuracy, Integer> judgeAccuracy) {
+    private String shout(Map<String, Integer> judgeAccuracy) {
         StringBuilder sb = new StringBuilder();
 
-        addToShout(judgeAccuracy, sb, Accuracy.SIMILAR_ANSWER);
-        addToShout(judgeAccuracy, sb, Accuracy.CORRECT_ANSWER);
+        addToShout(judgeAccuracy, sb, SIMILAR_ANSWER);
+        addToShout(judgeAccuracy, sb, CORRECT_ANSWER);
 
         if (sb.length() > 0) {
             return sb.toString();
         }
 
-        return Accuracy.WRONG_ANSWER.getDescription();
+        return WRONG_ANSWER;
     }
 }
