@@ -29,7 +29,7 @@ class BaseBallGame {
 
     public void gamePlaying() {
         try {
-            int computerNumber = getRandomDiff3DigitNumber();
+            String computerNumber = getRandomDiff3DigitNumber();
             boolean isSolved = false;
             while (!isSolved) {
                 isSolved = solvingProblem(computerNumber);
@@ -57,8 +57,8 @@ class BaseBallGame {
         return false;
     }
 
-    public boolean solvingProblem(int computerNumber) {
-        int userNumber = inputNumber();
+    public boolean solvingProblem(String computerNumber) {
+        String userNumber = inputNumber();
         int ball, strike;
         List<Integer> hint = getHint(userNumber, computerNumber);
         ball = hint.get(0);
@@ -92,11 +92,12 @@ class BaseBallGame {
     }
 
 
-    public int inputNumber() {
+    public String inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputStr = Console.readLine();
         inputValidation(inputStr);
-        return Integer.parseInt(inputStr);
+        return inputStr;
+//        return Integer.parseInt(inputStr);
     }
 
     public void inputValidation(String inputStr) {
@@ -122,7 +123,7 @@ class BaseBallGame {
         return true;
     }
 
-    public int getRandomDiff3DigitNumber() {
+    public String getRandomDiff3DigitNumber() {
         String randomDiff3DigitNumber = "";
 
         while (randomDiff3DigitNumber.length() < 3) {
@@ -132,21 +133,22 @@ class BaseBallGame {
             }
         }
 
-        return Integer.parseInt(randomDiff3DigitNumber);
+//        return Integer.parseInt(randomDiff3DigitNumber);
+        return randomDiff3DigitNumber;
     }
 
-    public List<Integer> ballAndStrikeCount(List<Integer> userNumList, List<Integer> computerNumList) {
+    public List<Integer> ballAndStrikeCount(List<String> userNumList, List<String> computerNumList) {
         int strike = 0;
         int ball = 0;
         List<Integer> ballAndStrike = new ArrayList<Integer>();
         int numLength = userNumList.size();
 
         for (int listIdx = 0; listIdx < numLength; listIdx++) {
-            if (userNumList.get(listIdx) == computerNumList.get(listIdx)) {
+            if (userNumList.get(listIdx).equals(computerNumList.get(listIdx))) {
                 strike++;
             }
-            if (userNumList.get(listIdx) == computerNumList.get((listIdx + 1) % numLength)
-                    || userNumList.get(listIdx) == computerNumList.get((listIdx + 2) % numLength)
+            if (userNumList.get(listIdx).equals(computerNumList.get((listIdx + 1) % numLength))
+                    || userNumList.get(listIdx).equals(computerNumList.get((listIdx + 2) % numLength))
             ) {
                 ball++;
             }
@@ -158,11 +160,11 @@ class BaseBallGame {
     }
 
 
-    public List<Integer> getHint(int userNumber, int computerNumber) {
-        List<Integer> userNumList = new ArrayList<>(
-                Arrays.asList(userNumber / 100, userNumber % 100 / 10, userNumber % 10 / 1));
-        List<Integer> computerNumList = new ArrayList<>(
-                Arrays.asList(computerNumber / 100, computerNumber % 100 / 10, computerNumber % 10 / 1));
+    public List<Integer> getHint(String userNumber, String computerNumber) {
+        List<String> userNumList = new ArrayList<String>(
+                Arrays.asList(userNumber.split("")));
+        List<String> computerNumList = new ArrayList<String>(
+                Arrays.asList(computerNumber.split("")));
 
         List<Integer> ballAndStrikeList = ballAndStrikeCount(userNumList, computerNumList);
 

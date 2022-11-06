@@ -51,8 +51,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 힌트함수_테스트1() {
-        int inputNum = 123;
-        int comNum = 213;
+        String inputNum = "123";
+        String comNum = "213";
         List<Integer> hint = baseBallGame.getHint(inputNum, comNum);
         int ball = hint.get(0);
         int strike = hint.get(1);
@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
     void 랜덤숫자_테스트1() {
         int exceptCnt = 0;
         for (int i = 0; i < 100; i++) {
-            String randomNum = Integer.toString(baseBallGame.getRandomDiff3DigitNumber());
+            String randomNum = baseBallGame.getRandomDiff3DigitNumber();
             if (randomNum.charAt(0) == randomNum.charAt(1)
                     || randomNum.charAt(1) == randomNum.charAt(2)
                     || randomNum.charAt(0) == randomNum.charAt(2)
