@@ -49,8 +49,22 @@ public class Application {
         }
         return true;
     }
-    static void judge_guess(String guess, ArrayList<Integer> answer) {
 
+    static ArrayList<Integer> count_ball_and_strike(ArrayList<Integer> guessList, ArrayList<Integer> answers) {
+        ArrayList<Integer> ball_strike_cnt = new ArrayList<>() {{
+            add(0);
+            add(0);
+        }};
+
+        return ball_strike_cnt;
+    }
+    static void  show_result(ArrayList<Integer> ball_strike_cnt){
+
+    }
+    static void judge_guess(String guess, ArrayList<Integer> answer) {
+        ArrayList<Integer> guess_parsed = parse_string_into_integer(guess);
+        ArrayList<Integer> ball_strike_cnt= count_ball_and_strike(guess_parsed, answer);
+        show_result(ball_strike_cnt);
     }
     static void main_loop() {
         ArrayList<Integer> answer = new ArrayList<>();
