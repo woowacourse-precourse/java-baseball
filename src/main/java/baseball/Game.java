@@ -22,13 +22,13 @@ public class Game {
       computer.printInputNumber();
       String RefereeResult = computer.printCalculateResult(
           referee.calculateAnswer(user.inputValue(1), computer.RandomValue));
-      if (RefereeResult.equals("3스트라이크") && (checkContinue(user, computer) == ENDGAME)) {
+      if (RefereeResult.equals("3스트라이크") && (checkContinueMode(user, computer) == ENDGAME)) {
         break;
       }
     }
   }
 
-  private static int checkContinue(User user, Computer computer) {
+  private static int checkContinueMode(User user, Computer computer) {
     computer.printEndingMessage();
     if (user.inputValue(PLAYAGAINMODE).equals("1")) {
       Game game = new Game();
