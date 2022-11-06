@@ -23,6 +23,11 @@ public class BaseballService {
             Result result = gameService.progress(computerBaseballs, userBaseballs);
 
             OutputView.print(result.toString());
+
+            if (result.isFinish()) {
+                OutputView.gameEndMessage();
+                break;
+            }
         }
     }
 }

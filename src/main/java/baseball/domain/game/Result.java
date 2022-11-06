@@ -35,6 +35,10 @@ public class Result {
         resultMessage.add(String.format(STRIKE, strike));
     }
 
+    public boolean isFinish() {
+        return strike == 3;
+    }
+
     @Override
     public String toString() {
         ball();
@@ -44,4 +48,5 @@ public class Result {
         }
         return String.join(DELIMITER, resultMessage);
     }
+
 }
