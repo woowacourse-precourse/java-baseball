@@ -7,6 +7,10 @@ import java.util.List;
 public class Computer {
     private List<Integer> computerGameNumbers;
 
+    public List<Integer> getComputerGameNumbers() {
+        return computerGameNumbers;
+    }
+
     public void setupGameNumbers() {
         computerGameNumbers = new ArrayList<>();
         while (computerGameNumbers.size() < 3) {
