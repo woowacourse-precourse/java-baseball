@@ -73,6 +73,7 @@
 - [ ] result을 리턴
 
 ## (String)inputAvailableUserNumberService()
+- [ ] 사용자가 입력하는 숫자를 저장하는 변수, userNumber을 0으로 초기화
 - [ ] availableUserNumberIsChecking, 숫자가 유효한지에 대한 검사값을 넣는 변수를 false로 초기화.
 - [ ] userNumberMessagePrint함수를 실행
 - [ ] userNumberInput함수를 실행
