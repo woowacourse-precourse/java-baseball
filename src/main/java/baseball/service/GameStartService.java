@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.repository.GameStartRepository;
 import baseball.status.HintStatus;
+import baseball.status.NumberStatus;
 import baseball.util.RandomUtil;
 import baseball.util.UserUtil;
 
@@ -43,13 +44,13 @@ public class GameStartService {
         int ball = GameStartRepository.ball;
         int strike = GameStartRepository.strike;
         String result = "";
-        if (strike == 3) {
-            result += "3" + HintStatus.STRIKE.getText();
-        } else if (strike == 0 && ball == 0) {
+        if (strike == NumberStatus.MAX_NUMBER.getNumber()) {
+            result += HintStatus.ANSWER.getText();
+        } else if (strike == NumberStatus.MIN_NUMBER.getNumber() && ball == NumberStatus.MIN_NUMBER.getNumber()) {
             result += HintStatus.NOTHING.getText();
-        } else if (strike == 0 && !(ball == 0)) {
+        } else if (strike == NumberStatus.MIN_NUMBER.getNumber() && !(ball == NumberStatus.MIN_NUMBER.getNumber())) {
             result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
-        } else if (!(strike == 0) && !(ball == 0)) {
+        } else if (!(strike == NumberStatus.MIN_NUMBER.getNumber()) && !(ball == NumberStatus.MIN_NUMBER.getNumber())) {
             result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
         } else {
             result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
@@ -59,24 +60,24 @@ public class GameStartService {
     }
 
     public static void initBallAndStrike() {
-        GameStartRepository.ball = 0;
-        GameStartRepository.strike = 0;
+        GameStartRepository.ball = NumberStatus.MIN_NUMBER.getNumber();
+        GameStartRepository.strike = NumberStatus.MIN_NUMBER.getNumber();
     }
 
     private static void isStrike(List<String> computerNumber, List<String> userNumber) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i++) {
             if (computerNumber.get(i).equals(userNumber.get(i))) {
-                GameStartRepository.strike += 1;
-                GameStartRepository.ball -= 1;
+                GameStartRepository.strike ++;
+                GameStartRepository.ball --;
             }
         }
     }
 
 
     private static void isBall(List<String> computerNumber, List<String> userNumber) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
-                GameStartRepository.ball += 1;
+                GameStartRepository.ball ++;
             }
         }
     }

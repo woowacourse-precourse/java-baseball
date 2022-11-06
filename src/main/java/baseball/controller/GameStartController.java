@@ -2,6 +2,7 @@ package baseball.controller;
 
 
 import baseball.service.GameStartService;
+import baseball.status.ControlNumberStatus;
 import baseball.status.GameStatus;
 import baseball.status.HintStatus;
 import baseball.view.View;
@@ -11,10 +12,10 @@ public class GameStartController {
     private static void controlGame() {
         View.printRestartOrStop();
         String userInput = GameStartService.getUserInput();
-        if(userInput.equals("1")){
+        if(userInput.equals(ControlNumberStatus.START_NUMBER.getText())){
             GameStartService.initGame();
             startGame();
-        }else if(userInput.equals("2")){
+        }else if(userInput.equals(ControlNumberStatus.END_NUMBER.getText())){
             finishGame();
         }else{
             throw new IllegalArgumentException();
