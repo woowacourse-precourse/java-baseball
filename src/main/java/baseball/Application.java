@@ -44,4 +44,16 @@ public class Application {
             User.add(Integer.parseInt(split_input[i]));
     }
 
+    private static void StartGame(List<Integer> User, List<Integer> Computer){
+        System.out.println("숫자를 입력해주세요 : ");
+        String UserInput = Console.readLine();
+        MakeUser(UserInput, User);
+        //after read user's choice, check error of user's input
+        err_check(User);
+        //if input has no problem, compare three numbers
+        Compare_Answer(User, Computer);
+        Print_Result();
+    }
+
+    
 }
