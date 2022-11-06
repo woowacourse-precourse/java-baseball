@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +26,70 @@ class ComputerManagerTest {
 
         List<Integer> numbers = (List<Integer>) computerNumbers.get(computerManager);
         assertThat(3).isEqualTo(numbers.size());
+    }
+
+    @Test
+    void compareWithUserNumber_3스트라이크_테스트() throws NoSuchFieldException, IllegalAccessException {
+        computerManager.generateRandomNumber();
+        Field computerNumbers = computerManager.getClass().getDeclaredField("computerNumbers");
+        computerNumbers.setAccessible(true);
+
+        List<Integer> numbers = (List<Integer>) computerNumbers.get(computerManager);
+
+        StringBuilder answer = new StringBuilder();
+
+        for (Integer num: numbers) {
+            answer.append(num);
+        }
+
+        assertThat(computerManager.compareWithUserNumber(answer.toString())).isEqualTo("3스트라이크");
+    }
+
+    @Test
+    void compareWithUserNumber_볼_테스트() throws NoSuchFieldException, IllegalAccessException {
+        computerManager.generateRandomNumber();
+        Field computerNumbers = computerManager.getClass().getDeclaredField("computerNumbers");
+        computerNumbers.setAccessible(true);
+
+        List<Integer> numbers = (List<Integer>) computerNumbers.get(computerManager);
+
+        StringBuilder answer = new StringBuilder();
+
+        for (Integer num: numbers) {
+            answer.append(num);
+        }
+
+        answer.deleteCharAt(2);
+        while (true){
+            int randomNumber = Randoms.pickNumberInRange(1,9);
+            if (!numbers.contains(randomNumber)){
+                answer.append(randomNumber);
+                break;
+            }
+        }
+
+        assertThat(computerManager.compareWithUserNumber(answer.toString())).isEqualTo("2스트라이크");
+    }
+
+    @Test
+    void compareWithUserNumber_스트라이크_볼_테스트() throws NoSuchFieldException, IllegalAccessException {
+        computerManager.generateRandomNumber();
+        Field computerNumbers = computerManager.getClass().getDeclaredField("computerNumbers");
+        computerNumbers.setAccessible(true);
+
+        List<Integer> numbers = (List<Integer>) computerNumbers.get(computerManager);
+
+        StringBuilder answer = new StringBuilder();
+
+        for (Integer num: numbers) {
+            answer.append(num);
+        }
+
+        char temp = answer.charAt(1);
+        answer.deleteCharAt(1);
+        answer.append(temp);
+
+        assertThat(computerManager.compareWithUserNumber(answer.toString())).isEqualTo("2볼 1스트라이크");
     }
 
 }
