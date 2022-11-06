@@ -73,7 +73,7 @@ public class OutputView {
         }
         resultMessage += strikeMessage;
         if (resultMessage.equals("")) {
-            resultMessage = "낫싱";
+            resultMessage = NOTHING_MESSAGE;
         }
         printlnMessage(resultMessage);
     }

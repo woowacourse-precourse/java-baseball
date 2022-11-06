@@ -15,7 +15,7 @@ public class GameNumberGeneratorTest {
 
     @BeforeAll
     static void setup() {
-        number = createNumber();
+        number = createGameNumber();
     }
 
     @Test

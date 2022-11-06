@@ -1,7 +1,6 @@
 package baseball.view;
 
 import baseball.util.GameNumberGenerator;
-import baseball.view.OutputView;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

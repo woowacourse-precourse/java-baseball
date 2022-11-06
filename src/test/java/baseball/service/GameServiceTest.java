@@ -1,7 +1,6 @@
 package baseball.service;
 
 import baseball.model.GameResult;
-import baseball.service.GameService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

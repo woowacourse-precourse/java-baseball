@@ -18,7 +18,7 @@ public class GameService {
     private GameService() {
     }
 
-    public static GameService getInstance(){
+    public static GameService getInstance() {
         return instance;
     }
 
@@ -28,13 +28,14 @@ public class GameService {
 
 
     private int calcBall(String playerInput) {
-        Set<Character> set = new HashSet<>();
+        Set<Character> inputNumberList = new HashSet<>();
         int ball = 0;
         for (int i = 0; i < gameNumber.length(); i++) {
-            set.add(gameNumber.charAt(i));
+            inputNumberList.add(gameNumber.charAt(i));
         }
         for (int i = 0; i < playerInput.length(); i++) {
-            if (playerInput.charAt(i) != gameNumber.charAt(i) && set.contains(playerInput.charAt(i))) {
+            if (playerInput.charAt(i) != gameNumber.charAt(i) &&
+                    inputNumberList.contains(playerInput.charAt(i))) {
                 ball++;
             }
         }
@@ -52,7 +53,7 @@ public class GameService {
     }
 
     public String createNumber() {
-        gameNumber = GameNumberGenerator.createNumber();
+        gameNumber = GameNumberGenerator.createGameNumber();
         return gameNumber;
     }
 }

@@ -26,12 +26,12 @@ public class GameController {
         outputView.printStart();
         outputView.printInputNumber();
         String gameNumber = gameService.createNumber();
-        System.out.println("gameNumber = " + gameNumber);
+        //System.out.println("gameNumber = " + gameNumber);
         do {
             String inputNumber = inputView.inputNumber();
             GameResult result = gameService.judge(inputNumber);
             outputView.printResult(result);
-            if (result.getStrike() == GameNumberGenerator.GAME_NUMBER_LENGTH){
+            if (result.getStrike() == GameNumberGenerator.GAME_NUMBER_LENGTH) {
                 break;
             }
         } while (true);

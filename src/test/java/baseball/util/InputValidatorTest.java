@@ -1,6 +1,5 @@
 package baseball.util;
 
-import baseball.util.GameNumberGenerator;
 import org.junit.jupiter.api.Test;
 
 import static baseball.util.InputValidator.*;
@@ -30,7 +29,7 @@ public class InputValidatorTest {
 
     @Test
     void 플레이어_입력_숫자_유효값_검증() {
-        String playerInput = GameNumberGenerator.createNumber();
+        String playerInput = GameNumberGenerator.createGameNumber();
         validatePlayerInputNumber(playerInput);
     }
 
