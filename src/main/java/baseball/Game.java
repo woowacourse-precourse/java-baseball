@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.BufferedReader;
@@ -60,13 +61,7 @@ public class Game {
     }
 
     public int getRestart() {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-        try {
-            return Integer.parseInt(bufferedReader.readLine());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return Integer.parseInt(Console.readLine());
     }
 
     public boolean isCorrectInput(String user) {
