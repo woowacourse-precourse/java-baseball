@@ -45,6 +45,11 @@ public class Balls {
 	}
 
 	public PlayResult compareTo(final Balls other) {
-		return new PlayResult();
+		PlayResult result = new PlayResult();
+
+		for (Ball ball : balls) {
+			result.addStatus(other.compareTo(ball));
+		}
+		return result;
 	}
 }
