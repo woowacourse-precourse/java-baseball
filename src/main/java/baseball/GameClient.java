@@ -26,4 +26,11 @@ public class GameClient {
         return 0;
     }
 
+    private int userInputValidation(int user_input) {
+        if (!(user_input == 1 || user_input == 2)) {
+            throw new IllegalStateException();
+        }
+
+        return user_input;
+    }
 }
