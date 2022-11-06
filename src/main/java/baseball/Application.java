@@ -183,8 +183,10 @@ class GameProcessor {
         }
         if (getBall() > 0) {
             if (stringBuilder.length() == 0) {
-                stringBuilder.append(" ");
 
+            }
+            else {
+                stringBuilder.append(" ");
             }
             stringBuilder.append(getBall() + "볼");
         }
@@ -226,9 +228,8 @@ public class Application {
         GameReadyMachine gameReadyMachine = new GameReadyMachine();
         GameProcessor gameProcessor = new GameProcessor();
         GameFinisher gameFinisher = new GameFinisher();
-
+        gameReadyMachine.gameReadyComplete();
         while(gameFinisher.isRestartTrigger()) {
-            gameReadyMachine.gameReadyComplete();
             gameProcessor.userInput();
             gameProcessor.checkInput();
             gameProcessor.toArrayValue(gameProcessor.getLastInputInt(), gameReadyMachine.getAnswerValue());
