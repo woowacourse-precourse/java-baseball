@@ -11,18 +11,23 @@ public class Ball {
         this.number = number;
         this.position = position;
     }
-    public static Ball of(int number, int position){
-        return new Ball(number,position);
+
+    public static Ball of(int number, int position) {
+        return new Ball(number, position);
     }
 
-    public BallType play(Ball computerBall) {
-        if (this.equals(computerBall)) {
+    public BallType play(Ball ball) {
+        if (this.equals(ball)) {
             return BallType.STRIKE;
         }
-        if (this.number == computerBall.number) {
+        if (isBall(ball)) {
             return BallType.BALL;
         }
         return BallType.NOTHING;
+    }
+
+    private boolean isBall(Ball ball) {
+        return this.number == ball.number;
     }
 
     @Override

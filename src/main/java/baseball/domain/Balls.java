@@ -20,11 +20,9 @@ public class Balls {
 
     public PlayResult play(Balls target) {
         PlayResult playResult = new PlayResult();
-
         balls.forEach(balls -> {
             target.balls.stream().map(balls::play).forEach(playResult::save);
         });
-
         return playResult;
     }
 }
