@@ -95,7 +95,7 @@ public class Application {
             checkedBaseballNumbers.put("ball",ballNumber - strikeNumber);
         }
 
-        return new HashMap<>();
+        return checkedBaseballNumbers;
     }
 
     public static void main(String[] args) {
