@@ -32,6 +32,4 @@ public class Answer {
     public List<Integer> getValue() {
         return value;
     }
-
-
 }

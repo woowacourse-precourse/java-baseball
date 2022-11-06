@@ -52,4 +52,8 @@ public class User {
         }
         return true;
     }
+
+    public List<Integer> getInputNumberList() {
+        return inputNumberList;
+    }
 }
