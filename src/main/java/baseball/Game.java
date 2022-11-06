@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
+import java.util.regex.Pattern;
 
 public class Game {
     private static final String STRIKE = "스트라이크";
@@ -31,10 +33,18 @@ public class Game {
 
     private static String getInput() {
         try {
-            return Console.readLine();
-        } catch (Exception e) {
+            return validateInput(Console.readLine());
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("입력값이 없습니다. 애플리케이션을 종료합니다.");
         }
+    }
+
+    private static String validateInput(String input) {
+        final Pattern pattern = Pattern.compile("^[1-9]*$");
+        if (!pattern.matcher(input).matches() || input.length() != 3) {
+            throw new IllegalArgumentException("잘못된 입력값입니다. 애플리케이션을 종료합니다.");
+        }
+        return input;
     }
 
     private void end() {

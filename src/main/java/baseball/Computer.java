@@ -74,17 +74,9 @@ public class Computer {
     }
 
     private static List<Integer> stringToIntegerList(String string) {
-        validateInput(string);
-
         return Stream.of(string.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    private static void validateInput(String input) {
-        final Pattern pattern = Pattern.compile("^[1-9]*$");
-        if (!pattern.matcher(input).matches() || input.length() != 3) {
-            throw new IllegalArgumentException("잘못된 입력값입니다. 애플리케이션을 종료합니다.");
-        }
-    }
 }
