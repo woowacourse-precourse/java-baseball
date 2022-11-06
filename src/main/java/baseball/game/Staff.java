@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
-
 import static baseball.constant.Rules.END_NUMBER;
 import static baseball.constant.Rules.FINISH;
 import static baseball.constant.Rules.FORBIDDEN_NUMBER;

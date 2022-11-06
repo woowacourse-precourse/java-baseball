@@ -3,7 +3,6 @@ package baseball.game;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static baseball.constant.Rules.CORRECT_ANSWER;
 import static baseball.constant.Rules.DEFAULT_VALUE;
 import static baseball.constant.Rules.PICK_COUNT;
