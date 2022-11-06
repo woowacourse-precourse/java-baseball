@@ -21,6 +21,10 @@ public class Computer {
 		selectNumber();
 	}
 
+	private void initRandomNumber() {
+		randomNumber.clear();
+	}
+
 	private void selectNumber() {
 
 		while (randomNumber.size() < INIT_LIST_CAPACITY) {
@@ -42,10 +46,6 @@ public class Computer {
 
 	private boolean addRandomNumber(int number) {
 		return randomNumber.add(number);
-	}
-
-	private void initRandomNumber() {
-		randomNumber.clear();
 	}
 
 	public List<Integer> getRandomNumber() {

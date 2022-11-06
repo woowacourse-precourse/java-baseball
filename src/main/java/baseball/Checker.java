@@ -16,6 +16,22 @@ public class Checker {
 		checkNumberRangeException(userInput, length);
 	}
 
+	private static void checkNumberOnlyException(String userInput) {
+		try {
+			Integer.parseInt(userInput);
+		} catch (NumberFormatException e) {
+			Exception.numberOnlyException();
+		}
+	}
+
+	private static void checkLengthException(String userInput, int length) {
+
+		if (userInput.length() != length) {
+			Exception.lengthException();
+		}
+
+	}
+
 	private static void checkNumberRangeException(String userInput, int length) {
 
 		if (isEndOrRestartInput(length)) {
@@ -31,20 +47,20 @@ public class Checker {
 		}
 	}
 
-	private static boolean isUserNumberInput(int length) {
-		return length == USER_NUMBER_INPUT_LENGTH;
-	}
-
 	private static boolean isEndOrRestartInput(int length) {
 		return length == END_OR_RESTART_INPUT_LENGTH;
 	}
 
-	private static boolean isUserNumberInputRangeException(String userNumber) {
-		return userNumber.contains(ZERO);
-	}
-
 	private static boolean isEndOrRestartRangeException(String userInput) {
 		return Integer.parseInt(userInput) > END_INPUT || Integer.parseInt(userInput) < RESTART_INPUT;
+	}
+
+	private static boolean isUserNumberInput(int length) {
+		return length == USER_NUMBER_INPUT_LENGTH;
+	}
+
+	private static boolean isUserNumberInputRangeException(String userNumber) {
+		return userNumber.contains(ZERO);
 	}
 
 	private static void checkSameLetterException(int length, List<Integer> userNumberList) {
@@ -55,22 +71,6 @@ public class Checker {
 			}
 		}
 
-	}
-
-	private static void checkLengthException(String userInput, int length) {
-
-		if (userInput.length() != length) {
-			Exception.lengthException();
-		}
-
-	}
-
-	private static void checkNumberOnlyException(String userInput) {
-		try {
-			Integer.parseInt(userInput);
-		} catch (NumberFormatException e) {
-			Exception.numberOnlyException();
-		}
 	}
 
 	private static boolean isUserInputSameNumber(List<Integer> userNumberList) {

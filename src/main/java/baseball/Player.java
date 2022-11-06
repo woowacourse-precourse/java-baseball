@@ -20,14 +20,14 @@ public class Player {
 		separateNumbersByUnit(Integer.parseInt(userInput));
 	}
 
+	private void initUserNumber() {
+		userNumberList.clear();
+	}
+
 	public void separateNumbersByUnit(int userNumber) {
 		userNumberList.add(userNumber / UNIT_HUNDRED);
 		userNumberList.add((userNumber % UNIT_HUNDRED) / UNIT_TEN);
 		userNumberList.add((userNumber % UNIT_HUNDRED) % UNIT_TEN);
-	}
-
-	private void initUserNumber() {
-		userNumberList.clear();
 	}
 
 	public List<Integer> getUserNumberList() {

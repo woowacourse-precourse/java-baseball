@@ -16,8 +16,12 @@ public class View {
 	public static final String END_OR_RESTART_INPUT_ERROR_MESSAGE = ERROR + "1혹은 2를 입력해주세요";
 	private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-	public static void showThreeStrike() {
-		System.out.println(THREE_STRIKE_MESSAGE);
+	public static void showStartGameGuideMessage() {
+		System.out.println(START_GAME_GUIDE_MESSAGE);
+	}
+
+	public static void showUserInputGuideMessage() {
+		System.out.print(USER_INPUT_GUIDE_MESSAGE);
 	}
 
 	public static void showResult(int ball, int strike, int zero) {
@@ -36,15 +40,11 @@ public class View {
 		System.out.println(result);
 	}
 
-	public static void showUserInputGuideMessage() {
-		System.out.print(USER_INPUT_GUIDE_MESSAGE);
+	public static void showThreeStrike() {
+		System.out.println(THREE_STRIKE_MESSAGE);
 	}
 
 	public static void showEndOrRestartGuideMessage() {
 		System.out.println(END_OR_RESTART_MESSAGE);
-	}
-
-	public static void showStartGameGuideMessage() {
-		System.out.println(START_GAME_GUIDE_MESSAGE);
 	}
 }
