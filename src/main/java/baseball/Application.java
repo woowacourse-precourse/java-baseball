@@ -17,8 +17,8 @@ public class Application {
         return howManyBall;
     }
 
-    public static void exceptionHandling (List<Integer> userInput) throws IllegalArgumentException{
-        if (userInput.size()!=3) {
+    public static void exceptionHandling (String userInputString) throws IllegalArgumentException{
+        if (userInputString.length()>3) {
             throw new IllegalArgumentException();
         }
     }
@@ -27,16 +27,16 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         String userInputString = readLine();
         List<Integer> userInput = new ArrayList<>();
-        exceptionHandling(userInput);
-        for (int i=0; i<3; i++) {
-            userInput.add(Character.getNumericValue(i));
+        exceptionHandling(userInputString);
+        for (int i=0; i<userInputString.length(); i++) {
+            userInput.add(Character.getNumericValue(userInputString.charAt(i)));
         }
         return userInput;
     }
 
     public static int checkStrike (List<Integer> answer, List<Integer> userInput, int howManyBall) {
         int howManyStrike = 0;
-        for (int i=0; i<3; i++) {
+        for (int i=0; i<userInput.size(); i++) {
             if (answer.get(i).equals(userInput.get(i))) {
                 howManyStrike++;
                 howManyBall--;
@@ -87,8 +87,8 @@ public class Application {
             answer.add(pickNumberInRange(0,9));
         }
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> userInput = getUserInput();
         while(true) {
+            List<Integer> userInput = getUserInput();
             int ball = checkBall(answer,userInput);
             int strike = checkStrike(answer,userInput,ball);
             ball = ball-strike;
