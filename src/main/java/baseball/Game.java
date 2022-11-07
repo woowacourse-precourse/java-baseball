@@ -14,6 +14,7 @@ public class Game {
     static final String CORRECT_ANSWER = "3스트라이크";
     static final String NOTHING = "낫싱";
     static final String INPUT_QUESTION = "숫자를 입력해주세요 : ";
+    static final String FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String FINISH_QUESTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void printStartMessage() {
@@ -78,6 +79,7 @@ public class Game {
         }
     }
     public boolean isFinish() {
+        System.out.println(FINISH_MESSAGE);
         System.out.println(FINISH_QUESTION);
         String num = readLine();
         if (num.equals("1")) {
