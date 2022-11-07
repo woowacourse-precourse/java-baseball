@@ -4,7 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+enum BaseballResult {
+    NOTHING, BALL, STRIKE
+}
 
 public class Application {
 
@@ -14,6 +19,13 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> userNumber = splitStrNumberToList(Console.readLine());
         List<Integer> computerNumber = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+
+        HashMap<BaseballResult, Integer> gameResult = new HashMap<>();
+
+        for (int i = 0; i < userNumber.size(); i++) {
+            BaseballResult currentIdxGameResult = getCurrentIdxGameResult(i, userNumber, computerNumber);
+            gameResult.put(currentIdxGameResult, gameResult.getOrDefault(currentIdxGameResult, 0) + 1);
+        }
     }
 
     private static void printGameStartMessage() {
@@ -28,5 +40,23 @@ public class Application {
         userNumberList.add(Character.getNumericValue(strNumber.charAt(2)));
 
         return userNumberList;
+    }
+
+    public static BaseballResult getCurrentIdxGameResult(int currentIdx, List<Integer> userNumber, List<Integer> computerNumber) {
+        if (isEqualInts(userNumber.get(currentIdx), computerNumber.get(currentIdx))) {
+            return BaseballResult.STRIKE;
+        }
+
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (isEqualInts(userNumber.get(currentIdx), computerNumber.get(i))) {
+                return BaseballResult.BALL;
+            }
+        }
+
+        return BaseballResult.NOTHING;
+    }
+
+    private static boolean isEqualInts(int number, int comparingNumber) {
+        return number == comparingNumber;
     }
 }
