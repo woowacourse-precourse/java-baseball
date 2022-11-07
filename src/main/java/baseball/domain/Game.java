@@ -20,6 +20,7 @@ public class Game {
             guessAndCheck();
             View.printGameClear();
         } while (player.getChoice() == RESTART_CHOICE);
+        View.printGameFinished();
     }
 
     public void guessAndCheck() {

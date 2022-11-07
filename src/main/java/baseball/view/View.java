@@ -10,8 +10,12 @@ public class View {
         System.out.println(GAME_START_MESSAGE);
     }
 
+    public static void printGameFinished() {
+        System.out.println(GAME_FINISH_MESSAGE);
+    }
+
     public static void printGameClear() {
-        System.out.println(SUCCESS_MESSAGE);
+        System.out.print(SUCCESS_MESSAGE);
         System.out.println(GAME_FINISH_MESSAGE);
         System.out.println(RESTART_OR_QUIT_MESSAGE);
     }
