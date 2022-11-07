@@ -28,15 +28,15 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
+
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
+
+            if (!computer.contains(randomNumber))
                 computer.add(randomNumber);
-            }
         }
         System.out.println(computer); // TODO : 테스트용 출력! 지워야 함
 
-        int computerNumber = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
-        return computerNumber;
+        return computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
     }
 
     public static void playGame(int answerNumber) {
