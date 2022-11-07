@@ -30,4 +30,14 @@ public class Application {
         }
         return isNothing;
     }
+
+    public static int numberOfStrikes(List<Integer> userInput, List<Integer> computer){
+        int strike_cnt = 0;
+        for(int i=0; i<userInput.size(); i++){
+            if(userInput.get(i).equals(computer.get(i))) {
+                strike_cnt++;
+            }
+        }
+        return strike_cnt;
+    }
 }

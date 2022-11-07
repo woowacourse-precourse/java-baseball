@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static baseball.Application.isNothing;
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
@@ -21,6 +21,17 @@ class ApplicationTest extends NsTest {
 
         Boolean isNothing = isNothing(userInput,computer);
         assertThat(isNothing).isEqualTo(false);
+    }
+
+    @Test
+    void 스트라이크(){
+        List<Integer> userInput = Arrays.asList(1,2,3);
+        List<Integer> computer = Arrays.asList(2,5,3);
+
+        int strike = numberOfStrikes(userInput,computer);
+        int result = 1;
+
+        assertThat(strike).isEqualTo(result);
     }
 
     @Test
