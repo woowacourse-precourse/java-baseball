@@ -61,7 +61,19 @@ public class Application {
         computerNumber = randomNumbers;
     }
 
-    static void judgeCount() {
+    static void playGame() {
+        while (true) {
+            registerUserNumber();
+            System.out.println(userNumber);
+            System.out.println(computerNumber);
+            if (judgeCount()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+        }
+    }
+
+    static boolean judgeCount() {
         int strike = 0;
         int ball = 0;
 
@@ -77,9 +89,13 @@ public class Application {
             }
         }
         printJudgeResult(strike, ball);
+        if (strike == 3) {
+            return true;
+        }
+        return false;
     }
 
-    static void printJudgeResult(int strike, int ball){
+    static void printJudgeResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return;
@@ -97,11 +113,8 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            registerUserNumber();
-            System.out.println(userNumber);
             registerComputerNumber();
-            System.out.println(computerNumber);
-            judgeCount();
+            playGame();
         } catch (IllegalArgumentException e) {
             System.err.println(e);
         }
