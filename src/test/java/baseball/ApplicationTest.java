@@ -110,10 +110,10 @@ class ApplicationTest extends NsTest {
         test2.add(3);
         test2.add(4);
         //then
-        assertThatCode(() -> game.isValidateRange(test1))
+        assertThatCode(() -> game.isValidateSize(test1))
                 .doesNotThrowAnyException();
 
-        assertThatThrownBy(() -> game.isValidateRange(test2))
+        assertThatThrownBy(() -> game.isValidateSize(test2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("Input size is too long.");
     }

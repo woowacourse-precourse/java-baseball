@@ -34,6 +34,8 @@ public class Game {
             userInput = readLine();
             validateUserInput(userInput);
             userNumbers = stringToIntegerList(userInput);
+            isValidateSize(userNumbers);
+            isValidateRange(userNumbers);
         }
     }
 
@@ -56,9 +58,17 @@ public class Game {
         }
     }
 
-    public void isValidateRange(List<Integer> userInput) {
+    public void isValidateSize(List<Integer> userInput) {
         if(userInput.size() != 3) {
             throw new IllegalArgumentException("Input size is too long.");
+        }
+    }
+
+    public void isValidateRange(List<Integer> userInput) {
+        for (Integer u : userInput) {
+            if (u < 1 || u > 9) {
+                throw new IllegalArgumentException("Input range is wrong.");
+            }
         }
     }
 }
