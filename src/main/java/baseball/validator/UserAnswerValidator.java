@@ -3,7 +3,7 @@ package baseball.validator;
 import static baseball.enums.AsciiType.ASCII_NINE;
 import static baseball.enums.AsciiType.ASCII_ONE;
 
-import baseball.exception.ErrorMessage;
+import baseball.message.ErrorMessage;
 
 public class UserAnswerValidator {
     private static final int CORRECT_LENGTH = 3;

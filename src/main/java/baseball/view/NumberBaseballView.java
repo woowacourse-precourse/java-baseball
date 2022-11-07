@@ -1,7 +1,7 @@
 package baseball.view;
 
 import baseball.domain.GameResult;
-import baseball.enums.GameMessageType;
+import baseball.message.GameMessage;
 import baseball.enums.GuessResultType;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,27 +13,27 @@ public class NumberBaseballView {
     private GameResult gameResult;
 
     public void printStartGame() {
-        System.out.println(GameMessageType.START_GAME.getMessage());
+        System.out.println(GameMessage.START_GAME.getMessage());
     }
 
     public String inputUserAnswer() {
-        System.out.print(GameMessageType.NUMBER_INPUT.getMessage());
+        System.out.print(GameMessage.NUMBER_INPUT.getMessage());
         return Console.readLine();
     }
 
     public String inputNewGameAnswer() {
-        System.out.println(GameMessageType.NEW_GAME.getMessage());
+        System.out.println(GameMessage.NEW_GAME.getMessage());
         return Console.readLine();
     }
 
     public GuessResultType printResult(GameResult gameResult) {
         setGameResult(gameResult);
         if (isWin()) {
-            System.out.println(GameMessageType.WIN.getMessage());
+            System.out.println(GameMessage.WIN.getMessage());
             return GuessResultType.WIN;
         }
         if (isNothing()) {
-            System.out.println(GameMessageType.NOTHING.getMessage());
+            System.out.println(GameMessage.NOTHING.getMessage());
             return GuessResultType.NOT_WIN;
         }
         System.out.println(createResultMessage());
@@ -52,10 +52,10 @@ public class NumberBaseballView {
         String strikeMessage = EMPTY_MESSAGE;
         String ballMessage = EMPTY_MESSAGE;
         if (gameResult.getStrike() > NOTHING) {
-            strikeMessage += gameResult.getStrike() + String.valueOf(GameMessageType.STRIKE.getMessage());
+            strikeMessage += gameResult.getStrike() + String.valueOf(GameMessage.STRIKE.getMessage());
         }
         if (gameResult.getBall() > NOTHING) {
-            ballMessage += gameResult.getBall() + String.valueOf(GameMessageType.BALL.getMessage());
+            ballMessage += gameResult.getBall() + String.valueOf(GameMessage.BALL.getMessage());
         }
         if (gameResult.getStrike() == NOTHING) {
             return ballMessage;

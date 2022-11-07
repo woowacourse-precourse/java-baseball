@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.message;
 
 public enum ErrorMessage {
     // 유저의 숫자야구 추측 입력시
