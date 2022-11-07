@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.Scanner;
-
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputNumber {
 
@@ -12,9 +10,10 @@ public class InputNumber {
         setInputNumber();
     }
     private void setInputNumber() {
-        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
-        num = sc.nextInt();
+        num = Integer.parseInt(readLine());
+//        System.out.println("input number is " + num);
     }
 
     public int getInputNumber() {
