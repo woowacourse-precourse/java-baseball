@@ -20,6 +20,12 @@ public class Application {
         Application app = new Application();
     }
 
+    // TODO : 사용자에게 숫자를 입력받고 힌트를 얻는다.
+    public void startGame(List<Integer> computer) {
+        List<Integer> user = selectNumbers();
+        getHint(computer, user);
+    }
+
     // TODO : 컴퓨터가 1에서 9까지의 서로다른 임의의 수 3개를 선택한다.
     public List<Integer> SelectRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
