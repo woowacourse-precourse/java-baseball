@@ -23,4 +23,8 @@ public class RandomBallNumber {
     private boolean isContainedNumber(String number) {
         return !randomNumbers.contains(number);
     }
+
+    public ArrayList<String> getRandomNumbers() {
+        return randomNumbers;
+    }
 }
