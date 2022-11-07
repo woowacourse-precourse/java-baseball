@@ -1,5 +1,6 @@
 package Controller;
 
+import baseball.Application;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import domain.Computer;
@@ -9,51 +10,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    public static void start(){
-        Game.printMessage(Game.readLine());
-    }
-    public static void strikeAndball_Message(){
-        int strike_count=0;
-        int ball_count=0;
-        for(int index=0; index<3; index++) {
-            if(Computer.getNumber().charAt(index)==User.getNumber().charAt(index)){
-                strike_count++;
-                continue;
-            }
-            if(Computer.getNumber_List().contains(Character.getNumericValue((User.getNumber().charAt(index))))) {
-                ball_count++;
-            }
-        }
-        if(strike_count!=0) {
-            System.out.print(strike_count + "스트라이크" + " ");
-        }
-        if(ball_count!=0) {
-            System.out.print(ball_count + "볼");
-        }
-        if(strike_count==0&&ball_count==0)
-            Game.nothing_Message();
+    public static String EXITSTATUS="playing";
 
-        System.out.print("\n");
+    public static void start(){
+        System.out.print("숫자를 입력해주세요 : ");
+        Game.UserInput_Set(Game.readLine());
+        Game.strikeAndball_Message();
+    }
+    public static void strikeAndball_Message() {
+
+        if (User.ball_count() != 0) {
+            System.out.print(User.ball_count() + "볼 " );
+        }
+        if (User.strike_count() != 0) {
+            if (User.strike_count() == 3) {
+                System.out.print(User.strike_count()+"스트라이크" +"\n");
+                System.out.print("숫자를 모두 맞히셨습니다! 게임 종료" + "\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." + "\n");
+                String s = Console.readLine();
+                if (s.equals("1")) {
+                    Computer.setNumber();
+                    return;
+                }
+                if (s.equals("2")) {
+                    System.out.print("게임 종료");
+                    EXITSTATUS="exit";
+                }
+            }
+            System.out.print(User.strike_count() + "스트라이크" + " ");
+        }
+
 
     }
     public static void nothing_Message(){
-        System.out.print("낫싱");
+        if (User.strike_count() == 0 && User.ball_count() == 0) {
+            System.out.print("낫싱" + "\n");
+        }
     }
     public static String readLine(){
-        System.out.print("숫자를 입력해 주세요 : " );
         String input=Console.readLine();
 
-        if(Utils.redundant_Check(input)) throw new IllegalArgumentException("중복된 숫자가 있습니다.");
-        if(Utils.blank_Check(input)) throw new IllegalArgumentException("값을 입력해주세요.");
-        if(Utils.length_check(input)) throw new IllegalArgumentException("3글자 수가 아닙니다.");
-        if(Utils.zeroOrNumber_check(input)) throw new IllegalArgumentException("1~9숫자를 입력해주세요.");
-        return input;
+          if(Utils.redundant_Check(input)) throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+          if(Utils.blank_Check(input)) throw new IllegalArgumentException("값을 입력해주세요.");
+          if(Utils.length_check(input)){ throw new IllegalArgumentException("3글자 수가 아닙니다.");}
+          if(Utils.zeroOrNumber_check(input)){ throw new IllegalArgumentException("1~9숫자를 입력해주세요.");}
+
+          return input;
 
     }
-
-    public static void printMessage(String input) {
+    public static void UserInput_Set(String input) {
         User.setNumber(input);
-        //정답 체크 메서드 자리
-        Game.strikeAndball_Message();
     }
 }

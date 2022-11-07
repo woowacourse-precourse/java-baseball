@@ -37,13 +37,13 @@ public class Utils {
     }
 
     public static boolean length_check(String input){
-        if(input.length()!=3) return false;
+        if(input.length()!=3) {return true;}
 
-        return true;
+        return false;
     }
     public static boolean zeroOrNumber_check(String input){
-        if(!input.matches("[1-9]")) return true;
-        return false;
+        if(input.contains("[1-9]")) return false;
+        return true;
     }
 
 
