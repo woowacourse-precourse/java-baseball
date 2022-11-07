@@ -1,6 +1,9 @@
 package baseball.domain;
 
 import baseball.message.PitchStatusMessage;
+import baseball.message.ProgramMessage;
+import baseball.util.GameRule;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -100,6 +103,18 @@ class PitchResultTest {
         pitchResult.setResult(userInput, numbers);
 
         assertThat(pitchResult.getPitchStatusMessage()).isEqualTo(PitchStatusMessage.NOTHING);
+    }
+
+    @DisplayName("숫자를 맞힌 경우, \"3개의 숫자를 모두 맞히셨습니다! 게임 종료\" 출력후 줄 바꿈")
+    @Test
+    void 숫자를_모두_맞힌_3스트라이크인_경우_메시지_출력() {
+        String userInput = "123";
+        List<Integer> numbers = List.of(1, 2, 3);
+
+        pitchResult.setResult(userInput, numbers);
+        pitchResult.isThreeStrike();
+
+        Assertions.assertThat(String.format(ProgramMessage.FINISH_PITCH, GameRule.NUMBER_OF_NUMBERS)).isEqualTo(outputStreamCaptor.toString().trim());
     }
 
 }

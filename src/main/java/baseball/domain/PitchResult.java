@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.message.PitchStatusMessage;
+import baseball.message.ProgramMessage;
 import baseball.util.GameRule;
 
 import java.util.List;
@@ -77,5 +78,17 @@ public class PitchResult {
         }
 
         return String.format(PitchStatusMessage.NOTHING);
+    }
+
+    public boolean isThreeStrike() {
+        if (strikeCount == 3) {
+            displayFinishPitch();
+            return true;
+        }
+        return false;
+    }
+
+    private void displayFinishPitch() {
+        System.out.println(String.format(ProgramMessage.FINISH_PITCH, GameRule.NUMBER_OF_NUMBERS));
     }
 }

@@ -27,8 +27,8 @@ public class BaseballGameService {
     }
 
     // 위에서 받은 인풋 검증
-    public boolean isThreeStrike() {
-        return false;
+    public boolean isKeepThrow() {
+        return !(pitchResult.isThreeStrike());
     }
 
     //흐름 처리 메서드

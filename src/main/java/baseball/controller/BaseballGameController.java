@@ -31,7 +31,7 @@ public class BaseballGameController {
         do {
             baseballGameView.displayPleaseEnterNumber();
             baseballGameService.throwBaseball();
-        } while (baseballGameService.isThreeStrike());
+        } while (baseballGameService.isKeepThrow());
         //finish game
     }
 
