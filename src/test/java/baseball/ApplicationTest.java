@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +30,16 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void splitStrNumberToList_테스트() {
+        String number = "123";
+        List<Integer> numberList = List.of(1, 2, 3);
+
+        List<Integer> splitedList = Application.splitStrNumberToList(number);
+
+        Assertions.assertThat(numberList).isEqualTo(splitedList);
     }
 
     @Override
