@@ -40,11 +40,11 @@ public class PlayerComputer {
 		return number.toString();
 	}
 
-	private static int getRandomDigit() {
-		return Randoms.pickNumberInRange(1, 9);
-	}
-
 	private boolean isAbleToAddDigit(HashMap<Integer, Integer> digits) {
 		return digits.size() < 3;
+	}
+
+	private static int getRandomDigit() {
+		return Randoms.pickNumberInRange(1, 9);
 	}
 }
