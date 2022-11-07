@@ -3,6 +3,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Collections;
+
 public class ProblemSolver extends Player{
     public void solveProblem(int sizeOfProblem) throws IllegalArgumentException{
         String answer = Console.readLine();
@@ -13,6 +15,7 @@ public class ProblemSolver extends Player{
             throw new IllegalArgumentException();
         }
 
+        getNumbers().clear();
         for(int i = 0;i<answer.length();i++){
             int number = Character.getNumericValue(answer.charAt(i));
             addNumber(number);
