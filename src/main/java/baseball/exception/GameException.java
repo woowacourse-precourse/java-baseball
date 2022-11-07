@@ -1,11 +1,11 @@
 package baseball.exception;
 
-public enum BaseballException {
-    BASEBALL_SIZE_EXCEPTION("야구공 개수가 올바르지 않습니다.");
+public enum GameException {
+    GAME_STATUS_NULL_EXCEPTION("존재하지 않는 게임 타입입니다.");
 
     private final String message;
 
-    BaseballException(String message) {
+    GameException(String message) {
         this.message = message;
     }
 
