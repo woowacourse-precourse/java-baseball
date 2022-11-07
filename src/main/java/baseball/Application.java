@@ -9,6 +9,23 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
+    public static void main(String[] args) {
+        startGame();
+
+        List<Integer> answer;
+        List<Integer> userInput;
+        int flag = 1;
+
+        while (flag == 1) {
+            answer = getAnswer();
+            userInput = getUserInput();
+            while (!isAnswer(answer, userInput)) {
+                userInput = getUserInput();
+            }
+            flag = getFlag();
+        }
+    }
+
     public static Integer getFlag() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -115,8 +132,5 @@ public class Application {
         }
 
         return answer;
-    }
-
-    public static void main(String[] args) {
     }
 }
