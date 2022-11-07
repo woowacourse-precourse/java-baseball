@@ -34,6 +34,18 @@ public class GameController {
 
         outputView.outputRestart();
         inputView.inputRestartNumber();
+        controlRestartByInput();
+    }
+
+    private void controlRestartByInput() throws IllegalArgumentException {
+        String inputString = Console.readLine();
+        if (inputString.equals("1")) {
+            start();
+            return;
+        }
+        if (!inputString.equals("2")) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
     }
 
     private void setInputNumbers(Numbers answerNumbers) throws IllegalArgumentException {
