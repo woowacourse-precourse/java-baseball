@@ -1,5 +1,7 @@
 package baseball.gameComponents;
 
+import baseball.exception.ExceptionCode;
+import baseball.exception.GameException;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -33,6 +35,36 @@ public class MainFunctions {
             ballsAnsStrikes[0]++;
         } else {
             isPicked[input] = true;
+        }
+    }
+
+    public boolean printExamineResult(int[] ballsAndStrikes) {
+        validateBallsAndStrike(ballsAndStrikes);
+        //하나도 맞추지 못한 경우
+        if(ballsAndStrikes[0] == 0 && ballsAndStrikes[1] == 0) {
+            System.out.println("낫싱");
+            return false;
+            //모두 맞춘 경우
+        } else if(ballsAndStrikes[1] == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+            //그 외
+        } else {
+            System.out.print(ballsAndStrikes[0] + "볼 ");
+            System.out.println(ballsAndStrikes[1] + "스트라이크");
+            return false;
+        }
+    }
+
+    private void validateBallsAndStrike(int[] ballsAndStrikes) {
+        int balls = ballsAndStrikes[0];
+        int strikes = ballsAndStrikes[1];
+
+        if(ballsAndStrikes.length != 2
+            || balls < 0 || balls > 3
+            || strikes < 0 || strikes > 3|| balls + strikes > 3) {
+            throw new GameException(ExceptionCode.BALLS_AND_STRIKES_NOT_VALID);
         }
     }
 }

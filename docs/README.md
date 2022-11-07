@@ -20,9 +20,11 @@
       - 첫번째 value: 볼 수
       - 두번째 value: 스트라이크 수
 - printExamineResult(int[] result)
-  - 평가한 결과를 출력 형식에 맞게 평가하는 기능
+  - 평가한 결과를 출력
+  - 입력 값이 올바르지 않으면 예외 발생
   - 입력: 길이가 2인 int 배열
     - 첫번째 value: 볼 수
     - 두번째 value: 스트라이크 수
+  - 출력: boolean으로 3Strike면 true, 아니면 false리턴
 - restartOrEndGame()
   - 정답을 맞췄을 때, 재시작할지 종료할지 결정하는 기능
