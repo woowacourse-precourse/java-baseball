@@ -109,14 +109,17 @@ public class Game {
     private static boolean checkAgainGame() {
 
         String input = Console.readLine();
-        if (checkIsNumberError(input)) {
+
+        boolean isNumber = ValidCheck.checkIsNumberError(input);
+        if (isNumber) {
             throw new IllegalArgumentException();
         }
 
         int toBeContinue = Integer.valueOf(input);
         System.out.println(toBeContinue);
 
-        if (checkIsContinueError(toBeContinue)) {
+        boolean isContinue = ValidCheck.checkIsContinueError(toBeContinue);
+        if (isContinue) {
             throw new IllegalArgumentException();
         }
 
@@ -132,67 +135,14 @@ public class Game {
 
     private static void runException(String input) {
 
-        if (checkIsNumberError(input) || checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
+        boolean isNumber = ValidCheck.checkIsNumberError(input);
+        boolean isSize = ValidCheck.checkSizeError(input);
+        boolean isRange = ValidCheck.checkRangeError(input);
+        boolean isVisited = ValidCheck.checkVisitedError(input);
+
+        if (isNumber || isSize || isRange || isVisited) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public static boolean checkIsContinueError(int toBeContinue) {
-        if (toBeContinue != AGAIN && toBeContinue != EXIT) {
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean checkIsNumberError(String input) {
-        try {
-            int value = Integer.valueOf(input);
-        } catch (NumberFormatException e) {
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean checkRangeError(String input) {
-
-        for (int i = 0; i < TOTAL_SIZE; i++) {
-            char value = input.charAt(i);
-            int number = Character.getNumericValue(value);
-
-            boolean rangeCheck = (number >= START_RANGE) && (number <= END_RANGE);
-
-            if (!rangeCheck) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean checkSizeError(String input) {
-        int size = input.length();
-
-        if (size != TOTAL_SIZE) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private static boolean checkVisitedError(String input) {
-        List<Integer> visitedList = new ArrayList<>();
-
-        for (int i = 0; i < TOTAL_SIZE; i++) {
-            char value = input.charAt(i);
-            int number = Character.getNumericValue(value);
-
-            if (visitedList.contains(number)) {
-                return true;
-            }
-
-            visitedList.add(number);
-        }
-
-        return false;
     }
 
 }

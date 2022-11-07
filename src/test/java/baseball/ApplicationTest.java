@@ -37,6 +37,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     @DisplayName("Game, checkRangeError")
     void 게임_범위_예외_메서드_테스트() {
@@ -54,6 +55,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
