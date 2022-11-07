@@ -33,4 +33,14 @@ public class Application {
     	}
     	return computerNum;
     }
+    
+    // 사용자 입력받은 값 리스트 담기
+    public static List<Integer> userInputList() {
+    	List<Integer> userInputList = new ArrayList<>();
+    	Scanner sc = new Scanner(System.in);
+    	int userInput = sc.nextInt();
+    	userInputList = IntStream.of(inputToList(userInput)).boxed().collect(Collectors.toList());
+    	return userInputList;
+    }
+    
 }
