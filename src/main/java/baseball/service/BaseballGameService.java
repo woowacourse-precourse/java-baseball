@@ -6,6 +6,7 @@ import baseball.utils.Constants;
 import baseball.utils.InputValueValidator;
 
 import baseball.utils.RandomNumber;
+import baseball.view.BaseBallGameView;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
@@ -23,6 +24,14 @@ public class BaseballGameService {
         int end = Constants.BASEBALL_GAME_NUMBER_RANGE_END;
 
         this.game = new BaseBallGame(RandomNumber.getRandomNumber(size, start, end));
+    }
+
+    public void playGame(){
+        while (game.getStrikeCount() < Constants.BASEBALL_GAME_MAX_STRIKE){
+            game.setScoreZero();
+            getUserGameInput();
+            updateScore();
+        }
     }
 
     private void updateScore(){
@@ -52,6 +61,7 @@ public class BaseballGameService {
     }
 
     private void getUserGameInput() throws IllegalArgumentException{
+        BaseBallGameView.printRequestNumber();
         String input = Console.readLine();
 
         if(!validateGameInput(input)){
