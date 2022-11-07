@@ -25,11 +25,11 @@ public class Converter {
     private boolean isAppropriateRange(String userInput) throws IllegalArgumentException {
         for (int i = 0; i < userInput.length(); i++) {
             int userInputDigit = charToInt(userInput.charAt(i));
-            if (userInputDigit > 0 && userInputDigit < 10) {
-                return true;
+            if ((userInputDigit < 1) || (userInputDigit > 10)) {
+                throw new IllegalArgumentException();
             }
         }
-        throw new IllegalArgumentException();
+        return true;
     }
 
     private boolean isUniqueInput(String userInput) throws IllegalArgumentException {
