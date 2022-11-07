@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.gamelauncher;
 
 public class BaseballGameLauncher {
 

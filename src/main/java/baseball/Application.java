@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.game.BaseballGameLauncher;
+import baseball.gamelauncher.BaseballGameLauncher;
 
 public class Application {
 

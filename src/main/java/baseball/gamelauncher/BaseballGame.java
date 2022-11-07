@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.gamelauncher;
 
 import static baseball.player.InputValidator.GAME_RESTART_OPTION;
 
