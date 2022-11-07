@@ -25,15 +25,18 @@
 
         runException         => 모든 예외 처리 후 IllegalArgumentException 
 
-        checkRangeError      => 각 입력 숫자가 범위를 벗어난 에러 체크 
-        checkSizeError       => 입력값의 길이가 벗어난 에러 체크 
-        checkVisitedError    => 중복된 값이 있는 에러 체크
         checkAgainGame       => 다시 할지 묻기
-        checkIsContinueError => toBeContinue 값이 옳은지 체크
-        checkIsNumberError   => 입력값이 숫자 인지 체크
-
+        checkSuccess         => 성공했는지 확인
 
     - Record  (Class)
 
         setEachRecords       => strikeCount, ballCount 개수 세기
         displayRecord        => 이번 play 기록 출력
+
+    - ValidCheck  (Class)
+
+        checkRangeError      => 각 입력 숫자가 범위를 벗어난 에러 체크
+        checkSizeError       => 입력값의 길이가 벗어난 에러 체크
+        checkVisitedError    => 중복된 값이 있는 에러 체크
+        checkIsContinueError => toBeContinue 값이 옳은지 체크
+        checkIsNumberError   => 입력값이 숫자 인지 체크
