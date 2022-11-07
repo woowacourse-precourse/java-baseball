@@ -22,20 +22,21 @@ public class Application {
         return Console.readLine();
     }
 
-    public static void main(String[] args) {
+    private static void game(){
         int game_status;
         String user_num;
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computer = new ArrayList<>();
 
         do {
-            do{
-                user_num = user_num_input();
-            } while ();
-        } while (game_status == 1);
+            rand_num_decision(computer);
 
-        List<Integer> computer = new ArrayList<>();
-        rand_num_decision(computer);
+        } while (game_status == 1);
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        game();
 
     }
 }
