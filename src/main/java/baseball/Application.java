@@ -85,9 +85,6 @@ public class Application {
 
     public static void game_start(){
         List<Integer> computer_number = make_number();
-        for(int i=0; i<3; i++){
-            System.out.print(computer_number.get(i)+" ");
-        }
 
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
