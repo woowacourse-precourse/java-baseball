@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.message.GameProgressMessage;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,8 +13,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static baseball.GameProgressMessage.*;
-import static baseball.ResultMessage.*;
+import static baseball.message.GameProgressMessage.*;
+import static baseball.message.ResultMessage.*;
 
 public class BullsAndCows {
 

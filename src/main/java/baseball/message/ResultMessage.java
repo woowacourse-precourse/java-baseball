@@ -1,4 +1,4 @@
-package baseball;
+package baseball.message;
 
 public enum ResultMessage {
     STRIKE("스트라이크"),

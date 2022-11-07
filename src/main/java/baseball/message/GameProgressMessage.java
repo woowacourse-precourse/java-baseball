@@ -1,4 +1,4 @@
-package baseball;
+package baseball.message;
 
 public enum GameProgressMessage {
     ASK_QUIT(
