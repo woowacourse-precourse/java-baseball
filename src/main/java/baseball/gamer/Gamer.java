@@ -4,7 +4,9 @@ import baseball.Numbers;
 
 public interface Gamer {
 
-    boolean isFinishedGame();
+    boolean chooseToFinishGame();
+
+    Numbers getNumbers();
 
     Numbers changeNumbers();
 }

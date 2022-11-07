@@ -25,16 +25,24 @@ public class Numbers {
                 randomNumbers.add(randomNumber);
             }
         }
-        return new Numbers(randomNumbers);
+        Numbers numbers = new Numbers(randomNumbers);
+        numbers.validate();
+
+        return numbers;
     }
 
     public static Numbers createInputNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+
         String[] splitInput = Console.readLine().split("");
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> inputNumbers = new ArrayList<>();
         for (String input : splitInput) {
-            numbers.add(Integer.parseInt(input));
+            inputNumbers.add(Integer.parseInt(input));
         }
-        return new Numbers(numbers);
+        Numbers numbers = new Numbers(inputNumbers);
+        numbers.validate();
+
+        return numbers;
     }
 
     public void validate() {

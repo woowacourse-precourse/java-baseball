@@ -12,7 +12,7 @@ public class User implements Gamer {
     }
 
     @Override
-    public boolean isFinishedGame() {
+    public boolean chooseToFinishGame() {
         String input = Console.readLine();
         validateInput(input.trim());
 
@@ -30,6 +30,11 @@ public class User implements Gamer {
     public Numbers changeNumbers() {
         Numbers numbers = Numbers.createInputNumbers();
         this.numbers = numbers;
+        return numbers;
+    }
+
+    @Override
+    public Numbers getNumbers() {
         return numbers;
     }
 }
