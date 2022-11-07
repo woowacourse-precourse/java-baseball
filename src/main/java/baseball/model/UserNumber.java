@@ -12,7 +12,7 @@ import static baseball.util.Message.SET_USER_INPUT_NUMBER_MESSAGE;
  */
 public class UserNumber {
 
-    public List<Integer> getUserNumber(String userNumber) {
+    public List<Integer>  getUserNumber(String userNumber) {
         int number = Integer.parseInt(userNumber);
         List<Integer> userNumberList = new ArrayList<>();
         while (number > 0){
@@ -23,8 +23,7 @@ public class UserNumber {
     }
 
     public UserNumber() {
-        getUserInput();
-        String userNumber = getUserInput();
+        String userNumber = Console.readLine();
         NumberCheckList.isIntegerCheck(userNumber);
         NumberCheckList.isSizeCheck(userNumber);
         NumberCheckList.isOverLapCheck(userNumber);
