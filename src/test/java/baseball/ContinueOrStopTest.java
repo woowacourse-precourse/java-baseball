@@ -1,13 +1,14 @@
 package baseball;
 
+import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.assertj.core.api.Assertions;
 
 class ContinueOrStopTest {
 
   @Test
   void choice() {
-    assertThat(ContinueOrStop.choice("1")).isEqualTo(true);
-    assertThat(ContinueOrStop.choice("2")).isEqualTo(false);
+    Assertions.assertThat(ContinueOrStop.choice("1")).isEqualTo(true);
+    Assertions.assertThat(ContinueOrStop.choice("2")).isEqualTo(false);
   }
 }
