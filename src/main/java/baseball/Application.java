@@ -28,7 +28,7 @@ public class Application {
             System.out.println(Game.getResultOfPlayerGuess(ball, strike));
         } while (!Game.isAllStrike(strike));
 
-
+        restartOrNot();
     }
 
     static void restartOrNot() throws IllegalArgumentException {
