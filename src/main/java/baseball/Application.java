@@ -32,7 +32,7 @@ public class Application {
 
             lastAnswer = service.checkAnswer(ballCount, numberLengthCondition);
 
-            if(lastAnswer == 2){
+            if (lastAnswer == 2) {
                 isMaintains = false;
             }
         }

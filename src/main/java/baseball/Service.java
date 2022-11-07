@@ -118,7 +118,7 @@ public class Service {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String askingFinish = Console.readLine();
 
-        if(!askingFinish.equals("1") && !askingFinish.equals("2")) {
+        if (!askingFinish.equals("1") && !askingFinish.equals("2")) {
             throw new IllegalArgumentException("Wrong ending number");
         }
         return Integer.parseInt(askingFinish);

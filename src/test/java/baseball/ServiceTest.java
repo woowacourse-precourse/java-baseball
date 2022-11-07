@@ -223,7 +223,7 @@ public class ServiceTest {
         } catch (InterruptedException e) {
         }
 
-        lastAnswer = (int)testMethod.invoke(service, gameClearCondition);
+        lastAnswer = (int) testMethod.invoke(service, gameClearCondition);
         //then
         assertEquals(1, lastAnswer);
     }
@@ -248,7 +248,7 @@ public class ServiceTest {
         } catch (InterruptedException e) {
         }
 
-        lastAnswer = (int)testMethod.invoke(service, gameClearCondition);
+        lastAnswer = (int) testMethod.invoke(service, gameClearCondition);
         //then
         assertEquals(2, lastAnswer);
     }
