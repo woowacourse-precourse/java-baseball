@@ -1,5 +1,5 @@
 package baseball.dto;
 
 public enum ScoreResultType {
-    ALL_STRIKE, STRIKE, NOTHING, BALL, STRIKE_BALL
+    ALL_STRIKE, STRIKE, NOTHING, BALL, BALL_STRIKE
 }
