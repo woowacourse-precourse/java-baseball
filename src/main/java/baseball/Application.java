@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -55,6 +57,15 @@ public class Application {
             enternumber();
         }else if(playeranwer==2){
             return;
+        }
+    }
+
+    public static void makerandomnumber(){
+        while(computernumber.size()<3){
+            int randomnumber= Randoms.pickNumberInRange(1,9);
+            if(!computernumber.contains(randomnumber)){
+                computernumber.add(randomnumber);
+            }
         }
     }
 
