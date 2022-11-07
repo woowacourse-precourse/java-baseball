@@ -82,6 +82,7 @@ public class Application {
 
                 if(integer_gameagain == 1){
                     again = true;
+                    computer = new ArrayList<>();
                 } else if(integer_gameagain == 2){
                     break;
                 } else {
