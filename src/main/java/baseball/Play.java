@@ -15,6 +15,7 @@ public class Play {
             throw new IllegalArgumentException("3자리의 서로 다른 숫자가 아닙니다.");
         }
         int ball = countBall(playerNumber, answerNumber);
+        int strike = countStrike(playerNumber, answerNumber);
     }
     public static String createThreeNumber() {
         int size = 0;
@@ -37,5 +38,14 @@ public class Play {
             }
         }
         return ball;
+    }
+    public static int countStrike(String playerNumber, String answerNumber) {
+        int strike = 0;
+        for (int index = 0; index < 3; index++) {
+            if (playerNumber.charAt(index) == answerNumber.charAt(index)) {
+                strike++;
+            }
+        }
+        return strike;
     }
 }
