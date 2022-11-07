@@ -13,7 +13,6 @@ public class BaseballGame {
     InputAndOutput inputAndOutput = new InputAndOutput();
 
     public void startGame() {
-        InputAndOutput.printGameStartPhrase();
         List<Integer> computerNumbers = number.generateRandomNumber();
         String resultPhrase;
 
