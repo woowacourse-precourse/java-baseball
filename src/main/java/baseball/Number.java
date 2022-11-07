@@ -23,6 +23,15 @@ public class Number {
         return computer;
     }
 
+    public List<Integer> getPlayerNumber() {
+        List<Integer> player = new ArrayList<>();
+        String inputNumber = getInputNumber();
+        for (int i = 0; i < LENGTH; i++) {
+            player.add(Character.getNumericValue(inputNumber.charAt(i)));
+        }
+        return player;
+    }
+
     private String getInputNumber() {
         System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
