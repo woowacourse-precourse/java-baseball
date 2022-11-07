@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,7 +19,9 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String s = Console.readLine();
-
+            if (isNotNemeric(s)) {
+                throw new IllegalArgumentException();
+            }
             printResult(s,randomThree);
 
             if (s.equals(randomThree)) {
@@ -28,6 +31,15 @@ public class Application {
             }
         }
         chooseResetOrExit();
+    }
+
+    static Boolean isNotNemeric(String s) {
+        String pattern = "[0-9]";
+        for (int i=0;i<3;i++) {
+            if (!Pattern.matches(pattern, s))
+                return false;
+        }
+        return true;
     }
 
     static String getRandomThree() {
@@ -75,8 +87,10 @@ public class Application {
 
         if (s.equals("1")) {
             startGame();
+            return;
         } else if (s.equals("2")) {
             return;
         }
+        throw new IllegalArgumentException();
     }
 }
