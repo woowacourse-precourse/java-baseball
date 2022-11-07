@@ -1,9 +1,22 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Application {
+
+    public static List<Integer> random(){
+        List<Integer> computer = new ArrayList<Integer>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
 
     public static void game() {
         List<Integer> randomNum= random();
