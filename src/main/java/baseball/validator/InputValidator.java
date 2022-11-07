@@ -77,12 +77,6 @@ public class InputValidator {
     }
 
     private boolean isValidNumber(String stateNumber) {
-        for (State state : State.values()) {
-            if (state.getNumber().equals(stateNumber)) {
-                return true;
-            }
-        }
-
-        return false;
+        return State.isValidNumber(stateNumber);
     }
 }
