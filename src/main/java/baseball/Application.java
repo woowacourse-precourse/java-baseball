@@ -30,15 +30,15 @@ public class Application {
     private static final int END_VALUE = 9;
 
 
-    public static void main(String[] args) {
-            notifyGameStart();
-            startGame();
+    public static void main(String[] args) throws IllegalArgumentException {
+        notifyGameStart();
+        startGame();
     }
 
-    private static void startGame() throws IllegalArgumentException{
+    private static void startGame() throws IllegalArgumentException {
         List<Integer> computerNumbers = createComputerNumbers();
         boolean isCorrectAnswer = false;
-        while (!isCorrectAnswer){
+        while (!isCorrectAnswer) {
             List<Integer> userNumbers = InputUserNumber();
             String hint = getHint(computerNumbers, userNumbers);
             System.out.println(hint);
@@ -55,11 +55,11 @@ public class Application {
         return false;
     }
 
-    public static void gameOver() throws IllegalArgumentException{
+    public static void gameOver() throws IllegalArgumentException {
         System.out.println(GAME_OPTION_MESSAGE);
         String gameOption = Console.readLine();
         validGameOption(gameOption);
-        if (gameOption.equals(RESTART_GAME)){
+        if (gameOption.equals(RESTART_GAME)) {
             startGame();
         } else if (gameOption.equals(GAME_OVER)) {
             System.out.println(CLOSE_MESSAGE);
@@ -68,7 +68,6 @@ public class Application {
 
     public static List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
-        computerNumbers.add(Randoms.pickNumberInRange(START_VALUE, END_VALUE));
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(START_VALUE, END_VALUE);
             if (!computerNumbers.contains(randomNumber)) {
@@ -82,7 +81,7 @@ public class Application {
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public static List<Integer> InputUserNumber() throws IllegalArgumentException{
+    public static List<Integer> InputUserNumber() throws IllegalArgumentException {
         System.out.print(INPUT_USER_NUMBER_MESSAGE);
         String userNumbers = Console.readLine();
         validUserNumbers(userNumbers);
@@ -128,20 +127,26 @@ public class Application {
         return ballCnt;
     }
 
-    public static void validUserNumbers(String userNumbers) throws IllegalArgumentException{
-        if (!userNumbers.matches("^[1-9]{3}$")){
-            throw new IllegalArgumentException(String.join(":",INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
+    public static void validUserNumbers(String userNumbers) throws IllegalArgumentException {
+//        if (userNumbers.trim().isEmpty()){
+//            throw new IllegalArgumentException(String.join(":",INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
+//        }
+        if (!userNumbers.matches("^[1-9]{3}$")) {
+            throw new IllegalArgumentException(String.join(":", INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
         }
         if (userNumbers.charAt(0) == userNumbers.charAt(1) ||
                 userNumbers.charAt(0) == userNumbers.charAt(2) ||
-                userNumbers.charAt(1) == userNumbers.charAt(2)){
-            throw new IllegalArgumentException(String.join(":",INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
+                userNumbers.charAt(1) == userNumbers.charAt(2)) {
+            throw new IllegalArgumentException(String.join(":", INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
         }
     }
 
-    public static void validGameOption(String gameOption) throws IllegalArgumentException {
-        if (!gameOption.matches("^[1-2]$")) {
-            throw new IllegalArgumentException(String.join(":",GAME_OPTION_ERROR_MESSAGE, gameOption));
+    public static void validGameOption(String inputGameOption) throws IllegalArgumentException {
+//        if (inputGameOption.trim().isEmpty()){
+//            throw new IllegalArgumentException(String.join(":", GAME_OPTION_ERROR_MESSAGE, inputGameOption));
+//        }
+        if (!inputGameOption.matches("^[1-2]$")) {
+            throw new IllegalArgumentException(String.join(":", GAME_OPTION_ERROR_MESSAGE, inputGameOption));
         }
     }
 }
