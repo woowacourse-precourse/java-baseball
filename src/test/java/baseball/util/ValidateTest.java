@@ -16,96 +16,56 @@ class ValidateTest {
         return new ByteArrayInputStream(input.getBytes());
     }
 
-    @DisplayName("3자리인지 확인하는 기능")
+    @DisplayName("3자리가 아닌것을 확인하는 기능 - 예외발생")
     @Test
-    void isRuleDigit_success() {
-        String input = "abc";
-
-        assertThat(input.length()).isEqualTo(GameRule.NUMBER_OF_NUMBERS);
-        assertThat(Validate.isRuleDigit(input)).isTrue();
-    }
-
-    @DisplayName("3자리가 아닌것을 확인하는 기능")
-    @Test
-    void isRuleDigit_fail() {
+    void 세자리수가_아닌것을_확인하는기능_예외() {
         String input = "abcdef";
 
-        assertThat(input.length()).isNotEqualTo(GameRule.NUMBER_OF_NUMBERS);
-        assertThat(Validate.isRuleDigit(input)).isFalse();
+        assertThatThrownBy(() -> Validate.inputValidate(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("서로 다른숫자인지 확인하는 기능")
+    @DisplayName("서로 다른숫자인지 확인하는 기능 - 예외발생")
     @Test
-    void isDifferentDigits_success() {
-        String input = "123";
-
-        assertThat(Validate.isDifferentDigits(input)).isTrue();
-    }
-
-    @DisplayName("서로 다른숫자인지 확인하는 기능")
-    @Test
-    void isDifferentDigits_fail() {
+    void 서로_다른_숫자인지_확인() {
         String input = "121";
 
-        assertThat(Validate.isDifferentDigits(input)).isFalse();
+        assertThatThrownBy(() -> Validate.inputValidate(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("서로 다른숫자인지 확인하는 기능")
+    @DisplayName("0이 포함되지 않았는지 확인하는 기능 - 예외")
     @Test
-    void isDifferentDigits_fail_2() {
-        String input = "112";
-
-        assertThat(Validate.isDifferentDigits(input)).isFalse();
-    }
-
-    @DisplayName("0이 포함되지 않았는지 확인하는 기능")
-    @Test
-    void isNotContainZero_success() {
-        String input = "114";
-        assertThat(Validate.isNotContainZero(input)).isTrue();
-    }
-
-    @DisplayName("0이 포함되지 않았는지 확인하는 기능")
-    @Test
-    void isNotContainZero_fail() {
+    void 숫자_0이_포함되지_않았는지_확인_예외() {
         String input = "120";
-        assertThat(Validate.isNotContainZero(input)).isFalse();
+
+        assertThatThrownBy(() -> Validate.inputValidate(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
     @Test
-    void isAcceptAbleEndGame_success() {
+    void 게임종료시_1입력() {
         String userInput = "1";
 
         assertThat(Validate.isAcceptAbleEndGame(userInput)).isTrue();
-
-        String secondUserInput = "2";
-
-        assertThat(Validate.isAcceptAbleEndGame(secondUserInput)).isTrue();
     }
 
     @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
     @Test
-    void isAcceptAbleEndGame_fail() {
-        String userInput = "3";
-
-        assertThat(Validate.isAcceptAbleEndGame(userInput)).isFalse();
-    }
-
-    @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
-    @Test
-    void isReStartGame_success() {
-        String userInput = "1";
-
-        assertThat(Validate.isReStartGame(userInput)).isTrue();
-    }
-
-    @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
-    @Test
-    void isReStartGame_fail() {
+    void 게임종료시_2입력() {
         String userInput = "2";
 
-        assertThat(Validate.isReStartGame(userInput)).isFalse();
+        assertThat(Validate.isAcceptAbleEndGame(userInput)).isTrue();
+    }
+
+    @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
+    @Test
+    void 게임종료시_예외입력() {
+        String userInput = "3";
+
+        assertThatThrownBy(() -> Validate.inputValidate(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력 검증 기능에 부합하지 않은 입력시 예외 발생")

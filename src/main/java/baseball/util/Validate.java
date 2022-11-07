@@ -10,38 +10,51 @@ import static baseball.util.ProcessCode.RESTART;
 
 public class Validate {
 
-    public static boolean isRuleDigit(String input) {
-        if (input.length() == GameRule.NUMBER_OF_NUMBERS) {
-            return true;
-        }
-        throw new IllegalArgumentException(ExceptionMessage.IS_NOT_VALID_LENGTH);
+    public static void inputValidate(String input) {
+        numberOnly(input);
+        ruleDigit(input);
+        containZero(input);
+        differentDigits(input);
     }
 
-    public static boolean isDifferentDigits(String digits) {
+    private static void numberOnly(String input) {
+        for (int indexOfDigit = 0; indexOfDigit < input.length(); indexOfDigit++) {
+            if (!Character.isDigit(input.charAt(indexOfDigit))) {
+                throw new IllegalArgumentException(ExceptionMessage.IS_NOT_NUMBER);
+            }
+        }
+    }
+
+    private static void ruleDigit(String input) {
+        if (input.length() != GameRule.NUMBER_OF_NUMBERS) {
+            throw new IllegalArgumentException(ExceptionMessage.IS_NOT_VALID_LENGTH);
+        }
+    }
+
+    private static void containZero(String digits) {
+        for (int indexOfDigits = 0; indexOfDigits < digits.length(); indexOfDigits++) {
+            char digit = digits.charAt(indexOfDigits);
+
+            if (digit == '0') {
+                throw new IllegalArgumentException(ExceptionMessage.IS_ZERO);
+            }
+
+        }
+
+    }
+
+    private static void differentDigits(String digits) {
         Set<Character> countOfNumbers = new HashSet<>();
         for (int indexOfDigits = 0; indexOfDigits < digits.length(); indexOfDigits++) {
             char digit = digits.charAt(indexOfDigits);
 
             if (countOfNumbers.contains(digit)) {
-                return false;
+                throw new IllegalArgumentException(ExceptionMessage.IS_DUPLICATE_DIGIT);
             }
 
             countOfNumbers.add(digit);
 
         }
-        return true;
-    }
-
-    public static boolean isNotContainZero(String digits) {
-        for (int indexOfDigits = 0; indexOfDigits < digits.length(); indexOfDigits++) {
-            char digit = digits.charAt(indexOfDigits);
-
-            if (digit == '0') {
-                return false;
-            }
-
-        }
-        return true;
     }
 
     public static boolean isAcceptAbleEndGame(String userInput) {
