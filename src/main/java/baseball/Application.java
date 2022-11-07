@@ -91,7 +91,10 @@ public class Application {
     	boolean check = true;
     	
     	for(int i=0;i<arr.length;i++) {
-    		if(!Character.isDigit(arr[i])) check = false;
+    		if(!Character.isDigit(arr[i])) {
+    			check = false;
+    			break;
+    			}
     	}
     	
     	if(check)
@@ -108,8 +111,8 @@ public class Application {
     		set.add(arr[i]);
     	}
     	
-    	if(set.size()<3)return false;
-    	else return true; 
+    	if(set.size()==3)return true;
+    	else return false; 
     }
 
     public static void compare(List<Integer> computer, String inputNumber) {
