@@ -10,6 +10,9 @@ import java.util.List;
 public class NumberBaseballController {
     private static final int STRIKE_INDEX = 0;
     private static final int BALL_INDEX = 1;
+    private static final String RESTART = "1";
+    private static final String END = "2";
+
     private final NumberBaseballService numberBaseballService = new NumberBaseballService();
     private final NumberBaseballView numberBaseballView = new NumberBaseballView();
     private final UserAnswerValidator userAnswerValidator = new UserAnswerValidator();
@@ -17,6 +20,11 @@ public class NumberBaseballController {
     public void startGame() {
         numberBaseballService.initNumber();
         numberBaseballView.printStartGame();
+        inputUserAnswer();
+    }
+
+    public void restartGame() {
+        numberBaseballService.initNumber();
         inputUserAnswer();
     }
 
@@ -31,7 +39,16 @@ public class NumberBaseballController {
         if (resultType == GuessResultStatus.WIN) {
             String userAnswer = numberBaseballView.inputNewGameAnswer();
             userAnswerValidator.validateNewGameAnswer(userAnswer);
+            inputNewGameAnswer(userAnswer);
         }
+    }
+
+    private void inputNewGameAnswer(String userAnswer) {
+        if (userAnswer.equals(RESTART)) {
+            restartGame();
+            return;
+        }
+        numberBaseballView.endGame();
     }
 
 }

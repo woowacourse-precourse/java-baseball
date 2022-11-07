@@ -69,4 +69,8 @@ public class NumberBaseballView {
     public void setGameResult(GameResult gameResult) {
         this.gameResult = gameResult;
     }
+
+    public void endGame() {
+        System.out.println("애플리케이션을 종료합니다.");
+    }
 }
