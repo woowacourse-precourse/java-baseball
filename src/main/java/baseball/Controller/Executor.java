@@ -27,7 +27,7 @@ public class Executor {
                 processRestartAnswer(restartAnswer);
             }else{
                 String resultString = guessResult.getResult();
-                System.out.println(resultString);
+                Printer.printMessage(resultString);
             }
         }
     }
