@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class RefereeTest {
 	@Nested
-	class getResultMessageTest {
+	class GetResultMessageTest {
 		@Test
 		void case1() {
 			List<Integer> pitcherPlayingNumbers = List.of(3, 6, 9);
