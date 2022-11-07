@@ -32,6 +32,11 @@ public class Application {
                 ballCount++;
             }
         }
+        printResult(strikeCount, ballCount);
+        return strikeCount == 3;
+    }
+
+    public static void printResult(int strikeCount, int ballCount) {
         if (strikeCount != 0 && ballCount != 0) {
             System.out.println(strikeCount + "스트라이크 " + ballCount + "볼");
         } else if (strikeCount != 0) {
@@ -41,6 +46,5 @@ public class Application {
         } else {
             System.out.println("낫싱");
         }
-        return strikeCount == 3;
     }
 }
