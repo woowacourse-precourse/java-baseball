@@ -45,6 +45,10 @@ public class Controller {
         countBall();
         countStrike();
         printJudgement();
+        if (isGameOver()){
+            view.printGameClear(Game.ANSWER_LENGTH);
+            game.setGameState(Game.GameState.OVER);
+        }
     }
 
     public void printJudgement(){
@@ -62,6 +66,13 @@ public class Controller {
         }
 
 
+    }
+
+    private boolean isGameOver(){
+        if (game.getStrikeCount() == Game.ANSWER_LENGTH){
+            return true;
+        }
+        return false;
     }
 
     private void countBall() {
