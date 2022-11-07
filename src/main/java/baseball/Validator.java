@@ -14,9 +14,9 @@ public class Validator {
         return input.chars()
                 .allMatch(Character::isDigit);
     }
-    public static boolean isNull (String input) {
-        return input == null;
-    }
+//    public static boolean isNull (String input) {
+//        return input == null || input.isEmpty();
+//    }
 
     public static boolean isValidNumber(List<Integer> playerNumber) {
         return isCorrectSize(playerNumber) &&

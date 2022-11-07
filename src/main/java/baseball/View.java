@@ -13,9 +13,9 @@ public class View {
     }
 
     public static String getUserInput() throws IllegalArgumentException {
-        System.out.print(ASK_INPUT);
+        System.out.println(ASK_INPUT);
         String input = Console.readLine().trim();
-        if (!Validator.isNumber(input) || Validator.isNull(input)) {
+        if (!Validator.isNumber(input)) {
             throw new IllegalArgumentException();
         }
         return input;

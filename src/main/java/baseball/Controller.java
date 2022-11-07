@@ -7,10 +7,8 @@ import java.util.Map;
 
 public class Controller {
 
-    private List<Integer> computerNumber;
-    private List<Integer> playerNumber;
-    private Map<String, Integer> resultMap;
-    private boolean isPlaying = true;
+//    private  computerNumber;
+    private  boolean isPlaying = true;
 
     private static final String STRIKE ="strike";
     private static final String STRIKE_KOR ="스트라이크";
@@ -25,17 +23,39 @@ public class Controller {
 
     public void generate() {
         View.printStart();
-        computerNumber = Model.createComputerNumber();
+        do{
+            List<Integer> computerNumber = Model.createComputerNumber();
+            play(computerNumber);
+            String exitInput = View.getExitInput();
+            restartOrEnd(exitInput);
+        }while (isPlaying);
+
+    }
+
+    public void play(List<Integer> computerNumber){
+        Map<String, Integer>resultMap;
         do {
-            playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
+            System.out.println(computerNumber);
+            List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
             resultMap = checkAnswer(computerNumber, playerNumber);
             View.printHint(createHint(resultMap));
-            if (isCorrect(resultMap)) {
-                String exitInput = View.getExitInput();
-                restartOrEnd(exitInput);
-            }
-        }while(isPlaying);
+        }while(!isCorrect(resultMap));
     }
+
+//    public static void generate() {
+//        View.printStart();
+//        computerNumber = Model.createComputerNumber();
+//        do {
+//            System.out.println(computerNumber);
+//            List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
+//            Map<String, Integer>resultMap = checkAnswer(computerNumber, playerNumber);
+//            View.printHint(createHint(resultMap));
+//            if (isCorrect(resultMap)) {
+//                String exitInput = View.getExitInput();
+//                restartOrEnd(exitInput);
+//            }
+//        }while(isPlaying);
+//    }
 
     public Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
         Map<String, Integer> resultMap = new HashMap<>();
@@ -44,7 +64,6 @@ public class Controller {
                 checkBallOrStrike(computerNumber.get(i), playerNumber.get(i), resultMap);
                 continue;
             }
-
             int oldValue = resultMap.getOrDefault(NOTHING, 0);
             resultMap.put(NOTHING, oldValue + 1);
         }
@@ -84,7 +103,8 @@ public class Controller {
 
     public void restartOrEnd(String input) {
         if (input.equals(COMMAND_RESTART)) {
-            computerNumber = Model.createComputerNumber();
+            isPlaying = true;
+//            computerNumber = Model.createComputerNumber();
         }
         if (input.equals(COMMAND_END)) {
             isPlaying = false;
