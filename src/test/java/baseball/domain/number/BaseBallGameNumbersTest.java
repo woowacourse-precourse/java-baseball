@@ -2,6 +2,8 @@ package baseball.domain.number;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,11 +41,10 @@ class BaseBallGameNumbersTest {
         assertThat(ballGameNumbers.numbers().size()).isEqualTo(3);
     }
 
-    @Test
-    @DisplayName("입력된 순서가 유지된다.")
-    void maintainInputOrder() {
+    @ParameterizedTest(name = "입력된 순서({arguments})가 유지된다.")
+    @ValueSource(strings = {"123", "321", "132"})
+    void maintainInputOrder(final String input) {
         // given
-        String input = "296";
         List<BaseBallGameNumber> inputNumbers = stream(input.split(""))
                 .map(BaseBallGameNumber::new)
                 .collect(Collectors.toList());
@@ -60,35 +61,13 @@ class BaseBallGameNumbersTest {
     }
 
 
-    @Test
-    @DisplayName("문자열을 통해 총 3개의 BaseBallGameNumber를 생성하지 못했다면 IllegalArgumentException을 발생시킨다.")
-    void throwIllegalArgumentExceptionWhenConstructedByInvalidStringInput() {
-        // given
-        String underRangeInput = "102";
-        String duplicatedIntegerInput = "998";
-        String largerThenInputSizeInput = "987654323123321564123";
-        String containsNonIntegerInput = "13d";
-        String consistOfAllNonIntegerInput = "abc";
-        String emptyInput = "";
+    @ParameterizedTest(name = "({arguments})를 통해 총 3개의 BaseBallGameNumber를 생성하지 못했다면 IllegalArgumentException을 발생시킨다.")
+    @ValueSource(strings = {"102", "998", "987654323123321564123", "13d", "abc", ""})
+    void throwIllegalArgumentExceptionWhenConstructedByInvalidStringInput(final String input) {
 
         // when, then
         assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumbers(underRangeInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumbers(duplicatedIntegerInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumbers(largerThenInputSizeInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumbers(containsNonIntegerInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumbers(consistOfAllNonIntegerInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumbers(emptyInput));
+                () -> new BaseBallGameNumbers(input));
     }
 
     @Test

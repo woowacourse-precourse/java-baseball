@@ -2,6 +2,8 @@ package baseball.domain.number;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -35,28 +37,13 @@ class BaseBallGameNumberTest {
         assertThat(ballGameNumber.value()).isEqualTo(input);
     }
 
-    @Test
-    @DisplayName("1 ~ 9 사이의 정수를 입력받지 못한 경우 IllegalArgumentException을 발생시킨다.")
-    void throwIllegalArgumentExceptionWhenConstructedByInvalidInput() {
-        // given
-        String largeStringInput = "10";
-        String smallStringInput = "0";
-        int largeIntInput = 10;
-        int smallIntInput = 0;
-
+    @ParameterizedTest(name = "1 ~ 9 사이를 벗어난 수({arguments})를 입력받은 경우 IllegalArgumentException을 발생시킨다.")
+    @ValueSource(strings = {"10", "0", "-1"})
+    void throwIllegalArgumentExceptionWhenConstructedByInvalidInput(final String input) {
 
         // when, then
         assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumber(largeStringInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumber(smallStringInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumber(largeIntInput));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new BaseBallGameNumber(smallIntInput));
+                () -> new BaseBallGameNumber(input));
     }
 
     @Test
