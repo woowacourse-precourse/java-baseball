@@ -7,18 +7,18 @@ public class Play {
 
     public static void playStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int number = createThreeNumber();
+        String answerNumber = createThreeNumber();
 
         System.out.print("숫자를 입력해주세요 : ");
-        int playerNumber = Integer.parseInt(Console.readLine());
+        String playerNumber = Console.readLine();
     }
-    public static int createThreeNumber() {
+    public static String createThreeNumber() {
         int size = 0;
-        int randomNumber = 0;
+        String randomNumber = "";
         while (size > 3) {
-            randomNumber =  randomNumber * 10 + Randoms.pickNumberInRange(1, 9);
+            randomNumber += Randoms.pickNumberInRange(1, 9);
             if (Exception.isRedundancy(randomNumber)) {
-                randomNumber /= 10;
+                randomNumber = randomNumber.substring(0, randomNumber.length()-1);
                 size--;
             }
             size++;

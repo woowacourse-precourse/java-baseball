@@ -1,13 +1,16 @@
 package baseball;
 
 public class Exception {
-    public static boolean isRedundancy(int number) {
-        if ((number / 100) == ((number / 10) % 10) && (number / 100) != 0 && ((number / 10) % 10) != 0)
+    public static boolean isRedundancy(String number) {
+        if (number.length() > 1 && number.charAt(0) == number.charAt(1)) {
             return true;
-        if ((number / 100) == (number % 10) && (number / 100) != 0 && (number % 10) != 0)
+        }
+        if (number.length() > 2 && number.charAt(0) == number.charAt(2)) {
             return true;
-        if (((number / 10) % 10) == (number % 10) && ((number / 10) % 10) != 0 && (number % 100) != 0)
+        }
+        if (number.length() > 2 && number.charAt(1) == number.charAt(2)) {
             return true;
+        }
         return false;
     }
     public static boolean isNumber(String number) {
