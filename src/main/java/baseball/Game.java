@@ -11,6 +11,10 @@ public class Game {
     public static int MAX_NUMBER_OF_ANSWER = 9;
 
     private final List<Integer> answer;
+    Game(){
+        answer = computerSelectNumbers();
+    }
+
     Game(List<Integer> answer){
         this.answer = answer;
     }
