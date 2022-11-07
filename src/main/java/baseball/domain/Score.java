@@ -1,6 +1,8 @@
-package baseball.model;
+package baseball.domain;
 
-import static baseball.model.CountStatus.*;
+import baseball.utils.CountStatus;
+
+import static baseball.utils.CountStatus.*;
 
 public class Score {
     private int ball;

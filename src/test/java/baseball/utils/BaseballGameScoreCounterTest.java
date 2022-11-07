@@ -1,6 +1,6 @@
 package baseball.utils;
 
-import baseball.model.Score;
+import baseball.domain.Score;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

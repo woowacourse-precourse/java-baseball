@@ -1,10 +1,10 @@
-package baseball.view;
+package baseball.ui;
 
-import baseball.model.CountStatus;
-import baseball.model.Score;
+import baseball.utils.CountStatus;
+import baseball.domain.Score;
 
-import static baseball.model.CountStatus.*;
-import static baseball.model.CountStatus.ONLY_STRIKE;
+import static baseball.utils.CountStatus.*;
+import static baseball.utils.CountStatus.ONLY_STRIKE;
 
 public class BaseballViewer {
 

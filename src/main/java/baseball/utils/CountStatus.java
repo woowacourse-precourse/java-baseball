@@ -1,4 +1,6 @@
-package baseball.model;
+package baseball.utils;
+
+import baseball.domain.Score;
 
 import java.util.function.Predicate;
 

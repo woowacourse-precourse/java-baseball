@@ -5,41 +5,46 @@ import java.util.stream.Collectors;
 import static baseball.validator.NumberStatus.*;
 
 public class NumberValidator {
-    private static final int NUMBER = 3;
+    private static final int USER_ANSWER_LENGTH_LIMIT = 3;
+    private static final String RESTART_NUMBER = "1";
+    private static final String EXIT_NUMBER = "2";
+    private static final String ZERO = "0";
 
-    public static void validate(String userNumber) throws IllegalArgumentException {
-        if (!isNumber(userNumber)) {
+    public static void validateUserAnswer(String userAnswer) throws IllegalArgumentException {
+        if (!isNumber(userAnswer)) {
             throw new IllegalArgumentException(NO_NUMBER.getMessage());
         }
-        if (!isThreeDigitNumber(userNumber)) {
+        if (!isThreeDigitNumber(userAnswer)) {
             throw new IllegalArgumentException(NO_THREE_DIGIT.getMessage());
         }
-        if (isOverlap(userNumber)) {
+        if (isOverlap(userAnswer)) {
             throw new IllegalArgumentException(NO_DUPLICATE_NUMBER.getMessage());
         }
-        if (isContainsZero(userNumber)) {
+        if (isContainsZero(userAnswer)) {
             throw new IllegalArgumentException(NO_CONTAIN_ZERO.getMessage());
         }
     }
 
     private static boolean isContainsZero(String userNumber) {
-        return userNumber.contains("0");
+        return userNumber.contains(ZERO);
     }
 
     private static boolean isOverlap(String userNumber) {
-        return userNumber.chars().mapToObj(i -> (char) i).collect(Collectors.toSet()).size() != NUMBER;
+        return userNumber.chars()
+                .mapToObj(i -> (char) i)
+                .collect(Collectors.toSet()).size() != USER_ANSWER_LENGTH_LIMIT;
     }
 
     private static boolean isThreeDigitNumber(String userNumber) {
-        return userNumber.length() == NUMBER;
+        return userNumber.length() == USER_ANSWER_LENGTH_LIMIT;
     }
 
     private static boolean isNumber(String userNumber) {
         return userNumber.chars().allMatch(Character::isDigit);
     }
 
-    public static void number(String userChoice) {
-        if (!userChoice.equals("1") && !userChoice.equals("2")) {
+    public static void validateRestartChoice(String userChoice) {
+        if (!userChoice.equals(RESTART_NUMBER) && !userChoice.equals(EXIT_NUMBER)) {
             throw new IllegalArgumentException(WRONG_NUMBER.getMessage());
         }
     }

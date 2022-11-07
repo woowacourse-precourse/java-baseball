@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BaseballNumberGeneratorTest {
+class BaseballGameGeneratorTest {
 
     @RepeatedTest(value = 10)
     void 서로_다른_세자리_숫자_생성_성공() {

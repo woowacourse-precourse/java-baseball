@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,18 +7,19 @@ import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BaseballNumberTest {
+class BaseballGameTest {
 
     @Test
     @DisplayName("베이스볼 넘버 생성")
     void createBaseballNumber() throws NoSuchFieldException, IllegalAccessException {
-        BaseballNumber baseballNumber = new BaseballNumber();
+        BaseballGame baseballGame = new BaseballGame();
 
-        Field answer = BaseballNumber.class.getDeclaredField("answer");
+        Field answer = BaseballGame.class.getDeclaredField("computerAnswer");
         answer.setAccessible(true);
-        String answerTest = (String) answer.get(baseballNumber);
+        String answerTest = (String) answer.get(baseballGame);
         assertAll(
-                () -> assertNotNull(baseballNumber),
+                () -> assertNotNull(baseballGame),
+                () -> assertNotNull(answerTest),
                 () -> assertEquals(3, answerTest.length())
         );
     }

@@ -1,6 +1,6 @@
-package baseball.view;
+package baseball.ui;
 
-import baseball.model.Score;
+import baseball.domain.Score;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

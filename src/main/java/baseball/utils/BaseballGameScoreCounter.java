@@ -1,6 +1,6 @@
 package baseball.utils;
 
-import baseball.model.Score;
+import baseball.domain.Score;
 
 import java.util.stream.IntStream;
 
