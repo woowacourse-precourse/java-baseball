@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,6 +20,16 @@ public class Application {
                 System.out.println(result);
             }
         } while (restart());
+    }
+
+    private static int countStrike(List<Integer> makeAnswer, List<Integer> inputNumber) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(makeAnswer.get(i), inputNumber.get(i))) {
+                strike += 1;
+            }
+        }
+        return strike;
     }
 
     private static boolean restart() {
