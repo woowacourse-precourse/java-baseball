@@ -68,4 +68,13 @@ class BaseballGameTest {
                 .hasMessageContaining(INVALID_THREE_DIGIT.getMessage());
     }
 
+    @Test
+    @DisplayName("userInput이 중복을 가질 때 IllegalArgumentException 예외 발생")
+    void input_UserInput_When_Having_Duplication_Then_IllegalArgumentException() {
+        String userInput = "111";
+        assertThatThrownBy(() -> baseballGame.test(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_THREE_DIGIT.getMessage());
+    }
+
 }
