@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
@@ -37,6 +40,17 @@ public class User {
         return readLine();
     }
 
+
+    public List<Integer> tolistUser(String user){
+
+        List<Integer> toList = new ArrayList<>();
+        String[] splitone = user.split("");
+
+        for(String i : splitone){
+            toList.add(Integer.valueOf(i));
+        }
+        return toList;
+    }
 }
 
 
