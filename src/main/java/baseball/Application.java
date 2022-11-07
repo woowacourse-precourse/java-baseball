@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -13,12 +15,9 @@ public class Application {
     public static void main(String[] args) {
 
         startGamePrint();
-
         while (true) {
 
             targetNumber = makeTargetNumber();
-            System.out.println(targetNumber);
-
             while (true) {
                 //사용자 값 입력
                 getNumberPrint();
@@ -31,7 +30,6 @@ public class Application {
                     break;
                 }
                 ballAndStrike.print();
-
             }
 
             //게임 진행 선택
@@ -88,15 +86,34 @@ public class Application {
     private static void endGamePrint() {
         System.out.println("숫자 야구 게임을 종료합니다.");
     }
+    private static boolean uniqueChecker(String str) {
+        Set<Character> charSet = new LinkedHashSet<>();
+        for(int i=0; i<str.length(); i++){
+            charSet.add(str.charAt(i));
+        }
+        return str.length() == charSet.size();
+    }
 
     private static void validUserInput(int number) {
         //세자리 수가 아닐때
+        if(number < 100 || number > 999) {
+            throw new IllegalArgumentException("세자리 수를 입력해야 합니다");
+        }
         //세자리 수 중 0이 있을 때
+        if(String.valueOf(number).indexOf('0') != -1){
+            throw new IllegalArgumentException("0을 포함하지 않아야 합니다.");
+        }
         //세자리 수 중 같은 수가 있을때
+        if(!uniqueChecker(String.valueOf(number))){
+            throw new IllegalArgumentException("각 자리수에 같은 숫자가 존재하지 않아야 합니다.");
+        }
     }
 
     private static void validGameContinueInput(int number) {
-        //1또는 2가 아닐때
+        //1 또는 2가 아닐때
+        if(number != 1 && number != 2){
+            throw new IllegalArgumentException("1 또는 2 중에 입력해야합니다.");
+        }
 
     }
 
