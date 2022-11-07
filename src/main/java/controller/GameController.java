@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Command;
 import domain.Game;
 import domain.RoundResult;
 import view.GameView;
@@ -16,8 +17,19 @@ public class GameController {
     }
 
     public void startGame(){
-        game.createComputerNumbers();
         GameView.printStartMessage();
+        do{
+            game.createComputerNumbers();
+            runRound();
+            GameView.printEndMessage();
+            Command userCommand = inputUserCommand();
+            if(userCommand.isExit()){
+                break;
+            }
+        }while(true);
+    }
+
+    private void runRound(){
         do{
             GameView.printInputMessage();
             inputUserNumbers();
@@ -33,5 +45,10 @@ public class GameController {
     private void inputUserNumbers(){
         String inputNumbers = scanner.next();
         game.setUserNumbers(inputNumbers);
+    }
+
+    private Command inputUserCommand(){
+        String inputCommand = scanner.next();
+        return new Command(inputCommand);
     }
 }
