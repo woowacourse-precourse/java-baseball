@@ -5,7 +5,6 @@ import baseball.domain.BaseballManager;
 import baseball.domain.BaseballNumber;
 import baseball.view.InputHandler;
 import baseball.view.OutputHandler;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class GameManager {
     }
 
     private void startRepeatedGame() {
-        int flag = Integer.parseInt(Console.readLine());
+        int flag = inputStream.readGameControlInput();
         if (flag == SystemConstant.GAME_EXIT_CODE) {
             return;
         }
@@ -40,7 +39,7 @@ public class GameManager {
         List<Integer> userScore;
         do {
             printMessage(GAME_INPUT_MESSAGE);
-            int userInput = inputStream.readIntWithVerification();
+            int userInput = inputStream.readGameInput();
             baseballManager.addUserBaseballNumInfo(new BaseballNumber(userInput));
             baseballManager.computeUserScore();
             userScore = baseballManager.getUserScore();
