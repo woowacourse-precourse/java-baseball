@@ -15,10 +15,6 @@ public class BaseBallService {
         computer.randomGenerate();
     }
 
-    public boolean isWinGame() {
-        return baseBall.isWin();
-    }
-
     public void winGame() {
         baseBall.winGame();
     }
@@ -49,8 +45,16 @@ public class BaseBallService {
         }
     }
 
+    public void resetGame() {
+        baseBall.resetGame();
+    }
+
     public int getBall() {
         return baseBall.getBall();
+    }
+
+    public boolean isWinGame() {
+        return baseBall.isWin();
     }
 
     public int getStrike() {
