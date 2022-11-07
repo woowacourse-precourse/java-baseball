@@ -17,4 +17,5 @@ public class Ball {
     public List<Integer> getBallData() {
         return new ArrayList<>(ballData);
     }
+
 }

@@ -25,4 +25,5 @@ public class DecisionMaker {
     private void printInformation() {
         System.out.println(InformationMessage);
     }
+
 }

@@ -33,7 +33,6 @@ public class GameController {
         }
     }
 
-
     public int getTimesOfPlayGame() {
         return timesOfPlayGame;
     }
@@ -46,6 +45,5 @@ public class GameController {
     private Decision getUserDecision() {
         return decisionMaker.getDecision();
     }
-
 
 }

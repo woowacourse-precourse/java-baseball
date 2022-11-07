@@ -77,4 +77,5 @@ public class Game {
     private void printEndingMessage() {
         System.out.printf(ENDING_MESSAGE, numberOfBall);
     }
+
 }
