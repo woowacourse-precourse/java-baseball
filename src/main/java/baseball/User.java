@@ -2,12 +2,11 @@ package baseball;
 
 import baseball.Utils.Validation;
 import baseball.View.Constant;
-import camp.nextstep.edu.missionutils.Console;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class User {
 
-  private int[] userNumber;
+  private ArrayList<Integer> userNumber;
 
   public void inputNumber(String number) {
     String userInput = number;
@@ -21,16 +20,16 @@ public class User {
 
 
   }
-  public int[] getUserNumber() {
+  public ArrayList<Integer> getUserNumber() {
     return userNumber;
   }
 
   public void setUserNumber(String number) {
-    userNumber = new int[Constant.NUMBER_LENGTH];
+    userNumber = new ArrayList<>();
+
     for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
       int eachNum = Character.getNumericValue(number.charAt(i));
-
-      userNumber[i] = eachNum;
+      userNumber.add(eachNum);
     }
   }
 }

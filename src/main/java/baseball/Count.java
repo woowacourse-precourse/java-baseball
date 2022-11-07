@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.View.Constant;
+import java.util.ArrayList;
 
 public class Count {
 
@@ -12,12 +13,12 @@ public class Count {
     this.ball = 0;
   }
 
-  public void count(int[] answer, int[] userNumber) {
+  public void count(ArrayList<Integer> answer, ArrayList<Integer> userNumber) {
     init();
 
     for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
-      countStrike(answer[i], userNumber[i]);
-      countBall(answer, userNumber[i], i);
+      countStrike(answer.get(i), userNumber.get(i));
+      countBall(answer, userNumber.get(i), i);
     }
   }
 
@@ -27,9 +28,9 @@ public class Count {
     }
   }
 
-  public void countBall(int[] answer, int user, int userIdx) {
+  public void countBall(ArrayList<Integer> answer, int user, int userIdx) {
     for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
-      if (i != userIdx && answer[i] == user) {
+      if (i != userIdx && answer.get(i) == user) {
         this.ball++;
       }
     }
