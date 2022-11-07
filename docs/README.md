@@ -57,8 +57,9 @@ A-1 ~ F-2
   - [ ] generateRandomNum(RF-3-4)
   - [ ] receiveNumToUser(RF-3-5)
   - [ ] printResult(RF-3-6)
-  - [ ] checkRestart(RF-3-7)
   - [ ] gameEnd(RF-3-8)
+  - [ ] choiceRestartOrEnd(RF-3-9)
+  - [ ] 컴퓨터 및 유저 초기화(RF-3-10)
 
 # Convention 
 
