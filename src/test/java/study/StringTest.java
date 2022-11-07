@@ -2,6 +2,11 @@ package study;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
@@ -75,6 +80,19 @@ public class StringTest {
         String result = "AAAbbbAbAb";
 
         assertThat(input.replaceAll("B", "b"));
+    }
+
+    @Test
+    void join_리스트_문자열_변환_테스트() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        String listStream = list.stream()
+                        .map(number -> number.toString())
+                        .collect(Collectors.joining());
+
+        assertThat(String.join("", listStream)).isEqualTo("123");
     }
 
 }
