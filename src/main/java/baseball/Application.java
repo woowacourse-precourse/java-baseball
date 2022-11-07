@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    static List<Integer> answer = new ArrayList<>();    // 컴퓨터에서 랜덤으로 정해진 정답 숫자
     static List<Integer> current = new ArrayList<>();   // 사용자가 입력한 값
 
     public static void main(String[] args) {
@@ -27,7 +28,11 @@ public class Application {
     }
 
     public static void generateAnswer(){
-
+        while(true){
+            if(answer.size() == 3) break;
+            int randomInt = Randoms.pickNumberInRange(1, 9);
+            if(!answer.contains(randomInt)) answer.add(randomInt);
+        }
     }
 
     public static void checkValidInput(String input){
