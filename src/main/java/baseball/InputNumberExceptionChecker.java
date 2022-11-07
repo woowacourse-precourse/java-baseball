@@ -31,6 +31,17 @@ public class InputNumberExceptionChecker {
         }
     }
 
+    // 숫자에 0이 들어갔는지 확인하는 메서드
+    public boolean hasZero(String number) {
+        if (number.charAt(0) == 0
+                || number.charAt(1) == 0
+                || number.charAt(2) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     // 위의 세 개 중 하나라도 만족하지 않음을 확인하는 메서드 (총평?)
 
 }
