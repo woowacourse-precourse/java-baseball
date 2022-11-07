@@ -69,6 +69,13 @@ public class Application {
                 ball++;
             }
         }
+
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            endGame();
+            return;
+        }
     }
 }
 
