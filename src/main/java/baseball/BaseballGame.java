@@ -53,11 +53,13 @@ public class BaseballGame {
 
     private int getBallCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int ballCount = 0;
+
         for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
             for (int computerIndex = 0; computerIndex < computerNumbers.size(); computerIndex++) {
                 ballCount += getEachBallCount(userNumbers, computerNumbers, userIndex, computerIndex);
             }
         }
+
         return ballCount;
     }
 
@@ -74,11 +76,13 @@ public class BaseballGame {
 
     private int getStrikeCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int strikeCount = 0;
+
         for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
             for (int computerIndex = 0; computerIndex < computerNumbers.size(); computerIndex++) {
                 strikeCount += getEachStrikeCount(userNumbers, computerNumbers, userIndex, computerIndex);
             }
         }
+        
         return strikeCount;
     }
 
