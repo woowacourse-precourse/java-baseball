@@ -44,13 +44,14 @@ public class BaseBallGame implements AutoCloseable {
     public void run()  {
         while(true){
             List<Integer> input;
+            System.out.printf("current State : %d" , currentState.ordinal());
             switch(currentState){
                 case START_GAME:
                     System.out.println("숫자 야구 게임을 시작합니다.");
                     LocalDateTime now = LocalDateTime.now();
                     generateNumber(now.hashCode());
                     currentState = State.ON_GAME;
-                    break;
+                    continue;
                 case FINISH_GAME:
                 case ON_GAME:
                     input = getUserInput();
@@ -61,7 +62,8 @@ public class BaseBallGame implements AutoCloseable {
                     return;
 
             }
-            currentState = rules.get(List.of(currentState.ordinal(),currentTrigger));
+            currentState = rules.get(List.of(currentState.ordinal(),currentTrigger.ordinal()));
+
         }
     }
 
@@ -81,10 +83,41 @@ public class BaseBallGame implements AutoCloseable {
     }
 
     private List<Integer> getUserInput() {
-        return Collections.emptyList();
+
+        Scanner cin = new Scanner(System.in);
+        String inputString;
+
+        switch (currentState){
+            case ON_GAME:
+                System.out.printf("숫자를 입력해주세요 :");
+                inputString = cin.nextLine();
+                return inputStringToList(inputString);
+            case FINISH_GAME:
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                inputString = cin.nextLine();
+                return inputStringToList(inputString);
+            default:
+                return Collections.emptyList();
+        }
     }
 
-    private boolean validateUserInput() {
+    private List<Integer> inputStringToList(String inputString){
+        if( !validateUserInput(inputString)){
+            currentTrigger = Trigger.INVALID_USER_INPUT;
+            throw new IllegalArgumentException();
+        }
+        int input = Integer.parseInt(inputString);
+        List<Integer> result = new ArrayList<>();
+        while(input >= 1){
+            result.add(input %10);
+            input = input / 10;
+        }
+        Collections.reverse(result);
+        return result;
+    }
+
+
+    private boolean validateUserInput(String inputString) {
         return false;
     }
 
@@ -95,7 +128,7 @@ public class BaseBallGame implements AutoCloseable {
     private void printResult(List<Integer> result) {
     }
 
-    private enum State {
+    enum State {
         START_GAME
         ,ON_GAME
         ,FINISH_GAME
@@ -103,7 +136,7 @@ public class BaseBallGame implements AutoCloseable {
 
     }
 
-    private enum Trigger {
+    enum Trigger {
         INVALID_USER_INPUT,
         INCORRECT_ANSWER,
         CORRECT_ANSWER,
