@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.model.User;
+import baseball.service.Game;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Game game = new Game();
+        User user = game.getUser();
+        game.gameStart(user.getStatus());
     }
 }
