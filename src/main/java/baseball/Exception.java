@@ -21,4 +21,14 @@ public class Exception {
 			throw new IllegalArgumentException("중복 되었습니다.");
 		}
 	}
+
+	public boolean retry(String answer) throws IllegalArgumentException {
+		if (Integer.valueOf(answer) != 1 && Integer.valueOf(answer) != 2) {
+			throw new IllegalArgumentException("1 또는 2 이외의 숫자를 입력하였습니다.");
+		}
+		if(Integer.valueOf(answer) == 1){
+			return true;
+		}
+		return false;
+	}
 }
