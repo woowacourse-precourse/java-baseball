@@ -12,6 +12,7 @@ public class Validator {
         validateInputLength(input);
         validateInputInteger(input);
         validateInputNumberScope(input);
+        validateInputDuplication(input);
     }
 
     public static void validateInputLength(String input) {
@@ -34,6 +35,17 @@ public class Validator {
                     || Character.getNumericValue(character) > MAX_VALUE) {
                 throw new IllegalArgumentException("[IllegalArgumentException]: 각 자릿수가 " + MIN_VALUE + "~" + MAX_VALUE + "사이 숫자가 아닙니다.\n");
             }
+        }
+    }
+
+    public static void validateInputDuplication(String input) {
+        Set<Character> inputSet = new HashSet<>();
+
+        for (Character character : input.toCharArray()) {
+            inputSet.add(character);
+        }
+        if (inputSet.size() != COUNT_VALUE) {
+            throw new IllegalArgumentException("[IllegalArgumentException]: 각 자릿수에 중복이 있습니다.\n");
         }
     }
 
