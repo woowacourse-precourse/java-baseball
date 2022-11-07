@@ -6,14 +6,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static baseball.Constants.*;
+
 public class Result {
-    private StringBuilder sb = new StringBuilder();
+    private final StringBuilder sb = new StringBuilder();
     private String result;
     private boolean isCorrect;
 
-    public Result(List<Integer> userNumberList, List<Integer> computerNumberList){
+    public Result(){
+        this.result = "";
+        this.isCorrect = false;
+    }
+
+    public void updateResult(List<Integer> userNumberList, List<Integer> computerNumberList){
         this.result =  getResult(userNumberList, computerNumberList);
-        this.isCorrect = (result.equals("3스트라이크"));
+        this.isCorrect = (result.equals(ALL_STRIKE_RESULT));
     }
 
     public void printResult() {
@@ -25,10 +32,10 @@ public class Result {
     }
 
 
-    public String getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
+    private String getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
         Map<String, Integer> typeScoreMap = getTypeScoreMap();
 
-        for(int index = 0; index < 3; index++){
+        for(int index = 0; index < NUMBER_LENGTH; index++){
             int nowDigit = userNumberList.get(index);
             String digitResult = getDigitResult(nowDigit, index, computerNumberList);
             putResult(typeScoreMap, digitResult);
@@ -46,7 +53,7 @@ public class Result {
 
     private String getDigitResult(int nowDigit, int index, List<Integer> computerNumberList){
         int digitIndex = computerNumberList.indexOf(nowDigit);
-        if(digitIndex == -1){
+        if(digitIndex == MISSING_INDEX){
             return "Nothing";
         }
         if(index == digitIndex){
@@ -70,7 +77,7 @@ public class Result {
 
     private void appendScore(StringBuilder sb, String type, Map<String, Integer> typeScoreMap){
         int typeScore = typeScoreMap.get(type);
-        if(type.equals("Missing") && typeScore == 3){
+        if(type.equals("Missing") && typeScore == NUMBER_LENGTH){
             sb.append(BallType.valueOf(type).getKorean());
         }
         else if(typeScore > 0){
@@ -79,6 +86,4 @@ public class Result {
                     .append(" ");
         }
     }
-
-
 }

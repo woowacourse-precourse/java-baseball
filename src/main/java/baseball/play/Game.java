@@ -8,17 +8,17 @@ import java.util.*;
 
 public class Game {
     ComputerInput computerInput = new ComputerInput();
-    UserInput input = new UserInput();
+    UserInput userInput = new UserInput();
 
     public void start() {
-        boolean isRestart = false;
+        boolean isRestart;
         Round round = new Round();
 
         do {
             List<Integer> computerNumberList = computerInput.getNumberList();
             round.run(computerNumberList);
             Guide.printRestartGuide();
-            int restartOption = input.getRestartOption();
+            int restartOption = userInput.getRestartOption();
             isRestart = Validation.isRestart(restartOption);
         } while (isRestart);
     }

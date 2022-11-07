@@ -5,10 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constants.NUMBER_LENGTH;
+
 public class ComputerInput {
     public List<Integer> getNumberList() {
         ArrayList<Integer> computerNumberList = new ArrayList<>();
-        while (computerNumberList.size() < 3) {
+        while (computerNumberList.size() < NUMBER_LENGTH) {
             int randomNumber = getValidRandomNumber(computerNumberList);
             computerNumberList.add(randomNumber);
         }
