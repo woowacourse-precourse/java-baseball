@@ -15,7 +15,9 @@ public class Game {
         boolean isFinished = false;
         while (!isFinished) {
             View.pushNumber();
+
             savePlayerNumberToReferee(player, referee);
+
             ViewService responseView = referee.answerNumber();
             isFinished = responseView.check();
         }
