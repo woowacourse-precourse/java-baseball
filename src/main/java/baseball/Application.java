@@ -71,4 +71,32 @@ public class Application {
             return true;
         }
     }
+    
+    public void compare(String answer, String input){
+        String reply = "";
+        int strike = 0, ball = 0, miss = 0;
+        for(int n = 0; n < 3; n++){
+            if(answer.charAt(n) == input.charAt(n)){
+                strike++;
+            }
+            if(answer.charAt(n) != input.charAt(n) && answer.contains("" + input.charAt(n))){
+                ball++;
+            }
+            else {
+                miss++;
+            }
+        }
+        if(miss == 3){
+            System.out.println("낫싱");
+        }
+        if(strike == 3){
+            System.out.println("3스트라이크");
+        }
+        if(strike == 0){
+            System.out.println(ball + "볼");
+        }
+        else {
+            System.out.println(strike + "스트라이크 " + ball + "볼");
+        }
+    }
 }
