@@ -42,11 +42,65 @@ BUILD SUCCESSFUL in 0s
         - 123을 제시한 경우 : 1스트라이크
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한
+- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
+  숫자에 대한
   결과를 출력한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+
+### 🔥 구현 기능 목록
+
+- [x] FEATURE1. BaseballGame 클래스 생성
+- [x] FEATURE2. 게임 시작 메시지 출력 메서드
+- [x] FEATURE3. 난수 정답 생성 메서드
+- [x] FEATURE4. 플레이어 숫자 입력 메서드
+- [x] FEATURE5. 입력받은 숫자 비교하여 점수 계산 메서드
+    - [x] FEATURE6. 점수 계산 결과 BaseballGameResult 클래스
+    - [x] FEATURE7. 스트라이크 개수 계산 메서드
+    - [x] FEATURE8. 볼 개수 계산 메서드
+    - [x] FEATURE9. 클래스 생성자
+    - [x] FEATURE10. 스트라이크 개수 getter
+    - [x] FEATURE11. 볼 개수 getter
+    - [x] FEATURE12. 낫싱 여부 확인 메서드
+    - [x] FEATURE13. 클래스 toString 메서드 오버라이딩
+- [x] FEATURE14. 게임 결과 출력 메서드
+- [x] FEATURE15. 게임 종료 메시지 출력 메서드
+- [x] FEATURE16. 게임 종료 입력 메서드
+- [x] FEATURE17. 게임 시작 메서드
+
+---
+
+- [x] **CLASS 1**. `BaseballGame`
+    - **Class Variables:**
+        - [x] `private List<Integer> answerNums`
+        - [x] `private List<Integer> inputNums`
+    - **Class Methods:**
+        - [x] `void gameStart()`
+        - [x] `void printGameStartMessage()`
+        - [x] `void printGameResultMessage(BaseballGameResult gameResult)`
+        - [x] `void printGameEndMessage()`
+        - [x] `Boolean isIllegalGameInput(int gameInput)`
+        - [x] `Boolean checkDuplicateNums(int gameInput)`
+        - [x] `List<Integer> getGameInput() thorws IllegalArgumentException`
+        - [x] `int getGameRestartInput()`
+        - [x] `List<Integer> generateRandomAnswerNums()`
+        - [x] `BaseballGameResult getResultOfGame()`
+        - [x] `List<Integer> stringToIntList(String numString)`
+
+
+- [x] **CLASS 2**. `BaseballGameResult`
+    - **Class Variables:**
+        - [x] `private final int strike`
+        - [x] `private final int ball`
+    - **Class Methods:**
+        - [x] `BaseballGameResult(List<Integer> answerNums, List<Integer> inputNums)`
+        - [x] `String toString()`
+        - [x] `int calcStrikes(List<Integer> answerNums, List<Integer> inputNums)`
+        - [x] `int calcBalls(List<Integer> answerNums, List<Integer> inputNums)`
+        - [x] `int numOfStrikes()`
+        - [x] `int numOfBalls()`
+        - [x] `Boolean isNothing()`
 
 ### 입출력 요구 사항
 
@@ -135,13 +189,13 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+List<Integer> computer=new ArrayList<>();
+        while(computer.size()< 3){
+        int randomNumber=Randoms.pickNumberInRange(1,9);
+        if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
