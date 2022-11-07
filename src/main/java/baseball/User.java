@@ -15,6 +15,7 @@ public class User {
     }
 
     boolean checkOverlap(){//set을 이용 && 1~9 check
+
         char first_num= value.charAt(0);
         char second_num= value.charAt(1);
         char third_num= value.charAt(2);

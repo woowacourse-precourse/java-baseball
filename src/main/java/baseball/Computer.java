@@ -16,16 +16,6 @@ public class Computer {
                 this.value.add(randomNumber);
             }
         }
-        /*
-        List<Integer> com=new ArrayList<>();
-        while(com.size()<3){
-            int randomNumber= Randoms.pickNumberInRange(1,9);
-            if(!com.contains(randomNumber)){
-                com.add(randomNumber);
-            }
-        }
-        value=com;
 
-         */
     }
 }
