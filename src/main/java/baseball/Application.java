@@ -37,14 +37,31 @@ public class Application {
         return usernumArray;
     }
 
+    public static List<Integer> Compare(List<Integer> computer,List<Integer> User){
+        int ball =0;
+        List<Integer> result = new ArrayList<>();
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                if(computer.get(i)==computer.get(j))
+                    ball++;
+            }
+        }
+        result.add(ball);
+        return result;
+    }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        List<Integer> computer = RandomNum();
+        System.out.println(computer);
         System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
         if(!(isThree(number) || isValid(UserNum(number)))){
             throw new IllegalArgumentException();
         }
+        System.out.println(Compare(computer,UserNum(number)));
+
 
 
     }
