@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 enum BaseballResult {
-    NOTHING("낫띵"),
+    NOTHING("낫싱"),
     BALL("볼"),
     STRIKE("스트라이크");
 
