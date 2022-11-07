@@ -1,6 +1,6 @@
 package baseball.game;
 
-public enum State {
+public enum GameState {
     START,
     PAUSE,
     END;

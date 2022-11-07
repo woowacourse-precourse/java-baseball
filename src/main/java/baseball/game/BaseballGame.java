@@ -1,7 +1,6 @@
 package baseball.game;
 
 import baseball.input.FinishInput;
-import baseball.input.GameInput;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -10,9 +9,9 @@ import java.util.List;
 public class BaseballGame {
     private final GamePrinter printer;
     private final GameResultCalculator calculator;
-    protected Number randomNumber;
-    private GameInput playerInput;
-    private State state;
+    protected Number answerNumber;
+    private Number playerInputNumber;
+    private GameState gameState;
 
     public BaseballGame() {
         printer = new GamePrinter();
@@ -24,7 +23,7 @@ public class BaseballGame {
         generateRandomNumber();
 
         printer.printStartMessage();
-        state = State.START;
+        gameState = GameState.START;
     }
 
     public void play() {
@@ -33,12 +32,12 @@ public class BaseballGame {
             readPlayerInput();
             List<Integer> result = calculateResult();
             printer.printResult(result);
-        } while (!calculator.isThreeStrike(randomNumber, playerInput.number));
+        } while (!calculator.isThreeStrike(answerNumber, playerInputNumber));
     }
 
     public void pause() {
         printer.printPauseMessage();
-        state = State.PAUSE;
+        gameState = GameState.PAUSE;
 
         if (readFinishInput() == FinishInput.QUIT_GAME) {
             end();
@@ -46,7 +45,7 @@ public class BaseballGame {
     }
 
     public boolean isEnd() {
-        return state == State.END;
+        return gameState == GameState.END;
     }
 
     private void generateRandomNumber() {
@@ -54,7 +53,7 @@ public class BaseballGame {
         while (digits.size() < Number.FULL_SIZE) {
             addUniqueRandomDigit(digits);
         }
-        randomNumber = new Number(digits);
+        answerNumber = new Number(digits);
     }
 
     private void addUniqueRandomDigit(List<Integer> digits) {
@@ -67,12 +66,12 @@ public class BaseballGame {
     private void readPlayerInput() {
         String line = Console.readLine();
         int input = Integer.parseInt(line);
-        playerInput = new GameInput(input);
+        playerInputNumber = new Number(input);
     }
 
     private List<Integer> calculateResult() {
-        int ballCount = calculator.countBall(randomNumber, playerInput);
-        int strikeCount = calculator.countStrike(randomNumber, playerInput);
+        int ballCount = calculator.countBall(answerNumber, playerInputNumber);
+        int strikeCount = calculator.countStrike(answerNumber, playerInputNumber);
         return List.of(ballCount, strikeCount);
     }
 
@@ -83,7 +82,7 @@ public class BaseballGame {
     }
 
     private void end() {
-        state = State.END;
+        gameState = GameState.END;
         printer.printEndMessage();
     }
 }
