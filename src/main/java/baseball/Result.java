@@ -5,7 +5,8 @@ public class Result {
     private int strikeCount;
 
     public void initialize(){
-
+        ballCount = 0;
+        strikeCount = 0;
     }
     public void increaseBallCount(){
 
@@ -13,9 +14,7 @@ public class Result {
     public void increaseStrikeCount(){
 
     }
-    public void printResultMessage(){
 
-    }
     public String createResultMessage(){
         String resultMessage = "";
 
