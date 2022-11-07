@@ -31,8 +31,6 @@ public class Controller {
 
     }
 
-
-
     private boolean isStrikeNumber(List<Integer> computerNumber, int userNumber, int userNumberIndex) {
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.get(i) == userNumber && i == userNumberIndex) {
@@ -42,7 +40,7 @@ public class Controller {
         return false;
     }
 
-    public int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
+    private int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
         int ball = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
