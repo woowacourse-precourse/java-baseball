@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Utils {
-    public List<Integer> generateRandomNumber(int length) {
+public final class Utils {
+    public static List<Integer> generateRandomNumber(int length) {
         List<Integer> computerRandomNumber = new ArrayList<>();
         while (computerRandomNumber.size() < length) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -18,26 +18,26 @@ public class Utils {
         return computerRandomNumber;
     }
 
-    public void validateStringOneOrTwo(String input) {
+    public static void validateStringOneOrTwo(String input) {
         if (input.equals("1") || input.equals("2")) {
             return;
         }
         throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
     }
 
-    public void validateStringThreeDifferentDigits(String input) {
+    public static void validateStringThreeDifferentDigits(String input) {
         validateStringLength(input, 3);
         validateStringNaturalNumbers(input);
         validateAllDifferentCharacters(input);
     }
 
-    public void validateStringLength(String input, int length) {
+    public static void validateStringLength(String input, int length) {
         if (input.length() != length) {
             throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
         }
     }
 
-    public void validateStringNaturalNumbers(String input) {
+    public static void validateStringNaturalNumbers(String input) {
         for (char c : input.toCharArray()) {
             if (!Character.isDigit(c) || c == '0') {
                 throw new IllegalArgumentException("유효하지 않은 값을 입력하셨습니다. 프로그램을 종료합니다.");
@@ -45,7 +45,7 @@ public class Utils {
         }
     }
 
-    public void validateAllDifferentCharacters(String input) {
+    public static void validateAllDifferentCharacters(String input) {
         List<Character> list = input.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
         HashSet<Character> set = new HashSet<>(list);
         if (set.size() != input.length()) {
@@ -53,7 +53,7 @@ public class Utils {
         }
     }
 
-    public List<Integer> stringToIntegerList(String input) {
+    public static List<Integer> stringToIntegerList(String input) {
         validateStringNaturalNumbers(input);
         List<Integer> integerList = new ArrayList<>();
         for (String s : input.split("")) {
