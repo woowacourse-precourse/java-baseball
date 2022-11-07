@@ -52,7 +52,9 @@ public class BaseballComputer {
         return this.computerNumber;
     }
 
-
+    public String inputRestartOrEnd(){
+        return Console.readLine();
+    }
 
     public void printRestartOrEnd(){
 
