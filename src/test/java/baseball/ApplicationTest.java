@@ -54,15 +54,15 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("세자리가 아닌 수를 입력하였습니다.");
 
-        input = "a13";
+        String input2 = "a13";
 
-        assertThatThrownBy(() -> Application.validateUserNumbers(input))
+        assertThatThrownBy(() -> Application.validateUserNumbers(input2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자가 아닌 값을 입력하였습니다.");
 
-        input = "112";
+        String input3 = "112";
 
-        assertThatThrownBy(() -> Application.validateUserNumbers(input))
+        assertThatThrownBy(() -> Application.validateUserNumbers(input3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 수를 입력하였습니다.");
     }
