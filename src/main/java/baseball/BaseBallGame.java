@@ -20,7 +20,7 @@ public class BaseBallGame {
         do {
             // TODO: 게임 로직 작성
             System.out.print(INPUT_MESSAGE);
-            userAnswer = BaseBallGameUtil.inputUserAnswer();
+            userAnswer = BaseBallGameUtil.inputUserAnswer(LENGTH_OF_NUMBER);
             BallCount ballCount = new BallCount(answer, userAnswer);
             System.out.println(ballCount.toString());
             // TODO: 게임 진행 중 콘솔로 출력되는 Comment 출력

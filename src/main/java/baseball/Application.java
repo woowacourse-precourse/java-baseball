@@ -20,7 +20,7 @@ public class Application {
         System.out.println(RESTART_COMMENT);
         int restartCommand = Integer.parseInt(Console.readLine());
         if (restartCommand != RESTART_NUMBER && restartCommand != STOP_NUMBER) {
-            throw new IllegalArgumentException();   // 예외 처리
+            throw new IllegalArgumentException(ArgumentExceptionMessage.COMMAND_NOT_FOUND.getMessage());   // 입력받은 데이터가 Command와 일치하지 않는 경우
         }
         return restartCommand == RESTART_NUMBER;
     }
