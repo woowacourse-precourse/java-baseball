@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import abstracts.Game.Status;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -96,6 +97,22 @@ class ApplicationTest extends NsTest {
         Game baseballGame = new Game();
         try {
             baseballGame.operate("1234");
+        } catch (IllegalArgumentException e) {
+            exceptionCaught = true;
+        }
+        assertThat(exceptionCaught).isTrue();
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("게임 종료 후 추측 명령어를 입력하면 예외를 반환합니다.")
+    void 종료_예외_테스트() {
+        boolean exceptionCaught = false;
+        Game baseballGame = new Game();
+        String answer = getAnswer(baseballGame);
+        baseballGame.operate(answer);
+        try {
+            baseballGame.operate("123");
         } catch (IllegalArgumentException e) {
             exceptionCaught = true;
         }
