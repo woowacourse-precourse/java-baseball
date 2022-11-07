@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
     private String userNumber;
@@ -8,14 +8,12 @@ public class BaseBallGame {
     private int ballCount;
     private int strikeCount;
     private String restartToken;
-    private Scanner scanner;
 
     public BaseBallGame() {
         computer = new Computer();
         ballCount = 0;
         strikeCount= 0;
         restartToken = "";
-        scanner = new Scanner(System.in);
     }
 
     public String getUserNumber() {
@@ -34,6 +32,6 @@ public class BaseBallGame {
         return restartToken;
     }
     public void inputUserNumber() {
-        userNumber = scanner.nextLine();
+        userNumber = Console.readLine();
     }
 }
