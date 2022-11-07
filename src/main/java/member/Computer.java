@@ -22,4 +22,8 @@ public class Computer {
             }
         }
     }
+
+    public void clearNumber() {
+        numbers.clear();
+    }
 }
