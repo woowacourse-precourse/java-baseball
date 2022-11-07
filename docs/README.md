@@ -102,5 +102,5 @@
 - [x] randomNumberCreate함수를 실행 후, 출력값을 computerNumbersList에 저장
 - [x] inputUserNumberService함수를 실행
 - [x] inputUserAnswerService함수를 실행 후, 결과값을 checkedBaseballGaemOfUserAnswer에 저장
-- [ ] checkedBaseballGaemOfUserAnswer이 1이면, baseballGameServie함수 실행
+- [x] checkedBaseballGaemOfUserAnswer이 1이면, baseballGameServie함수 실행
 - [ ] checkedBaseballGaemOfUserAnswer이 2이면, return을 리턴
