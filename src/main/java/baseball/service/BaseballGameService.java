@@ -30,8 +30,17 @@ public class BaseballGameService {
             game.setScoreZero();
             getUserGameInput();
             updateScore();
-            BaseBallGameView.printHint(game.getStrikeCount(), game.getBallCount());
+            Hint();
         }
+        congratulations();
+    }
+
+    private void congratulations(){
+        BaseBallGameView.printCongratulations();
+    }
+
+    private void Hint(){
+        BaseBallGameView.printHint(game.getStrikeCount(), game.getBallCount());
     }
 
     private void updateScore(){
