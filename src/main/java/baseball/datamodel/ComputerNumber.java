@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
+    private List<Integer> numbers;
     public ComputerNumber() {}
     public void makeNumber() {
-        List<Integer> numbers = new ArrayList<>();
+        numbers = new ArrayList<>();
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
@@ -17,4 +18,5 @@ public class ComputerNumber {
             }
         }
     }
+    
 }
