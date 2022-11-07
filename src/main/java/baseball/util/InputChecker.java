@@ -32,13 +32,9 @@ public final class InputChecker {
     }
 
     private static boolean isDigit(String init) {
-        if (isNotDigit(init)) {
-            throw new IllegalArgumentException();
+        if (Character.isDigit(init.charAt(0))) {
+            return true;
         }
-        return true;
-    }
-
-    private static boolean isNotDigit(String init) {
-        return Character.isDigit(init.charAt(0));
+        throw new IllegalArgumentException();
     }
 }
