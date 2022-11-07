@@ -38,7 +38,6 @@ public class Ball {
 
 	@Override
 	public boolean equals(Object obj) {
-
 		if (this == obj) {
 			return true;
 		}
@@ -57,6 +56,4 @@ public class Ball {
 	private boolean matchPosition(Ball other) {
 		return this.position == other.position;
 	}
-
-
 }
