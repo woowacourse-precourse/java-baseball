@@ -95,6 +95,21 @@ public class Application {
             return true;
         }
     }
+    static void startGame(List <Integer> computerNumber) {
+        List<Integer> userNumber = null;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean checkPlayingGame = true;
+        int input_user_number = 000;
+        try {
+            while (checkPlayingGame) {
+                input_user_number = inputUserNumber();
+                userNumber = userHasNumber(input_user_number);
+                checkPlayingGame = checkGame(computerNumber, userNumber);
+            }
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
+    }
 
 
 
