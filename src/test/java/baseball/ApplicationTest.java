@@ -33,6 +33,11 @@ class ApplicationTest extends NsTest {
         assertThat(Application.getRandomThreeNumbers()).hasSize(3);
     }
 
+    @Test
+    void 정수_정수리스트_변환() {
+        assertThat(Application.getUserNumberList(123)).hasSize(3);
+    }
+    
     @Override
     public void runMain() {
         Application.main(new String[]{});
