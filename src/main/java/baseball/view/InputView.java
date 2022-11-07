@@ -1,5 +1,6 @@
 package baseball.view;
 import static baseball.message.ExceptionMessage.*;
+import static baseball.util.setting.MenuSetting.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,8 +14,16 @@ public class InputView {
 
   public static List<Integer> inputNumbers(){
     String inputString = read();
+    System.out.println(inputString);
     checkDigit(inputString);
     return convertStringToIntegerList(splitInput(inputString));
+  }
+
+  public static int inputMenu(){
+    String inputString = read();
+    checkDigit(inputString);
+    validateMenu(inputString);
+    return Integer.parseInt(inputString);
   }
 
   public static String read() {
@@ -36,8 +45,15 @@ public class InputView {
   }
 
   public static void checkDigit(String inputString){
-    if(!Pattern.compile("^[1-9]$").matcher(inputString).matches()){
+    if(!(Pattern.compile("^[1-9]*$").matcher(inputString).matches())){
       throw new IllegalArgumentException(INCORRECT_INPUT.getErrorMessage());
+    }
+  }
+
+  public static void validateMenu(String inputString){
+    if(!(Integer.parseInt(inputString) == RESTART_GAME.getMenuNumber()
+        || Integer.parseInt(inputString) == END_GAME.getMenuNumber())){
+      throw new IllegalArgumentException(INCORRECT_MENU_NUMBER.getErrorMessage());
     }
   }
 
