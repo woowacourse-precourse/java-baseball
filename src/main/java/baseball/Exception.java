@@ -9,6 +9,13 @@ class Exception {
     private static final int NUMBER_SIZE = 3;
     private static final int ZERO_IS_NOT_RANGE = 0;
 
+    static void isInvalidInput(int gameExecution) {
+        if (gameExecution == RESTART_GAME || gameExecution == STOP_PROGRAM) {
+            return;
+        }
+        throw new IllegalArgumentException(ResponseMessage.stopExceptionProgram());
+    }
+
     static void isAllNumeric(String userNumbers) {
         if (!userNumbers.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(ResponseMessage.stopExceptionProgram());
