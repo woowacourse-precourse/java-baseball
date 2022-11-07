@@ -1,6 +1,7 @@
 package baseball.baesball;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static baseball.exception.BaseballException.BASEBALL_SIZE_EXCEPTION;
 import static baseball.game.GameRule.BASEBALL_MAX_SIZE;
@@ -15,8 +16,11 @@ public class Baseball {
         this.baseballs = baseballs;
     }
 
-    private static boolean validateBaseballSizeNotOk(List<Integer> baseballs) {
-        return baseballs.size() != BASEBALL_MAX_SIZE.getRule();
+    private boolean validateBaseballSizeNotOk(List<Integer> baseballs) {
+        List<Integer> distinctBaseball = baseballs.stream()
+                .distinct()
+                .collect(Collectors.toUnmodifiableList());
+        return distinctBaseball.size() != BASEBALL_MAX_SIZE.getRule();
     }
 
     public List<Integer> getBaseballs() {

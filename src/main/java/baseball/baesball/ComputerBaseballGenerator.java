@@ -19,7 +19,6 @@ public class ComputerBaseballGenerator implements BaseballGenerator {
                 baseball.add(number);
             }
         }
-        System.out.println("baseball = " + baseball);
         return new Baseball(baseball);
     }
 }
