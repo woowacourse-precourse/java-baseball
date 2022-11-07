@@ -51,4 +51,25 @@ public class Application {
     static void throwException() {
         throw new IllegalArgumentException();
     }
+
+    static ballCount calculateResult(List<Integer> computerNumber, String userNumber) {
+        ballCount result = new ballCount(0, 0);
+
+        for (int digit = 0; digit < userNumber.length(); digit++) {
+            int eachNumber = userNumber.charAt(digit) - '0';
+            if (computerNumber.indexOf(eachNumber) == digit)
+                result.strike++;
+            else if (computerNumber.indexOf(eachNumber) >= 0)
+                result.ball++;
+        }
+        return result;
+    }
+
+    static class ballCount {
+        int strike, ball;
+        ballCount (int strike, int ball) {
+            this.strike = strike;
+            this.ball = ball;
+        }
+    }
 }
