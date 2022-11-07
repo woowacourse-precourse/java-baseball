@@ -100,12 +100,12 @@ public class Game {
             System.out.println(result);
             boolean answer = isAnswer(result);
 
-            if (answer) {
-                if (!isFinish()) {
-                    replay();
-                }
-                break;
+            if (!answer) continue;
+
+            if (!isFinish()) {
+                replay();
             }
+            break;
         }
     }
     public void replay(){
