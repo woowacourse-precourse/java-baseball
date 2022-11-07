@@ -7,7 +7,7 @@ import baseball.model.User;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import exception.Exceptions;
+import baseball.exception.Exceptions;
 
 public class Controller {
     private boolean GAME_END = true;
@@ -31,7 +31,59 @@ public class Controller {
 
     }
 
+    public void playGame() {
+        computerNumber = computer.addRandomNumbers();
+        InputView.startMessage();
+        System.out.println(computerNumber);
+        while (!isGameEnd) {
+            String numbers = InputView.gameMessage();
+            try {
+                validateRequestNumber(numbers);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                throw new IllegalArgumentException(END_EXCEPTION_MESSAGE);
+            }
+            userNumber = user.parseNumbers(numbers);
+            running();
+        }
+        askAgainRestart();
+    }
 
+    private void running() {
+        resetScore();
+        modifyStrikeBallCount();
+        OutputView.printResult(ball, strike);
+        if (strike == END_STRIKE_COUNT) {
+            isGameEnd = GAME_END;
+            OutputView.printSuccess();
+        }
+    }
+
+    public boolean getGameEnd() {
+        return isGameEnd;
+    }
+
+    private void askAgainRestart() {
+        String message = InputView.endMessage();
+        try {
+            validateRequestEndNumbers(message);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(END_EXCEPTION_MESSAGE);
+        }
+        if (RESTART_MESSAGE.equals(message)) {
+            isGameEnd = GAME_NOT_END;
+        }
+    }
+
+    private void modifyStrikeBallCount() {
+        ball = countBall(computerNumber, userNumber);
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (isStrikeNumber(computerNumber, userNumber.get(i), userNumber.indexOf(userNumber.get(i)))) {
+                ball -= 1;
+                strike += 1;
+            }
+        }
+    }
 
     private boolean isStrikeNumber(List<Integer> computerNumber, int userNumber, int userNumberIndex) {
         for (int i = 0; i < computerNumber.size(); i++) {
@@ -42,7 +94,7 @@ public class Controller {
         return false;
     }
 
-    public int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
+    private int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
         int ball = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
