@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Rule {
 
-    private List<Integer> selectedNumbers;
+    private BallAndStrikeService ballAndStrikeService;
     private int strikeCount;
     private int ballCount;
 
     public void selectedNumber(List<Integer> computerNumbers) {
-        this.selectedNumbers = computerNumbers;
+        this.ballAndStrikeService = new BallAndStrikeService(computerNumbers);
     }
 
     public ViewService answerNumber(List<Integer> target) {
@@ -31,25 +31,17 @@ public class Rule {
     }
 
     private void contains(int index, Integer value) {
-        if (containsExactly(value, index)) {
+        if (ballAndStrikeService.containsExactly(value, index)) {
             strikeCount += 1;
             return;
         }
 
-        if (contains(value)) {
+        if (ballAndStrikeService.contains(value)) {
             ballCount += 1;
         }
     }
 
-    private boolean containsExactly(Integer value, int index) {
-        return selectedNumbers.contains(value) && selectedNumbers.get(index).equals(value);
-    }
-
-    private boolean contains(Integer value) {
-        return selectedNumbers.contains(value);
-    }
-
     public List<Integer> getSelectedNumbers() {
-        return selectedNumbers;
+        return ballAndStrikeService.getSelectedNumbers();
     }
 }
