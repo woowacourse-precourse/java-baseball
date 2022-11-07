@@ -7,17 +7,17 @@ public class Application {
         Number numFactory = new PlayerNum();
         Computer computer = new Computer();
         List<Integer> playerNumber;
-        while (true) {
+
+        do{
             playerNumber = numFactory.createNumber();
             numFactory.verifyNumber(playerNumber);
-            if (computer.getResult(playerNumber) == GameComment.GAME_END) {
-                if (computer.closeGame()) {
-                    computer = new Computer();
-                    continue;
-                } else {
-                    break;
-                }
+            String gameStatus = computer.getResult(playerNumber);
+            if(gameStatus == "재시작"){
+                computer = new Computer();
+            }else if (gameStatus == "완전한 종료") {
+                break;
             }
+            }while (true);
         }
-    }
+
 }
