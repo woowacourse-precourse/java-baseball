@@ -92,5 +92,8 @@ public class BaseBallGame {
         if (strikeCount != 0 && ballCount == 0) {
             System.out.println(strikeCount+ "스트라이크");
         }
+        if (strikeCount == 0 && ballCount == 0) {
+            System.out.println("낫싱");
+        }
     }
 }
