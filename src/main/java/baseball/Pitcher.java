@@ -9,17 +9,17 @@ import java.util.stream.IntStream;
 public class Pitcher {
     
     public Balls throwRandomBalls(int count) {
+        List<Integer> thrownBallList = initThrownBallList();
         return new Balls(IntStream.range(0, count)
-                        .mapToObj(this::throwRandomBall)
+                        .mapToObj(order -> throwRandomBall(thrownBallList, order))
                         .collect(Collectors.toList()));
     }
 
-    private Ball throwRandomBall(int order) {
-        return new Ball(getNotDuplicatedRandomNumber(), order);
+    private Ball throwRandomBall(List<Integer> thrownBallList, int order) {
+        return new Ball(getNotDuplicatedRandomNumber(thrownBallList), order);
     }
 
-    private int getNotDuplicatedRandomNumber() {
-        List<Integer> thrownBallList = initThrownBallList();
+    private int getNotDuplicatedRandomNumber(List<Integer> thrownBallList) {
         while (true) {
             int number = Randoms.pickNumberInRange(1, 9);
             if (isNotDuplicated(thrownBallList, number)) {
