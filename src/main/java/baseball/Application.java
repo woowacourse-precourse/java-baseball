@@ -15,12 +15,21 @@ public class Application {
 
 		List<Integer> computerNumbers = getComputerNumbers();
 		playGame(computerNumbers);
-		
+
 	}
-	
+
 	public static void playGame(List<Integer> computerNumbers) {
-		
-		List<Integer> playerNumbers = getPlayerNumbers();
+
+		List<Integer> playerNumbers;
+
+		try {
+			playerNumbers = getPlayerNumbers();
+		}
+
+		catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return;
+		}
 
 		int strike = sumStrike(computerNumbers, playerNumbers);
 		if (strike == LENGTH) {
@@ -81,11 +90,26 @@ public class Application {
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-		int result = Integer.parseInt(Console.readLine());
-		if (result == 1) {
+		String result = Console.readLine();
+		if (result == "1") {
 
 			List<Integer> computerNumbers = getComputerNumbers();
 			playGame(computerNumbers);
+		}
+
+		else if (result == "2") {
+			return;
+		}
+
+		else {
+			try {
+				throw new IllegalArgumentException();
+			}
+
+			catch (IllegalArgumentException e) {
+				e.printStackTrace();
+				return;
+			}
 		}
 	}
 
@@ -96,13 +120,14 @@ public class Application {
 
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!computer.contains(randomNumber)) {
+
 				computer.add(randomNumber);
 			}
 		}
 		return computer;
 	}
 
-	public static List<Integer> getPlayerNumbers() {
+	public static List<Integer> getPlayerNumbers() throws IllegalArgumentException {
 
 		List<Integer> playerNumbers = new ArrayList<Integer>(LENGTH);
 
@@ -111,16 +136,18 @@ public class Application {
 			Integer number = handleNumberException(playerNumbers);
 			playerNumbers.add(number);
 		}
+
 		return playerNumbers;
 	}
 
-	public static Integer handleNumberException(List<Integer> playerNumbers) {
+	public static Integer handleNumberException(List<Integer> playerNumbers) throws IllegalArgumentException {
 
 		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
 
 		boolean isNumeric = isNumeric(input);
 		if (!isNumeric) {
+
 			throw new IllegalArgumentException();
 		}
 
@@ -129,6 +156,7 @@ public class Application {
 		boolean isZero = number == 0;
 		boolean isOverlap = playerNumbers.contains(number);
 		if (isZero || isOverlap) {
+
 			throw new IllegalArgumentException();
 		}
 
