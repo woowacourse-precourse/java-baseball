@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.validator.NumberValidator.validateRange;
+import static baseball.validator.NumberValidator.*;
 import static baseball.validator.NumbersValidator.*;
 
 public class InputView {
@@ -28,6 +28,7 @@ public class InputView {
     public static boolean restartOrEndGame() {
         OutputView.printRestartOrEnd();
         int startOrEnd = Integer.parseInt(Console.readLine());
+        validateRestartNumber(startOrEnd);
         return startOrEnd == 1;
     }
 }
