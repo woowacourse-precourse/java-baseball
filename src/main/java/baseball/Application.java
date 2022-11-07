@@ -1,20 +1,40 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
+import java.util.Map;
+
+import static baseball.NumberScore.numberCount;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        int loopFrequency = 3;
+        gameFirstStart();
+        List<Integer> randomNumber = NumberManagement.randomNumberMake(loopFrequency);
+        boolean gameRunning = true;
 
-        int userNumber = gameStart();
+        while (gameRunning) {
+            int userNumber = gameStart();
 
-        int randomNumber = NumberManagement.randomNumberMake();
-        NumberScore.numberCount(userNumber);
-        GameResult.resultCase();
 
-        gameRestart();
-
+            Map<String, Integer> result = NumberScore.numberCount(userNumber, randomNumber, loopFrequency);
+            System.out.println(randomNumber+"정답");
+            boolean resultCheck = GameResult.resultCase(result);
+            if (resultCheck) {
+                gameRunning = gameRestart();
+                randomNumber = NumberManagement.randomNumberMake(loopFrequency);
+            }
+        }
     }
-    public static int gameStart(){
+
+    private static void gameFirstStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static int gameStart(){
+
+        System.out.print("숫자를 입력해주세요 : ");
         int userNumber = Integer.valueOf(Console.readLine());
         if (100<=userNumber&&userNumber<=999){
             return userNumber;
@@ -30,6 +50,7 @@ public class Application {
             return restartBool;
         }else if (restartPick == 2){
             boolean restartBool = false;
+            System.out.println("게임을 종료합니다");
             return restartBool;
         }else{
             throw new IllegalArgumentException("다른 숫자를 입력하셨습니다.");
