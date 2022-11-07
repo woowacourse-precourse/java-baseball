@@ -43,4 +43,22 @@ public class Turn {
         int strikes = countSameValueInSameIndex(targetNumberList, numberOfList);
         TurnScore.setStrikes(strikes);
     }
+
+    static int countSameValueInSameIndex(List<Integer> targetNumberList, List<Integer> compareNumberList) {
+        int count = 0;
+        for (int indexOfList = 0; indexOfList < compareNumberList.size(); indexOfList++) {
+            int targetNumber = targetNumberList.get(indexOfList);
+            int compareNumber = compareNumberList.get(indexOfList);
+            count += returnOneIfSameOrZero(targetNumber, compareNumber);
+        }
+        return count;
+    }
+
+    static int returnOneIfSameOrZero(int targetNumber, int compareNumber) {
+        if (targetNumber == compareNumber) {
+            return 1;
+        }
+        return 0;
+    }
+
 }
