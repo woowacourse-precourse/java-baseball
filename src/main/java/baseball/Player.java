@@ -51,6 +51,8 @@ public class Player {
         System.out.println(QUIT_OR_RESTART_INPUT_MESSAGE);
         String input = Console.readLine();
 
+        checkValidRestartOrQuitInput(input);
+
         if (input.equals(QUIT_GAME_CODE)) {
             return false;
         }
