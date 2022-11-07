@@ -24,12 +24,23 @@ class Computer {
 }
 
 class User {
-    public static int getInputNumber(){
+    static int INPUT_LENGTH = 3;
+    public static List<Integer> getInputNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        if (input.length > 3){
+            throw new IllegalArgumentException();
+        }
         int inputNumber = Integer.parseInt(input);
-        System.out.println(inputNumber);
-        return inputNumber;
+
+
+
+
     }
+
+
+
+    static int checkSize()
 }
 
 class game {
