@@ -1,10 +1,8 @@
 import baseball.Application;
-import baseball.model.Game;
+import baseball.service.Game;
 import baseball.model.User;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -12,9 +10,6 @@ import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class myTest extends NsTest {
-    public static InputStream generateUserInput(String input) {
-        return new ByteArrayInputStream(input.getBytes());
-    }
 
     @Test
     void 컴퓨터_숫자가_정상적으로_생성되는지() {
