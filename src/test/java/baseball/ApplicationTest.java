@@ -34,6 +34,13 @@ class ApplicationTest extends NsTest {
         assertThat(Application.parseUserInputForRestart()).isEqualTo(true);
     }
 
+    @DisplayName("게임 종료 후 사용자 입력 예외 테스트")
+    @Test
+    void parseUserInputForRestartExceptionTest() {
+        setSystemInput("3");
+        assertThatThrownBy(() -> Application.parseUserInputForRestart()).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
     @DisplayName("게임 실행 종료 후 재시작 테스트")
     void 게임종료_후_재시작() {
