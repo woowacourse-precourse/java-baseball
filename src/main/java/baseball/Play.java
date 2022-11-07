@@ -14,7 +14,7 @@ public class Play {
         if (!Exception.isNumber(playerNumber) || !Exception.isThreeNumber(playerNumber) || Exception.isRedundancy(playerNumber)) {
             throw new IllegalArgumentException("3자리의 서로 다른 숫자가 아닙니다.");
         }
-
+        int ball = countBall(playerNumber, answerNumber);
     }
     public static String createThreeNumber() {
         int size = 0;
@@ -28,5 +28,14 @@ public class Play {
             size++;
         }
         return randomNumber;
+    }
+    public static int countBall(String playerNumber, String answerNumber) {
+        int ball = 0;
+        for (int index = 0; index < 3; index++) {
+            if (playerNumber.contains(answerNumber.substring(index, index+1))) {
+                ball++;
+            }
+        }
+        return ball;
     }
 }
