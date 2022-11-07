@@ -36,4 +36,21 @@ public class HintTest {
         assertThat(hint.getHint()).isEqualTo("1볼 1스트라이크");
     }
 
+    @Test
+    void 스트라이크3개_있는_경우(){
+        List<Integer> computerNum = List.of(1,2,3);
+        List<Integer> playerNum = List.of(1,2,3);
+        hint = new Hint(computerNum, playerNum);
+
+        assertThat(hint.getHint()).isEqualTo("3스트라이크");
+    }
+
+    @Test
+    void 낫싱인_경우(){
+        List<Integer> computerNum = List.of(1,2,3);
+        List<Integer> playerNum = List.of(4,5,6);
+        hint = new Hint(computerNum, playerNum);
+
+        assertThat(hint.getHint()).isEqualTo("낫싱");
+    }
 }
