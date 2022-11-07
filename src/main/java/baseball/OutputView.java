@@ -1,11 +1,11 @@
 package baseball;
 
 public class OutputView {
-    public static final String MESSAGE_BALL = "%d 볼";
-    public static final String MESSAGE_STRIKE = "%d 스트라이크";
+    public static final String MESSAGE_BALL = "%d볼";
+    public static final String MESSAGE_STRIKE = "%d스트라이크";
     public static final String MESSGAE_FOUR_BALL = "볼넷";
     public static final String MESSGAE_NOTHING = "낫싱";
-    public static final String MESSAGE_VICTORY = "3개의 숫자를 모두 맞히셨습니다! 당신의 승리입니다.";
+    public static final String MESSAGE_VICTORY = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void showOnlyBallResult(int ball) {
         System.out.println(String.format(MESSAGE_BALL, ball));
