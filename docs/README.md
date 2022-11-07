@@ -22,18 +22,15 @@
 
 ### 1. 게임 숫자 객체 생성 기능
 
-- 게임 숫자 생성자 : `baseball/gamenumber/GameNumber` (부모 클래스)
-  - 상대방(컴퓨터) 숫자 생성자 : `baseball/gamenumber/ComputerNumber` (자식 클래스)
-  - 사용자 숫자 생성자 : `baseball/gamenumber/PlayerNumber` (자식 클래스)
+- 게임 숫자 생성자 : `baseball/model/gamenumber/GameNumber` (부모 클래스)
+  - 상대방(컴퓨터) 숫자 생성자 : `baseball/model/gamenumber/ComputerNumber` (자식 클래스)
+  - 사용자 숫자 생성자 : `baseball/model/gamenumber/PlayerNumber` (자식 클래스)
 
 ### 2. 상대방(컴퓨터)의 숫자를 설정하는 기능
 
 - 숫자는 서로 다른 3자리의 숫자이다.
-
 - 숫자는 1 ~ 9 까지의 숫자이다.
-
-- 숫자가 조건이 맞지 않으면 다시 설정한다.
-  - 중복된 수가 존재
+- 중복된 수가 존재하면 안된다.
 
 ### 3. 사용자의 숫자를 입력 받는 기능
 
@@ -41,11 +38,12 @@
 
 - 입력은 1 ~ 9 까지의 숫자이다.
 
-- 입력의 조건이 맞지 않으면 게임을 종료한다. : `baseball/gamenumber/Validation`
+- 입력의 조건이 맞지 않으면 게임을 종료한다. : `baseball/model/validation/Validation`
 
   - `IllegalArgumentException`이 발생하고 게임을 종료한다.
     
     - 3자리가 아닌 입력
+      - more(4 이상) / less(2 이하) / empty
     
     - 숫자 외 입력
     
@@ -81,5 +79,4 @@
 - `1`이 입력되면 게임을 새로 시작한다.
 - `2`이 입력되면 게임을 종료한다.
   - `1, 2` 이외의 값이 들어오면 `IllegalArgumentException`이 발생하고 게임을 종료한다.
-    `baseball/gamenumber/Validation`
-
+    `baseball/model/validation/Validation`
