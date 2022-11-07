@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 public class GameNumber {
     public static final int NUMBER_DIGITS = 3;
-    private final String SPLIT_ONE = "";
 
     private List<Integer> numberList = new ArrayList<>(NUMBER_DIGITS);
 
@@ -19,7 +18,7 @@ public class GameNumber {
     }
 
     public GameNumber(String numberString) {
-        this.numberList = Arrays.stream(numberString.split(SPLIT_ONE))
+        numberList = Arrays.stream(numberString.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
