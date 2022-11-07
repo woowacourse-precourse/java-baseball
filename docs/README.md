@@ -6,7 +6,7 @@
 - [ ] (보완) 컴퓨터가 서로 다른 3자리 수를 임의로 선택하는 기능
 
 
-- [ ] 사용자로부터 수를 입력받는 기능 (`camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용)
+- [x] 사용자로부터 수를 입력받는 기능 (`camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용)
 
 
 - [ ] 사용자로부터 입력받은 숫자가 서로 다른 3자리 수인지 확인하는 기능
