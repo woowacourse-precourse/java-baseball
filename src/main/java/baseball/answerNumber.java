@@ -16,7 +16,7 @@ public class answerNumber {
         for(int i=0; i<3; i++) {
             answerLst.add(i, arrLst.get(i));
         }
-        System.out.println(answerLst);
+//        System.out.println(answerLst);
         return answerLst;
     }
 }
