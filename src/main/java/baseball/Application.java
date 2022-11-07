@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
-    public static int getStrike(List<Integer> answer, String userInput) {
+    public static int getStrike(List<Integer> answer, List<Integer> userInput) {
         Integer strike = 0;
 
         for (int index = 0; index < 3; index++) {
-            if (answer.get(index) == userInput.charAt(index)) {
+            if (answer.get(index).equals(userInput.get(index))) {
                 strike += 1;
             }
         }
