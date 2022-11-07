@@ -75,6 +75,12 @@ class ApplicationTest extends NsTest {
         assertThat(true).isEqualTo(Application.checkReplayNumberCount("2"));
     }
 
+    @Test
+    void checkReplayNumberTest() {
+
+        assertThatThrownBy(() -> Application.checkReplayNumber("3")).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
