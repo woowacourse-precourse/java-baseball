@@ -19,4 +19,16 @@ public class InputViewTest {
         Assertions.assertThat(actualInputNumber).isEqualTo(expectedInputNumber);
     }
 
+
+    @Test
+    void 재시작_입력_묻기() {
+        String expectedInputNumber = "1";
+
+        InputStream in = new ByteArrayInputStream(expectedInputNumber.getBytes());
+        System.setIn(in);
+
+        String actualInputNumber = InputView.askRestartMessage();
+
+        Assertions.assertThat(actualInputNumber).isEqualTo(expectedInputNumber);
+    }
 }
