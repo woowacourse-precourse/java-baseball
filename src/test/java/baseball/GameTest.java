@@ -56,4 +56,13 @@ public class GameTest {
 
         assertThat(game.getGameResult(ball, strike)).isEqualTo("2볼 ");
     }
+
+    @Test
+    void getGameResult_스트라이크_볼_있을때_게임_결과_반환_확인() {
+        int ball = 1;
+        int strike = 2;
+        Game game = new Game();
+
+        assertThat(game.getGameResult(ball, strike)).isEqualTo("1볼 2스트라이크");
+    }
 }
