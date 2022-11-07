@@ -14,7 +14,7 @@ public class ProblemMaker extends Player{
     }
 
     public boolean hasNumber(int number){
-        return false;
+        return getNumbers().contains(number);
     }
 
     public boolean isSameAtGivenLocation(int number, int index){
