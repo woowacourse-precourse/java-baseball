@@ -43,6 +43,10 @@ public class Application {
         };
     }
 
+    public static boolean checkAnswer(int[] num){
+        return (num[0] == opponent1 && num[1] == opponent2 && num[2] == opponent3);
+    }
+
     public static void main(String[] args) {
         getUserNumber();
         initOpponentNumber();
