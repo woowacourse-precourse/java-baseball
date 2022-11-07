@@ -9,6 +9,10 @@ public class Computer {
     private static final int END_INCLUSIVE = 9;
     private static final int LENGTH = 3;
 
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
+
     static List<Integer> computer = new ArrayList<>();
 
     public Computer(){
@@ -39,12 +43,12 @@ public class Computer {
         // 스트라이크 계산
         for(int i = 0; i < LENGTH; i++){
             if(playerInputList.get(i).equals(computer.get(i))){
-                if(result.containsKey("스트라이크")){
+                if(result.containsKey(STRIKE)){
 
-                    result.put("스트라이크", result.get("스트라이크") + 1);
+                    result.put(STRIKE, result.get(STRIKE) + 1);
 
                 }else {
-                    result.put("스트라이크", 1);
+                    result.put(STRIKE, 1);
                 }
                 visit.set(i, true);
             }
@@ -54,12 +58,12 @@ public class Computer {
         for(int i = 0; i < LENGTH; i++){
             if(!visit.get(i)){
                 if(computer.contains(playerInputList.get(i))){
-                    if(result.containsKey("볼")){
+                    if(result.containsKey(BALL)){
 
-                        result.put("볼", result.get("볼") + 1);
+                        result.put(BALL, result.get(BALL) + 1);
 
                     }else {
-                        result.put("볼", 1);
+                        result.put(BALL, 1);
                     }
                     visit.set(i, true);
                 }
@@ -67,9 +71,10 @@ public class Computer {
         }
 
         if(!visit.contains(true)){
-            result.put("낫싱", 0);
+            result.put(NOTHING, 0);
         }
 
+        validateScoreCount(result);
         return result;
     }
 
@@ -81,7 +86,20 @@ public class Computer {
         while(it.hasNext()){
             s += it.next() + ", ";
         }
-
         return s;
     }
+
+    public static void validateScoreCount(Map<String, Integer> scoreMap){
+        Set<String> keySet = scoreMap.keySet();
+        Iterator<String> it = keySet.iterator();
+
+        while(it.hasNext()){
+            String key = it.next();
+            Integer value = scoreMap.get(key);
+            if(value > LENGTH){
+                throw new IllegalArgumentException(key + "의 카운트는 최대 + " + LENGTH + "입니다.");
+            }
+        }
+    }
+
 }
