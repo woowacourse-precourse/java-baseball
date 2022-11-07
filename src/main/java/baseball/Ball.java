@@ -18,7 +18,7 @@ public class Ball {
 
 	private void validateNumber(final int number) {
 		if (isOutOfRange(number)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("야구 숫자는 1~9까지만 가능합니다.");
 		}
 	}
 
