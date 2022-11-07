@@ -3,7 +3,11 @@ package baseball;
 import java.util.List;
 
 public class ResultPrinter {
+    boolean isCorrect;
 
+    public ResultPrinter() {
+        isCorrect = false;
+    }
     public void printResult(String input, String createdNumber) {
         final int STRIKE_INDEX = 0;
         final int BALL_INDEX = 1;
@@ -24,5 +28,12 @@ public class ResultPrinter {
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING_STRING);
         }
+        if (strike == 3) {
+            isCorrect = true;
+        }
+    }
+
+    public boolean isCorrect() {
+        return isCorrect;
     }
 }
