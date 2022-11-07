@@ -42,6 +42,16 @@ class ApplicationTest extends NsTest {
         assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.");
     }
 
+    @Test
+    void 게임종료_출력_테스트() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method printGameEnd = Application.class.getDeclaredMethod("printGameEnd");
+        printGameEnd.setAccessible(true);
+
+        printGameEnd.invoke(application);
+
+        assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
