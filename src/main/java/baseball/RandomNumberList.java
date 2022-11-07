@@ -8,7 +8,7 @@ import java.util.List;
 public class RandomNumberList {
     private static final int MINIMUM_NUMBER = 1;
     private static final int MAXIMUM_NUMBER = 9;
-    private static final int NUMBER_LENGTH = 3;
+    private static final int NUMBER_LENGTH = Application.NUMBER_LENGTH();
 
     private static List<BaseBallNumber> randomNumberList;
 
