@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,5 +34,18 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void UserClass_string_User_NumtoInt_List테스트() {
+        String snum = "123";
+        List<Integer> inum = new ArrayList<>();
+        inum.add(1);
+        inum.add(2);
+        inum.add(3);
+        assertThat(User.string_User_NumtoInt_List(snum))
+                .isEqualTo(inum);
+
+
     }
 }
