@@ -3,8 +3,6 @@ package baseball.domain;
 import baseball.exception.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Scanner;
-
 public class User {
     String numbers;
     Validator validator = new Validator();
