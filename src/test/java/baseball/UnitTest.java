@@ -15,9 +15,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class UnitTest {
     @Nested
     class GenerateRandomNumberStringTest {
-        @Test
-        @DisplayName("컴퓨터가 생성한 수 테스트")
         @RepeatedTest(100)
+        @DisplayName("컴퓨터가 생성한 수 테스트")
         void generateRandomNumberString_Success() {
             String randomNumberString = Application.generateRandomNumberString();
             List<Character> usedNumber = new ArrayList<>();
