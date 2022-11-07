@@ -5,7 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GameTest extends NsTest {
     @Test
@@ -36,6 +38,17 @@ class GameTest extends NsTest {
                             "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 },
                 1, 3, 5
+        );
+    }
+
+    @Test
+    @DisplayName("예외: 스트라이크와 볼의 개수 허용범위 초과 테스트")
+    void case3() {
+        int strike = 2;
+        int ball = 2;
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Game.printHint(strike, ball))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
