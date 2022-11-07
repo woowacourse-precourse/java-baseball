@@ -6,15 +6,19 @@ import java.util.List;
 
 public class BaseballGame {
 
-    public void run(){
+    public final static int MAX_NUMBER_SIZE = 3;
+
+    public void run() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         UserInput userInput = new UserInput();
+        GameResult gameResult = new GameResult();
 
         System.out.println(Message.GAME_START);
         List<Integer> randomNumber = randomNumberGenerator.generateRandomNumber();
-        while(true) {
+        do {
             int[] userNumber = userInput.getUserInput();
+            gameResult.compareNumbers(randomNumber, userNumber);
 
-        }
+        } while (true);
     }
 }

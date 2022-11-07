@@ -1,17 +1,11 @@
 package baseball;
 
+import static baseball.BaseballGame.MAX_NUMBER_SIZE;
+
 import baseball.constant.Message;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserInput {
-
-    private final static int MAX_NUMBER_SIZE = 3;
 
     int [] userNumber = new int[MAX_NUMBER_SIZE];
     String userInput;
