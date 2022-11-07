@@ -7,15 +7,13 @@ import baseball.view.PrintConsole;
 import java.util.List;
 
 public class Game {
-    private static final boolean USER_FIRST_GAME=true;
-    private static final boolean USER_RESTART_GAME=false;
 
     private Computer computer;
     private User user;
 
     public Game(){
         computer = new Computer();
-        user = new User(USER_FIRST_GAME);
+        user = new User(User.FIRST_PLAY);
     }
 
     public Computer getComputer() {
@@ -26,14 +24,30 @@ public class Game {
         return user;
     }
 
-    private void printStartConsole() {
-        if (user.isFirstGame()) {
-            PrintConsole.startGame();
+    public void gameStart(int userStatus) {
+        switch (userStatus) {
+            case User.FIRST_PLAY:
+                printStartConsole();
+            case User.RESTART_GAME:
+                generateRandomNum();
+            case User.RE_ANSWER:
+                user.updateStatus(User.RE_ANSWER);
+                receiveNumToUser();
+                printResult();
+                endGame();
+                resetComputerUser();
+                gameStart(user.getStatus());
+            case User.END_GAME:
+                break;
         }
+
+    }
+    private void printStartConsole() {
+        PrintConsole.startGame();
     }
 
     private void generateRandomNum() {
-        computer.getRandomNum();
+        computer.generateRandomNumList();
     }
 
     private void receiveNumToUser() {
@@ -59,31 +73,21 @@ public class Game {
         }
     }
 
-    private void computerResetForPlaying() {
+    private void resetComputerUser() {
+        if (user.getStatus() == User.FIRST_PLAY||user.getStatus() == User.RE_ANSWER) {
+            resetForReAnswer();
+        }else if(user.getStatus()==User.RESTART_GAME){
+            resetForReStart();
+        }
+    }
+
+    private void resetForReAnswer() {
         computer.resetCompareComponent();
+        user = new User(User.RE_ANSWER);
     }
 
-    private void computerAndUserResetForRestart(){
+    private void resetForReStart(){
         computer = new Computer();
-        user = new User(USER_RESTART_GAME);
-
+        user = new User(User.RESTART_GAME);
     }
-
-
-//    public void switchGameToUsersAnswer(){
-//        switch (user.getStatus()) {
-//            case User.PLAYING:
-//                computerReset();
-//                break;
-//            case User.RESTART_GAME:
-//                resetForRestartGame();
-//                Start();
-//                Play();
-//                break;
-//            case END_GAME:
-//                return;
-//        }
-//    }
-
-
 }
