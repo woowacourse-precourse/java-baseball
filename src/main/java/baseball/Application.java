@@ -23,6 +23,13 @@ public class Application {
             }
         }
     }
+    public static List<Integer> makeAnswer() {
+        List<Integer> answer = new ArrayList<>();
+        for (int i=0; i<3; i++) {
+            answer.add(pickNumberInRange(1,9));
+        }
+        return answer;
+    }
 
     public static List<Integer> getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
@@ -87,12 +94,9 @@ public class Application {
     }
 
     public static boolean playBaseball() {
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> answer = makeAnswer();
         boolean isCorrect;
         boolean quitGame;
-        for (int i=0; i<3; i++) {
-            answer.add(pickNumberInRange(1,9));
-        }
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             List<Integer> userInput = getUserInput();
