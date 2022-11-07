@@ -11,8 +11,6 @@ public class NumberBaseballGame {
 
     public void execution() {
         List<String> computerNumber = createRandomNumber();
-        System.out.println(computerNumber);
-        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             List<String> userNumber = inputUserNumber();
