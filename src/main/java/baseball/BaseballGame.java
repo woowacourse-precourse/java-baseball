@@ -17,9 +17,8 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         // 2. 컴퓨터가 서로 다른 세자리 수 생성하기
-        int targetNumber = createTargetNumber();
         while(true) {
-            targetNumber = createTargetNumber();
+            int targetNumber = createTargetNumber();
             if (isValidNumber(targetNumber)) {
                 break;
             }
@@ -30,6 +29,10 @@ public class BaseballGame {
         if (!isValidNumber(userInput)) {
             throw new IllegalArgumentException();
         }
+
+        // 4. 스트라이크 개수 세기
+        int strikeCnt = countStrikes(targetNumber, userInput);
+        System.out.println(strikeCnt + "스트라이크");
     }
 
     private int createTargetNumber() {
@@ -62,5 +65,27 @@ public class BaseballGame {
             invalidTF = false;
         }
         return invalidTF;
+    }
+
+    private int countStrikes(int targetNum, int inputNum) {
+        List<Integer> targetNums = new ArrayList<>();
+        while (targetNum > 0) {
+            targetNums.add(targetNum % 10);
+            targetNum /= 10;
+        }
+
+        List<Integer> inputNums = new ArrayList<>();
+        while (inputNum > 0) {
+            inputNums.add(inputNum % 10);
+            inputNum /= 10;
+        }
+
+        int strikeCnt = 0;
+        for (int i = 0; i < targetNums.size(); i++) {
+            if (targetNums.get(i) == inputNums.get(i)) {
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
     }
 }
