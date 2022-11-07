@@ -25,4 +25,33 @@ public class Count {
                 .filter(i -> computerNumber.get(i) == userNumber.get(i))
                 .count();
     }
+
+    public boolean isNothing() {
+        return BALL == 0 && STRIKE == 0;
+    }
+
+
+    public boolean isCorrect() {
+        return STRIKE == Constants.FULL_STRIKE;
+    }
+
+    @Override
+    public String toString() {
+        String hint = "";
+
+        if (isNothing()) {
+            hint += "낫싱";
+            return hint;
+        }
+
+        if (BALL != Constants.NOTHING) {
+            hint += BALL + "볼 ";
+        }
+
+        if (STRIKE != Constants.NOTHING) {
+            hint += STRIKE + "스트라이크";
+        }
+
+        return hint;
+    }
 }
