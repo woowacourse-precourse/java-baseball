@@ -8,23 +8,31 @@ public class GameStartSetting {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		
 		return computerNumberPut();
-	}//main
+	}//start
 	
 	private String computerNumberPut() {
 		String cumputerNumber = "";
 		for(;cumputerNumber.length()<3;) {
-		cumputerNumber = cumputerNumber+Randoms.pickNumberInRange(0, 9);
+		int randomNum = Randoms.pickNumberInRange(1, 9);
+		if(cumputerNumber.contains(randomNum+"")) {
+			continue;
+		}//if
+		cumputerNumber +=randomNum;
 		}//for
 		return cumputerNumber;
-	}//computerNumber
+	}//computerNumberPut
 	
 	public String userNumberPut() {
 		String userInputNumber = "";
-		System.out.print("숫자를 입력해주세요 :");
+		System.out.print("숫자를 입력해주세요 : ");
 		userInputNumber = Console.readLine();
-		if(userInputNumber.length()!=3 || !(userInputNumber.matches("[+-]?\\d*(\\.\\d+)?")) ) {
+		if(userInputNumber.length()!=3 || !(userInputNumber.matches("[+-]?\\d*(\\.\\d+)?"))
+			|| userInputNumber.charAt(0) == userInputNumber.charAt(1)
+			|| userInputNumber.charAt(1) == userInputNumber.charAt(2)
+			|| userInputNumber.charAt(2) == userInputNumber.charAt(0)
+				) {
 			throw new IllegalArgumentException();
 		}//if
 		return userInputNumber;
-	}// userInput
+	}// userNumberPut
 }// end class
