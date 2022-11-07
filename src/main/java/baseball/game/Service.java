@@ -41,20 +41,12 @@ public class Service {
     public static int countBall(List<Integer> userNumber, List<Integer> computerNumber) {
         int count = 0;
 
-        if (!Objects.equals(userNumber.get(0), computerNumber.get(0))
-                && (Objects.equals(userNumber.get(0), computerNumber.get(1))
-                || Objects.equals(userNumber.get(0), computerNumber.get(2)))) {
-            count++;
-        }
-        if (!Objects.equals(userNumber.get(1), computerNumber.get(1))
-                && (Objects.equals(userNumber.get(1), computerNumber.get(2))
-                || Objects.equals(userNumber.get(1), computerNumber.get(0)))) {
-            count++;
-        }
-        if (!Objects.equals(userNumber.get(2), computerNumber.get(2))
-                && (Objects.equals(userNumber.get(2), computerNumber.get(0))
-                || Objects.equals(userNumber.get(2), computerNumber.get(1)))) {
-            count++;
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (!Objects.equals(userNumber.get(index), computerNumber.get(index))
+                    && (Objects.equals(userNumber.get(index), computerNumber.get((index + 1) % 3))
+                    || Objects.equals(userNumber.get(index), computerNumber.get(index + 2) % 3))) {
+                count++;
+            }
         }
         return count;
     }
@@ -62,19 +54,11 @@ public class Service {
     public static int countStrike(List<Integer> userNumber, List<Integer> computerNumber) {
         int count = 0;
 
-        if (Objects.equals(userNumber.get(0), computerNumber.get(0))) {
-            count++;
-        }
-        if (Objects.equals(userNumber.get(1), computerNumber.get(1))) {
-            count++;
-        }
-        if (Objects.equals(userNumber.get(2), computerNumber.get(2))) {
-            count++;
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (Objects.equals(userNumber.get(index), computerNumber.get(index))) {
+                count++;
+            }
         }
         return count;
-    }
-
-    public static boolean isThreeStrike(List<Integer> hint) {
-        return hint.equals(THREE_STRIKE);
     }
 }

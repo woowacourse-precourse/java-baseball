@@ -33,7 +33,7 @@ public class Controller {
         List<Integer> hint = Service.countHint(user.getNumbers(), computer.getNumbers());
         show(Service.printHint(hint));
 
-        if (!Service.isThreeStrike(hint)) {
+        if (!hint.equals(THREE_STRIKE)) {
             play();
         }
     }
