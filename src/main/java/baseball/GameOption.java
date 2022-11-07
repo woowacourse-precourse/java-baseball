@@ -16,4 +16,15 @@ public enum GameOption {
 		return Arrays.stream(values())
 			.anyMatch(option -> option.value == value);
 	}
+
+	public static GameOption of(final int value) {
+		return Arrays.stream(values())
+			.filter(gameOption -> gameOption.value == value)
+			.findFirst()
+			.orElse(null);
+	}
+
+	public boolean isRestart() {
+		return this == RESTART;
+	}
 }
