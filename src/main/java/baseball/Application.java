@@ -7,24 +7,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class Application {
 
     public static boolean playGame() {
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         return true;
+
     }
 
     public static boolean restartGame() {
 
-        int answer;
+        String answer;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        answer = Integer.parseInt(Console.readLine());
+        answer = Console.readLine();
 
-        if (answer == 1) {
+        if (Integer.parseInt(answer) == 1) {
             return true;    // 게임 재시작
         } else {
             return false;   // 게임 종료
@@ -67,16 +67,15 @@ public class Application {
 
     }
 
-    public static List<Integer> separateNumberToDigit(int number) {
+    public static List<Integer> separateNumberToDigit(String number) {
 
         List<Integer> digitList = new ArrayList<>();
 
-        while (number > 0) {
-            digitList.add(number % 10);
-            number /= 10;
-        }
+        for (int i = 0;i < number.length();i++) {
 
-        Collections.reverse(digitList);
+            digitList.add(number.charAt(i) - '0');
+
+        }
 
         return digitList;
 
@@ -127,10 +126,11 @@ public class Application {
         boolean status = playGame();
         List<Integer> answer = createAnswer();
 
-        while (status != false) {
 
-            System.out.print("숫자를 입력해주세요 : ");
-            int number = Integer.parseInt(Console.readLine());
+        while (status) {
+
+            System.out.printf("숫자를 입력해주세요 : ");
+            String number = Console.readLine();
             List<Integer> digitList = separateNumberToDigit(number);
 
             List<Integer> countList = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
@@ -142,7 +142,10 @@ public class Application {
                 status = restartGame();
                 answer = createAnswer();
             }
+
         }
+
+        return;
 
     }
 
