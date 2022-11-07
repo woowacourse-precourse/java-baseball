@@ -27,7 +27,7 @@ public class GameController {
         String judgementResult = "";
 
         while (!judgementResult.equals("3스트라이크")) {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
 
             String input = readLine();
             inputExceptionController.checkPlayerNumbersInputException(input);
