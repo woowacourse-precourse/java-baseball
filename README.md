@@ -34,9 +34,9 @@
 - Controller
   - 야구 게임을 진행시킴
     - [x] 사용자의 입력 받기
-    - [ ] 게임을 계속 진행할지 말지 입력 받기
+    - [x] 게임을 계속 진행할지 말지 입력 받기
 - View
-  - [ ] InputView : 사용자의 입력과 관련된 View 생성
+  - [x] InputView : 사용자의 입력과 관련된 View 생성
   - [ ] OutputView : 출력과 관련된 View를 생성
 - Service
   - [x] model과 controller를 연결

@@ -17,12 +17,12 @@ public class BaseBallController {
     }
 
     public void run() {
-        baseBallService.init();
         InputView.printStartMessage();
         gameStart();
     }
 
     private void gameStart() {
+        baseBallService.init();
         playGameUntilEnd(new Score(0, 0));
         quitOrContinueGame();
     }
@@ -43,5 +43,13 @@ public class BaseBallController {
     private void quitOrContinueGame() {
         OutputView.printQuitMessage();
         InputView.printChoiceMessage();
+        String input = Console.readLine();
+        continueOrQuit(input);
+    }
+
+    private void continueOrQuit(String input) {
+        if (input.equals("1")) {
+            gameStart();
+        }
     }
 }
