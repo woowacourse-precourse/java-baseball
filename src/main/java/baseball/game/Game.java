@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-	public String randomNumberForTest;
 	private static final int STRIKE = 0;
 	private static final int BALL = 1;
 	private static final Game instance = new Game();
@@ -23,13 +22,10 @@ public class Game {
 	public int play(PlayerComputer computer, PlayerUser user) {
 		int numberOfStrike;
 		String answer = computer.getRandomNumber();
-		randomNumberForTest = answer;
 
 		do {
 			String userInput = user.getInputNumber();
-
 			List<Integer> judgement = compareUserInputToAnswer(userInput, answer);
-
 			printMessage(judgement);
 			numberOfStrike = judgement.get(STRIKE);
 		} while (!isCorrectAnswer(numberOfStrike));
@@ -43,7 +39,6 @@ public class Game {
 		int replayOrEndgame;
 
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
 		try {
 			input = Console.readLine();
 			replayOrEndgame = Integer.parseInt(input);
@@ -51,7 +46,6 @@ public class Game {
 			// System.out.println("거 제대로 좀 입력합시다! 네? 아시겠어요? 아시겠냐구요?!?!");
 			throw new IllegalArgumentException();
 		}
-
 		return replayOrEndgame;
 	}
 
@@ -60,48 +54,43 @@ public class Game {
 	}
 
 	private List<Integer> compareUserInputToAnswer(String userInput, String answer) {
-		return getJudgement(userInput, answer);
+		return countJudgement(userInput, answer);
 	}
 
-	private List<Integer> getJudgement(String userInput, String answer) {
+	public List<Integer> countJudgement(String userInput, String answer) {
 		List<Integer> judgement = new ArrayList<>();
 		int userNumberLength = userInput.length();
-		int strikes = 0;
-		int balls = 0;
+		int strikes = 0, balls = 0;
 
 		for (int i = 0; i < userNumberLength; i++) {
-			strikes += countStrikes(userInput, answer, i);
-			balls += countBalls(userInput, answer, i);
+			char userDigit = userInput.charAt(i);
+			char answerDigit = answer.charAt(i);
+
+			strikes += countStrikes(userDigit, answerDigit);
+			balls += countBalls(userDigit, answerDigit, answer);
 		}
+
 		judgement.add(strikes);
 		judgement.add(balls);
-
 		return judgement;
 	}
 
-	// todo : findStrikes, findBalls 관련해서 리팩토링 생각해보기
-	private int countStrikes(String userInput, String answer, int i) {
-		char userDigit = userInput.charAt(i);
-		char answerDigit = answer.charAt(i);
-
+	private int countStrikes(char userDigit, char answerDigit) {
 		if (userDigit == answerDigit) {
 			return 1;
 		}
-
 		return 0;
 	}
 
-	private int countBalls(String userInput, String answer, int i) {
-		char userDigit = userInput.charAt(i);
-		char answerDigit = answer.charAt(i);
+	private int countBalls(char userDigit, char answerDigit, String answer) {
+		String userDigitToString = String.valueOf(userDigit);
 
-		if (userDigit != answerDigit && answer.contains("" + userDigit)) {
+		if (userDigit != answerDigit && answer.contains(userDigitToString)) {
 			return 1;
 		}
-
 		return 0;
 	}
-	// todo : -----------------------------------------------------------
+
 	private void printMessage(List<Integer> judgement) {
 		String msg = generateMessage(judgement);
 		System.out.println(msg);
