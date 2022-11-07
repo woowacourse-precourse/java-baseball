@@ -19,6 +19,10 @@ public class BaseballGame {
         this.nothing = 0;
     }
 
+    public int getStrike() {
+        return this.strike;
+    }
+
     public List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < NUMBER_LENGTH) {
@@ -31,10 +35,17 @@ public class BaseballGame {
     }
 
     public String startMatch(String inputValue) {
+        initNumber();
         for (int i = 0; i < inputValue.length(); i++) {
             ballOrStrikeOrNothing(i, Integer.parseInt(String.valueOf(inputValue.charAt(i))));
         }
         return getMatchResult();
+    }
+
+    private void initNumber() {
+        this.ball = 0;
+        this.strike = 0;
+        this.nothing = 0;
     }
 
     private void ballOrStrikeOrNothing(int index, int value) {
