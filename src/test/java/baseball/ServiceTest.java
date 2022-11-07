@@ -4,15 +4,19 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
-import org.opentest4j.AssertionFailedError;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -249,29 +253,6 @@ public class ServiceTest {
         assertEquals(false, isMaintainFalse);
     }
 
-    @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 예외")
-    @Test
-    void askEndingConditionTest_exception() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        //given
-        Service service = new Service();
-        int gameClearCondition = 3;
-        String exception = "9";
-        InputStream exceptionInput = new ByteArrayInputStream(exception.getBytes());
-        Method testMethod = service.getClass().getDeclaredMethod("askEndingCondition", int.class);
-        testMethod.setAccessible(true);
-        Thread thread = new Thread();
-        thread.start();
-        //when
-        try {
-            thread.sleep(1000);
-            System.setIn(exceptionInput);
-        } catch (InterruptedException e) {
-        }
-        //when,then
-        assertThrows(IllegalArgumentException.class, () -> {
-            testMethod.invoke(service, gameClearCondition);
-        });
-    }
     @DisplayName("정답을 체크하는 메서드 테스트")
     @Test
     void checkAnswerTest() {
