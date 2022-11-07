@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.Arrays;
-
 import baseball.constants.Constants;
 
 public class Application {
