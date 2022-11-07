@@ -4,6 +4,11 @@ public class GameStatus {
     private boolean isStart;
     private boolean isFinish;
 
+    public GameStatus() {
+        isStart = false;
+        isFinish = false;
+    }
+
     public boolean isStart() {
         return isStart;
     }

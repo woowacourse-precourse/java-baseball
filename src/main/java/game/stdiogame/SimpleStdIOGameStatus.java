@@ -6,6 +6,12 @@ public class SimpleStdIOGameStatus extends GameStatus {
     private String inputData;
     private String outputData;
 
+    public SimpleStdIOGameStatus() {
+        super();
+        inputData = null;
+        outputData = null;
+    }
+
     public String getInputData() {
         return inputData;
     }

@@ -24,5 +24,20 @@ public class NumberBaseballStdIOGameManager implements GameManager {
     @Override
     public void startGame() {
         game.start();
+        game.loop();
+    }
+
+    @Override
+    public boolean doesGameStart() {
+        return ((NumberBaseballStdIOGame)game).getGameStatus().isStart();
+    }
+
+    @Override
+    public boolean doesGameFinish() {
+        return ((NumberBaseballStdIOGame)game).getGameStatus().isFinish();
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

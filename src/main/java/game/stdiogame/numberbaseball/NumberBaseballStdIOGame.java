@@ -10,6 +10,17 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
 
     @Override
     public void start() {
+        GameStatus gameStatus = getGameStatus();
+        gameStatus.setStart(true);
+    }
+
+    @Override
+    public void loop() {
+        loopGame();
+    }
+
+    @Override
+    public void finish() {
 
     }
 
@@ -49,4 +60,5 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
     private void prepareOutputData() {
 
     }
+
 }

@@ -163,16 +163,19 @@ class Startable {
   +void start()
 }
 class Game {
-  -String name
-  -GameStatus gameStatus
+  +void finsh()
 }
 class SimpleStdIOGame {
+  -String name
+  -GameStatus gameStatus
   #void writeGameMessage()*
   #void readInput()*
   #void checkInput()*
   +void operateRule()*
   #void writeOutput()*
   #void loopGame()
+  -boolean isFinish()
+  -boolean isStart()
 }
 class NumberBaseballStdIOGame {
   -void countBall()
@@ -193,9 +196,10 @@ class NumberBaseballStdIOGameStatus {
   -int strikeCount
 }
 class GameManager {
-  -Game game
   +void restartGame()
   +void startGame()
+  +boolean doesGameStart()
+  +boolean doesGameFinish()
 }
 class NumberBaseballStdIOGameManager {
   -NumberBaseballStdIOGameManager INSTANCE
@@ -203,7 +207,7 @@ class NumberBaseballStdIOGameManager {
   +NumberBaseballStdIOGameManager getInstance()
 }
 <<interface>> Startable
-<<abstract>> Game
+<<interface>> Game
 <<abstract>> SimpleStdIOGame
 <<interface>> GameManager
 <<Singleton>> NumberBaseballStdIOGameManager
@@ -212,9 +216,9 @@ Game <|-- SimpleStdIOGame
 SimpleStdIOGame ..|> NumberBaseballStdIOGame
 GameStatus <|-- StdIOGameStatus
 StdIOGameStatus <|-- NumberBaseballStdIOGameStatus
-NumberBaseballStdIOGame "1" --> "1" NumberBaseballStdIOGameStatus
+NumberBaseballStdIOGame "1" --* "1" NumberBaseballStdIOGameStatus : has
 GameManager ..|> NumberBaseballStdIOGameManager
-NumberBaseballStdIOGameManager "1" --> "1" NumberBaseballStdIOGame
+NumberBaseballStdIOGameManager "1" --* "1" NumberBaseballStdIOGame : has
 ```
 
 #### Startable
@@ -226,17 +230,18 @@ NumberBaseballStdIOGameManager "1" --> "1" NumberBaseballStdIOGame
 
 #### Game
 
-게임을 표현한 **추상 클래스**이다. `Startable`을 구현한다.
-
-- 게임의 이름을 지닌다.
-  - `private String name`
-- 게임의 상태를 지닌다.
-  - `private GameStatus gameStatus`
+게임을 표현한 **인터페이스**이다. `Startable`을 상속한다.
+- 게임을 끝낸다.
+  - `void finish()`
 
 #### SimpleStdIOGame
 
 표준 입출력을 이용한 간단한 게임을 표현한 **추상 클래스**이다. `Game`을 상속한다.
 
+- 게임의 이름을 지닌다.
+  - `private String name`
+- 게임의 상태를 지닌다.
+  - `private GameStatus gameStatus`
 - 게임 상태에 따라 메시지를 출력한다.
   - `protected abstract void writeGameMessage()`
 - 입력을 받는다.
@@ -264,6 +269,8 @@ NumberBaseballStdIOGameManager "1" --> "1" NumberBaseballStdIOGame
   ```
 - 게임이 끝났는지 검사한다.
   - `private boolean isFinish()`
+- 게임이 시작했는지 검사한다.
+  - `private boolean isStart()`
 
 #### NumberBaseballStdIOGame
 
@@ -314,3 +321,7 @@ NumberBaseballStdIOGameManager "1" --> "1" NumberBaseballStdIOGame
 - 프로그램 상에 하나의 객체만 존재한다.
 - 표준 입출력을 이용한 숫자 야구 게임을 갖는다.
   - `private final Game game`
+- 게임이 끝난 상태인지 검사한다.
+  - `public boolean doesGameFinish()`
+- 게임이 시작한 상태인지 검사한다.
+  - `public boolean doesGameStart()`

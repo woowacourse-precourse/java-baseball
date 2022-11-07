@@ -11,6 +11,7 @@ public class NumberBaseballStdIOGameStatus extends SimpleStdIOGameStatus {
     private int strikeCount;
 
     public NumberBaseballStdIOGameStatus() {
+        super();
         ballCount = 0;
         strikeCount = 0;
         targetNumber = new HashMap<Character, Integer>(3);

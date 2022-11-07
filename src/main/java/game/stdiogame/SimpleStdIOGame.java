@@ -3,9 +3,13 @@ package game.stdiogame;
 import game.Game;
 import game.GameStatus;
 
-public abstract class SimpleStdIOGame extends Game {
+public abstract class SimpleStdIOGame implements Game {
+    private final String name;
+    private final GameStatus gameStatus;
+
     public SimpleStdIOGame(String name, GameStatus gameStatus) {
-        super(name, gameStatus);
+        this.name = name;
+        this.gameStatus = gameStatus;
     }
 
     protected abstract void writeGameMessage();
@@ -18,6 +22,8 @@ public abstract class SimpleStdIOGame extends Game {
         return getGameStatus().isFinish();
     }
 
+    private boolean isStart() { return getGameStatus().isStart(); }
+
     protected void loopGame() {
         writeGameMessage();
         while (!isFinish()) {
@@ -27,5 +33,13 @@ public abstract class SimpleStdIOGame extends Game {
             writeOutput();
         }
         writeGameMessage();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
     }
 }
