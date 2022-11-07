@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public final class NumberGenerator {
 
     private static final int LIMITED_NUMBER_SIZE = 3;
-    private static final int FIRST_NUMBER = 1;
-    private static final int FINAL_NUMBER = 9;
+    public static final int FIRST_NUMBER = 1;
+    public static final int FINAL_NUMBER = 9;
 
     private NumberGenerator() {
     }
