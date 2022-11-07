@@ -69,6 +69,8 @@ public class BaseBallGame {
     public void isStrikeOut(String hint) {
         if(hint.equals("3"+ProgramMessages.STRIKE)) {
             strikeOut = true;
+            System.out.println(ProgramMessages.GAME_SET);
+            quitOrRestart();
         }
     }
 
@@ -76,6 +78,13 @@ public class BaseBallGame {
      * 사용자의 입력에 따라서 종료할지 재시작할지 quit 변수값을 조정하는 함수
      */
     public void quitOrRestart() {
+        System.out.println(ProgramMessages.QUIT_OR_RESTART);
+        String input = Console.readLine();
+        if(input.equals(ProgramMessages.RESTART)) {
+            quit = false;
+        } else if (input.equals(ProgramMessages.QUIT)) {
+            quit = true;
+        }
 
     }
 }
