@@ -3,11 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
-    public static String userPitching(){
+    public static String scanUserPitches(){
         Output.requestPitching();
         return Console.readLine();
     }
-    public static String whetherNewGame(){
+    public static String scanWhetherNewGame(){
         Output.gameOverMessage();
         return Console.readLine();
     }
