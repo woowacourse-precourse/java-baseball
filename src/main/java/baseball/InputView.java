@@ -8,7 +8,7 @@ public class InputView {
     private static final String REPLAY_INPUT_COMMENT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
 
     public static void printGameStart() {
-        System.out.println(GAME_START_COMMENT);
+        System.out.print(GAME_START_COMMENT);
     }
 
     public static String getUserInput() {
