@@ -16,6 +16,10 @@ public class BaseballCount {
         this.user = new User();
     }
 
+    // 게임 진행 기능
+    public void playGame() {
+        this.userInputList = user.getUserNumberList();
+    }
 
     // 힌트 메세지 출력 기능
     public String displayHint() {
