@@ -14,7 +14,7 @@ public class Application {
         do{
             Game(User, Computer);
         }
-        while(Replay(Computer));
+        while(Replay());
     }
 
     private static void err_check(String UserInput, List<Integer> User){
@@ -30,6 +30,7 @@ public class Application {
     }
 
     private static void MakeAnswer(List<Integer> Computer){
+        Computer.clear();
         for(int i = 0; i < BALL_COUNT; i++){
             int number = Randoms.pickNumberInRange(1, 9);
             if(Computer.contains(number)) 
@@ -46,11 +47,9 @@ public class Application {
     }
 
     private static void Game(List<Integer> User, List<Integer> Computer){
-        //init
-        strike = 0;
-        ball = 0;
         MakeAnswer(Computer);
         do{
+            User.clear();
             System.out.println("숫자를 입력해주세요 : ");
             String UserInput = Console.readLine();
             MakeUser(UserInput, User);
@@ -61,10 +60,13 @@ public class Application {
     }
 
     private static void Compare_Answer(List<Integer> User, List<Integer> Computer){
+        //init
+        strike = 0;
+        ball = 0;
         for(int idx = 0; idx < BALL_COUNT; idx++){
             //if computer's index equal as i(gradually), get strike
             if(Computer.indexOf(User.get(idx)) == idx) 
-                strike++; 
+                strike++;
             //if not strike but in it at other index, get ball
             else if(Computer.contains(User.get(idx))) 
                 ball++;
@@ -80,7 +82,7 @@ public class Application {
         return false;
     }
 
-    private static boolean Replay(List<Integer> Computer){
+    private static boolean Replay(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String regame = Console.readLine();
         if(regame.equals("1"))
