@@ -1,6 +1,5 @@
 package baseball.validation;
 
-import baseball.utils.validation.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
