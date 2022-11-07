@@ -18,8 +18,7 @@ public class CreateBaseBall implements Game {
     }
 
     public UserInput getUserInputInput(){
-        UserInput input = new BaseBallInput();
-        return input;
+        return new BaseBallInput();
     }
 
     @Override
@@ -34,7 +33,7 @@ public class CreateBaseBall implements Game {
         Validator.validate(input);
     }
 
-    String generateRandomNumber(){
+    public String generateRandomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

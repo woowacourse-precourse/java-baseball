@@ -14,7 +14,6 @@ public class ConcreteCreatorBaseBall extends GameCreator {
         String input = "";
         System.out.println("숫자 야구 게임을 시작합니다.");
         String randomNumber = game.generateRandomNumber();
-        System.out.println("randomNumber = " + randomNumber);
         do {
             System.out.print("숫자를 입력해주세요 : ");
             input = userInput.getInput();
@@ -28,5 +27,6 @@ public class ConcreteCreatorBaseBall extends GameCreator {
         if(!game.endGame()){
             startGame();
         }
+        System.out.println("게임 종료");
     }
 }

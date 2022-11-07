@@ -1,9 +1,8 @@
 package baseball;
 
 import baseball.domain.Validator;
-import baseball.domain.game.baseball.ConcreteGameBaseBall;
+import baseball.domain.game.baseball.CreateBaseBall;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,20 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    ConcreteGameBaseBall game;
-    Player player;
-
-    @BeforeEach
-    public void beforeEach() {
-        game = new ConcreteGameBaseBall();
-        player = new Player();
-    }
+    CreateBaseBall game = new CreateBaseBall();
 
     @Test
     void validatorRandomNumber(){
-        String randomNumber1 = game.generateRandomNumber();
-        String randomNumber2 = game.generateRandomNumber();
-        assertThat(randomNumber1).isNotEqualTo(randomNumber2);
+        String randomNumber = game.generateRandomNumber();
+        String comparedRandomNumber = game.generateRandomNumber();
+        assertThat(randomNumber).isNotEqualTo(comparedRandomNumber);
     }
 
     @Test
@@ -63,11 +55,11 @@ class ApplicationTest extends NsTest {
     @Test
     void 영을_포함하여_입력한_경우_예외를_반환(){
         Validator validator= new Validator();
-        String input = "1 23";
+        String input = "103";
 
         assertThatThrownBy(() -> validator.validateContainZero(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("세자리 숫자만 입력해주세요");
+                .isInstanceOf(IllegalArgumentException.class);
+//                .hasMessageContaining("0을 입력하지 마세요");
     }
 
 
@@ -76,11 +68,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 랜덤_숫자_크기가_3인지_확인(){
         String randomNumber = game.generateRandomNumber();
-        assertThat(randomNumber.length()).isEqualTo(3);
+        assertThat(randomNumber).hasSize(3);
     }
-
-
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
