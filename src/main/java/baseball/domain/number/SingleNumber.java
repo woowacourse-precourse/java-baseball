@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.number;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,13 +11,13 @@ public final class SingleNumber {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
 
-    public SingleNumber(int position, int number) {
+    SingleNumber(int position, int number) {
         validateNumberRange(number);
         this.position = position;
         this.number = number;
     }
 
-    public boolean isBall(List<SingleNumber> singleNumbers) {
+    public boolean equalsOnlyNumber(List<SingleNumber> singleNumbers) {
         for (SingleNumber singleNumber : singleNumbers) {
             if ((position != singleNumber.position) && (number == singleNumber.number)) {
                 return true;

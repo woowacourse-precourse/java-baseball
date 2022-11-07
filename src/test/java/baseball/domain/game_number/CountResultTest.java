@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.domain.game_number;
 
+import baseball.domain.game_number.CountResult;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

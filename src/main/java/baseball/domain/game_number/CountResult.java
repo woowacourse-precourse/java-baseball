@@ -1,11 +1,11 @@
-package baseball.domain;
+package baseball.domain.game_number;
 
 public class CountResult {
 
     private final int ballCount;
     private final int strikeCount;
 
-    public CountResult(int ballCount, int strikeCount) {
+    CountResult(int ballCount, int strikeCount) {
         this.ballCount = ballCount;
         this.strikeCount = strikeCount;
     }

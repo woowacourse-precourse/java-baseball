@@ -1,4 +1,4 @@
-package baseball.domain.randomnumber;
+package baseball.domain.number;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator {
-    static List<Integer> randomNumber() {
+    public static List<Integer> randomNumber() {
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < 3) {

@@ -1,7 +1,8 @@
 package baseball.domain;
 
-import baseball.domain.inputnumber.InputNumbers;
-import baseball.domain.randomnumber.RandomNumbers;
+import baseball.domain.game_number.CountResult;
+import baseball.domain.game_number.Guess;
+import baseball.domain.game_number.Answer;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
@@ -16,7 +17,7 @@ public class BaseballGame {
     }
 
     public void run() {
-        RandomNumbers randomNumbers = new RandomNumbers();
+        Answer answer = new Answer();
         int oneOrTwoForRestartGame = 0;
 
         messagePrinter.printStartMessage();
@@ -24,10 +25,10 @@ public class BaseballGame {
         while (oneOrTwoForRestartGame != 2) {
             messagePrinter.printEnterNumberMessage();
 
-            String inputValue = numberScanner.inputNumber();
-            InputNumbers inputNumber = new InputNumbers(inputValue);
+            String inputNumber = numberScanner.inputNumber();
+            Guess guess = new Guess(inputNumber);
 
-            CountResult countResult = randomNumbers.ballAndStrikeCount(inputNumber);
+            CountResult countResult = answer.ballAndStrikeCount(guess);
             messagePrinter.printBallAndStrikeCount(countResult.stringFormatOfCountResult());
 
             if (countResult.withThreeStrike()) {
@@ -36,7 +37,7 @@ public class BaseballGame {
             }
 
             if (oneOrTwoForRestartGame == 1) {
-                randomNumbers = new RandomNumbers();
+                answer = new Answer();
                 oneOrTwoForRestartGame = 0;
             }
         }

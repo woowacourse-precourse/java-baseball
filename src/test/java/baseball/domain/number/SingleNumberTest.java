@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.number;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,7 +20,7 @@ class SingleNumberTest {
                 new SingleNumber(2, 3)
         );
 
-        assertThat(singleNumber.isBall(answer)).isTrue();
+        assertThat(singleNumber.equalsOnlyNumber(answer)).isTrue();
     }
 
     @Test
@@ -32,7 +32,7 @@ class SingleNumberTest {
                 new SingleNumber(2, 3)
         );
 
-        assertThat(singleNumber.isBall(answer)).isFalse();
+        assertThat(singleNumber.equalsOnlyNumber(answer)).isFalse();
     }
 
     @ParameterizedTest
