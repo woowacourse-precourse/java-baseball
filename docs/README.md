@@ -1,6 +1,10 @@
 ## 기능 명세서
 
+### Game
 1. 재시작/종료를 구분하는 기능
+
+### GameEngine
+실제 게임을 시작시키는 클래스
 
 ### StrikeBallUtil
 1. Strike와 Ball의 개수를 구하기
