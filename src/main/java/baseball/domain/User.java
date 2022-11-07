@@ -5,8 +5,6 @@ import java.util.List;
 
 public class User {
 
-    private static final int GUESSED_ANSWER_LENGTH = 3;
-
     private List<Integer> guessedAnswer;
 
     public User() {
