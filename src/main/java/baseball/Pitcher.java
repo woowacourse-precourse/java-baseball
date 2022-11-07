@@ -25,4 +25,10 @@ public class Pitcher {
         }
         return digits;
     }
+
+    public Integer selectGameRestartOrEnd() {
+        String gameProcessValue = Console.readLine();
+        validator.validateGameProcessValue(gameProcessValue);
+        return Integer.valueOf(gameProcessValue);
+    }
 }
