@@ -7,6 +7,7 @@ public class UserService {
 
     private final User user;
     private String userBaseballNumber;
+    private String userRestartNumber;
 
     public UserService(User user) {
         this.user = user;
@@ -19,5 +20,14 @@ public class UserService {
 
     public String setBaseballNumber() {
         return user.getBaseballNumber();
+    }
+
+    public void inputRestartNumber() {
+        userRestartNumber = Console.readLine();
+        user.setUserRestartNumber(userRestartNumber);
+    }
+
+    public String setRestartNumber() {
+        return user.getRestartNumber();
     }
 }
