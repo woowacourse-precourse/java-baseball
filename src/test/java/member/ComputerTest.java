@@ -2,6 +2,7 @@ package member;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -56,6 +57,6 @@ class ComputerTest {
         computer.setNumbers();
         computer.clearNumbers();
         //then
-        assertThat(computer.getNumbers().size()).isEqualTo(0);
+        assertThat(computer.getNumbers()).isEqualTo(Collections.emptyList());
     }
 }
