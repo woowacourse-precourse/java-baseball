@@ -7,5 +7,9 @@ import java.util.stream.Collectors;
 public class Player {
     private List<Integer> numbers;
 
-
+    public void writeNumber(String input){
+        this.numbers = Arrays.stream(input.split("")).
+                map(Integer::valueOf).
+                collect(Collectors.toList());
+    }
 }
