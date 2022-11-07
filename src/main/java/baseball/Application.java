@@ -43,7 +43,10 @@ public class Application {
             if (inputCommand == RESTART) {
                 computerNumList = new ArrayList<>();
                 userNumList = new ArrayList<>();
-            } else if (inputCommand == EXIT) {
+                continue;
+            }
+
+            if (inputCommand == EXIT) {
                 break;
             }
         }
