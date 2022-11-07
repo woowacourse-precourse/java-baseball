@@ -1,6 +1,7 @@
 package baseball.model;
 
 import baseball.constant.Constant;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.LinkedHashSet;
 
 public class AnswerNumber {
@@ -21,5 +22,10 @@ public class AnswerNumber {
             createAnswerNumber.add(getRandomNumber());
         }
         this.answer = String.join("", createAnswerNumber);
+    }
+
+    public String getRandomNumber() {
+
+        return Integer.toString(Randoms.pickNumberInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER));
     }
 }
