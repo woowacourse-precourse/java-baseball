@@ -1,5 +1,7 @@
 package baseball.service;
 
+import baseball.constant.Constant;
+
 public class HintService {
 
     private final StringBuilder sb = new StringBuilder();
@@ -33,6 +35,13 @@ public class HintService {
             if (answerNumber.contains(Character.toString(playerNumber.charAt(i)))) {
                 ball += 1;
             }
+        }
+    }
+
+    public void nothing() {
+
+        if (strike == Constant.INITIAL_NUMBER && ball == Constant.INITIAL_NUMBER) {
+            sb.append("낫싱");
         }
     }
 }
