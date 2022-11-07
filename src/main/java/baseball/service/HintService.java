@@ -68,4 +68,9 @@ public class HintService {
             sb.append(number - strike).append(ball).append(" ");
         }
     }
+
+    public boolean isThreeStrike() {
+
+        return strike == Constant.STRIKE_MAX_NUMBER;
+    }
 }
