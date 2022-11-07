@@ -4,13 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class Application {
-
-    private static String continueornot;
 
     private static HashMap<String, Integer> chooseComputerNumber() {
         HashMap<String, Integer> computer = new HashMap<>();
@@ -64,18 +61,15 @@ public class Application {
         }
     }
 
-    private static boolean oneOrTwo(String contiornot) {
-        return Pattern.matches("[1, 2]", contiornot);
+    private static boolean oneOrTwo(String continueornot) {
+        return Pattern.matches("[1, 2]", continueornot);
     }
 
     private static Integer selectContinueOrNot() {
-        while(true){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            continueornot = Console.readLine();
-            if(oneOrTwo(continueornot)) {
-                break;
-            }
-            System.out.println("1 또는 2를 입력해 주세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String continueornot = Console.readLine();
+        if(!oneOrTwo(continueornot)) {
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
         }
         return Integer.parseInt(continueornot);
     }
