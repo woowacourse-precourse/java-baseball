@@ -6,31 +6,35 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     SystemMessage systemMessage = new SystemMessage();
-
+    List<Integer> resultNumbers;
     void start() {
         System.out.println(systemMessage.START_GAME_MESSAGE);
-        final List<Integer> computerNumbers = setThreeLengthNumberWithoutDuplication();
+        resultNumbers = setThreeLengthNumberWithoutDuplication();
     }
 
     List<Integer> setThreeLengthNumberWithoutDuplication() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
+        List<Integer> resultNumbers = new ArrayList<>();
+        while (resultNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!resultNumbers.contains(randomNumber)) {
+                resultNumbers.add(randomNumber);
             }
         }
-        return computer;
+        return resultNumbers;
     }
 
-    List<String> getNumber() {
+    List<Integer> getNumber() {
         System.out.print(systemMessage.INSERT_NUMBER_MESSAGE);
-        List<String> numberList = new ArrayList<>(Arrays.asList(Console.readLine().split("")));
+        List<Integer> numberList = Arrays.stream(Console.readLine().split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
         return numberList;
     }
+
     char gameRestartController() {
         System.out.println(systemMessage.RESTART_GAME_MESSAGE);
         String inputRestartValue = Console.readLine();
