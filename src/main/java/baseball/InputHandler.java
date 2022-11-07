@@ -3,19 +3,36 @@ package baseball;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputHandler {
+    static ErrorHandler errorHandler;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static String getInput_returnMyNum() throws IOException {
+        errorHandler = new ErrorHandler();
         String myNum = br.readLine();
-        //TODO : 도메인 test
+
+        List<Integer> myNumList = new ArrayList<>();
+        for(int i=0; i< myNum.length(); i++){
+            myNumList.add(Integer.parseInt(myNum.substring(i,i+1)));
+        }
+        if(!errorHandler.isLengthSizeis3(myNumList)){
+            throw new IllegalArgumentException("숫자는 세자리 수여야 합니다.");
+        }
+        if(!errorHandler.isNotDuplicated(myNumList)){
+            throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
+        }
         System.out.println("입력 수 : "+myNum);
         return myNum;
     }
     public int getRestartNum() throws IOException {
-        //TODO : try_catch can String to int test
-        int restartNum = Integer.parseInt(br.readLine());
-        System.out.println("입력 수 : "+restartNum);
-        return restartNum;
+        try {
+            int restartNum = Integer.parseInt(br.readLine());
+            System.out.println("입력 수 : " + restartNum);
+            return restartNum;
+        }catch (NumberFormatException e){
+            throw new NumberFormatException("숫자를 입력해주세요");
+        }
     }
 }

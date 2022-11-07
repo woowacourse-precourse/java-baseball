@@ -15,19 +15,21 @@ public class Application {
         outputHandler = new OutputHandler();
         baseBallGame = new BaseBallGame();
         radomNumberCreator = new RadomNumberCreator();
+
         while (true) {
             String comNum = radomNumberCreator.makeRandomNumber();
 
             // TODO: 사용자 수 입력 - 도메인테스트
             baseBallGame.baseballGame(comNum);
+
             outputHandler.printRestart_orExit();
             int restart_orExit = inputHandler.getRestartNum();
+
 
             if (restart_orExit == 2) {
                 break;
             } else if (restart_orExit != 1) {
-                System.out.println("잘못된 restartNum 입력하였습니다.");
-                break;
+                throw new IllegalArgumentException("1이나 2를 입력해야합니다.");
             }
         }
     }
