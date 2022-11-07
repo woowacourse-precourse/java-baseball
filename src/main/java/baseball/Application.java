@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -23,7 +24,20 @@ public class Application {
     public static void throwIllegalArgumentException() {
         throw new IllegalArgumentException("입력 값이 유효하지 않아 프로그램이 종료됩니다.");
     }
+    public static boolean checkRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userAnswer = Console.readLine();
+        if (userAnswer.equals("1")) {
+            return true;
+        } else if (userAnswer.equals("2"))
+            return false;
+        throwIllegalArgumentException();
+        return false;
+    }
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        boolean newGame = true;
+        while (newGame) {
+            newGame = checkRestart();
+        }
     }
 }
