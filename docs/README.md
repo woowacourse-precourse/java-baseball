@@ -11,9 +11,11 @@
   - ball, strike
 - [X] getter/setter
 
-### Computer
+### ScoreBoard
 - [X] 변수
   - 랜덤 숫자 리스트
+  - ball, strike
+  - ThreeStrike
 - [X] getter/setter
 
 ### Player
@@ -26,8 +28,8 @@
 - [ ] 게임 시작
 - [ ] 재시작/종료 코드 입력
 
-### Comparator
-- [ ] 컴퓨터와 플레이어의 숫자 비교하여 결과 확인
+### ScoreBoard
+- [X] 컴퓨터와 플레이어의 숫자 비교하여 결과 확인
 
 ### Computer 
 - [X] 컴퓨터의 각각 다른 3개 숫자 설정
