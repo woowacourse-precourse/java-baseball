@@ -13,6 +13,7 @@ public class NumberGenerator {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addNum(computer, randomNumber);
         }
+        System.out.println(computer);
         return computer;
     }
 
