@@ -31,6 +31,7 @@ public class BaseballGameController {
             baseballGameView.gameStartMessage();
 
             List<Integer> userInput = baseballGameInputService.getUserInput();
+            List<Integer> gameResultList = baseballGameService.getGameResult(userInput, answerNumbers);
 
 
         } while (isThreeStrike(gameResult));

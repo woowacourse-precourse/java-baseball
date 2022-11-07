@@ -8,7 +8,15 @@ import java.util.List;
 public class BaseballGameService {
 
     public List<Integer> getGameResult(List<Integer> userInput, List<Integer> answerNumbers) {
-        return null;
+        Integer strike = strikeChecker(userInput, answerNumbers);
+        Integer ball = ballChecker(userInput, answerNumbers);
+
+        List<Integer> gameResult = new ArrayList<>();
+
+        gameResult.add(strike);
+        gameResult.add(ball);
+
+        return gameResult;
     }
 
     public List<Integer> getRandomNumber() {
@@ -20,6 +28,29 @@ public class BaseballGameService {
             }
         }
         return gameResultList;
+    }
 
+    private Integer strikeChecker(List<Integer> userInput, List<Integer> answerNumbers) {
+        Integer strike = 0;
+
+        for (int i = 0; i < userInput.size(); i++) {
+            if (userInput.get(i) == answerNumbers.get(i)) {
+                strike += 1;
+            }
+        }
+        return strike;
+    }
+
+    private Integer ballChecker(List<Integer> userInput, List<Integer> answerNumbers) {
+        Integer ball = 0;
+        Integer strikeAndBall = 0;
+        for (int i = 0; i < userInput.size(); i++) {
+            if (answerNumbers.contains(userInput.get(i))) {
+                strikeAndBall += 1;
+            }
+        }
+        ball = strikeAndBall - strikeChecker(userInput, answerNumbers);
+
+        return ball;
     }
 }
