@@ -30,13 +30,14 @@ public class BaseballComputer {
         String answer = userInputNumberInGame();
 
         if(!checkHitNumber(answer)){
+            printHitStatus();
             init();
         }
 
         printRestartOrEnd();
         int choice = inputRestartOrEnd();
 
-        if(1< choice && choice < 3){
+        if(0< choice && choice < 3){
             System.out.println("out of number");
             return 0;
         }
@@ -58,6 +59,7 @@ public class BaseballComputer {
     }
 
     public boolean checkHitNumber(String answer) {
+        String [] splitNum = answer.split("");
         return true;
     }
 
