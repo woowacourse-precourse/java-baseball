@@ -17,14 +17,14 @@ public class InputValidation {
 	}
 
 	
-	public boolean isValidRandomNumbers(int inputData) {
+	public boolean isValid(int inputData) {
 		String data = Integer.toString(inputData);
 		
-		return isValidRandomNumbers(data);
+		return isValid(data);
 	}
 	
 	
-	public boolean isValidRandomNumbers(String inputData) {
+	public boolean isValid(String inputData) {
 		if(inputData.length()!=size) {
 			return false;
 		}
