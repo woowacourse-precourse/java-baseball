@@ -116,7 +116,7 @@ class Output {
 }
 
 class CompareNumbers {
-    public static int[] checkNumber(List<Integer> userInput, List<Integer> answer) {
+    static int[] checkNumber(List<Integer> userInput, List<Integer> answer) {
         int[] ballStrike = {0, 0};
         for (int number : userInput) {
             if (answer.contains(number)) {
