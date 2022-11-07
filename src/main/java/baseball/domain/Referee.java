@@ -23,7 +23,7 @@ public class Referee {
 
     public List<Integer> makeRandomValues() {
         initNumbers();
-        while(numbers.size() < DIGITS){
+        while (numbers.size() < DIGITS) {
             int picked = Randoms.pickNumberInRange(1, 9);
             if (checkDuplicate(picked)) {
                 numbers.add(picked);

@@ -46,7 +46,7 @@ public class InputView {
     }
 
     private void validateInputDuplicate(List<Integer> inputs) {
-        if(inputs.stream().anyMatch(input -> Collections.frequency(inputs, input) > 1)){
+        if (inputs.stream().anyMatch(input -> Collections.frequency(inputs, input) > 1)) {
             throw new InputDuplicateException();
         }
     }

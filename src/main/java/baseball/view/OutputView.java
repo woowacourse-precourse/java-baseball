@@ -10,11 +10,11 @@ public class OutputView {
 
     public static final String INPUT_NUMBERS = "숫자를 입력해주세요 : ";
 
-    public void print(String message){
+    public void print(String message) {
         System.out.print(message);
     }
 
-    public void printWithLine(String message){
+    public void printWithLine(String message) {
         System.out.println(message);
     }
 }
