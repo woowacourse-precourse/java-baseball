@@ -9,11 +9,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    enum BaseballStatus {
-        STRIKE,
-        BALL
-    }
-
     public static String getJudgeString(String computer, String userInput) {
         int strike = 0, ball = 0;
         String judgeString = "";
@@ -51,38 +46,62 @@ public class Application {
     public static void userInputValidator(String userInput) {
         // 길이 검증
         int inputLength = userInput.length();
-        if(inputLength != 3 && inputLength != 1) throw new IllegalArgumentException();
+        if (inputLength != 3 && inputLength != 1) throw new IllegalArgumentException();
         // 주어진 문자열이 모두 정수형태로 이루어져 있는지 검증
-        for(int i=0; i<inputLength; i++) {
+        for (int i = 0; i < inputLength; i++) {
             char tmp = userInput.charAt(i);
-            if(!('1' <= tmp && tmp <= '9')) throw new IllegalArgumentException();
+            if (!('1' <= tmp && tmp <= '9')) throw new IllegalArgumentException();
         }
-        return ;
+        return;
+    }
+
+    public static String getUserInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        userInputValidator(userInput);
+
+        return userInput;
+    }
+
+    enum GameState {
+        RESTART,
+        PROGRESS,
+        EXIT
+    }
+
+    public static GameState checkGameState(String userInput) {
+        if(userInput.equals("1")) return GameState.RESTART;
+        if(userInput.equals("2")) return GameState.EXIT;
+        return GameState.PROGRESS;
     }
 
     public static void main(String[] args) {
         String computer = generateComputer();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while(true) {
-            System.out.println("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
-            userInputValidator(userInput);
+        while (true) {
+            String userInput = getUserInput();
 
-            if(userInput.equals("1")) {
-                computer = generateComputer();
-                continue;
-            }
-            if(userInput.equals("2")) break;
+            GameState gameState = checkGameState(userInput);
+            boolean exitFlag = false;
 
-            String judgeString = getJudgeString(computer, userInput);
-            if (judgeString.equals("3스트라이크")) {
-                System.out.println(judgeString);
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            } else {
-                System.out.println(judgeString);
+            switch (gameState) {
+                case RESTART:
+                    computer = generateComputer();
+                    continue;
+                case EXIT:
+                    exitFlag = true;
+                    break;
+                case PROGRESS:
+                    String judgeString = getJudgeString(computer, userInput);
+                    if (judgeString.equals("3스트라이크")) {
+                        System.out.println(judgeString);
+                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                    } else System.out.println(judgeString);
+                default:
             }
+            if(exitFlag) break;
         }
     }
 
