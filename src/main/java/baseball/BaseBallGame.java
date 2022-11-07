@@ -24,9 +24,19 @@ public class BaseBallGame {
         this.userNumbers = new ArrayList<>();
     }
 
-    public void startGame() {
-        this.gameMessageDisplay.printGameStartMessage();
+    public void runGame() {
+        printGameStart();
         setComputerNumbers();
+        String userInput = requestUserInput();
+
+        if (isValidInput(userInput)) {
+            setUserNumbers(userInput);
+            printGameResult();
+        }
+    }
+
+    public void printGameStart() {
+        this.gameMessageDisplay.printGameStartMessage();
     }
 
     public void setComputerNumbers() {
@@ -35,15 +45,6 @@ public class BaseBallGame {
             if (!this.computerNumbers.contains(randomNumber)) {
                 this.computerNumbers.add(randomNumber);
             }
-        }
-    }
-
-    public void runGame() {
-        String userInput = requestUserInput();
-
-        if (isValidInput(userInput)) {
-            setUserNumbers(userInput);
-            printGameResult();
         }
     }
 
