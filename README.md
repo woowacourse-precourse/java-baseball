@@ -164,3 +164,4 @@ List<Integer> computer = new ArrayList<>();
 * restartOrEnd() 게임 종료 또는 재시작
 * startGameMessage() 게임 시작 메시지 출력
 * endGameMessage() 게임 종료 메시지 출력
+* inputNumberToComputerMessage() 사용자 입력 메시지 출력
