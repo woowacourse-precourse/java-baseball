@@ -47,6 +47,11 @@ class ApplicationTest extends NsTest {
 		assertThat("1볼 1스트라이크").isEqualTo(judge.judgement(Arrays.asList(1, 3, 4), Arrays.asList(1, 2, 3)));
 	}
 
+	@Test
+	void 낫싱확인() {
+		assertThat("낫싱").isEqualTo(judge.judgement(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)));
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
