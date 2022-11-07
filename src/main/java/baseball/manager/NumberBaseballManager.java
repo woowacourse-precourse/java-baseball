@@ -49,4 +49,12 @@ public class NumberBaseballManager implements Manager{
     public void printRetryOrCloseProgram() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+    /**
+     * 게임 다시 시작을 원할 시 1, 종료 원할 시 2 중 어떤 걸 원하는지 입력 값 받기
+     */
+    @Override
+    public String inputRetryOrCloseProgram() {
+        return Console.readLine();
+    }
 }

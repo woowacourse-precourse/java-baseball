@@ -15,16 +15,21 @@ public class Application {
         manager.printGameStart();
 
         Computer computer = appConfig.computer();
-        List<Integer> computerNumbers = computer.createOtherNumber();
 
-        String resultValue = "";
-        while (!resultValue.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
-            manager.printInputGameValue();
-            String gameValueOfUser = manager.inputGameValue();
-            resultValue = computer.storeCorrectResult(gameValueOfUser, computerNumbers);
-            manager.printCorrectResult(resultValue);
+        String RetryOrCloseProgramValue = "";
+        while (!RetryOrCloseProgramValue.equals("2")) {
+            List<Integer> computerNumbers = computer.createOtherNumber();
+
+            String resultValue = "";
+            while (!resultValue.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
+                manager.printInputGameValue();
+                String gameValueOfUser = manager.inputGameValue();
+                resultValue = computer.storeCorrectResult(gameValueOfUser, computerNumbers);
+                manager.printCorrectResult(resultValue);
+            }
+
+            manager.printRetryOrCloseProgram();
+            RetryOrCloseProgramValue = manager.inputRetryOrCloseProgram();
         }
-
-        manager.printRetryOrCloseProgram();
     }
 }

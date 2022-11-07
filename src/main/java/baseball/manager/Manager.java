@@ -32,4 +32,9 @@ public interface Manager {
      * 게임 종료 후 게임 다시 시작, 종료 문구 출력
      */
     void printRetryOrCloseProgram();
+
+    /**
+     * 게임 다시 시작, 종료 중 어떤 걸 원하는지 입력 값 받기
+     */
+    String inputRetryOrCloseProgram();
 }
