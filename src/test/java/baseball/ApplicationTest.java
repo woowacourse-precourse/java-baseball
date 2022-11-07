@@ -1,11 +1,10 @@
 package baseball;
 
-
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 게임종료_후_재시작() {
-        Assertions.assertRandomNumberInRangeTest(
+        assertRandomNumberInRangeTest(
             () -> {
                 run("246", "135", "1", "597", "589", "2");
                 assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
@@ -141,5 +140,14 @@ class ApplicationTest extends NsTest {
         computer.add(6);
         assertThat(Application.countBall(input, computer))
             .isEqualTo(0);
+    }
+
+    @Test
+    void main_SelectChars_IllegalArgumentException() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(
+                () -> run("246", "135", "asdf", "597", "589", "2"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 }
