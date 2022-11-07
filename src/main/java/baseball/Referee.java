@@ -41,4 +41,9 @@ public class Referee {
         strikeCount = randNum.countExactSame(userInput);
         return strikeCount;
     }
+
+    public static String testReferee(String input, RandomNumber randomNum) {
+        randNum = randomNum;
+        return calculateAnswer(input);
+    }
 }
