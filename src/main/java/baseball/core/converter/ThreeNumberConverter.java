@@ -1,4 +1,4 @@
-package baseball.console.input.converter;
+package baseball.core.converter;
 
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.EachInputNumberOutOfRangeException;
