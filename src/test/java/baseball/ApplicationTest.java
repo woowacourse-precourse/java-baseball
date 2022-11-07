@@ -30,15 +30,16 @@ class ApplicationTest extends NsTest {
     @DisplayName("게임 종료 후 사용자 입력 테스트")
     @Test
     void parseUserInputForRestartTest() {
-        setSystemInput("1");
-        assertThat(Application.parseUserInputForRestart()).isEqualTo(true);
+        String userInput = "1";
+        assertThat(Application.parseUserInputForRestart(userInput)).isEqualTo(true);
     }
 
     @DisplayName("게임 종료 후 사용자 입력 예외 테스트")
     @Test
     void parseUserInputForRestartExceptionTest() {
-        setSystemInput("3");
-        assertThatThrownBy(() -> Application.parseUserInputForRestart()).isInstanceOf(IllegalArgumentException.class);
+        String userInput = "3";
+        assertThatThrownBy(() -> Application.parseUserInputForRestart(userInput))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -59,10 +60,5 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[] {});
-    }
-
-    private void setSystemInput(final String... args) {
-        final byte[] buf = String.join("\n", args).getBytes();
-        System.setIn(new ByteArrayInputStream(buf));
     }
 }
