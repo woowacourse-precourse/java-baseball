@@ -63,4 +63,22 @@ public class NumberUtilTest {
         assertThat(isCorrect(answerList1, userList1)).isTrue();
         assertThat(isCorrect(answerList2, userList2)).isFalse();
     }
+
+    @DisplayName("문자열을 숫자로 바꾸는 메서드 예외 처리 테스트")
+    @Test
+    public void checkRestart() {
+        String answer1 = "a";
+        String answer2 = "@";
+        String answer3 = "@TEST_123";
+
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+           toInteger(answer1);
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            toInteger(answer2);
+        });
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            toInteger(answer3);
+        });
+    }
 }
