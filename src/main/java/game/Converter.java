@@ -6,9 +6,9 @@ import java.util.List;
 public class Converter {
     public List<Integer> convertToList(String userInput, int length) throws IllegalArgumentException {
         List<Integer> userInputList = new ArrayList<>();
-        if(isAppropriateLength(userInput,length) &&isAppropriateRange(userInput)
-                &&isUniqueInput(userInput)){
-            for(int i=0;i<userInput.length();i++){
+        if (isAppropriateLength(userInput, length) && isAppropriateRange(userInput)
+                && isUniqueInput(userInput)) {
+            for (int i = 0; i < userInput.length(); i++) {
                 userInputList.add(charToInt(userInput.charAt(i)));
             }
         }
