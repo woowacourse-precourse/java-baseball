@@ -79,6 +79,25 @@ class ApplicationTest extends NsTest {
 
         assertThat(expectedOutput).isEqualTo(realOutput);
     }
+
+    @Test
+    void countNumbersContainedInAnswer_게임정답에_포함된_입력의_개수_반환(){
+        Game game = new Game(List.of(1, 2, 3));
+        List<List<Integer>> playerInput = List.of(
+                List.of(7, 2, 1),
+                List.of(1, 5, 3),
+                List.of(3, 1 ,2),
+                List.of(5, 2, 4),
+                List.of(9, 8, 7)
+        );
+        List<Integer> expectedOutput = List.of(2, 2, 3, 1, 0);
+
+        List<Integer> realOutput = playerInput.stream()
+                .map(input -> game.countNumbersContainedInAnswer(input))
+                .collect(Collectors.toList());
+
+        assertThat(expectedOutput).isEqualTo(realOutput);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
