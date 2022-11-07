@@ -33,7 +33,10 @@ public class BaseballGameController {
             List<Integer> userInput = baseballGameInputService.getUserInput();
             List<Integer> gameResultList = baseballGameService.getGameResult(userInput, answerNumbers);
 
+            gameResult.setStrike(gameResultList.get(0));
+            gameResult.setBall(gameResultList.get(1));
 
+            baseballGameView.gameResultMessage(gameResult.getStrike(), gameResult.getBall());
         } while (isThreeStrike(gameResult));
 
     }
