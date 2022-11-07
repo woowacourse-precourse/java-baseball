@@ -68,6 +68,7 @@ public class Application {
             System.out.println(computerNumber);
             if (judgeCount() == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 return;
             }
         }
@@ -108,10 +109,31 @@ public class Application {
         System.out.println(ball + "볼");
     }
 
+    static boolean isRestart() {
+        String input = Console.readLine();
+        int restart;
+        try {
+            restart = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        if (restart == 1) {
+            return true;
+        }
+        if (restart == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static void main(String[] args) {
         try {
             registerComputerNumber();
             playGame();
+            while (isRestart()) {
+                registerComputerNumber();
+                playGame();
+            }
         } catch (IllegalArgumentException e) {
             System.err.println(e);
         }
