@@ -1,10 +1,10 @@
 package baseball;
 
-import java.util.List;
-
 import static baseball.Computer.calcResult;
 import static baseball.Computer.printResult;
 import static baseball.Number.readNum;
+
+import java.util.List;
 
 public class Player {
     public static boolean guessAnswer(int opponentNum) {

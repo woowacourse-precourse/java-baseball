@@ -1,9 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import static baseball.Number.generateRandomNumber;
 import static baseball.Player.guessAnswer;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class GameManager {
     private static final int RESTART_INPUT = 1;

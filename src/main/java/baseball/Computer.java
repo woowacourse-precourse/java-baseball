@@ -1,9 +1,9 @@
 package baseball;
 
+import static baseball.Number.threeDigitsToNumList;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.Number.threeDigitsToNumList;
 
 public class Computer {
     private static final int EMPTY_COUNT = 0;
