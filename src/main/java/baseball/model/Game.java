@@ -29,7 +29,7 @@ public class Game {
         int count = 0;
         for (int i = 0; i < ANSWER_LENGTH; i++){
             for (int j = 0; j < ANSWER_LENGTH; j++){
-                if (i != j && computerNumeralList.get(i) == computerNumeralList.get(j)) count++;
+                if (i != j && userNumeralList.get(i) == computerNumeralList.get(j)) count++;
             }
         }
         this.ballCount = count;
