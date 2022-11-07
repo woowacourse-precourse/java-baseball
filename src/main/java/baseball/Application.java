@@ -23,8 +23,8 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
+        int playerIdx = 0;
         while (player.size() < 3) {
-            int playerIdx = 0;
             //잘못 입력한 경우에 대한 예외처리 기능 구현해야 함
             char inputNumber = input.charAt(playerIdx);
             int inputNumberToInt = inputNumber - '0';
@@ -59,6 +59,21 @@ public class Application {
     public static void compare(List<Integer> computer, List<Integer> player) {
         int strikeNumber = findStrike(computer, player);
         int ballNumber = findBall(computer, player);
+
+/*        //check 과정
+        //사용자 숫자 확인
+        System.out.print("사용자의 숫자 : ");
+        for (int element : player) {
+            System.out.print(element);
+        }
+        System.out.println(" 입니다");
+        //컴퓨터 숫자 확인
+        System.out.print("컴퓨터의 숫자 : ");
+        for (int element : computer) {
+            System.out.print(element);
+        }
+        System.out.println(" 입니다");*/
+
 
         if (strikeNumber != 0) {
             System.out.print(strikeNumber + "스트라이크 ");
