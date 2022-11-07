@@ -12,6 +12,6 @@ public class Computer {
     RandomNumGenerator randomNumGenerator = new RandomNumGenerator();
 
     public void computer_random_num() {
-        this.random_num_list = randomNumGenerator.randomNumGenerator(LIST_SIZE, START_RANGE, END_RANGE);
+        random_num_list = randomNumGenerator.randomNumGenerator(LIST_SIZE, START_RANGE, END_RANGE);
     }
 }

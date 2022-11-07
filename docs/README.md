@@ -1,7 +1,7 @@
 - [x] main() 에서 실행할 class 작성
 - [x] random number 만드는 기능
 - [x] computer class 구현
-- [ ] 사용자의 입력 받는 기능
+- [x] user class 구현
 - [ ] 스트라이크 판별 기능
 - [ ] 볼 판별 기능
 - [ ] 낫싱 판별 기능
