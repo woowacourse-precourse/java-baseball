@@ -91,7 +91,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @Order(6)
-    @DisplayName("게임 도중 게임 후 명령을 입력하면 예외를 반환합니다.")
+    @DisplayName("게임 도중 올바르지 않은 추측 명령어를 입력하면 예외를 반환합니다.")
     void 입력_예외_테스트() {
         boolean exceptionCaught = false;
         BaseballGame baseballGame = new BaseballGame();
