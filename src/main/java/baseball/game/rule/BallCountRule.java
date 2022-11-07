@@ -29,13 +29,22 @@ public class BallCountRule implements Rule {
         int count = 0;
 
         for (int index = 0; index < NUMBER_SIZE; index++) {
-            for (int iindex = 0; iindex < NUMBER_SIZE; iindex++) {
-                if (index != iindex && answerString.charAt(index) == guessString.charAt(iindex)) {
-                    count++;
-                }
+            Integer findIndex = findCharFromString(answerString, guessString.charAt(index));
+            if (findIndex != -1 && index != findIndex) {
+                count++;
             }
         }
 
         return count;
+    }
+
+    private Integer findCharFromString(String answerString, char targetChar) {
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            if (answerString.charAt(index) == targetChar) {
+                return index;
+            }
+        }
+
+        return -1;
     }
 }
