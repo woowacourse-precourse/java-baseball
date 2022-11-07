@@ -50,4 +50,13 @@ class BaseballGameTest {
                 .hasMessageContaining(INVALID_DATA_TYPE.getMessage());
     }
 
+    @Test
+    @DisplayName("userInput의 길이가 3보다 클 때 IllegalArgumentException 예외 발생")
+    void input_UserInput_When_Length_Of_UserInput_Is_Bigger_3_Digits_Then_IllegalArgumentException() {
+        String userInput = "1234";
+        assertThatThrownBy(() -> baseballGame.test(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_THREE_DIGIT.getMessage());
+    }
+
 }
