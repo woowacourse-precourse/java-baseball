@@ -2,7 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -17,7 +17,7 @@ class GameTest {
     class getRandomIntegerExcludeInList {
 
 
-        @Test
+        @RepeatedTest(1000)
         @DisplayName("빈 리스트가 들어갔을 때")
         void listIsEmpty() throws Exception {
             //Given
@@ -34,8 +34,8 @@ class GameTest {
             assertThat(numbers.contains(number)).isEqualTo(true);
         }
 
-        @Test
         @DisplayName("리스트가 1개 일떄")
+        @RepeatedTest(1000)
         void listHasOneElement() throws Exception {
             //Given
             Game game = new Game();
@@ -44,12 +44,10 @@ class GameTest {
 
             //When
             List<Integer> answer = List.of(1);
-            for (int i = 0; i < 10000; i++) {
-                int number = (int) getRandomIntegerExcludeInList.invoke(game, answer);
+            int number = (int) getRandomIntegerExcludeInList.invoke(game, answer);
 
-                //Then
-                assertThat(number).isNotEqualTo(1);
-            }
+            //Then
+            assertThat(number).isNotEqualTo(1);
         }
     }
 
