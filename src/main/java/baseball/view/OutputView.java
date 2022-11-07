@@ -18,4 +18,9 @@ public class OutputView {
 
         System.out.println(hintMessage);
     }
+
+    public static void printPlayerCorrectAnswerMessage() {
+
+        System.out.println(Constant.PLAYER_CORRECT_ANSWER_NUMBER_MESSAGE);
+    }
 }
