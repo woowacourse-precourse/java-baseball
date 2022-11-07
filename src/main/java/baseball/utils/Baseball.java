@@ -11,6 +11,7 @@ import static baseball.values.Constant.Digit.TOTAL_BALL_CNT;
 public class Baseball {
     private final LinkedHashSet<Integer> baseballNumber;
 
+
     public Baseball(LinkedHashSet<Integer> baseballNumber) {
         this.baseballNumber = baseballNumber;
     }
@@ -21,6 +22,7 @@ public class Baseball {
 
     private static void validateSameNumber(LinkedHashSet<Integer> balls) {
         long ballCnt = balls.stream().distinct().count();
+
         if (ballCnt != TOTAL_BALL_CNT) {
             throw new IllegalArgumentException("Exception because of inputted Number: " + balls.toString());
         }
@@ -38,18 +40,21 @@ public class Baseball {
         while (computerBalls.size() < TOTAL_BALL_CNT) {
             computerBalls.add(Randoms.pickNumberInRange(1, 9));
         }
+
         return new Baseball(computerBalls);
     }
 
     public static Baseball createPlayer(String inputNumber) {
         LinkedHashSet<Integer> playerBalls = new LinkedHashSet<>();
         int num;
+
         validateInputNumberCnt(inputNumber);
         for (int i = 0; i < inputNumber.length(); i++) {
             num = Character.getNumericValue(inputNumber.charAt(i));
             playerBalls.add(num);
         }
         validateSameNumber(playerBalls);
+
         return new Baseball(playerBalls);
     }
 }
