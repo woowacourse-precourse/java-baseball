@@ -8,7 +8,7 @@ import java.util.List;
 public class Baseball {
     private List<Integer> computer;
     private List<Integer> player;
-    private static final int MAX_STRIKE = 3;
+    private static final int MAX_STRIKE_COUNT = 3;
 
     public Baseball() {
         this.computer = RandomNumberGenerator.generate();
@@ -46,7 +46,7 @@ public class Baseball {
     }
 
     private boolean isMaxStrike(int strikeCount) {
-        return strikeCount == MAX_STRIKE;
+        return strikeCount == MAX_STRIKE_COUNT;
     }
 
     private boolean isRestart() {

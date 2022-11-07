@@ -4,6 +4,7 @@ public class Output {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTTING = "낫싱";
+    private static final String MAX_STRIKE_COUNT = "3";
 
     private Output() {}
 
@@ -41,7 +42,7 @@ public class Output {
     }
 
     public static void doneGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(MAX_STRIKE_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static void restart() {
