@@ -1,5 +1,7 @@
 package baseball.user;
 
+import baseball.validator.UserInputValidator;
+
 import java.util.List;
 
 public class User {
