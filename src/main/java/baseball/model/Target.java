@@ -15,6 +15,10 @@ public class Target {
         }
     }
 
+    public static List<Integer> get() {
+        return targetNumberList;
+    }
+
     static void setTargetIntoZeroList() {
         for (int i = 0; i < 3; i++) {
             targetNumberList.set(i, 0);
