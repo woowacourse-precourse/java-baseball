@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.stream.IntStream;
+
 public class InputValidator {
 
 	public void validateAnsString(String ansString) throws IllegalArgumentException {
@@ -26,13 +28,9 @@ public class InputValidator {
 	}
 
 	private void checkIsDuplicated(String string) {
-		boolean[] used = new boolean[10];
-		for (char c : string.toCharArray()) {
-			int idx = c-'0';
-			if (!used[idx]) {
-				used[idx] = true;
-				continue;
-			}
+		IntStream intStream = string.chars();
+		int distinct = (int)intStream.distinct().count();
+		if (distinct != string.length()) {
 			throw new IllegalArgumentException();
 		}
 	}
