@@ -16,7 +16,7 @@ class InputViewTest {
         assertThat(InputView.numbers()).isEqualTo(input);
     }
 
-    @ValueSource(strings = {"1", "12", "1234", "abc", "가나다", "1a가", "!@#"})
+    @ValueSource(strings = {"1", "12", "1234", "abc", "가나다", "012", "1a가", "!@#"})
     @ParameterizedTest
     void 세_자리_숫자가_아닌_입력을_받으면_예외가_발생한다(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
