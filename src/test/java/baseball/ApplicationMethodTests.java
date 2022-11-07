@@ -4,6 +4,7 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -64,6 +65,21 @@ public class ApplicationMethodTests {
         assertThrows(IllegalArgumentException.class, () -> {
             Application.userInputNumber(new ByteArrayInputStream("1234".getBytes()));
         });
+    }
+
+    @Test
+    @DisplayName("사용자 입력에 따른 ball, strike count 기능 테스트")
+    public void countBallAndStrikeTest1(){
+
+        List<Integer> computer = new ArrayList<>();
+        computer.add(1);
+        computer.add(2);
+        computer.add(3);
+
+        Application.BaseBallPoint baseBallPoint = Application.countBallAndStrike(computer, "132");
+
+        assertThat(baseBallPoint.getStrike()).isEqualTo(1);
+        assertThat(baseBallPoint.getBall()).isEqualTo(2);
     }
 
 }
