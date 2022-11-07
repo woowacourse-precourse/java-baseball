@@ -61,8 +61,15 @@ public class Application {
             List<Integer> userNumber = GetInputNumber();
             if(userNumber == null) return;
             BaseBall baseBall = new BaseBall(userNumber);
-
+            OutputString(baseBall.result,true);
         }
+    }
+
+    public static void OutputString(String str, boolean isLineBreak){
+        if(isLineBreak)
+            System.out.printf(str);
+        else
+            System.out.println(str);
     }
 
     public static List<Integer> GetInputNumber(){
@@ -90,7 +97,7 @@ public class Application {
 
     public static String GetUserInput(){
         Scanner s = new Scanner(System.in);
-        System.out.printf("숫자를 입력해주세요 : ");
+        OutputString("숫자를 입력해주세요 : ", false);
         return s.next();
     }
 
