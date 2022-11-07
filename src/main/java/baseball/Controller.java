@@ -18,7 +18,7 @@ public class Controller {
 
     private void setGame() {
         Number number = new Number();
-        int randomNum = number.getRandomNum(NUM_LEN, MIN_NUM, MAX_NUM);
+        int[] randomNum = number.getRandomNum(NUM_LEN, MIN_NUM, MAX_NUM);
     }
 
     private void startGame() {
