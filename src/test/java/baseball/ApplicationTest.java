@@ -1,6 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +13,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -27,6 +33,28 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+
+    @Test
+    void 사용자가_중복된_값_입력() throws Exception {
+
+        //given
+        String input = "222";
+        UserInput userInput = new UserInput();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        try {
+            // when
+            userInput.getInput();
+            fail();
+        } catch (IllegalArgumentException e) {
+            //then
+            //pass
+        }
     }
 
     @Override
@@ -55,13 +83,14 @@ class ApplicationTest extends NsTest {
     public void 스트라이크_볼_갯수_체크() {
         //given
         final BallCount ballCount = new BallCount();
-        final List<Integer> computer = List.of(1,2,3);
-        final List<Integer> user = List.of(3,2,1);
+        final List<Integer> computer = List.of(1, 2, 3);
+        final List<Integer> user = List.of(3, 2, 1);
         final int[] result = {1, 2};
 
         //when
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++) {
             ballCount.checkStrikeOrBall(user, computer, i);
+        }
 
         final int[] sb = {ballCount.getStrike(), ballCount.getBall()};
 
