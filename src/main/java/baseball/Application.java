@@ -20,16 +20,15 @@ public class Application {
         }
         return result;
     }
-    public static String playBall(ArrayList<String> answer, String input){
+    public static String playBall(ArrayList<String> answer, ArrayList<String> input){
         int strike = 0, ballHit = 0;
         System.out.println(answer);
-        System.out.println(input);
         for(int i = 0; i<answer.size();i++){
-            if(input.indexOf(answer.get(i)) == i){
+            System.out.println(answer.get(i)+" "+input.get(i));
+            if(answer.get(i).equals(input.get(i))){
                 strike += 1;
                 continue;
             }
-            
             if(input.contains(answer.get(i))){
                 ballHit += 1;
             }
@@ -59,11 +58,11 @@ public class Application {
             while(!result.equals("3스트라이크")){
                 System.out.print("숫자를 입력해주세요 : ");
                 String number = Console.readLine();
-                result = playBall(splitInputToArray(answer), number);
-                System.out.println(playBall(splitInputToArray(answer), number));
+                result = playBall(splitInputToArray(answer), splitInputToArray(number));
+                System.out.println(playBall(splitInputToArray(answer), splitInputToArray(number)));
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int newNumber = Integer.parseInt(Console.readLine());
             if(newNumber == 2){
                 continueGame = 1;
