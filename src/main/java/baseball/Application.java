@@ -65,4 +65,23 @@ public class Application {
 
         return listNumber;
     }
+
+    private static int[] countBallsAndStrikes(List<Integer> answer, List<Integer> inputNumber) {
+        int[] returnArr = new int[2];
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i) == inputNumber.get(i)) {
+                strikeCount++;
+            } else if (answer.get(i) != inputNumber.get(i) && answer.contains(inputNumber.get(i))) {
+                ballCount++;
+            }
+        }
+
+        returnArr[0] = ballCount;
+        returnArr[1] = strikeCount;
+
+        return returnArr;
+    }
 }
