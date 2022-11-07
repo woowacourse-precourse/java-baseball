@@ -22,7 +22,7 @@ public class Application {
     }
 
     /* 재시작, 종료 판별 메소드 구현*/
-    private static int JudgeInputNum(){
+    public static int JudgeInputNum(){
         while(true){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int inputNum = Integer.parseInt(readLine());
@@ -46,7 +46,7 @@ public class Application {
     }
 
     /*입력 예외 처리, 예외 발생시 IllegalArgumentException 발생 시키기.*/
-    private static String handleException(String str){
+    public static String handleException(String str){
         int num = 0;
         if(str.length() != 3)
             throw new IllegalArgumentException();
@@ -59,14 +59,14 @@ public class Application {
     }
 
     /* 사용자 입력 메소드 구현*/
-    private static String inputNum(){
+    public static String inputNum(){
         String str = readLine();
         String result = handleException(str);
         return result;
     }
 
     /* 스트라이크,볼,낫싱 판단 메소드 구현*/
-    private static String BaseBallJudge(List<Integer> RandomNum, String num){
+    public static String BaseBallJudge(List<Integer> RandomNum, String num){
 
         int countBall = 0;
         int countStrike = 0;
@@ -103,7 +103,7 @@ public class Application {
     }
 
     /*숫자 야구 플레이 메소드 구현*/
-    private static void playBaseBall(){
+    public static void playBaseBall(){
         List<Integer> RandomNum = makeRandomNum();
         while(true){
             System.out.print("숫자를 입력해 주세요 : ");
