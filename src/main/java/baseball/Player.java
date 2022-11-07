@@ -22,7 +22,7 @@ public class Player {
 
     private String sendAnswer() {
         String input = Console.readLine();
-        validator.isWrongInputValue(input);
+        validator.validateAnswer(input);
         System.out.println("숫자를 입력해주세요 : " + input);
         return input;
     }

@@ -6,8 +6,8 @@ public class InputValidator {
 
     public final static String GAME_RESTART_OPTION = "1";
     public final static String GAME_CLOSE_OPTION = "2";
-    
-    public void isWrongInputValue(String input) {
+
+    public void validateAnswer(String input) {
         if (input.length() != NUMBER_COUNT_TO_CREATED) {
             throw new IllegalArgumentException();
         }
