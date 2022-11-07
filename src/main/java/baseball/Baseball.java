@@ -31,4 +31,17 @@ class Baseball {
     public int getBall() {
         return this.ball - this.strike;
     }
+
+    private String getScore() {
+        if (getBall() == ZERO && getStrike() == ZERO) {
+            return SCORE_NOTHING;
+        }
+        if (getBall() == ZERO) {
+            return getStrike() + SCORE_STRIKE;
+        }
+        if (getStrike() == ZERO) {
+            return getBall() + SCORE_BALL;
+        }
+        return getBall() + SCORE_BALL + " " + getStrike() + SCORE_STRIKE;
+    }
 }
