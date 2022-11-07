@@ -59,4 +59,19 @@ public class Computer {
             valueIndex++;
         }
     }
+
+    private void printResult() {
+        if (ball == 0 && strike == 0) {
+            System.out.println(NOTHING);
+        }
+        if (strike > 0 && ball == 0) {
+            System.out.println(strike + STRIKE);
+        }
+        if (ball > 0 && strike == 0) {
+            System.out.println(ball + BALL);
+        }
+        if (ball > 0 && strike > 0) {
+            System.out.println(ball + BALL + " " + strike + STRIKE);
+        }
+    }
 }
