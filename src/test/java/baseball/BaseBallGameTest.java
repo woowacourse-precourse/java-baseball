@@ -26,7 +26,7 @@ public class BaseBallGameTest {
         //answer is "137"
         int[] testAnswer = {0, 1, 0, 2, 0, 0, 0, 3, 0, 0};
 
-        BaseBallGame firstGame = new BaseBallGame();
+        BaseBallGame firstGame = new BaseBallGame(3);
         GameController gc = new GameController();
 
         //when

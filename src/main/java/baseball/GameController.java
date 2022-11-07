@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameController {
     public void start() {
 
-        BaseBallGame baseBallGame = new BaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame(3);
 
         baseBallGame.useGeneratedAnswer();
 
@@ -24,7 +24,7 @@ public class GameController {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 int userContinue = Integer.parseInt(Console.readLine());
                 if (userContinue == 1) {
-                    baseBallGame = new BaseBallGame();
+                    baseBallGame = new BaseBallGame(3);
                     baseBallGame.useGeneratedAnswer();
                     continue;
                 }
