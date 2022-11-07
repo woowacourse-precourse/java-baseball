@@ -6,6 +6,9 @@ import java.util.List;
 
 public class ComputerUtil {
 
+    private ComputerUtil() {
+    }
+
     public static List<Integer> getComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>(List.of(0, 0, 0));
 
