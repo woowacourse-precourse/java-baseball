@@ -1,19 +1,16 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
 
 class BaseballRefereeTest extends NsTest {
     @Test
-    @DisplayName("3 스트라이크")
-    void ThreeStrike() {
+    void isThreeStrike_Computer123Input123_true() {
         //given
         //when
         List<Integer> computer = new ArrayList<>();
@@ -31,8 +28,7 @@ class BaseballRefereeTest extends NsTest {
 
 
     @Test
-    @DisplayName("낫싱_테스트")
-    void notThingTest() {
+    void baseballReferee_Computer123Input456_낫싱() {
         //given
         //when
         List<Integer> computer = new ArrayList<>();
@@ -49,8 +45,7 @@ class BaseballRefereeTest extends NsTest {
     }
 
     @Test
-    @DisplayName("2 볼 테스트")
-    void countBallTest() {
+    void countBall_Computer123Input216_2볼() {
         //given
         //when
         List<Integer> computer = new ArrayList<>();
@@ -67,8 +62,7 @@ class BaseballRefereeTest extends NsTest {
     }
 
     @Test
-    @DisplayName("2 스트라이크 테스트")
-    void countStrikeTest() {
+    void countStrike_Computer123Input126_2스트라이크() {
         //given
         //when
         List<Integer> computer = new ArrayList<>();
