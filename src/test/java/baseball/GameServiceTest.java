@@ -3,6 +3,8 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.service.GameService;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +15,9 @@ public class GameServiceTest {
     Method countingStrikeMethod;
     Method countingContainAnswerMethod;
     Method countingBallMethod;
+    Method printHintMethod;
+
+    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
     void init() throws Exception {
@@ -24,10 +29,15 @@ public class GameServiceTest {
                 .getDeclaredMethod("countingContainAnswer", List.class, List.class);
         countingBallMethod = GameService.class
                 .getDeclaredMethod("countingBall", int.class, int.class);
+        printHintMethod = GameService.class
+                .getDeclaredMethod("printHint", int.class, int.class);
 
         countingStrikeMethod.setAccessible(true);
         countingContainAnswerMethod.setAccessible(true);
         countingBallMethod.setAccessible(true);
+        printHintMethod.setAccessible(true);
+
+        System.setOut(new PrintStream(outContent));
     }
 
     @Test
@@ -112,5 +122,29 @@ public class GameServiceTest {
         int predictBall = (int) countingBallMethod.invoke(gameService, containCount, strikeCount);
 
         assertThat(predictBall).isEqualTo(3);
+    }
+
+    @Test
+    void 출력테스트_볼만_존재할_경우() throws Exception {
+        printHintMethod.invoke(gameService, 1, 0);
+        assertThat("1볼").isEqualTo(outContent.toString().trim());
+    }
+
+    @Test
+    void 출력테스트_스트라이크만_존재할_경우() throws Exception {
+        printHintMethod.invoke(gameService, 0, 1);
+        assertThat("1스트라이크").isEqualTo(outContent.toString().trim());
+    }
+
+    @Test
+    void 출력테스트_스트라이크와_볼이_같이_존재할_경우() throws Exception {
+        printHintMethod.invoke(gameService, 2, 1);
+        assertThat("2볼 1스트라이크").isEqualTo(outContent.toString().trim());
+    }
+
+    @Test
+    void 출력테스트_스트라이크와_볼이_존재하지않을_경우() throws Exception {
+        printHintMethod.invoke(gameService, 0, 0);
+        assertThat("낫싱").isEqualTo(outContent.toString().trim());
     }
 }
