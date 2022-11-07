@@ -19,7 +19,10 @@ public class BaseballGame implements Game {
 
     @Override
     public void start() {
-        
+        createNewBaseball();
+        do {
+
+        } while (true);
     }
 
     @Override
@@ -29,11 +32,15 @@ public class BaseballGame implements Game {
 
     @Override
     public void showStartMessage() {
-        
+
     }
 
     @Override
     public void showEndMessage() {
         
+    }
+
+    private void createNewBaseball() {
+        baseball = new Baseball(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, BASEBALL_LENGTH_LIMIT);
     }
 }
