@@ -6,14 +6,14 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    private static String makeRandomNumbers(){
+    public static String makeRandomNumbers(){
         StringBuilder result = new StringBuilder();
         for(int i=0;i<3;i++){
             result.append(Randoms.pickNumberInRange(1, 9));
         }
         return result.toString();
     }
-    private static ArrayList<String> splitInputToArray(String input){
+    public static ArrayList<String> splitInputToArray(String input){
         ArrayList<String> result= new ArrayList<>();
         for(int i=0;i<input.length();i++){
             result.add(String.valueOf(input.charAt(i)));
