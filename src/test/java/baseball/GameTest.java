@@ -32,6 +32,33 @@ public class GameTest {
         assertThat(isPlay).isEqualTo(false);
     }
 
+    @Test
+    void 중복숫자_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputDuplicateNumberMethod = Game.class.getDeclaredMethod("checkUserInputDuplicateNumber", String.class);
+        checkUserInputDuplicateNumberMethod.setAccessible(true);
 
+        boolean isNotDuplacated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "123");
 
+        assertThat(isNotDuplacated).isEqualTo(true);
+    }
+
+    @Test
+    void 중복숫자_테스트2_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputDuplicateNumberMethod = Game.class.getDeclaredMethod("checkUserInputDuplicateNumber", String.class);
+        checkUserInputDuplicateNumberMethod.setAccessible(true);
+
+        boolean isNotDuplacated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "201");
+
+        assertThat(isNotDuplacated).isEqualTo(true);
+    }
+
+    @Test
+    void 중복숫자_테스트3_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputDuplicateNumberMethod = Game.class.getDeclaredMethod("checkUserInputDuplicateNumber", String.class);
+        checkUserInputDuplicateNumberMethod.setAccessible(true);
+
+        boolean isNotDuplacated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "122");
+
+        assertThat(isNotDuplacated).isEqualTo(false);
+    }
 }
