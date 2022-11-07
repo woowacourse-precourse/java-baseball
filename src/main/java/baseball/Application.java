@@ -11,6 +11,7 @@ public class Application {
 
             int ball_num = Game.HowManyBall(answer, user_num_list);
             int strike_num = Game.HowManyStrike(answer, user_num_list);
+            System.out.println(Game.WhatBallStrike(ball_num, strike_num));
         }
     }
 }
@@ -51,6 +52,18 @@ class Game {
         }
 
         return strike_num;
+    }
+
+    static String WhatBallStrike(int ball_num, int strike_num) {
+        if(ball_num == 0 && strike_num == 0) {
+            return "낫싱";
+        } else if(ball_num == 0) {
+            return strike_num + "스트라이크";
+        } else if(strike_num == 0) {
+            return ball_num + "볼";
+        } else {
+            return ball_num + "볼 " + strike_num + "스트라이크";
+        }
     }
 }
 
