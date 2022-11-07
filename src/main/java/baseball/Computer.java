@@ -41,4 +41,16 @@ public class Computer {
         return false;
     }
 
+    public int getStrikeCount(String input) {
+        int strikeCount = 0;
+        for (int index = 0; index < input.length(); index++) {
+            int number = input.charAt(index) - '0';
+            if (isStrike(number, index)) {
+                strikeCount += 1;
+            }
+        }
+        return strikeCount;
+    }
+
+
 }
