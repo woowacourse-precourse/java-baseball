@@ -1,6 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BaseballGame extends Game {
     private final int NUMBER_LIMIT = 3;
@@ -64,5 +69,16 @@ public class BaseballGame extends Game {
         }
 
         return ballCount;
+    }
+
+    public int getRandomNumber() {
+        List<Integer> answer = new ArrayList<>();
+        while (answer.size() < NUMBER_LIMIT) {
+            int random = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(random)) answer.add(random);
+        }
+
+        return Integer.parseInt(answer.stream().map(String::valueOf).collect(Collectors.joining()));
+
     }
 }
