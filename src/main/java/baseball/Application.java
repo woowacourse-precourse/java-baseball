@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -23,7 +24,7 @@ public class Application {
         do {
             List<Integer> playerNumbers = getPlayerRandomNumbers();
             String result = baseBallGame(computerNumbers, playerNumbers);
-            System.out.println(result);
+            OutputView.printResult(result);
             if (result.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 play = restartOrEndGame();
