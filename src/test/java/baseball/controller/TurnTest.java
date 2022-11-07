@@ -3,6 +3,7 @@ package baseball.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.model.Target;
+import baseball.model.TurnScore;
 import baseball.type.ResultTurn;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +30,8 @@ public class TurnTest {
         @Test
         @DisplayName("2) 반복 불가능 -> out 반환")
         void 반복_불가능() {
-            Turn turn = new Turn(ResultTurn.Out, testTarget);
+            TurnScore turnScore = new TurnScore(ResultTurn.Out);
+            Turn turn = new Turn(testTarget, turnScore);
             assertThat(turn.checkCanRepeat()).isEqualTo(false);
         }
     }
