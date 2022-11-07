@@ -37,12 +37,9 @@ public class Application {
 
             Ball ball = StrikeBallUtil.findStrikeAndBall(user, computer);
 
-            int strikeCount = ball.getStrike();
-            int ballCount = ball.getBall();
+            StrikeBallUtil.printStrikeAndBall(ball);
 
-            StrikeBallUtil.printStrikeAndBall(strikeCount, ballCount);
-
-            if (game.isCorrectAllNumber(strikeCount)) {
+            if (game.isCorrectAllNumber(ball)) {
                 System.out.println(GAME_FINISH);
                 System.out.println(RESTART_GAME);
                 restart = game.getRestart();

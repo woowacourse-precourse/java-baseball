@@ -1,13 +1,14 @@
 package baseball;
 
+import baseball.model.Ball;
 import baseball.validation.UserValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
 
-    public boolean isCorrectAllNumber(int strike) {
-        return strike == 3;
+    public boolean isCorrectAllNumber(Ball ball) {
+        return ball.getStrike() == 3;
     }
 
     public int getRestart() {
