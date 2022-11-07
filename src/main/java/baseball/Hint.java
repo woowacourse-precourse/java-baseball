@@ -3,25 +3,18 @@ package baseball;
 import java.util.List;
 
 public class Hint {
-    private List<Integer> computerAnswer;
     private List<Integer> playerAnswer;
+    private List<Integer> computerAnswer;
     private int strike;
     private int ball;
 
-    public Hint(List<Integer> computerAnswer, List<Integer> playerAnswer, int strike, int ball) {
-        this.computerAnswer = computerAnswer;
+    public Hint(List<Integer> playerAnswer, List<Integer> computerAnswer, int strike, int ball) {
         this.playerAnswer = playerAnswer;
+        this.computerAnswer = computerAnswer;
         this.strike = 0;
         this.ball = 0;
     }
 
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
-    }
     public void compareNumber(List<Integer> playerNum, List<Integer> answer){
         for(int i=0;i<3;i++){
             countStrike(playerNum.get(i), answer.get(i));
@@ -41,6 +34,23 @@ public class Hint {
         }
     }
 
+    public void makeHint(int strike, int ball) {
+        String hint = "";
+        if (strike == 0 && ball == 0) {
+            hint = Message.NOTHING.getMessage();
+        }
+        else if (strike == Range.DIGIT) {
+            hint = Message.END_GAME.getMessage();
+            System.out.println(Message.END_GAME);
+        }
+        else if (ball != 0) {
+            hint += ball + Message.BALL.getMessage();
+        }
+        else if (strike != 0) {
+            hint += strike + Message.STRIKE.getMessage();
+        }
+        System.out.println(hint);
+    }
 
 
 }
