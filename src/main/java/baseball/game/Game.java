@@ -30,6 +30,12 @@ public class Game {
         this.ballMaker = ballMaker;
         this.ballReader = ballReader;
     }
+    
+    public Game(int ballCount){
+        this.numberOfBall = ballCount;
+        this.ballReader= new BallReader(ballCount);
+        this.ballMaker = new BallMaker(ballCount, 0);
+    }
 
     public String play() {
         Ball computerBall = ballMaker.getRandomBall();
