@@ -76,6 +76,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 재시작_종료_문구_출력() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        Manager manager = appConfig.manager();
+        manager.printRetryOrCloseProgram();
+
+        assertThat("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\r\n").isEqualTo(byteArrayOutputStream.toString());
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
