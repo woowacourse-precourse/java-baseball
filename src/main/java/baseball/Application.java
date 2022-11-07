@@ -52,8 +52,24 @@ public class Application {
         }
         return trynum;
     }
-
     public static int getStrike(){
+        List<Integer> computernum = new ArrayList<>();
+        computernum = makeComputerNum();
+        while(strike != 3){
+            strike = startGame(computernum);
+        }
+        return strike;
+    }
+    public static int startGame(List<Integer> computernum) {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = readLine();
+        List<Integer> Input = new ArrayList<>();
+        strike = 0;
+        ball = 0;
+        for( int i = 0;i< input.length();i++){
+            Input.add((int)(input.charAt(i) -'0'));
+        }
+        return strike;
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
