@@ -58,6 +58,7 @@ public class Application {
 
         userNumList = splitStringAndParseInt(userInputNum);
         validateUserNumListNoRepetition();
+        validateUserNumListNotContainZero();
     }
 
     private static List<Integer> splitStringAndParseInt(String userInputNum) {
@@ -149,6 +150,12 @@ public class Application {
             if (userNumListAfterIdx.contains(numAtIdx)) {
                 throw new IllegalArgumentException("같은 수를 중복해서 입력할 수 없습니다.");
             }
+        }
+    }
+
+    private static void validateUserNumListNotContainZero() {
+        if (userNumList.contains(0)) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
         }
     }
 
