@@ -72,4 +72,26 @@ public class Application {
         }
         return ball;
     }
+
+    public static String combineAnswer(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
+        String answer = "";
+        int strike = 0;
+        int ball = 0;
+        strike = countStrikes(generatedNumber, inputNumber);
+        ball = countBalls(generatedNumber, inputNumber);
+
+        if(ball > 0) {
+            answer += ball + "볼 ";
+        }
+        if(strike > 0) {
+            answer += strike + "스트라이크 ";
+        }
+        if(strike == 0 && ball == 0) {
+            answer = "낫싱";
+        }
+        if(strike == inputNumber.size()) {
+            answer = strike + "스트라이크 \n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+        return answer;
+    }
 }
