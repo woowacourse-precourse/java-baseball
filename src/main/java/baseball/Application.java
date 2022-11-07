@@ -16,10 +16,26 @@ public class Application {
             List<Integer> computer = makeAnswer();
             String result = "";
             while (!result.equals("3스트라이크")) {
-                // result = computer vs user
+                result = play(computer, inputNumber());
                 System.out.println(result);
             }
         } while (restart());
+    }
+
+    private static String play(List<Integer> makeAnswer, List<Integer> inputNumber) {
+        int strike = countStrike(makeAnswer, inputNumber);
+        int ball = countBall(makeAnswer, inputNumber);
+
+        if (strike == 0 && ball == 0) {
+            return "낫싱";
+        }
+        if (strike == 0) {
+            return ball + "볼";
+        }
+        if (ball == 0) {
+            return strike + "스트라이크";
+        }
+        return ball + "볼 " + strike + "스트라이크";
     }
 
     private static int countBall(List<Integer> makeAnswer, List<Integer> inputNumber) {
