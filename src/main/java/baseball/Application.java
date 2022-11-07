@@ -55,18 +55,6 @@ class BaseballGame {
         }
     }
 
-    public List<Integer> getComputerNumberList() {
-        return this.computer;
-    }
-
-    public List<Integer> getPlayerNumberList() {
-        return this.player;
-    }
-
-    public static String getPleaseInput() {
-        return pleaseInput;
-    }
-
     private List<Integer> selectNumberByPlayer(List<Integer> player, String input) throws IllegalArgumentException {
         try {
             isValidPlayerInput(input);
@@ -99,6 +87,20 @@ class BaseballGame {
         }
     }
 
+    private boolean checkGameCondition(int ball, int strike) {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
+            System.out.println("게임 종료");
+            return false;
+        } else if (ball > 0) {
+            System.out.printf("%d볼 %d스트라이크", ball - strike, strike);
+        } else {
+            System.out.println("낫싱");
+        }
+        return true;
+    }
+
     private void getBallCounts(List<Integer> computerNumberList, List<Integer> playerNumberList) {
         for (Integer n : computerNumberList) {
             increaseBallCount(playerNumberList, n);
@@ -120,18 +122,16 @@ class BaseballGame {
         }
     }
 
-    private boolean checkGameCondition(int ball, int strike) {
-        if (strike == 3) {
-            System.out.println("3스트라이크");
-            System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
-            System.out.println("게임 종료");
-            return false;
-        } else if (ball > 0) {
-            System.out.printf("%d볼 %d스트라이크", ball - strike, strike);
-        } else {
-            System.out.println("낫싱");
-        }
-        return true;
+    public List<Integer> getComputerNumberList() {
+        return this.computer;
+    }
+
+    public List<Integer> getPlayerNumberList() {
+        return this.player;
+    }
+
+    public static String getPleaseInput() {
+        return pleaseInput;
     }
 }
 
