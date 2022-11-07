@@ -89,4 +89,18 @@ public class GameTest {
         // then
         Assertions.assertThat(method.invoke(game, "123")).isEqualTo(list);
     }
+
+    @Test
+    void 재시작_여부를_확인하는_입력값을_확인_후_예외_발생() throws NoSuchMethodException, InvocationTargetException {
+        // given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("checkInputValidity", String.class);
+        method.setAccessible(true);
+
+        // when
+        InvocationTargetException exception = assertThrows(InvocationTargetException.class, () -> method.invoke(game, "3"));
+
+        // then
+        assertThat(exception.getCause().getMessage()).isEqualTo("1이나 2가 아닌 숫자가 입력됐습니다.");
+    }
 }
