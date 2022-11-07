@@ -4,7 +4,6 @@ import baseball.domain.BaseballGame;
 import baseball.domain.User;
 import baseball.utils.RandomNumberGenerator;
 import baseball.view.SystemMessage;
-
 import java.util.ArrayList;
 import java.util.Objects;
 

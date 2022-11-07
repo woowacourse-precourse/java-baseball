@@ -1,7 +1,6 @@
 package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 
 import static baseball.utils.Constants.*;

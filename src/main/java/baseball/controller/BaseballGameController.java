@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.service.BaseballGameService;
 import baseball.view.SystemMessage;
-
 import java.util.Objects;
 
 import static baseball.utils.Constants.GAME_RESTART;
