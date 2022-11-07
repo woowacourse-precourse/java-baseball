@@ -53,6 +53,18 @@ public class Application {
         return cnt;
     }
 
+    public boolean playAgain(){
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String stopOrRestart = Console.readLine();
+        if(stopOrRestart.equals("2")){
+            return false;
+        }
+        return true;
+    }
+
     public String ballAndStrike(Application application, String userNum, String randomNumber){
         String result = "";
         if (application.cntBall(userNum, randomNumber) == 0 && application.cntStrike(userNum, randomNumber) == 0) {
@@ -76,7 +88,7 @@ public class Application {
         boolean againOrNot = true;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true) {
+        while(againOrNot) {
             Application application = new Application();
             String randomNumber = application.randomNum();
             String gameResult = "";
@@ -88,15 +100,9 @@ public class Application {
                 gameResult = application.ballAndStrike(application, userNum, randomNumber);
                 System.out.println(gameResult);
             }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String again = Console.readLine();
 
-            if(again.equals("1")){
-                randomNumber = null;
-            }else if(again.equals("2")){
-                break;
-            }
+            againOrNot = application.playAgain();
+
         }
     }
 }
