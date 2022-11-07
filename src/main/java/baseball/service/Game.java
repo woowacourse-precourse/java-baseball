@@ -1,33 +1,36 @@
-package baseball.model;
+package baseball.service;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import baseball.model.Computer;
+import baseball.model.User;
+import baseball.view.Messages;
+import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static baseball.model.Constants.*;
 
 public class Game {
-    public final List<Integer> computerNum;
+    public List<Integer> computerNum;
 
     public Game() {
-        this.computerNum = generate();
+        this.computerNum = new Computer().computerNum;
     }
 
-    public List<Integer> generate() {
-        List<Integer> nums = new ArrayList<>();
-        while (nums.size() != INPUT_LENGTH) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-            addNotDuplicateNumbers(nums, randomNum);
+    public void play() {
+        boolean gameClear = false;
+        while (!gameClear) {
+            List<Integer> userNum = inputStartAndGenerateUserNum();
+            gameClear = isClear(getStrikeCount(userNum));
+            Messages.printResult(getBallCount(userNum), getStrikeCount(userNum));
         }
-        return nums;
+        Messages.gameClear();
     }
 
-    public void addNotDuplicateNumbers(List<Integer> nums, int randomNum) {
-        if (!nums.contains(randomNum)) {
-            nums.add(randomNum);
-        }
+    public List<Integer> inputStartAndGenerateUserNum() {
+        Messages.inputStart();
+        String input = Console.readLine();
+        return new User(input).NUMS;
     }
 
     public int getStrikeCount(List<Integer> userNum) {
