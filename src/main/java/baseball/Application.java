@@ -40,7 +40,6 @@ public class Application {
         int pool_size = 8;
         while(answer.size()<3){
             int next_num_idx = Randoms.pickNumberInRange(0,pool_size);
-            System.out.println(next_num_idx);
             answer.add(number_pool.get(next_num_idx));
             number_pool.remove(next_num_idx);
             pool_size--;
@@ -56,13 +55,16 @@ public class Application {
     }
     public static void input_test(List<Integer> input){
         if(input.size()!=3){
-            throw(new IllegalArgumentException("잘못된 길이 입력"));
+            throw new IllegalArgumentException("잘못된 길이 입력");
         }
         int num1=input.get(0);
         int num2=input.get(1);
         int num3=input.get(2);
         if(num1==num2 || num2==num3 || num3==num1){
             throw new IllegalArgumentException("중복 숫자 입력");
+        }
+        if(num1==0 || num2==0 || num3==0){
+            throw new IllegalArgumentException("범위에 벗어나는 숫자 : 0 입력");
         }
     }
     public static String how_many_correct(List<Integer>input, List<Integer> answer){
@@ -86,7 +88,6 @@ public class Application {
     }
     public static void one_game_start(){
         List<Integer> answer = make_rand_num();
-        System.out.println(answer);
 
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
