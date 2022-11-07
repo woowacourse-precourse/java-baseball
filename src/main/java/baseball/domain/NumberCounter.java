@@ -3,7 +3,7 @@ package baseball.domain;
 import baseball.util.StringToArrayList;
 import java.util.List;
 
-public class Referee {
+public class NumberCounter {
 
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
