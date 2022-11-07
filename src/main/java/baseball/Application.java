@@ -48,7 +48,9 @@ public class Application {
      * 사용자 입력 예외를 처리함
      */
     public static void inputExceptionHandler(String input){
-        // TODO: 사용자 입력 예외를 처리함
+        if (input.length() > 3){
+            throw new IllegalArgumentException("you can't enter more than three digits");
+        }
     }
 
     /*
