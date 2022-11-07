@@ -20,7 +20,6 @@ public class RandomNumberGenerator {
             }
         }
         this.randomNumber=String.join("", numberList);
-        System.out.println(randomNumber);
     }
     public String getRandomNumber() {
         return randomNumber;
