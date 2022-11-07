@@ -76,6 +76,7 @@ public class BaseballGame {
         BaseballNumber OppositeNumber = new BaseballNumber();
         BaseballNumber MyNumber = new BaseballNumber();
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         OppositeNumber.setNumbersByRandom();
 
         while(true){
@@ -84,8 +85,10 @@ public class BaseballGame {
             SetBallNumber(OppositeNumber, MyNumber);
             PrintResult();
 
-            if(strikeNumber == 3)
+            if(strikeNumber == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
+            }
         }
     }
 }
