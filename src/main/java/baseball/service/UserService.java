@@ -6,14 +6,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserService {
 
-    private final User user;
-    private final Computer computer;
+    private final User user = new User();
+    private final Computer computer = new Computer();
     private String userBaseballNumber;
     private String userRestartNumber;
 
-    public UserService(User user, Computer computer) {
-        this.user = user;
-        this.computer = computer;
+    public void initGame() {
+        computer.setAnswer();
     }
 
     public void inputBaseballNumber() {
@@ -28,7 +27,7 @@ public class UserService {
         return user.getBaseballNumber();
     }
 
-    public String getAnswer(){
+    public String getAnswer() {
         return computer.getAnswer();
     }
 
@@ -45,11 +44,33 @@ public class UserService {
     }
 
 
-    private void initGame(){
-        computer.setAnswer();
+    public String getCheckResult() {
+        StringBuilder returnResultBuilder = new StringBuilder();
+        String returnResult = "";
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        if (checkNothing()) {
+            returnResult = "낫싱";
+            return returnResult;
+        }
+
+        ballCount = checkBallStrike("ball");
+        strikeCount = checkBallStrike("strike");
+
+        if (ballCount != 0) {
+            returnResultBuilder.append(ballCount + "볼 ");
+        }
+        if (strikeCount != 0) {
+            returnResultBuilder.append(strikeCount + "스트라이크");
+        }
+
+        returnResult = returnResultBuilder.toString();
+        return returnResult;
+
     }
 
-    private boolean checkNothing(){
+    private boolean checkNothing() {
         String answer;
         String baseballNumber;
         boolean returnNothingStatus = false;
@@ -57,9 +78,9 @@ public class UserService {
         answer = getAnswer();
         baseballNumber = getBaseballNumber();
 
-        for(int i=0; i<answer.length(); i++){
-            for(int j=0; j<baseballNumber.length(); j++){
-                if (answer.charAt(i) == baseballNumber.charAt(j)){
+        for (int i = 0; i < answer.length(); i++) {
+            for (int j = 0; j < baseballNumber.length(); j++) {
+                if (answer.charAt(i) == baseballNumber.charAt(j)) {
                     returnNothingStatus = true;
                 }
             }
@@ -68,7 +89,7 @@ public class UserService {
         return returnNothingStatus;
     }
 
-    private Integer checkBallStrike(String status){
+    private Integer checkBallStrike(String status) {
         String answer;
         String baseballNumber;
         int gameCount = 0;
@@ -77,12 +98,12 @@ public class UserService {
         baseballNumber = getBaseballNumber();
 
 
-        for(int i=0; i<answer.length(); i++){
-            for(int j=0; j<baseballNumber.length(); j++){
-                if (status.equals("strike") && i == j && answer.charAt(i) == baseballNumber.charAt(j)){
+        for (int i = 0; i < answer.length(); i++) {
+            for (int j = 0; j < baseballNumber.length(); j++) {
+                if (status.equals("strike") && i == j && answer.charAt(i) == baseballNumber.charAt(j)) {
                     gameCount += 1;
                 }
-                if (status.equals("ball") && i != j && answer.charAt(i) == baseballNumber.charAt(j)){
+                if (status.equals("ball") && i != j && answer.charAt(i) == baseballNumber.charAt(j)) {
                     gameCount += 1;
                 }
             }
