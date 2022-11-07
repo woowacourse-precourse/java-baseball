@@ -1,8 +1,8 @@
 package baseball.util;
 
-import static baseball.util.InputValidator.BALL_MAXIMUM_VALUE;
-import static baseball.util.InputValidator.BALL_MINIMUM_VALUE;
-import static baseball.util.InputValidator.COMPUTER_BALLS_SIZE;
+import static baseball.constant.SystemValue.BALL_MAXIMUM_VALUE;
+import static baseball.constant.SystemValue.BALL_MINIMUM_VALUE;
+import static baseball.constant.SystemValue.COMPUTER_BALLS_SIZE;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;

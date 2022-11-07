@@ -1,15 +1,14 @@
 package baseball.util;
 
+import static baseball.constant.SystemValue.BALL_MAXIMUM_VALUE;
+import static baseball.constant.SystemValue.BALL_MINIMUM_VALUE;
+import static baseball.constant.SystemValue.COMPUTER_BALLS_SIZE;
+import static baseball.constant.SystemValue.CONTINUE_GAME;
+import static baseball.constant.SystemValue.STOP_GAME;
+
 import java.util.List;
 
 public class InputValidator {
-
-    public static final int CONTINUE_GAME = 1;
-    public static final int STOP_GAME = 2;
-    public static final int COMPUTER_BALLS_SIZE = 3;
-
-    static final int BALL_MINIMUM_VALUE = 1;
-    static final int BALL_MAXIMUM_VALUE = 9;
 
     public static boolean checkPlayerBall(List<Integer> playerBalls) {
         return isSizeValid(playerBalls) && isRangeValid(playerBalls) && isDistinct(playerBalls);

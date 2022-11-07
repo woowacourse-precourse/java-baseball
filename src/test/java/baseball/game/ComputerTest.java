@@ -1,7 +1,7 @@
 package baseball.game;
 
-import static baseball.game.Computer.BALL_COUNT;
-import static baseball.game.Computer.STRIKE_COUNT;
+import static baseball.constant.SystemValue.BALL_COUNT;
+import static baseball.constant.SystemValue.STRIKE_COUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;

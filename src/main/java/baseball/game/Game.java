@@ -1,8 +1,8 @@
 package baseball.game;
 
-import static baseball.game.Computer.BALL_COUNT;
-import static baseball.game.Computer.STRIKE_COUNT;
-import static baseball.util.InputValidator.CONTINUE_GAME;
+import static baseball.constant.SystemValue.BALL_COUNT;
+import static baseball.constant.SystemValue.CONTINUE_GAME;
+import static baseball.constant.SystemValue.STRIKE_COUNT;
 
 import baseball.constant.SystemMessage;
 import java.util.ArrayList;

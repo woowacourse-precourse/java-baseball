@@ -1,7 +1,9 @@
 package baseball.game;
 
 
-import static baseball.util.InputValidator.COMPUTER_BALLS_SIZE;
+import static baseball.constant.SystemValue.BALL_COUNT;
+import static baseball.constant.SystemValue.COMPUTER_BALLS_SIZE;
+import static baseball.constant.SystemValue.STRIKE_COUNT;
 
 import baseball.constant.SystemMessage;
 import baseball.util.BallGenerator;
@@ -9,9 +11,6 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class Computer {
-
-    public static final int STRIKE_COUNT = 0;
-    public static final int BALL_COUNT = 1;
 
     private final BallGenerator ballGenerator;
 
