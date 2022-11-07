@@ -1,54 +1,33 @@
 package baseball;
 
 import java.util.*;
+import camp.nextstep.edu.missionutils.Console;
 
 public class User_Input {
     public List<Integer> getUserInput() {
-        Scanner sc = new Scanner(System.in);
-        List<Integer> intToList = new ArrayList<>();
-        int getNum = 0, flag;
-        do{ // 숫자 외 입력 예외처리
-            flag = 1;
-            try{
-                getNum = sc.nextInt();
-            }
-            catch(InputMismatchException e){
-                flag=0;
-//                sc.nextLine();
-//                System.out.println("정상적인 숫자를 입력하세요");
-                throw new IllegalArgumentException();
-            }
-        } while(flag==0);
+        List<Integer> inputToList = new ArrayList<>();
+        String getNum =  Console.readLine();
 
-        if (!Checker(getNum)) {
+        for (int i=0; i<getNum.length(); i++) {
+            inputToList.add(getNum.charAt(i) - '0');
+        }
+        if (!Checker(inputToList)) {
             throw new IllegalArgumentException();
         }
-
-        for (int i=0; i<3; i++) {
-            int temp = getNum % 10;
-            intToList.add(temp);
-            getNum /= 10;
-        }
-        return intToList;
+        return inputToList;
     }
 
-    public static boolean Checker(Integer inputNum) {
-        ArrayList<Integer> arrNum = new ArrayList<>();
-        arrNum.add(0);
-        if ((inputNum < 999) && (inputNum > 100)) {
+    public static boolean Checker(List<Integer> inputNum) { // not valid => false
+        List<Integer> compareList = new ArrayList<>();
+        compareList.add(0);
+        if (inputNum.size() == 3) {
             for (int i=0; i<3; i++) {
-                int temp = inputNum % 10;
-                if(arrNum.contains(temp)) {
-                    return false;
-                } else {
-                    arrNum.add(temp);
-                    inputNum /= 10;
-                }
+                int item = inputNum.get(i);
+                if (compareList.contains(item)) { return false; }
+                if (item > 9) { return false; }
+                compareList.add(item);
             }
-            return true;
-        }
-        else {
-            return false;
-        }
+        } else  { return false; }
+        return true;
     }
 }

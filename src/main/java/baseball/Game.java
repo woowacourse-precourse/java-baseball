@@ -1,7 +1,7 @@
 package baseball;
 
 import java.util.List;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
@@ -35,11 +35,10 @@ public class Game {
     }
 
     public boolean gameRestart() {
-        Scanner sc = new Scanner(System.in);
-        int RestartInput = sc.nextInt();
-        if (RestartInput == 1) {
+        String inputRestart =  Console.readLine();
+        if (inputRestart.equals("1")) {
             return  true;
-        } else if (RestartInput == 2) {
+        } else if (inputRestart.equals("2")) {
             return false;
         } else {
             throw new IllegalArgumentException();
