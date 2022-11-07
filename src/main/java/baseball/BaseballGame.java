@@ -42,9 +42,10 @@ public class BaseballGame extends Game {
             return true;
         }
         System.out.println(RESTART_MESSAGE);
-        int input = Integer.parseInt(Console.readLine().replaceAll(" ", ""));
+        String input = Console.readLine().replaceAll(" ", "");
 
-        return input == RESTART_NUMBER;
+        validateRestartNumber(input);
+        return Integer.parseInt(input) == RESTART_NUMBER;
     }
 
     public int getStrike(int number, int target) {
@@ -91,5 +92,12 @@ public class BaseballGame extends Game {
 
         int size = (new HashSet<>(List.of(validateTarget.split("")))).size();
         if (size != NUMBER_LIMIT) throw new IllegalArgumentException(exceptionMessage);
+    }
+
+    public void validateRestartNumber(String validateTarget) {
+        if (!validateTarget.matches("^[1-9]+$")) throw new IllegalArgumentException(RESTART_MESSAGE);
+
+        int answer = Integer.parseInt(validateTarget);
+        if (!(answer == RESTART_NUMBER || answer == CLOSE_NUMBER)) throw new IllegalArgumentException(RESTART_MESSAGE);
     }
 }
