@@ -25,8 +25,11 @@ public class Application {
     }
     public static List<Integer> makeAnswer() {
         List<Integer> answer = new ArrayList<>();
-        for (int i=0; i<3; i++) {
-            answer.add(pickNumberInRange(1,9));
+        while (answer.size()<3) {
+            int pickedNumber = pickNumberInRange(1,9);
+            if(!answer.contains(pickedNumber)) {
+                answer.add(pickedNumber);
+            }
         }
         return answer;
     }

@@ -105,6 +105,7 @@ class ApplicationTest extends NsTest {
         boolean result = true;
         assertEquals(result,endGame());
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
