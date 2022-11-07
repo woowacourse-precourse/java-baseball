@@ -8,7 +8,7 @@ import static baseball.utils.Constants.*;
 
 public class RandomNumberGenerator {
     public static ArrayList<Integer> getRandomNumberList() {
-        ArrayList<Integer> randomNumberList = new ArrayList<Integer>();
+        ArrayList<Integer> randomNumberList = new ArrayList<>();
         while (randomNumberList.size() < MAX_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUM, MAX_RANGE_NUM);
             if (!randomNumberList.contains(randomNumber)) {
