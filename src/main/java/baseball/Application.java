@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import java.util.Scanner;
 
 public class Application {
 
-    private static final Scanner stdinScanner = new Scanner(System.in);
     private static int answerNumber;
 
     private static int checkOneAnswerNumberWithTargetNumber(int answerOneNumber, int targetNumber, int answerIdx, int targetIdx) {
@@ -55,7 +55,7 @@ public class Application {
         int ball = 0;
 
         System.out.print("숫자를 입력해주세요 : ");
-        int inputNumber = stdinScanner.nextInt();
+        int inputNumber = Integer.parseInt(Console.readLine());
         List<Integer> score = gameResult(inputNumber);
 
         for (Integer eachScore : score) {
@@ -66,8 +66,22 @@ public class Application {
             }
         }
 
-        if (strike == 3) {
+        StringBuilder resultString = new StringBuilder();
+        if (ball > 0){
+            resultString.append(ball).append("볼");
+        }
+        if (resultString.length() > 0){
+            resultString.append(" ");
+        }
+        if (strike > 0){
+            resultString.append(strike).append("스트라이크");
+        }
 
+        System.out.println(resultString);
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         }
 
         return false;
@@ -97,6 +111,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         generateAnswerNumber();
         System.out.println(answerNumber);
+//        while ()
     }
 
     public static void main(String[] args) {
