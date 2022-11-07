@@ -27,7 +27,7 @@ public class ValidCheck {
             throw new IllegalArgumentException("중복된 숫자가 있습니다");
         }
     }
-    public static boolean isValidPress(String userResponse){
+    public static boolean isContinueGame(String userResponse){
         if(userResponse.length() == PROPER_LENGTH) {
             if (userResponse.contains(CONTINUE_BUTTON))
                 return true;
