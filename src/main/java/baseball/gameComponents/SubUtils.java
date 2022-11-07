@@ -13,16 +13,16 @@ public class SubUtils {
 
     public void validateNumber(List<Integer> number) {
         if(number.size() != 3) {
-            throw new GameException(ExceptionCode.RANDOM_NUMBER_NOT_VALID);
+            throw new GameException(ExceptionCode.NUMBER_NOT_3_DIGITS);
         }
         for(Integer n : number) {
             if(n <= 0 || n > 9) {
-                throw new GameException(ExceptionCode.RANDOM_NUMBER_NOT_VALID);
+                throw new GameException(ExceptionCode.NUMBER_NOT_IN_RANGE_FROM_1_TO_9);
             }
         }
         Set<Integer> set = new HashSet<>(number);
         if(set.size() != 3) {
-            throw new GameException(ExceptionCode.RANDOM_NUMBER_NOT_VALID);
+            throw new GameException(ExceptionCode.NUMBER_DUPLICATED);
         }
     }
 
@@ -30,7 +30,7 @@ public class SubUtils {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new GameException(ExceptionCode.INPUT_NOT_VALID);
+            throw new GameException(ExceptionCode.NOT_NUMBER);
         }
     }
 
