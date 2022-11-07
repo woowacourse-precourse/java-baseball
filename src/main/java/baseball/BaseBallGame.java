@@ -37,6 +37,7 @@ public class BaseBallGame {
     }
 
     public void inputUserNumber() {
+        System.out.printf("숫자를 입력해주세요 : ");
         userNumber = Console.readLine();
     }
 
