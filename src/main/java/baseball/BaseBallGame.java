@@ -39,9 +39,13 @@ public class BaseBallGame {
         return restartToken;
     }
 
-    public void inputUserNumber() {
+    public void inputUserNumber() throws IllegalArgumentException {
         System.out.printf("숫자를 입력해주세요 : ");
         userNumber = Console.readLine();
+        isRightUserNumberLength();
+        isRightUserNumberDigit();
+        isRightUserNumberDuplicate();
+        isRightUserNumberRange();
     }
 
     public int isEqualToComputerNumber() {
