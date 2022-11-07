@@ -446,4 +446,46 @@ public class NumberBaseballGameTest {
 
         assertThat(strikeCount).isEqualTo(result);
     }
+
+    @Test
+    void 종료됐을_시_1을_입력하면_true를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher());
+        String input = "1";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        Method method = baseballGame.getClass().getDeclaredMethod("isReplaying");
+        method.setAccessible(true);
+        boolean isReplay = (boolean) method.invoke(baseballGame);
+
+        assertThat(isReplay).isEqualTo(true);
+    }
+
+    @Test
+    void 종료됐을_시_2을_입력하면_false를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher());
+        String input = "2";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        Method method = baseballGame.getClass().getDeclaredMethod("isReplaying");
+        method.setAccessible(true);
+        boolean isReplay = (boolean) method.invoke(baseballGame);
+
+        assertThat(isReplay).isEqualTo(false);
+    }
+
+    @Test
+    void 종료됐을_시_1과_2외의_값을_입력하면_예외가_발생한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher());
+        String input = "3";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        Method method = baseballGame.getClass().getDeclaredMethod("isReplaying");
+        method.setAccessible(true);
+
+        assertThatThrownBy(() -> method.invoke(baseballGame))
+                .isInstanceOf(InvocationTargetException.class);
+    }
 }
