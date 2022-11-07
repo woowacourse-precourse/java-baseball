@@ -30,37 +30,46 @@ public class Application {
     private static void playBaseballGame(User user, Computer computer, Referee referee, Scanner scanner) {
         computer.createRandomNumbers();
 
-        while (true) {
+        do {
             user.init();
             out.print("숫자를 입력해주세요 : ");
             user.guessComputerNumbers(scanner);
             referee.init();
             referee.judge();
 
-            if (getRefereeBall(referee) > 0 && getRefereeStrike(referee) == 0) {
-                out.println(getRefereeBall(referee) + "볼");
-            }
+        } while (!isFinish(user, computer, referee));
+    }
 
-            if (getRefereeStrike(referee) > 0 && getRefereeBall(referee) == 0) {
-                out.println(getRefereeStrike(referee) + "스트라이크");
-            }
+    private static boolean isFinish(User user, Computer computer, Referee referee) {
 
-            if (getRefereeBall(referee) > 0 && getRefereeStrike(referee) > 0) {
-                out.println(getRefereeBall(referee) + "볼 " + getRefereeStrike(referee) + "스트라이크");
-            }
+        int ballCnt = getRefereeBall(referee);
+        int strikeCnt = getRefereeStrike(referee);
 
-            if (getRefereeBall(referee) == 0 && getRefereeStrike(referee) == 0) {
-                out.println("낫싱");
-            }
-
-            if (getRefereeStrike(referee) == SUCCESS_CODE) {
-                user.init();
-                referee.init();
-                computer.init();
-                out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
+        if (ballCnt > 0 && strikeCnt == 0) {
+            out.println(ballCnt + "볼");
         }
+
+        if (strikeCnt > 0 && ballCnt == 0) {
+            out.println(strikeCnt + "스트라이크");
+        }
+
+        if (ballCnt > 0 && strikeCnt > 0) {
+            out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
+        }
+
+        if (ballCnt == 0 && strikeCnt == 0) {
+            out.println("낫싱");
+        }
+
+        if (strikeCnt == SUCCESS_CODE) {
+            user.init();
+            referee.init();
+            computer.init();
+            out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
     }
 
     private static int getRefereeBall(Referee referee) {
