@@ -30,14 +30,14 @@ public class Numbers {
                 .collect(Collectors.toList());
     }
 
-    public Map<BallTypes, Integer> compare(Numbers other) {
+    public Map<BallTypes, Integer> compare(Numbers otherNumbers) {
         Map<BallTypes, Integer> result = initialResult();
-        IntStream.range(0, NUMBERS_COUNT).forEach(sequence -> checkBallTypes(result, other, sequence));
+        IntStream.range(0, NUMBERS_COUNT).forEach(sequence -> checkBallTypes(result, otherNumbers, sequence));
         return result;
     }
 
-    private void checkBallTypes(Map<BallTypes, Integer> result, Numbers other, int sequence) {
-        BallTypes type = other.contains(sequence, numbers.get(sequence));
+    private void checkBallTypes(Map<BallTypes, Integer> result, Numbers otherNumbers, int sequence) {
+        BallTypes type = otherNumbers.contains(sequence, numbers.get(sequence));
         result.put(type, result.get(type) + 1);
     }
 
