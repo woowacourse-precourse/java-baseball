@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.model.Target;
+import baseball.model.TurnScore;
 import baseball.type.ResultTurn;
 import baseball.view.InputView;
 import java.util.List;
@@ -27,4 +29,13 @@ public class Turn {
         countBalls(numberOfList);
         countStrikes(numberOfList);
     }
+
+    static void countBalls(List<Integer> numberOfList) {
+        List<Integer> targetNumberList = Target.get();
+        int countSameValueInSameIndex = countSameValueInSameIndex(targetNumberList, numberOfList);
+        int countValueContainTogether = countValueContainTogether(targetNumberList, numberOfList);
+        int balls = countValueContainTogether - countSameValueInSameIndex;
+        TurnScore.setBalls(balls);
+    }
+
 }
