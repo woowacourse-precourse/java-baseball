@@ -8,6 +8,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.inputException.ContainingZeroException.isContainingZero;
+import static baseball.inputException.DuplicatedNumberException.confirmDuplicationNumber;
+
 public class Player {
     List<Integer> playerNumber;
 
@@ -34,11 +37,7 @@ public class Player {
         return userInput;
     }
 
-    boolean confirmDuplicationNumber(List<Integer> number) {
-        return (number.get(0) != number.get(1)) && (number.get(1) != number.get(2)) && (number.get(0) != number.get(2));
-    }
 
-    boolean isContainingZero(List<Integer> number) {
-        return (number.contains(0));
-    }
+
+
 }
