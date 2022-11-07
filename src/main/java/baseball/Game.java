@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
 
@@ -9,19 +10,39 @@ public class Game {
     static final String Notice_success = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String Notice_newGame = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public void gameStart() {
+    public boolean gameStart() {
         List<Integer> ComputerNum = Num_Generator.MakeComputerNum();
         User_Input user = new User_Input();
         Referee referee = new Referee(ComputerNum);
         boolean flag = true;
 
         System.out.println(Notice_intro);
-        while (flag) {
+        do {
             System.out.println(Notice_requireNum);
             List<Integer> userInput = user.getUserInput();
-            System.out.println(ComputerNum);
-            System.out.println(userInput);
+//            System.out.println(ComputerNum);
+//            System.out.println(userInput);
             flag = referee.printResult(userInput);
+            if (!flag) {
+                System.out.println(Notice_newGame);
+                flag = gameRestart();
+                if(flag) { // 1 : 게임 재시작
+                    return true;
+                }
+            }
+        } while (flag);
+        return false;
+    }
+
+    public boolean gameRestart() {
+        Scanner sc = new Scanner(System.in);
+        int RestartInput = sc.nextInt();
+        if (RestartInput == 1) {
+            return  true;
+        } else if (RestartInput == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
