@@ -26,7 +26,8 @@ class InputViewTest {
         generatePlayerInput(input);
 
         assertThatThrownBy(() -> InputView.inputNumber())
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자가 아닙니다.");
     }
 
     @DisplayName("숫자를 정상 입력한다")

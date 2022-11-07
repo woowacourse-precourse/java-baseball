@@ -23,6 +23,7 @@ public class GameStatusTest {
     @Test
     void isInvalidNumberTest() {
         assertThatThrownBy(() -> GameStatus.getGameStatus(3))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력하신 숫자는 없는 숫자입니다");
     }
 }
