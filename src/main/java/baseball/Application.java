@@ -18,7 +18,7 @@ public class Application {
         } while (selectReplay() == String.valueOf(2));
     }
 
-    public static List generateNumber() {
+    public static List<Integer> generateNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -30,7 +30,7 @@ public class Application {
         return computer;
     }
 
-    public static List inputNumberOfUser() {
+    public static List<Integer> inputNumberOfUser() {
         String input = Console.readLine();
         int inputNumber = Integer.parseInt(input);
         List<String> stringNumberList = List.of(input.split(""));
