@@ -10,7 +10,6 @@ public class Application {
 	static int start = 1;
 	static String startMessage = "숫자 야구 게임을 시작합니다.";
 	static String inputMessage = "숫자를 입력해 주세요 : ";
-	static String resultMessage = "";
 	static List<Integer> computer = new ArrayList<>();
 	static List<Integer> inputList = new ArrayList<>();
 	static String inputNumber = "";
@@ -23,47 +22,12 @@ public class Application {
     	// 게임 시작 메시지 출력.
 		gameStart();
 		
-    	while(true) {
+    	while(start==1) {
 	    	// 랜덤 수 발생
     		computer = makeComputer();
     		
     		// 게임 실행 메서드
     		game();
-    		
-	    	while(start == 1) {
-		    	// 사용자 입력
-	    		inputNumber();
-	    		System.out.print(inputMessage);
-		    	inputNumber = Console.readLine();
-		    	
-		    	// 사용자 입력 예외 발생 검사
-		    	exceptionCheck = checkException();
-		    	
-		    	if(inputNumber.length()==3&&!inputNumber.contains("0")&&checkType(inputNumber)&&checkDiff(inputNumber)) {
-		    		// 정상 처리 경우 두 수 비교
-		    		ball=0;
-		    		strike=0;
-		    		compare(computer,inputNumber);
-		    	}else {
-		    		// 예외 발생 처리
-		    		throw new IllegalArgumentException("잘못된 값을 입력했습니다!");
-		    	}
-		    	
-		    	//strike, ball 변수 파악하여 결과 출력
-		    	if(strike==0&&ball==0) {
-		    		System.out.println("낫싱");
-		    	}
-		    	else if(strike==3) {
-		    		System.out.println(strike+"스트라이크");
-		    		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		    		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		    		start = Integer.parseInt(Console.readLine());
-		    		break;
-		    	}
-		    	else {
-		    		System.out.println(ball+"볼"+" "+strike + "스트라이크");
-		    	}
-	    	}
     	}
     	
     	
@@ -76,23 +40,29 @@ public class Application {
     
     // 컴퓨터 수 생성 메서드
     public static List<Integer> makeComputer() {
+    	
     	List<Integer> list = new ArrayList<>();
+    	
     	while (list.size() < 3) {
     	    int randomNumber = Randoms.pickNumberInRange(1, 9);
+    	    
     	    if (!list.contains(randomNumber)) {
     	    	list.add(randomNumber);
     	    }
     	}
+    	
     	return list;
     }
     
     //게임 실행 메서드
-    public static int game() {
-    	
+    public static void game() {
+    	ball = 0;
+		strike = 0;
+		
     	// 사용자 입력 메서드
-    	while(start==1) {
+    	while(strike!=3) {
     		
-    		inputNumber();
+    		inputNumber = inputNumber();
     		
     		exceptionCheck = checkException();
     		
@@ -108,14 +78,15 @@ public class Application {
     		
     		resultPrint(ball, strike);
     	}
-    	
-    	return 0;
     }
     
     // 사용자 입력 메서드
     public static String inputNumber() {
-    	System.out.println(inputMessage);
+    	
+    	System.out.print(inputMessage);
+    	
     	String s = Console.readLine();
+    	
     	return s;
     }
     
@@ -129,8 +100,10 @@ public class Application {
     
     // 정수 입력 확인
     public static boolean checkType(String inputNumber) {
+    	
     	char[] arr = inputNumber.toCharArray();
     	boolean check = true;
+    	
     	for(int i=0;i<arr.length;i++) {
     		if(!Character.isDigit(arr[i])) check = false;
     	}
@@ -173,7 +146,12 @@ public class Application {
     	if(strike==0&&ball==0) {
     		System.out.println("낫싱");
     	}
-    	
+    	else if(strike<3&&ball==0) {
+    		System.out.println(strike + "스트라이크");
+    	}
+    	else if(strike==0&&ball!=0) {
+    		System.out.println(ball + "볼");
+    	}
     	else if(strike==3) {
     		start = successMessage();
     	}
@@ -182,13 +160,14 @@ public class Application {
     	}
     }
     
+    // 3스트라이크 출력 및 게임 재시작 메서드
     public static int successMessage() {
-    	int start = 0;
+    	int coin = 0;
     	System.out.println("3스트라이크");
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		start = Integer.parseInt(Console.readLine());
-		return start;
+		coin = Integer.parseInt(Console.readLine());
+		return coin;
     }
     
 }
