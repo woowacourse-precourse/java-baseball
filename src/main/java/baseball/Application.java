@@ -48,8 +48,28 @@ public class Application {
         int[] userNumbers = Stream.of(Console.readLine().split("")).mapToInt(Integer::parseInt).toArray();
         gameStartConditional(userNumbers);
         List<Integer> computerNumbers = getComputerNumbers();
+        int[] scoreboard = getScoreboard(userNumbers, computerNumbers);
+        int strike = scoreboard[0];
+        int ball = scoreboard[1];
+        
 
+    }
 
+    private static int[] getScoreboard(int[] userNumbers, List<Integer> computerNumbers) {
+        int[] scoreboard = {0,0};
+        for (int user_index = 0; user_index < userNumbers.length; user_index++){
+            if (computerNumbers.contains(userNumbers[user_index])){
+                for (int cpu_index = 0; cpu_index < computerNumbers.size(); cpu_index++){
+                    if (userNumbers[user_index]== computerNumbers.get(cpu_index)){
+                        if (user_index == cpu_index){
+                            scoreboard[0]++; //strike
+                        }
+                        scoreboard[1]++; //ball
+                    }
+                }
+            }
+        }
+        return scoreboard;
     }
 
     private static void gameStartConditional(int[] input_arr) {
