@@ -63,4 +63,15 @@ public class Game {
         return new ArrayList<>();
     }
 
+    private static void checkUserInput(String userInputNumber){
+        if (!checkUserInputLength(userInputNumber)) {
+            throw new IllegalArgumentException();
+        } else if (checkUserInputContainZero(userInputNumber)){
+            throw new IllegalArgumentException();
+        } else if (!checkUserInputNumber(userInputNumber)) {
+            throw new IllegalArgumentException();
+        } else if (checkUserInputRepeat(userInputNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

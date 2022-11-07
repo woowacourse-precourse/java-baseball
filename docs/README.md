@@ -54,3 +54,23 @@ List<Integer> createSecretNumber()
 ```java
 void checkUserInput(String userInputNumber)
 ```
+
+- 사용자로부터 숫자를 입력받았을 때 글자수를 체크하는 함수
+```java
+boolean checkUserInputLength(String userInputNumber)
+```
+
+- 사용자로부터 숫자를 입력받았을 때 0이 포함되어있지 않은지 체크하는 함수
+```java
+boolean checkUserInputContainZero(String userInputNumber)
+```
+
+- 사용자로부터 숫자를 입력받았을 때 숫자로 변환이 가능한지 체크하는 함수
+```java
+boolean checkUserInputNumber(String userInputNumber)
+```
+
+- 사용자로부터 숫자를 입력받았을 때 입력받은 값들 사이에 중복된 값이 있는지 체크하는 함수
+```java
+boolean checkUserInputRepeat(String userInputNumber)
+```
