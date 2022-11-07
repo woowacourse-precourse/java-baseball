@@ -19,11 +19,13 @@ public class Application {
         String answer = Console.readLine();
 
         int strike = checkStrike(computer_num,answer);
-        System.out.println(strike);
 
         int ball = checkBall(computer_num,answer);
-        System.out.println(ball);
+
+        printResult(strike,ball);
+
     }
+
 
     public static int checkStrike(List<Integer> computer_num, String answer) {
         int cnt = 0;
@@ -50,7 +52,19 @@ public class Application {
         return cnt;
     }
 
+    public static void printResult(int strike, int ball) {
 
+        if (strike + ball == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ball > 0) {
+                System.out.print(ball+"볼 ");
+            }
+            if (strike > 0) {
+                System.out.print(strike+"스트라이크 ");
+            }
+        }
+    }
 
 
 }
