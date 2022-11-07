@@ -29,4 +29,11 @@ public class Score {
         .count();
   }
 
+  public Integer getStrikeCount(){
+    return this.strikeCount;
+  }
+
+  public Integer getBallCount(){
+    return this.ballCount;
+  }
 }
