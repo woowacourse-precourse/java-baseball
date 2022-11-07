@@ -12,6 +12,10 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    /**
+     * Scan user input to start a number baseball game.
+     * @return userInput
+     */
     public static String getUserInput() {
         System.out.print("숫자를 입력해주세요: ");
         return readLine();
