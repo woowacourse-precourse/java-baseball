@@ -12,4 +12,8 @@ public class Player {
                 map(Integer::valueOf).
                 collect(Collectors.toList());
     }
+
+    public int getIndexNumber(int idx){
+        return numbers.get(idx);
+    }
 }
