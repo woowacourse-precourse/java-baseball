@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class baseballComputer {
+public class BaseballComputer {
     private List<Integer> computerNumber = new ArrayList<>(); // 3자리수
 
     public void startGameMessage(){
@@ -16,7 +16,9 @@ public class baseballComputer {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
     }
 
+
     public void createRandomNumber() {
+        computerNumber.clear();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!computerNumber.contains(randomNumber)){
