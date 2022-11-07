@@ -27,10 +27,22 @@ isValidPlayerInput 메소드를 통해 검증
 ```
 - 게임을 진행하는 메인 기능
   - 모든 숫자를 맞출 때까지 반복 가능하여야 한다.
+```
+newGame 메서드 내부 while 문을 통해 구현
+inputCondition 멤버변수를 조작하여 탈출조건 구현
+checkGameCondition 메서드를 통해 inputCondition 멤버변수 조작
+```
 - 결과값을 출력하는 기능
   - 출력값의 형식에 주의하여 출력하여야한다.
+```
+checkGameCondition 메서드를 통해 inputCondition 멤버변수 조작과 동시에 결과 출력
+```
 - 재시작 혹은 종료를 결정하는 기능
   - 입력 형식에 맞지 않는 경우를 검증하여야 한다.
+```
+main 함수내에서 사용자 입력을 받아 결정
+isExitCodeValid 메서드를 통해 입력 무결성 검증
+```
 ---
 ## 🚀 기능 요구 사항
 
