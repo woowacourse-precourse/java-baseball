@@ -32,7 +32,7 @@ class BaseballRefereeTest extends NsTest {
 
     @Test
     @DisplayName("낫싱_테스트")
-    void 낫싱_테스트() {
+    void notThingTest() {
         //given
         //when
         List<Integer> computer = new ArrayList<>();

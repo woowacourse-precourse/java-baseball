@@ -20,6 +20,7 @@ class ComputerTest extends NsTest {
     }
 
     @Test
+    @DisplayName("주어진 렌덤 테스트")
     void checkForApplicationTest() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -34,6 +35,5 @@ class ComputerTest extends NsTest {
 
     @Override
     protected void runMain() {
-
     }
 }
