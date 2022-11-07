@@ -15,6 +15,12 @@ public class Valid {
                 || numberList.get(0) == numberList.get(2)
         ) return INVALID;
 
+        for (int i = 0; i < 3; i++) {
+            if (numberList.get(i) < 1
+                    || numberList.get(i) > 9
+            ) return INVALID;
+        }
+
         return VALID;
     }
 }
