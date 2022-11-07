@@ -3,8 +3,8 @@ package baseball;
 import java.util.List;
 
 public class Ball {
-    private int number;
-    private int order;
+    private final int number;
+    private final int order;
 
     public Ball(int number, int order) {
         this.number = number;
