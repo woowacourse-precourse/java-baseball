@@ -1,14 +1,10 @@
 package baseball;
-
 public class Application {
     public static void main(String[] args) {
-        boolean is3Strike = false;
-        boolean isDone = false;
-
         ComputerBallNumber computerBallNumber = new ComputerBallNumber();
         computerBallNumber.getComputerBalls();
         ResultView.printStartGame();
-        while (!is3Strike && !isDone) {
+        while (true) {
             String inputBallNumber = InputView.inputBallNumber();
             Balls balls = new Balls(inputBallNumber);
             UserBallNumber userBallNumber = new UserBallNumber(balls.numbers);
