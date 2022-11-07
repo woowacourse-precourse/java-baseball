@@ -24,6 +24,17 @@ public class Game {
     }
 
     /**
+     * 전체적인 게임 구동
+     */
+    public void run() {
+        System.out.println(GAME_START_MSG);
+        do {
+            computer.createProblem();
+            userPlay();
+        } while(checkReplay());
+    }
+
+    /**
      * 한 판에서 플레이어가 게임을 진행하는 기능
      */
     public void userPlay() {
