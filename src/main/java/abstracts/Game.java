@@ -2,9 +2,7 @@ package abstracts;
 
 public abstract class Game {
 
-    public enum Status {
-        PLAYING, DONE
-    }
+
     protected Status status;
     protected String gameName;
 

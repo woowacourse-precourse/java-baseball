@@ -13,6 +13,9 @@ public class Constants {
     public static final boolean PROCESS_CONTINUE = true;
     public static final boolean PROCESS_FINISH = false;
 
+    public enum Status {
+        PLAYING, DONE
+    }
     public enum Result {
         STRIKE, BALL, OUT
     }
