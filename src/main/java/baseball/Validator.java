@@ -22,4 +22,18 @@ public class Validator {
             throw new IllegalArgumentException("guess between 1 ~ 9.");
         }
     }
+
+    public void checkFlagLength(String input) throws IllegalArgumentException {
+        if(input.length() != 1) {
+            throw new IllegalArgumentException("Enter 1 to RESTART the game or 2 to EXIT the game.");
+        }
+    }
+
+    public void checkFlag(String flag) throws IllegalArgumentException {
+        if(!flag.equals("1") && !flag.equals("2")) {
+            throw new IllegalArgumentException("Enter 1 to RESTART the game or 2 to EXIT the game.");
+        }
+    }
+
+    //todo 각 자리의 수가 서로 다른 숫자인지 확인
 }
