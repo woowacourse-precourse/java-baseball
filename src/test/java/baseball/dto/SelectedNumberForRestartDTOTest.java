@@ -23,18 +23,18 @@ class SelectedNumberForRestartDTOTest {
     @DisplayName("예외 처리 : null 또는 \"\" 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
     @NullAndEmptySource
-    void null_or_empty_exception(String input) {
+    void null_or_empty_exception(String selectedNumberForRestart) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(selectedNumberForRestart))
                 .withMessage("Null 또는 Empty 를 입력할 수 없습니다.");
     }
     
     @DisplayName("예외 처리 : 알파벳 소문자 및 대문자 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
     @ValueSource(strings = {"A", "a"})
-    void alphabet_exception(String input) {
+    void alphabet_exception(String selectedNumberForRestart) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(selectedNumberForRestart))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
     
@@ -49,9 +49,9 @@ class SelectedNumberForRestartDTOTest {
     @DisplayName("예외 처리 : 한글 자음, 모음, 단어 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
     @ValueSource(strings = {"ㄱ", "ㅏ", "가"})
-    void korean_exception(String input) {
+    void korean_exception(String selectedNumberForRestart) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(selectedNumberForRestart))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
     
@@ -66,18 +66,18 @@ class SelectedNumberForRestartDTOTest {
     @DisplayName("예외 처리 : 길이가 1이 아닌 경우")
     @ParameterizedTest(name = "{displayName} => {0}")
     @ValueSource(strings = {"12", "123"})
-    void length_exception(String input) {
+    void length_exception(String selectedNumberForRestart) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(selectedNumberForRestart))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
     
     @DisplayName("예외 처리 : 1~2 범위를 벗어난 경우")
     @ParameterizedTest(name = "{displayName} => {0}")
     @ValueSource(strings = {"0", "3"})
-    void out_of_range_exception(String input) {
+    void out_of_range_exception(String selectedNumberForRestart) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new SelectedNumberForRestartDTO(input))
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(selectedNumberForRestart))
                 .withMessage(NUMBER_FORM_EXCEPTION_MESSAGE);
     }
 }
