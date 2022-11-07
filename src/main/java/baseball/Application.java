@@ -17,14 +17,15 @@ public class Application {
     private static String computerNumber = "";
     private static String userNumber = "";
 
-    private static int ballNum;
-    private static int strikeNum;
+    private static int ballNum =0;
+    private static int strikeNum =0;
 
     public static void getInput() {
-        System.out.println(StartSymbol);
         System.out.print(InputSymbol);
         userNumber = Console.readLine();
         inputValidation(userNumber);
+        System.out.print(computerNumber);
+        System.out.print(userNumber);
     }
 
     public static void printGetResult(int ballNum, int strikeNum) {
@@ -32,12 +33,14 @@ public class Application {
     }
 
     public static void calculateNum() {
+        ballNum = 0;
+        strikeNum =0;
         for (int i = 0; i < NumberLength; i++) {
-            if (IsStrike(computerNumber.charAt(i)-'0', userNumber.charAt(i)-'0')) {
+            if (IsStrike(computerNumber.charAt(i) - '0', userNumber.charAt(i) - '0')) {
                 addStrike();
                 continue;
             }
-            if (IsBall(computerNumber.charAt(i)-'0', userNumber)) {
+            if (IsBall(computerNumber.charAt(i) - '0', userNumber)) {
                 addBall();
             }
         }
@@ -51,19 +54,21 @@ public class Application {
         strikeNum++;
     }
 
-    public static void printOutput(int ballNum, int strikeNum){
-        if (ballNum >0){
-            System.out.print(ballNum+"볼 ");
+    public static void printOutput(int ballNum, int strikeNum) {
+        if (ballNum > 0) {
+            System.out.print(ballNum + "볼 ");
         }
-        if (strikeNum>0){
-            System.out.println(strikeNum+"스트라이크");
+        if (strikeNum > 0) {
+            System.out.print(strikeNum + "스트라이크");
         }
-        if (ballNum ==0 && strikeNum ==0)
-            System.out.println("낫씽");
+        if (ballNum == 0 && strikeNum == 0) {
+            System.out.print("낫씽");
+        }
+        System.out.println();
     }
 
     public static boolean IsBall(int computerOneNumber, String userNumber) {
-        return  userNumber.contains(Integer.toString(computerOneNumber));
+        return userNumber.contains(Integer.toString(computerOneNumber));
     }
 
     public static boolean IsStrike(int computerOneNumber, int userOneNumber) {
@@ -102,7 +107,7 @@ public class Application {
     }
 
     public static String getRandomDifferentNumber() {
-        String number= "";
+        String number = "";
         HashSet<Integer> differentNumSet = new HashSet<>();
         for (int i = 0; i < NumberLength; i++) {
             int newNum = getRandomNumber();
@@ -116,17 +121,26 @@ public class Application {
         return number;
     }
 
-    public static void gameInit() {
-        computerNumber = getRandomDifferentNumber();
-        System.out.println(computerNumber);
-        getInput();
+    public static Boolean checkEndGame(int StrikeNum) {
+        return StrikeNum == NumberLength;
+    }
+    public static void gameStart() {
+        System.out.println(StartSymbol);
+        computerNumber =getRandomDifferentNumber();
+
+    }
+    public static void printEndMsg(){
+        System.out.println(EndSymbol);
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        gameInit();
-        calculateNum();
-        printOutput(ballNum,strikeNum);
-
+        gameStart();
+        while (!checkEndGame(strikeNum)) {
+            getInput();
+            calculateNum();
+            printOutput(ballNum, strikeNum);
+        }
+        printEndMsg();
     }
 }
