@@ -11,7 +11,6 @@ public class Computer {
     private static final int LEN_NUM = 3;
     private int strikeCnt = 0;
     private int ballCnt = 0;
-    private boolean isNothing = false;
 
     private List<Integer> numbers;
 
@@ -29,9 +28,15 @@ public class Computer {
         }
     }
 
+    private void init() {
+        strikeCnt = 0;
+        ballCnt = 0;
+    }
+
     // 같은 수가 같은 자리에 있으면 "스트라이크"
     // 같은 수가 다른 자리에 있으면 "볼"
     public void count(List<Integer> userNumber) {
+        init();
         for (int i = 0; i < userNumber.size(); i++) {
             Integer digit = userNumber.get(i);
             Integer target = numbers.get(i);
@@ -40,7 +45,6 @@ public class Computer {
                 this.strikeCnt += 1;
                 continue;
             }
-
             if (numbers.contains(digit)) {
                 this.ballCnt += 1;
             }
@@ -57,7 +61,7 @@ public class Computer {
 
     // 같은 수가 전혀 없으면 "낫싱"
     public boolean isNothing() {
-        if (strikeCnt == 0 && ballCnt == 0) {
+        if (getStrike() == 0 && getBall() == 0) {
             return true;
         }
         return false;
@@ -65,7 +69,7 @@ public class Computer {
 
     // 최종 결과
     public void result() {
-        if (isNothing) {
+        if (isNothing()) {
             System.out.println("낫싱");
             return;
         }
@@ -80,7 +84,8 @@ public class Computer {
 
     // 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임을 종료
     public boolean isCorrect() {
-        if (strikeCnt == 3) {
+        if (getStrike() == 3) {
+            numbers.clear();
             return true;
         }
         return false;
