@@ -24,4 +24,11 @@ public class GameService {
 		}
 	}
 
+	public void play() {
+		user.userReset();
+		game.gameSetting();
+		user.setUserNumber(inputNumber());
+		compare(user, computer);
+	}
+
 }
