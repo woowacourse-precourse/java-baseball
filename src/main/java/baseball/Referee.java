@@ -5,14 +5,12 @@ import java.util.List;
 
 public class Referee {
 
-	private String gameResult;
-
-	public void judge(List<Integer> computerBalls, List<Integer> playerBalls) {
-		gameResult = "";
+	public String judge(List<Integer> computerBalls, List<Integer> playerBalls) {
+		String gameResult = "";
 
 		if (isNothing(computerBalls, playerBalls)) {
 			gameResult = "낫싱";
-			return;
+			return gameResult;
 		}
 
 		int ballNum = countBallNum(computerBalls, playerBalls);
@@ -25,6 +23,7 @@ public class Referee {
 			gameResult = gameResult + strikeNum + "스트라이크";
 		}
 		gameResult = gameResult.trim();
+		return gameResult;
 	}
 
 	public boolean isNothing(List<Integer> computerBalls, List<Integer> playerBalls) {
@@ -69,9 +68,5 @@ public class Referee {
 
 	private boolean canBall(List<Integer> computerBalls, int playerBall) {
 		return computerBalls.contains(playerBall);
-	}
-
-	public String getGameResult() {
-		return gameResult;
 	}
 }
