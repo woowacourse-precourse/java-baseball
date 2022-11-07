@@ -11,6 +11,7 @@ public class NumberGenerator {
     private static final int MAX_NUMBER = 9;
 
     List<Integer> baseballNumberList;
+
     public List<Integer> generateRandomNumber() {
         this.baseballNumberList = new ArrayList<>();
         for (int i = 0; i < LENGTH; i++) {

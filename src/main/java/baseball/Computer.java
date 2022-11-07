@@ -18,8 +18,10 @@ public class Computer {
     public String giveResult(List<Integer> playerNumber) {
         NumberComparator numberComparator = new NumberComparator(playerNumber, computerNumber);
         numberComparator.compare();
+
         String compareResult = numberComparator.getCompareResult();
         printResult(compareResult);
+
         return compareResult;
     }
 

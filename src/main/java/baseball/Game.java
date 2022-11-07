@@ -25,12 +25,12 @@ public class Game {
         do {
             List<Integer> playerNumber = player.enterNumber();
             compareResult = computer.giveResult(playerNumber);
-        } while (!isStrikeout(compareResult));
+        } while (!isStrikeOut(compareResult));
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public boolean isStrikeout(String result) {
+    public boolean isStrikeOut(String result) {
         String finishFlag = "3스트라이크";
         return result.equals(finishFlag);
     }
