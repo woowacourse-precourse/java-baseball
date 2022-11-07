@@ -11,6 +11,8 @@ public class UserUtil {
 
         String input = getInput();
 
+        isValidInput(input);
+
         String[] digits = input.split("");
 
         for (String digit : digits) {
@@ -24,6 +26,12 @@ public class UserUtil {
 
     private static String getInput() {
         return Console.readLine();
+    }
+
+    private static void isValidInput(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("input should have three digits");
+        }
     }
 
     private static int numberOf(String digit) {
