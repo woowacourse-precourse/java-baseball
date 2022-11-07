@@ -4,9 +4,9 @@ import baseball.model.Score;
 
 import java.util.stream.IntStream;
 
-public class Calculator {
+public class BaseBallGameScoreCounter {
 
-    public static Score count(String baseballNumber, String userNumber) {
+    public static Score checkScore(String baseballNumber, String userNumber) {
         int strikeCount = (int) IntStream.range(0, baseballNumber.length())
                 .filter(index -> baseballNumber.toCharArray()[index] == userNumber.toCharArray()[index])
                 .count();

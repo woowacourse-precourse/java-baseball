@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BaseballNumber {
+public class NumberGenerator {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final int BALL_COUNT = 3;
