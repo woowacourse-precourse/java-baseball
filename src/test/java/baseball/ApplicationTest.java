@@ -13,11 +13,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    Application application = new Application();
+    @Test
+    void 점수_체크() {
+        Score score = Application.checkAnswer(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3));
+        assertThat(score.getScore()).isEqualTo("3스트라이크");
+    }
 
     @Test
     void 문자열_숫자_리스트로_변경() {
-        List<Integer> integerList = application.stringConvertToIntegerList("123");
+        List<Integer> integerList = Application.stringConvertToIntegerList("123");
         assertThat(integerList).isEqualTo(Arrays.asList(1, 2, 3));
     }
 

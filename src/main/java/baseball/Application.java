@@ -10,11 +10,30 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-
         printInitMessage();
+
+        List<Integer> answer = pickThreeNumbers();
         List<Integer> userAnswer = stringConvertToIntegerList(getUserAnswer()); // 입력받은 값을 리스트로 변경
+        Score score = checkAnswer(answer, userAnswer);
+
+    }
+
+    public static Score checkAnswer(List<Integer> answer, List<Integer> userAnswer) {
         Score score = new Score(); // 점수 초기화
 
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i).equals(userAnswer.get(i))) {
+                // 같은 자리에 있는 경우
+                score.plusStrike();
+                continue;
+            }
+            if (answer.contains(userAnswer.get(i))) {
+                // 다른 자리에 있는 경우
+                score.plusBall();
+            }
+        }
+
+        return score;
     }
 
     private static void printInitMessage() {
