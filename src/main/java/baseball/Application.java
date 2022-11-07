@@ -21,15 +21,7 @@ public class Application {
 	public static void playGame(List<Integer> computerNumbers) {
 
 		List<Integer> playerNumbers;
-
-		try {
-			playerNumbers = getPlayerNumbers();
-		}
-
-		catch (IllegalArgumentException e) {
-			e.printStackTrace();
-			return;
-		}
+		playerNumbers = getPlayerNumbers();
 
 		int strike = sumStrike(computerNumbers, playerNumbers);
 		if (strike == LENGTH) {
@@ -102,14 +94,8 @@ public class Application {
 		}
 
 		else {
-			try {
-				throw new IllegalArgumentException();
-			}
-
-			catch (IllegalArgumentException e) {
-				e.printStackTrace();
-				return;
-			}
+			System.out.println("게임 종료");
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -127,7 +113,7 @@ public class Application {
 		return computer;
 	}
 
-	public static List<Integer> getPlayerNumbers() throws IllegalArgumentException {
+	public static List<Integer> getPlayerNumbers() {
 
 		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
@@ -136,25 +122,27 @@ public class Application {
 		boolean isSameLength = input.length() == LENGTH;
 		if (!isNumeric || !isSameLength) {
 
+			System.out.println("게임 종료");
 			throw new IllegalArgumentException();
 		}
 
 		List<Integer> playerNumbers = new ArrayList<Integer>(LENGTH);
-		
+
 		for (int character = 0; character < input.length(); character++) {
-			
+
 			int number = Character.getNumericValue(input.charAt(character));
-			
+
 			boolean isZero = number == 0;
 			boolean isOverlap = playerNumbers.contains(number);
 			if (isZero || isOverlap) {
-				
+
+				System.out.println("게임 종료");
 				throw new IllegalArgumentException();
 			}
-			
+
 			playerNumbers.add(number);
 		}
-		
+
 		return playerNumbers;
 	}
 
