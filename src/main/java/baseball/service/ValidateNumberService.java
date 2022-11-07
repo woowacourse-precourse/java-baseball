@@ -11,6 +11,7 @@ public class ValidateNumberService {
     private final static String ERROR_DIGIT_RANGE_NOT_FROM_ONE_TO_NINE = "Input이 숫자 1에서 9까지 범위가 아닙니다.";
     private final static String ERROR_DUPLICATED_DIGIT = "중복된 숫자가 존재합니다. ";
     private final static String ERROR_NUMBER_LENGTH_NOT_THREE = "Input의 길이가 3이 아닙니다.";
+    private final static String ERROR_RESTART_INPUT_NOT_ONE_OR_TWO = "Restart Input이 1 혹은 2가 아닙니다.";
 
     public static void validateUserInput(String userInput) throws IllegalArgumentException{
         validateDigitRangeFromOneToNine(userInput);
@@ -19,6 +20,9 @@ public class ValidateNumberService {
     }
 
     public static void validateRestartInput(String restartInput) {
+        if (!(restartInput.equals("1") || restartInput.equals("2"))) {
+            throw new IllegalArgumentException(ERROR_RESTART_INPUT_NOT_ONE_OR_TWO);
+        }
     }
 
     private static void validateDigitRangeFromOneToNine(String userInput) {

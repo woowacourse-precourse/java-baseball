@@ -20,6 +20,9 @@ public class BaseballGameInputService {
     }
 
     public static Integer getRestartInput() {
+        String userStringRestartInput = Console.readLine();
+
+        validateNumberService.validateRestartInput(userStringRestartInput);
 
         return 0;
     }

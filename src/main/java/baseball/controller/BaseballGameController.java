@@ -43,6 +43,8 @@ public class BaseballGameController {
 
     private boolean gameRestart() {
         baseballGameView.gameRestartMessage();
+        Integer restartOrStop = baseballGameInputService.getRestartInput();
+
 
         return true;
     }

@@ -28,6 +28,12 @@ class ValidateNumberServiceTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 재시작_숫자_검증() {
+        Assertions.assertThatThrownBy(() -> validateNumberService.validateRestartInput("3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
