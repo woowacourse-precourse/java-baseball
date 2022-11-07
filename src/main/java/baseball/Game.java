@@ -36,6 +36,7 @@ public class Game {
     }
 
     public void checkAnswer(){
+        result.initialize();
         countResult();
         printMessage(result.createResultMessage());
     }
