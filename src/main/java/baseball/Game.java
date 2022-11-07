@@ -34,7 +34,7 @@ public class Game {
     void setRandomNum(List<Integer> randomNum) {
         this.randomNum = randomNum;
     }
-    // for testing purposes
+
     List<Integer> getRandomNum() {
         return randomNum;
     }
@@ -43,17 +43,14 @@ public class Game {
      * Set user's input of 3-digit number for game class instance
      * @see InputValidation#isValidInput(String) input 의 유효성 검사
      */
-    static List<Integer> getUserInput() {
+    static List<Integer> getUserInput() throws IllegalArgumentException{
         System.out.print("숫자를 입력해주세요 : ");
-        // TODO: Warning 의 정체는 무엇? Troubleshooting
         String userInput = Console.readLine().trim();
-//        Scanner keyboard = new Scanner(System.in);
-//        String userInput = keyboard.nextLine();
         try {
             InputValidation.isValidInput(userInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            endGame();
+            throw e;
         }
 
         ArrayList<Integer> inputList = new ArrayList<>();
@@ -101,7 +98,11 @@ public class Game {
         List<Integer> resultList;
 
         while (!isThreeStrike) {
-            userInput = getUserInput();
+            try {
+                userInput = getUserInput();
+            } catch (IllegalArgumentException e) {
+                throw e;
+            }
             resultList = Hint.result(userInput, this);
             Hint.printResult(resultList);
             if (resultList.equals(new ArrayList<>(Arrays.asList(0, 3)))) {
