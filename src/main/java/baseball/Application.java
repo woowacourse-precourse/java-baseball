@@ -8,6 +8,27 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    public static void numBaseballGame(){
+        List<Integer> computerNum = new ArrayList<>();
+
+        while (true){
+            if(!createComputerNum(computerNum))
+                throw new IllegalArgumentException("컴퓨터가 랜덤수를 생성하지 못하였습니다.");
+
+            List<Integer> playerNum = new ArrayList<>(inputPlayerNum());
+
+            checkValidPlayerNum(playerNum);
+
+            StrikeBallResult strikeBallResult = comparePlayerAndComputer(playerNum, computerNum);
+            notifyGameResult(strikeBallResult);
+
+            boolean answer = isAnswer(strikeBallResult.strikeCnt);
+
+            if(answer)
+                return;
+        }
+    }
+
     public static boolean createComputerNum(List<Integer> computer){
         while(computer.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
