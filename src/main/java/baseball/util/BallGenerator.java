@@ -2,7 +2,6 @@ package baseball.util;
 
 import static baseball.util.InputValidator.COMPUTER_BALLS_SIZE;
 
-import baseball.constant.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ public class BallGenerator {
     }
 
     public List<Integer> createPlayerBalls() {
-        System.out.print(SystemMessage.ENTER_NUMBER);
         String playerBall = Console.readLine();
         List<Integer> playerBalls = stringToIntegerList(playerBall);
         if (!InputValidator.checkPlayerBall(playerBalls)) {
