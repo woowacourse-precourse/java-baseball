@@ -3,7 +3,6 @@ package baseball.domain;
 public class BaseballGame {
 
     private static final Integer RESTART = 1;
-    private static final Integer EXIT = 2;
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     private final Player player;
@@ -38,7 +37,6 @@ public class BaseballGame {
     }
 
     private Boolean checkProgress() {
-        Integer progressInput = player.getProgressInput();
-        return RESTART.equals(progressInput);
+        return RESTART.equals(player.getProgressInput());
     }
 }
