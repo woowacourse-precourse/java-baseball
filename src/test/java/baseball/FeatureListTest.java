@@ -15,12 +15,12 @@ public class FeatureListTest {
     @Test
     void 이미_만들어진_숫자가_아닌_난수_생성_검증() {
         List<Integer> list = List.of(1, 2);
-        assertThat(GenerateNonDuplicateRandomNumber(list)).isNotIn(1, 2);
+        assertThat(generateNonDuplicateRandomNumber(list)).isNotIn(1, 2);
     }
 
     @Test
     void digits개의_중복되지_않은_난수_생성_검증() {
-        Set<Integer> s = new HashSet<>(GenerateRandomNumber(3));
+        Set<Integer> s = new HashSet<>(generateRandomNumber(3));
 
         assertThat(s.size()).isEqualTo(3);
     }
@@ -31,7 +31,7 @@ public class FeatureListTest {
     void 사용자_입력_문자열을_Set으로_변환() {
         String s = "654";
         Set<Integer> set = Set.of(6, 5, 4);
-        assertThat(InputToSet(s)).isEqualTo(set);
+        assertThat(inputToSet(s)).isEqualTo(set);
     }
 
     @Test
