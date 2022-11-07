@@ -16,6 +16,14 @@ class BallScoreTest {
         score = new BallScore();
     }
     
+    @DisplayName("올바른 스코어인지 확인")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(ints = {1, 2, 3})
+    void correct_position(int score) {
+        assertThatNoException()
+                .isThrownBy(() -> new BallScore(score));
+    }
+    
     @Test
     @DisplayName("예외 처리 : BALL 개수가 종료 조건에 영향을 미칠 경우")
     void is_end() {
