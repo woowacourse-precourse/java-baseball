@@ -2,9 +2,7 @@ package baseball.view;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -35,5 +33,31 @@ public class ViewTest {
 
         //then
         assertThat(out.toString().trim()).isEqualTo(length + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    @Test
+    void 게임_중_유저에게_입력받는_기능 () throws Exception {
+        //given
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        //when
+
+        //then
+        assertThat(View.inputView()).isEqualTo(input);
+    }
+
+    @Test
+    void 재시작_종료를_구분하는_입력을_받는_기능 () throws Exception {
+        //given
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        //when
+
+        //then
+        assertThat(View.endView()).isEqualTo(input);
     }
 }
