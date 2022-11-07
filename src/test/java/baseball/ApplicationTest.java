@@ -69,6 +69,16 @@ class ApplicationTest extends NsTest {
 
         assertThat(realOutput).isEqualTo(expectedOutput);
     }
+
+    @Test
+    void convertStringToIntegerList_문자열_타입의_입력을_정수형_리스트로_변환(){
+        String playerInput = "123";
+        List<Integer> expectedOutput = List.of(1, 2, 3);
+
+        List<Integer> realOutput = Player.convertStringToIntegerList(playerInput);
+
+        assertThat(expectedOutput).isEqualTo(realOutput);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
