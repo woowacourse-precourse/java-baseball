@@ -8,6 +8,7 @@ import java.util.List;
 
 public class BaseballComputer {
     private List<Integer> computerNumber = new ArrayList<>(); // 3자리수
+    ChangeType changeType = new ChangeType();
 
     public void startGameMessage(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -69,8 +70,7 @@ public class BaseballComputer {
 
     public int inputRestartOrEnd(){
         String beforeIntChange = Console.readLine();
-        int afterIntChange = Integer.parseInt(beforeIntChange);
-        return afterIntChange;
+        return changeType.StringToInt(beforeIntChange);
     }
 
     public void printRestartOrEnd(){
