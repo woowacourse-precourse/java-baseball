@@ -94,8 +94,19 @@ class ApplicationTest extends NsTest {
     @Test
     void counting() {
         /*given*/
+        String nothing = "낫싱";
+        String strike = "3스트라이크";
+        String ballStrike = "1볼 1스트라이크";
+
         /*when*/
+        String nothingTest = game.counting(0, 0);
+        String strikeTest = game.counting(3, 0);
+        String ballStrikeTest = game.counting(1, 1);
+
         /*then*/
+        assertThat(nothingTest).isEqualTo(nothing);
+        assertThat(strikeTest).isEqualTo(strike);
+        assertThat(ballStrikeTest).isEqualTo(ballStrike);
     }
 
     @Test
