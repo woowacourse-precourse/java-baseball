@@ -12,10 +12,8 @@ public class Game {
     private List<Integer> userNumbers;
     private Boolean play;
     private Boolean correct;
-    private final Input input;
 
-    public Game(Input input) {
-        this.input = input;
+    public Game() {
         this.computers = new ArrayList<>();
         this.play = true;
         this.correct = false;
@@ -37,7 +35,7 @@ public class Game {
         while(play){
             init();
             while(!correct){
-                userNumbers=input.input();
+                userNumbers=Input.input();
                 Print.score(new Score(this));
             }
             replay();
@@ -52,7 +50,7 @@ public class Game {
 
     public void replay(){
         Print.correct();
-        if (input.replay()){
+        if (Input.replay()){
             correct = false;
             return;
         }

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Input {
-    public List<Integer> input() throws IllegalArgumentException  {
+    public static List<Integer> input() throws IllegalArgumentException  {
         Print.inputMsg();
         List<Integer> numbers;
         try {
@@ -24,19 +24,19 @@ public class Input {
         return numbers;
     }
 
-    private Boolean valid(List<Integer> numbers){
+    private static Boolean valid(List<Integer> numbers){
         if (numbers.size() > 3 || numbers.isEmpty())
             return false;
 
         return checkDuplicate(numbers);
     }
 
-    private Boolean checkDuplicate(List<Integer> numbers){
+    private static Boolean checkDuplicate(List<Integer> numbers){
         Set<Integer> numberSet = new HashSet<>(numbers);
         return numberSet.size() == numbers.size();
     }
 
-    public Boolean replay(){
+    public static Boolean replay(){
         Print.replay();
         int userInput  = 0;
         try {
