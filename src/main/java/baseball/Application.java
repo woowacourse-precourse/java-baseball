@@ -7,6 +7,18 @@ import java.util.ArrayList;
 
 public class Application {
 
+    public static boolean checkBallNum(int num, int index, List<Integer> inputNum) {
+        for(int i=0;i<inputNum.size();i++) {
+            if(i==index) {
+                continue;
+            }
+            if(inputNum.get(i)==num) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static int checkBall(List<Integer> randomNum, List<Integer> inputNum) {
         int count=0;
         for(int i=0;i<randomNum.size();i++) {
