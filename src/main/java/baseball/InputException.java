@@ -9,13 +9,13 @@ import java.util.List;
 
 public class InputException extends IllegalArgumentException {
 
+	public static final String ONLY_NUM = "^[0-9]*$";
+
 	public InputException() {
 	}
 
 	public static void checkNotNumber(String input) {
-		try {
-			Integer.parseInt(input);
-		} catch (NumberFormatException e) {
+		if (!input.matches(ONLY_NUM)) {
 			throw new IllegalArgumentException("숫자가 아닙니다.");
 		}
 	}
