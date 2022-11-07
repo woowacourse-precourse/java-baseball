@@ -1,14 +1,16 @@
 package computer;
 
+import java.util.List;
+
 public class Computer {
 
-    private final Integer targetNumber;
+    private final List<Integer> targetNumber;
 
-    public Computer(Integer targetNumber) {
+    public Computer(List<Integer> targetNumber) {
         this.targetNumber = targetNumber;
     }
 
-    public Integer getTargetNumber() {
+    public List<Integer> getTargetNumber() {
         return targetNumber;
     }
 }

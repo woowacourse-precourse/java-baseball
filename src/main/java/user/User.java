@@ -1,18 +1,20 @@
 package user;
 
+import java.util.List;
+
 public class User {
 
-    private Integer tryNumber;
+    private List<Integer> tryNumber;
 
-    public User(Integer tryNumber) {
+    public User(List<Integer> tryNumber) {
         this.tryNumber = tryNumber;
     }
 
-    public Integer getTryNumber() {
+    public List<Integer> getTryNumber() {
         return tryNumber;
     }
 
-    public void tryCorrectNumber(Integer tryNumber){
+    public void tryCorrectNumber(List<Integer> tryNumber){
         this.tryNumber = tryNumber;
     }
 }
