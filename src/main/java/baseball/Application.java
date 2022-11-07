@@ -161,6 +161,7 @@ public class Application {
 
     public static String inputAvailableUserAnswerService(){
         String userAnswer = "";
+        boolean checkedAvailableUserAnswer = false;
         return "";
     }
 
