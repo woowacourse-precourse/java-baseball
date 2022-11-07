@@ -1,6 +1,5 @@
-package baseball.domain.number.randomnumber;
+package baseball.domain.randomnumber;
 
-import baseball.domain.randomnumber.RandomNumbers;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 

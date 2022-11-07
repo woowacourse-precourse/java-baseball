@@ -1,4 +1,4 @@
-package baseball.domain.number.inputnumber;
+package baseball.domain.inputnumber;
 
 import baseball.domain.inputnumber.InputNumberFactory;
 import baseball.domain.inputnumber.InputNumbers;

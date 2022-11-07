@@ -17,7 +17,7 @@ public class RandomNumbers {
         this(SingleNumberUtils.singleNumberList(randomNumber()));
     }
 
-    public RandomNumbers(List<SingleNumber> randomNumbers) {
+    private RandomNumbers(List<SingleNumber> randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
 
