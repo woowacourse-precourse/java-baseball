@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.entity.Condition;
 import baseball.entity.Type;
 import baseball.mapper.StringMapper;
 

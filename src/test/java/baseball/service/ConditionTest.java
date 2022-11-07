@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.entity.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
