@@ -23,5 +23,10 @@ public class unitTest {
         assertThat(result).isEqualTo(true);
     }
 
-
+    @Test
+    void randomGenerator_유효성_검증() {
+        String randomString = Application.randomGenerator();
+        boolean result = Application.isValid(randomString);
+        assertThat(result).isEqualTo(true);
+    }
 }
