@@ -5,15 +5,21 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Game.ball;
+import static baseball.Game.strike;
+import static baseball.GameStatus.EXIT;
+import static baseball.GameStatus.ON;
+
+
 public class Application {
     public static void main(String[] args) {
 
-        GameStatus gameStatus = GameStatus.ON;
-        while (gameStatus == GameStatus.ON){
+        GameStatus gameStatus = ON;
+        while (gameStatus == ON){
             List<Integer> inputNumber = User.getInputNumber();
             List<Integer> answer = Computer.pickRandomNumber();
-            Game.strike(inputNumber, answer);
-            Game.ball(inputNumber, answer);
+            strike(inputNumber, answer);
+            ball(inputNumber, answer);
             Print.result(ball, strike);
 //             3번 스트라이크면 게임 status input 받기
 //            termainte 면 game status 상태 변경
@@ -64,8 +70,10 @@ class User {
 
     static String getExitOrRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String inputStatus = Console.readline();
-
+        String inputStatus = Console.readLine();
+        if (!inputStatus.equals(ON) && !inputStatus.equals(EXIT)){
+            throw new IllegalArgumentException();
+        }
         return inputStatus;
     }
 }
