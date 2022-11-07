@@ -101,6 +101,20 @@ class ApplicationTest extends NsTest {
             //then
             assertThat(baseBallGame.getUserNumber()).isEqualTo(userNumber);
         }
+
+        @Test
+        void 유저_숫자가_컴퓨터_숫자와_일치_테스트() {
+            //given
+            List<Integer> randomNumber = baseBallGame.getComputer().getRandomNumber();
+            String strRandomNumber = randomNumber.toString().replaceAll("[^0-9]","");
+            InputStream in = new ByteArrayInputStream(strRandomNumber.getBytes());
+            System.setIn(in);
+            //when
+            baseBallGame.inputUserNumber();
+            int isEqual = baseBallGame.isEqualToComputerNumber();
+            //then
+            assertThat(isEqual).isEqualTo(1);
+        }
     }
 
     @Override
