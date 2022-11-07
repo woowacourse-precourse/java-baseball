@@ -45,8 +45,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 입력_예외_테스트() {
+        숫자가_아닌_입력();
+        Zero_포함하여_입력();
+        세_자리가_아닌_입력();
+        서로_다른_수가_아닌_입력();
+    }
+
+    @Test
     void 숫자가_아닌_입력() {
         String[] inputs = {"12a", "1a2", "a12", " 12", "12#", "  ", ""};
+        for (String input : inputs) {
+            assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void Zero_포함하여_입력() {
+        String[] inputs = {"120", "102", "012"};
         for (String input : inputs) {
             assertThatThrownBy(() -> gameIO.isLegalInput(input)).isInstanceOf(IllegalArgumentException.class);
         }
