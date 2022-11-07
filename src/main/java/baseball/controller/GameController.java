@@ -29,10 +29,10 @@ public class GameController {
         try {
             do {
                 inputView.inputGameNumber();
-                setInputNumbers(Console.readLine());
-                ballCounts.setBallCounts(answerNumbers, inputNumbers);
-
+                setInputNumbers(answerNumbers);
+                outputView.outputBallCounts(ballCounts);
             } while (ballCounts.getStrike() != 3);
+
             outputView.outputRestart();
             inputView.inputRestartNumber();
         } catch (IllegalArgumentException e) {
@@ -41,10 +41,13 @@ public class GameController {
         }
     }
 
-    private void setInputNumbers(String inputString) throws IllegalArgumentException {
-        if (!validation.checkValidation(inputString)) {
+    private void setInputNumbers(Numbers answerNumbers) throws IllegalArgumentException {
+        String inputString = Console.readLine();
+
+        if (!validation.checkValidation(inputString.toString())) {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
-        inputNumbers.setNumbers(inputString);
+        inputNumbers.setNumbers(inputString.toString());
+        ballCounts.setBallCounts(answerNumbers, inputNumbers);
     }
 }
