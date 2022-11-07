@@ -85,15 +85,16 @@ public class Application {
         return noOfBallAndStrike;
     }
 
-    public static void printHint(ArrayList<Integer> answer, ArrayList<Integer> prediction) {
+    public static String giveHint(ArrayList<Integer> answer, ArrayList<Integer> prediction) {
         ArrayList<Integer> noOfBallAndStrike = countBallAndStrike(answer, prediction);
         int noOfBall = noOfBallAndStrike.get(0);
         int noOfStrike = noOfBallAndStrike.get(1);
 
-        if (noOfBall != 0) System.out.printf("%d볼 ", noOfBall);
-        if (noOfStrike != 0) System.out.printf("%d스트라이크", noOfStrike);
-        if (noOfBall == 0 && noOfStrike == 0) System.out.print("낫싱");
-        System.out.print('\n');
+        StringBuilder hint = new StringBuilder();
+        if (noOfBall != 0) hint.append(noOfBall).append("볼 ");
+        if (noOfStrike != 0) hint.append(noOfStrike).append("스트라이크");
+        if (noOfBall == 0 && noOfStrike == 0) hint.append("낫싱");
+        return hint.toString();
     }
 
     public static void predictNumber(ArrayList<Integer> answer) {
@@ -106,7 +107,7 @@ public class Application {
 
             int inputNumber = Integer.parseInt(consoleInput);
             prediction = separateDigit(inputNumber);
-            printHint(answer, prediction);
+            System.out.println(giveHint(answer, prediction));
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
