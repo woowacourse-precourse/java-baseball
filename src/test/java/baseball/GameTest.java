@@ -32,6 +32,7 @@ public class GameTest {
         assertThat(isPlay).isEqualTo(false);
     }
 
+
     @Test
     void 중복숫자_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Method checkUserInputDuplicateNumberMethod = Game.class.getDeclaredMethod("checkUserInputDuplicateNumber", String.class);
@@ -60,5 +61,75 @@ public class GameTest {
         boolean isNotDuplicated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "122");
 
         assertThat(isNotDuplicated).isEqualTo(false);
+    }
+
+    @Test
+    void 숫자변환_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
+        checkUserInputNumberMethod.setAccessible(true);
+
+        boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "122");
+
+        assertThat(isNumber).isEqualTo(true);
+    }
+
+    @Test
+    void 숫자변환_테스트2_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
+        checkUserInputNumberMethod.setAccessible(true);
+
+        boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "012");
+
+        assertThat(isNumber).isEqualTo(true);
+    }
+
+    @Test
+    void 숫자변환_테스트3_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
+        checkUserInputNumberMethod.setAccessible(true);
+
+        boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "2");
+
+        assertThat(isNumber).isEqualTo(true);
+    }
+
+    @Test
+    void 숫자변환_테스트4_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
+        checkUserInputNumberMethod.setAccessible(true);
+
+        boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "가");
+
+        assertThat(isNumber).isEqualTo(false);
+    }
+
+    @Test
+    void 숫자변환_테스트5_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
+        checkUserInputNumberMethod.setAccessible(true);
+
+        boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "12가3");
+
+        assertThat(isNumber).isEqualTo(false);
+    }
+
+    @Test
+    void 숫자변환_테스트6_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
+        checkUserInputNumberMethod.setAccessible(true);
+
+        boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "+13");
+
+        assertThat(isNumber).isEqualTo(false);
+    }
+
+    @Test
+    void 숫자변환_테스트7_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method checkUserInputNumberMethod = Game.class.getDeclaredMethod("checkUserInputNumber", String.class);
+        checkUserInputNumberMethod.setAccessible(true);
+
+        boolean isNumber = (boolean) checkUserInputNumberMethod.invoke(game, "");
+
+        assertThat(isNumber).isEqualTo(false);
     }
 }
