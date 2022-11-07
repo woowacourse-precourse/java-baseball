@@ -73,4 +73,12 @@ public class GameTest {
 
         assertThat(game.isWin(strike)).isFalse();
     }
+
+    @Test
+    void isWin_이겼을때_스트라이크가_목표에_달성했는지_확인() {
+        int strike = 3;
+        Game game = new Game();
+
+        assertThat(game.isWin(strike)).isTrue();
+    }
 }
