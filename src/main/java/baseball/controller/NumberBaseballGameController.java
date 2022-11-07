@@ -18,11 +18,12 @@ public class NumberBaseballGameController {
     private static final String GAME_RESTART_STATUS = "play";
     private static final String GAME_END_STATUS = "end";
 
-    private static String gameStatus = GAME_RESTART_STATUS;
+    private static String gameStatus;
 
     NumberBaseballGameService numberBaseballGameService = new NumberBaseballGameService();
 
     public void run() {
+        gameStatus = GAME_RESTART_STATUS;
         while (gameStatus.equals(GAME_RESTART_STATUS)) {
             gameInit();
             gameStart();
