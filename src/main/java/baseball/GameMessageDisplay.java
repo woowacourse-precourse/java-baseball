@@ -21,7 +21,7 @@ public class GameMessageDisplay {
         int strike = gameResult.get("strike");
 
         if (strike == 3) {
-            return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         if (strike == 0 && ball == 0) {
             return "낫싱";
