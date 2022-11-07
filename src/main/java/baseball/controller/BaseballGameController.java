@@ -2,7 +2,6 @@ package baseball.controller;
 
 
 import baseball.domain.Computer;
-import baseball.domain.User;
 import baseball.service.BaseballGameService;
 import java.util.List;
 import baseball.view.BaseballGameView;
@@ -31,12 +30,13 @@ public class BaseballGameController {
     public void printEndGame() {
         baseballGameView.printEndMessage();
     }
-    public void printRestartMessage(){
+
+    public void printRestartMessage() {
         baseballGameView.printRestartMessage();
     }
 
     public void startGame() {
-        computer.setRandomNumber();
+        baseballGameService.setComputerNumber();
         while (baseballGameService.getStrikeCount() != THREE_STRIKE) {
             baseballGameView.printInputNumber();
             updateHint(computer.getRandomNumber(), getUserNumber());
