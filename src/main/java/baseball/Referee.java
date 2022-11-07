@@ -24,4 +24,8 @@ public class Referee {
     public ViewService answerNumber() {
         return rule.answerNumber(playerNumbers);
     }
+
+    public List<Integer> getPlayerNumbers() {
+        return playerNumbers;
+    }
 }
