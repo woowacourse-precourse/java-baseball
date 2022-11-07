@@ -6,17 +6,15 @@ import java.util.List;
 
 import static baseball.constant.GameConstant.*;
 import static baseball.constant.GameMessage.*;
+import static baseball.game.CompareBaseballNumber.*;
 import static baseball.game.ComputerNumber.createComputerNumber;
 import static baseball.exception.RestartNumberValidator.checkValidationRestartNumber;
 import static baseball.game.UserNumber.checkInputUserNumber;
 
 public class BaseballGame {
 
-    private static List<Integer> computerNumbers;
-    private static List<Integer> userNumbers;
-
-    private static int strike;
-    private static int ball;
+    public static List<Integer> computerNumbers;
+    public static List<Integer> userNumbers;
 
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
@@ -31,26 +29,6 @@ public class BaseballGame {
         restartGame();
     }
 
-    public static void compareNumber(){
-        int userNumber;
-        int computerNumber;
-        for(int i=ZERO;i<BALL_LEN;i++){
-            userNumber = userNumbers.get(i);
-            computerNumber = computerNumbers.get(i);
-            if (!includeSame(userNumber)) continue;
-            countStrike(userNumber,computerNumber);
-            countBall(userNumber,computerNumber);
-        }
-    }
-
-    public static void userNumberResult(){
-        if(ball==0 && strike==0) System.out.print(NOTHING);
-        if(ball>0) System.out.print(ball + BALL);
-        if(strike>0) System.out.print(strike + STRIKE);
-        System.out.println();
-
-    }
-
     public static void restartGame(){
         System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
@@ -58,23 +36,6 @@ public class BaseballGame {
         if (restartNumber.equals(RESTART)) {
             playBaseballGame();
         }
-    }
-
-    public static void resetStrikeBall(){
-        strike=0;
-        ball=0;
-    }
-
-    public static boolean includeSame(int userNumber){
-        return computerNumbers.contains(userNumber);
-    }
-
-    public static void countStrike(int userNumber, int computerNumber){
-        if (userNumber == computerNumber) strike++;
-    }
-
-    public static void countBall(int userNumber, int computerNumber){
-        if (userNumber != computerNumber) ball++;
     }
 
 }
