@@ -3,6 +3,7 @@ package baseball;
 import baseball.inputException.ContainingZeroException;
 import baseball.inputException.DuplicatedNumberException;
 import baseball.inputException.IllegalDigitsException;
+import baseball.inputException.InvalidNumberException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ public class Player {
         String input = Console.readLine();
 
         for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new InvalidNumberException();
+            }
             userInput.add(input.charAt(i) - '0');
         }
 
