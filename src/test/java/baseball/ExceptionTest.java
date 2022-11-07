@@ -25,4 +25,12 @@ public class ExceptionTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 입력한_값이_숫자가_아닌_경우_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> isNumber("12a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }

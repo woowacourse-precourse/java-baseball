@@ -21,4 +21,16 @@ public class Exception {
             throw new IllegalArgumentException("1번째 자리와 3번째 자리가 같음");
         }
     }
+
+    public static void isNumber(String s){
+        if(!Character.isDigit(s.charAt(0))){
+            throw new IllegalArgumentException("1번째 단어가 숫자가 아닙니다.");
+        }
+        if(!Character.isDigit(s.charAt(1))){
+            throw new IllegalArgumentException("2번째 단어가 숫자가 아닙니다.");
+        }
+        if(!Character.isDigit(s.charAt(2))){
+            throw new IllegalArgumentException("3번째 단어가 숫자가 아닙니다.");
+        }
+    }
 }
