@@ -5,14 +5,15 @@ import java.util.ArrayList;
 public class Application {
     public static final int ONE_INPUT = 0;
     public static final int THREE_INPUT = 1;
+    private static final DataInput input = new DataInput();
+    private static final DataProcessing process = new DataProcessing();
+    private static final OutputPrint print = new OutputPrint();
 
     private static void inGame() {
         ArrayList<Integer> inputList;
         int[] processedData;
-        DataInput input = new DataInput();
-        DataProcessing process = new DataProcessing();
-        OutputPrint print = new OutputPrint();
 
+        process.makeRandomData();
         do {
             print.printRequest();
             input.inputNumber(THREE_INPUT);
@@ -25,8 +26,6 @@ public class Application {
 
     private static void gameStart() {
         ArrayList<Integer> inputList;
-        OutputPrint print = new OutputPrint();
-        DataInput input = new DataInput();
 
         print.printStart();
         do {

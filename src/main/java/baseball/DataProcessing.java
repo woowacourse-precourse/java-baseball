@@ -12,7 +12,6 @@ public class DataProcessing {
     public static final int BALL_INDEX = 1;
 
     DataProcessing() {
-        makeRandomData();
     }
 
     public void setData(List<Integer> inputData){
