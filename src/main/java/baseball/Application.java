@@ -82,7 +82,62 @@ public class Application {
             validateLength(player);
             validateNumericValue(player);
             validateUniqueNumber(player);
+            boolean hasHit = compareByRule(answer, player);
+
+            if (hasHit) {
+                break;
+            }
         } while (true);
+    }
+
+    /**
+     * 정답과 사용자 입력값에 대해 숫자 야구 규칙을 적용
+     *
+     * @param answer
+     * @param player
+     */
+    boolean compareByRule(String answer, String player) {
+        int strike = getStrike(answer, player);
+        int ball = getBall(answer, player);
+        boolean isHit = strike == answer.length();
+        boolean isNothing = (strike + ball) == 0;
+        boolean onlyStrikes = (ball == 0) && strike > 0;
+        boolean onlyBalls = (strike == 0) && ball > 0;
+        if (isHit) {
+            GameFormatter.gameOnlyStrikeMessage(3);
+            return true;
+        } else if (isNothing) {
+            GameFormatter.gameNothingMessage();
+        } else if (onlyStrikes) {
+            GameFormatter.gameOnlyStrikeMessage(strike);
+        } else if (onlyBalls) {
+            GameFormatter.gameOnlyBallMessage(ball);
+        } else {
+            GameFormatter.gameBothBallAndStrikeMessage(ball, strike);
+        }
+        return false;
+    }
+
+    int getStrike(String answer, String player) {
+        int result = 0;
+        for (int i = 0; i < player.length(); i++) {
+            if (player.charAt(i) == answer.charAt(i)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    int getBall(String answer, String player) {
+        int result = 0;
+        for (int i = 0; i < player.length(); i++) {
+            boolean diffValue = player.charAt(i) != answer.charAt(i);
+            boolean containsValue = answer.contains(String.valueOf(player.charAt(i)));
+            if (diffValue && containsValue) {
+                result++;
+            }
+        }
+        return result;
     }
 
     boolean isStopStatus(GameStatus status) {
