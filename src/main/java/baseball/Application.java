@@ -28,7 +28,7 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
-    private static void check(String user, List<Integer> com){
+    private static int[] check(String user, List<Integer> com){
         int i, ball = 0, strike = 0;
         for (i = 0; i < 3; i++){
             if (Character.getNumericValue(user.charAt(i)) == com.get(i)){
@@ -39,13 +39,41 @@ public class Application {
                 ball++;
             }
         }
+        return new int[] {ball, strike};
+    }
+
+    private static boolean result(int[] bs){
+        String output = "";
+
+        if (bs[0] != 0){
+            output += Integer.toString(bs[0]) + "볼 ";
+        }
+
+        if (bs[1] != 0){
+            output += Integer.toString(bs[1]) + "스트라이크";
+        }
+
+        if (output == ""){
+            output = "낫싱";
+        }
+
+        System.out.println(output);
+
+        if (bs[1] == 3){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     private static int compare(List<Integer> com_num){
         String user_num;
+        Boolean flag;
         do{
             user_num = user_num_input();
-        } while ();
+            flag = result(check(user_num, com_num));
+        } while (flag);
         return game_reset();
     }
 
