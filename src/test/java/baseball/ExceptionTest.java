@@ -29,4 +29,12 @@ public class ExceptionTest {
     void 세자리_난수_중복_없음() {
         assertThat(Exception.isRedundancy(329)).isFalse();
     }
+    @Test
+    void 숫자만_입력() {
+        assertThat(Exception.isNumber("329")).isTrue();
+    }
+    @Test
+    void 문자를_입력() {
+        assertThat(Exception.isNumber("문자3")).isFalse();
+    }
 }

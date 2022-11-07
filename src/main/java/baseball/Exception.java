@@ -10,4 +10,9 @@ public class Exception {
             return true;
         return false;
     }
+    public static boolean isNumber(String number) {
+        if (number.matches("[0-9]+"))
+            return true;
+        return false;
+    }
 }
