@@ -9,6 +9,10 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
 
+
+    }
+
+    public void backup() {
         List<Integer> computerNumber = getComputerNumber();
 
         while (true) {
