@@ -17,7 +17,12 @@ public class baseballComputer {
     }
 
     public void createRandomNumber() {
-
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if(!computerNumber.contains(randomNumber)){
+                computerNumber.add(randomNumber);
+            }
+        }
     }
 
     public void checkHitNumber() {
