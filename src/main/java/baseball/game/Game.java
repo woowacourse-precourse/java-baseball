@@ -5,21 +5,19 @@ import java.util.List;
 
 public class Game {
 
-    private static final int LIST_SIZE = 3;
-
     private final CompareTwoList compareTwoList;
     private final Computer computer;
 
-    public Game() {
+    public Game(int listSize) {
         this.compareTwoList = new CompareTwoList();
-        this.computer = new Computer();
+        this.computer = new Computer(listSize);
     }
 
     public void runGame(IOTopClass ioTopClass) {
         GameGuide.startMessage();
         while (true) {
             boolean flag;
-            flag = endGameOrQuit(ioTopClass, false, computer.makeRandomNum(LIST_SIZE));
+            flag = endGameOrQuit(ioTopClass, false, computer.makeRandomNum());
             if (flag) {
                 break;
             }
