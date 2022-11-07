@@ -19,11 +19,12 @@ public class MyFunctionTest {
     class randomNumber {
         //given
         RandomNumber randomNumber = new RandomNumber();
-        List<Integer> list = randomNumber.getRandomNumber();
         @Test
         void Random_리스트_모두_숫자인지_확인() {
             //when
             List<Integer> oneToNine = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+            randomNumber.getList();
+            List<Integer> list = randomNumber.getRandomNumber();
             //then
             for(int i = 0; i < 3; i++) {
                 assertThat(oneToNine).contains(list.get(i));
@@ -33,11 +34,15 @@ public class MyFunctionTest {
         void Random_리스트_길이_3인지_확인() {
             //given
             int index = 3;
+            randomNumber.getList();
+            List<Integer> list = randomNumber.getRandomNumber();
             //then
             assertThat(list.size()).isEqualTo(index);
         }
         @Test
         void Random_리스트_중복_확인() {
+            randomNumber.getList();
+            List<Integer> list = randomNumber.getRandomNumber();
             for(int i = 0; i < 3; i++) {
                 boolean isRepeat = (Collections.frequency(list, list.get(i))==1);
                 assertThat(isRepeat).isEqualTo(true);
