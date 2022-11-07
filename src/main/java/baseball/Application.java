@@ -31,6 +31,7 @@ public class Application {
             compareTwoNumbers(computer.getNumber(), user.getNumber());
             clearUserNumberAndResult(user);
         }
+        GameTextPrinter.printGameOverText(REQUIRED_STRIKE_COUNT);
     }
 
     private void clearUserNumberAndResult(User user) {
@@ -53,7 +54,6 @@ public class Application {
 
             GameTextPrinter.printCompareResult(result);
         }
-
         checkGameOver(strikeCount);
     }
 
