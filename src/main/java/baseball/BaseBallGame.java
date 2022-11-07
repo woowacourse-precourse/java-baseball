@@ -44,6 +44,7 @@ public class BaseBallGame {
     }
 
     public void setComputerNumbers() {
+        computerNumbers.clear();
         while (this.computerNumbers.size() < COMPUTER_NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(COMPUTER_NUMBER_MIN, COMPUTER_NUMBER_MAX);
             if (!this.computerNumbers.contains(randomNumber)) {
