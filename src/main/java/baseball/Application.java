@@ -5,8 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+
+
+
 public class Application {
+
+  private static final String STRIKE = "strike";
+  private static final String BALL = "ball";
+
   public static void main(String[] args) {
+
     setInput();
   }
 
@@ -104,6 +112,19 @@ public class Application {
       }
     }
     return sameNumberList;
+  }
+
+  private static List<String> findResultStrikeAndBall(List<Integer> myNumberGroup, List<Integer> computerNumberGroup
+          ,List<Integer> sameNumberList){
+    List<String> resultStrikeAndBall = new ArrayList<>();
+    for(int sameNumber : sameNumberList){
+      if(myNumberGroup.indexOf(sameNumber)==computerNumberGroup.indexOf(sameNumber)){
+        resultStrikeAndBall.add(STRIKE);
+      }else{
+        resultStrikeAndBall.add(BALL);
+      }
+    }
+    return resultStrikeAndBall;
   }
 }
 
