@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Game {
 
-    private final CompareTwoList compareTwoList;
+    private final Referee referee;
     private final Computer computer;
 
     public Game(int listSize) {
-        this.compareTwoList = new CompareTwoList();
+        this.referee = new Referee();
         this.computer = new Computer(listSize);
     }
 
@@ -28,7 +28,7 @@ public class Game {
         int oneOrTwo = 0;
         while (oneOrTwo == 0) {
             GameGuide.inputMessage();
-            List<Integer> strikeBalls = compareTwoList.compareLists(computerList, ioTopClass.makeInputList());
+            List<Integer> strikeBalls = referee.compareLists(computerList, ioTopClass.makeInputList());
             ioTopClass.printStrikeAndBalls(strikeBalls);
             oneOrTwo = endGameMessage(strikeBalls.equals(List.of(3, 0)), oneOrTwo, ioTopClass);
             flag = checkTwo(oneOrTwo);
