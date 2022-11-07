@@ -59,27 +59,56 @@ class inputException {
 
     void restartJudgeException(String a) {
         this.judgeNotNumber(a);
-        int i = Integer.parseInt(a);
-        if(i!=1 || i!=2) {
+        if(!a.equals("1") || !a.equals("2")) {
             throw new IllegalArgumentException("다시 시작하세요");
         }
     }
 }
 
 class playGame {
-    int ball;
-    int strike;
-    
-    void nothing(List<String> playerNumber, List<String> computerNumber) {
+    int nothing(List<String> playerNumber, List<String> computerNumber) {
+        int overLapNumber = 0;
         for(String a : playerNumber) {
             if(computerNumber.contains(a)) {
-                return;
+                overLapNumber += 1;
             }
         }
-        System.out.println("낫싱");
+        return overLapNumber;
+    }
+    
+    void ballAndStrike(List<String> playerNumber, List<String> computerNumber) {
+        int ball = 0;
+        int strike = 0;
+        
+        for(String a : playerNumber) {
+            if(computerNumber.contains(a)) {
+                ball += 1;
+            }
+        }
+        
+        for(int i=0; i<3; i++) {
+            if(playerNumber.get(i).equals(computerNumber.get(i))) {
+                strike += 1;
+            }
+        }
+        
+        if(strike==0) {
+            System.out.println(ball+ "볼");
+        }else if(strike == ball) {
+            System.out.println(strike+ "스트라이크");
+        }else {
+            ball -= strike;
+            System.out.println(ball+ "볼 "+ strike+ "스트라이크");
+        }
     }
 
-    
+    void plaingGame(List<String> playerNumber, List<String> computerNumber) {
+        if (this.nothing(playerNumber, computerNumber)==0) {
+            System.out.println("낫싱");
+        }else {
+            this.ballAndStrike(playerNumber, computerNumber);
+        }
+    }
 }
 public class Application {
     public static void main(String[] args) {
