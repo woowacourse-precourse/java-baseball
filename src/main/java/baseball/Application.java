@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -15,7 +16,6 @@ public class Application {
         int ball = 0;
         
         while (true){
-            //System.out.println("computer = " + computer);
             System.out.println("숫자를 입력해주세요 : " );
             String ans = Console.readLine();
             if(ans.equals("1")){
@@ -25,14 +25,8 @@ public class Application {
                 return;
             }
             else{
-                try {
-                if(!check_input(ans)){
-                    IllegalArgumentException e = new IllegalArgumentException();
-                    throw new IllegalArgumentException();
-                }
-            }catch (IllegalArgumentException e){
-                    throw new IllegalArgumentException();
-            }}
+            make_error(ans);
+            }
             strike = strike(ans,computer);
             ball = ball(ans,computer);
             print_score(strike,ball);
@@ -42,17 +36,38 @@ public class Application {
 
     // 제대로 된 입력형식인지 확인하는 코드
     private static boolean check_input(String str) {
+        String[] num = {"0","1","2","3","4","5","6","7","8","9"};
+        List<String> nums = Arrays.asList(num);
         int len = str.length();
-        // 입력 길이가 3인지 확인
+        for(int i= 0; i<len ; i++){
+            Character c = str.charAt(i);
+            String s = c.toString();
+            if(!nums.contains(s)){
+                return false;
+            }
+        }
         if(len != 3){
            if(str.equals("1") | str.equals("2")){
                return true;
            }else{
                 return false;}
-        }else if(str.charAt(0) == str.charAt(1) | str.charAt(0) == str.charAt(2) | str.charAt(1) == str.charAt(2)){
+        }
+        else if(str.charAt(0) == str.charAt(1) | str.charAt(0) == str.charAt(2) | str.charAt(1) == str.charAt(2)){
             return false;
-        }else{
+        }
+        else{
         return true;}
+    }
+
+    public static void make_error(String ans){
+        try {
+            if(!check_input(ans)){
+                IllegalArgumentException e = new IllegalArgumentException();
+                throw new IllegalArgumentException();
+            }
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
+        }
     }
 
     public static List<String> make_computer_number(){
@@ -72,18 +87,13 @@ public class Application {
             Character arg = args.charAt(i);
             String str = computer.get(i);
             Character ans = str.charAt(0);
-//            System.out.println("arg = " + arg);
-//            System.out.println("ans = " + ans);
             strike = isitstrike(arg,ans,strike);
         }
-
-    //    System.out.println("strike = " + strike);
         return strike;
     }
 
     public static int isitstrike(Character arg, Character ans, int val){
         int strike = val;
-        //System.out.println("isitstrike 실행");
         if(arg == ans){
             strike += 1;
         }
@@ -92,7 +102,6 @@ public class Application {
 
     public static int ball(String args,List<String> computer){
         int ball = 0;
-        //System.out.println("ball 실행");
         for(int idx=0 ; idx<3 ; idx++){
             Character arg = args.charAt(idx);
             String str = arg.toString();
@@ -104,7 +113,6 @@ public class Application {
     }
 
     public static int isitball(Character arg,List<String> computer, int idx, int ball){
-        //System.out.println("isitball 실행");
         String str = computer.get(idx);
         Character chr = str.charAt(0);
         if(chr != arg){
