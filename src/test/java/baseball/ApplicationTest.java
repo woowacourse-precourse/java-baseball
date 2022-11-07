@@ -1,12 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Method;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -27,6 +29,45 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    public void checkInputConditionTest_NormalCase() throws Exception{
+        //given
+        int inputNumber = 123;
+        //when
+        //then
+        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+     }
+    @Test
+    public void checkInputConditionTest_MoreDigits() throws Exception{
+        //given
+        int inputNumber = 1234;
+        //when
+        //then
+        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+     }
+
+     @Test
+     public void checkInputConditionTest_LessDigits() throws Exception{
+         //given
+         int inputNumber = 12;
+         //when
+         //then
+         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
+                 .isInstanceOf(IllegalArgumentException.class);
+      }
+
+     @Test
+     public void checkInputConditionTest_RedundantNumber() throws Exception{
+         //given
+         int inputNumber = 122;
+         //when
+         //then
+         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
+                 .isInstanceOf(IllegalArgumentException.class);
+      }
 
     @Override
     public void runMain() {
