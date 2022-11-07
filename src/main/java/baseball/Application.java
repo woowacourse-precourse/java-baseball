@@ -53,6 +53,8 @@ public class Application {
     private static void userInputThreeDigitNum() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputNum = Console.readLine();
+        validateUserInputNumFormat(userInputNum);
+
         userNumList = splitStringAndParseInt(userInputNum);
     }
 
@@ -119,6 +121,14 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInputCommand = Console.readLine();
         return Integer.parseInt(userInputCommand);
+    }
+
+    private static void validateUserInputNumFormat(String userInputNum) {
+        try {
+            Integer.parseInt(userInputNum);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
     }
 
 }
