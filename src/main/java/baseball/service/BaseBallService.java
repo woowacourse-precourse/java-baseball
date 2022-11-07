@@ -12,4 +12,8 @@ public class BaseBallService {
     public void initGame() {
         computer.randomGenerate();
     }
+
+    public boolean isWinGame() {
+        return baseBall.isWin();
+    }
 }
