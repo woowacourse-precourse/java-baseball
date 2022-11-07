@@ -2,12 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.Objects;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
