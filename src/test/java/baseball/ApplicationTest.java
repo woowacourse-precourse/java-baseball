@@ -39,6 +39,27 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("131"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("559"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
     void 랜덤_숫자_테스트1_3자리_수() {
         List<Integer> randomNum = Application.createRandomNum();
         assertThat(randomNum.size()).isSameAs(3);
