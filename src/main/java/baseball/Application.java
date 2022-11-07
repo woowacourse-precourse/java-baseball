@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -29,9 +27,24 @@ public class Application {
 
         List<Integer> inputNumList = new ArrayList<>();
         for (int inputStringIdx = 0; inputStringIdx < inputString.length(); inputStringIdx++) {
-            int nowIdxNum = (int) inputString.charAt(inputStringIdx) - 48;
-            inputNumList.add(nowIdxNum);
+            int inputNum = (int) inputString.charAt(inputStringIdx) - 48;
+            inputNumList.add(inputNum);
         }
-        return inputNumList;
+        if (isValidList(inputNumList)) {
+            return inputNumList;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+    }
+    public static boolean isValidList(List<Integer> numList) {
+        if (numList.size() != 3) {
+            return false;
+        }
+        Set<Integer> numSet= new HashSet<>(numList);
+        if (numList.size() != numSet.size()) {
+            return false;
+        }
+        return true;
     }
 }
