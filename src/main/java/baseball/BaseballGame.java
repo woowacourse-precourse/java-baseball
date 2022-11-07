@@ -82,8 +82,7 @@ public class BaseballGame extends Game {
 
     }
 
-    public void validateInputNumber(int number) {
-        String validateTarget = Integer.toString(number);
+    public void validateInputNumber(String validateTarget) {
         String exceptionMessage = NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.";
 
         if (!validateTarget.matches("^[1-9]$")) throw new IllegalArgumentException(exceptionMessage);
