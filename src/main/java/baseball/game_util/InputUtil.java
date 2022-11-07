@@ -11,3 +11,10 @@ import static baseball.common.Constants.MAX_USER_NUMBER_INPUT;
         }
         return true;
     }
+    private static boolean isDuplicate(String userInput) {
+        Set<Character> characterSet = new HashSet<>();
+        for (Character character : userInput.toCharArray()) {
+            characterSet.add(character);
+        }
+        return characterSet.size() == MAX_USER_NUMBER_INPUT;
+    }
