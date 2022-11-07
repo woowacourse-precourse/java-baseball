@@ -113,4 +113,11 @@ public class BaseBall {
         }
     }
 
+    private boolean isStrike3() {
+        if (this.strike == END_CONDITION) {
+            return true;
+        }
+        return false;
+    }
+
 }
