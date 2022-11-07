@@ -34,7 +34,8 @@ public class Game {
     }
 
     public void checkAnswer(){
-
+        countResult();
+        printMessage(result.createResultMessage());
     }
 
     public void countResult(){
