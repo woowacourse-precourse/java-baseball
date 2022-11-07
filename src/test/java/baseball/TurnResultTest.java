@@ -88,7 +88,7 @@ public class TurnResultTest {
     @Test
     void compare_nothing() {
         BaseballNum baseballNum = new BaseballNum(281);
-        List<Integer> inputs = Arrays.asList(935, 476, 365, 756, 791, 497, 576, 693);
+        List<Integer> inputs = Arrays.asList(935, 476, 365, 756, 796, 497, 576, 693);
         inputs.forEach(it -> assertThat(
                 TurnResult.compare(baseballNum, it).toString())
                 .isEqualTo("낫싱")
