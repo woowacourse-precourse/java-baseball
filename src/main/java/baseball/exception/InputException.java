@@ -9,22 +9,27 @@ public class InputException {
     private static final String NOT_ONE_OR_TWO_INPUT = "1 또는 2를 입력해 주세요.";
 
     public static void throwNotIntegerInputError() {
-        throw new IllegalArgumentException(NOT_INTEGER_INPUT);
+        System.out.println(NOT_INTEGER_INPUT);
+        throw new IllegalArgumentException();
     }
 
     public static void throwNotThreeLengthIntegerInputError() {
-        throw new IllegalArgumentException(NOT_THREE_LENGTH_INTEGER_INPUT);
+        System.out.println(NOT_THREE_LENGTH_INTEGER_INPUT);
+        throw new IllegalArgumentException();
     }
 
     public static void throwIncludeZeroInputError() {
-        throw new IllegalArgumentException(INCLUDE_ZERO_INPUT);
+        System.out.println(INCLUDE_ZERO_INPUT);
+        throw new IllegalArgumentException();
     }
 
     public static void throwDuplicateNumberInputError() {
-        throw new IllegalArgumentException(DUPLICATE_NUMBER_INPUT);
+        System.out.println(DUPLICATE_NUMBER_INPUT);
+        throw new IllegalArgumentException();
     }
 
     public static void throwNotOneOrTwoInputError() {
-        throw new IllegalArgumentException(NOT_ONE_OR_TWO_INPUT);
+        System.out.println(NOT_ONE_OR_TWO_INPUT);
+        throw new IllegalArgumentException();
     }
 }
