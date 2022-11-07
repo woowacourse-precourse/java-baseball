@@ -4,6 +4,7 @@ public class OutputView {
     public static final String MESSAGE_BALL = "%d 볼";
     public static final String MESSAGE_STRIKE = "%d 스트라이크";
     public static final String MESSGAE_FOUR_BALL = "볼넷";
+    public static final String MESSGAE_NOTHING = "낫싱";
     public static final String MESSAGE_VICTORY = "3개의 숫자를 모두 맞히셨습니다! 당신의 승리입니다.";
 
     public static void showOnlyBallResult(int ball) {
@@ -24,5 +25,9 @@ public class OutputView {
 
     public static void showVictoryMessage() {
         System.out.println(MESSAGE_VICTORY);
+    }
+
+    public static void showBallAndStrikeNothing() {
+        System.out.println(MESSGAE_NOTHING);
     }
 }

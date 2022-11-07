@@ -29,6 +29,8 @@ public class Game {
             OutputView.showOnlyStrikeResult(strike);
         } else if(ball > 0 && strike > 0) {
             OutputView.showBallAndStrikeResult(ball, strike);
+        } else if (ball == 0 && strike == 0) {
+            OutputView.showBallAndStrikeNothing();
         }
     }
 }
