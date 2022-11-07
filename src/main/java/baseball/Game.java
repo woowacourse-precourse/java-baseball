@@ -12,5 +12,6 @@ public class Game {
 		System.out.println(START_MESSAGE);
 		opponent.generateAnswerNumber();
 		user.inputNumber();
+
 	}
 }
