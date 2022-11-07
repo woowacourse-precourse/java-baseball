@@ -36,7 +36,7 @@ public class BaseballGame {
         boolean isRight = false;
 
         while (!isRight) {
-            System.out.println("숫자를 입력해주세요 : ");
+            System.out.print("숫자를 입력해주세요 : ");
             int inputNumber = getNumber();
             isRight = checkNumber(numbers, inputNumber);
         }
@@ -73,6 +73,7 @@ public class BaseballGame {
 
         for (int i = 0; i < 3; i++) {
             int currentNumber = inputNumber / (int) Math.pow(10, 2-i);
+            inputNumber %= (int) Math.pow(10, 2-i);
             if (!numbers.contains(currentNumber)) {
                 continue;
             }
@@ -82,7 +83,6 @@ public class BaseballGame {
                 ball += 1;
             }
         }
-
         printResult(strike, ball);
 
         if (strike == 3) {
