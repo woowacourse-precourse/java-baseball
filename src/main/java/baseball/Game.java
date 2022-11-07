@@ -31,4 +31,14 @@ public class Game {
                 .filter(input -> answer.contains(input))
                 .count();
     }
+
+    int countStrike(List<Integer> playerGuess){
+        int strike = 0;
+        for(int idx = 0; idx < ANSWER_SIZE; idx++){
+            if(playerGuess.get(idx) == answer.get(idx)){
+                strike++;
+            }
+        }
+        return strike;
+    }
 }
