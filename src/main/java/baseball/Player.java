@@ -31,13 +31,7 @@ public class Player {
 
     public boolean askRegame() {
         announce("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = Console.readLine();
-        int answer;
-        try {
-            answer = Integer.parseInt(userInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
-        }
+        int answer = stringToIntOrThrow(Console.readLine());
 
         if (answer == NEW_GAME) {
             return true;
@@ -63,5 +57,16 @@ public class Player {
         }
 
         return parsedAnswer;
+    }
+
+    private int stringToIntOrThrow(String userInput) {
+        int parsedInput;
+        try {
+            parsedInput = Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
+
+        return parsedInput;
     }
 }
