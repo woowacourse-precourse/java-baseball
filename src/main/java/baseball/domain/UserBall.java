@@ -37,19 +37,19 @@ public class UserBall {
 	public void updateStatus() {
 
 		if (this.strike == 0 && this.ball == 0) {
-			this.status = "낫싱";
+			this.status = ViewConst.NOTHING;
 		}
 
 		if (this.strike == 0 && this.ball != 0) {
-			this.status = this.ball + "볼";
+			this.status = this.ball + ViewConst.BALL;
 		}
 
 		if (this.strike != 0 && this.ball == 0) {
-			this.status = this.strike + "스트라이크";
+			this.status = this.strike + ViewConst.STRIKE;
 		}
 
 		if (this.strike != 0 && this.ball != 0) {
-			this.status = this.ball + "볼 " + this.strike + "스트라이크";
+			this.status = this.ball + ViewConst.BALL + " " + this.strike + ViewConst.STRIKE;
 		}
 	}
 }
