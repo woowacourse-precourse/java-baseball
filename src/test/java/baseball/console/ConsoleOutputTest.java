@@ -1,29 +1,34 @@
 package baseball.console;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ConsoleOutputTest {
 
   private final PrintStream standardOut = System.out;
   private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+  private final ConsoleOutput output = new ConsoleOutput();
 
   @BeforeEach
   public void setUp() {
     System.setOut(new PrintStream(outputStreamCaptor));
   }
 
-  @DisplayName("게임 시작 메시지 출력")
   @Test
-  void printStartMessage(){
-    ConsoleOutput output = new ConsoleOutput();
+  void 게임_시작_메시지_출력() {
     output.printStartMessage();
     String startMessage = "숫자 야구 게임을 시작합니다.\n";
-    assertEquals(startMessage, outputStreamCaptor.toString());
+    assertThat(outputStreamCaptor.toString()).isEqualTo(startMessage);
+  }
+
+  @AfterEach
+  public void tearDown() {
+    System.setOut(standardOut);
   }
 }
