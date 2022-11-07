@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-
     private Ball computerNumber;
     private static final int NUM_LENGTH = 3;
     private static final int START_NUM = 1;

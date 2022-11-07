@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Messenger {
-
     public void printStartMessage() {
         System.out.print(PrintMessages.START.getMessage());
     }

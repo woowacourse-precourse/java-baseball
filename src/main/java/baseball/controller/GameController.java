@@ -7,7 +7,6 @@ import baseball.view.Messenger;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
-
     private final Messenger messenger;
     private Ball computerBall;
     private static final int ZERO_STRIKE = 0;

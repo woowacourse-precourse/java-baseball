@@ -3,7 +3,6 @@ package baseball.domain;
 import baseball.constant.Constant;
 
 public class Ball {
-
     private final String numberBall;
     private static final String THREE_NUMBER_REGULAR_EXPRESSION = "\\d{3}";
     public static final String EXCEPTION_MESSAGE_FOR_INVALID_FORM = "세 자리 숫자만 가능합니다.";
