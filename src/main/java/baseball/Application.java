@@ -87,6 +87,10 @@ class Count {
         strike = 0;
     }
 
+    int getBall() {
+        return this.ball;
+    }
+
     void countBall(List<Integer> computer, List<Integer> user) {
         for (int i = 0; i < 3; i++) {
             if (computer.contains(user.get(i))) {
