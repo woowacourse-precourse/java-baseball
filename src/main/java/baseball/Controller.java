@@ -1,6 +1,10 @@
 package baseball;
 
 import baseball.Game.Number;
+import baseball.Game.User;
+
+import camp.nextstep.edu.missionutils.Console;
+
 public class Controller {
     final int NUM_LEN = 3;
     final int MIN_NUM = 1;
@@ -18,6 +22,9 @@ public class Controller {
     }
 
     private void startGame() {
+        User.UserInput();
+        String inputNum = Console.readLine();
+        System.out.println(inputNum);
 
     }
 
