@@ -24,7 +24,13 @@ public class PlayerService {
     }
 
 
-
+    public void setPlayerNumber(ArrayList<Integer> playerNumberList){
+        playerRepository = new PlayerRepository();
+        int firstNumber = playerNumberList.get(0);
+        int secondNumber = playerNumberList.get(1);
+        int thirdNumber = playerNumberList.get(2);
+        playerRepository.setPlayer(firstNumber,secondNumber,thirdNumber);
+    }
 
 
 }
