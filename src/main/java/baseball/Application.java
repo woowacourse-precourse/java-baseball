@@ -48,15 +48,26 @@ public class Application {
         return computer;
     }
 
+    public static void userInputValidator(String userInput) {
+        // 길이 검증
+        int inputLength = userInput.length();
+        if(inputLength != 3 && inputLength != 1) throw new IllegalArgumentException();
+        // 주어진 문자열이 모두 정수형태로 이루어져 있는지 검증
+        for(int i=0; i<inputLength; i++) {
+            char tmp = userInput.charAt(i);
+            if(!('1' <= tmp && tmp <= '9')) throw new IllegalArgumentException();
+        }
+        return ;
+    }
+
     public static void main(String[] args) {
-        // 상대방(컴퓨터)의 입력 숫자
         String computer = generateComputer();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true) {
-            // TODO: 종료 예외처리
             System.out.println("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
+            userInputValidator(userInput);
 
             if(userInput.equals("1")) {
                 computer = generateComputer();
