@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
@@ -37,6 +38,42 @@ class ApplicationTest extends NsTest {
         Application.makeRandomNumbers(numberList);
         Set<Integer> numberSet = new HashSet<>(numberList);
         assertThat(numberList).hasSameSizeAs(numberSet);
+    }
+
+    @Test
+    void 컴퓨터의_수와_플레이어의_수_비교하기_1볼_1스트라이크() {
+       List<Integer> computer = List.of(1,5,9);
+       List<Integer> player = List.of(1,6,5);
+       Application.calculate(computer, player);
+       Map<State, Integer> map = Application.getResultMap();
+
+       assertThat(map.get(State.STRIKE)).isEqualTo(1);
+       assertThat(map.get(State.BALL)).isEqualTo(1);
+        assertThat(map.get(State.NOTHING)).isEqualTo(1);
+    }
+
+    @Test
+    void 컴퓨터의_수와_플레이어의_수_비교하기_3볼() {
+        List<Integer> computer = List.of(1,5,9);
+        List<Integer> player = List.of(9,1,5);
+        Application.calculate(computer, player);
+        Map<State, Integer> map = Application.getResultMap();
+
+        assertThat(map.get(State.BALL)).isEqualTo(3);
+        assertThat(map).doesNotContainKey(State.NOTHING);
+        assertThat(map).doesNotContainKey(State.STRIKE);
+    }
+
+    @Test
+    void 컴퓨터의_수와_플레이어의_수_비교하기_1스트라이크() {
+        List<Integer> computer = List.of(1,5,9);
+        List<Integer> player = List.of(1,4,3);
+        Application.calculate(computer, player);
+        Map<State, Integer> map = Application.getResultMap();
+
+        assertThat(map.get(State.STRIKE)).isEqualTo(1);
+        assertThat(map.get(State.NOTHING)).isEqualTo(2);
+        assertThat(map).doesNotContainKey(State.BALL);
     }
     @Override
     public void runMain() {
