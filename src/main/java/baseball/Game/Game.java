@@ -1,5 +1,8 @@
-package baseball;
+package baseball.Game;
 
+import baseball.Players.Computer;
+import baseball.Players.UserChoice;
+import baseball.Players.UserNumber;
 import java.util.List;
 
 public class Game {

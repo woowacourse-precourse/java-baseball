@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Players;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ public class Computer {
 
     static final int NUMBER_LIST_SIZE = 3;
 
-    List<Integer> getNumberList() {
+    public List<Integer> getNumberList() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < NUMBER_LIST_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

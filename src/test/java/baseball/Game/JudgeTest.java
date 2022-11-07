@@ -1,6 +1,6 @@
-package baseball;
+package baseball.Game;
 
-import org.junit.jupiter.api.BeforeAll;
+import baseball.Game.Judge;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,6 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class JudgeTest {

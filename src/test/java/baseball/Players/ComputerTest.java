@@ -1,5 +1,6 @@
-package baseball;
+package baseball.Players;
 
+import baseball.Players.Computer;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;

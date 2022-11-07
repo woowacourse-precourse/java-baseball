@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.Game.Game;
+
 public class Application {
     private static final String QUIT = "2";
 

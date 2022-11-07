@@ -1,4 +1,7 @@
-package baseball;
+package baseball.Players;
+
+import baseball.Utils.Input;
+import baseball.Utils.Validator;
 
 public class UserChoice {
 

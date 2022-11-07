@@ -1,8 +1,9 @@
-package baseball;
+package baseball.Players;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.Players.UserNumber;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;

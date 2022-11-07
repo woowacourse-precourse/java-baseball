@@ -1,7 +1,8 @@
-package baseball;
+package baseball.Utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.Utils.Input;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

@@ -1,8 +1,9 @@
-package baseball;
+package baseball.Players;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.Players.UserChoice;
 import java.io.*;
 import org.junit.jupiter.api.Test;
 

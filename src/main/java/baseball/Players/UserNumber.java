@@ -1,5 +1,7 @@
-package baseball;
+package baseball.Players;
 
+import baseball.Utils.Input;
+import baseball.Utils.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
