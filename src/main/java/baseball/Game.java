@@ -6,8 +6,7 @@ import java.util.Scanner;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
-    static Scanner sc = new Scanner(System.in);
-
+    
     public Game() {
         title();
     }
@@ -44,14 +43,17 @@ public class Game {
 
     }
     public boolean end() {
-        String input = sc.nextLine();
+        String input = getUserInput();
+        if (input.length() != 1) {
+            System.out.println("INPUT ERROR!");
+            return true;
+        }
+
         if (input.charAt(0) == '1') {
             return false;
         } else if (input.charAt(0) == '2') {
             return true;
         }
-
-        // TODO Exception: 1 or 2 가 아닌 다른값이 들어옴 -> 종료
 
         return true;
     }
