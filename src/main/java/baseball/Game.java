@@ -29,7 +29,8 @@ public class Game {
     }
 
     public void requestAnswer(){
-
+        printMessage(Settings.ANSWER_REQUEST_MESSAGE);
+        problemSolver.setNumbers(Settings.SIZE_OF_NUMBERS);
     }
 
     public void checkAnswer(){
