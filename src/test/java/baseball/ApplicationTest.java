@@ -88,8 +88,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 사용자_번호를_나눠_숫자로_변경하는_테스트_숫자() {
         String number = "234";
-        int[] result = {2, 3, 4};
-        assertThat(getNumbersToUserNumber(number)).isEqualTo(result);
+        assertThat(getNumbersToUserNumber(number)).containsExactly(2, 3, 4);
     }
 
     @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
