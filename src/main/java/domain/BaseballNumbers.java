@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
@@ -17,11 +18,9 @@ public class BaseballNumbers {
     }
 
     public static BaseballNumbers getUserNumbers(String inputNumbers){
-        List<BaseballNumber> userNumbers = new ArrayList<>();
-        IntStream stream = Arrays.stream(inputNumbers.split("")).mapToInt(Integer::parseInt);
-        stream.forEach(digit-> {
-            userNumbers.add(BaseballNumber.valueOf(digit));
-        });
+        List<BaseballNumber> userNumbers = Arrays.stream(inputNumbers.split(""))
+                .map(digit -> BaseballNumber.valueOf(Integer.parseInt(digit)))
+                .collect(Collectors.toList());
         validateSize(userNumbers);
         validateDuplication(userNumbers);
         return new BaseballNumbers(userNumbers);
@@ -42,8 +41,7 @@ public class BaseballNumbers {
         List<BaseballNumber> randomNumbers = new ArrayList<>();
         while(randomNumbers.size() < SIZE){
             int randomInt = Randoms.pickNumberInRange(BaseballNumber.MIN_NUMBER, BaseballNumber.MAX_NUMBER);
-            BaseballNumber randomNumber = BaseballNumber.valueOf(randomInt);
-            addDistinctRandomNumber(randomNumbers, randomNumber);
+            addDistinctRandomNumber(randomNumbers, BaseballNumber.valueOf(randomInt));
         }
         return randomNumbers;
     }

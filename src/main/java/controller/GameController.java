@@ -29,7 +29,7 @@ public class GameController {
     private void runRound(){
         do{
             GameView.printInputMessage();
-            inputUserNumbers();
+            game.setUserNumbers(inputUserNumbers());
             RoundResult roundResult = game.getRoundResult();
             GameView.printRoundResultMessage(roundResult);
             if(roundResult.isWin()){
@@ -39,13 +39,11 @@ public class GameController {
         }while(true);
     }
 
-    private void inputUserNumbers(){
-        String inputNumbers = Console.readLine();
-        game.setUserNumbers(inputNumbers);
+    private String inputUserNumbers(){
+        return Console.readLine();
     }
 
-    private Command inputUserCommand(){
-        String inputCommand = Console.readLine();
-        return new Command(inputCommand);
+    public static Command inputUserCommand(){
+        return new Command(Console.readLine());
     }
 }
