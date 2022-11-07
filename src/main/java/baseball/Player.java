@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.input.InputReader;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,9 +58,9 @@ public class Player {
   }
 
   private boolean checkDuplicatedDigit(String input) {
-    return input.charAt(0) == input.charAt(1) ||
-            input.charAt(1) == input.charAt(2) ||
-            input.charAt(0) == input.charAt(2);
+    return input.charAt(0) == input.charAt(1)
+            || input.charAt(1) == input.charAt(2)
+            || input.charAt(0) == input.charAt(2);
   }
 
   private void printInputMessage() {

@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.generator.RandomNumberGenerator;
-
 import java.util.List;
 
 public class Computer {
@@ -79,7 +78,7 @@ public class Computer {
   }
 
   private boolean isBall(List<Integer> guessedNumber, int guessedPos, int answerPos) {
-    return guessedPos != answerPos && guessedNumber.get(guessedPos).equals(this.answer.get(answerPos));
+    return guessedPos != answerPos
+            && guessedNumber.get(guessedPos).equals(this.answer.get(answerPos));
   }
 }
-
