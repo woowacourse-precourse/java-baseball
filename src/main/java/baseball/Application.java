@@ -23,4 +23,19 @@ public class Application {
         }
         return list;
     }
+    public static Map<String,List<Integer>> inputUser() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computer = inputComputer();
+        List<Integer> user = new ArrayList<>();
+        Map<String,List<Integer>> result = new HashMap<>();
+        userValue(user);
+        result.put("user",user);
+        result.put("computer", computer);
+        return result;
+    }
+    public static List<Integer> userValue(List<Integer> user) {
+        System.out.print("숫자를 입력해주세요 : ");
+        String text = Console.readLine();
+        return user;
+    }
 }
