@@ -6,7 +6,7 @@ public class Application {
     private static boolean userWantsToPlay = true;
 
     public static void main(String[] args) {
-        // TODO: greet user
+        User.greet();
         while(userWantsToPlay) {
             playBall();
         }
