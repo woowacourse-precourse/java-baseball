@@ -25,6 +25,13 @@ public class BallMaker {
         this.minimum = 1;
     }
 
+    public BallMaker(int ballSize, int minNum) {
+        this.allowDuplicate = false;
+        this.maximum = 9;
+        this.ballSize = ballSize;
+        this.minimum = minNum;
+    }
+
     public Ball getRandomBall() {
         if (!allowDuplicate) {
             return getUniqueRandomBall();
