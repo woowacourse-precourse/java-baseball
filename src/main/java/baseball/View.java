@@ -6,9 +6,14 @@ public class View {
         System.out.println(GameMessage.START.getMessage());
     }
 
-    public static void end(int strikeCount) {
-        System.out.printf("%d스트라이크\n", strikeCount);
+    public static void inputNumber() {
+        System.out.print("숫자를 입력하세요 : ");
+    }
+
+    public static void end() {
+        strike(3);
         System.out.println(GameMessage.END.getMessage());
+        System.out.println(GameMessage.RESTART_OR_END.getMessage());
     }
 
     public static void ballAndStrike(int ballCount, int strikeCount) {
