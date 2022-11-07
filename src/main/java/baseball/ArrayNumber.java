@@ -23,6 +23,13 @@ public class ArrayNumber {
         return this.digits;
     }
 
+    private boolean isValidString(String str) {
+        if(!lengthisthree(str) || !isMinToMax(str) || !isNotDuplicate(str)) {
+            return false;
+        }
+        return true;
+    }
+
     private boolean lengthisthree(String input) {
         return input.length() == cnt_nbr;
     }
