@@ -116,12 +116,7 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int userChoice;
-        try {
-            userChoice = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력값입니다.");
-        }
+        int userChoice = userStringToInteger(Console.readLine());
 
         if (userChoice == 1)
             return false;
