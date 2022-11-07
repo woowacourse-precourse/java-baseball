@@ -88,13 +88,20 @@ public class Application {
         while (true) {
             int maxLength = 3;
             List<String> computerNum = make_RandomNum(maxLength);
+            eachGame(maxLength,computerNum);
+            close_game();
+        }
+    }
+
+    private void eachGame(int maxLength, List<String> computerNum) {
+        while (true) {
             List<String> playerNum = input_PlayerNum(maxLength);
 
             int[] ballAndStrikeCount = get_BallAndStrikeCount(computerNum, playerNum);
 
             progress_GameRule();
-            close_game();
         }
+
     }
 
     public static void main(String[] args) {
