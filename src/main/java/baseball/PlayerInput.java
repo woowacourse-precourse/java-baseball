@@ -23,7 +23,7 @@ public class PlayerInput {
     private List<Integer> ChangeStrListToNumList(List<String> inputListStr) {
 
         return inputListStr.stream()
-                .map(str -> Integer.parseInt(str))
+                .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
     }
 

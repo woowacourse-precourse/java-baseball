@@ -13,7 +13,7 @@ public class Computer {
         randomNumber = GenerateRandomThreeNumber();
     }
 
-    private List<Integer> GenerateRandomThreeNumber() {
+    public List<Integer> GenerateRandomThreeNumber() {
         List<Integer> randomNumList = new ArrayList<>();
 
         while(randomNumList.size() < 3) {
