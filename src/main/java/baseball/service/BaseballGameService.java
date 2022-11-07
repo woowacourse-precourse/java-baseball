@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.domain.BallCount;
 import baseball.domain.BaseballNumber;
 import baseball.view.BaseballGameInputView;
+import baseball.view.BaseballGameOutputView;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +14,10 @@ public class BaseballGameService {
         computer = new BaseballNumber();
     }
 
+    public void gameStart() {
+        BaseballGameOutputView.gameStart();
+    }
+    
     public BallCount getCounts() {
         BaseballNumber player = BaseballGameInputView.getPlayerNumber();
         int strike = 0;
