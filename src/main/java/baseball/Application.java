@@ -1,8 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Application {
 
     private static final int finalRound = 3;
@@ -14,25 +18,41 @@ public class Application {
         + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 
-    private static ArrayList<ArrayList<Integer>> number = new ArrayList<ArrayList<Integer>>(3);
+    private static ArrayList<Integer> computerNumber = new ArrayList<>();
+    private static ArrayList<Integer> userNumber = new ArrayList<>();
 
-    public static int getInput() {
+    public static void storeUserNumberArrayList(String num) {
+        for (int i = 0; i < numberLength; i++) {
+            userNumber.add(num.charAt(i) - '0');
+        }
+    }
+
+    public static void getInput() {
         System.out.println(StartSymbol);
         System.out.print(InputSymbol);
         String userInput = Console.readLine();
-        if (!inputValidation(userInput))
-            throw new IllegalArgumentException();
-        return Integer.parseInt(userInput);
+        storeUserNumberArrayList(userInput);
+        inputValidation(userInput);
     }
 
-    public static boolean inputValidation(String num){
-        try {
 
-        }
-        catch (Exception e) {
+    public static boolean checkNumLength(String num) {
+        return num.length() == 3;
+    }
+
+    public static boolean checkNumFormat(String num) {
+        try {
+            Integer.parseInt(num);
+        } catch (NumberFormatException e) {
             return false;
         }
         return true;
+    }
+
+    public static void inputValidation(String num) {
+        if (!checkNumFormat(num) || !checkNumLength(num) || isNumDuplicate(userNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static int getRandomNumber() {
@@ -40,34 +60,27 @@ public class Application {
     }
 
     public static void getRandomDifferentNumber() {
-        ArrayList<Integer> currentRoundNum = new ArrayList<>();
         for (int i = 0; i < numberLength; i++) {
             int newNum = getRandomNumber();
-            if (numberDuplication(newNum, i, currentRoundNum)) {
+            computerNumber.add(newNum);
+            if (isNumDuplicate(computerNumber)) {
+                computerNumber.remove(i);
                 i--;
                 continue;
             }
-            currentRoundNum.add(newNum);
         }
-        number.add(currentRoundNum);
     }
 
     public static void gameInit() {
-        for (int i = 0; i < finalRound; i++) {
-            getRandomDifferentNumber();
-            currentRound = currentRound + 1;
-        }
+        getRandomDifferentNumber();
         getInput();
     }
 
-    public static boolean numberDuplication(int newNum, int numberIndex,
-        ArrayList<Integer> number) {
-        for (int i = 0; i < numberIndex; i++) {
-            if (number.get(i) == newNum) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean isNumDuplicate(ArrayList<Integer> numberList ){
+        Set<Integer> numberSet = new HashSet<>();
+        for (int i =  0 ; i< numberList.size() ; i++)
+            numberSet.add(numberList.get(i));
+        return numberSet.size() != numberList.size();
     }
 
 
