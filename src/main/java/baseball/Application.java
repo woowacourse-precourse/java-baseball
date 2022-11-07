@@ -20,10 +20,11 @@ public class Application {
 
     public static void validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
-        validDuplicate(numberList);
+
+        validateDuplication(numberList);
     }
 
-    private static void validDuplicate(List<String> numberList) {
+    private static void validateDuplication(List<String> numberList) {
         HashMap<String, Integer> checkMap = new HashMap<>();
 
         for (String number : numberList) {
