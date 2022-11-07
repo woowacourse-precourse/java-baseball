@@ -120,6 +120,12 @@ public class Application {
         }
     }
 
+    public static boolean printBaseballOfResult(int strikeSize, int ballSize){
+        int strikeNumber = strikeSize;
+        int ballNumber = ballSize;
+        return false;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
