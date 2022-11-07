@@ -45,7 +45,6 @@ public class GameManager {
                 resultHash.put('B', resultHash.get('B')+1);
             }
         });
-        System.out.println(resultHash);
         return resultHash;
     }
 
