@@ -27,9 +27,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 게임종료_후_선택지_이외_선택() {
-        assertRandomNumberInRangeTest(() -> {
-            assertThatThrownBy(() -> runException("135", "3")).isInstanceOf(IllegalArgumentException.class);
-        }, 1, 3, 5);
+        assertRandomNumberInRangeTest(() -> assertThatThrownBy(() -> runException("135", "3")).isInstanceOf(IllegalArgumentException.class), 1, 3, 5);
 
     }
 
@@ -39,6 +37,11 @@ class ApplicationTest extends NsTest {
                 () -> assertThatThrownBy(() -> runException("1234")).isInstanceOf(IllegalArgumentException.class));
     }
 
+    @Test
+    void 숫자_이외의_값() {
+        assertSimpleTest(
+                () -> assertThatThrownBy(() -> runException("ㅁㄴㅇ")).isInstanceOf(IllegalArgumentException.class));
+    }
 
     @Override
     public void runMain() {
