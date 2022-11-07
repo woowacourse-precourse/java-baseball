@@ -102,6 +102,53 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void getStrikeCnt() {
+        //given
+        List<List<Integer>> A = List.of(
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6)
+        );
+        List<List<Integer>> B = List.of(
+                //3strike
+                List.of(1, 3, 6),
+                //2strike
+                List.of(1, 3, 8),
+                List.of(1, 7, 6),
+                List.of(2, 3, 6),
+                //1strike
+                List.of(1, 6, 3),
+                List.of(6, 3, 1),
+                List.of(2, 4, 6),
+                //0strike
+                List.of(3, 6, 1)
+        );
+        List<Integer> expected = List.of(
+                3,
+                2,
+                2,
+                2,
+                1,
+                1,
+                1,
+                0
+        );
+        //when
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < A.size(); i++) {
+            result.add(Application.getStrikeCnt(A.get(i), B.get(i)));
+        }
+
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
