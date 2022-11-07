@@ -22,7 +22,7 @@ public class Player {
 
     public Player(List<Integer> numbers) {
         validate(numbers);
-        balls = mapToBall(numbers);
+        balls = mapToBalls(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -43,7 +43,7 @@ public class Player {
         }
     }
 
-    private List<Ball> mapToBall(List<Integer> numbers) {
+    private List<Ball> mapToBalls(List<Integer> numbers) {
         AtomicInteger position = new AtomicInteger(START_POSITION_NUMBER);
         return numbers.stream()
                 .map(number -> new Ball(position.getAndIncrement(), number))
@@ -71,6 +71,6 @@ public class Player {
     public void changeBalls(List<Integer> newBallNumbers) {
         validate(newBallNumbers);
         balls.clear();
-        balls.addAll(mapToBall(newBallNumbers));
+        balls.addAll(mapToBalls(newBallNumbers));
     }
 }
