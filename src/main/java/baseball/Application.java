@@ -91,8 +91,11 @@ public class Application {
     	
     	// 사용자 입력 메서드
     	while(start==1) {
+    		
     		inputNumber();
+    		
     		exceptionCheck = checkException();
+    		
     		if(exceptionCheck) {
     			//두 수 비교 메서드
     			ball = 0;
@@ -103,7 +106,7 @@ public class Application {
     			throw new IllegalArgumentException("잘못된 값을 입력했습니다!");
     		}
     		
-    		
+    		resultPrint(ball, strike);
     	}
     	
     	return 0;
@@ -162,6 +165,30 @@ public class Application {
     				ball+=1;
     		}
     	}
+    }
+    
+    // 결과 출력 메서드
+    public static void resultPrint(int ball, int strike) {
+    	
+    	if(strike==0&&ball==0) {
+    		System.out.println("낫싱");
+    	}
+    	
+    	else if(strike==3) {
+    		start = successMessage();
+    	}
+    	else {
+    		System.out.println(ball+"볼"+" "+strike + "스트라이크");
+    	}
+    }
+    
+    public static int successMessage() {
+    	int start = 0;
+    	System.out.println("3스트라이크");
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		start = Integer.parseInt(Console.readLine());
+		return start;
     }
     
 }
