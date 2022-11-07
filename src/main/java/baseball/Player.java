@@ -7,4 +7,9 @@ public class Player {
         String input = Console.readLine();
         return input;
     }
+
+    public String getPlayerResponseAfterGame() {
+        String response = Console.readLine();
+        return response;
+    }
 }
