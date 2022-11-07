@@ -31,4 +31,29 @@ public class GameExceptionHandlerTest {
 			GameExceptionHandler.handleEmptyException(emptyString);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	@DisplayName("게임 진행 중 예외 - 3자리 숫자가 아닌 경우")
+	void handleNotThreeNumbersExceptionTest() {
+		String lessThanThreeNumbers = "12";
+		String moreThanThreeNumbers = "1234";
+
+		assertThatThrownBy(() -> {
+			GameExceptionHandler.handleNotThreeNumbersException(lessThanThreeNumbers);
+		}).isInstanceOf(IllegalArgumentException.class);
+
+		assertThatThrownBy(() -> {
+			GameExceptionHandler.handleNotThreeNumbersException(moreThanThreeNumbers);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("게임 진행 중 예외 - 0이 포함되는 경우")
+	void handleIncludeZeroExceptionTest() {
+		String includeZeroNumbers = "012";
+
+		assertThatThrownBy(() -> {
+			GameExceptionHandler.handleIncludeZeroException(includeZeroNumbers);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
