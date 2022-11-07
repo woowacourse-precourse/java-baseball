@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.print.Print;
 import baseball.Input.Input;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -27,6 +28,11 @@ public class Game {
 
     public void answerIsCorrect(){
         this.correct = true;
+    }
+
+    public void init(){
+        Print.start();
+        pickNumbers();
     }
 
     private void pickNumbers(){
