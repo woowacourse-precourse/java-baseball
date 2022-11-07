@@ -15,6 +15,7 @@ public class BaseballGame {
         while (going == 1) {
             List<Integer> numbers = makeRandomNumbers();
             progressGame(numbers);
+            going = isReplay();
         }
     }
 
@@ -107,5 +108,16 @@ public class BaseballGame {
         }
 
         System.out.println(result);
+    }
+
+    private int isReplay() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputString = Console.readLine();
+
+        if (!(inputString.equals("1") || inputString.equals("2"))) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
+
+        return Integer.parseInt(inputString);
     }
 }
