@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.view.print;
 
 public class PrintHint {
     private static final String BALL_MESSAGE = "볼";

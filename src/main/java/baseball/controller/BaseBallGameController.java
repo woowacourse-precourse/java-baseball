@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.service.BaseBallGame;
 import baseball.view.input.PlayerNumberInput;
-import baseball.view.PrintGuideMessage;
+import baseball.view.print.PrintGuideMessage;
 import baseball.view.input.RestartNumberInput;
 
 public class BaseBallGameController {

@@ -1,7 +1,7 @@
 package baseball.repository;
 
 import baseball.model.hint.Hint;
-import baseball.view.PrintHint;
+import baseball.view.print.PrintHint;
 import java.util.List;
 
 public class HintRepository extends Hint {
