@@ -33,7 +33,7 @@ class RandomGeneratorTest {
 
     @Test
     @Order(1)
-    public void RandomGeneratorTest1() {
+    public void RandomGeneratorTest500Times() {
 
         for (int i = 0; i < 500; i++) {
             RandomGenerator randomGenerator = new RandomGenerator();
