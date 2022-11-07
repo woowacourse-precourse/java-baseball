@@ -12,25 +12,29 @@ public class Count {
     private static int ball;
     private static int strike;
 
-    public boolean count(List<Character> answer, String comparison){
+    public boolean count(final List<Character> answer, final String comparison){
         IntStream.range(0, 3).forEach(i -> {
-            if ((answer.get(i) == comparison.charAt(i))) {
+            if (answer.get(i) == comparison.charAt(i)) {
                 strike++;
-            } else if ((answer.contains(comparison.charAt(i)))) {
+            } else if (answer.contains(comparison.charAt(i))) {
                 ball++;
             }
         });
+        judge(answer, comparison);
+        return strike == 3;
+    }
+
+    private static void judge(final List<Character> answer,final String comparison) {
         if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
         } else if (ball == 0 && strike != 0) {
             System.out.println(strike + "스트라이크");
-        } else if (ball != 0 && strike != 0) {
+        } else if (ball != 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         } else if ((answer.get(FIRST_NUM) != comparison.charAt(FIRST_NUM)) &&
             (answer.get(SECOND_NUM) != comparison.charAt(SECOND_NUM)) &&
             (answer.get(THIRD_NUM) != comparison.charAt(THIRD_NUM))) {
             System.out.println("낫싱");
         }
-        return strike == 3;
     }
 }
