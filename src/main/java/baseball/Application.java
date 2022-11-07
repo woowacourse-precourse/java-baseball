@@ -2,10 +2,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class Application {
@@ -16,9 +14,8 @@ public class Application {
 	static String inputNumber = "";
 	static boolean inputCheck = false;
 	static boolean exceptionCheck = false;
-	static int strike = 0;
-	static int ball = 0;
-	
+	static int ball=0;
+	static int strike=0;
     public static void main(String[] args) {
 
 		gameStart();
@@ -28,6 +25,8 @@ public class Application {
     		computer = makeComputer();
     		
     		game();
+    		strike=0;
+    		ball=0;
     	}
     }
     
@@ -51,14 +50,10 @@ public class Application {
     }
     
     public static void game() {
-		
-    	ball = 0;
-		strike = 0;
-		
+    	
     	while(strike!=3) {
-    		
-    		ball = 0;
-    		strike = 0;
+    		ball=0;
+    		strike=0;
     		
     		inputNumber = inputNumber();
     		
@@ -66,12 +61,11 @@ public class Application {
     		
     		if(exceptionCheck) {
     			compare(computer,inputNumber);
+    			resultPrint(ball, strike);
     		}
     		else {
     			throw new IllegalArgumentException();
     		}
-    		
-    		resultPrint(ball, strike);
     	}
     }
     
