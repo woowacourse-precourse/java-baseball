@@ -2,7 +2,6 @@ package baseball.unit;
 
 import baseball.setting.Setting;
 import baseball.ui.OutputText;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,22 +12,24 @@ public class Game {
 
     private final List<Integer> computerNumber;
 
-    private List<Integer> inputNumber;
-    private int countStrike;
-    private int countBall;
-
-
     public Game(List<Integer> computerNumber) {
         this.computerNumber = computerNumber;
     }
 
-    public void setClassVariableInit(){
-        inputNumber = new ArrayList<>();
-        countStrike = 0;
-        countBall = 0;
+
+    public boolean playAndIsNotStrike(){
+        int countStrike = 0;
+        int countBall = 0;
+
+        List<Integer> counts = calculate(inputGuessNumber());
+        countStrike = counts.get(0);
+        countBall = counts.get(1);
+
+        return isNotStrike(countStrike, countBall);
     }
 
-    public void inputGuessNumber(){
+    private List<Integer> inputGuessNumber(){
+        List<Integer> inputNumber = new ArrayList<>();
         OutputText.printInputNumber();
 
         String inputLine = readLine();
@@ -39,7 +40,7 @@ public class Game {
         for(String str : inputLine.split("")){
             inputNumber.add(Integer.parseInt(str));
         }
-        calculate();
+        return inputNumber;
     }
 
     private boolean isRightInput(String inputNumber){
@@ -64,7 +65,11 @@ public class Game {
         return true;
     }
 
-    private void calculate(){
+    private List<Integer> calculate(List<Integer> inputNumber){
+        List<Integer> res = new ArrayList<>();
+        int countStrike = 0;
+        int countBall = 0;
+
         for(int i=0; i<inputNumber.size(); i++){
             int cNum = computerNumber.get(i);
             int iNum = inputNumber.get(i);
@@ -76,10 +81,20 @@ public class Game {
                 countBall++;
             }
         }
+        res.add(countStrike);
+        res.add(countBall);
+
+        return res;
     }
 
-    public boolean isAllStrike(){
-        boolean correct = false;
+    private boolean isNotStrike(int countStrike, int countBall){
+        if(countStrike > 0 && countBall == 0){
+            OutputText.printJudgeStrike(countStrike);
+            if(countStrike == Setting.INPUT_NUMBER) {
+                OutputText.printEndGame();
+                return false;
+            }
+        }
 
         if(countStrike == 0 && countBall == 0){
             OutputText.printJudgeNothing();
@@ -89,21 +104,11 @@ public class Game {
             OutputText.printJudgeStrikeAndBall(countStrike, countBall);
         }
 
-        if(countStrike > 0 && countBall == 0){
-            OutputText.printJudgeStrike(countStrike);
-            if(countStrike == Setting.INPUT_NUMBER) {
-                OutputText.printEndGame();
-                correct = true;
-            }
-        }
+
         if(countStrike == 0 && countBall > 0){
             OutputText.printJudgeBall(countBall);
         }
-        return correct;
+        return true;
     }
-
-
-
-
 
 }

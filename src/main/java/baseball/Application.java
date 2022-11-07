@@ -12,10 +12,7 @@ public class Application {
         Game game = new Game(control.createComputerNumber());
 
         while(true){
-            game.setClassVariableInit();
-            game.inputGuessNumber();
-
-            if(!game.isAllStrike()) {
+            if(game.playAndIsNotStrike()) {
                 continue;
             }
 
