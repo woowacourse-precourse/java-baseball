@@ -23,38 +23,40 @@
 
 # 기능 구현에 필요한 인터페이스 정의 및 기능 체계화
 
-## SingleDigitForGame
+## SingleDigit
 ### 게임에 사용되는 숫자의 검증과 비교 기능을 제공하는 인터페이스
-    - 주어진 숫자가 유효한지 검증하는 기능(validateSingleDigit)
-    - 숫자 객체가 동일한지 비교하는 기능(equals)
+    - 주어진 숫자가 유효한지 검증하는 기능
+    - 다른 SingleDigit객체와 동일한지 비교하는 기능
 
-## MultiDigitNumberForGame
-### 게임에 사용되는 숫자"들"의 검증과 비교 기능을 제공하는 인터페이스
-    - 주어진 숫자들이 유효한지 검증하는 기능(validateMultiDigitNumber)
-    - 두 숫자 객체가 동일한지 비교해, 규칙에 따른 결과를 반환하는 기능(getCompareResult)
+## MultiDigitNumber
+### 게임에 사용되는 숫자"들"의 검증과 비교 기능을 제공하는 클래스
+    - 주어진 숫자들이 유효한지 검증하는 기능
+    - 다른 MultiDigitNumber 객체와의 비교 결과를 반환하는 기능
 
 ## IOManager
 ### 입출력 관련 기능을 수행하는 클래스
-    - 입력으로 들어온 숫자를 받아오는 기능(getNextInt)
-    - 입력받은 값을 출력하는 기능(printString)
+    - 입력으로 들어온 숫자를 받아오는 기능
+    - 숫자를 각 자리별로 쪼개 배열로 변환하는 기능
+    - 입력받은 값을 출력하는 기능
 
-## Game
-### 한번의 게임 실행을 담당하는 인터페이스
-    - 게임을 시작하는 기능(run)
+## NumberBaseballGame
+### 한번의 게임 실행을 담당하는 클래스
+    - 한 주기의 게임을 실행하는 기능
 
-## GameApplication
-### 전체 게임 운영을 담당하는 인터페이스
-    - 전체 게임 시스템을 운영하는 기능(execute)
+## NumberBaseballGameApplication
+### 전체 게임 운영을 담당하는 클래스
+    - 전체 게임 주기를 관리하는 기능
 
-## CompareResult -> 규칙이 변화하더라도, 데이터를 전달하는 형태는 크게 변하지 않을것으로 예상(Map)
-### NumberGroup 간의 비교 결과를 담고있는 컨테이너 클래스
-    - 비교 결과를 문자열 형태로 바꾸어주는 기능(toString)
+## NumberCompareResult -> 규칙이 변화하더라도, 데이터를 전달하는 형태는 크게 변하지 않을것으로 예상(List<List<String>>)
+### MultiDigitNumber 간의 비교 결과를 담고있는 컨테이너 클래스
+    - 비교 결과를 문자열 형태로 바꾸어주는 기능
 
 ## IntentionOfContinuingGame
 ### 게임을 계속 진행할지 여부를 저장하는 enum 객체
     - (CONTINUE / STOP)을 요소로 가짐
-    - 사용자의 입력에 알맞은 enum 객체를 반환하는 기능(getMatchIntention)
-    - 사용자의 게임 지속 의사를 반환하는 기능(wantContinue)
+    - 사용자의 입력에 알맞은 enum 객체를 반환하는 기능
+    - 사용자의 게임 지속 의사를 반환하는 기능
 
-## BaseballGameConfiguration
-### Baseball 게임에 사용되는 객체들의 의존성 주입을 담당하는 클래스
+## RandomManager
+### camp.nextstep.edu.missionutils.Randoms.pickNumberInRange 메서드를 활용하는 클래스
+    - 입력한 범위 내의 겹치지 않는 숫자를 지정한 개수만큼 뽑아 반환하는 기능
