@@ -9,7 +9,8 @@ public class GamePlayer {
     public GamePlayer() {
     }
 
-    public void playGame(BaseballGenerator baseballGenerator) {
+    public Baseball playGame(BaseballGenerator baseballGenerator) {
         baseBall = baseballGenerator.generateBaseball();
+        return baseBall;
     }
 }

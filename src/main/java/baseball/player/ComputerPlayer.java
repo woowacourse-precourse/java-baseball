@@ -9,7 +9,8 @@ public class ComputerPlayer {
     public ComputerPlayer() {
     }
 
-    public void playGame(BaseballGenerator baseballGenerator) {
+    public Baseball playGame(BaseballGenerator baseballGenerator) {
         baseball = baseballGenerator.generateBaseball();
+        return baseball;
     }
 }
