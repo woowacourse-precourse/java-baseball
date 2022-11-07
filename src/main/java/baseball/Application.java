@@ -23,9 +23,17 @@ public class Application {
     public static void getUserGuess(List<Integer> guess) {
         System.out.print("숫자를 입력해주세요 : ");
         String[] numbers = Console.readLine().split("");
+        if (numbers.length != 3) {
+            throw new IllegalArgumentException("Takes only input of three integers without space Ex. '123'");
+        }
         guess.clear();
         for(String number:numbers) {
-            guess.add(Integer.parseInt(number));
+            try {
+                guess.add(Integer.parseInt(number));
+            }
+            catch (Exception e) {
+                throw new IllegalArgumentException("Input takes only integer guesses");
+            }
         }
     }
 
