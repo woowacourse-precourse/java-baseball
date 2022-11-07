@@ -36,4 +36,15 @@ public class BaseBallGameManagerTest {
     String[] outputLines = outputStreamCaptor.toString().split("\\R");
     assertThat(outputLines[0]).isEqualTo("숫자 야구 게임을 시작합니다.");
   }
+  
+  @Test
+  void 게임_종료메시지_출력() {
+    Computer computer = new Computer(new MockRandomGenerator(1, 2, 3));
+    Player player = new Player(new MockInputReader("123"));
+    BaseBallGameManager gameManager = new BaseBallGameManager(computer, player);
+    gameManager.runGame();
+
+    String[] outputLines = outputStreamCaptor.toString().split("\\R");
+    assertThat(outputLines[2]).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+  }
 }
