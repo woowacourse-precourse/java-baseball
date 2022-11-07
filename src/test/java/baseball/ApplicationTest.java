@@ -116,6 +116,22 @@ class ApplicationTest extends NsTest {
         assertThat(Application.countingStrike(0, user_input, random_input)).isEqualTo(3);
     }
 
+    @Test
+    void checkThreeStrikeTest() {
+
+        // given
+        List<Integer> random_input = new ArrayList<>();
+        random_input.add(1);
+        random_input.add(2);
+        random_input.add(3);
+
+        // when
+        int[] user_input = {1, 2, 3};
+
+        // then
+        assertThat(Application.checkThreeStrike(Application.countingStrike(0, user_input, random_input))).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
