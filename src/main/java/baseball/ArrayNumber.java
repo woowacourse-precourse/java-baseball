@@ -22,6 +22,12 @@ public class ArrayNumber {
     public int[] getDigits() {
         return this.digits;
     }
+
+    private boolean isMinToMax(String input) {
+        Pattern numberPattern = Pattern.compile(minus);
+        return numberPattern.matcher(input).matches();
+    }
+
     private boolean isNotDuplicate(String input) {
         Set<Character> set = new HashSet<>();
         for(char s: input.toCharArray()) {
