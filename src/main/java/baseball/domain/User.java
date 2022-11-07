@@ -30,4 +30,11 @@ public class User {
         number = readLine();
     }
 
+    public void inputRestart() {
+        restart = Integer.parseInt(readLine());
+    }
+
+    public int getRestart() {
+        return restart;
+    }
 }
