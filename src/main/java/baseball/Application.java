@@ -13,21 +13,21 @@ public class Application {
 
     public static void main(String[] args) {
         printInitMessage();
-        play();
-
+        while (isContinue) {
+            play();
+        }
     }
 
     private static void printInitMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private static void play() {
+    public static void play() {
         List<Integer> answer = pickThreeNumbers();
-        System.out.println("answer = " + answer);
-        List<Integer> userAnswer = stringConvertToIntegerList(getUserAnswer()); // 입력받은 값을 리스트로 변경
         String hint = "";
 
         while (!hint.equals("3스트라이크")) {
+            List<Integer> userAnswer = stringConvertToIntegerList(getUserAnswer()); // 입력받은 값을 리스트로 변경
             Score score = checkAnswer(answer, userAnswer);
             hint = score.getScore();
             System.out.println(hint);
