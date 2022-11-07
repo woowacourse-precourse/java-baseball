@@ -16,8 +16,8 @@ public class Game {
     private int numberOfBall;
     private int numberOfAttempts = 0;
 
-    BallMaker ballMaker;
-    BallReader ballReader;
+    private BallMaker ballMaker;
+    private BallReader ballReader;
 
     public Game() {
         this.numberOfBall = 3;
