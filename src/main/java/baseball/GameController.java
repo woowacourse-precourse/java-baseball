@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 
 public class GameController {
@@ -28,5 +30,19 @@ public class GameController {
 
         } while (GameHintList.countOfStrike() != 3);
         gameCount++;
+        restartOrExit();
     }
+
+    public void restartOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartOrExit = Console.readLine();
+
+        PlayerInputValueExceptions.whenExitingIsNumberOneOrTwo(restartOrExit);
+
+        if (restartOrExit.equals("1")) {
+            computerSelected = makeThreeDigitNumber.computerSelectedNumber();
+            startGame();
+        }
+    }
+
 }
