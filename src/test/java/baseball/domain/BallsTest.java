@@ -33,7 +33,14 @@ class BallsTest {
     @Test
     @DisplayName("공이 중복되면 예외를 발생한다")
     void uniqueBallTest() {
-        assertThatThrownBy(()-> Balls.convertNumberToBalls(List.of(1, 1, 2)))
+        assertThatThrownBy(() -> Balls.convertNumberToBalls(List.of(1, 1, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("3자리 숫자를 입력하지 않으면 예외를 발생시킨다")
+    void sizeTest() {
+        assertThatThrownBy(() -> Balls.convertNumberToBalls(List.of(1, 2)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
