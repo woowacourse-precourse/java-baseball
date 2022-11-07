@@ -1,13 +1,20 @@
 package baseball.Game;
 
+import baseball.Utils.Output;
 import java.util.List;
 
 public class Judge {
 
     static final int GAME_COUNT = 3;
+    private final List<Integer> userNumbers;
+    private final List<Integer> computerNumbers;
 
-    // TODO "indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다." indent depth 줄여보기
-    static int countStrike(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    public Judge(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        this.userNumbers = userNumbers;
+        this.computerNumbers = computerNumbers;
+    }
+
+    int countStrike() {
         int strikeCnt = 0;
         for (int i = 0; i < GAME_COUNT; i++) {
             if (userNumbers.get(i) == computerNumbers.get(i)) {
@@ -17,32 +24,23 @@ public class Judge {
         return strikeCnt;
     }
 
-    // TODO "indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다." indent depth 줄여보기
-    // TODO Enum 클래스 적용 고민해보기
-    static int countBall(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    int countBall() {
         int ballCnt = 0;
         for (int i = 0; i < GAME_COUNT; i++) {
-            if (userNumbers.get(i) == computerNumbers.get((i + 1) % 3)) {
+            // 다음 index 값과 비교, index가 Game_Count를 넘으면 0으로 돌아감
+            if (userNumbers.get(i) == computerNumbers.get((i + 1) % GAME_COUNT)) {
                 ballCnt++;
-            } else if (userNumbers.get(i) == computerNumbers.get((i + 2) % 3)) {
+            // 다음 index 값과 다를 경우, 다음 다음 index 값과 비교
+            } else if (userNumbers.get(i) == computerNumbers.get((i + 2) % GAME_COUNT)) {
                 ballCnt++;
             }
         }
         return ballCnt;
     }
 
-    // TODO "else 예약어를 쓰지 않았는가?" 객체지향 생활 체조 원칙 적용해보기
-    static void getRoundScore(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        int strikeCnt = countStrike(userNumbers, computerNumbers);
-        int ballCnt = countBall(userNumbers, computerNumbers);
-        if (strikeCnt == 0 && ballCnt == 0) {
-            System.out.println("낫싱");
-        } else if (strikeCnt == 0 && ballCnt != 0) {
-            System.out.println(ballCnt + "볼");
-        } else if (strikeCnt != 0 && ballCnt == 0) {
-            System.out.println(strikeCnt + "스트라이크");
-        } else if (strikeCnt != 0 && ballCnt != 0) {
-            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
-        }
+    void printRoundScore() {
+        int strikeCnt = countStrike();
+        int ballCnt = countBall();
+        System.out.println(Output.makeOutputString(strikeCnt, ballCnt));
     }
 }

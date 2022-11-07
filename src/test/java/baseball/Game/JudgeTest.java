@@ -19,7 +19,8 @@ class JudgeTest {
         void countStrike_WhenStrikeIsZero() {
             List<Integer> userNumbers = Arrays.asList(4, 5, 6);
             List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
-            int strikeCnt = Judge.countStrike(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            int strikeCnt = judge.countStrike();
             assertThat(strikeCnt).isEqualTo(0);
         }
 
@@ -27,7 +28,8 @@ class JudgeTest {
         void countStrike_WhenStrikeIsNotZero() {
             List<Integer> userNumbers = Arrays.asList(4, 5, 6);
             List<Integer> computerNumbers = Arrays.asList(4, 5, 8);
-            int strikeCnt = Judge.countStrike(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            int strikeCnt = judge.countStrike();
             assertThat(strikeCnt).isEqualTo(2);
         }
     }
@@ -38,7 +40,8 @@ class JudgeTest {
         void countBall_WhenBallIsZero() {
             List<Integer> userNumbers = Arrays.asList(1, 2, 3);
             List<Integer> computerNumbers = Arrays.asList(4, 5, 6);
-            int strikeCnt = Judge.countBall(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            int strikeCnt = judge.countBall();
             assertThat(strikeCnt).isEqualTo(0);
         }
 
@@ -46,7 +49,8 @@ class JudgeTest {
         void countBall_WhenBallIsOne() {
             List<Integer> userNumbers = Arrays.asList(1, 2, 3);
             List<Integer> computerNumbers = Arrays.asList(5, 1, 6);
-            int strikeCnt = Judge.countBall(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            int strikeCnt = judge.countBall();
             assertThat(strikeCnt).isEqualTo(1);
         }
 
@@ -54,7 +58,8 @@ class JudgeTest {
         void countBall_WhenBallIsTwo() {
             List<Integer> userNumbers = Arrays.asList(1, 2, 3);
             List<Integer> computerNumbers = Arrays.asList(3, 1, 2);
-            int strikeCnt = Judge.countBall(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            int strikeCnt = judge.countBall();
             assertThat(strikeCnt).isEqualTo(3);
         }
 
@@ -62,7 +67,8 @@ class JudgeTest {
         void countBall_WhenBallIsThree() {
             List<Integer> userNumbers = Arrays.asList(7, 3, 5);
             List<Integer> computerNumbers = Arrays.asList(5, 7, 3);
-            int strikeCnt = Judge.countBall(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            int strikeCnt = judge.countBall();
             assertThat(strikeCnt).isEqualTo(3);
         }
     }
@@ -70,42 +76,46 @@ class JudgeTest {
     @Nested
     class PrintResultTest {
         @Test
-        void getRoundScore_WhenAllZero() {
+        void printRoundScore_WhenAllZero() {
             List<Integer> userNumbers = Arrays.asList(1, 2, 4);
             List<Integer> computerNumbers = Arrays.asList(5, 6, 7);
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
-            Judge.getRoundScore(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            judge.printRoundScore();
             assertThat(out.toString()).isEqualTo("낫싱" + System.lineSeparator());
         }
 
         @Test
-        void getRoundScore_WhenStrikeNotZero() {
+        void printRoundScore_WhenStrikeNotZero() {
             List<Integer> userNumbers = Arrays.asList(1, 2, 4);
             List<Integer> computerNumbers = Arrays.asList(1, 6, 7);
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
-            Judge.getRoundScore(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            judge.printRoundScore();
             assertThat(out.toString()).isEqualTo("1스트라이크" + System.lineSeparator());
         }
 
         @Test
-        void getRoundScore_WhenBallNotZero() {
+        void printRoundScore_WhenBallNotZero() {
             List<Integer> userNumbers = Arrays.asList(1, 2, 4);
             List<Integer> computerNumbers = Arrays.asList(4, 1, 7);
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
-            Judge.getRoundScore(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            judge.printRoundScore();
             assertThat(out.toString()).isEqualTo("2볼" + System.lineSeparator());
         }
 
         @Test
-        void getRoundScore_WhenStrikeBallNoneOfZero() {
+        void printRoundScore_WhenStrikeBallNoneOfZero() {
             List<Integer> userNumbers = Arrays.asList(1, 2, 4);
             List<Integer> computerNumbers = Arrays.asList(1, 4, 2);
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
-            Judge.getRoundScore(userNumbers, computerNumbers);
+            Judge judge = new Judge(userNumbers, computerNumbers);
+            judge.printRoundScore();
             assertThat(out.toString()).isEqualTo("2볼 1스트라이크" + System.lineSeparator());
         }
     }

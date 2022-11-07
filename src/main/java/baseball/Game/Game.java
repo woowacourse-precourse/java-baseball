@@ -29,8 +29,9 @@ public class Game {
     private void getRoundScore() {
         UserNumber userNumber = new UserNumber();
         List<Integer> userNumbers = userNumber.getNumberList();
-        Judge.getRoundScore(userNumbers, computerNumbers);
-        if (Judge.countStrike(userNumbers, computerNumbers) == GAME_OVER_STRIKE_COUNT) {
+        Judge judge = new Judge(userNumbers, computerNumbers);
+        judge.printRoundScore();
+        if (judge.countStrike() == GAME_OVER_STRIKE_COUNT) {
             roundContinue = false;
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
