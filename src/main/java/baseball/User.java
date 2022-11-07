@@ -9,6 +9,7 @@ public class User {
     private List<Integer> numbers;
 
     public void inputNumber() {
+        initializeNumbers();
         String inputValue;
         System.out.print("숫자를 입력해주세요 : ");
         inputValue = Console.readLine();
@@ -90,5 +91,9 @@ public class User {
 
     public List<Integer> getNumbers() {
         return this.numbers;
+    }
+
+    private void initializeNumbers() {
+        this.numbers = new ArrayList<>();
     }
 }

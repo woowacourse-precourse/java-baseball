@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
@@ -39,11 +38,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @Disabled
-    void 볼_스트라이크_맞춘_경우 () {
+    void 볼_스트라이크_판정 () {
         Judge judge = new Judge();
-        assertSame(1, judge.countBall(List.of(1, 2, 3), List.of(7, 6, 1)));
-        assertSame(3, judge.countStrike(List.of(4, 5, 6), List.of(4, 5, 6)));
+        List<Integer> answer = List.of(7, 9, 1);
+        String result = judge.judgement(answer, List.of(3, 6, 8));
+        assertSame("낫싱", result);
+
+        result = judge.judgement(answer, List.of(3, 7, 9));
+        assertSame("2볼", result);
+
+        result = judge.judgement(answer, List.of(2, 9, 1));
+        assertSame("1볼 2스트라이크", result);
+
+        result = judge.judgement(answer, List.of(7, 9, 1));
+        assertSame("3스트라이크", result);
     }
 
     @Test
@@ -103,10 +111,6 @@ class ApplicationTest extends NsTest {
             assertTrue(1 <= number && number <= 9);
             assertSame(1, Collections.frequency(generator.getNumbers(), number));
         }
-
-        // 생성한 난수를 모두 삭제하는 지를 확인
-        generator.truncateNumbers();
-        assertSame(0, generator.getNumbers().size());
     }
 
     @Override

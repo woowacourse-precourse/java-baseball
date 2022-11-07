@@ -24,6 +24,7 @@ public class Judge {
         }
     }
     public String judgement(List<Integer> answer, List<Integer> userNumber) {
+        initializeMembers();
         countStrike(answer, userNumber);
         
         if(ball == 0 && strike == 0)
@@ -35,14 +36,14 @@ public class Judge {
         else if(strike == 0)
             return this.ball + "볼";
 
-        else return this.ball + "볼" + this.strike + "스트라이크";
+        else return this.ball + "볼 " + this.strike + "스트라이크";
     }
     
     public int getStrike() {
         return this.strike;
     }
     
-    public void truncateMembers() {
+    private void initializeMembers() {
         this.ball = 0;
         this.strike = 0;        
     }

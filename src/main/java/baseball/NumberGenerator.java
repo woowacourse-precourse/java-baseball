@@ -9,6 +9,8 @@ public class NumberGenerator {
     private List<Integer> numbers = new ArrayList<>();
 
     public void generateNumber() {
+        initializeNumbers();
+
         while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
@@ -19,5 +21,9 @@ public class NumberGenerator {
 
     public List<Integer> getNumbers() {
         return this.numbers;
+    }
+
+    private void initializeNumbers() {
+        this.numbers = new ArrayList<>();
     }
 }
