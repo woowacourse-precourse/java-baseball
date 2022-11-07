@@ -9,4 +9,12 @@ public class Game {
 		ballCount = 0;
 	}
 
+	public void strikeAdd() {
+		strikeCount += 1;
+	}
+
+	public void ballAdd() {
+		ballCount += 1;
+	}
+
 }
