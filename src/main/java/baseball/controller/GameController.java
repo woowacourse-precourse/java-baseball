@@ -9,9 +9,9 @@ import baseball.view.OutputView;
 public class GameController {
 
     public static void run() {
-        OutputView.printGameStart();
         boolean isReGame = true;
 
+        OutputView.printGameStart();
         while (isReGame) {
             isReGame = playGame();
         }
