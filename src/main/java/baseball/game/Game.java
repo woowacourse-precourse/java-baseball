@@ -31,7 +31,6 @@ public class Game {
         List<Integer> computerBalls = computer.getComputerBalls();
         List<Integer> strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
         String resultMessage;
-        System.out.println(computerBalls.toString()); // TODO: 삭제하기
         do {
             System.out.print(SystemMessage.ENTER_NUMBER);
             List<Integer> playerBalls = player.getPlayerBalls();
