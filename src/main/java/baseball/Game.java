@@ -4,7 +4,24 @@ import java.util.List;
 
 public class Game {
 
-    public static String start(List<Integer> computer, List<Integer> player) {
+    private static final String THREE_STRIKE = "3스트라이크";
+
+    public static void start() {
+        Player computer = new Player();
+        computer.setComputerNumbers();
+        List<Integer> computerNumbers = computer.getNumbers();
+
+        String answer = "";
+        Player user = new Player();
+        while (!answer.equals(THREE_STRIKE)) {
+            user.input();
+            List<Integer> userNumbers = user.getNumbers();
+            answer = Game.calculateNumberOfGameScore(computerNumbers, userNumbers);
+            System.out.println(answer);
+        }
+    }
+
+    public static String calculateNumberOfGameScore(List<Integer> computer, List<Integer> player) {
         GameScore gameScore = getBallAndStrikeCount(computer, player);
         return getPrintString(gameScore);
     }
