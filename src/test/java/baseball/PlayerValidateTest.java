@@ -71,7 +71,7 @@ class PlayerValidateTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값은 1 또는 2 의 값이어야 합니다.");
 
-        assertThatThrownBy(() -> test.validateGameOverInput(Integer.parseInt(input1)))
+        assertThatThrownBy(() -> test.validateGameOverInput(Integer.parseInt(input2)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값은 1 또는 2 의 값이어야 합니다.");
     }

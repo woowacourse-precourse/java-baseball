@@ -50,13 +50,13 @@ public class Player {
         }
     }
 
-    private void validateInputLength(int length, int maxLength) {
+    public void validateInputLength(int length, int maxLength) {
         if (length != maxLength) {
             throw new IllegalArgumentException(String.format("입력값은 %s 자여야 합니다.", maxLength));
         }
     }
 
-    private void validateInputRangeNumber(int number) {
+    public void validateInputRangeNumber(int number) {
         if (number < 1 || number > 9) {
             throw new IllegalArgumentException("입력값은 1 ~ 9 사이의 값이어야 합니다.");
         }
@@ -68,6 +68,7 @@ public class Player {
         }
     }
 
+    public void validateGameOverInput(int number) {
         if (number < 1 || number > 2) {
             throw new IllegalArgumentException("입력값은 1 또는 2 의 값이어야 합니다.");
         }
