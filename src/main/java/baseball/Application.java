@@ -94,7 +94,17 @@ public class Application {
     }
 
     private static int countBall() {
-        return 1;
+        int count = 0;
+        if ((computerNumber.number1 == playerNumber.number2) || (computerNumber.number1 == playerNumber.number3)) {
+            count += 1;
+        }
+        if ((computerNumber.number2 == playerNumber.number1) || (computerNumber.number2 == playerNumber.number3)) {
+            count += 1;
+        }
+        if ((computerNumber.number3 == playerNumber.number1) || (computerNumber.number3 == playerNumber.number2)) {
+            count += 1;
+        }
+        return count;
     }
 
     private static String makeHintMessage(int strike, int ball) {
