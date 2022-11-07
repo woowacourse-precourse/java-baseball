@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class RandomNumberTest {
 
     @Test
@@ -18,7 +20,13 @@ public class RandomNumberTest {
         sut = RandomNumber.getRandomNumbers(1,9, 3);
 
         // Assert
-        Assertions.assertEquals(3, sut.size());
+        assertEquals(
+            3L,
+            sut.stream()
+            .filter(number -> 1 <= number && number <= 9)
+            .count()
+        );
+
     }
 
 }
