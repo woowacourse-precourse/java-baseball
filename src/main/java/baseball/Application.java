@@ -83,5 +83,9 @@ public class Application {
         if (CheckNumber(computer, userInput)==1){
             return;
         }
+        // 5. 새로 시작 or 종료
+        Scanner sc2=new Scanner(System.in);
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        status = Integer.valueOf(sc2.next());
     }
 }
