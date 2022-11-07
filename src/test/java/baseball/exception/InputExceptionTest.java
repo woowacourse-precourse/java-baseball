@@ -9,6 +9,7 @@ public class InputExceptionTest {
     void isProperLetter_Alphabet_Test() {
         String wrongUserInputAlphabet = "Z56";
         InputException inputException = new InputException();
+
         assertThat(inputException.isProperLetter(wrongUserInputAlphabet)).isFalse();
     }
 
@@ -17,6 +18,15 @@ public class InputExceptionTest {
     public void isProperLetter_Symbol_Test(){
         String wrongUserInputSymbol = "[56";
         InputException inputException = new InputException();
+
         assertThat(inputException.isProperLetter(wrongUserInputSymbol)).isFalse();
+    }
+    @Test
+    @DisplayName("Check for exception when length of input string is not 3")
+    public void isProperLength_Test(){
+        String wrongLengthUserInput="4567";
+        InputException inputException = new InputException();
+
+        assertThat(inputException.isProperLength(wrongLengthUserInput)).isFalse();
     }
 }
