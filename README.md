@@ -136,12 +136,12 @@ BUILD SUCCESSFUL in 0s
 
 ```java
 List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+        while (computer.size() < 3) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!computer.contains(randomNumber)) {
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
@@ -153,3 +153,14 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 기능 목록
+* main() 어플리케이션 실행
+* createRandomNumber() 서로 다른 3자리의 수 생성
+* printHitStatus() 입력값에 따른 맞춘 상태 출력
+* getRandomNumber() 랜덤 숫자 값 getter
+* checkHitNumber() 숫자가 맞는지 확인 후 결과값 리턴
+* restartOrEnd() 게임 종료 또는 재시작
+* startGameMessage() 게임 시작 메시지 출력
+* endGameMessage() 게임 종료 메시지 출력
