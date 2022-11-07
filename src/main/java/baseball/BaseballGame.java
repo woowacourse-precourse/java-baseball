@@ -1,8 +1,6 @@
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -15,7 +13,7 @@ public class BaseballGame {
     private static final int REPLAY = 1;
     private static final int OVER = 2;
 
-    public void playGame() throws IOException {
+    public void playGame() {
         System.out.println(GAME_START_MESSAGE);
         boolean isPlay = true;
         Hitter hitter = new Hitter();
@@ -27,7 +25,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean playInning(Referee referee, Hitter hitter, List<Ball> pitcherBalls) throws IOException {
+    private boolean playInning(Referee referee, Hitter hitter, List<Ball> pitcherBalls) {
         while (true) {
             referee.initCount();
             referee.judgeGameResult(hitter.hitBalls(inputNumber()), pitcherBalls);
@@ -38,10 +36,9 @@ public class BaseballGame {
         }
     }
 
-    public String inputNumber() throws IOException {
+    public String inputNumber() {
         System.out.print(INPUT_NUMBER_MESSAGE);
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String number = bufferedReader.readLine();
+        String number = Console.readLine();
         validate(number);
         return number;
     }
@@ -57,13 +54,7 @@ public class BaseballGame {
 
     private boolean isReplaying() {
         System.out.println(REPLAY_MESSAGE);
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Integer number = null;
-        try {
-            number = Integer.valueOf(bufferedReader.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Integer number = Integer.valueOf(Console.readLine());
 
         return number.equals(REPLAY);
     }
