@@ -1,12 +1,14 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -27,9 +29,25 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 게임랜덤테스트() {
+        Game game = new Game();
+        // 세 자리가 다른지 확인하기 위한 리스트
+        List<Integer> dupCheck = new ArrayList<>();
+        List<Integer> answer = game.getGameRandomNumber();
+        // 겹치는 경우를 제외하고 dupCheck 리스트에 원소를 넣는다.
+        for (int number: answer){
+            if (!dupCheck.contains(number)){
+                dupCheck.add(number);
+            }
+        }
+
+        assertThat(answer).isEqualTo(dupCheck);
+    }
 
     @Override
     public void runMain() {
         Application.main(new String[]{});
     }
 }
+

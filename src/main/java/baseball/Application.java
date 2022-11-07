@@ -1,5 +1,10 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         /*
@@ -16,3 +21,28 @@ public class Application {
     }
 
 }
+
+class Game {
+
+    public List<Integer> getGameRandomNumber() {
+
+        // 3개의 무작위 난수를 중복 없이 뽑는다.
+        List<Integer> gameRandomNumber = new ArrayList<>();
+        while (gameRandomNumber.size() < 3) {
+            int randomNumber = getRandomNumber();
+            // Random Number가 list 원소에 포함되어 있지 않다면, 추가한다.
+            if (!gameRandomNumber.contains(randomNumber)) {
+                gameRandomNumber.add(randomNumber);
+            }
+        }
+
+        return gameRandomNumber;
+    }
+
+    public int getRandomNumber() {
+        // 1 ~ 9 범위의 난수를 return하는 함수.
+        return pickNumberInRange(1, 9);
+    }
+
+}
+
