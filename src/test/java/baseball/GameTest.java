@@ -18,7 +18,7 @@ public class GameTest extends NsTest {
 
     @BeforeEach
     void setUp() {
-        this.game = new Game();
+        game = new Game();
     }
 
     @DisplayName("3자리 수 생성")
