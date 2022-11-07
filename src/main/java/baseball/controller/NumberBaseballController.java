@@ -41,6 +41,9 @@ public class NumberBaseballController {
             userAnswerValidator.validateNewGameAnswer(userAnswer);
             inputNewGameAnswer(userAnswer);
         }
+        if (resultType == GuessResultStatus.NOT_WIN) {
+            inputUserAnswer();
+        }
     }
 
     public void inputNewGameAnswer(String userAnswer) {
