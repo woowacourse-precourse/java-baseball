@@ -14,11 +14,13 @@ public class Game {
         printMessage(Message.NUMBER_BASEBALL_GAME_START);
         while (true) {
             computer.makeRandomNumber();
+
             startUnitGame();
+
             printMessage(Message.NUMBER_BASEBALL_GAME_IS_RESTART);
             String userInput = user.getConsoleInput();
-            GameStatus.validStatus(userInput);
-            if (!GameStatus.isYes(userInput)) {
+
+            if (GameStatus.validStatus(userInput)&&!GameStatus.isYes(userInput)) {
                 return;
             }
         }

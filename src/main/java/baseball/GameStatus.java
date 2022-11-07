@@ -10,8 +10,8 @@ public enum GameStatus {
         this.status = status;
     }
 
-    public static void validStatus(String input) {
-        if (input.equals(Y.status) || input.equals(N.status)) return;
+    public static boolean validStatus(String input) {
+        if (input.equals(Y.status) || input.equals(N.status)) return true;
         throw new IllegalArgumentException();
     }
 
