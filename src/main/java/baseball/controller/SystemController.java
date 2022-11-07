@@ -80,4 +80,11 @@ public class SystemController {
             System.out.println(THREE_STRIKE);
         }
     }
+
+    public String SystemScoreModeltoString() {
+        if (strike == 0 && ball == 0) {
+            return NOTHING.getScore();
+        }
+        return SystemScoreModeltoStringBuilder();
+    }
 }
