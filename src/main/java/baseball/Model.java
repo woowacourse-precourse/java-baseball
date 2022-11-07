@@ -22,7 +22,7 @@ public class Model {
         return computerNumber;
     }
 
-    public static List<Integer> createPlayerNumber(){
+    public static List<Integer> createPlayerNumber() throws IllegalArgumentException {
         String userInput = View.getUserInput(); // 숫자가 아니면 예외 발생
         List<Integer> playerNumber = stringToList(userInput);
         if(!Validator.isValidNumber(playerNumber)){
