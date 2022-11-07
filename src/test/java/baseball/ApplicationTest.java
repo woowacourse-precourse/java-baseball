@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("세 자리 미만의 숫자를 입력한 경우 예외 발생")
-    void 예외_테스트2() {
+    void inputNumberSizeUnderThree() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -40,16 +40,37 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("숫자 사이에 공백이 있을 경우 예외 발생")
+    void inputNumberHasSpace() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1 2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     @DisplayName("숫자가 아닌 것을 사용자가 입력한 경우 예외 발생")
-    void 예외_테스트3() {
+    void inputNumberIsNotNumber() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("asd"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    //TODO 재시작 혹은 종료 시에 1,2만 받아야 함
-    // 이외의 경우 예외처리
+
+
+    @Test
+    @DisplayName("게임 종료 후 1, 2를 제외한 다른 숫자를 입력 시 예외 발생")
+    void restartInputNumberIsNotOneOrTwo() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(
+                        () -> {
+                            run("135", "3");
+                        },
+                        1, 3, 5
+                )
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
