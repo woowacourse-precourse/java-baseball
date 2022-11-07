@@ -11,22 +11,47 @@ public class NumberBaseBallGameMachine {
     Message message = new Message();
     NumberMaker numberMaker = new NumberMaker();
 
-    public void display(String message) {
-        System.out.print(message);
+    public void play() {
+        boolean gameContinue = true;
+        display(message.start() + "\n");
+        while (gameContinue) {
+            makeNewAnswer();
+            gameProgress();
+            gameContinue = askNewGameOrStop();
+        }
     }
 
-    public String getInputLine() {
-        return Console.readLine();
+    public void display(String message) {
+        System.out.print(message);
     }
 
     public void makeNewAnswer() {
         referee.setAnswer(numberMaker.makeThreeDifferentNumberListInRange(1, 9));
     }
 
+    public void gameProgress() {
+        boolean success = false;
+        while (!success) {
+            success = getInputResult();
+        }
+        display(message.success() + "\n");
+    }
+
+    public boolean getInputResult() {
+        display(message.requestThreeNumbers());
+        List<Integer> judgeResult = referee.judgeList(getThreeNumberInput());
+        display(message.result(judgeResult) + "\n");
+        return isAnswer(judgeResult);
+    }
+
     public List<Integer> getThreeNumberInput() {
         String trimmedInput = getInputLine().strip();
         validateThreeNumbers(trimmedInput);
         return trimmedInput.chars().mapToObj(o -> Character.getNumericValue((char) o)).collect(Collectors.toList());
+    }
+
+    public String getInputLine() {
+        return Console.readLine();
     }
 
     public void validateThreeNumbers(String input) {
@@ -51,6 +76,15 @@ public class NumberBaseBallGameMachine {
         }
     }
 
+    public boolean isAnswer(List<Integer> judge) {
+        return judge.get(1) == 3;
+    }
+
+    public boolean askNewGameOrStop() {
+        display(message.requestNewOrStop() + "\n");
+        return getNewGameOrStop() == 1;
+    }
+
     public int getNewGameOrStop() {
         String trimInput = getInputLine().strip();
         validateNewGameInput(trimInput);
@@ -66,40 +100,6 @@ public class NumberBaseBallGameMachine {
         }
         if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("입력값이 1이나 2가 아닙니다.");
-        }
-    }
-
-    public boolean getInputResult() {
-        display(message.requestThreeNumbers());
-        List<Integer> judgeResult = referee.judgeList(getThreeNumberInput());
-        display(message.result(judgeResult) + "\n");
-        return isAnswer(judgeResult);
-    }
-
-    public boolean isAnswer(List<Integer> judge) {
-        return judge.get(1) == 3;
-    }
-
-    public boolean askNewGameOrStop() {
-        display(message.requestNewOrStop() + "\n");
-        return getNewGameOrStop() == 1;
-    }
-
-    public void gameProgress() {
-        boolean success = false;
-        while (!success) {
-            success = getInputResult();
-        }
-        display(message.success() + "\n");
-    }
-
-    public void play() {
-        boolean gameContinue = true;
-        display(message.start() + "\n");
-        while (gameContinue) {
-            makeNewAnswer();
-            gameProgress();
-            gameContinue = askNewGameOrStop();
         }
     }
 }
