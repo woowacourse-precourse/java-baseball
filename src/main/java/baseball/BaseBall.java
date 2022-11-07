@@ -2,13 +2,12 @@ package baseball;
 
 public class BaseBall implements Game{
     private String answer="";
-
     private Input input;
     private Random random;
     private int range;
-    public BaseBall(int range){
+    public BaseBall(int mix,int max,int range){
         this.range=range;
-        random =new Random();
+        random =new Random(mix,max,range);
         input =new Input(range);
         play();
     }
