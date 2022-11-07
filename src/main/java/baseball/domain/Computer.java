@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
 
     private final int NUMBERS_LENGTH = 3;
-    private final int START_INCLUSIVE = 0;
+    private final int START_INCLUSIVE = 1;
     private final int FINISH_INCLUSIVE = 9;
     private String number;
 
