@@ -98,9 +98,10 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> getNumbersToUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 번호가_중복인지_확인하는_테스트_True() {
-        String number = "2234e";
+    @ParameterizedTest(name = "{0}을 넣었을 때 true를 반환")
+    @ValueSource(strings = {"1ee4", "1#3#?6)", "~2334@67,", "00000"})
+    @DisplayName("번호가 중복인지 확인 테스트")
+    void 번호가_중복인지_확인하는_테스트_True(String number) {
         assertThat(isDistinct(number)).isTrue();
     }
 
