@@ -99,7 +99,29 @@ public class Application {
         }
     }
 
+    public void startGame(){
+        List<Integer> computer = createComputerNumbers();
+        boolean gameover = false;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(!gameover){
+            List<Integer> userInput = scanUser3DigitInput();
+            int strike = numOfStrike(userInput, computer);
+            int ball = numOfBall(userInput, computer);
+            printBallCount(strike, ball);
+
+            if(strike == 3){
+                gameover = true;
+            }
+            if(gameover && scanWhetherNewGame()){
+                computer = createComputerNumbers();
+                gameover = false;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Application baseballGame = new Application();
+        baseballGame.startGame();
     }
 }
