@@ -3,6 +3,7 @@ package baseball.Input;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -12,93 +13,88 @@ class InputNumberVerificationTest {
     class verifyNumberTest {
 
         @Test
-        @DisplayName("올바른 숫자 형식")
-        void case1(){
+        void 올바른_숫자_형식일_경우_true() {
             int number = 123;
             boolean result = InputNumberVerification.verifyNumber(number);
             assertEquals(true, result);
         }
 
         @Test
-        @DisplayName("숫자 갯수가 3개가 아닌 4개인 경우")
-        void case2(){
+        void 숫자_4개_입력될_경우_예외_처리한다() {
             int number = 1234;
 
-            assertThatThrownBy(()-> InputNumberVerification.verifyNumber(number))
+            assertThatThrownBy(() -> InputNumberVerification.verifyNumber(number))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("3개의 숫자만 입력해주세요");
         }
 
         @Test
-        @DisplayName("숫자 갯수가 3개가 아닌 2개인 경우")
-        void case3(){
+        void 숫자_2개_입력될_경우_예외_처리한다() {
             int number = 12;
 
-            assertThatThrownBy(()-> InputNumberVerification.verifyNumber(number))
+            assertThatThrownBy(() -> InputNumberVerification.verifyNumber(number))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("3개의 숫자만 입력해주세요");
         }
 
         @Test
-        @DisplayName("숫자 갯수가 3개가 아닌 1개인 경우")
-        void case4(){
+        void 숫자_1개_입력될_경우_예외_처리한다() {
             int number = 1;
 
-            assertThatThrownBy(()-> InputNumberVerification.verifyNumber(number))
+            assertThatThrownBy(() -> InputNumberVerification.verifyNumber(number))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("3개의 숫자만 입력해주세요");
         }
 
         @Test
-        @DisplayName("중복된 숫자가 있는 경우")
-        void case5(){
+        void 중복된_숫자_입력될_경우_예외_처리한다() {
             int number = 112;
 
-            assertThatThrownBy(()-> InputNumberVerification.verifyNumber(number))
+            assertThatThrownBy(() -> InputNumberVerification.verifyNumber(number))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("각자 다른 숫자를 입력해주세요");
         }
 
         @Test
-        @DisplayName("1~9 까지 숫자가 아닌 경우")
-        void case6(){
+        void 숫자_한개씩_1부터_9_사이에_숫자가_아닌_경우_예외_처리한다() {
             int number = 160;
 
-            assertThatThrownBy(()-> InputNumberVerification.verifyNumber(number))
+            assertThatThrownBy(() -> InputNumberVerification.verifyNumber(number))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("1~9 사이의 숫자만 입력해주세요");
         }
     }
 
     @Nested
-    class verifyOneOrTwoButtonTest{
+    class verifyOneOrTwoButtonTest {
 
         @Test
-        void case1(){
+        void 숫자_1이_입력될_경우_true() {
             int testNumber = 1;
             boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
             assertEquals(true, testResult);
         }
 
         @Test
-        void case2(){
+        void 숫자_2_입력될_경우_true() {
             int testNumber = 2;
             boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
             assertEquals(true, testResult);
         }
 
         @Test
-        void case3(){
+        void 숫자_1_또는_2가_아닌_3이_입력될_경우_false() {
             int testNumber = 3;
             boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
             assertEquals(false, testResult);
         }
 
         @Test
-        void case4(){
+        void 숫자_1_또는_2가_아닌_0이_입력될_경우_false() {
             int testNumber = 0;
             boolean testResult = InputNumberVerification.verifyOneOrTwoButton(testNumber);
             assertEquals(false, testResult);
         }
     }
+
 }
