@@ -27,6 +27,17 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 숫자_맞추기_테스트()
+    {
+        assertRandomNumberInRangeTest(
+                ()->{
+                    run("123", "987" ,"456","982","981","2");
+                    assertThat(output()).contains("1볼", "2스트라이크", "낫싱", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                9,8,1
+        );
+    }
 
     @Override
     public void runMain() {
