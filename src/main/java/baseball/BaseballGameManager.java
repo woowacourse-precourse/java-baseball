@@ -45,6 +45,11 @@ public class BaseballGameManager {
         String userInput = Console.readLine();
         inputTimer.closeTimer();
 
+        if (userInput.length() != numberCount) {
+            throw new NumberFormatException();
+        }
+
+        /* 예외 상황 try catch
         try {
             // userInput이 Integer로 타입 변환이 가능한지 (숫자가 아닌 값 입력시 예외처리)
             Integer.parseInt(userInput);
@@ -63,7 +68,7 @@ public class BaseballGameManager {
             System.out.printf(BASEBALL_GAME_ASK_FOR_DIVIDED_NUMBER_MESSAGE, numberCount);
             getValidInput();
         }
-
+        */
         return userInput;
     }
 
