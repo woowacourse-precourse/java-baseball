@@ -17,7 +17,7 @@ public class Application {
 
         - User 클래스
             - Number 인터페이스 상속
-            - isNumberOverMaxSize 메서드
+            - isNumberValidMaxSize 메서드
             - isNumberValidRange 메서드
 
         - Game 클래스

@@ -15,8 +15,8 @@ public class User implements Number {
 
     }
 
-    public static boolean isNumberOverMaxSize(List<Integer> inputNumber) {
-
+    public static boolean isNumberValidMaxSize(List<Integer> inputNumber) {
+        
     }
 
     public static boolean isNumberValidRange(List<Integer> inputNumber) {
