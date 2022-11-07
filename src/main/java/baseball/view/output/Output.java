@@ -2,5 +2,7 @@ package baseball.view.output;
 
 public interface Output {
 
-    void printMessage(String resultMessage);
+    void printlnMessage(String message);
+
+    void printMessage(String message);
 }

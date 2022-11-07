@@ -22,12 +22,12 @@ public class GameController {
     }
 
     public void run() {
-        output.printMessage(OutputMessage.START);
+        output.printlnMessage(OutputMessage.START);
         String runStatus = "start";
         while (!runStatus.equals("2")) {
             List<Integer> randomNumber = computer.generateRandomNumber();
             runSetGame(randomNumber);
-            output.printMessage(OutputMessage.END);
+            output.printlnMessage(OutputMessage.END);
             runStatus = input.endInput();
         }
     }
@@ -38,10 +38,10 @@ public class GameController {
             String userInput = input.baseballInput();
 
             String baseballResult = computer.baseballResult(randomNumber, userInput);
-            output.printMessage(baseballResult);
+            output.printlnMessage(baseballResult);
 
             if (referee.isEndGameSet(baseballResult)) {
-                output.printMessage(OutputMessage.SUCCESS);
+                output.printlnMessage(OutputMessage.SUCCESS);
                 break;
             }
         }
