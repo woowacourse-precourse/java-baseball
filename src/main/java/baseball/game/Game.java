@@ -9,12 +9,14 @@ import java.util.List;
 
 public class Game {
     private List<Integer> computers;
+    private Boolean play;
     private Boolean correct;
     private final Input user;
 
     public Game(Input user) {
         this.user = user;
         this.computers = new ArrayList<>();
+        this.play = true;
         this.correct = false;
     }
 
@@ -28,6 +30,17 @@ public class Game {
 
     public void answerIsCorrect(){
         this.correct = true;
+    }
+
+    public void start(){
+        while(play){
+            init();
+            while(!correct){
+                user.input();
+                Print.score(new Score(this));
+            }
+        }
+
     }
 
     public void init(){
