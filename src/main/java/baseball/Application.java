@@ -11,6 +11,8 @@ import java.util.List;
 
 public class Application {
 
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -20,7 +22,7 @@ public class Application {
         while(true) {
             System.out.print("숫자를 입력해 주세요 : ");
 
-            String numStr = userInputNumber(System.in);
+            String numStr = userInputNumber();
 
             System.out.println(numStr);
 
@@ -30,7 +32,7 @@ public class Application {
 
             if(baseBallPoint.getStrike() == 3){
 
-                String gameStr = restartAndExitCheck(System.in);
+                String gameStr = restartAndExitCheck();
 
                 if(gameStr.equals("2")){
                     break;
@@ -99,8 +101,8 @@ public class Application {
         return computer;
     }
 
-    public static String userInputNumber(InputStream in){
-        String userStr = systemInput(in);
+    public static String userInputNumber(){
+        String userStr = systemInput();
 
         if(userStr == null || userStr.length() > 3 || userStr.length() < 3){
             throw new IllegalArgumentException();
@@ -115,9 +117,7 @@ public class Application {
         return userStr;
     }
 
-    public static String systemInput(InputStream in){
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+    public static String systemInput(){
 
         try {
             String input = br.readLine();
@@ -126,12 +126,12 @@ public class Application {
             throw new IllegalArgumentException(e);
         }
     }
-    public static String restartAndExitCheck(InputStream in){
+    public static String restartAndExitCheck(){
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 
-        String gameStr = systemInput(in);
+        String gameStr = systemInput();
 
         System.out.println(gameStr);
 
