@@ -50,4 +50,34 @@ public class BaseballNumTest {
                 assertThat(i).isEqualTo(baseballNum.getThird());
         }
     }
+
+    @Test
+    void illegalInputError_digits() {
+        assertThatThrownBy(() -> new BaseballNum(1234))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new BaseballNum(21))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new BaseballNum(5))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void illegalInputError_negative() {
+        assertThatThrownBy(() -> new BaseballNum(-123))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new BaseballNum(-1))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new BaseballNum(-51))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void illegalInputError_duplication() {
+        assertThatThrownBy(() -> new BaseballNum(343))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new BaseballNum(444))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new BaseballNum(611))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

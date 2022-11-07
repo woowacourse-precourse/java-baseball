@@ -28,6 +28,9 @@ public class BaseballNum {
      * @throws IllegalArgumentException 입력된 수가 3자리가 아니거나, 중복이 있을 경우 예외를 발생시킨다.
      */
     public BaseballNum(int num) throws IllegalArgumentException {
+
+        if (num < 0) throw new IllegalArgumentException();
+
         String numStr = Integer.toString(num);
         if (numStr.length() != 3) throw new IllegalArgumentException();
 
