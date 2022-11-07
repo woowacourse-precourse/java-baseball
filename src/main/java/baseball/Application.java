@@ -13,15 +13,14 @@ public class Application {
         int restartNumber;
         do {
             System.out.println("숫자 야구 게임을 시작합니다!!!");
-            ArrayList<Integer> generateAnswer = generateAnswer(args);
+            ArrayList<Integer> generateAnswer = generateAnswer();
             System.out.println("정답은"+generateAnswer);
             while (true) {
-                inputUserNumber = inputUserNumber(args);
+                inputUserNumber = inputUserNumber();
                 if (inputUserNumber.get(0) == 0) {
                     restartNumber = 0;
                     break;
                 }
-                System.out.println("이거찍히면안됨");
                 String AA = numberReferee(generateAnswer, inputUserNumber);
                 System.out.println(AA);
                 if (AA.equals("3스트라이크")) {
@@ -32,12 +31,12 @@ public class Application {
             }
         } while (restartNumber != 2 && restartNumber != 0);
         System.out.println("게임 종료");
-        if (restartNumber == 0) {throw new IllegalArgumentException();};
+        if (restartNumber == 0) {throw new IllegalArgumentException();}
     }
 
 
 
-    public static ArrayList<Integer> generateAnswer(String[] args) {
+    public static ArrayList<Integer> generateAnswer() {
         ArrayList<Integer> answerNumber = new ArrayList<>();
         while (answerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -48,7 +47,7 @@ public class Application {
         return answerNumber;
     }
 
-    public static ArrayList<Integer> inputUserNumber(String[] args){
+    public static ArrayList<Integer> inputUserNumber(){
         ArrayList<Integer> inputNumberArray = new ArrayList<>();
         String inputNumber = Console.readLine();
 
@@ -65,7 +64,6 @@ public class Application {
             throw new IllegalArgumentException();
             }
         }catch(IllegalArgumentException e){
-            System.out.println("에러가 발생했다면");
             inputNumberArray.add(0);
             return inputNumberArray;
         }
@@ -130,10 +128,8 @@ public class Application {
     public static int restart (){
         System.out.println("계속하시겠습니까?1=계속,2=끝");
         int toBeContinue = Integer.parseInt(Console.readLine());
-        try{
-            if(toBeContinue != 1 && toBeContinue != 2) throw new IllegalArgumentException("게임 종료");
-        }catch(IllegalArgumentException e){
-            System.out.println("맨마지막뭐뜨냐"+e.getMessage());
+        if(toBeContinue != 1 && toBeContinue != 2) {
+           toBeContinue = 2;
         }
         return toBeContinue;
     }
