@@ -18,14 +18,19 @@ public class ShowGameMessage {
                 strikeMessage(scoreResult.getStrike());
                 allStrikeMessage();
                 continueGameMessage();
+                break;
             case STRIKE:
                 strikeMessage(scoreResult.getStrike());
+                break;
             case BALL:
                 ballMessage(scoreResult.getBall());
+                break;
             case STRIKE_BALL:
                 strikeAndBallMessage(scoreResult.getStrike(), scoreResult.getBall());
+                break;
             case NOTHING:
                 nothingMessage();
+                break;
         }
     }
 
