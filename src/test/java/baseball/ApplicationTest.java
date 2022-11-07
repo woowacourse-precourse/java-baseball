@@ -212,6 +212,38 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(EXPECTED);
     }
 
+    @Test
+    public void getResultStr() {
+        //given
+        final List<Integer> STRIKE_CNT = List.of(
+                0, 0, 0, 0, 1, 1, 1, 2, 2, 3
+        );
+        final List<Integer> BALL_CNT = List.of(
+                0, 1, 2, 3, 0, 1, 2, 0, 1, 0
+        );
+        final List<String> EXPECTED = List.of(
+                "낫싱",
+                "1볼",
+                "2볼",
+                "3볼",
+                "1스트라이크",
+                "1볼 1스트라이크",
+                "2볼 1스트라이크",
+                "2스트라이크",
+                "1볼 2스트라이크",
+                "3스트라이크"
+        );
+        //when & then
+        for (int i = 0; i < STRIKE_CNT.size(); i++) {
+            assertThat(
+                    Application.getResultStr(
+                            STRIKE_CNT.get(i), BALL_CNT.get(i)
+                    )
+            ).isEqualTo(EXPECTED.get(i));
+        }
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
