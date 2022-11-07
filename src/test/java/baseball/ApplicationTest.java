@@ -118,6 +118,31 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("Input size is too long.");
     }
 
+    @Test
+    void 사용자_입력범위_테스트() {
+        //given
+        Computer computer = new Computer();
+        Game game = new Game(computer);
+        //when
+        List<Integer> test1 = new ArrayList<>();
+        test1.add(1);
+        test1.add(2);
+        test1.add(3);
+
+        List<Integer> test2 = new ArrayList<>();
+        test2.add(0);
+        test2.add(2);
+        test2.add(3);
+        test2.add(9);
+        //then
+        assertThatCode(() -> game.isValidateRange(test1))
+                .doesNotThrowAnyException();
+
+        assertThatThrownBy(() -> game.isValidateRange(test2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Input range is wrong.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
