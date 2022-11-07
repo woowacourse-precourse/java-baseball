@@ -27,6 +27,16 @@ public class Application {
 
         return returnData;
     }
+    public static void checkUserInout (String userInput){
+        if(userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        for(int i = 0; i < userInput.length(); i++){
+            if(String.valueOf(userInput.charAt(i)) == "0"){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
     //String형으로 입려받는 userInput을 List형으로 변환함
     public static List<String> convertUserInputToList (String userinput){
         List<String> returnData = new ArrayList<String>();
@@ -43,13 +53,14 @@ public class Application {
             if(computer.indexOf(userInput.get(i)) == -1){
                 continue;
             }
-            else if(computer.indexOf(userInput.get(i)) >= 0 && computer.indexOf(userInput.get(i)) == i ){
+            else if(computer.indexOf(userInput.get(i)) >= 0 && computer.indexOf(userInput.get(i)) == i){
                 returnData[1] += 1;
             }
             else if(computer.indexOf(userInput.get(i)) >= 0){
                 returnData[0] += 1;
             }
         }
+
         return returnData;
     }
     public static void printHint(int[] hint){
@@ -57,10 +68,13 @@ public class Application {
             System.out.println("낫싱");
         }
         else{
-            if(hint[0] != 0){
-                System.out.println(hint[0]+"볼 ");
+            if(hint[0] != 0 && hint[1] != 0){
+                System.out.println(hint[0]+"볼 "+hint[1]+"스트라이크");
             }
-            else if(hint[1] != 0){
+            else if(hint[0] != 0 && hint[1] == 0){
+                System.out.println(hint[0]+"볼");
+            }
+            else if(hint[0] == 0 && hint[1] != 0){
                 System.out.println(hint[1]+"스트라이크");
             }
         }
@@ -68,12 +82,12 @@ public class Application {
     public static void runGame(){
         List<Integer> computer = setComputer();
         List<String> computer_StringList = convertComputerList(computer);
-        System.out.println(computer);
         boolean state = true;
         String userinput;
         while(state) {
             System.out.print("숫자를 입력해주세요 : ");
             userinput = Console.readLine();
+            checkUserInout(userinput);
             List<String> userInput_List = convertUserInputToList(userinput);
             int[] hint = inspectUserInput(userInput_List, computer_StringList);
             printHint(hint);
@@ -90,16 +104,11 @@ public class Application {
             runGame();
         }
         else if(userinput.equals("2")){
-
+            System.out.println("게임 종료");
         }
     }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         runGame();
-//        List<String> a = List.of("1","2","3");
-//        List<String> b = List.of("1","2","3");
-//        System.out.println(a.indexOf(b.get(1)));
-
-
     }
 }
