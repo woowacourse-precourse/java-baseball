@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -20,20 +21,15 @@ public class User {
         return observer.compare(number.getNumber());
     }
 
+    public void printUserInput() {
+        makeBaseBallNumber();
+        printBaseBallNumber();
+    }
+
     public void makeBaseBallNumber() {
         String consoleInput = getConsoleInput();
         List<Integer> integerList = toIntegerList(consoleInput);
         number = BaseBallNumber.of(integerList);
-    }
-
-    public void printBaseBallNumber() {
-        System.out.println(number.getNumber());
-    }
-
-    public String getConsoleInput() {
-        String input = Console.readLine();
-        if (compile.matcher(input).find()) throw new IllegalArgumentException();
-        return input;
     }
 
     private List<Integer> toIntegerList(String consoleInput) {
@@ -42,5 +38,15 @@ public class User {
 
     private String[] splitChar(String consoleInput) {
         return consoleInput.split("");
+    }
+
+    public void printBaseBallNumber() {
+        System.out.println(String.join("", number.getNumber().stream().map(String::valueOf).collect(Collectors.toList())));
+    }
+
+    public String getConsoleInput() {
+        String input = Console.readLine();
+        if (compile.matcher(input).find()) throw new IllegalArgumentException();
+        return input;
     }
 }

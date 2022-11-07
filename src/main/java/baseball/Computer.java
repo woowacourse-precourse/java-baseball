@@ -4,19 +4,28 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Computer implements Observer {
 
-    BaseBallNumber number;
+    private BaseBallNumber number;
 
     public void makeRandomNumber() {
         while (true) {
-            try {
-                List<Integer> numberList = randomNumberGenerate();
-                number = BaseBallNumber.of(numberList);
+            List<Integer> numberList = randomNumberGenerate();
+            Optional<BaseBallNumber> baseBallNumberOptional = genBaseBallNumber(numberList);
+            if (baseBallNumberOptional.isPresent()) {
+                number = baseBallNumberOptional.get();
                 return;
-            } catch (IllegalArgumentException e) {
             }
+        }
+    }
+
+    private Optional<BaseBallNumber> genBaseBallNumber(List<Integer> numberList) {
+        try {
+            return Optional.of(BaseBallNumber.of(numberList));
+        } catch (IllegalArgumentException e) {
+            return Optional.empty();
         }
     }
 
@@ -52,7 +61,6 @@ public class Computer implements Observer {
         if (isSame(inputIndex, numberIndex)) {
             return Hint.STRIKE;
         }
-
         return Hint.BALL;
     }
 

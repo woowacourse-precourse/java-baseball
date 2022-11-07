@@ -1,8 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static baseball.View.*;
 
 public class Game {
@@ -15,37 +12,33 @@ public class Game {
         while (true) {
             computer.makeRandomNumber();
 
-            startUnitGame();
+            startGameToUserForComputer();
 
             printMessage(Message.NUMBER_BASEBALL_GAME_IS_RESTART);
-            String userInput = user.getConsoleInput();
 
-            if (GameStatus.validStatus(userInput)&&!GameStatus.isYes(userInput)) {
+            GameRestartStatus gameStatus = GameRestartStatus.of(user.getConsoleInput());
+            gameStatus.print();
+
+            if (!gameStatus.isYes()) {
                 return;
             }
         }
     }
 
-    private static void startUnitGame() {
+    private static void startGameToUserForComputer() {
         while (true) {
             printMessage(Message.INPUT_NUMBER);
 
-            getUserInput();
+            user.printUserInput();
 
             HintReader hintReader = new HintReader(user.compareToComputer());
 
-            String hinString = hintReader.toHintString();
-            print(hinString);
+            print(hintReader.toHintString());
 
             if (hintReader.isThreeStrike()) {
                 printMessage(Message.END_NUMBER_BASEBALL_GAME);
                 return;
             }
         }
-    }
-
-    private static void getUserInput() {
-        user.makeBaseBallNumber();
-        user.printBaseBallNumber();
     }
 }
