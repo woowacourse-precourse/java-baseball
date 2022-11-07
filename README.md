@@ -182,7 +182,11 @@ while (computer.size() < 3) {
   - 스트라이크 개수를 반환한다 ```countStrike```
 
 
-- 볼 / 스트라이크 개수에 따른 결과 문구를 반환한다 ```getResultOfGuess```
+- 볼 / 스트라이크 개수에 따른 결과 문구를 반환한다 ```getResultOfPlayerGuess```
+
+
+- 올스트라이크를 확인한다 ```isAllStrike```
+
 
 <br>
 
