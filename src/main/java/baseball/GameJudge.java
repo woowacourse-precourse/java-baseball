@@ -30,7 +30,7 @@ public class GameJudge {
         int ball = 0;
 
         for (int i = 0; i < COUNT_SIZE; i++) {
-            if (computer.get(i) == player.get(i)) {
+            if (computer.get(i).equals(player.get(i))) {
                 strike += 1;
             } else if (player.contains(computer.get(i))) {
                 ball += 1;
