@@ -78,6 +78,10 @@ public class GameService {
         return ball;
     }
 
+    public void addStrikeCount() {
+        strike += 1;
+    }
+
 
 
 }
