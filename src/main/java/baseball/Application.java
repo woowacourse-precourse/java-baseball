@@ -53,7 +53,7 @@ public class Application {
         int ball = 0;
 
         for (int idx = 0; idx < 3; idx++) {
-            if (computerNum.get(idx) == userNum.get(idx)) {
+            if (userNum.get(idx) == computerNum.get(idx)) {
                 strike += 1;
             }
             else if (userNum.contains(computerNum.get(idx))) {
@@ -75,7 +75,7 @@ public class Application {
             System.out.println(String.valueOf(ball) + "볼");
         }
         else if (ball == 0 && strike != 0) {
-            System.out.println(String.valueOf(strike) + "스트리이크");
+            System.out.println(String.valueOf(strike) + "스트라이크");
         }
         return false;
     }
