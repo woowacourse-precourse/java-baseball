@@ -1,4 +1,4 @@
-package baseball.printer;
+package baseball.console;
 
 import baseball.console.ConsoleOutput;
 import baseball.core.BallStrike;
