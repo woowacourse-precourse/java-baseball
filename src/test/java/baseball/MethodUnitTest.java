@@ -55,4 +55,16 @@ public class MethodUnitTest {
         assertThat(twoBall).isEqualTo(2);
         assertThat(threeBall).isEqualTo(3);
     }
+
+    @DisplayName("유효성 작동 테스트")
+    @Test
+    void validation_테스트(){
+        boolean strTest = Application.validation("test string");
+        boolean wrongNumTest = Application.validation("133");
+        boolean correctNumTest = Application.validation("748");
+
+        assertThat(strTest).isFalse();
+        assertThat(wrongNumTest).isFalse();
+        assertThat(correctNumTest).isTrue();
+    }
 }
