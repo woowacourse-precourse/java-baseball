@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import baseball.domain.Balls;
 import baseball.domain.BaseballGameResult;
 import baseball.view.UserInputView;
+import baseball.view.UserOutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGameController {
@@ -89,5 +90,18 @@ public class BaseballGameController {
 			return true;
 		}
 		return false;
+	}
+
+	public static void start() {
+		do {
+			Balls ballsPickedByComputer = pickComputerBalls();
+			BaseballGameResult result;
+			do {
+				Balls ballsPickedByUser = pickUserBalls();
+				result = judge(ballsPickedByComputer, ballsPickedByUser);
+				UserOutputView.printResult(result);
+			} while (!isGameOver(result));
+			UserOutputView.printFinishPhrase();
+		} while (askRestartGame());
 	}
 }
