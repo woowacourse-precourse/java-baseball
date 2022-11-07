@@ -8,69 +8,70 @@ import java.util.HashSet;
 import java.util.List;
 
 public class NumberBaseballGame {
-    private List<String> computerNumber = new ArrayList<>();
-    private List<String> userNumber = new ArrayList<>();
-    private HashSet<String> cumputerNumberSet = new HashSet<>();
-    private int strike = 0;
-    private int ball = 0;
 
     public void execution() {
-        createRandomNumber();
-        cumputerNumberSet = new HashSet<>(computerNumber);
+        List<String> computerNumber = createRandomNumber();
+        System.out.println(computerNumber);
         System.out.println("숫자 야구 게임을 시작합니다.");
-        strike = 0;
-        ball = 0;
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            inputUserNumber();
-            calculateResult();
-            printResult();
+            List<String> userNumber = inputUserNumber();
+            List<Integer> strike_ball_count = calculateResult(computerNumber, userNumber);
+            int strike = strike_ball_count.get(0);
+            int ball = strike_ball_count.get(1);
+            System.out.println(printResult(strike, ball));
             if (strike == 3) break;
-            strike = 0;
-            ball = 0;
         }
         isFinishGame();
     }
 
-    public void createRandomNumber() {
-        computerNumber.clear();
+    public List<String> createRandomNumber() {
+        List<String> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             String randomNumber = String.valueOf(Randoms.pickNumberInRange(1, 9));
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
         }
+        return computerNumber;
     }
 
-    public void inputUserNumber(){
+    public List<String> inputUserNumber(){
         String inputUserStr = Console.readLine();
-        userNumber = List.of(inputUserStr.split(""));
+        List<String> userNumber = List.of(inputUserStr.split(""));
         HashSet<String> userNumberSet = new HashSet<>(userNumber);
         if (inputUserStr.length() != 3 || userNumberSet.size() != 3 ||
                 userNumberSet.contains("0")  || !isNumeric(inputUserStr)){
             throw new IllegalArgumentException();
         }
+        return userNumber;
     }
 
-    public void calculateResult(){
+    public List<Integer> calculateResult(List<String> computerNumber, List<String> userNumber){
+        int strike = 0;
+        int ball = 0;
+        List<Integer> strike_ball_count = new ArrayList<>();
         if (computerNumber.get(0).equals(userNumber.get(0))) {
             strike++;
-        } else if (cumputerNumberSet.contains(userNumber.get(0))){
+        } else if (computerNumber.contains(userNumber.get(0))){
             ball++;
         }
         if (computerNumber.get(1).equals(userNumber.get(1))) {
             strike++;
-        } else if (cumputerNumberSet.contains(userNumber.get(1))){
+        } else if (computerNumber.contains(userNumber.get(1))){
             ball++;
         }
         if (computerNumber.get(2).equals(userNumber.get(2))) {
             strike++;
-        } else if (cumputerNumberSet.contains(userNumber.get(2))){
+        } else if (computerNumber.contains(userNumber.get(2))){
             ball++;
         }
+        strike_ball_count.add(strike);
+        strike_ball_count.add(ball);
+        return strike_ball_count;
     }
 
-    public void printResult(){
+    public String printResult(int strike, int ball){
         String result = "";
         if (ball > 0 && strike > 0){
             result += ball +"볼 "+strike +"스트라이크";
@@ -81,7 +82,7 @@ public class NumberBaseballGame {
         } else {
             result += "낫싱";
         }
-        System.out.println(result);
+        return result;
     }
 
     public void isFinishGame(){
