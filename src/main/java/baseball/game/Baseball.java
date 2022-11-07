@@ -1,3 +1,16 @@
+    private boolean checkProgress() {
+        String input = Console.readLine();
+        int number = Integer.parseInt(input);
+
+        switch (number) {
+            case RESTART_GAME:
+                return true;
+            case FINISH_GAME:
+                return false;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
     private void printStartMessage() {
         System.out.print("숫자를 입력해주세요 : ");
     }
@@ -13,3 +26,5 @@
     private void printRestartOrEndMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+}
