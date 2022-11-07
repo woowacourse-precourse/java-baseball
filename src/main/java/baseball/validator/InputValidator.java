@@ -10,6 +10,8 @@ import java.util.Set;
 public class InputValidator {
 
     private static final String INTEGER_REGULAR_EXPRESSION = "^[0-9]*$";
+    private static final String RESTART_COMMAND = "1";
+    private static final String STOP_COMMAND = "2";
     private static final String ZERO = "0";
     private static final int CORRECT_INPUT_LENGTH = 3;
     private static String guessedAnswerInput;
@@ -53,5 +55,17 @@ public class InputValidator {
         if (guessedAnswerInputList.size() != guessedAnswerInputSet.size()) {
             InputException.throwDuplicateNumberInputError();
         }
+    }
+
+    public static void validCommandForm(String command) {
+        if (command.equals(RESTART_COMMAND)) {
+            return;
+        }
+
+        if (command.equals(STOP_COMMAND)) {
+            return;
+        }
+
+        InputException.throwNotOneOrTwoInputError();
     }
 }

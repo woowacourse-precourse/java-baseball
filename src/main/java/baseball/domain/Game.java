@@ -49,6 +49,7 @@ public class Game {
         OutputView.printRestartOrStopGuideMessage();
 
         String command = InputView.getRestartOrStopCommand();
+        InputValidator.validCommandForm(command);
         reStarOrStop(command);
     }
 
