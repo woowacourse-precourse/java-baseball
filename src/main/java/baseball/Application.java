@@ -96,15 +96,19 @@ public class Application {
             System.out.println(ball + "볼");
         }
         else {
-            System.out.println(strike + "스트라이크 " + ball + "볼");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
     
     public static void baseball(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean run = true;
+        boolean run = true, newRandom = false;
         String random = random();
         while(run){
+            if(newRandom == true){
+                random = random();
+                newRandom = false;
+            }
             String input = Console.readLine();
             System.out.println(input);
             boolean check = input(input);
@@ -114,7 +118,9 @@ public class Application {
             else{
                 compare(random.toString(), input);
                 if(endOfGame == true){
-                    run = endGame();
+                    boolean result = endGame();
+                    newRandom = result;
+                    run = result;
                 }
             }
         }
@@ -126,7 +132,7 @@ public class Application {
             return true;
         }
         if(Console.readLine().equals("2")){
-            System.out.println("게임 끝");
+            System.out.println("게임 종료");
         }
         return false;
     }
