@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.Rule.DIGITS;
+import static baseball.Rule.RANDOM_MIN;
+import static baseball.Rule.RANDOM_MAX;
+
 public class Model {
-    private static final int DIGITS = Rule.DIGITS.getValue();
-    private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
-    private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
+//    private static final int DIGITS = Rule.DIGITS.getValue();
+//    private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
+//    private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
     private final View view = new View();
     private final Validator validator = new Validator();
     public List<Integer> createComputerNumber() {

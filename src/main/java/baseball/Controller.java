@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static baseball.Rule.DIGITS;
+import static baseball.Rule.COMMAND_RESTART;
+import static baseball.Rule.COMMAND_END;
+
 
 public class Controller {
 
@@ -17,9 +21,9 @@ public class Controller {
     private static final String BALL_KOR ="볼";
     private static final String NOTHING ="nothing";
     private static final String NOTHING_KOR ="낫싱";
-    private static final int DIGITS = Rule.DIGITS.getValue();
-    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
-    private static final String COMMAND_END = Rule.COMMAND_END.toString();
+//    private static final int DIGITS = Rule.DIGITS.getValue();
+//    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
+//    private static final String COMMAND_END = Rule.COMMAND_END.toString();
     private final View view = new View();
     private final Model model = new Model();
 

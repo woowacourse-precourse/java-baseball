@@ -3,12 +3,18 @@ package baseball;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.Rule.DIGITS;
+import static baseball.Rule.RANDOM_MIN;
+import static baseball.Rule.RANDOM_MAX;
+import static baseball.Rule.COMMAND_RESTART;
+import static baseball.Rule.COMMAND_END;
+
 public class Validator {
-    private static final int DIGITS = Rule.DIGITS.getValue();
-    private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
-    private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
-    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
-    private static final String COMMAND_END = Rule.COMMAND_END.toString();
+//    private static final int DIGITS = Rule.DIGITS.getValue();
+//    private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
+//    private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
+//    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
+//    private static final String COMMAND_END = Rule.COMMAND_END.toString();
 
     public boolean isNumber(String input) {
         return input.chars()
