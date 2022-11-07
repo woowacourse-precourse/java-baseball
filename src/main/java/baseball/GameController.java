@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-
 import static baseball.GameConst.*;
 import static baseball.RuleConst.*;
 
