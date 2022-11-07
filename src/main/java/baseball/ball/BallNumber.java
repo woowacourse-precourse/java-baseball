@@ -30,4 +30,8 @@ public class BallNumber {
 		validateBallNumber(number);
 		return ballNumberCache.get(number);
 	}
+
+	public int getNumber() {
+		return number;
+	}
 }

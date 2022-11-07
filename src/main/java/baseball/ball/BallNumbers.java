@@ -2,6 +2,7 @@ package baseball.ball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BallNumbers {
 	private static final int NUMBER_OF_BALLS = 3;
@@ -39,5 +40,15 @@ public class BallNumbers {
 		}
 
 		return BallNumbers.from(ballNumbers);
+	}
+
+	public int getBallNumberByIndex(int index) {
+		return ballNumbers.get(index).getNumber();
+	}
+
+	public List<Integer> getAllBallNumber() {
+		return ballNumbers.stream()
+			.map(BallNumber::getNumber)
+			.collect(Collectors.toList());
 	}
 }

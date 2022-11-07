@@ -13,4 +13,7 @@ public class Computer {
 		return RandomAnswerBallNumberGenerator.generate();
 	}
 
+	public static BallNumbers getAnswerBallNumbers() {
+		return answerBallNumbers;
+	}
 }
