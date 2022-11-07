@@ -47,4 +47,11 @@ enum Score {
         }
         System.out.println();
     }
+
+    boolean strikeOut() {
+        if (strike == Play.getCount()) {
+            return true;
+        }
+        return false;
+    }
 }
