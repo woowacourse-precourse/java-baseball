@@ -79,6 +79,10 @@ public class Application {
             }
         }
 
+        return getStringToStrikeAndBall(strike, ball);
+    }
+
+    private static String getStringToStrikeAndBall(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             return "낫싱";
         } else if (ball == 0) {
