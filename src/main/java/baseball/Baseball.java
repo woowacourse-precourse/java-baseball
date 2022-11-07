@@ -7,6 +7,10 @@ import java.util.ArrayList;
 public class Baseball {
 
     public static final int MAX_SIZE = 3;
+
+    public static final int RESTART = 1;
+    public static final int GAME_END = 2;
+
     int ballCount;
     int strikeCount;
     User user = new User();
@@ -60,12 +64,12 @@ public class Baseball {
 
     public boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input2 = Console.readLine();
+        int selectContinue = Integer.parseInt(Console.readLine());
 
-        if (input2.equals("1")) {
+        if (selectContinue == RESTART) {
             return true;
         }
-        if (input2.equals("2")) {
+        if (selectContinue == GAME_END) {
             return false;
         } else {
             throw new IllegalArgumentException();
