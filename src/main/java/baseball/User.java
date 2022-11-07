@@ -11,9 +11,11 @@ public class User {
     boolean keepProgram = true;
     List<Integer> userNumberList;
     int userNumber;
-    final int NUMBER_LENGTH = Computer.NUMBER_LENGTH;
-    final int SMALLEST_NUMBER = (int) Math.pow(10, NUMBER_LENGTH - 1);
-    final int BIGGEST_NUMBER = (int) Math.pow(10, NUMBER_LENGTH);
+    private final int NUMBER_LENGTH = Computer.NUMBER_LENGTH;
+    private final int SMALLEST_NUMBER = (int) Math.pow(10, NUMBER_LENGTH - 1);
+    private final int BIGGEST_NUMBER = (int) Math.pow(10, NUMBER_LENGTH);
+    static final String CONTINUE_PROGRAM_NUMBER = "1";
+    static final String END_PROGRAM_NUMBER = "2";
 
     User() {
     }
@@ -78,10 +80,10 @@ public class User {
     void inputEndNumber() {
         String userInput = Console.readLine();
         checkType(userInput);
-        if (userInput.equals("1")) {
+        if (userInput.equals(CONTINUE_PROGRAM_NUMBER)) {
             keepProgram = true;
             return;
-        } else if (userInput.equals("2")) {
+        } else if (userInput.equals(END_PROGRAM_NUMBER)) {
             keepProgram = false;
             return;
         }
