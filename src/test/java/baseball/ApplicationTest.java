@@ -129,5 +129,15 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 재시작여부_입력값_길이_오류() {
+        //given
+        String wrongNumber = "32";
+        InputUserNumberException inputUserNumberException = new InputUserNumberException();
+
+        //when,then
+        assertThatThrownBy(() -> inputUserNumberException.checkInputRestartNumber(wrongNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
