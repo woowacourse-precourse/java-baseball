@@ -14,6 +14,12 @@ public class Validator {
     private static final String NUMBER_PATTERN = "^[" +MIN_NUMER + "-" + MAX_NUMBER + "]*$";
     private static final String WRONG_NUMBER = "[ERROR} 잘못된 입력입니다.";
 
+    public void isValidator(String numbers){
+        isRightLength(numbers);
+        isRightNumber(numbers);
+        isNotOverLap(numbers);
+    }
+
     public void isRightLength(String numbers){
         if(numbers.length() != NUMBER_LENGTH)
             throw new IllegalArgumentException(WRONG_NUMBER);
