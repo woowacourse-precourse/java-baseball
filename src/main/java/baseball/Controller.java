@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.view.SystemMessage;
+
 public class Controller {
     final int SIZE = 3;
     final int START_INCLUSIVE = 1;
@@ -13,5 +15,13 @@ public class Controller {
 
     private void setGame() {
         gameService.setGame(SIZE, START_INCLUSIVE, END_INCLUSIVE);
+    }
+
+    private void startGame() throws IllegalArgumentException {
+        gameService.playGame();
+    }
+
+    private void endGame() {
+        SystemMessage.printGameOverMessage();
     }
 }

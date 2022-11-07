@@ -25,4 +25,12 @@ public class Game {
     public int[] getGameNumbers() {
         return gameNumbers;
     }
+
+    public void incStrikeCount() {
+        strikeCount += 1;
+    }
+
+    public void incBallCount() {
+        ballCount += 1;
+    }
 }

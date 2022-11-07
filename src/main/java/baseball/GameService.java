@@ -39,5 +39,30 @@ public class GameService {
                 break;
             }
         }
+        incCount(index, temp);
+    }
+
+    public void playGame() {
+        int strike = 0;
+        while (strike != 3) {
+            play();
+            systemMessage.printScoreMessage(game.getBallCount(), game.getStrikeCount());
+            strike = game.getStrikeCount();
+        }
+    }
+
+    private void play() {
+        game.initBaseBall();
+        user.setUserNumbers(getUserNumber());
+        computeScore();
+    }
+
+    private void incCount(int index, int temp) {
+        if (temp != index && temp != -1) {
+            game.incBallCount();
+        }
+        if (temp == index) {
+            game.incStrikeCount();
+        }
     }
 }
