@@ -43,16 +43,22 @@ public class BaseballNumbers {
     }
 
     private void validateDuplicateNumbers() {
-        boolean isDuplicatedValue = false;
-        for (int index = 0; index < ballNumbers.size()-1; index++) {
-            BaseballNumber baseballNumber = ballNumbers.get(index);
-            BaseballNumber nextBaseballNumber = ballNumbers.get(index + 1);
-            isDuplicatedValue = baseballNumber.equals(nextBaseballNumber);
+        for (int index = 0; index < ballNumbers.size(); index++) {
+            if(isDuplicateNumbers(index)) {
+                throw new IllegalArgumentException(DUPLICATE_NUMBER_EXCEPTION);
+            }
         }
+    }
 
-        if (isDuplicatedValue) {
-            throw new IllegalArgumentException(DUPLICATE_NUMBER_EXCEPTION);
+    private boolean isDuplicateNumbers(int index) {
+        BaseballNumber baseballNumber = ballNumbers.get(index);
+        for(int nextIndex = index; nextIndex < ballNumbers.size(); nextIndex++) {
+            BaseballNumber nextBaseballNumber = ballNumbers.get(nextIndex);
+            if(baseballNumber.equals(nextBaseballNumber)){
+                return true;
+            }
         }
+        return false;
     }
 
     public int getStrike(BaseballNumbers otherBaseballNumbers) {
