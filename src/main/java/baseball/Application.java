@@ -47,6 +47,8 @@ public class Application {
                 user.add(num);
             }
         }
+        //숫자 3개가 아닌 경우
+        if (user.size() != 3) throw new IllegalArgumentException();
 
         return user;
     }
