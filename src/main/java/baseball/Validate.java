@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Validate {
 	public static void checkCorrectInput(String number){
 		if (!isNumeric(number)){
@@ -11,6 +14,12 @@ public class Validate {
 		if (!isNumberLengthLegal(number)){
 			throw new IllegalArgumentException(
 				Message.USER_INPUT_LENGTH_INVALID.getMsg() +
+					Message.INVALID_INPUT_END_GAME.getMsg()
+			);
+		}
+		if (isDuplicated(number)){
+			throw new IllegalArgumentException(
+				Message.USER_INPUT_DUPLICATED.getMsg() +
 					Message.INVALID_INPUT_END_GAME.getMsg()
 			);
 		}
@@ -27,6 +36,15 @@ public class Validate {
 
 	public static boolean isNumberLengthLegal(String number){
 		return number.length() == Constant.NUMBER_LENGTH.getNumber();
+	}
+
+	public static boolean isDuplicated(String number){
+		String[] numberArr = number.split("");
+		ArrayList<String> numberList = new ArrayList<>(Arrays.asList(numberArr));
+		return numberList.stream()
+			.distinct()
+			.count()
+			!= number.length();
 	}
 
 }
