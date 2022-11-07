@@ -33,6 +33,7 @@ public class ViewTest {
                   .inputBaseballNumber();
 
     }
+
     @Test
     @DisplayName("view inputExitOrRestart() 호출 시 문자열이 반환되어야함")
     void inputExitOrRestart() {
@@ -62,7 +63,7 @@ public class ViewTest {
         String actual = outputStreamCaptor.toString()
                                           .trim();
         //then
-        assertEquals(actual,"1볼 2스트라이크");
+        assertEquals(actual, "1볼 2스트라이크");
 
     }
 }
