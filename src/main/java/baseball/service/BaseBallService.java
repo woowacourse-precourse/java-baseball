@@ -47,6 +47,7 @@ public class BaseBallService {
 
     public void resetGame() {
         baseBall.resetGame();
+        computer.resetGame();
     }
 
     public int getBall() {

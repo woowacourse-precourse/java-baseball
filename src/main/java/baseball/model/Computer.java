@@ -25,4 +25,9 @@ public class Computer {
     public void setComputerNumberList(List<Integer> computerNumberList) {
         this.computerNumberList = computerNumberList;
     }
+
+    public void resetGame() {
+        computerNumberList.clear();
+        randomGenerate();
+    }
 }
