@@ -35,7 +35,7 @@ public final class Validator {
             c[i] = s.charAt(i);
         }
         for (char check : c){
-            if (check >= 48&& c<=57){
+            if (check >= 48&& check<=57){
                 continue;
             } else{
                 return false;
