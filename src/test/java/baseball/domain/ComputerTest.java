@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class ComputerTest {
+
     private static Computer computer;
 
     @Test

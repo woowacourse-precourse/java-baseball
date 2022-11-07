@@ -1,4 +1,4 @@
-package baseball;
+package baseball.checker;
 
 public final class GuessChecker {
 

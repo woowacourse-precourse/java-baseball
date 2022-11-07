@@ -1,4 +1,4 @@
-package baseball;
+package baseball.checker;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

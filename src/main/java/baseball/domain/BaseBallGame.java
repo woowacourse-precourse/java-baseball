@@ -1,5 +1,8 @@
-package baseball;
+package baseball.domain;
 
+import baseball.checker.CommandChecker;
+import baseball.checker.GuessChecker;
+import baseball.view.Printer;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {

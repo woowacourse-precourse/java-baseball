@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
