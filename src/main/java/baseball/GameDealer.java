@@ -22,6 +22,25 @@ public class GameDealer {
         }
         return result;
     }
+
+
+    public static boolean CHECK_GAME_RETRY() throws IllegalArgumentException{
+        boolean result = true;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String ReTry_Intention = Console.readLine();
+
+        if(!CHECK_VALID_RETRY(ReTry_Intention)){
+            result = false;
+            throw new IllegalArgumentException();
+        }
+
+        if(ReTry_Intention.equals("1")){
+            result = true;
+        } else if(ReTry_Intention.equals("2")){
+            result = false;
+        }
+        return result;
+    }
     public static boolean CHECK_AND_PRINT_INFO(String User_Try){
         boolean result = true;
         int Cnt_Ball = 0;
