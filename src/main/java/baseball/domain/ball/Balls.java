@@ -1,21 +1,38 @@
-package baseball.domain;
+package baseball.domain.ball;
 
+import baseball.domain.result.PlayResult;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Balls {
 
+    private static final int BALLS_RULE_SIZE = 3;
     private final List<Ball> balls;
 
-    public Balls(List<Ball> balls) {
-        this.balls = balls;
+    public Balls(List<Integer> numbers) {
+        validate(numbers);
+        this.balls = new ArrayList<>();
+        mapToBalls(numbers);
     }
 
-    public static Balls of(List<Ball> balls) {
+    public static Balls of(List<Integer> balls) {
         return new Balls(balls);
     }
 
-    public int size() {
-        return balls.size();
+    private void validate(List<Integer> numbers) {
+        if (new HashSet<>(numbers).size() != numbers.size()) {
+            throw new IllegalArgumentException();
+        }
+        if (numbers.size() != BALLS_RULE_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void mapToBalls(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            balls.add(Ball.of(numbers.get(i), i + 1));
+        }
     }
 
     public PlayResult play(Balls target) {

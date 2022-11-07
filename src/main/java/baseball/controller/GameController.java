@@ -1,9 +1,8 @@
 package baseball.controller;
 
-import baseball.domain.BallFactory;
-import baseball.domain.Balls;
+import baseball.domain.ball.Balls;
 import baseball.domain.generator.NumberGenerator;
-import baseball.domain.PlayResult;
+import baseball.domain.result.PlayResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
@@ -37,11 +36,11 @@ public class GameController {
 
     private Balls getAnswer() {
         List<Integer> numbers = NumberGenerator.generateRandomNumbers();
-        return BallFactory.createBalls(numbers);
+        return Balls.of(numbers);
     }
 
     private Balls getPlayerBalls() {
         List<Integer> numbers = InputView.getInput();
-        return BallFactory.createBalls(numbers);
+        return Balls.of(numbers);
     }
 }
