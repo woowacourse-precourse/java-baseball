@@ -14,7 +14,7 @@ Player : 클라이언트(유저)와 소통한다
 - askNumbers : 유저에게서 3자리 수를 얻는다
   - 입력받은 값이 ***서로 다른 3자리 숫자***가 아닐 경우 `IllegalArgumentException`을 발생시킨다
 - askRegame : 유저가 게임을 다시 하길 원하는지 묻는다
-- printResult : 게임 결과를 출력한다
+- announce : 게임 진행상황를 출력한다
 
 Referee : 게임 결과를 알린다
 - plusGameCount : 게임 진행 횟수를 추가한다
