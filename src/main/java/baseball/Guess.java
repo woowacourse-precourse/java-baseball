@@ -16,7 +16,7 @@ public class Guess {
     }
 
     public static void checkGuess(String input) throws IllegalArgumentException {
-        if (input.length() != 3 || !isNumeric(input))
+        if (input.length() != 3 || !isNumeric(input) || isRepeated(input))
             throw new IllegalArgumentException(GAME_FINISH);
     }
 
@@ -39,5 +39,18 @@ public class Guess {
             isNumeric = false;
         }
         return isNumeric;
+    }
+
+    private static boolean isRepeated(String str) {
+        List<Character> chars = new ArrayList<>();
+
+        for (int i = 0; i < str.length(); i++) {
+            char num = str.charAt(i);
+            if (!chars.contains(num))
+                chars.add(num);
+            else
+                return true;
+        }
+        return false;
     }
 }
