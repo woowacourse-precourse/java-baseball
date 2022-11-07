@@ -1,8 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
@@ -14,6 +16,19 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(output));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(System.out);
+        output.reset();
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -217,6 +232,31 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(game.checkBallCount(testStrikeList1)).isEqualTo(2);
         assertThat(game.checkBallCount(testStrikeList2)).isEqualTo(3);
+    }
+
+    @Test
+    void 게임메세지검증_테스트() throws Exception{
+        //given
+        Computer computer = new Computer();
+        Game game = new Game(computer);
+        Method method = game.getClass().getDeclaredMethod("stringToIntegerList", String.class);
+        method.setAccessible(true);
+        //when
+        List<Integer> testNumber = (List<Integer>) method.invoke(game, "123");
+        computer.setComputerNumbers(testNumber);
+
+        List<Integer> test1 = new ArrayList<>();
+        test1.add(1);
+        test1.add(2);
+        test1.add(3);
+        int testOneStrike = game.checkStrikeCount(test1);
+        int testOneball = game.checkBallCount(test1);
+
+        game.setStrike(testOneStrike);
+        game.setBall(testOneball);
+        //then
+        game.gameMessage();
+        assertThat(output.toString().trim()).isEqualTo("3스트라이크");
     }
 
     @Override

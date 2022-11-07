@@ -19,6 +19,14 @@ public class Game {
         this.ball = 0;
     }
 
+    public void setStrike(int strike) {
+        this.strike = strike;
+    }
+
+    public void setBall(int ball) {
+        this.ball = ball;
+    }
+
     public void init() {
         computer.init();
         strike = 0;
@@ -43,6 +51,7 @@ public class Game {
             ball = checkBallCount(userNumbers);
 
             gameMessage();
+            System.out.print("\n");
         }
     }
 
