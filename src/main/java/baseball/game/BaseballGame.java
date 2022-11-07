@@ -13,9 +13,21 @@ public class BaseballGame {
 
 
   public GameResult start(GameInputNumber gameInputNumber){
-    /*
-    *  TODO : strike, ball 카운트 메소드 구현.
-    */
-    return null;
+
+    List<Integer> userNumbers = gameInputNumber.getNumbers();
+    int strikeCount =  countStrike(userNumbers);
+
+    return new GameResult(strikeCount, 0);
   }
+
+  private int countStrike(List<Integer> userNumbers){
+   int count = 0 ;
+   for(int i = 0; i < 3; i++){
+     if(computerNumbers.get(i).equals(userNumbers.get(i))){
+       count++;
+     }
+   }
+   return count;
+  }
+
 }
