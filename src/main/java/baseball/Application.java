@@ -19,6 +19,8 @@ public class Application {
         while (Program.isProgramEnd()) {
             InputView.displayInputNumberMessage();
             Game game = GameResultCalculator.calculateStrikeAndBallCount(InputView.getUserInputNumbers());
+            OutputView.displayGameResult(game);
+
         }
     }
 }
