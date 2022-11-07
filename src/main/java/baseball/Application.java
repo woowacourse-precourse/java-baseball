@@ -69,7 +69,7 @@ public class Application {
 
     private static void CheckGameRestart() {
         String userInput = GetUserInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", true);
-        if(userInput == "1")
+        if(userInput.equals("1"))
             StartGame();
     }
 
@@ -84,24 +84,19 @@ public class Application {
 
     public static void OutputString(String str, boolean isLineBreak){
         if(isLineBreak)
-            System.out.printf(str);
-        else
             System.out.println(str);
+        else
+            System.out.printf(str);
     }
 
     public static List<Integer> GetInputNumber(){
         //잘못입력된 경우 추가 체크
-        try {
-            String userInput = GetUserInput("숫자를 입력해주세요 : ", false);
+        String userInput = GetUserInput("숫자를 입력해주세요 : ", false);
 
-            if(!CheckMandatory(userInput))
-                throw new IllegalArgumentException("입력을 잘못하여 게임이 종료됩니다.");
+        if(!CheckMandatory(userInput))
+            throw new IllegalArgumentException("입력을 잘못하여 게임이 종료됩니다.");
 
-            return ParseStringToIntList(userInput);
-        }
-        catch (Exception e) {
-            return null;
-        }
+        return ParseStringToIntList(userInput);
     }
 
     public static List<Integer> ParseStringToIntList(String numStr){
@@ -113,9 +108,9 @@ public class Application {
     }
 
     public static String GetUserInput(String str, boolean lineBreak){
-        Scanner s = new Scanner(System.in);
         OutputString(str, lineBreak);
-        return s.next();
+        String userInput = camp.nextstep.edu.missionutils.Console.readLine();
+        return userInput;
     }
 
     /*
@@ -134,10 +129,10 @@ public class Application {
             if(userInputWord < '0' || userInputWord >'9')
                 return false;
 
-            if(checkSameNumArray[userInputWord])
+            if(checkSameNumArray[userInputWord - '0'])
                 return false;
 
-            checkSameNumArray[userInputWord] = true;
+            checkSameNumArray[userInputWord - '0'] = true;
         }
 
         return true;
