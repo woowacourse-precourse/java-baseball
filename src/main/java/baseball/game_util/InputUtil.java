@@ -3,3 +3,11 @@ import static baseball.common.Constants.MAX_USER_NUMBER_INPUT;
         return (userInput.length() == MAX_USER_NUMBER_INPUT);
     }
 
+    private static boolean isInRange(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            if (userInput.charAt(i) == '0') {
+                return false;
+            }
+        }
+        return true;
+    }
