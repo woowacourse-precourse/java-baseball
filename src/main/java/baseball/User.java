@@ -37,6 +37,10 @@ public class User {
     }
 
     private void isLegalNumber(String number) {
+        if (number.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+
         try {
             Integer.valueOf(number);
         } catch (NumberFormatException e) {
