@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
     public static String scanUserPitches(){
-        Output.requestPitching();
+        Output.printPitchingRequest();
         return Console.readLine();
     }
     public static String scanWhetherNewGame(){
-        Output.gameOverMessage();
+        Output.printGameOverMessage();
         return Console.readLine();
     }
 }
