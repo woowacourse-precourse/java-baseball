@@ -20,7 +20,6 @@ public class Application {
                 CompareNumbers strikeOrBall = new CompareNumbers();
                 data.setUserInput(game.userInput());
                 game.checkInput(data.getUserInput());
-                System.out.println(data.getUserInput());
                 strikeOrBall.checkNumber(data.getUserInput(), data.getAnswer());
                 data.setBall(strikeOrBall.ball);
                 data.setStrike(strikeOrBall.strike);
