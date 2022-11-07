@@ -4,11 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String userInput = new String();
         printGameStartMessage();
         do {
             printGameRestartMessage();
-        } while (parseUserInputForRestart());
+            userInput = Console.readLine();
+        } while (parseUserInputForRestart(userInput));
     }
 
     static void printGameStartMessage() {
@@ -19,8 +20,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    static boolean parseUserInputForRestart() {
-        String userInput = Console.readLine();
+    static boolean parseUserInputForRestart(String userInput) {
         if (userInput.equals("1")) {
             return true;
         } else if (userInput.equals("2")) {
