@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Application {
     public static final int DIGIT_MAX = 9;
 
     public static List<Integer> computerNumList = new ArrayList<>();
+    public static List<Integer> userNumList = new ArrayList<>();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -24,6 +26,11 @@ public class Application {
                 computerNumList.add(randomDigit);
             }
         }
+    }
+
+    private static void userInputThreeDigitNum() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInputNum = Console.readLine();
     }
 
 }
