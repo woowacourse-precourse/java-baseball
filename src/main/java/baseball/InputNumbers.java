@@ -14,7 +14,10 @@ public class InputNumbers {
         String userInput = Console.readLine();
         validInputNumber(userInput);
         System.out.println(userInput);
+        return makeList(userInput);
+    }
 
+    public static List<Integer> makeList(String userInput) {
         List<Integer> inputNumbers = new ArrayList<>();
         for (int idx = INITIAL_NUMBER; idx < NUMBER_LENGTH; idx++) {
             inputNumbers.add(userInput.charAt(idx) - ZERO_ASCII);
