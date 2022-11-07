@@ -22,18 +22,48 @@ public class BaseballService {
         }
     }
 
+    public BaseBallDto getResult(List<Integer> userBaseballNumberList) {
+        int ball = getBall(userBaseballNumberList);
+        int strike = getStrike(userBaseballNumberList);
+        ball -= strike;
+        return new BaseBallDto(strike, ball);
+
+    }
+
+    private int getBall(List<Integer> userBaseballNumberList) {
+        List<Integer> baseballNumberList = computerBaseball.getBaseballNumberList();
+        return (int) userBaseballNumberList.stream()
+                                           .filter(baseballNumberList::contains)
+                                           .count();
+    }
+
+    private int getStrike(List<Integer> userBaseballNumberList) {
+        List<Integer> computerBaseballNumberList = computerBaseball.getBaseballNumberList();
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            Integer computerNumber = computerBaseballNumberList.get(i);
+            Integer userNumber = userBaseballNumberList.get(i);
+            if (computerNumber.equals(userNumber)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
     private List<Integer> createBaseballNumberList() {
         String baseballNumber = getBaseballNumber();
+        System.out.println(baseballNumber);
         return Stream.of(baseballNumber.split(""))
                      .map(Integer::parseInt)
                      .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private String  getBaseballNumber() {
+    private String getBaseballNumber() {
         String baseballNumber = view.inputBaseballNumber();
         validateBaseballNumber(baseballNumber);
         return baseballNumber;
     }
+
     private void validateBaseballNumber(String baseballNumber) {
         if (baseballNumber.length() > 3) {
             throw new IllegalArgumentException();
