@@ -13,19 +13,23 @@ import static baseball.domain.BaseballNumber.valueOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 @DisplayName("BaseballNumbers 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BaseballNumbersTest {
 
-    private BaseballNumbers generateBaseballNumbers(int ballA, int ballB, int ballC) {
+    private static BaseballNumbers generateBaseballNumbers(int ballA, int ballB, int ballC) {
         return new BaseballNumbers(List.of(
                 valueOf(ballA),
                 valueOf(ballB),
@@ -64,111 +68,28 @@ class BaseballNumbersTest {
         private BaseballNumbers computer = generateBaseballNumbers(9, 3, 1);
 
         @Nested
-        class 만약_3개의_숫자를_모두_맞춘_경우 {
+        class 사용자의_값이_입력된_경우 {
 
-            private BaseballNumbers player = generateBaseballNumbers(9, 3, 1);
-
-            @Test
-            void _3_Strike_0_Ball의_값을_가진_BaseballGameResult를_반환한다() {
+            @ParameterizedTest(name = "컴퓨터가 [9, 3, 1]일 때 {0}이 입력된 경우 결과는 {1}")
+            @MethodSource("baseball.domain.BaseballNumbersTest#baseballGameNumbersAndGameResult")
+            void 컴퓨터와의_게임_결과를_반환한다(BaseballNumbers player, BaseballGameResult expectGameResult) {
                 BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_3_STRIKE);
+                assertThat(gameResult).isEqualTo(expectGameResult);
             }
         }
+    }
 
-        @Nested
-        class 만약_추론된_수가_하나도_없는_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(2, 4, 7);
-
-            @Test
-            void _0_Strike_0_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_NOTHING);
-            }
-        }
-
-        @Nested
-        class 만약_2개의_숫자를_맞춘_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(4, 3, 1);
-
-            @Test
-            void _2_Strike_0_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_2_STRIKE);
-            }
-        }
-
-        @Nested
-        class 만약_상대방이_1개의_숫자를_맞추고_2개는_위치가_다른_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(9, 1, 3);
-
-            @Test
-            void _1_Strike_2_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_1_STRIKE_2_BALL);
-            }
-        }
-
-        @Nested
-        class 만약_1개의_숫자를_맞추고_1개는_위치가_다른_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(9, 5, 3);
-
-            @Test
-            void _1_Strike_1_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_1_STRIKE_1_BALL);
-            }
-        }
-
-        @Nested
-        class 만약_1개의_숫자를_맞춘_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(4, 8, 1);
-
-            @Test
-            void _1_Strike_0_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_1_STRIKE);
-            }
-        }
-
-        @Nested
-        class 만약_맞춘공이_없고_1개가_위치가_다른_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(2, 1, 4);
-
-            @Test
-            void _0_Strike_1_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_1_BALL);
-            }
-        }
-
-        @Nested
-        class 만약_맞춘공이_없고_2개가_위치가_다른_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(3, 7, 9);
-
-            @Test
-            void _0_Strike_2_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_2_BALL);
-            }
-        }
-
-        @Nested
-        class 만약_맞춘공이_없고_3개가_위치가_다른_경우 {
-
-            private BaseballNumbers player = generateBaseballNumbers(3, 1, 9);
-
-            @Test
-            void _0_Strike_3_Ball의_값을_가진_BaseballGameResult를_반환한다() {
-                BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_3_BALL);
-            }
-        }
+    static List<Arguments> baseballGameNumbersAndGameResult() {
+        return Arrays.asList(
+                Arguments.of(generateBaseballNumbers(9, 3, 1), _3_STRIKE),
+                Arguments.of(generateBaseballNumbers(4, 3, 1), _2_STRIKE),
+                Arguments.of(generateBaseballNumbers(4, 5, 1), _1_STRIKE),
+                Arguments.of(generateBaseballNumbers(9, 1, 3), _1_STRIKE_2_BALL),
+                Arguments.of(generateBaseballNumbers(9, 1, 7), _1_STRIKE_1_BALL),
+                Arguments.of(generateBaseballNumbers(1, 9, 3), _3_BALL),
+                Arguments.of(generateBaseballNumbers(3, 1, 5), _2_BALL),
+                Arguments.of(generateBaseballNumbers(3, 6, 5), _1_BALL),
+                Arguments.of(generateBaseballNumbers(8, 2, 4), _NOTHING)
+        );
     }
 }

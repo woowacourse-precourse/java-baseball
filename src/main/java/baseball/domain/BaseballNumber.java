@@ -20,6 +20,11 @@ public class BaseballNumber {
         this.number = number;
     }
 
+    @Override
+    public String toString() {
+        return number.toString();
+    }
+
     public static BaseballNumber valueOf(Integer number) {
         validate(number);
         return CACHE.get(number);

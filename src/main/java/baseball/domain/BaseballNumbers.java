@@ -18,6 +18,11 @@ public class BaseballNumbers {
         this.baseballNumbers = baseballNumbers;
     }
 
+    @Override
+    public String toString() {
+        return baseballNumbers.toString();
+    }
+
     private void validateSize(List<BaseballNumber> baseballNumbers) {
         if (baseballNumbers.size() != BASEBALL_NUMBERS_SIZE) {
             throw new BaseballGameException();
