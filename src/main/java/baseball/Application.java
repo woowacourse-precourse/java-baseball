@@ -6,6 +6,9 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        String userInput;
+        int status=1;
+
         // 1. 시작 멘트
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -16,6 +19,12 @@ public class Application {
             if (!computer.contains(randomNumber)){
                 computer.add(randomNumber);
             }
+        }
+        while (status==1) {
+            // 3. 사용자 입력 받기
+            Scanner sc1 = new Scanner(System.in);
+            System.out.println("숫자를 입력해주세요 : ");
+            userInput = sc1.next();
         }
     }
 }
