@@ -13,15 +13,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class GameNumberTest {
 
-    static abstract class ConstructorTestExceptionMessageConst {
-
-        protected static final String WRONG_SIZE = "허용되지 않는 정답 길이입니다.";
-        protected static final String WRONG_NUMBER = "허용되지 않는 숫자입니다.";
-    }
-
     @Nested
     @DisplayName("int number, int index를 매개변수로 받는 생성자는")
-    class IntIntConstructorTest extends ConstructorTestExceptionMessageConst {
+    class IntIntConstructorTest extends ConstructorTestExceptionMessage {
 
         @ParameterizedTest
         @CsvSource(
@@ -62,7 +56,7 @@ class GameNumberTest {
 
     @Nested
     @DisplayName("char numberChar, int index를 매개변수로 받는 생성자는")
-    class CharIntConstructorTest extends ConstructorTestExceptionMessageConst {
+    class CharIntConstructorTest extends ConstructorTestExceptionMessage {
         @ParameterizedTest
         @CsvSource(
                 value = {
@@ -109,16 +103,9 @@ class GameNumberTest {
         }
     }
 
-    static abstract class StandardGameNumberClass {
-
-        protected final int number = 1;
-        protected final int index = 1;
-        protected final GameNumber standardGameNumber = new GameNumber(number, index);
-    }
-
     @Nested
     @DisplayName("equals 메소드는")
-    class EqualsMethodTest extends StandardGameNumberClass {
+    class EqualsMethodTest extends StandardGameNumber {
 
         @Test
         @DisplayName("만약 number와 index의 값이 동일한 GameNumber가 주어지면 true를 반환한다.")
@@ -146,7 +133,7 @@ class GameNumberTest {
 
     @Nested
     @DisplayName("equalsWithoutIndex 메소드는")
-    class EqualsWithoutIndexMethodTest extends StandardGameNumberClass {
+    class EqualsWithoutIndexMethodTest extends StandardGameNumber {
 
         @ParameterizedTest
         @ValueSource(
