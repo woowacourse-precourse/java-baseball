@@ -58,4 +58,14 @@ public class HintService {
             sb.append(number).append(strike).append(" ");
         }
     }
+
+    public void printBallHint(int number, String ball) {
+
+        if (number - strike <= 0) {
+            return;
+        }
+        if (number != 0) {
+            sb.append(number - strike).append(ball).append(" ");
+        }
+    }
 }
