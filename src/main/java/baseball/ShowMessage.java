@@ -26,7 +26,6 @@ public class ShowMessage {
 
     // 숫자 입력
     public static void showInputNumber() {
-        System.out.println();
         System.out.print(INPUT_NUMBER_MESSAGE);
     }
 
@@ -51,7 +50,13 @@ public class ShowMessage {
     }
 
     public void showGameScore(int ballCount, int strikeCount) {
-        System.out.println(ballCount + BALL_WORD + " " + strikeCount + STRIKE_WORD);
+        if(strikeCount == 0){
+            System.out.println(ballCount+BALL_WORD);
+        } else if (ballCount == 0) {
+            System.out.println(strikeCount+STRIKE_WORD);
+        }else {
+            System.out.println(ballCount + BALL_WORD + " " + strikeCount + STRIKE_WORD);
+        }
     }
 
 }
