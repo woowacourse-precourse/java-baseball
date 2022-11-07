@@ -104,20 +104,29 @@ public class Service {
         }
     }
 
+    public boolean checkAnswer(Map<String, Integer> ballCount, int gameClearConditions) {
+        boolean isWrongAnswer = true;
+
+        if (ballCount.get("strikeCount").equals(gameClearConditions)) {
+            isWrongAnswer = askEndingCondition(gameClearConditions);
+        }
+        return isWrongAnswer;
+    }
+
     private boolean askEndingCondition(int gameClearCondition) {
-        boolean maintain = false;
+        boolean isMaintain = false;
         System.out.println(gameClearCondition + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String askingFinish = Console.readLine();
 
         if (askingFinish.equals("1")) {
-            maintain = true;
+            isMaintain = true;
         } else if (askingFinish.equals("2")) {
-            maintain = false;
+            isMaintain = false;
         } else {
             throw new IllegalArgumentException();
         }
-        return maintain;
+        return isMaintain;
     }
 
 }
