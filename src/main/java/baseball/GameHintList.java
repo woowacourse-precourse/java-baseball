@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class GameHintList {
     static ArrayList<String> computerSelectedNumbers;
@@ -18,6 +20,20 @@ public class GameHintList {
             allHintHashMap.put("스트라이크", countOfStrike());
         }
         return allHintHashMap;
+    }
+
+    public StringBuilder sortHintHashMap() {
+        HashMap<String, Integer> allHintHashMap = allGameHintList();
+        List<String> keySet = new ArrayList<>(allHintHashMap.keySet());
+        Collections.sort(keySet);
+
+        StringBuilder hintlist = new StringBuilder();
+
+        for (String key : keySet) {
+            hintlist.append(allHintHashMap.get(key)).append(key).append(' ');
+        }
+
+        return hintlist;
     }
 
     public static int countOfStrike() {
