@@ -12,6 +12,14 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    private static int playGame(Number computer) {
+        ResponseMessage.inputNumber();
+        Number user = new Number(Console.readLine());
+        Exception.handleException(user.getUserNumbers());
+        Baseball baseball = new Baseball(computer.getComputers(), user.getUserNumbers());
+        return baseball.getStrike();
+    }
+
     private static void stopGame(int strikeNumber) {
         if (strikeNumber == STOP_GAME) {
             ResponseMessage.allStrike();
