@@ -14,6 +14,7 @@ public class Controller {
         setAnswer();
         while(true) {
             inputUserNumber();
+            String hint = computer.getHint(user.getInputNumber());
         }
     }
 
