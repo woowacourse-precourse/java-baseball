@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.game_util.InputUtil;
+import baseball.game_util.RandomUtil;
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -32,4 +35,64 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+    
+    @Test
+    void 동일한_인풋값이_두번_들어온_경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("115"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 서로다른_랜덤_숫자_생성_테스트() {
+        int[] randomNumber = RandomUtil.createRandomComputerNumbers();
+        assertThat(randomNumber[0]).isNotEqualTo(randomNumber[1]).isNotEqualTo(randomNumber[2]);
+    }
+    @Test
+    void 게임실행_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("456", "789", "123", "2");
+                    assertThat(output()).contains("낫싱", "낫싱", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+    @Test
+    void 문자열_입력이_들어온_경우_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("S12"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                }, 1, 2, 3
+        );
+    }
+    @Test
+    void 두개의_입력만_들어온_경우_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("11"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                }, 1, 2, 3
+        );
+    }
+    @Test
+    void 네개_이상의_입력값이_들어온_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("1234"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                }, 1, 2, 3
+        );
+    }
+    @Test
+    void 게임_종료후_1과2가_아닌_인풋이_들어온_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("123", "0"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                }, 1, 2, 3
+        );
+    }
+
 }
