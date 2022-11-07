@@ -57,13 +57,13 @@ public class Service {
         boolean flag = false;
         String result = "";
 
-        if (strike != 0 && strike != 3 && ball != 0) {
+        if (strike != 0 && ball != 0) {
             result = ball + BALL + " " + strike + STRIKE;
         } else if (strike == 0 && ball != 0) {
             result = ball + BALL;
-        } else if (ball == 0 && strike != 3 && strike != 0) {
+        } else if (strike != 3 && strike != 0) {
             result = strike + STRIKE;
-        } else if (ball == 0 && strike == 0) {
+        } else if (strike == 0) {
             result = NOTHING;
         } else if (strike == 3) {
             result = strike + STRIKE;
