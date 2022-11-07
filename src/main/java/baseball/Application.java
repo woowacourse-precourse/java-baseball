@@ -117,6 +117,16 @@ public class Application {
             throw new IllegalArgumentException("사용자가 잘못된 값을 입력하였습니다.");
     }
 
+    public static boolean approveOfContinueGame(){
+        String playerReply = Console.readLine();
+        checkValidPlayerReply(playerReply);
+
+        if("1".equals(playerReply.charAt(0)))
+            return true;
+        else
+            return false;
+    }
+
     public static class StrikeBallResult{
         int strikeCnt;
         int ballCnt;
