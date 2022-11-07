@@ -25,7 +25,7 @@ public class Application {
     	while(true) {
 	    	// 랜덤 수 발생
     		computer = makeComputer();
-	    	
+    		
 	    	while(start == 1) {
 		    	// 사용자 입력
 		    	System.out.print(inputMessage);
