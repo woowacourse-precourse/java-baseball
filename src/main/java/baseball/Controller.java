@@ -23,4 +23,8 @@ public class Controller {
 		service.playGame();
 	}
 
+	public void endMassage() {
+		System.out.println(systamMassage.PrintGoal());
+	}
+
 }
