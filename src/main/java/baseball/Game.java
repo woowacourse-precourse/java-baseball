@@ -5,20 +5,34 @@ public class Game {
 	private static final String STRIKE_STR = "스트라이크";
 	private static final String NOTHING = "낫싱";
 	private static final int CNT_NUMBER = 3;
-
+	
 	private int[] player;
 	private int[] computer;
+	private boolean exit = false;
+	
+	private int strike = 0;
+	private int ball = 0;
 
-	private int strike;
-	private int ball;
+	public void startGame() {
+		Number playerNumber = new Number();
+		Number computerNumber = new Number();
 
-	public Game(int[] player, int[] computer) {
-		this.player = player;
-		this.computer = computer;
-		this.strike = 0;
-		this.ball = 0;
+		computerNumber.setRandomNumber();
+		computer = computerNumber.getDigits();
+		
+		while(!exit) {
+			playerNumber.inputAnswer();
+			player = playerNumber.getDigits();
+			
+			resetScore();
+			calculateScore();
+			printResult();
+			
+			if(strike == CNT_NUMBER) {
+				askExit(computerNumber); 
+			}
+		}
 	}
-
 	public void printResult() {
 		System.out.println(getResultString());
 	}
