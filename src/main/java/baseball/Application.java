@@ -9,10 +9,16 @@ public class Application {
     public static void main(String[] args) {
         int end = 0;
         List<Integer> computer = makeAns();
+        List<Integer> info;
+        System.out.println(computer);
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (end != 2) {
-            if(compareAns(computer,getInput()) == 3){
-                System.out.println("Restart 1, End 2 ");
+            info = compareAns(computer, getInput());
+            System.out.println(printInfo(info));
+            if (info.get(0) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 computer = makeAns();
                 end = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
             }
@@ -31,57 +37,63 @@ public class Application {
         return computer;
     }
 
-    static List<Integer> getInput() {
-        int input = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
-        //try catch 문?
-        List<Integer> userInput = new ArrayList<>();
-        while (input > 0) {
-            userInput.add(0, input % 10);
-            input /= 10;
+
+    static int[] getInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+        int[] userInput = new int[3];
+        int idx =2;
+
+        try{
+            int input = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+            if (input > 999){
+                throw new IllegalArgumentException();
+            }
+
+            while (input > 0) {
+                userInput[idx] = input % 10;
+                input /= 10;
+                idx -= 1;
+            }
+
+        }catch (IllegalArgumentException e){
+            System.exit(0);
         }
-        return userInput;
+        finally {
+            return userInput;
+        }
     }
 
-    static int compareAns(List<Integer> computer, List<Integer> input) {
+    static List<Integer> compareAns(List<Integer> computer, int[] input) {
+        List<Integer> ans = new ArrayList<>();
         int strike = 0;
         int ball = 0;
-
-        if (computer.contains(input.get(0))) {
-            if (computer.get(0).equals(input.get(0))) {
-                strike += 1;
-            } else {
+        for (int i = 0; i < 3; i++) {
+            if (computer.contains(input[i])) {
                 ball += 1;
             }
-        }
-        if (computer.contains(input.get(1))) {
-            if (computer.get(1).equals(input.get(1))) {
+            if (computer.get(i).equals(input[i])) {
                 strike += 1;
-            } else {
-                ball += 1;
             }
         }
-        if (computer.contains(input.get(2))) {
-            if (computer.get(2).equals(input.get(2))) {
-                strike += 1;
-            } else {
-                ball += 1;
-            }
-        }
-
-        if (strike == 0) {
-            if (ball == 0) {
-                System.out.println("Nothing");
-            } else {
-                System.out.printf("%dBall %n", ball);
-            }
-        } else {
-            if (ball == 0) {
-                System.out.printf("%dStrike %n", strike);
-            } else {
-                System.out.printf("%dStrike %dBall %n", strike, ball);
-            }
-        }
-
-        return strike;
+        ball -= strike;
+        ans.add(strike);
+        ans.add(ball);
+        return ans;
     }
+
+    static String printInfo(List<Integer> ans) {
+        String info = "";
+        if (ans.get(0).equals(0) && ans.get(1).equals(0)) {
+            info += "낫싱";
+        } else if (ans.get(0).equals(0)) {
+            info = info + ans.get(1) + "볼";
+
+        } else if (ans.get(1).equals(0)) {
+            info = info + ans.get(0) + "스트라이크";
+        } else {
+            info = info + ans.get(1) + "볼 " + ans.get(0) + "스트라이크";
+        }
+        return info;
+    }
+
 }
