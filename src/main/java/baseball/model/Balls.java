@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Balls {
     public static final int NUMBER_OF_BALLS = 3;
+    public static final String ERR_DUPLICATE_INPUT = "중복 되지 않는 수를 입력해주세요.";
     private final List<Ball> balls;
 
     public Balls(List<Ball> balls) {
@@ -19,7 +20,7 @@ public class Balls {
                 .collect(Collectors.toSet());
 
         if (numbers.size() != NUMBER_OF_BALLS)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERR_DUPLICATE_INPUT);
     }
 
     public boolean isBall(Ball other) {

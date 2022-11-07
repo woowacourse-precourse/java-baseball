@@ -25,7 +25,7 @@ public class InputView {
         Pattern pattern = Pattern.compile("^[1-9]{3}$");
         Matcher matcher = pattern.matcher(input);
         if (!matcher.matches()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 숫자는 1 ~ 9의 자릿수를 가진 3 자리 숫자입니다.");
         }
         return asBalls(input);
     }
