@@ -23,6 +23,18 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    private int StrikeOrBall(int num, int index) {
+        for(int i = 0; i<cnt_nbr; i++) {
+            if(computer[i] == num && i == index) {
+                return strike_nbr;
+            }
+            if(computer[i] == num) {
+                return ball_nbr;
+            }
+        }
+        return -1;
+    }
+
     private void printResult() {
         System.out.println(getResStr());
 
