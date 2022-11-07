@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Game {
+    final static int BALL = 1;
+    final static int STRIKE = 0;
     final static String WIN_CONDITION = "3스트라이크";
     final static int NUMBER_LENGTH = 3;
     private Computer computer;
@@ -39,23 +41,28 @@ public class Game {
     }
 
     public String getResult(String computerRandomNumbers, String gamePlayerInput) {
-        List<Integer> result = new ArrayList<>(3);
-        Integer strikes = countStrikes(computerRandomNumbers, gamePlayerInput);
-        Integer balls = countBalls(computerRandomNumbers, gamePlayerInput ) - strikes;
+        List<Integer> result = new ArrayList<>(2);
+        result.add(countStrikes(computerRandomNumbers, gamePlayerInput));
+        result.add(countBalls(computerRandomNumbers, gamePlayerInput ) - result.get(STRIKE));
 
-        if (balls > 0) {
-            result.append(balls + "볼 ");
+        return getResultMessage(result);
+    }
+
+    private String getResultMessage(List<Integer> result) {
+        String resultMessage = "";
+        if (result.get(BALL) > 0) {
+            resultMessage = resultMessage.concat(Integer.toString(result.get(BALL)) + "볼 ");
         }
 
-        if (strikes > 0) {
-            result.append(strikes + "스트라이크");
+        if (result.get(STRIKE) > 0) {
+            resultMessage = resultMessage.concat(Integer.toString(result.get(STRIKE)) + "스트라이크");
         }
 
-        if (strikes == balls && balls == 0) {
-            result.append("낫싱");
+        if (resultMessage.length() ==  0) {
+            resultMessage = "낫싱";
         }
 
-        return result.toString();
+        return resultMessage;
     }
 
     private Integer countStrikes(String computerRandomNumbers, String gamePlayerInput) {
