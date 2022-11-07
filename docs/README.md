@@ -8,8 +8,9 @@
   - "숫자 야구 게임을 시작합니다."를 출력하는 함수
 
 
-- void playGame(List<Integer>)
+- boolean playGame(List<Integer>)
   - 숫자 야구 게임이 실제 진행되는 함수
+  - 잘못된 값이 입력되었을 경우 false를 리턴한다
 
 - void putInRandomNumber(List<Integer>)
   - 랜덤한 숫자 세 개를 randomNumberList에 add하는 함수
@@ -68,6 +69,7 @@
 
 - boolean replayGame()
   - 게임을 재시작할지, 종료할지 결정하는 함수
+  - 잘못된 값이 입력되었을 경우 false를 반환한다
   
 
 - boolean checkReplayNumber(String)
