@@ -2,20 +2,19 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.generateAnswer;
-import static baseball.Application.getUserInput;
+import static baseball.Application.getInputAsList;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -70,18 +69,21 @@ class ApplicationTest extends NsTest {
     @DisplayName("유저 인풋 테스트")
     class UserInputTest {
 
-        String userInput = "123";
+        String input = "123";
+        List<Integer> result = Arrays.stream(input.split(""))
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
 
         @BeforeEach
         void beforeEach() {
-            InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+            InputStream inputStream = new ByteArrayInputStream(input.getBytes());
             System.setIn(inputStream);
         }
 
         @Test
-        @DisplayName("유저 인풋이 아웃풋과 같은 지 확인")
-        void checkUserInput() {
-            assertThat(getUserInput()).isEqualTo(userInput);
+        @DisplayName("리스트 형식으로 변환")
+        void checkInputToList() {
+            assertThat(getInputAsList()).isEqualTo(result);
         }
     }
 
