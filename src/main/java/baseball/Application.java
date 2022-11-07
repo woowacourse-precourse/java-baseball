@@ -14,13 +14,29 @@ import static baseball.validator.NumbersValidator.*;
 public class Application {
     private final static int INPUT_DIGIT = 3;
     private final static String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private final static String GAME_RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void main(String[] args) {
         List<Integer> computerNumbers = getComputerRandomNumbers();
 
+        Boolean play = true;
         System.out.println(GAME_START_MESSAGE);
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> playerNumbers = getPlayerRandomNumbers();
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> playerNumbers = getPlayerRandomNumbers();
+            String result = baseBallGame(computerNumbers, playerNumbers);
+            System.out.println(result);
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                play = restartOrEndGame();
+            }
+        } while (play);
+    }
+
+    static boolean restartOrEndGame() {
+        System.out.println(GAME_RESTART_OR_END_MESSAGE);
+        int startOrEnd = Integer.parseInt(Console.readLine());
+        return startOrEnd == 1;
     }
 
     static String baseBallGame(List<Integer> computerNumbers, List<Integer> playerNumbers) {
@@ -70,9 +86,8 @@ public class Application {
 
         List<Integer> player = new ArrayList<>();
         for (char inputChar : input.toCharArray()) {
-            validateRange((int) inputChar);
-            player.add((int) inputChar);
-            System.out.println(player);
+            validateRange(Character.getNumericValue(inputChar));
+            player.add(Character.getNumericValue(inputChar));
         }
         validateDuplicateNumber(player);
         return player;
