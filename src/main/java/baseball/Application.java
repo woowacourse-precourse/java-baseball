@@ -8,6 +8,9 @@ public class Application {
     static final int RANDOM_NUMBER_LENGTH = 3;
     static final int RANDOM_NUMBER_FIRST_RANGE = 1;
     static final int RANDOM_NUMBER_LAST_RANGE = 9;
+    static final int STRIKE = 1;
+    static final int NOT_STRIKE = 0;
+    
     static final String REGEX_PATTERN = "[+-]?\\d*(\\.\\d+)?";
     static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -44,6 +47,16 @@ public class Application {
         if (!userGuessNumber.matches(REGEX_PATTERN)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    static public int isStrike(int randomNumberIndex, int userGuessNumberIndex, char randomNumberDigit, char userGuessNumberDigit) {
+        boolean sameIndex = randomNumberIndex == userGuessNumberIndex;
+        boolean sameDigit = randomNumberDigit == userGuessNumberDigit;
+
+        if (sameIndex && sameDigit) {
+            return STRIKE;
+        }
+        return NOT_STRIKE;
     }
 
     public static void main(String[] args) {
