@@ -19,4 +19,8 @@ class Exception {
         return userNumbers.stream()
                 .distinct().collect(Collectors.toList());
     }
+
+    static boolean isInvalidLength(List<Integer> userNumbers) {
+        return userNumbers.size() != NUMBER_SIZE;
+    }
 }
