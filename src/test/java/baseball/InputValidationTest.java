@@ -5,8 +5,11 @@ import baseball.io.InputValidator;
 import baseball.io.PlayingInputValidator;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InputValidationTest {
 
@@ -65,5 +68,23 @@ public class InputValidationTest {
     }
   }
 
+  private InputStream readUserInput(String input) {
+    return new ByteArrayInputStream(input.getBytes());
+  }
 
+  @Test
+  void 유저가_게임_재시작을_위해_1을_입력한_경우_정상적으로_동작하는가() {
+
+    // given
+    GameController controller = new GameController();
+    InputStream inputStream = readUserInput("1");
+    System.setIn(inputStream);
+
+    // when
+    boolean isItRestartInput = controller.checkRestart();
+
+    // then
+    assertEquals(true, isItRestartInput);
+
+  }
 }
