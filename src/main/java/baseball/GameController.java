@@ -10,33 +10,33 @@ import baseball.view.OutputView;
 public class GameController {
     private static final int[] STRIKE_3 = {0, 3};
     private static final String GAME_RESTART_CODE = "1";
-    private final InputView iv;
-    private final OutputView ov;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    public GameController(InputView iv, OutputView ov) {
-        this.iv = iv;
-        this.ov = ov;
+    public GameController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run() {
         do {
             startGame();
-            ov.printRestartMessage();
-        } while (iv.askRestart().equals(GAME_RESTART_CODE));
+            outputView.printRestartMessage();
+        } while (inputView.askRestart().equals(GAME_RESTART_CODE));
     }
 
     private void startGame() {
-        ov.printGameStartMessage();
+        outputView.printGameStartMessage();
         BaseballNumber computer = BaseballNumber.createByRandom();
         int[] result;
 
         do {
-            ov.printInputMessage();
-            BaseballNumber user = BaseballNumber.createByUserInput(iv.getUserBaseballNumber());
+            outputView.printInputMessage();
+            BaseballNumber user = BaseballNumber.createByUserInput(inputView.getUserBaseballNumber());
             result = BaseballGameCalculator.calculateBallStrikeCount(computer, user);
-            ov.printBSOResult(result);
+            outputView.printBSOResult(result);
         } while (!Arrays.equals(result, STRIKE_3));
 
-        ov.print3StrikeMessage();
+        outputView.print3StrikeMessage();
     }
 }
