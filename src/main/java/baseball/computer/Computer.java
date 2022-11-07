@@ -10,6 +10,8 @@ public class Computer {
     private List<Integer> answers;
     private boolean finished;
 
+    private User user;
+
     private void setFinish(User user) {
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
         String userInput = user.getUserInput();
@@ -39,7 +41,7 @@ public class Computer {
         return computer;
     }
 
-    public void guessNumber(Integer n, User user) {
+    public void guessNumber(Integer n) {
         int strike = 0;
         int ball = 0;
 
@@ -75,7 +77,7 @@ public class Computer {
         }
     }
 
-    public Integer getUserInput(User user) {
+    public Integer getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = user.getUserInput();
 
@@ -96,5 +98,9 @@ public class Computer {
 
     public boolean finished() {
         return this.finished;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

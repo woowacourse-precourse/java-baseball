@@ -8,11 +8,12 @@ public class Application {
         // TODO: 프로그램 구현
         Computer computer = new Computer();
         User user = new User();
+        computer.setUser(user);
 
         computer.start();
         while (!computer.finished()) {
-            Integer userInput = computer.getUserInput(user);
-            computer.guessNumber(userInput, user);
+            Integer userInput = computer.getUserInput();
+            computer.guessNumber(userInput);
         }
     }
 }
