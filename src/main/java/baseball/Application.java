@@ -13,23 +13,49 @@ public class Application {
         int[] userNumbers;
         int[] gameResult;
         String userNumber;
+        String commandNumber;
+        int command;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
+
             System.out.print("숫자를 입력해주세요 : ");
 
             userNumber = Console.readLine();
 
-            isValidUserNumber(userNumber);
+            if (!isValidUserNumber(userNumber)) {
+                continue;
+            }
             userNumbers = getNumbersToUserNumber(userNumber);
             gameResult = getGameResult(computerNumbers, userNumbers);
+
             printGameResult(gameResult);
 
-            if (gameResult[0] == 3) {
-
+            if (!isThreeStrike(gameResult[0])) {
+                continue;
             }
-            break;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            commandNumber = Console.readLine();
+            isValidCommandNumber(commandNumber);
+            command = getNumber(commandNumber);
+
+            if (isReStartGame(command)) {
+                computerNumbers = getRandomNumbers();
+            } else {
+                break;
+            }
         }
+    }
+
+    static boolean isThreeStrike(int strikeCount) {
+        return strikeCount == 3;
+    }
+
+    static boolean isReStartGame(int startGame) {
+        return startGame == 1;
     }
 
     static void printGameResult(int[] gameResult) {
