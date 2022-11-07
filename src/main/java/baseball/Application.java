@@ -17,7 +17,6 @@ public class Application {
             input = Console.readLine();
             List<Integer> inputNumbers = Util.toIntegerArray(input);
             String comment = takeTurn(computer, inputNumbers);
-
             break outer;
         }
     }
@@ -31,10 +30,24 @@ public class Application {
     }
 
     private static String countStrike(List<Integer> computer, List<Integer> inputNumbers) {
-        return null;
+        int strikes = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(inputNumbers.get(i))) {
+                strikes++;
+            }
+        }
+        return setStrikeComment(strikes);
+    }
+
+    private static String setStrikeComment(int strikes) {
+        String strikeComment = String.format("%d스트라이크",strikes);
+        if (strikes == 0) {
+            strikeComment = "";
+        }
+        return strikeComment;
     }
 
     private static String countBall(List<Integer> computer, List<Integer> inputNumbers) {
-        return null;
+        return " ";
     }
 }
