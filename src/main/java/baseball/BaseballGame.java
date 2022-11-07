@@ -7,13 +7,16 @@ import java.util.ArrayList;
 public class BaseballGame {
     private ArrayList<Integer> comAnswer = new ArrayList<>();
 
-    public void initAnswer() {
+    private void initAnswer() {
         while (comAnswer.size() < 3) {
             int randomInt = Randoms.pickNumberInRange(1, 9);
 
             if (comAnswer.indexOf(randomInt) == -1)
                 comAnswer.add(randomInt);
         }
-        System.out.println(comAnswer);
     }
+
+//    public ArrayList<Integer> inputAnswer() {
+//
+//    }
 }
