@@ -1,6 +1,8 @@
 package baseball;
 
 public class ValidInput {
+
+    // 사용자의 입력의 길이가 3인지를 검출하는 메소드
     public void inspectInputLength(String userInput) throws IllegalArgumentException {
         // 문자열 길이 검사
         if (userInput.length() != 3) {
@@ -8,6 +10,7 @@ public class ValidInput {
         }
     }
 
+    // 사용자의 입력에 숫자외에 다른 문자가 존재하는지 검출하는 메소드
     public void inspectAlphabetOrSpecialCharacter(String userInput) throws IllegalArgumentException {
         // 문자열에 숫자 외에 다른 것이 있는지 검증
         if (!(String.valueOf(userInput).matches("^[0-9]*$"))) {
@@ -15,6 +18,7 @@ public class ValidInput {
         }
     }
 
+    // 사용자의 입력에 동일한 숫자가 존재하는지 검출하는 메소드
     public void inspectDuplicatedNumber(String userInput) throws IllegalArgumentException {
         // 사용자의 입력을 char형 배열에 한 글자씩 저장
         char[] userInputArray = userInput.toCharArray();
@@ -30,4 +34,5 @@ public class ValidInput {
             throw new IllegalArgumentException("입력에 동일한 숫자가 존재합니다.");
         }
     }
+
 }
