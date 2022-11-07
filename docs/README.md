@@ -33,3 +33,9 @@
 
 8. checkValidation
 + myThreeNum 4자리 이상 입력되면 "예외처리" 후 게임종료
+
+
+9. printResult
++ 조건 충족 시 strike, ball count 출력
++ 조건 충족 시 "낫싱" 출력
+
