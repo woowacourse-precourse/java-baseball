@@ -78,4 +78,22 @@ public class Baseball {
     private boolean hasSameIndex(int i, int index) {
         return i == index;
     }
+
+    private String getHint(int ballCount, int strikeCount) {
+        String hint = "";
+
+        if (strikeCount == 0 && ballCount == 0) {
+            hint = NOTHING_MESSAGE;
+        }
+
+        if (ballCount > 0) {
+            hint = ballCount + BALL_MESSAGE;
+        }
+
+        if (strikeCount > 0) {
+            hint = hint + strikeCount + STRIKE_MESSAGE;
+        }
+
+        return hint;
+    }
 }
