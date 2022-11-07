@@ -29,7 +29,7 @@ public class Application {
 
     public static void userNumberMessagePrint(){
         String printMessage = "숫자를 입력하세요 : ";
-        System.out.print("숫자를 입력하세요 : ");
+        System.out.print(printMessage);
     }
 
     public static String userNumberInput(){
