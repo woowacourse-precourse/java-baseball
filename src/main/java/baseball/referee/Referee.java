@@ -6,24 +6,38 @@ import java.util.Map;
 
 public class Referee {
 
-    public int countStrike(int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
+    public boolean checkStrikeCondition(int userValueIndex, int computerValueIndex,
+                                        List<String> userValue, List<String> computerGeneratedValue) {
+        return userValueIndex == computerValueIndex &&
+                computerGeneratedValue.get(computerValueIndex)
+                        .equals(userValue
+                                .get(userValueIndex));
+    }
+
+    public boolean checkBallCondition(int userValueIndex, int computerValueIndex,
+                                      List<String> userValue, List<String> computerGeneratedValue) {
+        return userValueIndex != computerValueIndex &&
+                computerGeneratedValue.get(computerValueIndex)
+                        .equals(userValue
+                                .get(userValueIndex));
+    }
+
+    public int countStrike(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
         int strikeCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
-            if (userValueIndex == computerValueIndex &&
-                    computerGeneratedValue.get(computerValueIndex).equals(userInputValue.get(userValueIndex))) {
+            if (checkStrikeCondition(userValueIndex, computerValueIndex, userValue, computerGeneratedValue)) {
                 strikeCount += 1;
             }
         }
         return strikeCount;
     }
 
-    public int countBall(int computerValueIndex, List<String> computerGeneratedValue, List<String> userInputValue) {
+    public int countBall(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
         int ballCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
-            if (userValueIndex != computerValueIndex &&
-                    computerGeneratedValue.get(computerValueIndex).equals(userInputValue.get(userValueIndex))) {
+            if (checkBallCondition(userValueIndex, computerValueIndex, userValue, computerGeneratedValue)) {
                 ballCount += 1;
             }
         }
@@ -31,8 +45,6 @@ public class Referee {
     }
 
     public Map<String, Integer> judgement(List<String> computerGeneratedValue, List<String> userInputValue) {
-        int strikeCount = 0;
-        int ballCount = 0;
 
         if (computerGeneratedValue.equals(userInputValue)) {
             Map<String, Integer> strikeBallCount = new HashMap<>();
@@ -42,13 +54,15 @@ public class Referee {
             return strikeBallCount;
         }
 
-        Map<String, Integer> strikeBallCount = new HashMap<>();
+        int strikeCount = 0;
+        int ballCount = 0;
 
         for (int computerValueIndex = 0; computerValueIndex < 3; computerValueIndex++) {
             strikeCount += countStrike(computerValueIndex, computerGeneratedValue, userInputValue);
             ballCount += countBall(computerValueIndex, computerGeneratedValue, userInputValue);
         }
 
+        Map<String, Integer> strikeBallCount = new HashMap<>();
         strikeBallCount.put("strikeCount", strikeCount);
         strikeBallCount.put("ballCount", ballCount);
 
