@@ -37,7 +37,7 @@ public class Application {
             }
             System.out.println();
             if (strike == 3) {
-                // 게임 종료 로직
+                game = getGameSet();
             }
             if (strike == 3 && game == true) {
                 computer = getComputerNumber();
@@ -111,5 +111,16 @@ public class Application {
         }
 
         return result;
+    }
+
+    // 게임 종료 여부 확인
+    private static Boolean getGameSet() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String s = Console.readLine();
+        if (s.equals("2")) {
+            return false;
+        } else
+            return true;
     }
 }
