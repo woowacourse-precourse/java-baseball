@@ -35,14 +35,14 @@ public class Game {
         }
     }
 
-    public boolean isComputerNumber(List<Integer> computerNumber, List<Integer> userNumberList){
-        printHint(computerNumber,userNumberList);
-        return computerNumber.equals(userNumberList);
+    public boolean isComputerNumber(List<Integer> computerNumber, List<Integer> userNumber){
+        printHint(computerNumber,userNumber);
+        return computerNumber.equals(userNumber);
     }
 
-    public void printHint(List<Integer> computerNumber, List<Integer> userNumberList){
-        int strike=countStrike(computerNumber,userNumberList);
-        int ball=countBall(computerNumber,userNumberList);
+    public void printHint(List<Integer> computerNumber, List<Integer> userNumber){
+        int strike=countStrike(computerNumber,userNumber);
+        int ball=countBall(computerNumber,userNumber);
 
         if(ball >0 && strike > 0) System.out.println(ball + "볼 " + strike + "스트라이크");
         else if (ball > 0) System.out.println(ball +"볼");
@@ -60,11 +60,11 @@ public class Game {
         return computerNumber.get(index).equals(userNumber) == false && computerNumber.contains(userNumber);
     }
 
-    public int countStrike (List<Integer> computerNumber, List<Integer> userNumberList){
+    public int countStrike (List<Integer> computerNumber, List<Integer> userNumber){
         int strike=0;
 
         for(int index = 0 ; index < 3;index++){
-            if(checkStrike(computerNumber,userNumberList.get(index),index)){
+            if(checkStrike(computerNumber,userNumber.get(index),index)){
                 strike++;
             }
         }
@@ -72,11 +72,11 @@ public class Game {
         return strike;
     }
 
-    public int countBall (List<Integer> computerNumber, List<Integer> userNumberList){
+    public int countBall (List<Integer> computerNumber, List<Integer> userNumber){
         int ball=0;
 
         for(int index = 0 ; index < 3;index++){
-            if (checkBall(computerNumber,userNumberList.get(index),index)){
+            if (checkBall(computerNumber,userNumber.get(index),index)){
                 ball++;
             }
         }
