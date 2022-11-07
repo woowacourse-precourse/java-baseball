@@ -30,3 +30,33 @@
 - `restartGame` : 게임 재시작 여부를 입력받는 함수
   - 1이 입력되면 다시 게임 시작 함수 호출, 2가 입력되면 게임 종료
   - `checkValidationRestartNumber` : 입력받은 재시작 수에 대해 검증하는 함수
+
+
+# 🛠 최종 구조
+- `constant` : 상수와 메시지를 관리하는 패키지
+  - `GameConstant`
+  - `GameMessage`
+- `exception` : 사용자 입력 값에 대한 검증 클래스 관리하는 패키지
+  - `RestartNumberValidator`
+    - `checkValidationRestartNumber`
+  - `UserNumberValidator`
+    - `checkValidationUserNumber`
+    - `isDifferent`
+    - `isThreeNumber`
+    - `isNotZero`
+- `game` : 야구게임이 진행되는 주 클래스를 관리하는 패키지
+  - `BaseballGame`
+    - `playBaseballGame`
+    - `restartGame`
+  - `CompareNumbers`
+    - `compareNumber`
+    - `userNumberResult`
+    - `resetStrikeBall`
+    - `includeSame`
+    - `countStrike`
+    - `countBall`
+  - `ComputerNumber`
+    - `createComputerNumber`
+  - `UserNumber`
+    - `inputUserNumber`
+    - `checkInputUserNumber`
