@@ -5,10 +5,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -68,6 +71,18 @@ class ApplicationTest extends NsTest {
          assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
                  .isInstanceOf(IllegalArgumentException.class);
       }
+
+      @Test
+      public void convertIntegerIntoListTest() throws Exception{
+          //given
+          int number = 123;
+          List<Integer> actual = Arrays.asList(1,2,3);
+          //when
+          List<Integer> expected = Application.convertIntegerIntoList(number);
+
+          //then
+          assertEquals(expected, actual);
+       }
 
     @Override
     public void runMain() {
