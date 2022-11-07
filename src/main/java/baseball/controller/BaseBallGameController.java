@@ -1,9 +1,9 @@
 package baseball.controller;
 
 import baseball.service.BaseBallGame;
-import baseball.view.PlayerNumberInput;
+import baseball.view.input.PlayerNumberInput;
 import baseball.view.PrintGuideMessage;
-import baseball.view.RestartNumberInput;
+import baseball.view.input.RestartNumberInput;
 
 public class BaseBallGameController {
     private static final String RESTART = "1";
