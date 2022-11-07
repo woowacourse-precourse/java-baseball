@@ -17,7 +17,6 @@ public class Application {
         Game game = new Game();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        //int[] randomNum = randomNum();
         List<Integer> randomNum = randomNum();
         while(!check){
             check = game(randomNum);

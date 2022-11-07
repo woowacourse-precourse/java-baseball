@@ -19,24 +19,17 @@ public class Game {
         Restart reStart = new Restart();
         boolean result = false;
 
-        //Scanner sc = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         String userNum = readLine();
 
         if(userNum.length() != 3){
-            //System.out.println("숫자 3자리만 입력해주세요.");
+            System.out.println("숫자 3자리만 입력해주세요.");
             throw new IllegalArgumentException();
-        }
-        /*
-        else if(!doubleCheck(userNum)){
-            //System.out.println("숫자 중복 없이 입력하시오.");
+        } else if(!doubleCheck(userNum)){
+            System.out.println("숫자 중복 없이 입력하시오.");
             throw new IllegalArgumentException();
         }
         //System.out.println("userNum: " + userNum);
-
-
-
-         */
 
         String[] userNumArr = userNum.split("");
 
@@ -56,17 +49,15 @@ public class Game {
                         }
                     }
                 }
-                //System.out.println(userTarget + "포함되어있음");
             }else{
                 nothing++;
             }
         }
 
         if(strike == 3){
-            //System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println(strike + "스트라이크");
-            //System.out.println("게임 종료");
-            //System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             reStart();
             result = true;
         } else if(nothing == 3) {
@@ -85,17 +76,10 @@ public class Game {
     public static boolean doubleCheck(String nums) {
         String[] num  = nums.split("");
 
-        int count = 0;
         boolean answer = true;
-        for(int index = 0; index < 3; index++){
-            if(nums.contains(num[index])){
-                count++;
-            }
-            if(count > 1){
-                answer = false;
-            }
+        if(num[0].equals(num[1]) ||num[0].equals(num[2]) || num[1].equals(num[2])){
+            answer = false;
         }
-
         return answer;
     }
 

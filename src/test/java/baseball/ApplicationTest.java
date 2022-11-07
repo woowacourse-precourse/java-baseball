@@ -20,26 +20,23 @@ class ApplicationTest extends NsTest {
     private List<Integer> num = randomNum();
     @Test
     void 랜덤_숫자_길이_테스트() {
-        //int len = randomNum().length;
         int len = randomNum().size();
         assertThat(len).isEqualTo(3);
     }
 
-/*
     private boolean setUp(){
-        if(num[0] == num[1] || num[0] == num[2] || num[1] == num[2]){
+        if(num.get(0) == num.get(1) || num.get(0) == num.get(2) || num.get(1) == num.get(2)){
             return false;
         }
 
         return true;
     }
     @Test
-    void 숫자_중복_테스트(){
+    void 랜덤_숫자_중복_테스트(){
         assertThat(setUp()).isEqualTo(true);
     }
 
 
- */
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->

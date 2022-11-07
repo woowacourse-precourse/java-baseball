@@ -21,6 +21,7 @@ public class RandomNum {
             }
             System.out.println("랜덤 num: " + randomNum.get(i));
         }
+        System.out.println("랜덤 num: " + randomNum);
 
         return randomNum;
 
