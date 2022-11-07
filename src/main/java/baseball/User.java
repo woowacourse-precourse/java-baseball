@@ -26,6 +26,10 @@ public class User {
         number = BaseBallNumber.of(integerList);
     }
 
+    public void printBaseBallNumber() {
+        System.out.println(number.getNumber());
+    }
+
     public String getConsoleInput() {
         String input = Console.readLine();
         if (compile.matcher(input).find()) throw new IllegalArgumentException();
