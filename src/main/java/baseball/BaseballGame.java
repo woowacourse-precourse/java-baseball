@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.console.GameConsole;
+import baseball.core.StatusCode;
 import baseball.core.ComputerOpponent;
 import baseball.core.User;
 import baseball.core.dto.BallStrikeDto;
@@ -73,8 +74,8 @@ public class BaseballGame {
         console.printFinishMessage();
     }
 
-    private int restartOrExitProcess() {
-        console.printRestartOrExitMessage();
+    private boolean isStartCode(StatusCode code) {
+        return code.equals(StatusCode.START_CODE);
         return console.inputCode();
     }
 

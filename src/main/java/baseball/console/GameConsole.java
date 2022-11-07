@@ -2,6 +2,7 @@ package baseball.console;
 
 import baseball.console.input.ConsoleInput;
 import baseball.console.output.ConsoleOutput;
+import baseball.core.StatusCode;
 import baseball.core.dto.BallStrikeDto;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class GameConsole {
         return input.inputThreeNumbers();
     }
 
-    public Integer inputCode() {
+    public StatusCode inputCode() {
         return input.inputCode();
     }
 

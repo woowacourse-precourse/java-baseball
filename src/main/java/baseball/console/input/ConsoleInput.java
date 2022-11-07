@@ -1,6 +1,6 @@
 package baseball.console.input;
 
-import baseball.console.input.converter.RestartOrExitCodeConverter;
+import baseball.core.StatusCode;
 import baseball.console.input.converter.ThreeNumberConverter;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -21,8 +21,8 @@ public class ConsoleInput {
         return threeNumberConverter.getThreeNumbers(inputString);
     }
 
-    public Integer inputCode() {
-        String inputString = input();
+    public StatusCode inputCode() {
+        return StatusCode.from(input());
         return codeConverter.getRestartOrExitCode(inputString);
     }
 
