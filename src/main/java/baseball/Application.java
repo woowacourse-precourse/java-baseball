@@ -1,9 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
@@ -49,14 +49,13 @@ public class Application {
     }
 
     public static ArrayList<Integer> getNumbers() {
-
-        Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> usersNumbers = new ArrayList<Integer>();
 
         System.out.print("숫자를 입력해주세요: ");
-        int inputNumber1 = scanner.nextInt();
-        int inputNumber2;
-        int inputNumber3;
+        String input = Console.readLine();
+        int inputNumber1 = Integer.parseInt(input);
+        int inputNumber2=0;
+        int inputNumber3=0;
         if (inputNumber1 > 99 && inputNumber1 < 1000) {
 
             inputNumber2 = inputNumber1 % 100 / 10;
@@ -64,8 +63,10 @@ public class Application {
             inputNumber1 = inputNumber1 / 100;
 
         } else if (inputNumber1>0 && inputNumber1<10){
-            inputNumber2 = scanner.nextInt();
-            inputNumber3 = scanner.nextInt();
+            String input2 = Console.readLine();
+            String input3 = Console.readLine();
+            inputNumber2 = Integer.parseInt(input2);
+            inputNumber3 = Integer.parseInt(input3);
         }else{
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
@@ -122,8 +123,8 @@ public class Application {
 
     public static int restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-        Scanner scanner = new Scanner(System.in);
-        int answer = scanner.nextInt();
+        String input = Console.readLine();
+        int answer = Integer.parseInt(input);
         if (answer == 1) {
             return 0;
         } else if (answer == 2) {
