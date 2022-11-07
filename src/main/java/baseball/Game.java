@@ -44,12 +44,10 @@ public class Game {
         List<Integer> numbers = problemSolver.getNumbers();
         for(int i = 0;i<Settings.SIZE_OF_NUMBERS;i++){
             int number = numbers.get(i);
-            boolean doesAnswerHasNumber = problemMaker.hasNumber(number);
-            boolean isNumberAndAnswerSameAtGivenLocation = problemMaker.isSameAtGivenLocation(number, i);
 
-            if(doesAnswerHasNumber && isNumberAndAnswerSameAtGivenLocation){
+            if(problemMaker.isSameAtGivenLocation(number, i)){
                 result.increaseStrikeCount();
-            }else if(doesAnswerHasNumber){
+            }else if(problemMaker.hasNumber(number)){
                 result.increaseBallCount();
             }
         }
