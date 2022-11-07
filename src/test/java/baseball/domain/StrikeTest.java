@@ -96,7 +96,7 @@ class StrikeTest {
         @Nested
         class 만약_스트라이크_카운트가_0이_아닌_경우 {
 
-            @ParameterizedTest
+            @ParameterizedTest(name = "스트라이크 카운트가 {0}인 경우 {1}을 리턴한다")
             @CsvSource(value = {"1, 1스트라이크", "2, 2스트라이크", "3, 3스트라이크"})
             void X스트라이크_문자열을_리턴한다(int count, String result) {
                 Strike strike = Strike.valueOf(count);

@@ -72,7 +72,7 @@ class BallTest {
         @Nested
         class 만약_볼_카운트가_0이_아닌_경우 {
 
-            @ParameterizedTest
+            @ParameterizedTest(name = "볼 카운트가 {0}인 경우 {1}을 리턴한다")
             @CsvSource(value = {"1, 1볼", "2, 2볼", "3, 3볼"})
             void X볼_문자열을_리턴한다(int count, String result) {
                 Ball ball = Ball.valueOf(count);
