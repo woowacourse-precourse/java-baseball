@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
@@ -27,13 +28,30 @@ public class Application {
             }
         }
     }
+
+    static boolean finishGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            int input = Integer.parseInt(Console.readLine());
+            if (input == 1) {
+                return false;
+            } else if (input == 2) {
+                return true;
+            } else {
+                throw new IllegalArgumentException("프로그램 종료: 입력값이 1 또는 2가 아닙니다.");
+            }
+        } catch (IllegalArgumentException e)  {
+                throw new IllegalArgumentException("프로그램 종료: 입력이 숫자가 아닙니다.");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean gameStop = false;
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (!gameStop) {
             startGame();
-            gameStop = makeGameStop();
+            gameStop = finishGame();
         }
     }
 }
