@@ -51,10 +51,9 @@ A-1 ~ F-2
 ### 리팩토링 필요 목록
 - [ ] Application(RF-1)
 - [ ] User객체 생성을 통한 Application코드 간소화(RF-2)
-- [ ] GameClass생성(RF-3)
+- [ ] GameClass생성(RF-3)우
   - [ ] GameStart(RF-3-1)
   - [ ] printStartConsole(RF-3-2)
-  - [ ] makeUserAndComputer(RF-3-3)
   - [ ] generateRandomNum(RF-3-4)
   - [ ] receiveNumToUser(RF-3-5)
   - [ ] printResult(RF-3-6)
