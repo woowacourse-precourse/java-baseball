@@ -51,11 +51,20 @@ public class Game {
 
     public void checkExceptions(String userAnswer) {
         incorrectUserAnswerNonNaturalNum(userAnswer);
-        incorrectUserAnswerDigit(userAnswer);
+        incorrectUserAnswerNoValueEntered(userAnswer);
+        incorrectUserAnswerLength(userAnswer);
         incorrectUserAnswerDuplicate(userAnswer);
     }
 
-    private void incorrectUserAnswerDigit(String userAnswer) {
+    private void incorrectUserAnswerNoValueEntered(String userAnswer) {
+        try {
+            stringToListInteger(userAnswer);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력 값이 없습니다. 값을 입력해주세요.");
+        }
+    }
+
+    private void incorrectUserAnswerLength(String userAnswer) {
         List<Integer> answerList = stringToListInteger(userAnswer);
         if (answerList.size() != 3) {
             throw new IllegalArgumentException("입력 값은 3자리 수로 입력하십시오.");
@@ -67,13 +76,13 @@ public class Game {
         for (int i = 0; i < userAnswer.length(); i++) {
             answerList.add(userAnswer.charAt(i));
         } if (answerList.size() != 3) {
-            throw new IllegalArgumentException("입력 값은 서로 다른 숫자이어야 합니다.");
+            throw new IllegalArgumentException("입력 값이 중복되었습니다. 입력 값은 서로 다른 숫자이어야 합니다.");
         }
     }
 
     private void incorrectUserAnswerNonNaturalNum(String userAnswer) {
         if (!userAnswer.matches("[+-]?\\d*(\\.\\d+)?") || userAnswer.contains("0")) {
-            throw new IllegalArgumentException("입력 값은 1 ~ 9 숫자이어야 합니다.");
+            throw new IllegalArgumentException("문자가 포함되었습니다. 입력 값은 1 ~ 9 숫자이어야 합니다.");
         }
     }
 
