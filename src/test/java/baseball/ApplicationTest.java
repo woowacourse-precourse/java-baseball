@@ -15,6 +15,7 @@ class ApplicationTest extends NsTest {
     GameReadyMachine gameReadyMachine = new GameReadyMachine();
     GameProcessor gameProcessor = new GameProcessor();
     GameFinisher gameFinisher = new GameFinisher();
+
     @Test
     void 자리수_구분되는_숫자생성_1_3() {
         assertThat(gameReadyMachine.checkDigitValue(gameReadyMachine.setAnswerValue())).isEqualTo(true);
@@ -86,7 +87,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void test3_2(){
+    void test3_2() {
         String testData = "1";
         InputStream in = new ByteArrayInputStream(testData.getBytes());
         System.setIn(in);
@@ -95,7 +96,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void test3_3(){
+    void test3_3() {
         String testData = "2";
         InputStream in = new ByteArrayInputStream(testData.getBytes());
         System.setIn(in);

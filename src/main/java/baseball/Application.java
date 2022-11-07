@@ -44,8 +44,7 @@ class GameReadyMachine {
             }
         }
         StringBuilder stringBuilder = new StringBuilder();
-        for(int digit=0;digit<3;digit++)
-        {
+        for (int digit = 0; digit < 3; digit++) {
             stringBuilder.append(computer.get(digit));
         }
         answerValue = Integer.parseInt(stringBuilder.toString());
@@ -240,7 +239,6 @@ class GameFinisher {
 }
 
 public class Application {
-
     public static void main(String[] args) {
         GameReadyMachine gameReadyMachine = new GameReadyMachine();
         GameProcessor gameProcessor = new GameProcessor();
