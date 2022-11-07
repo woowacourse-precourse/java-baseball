@@ -1,13 +1,18 @@
 package baseball.domain.game.service;
 
+import baseball.domain.ball.Balls;
+import baseball.domain.hint.Hint;
+
 public class GameServiceImpl implements GameService{
 
     private final GameMessenger gameMessenger;
     private final GameValidator gameValidator;
+    private final GameReferee gameReferee;
 
-    public GameServiceImpl(GameMessenger gameMessenger, GameValidator gameValidator) {
+    public GameServiceImpl(GameMessenger gameMessenger, GameValidator gameValidator, GameReferee gameReferee) {
         this.gameMessenger = gameMessenger;
         this.gameValidator = gameValidator;
+        this.gameReferee = gameReferee;
     }
 
     @Override
@@ -18,5 +23,12 @@ public class GameServiceImpl implements GameService{
     @Override
     public void validateNumber(String number) {
         gameValidator.validateNumber(number);
+    }
+
+    @Override
+    public boolean judge(Balls playerBall, Balls answerBall) {
+        final Hint hint = gameReferee.createHint(playerBall, answerBall);
+        gameMessenger.sendHint(hint);
+        return gameReferee.judgeIsAnswer(hint);
     }
 }

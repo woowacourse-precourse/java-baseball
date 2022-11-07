@@ -23,4 +23,8 @@ public class GameFacade {
         gameService.validateNumber(number);
         return ballService.createPlayerBalls(number);
     }
+
+    public boolean judge(Balls playerBall, Balls answerBall) {
+        return gameService.judge(playerBall, answerBall);
+    }
 }
