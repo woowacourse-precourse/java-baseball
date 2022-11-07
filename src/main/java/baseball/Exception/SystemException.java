@@ -23,3 +23,7 @@ public class SystemException {
     public static boolean isValidNumber(String input){
         return Integer.parseInt(input)>=123&&Integer.parseInt(input)<=987;
     }
+
+    public static boolean isNotContainsZero(String input){
+        return(!input.contains("0"));
+    }
