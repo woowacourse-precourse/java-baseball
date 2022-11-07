@@ -39,28 +39,20 @@ public class ComputerManager {
     public String compareWithUserNumber(String userNumber) {
         int ball = 0;
         int strike = 0;
-        List<Integer> numbers = userNumberToList(userNumber);
 
-        for (int i = 0; i < numbers.size(); i++) {
-            if (Objects.equals(numbers.get(i), computerNumbers.get(i))) {
+        for (int i = 0; i < InputNumber.GAME_NUMBER_LENGTH; i++) {
+            int number = Integer.parseInt(String.valueOf(userNumber.charAt(i)));
+            if (Objects.equals(number, computerNumbers.get(i))) {
                 strike++;
                 continue;
             }
 
-            if (computerNumbers.contains(numbers.get(i))) {
+            if (computerNumbers.contains(number)) {
                 ball++;
             }
         }
 
         return makeString(ball, strike);
-    }
-
-    private List<Integer> userNumberToList(String userNumber) {
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < userNumber.length(); i++) {
-            numbers.add(Integer.parseInt(String.valueOf(userNumber.charAt(i))));
-        }
-        return numbers;
     }
 
     private String makeString(int ball, int strike) {
