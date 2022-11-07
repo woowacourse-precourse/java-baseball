@@ -43,4 +43,18 @@ public class Umpire {
 
         hintRecord.put(Text.BALL, ball);
     }
+
+    public Map<Text, Integer> compareNumber(List<Integer> computerNumber, List<Integer> playerNumber) {
+        resetHintRecord();
+
+        if (isNothing(computerNumber, playerNumber)) {
+            return null;
+        }
+
+        countStrike(computerNumber, playerNumber);
+        countBall(computerNumber, playerNumber);
+
+        return hintRecord;
+    }
+
 }
