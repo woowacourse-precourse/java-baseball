@@ -40,4 +40,16 @@ public class BaseballGame extends Game {
 
         return input == RESTART_NUMBER;
     }
+
+    public int getStrike(int number, int target) {
+        int strikeCount = 0;
+        String targetStr = Integer.toString(target);
+        String inputStr = Integer.toString(number);
+
+        for (int i = 0; i < targetStr.length(); i++) {
+            if (inputStr.charAt(i) == targetStr.charAt(i)) strikeCount++;
+        }
+
+        return strikeCount;
+    }
 }
