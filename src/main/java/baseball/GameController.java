@@ -1,31 +1,53 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class GameController {
 
-    public String getInput(){
-        String userNumber = Console.readLine(); // 입력 받기
-        return userNumber;
+    static InputController inputController = new InputController();
+    static RandomNumber randomNumber = new RandomNumber();
+    static ShowMessage showMessage = new ShowMessage();
+
+    static List<Integer> userNumberList;
+    static List<Integer> randomNumberList;
+    int gameFlagNumber = 0;
+
+
+    public void newGame() {
+
+        boolean gameFlag = true;
+        gameFlagNumber = 0;
+        while (gameFlag) {
+            randomNumberList = randomNumber.gameRandomNumber(); // 난수 생성
+            gameFlagNumber = keepGame();
+            if(gameFlagNumber == 2){
+                gameFlag = false;
+            }
+        }
     }
 
-    public List<Integer> inputUserNumber() {
+    public int keepGame() {
 
-        String userNumber = getInput();
-//        numberException(userNumber); // 예외 처리
-        List<Integer> userNumberList = userNumberConvertToList(userNumber); // 자릿수로 나눈 리스트로 변환
-        System.out.println(userNumberList);
-        return userNumberList;
+        boolean gameFlag = true;
+        gameFlagNumber = 0;
+
+        while (gameFlag) {
+            userNumberList = inputController.gameUserInput(); // 입력받기
+            gameFlagNumber = gameResult(); // 게임 결과 체크
+
+            if (gameFlagNumber == 1 || gameFlagNumber == 2) {
+                System.out.println("종료:" + gameFlagNumber + ":");
+                return gameFlagNumber;
+            }
+        }
+        return gameFlagNumber;
     }
 
-    // 숫자 하나씩 나누어서 리스트에 보관
-    public List<Integer> userNumberConvertToList(String userNumber) {
-        List<Integer> userNumberList = Stream.of(userNumber.split("")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-        return userNumberList;
+    public int gameResult() {
+        int ballCount = checkIntersection(userNumberList, randomNumberList);
+        System.out.println("교집합:" + ballCount + ":");
+        return checkNotMatch(ballCount); // 결과 계산;
     }
 
     // userNumberList와 randomNumberList의 교집합 검사
@@ -33,46 +55,42 @@ public class GameController {
         return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList()).size();
     }
 
-    public int checkNotMatch(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
+    public int checkNotMatch(int ballCount) {
 
         if (ballCount == 0) {
             ShowMessage.showNotMatchWord(); // 낫싱
             return 0;
         } else {
-            return calculateGameCount(userNumberList, randomNumberList, ballCount);
+            return calculateGameCount(ballCount);
         }
     }
 
-    public int calculateGameCount(List<Integer> userNumberList, List<Integer> randomNumberList, int ballCount) {
+    public int calculateGameCount(int ballCount) {
 
-        ShowMessage showMessage = new ShowMessage();
+
         int answerCount = showMessage.getAnswerCount();
         int strikeCount = 0;
 
-        System.out.println("입력값:" + userNumberList + ":");
-        System.out.println("난수:" + randomNumberList + ":");
-
         for (int i = 0; i < answerCount; i++) {
-            System.out.println("스트라이크 몇 개인지 검사");
             if (userNumberList.get(i) == randomNumberList.get(i)) {
-                System.out.println("스트라이크 발견");
                 strikeCount++;
             }
         }
         ballCount -= strikeCount;
-        System.out.println("볼:" + ballCount + ":");
-        System.out.println("스트라이크:" + strikeCount + ":");
+        showMessage.showGameScore(ballCount, strikeCount);
 
         return checkGame(strikeCount, answerCount);
     }
 
     public int checkGame(int strikeCount, int answerCount){
 
+        String userNumber = "";
+        int number = 0;
+
         if(strikeCount == answerCount){
-            ShowMessage.showEndGame();
             ShowMessage.showNewGameCheck();
-            String userNumber = getInput(); // 입력 받기
-            int number = Integer.parseInt(userNumber);
+//            userNumber = inputException(userNumber);
+            number = Integer.parseInt(userNumber);
             return number;
         }
         return 0;
