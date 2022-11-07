@@ -46,9 +46,9 @@ public class Application {
 
     private static Boolean getBreakConditional(int input) {
         if(input == 2){
-            return true;
-        } else if (input == 1) {
             return false;
+        } else if (input == 1) {
+            return true;
         }else {
             throw new IllegalArgumentException();
         }
@@ -56,6 +56,7 @@ public class Application {
 
     private static void gameStart(){
         List<Integer> computerNumbers = getComputerNumbers();
+        System.out.println("computerNumbers = " + computerNumbers);
         boolean iter = true;
         while (iter){
             System.out.print("숫자를 입력해주세요 : ");
@@ -68,6 +69,8 @@ public class Application {
     private static boolean printScoreboard(int[] scoreboard){
         int strike = scoreboard[0];
         int ball = scoreboard[1];
+        System.out.println("ball = " + ball);
+        System.out.println("strike = " + strike);
         if (strike == 3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
