@@ -8,47 +8,69 @@ public class Computer {
 
     private static final int RANGE_START = 1;
     private static final int RANGE_END = 9;
-    private static final String NOTHING = "낫싱";
-    private static final String CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private final List<Integer> computerNumbers;
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String CORRECT_ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final int RESTART_NUMBER = 1;
+    private List<Integer> computerNumbers;
+    private int strike;
+    private int ball;
 
     public Computer() {
+        setRandomNumber();
+        clearScore();
+    }
+
+    public void setRandomNumber() {
         computerNumbers = new ArrayList<>();
         while (computerNumbers.size() != 3) {
-            int randomNumber = Randoms.pickNumberInRange(RANGE_START, RANGE_END);
+            int randomNumber = getRandomNumber();
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
         }
     }
 
-    public boolean isCorrectAnswer(List<Integer> userNumbers) {
-        if (isNothing(userNumbers)) {
-            printNothing();
-            return false;
+    public void calculateScore(List<Integer> userNumbers) {
+        countStrike(userNumbers);
+        countBall(userNumbers);
+    }
+    public void printResult() {
+        StringBuilder gameResultMessage = new StringBuilder();
+        if (ball > 0) {
+            gameResultMessage.append(ball)
+                    .append("볼 ");
         }
-
-        int strike = countStrike(userNumbers);
-        int ball = countBall(userNumbers);
-        printStrikeAndBall(strike, ball);
-
-        if (strike == 3) {
-            printCorrectAnswer();
+        if (strike > 0) {
+            gameResultMessage.append(strike)
+                    .append("스트라이크");
         }
+        if (gameResultMessage.length() == 0) {
+            gameResultMessage.append(NOTHING_MESSAGE);
+        }
+        System.out.println(gameResultMessage);
+        if (isCorrectAnswer()) {
+            printCorrectAnswerMessage();
+        }
+    }
+
+    public boolean isCorrectAnswer() {
         return strike == 3;
     }
 
-    private boolean isNothing(List<Integer> userNumbers) {
-        for (Integer number : userNumbers) {
-            if (computerNumbers.contains(number)) {
-                return false;
-            }
-        }
-        return true;
+    public void clearScore() {
+        strike = 0;
+        ball = 0;
+    }
+    public boolean isRestart(List<Integer> exitStatus) {
+        Integer status = exitStatus.get(0);
+        return status.equals(RESTART_NUMBER);
     }
 
-    private int countStrike(List<Integer> userNumbers) {
-        int strike = 0;
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(RANGE_START, RANGE_END);
+    }
+
+    private void countStrike(List<Integer> userNumbers) {
         for (int i = 0; i < computerNumbers.size(); i++) {
             Integer computerNumber = computerNumbers.get(i);
             Integer userNumber = userNumbers.get(i);
@@ -57,11 +79,9 @@ public class Computer {
                 strike++;
             }
         }
-        return strike;
     }
 
-    private int countBall(List<Integer> userNumbers) {
-        int ball = 0;
+    private void countBall(List<Integer> userNumbers) {
         for (int i = 0; i < computerNumbers.size(); i++) {
             Integer computerNumber = computerNumbers.get(i);
             Integer userNumber = userNumbers.get(i);
@@ -70,26 +90,10 @@ public class Computer {
                 ball++;
             }
         }
-        return ball;
     }
 
-    private void printNothing() {
-        System.out.println(NOTHING);
+    private void printCorrectAnswerMessage() {
+        System.out.println(CORRECT_ANSWER_MESSAGE);
     }
 
-    private void printCorrectAnswer() {
-        System.out.println(CORRECT_ANSWER);
-    }
-
-    private void printStrikeAndBall(int strike, int ball) {
-        if (strike == 0) {
-            System.out.println(ball + "볼");
-            return;
-        }
-        if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-            return;
-        }
-        System.out.println(ball + "볼 " + strike + "스트라이크");
-    }
 }
