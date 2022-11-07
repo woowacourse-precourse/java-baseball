@@ -18,11 +18,13 @@ public class Application {
             data.setAnswer(game.setAnswer());
             Output output = new Output();
             while (!finish) {
-                CompareNumbers strikeBall = new CompareNumbers();
+                CompareNumbers strikeOrBall = new CompareNumbers();
                 data.setUserInput(game.userInput());
-                strikeBall.checkNumber(data.getUserInput(), data.getAnswer());
-                data.setBall(strikeBall.ball);
-                data.setStrike(strikeBall.strike);
+                game.checkInput(data.getUserInput());
+                System.out.println(data.getUserInput());
+                strikeOrBall.checkNumber(data.getUserInput(), data.getAnswer());
+                data.setBall(strikeOrBall.ball);
+                data.setStrike(strikeOrBall.strike);
                 output.printResult(data.getStrike(), data.getBall());
                 finish = game.isFinish(data.getStrike());
                 run = game.isAgain(finish);
@@ -56,6 +58,21 @@ class RunGame {
         return intUserInput;
     }
 
+    public void checkInput(List<Integer> userInput) {
+
+        if(userInput.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+        for(int inputElement : userInput) {
+            if(inputElement < 1 || inputElement > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+        if(userInput.stream().distinct().count() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public boolean isFinish(int strike) {
         if (strike == 3) {
             return true;
@@ -72,6 +89,9 @@ class RunGame {
         }
         if (userInput == 2) {
             return false;
+        }
+        if (finish == true) {
+            throw new IllegalArgumentException();
         }
         return true;
     }
