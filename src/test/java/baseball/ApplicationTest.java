@@ -3,8 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import static baseball.Application.getNumber;
-import static baseball.Application.isValidUserNumber;
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -70,6 +69,13 @@ class ApplicationTest extends NsTest {
     void 번호를_숫자로_변경하는_테스트_숫자() {
         String number = "234";
         assertThat(getNumber(number)).isEqualTo(234);
+    }
+
+    @Test
+    void 사용자_번호를_나눠_숫자로_변경하는_테스트_숫자() {
+        String number = "234";
+        int[] result = {2, 3, 4};
+        assertThat(getNumbersToUserNumber(number)).isEqualTo(result);
     }
 
     @Override
