@@ -5,6 +5,12 @@ import java.util.InputMismatchException;
 public class Game {
     private boolean gameStatus;
     private final String ERRORMESSAGE = "1과 2중 하나만 입력하세요";
+    private GameHost gamehost;
+    private Player player;
+
+    public Game() {
+        this.startGame();
+    }
 
     public boolean getGameStatus() {
         return this.gameStatus;
@@ -17,7 +23,7 @@ public class Game {
                 this.startGame();
                 return;
             }
-            if(inputNum == 2) {
+            if (inputNum == 2) {
                 endGame();
                 return;
             }
@@ -30,13 +36,13 @@ public class Game {
 
     public void startGame() {
         this.gameStatus = true;
+        this.gamehost = new GameHost();
+        this.player = new Player();
+        gamehost.setBaseballNumber();
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public void endGame() {
         this.gameStatus = false;
-    }
-
-    public boolean isValidInput(String playerInput) {
-
     }
 }
