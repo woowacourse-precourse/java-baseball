@@ -27,5 +27,8 @@ public class NonPlayerCharacter {
         return randomNumber.toString().charAt(index) == input;
     }
 
+    public boolean isBall(char input) {
+        return randomNumber.toString().contains(Character.toString(input));
+    }
 
 }
