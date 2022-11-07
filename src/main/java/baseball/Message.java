@@ -21,7 +21,7 @@ public enum Message {
         return msg;
     }
 
-    void printMessage(Message msg) {
-        System.out.println(msg.msg);
+    void printMessage() {
+        System.out.println(msg);
     }
 }
