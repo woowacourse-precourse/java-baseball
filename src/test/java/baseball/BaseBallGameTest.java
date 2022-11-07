@@ -39,5 +39,14 @@ public class BaseBallGameTest {
 
             assertThat(Application.getBallCount(computerNumbers, playerNumbers)).isEqualTo(1);
         }
+
+        @DisplayName("결과 로직 메소드")
+        @Test
+        void baseBallGame() {
+            final List<Integer> computerNumbers = List.of(5, 8, 9);
+            final List<Integer> playerNumbers = List.of(5, 9, 7);
+            System.out.println(Application.baseBallGame(computerNumbers, playerNumbers));
+            assertThat(Application.baseBallGame(computerNumbers, playerNumbers)).isEqualTo("1볼 1스트라이크");
+        }
     }
 }
