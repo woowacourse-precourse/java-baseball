@@ -56,14 +56,14 @@ public class BaseballGame {
 
         for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
             for (int computerIndex = 0; computerIndex < computerNumbers.size(); computerIndex++) {
-                ballCount += getEachBallCount(userNumbers, computerNumbers, userIndex, computerIndex);
+                ballCount += getOneOrZeroByBall(userNumbers, computerNumbers, userIndex, computerIndex);
             }
         }
 
         return ballCount;
     }
 
-    private int getEachBallCount(List<Integer> userNumbers, List<Integer> computerNumbers, int userIndex, int computerIndex) {
+    private int getOneOrZeroByBall(List<Integer> userNumbers, List<Integer> computerNumbers, int userIndex, int computerIndex) {
         int userNumber = userNumbers.get(userIndex);
         int computerNumber = computerNumbers.get(computerIndex);
 
@@ -79,14 +79,14 @@ public class BaseballGame {
 
         for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
             for (int computerIndex = 0; computerIndex < computerNumbers.size(); computerIndex++) {
-                strikeCount += getEachStrikeCount(userNumbers, computerNumbers, userIndex, computerIndex);
+                strikeCount += getOneOrZeroByStrike(userNumbers, computerNumbers, userIndex, computerIndex);
             }
         }
 
         return strikeCount;
     }
 
-    private int getEachStrikeCount(List<Integer> userNumbers, List<Integer> computerNumbers, int userIndex, int computerIndex) {
+    private int getOneOrZeroByStrike(List<Integer> userNumbers, List<Integer> computerNumbers, int userIndex, int computerIndex) {
         int userNumber = userNumbers.get(userIndex);
         int computerNumber = computerNumbers.get(computerIndex);
 
