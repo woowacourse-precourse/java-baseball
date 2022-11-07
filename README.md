@@ -9,9 +9,9 @@
 ## 📝 기능 목록
 
 - [ ] 랜덤 숫자 초기화 
-- [ ] 사용자 입력 받기
+- [x] 사용자 입력 받기
 - [ ] 사용자의 대답 판단하기 : 스트라이크, 볼, 낫싱
-- [ ] 잘못된 입력에 대한 예외 처리 (`IllegalArgumentException`)
+- [x] 잘못된 입력에 대한 예외 처리 (`IllegalArgumentException`)
 
 
 
