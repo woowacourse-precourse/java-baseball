@@ -2,8 +2,8 @@ package baseball.domain;
 
 public class Action {
     private final String numberAction;
-    private final String ONE_NUMBER_REGULAR_EXPRESSION = "[12]";
-    private final String RESTART = "1";
+    private static final String ONE_NUMBER_REGULAR_EXPRESSION = "[12]";
+    public static final String START = "1";
 
     public Action(String numberAction) {
         validateForm(numberAction);
@@ -16,7 +16,7 @@ public class Action {
         }
     }
 
-    public boolean isRestart() {
-        return numberAction.equals(RESTART);
+    public boolean isStart() {
+        return numberAction.equals(START);
     }
 }
