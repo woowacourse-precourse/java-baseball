@@ -7,13 +7,9 @@ import camp.nextstep.edu.missionutils.*;
 class baseball {
 	
 	Scanner number = new Scanner(System.in);
-	int result_num;
-	//List<Integer> playerNum = new ArrayList<>();
-	int playerNum;
 	List<Integer> tmp_List = new ArrayList<>(3);
 	List<Integer> correct = new ArrayList<>(3);
-	//Input_Num n = new Input_Num();
-	int inputnum;
+	//int inputnum;
 	
 	baseball(){
 		System.out.println("숫자 야구 게임을 시작합니다.");
@@ -30,28 +26,28 @@ class baseball {
 		System.out.println(correct);
 	}
 	
-	void getInputNum() {
-		
-		inputnum = Integer.valueOf(Console.readLine());
-	}
+	/*
+	 * void getInputNum() {
+	 * 
+	 * inputnum = Integer.valueOf(Console.readLine()); }
+	 */
 	
 	int repeat_game(){
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		//getInputNum();
 		int n = number.nextInt();
-		return n;//inputnum;
+		return n;
 	}
 	
 	void get_user_input_num() {
 	    
 		tmp_List.clear();
 		System.out.println("숫자를 입력해주세요 : ");
-		//String playerNumString = Console.readLine();
-		//String inputnum = Console.readLine();
-		
-		//getInputNum();
 		int n = number.nextInt();
-		int user_num = n;//inputnum;
+		if(n > 999 || n < 100){
+			throw new IllegalArgumentException("자리수를 확인해주세요");
+		}
+		
+		int user_num = n;
 
 		int one = user_num / 100;
 		int two = user_num / 10 % 10;
@@ -121,11 +117,9 @@ class baseball {
 			System.out.println("낫싱");
 		}
 	}
-	
 }
 public class Application {
     public static void main(String[] args) {
     baseball baseball_game = new baseball();
-    
     }
 }
