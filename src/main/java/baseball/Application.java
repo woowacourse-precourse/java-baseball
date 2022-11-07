@@ -13,6 +13,9 @@ public class Application {
 
     public static void main(String[] args) {
         printStartGameSentence();
+        do {
+            play();
+        } while (retry());
     }
 
     private static void printStartGameSentence() {
@@ -67,6 +70,17 @@ public class Application {
         return input;
     }
 
+    private static String inputRetry() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Console.readLine();
+    }
+
+    private static boolean retry() {
+        String input = inputRetry();
+        validateRetry(input);
+        return input.equals("1");
+    }
+
     private static void interpretGameResults(List<Integer> results) {
         int ball = results.get(BALL_INDEX);
         int strike = results.get(STRIKE_INDEX);
@@ -100,6 +114,12 @@ public class Application {
                 throw new IllegalArgumentException();
             }
             history.add(number);
+        }
+    }
+
+    private static void validateRetry(String input) {
+        if (!input.matches("[1-2]")) {
+            throw new IllegalArgumentException();
         }
     }
 
