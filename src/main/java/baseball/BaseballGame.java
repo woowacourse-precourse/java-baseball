@@ -17,4 +17,31 @@ public class BaseballGame {
         }
     }
 
+    public void SetBallNumber(BaseballNumber oppositeNumber, BaseballNumber myNumber){
+        ArrayList<Integer> oppositeList = oppositeNumber.getNumbers();
+        ArrayList<Integer> myList = myNumber.getNumbers();
+        int currentOppositeNumber;
+
+        ballNumber = 0;
+        currentOppositeNumber = oppositeList.get(0);
+        for(int i = 0; i < 3; i++){
+            if(currentOppositeNumber == myList.get(i)) {
+                ballNumber++;
+                break;
+            }
+        }
+        currentOppositeNumber = oppositeList.get(2);
+        for(int i = 0; i < 3; i++){
+            if(currentOppositeNumber == myList.get(i)){
+                ballNumber++; break;
+            }
+        }
+        currentOppositeNumber = oppositeList.get(2);
+        for(int i = 0; i < 3; i++){
+            if(currentOppositeNumber == myList.get(i)){
+                ballNumber++; break;
+            }
+        }
+    }
+
 }
