@@ -9,20 +9,28 @@ public class BaseballGameRunner {
     private static final int NUMBER_LIST_LENGTH = 3;
     private static final String BASEBALL_GAME_STARTING_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
-    private ElementListMaker<Integer> numberListMaker;
-    private List<Integer> randomNumberList;
-    private BaseballGameManager gameManager = new BaseballGameManager();
 
-    public BaseballGameRunner(ElementListMaker<Integer> numberListMaker) {
-        this.numberListMaker = numberListMaker;
+    private ElementListMaker<Integer> numberElementListMaker;
+    private List<Integer> randomNumberList;
+    private BaseballGameManager gameManager;
+
+    public BaseballGameRunner(ElementListMaker<Integer> numberElementListMaker) {
+        this.numberElementListMaker = numberElementListMaker;
     }
 
     public int runGame() {
         System.out.println(BASEBALL_GAME_STARTING_MESSAGE);
 
-        randomNumberList = numberListMaker.makeElementList(NUMBER_LIST_LENGTH);
-        gameManager.setBaseballNumberList(randomNumberList);
+        this.initializeGameSettings();
+
+        gameManager.executeGame();
 
         return 0;
+    }
+
+    private void initializeGameSettings() {
+        randomNumberList = numberElementListMaker.makeElementList(NUMBER_LIST_LENGTH);
+
+        gameManager = new BaseballGameManager(randomNumberList, numberElementListMaker);
     }
 }
