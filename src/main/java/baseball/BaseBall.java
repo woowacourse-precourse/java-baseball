@@ -71,4 +71,14 @@ public class BaseBall {
         makeResult();
     }
 
+    private List<String> makeMyInput() {
+        String input = readLine();
+        List<String> inputList = getList(input);
+        Set<String> inputSet = new HashSet<>(inputList);
+        if ((inputSet.size() != inputList.size()) || input.length() != NUMBER_OF_DIGITS) {
+            throw new IllegalArgumentException();
+        }
+        return inputList;
+    }
+
 }
