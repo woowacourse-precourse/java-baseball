@@ -16,15 +16,19 @@ public class GameSimulation {
     }
 
     public void playGame() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = readLine();
-        List<Integer> userNumber = makeList(userInput);
-        validateUserNumber(userNumber);
+        List<Integer> userNumber;
 
-        ball = computer.addBallScore(userNumber);
-        strike = computer.addStrikeScore(userNumber);
+        while(strike < 3) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = readLine();
+            userNumber = makeList(userInput);
+            validateUserNumber(userNumber);
 
-        System.out.println(checkResult());
+            ball = computer.addBallScore(userNumber);
+            strike = computer.addStrikeScore(userNumber);
+
+            System.out.println(checkResult());
+        }
     }
 
     public List<Integer> makeList(String userInput) {
