@@ -118,4 +118,18 @@ class InputNumberTest {
         );
     }
 
+    @Test
+    void 사용자_입력_재시작_숫자_중복_예외_테스트() {
+        String input = "112";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(InputNumber::inputRestartNumber)
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 }
