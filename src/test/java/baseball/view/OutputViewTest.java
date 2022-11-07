@@ -26,4 +26,13 @@ public class OutputViewTest {
         Assertions.assertThat(outputMessage.toString()).isEqualTo("숫자 야구 게임을 시작합니다.\n");
     }
 
+    @Test
+    void 시스템_종료_메시지() {
+        outputMessage = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputMessage));
+
+        OutputView.endSystemMessage();
+        Assertions.assertThat(outputMessage.toString()).isEqualTo("게임 종료\n");
+    }
+
 }
