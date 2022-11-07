@@ -13,8 +13,30 @@ public class Count {
         return strike;
     }
 
+    public static int Ball(List<Integer> opponent, List<Integer> user) {
+        int ball = Count.countOverlapNumbers(opponent, user)
+                - Count.Strike(opponent, user);
+        return ball;
+    }
+
+    public static int countOverlapNumbers(List<Integer> opponent, List<Integer> user) {
+        int count = 0;
+        for (int i = 0; i < Number.NUMBERS_SIZE; i++) {
+            int userNumber = user.get(i);
+            count += containNumber(opponent, userNumber);
+        }
+        return count;
+    }
+
     public static int compareNumber(int opponent, int user) {
         if (opponent == user) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public static int containNumber(List<Integer> opponent, int number) {
+        if (opponent.contains(number)) {
             return 1;
         }
         return 0;
