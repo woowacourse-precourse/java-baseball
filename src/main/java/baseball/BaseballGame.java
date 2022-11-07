@@ -33,7 +33,7 @@ public class BaseballGame {
                 break;
             }
         }
-        currentOppositeNumber = oppositeList.get(2);
+        currentOppositeNumber = oppositeList.get(1);
         for(int i = 0; i < 3; i++){
             if(currentOppositeNumber == myList.get(i)){
                 ballNumber++; break;
