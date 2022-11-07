@@ -24,7 +24,7 @@ public class BaseballGameInputService {
 
         validateNumberService.validateRestartInput(userStringRestartInput);
 
-        return 0;
+        return Integer.parseInt(userStringRestartInput);
     }
 
     private static void stringToIntegerList(String userStringInput, List<Integer> userIntegerListInput) {
