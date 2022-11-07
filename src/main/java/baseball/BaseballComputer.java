@@ -29,18 +29,19 @@ public class BaseballComputer {
         }
 
         gameMessage.printRestartOrEnd();
-        int choice = inputRestartOrEnd();
-
-        if(1 > choice || choice > 2){
-            System.out.println("out of number");
-            return ;
-        }
+        int choice =checkOutOfChoiceNumber(inputRestartOrEnd());
 
         if(choice == 1){
             start();
         }
-
         return ;
+    }
+
+    private int checkOutOfChoiceNumber(int choice){
+        if(1 > choice || choice > 2){
+            throw new IllegalArgumentException("out of choice number");
+        }
+        return choice;
     }
 
     private void createRandomNumber() {
