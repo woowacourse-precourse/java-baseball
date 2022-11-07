@@ -23,7 +23,7 @@ public class GameController {
     } while (checkRestart());
   }
 
-  private boolean checkRestart() {
+  boolean checkRestart() {
     printer.printlnMessage(InGameMessages.GAME_RESTART_OR_END.getMessage());
     String input = reader.readRestartOrEndInput();
 
