@@ -13,8 +13,10 @@ public class Game {
         Referee referee = new Referee();
         if (firstCheck == STARTOFGAME) {
             computer.printGameStart();
+            progress(user, computer, referee);
+        } else if (firstCheck == NOTSTARTOFGAME) {
+            progress(user, computer, referee);
         }
-        progress(user, computer, referee);
     }
 
     private static void progress(User user, Computer computer, Referee referee) {
