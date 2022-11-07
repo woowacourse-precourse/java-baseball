@@ -9,15 +9,6 @@ public class BaseballGame {
     List<Integer> answer;
     List<Integer> inputNum;
 
-    public void setInputNum(String num) {
-        List<Integer> number = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            int addNum = num.charAt(i)-'0';
-            number.add(addNum);
-        }
-        inputNum = number;
-    }
-
     public void makeRandomNum() {
         List<Integer> number = new ArrayList<>();
         while (number.size()<3){
@@ -29,25 +20,28 @@ public class BaseballGame {
         answer = number;
     }
 
-    public boolean checkIillgal() { //제약사항 만족 못할시 true 반환
-        if(inputNum.size()!=3) return true; //3자리인가?
-
-        List<Integer> number = new ArrayList<>(); //중복인가?
-        for (int i = 0; i < 3; i++) {
-            if(number.contains(inputNum.get(i))){
-                return true;
+    public void checkIllegal(String num) { //inputNum이 제약사항을 만족하는지 확인
+        inputNum = new ArrayList<>();
+        if(num.length()!=3){
+            throw new IllegalArgumentException(); //3자리인가?
+        }
+        
+        for (int i = 0; i < 3; i++) {//중복인가?
+            int addNum = num.charAt(i)-'0';
+            if(inputNum.contains(addNum)){
+                throw new IllegalArgumentException();
             }
-            number.add(inputNum.get(i));
+            inputNum.add(addNum);
         }
 
         for (int i = 0; i < 3; i++) { //각 자리가 1~9사이의 숫자인가?
-            if(1<=number.get(i)&&number.get(i)<=9){
+            if(1<=inputNum.get(i)&&inputNum.get(i)<=9){
                 continue;
             } else{
-                return true;
+                throw new IllegalArgumentException();
             }
         }
-        return false; //제약 사항을 모두 통과했다.
+        //제약 사항을 모두 통과했다.
     }
 
     public String getResult() { //스트라이크 낫싱 볼
