@@ -18,36 +18,44 @@ public class BaseBall implements Game{
 
     @Override
     public void play() {
-        String hitter;
+        String playInput;
         start();
         do{
             System.out.print("숫자를 입력해주세요 : ");
-            hitter=input.playInput();
-            check(hitter);
-        }while (!answer.equals(hitter));
+            playInput=input.playInput();
+            check(playInput);
+        }while (!answer.equals(playInput));
         end();
     }
     @Override
     public void end() {
-        input.endInput();
+        System.out.print("게임 종료");
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String endInput= input.endInput();
+        if(endInput.equals("1")){
+            play();
+        }
+        else if(endInput.equals("2")) {
+            System.out.println("종료되었습니다");
+        }
     }
-    private void check(String hitter){
-        if(answer.equals(hitter)){
+    private void check(String playInput){
+        if(answer.equals(playInput)){
             System.out.print("3스트라이크");
             System.out.print("3개의 숫자를 모두 맞히셨습니다.! ");
         }
         else{
-            point(hitter);
+            point(playInput);
         }
     }
-    private void point(String hitter){ //값 내기
+    private void point(String playInput){ //값 내기
         int strikePoint=0;
         int ballPoint=0;
         for(int i=0; i<range; i++){
-            if(answer.indexOf(hitter.charAt(i)) == i){
+            if(answer.indexOf(playInput.charAt(i)) == i){
                 ballPoint=ballPoint+1;
             }
-            else if(answer.indexOf(hitter.charAt(i)) != -1){
+            else if(answer.indexOf(playInput.charAt(i)) != -1){
                 strikePoint=strikePoint+1;
             }
         }
