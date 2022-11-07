@@ -1,9 +1,9 @@
 package baseball.service;
 
+import baseball.domain.BallCount;
 import baseball.domain.BaseballNumber;
 import baseball.view.BaseballGameInputView;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class BaseballGameService {
@@ -13,7 +13,7 @@ public class BaseballGameService {
         computer = new BaseballNumber();
     }
 
-    public List<Integer> getCounts() {
+    public BallCount getCounts() {
         BaseballNumber player = BaseballGameInputView.getPlayerNumber();
         int strike = 0;
         int ball = 0;
@@ -27,6 +27,6 @@ public class BaseballGameService {
             }
         }
 
-        return List.of(ball, strike);
+        return new BallCount(strike, ball);
     }
 }
