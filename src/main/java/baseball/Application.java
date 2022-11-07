@@ -11,6 +11,12 @@ public class Application {
     private static final Scanner stdinScanner = new Scanner(System.in);
     private static int answerNumber;
 
+    private static int checkEachNumber(int targetNumber, int idx){
+        for (int i = 1; i <= 3; i++) {
+            
+        }
+    }
+
     private static List<Integer> gameResult(int inputNumber){
         ArrayList<Integer> resultList = new ArrayList<>();
 
