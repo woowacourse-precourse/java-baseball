@@ -34,8 +34,8 @@ public class Referee {
     }
 
     private void countBallsAndStrikes(List<Integer> answer, List<Integer> userAnswer) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < answer.size(); i++) {
+            for (int j = 0; j < userAnswer.size(); j++) {
                 if (answer.get(i) == userAnswer.get(j)) {
                     if (i == j) {
                         strikeCount++;
