@@ -30,4 +30,14 @@ public class BallCountTest {
                 .isEqualTo(input);
     }
 
+    @Test
+    void case3_인풋값_볼카운트_출력_확인() {
+        randomNumbers.createBaseballNumbers("123");
+        inputNumbers.createBaseballNumbers("134");
+        String input = "1볼 1스트라이크";
+        ballCount.validateBallCount(randomNumbers, inputNumbers);
+        assertThat(ballCount.toString())
+                .isEqualTo(input);
+    }
+
 }
