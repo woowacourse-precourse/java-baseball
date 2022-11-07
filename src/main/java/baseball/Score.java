@@ -34,7 +34,7 @@ public class Score {
         return strike;
     }
 
-    public static Integer getBall() {
+    private static Integer getBall() {
         int ball = 0;
         for (int i = 0; i < NUMBERS_LENGTH; i++) {
             if (isBall(computerNumbers, userNumbers.get(i))
