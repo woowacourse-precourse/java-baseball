@@ -36,7 +36,7 @@ public class Application {
         return userNumber;
     }
 
-    public static void availableUserNumberIsChecked(String word) throws IllegalArgumentException{
+    public static void availableUserNumberIsChecked(String word){
         String regularExpression = "^[1-9^[1-9^[1-9]]]{3}$";
         boolean result = Pattern.matches(regularExpression,word);
 
@@ -57,8 +57,11 @@ public class Application {
     public static List<Integer> stringToListCreate(String word){
         String[] stringToArray = word.split("");
         List<Integer> arrayToList = new ArrayList<>();
-        for(String arrayElement : stringToArray){
-            arrayToList.add(Integer.parseInt(arrayElement));
+        for(String arrayElementIndex : stringToArray){
+            if(arrayToList.contains(Integer.parseInt(arrayElementIndex))){
+                throw new IllegalArgumentException("유효하지 않은 값입니다.");
+            }
+            arrayToList.add(Integer.parseInt(arrayElementIndex));
         }
         return arrayToList;
     }
