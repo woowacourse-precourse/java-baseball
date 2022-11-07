@@ -72,10 +72,11 @@ class Input {
 }
 
 
-class Compare{
+class Compare {
     static final String NOTHING = "낫싱";
     static final String BALL = "볼";
     static final String STRIKE = "스트라이크";
+
     static HashMap<String, Integer> compareWithAnswer(List<Character> answerList,
                                                       List<Character> userInputList) {
         HashMap<String, Integer> comparedMap = new HashMap<>();
@@ -118,6 +119,7 @@ class Game {
     static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     static final String EXCEPTION_NOT_1_OR_2 = "입력 값이 1이나 2가 아닙니다.";
     static final String GAME_RESTART_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static final String GAME_CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     static List<Character> generateRandomNoDuplication3Numbers() {
         HashSet<Character> removeDuplication = new HashSet<>();
@@ -164,38 +166,38 @@ class Game {
         }
         return newGame;
     }
+
+    static boolean userGotAnswer(List<Character> answer) {
+        boolean userGotAnswer;
+        HashMap<String, Integer> comparedMap = Compare.compareWithAnswer(answer, Input.getInputInGame());
+        Game.printResult(comparedMap);
+        if (Compare.inputEqualsAnswer(comparedMap)) {
+            System.out.println(GAME_CORRECT_ANSWER);
+            userGotAnswer = true;
+        } else {
+            userGotAnswer = false;
+        }
+        return userGotAnswer;
+    }
+
+    static void playGame() {
+        boolean newGame = true;
+        while (newGame) {
+            List<Character> answer = Game.startGame();
+            boolean userGotAnswer = false;
+            while (!userGotAnswer) {
+                userGotAnswer = userGotAnswer(answer);
+            }
+            newGame = Game.restartOrEndGame();
+        }
+    }
 }
 
 
 public class Application {
-    static final String GAME_CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
-    static boolean playGame(List<Character> answer) {
-        boolean gameOn;
-        List<Character> separatedInput = Input.getInputInGame();
-        HashMap<String, Integer> comparedMap = Compare.compareWithAnswer(answer, separatedInput);
-        Game.printResult(comparedMap);
-        if (Compare.inputEqualsAnswer(comparedMap)) {
-            System.out.println(GAME_CORRECT_ANSWER);
-            gameOn = false;
-        } else {
-            gameOn = true;
-        }
-        return gameOn;
-    }
-
     public static void main(String[] args) {
         try {
-            boolean newGame = true;
-            while (newGame) {
-                List<Character> answer = Game.startGame();
-//                System.out.println(answer);
-                boolean gameOn = true;
-                while (gameOn) {
-                    gameOn = playGame(answer);
-                }
-                newGame = Game.restartOrEndGame();
-            }
+            Game.playGame();
         } catch (IllegalArgumentException e) {
             System.exit(0);
         }
