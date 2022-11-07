@@ -24,4 +24,8 @@ class User {
     private User() {
         throw new AssertionError();
     }
+
+    static void greet() {
+        System.out.println(Message.GREET);
+    }
 }
