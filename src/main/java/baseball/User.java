@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 
 public class User {
 
+    private final int INPUT_LENGTH = 3;
+
     public List<Integer> getUserPredictedAnswer() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine().trim();
@@ -25,7 +27,7 @@ public class User {
             throw new IllegalArgumentException("문자가 포함되어 있습니다.");
         }
 
-        if (!UserInputException.isInputLength(input, 3)) {
+        if (!UserInputException.isInputLength(input, INPUT_LENGTH)) {
             throw new IllegalArgumentException("입력의 숫자의 길이가 맞지 않습니다.");
         }
 
