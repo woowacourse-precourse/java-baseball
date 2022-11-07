@@ -10,4 +10,13 @@ public class SystemView {
 
     public SystemView() {
     }
+
+    public String startInput() {
+        System.out.print(INPUT);
+        String input = Console.readLine();
+        if (!systemException.isValidInput(input)) {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
 }
