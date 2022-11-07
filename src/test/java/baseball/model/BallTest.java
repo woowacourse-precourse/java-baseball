@@ -1,5 +1,6 @@
 package baseball.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,6 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BallTest {
+
+    private final Ball ball = new Ball(0, 1);
 
     @DisplayName("1~9사이의 숫자일 경우 Ball이 생성된다.")
     @ParameterizedTest
@@ -30,7 +33,12 @@ class BallTest {
     @DisplayName("숫자와 위치가 같을 경우 STRIKE이다.")
     @Test
     void strike() {
-        Ball ball = new Ball(0, 1);
         assertThat(ball.match(new Ball(0, 1))).isEqualTo(BallStatus.STRIKE);
+    }
+
+    @DisplayName("같은 수가 다른 자리에 있으면 볼이다.")
+    @Test
+    void ball() {
+        assertThat(ball.match(new Ball(1, 1))).isEqualTo(BallStatus.BALL);
     }
 }

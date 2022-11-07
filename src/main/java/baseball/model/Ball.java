@@ -30,11 +30,22 @@ public class Ball {
         if (isStrike(ball)) {
             return BallStatus.STRIKE;
         }
+        if(isBall(ball)){
+            return BallStatus.BALL;
+        }
         return null;
     }
 
     private boolean isStrike(Ball ball) {
         return ball.equals(this);
+    }
+
+    private boolean isBall(Ball ball) {
+        return ball.isSameNumber(this.number);
+    }
+
+    private boolean isSameNumber(int number) {
+        return number == this.number;
     }
 
     @Override
