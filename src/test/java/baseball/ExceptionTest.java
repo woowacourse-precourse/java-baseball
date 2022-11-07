@@ -17,7 +17,7 @@ public class ExceptionTest {
     void 게임플레이어_입력_숫자_문자_포함_예외_테스트() {
         String input = " 1";
 
-        assertThatThrownBy(() -> GameRepeatMessageException.hasCharacters(input))
+        assertThatThrownBy(() -> GameRepeatInputException.hasCharacters(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -25,7 +25,7 @@ public class ExceptionTest {
     void 게임플레이어_입력_숫자_테스트() {
         String input = "3";
 
-        assertThatThrownBy(() -> GameRepeatMessageException.verifyGameRepeatMessage(input))
+        assertThatThrownBy(() -> GameRepeatInputException.verify(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -33,7 +33,7 @@ public class ExceptionTest {
     void 게임플레이어_입력_숫자_길이_테스트() {
         String input = "31";
 
-        assertThatThrownBy(() -> GameRepeatMessageException.verifyGameRepeatMessage(input))
+        assertThatThrownBy(() -> GameRepeatInputException.verify(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -33,20 +33,20 @@ public class Game {
     }
 
     public String getGamePlayerInput() {
-        String temporaryPlayerNumbers = Console.readLine();
-        verifyPlayerNumbers(temporaryPlayerNumbers);
+        String playerNumbers = Console.readLine();
+        verifyPlayerNumbers(playerNumbers);
 
-        return temporaryPlayerNumbers;
+        return playerNumbers;
     }
 
-    public void verifyPlayerNumbers(String gamePlayerNumberInput) {
-        PlayerNumbersException.verifyPlayerNumbers(gamePlayerNumberInput);
+    public void verifyPlayerNumbers(String playerNumbers) {
+        PlayerNumbersException.verifyPlayerNumbers(playerNumbers);
     }
 
-    public String getResult(String gamePlayerInput) {
+    public String getResult(String playerNumbers) {
         List<Integer> result = new ArrayList<>(2);
-        result.add(countStrikes(this.computerNumbers, gamePlayerInput));
-        result.add(countBalls(this.computerNumbers, gamePlayerInput ) - result.get(STRIKE));
+        result.add(countStrikes(this.computerNumbers, playerNumbers));
+        result.add(countBalls(this.computerNumbers, playerNumbers ) - result.get(STRIKE));
 
         return getResultMessage(result);
     }
