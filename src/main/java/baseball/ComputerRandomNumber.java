@@ -15,6 +15,7 @@ public class ComputerRandomNumber {
     }
 
     public List<Integer> makeComputerNumber() {
+        computerNumber.clear();
         while (computerNumber.size() < NUMBER_SIZE) {
             int num = Randoms.pickNumberInRange(1, 9);
 
