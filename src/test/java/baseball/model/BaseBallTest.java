@@ -2,9 +2,13 @@ package baseball.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -49,5 +53,35 @@ class BaseBallTest {
             e.printStackTrace();
         }
         return answer;
+    }
+
+    @DisplayName("정답과 입력값을 비교하는 메서드 테스트")
+    @ParameterizedTest
+    @MethodSource("compareInputAndAnswer")
+    void compareAnswer(List<Integer> inputs, List<Integer> answers, Answer answer) {
+        //given
+        BaseBall baseBall = new BaseBall() {
+            @Override
+            protected List<Integer> makeThreeRandomNumbers() {
+                return answers;
+            }
+        };
+
+        //when
+        Answer score = baseBall.compareAnswer(inputs);
+
+        //then
+        assertThat(score).isEqualTo(answer);
+    }
+
+    private static Stream<Arguments> compareInputAndAnswer() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), new Answer(3, 0)),
+                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 5), new Answer(2, 0)),
+                Arguments.of(List.of(3, 2, 1), List.of(1, 2, 3), new Answer(1, 2)),
+                Arguments.of(List.of(3, 2, 1), List.of(1, 3, 2), new Answer(0, 3)),
+                Arguments.of(List.of(1, 2, 3), List.of(1, 3, 7), new Answer(1, 1)),
+                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 7), new Answer(0, 0))
+        );
     }
 }
