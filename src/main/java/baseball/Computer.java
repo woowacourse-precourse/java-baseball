@@ -5,6 +5,7 @@ public class Computer {
     private static RandomNumber RandomValue;
     private static final int GAMESTARTMODE = 1;
     private static final int INPUTNUMBERMODE = 2;
+    private static final int ENDINGMODE = 3;
     private static final int CALCULATEDOUTPUTMODE = 4;
 
     public static void printGameStart() {
@@ -29,6 +30,8 @@ public class Computer {
             printGameStart();
         } else if (mode == INPUTNUMBERMODE) {
             printInputNumber();
+        } else if (mode == ENDINGMODE) {
+            printEndingMessage();
         } else if (mode == CALCULATEDOUTPUTMODE) {
             printCalculateResult(input);
         }
