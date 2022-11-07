@@ -153,3 +153,12 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+### 기능 목록
+- [ ] 안내멘트 출력하기
+- [ ] 숫자 랜덤 생성하기
+- [ ] 숫자 입력받기
+- [ ] 결과 알려주기
+- [ ] 정답을 맞추면 새로시작 or 종료
+- [ ] 잘못된 값 입력 시 종료
