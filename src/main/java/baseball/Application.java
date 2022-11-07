@@ -49,6 +49,12 @@ public class Application {
         }
         //숫자 3개가 아닌 경우
         if (user.size() != 3) throw new IllegalArgumentException();
+        //숫자가 아닌 경우
+        for (int i = 0; i < 3; i++) {
+            if (!(1 <= user.get(i) && user.get(i) <= 9)) {
+                throw new IllegalArgumentException();
+            }
+        }
 
         return user;
     }
