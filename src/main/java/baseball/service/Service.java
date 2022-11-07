@@ -7,13 +7,13 @@ import java.util.Map;
 
 import baseball.constants.Message;
 import baseball.controller.Controller;
-import baseball.exception.Exception;
+import baseball.exception.IllegalException;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Service {
 
-	static Exception condition = new Exception();
+	static IllegalException condition = new IllegalException();
 	static Message message = new Message();
 	public static boolean gameSet = true;
 	static Controller controller = new Controller();
