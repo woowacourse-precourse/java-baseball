@@ -43,7 +43,10 @@ public class Application {
     }
 
     public static boolean checkResult(){
-        return false;
+        int strike = checkStrike();
+        int ball = checkBall(strike);
+        printResult(ball, strike);
+        return strike == 3; // strike=3 이면 모든 숫자를 다 맞췄으므로 종료, 아니라면 계속 진행
     }
 
     public static boolean checkExitGame(){
@@ -70,6 +73,29 @@ public class Application {
             int value = current.get(i);
             if(current.indexOf(value) != current.lastIndexOf(value)) throw new IllegalArgumentException();  // 리스트에 값이 여러 개 존재한다는 의미이므로 IllegalArgumentException 발생
         }
+    }
+
+    public static int checkBall(int strike){
+        int ball = 0;
+        for(int i=0; i<current.size(); i++){
+            if(answer.contains(current.get(i))) ball++;
+        }
+        return ball-strike;
+    }
+
+    public static int checkStrike(){
+        int strike = 0;
+        for(int i=0; i<current.size(); i++){
+            if(current.get(i).intValue() == answer.get(i).intValue()) strike++;
+        }
+        return strike;
+    }
+
+    public static void printResult(int ball, int strike){
+        if(ball != 0 && strike != 0) System.out.println(ball + "볼 " + strike + "스트라이크");
+        if(ball != 0 && strike == 0) System.out.println(ball + "볼");
+        if(ball == 0 && strike != 0) System.out.println(strike + "스트라이크");
+        if(ball == 0 && strike == 0) System.out.println("낫싱");
     }
 
 }
