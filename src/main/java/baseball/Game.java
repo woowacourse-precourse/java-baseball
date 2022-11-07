@@ -16,7 +16,7 @@ public class Game {
         do {
             referee.compareComputerWith(Translator.translateStringToIntegerList(InputView.inputNumbers()));
             printHint(referee.getBaseballScore());
-        } while(referee.getBaseballScore().getStrike() != 3);
+        } while(referee.getStrikeCount() != 3);
         OutputView.showVictoryMessage();
     }
 

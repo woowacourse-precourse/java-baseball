@@ -24,4 +24,8 @@ public class Referee {
     public BaseballScore getBaseballScore() {
         return baseballScore;
     }
+
+    public int getStrikeCount() {
+        return baseballScore.getStrike();
+    }
 }
