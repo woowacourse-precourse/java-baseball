@@ -47,4 +47,11 @@ public class GameController {
             outputView.showGameResult(strike,ball);
         }
     }
+
+    private void compareNumber(Computer computer, Player player) {
+        for(int i=0; i<TARTGET_NUMBER; i++){
+            BallCode ballCode = computer.getScore(i, player.getIndexNumber(i));
+            addScore(ballCode);
+        }
+    }
 }
