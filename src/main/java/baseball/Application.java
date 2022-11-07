@@ -16,7 +16,7 @@ public class Application {
     private static void programStart() {
         Computer.init();
 
-        while (Program.isProgramEnd()) {
+        while (!Program.isProgramEnd()) {
             InputView.displayInputNumberMessage();
             Game game = GameResultCalculator.calculateStrikeAndBallCount(InputView.getUserInputNumbers());
             OutputView.displayGameResult(game);
