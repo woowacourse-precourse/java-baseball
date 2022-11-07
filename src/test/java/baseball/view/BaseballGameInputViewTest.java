@@ -9,20 +9,28 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("사용자 입력 숫자 확인")
 class BaseballGameInputViewTest {
 
+    OutputStream out;
+    InputStream in;
+
+    @BeforeEach
+    public void init() {
+        out = new ByteArrayOutputStream();
+    }
+
     @Test
     @DisplayName("올바르지 않은 숫자 입력")
     public void isNotValidInput(){
         // given
         final String input = "111";
-        OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+        in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         // when
 
@@ -35,9 +43,8 @@ class BaseballGameInputViewTest {
     public void isValidInput(){
         // given
         final String input = "123";
-        OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+        in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         final BaseballNumber baseballNumber = new BaseballNumber("123");
 
