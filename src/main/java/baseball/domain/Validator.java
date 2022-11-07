@@ -1,30 +1,32 @@
 package baseball.domain;
 
+import baseball.Exception;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Validator {
+
     private final static List<Integer> restartCode = new ArrayList<>(Arrays.asList(1, 2));
 
     public void isValidate(String number) {
         number = number.trim();
         if (!isNumeric(number)) {
-            throw new IllegalArgumentException();
+            Exception.numericErrror();
         }
 
         List<Character> listNumber = convertStringToCharList(number);
         if (listNumber.size() != 3) {
-            throw new IllegalArgumentException();
+            Exception.sizeEroor();
         }
 
         if (isDuplicate(listNumber)) {
-            throw new IllegalArgumentException();
+            Exception.duplicationError();
         }
 
         if (isZero(listNumber)) {
-            throw new IllegalArgumentException();
+            Exception.containZeroError();
         }
     }
 
@@ -48,15 +50,15 @@ public class Validator {
     public void restartValidate(String message) {
         message = message.trim();
         if (message.length() != 1) {
-            throw new IllegalArgumentException();
+            Exception.sizeEroor();
         }
         if (!isNumeric(message)) {
-            throw new IllegalArgumentException();
+            Exception.numericErrror();
         }
 
         int exitNumber = Integer.valueOf(message);
         if (!restartCode.contains(exitNumber)) {
-            throw new IllegalArgumentException();
+            Exception.restartError();
         }
     }
 
