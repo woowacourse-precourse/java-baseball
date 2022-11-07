@@ -12,5 +12,15 @@ public class Hint {
         checkStrikeBall(computerNum, userNum);
     }
 
+    public void checkStrikeBall(List<Integer> computerNum, List<Integer> playerNum){
+        for(int i = 0; i < playerNum.size(); i++){
+            int playerNumDigit = playerNum.get(i);
+            if(computerNum.indexOf(playerNumDigit) == i){
+                strike += 1;
+            } else if (computerNum.indexOf(playerNumDigit) != i & computerNum.contains(playerNumDigit)) {
+                ball += 1;
+            }
+        }
+    }
 }
 
