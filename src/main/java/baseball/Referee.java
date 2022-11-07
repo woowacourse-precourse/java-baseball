@@ -47,7 +47,7 @@ public class Referee {
             char target = input.charAt(inputIdx);
             char firstChar = compareTarget.poll();
 
-            if(compareTarget.contains(target)) {
+            if (compareTarget.contains(target)) {
                 count++;
             }
 
@@ -58,10 +58,10 @@ public class Referee {
     }
 
     public String createJudgement(int strike, int ball) {
-        if(strike == 0 && ball == 0) {
+        if (strike == 0 && ball == 0) {
             return NOTHING;
         }
-        if(strike == MAX_NUMBER_SIZE) {
+        if (strike == MAX_NUMBER_SIZE) {
             return THREE_STRIKE;
         }
         if (strike == 0 && ball != 0) {
