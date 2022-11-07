@@ -7,8 +7,17 @@ import java.util.ArrayList;
 
 public class Application {
 
+    public static int checkStrike(List<Integer> randomNum, List<Integer> inputNum) {
+        int count=0;
+        for(int i=0;i<randomNum.size();i++) {
+            if(randomNum.get(i)==inputNum.get(i))
+                count++;
+        }
+        return count;
+    }
+
     public static boolean checkNum(List<Integer> randomNum, List<Integer> inputNum) {
-        
+
         int strike=checkStrike(randomNum,inputNum);
         int ball=checkBall(randomNum,inputNum);
 
