@@ -15,7 +15,7 @@ public class Application {
             int valueOfCurrent = Character.getNumericValue(input.charAt(loc));
             if (computer.indexOf(valueOfCurrent) != loc && computer.contains(valueOfCurrent)){
                 ball++;
-                System.out.println("I think "+valueOfCurrent+" is ball.");
+//                System.out.println("I think "+valueOfCurrent+" is ball.");
             }
             loc++;
         }
@@ -29,7 +29,7 @@ public class Application {
             if(computer.indexOf(valueOfCurrent) == loc)
             {
                 strike++;
-                System.out.println("I think "+valueOfCurrent+" is strike.");
+//                System.out.println("I think "+valueOfCurrent+" is strike.");
             }
             loc++;
         }
@@ -42,18 +42,18 @@ public class Application {
         while (stateOfGame == 1) {
             int strike = 0;
             int ball = 0;
+
             List<Integer> computer = getRandomList();
-            System.out.println("computer : " + computer);
+
             while (strike != 3) {
                 String inputData = Console.readLine();
-                System.out.println("InputData : " + inputData);
+                if (inputData.length() != 3){
+                    throw new IllegalArgumentException("입력 값이 잘못되었습니다.");
+                }
 
 //        입력 값과 정답 비교
                 strike = findStrikes(inputData, computer);
                 ball = findBalls(inputData, computer);
-
-                System.out.println("strike : " + strike);
-                System.out.println("ball : " + ball);
 
                 getHints(strike, ball);
 
