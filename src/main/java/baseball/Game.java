@@ -26,6 +26,12 @@ public class Game {
         return selectedNums;
     }
 
+    public List<Integer> getBallStrikeCnt(List<Integer> playerGuess){
+        int strike = countStrike(playerGuess);
+        int ball = countNumbersContainedInAnswer(playerGuess) - strike;
+
+        return List.of(ball, strike);
+    }
     int countNumbersContainedInAnswer(List<Integer> playerGuess){
         return (int) playerGuess.stream()
                 .filter(input -> answer.contains(input))
