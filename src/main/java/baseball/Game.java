@@ -31,4 +31,14 @@ public class Game {
         List<String> numberList = new ArrayList<>(Arrays.asList(Console.readLine().split("")));
         return numberList;
     }
+    char gameRestartController() {
+        System.out.println(systemMessage.RESTART_GAME_MESSAGE);
+        String inputRestartValue = Console.readLine();
+
+        if (inputRestartValue.length() == 1) {
+            return inputRestartValue.charAt(0);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }
