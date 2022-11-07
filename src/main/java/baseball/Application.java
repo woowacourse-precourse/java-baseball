@@ -108,8 +108,9 @@ public class Application {
             throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String input= Console.readLine();
-        int inputInt=Integer.valueOf(input);
+        int inputInt=Integer.parseInt(input);
         if ((inputInt < 100) || (inputInt > 999)) {
+            System.out.println("숫자가 세 자리가 아닙니다");
             throw new IllegalArgumentException();
         }
         return inputInt;
@@ -118,14 +119,15 @@ public class Application {
     private static Integer getUserIntEndGame()
             throws IllegalArgumentException {
         String input= Console.readLine();
-        int inputInt=Integer.valueOf(input);
+        int inputInt=Integer.parseInt(input);
         if ((inputInt != 1) && (inputInt != 2)) {
+            System.out.println("1이나 2가 아닙니다");
             throw new IllegalArgumentException();
         }
         return inputInt;
     }
 
-    private static boolean restartOrEndGame() {
+    private static boolean restartOrEndGame() throws IllegalArgumentException{
         boolean newGame = true;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int userInput = getUserIntEndGame();
