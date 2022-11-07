@@ -10,12 +10,17 @@ public class BaseballDto {
 	public static void setComputer() {
 		computer = GameController.createComputerNumber();
 	}
-	public static void setUser() {
+	public static void setUser(String type) {
 		user = Console.readLine();
-		checkErrorNumber();
+		checkException(type);
 	}
-	public static void checkErrorNumber() {
-		ExceptionHandler.checkException(user);
+	public static void checkException(String type) {
+		if (type.equals("user")) {
+			ExceptionHandler.checkUserException(user);
+		}
+		if (type.equals("restart")) {
+			ExceptionHandler.checkStopException(user);
+		}
 	}
 	public static String getComputer() {
 		return computer;

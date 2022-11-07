@@ -20,7 +20,7 @@ public class Output {
 	}
 	public static void printText(int num) { System.out.print(num); }
 	public static void printNotice(String type) {
-		if (type.equals("reStart")) {
+		if (type.equals("restart")) {
 			printText(Text.stop.getPrint());
 			printText(Text.choice.getPrint());
 		}

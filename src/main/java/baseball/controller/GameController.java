@@ -2,12 +2,12 @@ package baseball.controller;
 
 import java.util.List;
 
+import baseball.utils.ExceptionHandler;
 import baseball.utils.Game;
 import baseball.utils.Text;
 import baseball.dto.BaseballDto;
 import baseball.service.GameService;
 import baseball.view.Output;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 	static final int ball = 1;
@@ -20,17 +20,18 @@ public class GameController {
 
 		do {
 			Output.printText(Text.input.getPrint());
-			BaseballDto.setUser();
+			BaseballDto.setUser("user");
 		} while (gameResult(compareNumber()) != 3);
 
-		Output.printNotice("reStart");
+		Output.printNotice("restart");
 	}
 	public static void reStart() {
 		Output.printNotice("start");
 
 		do {
 			gameStart();
-		}while (Console.readLine().equals("1"));
+			BaseballDto.setUser("restart");
+		}while (BaseballDto.getUser().equals(Integer.toString(Game.strike.getDef())));
 	}
 	public static Integer gameResult(List<Integer> result) {
 		boolean isVisited = false;

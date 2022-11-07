@@ -8,14 +8,13 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import baseball.controller.GameController;
-import baseball.dto.BaseballDto;
 import baseball.service.GameService;
+import baseball.utils.ExceptionHandler;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
 public class ControllerTest extends NsTest {
 	@Test
-	void checkRestartErro() {
+	void checkRestartError() {
 		assertSimpleTest(() ->
 				assertThatThrownBy(() -> assertRandomNumberInRangeTest(
 						() -> {
@@ -40,35 +39,28 @@ public class ControllerTest extends NsTest {
 	@Test
 	void checkInputNullError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> BaseballDto.checkErrorNumber())
+				assertThatThrownBy(() -> ExceptionHandler.checkUserException(null))
 						.isInstanceOf(IllegalArgumentException.class)
 		);
 	}
 	@Test
 	void checkInputLengthError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> BaseballDto.checkErrorNumber())
+				assertThatThrownBy(() -> ExceptionHandler.checkUserException("1234"))
 						.isInstanceOf(IllegalArgumentException.class)
 		);
 	}
 	@Test
 	void checkSameInputValueError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> BaseballDto.checkErrorNumber())
+				assertThatThrownBy(() -> ExceptionHandler.checkUserException("244"))
 						.isInstanceOf(IllegalArgumentException.class)
 		);
 	}
 	@Test
 	void checkBoundaryInputError() {
 		assertSimpleTest(() ->
-				assertThatThrownBy(() -> BaseballDto.checkErrorNumber())
-						.isInstanceOf(IllegalArgumentException.class)
-		);
-	}
-	@Test
-	void checkNumberInputError() {
-		assertSimpleTest(() ->
-				assertThatThrownBy(() -> BaseballDto.checkErrorNumber())
+				assertThatThrownBy(() -> ExceptionHandler.checkUserException("102"))
 						.isInstanceOf(IllegalArgumentException.class)
 		);
 	}
