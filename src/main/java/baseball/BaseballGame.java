@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,8 +86,10 @@ public class BaseballGame extends Game {
     public void validateInputNumber(String validateTarget) {
         String exceptionMessage = NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.";
 
-        if (!validateTarget.matches("^[1-9]$")) throw new IllegalArgumentException(exceptionMessage);
+        if (!validateTarget.matches("^[1-9]+$")) throw new IllegalArgumentException(exceptionMessage);
         if (validateTarget.length() != NUMBER_LIMIT) throw new IllegalArgumentException(exceptionMessage);
 
+        int size = (new HashSet<>(List.of(validateTarget.split("")))).size();
+        if (size != NUMBER_LIMIT) throw new IllegalArgumentException(exceptionMessage);
     }
 }
