@@ -10,10 +10,10 @@ public class NumberBaseballService {
     private List<Integer> answer;
 
     public NumberBaseballService() {
-        generateAnswerNumber();
+        initAnswerNumber();
     }
 
-    public void generateAnswerNumber() {
+    public void initAnswerNumber() {
         answer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 

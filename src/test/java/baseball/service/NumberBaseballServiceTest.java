@@ -1,6 +1,5 @@
 package baseball.service;
 
-import baseball.dto.StrikeBallCountDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,7 @@ class NumberBaseballServiceTest {
         NumberBaseballService numberBaseballService = new NumberBaseballService();
 
         //when
-        numberBaseballService.generateAnswerNumber();
+        numberBaseballService.initAnswerNumber();
         List<Integer> answer = numberBaseballService.getAnswer();
 
         //then
