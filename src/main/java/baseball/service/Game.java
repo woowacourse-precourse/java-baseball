@@ -45,5 +45,10 @@ public class Game {
         PrintConsole.printResult(computer);
     }
 
+    private void choiceRestartOrEnd(){
+        int usersStatus = ReceiveConsole.choiceGameContinue();
+        user.updateStatus(usersStatus);
+    }
+
 
 }
