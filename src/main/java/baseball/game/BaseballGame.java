@@ -1,5 +1,12 @@
 package baseball.game;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.List;
+
+import static baseball.game.InputManager.validateInputDuringGame;
+import static baseball.util.StringConverter.stringToIntList;
+
 public class BaseballGame implements Game {
 
     private final static int BASEBALL_START_NUMBER = 1;
@@ -14,6 +21,8 @@ public class BaseballGame implements Game {
 
     private Baseball baseball;
 
+    private List<Integer> userInput;
+
     public BaseballGame() {
     }
 
@@ -21,7 +30,8 @@ public class BaseballGame implements Game {
     public void start() {
         createNewBaseball();
         do {
-
+            input();
+            
         } while (true);
     }
 
@@ -42,5 +52,13 @@ public class BaseballGame implements Game {
 
     private void createNewBaseball() {
         baseball = new Baseball(BASEBALL_START_NUMBER, BASEBALL_END_NUMBER, BASEBALL_LENGTH_LIMIT);
+    }
+
+    private void input() {
+        System.out.print(INPUT_MESSAGE);
+
+        final String input = Console.readLine();
+        validateInputDuringGame(input);
+        userInput = stringToIntList(input);
     }
 }
