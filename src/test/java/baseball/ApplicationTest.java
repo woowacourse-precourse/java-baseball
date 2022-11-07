@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.Constant;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -65,6 +66,20 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5
         );
+    }
+
+    @Test
+    void 재시작_문자열_입력_테스트() {
+        assertThatThrownBy(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "a");
+                    },
+                    1, 3, 5
+            );
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Constant.END_INPUT_NOT_NUMBER);
+        ;
     }
 
     @Override
