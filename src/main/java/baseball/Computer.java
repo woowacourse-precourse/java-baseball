@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> computer = new ArrayList<>();
+    private final List<Integer> computer = new ArrayList<>();
 
     public Computer() {
 
@@ -16,8 +16,6 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
-
-        System.out.println(computer.toString());
     }
 
     public List<Integer> get_number() {

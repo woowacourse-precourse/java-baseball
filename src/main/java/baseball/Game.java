@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     public void play_game() {
-        boolean gameEnd = false;
+        boolean gameEnd = true;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (!gameEnd) {
+        while (gameEnd) {
             baseball();
             gameEnd = new_game();
         }
@@ -31,8 +31,7 @@ public class Game {
         String restart = Console.readLine();
         validate_restart(restart);
 
-        if (restart.equals("1")) return false;
-        return true;
+        return restart.equals("1");
     }
 
     public void validate_restart(String input) {
@@ -41,5 +40,5 @@ public class Game {
         throw new IllegalArgumentException("1 아니면 2 입력 바람");
     }
 
-    
+
 }

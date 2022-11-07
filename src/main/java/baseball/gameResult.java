@@ -40,8 +40,7 @@ public class gameResult {
     }
 
     private boolean game_win(int strike) {
-        if (strike == 3) return true;
-        return false;
+        return strike == 3;
     }
 
 
