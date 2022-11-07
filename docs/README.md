@@ -43,3 +43,8 @@
 > * [추가된 제한사항](https://github.com/reddevilmidzy/java-baseball#%EC%B6%94%EA%B0%80%EB%90%9C-%EC%9A%94%EA%B5%AC-%EC%82%AC%ED%95%AD) 지키기
 > * 커밋 컨벤션 지키기
 > * 쉽게 이해할 수 있고 의도를 들어낸 작명
+
+### Todo 리팩토링
+> * 변수 메소드 클래스 이름 더 신경써보기
+> * 재실행시 초기화 구현
+> * 캡슐화 시키기
