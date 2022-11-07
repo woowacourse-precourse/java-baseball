@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class BaseballGame {
     List<Integer> targetNumber;
 
-    public void generateTargetNumber(){
+    public void generateTargetNumber() {
         while(targetNumber.size() < 3) {
             int randomNumber=Randoms.pickNumberInRange(1, 9);
             if (!targetNumber.contains(randomNumber)) {
@@ -15,7 +15,7 @@ public class BaseballGame {
         }
     }
 
-    public void startGame(){
+    public void startGame() {
         // TODO: 타겟 넘버 생성, 사용자 입력 실행 등 새 게임 시작
     }
 }
