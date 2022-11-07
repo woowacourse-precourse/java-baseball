@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BaseBallGame {
     private String userNumber;
     private Computer computer;
@@ -126,6 +129,36 @@ public class BaseBallGame {
     }
     private void isRightRestartToken() throws IllegalArgumentException {
         if (!restartToken.equals("1") && !restartToken.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void isRightUserNumberLength() throws IllegalArgumentException {
+        if (userNumber.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void isRightUserNumberDigit() throws IllegalArgumentException {
+        for (int i = 0; i < userNumber.length(); i++) {
+            if(!Character.isDigit(userNumber.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private void isRightUserNumberDuplicate() throws IllegalArgumentException {
+        Set<Character> set = new HashSet<>();
+        for (int i = 0; i < userNumber.length(); i++) {
+            set.add(userNumber.charAt(i));
+        }
+        if (set.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void isRightUserNumberRange() throws IllegalArgumentException {
+        if (userNumber.contains("0")) {
             throw new IllegalArgumentException();
         }
     }
