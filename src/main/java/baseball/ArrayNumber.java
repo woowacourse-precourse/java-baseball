@@ -23,6 +23,12 @@ public class ArrayNumber {
         return this.digits;
     }
 
+    public void inputAnswer() {
+        System.out.print(str_input);
+        String input = Console.readLine();
+        setDigits(input);
+    }
+
     private int[] convertIntegerSetToIntArray (Set<Integer> set) {
         return set.stream()
                 .mapToInt(Integer::intValue)
