@@ -13,6 +13,12 @@ public class BaseballList {
                 .map(baseball -> new Baseball(baseball))
                 .collect(Collectors.toList());
     }
+
+    public void getBaseballList() {
+        for(Baseball baseball: this.baseballList) {
+            baseball.getBaseball();
+        }
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
