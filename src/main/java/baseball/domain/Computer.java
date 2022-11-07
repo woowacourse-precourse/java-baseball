@@ -12,14 +12,13 @@ public class Computer {
     public void makeAnswer() {
         List<Integer> numbers = makeNotDuplicatedRandomNumbers();
         this.answer = new BaseballNumber(numbers);
-        System.out.println("(임시) 숫자야구의 정답 : " + answer); // TODO: 마지막에 삭제
     }
 
     protected List<Integer> makeNotDuplicatedRandomNumbers() {
         return RandomGenerator.makeNotDuplicatedRandomNumbers(NUMBER_CNT, MIN_RANGE, MAX_RANGE);
     }
 
-    public Result returnResult(BaseballNumber guessNumber) { // TODO 고민 Point : 반환타입 List가 맞을까, []가 맞을까
+    public Result returnResult(BaseballNumber guessNumber) {
         if (answer == null) {
             throw new IllegalStateException("Computer에 정답이 저장되어 있지 않습니다");
         }
