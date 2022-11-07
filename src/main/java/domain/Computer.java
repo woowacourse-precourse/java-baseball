@@ -1,6 +1,7 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
@@ -17,6 +18,10 @@ public class Computer {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public void init() {
+        this.numbers = new ArrayList<>();
     }
 
 }
