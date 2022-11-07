@@ -10,6 +10,14 @@ public class UserAnswerValidator {
     private static final int FIRST_NUMBER = 0;
     private static final int SECOND_NUMBER = 1;
     private static final int THIRD_NUMBER = 2;
+    private static final String NEW_GAME = "1";
+    private static final String END_APPLICATION = "2";
+
+    public void validateNewGameAnswer(String userAnswer) {
+        if (userAnswer.equals(NEW_GAME) || userAnswer.equals(END_APPLICATION)) {
+            throw new IllegalArgumentException(ErrorMessage.NEW_GAME_INPUT_EXCEPTION);
+        }
+    }
 
     public void validateUserAnswer(String userAnswer) {
         if (!checkNumber(userAnswer)) {

@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.GameResult;
 import baseball.enums.GuessResultStatus;
 import baseball.sevice.NumberBaseballService;
+import baseball.validator.UserAnswerValidator;
 import baseball.view.NumberBaseballView;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class NumberBaseballController {
     private static final int BALL_INDEX = 1;
     private final NumberBaseballService numberBaseballService = new NumberBaseballService();
     private final NumberBaseballView numberBaseballView = new NumberBaseballView();
+    private final UserAnswerValidator userAnswerValidator = new UserAnswerValidator();
 
     public void startGame() {
         numberBaseballService.initNumber();
@@ -28,6 +30,7 @@ public class NumberBaseballController {
     private void determineNextMove(GuessResultStatus resultType) {
         if (resultType == GuessResultStatus.WIN) {
             String userAnswer = numberBaseballView.inputNewGameAnswer();
+            userAnswerValidator.validateNewGameAnswer(userAnswer);
         }
     }
 

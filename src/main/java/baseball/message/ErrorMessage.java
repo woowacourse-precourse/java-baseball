@@ -7,6 +7,6 @@ public interface ErrorMessage {
     String SAME_NUMBER_EXCEPTION = "3개의 숫자는 모두 달라야 합니다.";
 
     // 유저의 새게임 여부 입력시
-
+    String NEW_GAME_INPUT_EXCEPTION = "1 또는 2만 입력해야 합니다.";
 
 }
