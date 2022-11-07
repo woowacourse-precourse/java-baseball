@@ -1,6 +1,7 @@
 package study;
 
 import baseball.PlayGame;
+import baseball.PrepareGame;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class PlayGameTest {
     List<Integer> userNumberTest = new ArrayList<>(Arrays.asList(examUserNumber));
 
     PlayGame playGameTest = new PlayGame(computerNumberTest, userNumberTest);
+
+    PrepareGame prepareGame = new PrepareGame();
 
     @Test
     void 볼_스트라이크_세는_기능(){
@@ -34,5 +37,10 @@ public class PlayGameTest {
     void 볼_스트라이크_출력_테스트_낫싱(){
         String answer = "낫싱";
         assertThat(playGameTest.outputResultForTest(0,0)).isEqualTo(answer);
+    }
+
+    @Test
+    void 게임을_다시_시작할_경우_테스트(){
+        assertThat(prepareGame.isGameExitForTest("1")).isEqualTo(true);
     }
 }
