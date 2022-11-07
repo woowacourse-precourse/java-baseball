@@ -45,6 +45,23 @@ public class Play {
         checkBall(userNumberList,computerNumberList);
 
     }
+    public String getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
+        int strike = checkStrike(userNumberList,computerNumberList);
+        int ball = checkBall(userNumberList,computerNumberList);
+        System.out.println(strike);
+        System.out.println(ball);
+        if(strike!=0 && ball==0) {
+            return strike + STRIKE_MESSAGE;
+        }
+        if(strike==0 && ball!=0){
+            return ball + BALL_MESSAGE;
+        }
+        if(strike==0 && ball ==0){
+            return NOTHING_MESSAGE;
+        }
+        return strike+STRIKE_MESSAGE +" "+ ball+BALL_MESSAGE;
+    }
+
     public int checkStrike(List<Integer> userNumberList, List<Integer> computerNumberList){
         int strike = 0;
         for(int i=0; i<3; i++){
