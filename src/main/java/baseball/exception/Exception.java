@@ -1,6 +1,8 @@
 package baseball.exception;
 
 
+import baseball.constant.Constant;
+
 public class Exception {
 
     public static void isOneOrTwo(int number) throws IllegalArgumentException {
@@ -16,6 +18,13 @@ public class Exception {
             if (!Character.isDigit(Number.charAt(i))) {
                 throw new IllegalArgumentException("숫자만 입력해주세요");
             }
+        }
+    }
+
+    public static void isInputLengthThree(String Number) throws IllegalArgumentException {
+
+        if (Number.length() != Constant.NUMBER_SIZE) {
+            throw new IllegalArgumentException("입력 숫자 길이가 3이 아닙니다");
         }
     }
 }
