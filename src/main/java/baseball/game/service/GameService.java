@@ -36,7 +36,6 @@ public class GameService {
 
         int numberOfStrike = computeNumberOfStrike(computerNumbers, userNumbers);
         int numberOfBall = computeNumberOfBall(numberOfStrike, computerNumbers, userNumbers);
-        //System.out.println(numberOfStrike + " " + numberOfBall);
 
         return new BallCount(numberOfStrike, numberOfBall);
     }
