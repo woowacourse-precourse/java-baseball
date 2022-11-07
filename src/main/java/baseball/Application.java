@@ -35,6 +35,10 @@ public class Application {
                 if(gameStr.equals("2")){
                     break;
                 }
+                if(gameStr.equals("1")){
+                    computer = setAnswerNumber();
+                    continue;
+                }
 
             }
         }
