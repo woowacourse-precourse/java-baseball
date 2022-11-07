@@ -16,13 +16,11 @@ public class Computer {
     }
 
     public Map<BaseballScore, Integer> compare(List<Integer> userNumber) {
-        Map<BaseballScore, Integer> result = new HashMap<>() {
-            {
-                put(BaseballScore.STRIKE, 0);
-                put(BaseballScore.BALL, 0);
-                put(BaseballScore.NOTHING, 0);
-            }
-        };
+        Map<BaseballScore, Integer> result = new HashMap<>() {{
+            put(BaseballScore.STRIKE, 0);
+            put(BaseballScore.BALL, 0);
+            put(BaseballScore.NOTHING, 0);
+        }};
         computeScoreCount(userNumber, result);
         return result;
     }
@@ -36,11 +34,15 @@ public class Computer {
 
     public BaseballScore computeNumberScore(int number, List<Integer> userNumber) {
         if (numbers.contains(number)) {
-            if (numbers.indexOf(number) == userNumber.indexOf(number)) {
-                return BaseballScore.STRIKE;
-            }
-            return BaseballScore.BALL;
+            return computeContainedNumberScore(number, userNumber);
         }
         return BaseballScore.NOTHING;
+    }
+
+    public BaseballScore computeContainedNumberScore(int number, List<Integer> userNumber) {
+        if (numbers.indexOf(number) == userNumber.indexOf(number)) {
+            return BaseballScore.STRIKE;
+        }
+        return BaseballScore.BALL;
     }
 }
