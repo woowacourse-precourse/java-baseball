@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class UserFunction {
 
-    private List<Integer> createUserList(String input) {
+    public List<Integer> createUserList(String input) {
         if (!inputLengthCheck(input)) {
             throw new UserInputException();
         }
