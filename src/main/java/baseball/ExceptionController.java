@@ -10,6 +10,12 @@ public class ExceptionController {
         handleDuplicatedNumberInput(input);
     }
 
+    public static void handleInvalidFinishCode(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+        }
+    }
+
     private static void handleNot3LengthInput(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("세 자리 수를 입력해야 합니다.");
