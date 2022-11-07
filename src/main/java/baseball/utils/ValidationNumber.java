@@ -44,7 +44,7 @@ public class ValidationNumber {
         HashSet<Integer> numberSet = new HashSet<>(number);
 
         if (numberSet.size() != GAME_NUMBER_SIZE) {
-            throw new IllegalArgumentException(ExceptionType.NOT_OVERLAP.getMessage());
+            throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
         }
     }
 
