@@ -26,10 +26,10 @@ public class Player {
     return convertToImmutableIntegerList(inputNumber);
   }
 
-  private List<Integer> convertToImmutableIntegerList(String from) {
+  private List<Integer> convertToImmutableIntegerList(String inputNumber) {
     List<Integer> result = new ArrayList<>();
-    for (char fromCh : from.toCharArray()) {
-      result.add(fromCh - '0');
+    for (char digit : inputNumber.toCharArray()) {
+      result.add(digit - '0');
     }
     return Collections.unmodifiableList(result);
   }
@@ -57,10 +57,10 @@ public class Player {
     }
   }
 
-  private boolean checkDuplicatedDigit(String input) {
-    return input.charAt(0) == input.charAt(1)
-            || input.charAt(1) == input.charAt(2)
-            || input.charAt(0) == input.charAt(2);
+  private boolean checkDuplicatedDigit(String inputNumber) {
+    return inputNumber.charAt(0) == inputNumber.charAt(1)
+            || inputNumber.charAt(1) == inputNumber.charAt(2)
+            || inputNumber.charAt(0) == inputNumber.charAt(2);
   }
 
   private void printInputMessage() {
