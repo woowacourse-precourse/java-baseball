@@ -35,5 +35,10 @@ public class Application {
         }
         sc.close();
     }
+    // 점수 초기화
+    private static void init() {
+        strike = 0;
+        ball = 0;
+    }
 }
 
