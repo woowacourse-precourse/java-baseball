@@ -29,4 +29,23 @@ public class BaseballGame {
         }
         return computerNumber;
     }
+
+    public String startMatch(String inputValue) {
+        for (int i = 0; i < inputValue.length(); i++) {
+            ballOrStrikeOrNothing(i, Integer.parseInt(String.valueOf(inputValue.charAt(i))));
+        }
+        return "";
+    }
+
+    private void ballOrStrikeOrNothing(int index, int value) {
+        if (this.computerNumber.contains(value)) {
+            if (this.computerNumber.indexOf(value) == index) {
+                this.strike++;
+                return;
+            }
+            this.ball++;
+            return;
+        }
+        this.nothing++;
+    }
 }
