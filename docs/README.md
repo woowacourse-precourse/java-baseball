@@ -46,6 +46,7 @@
 - 전체 계산을 관리하는 기능을 하는 run() 함수 구현
 - List를 정렬 기능을 하는 sortList() 함수 구현
 - 겹치는 수가 있다면 겹치는 수를 구해주는 findSameNumber() 함수 구현
-- 겹치는 수를 이용해 스트라이크와 볼을 확인하는 findStrikeAndBall() 함수 구현
+- Strike와 Ball확인 결과를 HashMap에 담는 countStrikeAndBall() 함수 구현
+- 겹치는 수를 이용해 스트라이크와 볼을 확인하는 findResultStrikeAndBall() 함수 구현
 - 게임 시작과 게임 재시작,완전 종료를 선택기능을 하는 choiceRun() 함수 구현
 
