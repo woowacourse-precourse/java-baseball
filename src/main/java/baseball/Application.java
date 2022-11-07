@@ -61,12 +61,12 @@ public class Application {
         for (Integer eachScore : score) {
             if (eachScore == 1) {
                 ball += 1;
-            } else if (eachScore == 2){
+            } else if (eachScore == 2) {
                 strike += 1;
             }
         }
 
-        if(strike == 3){
+        if (strike == 3) {
 
         }
 
@@ -74,9 +74,9 @@ public class Application {
     }
 
     private static int getAnswerOneNumber(List<Integer> numberList) {
-        int generatedNumber = (int) ((Math.random() * 9) + 1);
+        int generatedNumber = (Randoms.pickNumberInRange(1, 9));
         while (numberList.contains(generatedNumber)) {
-            generatedNumber = (int) ((Math.random() * 9) + 1);
+            generatedNumber = (Randoms.pickNumberInRange(1, 9));
         }
         return generatedNumber;
     }
@@ -89,13 +89,14 @@ public class Application {
         }
 
         for (int i = 0; i < 3; i++) {
-            answerNumber += numberList.get(i) * Randoms.pickNumberInRange(1,9);
+            answerNumber += numberList.get(i) * Math.max(1, Math.pow(10, 2 - i));
         }
     }
 
     private static void baseballGameRun() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         generateAnswerNumber();
+        System.out.println(answerNumber);
     }
 
     public static void main(String[] args) {
