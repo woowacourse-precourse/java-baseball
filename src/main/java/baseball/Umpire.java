@@ -6,6 +6,7 @@ import constants.Text;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class Umpire {
     private final Rule hint = Rule.HINT;
@@ -24,5 +25,13 @@ public class Umpire {
     private void resetHintRecord() {
         hintRecord.put(Text.BALL, hint.getMin());
         hintRecord.put(Text.STRIKE, hint.getMin());
+    }
+
+    private void countStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strike = (int) IntStream.range(hint.getMin(), hint.getMax())
+                .filter(index -> playerNumber.get(index).equals(computerNumber.get(index)))
+                .count();
+
+        hintRecord.put(Text.STRIKE, strike);
     }
 }
