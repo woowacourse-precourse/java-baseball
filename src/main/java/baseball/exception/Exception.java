@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Exception {
     public boolean scoreException(String input) {
         boolean check = false;
-        if (input.length() == 3) {
+        if (Objects.equals(input.length(),3)) {
             check = checkLimit(input);
         }
         return check;
@@ -32,8 +32,8 @@ public class Exception {
 
     public boolean regameException(String input) {
         boolean check = true;
-        if (input.length() == 1) {
-            if ("1".equals(input) || "2".equals(input)) check = false;
+        if (Objects.equals(input.length(),1)) {
+            if (Objects.equals("1",input) || Objects.equals("2",input)) check = false;
         }
         return check;
     }
