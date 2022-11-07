@@ -34,7 +34,7 @@ public class Game {
 
     private void checkAnswer(List<Integer> guess){
         // TODO: <Func> Check input value and compare with answer
-
+        
     }
 
     // <Func> : Check
