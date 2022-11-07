@@ -24,6 +24,30 @@ public class Application {
     public static void throwIllegalArgumentException() {
         throw new IllegalArgumentException("입력 값이 유효하지 않아 프로그램이 종료됩니다.");
     }
+    public static boolean checkNonNumbers(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return true;
+        }
+        return false;
+    }
+    public static boolean checkRepeatNumber(String input) {
+        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2))
+            return true;
+        return false;
+    }
+    public static boolean validInput(String input) {
+        if (input.length() != 3)
+            return false;
+        else if (input.contains("0"))
+            return false;
+        else if (checkNonNumbers(input))
+            return false;
+        else if (checkRepeatNumber(input))
+            return false;
+        return true;
+    }
     public static boolean checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userAnswer = Console.readLine();
