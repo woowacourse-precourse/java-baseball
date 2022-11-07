@@ -14,7 +14,7 @@ class BaseballGameServiceImplTest extends NsTest implements RestrictIntegerConst
 
 	@Override
 	protected void runMain() {
-		baseballGameService.startGame();
+		baseballGameService.restartGame();
 	}
 
 	@Test
