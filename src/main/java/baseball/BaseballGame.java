@@ -114,9 +114,13 @@ public class BaseballGame {
 
     private void validateNumberDuplication(String number) {
         if (IntStream.range(0, 10)
-                .anyMatch(digit -> getDigitCount(number, digit) >= 2)) {
+                .anyMatch(digit -> isDuplicated(number, digit))) {
             throw new IllegalArgumentException(BaseballMessage.DUPLICATED_NUMBER_MESSAGE.getMessage());
         }
+    }
+
+    private boolean isDuplicated(String number, int digit) {
+        return getDigitCount(number, digit) >= 2;
     }
 
     private long getDigitCount(String number, int digit) {
