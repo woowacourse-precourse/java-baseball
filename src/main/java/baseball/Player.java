@@ -17,7 +17,7 @@ public class Player {
         List<Character> numbers = stringToList(input);
         BaseBallNumber baseBallNumber = new BaseBallNumber(numbers);
         if (answer.compare(baseBallNumber) == THREE_STRIKE) {
-            return Computer.end();
+            return Computer.endMessage();
         }
         return false;
     }
