@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.service.GameService;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -9,6 +14,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Test
+    void 랜덤수_중복유무_체크() {
+        List<Integer> randomballs;
+        boolean doublecheck = true;
+        randomballs = GameService.makeRandomBall();
+        for(int i=0; randomballs.size()<3;i++){
+            for(int j=0 ; randomballs.size()<3; j++){
+                if(i!=j && randomballs.get(i) == randomballs.get(j)) doublecheck = false;
+            }
+        }
+        assertThat(true).isEqualTo(doublecheck);
+    }
+    @Test
+    void 랜덤수_자릿수_체크() {
+        int checkindex = 0;
+        List<Integer> checksize;
+        checksize = GameService.makeRandomBall();
+
+        for(int i : checksize) {
+            checkindex++;
+        }
+        assertThat(checksize.size()).isEqualTo(checkindex);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
