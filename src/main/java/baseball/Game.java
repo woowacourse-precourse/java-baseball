@@ -120,4 +120,10 @@ public class Game {
         int distinctCount = (int) Arrays.stream(userInputNumber.split("")).distinct().count();
         return userInputNumber.length() == distinctCount;
     }
+
+    private static boolean checkInputPlayGame(String userInput) {
+        return userInput.equals("1") || userInput.equals("2");
+    }
+
+
 }

@@ -74,3 +74,8 @@ boolean checkUserInputNumber(String userInputNumber)
 ```java
 boolean checkUserInputDuplcateNumber(String userInputNumber)
 ```
+
+- 사용자로부터 게임을 진행할지 말지 숫자를 입력받을 때 입력이 올바른지 확인하는 함수
+```java
+boolean checkInputPlayGame(String userInput)
+```
