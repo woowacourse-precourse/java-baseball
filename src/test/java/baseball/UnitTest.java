@@ -211,4 +211,38 @@ public class UnitTest {
             assertThat(os.toString().strip()).isEqualTo("낫싱");
         }
     }
+
+    @Nested
+    class IsContinueTest {
+        @Test
+        @DisplayName("기본흐름: 1을 눌러 게임 새로 시작하는 경우")
+        void isContinue_ValidInput1_True() {
+            String playerInput = "1";
+            InputStream is = new ByteArrayInputStream(playerInput.getBytes());
+
+            System.setIn(is);
+            assertThat(Application.isContinue()).isEqualTo(true);
+        }
+
+        @Test
+        @DisplayName("기본흐름: 2를 눌러 게임을 완전히 종료하는 경우")
+        void isContinue_ValidInput2_False() {
+            String playerInput = "2";
+            InputStream is = new ByteArrayInputStream(playerInput.getBytes());
+
+            System.setIn(is);
+            assertThat(Application.isContinue()).isEqualTo(false);
+        }
+
+        @Test
+        @DisplayName("예외흐름: 올바른 명령어를 입력하지 않은 경우")
+        void isContinue_InValidInput_IllegalArgumentExceptionThrown() {
+            String playerInput = "종료";
+            InputStream is = new ByteArrayInputStream(playerInput.getBytes());
+
+            System.setIn(is);
+            assertThatThrownBy(Application::isContinue)
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
