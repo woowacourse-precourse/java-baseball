@@ -1,9 +1,7 @@
 package baseball.domain;
 
-import baseball.view.InputView;
-import java.util.Arrays;
+import baseball.util.Converter;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class User {
     private List<Integer> userInputNumbers;
@@ -12,18 +10,8 @@ public class User {
         return userInputNumbers;
     }
 
-    public void selectUserNumber() {
-        userInputNumbers = List.copyOf(stringListToIntList());
+    public void selectUserNumber(String userNumber) {
+        userInputNumbers = List.copyOf(Converter.stringListToIntList(userNumber));
     }
 
-    private static List<Integer> stringListToIntList() {
-        return stringToList().stream()
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .collect(Collectors.toList());
-    }
-
-    private static List<String> stringToList() {
-        return Arrays.asList(InputView.selectUserNumberInput().split(""));
-    }
 }

@@ -26,7 +26,7 @@ public class GameProcessor {
 
     public void playGame() {
         do {
-            user.selectUserNumber();
+            user.selectUserNumber(InputView.selectUserNumberInput());
         } while (isThreeStrike(computer.getComputerNumbers(), user.getUserInputNumbers()));
     }
 
@@ -44,10 +44,7 @@ public class GameProcessor {
     }
 
     private boolean isGameOver() {
-        if (strikeCount == 3) {
-            return false;
-        }
-        return true;
+        return strikeCount != 3;
     }
 
     private int getStrikeCount(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
