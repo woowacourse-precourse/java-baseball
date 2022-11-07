@@ -3,7 +3,12 @@ package baseball.validation;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.number.game.Game.*;
+
 public class Validation {
+
+    static final int NUMBER_LENGTH = 3;
+    static final int ZERO = 0;
 
     public String validatePlayerNumbers(String playersNumber) {
 
@@ -25,7 +30,7 @@ public class Validation {
                 int number = Integer.parseInt(playersNumber);
                 digitNumbers.add(number);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("숫자만 입력 가능합니다.");
+                throw new IllegalArgumentException(ERROR_MESSAGE_ONLY_NUMBER.getValue());
             }
         }
         return digitNumbers;
@@ -38,14 +43,14 @@ public class Validation {
         return validateNumbers(playersNumberArr, digitNumbers);
     }
     private void isListLengthEqualsThree(List<Integer> digitNumbers) {
-        if(digitNumbers.size() != 3) {
-            throw new IllegalArgumentException("세자리 숫자만 입력 가능합니다.");
+        if(digitNumbers.size() != NUMBER_LENGTH) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_LENGTH_THREE.getValue());
         }
     }
 
     private void validateNumberContainsZero(List<Integer> digitNumbers) {
-        if(digitNumbers.contains(0)) {
-            throw new IllegalArgumentException("각 자릿수는 1-9 사이입니다.");
+        if(digitNumbers.contains(ZERO)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_NUMBER_RANGE_ONE_TO_NINE.getValue());
         }
     }
 
@@ -59,7 +64,7 @@ public class Validation {
 
     private void throwWhenDuplicateNumber(int number1, int number2) {
         if(number1 == number2) {
-            throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE_NOT_DUPLICATE.getValue());
         }
     }
 

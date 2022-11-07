@@ -3,6 +3,8 @@ package baseball.number.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.number.game.Game.*;
+
 public class HintsAboutNumbers {
 
     List<Integer> playerDigitNumbers = new ArrayList<>();
@@ -25,18 +27,19 @@ public class HintsAboutNumbers {
         int ball = totalBall - strike;
 
         if(totalBall == strike && totalBall > 0) {
-            System.out.println(strike + "스트라이크");
+            System.out.println(strike + STRIKE_HINT_MESSAGE.getValue());
             return strike == 3;
         }
         if(strike >= 0 && ball > 0 &&ball <= 3) {
             if(strike == 0) {
-                System.out.println(ball + " 볼");
+                System.out.println(ball + BALL_HINT_MESSAGE.getValue());
                 return false;
             }
-            System.out.println(ball + "볼 "+strike + "스트라이크");
+            System.out.println(ball + BALL_HINT_MESSAGE.getValue()
+                    +strike + STRIKE_HINT_MESSAGE.getValue());
             return false;
         }
-        System.out.println("낫싱");
+        System.out.println(NOTHING_HINT_MESSAGE.getValue());
         return false;
     }
 

@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.number.game.Game.*;
+
 public class PlayGames {
 
     ComputerNumbers computerNumbers = new ComputerNumbers();
@@ -13,7 +15,7 @@ public class PlayGames {
     PlayerNumber playerNumber = new PlayerNumber();
 
     public void playGames() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(START_MESSAGE.getValue());
 
         String quitGame; //게임 재시작 여부 판단하는 변수, 만약 1인경우 재사작, 2인 경우 게임 종료
 
@@ -24,7 +26,7 @@ public class PlayGames {
 
             quitGame = quitGameMessage();
 
-        } while(quitGame.equals("1")); //1 입력시 게임 재시작, 2 입력시 게임 종료
+        } while(quitGame.equals(RESTART.getValue())); //1 입력시 게임 재시작, 2 입력시 게임 종료
 
     }
 
@@ -48,28 +50,28 @@ public class PlayGames {
 
     private void printEndgameMessage(boolean isMatched) { //게임 종료 및 재시작 여부 문구 출력
         if(isMatched) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(VICTORY_MESSAGE.getValue());
+            System.out.println(RESTART_MESSAGE.getValue());
         }
     }
 
     public String quitGameMessage() { //게임 재시작 혹은 종료를 결정하는 메서드
-        String quitGames = "";
+        String quitGames;
         do {
             quitGames = inputNumber();
             quitGames = outputQuitGameMessage(quitGames);
-        } while(!(quitGames.equals("1") || quitGames.equals("2")));
+        } while(!(quitGames.equals(RESTART.getValue()) || quitGames.equals(EXIT.getValue())));
         return quitGames;
     }
     public String outputQuitGameMessage(String quitGame) {
-        if(quitGame.equals("1")) {
+        if(quitGame.equals(RESTART.getValue())) {
             return quitGame;
         }
-        if(quitGame.equals("2")) {
-            System.out.println("게임을 종료합니다");
+        if(quitGame.equals(EXIT.getValue())) {
+            System.out.println(QUIT_MESSAGE.getValue());
             return quitGame;
         }
-        System.out.println("1 또는 2를 입력해주세요");
+        System.out.println(INVALID_QUIT_NUMBER_MESSAGE.getValue());
         return quitGame;
     }
 }
