@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -39,7 +40,8 @@ public class BaseballGame {
     private void inputNum() {
         System.out.printf("숫자를 입력해주세요 : ");
         try {
-            int input = sc.nextInt();
+            String readLine = Console.readLine();
+            int input = Integer.valueOf(readLine);
             mapAndValidateInput(input);
         } catch (Exception e) {
             throw new IllegalArgumentException();

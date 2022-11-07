@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Scanner;
 
 public class Application {
@@ -10,7 +12,8 @@ public class Application {
         while (cont) {
             new BaseballGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-            cont = sc.nextInt() == 1 ? true : false;
+            String readLine = Console.readLine();
+            if(readLine.equals("2")) cont = false;
         }
         System.out.println("게임 종료");
     }
