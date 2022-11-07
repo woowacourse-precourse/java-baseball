@@ -33,11 +33,9 @@ public class GameController {
             InputView.printInputMessage();
 
             List<Integer> userNumbers = UserNumberService.generate();
-
             Hint hint = HintService.generate(userNumbers, computerNumbers);
 
             HintService.printHint(hint);
-
             gameStatus = HintService.isAnswer(hint);
         }
     }

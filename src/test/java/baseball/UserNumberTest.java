@@ -26,6 +26,17 @@ public class UserNumberTest {
     }
 
     @Test
+    void 숫자아닌_문자_입력() {
+        String input = "2a5";
+
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(UserNumberService::generate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 중복_숫자_입력() {
         String input = "226";
 
@@ -58,14 +69,5 @@ public class UserNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 숫자아닌_문자_입력() {
-        String input = "2a5";
 
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(UserNumberService::generate)
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 }

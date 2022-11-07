@@ -11,7 +11,6 @@ public class UserNumberService {
         String inputNumber = readLine();
 
         Validation.validate(inputNumber);
-
         List<Integer> userNumbers = convertStringToIntegerList(inputNumber);
 
         return userNumbers;
