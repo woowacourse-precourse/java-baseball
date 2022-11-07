@@ -9,11 +9,8 @@ public class UserGenerate {
     public List<Integer> user = new ArrayList<>();
 
     public UserGenerate() {
-        String input = InputView.startInput();
-        if (CheckInput(input)) {
-            List<Integer> user = StringToList(input);
-        }
-        throw new IllegalArgumentException("잘못된 입력");
+        String input = CheckInput(InputView.startInput());
+        user = StringToList(input);
     }
 
     private static List<Integer> StringToList(String input) {
@@ -24,11 +21,11 @@ public class UserGenerate {
         return user;
     }
 
-    private static boolean CheckInput(String input) {
+    private static String CheckInput(String input) {
         if (isSize3(input) && isNotDuplicate(input) && isNumber(input) && isNotContain0(input)) {
-            return true;
+            return input;
         }
-        return false;
+        throw new IllegalArgumentException("잘못된 입력");
     }
 
     private static boolean isSize3(String input) {
