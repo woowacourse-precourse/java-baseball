@@ -64,6 +64,7 @@ public class Game {
     private static String InputRestartOrEnd() {
         System.out.println(RESTART_OR_END_MESSAGE);
         String restartOrEndInput = Console.readLine();
+        Validator.validateInputRestartOrEnd(restartOrEndInput);
         return restartOrEndInput;
     }
 }
