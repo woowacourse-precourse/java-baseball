@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Scanner;
 
 public class Application {
-
     private static final String MESSAGE_COMMAND_RESTART_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void main(String[] args) {

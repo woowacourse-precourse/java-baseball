@@ -10,7 +10,6 @@ import static baseball.Computer.COMPUTER_INPUT_COUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ComputerTest {
-
     private Computer computer;
 
     @BeforeEach
