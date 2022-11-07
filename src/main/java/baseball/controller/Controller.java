@@ -55,5 +55,17 @@ public class Controller {
         strike = 0;
     }
 
+    private void validateRequestEndNumbers(String request) {
+        if (!request.equals(END_MESSAGE) && !request.equals(RESTART_MESSAGE)) {
+            throw new IllegalArgumentException(END_EXCEPTION_MESSAGE);
+        }
+    }
+
+    private void validateRequestNumber(String request) {
+        if (!Exceptions.respondException(request)) {
+            throw new IllegalArgumentException(END_EXCEPTION_MESSAGE);
+        }
+    }
+
 
 }
