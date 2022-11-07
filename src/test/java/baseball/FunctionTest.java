@@ -12,7 +12,8 @@ public class FunctionTest {
         Number computerNumber = Utils.pickComputerNumber();
 
         Assertions.assertThat(computerNumber.size()).isEqualTo(3);
-        Assertions.assertThat(computerNumber.get(0)).isNotEqualTo(computerNumber.get(1)).isNotEqualTo(computerNumber.get(2));
+        Assertions.assertThat(computerNumber.get(0)).isNotEqualTo(computerNumber.get(1))
+                .isNotEqualTo(computerNumber.get(2));
     }
 
     @Test

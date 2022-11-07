@@ -6,14 +6,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Stage {
-    private Number computerNumber;
     private Number userNumber;
+    private Number computerNumber;
 
     public Stage(Number computerNumber) {
         this.computerNumber = computerNumber;
     }
 
-    public void progress() {
+    public boolean isComplete() {
+        return computerNumber.equals(userNumber);
+    }
+
+    public void start() {
         System.out.print("숫자를 입력해주세요 : ");
         String line = Console.readLine();
         validNumberInput(line);
@@ -48,9 +52,5 @@ public class Stage {
         if (length != 3) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public boolean isComplete() {
-        return computerNumber.equals(userNumber);
     }
 }
