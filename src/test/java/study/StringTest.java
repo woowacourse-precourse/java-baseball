@@ -1,6 +1,11 @@
 package study;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.awt.*;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -47,4 +52,9 @@ public class StringTest {
                 .hasMessageContaining("String index out of range: 5");
     }
 
+    @Test
+    @DisplayName("Randoms에서 pickUniqueNumbersInRange가 제대로 나오는가")
+    void myTest(){
+        assertThat(Randoms.pickUniqueNumbersInRange(1, 9, 3).size()).isEqualTo(3);
+    }
 }
