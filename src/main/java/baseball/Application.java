@@ -1,6 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,5 +28,33 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public static String userInputNumber(InputStream in){
+        String userStr = systemInput(in);
+
+        if(userStr == null || userStr.length() > 3 || userStr.length() < 3){
+            throw new IllegalArgumentException();
+        }
+
+        try{
+            Integer.parseInt(userStr);
+        }catch(NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+
+        return userStr;
+    }
+
+    public static String systemInput(InputStream in){
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+        try {
+            String input = br.readLine();
+            return input;
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 }
