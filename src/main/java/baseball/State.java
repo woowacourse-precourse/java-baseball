@@ -4,13 +4,13 @@ public enum State {
     RESTART("1"),
     SHUTDOWN("2");
 
-    private final String stateNumber;
+    private String number;
 
-    State(String stateNumber) {
-        this.stateNumber = stateNumber;
+    State(String number) {
+        this.number = number;
     }
 
     public String getNumber() {
-        return stateNumber;
+        return number;
     }
 }
