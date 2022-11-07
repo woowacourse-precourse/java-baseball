@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Computer {
     final static int NUMBER_LENGTH = 3;
-    private ArrayList<Integer> randomNumbers = new ArrayList<>(NUMBER_LENGTH);
+    private ArrayList<Integer> randomNumbers = new ArrayList<>();
 
     Computer() {
         while (randomNumbers.size() < NUMBER_LENGTH) {
