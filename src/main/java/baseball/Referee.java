@@ -56,14 +56,16 @@ public class Referee {
     public String createJudgement(int strike, int ball) {
         if(strike == 0 && ball == 0) {
             return NOTHING;
-        } else if(strike == MAX_NUMBER_SIZE) {
-            return THREE_STRIKE;
-        } else if (strike == 0 && ball != 0) {
-            return ball + BALL;
-        } else if (strike != 0 && ball == 0) {
-            return strike + STRIKE;
-        } else {
-            return (ball + BALL + " " + strike + STRIKE);
         }
+        if(strike == MAX_NUMBER_SIZE) {
+            return THREE_STRIKE;
+        }
+        if (strike == 0 && ball != 0) {
+            return ball + BALL;
+        }
+        if (strike != 0 && ball == 0) {
+            return strike + STRIKE;
+        }
+        return ball + BALL + " " + strike + STRIKE;
     }
 }
