@@ -22,15 +22,6 @@ public class InputNumberExceptionChecker {
         }
     }
 
-    // 재시작 여부를 물었을 때, 1과 2가 아닌 다른 숫자를 입력했을 때
-    public boolean isValidRestartNumber(int restartNumber) {
-        if (restartNumber != 1 || restartNumber != 2) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     // 숫자에 0이 들어갔는지 확인하는 메서드
     public boolean hasZero(String number) {
         if (number.charAt(0) == 0
@@ -42,6 +33,22 @@ public class InputNumberExceptionChecker {
         }
     }
 
-    // 위의 세 개 중 하나라도 만족하지 않음을 확인하는 메서드 (총평?)
+    // 재시작 여부를 물었을 때, 1과 2가 아닌 다른 숫자를 입력했을 때
+    public boolean isValidRestartNumber(int restartNumber) {
+        if (restartNumber != 1 || restartNumber != 2) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    // 위의 세 개 중 하나라도 만족하지 않음을 확인하는 메서드 (총평?)
+    public boolean hasException(String number, int restartNumber) {
+        if (isValidLength(number) && hasDifferentNumberElement(number)
+                && isValidRestartNumber(restartNumber) && hasZero(number)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }
