@@ -13,8 +13,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    //private int[] num = randomNum();
-
     private List<Integer> num = randomNum();
     @Test
     void 랜덤_숫자_길이_테스트() {
