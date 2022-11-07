@@ -13,7 +13,7 @@ public class JudgeGame {
         return inputNumberList;
     }
 
-    private static int verifyStrike(List<Integer> inputNumberList, List<Integer>  computerNumberList){
+    public static int verifyStrike(List<Integer> inputNumberList, List<Integer>  computerNumberList){
         int strikeCounter = 0;
 
         for (int i=0; i < inputNumberList.size(); i++){
@@ -26,7 +26,7 @@ public class JudgeGame {
         return strikeCounter;
     }
 
-    private static int verifyBall(List<Integer> inputNumberList, List<Integer> computerNumberList){
+    public static int verifyBall(List<Integer> inputNumberList, List<Integer> computerNumberList){
         int ballCount = 0;
         for (int i=0; i<inputNumberList.size(); i++){
             Integer inputNumber = inputNumberList.get(i);

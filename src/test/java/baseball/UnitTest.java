@@ -64,6 +64,26 @@ class UnitTest extends NsTest {
         assertThat(tenNumber).isNotEqualTo(number);
     }
 
+    @Test
+    void 스트라이크_및_볼_개수_출력값_검증(){
+        List<Integer> inputNumList = new ArrayList<>();
+        List<Integer> computerNumList = new ArrayList<>();
+
+        inputNumList.add(3);
+        inputNumList.add(6);
+        inputNumList.add(9);
+
+        computerNumList.add(9);
+        computerNumList.add(6);
+        computerNumList.add(3);
+
+        int strikeCounter = JudgeGame.verifyStrike(inputNumList, computerNumList);
+        int ballCounter = JudgeGame.verifyBall(inputNumList, computerNumList);
+
+        assertThat(strikeCounter).isEqualTo(1);
+        assertThat(ballCounter).isEqualTo(2);
+    }
+
 
     @Override
     public void runMain() {
