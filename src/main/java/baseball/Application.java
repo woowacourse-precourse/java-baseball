@@ -78,8 +78,12 @@ public class Application {
         }
     }
 
-    public static boolean returnAnswer (int howManyStrike) {
-        return howManyStrike==3;
+    public static boolean returnAnswer (List<Integer> answer, List<Integer> userInput) {
+        int ball = checkBall(answer,userInput);
+        int strike = checkStrike(answer,userInput);
+        ball = ball-strike;
+        printStrikeAndBall(ball,strike);
+        return strike==3;
     }
 
     public static boolean endGame() {
@@ -100,11 +104,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             List<Integer> userInput = getUserInput();
-            int ball = checkBall(answer,userInput);
-            int strike = checkStrike(answer,userInput);
-            ball = ball-strike;
-            printStrikeAndBall(ball,strike);
-            isCorrect = returnAnswer(strike);
+            isCorrect = returnAnswer(answer,userInput);
             if (isCorrect) {
                 quitGame = endGame();
                 break;
