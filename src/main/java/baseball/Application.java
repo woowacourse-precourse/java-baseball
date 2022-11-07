@@ -107,7 +107,8 @@ public class Application {
 
             int inputNumber = Integer.parseInt(consoleInput);
             prediction = separateDigit(inputNumber);
-            System.out.println(giveHint(answer, prediction));
+            String hint = giveHint(answer, prediction);
+            System.out.println(hint);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
