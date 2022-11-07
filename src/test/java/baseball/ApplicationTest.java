@@ -55,4 +55,13 @@ class ApplicationTest extends NsTest {
                 1, 2, 3
         );
     }
+    @Test
+    void 문자열_입력이_들어온_경우_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("S12"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                }, 1, 2, 3
+        );
+    }
 }
