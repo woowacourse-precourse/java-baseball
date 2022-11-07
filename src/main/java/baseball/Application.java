@@ -52,7 +52,7 @@ public class Application {
         int strike = 0;
         List<Integer> user;
 
-        while(strike !=3){
+        while (strike != 3) {
             System.out.print("숫자를 입력해주세요 : ");
 
             int input = Integer.parseInt(Console.readLine());
@@ -83,8 +83,6 @@ public class Application {
             throw new IllegalArgumentException();
 
         }
-
-
     }
 
     public static int printAnswer(List<Integer> computer, List<Integer> user) {
@@ -129,6 +127,8 @@ public class Application {
 
         return strike;
     }
+
+
 
     public static List<Integer> splitNumber(int number) {
         List<Integer> splitInt = new ArrayList<>();
