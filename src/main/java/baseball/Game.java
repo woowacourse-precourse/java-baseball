@@ -70,7 +70,7 @@ public class Game {
             throw new IllegalArgumentException();
         } else if (!checkUserInputNumber(userInputNumber)) {
             throw new IllegalArgumentException();
-        } else if (checkUserInputRepeat(userInputNumber)) {
+        } else if (checkUserInputDuplcateNumber(userInputNumber)) {
             throw new IllegalArgumentException();
         }
     }

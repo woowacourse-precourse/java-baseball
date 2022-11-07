@@ -72,5 +72,5 @@ boolean checkUserInputNumber(String userInputNumber)
 
 - 사용자로부터 숫자를 입력받았을 때 입력받은 값들 사이에 중복된 값이 있는지 체크하는 함수
 ```java
-boolean checkUserInputRepeat(String userInputNumber)
+boolean checkUserInputDuplcateNumber(String userInputNumber)
 ```
