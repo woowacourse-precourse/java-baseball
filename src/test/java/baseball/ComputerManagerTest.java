@@ -1,14 +1,14 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import java.lang.reflect.Field;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Field;
-import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerManagerTest {
     private static ComputerManager computerManager;
