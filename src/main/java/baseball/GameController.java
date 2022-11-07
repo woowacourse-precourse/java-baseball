@@ -9,6 +9,7 @@ import baseball.view.OutputView;
 
 public class GameController {
 	private static final int[] STRIKE_3 = {0, 3};
+	private static final String GAME_RESTART_CODE = "1";
 	private final InputView iv;
 	private final OutputView ov;
 
@@ -21,7 +22,7 @@ public class GameController {
 		do {
 			startGame();
 			ov.printRestartMessage();
-		} while (iv.getRestartOrEndCode().equals("1"));
+		} while (iv.askRestart().equals(GAME_RESTART_CODE));
 	}
 
 	private void startGame() {

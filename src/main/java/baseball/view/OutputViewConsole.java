@@ -5,6 +5,7 @@ public class OutputViewConsole implements OutputView {
 	private static final String GET_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 	private static final String BALL_MESSAGE = "볼 ";
 	private static final String STRIKE_MESSAGE = "스트라이크";
+	private static final String NOTHING_MESSAGE = "낫싱";
 	private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private static final int BALL = 0;
@@ -33,7 +34,7 @@ public class OutputViewConsole implements OutputView {
 	@Override
 	public void printBSOResult(int[] resultBSO) {
 		if (resultBSO[BALL] == 0 && resultBSO[STRIKE] == 0) {
-			System.out.println("낫싱");
+			System.out.println(NOTHING_MESSAGE);
 			return;
 		}
 		if (resultBSO[BALL] != 0)

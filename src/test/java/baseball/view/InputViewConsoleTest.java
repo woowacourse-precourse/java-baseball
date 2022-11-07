@@ -14,7 +14,7 @@ class InputViewConsoleTest {
 		InputViewConsole iv = new InputViewConsole();
 		ByteArrayInputStream is = new ByteArrayInputStream("test".getBytes());
 		System.setIn(is);
-		Assertions.assertThatThrownBy(iv::getRestartOrEndCode)
+		Assertions.assertThatThrownBy(iv::askRestart)
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -25,11 +25,11 @@ class InputViewConsoleTest {
 		ByteArrayInputStream is = new ByteArrayInputStream(RESTART_CODE.getBytes());
 		System.setIn(is);
 
-		Assertions.assertThat(iv.getRestartOrEndCode()).isEqualTo(RESTART_CODE);
+		Assertions.assertThat(iv.askRestart()).isEqualTo(RESTART_CODE);
 
 		is = new ByteArrayInputStream(END_CODE.getBytes());
 		System.setIn(is);
 
-		Assertions.assertThat(iv.getRestartOrEndCode()).isEqualTo(END_CODE);
+		Assertions.assertThat(iv.askRestart()).isEqualTo(END_CODE);
 	}
 }
