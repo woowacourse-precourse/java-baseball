@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
@@ -34,12 +34,16 @@ public class User {
 
         } catch (IllegalArgumentException e){
             System.out.println(e.toString());
+            ERROR = 2;
             return ;
         }
     }
 
     public void checkNumbersLength(String inputNumber){
-        if(inputNumber.length() != 3 ) throw new IllegalArgumentException("3개의 정수를 입력 해야합니다.");
+        if(inputNumber.length() != 3 ) {
+            ERROR = 2;
+            throw new IllegalArgumentException("3개의 정수를 입력 해야합니다.");
+        }
     }
 
     public void checkOverlapNumber(String inputNumber){

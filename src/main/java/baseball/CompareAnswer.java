@@ -38,18 +38,23 @@ public class CompareAnswer {
     }
 
     public static void printAnswer(int[] strikeAndBallCount){
+        if(strikeAndBallCount.length == 0) return;
+
         if(strikeAndBallCount[0] == 0 && strikeAndBallCount[1] ==0){
             System.out.println("낫싱");
             return ;
         }
+
         if(strikeAndBallCount[0] != 0 && strikeAndBallCount[1] != 0){
             System.out.println(strikeAndBallCount[1]+"볼 "+strikeAndBallCount[0]+"스트라이크");
             return ;
         }
+
         if(strikeAndBallCount[0] != 0 && strikeAndBallCount[1] == 0){
             System.out.println(strikeAndBallCount[0]+"스트라이크");
             return ;
         }
+
         if(strikeAndBallCount[0] == 0 && strikeAndBallCount[1] != 0){
             System.out.println(strikeAndBallCount[1]+"볼");
             return ;
