@@ -15,6 +15,7 @@ public class Application {
             generateAnswer();
             baseball();
             boolean exit = checkExitGame();
+            for(int i=answer.size()-1; i>=0; i--) answer.remove(answer.get(i));
             if(exit) break;
         }
     }
@@ -24,6 +25,7 @@ public class Application {
             System.out.print("숫자를 입력해주세요: ");
             checkValidInput(Console.readLine());
             boolean result = checkResult();
+            for(int i=current.size()-1; i>=0; i--) current.remove(current.get(i));
             if(result){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
