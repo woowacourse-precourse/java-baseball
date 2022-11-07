@@ -17,12 +17,10 @@ public class Application {
             data.setAnswer(game.setAnswer());
             Output output = new Output();
             while (!finish) {
-                CompareNumbers strikeOrBall = new CompareNumbers();
                 data.setUserInput(game.userInput());
                 game.checkInput(data.getUserInput());
-                strikeOrBall.checkNumber(data.getUserInput(), data.getAnswer());
-                data.setBall(strikeOrBall.ball);
-                data.setStrike(strikeOrBall.strike);
+                data.setBall(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[0]);
+                data.setStrike(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[1]);
                 output.printResult(data.getStrike(), data.getBall());
                 finish = game.isFinish(data.getStrike());
                 run = game.isAgain(finish);
@@ -119,28 +117,26 @@ class Output {
 }
 
 class CompareNumbers {
-
-    int strike = 0;
-    int ball = 0;
-
-    public void checkNumber(List<Integer> userInput, List<Integer> answer) {
+    public static int[] checkNumber(List<Integer> userInput, List<Integer> answer) {
+        int[] ballStrike = {0, 0};
         for (int number : userInput) {
             if (answer.contains(number)) {
-                ball++;
+                ballStrike[0]++;
             }
         }
         for (int i = 0; i < userInput.size(); i++) {
             if (userInput.get(i) == answer.get(i)) {
-                strike++;
-                ball--;
+                ballStrike[1]++;
+                ballStrike[0]--;
             }
         }
+        return ballStrike;
     }
 }
 
 class Database {
 
-    static private List<Integer> answer = new ArrayList<>();
+    private static List<Integer> answer = new ArrayList<>();
     private List<Integer> userInput = new ArrayList<>();
     private int strike = 0;
     private int ball = 0;
