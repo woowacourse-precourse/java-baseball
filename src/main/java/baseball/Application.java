@@ -28,7 +28,7 @@ public class Application {
                 randomNumber = Randoms.pickNumberInRange(1, 9);
                 if (!computer.contains(randomNumber)) {
                     computer.add(randomNumber);
-                    System.out.print(randomNumber);
+//                    System.out.print(randomNumber); //컴퓨터 입력값 출력
                 }
             }
 
@@ -53,9 +53,9 @@ public class Application {
                 }
                 Set<Integer> userSet = new HashSet<>(user);
 
-                System.out.println("computer: " + computer);  //컴퓨터 출력물 분석용
-                System.out.println("user: " + user);  // 유저 입력값 분석용
-                System.out.println(userNumber); // 유저 입력값 확인용
+//                System.out.println("computer: " + computer);  //컴퓨터 출력물 분석용
+//                System.out.println("user: " + user);  // 유저 입력값 분석용
+//                System.out.println(userNumber); // 유저 입력값 확인용
 
 
                 if (userSet.size() != user.size()) {
@@ -67,9 +67,6 @@ public class Application {
                 if (user.contains(0)) {
                     throw new IllegalArgumentException("1~9 사이의 숫자를 입력하셔야 합니다.");
                 }
-    //        if (userNumber/100==0 || (userNumber/10)%10==0 || userNumber%10==0) {
-    //            throw new IllegalArgumentException("0을 입력할 수 없습니다.");
-    //        }
 
     //      기능3. 결과값 비교
                 int i = 0;
@@ -93,9 +90,9 @@ public class Application {
                 }
                 ball = strikeNball - strike;
 
-                System.out.println("중복전체: " + strikeNball);
-                System.out.println("스트라이크: " + strike);
-                System.out.println("볼: " + ball);
+//                System.out.println("중복전체: " + strikeNball);     //strike + ball 중복 카운트
+//                System.out.println("스트라이크: " + strike);        //strike 카운트
+//                System.out.println("볼: " + ball);                //ball 카운트
                 if (ball ==0 && 0 < strike && strike<3) {
                     System.out.printf("%d스트라이크\n", strike);
                 } else if(ball !=0&&strike == 0) {
