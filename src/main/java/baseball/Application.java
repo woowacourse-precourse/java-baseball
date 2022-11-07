@@ -7,30 +7,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static List<String> randomNumbers;
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int strike = 0;
+        List<String> receivingNumbers;
+        randomNumbers = createRandom();
         while (true) {
-            strike = getResult();
-            if (strike == 3) {
-
+            receivingNumbers = receivingValue();
+            checkValue(receivingNumbers);
+            strike = getResult(receivingNumbers);
+            if (askToUserGameAgain(strike)) {
+                break;
             }
         }
     }
 
     private static boolean askToUserGameAgain(int strike) {
+        boolean result = false;
         if (strike == 3) {
             printGameOver();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
             String userAnswer = Console.readLine();
-            
+            result = checkUserAnswer(userAnswer);
         }
+        return result;
     }
 
     private static boolean checkUserAnswer(String userAnswer) {
-        if (userAnswer.equals("1")) {
+        if (userAnswer.equals("2")) {
             return true;
-        } else if (userAnswer.equals("2")) {
+        } else if (userAnswer.equals("1")) {
+            randomNumbers.clear();
+            randomNumbers = createRandom();
             return false;
         }
         throw new IllegalArgumentException();
@@ -38,16 +47,12 @@ public class Application {
 
     private static void printGameOver() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-
-
-    private static int getResult() {
-        List<String> receivingNumbers = receivingValue();
-        List<String> randomNumbers = createRandom();
-
-        int strikesCount = checkStrike(receivingNumbers, randomNumbers);
-        int ballCount = checkBall(receivingNumbers, randomNumbers) - strikesCount;
+    private static int getResult(List<String> receivingNumbers) {
+        int strikesCount = checkStrike(receivingNumbers);
+        int ballCount = checkBall(receivingNumbers) - strikesCount;
 
         printResult(strikesCount, ballCount);
 
@@ -78,7 +83,7 @@ public class Application {
         System.out.println(strikesCount + "스트라이크");
     }
 
-    private static int checkStrike(List<String> receivingNumbers, List<String> randomNumbers) {
+    private static int checkStrike(List<String> receivingNumbers) {
         int strikesCount = 0;
         for (int index = 0; index < randomNumbers.size(); index++) {
             if (receivingNumbers.get(index).equals(randomNumbers.get(index))) {
@@ -89,7 +94,7 @@ public class Application {
         return strikesCount;
     }
 
-    private static int checkBall(List<String> receivingNumbers, List<String> randomNumbers) {
+    private static int checkBall(List<String> receivingNumbers) {
         int ballsCount = 0;
         for (String receivingNumber : receivingNumbers) {
             if (randomNumbers.contains(receivingNumber)) {
@@ -104,6 +109,10 @@ public class Application {
         List<String> randomNumbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (randomNumbers.contains(String.valueOf(randomNumber))) {
+                i--;
+                continue;
+            }
             randomNumbers.add(String.valueOf(randomNumber));
         }
 
@@ -111,20 +120,11 @@ public class Application {
     }
 
     private static List<String> receivingValue() {
+        System.out.print("숫자를 입력해주세요 : ");
         String inputValue = Console.readLine();
-        List<String> numbers = List.of(inputValue);
+        String[] splittingInputValue = inputValue.split("");
 
-        handlingException(numbers);
-
-        return numbers;
-    }
-
-    private static void handlingException(List<String> numbers) {
-        try {
-            checkValue(numbers);
-        } catch (IllegalArgumentException e) {
-            System.out.println("e = " + e);
-        }
+        return List.of(splittingInputValue);
     }
 
     private static void checkValue(List<String> numbers) throws IllegalArgumentException {
