@@ -51,10 +51,10 @@ public class Input {
 
     public void inputUserNumberValid(String userNumber) {
         if(isNumberSizeThree(userNumber) && isNumberDifferent(userNumber)) {
-            return;
-        }
-        if(isNumberRangeValid(userNumber) && isNumber(userNumber)) {
-            return;
+
+            if(isNumberRangeValid(userNumber) && isNumber(userNumber)) {
+                return;
+            }
         }
         throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 종료합니다.");
     }
