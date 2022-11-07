@@ -151,6 +151,7 @@ public class Application {
         stringBuilderUserNumber = inputAvailableUserNumberService();
         List<Integer> userNumbersList = stringToListCreate(stringBuilderUserNumber);
         int strikeNumber = checkStrikeNumbers(computerNumbersList,userNumbersList);
+        int ballNumber = checkedBallNumbers(computerNumbersList,userNumbersList);
     }
 
     public static void main(String[] args) {
