@@ -68,6 +68,30 @@ public class Application {
         }
         return Strike_or_Ball;
     }
+    public static void Final_Judge(HashMap<String, Integer> Strike_or_Ball) {
+        Integer Strike_Count = Strike_or_Ball.get("스트라이크");
+        Integer Ball_Count = Strike_or_Ball.get("볼");
+
+        if (Strike_Count == 0 && Ball_Count == 0) {
+            System.out.println("낫싱");
+            Input();
+
+        } else if (Strike_Count != 0 && Ball_Count == 0) {
+            if (Strike_Count == 3) {
+                System.out.println("3스트라이크");
+                End();
+            } else {
+                System.out.printf("%d스트라이크\n", Strike_Count);
+                Input();
+            }
+        } else if (Strike_Count == 0 && Ball_Count != 0) {
+            System.out.printf("%d볼\n", Ball_Count);
+            Input();
+        } else if (Strike_Count != 0 && Ball_Count != 0) {
+            System.out.printf("%d볼 %d스트라이크\n", Ball_Count, Strike_Count);
+            Input();
+        }
+    }
     public static void main(String[] args) {
 
         // TODO: 프로그램 구현
