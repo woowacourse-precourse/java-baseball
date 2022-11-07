@@ -20,7 +20,7 @@ public class Game {
     public void gameStart() {
         String userInput = Console.readLine();
         getUserInput(userInput);
-        ballHint(userInput);
+        StrikeOutCheck(userInput);
     }
 
     public void getUserInput(String userInput) {
@@ -28,9 +28,17 @@ public class Game {
             print.inputMessage(userInput);
         }
     }
-    public void ballHint(String userInput){
-        String ball = computer.ballHintCheck(userInput);
+
+    public String ballHint(String userInput) {
+        return computer.ballHintCheck(userInput);
+    }
+
+    public void StrikeOutCheck(String userInput) {
+        String ball = ballHint(userInput);
         print.hintMessage(ball);
+        if (!Objects.equals(ball, 3 + Constant.HINT_STRIKE)){
+            gameStart();
+        }
     }
 
 }
