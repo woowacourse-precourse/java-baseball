@@ -11,4 +11,8 @@ public abstract class Question {
     }
 
     public abstract String ask(int candidate);
+
+    public boolean isCorrect(int candidate) {
+        return answer.isCorrect(candidate);
+    }
 }

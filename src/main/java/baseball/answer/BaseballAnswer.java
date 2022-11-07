@@ -6,6 +6,7 @@ import basedomain.answer.Answer;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class BaseballAnswer extends Answer {
 
@@ -39,5 +40,17 @@ public class BaseballAnswer extends Answer {
     @Override
     public String response(int candidate) {
         return new BaseballResponse(answer, candidate).response();
+    }
+
+    @Override
+    public boolean isCorrect(int candidate) {
+        return IntStream.range(0, answer.size())
+                .filter(index -> answer.get(index) == digitOfNumber(index+1, candidate))
+                .count() == answer.size();
+    }
+
+    private int digitOfNumber(int location, int number) {
+        int countOfDigit = (int) (Math.log10(number)) + 1;
+        return number / (int) Math.pow(10, countOfDigit - location) % 10;
     }
 }
