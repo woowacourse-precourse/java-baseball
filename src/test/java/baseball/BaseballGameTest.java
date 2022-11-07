@@ -34,7 +34,8 @@ public class BaseballGameTest extends NsTest {
     class 상대방의_수_생성 {
         @Test
         void 상대방의_수_범위() {
-            List<Integer> computerNumbers = Application.createComputerNumbers();
+            Baseball baseball = new Baseball();
+            List<Integer> computerNumbers = baseball.createComputerNumbers();
             for (Integer computerNumber : computerNumbers) {
                 assertThat(computerNumber)
                         .isGreaterThanOrEqualTo(1)
@@ -44,7 +45,9 @@ public class BaseballGameTest extends NsTest {
 
         @Test
         void 상대방의_서로_다른_임의의_수() {
-            List<Integer> computerNumbers = Application.createComputerNumbers();
+            Baseball baseball = new Baseball();
+            List<Integer> computerNumbers = baseball.createComputerNumbers();
+            ;
             Integer firstNum = computerNumbers.get(0);
             Integer secondNum = computerNumbers.get(1);
             Integer thirdNum = computerNumbers.get(2);
@@ -60,72 +63,80 @@ public class BaseballGameTest extends NsTest {
         @Test
         @DisplayName("1볼 1스트라이크")
         void case1() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(1, 2, 3);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("1볼 1스트라이크");
         }
 
         @Test
         @DisplayName("1볼")
         void case2() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(1, 4, 5);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("1볼");
         }
 
         @Test
         @DisplayName("2볼")
         void case3() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(6, 7, 1);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("2볼");
         }
 
         @Test
         @DisplayName("1스트라이크")
         void case4() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(2, 1, 6);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("1스트라이크");
         }
 
         @Test
         @DisplayName("3스트라이크")
         void case5() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(7, 1, 3);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("3스트라이크");
         }
 
         @Test
         @DisplayName("낫싱")
         void case6() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(2, 4, 5);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("낫싱");
         }
 
         @Test
         @DisplayName("2볼 1스트라이크")
         void case7() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(7, 3, 1);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("2볼 1스트라이크");
         }
 
         @Test
         @DisplayName("2스트라이크")
         void case8() {
+            Baseball baseball = new Baseball();
             List<Integer> computerNumbers = List.of(7, 1, 3);
             List<Integer> userNumbers = List.of(7, 1, 5);
-            String hint = Application.getHint(computerNumbers, userNumbers);
+            String hint = baseball.getHint(computerNumbers, userNumbers);
             assertThat(hint).isEqualTo("2스트라이크");
         }
     }
@@ -298,6 +309,16 @@ public class BaseballGameTest extends NsTest {
                     assertThatThrownBy(() -> runException(inputGameOption))
                             .isInstanceOf(IllegalArgumentException.class)
             );
+        }
+
+        @Test
+        void case18() {
+            assertThatThrownBy(() ->
+                    assertRandomNumberInRangeTest(() -> {
+                                run("123", "3");
+                            },
+                            1, 2, 3))
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 
