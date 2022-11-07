@@ -15,11 +15,19 @@ public class BaseballGame {
 
         // 1. 게임 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int targetNumber = createTargetNumber();
 
-        // 2. 사용자에게 숫자 받기
+        // 2. 컴퓨터가 서로 다른 세자리 수 생성하기
+        int targetNumber = createTargetNumber();
+        while(true) {
+            targetNumber = createTargetNumber();
+            if (isValidNumber(targetNumber)) {
+                break;
+            }
+        }
+
+        // 3. 사용자로부터 서로 다른 세자리 수 받기
         int userInput = getUserInput();
-        if (!isInvalidNumber(userInput)) {
+        if (!isValidNumber(userInput)) {
             throw new IllegalArgumentException();
         }
     }
@@ -36,7 +44,7 @@ public class BaseballGame {
         return userInput;
     }
 
-    private boolean isInvalidNumber(int num) {
+    private boolean isValidNumber(int num) {
         boolean invalidTF = true;
 
         // 한자리씩 분해하기
