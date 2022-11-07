@@ -1,7 +1,7 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -14,9 +14,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class OutputMsgContainerTest extends NsTest {
-
     @ParameterizedTest
     @MethodSource("parameterProvider")
+    @DisplayName("OutputMsgContainer를 통해 메세지를 잘 출력하는지 테스트한다")
     void printMessageTest(OutputMsgContainer outputMsg, String expected) {
         OutputMsgContainer.printMessage(outputMsg);
         assertThat(output()).contains(expected);

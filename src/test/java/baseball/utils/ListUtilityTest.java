@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -19,7 +18,7 @@ class ListUtilityTest {
     @Nested
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     class SplitDigitsIntoList {
-        @DisplayName("세자리 수가 잘 입력되는지 확인")
+        @DisplayName("세자리 수가 리스트로 잘 변환되는지 테스트한다")
         @ParameterizedTest
         @MethodSource("parameterProvider")
         void setZero(int number, List<Integer> expected) {
@@ -40,6 +39,7 @@ class ListUtilityTest {
     class hasDuplicatedCharTest {
         @ParameterizedTest
         @CsvSource(value = {"123, false", "223, true", "222, true", "139, false"})
+        @DisplayName("중복된 문자를 발견하면 true를 리턴하는지 테스트한다")
         void checkDuplicatedChar(String stringNumber, boolean expected) {
             assertThat(StringUtility.hasDuplicatedChar(stringNumber)).isEqualTo(expected);
         }
@@ -50,6 +50,7 @@ class ListUtilityTest {
     class getDistinctCountInIntegerListTest {
         @ParameterizedTest
         @MethodSource("parameterProvider")
+        @DisplayName("Integer형 리스트에서 고유한 값의 개수를 추출하는지 테스트한다")
         void checkDistinctCountInIntegerListTest(List<Integer> list, int expected) {
             assertThat(ListUtility.getDistinctCountInIntegerList(list)).isEqualTo(expected);
         }
@@ -67,6 +68,7 @@ class ListUtilityTest {
     @Nested
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     class mergeDistinctIntegerInListTest {
+        @DisplayName("Integer형 리스트에서 각 원소들을 하나의 숫자로 합치는지 테스트한다")
         @ParameterizedTest
         @MethodSource("parameterProvider")
         void checkMergeDistinctIntegerInList(List<Integer> list, int expected) {

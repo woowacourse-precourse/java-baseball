@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.domain.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,10 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ScoreTest {
     private Score score;
+
     @BeforeEach
     public void setScore() {
         score = new Score(1, 2);
     }
+
     @DisplayName("길이는 2여야 한다")
     @Test
     void getScoreTest() {

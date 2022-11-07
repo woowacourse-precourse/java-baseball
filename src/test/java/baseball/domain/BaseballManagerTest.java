@@ -1,13 +1,9 @@
 package baseball.domain;
 
-import baseball.domain.BaseballNumber;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
@@ -20,15 +16,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class BaseballManagerTest {
     @ParameterizedTest
-    @DisplayName("initComputerNumber 테스트")
     @MethodSource("parameterProvider")
-    void 컴퓨터_숫자가_잘_생성되는지_확인(int number, List<Integer> expected) {
-        // given
+    @DisplayName("컴퓨터 숫자가 Randoms 모듈의 랜덤값으로 잘 생성되는지 테스트한다")
+    void 컴퓨터_숫자가_랜덤값에_의해_잘_생성되는지_확인(int number, List<Integer> expected) {
         BaseballNumber userNumber = new BaseballNumber(number);
         BaseballManager baseballManager = new BaseballManager();
-        // when
         baseballManager.addUserBaseballNumInfo(userNumber);
-        // then
+
         assertRandomNumberInRangeTest(
                 () -> {
                     baseballManager.initComputerNumber();

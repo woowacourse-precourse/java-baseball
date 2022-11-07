@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import baseball.domain.BaseballNumber;
-import baseball.domain.ScoreCalculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.TestInstance;
@@ -9,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ScoreCalculatorTest {
     @Nested
-    @DisplayName("각 자리수마다 서로 다른 자리수가 있는 경우, ballCount는 1 증가한다")
+    @DisplayName("각 자리수마다 서로 다른 자리수가 있는 경우, ballCount는 1 증가하는지 테스트한다")
     class Ball {
         @ParameterizedTest
         @CsvSource(value = {"123, 123, 0", "123, 392, 2", "567, 345, 1"})
@@ -30,6 +27,7 @@ class ScoreCalculatorTest {
                     .isEqualTo(expected);
         }
     }
+
     @Nested
     @DisplayName("각 자리수마다 서로 같은 자리수가 있는 경우, strikeCount는 1 증가한다")
     class Strike {
