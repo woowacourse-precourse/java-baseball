@@ -19,4 +19,8 @@ public class GameNumber {
     public void setPlayerNumbers() {
         playerNumbers = numberValidator.toValidateData(inputString);
     }
+
+    public int[] getPlayerNumbers() {
+        return playerNumbers;
+    }
 }
