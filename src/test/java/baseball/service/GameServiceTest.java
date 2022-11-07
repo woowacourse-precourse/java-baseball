@@ -7,6 +7,24 @@ import org.junit.jupiter.api.Test;
 
 class GameServiceTest {
     @Test()
+    public void 입력받은_숫자와_생성된_숫자가_같은지_확인한다_true() {
+        GameService.computer.number = 923;
+        GameService.user.number = 923;
+        boolean result = GameService.checkFinish();
+        boolean expected = true;
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test()
+    public void 입력받은_숫자와_생성된_숫자가_같은지_확인한다_false() {
+        GameService.computer.number = 923;
+        GameService.user.number = 913;
+        boolean result = GameService.checkFinish();
+        boolean expected = false;
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test()
     public void 스트라이크의_개수를_계산한다() {
         int computerNumber = 234;
         int userNumber = 124;
@@ -57,4 +75,6 @@ class GameServiceTest {
         String expected = "2스트라이크";
         assertThat(result).isEqualTo(expected);
     }
+
+
 }
