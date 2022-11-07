@@ -1,9 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
 import static baseball.Opponent.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -23,5 +21,12 @@ public class OpponentTest {
         List<Integer> list = List.of(1,2);
         boolean result = checkRandomNumber(num, list);
         assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void createAnswer_메서드로_3자리수_정답_생성_확인(){
+        List<Integer> list = createAnswer();
+        int length = list.size();
+        assertThat(length).isEqualTo(3);
     }
 }
