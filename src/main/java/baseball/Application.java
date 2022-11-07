@@ -82,6 +82,19 @@ public class Application {
         System.out.println(result);
     }
 
+    private static void playBaseball(List<Integer> comNum) {
+        int strikeCount = -1;
+        while(strikeCount != NUM_SIZE) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> myNum = makeMyNum();
+
+            int ballCount = checkBall(comNum, myNum);
+            strikeCount = checkStrike(comNum, myNum);
+
+            printResult(ballCount, strikeCount);
+        }
+    }
+
     public static void main(String[] args) {
 
     }
