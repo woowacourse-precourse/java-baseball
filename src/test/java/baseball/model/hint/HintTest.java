@@ -65,6 +65,4 @@ class HintTest {
         // then
         assertThat(nothing).isEqualTo("낫싱");
     }
-
-
 }

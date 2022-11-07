@@ -14,5 +14,4 @@ public class PlayerNumber extends GameNumber {
     public List<Integer> getNumberList() {
         return super.getNumberList();
     }
-
 }

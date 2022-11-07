@@ -32,5 +32,4 @@ class PlayerNumberTest {
         // then
         assertThat(list).isEqualTo(new ArrayList<Integer>(List.of(1, 2, 3)));
     }
-
 }

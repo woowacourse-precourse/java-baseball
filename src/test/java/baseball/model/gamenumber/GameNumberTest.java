@@ -26,5 +26,4 @@ class GameNumberTest {
         // then
         assertThat(gameNumberString.getNumberList()).isEqualTo(gameNumber.getNumberList());
     }
-
 }
