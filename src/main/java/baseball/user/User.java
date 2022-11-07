@@ -22,9 +22,13 @@ public class User {
     public void inputNumber() {
         gameNumber.clear();
         String userInput = Console.readLine();
-
         UserValidation.validate(userInput);
         Stream<String> userStream = Stream.of(userInput.split(""));
         gameNumber = userStream.mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
+    }
+
+    public boolean inputOption() {
+        String userInput = Console.readLine();
+        return Integer.parseInt(userInput) == 1;
     }
 }
