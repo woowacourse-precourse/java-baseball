@@ -6,7 +6,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
+import java.util.HashSet;
 
 public class Application {
     public static void main(String[] args) {
@@ -36,27 +38,31 @@ public class Application {
         for (int order = 0; order <digits.length; order++) {
             user.add(digits[order]);
         }
+        Set<Integer> userSet = new HashSet<>(user);
+
         System.out.println("computer: "+computer);  //컴퓨터 출력물 분석용
         System.out.println("user: "+user);  // 유저 입력값 분석용
         System.out.println(userNumber); // 유저 입력값 확인용
 
-        if (userNumber > 999 ||userNumber < 100) {
-            throw new IllegalArgumentException("숫자 세개를 입력해주세요.");
-        }
-        if (userNumber/100 == (userNumber/10)%10 || (userNumber/10)%10 == (userNumber%10) || (userNumber/100) == (userNumber%10)) {
+
+        if(userSet.size()!=user.size()) {
             throw new IllegalArgumentException("중복되는 숫자를 입력할 수 없습니다.");
         }
-
-        if (userNumber/100==0 || (userNumber/10)%10==0 || userNumber%10==0) {
-            throw new IllegalArgumentException("0을 입력할 수 없습니다.");
+        if (user.size()!=3) {
+            throw new IllegalArgumentException("숫자 세개를 입력해주세요.");
         }
+        if (user.contains(0)) {
+            throw new IllegalArgumentException("1~9 사이의 숫자를 입력하셔야 합니다.");
+        }
+//        if (userNumber/100==0 || (userNumber/10)%10==0 || userNumber%10==0) {
+//            throw new IllegalArgumentException("0을 입력할 수 없습니다.");
+//        }
 
 //      기능3. 결과값 비교
-
         boolean compare = computer.get(0) == user.get(0);
         System.out.println(compare);
 
-//        System.out.println(userNumber.getClass().getSimpleName());
+        System.out.println(userNumber.getClass().getSimpleName());
 
         if (computer == user) {
             System.out.println("True");
