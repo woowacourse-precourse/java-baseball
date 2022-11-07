@@ -13,12 +13,15 @@ public class Input {
     public static List<Integer> playerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        Validator.validate(input);
         return Arrays.stream(input.split(""))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
     }
 
     public static String restartFlag() {
-        return Console.readLine();
+        String restartFlag = Console.readLine();
+        Validator.validateRestartFlag(restartFlag);
+        return restartFlag;
     }
 }

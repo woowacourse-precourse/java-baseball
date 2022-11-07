@@ -7,6 +7,9 @@ public class Validator {
 
     public static void validate(String inputNumber) {
         input = inputNumber;
+        validateSize();
+        validateDuplicateNumber();
+        validateInteger();
     }
 
     private static void validateSize() {
