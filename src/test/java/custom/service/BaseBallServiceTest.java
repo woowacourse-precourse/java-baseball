@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class BaseBallServiceTest {
 
-    private final Table table = Table.init("");
+    private final Table table = new Table();
     private final BaseBallService baseBallService = new BaseBallService(table);
 
     @Test
