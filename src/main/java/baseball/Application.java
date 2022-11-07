@@ -15,6 +15,15 @@ public class Application {
         return input_number;
     }
 
+    public static int three_strike_judgement(List<Integer> strike_ball_nothing_list) {
+        int strike_count = Collections.frequency(strike_ball_nothing_list, 2);
+        if (strike_count == 3) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public static void three_strike_message(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
