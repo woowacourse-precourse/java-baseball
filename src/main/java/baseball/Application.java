@@ -16,7 +16,7 @@ public class Application {
             Database data = new Database();
             data.setAnswer(GameStarter.createAnswer());
             while (!finish) {
-                data.setUserInput(UserInput.whileRunning());
+                data.setUserInput(Input.whileRunning());
                 game.checkInputException(data.getUserInput());
                 data.setBall(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[0]);
                 data.setStrike(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[1]);
@@ -90,7 +90,7 @@ class GameManager {
     }
 }
 
-class UserInput {
+class Input {
     static List<Integer> whileRunning() {
         List<Integer> intUserInput = new ArrayList<>();
         String[] stringUserInput = {};
