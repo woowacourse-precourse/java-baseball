@@ -15,8 +15,10 @@ import java.util.*;
 import org.opentest4j.AssertionFailedError;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ServiceTest {
 
@@ -199,7 +201,7 @@ public class ServiceTest {
 
     @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 재시작")
     @Test
-    void askEndingCondition_restart() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void askEndingConditionTest_restart() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
         Service service = new Service();
         int gameClearCondition = 3;
@@ -224,7 +226,7 @@ public class ServiceTest {
 
     @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 종료")
     @Test
-    void askEndingCondition_stop() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void askEndingConditionTest_stop() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
         Service service = new Service();
         int gameClearCondition = 3;
@@ -249,7 +251,7 @@ public class ServiceTest {
 
     @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 예외")
     @Test
-    void askEndingCondition_exception() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void askEndingConditionTest_exception() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
         Service service = new Service();
         int gameClearCondition = 3;
@@ -270,4 +272,31 @@ public class ServiceTest {
             testMethod.invoke(service, gameClearCondition);
         });
     }
+    @DisplayName("정답을 체크하는 메서드 테스트")
+    @Test
+    void checkAnswerTest() {
+        //given
+        Service service = new Service();
+        InputStream correctInput = new ByteArrayInputStream("2".getBytes());
+        Thread thread = new Thread();
+        Map<String, Integer> correctBallCount = new HashMap<>();
+        Map<String, Integer> wrongBallCount = new HashMap<>();
+
+        correctBallCount.put("strikeCount", 1);
+        correctBallCount.put("strikeCount", 2);
+        correctBallCount.put("strikeCount", 3);
+        wrongBallCount.put("strikeCount", 3);
+
+        //when, then
+        assertTrue(service.checkAnswer(wrongBallCount, correctBallCount.size()));
+
+        thread.start();
+        try {
+            thread.sleep(2000);
+            System.setIn(correctInput);
+        } catch (InterruptedException e) {
+        }
+        assertFalse(service.checkAnswer(correctBallCount, 3));
+    }
+
 }
