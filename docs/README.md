@@ -42,7 +42,7 @@
 - [x] true이면 checkBaseBallNumbers의 strike : strikeNumber, ball : ballNumber - strikeNumber로 초기화
 - [x] checkedBaseballNumbers을 리턴
 
-## (boolean)printBaseballOfResult(int strikeSize, int ballSize)
+## (boolean)printBaseballOfResult(Map<String,Integer> result)
 - [x] 매개변수들을 strikeNumber와 ballNumber에 저장
 - [x] strikeNumber이 3인지 비교
 - [x] true이면, "3스트라이크" 출력
