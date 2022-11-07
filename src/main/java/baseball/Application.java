@@ -14,13 +14,12 @@ import static baseball.view.InputView.getPlayerRandomNumbers;
 
 public class Application {
     private final static int INPUT_DIGIT = 3;
-    private final static String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     public static void main(String[] args) {
         List<Integer> computerNumbers = getComputerRandomNumbers();
 
         Boolean play = true;
-        System.out.println(GAME_START_MESSAGE);
+        OutputView.printStartMessage();
         do {
             List<Integer> playerNumbers = getPlayerRandomNumbers();
             String result = baseBallGame(computerNumbers, playerNumbers);
