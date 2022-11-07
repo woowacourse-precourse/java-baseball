@@ -9,15 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    @Test
-    void 전체_테스트() {
-        ComparatorTest comparatorTest = new ComparatorTest();
-        ComputerTest computerTest = new ComputerTest();
-        GameExceptionTest gameExceptionTest = new GameExceptionTest();
-        LibraryTest libraryTest = new LibraryTest();
-        PlayerTest playerTest = new PlayerTest();
-        ViewTest viewTest = new ViewTest();
-    }
 
     @Test
     void 게임종료_후_재시작() {
