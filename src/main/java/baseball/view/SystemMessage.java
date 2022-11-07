@@ -20,6 +20,10 @@ public class SystemMessage {
         System.out.print(REQUEST_INPUT_MESSAGE);
     }
 
+    public static void printGameRestartMessage() {
+        System.out.println("게임을 새로 시작하려면 " + GAME_RESTART + ", 종료하려면 " + GAME_END + "를 입력하세요.");
+    }
+
     public static void printResult(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             System.out.println(RESULT_NOTHING_MESSAGE);
