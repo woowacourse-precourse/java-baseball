@@ -12,19 +12,19 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public boolean tryCycle() {
+    public Result guess() {
         String guessedNumber = player.getNumber();
         player.isValidNumber(guessedNumber);
-        Result result = computer.judgeNumber(guessedNumber);
-        System.out.println(result.toString());
-        return result.checkFinish();
+        return computer.judgeNumber(guessedNumber);
     }
 
     public void start() {
         computer = new Computer();
         boolean finish = false;
         while (!finish) {
-            finish = tryCycle();
+            Result resultOfGuess = guess();
+            System.out.println(resultOfGuess.toString());
+            finish = resultOfGuess.checkFinish();
         }
         finishMessage();
     }
