@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Game {
     public static final int NUMBER_LENGTH = 3;
@@ -32,6 +33,29 @@ public class Game {
         }
         messagePrinter.printFinish();
         checkRestart();
+    }
+
+    public HashMap<String, Integer> compareTwoNumberStrings(String computerNumber, String userNumber) {
+        HashMap<String, Integer> resultMap = new HashMap<>();
+        HashSet<Character> computerNumberSet = addNumberStringToSet(computerNumber);
+        for (int index = 0; index < NUMBER_LENGTH; index++) {
+            if (computerNumber.charAt(index) == userNumber.charAt(index)) {
+                resultMap.put(STRIKE, resultMap.getOrDefault(STRIKE, 0) + 1);
+                continue;
+            }
+            if (computerNumberSet.contains(userNumber.charAt(index))) {
+                resultMap.put(BALL, resultMap.getOrDefault(BALL, 0) + 1);
+            }
+        }
+        return resultMap;
+    }
+
+    private static HashSet<Character> addNumberStringToSet(String numberString) {
+        HashSet<Character> computerNumberSet = new HashSet<>();
+        for (int digit = 0; digit < NUMBER_LENGTH; digit++) {
+            computerNumberSet.add(numberString.charAt(digit));
+        }
+        return computerNumberSet;
     }
 
     private String getUserNumber() {
