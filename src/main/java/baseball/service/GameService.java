@@ -52,16 +52,18 @@ public class GameService {
         return ball;
     }
 
-    private static void printGameScore(int strike, int ball) {
+    public static String printGameScore(int strike, int ball) {
+        String printMessage = "";
         if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
+            printMessage += "낫싱";
         } else if (strike == 0) {
-            System.out.println(ball + "볼");
+            printMessage += ball + "볼";
         } else if (ball == 0) {
-            System.out.println(strike + "스트라이크");
+            printMessage += strike + "스트라이크";
         } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            printMessage += ball + "볼 " + strike + "스트라이크";
         }
+        return printMessage;
     }
 
     public void startGame() {
@@ -104,6 +106,6 @@ public class GameService {
     private void computeScore() {
         int strike = getStrikeNumber(user.number, computer.number);
         int ball = getBallNumber(user.number, computer.number);
-        printGameScore(strike, ball);
+        System.out.println(printGameScore(strike, ball));
     }
 }
