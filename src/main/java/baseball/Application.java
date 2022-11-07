@@ -11,7 +11,7 @@ public class Application {
         playBaseballGame();
     }
 
-    public static void printGameStartMessage() {
+    private static void printGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
     }
 }
