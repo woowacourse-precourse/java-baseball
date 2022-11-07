@@ -20,4 +20,8 @@ public class Computer {
         }
     }
 
+    public List<Integer> getNumeralList(){
+        return numeralList;
+    }
+
 }

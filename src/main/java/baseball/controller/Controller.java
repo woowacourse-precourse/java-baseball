@@ -23,8 +23,12 @@ public class Controller {
         this.view = view;
     }
 
+    public Game.GameState getGameState(){
+        return game.getGameState();
+    }
+
     public void setUserNumeralList(List<Integer> userNumeralInputList){
-        user.setUserNumeralList(userNumeralInputList);
+        user.setNumeralList(userNumeralInputList);
     }
     public List<Integer> toList(String userInput){
         checkInputValidation(userInput);
@@ -37,8 +41,12 @@ public class Controller {
         return userInputList;
     }
 
-    public Game.GameState getGameState(){
-        return game.getGameState();
+    public void countBall() {
+        game.countBall(computer.getNumeralList(), user.getNumeralList());
+    }
+
+    public void countStrike() {
+        game.countStrike(computer.getNumeralList(), user.getNumeralList());
     }
 
     private void checkInputValidation(String userInput){
