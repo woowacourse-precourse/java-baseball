@@ -109,9 +109,9 @@ public class NumberBaseballGameTest {
     void 서로_다른_1과_9사이의_랜덤_숫자를_가진_공_3개를_생성한다() {
         Pitcher pitcher = new Pitcher();
 
-        List<Ball> balls = pitcher.throwRandomBalls(3);
+        Balls balls = pitcher.throwRandomBalls(3);
 
-        assertThat(balls.size()).isEqualTo(3);
+        assertThat(balls.getBalls().size()).isEqualTo(3);
     }
 
     @Test
@@ -119,9 +119,9 @@ public class NumberBaseballGameTest {
         Pitcher pitcher = new Pitcher();
         List<Integer> checkList = new ArrayList<>(List.of(1, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 
-        List<Ball> balls = pitcher.throwRandomBalls(3);
+        Balls balls = pitcher.throwRandomBalls(3);
 
-        balls.stream()
+        balls.getBalls().stream()
                 .peek(ball -> System.out.println(ball.getNumber()))
                 .forEach(ball -> {
                     assertThat(checkList.get(ball.getNumber())).isEqualTo(0);
@@ -203,18 +203,18 @@ public class NumberBaseballGameTest {
         Hitter hitter = new Hitter();
         List<Integer> result = List.of(1, 2, 3);
 
-        List<Ball> balls = hitter.hitBalls("123");
+        Balls balls = hitter.hitBalls("123");
 
-        IntStream.range(0, balls.size())
-                .forEach(index -> assertThat(balls.get(index).getNumber()).isEqualTo(result.get(index)));
+        IntStream.range(0, balls.getBalls().size())
+                .forEach(index -> assertThat(balls.getBalls().get(index).getNumber()).isEqualTo(result.get(index)));
     }
 
     @Test
     void 스트라이크가_있으면_true를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Ball ball = new Ball(3, 0);
-        List<Ball> balls = List.of(new Ball(3, 0), new Ball(5, 1), new Ball(6, 2));
+        Balls balls = new Balls(List.of(new Ball(3, 0), new Ball(5, 1), new Ball(6, 2)));
 
-        Method method = ball.getClass().getDeclaredMethod("isStrike", List.class);
+        Method method = ball.getClass().getDeclaredMethod("isStrike", Balls.class);
         method.setAccessible(true);
         boolean result = (boolean) method.invoke(ball, balls);
 
@@ -224,9 +224,9 @@ public class NumberBaseballGameTest {
     @Test
     void 스트라이크가_없으면_false를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Ball ball = new Ball(3, 0);
-        List<Ball> balls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        Balls balls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
 
-        Method method = ball.getClass().getDeclaredMethod("isStrike", List.class);
+        Method method = ball.getClass().getDeclaredMethod("isStrike", Balls.class);
         method.setAccessible(true);
         boolean result = (boolean) method.invoke(ball, balls);
 
@@ -236,9 +236,9 @@ public class NumberBaseballGameTest {
     @Test
     void 볼이_있으면_true를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Ball ball = new Ball(3, 0);
-        List<Ball> balls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        Balls balls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
 
-        Method method = ball.getClass().getDeclaredMethod("isBall", List.class);
+        Method method = ball.getClass().getDeclaredMethod("isBall", Balls.class);
         method.setAccessible(true);
         boolean result = (boolean) method.invoke(ball, balls);
 
@@ -248,9 +248,9 @@ public class NumberBaseballGameTest {
     @Test
     void 볼이_없으면_false를_반환한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Ball ball = new Ball(3, 0);
-        List<Ball> balls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(6, 2));
+        Balls balls = new Balls(List.of(new Ball(2, 0), new Ball(4, 1), new Ball(6, 2)));
 
-        Method method = ball.getClass().getDeclaredMethod("isBall", List.class);
+        Method method = ball.getClass().getDeclaredMethod("isBall", Balls.class);
         method.setAccessible(true);
         boolean result = (boolean) method.invoke(ball, balls);
 
@@ -260,7 +260,7 @@ public class NumberBaseballGameTest {
     @Test
     void 스트라이크면_스트라이크_결과를_반환한다() {
         Ball ball = new Ball(3, 0);
-        List<Ball> balls = List.of(new Ball(3, 0), new Ball(5, 1), new Ball(6, 2));
+        Balls balls = new Balls(List.of(new Ball(3, 0), new Ball(5, 1), new Ball(6, 2)));
         BaseballJudge result = BaseballJudge.STRIKE;
 
         BaseballJudge baseballJudge = ball.getResult(balls);
@@ -271,7 +271,7 @@ public class NumberBaseballGameTest {
     @Test
     void 볼이면_볼_결과를_반환한다() {
         Ball ball = new Ball(3, 0);
-        List<Ball> balls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        Balls balls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
         BaseballJudge result = BaseballJudge.BALL;
 
         BaseballJudge baseballJudge = ball.getResult(balls);
@@ -282,7 +282,7 @@ public class NumberBaseballGameTest {
     @Test
     void 아무것도_아니면_낫싱_결과를_반환한다() {
         Ball ball = new Ball(3, 0);
-        List<Ball> balls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(6, 2));
+        Balls balls = new Balls(List.of(new Ball(2, 0), new Ball(4, 1), new Ball(6, 2)));
         BaseballJudge result = BaseballJudge.NOTHING;
 
         BaseballJudge baseballJudge = ball.getResult(balls);
@@ -315,8 +315,8 @@ public class NumberBaseballGameTest {
     @Test
     void 게임결과를_판단한다_1스트라이크_1볼() {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(3, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(2, 0), new Ball(4, 1), new Ball(3, 2)));
         int resultStrikeCount = 1;
         int resultBallCount = 1;
 
@@ -329,8 +329,8 @@ public class NumberBaseballGameTest {
     @Test
     void 게임결과를_판단한다_2볼() {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(3, 0), new Ball(2, 1), new Ball(4, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(3, 0), new Ball(2, 1), new Ball(4, 2)));
         int resultStrikeCount = 0;
         int resultBallCount = 2;
 
@@ -343,8 +343,8 @@ public class NumberBaseballGameTest {
     @Test
     void 게임결과를_판단한다_3스트라이크() {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
         int resultStrikeCount = 3;
         int resultBallCount = 0;
 
@@ -357,8 +357,8 @@ public class NumberBaseballGameTest {
     @Test
     void 볼_카운트가_2이면_2볼을_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(3, 0), new Ball(2, 1), new Ball(4, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(3, 0), new Ball(2, 1), new Ball(4, 2)));
         referee.judgeGameResult(hitterBalls, pitcherBalls);
 
         BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher(), referee);
@@ -374,8 +374,8 @@ public class NumberBaseballGameTest {
     @Test
     void 스트라이크_카운트가_1이면_1스트라이크를_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(5, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(2, 0), new Ball(4, 1), new Ball(5, 2)));
 
         BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher(), referee);
         Method method = baseballGame.getClass().getDeclaredMethod("printResult");
@@ -391,8 +391,8 @@ public class NumberBaseballGameTest {
     @Test
     void 볼_카운트가_2_스트라이크_카운트가_1이면_2볼_1스트라이크를_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(5, 1), new Ball(4, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(5, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(5, 1), new Ball(4, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(2, 0), new Ball(4, 1), new Ball(5, 2)));
         referee.judgeGameResult(hitterBalls, pitcherBalls);
 
         BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher(), referee);
@@ -408,8 +408,8 @@ public class NumberBaseballGameTest {
     @Test
     void 아무것도_없으면_낫싱을_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(5, 0), new Ball(6, 1), new Ball(7, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(4, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(5, 0), new Ball(6, 1), new Ball(7, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(4, 2)));
         referee.judgeGameResult(hitterBalls, pitcherBalls);
         BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher(), referee);
 
@@ -425,8 +425,8 @@ public class NumberBaseballGameTest {
     @Test
     void 스트라이크_카운트가_3이면_게임이_종료된다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
         referee.judgeGameResult(hitterBalls, pitcherBalls);
 
         BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher(), referee);
@@ -441,8 +441,8 @@ public class NumberBaseballGameTest {
     @Test
     void 스트라이크_카운트가_3이하면_게임이_종료되지_않는다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Referee referee = new Referee();
-        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
-        List<Ball> pitcherBalls = List.of(new Ball(1, 0), new Ball(3, 1), new Ball(6, 2));
+        Balls hitterBalls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        Balls pitcherBalls = new Balls(List.of(new Ball(1, 0), new Ball(3, 1), new Ball(6, 2)));
         referee.judgeGameResult(hitterBalls, pitcherBalls);
 
         BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher(), referee);
@@ -452,5 +452,37 @@ public class NumberBaseballGameTest {
         boolean isGameOver = (boolean) method.invoke(baseballGame);
 
         assertThat(isGameOver).isEqualTo(false);
+    }
+
+    @Test
+    void 볼리스트의_길이가_3이_아니면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2), new Ball(1, 3))))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 볼에_있는_값이_1과_9사이가_아니면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Balls(List.of(new Ball(0, 0), new Ball(3, 1), new Ball(6, 2))))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 볼에_있는_값이_중복되면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Balls(List.of(new Ball(2, 0), new Ball(2, 1), new Ball(6, 2))))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 볼리스트의_길이가_3이고_볼의_값이_1과9사이이며_중복이_없으면_예외가_발생하지_않는다() {
+        assertThatNoException()
+                .isThrownBy(() -> new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2))));
+    }
+
+    @Test
+    void Balls객체가_예외없이_생성되면_리스트에_길이가3인_ball객체들이_들어간다() {
+        Balls balls = new Balls(List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2)));
+        int result = 3;
+
+        assertThat(balls.getBalls().size()).isEqualTo(result);
     }
 }
