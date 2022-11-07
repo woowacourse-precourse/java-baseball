@@ -39,4 +39,11 @@ class IsCorrectLengthMethodTest {
         Boolean result = Application.isCorrectLength(consoleInput);
         assertThat(result).isEqualTo(true);
     }
+
+    @Test
+    void isCorrectLength_반환값_테스트6() {
+        String consoleInput = "김정현";
+        Boolean result = Application.isCorrectLength(consoleInput);
+        assertThat(result).isEqualTo(true);
+    }
 }
