@@ -26,4 +26,16 @@ public class Application {
     public static boolean isRightInput(String input) {
         return input.matches("^[1-9]{3}$") && input.charAt(0) != input.charAt(1) && input.charAt(1) != input.charAt(2) && input.charAt(2) != input.charAt(0);
     }
+
+    public static int getStrikeCount(List<Integer> computerNum, String input) {
+        int count = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computerNum.get(i) == input.charAt(i) - '0') {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
