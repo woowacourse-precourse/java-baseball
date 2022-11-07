@@ -1,9 +1,8 @@
-package baseball.gamenumber;
+package baseball.model.gamenumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.model.gamenumber.Validation;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;

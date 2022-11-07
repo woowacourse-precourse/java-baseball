@@ -1,10 +1,9 @@
-package baseball.hint;
+package baseball.model.hint;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.model.gamenumber.ComputerNumber;
 import baseball.model.gamenumber.PlayerNumber;
-import baseball.model.hint.Hint;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,10 +29,10 @@ class HintTest {
         List<Integer> playerNumberList = playerNumber.getNumberList();
 
         // when
-       hint.calculateBall(computerNumberList, playerNumberList);
-       int ball = hint.getBall();
+        hint.calculateBall(computerNumberList, playerNumberList);
+        int ball = hint.getBall();
 
-       // then
+        // then
         assertThat(ball).isEqualTo(3);
     }
 
