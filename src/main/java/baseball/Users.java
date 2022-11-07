@@ -12,7 +12,7 @@ public class Users {
     public Users(String input) {
         CheckLength(input);
         CheckRange(input);
-        CheckContinuous(input);
+        CheckDuplicate(input);
         this.input = input;
     }
 
@@ -34,7 +34,7 @@ public class Users {
         if (input.length() != INPUT_LENGTH) throw new IllegalArgumentException();
     }
 
-    private void CheckContinuous(String input) {
+    private void CheckDuplicate(String input) {
         for (int i = 0; i < 3; i += 1) {
             int tmp = input.indexOf(input.charAt(i));
             if (tmp != i) throw new IllegalArgumentException();

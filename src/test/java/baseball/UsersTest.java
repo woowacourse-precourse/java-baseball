@@ -41,7 +41,7 @@ class UsersTest {
     }
 
     @Test
-    void CheckContinuous_Input112_ExceptionThrown() {
+    void CheckDuplicate_Input112_ExceptionThrown() {
         //given
         //when
         //then
