@@ -1,6 +1,6 @@
 package baseball;
 
-public class Game {
+public final class Game {
 
     private static final int END_GAME = 2;
 

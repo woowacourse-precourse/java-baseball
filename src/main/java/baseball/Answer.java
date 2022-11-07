@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class Answer {
+public final class Answer {
 
     private final List<Character> answer;
 

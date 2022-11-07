@@ -4,15 +4,15 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public final class Computer {
 
     private static final boolean CORRECT = true;
     private static final int RANDOM_NUMBERS_LENGTH = 3;
 
     public Answer createAnswer() {
-        List<Character> randomNumbers = new ArrayList<>();
+        final List<Character> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < RANDOM_NUMBERS_LENGTH) {
-            Character randomNumber =
+            final Character randomNumber =
                 Character.forDigit(Randoms.pickNumberInRange(1, 9), 10);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);

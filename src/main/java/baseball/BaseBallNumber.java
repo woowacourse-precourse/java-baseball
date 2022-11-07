@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BaseBallNumber {
+public final class BaseBallNumber {
 
   private static final int GAME_NUMBER_SIZE = 3;
 
