@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import model.Computer;
 import model.GamePlayer;
+import view.Input;
+import view.Print;
 
 public class Controller {
 
@@ -86,14 +88,31 @@ public class Controller {
             Integer currentStrike = result.get("strike");
             Integer currentBall = result.get("ball");
 
-            if (target == currentNumber){
+            if (target == currentNumber) {
                 currentStrike++;
-            } else if (collection[currentNumber]){
+            } else if (collection[currentNumber]) {
                 currentBall++;
             }
             result.replace("strike", currentStrike);
             result.replace("ball", currentBall);
         }
         return result;
+    }
+
+    public static boolean gameOver(boolean result) {
+        Print.gameOver();
+        String power = Input.power();
+        handleException(validatePower(power));
+        if (power.equals(2)) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean validatePower(String power) {
+        if (power.equals("1") || power.equals("2")) {
+            return true;
+        }
+        return false;
     }
 }

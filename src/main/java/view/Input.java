@@ -9,4 +9,8 @@ public class Input {
         Print.inputNumbers();
         return Console.readLine();
     }
+
+    public static String power() {
+        return Console.readLine();
+    }
 }
