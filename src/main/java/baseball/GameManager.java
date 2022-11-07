@@ -28,7 +28,7 @@ public class GameManager {
     static void scanIsContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String numberString = Console.readLine();
-        if (numberString == "1") isContinue = true;
+        if (numberString.equals("1")) isContinue = true;
         else isContinue = false;
     }
 
