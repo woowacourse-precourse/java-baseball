@@ -1,15 +1,12 @@
 package controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import domain.Command;
 import domain.Game;
 import domain.RoundResult;
 import view.GameView;
 
-import java.util.List;
-import java.util.Scanner;
-
 public class GameController {
-    Scanner scanner = new Scanner(System.in);
     private Game game;
 
     public GameController(){
@@ -43,12 +40,12 @@ public class GameController {
     }
 
     private void inputUserNumbers(){
-        String inputNumbers = scanner.next();
+        String inputNumbers = Console.readLine();
         game.setUserNumbers(inputNumbers);
     }
 
     private Command inputUserCommand(){
-        String inputCommand = scanner.next();
+        String inputCommand = Console.readLine();
         return new Command(inputCommand);
     }
 }
