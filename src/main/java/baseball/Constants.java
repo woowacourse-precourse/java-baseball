@@ -19,4 +19,10 @@ public final class Constants {
 	public static final String RESTART_INSTRUCTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	public static final String RESTART = "1";
 	public static final String END = "2";
+
+	public static final String NOT_NUMBER = "숫자가 아닙니다.";
+	public static final String NOT_THREE_DIGIT = "3자리 숫자를 입력해주세요.";
+	public static final String DUPLICATED_NUMBER = "숫자가 중복됩니다.";
+	public static final String ZERO_INPUT = "0은 입력할 수 없습니다.";
+	public static final String NOT_ONE_TWO = "1 또는 2가 아닙니다.";
 }

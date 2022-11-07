@@ -10,19 +10,19 @@ public class InputException extends IllegalArgumentException {
 
 	public static void checkNotNumber(String input) {
 		if (!input.matches(ONLY_NUM)) {
-			throw new IllegalArgumentException("숫자가 아닙니다.");
+			throw new IllegalArgumentException(NOT_NUMBER);
 		}
 	}
 
 	public static void checkLength(String input) {
 		if (input.length() != NUMBER_LENGTH) {
-			throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
+			throw new IllegalArgumentException(NOT_THREE_DIGIT);
 		}
 	}
 
 	public static void checkDuplicate(List<Integer> input) {
 		if (hasDuplicatedNum(input)) {
-			throw new IllegalArgumentException("숫자가 중복됩니다.");
+			throw new IllegalArgumentException(DUPLICATED_NUMBER);
 		}
 	}
 
@@ -33,13 +33,13 @@ public class InputException extends IllegalArgumentException {
 
 	public static void checkZero(List<Integer> input) {
 		if (input.contains(ZERO)) {
-			throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+			throw new IllegalArgumentException(ZERO_INPUT);
 		}
 	}
 
 	public static void checkNotOneOrTwo(String input) {
 		if (!input.equals(RESTART) && !input.equals(END)) {
-			throw new IllegalArgumentException("1 또는 2가 아닙니다.");
+			throw new IllegalArgumentException(NOT_ONE_TWO);
 		}
 	}
 }
