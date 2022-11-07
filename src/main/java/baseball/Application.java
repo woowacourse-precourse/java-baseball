@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.ExceptionCheck.noException;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 /* 기능 목록
@@ -69,6 +70,7 @@ public class Application {
         for( int i = 0;i< input.length();i++){
             Input.add((int)(input.charAt(i) -'0'));
         }
+        noException(input, Input);
         return strike;
     }
     public static void main(String[] args) {
