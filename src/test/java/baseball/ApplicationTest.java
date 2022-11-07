@@ -105,6 +105,14 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
+	void 카운트_메세지3() {
+		int strike = 3;
+		int ball = 0;
+		assertThat("3스트라이크").isEqualTo(systemMessage.PrintCount(strike, ball));
+
+	}
+
+	@Test
 	void 마무리_메세지() {
 		assertThat("3개의 숫자를 모두 맞히셨습니다! 게임 종료" + "\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.").isEqualTo(
 			systemMessage.PrintGoal());
