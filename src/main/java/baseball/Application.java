@@ -10,9 +10,11 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
         printInitMessage();
-        getUserAnswer();
+        List<Integer> userAnswer = stringConvertToIntegerList(getUserAnswer()); // 입력받은 값을 리스트로 변경
+        Score score = new Score(); // 점수 초기화
+
     }
 
     private static void printInitMessage() {
