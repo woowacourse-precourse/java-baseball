@@ -19,7 +19,27 @@ public class Validation {
                 return true;
             }
         }
+        else if (validation_case.equals("user_input_not_duplication_number")&&validation_param instanceof String){
+
+            String user_input_number = (String) validation_param;
+            char[] user_input_array = user_input_number.toCharArray();
+
+            boolean duplication_flag=true;
+
+            for (int i=0;i<user_input_array.length-1;i++){
+                duplication_flag = checkDuplicationNumber(user_input_array[i], user_input_array[i + 1], duplication_flag);
+            }
+
+            return duplication_flag;
+        }
 
         return false;
+    }
+
+    private static boolean checkDuplicationNumber(char now_index_number,char next_index_number,boolean duplication_flag){
+        if (now_index_number==next_index_number){
+            duplication_flag=false;
+        }
+        return duplication_flag;
     }
 }

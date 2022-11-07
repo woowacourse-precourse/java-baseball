@@ -20,7 +20,9 @@ public class Application {
 			System.out.print("숫자를 입력해주세요 : ");
 			String user_input_number = Console.readLine();
 
-			if(!Validation.validation("user_input_number_validation",user_input_number)){
+			if(!Validation.validation("user_input_number_validation",user_input_number)
+															||
+													!Validation.validation("user_input_not_duplication_number",user_input_number)){
 				throw new IllegalArgumentException();
 			}
 
