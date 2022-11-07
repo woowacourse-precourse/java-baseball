@@ -46,19 +46,23 @@ public class Application {
 
     //TODO
     public static int makeTargetNumber() {
-        int firstNumber = Randoms.pickNumberInRange(1, 9);
-        int secondNumber = Randoms.pickNumberInRange(1, 9);
-        int thirdNumber = Randoms.pickNumberInRange(1, 9);
-
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         String str = "";
-        str += String.valueOf(firstNumber) + String.valueOf(secondNumber) + String.valueOf(thirdNumber);
-
+        for (Integer number : numbers) {
+            str += number;
+        }
         return Integer.parseInt(str);
     }
 
     //TODO
     private static BallAndStrike compareNumbers(int targetNumber, int userInput) {
         BallAndStrike count = new BallAndStrike();
+        String target = String.valueOf(targetNumber);
+        String input = String.valueOf(userInput);
+
+        for(int i=0; i<input.length(); i++){
+//            if(input.charAt(i))
+        }
 
 
         return count;
