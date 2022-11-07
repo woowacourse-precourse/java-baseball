@@ -90,6 +90,12 @@ class ApplicationTest extends NsTest {
         assertThat(isDistinct(number)).isTrue();
     }
 
+    @Test
+    void 번호가_중복인지_확인하는_테스트_False() {
+        String number = "234e";
+        assertThat(isDistinct(number)).isFalse();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
