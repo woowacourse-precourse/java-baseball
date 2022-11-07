@@ -9,11 +9,16 @@ import java.util.List;
 
 public class Application {
     static boolean answer = true;
+    static boolean reStart = true;
     public static void main(String[] args) {
-        List comList = comNumber();
+        List<Integer> comList = new ArrayList<>();
 
         // 3스트라이크가 아니면 반복
         while(answer) {
+            if(reStart) {
+                comList = comNumber();
+            }
+
             List userList = userNumber();
             score(comList, userList);
         }
@@ -32,6 +37,8 @@ public class Application {
                 i--;
             }
         }
+
+        reStart = false;
 
         return comList;
     }
@@ -71,7 +78,9 @@ public class Application {
         if (strike == 3) {
             answer = false;
             sb.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("3스트라이크");
             System.out.println(sb);
+            reStartGame();
             return;
         } else if(ball > 0) {
             sb.append(ball +"볼 ");
@@ -103,6 +112,18 @@ public class Application {
             if(count > 1) {
                 throw new IllegalArgumentException("다른 숫자만 입력 해주세요");
             }
+        }
+    }
+
+    // 재시작, 종료 기능
+    public static void reStartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String input = Console.readLine();
+
+        if(input.contentEquals("1")) {
+            answer = true;
+            reStart = true;
         }
     }
 }
