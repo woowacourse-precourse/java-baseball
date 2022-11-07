@@ -75,6 +75,6 @@ public class Computer {
     public boolean retryGame(String input) {
         if(input.equals("1")) return true;
         else if(input.equals("2")) return false;
-        else throw new IllegalArgumentException();
+        else throw new IllegalArgumentException(); // 1,2외 값 체크
     }
 }
