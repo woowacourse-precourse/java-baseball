@@ -6,21 +6,34 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+//***함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.***
+//11/07 디버깅, 리팩토링(한 번에 한 가지 일만, 최대한 작게), 코드 컨벤션, 커밋 컨벤션, 테스트 케이스 추가(11/08로)
+//11/08 리팩토링, 코드 컨벤션, 테스트 케이스 추가하기()
 public class Application {
     public static void main(String[] args) {
+        playGame();
+    }
+    public static void playGame(){
         List<Integer> whatComputerInputs = new ArrayList<>();
+        boolean startAgain = false;
         System.out.println(Referee.START_GAME.ordered());
         putRandomNumbersTo(whatComputerInputs);
-        playGame(whatComputerInputs);
+        while (startAgain == false) {
+            List<Integer> whatClientInputs = getWhatClientInputs();
+            checkNothing(whatComputerInputs, whatClientInputs);
+            startAgain = shoutBallsAndStrikes(whatComputerInputs, whatClientInputs);
+        }
+        if (startAgain == true) {
+            String finishOrRestart = askFinishOrRestart();
+            confirmFinishOrRestart(finishOrRestart);
+        }
     }
-
-    public static void playGame(List<Integer> whatComputerInputs) {
-        String whatClientInputs;
-        whatClientInputs = inputThreeDistinctNumbers();
-        isValid(whatClientInputs);
-        List<Integer> guessedNumbers = stringToIntegerList(whatClientInputs);
-        checkNothing(whatComputerInputs, guessedNumbers);
-        finishOrRestart();
+    public static List<Integer> getWhatClientInputs() {
+        String guessedNumbers;
+        guessedNumbers = inputThreeDistinctNumbers();
+        isValid(guessedNumbers);
+        List<Integer> whatClientInputs = stringToIntegerList(guessedNumbers);
+        return whatClientInputs;
     }
 
     public static void putRandomNumbersTo(List<Integer> digitsToCompare) {
@@ -78,58 +91,77 @@ public class Application {
         for (String stringNumber : temporaryArray) {
             guessedNumbers.add(Integer.parseInt(stringNumber));
         }
-        return guessedNumbers;
+        return guessedNumbers;//***문제없음
     }
 
     public static void checkNothing(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
-        int ballOrStrike = 0;
-        for (int guessedNumber : guessedNumbers) {
-            if (numbersToGetRight.contains(guessedNumber)) {
-                ballOrStrike++;
-            }
-        }
-        if (ballOrStrike == 0) {
+        int ball = countBalls(numbersToGetRight, guessedNumbers);
+        int strike = countStrikes(numbersToGetRight, guessedNumbers);
+        if (ball == 0 && strike == 0) {
             System.out.println(Referee.NOTHING.ordered());
-            playGame(numbersToGetRight);
         }
-        checkBallAndStrike(numbersToGetRight, guessedNumbers, ballOrStrike);
     }
 
-    public static void checkBallAndStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers, int ballOrStrike) {
+    public static int countBalls(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
+        int ball = 0;
+        for (int commonIndex = 0; commonIndex < 3; commonIndex++) {
+            if (numbersToGetRight.contains(guessedNumbers.get(commonIndex))
+                    && numbersToGetRight.get(commonIndex) != guessedNumbers.get(commonIndex))
+                ball++;
+        }
+        return ball;
+    }
+
+    public static int countStrikes(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
         int strike = 0;
         for (int commonIndex = 0; commonIndex < 3; commonIndex++) {
             if (numbersToGetRight.get(commonIndex) == guessedNumbers.get(commonIndex)) {
                 strike++;
             }
         }
-        if (strike == 0) {
-            System.out.println(ballOrStrike + Referee.BALL.ordered());
-            playGame(numbersToGetRight);
-        }
-        if (strike != 0 && strike != 3) {
-            System.out.println((ballOrStrike - strike) + Referee.BALL.ordered() + strike + Referee.STRIKE.ordered());
-            playGame(numbersToGetRight);
-        }
+        return strike;
     }
 
-    public static void finishOrRestart() {
+    public static boolean shoutBallsAndStrikes(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
+        int ball = countBalls(numbersToGetRight, guessedNumbers);
+        int strike = countStrikes(numbersToGetRight, guessedNumbers);
+        if (strike == 3) {
+            System.out.println(strike + Referee.STRIKE.ordered());
+            return true;
+        }
+        if (ball != 0 && strike == 0) {
+            System.out.println(ball + Referee.BALL.ordered());
+            return false;
+        }
+        if (ball == 0 && strike != 0) {
+            System.out.println(strike + Referee.STRIKE.ordered());
+            return false;
+        }
+        if (ball != 0 && strike != 0) {
+            System.out.println(ball + Referee.BALL.ordered() + strike + Referee.STRIKE.ordered());
+            return false;
+        }
+        return false;
+    }
+
+    public static String askFinishOrRestart() {
         System.out.println(Referee.FINISH_GAME.ordered());
         System.out.print(Referee.ASK_AGAIN_OR_NOT.ordered());
-        String yesOrNo = Console.readLine();
-        checkOneOrTwo(yesOrNo);
-        if(Integer.parseInt(yesOrNo)==2) {
-            System.out.print("");
-        }
+        String finishOrRestart = Console.readLine();
+        return finishOrRestart;
     }
 
-    public static void checkOneOrTwo(String yesOrNo){
-        isNumber(yesOrNo);
-        if(Integer.parseInt(yesOrNo)==1){
-            List<Integer> whatComputerInputs = new ArrayList<>();
-            putRandomNumbersTo(whatComputerInputs);
-            playGame(whatComputerInputs);
+    public static void confirmFinishOrRestart(String finishOrRestart) {
+
+
+        if (Integer.parseInt(finishOrRestart) == 2) {
+            return;
         }
-        if(Integer.parseInt(yesOrNo)!=2){
+        if (Integer.parseInt(finishOrRestart) == 1) {
+            playGame();
+            return;
+        }
+        if (Integer.parseInt(finishOrRestart) != 2) {
             makeException();
         }
     }
