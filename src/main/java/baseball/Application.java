@@ -46,8 +46,8 @@ public class Application {
 
     private int[] get_BallAndStrikeCount(List<String> computer, List<String> player) {
         // 기능 요구사항 4번
-        int ballCnt = find_BallCount(computer,player);
-        int strikeCnt = find_StrikeCount(computer,player);
+        int ballCnt = find_BallCount(computer, player);
+        int strikeCnt = find_StrikeCount(computer, player);
 
         int[] judgeCnt = {ballCnt, strikeCnt};
 
@@ -75,8 +75,28 @@ public class Application {
         return StrikeCnt;
     }
 
-    private void progress_GameRule() {
+    private boolean progress_GameRule(int[] ballAndStrikeCount) {
         // 기능 요구사항 5번
+        int ballCnt = ballAndStrikeCount[0];
+        int strikeCnt = ballAndStrikeCount[1];
+        boolean recycle_flag = true;
+
+        if (strikeCnt == 0 && ballCnt == 0) {
+            System.out.println("낫싱");
+        } else if (strikeCnt == 3) {
+            System.out.println("3스트라이크");
+            recycle_flag = false;
+        } else {
+            if (ballCnt == 0 && strikeCnt > 0 && strikeCnt < 3) {
+                System.out.printf("%d스트라이크\n", strikeCnt);
+            } else if (ballCnt > 0 && ballCnt < 4 && strikeCnt == 0) {
+                System.out.printf("%d볼\n", ballCnt);
+            } else {
+                System.out.printf("%d볼 %d스트라이크\n", ballCnt, strikeCnt);
+            }
+        }
+
+        return recycle_flag;
     }
 
     private void close_game() {
@@ -99,7 +119,11 @@ public class Application {
 
             int[] ballAndStrikeCount = get_BallAndStrikeCount(computerNum, playerNum);
 
-            progress_GameRule();
+            boolean recycle_flag = progress_GameRule(ballAndStrikeCount);
+            if (!recycle_flag) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                break;
+            }
         }
 
     }
