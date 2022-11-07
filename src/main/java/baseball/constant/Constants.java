@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.constant;
 
 public final class Constants {
     public static final int MIN_NUMBER = 1;
@@ -6,6 +6,7 @@ public final class Constants {
     public static final int NUMBER_LENGTH = 3;
     public static final int MAX_STRIKE = 3;
     public static final int RESTART_CHOICE = 1;
+    public static final int INIT_COUNT = 0;
 
     public static final String RANGE_FORMAT_PATTERN = "(^[1-9]*$)";
     public static final String REPEATED_PATTERN = "(.)\\1+";

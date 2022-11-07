@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static baseball.constant.Constants.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Computer {
 
     public void generateNumber() {
         initNumbers();
-        while (numbers.size() < Constants.NUMBER_LENGTH) {
+        while (numbers.size() < NUMBER_LENGTH) {
             int number = getRandomNumber();
             addIfNotUsed(number);
         }
@@ -31,7 +32,7 @@ public class Computer {
     }
 
     public int getRandomNumber() {
-        return Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
+        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
     }
 
     public void initNumbers() {
@@ -39,16 +40,16 @@ public class Computer {
     }
 
     public Result compareNumber(String guessNumber) {
-        int ballCount = 0;
-        int strikeCount = 0;
+        int ballCount = INIT_COUNT;
+        int strikeCount = INIT_COUNT;
 
-        for(int i = 0; i < Constants.NUMBER_LENGTH; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             int number = Character.getNumericValue(guessNumber.charAt(i));
 
-            if(isStrike(number, i)){
+            if (isStrike(number, i)) {
                 strikeCount++;
             }
-            else if(isBall(number)){
+            else if(isBall(number)) {
                 ballCount++;
             }
         }
