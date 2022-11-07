@@ -23,9 +23,14 @@ public class Application {
         return Integer.parseInt(userNumberString);
     }
 
+    public static boolean checkNumberLength(int userNumber) {
+        return 100 <= userNumber && userNumber <= 999;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumber = makeRandomNumber();
         int userNumber = askNumber();
+        boolean falsyLengthFlag = checkNumberLength(userNumber);
     }
 }
