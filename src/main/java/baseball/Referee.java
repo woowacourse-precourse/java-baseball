@@ -34,8 +34,14 @@ public class Referee {
     public boolean isAllStrike(){
         return strike == 3;
     }
+    private void initStrikeAndBall() {
+        strike = 0;
+        ball = 0;
+    }
 
     public void CaculateResult(List<Integer> playerAnswer){
+        initStrikeAndBall();
+
         for ( int idx = 0; idx < playerAnswer.size(); idx++ ) {
             if ( isStrike(playerAnswer, idx) ) {
                 strike++;
