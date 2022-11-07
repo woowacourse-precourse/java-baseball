@@ -10,7 +10,7 @@ public class Controller {
     final int START_INCLUSIVE = 1;
     final int END_INCLUSIVE = 9;
     final int RETRY = 1;
-    final int GAME_OVER = 2;
+    final static int GAME_OVER = 2;
 
     GameService gameService = new GameService();
 
@@ -40,7 +40,7 @@ public class Controller {
         }
     }
 
-    private int getInputNum() throws IllegalArgumentException {
+    public static int getInputNum() throws IllegalArgumentException {
         int inputNum = Integer.parseInt(Console.readLine());
 
         if (inputNum == 0 || inputNum > GAME_OVER) {

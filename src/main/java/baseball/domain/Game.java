@@ -1,8 +1,8 @@
 package baseball.domain;
 
 public class Game {
-    int strikeCount;
-    int ballCount;
+    public static int strikeCount;
+    public  static int ballCount;
     int[] gameNumbers;
 
     public Game(int[] numbers) {
@@ -26,11 +26,11 @@ public class Game {
         return gameNumbers;
     }
 
-    public void incStrikeCount() {
+    public static void incStrikeCount() {
         strikeCount += 1;
     }
 
-    public void incBallCount() {
+    public static void incBallCount() {
         ballCount += 1;
     }
 }

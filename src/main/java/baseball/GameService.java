@@ -10,9 +10,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameService {
 
-    int size;
-    Game game;
-    User user = new User();
+    static int size;
+    static Game game;
+    static User user = new User();
     Parser parser = new Parser();
     SystemMessage systemMessage = new SystemMessage();
 
@@ -42,13 +42,13 @@ public class GameService {
         return parser.parseUserInput(input, size);
     }
 
-    private void computeScore() {
+    public static void computeScore() {
         for (int i = 0; i < size; i++) {
             compute(game.getGameNumbers(), user.getUserNumbers(), i);
         }
     }
 
-    private void compute(int[] gameNumber, int[] userNumber, int index) {
+    public static void compute(int[] gameNumber, int[] userNumber, int index) {
         int temp = -1;
         for (int i = 0; i < gameNumber.length; i++) {
             if (gameNumber[i] == userNumber[index]) {
@@ -59,7 +59,7 @@ public class GameService {
         incCount(index, temp);
     }
 
-    private void incCount(int index, int temp) {
+    public static void incCount(int index, int temp) {
         if (temp != index && temp != -1) {
             game.incBallCount();
         }
