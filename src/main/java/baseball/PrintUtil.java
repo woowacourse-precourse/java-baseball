@@ -12,7 +12,7 @@ public class PrintUtil {
         boolean end = false;
         while (!end) {
             System.out.print("숫자를 입력해주세요 : ");
-            end = this.printBallStrike(randomNumber);
+            end = printBallStrike(randomNumber);
         }
     }
     public boolean printBallStrike(List<Integer> randomNumber) {
