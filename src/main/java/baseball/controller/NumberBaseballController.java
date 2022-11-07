@@ -11,7 +11,7 @@ public class NumberBaseballController {
         this.validator = validator;
     }
 
-    public int readUserInput() {
+    private int readUserInput() {
         String input = Console.readLine();
 
         validator.validateGuessInput(input);
@@ -19,5 +19,4 @@ public class NumberBaseballController {
         return Integer.parseInt(input);
     }
 
-    //guessAnswer()
 }
