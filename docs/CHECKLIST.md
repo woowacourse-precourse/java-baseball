@@ -5,8 +5,8 @@
 - [x] `build.gradle`을 수정하지 않기
 - [x] `ApplicationTest` 테스트
 
-- [ ] 인덴트 제한(2) 확인
-- [ ] 삼항 연산자 제한
+- [x] 인덴트 제한(2) 확인
+- [x] 삼항 연산자 제한
 
 
 - [x] 구현 함수 테스트
@@ -22,8 +22,9 @@
 프로젝트 구현
 - [x] 2.1 기능을 구현하기 전 `docs/README.md`에 구현 기능 목록 정리
 - [x] 2.2 구현 완료
-- [ ] 2.3 리팩토링 [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java)
+- [x] 2.3 리팩토링
+- [x] 2.4 코드 컨벤션 준수 [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java)
 
 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 2022년 11월 7일(월) 14시 00분 ~ 2022년 11월 8일(화) 23시 59분
-- [ ] 3.1 - 과제 제출: Git
-- [ ] 3.2 - 과제 제출: 지원 플랫폼
+- 3.1 - 과제 제출: Git
+- 3.2 - 과제 제출: 지원 플랫폼
