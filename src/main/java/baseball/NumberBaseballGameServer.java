@@ -13,7 +13,23 @@ public class NumberBaseballGameServer {
     private static final int COUNT_GAME_NUMBER = 3;
 
     public void run() {
-        // 게임의 흐름과 순서 관리
+        NumberBaseballGameClient.showGameStartMessage();
+        while (true) {
+            List<Integer> gameNumberList = makeNewGameNumber();
+            boolean isNotGameOver = true;
+            while (isNotGameOver) {
+                int playerGameNumber = NumberBaseballGameClient.askPlayerGameNumber();
+
+                NumberBaseballGameJudgedResultDto judgedResultDto
+                    = judgeInputNumber(playerGameNumber, gameNumberList);
+                NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+                isNotGameOver = judgedResultDto.countStrikes != 3;
+            }
+            NumberBaseballGameClient.showGameEndMessage();
+            if (!NumberBaseballGameClient.askMoreGame()) {
+                return;
+            }
+        }
     }
 
     public List<Integer> makeNewGameNumber() {
