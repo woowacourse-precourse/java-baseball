@@ -2,9 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Application {
 
     public static void main(String[] args) {
@@ -24,22 +21,15 @@ public class Application {
 
     private static int doRepeat() {
         String repeatInput = getRepeatInput();
-        if (!checkRepeatInputRegex(repeatInput)) {
+        if (!Numbers.checkRepeatInput_regex(repeatInput)) {
             throw new IllegalArgumentException();
         }
         return Integer.parseInt(repeatInput);
     }
 
     private static String getRepeatInput() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Console.readLine();
-    }
-
-    private static boolean checkRepeatInputRegex(String repeatInput) {
-        String regex = "^[1-2]$"; // 1 또는 2
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(repeatInput);
-        return matcher.matches();
     }
 
 }
