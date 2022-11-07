@@ -111,6 +111,16 @@ public class BaseBallGame {
     public int askStopOrRegame() {
         this.gameMessageDisplay.printStopOrRegameRequestMessage();
         String userChoice = Console.readLine();
-        return REGAME;
+        int stopOrRegame = STOP;
+
+        if (isValidChoice(userChoice)) {
+            stopOrRegame = Integer.parseInt(userChoice);
+        }
+
+        return stopOrRegame;
+    }
+
+    public boolean isValidChoice(String userChoice) {
+        return this.inputValidator.validateChoice(userChoice);
     }
 }

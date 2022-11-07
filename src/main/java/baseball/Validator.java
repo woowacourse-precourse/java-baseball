@@ -53,7 +53,13 @@ public class Validator {
         if (hasDuplicateNumber(userInput)) {
             throw new IllegalArgumentException("중복되는 숫자가 있습니다");
         }
+        return VALIDATE_SUCCESS;
+    }
 
+    public boolean validateChoice(String userChoice) {
+        if (!userChoice.equals("1") && !userChoice.equals("2")) {
+            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다");
+        }
         return VALIDATE_SUCCESS;
     }
 }
