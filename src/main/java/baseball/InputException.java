@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
@@ -35,5 +36,12 @@ public class InputException {
 
     private static boolean isThreeLength(String userNumber) {
         return userNumber.length() != 3;
+    }
+
+    public static String validRestartNumberException(String restartNumber) {
+        if (!restartNumber.equals("1") && !restartNumber.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+        return restartNumber;
     }
 }
