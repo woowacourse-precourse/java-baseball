@@ -4,6 +4,9 @@ import static baseball.BaseballGameManager.NUMBER_COUNT_TO_CREATED;
 
 public class InputValidator {
 
+    public final static String GAME_RESTART_OPTION = "1";
+    public final static String GAME_CLOSE_OPTION = "2";
+    
     public void isWrongInputValue(String input) {
         if (input.length() != NUMBER_COUNT_TO_CREATED) {
             throw new IllegalArgumentException();
@@ -23,7 +26,7 @@ public class InputValidator {
     }
 
     public void validateRestartOption(String input) {
-        if (!input.equals("1") && !input.equals("2")) {
+        if (!input.equals(GAME_RESTART_OPTION) && !input.equals(GAME_CLOSE_OPTION)) {
             throw new IllegalArgumentException();
         }
     }

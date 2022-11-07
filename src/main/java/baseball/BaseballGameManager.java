@@ -28,6 +28,14 @@ public class BaseballGameManager {
         messageCreator.printResultMessage(strikeCount, ballCount);
     }
 
+    public boolean isGameClear() {
+        if (strikeCount == 3) {
+            randomNumbers.clear();
+            return true;
+        }
+        return false;
+    }
+
     private void calculateBallCount(String input) {
         strikeCount = (int) IntStream.range(0, 3)
                 .filter(idx -> randomNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
@@ -37,17 +45,5 @@ public class BaseballGameManager {
                 .filter(idx -> input.contains(String.valueOf(randomNumbers.get(idx))))
                 .filter(idx -> !randomNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
                 .count();
-    }
-
-    public boolean isGameClear() {
-        if (strikeCount == 3) {
-            randomNumbers.clear();
-            return true;
-        }
-        return false;
-    }
-
-    public List<Integer> getRandomNumbers() {
-        return randomNumbers;
     }
 }

@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.BaseballGameManager.NUMBER_COUNT_TO_CREATED;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
