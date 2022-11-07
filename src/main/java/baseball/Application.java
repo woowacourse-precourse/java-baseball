@@ -100,7 +100,7 @@ public class Application {
     public static int getStartSwitch() {
         String stringStartSwitch = Console.readLine();
         if (!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 숫자가 입력되었습니다.");
         }
         if (Objects.equals(stringStartSwitch, "1")) {
             computerNumbersList = getRandomThreeNumbers();
@@ -110,11 +110,11 @@ public class Application {
 
     public static void handleInputException(String stringUserNumber) {
         if (hasDuplication(stringUserNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
         } else if (stringUserNumber.length() > 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("세 자리를 초과하는 숫자가 입력되었습니다.");
         } else if (hasOtherNumbersOrChars(stringUserNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("정해진 범위 이외의 숫자나 문자가 입력되었습니다.");
         }
     }
 }
