@@ -17,14 +17,14 @@ interface Game {
     static int countSameLetterInSameIndexWithoutDuplicate(String criterion, String comparisonTarget) {
         return (int) criterion.chars()
                 .filter(i -> i == comparisonTarget.charAt(criterion.indexOf(i)))
-                .count();
+                        .count();
     }
 
     static int countSameLetterInDifferentIndexWithoutDuplicate(String criterion, String comparisonTarget) {
         return (int) criterion.chars()
                 .filter(i -> i != comparisonTarget.charAt(criterion.indexOf(i)))
-                .filter(i -> comparisonTarget.contains(String.valueOf((char) i)))
-                .count();
+                        .filter(i -> comparisonTarget.contains(String.valueOf((char) i)))
+                                .count();
     }
 
     static String getUserAnswerInString(String question) {
