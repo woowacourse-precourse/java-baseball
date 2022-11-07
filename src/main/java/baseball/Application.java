@@ -12,7 +12,7 @@ public class Application {
         try {
             startGame();
         } catch (IllegalArgumentException exception) {
-            exception.printStackTrace();
+            throw exception;
         }
     }
 
