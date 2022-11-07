@@ -54,10 +54,6 @@ public class Game {
 	}
 
 	private List<Integer> compareUserInputToAnswer(String userInput, String answer) {
-		return countJudgement(userInput, answer);
-	}
-
-	public List<Integer> countJudgement(String userInput, String answer) {
 		List<Integer> judgement = new ArrayList<>();
 		int userNumberLength = userInput.length();
 		int strikes = 0, balls = 0;
