@@ -3,14 +3,12 @@ package service;
 import domain.Number;
 
 import java.util.List;
-import java.util.Map;
 
 public class CompareNumber {
-    private final List<Number> userNumber;
-    private final List<Number> computerNumber;
+    private List<Number> userNumber;
+    private List<Number> computerNumber;
 
-    public CompareNumber(List<Number> userNumber, List<Number> computerNumber) {
-        this.userNumber = userNumber;
+    public CompareNumber(List<Number> computerNumber) {
         this.computerNumber = computerNumber;
     }
 
@@ -39,5 +37,13 @@ public class CompareNumber {
             System.out.println("낫싱");
         }
         return false;
+    }
+
+    public void setUserNumber(List<Number> userNumber){
+        this.userNumber = userNumber;
+    }
+
+    public void setComputerNumber(List<Number> computerNumber){
+        this.computerNumber = computerNumber;
     }
 }
