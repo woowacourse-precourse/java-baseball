@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
             List<Integer> input = List.of(1, 2, 3);
             List<Integer> computers = List.of(3, 4, 5);
             List<Integer> expected = List.of(0, 1);
-            List<Integer> real = NumberController.getStrikesAndBalls(input, computers);
+            List<Integer> real = NumberController.calcStrikesAndBalls(input, computers);
             assertThat(real).isEqualTo(expected);
         }
 
@@ -34,7 +34,7 @@ class ApplicationTest extends NsTest {
             List<Integer> input = List.of(2, 7, 3);
             List<Integer> computers = List.of(2, 7, 3);
             List<Integer> expected = List.of(3, 0);
-            List<Integer> real = NumberController.getStrikesAndBalls(input, computers);
+            List<Integer> real = NumberController.calcStrikesAndBalls(input, computers);
             assertThat(real).isEqualTo(expected);
         }
 
@@ -43,7 +43,7 @@ class ApplicationTest extends NsTest {
             List<Integer> input = List.of(1, 5, 2);
             List<Integer> computers = List.of(5, 1, 2);
             List<Integer> expected = List.of(1, 2);
-            List<Integer> real = NumberController.getStrikesAndBalls(input, computers);
+            List<Integer> real = NumberController.calcStrikesAndBalls(input, computers);
             assertThat(real).isEqualTo(expected);
         }
     }

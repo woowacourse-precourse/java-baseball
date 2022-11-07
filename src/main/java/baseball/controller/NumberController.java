@@ -6,7 +6,7 @@ public class NumberController {
     private NumberController() {
     }
 
-    public static List<Integer> getStrikesAndBalls(List<Integer> users, List<Integer> answers) {
+    public static List<Integer> calcStrikesAndBalls(List<Integer> users, List<Integer> answers) {
         int strikes = 0;
         int balls = 0;
 
