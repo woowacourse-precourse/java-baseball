@@ -2,13 +2,10 @@ package baseball.service;
 
 import baseball.utils.PrintMessage;
 import baseball.utils.RandomNumber;
+import camp.nextstep.edu.missionutils.Console;
 import domain.Game;
 import domain.User;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameService {
 
@@ -19,10 +16,9 @@ public class GameService {
     InGame inGame = new InGame();
     String input;
 
-    List<Integer> computerNumber;
 
     public void playGame() {
-        computerNumber = computer.newRandomNumber();
+        game.setComputerNumber(computer.getRandomNumber());
         int strike = 0;
         while (strike != 3) {
             print.inputRequest();
@@ -37,10 +33,38 @@ public class GameService {
         game.initBall();
         int[] userNumbers = getUserNumbers();
         user.setUserNumber(userNumbers);
+        getScore();
     }
     private int[] getUserNumbers() throws IllegalArgumentException{
-        input = readLine();
+        input = Console.readLine();
+
         return inGame.userInputToInt(input);
+    }
+
+    private void getScore() {
+        for (int i = 0; i < 3; i++) {
+            scoreCalculate(game.getComputerNumber(), user.getUserNumber(), i);
+        }
+    }
+
+    private void scoreCalculate(int[] computerNumber, int[] userNumber, int index) {
+        int temp = -1;
+        for (int i = 0; i < computerNumber.length; i++) {
+            if (computerNumber[i] == userNumber[index]) {
+                temp = i;
+                break;
+            }
+        }
+        increaseCount(index, temp);
+    }
+
+    private void increaseCount(int index, int temp) {
+        if (temp != index && temp != -1) {
+            game.increaseBall();
+        }
+        if (temp == index) {
+            game.increaseStrike();
+        }
     }
 
 }
