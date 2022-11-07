@@ -21,7 +21,7 @@ public class NextStepRandomGenerator extends RandomNumberGenerator {
   }
 
   private int generateDigit() {
-    return Randoms.pickNumberInRange(RANGE_START_NUMBER, RANGE_END_NUMBER + 1);
+    return Randoms.pickNumberInRange(RANGE_START_NUMBER, RANGE_END_NUMBER);
   }
 
   private boolean isNotAlreadyExist(List<Integer> result, int generatedDigit) {
