@@ -17,8 +17,8 @@ public class Application {
 
         - User 클래스
             - Number 인터페이스 상속
-            - isNumberValidMaxSize 메서드
-            - isNumberValidRange 메서드
+            v isNumberValidMaxSize 메서드
+            v isNumberValidRange 메서드
 
         - Game 클래스
             - printStart 메서드

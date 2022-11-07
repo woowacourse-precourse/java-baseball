@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class User implements Number {
     List<Integer> number;
@@ -21,9 +19,7 @@ public class User implements Number {
         return inputNumber.size() == MAX_SIZE;
     }
 
-    public static void isNumberValidRange(List<Integer> inputNumber) {
-        inputNumber.forEach(number -> {
-            if (number < START_NUMBER || number > END_NUMBER) throw new IllegalArgumentException();
-        });
+    public static boolean isNumberValidRange(List<Integer> inputNumber) {
+        return inputNumber.stream().allMatch(number -> number >= START_NUMBER && number <= END_NUMBER);
     }
 }
