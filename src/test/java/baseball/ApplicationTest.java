@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
+import baseball.exception.AfterGamePlayException;
 import baseball.service.GameNumberCalculatorService;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
@@ -127,4 +128,27 @@ class ApplicationTest extends NsTest {
         assertThat(result.get(STRIKE_INDEX)).isEqualTo(STRIKE_COUNT);
         assertThat(result.get(BALL_INDEX)).isEqualTo(BALL_COUNT);
     }
+
+    @Test
+    void 게임종료후_입력값_범위_예외처리_테스트() {
+        // given
+        AfterGamePlayException afterGamePlayException = new AfterGamePlayException();
+        String numberTypeOfString = "3";
+
+        // when, then
+        assertThatThrownBy(() -> afterGamePlayException.isRightNumber(numberTypeOfString))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임종료후_입력값_길이_예외처리_테스트() {
+        // given
+        AfterGamePlayException afterGamePlayException = new AfterGamePlayException();
+        String numberTypeOfString = "12";
+
+        // when, then
+        assertThatThrownBy(() -> afterGamePlayException.isRightLength(numberTypeOfString))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
