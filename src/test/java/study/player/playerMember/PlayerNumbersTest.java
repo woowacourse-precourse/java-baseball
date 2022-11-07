@@ -20,4 +20,15 @@ class PlayerNumbersTest {
                     .containsExactly(0, 3);
     }
 
+    @Test
+    void 투_볼() {
+        PlayerNumbers baseNumber = new PlayerNumbers(123);
+        PlayerNumbers compareNumber = new PlayerNumbers(214);
+
+        List<Integer> hints = baseNumber.makeHints(compareNumber);
+
+        Assertions.assertThat(hints)
+                    .containsExactly(2, 0);
+    }
+
 }
