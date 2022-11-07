@@ -2,6 +2,11 @@ package baseball.validator;
 
 import baseball.exception.InputException;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class InputValidator {
 
     private static final String INTEGER_REGULAR_EXPRESSION = "^[0-9]*$";
@@ -15,6 +20,7 @@ public class InputValidator {
         validateNotIntegerInput();
         validateNotThreeLengthIntegerInput();
         validateIncludeZeroInput();
+        validateDuplicateNumberInput();
     }
 
     public static void validateNotIntegerInput() {
@@ -32,6 +38,20 @@ public class InputValidator {
     public static void validateIncludeZeroInput() {
         if (guessedAnswerInput.contains(ZERO)) {
             InputException.throwIncludeZeroInputError();
+        }
+    }
+
+    public static void validateDuplicateNumberInput() {
+        List<Character> guessedAnswerInputList = new ArrayList<>();
+        Set<Character> guessedAnswerInputSet = new HashSet<>();
+
+        for (char number : guessedAnswerInput.toCharArray()) {
+            guessedAnswerInputList.add(number);
+            guessedAnswerInputSet.add(number);
+        }
+
+        if (guessedAnswerInputList.size() != guessedAnswerInputSet.size()) {
+            InputException.throwDuplicateNumberInputError();
         }
     }
 }
