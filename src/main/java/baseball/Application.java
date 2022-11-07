@@ -49,4 +49,13 @@ public class Application {
     	return userInputList;
     }
     
+    // 자리 상관없이 일치하는 값의 갯수
+    public static int totalMatch(List<Integer> computer, List<Integer> userInput) {
+    	int total = 0;
+    	for(int i= 0 ; i < 3 ; i++) {
+    		if(computer.contains(userInput.get(i))) total ++;
+    	}
+    	return total;
+    }
+    
 }
