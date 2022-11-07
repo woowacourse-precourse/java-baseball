@@ -48,9 +48,7 @@
 
 - 게임이 끝나면 재시작 / 종료를 구분하는 입력 받기
   - 1은 재시작, 2는 종료
-
-- String을 `TargetNumber`로 변환
-
+  
 - String을 class `TargetNumber` 로 변환하여 반환
   - 서로 다른 3자리의 수만 변환이 허용됨. 이 외의 잘못된 숫자를 변환하려는 경우 `IllegalArgumentException` 발생
 
