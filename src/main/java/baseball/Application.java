@@ -57,15 +57,31 @@ public class Application {
         return count;
     }
 
-    public static List<Integer> Initialize(List<Integer> Input){
-        Input = new ArrayList<>();
-        return Input;
+    public static void GameStart(){
+        List<Integer> computer = ComputerNumber();
+        while(Compare(computer, InputNumber()));
+        while(NewGameStart());
     }
 
-    public static void main(String[] args) {
-        List<Integer> computer = new ArrayList<>();
-        List<Integer> Input = new ArrayList<>();
+    public static boolean NewGameStart(){
+        int Number;
 
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Number = Integer.parseInt(Console.readLine());
+
+        if(Number == 1){
+            GameStart();
+            return  true;
+        }
+        else {
+            if (Number == 2) {
+            }
+            return false;
+        }
+    }
+
+    public static List<Integer> ComputerNumber(){
+        List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -75,7 +91,11 @@ public class Application {
         }
 
         System.out.println("숫자 야구게임을 시작합니다.");
-        while(Compare(computer, InputNumber()));
+        return computer;
 
+    }
+
+    public static void main(String[] args) {
+        GameStart();
     }
 }
