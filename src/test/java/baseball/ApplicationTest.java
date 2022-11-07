@@ -24,6 +24,16 @@ class ApplicationTest extends NsTest {
 			assertThat(computerNumbers.get(i)).isBetween(1,9);
 		}
 	}
+
+	@Test
+	@DisplayName("컴퓨터에 생성된 세 숫자가 서로 중복되지 않는지")
+	void 랜덤생성숫자_중복_여부_확인(){
+		Computer computer = new Computer();
+		List<Integer> computerNumbers = computer.getNumbers();
+
+		assertThat(computerNumbers.get(0)).isNotEqualTo(computerNumbers.get(1)).isNotEqualTo(computerNumbers.get(2));
+	}
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
