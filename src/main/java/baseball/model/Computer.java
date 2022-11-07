@@ -15,7 +15,6 @@ public class Computer {
         do {
             numbers = pickNumbers();
         } while (!Util.isDuplicated(numbers));
-
     }
 
     private int[] pickNumbers() {
@@ -58,7 +57,6 @@ public class Computer {
     }
 
     private void search(int guessNumber, int index) {
-
         if (guessNumber == numbers[index]) {
             strikeCount++;
             return;

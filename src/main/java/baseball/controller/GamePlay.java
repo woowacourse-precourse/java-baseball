@@ -14,7 +14,6 @@ public class GamePlay {
             System.out.print("숫자를 입력하세요: ");
             int[] guessNumbers = typingNumber();
             match(guessNumbers);
-
             if (restart && restartGame()) {
                 break;
             }
@@ -33,11 +32,9 @@ public class GamePlay {
 
     public boolean restartGame() {
         boolean restartFlag = user.inputRestartNumber();
-
         if (!restartFlag) {
             computer.generateNumber();
         }
-
         return restartFlag;
     }
 
