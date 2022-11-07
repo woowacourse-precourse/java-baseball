@@ -14,10 +14,10 @@ public class Converter {
     }
 
     public static String changeResultMapToString(Map<String, Integer> resultMap) {
-        String BALL = "볼";
-        String STRIKE = "스트라이크";
-        Integer ballCount = resultMap.get("ball");
-        Integer strikeCount = resultMap.get("strike");
+        String BALL = ScoreType.BALL.getValue();
+        String STRIKE = ScoreType.STRIKE.getValue();
+        Integer ballCount = resultMap.get(ScoreType.BALL.getLabel());
+        Integer strikeCount = resultMap.get(ScoreType.STRIKE.getLabel());
         List<String> resultList = new ArrayList<>();
 
         if (ballCount > 0) {
@@ -29,7 +29,7 @@ public class Converter {
         }
 
         if (resultList.size() == 0) {
-            return "낫싱";
+            return ScoreType.NOTHING.getValue();
         }
 
         return String.join(" ", resultList);

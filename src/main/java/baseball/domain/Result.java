@@ -5,8 +5,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import baseball.utils.ScoreType;
+
 public class Result {
     private final List<Integer> answer;
+    private final String STRIKE = ScoreType.STRIKE.getLabel();
+    private final String BALL = ScoreType.BALL.getLabel();
     private Map<String, Integer> resultMap;
 
     public Result(List<Integer> answer) {
@@ -23,8 +27,8 @@ public class Result {
 
     private void initializeResultMap() {
         this.resultMap = new HashMap<>() {{
-            put("ball", 0);
-            put("strike", 0);
+            put(STRIKE, 0);
+            put(BALL, 0);
         }};
     }
 
@@ -33,11 +37,11 @@ public class Result {
         Integer currentUserAnswer = userAnswer.get(index);
 
         if (isStrike(currentAnswer, currentUserAnswer)) {
-            resultMap.put("strike", resultMap.get("strike") + 1);
+            resultMap.put(STRIKE, resultMap.get(STRIKE) + 1);
         }
 
         if (isBall(currentAnswer, currentUserAnswer)) {
-            resultMap.put("ball", resultMap.get("ball") + 1);
+            resultMap.put(BALL, resultMap.get(BALL) + 1);
         }
     }
 
