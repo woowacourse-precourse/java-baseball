@@ -14,7 +14,9 @@ public class RandomTest {
         @Test
         void case1() {
             InputValueValidation inputValueValidation = new InputValueValidation();
-            String number = String.valueOf(RandomUtil.pickRandomNumber());
+            RandomUtil randomUtil = new RandomUtil();
+
+            String number = String.valueOf(randomUtil.pickRandomNumber());
             assertThat(inputValueValidation.isNumber(number)).isEqualTo(true);
         }
     }
@@ -23,7 +25,8 @@ public class RandomTest {
     class PickNumbersTest {
         @Test
         void case1() {
-            assertThat(RandomUtil.pickNumbers().stream().distinct().count())
+            RandomUtil randomUtil = new RandomUtil();
+            assertThat(randomUtil.pickNumbers().stream().distinct().count())
                     .isEqualTo(GameConstants.NUMBER_LENGTH);
         }
     }
