@@ -19,6 +19,7 @@ public class Application {
         while (true) {
             application.gamer.inputNumber();
             int ball_num = application.countBall();
+            int strike_num = application.countStrike();
         }
     }
     public int countBall() {
@@ -36,5 +37,14 @@ public class Application {
             ball++;
         }
         return ball;
+    }
+    public int countStrike() {
+        int strike = 0;
+        for (int i = 0; i < GAMEPLAY_SIZE; i++) {
+            if (computer.randomNumber.get(i) == gamer.gamerNumber.get(i)) {
+                strike ++;
+            }
+        }
+        return strike;
     }
 }
