@@ -4,8 +4,6 @@ import baseball.domain.ComputerNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class NumberBaseballRepository {
     private static final int LIMIT_NUMBER = 10;
@@ -34,13 +32,6 @@ public class NumberBaseballRepository {
         }
         numberStore.add(new ComputerNumber(pickNumberList));
         return numberStore.get(COMPUTER_NUMBER);
-    }
-
-
-    public List<Integer> createPositiveIntegerList() {
-        return IntStream.range(START_NUMBER, LIMIT_NUMBER)
-                .boxed()
-                .collect(Collectors.toList());
     }
 
     public void clearNumberStore() {
