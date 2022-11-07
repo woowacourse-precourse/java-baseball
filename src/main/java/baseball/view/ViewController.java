@@ -7,7 +7,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 
 import static baseball.entity.NumberBaseball.GAME_ANSWER_MAX_VALUE;
-import static baseball.view.Display.printReGameMessage;
 
 public class ViewController {
 
@@ -72,7 +71,7 @@ public class ViewController {
     }
 
     public boolean printReGameAndInput() {
-        printReGameMessage();
+        display.printReGameMessage();
 
         String input = Console.readLine();
         InputConfigure.verifyReGameInput(input);
