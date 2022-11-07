@@ -52,25 +52,25 @@ public class Application {
     }
 
     public ArrayList<Integer> getNumber() {
-        ArrayList<Integer> answerNumber;
+        ArrayList<Integer> askNumber;
         try {
             String answer = readLine().replace(" ", "");
-            answerNumber = stringToArrayListInteger(answer);
-            checkNumberSize(answerNumber);
-            checkOverlap(answerNumber);
+            askNumber = stringToArrayListInteger(answer);
+            checkNumberSize(askNumber);
+            checkOverlap(askNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
 
-        return answerNumber;
+        return askNumber;
     }
 
-    private ArrayList<Integer> stringToArrayListInteger(String answerString) {
-        ArrayList<Integer> answerArrayListInteger = new ArrayList<>();
-        for (String number : answerString.split("")) {
-            answerArrayListInteger.add(Integer.parseInt(number));
+    private ArrayList<Integer> stringToArrayListInteger(String askString) {
+        ArrayList<Integer> askArrayListInteger = new ArrayList<>();
+        for (String number : askString.split("")) {
+            askArrayListInteger.add(Integer.parseInt(number));
         }
-        return answerArrayListInteger;
+        return askArrayListInteger;
     }
 
     private void checkNumberSize(ArrayList<Integer> arrayList){
