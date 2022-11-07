@@ -43,10 +43,6 @@ public class Core {
     }
 
     public void printGameResult(int strikes, int balls) {
-        if (strikes == 3) {
-            System.out.println("3스트라이크");
-            return;
-        }
         if (strikes == 0 && balls == 0) {
             System.out.println("낫싱");
             return;
