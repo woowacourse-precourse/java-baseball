@@ -2,14 +2,15 @@ package baseball;
 
 import java.util.List;
 import java.util.ArrayList;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    private static final int startGame = 0;
-    private static final int midGame = 1;
-    private static final int endGame = 2;
-    private static final int exitGame = 3;
+    private static final int STARTGAME = 0;
+    private static final int MIDGAME = 1;
+    private static final int ENDGAME = 2;
+    private static final int EXITGAME = 3;
 
     private static int gameState;
     private static int ball = 0;
@@ -18,17 +19,17 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        gameState = startGame;
+        gameState = STARTGAME;
         List<Integer> answerNumber = new ArrayList<>();
         String userInput = new String();
-        while (gameState != exitGame) {
-            if (gameState == startGame) {
+        while (gameState != EXITGAME) {
+            if (gameState == STARTGAME) {
                 answerNumber = makeAnswerNumber();
-                gameState = midGame;
+                gameState = MIDGAME;
             }
             announceBasedOnGameState();
             userInput = getUserInput();
-            if (gameState == endGame) {
+            if (gameState == ENDGAME) {
                 restartOrQuitGame(userInput);
                 continue;
             }
@@ -38,21 +39,21 @@ public class Application {
         }
     }
 
-    public static String getUserInput () {
+    public static String getUserInput() {
         String userInput = Console.readLine();
 
-        if (gameState == midGame) {
+        if (gameState == MIDGAME) {
             isValidInputNumber(userInput);
         }
 
-        if (gameState == endGame) {
+        if (gameState == ENDGAME) {
             isInput1Or2(userInput);
         }
 
         return userInput;
     }
 
-    public static void announceBallAndStrike () {
+    public static void announceBallAndStrike() {
         List<String> ballAndStrike = new ArrayList<>();
         if (ball > 0) {
             ballAndStrike.add(String.format("%d볼", ball));
@@ -67,28 +68,28 @@ public class Application {
         System.out.println("낫싱");
     }
 
-    public static void announceBasedOnGameState () {
-        if (gameState == midGame) {
+    public static void announceBasedOnGameState() {
+        if (gameState == MIDGAME) {
             System.out.print("숫자를 입력해주세요 : ");
         }
-        if (gameState == endGame) {
+        if (gameState == ENDGAME) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
 
-    public static int setGameState () {
+    public static int setGameState() {
         if (strike == 3) {
             ball = 0;
             strike = 0;
-            return endGame;
+            return ENDGAME;
         }
         ball = 0;
         strike = 0;
-        return midGame;
+        return MIDGAME;
     }
 
-    public static void findBallAndStrike (String userInput, List<Integer> answerNumber) {
+    public static void findBallAndStrike(String userInput, List<Integer> answerNumber) {
         for (int digit = 0; digit < 3; digit++) {
             int presentNumber = userInput.charAt(digit) - 48; // ascii 코드로 49~57은 1~9를 나타낸다
             if (presentNumber == answerNumber.get(digit)) {
@@ -101,7 +102,7 @@ public class Application {
         }
     }
 
-    public static List<Integer> makeAnswerNumber () {
+    public static List<Integer> makeAnswerNumber() {
         List<Integer> answerNumber = new ArrayList<>();
         while (answerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -112,16 +113,16 @@ public class Application {
         return answerNumber;
     }
 
-    public static void restartOrQuitGame (String userInput) {
+    public static void restartOrQuitGame(String userInput) {
         if (userInput.equals("1")) {
-            gameState = startGame;
+            gameState = STARTGAME;
         }
         if (userInput.equals("2")) {
-            gameState = exitGame;
+            gameState = EXITGAME;
         }
     }
 
-    public static void isValidInputNumber (String userInput) {
+    public static void isValidInputNumber(String userInput) {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("세자리 숫자를 입력해주세요.");
         }
