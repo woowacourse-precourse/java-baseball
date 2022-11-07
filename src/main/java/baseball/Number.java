@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Number {
     private static final int START_INCLUSIVE = 1;
@@ -21,7 +22,10 @@ public class Number {
     }
 
     public static String getUserNumbers() {
-        return Console.readLine();
+        String readNumber = Console.readLine();
+        validateDigits(readNumber);
+        validateNumbers(readNumber);
+        return readNumber;
     }
 
     public static void addNumber(List<Integer> numbersList, int number) {
@@ -32,5 +36,20 @@ public class Number {
 
     public static boolean isDuplicated(List<Integer> numbersList, int number) {
         return numbersList.contains(number);
+    }
+
+    public static void validateDigits(final String numbers) {
+        if (numbers.length() != NUMBERS_SIZE) {
+            throw new IllegalArgumentException("Enter a three-digit number.");
+        }
+    }
+
+    public static void validateNumbers(final String numbers) {
+        if (!Pattern.matches("^[0-9]*$", numbers)) {
+            throw new IllegalArgumentException("Enter only numbers.");
+        }
+        if (numbers.contains("0")) {
+            throw new IllegalArgumentException("Enter only numbers from 1 to 9.");
+        }
     }
 }
