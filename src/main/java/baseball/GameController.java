@@ -2,8 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.SystemMessage.REQUEST_RESTART_OR_GAME_OVER;
-import static baseball.SystemMessage.STRIKE_AND_GAME_OVER;
+import static baseball.SystemMessage.*;
 
 public class GameController {
     public static final String RESTART_STATEMENT = "1";
@@ -44,4 +43,9 @@ public class GameController {
         return inputCommand.equals(RESTART_STATEMENT);
     }
 
+    private void validateStatement( String command ) {
+        if ( !command.equals(RESTART_STATEMENT) && !command.equals(END_STATEMENT) ) {
+            throw new IllegalArgumentException( INVALID_STATEMENT );
+        }
+    }
 }
