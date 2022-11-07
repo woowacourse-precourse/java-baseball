@@ -2,6 +2,7 @@ package baseball.controller;
 
 import static baseball.constant.Constants.*;
 import static baseball.validator.BallValidator.*;
+import static baseball.validator.GameInputValidator.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,6 +73,14 @@ public class BaseballGameController {
 	}
 
 	private static boolean askRestartGame() {
+		UserInputView.printRestartGame();
+		String input = UserInputView.receiveInput();
+		validateRestartInput(input);
+
+		int inputParseInt = Integer.parseInt(input);
+		if (inputParseInt == RESTART_GAME) {
+			return true;
+		}
 		return false;
 	}
 
