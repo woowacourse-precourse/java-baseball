@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class Application {
 
-    private static final int MIN = 100;
-    private static final int MAX = 999;
     private static final Scanner stdinScanner = new Scanner(System.in);
     private static int answerNumber;
 
@@ -30,9 +28,9 @@ public class Application {
         int result = 0;
         int processAnswerNumber = answerNumber;
         for (int i = 1; i <= 3; i++) {
-            int answerOneNumber = processAnswerNumber/(Math.max(1, (int)Math.pow(10,3-i)));
+            int answerOneNumber = processAnswerNumber / (Math.max(1, (int) Math.pow(10, 3 - i)));
             result += checkOneAnswerNumberWithTargetNumber(answerOneNumber, targetNumber, i, targetIdx);
-            processAnswerNumber -= answerOneNumber * (int)Math.pow(10,3-i);
+            processAnswerNumber -= answerOneNumber * (int) Math.pow(10, 3 - i);
         }
         return result;
     }
@@ -50,11 +48,29 @@ public class Application {
         return false;
     }
 
+    private static int getAnswerOneNumber(List<Integer> numberList) {
+        int generatedNumber = (int) ((Math.random() * 9) + 1);
+        while (numberList.contains(generatedNumber)) {
+            generatedNumber = (int) ((Math.random() * 9) + 1);
+        }
+        return generatedNumber;
+    }
+
+    private static void generateAnswerNumber() {
+        answerNumber = 0;
+        ArrayList<Integer> numberList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            numberList.add(getAnswerOneNumber(numberList));
+        }
+
+        for (int i = 0; i < 3; i++) {
+            answerNumber += numberList.get(i) * Math.max(1, Math.pow(10, 2 - i));
+        }
+    }
+
     private static void baseballGameRun() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        answerNumber = (int) ((Math.random() * (MAX - MIN)) + MIN);
-        System.out.println(answerNumber);
-        System.out.println(checkEachNumber(4, 1));
+        generateAnswerNumber();
     }
 
     public static void main(String[] args) {
