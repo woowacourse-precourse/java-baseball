@@ -2,10 +2,11 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class ComputerTest {
     @Test
@@ -20,5 +21,41 @@ public class ComputerTest {
     void 게임시작문구() {
         Computer computer = new Computer();
         assertThat(computer.gameStart()).isEqualTo("숫자 야구 게임을 시작합니다.");
+    }
+
+    @Test
+    void 숫자변환() {
+        Computer computer = new Computer();
+        assertThat(computer.stringToInteger("123")).isEqualTo(Arrays.asList(1, 2, 3));
+    }
+
+    @Test
+    void 숫자변환_에러반환체크() {
+        Computer computer = new Computer();
+        assertThatThrownBy(() -> computer.stringToInteger(""))
+                .isInstanceOf(IllegalArgumentException.class); // 미입력
+        assertThatThrownBy(() -> computer.stringToInteger("abc"))
+                .isInstanceOf(IllegalArgumentException.class); // 문자
+        assertThatThrownBy(() -> computer.stringToInteger("a12"))
+                .isInstanceOf(IllegalArgumentException.class); // 숫자 문자 혼용
+        assertThatThrownBy(() -> computer.stringToInteger("1"))
+                .isInstanceOf(IllegalArgumentException.class); // 한자리수
+        assertThatThrownBy(() -> computer.stringToInteger("1234"))
+                .isInstanceOf(IllegalArgumentException.class); // 네자리수
+        assertThatThrownBy(() -> computer.stringToInteger("332"))
+                .isInstanceOf(IllegalArgumentException.class); // 숫자 중복
+        assertThatCode(() -> { computer.stringToInteger("123"); }).doesNotThrowAnyException(); // 정상인 수
+    }
+
+    @Test
+    void 숫자유효성체크() {
+        Computer computer = new Computer();
+        assertThat(computer.checkNum("")).isFalse(); // 미입력
+        assertThat(computer.checkNum("abc")).isFalse(); // 문자
+        assertThat(computer.checkNum("a12")).isFalse(); // 숫자 문자 혼용
+        assertThat(computer.checkNum("1")).isFalse(); // 한자리수
+        assertThat(computer.checkNum("1234")).isFalse(); // 네자리수
+        assertThat(computer.checkNum("332")).isFalse(); // 숫자 중복
+        assertThat(computer.checkNum("123")).isTrue(); // 정상인 수
     }
 }

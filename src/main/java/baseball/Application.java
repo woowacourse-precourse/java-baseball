@@ -10,5 +10,8 @@ public class Application {
 
         // 2. 게임 시작 문구 출력
         System.out.println(computer.gameStart());
+
+        // 3. 게임 플레이어는 숫자 3자리 입력
+        List<Integer> nums = computer.stringToInteger(computer.inputNum());
     }
 }
