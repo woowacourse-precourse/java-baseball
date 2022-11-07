@@ -18,6 +18,28 @@ public class Computer {
         }
     }
 
+    protected String NOTHING = "낫싱";
+    protected String BALL = "%d볼 ";
+    protected String STRIKE = "%d스트라이크";
+    protected String GAMEOVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
+    public String getResult(String input) {
+        if (isNothing(input)) {
+            return NOTHING;
+        }
+        String result = "";
+        if (getBallCount(input) > 0) {
+            result += String.format(BALL, getBallCount(input));
+        }
+        if (getStrikeCount(input) > 0) {
+            result += String.format(STRIKE, getStrikeCount(input));
+        }
+        if (isGameOver(input)) {
+            result += ('\n' + GAMEOVER);
+        }
+        return result;
+    }
+
     public boolean isNothing(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (answer.contains(input.charAt(i) - '0')) {
