@@ -45,6 +45,13 @@ public class Hint {
         return strike == 0 && ball == 0;
     }
 
+    public void checkAnswerAndPlayerNumber(int[] answer, int[] playerAnswer){
+        for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
+            countStrike(answer[i], playerAnswer[i]);
+            countBall(i, answer, playerAnswer[i]);
+        }
+    }
+
     private void countBall(int digit, int[] answer, int playerAnswer) {
         for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
             if (i != digit && answer[i] == playerAnswer){
