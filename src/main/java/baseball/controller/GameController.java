@@ -2,7 +2,6 @@ package baseball.controller;
 
 import java.util.List;
 
-import baseball.utils.ExceptionHandler;
 import baseball.utils.Game;
 import baseball.utils.Text;
 import baseball.dto.BaseballDto;
@@ -15,42 +14,50 @@ public class GameController {
 	public static String createComputerNumber() {
 		return GameService.createRandomNumber();
 	}
-	public static void gameStart() {
+	public static void startGame() {
 		BaseballDto.setComputer();
 
 		do {
 			Output.printText(Text.input.getPrint());
 			BaseballDto.setUser("user");
-		} while (gameResult(compareNumber()) != 3);
+		} while (gameResult(compareNumber()) != 3);	//결과가 3 스트라이크가 아니면
 
 		Output.printNotice("restart");
 	}
-	public static void reStart() {
-		Output.printNotice("start");
-
-		do {
-			gameStart();
-			BaseballDto.setUser("restart");
-		}while (BaseballDto.getUser().equals(Integer.toString(Game.strike.getDef())));
-	}
-	public static Integer gameResult(List<Integer> result) {
+	//비교한 결과에 대한 출력을 요청하는 함수
+	public static void requestPrintf(List<Integer> result) {
 		boolean isVisited = false;
 
-		if (result.get(ball) != Game.nothing.getDef()) {
+		//ball != 0
+		if (result.get(ball) != Game.nothing.getResult()) {
 			isVisited = Output.printResult(result.get(ball), ball);
 		}
-		if (result.get(strike) != Game.nothing.getDef()) {
+		//strike != 0
+		if (result.get(strike) != Game.nothing.getResult()) {
 			Output.isSpace(isVisited);
 			Output.printResult(result.get(strike), strike);
 		}
-		if (result.get(ball) == Game.nothing.getDef() && result.get(strike) == Game.nothing.getDef()) {
+		//ball == 0 && strike == 0
+		if ((result.get(ball) == Game.nothing.getResult()) && (result.get(strike) == Game.nothing.getResult())) {
 			Output.printText(Text.nothing.getPrint());
 		}
 		Output.printText("\n");
+	}
+
+	public static Integer gameResult(List<Integer> result) {
+		requestPrintf(result);
 
 		return result.get(strike);
 	}
 	public static List<Integer> compareNumber() {
 		return GameService.compareNumber();
+	}
+	public static void isRestart() {
+		Output.printNotice("start");
+
+		do {
+			startGame();
+			BaseballDto.setUser("restart");
+		}while (BaseballDto.getUser().equals("1"));
 	}
 }
