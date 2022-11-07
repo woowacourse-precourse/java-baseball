@@ -12,6 +12,13 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    private static void stopGame(int strikeNumber) {
+        if (strikeNumber == STOP_GAME) {
+            ResponseMessage.allStrike();
+            checkExecution();
+        }
+    }
+
     private static void checkExecution() {
         gameExecution = Integer.parseInt(Console.readLine());
         Exception.isInvalidInput(gameExecution);
