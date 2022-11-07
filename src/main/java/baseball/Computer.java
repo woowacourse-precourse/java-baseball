@@ -1,7 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Computer {
@@ -14,25 +16,13 @@ public class Computer {
     }
 
     public void setRandomNumber() {
-        Set<Integer> randomDigitSet = new HashSet<>();
-
-        while(true) {
-            int randomDigit = Randoms.pickNumberInRange(1,9);
-            randomDigitSet.add(randomDigit);
-            if(randomDigitSet.size() == NUMBER_LENGTH) {
-                break;
-            }
+        Set<String> digitsSet = new HashSet<>();
+        while(digitsSet.size() < NUMBER_LENGTH) {
+            String digit = String.valueOf(Randoms.pickNumberInRange(1,9));
+            digitsSet.add(digit);
         }
-
-        String randomNumberString ="";
-        for(int randomDigit: randomDigitSet) {
-            randomNumberString += String.valueOf(randomDigit);
-        }
-
-
-
-        randomNumber = Integer.parseInt(randomNumberString);
-
+        List<String> digitsList = new ArrayList<>(digitsSet);
+        randomNumber = Integer.parseInt(String.join("", digitsList));
     }
 
     public int getRandomNumber() {
