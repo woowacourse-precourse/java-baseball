@@ -44,8 +44,7 @@ public class InputExceptionTest {
         @CsvSource({
                 "1", "12", "1234", "-1234"
         })
-        void case1() {
-            String numbers = "";
+        void case1(String numbers) {
             Assertions.assertThatThrownBy(() -> inputException.isInvalidNumbersSize(numbers))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[ERROR] " + "입력한 문자의 크기가 올바르지 않습니다." + " 게임을 종료합니다.");
@@ -77,8 +76,7 @@ public class InputExceptionTest {
                 "12", "123"
         })
         @DisplayName("예외 발생 O")
-        void case2() {
-            String runCode = "";
+        void case2(String runCode) {
             Assertions.assertThatThrownBy(() -> inputException.isInvalidCodeSize(runCode))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[ERROR] " + "입력한 문자의 크기가 올바르지 않습니다." + " 게임을 종료합니다.");
@@ -111,8 +109,7 @@ public class InputExceptionTest {
                 "a", "1a3", "-12", "1-2"
         })
         @DisplayName("예외 발생 O")
-        void case3() {
-            String input = "-12";
+        void case3(String input) {
             Assertions.assertThatThrownBy(() -> inputException.isDigitException(input))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[ERROR] " + "입력한 문자 중 숫자가 아닌 문자가 포함되어 있습니다."
@@ -124,8 +121,7 @@ public class InputExceptionTest {
                 "1", "2", "123", "456", "789"
         })
         @DisplayName("예외 발생 X")
-        void case4() {
-            String input = "";
+        void case4(String input) {
             Assertions.assertThatCode(() -> inputException.isDigitException(input))
                     .doesNotThrowAnyException();
         }
