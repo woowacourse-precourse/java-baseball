@@ -33,11 +33,11 @@ public class RandomNumbers {
      * size() : 리스트의 사이즈 반환
      * countSingleNumbers() : 중복 체크
      */
-    public int size() {
+    int size() {
         return randomNumbers.size();
     }
 
-    public boolean isDuplicated() {
+    boolean isDuplicated() {
         int count = (int) randomNumbers.stream()
                 .distinct()
                 .count();
