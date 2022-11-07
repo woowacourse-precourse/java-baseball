@@ -43,4 +43,10 @@ public class Application {
     	return userInputList;
     }
     
+    // 사용자 입력받은 값 리스트로 변환
+    public static int [] inputToList(int userInput){
+    	int[] userInputList = Stream.of(String.valueOf(userInput).split("")).mapToInt(Integer::parseInt).toArray();
+    	return userInputList;
+    }
+    
 }
