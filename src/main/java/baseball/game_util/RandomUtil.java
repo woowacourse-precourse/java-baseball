@@ -5,35 +5,21 @@ import static baseball.common.Constants.MAX_NUMBER_COUNT;
 import static baseball.common.Constants.START_NUMBER_RANGE;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RandomUtil {
 
-    public static int[] createRandomComputerNumbers() {
-        int[] computerNumbers = new int[MAX_NUMBER_COUNT];
+    public static List<Integer> createRandomComputerNumbers() {
+        List<Integer> computerNumberList = new ArrayList<>(MAX_NUMBER_COUNT);
 
-        for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
-            computerNumbers[i] = getNotDuplicateRandomNumber(computerNumbers);
-        }
-        return computerNumbers;
-    }
-
-    private static int getNotDuplicateRandomNumber(int[] computerNumbers) {
-        while (true) {
+        while(computerNumberList.size() < MAX_NUMBER_COUNT) {
             int randomNumber = getRandomNumber();
-            boolean checkContainNumber = checkContainNumber(computerNumbers, randomNumber);
-            if (checkContainNumber) {
-                return randomNumber;
+            if (!computerNumberList.contains(randomNumber)) {
+                computerNumberList.add(randomNumber);
             }
         }
-    }
-
-    private static boolean checkContainNumber(int[] computerNumbers, int randomNumber) {
-        for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
-            if (computerNumbers[i] == randomNumber) {
-                return false;
-            }
-        }
-        return true;
+        return computerNumberList;
     }
 
     private static int getRandomNumber() {
