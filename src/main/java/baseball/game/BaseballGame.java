@@ -49,7 +49,7 @@ public class BaseballGame implements Game {
     }
 
     private void printGameStartMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.\n");
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private boolean isNotCorrect() {
