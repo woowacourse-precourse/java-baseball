@@ -31,6 +31,12 @@ class InputValidatorTest {
         String input3 = "#$@";
         assertThatThrownBy(() -> InputValidator.checkBaseballInput(input3))
                 .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> InputValidator.checkBaseballInput("333"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> InputValidator.checkBaseballInput("226"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
