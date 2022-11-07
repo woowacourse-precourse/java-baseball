@@ -5,6 +5,7 @@ import baseball.domain.Gamer;
 import baseball.domain.Hint;
 import baseball.domain.Rule;
 
+import static baseball.constant.Constant.*;
 import static baseball.view.View.*;
 
 public class Game {
@@ -21,9 +22,10 @@ public class Game {
     public void play() {
         printStartGame();
 
-        while (!rule.isGameOver()) {
+        while (Hint.getStrikeCount() != RANDOM_NUMBERS_LENGTH) {
             inputNumbers();
             rule.getHint(gamer.inputNumbers(), computer.getRandomNumbers());
         }
+
     }
 }

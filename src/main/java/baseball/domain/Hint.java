@@ -31,4 +31,8 @@ public enum Hint {
         }
         return NOTHING.value;
     }
+
+    public static int getStrikeCount() {
+        return STRIKE.count;
+    }
 }
