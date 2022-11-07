@@ -36,7 +36,7 @@ public class Game {
             int playerInput;
             try {
                 playerInput = isValidPlayerInput();
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException exception) {
                 continue;
             }
             return playerInput == 1;

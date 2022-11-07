@@ -17,7 +17,8 @@ public class PlayerTest {
         void case1() {
             String playerInput = "315";
             List<Integer> result = List.of(3, 1, 5);
-            assertThat(player.isValidBaseballNumber(playerInput)).isEqualTo(result);
+            player.isValidBaseballNumber(playerInput);
+            assertThat(player.getBaseballNumber()).isEqualTo(result);
         }
 
         @Test

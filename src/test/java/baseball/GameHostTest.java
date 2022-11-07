@@ -11,35 +11,35 @@ public class GameHostTest {
     class TestIsValidBaseballNumber {
         GameHost gameHost = new GameHost();
 
-        @Test
-        @DisplayName("세 자리 난수 생성 시 예외 처리에 대해 테스트합니다.")
-        void case1() {
-            gameHost.setBaseballNumber();
-            List<Integer> baseballNumber = gameHost.getBaseballNumber();
-            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            assertThat(result).isTrue();
-        }
-
-        @Test
-        void case2() {
-            List<Integer> baseballNumber = List.of(1, 2, 3, 4);
-            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            assertThat(result).isFalse();
-        }
-
-        @Test
-        void case3() {
-            List<Integer> baseballNumber = List.of(1, 1, 2);
-            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            assertThat(result).isFalse();
-        }
-
-        @Test
-        void case4() {
-            List<Integer> baseballNumber = List.of(0, 1, 2);
-            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-            assertThat(result).isFalse();
-        }
+//        @Test
+//        @DisplayName("세 자리 난수 생성 시 예외 처리에 대해 테스트합니다.")
+//        void case1() {
+//            gameHost.setBaseballNumber();
+//            List<Integer> baseballNumber = gameHost.getBaseballNumber();
+//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
+//            assertThat(result).isTrue();
+//        }
+//
+//        @Test
+//        void case2() {
+//            List<Integer> baseballNumber = List.of(1, 2, 3, 4);
+//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
+//            assertThat(result).isFalse();
+//        }
+//
+//        @Test
+//        void case3() {
+//            List<Integer> baseballNumber = List.of(1, 1, 2);
+//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
+//            assertThat(result).isFalse();
+//        }
+//
+//        @Test
+//        void case4() {
+//            List<Integer> baseballNumber = List.of(0, 1, 2);
+//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
+//            assertThat(result).isFalse();
+//        }
     }
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
