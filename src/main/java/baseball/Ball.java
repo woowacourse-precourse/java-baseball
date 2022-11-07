@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public class Ball {
     private final int number;
     private final int order;
@@ -11,7 +9,7 @@ public class Ball {
         this.order = order;
     }
 
-    public BaseballJudge getResult(List<Ball> balls) {
+    public BaseballJudge getResult(Balls balls) {
         if (isStrike(balls)) {
             return BaseballJudge.STRIKE;
         }
@@ -23,13 +21,17 @@ public class Ball {
         return BaseballJudge.NOTHING;
     }
 
-    private boolean isStrike(List<Ball> balls) {
-        return number == balls.get(order).getNumber();
+    private boolean isStrike(Balls balls) {
+        return number == balls.getBalls().get(order).getNumber();
     }
 
-    private boolean isBall(List<Ball> balls) {
-        return balls.stream().anyMatch(ball ->
-                ball.getNumber() == this.number && ball.getOrder() != this.order);
+    private boolean isBall(Balls balls) {
+        return balls.getBalls().stream()
+                .anyMatch(this::isEqualNumberAndNotEqualOrder);
+    }
+
+    private boolean isEqualNumberAndNotEqualOrder(Ball ball) {
+        return ball.getNumber() == this.number && ball.getOrder() != this.order;
     }
 
     public int getNumber() {

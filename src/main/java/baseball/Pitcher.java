@@ -13,10 +13,10 @@ public class Pitcher {
         initThrownBallList();
     }
 
-    public List<Ball> throwRandomBalls(int count) {
-        return IntStream.range(0, count)
-                .mapToObj(this::throwRandomBall)
-                .collect(Collectors.toList());
+    public Balls throwRandomBalls(int count) {
+        return new Balls(IntStream.range(0, count)
+                        .mapToObj(this::throwRandomBall)
+                        .collect(Collectors.toList()));
     }
 
     private Ball throwRandomBall(int order) {

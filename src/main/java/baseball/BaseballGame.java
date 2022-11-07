@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
@@ -30,7 +29,7 @@ public class BaseballGame {
     }
 
     private boolean playInning() {
-        List<Ball> pitcherBalls = pitcher.throwRandomBalls(NUMBER_OF_BALLS);
+        Balls pitcherBalls = pitcher.throwRandomBalls(NUMBER_OF_BALLS);
         while (true) {
             referee.initCount();
             referee.judgeGameResult(hitter.hitBalls(inputNumber()), pitcherBalls);

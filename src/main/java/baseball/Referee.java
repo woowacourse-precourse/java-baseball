@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public class Referee {
     private int strikeCount;
     private int ballCount;
@@ -15,8 +13,8 @@ public class Referee {
         this.ballCount = 0;
     }
 
-    public void judgeGameResult(List<Ball> hitterBalls, List<Ball> pitcherBalls) {
-        hitterBalls.forEach(hitterBall ->
+    public void judgeGameResult(Balls hitterBalls, Balls pitcherBalls) {
+        hitterBalls.getBalls().forEach(hitterBall ->
                 count(hitterBall.getResult(pitcherBalls)));
     }
 
