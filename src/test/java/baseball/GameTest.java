@@ -75,4 +75,18 @@ public class GameTest {
         // then
         Assertions.assertThat(method.invoke(game)).isInstanceOf(List.class);
     }
+
+    @Test
+    void 사용자의_입력을_받아_리스트_형태로_반환하는_기능_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("getUserNumberList", String.class);
+        method.setAccessible(true);
+
+        //when
+        List<Character> list = Arrays.asList('1', '2', '3');
+
+        // then
+        Assertions.assertThat(method.invoke(game, "123")).isEqualTo(list);
+    }
 }
