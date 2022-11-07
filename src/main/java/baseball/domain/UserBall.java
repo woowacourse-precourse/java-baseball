@@ -23,7 +23,7 @@ public class UserBall {
 	}
 
 	public boolean is3Strike() {
-		return this.status.equals(ViewConst.HAS_3_STRIKE);
+		return this.status.equals(ViewConst.THREE_STRIKE);
 	}
 
 	public void updateBallCount(Integer ball) {
