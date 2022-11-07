@@ -8,7 +8,6 @@ import java.util.List;
 
 public class BaseballComputer {
     private List<Integer> computerNumber = new ArrayList<>(); // 3자리수
-    private List<Integer> userNumber = new ArrayList<>();
 
     public void startGameMessage(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -26,6 +25,14 @@ public class BaseballComputer {
         return Console.readLine();
     }
 
+    public void init(){
+        inputNumberToComputerMessage();
+        String answer = userInputNumberInGame();
+
+        if(!checkHitNumber(answer)){
+            init();
+        }
+    }
 
     public void createRandomNumber() {
         computerNumber.clear();
@@ -37,16 +44,18 @@ public class BaseballComputer {
         }
     }
 
-    public void checkHitNumber() {
-
+    public boolean checkHitNumber(String answer) {
+        return true;
     }
 
     public List<Integer> getRandomNumber() {
         return this.computerNumber;
     }
 
-    public int restartOrEnd(){
-        return 0;
+
+
+    public void printRestartOrEnd(){
+
     }
 
     public void printHitStatus(){
