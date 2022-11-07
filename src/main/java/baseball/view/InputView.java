@@ -4,6 +4,7 @@ package baseball.view;
 import baseball.exception.InputDuplicateException;
 import baseball.exception.InputNotMatchDigitException;
 import baseball.exception.InputNotNumberException;
+import baseball.exception.InputOutOfRangeException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ import java.util.List;
 import static baseball.rule.Digit.isMatchDigit;
 
 public class InputView {
+
+    private static final int FIRST = 1;
+    private static final int DUP_LIMIT_COUNT = 1;
+    private static final int LAST = 9;
 
     public int inputNumber() {
         try {
@@ -43,10 +48,11 @@ public class InputView {
     private void validateNumbers(List<Integer> inputs) {
         validateInputDuplicate(inputs);
         validateInputMatchDigit(inputs);
+        validateInputOutOfRange(inputs);
     }
 
     private void validateInputDuplicate(List<Integer> inputs) {
-        if (inputs.stream().anyMatch(input -> Collections.frequency(inputs, input) > 1)) {
+        if (inputs.stream().anyMatch(input -> Collections.frequency(inputs, input) > DUP_LIMIT_COUNT)) {
             throw new InputDuplicateException();
         }
     }
@@ -55,5 +61,15 @@ public class InputView {
         if (!isMatchDigit(inputs)) {
             throw new InputNotMatchDigitException();
         }
+    }
+
+    private void validateInputOutOfRange(List<Integer> inputs) {
+        if (inputs.stream().anyMatch(this::isOutOfRange)) {
+            throw new InputOutOfRangeException();
+        }
+    }
+
+    private boolean isOutOfRange(int input) {
+        return input > LAST || input < FIRST;
     }
 }
