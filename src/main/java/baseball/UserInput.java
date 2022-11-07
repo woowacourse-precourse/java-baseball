@@ -1,8 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static baseball.Constant.*;
 
@@ -41,8 +44,11 @@ public class UserInput {
     }
 
     private void convertNumbers() {
-        Convert convert = new Convert();
-        this.numbers = convert.IntegerList(input);
+        this.numbers = Arrays.stream(Stream.of(input.split(""))
+                        .mapToInt(Integer::parseInt)
+                        .toArray())
+                        .boxed()
+                        .collect(Collectors.toList());
     }
 
     public void isValid() {
