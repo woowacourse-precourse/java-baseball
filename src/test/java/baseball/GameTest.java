@@ -82,6 +82,34 @@ public class GameTest extends NsTest {
         game.printGameStatus(1, 1);
         assertThat(output()).isEqualTo("1볼 1스트라이크");
     }
+
+    @DisplayName("유저 입력 비교 테스트1 - 3스트라이크일 경우")
+    @Test
+    void isUserNumberCorrectTest1() {
+        assertRandomNumberInRangeTest(() -> {
+            game.setComputerNumber();
+            List<Integer> testNumber = new ArrayList<>();
+            testNumber.add(1);
+            testNumber.add(2);
+            testNumber.add(3);
+            assertThat(game.isUserNumberCorrect(testNumber)).isTrue();
+            assertThat(output()).isEqualTo("3스트라이크");
+        }, 1, 2, 3);
+    }
+
+    @DisplayName("유저 입력 비교 테스트2 - 3스트라이크가 아닐 경우")
+    @Test
+    void isUserNumberCorrectTest2() {
+        assertRandomNumberInRangeTest(() -> {
+            game.setComputerNumber();
+            List<Integer> testNumber = new ArrayList<>();
+            testNumber.add(1);
+            testNumber.add(2);
+            testNumber.add(4);
+            assertThat(game.isUserNumberCorrect(testNumber)).isFalse();
+            assertThat(output()).isEqualTo("2스트라이크");
+        }, 1, 2, 3);
+    }
     }
 
     @Override
