@@ -4,26 +4,29 @@ import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Gamer {
-    public Set<Integer> inputNumbers() {
+    public List<Integer> inputNumbers() {
         String inputNumbers = Console.readLine();
+
         InputException.isNumber(inputNumbers);
         InputException.isLength(inputNumbers);
+        InputException.isDuplicate(inputNumbers);
+
         int[] numbers = toIntArray(inputNumbers);
-        return toSet(numbers);
+        return toList(numbers);
     }
 
     private int[] toIntArray(String inputNumbers) {
         return Stream.of(inputNumbers.split("")).mapToInt(Integer::parseInt).toArray();
     }
 
-    private Set<Integer> toSet(int[] numbers) {
+    private List<Integer> toList(int[] numbers) {
         return Arrays.stream(numbers)
                 .boxed()
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 }

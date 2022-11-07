@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import java.util.Set;
+import java.util.List;
 
 public class Rule {
     private final boolean gameOver;
@@ -9,7 +9,7 @@ public class Rule {
         gameOver = false;
     }
 
-    public String getHint(Set<Integer> numbers) {
+    public String getHint(List<Integer> numbers) {
         return "";
     }
 

@@ -1,5 +1,7 @@
 package baseball.exception;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static baseball.constant.Constant.*;
@@ -18,6 +20,13 @@ public class InputException {
     public static void isLength(String inputNumbers) {
         if(inputNumbers.length() != RANDOM_NUMBERS_LENGTH) {
             throw new IllegalArgumentException(NOT_NUMBER_LENGTH);
+        }
+    }
+
+    public static void isDuplicate(String inputNumbers) {
+        List<String> inputNumberList = Arrays.asList(inputNumbers.split(""));
+        if(inputNumberList.stream().distinct().count() < RANDOM_NUMBERS_LENGTH) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
 }

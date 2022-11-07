@@ -2,28 +2,41 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static baseball.constant.Constant.*;
 
 public class Computer {
-    private final Set<Integer> randomNumbers;
+    private final List<Integer> randomNumbers;
 
     public Computer() {
         this.randomNumbers = this.generateNumbers();
     }
 
-    public Set<Integer> getRandomNumbers() {
+    public List<Integer> getRandomNumbers() {
         return this.randomNumbers;
     }
 
-    private Set<Integer> generateNumbers() {
-        Set<Integer> numbers = new HashSet<>();
+    private List<Integer> generateNumbers() {
+        List<Integer> numbers = new ArrayList<>();
         while (numbers.size() != RANDOM_NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER);
-            numbers.add(randomNumber);
+            if(!isDuplicateNumber(randomNumber)) {
+                numbers.add(randomNumber);
+            }
         }
         return numbers;
+    }
+
+    private boolean isDuplicateNumber(int randomNumber) {
+        for(Integer number : randomNumbers) {
+            if(number == randomNumber) {
+                return true;
+            }
+        }
+        return false;
     }
 }
