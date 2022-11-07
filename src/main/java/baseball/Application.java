@@ -16,7 +16,15 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             input = Console.readLine();
             List<Integer> inputNumbers = Util.toIntegerArray(input);
+            String comment = takeTurn(inputNumbers);
+
             break outer;
         }
+    }
+
+    private static String takeTurn(List<Integer> inputNumbers) {
+        String comment = "";
+        // Todo: 볼, 스트라이크 판단
+        return comment;
     }
 }
