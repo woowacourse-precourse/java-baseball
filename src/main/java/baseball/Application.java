@@ -54,16 +54,16 @@ public class Application {
     public static boolean isInputValid(String inputValue) {
 
         if (!isInteger(inputValue))
-            return false;
+            throw new IllegalArgumentException("정수가 아닌 값을 입력했습니다.");
 
         int inputNumber = Integer.parseInt(inputValue);
 
         if (inputNumber < 123 || inputNumber > 987)
-            return false;
+            throw new IllegalArgumentException("제한범위를 벗어나는 값을 입력했습니다.");
 
         if (!isAnswerNumberValid(inputNumber))
             // 랜덤 정답 숫자 유효성과 같은 제한조건을 검사
-            return false;
+            throw new IllegalArgumentException("0 또는 중복되는 수가 입력되었습니다.");
 
         return true;
     }
