@@ -9,7 +9,6 @@ import java.util.List;
 public class ComputerNumberRepository extends ComputerNumber {
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
-    private static final int NUMBER_DIGITS = 3;
 
     public ComputerNumberRepository() {
         super(makeNumberList());
