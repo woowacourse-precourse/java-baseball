@@ -40,7 +40,7 @@ public class GameService {
         return GameStatus.END;
     }
 
-    private void sendMassage(GameMessage massage) {
+    public void sendMassage(GameMessage massage) {
         System.out.print(massage.getMassage());
     }
 
