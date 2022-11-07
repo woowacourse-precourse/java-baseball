@@ -59,6 +59,22 @@ class ProblemMakerTest {
     }
 
     @Test
-    void isSameAtGivenLocation() {
+    void isSameAtGivenLocation_숫자가같을때() {
+        ProblemMaker problemMaker = new ProblemMaker();
+        problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
+        List<Integer> numbers = problemMaker.getNumbers();
+        int num = numbers.get(0);
+        boolean result = true;
+        assertThat(result).isEqualTo(problemMaker.isSameAtGivenLocation(num, 0));
+    }
+
+    @Test
+    void isSameAtGivenLocation_숫자가다를때() {
+        ProblemMaker problemMaker = new ProblemMaker();
+        problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
+        List<Integer> numbers = problemMaker.getNumbers();
+        int num = numbers.get(0);
+        boolean result = false;
+        assertThat(result).isEqualTo(problemMaker.isSameAtGivenLocation(num, 1));
     }
 }
