@@ -45,6 +45,11 @@ public class Application {
         if (numList.size() != numSet.size()) {
             return false;
         }
+        for (int num : numList) {
+            if (num < 1 || num > 9) {
+                return false;
+            }
+        }
         return true;
     }
 }
