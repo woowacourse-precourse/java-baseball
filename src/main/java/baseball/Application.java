@@ -10,7 +10,6 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while (true) {
-//            getComputerNumber(computer);
             while (computer.size() < 3) {
                 addComputerNumber(computer, getRandomNumber());
             }
@@ -48,12 +47,9 @@ public class Application {
         return Randoms.pickNumberInRange(1, 9);
     }
 
-    static void getComputerNumber(List<Integer> computer) {
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+    static void addComputerNumber(List<Integer> computer, int randomNumber) {
+        if (!computer.contains(randomNumber)) {
+            computer.add(randomNumber);
         }
     }
 
