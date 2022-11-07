@@ -32,7 +32,7 @@ public class Application {
     }
 
     /**
-     * Scan input to start a number baseball game.
+     * Scan input from console.
      * @return list of integer if input is validated.
      */
     public static List<Integer> getInputAsList() {
