@@ -8,6 +8,7 @@ import baseball.domain.Player.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
+    private static final String gameEndCondition = HintString.STRIKE.print(Ball.COUNT.getValue());
     private final Computer computer;
     private final Player player;
     private boolean isPlaying;
@@ -45,12 +46,12 @@ public class BaseballGame {
 
     private void printHint() {
         Hint hint = new Hint(player.getBallNumbers(), computer.getBallNumbers());
-        String hintStatement =  hint.printHint();
+        String hintStatement = hint.printHint();
         checkPlayerWin(hintStatement);
     }
 
     private void checkPlayerWin(String hint) {
-        if (hint.equals(HintString.STRIKE.print(3))) {
+        if (hint.equals(gameEndCondition)) {
             System.out.println(Game.END);
             isPlaying = false;
         }
