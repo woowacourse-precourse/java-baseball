@@ -12,14 +12,23 @@ public class Computer {
     public static final int SIZE = 3;
 
     private boolean[] collection;
+
     private List<Integer> randomNumbers;
 
     public boolean[] getCollection() {
         return collection;
     }
 
+    public void setCollection(boolean[] collection) {
+        this.collection = collection;
+    }
+
     public List<Integer> getRandomNumbers() {
         return randomNumbers;
+    }
+
+    public void setRandomNumbers(List<Integer> randomNumbers) {
+        this.randomNumbers = randomNumbers;
     }
 
     public Computer() {
@@ -39,7 +48,7 @@ public class Computer {
         initCollection();
     }
 
-    private void initCollection() {
+    public void initCollection() {
         Arrays.fill(collection, false);
         for (Integer randomNumber : randomNumbers) {
             collection[randomNumber - MINIMUM_NUMBER] = true;

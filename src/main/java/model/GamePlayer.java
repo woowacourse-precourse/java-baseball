@@ -1,9 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class GamePlayer {
 
     public static final int MAXIMUM_NUMBER = 9;
