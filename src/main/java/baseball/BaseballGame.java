@@ -7,8 +7,8 @@ import java.util.stream.IntStream;
 
 public class BaseballGame {
     private static final int NUMBER_OF_BALLS = 3;
-    private static final int REPLAY = 1;
-    private static final int OVER = 2;
+    private static final String REPLAY = "1";
+    private static final String OVER = "2";
     private static final String INVALID_NUMBER_RANGE_REGEX = "[^1-9]";
 
     private final Hitter hitter;
@@ -56,7 +56,7 @@ public class BaseballGame {
 
     private boolean isReplaying() {
         System.out.println(BaseballMessage.REPLAY_MESSAGE.getMessage());
-        Integer number = Integer.valueOf(Console.readLine());
+        String number = Console.readLine();
 
         if (number.equals(REPLAY)) {
             return true;
