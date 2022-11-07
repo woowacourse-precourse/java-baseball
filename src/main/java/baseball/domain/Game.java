@@ -18,10 +18,6 @@ public final class Game {
         this.gameStatus = GameStatus.PROGRESS;
     }
 
-    public boolean isRestartStatus() {
-        return gameStatus.equals(RESTART);
-    }
-
     public boolean isExitStatus() {
         return gameStatus.equals(EXIT);
     }
@@ -35,18 +31,8 @@ public final class Game {
         this.ball = ball;
     }
 
-    public void setStatusByCommand(String command){
-        if (GameStatus.isExit(command)) {
-            this.gameStatus = EXIT;
-        }
-
-        if (GameStatus.isRestart(command)) {
-            this.gameStatus = RESTART;
-        }
-    }
-
-    public void restartGame() {
-        this.gameStatus = GameStatus.PROGRESS;
+    public void setExitStatus(){
+        this.gameStatus = EXIT;
     }
 
     public void clearResult() {

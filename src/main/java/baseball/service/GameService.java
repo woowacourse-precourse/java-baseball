@@ -6,10 +6,6 @@ import baseball.util.OutputUtils;
 import camp.nextstep.edu.missionutils.Console;
 
 
-
-
-
-
 public class GameService {
 
     private final Game game;
@@ -28,19 +24,13 @@ public class GameService {
             OutputUtils.printInputView();
             player.setInputBall();
 
-            if (game.isRestartStatus()) {
-                game.restartGame();
-                computer = new Computer();
-            }
-
             playBaseBallGame();
             OutputUtils.printGameResultView(game);
 
             if (game.isMaxStrike()) {
                 String command = getRestartOrExitFromPlayer();
-                game.setStatusByCommand(command);
+                setActionOfRestartAndExit(command);
             }
-
             game.clearResult();
         }
     }
@@ -51,6 +41,14 @@ public class GameService {
         String command = Console.readLine();
         NumberExceptionUtils.isValidCommandDigit(command);
         return command;
+    }
+
+    public void setActionOfRestartAndExit(String command) {
+        if (GameStatus.isRestart(command)) {
+            computer = new Computer();
+        } else if (GameStatus.isExit(command)) {
+            game.setExitStatus();
+        }
     }
 
     public void playBaseBallGame() {
