@@ -16,7 +16,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GameTest {
-  Game game;
+  private Game game;
 
   private static ByteArrayOutputStream outContent;
   private static PrintStream originalOut;
@@ -34,15 +34,13 @@ public class GameTest {
     System.setOut(originalOut);
   }
 
-  @Test
-  @Order(1)
-  @DisplayName("유효성 검사 테스트")
-  public void generateNumberValidate() {
-    game.generateNumberTest("1");
+  public String inputNumberTest(String input) {
+    game.validityChecker(input);
+    return input;
   }
 
   @Test
-  @Order(2)
+  @Order(1)
   @DisplayName("유효성 검사 1. Null 확인")
   public void generateNumberValidateIsStringNotNull() {
     Assertions.assertThatThrownBy(() -> {
@@ -51,7 +49,7 @@ public class GameTest {
   }
 
   @Test
-  @Order(3)
+  @Order(2)
   @DisplayName("유효성 검사 2. 유효한 값 1 확인")
   public void generateNumberValidateIsStringOne() {
     game.generateNumberTest("1");
@@ -59,7 +57,7 @@ public class GameTest {
   }
 
   @Test
-  @Order(4)
+  @Order(3)
   @DisplayName("유효성 검사 3. 유효한 값 2 확인")
   public void generateNumberValidateIsStringTwo() {
     game.generateNumberTest("2");
@@ -67,7 +65,7 @@ public class GameTest {
   }
 
   @Test
-  @Order(5)
+  @Order(4)
   @DisplayName("유효성 검사 4. 유효하지 않은 값 확인")
   public void generateNumberValidateIsStringUnavailable() {
     Assertions.assertThatThrownBy(() -> {
@@ -76,7 +74,7 @@ public class GameTest {
   }
 
   @Test
-  @Order(6)
+  @Order(5)
   @DisplayName("유효성 검사 5. 랜덤 값 확인")
   public void generateNumberValidateRandomTest() {
     String number = Integer.toString(Randoms.pickNumberInRange(0, 9));
