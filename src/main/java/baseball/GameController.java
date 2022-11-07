@@ -34,6 +34,24 @@ public class GameController {
         return false;
     }
 
+    public String generateOutput(int strike, int ball) {
+        String output = "";
+        if (ball != 0) {
+            output += ball + "볼 ";
+        }
+        if (strike != 0) {
+            output += strike + "스트라이크";
+        }
+        if (strike == 0 && ball == 0) {
+            output = "낫싱";
+        }
+        if (strike == 3) {
+            output += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+
+        return output;
+    }
+
     public boolean judge() {
         int strike = 0;
         int ball = 0;
@@ -47,23 +65,9 @@ public class GameController {
             }
         }
 
-        String output = "";
-        if (ball != 0) {
-            output += ball + "볼 ";
-        }
-        if (strike != 0) {
-            output += strike + "스트라이크";
-        }
-        if (strike == 0 && ball == 0) {
-            output = "낫싱";
-        }
-        if (strike == 3) {
-            output += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-            System.out.println(output);
-            return true;
-        }
-        System.out.println(output);
-        return false;
+        System.out.println(generateOutput(strike, ball));
+
+        return (strike == 3);
     }
 
     public void play() {
