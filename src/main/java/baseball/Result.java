@@ -8,9 +8,11 @@ public class Result {
         ballCount = 0;
         strikeCount = 0;
     }
-    public void increaseBallCount(){
 
+    public void increaseBallCount(){
+        ballCount++;
     }
+
     public void increaseStrikeCount(){
 
     }
