@@ -11,11 +11,20 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         printInitMessage();
+        play();
 
+    }
+
+    private static void play() {
         List<Integer> answer = pickThreeNumbers();
         List<Integer> userAnswer = stringConvertToIntegerList(getUserAnswer()); // 입력받은 값을 리스트로 변경
-        Score score = checkAnswer(answer, userAnswer);
+        String hint = "";
 
+        while (!hint.equals("3스트라이크")) {
+            Score score = checkAnswer(answer, userAnswer);
+            hint = score.getScore();
+            System.out.println(hint);
+        }
     }
 
     public static Score checkAnswer(List<Integer> answer, List<Integer> userAnswer) {
