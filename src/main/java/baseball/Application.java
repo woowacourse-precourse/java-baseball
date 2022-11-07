@@ -62,11 +62,11 @@ public class Application {
         System.out.print("숫자 야구 게임을 시작합니다.");
     }
 
-    public static List<Integer> getUserInput(String readLine) {
+    public static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
         return Arrays
-                .stream(readLine.split(""))
+                .stream(isValid(Console.readLine()).split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
