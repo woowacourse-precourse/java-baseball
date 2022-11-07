@@ -40,6 +40,9 @@ public class Game {
             isValidateRange(userNumbers);
 
             strike = checkStrikeCount(userNumbers);
+            ball = checkBallCount(userNumbers);
+
+            gameMessage();
         }
     }
 
@@ -108,4 +111,22 @@ public class Game {
 
         return ballCount;
     }
+
+    public void gameMessage() {
+        StringBuilder sb = new StringBuilder();
+
+        if(strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+
+        if(ball != 0) {
+            sb.append(ball).append("볼 ");
+        }
+
+        if(strike != 0) {
+            sb.append(strike).append("스트라이크");
+        }
+        System.out.println(sb.toString());
+    }
+
 }
