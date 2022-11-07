@@ -23,12 +23,13 @@ public class GameController {
 
     public void runBaseballGame() {
         output.printlnMessage(OutputMessage.START);
-        String runStatus = "start";
-        while (!runStatus.equals("2")) {
+        GameContext gameContext = new GameContext(true);
+        while (gameContext.isGameContext()) {
             List<Integer> randomNumber = computer.generateRandomNumber();
             runEachSet(randomNumber);
+
             output.printlnMessage(OutputMessage.END);
-            runStatus = input.endInput();
+            gameContext.updateContext(input.endInput());
         }
     }
 
@@ -37,7 +38,7 @@ public class GameController {
             output.printMessage(OutputMessage.NUMBER_REQUEST);
             String userInput = input.baseballInput();
 
-            String baseballResult = computer.baseballResult(randomNumber, userInput);
+            String baseballResult = computer.checkBallAndStrike(randomNumber, userInput);
             output.printlnMessage(baseballResult);
 
             if (referee.isEndGameSet(baseballResult)) {
