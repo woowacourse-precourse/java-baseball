@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -42,8 +43,24 @@ public class Application {
         determineAnswer();
     }
 
-    private static void selectPlayerNumberException(String user) {
-
+    private static void selectPlayerNumberException(String playerInput) {
+        if (playerInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        List<Character> numbers = new ArrayList<>(Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9'));
+        for (int i = 0; i < playerInput.length(); i++) {
+            if (!numbers.contains(playerInput.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
+        List<Character> duplicateCheckList = new ArrayList<>();
+        for (int i = 0; i < playerInput.length(); i++) {
+            char playerNumber = playerInput.charAt(i);
+            if (duplicateCheckList.contains(playerNumber)) {
+                throw new IllegalArgumentException();
+            }
+            duplicateCheckList.add(playerNumber);
+        }
     }
 
     private static void determineAnswer() {
