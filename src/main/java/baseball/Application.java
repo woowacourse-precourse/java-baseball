@@ -7,6 +7,22 @@ import java.util.ArrayList;
 
 public class Application {
 
+    public static String output(int strike, int ball) {
+        String str="";
+        if(strike==0) {
+            str=ball+"볼";
+            return str;
+        }
+        else if(ball==0) {
+            str=strike+"스트라이크";
+            return str;
+        }
+        else {
+            str=ball+"볼 "+strike+"스트라이크";
+            return str;
+        }
+    }
+
     public static boolean checkBallNum(int num, int index, List<Integer> inputNum) {
         for(int i=0;i<inputNum.size();i++) {
             if(i==index) {
