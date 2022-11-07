@@ -122,8 +122,10 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    void 명령_번호가_유효한_숫자인지_확인_테스트_1_2_미포함() {
-        String number = "3";
+    @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
+    @ValueSource(strings = {"0", "3", "4", "5"})
+    @DisplayName("명령 번호가 유효한 숫자인지 확인 테스트")
+    void 명령_번호가_유효한_숫자인지_확인_테스트_1_2_미포함(String number) {
         assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
