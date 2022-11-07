@@ -32,17 +32,11 @@ public class Play {
 
     }
     public void playBaseball(){
-        System.out.println(START_MESSAGE);
         computerNumberList = computerNumber.generateNumber();
 
         System.out.print(INPUT_MESSAGE);
         userNumberList = userNumber.inputUserNumber();
-
-        System.out.println(computerNumberList);
-        System.out.println(userNumberList);
-        userNumberList = Arrays.asList(1,2,3);
-        computerNumberList = Arrays.asList(1,2,3);
-
+        
         getResult(userNumberList,computerNumberList);
 
     }
