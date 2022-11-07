@@ -8,8 +8,8 @@ public class BaseBallGame {
     public static final int COMPUTER_NUMBERS_SIZE = 3;
     public static final int COMPUTER_NUMBER_MIN = 1;
     public static final int COMPUTER_NUMBER_MAX = 9;
-    public static final boolean REGAME = true;
-    public static final boolean STOP = false;
+    public static final int REGAME = 1;
+    public static final int STOP = 2;
 
     GameMessageDisplay gameMessageDisplay;
     Validator inputValidator;
@@ -108,8 +108,9 @@ public class BaseBallGame {
         return false;
     }
 
-    public boolean askStopOrRegame() {
+    public int askStopOrRegame() {
         this.gameMessageDisplay.printStopOrRegameRequestMessage();
-        return STOP;
+        String userChoice = Console.readLine();
+        return REGAME;
     }
 }
