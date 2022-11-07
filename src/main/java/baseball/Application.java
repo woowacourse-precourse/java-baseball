@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -34,6 +36,13 @@ public class Application {
             int temp=0;
             temp=Integer.parseInt(input);
         }catch (Exception e){
+            IllegalArgumentException exception = new IllegalArgumentException();
+            throw exception;
+        }
+    }
+    private static void checkInputNumber(List<Integer> numbers){
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        if (numbers.size()!=3 || numberSet.size()!=3){
             IllegalArgumentException exception = new IllegalArgumentException();
             throw exception;
         }
