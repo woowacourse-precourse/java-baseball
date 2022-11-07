@@ -20,6 +20,8 @@ public class GameController {
 
         do {
             playGame();
+            OutputView.printAnswerMessage();
+            OutputView.printRetryOrExitMessage();
         } while (retryOrExit().equals(RETRY.getString()));
     }
 
@@ -41,9 +43,6 @@ public class GameController {
     }
 
     private static String retryOrExit() {
-        OutputView.printAnswerMessage();
-        OutputView.printRetryOrExitMessage();
-
         String retryOrExit = readLine();
 
         if (!retryOrExit.equals(RETRY.getString()) && !retryOrExit.equals(EXIT.getString())) {
