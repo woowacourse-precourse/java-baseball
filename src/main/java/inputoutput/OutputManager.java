@@ -4,10 +4,10 @@ import constants.Text;
 
 public class OutputManager {
     public static void notifyStart() {
-        System.out.println(Text.NOTIFY_START);
+        System.out.print(Text.NOTIFY_START);
     }
 
     public static void requestPlayerNumber() {
-        System.out.println(Text.NUMBER_INPUT_REQUEST);
+        System.out.print(Text.NUMBER_INPUT_REQUEST);
     }
 }
