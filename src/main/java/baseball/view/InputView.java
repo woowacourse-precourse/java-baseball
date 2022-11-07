@@ -15,14 +15,13 @@ public class InputView {
     private static final String NUMBER_SEPARATE_DELIMITER = "";
     private static final String NUMBER_RANGE = "^[1-9]*$";
     private static final String YES_OR_NO_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
+    private static final String YES = "1";
+    private static final String NO = "2";
 
     public static List<Integer> getInput() {
         System.out.print(GET_NUMBER_MESSAGE);
-
         String numbers = Console.readLine();
         validate(numbers);
-
         return toInteger(numbers);
     }
 
@@ -39,7 +38,6 @@ public class InputView {
         if (ballNums.size() != numbers.length) {
             throw new IllegalArgumentException();
         }
-
     }
 
     private static List<Integer> toInteger(String numbers) {
@@ -47,7 +45,6 @@ public class InputView {
             .map(Integer::valueOf)
             .collect(Collectors.toList());
     }
-
 
     private static String[] separate(String input) {
         return input.split(NUMBER_SEPARATE_DELIMITER);
@@ -58,11 +55,11 @@ public class InputView {
 
         String input = Console.readLine();
         validateInput(input);
-        return input.equals("1");
+        return input.equals(YES);
     }
 
     private static void validateInput(String input) {
-        if (!input.equals("1") && !input.equals("2")) {
+        if (!input.equals(YES) && !input.equals(NO)) {
             throw new IllegalArgumentException();
         }
     }
