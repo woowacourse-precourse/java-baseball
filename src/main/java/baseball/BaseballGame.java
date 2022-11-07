@@ -4,17 +4,38 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class BaseballGame {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final int NUMBER_OF_BALLS = 3;
     private static final int REPLAY = 1;
     private static final int OVER = 2;
 
-    public void playGame() {
+    public void playGame() throws IOException {
         System.out.println(GAME_START_MESSAGE);
+        boolean isPlay = true;
+        Hitter hitter = new Hitter();
+        Referee referee = new Referee();
+        Pitcher pitcher = new Pitcher();
+        while (isPlay) {
+            pitcher.initThrownBallList();
+            isPlay = playInning(referee, hitter, pitcher.throwRandomBalls(NUMBER_OF_BALLS));
+        }
+    }
+
+    private boolean playInning(Referee referee, Hitter hitter, List<Ball> pitcherBalls) throws IOException {
+        while (true) {
+            referee.initCount();
+            referee.judgeGameResult(hitter.hitBalls(inputNumber()), pitcherBalls);
+            printResult(referee);
+            if (isGameOver(referee)) {
+                return isReplaying();
+            }
+        }
     }
 
     public String inputNumber() throws IOException {
@@ -34,11 +55,15 @@ public class BaseballGame {
         return false;
     }
 
-    private boolean isReplaying() throws IOException {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Integer number = Integer.valueOf(
-                new BufferedReader(new InputStreamReader(System.in))
-                .readLine());
+    private boolean isReplaying() {
+        System.out.println(REPLAY_MESSAGE);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        Integer number = null;
+        try {
+            number = Integer.valueOf(bufferedReader.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return number.equals(REPLAY);
     }
