@@ -3,6 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,5 +35,36 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 새로운_수_얻기() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    List <Integer> newNums = Application.getNewNumber();
+                    assertThat(newNums).isEqualTo(new ArrayList<>(Arrays.asList(1,2,3)));
+                },
+                1, 1, 1, 2, 3
+        );
+    }
+
+    @Test
+    void 입력_유효_판단() {
+        assertThat(Application.isRightInput("134")).isEqualTo(true);
+        assertThat(Application.isRightInput("224")).isEqualTo(false);
+        assertThat(Application.isRightInput("45677")).isEqualTo(false);
+    }
+
+    @Test
+    void 스트라이크_개수_얻기() {
+        assertThat(Application.getStrikeCount(new ArrayList<>(Arrays.asList(1,2,3)), "123")).isEqualTo(3);
+        assertThat(Application.getStrikeCount(new ArrayList<>(Arrays.asList(1,2,9)), "123")).isEqualTo(2);
+    }
+
+    @Test
+    void 볼_개수_얻기() {
+        assertThat(Application.getBallCount(new ArrayList<>(Arrays.asList(1,2,3)), "123")).isEqualTo(0);
+        assertThat(Application.getBallCount(new ArrayList<>(Arrays.asList(2,1,9)), "623")).isEqualTo(1);
+        assertThat(Application.getBallCount(new ArrayList<>(Arrays.asList(2,1,9)), "923")).isEqualTo(2);
     }
 }
