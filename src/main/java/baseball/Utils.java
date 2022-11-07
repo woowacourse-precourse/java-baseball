@@ -19,7 +19,8 @@ public class Utils {
         return new ArrayList<>(set);
     }
 
-    public static List<Integer> pickComputerNumber() {
-        return pickUniqueNumbersInRange(1, 9, 3);
+    public static Number pickComputerNumber() {
+        List<Integer> numbers = pickUniqueNumbersInRange(1, 9, 3);
+        return new Number(numbers);
     }
 }

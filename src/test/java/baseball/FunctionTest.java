@@ -9,10 +9,10 @@ public class FunctionTest {
 
     @Test
     public void TEST1_1() {
-        List<Integer> computerNumbers = Utils.pickComputerNumber();
+        Number computerNumber = Utils.pickComputerNumber();
 
-        Assertions.assertThat(computerNumbers).hasSize(3);
-        Assertions.assertThat(computerNumbers.get(0)).isNotEqualTo(computerNumbers.get(1)).isNotEqualTo(computerNumbers.get(2));
+        Assertions.assertThat(computerNumber.size()).isEqualTo(3);
+        Assertions.assertThat(computerNumber.get(0)).isNotEqualTo(computerNumber.get(1)).isNotEqualTo(computerNumber.get(2));
     }
 
     @Test
