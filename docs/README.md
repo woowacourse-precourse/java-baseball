@@ -10,9 +10,6 @@
     - Referee
   - Exception
     - InputException
-  - view
-    - input
-    - output
     
 
 - Computer
