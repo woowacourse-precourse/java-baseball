@@ -15,6 +15,53 @@ public class TargetNumber {
         return new TargetNumber();
     }
 
+    public static TargetNumber getInstance(String input) {
+        validateInput(input);
+
+        List<Integer> integerList = new ArrayList<>();
+        for(int i = 0; i < input.length(); i++) {
+            integerList.add((int) input.charAt(i) - '0');
+        }
+
+        return new TargetNumber(integerList);
+    }
+
+    private static void validateInput(String input) {
+        checkExactNumberLength(input);
+        checkAllDigit1To9(input);
+        checkAllDigitNotDuplicate(input);
+    }
+
+    private static void checkExactNumberLength(String input) {
+        if(input == null || input.length() != TARGET_NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkAllDigit1To9(String input) {
+        if(input == null || !input.matches("^[1-9]+")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkAllDigitNotDuplicate(String input) {
+        for(int i = 0; i < input.length() - 1; i++) {
+            char currentChar = input.charAt(i);
+            String nextToTail = input.substring(i + 1);
+
+            if(nextToTail.indexOf(currentChar) != -1) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private TargetNumber(List<Integer> integerList) {
+        numberListByDigit = new ArrayList<>();
+
+        numberListByDigit.addAll(integerList);
+        Collections.reverse(numberListByDigit);
+    }
+
     private TargetNumber() {
         numberListByDigit = new ArrayList<>();
         while (numberListByDigit.size() < TARGET_NUMBER_LENGTH) {
@@ -25,23 +72,6 @@ public class TargetNumber {
         }
 
         Collections.reverse(numberListByDigit);
-    }
-
-    public TargetNumber(int number) throws IllegalArgumentException {
-        this.numberListByDigit = new ArrayList<>();
-
-        int numberLength = 0;
-        for(int i = number; i > 0; i /= 10) {
-            int currentDigit = i % 10;
-            numberLength++;
-
-            checkNumberLengthNotExceedTargetNumberLength(numberLength);
-            checkDigitNonZero(currentDigit);
-            checkDigitNotDuplicate(currentDigit);
-
-            numberListByDigit.add(currentDigit);
-        }
-        checkExactNumberLength(numberLength);
     }
 
     public int toInt() {
@@ -77,30 +107,6 @@ public class TargetNumber {
                 return;
             }
             result.addBallCount();
-        }
-    }
-
-    private void checkNumberLengthNotExceedTargetNumberLength(int numberLength) {
-        if (numberLength > TARGET_NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkDigitNonZero(int currentDigitRemain) {
-        if (currentDigitRemain == 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkDigitNotDuplicate(int currentDigitRemain) {
-        if(numberListByDigit.contains(currentDigitRemain)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkExactNumberLength(int numberLength) {
-        if (numberLength != TARGET_NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
         }
     }
 }

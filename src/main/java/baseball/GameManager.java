@@ -32,11 +32,8 @@ public class GameManager {
     private TargetNumber getAndProcessTargetNumberInput() {
         printInputNumberAlert();
         String inputString = Console.readLine();
-        if(!UtilMethods.isNumeric(inputString)) {
-            throw new IllegalArgumentException();
-        }
 
-        return new TargetNumber(Integer.parseInt(inputString));
+        return TargetNumber.getInstance(inputString);
     }
 
     private boolean getAndProcessRestartInput() throws IllegalArgumentException {
