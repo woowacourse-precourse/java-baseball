@@ -7,6 +7,7 @@ public class Validator {
     public static final String LENGTH_EXCEPTION = "3자리 숫자를 입력해야 합니다.";
     public static final String DIGIT_EXCEPTION = "각 자리는 숫자 1~9로 구성되어야 합니다.";
     public static final String DUPLICATION_EXCEPTION = "서로 다른 3개의 숫자로 구성되어야 합니다.";
+    public static final String RESPONSE_EXCEPTION = "1 또는 2를 입력해야 합니다.";
 
     public static void validatePlayerInputNumbersString(String input) {
         validateLength(input);
@@ -35,6 +36,12 @@ public class Validator {
         }
         if (inputSet.size() != input.length()) {
             throw new IllegalArgumentException(DUPLICATION_EXCEPTION);
+        }
+    }
+
+    public static void validateResponseAfterGame(String response) {
+        if (!response.equals("1") && !response.equals("2")) {
+            throw new IllegalArgumentException(RESPONSE_EXCEPTION);
         }
     }
 }

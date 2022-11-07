@@ -46,4 +46,12 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Validator.DUPLICATION_EXCEPTION);
     }
+
+    @Test
+    void 숫자_1과_2_이외의_숫자가_포함됐을_때_예외_발생() {
+        String input = "3";
+        assertThatThrownBy(() -> Validator.validateResponseAfterGame(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Validator.RESPONSE_EXCEPTION);
+    }
 }
