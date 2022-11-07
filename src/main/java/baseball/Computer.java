@@ -14,9 +14,21 @@ public class Computer {
     generateAnswer(generator);
   }
 
-  public void printGuessResult(List<Integer> guessedNumber) {
+  public boolean getPlayerWinOrNotAndPrintResult(List<Integer> guessedNumber) {
     int strikes = checkStrike(guessedNumber);
     int balls = checkBall(guessedNumber);
+    printGuessResultMessage(strikes, balls);
+    return isPlayerWinGame(strikes);
+  }
+
+  private boolean isPlayerWinGame(int strikes) {
+    if (strikes == 3) {
+      return true;
+    }
+    return false;
+  }
+
+  private void printGuessResultMessage(int strikes, int balls) {
     System.out.println(makeGuessResultMessage(strikes, balls));
   }
 
