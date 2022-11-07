@@ -1,7 +1,9 @@
 package baseball.model.number;
 
+import static baseball.model.Constant.END_NUMBER_RANGE;
 import static baseball.model.Constant.INPUT_IS_NOT_NUMBER_EXCEPTION;
 import static baseball.model.Constant.OUT_OF_RANGE_NUMBER_EXCEPTION;
+import static baseball.model.Constant.START_NUMBER_RANGE;
 
 public class BaseballNumber {
     Integer ballNumber;
@@ -24,7 +26,7 @@ public class BaseballNumber {
 
     private void validateNumberRange(char uncheckNumber) {
         int uncheckInteger = Character.getNumericValue(uncheckNumber);
-        if(uncheckInteger <= 0 || uncheckInteger > 10) {
+        if(uncheckInteger < START_NUMBER_RANGE || uncheckInteger > END_NUMBER_RANGE) {
             throw new IllegalArgumentException(OUT_OF_RANGE_NUMBER_EXCEPTION);
         }
     }
