@@ -37,4 +37,17 @@ public class Baseball {
         Baseball computer = new Baseball(computerBalls);
         return computer;
     }
+
+    public static Baseball createPlayer(String inputNumber) {
+        LinkedHashSet<Integer> ballOfPlayer = new LinkedHashSet<>();
+        int num;
+
+        for (int i = 0; i < inputNumber.length(); i++) {
+            num = Character.getNumericValue(inputNumber.charAt(i));
+            ballOfPlayer.add(num);
+        }
+        validateBaseballNumber(ballOfPlayer);
+        Baseball player = new Baseball(ballOfPlayer);
+        return player;
+    }
 }
