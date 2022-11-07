@@ -20,6 +20,25 @@ class GameTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("힌트 출력 테스트")
+    void case2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("248", "597", "157", "235", "135", "2");
+                    assertThat(output()).contains(
+                            "낫싱",
+                            "1볼",
+                            "1볼 1스트라이크",
+                            "2스트라이크",
+                            "3스트라이크",
+                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                },
+                1, 3, 5
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
