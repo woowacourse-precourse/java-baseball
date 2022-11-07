@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class ComputerTest {
 
     @Test
-    @DisplayName("컴퓨터가 게임이 시작되면 실행되는 메서드 - generateRandomNumber를 호출")
+    @DisplayName("init() 메서드 호출시 randomNumbers 1~9 사이의 숫자 서로 다른 숫자가 생성")
     void init() {
         Computer computer = Computer.of();
 
@@ -19,9 +19,23 @@ class ComputerTest {
         List<Integer> randomNumbers = computer.getRandomNumbers();
 
         // then
+        assertRandomNumbers(randomNumbers);
+    }
+
+    private void assertRandomNumbers(List<Integer> randomNumbers) {
         assertThat(randomNumbers.size()).isEqualTo(3);
-        assertThat(!Objects.equals(randomNumbers.get(0), randomNumbers.get(1))).isTrue();
-        assertThat(!Objects.equals(randomNumbers.get(1), randomNumbers.get(2))).isTrue();
-        assertThat(!Objects.equals(randomNumbers.get(2), randomNumbers.get(0))).isTrue();
+
+        for (Integer randomNumber : randomNumbers) {
+            assertThat(randomNumber >= 1 && randomNumber <= 9).isTrue();
+        }
+
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            assertThat(randomNumbers.get(i) >= 1 && randomNumbers.get(i) <= 9).isTrue();
+
+            assertThat(!Objects.equals(
+                    randomNumbers.get(i % 3),
+                    randomNumbers.get((i + 1) % 3))
+            ).isTrue();
+        }
     }
 }
