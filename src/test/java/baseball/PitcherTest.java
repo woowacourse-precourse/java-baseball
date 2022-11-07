@@ -10,12 +10,11 @@ import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
 
 class PitcherTest {
-	private static final int PLAYING_NUMBER_SIZE = 3;
-	private static final int MIN_NUMBER = 1;
-	private static final int MAX_NUMBER = 9;
-	private static final String REGEX = "^[" + MIN_NUMBER + "-" + MAX_NUMBER + "]*$";
+	private final int PLAYING_NUMBER_SIZE = 3;
+	private final int MIN_NUMBER = 1;
+	private final int MAX_NUMBER = 9;
+	private final String REGEX = String.format("^[%d-%d]*$", MIN_NUMBER, MAX_NUMBER);
 	Pattern numberPattern = Pattern.compile(REGEX);
-
 
 	@Test
 	void case1() {
