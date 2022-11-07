@@ -9,18 +9,17 @@ import java.util.stream.Stream;
 
 import org.assertj.core.util.Arrays;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application {
 	
 	public static void main(String[] args) {
     	String message = "";
     	Boolean again = true;
-//    	computer.add(1);
-//    	computer.add(3);
-//    	computer.add(5);
     	while(again) {
     		int total = 0, strike = 0 ,ball = 0;
     		List<Integer> computer = ComputerRandomMake();
-    		
     		System.out.println(computer);
     		while(strike != 3) {
     			System.out.println("숫자 3자리를 입력하세요~");
@@ -32,17 +31,14 @@ public class Application {
     			System.out.println(message);
     		}
     		again = againGame();
-//    		computer.removeAll(computer);
-//    		computer.add(5);
-//    		computer.add(8);
-//    		computer.add(9);
     	}
+    	System.out.println("게임 종료");
     }
     
     // 컴퓨터 랜덤 숫자 만들기
     public static int RandomNum() {
-    	int num = (int) (Math.random()*9 + 1);
-    	return num;
+    	int Randomnum = Randoms.pickNumberInRange(1, 9);
+    	return Randomnum;
     }
     
     // 리스트 배열에 랜덤 숫자 추가
@@ -55,6 +51,9 @@ public class Application {
     		} else {
     			computerNum.add(random);    			
     		}
+    		int n =1;
+    		int a =1;
+    		Math.ceil(n/a);
     	}
     	return computerNum;
     }
@@ -62,8 +61,8 @@ public class Application {
     // 사용자 입력받은 값 리스트 담기
     public static List<Integer> userInputList() {
     	List<Integer> userInputList = new ArrayList<>();
-    	Scanner sc = new Scanner(System.in);
-    	int userInput = sc.nextInt();
+    	int userInput = Integer.parseInt(Console.readLine());
+    	verifyInput(userInput);
     	userInputList = IntStream.of(inputToList(userInput)).boxed().collect(Collectors.toList());
     	return userInputList;
     }
@@ -96,7 +95,7 @@ public class Application {
     public static String message(int strike, int ball) {
     	String message = "";
     	if(ball != 0 && strike != 0) {
-    		message = ball + "볼" + strike + "스트라이크";
+    		message = ball + "볼 " + strike + "스트라이크";
     	} else if(ball != 0) {
     		message = ball + "볼";
     	} else if(strike != 0) {
@@ -111,13 +110,19 @@ public class Application {
     	Boolean again = true;
     	System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     	System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    	Scanner sc = new Scanner(System.in);
-    	int againNum = sc.nextInt();
+    	int againNum = Integer.parseInt(Console.readLine());
     	
     	if(againNum == 2) {
     		again = false;
+    	} else {
+    		again = true;
     	}
     	return again;
-    	
+    }
+    
+    // 예외 테스트
+    public static void verifyInput(int userInput) {
+    	String user = Integer.toString(userInput);
+    	if(user.length() != 3) throw new IllegalArgumentException("Invaild input length");
     }
 }
