@@ -6,8 +6,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class BallNumberTest {
+    @DisplayName("올바른 볼 넘버인지 확인")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1", "9"})
+    void correct_ball_number(String ballNumber) {
+        assertThatNoException()
+                .isThrownBy(() -> new BallNumber(ballNumber));
+    }
+    
     @DisplayName("예외 처리 : 알파벳")
     @ParameterizedTest(name = "{displayName} => {0}")
     @ValueSource(strings = {"a", "A"})
