@@ -29,4 +29,10 @@ public class Validator {
             throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 입력 가능합니다.");
         }
     }
+
+    public static void validateRestartFlag(String restartFlag) {
+        if (!(restartFlag.equals("1") || restartFlag.equals("2"))) {
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
+        }
+    }
 }
