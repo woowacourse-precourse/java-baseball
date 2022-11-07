@@ -37,4 +37,10 @@ public class Game {
         }
     }
 
+    /**
+     * 스트라이크의 수를 반환하는 기능
+     */
+    public int getStrikeCnt() {
+        return strikeCnt;
+    }
 }
