@@ -18,7 +18,7 @@ public class BaseballGameManager {
     private int strikeCount;
     private int ballCount;
 
-    public void start() {
+    public void setup() {
         numberAdministrator.createRandomNumbers();
     }
 

@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.InputValidator.GAME_RESTART_OPTION;
-
 public class BaseballGameLauncher {
 
     public final static String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
@@ -9,24 +7,18 @@ public class BaseballGameLauncher {
     public final static String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public final static String GAME_CLOSE_MESSAGE = "게임을 완전히 종료합니다.";
 
-    private Player player = new Player();
+    private BaseballGame baseballGame = new BaseballGame();
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
 
         do {
-            player.play();
+            baseballGame.start();
             System.out.println(GAME_CLEAR_MESSAGE);
             System.out.println(GAME_RESTART_SELECTION_MESSAGE);
-        } while (isRestartGame(player.selectOptionAfterGameClear()));
+        } while (baseballGame.isRestart());
 
         System.out.println(GAME_CLOSE_MESSAGE);
     }
 
-    private boolean isRestartGame(String input) {
-        if (input.equals(GAME_RESTART_OPTION)) {
-            return true;
-        }
-        return false;
-    }
 }
