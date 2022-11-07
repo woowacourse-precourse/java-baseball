@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 public class RandomNumberGeneratorTest {
     @Test
     void 난수_각자릿수_확인() {
-        HashSet<List<Integer>> gameNumberSet = new HashSet<>();
         for (int testNumbers = 0; testNumbers < 100; testNumbers++) {
             assertThat(isDigitAOtherNumber()).isEqualTo(true);
         }
@@ -29,6 +28,25 @@ public class RandomNumberGeneratorTest {
             List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
             assertThat(gameNumbers.size()).isEqualTo(3);
         }
+    }
+
+    @Test
+    void 중복_없는_모든_케이스_확인() {
+        int numberCase = 0;
+        List<Integer> numbers;
+        HashSet<List<Integer>> numberHash = new HashSet<>();
+
+        for (; numberCase < RandomNumberGenerator.MAX_NUMBER_OF_CASE; numberCase++) {
+            numbers = RandomNumberGenerator.getRandomNumber();
+            assertThat(numberHash.contains(numbers)).isEqualTo(false);
+            numberHash.add(numbers);
+        }
+        checkOverCase(numberHash);
+    }
+
+    private static void checkOverCase(HashSet<List<Integer>> numberHash) {
+        List<Integer> overCase = RandomNumberGenerator.getRandomNumber();
+        assertThat(numberHash.contains(overCase)).isEqualTo(true);
     }
 
     private static boolean isDigitAOtherNumber() {
