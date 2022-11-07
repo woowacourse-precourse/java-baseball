@@ -25,7 +25,7 @@ public class Application {
             if (!checkValidForInputThreeNumber(numberPresentedByPlayer)) {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             } else {
-
+                System.out.println(calculateTheNumberOfStrikes(threeNumber,numberPresentedByPlayer));
             }
 
             break;
@@ -43,7 +43,6 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String numbers = receivedUserInput.nextLine();
         return numbers;
-
     }
 
     // 컴퓨터가 1에서 9까지 서로 다른 임의의 수 3개를 선택하는 메서드
@@ -88,6 +87,18 @@ public class Application {
 
         }
         return true;
+    }
+    // 스트라이크 수를 계산하는 메서드
+    public static int calculateTheNumberOfStrikes(List<String> computersThreeNumber, String usersThreeNumber){
+        int numberOfStrikes = 0;
+        for (int index = 0; index < computersThreeNumber.size(); index++){
+            int ComputersNumber = Integer.valueOf(computersThreeNumber.get(index));
+            int UsersNumber = Character.getNumericValue(usersThreeNumber.charAt(index));
+            if (ComputersNumber == UsersNumber){ // 같은 수가 같은 자리에 있으면
+                numberOfStrikes += 1; // 스트라이크 수를 1증가
+            }
+        }
+        return numberOfStrikes;
     }
 
 //numberPresentedByPlayer = receivedUserInput.nextLine();
