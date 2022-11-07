@@ -82,7 +82,7 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    @DisplayName("예외_테스트_알맞지_않은_길이")
+    @DisplayName("예외 테스트 알맞지 않은 길이")
     void valid_string_length() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
@@ -101,7 +101,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("예외_테스트_숫자가_아닌_값")
+    @DisplayName("예외 테스트 숫자가 아닌 값")
     void valid_not_number() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
@@ -120,7 +120,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("예외_테스트_중복된_숫자")
+    @DisplayName("예외 테스트 중복된 숫자")
     void valid_duplicate_number() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("133"))
