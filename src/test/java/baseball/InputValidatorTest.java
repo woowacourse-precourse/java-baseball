@@ -15,7 +15,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 타입_검사_테스트() {
+    void 입력받은_수의_타입을_검사한다() {
         assertThatThrownBy(() -> {
             inputValidator.validatePlayerNumber("12삼");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -23,7 +23,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 자리_수_검사_테스트() {
+    void 입력받은_수의_자리_수를_검사한다() {
         assertThatThrownBy(() -> {
             inputValidator.validatePlayerNumber("1234");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -31,7 +31,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 중복_검사_테스트() {
+    void 입력받은_수의_중복여부를_검사한다() {
         assertThatThrownBy(() -> {
             inputValidator.validatePlayerNumber("122");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -39,7 +39,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 범위_검사_테스트() {
+    void 입력받은_수의_범위를_검사한다() {
         assertThatThrownBy(() -> {
             inputValidator.validatePlayerNumber("120");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -47,7 +47,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 상태_타입_검사_테스트() {
+    void 게임상태를_나타내는_수의_타입을_검사한다() {
         assertThatThrownBy(() -> {
             inputValidator.validateStateNumber("일");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -55,7 +55,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 상태_자리_수_검사_테스트() {
+    void 게임상태를_나타내는_수의_자리_수를_검사한다() {
         assertThatThrownBy(() -> {
             inputValidator.validateStateNumber("12");
         }).isInstanceOf(IllegalArgumentException.class)
@@ -63,7 +63,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    void 상태_범위_검사_테스트() {
+    void 게임상태를_나타내는_수의_범위를_검사한다() {
         assertThatThrownBy(() -> {
             inputValidator.validateStateNumber("3");
         }).isInstanceOf(IllegalArgumentException.class)

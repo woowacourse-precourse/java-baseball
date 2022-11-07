@@ -20,7 +20,7 @@ public class HintTest {
     }
 
     @Test
-    void 힌트_문구_테스트() {
+    void 입력받은_수를_판별하여_올바른_힌트문구를_반환한다() {
         List<Integer> computerNumbers = new ArrayList<>(Arrays.asList(4, 2, 5));
 
         hint.setCount(computerNumbers, Arrays.asList(1, 2, 3));
@@ -34,7 +34,7 @@ public class HintTest {
     }
 
     @Test
-    void 게임_종료_테스트() {
+    void 게임종료_조건에_해당하는지_확인한다() {
         List<Integer> computerNumbers = new ArrayList<>(Arrays.asList(1, 2, 3));
         hint.setCount(computerNumbers, Arrays.asList(1, 2, 3));
 

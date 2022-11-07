@@ -23,19 +23,19 @@ class ComputerTest {
     }
 
     @Test
-    void 자리_수_테스트() {
+    void 생성한_수의_자리_수가_올바르다() {
         assertEquals(computerNumbers.size(), Config.DIGIT_SIZE);
     }
 
     @Test
-    void 범위_테스트() {
+    void 생성한_수의_범위가_올바르다() {
         for (int computerNumber : computerNumbers) {
             assertThat(computerNumber).isBetween(Config.DIGIT_MIN, Config.DIGIT_MAX);
         }
     }
 
     @Test
-    void 중복_테스트() {
+    void 생성한_수에_중복이_없다() {
         Set<Integer> deduplicationNumbers = new HashSet<>(computerNumbers);
 
         assertEquals(computerNumbers.size(), deduplicationNumbers.size());
