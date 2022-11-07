@@ -12,7 +12,7 @@ public class ValidCheck {
     public static void numberCheck(String inputNumber){
         for(int i = 0; i < inputNumber.length(); i++){
             if(!Character.isDigit(inputNumber.charAt(i)))
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("숫자를 입력하세요!");
         }
     }
     public static void validInputNumber(List<Integer> userInput){
