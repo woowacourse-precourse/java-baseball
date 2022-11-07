@@ -24,3 +24,43 @@
   - 볼 0개, 스트라이크 0개 : "낫싱"
   - 볼 0개, 스트라이크 2개 : "2스트라이크"
   - 볼 1개, 스트라이크 1개 : "1볼 1스트라이크"
+
+---
+
+## 기능 목록
+
+### Game
+
+- 게임 내용(numberOfBall, numberOfStrike, ballCount)을 초기화한다.
+
+> 멤버변수
+> 1. threeDiffDigit (`List<Integer>`) ; 게임의 secret number를 저장한다.
+> 2. numberOfBall (`int`) ; 게이머의 입력값에 대한 볼의 개수를 저장한다.
+> 3. numberOfStrike (`int`) ; 게이머의 입력값에 대한 스크라이크의 개수를 저장한다.
+> 4. ballCount (`String`) ; 볼카운트를 문자열로 저장한다.
+
+### GameMachine
+
+- 게임에 쓰일 3자리 정수의 secret number 를 각 자리수의 중복이 없도록 랜덤하게 생성한다.
+- 게이머에게 입력값을 묻는다.
+- 게임의 볼 카운트를 판단하여 업데이트한다.
+- 게이머에게 게임을 새로 진행할지 프로그램을 종료할지 묻는다.
+
+### Gamer
+
+- 서로 다른 세자리를 입력한다.
+- 게임을 새로 진행할지, 프로그램을 종료할지 입력한다.
+
+### ThreeDiffDigitValidator
+
+- 유효하지 않은 입력값은 `IllegalArgumentException`을 반환한다.
+- 유효한 입력값은 다음과 같다.
+  - 입력값의 길이가 3이다.
+  - 입력값은 숫자입력이다. (=숫자로 형변환이 가능하다.)
+  - 입력값의 각 자리의 값들 중, 중복값은 없다.
+
+### PlayAgainOrNotValidator
+
+- 유효하지 않은 입력값은 `IllegalArgumentException`을 반환한다.
+- 유효한 입력값은 다음과 같다.
+  - 입력값은 1 혹은 2 다.
