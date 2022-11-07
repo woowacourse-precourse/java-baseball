@@ -77,7 +77,7 @@ public class Application {
         return ball;
     }
 
-    public static String combineAnswer(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
+    public static String gameReferee(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
         String answer = "";
         int strike = 0;
         int ball = 0;
@@ -106,8 +106,8 @@ public class Application {
         ArrayList<Integer> inputNumber;
         do {
             inputNumber = new ArrayList<>(inputNumberOfUser());
-            System.out.println(combineAnswer(generatedNumber, inputNumber));
-        } while (!combineAnswer(generatedNumber, inputNumber).contains("모두"));
+            System.out.println(gameReferee(generatedNumber, inputNumber));
+        } while (!gameReferee(generatedNumber, inputNumber).contains("모두"));
     }
     public static String selectReplay() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
