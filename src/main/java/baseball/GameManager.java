@@ -27,7 +27,7 @@ public class GameManager {
     static void scanIsContinue() {
         String numberString = Console.readLine();
         if (numberString == "1") isContinue = true;
-        else if (numberString == "2") isContinue = false;
+        else isContinue = false;
     }
 
     static HashMap<Character,Integer> judgeResult() {
