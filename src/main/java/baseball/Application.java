@@ -88,5 +88,17 @@ public class Application {
         }
         return userNumber;
     }
+    //strike, ball 점수 계산
+    private static void scoreCheck(LinkedHashSet<String> baseballSet, List<String> baseballList, String[] userNumber) {
+        for (int i = 0; i < userNumber.length; i++) {
+            // 같은 자리에 같은 수라면 strike
+            if (userNumber[i].equals(baseballList.get(i))) {
+                strike++;
+                // 포함만 되어있다면 ball
+            } else if (baseballSet.contains(userNumber[i])) {
+                ball++;
+            }
+        }
+    }
 }
 
