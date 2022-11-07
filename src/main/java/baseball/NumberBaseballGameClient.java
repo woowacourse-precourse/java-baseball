@@ -25,7 +25,7 @@ public class NumberBaseballGameClient {
     }
 
     public static int askPlayerGameNumber() throws IllegalArgumentException {
-        System.out.println(MSG_ASK_PLAYER_GAME_NUMBER);
+        System.out.print(MSG_ASK_PLAYER_GAME_NUMBER);
         String line;
         try {
             line = Console.readLine();
