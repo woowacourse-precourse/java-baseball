@@ -45,11 +45,13 @@ public class BaseballGameController {
     }
 
     private void validateUserInput(String input) {
-        if (input == null)
+        if (input == null) {
             throw new IllegalArgumentException();
+        }
 
-        if (!input.matches("[1-9]{3}"))
+        if (!input.matches("[1-9]{3}")) {
             throw new IllegalArgumentException();
+        }
 
         for (int i = 0; i < input.length(); i++) {
             if (input.indexOf(input.charAt(i)) != i) {

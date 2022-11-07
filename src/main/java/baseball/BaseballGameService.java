@@ -22,10 +22,11 @@ public class BaseballGameService {
         int ball = 0;
         for (int i = 0; i < input.size(); i++) {
             Integer target = input.get(i);
-            if (target.equals(answer.get(i)))
+            if (target.equals(answer.get(i))) {
                 strike++;
-            else if (answer.contains(target))
+            } else if (answer.contains(target)) {
                 ball++;
+            }
         }
         return new Hint(strike, ball);
     }
