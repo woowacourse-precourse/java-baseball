@@ -135,7 +135,7 @@ public class Application {
             System.out.println(ballNumber+"볼");
         }
         if(ballNumber == 0 && strikeNumber >0){
-
+            System.out.println(strikeNumber + "스트라이크");
         }
         return false;
     }
