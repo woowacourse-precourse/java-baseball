@@ -8,12 +8,95 @@ public class Application {
         String input;
         String oneMore = "1";
         int randomNumber;
+        int ball;
+        int strike;
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (oneMore.equals("1")){
             randomNumber = getRandomNumber();
+            while (true){
+                input = getInput();
+                ball = getBall(input, randomNumber);
+                strike = getStrike(input, randomNumber);
+                printResult(ball, strike);
+                if (strike == 3){
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+            }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             oneMore = getOneMoreInput();
         }
     }
 
+    static int getBall(String input, int randomNumber)
+    {
+        int ret = 0;
+        int one;
+        int ten;
+        int hundred;
+
+        one = randomNumber % 10;
+        randomNumber /= 10;
+
+        ten = randomNumber % 10;
+        randomNumber /= 10;
+
+        hundred = randomNumber % 10;
+
+        if (input.charAt(0) - '0' == ten || input.charAt(0) - '0' == one){
+            ret++;
+        }
+        if (input.charAt(1) - '0' == hundred || input.charAt(1) - '0' == one){
+            ret++;
+        }
+        if (input.charAt(2) - '0' == hundred || input.charAt(2) - '0' == ten){
+            ret++;
+        }
+
+        return ret;
+    }
+
+    static int getStrike(String input, int randomNumber){
+        int ret = 0;
+        int one;
+        int ten;
+        int hundred;
+
+        one = randomNumber % 10;
+        randomNumber /= 10;
+
+        ten = randomNumber % 10;
+        randomNumber /= 10;
+
+        hundred = randomNumber % 10;
+
+        if (input.charAt(0) - '0' == hundred){
+            ret++;
+        }
+        if (input.charAt(1) - '0' == ten){
+            ret++;
+        }
+        if (input.charAt(2) - '0' == one){
+            ret++;
+        }
+
+        return ret;
+    }
+    static void printResult(int ball, int strike){
+        if (ball == 0 && strike == 0){
+            System.out.println("낫싱");
+            return;
+        }
+        if (ball != 0 && strike != 0){
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+            return;
+        }
+        if (ball != 0){
+            System.out.printf("%d볼\n", ball);
+            return;
+        }
+        System.out.printf("%d스트라이크\n", strike);
+    }
     static int getRandomNumber(){
         int ret;
 
