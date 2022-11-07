@@ -13,7 +13,5 @@ public class OutputView {
         System.out.println(THREESTRIKE);
     }
 
-    public static void nothing() {
-        System.out.println(NOTHING);
-    }
+    public static void nothing() { System.out.println(NOTHING); }
 }

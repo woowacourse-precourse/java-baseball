@@ -32,8 +32,9 @@ public class OutputController {
         boolean gameResult = false;
         int strike = getStrike(comNumber, userNumber);
         int ball = getBall(comNumber, userNumber);
-        if(numOfStrikeBall(strike,ball).equals(OutputView.GAME_END)) {
-            outputView.threeStrike();;
+        if(numOfStrikeBall(strike,ball).equals(OutputView.THREESTRIKE)) {
+            outputView.threeStrike();
+            outputView.gameEnd();;
             gameResult = true;
         }
         else {
@@ -42,10 +43,10 @@ public class OutputController {
         return gameResult;
     }
 
-    public String numOfStrikeBall(int strike,int ball) {
+    public String numOfStrikeBall(int strike, int ball) {
         String result = "";
         if(strike == InputController.NUMBER_SIZE) {
-            result = OutputView.GAME_END;
+            result = OutputView.THREESTRIKE;
         }
         else if(strike == ZERO && ball == ZERO) {
             result = OutputView.NOTHING;
