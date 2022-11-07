@@ -24,6 +24,7 @@ public class NumberBaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         userNumber = getUserNumberList(inputNumber);
+        validateUserNumber();
         compareUserAndComputer();
         System.out.println(getResultToString());
     }
@@ -41,6 +42,18 @@ public class NumberBaseballGame {
             }
         }
         return true;
+    }
+
+    public void validateUserNumber(){
+        if(userNumber.size() != 3){
+            throw new IllegalArgumentException("잘못된 입력입니다. 세자리 숫자를 입력해 주세요.");
+        }
+        if(userNumber.contains(0)){
+            throw new IllegalArgumentException("잘못된 입력입니다. 0을 포함하지 않는 세자리 숫자를 입력해 주세요.");
+        }
+        if(userNumber.size() != userNumber.stream().distinct().count()){
+            throw new IllegalArgumentException("잘못된 입력입니다. 서로 다른 세개의 숫자로 이루어져야 합니다.");
+        }
     }
 
     public void getRandomThreeDigitNumber() {
