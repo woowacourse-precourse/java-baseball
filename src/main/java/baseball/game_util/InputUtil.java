@@ -11,6 +11,7 @@ import static baseball.common.Constants.MAX_USER_NUMBER_INPUT;
         }
         return true;
     }
+
     private static boolean isDuplicate(String userInput) {
         Set<Character> characterSet = new HashSet<>();
         for (Character character : userInput.toCharArray()) {
@@ -18,3 +19,8 @@ import static baseball.common.Constants.MAX_USER_NUMBER_INPUT;
         }
         return characterSet.size() == MAX_USER_NUMBER_INPUT;
     }
+
+    private static boolean isDigit(String userInput) {
+        return userInput.matches(Constants.VALID_NUMBER_PATTERN);
+    }
+
