@@ -34,4 +34,13 @@ public class Umpire {
 
         hintRecord.put(Text.STRIKE, strike);
     }
+
+    private void countBall(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int ball = (int) playerNumber.stream()
+                .filter(computerNumber::contains)
+                .filter(digit -> playerNumber.indexOf(digit) != computerNumber.indexOf(digit))
+                .count();
+
+        hintRecord.put(Text.BALL, ball);
+    }
 }
