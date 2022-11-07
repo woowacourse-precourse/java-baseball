@@ -1,13 +1,22 @@
 package baseball.domain;
 
 public class User {
-    private String userNumber;
+    private String userBaseballNumber;
+    private String userRestartNumber;
 
-    public String getUserNumber() {
-        return this.userNumber;
+    public String getBaseballNumber() {
+        return this.userBaseballNumber;
     }
 
-    public void setUserNumber(String userInput){
-        this.userNumber = userInput;
+    public void setBaseballNumber(String userInput){
+        this.userBaseballNumber = userInput;
+    }
+
+    public String getRestartNumber() {
+        return this.userBaseballNumber;
+    }
+
+    public void setUserRestartNumber(String userInput){
+        this.userBaseballNumber = userInput;
     }
 }
