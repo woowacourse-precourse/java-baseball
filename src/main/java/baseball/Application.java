@@ -215,7 +215,6 @@ class GameFinisher {
 
     GameFinisher() {
         restartTrigger = true;
-
     }
 
 
@@ -252,8 +251,6 @@ public class Application {
             gameProcessor.ballChecker(gameProcessor.getUserValue(), gameProcessor.getComputerValue());
             if (gameProcessor.isWin()) {
                 gameFinisher.reStartChecker(gameReadyMachine);
-            } else {
-                System.out.print("게임 종료");
             }
         }
     }
