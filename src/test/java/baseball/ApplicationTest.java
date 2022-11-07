@@ -37,7 +37,12 @@ class ApplicationTest extends NsTest {
     void 정수_정수리스트_변환() {
         assertThat(Application.getUserNumberList(123)).hasSize(3);
     }
-    
+
+    @Test
+    void 중복된_숫자가_있는지_판별() {
+        assertThat(Application.hasDuplication("123")).isFalse();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
