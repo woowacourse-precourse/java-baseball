@@ -40,5 +40,25 @@ public class Application {
         strike = 0;
         ball = 0;
     }
+
+    //베이스볼 게임 진행
+    private static void game() {
+        LinkedHashSet<String> baseballSet = getRandomNumber();
+        List<String> baseballList = new ArrayList<>(baseballSet);
+        while (strike != 3) {
+            // 점수 초기화
+            init();
+
+            // 숫자 입력 받기
+            System.out.print("숫자를 입력해주세요 : \n");
+            String[] userNumber = getUserNumber(sc.nextLine());
+
+            // 스크라이크, 볼 체크
+            scoreCheck(baseballSet, baseballList, userNumber);
+
+            // 결과 출력
+            result();
+        }
+    }
 }
 
