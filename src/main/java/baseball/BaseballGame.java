@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    static int computer;
+    static int strike;
+
     public static void process(){
         System.out.println("게임을 시작합니다.");
-        int computer = randomNumberBall();
+        computer = randomNumberBall();
         System.out.println(computer);
         while(true){
             gamePlay();
@@ -23,7 +26,23 @@ public class BaseballGame {
         if(ErrorCheck.isValidLength(user) && ErrorCheck.isValidDiffer(user) && ErrorCheck.isValidNumber(user)){
             System.out.println(Integer.parseInt(user));
             System.out.println("올바른 값이 입력되었습니다.");
+
+            checkStrike(user);
+            System.out.println("strike : " + strike);
         }
+    }
+
+    public static void checkStrike(String user){
+        int strikeCnt = 0;
+        char[] userNumber = user.toCharArray();
+        char[] computerNumber = Integer.toString(computer).toCharArray();
+
+        for(int i=0; i<userNumber.length; i++){
+            if(userNumber[i] == computerNumber[i]){
+                strikeCnt++;
+            }
+        }
+        strike = strikeCnt;
     }
 
     public static int randomNumberBall(){
