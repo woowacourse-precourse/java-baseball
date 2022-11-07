@@ -3,20 +3,19 @@ package baseball;
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 
 public class Application {
     public static List<Integer> InputNumber () throws IOException {
         List<Integer> user = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] userNumber;
 
         System.out.println("숫자를 입력해주세요 : ");
 
-        userNumber = br.readLine().split("");
+        userNumber = Console.readLine().split("");
         for(int i=0; i<userNumber.length; i++){
             user.add(Integer.parseInt(userNumber[i]));
         }
@@ -33,7 +32,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-
         System.out.println("숫자 야구게임을 시작합니다.");
         Input = InputNumber();
         System.out.println(Input);
