@@ -52,6 +52,7 @@ class ApplicationTest extends NsTest {
                 "1e34",
                 "1e3",
                 "112",
+                "1"
         };
         User user = new User();
         for (String invalidCase : invalidCases) {
