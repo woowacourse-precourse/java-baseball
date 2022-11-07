@@ -29,4 +29,17 @@ class InputCheckTest {
         assertThat(InputCheck.hasNonDigit(str2)).isEqualTo(true);
         assertThat(InputCheck.hasNonDigit(str3)).isEqualTo(true);
     }
+
+    @Test
+    void isEndInputError_1과2아니면_에러() {
+        String str1 = "1";
+        String str2 = "2";
+        String str3 = "24";
+        String str4 = "";
+
+        assertThat(InputCheck.isEndInputError(str1)).isEqualTo(false);
+        assertThat(InputCheck.isEndInputError(str2)).isEqualTo(false);
+        assertThat(InputCheck.isEndInputError(str3)).isEqualTo(true);
+        assertThat(InputCheck.isEndInputError(str4)).isEqualTo(true);
+    }
 }
