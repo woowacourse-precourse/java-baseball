@@ -6,7 +6,21 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int startSwitch = 1;
+        List<Integer> computerNumbersList = getRandomThreeNumbers();
+        System.out.println(computerNumbersList);
+        while (startSwitch == 1) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("숫자를 입력해주세요 : ");
+            int userNumber = sc.nextInt();
+            List<Integer> userNumbersList = getUserNumberList(userNumber);
+            if (getResult(computerNumbersList, userNumbersList)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                startSwitch = sc.nextInt();
+            }
+        }
     }
 
     public static List<Integer> getRandomThreeNumbers() {
