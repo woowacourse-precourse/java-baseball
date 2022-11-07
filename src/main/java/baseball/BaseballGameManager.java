@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class BaseballGameManager {
 
-    private ResultProvider resultProvider = new ResultProvider();
     private RandomNumberCreator randomNumberCreator = new RandomNumberCreator();
     private int strikeCount;
     private int ballCount;
@@ -17,7 +16,8 @@ public class BaseballGameManager {
 
     public void printResult(String input) {
         calculateBallCount(input);
-        resultProvider.printResultMessage(strikeCount, ballCount);
+        String message = getResultMessage(strikeCount, ballCount);
+        System.out.println(message);
     }
 
     public boolean isGameClear() {
@@ -35,5 +35,21 @@ public class BaseballGameManager {
 
         strikeCount = randomNumberCreator.getStrikeCount(inputNumbers);
         ballCount = randomNumberCreator.getBallCount(inputNumbers);
+    }
+
+    private String getResultMessage(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount != 0) {
+            return ballCount + "볼";
+        }
+
+        if (strikeCount != 0 && ballCount == 0) {
+            return strikeCount + "스트라이크";
+        }
+
+        if (strikeCount != 0 && ballCount != 0) {
+            return ballCount + "볼 " + strikeCount + "스트라이크";
+        }
+
+        return "낫싱";
     }
 }
