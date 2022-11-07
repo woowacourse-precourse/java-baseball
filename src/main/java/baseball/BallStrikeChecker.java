@@ -3,17 +3,17 @@ package baseball;
 import java.util.ArrayList;
 
 public class BallStrikeChecker {
-    static boolean threeStrike;
     ArrayList<Integer> judgement;
 
     public BallStrikeChecker(RandomNumberGenerator answer, Guess myGuess) {
-        threeStrike = false;
         judgement = countBallAndStrike(answer.numberList, myGuess.numberList);
-        if (judgement.get(1) == 3) {
-            threeStrike = true;
-        }
     }
-
+    public boolean isThreeStrike() {
+        if (judgement.get(1) == 3) {
+            return true;
+        }
+        return false;
+    }
     static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> guessList, ArrayList<Integer> answers) {
         ArrayList<Integer> ballStrikeCnt = new ArrayList<>() {{
             add(0);

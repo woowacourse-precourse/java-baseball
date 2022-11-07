@@ -20,7 +20,7 @@ public class Application {
             checker = new BallStrikeChecker(answer, myGuess);
             board = new ResultBoard(checker.judgement);
             board.showResult();
-        } while (!checker.threeStrike);
+        } while (!checker.isThreeStrike());
     }
 
     static void endOrRestart() {
