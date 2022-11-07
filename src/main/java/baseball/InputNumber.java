@@ -9,11 +9,10 @@ public class InputNumber {
     public InputNumber() {
         setInputNumber();
     }
+
     private void setInputNumber() {
-//        Scanner sc = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         num = Integer.parseInt(readLine());
-//        System.out.println("input number is " + num);
     }
 
     public int getInputNumber() {
