@@ -13,6 +13,14 @@ public class Player {
     private static final String NUMBER_FORMAT = String.format("[%d-%d]{%d}",
             Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_COUNT);
 
+    private static final String NUMBER_INPUT_WRONG_FORMAT_ERROR_MESSAGE =
+            String.format("%d-%d 사이의 숫자 %d개를 입력해주세요.",
+                    Constants.NUMBER_RANGE_START, Constants.NUMBER_RANGE_END, Constants.NUMBER_COUNT);
+    private static final String NUMBER_INPUT_SAME_NUMBER_ERROR_MESSAGE = "서로 다른 숫자를 입력해주세요.";
+    private static final String QUIT_OR_RESTART_INPUT_ERROR_MESSAGE =
+            String.format("%s, %s 중 하나의 수를 입력해주세요.", RESTART_GAME_CODE, QUIT_GAME_CODE);
+
+
     public String getNumberInput() {
         System.out.print(NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
@@ -24,10 +32,10 @@ public class Player {
 
     private void checkValidNumberInput(String input) {
         if (!isValidFormat(input)) {
-            throw new IllegalArgumentException("1-9사이의 숫자 3개를 입력해주세요.");
+            throw new IllegalArgumentException(NUMBER_INPUT_WRONG_FORMAT_ERROR_MESSAGE);
         }
         if (!isAllDifferent(input)) {
-            throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(NUMBER_INPUT_SAME_NUMBER_ERROR_MESSAGE);
         }
     }
 
@@ -61,8 +69,8 @@ public class Player {
     }
 
     private void checkValidRestartOrQuitInput(String input) {
-        if (!input.equals(RESTART_GAME_CODE)&&!input.equals(QUIT_GAME_CODE)) {
-            throw new IllegalArgumentException("1, 2 중 하나의 수를 입력해주세요.");
+        if (!input.equals(RESTART_GAME_CODE) && !input.equals(QUIT_GAME_CODE)) {
+            throw new IllegalArgumentException(QUIT_OR_RESTART_INPUT_ERROR_MESSAGE);
         }
     }
 }
