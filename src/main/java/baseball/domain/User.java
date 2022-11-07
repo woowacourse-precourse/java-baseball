@@ -1,23 +1,33 @@
 package baseball.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
     private static final int GUESSED_ANSWER_LENGTH = 3;
 
-    private final Integer[] guessedAnswer;
+    private List<Integer> guessedAnswer;
 
     public User() {
-        this.guessedAnswer = new Integer[GUESSED_ANSWER_LENGTH];
+        initguessedAnswer();
+    }
+
+    public void initguessedAnswer() {
+        guessedAnswer = new ArrayList<>();
     }
 
     public void setGuessedAnswer(String guessedAnswer) {
+        initguessedAnswer();
+
         for (int i = 0; i < GUESSED_ANSWER_LENGTH; i++) {
-            char number = guessedAnswer.charAt(i);
-            this.guessedAnswer[i] = Character.getNumericValue(number);
+            char charNumber = guessedAnswer.charAt(i);
+            int number = Character.getNumericValue(charNumber);
+            this.guessedAnswer.add(number);
         }
     }
 
-    public Integer[] getGuessedAnswer() {
+    public List<Integer> getGuessedAnswer() {
         return guessedAnswer;
     }
 }

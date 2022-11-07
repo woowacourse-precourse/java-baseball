@@ -1,7 +1,10 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Computer {
@@ -10,28 +13,32 @@ public class Computer {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBEr = 9;
 
-    private final Integer[] answer;
+    private List<Integer> answer;
 
     public Computer() {
-        answer = new Integer[ANSWER_LENGTH];
+        initAnswer();
+    }
+
+    public void initAnswer() {
+        answer = new ArrayList<>();
     }
 
     public void generateAnswer() {
         Set<Integer> answerSet = new HashSet<>();
 
         while (answerSet.size() != ANSWER_LENGTH) {
-            answerSet.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBEr));
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBEr);
+            answerSet.add(randomNumber);
         }
 
-        int index = 0;
+        initAnswer();
 
         for (int number : answerSet) {
-            answer[index] = number;
-            index++;
+            answer.add(number);
         }
     }
 
-    public Integer[] getAnswer() {
+    public List<Integer> getAnswer() {
         return answer;
     }
 }

@@ -2,7 +2,7 @@ package baseball.domain;
 
 import baseball.view.OutputView;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Score {
 
@@ -22,12 +22,12 @@ public class Score {
         this.strike = INITIAL_VALUE;
     }
 
-    public boolean isWrongAnswer(Integer[] answer, Integer[] guessedAnswer) {
+    public boolean isWrongAnswer(List<Integer> answer, List<Integer> guessedAnswer) {
         initBallAndStrike();
 
-        for (int guessedAnswerIndex = 0; guessedAnswerIndex < guessedAnswer.length; guessedAnswerIndex++) {
-            int number = guessedAnswer[guessedAnswerIndex];
-            int answerIndex = Arrays.asList(answer).indexOf(number);
+        for (int guessedAnswerIndex = 0; guessedAnswerIndex < guessedAnswer.size(); guessedAnswerIndex++) {
+            int number = guessedAnswer.get(guessedAnswerIndex);
+            int answerIndex = answer.indexOf(number);
 
             ballAndStrikeCount(answerIndex, guessedAnswerIndex);
         }

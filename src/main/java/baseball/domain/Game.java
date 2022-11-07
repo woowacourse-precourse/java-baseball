@@ -4,6 +4,8 @@ import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import java.util.List;
+
 public class Game {
 
     private static final String RESTART_COMMAND = "1";
@@ -22,7 +24,7 @@ public class Game {
         OutputView.printGameStartMessage();
         computer.generateAnswer();
 
-        Integer[] answer = computer.getAnswer();
+        List<Integer> answer = computer.getAnswer();
         boolean isWrongAnswer;
 
         do {
@@ -32,7 +34,7 @@ public class Game {
             InputValidator.validateInputForm(stringGuessedAnswer);
             user.setGuessedAnswer(stringGuessedAnswer);
 
-            Integer[] guessedAnswer = user.getGuessedAnswer();
+            List<Integer> guessedAnswer = user.getGuessedAnswer();
             isWrongAnswer = score.isWrongAnswer(answer, guessedAnswer);
 
             OutputView.printResult();
