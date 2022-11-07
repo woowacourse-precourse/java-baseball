@@ -39,5 +39,19 @@ public class Game {
         return userInputList;
     }
 
+    public void isUserNumberValid(List<Integer> userInput) {
+        if (userInput.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < userInput.size(); i++) {
+            if (userInput.get(i) < 1 || userInput.get(i) > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+        if (userInput.get(0) == userInput.get(1) || userInput.get(0) == userInput.get(2)
+                || userInput.get(1) == userInput.get(2)) {
+            throw new IllegalArgumentException();
+        }
+    }
     }
 }
