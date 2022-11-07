@@ -6,6 +6,18 @@ public class Game {
 
     private static final int NUMBER_LENGTH = 3;
 
+    private String printState(int strike, int ball) {
+        String state = "";
+        if (ball != 0) {
+            state += ball + "볼";
+        }
+        if (strike != 0) {
+            if(ball != 0) state += " ";
+            state += strike + "스트라이크";
+        }
+        return state;
+    }
+
     private int countStrike(List<Character> computerNumber, List<Character> userNumber) {
         int strike = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
