@@ -12,4 +12,8 @@ public class UserInputAdapter {
         }
         return userInput;
     }
+
+    public static int changeStrToInt(String restartSignStr) {
+        return Integer.parseInt(restartSignStr);
+    }
 }

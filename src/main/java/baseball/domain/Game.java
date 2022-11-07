@@ -43,7 +43,7 @@ public class Game {
     }
 
     public boolean decideRestart() {
-        int restartSign = Integer.parseInt(GameView.askRestart());
+        int restartSign = UserInputAdapter.changeStrToInt(GameView.askRestart());
         InputValidator.hasValidRestartSign(restartSign);
         return restartSign == Constants.AGREE_RESTART_SIGN;
     }
