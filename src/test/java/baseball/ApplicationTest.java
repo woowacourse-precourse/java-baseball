@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -18,6 +19,19 @@ class ApplicationTest extends NsTest {
                 .hasSize(Game.ANSWER_SIZE)
                 .doesNotHaveDuplicates()
                 .map(num -> assertThat(num).isBetween(Game.MIN_NUMBER_OF_ANSWER, Game.MAX_NUMBER_OF_ANSWER));
+    }
+
+    @Test
+    void isInputSizeEqualToAnswerSize_입력의_자리수가_게임정답의_자리수와_동일한_경우_참(){
+
+        List<String> playerInput = List.of("123", "12");
+        List<Boolean> expectedOutput = List.of(true, false);
+
+        List<Boolean> realOutput = playerInput.stream()
+                .map(input -> Player.isInputSizeEqualToAnswerSize(input))
+                .collect(Collectors.toList());
+
+        assertThat(expectedOutput).isEqualTo(realOutput);
     }
     @Test
     void 게임종료_후_재시작() {
