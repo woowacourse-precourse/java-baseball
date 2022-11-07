@@ -9,15 +9,12 @@ public class BullsAndCows {
     }
 
     // 게임 전체 실행부
-    public void playGame() {
+    public void playGame() throws IllegalArgumentException {
         startGame();
 //        System.out.println("answer = " + answer);
 
         while (true) {
             String predictInput = getPredictInput(); // 사용자 입력
-            if (!Numbers.checkPredictInput_regex(predictInput) || !Numbers.checkPredictInput_duplicate(predictInput)) {
-                throw new IllegalArgumentException();
-            }
 
             if (isAnswer(predictInput)) {
                 IO.alert_endGame();
@@ -34,7 +31,11 @@ public class BullsAndCows {
     }
 
     private String getPredictInput() {
-        return IO.ask_predict();
+        String predictInput = IO.ask_predict();
+        if (!Numbers.checkPredictInput_regex(predictInput) || !Numbers.checkPredictInput_duplicate(predictInput)) {
+            throw new IllegalArgumentException();
+        }
+        return predictInput;
     }
 
     private boolean isAnswer(String predictInput) {
