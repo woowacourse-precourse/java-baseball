@@ -24,21 +24,21 @@ public class GameMessage {
     }
 
     public String getNothingResult(int nothingScore) {
-        if(nothingScore == GameConstants.NUMBER_LENGTH) {
+        if (nothingScore == GameConstants.NUMBER_LENGTH) {
             return BaseballScore.NOTHING.getScoreName();
         }
         return "";
     }
 
     public String getStrikeCountResult(int strikeCount) {
-        if(strikeCount > 0) {
+        if (strikeCount > 0) {
             return strikeCount + BaseballScore.STRIKE.getScoreName();
         }
         return "";
     }
 
     public String getBallCountResult(int ballCount) {
-        if(ballCount > 0) {
+        if (ballCount > 0) {
             return ballCount + BaseballScore.BALL.getScoreName();
         }
         return "";

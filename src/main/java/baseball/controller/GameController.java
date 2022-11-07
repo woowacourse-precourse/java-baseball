@@ -23,7 +23,7 @@ public class GameController {
         boolean gameOver = false;
         Map<BaseballScore, Integer> resultScore;
 
-        while(!gameOver) {
+        while (!gameOver) {
             inputMessage.inputNumber();
             user.hitTheBall();
 

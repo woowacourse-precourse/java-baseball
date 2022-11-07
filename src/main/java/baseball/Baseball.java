@@ -3,7 +3,7 @@ package baseball;
 import baseball.controller.GameController;
 
 public class Baseball {
-    private GameController gameController =  new GameController();
+    private GameController gameController = new GameController();
 
     public void playGame() {
         do {
