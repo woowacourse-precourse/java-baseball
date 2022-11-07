@@ -20,11 +20,16 @@ public class BaseballGameController {
 
     public void run() {
         startGame();
+        printEndGame();
         choiceRestartGame();
     }
 
     public void printStartGame() {
         baseballGameView.printStartGame();
+    }
+
+    public void printEndGame() {
+        baseballGameView.printEndMessage();
     }
 
     public void startGame() {
