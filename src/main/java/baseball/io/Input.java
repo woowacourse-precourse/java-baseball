@@ -1,10 +1,10 @@
-package baseball;
+package baseball.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Input {
+public class Input extends EndOrRe{
 
     private static final char MINIMUM_CHAR = '1';
     private static final char MAXIMUM_CHAR = '9';
@@ -19,6 +19,10 @@ public class Input {
         String inputString = Console.readLine();
         validStringLength(inputString);
         return stringToList(inputString);
+    }
+
+    public Integer endOrReNum() {
+        return super.makeOneOrTwoInputList();
     }
 
     List<Character> stringToList(String inputString) {

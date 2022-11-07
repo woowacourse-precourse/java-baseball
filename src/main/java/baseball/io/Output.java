@@ -1,4 +1,4 @@
-package baseball;
+package baseball.io;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class Output {
         exceptNothing(strikeBall);
     }
 
-    private void exceptNothing(List<Integer> strikeBall) {
+    private static void exceptNothing(List<Integer> strikeBall) {
         if (strikeBall.get(1) != 0 && strikeBall.get(0) == 0) {
             System.out.println(strikeBall.get(1) + BALL);
         } else if (strikeBall.get(1) == 0 && strikeBall.get(0) != 0) {
