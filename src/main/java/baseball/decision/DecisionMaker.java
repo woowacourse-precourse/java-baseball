@@ -7,7 +7,7 @@ public class DecisionMaker {
     private String wantPlayGame = "1";
     private String wantStopGame = "2";
 
-    private final String informationMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String informationMessage = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.";
 
     public Decision getDecision() {
         return acceptOpinion();
@@ -26,7 +26,7 @@ public class DecisionMaker {
     }
 
     private void printInformation() {
-        System.out.println(informationMessage);
+        System.out.println(String.format(informationMessage, wantPlayGame, wantStopGame));
     }
 
 }
