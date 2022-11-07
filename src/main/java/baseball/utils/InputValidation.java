@@ -6,11 +6,7 @@ public class InputValidation {
 
 
     public boolean checkUserNumberLength(String usernumber) {
-        boolean checkusernumber = true;
-        if(usernumber.length() != 3) {
-            checkusernumber = false;
-        }
-        return checkusernumber;
+        return usernumber.length() == 3;
     }
 
     public boolean checkUsernumberDigit(String usernumber) {
@@ -19,6 +15,7 @@ public class InputValidation {
             int digit = usernumber.charAt(i) - '0';
             if (digit <= 0|| digit > 9) {
                 checkusernumber = false;
+                break;
             }
         }
         return checkusernumber;
@@ -42,11 +39,7 @@ public class InputValidation {
     }
 
     public boolean userInputValidation(String usernumber) {
-        boolean checkusernumber = true;
-        if(!checkUserNumberLength(usernumber) || !checkUsernumberDigit(usernumber) || !checkSameUsernumber(usernumber)) {
-            checkusernumber = false;
-        }
-        return checkusernumber;
+        return checkUserNumberLength(usernumber) && checkUsernumberDigit(usernumber) && checkSameUsernumber(usernumber);
     }
 
     public void startOrEndValidation(String inputnumber) {

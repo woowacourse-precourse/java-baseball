@@ -20,7 +20,6 @@ public class GameController {
 
         while(true) {
             comNumber.setComnumber(inputController.insertComNumber());
-            System.out.println(comNumber.getComnumber());
             if(!playBall(comNumber)) {
                 break;
             }
@@ -38,7 +37,7 @@ public class GameController {
             if(outputController.gameResult(comNumber,userNumber)) {
                 outputView.gameEnd();
                 inputView.restartGame();
-                if(inputController.chooseGameEnd().equals(InputValidation.ONE)) { startorend = true; }
+                if(inputController.chooseGameEnd().equals(InputValidation.REGAME)) { startorend = true; }
                 else { startorend = false; }
                 break;
             }
