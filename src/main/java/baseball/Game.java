@@ -15,12 +15,13 @@ public class Game {
 
         List<Integer> numInput = new ArrayList<>();
         while (true) {
-            getNumInput(numInput);
+            System.out.print("숫자를 입력해주세요 : ");
+            String str = Console.readLine();
+            getNumInput(numInput, str);
         }
     }
 
-    private void getNumInput(List<Integer> result) {
-        String str = Console.readLine();
+    public void getNumInput(List<Integer> result, String str) {
         for (int i = 0; i < str.length(); i++) {
             int num = Character.getNumericValue(str.charAt(i));
             result.add(num);
