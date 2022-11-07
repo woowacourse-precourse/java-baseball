@@ -1,5 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -19,41 +24,34 @@ public class Application {
 
 
     public static int makeRandomNumber() {
-        String numList = "";
-        for (int i = 0; i < 10; i++) {
-            int num = (int) ((Math.random() * 9) + 1);
-            numList += num;
+        List<Integer> numList = new ArrayList<>();
+        while (numList.size() < 3) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!(numList.contains(num))) numList.add(num);
         }
 
-        return removeRepetitionNumber(numList);
-    }
-
-
-    public static int removeRepetitionNumber(String numList) {
-        String result = "";
-        for (int i = 0; i < numList.length(); i++) {
-            String number = String.valueOf(numList.charAt(i));
-            if (!(result.contains(number))) result += number;
+        String randomNumber = "";
+        for (int i = 0; i < numList.size(); i++) {
+            randomNumber += numList.get(i);
         }
-        result = result.substring(0,3);
-
-        return Integer.parseInt(result);
+        return Integer.parseInt(randomNumber);
     }
+
 
 
     public static int userNumber() {
         System.out.printf("숫자를 입력해주세요: ");
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
 
+        String n = Console.readLine();
         return exceptionHandler(n);
     }
 
 
-    public static int exceptionHandler(int n) {
-        if (!(n >= 100 && n <1000)) throw new IllegalArgumentException("n은 세자리 숫자입니다.");
+    public static int exceptionHandler(String n) {
+        int num = Integer.parseInt(n);
+        if (!(num >= 100 && num <1000)) throw new IllegalArgumentException("n은 세자리 숫자입니다.");
 
-        return n;
+        return num;
     }
 
 
@@ -74,7 +72,7 @@ public class Application {
                 continue;
             }
             if (strikeCount == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
@@ -109,9 +107,9 @@ public class Application {
 
 
     public static int restartOrEndGame() {
-        Scanner sc = new Scanner(System.in);
+        String input = Console.readLine();
         System.out.println("게임 다시하기: 1 \n게임 종료: 2");
-        int n = sc.nextInt();
+        int n = Integer.parseInt(input);
 
         return breakExceptionHandler(n);
     }
