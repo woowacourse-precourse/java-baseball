@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
+        answerValidate();
+        gmae();
 
     }
     public static void gmae(){
@@ -21,7 +24,13 @@ public class Application {
     }
 
     public static void answerValidate(){
-
+        while(true){
+            if(answer.size() == 3) break;
+            int rd = Randoms.pickNumberInRange(1,9);
+            if(!answer.contains(rd)) {
+                answer.add(rd);
+            }
+        }
     }
 
     public static void inputValidate(String input){
