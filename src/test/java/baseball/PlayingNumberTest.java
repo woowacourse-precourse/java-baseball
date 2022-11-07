@@ -36,7 +36,7 @@ class PlayingNumberTest {
 	}
 
 	@Nested
-	class validateDuplicateTest {
+	class ValidateDuplicateTest {
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -63,7 +63,7 @@ class PlayingNumberTest {
 	}
 
 	@Nested
-	class validateREGEXTest {
+	class ValidateREGEXTest {
 		@Test
 		void case1() {
 			Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
