@@ -33,6 +33,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("122"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("중복된 숫자가 포함되어 있습니다.")
         );
     }
 
@@ -41,6 +42,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("012"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("허용되지 않은 문자가 포함되어 있습니다.")
         );
     }
 
@@ -49,6 +51,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12L"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("허용되지 않은 문자가 포함되어 있습니다.")
         );
     }
 
@@ -57,6 +60,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("입력값이 3자리가 아닙니다.")
         );
     }
 
@@ -71,6 +75,8 @@ class ApplicationTest extends NsTest {
                 1, 2, 3
         );
     }
+
+
 
     @Override
     public void runMain() {
