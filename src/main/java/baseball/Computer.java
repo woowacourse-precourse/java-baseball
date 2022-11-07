@@ -17,26 +17,10 @@ public class Computer {
     public void makeAnswerNum() {
         while (answer.size() < Detail.LENGTH) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
-            int checkedNum = checkDuplication(randomNum);
-
-            if (isNotDuplicated(checkedNum)) {
+            if (!answer.contains(randomNum)) {
                 answer.add(randomNum);
             }
         }
-    }
-
-    int checkDuplication(int randomNum) {
-        for (Integer integer : answer) {
-            if (randomNum == integer) {
-                randomNum = Detail.DUPLICATED;
-                break;
-            }
-        }
-        return randomNum;
-    }
-
-    boolean isNotDuplicated(int n) {
-        return n != Detail.DUPLICATED;
     }
 
     public List<Integer> getAnswer() {
