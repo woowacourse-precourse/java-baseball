@@ -1,6 +1,9 @@
 package baseball;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -97,41 +100,22 @@ public class Application {
     }
 
     static int getRandomNumber() {
-        int ret;
-
-        while (true) {
-            ret = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(100, 999);
-            if (isValidRandomNumber(ret)) {
-                break;
+        int ret = 0;
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
             }
         }
+
+        ret = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
         return ret;
-    }
-
-    static boolean isValidRandomNumber(int num) {
-        int one;
-        int ten;
-        int hundred;
-
-        one = num % 10;
-        num /= 10;
-
-        ten = num % 10;
-        num /= 10;
-
-        hundred = num % 10;
-        if (hundred == 0 || ten == 0 || one == 0)
-            return false;
-
-        if (hundred == ten || hundred == one || ten == one) {
-            return false;
-        }
-        return true;
     }
 
     static String getInput() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
-        String ret = camp.nextstep.edu.missionutils.Console.readLine();
+        String ret = Console.readLine();
 
         if (ret.length() != 3 || !isValidInputNumber(ret)) {
             throw new IllegalArgumentException();
@@ -169,7 +153,7 @@ public class Application {
     }
 
     static String getOneMoreInput() throws IllegalArgumentException {
-        String ret = camp.nextstep.edu.missionutils.Console.readLine();
+        String ret = Console.readLine();
 
         if (ret.equals("1") || ret.equals("2")) {
             return ret;
