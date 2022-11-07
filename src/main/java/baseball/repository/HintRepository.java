@@ -19,11 +19,6 @@ public class HintRepository extends Hint {
         return super.getStrike();
     }
 
-    @Override
-    public String getNothing() {
-        return super.getNothing();
-    }
-
     public void compare(ComputerNumberRepository computerNumberRepository,
                         PlayerNumberRepository playerNumberRepository) {
         List<Integer> computerNumberList = computerNumberRepository.getNumberList();
