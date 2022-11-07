@@ -51,7 +51,7 @@ public class Application {
         return integerList;
     }
 
-    private static List<Integer> getUserIntegerList() {
+    public static List<Integer> getUserIntegerList() {
         String userString = Console.readLine();
         checkUserInput(userString);
         return StringToIntegerList(userString);
