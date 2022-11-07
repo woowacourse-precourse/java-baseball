@@ -11,13 +11,13 @@ public class Player {
     public String getPlayerNumber() throws IllegalArgumentException{
         System.out.print(INPUT_NUMBER_MESSAGE);
         String playerNumber = readLine();
-        validateInputNumber(playerNumber, GAME_NUMBER_LENGTH);
+        validateInputNumber(playerNumber);
         return playerNumber;
     }
 
-    private void validateInputNumber(String playerNumber, int numberLength) throws IllegalArgumentException {
+    private void validateInputNumber(String playerNumber) throws IllegalArgumentException {
         validateNumberOrNotNumber(playerNumber, PATTERN);
-        validateNumberLength(playerNumber, numberLength);
+        validateNumberLength(playerNumber, constants.GameConstant.GAME_NUMBER_LENGTH);
         validateNumberRepeat(playerNumber);
     }
 
