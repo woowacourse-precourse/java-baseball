@@ -15,9 +15,9 @@ public class Game {
     private final Score score;
 
     public Game() {
-        this.user = new User();
-        this.computer = new Computer();
-        this.score = new Score();
+        user = new User();
+        computer = new Computer();
+        score = new Score();
     }
 
     public void start() {

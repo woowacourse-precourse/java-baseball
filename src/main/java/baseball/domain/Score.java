@@ -18,8 +18,8 @@ public class Score {
     }
 
     private void initBallAndStrike() {
-        this.ball = INITIAL_VALUE;
-        this.strike = INITIAL_VALUE;
+        ball = INITIAL_VALUE;
+        strike = INITIAL_VALUE;
     }
 
     public boolean isWrongAnswer(List<Integer> answer, List<Integer> guessedAnswer) {
