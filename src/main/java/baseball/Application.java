@@ -49,12 +49,29 @@ public class Application {
         return resultList;
     }
 
+    private static void isIllegalNumber(int inputNumber){
+        if (inputNumber > 999 || inputNumber < 0){
+            throw new IllegalArgumentException();
+        }
+
+        List<Integer> numberList = new ArrayList<>();
+        for (int i = 1; i <= 3; i++) {
+            int inputOneNumber = inputNumber / (Math.max(1, (int) Math.pow(10, 3 - i)));
+            if(numberList.contains(inputOneNumber)){
+                throw new IllegalArgumentException();
+            }
+            numberList.add(inputOneNumber);
+            inputNumber -= inputOneNumber * (int) Math.pow(10, 3 - i);
+        }
+    }
+
     private static boolean eachGame() {
         int strike = 0;
         int ball = 0;
 
         System.out.print("숫자를 입력해주세요 : ");
         int inputNumber = Integer.parseInt(Console.readLine());
+        isIllegalNumber(inputNumber);
         List<Integer> score = gameResult(inputNumber);
 
         for (Integer eachScore : score) {
@@ -113,7 +130,6 @@ public class Application {
     private static void baseballGameRun() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         generateAnswerNumber();
-        System.out.println(answerNumber);
         boolean gameResult = false;
 
         while (!gameResult){
