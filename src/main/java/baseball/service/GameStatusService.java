@@ -14,11 +14,11 @@ public class GameStatusService {
         if(isEndOfGame(opinion)) stopGame();
     }
 
-    public boolean isEndOfGame(String opinion){
+    private boolean isEndOfGame(String opinion){
         return opinion.equals(END_GAME);
     }
 
-    public void stopGame(){
+    private void stopGame(){
         gameStatus = false;
     }
 
