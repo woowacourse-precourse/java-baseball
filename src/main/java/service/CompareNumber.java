@@ -18,7 +18,7 @@ public class CompareNumber {
         int strikeCount = 0;
         int ballCount = 0;
         for (int i = 0; i < 3; i++) {
-            if (this.userNumber.get(i) == this.computerNumber.get(i)) {
+            if (this.userNumber.get(i).equals(this.computerNumber.get(i))) {
                 strikeCount++;
             } else if (userNumber.contains(computerNumber.get(i))) {
                 ballCount++;
