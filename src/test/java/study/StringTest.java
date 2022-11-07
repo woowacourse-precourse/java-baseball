@@ -1,6 +1,7 @@
 package study;
 
 import baseball.Computer;
+import baseball.Player;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import static baseball.Computer.NUM_LIMIT_LENGTH;
+import static baseball.Player.toIntegerPlayerInput;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringTest {
 
@@ -61,9 +64,19 @@ public class StringTest {
     void createRandomNumbersTest() {
         Computer computer = new Computer();
         List<Integer> list = computer.createRandomNumbers();
-        System.out.println(list);
         assertThat(list.size()).isEqualTo(3);
         assertThat(list.stream().allMatch(n -> n >= 1 && n <= 9)).isTrue();
         assertThat(list.stream().distinct().allMatch(n -> list.size() == 3)).isTrue();
+    }
+
+    @DisplayName("Player 클래스 - toIntegerPlayerInput() 메서드 테스트")
+    @Test
+    void toIntegerPlayerInputTest() {
+        String inputTest = "352";
+        Player player = new Player();
+        List<Integer> playerInputNumber =  player.toIntegerPlayerInput(inputTest);
+        for (int i = 0; i < 3; i++) {
+        assertTrue(playerInputNumber.get(i) instanceof Integer == true);
+        }
     }
 }
