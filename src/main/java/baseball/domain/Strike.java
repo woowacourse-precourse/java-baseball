@@ -2,7 +2,7 @@ package baseball.domain;
 
 public class Strike {
 
-    private int count = 0;
+    private int count ;
 
     public Strike(int count) {
         this.count = count;
