@@ -34,8 +34,7 @@ public class Score {
     }
 
     public Boolean ifNothing(){
-        for (int i = 0; i<user.size();i++){
-            int n = user.get(i);
+        for (int n : user) {
             if (game.getComputers().contains(n))
                 return false;
         }

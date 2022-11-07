@@ -38,7 +38,7 @@ public class Input {
 
     public static Boolean replay(){
         Print.replay();
-        int userInput  = 0;
+        int userInput;
         try {
             userInput = Integer.parseInt(Console.readLine());
         }catch (Exception e){
