@@ -18,7 +18,12 @@ public class BaseballNumber {
         }
     }
 
-    public void setNumbers(String numbersStr){
+    public void setNumbers(){
+        String numbersStr = Console.readLine();
+
+        if(!isError(numbersStr))
+            throw new IllegalArgumentException();
+
         numbers.clear();
         for(int i = 0; i < 3; i++){
             int number = Integer.valueOf(numbersStr.charAt(i));
