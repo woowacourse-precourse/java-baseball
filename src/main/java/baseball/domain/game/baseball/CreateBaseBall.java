@@ -6,7 +6,6 @@ import baseball.refree.Refree;
 import baseball.view.BaseBallInput;
 import baseball.view.UserInput;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +13,7 @@ import java.util.List;
 public class CreateBaseBall implements Game {
 
     @Override
-    public void startGame() throws IOException {
-        UserInput userInput = getUserInputInput();
-        String input = userInput.getInput();
-        String randomNumber = generateRandomNumber();
+    public void startGame(String randomNumber, String input) throws IOException {
         Refree refree = new Refree();
         refree.compareToUserInput(randomNumber, input);
     }
@@ -28,8 +24,10 @@ public class CreateBaseBall implements Game {
     }
 
     @Override
-    public void endGame() {
-
+    public boolean endGame() throws IOException {
+        UserInput userInputInput = getUserInputInput();
+        userInputInput.getEndGameInput();
+        return (getUserInputInput().getInput()=="2") ? true:false;
     }
 
     @Override

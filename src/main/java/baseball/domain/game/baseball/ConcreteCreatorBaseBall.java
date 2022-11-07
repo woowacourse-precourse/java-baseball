@@ -3,22 +3,29 @@ package baseball.domain.game.baseball;
 import baseball.domain.Game;
 import baseball.domain.GameCreator;
 import baseball.view.BaseBallInput;
+import baseball.view.UserInput;
 
 import java.io.IOException;
 
 public class ConcreteCreatorBaseBall extends GameCreator {
-
     @Override
-    public Game createGame() throws IOException {
-        BaseBallInput baseBallInput = new BaseBallInput();
-        String input = baseBallInput.getInput();
-
-        CreateBaseBall createBaseBall = new CreateBaseBall();
-        createBaseBall.startGame();
-
-        return null;
+    public void createGame() throws IOException {
+        CreateBaseBall game = new CreateBaseBall();
+        UserInput userInput = new BaseBallInput();
+        String input = "";
+        while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            String randomNumber = game.generateRandomNumber();
+            System.out.println("randomNumber = " + randomNumber);
+            do {
+                System.out.print("숫자를 입력해주세요 : ");
+                input = userInput.getInput();
+                game.startGame(randomNumber, input);
+            }while(!input.equals(randomNumber));
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            if(game.endGame()){
+                break;
+            }
+        }
     }
-
-
-
 }
