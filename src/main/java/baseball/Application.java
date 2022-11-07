@@ -17,9 +17,6 @@ public class Application {
         return list;
     }
 
-    public static boolean isValidLength(int n) {
-        return n == 3;
-    }
 
     public static Set<Integer> InputToSet(String userInput) {
         String[] splitUserInput = userInput.split("");
@@ -80,7 +77,7 @@ public class Application {
         public Integer[] inputNums;
 
         Nums(String inputData) {
-            if (!isValidLength(inputData.length())) throw new IllegalArgumentException("잘못된 입력 크기");
+            if(!isNotNumber(inputData)) throw new IllegalArgumentException("숫자가 아닌 문자 포함");
             Set<Integer> sets = InputToSet(inputData);
             if (!isValidSetSize(sets)) throw new IllegalArgumentException("중복된 숫자 존재");
             this.inputNums = sets.toArray(new Integer[3]);

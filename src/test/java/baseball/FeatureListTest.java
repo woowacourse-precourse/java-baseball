@@ -25,13 +25,7 @@ public class FeatureListTest {
         assertThat(s.size()).isEqualTo(3);
     }
 
-    @Test
-    void 사용자입력의_크기가_3인지_확인() {
-        String s = "345";
-        assertThat(isValidLength(s.length())).isTrue();
-        String s2 = "3454";
-        assertThat(isValidLength(s2.length())).isFalse();
-    }
+
 
     @Test
     void 사용자_입력_문자열을_Set으로_변환() {
