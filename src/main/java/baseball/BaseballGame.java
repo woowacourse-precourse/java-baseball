@@ -14,7 +14,7 @@ public class BaseballGame extends Game {
 
     @Override
     protected void greet() {
-
+        System.out.println(GREETING_MESSAGE);
     }
 
     @Override
