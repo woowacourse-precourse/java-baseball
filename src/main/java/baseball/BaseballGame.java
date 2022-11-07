@@ -12,7 +12,6 @@ public class BaseballGame {
     private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final int NUMBER_OF_BALLS = 3;
     private static final int REPLAY = 1;
-    private static final int OVER = 2;
 
     private final Hitter hitter;
     private final Pitcher pitcher;
