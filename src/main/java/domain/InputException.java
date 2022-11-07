@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static constant.Message.INPUT_ERROR_MESSAGE;
+import static constant.Rules.DIGIT_RANGE;
 
 public class InputException {
 
     public static void outOfRange(String input) {
-        if (input.length() != 3) {
+        if (input.length() != DIGIT_RANGE) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
     }

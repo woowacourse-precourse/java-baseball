@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static constant.Message.*;
+import static constant.Rules.GAME_OVER;
+import static constant.Rules.RESTART;
 import static domain.Referee.STRIKE;
 
 public class Game {
@@ -17,7 +19,7 @@ public class Game {
     public static void run() {
         while (true) {
             playGame();
-            if (restartGame("2")) {
+            if (restartGame(GAME_OVER)) {
                 System.out.println(PROGRAM_END_MESSAGE);
                 break;
             }
@@ -48,10 +50,10 @@ public class Game {
     }
 
     public static boolean restartGame(String restartOrEnd) {
-        if (restartOrEnd.equals("1")) {
+        if (restartOrEnd.equals(RESTART)) {
             playGame();
         }
-        if (!(restartOrEnd.equals("1") || restartOrEnd.equals("2"))) {
+        if (!(restartOrEnd.equals(RESTART) || restartOrEnd.equals(GAME_OVER))) {
             throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
         return true;
