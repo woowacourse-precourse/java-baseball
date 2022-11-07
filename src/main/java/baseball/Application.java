@@ -10,15 +10,13 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int gameControllerNumber;
-
         int errNumber = 0;
-        int continueNumber = 1;
         int exitNumber = 2;
 
         do {
             System.out.println("숫자 야구 게임을 시작합니다!!!");
             ArrayList<Integer> generateAnswer = generateAnswer();
-            System.out.println("정답은" + generateAnswer);
+            // System.out.println("정답은" + generateAnswer);
             gameControllerNumber = gameController(generateAnswer);
         } while (gameControllerNumber != exitNumber && gameControllerNumber != errNumber);
         System.out.println("게임 종료");
@@ -31,8 +29,8 @@ public class Application {
         
         int gameControllerNumber;
         int errNumber = 0;
-
         ArrayList<Integer> inputUserValue;
+
         while (true) {
             inputUserValue = inputUserValue();
             if (inputUserValue.get(0) == errNumber) {
@@ -52,6 +50,7 @@ public class Application {
 
     private static ArrayList<Integer> generateAnswer() {
         ArrayList<Integer> answerNumber = new ArrayList<>();
+
         while (answerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answerNumber.contains(randomNumber)) {
@@ -68,6 +67,7 @@ public class Application {
         int secondBall = 1;
         int thirdBall = 2;
         int errNumber = 0;
+
         if (inputNumber.charAt(firstBall) == inputNumber.charAt(secondBall)
             || inputNumber.charAt(firstBall) == inputNumber.charAt(thirdBall)
             || inputNumber.charAt(secondBall) == inputNumber.charAt(thirdBall)
@@ -79,6 +79,7 @@ public class Application {
             || inputNumber.charAt(secondBall) == 0
             || inputNumber.charAt(thirdBall) == 0 ) {
             inputNumberArray.add(errNumber);
+
             return inputNumberArray;
         }
 
