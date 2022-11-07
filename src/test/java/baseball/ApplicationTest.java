@@ -73,6 +73,20 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("볼, 스트라이크, 낫싱 테스트")
+    void ballOrStrikeTest() {
+        //볼, 스트라이크 테스트
+        List<Integer> computer = List.of(1, 4, 7);
+        List<Integer> user = List.of(1, 7, 4);
+        assertThat(Application.getMSG(computer, user)).isEqualTo("2볼 1스트라이크");
+
+        //낫싱 테스트
+        computer = List.of(1, 4, 7);
+        user = List.of(2, 5, 8);
+        assertThat(Application.getMSG(computer, user)).isEqualTo("낫싱");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
