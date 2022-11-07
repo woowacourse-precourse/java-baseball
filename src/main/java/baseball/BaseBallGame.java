@@ -52,4 +52,18 @@ public class BaseBallGame {
         }
         return 1;
     }
+
+    public int countStrikeCount() {
+        int strikeCount = 0;
+        if (computer.getFirstRandomNumber() == Character.getNumericValue(userNumber.charAt(0))) {
+            strikeCount += 1;
+        }
+        if (computer.getSecondRandomNumber() == Character.getNumericValue(userNumber.charAt(1))) {
+            strikeCount += 1;
+        }
+        if (computer.getThirdRandomNumber() == Character.getNumericValue(userNumber.charAt(2))) {
+            strikeCount += 1;
+        }
+        return strikeCount;
+    }
 }
