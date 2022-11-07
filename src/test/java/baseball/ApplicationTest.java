@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -44,6 +45,22 @@ class ApplicationTest extends NsTest {
     void 숫자_동일여부_테스트(){
         org.junit.jupiter.api.Assertions.assertTrue(Application.checkTwoNumbersAreSame(1,1));
         org.junit.jupiter.api.Assertions.assertFalse(Application.checkTwoNumbersAreSame(1,3));
+    }
+
+    @Test
+    void 유저_입력_숫자_예외_테스트(){
+        List<String> testStringList = new ArrayList<>();
+        testStringList.add("044");
+        testStringList.add("abc");
+        testStringList.add("1234");
+        for(int i=0;i<testStringList.size();i++){
+            assertSimpleTest(()->
+                    assertThatThrownBy(()-> Application.checkUserInput("044"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+
     }
 
 
