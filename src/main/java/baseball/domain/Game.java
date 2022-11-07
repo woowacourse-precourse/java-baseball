@@ -5,6 +5,7 @@ public class Game {
     public static final String BALL = "볼 ";
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
+    public static final int RESTART = 1;
 
     public static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -28,7 +29,7 @@ public class Game {
             System.out.println(SUCCESS_MESSAGE);
             System.out.println(GAME_FINISH_MESSAGE);
             System.out.println(RESTART_OR_QUIT_MESSAGE);
-        } while(restart);
+        } while(player.getChoice() == RESTART);
     }
 
     public void guessAndCheck() {

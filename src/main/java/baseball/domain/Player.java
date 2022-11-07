@@ -10,6 +10,11 @@ public class Player {
         return input;
     }
 
+    public int getChoice() {
+        String choice = Console.readLine();
+        return Integer.parseInt(choice);
+    }
+
     public void validateInput(String input) {
         Exception.checkNumberFormatException(input);
         Exception.checkNumberLengthException(input)
