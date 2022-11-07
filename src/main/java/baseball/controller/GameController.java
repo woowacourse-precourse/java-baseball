@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Judge;
 import baseball.model.Player;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
@@ -25,5 +26,12 @@ public class GameController {
         OutputView.printStart();
         computer = new Computer();
         computer.setRandomNumber();
+    }
+
+    public void loadPlayerNumber() {
+        String playerNumber = InputView.playerInputNumber();
+
+        player = new Player();
+        player.setPlayerNumbers(playerNumber);
     }
 }
