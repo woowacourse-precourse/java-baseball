@@ -1,6 +1,6 @@
-package baseball;
+package baseball.player;
 
-import static baseball.NumberAdministrator.NUMBER_COUNT_TO_CREATED;
+import static baseball.gamelogic.NumberAdministrator.NUMBER_COUNT_TO_CREATED;
 
 public class InputValidator {
 

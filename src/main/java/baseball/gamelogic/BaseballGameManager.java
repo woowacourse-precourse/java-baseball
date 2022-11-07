@@ -1,4 +1,4 @@
-package baseball;
+package baseball.gamelogic;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,6 +48,7 @@ public class BaseballGameManager {
         if (strikeCount == NO_COUNT && ballCount == NO_COUNT) {
             return NOTHING;
         }
+
         if (strikeCount == NO_COUNT) {
             return ballCount + BALL;
         }
@@ -55,7 +56,6 @@ public class BaseballGameManager {
         if (ballCount == NO_COUNT) {
             return strikeCount + STRIKE;
         }
-
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
 }

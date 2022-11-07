@@ -1,4 +1,9 @@
-package baseball;
+package baseball.game;
+
+import static baseball.player.InputValidator.GAME_RESTART_OPTION;
+
+import baseball.gamelogic.BaseballGameManager;
+import baseball.player.Player;
 
 public class BaseballGame {
 
@@ -13,7 +18,7 @@ public class BaseballGame {
     }
 
     public boolean isRestart() {
-        if (player.selectOptionAfterGameClear().equals("1")) {
+        if (player.selectOptionAfterGameClear().equals(GAME_RESTART_OPTION)) {
             return true;
         }
         return false;

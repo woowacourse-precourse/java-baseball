@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public class BaseballGameLauncher {
 
@@ -11,11 +11,11 @@ public class BaseballGameLauncher {
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
-        playGame();
+        startGame();
         System.out.println(GAME_CLOSE_MESSAGE);
     }
 
-    private void playGame() {
+    private void startGame() {
         do {
             baseballGame.start();
             System.out.println(GAME_CLEAR_MESSAGE);
