@@ -1,5 +1,7 @@
 package baseball.domain.exception;
 
+import baseball.domain.util.Constants;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,35 +19,35 @@ public class InputNumberException {
 
     private static void isNumbersLengthThree(String numbers) {
         if (numbers.length() != 3) {
-            throw new IllegalArgumentException("3개의 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(Constants.NUMBER_THREE_LENGTH);
         }
     }
 
     private static void isNumbersOneToNine(String numbers) {
         for (int i = 0; i < numbers.length(); i++) {
             if (numbers.charAt(i) == '0') {
-                throw new IllegalArgumentException("1~9까지의 숫자만 입력 가능합니다.");
+                throw new IllegalArgumentException(Constants.NOT_INPUT_ZERO);
             }
         }
     }
 
     public static void isInputNumberOneOrTwo(int number) {
         if (number < 1 || 2 < number) {
-            throw new IllegalArgumentException("1과 2만 입력 가능합니다.");
+            throw new IllegalArgumentException(Constants.ONLY_ONE_OR_TWO);
         }
     }
 
     private static void isOnlyNumber(String numbers) {
-        String regExp = "^[0-9]+$";
+        String regExp = Constants.ONLY_NUMBER_REGEX;
         if (!numbers.matches(regExp)) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(Constants.ONLY_INPUT_NUMBER);
         }
     }
 
     private static void isDuplicateCharacters(String numbers) {
         for (int i = 0; i < numbers.length(); i++) {
             if (isAlreadyExistsCharacter(numbers.charAt(i))) {
-                throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
+                throw new IllegalArgumentException(Constants.NOT_INPUT_DUPLICATED_NUMBER);
             } else {
                 list.add(numbers.charAt(i));
             }
