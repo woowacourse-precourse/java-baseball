@@ -6,9 +6,11 @@ public enum GameProcedureConstantInteger {
     BASEBALL_GAME_NUMBER_LENGTH(3),
     BASEBALL_GAME_RETRY_REPLY_LENGTH(1),
     BASEBALL_GAME_RETRY_REPLY_INCLUSIVE_INTEGER_START(1),
-    BASEBALL_GAME_RETRY_REPLY_INCLUSIVE_INTEGER_FINISH(2);
+    BASEBALL_GAME_RETRY_REPLY_INCLUSIVE_INTEGER_FINISH(2),
+    RETRY_GAME(2),
+    FINISH_GAME(1);
 
-    private int integerValue;
+    private final int integerValue;
 
     GameProcedureConstantInteger(int integerValue) {
         this.integerValue = integerValue;

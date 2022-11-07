@@ -1,5 +1,6 @@
 package baseball.user;
 
+import baseball.constant.GameProcedureConstantInteger;
 import baseball.constant.GameProcedureConstantString;
 import baseball.input.Input;
 import baseball.output.Print;
@@ -21,6 +22,6 @@ public class User {
         Print.printEndsWithEnter(GameProcedureConstantString.RETRY_GAME_OR_FINISH_GAME_MESSAGE.getStringMessage());
         String userInput = Input.inputString();
         Validation.gameFinishOrNotValidation(userInput);
-        return (userInput.charAt(0) - '0' == 2);
+        return (userInput.charAt(0) - '0' == GameProcedureConstantInteger.RETRY_GAME.getIntegerValue());
     }
 }

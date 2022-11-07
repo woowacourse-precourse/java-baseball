@@ -10,7 +10,7 @@ public enum UserInputErrorConstantString {
                     " 과" + GameProcedureConstantInteger.RANDOM_INCLUSIVE_INTEGER_FINISH.getIntegerValue()
                     + " 사이 숫자만 입력 가능합니다."),;
 
-    private String stringMessage;
+    private final String stringMessage;
 
     UserInputErrorConstantString(String stringMessage) {
         this.stringMessage = stringMessage;

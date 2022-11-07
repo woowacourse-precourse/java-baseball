@@ -12,8 +12,8 @@ public enum BallStrikeConstant {
     TWO_BALL_ONE_STRIKE("2볼 1스트라이크", false),
     THREE_BALL("3볼", false);
 
-    private String ballStrikeMessage;
-    private boolean isFinish;
+    private final String ballStrikeMessage;
+    private final boolean isFinish;
 
     BallStrikeConstant(String ballStrikeMessage, boolean isFinish) {
         this.ballStrikeMessage = ballStrikeMessage;
