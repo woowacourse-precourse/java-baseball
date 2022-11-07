@@ -26,12 +26,12 @@ class ComputerManagerTest {
     }
 
     @Test
-    void generateRandomNumber_랜덤_수_생성_길이_체크_및_리스트_반환_체크(){
+    void generateRandomNumber_랜덤_수_생성_길이_체크_및_리스트_반환_체크() {
         assertThat(3).isEqualTo(numbers.size());
     }
 
     @Test
-    void compareWithUserNumber_3스트라이크_테스트(){
+    void compareWithUserNumber_3스트라이크_테스트() {
         StringBuilder answer = new StringBuilder();
 
         for (Integer num : numbers) {
@@ -42,7 +42,7 @@ class ComputerManagerTest {
     }
 
     @Test
-    void compareWithUserNumber_볼_테스트(){
+    void compareWithUserNumber_볼_테스트() {
         StringBuilder answer = new StringBuilder();
 
         for (Integer num : numbers) {
@@ -62,7 +62,7 @@ class ComputerManagerTest {
     }
 
     @Test
-    void compareWithUserNumber_스트라이크_볼_테스트(){
+    void compareWithUserNumber_스트라이크_볼_테스트() {
         StringBuilder answer = new StringBuilder();
 
         for (Integer num : numbers) {
