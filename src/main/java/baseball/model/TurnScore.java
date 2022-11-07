@@ -18,4 +18,8 @@ public class TurnScore {
     public int getBalls() {
         return this.balls;
     }
+
+    public int getStrikes() {
+        return this.strikes;
+    }
 }
