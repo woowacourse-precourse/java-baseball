@@ -7,8 +7,21 @@ public class Application {
         RandomNumberGenerator randomNumberGenerator=new RandomNumberGenerator();
         InputChecker inputChecker=new InputChecker();
         AnswerResultJudgement answerResultJudgement=new AnswerResultJudgement(randomNumberGenerator.getRandomNumber());
-        String answer=Console.readLine();
-        inputChecker.checkInput(answer);
-        System.out.println(answerResultJudgement.getResult(answer));
+        MenuPrinter menuPrinter=new MenuPrinter();
+
+        boolean correct=false;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (!correct) {
+            menuPrinter.printMenu(correct);
+            String input = Console.readLine();
+            inputChecker.checkInput(input);
+            System.out.println(answerResultJudgement.getResult(input));
+            if(answerResultJudgement.getResult(input).equals("3스트라이크")){
+                correct=true;
+                menuPrinter.printMenu(correct);
+                break;
+            }
+        }
     }
 }
