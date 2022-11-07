@@ -50,8 +50,7 @@ public class Game {
         for (int i = 0; i < LENGTH; i++) {
             if (answer.charAt(i) == playerInput.charAt(i)) {
                 strike++;
-            }
-            else if (answer.indexOf(playerInput.charAt(i)) != -1) {
+            } else if (answer.indexOf(playerInput.charAt(i)) != -1) {
                 ball++;
             }
         }
