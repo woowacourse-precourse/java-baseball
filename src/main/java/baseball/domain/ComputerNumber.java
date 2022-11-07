@@ -9,7 +9,7 @@ public class ComputerNumber {
     public Integer hundredNumber;
     public Integer tenNumber;
     public Integer number;
-    public List<String> computerNumberList;
+    public List<Integer> computerNumberList = new ArrayList<>();
 
     public ComputerNumber(){
         hundredNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,5 +17,15 @@ public class ComputerNumber {
         number = Randoms.pickNumberInRange(1, 9);
     }
 
-
+    public void getComputerNumberList(){
+        while(hundredNumber.equals(tenNumber) || hundredNumber.equals(number)
+                || tenNumber.equals(number)){
+            hundredNumber = Randoms.pickNumberInRange(1, 9);
+            tenNumber = Randoms.pickNumberInRange(1, 9);
+            number = Randoms.pickNumberInRange(1, 9);
+        }
+        computerNumberList.add(hundredNumber);
+        computerNumberList.add(tenNumber);
+        computerNumberList.add(number);
+    }
 }
