@@ -16,7 +16,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -145,12 +144,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("유저 번호와 컴퓨터 숫자의 게임 결과 확인 테스트")
-    void 유저_번호와_컴퓨터_숫자의_게임_결과_확인_테스트() {
+    @DisplayName("유저 번호와 컴퓨터 번호의 게임 결과 확인 테스트")
+    void 유저_번호와_컴퓨터_번호의_게임_결과_확인_테스트() {
         List<Integer> computerNumber = List.of(1, 2, 4);
         int[] userNumber = {1, 4, 3};
-        int[] result = {1, 1};
-        assertArrayEquals(getGameResult(computerNumber, userNumber), result);
+        assertThat(getGameResult(computerNumber, userNumber)).containsExactly(1, 1);
     }
 
     @Override
