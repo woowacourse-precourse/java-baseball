@@ -109,6 +109,14 @@ public class Application {
             return false;
     }
 
+    public static void checkValidPlayerReply(String playerReply){
+        if(playerReply.length() != 1)
+            throw new IllegalArgumentException("사용자가 잘못된 값을 입력하였습니다.");
+
+        if(playerReply.charAt(0) != '1' && playerReply.charAt(0) != '2')
+            throw new IllegalArgumentException("사용자가 잘못된 값을 입력하였습니다.");
+    }
+
     public static class StrikeBallResult{
         int strikeCnt;
         int ballCnt;
