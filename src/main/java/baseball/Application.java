@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.Input.Input;
+import baseball.game.Game;
+
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    public static void main(String[] args) throws IllegalArgumentException {
+        Game game = new Game(new Input());
+        game.start();
     }
 }
