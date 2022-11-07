@@ -1,11 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
 
 
 public class Application {
@@ -15,14 +15,13 @@ public class Application {
         List<Integer> computerNumbersList = getRandomThreeNumbers();
         System.out.println(computerNumbersList);
         while (startSwitch == 1) {
-            Scanner sc = new Scanner(System.in);
             System.out.print("숫자를 입력해주세요 : ");
-            int userNumber = sc.nextInt();
+            int userNumber = Integer.parseInt(Console.readLine());
             List<Integer> userNumbersList = getUserNumberList(userNumber);
             if (getResult(computerNumbersList, userNumbersList)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                startSwitch = sc.nextInt();
+                startSwitch = Integer.parseInt(Console.readLine());
             }
         }
     }
