@@ -29,9 +29,7 @@ public class User {
     }
 
     private void getValidation(String input) {
-        boolean checkLength = getLengthValidation(input);
-        boolean checkType = getTypeValidation(input);
-        boolean validation = checkLength && checkType;
+        boolean validation = getLengthValidation(input) && getTypeValidation(input);
         if(!validation) {
             throw new IllegalArgumentException();
         }
