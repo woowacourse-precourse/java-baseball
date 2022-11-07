@@ -6,8 +6,8 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.HitStatus.*;
 import static baseball.Validation.validate;
-import static baseball.HitStatus.NOTHING;
 
 public class BaseBallGame {
     private List<Integer> computer;
@@ -42,6 +42,27 @@ public class BaseBallGame {
         stepResult = new ArrayList<>(Arrays.asList(NOTHING, NOTHING, NOTHING));
     }
 
+    private boolean checkIsStrike(int index, int value){
+        return computer.get(index) == value;
+    }
+
+    private boolean checkIsBall(int index, int value){
+        return stepResult.get(index) != STRIKE && computer.contains(value);
+    }
+
+    private void doHit(){
+        for(int i = 0; i < 3; i++){
+            int currentPlayerNumber = player.get(i);
+
+            if(checkIsStrike(i,currentPlayerNumber)){
+                stepResult.set(i,STRIKE);
+            }
+            if(checkIsBall(i,currentPlayerNumber)){
+                stepResult.set(i,BALL);
+            }
+        }
+    }
+
     public void play(){
         initComputer();
         initPlayer();
@@ -50,6 +71,7 @@ public class BaseBallGame {
         while(true){
             initPlayerInput();
             initStepResult();
+            doHit();
             break;
         }
     }
