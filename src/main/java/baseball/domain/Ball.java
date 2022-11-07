@@ -1,9 +1,11 @@
 package baseball.domain;
 
+import baseball.constant.Constant;
+
 public class Ball {
 
     private final String numberBall;
-    private final String threeNumberRegularExpression = "\\d{3}";
+    private final String THREE_NUMBER_REGULAR_EXPRESSION = "\\d{3}";
 
     public Ball(String numberBall) {
         validateForm(numberBall);
@@ -12,7 +14,7 @@ public class Ball {
     }
 
     private void validateForm(String numberBall) {
-        if (!numberBall.matches(threeNumberRegularExpression)) {
+        if (!numberBall.matches(THREE_NUMBER_REGULAR_EXPRESSION)) {
             throw new IllegalArgumentException("세 자리 숫자만 가능합니다.");
         }
     }
@@ -36,7 +38,7 @@ public class Ball {
 
     public int compareByIndex(Ball ball) {
         String expectedBall = ball.toString();
-        int count = 0;
+        int count = Constant.ZERO_NUM;
         for (int i = 0; i < expectedBall.length(); i++) {
             if (numberBall.charAt(i) == expectedBall.charAt(i)) {
                 count++;

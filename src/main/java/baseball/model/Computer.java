@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.Constant;
 import baseball.domain.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,12 +10,15 @@ import java.util.List;
 public class Computer {
 
     private Ball computerNumber;
+    private final int NUM_LENGTH = 3;
+    private final int START_NUM = 1;
+    private final int END_NUM = 9;
 
     public Computer() {
     }
 
     public void setComputerRandomNumber() {
-        String randomNumber = createRandomNumberInLength(3);
+        String randomNumber = createRandomNumberInLength(NUM_LENGTH);
         this.computerNumber = new Ball(randomNumber);
     }
 
@@ -28,11 +32,11 @@ public class Computer {
             String number = createRandomNumber();
             addUniqueString(stringList, number);
         }
-        return String.join("", stringList);
+        return String.join(Constant.EMPTY_STRING, stringList);
     }
 
     private String createRandomNumber() {
-        int number = Randoms.pickNumberInRange(1, 9);
+        int number = Randoms.pickNumberInRange(START_NUM, END_NUM);
         return String.valueOf(number);
     }
 

@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.constant.Constant;
 import baseball.domain.Action;
 import baseball.domain.Ball;
 import baseball.model.Computer;
@@ -9,6 +10,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameController {
 
     private final Messenger messenger;
+    private final int ZERO_STRIKE = 0;
+    private final int THREE_STRIKES = 3;
     private Ball computerNumber;
 
     public GameController() {
@@ -48,8 +51,8 @@ public class GameController {
     }
 
     public void runBaseballGame() {
-        int strike = 0;
-        while (strike < 3) {
+        int strike = ZERO_STRIKE;
+        while (strike < THREE_STRIKES) {
             Ball userNumber = receiveBall();
             strike = compareBall(userNumber);
         }
