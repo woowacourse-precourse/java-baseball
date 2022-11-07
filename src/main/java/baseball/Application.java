@@ -28,7 +28,7 @@ public class Application {
         String[] numberToArray = readNumber.split("");
         List<String> userNumber = new ArrayList<String>(Arrays.asList(numberToArray));
 
-        //스트라이크, 볼, 낫싱 판정
+        //스트라이크, 볼, 낫싱 판정 및 출력
         for(String number: userNumber) {
             if(computerNumber.contains(number)) {
                 if(computerNumber.indexOf(number)==userNumber.indexOf(number)) {
@@ -38,15 +38,16 @@ public class Application {
             }
         }
 
-        if (matchCount==0) {
-            System.out.println("낫싱");
+        if (strike==3) {
+            System.out.println(strike+"스트라이크");
+            //프로그램 종료
         } else {
-            int ball = matchCount - strike;
-            System.out.println(ball+"볼 "+strike+"스트라이크");
+            if (matchCount==0) {
+                System.out.println("낫싱");
+            } else {
+                int ball = matchCount - strike;
+                System.out.println(ball+"볼 "+strike+"스트라이크");
+            }
         }
-
-        
-
-
     }
 }
