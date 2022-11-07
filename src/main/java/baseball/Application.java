@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static int BALL_INDEX = 0;
     public static int STRIKE_INDEX = 1;
@@ -27,6 +29,22 @@ public class Application {
         } while (!Game.isAllStrike(strike));
 
 
+    }
+
+    static void restartOrNot() throws IllegalArgumentException {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String selection = readLine();
+        if(!isValidSelection(selection)){
+            throw new IllegalArgumentException("잘못된 입력: 1 혹은 2를 입력해주세요.");
+        }
+
+        if (selection.equals("1")) {
+            startGame();
+        } else if (selection.equals("2")) {
+            System.out.println("게임 종료");
+        }
     }
 
     static boolean isValidSelection(String selection){
