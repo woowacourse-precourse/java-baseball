@@ -9,23 +9,29 @@ public class BaseBallGameModel {
     private List<Integer> computerNumbers = new ArrayList<>();
     private boolean isFinish;
 
-    public int ballCount(List<Integer> userNumbers) {
+    public int countBalls(List<Integer> userNumbers) {
         int ball = 0;
 
         for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
-            if (computerNumbers.contains(userNumbers.get(i))
-                    && computerNumbers.get(i) != userNumbers.get(i))
+            int computerNumber = computerNumbers.get(i);
+            int userNumber = userNumbers.get(i);
+
+            if (computerNumbers.contains(userNumber)
+                    && computerNumber != userNumber)
                 ball++;
         }
 
         return ball;
     }
 
-    public int strikeCount(List<Integer> userNumbers) {
+    public int countStrikes(List<Integer> userNumbers) {
         int strike = 0;
 
         for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
-            if (computerNumbers.get(i) == userNumbers.get(i))
+            int computerNumber = computerNumbers.get(i);
+            int userNumber = userNumbers.get(i);
+
+            if (computerNumber == userNumber)
                 strike++;
         }
 
@@ -39,10 +45,10 @@ public class BaseBallGameModel {
         return isFinish;
     }
 
-    public void createRandomNumber() {
+    public void initialize() {
         RandomNumber randomNumber = new RandomNumber();
         isFinish = false;
 
-        computerNumbers = randomNumber.initialize(MAX_NUMBER_SIZE);
+        computerNumbers = randomNumber.createNumbers(MAX_NUMBER_SIZE);
     }
 }

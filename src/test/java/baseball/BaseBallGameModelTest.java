@@ -43,8 +43,8 @@ class BaseBallGameModelTest {
             List<Integer> userNumber = Arrays.asList(3, 1, 2);
             field.set(baseBallGameModel, randomNumbers);
 
-            Assertions.assertThat(baseBallGameModel.ballCount(userNumber)).isEqualTo(3);
-            Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(0);
+            Assertions.assertThat(baseBallGameModel.countBalls(userNumber)).isEqualTo(3);
+            Assertions.assertThat(baseBallGameModel.countStrikes(userNumber)).isEqualTo(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,8 +62,8 @@ class BaseBallGameModelTest {
             List<Integer> userNumber = Arrays.asList(5, 6, 1);
             field.set(baseBallGameModel, randomNumbers);
 
-            Assertions.assertThat(baseBallGameModel.ballCount(userNumber)).isEqualTo(1);
-            Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(0);
+            Assertions.assertThat(baseBallGameModel.countBalls(userNumber)).isEqualTo(1);
+            Assertions.assertThat(baseBallGameModel.countStrikes(userNumber)).isEqualTo(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -81,8 +81,8 @@ class BaseBallGameModelTest {
             List<Integer> userNumber = Arrays.asList(3, 1, 2);
             field.set(baseBallGameModel, randomNumbers);
 
-            Assertions.assertThat(baseBallGameModel.ballCount(userNumber)).isEqualTo(3);
-            Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(0);
+            Assertions.assertThat(baseBallGameModel.countBalls(userNumber)).isEqualTo(3);
+            Assertions.assertThat(baseBallGameModel.countStrikes(userNumber)).isEqualTo(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,8 +100,8 @@ class BaseBallGameModelTest {
             List<Integer> userNumber = Arrays.asList(1, 2, 3);
             field.set(baseBallGameModel, randomNumbers);
 
-            Assertions.assertThat(baseBallGameModel.ballCount(userNumber)).isEqualTo(0);
-            Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(3);
+            Assertions.assertThat(baseBallGameModel.countBalls(userNumber)).isEqualTo(0);
+            Assertions.assertThat(baseBallGameModel.countStrikes(userNumber)).isEqualTo(3);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,8 +119,8 @@ class BaseBallGameModelTest {
             List<Integer> userNumber = Arrays.asList(9, 7, 5);
             field.set(baseBallGameModel, randomNumbers);
 
-            Assertions.assertThat(baseBallGameModel.ballCount(userNumber)).isEqualTo(0);
-            Assertions.assertThat(baseBallGameModel.strikeCount(userNumber)).isEqualTo(2);
+            Assertions.assertThat(baseBallGameModel.countBalls(userNumber)).isEqualTo(0);
+            Assertions.assertThat(baseBallGameModel.countStrikes(userNumber)).isEqualTo(2);
         } catch (Exception e) {
             e.printStackTrace();
         }

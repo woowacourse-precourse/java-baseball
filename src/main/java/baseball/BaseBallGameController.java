@@ -28,8 +28,8 @@ public class BaseBallGameController {
 
     private void printResult() {
         List<Integer> userNumbers = userNumber.get();
-        int strike = baseBallGameModel.strikeCount(userNumbers);
-        int ball = baseBallGameModel.ballCount(userNumbers);
+        int strike = baseBallGameModel.countStrikes(userNumbers);
+        int ball = baseBallGameModel.countBalls(userNumbers);
 
         BaseBallGameView.printResult(ball, strike);
     }
