@@ -32,9 +32,9 @@ public class User {
     }
     private void checkInput(String input) {
         if (!checkInputLength(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 길이입니다.");
         } else if (!checkInputDigit(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
     private boolean checkInputLength(String input) {

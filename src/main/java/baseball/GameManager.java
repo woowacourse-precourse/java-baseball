@@ -7,20 +7,22 @@ public class GameManager {
     private int ball_num = 0;
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        game();
+        reGame();
     }
     private void game() {
         computer.computer_random_num();
-        while (!isCorrect()) {
+        do {
             user.userInput();
             isStrike();
             isBall();
             printResult();
-        }
+        } while (!isCorrect());
         System.out.println(computer.getRandomNumList().size() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     private void isStrike() {
         strike_num = 0;
-        for (int i = 0; i < user.getUserInput().size(); i++) {
+        for (int i = 0; i < computer.getRandomNumList().size(); i++) {
             if (computer.getRandomNumList().get(i) == user.getUserInput().get(i)) {
                 strike_num++;
             }
