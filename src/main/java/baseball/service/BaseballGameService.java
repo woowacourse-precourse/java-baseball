@@ -4,6 +4,7 @@ package baseball.service;
 import baseball.domain.User;
 import baseball.exception.InputUserNumberException;
 import baseball.view.BaseballGameView;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameService {
@@ -15,7 +16,7 @@ public class BaseballGameService {
 
     private BaseballGameView baseballGameView = new BaseballGameView();
 
-    private User user;
+    private User user = new User();
 
     public void updateStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         strikeCount = 0;
@@ -57,11 +58,15 @@ public class BaseballGameService {
     }
 
     public void setUserNumber() {
-        user = new User();
         String userNumber = baseballGameView.inputNumber();
         inputUserNumberException.findUserNumberException(userNumber);
-        user.setSelectNumber(userNumber);
+        List<Integer> userNumberList = new ArrayList<>();
+        for (int index = 0; index < userNumber.length(); index++) {
+            userNumberList.add(userNumber.charAt(index) - '0');
+        }
+        user.setSelectNumber(userNumberList);
     }
+
 
     public List<Integer> getUserNumber() {
         return user.getSelectNumber();
