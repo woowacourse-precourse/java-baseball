@@ -39,7 +39,6 @@ public class BaseballGameManager {
     }
 
     private void calculateBallCount(String input) {
-
         List<Integer> inputNumbers = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
