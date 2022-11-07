@@ -1,43 +1,67 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedHashMap;
 
 public class Application {
 
-    private static final int finalRound = 3;
-    private static final int numberLength = 3;
-    private static int currentRound = 0;
-    private static String StartSymbol = "숫자 야구 게임을 시작합니다.";
-    private static String InputSymbol = "숫자를 입력해주세요 : ";
-    private static String EndSymbol = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
+    private static final int NumberLength = 3;
+
+    private static final String StartSymbol = "숫자 야구 게임을 시작합니다.";
+    private static final String InputSymbol = "숫자를 입력해주세요 : ";
+    private static final String EndSymbol = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
         + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
+    private static String computerNumber = "";
+    private static String userNumber = "";
 
-    private static ArrayList<Integer> computerNumber = new ArrayList<>();
-    private static ArrayList<Integer> userNumber = new ArrayList<>();
-
-    public static void storeUserNumberArrayList(String num) {
-        for (int i = 0; i < numberLength; i++) {
-            userNumber.add(num.charAt(i) - '0');
-        }
-    }
+    private static int ballNum;
+    private static int strikeNum;
 
     public static void getInput() {
         System.out.println(StartSymbol);
         System.out.print(InputSymbol);
-        String userInput = Console.readLine();
-        storeUserNumberArrayList(userInput);
-        inputValidation(userInput);
+        userNumber = Console.readLine();
+        inputValidation(userNumber);
+    }
+
+    public static void printGetResult(int ballNum, int strikeNum) {
+
+    }
+
+    public static void calculateNum() {
+        for (int i = 0; i < NumberLength; i++) {
+            if (IsStrike(computerNumber.charAt(i)-'0', userNumber.charAt(i)-'0')) {
+                addStrike();
+                continue;
+            }
+            if (IsBall(computerNumber.charAt(i)-'0', userNumber)) {
+                addBall();
+            }
+        }
+    }
+
+    public static void addBall() {
+        ballNum++;
+    }
+
+    public static void addStrike() {
+        strikeNum++;
     }
 
 
+    public static boolean IsBall(int computerOneNumber, String userNumber) {
+        return  userNumber.contains(Integer.toString(computerOneNumber));
+    }
+
+    public static boolean IsStrike(int computerOneNumber, int userOneNumber) {
+        return computerOneNumber == userOneNumber;
+    }
+
     public static boolean checkNumLength(String num) {
-        return num.length() == 3;
+        return num.length() == NumberLength;
     }
 
     public static boolean checkNumFormat(String num) {
@@ -49,8 +73,16 @@ public class Application {
         return true;
     }
 
+    public static boolean checkNumDuplication(String num) {
+        HashSet<Integer> checkEqualHashSet = new HashSet<>();
+        for (int i = 0; i < NumberLength; i++) {
+            checkEqualHashSet.add(num.charAt(i) - '0');
+        }
+        return checkEqualHashSet.size() == NumberLength;
+    }
+
     public static void inputValidation(String num) {
-        if (!checkNumFormat(num) || !checkNumLength(num) || isNumDuplicate(userNumber)) {
+        if (!checkNumFormat(num) || !checkNumLength(num) || !checkNumDuplication(num)) {
             throw new IllegalArgumentException();
         }
     }
@@ -59,37 +91,33 @@ public class Application {
         return Randoms.pickNumberInRange(1, 9);
     }
 
-    public static void getRandomDifferentNumber() {
-        for (int i = 0; i < numberLength; i++) {
+    public static String getRandomDifferentNumber() {
+        String number= "";
+        HashSet<Integer> differentNumSet = new HashSet<>();
+        for (int i = 0; i < NumberLength; i++) {
             int newNum = getRandomNumber();
-            computerNumber.add(newNum);
-            if (isNumDuplicate(computerNumber)) {
-                computerNumber.remove(i);
+            if (differentNumSet.contains(newNum)) {
                 i--;
                 continue;
             }
+            differentNumSet.add(newNum);
+            number += Integer.toString(newNum);
         }
+        return number;
     }
 
     public static void gameInit() {
-        getRandomDifferentNumber();
+        computerNumber = getRandomDifferentNumber();
+        System.out.println(computerNumber);
         getInput();
-    }
-
-    public static boolean isNumDuplicate(ArrayList<Integer> numberList ){
-        Set<Integer> numberSet = new HashSet<>();
-        for (int i =  0 ; i< numberList.size() ; i++)
-            numberSet.add(numberList.get(i));
-        return numberSet.size() != numberList.size();
     }
 
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         gameInit();
-        //System.out.println(number.get(0));
-        // System.out.println(number.get(1));
-        // System.out.println(number.get(2));
+        calculateNum();
+        //printOutput(ballNum,strikeNum);
 
     }
 }
