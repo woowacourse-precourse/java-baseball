@@ -61,12 +61,30 @@ public class Application {
         computerNumber = randomNumbers;
     }
 
+    static void judgeCount() {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int currentUserNumber = userNumber.get(i);
+            int currentComputerNumber = computerNumber.get(i);
+            if (currentUserNumber == currentComputerNumber) {
+                strike++;
+                continue;
+            }
+            if (computerNumber.contains(currentUserNumber)) {
+                ball++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         try {
             registerUserNumber();
             System.out.println(userNumber);
             registerComputerNumber();
             System.out.println(computerNumber);
+            judgeCount();
         } catch (IllegalArgumentException e) {
             System.err.println(e);
         }
