@@ -54,8 +54,10 @@ public class Game {
         }
     }
 
-    public boolean isPlaying() {
-        return referee.isPlaying();
+    public void run() {
+        while (referee.isPlaying()) {
+            play();
+        }
     }
 
     private boolean isDuplicated(List<Integer> answer) {
