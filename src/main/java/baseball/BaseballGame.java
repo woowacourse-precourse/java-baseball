@@ -34,7 +34,7 @@ public class BaseballGame {
 
             OutputView.printGameResult(ballCount, strikeCount);
 
-            isRunning = isGoOrStop(strikeCount);
+            isRunning = isNotThreeStrike(strikeCount);
         }
 
         return getReplayOrNot();
@@ -51,7 +51,7 @@ public class BaseballGame {
         return numbers;
     }
 
-    private int getBallCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    public int getBallCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int ballCount = 0;
 
         for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
@@ -74,7 +74,7 @@ public class BaseballGame {
         return 0;
     }
 
-    private int getStrikeCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    public int getStrikeCount(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int strikeCount = 0;
 
         for (int userIndex = 0; userIndex < userNumbers.size(); userIndex++) {
@@ -82,7 +82,7 @@ public class BaseballGame {
                 strikeCount += getEachStrikeCount(userNumbers, computerNumbers, userIndex, computerIndex);
             }
         }
-        
+
         return strikeCount;
     }
 
@@ -97,7 +97,7 @@ public class BaseballGame {
         return 0;
     }
 
-    private boolean isGoOrStop(int strikeCount) {
+    private boolean isNotThreeStrike(int strikeCount) {
         return strikeCount != STRIKE_NUM;
     }
 
