@@ -11,11 +11,11 @@ public class BaseballGameController {
     BaseballGameView baseballGameView = new BaseballGameView();
 
     public void gameIntro() {
-
+        baseballGameView.gameIntroMessage();
     }
 
     public void gameStart() {
-
+        
     }
 
 }
