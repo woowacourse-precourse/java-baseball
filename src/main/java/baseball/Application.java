@@ -10,9 +10,10 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 class Computer {
-    static List<Integer> numberList = new ArrayList<>();
+    static List<Integer> numberList;
 
     static void getThreeRandomNumber() {
+        numberList = new ArrayList<>();
         while (numberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numberList.contains(randomNumber)) {
@@ -25,7 +26,7 @@ class Computer {
 class Player {
     static int number;
     static String numberString;
-    static List<Integer> numberList = new ArrayList<>();
+    static List<Integer> numberList;
 
     static void writeNumber() {
         numberString = readLine();
@@ -36,7 +37,7 @@ class Player {
 class Umpire {
     static int strike = 0;
     static int ball = 0;
-    static HashSet<Integer> strikeSet = new HashSet<>();
+    static HashSet<Integer> strikeSet;
 
     static void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -51,11 +52,13 @@ class Umpire {
     private static void changeStringToList() {
 
         checkInput();
-
+        Player.numberList = new ArrayList<>();
         while (Player.number > 0) {
             Player.numberList.add(0, Player.number % 10);
             Player.number /= 10;
         }
+        if (checkSameNumber())
+                throw new IllegalArgumentException("same value");
     }
 
     private static void checkInput() {
@@ -65,12 +68,20 @@ class Umpire {
             throw new IllegalArgumentException("wrong Input");
         }
 
-        if (Player.numberList.size() != 3)
+        if (!Application.getAnswer && Player.numberString.length() != 3)
             throw new IllegalArgumentException("wrong size");
 
-        if (Application.getAnswer){
+        if (Application.getAnswer && !(Player.number == 1 || Player.number == 2))
+            throw new IllegalArgumentException("wrong value");
 
-        }
+    }
+
+    private static boolean checkSameNumber() {
+        if (Player.numberList.get(0) == Player.numberList.get(1) ||
+                Player.numberList.get(0) == Player.numberList.get(2) ||
+                Player.numberList.get(1) == Player.numberList.get(2))
+            return true;
+        return false;
     }
 
 
@@ -80,7 +91,7 @@ class Umpire {
     }
 
     static void checkStrike() {
-
+        strikeSet = new HashSet<>();
         for (int i = 0; i < 3; i++) {
             if (Computer.numberList.get(i) == Player.numberList.get(i)) {
                 strike++;
@@ -115,27 +126,45 @@ class Umpire {
         }
         if (ball > 0)
             System.out.print(ball + "볼 ");
-        if (strike > 0)
-            System.out.println(strike + "스트라이크");
+        if (!Application.getAnswer && strike > 0)
+            System.out.print(strike + "스트라이크");
         if (ball == 0 && strike == 0)
-            System.out.println("낫싱");
+            System.out.print("낫싱");
+        System.out.println();
     }
 
+    static void whenFinish() {
+        Player.writeNumber();
+        checkInput();
+    }
 
 }
 
 public class Application {
-   static boolean getAnswer = false;
+    static boolean getAnswer = false;
+    static boolean game = false;
+
     public static void main(String[] args) {
         Umpire.gameStart();
         while (true) {
-            Computer.getThreeRandomNumber();
+            getAnswer = false;
+            if (!game) {
+                Computer.getThreeRandomNumber();
+                game = true;
+            }
             while (!getAnswer) {
+                Umpire.ball = 0;
+                Umpire.strike = 0;
                 Umpire.getNumber();
+                System.out.println(Computer.numberList);
+                System.out.println(Player.numberList);
                 Umpire.getScore();
                 Umpire.printResult();
-//                Umpire.whenFinish();
             }
+            Umpire.whenFinish();
+            if (Player.number == 2)
+                return;
+            game = false;
         }
     }
 }
