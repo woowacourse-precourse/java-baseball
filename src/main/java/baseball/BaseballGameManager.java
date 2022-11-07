@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class BaseballGameManager {
@@ -31,8 +32,9 @@ public class BaseballGameManager {
             if (baseballScore.getStrikeCount() == numberCount) {
                 isAllStrikes = true;
             }
-
         }
+        // close Game Set
+        return;
     }
 
     private String getValidInput() {
@@ -44,6 +46,11 @@ public class BaseballGameManager {
 
             // userInput이 정해진 갯수의 숫자가 입력되지 않은 경우
             if (userInput.length() != numberCount) {
+                throw new NumberFormatException();
+            }
+
+            // userInput에 중복되는 숫자가 있는 경우
+            if (hasDuplicateNumberElement(userInput)) {
                 throw new NumberFormatException();
             }
 
@@ -97,5 +104,15 @@ public class BaseballGameManager {
         }
 
         System.out.println(scoreString.toString().trim());
+    }
+
+    private boolean hasDuplicateNumberElement(String userInput) {
+        int userInputSetSize = new HashSet<>(elementListMaker.convertToElementList(userInput)).size();
+
+        if (userInputSetSize < numberCount) {
+            return true;
+        }
+
+        return false;
     }
 }
