@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -31,13 +32,13 @@ public class Application {
         }
     }
 
-    public static boolean StartQuestioningPhase(){
+    public static boolean StartQuestioningPhase() {
         String input;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         input = Console.readLine();
-        if(input.equals("1")){
+        if (input.equals("1")) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -91,7 +92,17 @@ public class Application {
             tempNumbers = tempNumbers - (player.get(player.size() - 1)) * divider;
             divider = divider / 10;
         }
+        CheckPlayerNumbersException(player);
         return player;
+    }
+
+    public static void CheckPlayerNumbersException(List<Integer> player){
+        HashSet<Integer> checkSet = new HashSet<>(player);
+        if(checkSet.size() != player.size()){
+            throw new IllegalArgumentException("중복된 숫자가 감지되었습니다.");
+        } if(player.size() != 3){
+            throw new IllegalArgumentException("숫자를 3개만 입력해주세요.");
+        }
     }
 
     public static List<Integer> GenerateComputerNumbers(){
