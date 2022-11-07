@@ -1,9 +1,13 @@
 package baseball.exception;
 
 public class InputException {
-    final int PROPER_LENGTH=3;
-    final String NUMERIC="[+-]?\\d+";
-    final String BLANK="";
+    private static final String ZERO="0";
+    private static final int PROPER_LENGTH=3;
+    private static final String NUMERIC="[+-]?\\d+";
+    private static final String BLANK="";
+    boolean containZero(String userInput){
+        return userInput.contains(ZERO);
+    }
     public boolean isProperLetter(String userInput){
 
         return userInput.replaceAll(NUMERIC,BLANK).equals(BLANK);

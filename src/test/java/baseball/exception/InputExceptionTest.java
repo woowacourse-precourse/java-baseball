@@ -24,9 +24,17 @@ public class InputExceptionTest {
     @Test
     @DisplayName("Check for exception when length of input string is not 3")
     public void isProperLength_Test(){
-        String wrongLengthUserInput="4567";
+        String wrongLengthUserInput="67";
         InputException inputException = new InputException();
 
         assertThat(inputException.isProperLength(wrongLengthUserInput)).isFalse();
+    }
+    @Test
+    @DisplayName("Check for exception when input string contains zero.")
+    public void containZero_Test(){
+        String userInputContainZero="054";
+        InputException inputException = new InputException();
+
+        assertThat(inputException.containZero(userInputContainZero)).isTrue();
     }
 }
