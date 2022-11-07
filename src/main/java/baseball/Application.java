@@ -13,15 +13,19 @@ import static java.util.stream.Collectors.*;
 public class Application {
     public static void main(String[] args) {
 
+        int code = 1;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true){
+        while(code != 0){
             executionGame();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            if(Console.readLine().equals("2"))break;
+            code = continueGame();
         }
 
     }
-
+    public static Integer continueGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        if(Console.readLine().equals("2"))return 0;
+        else return 1;
+    }
     public static void executionGame(){
         List<Integer> computer = decision();
 
