@@ -2,8 +2,10 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Player {
     private static final int MAX_STRIKE = 3;
@@ -21,28 +23,27 @@ public class Player {
     public void setNumber() {
         System.out.print(INPUT_MESSAGE);
         String input = readLine();
-        isValidInput(input);
+        isValidInput(input.split(""));
         this.number = input.split("");
     }
 
-    private void isValidInput(String input) {
+    private void isValidInput(String[] input) {
         if (!isRightLength(input) || isDuplicated(input) || !isDigitRange(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private boolean isDuplicated(String input) {
-        Set<Character> stringCharSet = new HashSet<>();
-        input.chars().forEach(c -> stringCharSet.add((char) c));
-
+    private boolean isDuplicated(String[] input) {
+        Set<String> stringCharSet = new HashSet<>(Arrays.asList(input));
         return stringCharSet.size() != MAX_STRIKE;
     }
 
-    private boolean isDigitRange(String input) {
-        return input.matches(INPUT_PATTERN);
+    private boolean isDigitRange(String[] input) {
+        Pattern pattern = Pattern.compile(INPUT_PATTERN);
+        return Arrays.stream(input).allMatch(s -> pattern.matcher(s).matches());
     }
 
-    private boolean isRightLength(String input) {
-        return input.length() == MAX_STRIKE;
+    private boolean isRightLength(String[] input) {
+        return input.length == MAX_STRIKE;
     }
 }
