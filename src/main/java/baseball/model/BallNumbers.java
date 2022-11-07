@@ -1,16 +1,28 @@
 package baseball.model;
 
+import baseball.BallInputException;
 import baseball.model.BallNumber;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BallNumbers {
+    private static final int MAX = 3;
+
+    private static final char Zero = '0';
     private final List<BallNumber> ballNumbers;
 
 
     public BallNumbers(List<Character> hits) {
+        checkHits(hits);
         this.ballNumbers = ballNumbers(hits);
+    }
+
+    private static void checkHits(List<Character> hits) {
+        checkDuplicate(hits);
+        checkMax(hits);
+        checkZero(hits);
     }
 
     public int roundResult(int round, BallNumber roundBall) {
@@ -40,6 +52,24 @@ public class BallNumbers {
         return hits.stream()
                 .map(BallNumber::ballNumber)
                 .collect(Collectors.toList());
+    }
+    private static final void checkMax(List<Character> hits){
+        if (hits.size() < MAX){
+            throw new BallInputException("세 자리 이상 입력받을 수 없습니다.");
+        }
+    }
+
+    private static void checkZero(List<Character> hits) {
+        if (hits.contains(Zero)) {
+            throw new BallInputException("0은 입력할 수 없습니다.");
+        }
+    }
+
+
+    private static void checkDuplicate(List<Character> hits) {
+        if (hits.stream().anyMatch(ballNum -> Collections.frequency(hits, ballNum) > 1)) {
+            throw new BallInputException("중복된 숫자는 입력할 수 없습니다.");
+        }
     }
 
     public int size() {

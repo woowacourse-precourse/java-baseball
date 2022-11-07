@@ -1,17 +1,28 @@
 package baseball;
 
-import baseball.model.BallNumbers;
-import baseball.model.BaseBallHitsType;
+import baseball.model.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BaseBallGame {
 
-    public Map<BaseBallHitsType, Integer> baseBallHitsTypeMap(List<Character> tempHomeRun, List<Character> parameters) {
-        BallNumbers homeRun = new BallNumbers(tempHomeRun);
-        BallNumbers hits = new BallNumbers(parameters);
-
-        return BaseBallHitsType.hitsTypeMap(homeRun,hits);
+    public Map<BaseBallHitsType, Integer> baseBallHitsTypeMap(BallNumbers hits, HomeRunStrategy homeRunStrategy) {
+        return BaseBallHitsType.hitsTypeMap(homeRun(homeRunStrategy),hits);
     }
 
+    private BallNumbers homeRun(HomeRunStrategy homeRunStrategy) {
+       return new BallNumbers(createChars(homeRunStrategy));
+    }
+
+    public List<Character> createChars(BallNumbersCreateStrategy homeRunStrategy) {
+        List<Integer> ballNumbers = homeRunStrategy.createBallNumbers();
+
+        return ballNumbers.stream()
+                .map(String::valueOf)
+                .map(stringNumber -> stringNumber.codePoints().mapToObj(string -> (char) string))
+                .flatMap(Stream::distinct)
+                .collect(Collectors.toList());
+    }
 }

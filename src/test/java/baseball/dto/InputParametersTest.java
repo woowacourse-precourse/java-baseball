@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputParametersTest {
     @ParameterizedTest
-    @ValueSource(strings = {"3341", "331","78 ","   "})
+    @ValueSource(strings = {"3341","78 ","  "})
     void if_contain_blank(String string){
         assertThrows(IllegalArgumentException.class, ()-> new InputParameters(string));
     }

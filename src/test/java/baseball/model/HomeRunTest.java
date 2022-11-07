@@ -12,7 +12,6 @@ public class HomeRunTest {
     void createHomeRun() {
         HomeRun homeRun = new HomeRun();
         TestCreateStrategy homeRunStrategy = new TestCreateStrategy();
-        System.out.println(homeRun.homeRun(new HomeRunStrategy()));
-        assertEquals(homeRun.homeRun(homeRunStrategy), List.of('1', '2', '3'));
+        assertEquals(homeRun.homeRun(homeRunStrategy), List.of(BallNumber.ballNumber('1'), BallNumber.ballNumber('2'), BallNumber.ballNumber('3')));
     }
 }
