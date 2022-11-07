@@ -41,8 +41,6 @@ public class Decision {
     public static void reStart() {
         playing = true;
         out = false;
-        PickNumbers pickNumbers = new PickNumbers();
-        pickNumbers.pickNumbers();
     }
 
     public static void quitGame() {

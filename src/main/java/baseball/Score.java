@@ -13,11 +13,11 @@ public class Score {
     }
 
     public void computerNumbers(List<Integer> computers) {
+        System.out.println("이번에 뽑은 숫자는: " + computers.get(0) + ": " + computers.get(1) + ": " + computers.get(2));
         computerNumbers = computers;
     }
 
     public static HashMap<String, Integer> total() {
-        System.out.println("정답" +computerNumbers.get(0)+" " + computerNumbers.get(1) + " " + computerNumbers.get(2));
         HashMap<String, Integer> totalScore = new HashMap<>();
         totalScore.put(STRIKE, getStrike());
         totalScore.put(BALL, getBall());
