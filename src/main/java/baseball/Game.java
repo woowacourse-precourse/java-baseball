@@ -3,45 +3,65 @@ package baseball;
 import baseball.exception.InputException;
 import baseball.service.ComputerService;
 import baseball.service.PlayerService;
+import baseball.service.ScoreBoardService;
 import baseball.view.InstructionView;
+import baseball.view.ResultView;
 
 import java.util.List;
 
 public class Game {
     private static final int RESTART = 1;
-    InstructionView instructionView = new InstructionView();
-    PlayerService playerService = new PlayerService();
     ComputerService computerService = new ComputerService();
     InputException inputException = new InputException();
-    private int runCode;
-
-    public void startGame() {
-        instructionView.printStart();
-        runGame();
-    }
-
-    public void runGame() {
-        computerService.initComputer();
-        List<Integer> computerNumbers = computerService.getComputer().getNumbers();
-//        do {
-//            String inputNumbers = instructionView.printInputNumbers();
-//            playerService.inputNumbersToPlayer(inputNumbers);
-//            List<Integer> playerNumbers = playerService.getPlayer().getNumbers();
-//        } while () // 성공 확인하고 탈출
-//        if (inputRunCode() == RESTART) {
-//            runGame();
-//        }
-    }
-
-    public int inputRunCode() {
-        String runCode = instructionView.printInputCode();
-        checkRunCodeException(runCode);
-        return Integer.parseInt(runCode);
-    }
+    InstructionView instructionView = new InstructionView();
+    PlayerService playerService = new PlayerService();
+    ResultView resultView = new ResultView();
+    ScoreBoardService scoreBoardService = new ScoreBoardService();
 
     private void checkRunCodeException(String runCode) {
         inputException.isInvalidCodeSize(runCode);
         inputException.isDigitException(runCode);
         inputException.isInvalidCode(Integer.parseInt(runCode));
+    }
+
+    private int inputRunCode() {
+        String runCode = instructionView.printInputCode();
+        checkRunCodeException(runCode);
+        return Integer.parseInt(runCode);
+    }
+
+    private void printResult() {
+        if (scoreBoardService.isBallAndStrike()) {
+            resultView.printBall(scoreBoardService.getScoreBoard().getBall());
+            resultView.printStrike(scoreBoardService.getScoreBoard().getStrike());
+        } else if (scoreBoardService.isBall()) {
+            resultView.printBall(scoreBoardService.getScoreBoard().getBall());
+            System.out.println("");
+        } else if (scoreBoardService.isStrike()) {
+            resultView.printStrike(scoreBoardService.getScoreBoard().getStrike());
+        } else if (scoreBoardService.isNothing()) {
+            resultView.printNothing();
+        }
+    }
+
+    private void runGame() {
+        computerService.initComputer();
+        List<Integer> computerNumbers = computerService.getComputer().getNumbers();
+        while (!scoreBoardService.isThreeStrike()) {
+            String inputNumbers = instructionView.printInputNumbers();
+            playerService.inputNumbersToPlayer(inputNumbers);
+            List<Integer> playerNumbers = playerService.getPlayer().getNumbers();
+            scoreBoardService.setScoreBoard(computerNumbers, playerNumbers);
+            printResult();
+        }
+        int runCode = inputRunCode();
+        if (runCode == RESTART) {
+            runGame();
+        }
+    }
+
+    public void startGame() {
+        instructionView.printStart();
+        runGame();
     }
 }

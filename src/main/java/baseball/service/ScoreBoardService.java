@@ -64,7 +64,7 @@ public class ScoreBoardService {
         return scoreBoard.isThreeStrike();
     }
 
-    private void setScoreBoard(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+    public void setScoreBoard(List<Integer> computerNumbers, List<Integer> playerNumbers) {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < computerNumbers.size(); i++) {
@@ -72,8 +72,7 @@ public class ScoreBoardService {
             int playerNumber = playerNumbers.get(i);
             if (isEqualNumber(computerNumber, playerNumber)) {
                 strike += 1;
-            }
-            if (hasNumberByComputerNumbers(computerNumbers, playerNumber)) {
+            } else if (hasNumberByComputerNumbers(computerNumbers, playerNumber)) {
                 ball += 1;
             }
         }
