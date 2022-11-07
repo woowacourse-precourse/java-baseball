@@ -62,6 +62,14 @@ class User {
         return inputNum;
     }
 
+    static String getExitOrRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputStatus = Console.readline();
+
+        return inputStatus;
+    }
+}
+
 
 
 }
@@ -91,7 +99,7 @@ class Game {
 
 enum GameStatus {
     ON(1),
-    TERMINATE(2);
+    EXIT(2);
 
     private final int value;
     GameStatus(int value){
