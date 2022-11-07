@@ -23,6 +23,27 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    public void start() {
+        ArrayNumber playerNumber = new ArrayNumber();
+        ArrayNumber computerNumber = new ArrayNumber();
+
+        computerNumber.setRandomNbr();
+        computer = computerNumber.getDigits();
+
+        while(!exit) {
+            playerNumber.inputAnswer();
+            user = playerNumber.getDigits();
+
+            resetScore();
+            calScore();
+            printResult();
+
+            if(strike ==cnt_nbr) {
+                readyToExit(computerNumber);
+            }
+        }
+    }
+
     private void calScore() {
         for(int i = 0; i < cnt_nbr; i++) {
             int score = StrikeOrBall(user[i], i);
