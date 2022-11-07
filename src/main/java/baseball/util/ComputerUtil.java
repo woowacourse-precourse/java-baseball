@@ -38,7 +38,7 @@ public class ComputerUtil {
     private static boolean isValidNumber(List<Integer> computerNumbers, int randomNumber) {
         for (int i = 0; i < 3; i++) {
             int computerNumber = computerNumbers.get(i);
-            if (hasBlank(computerNumber)) {
+            if (isEmpty(computerNumber)) {
                 break;
             }
 
@@ -50,7 +50,7 @@ public class ComputerUtil {
         return true;
     }
 
-    private static boolean hasBlank(int computerNumber) {
+    private static boolean isEmpty(int computerNumber) {
         return computerNumber == 0;
     }
 
