@@ -11,10 +11,6 @@ public class TargetNumber {
 
     private final List<Integer> numberListByDigit;
 
-    public static TargetNumber getRandomInstance() {
-        return new TargetNumber();
-    }
-
     public static TargetNumber getInstance(String input) {
         validateInput(input);
 
@@ -24,6 +20,17 @@ public class TargetNumber {
         }
 
         return new TargetNumber(integerList);
+    }
+
+    public static TargetNumber getRandomInstance() {
+        return new TargetNumber(makeRandomOneDigitIntListWithNoDuplicate());
+    }
+
+    private TargetNumber(List<Integer> integerList) {
+        numberListByDigit = new ArrayList<>();
+
+        numberListByDigit.addAll(integerList);
+        Collections.reverse(numberListByDigit);
     }
 
     private static void validateInput(String input) {
@@ -55,23 +62,17 @@ public class TargetNumber {
         }
     }
 
-    private TargetNumber(List<Integer> integerList) {
-        numberListByDigit = new ArrayList<>();
-
-        numberListByDigit.addAll(integerList);
-        Collections.reverse(numberListByDigit);
-    }
-
-    private TargetNumber() {
-        numberListByDigit = new ArrayList<>();
-        while (numberListByDigit.size() < TARGET_NUMBER_LENGTH) {
+    private static List<Integer> makeRandomOneDigitIntListWithNoDuplicate() {
+        List<Integer> output = new ArrayList<>();
+        while (output.size() < TARGET_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numberListByDigit.contains(randomNumber)) {
-                numberListByDigit.add(randomNumber);
+            if (!output.contains(randomNumber)) {
+                output.add(randomNumber);
             }
         }
 
-        Collections.reverse(numberListByDigit);
+        Collections.reverse(output);
+        return output;
     }
 
     public int toInt() {
