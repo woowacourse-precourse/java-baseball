@@ -1,6 +1,10 @@
 package baseball.testcase;
 
-import baseball.game.*;
+import baseball.game.Ball;
+import baseball.game.BallMaker;
+import baseball.game.BallReader;
+import baseball.game.Game;
+import baseball.game.ResultOfBall;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,10 +47,10 @@ public class GameTest extends NsTest {
                 .thenReturn(true);
 
         when(ballMaker.getRandomBall())
-                .thenReturn(new Ball(List.of(1,2,3)));
+                .thenReturn(new Ball(List.of(1, 2, 3)));
 
         when(ballMaker.getUserBall())
-                .thenReturn(new Ball(List.of(2,1,3)));
+                .thenReturn(new Ball(List.of(2, 1, 3)));
 
         //when
         game.play();
@@ -67,10 +70,10 @@ public class GameTest extends NsTest {
                 .thenReturn(true);
 
         when(ballMaker.getRandomBall())
-                .thenReturn(new Ball(List.of(1,2,3)));
+                .thenReturn(new Ball(List.of(1, 2, 3)));
 
         when(ballMaker.getUserBall())
-                .thenReturn(new Ball(List.of(2,1,3)));
+                .thenReturn(new Ball(List.of(2, 1, 3)));
 
         Map<ResultOfBall, Integer> firstResult = new HashMap<>();
         firstResult.put(ResultOfBall.STRIKE, 2);
@@ -113,7 +116,7 @@ public class GameTest extends NsTest {
     void BallReader의_getUserBall_예외_발생에_따른_게임_Game_예외_전파() {
 
         when(ballMaker.getRandomBall())
-                .thenReturn(new Ball(List.of(1,2,3)));
+                .thenReturn(new Ball(List.of(1, 2, 3)));
 
 
         when(ballMaker.getUserBall())

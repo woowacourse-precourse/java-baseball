@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+
 import java.io.ByteArrayInputStream;
 import java.util.NoSuchElementException;
 
@@ -21,10 +22,10 @@ public class NBallBaseGameTest extends NsTest {
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    runNBall(5,"12346", "21435","12345","1", "43210", "98765", "2");
+                    runNBall(5, "12346", "21435", "12345", "1", "43210", "98765", "2");
                     assertThat(output()).contains("4스트라이크", "1볼 4스트라이크", "5스트라이크", "낫싱", "게임 종료");
                 },
-                1,2,3,4,5,9,8,7,6,5
+                1, 2, 3, 4, 5, 9, 8, 7, 6, 5
         );
     }
 
@@ -60,7 +61,7 @@ public class NBallBaseGameTest extends NsTest {
     void 게임_진행은_숫자_1과_2만_허용한다() {
         MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
-                .thenReturn(1,2,3,4,5);
+                .thenReturn(1, 2, 3, 4, 5);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runNBallException(5, "12345", "this is not 1 or 2"))
@@ -76,7 +77,7 @@ public class NBallBaseGameTest extends NsTest {
         gameController.playRecurringGame();
     }
 
-    private void runNBallException(int i, String... args){
+    private void runNBallException(int i, String... args) {
         try {
             runNBall(i, args);
         } catch (final NoSuchElementException ignore) {

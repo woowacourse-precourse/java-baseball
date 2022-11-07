@@ -12,7 +12,6 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
-
 public class BallReaderTest {
     BallReader ballReader = new BallReader();
 
@@ -43,7 +42,7 @@ public class BallReaderTest {
     @DisplayName("BallReader가 3스트라이크를 일 때 게임이 끝났다 판단하는지 판독")
     @RepeatedTest(5)
     void BALLREADER_판독_결과가_참인_경우_테스트() {
-        List<Integer> ballData = Randoms.pickUniqueNumbersInRange(1,9,3);
+        List<Integer> ballData = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         Ball firstBall = new Ball(ballData);
         Ball secondBall = new Ball(ballData);
 
@@ -51,17 +50,17 @@ public class BallReaderTest {
         System.out.println("result = " + result);
         System.out.println();
 
-        assertThat(ballReader.isFinished(firstBall,secondBall)).isTrue();
+        assertThat(ballReader.isFinished(firstBall, secondBall)).isTrue();
     }
 
     @DisplayName("BallReader가 3스트라이크를 아닐 때 게임이 끝나지 않았다 판단하는지 판독")
     @RepeatedTest(5)
     void BALLREADER_판독_결과가_거짓인_경우_테스트() {
-        Ball firstBall = new Ball(Randoms.pickUniqueNumbersInRange(1,9,3));
-        Ball secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1,9,3));
+        Ball firstBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+        Ball secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
 
-        while(ballReader.isFinished(firstBall,secondBall)){
-            secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1,9,3));
+        while (ballReader.isFinished(firstBall, secondBall)) {
+            secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
         }
 
         Map<ResultOfBall, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
@@ -70,6 +69,6 @@ public class BallReaderTest {
         System.out.println("result = " + result);
         System.out.println();
 
-        assertThat(ballReader.isFinished(firstBall,secondBall)).isFalse();
+        assertThat(ballReader.isFinished(firstBall, secondBall)).isFalse();
     }
 }

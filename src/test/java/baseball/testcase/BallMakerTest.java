@@ -70,10 +70,10 @@ public class BallMakerTest extends NsTest {
 
     @DisplayName("BallMaker가 UserBall을 만드는 과정에서 잘못된 입력을 받는다면 BallMaker는 IllegalArgumentException를 던진다")
     @ParameterizedTest
-    @ValueSource(strings = { "1234", "hello", "12", "012"})
+    @ValueSource(strings = {"1234", "hello", "12", "012"})
     void BALLMAKER의_GETUSERBALL_메서드_예외_발생_테스트(String stringArg) {
         command(stringArg);
-        assertThatThrownBy(()->ballMaker.getUserBall()).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> ballMaker.getUserBall()).isInstanceOf(IllegalArgumentException.class);
     }
 
     private void command(final String... args) {
