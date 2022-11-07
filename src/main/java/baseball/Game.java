@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
     private static final String START_SENTENCE = "숫자 야구 게임을 시작합니다.";
@@ -21,6 +22,7 @@ public class Game {
         while (gameContinue) {
             setPlayer();
             resetCount();
+            countHit();
         }
     }
 
@@ -37,5 +39,15 @@ public class Game {
     private void resetCount() {
         ball = 0;
         strike = 0;
+    }
+
+    private void countHit() {
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(computer.get(i), player.get(i))) {
+                strike++;
+            } else if (computer.contains(player.get(i))) {
+                ball++;
+            }
+        }
     }
 }
