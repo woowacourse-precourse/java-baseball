@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -51,6 +52,21 @@ public class Application {
         }
     }
 
+    public static List<Integer> separateNumberToDigit(int number) {
+
+        List<Integer> digits = new ArrayList<>();
+
+        while(number > 0) {
+            digits.add(number % 10);
+            number /= 10;
+        }
+
+        Collections.reverse(digits);
+
+        return digits;
+
+    }
+
     public static void main(String[] args) {
 
         boolean status = playGame();
@@ -59,6 +75,10 @@ public class Application {
         while (status != false) {
             List<Integer> count = new ArrayList<>();
 
+            System.out.print("숫자를 입력해주세요 : ");
+            int number = Integer.parseInt(Console.readLine());
+            List<Integer> digits = separateNumberToDigit(number);
+
             if (checkAnswer(count)) {
                 status = restartGame();
                 answer = createAnswer();
@@ -66,5 +86,7 @@ public class Application {
         }
 
     }
+
+
 
 }
