@@ -13,6 +13,10 @@ class Play {
         throw new AssertionError();
     }
 
+    static int getCount() {
+        return COUNT;
+    }
+
     static List<Integer> getRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
         while (randomNumber.size() < COUNT) {
