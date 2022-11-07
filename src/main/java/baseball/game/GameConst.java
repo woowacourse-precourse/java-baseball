@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 public abstract class GameConst {
     public static final Integer EXIT_CODE = 2;

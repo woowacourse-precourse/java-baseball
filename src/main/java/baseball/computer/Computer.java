@@ -1,4 +1,4 @@
-package baseball;
+package baseball.computer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -18,14 +18,22 @@ public class Computer {
         return numbers;
     }
 
+    private void setNumbers(List<Integer> randomNumbers) {
+        this.numbers = randomNumbers;
+    }
+
     public void generateNumber() {
         this.numbers = new ArrayList<>();
 
-        while (numbers.size() < NUMBER_LENGTH) {
+        List<Integer> randomNumbers = new ArrayList<>();
+
+        while (randomNumbers.size() < NUMBER_LENGTH) {
             Integer randomNumber = Randoms.pickNumberInRange(MINIMAL_RANDOM_INTEGER, MAXIMUM_RANDOM_INTEGER);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
         }
+
+        setNumbers(randomNumbers);
     }
 }

@@ -1,8 +1,10 @@
-package baseball;
+package baseball.game;
 
+import baseball.computer.Computer;
+import baseball.user.User;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.GameConst.*;
+import static baseball.game.GameConst.*;
 import static baseball.RuleConst.*;
 
 public class GameController {
