@@ -2,11 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.assertj.core.util.Streams;
+import org.assertj.core.util.Strings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -39,6 +42,7 @@ public class Application {
             String[] inputSplits = input.split("");
 
             validateInputCase(inputSplits);
+            validateDuplicateNumber(inputSplits);
 
             int[] inputNumbers = Arrays.stream(inputSplits).mapToInt(Integer::valueOf).toArray();
 
@@ -99,5 +103,15 @@ public class Application {
     private static void validateInputCase(String[] inputSplits){
         if(inputSplits.length != 3) throw new IllegalArgumentException();
         if(!Pattern.matches("[1-9]", Arrays.toString(inputSplits))) throw new IllegalArgumentException();
+    }
+
+
+
+    private static void validateDuplicateNumber(String[] inputSplits){
+        String input = Arrays.toString(inputSplits);
+
+        for(int i = 0 ; i < inputSplits.length ; i++){
+            if(input.indexOf(inputSplits[i]) != input.lastIndexOf(inputSplits[i])) throw new IllegalArgumentException();
+        }
     }
 }
