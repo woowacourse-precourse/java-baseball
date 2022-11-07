@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-public class NumberBaseball {
+public class NumberBaseballService {
     private List<Integer> answer;
 
-    public NumberBaseball() {
+    public NumberBaseballService() {
         generateAnswerNumber();
     }
 

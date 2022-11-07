@@ -6,18 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class NumberBaseballTest {
+class NumberBaseballServiceTest {
 
     @Test
     void generateAnswerNumber() {
         //given
-        NumberBaseball numberBaseball = new NumberBaseball();
+        NumberBaseballService numberBaseballService = new NumberBaseballService();
 
         //when
-        numberBaseball.generateAnswerNumber();
-        List<Integer> answer = numberBaseball.getAnswer();
+        numberBaseballService.generateAnswerNumber();
+        List<Integer> answer = numberBaseballService.getAnswer();
 
         //then
         Assertions.assertThat(answer.size()).isEqualTo(3);
@@ -31,8 +29,8 @@ class NumberBaseballTest {
     @Test
     void compareInputAndAnswer() {
         //given
-        NumberBaseball numberBaseball = new NumberBaseball();
-        List<Integer> answer = numberBaseball.getAnswer();
+        NumberBaseballService numberBaseballService = new NumberBaseballService();
+        List<Integer> answer = numberBaseballService.getAnswer();
 
         //when
         int digit0 = answer.get(0);
@@ -46,27 +44,27 @@ class NumberBaseballTest {
 
         //then
         //input == answer
-        StrikeBallCountDto result = numberBaseball.compareInputAndAnswer(answer);
+        StrikeBallCountDto result = numberBaseballService.compareInputAndAnswer(answer);
         Assertions.assertThat(result.getStrikeCount()).isEqualTo(3);
         Assertions.assertThat(result.getBallCount()).isEqualTo(0);
 
         //input1 - 2 ball
-        result = numberBaseball.compareInputAndAnswer(input1);
+        result = numberBaseballService.compareInputAndAnswer(input1);
         Assertions.assertThat(result.getStrikeCount()).isEqualTo(0);
         Assertions.assertThat(result.getBallCount()).isEqualTo(2);
 
         //input2 - 3 ball
-        result = numberBaseball.compareInputAndAnswer(input2);
+        result = numberBaseballService.compareInputAndAnswer(input2);
         Assertions.assertThat(result.getStrikeCount()).isEqualTo(0);
         Assertions.assertThat(result.getBallCount()).isEqualTo(3);
 
         //input3 - nothing
-        result = numberBaseball.compareInputAndAnswer(input3);
+        result = numberBaseballService.compareInputAndAnswer(input3);
         Assertions.assertThat(result.getStrikeCount()).isEqualTo(0);
         Assertions.assertThat(result.getBallCount()).isEqualTo(0);
 
         //input4 - 1 strike 1 ball
-        result = numberBaseball.compareInputAndAnswer(input4);
+        result = numberBaseballService.compareInputAndAnswer(input4);
         Assertions.assertThat(result.getStrikeCount()).isEqualTo(1);
         Assertions.assertThat(result.getBallCount()).isEqualTo(1);
     }
