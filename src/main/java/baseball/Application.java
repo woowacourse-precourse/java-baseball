@@ -46,7 +46,7 @@ public class Application {
         // 랜덤숫자 1~9
 
         List<Integer> computerThreeNum = new ArrayList<Integer>();
-        while (computerThreeNum.size() != 3) {
+        while (computerThreeNum.size() < 3) {
             int computerNum = Randoms.pickNumberInRange(1, 9);
 
             if (!computerThreeNum.contains(computerNum)) {
@@ -54,6 +54,7 @@ public class Application {
             }
 
         }
+        System.out.println(computerThreeNum);
         return computerThreeNum;
     }
 
@@ -64,9 +65,9 @@ public class Application {
         // myThreeNum 호출
         // checkValidation 호출
         // computerThreeNum 호출
+        List<Integer> computerThreeNum = computerThreeNum();
         List<Integer> myThreeNum = myThreeNum();
         checkValidation(myThreeNum);
-        List<Integer> computerThreeNum = computerThreeNum();
         boolean equalList = equalList(computerThreeNum, myThreeNum);
         if (equalList == false) {
             int strike = strike(computerThreeNum, myThreeNum);
@@ -79,11 +80,11 @@ public class Application {
         // list A.containsAll(list B) 리스트 내용 비교
         boolean equalList = true;
         // index, 내용 같으면 true ------> 3스트라이크!
-        if (myThreeNum.containsAll(computerThreeNum)) {
+        if (myThreeNum.equals(computerThreeNum)) {
+            System.out.println("3 스트라이크!");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다!");
+            System.out.println("게임종료");
         }
-        System.out.println("3 스트라이크!");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다!");
-        System.out.println("게임종료");
         return equalList;
     }
 
