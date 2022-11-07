@@ -27,6 +27,15 @@ public class Application {
         }
     }
 
+    private static boolean checkUserAnswer(String userAnswer) {
+        if (userAnswer.equals("1")) {
+            return true;
+        } else if (userAnswer.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
     private static void printGameOver() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
