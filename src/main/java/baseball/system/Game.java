@@ -43,4 +43,11 @@ public class Game {
     public int getStrikeCnt() {
         return strikeCnt;
     }
+
+    /**
+     * 볼의 수를 반환하는 기능
+     */
+    public int getBallCnt() {
+        return  ballCnt;
+    }
 }
