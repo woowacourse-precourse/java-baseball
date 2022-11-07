@@ -89,7 +89,7 @@ public class BallsTest {
 		Balls player = new Balls(List.of(7, 8, 9));
 
 		CompareResult result = com.compareTo(player);
-		assertThat(result.getResult()).isEqualTo("낫싱");
+		assertThat(result.isAllNothing()).isEqualTo(true);
 	}
 
 	@DisplayName("숫자 비교 테스트 N:M - 스트라이크")
@@ -99,7 +99,7 @@ public class BallsTest {
 		Balls player = new Balls(List.of(1, 2, 3));
 
 		CompareResult result = com.compareTo(player);
-		assertThat(result.getResult()).isEqualTo("1스트라이크");
+		assertThat(result.getStrikes()).isEqualTo(1);
 	}
 
 	@DisplayName("숫자 비교 테스트 N:M - 1볼 1스트라이크")
@@ -109,7 +109,8 @@ public class BallsTest {
 		Balls player = new Balls(List.of(4, 5, 6));
 
 		CompareResult result = com.compareTo(player);
-		assertThat(result.getResult()).isEqualTo("1볼 1스트라이크");
+		assertThat(result.getBalls()).isEqualTo(1);
+		assertThat(result.getStrikes()).isEqualTo(1);
 	}
 
 	@DisplayName("숫자 비교 테스트 N:M - 2볼 1스트라이크")
@@ -119,7 +120,8 @@ public class BallsTest {
 		Balls player = new Balls(List.of(4, 5, 2));
 
 		CompareResult result = com.compareTo(player);
-		assertThat(result.getResult()).isEqualTo("2볼 1스트라이크");
+		assertThat(result.getBalls()).isEqualTo(2);
+		assertThat(result.getStrikes()).isEqualTo(1);
 	}
 
 	@DisplayName("숫자 비교 테스트 N:M - 2볼")
@@ -129,7 +131,7 @@ public class BallsTest {
 		Balls player = new Balls(List.of(1, 5, 2));
 
 		CompareResult result = com.compareTo(player);
-		assertThat(result.getResult()).isEqualTo("2볼");
+		assertThat(result.getBalls()).isEqualTo(2);
 	}
 
 	@DisplayName("숫자 비교 테스트 N:M - 3스트라이크")
@@ -139,6 +141,6 @@ public class BallsTest {
 		Balls player = new Balls(List.of(4, 2, 5));
 
 		CompareResult result = com.compareTo(player);
-		assertThat(result.getResult()).isEqualTo("3스트라이크");
+		assertThat(result.getStrikes()).isEqualTo(3);
 	}
 }
