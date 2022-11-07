@@ -51,4 +51,26 @@ public class Application {
 
     }
 
+    public static List<Integer> compareAnswerToInput(List<Integer> answer, List<Integer> input) {
+        int strikeCount=0;
+        int ballCount = 0;
+
+        for (int integerPosition = 0; integerPosition < answer.size(); integerPosition++) {
+            if (answer.get(integerPosition) == input.get(integerPosition)) {
+                strikeCount++;
+            }
+
+            if (answer.contains(input.get(integerPosition))) {
+                ballCount++;
+            }
+        }
+
+        ballCount = ballCount - strikeCount;
+        List<Integer> comparisonResult = Arrays.asList(ballCount, strikeCount);
+
+        return comparisonResult;
+
+    }
+
+
 }
