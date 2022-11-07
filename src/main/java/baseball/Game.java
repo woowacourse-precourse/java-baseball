@@ -3,38 +3,34 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+    private final Computer computer = new Computer(new NumberGenerator());
+    private final Referee referee = new Referee(new Rule());
+    private final Player player = new Player();
 
-    public void start() {
-        Computer computer = new Computer(new NumberGenerator());
-        Referee referee = new Referee(new Rule());
-        Player player = new Player();
-
-        System.out.println(computer.getNumbers());
-
+    public boolean start() {
         computer.giveNumbersToReferee(referee);
-        View.start();
 
-        boolean helper = false;
-        do {
-            System.out.print("숫자를 입력하세요 : ");
-            String readLine = Console.readLine();
-            player.sayNumbers(readLine);
-            player.giveNumbersToReferee(referee);
-
-            ResponseView gameMessage = referee.answerNumber();
-            helper = gameMessage.check();
-        } while (!helper);
-        {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String reStartNumber = Console.readLine();
-
-            if (Integer.parseInt(reStartNumber) == 1) {
-                restart();
-            }
+        boolean isFinished = false;
+        while (!isFinished) {
+            View.inputNumber();
+            savePlayerNumber(player, referee);
+            ResponseView responseView = referee.answerNumber();
+            isFinished = responseView.check();
         }
+
+        return restart();
     }
 
-    private void restart() {
-        start();
+    private void savePlayerNumber(Player player, Referee referee) {
+        player.sayNumbers(pushNumber());
+        player.giveNumbersToReferee(referee);
+    }
+
+    private boolean restart() {
+        return Integer.valueOf(pushNumber()).equals(1);
+    }
+
+    private static String pushNumber() {
+        return Console.readLine();
     }
 }
