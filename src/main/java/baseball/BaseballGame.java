@@ -68,4 +68,21 @@ public class BaseballGame {
             throw new IllegalArgumentException();
         return false;
     }
+
+    public void StartGame(){
+        BaseballNumber OppositeNumber = new BaseballNumber();
+        BaseballNumber MyNumber = new BaseballNumber();
+
+        OppositeNumber.setNumbersByRandom();
+
+        while(true){
+            MyNumber.setNumbers();
+            SetStrikeNumber(OppositeNumber, MyNumber);
+            SetBallNumber(OppositeNumber, MyNumber);
+            PrintResult();
+
+            if(strikeNumber == 3)
+                break;
+        }
+    }
 }
