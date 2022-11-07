@@ -1,18 +1,18 @@
 package baseball.domain.game_number;
 
-import baseball.domain.number.SingleNumber;
-import baseball.domain.number.SingleNumbersGenerator;
+import baseball.domain.baseball_number.BaseballNumber;
 
 import java.util.List;
 
-import static baseball.domain.number.RandomNumberGenerator.*;
+import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
+import static baseball.domain.baseball_number.RandomNumberGenerator.randomNumber;
 
 public class Answer {
 
-    private final List<SingleNumber> answer;
+    private final List<BaseballNumber> answer;
 
     public Answer() {
-        this.answer = SingleNumbersGenerator.singleNumberList(randomNumber());
+        this.answer = baseballNumberList(randomNumber());
     }
 
     public CountResult ballAndStrikeCount(Guess guess) {

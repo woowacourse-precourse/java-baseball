@@ -1,13 +1,13 @@
 package baseball.domain.game_number;
 
-import baseball.domain.number.SingleNumber;
+import baseball.domain.baseball_number.BaseballNumber;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static baseball.domain.number.SingleNumbersGenerator.singleNumberList;
+import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -32,7 +32,7 @@ class GuessTest {
     @Test
     void ball이_3일_경우_3을_리턴한다() {
         Guess guess = new Guess("123");
-        List<SingleNumber> answer = singleNumberList("312");
+        List<BaseballNumber> answer = baseballNumberList("312");
 
         assertThat(guess.ballCount(answer)).isEqualTo(3);
     }
@@ -40,7 +40,7 @@ class GuessTest {
     @Test
     void ball이_0일_경우_0을_리턴한다() {
         Guess guess = new Guess("123");
-        List<SingleNumber> answer = singleNumberList("123");
+        List<BaseballNumber> answer = baseballNumberList("123");
 
         assertThat(guess.ballCount(answer)).isEqualTo(0);
     }
@@ -48,7 +48,7 @@ class GuessTest {
     @Test
     void strike가_3일_경우_3을_리턴한다() {
         Guess guess = new Guess("123");
-        List<SingleNumber> answer = singleNumberList("123");
+        List<BaseballNumber> answer = baseballNumberList("123");
 
         assertThat(guess.strikeCount(answer)).isEqualTo(3);
     }
@@ -56,7 +56,7 @@ class GuessTest {
     @Test
     void strike가_0일_경우_0을_리턴한다() {
         Guess guess = new Guess("123");
-        List<SingleNumber> answer = singleNumberList("312");
+        List<BaseballNumber> answer = baseballNumberList("312");
 
         assertThat(guess.strikeCount(answer)).isEqualTo(0);
     }

@@ -1,9 +1,9 @@
-package baseball.domain.number;
+package baseball.domain.baseball_number;
 
 import java.util.List;
 import java.util.Objects;
 
-public final class SingleNumber {
+public final class BaseballNumber {
 
     private final int position;
     private final int number;
@@ -11,15 +11,15 @@ public final class SingleNumber {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
 
-    SingleNumber(int position, int number) {
+    BaseballNumber(int position, int number) {
         validateNumberRange(number);
         this.position = position;
         this.number = number;
     }
 
-    public boolean equalsOnlyNumber(List<SingleNumber> singleNumbers) {
-        for (SingleNumber singleNumber : singleNumbers) {
-            if ((position != singleNumber.position) && (number == singleNumber.number)) {
+    public boolean equalsOnlyNumber(List<BaseballNumber> baseballNumbers) {
+        for (BaseballNumber baseballNumber : baseballNumbers) {
+            if ((position != baseballNumber.position) && (number == baseballNumber.number)) {
                 return true;
             }
         }
@@ -30,7 +30,7 @@ public final class SingleNumber {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SingleNumber that = (SingleNumber) o;
+        BaseballNumber that = (BaseballNumber) o;
         return position == that.position && number == that.number;
     }
 

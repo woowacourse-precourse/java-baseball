@@ -1,29 +1,30 @@
 package baseball.domain.game_number;
 
-import baseball.domain.number.SingleNumber;
-import baseball.domain.number.SingleNumbersGenerator;
+import baseball.domain.baseball_number.BaseballNumber;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
+
 public class Guess {
 
-    private final List<SingleNumber> inputNumbers;
+    private final List<BaseballNumber> inputNumbers;
 
     public Guess(String inputValue) {
         validateLengthForGame(inputValue);
         validateDuplicate(inputValue);
-        this.inputNumbers = SingleNumbersGenerator.singleNumberList(inputValue);
+        this.inputNumbers = baseballNumberList(inputValue);
     }
 
-    int ballCount(List<SingleNumber> answer) {
+    int ballCount(List<BaseballNumber> answer) {
         return (int) inputNumbers.stream()
-                .filter(singleNumber -> !answer.contains(singleNumber))
-                .filter(singleNumber -> singleNumber.equalsOnlyNumber(answer))
+                .filter(baseballNumber -> !answer.contains(baseballNumber))
+                .filter(baseballNumber -> baseballNumber.equalsOnlyNumber(answer))
                 .count();
     }
 
-    int strikeCount(List<SingleNumber> answer) {
+    int strikeCount(List<BaseballNumber> answer) {
         return (int) inputNumbers.stream()
                 .filter(answer::contains)
                 .count();

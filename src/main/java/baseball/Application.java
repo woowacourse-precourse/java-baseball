@@ -1,6 +1,5 @@
 package baseball;
 
-import baseball.domain.BaseballGame;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
@@ -11,6 +10,6 @@ public class Application {
                 new MessagePrinter()
         );
 
-        baseballGame.run();
+        baseballGame.start();
     }
 }

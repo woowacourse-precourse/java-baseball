@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball;
 
 import baseball.domain.game_number.CountResult;
 import baseball.domain.game_number.Guess;
@@ -16,7 +16,7 @@ public class BaseballGame {
         this.messagePrinter = messagePrinter;
     }
 
-    public void run() {
+    public void start() {
         Answer answer = new Answer();
         int oneOrTwoForRestartGame = 0;
 
