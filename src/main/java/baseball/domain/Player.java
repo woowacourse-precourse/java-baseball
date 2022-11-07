@@ -14,5 +14,6 @@ public class Player {
         Exception.checkNumberFormatException(input);
         Exception.checkNumberLengthException(input)
         Exception.checkNumberRangeException(input);
+        Exception.checkRepeatedNumberException(input);
     }
 }

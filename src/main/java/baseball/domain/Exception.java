@@ -5,11 +5,13 @@ import java.util.regex.Pattern;
 
 public class Exception {
     public static final String RANGE_FORMAT_PATTERN = "(^[1-9]*$)";
+    public static final String REPEATED_PATTERN = "(.)\\1+";
     public static final int CORRECT_LENGTH = 3;
 
     public static final String NUMBER_FORMAT_ERROR_MESSAGE = "숫자만 입력해주세요.";
     public static final String NUMBER_RANGE_ERROR_MESSAGE = "1에서 9사이의 숫자만 입력해주세요.";
     public static final String NUMBER_LENGTH_ERROR_MESSAGE = "올바른 길이의 숫자를 입력해주세요.";
+    public static final String REPEATED_NUMBER_ERROR_MESSAGE = "서로 다른 숫자를 입력해주세요.";
 
     public static void throwException(String message) {
         throw new IllegalArgumentException(message);
@@ -34,6 +36,14 @@ public class Exception {
     public static void checkNumberLengthException(String number) {
         if(number.length() != CORRECT_LENGTH){
             throwException(NUMBER_LENGTH_ERROR_MESSAGE);
+        }
+    }
+
+    public static void checkRepeatedNumberException(String number) {
+        Pattern p = Pattern.compile(REPEATED_PATTERN);
+        Matcher m = p.matcher(number);
+        if(m.matches()){
+            throwException(REPEATED_NUMBER_ERROR_MESSAGE);
         }
     }
 }
