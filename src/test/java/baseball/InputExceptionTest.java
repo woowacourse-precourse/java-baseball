@@ -14,18 +14,27 @@ public class InputExceptionTest extends NsTest {
                 () -> {
                     assertThatThrownBy(() -> runException("123", "9"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
+                            .hasMessage("1 혹은 2 이외의 문자를 입력 하셨습니다.");
                 },
                 1, 2, 3
         );
 
         assertRandomNumberInRangeTest(
                 () -> {
-                    assertThatThrownBy(() -> runException("123", "1", "457", "456", "@"))
+                    assertThatThrownBy(() -> runException("123", "@"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
+                            .hasMessage("1 혹은 2 이외의 문자를 입력 하셨습니다.");
                 },
-                1, 2, 3, 4, 5, 6
+                1, 2, 3
+        );
+
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("123", "123"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("한 자리를 초과하는 문자를 입력하셨습니다.");
+                },
+                1, 2, 3
         );
     }
 
