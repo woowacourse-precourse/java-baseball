@@ -39,8 +39,8 @@ public class BallsTest {
             Balls player = new Balls(List.of(1, 2, 3));
 
             GameResult gameResult = computer.compare(player);
-            assertThat(gameResult.getBall()).isEqualTo(0);
-            assertThat(gameResult.getStrike()).isEqualTo(3);
+            assertThat(gameResult.getBallCount()).isEqualTo(0);
+            assertThat(gameResult.getStrikeCount()).isEqualTo(3);
         }
 
         @Test
@@ -50,8 +50,8 @@ public class BallsTest {
             Balls player = new Balls(List.of(1, 3, 8));
 
             GameResult gameResult = computer.compare(player);
-            assertThat(gameResult.getBall()).isEqualTo(1);
-            assertThat(gameResult.getStrike()).isEqualTo(1);
+            assertThat(gameResult.getBallCount()).isEqualTo(1);
+            assertThat(gameResult.getStrikeCount()).isEqualTo(1);
         }
 
         @Test
@@ -61,8 +61,8 @@ public class BallsTest {
             Balls player = new Balls(List.of(4, 5, 6));
 
             GameResult gameResult = computer.compare(player);
-            assertThat(gameResult.getBall()).isEqualTo(0);
-            assertThat(gameResult.getStrike()).isEqualTo(0);
+            assertThat(gameResult.getBallCount()).isEqualTo(0);
+            assertThat(gameResult.getStrikeCount()).isEqualTo(0);
         }
     }
 }

@@ -5,39 +5,44 @@ import baseball.ball.BallResult;
 public class GameResult {
     private final int WIN_CONDITION = 3;
     private static final int ZERO = 0;
-    private int ball;
-    private int strike;
+    private int ballCount;
+    private int strikeCount;
 
-    public int getBall() {
-        return ball;
+    public GameResult() {
+        this.ballCount = ZERO;
+        this.strikeCount = ZERO;
     }
 
-    public int getStrike() {
-        return strike;
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
     }
 
     public void plusScore(BallResult ballResult) {
         if (ballResult.isBall()) {
-            ball++;
+            ballCount++;
         }
         if (ballResult.isStrike()) {
-            strike++;
+            strikeCount++;
         }
     }
 
     public boolean isWinCondition() {
-        return this.strike == WIN_CONDITION;
+        return this.strikeCount == WIN_CONDITION;
     }
 
     public boolean isBallScoreValid() {
-        return this.ball > ZERO;
+        return this.ballCount > ZERO;
     }
 
     public boolean isStrikeScoreValid() {
-        return this.strike > ZERO;
+        return this.strikeCount > ZERO;
     }
 
     public boolean isNoScore() {
-        return this.strike == ZERO && this.ball == ZERO;
+        return this.strikeCount == ZERO && this.ballCount == ZERO;
     }
 }

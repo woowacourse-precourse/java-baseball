@@ -18,11 +18,11 @@ public class Output {
     public static void printScore(GameResult gameResult) {
 
         if (gameResult.isBallScoreValid()) {
-            System.out.print(gameResult.getBall() + "볼 ");
+            System.out.print(gameResult.getBallCount() + "볼 ");
         }
 
         if (gameResult.isStrikeScoreValid()) {
-            System.out.print(gameResult.getStrike() + "스트라이크 ");
+            System.out.print(gameResult.getStrikeCount() + "스트라이크 ");
         }
 
         if (gameResult.isNoScore()) {
