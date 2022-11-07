@@ -1,9 +1,16 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Game {
 
     private InputNumber inputNumber;
     private AnswerNumber answerNumber;
+
+    private List<String> inputNumberList;
+    private List<String> answerNumberList;
 
     private int strike;
     private int ball;
@@ -13,8 +20,22 @@ public class Game {
         inputNumber = new InputNumber();
         answerNumber = new AnswerNumber();
 
+        inputNumberList = new ArrayList<>();
+        answerNumberList = new ArrayList<>();
+
         strike = 0;
         ball = 0;
+    }
+
+    public void playGame(){
+        do{
+            inputNumberList = inputNumber.userInputNumber();
+            strike = 0;
+            ball = 0;
+            getScore();
+            getHintMessage();
+        }while(!getWin());
+        System.out.println("3개의 숫자를 모두 맞히셨습니다!. 게임종료");
     }
 
 
@@ -53,6 +74,8 @@ public class Game {
     public boolean getWin(){
         return strike == 3;
     }
+
+
 
 
 
