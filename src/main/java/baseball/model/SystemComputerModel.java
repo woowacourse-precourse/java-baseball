@@ -30,4 +30,8 @@ public class SystemComputerModel {
         }
         digits=new ArrayList<>(digitSet);
     }
+
+    public boolean isReadyToExit(String input) {
+        return EXIT_CODE.equals(input);
+    }
 }
