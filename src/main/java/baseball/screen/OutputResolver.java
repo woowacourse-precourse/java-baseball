@@ -1,14 +1,13 @@
 package baseball.screen;
 
 import baseball.domain.Result;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class OutputResolver {
-    public void print(Result result) {
-        Integer ball = result.getBall();
-        Integer strike = result.getStrike();
+    public void print() {
+        Integer ball = Result.getBall();
+        Integer strike = Result.getStrike();
 
         String resultPrompt = buildPrompt(ball, strike);
 

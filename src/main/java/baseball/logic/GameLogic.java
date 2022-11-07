@@ -23,31 +23,33 @@ public class GameLogic {
     }
 
     public void setUp(String computerNumbers) {
+        Result.initialize();
+
         for (int i = 0; i < 3; i++) {
             computerNumbersTable.set(computerNumbers.charAt(i) - '0', i);
         }
     }
 
-    public void process(String userNumbers, Result result) {
-        initializeResult(result);
+    public void process(String userNumbers) {
+        Result.initialize();
 
-        for (Integer i = 0; i < 3; i++) {
-            Integer computerIndex = computerNumbersTable.get(userNumbers.charAt(i) - '0');
-            compare(result, i, computerIndex);
+        compareIndices(userNumbers);
+    }
+
+    private void compareIndices(String userNumbers) {
+        for (Integer index = 0; index < 3; index++) {
+            Integer computerIndex = computerNumbersTable.get(userNumbers.charAt(index) - '0');
+            updateResult( index, computerIndex);
         }
     }
 
-    private void initializeResult(Result result) {
-        result.setBall(0);
-        result.setStrike(0);
+    private void updateResult( Integer userIndex, Integer computerIndex) {
+        Result result = compareIndex(userIndex, computerIndex);
+
+        Result.update(result);
     }
 
-    private void compare(Result result, Integer userIndex, Integer computerIndex) {
-        if (computerIndex == userIndex) {
-            result.addStrike();
-        } else if (computerIndex != -1 && computerIndex != userIndex) {
-            result.addBall();
-        }
+    private Result compareIndex(Integer userIndex, Integer computerIndex) {
+        return Result.judge(userIndex, computerIndex);
     }
-
 }

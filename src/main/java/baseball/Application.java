@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
-import camp.nextstep.edu.missionutils.Console;
+
 
 public class Application {
     private static User user = new User();

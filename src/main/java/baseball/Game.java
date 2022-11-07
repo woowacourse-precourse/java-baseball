@@ -26,13 +26,11 @@ public class Game {
     }
 
     private void play(User user) {
-        Result result = new Result(-1, -1);
-
-        while (result.getStrike() != 3) {
+        while (Result.getStrike() != 3) {
             outputResolver.print("숫자를 입력해주세요 : ");
             user.inputNumbers();
-            gameLogic.process(user.getNumbers(), result);
-            outputResolver.print(result);
+            gameLogic.process(user.getNumbers());
+            outputResolver.print();
         }
     }
 }

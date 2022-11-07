@@ -1,35 +1,51 @@
 package baseball.domain;
 
-public class Result {
-    Integer strike;
-    Integer ball;
+import java.util.List;
 
-    public Result(Integer strike, Integer ball) {
-        this.strike = strike;
-        this.ball = ball;
+public enum Result {
+    NON(0), BALL(0), STRIKE(0);
+
+    private int score;
+
+    Result(int score) {
+        this.score = score;
     }
 
-    public Integer getStrike() {
-        return strike;
+    public void add() {
+        this.score++;
     }
 
-    public void setStrike(Integer strike) {
-        this.strike = strike;
+    public void setScore(int score) {
+        this.score = score;
     }
 
-    public Integer getBall() {
-        return ball;
+    public int getScore() {
+        return score;
     }
 
-    public void setBall(Integer ball) {
-        this.ball = ball;
+    public static Result judge(Integer userIndex, Integer computerIndex) {
+        if (computerIndex == userIndex) {
+            return STRIKE;
+        }
+        if (computerIndex != -1 && computerIndex != userIndex) {
+            return BALL;
+        }
+        return NON;
     }
 
-    public void addBall() {
-        this.ball++;
+    public static void initialize() {
+        List.of(values()).forEach(result -> result.setScore(0));
     }
 
-    public void addStrike() {
-        this.strike++;
+    public static void update(Result result) {
+        result.add();
+    }
+
+    public static Integer getStrike() {
+        return STRIKE.getScore();
+    }
+
+    public static Integer getBall() {
+        return BALL.getScore();
     }
 }
