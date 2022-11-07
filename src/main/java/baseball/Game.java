@@ -18,7 +18,7 @@ public class Game {
         this.scanner = scanner;
     }
 
-    public void play(List<Integer> targetNumber) {
+    public Game play(List<Integer> targetNumber) {
         this.targetNumber = targetNumber;
 
         while (!isGameOver) {
@@ -29,6 +29,7 @@ public class Game {
             scoreCalculator();
             isGameOver = checkCorrectAnswer(getStrikeScore());
         }
+        return new Game(scanner);
     }
 
     private List<Integer> convertToList(String predictedValue) {
