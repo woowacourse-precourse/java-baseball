@@ -8,7 +8,7 @@ import java.util.List;
 public class RandNumVO {
     private final List<Integer> randNum;
 
-    public RandNumVO(){
+    public RandNumVO() throws IllegalArgumentException{
         this.randNum = List.of(Randoms.pickNumberInRange(0, 9)
                 , Randoms.pickNumberInRange(0, 9)
                 , Randoms.pickNumberInRange(0, 9));
