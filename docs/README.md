@@ -52,7 +52,11 @@ Summary
         - param : int value, List<Integer> list
         - return : boolean
 
-    3. [컴퓨터 1~2번] 항목을 통해 유효성 검사를 하여 랜덤한 3개의 중복되지 않는 값을 가진 List<Integer> 반환하는 함수
+    3. List에 randomNumber를 넣는 함수
+        - method :  컴퓨터 기능 함수 구현
+        - param : List<Integer> list, int randomNum 
+        
+    4. [컴퓨터 1~2번] 항목을 통해 유효성 검사를 하여 랜덤한 3개의 중복되지 않는 값을 가진 List<Integer> 반환하는 함수
         - method : createRandomList
         - return : List<Integer>
 게임
