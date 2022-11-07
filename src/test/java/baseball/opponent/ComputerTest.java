@@ -1,6 +1,6 @@
 package baseball.opponent;
 
-import baseball.core.ComputerOpponent;
+import baseball.core.Computer;
 import baseball.core.BallStrike;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ComputerOpponentTest {
+class ComputerTest {
 
-    ComputerOpponent opponent;
+    Computer opponent;
 
     @Nested
     @DisplayName("answer 테스트")
@@ -24,7 +24,7 @@ class ComputerOpponentTest {
             //given
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(4, 5, 6);
-            opponent = new ComputerOpponent(opponentRandomNum);
+            opponent = new Computer(opponentRandomNum);
             BallStrike expected = new BallStrike(0, 0);
 
             //when
@@ -41,7 +41,7 @@ class ComputerOpponentTest {
             //given
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(3, 4, 5);
-            opponent = new ComputerOpponent(opponentRandomNum);
+            opponent = new Computer(opponentRandomNum);
             BallStrike expected = new BallStrike(1, 0);
 
             //when
@@ -58,7 +58,7 @@ class ComputerOpponentTest {
             //given
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 8, 9);
-            opponent = new ComputerOpponent(opponentRandomNum);
+            opponent = new Computer(opponentRandomNum);
             BallStrike expected = new BallStrike(0, 1);
 
             //when
@@ -75,7 +75,7 @@ class ComputerOpponentTest {
             //given
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 3, 5);
-            opponent = new ComputerOpponent(opponentRandomNum);
+            opponent = new Computer(opponentRandomNum);
             BallStrike expected = new BallStrike(1, 1);
 
             //when
@@ -92,7 +92,7 @@ class ComputerOpponentTest {
             //given
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 3, 2);
-            opponent = new ComputerOpponent(opponentRandomNum);
+            opponent = new Computer(opponentRandomNum);
             BallStrike expected = new BallStrike(2, 1);
 
             //when
@@ -109,7 +109,7 @@ class ComputerOpponentTest {
             //given
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 2, 3);
-            opponent = new ComputerOpponent(opponentRandomNum);
+            opponent = new Computer(opponentRandomNum);
             BallStrike expected = new BallStrike(0, 3);
 
             //when
