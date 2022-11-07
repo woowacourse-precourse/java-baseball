@@ -17,8 +17,7 @@ public class GameController {
     }
 
     public void play() {
-        outputView.printGameStart();
-        gameService.computeComputerNumbers();
+        setGame();
 
         while (true) {
             String userNumbers = inputView.inputNumbers();
@@ -36,5 +35,10 @@ public class GameController {
                 break;
             }
         }
+    }
+
+    private void setGame(){
+        outputView.printGameStart();
+        gameService.computeComputerNumbers();
     }
 }
