@@ -23,4 +23,8 @@ public class UserInputException {
         return removeDuplicate.size() != input.size();
     }
 
+    public boolean isIllegalChoice(String choice) {
+        return choice.equals("1") || choice.equals("2");
+    }
+
 }
