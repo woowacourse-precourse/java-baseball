@@ -20,7 +20,7 @@ public class BaseballGameManager {
         while (!is3Strikes) {
             System.out.println(BASEBALL_GAME_GET_USER_INPUT_MESSAGE);
 
-            String userInput = Console.readLine();
+            String userInput = this.getValidInput();
             List<Integer> userInputElementList = elementListMaker.convertToElementList(userInput);
 
             BaseballScore baseballScore = this.calculateBaseballScore(userInputElementList);
@@ -31,6 +31,27 @@ public class BaseballGameManager {
             }
 
         }
+    }
+
+    private String getValidInput() {
+        String userInput = null;
+        boolean isInputValid = false;
+
+        while (!isInputValid) {
+            userInput = Console.readLine();
+
+            try {
+                if (userInput.length() != baseballNumberList.size()) {
+                    throw new IllegalArgumentException();
+                }
+
+                isInputValid = true;
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.err.println("※서로 다른 숫자 3개를 입력해주세요.※");
+            }
+        }
+
+        return userInput;
     }
 
     public BaseballScore calculateBaseballScore(List<Integer> inputNumberList) {
