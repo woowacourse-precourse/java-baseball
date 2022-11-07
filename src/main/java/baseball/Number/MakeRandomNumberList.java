@@ -5,11 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MakeRandomNumberList implements MakeNumberList {
-    NumberListRepository numer = new NumberListRepository();
+public class MakeRandomNumberList{
+    private List<Integer> randomNumberList;
 
-    @Override
-    public void makeNumberList() {
+    public void makeRandomNumberList() {
         List<Integer> randomNumberList = new ArrayList<>();
 
         while(randomNumberList.size() < 3 ){
@@ -18,6 +17,15 @@ public class MakeRandomNumberList implements MakeNumberList {
                 randomNumberList.add(randomNumber);
             }
         }
-        numer.setRandomNumberList(randomNumberList);
+        this.randomNumberList = randomNumberList;
     }
+
+    public List<Integer> getRandomNumberList() {
+        return randomNumberList;
+    }
+
+    public void setRandomNumberList(List<Integer> randomNumberList) {
+        this.randomNumberList = randomNumberList;
+    }
+
 }
