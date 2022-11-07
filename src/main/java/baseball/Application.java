@@ -9,26 +9,8 @@ import java.util.List;
 import baseball.Game;
 
 public class Application {
-    public static void GameController() {
+    public static void main(String[] args) {
         Game game = new Game();
         game.start();
-        game.setUserInput();
-
-        while(!game.getGameNums().equals(game.getUserNum())) {
-            if(game.isNothing()) {
-                game.printNothing();
-            }else{
-                game.compareNums();
-                game.printBallStrike();
-            }
-            game.setUserInput();
-        }
-
-        if(game.getGameNums().equals(game.getUserNum()))
-            game.getRightAnswer();
-    }
-
-    public static void main(String[] args) {
-        GameController();
     }
 }
