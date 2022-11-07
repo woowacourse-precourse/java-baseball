@@ -28,7 +28,7 @@ public class InputValidator {
     }
 
     private static void checkPresumeSize(List<Integer> numbers) {
-        if (numbers.size() > GAME_NUMBER_SIZE) {
+        if (numbers.size() != GAME_NUMBER_SIZE) {
             throw new IllegalArgumentException(GAME_NUMBER_SIZE+"자리 숫자만 입력할 수 있습니다.");
         }
     }
@@ -50,10 +50,8 @@ public class InputValidator {
 
     private static void checkNumberInRange(int number) {
         if (number < START_INCLUSIVE_INTEGER || number > END_INCLUSIVE_INTEGER) {
-            throw new IllegalArgumentException(START_INCLUSIVE_INTEGER+"~"+END_INCLUSIVE_INTEGER+"사이의 숫자만 입려할 수 있습니다.");
+            throw new IllegalArgumentException(START_INCLUSIVE_INTEGER+"~"+END_INCLUSIVE_INTEGER+"사이의 숫자만 입력할 수 있습니다.");
         }
     }
-
-
 
 }
