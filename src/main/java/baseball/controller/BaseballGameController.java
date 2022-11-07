@@ -19,9 +19,11 @@ public class BaseballGameController {
 
     public void startProgram() {
         baseballGameView.displayGameStart();
-        startGame();
-        readInputOfOneAndTwo();
-        Validate.isReStartGame(input.getUserInput());
+        do {
+            startGame();
+            readInputOfOneAndTwo();
+        } while (Validate.isReStartGame(input.getUserInput()));
+        //finish
     }
 
     private void startGame() {

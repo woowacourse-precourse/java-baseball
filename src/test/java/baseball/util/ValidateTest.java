@@ -63,4 +63,40 @@ class ValidateTest {
         assertThat(Validate.isNotContainZero(input)).isFalse();
     }
 
+    @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
+    @Test
+    void isAcceptAbleEndGame_success() {
+        String userInput = "1";
+
+        assertThat(Validate.isAcceptAbleEndGame(userInput)).isTrue();
+
+        String secondUserInput = "2";
+
+        assertThat(Validate.isAcceptAbleEndGame(secondUserInput)).isTrue();
+    }
+
+    @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
+    @Test
+    void isAcceptAbleEndGame_fail() {
+        String userInput = "3";
+
+        assertThat(Validate.isAcceptAbleEndGame(userInput)).isFalse();
+    }
+
+    @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
+    @Test
+    void isReStartGame_success() {
+        String userInput = "1";
+
+        assertThat(Validate.isReStartGame(userInput)).isTrue();
+    }
+
+    @DisplayName("게임 종료시 1을 입력받은 경우 게임 재시작하고 2를 입력받은 경우 프로그램 종료")
+    @Test
+    void isReStartGame_fail() {
+        String userInput = "2";
+
+        assertThat(Validate.isReStartGame(userInput)).isFalse();
+    }
+
 }
