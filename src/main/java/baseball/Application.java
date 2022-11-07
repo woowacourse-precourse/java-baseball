@@ -42,4 +42,29 @@ public class Application {
 
         return result;
     }
+
+    public static List<Integer> countCount(List<Integer> computer, List<Integer> player) {
+        List<Integer> result = new ArrayList<>();
+        int numOfStrike = 0;
+        int numOfBall = 0;
+        int numOfNothing = 0;
+
+        for (int num : player) {
+            if (!computer.contains(num)) {
+                numOfNothing++;
+            }else {
+                if (player.indexOf(num) == computer.indexOf(num)) {
+                    numOfStrike++;
+                }else {
+                    numOfBall++;
+                }
+            }
+        }
+
+        result.add(numOfStrike);
+        result.add(numOfBall);
+        result.add(numOfNothing);
+
+        return result;
+    }
 }
