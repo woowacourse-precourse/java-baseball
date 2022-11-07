@@ -1,6 +1,9 @@
 package baseball;
 
 public class Ball {
+    private static final int NUMBER_MIN = 1;
+    private static final int NUMBER_MAX = 9;
+
     private final int number;
     private final int order;
 
@@ -36,7 +39,7 @@ public class Ball {
     }
 
     private void validateNumberRange(int number) {
-        if (number < 1 || number > 9) {
+        if (number < NUMBER_MIN || number > NUMBER_MAX) {
             throw new IllegalArgumentException(BaseballMessage.INVALID_NUMBER_RANGE_MESSAGE.getMessage());
         }
     }
