@@ -1,7 +1,12 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +31,87 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Nested
+    class strikeTest{
+        @Test
+        void case1(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 3));
+            int result = 3;
+            assertThat(Application.strike(computer,user)).isEqualTo(result);
+        }
+
+        @Test
+        void case2(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 5));
+            int result = 2;
+            assertThat(Application.strike(computer,user)).isEqualTo(result);
+        }
+
+        @Test
+        void case3(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(5, 6, 7));
+            int result = 0;
+            assertThat(Application.strike(computer, user)).isEqualTo(result);
+        }
+    }
+
+    @Nested
+    class ballTest{
+        @Test
+        void case1(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(5, 6, 7));
+            int strike = 0;
+            int result = 0;
+            assertThat(Application.ball(computer, user, strike)).isEqualTo(result);
+        }
+
+        @Test
+        void case2(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(1, 3, 2));
+            int strike = 1;
+            int result = 2;
+            assertThat(Application.ball(computer, user, strike)).isEqualTo(result);
+        }
+
+        @Test
+        void case3(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(3, 1, 2));
+            int strike = 0;
+            int result = 3;
+            assertThat(Application.ball(computer, user, strike)).isEqualTo(result);
+        }
+    }
+
+    @Nested
+    class oneOrTwoTest{
+        @Test
+        void case1(){
+            String victory = "1";
+            boolean result = true;
+            assertThat(Application.oneOrTwo(victory)).isEqualTo(result);
+        }
+
+        @Test
+        void case2(){
+            String victory = "2";
+            boolean result = false;
+            assertThat(Application.oneOrTwo(victory)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String victory = "123";
+            assertThatThrownBy(() -> Application.oneOrTwo(victory))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Override
