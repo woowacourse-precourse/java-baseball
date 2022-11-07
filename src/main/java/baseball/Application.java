@@ -8,12 +8,14 @@ public class Application {
         String input;
         String oneMore = "1";
         int randomNumber;
-        int ball = 0;
-        int strike = 0;
+        int ball;
+        int strike;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (oneMore.equals("1")){
+        while (oneMore.equals("1")) {
             randomNumber = getRandomNumber();
-            while (strike != 3){
+            ball = 0;
+            strike = 0;
+            while (strike != 3) {
                 input = getInput();
                 ball = getBall(input, randomNumber);
                 strike = getStrike(input, randomNumber);
@@ -25,8 +27,7 @@ public class Application {
         }
     }
 
-    static int getBall(String input, int randomNumber)
-    {
+    static int getBall(String input, int randomNumber) {
         int ret = 0;
         int one;
         int ten;
@@ -40,20 +41,20 @@ public class Application {
 
         hundred = randomNumber % 10;
 
-        if (input.charAt(0) - '0' == ten || input.charAt(0) - '0' == one){
+        if (input.charAt(0) - '0' == ten || input.charAt(0) - '0' == one) {
             ret++;
         }
-        if (input.charAt(1) - '0' == hundred || input.charAt(1) - '0' == one){
+        if (input.charAt(1) - '0' == hundred || input.charAt(1) - '0' == one) {
             ret++;
         }
-        if (input.charAt(2) - '0' == hundred || input.charAt(2) - '0' == ten){
+        if (input.charAt(2) - '0' == hundred || input.charAt(2) - '0' == ten) {
             ret++;
         }
 
         return ret;
     }
 
-    static int getStrike(String input, int randomNumber){
+    static int getStrike(String input, int randomNumber) {
         int ret = 0;
         int one;
         int ten;
@@ -67,48 +68,48 @@ public class Application {
 
         hundred = randomNumber % 10;
 
-        if (input.charAt(0) - '0' == hundred){
+        if (input.charAt(0) - '0' == hundred) {
             ret++;
         }
-        if (input.charAt(1) - '0' == ten){
+        if (input.charAt(1) - '0' == ten) {
             ret++;
         }
-        if (input.charAt(2) - '0' == one){
+        if (input.charAt(2) - '0' == one) {
             ret++;
         }
 
         return ret;
     }
 
-    static void printResult(int ball, int strike){
-        if (ball == 0 && strike == 0){
+    static void printResult(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
             return;
         }
-        if (ball != 0 && strike != 0){
+        if (ball != 0 && strike != 0) {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
             return;
         }
-        if (ball != 0){
+        if (ball != 0) {
             System.out.printf("%d볼\n", ball);
             return;
         }
         System.out.printf("%d스트라이크\n", strike);
     }
 
-    static int getRandomNumber(){
+    static int getRandomNumber() {
         int ret;
 
-        while (true){
+        while (true) {
             ret = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(100, 999);
-            if (isValidRandomNumber(ret)){
+            if (isValidRandomNumber(ret)) {
                 break;
             }
         }
         return ret;
     }
 
-    static boolean isValidRandomNumber(int num){
+    static boolean isValidRandomNumber(int num) {
         int one;
         int ten;
         int hundred;
@@ -121,30 +122,31 @@ public class Application {
 
         hundred = num % 10;
 
-        if (hundred == ten || hundred == one || ten == one){
+        if (hundred == ten || hundred == one || ten == one) {
             return false;
         }
         return true;
     }
 
-    static String getInput() throws IllegalArgumentException{
+    static String getInput() throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
         String ret = camp.nextstep.edu.missionutils.Console.readLine();
 
-        if (ret.length() != 3 || !isValidInputNumber(ret)){
+        if (ret.length() != 3 || !isValidInputNumber(ret)) {
             throw new IllegalArgumentException();
         }
         return ret;
     }
 
-    static boolean isValidInputNumber(String str){
-        for (int i = 0; i < str.length(); i++){
-            if (!(str.charAt(i) >= '1' && str.charAt(i) <= '9')){
+    static boolean isValidInputNumber(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (!(str.charAt(i) >= '1' && str.charAt(i) <= '9')) {
                 return false;
             }
         }
 
-        for (int i = 0; i < str.length(); i++){
-            if (isDuplicate(str.charAt(i), str)){
+        for (int i = 0; i < str.length(); i++) {
+            if (isDuplicate(str.charAt(i), str)) {
                 return false;
             }
         }
@@ -152,24 +154,24 @@ public class Application {
         return true;
     }
 
-    static boolean isDuplicate(char c, String str){
+    static boolean isDuplicate(char c, String str) {
         int cnt = 0;
-        for (int i = 0; i < str.length(); i++){
-            if (c == str.charAt(i)){
+        for (int i = 0; i < str.length(); i++) {
+            if (c == str.charAt(i)) {
                 cnt++;
             }
         }
 
-        if (cnt > 1){
+        if (cnt > 1) {
             return true;
         }
         return false;
     }
 
-    static String getOneMoreInput() throws IllegalArgumentException{
+    static String getOneMoreInput() throws IllegalArgumentException {
         String ret = camp.nextstep.edu.missionutils.Console.readLine();
 
-        if (ret.equals("1") || ret.equals("2")){
+        if (ret.equals("1") || ret.equals("2")) {
             return ret;
         }
         throw new IllegalArgumentException();
