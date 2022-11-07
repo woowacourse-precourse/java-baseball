@@ -36,6 +36,10 @@ public class Game {
 
     void startBaseBall(List<Integer> targetNumber, List<Integer> playerNumber) { // 2. 야구 게임 시작
 
+        do {
+            setUserNumber(playerNumber);
+        } while (convertListToInt(targetNumber) != convertListToInt(playerNumber));
+        
     }
 
     void setUserNumber(List<Integer> playerNumber) { // 2.1 사용자에게 숫자 입력받기
@@ -68,4 +72,10 @@ public class Game {
         }
 
     }
+
+    int convertListToInt(List<Integer> List) { // 2.3 list를 integer로 바꾸기
+
+        return List.get(0) * 100 + List.get(1) * 10 + List.get(0);
+    }
+
 }
