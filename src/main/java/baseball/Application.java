@@ -24,6 +24,18 @@ class Game {
 
         return answer;
     }
+
+    static int HowManyBall(List<Integer> answer, List<Integer> user_num_list) {
+        int ball_num = 0;
+
+        for(int user_num : user_num_list) {
+            if(answer.contains(user_num)) {
+                ball_num++;
+            }
+        }
+
+        return ball_num;
+    }
 }
 
 class User {
