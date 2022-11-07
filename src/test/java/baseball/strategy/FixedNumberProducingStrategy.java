@@ -1,4 +1,4 @@
-package baseball.domain.strategy;
+package baseball.strategy;
 
 import baseball.strategy.NumberProducingStrategy;
 import java.util.List;
