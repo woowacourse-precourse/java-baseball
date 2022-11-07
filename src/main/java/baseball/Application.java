@@ -125,7 +125,7 @@ public class Application {
         int ballNumber = ballSize;
 
         if(strikeNumber == 3){
-
+            System.out.println("3스트라이크");
         }
 
         return false;
