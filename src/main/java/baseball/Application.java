@@ -10,9 +10,4 @@ public class Application {
     private List<Integer> createUserList(String input) {
         return null;
     }
-
-    private List<Integer> createRandomList() {
-        return null;
-    }
-
 }
