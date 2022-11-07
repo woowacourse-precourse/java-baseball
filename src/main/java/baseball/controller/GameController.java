@@ -21,10 +21,10 @@ public class GameController {
 
     public void run() {
         OutputView.printGameStart();
-        recursiveRound();
+        recursiveGame();
     }
 
-    private void recursiveRound() {
+    private void recursiveGame() {
         OutputView.printInputNumber();
         List<Integer> numbers = InputView.inputNumbers();
 
@@ -34,7 +34,7 @@ public class GameController {
         if (isGameEnd(restart)) {
             return;
         }
-        recursiveRound();
+        recursiveGame();
     }
 
     private GameResultResponseDto playRound(List<Integer> numbers) {
