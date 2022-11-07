@@ -14,4 +14,8 @@ public class TurnScore {
         this.strikes = strikes;
         this.resultTurn = resultTurn;
     }
+
+    public int getBalls() {
+        return this.balls;
+    }
 }
