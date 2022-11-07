@@ -17,4 +17,15 @@ public class User {
     public static List<Integer> getUserInputNumberList() {
         return userInputNumberList;
     }
+
+    public static void setUserInputNumberList() {
+        String inputNumber = Console.readLine();
+
+        userException.checkUserExceptions(inputNumber);
+        initNumberList();
+        for (int i = 0; i < Constant.MAX_NUMBER_SIZE; i++) {
+            userInputNumberList.add(inputNumber.charAt(i) - '0');
+        }
+    }
+
 }
