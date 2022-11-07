@@ -12,32 +12,33 @@ public class GameView {
     public static void startGame() {
         // TODO: 프로그램 구현
 
-        Game();
+        boolean result = true;
+//        Game();
+//        if (result){
+//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//        }
 
-    }
-
-    public static List createRandomNumber() {  // 리스트 형태로 수 생성
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
+        while(result){
+            result = Game();
         }
-//        System.out.println("랜덤 수 생성"+computer);
-        return computer;
     }
 
-    public static void Game() {
-        createRandomNumber();
+
+
+    public static boolean Game() {
+        boolean result = true;
         BaseballGame baseballGame = new BaseballGame();
         InputException inputException = new InputException();
 
-        System.out.println("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> inputNumber = baseballGame.StringToIntList(input);
         System.out.println(input);
 
-
+        baseballGame.strikeBallOut(inputNumber);
+        result = baseballGame.checkResult();
+        return result;
     }
+
+
 }
