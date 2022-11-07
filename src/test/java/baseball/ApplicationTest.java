@@ -3,14 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.InstanceOfAssertFactories.comparable;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -122,21 +120,39 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 스트라이크_점수_계산(){
-        List<Integer> computer = List.of(1,2,3);
-        List<Integer> user = List.of(1,2,3);
+    void 스트라이크_점수_계산() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<Integer> user = List.of(1, 2, 3);
         Baseball baseball = new Baseball(computer, user);
         int result = baseball.getStrike();
         assertThat(result).isEqualTo(3);
     }
 
     @Test
-    void 볼_점수_계산(){
-        List<Integer> computer = List.of(1,2,3);
-        List<Integer> user = List.of(1,2,3);
+    void 볼_점수_계산() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<Integer> user = List.of(1, 2, 3);
         Baseball baseball = new Baseball(computer, user);
         int result = baseball.getBall();
         assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    void 올바른_점수_계산1() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<Integer> user = List.of(1, 2, 3);
+        Baseball baseball = new Baseball(computer, user);
+        String result = baseball.getScore();
+        assertThat(result).isEqualTo("3스트라이크");
+    }
+
+    @Test
+    void 올바른_점수_계산2() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<Integer> user = List.of(3, 2, 1);
+        Baseball baseball = new Baseball(computer, user);
+        String result = baseball.getScore();
+        assertThat(result).isEqualTo("2볼 1스트라이크");
     }
 
     @Override
