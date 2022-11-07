@@ -21,6 +21,9 @@ public class Game {
     private static final SystemUtil systemUtil = SystemUtil.getInstance();
     private static final GameUtil gameUtil = GameUtil.getInstance();
 
+    private Game() {
+    }
+
     public static void start() {
         Integer answer = gameUtil.getRandomNumber();
 

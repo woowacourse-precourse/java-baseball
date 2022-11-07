@@ -22,6 +22,9 @@ public class GameUtil implements Interactive {
     public static final Integer STRIKE_OUT_COUNT = 3;
     public static final Integer NUMBER_SIZE = 3;
 
+    private GameUtil() {
+    }
+
     public static GameUtil getInstance() {
         return instance;
     }

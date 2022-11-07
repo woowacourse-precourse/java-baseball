@@ -12,12 +12,12 @@ public class IsOperationCodeCond implements Condition {
     private IsOperationCodeCond() {
     }
 
+    public static Condition getInstance() {
+        return instance;
+    }
+
     @Override
     public Boolean isTrue(Integer input) {
         return OPERATION_CODE.contains(Integer.toString(input));
-    }
-
-    public static Condition getInstance() {
-        return instance;
     }
 }
