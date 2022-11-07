@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Numbers {
+
     List<Integer> numbers;
 
     public Numbers(List<Integer> numbers) {
@@ -59,17 +60,18 @@ public class Numbers {
         return uniqueNumbers.size() == 3;
     }
 
-    public static Guess guessResult(Numbers answer, Numbers guess) {
+    public static GuessResult guessResult(Numbers answer, Numbers guess) {
         int ballCount = 0;
         int strikeCount = 0;
         for (int index = 0; index < guess.numbers.size(); index++) {
-            if (answer.numbers.contains(guess.numbers.get(index)) && !guess.numbers.get(index).equals(answer.numbers.get(index))) {
+            if (answer.numbers.contains(guess.numbers.get(index))
+                    && !guess.numbers.get(index).equals(answer.numbers.get(index))) {
                 ballCount++;
             }
             if (guess.numbers.get(index).equals(answer.numbers.get(index))) {
                 strikeCount++;
             }
         }
-        return new Guess(ballCount, strikeCount);
+        return new GuessResult(ballCount, strikeCount);
     }
 }

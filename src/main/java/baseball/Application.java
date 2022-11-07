@@ -21,9 +21,9 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             Numbers userNumbers = Numbers.inputUserNumbers();
-            Guess scores = Numbers.guessResult(computerNumbers, userNumbers);
-            Guess.guessResultPrint(scores.ballCount, scores.strikeCount);
-            if (scores.strikeCount == 3) {
+            GuessResult scores = Numbers.guessResult(computerNumbers, userNumbers);
+            GuessResult.guessResultPrint(scores.ballCount, scores.strikeCount);
+            if (scores.isWin()) {
                 break;
             }
         }

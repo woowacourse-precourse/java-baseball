@@ -9,6 +9,10 @@ public class GuessResult {
         this.strikeCount = strikeCount;
     }
 
+    public boolean isWin() {
+        return strikeCount == 3;
+    }
+
     public static boolean isNothing(int ballCount, int strikeCount) {
         return ballCount == 0 && strikeCount == 0;
     }
