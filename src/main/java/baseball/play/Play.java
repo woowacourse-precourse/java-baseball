@@ -2,9 +2,11 @@ package baseball.play;
 
 import baseball.number.ComputerNumber;
 import baseball.number.UserNumber;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Play {
@@ -27,15 +29,40 @@ public class Play {
 
         userNumber = new UserNumber();
         userNumberList = new ArrayList<>();
+
     }
     public void playBaseball(){
         System.out.println(START_MESSAGE);
-        computerNumber.generateNumber();
+        computerNumberList = computerNumber.generateNumber();
+
         System.out.print(INPUT_MESSAGE);
         userNumberList = userNumber.inputUserNumber();
 
+        System.out.println(computerNumberList);
+        System.out.println(userNumberList);
 
-
+        checkStrike(userNumberList,computerNumberList);
+        checkBall(userNumberList,computerNumberList);
 
     }
+    public int checkStrike(List<Integer> userNumberList, List<Integer> computerNumberList){
+        int strike = 0;
+        for(int i=0; i<3; i++){
+            if(userNumberList.get(i).equals(computerNumberList.get(i))){
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    public int checkBall(List<Integer> userNumberList, List<Integer> computerNumberList){
+        int ball = 0;
+        for(int i=0; i<3; i++){
+            if(userNumberList.contains(computerNumberList.get(i)) && !(userNumberList.get(i).equals(computerNumberList.get(i)))){
+                ball++;
+            }
+        }
+        return ball;
+    }
+
 }
