@@ -28,6 +28,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void checkRestartTest() {
+        Application app = new Application();
+        boolean result = true;
+        String playerRestart = "1";
+        assertThat(app.checkRestart(playerRestart)).isEqualTo(result);
+        result = false;
+        playerRestart = "2";
+        assertThat(app.checkRestart(playerRestart)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
