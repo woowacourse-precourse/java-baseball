@@ -52,7 +52,7 @@ public class Baseball {
 
     private boolean isGameOver() {
         if (hint.isMaxStrike()) {
-            if (isStateShutDown()) {
+            if (getState().isStart()) {
                 OutputView.printGameOver();
                 return true;
             }
@@ -63,15 +63,11 @@ public class Baseball {
         return false;
     }
 
-    private boolean isStateShutDown() {
-        String stateNumber = getStateNumber();
-        return State.SHUTDOWN.getNumber().equals(stateNumber);
-    }
 
-    private String getStateNumber() {
+    private State getState() {
         String stateNumber = InputView.inputStateNumber();
         inputValidator.validateStateNumber(stateNumber);
 
-        return stateNumber;
+        return State.getState(stateNumber);
     }
 }

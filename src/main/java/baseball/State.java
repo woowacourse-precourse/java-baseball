@@ -8,17 +8,23 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum State {
-    RESTART("1"),
-    SHUTDOWN("2");
+    RESTART("1", true),
+    SHUTDOWN("2", false);
 
     private String number;
+    private boolean start;
 
-    State(String number) {
+    State(String number, boolean start) {
         this.number = number;
+        this.start = start;
     }
 
     public String getNumber() {
         return number;
+    }
+
+    public boolean isStart() {
+        return start;
     }
 
     private static final Map<String, State> numbers = Collections.unmodifiableMap(Stream.of(values())
@@ -26,5 +32,9 @@ public enum State {
 
     public static boolean isValidNumber(String number) {
         return Optional.ofNullable(numbers.get(number)).isPresent();
+    }
+
+    public static State getState(String number) {
+        return Optional.ofNullable(numbers.get(number)).get();
     }
 }
