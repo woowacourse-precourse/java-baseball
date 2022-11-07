@@ -9,4 +9,10 @@ public class UserInputException {
         }
         return false;
     }
+
+    public boolean isInputLength(String input, int length) {
+        return input.length() == length;
+    }
+
+
 }
