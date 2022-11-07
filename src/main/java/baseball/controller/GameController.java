@@ -11,5 +11,6 @@ public class GameController {
     public void GameController() {
         inputView.GameStart();
         ArrayList<Integer> computer = randomNumberGenerator.RandomNumberGenerator();
+        ArrayList<Integer> UserNumList = new InputUserNumber().InputUserNumber();
     }
 }
