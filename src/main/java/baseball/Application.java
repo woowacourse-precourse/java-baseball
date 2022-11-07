@@ -25,7 +25,6 @@ public class Application {
     	while(start==1) {
 	    	// 랜덤 수 발생
     		computer = makeComputer();
-    		
     		// 게임 실행 메서드
     		game();
     	}
@@ -73,7 +72,7 @@ public class Application {
     			compare(computer,inputNumber);
     		}
     		else {
-    			throw new IllegalArgumentException("잘못된 값을 입력했습니다!");
+    			throw new IllegalArgumentException();
     		}
     		
     		resultPrint(ball, strike);
@@ -163,9 +162,9 @@ public class Application {
     // 3스트라이크 출력 및 게임 재시작 메서드
     public static int successMessage() {
     	int coin = 0;
-    	System.out.println("3스트라이크");
+    	System.out.println(strike+"스트라이크");
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		System.out.println("게임을 새로 시작하려면  1, 종료하려면 2를 입력하세요.");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		coin = Integer.parseInt(Console.readLine());
 		return coin;
     }
