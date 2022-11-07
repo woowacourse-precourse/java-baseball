@@ -3,7 +3,6 @@ package baseball;
 import java.util.List;
 public class GameConsole {
 
-    public static boolean bool = true;
     public static List<Integer> computer;
 
     public static Integer strikeCount(List<Integer> computerNumber, List<Integer> playerNumber) {
@@ -35,14 +34,15 @@ public class GameConsole {
 
     }
 
-    public static void exitOrContinue(){
+    public static boolean exitOrContinue(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int inputNumber = Integer.parseInt(PlayerNumber.getString());
 
         if (inputNumber == 1){
             computer = ComputerNumber.arrayGetNumber();
+            return true;
         }else if (inputNumber == 2){
-            bool = false;
+            return false;
         }
         else {
             throw new IllegalArgumentException();
@@ -57,6 +57,7 @@ public class GameConsole {
         computer = ComputerNumber.arrayGetNumber();
 
         String hint = "";
+        boolean bool = true;
         while (bool) {
             System.out.print("숫자를 입력해주세요 : ");
             String playerNumber = PlayerNumber.getString();
@@ -77,7 +78,7 @@ public class GameConsole {
             hint = "";
             if (strikeCount(computer, player) == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                exitOrContinue();
+                bool = exitOrContinue();
             }
         }
     }
@@ -87,4 +88,3 @@ public class GameConsole {
 
 
 }
-
