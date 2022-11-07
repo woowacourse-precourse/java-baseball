@@ -8,15 +8,15 @@ import java.util.*;
 public class NumberComparison {
     private List<Integer> computerNumbers;
     private List<Integer> userNumbers;
-    private int strikeCount = 0;
-    private int ballCount = 0;
+    private int strikeCount;
+    private int ballCount;
 
     public NumberComparison(List<Integer> computerNumbers) {
         this.computerNumbers = computerNumbers;
     }
 
     public boolean startComparison(List<Integer> userNumbers) {
-        this.userNumbers = userNumbers;
+        initNumberComparison(userNumbers);
 
         checkEachDigit();
 
@@ -27,6 +27,12 @@ public class NumberComparison {
         }
 
         return false;
+    }
+
+    private void initNumberComparison(List<Integer> userNumbers){
+        this.userNumbers = userNumbers;
+        strikeCount = 0;
+        ballCount = 0;
     }
 
     private void checkEachDigit() {
