@@ -58,7 +58,6 @@ public class Game {
     private boolean isValidInput() {
         if (isLengthThree() && isEachNumberFrom1To9() && isDifferentNumbers())
             return true;
-
         return false;
     }
     
