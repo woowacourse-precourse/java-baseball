@@ -139,7 +139,9 @@ public class Application {
     }
 
     private static void endGameException(String playerInput) {
-
+        if ((!playerInput.equals("1")) && (!playerInput.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
     }
 
 }
