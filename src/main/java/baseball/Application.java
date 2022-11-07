@@ -8,13 +8,59 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 public class Application {
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        startRound();
+    }
+
+    private static void startRound() {
         List<Integer> randomNumbers = getRandomBaseballNumbers();
-        String userInput = getUserInput();
+        boolean isDone;
+
+        do {
+            String userInput = getUserInput();
+            List<Integer> comparedResult = compareBaseballNumbers(userInput, randomNumbers);
+            isDone = printResultAndCheckIsDone(comparedResult);
+        } while (!isDone);
+    }
+
+    private static boolean printResultAndCheckIsDone(List<Integer> comparedResult) {
+        int ballCnt = comparedResult.get(0);
+        int strikeCnt = comparedResult.get(1);
+
+        if (strikeCnt == 3) {
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else if (ballCnt != 0 || strikeCnt != 0) {
+            System.out.printf("%d볼 %d스트라이크\n", ballCnt, strikeCnt);
+            return false;
+        }
+
+        System.out.println("낫싱");
+        return false;
+    }
+
+    private static List<Integer> compareBaseballNumbers(String userInput, List<Integer> randomNumbers) {
+        int ballCnt = 0;
+        int strikeCnt = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int currNum = userInput.charAt(i) - '0';
+
+            if (randomNumbers.get(i) == currNum) {
+                strikeCnt++;
+            } else if (randomNumbers.contains(currNum)) {
+                ballCnt++;
+            }
+        }
+
+        return List.of(ballCnt, strikeCnt);
     }
 
     private static String getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         isValidInput(userInput);
         return userInput;
