@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Referee {
 
-    public boolean checkStrikeCondition(int userValueIndex, int computerValueIndex,
+    private boolean checkStrikeCondition(int userValueIndex, int computerValueIndex,
                                         List<String> userValue, List<String> computerGeneratedValue) {
         return userValueIndex == computerValueIndex &&
                 computerGeneratedValue.get(computerValueIndex)
@@ -14,7 +14,7 @@ public class Referee {
                                 .get(userValueIndex));
     }
 
-    public boolean checkBallCondition(int userValueIndex, int computerValueIndex,
+    private boolean checkBallCondition(int userValueIndex, int computerValueIndex,
                                       List<String> userValue, List<String> computerGeneratedValue) {
         return userValueIndex != computerValueIndex &&
                 computerGeneratedValue.get(computerValueIndex)
@@ -22,7 +22,7 @@ public class Referee {
                                 .get(userValueIndex));
     }
 
-    public int countStrike(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
+    private int countStrike(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
         int strikeCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
@@ -33,7 +33,7 @@ public class Referee {
         return strikeCount;
     }
 
-    public int countBall(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
+    private int countBall(int computerValueIndex, List<String> computerGeneratedValue, List<String> userValue) {
         int ballCount = 0;
 
         for (int userValueIndex = 0; userValueIndex < 3; userValueIndex++) {
@@ -45,7 +45,6 @@ public class Referee {
     }
 
     public Map<String, Integer> judgement(List<String> computerGeneratedValue, List<String> userInputValue) {
-
         if (computerGeneratedValue.equals(userInputValue)) {
             Map<String, Integer> strikeBallCount = new HashMap<>();
             strikeBallCount.put("strikeCount", 3);
