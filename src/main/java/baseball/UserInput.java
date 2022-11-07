@@ -21,15 +21,15 @@ public class UserInput {
         return userNumber;
     }
 
-    public boolean validate() {
+    private boolean validate() {
         return (checkLength() && checkDuplicate() && checkNumber());
     }
 
-    public boolean checkLength() {
+    private boolean checkLength() {
         return (userInput.length() == MAX_NUMBER_SIZE);
     }
 
-    public boolean checkDuplicate() {
+    private boolean checkDuplicate() {
         boolean flag = true;
         if (userInput.charAt(0) == userInput.charAt(1)) {
             flag = false;
@@ -43,7 +43,7 @@ public class UserInput {
         return flag;
     }
 
-    public boolean checkNumber() {
+    private boolean checkNumber() {
         boolean flag = true;
         for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
             if (!(userInput.charAt(i) >= '1' && userInput.charAt(i) <= '9')) {
@@ -53,7 +53,7 @@ public class UserInput {
         return flag;
     }
 
-    public void userInputToUserNumber() {
+    private void userInputToUserNumber() {
         for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
             userNumber[i] = (userInput.charAt(i) - '0');
         }
