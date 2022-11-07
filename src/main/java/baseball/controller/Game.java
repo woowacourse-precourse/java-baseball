@@ -1,13 +1,12 @@
 package baseball.controller;
 
 import baseball.type.ResultGame;
-import baseball.view.OutputView;
 
 public class Game {
     private static ResultGame resultGame = ResultGame.Repeat;
 
     static void repeatToEnd() {
-        while (checkResultIsRepeat()) {
+        while (checkCanRepeat()) {
             playOneTime();
         }
     }
@@ -17,7 +16,7 @@ public class Game {
         checkIsUserRepeatGame();
     }
 
-    static boolean checkResultIsRepeat() {
+    static boolean checkCanRepeat() {
         return resultGame == ResultGame.Repeat;
     }
 }
