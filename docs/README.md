@@ -13,19 +13,19 @@
 검증 & 예외처리 목록
 ---
 * 숫자 예측 시 사용자 입력
-    * 1 ~ 9 사이의 숫자로만 이루어졌는지 검증
+    * 숫자로만 이루어졌는지 검증 (validateUserInputNumFormat)
       * ex) input = 1ab → 예외처리
 
-    * 범위 검증(123 ~ 987)
+    * 범위 검증(123 ~ 987) (validateUserInputNumRange)
       * ex) input = 1234 → 예외처리
 
-    * 같은 수 없는지 검증 
+    * 중복되는 수 없는지 검증 (validateUserNumListNoRepetition)
       * ex) input = 112 → 예외처리
  
-    * 0 없는지 검증
+    * 0 없는지 검증 (validateUserNumListNotContainZero)
       * ex) input = 450 → 예외처리
 
 
-* 재시작 / 종료 선택 시 사용자 입력 검증(1 or 2)
+* 재시작 / 종료 선택 시 사용자 입력 검증(1 or 2) (validateUserInputCommand)
   * ex) input = 3 → 예외처리
   * ex2) input = a → 예외처리
