@@ -72,4 +72,14 @@ public class Application {
             this.ball = ball;
         }
     }
+
+    static void printResult(ballCount result) {
+        if (result.ball > 0)
+            System.out.printf(result.ball + "볼 ");
+        if (result.strike > 0)
+            System.out.printf(result.strike + "스트라이크");
+        if (result.strike == 0 && result.ball == 0)
+            System.out.printf("낫싱");
+        System.out.println();
+    }
 }
