@@ -1,12 +1,16 @@
 package baseball.ball;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Balls {
     private static final int BALL_SIZE = 3;
     private List<Ball> balls;
 
     public Balls() {
+        balls=new ArrayList<>();
     }
 
     public boolean validateBallsSize() {

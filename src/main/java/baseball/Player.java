@@ -16,6 +16,15 @@ public class Player {
         playerBalls = new Balls();
     }
 
+    public Balls createBalls() {
+        List<Ball> balls = createBallByInput(inputPlayerNumber());
+        balls.stream()
+                .forEach(ball -> playerBalls.addBall(ball));
+        playerBalls.validateBallsSize();
+
+        return playerBalls;
+    }
+
     private List<Ball> createBallByInput(List<String> playNumber) {
         return playNumber.stream()
                 .map(ballNumber -> new Ball(Integer.parseInt(ballNumber)))
