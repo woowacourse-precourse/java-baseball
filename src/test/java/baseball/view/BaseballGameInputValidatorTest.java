@@ -77,7 +77,7 @@ class BaseballGameInputValidatorTest {
             String input = "a";
 
             // when
-            final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
+            final boolean result = BaseballGameInputValidator.validateReplayNumber(input);
 
             // then
             assertFalse(result);
@@ -90,7 +90,7 @@ class BaseballGameInputValidatorTest {
             String input = "1";
 
             // when
-            final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
+            final boolean result = BaseballGameInputValidator.validateReplayNumber(input);
 
             // then
             assertTrue(result);
