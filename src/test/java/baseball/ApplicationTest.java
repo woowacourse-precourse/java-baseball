@@ -3,8 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -33,21 +32,33 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 볼_스트라이크_출력_테스트() {
-        ArrayList<Integer> strikesAndBalls = new ArrayList<>(Arrays.asList(2, 0));
+        LinkedHashMap<String, Integer> strikesAndBalls = new LinkedHashMap<String, Integer>() {{
+            put("strike", 2);
+            put("ball", 1);
+        }};
+
         Application.gameResult(strikesAndBalls);
 
-        assertThat(output()).isEqualTo("2스트라이크");
+        assertThat(output()).isEqualTo("1볼 2스트라이크");
     }
 
     @Test
     void 볼_스트라이크_계산_테스트() {
-        ArrayList<Integer> computers = new ArrayList<>(Arrays.asList(5, 1, 9));
-        ArrayList<Integer> users = new ArrayList<>(Arrays.asList(6, 1, 3));
-        ArrayList<Integer> result = new ArrayList<>();
+        LinkedHashMap<Integer, Integer> computers = new LinkedHashMap<Integer, Integer>(){{
+            put(0,5);
+            put(1,1);
+            put(2,9);
+        }};
+        LinkedHashMap<Integer, Integer> users = new LinkedHashMap<Integer, Integer>(){{
+            put(0,9);
+            put(1,1);
+            put(2,5);
+        }};
+        LinkedHashMap<String, Integer> result = new LinkedHashMap<String, Integer>();
 
         result = Application.comparing(computers, users);
-
-        assertThat(result).containsExactly(1,0);
+        assertThat(result).containsEntry("strike",1);
+        assertThat(result).containsEntry("ball",2);
 
     }
 
