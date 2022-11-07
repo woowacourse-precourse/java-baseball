@@ -1,5 +1,4 @@
 package baseball.view;
-import baseball.view.GameStatusView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,12 +15,14 @@ public class GameStatusViewTest {
     }
 
     @Test
-    void 입력이_1이나_2가_아니면_참을_반환(){
+    void 입력이_1이나_2가_아니면_재요청(){
         String input = "a";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        gameStatusView.readOpinion();
-        assertThat(gameStatusView.isNotCorrectAnswer()).isTrue();
+        gameStatusView.inquireOpinion();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThat(out.toString()).isEqualTo("잘못된 입력입니다.\n");
     }
 
     @Test
@@ -31,7 +32,7 @@ public class GameStatusViewTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        gameStatusView.readOpinion();
-        assertThat(gameStatusView.getOpinion()).isEqualTo(input);
+        String opinion = gameStatusView.inquireOpinion();
+        assertThat(opinion).isEqualTo(input);
     }
 }
