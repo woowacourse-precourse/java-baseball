@@ -17,21 +17,11 @@ public class Application {
 
         while (!finishGame) {
 
-            int userNumber = 0;
             int answerNumber = getAnswerNumber();
 
             playGame(answerNumber);
 
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-            // TODO : 3스트라이크 이후의 로직은 추가적인 메소드로 분리해야 할 듯!
-            userNumber = Integer.parseInt(Console.readLine());
-            if(userNumber == 1)
-                finishGame = false;
-            else if(userNumber == 2) {
-                finishGame = true;
-            }
+            finishGame = continueOrExit();
         }
     }
 
@@ -84,6 +74,21 @@ public class Application {
             // 판정 결과를 정답과 비교하는 메소드 호출
             equalNumber = equalNumber(strikes);
         }
+    }
+
+    public static boolean continueOrExit() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int userChoice = Integer.parseInt(Console.readLine());
+
+        if(userChoice == 1)
+            return false;
+        if(userChoice == 2)
+            return true;
+
+        // TODO : 1이나 2 이외의 잘못된 값이 들어왔을 때 예외처리 로직이 필요할 듯!
+        return false;
     }
 
     public static int countStrikes(int userNumber, int answerNumber) {
