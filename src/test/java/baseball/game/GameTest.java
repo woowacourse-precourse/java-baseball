@@ -4,6 +4,9 @@ import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Map;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
@@ -38,6 +41,17 @@ public class GameTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("서로 다른 수만 입력이 가능합니다.");
 
+    }
+
+    @Test
+    void 볼_스트라이크_개수를_가져와야_한다() {
+        Game game = Game.create();
+        assertThat(
+                game.getBallStrikeCount(Arrays.asList(1, 2, 3), Arrays.asList(2, 4, 3))
+                        .equals(Map.of(
+                                "볼", 1,
+                                "스트라이크", 1
+                        )));
     }
 
     @Override
