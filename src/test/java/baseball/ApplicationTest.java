@@ -149,6 +149,69 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @Test
+    void getBallCnt() {
+        //given
+        List<List<Integer>> A = List.of(
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6),
+                List.of(1, 3, 6)
+        );
+        List<List<Integer>> B = List.of(
+                //0Ball
+                List.of(1, 3, 6),
+                List.of(1, 7, 6),
+                List.of(1, 3, 8),
+                List.of(2, 3, 6),
+                List.of(2, 4, 6),
+                //1Ball
+                List.of(2, 6, 4),
+                List.of(2, 1, 6),
+                List.of(6, 4, 2),
+                //2Ball
+                List.of(6, 3, 1),
+                List.of(1, 6, 3),
+                List.of(3, 6, 8),
+                //3Ball
+                List.of(6, 1, 3),
+                List.of(3, 6, 1)
+
+        );
+        List<Integer> expected = List.of(
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                1,
+                2,
+                2,
+                2,
+                3,
+                3
+        );
+        //when
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < A.size(); i++) {
+            result.add(Application.getBallCnt(A.get(i), B.get(i)));
+        }
+
+        //then
+        assertThat(result).isEqualTo(expected);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
