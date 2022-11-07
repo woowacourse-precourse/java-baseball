@@ -2,9 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Service {
 
@@ -12,8 +10,8 @@ public class Service {
         return Arrays.asList(string.split(""));
     }
 
-    private List<String> AddToListExcludeContainsString(List<String> list, String string){
-        if(!list.contains(string)) {
+    private List<String> AddToListExcludeContainsString(List<String> list, String string) {
+        if (!list.contains(string)) {
             list.add(string);
         }
         return list;
@@ -22,7 +20,7 @@ public class Service {
     public List<String> generateRandomNumber(int min, int max, int size) {
         List<String> randomNumbers = new LinkedList<>();
 
-        while(size > randomNumbers.size()) {
+        while (size > randomNumbers.size()) {
             String randomNumber = Integer.toString(Randoms.pickNumberInRange(min, max));
             randomNumbers = AddToListExcludeContainsString(randomNumbers, randomNumber);
         }
@@ -51,5 +49,16 @@ public class Service {
         ballCount -= strikeCount;
 
         return ballCount;
+    }
+
+    public Map<String, Integer> getBallCount(List<String> questionNumbers, List<String> answerNumbers) {
+        Map<String, Integer> ballCountMap = new HashMap<>();
+        int strikeCount = getNumberOfStrikes(questionNumbers, answerNumbers);
+        int ballCount = getNumberOfBalls(questionNumbers, answerNumbers, strikeCount);
+
+        ballCountMap.put("strikeCount", strikeCount);
+        ballCountMap.put("ballCount", ballCount);
+
+        return ballCountMap;
     }
 }
