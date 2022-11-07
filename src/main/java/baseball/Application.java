@@ -140,6 +140,7 @@ public class Application {
         if(ballNumber >0 && strikeNumber >0){
             System.out.println(ballNumber +"볼 "+strikeNumber+"스트라이크");
         }
+
         return false;
     }
 
