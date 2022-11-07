@@ -10,20 +10,19 @@ public class User {
     private List<Integer> guessedAnswer;
 
     public User() {
-        initguessedAnswer();
+        initGuessedAnswer();
     }
 
-    public void initguessedAnswer() {
+    public void initGuessedAnswer() {
         guessedAnswer = new ArrayList<>();
     }
 
-    public void setGuessedAnswer(String guessedAnswer) {
-        initguessedAnswer();
+    public void setGuessedAnswer(String stringGuessedAnswer) {
+        initGuessedAnswer();
 
-        for (int i = 0; i < GUESSED_ANSWER_LENGTH; i++) {
-            char charNumber = guessedAnswer.charAt(i);
+        for (char charNumber : stringGuessedAnswer.toCharArray()) {
             int number = Character.getNumericValue(charNumber);
-            this.guessedAnswer.add(number);
+            guessedAnswer.add(number);
         }
     }
 
