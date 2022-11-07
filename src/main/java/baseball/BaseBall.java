@@ -17,7 +17,6 @@ public class BaseBall {
     private final String END_NUMBER2 = "2";
     private final int END_CONDITION = 3;
     private final int NUMBER_OF_DIGITS = 3;
-
     private int strike;
     private int ball;
     private boolean isRestart;
@@ -46,6 +45,17 @@ public class BaseBall {
                 break;
             }
         }
+    }
+
+    private List<String> makeRandom() {
+        List<String> randomList = new ArrayList<>();
+        while (randomList.size() < NUMBER_OF_DIGITS) {
+            String random = String.valueOf(pickNumberInRange(1, 9));
+            if (!randomList.contains(random)) {
+                randomList.add(random);
+            }
+        }
+        return randomList;
     }
 
 }
