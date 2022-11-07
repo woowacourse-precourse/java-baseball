@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class CheckUtilTest {
     @Test
     void lengthCheck_길이가_3인지_체크() {
-        assertThatThrownBy(() -> CheckUtil.lengthCheck("1423"))
+        assertThatThrownBy(() -> CheckUtil.lengthCheck("1423",Constant.MAX_LENGTH))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

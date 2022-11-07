@@ -47,7 +47,13 @@ public class Game {
 
     public void restartCheck() {
         String input = Console.readLine();
-        user.inputCheck(input);
+        user.restartInputCheck(input);
+        if(!Objects.equals(input, Constant.END)){
+            computer.setComputerInput();
+            gameStart();
+            return;
+        }
+        System.out.println("게임 끝");
     }
 
 }

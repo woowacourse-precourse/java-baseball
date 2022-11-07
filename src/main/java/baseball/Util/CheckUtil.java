@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CheckUtil {
-    public static void lengthCheck(String input) {
-        if (input.length() != Constant.MAX_LENGTH) {
+    public static void lengthCheck(String input,int length) {
+        if (input.length() != length) {
             throw new IllegalArgumentException();
         }
     }

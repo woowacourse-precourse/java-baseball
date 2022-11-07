@@ -10,4 +10,6 @@ public class Constant {
     public static final String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
     public static final Integer MAX_LENGTH = 3;
     public static final Integer MIN_LENGTH = 1;
+    public static final String END = "2";
+
 }
