@@ -49,26 +49,21 @@ public class Application {
 
 
     public static void inputNumber(List<Integer> computer) {
-        boolean check;
+        int strike = 0;
         List<Integer> user;
 
-        do {
+        while(strike !=3){
             System.out.print("숫자를 입력해주세요 : ");
 
             int input = Integer.parseInt(Console.readLine());
 
             user = splitNumber(input);
 
-            check = new HashSet<>(computer).containsAll(user);
+            checkInput(user);
 
-            if (!check) {
+            strike = printAnswer(computer, user);
 
-                checkInput(user);
-
-                printAnswer(computer, user);
-
-            }
-        } while (!check);
+        }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
@@ -92,7 +87,7 @@ public class Application {
 
     }
 
-    public static void printAnswer(List<Integer> computer, List<Integer> user) {
+    public static int printAnswer(List<Integer> computer, List<Integer> user) {
 
         int strike = 0;
 
@@ -132,6 +127,7 @@ public class Application {
         }
         System.out.println(result);
 
+        return strike;
     }
 
     public static List<Integer> splitNumber(int number) {
