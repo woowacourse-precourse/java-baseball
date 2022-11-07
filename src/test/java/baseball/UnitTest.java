@@ -4,8 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -167,6 +166,49 @@ public class UnitTest {
             String answer = "123";
             assertThat(Application.calcBallCount(answer, "312")).isEqualTo(3);
             assertThat(Application.calcBallCount(answer, "231")).isEqualTo(3);
+        }
+    }
+
+    @Nested
+    class PrintGuessResultTest {
+        @Test
+        @DisplayName("스트라이크만 있을 경우 출력")
+        void printGuessResult_StrikeOnly_Print() {
+            OutputStream os = new ByteArrayOutputStream();
+
+            System.setOut(new PrintStream(os));
+            Application.printGuessResult(1, 0);
+            assertThat(os.toString().strip()).isEqualTo("1스트라이크");
+        }
+
+        @Test
+        @DisplayName("볼만 있을 경우 출력")
+        void printGuessResult_BallOnly_Print() {
+            OutputStream os = new ByteArrayOutputStream();
+
+            System.setOut(new PrintStream(os));
+            Application.printGuessResult(0, 2);
+            assertThat(os.toString().strip()).isEqualTo("2볼");
+        }
+
+        @Test
+        @DisplayName("스트라이크와 볼이 있을 경우 출력")
+        void printGuessResult_StrikeAndBall_Print() {
+            OutputStream os = new ByteArrayOutputStream();
+
+            System.setOut(new PrintStream(os));
+            Application.printGuessResult(1, 1);
+            assertThat(os.toString().strip()).isEqualTo("1볼 1스트라이크");
+        }
+
+        @Test
+        @DisplayName("스트라이크와 볼이 없을 경우 출력")
+        void printGuessResult_NonStrikeAndBall_Print() {
+            OutputStream os = new ByteArrayOutputStream();
+
+            System.setOut(new PrintStream(os));
+            Application.printGuessResult(0, 0);
+            assertThat(os.toString().strip()).isEqualTo("낫싱");
         }
     }
 }
