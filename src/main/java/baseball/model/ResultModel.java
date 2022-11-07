@@ -31,9 +31,9 @@ public class ResultModel {
     }
 
     public void injectElementToList(List<Integer> NumList, int num) {
-        NumList.add(num % 10);
-        NumList.add((num % 100) / 10);
         NumList.add(num / 100);
+        NumList.add((num % 100) / 10);
+        NumList.add(num % 10);
     }
 
     public void compareInputNumWithResultList(int inputNum, List<Integer> resultNumList, int idx) {
