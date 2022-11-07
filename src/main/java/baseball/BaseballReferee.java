@@ -2,43 +2,29 @@ package baseball;
 
 public class BaseballReferee {
 
-
-
     private BaseballInput answer;
 
-    BaseballReferee(BaseballInput answer){
+    BaseballReferee(BaseballInput answer) {
         this.answer = answer;
 
     }
 
-    public BaseballOutput judge(BaseballInput target){
+    public BaseballOutput judge(BaseballInput target) {
         int ball = 0;
-        int strike = 0;
 
-        if(answer.containNumber(target.getFirst())){
+        if (answer.isBall(target.getFirst())) {
             ball++;
         }
-        if(answer.containNumber(target.getSecond())){
+        if (answer.isBall(target.getSecond())) {
             ball++;
         }
-        if(answer.containNumber(target.getThird())){
+        if (answer.isBall(target.getThird())) {
             ball++;
         }
+        int strike = answer.getStrikeNumber(target);
+        ball -= strike;
 
-        if(answer.getFirst() == target.getFirst()){
-            strike++;
-            ball--;
-        }
 
-        if(answer.getSecond() == target.getSecond()){
-            strike++;
-            ball--;
-        }
-
-        if(answer.getThird() == target.getThird()){
-            strike++;
-            ball--;
-        }
         return new BaseballOutput(ball, strike);
     }
 }
