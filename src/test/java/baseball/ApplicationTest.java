@@ -35,6 +35,20 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 적은_숫자_입력(){
+        String input = "12";
+        assertThatThrownBy(()-> runException(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 많은_숫자_입력(){
+        String input = "1234";
+        assertThatThrownBy(()-> runException(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
