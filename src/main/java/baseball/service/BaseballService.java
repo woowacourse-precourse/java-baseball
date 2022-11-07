@@ -22,4 +22,10 @@ public class BaseballService {
     public void initGame() {
         baseballMachine.prepareGame();
     }
+
+    // 게임 진행 기능
+    public void playBaseballGame() {
+        System.out.print(INPUT_MESSAGE);
+        baseballMachine.matchNumber();
+    }
 }
