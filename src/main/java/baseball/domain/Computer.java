@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Computer {
     private static final int MAX_SIZE_OF_NUMBER = 3;
     private static final int DOES_NOT_EXIST = -1;
+    private static final String NOTHING = "";
     List<String> computersNumber = new ArrayList<>();
 
     public Computer() {
@@ -31,7 +32,7 @@ public class Computer {
         if (haveStrikeCount) {
             result += (strikeBallMap.get("스트라이크") + "스트라이크");
         }
-        if (result.equals("")) {
+        if (result.equals(NOTHING)) {
             result = "낫싱";
         }
         return result;
