@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.enums.Announcement;
 import baseball.enums.BallCount;
+import baseball.enums.Menu;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -80,4 +81,12 @@ public class GameMachine {
 
         return String.valueOf(stringBuilder);
     }
+
+    public boolean askReplay(Gamer gamer) {
+        Announcement.ASK_REPLAY.printlnAnnouncement();
+        String input = gamer.inputPlayAgainOrNot();
+
+        return input.equals(Menu.REPLAY.getMenuNumber());
+    }
+
 }
