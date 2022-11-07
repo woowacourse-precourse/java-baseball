@@ -38,4 +38,13 @@ public class GameTest {
         assertThatThrownBy(() -> game.restart(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void getGameResult_볼이_없을때_게임_결과_반환_확인() {
+        int ball = 0;
+        int strike = 3;
+        Game game = new Game();
+
+        assertThat(game.getGameResult(ball, strike)).isEqualTo("3스트라이크");
+    }
 }
