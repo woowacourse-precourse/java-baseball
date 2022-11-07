@@ -80,18 +80,26 @@ public class BaseBall {
         this.isMatch = this.strike == 3 && this.ball == 0;
     }
 
-    private Integer calBallCount(List<Integer> inputs) {
+    private Integer calBallCount(List<Integer> userInput) {
         int result = 0;
 
         for (int i = 0; i < answer.size(); i++) {
-            for (int j = 0; j < inputs.size(); j++) {
-                if (i != j && answer.get(i).equals(inputs.get(j))) {
-                    result++;
-                }
+            if (isBall(i, userInput)) {
+                result++;
             }
         }
 
         return result;
+    }
+
+    private boolean isBall(int answerIdx, List<Integer> userInput) {
+        for (int i = 0; i < userInput.size(); i++) {
+            if (i != answerIdx && answer.get(answerIdx).equals(userInput.get(i))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private Integer calStrikeCount(List<Integer> inputs) {
