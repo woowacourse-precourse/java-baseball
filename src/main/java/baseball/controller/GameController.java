@@ -28,7 +28,7 @@ public class GameController {
         OutputView.printInputNumber();
         List<Integer> numbers = InputView.inputNumbers();
 
-        GameResultResponseDto responseDto = playRound(numbers);
+        GameResultResponseDto responseDto = playGame(numbers);
         int restart = checkRestart(responseDto);
 
         if (isGameOver(restart)) {
@@ -37,7 +37,7 @@ public class GameController {
         recursiveGame();
     }
 
-    private GameResultResponseDto playRound(List<Integer> numbers) {
+    private GameResultResponseDto playGame(List<Integer> numbers) {
         GameResultResponseDto responseDto = gameService.playGame(numbers);
         OutputView.printGameResult(responseDto);
         return responseDto;
