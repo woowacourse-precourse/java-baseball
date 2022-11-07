@@ -11,22 +11,22 @@ public class Exception {
 
 }
 
-class ExceptionFor2 extends Exception {
+class PlayerNumbersException extends Exception {
     final static int NUMBER_LENGTH = 3;
 
-    public static void checkGamePlayerNumberInput(String gamePlayerNumberInput) {
-        checkNumberLength(gamePlayerNumberInput);
-        hasSameNumber(gamePlayerNumberInput);
+    public static void verifyPlayerNumbers(String gamePlayerNumberInput) {
+        verifyNumberLength(gamePlayerNumberInput);
+        verifyUniqueNumber(gamePlayerNumberInput);
         hasCharacters(gamePlayerNumberInput);
     }
 
-    private static void checkNumberLength(String stringGamePlayerInput) {
+    private static void verifyNumberLength(String stringGamePlayerInput) {
         if (stringGamePlayerInput.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void hasSameNumber(String gamePlayerInput) {
+    private static void verifyUniqueNumber(String gamePlayerInput) {
         for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
             if (gamePlayerInput.lastIndexOf(gamePlayerInput.charAt(stringIndex)) != stringIndex) {
                 throw new IllegalArgumentException();
@@ -36,19 +36,19 @@ class ExceptionFor2 extends Exception {
 
 }
 
-class ExceptionFor4 extends Exception {
+class GameRepeatMessageException extends Exception {
     final static Integer EXCEPTION4_NUMBER_LENGTH = 1;
     final static String ANSWER_REPEAT_GAME = "1";
     final static String ANSWER_QUIT_GAME = "2";
 
-    public static void checkException(String input) {
+    public static void verifyGameRepeatMessage(String input) {
         input = input.trim();
-        checkInputLength(input);
+        verifyMessageLength(input);
         hasCharacters(input);
         checkYesOrNo(input);
     }
 
-    public static void checkInputLength(String input) {
+    public static void verifyMessageLength(String input) {
         if (input.length() != EXCEPTION4_NUMBER_LENGTH) {
             throw new IllegalArgumentException("exception occurs at checkInputLength()");
         }
