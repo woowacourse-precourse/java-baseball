@@ -8,7 +8,7 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println(Message.GREETING);
-        while(userWantsToPlay) {
+        while (userWantsToPlay) {
             playBall();
         }
     }
