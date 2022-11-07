@@ -5,15 +5,15 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 
 public class Application {
-    private static final String RESTART_GAME = "1";
-    private static final String END_GAME = "2";
+    private static final String GAME_RESTART = "1";
+    private static final String GAME_END = "2";
 
 
     public static boolean isExit(String command) {
-        if (command.equals(RESTART_GAME)) {
+        if (command.equals(GAME_RESTART)) {
             return false;
         }
-        if (command.equals(END_GAME)) {
+        if (command.equals(GAME_END)) {
             return true;
         }
 
