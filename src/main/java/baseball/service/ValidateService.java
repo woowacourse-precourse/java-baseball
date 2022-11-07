@@ -11,6 +11,13 @@ public class ValidateService {
         if (isNotNumber(inputBaseBallNumbers)) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
+        if (isNotContainZero(inputBaseBallNumbers)) {
+            throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+        }
+    }
+
+    private boolean isNotContainZero(String inputBaseBallNumbers) {
+        return inputBaseBallNumbers.contains("0");
     }
 
     private boolean isNotNumber(String inputBaseBallNumbers) {
@@ -23,7 +30,7 @@ public class ValidateService {
 
     public int validateInputNumber(int inputRestartNumber) {
         if (!(inputRestartNumber == 1 || inputRestartNumber == 2)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
         }
         return inputRestartNumber;
     }
