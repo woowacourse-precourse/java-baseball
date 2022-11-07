@@ -28,6 +28,7 @@ public class BaseBallGame {
     public void runGame() {
         printGameStart();
         do {
+            this.success = false;
             setComputerNumbers();
             while (!this.success) {
                 String userInput = requestUserInput();
