@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Referee {
 
-    private static RandomNumber randNum;
+    private static RandomNumber randomNum;
 
     Referee() {
-        randNum = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
+        randomNum = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
     }
 
     public static String calculateAnswer(String userInput) {
         int ball;
         int strike;
 
-        ball = calculateBall(userInput, randNum);
-        strike = calculateStrike(userInput, randNum);
+        ball = calculateBall(userInput, randomNum);
+        strike = calculateStrike(userInput, randomNum);
         if (strike == 0 && ball == 0) {
             return "낫싱";
         }

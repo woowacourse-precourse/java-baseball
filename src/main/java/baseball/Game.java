@@ -3,18 +3,18 @@ package baseball;
 public class Game {
 
     private static final int ENDGAME = 2;
-    private static final int STARTOFGAME = 0;
-    private static final int NOTSTARTOFGAME = 1;
+    private static final int FIRST_START_OFGAME = 0;
+    private static final int NOT_FIRST_START_OFGAME = 1;
     private static final int PLAYAGAINMODE = 2;
 
     public static void start(int firstCheck) {
         User user = new User();
         Computer computer = new Computer();
         Referee referee = new Referee();
-        if (firstCheck == STARTOFGAME) {
+        if (firstCheck == FIRST_START_OFGAME) {
             computer.printGameStart();
             progress(user, computer, referee);
-        } else if (firstCheck == NOTSTARTOFGAME) {
+        } else if (firstCheck == NOT_FIRST_START_OFGAME) {
             progress(user, computer, referee);
         }
     }
@@ -34,7 +34,7 @@ public class Game {
         computer.printEndingMessage();
         if (user.inputValue(PLAYAGAINMODE).equals("1")) {
             Game game = new Game();
-            game.start(NOTSTARTOFGAME);
+            game.start(NOT_FIRST_START_OFGAME);
         }
         return ENDGAME;
     }

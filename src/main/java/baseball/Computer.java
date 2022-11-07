@@ -3,10 +3,10 @@ package baseball;
 public class Computer {
 
     private static RandomNumber RandomValue;
-    private static final int GAMESTARTMODE = 1;
-    private static final int INPUTNUMBERMODE = 2;
-    private static final int ENDINGMODE = 3;
-    private static final int CALCULATEDOUTPUTMODE = 4;
+    private static final int GAME_START_MODE = 1;
+    private static final int INPUT_NUMBER_MODE = 2;
+    private static final int GAME_END_MODE = 3;
+    private static final int CALCULATED_OUTPUT_MODE = 4;
 
     public static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -26,13 +26,13 @@ public class Computer {
     }
 
     public static String testComputerPrint(int mode, String input) {
-        if (mode == GAMESTARTMODE) {
+        if (mode == GAME_START_MODE) {
             printGameStart();
-        } else if (mode == INPUTNUMBERMODE) {
+        } else if (mode == INPUT_NUMBER_MODE) {
             printInputNumber();
-        } else if (mode == ENDINGMODE) {
+        } else if (mode == GAME_END_MODE) {
             printEndingMessage();
-        } else if (mode == CALCULATEDOUTPUTMODE) {
+        } else if (mode == CALCULATED_OUTPUT_MODE) {
             printCalculateResult(input);
         }
         return "";
