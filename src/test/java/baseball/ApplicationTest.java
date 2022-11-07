@@ -91,7 +91,9 @@ class ApplicationTest extends NsTest {
     void returnAnswerTest() {
         int strike = 3;
         boolean result = true;
-        assertEquals(result,returnAnswer(strike));
+        List<Integer> answer = List.of(1,2,3);
+        List<Integer> userInput = List.of(1,2,3);
+        assertEquals(result,returnAnswer(answer,userInput));
     }
 
     @ParameterizedTest
