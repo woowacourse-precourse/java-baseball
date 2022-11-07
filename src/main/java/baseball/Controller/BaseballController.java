@@ -1,40 +1,45 @@
 package baseball.Controller;
 
+import baseball.Service.BaseballService;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class BaseballController {
-    private static final int NUMBER_SIZE=3;
+
+    private BaseballService baseballService;
+
+    private int strike=0;
+    private int matchCount=0;
 
     //게임 시작
     public void startBaseballGame() {
 
     }
 
-    //랜덤 숫자 생성
-    private List<String> createRandomNumber(){
-        List<String> computerNumber = new ArrayList<>();
-
-        for(int i=0; i<NUMBER_SIZE; i++) {
-            computerNumber.add(Integer.toString(Randoms.pickNumberInRange(1, 9)));
-        }
-
-        return computerNumber;
-    }
-
     //유저가 입력한 숫자 받기
-    private List<String> readUserNumber() {
-        String readNumber = Console.readLine();
+    public List<String> readInputNumber() {
+        String inputNumber = Console.readLine();
 
-        String[] numberToArray = readNumber.split("");
+        String[] numberToArray = inputNumber.split("");
         List<String> userNumber = new ArrayList<String>(Arrays.asList(numberToArray));
 
         return userNumber;
+    }
+
+    //스트라이크 판정
+    public int checkStrike(List<String> randomNumber, List<String> inputNumber) {
+        for(String number: inputNumber) {
+            if(randomNumber.contains(number)) {
+                if(randomNumber.indexOf(number)==inputNumber.indexOf(number)) {
+                    strike+=1;
+                }
+            }
+        }
+
+        return strike;
     }
 
 }
