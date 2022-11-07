@@ -426,4 +426,34 @@ public class NumberBaseballGameTest {
 
         assertThat(outputStream.toString().trim()).isEqualTo(result);
     }
+
+    @Test
+    void 스트라이크_카운트가_3이면_게임이_종료된다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+        Method method = baseballGame.getClass().getDeclaredMethod("isGameOver", Referee.class);
+        method.setAccessible(true);
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+        boolean isGameOver = (boolean) method.invoke(baseballGame, referee);
+
+        assertThat(isGameOver).isEqualTo(true);
+    }
+
+    @Test
+    void 스트라이크_카운트가_3이하면_게임이_종료되지_않는다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+        Method method = baseballGame.getClass().getDeclaredMethod("isGameOver", Referee.class);
+        method.setAccessible(true);
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(1, 0), new Ball(3, 1), new Ball(6, 2));
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+        boolean isGameOver = (boolean) method.invoke(baseballGame, referee);
+
+        assertThat(isGameOver).isEqualTo(false);
+    }
 }
