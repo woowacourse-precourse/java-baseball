@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PlayerService {
     private static final int LIST_SIZE = 3;
-    private static InputException inputException;
+    InputException inputException = new InputException();
     Player player = new Player();
 
     /**
@@ -18,7 +18,7 @@ public class PlayerService {
      * @param inputString 입력받은 문자
      * @return 숫자인 입력받은 문자
      */
-    private static String checkDigit(String inputString) {
+    private String checkDigit(String inputString) {
         inputException.isDigitException(inputString);
         return inputString;
     }
@@ -31,7 +31,7 @@ public class PlayerService {
      * @param inputNumber 입력받은 숫자
      * @return 중복이 아닌 int 로 변환된 숫자
      */
-    private static int numberToInt(List<Integer> numbers, String inputNumber) {
+    private int numberToInt(List<Integer> numbers, String inputNumber) {
         int addNumber = Integer.parseInt(inputNumber);
         inputException.isDuplicationNumberException(addNumber, numbers);
         return addNumber;
