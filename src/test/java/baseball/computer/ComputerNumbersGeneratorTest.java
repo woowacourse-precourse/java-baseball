@@ -12,12 +12,11 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ComputerNumbersGeneratorTest {
-    ComputerNumbersGenerator computerNumbersGenerator = AppConfig.createComputerNumbersGenerator();
+    GameComputer gameComputer = AppConfig.createGameComputer();
 
     @Test
     void 자동으로_3개의_숫자를_생각() {
-
-        int numbersLength = computerNumbersGenerator.autoCreateNumbers().size();
-        assertThat(numbersLength).isEqualTo(3);
+        gameComputer.autoSetNumbers();
+        assertThat(gameComputer.isNumberGenerated(3)).isEqualTo(true);
     }
 }
