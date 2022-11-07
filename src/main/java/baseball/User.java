@@ -45,11 +45,7 @@ public class User {
         }
     }
 
-    public static String inputValueTestPlayingMode(String testInput) {
-        return (validateInput(PLAYINGMODE, testInput));
-    }
-
-    public static String inputValueTestPlayAgainMode(String testInput) {
-        return (validateInput(PLAYAGAINMODE, testInput));
+    public static String inputValueTestByMode(String testInput, Integer mode) {
+        return validateInput(mode, testInput);
     }
 }
