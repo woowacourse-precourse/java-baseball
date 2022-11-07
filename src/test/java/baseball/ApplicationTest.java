@@ -21,34 +21,26 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
     void 입력_글자_수_예외_테스트() {
         // 4글자
-        assertThatThrownBy(() -> runException("1234"))
+        assertThatThrownBy(() -> Application.generateUserNumber("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
 
         // 2글자
-        assertThatThrownBy(() -> runException("12"))
+        assertThatThrownBy(() -> Application.generateUserNumber("12"))
                 .isInstanceOf(IllegalArgumentException.class);
 
         // 1글자
-        assertThatThrownBy(() -> runException("1"))
+        assertThatThrownBy(() -> Application.generateUserNumber("1"))
                 .isInstanceOf(IllegalArgumentException.class);
 
         // Enter
-        assertThatThrownBy(() -> runException("\n"))
+        assertThatThrownBy(() -> Application.generateUserNumber("\n"))
                 .isInstanceOf(IllegalArgumentException.class);
 
         // null
-        assertThatThrownBy(() -> runException(null))
-                .isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> Application.generateUserNumber(null))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -58,15 +50,46 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
         // 0이 들어간 모두 다른 3자리 숫자의 경우
-        assertThatThrownBy(() -> runException("094"))
+        assertThatThrownBy(() -> Application.generateUserNumber("094"))
                 .isInstanceOf(IllegalArgumentException.class);
 
         // 한 글자만 숫자가 아닌 경우
-        assertThatThrownBy(() -> runException("1-2"))
+        assertThatThrownBy(() -> Application.generateUserNumber("1-2"))
                 .isInstanceOf(IllegalArgumentException.class);
 
         // 숫자가 아닌 값이 들어가는 경우
-        assertThatThrownBy(() -> runException("abc"))
+        assertThatThrownBy(() -> Application.generateUserNumber("abc"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_재개_예외_테스트() {
+        // 4글자
+        assertThatThrownBy(() -> Application.checkExit("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        // 2글자
+        assertThatThrownBy(() -> Application.checkExit("12"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        // Enter
+        assertThatThrownBy(() -> Application.checkExit("\n"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        // null
+        assertThatThrownBy(() -> Application.checkExit(null))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        // 0인 경우
+        assertThatThrownBy(() -> Application.generateUserNumber("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        // 3인 경우
+        assertThatThrownBy(() -> Application.generateUserNumber("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        // 1|2가 아닌 문자인 경우
+        assertThatThrownBy(() -> Application.generateUserNumber("a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
