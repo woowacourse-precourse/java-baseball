@@ -55,6 +55,19 @@ public class GameService {
         hint.printEndMessage();
     }
 
+    public GameStatus askRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int playerAnswer = player.getAnswerAboutRestart();
+
+        if (playerAnswer == GameStatus.PlAY.label()) {
+            computer.makeRandomNumbers();
+            return GameStatus.PlAY;
+        }
+        if (playerAnswer == GameStatus.FINISH.label()) {
+            return GameStatus.FINISH;
+        }
+        throw new IllegalArgumentException("게임 재시작 여부에 대한 입력값이 잘못되었습니다.");
+    }
 
     public Player getPlayer() {
         return player;
