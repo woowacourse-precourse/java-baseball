@@ -8,7 +8,6 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Application {
-
     static Scanner sc;
     static int strike, ball;
 
@@ -60,6 +59,7 @@ public class Application {
             result();
         }
     }
+
     //랜덤수 생성
     private static LinkedHashSet<String> getRandomNumber() {
         // 들어온 숫서대로 받기 위해 LinkedHashSet 사용
@@ -88,6 +88,7 @@ public class Application {
         }
         return userNumber;
     }
+
     //strike, ball 점수 계산
     private static void scoreCheck(LinkedHashSet<String> baseballSet, List<String> baseballList, String[] userNumber) {
         for (int i = 0; i < userNumber.length; i++) {
@@ -100,5 +101,23 @@ public class Application {
             }
         }
     }
+
+    //strike, ball 갯수 출력
+    private static void result() {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ball > 0) {
+                System.out.print(String.format("%d볼 ", ball));
+            }
+            if (strike > 0) {
+                System.out.println(String.format("%d스트라이크", strike));
+            }
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+    }
 }
+
 
