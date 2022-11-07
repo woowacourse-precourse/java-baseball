@@ -66,4 +66,11 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 수를 입력하였습니다.");
     }
+
+    @Test
+    void addToList_입력받은_값을_리스트에_추가() {
+        String input = "123";
+
+        assertThat(Application.addToList(input)).contains(1, 2, 3);
+    }
 }
