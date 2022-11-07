@@ -88,33 +88,75 @@ public final class Score {
         return ball == Ball.ZERO && strike == Strike.ZERO;
     }
 
+    /**
+     * 점수가 0볼인지 여부를 반환함
+     *
+     * @return 0볼이라면 true
+     */
     public boolean isZeroBall() {
         return ball == Ball.ZERO;
     }
 
+    /**
+     * 점수가 1볼인지 여부를 반환함
+     *
+     * @return 1볼이라면 true
+     */
     public boolean isOneBall() {
         return ball == Ball.ONE;
     }
 
+    /**
+     * 점수가 2볼인지 여부를 반환함
+     *
+     * @return 2볼이라면 true
+     */
     public boolean isTwoBall() {
         return ball == Ball.TWO;
     }
 
+    /**
+     * 점수가 3볼인지 여부를 반환함
+     *
+     * @return 3볼이라면 true
+     */
     public boolean isThreeBall() {
         return ball == Ball.THREE;
     }
+
+    /**
+     * 점수가 0스트라이크인지 여부를 반환함
+     *
+     * @return 0스트라이크라면 true
+     */
 
     public boolean isZeroStrike() {
         return strike == Strike.ZERO;
     }
 
+    /**
+     * 점수가 1스트라이크인지 여부를 반환함
+     *
+     * @return 1스트라이크라면 true
+     */
     public boolean isOneStrike() {
         return strike == Strike.ONE;
     }
 
+    /**
+     * 점수가 2스트라이크인지 여부를 반환함
+     *
+     * @return 2스트라이크라면 true
+     */
     public boolean isTwoStrike() {
         return strike == Strike.TWO;
     }
+
+    /**
+     * 점수가 3스트라이크인지 여부를 반환함
+     *
+     * @return 3스트라이크라면 true
+     */
 
     public boolean isThreeStrike() {
         return strike == Strike.THREE;
