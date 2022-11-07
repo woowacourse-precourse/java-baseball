@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,8 +12,17 @@ public class Application {
      * 컴퓨터가 세자리의 랜덤 숫자를 선택, 각 자리값을 리스트에 담아 반환
      */
     public List<Integer> computersChoice() {
-        // TODO: 컴퓨터가 세자리의 랜덤 숫자를 선택, 각 자리값을 리스트에 담아 반환
-        return Collections.emptyList();
+
+        List<Integer> computer = new ArrayList<>();
+
+        while (computer.size() < 3){
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)){
+                computer.add(randomNumber);
+            }
+        }
+
+        return computer;
     }
 
     /*
