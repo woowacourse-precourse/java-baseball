@@ -5,9 +5,9 @@ public class Application {
         /*
         TODO: 프로그램 구현
 
-        - Number 인터페이스
-            - MAX_SIZE, START_NUMBER, END_NUMBER 상수
-            - create, get 메서드
+        v Number 인터페이스
+            v MAX_SIZE, START_NUMBER, END_NUMBER 상수
+            v create, get 메서드
 
         - Answer 클래스
             - Number 인터페이스 상속
