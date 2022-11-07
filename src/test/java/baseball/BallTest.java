@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
 public class BallTest {
 
@@ -64,34 +65,39 @@ public class BallTest {
     void 볼_error_answer_원소_수_4개() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(6, 7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 9));
-        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getBallCount(answer, numbers)).
+                isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 볼_error_num_원소_수_4개() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 9, 6));
-        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getBallCount(answer, numbers)).
+                isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 볼_error_길이가_다를경우() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8));
-        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getBallCount(answer, numbers)).
+                isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 볼_error_10_이상의_수() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 10));
-        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getBallCount(answer, numbers)).
+                isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 볼_error_숫자가_중복된_경우() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(8, 8, 8));
-        assertThat(scoreDetect.getBallCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getBallCount(answer, numbers)).
+                isInstanceOf(IllegalArgumentException.class);
     }
 }

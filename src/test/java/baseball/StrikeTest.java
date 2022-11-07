@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
 public class StrikeTest {
 
@@ -44,27 +45,31 @@ public class StrikeTest {
     void 스트라이크_error_answer_원소_수_4개() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(6, 7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 9));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getStrikeCount(answer, numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 스트라이크_error_num_원소_수_4개() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 9, 6));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getStrikeCount(answer, numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 스트라이크_error_10_이상의_수() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(7, 8, 10));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getStrikeCount(answer, numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 스트라이크_error_숫자가_중복된_경우() {
         List<Integer> answer = new ArrayList<>(Arrays.asList(7, 8, 9));
         List<Integer> numbers = new ArrayList<>(Arrays.asList(8, 8, 8));
-        assertThat(scoreDetect.getStrikeCount(answer, numbers)).isEqualTo(-1);
+        assertThatThrownBy(() -> scoreDetect.getStrikeCount(answer, numbers))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
