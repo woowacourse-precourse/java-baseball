@@ -6,8 +6,8 @@ public class View {
         System.out.println(GameMessage.START.getMessage());
     }
 
-    public static void inputNumber() {
-        System.out.print("숫자를 입력하세요 : ");
+    public static void pushNumber() {
+        System.out.print(GameMessage.PUSH_NUMBER.getMessage());
     }
 
     public static void end() {

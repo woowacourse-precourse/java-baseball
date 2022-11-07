@@ -12,7 +12,7 @@ public class Game {
 
         boolean isFinished = false;
         while (!isFinished) {
-            View.inputNumber();
+            View.pushNumber();
             savePlayerNumber(player, referee);
             ResponseView responseView = referee.answerNumber();
             isFinished = responseView.check();
