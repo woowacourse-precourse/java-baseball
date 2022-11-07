@@ -12,7 +12,7 @@ public class Game {
     private List<Integer> computer = new ArrayList<Integer>();
     private List<Integer> user = new ArrayList<Integer>();
     private String input;
-    private String[] fragmentedInputs;
+    private char[] fragmentedInputs;
 
     public void run() {
         createComputerAnswer();
@@ -45,7 +45,7 @@ public class Game {
     private void inputUserNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         input = Console.readLine();
-        fragmentedInputs = input.split("");
+        fragmentedInputs = input.toCharArray();
 
         if (isValidInput()) {
             setUserList();
@@ -70,9 +70,8 @@ public class Game {
     }
 
     private boolean isEachNumberFrom1To9() {
-        for (String splitInput : fragmentedInputs) {
-            char in = splitInput.charAt(0);
-            if (!((in >= '1' && in <= '9'))) {
+        for (char splitInput : fragmentedInputs) {
+            if (!((splitInput >= '1' && splitInput <= '9'))) {
                 System.out.println("잘못된 입력값 입니다. 1이상 9이하 숫자를 입력하세요.");
                 return false;
             }
@@ -82,9 +81,8 @@ public class Game {
 
     private boolean isDifferentNumbers() {
         int[] ints = new int[fragmentedInputs.length];
-
         for (int i = 0; i < fragmentedInputs.length; i++)
-            ints[i] = Integer.parseInt(fragmentedInputs[i]);
+            ints[i] = fragmentedInputs[i] - '0';
 
         if ((ints[0] != ints[1]) && (ints[0] != ints[2]) && (ints[1] != ints[2]))
             return true;
@@ -95,7 +93,7 @@ public class Game {
 
     private void setUserList() {
         for (int i = 0; i < LENGTH; i++)
-            user.set(i, Integer.parseInt(fragmentedInputs[i]));
+            user.set(i, fragmentedInputs[i] - '0');
     }
 
     private boolean isCorrect() {
