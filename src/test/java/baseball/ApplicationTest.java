@@ -129,6 +129,20 @@ class ApplicationTest extends NsTest {
             //then
             assertThat(strikeCount).isEqualTo(3);
         }
+
+        @Test
+        void 볼_개수_확인() {
+            //given
+            List<Integer> randomNumber = baseBallGame.getComputer().getRandomNumber();
+            String strRandomNumber = randomNumber.toString().replaceAll("[^0-9]","");
+            InputStream in = new ByteArrayInputStream(strRandomNumber.getBytes());
+            System.setIn(in);
+            //when
+            baseBallGame.inputUserNumber();
+            int ballCount = baseBallGame.countBallCount();
+            //then
+            assertThat(ballCount).isEqualTo(0);
+        }
     }
 
     @Override
