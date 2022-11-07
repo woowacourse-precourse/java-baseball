@@ -20,6 +20,18 @@ public class Balls {
         return Collections.unmodifiableList(balls);
     }
 
+    public int getStrikeCount(Balls otherBalls) {
+        return (int) balls.stream()
+                .filter(ball -> ball.getResult(otherBalls).equals(BaseballJudge.STRIKE))
+                .count();
+    }
+
+    public int getBallCount(Balls otherBalls) {
+        return (int) balls.stream()
+                .filter(ball -> ball.getResult(otherBalls).equals(BaseballJudge.BALL))
+                .count();
+    }
+
     private void validateBallLength(List<Ball> balls) {
         if (balls.size() != NUMBER_OF_BALLS) {
             throw new IllegalArgumentException(NUMBER_OF_BALLS + BaseballMessage.INVALID_NUMBER_LENGTH_MESSAGE.getMessage());

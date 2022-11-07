@@ -12,12 +12,10 @@ public class BaseballGame {
 
     private final Hitter hitter;
     private final Pitcher pitcher;
-    private final Referee referee;
 
-    public BaseballGame(Hitter hitter, Pitcher pitcher, Referee referee) {
+    public BaseballGame(Hitter hitter, Pitcher pitcher) {
         this.hitter = hitter;
         this.pitcher = pitcher;
-        this.referee = referee;
     }
 
     public void playGame(boolean isPlay) {
@@ -31,11 +29,12 @@ public class BaseballGame {
     private boolean playInning() {
         Balls pitcherBalls = pitcher.throwRandomBalls(NUMBER_OF_BALLS);
         while (true) {
-            referee.initCount();
-            referee.judgeGameResult(hitter.hitBalls(inputNumber()), pitcherBalls);
-            printResult();
+            Balls hitterBalls = hitter.hitBalls(inputNumber());
+            int strikeCount = pitcherBalls.getStrikeCount(hitterBalls);
+            int ballCount = pitcherBalls.getBallCount(hitterBalls);
+            printResult(strikeCount, ballCount);
 
-            if (isGameOver()) {
+            if (isGameOver(strikeCount)) {
                 return isReplaying();
             }
         }
@@ -49,8 +48,8 @@ public class BaseballGame {
     }
 
 
-    private boolean isGameOver() {
-        if (referee.getStrikeCount() == NUMBER_OF_BALLS) {
+    private boolean isGameOver(int strikeCount) {
+        if (strikeCount == NUMBER_OF_BALLS) {
             System.out.println(NUMBER_OF_BALLS + BaseballMessage.GAME_OVER_MESSAGE.getMessage());
             return true;
         }
@@ -64,10 +63,7 @@ public class BaseballGame {
         return number.equals(REPLAY);
     }
 
-    private void printResult() {
-        int ballCount = referee.getBallCount();
-        int strikeCount = referee.getStrikeCount();
-
+    private void printResult(int strikeCount, int ballCount) {
         printBallCount(ballCount);
         printStrikeCount(strikeCount);
         printNothing(ballCount, strikeCount);
