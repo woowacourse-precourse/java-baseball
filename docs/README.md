@@ -34,6 +34,8 @@
 - Util
   - StringNumToIntegerNumListParser
     - 문자열로 들어오는 숫자를 List<Integer> 타입으로 파싱해주는 기능
+  - GenerateComputerGameNumber
+    - 컴퓨터의 랜덤 넘버를 생성해주는 기능
 
 - View
   - UserInputView
