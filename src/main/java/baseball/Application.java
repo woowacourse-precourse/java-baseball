@@ -111,7 +111,7 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public static void validateCode(String executionCode) {
+    public static void isValidCode(String executionCode) {
         if (!executionCode.equals("1") && !executionCode.equals("2"))
             throw new IllegalArgumentException("Execution code must be 1 or 2");
     }
@@ -127,7 +127,7 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             executionCode = Console.readLine();
-            validateCode(executionCode);
+            isValidCode(executionCode);
         }
     }
 }
