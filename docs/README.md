@@ -5,3 +5,4 @@
    1) 스트라이크 갯수 count
    2) 볼 갯수 count
 3. 입력 값의 범위 확인 (IllegalArgumentException)
+4. strike, ball 점수 출력
