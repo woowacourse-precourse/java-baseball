@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 class computer {
     List computerNumber(){
@@ -18,7 +19,7 @@ class computer {
     }
 }
 
-class inputException {
+class inputException extends computer {
     void judgeNotNumber(String a) {
         try {
             Integer.parseInt(a);
@@ -65,7 +66,7 @@ class inputException {
     }
 }
 
-class playGame {
+class playGame extends inputException {
     int nothing(List<String> playerNumber, List<String> computerNumber) {
         int overLapNumber = 0;
         for(String a : playerNumber) {
@@ -103,13 +104,35 @@ class playGame {
     }
 
     void plaingGame(List<String> playerNumber, List<String> computerNumber) {
-        if (this.nothing(playerNumber, computerNumber)==0) {
+        if(this.nothing(playerNumber, computerNumber)==0) {
             System.out.println("낫싱");
         }else {
             this.ballAndStrike(playerNumber, computerNumber);
         }
     }
 }
+
+class entireGame extends playGame {
+    void fullGame(List<String> computerNumber) {
+        while(true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String playerNumberString = Console.readLine();
+            this.judgeException(playerNumberString);
+            
+            List<String> playerNumber = Arrays.asList(playerNumberString.split(""));
+            
+            if(playerNumber.equals(computerNumber)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
+
+            this.plaingGame(playerNumber, computerNumber);
+        }
+
+    }
+}
+
 public class Application {
     public static void main(String[] args) {
         
