@@ -17,7 +17,7 @@ public class Application {
             data.setAnswer(GameStarter.createAnswer());
             while (!finish) {
                 data.setUserInput(Input.whileRunning());
-                game.checkInputException(data.getUserInput());
+                ExceptionChecker.checkGuessingInput(data.getUserInput());
                 data.setBall(Referee.judge(data.getUserInput(), data.getAnswer())[0]);
                 data.setStrike(Referee.judge(data.getUserInput(), data.getAnswer())[1]);
                 Output.printResult(data.getStrike(), data.getBall());
@@ -49,37 +49,21 @@ class GameStarter {
 
 class GameManager {
 
-    int restart = 1;
-    int terminate = 2;
+    static int restart = 1;
+    static int terminate = 2;
 
-    int numberSize = 3;
-
-    public void checkInputException(List<Integer> userInput) {
-
-        if (userInput.size() != numberSize) {
-            throw new IllegalArgumentException();
-        }
-        for (int inputElement : userInput) {
-            if (inputElement < 1 || inputElement > 9) {
-                throw new IllegalArgumentException();
-            }
-        }
-        if (userInput.stream().distinct().count() != numberSize) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public boolean isFinish(int strike) {
-        if (strike == numberSize) {
+    public static boolean isFinish(int strike) {
+        if (strike == 3) {
             return true;
         }
         return false;
     }
 
-    public boolean isAgain(boolean finish) {
+    public static boolean isAgain(boolean finish) {
         int userInput = -1;
         if (finish == true) {
             userInput = Integer.parseInt(Console.readLine());
+            ExceptionChecker.checkAfterGameInput(userInput);
         }
         if (userInput == restart) {
             return true;
@@ -147,7 +131,9 @@ class Referee {
 }
 
 class ExceptionChecker extends Exception {
+
     static int numberSize = 3;
+
     public static void checkGuessingInput(List<Integer> userInput) {
 
         if (userInput.size() != numberSize) {
