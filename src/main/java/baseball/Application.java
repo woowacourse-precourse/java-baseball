@@ -14,7 +14,6 @@ public class Application {
     }
     public static Boolean checkNumberInput(String input) throws IllegalArgumentException {
         if (input.length() != 3) throw new IllegalArgumentException();
-
         return true;
     }
 
@@ -27,22 +26,25 @@ public class Application {
         }
         return true;
     }
+
+    public static List<Integer> makeUserCount(String input) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 3; i++) list.add(input.charAt(i), i);
+        return list;
+    }
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        // 입력을 받는 부분
+
         String input;
         Boolean replay = true;
-        List <Integer> playerCount = new ArrayList<>();
-        // 인풋 판별, 이것은 app 단에서 static 메소드로 구현
-        // 그 이후에 정상이면 input을 게임 구현한 클래스에서 돌리자
+        List <Integer> playerCount;
+
         while (replay) {
             input = Console.readLine();
             if (checkInput(input)) {
-
+                playerCount = makeUserCount(input);
             }
-            System.err.println("hi~");
             // 여기서 baseball 클래스에서 게임구현
-replay = false;
+
         }
     }
 }
