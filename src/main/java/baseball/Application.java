@@ -13,12 +13,25 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Application application = new Application();
-        application.create();
-        application.plyerNuber();
+        RandomNumber randomNumber = new RandomNumber();
+        playerNumberChoice playerNumberChoice = new playerNumberChoice();
+        RefereeCheck refereeCheck = new RefereeCheck();
+        PlayAgain playAgain = new PlayAgain();
+        boolean again = true;
 
+        while (again) {
+            List<Integer> computer = randomNumber.create();
+            String result = "";
+            while (!result.equals("3스트라이크")) {
+                result = refereeCheck.referee(computer, playerNumberChoice.plyerNuber());
+                System.out.println(result);
+            }
+            again = playAgain.again();
+        }
     }
+}
 
+class RandomNumber {
     //컴퓨터 임의의 숫자 3개
     public List<Integer> create() {
         List<Integer> computer = new ArrayList<>();
@@ -31,8 +44,10 @@ public class Application {
         System.out.println("컴퓨터 숫자= " + computer);
         return computer;
     }
+}
 
-    // 플레이어 입력값
+// 플레이어 입력값
+class playerNumberChoice {
     public List<Integer> plyerNuber() {
         System.out.println("숫자를 입력하세요");
         String userNum = Console.readLine();
@@ -44,7 +59,9 @@ public class Application {
         System.out.println("내 숫자= " + playerNum);
         return playerNum;
     }
+}
 
+class Compare {
     public int check(List<Integer> computer, List<Integer> plyerNuber) {
         int result = 0;
         for (int i = 0; i < plyerNuber.size(); i++) {
@@ -54,6 +71,7 @@ public class Application {
         }
         return result;
     }
+
     public int strike(List<Integer> computer, List<Integer> plyerNuber) {
         int countStrike = 0;
         for (int i = 0; i < plyerNuber.size(); i++) {
@@ -63,23 +81,29 @@ public class Application {
         }
         return countStrike;
     }
+}
 
-    public String referee(List<Integer> computer, List<Integer> plyerNuber){
-        int totalNumber = check(computer,plyerNuber);
-        int strikeNumber = strike(computer,plyerNuber);
+class RefereeCheck {
+    Compare compare = new Compare();
+
+    public String referee(List<Integer> computer, List<Integer> plyerNuber) {
+        int totalNumber = compare.check(computer, plyerNuber);
+        int strikeNumber = compare.strike(computer, plyerNuber);
         int ballNumber = totalNumber - strikeNumber;
 
-        if(totalNumber == 0){
+        if (totalNumber == 0) {
             return "낫싱";
-        } else if(strikeNumber==0){
-            return ballNumber +"볼";
-        } else if(ballNumber==0){
+        } else if (strikeNumber == 0) {
+            return ballNumber + "볼";
+        } else if (ballNumber == 0) {
             return strikeNumber + "스트라이크";
         }
-         return ballNumber + "볼" + strikeNumber +"스트라이크";
+        return ballNumber + "볼" + strikeNumber + "스트라이크";
     }
+}
 
-    public boolean playAgain(){
+class PlayAgain {
+    public boolean again() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         Scanner kb = new Scanner(System.in);
         char answer = kb.next().charAt(0);
@@ -89,6 +113,7 @@ public class Application {
         return false;
     }
 }
+
 
 
 
