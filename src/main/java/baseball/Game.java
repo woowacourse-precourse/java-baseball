@@ -7,11 +7,11 @@ public class Game {
     private final Computer computer;
     private final Player player;
     private int gameStatus;
-    private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private final String RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private final int ON_GOING = 1;
-    private final int GAME_OVER = 2;
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final int ON_GOING = 1;
+    private static final int GAME_OVER = 0;
 
     public Game() {
         computer = new Computer();
@@ -24,10 +24,13 @@ public class Game {
         System.out.println(START_MESSAGE);
         while (gameStatus == ON_GOING) {
             player.setInputValue(receiveInput());
-            if (computer.isAnswer(player.getValue()) && restartOrEnd() == "1") {
+            if (computer.isAnswer(player.getValue())) {
                 gameStatus = GAME_OVER;
-                start();
             }
+        }
+        if (restartOrEnd().equals("1")) {
+            gameStatus = ON_GOING;
+            start();
         }
     }
 
@@ -38,7 +41,7 @@ public class Game {
         return input;
     }
 
-    private String restartOrEnd() {
+    private static String restartOrEnd() {
         System.out.println(RESTART_OR_END_MESSAGE);
         String input = Console.readLine();
         Validation.isRestartOrEnd(input);
