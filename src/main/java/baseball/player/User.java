@@ -5,27 +5,27 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class User {
   private List<Integer> user = new ArrayList<>();
 
-  public void inputClear(){
+  private void init(){
     user.clear();
   }
 
   public void createUserInput(){
+    init();
     String input = Console.readLine();
     isValidInputValue(input);
     putInputValueInList(input);
   }
 
-  public void isValidInputValue(String input) {
+  private void isValidInputValue(String input) {
     if(!Regex.getRegexMatcherResult("^[1-9]{1,3}$", input)){
       throw new IllegalArgumentException("invalid user input");
     }
   }
 
-  public void putInputValueInList(String input){
+  private void putInputValueInList(String input){
     String[] strList = input.split("");
 
     for(String s : strList) {
@@ -33,7 +33,7 @@ public class User {
     }
   }
 
-  public Integer stringToInt(String s) {
+  private Integer stringToInt(String s) {
     return Integer.valueOf(s);
   }
 
