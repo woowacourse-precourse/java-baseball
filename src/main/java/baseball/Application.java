@@ -73,7 +73,6 @@ public class Application {
 
     static int check_user_number(List<Character> user_number_char_list) {
         List<Character> temp_user_number_char_list = user_number_char_list;
-        List<Character> check_duplicate = new ArrayList<>();
 
         if (temp_user_number_char_list.isEmpty() || temp_user_number_char_list.size() != 3) {
             return 1;
@@ -122,17 +121,6 @@ public class Application {
             int user_number_2 = Character.getNumericValue(temp_user_number_list.get(1));
             int user_number_3 = Character.getNumericValue(temp_user_number_list.get(2));
 
-            int strike = 0;
-            if (computer_number_1 == user_number_1) {
-                strike = strike + 1;
-            }
-            if (computer_number_2 == user_number_2) {
-                strike = strike + 1;
-            }
-            if (computer_number_3 == user_number_3) {
-                strike = strike + 1;
-            }
-
             int ball = 0;
             if (computer_number_1 == user_number_2 || computer_number_1 == user_number_3) {
                 ball = ball + 1;
@@ -144,13 +132,24 @@ public class Application {
                 ball = ball + 1;
             }
 
+            int strike = 0;
+            if (computer_number_1 == user_number_1) {
+                strike = strike + 1;
+            }
+            if (computer_number_2 == user_number_2) {
+                strike = strike + 1;
+            }
+            if (computer_number_3 == user_number_3) {
+                strike = strike + 1;
+            }
+
             if (ball > 0) {
                 System.out.print(ball);
                 System.out.print("볼 ");
             }
             if (strike > 0) {
                 System.out.print(strike);
-                System.out.print("스트라이크 ");
+                System.out.print("스트라이크");
             }
             if (strike == 0 && ball == 0) {
                 System.out.print("낫싱");
