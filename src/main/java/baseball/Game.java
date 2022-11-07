@@ -8,6 +8,22 @@ public class Game {
 
     private static final int NUMBER_LENGTH = 3;
 
+    public void play() {
+        List<Character> computerNumberList = getComputerNumberList();
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Character> userNumberList = getUserNumberList(Console.readLine());
+
+            int strike = countStrike(computerNumberList, userNumberList);
+            int ball = countBall(computerNumberList, userNumberList);
+
+            if (checkNothing(strike, ball)) continue;
+            System.out.println(printState(strike, ball));
+            if (strike == 3) break;
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private List<Character> getUserNumberList(String userInput) {
         UserNumber userNumber = new UserNumber(userInput);
         List<Character> userNumberList = userNumber.getNumberList();
