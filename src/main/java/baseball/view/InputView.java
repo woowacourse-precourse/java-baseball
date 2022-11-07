@@ -6,7 +6,7 @@ public class InputView {
     private final static String INPUT_NUMBER = "숫자를 입력해주세요 : ";
     private final static String INPUT_RESTART_OR_STOP = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private final static String invalidInputMessage = "재시작은 1, 종료는 2를 입력해야 합니다.";
+    private final static String invalidInputMessage = "재시작은 1, 종료는 2를 입력해야 합니다. ";
 
     private final static String RESTART = "1";
     private final static String STOP = "2";
@@ -24,6 +24,6 @@ public class InputView {
         String restart = Console.readLine();
         if (restart.equals(RESTART)) return true;
         if (restart.equals(STOP)) return false;
-        throw new IllegalArgumentException(invalidInputMessage);
+        throw new IllegalArgumentException(invalidInputMessage); // 예외 처리
     }
 }
