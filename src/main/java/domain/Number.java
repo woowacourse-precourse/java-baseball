@@ -1,19 +1,37 @@
 package domain;
 
 public class Number {
-    private final int number;
+    private int number;
 
     public Number(int number) {
-        numberRangeValidationTest(number);
-        this.number = number;
+        if(numberRangeValidationTest(number)){
+            this.number = number;
+        }
     }
 
-    private void numberRangeValidationTest(int checkNumber) {
+    public Number(String numberInput){
+        try {
+            int convertedNumber = Integer.parseInt(numberInput);
+            if(numberRangeValidationTest(convertedNumber)){
+                this.number = convertedNumber;
+            }
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다.");
+        }
+    }
+
+    private boolean numberRangeValidationTest(int checkNumber) {
         if (checkNumber < 1) {
             throw new IllegalArgumentException("숫자의 범위가 1 미만입니다.");
         }
         if (9 < checkNumber) {
             throw new IllegalArgumentException("숫자의 범위가 9를 초과합니다.");
         }
+        return true;
+    }
+
+    private int getNumber(){
+        return this.number;
     }
 }
