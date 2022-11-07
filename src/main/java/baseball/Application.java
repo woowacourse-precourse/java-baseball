@@ -38,6 +38,7 @@ public class Application {
 
         inputNumber();
         calc(userNumbers, comNumbers);
+
     }
 
     static List<Integer> generateNumber() {
@@ -58,10 +59,19 @@ public class Application {
         if (userNumbers.size() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
         }
+
         for (int i = 0; i < 3; i++) {
             int digit = Integer.parseInt(userNum.substring(i, i + 1));
             userNumbers.add(digit);
         }
+
+        int a = userNumbers.get(0);
+        int b = userNumbers.get(1);
+        int c = userNumbers.get(2);
+        if (a == b || a == c || b == c) {
+            throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
+        }
+
         return userNumbers;
     }
 
