@@ -12,7 +12,8 @@ public class Application {
     public static void main(String[] args) {
         /*do while문 사용*/
         do{
-            System.out.println(BaseBallJudge(new ArrayList<Integer>(Arrays.asList(1,2,3)) , "509"));
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            playBaseBall();
             int judgeNum = JudgeInputNum();
             if(judgeNum == 2)
                 break;
@@ -42,13 +43,11 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
         return computer;
     }
 
     /*입력 예외 처리, 예외 발생시 IllegalArgumentException 발생 시키기.*/
     private static String handleException(String str){
-        System.out.println("실행");
         int num = 0;
         if(str.length() != 3)
             throw new IllegalArgumentException();
@@ -100,12 +99,23 @@ public class Application {
         String resultMent = ballMent + " " + strikeMent;
 
         if(countBall + countStrike > 0 )
-            return resultMent;
+            return resultMent.trim();
         return "낫싱";
     }
-//    private static int isStrike(int currindex, int currRandomNum, List<Integer> numList){
-//        if(numList.get(currindex) == currRandomNum)
-//            return 1;
-//        return -1;
-//    }
+
+    /*숫자 야구 로직 구현*/
+    private static void playBaseBall(){
+        List<Integer> RandomNum = makeRandomNum();
+        System.out.println(RandomNum);
+        while(true){
+            System.out.print("숫자를 입력해 주세요 : ");
+            String inputedNum = inputNum();
+            String resultMent = BaseBallJudge(RandomNum, inputedNum);
+            System.out.println(resultMent);
+            if(resultMent.equals("3스트라이크")){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+    }
 }
