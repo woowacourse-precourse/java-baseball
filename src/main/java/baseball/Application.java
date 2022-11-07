@@ -64,11 +64,20 @@ public class Application {
             OutputString(baseBall.result,true);
             continueGame = !CheckGameEnd(baseBall);
         }
+        CheckGameRestart();
+    }
+
+    private static void CheckGameRestart() {
+        String userInput = GetUserInput("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", true);
+        if(userInput.equals("1"))
+            StartGame();
     }
 
     private static boolean CheckGameEnd(BaseBall baseBall) {
-        if(baseBall.strike == 3)
+        if(baseBall.strike == 3){
+            OutputString("3개의 숫자를 모두 맞히셨습니다! 게임 종료",true);
             return true;
+        }
 
         return false;
     }
@@ -82,17 +91,12 @@ public class Application {
 
     public static List<Integer> GetInputNumber(){
         //잘못입력된 경우 추가 체크
-        try {
-            String userInput = GetUserInput();
+        String userInput = GetUserInput("숫자를 입력해주세요 : ", false);
 
-            if(!CheckMandatory(userInput))
-                throw new IllegalArgumentException("입력을 잘못하여 게임이 종료됩니다.");
+        if(!CheckMandatory(userInput))
+            throw new IllegalArgumentException("입력을 잘못하여 게임이 종료됩니다.");
 
-            return ParseStringToIntList(userInput);
-        }
-        catch (Exception e) {
-            return null;
-        }
+        return ParseStringToIntList(userInput);
     }
 
     public static List<Integer> ParseStringToIntList(String numStr){
@@ -103,9 +107,9 @@ public class Application {
         return result;
     }
 
-    public static String GetUserInput(){
+    public static String GetUserInput(String str, boolean lineBreak){
         Scanner s = new Scanner(System.in);
-        OutputString("숫자를 입력해주세요 : ", false);
+        OutputString(str, lineBreak);
         return s.next();
     }
 
