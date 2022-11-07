@@ -12,4 +12,16 @@ public class JudgeGame {
         inputNumberList = Arrays.asList(inputNumberArray);
         return inputNumberList;
     }
+
+    private static int verifyStrike(List<Integer> inputNumberList, List<Integer> ComputerNumberList){
+        int strikeCounter = 0;
+
+        for (int i=0; i < inputNumberList.size(); i++){
+            if (inputNumberList.get(i).equals(ComputerNumberList.get(i))){
+                strikeCounter += 1;
+            }
+        }
+        return strikeCounter;
+    }
+
 }
