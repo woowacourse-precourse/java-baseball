@@ -6,9 +6,9 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import static baseball.Computer.getComputer;
+import static baseball.Player.getPlayer;
 import static baseball.Constant.OVER;
 import static baseball.Constant.STRIKE;
-import static baseball.Player.getPlayer;
 
 public class GameManager {
     private List<Integer> answer;
