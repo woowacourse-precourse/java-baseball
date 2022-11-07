@@ -6,7 +6,17 @@ public class Score {
     private int strike;
     private int ball;
 
-    private static int getStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
+    public Score(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        this.strike = getStrikeCount(computerNumbers, userNumbers);
+        this.ball = getStrikeCount(computerNumbers, userNumbers);
+        getResult(strike,ball);
+    }
+
+    public static Score getResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        return new Score(computerNumbers, userNumbers);
+    }
+
+    private int getStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         int strike = 0;
         for (int index = 0; index < 3; index++) {
             if (computerNumber.get(index) == userNumber.get(index)) {
@@ -17,10 +27,10 @@ public class Score {
         return strike;
     }
 
-    private static int getBallCount(List<Integer> computerNumber, List<Integer> userNumber) {
+    private int getBallCount(List<Integer> computerNumber, List<Integer> userNumber) {
         int strike = 0;
         int ball = 0;
-        for (int index = 0; index<3; index++){
+        for (int index = 0; index < 3; index++) {
             if (computerNumber.get(index) == userNumber.get(index)) {
                 strike++;
             }
@@ -29,14 +39,14 @@ public class Score {
             }
         }
 
-        if (strike>0) {
+        if (strike > 0) {
             ball -= strike;
         }
 
         return ball;
     }
 
-    private static void getResult(int strikeCount, int ballCount) {
+    private void getResult(int strikeCount, int ballCount) {
         if (strikeCount != 0 && ballCount == 0) {
             System.out.println(strikeCount + "스트라이크");
             return;
