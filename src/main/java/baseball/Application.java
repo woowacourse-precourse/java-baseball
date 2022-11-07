@@ -21,7 +21,6 @@ public class Application {
         Boolean play = true;
         System.out.println(GAME_START_MESSAGE);
         do {
-            System.out.print("숫자를 입력해주세요 : ");
             List<Integer> playerNumbers = getPlayerRandomNumbers();
             String result = baseBallGame(computerNumbers, playerNumbers);
             System.out.println(result);

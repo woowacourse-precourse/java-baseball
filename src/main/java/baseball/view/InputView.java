@@ -10,6 +10,7 @@ import static baseball.validator.NumbersValidator.*;
 
 public class InputView {
     public static List<Integer> getPlayerRandomNumbers() {
+        OutputView.printInputMessage();
         String input = Console.readLine();
 
         validateDigit(input);
