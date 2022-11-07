@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +27,69 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void opponentHaveThreeNumber(){
+        Opponent cpu = new Opponent();
+        assertThat(cpu.getNumbers().size()).isEqualTo(3);
+    }
+
+    @Test
+    void makeHintTest(){
+        Opponent cpu = new Opponent();
+        List<Integer> cpu_numbers = List.of(1,2,3);
+        cpu.setNumbers(cpu_numbers);
+        HintMaker hintMaker = new HintMaker(cpu);
+
+        assertThat(hintMaker.getHintby("123")).isEqualTo("30");
+        assertThat(hintMaker.getHintby("231")).isEqualTo("03");
+        assertThat(hintMaker.getHintby("124")).isEqualTo("20");
+        assertThat(hintMaker.getHintby("132")).isEqualTo("12");
+    }
+
+    @Test
+    void printMessageTest(){
+        Opponent cpu = new Opponent();
+        List<Integer> cpu_numbers = List.of(1,2,3);
+        cpu.setNumbers(cpu_numbers);
+        HintMaker hintMaker = new HintMaker(cpu);
+
+        String hint;
+
+        hint = hintMaker.getHintby("123");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("3스트라이크");
+        hint = hintMaker.getHintby("231");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("3볼 ");
+        hint = hintMaker.getHintby("132");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("2볼 1스트라이크");
+        hint = hintMaker.getHintby("456");
+        assertThat(HintMessage.getMessage(hint)).isEqualTo("낫싱");
+
+    }
+
+    @Test
+    void validatorTest(){
+        assertThatThrownBy(() -> Validator.checkStart("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("-1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("-12"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("131"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkStart("111"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkEndInput("12"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.checkEndInput("jke"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void goodEndTest(){
+        assertThat(Validator.checkEndInput("1")).isEqualTo(true);
+        assertThat(Validator.checkEndInput("2")).isEqualTo(true);
     }
 
     @Override
