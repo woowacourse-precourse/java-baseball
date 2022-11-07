@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.domain.PitchResult;
+import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameService {
 
@@ -19,7 +20,7 @@ public class BaseballGameService {
 
     //유저의 게임내 숫자 맞추는 인풋 받기
     public void readUserInput() {
-
+        userInput = Console.readLine();
     }
 
     private void setBallStatus() {
@@ -33,6 +34,7 @@ public class BaseballGameService {
 
     //흐름 처리 메서드
     public void throwBaseball() {
+        readUserInput();
         setBallStatus();
         displayPitchStatusMessage(pitchResult.getPitchStatusMessage());
     }
