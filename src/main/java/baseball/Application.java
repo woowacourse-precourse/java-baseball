@@ -19,7 +19,7 @@ import static java.util.stream.Collectors.*;
  *  - calculationBall : 볼 계산
  *  - calculationStrike : 스트라이크 계산
  *  - printCurrentSituation : 입력에 대한 결과를 문자열 형태로 반환
- *  - isDone : 정답을 맞추었는지
+ *  - isCorrect : 정답을 맞추었는지
  */
 public class Application {
     public static void main(String[] args) {
@@ -52,7 +52,7 @@ public class Application {
             String result = printCurrentSituation(ball, strike);
             System.out.println(result);
 
-            if(isDone(result)) {
+            if(isCorrect(result)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -69,7 +69,7 @@ public class Application {
         return computer;
     }
 
-    public static Boolean isDone(String result){
+    public static Boolean isCorrect(String result){
         if(result.equals("3스트라이크")) return true;
         else return false;
     }

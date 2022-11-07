@@ -204,7 +204,7 @@ class ApplicationTest extends NsTest {
         int strike = Application.calculationStrike(computer,user);
         String result = Application.printCurrentSituation(ball,strike);
 
-        assertThat(Application.isDone(result)).isTrue();
+        assertThat(Application.isCorrect(result)).isTrue();
 
     }
 
