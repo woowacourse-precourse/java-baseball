@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Judge;
 import baseball.model.Player;
+import baseball.view.OutputView;
 
 public class GameController {
 
@@ -18,5 +19,11 @@ public class GameController {
         } while (!isGameSuccess());
 
         isGameRestartOrStop();
+    }
+
+    public void createComputerAnswer() {
+        OutputView.printStart();
+        computer = new Computer();
+        computer.setRandomNumber();
     }
 }
