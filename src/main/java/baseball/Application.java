@@ -26,7 +26,7 @@ public class Application {
         return String.join("", rand);
     }
 */
-    /*
+    
    public static boolean print(List<Integer> ball) {
         if (ball.get(0) == 3) {
             System.out.println("3스트라이크");
@@ -44,8 +44,8 @@ public class Application {
         } else System.out.println(ball.get(1) + "볼 " + ball.get(0) + "스트라이크");
         return false;
     }
-*/
-    
+
+
     public static List<Integer> check(List<Character> answer, List<Character> input) {
         List<Integer> ball = new ArrayList<>();
         int strike_count = 0;
