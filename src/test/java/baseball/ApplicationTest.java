@@ -48,6 +48,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임종료_후_잘못된_입력값() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("246", "135", "123"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
     void 입력값_중복숫자포함() {
         assertRandomNumberInRangeTest(
                 () -> {
