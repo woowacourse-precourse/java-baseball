@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Player {
@@ -21,6 +23,20 @@ public class Player {
         if (!isDigit(readLine) || readLine.length() != 3) {
             throw new IllegalArgumentException("Number is Not Valid Exception!!");
         }
+
+        duplicatedValid(readLine);
+    }
+
+    private void duplicatedValid(String readLine) {
+        Set<String> set = new HashSet<>();
+
+        for (String word : readLine.split("")) {
+            if (!set.add(word)) {
+                throw new IllegalArgumentException("Number is Not Valid Exception!!");
+            }
+        }
+
+        set.clear();
     }
 
     private static boolean isDigit(String readLine) {
