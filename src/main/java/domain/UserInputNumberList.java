@@ -19,7 +19,7 @@ public class UserInputNumberList {
         List<Number> nonRedundantInputList = inputList.stream().distinct().collect(Collectors.toList());
         if (inputList.size() != nonRedundantInputList.size()) {
             throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
-        } else if (inputList.size() != 3) {
+        } else if (nonRedundantInputList.size() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다.");
         } else {
             return inputList;
