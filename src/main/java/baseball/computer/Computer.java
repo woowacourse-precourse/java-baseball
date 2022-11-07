@@ -2,7 +2,6 @@ package baseball.computer;
 
 import baseball.user.User;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
