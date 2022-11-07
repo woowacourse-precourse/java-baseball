@@ -12,6 +12,7 @@ public class Opponent {
 	private static List<Integer> answer = new ArrayList<>();
 
 	public void generateAnswerNumber() {
+		answer.clear();
 		while (answer.size() < DIGIT_LENGTH) {
 			int randomNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
 			if (!answer.contains(randomNumber)) {
