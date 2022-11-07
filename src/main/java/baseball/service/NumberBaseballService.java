@@ -14,7 +14,13 @@ public class NumberBaseballService {
     }
 
     public void initAnswerNumber() {
-        answer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        answer = new ArrayList<>();
+        while (answer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
+            }
+        }
     }
 
     public StrikeBallCountDto compareInputAndAnswer(int input) {
