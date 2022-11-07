@@ -42,6 +42,7 @@ class ExceptionFor4 extends Exception {
     final static String ANSWER_QUIT_GAME = "2";
 
     public static void checkException(String input) {
+        input = input.trim();
         hasCharacters(input);
         checkInputLength(input);
         checkYesOrNo(input);
@@ -49,13 +50,13 @@ class ExceptionFor4 extends Exception {
 
     public static void checkInputLength(String input) {
         if (input.length() != EXCEPTION4_NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("exception occurs at checkInputLength()");
         }
     }
 
     public static void checkYesOrNo(String input) {
-        if (input != ANSWER_REPEAT_GAME && input != ANSWER_QUIT_GAME) {
-            throw new IllegalArgumentException();
+        if (!input.contains(ANSWER_REPEAT_GAME) && !input.contains(ANSWER_QUIT_GAME)) {
+            throw new IllegalArgumentException("exception occurs at checkYesOrNo()");
         }
     }
 }
