@@ -37,7 +37,7 @@ public class Game {
             play();
 
             System.out.println(getGameResult(this.score.getBall(), this.score.getStrike()));
-            if (!isWin()) {
+            if (!isWin(this.score.getStrike())) {
                 continue;
             }
 
@@ -63,8 +63,8 @@ public class Game {
         }
     }
 
-    public boolean isWin() {
-        return this.score.getStrike() == Constant.GOAL;
+    public boolean isWin(int strike) {
+        return strike == Constant.GOAL;
     }
 
     public String getGameResult(int ball, int strike) {
