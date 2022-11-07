@@ -62,4 +62,18 @@ public class Application {
         }
         return randomNumbers;
     }
+
+    static int[] getGameResult(List<Integer> computerNumbers, int[] userNumbers) {
+        int[] gameResult = {0, 0};   //스트라이크, 볼
+
+        for (int index = 0; index < 3; index++) {
+            if (computerNumbers.get(index).equals(userNumbers[index])) {
+                gameResult[0] += 1;
+
+            } else if (computerNumbers.contains(userNumbers[index])) {
+                gameResult[1] += 1;
+            }
+        }
+        return gameResult;
+    }
 }
