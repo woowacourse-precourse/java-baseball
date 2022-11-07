@@ -93,7 +93,7 @@
 ## (String)inputAvailableUserAnswerService()
 - [x] 사용자가 응답을 저장할 userAnswer에 ""으로 초기화
 - [x] 사용자가 응답을 옳바르게 했는지 체크하는 변수, checkedAvailableUserAnswer에 false로 초기화
-- [ ] printToRestartingGameMessage함수를 실행
+- [x] printToRestartingGameMessage함수를 실행
 - [ ] inputUserAnswer함수를 실행
 - [ ] availableUserAnswerIsChecked함수를 실행 후, 결과값을 checkedAvailableUserAnswer에 저장
 - [ ] checkedAvailableUserAnswer이 false이면, inputAvailableUserAnswerService함수를 실행 후 출력값을 userAnswer에 저장
