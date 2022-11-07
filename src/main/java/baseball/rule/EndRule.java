@@ -12,7 +12,14 @@ public class EndRule {
     }
 
     public static boolean isProgramEnd(String userInput) {
+        validateWrongNum(userInput);
         return userInput.equals(END_NUMBER);
+    }
+
+    private static void validateWrongNum(String userInput) {
+        if (!userInput.equals(RESTART_NUMBER) && !userInput.equals(END_NUMBER)) {
+            throw new IllegalArgumentException("1과 2만 입력 가능합니다");
+        }
     }
 
 }
