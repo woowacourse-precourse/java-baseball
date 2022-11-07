@@ -9,8 +9,6 @@ import baseball.util.GameStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
 
 class GameHandlerMappingTest {
 
@@ -44,11 +42,10 @@ class GameHandlerMappingTest {
             assertThat(handler).isInstanceOf(GameCommandController.class);
         }
 
-        @ParameterizedTest
-        @EnumSource(names = {"EXIT", "EXCEPTION"})
-        @DisplayName("만약 GameStatus.START, PLAY, END가 아닌 다른 값이 주어지면 null을 반환한다.")
-        void null_return_test(GameStatus gameStatus) {
-            Object handler = handlerMapping.getHandler(gameStatus);
+        @Test
+        @DisplayName("만약 GameStatus.EXIT가 주어지면 null을 반환한다.")
+        void null_return_test() {
+            Object handler = handlerMapping.getHandler(GameStatus.EXIT);
 
             assertThat(handler).isNull();
         }

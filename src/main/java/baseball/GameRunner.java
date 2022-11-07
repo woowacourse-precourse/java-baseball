@@ -35,7 +35,7 @@ public class GameRunner {
     }
 
     private static boolean isPlay(GameStatus gameStatus) {
-        return gameStatus != GameStatus.EXIT && gameStatus != GameStatus.EXCEPTION;
+        return gameStatus != GameStatus.EXIT;
     }
 
     private static String inputCommand(GameStatus gameStatus) {
