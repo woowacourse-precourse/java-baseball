@@ -28,6 +28,10 @@ public class BaseballGame {
             String userInput = Console.readLine();
             userInput = inputValidation.validateInput(userInput);
 
+            Map<String, Integer> score = makeScore(userInput, computer);
+
+            alertScore(score);
+
         }
     }
 
@@ -42,6 +46,43 @@ public class BaseballGame {
             }
         }
         return computer;
+    }
+
+    public Map<String, Integer> makeScore(String userInput, List<Integer> computer) {
+
+        Map<String, Integer> score = new HashMap<>();
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < userInput.length(); i++) {
+            int number = Integer.parseInt(String.valueOf(userInput.charAt(i)));
+            if (computer.contains(number) && computer.get(i) == number) {
+                strike++;
+            } else if (computer.contains(number)) {
+                ball++;
+            }
+        }
+        score.put("ball", ball);
+        score.put("strike", strike);
+
+        return score;
+    }
+
+    public void alertScore(Map<String, Integer> score) {
+
+        StringBuilder sb = new StringBuilder();
+
+        if (score.get("ball") != 0) {
+            sb.append(score.get("ball")).append("볼");
+        }
+        if (score.get("strike") != 0) {
+            sb.append(" ").append(score.get("strike")).append("스트라이크");
+        }
+        if (sb.length() == 0) {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb.toString().trim());
     }
 
 }
