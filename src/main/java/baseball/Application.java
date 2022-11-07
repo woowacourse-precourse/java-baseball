@@ -67,6 +67,37 @@ public class Application {
                 .count();
     }
 
+    private void printBallCount(int strike, int ball){
+        if(strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        } else if(strike == 0){
+            System.out.println(ball+"볼");
+        } else if(ball == 0){
+            System.out.println(strike+"스트라이크");
+        } else{
+            System.out.println(ball +"볼 "+strike+"스트라이크");
+        }
+    }
+
+    private List<Integer> scanUser3DigitInput(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        validateUserInput(userInput, false);
+        return userInput.chars()
+                .mapToObj(ch -> ch - '0')
+                .collect(Collectors.toList());
+    }
+
+    private boolean scanWhetherNewGame(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        validateUserInput(userInput, true);
+        if(Objects.equals(userInput,"1")){
+            return true;
+        } else{
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
