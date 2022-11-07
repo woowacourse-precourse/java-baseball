@@ -3,12 +3,26 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Test
+    void 유저번호_리스트_변환(){
+        NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
+        List<Integer> userNumberList = numberBaseballGame.getUserNumberList("123");
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testList.add(3);
+
+        assertThat(userNumberList).isEqualTo(testList);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
