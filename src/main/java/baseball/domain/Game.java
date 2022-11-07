@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.validation.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
@@ -12,8 +13,6 @@ public class Game {
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_OR_END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
-
 
     private Player player;
     private Computer computer;
@@ -43,6 +42,7 @@ public class Game {
     private void playGame() {
         System.out.print(INPUT_MESSAGE);
         String playerInput = Console.readLine();
+        Validator.validatePlayerInput(playerInput);
         player.setPredictedValue(playerInput);
         referee.scoreStrikeAndBallCount(player.getPredictedValue(), computer.getAnswer());
     }
