@@ -16,4 +16,8 @@ public class BaseBallService {
     public boolean isWinGame() {
         return baseBall.isWin();
     }
+
+    public void winGame() {
+        baseBall.setWin(true);
+    }
 }
