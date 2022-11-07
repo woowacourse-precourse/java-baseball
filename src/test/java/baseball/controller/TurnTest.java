@@ -30,7 +30,7 @@ public class TurnTest {
         @Test
         @DisplayName("2) 반복 불가능 -> out 반환")
         void 반복_불가능() {
-            TurnScore turnScore = new TurnScore(ResultTurn.Out);
+            TurnScore turnScore = new TurnScore(0, 3, ResultTurn.Out);
             Turn turn = new Turn(testTarget, turnScore);
             assertThat(turn.checkCanRepeat()).isEqualTo(false);
         }
