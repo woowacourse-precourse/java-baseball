@@ -1,4 +1,4 @@
-package baseball.printer;
+package baseball.core;
 
 import baseball.core.BallStrike;
 import org.junit.jupiter.api.DisplayName;

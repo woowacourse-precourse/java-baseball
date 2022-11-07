@@ -1,4 +1,4 @@
-package baseball.opponent;
+package baseball.util;
 
 import baseball.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
