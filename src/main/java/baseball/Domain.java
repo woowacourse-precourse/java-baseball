@@ -12,7 +12,7 @@ public class Domain {
 
     String userNumber;
     List<Integer> computerNumber;
-    final int NUMBER_SIZE =3;
+    final int NUMBER_SIZE = 3;
 
 
     public List<Integer> getUserNumber() {
@@ -53,7 +53,6 @@ public class Domain {
 
     public void isInputAlright(String userNumber) {
 
-
         //입력된 것이 숫자가 아닌 경우 ex) 알파벳이 올 수도 있음
         if (isNotNumber(userNumber)) {
             throw new IllegalArgumentException("숫자가 아님");
@@ -76,7 +75,7 @@ public class Domain {
 
     private boolean isNotNumber(String userNumber) {
         long isNotNumber_count = userNumber.chars().filter(c -> !(c >= '1' && c <= '9')).count();
-        if(isNotNumber_count>0){
+        if (isNotNumber_count > 0) {
             return true;
         }
         return false;

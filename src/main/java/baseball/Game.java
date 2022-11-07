@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Game {
 
-     List<Integer> computerNumber;
-     List<Integer> userNumberList;
-     final int NUMBER_SIZE=3;
+    List<Integer> computerNumber;
+    List<Integer> userNumberList;
+    final int NUMBER_SIZE = 3;
 
     public Game(List<Integer> computerNumber, List<Integer> userNumberList) {
         this.computerNumber = computerNumber;
@@ -31,7 +31,8 @@ public class Game {
     }
 
 
-    public List<Integer> findStrikeBall(List<Integer> computerNumber, List<Integer> userNumberList) {
+    public List<Integer> findStrikeBall(List<Integer> computerNumber,
+        List<Integer> userNumberList) {
         int strike = 0;
         int ball = 0;
         for (int index = 0; index < NUMBER_SIZE; index++) {
@@ -71,13 +72,11 @@ public class Game {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        } else if(strike>0 && ball>0){
+        } else if (strike > 0 && ball > 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
-        }
-        else if(strike>0 && ball==0){
+        } else if (strike > 0 && ball == 0) {
             System.out.println(strike + "스트라이크");
-        }
-        else if(strike==0 && ball>0){
+        } else if (strike == 0 && ball > 0) {
             System.out.println(ball + "볼");
         }
     }
