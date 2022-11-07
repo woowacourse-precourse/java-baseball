@@ -11,11 +11,11 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameProgress {
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다");
-        List<Integer> randomNumber = Random.getRandomNumber();
-        playGame(randomNumber);
+        playGame();
     }
 
-    public void playGame(List<Integer> randomNumber) {
+    public void playGame() {
+        List<Integer> randomNumber = Random.getRandomNumber();
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> userNumber = getUserNumber();
         List<Integer> resultList = getResultList(randomNumber, userNumber);
@@ -25,6 +25,18 @@ public class GameProgress {
             System.out.println(resultMessage);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        finishOrRestart();
+    }
+
+    public void finishOrRestart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        CheckInput check = new CheckInput();
+        if(check.checkInput(userInput)){
+            if(userInput.equals("1")){
+                playGame();
+            }
+        }
     }
 
     private List<Integer> getUserNumber() {
