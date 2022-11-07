@@ -58,7 +58,7 @@ public class Score {
         System.out.println("낫싱");
     }
 
-    public boolean endGame() {
+    public boolean checkThreeStrike() {
         return strike == 3;
     }
 }
