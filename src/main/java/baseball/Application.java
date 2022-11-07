@@ -10,6 +10,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Baseball baseball = new Baseball();
+        String optionNumber;
+        boolean option;
         do {
             baseball.pickRandomNumber();
             do {
@@ -17,8 +19,10 @@ public class Application {
                 baseball.comparisonPlayerComputer();
                 baseball.printBaseballScore();
             } while (!baseball.rightAnswer());
-            baseball.gameRestartOrEnd();
-        } while (true);
+            baseball.printGameOver();
+            optionNumber = baseball.gameRestartOrEnd();
+            option = baseball.optionRestartOrEnd(optionNumber);
+        } while (!option);
     }
 }
 
