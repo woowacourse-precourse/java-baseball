@@ -1,6 +1,5 @@
 package baseball.game;
 
-import baseball.view.ErrorView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -22,19 +21,16 @@ public final class BaseballGame implements Game {
     private static final String LINE_FEED = "\n";
     private final InputView inputView;
     private final OutputView outputView;
-    private final ErrorView errorView;
 
     /**
      * Controller와 똑같이 view들을 받아서 생성합니다
      *
      * @param inputView  사용자의 입력을 받게 되는 객체입니다
      * @param outputView 결과를 출력하게 되는 객체입니다
-     * @param errorView  에러 발생시 출력하게 될 객체입니다
      */
-    public BaseballGame(InputView inputView, OutputView outputView, ErrorView errorView) {
+    public BaseballGame(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.errorView = errorView;
     }
 
     /**
@@ -61,7 +57,7 @@ public final class BaseballGame implements Game {
             int playerValue = Integer.parseInt(inputLine);
             return PlayerInput.from(playerValue);
         } catch (IllegalArgumentException e) {
-            errorView.printError(e.getMessage());
+            outputView.printError(e.getMessage());
             throw new IllegalArgumentException(INPUT_ERROR, e);
         }
     }

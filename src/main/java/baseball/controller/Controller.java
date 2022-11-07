@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.game.Game;
-import baseball.view.ErrorView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -15,12 +14,10 @@ import static baseball.config.ControllerConstants.INIT_MESSAGE;
 public final class Controller {
     private final InputView inputView;
     private final OutputView outputView;
-    private final ErrorView errorView;
 
-    private Controller(InputView inputView, OutputView outputView, ErrorView errorView) {
+    private Controller(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.errorView = errorView;
         initController();
     }
 
@@ -29,11 +26,10 @@ public final class Controller {
      *
      * @param inputView  사용자의 입력을 담당하는 인스턴스를 받습니다
      * @param outputView 사용자의 출력을 담당하는 인스턴스를 받습니다
-     * @param errorView  에러 발생시 출력하게 될 인스턴스를 받습니다
      * @return View를 가지게 된 Controller객체
      */
-    public static Controller createWithViews(InputView inputView, OutputView outputView, ErrorView errorView) {
-        return new Controller(inputView, outputView, errorView);
+    public static Controller createWithViews(InputView inputView, OutputView outputView) {
+        return new Controller(inputView, outputView);
     }
 
     /**
@@ -56,7 +52,7 @@ public final class Controller {
             int key = Integer.parseInt(inputLine);
             return CommandKey.from(key);
         } catch (IllegalArgumentException e) {
-            errorView.printError(e.getMessage());
+            outputView.printError(e.getMessage());
             throw new IllegalArgumentException(COMMAND_ERROR_MESSAGE, e);
         }
     }
