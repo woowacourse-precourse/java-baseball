@@ -40,4 +40,18 @@ public class Application {
         return true;
     }
     
+    public static Boolean checkInput(String input){
+        if (input.strip().length() == 3){
+            try{
+                Integer.valueOf(input);
+                return false;
+            }
+            catch(IllegalArgumentException e){
+                return true;
+            }
+        }
+        else{
+            return true;
+        }
+    }
 }
