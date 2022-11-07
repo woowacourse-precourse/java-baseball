@@ -15,9 +15,14 @@ public class Player {
 
     public void inputPlayerNumber() {
         System.out.print(GameStatus.INPUT.message());
-
         String inputNumbers = Console.readLine();
-        numberValidator.validateInput(inputNumbers);
-        this.userNumbers = converter.convertStringToListInteger(inputNumbers);
+
+        try {
+            numberValidator.validateInput(inputNumbers);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        } finally {
+            this.userNumbers = converter.convertStringToListInteger(inputNumbers);
+        }
     }
 }

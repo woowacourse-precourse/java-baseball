@@ -6,9 +6,13 @@ public class GameJudge {
     private int countStrike, countBall;
     private static final int COUNT_SIZE = 3;
 
-    public void judgeGame(List<Integer> computer, List<Integer> player) {
+    public boolean judgeGame(List<Integer> computer, List<Integer> player) {
         getGameResult(computer, player);
         judgeGameResult(countStrike, countBall);
+        if (countStrike == 3) {
+            return true;
+        }
+        return false;
     }
 
     private void judgeGameResult(int strike, int ball) {
