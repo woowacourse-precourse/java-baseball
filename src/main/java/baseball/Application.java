@@ -34,21 +34,29 @@ public class Application {
 
         for(int i = 0; i < userInput.size(); i++){
             if(computer.indexOf(userInput.get(i)) == -1){
-                System.out.println(i+"1번");
                 continue;
             }
             else if(computer.indexOf(userInput.get(i)) >= 0 && computer.indexOf(userInput.get(i)) == i ){
-                System.out.println(i+"2번");
-                returnData[0] += 1;
+                returnData[1] += 1;
             }
             else if(computer.indexOf(userInput.get(i)) >= 0){
-                System.out.println(i+"3번");
-                returnData[1] += 1;
+                returnData[0] += 1;
             }
         }
         return returnData;
     }
+    public static void printHint(int[] hint){
+        if(hint[0] == 0 && hint[1] == 0){
+            System.out.println("낫싱");
+        }
+        for(int i = 0; i < hint.length; i++){
+            if(i == 0 ){
+                System.out.print(hint[1]+"볼 ");
+            } else if (i == 1) {
+                System.out.print(hint[0]+"스트라이크");
+            }
+        }
+    }
     public static void main(String[] args) {
-
     }
 }
