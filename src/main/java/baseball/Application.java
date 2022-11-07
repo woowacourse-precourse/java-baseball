@@ -50,9 +50,7 @@ public class Application {
     public static void startGame() {
         initCommonMessageMap();
         initComputerNumber();
-        System.out.println(computerNumber);
 
-        System.out.println(commonMessageMap.get("startMessage"));
 
         while (true) {
             System.out.print(commonMessageMap.get("inputMessage"));
