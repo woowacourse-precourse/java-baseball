@@ -3,7 +3,8 @@ package baseball;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballNumbersTest {
     BaseballNumbers baseballNumbers = new BaseballNumbers();
@@ -15,21 +16,24 @@ class BaseballNumbersTest {
         void case1_3자리_숫자_입력() {
             String input = "123";
             boolean result = true;
-            assertThat(baseballNumbers.isNumericReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.isNumericReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
         void case2_4자리_숫자_입력() {
             String input = "1234";
             boolean result = false;
-            assertThat(baseballNumbers.isNumericReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.isNumericReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
         void case3_2자리_숫자_입력() {
             String input = "12";
             boolean result = false;
-            assertThat(baseballNumbers.isNumericReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.isNumericReadline(input))
+                    .isEqualTo(result);
         }
 
     }
@@ -41,21 +45,24 @@ class BaseballNumbersTest {
         void case1_records_소문자_명령어_입력() {
             String input = "records";
             boolean result = true;
-            assertThat(baseballNumbers.isCommandReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.isCommandReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
         void case2_records_대문자_명령어_입력() {
             String input = "RECORDS";
             boolean result = true;
-            assertThat(baseballNumbers.isCommandReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.isCommandReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
         void case3_명령어_외_다른_문자_입력() {
             String input = "record";
             boolean result = false;
-            assertThat(baseballNumbers.isNumericReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.isNumericReadline(input))
+                    .isEqualTo(result);
         }
 
     }
@@ -67,21 +74,24 @@ class BaseballNumbersTest {
         void case1_3자리_숫자_입력() {
             String input = "123";
             boolean result = true;
-            assertThat(baseballNumbers.validCheck(input)).isEqualTo(result);
+            assertThat(baseballNumbers.validateReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
         void case2_RECORDS_명령어_입력() {
             String input = "records";
             boolean result = true;
-            assertThat(baseballNumbers.validCheck(input)).isEqualTo(result);
+            assertThat(baseballNumbers.validateReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
         void case3_그_외_입력() {
             String input = "1234";
             boolean result = false;
-            assertThat(baseballNumbers.validCheck(input)).isEqualTo(result);
+            assertThat(baseballNumbers.validateReadline(input))
+                    .isEqualTo(result);
         }
 
     }
@@ -93,14 +103,16 @@ class BaseballNumbersTest {
         void case1_3자리_숫자_입력() {
             String input = "123";
             boolean result = true;
-            assertThat(baseballNumbers.checkReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.checkReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
         void case2_records_소문자_명령어_입력() {
             String input = "records";
             boolean result = false;
-            assertThat(baseballNumbers.checkReadline(input)).isEqualTo(result);
+            assertThat(baseballNumbers.checkReadline(input))
+                    .isEqualTo(result);
         }
 
         @Test
@@ -139,14 +151,14 @@ class BaseballNumbersTest {
         @Test
         void case1_중복된_숫자_2개_입력() {
             baseballNumbers.putBaseballNumbers("112".split("(?<=.)"));
-            assertThatThrownBy(() -> baseballNumbers.checkBaseballNumberDuplication())
+            assertThatThrownBy(() -> baseballNumbers.validateDuplication())
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void case2_중복된_숫자_3개_입력() {
             baseballNumbers.putBaseballNumbers("111".split("(?<=.)"));
-            assertThatThrownBy(() -> baseballNumbers.checkBaseballNumberDuplication())
+            assertThatThrownBy(() -> baseballNumbers.validateDuplication())
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -158,19 +170,21 @@ class BaseballNumbersTest {
         @Test
         void case1_숫자_입력() {
             String input = "123";
-            assertThat(baseballNumbers.adjustBaseballNumbers(input)).isEqualTo(true);
+            assertThat(baseballNumbers.createBaseballNumbers(input))
+                    .isEqualTo(true);
         }
 
         @Test
         void case2_RECORDS_입력() {
             String input = "records";
-            assertThat(baseballNumbers.adjustBaseballNumbers(input)).isEqualTo(false);
+            assertThat(baseballNumbers.createBaseballNumbers(input))
+                    .isEqualTo(false);
         }
 
         @Test
         void case3_그_외_입력() {
             String input = "input";
-            assertThatThrownBy(() -> baseballNumbers.adjustBaseballNumbers(input))
+            assertThatThrownBy(() -> baseballNumbers.createBaseballNumbers(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
