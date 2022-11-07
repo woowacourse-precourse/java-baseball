@@ -205,15 +205,12 @@ public class Application {
 
         String replayNumberString = Console.readLine();
 
-        if (!checkReplayNumber(replayNumberString)) {
-
-            return false;
-        }
+        checkReplayNumber(replayNumberString);
 
         return replayNumberString.charAt(0) - 48 == 1;
     }
 
-    public static boolean checkReplayNumber(String replayNumberString) {
+    public static void checkReplayNumber(String replayNumberString) {
 
         try {
 
@@ -221,10 +218,9 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            return true;
-        } catch (IllegalStateException e) {
+        } catch (IllegalArgumentException e) {
 
-            return false;
+            throw new IllegalArgumentException();
         }
     }
 
