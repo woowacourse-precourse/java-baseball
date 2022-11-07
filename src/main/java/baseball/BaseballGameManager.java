@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BaseballGameManager {
@@ -37,13 +39,18 @@ public class BaseballGameManager {
     }
 
     private void calculateBallCount(String input) {
+
+        List<Integer> inputNumbers = Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
         strikeCount = (int) IntStream.range(0, 3)
-                .filter(idx -> randomNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
+                .filter(idx -> randomNumbers.get(idx).equals(inputNumbers.get(idx)))
                 .count();
 
         ballCount = (int) IntStream.range(0, 3)
-                .filter(idx -> input.contains(String.valueOf(randomNumbers.get(idx))))
-                .filter(idx -> !randomNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
+                .filter(idx -> randomNumbers.contains(inputNumbers.get(idx)))
+                .filter(idx -> !randomNumbers.get(idx).equals(inputNumbers.get(idx)))
                 .count();
     }
 }
