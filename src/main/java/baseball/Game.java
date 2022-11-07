@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.validation.UserValidator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Game {
+
 
     public List<Integer> makesDifferenceThreeNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -58,7 +60,14 @@ public class Game {
     }
 
     public int getRestart() {
-        return Integer.parseInt(Console.readLine());
+
+        while (true) {
+            String input = Console.readLine();
+
+            if (UserValidator.restartValidation(input)) {
+                return Integer.parseInt(input);
+            }
+        }
     }
 
     public boolean isCorrectInput(String user) {
