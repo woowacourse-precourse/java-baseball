@@ -3,6 +3,7 @@ package baseball.calculate;
 import baseball.domain.Ball;
 import baseball.domain.Strike;
 import java.util.LinkedHashSet;
+import java.util.Iterator;
 
 
 public class BaseballCalculator {
@@ -12,30 +13,25 @@ public class BaseballCalculator {
 
 
     public int strikeJudgement(LinkedHashSet<Character> correctNum, LinkedHashSet<Character> inputNum) {
-
         strike.clearStrike();
-        var inputNumIterator = inputNum.iterator();
+        Iterator<Character> inputIteration = inputNum.iterator();
 
-        for (char character : correctNum) {
-            if (character == inputNumIterator.next()) {
-                strike.addStrike();
-            }
-        }
+        strike.putStrike((int) correctNum.stream()
+                .filter(c -> c.equals(inputIteration.next()))
+                .count());
 
         return strike.strike();
     }
 
     public int ballJudgement(LinkedHashSet<Character> correctNum, LinkedHashSet<Character> inputNum) {
-
         strikeJudgement(correctNum, inputNum);
+
         ball.clearBall();
 
-        for(char c : correctNum) {
-            if(inputNum.contains(c)) {
-                ball.addBall();
-            }
-        }
+        ball.putBall((int) correctNum.stream()
+                .filter(c -> (inputNum.contains(c)))
+                .count() - strike.strike());
 
-        return ball.ball() - strike.strike();
+        return ball.ball();
     }
 }

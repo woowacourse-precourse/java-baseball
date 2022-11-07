@@ -26,12 +26,10 @@ class StrikeTest {
         }
 
         @ParameterizedTest()
-        @DisplayName("strike 객체의 addStrike 메소드가 잘 실행되는가?")
+        @DisplayName("strike 객체의 putStrike 메소드가 잘 실행되는가?")
         @ValueSource(ints = {1, 2, 3, 4, 0, 7})
         void addStrike(final int num) {
-            for(int i = 0; i < num; i++) {
-                strike.addStrike();
-            }
+            strike.putStrike(num);
             assertEquals(strike.strike(), num);
         }
 
@@ -49,10 +47,9 @@ class StrikeTest {
         final var strike1 = new Strike();
         final var strike2 = new Strike();
 
-        strike1.addStrike();
-        strike1.addStrike();
+        strike1.putStrike(2);
 
-        strike2.addStrike();
+        strike2.putStrike(1);
 
         assertAll(
                 () -> assertEquals(strike1.strike(), 2),

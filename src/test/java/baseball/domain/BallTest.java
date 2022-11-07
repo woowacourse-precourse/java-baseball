@@ -29,9 +29,7 @@ class BallTest {
         @DisplayName("ball 객체의 ball 메소드가 잘 실행되는가?")
         @ValueSource(ints = {1, 2, 3, 4, 0, 7})
         void addStrike(final int num) {
-            for(int i = 0; i < num; i++) {
-                ball.addBall();
-            }
+            ball.putBall(num);
             assertEquals(ball.ball(), num);
         }
 
@@ -49,10 +47,8 @@ class BallTest {
         final var ball1 = new Ball();
         final var ball2 = new Ball();
 
-        ball2.addBall();
-        ball2.addBall();
-
-        ball1.addBall();
+        ball2.putBall(2);
+        ball1.putBall(1);
 
         assertAll(
                 () -> assertEquals(ball2.ball(), 2),

@@ -28,7 +28,7 @@ class BaseballCalculatorTest {
 
         @ParameterizedTest
         @DisplayName("strikeJudgement 메소드가 잘 실행되는가?")
-        @CsvSource(value={"1,3,5:2,1,6:0","1,2,3:1,2,9:2","1,2,3:1,2,3:3"}, delimiter=':')
+        @CsvSource(value={"1,3,5:2,1,6:0","1,2,3:1,2,9:2","1,2,3:1,3,7:1"}, delimiter=':')
         void strikeJudgementTest(
                 final String inputNum,
                 final String currentNum,
@@ -42,8 +42,8 @@ class BaseballCalculatorTest {
         }
 
         @ParameterizedTest
-        @DisplayName("strikeJudgement 메소드가 잘 실행되는가?")
-        @CsvSource(value={"1,2,3:2,3,1:3","1,2,3:1,2,3:0","1,2,3:2,1,3:2"}, delimiter=':')
+        @DisplayName("ballJudgement 메소드가 잘 실행되는가?")
+        @CsvSource(value={"1,2,3:2,3,1:3","1,2,3:1,2,3:0","1,2,3:1,3,7:1"}, delimiter=':')
         void ballJudgementTest(
                 final String inputNum,
                 final String currentNum,
