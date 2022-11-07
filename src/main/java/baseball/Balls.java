@@ -59,7 +59,7 @@ public class Balls {
 		return randomNumbers;
 	}
 
-	public GameResult getGameResult(Balls otherBalls) {
+	public GameResult getGameResultVersus(Balls otherBalls) {
 		GameResult gameResult = new GameResult();
 		for (Ball ball : balls) {
 			otherBalls.compare(ball, gameResult);

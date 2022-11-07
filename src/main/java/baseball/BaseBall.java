@@ -6,21 +6,28 @@ public class BaseBall {
 	public static void start() {
 		GameMessage.startGame();
 		Balls computer = Balls.createRandom();
-		GameResult gameResult = GameResult.create();
+		GameResult gameResult = GameResult.createEmpty();
 
 		while (!gameResult.isAnswer()) {
-			GameMessage.enterNumber();
-			String userInput = InputHandler.getUserBallsNumbers();
-			Balls user = Balls.create(userInput);
-			gameResult = computer.getGameResult(user);
-			GameMessage.printResult(gameResult);
+			Balls user = getBallsWithUserInput();
+			gameResult = computer.getGameResultVersus(user);
+			GameMessage.informResult(gameResult);
 		}
 		GameMessage.endGame();
-		GameMessage.quitOrRestart();
-		quitOrRestart(InputHandler.getQuitOrRestart());
+		askQuitOrRestart();
 	}
 
-	private static void quitOrRestart(String quitOrRestart) {
+	private static Balls getBallsWithUserInput() {
+		GameMessage.enterNumber();
+		String userInput = InputHandler.getUserBallsNumbers();
+
+		return Balls.create(userInput);
+	}
+
+	private static void askQuitOrRestart() {
+		GameMessage.quitOrRestart();
+		String quitOrRestart = InputHandler.getQuitOrRestart();
+
 		if (quitOrRestart.equals(RESTART)) {
 			start();
 		}

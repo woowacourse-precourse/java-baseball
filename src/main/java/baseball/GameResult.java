@@ -23,7 +23,7 @@ public class GameResult {
 		this.ball = ball;
 	}
 
-	public static GameResult create() {
+	public static GameResult createEmpty() {
 		return new GameResult();
 	}
 

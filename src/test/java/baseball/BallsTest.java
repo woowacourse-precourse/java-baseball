@@ -13,7 +13,7 @@ public class BallsTest {
 		Balls balls = Balls.create(1, 2, 3);
 		Balls ballsToCompare = Balls.create(1, 2, 3);
 
-		assertThat(balls.getGameResult(ballsToCompare)).isEqualTo(new GameResult(3, 0));
+		assertThat(balls.getGameResultVersus(ballsToCompare)).isEqualTo(new GameResult(3, 0));
 	}
 
 	@Test
@@ -21,7 +21,7 @@ public class BallsTest {
 		Balls balls = Balls.create(1, 2, 3);
 		Balls ballsToCompare = Balls.create(3, 1, 2);
 
-		assertThat(balls.getGameResult(ballsToCompare)).isEqualTo(new GameResult(0, 3));
+		assertThat(balls.getGameResultVersus(ballsToCompare)).isEqualTo(new GameResult(0, 3));
 	}
 
 	@Test
@@ -29,7 +29,7 @@ public class BallsTest {
 		Balls balls = Balls.create(1, 2, 3);
 		Balls ballsToCompare = Balls.create(4, 5, 6);
 
-		assertThat(balls.getGameResult(ballsToCompare)).isEqualTo(new GameResult(0, 0));
+		assertThat(balls.getGameResultVersus(ballsToCompare)).isEqualTo(new GameResult(0, 0));
 	}
 
 	@Test

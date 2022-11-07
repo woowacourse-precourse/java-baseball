@@ -13,10 +13,10 @@ class GameResultTest {
 		Balls computerBallsC = Balls.create("132");
 		Balls computerBallsD = Balls.create("456");
 
-		GameResult strikeOut = userBalls.getGameResult(computerBallsA);
-		GameResult threeBall = userBalls.getGameResult(computerBallsB);
-		GameResult oneStrikeTwoBall = userBalls.getGameResult(computerBallsC);
-		GameResult nothing = userBalls.getGameResult(computerBallsD);
+		GameResult strikeOut = userBalls.getGameResultVersus(computerBallsA);
+		GameResult threeBall = userBalls.getGameResultVersus(computerBallsB);
+		GameResult oneStrikeTwoBall = userBalls.getGameResultVersus(computerBallsC);
+		GameResult nothing = userBalls.getGameResultVersus(computerBallsD);
 
 		assertThat(strikeOut.toString()).isEqualTo("3스트라이크");
 		assertThat(threeBall.toString()).isEqualTo("3볼");
