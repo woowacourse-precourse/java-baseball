@@ -7,21 +7,20 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
     BaseballGame baseballGame;
+    int exit = 1;
 
     public User() {};
 
     public void Game() {
         baseballGame = new BaseballGame();
 
-        while (true) {
+        while (exit == 1) {
             System.out.print("숫자를 입력해주세요 : ");
             int userNumber = input();
             checkThreeDigit(userNumber);
 
             int end = baseballGame.checkGameResult(userNumber);
-            if (end == 1) {
-                break;
-            }
+            inputExitNumber(end);
         }
     }
 
@@ -30,6 +29,19 @@ public class User {
         checkInput(inputString);
 
         return Integer.parseInt(inputString);
+    }
+
+    private void inputExitNumber(int end) {
+        if (end == 1) {
+            exit = input();
+            decideExit();
+        }
+    }
+
+    private void decideExit() {
+        if (exit == 1) {
+            baseballGame.resetGame();
+        }
     }
 
     private void checkInput(String inputString) {
