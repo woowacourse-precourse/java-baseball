@@ -11,15 +11,14 @@ public class Application {
     }
     
     public static String random(){
-        boolean check = true;
         ArrayList<Integer> num = new ArrayList<>();
-        while(check){
+        while(true){
             int random = Randoms.pickNumberInRange(1,9);
             if(!num.contains(random)){
                 num.add(random);
             }
             if(num.size() == 3){
-                check = false;
+                break;
             }
         }
         return num.toString();
@@ -69,7 +68,6 @@ public class Application {
     }
     
     public static boolean compare(String answer, String input){
-        String reply = "";
         int strike = 0, ball = 0, miss = 0;
         for(int n = 0; n < 3; n++){
             if(answer.charAt(n) == input.charAt(n)){
