@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트1() { //이게 내가 짠 코드 기반으로 돌아가는 건가?
+    void 예외_테스트1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
