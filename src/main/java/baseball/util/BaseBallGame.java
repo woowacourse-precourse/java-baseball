@@ -40,7 +40,7 @@ public class BaseBallGame {
     }
 
 
-    private static List<Integer> threeRandomValueCompareToUserInput (List<Integer> threeRandomValue, String userInput) {
+    public static List<Integer> threeRandomValueCompareToUserInput (List<Integer> threeRandomValue, String userInput) {
         int ballCount = 0,
                 strikeCount = 0;
 
@@ -59,7 +59,7 @@ public class BaseBallGame {
     }
 
 
-    private static void printByBallAndStrikeStatus (List<Integer> ballStrikeStatus) {
+    public static void printByBallAndStrikeStatus (List<Integer> ballStrikeStatus) {
         if (ballStrikeStatus.get(BALL) == 0 && ballStrikeStatus.get(STRIKE) == 0) {
             System.out.println("낫싱");
             return;

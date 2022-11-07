@@ -35,7 +35,7 @@ public class Application {
     }
 
 
-    private static int askRestartOrEnd() throws IllegalArgumentException {
+    public static int askRestartOrEnd() throws IllegalArgumentException {
         String restartOrEndOrError = Console.readLine();
 
         if (!restartOrEndOrError.matches("[12]")) {
@@ -46,7 +46,7 @@ public class Application {
     }
 
 
-    private static List<Integer> notDuplicatedThreeRandomValue() {
+    public static List<Integer> notDuplicatedThreeRandomValue() {
         List<Integer> randomValues = new ArrayList<>();
         while (randomValues.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
