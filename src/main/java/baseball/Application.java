@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.List;
+
 public class Application {
 
     private static String userInput;
@@ -16,6 +18,7 @@ public class Application {
         while (true) {
             //컴퓨터 수 생성
             targetNumber = makeTargetNumber();
+            System.out.println(targetNumber);
 
             while (true) {
                 //사용자 값 입력
@@ -39,12 +42,19 @@ public class Application {
             validGameContinueInput(Integer.parseInt(userInput));
             if (userInput.equals("2")) break;
         }
+        endGamePrint();
     }
 
     //TODO
-    private static int makeTargetNumber() {
+    public static int makeTargetNumber() {
+        int firstNumber = Randoms.pickNumberInRange(1, 9);
+        int secondNumber = Randoms.pickNumberInRange(1, 9);
+        int thirdNumber = Randoms.pickNumberInRange(1, 9);
 
-        return 0;
+        String str = "";
+        str += String.valueOf(firstNumber) + String.valueOf(secondNumber) + String.valueOf(thirdNumber);
+
+        return Integer.parseInt(str);
     }
 
     //TODO
@@ -70,6 +80,10 @@ public class Application {
 
     private static void startGamePrint() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    private static void endGamePrint() {
+        System.out.println("숫자 야구 게임을 종료합니다.");
     }
 
     private static void validUserInput(int number) {
