@@ -80,4 +80,12 @@ class ValidationTest {
         );
     }
 
+    @Test
+    void 게임을_재시작_및_종료하는_플레이어의_응답을_검증하는_기능_오류_테스트() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> validation.checkRestartOrExitValidation("3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_INPUT)
+        );
+    }
 }
