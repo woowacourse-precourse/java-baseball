@@ -119,7 +119,7 @@ public class BaseBallGame {
             printCount();
         }
         setRestartToken();
-        if (restartToken == "1") {
+        if (restartToken.equals("1")) {
             play();
         }
     }
