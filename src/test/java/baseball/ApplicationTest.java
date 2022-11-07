@@ -89,6 +89,33 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void testResultToString() {
+        GameResult result = new GameResult();
+        List<Integer>[] computers = new List[]{
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(2, 5, 1),
+                Arrays.asList(7, 9, 6),
+                Arrays.asList(4, 5, 6),
+        };
+        List<Integer>[] users = new List[]{
+                Arrays.asList(1, 3, 4),
+                Arrays.asList(6, 8, 9),
+                Arrays.asList(7, 9, 6),
+                Arrays.asList(5, 6, 4),
+        };
+        String[] results = {
+                "1볼 1스트라이크",
+                "낫싱",
+                "3스트라이크",
+                "3볼"
+        };
+        for (int i = 0; i < computers.length; i++) {
+            result.compare(computers[i], users[i]);
+            assertThat(result.toString()).isEqualTo(results[i]);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
