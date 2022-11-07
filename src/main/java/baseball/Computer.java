@@ -27,7 +27,7 @@ public class Computer {
         return nums;
     }
 
-    public boolean checkNum(String input) {
+    private boolean checkNum(String input) {
         // 1. 세자리인지 확인
         if(input.length() != LENGTH) return false;
 
@@ -45,17 +45,27 @@ public class Computer {
     public boolean baseballGame(List<Integer> randoms, List<Integer> nums) {
         Integer ball = 0;
         Integer strike = 0;
-        for(int i = 0; i < LENGTH; i++) {
-            for (int j = 0; j < LENGTH; j++) {
-                if(nums.get(i).equals(randoms.get(j))) {
-                    if(i == j) strike++;
-                    else ball++;
-                }
-            }
+        for (int i = 0; i < LENGTH; i++) {
+            if(isBall(randoms, nums.get(i), i)) ball++;
+            if(isStrike(randoms, nums.get(i), i)) strike++;
         }
         Message.baseballGameMessage(ball, strike);
         if(strike == 3 && ball == 0) return true;
         else return false;
+    }
+
+    private boolean isBall(List<Integer> randoms, Integer num, int i) {
+        for (int j = 0; j < LENGTH; j++) {
+            if(num.equals(randoms.get(j)) && i != j) return true;
+        }
+        return false;
+    }
+
+    private boolean isStrike(List<Integer> randoms, Integer num, int i) {
+        for (int j = 0; j < LENGTH; j++) {
+            if(num.equals(randoms.get(j)) && i == j) return true;
+        }
+        return false;
     }
 
     public boolean retryGame(String input) {

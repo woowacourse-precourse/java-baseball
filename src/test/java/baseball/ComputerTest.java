@@ -47,18 +47,6 @@ public class ComputerTest {
     }
 
     @Test
-    void 숫자유효성체크() {
-        Computer computer = new Computer();
-        assertThat(computer.checkNum("")).isFalse(); // 미입력
-        assertThat(computer.checkNum("abc")).isFalse(); // 문자
-        assertThat(computer.checkNum("a12")).isFalse(); // 숫자 문자 혼용
-        assertThat(computer.checkNum("1")).isFalse(); // 한자리수
-        assertThat(computer.checkNum("1234")).isFalse(); // 네자리수
-        assertThat(computer.checkNum("332")).isFalse(); // 숫자 중복
-        assertThat(computer.checkNum("123")).isTrue(); // 정상인 수
-    }
-
-    @Test
     void 숫자야구결과() {
         Computer computer = new Computer();
         List<Integer> randoms = new ArrayList<>(Arrays.asList(1, 2, 3));
