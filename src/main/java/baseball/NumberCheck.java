@@ -4,25 +4,25 @@ import java.util.List;
 
 public class NumberCheck {
 
-    private static final int INITIAL_REPEAT_VALUE = 0;
+    private static final int INITIAL_VALUE = 0;
 
     private int strike;
     private int ball;
 
-    public NumberCheck(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+    public NumberCheck() {
+        this.strike = INITIAL_VALUE;
+        this.ball = INITIAL_VALUE;
     }
 
-    public void checkLocationNumbers(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        for (int i = INITIAL_REPEAT_VALUE; i < userNumbers.size(); i++) {
-            checkNumbers(userNumbers, computerNumbers);
+    public void checkLocationNumbers(UserNumber userNumbers, List<Integer> computerNumbers) {
+        for (int i = INITIAL_VALUE; i < computerNumbers.size(); i++) {
+            checkNumbers(userNumbers, computerNumbers, i);
         }
     }
 
-    private void checkNumbers(List<Integer> userNumbers, List<Integer> computerNumbers) {
-        if (userNumbers.contains(computerNumbers.get(INITIAL_REPEAT_VALUE))) {
-            if (userNumbers.get(INITIAL_REPEAT_VALUE).equals(computerNumbers.get(INITIAL_REPEAT_VALUE))) {
+    private void checkNumbers(UserNumber userNumbers, List<Integer> computerNumbers, int initialValue) {
+        if (userNumbers.getUserNumbers().contains(computerNumbers.get(initialValue))) {
+            if (userNumbers.getUserNumbers().get(initialValue).equals(computerNumbers.get(initialValue))) {
                 strike++;
             } else {
                 ball++;
