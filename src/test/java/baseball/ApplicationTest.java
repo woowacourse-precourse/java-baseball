@@ -37,7 +37,10 @@ class ApplicationTest extends NsTest {
 //	@Test
 //	@DisplayName("유저가 입력한게 세자리 숫자인지")
 //	void 유저입력숫자_세자리_숫자_확인(){
-//		User user = new User();
+//		assertSimpleTest(() ->
+//			assertThatThrownBy(() -> runException("123"))
+//				.isEqualTo(List.of(1,2,3))
+//		);
 //	}
 
     @Test
