@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import constants.Number;
+import constants.Rule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +11,13 @@ public class GameManager {
 
     private void generateComputerNumber() {
         computerNumber = new ArrayList<>();
-        Number rule = Number.RULE;
+        Rule number = Rule.NUMBER;
 
-        while (computerNumber.size() != rule.getLength()) {
-            int number = Randoms.pickNumberInRange(rule.getMinNumber(), rule.getMaxNumber());
+        while (computerNumber.size() != number.getLength()) {
+            int randomNumber = Randoms.pickNumberInRange(number.getMin(), number.getMax());
 
-            if (!computerNumber.contains(number)) {
-                computerNumber.add(number);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
             }
 
         }

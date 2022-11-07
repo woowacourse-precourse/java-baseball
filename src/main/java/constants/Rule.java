@@ -1,14 +1,14 @@
 package constants;
 
-public enum Number {
+public enum Rule {
 
-    RULE(3, 1, 9);
+    NUMBER(3, 1, 9);
 
     private int length;
     private int min;
     private int max;
 
-    Number(int length, int min, int max) {
+    Rule(int length, int min, int max) {
         this.length = length;
         this.min = min;
         this.max = max;
@@ -18,11 +18,11 @@ public enum Number {
         return this.length;
     }
 
-    public int getMinNumber() {
+    public int getMin() {
         return this.min;
     }
 
-    public int getMaxNumber() {
+    public int getMax() {
         return this.max;
     }
 }
