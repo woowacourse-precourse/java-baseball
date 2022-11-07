@@ -39,14 +39,21 @@ public class Game {
 
 
     private static boolean inputPlayGame() {
-        return true;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if (!checkInputPlayGame(userInput)) {
+            throw new IllegalArgumentException();
+        }
+        if (userInput.equals("1")) {
+            return true;
+        }
+        return false;
     }
 
     private static void checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
         if (secretNumber.get(index.intValue()).equals(number)) {
             hitCount.set(0, hitCount.get(0)+1);
         } else if (secretNumber.contains(number)) {
-            System.out.println(index + " " + number);
             hitCount.set(1, hitCount.get(1)+1);
         }
     }
@@ -54,8 +61,7 @@ public class Game {
 
     private static void checkTotalNumberCount(Integer totalNumber, List<Integer> secretNumber, List<Integer> hitCount) {
         for (int i = 0; i < NUMBER_SIZE; i++) {
-            Integer number = Integer.valueOf(totalNumber.toString().charAt(i));
-            System.out.println(number);
+            Integer number = Integer.parseInt(String.valueOf(totalNumber.toString().charAt(i)));
             checkOneDigitNumberCount(number, i, secretNumber, hitCount);
         }
     }
