@@ -127,19 +127,19 @@ class Output {
 
 class Referee {
     static int[] judge (List<Integer> userInput, List<Integer> answer) {
-        int[] ballStrike = {0, 0};
+        int[] judgement = {0, 0};
         for (int number : userInput) {
             if (answer.contains(number)) {
-                ballStrike[0]++;
+                judgement[0]++;
             }
         }
         for (int i = 0; i < userInput.size(); i++) {
             if (userInput.get(i) == answer.get(i)) {
-                ballStrike[1]++;
-                ballStrike[0]--;
+                judgement[1]++;
+                judgement[0]--;
             }
         }
-        return ballStrike;
+        return judgement;
     }
 }
 
