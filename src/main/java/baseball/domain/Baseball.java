@@ -57,7 +57,7 @@ public class Baseball implements Game {
         playerNumbers.addAll(convertToNumbers(playerInput));
     }
 
-    private static List<Integer> convertToNumbers(String playerInput) {
+    private List<Integer> convertToNumbers(String playerInput) {
         return playerInput.chars()
             .map(Character::getNumericValue)
             .boxed()
