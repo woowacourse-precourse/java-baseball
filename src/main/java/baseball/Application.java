@@ -7,6 +7,21 @@ import java.util.ArrayList;
 
 public class Application {
 
+    public static List<Integer> input() {
+        List<Integer> inputNum =new ArrayList<Integer>();
+
+        String inputString=Console.readLine();
+
+        exception(inputString);
+
+        int stringToNum=Integer.parseInt(inputString);
+        inputNum.add(stringToNum/100);
+        inputNum.add((stringToNum%100)/10);
+        inputNum.add(stringToNum%10);
+
+        return inputNum;
+    }
+
     public static List<Integer> random(){
         List<Integer> computer = new ArrayList<Integer>();
         while (computer.size() < 3) {
