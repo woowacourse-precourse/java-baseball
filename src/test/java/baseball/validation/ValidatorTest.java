@@ -41,4 +41,11 @@ class ValidatorTest {
                 .hasMessageContaining("[IllegalArgumentException]: 각 자릿수에 중복이 있습니다.\n");
     }
 
+    @Test
+    void validateInputRestartOrEnd() {
+        assertThatThrownBy(() -> {Validator.validateInputRestartOrEnd("3");})
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[IllegalArgumentException]: 새로 시작(1)/종료하(2)중 하나의 수가 아닙니다.\n");
+    }
+
 }
