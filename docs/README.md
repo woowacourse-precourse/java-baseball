@@ -53,6 +53,19 @@
     // 변경 후
     playBaseBall() 실행 메서드를 이용하여 최대 깊이가 3을 넘지 않도록 수정하였습니다.
 
+### 입력 받은 문자 검증 수정
+정규표현식을 변경하여 return 값 변경으로 ! 표현식을 삭제하였습니다.
+    
+    // 변경 전
+    if (!Pattern.matches("[0-9]+$", usersNumber)) {
+            return false;
+        }
+    // 변경 후
+    if (Pattern.matches("[0-9]+$", usersNumber)) {
+            return true;
+        }
+
+
 ### 구현 기능 추가
 
 - 결과 출력 기능
