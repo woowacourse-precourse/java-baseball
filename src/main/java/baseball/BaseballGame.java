@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BaseballGame {
-    private List<Integer> PlayerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
+    private List<Integer> playerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
     private int strike;
     private int ball;
     List<Integer> computerNumber;
@@ -31,41 +31,41 @@ public class BaseballGame {
 
     public void start() {
         System.out.print(INPUT_NUM);
-        String PlayerInput = readLine();
-        PlayerNumber = toIntegerPlayerInput(PlayerInput);
-        checkInputData(PlayerNumber);
-        strike = checkStrikeCount(PlayerNumber);
-        ball = checkBallCount(PlayerNumber);
+        String playerInput = readLine();
+        playerNumber = toIntegerPlayerInput(playerInput);
+        checkInputData(playerNumber);
+        strike = checkStrikeCount(playerNumber);
+        ball = checkBallCount(playerNumber);
         gameResult();
     }
 
-    private void checkInputData(List<Integer> PlayerNumber) {
-        if (PlayerNumber.size() != 3) {
+    private void checkInputData(List<Integer> playerNumber) {
+        if (playerNumber.size() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다. 다시 입력해주세요.");
         }
-        if (PlayerNumber.contains(0)) {
+        if (playerNumber.contains(0)) {
             throw new IllegalArgumentException("1부터 9까지의 숫자만을 입력할 수 있습니다. 다시 입력해주세요");
         }
-        Set<Integer> duplicate = new HashSet<>(PlayerNumber);
-        if (duplicate.size() != PlayerNumber.size()) {
+        Set<Integer> duplicate = new HashSet<>(playerNumber);
+        if (duplicate.size() != playerNumber.size()) {
             throw new IllegalArgumentException("중복된 숫자가 있어서는 안됩니다. 서로 다른 숫자로 다시 입력해주세요.");
         }
     }
 
-    private int checkStrikeCount(List<Integer> PlayerNumber) {
+    private int checkStrikeCount(List<Integer> playerNumber) {
         int strikeCount = 0;
         for (int i = 0; i < NUM_LIMIT_LENGTH; i++) {
-            if (computerNumber.indexOf(PlayerNumber.get(i)) == i) {
+            if (computerNumber.indexOf(playerNumber.get(i)) == i) {
                 strikeCount++;
             }
         }
         return strikeCount;
     }
 
-    private int checkBallCount(List<Integer> PlayerNumber) {
+    private int checkBallCount(List<Integer> playerNumber) {
         int ballCount = 0;
         for (int i = 0; i < NUM_LIMIT_LENGTH; i++) {
-            if (computerNumber.contains(PlayerNumber.get(i)) && computerNumber.indexOf(PlayerNumber.get(i)) != i) {
+            if (computerNumber.contains(playerNumber.get(i)) && computerNumber.indexOf(playerNumber.get(i)) != i) {
                 ballCount++;
             }
         }
