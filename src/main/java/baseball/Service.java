@@ -10,8 +10,10 @@ import java.util.Set;
 
 public class Service {
 
+    private final String INPUT = "숫자를 입력해주세요 : ";
+
     public int stage(List<Integer> answer) {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT);
         List<Integer> input = getUserNumber();
         return hint(answer, input);
     }
