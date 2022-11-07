@@ -5,40 +5,45 @@ import java.util.List;
 public class Judgement {
     private final static int NUMBERS_SIZE = 3;
 
-    private List<Integer> defenseNumbers;
+    private final List<Integer> defenseNumbers;
 
-    public Judgement(List<Integer> defenseNumbers) {
+    private Judgement(List<Integer> defenseNumbers) {
         this.defenseNumbers = defenseNumbers;
     }
 
-    public boolean isThreeStrike(List<Integer> offenseNumbers) {
-        return offenseNumbers.equals(defenseNumbers);
+    public static Judgement from(List<Integer> defenseNumbers) {
+        return new Judgement(defenseNumbers);
     }
 
-    public List<Integer> judgeOffenseNumbers(List<Integer> offenseNumbers) {
-        int strikeNumber = countStrike(offenseNumbers);
-        int ballNumber = countBall(offenseNumbers);
-        return List.of(ballNumber, strikeNumber);
+    public boolean isFailureOffense(List<Integer> offenseNumbers) {
+        return !offenseNumbers.equals(defenseNumbers);
     }
 
-    private int countBall(List<Integer> offenseNumbers) {
-        int totalCount = countSumOfBallAndStrike(offenseNumbers);
+    public int countBall(List<Integer> offenseNumbers) {
+        int sumOfBallAndStrikeCount = countSumOfBallAndStrike(offenseNumbers);
         int strikeCount = countStrike(offenseNumbers);
-        return totalCount - strikeCount;
+        return sumOfBallAndStrikeCount - strikeCount;
     }
 
     private int countSumOfBallAndStrike(List<Integer> offenseNumbers) {
         return (int) offenseNumbers.stream().filter(defenseNumbers::contains).count();
     }
 
-    private int countStrike(List<Integer> offenseNumbers) {
+    public int countStrike(List<Integer> offenseNumbers) {
         int strikeCount = 0;
         for (int i = 0; i < NUMBERS_SIZE; i++) {
-            if (offenseNumbers.get(i) == defenseNumbers.get(i)) {
-                strikeCount += 1;
-            }
+            Integer offenseNumber = offenseNumbers.get(i);
+            Integer defenseNumber = defenseNumbers.get(i);
+            strikeCount += isStrike(offenseNumber, defenseNumber);
         }
         return strikeCount;
+    }
+
+    private int isStrike(Integer offenseNumber, Integer defenseNumber) {
+        if (offenseNumber.equals(defenseNumber)) {
+            return 1;
+        }
+        return 0;
     }
 }
 

@@ -2,16 +2,17 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+
 
 public class UserInput {
-    public String input() {
-        return Console.readLine();
+    private UserInput() {
     }
 
-    public void validateContinueInput(String inputContinueGame) {
-        String pattern = "[1-2]";
-        if (!inputContinueGame.matches(pattern)) {
-            throw new IllegalArgumentException();
-        }
+    public static UserInput getInstance() {
+        return new UserInput();
+    }
+    public String input() {
+        return Console.readLine();
     }
 }
