@@ -36,6 +36,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 세개의_숫자가_아닌_경우_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234", "12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 스트라이크_개수_검증_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Application application = new Application();
         List<Integer> computer = new ArrayList<>();
