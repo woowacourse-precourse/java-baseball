@@ -2,7 +2,10 @@ package baseball;
 
 import java.util.List;
 
+
 public class GameConsole {
+
+    public static boolean bool = true;
 
     public static Integer strikeCount(List<Integer> computerNumber, List<Integer> playerNumber) {
         int strike = 0;
@@ -23,13 +26,53 @@ public class GameConsole {
         }
         return ball;
     }
-    /*
-    public static String nothingCheck(List<Integer> computerNumber , List<Integer> playerNumber){
-        String nothing = "";
-        if(strikeCount(computerNumber,playerNumber) + ballCount(computerNumber,playerNumber) == 0){
-            nothing += "낫싱";
+
+    public static String exceptionCheck(String inputNumber) {
+        if (!PlayerNumber.validCheck(inputNumber)) {
+            throw new IllegalArgumentException();
         }
-        return nothing;
+        return inputNumber;
+
+
     }
-    */
+
+
+
+
+    public static void gameStart() {
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        List<Integer> computer = ComputerNumber.arrayGetNumber();
+
+        String hint = "";
+        while (bool) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String playerNumber = PlayerNumber.getString();
+            exceptionCheck(playerNumber);
+            List<Integer> player = PlayerNumber.convertNumberList(playerNumber);
+
+            if (ballCount(computer, player) > 0) {
+                hint += ballCount(computer, player) + "볼 ";
+            }
+
+            if (strikeCount(computer, player) > 0) {
+                hint += strikeCount(computer, player) + "스트라이크";
+            }
+            if (hint == "") {
+                hint += "낫싱";
+            }
+            System.out.println(hint);
+            hint = "";
+            if (strikeCount(computer, player) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+        }
+    }
+
+
+
+
+
 }
+
