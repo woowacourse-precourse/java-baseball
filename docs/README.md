@@ -2,6 +2,10 @@
 
 ---
 
+![](images/BaseballGameDiagram.png)
+
+---
+
 ### 1. 게임 시작 시 초기값을 셋팅하기
 - **BaseballGameStater.java**
   - **operate()** : 유저 입력값을 받는 메서드를 호출하고, 컴퓨터의 랜덤값을 생성하는 메서드를 호출한다.
