@@ -7,4 +7,5 @@ public class Constant {
     public final static String EMPTY_STRING = "";
     public final static String INTEGER_FORMAT_SPECIFIER = "%d";
     public final static int ZERO_NUM = 0;
+    public final static int ONE_NUM = 1;
 }
