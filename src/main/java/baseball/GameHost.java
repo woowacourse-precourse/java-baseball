@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class GameHost extends BaseballNumber {
     private final String STRIKE = "스트라이크";
@@ -17,18 +16,18 @@ public class GameHost extends BaseballNumber {
         StringJoiner hintToPlayer = new StringJoiner(" ");
         boolean isSameNum = false;
         int ballValue = this.hint.get(BALL);
-        if(ballValue > 0) {
+        if (ballValue > 0) {
             isSameNum = true;
             hintToPlayer.add(ballValue + BALL);
         }
 
         int strikeValue = this.hint.get(STRIKE);
-        if(strikeValue > 0) {
+        if (strikeValue > 0) {
             isSameNum = true;
             hintToPlayer.add(strikeValue + STRIKE);
         }
 
-        if(isSameNum) {
+        if (isSameNum) {
             return hintToPlayer.toString();
         }
 
@@ -38,15 +37,15 @@ public class GameHost extends BaseballNumber {
     public void setHint(List<Integer> playerNumber) {
         setHintDefault();
 
-        for(int i = 0; i < super.BASEBALLNUMBERLENGTH; i++) {
+        for (int i = 0; i < super.BASEBALLNUMBERLENGTH; i++) {
             int playerNum = playerNumber.get(i);
             int baseballNum = this.baseballNumber.get(i);
 
-            if(playerNum == baseballNum) {
+            if (playerNum == baseballNum) {
                 this.hint.put(STRIKE, this.hint.get(STRIKE) + 1);
                 continue;
             }
-            if(this.baseballNumber.contains(playerNum)) {
+            if (this.baseballNumber.contains(playerNum)) {
                 this.hint.put(BALL, this.hint.get(BALL) + 1);
                 continue;
             }
