@@ -1,12 +1,20 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Application {
     
     private static final Scanner stdinScanner = new Scanner(System.in);
 
-    private static boolean eachQuestion(){
+    private static List<Integer> gameResult(int inputNumber){
+        ArrayList<Integer> resultList = new ArrayList<>();
+
+        
+    }
+
+    private static boolean eachGame(){
         System.out.print("숫자를 입력해주세요 : ");
         int inputNumber = stdinScanner.nextInt();
 
