@@ -13,10 +13,12 @@ public class CompareAnswer {
         for(int i =0;i<3;i++)   eachCompare(computer, user.get(i), i, strikeAndBallCount);
 
         printAnswer(strikeAndBallCount);
+
         if(strikeAndBallCount[0] == 3) {
             setRestart();
             return true;
             }
+
         return false;
     }
 

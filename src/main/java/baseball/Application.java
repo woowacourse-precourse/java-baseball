@@ -1,10 +1,11 @@
 package baseball;
 
 import static baseball.CompareAnswer.*;
+import static baseball.Play.getRestartOrEnd;
 
 public class Application {
     static int ERROR =1;
-    static int restartOrEnd = 1;
+    static int restartOrEndCount;
 
     public static void playBaseball() {
         boolean finish = false;
@@ -20,6 +21,7 @@ public class Application {
             userNumber.setUserNumbers();
             if(ERROR == 2) return;
             if(finish == true) return ;
+
             finish = compareAnswer(computerNumber.getComputerNumbers(), userNumber.getUserNumbers());
 
             System.out.println();
@@ -28,10 +30,11 @@ public class Application {
             System.out.println();
             System.out.println("user");
             for (int a : userNumber.getUserNumbers()) System.out.print(a + " ");
+            restartOrEndCount = getRestartOrEnd();
         }
-        if(restartOrEnd == 2) return;
-        if(restartOrEnd == 1) playBaseball();
-        if(restartOrEnd >1 || restartOrEnd<2) return ;
+        if(restartOrEndCount == 2) return ;
+        if(restartOrEndCount == 1) playBaseball();
+        if(restartOrEndCount <1 || restartOrEndCount>2) return ;
     }
     public static void main(String[] args) {
         playBaseball();

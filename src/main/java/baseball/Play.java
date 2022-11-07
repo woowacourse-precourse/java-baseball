@@ -1,16 +1,25 @@
 package baseball;
-import static baseball.Application.*;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Play {
+    static int restartOrEnd;
 
     public static void setRestart() {
         String checkUserAnswer;
         checkUserAnswer = readLine();
 
-        if(checkUserAnswer == "1")  restartOrEnd = 1;
-        if(checkUserAnswer == "2")  restartOrEnd = 2;
+        if(checkUserAnswer.equals("1"))  {
+            restartOrEnd = 1;
+            System.out.println("aaaaaaaaaaaaa");
+        }
+        if(checkUserAnswer.equals("2"))  {
+            restartOrEnd = 2;
+            System.out.println("aaaaaaaaaaaaa");
+        }
+    }
 
-
+    public static int getRestartOrEnd (){
+        return restartOrEnd;
     }
 }
