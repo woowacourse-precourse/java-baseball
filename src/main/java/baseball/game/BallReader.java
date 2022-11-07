@@ -1,9 +1,6 @@
 package baseball.game;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BallReader {
     private static ResultOfBall BALL = ResultOfBall.BALL;
@@ -27,7 +24,7 @@ public class BallReader {
         return result.get(STRIKE) == requiredStrikes;
     }
 
-    public Map<ResultOfBall, Integer> getStrikeAndBall(Ball userBall, Ball computerBall) {
+    public EnumMap<ResultOfBall, Integer> getStrikeAndBall(Ball userBall, Ball computerBall) {
         validateBalls(userBall, computerBall);
         return makeMapByStrikeAndBall(makeStrikeAndBall(userBall, computerBall));
     }
@@ -54,8 +51,8 @@ public class BallReader {
         return strikeAndBallResult;
     }
 
-    private Map<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
-        Map<ResultOfBall, Integer> result = new HashMap<>();
+    private EnumMap<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
+        EnumMap<ResultOfBall, Integer> result = new EnumMap<ResultOfBall, Integer>(ResultOfBall.class);
         List<ResultOfBall> onlyStrikeAndBall = removeMissBall(ballData);
         for (ResultOfBall data : onlyStrikeAndBall) {
             result.computeIfPresent(data, (key, value) -> value + 1);

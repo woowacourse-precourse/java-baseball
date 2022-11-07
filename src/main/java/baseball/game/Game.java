@@ -1,5 +1,6 @@
 package baseball.game;
 
+import java.util.EnumMap;
 import java.util.Map;
 
 public class Game {
@@ -59,7 +60,7 @@ public class Game {
     }
 
     private void printResult(Ball userBall, Ball computerBall) {
-        Map<ResultOfBall, Integer> result = ballReader.getStrikeAndBall(userBall, computerBall);
+        EnumMap<ResultOfBall, Integer> result = ballReader.getStrikeAndBall(userBall, computerBall);
         if (result.isEmpty()) {
             System.out.printf(NOTHING_MESSAGE);
         }
