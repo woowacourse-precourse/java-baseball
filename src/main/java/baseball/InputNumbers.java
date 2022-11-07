@@ -8,28 +8,28 @@ import java.util.List;
 import static constant.Constant.*;
 import static constant.ErrorMessage.*;
 
-public class UserInputNumbers {
+public class InputNumbers {
 
-    public static List<Integer> getUserInputNumbers() {
+    public static List<Integer> getInputNumbers() {
         String userInput = Console.readLine();
-        validUserInputNumber(userInput);
+        validInputNumber(userInput);
         System.out.println(userInput);
 
-        List<Integer> userInputNumbers = new ArrayList<>();
+        List<Integer> inputNumbers = new ArrayList<>();
         for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
-            userInputNumbers.add(userInput.charAt(idx)-ZERO_ASCII);
+            inputNumbers.add(userInput.charAt(idx)-ZERO_ASCII);
         }
-        return userInputNumbers;
+        return inputNumbers;
     }
 
-    public static String getUserControlNumber() {
+    public static String getControlNumber() {
         String userInput = Console.readLine();
-        validUserInputControl(userInput);
+        validInputControl(userInput);
         System.out.println(userInput);
         return userInput;
     }
 
-    public static boolean validUserInputNumber(String numbers) {
+    public static boolean validInputNumber(String numbers) {
         if (numbers.length()!=NUMBER_LENGTH) {
             throw new IllegalArgumentException(INVALID_INPUT_RADIX);
         }
@@ -42,7 +42,7 @@ public class UserInputNumbers {
         return true;
     }
 
-    public static void validUserInputControl(String num) {
+    public static void validInputControl(String num) {
         if (!num.equals(RESTART) && !num.equals(END)) {
             throw new IllegalArgumentException(INVALID_INPUT_VALUE);
         }

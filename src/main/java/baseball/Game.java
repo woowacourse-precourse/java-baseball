@@ -17,7 +17,7 @@ public class Game {
 
     public void start() {
         System.out.print(INPUT_COMMENT);
-        compareNumbers(UserInputNumbers.getUserInputNumbers());
+        compareNumbers(InputNumbers.getInputNumbers());
     }
 
     public boolean isAnswer() {
@@ -30,7 +30,7 @@ public class Game {
 
     public boolean canRestart() {
         System.out.println(RESTART_COMMENT);
-        if (UserInputNumbers.getUserControlNumber().equals(END)) {
+        if (InputNumbers.getControlNumber().equals(END)) {
             return false;
         }
         return true;
