@@ -1,7 +1,5 @@
 package baseball.controller;
 
-import static baseball.exception.Exception.isOneOrTwo;
-
 import baseball.exception.Exception;
 import baseball.model.AnswerNumber;
 import baseball.model.PlayerNumber;
@@ -28,7 +26,6 @@ public class BaseballGameController {
         do {
             receiveInputNumberFromPlayer();
             OutputView.printHintMessage(hintService.getHint(answerNumber.getAnswer(), playerNumber.getPlayerNumber()));
-            System.out.println(answerNumber.getAnswer());
         } while (!hintService.isThreeStrike());
         OutputView.printPlayerCorrectAnswerMessage();
     }
