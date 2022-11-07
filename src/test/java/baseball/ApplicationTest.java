@@ -29,7 +29,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
+    //각 클래스별로 테스트를 나누기 위해서 공백으로 구분
     @Test
     void 컴퓨터_숫자_크기_테스트(){
         Assertions.assertThat(Application.reComputerNumber().size()).isEqualTo(3);
@@ -38,6 +38,12 @@ class ApplicationTest extends NsTest {
     void 컴퓨터_숫자_다른숫자_테스트(){
         org.junit.jupiter.api.Assertions.assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(1)));
         org.junit.jupiter.api.Assertions.assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(2)));
+    }
+
+    @Test
+    void 숫자_동일여부_테스트(){
+        org.junit.jupiter.api.Assertions.assertTrue(Application.checkTwoNumbersAreSame(1,1));
+        org.junit.jupiter.api.Assertions.assertFalse(Application.checkTwoNumbersAreSame(1,3));
     }
 
 
