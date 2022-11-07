@@ -18,6 +18,12 @@ public class UserUtil {
 
         isValidInput(input);
 
+        addInputToUserNumbers(userNumbers, input);
+
+        return userNumbers;
+    }
+
+    private static void addInputToUserNumbers(List<Integer> userNumbers, String input) {
         String[] digits = input.split("");
 
         for (String digit : digits) {
@@ -25,8 +31,6 @@ public class UserUtil {
 
             userNumbers.add(eachNumber);
         }
-
-        return userNumbers;
     }
 
     private static String getInput() {
