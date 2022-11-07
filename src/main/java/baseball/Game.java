@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +27,10 @@ public class Game {
     }
 
     private static Integer inputTotalNumber() {
-        return 1;
+        System.out.println("숫자를 입력해주세요 : ");
+        String userInputNumber = Console.readLine();
+        checkUserInput(userInputNumber);
+        return Integer.valueOf(userInputNumber);
     }
 
 
