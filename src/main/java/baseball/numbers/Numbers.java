@@ -50,8 +50,8 @@ public class Numbers {
                 .collect(Collectors.toList());
     }
 
-    private BallTypes contains(int index, Number number) {
-        if (numbers.get(index) == number) {
+    private BallTypes contains(int sequence, Number number) {
+        if (numbers.get(sequence) == number) {
             return BallTypes.STRIKE;
         }
 
