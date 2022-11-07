@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +28,156 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void numberDuplicateCheckTest() {
+        List<List<Integer>> checkList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            checkList.add(Start.startGame());
+        }
+
+        for (int j = 0; j < checkList.size(); j++) {
+            Integer zeroIndex = checkList.get(j).get(0);
+            assertThat(zeroIndex).isNotEqualTo(checkList.get(j).get(1));
+            assertThat(zeroIndex).isNotEqualTo(checkList.get(j).get(2));
+        }
+    }
+
+    @Test
+    void sliceInputTest() {
+        UserInput input = new UserInput();
+        List<Integer> sliced = input.sliceInputNumber("123");
+        assertThat(sliced.get(0)).isEqualTo(1);
+        assertThat(sliced.get(1)).isEqualTo(2);
+        assertThat(sliced.get(2)).isEqualTo(3);
+    }
+
+    @Test
+    void exceptionTest() {
+        ExceptionCheck exceptionCheck = new ExceptionCheck();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationLength("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationLength(""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationDuplicated("233"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationInputZero("102"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> exceptionCheck.verificationCharDetect("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void numberComparisonTest() {
+        List<Integer> correctAnswer = List.of(1, 2, 3);
+        List<Integer> slicedInput = List.of(3, 2, 1);
+
+        NumberComparison comparison = new NumberComparison();
+        int strikeCount = comparison.checkStrike(correctAnswer, slicedInput);
+        int ballCount = comparison.checkBall(correctAnswer, slicedInput);
+
+        assertThat(strikeCount).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(2);
+    }
+
+    @Test
+    void countPrintTestBallStrike() {
+        int ballCount = 1;
+        int strikeCount = 1;
+
+        Branch branch = new Branch();
+        int result = branch.gameCount(ballCount, strikeCount);
+
+        assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("1볼 1스트라이크");
+    }
+
+    @Test
+    void countPrintBall() {
+        int ballCount = 2;
+        int strikeCount = 0;
+
+        Branch branch = new Branch();
+        int result = branch.gameCount(ballCount, strikeCount);
+
+        assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("2볼");
+    }
+
+    @Test
+    void countPrintStrike() {
+        int ballCount = 0;
+        int strikeCount = 2;
+
+        Branch branch = new Branch();
+        int result = branch.gameCount(ballCount, strikeCount);
+
+        assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("2스트라이크");
+    }
+
+    @Test
+    void countPrintNothing() {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        Branch branch = new Branch();
+        int result = branch.gameCount(ballCount, strikeCount);
+
+        assertThat(result).isEqualTo(-1);
+        assertThat(output()).isEqualTo("낫싱");
+    }
+
+    @Test
+    void GameEnd() {
+        Branch branch = new Branch();
+        int branchEnd = branch.gameBranch("2");
+        assertThat(branchEnd).isEqualTo(-3);
+
+        int branchReStart = branch.gameBranch("1");
+        assertThat(branchReStart).isEqualTo(-2);
+    }
+
+    @Test
+    void branchTest_END() {
+        int GAME_END = -2;
+        Branch branch = new Branch();
+        int branchStatus = branch.gameBranch("1");
+        assertThat(GAME_END).isEqualTo(branchStatus);
+    }
+
+    @Test
+    void branchTest_RESTART() {
+        int GAME_END = -3;
+        Branch branch = new Branch();
+        int branchStatus = branch.gameBranch("2");
+        assertThat(GAME_END).isEqualTo(branchStatus);
+    }
+
+    @Test
+    void branchTest_THROW_EXCEPTION() {
+        Branch branch = new Branch();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> branch.gameBranch("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void reStartTest() {
+        List<Integer> computer = Start.reStart();
+        assertThat(computer.size()).isEqualTo(3);
     }
 
     @Override
