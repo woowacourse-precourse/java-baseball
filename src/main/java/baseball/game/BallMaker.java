@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class BallMaker {
     private String informationMessage = "숫자를 입력해 주세요 : ";
+    private String regex = "^[%d-9]*$";
     private int ballSize;
     private boolean allowDuplicate;
 
@@ -88,7 +89,7 @@ public class BallMaker {
     }
 
     private boolean dataValidation(String userInput) {
-        String dataRegex = String.format("^[%d-9]*$", minimum);
+        String dataRegex = String.format(regex, minimum);
         return Pattern.matches(dataRegex, userInput);
     }
 
