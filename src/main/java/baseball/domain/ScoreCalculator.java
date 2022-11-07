@@ -5,7 +5,8 @@ import baseball.system.SystemConstant;
 import java.util.stream.Stream;
 
 public final class ScoreCalculator {
-    private ScoreCalculator() {}
+    private ScoreCalculator() {
+    }
 
     public static int calculateBallCount(BaseballNumber baseballNum1, BaseballNumber baseballNum2) {
         return (int) Stream.iterate(0, i -> i + 1)

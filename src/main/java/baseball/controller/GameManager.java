@@ -11,8 +11,8 @@ import java.util.List;
 import static baseball.view.OutputMsgContainer.*;
 
 public class GameManager {
-    private final InputHandler inputStream = new InputHandler();
-    private final OutputHandler outputStream = new OutputHandler();
+    private final InputHandler inputHandler = new InputHandler();
+    private final OutputHandler outputHandler = new OutputHandler();
     private final BaseballManager baseballManager = new BaseballManager();
 
     public void run() {
@@ -21,12 +21,12 @@ public class GameManager {
     }
 
     private void startFirstGame() {
-        outputStream.printMessageForData(GAME_START_MESSAGE);
+        outputHandler.printMessageForData(GAME_START_MESSAGE);
         startLoop();
     }
 
     private void startRepeatedGame() {
-        int flag = inputStream.readGameControlInput();
+        int flag = inputHandler.readGameControlInput();
         if (flag == SystemConstant.GAME_EXIT_CODE) {
             return;
         }
@@ -38,14 +38,16 @@ public class GameManager {
     private void startLoop() {
         List<Integer> userScore;
         do {
-            outputStream.printMessageForData(GAME_INPUT_MESSAGE);
-            int userInput = inputStream.readGameInput();
-            baseballManager.addUserBaseballNumInfo(new BaseballNumber(userInput));
+            outputHandler.printMessageForData(GAME_INPUT_MESSAGE);
+
+            baseballManager.addUserBaseballNumInfo(
+                    new BaseballNumber(inputHandler.readGameInput()));
             baseballManager.computeUserScore();
             userScore = baseballManager.getUserScore();
-            outputStream.printMessageForData(userScore);
+
+            outputHandler.printMessageForData(userScore);
         } while (!isGameOver(userScore));
-        outputStream.printMessageForData(GAME_END_AND_RESTART_MESSAGE);
+        outputHandler.printMessageForData(GAME_END_AND_RESTART_MESSAGE);
     }
 
     private boolean isGameOver(List<Integer> userScore) {

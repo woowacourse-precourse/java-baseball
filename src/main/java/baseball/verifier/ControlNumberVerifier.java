@@ -3,7 +3,7 @@ package baseball.verifier;
 import baseball.system.ExceptionMessage;
 import baseball.system.SystemConstant;
 
-public class ControllNumberVerifier implements Verifier {
+public class ControlNumberVerifier implements Verifier {
     @Override
     public void check(String input) {
         checkNumeric(input);
@@ -21,7 +21,7 @@ public class ControllNumberVerifier implements Verifier {
     private void checkRange(String input) {
         int integerInput = Integer.parseInt(input);
         if (integerInput != SystemConstant.GAME_EXIT_CODE &&
-            integerInput != SystemConstant.GAME_RESTART_CODE) {
+                integerInput != SystemConstant.GAME_RESTART_CODE) {
             throw new IllegalArgumentException(ExceptionMessage.UNKNOWN_CONTROL_INPUT);
         }
     }

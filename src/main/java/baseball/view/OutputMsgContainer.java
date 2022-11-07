@@ -14,7 +14,7 @@ public enum OutputMsgContainer {
             "게임을 새로 시작하려면 " + GAME_RESTART_CODE + ", 종료하려면 " + GAME_EXIT_CODE + "를 입력하세요.\n"),
     GAME_INPUT_MESSAGE("숫자를 입력해주세요 : ");
 
-    private String message;
+    private final String message;
 
     OutputMsgContainer(String message) {
         this.message = message;
@@ -31,9 +31,9 @@ public enum OutputMsgContainer {
         }
         System.out.println(
                 makeBallMessageIfExists(score.get(0))
-                + SPACE.message
-                + makeStrikeMessageIfExists(score.get(1))
-                );
+                        + SPACE.message
+                        + makeStrikeMessageIfExists(score.get(1))
+        );
     }
 
     private static String makeBallMessageIfExists(int ballCount) {

@@ -8,13 +8,13 @@ public final class ListUtility {
     }
 
     public static ArrayList<Integer> splitDigitsIntoList(int number) {
-        ArrayList<Integer> resultList = new ArrayList<>();
+        ArrayList<Integer> splittedDigits = new ArrayList<>();
         String stringNumber = Integer.toString(number);
         for (int i = 0; i < stringNumber.length(); i++) {
             char charDigit = stringNumber.charAt(i);
-            resultList.add(Character.getNumericValue(charDigit));
+            splittedDigits.add(Character.getNumericValue(charDigit));
         }
-        return resultList;
+        return splittedDigits;
     }
 
     public static int getDistinctCountInIntegerList(List<Integer> list) {

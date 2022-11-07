@@ -5,16 +5,17 @@ import java.util.List;
 import baseball.utils.ListUtility;
 
 public class BaseballNumber {
-    public List<Integer> listNumber;
+    public final List<Integer> splittedNumber;
+
     public BaseballNumber(int number) {
-        this.listNumber = ListUtility.splitDigitsIntoList(number);
+        this.splittedNumber = ListUtility.splitDigitsIntoList(number);
     }
 
     public int getNumberAt(int index) {
-        return listNumber.get(index);
+        return splittedNumber.get(index);
     }
 
     public boolean contains(int number) {
-        return listNumber.contains(number);
+        return splittedNumber.contains(number);
     }
 }
