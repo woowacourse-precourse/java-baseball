@@ -41,6 +41,16 @@ public class GameDealer {
         }
         return result;
     }
+
+    public static boolean CHECK_VALID_RETRY(String ReTry_Intention){
+        boolean result = true;
+        if(ReTry_Intention.equals("1") || ReTry_Intention.equals("2")){
+            result = true;
+        } else {
+            result = false;
+        }
+        return result;
+    }
     public static boolean CHECK_AND_PRINT_INFO(String User_Try){
         boolean result = true;
         int Cnt_Ball = 0;
