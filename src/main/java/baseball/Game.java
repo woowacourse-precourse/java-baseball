@@ -17,8 +17,8 @@ public class Game {
         Computer computer = new Computer();
         Gamer gamer = new Gamer();
         Rule rule = new Rule();
-
         Hint.init();
+
         while (Hint.getStrikeCount() != RANDOM_NUMBERS_LENGTH) {
             inputNumbers();
             rule.getHint(gamer.inputNumbers(), computer.getRandomNumbers());
