@@ -17,7 +17,7 @@ public class Application {
         }
         return computer;
     }
-    //int형으로 입려받는 userInput을 List형으로 변환
+    //int형으로 입려받는 userInput을 List형으로 변환함
     public static List<Integer> convertUserInputToList (int userinput){
         List<Integer> returnData = new ArrayList<Integer>();
         if(userinput >= 1000){
