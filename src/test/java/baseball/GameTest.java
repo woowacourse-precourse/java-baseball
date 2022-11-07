@@ -50,6 +50,10 @@ class GameTest {
 
     @Test
     void requestAnswer() {
+        Game game = new Game();
+        game.requestAnswer();
+        String result = Settings.ANSWER_REQUEST_MESSAGE + "\r\n";
+        assertThat(result).isEqualTo(output.toString());
     }
 
     @Test
