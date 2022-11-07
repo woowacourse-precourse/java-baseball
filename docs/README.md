@@ -1,9 +1,9 @@
 # 기능 목록 2022.11.07
 ## Domain
 ### Game
-- [ ] 변수
+- [X] 변수
   - 재시작/종료 코드
-- [ ] getter/setter
+- [X] getter/setter
 
 ### Comparator
 - [ ] 변수
@@ -21,7 +21,7 @@
 - [ ] getter/setter
 
 ## Service
-### Game
+### Game  
 - [ ] 게임 시작
 - [ ] 재시작/종료 코드 입력
 
