@@ -6,6 +6,7 @@ import java.util.List;
 public class BaseballGame {
     private static final char INTEGER_MAKER = '0';
     private static final String GAME_REPLAY = "1";
+    private static final int STRIKE_NUM = 3;
 
     public void playGame() {
         boolean gameStop = true;
@@ -31,7 +32,9 @@ public class BaseballGame {
             int ballCount = getBallCount(userNumbers, computerNumbers);
             int strikeCount = getStrikeCount(userNumbers, computerNumbers);
 
-            isRunning = OutputView.printGameResult(ballCount, strikeCount);
+            OutputView.printGameResult(ballCount, strikeCount);
+
+            isRunning = isGoOrStop(strikeCount);
         }
 
         return getReplayOrNot();
@@ -100,6 +103,10 @@ public class BaseballGame {
         }
 
         return 0;
+    }
+
+    private boolean isGoOrStop(int strikeCount) {
+        return strikeCount != STRIKE_NUM;
     }
 
 }

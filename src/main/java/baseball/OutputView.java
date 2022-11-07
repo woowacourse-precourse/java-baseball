@@ -10,58 +10,50 @@ public class OutputView {
     private static final int STRIKE_NUMBER = 3;
     private static final int ZERO = 0;
 
-    public static boolean printGameResult(int ballCount, int strikeCount) {
+    public static void printGameResult(int ballCount, int strikeCount) {
         if (strikeCount == STRIKE_NUMBER) {
-            return printThreeStrikeResult();
+            printThreeStrikeResult();
+            return;
         }
 
         if (strikeCount > ZERO && ballCount > ZERO) {
-            return printBallAndStrikeResult(strikeCount, ballCount);
+            printBallAndStrikeResult(strikeCount, ballCount);
+            return;
         }
 
         if (strikeCount > ZERO && ballCount == ZERO) {
-            return printStrikeResult(strikeCount);
+            printStrikeResult(strikeCount);
+            return;
         }
 
         if (strikeCount == ZERO && ballCount > ZERO) {
-            return printBallResult(ballCount);
+            printBallResult(ballCount);
+            return;
         }
 
         if (strikeCount == ZERO && ballCount == ZERO) {
-            return printNothingResult();
+            printNothingResult();
         }
-
-        return true;
     }
 
-    private static boolean printBallAndStrikeResult(int strikeCount, int ballCount) {
+    private static void printBallAndStrikeResult(int strikeCount, int ballCount) {
         System.out.printf(PRINT_BALL_AND_STRIKE, ballCount, strikeCount);
-
-        return true;
     }
 
-    private static boolean printStrikeResult(int strikeCount) {
+    private static void printStrikeResult(int strikeCount) {
         System.out.printf(PRINT_STRIKE_COUNT, strikeCount);
-
-        return true;
     }
 
-    private static boolean printBallResult(int ballCount) {
+    private static void printBallResult(int ballCount) {
         System.out.printf(PRINT_BALL_COUNT, ballCount);
-
-        return true;
     }
 
-    private static boolean printNothingResult() {
+    private static void printNothingResult() {
         System.out.print(NOTHING);
-
-        return true;
     }
 
-    private static boolean printThreeStrikeResult() {
+    private static void printThreeStrikeResult() {
         System.out.printf(PRINT_STRIKE_COUNT, STRIKE_NUMBER);
         System.out.printf(GAME_TERMINATE, STRIKE_NUMBER);
-
-        return false;
     }
 }
