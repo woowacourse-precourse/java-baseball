@@ -5,6 +5,9 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
+
+    private static final String RESTART_COMMAND = "1";
+
     private final User user;
     private final Computer computer;
     private final Score score;
@@ -45,7 +48,7 @@ public class Game {
     }
 
     public void reStarOrStop(String command) {
-        if (command.equals("1")) {
+        if (command.equals(RESTART_COMMAND)) {
             start();
         }
     }
