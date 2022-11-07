@@ -1,9 +1,9 @@
 package baseball.domain.exception;
 
-import baseball.domain.util.Constants;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static baseball.domain.exception.ExceptionConstants.*;
 
 public class InputNumberException {
 
@@ -19,35 +19,34 @@ public class InputNumberException {
 
     private static void isNumbersLengthThree(String numbers) {
         if (numbers.length() != 3) {
-            throw new IllegalArgumentException(Constants.NUMBER_THREE_LENGTH);
+            throw new IllegalArgumentException(NUMBER_THREE_LENGTH);
         }
     }
 
     private static void isNumbersOneToNine(String numbers) {
         for (int i = 0; i < numbers.length(); i++) {
             if (numbers.charAt(i) == '0') {
-                throw new IllegalArgumentException(Constants.NOT_INPUT_ZERO);
+                throw new IllegalArgumentException(NOT_INPUT_ZERO);
             }
         }
     }
 
     public static void isInputNumberOneOrTwo(int number) {
         if (number < 1 || 2 < number) {
-            throw new IllegalArgumentException(Constants.ONLY_ONE_OR_TWO);
+            throw new IllegalArgumentException(ONLY_ONE_OR_TWO);
         }
     }
 
     private static void isOnlyNumber(String numbers) {
-        String regExp = Constants.ONLY_NUMBER_REGEX;
-        if (!numbers.matches(regExp)) {
-            throw new IllegalArgumentException(Constants.ONLY_INPUT_NUMBER);
+        if (!numbers.matches(ONLY_NUMBER_REGEX)) {
+            throw new IllegalArgumentException(ONLY_INPUT_NUMBER);
         }
     }
 
     private static void isDuplicateCharacters(String numbers) {
         for (int i = 0; i < numbers.length(); i++) {
             if (isAlreadyExistsCharacter(numbers.charAt(i))) {
-                throw new IllegalArgumentException(Constants.NOT_INPUT_DUPLICATED_NUMBER);
+                throw new IllegalArgumentException(NOT_INPUT_DUPLICATED_NUMBER);
             } else {
                 list.add(numbers.charAt(i));
             }

@@ -2,12 +2,13 @@ package baseball.domain.view;
 
 import baseball.domain.util.TypeConverter;
 import baseball.domain.util.Util;
-import camp.nextstep.edu.missionutils.Console;
+
+import static baseball.domain.util.OutputNumbersConstants.*;
 
 public class OutputView {
-    public static final String startGame = "숫자 야구 게임을 시작합니다.";
-    public static final String endGame = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String restartGame = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String startGame = START_GAME;
+    public static final String endGame = END_GAME;
+    public static final String restartGame = RESTART_GAME;
 
     public static void printStart() {
         System.out.println(startGame);
@@ -16,11 +17,11 @@ public class OutputView {
     public static boolean printResult(int strike, int ball) {
         String answer;
 
-        if (ball > 0 && strike > 0) answer = ball + "볼 " + strike + "스트라이크";
+        if (ball > 0 && strike > 0) answer = ball + BALL + EMPTY_STRING + strike + STRIKE;
         else {
-            if (ball > 0) answer = ball + "볼";
-            else if (strike > 0) answer = strike + "스트라이크";
-            else answer = "낫싱";
+            if (ball > 0) answer = ball + BALL;
+            else if (strike > 0) answer = strike + STRIKE;
+            else answer = NOTHING;
         }
 
         System.out.println(answer);
