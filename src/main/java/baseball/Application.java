@@ -21,7 +21,7 @@ public class Application {
 
     public static boolean isIllegalInput(String userInput) {
         try {
-            if (userInput.length() != 3 || wrongInputValueCheck(userInput) == false) {
+            if (userInput.length() != 3 || !wrongInputValueCheck(userInput)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -96,7 +96,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
-            if (newNumberFlag == true) {
+            if (newNumberFlag) {
                 gameNumber = NewGameNumber();
             }
 
