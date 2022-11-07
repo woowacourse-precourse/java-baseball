@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -127,6 +126,15 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Validation.IsOnlyNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자 외의 문자를 입력하셨습니다.");
+    }
+
+    @Test
+    void 입력한_숫자가_3개인지_확인하는_테스트() {
+        String input = "1234";
+
+        assertThatThrownBy(() -> Validation.IsNumberThree(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값은 3글자의 숫자입니다.");
     }
 
     Object getPrivateField(String name, Object transferObject) throws Exception {
