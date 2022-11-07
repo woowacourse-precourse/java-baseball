@@ -42,6 +42,11 @@ public class Application {
         int ball = getBall(answer, userInput);
         int strike = getStrike(answer, userInput);
 
+        if (strike == 3) {
+            System.out.println(strike + "스트라이크");
+
+            return true;
+        }
         if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
 
@@ -56,11 +61,6 @@ public class Application {
             System.out.println("낫싱");
 
             return false;
-        }
-        if (strike == 3) {
-            System.out.println(strike + "스트라이크");
-
-            return true;
         }
         System.out.println(ball + "볼 " + strike + "스트라이크");
 
@@ -118,6 +118,5 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        getFlag();
     }
 }
