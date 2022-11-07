@@ -16,6 +16,8 @@ public class NumberBaseballRepository {
     private static final NumberBaseballRepository instance = new NumberBaseballRepository();
     private static final List<ComputerNumber> numberStore = new ArrayList<>();
 
+    private NumberBaseballRepository() {}
+
     public static NumberBaseballRepository getInstance() {
         return instance;
     }
