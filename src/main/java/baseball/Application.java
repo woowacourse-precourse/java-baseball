@@ -49,6 +49,20 @@ public class Application {
         }
     }
 
+    static public int getStrikeCount(String randomNumber, String userGuessNumber) {
+        int strikeCount = 0;
+
+        for (int randomNumberIndex = 0; randomNumberIndex < RANDOM_NUMBER_LENGTH; randomNumberIndex++) {
+            for (int userGuessNumberIndex = 0; userGuessNumberIndex < USER_GUESS_NUMBER_LENGTH; userGuessNumberIndex++) {
+                char randomNumberDigit = randomNumber.charAt(randomNumberIndex);
+                char userGuessNumberDigit = userGuessNumber.charAt(userGuessNumberIndex);
+                strikeCount += isStrike(randomNumberIndex, userGuessNumberIndex, randomNumberDigit, userGuessNumberDigit);
+            }
+        }
+
+        return strikeCount;
+    }
+
     static public int isStrike(int randomNumberIndex, int userGuessNumberIndex, char randomNumberDigit, char userGuessNumberDigit) {
         boolean sameIndex = randomNumberIndex == userGuessNumberIndex;
         boolean sameDigit = randomNumberDigit == userGuessNumberDigit;
