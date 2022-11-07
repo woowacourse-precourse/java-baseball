@@ -14,6 +14,7 @@ public class InputValidator {
     private static final String STOP_COMMAND = "2";
     private static final String ZERO = "0";
     private static final int CORRECT_INPUT_LENGTH = 3;
+
     private static String guessedAnswerInput;
 
     public static void validateInputForm(String guessedAnswer) {
@@ -26,15 +27,19 @@ public class InputValidator {
     }
 
     public static void validateNotIntegerInput() {
-        if (!guessedAnswerInput.matches(INTEGER_REGULAR_EXPRESSION)) {
-            InputException.throwNotIntegerInputError();
+        if (guessedAnswerInput.matches(INTEGER_REGULAR_EXPRESSION)) {
+            return;
         }
+
+        InputException.throwNotIntegerInputError();
     }
 
     public static void validateNotThreeLengthIntegerInput() {
-        if (guessedAnswerInput.length() != CORRECT_INPUT_LENGTH) {
-            InputException.throwNotThreeLengthIntegerInputError();
+        if (guessedAnswerInput.length() == CORRECT_INPUT_LENGTH) {
+            return;
         }
+
+        InputException.throwNotThreeLengthIntegerInputError();
     }
 
     public static void validateIncludeZeroInput() {
@@ -52,9 +57,11 @@ public class InputValidator {
             guessedAnswerInputSet.add(number);
         }
 
-        if (guessedAnswerInputList.size() != guessedAnswerInputSet.size()) {
-            InputException.throwDuplicateNumberInputError();
+        if (guessedAnswerInputList.size() == guessedAnswerInputSet.size()) {
+            return;
         }
+
+        InputException.throwDuplicateNumberInputError();
     }
 
     public static void validCommandForm(String command) {
