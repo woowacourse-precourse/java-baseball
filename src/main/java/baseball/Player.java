@@ -17,6 +17,8 @@ public class Player {
         System.out.print(NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
 
+        checkValidNumberInput(input);
+
         return input;
     }
 
