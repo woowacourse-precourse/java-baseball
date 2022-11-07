@@ -1,0 +1,108 @@
+package baseball;
+
+import static baseball.Computer.NUM_LIMIT_LENGTH;
+import static baseball.Computer.createRandomNumbers;
+import static baseball.Message.*;
+import static baseball.Player.toIntegerPlayerInput;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class BaseballGame {
+    private List<Integer> playerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
+    private int strike;
+    private int ball;
+    List<Integer> computerNumber;
+
+    public BaseballGame() {
+        init();
+    }
+
+    public void init() {
+        computerNumber = new ArrayList<>(NUM_LIMIT_LENGTH);
+        for (int i : createRandomNumbers()) {
+            computerNumber.add(i);
+        }
+    }
+
+    public void start() {
+        System.out.print(INPUT_NUM);
+        String playerInput = readLine();
+        playerNumber = toIntegerPlayerInput(playerInput);
+        checkInputData(playerNumber);
+        strike = checkStrikeCount(playerNumber);
+        ball = checkBallCount(playerNumber);
+        gameResult();
+    }
+
+    private void checkInputData(List<Integer> playerNumber) {
+        if (playerNumber.size() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해야 합니다. 다시 입력해주세요.");
+        }
+        if (playerNumber.contains(0)) {
+            throw new IllegalArgumentException("1부터 9까지의 숫자만을 입력할 수 있습니다. 다시 입력해주세요");
+        }
+        Set<Integer> duplicate = new HashSet<>(playerNumber);
+        if (duplicate.size() != playerNumber.size()) {
+            throw new IllegalArgumentException("중복된 숫자가 있어서는 안됩니다. 서로 다른 숫자로 다시 입력해주세요.");
+        }
+    }
+
+    private int checkStrikeCount(List<Integer> playerNumber) {
+        int strikeCount = 0;
+        for (int i = 0; i < NUM_LIMIT_LENGTH; i++) {
+            if (computerNumber.indexOf(playerNumber.get(i)) == i) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    private int checkBallCount(List<Integer> playerNumber) {
+        int ballCount = 0;
+        for (int i = 0; i < NUM_LIMIT_LENGTH; i++) {
+            if (computerNumber.contains(playerNumber.get(i)) && computerNumber.indexOf(playerNumber.get(i)) != i) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
+    private void gameResult() {
+        if (ball != 0 && strike != 0) {
+            System.out.println(ball + "볼" + " " + strike + "스트라이크");
+        }
+        if (ball == 0 && strike != 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        if (ball != 0 && strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        if (ball == 0 & strike == 0) {
+            System.out.println("낫싱");
+        }
+    }
+
+    public boolean endGame() {
+        if (strike == 3) {
+            System.out.println(PLAYER_WIN);
+            System.out.println(ASK_MESSAGE);
+
+            String ask = readLine();
+            if (ask.equals("1")) {
+                init();
+                return true;
+            } else if (ask.equals("2")) {
+                System.out.println(END_GAME);
+                return false;
+            } else {
+                throw new IllegalArgumentException(INPUT_ONE_OR_TWO);
+            }
+        }
+        return true;
+    }
+}
