@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.utils.SystemConstant;
+import baseball.system.SystemConstant;
 import baseball.domain.BaseballManager;
 import baseball.domain.BaseballNumber;
 import baseball.view.InputHandler;

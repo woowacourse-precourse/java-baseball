@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.utils.SystemConstant;
+import baseball.system.SystemConstant;
 
 import java.util.stream.Stream;
 

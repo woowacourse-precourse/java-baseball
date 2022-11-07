@@ -1,6 +1,6 @@
 package baseball.verifier;
 
-import baseball.utils.ExceptionMessage;
+import baseball.system.ExceptionMessage;
 import baseball.utils.Util;
 
 public class DistinctVerifier implements Verifier {

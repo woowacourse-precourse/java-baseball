@@ -2,7 +2,7 @@ package baseball.view;
 
 import java.util.List;
 
-import static baseball.utils.SystemConstant.*;
+import static baseball.system.SystemConstant.*;
 
 public enum OutputMsgContainer {
     BALL("볼"),
