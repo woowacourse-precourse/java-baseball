@@ -55,7 +55,8 @@ public class Application {
                 strike = findStrikes(inputData, computer);
                 ball = findBalls(inputData, computer);
 
-                getHints(strike, ball);
+                String hints = getHints(strike, ball);
+                System.out.println(hints);
 
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
@@ -64,7 +65,7 @@ public class Application {
         }
     }
 
-    private static void getHints(int strike, int ball) {
+    private static String getHints(int strike, int ball) {
         List<String> hint= new ArrayList<>();
         if(ball !=0)
         {
@@ -83,7 +84,7 @@ public class Application {
             sb.append(item);
             sb.append(" ");
         }
-        System.out.println(sb);
+        return sb.toString();
     }
 
     private static List<Integer> getRandomList() {
