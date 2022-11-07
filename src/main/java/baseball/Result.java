@@ -10,14 +10,6 @@ public class Result {
         this.ball = ball;
     }
 
-    public void setStrike(Integer strikeCnt) {
-        this.strike = strikeCnt;
-    }
-
-    public void setBall(Integer ballCnt) {
-        this.ball = ballCnt;
-    }
-
     public Integer getStrike() {
         return strike;
     }
