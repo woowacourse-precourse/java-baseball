@@ -8,11 +8,13 @@ import java.util.List;
 
 public class Game {
     private List<Integer> computers;
+    private Boolean correct;
     private final Input user;
 
     public Game(Input user) {
         this.user = user;
         this.computers = new ArrayList<>();
+        this.correct = false;
     }
 
     public List<Integer> getComputers(){
@@ -21,6 +23,10 @@ public class Game {
 
     public List<Integer> getUserNumbers(){
         return user.getNumbers();
+    }
+
+    public void answerIsCorrect(){
+        this.correct = true;
     }
 
     private void pickNumbers(){

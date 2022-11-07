@@ -18,6 +18,7 @@ public class Score {
             if (Objects.equals(game.getComputers().get(i), user.get(i)))
                 score ++;
         }
+        if (score == 3) game.answerIsCorrect();
         return score;
     }
 
