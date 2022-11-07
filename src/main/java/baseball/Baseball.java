@@ -22,16 +22,18 @@ public class Baseball {
 
     public void startGame() {
         OutputView.printStart();
-        playGame();
+
+        do {
+            setComputerNumbers();
+            playGame();
+        } while (!isShutdown());
     }
 
     private void playGame() {
-        setComputerNumbers();
-
-        while (!isGameOver()) {
+        do {
             setPlayerNumbers();
             printHintMessage();
-        }
+        } while (!hint.isMaxStrike());
     }
 
     private void setComputerNumbers() {
@@ -50,19 +52,14 @@ public class Baseball {
         OutputView.printHintMessage(hintMessage);
     }
 
-    private boolean isGameOver() {
-        if (hint.isMaxStrike()) {
-            if (getState().isStart()) {
-                OutputView.printGameOver();
-                return true;
-            }
-
-            setComputerNumbers();
+    private boolean isShutdown() {
+        if (getState().isStart()) {
             return false;
         }
-        return false;
-    }
 
+        OutputView.printShutdown();
+        return true;
+    }
 
     private State getState() {
         String stateNumber = InputView.inputStateNumber();
