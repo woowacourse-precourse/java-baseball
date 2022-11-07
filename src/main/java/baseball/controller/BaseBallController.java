@@ -24,6 +24,7 @@ public class BaseBallController {
 
     private void gameStart() {
         playGameUntilEnd(new Score(0, 0));
+        quitOrContinueGame();
     }
 
     private void playGameUntilEnd(Score score) {
@@ -37,5 +38,10 @@ public class BaseBallController {
 
     private static boolean canContinueGame(Score score) {
         return Objects.isNull(score) || score.canContinue();
+    }
+
+    private void quitOrContinueGame() {
+        OutputView.printQuitMessage();
+        InputView.printChoiceMessage();
     }
 }
