@@ -3,7 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+
+import static baseball.SystemMessage.*;
 
 public class Player {
     protected static List<Integer> answer;
@@ -22,5 +25,24 @@ public class Player {
         String str = Console.readLine();
         list = splitAnswer(str);
         return list;
+    }
+
+    private static void validateNumber( String inputNumber ) {
+        HashSet<Character> duplicateNumber = new HashSet<>();
+
+        if ( inputNumber.length() != 3 ) {
+            throw new IllegalArgumentException( INVALID_LENGTH );
+        }
+
+        for( int idx = 0; idx<3; idx++) {
+            char number = inputNumber.charAt(idx);
+            if ( number < (char) ( 1 + '0' ) || number > ( 9 + '0' ) ) {
+                throw new IllegalArgumentException( INVALID_NUMBER );
+            }
+
+            if ( !duplicateNumber.add(number) ) {
+                throw new IllegalArgumentException( DUPLICATE_NUMBER );
+            }
+        }
     }
 }
