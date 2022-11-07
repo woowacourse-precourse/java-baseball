@@ -13,9 +13,10 @@ import java.util.Scanner;
 * */
 class game{
     List<Integer> computer;
-    List<Integer> mynum;
-    public game(){
-    };
+    List<Integer> my_num_list;
+    int my_num;
+    Scanner sc = new Scanner(System.in);
+    public game(){};
     public void setComputerNum(){
         this.computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -25,11 +26,11 @@ class game{
             }
         }
     }
-    public void get_Mynum(){
-
+    public void get_My_num(){
+        System.out.print("숫자를 입력해주세요 : ");
+        this.my_num = sc.nextInt();
     }
     public void checker(){
-
     }
     public void reStarter(){
 
