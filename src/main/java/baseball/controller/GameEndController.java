@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.domain.UserBall;
-import baseball.util.ViewConst;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -16,7 +15,7 @@ public class GameEndController {
 	}
 
 	public boolean isAnswer(UserBall userBall) {
-		if (is3Strike(userBall)) {
+		if (userBall.is3Strike()) {
 			printSuccessResult();
 			return true;
 		}
@@ -26,10 +25,6 @@ public class GameEndController {
 	private void printSuccessResult() {
 		outputView.printSuccess();
 		inputView.printGameRestart();
-	}
-
-	private boolean is3Strike(UserBall userBall) {
-		return userBall.getStatus().equals(ViewConst.HAS_3_STRIKE);
 	}
 
 }

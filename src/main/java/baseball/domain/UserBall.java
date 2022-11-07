@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.util.ViewConst;
+
 public class UserBall {
 
 	private Integer ball;
@@ -25,6 +27,10 @@ public class UserBall {
 
 	public String getStatus() {
 		return status;
+	}
+
+	public boolean is3Strike() {
+		return this.status.equals(ViewConst.HAS_3_STRIKE);
 	}
 
 	public void updateBallCount(Integer ball) {
