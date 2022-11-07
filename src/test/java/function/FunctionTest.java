@@ -3,9 +3,12 @@ package function;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static baseball.Application.*;
+import static baseball.Computer.createBaseballNumberList;
+import static baseball.Player.createInputNumberList;
+import static baseball.Referee.createRefereeCount;
+import static baseball.Referee.refereeAnswer;
+import static baseball.ValidationCode.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class FunctionTest {
@@ -137,6 +140,5 @@ public class FunctionTest {
             assertThatThrownBy(() -> validateFlag(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
-
     }
 }
