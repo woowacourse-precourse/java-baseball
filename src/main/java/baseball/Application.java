@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
 
 public class Application {
@@ -38,7 +41,7 @@ class Game {
         List<Integer> answer = new ArrayList<>();
 
         while(answer.size() < 3) {
-            int num = (int) (Math.random() * 9 + 1);
+            int num = Randoms.pickNumberInRange(1, 9);
             if(!(answer.contains(num))) {
                 answer.add(num);
             }
@@ -85,11 +88,10 @@ class Game {
 
     static String RestartOrNot() {
         String restart_or_not = "";
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            restart_or_not = scanner.nextLine();
+            restart_or_not = Console.readLine();
             if (!(restart_or_not.equals("1")) && !(restart_or_not.equals("2"))) {
                 System.out.println("1 또는 2를 입력해 주세요.");
             } else {
@@ -105,11 +107,9 @@ class User {
     static List<Integer> InputNum() {
         List<Integer> user_num_list = new ArrayList<>();
 
-        Scanner scanner = new Scanner(System.in);
-
         while(true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String input = scanner.nextLine();
+            String input = Console.readLine();
             if(CheckInput(input)) {
                 int user_num = Integer.parseInt(input);
 
