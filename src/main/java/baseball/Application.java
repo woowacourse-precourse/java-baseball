@@ -13,7 +13,8 @@ public class Application {
         do{
             System.out.println("숫자 야구 게임을 시작합니다.");
             playBaseBall();
-            int judgeNum = JudgeInputNum();
+            int inputNum = Integer.parseInt(readLine());
+            int judgeNum = JudgeInputNum(inputNum);
             if(judgeNum == 2)
                 break;
         }
@@ -22,10 +23,9 @@ public class Application {
     }
 
     /* 재시작, 종료 판별 메소드 구현*/
-    public static int JudgeInputNum(){
+    public static int JudgeInputNum(int inputNum){
         while(true){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int inputNum = Integer.parseInt(readLine());
             if(inputNum == 1 )
                 return 1;
             if(inputNum == 2)
