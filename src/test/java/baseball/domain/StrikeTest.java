@@ -13,7 +13,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Strike 클래스")
-@SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StrikeTest {
     private final int STRIKE_LOWER_BOUND = 0;
@@ -24,7 +23,7 @@ class StrikeTest {
 
         @Nested
         class 만약_0과_3사이의_값을_입력받으면 {
-            
+
             @ParameterizedTest
             @ValueSource(ints = {0, 1, 2, 3})
             void Strike_객체를_리턴한다(int count) {

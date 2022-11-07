@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("BaseballNumbersFactory 클래스")
-@SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BaseballNumbersFactoryTest {
     private BaseballNumbersFactory sut = new BaseballNumbersFactory();

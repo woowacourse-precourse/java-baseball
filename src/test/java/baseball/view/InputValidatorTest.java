@@ -11,7 +11,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("InputValidator 클래스")
-@SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class InputValidatorTest {
 
@@ -20,7 +19,7 @@ class InputValidatorTest {
 
         @Nested
         class 만약_1과_9사이의_중복되지_않는_3자리_숫자를_입력받으면 {
-            
+
             @ParameterizedTest
             @ValueSource(strings = {"123", "456", "719"})
             void 예외가_발생하지_않는다(String givenInput) {
