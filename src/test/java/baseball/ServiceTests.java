@@ -17,7 +17,7 @@ public class ServiceTests {
 
     @DisplayName("문자열을 한글자씩 잘라 리스트로 반환하는 메서드 테스트")
     @Test
-    void stringToListTest(){
+    void stringToListTest() {
         //given
         Service service = new Service();
         List<String> expectedResult = new ArrayList<>();
@@ -45,8 +45,8 @@ public class ServiceTests {
         Method testMethod = service.getClass().getDeclaredMethod("AddToListExcludeContainsString", List.class, String.class);
         testMethod.setAccessible(true);
         //when
-        List<String> addDuplicatedString = (ArrayList) testMethod.invoke(service, testDuplicated,"1");
-        List<String> addUnduplicatedString = (ArrayList) testMethod.invoke(service, testUnduplicated,"9");
+        List<String> addDuplicatedString = (ArrayList) testMethod.invoke(service, testDuplicated, "1");
+        List<String> addUnduplicatedString = (ArrayList) testMethod.invoke(service, testUnduplicated, "9");
 
         //then
         assertNotEquals(addDuplicatedString, addUnduplicatedString);
@@ -59,7 +59,7 @@ public class ServiceTests {
     void generateRandomNumberTest() {
         //given
         Service service = new Service();
-        for(int loopCount = 0; 1000 > loopCount; loopCount++){
+        for (int loopCount = 0; 1000 > loopCount; loopCount++) {
             //when
             List<String> randomNumbers = service.generateRandomNumber(1, 9, 3);
             Set<String> deduplicateNumbers = new HashSet<>(randomNumbers);
