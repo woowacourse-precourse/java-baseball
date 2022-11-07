@@ -31,7 +31,7 @@ public class Game {
             hint.print();
 //        }
 
-//        stop();
+        stop();
     }
 
     public void stop() {
@@ -65,5 +65,13 @@ public class Game {
                 hint.incrementBall();
             }
         }
+    }
+
+    public boolean isThreeStrike() {
+
+        if (hint.getStrike() == 3) {
+            return true;
+        }
+        return false;
     }
 }
