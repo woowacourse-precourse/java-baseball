@@ -23,6 +23,16 @@ public class ArrayNumber {
         return this.digits;
     }
 
+
+    private void setDigits(String input) {
+        if(!isValidString(input)) {
+            throw new IllegalArgumentException();
+        }
+        this.digits = Arrays.stream(input.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
     private boolean isValidString(String str) {
         if(!lengthisthree(str) || !isMinToMax(str) || !isNotDuplicate(str)) {
             return false;
