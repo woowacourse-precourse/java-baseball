@@ -9,8 +9,8 @@ public final class Referee {
     private static final int SECOND_NUM = 1;
     private static final int THIRD_NUM = 2;
 
-    private static int ball;
-    private static int strike;
+    private int ball;
+    private int strike;
 
     public boolean count(final List<Character> answer, final String comparison) {
         IntStream.range(0, 3).forEach(i -> {
@@ -24,7 +24,7 @@ public final class Referee {
         return strike == 3;
     }
 
-    private static void judge(final List<Character> answer, final String comparison) {
+    private void judge(final List<Character> answer, final String comparison) {
         if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
         } else if (ball == 0 && strike != 0) {
