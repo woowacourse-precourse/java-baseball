@@ -6,10 +6,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class GameService {
     private static final int BALL_NUMBERS = 3;
 
-    //Todo
-    // 랜덤값 1개씩 입력받고 List 변수에 넣으면서
-    // 중복확인 + 3자리인지 확인 후 return
-    // view -> GameService 쪽으로 refactor
+    public static void startOrder(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GameService.makeRandomBall());
+    }
+    public static void inputOrder() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
     public static List<Integer> makeRandomBall(){
         List<Integer> randomballs = new ArrayList<>();
 
