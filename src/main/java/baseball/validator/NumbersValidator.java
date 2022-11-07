@@ -20,9 +20,8 @@ public class NumbersValidator {
         }
     }
 
-    public static void validateDigit(int input) {
-        String changeInputType = Integer.toString(input);
-        int inputLength = changeInputType.length();
+    public static void validateDigit(String input) {
+        int inputLength = input.length();
         if (inputLength != INPUT_DIGIT) {
             throw new IllegalArgumentException(DIGIT_ERROR_MESSAGE);
         }
