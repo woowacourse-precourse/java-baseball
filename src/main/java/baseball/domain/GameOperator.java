@@ -62,8 +62,8 @@ public class GameOperator {
 		String input = Console.readLine();
 
 		Arrays.stream(input.split(""))
-			.map(Integer::parseInt)
-			.forEach(inputNumberList::add);
+				.map(Integer::parseInt)
+				.forEach(inputNumberList::add);
 	}
 
 	/* 게임 1회 : 숫자 비교 메소드 */
