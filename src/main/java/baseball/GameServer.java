@@ -7,10 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameServer {
-    private List<Integer> computerNumbers = new ArrayList<>();
-    private List<Integer> userNumbers = new ArrayList<>();
-    private boolean restart = false;
+    public List<Integer> computerNumbers;
+    public List<Integer> userNumbers;
+    public String userNumber;
+    private boolean restart;
+    private boolean isAnswer;
+    int strike;
+    int ball;
 
+    public GameServer() {
+        computerNumbers = new ArrayList<>();
+        userNumbers = new ArrayList<>();
+        restart = false;
+        isAnswer = false;
+        userNumber = "";
+        strike = 0;
+        ball = 0;
+    }
 
     public void createRandomNumber() {
         while (computerNumbers.size() < 3) {
@@ -22,7 +35,8 @@ public class GameServer {
     }
 
     public String getUserNumber() {
-        String userNumber = Console.readLine();
+        System.out.print("숫자를 입력해주세요 : ");
+        userNumber = Console.readLine();
         return userNumber;
     }
 
@@ -31,7 +45,7 @@ public class GameServer {
         int divideNum = 100;
         for (int i = 0; i < 3; i++) {
             userNumbers.add(userNumber / divideNum);
-            userNumber /= divideNum;
+            userNumber %= divideNum;
             divideNum /= 10;
         }
     }
@@ -41,7 +55,7 @@ public class GameServer {
         if (userNumber.length() != 3) {
             throw new IllegalArgumentException();//사용할 때 try-catch문으로 throw처리
         }
-        if (userNumber.matches("^[1-9]*$")) {
+        if (!userNumber.matches("^[1-9]*$")) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < 2; i++) {
@@ -67,39 +81,66 @@ public class GameServer {
     }
 
     public void checkUsersInputIsAnswer() {
-        int strike = 0;
-        int ball = 0;
+        strike = 0;
+        ball = 0;
         for (int i = 0; i < 3; i++) {
             if (computerNumbers.get(i) == userNumbers.get(i)) {
                 ++strike;
-            }
-            if (computerNumbers.get(i) != userNumbers.get(i)) {
+            } else if (computerNumbers.contains(userNumbers.get(i))) {
                 ++ball;
             }
         }
-        printGameResult(strike, ball);
     }
 
-    public void printGameResult(int strike, int ball) {
+    private void printGameResult() {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
+            isAnswer = false;
         }
         if (strike != 0 && ball == 0) {
             System.out.println(strike + "스트라이크");
+            isAnswer = false;
         }
         if (strike == 0 && ball != 0) {
             System.out.println(ball + "볼");
+            isAnswer = false;
         }
         if (strike != 0 && ball != 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
+            isAnswer = false;
         }
-        if(strike==3){
+        if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isAnswer = true;
+        }
+    }
+
+    public void gameStart() {
+        printGameStart();
+        do {
+            createRandomNumber();
+            guessAnswer();
+        } while (restart);
+    }
+
+    public void guessAnswer() {
+        while (!isAnswer) {
+            userNumber = getUserNumber();
+            setUserNumber(userNumber);
+            try {
+                catchInputException(userNumber);
+            } catch (IllegalArgumentException e) {
+                return;
+            }
+            checkUsersInputIsAnswer();
+            printGameResult();
+            if (isAnswer) {
+                finishGame();
+            }
         }
     }
 
     public void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
-
 }
