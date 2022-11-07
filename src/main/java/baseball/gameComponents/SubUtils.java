@@ -26,11 +26,15 @@ public class SubUtils {
         }
     }
 
-    public void isNumber(String input) {
+    public void isPositiveNumber(String input) {
+        int number = 0;
         try {
-            Integer.parseInt(input);
+            number = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new GameException(ExceptionCode.NOT_NUMBER);
+        }
+        if(number <= 0) {
+            throw new GameException(ExceptionCode.NUMBER_NOT_IN_RANGE_FROM_1_TO_9);
         }
     }
 
