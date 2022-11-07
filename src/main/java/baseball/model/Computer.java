@@ -10,9 +10,9 @@ import java.util.List;
 public class Computer {
 
     private Ball computerNumber;
-    private final int NUM_LENGTH = 3;
-    private final int START_NUM = 1;
-    private final int END_NUM = 9;
+    private static final int NUM_LENGTH = 3;
+    private static final int START_NUM = 1;
+    private static final int END_NUM = 9;
 
     public Computer() {
     }
