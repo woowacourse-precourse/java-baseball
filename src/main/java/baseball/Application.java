@@ -18,7 +18,7 @@ import static java.util.stream.Collectors.*;
  *  - validationAndConvert : 입력에 대한 검증과 List<Integer>로 반환
  *  - calculationBall : 볼 계산
  *  - calculationStrike : 스트라이크 계산
- *  - printCurrentSituation : 입력에 대한 결과를 문자열 형태로 반환
+ *  - currentSituation : 입력에 대한 결과를 문자열 형태로 반환
  *  - isCorrect : 정답을 맞추었는지
  */
 public class Application {
@@ -49,7 +49,7 @@ public class Application {
 
             Integer strike = calculationStrike(computer, user);
 
-            String result = printCurrentSituation(ball, strike);
+            String result = currentSituation(ball, strike);
             System.out.println(result);
 
             if(isCorrect(result)) {
@@ -73,7 +73,7 @@ public class Application {
         if(result.equals("3스트라이크")) return true;
         else return false;
     }
-    public static String printCurrentSituation(Integer ball , Integer strike){
+    public static String currentSituation(Integer ball , Integer strike){
         if(ball == 0 && strike == 0) return "낫싱";
         else if(ball == 0) return strike + "스트라이크";
         else if(strike == 0) return ball + "볼";

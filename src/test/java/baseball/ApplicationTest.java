@@ -162,7 +162,7 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("낫싱")
     public void nothing() throws Exception{
-        String result = Application.printCurrentSituation(0,0);
+        String result = Application.currentSituation(0,0);
         assertThat(result).isEqualTo("낫싱");
 
     }
@@ -171,21 +171,21 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("볼만 있는 경우")
     public void ballOnly() throws Exception{
-        String result = Application.printCurrentSituation(2,0);
+        String result = Application.currentSituation(2,0);
         assertThat(result).isEqualTo("2볼");
 
     }
     @Test
     @DisplayName("스트라이크만 있는 경우")
     public void strikeOnly() throws Exception{
-        String result = Application.printCurrentSituation(0,3);
+        String result = Application.currentSituation(0,3);
         assertThat(result).isEqualTo("3스트라이크");
 
     }
     @Test
     @DisplayName("볼 , 스트라이크 모두 있는 경우")
     public void strikeAndBall() throws Exception{
-        String result = Application.printCurrentSituation(1,1);
+        String result = Application.currentSituation(1,1);
         assertThat(result).isEqualTo("1볼 1스트라이크");
 
     }
@@ -202,7 +202,7 @@ class ApplicationTest extends NsTest {
 
         int ball = Application.calculationBall(computer,user);
         int strike = Application.calculationStrike(computer,user);
-        String result = Application.printCurrentSituation(ball,strike);
+        String result = Application.currentSituation(ball,strike);
 
         assertThat(Application.isCorrect(result)).isTrue();
 
