@@ -15,6 +15,7 @@ public class GameController {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
     ComNumber comNumber = new ComNumber();
+    
     public void makePlayers() {
         inputView.gameStart();
 

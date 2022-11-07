@@ -5,7 +5,6 @@ import baseball.model.UserNumber;
 import baseball.view.OutputView;
 
 public class OutputController {
-
     private static final Integer ZERO = 0;
     OutputView outputView = new OutputView();
 

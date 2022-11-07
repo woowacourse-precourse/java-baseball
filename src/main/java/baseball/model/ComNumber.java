@@ -9,7 +9,6 @@ public class ComNumber {
     public List<Integer> getComnumber() {
         return comNumber;
     }
-
     public void setComnumber(List<Integer> comnumber) {
         this.comNumber = comnumber;
     }

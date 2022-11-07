@@ -12,6 +12,7 @@ public class InputController {
     public static final int MAX_NUMBER = 9;
     public static final int NUMBER_SIZE = 3;
     InputValidation inputValidation = new InputValidation();
+
     public List<Integer> insertComNumber() {
         List<Integer> insertNum = new ArrayList<>();
         while(insertNum.size() < NUMBER_SIZE) {
