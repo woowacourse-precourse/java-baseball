@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -110,6 +108,35 @@ public class Application {
                 System.out.printf("%d볼 %d스트라이크\n", balls, strikes);
             }
             return false;
+        }
+    }
+
+    /**
+     * 유저의 입력이 유효한지 검사
+     * 유효하지 않은 경우: 세 자리가 아닌 경우, 1~9 사이의 정수가 아닌 수가 있는 경우, 숫자 이외의 문자가 있는 경우, 숫자들 중 중복되는 수가 있는 경우
+     */
+    private static void validateUserInput(String userInput) throws IllegalArgumentException {
+        /* 세 자리가 아닌 경우 검사 */
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        /* 숫자 이외의 문자가 있는 경우, 1~9 사이의 정수가 아닌 수가 있는 경우 검사 */
+        for (char oneDigit : userInput.toCharArray()) {
+            if (!Character.isDigit(oneDigit)) {
+                throw new IllegalArgumentException();
+            } else if (!(49 <= oneDigit && oneDigit <= 57)) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        /* 숫자들 중 중복되는 경우가 있는 경우 검사 */
+        HashSet<Character> userInputSet = new HashSet<>();
+        for (char oneDigit : userInput.toCharArray()) {
+            userInputSet.add(oneDigit);
+        }
+        if (userInputSet.size() != 3) {
+            throw new IllegalArgumentException();
         }
     }
 }
