@@ -30,11 +30,19 @@ public class InputExceptionTest {
         assertThat(inputException.isProperLength(wrongLengthUserInput)).isFalse();
     }
     @Test
-    @DisplayName("Check for exception when input string contains zero.")
+    @DisplayName("Check for exception when input string contains zero")
     public void containZero_Test(){
         String userInputContainZero="054";
         InputException inputException = new InputException();
 
         assertThat(inputException.containZero(userInputContainZero)).isTrue();
+    }
+    @Test
+    @DisplayName("Check for excpetion when input string contains redundant number")
+    public void isDuplicate_Test(){
+        String duplicateInput="656";
+        InputException inputException = new InputException();
+
+        assertThat(inputException.isDuplicate(duplicateInput)).isTrue();
     }
 }
