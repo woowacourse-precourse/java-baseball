@@ -32,19 +32,14 @@ public class BaseballGame {
             validateUserInputType(userInput);
             userNumbers = toList(userInput);
             validateUserNumbers(userNumbers);
-        }
-    }
 
-    // === 테스트 메서드 ===
-    public void test(String userInput) {
-        List<Integer> userNumbers;
-        while (score.getStrikeCount() < THREE_DIGITS) {
-            System.out.println(Korean.PLEASE_ENTER_NUMBER);
+            int ballCount = computer.getBallCounts(userNumbers);
+            int strikeCount = computer.getStrikeCounts(userNumbers);
+            score.setScore(ballCount, strikeCount);
 
-            validateUserInputType(userInput);
-            userNumbers = toList(userInput);
-            validateUserNumbers(userNumbers);
+            printHintMessage();
         }
+        printGameOverMessage();
     }
 
     private List<Integer> toList(String userInput) {
@@ -90,6 +85,36 @@ public class BaseballGame {
         }
     }
 
+    public void printHintMessage() {
+        final int strikeCount = score.getStrikeCount();
+        final int ballCount = score.getBallCount();
+
+        final String hintMessage = getHintMessage(strikeCount, ballCount);
+        System.out.println(hintMessage);
+    }
+
+    private String getHintMessage(int strikeCount, int ballCount) {
+        final StringBuilder stringBuilder = new StringBuilder();
+
+        if (strikeCount == 0 && ballCount == 0) {
+            return Korean.NOTHING;
+        }
+        if (ballCount != 0) {
+            stringBuilder.append(ballCount)
+                    .append(Korean.BALL);
+        }
+        if (strikeCount != 0) {
+            stringBuilder.append(strikeCount)
+                    .append(Korean.STRIKE);
+        }
+
+        return stringBuilder.toString();
+    }
+
+    public void printGameOverMessage() {
+        System.out.println(Korean.GAME_OVER);
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -109,6 +134,18 @@ public class BaseballGame {
 
         public BaseballGame build() {
             return baseballGame;
+        }
+    }
+
+    // === 테스트 메서드 ===
+    public void test(String userInput) {
+        List<Integer> userNumbers;
+        while (score.getStrikeCount() < THREE_DIGITS) {
+            System.out.println(Korean.PLEASE_ENTER_NUMBER);
+
+            validateUserInputType(userInput);
+            userNumbers = toList(userInput);
+            validateUserNumbers(userNumbers);
         }
     }
 }

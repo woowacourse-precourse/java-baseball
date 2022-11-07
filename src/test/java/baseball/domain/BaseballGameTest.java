@@ -6,7 +6,10 @@ import static baseball.global.exception.CustomException.INVALID_THREE_DIGIT;
 import static baseball.global.exception.CustomException.NUMBER_OUT_OF_RANGE;
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.utils.TestUtils;
+import java.io.ByteArrayOutputStream;
 import java.util.List;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +20,8 @@ class BaseballGameTest {
     Score score;
     BaseballGame baseballGame;
 
+    ByteArrayOutputStream output;
+
     @BeforeEach
     void setUp() {
         // given
@@ -26,6 +31,12 @@ class BaseballGameTest {
                 .computer(computer)
                 .score(score)
                 .build();
+        output = TestUtils.setOutToByteArray();
+    }
+
+    @AfterEach
+    void tearDown() {
+        TestUtils.clearSetOutToByteArray(output);
     }
 
     @Test
@@ -84,6 +95,56 @@ class BaseballGameTest {
         assertThatThrownBy(() -> baseballGame.test(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NUMBER_OUT_OF_RANGE.getMessage());
+    }
+
+    @Test
+    @DisplayName("2볼")
+    void print_two_ball() {
+        score.setScore(2, 0);
+        baseballGame.printHintMessage();
+
+        String printResult = output.toString().trim();
+        assertThat(printResult).isEqualTo("2볼");
+    }
+
+    @Test
+    @DisplayName("1스트라이크")
+    void print_one_strike() {
+        score.setScore(0, 1);
+        baseballGame.printHintMessage();
+
+        String printResult = output.toString().trim();
+        assertThat(printResult).isEqualTo("1스트라이크");
+    }
+
+    @Test
+    @DisplayName("2볼 1스트라이크")
+    void print_two_ball_one_strike() {
+        score.setScore(2, 1);
+        baseballGame.printHintMessage();
+
+        String printResult = output.toString().trim();
+        assertThat(printResult).isEqualTo("2볼 1스트라이크");
+    }
+
+    @Test
+    @DisplayName("1볼 2스트라이크")
+    void print_one_ball_two_strike() {
+        score.setScore(1, 2);
+        baseballGame.printHintMessage();
+
+        String printResult = output.toString().trim();
+        assertThat(printResult).isEqualTo("1볼 2스트라이크");
+    }
+
+    @Test
+    @DisplayName("낫싱")
+    void print_nothing() {
+        score.setScore(0, 0);
+        baseballGame.printHintMessage();
+
+        String printResult = output.toString().trim();
+        assertThat(printResult).isEqualTo("낫싱");
     }
 
 }

@@ -26,12 +26,9 @@ public class Score {
         return ballCount;
     }
 
-    public void addStrikeCount() {
-        strikeCount++;
-    }
-
-    public void addBallCount() {
-        ballCount++;
+    public void setScore(int ballCount, int strikeCount) {
+        this.ballCount = ballCount;
+        this.strikeCount = strikeCount;
     }
 
 }
