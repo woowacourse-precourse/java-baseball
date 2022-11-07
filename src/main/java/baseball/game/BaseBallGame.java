@@ -9,12 +9,12 @@ public class BaseBallGame {
 
     private User user;
     private Opponent opponent;
-    private GameControlStatus gameControlStatus;
+    private GameControlStatus status;
 
     public BaseBallGame(User user, Opponent opponent) {
         this.user = user;
         this.opponent = opponent;
-        this.gameControlStatus = null;
+        this.status = null;
     }
 
     public static BaseBallGame makeBaseBallGame(User user, Opponent opponent) {
@@ -25,31 +25,35 @@ public class BaseBallGame {
         user.readGameStartMsg();
 
         while (!(isGameStop())) {
-            Hint hint = opponent.makeHint(user.inputGuessedNum());
-
-            user.readHintMsg(hint);
-
-            updateGameStatusBy(hint);
+            playTurn();
         }
     }
 
-    private void updateGameStatusBy(Hint hint) {
+    private void playTurn() {
+        Hint hint = opponent.makeHint(user.inputGuessedNum());
+
+        user.readHintMsg(hint);
+
+        updateStatusFor(hint);
+    }
+
+    private void updateStatusFor(Hint hint) {
         if (!hint.isAnswer()) {
             return;
         }
 
         user.readGameCompleteMsg();
 
-        updateGameStatus();
+        updateStatus();
         changeOpponent();
     }
 
     private boolean isGameStop() {
-        return gameControlStatus != null && gameControlStatus.isStop();
+        return status != null && status.isStop();
     }
 
-    private void updateGameStatus() {
-        this.gameControlStatus = user.inputGameControlNum();
+    private void updateStatus() {
+        this.status = user.inputGameControlNum();
 
     }
 
