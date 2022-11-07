@@ -9,27 +9,34 @@ import static baseball.Constants.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        gameStart();
+        printGameStartMessage(); //
         do {
             playGame();
         } while (reGameMessage());
+        /*
+        1. 난수 생성
+        2. 유저 입력
+        3. 볼 스트라이크 체크
+        4. 다시하기
+        큰 함수를 봤을 때 흐름이 보여야 한다.
+         */
     }
-
     static void playGame() {
         int strikeResult;
         int ballResult;
+        List<Integer> computerNumber = generateComputerNumber();
+        String computerNumberResult = computerNumberListToString(computerNumber);
         do {
             System.out.print("숫자를 입력해 주세요 : ");
             String userInput = Console.readLine();
-            checkedValidate(userInput);
-            List<Integer> computerNumber = generateComputerNumber();
-            String computerNumberResult = computerNumberListToString(computerNumber);
 
+            checkedValidate(userInput);
             strikeResult = countStrike(userInput, computerNumberResult);
             ballResult = countBall(userInput, computerNumberResult);
             if (!checkedNotThing(ballResult, strikeResult)) {
@@ -41,12 +48,14 @@ public class Application {
                 }
             }
             System.out.println();
-        } while (strikeResult != 1);
-        gameSet();
+        } while (strikeResult != 3);
+        printGameSetMessage();
     }
 
+    // 얘도 나눠라 한 번에 두개 한다.
     public static boolean reGameMessage() {
         String reGameInput = Console.readLine();
+        System.out.println(REGAME_SUGGESTION_MSG);
         if (reGameInput.equals("1")) {
             return true;
         }
@@ -62,11 +71,11 @@ public class Application {
         validateContainZero(input);
     }
 
-    static void gameStart() {
+    static void printGameStartMessage() {
         System.out.println(GAME_START_MSG);
     }
 
-    static void gameSet(){
+    static void printGameSetMessage(){
         System.out.println(GAME_END_MSG);
     }
     /**
@@ -99,26 +108,19 @@ public class Application {
      * 유저의 입력값과 컴퓨터의 입력값을 받아 스트라이크 갯수를 리턴
      */
     static int countStrike (String userInput, String computerInput) {
-        int strikeCount = 0;
-        for (int i = 0; i < RESULT_SIZE; i++) {
-            if (userInput.substring(i,i+1).equals(computerInput.substring(i,i+1))) {
-                strikeCount ++;
-            }
-        }
-        return  strikeCount;
+        return (int) IntStream.range(0,3)
+                .filter(i -> userInput.charAt(i) == computerInput.charAt(i))
+                .count();
     }
     /**
      * 유저의 입력값과 컴퓨터의 입력값을 받아 볼의 갯수를 리턴
      */
     static int countBall (String userInput, String computerInput) {
-
-        int ballCount = 0;
-        for (int i = 0; i < RESULT_SIZE; i++) {
-            if (userInput.contains(computerInput.substring(i,i+1))) {
-                ballCount ++;
-            }
-        }
-        return ballCount - countStrike(userInput,computerInput);
+        return (int) userInput.chars()
+                .map(value -> (char) value)
+                .mapToObj(String::valueOf)
+                .filter(computerInput::contains)
+                .count() - countStrike(userInput,computerInput);
     }
 
     /**
