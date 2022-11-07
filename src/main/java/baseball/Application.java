@@ -42,6 +42,26 @@ public class Application {
         return sb.toString();
     }
 
+    public static String judgeResult(String key, String target) {
+        int[] result = {0, 0};
+        for (int i = 0; i < 3; i++) {
+            compare(key, target, result, i);
+        }
+        return Arrays.stream(result).mapToObj(String::valueOf).collect(Collectors.joining());
+    }
+
+    private static void compare(String key, String target, int[] result, int i) {
+        for (int j = 0; j < 3; j++) {
+            char tc = target.charAt(i);
+            char kc = key.charAt(j);
+            if (tc == kc && i == j) {
+                result[0] += 1;
+            } else if (tc == kc && i != j) {
+                result[1] += 1;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }

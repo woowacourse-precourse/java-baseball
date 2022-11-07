@@ -51,11 +51,24 @@ public class MyTest {
     }
 
     @Test
-    @DisplayName("랜덤 숫자 생성")
-    void 랜덤_숫자_생성() {
+    @DisplayName("랜덤 숫자 생성 시 validation 검증")
+    void 랜덤_숫자_생성시_validation_검증() {
         for (int i = 0; i < 10000; i++) {
             String randomNumber = generateRandomNumber();
             assertThat(validation(randomNumber)).isTrue();
         }
+    }
+
+    @Test
+    @DisplayName("볼/스트라이크/낫싱 판별")
+    void 볼_스트라이크_낫싱_판별(){
+        String computer = "425";
+        String mine1 = "123";
+        String mine2 = "456";
+        String mine3 = "789";
+
+        assertThat(judgeResult(mine1, computer)).isEqualTo("10");
+        assertThat(judgeResult(mine2, computer)).isEqualTo("11");
+        assertThat(judgeResult(mine3, computer)).isEqualTo("00");
     }
 }
