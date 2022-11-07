@@ -2,7 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 // 올바르지 않은 입력값이면 throw를 하고 있는지
 class InputValidatorTest {
   //길이에 대한 검사
