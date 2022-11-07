@@ -2,6 +2,9 @@ package baseball;
 
 import java.util.List;
 
+import static baseball.Application.*;
+import static baseball.Play.*;
+
 public class CompareAnswer {
 
     public static boolean compareAnswer(List<Integer> computer, List<Integer> user){
@@ -10,8 +13,10 @@ public class CompareAnswer {
         for(int i =0;i<3;i++)   eachCompare(computer, user.get(i), i, strikeAndBallCount);
 
         printAnswer(strikeAndBallCount);
-        if(strikeAndBallCount[0] == 3) return true;
-
+        if(strikeAndBallCount[0] == 3) {
+            setRestart();
+            return true;
+            }
         return false;
     }
 
@@ -50,8 +55,14 @@ public class CompareAnswer {
             return ;
         }
 
-        if(strikeAndBallCount[0] != 0 && strikeAndBallCount[1] == 0){
-            System.out.println(strikeAndBallCount[0]+"스트라이크");
+        if(strikeAndBallCount[0] == 3 && strikeAndBallCount[1] == 0){
+            System.out.println(strikeAndBallCount[0]+"스트라이크 \n"+"3개의 숫자를 모두 맞히셨습니다! 게임종료 \n");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return ;
+        }
+        if(strikeAndBallCount[0] != 0 && strikeAndBallCount[0] < 3 && strikeAndBallCount[1] == 0){
+            System.out.println(strikeAndBallCount[0]+"스트라이크 \n");
+
             return ;
         }
 
