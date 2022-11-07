@@ -34,6 +34,8 @@ public class User {
     private void inputExitNumber(int end) {
         if (end == 1) {
             exit = input();
+            checkExitNumber();
+
             decideExit();
         }
     }
@@ -77,6 +79,12 @@ public class User {
     private void checkDuplication(int number, List<Integer> gameNumberList) {
         if (gameNumberList.contains(number)) {
             throw new IllegalArgumentException("숫자를 중복없이 입력하시오.");
+        }
+    }
+
+    private void checkExitNumber() {
+        if (exit != 1 && exit != 2) {
+            throw new IllegalArgumentException("1또는 2만 입력하시오.");
         }
     }
 }
