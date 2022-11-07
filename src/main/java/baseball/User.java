@@ -30,10 +30,11 @@ public class User {
     }
 
     public boolean inputFlag() throws IllegalArgumentException {
-        char inputValue;
+        String inputValue;
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        inputValue = Console.readLine().charAt(0);
+
+        inputValue = Console.readLine();
 
         if(validateFlag(inputValue))
             return true;
@@ -41,16 +42,19 @@ public class User {
         return false;
     }
 
-    private boolean validateFlag(char inputValue) throws IllegalArgumentException {
+    private boolean validateFlag(String inputValue) throws IllegalArgumentException {
         boolean flag = false;
 
-        if(inputValue == '1')
+        if(inputValue.length() > 1)
+            throw new IllegalArgumentException("한 자리를 초과하는 문자를 입력하셨습니다.");
+
+        if(inputValue.charAt(0) == '1')
             flag = true;
 
-        else if(inputValue == '2')
+        else if(inputValue.charAt(0) == '2')
             flag = false;
 
-        else throw new IllegalArgumentException("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
+        else throw new IllegalArgumentException("1 혹은 2 이외의 문자를 입력 하셨습니다.");
 
         return flag;
     }
