@@ -211,6 +211,7 @@ class Message extends Baseball {
 
 class Exception extends Baseball {
     protected static boolean isValidNumber() {
+        // [1-9]는 0을 제외한 숫자 입력, {3}은 NUMBER_PITCH 만큼 길이 설정
         return userNumber.matches("^[1-9]{3}$");
     }
 
