@@ -71,4 +71,10 @@ public class Game {
             }
         }
     }
+
+    public void isDuplicatedNumber(List<Integer> userInput) {
+        if(userInput.stream().distinct().count() != userInput.size()) {
+            throw new IllegalArgumentException("Input is duplicated.");
+        }
+    }
 }
