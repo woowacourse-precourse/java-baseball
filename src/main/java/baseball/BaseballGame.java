@@ -22,8 +22,21 @@ public class BaseballGame {
         return computer;
     }
 
+    public int checkStrikes(List<Integer> computer, List<Integer> proposal) {
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(proposal.get(i))) {
+                strikeCount++;
+            }
+        }
+        
+        return strikeCount;
+    }
+
     public List<Integer> checkNumber(List<Integer> computer, List<Integer> proposal) {
         List<Integer> checkList = new ArrayList<>();
+        int strikeCount = checkStrikes(computer, proposal);
 
         return checkList;
     }
