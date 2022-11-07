@@ -9,7 +9,7 @@ public class Game {
     Number number;
     private static List<Integer> computer;
     private static List<Integer> userInput;
-    private static boolean end = false;
+    private boolean end = false;
     private int strike = 0;
     private  int ball = 0;
 
@@ -21,12 +21,10 @@ public class Game {
             proceedGame();
             if (strike == 3) {
                 restart();
-                resetData();
             }
             resetData();
         }
     }
-
     public void proceedGame() {
         number.userInput();
         userInput = number.userInputNumber;
@@ -90,17 +88,19 @@ public class Game {
 
     public void restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String restart = Console.readLine();
-        if (restart.equals("2")) {
+        String input = Console.readLine();
+        if (input.equals("2")) {
             end = true;
             computer.clear();
         }
-        if (restart.equals("1")) {
+        if (input.equals("1")) {
             userInput.clear();
             computer.clear();
             setRandomNumber();
         }
-        throw new IllegalArgumentException();
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException();
+        }
     }
     public void resetData() {
         strike = 0;

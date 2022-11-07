@@ -36,10 +36,11 @@ public class Number {
     }
 
     public void changeStringToSet(String userInput) {
-        int number = 0;
-        if (isValidInput(userInput)) {
-            number = Integer.parseInt(userInput);
+        if (!isValidInput(userInput)) {
+            throw new IllegalArgumentException();
         }
+        int number = Integer.parseInt(userInput);
+
         while (number > 0) {
             int n = number % 10;
             userInputNumber.add(n);
@@ -50,7 +51,7 @@ public class Number {
 
     public boolean isValidInput(String userInput) {
         if (!(isValidLength(userInput) && isValidString(userInput) && isNotDuplicate(userInput))) {
-            throw new IllegalArgumentException();
+            return false;
         }
         return true;
     }
