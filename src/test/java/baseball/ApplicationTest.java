@@ -24,53 +24,51 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("abc", ""))
+                assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
-    @Nested
-    class 예외_테스트 {
-        @Test
-        void 숫자_자리수_체크1() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("12"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
-
-        @Test
-        void 숫자_자리수_체크() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("1"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
-
-        @Test
-        void 숫자가_아닌_값() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("abc"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
-
-        @Test
-        void 숫자_0_입력() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("103"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
-
-        @Test
-        void 중복된_값_입력() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("343"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
+    @Test
+    void 숫자_자리수_체크1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
+
+    @Test
+    void 숫자_자리수_체크() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자가_아닌_값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자_0_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("103"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복된_값_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("343"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
