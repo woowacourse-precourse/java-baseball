@@ -21,4 +21,21 @@ public class BaseballMachine {
         }
         return computer;
     }
+
+    /**
+     * 사용자가 사용하는 숫자
+     * 입력받고 유효한 숫자인지 확인
+     */
+    public static List<Integer> inputUserNumber(){
+        List<Integer> user = new ArrayList<>();
+        String userInput = Console.readLine();
+        //유효한 건지 확인
+        if(checkNumber(userInput)){
+            user = stringToInt(userInput);
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
+        return user;
+    }
 }
