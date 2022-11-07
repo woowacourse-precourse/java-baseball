@@ -50,4 +50,26 @@ public class ScoreBoardTest {
 
         Assertions.assertThat(out.toString().trim()).isEqualTo(output);
     }
+
+    @Test
+    void 스코어보드_checkStrikeOut_return_true_테스트(){
+        ScoreBoard scoreBoard = new ScoreBoard();
+
+        scoreBoard.addStrike();
+        scoreBoard.addStrike();
+        scoreBoard.addStrike();
+
+        Assertions.assertThat(scoreBoard.checkStrikeOut()).isEqualTo(true);
+    }
+
+    @Test
+    void 스코어보드_checkStrikeOut_return_false_테스트(){
+        ScoreBoard scoreBoard = new ScoreBoard();
+
+        scoreBoard.addStrike();
+        scoreBoard.addStrike();
+        scoreBoard.addStrike();
+
+        Assertions.assertThat(scoreBoard.checkStrikeOut()).isEqualTo(true);
+    }
 }
