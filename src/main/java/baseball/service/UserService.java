@@ -1,16 +1,19 @@
 package baseball.service;
 
+import baseball.domain.Computer;
 import baseball.domain.User;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserService {
 
     private final User user;
+    private final Computer computer;
     private String userBaseballNumber;
     private String userRestartNumber;
 
-    public UserService(User user) {
+    public UserService(User user, Computer computer) {
         this.user = user;
+        this.computer = computer;
     }
 
     public void inputBaseballNumber() {
@@ -36,6 +39,32 @@ public class UserService {
     public String getRestartNumber() {
         return user.getRestartNumber();
     }
+
+
+    private void initGame(){
+        computer.setAnswer();
+    }
+
+    private Integer checkBall(){
+        String answer;
+        String baseballNumber;
+        int ballCount = 0;
+
+        answer = computer.getAnswer();
+        baseballNumber = user.getBaseballNumber();
+
+
+        for(int i=0; i<answer.length(); i++){
+            for(int j=0; j<baseballNumber.length(); j++){
+                if (i != j && answer.charAt(i) == baseballNumber.charAt(j)){
+                    ballCount += 1;
+                }
+            }
+        }
+
+        return ballCount;
+    }
+
 
     private void checkRestartNumber() {
         if (!checkRestartlength() || checkIsInteger(userRestartNumber)) {
