@@ -109,6 +109,17 @@ public class GameDealer {
         }
         return result;
     }
+    public static boolean CHECK_VALID_INPUT(String User_Try){
+        boolean result = true;
+        if(!ONLY_CONTAIN_NUMBER(User_Try) && result){
+            result = false;
+        }
+        if(CHECK_SAME_DIGIT(User_Try) && result){
+            result = false;
+        }
+        return result;
+    }
+
     public static boolean ONE_GAME_LOOP() throws IllegalArgumentException{
         boolean result = true;
         boolean Check_Ans = false;
