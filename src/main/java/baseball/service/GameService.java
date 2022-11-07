@@ -12,13 +12,22 @@ public class GameService {
     public static final Player user = new UserPlayer();
     public static GAME_RESULT finishNumber = GAME_RESULT.START_GAME;
 
-    private static GAME_RESULT inputFinish() throws IllegalArgumentException {
+    private static GAME_RESULT inputFinish() {
         int intInput = Integer.parseInt(Console.readLine());
+
+        if (checkEndInput(intInput)) {
+            return GAME_RESULT.START_GAME;
+        } else {
+            return GAME_RESULT.END_GAME;
+        }
+    }
+
+    public static boolean checkEndInput(int intInput) throws IllegalArgumentException {
         switch (intInput) {
             case 1:
-                return GAME_RESULT.START_GAME;
+                return true;
             case 2:
-                return GAME_RESULT.END_GAME;
+                return false;
             default:
                 throw new IllegalArgumentException();
         }
@@ -66,11 +75,17 @@ public class GameService {
         return printMessage;
     }
 
+    public static String printFinishMessage() {
+        String printMessage = "";
+        printMessage += "3스트라이크\n";
+        printMessage += "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+        printMessage += "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        return printMessage;
+    }
+
     public static boolean checkFinish() {
         if (user.number == computer.number) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(printFinishMessage());
             return true;
         }
         return false;
