@@ -37,10 +37,16 @@ public class GameService {
 
     public List<Integer> getComputerRandomNumbers() {
         computer.setComputerRandomNumberList();
-        List<Integer> computerRandomNumberList =computer.getComputerRandomNumberList();
+        List<Integer> computerRandomNumberList = computer.getComputerRandomNumberList();
         return computerRandomNumberList;
     }
 
+    public List<Integer> getUserInputNumbers() {
+
+        user.setUserInputNumberList();
+        List<Integer> users = getUserInputNumberList();
+        return users;
+    }
 
 }
 
