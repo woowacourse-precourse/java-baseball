@@ -35,7 +35,7 @@ public class NumberManager {
 
         ArrayList<Integer> numberArray = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <= MAX_NUMBER; i++) {
             numberArray.add(0);
         }
 
