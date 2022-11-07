@@ -75,17 +75,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 유효한_사용자번호범위(){
-        List<Integer> list = List.of(1,2,3);
+    void 유효한_사용자번호범위() {
+        List<Integer> list = List.of(1, 2, 3);
         boolean result = Exception.isInvalidRange(list);
         assertThat(result).isEqualTo(false);
     }
 
     @Test
-    void 유효하지않은_사용자번호범위(){
-        List<Integer> list = List.of(0,2,3);
+    void 유효하지않은_사용자번호범위() {
+        List<Integer> list = List.of(0, 2, 3);
         boolean result = Exception.isInvalidRange(list);
         assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 중복된_원소가_존재() {
+        List<Integer> list = List.of(1, 1, 2);
+        List<Integer> deduplicated = Exception.deduplicated(list);
+        boolean result = Exception.checkDuplicate(deduplicated);
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 중복된_원소가_없음() {
+        List<Integer> list = List.of(1, 2, 3);
+        List<Integer> deduplicated = Exception.deduplicated(list);
+        boolean result = Exception.checkDuplicate(deduplicated);
+        assertThat(result).isEqualTo(false);
     }
 
     @Override
