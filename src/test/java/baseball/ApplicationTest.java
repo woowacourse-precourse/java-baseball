@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import static baseball.Application.isNumber;
 import static baseball.Application.isValidUserNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,20 +30,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 번호가_숫자인지_확인_테스트_True() {
-        String number = "123";
-        boolean result = isNumber(number);
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    void 번호가_숫자인지_확인_테스트_False() {
-        String number = "12e";
-        boolean result = isNumber(number);
-        assertThat(result).isFalse();
-    }
-
-    @Test
     void 사용자_번호가_유효한_숫자인지_확인_테스트_길이_초과() {
         String number = "12345";
         assertThatThrownBy(()->isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
@@ -66,18 +51,6 @@ class ApplicationTest extends NsTest {
     void 사용자_번호가_유효한_숫자인지_확인_테스트_0_포함() {
         String number = "120";
         assertThatThrownBy(()->isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 사용자_번호가_유효한_숫자인지_확인_테스트_숫자가_아님() {
-        String number = "a?^";
-        assertThatThrownBy(()->isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 사용자_번호가_유효한_숫자인지_확인_테스트_True() {
-        String number = "234";
-        assertThat(isValidUserNumber(number)).isTrue();
     }
 
     @Override
