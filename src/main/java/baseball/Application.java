@@ -8,8 +8,6 @@ public class Application {
             do {
                 opponent.checkAnswer(User.userInput());
             } while (!opponent.isCorrect);
-            System.out.println(Message.CORRECT_ANSWER);
-            System.out.println(Message.RESTART);
         } while (User.restart());
     }
 }

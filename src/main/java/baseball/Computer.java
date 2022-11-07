@@ -10,7 +10,7 @@ public class Computer {
     boolean isCorrect;
 
     Computer() {
-        System.out.println(Message.START_GAME);
+        Message.START_GAME.printMessage();
         answers = this.generateNumber();
     }
 
@@ -61,5 +61,10 @@ public class Computer {
             sb.append(Message.NOTHING);
         }
         System.out.println(sb);
+
+        if (strikeCount == 3) {
+            Message.CORRECT_ANSWER.printMessage();
+            Message.RESTART.printMessage();
+        }
     }
 }
