@@ -1,7 +1,10 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 public class BaseBallGame {
@@ -12,12 +15,13 @@ public class BaseBallGame {
     GameMessageDisplay gameMessageDisplay;
     Validator inputValidator;
     List<Integer> computerNumbers;
-    String userInput;
+    List<Integer> userNumbers;
 
     public BaseBallGame() {
         this.gameMessageDisplay = new GameMessageDisplay();
-        this.computerNumbers = new ArrayList<>();
         this.inputValidator = new Validator();
+        this.computerNumbers = new ArrayList<>();
+        this.userNumbers = new ArrayList<>();
     }
 
     public void startGame() {
@@ -35,18 +39,27 @@ public class BaseBallGame {
     }
 
     public void runGame() {
-        requestUserInput();
-        if (isValidInput()) {
-            System.out.println("유효");
+        String userInput = requestUserInput();
+
+        if (isValidInput(userInput)) {
+            setUserNumbers(userInput);
         }
     }
 
-    public void requestUserInput() {
+    public String requestUserInput() {
         this.gameMessageDisplay.printInputRequestMessage();
-        this.userInput = Console.readLine();
+        String userInput = Console.readLine();
+        return userInput;
     }
 
-    public boolean isValidInput() {
+    public boolean isValidInput(String userInput) {
         return inputValidator.validateInput(userInput);
+    }
+
+    public void setUserNumbers(String userInput) {
+        for (int index = 0; index < COMPUTER_NUMBERS_SIZE; index++) {
+            int number = Character.getNumericValue(userInput.charAt(index));
+            userNumbers.add(number);
+        }
     }
 }
