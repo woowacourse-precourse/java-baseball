@@ -20,12 +20,9 @@ public class NumberBaseball implements Game {
 
     private void doGame() {
         gameService.initGame();
-        boolean flag;
-        do {
-            flag = gameService.startGame();
-            if (flag == true) {
-                gameService = new GameService(GAME_ANSWER_MAX_VALUE);
-            }
-        } while (flag);
+        while (gameService.askReGame()) {
+            gameService = new GameService(GAME_ANSWER_MAX_VALUE);
+            gameService.startGame();
+        }
     }
 }

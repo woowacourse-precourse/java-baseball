@@ -16,17 +16,16 @@ public class GameService {
         this.generator = new RandomGenerator(answerLength);
         this.viewController = new ViewController();
         this.answer = generator.getAnswer();
-        //System.out.println(answer);         // 나중에 지워라 ************************************************************
         this.separator = new Separator(answer);
     }
 
     public void initGame() {
         viewController.printGameStartMessage();
+        startGame();
     }
 
-    public boolean startGame() {
+    public void startGame() {
         repeatRound();
-        return askReGame();
     }
 
     private void repeatRound() {
@@ -38,7 +37,7 @@ public class GameService {
         }
     }
 
-    private boolean askReGame() {
+    public boolean askReGame() {
         return viewController.printReGameAndInput();
     }
 
