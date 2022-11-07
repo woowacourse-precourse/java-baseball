@@ -35,6 +35,10 @@ public class Game {
         checkRestart();
     }
 
+    private static boolean checkAnswer(int strikeCount) {
+        return strikeCount == NUMBER_LENGTH;
+    }
+
     public HashMap<String, Integer> compareTwoNumberStrings(String computerNumber, String userNumber) {
         HashMap<String, Integer> resultMap = new HashMap<>();
         HashSet<Character> computerNumberSet = addNumberStringToSet(computerNumber);
