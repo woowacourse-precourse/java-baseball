@@ -26,4 +26,8 @@ public class BaseballNumber {
     public BaseballNumber(String input) {
         baseballNumber = input.chars().map(c -> c - '0').boxed().collect(Collectors.toList());
     }
+
+    public List<Integer> getBaseballNumber() {
+        return baseballNumber;
+    }
 }
