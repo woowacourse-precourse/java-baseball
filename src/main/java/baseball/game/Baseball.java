@@ -33,10 +33,11 @@ public class Baseball {
     private void startGame() {
         List<Integer> computerNumbers = getComputerNumbers();
 
+        System.out.println(GAME_STARTED_MESSAGE);
+
         while (true) {
             initializeCounts();
 
-            System.out.println(GAME_STARTED_MESSAGE);
             System.out.print(INPUT_NUMBER_MESSAGE);
 
             List<Integer> userNumbers = getUserNumbers();
