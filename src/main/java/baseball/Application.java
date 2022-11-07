@@ -46,6 +46,7 @@ public class Application {
 
     public static boolean checkAnswer(List<Integer> answer) {   // Index ( 0 : BALL / 1 : STRIKE )
         if (answer.get(1) == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else {
             return false;
