@@ -19,4 +19,10 @@ public class Application {
         }
         return computer;
     }
+    public static boolean checkTwoNumbersAreSame(int num1,int num2){
+        if(num1 ==num2){
+            return true;
+        }
+        return false;
+    }
 }
