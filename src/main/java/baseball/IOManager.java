@@ -23,4 +23,14 @@ public class IOManager {
         }
     }
 
+    /**
+     * @param integer
+     * @return 입력으로 주어진 숫자를 각 자리별로 쪼갠 숫자 배열로 변환
+     */
+    public static Integer[] splitIntegerIntoIntegerArray(Integer integer) {
+        String[] strings = String.valueOf(integer).split("");
+        return Arrays.stream(strings).map(Integer::parseInt).collect(Collectors.toList())
+            .toArray(new Integer[strings.length]);
+    }
+
 }
