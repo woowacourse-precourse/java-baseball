@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PlayerNum implements Number {
@@ -14,7 +13,7 @@ public class PlayerNum implements Number {
         for (int number : numbers) {
             if (number < 1 || number > 9) {
                 throw new IllegalArgumentException();
-            } else if (numbers.size() != 3 || numbers.size() != numbers.stream().distinct().count() ) {
+            } else if (numbers.size() != 3 || numbers.size() != numbers.stream().distinct().count()) {
                 throw new IllegalArgumentException();
             }
         }
@@ -22,32 +21,32 @@ public class PlayerNum implements Number {
 
     @Override
     public List<Integer> createNumber() {
-        List<Integer> number;
+        List<Integer> numbers;
         System.out.print(GameComment.WELCOME_MSG);
         String input = Console.readLine();
         verifyInput(input);
-        number = transformInput(input);
-        verifyNumber(number);
-        return number;
+        numbers = convertInput(input);
+        verifyNumber(numbers);
+        return numbers;
     }
 
-    public void verifyInput(String input){
-        char arr[] = input.toCharArray();
-        for(int i =0; i < arr.length; i++){
-            if(Character.isDigit(arr[i]) == true){
+    private void verifyInput(String input) {
+        char array[] = input.toCharArray();
+        for (int i = 0; i < array.length; i++) {
+            if (Character.isDigit(array[i]) == true) {
                 continue;
-            }else{
+            } else {
                 throw new IllegalArgumentException();
             }
         }
     }
 
-    public List<Integer> transformInput(String input){
-        List<Integer> number = new ArrayList<>();;
-        number.add(Integer.parseInt(input) / 100);
-        number.add((Integer.parseInt(input) % 100) / 10);
-        number.add((Integer.parseInt(input) % 100) % 10);
-        return number;
+    private List<Integer> convertInput(String input) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(Integer.parseInt(input) / 100);
+        numbers.add((Integer.parseInt(input) % 100) / 10);
+        numbers.add((Integer.parseInt(input) % 100) % 10);
+        return numbers;
     }
 
 }
