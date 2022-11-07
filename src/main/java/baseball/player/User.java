@@ -16,4 +16,8 @@ public class User {
 		return userNumber.get(index);
 	}
 
+	public int userSize() {
+		return userNumber.size();
+	}
+
 }
