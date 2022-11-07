@@ -23,6 +23,8 @@
    - [x] `changeStatusByOption()`
 2. 메소드의 indent에 따른 메소드 추가 추출
    - [x] `calculateScore()`, `computeScoreIndex()`
+3. `Application`에 존재하는 로직을 모두 `Game` 클래스로 이동
+   - `Application`에는 `Game.startGame()`만 존재
 
 ## 📝 테스트
 테스트 코드는 **생성한 클래스별로 묶어서 작성**한다.
