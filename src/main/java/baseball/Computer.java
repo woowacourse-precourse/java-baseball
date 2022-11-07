@@ -8,13 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Computer {
-    private static List<Integer> numbers;
-
     private static Map<Character, Integer> numberIndexMap;
 
     public Computer() {
-        setNumbers();
-        setNumberIndexMap();
+        setNumberIndexMap(getNumbers());
     }
 
     /*
@@ -23,7 +20,7 @@ public class Computer {
     *
     * @return List
     * */
-    private static void setNumbers() {
+    private static List<Integer> getNumbers() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -32,7 +29,7 @@ public class Computer {
             }
         }
 
-        numbers = computerNumber;
+        return computerNumber;
     }
 
     /*
@@ -40,7 +37,7 @@ public class Computer {
     *
     * @return Map
     * */
-    private static void setNumberIndexMap() {
+    private static void setNumberIndexMap(List<Integer> numbers) {
         Map<Character, Integer> map = new HashMap<>();
 
         for (int index = 0; index < 3; index++) {
