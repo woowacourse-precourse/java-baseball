@@ -29,33 +29,45 @@ public class NumberBaseballService {
     }
 
     public int getBallCount(ComputerNumber computerNumber, String userAnswer) {
+        return calculateBallCount(computerNumber, userAnswer);
+    }
+
+    public int getStrikeCount(ComputerNumber computerNumber, String userAnswer) {
+        return calculateStrikeCount(computerNumber, userAnswer);
+    }
+    
+    private int calculateBallCount(ComputerNumber computerNumber, String userAnswer) {
         int ballCount = 0;
-        if (userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getSecondNumber()
-                || userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getThirdNumber()) {
+        if (convertCharacterToInteger(userAnswer.charAt(FIRST_NUMBER)) == computerNumber.getSecondNumber()
+                || convertCharacterToInteger(userAnswer.charAt(FIRST_NUMBER)) == computerNumber.getThirdNumber()) {
             ballCount++;
         }
-        if (userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getFirstNumber()
-                || userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getThirdNumber()) {
+        if (convertCharacterToInteger(userAnswer.charAt(SECOND_NUMBER)) == computerNumber.getFirstNumber()
+                || convertCharacterToInteger(userAnswer.charAt(SECOND_NUMBER)) == computerNumber.getThirdNumber()) {
             ballCount++;
         }
-        if (userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getFirstNumber()
-                || userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO.getAsciiNumber() == computerNumber.getSecondNumber()) {
+        if (convertCharacterToInteger(userAnswer.charAt(THIRD_NUMBER)) == computerNumber.getFirstNumber()
+                || convertCharacterToInteger(userAnswer.charAt(THIRD_NUMBER)) == computerNumber.getSecondNumber()) {
             ballCount++;
         }
         return ballCount;
     }
 
-    public int getStrikeCount(ComputerNumber computerNumber, String userAnswer) {
+    private int calculateStrikeCount(ComputerNumber computerNumber, String userAnswer) {
         int strikeCount = 0;
-        if (computerNumber.getFirstNumber() == userAnswer.charAt(FIRST_NUMBER) - ASCII_ZERO.getAsciiNumber()) {
+        if (computerNumber.getFirstNumber() == convertCharacterToInteger(userAnswer.charAt(FIRST_NUMBER))) {
             strikeCount++;
         }
-        if (computerNumber.getSecondNumber() == userAnswer.charAt(SECOND_NUMBER) - ASCII_ZERO.getAsciiNumber()) {
+        if (computerNumber.getSecondNumber() == convertCharacterToInteger(userAnswer.charAt(SECOND_NUMBER))) {
             strikeCount++;
         }
-        if (computerNumber.getThirdNumber() == userAnswer.charAt(THIRD_NUMBER) - ASCII_ZERO.getAsciiNumber()) {
+        if (computerNumber.getThirdNumber() == convertCharacterToInteger(userAnswer.charAt(THIRD_NUMBER))) {
             strikeCount++;
         }
         return strikeCount;
+    }
+
+    public int convertCharacterToInteger(char characterToConvert) {
+        return characterToConvert - ASCII_ZERO.getAsciiNumber();
     }
 }
