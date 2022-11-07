@@ -45,4 +45,11 @@ class ApplicationTest extends NsTest {
 
         assertThat(result).isGreaterThanOrEqualTo(num1).isLessThanOrEqualTo(num2);
     }
+    @Test
+    public void 컴퓨터난수_테스트() throws Exception {
+        
+        int[] computerNumbers = createComputerNumbers();
+
+        assertThat(computerNumbers).doesNotHaveDuplicates();
+    }
 }
