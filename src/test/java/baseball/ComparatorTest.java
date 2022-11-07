@@ -8,22 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 class ComparatorTest {
-
-    public ComparatorTest() {
-        스트라이크 스트라이크 = new 스트라이크();
-        볼 볼 = new 볼();
-        볼_스트라이크 볼_스트라이크 = new 볼_스트라이크();
-        낫싱();
-        스트라이크.스트라이크1();
-        스트라이크.스트라이크2();
-        스트라이크.스트라이크3();
-        볼.볼1();
-        볼.볼2();
-        볼.볼3();
-        볼_스트라이크.볼1_스트라이크1();
-        볼_스트라이크.볼2_스트라이크1();
-    }
-
     @Test
     void 낫싱() {
         List<Integer> computerNumbers = List.of(1, 2, 3);
