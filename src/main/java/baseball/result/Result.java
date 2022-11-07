@@ -26,7 +26,7 @@ public class Result {
             resultType = ResultType.ONLY_STRIKE;
         } else if (ball > 0) {
             resultType = ResultType.ONLY_BALL;
-        } else {
+        } else if (ball == 0 && strike == 0){
             resultType = ResultType.NOTHING;
         }
     }
