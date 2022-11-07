@@ -52,16 +52,17 @@ public class Referee {
         int count = 0;
 
         for (Integer number : offenceNumber) {
-            int index = defenceNumber.indexOf(number);
-            if (isBall(index, number)) {
+            if (isBall(number)) {
                 count++;
             }
         }
         return count;
     }
 
-    private boolean isBall(int index, Integer number) {
+    private boolean isBall(Integer number) {
+        int index = defenceNumber.indexOf(number);
         int offence = offenceNumber.indexOf(number);
+
         if (index != -1 && offence != index) {
             return true;
         }
