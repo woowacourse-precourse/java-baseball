@@ -73,9 +73,10 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 번호를_숫자로_변경하는_테스트_숫자가_아님() {
-        String number = "12e";
+    @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
+    @ValueSource(strings = {"1e4", "1#3", "~23,", "00 "})
+    @DisplayName("숫자가 아닌 번호를 숫자로 변경시 에러 확인 테스트")
+    void 번호를_숫자로_변경하는_테스트_숫자가_아님(String number) {
         assertThatThrownBy(() -> getNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
