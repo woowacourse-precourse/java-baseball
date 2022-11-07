@@ -1,23 +1,15 @@
 package baseball;
-
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-/*
-*
-2. 컴퓨터(상대방)의 숫자를 설정하는 함수
-3. 입력 받은 숫자를 규칙에 따라 결과를 리턴해주는 함수. 리턴값이 -1이면 맞춘것으로 하여 재시작 여부 질문
-4. 재시작or종료 함수. 재시작이면 continue, 아니면 break!!
-* */
 class game{
     List<Integer> computer;
-    List<Integer> my_num_list;
+    List<Integer> my_num_list = new ArrayList<>();
     int my_num;
     int ball_cnt;
     int strike_cnt;
-    boolean end_gamer=false;
+    int end_gamer=-1;
     Scanner sc = new Scanner(System.in);
     public game(){
         setComputerNum();
@@ -38,7 +30,7 @@ class game{
     }
     public void get_My_num(){
         System.out.print("숫자를 입력해주세요 : ");
-        this.my_num = sc.nextInt();
+        my_num = sc.nextInt();
         makeMynumToList();
     }
     public void ball_counter(){
@@ -60,31 +52,34 @@ class game{
         if (ball_cnt+strike_cnt==0){
             System.out.println("낫싱");
         }else if (strike_cnt==3){
+            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1,종료하려면 2를 입력하세요.");
             setEnd_gamer(sc.nextInt());
         }else{
             if(ball_cnt==0){
-                System.out.printf("%d스트라이크",strike_cnt);
+                System.out.printf("%d스트라이크\n",strike_cnt);
             }else if(strike_cnt==0){
-                System.out.printf("%볼",ball_cnt);
+                System.out.printf("%d볼\n",ball_cnt);
             }else{
-                System.out.printf("%볼 %d스트라이크",ball_cnt,strike_cnt);
+                System.out.printf("%d볼 %d스트라이크\n",ball_cnt,strike_cnt);
             }
         }
 
     }
     public void makeMynumToList(){
-        my_num_list.clear();
+        if(my_num_list.size()>0){
+            my_num_list.clear();
+        }
         my_num_list.add(my_num/100);
         my_num_list.add((my_num%100)/10);
         my_num_list.add(my_num%10);
     }
     public void setEnd_gamer(int flag){
         if(flag==1){
-            this.end_gamer = false;
+            this.end_gamer = 1;
         }else{
-            this.end_gamer = true;
+            this.end_gamer = 2;
         }
     }
 
@@ -94,14 +89,20 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다");
+        loopout:
         while (true){
             game baseball = new game();
-            baseball.get_My_num();
-            baseball.ball_counter();
-            baseball.ball_commenter();
-            if (baseball.end_gamer){
-                break;
-            };
+            while (true) {
+                baseball.get_My_num();
+                baseball.ball_counter();
+                baseball.ball_commenter();
+                if (baseball.end_gamer==1) {
+                    break;
+                }else if(baseball.end_gamer==2){
+                    break loopout;
+                }
+            }
         }
+
     }
 }
