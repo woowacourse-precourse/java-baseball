@@ -72,7 +72,17 @@ public class Game {
     }
 
     private static void showHitCount(List<Integer> hitCount) {
-
+        Integer countOfStrike = hitCount.get(0);
+        Integer countOfBall = hitCount.get(1);
+        if (countOfStrike.equals(0) && countOfBall.equals(0)) {
+            System.out.println("낫싱");
+        } else if (countOfStrike.equals(0)) {
+            System.out.println(countOfBall + "볼");
+        } else if (countOfBall.equals(0)) {
+            System.out.println(countOfStrike + "스트라이크");
+        } else {
+            System.out.println(countOfBall + "볼 " + countOfStrike + "스트라이크");
+        }
     }
 
     private static boolean checkWin(List<Integer> hitCount) {
