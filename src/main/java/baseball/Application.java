@@ -74,4 +74,28 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+    public static Boolean compareComputerAndUser(List<Integer> computer, List<Integer> user) {
+        List<Integer> strike = new ArrayList<>();
+        boolean check = true;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            strike = isSame(strike, computer.get(i), user.get(i));
+        }
+        for (int i = 0; i < 3; i++) {
+            ball += isBall(strike, computer, user.get(i));
+        }
+        if (strike.size() == 3) {
+            System.out.println("3스트라이크");
+            check = false;
+        } else if (strike.size() > 0 && ball > 0) {
+            System.out.println(ball + "볼 " + strike.size() + "스트라이크");
+        } else if (ball > 0) {
+            System.out.println(ball + "볼");
+        } else if (strike.size() > 0) {
+            System.out.println(strike.size() + "스트라이크");
+        } else {
+            System.out.println("낫싱");
+        }
+        return check;
+    }
 }
