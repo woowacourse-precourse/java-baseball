@@ -32,6 +32,11 @@ public class BaseBallTest {
 
         //then
         assertThat(checker).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("입력받은 문자열 검증")
+    public void validateInputStringTest(){
 
     }
 
