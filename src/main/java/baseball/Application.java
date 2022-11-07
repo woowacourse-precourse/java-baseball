@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -16,7 +17,20 @@ public class Application {
             }
         }
 
+        boolean allCorrect = false;
 
+        while (!allCorrect) {
+            String userAnswer = Console.readLine();
+            for (int i = 0; i < 3; i++) {
+                if (userAnswer.charAt(i) - '0' != computer.get(i)) {
+                    allCorrect = false;
+                    System.out.println("not correct");
+                    break;
+                }
+                allCorrect = true;
+            }
+        }
+        System.out.println("correct");
     }
 
 
