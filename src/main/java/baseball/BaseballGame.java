@@ -44,4 +44,15 @@ public class BaseballGame {
         }
     }
 
+    public void PrintResult(){
+        if(strikeNumber == 0 && ballNumber == 0)
+            System.out.println("낫싱");
+        if(strikeNumber == 0 && ballNumber > 0)
+            System.out.println(ballNumber + "볼");
+        if(strikeNumber > 0 && ballNumber == 0)
+            System.out.println(strikeNumber + "스트라이크");
+        if(strikeNumber > 0 && ballNumber > 0)
+            System.out.println(ballNumber + "볼 " + strikeNumber + "스트라이크");
+    }
+
 }
