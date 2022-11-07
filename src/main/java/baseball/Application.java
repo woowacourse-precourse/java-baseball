@@ -11,31 +11,6 @@ import java.util.Scanner;
 3. 입력 받은 숫자를 규칙에 따라 결과를 리턴해주는 함수. 리턴값이 -1이면 맞춘것으로 하여 재시작 여부 질문
 4. 재시작or종료 함수. 재시작이면 continue, 아니면 break!!
 * */
-class game{
-    List<Integer> computer;
-    List<Integer> mynum;
-    public game(){
-    };
-    public void setComputerNum(){
-        this.computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-    }
-    public void get_Mynum(){
-
-    }
-    public void checker(){
-
-    }
-    public void reStarter(){
-
-    }
-
-}
 
 public class Application {
     public static void main(String[] args) {
