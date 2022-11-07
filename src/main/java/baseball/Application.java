@@ -27,6 +27,6 @@ public class Application {
         InfoPrinter.printExitInfo();
         flag = ExitFlagController.getExitFlag();
         }
-        System.out.println("게임 종료");
+        InfoPrinter.printFinishInfo();
     }
 }
