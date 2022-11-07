@@ -88,6 +88,20 @@ public class Application {
         return strikeBallResult;
     }
 
+    public static void notifyGameResult(StrikeBallResult strikeBallResult){
+        if(strikeBallResult.getStrikeCnt() == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }else if(strikeBallResult.getStrikeCnt() + strikeBallResult.getBallCnt() == 0){
+            System.out.println("낫싱");
+        }else if(strikeBallResult.getBallCnt() == 0){
+            System.out.println(strikeBallResult.getStrikeCnt() + "스트라이크" );
+        }else{
+            System.out.println(strikeBallResult.getBallCnt() + "볼 " + strikeBallResult.getStrikeCnt() + "스트라이크");
+        }
+    }
+
     public static class StrikeBallResult{
         int strikeCnt;
         int ballCnt;
