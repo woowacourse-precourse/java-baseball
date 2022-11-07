@@ -24,15 +24,15 @@ public class Computer {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() != RANDOM_NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER);
-            if(!isDuplicateNumber(randomNumber)) {
+            if(!isDuplicateNumber(randomNumber, numbers)) {
                 numbers.add(randomNumber);
             }
         }
         return numbers;
     }
 
-    private boolean isDuplicateNumber(int randomNumber) {
-        for(Integer number : randomNumbers) {
+    private boolean isDuplicateNumber(int randomNumber, List<Integer> numbers) {
+        for(Integer number : numbers) {
             if(number == randomNumber) {
                 return true;
             }
