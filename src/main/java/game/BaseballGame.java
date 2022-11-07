@@ -10,23 +10,22 @@ public class BaseballGame {
 
 	public void ready() throws IllegalArgumentException {
 		Print.printGettingStart();
-
-		do {
-			this.computer = new Computer();
-			roundWithComputer();
-			Print.printGameOverAndAfterRound();
-		} while (again());
-
+		computer = new Computer();
+		roundWithComputer();
+		Print.printGameOverAndAfterRound();
+		if (again()) {
+			ready();
+		}
 	}
 
 	private void roundWithComputer() throws IllegalArgumentException {
-		String userNumbers = "";
-		do {
-			Print.printInputNumbers();
-			userNumbers = Console.readLine();
-			Examine.hasDifferentNumbers(userNumbers);
-		} while (!computer.computeAndPrintResult(userNumbers));
+		Print.printInputNumbers();
+		String userNumbers = Examine.hasDifferentNumbers(Console.readLine());
+		if (!computer.computeAndPrintResult(userNumbers)) {
+			roundWithComputer();
+		}
 	}
+
 	private boolean again() throws IllegalArgumentException {
 		String str = Console.readLine();
 		Examine.isOneOrTwo(str);

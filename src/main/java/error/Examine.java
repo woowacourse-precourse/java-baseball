@@ -1,11 +1,13 @@
 package error;
 
 public class Examine {
-	public static void hasDifferentNumbers(String str) throws IllegalArgumentException {
+	public static String hasDifferentNumbers(String str) throws IllegalArgumentException {
 		isLengthThree(str);
 		isAllNumbers(str);
 		isContainZero(str);
 		isDifferent(str);
+
+		return str;
 	}
 
 	private static void isDifferent(String str) {
