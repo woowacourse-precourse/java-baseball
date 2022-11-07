@@ -25,7 +25,7 @@ public class PlayerNumber implements Number {
     public String enterPlayerNumber() {
         String playerNumber;
 
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.println("숫자를 입력해주세요 : ");
         playerNumber = Console.readLine();
 
         return playerNumber;
@@ -36,11 +36,11 @@ public class PlayerNumber implements Number {
         checkDuplicateNumber(number);
     }
 
-    private int checkValidateNumber(String number) throws IllegalArgumentException {
+    private void checkValidateNumber(String number) throws IllegalArgumentException {
         String regExp = "\\d{3}";
 
         if (Pattern.matches(regExp, number)) {
-            return 0;
+            return;
         }
         throw new IllegalArgumentException();
     }

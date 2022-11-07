@@ -27,6 +27,5 @@ public class TargetNumber implements Number {
                 targetNumber.add(number);
             }
         }
-        System.out.println("targetNumber = " + targetNumber);
     }
 }
