@@ -1,12 +1,18 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Null;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.*;
+//import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -20,6 +26,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -27,6 +34,77 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 예외_테스트_영어() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("sky"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_한글() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("다람쥐"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_특수문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("?#$"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("131"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_0포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자비교_스트라이크(){
+        List<Integer> computerNum = Arrays.asList(1, 2, 3);
+        String myNum = "123";
+        int myIdx = 1;
+        List<Integer> result = Arrays.asList(0, 1);
+        assertThat(Application.compareNumber(computerNum, myNum, myIdx)).isEqualTo(result);
+    }
+
+    @Test
+    void 숫자비교_볼(){
+        List<Integer> computerNum = Arrays.asList(2, 1, 3);
+        String myNum = "123";
+        int myIdx = 1;
+        List<Integer> result = Arrays.asList(1, 0);
+        assertThat(Application.compareNumber(computerNum, myNum, myIdx)).isEqualTo(result);
+    }
+
+    @RepeatedTest(100)
+    void 결과출력(){
+        int ball = Randoms.pickNumberInRange(0,3);
+        int strike = Randoms.pickNumberInRange(0,3);
+        boolean isEnd = false;
+        System.out.println(ball+" "+strike);
+        if (strike == 3){
+            isEnd = true;
+        }
+        assertThat(Application.printResult(ball, strike)).isEqualTo(isEnd);
+    }
+
 
     @Override
     public void runMain() {
