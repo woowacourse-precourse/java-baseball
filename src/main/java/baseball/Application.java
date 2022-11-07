@@ -47,7 +47,7 @@ public class Application {
             askNumber = getNumber();
             correct = compareNumber(correctNumber, askNumber);
         }
-        // 종료문구 출력
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         if (askRetry()) {
             this.startGame();
         }
