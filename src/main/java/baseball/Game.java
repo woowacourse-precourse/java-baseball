@@ -45,4 +45,9 @@ public class Game {
         return answer_and_predict_num.get(0).equals(answer_and_predict_num.get(1));
     }
 
+    public int getCountOfBall(List<Integer> player_number, int strike) {
+        return (int) player_number.stream()
+                .filter(answer_number::contains)
+                .count() - strike;
+    }
 }

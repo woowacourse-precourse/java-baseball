@@ -17,7 +17,7 @@ public class GamePlayer {
 
             validatePlayer_number(player_number);
 
-//            playOneTurn(game, player_number);
+            playOneTurn(game, player_number);
 
         }
     }
@@ -27,13 +27,12 @@ public class GamePlayer {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
-//
-//    private static void playOneTurn(Game game, List<Integer> player_number) {
-//        final int strike = game.getCountOfStrike(player_number);
-//        final int ball = game.getCountOfBall(player_number, strike);
-//
-//
-//    }
+
+    private static void playOneTurn(Game game, List<Integer> player_number) {
+        final int strike = game.getCountOfStrike(player_number);
+        final int ball = game.getCountOfBall(player_number, strike);
+
+    }
 
     private static void validatePlayer_number(List<Integer> player_number) {
         final int NUMBER_LENGTH = 3;
