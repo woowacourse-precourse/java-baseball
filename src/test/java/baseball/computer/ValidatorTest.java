@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 public class ValidatorTest {
 
     @Test
-    public void test_정수_체크() {
+    public void 정수_정상_테스트() {
         String n = "12345";
 
         boolean output = Validator.isInteger(n);
@@ -16,7 +16,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void test_정수_체크2() {
+    public void 정수_문자_예외_테스트() {
         String n = "123a45";
 
         boolean output = Validator.isInteger(n);
@@ -25,7 +25,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void test_정수_유효성_체크() {
+    public void 정수_범위_테스트() {
         Integer n = 985;
 
         boolean output = Validator.isValidInteger(n);
@@ -34,7 +34,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void test_정수_유효성_체크2() {
+    public void 정수_범위_초과_테스트() {
         Integer n = 1000;
 
         boolean output = Validator.isValidInteger(n);
@@ -43,16 +43,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void test_게임진행여부_유효성_체크() {
-        Integer n = 0;
-
-        boolean output = Validator.isValidAnswer(n);
-
-        Assertions.assertTrue(output);
-    }
-
-    @Test
-    public void test_게임진행여부_유효성_체크2() {
+    public void 게임진행여부_정상범위_테스트() {
         Integer n = 1;
 
         boolean output = Validator.isValidAnswer(n);
@@ -61,8 +52,17 @@ public class ValidatorTest {
     }
 
     @Test
-    public void test_게임진행여부_유효성_체크3() {
+    public void 게임진행여부_정상범위_테스트2() {
         Integer n = 2;
+
+        boolean output = Validator.isValidAnswer(n);
+
+        Assertions.assertTrue(output);
+    }
+
+    @Test
+    public void 게임진행여부_비정상범위_예외_테스트() {
+        Integer n = 999;
 
         boolean output = Validator.isValidAnswer(n);
 

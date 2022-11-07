@@ -16,6 +16,6 @@ public class Validator {
     }
 
     public static boolean isValidAnswer(Integer n) {
-        return n == 0 || n == 1;
+        return n == 1 || n == 2;
     }
 }

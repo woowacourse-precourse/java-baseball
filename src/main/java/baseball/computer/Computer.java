@@ -41,7 +41,7 @@ public class Computer {
         return computer;
     }
 
-    public void guessNumber(Integer n) {
+    public List<Integer> guessNumber(Integer n) {
         int strike = 0;
         int ball = 0;
 
@@ -75,6 +75,11 @@ public class Computer {
         } else {
             System.out.println("낫싱");
         }
+
+        ArrayList<Integer> result = new ArrayList<>();
+        result.add(strike);
+        result.add(ball);
+        return result;
     }
 
     public Integer getUserInput() {
@@ -91,13 +96,17 @@ public class Computer {
     }
 
     public void start() {
-        this.answers = generateRandomNumbers();
-        this.finished = false;
+        setAnswers(generateRandomNumbers());
+        setFinished(false);
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public boolean finished() {
         return this.finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 
     public void setUser(User user) {
@@ -108,4 +117,11 @@ public class Computer {
         return user;
     }
 
+    public List<Integer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Integer> answers) {
+        this.answers = answers;
+    }
 }
