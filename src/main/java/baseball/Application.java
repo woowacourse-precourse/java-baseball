@@ -2,7 +2,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -103,10 +102,9 @@ public class Application {
         return "낫싱";
     }
 
-    /*숫자 야구 로직 구현*/
+    /*숫자 야구 플레이 메소드 구현*/
     private static void playBaseBall(){
         List<Integer> RandomNum = makeRandomNum();
-        System.out.println(RandomNum);
         while(true){
             System.out.print("숫자를 입력해 주세요 : ");
             String inputedNum = inputNum();
