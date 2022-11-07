@@ -13,7 +13,7 @@ public class Application {
         MyBalls myBalls = new MyBalls();
 
         List<Integer> myBallNumbers;
-        while (!GameStart.isWin) {
+        while (GameStart.notWin) {
             myBallNumbers = myBalls.inputBalls(inputNumber.getNumbers());
             ScoreBoard scoreBoard = new ScoreBoard(myBallNumbers);
             scoreBoard.printResult();

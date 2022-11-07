@@ -1,11 +1,11 @@
 package baseball.domain;
 
 public class GameStart {
-    public static boolean isWin;
+    public static boolean notWin;
 
     public static void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        isWin = false;
+        notWin = true;
     }
 
     public static void askRestartGame() {
@@ -21,11 +21,11 @@ public class GameStart {
     }
 
     private static void quitGame() {
-        isWin = true;
+        notWin = false;
     }
 
     private static void restartGame() {
-        isWin = false;
+        notWin = true;
         RandomBall.makeNewRandomBalls();
     }
 }
