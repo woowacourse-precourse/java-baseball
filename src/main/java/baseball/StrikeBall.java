@@ -3,6 +3,7 @@ package baseball;
 public class StrikeBall {
     private int strike;
     private int ball;
+    String output = "";
 
     StrikeBall(){
         strike = 0;
@@ -31,7 +32,6 @@ public class StrikeBall {
     }
 
     public String toString(){
-        String output = "";
         if(strike!=0 && ball!=0)
             output = ball+"볼 "+strike+"스트라이크";
         else if(strike!=0)
