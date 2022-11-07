@@ -2,6 +2,7 @@ package baseball;
 
 //import  camp.nextstep.edu.*;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.io.*;
 import java.lang.reflect.Array;
@@ -40,9 +41,12 @@ public class Application {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+
+
         while (true){
 
-            String strInput[] = br.readLine().split("");
+            //String strInput[] = br.readLine().split("");
+            String strInput[] = Console.readLine().split("");
 
             ArrayList<Integer> input = new ArrayList<Integer>();
             for(int i=0; i<strInput.length; i++){
