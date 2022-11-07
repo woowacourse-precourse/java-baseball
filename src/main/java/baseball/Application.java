@@ -14,8 +14,12 @@ public class Application {
         while (goGameAnswer == 1) {
             // 숫자 입력
             String number = numberBaseballGame.inputNumber();
-            // 예외 처리 1 : 숫자가 세자리 숫자인가?
+
+            // 예외 처리 1 : 올바른 숫자가 입력됐는가?
+            checkValidArgument.isNumber(number);
+            // 예외 처리 2 : 숫자가 세자리 숫자인가?
             checkValidArgument.isMaxSize(number);
+
             // 입력한 숫자를 기반으로 게임 결과 계산하기
             numberBaseballGame.countGameResults();
             // 게임 결과 출력하기

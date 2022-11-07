@@ -11,7 +11,11 @@ public class CheckValidArgument {
     }
 
     // 올바른 숫자가 입력됐는지 점검
-    public void isNumber(String number) throws IllegalArgumentException {
-
+    public void isNumber(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
