@@ -72,4 +72,8 @@ public class GameService {
 		System.out.println(systemMessage.PrintCount(game.getStrikeCount(), game.getBallCount()));
 	}
 
+	public int computerSize() {
+		return computer.size();
+	}
+
 }
