@@ -1,6 +1,40 @@
 package baseball;
 
+import java.util.ArrayList;
+
 public class BallStrikeChecker {
-    // RandomNumberGenerator 클래스와 Guess 클래스를 읽어들여 볼스트라이크 개수를 세는 클래스.
-    // 탈출조건인 threeStrike를 클래스변수로 가지며, 3스트라이크인 경우 해당 변수 값을 변경시켜 루프탈출을 가능하게한다.
+    static boolean threeStrike;
+    ArrayList<Integer> judgement;
+
+    public BallStrikeChecker(RandomNumberGenerator answer, Guess myGuess){
+        threeStrike=false;
+        judgement=countBallAndStrike(answer.numberList,myGuess.numberList);
+        if(judgement.get(1)==3){
+            threeStrike=true;
+        }
+    }
+    static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> guessList, ArrayList<Integer> answers) {
+        ArrayList<Integer> ballStrikeCnt = new ArrayList<>() {{
+            add(0);
+            add(0);
+        }};
+        Integer strikeCnt;
+        Integer ballCnt;
+
+        for (int idx = 0; idx < guessList.size(); idx++) {
+            int guess = guessList.get(idx);
+
+            if (guess == answers.get(idx)) {
+                strikeCnt = ballStrikeCnt.get(1);
+                ballStrikeCnt.set(1, ++strikeCnt);
+                continue;
+            }
+            if (answers.contains(guess)) {
+                ballCnt = ballStrikeCnt.get(0);
+                ballStrikeCnt.set(0, ++ballCnt);
+            }
+        }
+
+        return ballStrikeCnt;
+    }
 }

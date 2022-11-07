@@ -10,28 +10,7 @@ import java.util.HashSet;
 
 public class Application {
 
-    //BallStrikeChecker 내부로 들어갈 예정
-    static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> guessList, ArrayList<Integer> answers) {
-        ArrayList<Integer> ballStrikeCnt = new ArrayList<>() {{
-            add(0);
-            add(0);
-        }};
-        Integer strikeCnt;
-        Integer ballCnt;
 
-        for (int idx = 0; idx < guessList.size(); idx++) {
-            int guess = guessList.get(idx);
-            if (guess == answers.get(idx)) {
-                strikeCnt = ballStrikeCnt.get(1);
-                ballStrikeCnt.set(1, ++strikeCnt);
-            } else if (answers.contains(guess)) {
-                ballCnt = ballStrikeCnt.get(0);
-                ballStrikeCnt.set(0, ++ballCnt);
-            }
-        }
-
-        return ballStrikeCnt;
-    }
 
     // Board 내부로 들어갈 예정. 로직도 if else 문 쓰지 않고 string concat 활용 예정
     static void showResult(ArrayList<Integer> ballStrikeCnt) {
@@ -66,13 +45,13 @@ public class Application {
 
         RandomNumberGenerator answer = new RandomNumberGenerator();
         Guess myGuess;
-        /*  BallStrikeChecker checker = new BallStrikeChecker();
-        ResultBoard board;
+        BallStrikeChecker checker;
+        /*  ResultBoard board;
 
         while(checker.threeStrike){
             System.out.println("숫자를 입력해주세요 : ");
             myGuess= new Guess(Console.readLine());
-            checker.countBallAndStrike(answer,myGuess);
+            checker = new BallStrikeChecker(answer,myGuess);
             board = new ResultBoard(checker.judgement);
             board.showResult();
         }*/
