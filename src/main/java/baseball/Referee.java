@@ -4,13 +4,22 @@ import java.util.List;
 
 public class Referee {
 
-    private List<Integer> numbers;
+    private Rule rule;
+    private List<Integer> playerNumbers;
 
-    public void receiveNumbers(List<Integer> numbers) {
-        this.numbers = numbers;
+    public Referee(Rule rule) {
+        this.rule = rule;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public void receiveComputerNumbers(List<Integer> numbers) {
+        this.rule.selectedNumber(numbers);
+    }
+
+    public void receivePlayerNumbers(List<Integer> numbers) {
+        this.playerNumbers = numbers;
+    }
+
+    public GameMessage answerNumber() {
+        return rule.answerNumber(playerNumbers);
     }
 }
