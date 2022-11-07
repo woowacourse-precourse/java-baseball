@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import baseball.domain.Score;
 import org.junit.jupiter.api.BeforeEach;

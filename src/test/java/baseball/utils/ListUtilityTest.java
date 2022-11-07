@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UtilityTest {
+class ListUtilityTest {
     @Nested
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     class SplitDigitsIntoList {
