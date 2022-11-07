@@ -66,6 +66,7 @@ public class GameService {
 
     public void startGame() {
         computer.getNumber();
+        printStartMessage();
         while (true) {
             boolean isFinished = playGame();
             if (isFinished) {
@@ -73,6 +74,10 @@ public class GameService {
             }
         }
 
+    }
+
+    private void printStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private boolean playGame() {
