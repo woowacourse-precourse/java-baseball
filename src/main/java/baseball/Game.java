@@ -4,12 +4,10 @@ import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Selctor {
+public class Game {
 
 
-    private List<Integer> getComputerNumber(){
 
-    }
 
     private int[] gamePlay(List<Integer> player, List<Integer> computer){
         int ball = 0;
