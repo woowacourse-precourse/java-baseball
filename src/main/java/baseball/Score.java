@@ -49,9 +49,6 @@ enum Score {
     }
 
     boolean strikeOut() {
-        if (strike == Play.getCount()) {
-            return true;
-        }
-        return false;
+        return strike == Play.getCount();
     }
 }
