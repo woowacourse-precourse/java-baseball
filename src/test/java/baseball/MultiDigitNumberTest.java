@@ -1,12 +1,9 @@
 package baseball;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
+
+import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.FactoryBasedNavigableIterableAssert;
+import org.assertj.core.util.Streams;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -21,19 +18,19 @@ public class MultiDigitNumberTest {
             @Test
             @DisplayName("3자리 수여야 한다.")
             void validate_filtering_number_not_3digit_number(){
-                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(1234)).isInstanceOf(IllegalArgumentException.class);
+                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(1,2,3,4)).isInstanceOf(IllegalArgumentException.class);
             }
             @Test
             @DisplayName("각 자리수가 중복되면 안된다.")
             void validate_filtering_number_has_duplicate_digit(){
-                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(112)).isInstanceOf(IllegalArgumentException.class);
+                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(1,1,2)).isInstanceOf(IllegalArgumentException.class);
             }
             @Test
             @DisplayName("각 자리수는 1-9사이의 값을 가져야 한다.")
             void validate_filtering_number_has_digit_outOfRange(){
-                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(102)).isInstanceOf(IllegalArgumentException.class);
-                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(012)).isInstanceOf(IllegalArgumentException.class);
-                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(960)).isInstanceOf(IllegalArgumentException.class);
+                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(1,0,2)).isInstanceOf(IllegalArgumentException.class);
+                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(0,1,2)).isInstanceOf(IllegalArgumentException.class);
+                Assertions.assertThatThrownBy(() -> new MultiDigitNumber(9,6,0)).isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
@@ -44,7 +41,8 @@ public class MultiDigitNumberTest {
 
                     try {
                         if(!MultiDigitNumber.validateConsistOfThreeDigit(i)
-                            || !MultiDigitNumber.validateEachSingleDigitIsNotDuplicate(MultiDigitNumber.convertMultiDigitNumberIntoSingleDigitList(i))){
+                            || !MultiDigitNumber.validateEachSingleDigitIsNotDuplicate(
+                            Stream.of(String.valueOf(i).split("")).toArray(Integer[]::new))){
                             flag = false;
                         }
                     }catch (IllegalArgumentException e){
@@ -69,13 +67,13 @@ public class MultiDigitNumberTest {
         @Test
         @DisplayName("입력받은 또다른 MultiDigitNumber 객체와의 strike 개수를 반환한다.")
         void validate_returns_numberOf_Strike(){
-            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(123);
+            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(1,2,3);
 
-            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(145))).isEqualTo(1);
-            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(321))).isEqualTo(1);
-            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(456))).isEqualTo(0);
-            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(123))).isEqualTo(3);
-            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(143))).isEqualTo(2);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(1,4,5))).isEqualTo(1);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(3,2,1))).isEqualTo(1);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(4,5,6))).isEqualTo(0);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(1,2,3))).isEqualTo(3);
+            Assertions.assertThat(multiDigitNumber.getStrike(new MultiDigitNumber(1,4,3))).isEqualTo(2);
         }
     }
 
@@ -85,13 +83,13 @@ public class MultiDigitNumberTest {
         @Test
         @DisplayName("입력받은 또다른 MultiDigitNumber 객체와의 ball 개수를 반환한다.")
         void validate_returns_numberOf_Ball(){
-            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(123);
+            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(1,2,3);
 
-            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(415))).isEqualTo(1);
-            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(321))).isEqualTo(2);
-            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(456))).isEqualTo(0);
-            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(123))).isEqualTo(0);
-            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(143))).isEqualTo(0);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(4,1,5))).isEqualTo(1);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(3,2,1))).isEqualTo(2);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(4,5,6))).isEqualTo(0);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(1,2,3))).isEqualTo(0);
+            Assertions.assertThat(multiDigitNumber.getBall(new MultiDigitNumber(1,4,3))).isEqualTo(0);
         }
     }
 
@@ -102,12 +100,12 @@ public class MultiDigitNumberTest {
         @Test
         @DisplayName("비교 결과를 담은 CompareResult 객체를 반환한다.")
         void it_returns_CompareResult(){
-            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(123);
+            MultiDigitNumber multiDigitNumber = new MultiDigitNumber(1,2,3);
 
-            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(321)).toString()).isEqualTo("1스트라이크 2볼");
-            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(145)).toString()).isEqualTo("1스트라이크");
-            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(561)).toString()).isEqualTo("1볼");
-            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(847)).toString()).isEqualTo("낫싱");
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(3,2,1)).toString()).isEqualTo("1스트라이크 2볼");
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(1,4,5)).toString()).isEqualTo("1스트라이크");
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(5,6,1)).toString()).isEqualTo("1볼");
+            Assertions.assertThat(multiDigitNumber.getCompareResult(new MultiDigitNumber(8,4,7)).toString()).isEqualTo("낫싱");
         }
     }
 }

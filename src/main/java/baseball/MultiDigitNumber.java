@@ -1,9 +1,12 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -19,36 +22,27 @@ import org.junit.jupiter.api.Test;
 public class MultiDigitNumber {
     List<SingleDigit> singleDigitList;
 
-    public MultiDigitNumber(int multiDigitNumber){
-        if(!validateConsistOfThreeDigit(multiDigitNumber)){
+    public MultiDigitNumber(Integer ...integers){
+        if(!validateConsistOfThreeDigit(integers)){
             throw new IllegalArgumentException("MultlDigitNumber는 세자리 수여야 합니다.");
         }
-        this.singleDigitList = convertMultiDigitNumberIntoSingleDigitList(multiDigitNumber);
 
-        if(!validateEachSingleDigitIsNotDuplicate(singleDigitList)) {
+        if(!validateEachSingleDigitIsNotDuplicate(integers)) {
             throw new IllegalArgumentException("MultiDigitNumber의 각 자리수는 중복되어서는 안됩니다.");
         }
+
+        singleDigitList = new ArrayList<>();
+
+        for(int i = 0 ; i < integers.length ; i++)
+            singleDigitList.add(new SingleDigit(integers[i]));
     }
 
-    public static boolean validateEachSingleDigitIsNotDuplicate(List<SingleDigit> singleDigitList){
-        return singleDigitList.stream()
-            .filter((singleDigit) ->
-                (singleDigitList.stream().filter((otherSingleDigit)
-                    -> singleDigit.equals(otherSingleDigit)).count() > 1))
-            .count() == 0;
+    public static boolean validateEachSingleDigitIsNotDuplicate(Integer ...integers){
+        Set<Integer> integerSet = new HashSet<>(List.of(integers));
+        return integerSet.size() == 3;
     }
-    public static boolean validateConsistOfThreeDigit(int multiDigitNumber){
-        return String.valueOf(multiDigitNumber).length() == 3;
-    }
-
-    public static List<SingleDigit> convertMultiDigitNumberIntoSingleDigitList(int multiDigitNumber){
-        List<SingleDigit> singleDigitList = new ArrayList<>();
-        while(multiDigitNumber != 0){
-            singleDigitList.add(new SingleDigit(multiDigitNumber % 10));
-            multiDigitNumber /= 10;
-        }
-        Collections.reverse(singleDigitList);
-        return singleDigitList;
+    public static boolean validateConsistOfThreeDigit(Integer ...integers){
+        return integers.length == 3;
     }
 
     public int getStrike(MultiDigitNumber otherMultiDigitNumber){
@@ -64,6 +58,15 @@ public class MultiDigitNumber {
             }).count();
     }
 
+    public boolean equals(Object objectedOtherMultiDigitNumber){
+        MultiDigitNumber otherMultiDigitNumber = (MultiDigitNumber)objectedOtherMultiDigitNumber;
+        for(int i = 0 ; i < 3 ; i++){
+            if(!otherMultiDigitNumber.singleDigitList.get(i).equals(singleDigitList.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
     /**
      * @param otherMultiDigitNumber
      * @return 두 MultiDigitNumber 간의 비교 결과를 CompareResult 객체에 담아 반환
