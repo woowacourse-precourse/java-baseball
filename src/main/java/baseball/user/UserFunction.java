@@ -1,35 +1,87 @@
 package baseball.user;
 
+import baseball.exception.UserInputException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserFunction {
 
+    private List<Integer> createUserList(String input) {
+        if (!inputLengthCheck(input)) {
+            throw new UserInputException();
+        }
+
+        if (!inputCheckInt(input)) {
+            throw new UserInputException();
+        }
+
+        int[] ints = inputToIntArr(input);
+
+        if (!intArrValidation(ints)) {
+            throw new UserInputException();
+        }
+
+        List<Integer> inputNumList = intArrToCollectionList(ints);
+
+        if (!collectionListValidation(inputNumList)) {
+            throw new UserInputException();
+        }
+
+        return inputNumList;
+    }
+
     public boolean inputLengthCheck(String input) {
+        if (input.length() == 3) {
+            return true;
+        }
         return false;
     }
 
 
     public boolean inputCheckInt(String input) {
-        return false;
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 
     public int[] inputToIntArr(String input) {
-        return new int[0];
+        return Stream.of(input.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 
 
     public boolean intArrValidation(int[] intArr) {
-        return false;
+        for (int inputNum : intArr) {
+            if (!(1 <= inputNum && inputNum <= 9)) {
+                return false;
+            }
+        }
+        return true;
     }
 
-
     public List<Integer> intArrToCollectionList(int[] intArr) {
-        return null;
+        return Arrays
+                .stream(intArr)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
 
     public boolean collectionListValidation(List<Integer> list) {
-        return false;
+        long checkDataSize = list
+                .stream()
+                .distinct()
+                .count();
+        if (list.size() != checkDataSize) {
+            return false;
+        }
+        return true;
     }
 }
