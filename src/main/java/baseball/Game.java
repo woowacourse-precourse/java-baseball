@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -10,5 +13,19 @@ public class Game {
 
         List<Integer> numComputer = NumComputerPicker.pickNumComputer();
 
+        List<Integer> numInput = new ArrayList<>();
+        while (true) {
+            getNumInput(numInput);
+        }
+    }
+
+    private void getNumInput(List<Integer> result) {
+        String str = Console.readLine();
+        for (int i = 0; i < str.length(); i++) {
+            int num = Character.getNumericValue(str.charAt(i));
+            result.add(num);
+        }
+
+        return;
     }
 }
