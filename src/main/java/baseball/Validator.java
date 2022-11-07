@@ -23,7 +23,7 @@ public class Validator {
         }
     }
 
-    public void validRestartIndex(String restartIndex) {
+    public void validateRestartIndex(String restartIndex) {
         if (!restartIndex.equals("1") && !restartIndex.equals("2")) {
             throw new IllegalArgumentException("1또는 2를 입력해야 합니다.");
         }

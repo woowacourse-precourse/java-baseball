@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Game {
 
-    int strike = 0;
-    int ball = 0;
+    int strikeCount = 0;
+    int ballCount = 0;
 
     public final int ballsLength = 3;
     Player player = new Player();
@@ -37,10 +37,10 @@ public class Game {
     public void checkBallCounts(Balls playerBalls, Balls computerBalls) {
         for (int i = 0; i < ballsLength; i++) {
             if (isStrike(playerBalls, computerBalls, i)) {
-                strike++;
+                strikeCount++;
             }
             if (isBall(playerBalls, computerBalls, i)) {
-                ball++;
+                ballCount++;
             }
         }
     }
@@ -74,28 +74,28 @@ public class Game {
     public boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartIndex = Console.readLine();
-        validator.validRestartIndex(restartIndex);
+        validator.validateRestartIndex(restartIndex);
         return restartIndex.equals("1");
     }
 
     private void initializeBallCount() {
-        strike=0;
-        ball=0;
+        strikeCount=0;
+        ballCount=0;
     }
 
     private boolean isAnswer() {
-        return strike==3;
+        return strikeCount==3;
     }
 
     public String printMessage() {
-        if (strike == 0 && ball != 0) {
-            return ball + ballCall;
+        if (strikeCount == 0 && ballCount != 0) {
+            return ballCount + ballCall;
         }
-        if (strike != 0 && ball == 0) {
-            return strike + strikeCall;
+        if (strikeCount != 0 && ballCount == 0) {
+            return strikeCount + strikeCall;
         }
-        if (strike != 0) {
-            return ball + ballCall + " " + strike + strikeCall;
+        if (strikeCount != 0) {
+            return ballCount + ballCall + " " + strikeCount + strikeCall;
         }
         return Nothing;
     }
