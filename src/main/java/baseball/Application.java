@@ -21,7 +21,8 @@ public class Application {
             while (strikes < AnswerNumber.MAX_NUMBER_OF_DIGIT) {
                 InfoPrinter.printInputInfo();
                 UserNumber userNumber = new UserNumber(Console.readLine());
-                List<Integer> strikesAndBalls = NumberController.getStrikesAndBalls(userNumber, answerNumber);
+                List<Integer> strikesAndBalls = NumberController.getStrikesAndBalls(userNumber.getNumbers(),
+                        answerNumber.getNumbers());
 
                 InfoPrinter.printStrikesAndBalls(strikesAndBalls);
                 strikes = strikesAndBalls.get(0);
