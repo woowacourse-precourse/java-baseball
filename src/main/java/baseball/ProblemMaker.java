@@ -1,9 +1,9 @@
 package baseball;
 
-public class ProblemMaker extends Player{
+import camp.nextstep.edu.missionutils.Randoms;
 
-    @Override
-    public void setNumbers(int sizeOfNumbers) {
+public class ProblemMaker extends Player{
+    public void makeProblem(int sizeOfNumbers){
 
     }
 

@@ -1,14 +1,14 @@
 package baseball;
 
 public class Game {
-    private Player problemMaker = new ProblemMaker();
-    private Player problemSolver = new ProblemSolver();
+    private ProblemMaker problemMaker = new ProblemMaker();
+    private ProblemSolver problemSolver = new ProblemSolver();
     private Result result = new Result();
     private int status = Settings.START_STATUS;
 
     public void start(){
         while(isStartStatus()){
-            problemMaker.setNumbers(Settings.SIZE_OF_NUMBERS);
+            problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
             printMessage(Settings.START_MESSAGE);
             while(result.isWrongAnswer()){
                 requestAnswer();
@@ -30,7 +30,7 @@ public class Game {
 
     public void requestAnswer(){
         printMessage(Settings.ANSWER_REQUEST_MESSAGE);
-        problemSolver.setNumbers(Settings.SIZE_OF_NUMBERS);
+        problemSolver.solveProblem(Settings.SIZE_OF_NUMBERS);
     }
 
     public void checkAnswer(){
@@ -49,7 +49,7 @@ public class Game {
         return problemMaker;
     }
 
-    public void setProblemMaker(Player problemMaker) {
+    public void setProblemMaker(ProblemMaker problemMaker) {
         this.problemMaker = problemMaker;
     }
 
@@ -57,7 +57,7 @@ public class Game {
         return problemSolver;
     }
 
-    public void setProblemSolver(Player problemSolver) {
+    public void setProblemSolver(ProblemSolver problemSolver) {
         this.problemSolver = problemSolver;
     }
 

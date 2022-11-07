@@ -1,8 +1,7 @@
 package baseball;
 
 public class ProblemSolver extends Player{
-    @Override
-    public void setNumbers(int sizeOfNumbers) {
+    public void solveProblem(int sizeOfProblem){
 
     }
 
