@@ -18,10 +18,12 @@ public class Game {
         gamer = new Gamer();
         rule = new Rule();
     }
+
     public void play() {
         printStartGame();
 
         while (!rule.isGameOver()) {
+            inputNumbers();
 
         }
     }
