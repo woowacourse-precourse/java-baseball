@@ -1,7 +1,8 @@
 package baseball;
 
-import java.util.*;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User_Input {
     public List<Integer> getUserInput() {
@@ -19,7 +20,7 @@ public class User_Input {
 
     public static boolean Checker(List<Integer> inputNum) { // not valid => false
         List<Integer> compareList = new ArrayList<>();
-        compareList.add(0);
+        compareList.add(0); // block 0
         if (inputNum.size() == 3) {
             for (int i=0; i<3; i++) {
                 int item = inputNum.get(i);
