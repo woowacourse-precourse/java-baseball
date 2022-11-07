@@ -1,8 +1,6 @@
 # 구현기능
-<hr>
 
-
-##`<Class> Computer`
+## `<Class> Computer`
   
   - `private List<Integer> answerNumber`
     - 컴퓨터의 숫자를 저장하는 변수 (정답을 저장하는 변수)
@@ -42,7 +40,7 @@
       - strike의 개수 return
 
 
-##`<Class> Application`
+## `<Class> Application`
 
 - `public void checkExceptionFromUserInputData(String userNumber)`
   - 유저에게 게임을 더 진행할 지 입력받은 수가 valid 한지 검사한다. ( 1 or 2 )
