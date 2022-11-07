@@ -44,4 +44,15 @@ public class Application {
         } else
             throw new IllegalArgumentException();
     }
+
+    public static int countStrikes(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
+        int strike = 0;
+
+        for (int i = 0; i < generatedNumber.size(); i++) {
+            if (Objects.equals(generatedNumber.get(i), inputNumber.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
 }
