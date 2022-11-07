@@ -9,6 +9,10 @@ public class Baseball {
         this.baseball = number;
     }
 
+    public void getBaseball(){
+        System.out.println(this.baseball);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
