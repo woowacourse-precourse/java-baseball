@@ -21,8 +21,9 @@
 ## 🤔 예상 객체 관계도
 - player
 - game
-- rulebook
-    - rule
+- rule
+
+---
 
 ## 😅 실제 구현한 기능 사항 목록
 ### Application.class
