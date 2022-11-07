@@ -4,17 +4,17 @@ public class GameSystem {
     public void startGame() {
         PickNumbers pickNumbers = new PickNumbers();
         UserInput userInput = new UserInput();
-        pickNumbers.pickNumbers();
+        pickNumbers.pickRandomNumbers();
         Decision.playing = true;
         while (Decision.playing) {
-            userInput.inputNumbers();
+            userInput.numbers();
             Decision.call();
             if (!Decision.out) {
                 continue;
             }
-            userInput.chooseReStartOrQuit();
+            userInput.reStartOrQuit();
             if (Decision.playing) {
-                pickNumbers.pickNumbers();
+                pickNumbers.pickRandomNumbers();
             }
         }
     }

@@ -26,7 +26,7 @@ public class UserInput {
         }
     }
 
-    public void inputNumbers() { // 추후에 이름 변경 필요 numbers
+    public void numbers() { // 추후에 이름 변경 필요 numbers
         PrintMessage.enterNumber();
         this.input = Console.readLine();
         isValid();
@@ -34,7 +34,7 @@ public class UserInput {
         putNumbers(numbers);
     }
 
-    public void chooseReStartOrQuit() {
+    public void reStartOrQuit() {
         PrintMessage.chooseRestartOrQuitGame();
         this.reStartOrQuitInput = Console.readLine();
         isValidRestartOrQuitGame();
@@ -47,10 +47,10 @@ public class UserInput {
     }
 
     public void isValid() {
-        if (! isValidLength()) {
+        if (!isValidLength()) {
             throw new IllegalArgumentException("3자리의 수를 입력하셔야 합니다.");
         }
-        if (! isValidGuessNumber()) {
+        if (!isValidGuessNumber()) {
             throw new IllegalArgumentException("서로 다른 수를 입력하셔야 합니다.");
         }
     }

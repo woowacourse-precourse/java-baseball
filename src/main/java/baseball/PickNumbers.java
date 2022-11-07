@@ -14,7 +14,7 @@ public class PickNumbers {
         score.computerNumbers(numbers);
     }
 
-    public void pickNumbers() {
+    public void pickRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
