@@ -1,9 +1,11 @@
 package baseball;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
 
 /* 기능 목록
 Problem1 : 컴퓨터의 수 만들기
             (1) 1-9 중 컴퓨터의 수 하나 고르기
-            (2) 3자리 수의 컴퓨터의 수 만들기 
+            (2) 3자리 수의 컴퓨터의 수 만들기
 Problem2 : 게임 시도(게임 재실행 여부 1로 두고 시도), 시작을 호출
 Problem3 : 게임 시작
             (1) 사용자의 입력값을 List에 저장
@@ -20,6 +22,13 @@ Problem6 : 게임이 끝난 후 게임 재실행 여부 받고 재실행 or Not
 Problem6.1: 재실행 여부가 잘못된 값이면 예외
  */
 public class Application {
+    public static int makeRandomNum(List<Integer> ComputerNum){
+        int random = Randoms.pickNumberInRange(1,9);
+        while(ComputerNum.contains(random)){
+            random = Randoms.pickNumberInRange(1,9);
+        }
+        return random;
+    };
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
