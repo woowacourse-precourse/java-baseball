@@ -105,4 +105,69 @@ public class UnitTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Nested
+    class CalcStrikeAndBallCountTest {
+        @Test
+        @DisplayName("스트라이크 1개인 경우 테스트(같은 수가 같은 자리에 있는 숫자의 개수 1개)")
+        void calcStrikeCount_matchOne_Return1() {
+            String answer = "123";
+            assertThat(Application.calcStrikeCount(answer, "156")).isEqualTo(1);
+            assertThat(Application.calcStrikeCount(answer, "926")).isEqualTo(1);
+            assertThat(Application.calcStrikeCount(answer, "753")).isEqualTo(1);
+            assertThat(Application.calcStrikeCount(answer, "132")).isEqualTo(1);
+            assertThat(Application.calcStrikeCount(answer, "321")).isEqualTo(1);
+            assertThat(Application.calcStrikeCount(answer, "213")).isEqualTo(1);
+        }
+
+        @Test
+        @DisplayName("스트라이크 2개인 경우 테스트(같은 수가 같은 자리에 있는 숫자의 개수 2개)")
+        void calcStrikeCount_matchTwo_Return2() {
+            String answer = "123";
+            assertThat(Application.calcStrikeCount(answer, "125")).isEqualTo(2);
+            assertThat(Application.calcStrikeCount(answer, "183")).isEqualTo(2);
+            assertThat(Application.calcStrikeCount(answer, "923")).isEqualTo(2);
+        }
+
+        @Test
+        @DisplayName("스트라이크 3개인 경우 테스트(같은 수가 같은 자리에 있는 숫자의 개수 3개)")
+        void calcStrikeCount_matchThree_Return3() {
+            String answer = "123";
+            assertThat(Application.calcStrikeCount(answer, "123")).isEqualTo(3);
+        }
+
+        @Test
+        @DisplayName("볼 1개인 경우 테스트(같은 수가 다른 자리에 있는 숫자의 개수 1개)")
+        void calcBallCount_matchOne_Return1() {
+            String answer = "123";
+            assertThat(Application.calcBallCount(answer, "451")).isEqualTo(1);
+            assertThat(Application.calcBallCount(answer, "617")).isEqualTo(1);
+            assertThat(Application.calcBallCount(answer, "289")).isEqualTo(1);
+            assertThat(Application.calcBallCount(answer, "482")).isEqualTo(1);
+            assertThat(Application.calcBallCount(answer, "356")).isEqualTo(1);
+            assertThat(Application.calcBallCount(answer, "738")).isEqualTo(1);
+            assertThat(Application.calcBallCount(answer, "138")).isEqualTo(1);
+            assertThat(Application.calcBallCount(answer, "172")).isEqualTo(1);
+        }
+
+        @Test
+        @DisplayName("볼 2개인 경우 테스트(같은 수가 다른 자리에 있는 숫자의 개수 2개)")
+        void calcBallCount_matchTwo_Return2() {
+            String answer = "123";
+            assertThat(Application.calcBallCount(answer, "281")).isEqualTo(2);
+            assertThat(Application.calcBallCount(answer, "371")).isEqualTo(2);
+            assertThat(Application.calcBallCount(answer, "239")).isEqualTo(2);
+            assertThat(Application.calcBallCount(answer, "213")).isEqualTo(2);
+            assertThat(Application.calcBallCount(answer, "321")).isEqualTo(2);
+            assertThat(Application.calcBallCount(answer, "132")).isEqualTo(2);
+        }
+
+        @Test
+        @DisplayName("볼 3개인 경우 테스트(같은 수가 다른 자리에 있는 숫자의 개수 3개)")
+        void calcBallCount_matchThree_Return3() {
+            String answer = "123";
+            assertThat(Application.calcBallCount(answer, "312")).isEqualTo(3);
+            assertThat(Application.calcBallCount(answer, "231")).isEqualTo(3);
+        }
+    }
 }
