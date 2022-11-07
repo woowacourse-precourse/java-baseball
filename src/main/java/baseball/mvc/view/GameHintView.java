@@ -3,7 +3,6 @@ package baseball.mvc.view;
 import baseball.domain.game.GameResult;
 
 public enum GameHintView {
-
     ONLY_STRIKE("%d스트라이크"),
 
     ONLY_BALL("%d볼"),
