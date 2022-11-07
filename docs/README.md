@@ -6,37 +6,41 @@ Summary
 
 사용자
 --
-    1. 입력 값이 3자리인지 확인하는 함수
+    1. 사용자의 입력을 요청하는 함수
+        - method : requestInputData
+        - return : String
+
+    2. 입력 값이 3자리인지 확인하는 함수
         - method : inputLengthCheck
         - param : String input
         - return : boolean
 
-    2. 입력 값이 숫자인지 확인하는 함수
+    3. 입력 값이 숫자인지 확인하는 함수
         - method : inputCheckInt
         - param : String input
         - return : boolean
 
-    3. 입력 값을 int 배열로 변환하는 함수
+    4. 입력 값을 int 배열로 변환하는 함수
         - method : inputToIntArr 
         - param : String input
         - return : int[]
 
-    4. 입력 값 자릿 값 별로 1~9인지 확인하는 함수
+    5. 입력 값 자릿 값 별로 1~9인지 확인하는 함수
         - method : intArrValidation 
         - param : int[] intArr
         - return : boolean
 
-    5. int 배열을 List<Integer>로 반환해주는 함수
+    6. int 배열을 List<Integer>로 반환해주는 함수
         - method : intArrToCollectionList
         - param : int[] intArr
         - return : List<Integer> 
 
-    6. List<Integer> 안에 중복 값이 있는지 확인하는 함수
+    7. List<Integer> 안에 중복 값이 있는지 확인하는 함수
         - method : collectionListValidation
         - param : List<Integer> list
         - return : boolean
 
-    7. 입력 값을 위 [사용자 1~6번] 항목을 거쳐 List<Integer>를 반환하는 함수
+    8. 입력 값을 위 [사용자 1~6번] 항목을 거쳐 List<Integer>를 반환하는 함수
         - method : createUserNumList
         - param : String input
         - return : List<Integer>
