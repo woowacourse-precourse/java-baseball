@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.model.RandomNumGenerator;
-
 import java.util.Arrays;
 import java.util.List;
 
