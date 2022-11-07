@@ -4,10 +4,10 @@ import baseball.util.NumberGenerator;
 
 import java.util.List;
 
-public class Ball {
+public class GameNumbers {
     private final List<Integer> numberList;
 
-    public Ball() {
+    public GameNumbers() {
         this.numberList = NumberGenerator.createGameNumbers();
     }
 

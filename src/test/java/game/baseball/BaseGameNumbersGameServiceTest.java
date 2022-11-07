@@ -11,7 +11,7 @@ import java.io.*;
 import static baseball.game.baseball.BaseBallGameService.inputMessage;
 import static baseball.game.baseball.BaseBallGameService.startMessage;
 
-public class BaseBallGameServiceTest extends NsTest {
+public class BaseGameNumbersGameServiceTest extends NsTest {
 
     private final BaseBallGameService gameService = new BaseBallGameService();
 

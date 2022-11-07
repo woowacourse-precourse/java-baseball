@@ -12,10 +12,10 @@ public class BaseBallGamePlayer {
     private final long ballCount;
     private final long strikeCount;
     private final List<Integer> userInput;
-    private final Ball ball;
+    private final GameNumbers gameNumbers;
 
-    public BaseBallGamePlayer(Ball ball) {
-        this.ball = ball;
+    public BaseBallGamePlayer(GameNumbers gameNumbers) {
+        this.gameNumbers = gameNumbers;
         this.userInput = userInput();
         ballCount = countBall();
         strikeCount = countStrike();
@@ -43,7 +43,7 @@ public class BaseBallGamePlayer {
 
     long countBall() {
         return userInput.stream()
-                .filter(ball::isContains)
+                .filter(gameNumbers::isContains)
                 .filter(this::isBall)
                 .count();
     }
@@ -55,10 +55,10 @@ public class BaseBallGamePlayer {
     }
 
     boolean isStrike(int number) {
-        return userInput.indexOf(number) == ball.getIndex(number);
+        return userInput.indexOf(number) == gameNumbers.getIndex(number);
     }
 
     boolean isBall(int number) {
-        return userInput.indexOf(number) != ball.getIndex(number);
+        return userInput.indexOf(number) != gameNumbers.getIndex(number);
     }
 }

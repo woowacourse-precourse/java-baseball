@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import static baseball.domain.baseball.BaseBallGameResult.*;
 
-public class BaseBallGameResultTest {
+public class BaseGameNumbersGameResultTest {
 
     private final BaseBallGameResult gameResult = new BaseBallGameResult();
 
