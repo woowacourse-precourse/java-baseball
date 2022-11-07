@@ -105,19 +105,31 @@ public class Baseball {
     private String getHint(int ballCount, int strikeCount) {
         String hint = "";
 
-        if (strikeCount == 0 && ballCount == 0) {
+        if (hasNothing(ballCount, strikeCount)) {
             hint = NOTHING_MESSAGE;
         }
 
-        if (ballCount > 0) {
+        if (hasBallCount(ballCount)) {
             hint = ballCount + BALL_MESSAGE;
         }
 
-        if (strikeCount > 0) {
+        if (hasStrikeCount(strikeCount)) {
             hint = hint + strikeCount + STRIKE_MESSAGE;
         }
 
         return hint;
+    }
+
+    private boolean hasNothing(int ballCount, int strikeCount) {
+        return strikeCount == 0 && ballCount == 0;
+    }
+
+    private boolean hasBallCount(int ballCount) {
+        return ballCount > 0;
+    }
+
+    private boolean hasStrikeCount(int strikeCount) {
+        return strikeCount > 0;
     }
 
     private boolean isAnswer() {
