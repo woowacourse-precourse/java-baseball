@@ -6,4 +6,4 @@
 6. 종료조건 구현
 
 //
-리팩토링 파일나누기 : input, error, count, array
+리팩토링 파일나누기 : input, error, count, array, print
