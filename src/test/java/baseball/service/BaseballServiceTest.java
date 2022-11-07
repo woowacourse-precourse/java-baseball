@@ -29,4 +29,17 @@ public class BaseballServiceTest {
         Assertions.assertEquals(answer, strike);
     }
 
+    @Test
+    void 재시작_상태_체크() {
+        int restart = 1;
+        baseballService.selectRestart(restart);
+        Assertions.assertEquals(true,baseballService.getGameStatus());
+    }
+
+    @Test
+    void 종료_상태_체크() {
+        int restart = 2;
+        baseballService.selectRestart(restart);
+        Assertions.assertEquals(false,baseballService.getGameStatus());
+    }
 }
