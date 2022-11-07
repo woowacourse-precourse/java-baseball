@@ -10,8 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
-    private static Number number;
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
