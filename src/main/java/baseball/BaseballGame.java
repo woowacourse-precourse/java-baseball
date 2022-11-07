@@ -5,9 +5,15 @@ import static baseball.Const.START_MESSAGE;
 
 public class BaseballGame {
 
-    private UserInput userInput = new UserInput();
-    private AnswerGenerator answerGenerator = new AnswerGenerator();
-    private BaseballGameHint baseballGameHint = new BaseballGameHint();
+    private UserInput userInput;
+    private AnswerGenerator answerGenerator;
+    private BaseballGameHint baseballGameHint;
+
+    public void init(){
+        userInput = new UserInput();
+        answerGenerator = new AnswerGenerator();
+        baseballGameHint = new BaseballGameHint();
+    }
 
     public void start() {
         System.out.println(START_MESSAGE);

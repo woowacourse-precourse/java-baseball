@@ -7,10 +7,11 @@ import static baseball.Const.*;
 public class UserInput {
 
     private int[] expectedAnswer;
-    private UserInputValidation userInputValidation = new UserInputValidation();
+    private UserInputValidation userInputValidation;
 
     public UserInput() {
         expectedAnswer = new int[NUMBER_LENGTH];
+        userInputValidation = new UserInputValidation();
     }
 
     public int[] getUserInput() {
