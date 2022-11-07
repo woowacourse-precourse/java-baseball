@@ -77,4 +77,10 @@ class InputTest {
         assertThatIllegalArgumentException().isThrownBy(() -> input.inputUserNumberValid(userNumber));
     }
 
+    @DisplayName("재시작 여부를 위한 입력 숫자 예외 처리 테스트")
+    @Test
+    void inputRestartOrExitNumberValid() {
+        String inputNumber = "33";
+        assertThatIllegalArgumentException().isThrownBy(() -> input.inputRestartOrExitNumberValid(inputNumber));
+    }
 }
