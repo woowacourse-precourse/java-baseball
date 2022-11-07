@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.validator.InputValidator;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Player {
     }
 
     public void setNumbers(String playerNumber) {
+        InputValidator.validatePlayerNumber(playerNumber);
         this.playerNumbers = toIntegerList(playerNumber);
     }
 

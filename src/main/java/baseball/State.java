@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.validator.InputValidator;
+
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
@@ -35,6 +37,7 @@ public enum State {
     }
 
     public static State getState(String number) {
+        InputValidator.validateStateNumber(number);
         return Optional.ofNullable(numbers.get(number)).get();
     }
 }

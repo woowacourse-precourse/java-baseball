@@ -4,7 +4,6 @@ import baseball.State;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.Player;
-import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,13 +11,11 @@ public class Baseball {
     private final Computer computer;
     private final Player player;
     private final Hint hint;
-    private final InputValidator inputValidator;
 
     public Baseball() {
         computer = new Computer();
         player = new Player();
         hint = new Hint();
-        inputValidator = new InputValidator();
     }
 
     public void startGame() {
@@ -44,7 +41,6 @@ public class Baseball {
 
     private void setPlayerNumbers() {
         String playerNumber = InputView.inputPlayerNumber();
-        inputValidator.validatePlayerNumber(playerNumber);
         player.setNumbers(playerNumber);
     }
 
@@ -65,7 +61,6 @@ public class Baseball {
 
     private State getState() {
         String stateNumber = InputView.inputStateNumber();
-        inputValidator.validateStateNumber(stateNumber);
 
         return State.getState(stateNumber);
     }
