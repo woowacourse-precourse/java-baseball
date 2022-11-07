@@ -8,8 +8,6 @@ import java.util.stream.Stream;
 
 public class NumberBallsInput implements UserInput {
     private final String numberBallsInput;
-    private final int MIN_BALL_NUMBER = '1';
-    private final int MAX_BALL_NUMBER = '9';
     private final int BALL_LENGTH = 3;
 
     public NumberBallsInput() {
@@ -22,8 +20,10 @@ public class NumberBallsInput implements UserInput {
             throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
         }
 
-        if (!supportsNumberRange(input)) {
-            throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_RANGE);
+        try {
+            hasNumber(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
         }
 
         if (includesDuplicateNumber(input)) {
@@ -36,12 +36,8 @@ public class NumberBallsInput implements UserInput {
         return !supportsInputLength(exceptDuplicateUserInput);
     }
 
-    private boolean supportsNumberRange(String userInput) {
-        return userInput.chars().allMatch(this::fromOneToNine);
-    }
-
-    private boolean fromOneToNine(int character) {
-        return character >= MIN_BALL_NUMBER && character <= MAX_BALL_NUMBER;
+    private void hasNumber(String userInput) {
+        Integer.parseInt(userInput);
     }
 
     private boolean supportsInputLength(String userInput) {
