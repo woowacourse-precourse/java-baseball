@@ -73,4 +73,12 @@ public class Player {
         }
     }
 
+    public void setInputNum(String input){
+        inputNum = changeInputToList(input);
+    }
+
+    public List<Integer> getInputNum(){
+        return inputNum;
+    }
+
 }
