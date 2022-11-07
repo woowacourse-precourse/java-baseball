@@ -15,6 +15,7 @@ public class UserInput {
     public static String numberInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        input = input.trim();
         try {
             if (!isValidInput(input))
                 throw new IllegalArgumentException();
@@ -27,6 +28,7 @@ public class UserInput {
 
     public static String continueInput() {
         String input = Console.readLine();
+        input = input.trim();
         try {
             if (!isValidContInput(input)) {
                 throw new IllegalArgumentException();
