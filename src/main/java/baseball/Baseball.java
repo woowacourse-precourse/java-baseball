@@ -47,7 +47,7 @@ class Baseball {
         return this.ball - this.strike;
     }
 
-    private String getScore() {
+    public String getScore() {
         if (getBall() == ZERO && getStrike() == ZERO) {
             return SCORE_NOTHING;
         }
