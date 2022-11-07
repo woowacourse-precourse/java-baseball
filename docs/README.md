@@ -40,3 +40,6 @@
         3. ouput: x
 8. 새 게임 여부 확인
     - checkRepeate
+      1. description: 새 입력을 받고 반복 여부 확인, 1이면 새 게임 시작, 2이면 종료, 그 외는 예외
+      2. input: x
+      3. ouput: isRepeate(boolean)
