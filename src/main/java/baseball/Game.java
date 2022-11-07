@@ -13,9 +13,9 @@ public class Game {
     }
 
     public boolean tryCycle() {
-        String playerNumber = player.getNumber();
-        player.isValidNumber(playerNumber);
-        Result result = computer.judgeNumber(playerNumber);
+        String guessedNumber = player.getNumber();
+        player.isValidNumber(guessedNumber);
+        Result result = computer.judgeNumber(guessedNumber);
         System.out.println(result.toString());
         return result.checkFinish();
     }
