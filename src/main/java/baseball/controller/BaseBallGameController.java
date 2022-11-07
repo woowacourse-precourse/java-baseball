@@ -6,6 +6,7 @@ import baseball.view.PrintGuideMessage;
 import baseball.view.ReplayNumberInput;
 
 public class BaseBallGameController {
+    private static final String RESTART = "1";
     private final BaseBallGame baseBallGame;
 
     public BaseBallGameController(BaseBallGame baseBallGame) {
@@ -45,7 +46,7 @@ public class BaseBallGameController {
         PrintGuideMessage.printRestartMessage();
         ReplayNumberInput replayNumberInput = new ReplayNumberInput();
         String input = replayNumberInput.inputReplayNumber();
-        if (input.equals("1")) {
+        if (input.equals(RESTART)) {
             return true;
         }
         return false;
