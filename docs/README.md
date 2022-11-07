@@ -7,11 +7,12 @@
     * 해당 인덱스의 수가 일치하는지 검사
   * `isBall`
      * 해당 숫자가 컴퓨터의 수에 있고, 해당 인덱스의 수가 다른지 검사
+  * `generateOutput`
+    * strike와 ball을 파라미터로 받아 출력할 String 생성하고 return
   * `judge`
     * 3개의 숫자에 대해 각각 `isStrike`, `isBall` 메소드를 활용 하여 스트라이크, 볼 개수 판단
-    * 결과가 0스트라이크, 0볼이면 '낫싱' 출력 후 false return
-    * '낫싱' 조건과 종료 조건이 아니라면 결과 출력 후 false return
-    * 결과가 3스트라이크일 경우 종료 문구 출력하고 true return
+    * `generateOutput`으로 받은 결과문을 출력
+    * 결과가 3스트라이크일 경우 true return
   * `play`
     * 게임 시작 문구 출력
     * 게임 과정
