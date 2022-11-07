@@ -7,8 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    static final int NEW_GAME_NUMBER = 1;
+    static final int END_GAME_NUMBER = 2;
+
+    static final int MIN_RANGE_NUM = 1;
+    static final int MAX_RANGE_NUM = 9;
+    static final int MAX_ARRAY_SIZE = 3;
+    static final int ZERO_VALUE = 0;
+
+    public boolean threeStrike = false;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         Application app = new Application();
     }
 
