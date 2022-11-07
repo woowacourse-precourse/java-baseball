@@ -4,24 +4,83 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+
+    private static String userInput;
+    private static int targetNumber;
+
+    private static class BallAndStrike {
+        private int ball;
+        private int strike;
+
+        BallAndStrike() {
+            this.ball = 0;
+            this.strike = 0;
+        }
+
+        public void print() {
+            if (this.ball == 0 || this.strike == 0) {
+                if(this.ball == 0){
+                    System.out.println(this.strike + "스트라이크");
+                }
+                else{
+                    System.out.println(this.ball + "볼");
+                }
+
+            } else {
+                System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         Randoms.pickNumberInRange(1, 9);
 
         startGamePrint();
         //while
-        while(true){
+        while (true) {
             //컴퓨터 수 생성
+            targetNumber = makeTargetNumber();
 
-            getNumberPrint();
-            gameOverPrint();
+            while (true) {
+                //사용자 값 입력
+                getNumberPrint();
+                userInput = Console.readLine();
+                validUserInput(Integer.parseInt(userInput));
+
+                BallAndStrike ballAndStrike = compareNumbers(targetNumber, Integer.parseInt(userInput));
+                if (ballAndStrike.strike == 3) {
+                    gameOverPrint();
+                    break;
+                }
+                ballAndStrike.print();
+
+
+            }
+
+            //게임 진행 선택
             gameContinuePrint();
-
-
-
+            userInput = Console.readLine();
+            validGameContinueInput(Integer.parseInt(userInput));
+            if (userInput.equals("2")) break;
         }
-
     }
+
+    //TODO
+    private static int makeTargetNumber() {
+
+        return 0;
+    }
+
+    //TODO
+    private static BallAndStrike compareNumbers(int targetNumber, int userInput) {
+        BallAndStrike count = new BallAndStrike();
+
+
+
+        return count;
+    }
+
 
     private static void getNumberPrint() {
         System.out.print("숫자를 입력해주세요. : ");
@@ -37,6 +96,16 @@ public class Application {
 
     private static void startGamePrint() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    private static void validUserInput(int number) {
+        //세자리 수가 아닐때
+        //세자리 수 중 0이 있을 때
+    }
+
+    private static void validGameContinueInput(int number) {
+        //1또는 2가 아닐때
+
     }
 
 }
