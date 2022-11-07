@@ -1,4 +1,6 @@
-package baseball.domain;
+package baseball.domain.result;
+
+import baseball.domain.ball.BallType;
 
 public class PlayResult {
 
