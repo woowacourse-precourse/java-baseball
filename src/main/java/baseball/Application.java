@@ -58,4 +58,12 @@ public class Application {
     	return total;
     }
     
+    // 자리와 일치하는 값의 갯수
+    public static int strike(List<Integer> computer, List<Integer> userInput) {
+    	int strike = 0;
+    	for(int i = 0 ; i < 3 ; i++) {
+    		if(computer.get(i).equals(userInput.get(i))) strike++;
+    	}
+    	return strike;
+    }
 }
