@@ -16,8 +16,41 @@ public class Application {
 		List<Integer> computerNumbers = getComputerNumbers();
 		List<Integer> playerNumbers = getPlayerNumbers();
 
+		int strike = sumStrike(computerNumbers, playerNumbers);
+		int ball = sumBall(computerNumbers, playerNumbers) - strike;
+		
 		System.out.println(computerNumbers);
 		System.out.println(playerNumbers);
+	}
+	
+	public static int sumBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+		
+		int count = 0;
+		for (int index = 0; index < LENGTH; index++) {
+			
+			int player = playerNumbers.get(index);
+			boolean isBall = computerNumbers.contains(player);
+			if (isBall) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public static int sumStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+		
+		int count = 0;
+		for (int index = 0; index < LENGTH; index++) {
+			
+			int computer = computerNumbers.get(index);
+			int player = playerNumbers.get(index);
+			
+			boolean isStrike = computer == player;
+			if (isStrike) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	public static void endGame() {
