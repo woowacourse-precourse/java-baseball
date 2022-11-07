@@ -4,14 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class GameInit {
+public class GameManger {
     private List<Integer> computerAnswer;
     public static int strikeCount;
     public static int ballCount;
 
     public static final int MAX_COUNT = 3; //answer
 
-    public GameInit(){
+    public GameManger(){
         computerAnswer = CreateRandomNumber.getComputerAnswer();
     }
 
