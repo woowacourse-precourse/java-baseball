@@ -1,14 +1,13 @@
 package baseball;
 
-import baseball.computer.BaseballCounter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CountBallAndStrikeTest {
-    private final BaseballCounter baseballCounter = new BaseballCounter();
+public class BaseballCounterTest {
+    private final baseball.computer.BaseballCounter baseballCounter = new baseball.computer.BaseballCounter();
 
     @Test
     void 결과_낫싱() {
