@@ -5,11 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         List<Integer> randomNumList = makeRandomNum();
-        String inputString = Console.readLine();
+        List<Integer> inputNumList = makeInputNumList();
     }
     public static List<Integer> makeRandomNum() {
         List<Integer> randomNumList = new ArrayList<>();
@@ -20,5 +21,17 @@ public class Application {
             }
         }
         return randomNumList;
+    }
+    public static List<Integer> makeInputNumList() {
+        System.out.print("숫자를 입력해주세요 : ");
+
+        String inputString = Console.readLine();
+
+        List<Integer> inputNumList = new ArrayList<>();
+        for (int inputStringIdx = 0; inputStringIdx < inputString.length(); inputStringIdx++) {
+            int nowIdxNum = (int) inputString.charAt(inputStringIdx) - 48;
+            inputNumList.add(nowIdxNum);
+        }
+        return inputNumList;
     }
 }
