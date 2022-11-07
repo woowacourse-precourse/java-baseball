@@ -58,4 +58,13 @@ public class BallCount {
         return ballCountStringList.get(ballCountStatement.indexOf(true));
     }
 
+    public String toStringRecords() {
+        StringBuilder records = new StringBuilder();
+        for (int index = BaseballConstants.FIRST_INDEX_OF_BASEBALL_NUMBER; index < BaseballConstants.LAST_INDEX_OF_BASEBALL_NUMBER; index++) {
+            records.append(inputBaseballNumbers.get(index));
+        }
+        records.append(" : ").append(this);
+        return records.toString();
+    }
+
 }
