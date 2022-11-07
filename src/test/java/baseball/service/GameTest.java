@@ -6,7 +6,6 @@ import baseball.domain.StrikeAndBall;
 import baseball.util.RandomUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
