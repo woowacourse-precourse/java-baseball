@@ -6,6 +6,7 @@ public class Game {
     public void run() {
         rule = new Rule(new Player(), new Computer());
         do {
+            rule.printStart();
             rule.generateRandomNumber();
             rule.getNumber();
             rule.isValid();
