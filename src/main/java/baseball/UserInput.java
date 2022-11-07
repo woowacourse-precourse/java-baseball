@@ -50,9 +50,13 @@ public class UserInput {
         if (!isValidLength()) {
             throw new IllegalArgumentException("3자리의 수를 입력하셔야 합니다.");
         }
+        if (!isValidRangeNumber()) {
+            throw new IllegalArgumentException("1부터 9까지의 수를 입력하셔야 합니다.");
+        }
         if (!isValidGuessNumber()) {
             throw new IllegalArgumentException("서로 다른 수를 입력하셔야 합니다.");
         }
+
     }
 
     public void isValidRestartOrQuitGame() {
@@ -60,7 +64,9 @@ public class UserInput {
             throw new IllegalArgumentException("새로운 게임을 원하시면 1, 게임 종료를 원하시면 2를 입력해주세요");
         }
     }
-
+    private boolean isValidRangeNumber() {
+        return !input.contains("0");
+    }
     private boolean isValidLength() {
         return input.length() == NUMBERS_LENGTH;
     }
