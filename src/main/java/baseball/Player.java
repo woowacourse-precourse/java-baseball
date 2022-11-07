@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+
 public class Player {
     private static final String RESTART_GAME_CODE = "1";
     private static final String QUIT_GAME_CODE = "2";
@@ -20,6 +22,18 @@ public class Player {
 
     private boolean isValidFormat(String input) {
         return input.matches(NUMBER_FORMAT);
+    }
+
+    private boolean isAllDifferent(String input) {
+        HashSet<Character> hs = new HashSet<>();
+
+        for (char c : input.toCharArray()) {
+            if (!hs.add(c)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public boolean getRestartOrQuitInput() {
