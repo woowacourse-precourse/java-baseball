@@ -21,6 +21,20 @@ public class Application {
         return count;
     }
 
+    public static int countBall(List<Integer> input, List<Integer> computer) {
+        int count = 0;
+        for (int i = 0; i < input.size(); i++) {
+            if (!computer.contains(input.get(i))) {
+                continue;
+            }
+            if (input.get(i).intValue() == computer.get(i).intValue()) {
+                continue;
+            }
+            count++;
+        }
+        return count;
+    }
+
     public static List<Integer> convertBaseBallByLine(String line) {
         if (!line.matches("^\\d{3}$")) {
             throw new IllegalArgumentException();
