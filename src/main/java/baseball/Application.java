@@ -47,4 +47,14 @@ public class Application {
             System.out.println("낫싱");
         }
     }
+
+    public static List<Integer> getUserNumberList(int userNumber) {
+        List<Integer> userNumbersList = new ArrayList<>();
+        while (userNumber > 0) {
+            userNumbersList.add(userNumber % 10);
+            userNumber /= 10;
+        }
+        Collections.reverse(userNumbersList);
+        return userNumbersList;
+    }
 }
