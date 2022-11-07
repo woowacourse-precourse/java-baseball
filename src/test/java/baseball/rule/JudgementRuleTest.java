@@ -1,11 +1,10 @@
-package baseball.domain.rule;
+package baseball.rule;
 
 import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.BallCount;
 import baseball.domain.Numbers;
-import baseball.domain.strategy.FixedNumberProducingStrategy;
-import baseball.rule.JudgementRule;
+import baseball.strategy.FixedNumberProducingStrategy;
 import baseball.strategy.NumberProducingStrategy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
