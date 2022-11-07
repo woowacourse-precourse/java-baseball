@@ -25,13 +25,21 @@ public class BaseballComputer {
         return Console.readLine();
     }
 
-    public void init(){
+    public int init(){
         inputNumberToComputerMessage();
         String answer = userInputNumberInGame();
 
         if(!checkHitNumber(answer)){
             init();
         }
+
+        printRestartOrEnd();
+        String choice = inputRestartOrEnd();
+
+        if(choice.equals("1")){
+            init();
+        }
+        return 0;
     }
 
     public void createRandomNumber() {
