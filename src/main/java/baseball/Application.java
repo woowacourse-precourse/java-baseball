@@ -6,6 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    public static int getStrike(List<Integer> answer, String userInput) {
+        Integer strike = 0;
+
+        for (int index = 0; index < 3; index++) {
+            if (answer.get(index) == userInput.charAt(index)) {
+                strike += 1;
+            }
+        }
+
+        return strike;
+    }
+
     public void startGame() {
         System.out.print("숫자 야구 게임을 시작합니다.");
     }
