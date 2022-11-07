@@ -2,13 +2,15 @@ package baseball.datamodel;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
     private List<Integer> numbers;
-    public ComputerNumber() {}
+
+    public ComputerNumber() {
+    }
+
     public void makeNumber() {
         numbers = new ArrayList<>();
         while (numbers.size() < 3) {
@@ -18,6 +20,7 @@ public class ComputerNumber {
             }
         }
     }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

@@ -22,7 +22,7 @@ public class GameProgram {
     private final CalculateScore calculator = new CalculateScore();
     private final ComputerNumber computer = new ComputerNumber();
 
-    public void start(){
+    public void start() {
         computer.makeNumber();
         computerNumList = computer.getNumbers();
 
@@ -40,7 +40,7 @@ public class GameProgram {
             user.checkNumber(input);
             userNumList = user.getNumbers();
 
-            for(int i = 0; i <TOTAL_NUMBER; i++) {
+            for (int i = 0; i < TOTAL_NUMBER; i++) {
                 int result = calculator.compareNumber(userNumList.get(i), i);
                 scoreCounter(result);
             }
@@ -61,8 +61,8 @@ public class GameProgram {
         }
     }
 
-    private void scoreCounter (int result) {
-        if (result == 1){
+    private void scoreCounter(int result) {
+        if (result == 1) {
             strike++;
         } else if (result == 2) {
             ball++;

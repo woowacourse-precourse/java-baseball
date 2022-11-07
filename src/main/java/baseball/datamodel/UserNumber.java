@@ -7,7 +7,8 @@ public class UserNumber {
     private static final int MAX_LENGTH = 3;
     private List<Integer> numbers;
 
-    public UserNumber() {}
+    public UserNumber() {
+    }
 
     public void checkNumber(String input) {
         numbers = new ArrayList<>();
@@ -17,9 +18,9 @@ public class UserNumber {
             throw new IllegalArgumentException();
         }
 
-        for (int i = 0; i < MAX_LENGTH; i++){
+        for (int i = 0; i < MAX_LENGTH; i++) {
             num = Character.getNumericValue(input.charAt(i));
-            if (num < 1 || num > 9){
+            if (num < 1 || num > 9) {
                 throw new IllegalArgumentException();
             }
             numbers.add(num);
