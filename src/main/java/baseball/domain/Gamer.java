@@ -21,7 +21,9 @@ public class Gamer {
     }
 
     public String inputReset() {
-        return Console.readLine();
+        String inputReset = Console.readLine();
+        InputException.isNumber(inputReset);
+        return inputReset;
     }
 
     private int[] toIntArray(String inputNumbers) {
