@@ -16,7 +16,7 @@ public class Validator {
     }
 
     public static void validateLength(String input) {
-        if (input.length() != 3) {
+        if (input.length() != Game.LENGTH) {
             throw new IllegalArgumentException(LENGTH_EXCEPTION);
         }
     }
@@ -40,7 +40,7 @@ public class Validator {
     }
 
     public static void validateResponse(String response) {
-        if (!response.equals("1") && !response.equals("2")) {
+        if (!response.equals(Game.RESTART_RESPONSE) && !response.equals(Game.QUIT_RESPONSE)) {
             throw new IllegalArgumentException(RESPONSE_EXCEPTION);
         }
     }
