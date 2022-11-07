@@ -2,8 +2,13 @@ package domain;
 
 public class Game {
 
+    int[] computerNumber;
     int strike;
     int ball;
+
+    public void setComputerNumber(int[] randomNumber) {
+        computerNumber = randomNumber;
+    }
 
     public void initStrike() {
         strike = 0;
