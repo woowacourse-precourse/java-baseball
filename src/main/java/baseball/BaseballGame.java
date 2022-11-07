@@ -26,9 +26,12 @@ public class BaseballGame {
 
         // 3. 사용자가 숫자를 모두 맞출때까지 계속 숫자 입력받기
         boolean gotAnswer = false;
+        int userInput;
+
         while (!gotAnswer) {
+
             // 3-1. 사용자로부터 서로 다른 세자리 수 받기
-            int userInput = getUserInput();
+            userInput = getUserInput();
             if (!isValidNumber(userInput)) {
                 throw new IllegalArgumentException();
             }
@@ -38,8 +41,12 @@ public class BaseballGame {
             int ballCnt = countBalls(targetNumber, userInput);
             String cntInfo = buildCntInfo(strikeCnt, ballCnt);
             System.out.println(cntInfo);
-        }
 
+            if (strikeCnt == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                gotAnswer = true;
+            }
+        }
     }
 
     private int createTargetNumber() {
@@ -50,8 +57,8 @@ public class BaseballGame {
 
     private int getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
-        int userInput = Integer.parseInt(readLine());
-        return userInput;
+        int inputNumber = Integer.parseInt(readLine());
+        return inputNumber;
     }
 
     private boolean isValidNumber(int num) {
@@ -119,16 +126,18 @@ public class BaseballGame {
     }
 
     private String buildCntInfo(int strikeCnt, int ballCnt) {
-        String ballInfo = "";
-        if (ballCnt > 0) {
-            ballInfo += ballCnt + "볼 ";
+        String info = "";
+
+        if (ballCnt > 0 && strikeCnt > 0) {
+            info = ballCnt + "볼 " + strikeCnt + "스트라이크";
+        } else if (ballCnt > 0) {
+            info = ballCnt + "볼";
+        } else if (strikeCnt > 0) {
+            info = strikeCnt + "스트라이크";
+        } else {
+            info = "낫싱";
         }
 
-        String strikeInfo = "";
-        if (strikeCnt > 0) {
-            strikeInfo += strikeCnt + "스트라이크";
-        }
-
-        return ballInfo + strikeInfo;
+        return info;
     }
 }
