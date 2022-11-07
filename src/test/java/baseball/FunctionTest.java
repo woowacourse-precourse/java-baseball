@@ -48,4 +48,14 @@ public class FunctionTest {
         boolean result = isDifferentNumbers(list);
         assertThat(result).isEqualTo(false);
     }
+
+    @Test
+    void checkTrue_boolean으로_이루어진_리스트가_true값을_가지는지_판별(){
+        List<Boolean> list_1 = List.of(true,false);
+        boolean result_1 = checkTrue(list_1);
+        List<Boolean> list_2 = List.of(false,false);
+        boolean result_2 = checkTrue(list_2);
+        assertThat(result_1).isEqualTo(true);
+        assertThat(result_2).isEqualTo(false);
+    }
 }

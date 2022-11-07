@@ -44,4 +44,13 @@ public class Function {
         }
         return result;
     }
+
+    public static boolean checkTrue(List<Boolean> list){
+        if(list.contains(true)){
+            return true;
+        }
+        return false;
+    }
+
+
 }
