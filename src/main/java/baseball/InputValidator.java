@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Exception {
+public class InputValidator {
   // 길이가 3이 아니면
   public static boolean isRightLength(String userNumber) {
     if (userNumber.length() != Constant.REQUIRED_NUMBER_LENGTH) {
@@ -37,7 +37,7 @@ public class Exception {
   }
 
   // 모든 조건을 만족했을 때 true 반환
-  public static boolean isValidNumber(String userNumber) {
+  public static boolean isValidNumber(String userNumber) throws IllegalArgumentException { // 관련 개념, 이유 명확히
     return (isRightLength(userNumber) && isDuplicated(userNumber) && isNumber(userNumber));
   }
 

@@ -1,21 +1,23 @@
 package baseball;
 
 public class PlayBaseBall {
-  public static void playGame() {
+  static ContinueOrStop continueOrStop = new ContinueOrStop();
+
+  public static void playGame() { //싱글톤
     PrintOut.startMessage();
-    String computer = CreateRandomNumber.numberMaker();
-    while (true)
+    String computer = CreateRandomNumber.numberMaker(); //computerNumber
+    while (true) //게임 테이블 / 내부의 턴 횟수 구분
     {
-      PrintOut.inputMessage();
+      PrintOut.inputMessage(); //requsetInput~
       String user = UserScanner.input();
       int strike = Hint.strikeCount(computer, user);
-      if (Exception.isValidNumber(user)) {
-        PrintOut.scoreMessage(Hint.ballAndStrike(computer, user));
+      if (InputValidator.isValidNumber(user)) {  // void형식
+        PrintOut.scoreMessage(Hint.ballAndStrike(computer, user)); // ball-strike 의존성
       }
       if (strike == Constant.MAX_STRIKE) {
         PrintOut.endMessage();
-        PrintOut.continueMessage();
-        if (!ContinueOrStop.choice(UserScanner.input())) {
+        PrintOut.continueMessage(); //ask, request ~~~
+        if (!ContinueOrStop.choice(UserScanner.input())) { //choice 이름 /  과정이 눈에 보이게 //
           break;
         }
         computer = CreateRandomNumber.numberMaker();

@@ -1,6 +1,6 @@
 package baseball;
 
-public class Hint {
+public class Hint { // 싱글톤
   // 컴퓨터와 유저의 수가 자리 상관없이 일치만 한다면 ballCount
   public static int ballCount(String computer, String userNumber) {
     int ball = 0;

@@ -2,7 +2,7 @@ package baseball;
 
 public class ContinueOrStop {
   public static boolean choice(String num) {
-    if (Exception.isValidButton(num)) {
+    if (InputValidator.isValidButton(num)) {
       if (num.contains(Constant.CONTINUE_BUTTON)) {
         return true;
       }
@@ -10,6 +10,6 @@ public class ContinueOrStop {
         return false;
       }
     }
-    throw new IllegalArgumentException();
+    throw new IllegalArgumentException(); //InputException 안으로
   }
 }
