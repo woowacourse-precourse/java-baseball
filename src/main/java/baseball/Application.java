@@ -128,6 +128,9 @@ public class Application {
             System.out.println("3스트라이크");
             return true;
         }
+        if(strikeNumber == 0 && ballNumber == 0){
+
+        }
 
         return false;
     }
