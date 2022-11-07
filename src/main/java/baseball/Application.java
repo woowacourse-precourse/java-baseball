@@ -17,6 +17,8 @@ public class Application {
         while (true) {
             List<Integer> computer = initializeGame();
 
+            int endStatus = playGame(computer);
+
         }
     }
 
@@ -37,6 +39,37 @@ public class Application {
         }
 
         return computer;
+    }
+
+    static int playGame(List<Integer> computer) {
+        int endStatus = 0;
+
+        while (true) {
+            System.out.println("숫자를 입력해주세요 : ");
+
+            List<Integer> player = getPlayerInput();
+
+            int strike = countStrike(computer, player);
+            int ball = countBall(computer, player);
+
+            String hint = makeHint(strike, ball);
+
+            System.out.println(hint + "\n");
+
+            if(checkThreeStrike(strike)){
+                endStatus = replayOrTerminateGame();
+            }
+
+            if (endStatus == 1 || endStatus == 2) {
+                break;
+            } else if (endStatus == 0) {
+                continue;
+            } else {
+                throw new IllegalArgumentException();
+            }
+
+        }
+        return endStatus;
     }
 
     private static List<Integer> getPlayerInput() {
