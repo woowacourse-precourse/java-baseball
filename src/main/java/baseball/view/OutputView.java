@@ -10,6 +10,8 @@ public class OutputView {
 	private static final String GAME_RESULT_NOTHING_MESSAGE = "낫싱";
 	private static final String GAME_RESULT_STRIKE_COUNT_MESSAGE = "%d스트라이크";
 	private static final String GAME_RESULT_BALL_COUNT_MESSAGE = "%d볼";
+	private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
 	public static void displayGameStartMessage() {
 		System.out.println(START_GAME_MESSAGE);
 	}
@@ -28,5 +30,9 @@ public class OutputView {
 			System.out.printf(GAME_RESULT_BALL_COUNT_MESSAGE + BLANK + GAME_RESULT_STRIKE_COUNT_MESSAGE + LINE_BREAK,
 				game.getBallCount(), game.getStrikeCount());
 		}
+	}
+
+	public static void displayGameOverMessage() {
+		System.out.println(GAME_OVER_MESSAGE);
 	}
 }

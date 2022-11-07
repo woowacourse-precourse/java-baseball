@@ -22,7 +22,7 @@ public class Application {
             OutputView.displayGameResult(game);
 
             if (game.isGameOver()) {
-
+                OutputView.displayGameOverMessage();
             }
         }
     }
