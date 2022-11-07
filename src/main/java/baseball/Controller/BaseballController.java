@@ -37,7 +37,7 @@ public class BaseballController {
     private static int gamePlayDecisionValue = GAME_START;
 
     public void gameStart () throws IllegalArgumentException{
-
+        gamePlayDecisionValue = GAME_START;
         while(gamePlayDecisionValue == GAME_START || gamePlayDecisionValue == GAME_RESTART){
             gamePrepare();
             gamePlay();
