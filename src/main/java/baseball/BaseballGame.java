@@ -11,13 +11,9 @@ public class BaseballGame {
     private int strikeCount;
     private int ballCount;
 
-    private Computer computer;
-    private MessageCreator messageCreator;
+    private Computer computer = new Computer();
+    private MessageCreator messageCreator = new MessageCreator();
 
-    public BaseballGame() {
-        this.computer = new Computer();
-        this.messageCreator = new MessageCreator();
-    }
 
     public void start() {
         computer.createRandomNumbers();
