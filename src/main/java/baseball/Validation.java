@@ -9,7 +9,7 @@ public class Validation {
             boolean user_input_number_length = user_input_number.length() != 3;
 
             if (user_input_number_length||user_input_number_regex_match) {
-                throw new IllegalArgumentException("non-numeric value entered");
+                throw new IllegalArgumentException();
             }
         }
     }
