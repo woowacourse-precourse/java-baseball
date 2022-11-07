@@ -1,6 +1,8 @@
 package baseball;
 
 public class Game {
+    private Player player;
+    private Computer computer;
     public void startMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -14,7 +16,7 @@ public class Game {
         return letter == '1';
     }
 
-    public boolean tryCycle(Player player, Computer computer) {
+    public boolean tryCycle() {
         String playerNumber = player.getNumber();
         if (!player.isValidNumber(playerNumber)) {
             Player.isNotValid();
@@ -24,21 +26,21 @@ public class Game {
         return result.checkFinish();
     }
 
-    public void start(Player player) {
-        Computer computer = new Computer();
+    public void start() {
+        computer = new Computer();
         boolean finish = false;
         while (!finish) {
-            finish = tryCycle(player, computer);
+            finish = tryCycle();
         }
         finishMessage();
     }
 
     public void restartLoop() {
-        Player player = new Player();
+        player = new Player();
         startMessage();
         boolean restart = true;
         while (restart) {
-            start(player);
+            start();
             String playerRestart = player.getRestart();
             if (!player.isValidRestart(playerRestart)) {
                 Player.isNotValid();
