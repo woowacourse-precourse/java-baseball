@@ -75,6 +75,7 @@ public class Computer {
         }
 
         validateScoreCount(result);
+        validateNothing(result);
         return result;
     }
 
@@ -99,6 +100,13 @@ public class Computer {
             if(value > LENGTH){
                 throw new IllegalArgumentException(key + "의 카운트는 최대 + " + LENGTH + "입니다.");
             }
+        }
+    }
+
+    public static void validateNothing(Map<String, Integer> scoreMap){
+        Set<String> keySet = scoreMap.keySet();
+        if(keySet.size() > 1 && keySet.contains(NOTHING)){
+            throw new IllegalArgumentException(NOTHING + "이면서 다른 결과값도 가지고 있습니다.");
         }
     }
 
