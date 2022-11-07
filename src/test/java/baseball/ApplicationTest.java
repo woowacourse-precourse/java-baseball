@@ -6,10 +6,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ApplicationTest extends NsTest {
     @Test
+    @Order(1)
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -21,6 +26,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Order(2)
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
@@ -29,21 +35,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Order(3)
     void 랜덤숫자얻기() {
         assertThat(Application.getRandomThreeNumbers()).hasSize(3);
     }
 
     @Test
+    @Order(4)
     void 정수_정수리스트_변환() {
         assertThat(Application.getUserNumberList(123)).hasSize(3);
     }
 
     @Test
+    @Order(5)
     void 중복된_숫자가_있는지_판별() {
         assertThat(Application.hasDuplication("123")).isFalse();
     }
 
     @Test
+    @Order(6)
     void 다른_숫자나_문자가_있는지_판별() {
         assertThat(Application.hasOtherNumbersOrChars("ABC")).isTrue();
         assertThat(Application.hasOtherNumbersOrChars("102")).isTrue();
@@ -52,6 +62,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Order(7)
     void 입력_예외_테스트() {
         assertThatThrownBy(() -> Application.handleInputException("113"))
                 .isInstanceOf(IllegalArgumentException.class)
