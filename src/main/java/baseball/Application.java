@@ -131,6 +131,15 @@ public class Application {
         return hint;
     }
 
+    static public boolean isRepeat(String randomNumber, String userGuessNumber) {
+        boolean repeat = true;
+
+        if (randomNumber.equals(userGuessNumber)) {
+            repeat = false;
+        }
+        return repeat;
+    }
+
     public static void main(String[] args) {
         System.out.println(GAME_START_MESSAGE);
         startGame();
