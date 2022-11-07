@@ -43,4 +43,33 @@ class ApplicationTest extends NsTest {
         assertThat(baseball)
             .doesNotHaveDuplicates();
     }
+
+    @Test
+    void convertBaseBallByLine_SizeOver4_IllegalArgumentException() {
+        String line = "12345";
+        assertThatThrownBy(() -> Application.convertBaseBallByLine(line))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void convertBaseBallByLine_IncludeChar_IllegalArgumentException() {
+        String line = "1z2";
+        assertThatThrownBy(() -> Application.convertBaseBallByLine(line))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void convertBaseBallByLine_DuplicateNumber_IllegalArgumentException() {
+        String line = "131";
+        assertThatThrownBy(() -> Application.convertBaseBallByLine(line))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void convertBaseBallByLine_Number3_CorrectList() {
+        String line = "135";
+        assertThat(Application.convertBaseBallByLine(line))
+            .hasSize(3)
+            .doesNotHaveDuplicates();
+    }
 }
