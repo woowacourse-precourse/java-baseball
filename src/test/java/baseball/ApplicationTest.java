@@ -85,6 +85,14 @@ class ApplicationTest extends NsTest {
         void checkInputToList() {
             assertThat(getInputAsList()).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("중복된 값이 들어간 경우")
+        void checkDuplication() {
+            assertSimpleTest(() -> assertThatThrownBy(
+                () -> runException("111")
+            ).isInstanceOf(IllegalArgumentException.class));
+        }
     }
 
     @Override
