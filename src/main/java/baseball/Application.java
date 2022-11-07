@@ -16,7 +16,6 @@ public class Application {
         int replayFlag;
         List<Integer> answer;
         answer = makeRandomNum();
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             List<Integer> guess = new ArrayList<>();
@@ -29,10 +28,10 @@ public class Application {
             Result result = checkNum(answer, guess);
             if (correctAnswer(result)) {
                 printRight(result);
-                replayFlag = replay();          //(replayFlag) =>  1 : 재시작, 2 : 게임종료
+                replayFlag = replay();                  //(replayFlag) =>  1 : 재시작, 2 : 게임종료
             } else {
                 printWrong(result);
-                replayFlag = 0;                 //(replayFlag) => 0 : 오답, 게임 계속 진행
+                replayFlag = 0;                         //(replayFlag) => 0 : 오답, 게임 계속 진행
             }
             if (replayFlag == 1)
                 return true;
@@ -52,11 +51,17 @@ public class Application {
     }
 
     public static boolean inputError(String userInput) {
-        return (sizeNotMatch(userInput) || notInteger(userInput) || redundant(userInput));
+        if (sizeNotMatch(userInput) || notInteger(userInput) || redundant(userInput))
+            return true;
+        else
+            return false;
     }
 
     public static boolean sizeNotMatch(String userInput) {
-        return userInput.length() != 3;
+        if (userInput.length() != 3)
+            return true;
+        else
+            return false;
     }
 
     public static boolean notInteger(String userInput) {
@@ -71,7 +76,10 @@ public class Application {
         char firstNum = userInput.charAt(0);
         char secondNum = userInput.charAt(1);
         char thirdNum = userInput.charAt(2);
-        return (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum);
+        if (firstNum == secondNum || firstNum == thirdNum || secondNum == thirdNum)
+            return true;
+        else
+            return false;
     }
 
     public static void typeCast(String userInput, List<Integer> guess) {
@@ -82,9 +90,6 @@ public class Application {
     public static class Result {
         public int strike;
         public int ball;
-
-        public Result() {
-        }
 
         public Result(int strike, int ball) {
             this.strike = strike;
@@ -114,7 +119,10 @@ public class Application {
 
 
     public static boolean correctAnswer(Result result) {
-        return (result.getStrike() == 3);
+        if (result.getStrike() == 3)
+            return true;
+        else
+            return false;
     }
 
     public static void printRight(Result result) {
