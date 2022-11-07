@@ -1,7 +1,5 @@
 package baseball.core;
 
-import java.util.List;
-
 public class BallStrike {
 
     private static final String NOTHING = "낫싱";
@@ -41,29 +39,22 @@ public class BallStrike {
     }
 
     private String getBallStrikeResultString() {
-        String ballString = getBallString();
-        String strikeString = getStrikeString();
-        return toResultMessage(ballString, strikeString);
+        StringBuilder sb = new StringBuilder();
+        addBallString(sb);
+        addStrikeString(sb);
+        return sb.toString().trim();
     }
 
-    private String getStrikeString() {
-        String strikeString = "";
+    private void addStrikeString(StringBuilder sb) {
         if (strikeCount != 0) {
-            strikeString = String.format(STRIKE, strikeCount);
+            sb.append(String.format(STRIKE, strikeCount));
         }
-        return strikeString;
     }
 
-    private String getBallString() {
-        String ballString = "";
+    private void addBallString(StringBuilder sb) {
         if (ballCount != 0) {
-            ballString = String.format(BALL, ballCount);
+            sb.append(String.format(BALL, ballCount)).append(" ");
         }
-        return ballString;
-    }
-
-    private static String toResultMessage(String ballString, String strikeString) {
-        return String.join(" ", List.of(ballString, strikeString)).trim();
     }
 
     public int getBallCount() {
