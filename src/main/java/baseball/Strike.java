@@ -5,7 +5,7 @@ import java.util.List;
 public class Strike {
     private final List<Integer> player;
     private final List<Integer> computer;
-    private static final int NUMBER_LENGTH = 3;
+    private static final int INPUT_LENGTH = 3;
     private int count;
 
     public Strike(List<Integer> player, List<Integer> computer) {
@@ -15,7 +15,7 @@ public class Strike {
     }
 
     public int getCount() {
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < INPUT_LENGTH; i++) {
             if (isStrike(i)) {
                 count++;
             }

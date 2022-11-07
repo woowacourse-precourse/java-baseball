@@ -1,6 +1,9 @@
 package utils;
 
 public class Output {
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTTING = "낫싱";
 
     private Output() {}
 
@@ -18,21 +21,21 @@ public class Output {
 
     private static String getBallResult(int ballCount) {
         if (ballCount > 0) {
-            return ballCount + "볼 ";
+            return ballCount + BALL + " ";
         }
         return "";
     }
 
     private static String getStrikeResult(int strikeCount) {
         if (strikeCount > 0) {
-            return strikeCount + "스트라이크";
+            return strikeCount + STRIKE;
         }
         return "";
     }
 
     private static String getNottingResult(String result) {
         if (result.length() == 0) {
-            return "낫싱";
+            return NOTTING;
         }
         return result;
     }

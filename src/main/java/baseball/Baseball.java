@@ -8,6 +8,7 @@ import java.util.List;
 public class Baseball {
     private List<Integer> computer;
     private List<Integer> player;
+    private static final int MAX_STRIKE = 3;
 
     public Baseball() {
         this.computer = RandomNumberGenerator.generate();
@@ -37,15 +38,15 @@ public class Baseball {
     }
 
     private boolean isContinue(int strikeCount) {
-        if (!isCorrect(strikeCount)) {
+        if (!isMaxStrike(strikeCount)) {
             return true;
         }
         Output.doneGame();
         return isRestart();
     }
 
-    private boolean isCorrect(int strikeCount) {
-        return strikeCount == 3;
+    private boolean isMaxStrike(int strikeCount) {
+        return strikeCount == MAX_STRIKE;
     }
 
     private boolean isRestart() {
