@@ -20,16 +20,22 @@ public enum OutputMsgContainer {
         this.message = message;
     }
 
-    public static String makeMessage(List<Integer> score) {
-        if (score.get(0) == 0 && score.get(1) == 0) {
-            return NOTHING.message;
-        }
-        return makeBallMessageIfExists(score.get(0)) + SPACE.message
-                + makeStrikeMessageIfExists(score.get(1));
-    }
-
     public static void printMessage(OutputMsgContainer data) {
         System.out.print(data.message);
+    }
+    public static void printMessageWithNewLine(OutputMsgContainer data) {
+        System.out.println(data.message);
+    }
+    public static void printMessage(List<Integer> score) {
+        if (score.get(0) == 0 && score.get(1) == 0) {
+            System.out.println(NOTHING.message);
+            return;
+        }
+        System.out.println(
+                makeBallMessageIfExists(score.get(0))
+                + SPACE.message
+                + makeStrikeMessageIfExists(score.get(1))
+                );
     }
 
     private static String makeBallMessageIfExists(int ballCount) {
