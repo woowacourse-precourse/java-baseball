@@ -11,7 +11,6 @@ public class Rule {
         return total;
     }
 
-
     public int strike(String computer, String user) {
         int strike = 0;
         for (int i = 0; i < 3; i++) {
