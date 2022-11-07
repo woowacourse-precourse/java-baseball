@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static java.util.Arrays.*;
@@ -87,6 +88,56 @@ public class FunctionTest {
             assertThat(user.checkEachDifferent(asList(7, 2, 2))).isFalse();
             assertThat(user.checkEachDifferent(asList(1, 2, 3))).isTrue();
             assertThat(user.checkEachDifferent(asList(4, 1, 2))).isTrue();
+        }
+    }
+
+    @Nested
+    class GameTest {
+        @Test
+        @DisplayName("모두 맞췄을 때")
+        void test1() {
+            Game game = new Game();
+            game.calculateCount(asList(1, 2, 3), asList(1, 2, 3));
+
+            assertThat(game.strike).isEqualTo(3);
+            assertThat(game.ball).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("일부만 맞췄을 때")
+        void test2() {
+            Game game = new Game();
+            game.calculateCount(asList(1, 3, 9), asList(1, 2, 3));
+
+            assertThat(game.strike).isEqualTo(1);
+            assertThat(game.ball).isEqualTo(1);
+        }
+
+        @Test
+        @DisplayName("모두 틀렸을 때")
+        void test3() {
+            Game game = new Game();
+            game.calculateCount(asList(1, 2, 3), asList(4, 5, 6));
+
+            assertThat(game.strike).isEqualTo(0);
+            assertThat(game.ball).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("재시작 여부 확인")
+        void test4() {
+            Game game = new Game();
+
+            System.setIn(new ByteArrayInputStream("1".getBytes()));
+            assertThat(game.isFinish()).isTrue();
+
+            System.setIn(new ByteArrayInputStream("2".getBytes()));
+            assertThat(game.isFinish()).isFalse();
+
+            System.setIn(new ByteArrayInputStream("3".getBytes()));
+            assertThatThrownBy(() -> {
+                game.isFinish();
+            }).isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
