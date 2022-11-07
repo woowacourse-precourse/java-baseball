@@ -18,11 +18,8 @@ public class Application {
         //DO
         do {
             //랜덤 숫자 생성
-
             int[] computer = pickRandomNumbers();
             System.out.println(Arrays.toString(computer));
-
-
 
             int strike = 0;
 
@@ -61,8 +58,8 @@ public class Application {
                 randomNumbers[1] = pickNumberInRange(1,9);
                 randomNumbers[2] = pickNumberInRange(1,9);
             }
-            while (randomNumbers[0] == randomNumbers[1] &&
-                    randomNumbers[0] == randomNumbers[2] &&
+            while (randomNumbers[0] == randomNumbers[1] ||
+                    randomNumbers[0] == randomNumbers[2] ||
                     randomNumbers[1] == randomNumbers[2]);
 
 
