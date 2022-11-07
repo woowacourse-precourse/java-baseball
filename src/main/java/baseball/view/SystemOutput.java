@@ -2,19 +2,25 @@ package baseball.view;
 
 import baseball.util.Message;
 
-import java.util.List;
 
 public class SystemOutput {
-    public static void printResultMessage(List<Integer> result){
-        if(result.get(0) == 0 && result.get(1) == 1){
+    public static void printResultMessage(int ball, int strike){
+        if(ball == 0 && strike == 1){
             System.out.println(Message.NOTHING_MESSAGE);
         }
-        if(result.get(0) != 0){
-            System.out.println(result.get(0) + Message.BALL_MESSAGE);
+        if(ball != 0){
+            System.out.println(ball + Message.BALL_MESSAGE);
         }
-        if(result.get(1) != 0){
-            System.out.println(result.get(1) + Message.STRIKE_MESSAGE);
+        if(strike != 0){
+            System.out.println(strike + Message.STRIKE_MESSAGE);
         }
+        if(ball != 0 && strike != 0){
+            System.out.println(ball + Message.BALL_MESSAGE + strike + Message.STRIKE_MESSAGE);
+        }
+    }
+
+    public static void printThreeStrikeMessage(){
+        System.out.println(Message.GAME_CLEAR_MESSAGE);
     }
 
 }
