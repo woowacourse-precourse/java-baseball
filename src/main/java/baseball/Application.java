@@ -30,10 +30,10 @@ public class Application {
 }
 
 class GameManager {
-
+    int numberSize = 3;
     public List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
-        while (answer.size() < 3) {
+        while (answer.size() < numberSize) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
@@ -55,7 +55,7 @@ class GameManager {
 
     public void checkInputException(List<Integer> userInput) {
 
-        if (userInput.size() != 3) {
+        if (userInput.size() != numberSize) {
             throw new IllegalArgumentException();
         }
         for (int inputElement : userInput) {
@@ -63,27 +63,29 @@ class GameManager {
                 throw new IllegalArgumentException();
             }
         }
-        if (userInput.stream().distinct().count() != 3) {
+        if (userInput.stream().distinct().count() != numberSize) {
             throw new IllegalArgumentException();
         }
     }
 
     public boolean isFinish(int strike) {
-        if (strike == 3) {
+        if (strike == numberSize) {
             return true;
         }
         return false;
     }
 
     public boolean isAgain(boolean finish) {
+        int restart = 1;
+        int terminate = 2;
         int userInput = -1;
         if (finish == true) {
             userInput = Integer.parseInt(Console.readLine());
         }
-        if (userInput == 1) {
+        if (userInput == restart) {
             return true;
         }
-        if (userInput == 2) {
+        if (userInput == terminate) {
             return false;
         }
         if (finish == true) {
