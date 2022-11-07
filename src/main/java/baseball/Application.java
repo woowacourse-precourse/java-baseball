@@ -54,6 +54,34 @@ public class Application {
         return userInput;
     }
 
+    public static String getResult(String answer, String userInput) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            char a = userInput.charAt(i);
+            if (answer.charAt(i) == a) {
+                strike++;
+            } else if (answer.indexOf(a) != -1) {
+                ball++;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        if (ball != 0) {
+            sb.append(String.format("%d볼 ", ball));
+        }
+        if (strike != 0) {
+            sb.append(String.format("%d스트라이크", strike));
+        }
+        if (sb.length() == 0) {
+            sb.append("낫싱");
+        }
+
+        return sb.toString().trim();
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다");
     }
