@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
+import baseball.exception.InputUserNumberException;
 import baseball.service.BaseballGameService;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
@@ -114,6 +115,18 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(baseballGameService.getBallCount()).isEqualTo(1);
+    }
+
+
+    @Test
+    void 재시작여부_입력값_범위_오류() {
+        //given
+        String wrongNumber = "3";
+        InputUserNumberException inputUserNumberException = new InputUserNumberException();
+
+        //when,then
+        assertThatThrownBy(() -> inputUserNumberException.checkInputRestartNumber(wrongNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 
