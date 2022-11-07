@@ -102,6 +102,12 @@ class ApplicationTest extends NsTest {
         assertThat(isDistinct(number)).isFalse();
     }
 
+    @Test
+    void 명령_번호가_유효한_숫자인지_확인_테스트_길이_초과() {
+        String number = "12345";
+        assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
