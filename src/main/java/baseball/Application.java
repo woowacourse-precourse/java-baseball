@@ -7,7 +7,12 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        printProgramStart();
+        gameStart();
+
+        while(restartOrNot() == 1)
+            gameStart();
+
     }
 
     public static void printProgramStart() {
@@ -70,7 +75,7 @@ public class Application {
 
     public static int tryAnswer() {
         int answerTrialNum;
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String answerTrialInput = Console.readLine();
 
         if (!isInputValid(answerTrialInput))
@@ -154,7 +159,7 @@ public class Application {
     }
 
     public static int restartOrNot(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String Input = Console.readLine();
         int restartChoice = Integer.parseInt(Input);
 
