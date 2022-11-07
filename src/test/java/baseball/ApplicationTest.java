@@ -82,6 +82,13 @@ class ApplicationTest extends NsTest {
         assertThat(checkNumAnswer).isEqualTo("3볼");
     }
 
+    @Test
+    void 종료_재시작_테스트() {
+        boolean closeOrRestart = Application.closeOrRestart("1");
+        assertThat(closeOrRestart).isTrue();
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
