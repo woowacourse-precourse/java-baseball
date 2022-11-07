@@ -20,10 +20,10 @@ public class Game {
 
     public void start() {
         computer.setAnswer();
-        user.setNumber(Input.get());
-        while (!isCorrect()) {
+        do {
             user.setNumber(Input.get());
-        }
+        } while (!isCorrect());
+
         String restart = Input.restart();
         if (restart.equals("1")) {
             start();
