@@ -20,7 +20,7 @@ public class Game {
 
             List<Integer> countList = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
             countList.add(Count.countBall(answer, digitList));
-            countList.add(Count.countStrike(answer,digitList));
+            countList.add(Count.countStrike(answer, digitList));
             Count.showCount(countList);
 
             if (Answer.checkAnswer(countList)) {

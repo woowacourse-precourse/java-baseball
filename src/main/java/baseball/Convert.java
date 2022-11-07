@@ -11,7 +11,7 @@ public class Convert {
 
         if (number.length() > 3) throw new IllegalArgumentException();
 
-        for (int i = 0;i < number.length();i++) {
+        for (int i = 0; i < number.length(); i++) {
 
             digitList.add(number.charAt(i) - '0');
 
