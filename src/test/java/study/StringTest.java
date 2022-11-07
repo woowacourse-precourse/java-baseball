@@ -3,14 +3,59 @@ package study;
 import baseball.BaseballGame;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
 
     @Test
     void 컴퓨터_랜덤_숫자_생성(){
-        String num = BaseballGame.ComputerNumGenerator();
+        List<Integer> num = BaseballGame.ComputerNumGenerator();
         System.out.println("num = " + num);
+    }
+    
+    @Test
+    void 길이가_3인지(){
+        assertThat(true).isEqualTo(BaseballGame.isThreelen("222"));
+        assertThat(false).isEqualTo(BaseballGame.isThreelen("22"));
+    }
+
+    @Test
+    void 중복이_있는지(){
+        assertThat(true).isEqualTo(BaseballGame.isNotDuplicated("123"));
+        assertThat(false).isEqualTo(BaseballGame.isNotDuplicated("22"));
+    }
+
+    @Test
+    void 입력이_1부터9까지_정수인지(){
+        assertThat(true).isEqualTo(BaseballGame.isOneNineInt("123"));
+        assertThat(false).isEqualTo(BaseballGame.isOneNineInt("220"));
+        assertThat(false).isEqualTo(BaseballGame.isOneNineInt("22jj"));
+    }
+
+    @Test
+    void 사용자_입력_검증(){
+
+        assertThat(Arrays.asList(1, 2, 3)).isEqualTo(BaseballGame.userInputValidator("123"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BaseballGame.userInputValidator("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BaseballGame.userInputValidator("103"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BaseballGame.userInputValidator("hii"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BaseballGame.userInputValidator("1hi4"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Test
