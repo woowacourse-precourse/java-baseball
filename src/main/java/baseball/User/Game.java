@@ -21,12 +21,13 @@ public class Game {
     TotalCount ballCount = new TotalCount();
 
     public boolean startGame(){
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int op = InputNum();
         if(op==1){
             return true;
         }
         if(op==2){
+            System.out.println("게임 종료");
             return false;
         }
         throw new IllegalArgumentException();
