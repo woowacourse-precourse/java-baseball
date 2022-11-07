@@ -70,22 +70,45 @@ public class FunctionTest {
         Referee referee = new Referee();
         List<Integer> userNum = new ArrayList<>() {
             {
-                add(6);
                 add(1);
-                add(4);
+                add(2);
+                add(3);
             }
         };
 
         List<Integer> computerNum = new ArrayList<>() {
             {
-                add(4);
-                add(5);
-                add(6);
+                add(3);
+                add(2);
+                add(1);
             }
         };
 
         referee.refereeCheck(userNum, computerNum);
-        assertThat(referee.getStrike()).isEqualTo(0);
+        assertThat(referee.getStrike()).isEqualTo(1);
         assertThat(referee.getBall()).isEqualTo(2);
+    }
+
+    @DisplayName("refereeCheck return test")
+    @Test
+    void refereeCheckTest() {
+        Referee referee = new Referee();
+        List<Integer> userNum = new ArrayList<>() {
+            {
+                add(4);
+                add(2);
+                add(3);
+            }
+        };
+
+        List<Integer> computerNum = new ArrayList<>() {
+            {
+                add(1);
+                add(2);
+                add(3);
+            }
+        };
+
+        assertThat(referee.refereeCheck(userNum, computerNum)).isTrue();
     }
 }
