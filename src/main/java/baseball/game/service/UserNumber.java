@@ -1,5 +1,6 @@
 package baseball.game.service;
 
+import baseball.game.common.Exception;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -8,15 +9,15 @@ public class UserNumber {
 
     public static List<Integer> generate(String userInput) {
         if (!isThreeLength(userInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Exception.NO_THREE_LENGTH);
         }
 
         if (!isNumber(userInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Exception.NO_NUMBER);
         }
 
         if(!isDuplicateNumber(userInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Exception.DUPLICATE_NUMBER);
         }
 
         return Arrays.stream(userInput.split(""))
@@ -46,5 +47,4 @@ public class UserNumber {
 
         return numberSet.size() == 3;
     }
-
 }
