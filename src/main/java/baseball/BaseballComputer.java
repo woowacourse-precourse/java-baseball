@@ -31,7 +31,6 @@ public class BaseballComputer {
         String answer = userInputNumberInGame();
 
         if(!checkHitNumber(answer)){
-            printHitStatus();
             init();
         }
 
@@ -60,8 +59,38 @@ public class BaseballComputer {
     }
 
     public boolean checkHitNumber(String answer) {
-        String [] splitNum = answer.split("");
-        return true;
+        String [] splitWord = answer.split("");
+        int [] splitNumber = changeType.StringArrToIntArr(splitWord);
+        List<Integer> checkHitNumber = new ArrayList<>();
+        int strike = 0;
+        int ball = 0;
+
+        //strike
+        for(int i = 0; i < splitNumber.length; i++){
+            if(splitNumber[i] == computerNumber.get(i)){
+                strike++;
+            }
+        }
+
+        // 게임 승리
+        if(strike == 3){
+            endGameMessage();
+            return true;
+        }
+
+        //ball
+        for(int i = 0; i < splitNumber.length; i++){
+            if(splitNumber[i] != computerNumber.get(i) && computerNumber.contains(splitNumber[i])){
+                ball++;
+            }
+        }
+
+        checkHitNumber.add(ball);
+        checkHitNumber.add(strike);
+
+        printHitStatus(checkHitNumber);
+
+        return false;
     }
 
     public List<Integer> getRandomNumber() {
@@ -77,7 +106,25 @@ public class BaseballComputer {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public void printHitStatus(){
+    public void printHitStatus(List<Integer> hitStatus){
+        //아무것도 없을 때
+        if(hitStatus.isEmpty()){
+            System.out.println("낫싱");
+        }
 
+        //ball만 있을 때
+        if(hitStatus.get(1) == 0){
+            System.out.println(hitStatus.get(1) + "볼");
+        }
+
+        //strike만 있을 때
+        if(hitStatus.get(0) == 0){
+            System.out.println(hitStatus.get(0) + "스트라이크");
+        }
+
+        //둘 다 있을 때
+        if(hitStatus.get(0) != 0 && hitStatus.get(1) != 0){
+            System.out.println(hitStatus.get(0) + "볼 " + hitStatus.get(1) + "스트라이크");
+        }
     }
 }
