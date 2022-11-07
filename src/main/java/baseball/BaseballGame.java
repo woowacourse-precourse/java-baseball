@@ -24,17 +24,21 @@ public class BaseballGame {
             }
         }
 
-        // 3. 사용자로부터 서로 다른 세자리 수 받기
-        int userInput = getUserInput();
-        if (!isValidNumber(userInput)) {
-            throw new IllegalArgumentException();
-        }
+        // 3. 사용자가 숫자를 모두 맞출때까지 계속 숫자 입력받기
+        boolean gotAnswer = false;
+        while (!gotAnswer) {
+            // 3-1. 사용자로부터 서로 다른 세자리 수 받기
+            int userInput = getUserInput();
+            if (!isValidNumber(userInput)) {
+                throw new IllegalArgumentException();
+            }
 
-        // 4. 스트라이크, 볼 개수 세기
-        int strikeCnt = countStrikes(targetNumber, userInput);
-        int ballCnt = countBalls(targetNumber, userInput);
-        String cntInfo = buildCntInfo(strikeCnt, ballCnt);
-        System.out.println(cntInfo);
+            // 3-2. 받은 숫자의 스트라이크, 볼 개수 세기
+            int strikeCnt = countStrikes(targetNumber, userInput);
+            int ballCnt = countBalls(targetNumber, userInput);
+            String cntInfo = buildCntInfo(strikeCnt, ballCnt);
+            System.out.println(cntInfo);
+        }
 
     }
 
