@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Game {
 
+    private static final Integer NUMBER_SIZE = 3;
+
     public static void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
@@ -74,4 +76,9 @@ public class Game {
             throw new IllegalArgumentException();
         }
     }
+
+    public static boolean checkUserInputLength(String userInputNumber) {
+        return userInputNumber.length() == NUMBER_SIZE;
+    }
+
 }
