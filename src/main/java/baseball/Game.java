@@ -1,20 +1,24 @@
 package baseball;
+import java.util.List;
 
 public class Game {
     private ComputerRandomNumber computerRandomNumber;
-    private UserInput userInput;
-
     private UserInputToList userInputToList;
+    private Referee referee;
 
     public Game() {
         computerRandomNumber = new ComputerRandomNumber();
-        userInput = new UserInput();
         userInputToList = new UserInputToList();
+        referee = new Referee();
     }
 
     public void run() {
-        computerRandomNumber.makeComputerNumber();
-        userInputToList.userNumList(userInput.userNumberInput());
-        userInputToList.getUserNum();
+        List<Integer> comNumber = computerRandomNumber.makeComputerNumber();
+
+        do{
+            System.out.println(comNumber);
+            userInputToList.userNumList(UserInput.userNumberInput());
+        }while (referee.refereeCheck(userInputToList.getUserNum(), comNumber));
+
     }
 }
