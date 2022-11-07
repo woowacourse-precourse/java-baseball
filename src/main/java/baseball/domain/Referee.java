@@ -59,6 +59,7 @@ public class Referee {
     private String ballAndStrike() {
 
         if ( isOnlyStrike() ) {
+            
             return strike + STRIKE;
         }
 
