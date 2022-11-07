@@ -2,7 +2,7 @@ package baseball.Util;
 
 public class Constant {
     public static final String GAME_START = "숫자 야구 게임을 시작 합니다.";
-    public static final String USER_INPUT = "숫자 야구 게임을 시작 합니다.";
+    public static final String USER_INPUT = "숫자를 입력해주세요 : %s";
     public static final String HINT_BALL = "볼";
     public static final String HINT_STRIKE = "스트라이크";
     public static final String HINT_NOTHING = "낫싱";

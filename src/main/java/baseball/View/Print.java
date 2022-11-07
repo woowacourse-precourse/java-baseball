@@ -3,7 +3,12 @@ package baseball.View;
 import baseball.Util.Constant;
 
 public class Print {
-    public void gameStart(){
+    public void gameStart() {
         System.out.println(Constant.GAME_START);
+    }
+
+    public void inputMessage(String input) {
+        String format = String.format(Constant.USER_INPUT, input);
+        System.out.println(format);
     }
 }
