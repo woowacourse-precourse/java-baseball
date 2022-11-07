@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Objects;
-
 public class Number {
     private int number;
 
@@ -31,10 +29,6 @@ public class Number {
             throw new IllegalArgumentException("숫자의 범위가 9를 초과합니다.");
         }
         return true;
-    }
-
-    private int getNumber(){
-        return this.number;
     }
 
     @Override
