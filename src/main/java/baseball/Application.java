@@ -61,12 +61,12 @@ public class Application {
     }
 
     private static void isValidUserNumber(String userNumber){
-        if(userNumber.length() != 3 || !isAllNumber(userNumber) || isDuplicate(userNumber)){
+        if(userNumber.length() != 3 || isContainZero(userNumber)
+                || !isAllNumber(userNumber) || isDuplicate(userNumber)){
             throw new IllegalArgumentException("0을 제외한 서로 다른 세 자리의 숫자를 입력 해주세요.");
         }
     }
 
-    /* 모두 숫자인지 확인 */
     private static boolean isAllNumber(String userNumber){
         if(userNumber.chars().allMatch(Character :: isDigit)){
             return true;
@@ -74,12 +74,18 @@ public class Application {
         return false;
     }
 
-    /* 중복되는 숫자가 없는지 확인 */
     private static boolean isDuplicate(String userNumber){
         for(char n : userNumber.toCharArray()){
             if(userNumber.chars().filter(c -> c == n).count() != 1){
                 return true;
             }
+        }
+        return false;
+    }
+
+    private static boolean isContainZero(String userNumber){
+        if(userNumber.contains("0")){
+            return true;
         }
         return false;
     }
