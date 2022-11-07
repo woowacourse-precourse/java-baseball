@@ -6,10 +6,15 @@ import java.util.stream.IntStream;
 
 public class ScoreBoard {
     private List<NumberBall> systemNumberBalls;
-    private boolean isPlaying = true;
+    private boolean isPlaying;
 
     public ScoreBoard(List<NumberBall> systemNumberBalls) {
+        if(systemNumberBalls == null) {
+            initialize();
+            return;
+        }
         this.systemNumberBalls = systemNumberBalls;
+        isPlaying = true;
     }
 
     public ScoreResult getScoreResult(List<NumberBall> userNumberBalls) {
