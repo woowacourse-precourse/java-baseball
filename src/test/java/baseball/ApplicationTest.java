@@ -24,21 +24,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
-    @Test
-    void 세개의_난수_생성() {
-        NumberGenerator generator = new NumberGenerator();
-        generator.generateNumber();
-
-        assertSame(3, generator.getNumbers().size());
-
-        // 1부터 9사이의 숫자인 지와 빈도 수를 통해 중복되는 값이 있는 지를 확인
-        for(int number : generator.getNumbers()) {
-            assertTrue(1 <= number && number <= 9);
-            assertSame(1, Collections.frequency(generator.getNumbers(), number));
-        }
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
