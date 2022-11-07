@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DividedRandomNumberListMaker implements NumberListMaker{
+public class DividedRandomNumberElementListMaker implements ElementListMaker<Integer>{
     private final int MIN_NUMBER = 1;
     private final int MAX_NUMBER = 9;
 
     @Override
-    public List<Integer> makeNumberList(int listLength) {
+    public List<Integer> makeElementList(int listLength) {
         List<Integer> randomNumberList = new ArrayList<>();
 
         while (randomNumberList.size() < listLength) {
@@ -31,4 +31,18 @@ public class DividedRandomNumberListMaker implements NumberListMaker{
 
         return true;
     }
+
+    @Override
+    public List<Integer> convertToElementList(String stringNumber) {
+        List<Integer> integerElementList = new ArrayList<>();
+
+        for (int userInputIndex = 0; userInputIndex < stringNumber.length(); userInputIndex++) {
+            int integerElement = Integer.parseInt(stringNumber.substring(userInputIndex, userInputIndex + 1));
+            integerElementList.add(integerElement);
+        }
+
+        return integerElementList;
+    }
+
+
 }
