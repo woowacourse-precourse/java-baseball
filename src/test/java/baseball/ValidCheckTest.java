@@ -49,14 +49,14 @@ class ValidCheckTest {
         assertThat(ValidCheck.isContinueGame(test2)).isEqualTo(false);
         assertThatThrownBy(() -> ValidCheck.isContinueGame(test3))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1, 2 의 숫자를 입력하셨습니다");
+                .hasMessageContaining("올바른 입력을 부탁드립니다");
 
         assertThatThrownBy(() -> ValidCheck.isContinueGame(test4))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1, 2 의 숫자를 입력하셨습니다");
+                .hasMessageContaining("올바른 입력을 부탁드립니다");
 
         assertThatThrownBy(() -> ValidCheck.isContinueGame(test5))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1, 2 의 숫자를 입력하셨습니다");
+                .hasMessageContaining("올바른 입력을 부탁드립니다");
     }
 }
