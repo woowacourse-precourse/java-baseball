@@ -2,11 +2,12 @@ package baseball.controller;
 
 import baseball.printer.GameGuidePrinter;
 import baseball.service.BaseballGameService;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameController {
 
-    private BaseballGameService baseballGameService = new BaseballGameService();
+    private final BaseballGameService baseballGameService = new BaseballGameService();
 
     private final int START = 1;
     private final int END = 9;
@@ -38,7 +39,7 @@ public class BaseballGameController {
         }
     }
 
-    private int getInputNumber() throws IllegalArgumentException{
+    private int getInputNumber() throws IllegalArgumentException {
         String input = Console.readLine();
 
         if (input.length() != 1) {

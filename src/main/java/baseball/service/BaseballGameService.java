@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class BaseballGameService {
 
     private User user = new User();
@@ -24,7 +23,7 @@ public class BaseballGameService {
         this.size = size;
     }
 
-    public void playGame() throws IllegalArgumentException{
+    public void playGame() throws IllegalArgumentException {
         int strike = 0;
         while (strike != 3) {
             computer.clearCount();
@@ -62,7 +61,7 @@ public class BaseballGameService {
         }
     }
 
-    private List<Integer> getUserNumbers() throws IllegalArgumentException{
+    private List<Integer> getUserNumbers() throws IllegalArgumentException {
         GameGuidePrinter.requestNumberMessage();
 
         String input = Console.readLine();
