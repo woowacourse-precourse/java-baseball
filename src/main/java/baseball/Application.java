@@ -37,11 +37,12 @@ public class Application {
     }
 
     public static void availableUserNumberIsChecked(String word){
-        String regularExpression = "^[1-9^[1-9^[1-9]]]{3}$";
+        String regularExpression = "^[1-9]{3}$";
         boolean result = Pattern.matches(regularExpression,word);
 
-        System.out.println(result);
+
         if(!result){
+            System.out.println("error");
             throw new IllegalArgumentException("유효하지 않는 값입니다");
         }
     }
@@ -144,10 +145,9 @@ public class Application {
         return false;
     }
 
-    public static void inputUserNumberService(){
+    public static void inputUserNumberService(List<Integer> computerNumbersList){
         String stringBuilderUserNumber = "";
         boolean checkedAnswer = false;
-        List<Integer> computerNumbersList = randomNumberCreate();
         stringBuilderUserNumber = inputAvailableUserNumberService();
         List<Integer> userNumbersList = stringToListCreate(stringBuilderUserNumber);
         int strikeNumber = checkStrikeNumbers(computerNumbersList,userNumbersList);
@@ -155,13 +155,14 @@ public class Application {
         Map<String,Integer> baseballResult = calculatedStrikeBallNumber(strikeNumber,ballNumber);
         checkedAnswer = printBaseballOfResult(baseballResult);
         if(!checkedAnswer){
-            inputUserNumberService();
+            inputAvailableUserNumberService();
         }
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
-        inputAvailableUserNumberService();
+        List<Integer> computerNumbersList = randomNumberCreate();
+        inputUserNumberService(computerNumbersList);
     }
 }
