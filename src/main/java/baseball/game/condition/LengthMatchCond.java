@@ -4,16 +4,16 @@ import baseball.validation.Condition;
 
 import static baseball.game.util.GameUtil.NUMBER_SIZE;
 
-public class SmallerThanMaxSizeCond implements Condition {
+public class LengthMatchCond implements Condition {
 
-    private static final Condition instance = new SmallerThanMaxSizeCond();
+    private static final Condition instance = new LengthMatchCond();
 
-    private SmallerThanMaxSizeCond() {
+    private LengthMatchCond() {
     }
 
     @Override
     public Boolean isTrue(Integer guess) {
-        return Integer.toString(guess).length() <= NUMBER_SIZE;
+        return Integer.toString(guess).length() == NUMBER_SIZE;
     }
 
     public static Condition getInstance() {

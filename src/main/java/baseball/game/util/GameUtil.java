@@ -5,7 +5,7 @@ import baseball.validation.Validator;
 import baseball.validation.Condition;
 import baseball.game.condition.AllDigitsUniqueCond;
 import baseball.game.condition.AllDigitsNumberCond;
-import baseball.game.condition.SmallerThanMaxSizeCond;
+import baseball.game.condition.LengthMatchCond;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -46,9 +46,9 @@ public class GameUtil implements Interactive {
         Integer guess = Integer.parseInt(Console.readLine());
 
         List<Condition> conditions = List.of(
+                LengthMatchCond.getInstance(),
                 AllDigitsUniqueCond.getInstance(),
-                AllDigitsNumberCond.getInstance(),
-                SmallerThanMaxSizeCond.getInstance()
+                AllDigitsNumberCond.getInstance()
         );
 
         if (validator.isAnyConditionsFalse(guess, conditions)) {
