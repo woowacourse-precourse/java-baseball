@@ -64,7 +64,6 @@ public class BallReader {
         return result;
     }
 
-
     private List<ResultOfBall> removeMissBall(List<ResultOfBall> ballData) {
         List<ResultOfBall> result = new ArrayList<>(ballData);
         while (result.remove(ResultOfBall.MISS)) {

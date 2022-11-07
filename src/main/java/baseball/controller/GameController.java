@@ -14,12 +14,12 @@ public class GameController {
         this.decisionMaker = decisionMaker;
     }
 
-    public GameController(){
+    public GameController() {
         this.game = new Game();
         this.decisionMaker = new DecisionMaker();
     }
 
-    public GameController(int ballCount){
+    public GameController(int ballCount) {
         this.game = new Game(ballCount);
         this.decisionMaker = new DecisionMaker();
     }
@@ -40,13 +40,12 @@ public class GameController {
 
     private void playGame() {
         game.play();
-        timesOfPlayGame+=1;
+        timesOfPlayGame += 1;
     }
 
     private Decision getUserDecision() {
         return decisionMaker.getDecision();
     }
-
 
 
 }
