@@ -10,6 +10,15 @@ import java.util.stream.Collectors;
 public class User {
     private static final Pattern compile = Pattern.compile("(([^1-9])\\2{0,})");
     private BaseBallNumber number;
+    private Observer observer;
+
+    public void register(Observer observer) {
+        this.observer = observer;
+    }
+
+    public List<Hint> compareToComputer() {
+        return observer.compare(number.getNumber());
+    }
 
     public void makeBaseBallNumber() {
         String consoleInput = getConsoleInput();
