@@ -54,9 +54,9 @@ public class Computer {
 
     public String getStatusByInput(String input) {
         if (input.equals("1")) {
-            return "재시작";
+            return GameComment.RESTART;
         } else if (input.equals("2"))
-            return "완전한 종료";
+            return GameComment.TERMINATE;
         else
             throw new IllegalArgumentException();
     }

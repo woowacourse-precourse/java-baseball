@@ -3,7 +3,8 @@ package baseball;
 public class GameComment {
     public static final String STRIKE = "스트라이크";
     public static final String THREE_STRIKE = "3스트라이크";
-    public static final String GAME_END = "게임종료";
+    public static final String RESTART = "재시작";
+    public static final String TERMINATE = "완전한 종료";
     public static final String NOT_GAME_END = "게임이 아직 진행중입니다";
     public static final String BALL = "볼";
     public static final String NOTHING = "낫싱";

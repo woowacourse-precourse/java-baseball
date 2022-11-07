@@ -12,9 +12,9 @@ public class Application {
             playerNumber = numFactory.createNumber();
             numFactory.verifyNumber(playerNumber);
             String gameStatus = computer.getResult(playerNumber);
-            if(gameStatus == "재시작"){
+            if(gameStatus == GameComment.RESTART){
                 computer = new Computer();
-            }else if (gameStatus == "완전한 종료") {
+            }else if (gameStatus == GameComment.TERMINATE) {
                 break;
             }
             }while (true);
