@@ -22,26 +22,26 @@ public class GameController {
     }
 
     public void run() {
-        output.printMessage(OutputMessage.START_MESSAGE);
+        output.printMessage(OutputMessage.START);
         String runStatus = "start";
         while (!runStatus.equals("2")) {
             List<Integer> randomNumber = computer.generateRandomNumber();
             runSetGame(randomNumber);
-            output.printMessage(OutputMessage.END_MESSAGE);
+            output.printMessage(OutputMessage.END);
             runStatus = input.endInput();
         }
     }
 
     private void runSetGame(List<Integer> randomNumber) {
         while (true) {
-            output.printMessage(OutputMessage.NUMBER_REQUEST_MESSAGE);
+            output.printMessage(OutputMessage.NUMBER_REQUEST);
             String userInput = input.baseballInput();
 
             String baseballResult = computer.baseballResult(randomNumber, userInput);
             output.printMessage(baseballResult);
 
             if (referee.isEndGameSet(baseballResult)) {
-                output.printMessage(OutputMessage.SUCCESS_MESSAGE);
+                output.printMessage(OutputMessage.SUCCESS);
                 break;
             }
         }

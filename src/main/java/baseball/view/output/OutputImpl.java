@@ -7,7 +7,7 @@ public class OutputImpl implements Output {
 
     @Override
     public void printMessage(String resultMessage) {
-        if(resultMessage.equals(OutputMessage.NUMBER_REQUEST_MESSAGE)){
+        if(resultMessage.equals(OutputMessage.NUMBER_REQUEST)){
             System.out.print(resultMessage);
             return;
         }
