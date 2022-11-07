@@ -60,6 +60,13 @@
 - 필요하지 않은 이유
     - Com와 User 클래스가 다른 점이라 봤자 생성방법 뿐인데, 굳이 나눠야 할까?
 
+### 클래스 구성에 대해 고민할 점
+
+- BaseballNumber 라는 클래스의 객체를 생성하는 두 가지 방법이 있고, 각자의 방법으로 생성한 객체가 필요함.
+    1. BaseballNumber라는 abstract Class를 만들고, 이를 상속 받은 친구 ComBaseballNumber와 UserBaseballNumber를 정의
+    2. BaseballNumber 클래스를 하나 정의하고, 해당 클래스에 정적 팩토리 메소드로, 생성방법 두 가지 정의
+       2번 채택
+
 ### 사용자의 입력에 대한 BaseballNumber의 유효성 검증을 어디서 해야 할까?
 
 - User 클래스에서 해야 한다.
@@ -77,15 +84,14 @@
       Com 클래스에서도 수정을 해야 한다.
 
 ### 게임을 재시작할 경우, 프로그램의 효율성을 고민해봐야 할 점
-
-- Com와 User 객체를 계속해서 재생성 할 것인가?
 - BaseballNumber 객체를 계속해서 재생성 할 것인가?
-
-### 클래스 구성에 대해 고민할 점
-
-- BaseballNumber 라는 클래스의 객체를 생성하는 두 가지 방법이 있고, 각자의 방법으로 생성한 객체가 필요함.
-    1. 랜덤 생성.
-    2. 사용자의 입력에 맞춰서 생성.
-       그려면 BaseballNumber라는 abstract Class를 만들고,
-       이를 상속 받은 친구 ComBaseballNumber와
-       UserBaseballNumber를 정의 하는 거임!!!!
+  - 재생성 한다.
+    - 장점 : 기존 BaseballNumber의 멤버변수인 numbers에 final을 붙여 어느정도 불변성 보장이 된다.
+    - 단점 : 객체를 생성하는 것은 무거운 일이기 때문에, 효율이 나오지 못할 수 있다.
+    - 구현 방법 : 기존 코드를 그대로 유지
+  - 재생성 하지 않고, BaseballNumber의 number 객체의 값만 수정한다.
+    - 장점 : 코드가 많이 반복해도, 직접적인 numbers의 값만 수정하는 것이라, 재생성할 때보다, 더 자원을 아낄 수 있음.
+    - 단점 : numbers 객체의 값이 계속 변하기 때문에 불변성 보장이 되지 않음.
+    - 구현 방법 : 
+      1. numbers 객체 자체를 재생성하는 방법
+      2. numbers 객체는 두고, numbers 객체 내부의 값만 조정하는 법
