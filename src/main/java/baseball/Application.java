@@ -180,7 +180,7 @@ class GameProcessor {
     }
 
     public boolean isWin() {
-        stringMaker();
+        resultPrint();
         if (getStrike() == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
@@ -190,7 +190,7 @@ class GameProcessor {
 
     }
 
-    public void stringMaker() {
+    public void resultPrint() {
         StringBuilder stringBuilder = new StringBuilder();
         if (getBall() > 0) {
             stringBuilder.append(getBall() + "볼");
