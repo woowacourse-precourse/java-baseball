@@ -201,6 +201,20 @@ class ApplicationTest extends NsTest {
         System.setOut(System.out);
     }
 
+    @Test
+    void addUserNumberInUserArrayTest() {
+
+        String input = "123";
+        int[] array = {0, 0, 0};
+
+        Application.addUserNumberInUserArray(array, input);
+
+        int[] result = {1, 2, 3};
+
+        assertThat(result).isEqualTo(array);
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
