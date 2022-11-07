@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-import static baseball.validator.NumberValidator.validateRange;
-import static baseball.validator.NumbersValidator.*;
+import static baseball.view.InputView.getPlayerRandomNumbers;
 
 public class Application {
     private final static int INPUT_DIGIT = 3;
@@ -76,21 +75,6 @@ public class Application {
             }
         }
         return ballCount;
-    }
-
-    static List<Integer> getPlayerRandomNumbers() {
-        String input = Console.readLine();
-
-        validateDigit(input);
-        validateNonNumeric(input);
-
-        List<Integer> player = new ArrayList<>();
-        for (char inputChar : input.toCharArray()) {
-            validateRange(Character.getNumericValue(inputChar));
-            player.add(Character.getNumericValue(inputChar));
-        }
-        validateDuplicateNumber(player);
-        return player;
     }
 
     static List<Integer> getComputerRandomNumbers() {
