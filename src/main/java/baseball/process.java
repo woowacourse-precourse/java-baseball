@@ -23,6 +23,14 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    private void printResult() {
+        System.out.println(getResStr());
+
+        if(strike ==cnt_nbr) {
+            System.out.println(three_strike);
+        }
+    }
+
     private String getResStr() {
         if(strike == 0 && ball == 0) {
             return str_nothing;
