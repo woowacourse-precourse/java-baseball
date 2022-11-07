@@ -24,6 +24,10 @@ public class BaseballController {
     }
 
     public void inProgress() {
+        inputView.inputNumber();
+    }
 
+    public void initGame() {
+        outputView.printInitGameMessage();
     }
 }
