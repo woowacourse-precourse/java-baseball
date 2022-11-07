@@ -21,6 +21,7 @@ public class BaseballGameController {
         baseballGameView.displayGameStart();
         do {
             startGame();
+            baseballGameView.displayAskReStartGame();
             readInputOfOneAndTwo();
         } while (Validate.isReStartGame(input.getUserInput()));
         //finish

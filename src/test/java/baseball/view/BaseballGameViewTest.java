@@ -40,4 +40,11 @@ class BaseballGameViewTest {
         Assertions.assertThat(ProgramMessage.PLEASE_ENTER_NUMBER).isEqualTo(outputStreamCaptor.toString());
     }
 
+    @DisplayName("게임 종료시 \"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\" 출력후 줄 바꿈")
+    @Test
+    void 게임_종료시_새로시작_묻는_메시지_출력() {
+        baseballGameView.displayAskReStartGame();
+        Assertions.assertThat(ProgramMessage.ASK_RESTART_GAME).isEqualTo(outputStreamCaptor.toString().trim());
+    }
+
 }
