@@ -35,6 +35,12 @@ class Input {
                 throw new IllegalArgumentException("0을 입력하셨거나 숫자가 아닌 문자를 입력하셨습니다.");
             }
         }
+
+        for (int i = 0; i < LENGTH_MAX; i++) {
+            if (numberArray[i] == numberArray[(i+1)%3] || numberArray[i] == numberArray[(i+2)%3]) {
+                throw new IllegalArgumentException("숫자를 중복하여 입력하셨습니다.");
+            }
+        }
     }
 }
 
