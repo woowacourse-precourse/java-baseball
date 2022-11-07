@@ -33,7 +33,17 @@ class ApplicationTest extends NsTest {
 
         assertThat(computerRandom.size()).isEqualTo(deduplicationRandomList.size());
     }
-    
+
+    @Test
+    void  사용자_입력_예외_테스트() {
+        final byte[] buf = "123".getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Application.askRestartOrEnd();
+        });
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
