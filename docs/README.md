@@ -46,6 +46,7 @@
     * feat : 새로운 기능 구현
     * fix  : 버그 수정
     * docs : ReadMe 업데이트
+    * style : 포매팅
     * refactor : 리팩토링
     * test : 테스트 구현  
       <br/>
