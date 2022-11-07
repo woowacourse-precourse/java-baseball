@@ -3,15 +3,14 @@
 ---
 ## ✨설계 계획
 - 1회성 게임으로 기능을 구현 및 검증
-  - 구현메서드 : `int game()`
-  - 반환 값 : 게임이 끝난 경우, [재시작 : 1] / [종료 : 2] 상태값을 반환
-- 1회성 게임이 기능을 충족시킬 경우 다회성 게임으로 구현
+  - 구현메서드 : `void game()`
+- 1회성 게임 Test 후, `main`메서드에서 `game`메서드 호출하여 다회성 게임으로 구현
 - 최종 테스트 검증 및 리팩토링
 
 
-## 🍀 1회성 게임 기능 구현 메서드 : `int game()`
+## 🍀 1회성 게임 기능 구현 메서드 : `void game()`
 > 1회에 해당하는 게임을 실행<br>
-> 게임 완료 시, [재시작 : 1 / 종료 : 2] 상태값을 반환<br>
+> 실행 시, 결과에 대한 내용을 콘솔창에 출력(ex. 1볼 2스트라이크)
 
 1. `List<Integer> createRandomThreeDigitNumber()` :
    - 중복되지 않은 랜덤한 3자리 숫자를 List에 담아 반환
@@ -53,9 +52,20 @@
 ## 🍀 다회성 게임 기능 구현
 > `main()`메서드에 기능 구현<br>
 > `while`내부 `game()` 메서드를 호출하여 반복 가능한 게임을 구현<br>
-> 여기서, `game()`메서드는 반환값으로 1과 2를 가지며, 이 값은 각각 재시작과 종료를 의미<br>
+> 3스트라이크 성공하여 게임 종료시, 게임 재시작(1) or 종료(2)에 관한 사용자의 입력을 요청
+> 재시작 종료에 대한 입력은 `runState` 에 저장하며, while문은 이 상태값을 참조하여 재시작과 종료 판단
 
-## 🍀 테스트 검증(완료)
+## 🍀 테스트 검증(MyTest)
+- [x] `inputValidationOfUser(String input)` 테스트 완료
+  - 사용자가 입력한 값이 유효한 입력인지 검증<br></br>
+- [x] `inputValidationOfStartEndCondition(String input) ` 테스트 완료
+  - 게임 종료 시, 사용자가 재시작/종료 여부에 대한 입력이 유효한지 검증 <br></br>
+- [x] `createRandomThreeDigitNumber()` 테스트 완료
+  - 컴퓨터가 세자리의 중복되지 않은 숫자값을 만들어 내는지 검증<br></br>
+- [x] `strikeAndBallCounter(List<Integer> computer, List<Integer> user)` 테스트 완료
+  - 컴퓨터와 유저의 값을 비교하여, 스트라이크/볼 수를 센 결과를 검증<br></br>
+- [x] `printResult(int strikes, int balls) ` 테스트 완료
+  - 콘솔에 출력된 결과가 유효한지 검증 
 
 ## 🍀 Future work
     Junit Test Code 추가 학습
