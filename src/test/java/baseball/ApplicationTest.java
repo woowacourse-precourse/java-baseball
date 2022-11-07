@@ -32,6 +32,14 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+    
+    @Test
+    void 동일한_인풋값이_두번_들어온_경우_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("115"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Test
     void 서로다른_랜덤_숫자_생성_테스트() {
         int[] randomNumber = RandomUtil.createRandomComputerNumbers();
