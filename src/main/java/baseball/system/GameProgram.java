@@ -60,5 +60,12 @@ public class GameProgram {
         }
     }
 
+    private void scoreCounter (int result) {
+        if (result == 1){
+            strike++;
+        } else if (result == 2) {
+            ball++;
+        }
+    }
     
 }
