@@ -47,4 +47,11 @@ class ApplicationTest extends NsTest {
                 1, 1, 1, 2, 3
         );
     }
+
+    @Test
+    void 입력_유효_판단() {
+        assertThat(Application.isRightInput("134")).isEqualTo(true);
+        assertThat(Application.isRightInput("224")).isEqualTo(false);
+        assertThat(Application.isRightInput("45677")).isEqualTo(false);
+    }
 }
