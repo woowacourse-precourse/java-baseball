@@ -12,12 +12,15 @@ public class NumberCompareResult {
 
     public NumberCompareResult(int strike, int ball){
         List<List<String>> compareResult = new ArrayList<>();
-        if(strike != 0){
-            compareResult.add(List.of(String.valueOf(strike),"스트라이크"));
-        }
+
         if(ball != 0){
             compareResult.add(List.of(String.valueOf(ball),"볼"));
         }
+
+        if(strike != 0){
+            compareResult.add(List.of(String.valueOf(strike),"스트라이크"));
+        }
+
         if(compareResult.size() == 0){
             compareResult.add(List.of("낫싱"));
         }
