@@ -30,6 +30,45 @@ public class Controller {
         user = new User();
 
     }
+    public void playGame() {
+        computerNumber = computer.addRandomNumbers();
+        InputView.startMessage();
+        while (!isGameEnd) {
+            String numbers = InputView.gameMessage();
+            try {
+                validateRequestNumber(numbers);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                throw new IllegalArgumentException(END_EXCEPTION_MESSAGE);
+            }
+            userNumber = user.parseNumbers(numbers);
+            running();
+        }
+        askAgainRestart();
+    }
+
+    private void running() {
+        resetScore();
+        modifyStrikeBallCount();
+        OutputView.printResult(ball, strike);
+        if (strike == END_STRIKE_COUNT) {
+            isGameEnd = GAME_END;
+            OutputView.printSuccess();
+        }
+    }
+
+    private void askAgainRestart() {
+        String message = InputView.endMessage();
+        try {
+            validateRequestEndNumbers(message);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(END_EXCEPTION_MESSAGE);
+        }
+        if (RESTART_MESSAGE.equals(message)) {
+            isGameEnd = GAME_NOT_END;
+        }
+    }
+
     private void modifyStrikeBallCount(){
         countBall(computerNumber,userNumber);
         for(int i=0; i<computerNumber.size(); i++){
