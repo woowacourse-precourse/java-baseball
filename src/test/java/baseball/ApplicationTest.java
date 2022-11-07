@@ -34,6 +34,12 @@ class ApplicationTest extends NsTest {
 		assertThat(computerNumbers.get(0)).isNotEqualTo(computerNumbers.get(1)).isNotEqualTo(computerNumbers.get(2));
 	}
 
+//	@Test
+//	@DisplayName("유저가 입력한게 세자리 숫자인지")
+//	void 유저입력숫자_세자리_숫자_확인(){
+//		User user = new User();
+//	}
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
