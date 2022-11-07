@@ -28,6 +28,7 @@ public class Game {
             setPlayer();
             resetCount();
             countHit();
+            printResult();
         }
     }
 
@@ -72,5 +73,9 @@ public class Game {
             result.append(WIN_SENTENCE);
         }
         return result.toString();
+    }
+
+    private void printResult() {
+        System.out.println(getResultString());
     }
 }
