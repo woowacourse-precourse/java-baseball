@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
@@ -95,5 +96,24 @@ public class Application {
             }
         }
         return result;
+    }
+
+    public static void startGame() throws IllegalArgumentException {
+        List<Integer> randomNum = getRandomNum();
+
+        while (true) {
+            System.out.print("숫자를 입력해 주세요 : ");
+            String ipt = Console.readLine();
+
+            List<Integer> iptList = parseUserInput(ipt);
+            int strikeCnt = getStrikeCnt(randomNum, iptList);
+            int ballCnt = getBallCnt(randomNum, iptList);
+            System.out.println(getResultStr(strikeCnt, ballCnt));
+
+            if (strikeCnt == 3) {
+                System.out.println("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
+                return;
+            }
+        }
     }
 }
