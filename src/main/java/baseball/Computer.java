@@ -2,17 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
+import static baseball.Constant.MAX_LENGTH;
 
 public class Computer {
+    Balls answer = new Balls();
+    int strike, ball;
+
     public void randNumber() {
-        List<Integer> balls = new ArrayList<>();
-        while(balls.size() < 3) {
-            int ball = Randoms.pickNumberInRange(1, 9);
-            if(!balls.contains(ball)) { // 각 자리의 수가 서로 다른 숫자일 경우에만 추가
-                balls.add(ball);
-            }
+        while(answer.getSize() < 3) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            answer.add(num);
         }
     }
 }
