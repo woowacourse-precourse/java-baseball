@@ -19,7 +19,7 @@ public class HintTest {
         List<Integer> computerNumbers = List.of(2,3,4);
 
         assertThat(HintService
-                .generate(userNumbers, computerNumbers))
+                .getHint(userNumbers, computerNumbers))
                 .isInstanceOf(Hint.class);
     }
 
@@ -29,7 +29,7 @@ public class HintTest {
         List<Integer> userNumbers = List.of(2,3,4);
         List<Integer> computerNumbers = List.of(2,3,4);
 
-        Hint hint = HintService.generate(userNumbers, computerNumbers);
+        Hint hint = HintService.getHint(userNumbers, computerNumbers);
 
         assertThat(HintService.isAnswer(hint))
                 .isEqualTo(true);
@@ -41,7 +41,7 @@ public class HintTest {
         List<Integer> userNumbers = List.of(1,2,3);
         List<Integer> computerNumbers = List.of(2,3,4);
 
-        Hint hint = HintService.generate(userNumbers, computerNumbers);
+        Hint hint = HintService.getHint(userNumbers, computerNumbers);
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -58,7 +58,7 @@ public class HintTest {
         List<Integer> userNumbers = List.of(1,2,3);
         List<Integer> computerNumbers = List.of(3,2,4);
 
-        Hint hint = HintService.generate(userNumbers, computerNumbers);
+        Hint hint = HintService.getHint(userNumbers, computerNumbers);
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));

@@ -25,7 +25,7 @@ public class Validation {
             numbers.add(number);
         }
 
-        if (!(numbers.size() == NUMBER_SIZE.getValue())) {
+        if (numbers.size() != NUMBER_SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }
@@ -33,7 +33,7 @@ public class Validation {
     private static void validateSize(String inputNumber) {
         int numberSize = inputNumber.length();
 
-        if (!(numberSize == NUMBER_SIZE.getValue())) {
+        if (numberSize != NUMBER_SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }

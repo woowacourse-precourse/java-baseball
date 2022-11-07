@@ -12,7 +12,7 @@ public class ComputerNumberService {
     public static List<Integer> generate() {
         List<Integer> computerNumbers = new ArrayList<>();
 
-        while (!(computerNumbers.size() == NUMBER_SIZE.getValue())) {
+        while (computerNumbers.size() != NUMBER_SIZE.getValue()) {
             int random = pickNumberInRange(MINIMUM_NUMBER.getValue(), MAXIMUM_NUMBER.getValue());
 
             if (!computerNumbers.contains(random)) {
