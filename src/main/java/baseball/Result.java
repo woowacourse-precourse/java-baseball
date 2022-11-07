@@ -22,11 +22,11 @@ public class Result {
 
         if(ballCount==0 && strikeCount==0){
             resultMessage = Settings.NOTHING;
-        }else if(ballCount>0){
+        }else if(ballCount>0 && strikeCount==0){
             resultMessage = ballCount + Settings.BALL;
-        }else if(strikeCount>0){
+        }else if(ballCount==0 && strikeCount>0){
             resultMessage = strikeCount + Settings.STRIKE;
-        }else{
+        }else if(ballCount>0 && strikeCount>0){
             resultMessage = ballCount + Settings.BALL + strikeCount + Settings.STRIKE;
         }
 
