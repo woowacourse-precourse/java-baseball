@@ -1,7 +1,7 @@
 package baseball.player;
 
+import baseball.utils.Input;
 import baseball.utils.Regex;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +14,9 @@ public class User {
 
   public void createUserInput(){
     init();
-    String input = Console.readLine();
-    isValidInputValue(input);
-    putInputValueInList(input);
+    Input input = new Input();
+    isValidInputValue(input.getInput());
+    putInputValueInList(input.toIntList());
   }
 
   private void isValidInputValue(String input) {
@@ -25,16 +25,10 @@ public class User {
     }
   }
 
-  private void putInputValueInList(String input){
-    String[] strList = input.split("");
-
-    for(String s : strList) {
-      user.add(stringToInt(s));
+  private void putInputValueInList(int[] numList){
+    for(int num : numList) {
+      user.add(num);
     }
-  }
-
-  private Integer stringToInt(String s) {
-    return Integer.valueOf(s);
   }
 
   public List<Integer> getUserNumberList(){
