@@ -1,15 +1,19 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static baseball.ConstValue.*;
 
 public class UserInput {
+    private final Set<Integer> valid_range = valid_range_number();
     private String input;
     private List<Integer> numbers;
     private String reStartOrQuitInput;
@@ -47,8 +51,8 @@ public class UserInput {
         this.numbers = Arrays.stream(Stream.of(input.split(""))
                         .mapToInt(Integer::parseInt)
                         .toArray())
-                        .boxed()
-                        .collect(Collectors.toList());
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     public void isValid() {
@@ -69,9 +73,11 @@ public class UserInput {
             throw new IllegalArgumentException("새로운 게임을 원하시면 1, 게임 종료를 원하시면 2를 입력해주세요");
         }
     }
+
     private boolean isValidRangeNumber() {
         return !input.contains(OUT_OF_RANGE_NUMBER);
     }
+
     private boolean isValidLength() {
         return input.length() == NUMBERS_LENGTH;
     }
@@ -85,25 +91,21 @@ public class UserInput {
     }
 
     private boolean isValidGuessNumber() {
-        HashSet<String> setRange1To9 = setRange1To9();
-        HashSet<String> inputSet = stringToSet();
-        inputSet.retainAll(setRange1To9);
+        Set<Integer> inputSet = inputToSet();
+        inputSet.retainAll(valid_range);
         return inputSet.size() == NUMBERS_LENGTH;
     }
 
-    private HashSet<String> setRange1To9() {
-        HashSet<String> setRange1To9 = new HashSet<>();
-        for (int i = MIN_RANGE_NUMBER; i <= MAX_RANGE_NUMBER; i++) {
-            setRange1To9.add(String.valueOf(i));
-        }
-        return setRange1To9;
+    private Set<Integer> inputToSet() {
+        return Pattern.compile("")
+                .splitAsStream(input)
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
     }
 
-    private HashSet<String> stringToSet() {
-        HashSet<String> inputSet = new HashSet<>();
-        for (int i = 0; i < NUMBERS_LENGTH; i++) {
-            inputSet.add(String.valueOf(input.charAt(i)));
-        }
-        return inputSet;
+    private Set<Integer> valid_range_number() {
+        return IntStream.rangeClosed(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER)
+                .boxed()
+                .collect(Collectors.toSet());
     }
 }
