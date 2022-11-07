@@ -47,6 +47,14 @@ public class Game {
         return ball;
     }
 
+    public int getStartRange() {
+        return startRange;
+    }
+
+    public int getEndRange() {
+        return endRange;
+    }
+
     public void plusStrike() {
         this.strike++;
     }
