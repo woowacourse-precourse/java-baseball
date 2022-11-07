@@ -7,22 +7,34 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        String randomNum = makeRandomNum();
-        System.out.println("randomNum: "+randomNum);
-        System.out.println("숫자를 입력해 주세요. :");
-        String userNum = Console.readLine();
+        List<Integer> result = new ArrayList<>();
+        result.add(0); // strike 수
+        result.add(0); // ball 수
 
-        List<Integer> result = analyseNumber(randomNum, userNum);
+        while(result.get(0)!=3) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            String randomNum = makeRandomNum();
+            System.out.println("randomNum: "+randomNum);
+            System.out.println("숫자를 입력해 주세요. :");
+            String userNum = Console.readLine();
 
-        if(result.get(0)!=3) {
-            if(result.get(0)==0) {
-                System.out.println(result.get(1)+"볼");
-            } else if(result.get(1)==0) {
-                System.out.println(result.get(0)+"스트라이크");
-            } else {
-                System.out.println(result.get(1)+"볼 "+result.get(0)+"스트라이크");
-            }
+            result = analyseNumber(randomNum, userNum);
+
+            printResult(result);
+
+        }
+        System.out.println();
+
+
+    }
+
+    public static void printResult(List<Integer> result) {
+        if(result.get(0)==0) {
+            System.out.println(result.get(1)+"볼");
+        } else if(result.get(1)==0) {
+            System.out.println(result.get(0)+"스트라이크");
+        } else {
+            System.out.println(result.get(1)+"볼 "+result.get(0)+"스트라이크");
         }
     }
 
