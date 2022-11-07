@@ -19,19 +19,33 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    public static void result(List<Integer> answer, List<Integer> userInput) {
+    public static boolean isAnswer (List<Integer> answer, List<Integer> userInput) {
         int ball = getBall(answer, userInput);
         int strike = getStrike(answer, userInput);
 
-        if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-        }
-        else if (strike == 0) {
+        if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
+
+            return false;
         }
-        else {
+        if (ball == 0 && strike != 0) {
+            System.out.println(strike + "스트라이크");
+
+            return false;
+        }
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
+
+            return false;
         }
+        if (strike == 3) {
+            System.out.println(strike + "스트라이크");
+
+            return true;
+        }
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+
+        return false;
     }
 
     public static int getBall(List<Integer> answer, List<Integer> userInput) {
