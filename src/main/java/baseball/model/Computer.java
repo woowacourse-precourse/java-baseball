@@ -20,4 +20,9 @@ public class Computer {
     public List<Integer> getComputerNumberList() {
         return computerNumberList;
     }
+
+    // 테스트를 위한 컴퓨터 숫자 수정 메서드
+    public void setComputerNumberList(List<Integer> computerNumberList) {
+        this.computerNumberList = computerNumberList;
+    }
 }

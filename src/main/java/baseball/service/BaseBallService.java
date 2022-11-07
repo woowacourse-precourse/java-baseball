@@ -44,4 +44,19 @@ public class BaseBallService {
         baseBall.setStrike(strike);
         baseBall.setBall(ball);
     }
+
+    // 테스트를 위한 컴퓨터 숫자 수정 메서드
+    public void setComputerNumberList(List<Integer> computerNumberList) {
+        computer.setComputerNumberList(computerNumberList);
+    }
+
+    // 테스트를 위한 볼 조회 메서드
+    public int getBall() {
+        return baseBall.getBall();
+    }
+
+    // 테스트를 위한 스트라이크 조회 메서드
+    public int getStrike() {
+        return baseBall.getStrike();
+    }
 }
