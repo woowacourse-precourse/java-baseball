@@ -6,7 +6,8 @@ public class Application {
     private static void playGame() {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            break;
+            String num = Console.readLine();
+            System.out.println(num);
         }
     }
 
