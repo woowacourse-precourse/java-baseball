@@ -70,8 +70,8 @@ public class Application {
     }
 
     public static GameState checkGameState(String userInput) {
-        if(userInput.equals("1")) return GameState.RESTART;
-        if(userInput.equals("2")) return GameState.EXIT;
+        if (userInput.equals("1")) return GameState.RESTART;
+        if (userInput.equals("2")) return GameState.EXIT;
         return GameState.PROGRESS;
     }
 
@@ -101,7 +101,7 @@ public class Application {
                     } else System.out.println(judgeString);
                 default:
             }
-            if(exitFlag) break;
+            if (exitFlag) break;
         }
     }
 
