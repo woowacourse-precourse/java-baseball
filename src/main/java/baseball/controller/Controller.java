@@ -37,15 +37,15 @@ public class Controller {
         strike = service.findStrike(score, number);
         ball = service.findBall(score, number);
 
-        if (Objects.equals(ball,0) && Objects.equals(strike,0)) {
+        if (Objects.equals(ball, 0) && Objects.equals(strike, 0)) {
             view.incorrect();
-        } else if (!Objects.equals(ball,0) && !Objects.equals(strike,0)) {
+        } else if (!Objects.equals(ball, 0) && !Objects.equals(strike, 0)) {
             view.strikeAndBall(strike, ball);
-        } else if (!Objects.equals(ball,0)) {
+        } else if (!Objects.equals(ball, 0)) {
             view.ball(ball);
-        } else if (!Objects.equals(strike,3)) {
+        } else if (!Objects.equals(strike, 3)) {
             view.strike(strike);
-        } else if (Objects.equals(strike,3)) {
+        } else if (Objects.equals(strike, 3)) {
             view.threeStrike();
             return false;
         }
