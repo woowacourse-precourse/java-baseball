@@ -2,7 +2,8 @@ package constants;
 
 public enum Rule {
 
-    NUMBER(3, 1, 9);
+    NUMBER(3, 1, 9),
+    HINT(2, 0, 3);
 
     private int length;
     private int min;
