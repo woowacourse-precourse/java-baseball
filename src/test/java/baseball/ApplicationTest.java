@@ -75,4 +75,11 @@ class ApplicationTest extends NsTest {
 		assertThat(0).isEqualTo(user.userSize());
 	}
 
+	@Test
+	void 스트라이크_볼_카운트를_초기화() {
+		game.strikeAdd();
+		game.gameSetting();
+		assertThat(0).isEqualTo(game.getStrikeCount());
+	}
+
 }
