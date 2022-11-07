@@ -23,7 +23,7 @@ public class Game {
     public void run() {
         do {
             Balls userBalls = Balls.createBalls(input.inputUserBalls());
-            Output.printHint(referee.getHint(userBalls));
+            Output.printHint(referee.judgeScore(userBalls));
         } while (!referee.isEnd());
         Output.printEndMessage();
     }

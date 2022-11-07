@@ -12,22 +12,22 @@ public class Referee {
         this.hint = new Hint();
     }
 
-    public Hint getHint(Balls userBalls) {
+    public Hint judgeScore(Balls userBalls) {
         hint.init();
         for (int i = 0; i < BALLS_FORMAL_SIZE; i++) {
-            getStrike(userBalls, i);
-            getBall(userBalls, i);
+            decideStrike(userBalls, i);
+            decideBall(userBalls, i);
         }
         return this.hint;
     }
 
-    private void getStrike(Balls userBalls, int index) {
+    private void decideStrike(Balls userBalls, int index) {
         if (comBalls.isStrikePosition(userBalls,index)) {
             hint.increasePoint(Score.STRIKE);
         }
     }
 
-    private void getBall(Balls userBalls, int index) {
+    private void decideBall(Balls userBalls, int index) {
         if (comBalls.isBallPosition(userBalls,index)) {
             hint.increasePoint(Score.BALL);
         }
