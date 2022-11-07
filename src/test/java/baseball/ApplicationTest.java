@@ -54,4 +54,10 @@ class ApplicationTest extends NsTest {
         assertThat(Application.isRightInput("224")).isEqualTo(false);
         assertThat(Application.isRightInput("45677")).isEqualTo(false);
     }
+
+    @Test
+    void 스트라이크_개수_얻기() {
+        assertThat(Application.getStrikeCount(new ArrayList<>(Arrays.asList(1,2,3)), "123")).isEqualTo(3);
+        assertThat(Application.getStrikeCount(new ArrayList<>(Arrays.asList(1,2,9)), "123")).isEqualTo(2);
+    }
 }
