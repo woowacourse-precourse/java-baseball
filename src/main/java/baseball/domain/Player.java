@@ -8,4 +8,8 @@ public class Player {
     public void guessBall(List<Integer> guessNumber) {
         this.guessBall = Balls.convertNumberToBalls(guessNumber);
     }
+
+    public Balls getGuessBall() {
+        return guessBall;
+    }
 }

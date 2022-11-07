@@ -32,4 +32,32 @@ public class Balls {
                 .collect(Collectors.toList());
         return new Balls(balls);
     }
+
+    public int equalsExactly(Balls player) {
+        int count = 0;
+        for (int position = 0; position < balls.size(); position++) {
+            if (isBallEqual(player, position)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean isBallEqual(Balls player, int index) {
+        return getBall(index).equals(player.getBall(index));
+    }
+
+    private Ball getBall(int index) {
+        return balls.get(index);
+    }
+
+    public int containsCountWithoutEqual(Balls player) {
+        int count = 0;
+        for (int position = 0; position < balls.size(); position++) {
+            if (balls.contains(player.getBall(position)) && !isBallEqual(player, position)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
