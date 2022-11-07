@@ -98,6 +98,7 @@ public class Application {
             game baseball = new game();
             baseball.get_My_num();
             baseball.ball_counter();
+            baseball.ball_commenter();
             if (baseball.end_gamer){
                 break;
             };
