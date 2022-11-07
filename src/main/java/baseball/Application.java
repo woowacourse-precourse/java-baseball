@@ -12,18 +12,29 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int startSwitch = 1;
+        List<Integer> computerNumbersList = getRandomThreeNumbers();
         while (startSwitch == 1) {
-            List<Integer> computerNumbersList = getRandomThreeNumbers();
             System.out.println(computerNumbersList);
             System.out.print("숫자를 입력해주세요 : ");
-            int userNumber = Integer.parseInt(Console.readLine());
+            String stringUserNumber = Console.readLine();
+            int userNumber = Integer.parseInt(stringUserNumber);
             List<Integer> userNumbersList = getUserNumberList(userNumber);
             if (getResult(computerNumbersList, userNumbersList)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 startSwitch = Integer.parseInt(Console.readLine());
+                computerNumbersList = getRandomThreeNumbers();
             }
         }
+    }
+
+    public static boolean hasDuplication(String s){
+        for(char c : s.toCharArray()){
+            if(s.chars().filter(ch -> ch == c).count() > 1){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static List<Integer> getRandomThreeNumbers() {
