@@ -49,20 +49,24 @@ public class Application {
         randomNumber = String.valueOf(pickNumberInRange(100, 999));
     }
 
+    public static void isMaxSize(String number) throws IllegalArgumentException {
+        if (number.length() < MAX_NUMBER_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         randomNumber = String.valueOf(pickNumberInRange(100, 999));
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (goGame == 1) {
-            System.out.println(randomNumber);
+            // System.out.println(randomNumber);
             // feat: 숫자 입력 및 랜덤 수 생성
             System.out.print("숫자를 입력해주세요 : ");
             String number = readLine();
 
-            // 예외 처리 구현 필요
-            // 들여쓰기 3 이상
-            if (number.length() < MAX_NUMBER_SIZE) continue;
+            isMaxSize(number);
 
             int[] gameResults = countGameResult(number);
             printGameResult(gameResults);
