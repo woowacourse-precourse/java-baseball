@@ -1,5 +1,8 @@
 package baseball.domain.computer;
 
+import baseball.domain.exception.InputNumberException;
+import baseball.domain.game.GameController;
+import baseball.domain.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -19,5 +22,13 @@ public class Computer {
             sb.append(i);
         }
         return sb.toString();
+    }
+
+    public void restartGameInputOneOrElseEndGame() {
+        int inputNumber = OutputView.printRestart();
+        InputNumberException.isInputNumberOneOrTwo(inputNumber);
+        if (inputNumber == 1) {
+            new GameController();
+        }
     }
 }
