@@ -2,6 +2,8 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.Arrays;
+
 public class Game {
     private final int MAX_STRIKE = 3;
     private final int STRIKE = 1;
@@ -16,8 +18,8 @@ public class Game {
     private final String RESTART_STATUS = "1";
     private final String END_GAME_STATUS = "2";
     private final String RESTART_END_MESSAGE = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
-    private String computer;
-    private String player;
+    private String[] computer;
+    private String[] player;
     private int strike;
     private int ball;
     private boolean exit = false;
@@ -46,13 +48,13 @@ public class Game {
     private int countStrike() {
         int count = 0;
         for (int i = 0; i < MAX_STRIKE; i++) {
-            count += isStrike(computer.charAt(i), player.charAt(i));
+            count += isStrike(computer[i], player[i]);
         }
         return count;
     }
 
-    private int isStrike(Character targetChar, Character inputChar) {
-        if (targetChar == inputChar) {
+    private int isStrike(String targetString, String inputString) {
+        if (targetString.equals(inputString)) {
             return STRIKE;
         }
         return NOT_STRIKE;
@@ -61,16 +63,16 @@ public class Game {
     private int countBall() {
         int count = 0;
         for (int i = 0; i < MAX_STRIKE; i++) {
-            count += isBall(player.charAt(i));
+            count += isBall(player[i]);
         }
         return count - strike;
     }
 
-    private int isBall(Character playerChar) {
-        if (computer.indexOf(playerChar) == -1) {
-            return NOT_BALL;
+    private int isBall(String playerNumber) {
+        if (Arrays.asList(computer).contains(playerNumber)) {
+            return BALL;
         }
-        return BALL;
+        return NOT_BALL;
     }
 
     private void printCount() {

@@ -7,12 +7,14 @@ import java.util.Set;
 
 public class Player {
     private static final int MAX_STRIKE = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String INPUT_PATTERN = "^[1-9]*$";
+    private static final String INPUT_PATTERN = "^[" + MIN_NUMBER + "-" + MAX_NUMBER + "]*$";
 
-    public String number;
+    public String[] number;
 
-    public String getNumber() {
+    public String[] getNumber() {
         return this.number;
     }
 
@@ -20,7 +22,7 @@ public class Player {
         System.out.print(INPUT_MESSAGE);
         String input = readLine();
         isValidInput(input);
-        this.number = input;
+        this.number = input.split("");
     }
 
     private void isValidInput(String input) {

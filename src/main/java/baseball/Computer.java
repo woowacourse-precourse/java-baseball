@@ -10,25 +10,25 @@ public class Computer {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
-    public String number;
+    public String[] number;
 
-    public String getNumber() {
+    public String[] getNumber() {
         return this.number;
     }
 
     public void setRandomNumber() {
-        Set<Character> numberSet = new HashSet<>();
-        StringBuilder randomNumber = new StringBuilder();
+        Set<String> numberSet = new HashSet<>();
+        String[] randomNumber = new String[MAX_STRIKE];
 
         while (numberSet.size() != MAX_STRIKE) {
             numberSet.add(getSingleRandomNumber());
         }
 
-        numberSet.forEach(randomNumber::append);
-        this.number = String.valueOf(randomNumber);
+        numberSet.toArray(randomNumber);
+        this.number = randomNumber;
     }
 
-    private char getSingleRandomNumber() {
-        return (char) (pickNumberInRange(MIN_NUMBER, MAX_NUMBER) + '0');
+    private String getSingleRandomNumber() {
+        return Integer.toString(pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
     }
 }
