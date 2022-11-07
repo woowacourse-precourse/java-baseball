@@ -18,4 +18,16 @@ public class Player {
         setInputNum(input);
     }
 
+    public void checkValidateInput(String input){
+        List<Integer> tempInput = new ArrayList<>();
+
+        isInt(input);
+
+        tempInput = changeInputToList(input);
+
+        checkInputLength(tempInput);
+        isIntRange(tempInput);
+        isDifferent(tempInput);
+    }
+
 }
