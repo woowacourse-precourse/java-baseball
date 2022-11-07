@@ -20,7 +20,7 @@ public class Game {
     }
 
     private void init() {
-
+        rule.generateRandomNumber();
     }
 
     private boolean process() {
