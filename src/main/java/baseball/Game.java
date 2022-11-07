@@ -20,7 +20,6 @@ public class Game {
             }
             user.setNumbers(inputUserNumbers());
         }
-
     }
 
     public String inputUserNumbers() {
@@ -38,7 +37,6 @@ public class Game {
         Score score = Score.getResult(computer.getNumbers(), user.getNumbers());
         if (score.checkThreeStrike()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            computer.generateRandomNumbers();
             return restart();
         }
         return false;
@@ -47,21 +45,15 @@ public class Game {
     private boolean restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userChoice = Console.readLine();
-        checkError(userChoice);
 
         if (userChoice.equals("1")) {
+            computer.generateRandomNumbers();
             return false;
         }
-
-        return true;
-    }
-
-    private void checkError(String restartInput) {
-        if (restartInput.length() != 1) {
-            throw new IllegalArgumentException("1 또는 2 중 하나만 선택하세요.");
+        if (userChoice.equals("2")) {
+            return true;
         }
-        if (!restartInput.matches("^[1-2]*$")) {
-            throw new IllegalArgumentException("1 또는 2 중 하나만 선택하세요.");
-        }
+        throw new IllegalArgumentException("1 또는 2 중 하나만 선택하세요.");
+
     }
 }
