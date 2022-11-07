@@ -36,7 +36,7 @@ public class GameService {
         return strike;
     }
 
-    private static int getBallNumber(int input, int computer) {
+    public static int getBallNumber(int input, int computer) {
         int ball = 0;
         int[] arrInput = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
         int[] arrComputer = Stream.of(String.valueOf(computer).split("")).mapToInt(Integer::parseInt).toArray();
