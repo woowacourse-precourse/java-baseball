@@ -22,8 +22,20 @@ public class BaseballGame {
         return computer;
     }
 
+    public List<Integer> checkNumber(List<Integer> computer, List<Integer> proposal) {
+        List<Integer> checkList = new ArrayList<>();
+
+        return checkList;
+    }
+
     public void run() {
-        User user = new User();
         List<Integer> computer = this.getRandomNumbers();
+
+        User user = new User();
+        user.setProposal();
+        List<Integer> proposal = user.getProposal();
+
+        List<Integer> result = this.checkNumber(computer, proposal);
+
     }
 }
