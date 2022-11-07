@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.view.InputView;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,8 @@ public class GameController {
     public void GameController() {
         inputView.GameStart();
         ArrayList<Integer> computer = randomNumberGenerator.RandomNumberGenerator();
-        ArrayList<Integer> UserNumList = new InputUserNumber().InputUserNumber();
+        inputView.InputUserNum();
+        String userInputNum = Console.readLine();
+        ArrayList<Integer> UserNumList = new InputUserNumber().InputUserNumber(userInputNum);
     }
 }
