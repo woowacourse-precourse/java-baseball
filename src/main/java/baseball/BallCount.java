@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class BallCount {
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
@@ -43,6 +45,17 @@ public class BallCount {
                 this.strike++;
             }
         }
+    }
+
+    public String toString() {
+        List<String> ballCountStringList =
+                List.of(NOTHING, ball + BALL + " " + strike + STRIKE,
+                        ball + BALL, strike + STRIKE);
+        List<Boolean> ballCountStatement =
+                List.of(ball == 0 && strike == 0, ball != 0 && strike != 0,
+                        ball != 0 && strike == 0, ball == 0 && strike != 0);
+
+        return ballCountStringList.get(ballCountStatement.indexOf(true));
     }
 
 }
