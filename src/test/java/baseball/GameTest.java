@@ -37,9 +37,9 @@ public class GameTest {
         Method checkUserInputDuplicateNumberMethod = Game.class.getDeclaredMethod("checkUserInputDuplicateNumber", String.class);
         checkUserInputDuplicateNumberMethod.setAccessible(true);
 
-        boolean isNotDuplacated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "123");
+        boolean isNotDuplicated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "123");
 
-        assertThat(isNotDuplacated).isEqualTo(true);
+        assertThat(isNotDuplicated).isEqualTo(true);
     }
 
     @Test
@@ -47,9 +47,9 @@ public class GameTest {
         Method checkUserInputDuplicateNumberMethod = Game.class.getDeclaredMethod("checkUserInputDuplicateNumber", String.class);
         checkUserInputDuplicateNumberMethod.setAccessible(true);
 
-        boolean isNotDuplacated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "201");
+        boolean isNotDuplicated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "201");
 
-        assertThat(isNotDuplacated).isEqualTo(true);
+        assertThat(isNotDuplicated).isEqualTo(true);
     }
 
     @Test
@@ -57,8 +57,8 @@ public class GameTest {
         Method checkUserInputDuplicateNumberMethod = Game.class.getDeclaredMethod("checkUserInputDuplicateNumber", String.class);
         checkUserInputDuplicateNumberMethod.setAccessible(true);
 
-        boolean isNotDuplacated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "122");
+        boolean isNotDuplicated = (boolean) checkUserInputDuplicateNumberMethod.invoke(game, "122");
 
-        assertThat(isNotDuplacated).isEqualTo(false);
+        assertThat(isNotDuplicated).isEqualTo(false);
     }
 }
