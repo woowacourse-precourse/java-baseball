@@ -34,14 +34,15 @@ public class Computer {
             System.out.println(GameComment.THREE_STRIKE);
             System.out.println(GameComment.GAME_END_MSG);
             return GameComment.GAME_END;
-        } else if (ballCount < 1 && strikeCount < 1)
+        } else if (ballCount < 1 && strikeCount < 1) {
             System.out.println(GameComment.NOTHING);
-        else if (strikeCount < 1)
+        }else if (strikeCount < 1){
             System.out.println(ballCount + GameComment.BALL);
-        else if (ballCount < 1)
+        }else if (ballCount < 1) {
             System.out.println(strikeCount + GameComment.STRIKE);
-        else
+        }else {
             System.out.println(ballCount + GameComment.BALL + " " + strikeCount + GameComment.STRIKE);
+        }
         return GameComment.NOT_GAME_END;
     }
 
