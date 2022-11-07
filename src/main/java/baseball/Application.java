@@ -21,8 +21,15 @@ public class Application {
     public static void validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
         validateDigit(numberList);
+        validateZero(numberList);
         validateSize(numberList);
         validateDuplication(numberList);
+    }
+
+    private static void validateZero(List<String> numberList) {
+        if (numberList.contains("0")) {
+            throw new IllegalArgumentException("UserNumber can't have Zero");
+        }
     }
 
     private static void validateDigit(List<String> numberList) {
