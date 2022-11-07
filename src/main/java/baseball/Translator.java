@@ -16,6 +16,4 @@ public class Translator {
 
         return list;
     }
-
-
 }
