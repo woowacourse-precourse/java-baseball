@@ -76,7 +76,7 @@
 
 ## 게임 동작 결과 출력
 
-- [ ] 게임 승리 (3 strike) 메시지 출력
+- [x] 게임 승리 (3 strike) 메시지 출력
 - [x] Ball 개수 출력
 - [x] Strike 개수 출력
 - [x] Nothing 출력

@@ -5,6 +5,7 @@ import baseball.game.rule.Rule;
 import baseball.game.rule.RuleChecker;
 import baseball.game.rule.BallCountRule;
 import baseball.game.rule.StrikeCountRule;
+import baseball.game.util.GameUtil;
 import baseball.system.util.SystemUtil;
 
 import java.util.ArrayList;
@@ -18,6 +19,23 @@ import static baseball.game.util.GameUtil.STRIKE_OUT_COUNT;
 public class Game {
 
     private static final SystemUtil systemUtil = SystemUtil.getInstance();
+    private static final GameUtil gameUtil = GameUtil.getInstance();
+
+    public static void start() {
+        Integer answer = gameUtil.getRandomNumber();
+
+        while (true) {
+            Integer guess = gameUtil.getUserInput();
+
+            Map<Result, Integer> guessResult = validateGuess(answer, guess);
+            printResult(guessResult);
+
+            if (isStrikeOut(guessResult)) {
+                return;
+            }
+        }
+    }
+
 
     private static boolean isStrikeOut(Map<Result, Integer> guessResult) {
         return guessResult.get(Result.STRIKE) == STRIKE_OUT_COUNT;
