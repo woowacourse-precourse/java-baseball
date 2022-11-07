@@ -27,6 +27,12 @@ public class BaseballGameController {
         GameResult gameResult = new GameResult(0, 0);
         List<Integer> answerNumbers = baseballGameService.getRandomNumber();
 
+        do {
+            baseballGameView.gameStartMessage();
+
+
+        } while (isThreeStrike(gameResult));
+
     }
 
 

@@ -7,6 +7,7 @@ public class BaseballGameView {
     }
 
     public void gameStartMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public void gameResultMessage(Integer strike, Integer ball) {
