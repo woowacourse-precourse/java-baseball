@@ -81,5 +81,4 @@ public class ApplicationMethodTests {
         assertThat(baseBallPoint.getStrike()).isEqualTo(1);
         assertThat(baseBallPoint.getBall()).isEqualTo(2);
     }
-
 }

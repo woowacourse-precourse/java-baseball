@@ -17,16 +17,23 @@ public class Application {
         List<Integer> computer = setAnswerNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        System.out.print("숫자를 입력해 주세요 : ");
+        while(true) {
+            System.out.print("숫자를 입력해 주세요 : ");
 
-        String numStr = userInputNumber(System.in);
+            String numStr = userInputNumber(System.in);
 
-        System.out.println(numStr);
+            System.out.println(numStr);
 
-        BaseBallPoint baseBallPoint = countBallAndStrike(computer, numStr);
+            BaseBallPoint baseBallPoint = countBallAndStrike(computer, numStr);
 
-        printBallAndStrike(baseBallPoint.getBall(), baseBallPoint.getStrike());
+            printBallAndStrike(baseBallPoint.getBall(), baseBallPoint.getStrike());
 
+            if(baseBallPoint.getStrike() == 3){
+
+                String gameStr = restartAndExitCheck(System.in);
+
+            }
+        }
     }
 
     static class BaseBallPoint{
@@ -39,7 +46,7 @@ public class Application {
         public int getStrike() {return strike;}
     }
 
-    private static BaseBallPoint countBallAndStrike(List<Integer> computer, String numStr) {
+    public static BaseBallPoint countBallAndStrike(List<Integer> computer, String numStr) {
         int ball = 0, strike = 0;
 
         for(int i = 0 ; i < 3 ; i++){
@@ -109,5 +116,16 @@ public class Application {
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
+    }
+    public static String restartAndExitCheck(InputStream in){
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+
+        String gameStr = systemInput(in);
+
+        System.out.println(gameStr);
+
+        return gameStr;
     }
 }
