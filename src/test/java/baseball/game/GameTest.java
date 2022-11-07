@@ -66,6 +66,54 @@ public class GameTest extends NsTest {
                         )));
     }
 
+    @Test
+    void 볼과_스트라이크의_개수가_나와야_한다() {
+        Game game = Game.create();
+        assertSimpleTest(() -> {
+            game.printGameResult(Map.of(
+                    "볼", 1,
+                    "스트라이크", 2
+            ));
+            assertThat(output()).isEqualTo("1볼 2스트라이크");
+        });
+    }
+
+    @Test
+    void 스트라이크만_3이_나와야_한다() {
+        Game game = Game.create();
+        assertSimpleTest(() -> {
+            game.printGameResult(Map.of(
+                    "볼", 0,
+                    "스트라이크", 3
+            ));
+            assertThat(output()).isEqualTo("3스트라이크");
+        });
+    }
+
+    @Test
+    void 볼만_3이_나와야_한다() {
+        Game game = Game.create();
+        assertSimpleTest(() -> {
+            game.printGameResult(Map.of(
+                    "볼", 3,
+                    "스트라이크", 0
+            ));
+            assertThat(output()).isEqualTo("3볼");
+        });
+    }
+
+    @Test
+    void 낫싱이_나와야_한다() {
+        Game game = Game.create();
+        assertSimpleTest(() -> {
+            game.printGameResult(Map.of(
+                    "볼", 0,
+                    "스트라이크", 0
+            ));
+            assertThat(output()).isEqualTo("낫싱");
+        });
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
