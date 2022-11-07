@@ -25,6 +25,8 @@ public class Baseball {
         System.out.print("숫자를 입력해주세요 : ");
 
         int userNumber = Integer.parseInt(Console.readLine());
+        if (userNumber < 123 || userNumber > 987)
+            throw new IllegalArgumentException();
         int firstNumber = userNumber / 100;
         int secondNumber = userNumber % 100 / 10;
         int thirdNumber = userNumber % 10;
