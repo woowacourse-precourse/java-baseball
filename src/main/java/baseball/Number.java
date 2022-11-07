@@ -10,6 +10,15 @@ class Number {
     private static List<Integer> userNumbers;
     private static List<Integer> computers;
 
+    Number() {
+        computers = initComputerNumber();
+    }
+
+    Number(String userNumber) {
+        System.out.println(getComputers());
+        userNumbers = stringToList(userNumber);
+    }
+
     public static List<Integer> getComputers() {
         return computers;
     }
