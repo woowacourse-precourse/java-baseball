@@ -14,11 +14,15 @@ public final class Controller {
     private final OutputView outputView;
     private final ErrorView errorView;
 
-    public Controller(InputView inputView, OutputView outputView, ErrorView errorView) {
+    private Controller(InputView inputView, OutputView outputView, ErrorView errorView) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.errorView = errorView;
         initController();
+    }
+
+    public static Controller createWithViews(InputView inputView, OutputView outputView, ErrorView errorView) {
+        return new Controller(inputView, outputView, errorView);
     }
 
     public void runGame(Game game) {

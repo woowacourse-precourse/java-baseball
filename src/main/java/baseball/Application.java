@@ -15,7 +15,7 @@ public class Application {
         InputView inputView = new ConsoleInput();
         OutputView outputView = new ConsoleOutput();
         ErrorView errorView = new ConsoleError();
-        Controller controller = new Controller(inputView, outputView, errorView);
+        Controller controller = Controller.createWithViews(inputView, outputView, errorView);
 
         Game game = new BaseballGame(inputView, outputView, errorView);
         controller.runGame(game);
