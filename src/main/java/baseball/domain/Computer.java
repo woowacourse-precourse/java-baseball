@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Computer {
 
+    private Hint hint = new Hint();
     private List<Integer> randomNumbers = new ArrayList<>();
 
     public List<Integer> makeRandomNumbers() {
@@ -22,5 +23,13 @@ public class Computer {
                 randomNumbers.add(randomNumber);
             }
         }
+    }
+
+    public String resultOfGame(List<Integer> playerInputs, List<Integer> randomNumbers) {
+        return hint.calculateResult(playerInputs, randomNumbers);
+    }
+
+    public boolean isAnswer() {
+        return hint.isThreeStrike();
     }
 }
