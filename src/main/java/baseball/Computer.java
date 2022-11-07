@@ -21,7 +21,7 @@ public class Computer {
             throw new IllegalArgumentException();
     }
 
-    private boolean isValidNumber(List<Integer> numbers) {
+    public boolean isValidNumber(List<Integer> numbers) {
         for(Integer number: numbers) {
             int overlapCnt = Collections.frequency(numbers, number);
             if(overlapCnt > 1)
