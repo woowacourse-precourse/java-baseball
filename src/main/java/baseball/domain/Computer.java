@@ -10,6 +10,10 @@ public class Computer {
 
     public static List<Integer> computerRandomNumberList;
 
+    public List<Integer> getComputerRandomNumberList() {
+        return computerRandomNumberList;
+    }
+
 
 
 
