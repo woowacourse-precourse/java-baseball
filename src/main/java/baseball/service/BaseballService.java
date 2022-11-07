@@ -17,4 +17,9 @@ public class BaseballService {
     public void welcome() {
         System.out.println(GAME_START_MESSAGE);
     }
+
+    // 게임 초기화 기능
+    public void initGame() {
+        baseballMachine.prepareGame();
+    }
 }
