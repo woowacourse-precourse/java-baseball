@@ -24,6 +24,24 @@ public class User {
         return userNumberList;
     }
 
+    // User validation 호출 메서드
+    public void userValidation(String userNumber) throws IllegalArgumentException {
+        if (checkDuplicateNumber(userNumber)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+        if (checkNumberSize(userNumber)) {
+            throw new IllegalArgumentException("입력 가능한 최대 자릿수는 3자리 입니다.");
+        }
+
+        if (checkSpace(userNumber)) {
+            throw new IllegalArgumentException("공백은 입력할 수 없습니다.");
+        }
+
+        if (checkNumber(userNumber)) {
+            throw new IllegalArgumentException("숫자만 입력가능 합니다.");
+        }
+
+    }
 
     public boolean checkDuplicateNumber(String userNumber) {
         int[] checkArray = new int[11];
