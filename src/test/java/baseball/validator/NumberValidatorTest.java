@@ -49,4 +49,9 @@ class NumberValidatorTest {
         );
         assertEquals("It's not a three-digit number.", exception.getMessage());
     }
+
+    @Test
+    void 재시작_종료_숫자_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> NumberValidator.validate("3"));
+    }
 }
