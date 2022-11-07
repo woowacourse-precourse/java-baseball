@@ -9,14 +9,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
-    public static boolean isValid(String readLine) {
+    public static String isValid(String readLine) {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
         boolean isTriple = (readLine.length() == 3);
 
         if (isNumeric || isTriple) {
             throw new IllegalArgumentException();
         }
-        return (isNumeric && isTriple);
+        return readLine;
     }
 
     public static void result(List<Integer> answer, List<Integer> userInput) {
