@@ -8,10 +8,9 @@ public class Game {
 
     public Game() {
 
-
     }
 
-    public void routine() {
+    public boolean routine() {
         int none = 0;
         for (int i = 0; i < 3; i++) {
             if (isStrike(i)) {
@@ -22,10 +21,11 @@ public class Game {
                 none++;
             }
         }
-        printResult(none);
-//        if (none == 3) {
-//
-//        }
+        if (printResult(none)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private boolean printResult(int none) {
