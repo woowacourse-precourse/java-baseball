@@ -35,14 +35,14 @@ public class Controller {
         computer = new Computer(answer);
     }
 
-    private boolean goGame(String hint) {
+    private boolean goGame(String hint) throws IllegalArgumentException {
         if(isAnswer(hint)) {
             return selectMenu().equals(CONTINUE_GAME);
         }
         return true;
     }
 
-    private void inputUserNumber() throws IllegalArgumentException{
+    private void inputUserNumber() throws IllegalArgumentException {
         System.out.print(INPUT_MESSAGE);
         String input = Console.readLine();
         user.checkInputFormat(input);
@@ -56,10 +56,13 @@ public class Controller {
             return false;
     }
 
-    private String selectMenu() {
+    private String selectMenu() throws IllegalArgumentException {
         System.out.println(GAME_OVER_MESSAGE);
         System.out.println(MENU_MESSAGE);
         String menu = Console.readLine();
+        if(!menu.equals("1") && !menu.equals("2")) {
+            throw new IllegalArgumentException();
+        }
         return menu;
     }
 }
