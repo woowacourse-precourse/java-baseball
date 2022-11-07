@@ -14,10 +14,7 @@ class InputNumberTest {
     @Test
     void inputGameNumber_공백_예외_테스트() {
         String input = "1 3";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(InputNumber::inputGameNumber)
@@ -28,10 +25,7 @@ class InputNumberTest {
     @Test
     void inputGameNumber_세자리_아닌_수_예외_테스트() {
         String input = "2";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(InputNumber::inputGameNumber)
@@ -42,10 +36,7 @@ class InputNumberTest {
     @Test
     void inputGameNumber_숫자가_아닐_때_예외_테스트() {
         String input = "1가2";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(InputNumber::inputGameNumber)
@@ -56,10 +47,7 @@ class InputNumberTest {
     @Test
     void inputGameNumber_테스트() {
         String input = "123";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertThat(input).isEqualTo(InputNumber.inputGameNumber());
     }
@@ -67,11 +55,7 @@ class InputNumberTest {
     @Test
     void inputRestartNumber_테스트() {
         String input = "1";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        System.out.println(input);
+        systemInput(input);
 
         assertThat(input).isEqualTo(InputNumber.inputRestartNumber());
     }
@@ -79,10 +63,7 @@ class InputNumberTest {
     @Test
     void inputRestartNumber_한자리_아닌_수_예외_테스트() {
         String input = "123";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(InputNumber::inputRestartNumber)
@@ -93,10 +74,7 @@ class InputNumberTest {
     @Test
     void inputRestartNumber_숫자가_아닐_때_예외_테스트() {
         String input = "가";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(InputNumber::inputRestartNumber)
@@ -107,10 +85,7 @@ class InputNumberTest {
     @Test
     void inputRestartNumber_공백_예외_테스트() {
         String input = " ";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(InputNumber::inputRestartNumber)
@@ -121,15 +96,19 @@ class InputNumberTest {
     @Test
     void inputRestartNumber_중복_예외_테스트() {
         String input = "112";
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        systemInput(input);
 
         assertSimpleTest(() ->
                 assertThatThrownBy(InputNumber::inputRestartNumber)
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    void systemInput(String input){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
     }
 
 }
