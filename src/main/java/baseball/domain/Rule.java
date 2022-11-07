@@ -19,6 +19,8 @@ public class Rule {
                 Hint.addCount(Hint.BALL);
             }
         }
+
+        System.out.println(Hint.getHintByCount());
     }
 
     public String gameOver() {

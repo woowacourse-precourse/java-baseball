@@ -10,7 +10,6 @@ import static baseball.view.View.*;
 public class Game {
     private final Computer computer;
     private final  Gamer gamer;
-    private Hint hint;
     private final Rule rule;
 
     public Game() {
