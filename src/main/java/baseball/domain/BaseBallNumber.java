@@ -81,4 +81,5 @@ public class BaseBallNumber {
     public boolean hasNumber( int number, int idx ) {
         return baseballNumber.get(idx) == number;
     }
+
 }
