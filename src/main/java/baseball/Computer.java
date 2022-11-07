@@ -27,4 +27,11 @@ public class Computer {
         return true;
     }
 
+    public boolean isStrike(int number, int index) {
+        if (answer.get(index) == number) {
+            return true;
+        }
+        return false;
+    }
+
 }
