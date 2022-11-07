@@ -27,14 +27,22 @@
 ### 2. 컴퓨터의 세 자리수를 만드는 함수 `createTargetNumber()`
 
 - 요구사항
-    - `1`부터 `9`까지의 서로 다른 수로 이루어진 `3`자리의 수를 생성한다.
-    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+  - `1`부터 `9`까지의 서로 다른 수로 이루어진 `3`자리의 수를 생성한다.
+  - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 
 
 - 기능 설명
-    1. 리스트 `targetNumber`를 초기화한다.
-    2. `Randoms.pickNumberInRange(1, 9)`를 통해 생성된 숫자가 이미 `targetNumber`에 들어있는지 확인한 후 없다면 추가한다.
-    3. `targetNumber`의 길이가 3이 될 때까지 과정 ii.을 반복하고, 길이가 3이 되면 반환한다.
+  1. 리스트 `targetNumber`를 초기화한다.
+  2. `Randoms.pickNumberInRange(1, 9)`를 통해 생성된 숫자가 이미 `targetNumber`에 들어있는지 확인한 후 없다면 추가한다.
+  3. `targetNumber`의 길이가 3이 될 때까지 과정 ii.을 반복하고, 길이가 3이 되면 반환한다.
+
+
+- 테스트 코드
+  1. `createTargetNumber_정상_생성_확인()` : 지정한 값을 활용해 생성한 `targetNumber`가 제대로 생성되는지 확인
+  2. `createTargetNumber_정상_생성_확인_중복_제거()` : 랜덤에서 반영되는 값에 중복이 있을 때 `targetNumber`가 제대로 생성되는지 확인
+    - 랜덤 함수에서 3, 1, 3, 1, 1, 1, 3, 1, 3, 1, 1, 1, 8 이 순서대로 반환될 경우 `targetNumber` 는 `3, 1, 8`을 순서대로 가지는 리스트
+  3. `createTargetNumber_생성_결과_유효성_확인()` : 랜덤 생성한 `targetNumber`의 길이, 원소가 서로 다른지, 각 자리가 1과 9 사이인지 검증
+    - 랜덤 생성 후 50회 반복 검증
 
 <br>
 
