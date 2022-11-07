@@ -7,7 +7,6 @@ public class Ball {
     private List<Integer> ballData;
 
     public Ball() {
-
     }
 
     public Ball(List<Integer> ball) {
