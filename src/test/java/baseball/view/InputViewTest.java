@@ -80,7 +80,7 @@ class InputViewTest {
             private InputStream givenInput = generateUserInput("1");
 
             @Test
-            void BaseballGameStatus_Play를_반환한다() {
+            void BaseballGameStatus_Play를_리턴한다() {
                 System.setIn(givenInput);
 
                 BaseballGameStatus baseballGameStatus = sut.inputGameStatus();
@@ -95,7 +95,7 @@ class InputViewTest {
             private InputStream givenInput = generateUserInput("2");
 
             @Test
-            void BaseballGameStatus_STOP을_반환한다() {
+            void BaseballGameStatus_STOP을_리턴한다() {
                 System.setIn(givenInput);
 
                 BaseballGameStatus baseballGameStatus = sut.inputGameStatus();

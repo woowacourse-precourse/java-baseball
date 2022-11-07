@@ -26,7 +26,7 @@ class BaseballNumberTest {
 
             @ParameterizedTest
             @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
-            void BaseballNumber_객체를_반환한다(int number) {
+            void BaseballNumber_객체를_리턴한다(int number) {
                 assertThat(BaseballNumber.valueOf(number)).isInstanceOf(BaseballNumber.class);
             }
         }

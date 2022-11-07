@@ -72,7 +72,7 @@ class BaseballNumbersTest {
 
             @ParameterizedTest(name = "컴퓨터가 [9, 3, 1]일 때 {0}이 입력된 경우 결과는 {1}")
             @MethodSource("baseball.domain.BaseballNumbersTest#baseballGameNumbersAndGameResult")
-            void 컴퓨터와의_게임_결과를_반환한다(BaseballNumbers player, BaseballGameResult expectGameResult) {
+            void 컴퓨터와의_게임_결과를_리턴한다(BaseballNumbers player, BaseballGameResult expectGameResult) {
                 BaseballGameResult gameResult = computer.play(player);
                 assertThat(gameResult).isEqualTo(expectGameResult);
             }
