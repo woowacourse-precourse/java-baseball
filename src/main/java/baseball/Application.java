@@ -7,10 +7,12 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int[] randomNum = randomNum();
+        boolean check = false;
 
-        while(!game(randomNum)){
-            game(randomNum);
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int[] randomNum = randomNum();
+        while(!check){
+            check = game(randomNum);
         }
     }
 
@@ -25,7 +27,7 @@ public class Application {
                     count--; // 중복 아닌 수로 다시 찾기
                 }
             }
-            System.out.println("num: " + randomNum[count]);
+            System.out.println("랜덤 num: " + randomNum[count]);
         }
         return randomNum;
 
@@ -33,11 +35,12 @@ public class Application {
 
 
     public static boolean game(int[] randomNum){
+
+
         boolean result = false;
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
         String userNum = sc.nextLine();
 
@@ -70,7 +73,7 @@ public class Application {
         if(ball == 3){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            reStart(randomNum);
+            reStart();
             result = true;
         }
         else if(nothing == 3) {
@@ -86,13 +89,18 @@ public class Application {
         return result;
     }
 
-    public static void reStart(int[] randomNum){
+    public static void reStart(){
+
         Scanner sc = new Scanner(System.in);
         int reStart = sc.nextInt();
 
         if(reStart == 1){
-            System.out.println("게임 재시작");
-            game(randomNum);
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            int[] randomNum2 = randomNum();
+            boolean check = false;
+            while(!check){
+                check = game(randomNum2);
+            }
         }else if(reStart == 2){
             System.out.println("게임 종료");
         }else{
