@@ -25,26 +25,6 @@ class ApplicationTest extends NsTest {
     }
 
 
-
-    @Test
-    void 볼_스트라이크_판정 () {
-        Judge judge = new Judge();
-        List<Integer> answer = List.of(7, 9, 1);
-        String result = judge.judgement(answer, List.of(3, 6, 8));
-        assertSame("낫싱", result);
-
-        result = judge.judgement(answer, List.of(3, 7, 9));
-        assertSame("2볼", result);
-
-        result = judge.judgement(answer, List.of(2, 9, 1));
-        assertSame("1볼 2스트라이크", result);
-
-        result = judge.judgement(answer, List.of(7, 9, 1));
-        assertSame("3스트라이크", result);
-    }
-
-
-
     @Test
     void 세개의_난수_생성() {
         NumberGenerator generator = new NumberGenerator();
