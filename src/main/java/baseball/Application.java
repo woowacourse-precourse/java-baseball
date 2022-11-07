@@ -16,11 +16,14 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         randomNumber = numberMaker.makeRandomNumber();
         while (true) {
-            System.out.println("숫자를 입력해주세요 :");
+            System.out.printf("숫자를 입력해주세요 : ");
             playerNumber = numberMaker.makePlayerNumber();
+            BallStrikeChecker ballStrikeChecker = new BallStrikeChecker();
+            strike = ballStrikeChecker.countStrike(randomNumber, playerNumber);
+            ball = ballStrikeChecker.countBall(randomNumber, playerNumber);
+            ballStrikeChecker.printHint(strike, ball);
             // 완전히 동일한 경우
-            if (randomNumber.equals(numberMaker)) {
-                System.out.println("3스트라이크");
+            if (randomNumber.equals(playerNumber)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 restartOrNot = sc.nextInt();
@@ -30,12 +33,6 @@ public class Application {
                 } else {
                     break;
                 }
-
-            } else {
-                BallStrikeChecker ballStrikeChecker = new BallStrikeChecker();
-                ball = ballStrikeChecker.countBall(randomNumber, playerNumber);
-                strike = ballStrikeChecker.countStrike(randomNumber, playerNumber);
-                System.out.println(strike + "스트라이크 " + ball + "볼");
             }
         }
 
