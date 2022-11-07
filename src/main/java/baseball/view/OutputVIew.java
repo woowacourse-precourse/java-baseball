@@ -14,4 +14,19 @@ public class OutputVIew {
     public void endGame(){
         System.out.println(GAME_END);
     }
+
+    public void showGameResult(int strike, int ball){
+        StringBuilder sb = new StringBuilder();
+
+        if(strike ==0 && ball == 0)
+            sb.append(NOTHING.getCode());
+        if(ball > 0)
+            sb.append(String.format("%d"+BALL.getCode(),ball)).append(" ");
+        if(strike > 0)
+            sb.append(String.format("%d"+STRIKE.getCode(),strike));
+        if(strike == 3)
+            sb.append("\n").append(GAME_WIN);
+
+        System.out.println(sb);
+    }
 }
