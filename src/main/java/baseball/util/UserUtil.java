@@ -1,6 +1,7 @@
 package baseball.util;
 
 import baseball.status.ControlNumberStatus;
+import baseball.status.ExceptionStatus;
 import baseball.status.NumberStatus;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -16,16 +17,16 @@ public class UserUtil {
 
     private static void checkUserNumber(String userNumberString) {
         if (checkNumberLength(userNumberString)) {
-            throw new IllegalArgumentException("입력하신 수는 세자리가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionStatus.NOT_CORRECT_LENGTH.getMessage());
         }
         if (checkZeroInNumber(userNumberString)) {
-            throw new IllegalArgumentException("입력하신 수에 0이 포함됩니다.");
+            throw new IllegalArgumentException(ExceptionStatus.ZERO_IN_NUMBER.getMessage());
         }
         if (checkOnlyNumber(userNumberString)) {
-            throw new IllegalArgumentException("입력하신 수가 자연수로 이루어져있지 않습니다.");
+            throw new IllegalArgumentException(ExceptionStatus.IS_NOT_NUMBER.getMessage());
         }
         if (checkOverlapNumber(userNumberString)) {
-            throw new IllegalArgumentException("입력하신 수에 중복된 수가 존재함니다.");
+            throw new IllegalArgumentException(ExceptionStatus.IS_OVERLAP.getMessage());
         }
 
     }
@@ -69,7 +70,7 @@ public class UserUtil {
 
     private static void checkUserInput(String userNumberString) {
         if (!(userNumberString.equals(ControlNumberStatus.START_NUMBER.getText()) || userNumberString.equals(ControlNumberStatus.END_NUMBER.getText()))) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionStatus.NOT_GAME_NUMBER.getMessage());
         }
     }
 }

@@ -35,9 +35,9 @@ public class GameStartService {
         List<String> userNumber = GameStartRepository.lastUserNumberList;
         isBall(computerNumber, userNumber);
         isStrike(computerNumber, userNumber);
-        String HINT = getHint();
+        String hint = getHint();
 
-        return HINT;
+        return hint;
     }
 
     private static String getHint() {

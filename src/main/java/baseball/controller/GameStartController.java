@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.service.GameStartService;
 import baseball.status.ControlNumberStatus;
+import baseball.status.ExceptionStatus;
 import baseball.status.HintStatus;
 import baseball.view.View;
 public class GameStartController {
@@ -16,7 +17,7 @@ public class GameStartController {
         } else if (userInput.equals(ControlNumberStatus.END_NUMBER.getText())) {
             finishGame();
         } else {
-            throw new IllegalArgumentException("입력값이 1 또는 2가 아닙니다.");
+            throw new IllegalArgumentException(ExceptionStatus.NOT_GAME_NUMBER.getMessage());
         }
     }
 
