@@ -20,6 +20,8 @@ public class GameSimulation {
 
     public void init() {
         computer.init();
+        strike = 0;
+        ball = 0;
     }
 
 

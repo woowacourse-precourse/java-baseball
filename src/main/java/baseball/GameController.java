@@ -3,34 +3,32 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameController {
-    private static final Boolean gameStart = true;
+    private static final String gameStart = "1";
+    private static final String gameEnd = "2";
+
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Computer computer = new Computer();
-        Boolean state = gameStart;
+        String state = gameStart;
         GameSimulation gameSimulation = new GameSimulation(computer);
         while (state.equals(gameStart)) {
             gameSimulation.init();
             gameSimulation.playGame();
             success();
 
-            String response = readLine();
-            checkEndOfGame(response);
+            state = readLine();
+            checkEndOfGame(state);
         }
     }
 
-    private Boolean checkEndOfGame(String response) {
-        if (response.equals("1")) {
-            return true;
-        }
-        if (response.equals("2")) {
+    private boolean checkEndOfGame(String response) {
+        if (response.equals(gameEnd)) {
             return false;
         }
-        if (!(response.equals("1") || response.equals("2"))) {
-            throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
+        if (response.equals(gameStart)) {
+            return true;
         }
-
-        return true;
+        throw new IllegalArgumentException("유효한 숫자를 입력해주세요.");
     }
 
     private void success() {
