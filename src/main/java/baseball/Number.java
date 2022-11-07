@@ -42,4 +42,15 @@ public class Number {
         }
         return false;
     }
+
+    public boolean isDuplicated(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            String check = input.substring(0, 1);
+            input = input.substring(1);
+            if (input.contains(check)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
