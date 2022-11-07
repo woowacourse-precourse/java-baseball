@@ -68,18 +68,22 @@ public class GameServer {
         }
     }
 
-    public void finishGame() {
+    public void correctAnswer() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userNumber = Console.readLine();
-        if (userNumber.equals("1")) {
+        userNumber = Console.readLine();
+        decideRestart(userNumber);
+    }
+
+    public void decideRestart(String userNum) {
+        if (userNum.equals("1")) {
             restart = true;
             isAnswer = false;
         }
-        if (userNumber.equals("2")) {
+        if (userNum.equals("2")) {
             restart = false;
         }
-        if (!(userNumber.equals("1") || userNumber.equals("2"))) {
-            restart = false;
+        if (!(userNum.equals("1") || userNum.equals("2"))) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -123,6 +127,7 @@ public class GameServer {
         do {
             createRandomNumber();
             guessAnswer();
+            correctAnswer();
         } while (restart);
     }
 
@@ -138,7 +143,6 @@ public class GameServer {
             checkUsersInputIsAnswer();
             printGameResult();
         }
-        finishGame();
     }
 
     public void printGameStart() {
