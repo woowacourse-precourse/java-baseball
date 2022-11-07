@@ -12,6 +12,12 @@ public class InputValidation {
         return input;
     }
 
+    public String validateRestartInput(String input) {
+        validateChoice(input);
+
+        return input;
+    }
+
     public void validateLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 수를 입력해야 합니다.");
