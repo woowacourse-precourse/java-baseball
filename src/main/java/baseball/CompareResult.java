@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class PlayResult {
+public class CompareResult {
 
 	private final Map<BallStatus, Integer> occurrences;
 
-	public PlayResult() {
+	public CompareResult() {
 		this.occurrences = new HashMap<>();
 	}
 

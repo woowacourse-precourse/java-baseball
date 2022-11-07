@@ -45,8 +45,8 @@ public class Balls {
 			.orElse(BallStatus.NOTHING);
 	}
 
-	public PlayResult compareTo(final Balls other) {
-		PlayResult result = new PlayResult();
+	public CompareResult compareTo(final Balls other) {
+		CompareResult result = new CompareResult();
 
 		for (Ball ball : balls) {
 			result.addStatus(other.compareTo(ball));

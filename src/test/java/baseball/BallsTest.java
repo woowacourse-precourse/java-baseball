@@ -88,7 +88,7 @@ public class BallsTest {
 		Balls com = new Balls(List.of(4, 2, 5));
 		Balls player = new Balls(List.of(7, 8, 9));
 
-		PlayResult result = com.compareTo(player);
+		CompareResult result = com.compareTo(player);
 		assertThat(result.getResult()).isEqualTo("낫싱");
 	}
 
@@ -98,7 +98,7 @@ public class BallsTest {
 		Balls com = new Balls(List.of(4, 2, 5));
 		Balls player = new Balls(List.of(1, 2, 3));
 
-		PlayResult result = com.compareTo(player);
+		CompareResult result = com.compareTo(player);
 		assertThat(result.getResult()).isEqualTo("1스트라이크");
 	}
 
@@ -108,7 +108,7 @@ public class BallsTest {
 		Balls com = new Balls(List.of(4, 2, 5));
 		Balls player = new Balls(List.of(4, 5, 6));
 
-		PlayResult result = com.compareTo(player);
+		CompareResult result = com.compareTo(player);
 		assertThat(result.getResult()).isEqualTo("1볼 1스트라이크");
 	}
 
@@ -118,7 +118,7 @@ public class BallsTest {
 		Balls com = new Balls(List.of(4, 2, 5));
 		Balls player = new Balls(List.of(4, 5, 2));
 
-		PlayResult result = com.compareTo(player);
+		CompareResult result = com.compareTo(player);
 		assertThat(result.getResult()).isEqualTo("2볼 1스트라이크");
 	}
 
@@ -128,7 +128,7 @@ public class BallsTest {
 		Balls com = new Balls(List.of(4, 2, 5));
 		Balls player = new Balls(List.of(1, 5, 2));
 
-		PlayResult result = com.compareTo(player);
+		CompareResult result = com.compareTo(player);
 		assertThat(result.getResult()).isEqualTo("2볼");
 	}
 
@@ -138,7 +138,7 @@ public class BallsTest {
 		Balls com = new Balls(List.of(4, 2, 5));
 		Balls player = new Balls(List.of(4, 2, 5));
 
-		PlayResult result = com.compareTo(player);
+		CompareResult result = com.compareTo(player);
 		assertThat(result.getResult()).isEqualTo("3스트라이크");
 	}
 }
