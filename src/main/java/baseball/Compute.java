@@ -48,7 +48,7 @@ public class Compute {
 			System.out.println(ball + "볼");
 		}
 		if (strike > 0 && ball > 0) {
-			System.out.println(ball+ "볼" + strike +" 스트라이크");
+			System.out.println(ball+ "볼 " + strike +"스트라이크");
 		}
 	}
 }
