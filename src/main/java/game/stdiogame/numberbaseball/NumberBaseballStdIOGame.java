@@ -46,7 +46,9 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
 
     @Override
     protected void checkInput() throws IllegalArgumentException {
-
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        String input = gameStatus.getInputData();
+        if (!input.matches("[1-9][1-9][1-9]")) throw new IllegalArgumentException();
     }
 
     @Override

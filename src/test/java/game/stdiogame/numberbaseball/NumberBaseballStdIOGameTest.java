@@ -1,16 +1,12 @@
 package game.stdiogame.numberbaseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import game.Game;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.Scanner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class NumberBaseballStdIOGameTest {
 
@@ -47,7 +43,7 @@ class NumberBaseballStdIOGameTest {
         nbGame.start();
         nbGame.writeGameMessage();
 
-        assertThat(os.toString().trim()).isEqualTo("");
+        assertThat(os.toString()).isEqualTo("");
     }
 
     @Test
@@ -57,7 +53,7 @@ class NumberBaseballStdIOGameTest {
         nbGame.finish();
         nbGame.writeGameMessage();
 
-        assertThat(os.toString()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        assertThat(os.toString().trim()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     @Test
@@ -76,7 +72,25 @@ class NumberBaseballStdIOGameTest {
     }
 
     @Test
-    void checkInput() {
+    void checkInputThrowError() {
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+
+        buf = "A23";
+        nbGameStatus.setInputData(buf);
+
+        assertThatIllegalArgumentException().isThrownBy(nbGame::checkInput);
+    }
+    @Test
+    void checkInput_정상처리() {
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+
+        buf = "123";
+        nbGameStatus.setInputData(buf);
+        nbGame.checkInput();
+
+        assertThat(nbGameStatus.getInputData()).isEqualTo(buf);
     }
 
     @Test
