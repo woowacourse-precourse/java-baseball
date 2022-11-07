@@ -32,7 +32,7 @@ public class BaseballGame implements Game {
         do {
             input();
             createResult().showResult();
-        } while (true);
+        } while (baseball.isGuessFailed(userInput));
     }
 
     @Override
