@@ -5,6 +5,7 @@
    - 사용자의 입력 숫자 세팅
       - 숫자가 3개가 아니면 무조건 <code>IllegalArgumentException</code> 띄우기
       - 서로 다른 숫자인지 확인 아니면 <code>IllegalArgumentException</code> 띄우기
+      -  숫자를 입력하는 것이 아닌 경우에도 <code>IllegalArgumentException</code> 띄우기
       - 사용자의 숫자를 입력시 문자열로 받아오므로 Integer로 변환 후 List로 꺼내기
 2. 숫자 게임 기능 구현
    - 두 숫자 List를 비교하여 strike,ball 판정 내리기
