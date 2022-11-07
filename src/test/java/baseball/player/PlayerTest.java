@@ -37,4 +37,11 @@ public class PlayerTest {
 
         assertThatThrownBy(() -> player.checkInputLength(list)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("세자리 숫자를 입력해주세요.");
     }
+
+    @Test
+    void 사용자_입력이_중복되는경우(){
+        List<Integer> list = List.of(1,3,3);
+
+        assertThatThrownBy(() -> player.isDifferent(list)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("서로 다른 숫자를 입력해주세요.");
+    }
 }
