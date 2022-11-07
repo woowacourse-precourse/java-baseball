@@ -28,12 +28,7 @@ public class Computer {
             randomNumberSet.add(randomNumber);
         }
         List<Integer> randomNumberList = new ArrayList<>(randomNumberSet);
-
         convertListToArray(randomNumberList);
-
-        for (int i : answer) {
-            System.out.println("i = " + i);
-        }
 
     }
 
