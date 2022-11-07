@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-import static baseball.Constant.*;
+import static baseball.ConstValue.*;
 
 public class Score {
     private static List<Integer> userNumbers;

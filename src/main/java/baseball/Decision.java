@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.HashMap;
 
-import static baseball.Constant.*;
+import static baseball.ConstValue.*;
 
 public class Decision {
 

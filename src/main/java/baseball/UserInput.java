@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static baseball.Constant.*;
+import static baseball.ConstValue.*;
 
 public class UserInput {
     private String input;
