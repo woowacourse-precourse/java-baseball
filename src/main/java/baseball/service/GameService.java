@@ -68,6 +68,10 @@ public class GameService {
 		return number;
 	}
 
+	public void computerReset() {
+		computer.clear();
+	}
+
 	public void printCount() {
 		System.out.println(systemMessage.PrintCount(game.getStrikeCount(), game.getBallCount()));
 	}
