@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
         String answer;
+        int[] answersplit = new int[3];
         boolean again = true;
 
         while(computer.size() < 3){
@@ -25,6 +26,9 @@ public class Application {
             answer = camp.nextstep.edu.missionutils.Console.readLine();
             if(answer.length()!=3){
                 throw new IllegalArgumentException();
+            }
+            for(int i=0;i<3;i++){
+                answersplit[i] = answer.charAt(i) - '0';
             }
         }
 
