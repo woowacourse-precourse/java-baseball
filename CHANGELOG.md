@@ -1,3 +1,12 @@
+- refactor: 미사용 import문 제거
+- refactor: java 코드 컨벤션에 알맞게 리팩토링
+- refactor(InputNumberTest): 메서드들이 공통으로 갖는 private한 컴퓨터의 랜덤 수를 가져오는 기능을 BeforeAll에 구현하여 중복 제거
+- refactor(InputNumberTest): InputNumberTest의메서드들에서 System Input의 동일한 역할을 하는 기능을 메서드로 지정
+- refactor(InputNumberTest): InputNumberTest의 메서드들의 메서드 명 앞을 테스트하는 메서드 명으로 통일
+- refactor(ComputerManager): String의 사용자 입력을 List로 변환할 필요없이 String상태로 컴퓨터 수와 비교하게끔 변경
+- test(InputNumberTest): 사용자 입력이 중복된 수를 포함할 때 에러를 반환하는 테스트 추가
+- fix(InputNumber): 사용자의 세자리 수 입력이 중복된 수를 포함하는 예외를 확인하지 못하는 에러 수정
+- docs(CHANGELOG.md): 이전 커밋 변경 사항 CHANGELOG.md에 반영
 - docs(CHANGELOG.md): 커밋 사항 CHANGELOG.md에 반영
 - refactor(ComputerManager): 3자리 랜덤 숫자 생성 3을 하드코딩에서 InputNumber class 상수에서 가져오는 방법으로 변경
 - refactor(ComputerManager): 랜덤 숫자의 범위 상수 END_OF_NUMBER_RANGE, START_OF_NUMBER_RANGE로 변경
