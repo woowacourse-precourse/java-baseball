@@ -10,7 +10,7 @@ public class Application {
     }
 
     public static String input_number_message(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.printf("숫자를 입력해주세요 : ");
         String input_number = camp.nextstep.edu.missionutils.Console.readLine();
         return input_number;
     }
