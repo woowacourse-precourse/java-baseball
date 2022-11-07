@@ -1,35 +1,32 @@
 package baseball.service;
 
-import baseball.domain.Computer;
-import baseball.domain.User;
+import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
-    private Computer computer;
-    private User user;
-    private int strike, ball;
+    private Game game;
 
     public GameService() {
     }
 
+    public void setGame(int digit, int startRange, int endRange) {
+        game = new Game(digit, startRange, endRange);
+    }
+
     public void startGame() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        game.pickComputerNum();
         do {
+            game.initTurn();
             doTurn();
-        } while (strike != 3);
+        } while (game.getStrike() != game.getDigit());
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public void initGame(int digit, int startRange, int endRange) {
-        computer = new Computer(digit, startRange, endRange);
-    }
-
     private void doTurn() throws IllegalArgumentException {
-        strike = 0;
-        ball = 0;
         pickUserNum();
         countScore();
     }
@@ -41,16 +38,15 @@ public class GameService {
         for (char x : userInput.toCharArray()) {
             userNum.add(x - '0');
         }
-        user = new User();
-        if (!user.isValid(userNum)) {
+        if (!game.getUser().isValid(userNum)) {
             throw new IllegalArgumentException();
         }
-        user.setUserNum(userNum);
+        game.getUser().setUserNum(userNum);
     }
 
     private void countScore() throws IllegalArgumentException {
-        List<Integer> computerNum = computer.getComputerNum();
-        List<Integer> userNum = user.getUserNum();
+        List<Integer> computerNum = game.getComputer().getComputerNum();
+        List<Integer> userNum = game.getUser().getUserNum();
         for (int com = 0; com < computerNum.size(); com++) {
             compareNum(computerNum, userNum, com);
         }
@@ -67,14 +63,17 @@ public class GameService {
 
     private void compareIndex(int com, int user) {
         if (com == user) {
-            strike++;
+            game.plusStrike();
         }
         if (com != user) {
-            ball++;
+            game.plusBall();
         }
     }
 
     private void printScore() {
+        int strike = game.getStrike();
+        int ball = game.getBall();
+
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return;
