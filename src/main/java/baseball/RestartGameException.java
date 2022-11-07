@@ -10,4 +10,8 @@ public class RestartGameException {
         }
         return false;
     }
+
+    public boolean hasRestartNumber(String number) {
+        return true;
+    }
 }

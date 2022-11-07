@@ -12,7 +12,7 @@ public class Application {
         Game game = new Game();
         boolean isGameState = true;
         do {
-            isGameState = game.startGame();
-        }while (isGameState);
+            game.startGame();
+        }while (game.c()); //메서드를 통해서 boolean값 받기
     }
 }

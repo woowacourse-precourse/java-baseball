@@ -28,7 +28,7 @@ public class Game {
         restartGameException = new RestartGameException();
     }
 
-    public boolean startGame() {
+    public void startGame() {
         computerNumber.makeRandomNumber();
         randomComputerNumber = computerNumber.getComputerNumber();
         for (Integer integer : randomComputerNumber) {
@@ -41,7 +41,6 @@ public class Game {
             isFinish = hintMessage.checkPoint(inputUserNumber, randomComputerNumber);
         } while (isFinish);
         isRestart = checkRestartGame();
-        return isRestart;
     }
 
     public boolean checkRestartGame() {
@@ -56,6 +55,10 @@ public class Game {
         if (inputNumber == GAME_END) {
             isRestart = false;
         }
+        return isRestart;
+    }
+
+    public boolean c() {
         return isRestart;
     }
 }
