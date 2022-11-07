@@ -27,5 +27,14 @@ public class BaseBall {
                 restart();
             }
         }
+    }
+
+    private void playGame() {
+        String random = makeRandom();
+        String input = makeMyInput();
+        List<String> randomList = getList(random);
+        List<String> inputList = getList(input);
+        checkSameOfRandomAndMy(randomList, inputList);
+    }
 
 }
