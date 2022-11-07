@@ -8,21 +8,18 @@ public class Application {
         String input;
         String oneMore = "1";
         int randomNumber;
-        int ball;
-        int strike;
+        int ball = 0;
+        int strike = 0;
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (oneMore.equals("1")){
             randomNumber = getRandomNumber();
-            while (true){
+            while (strike != 3){
                 input = getInput();
                 ball = getBall(input, randomNumber);
                 strike = getStrike(input, randomNumber);
                 printResult(ball, strike);
-                if (strike == 3){
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             oneMore = getOneMoreInput();
         }
@@ -82,6 +79,7 @@ public class Application {
 
         return ret;
     }
+
     static void printResult(int ball, int strike){
         if (ball == 0 && strike == 0){
             System.out.println("낫싱");
@@ -97,6 +95,7 @@ public class Application {
         }
         System.out.printf("%d스트라이크\n", strike);
     }
+
     static int getRandomNumber(){
         int ret;
 
