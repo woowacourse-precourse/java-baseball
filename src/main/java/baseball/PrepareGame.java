@@ -60,4 +60,11 @@ public class PrepareGame {
         }
         return false;
     }
+
+    public Boolean isGameExitForTest(String gameOver){
+        if(gameOver.equals("1")){
+            return true;
+        }
+        return false;
+    }
 }
