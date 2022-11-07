@@ -15,6 +15,11 @@ public class Application {
     public static void main(String[] args) {
 
         startGamePrint();
+        playGame();
+        endGamePrint();
+    }
+
+    private static void playGame() {
         while (true) {
 
             targetNumber = makeTargetNumber();
@@ -32,16 +37,14 @@ public class Application {
                 ballAndStrike.print();
             }
 
-            //게임 진행 선택
+            //게임 진행할지 여부
             gameContinuePrint();
             userInput = Console.readLine();
             validGameContinueInput(Integer.parseInt(userInput));
             if (userInput.equals("2")) break;
         }
-        endGamePrint();
     }
 
-    //TODO
     public static int makeTargetNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         String str = "";
@@ -51,7 +54,6 @@ public class Application {
         return Integer.parseInt(str);
     }
 
-    //TODO
     private static BallAndStrike compareNumbers(int targetNumber, int userInput) {
         BallAndStrike count = new BallAndStrike();
         String target = String.valueOf(targetNumber);

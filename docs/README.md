@@ -7,4 +7,5 @@
 5. 종료 조건이 아닌 동안 while 문으로 계속 입력받기.
 6. 사용자가 잘못된 값을 입력할 경우 IllegalArgumentExeption 발생 후 종료.
 7. 사용자의 입력과 컴퓨터 수를 비교하는 함수 구현 - compareNumbers()
-8. 테스트 코드 작성
+8. 전체 로직을 playGame()으로 추출
+9. 테스트 코드 작성
