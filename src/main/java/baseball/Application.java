@@ -11,10 +11,14 @@ class BaseballGame {
     private List<Integer> player;
     private static final String pleaseInput = "숫자를 입력해주세요 : ";
     private static boolean inputCondition;
+    int ball;
+    int strike;
     public BaseballGame() {
         computer = new ArrayList<>();
         player = new ArrayList<>();
         inputCondition=true;
+        ball=0;
+        strike=0;
         newGame(computer);
     }
     private void newGame(List<Integer> computer) {
@@ -23,6 +27,8 @@ class BaseballGame {
             System.out.print(getPleaseInput());
             String input=Console.readLine();
             selectNumberByPlayer(player,input);
+            // 여기서 스트라이크인지 볼인지 판단하여 inputCondition을 조절하여야 한다.
+            getBallCounts(getComputerNumberList(), getPlayerNumberList());
             break;
         }
     }
@@ -74,6 +80,26 @@ class BaseballGame {
         }
         if (player.size() < 3) {
             throw new IllegalArgumentException("서로 다른 임의의 수가 아님");
+        }
+    }
+    private void getBallCounts(List<Integer> computerNumberList, List<Integer> playerNumberList) {
+        for (Integer n : computerNumberList) {
+            increaseBallCount(playerNumberList, n);
+        }
+        for(int i=0;i<computerNumberList.size();i++){
+            increaseStrikeCount(computerNumberList, playerNumberList, i);
+        }
+    }
+
+    private void increaseStrikeCount(List<Integer> computerNumberList, List<Integer> playerNumberList, int i) {
+        if (computerNumberList.get(i).equals(playerNumberList.get(i))) {
+            strike+=1;
+        }
+    }
+
+    private void increaseBallCount(List<Integer> playerNumberList, Integer n) {
+        if (playerNumberList.contains(n)) {
+            ball+=1;
         }
     }
 }
