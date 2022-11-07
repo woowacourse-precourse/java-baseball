@@ -18,7 +18,10 @@ public class BaseballGame {
         int targetNumber = createTargetNumber();
 
         // 2. 사용자에게 숫자 받기
-        getUserInput();
+        int userInput = getUserInput();
+        if (!isInvalidNumber(userInput)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private int createTargetNumber() {
@@ -27,27 +30,23 @@ public class BaseballGame {
         return newTarget;
     }
 
-    private void getUserInput() {
-
-        // 1. 숫자 입력받기
+    private int getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
         int userInput = Integer.parseInt(readLine());
-
-        // 1-1. 입력받은 숫자 유효성 검사
-        if (!isInvalidNumber(userInput)) {
-            throw new IllegalArgumentException();
-        }
+        return userInput;
     }
 
     private boolean isInvalidNumber(int num) {
         boolean invalidTF = true;
 
-        // 한자리씩 배열에 넣기
+        // 한자리씩 분해하기
         List<Integer> checkArr = new ArrayList<>();
         while (num > 0) {
             checkArr.add(num % 10);
             num /= 10;
         }
+
+        // HashSet을 통해 중복된 숫자 지우기
         HashSet<Integer> hashSet = new HashSet<>(checkArr);
 
         // 입력받은 숫자가 세자리가 아니거나, 세자리 수여도 서로 다른 숫자들이 아닐 경우
