@@ -27,7 +27,7 @@ class ApplicationTest extends NsTest {
     @Test
     void generateRandomNumber_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
 
         //when
         final List<Integer> computerRandomNumber = T.generateRandomNumber(3);
@@ -166,7 +166,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringOneOrTwo_정상처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "1";
         final String case2 = "2";
 
@@ -186,7 +186,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringOneOrTwo_예외처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "3";
         final String case2 = "294";
         final String case3 = "Exception String";
@@ -229,7 +229,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringThreeDifferentDigits_정상처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "384";
         final String case2 = "247";
 
@@ -249,7 +249,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringThreeDifferentDigits_예외처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "000";
         final String case2 = "272";
         final String case3 = "12345";
@@ -299,7 +299,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringLength_정상처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "134";
         final String case2 = "";
         final String case3 = "abcde fg";
@@ -324,7 +324,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringLength_예외처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "13";
         final String case2 = "";
 
@@ -350,7 +350,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringNaturalNumbers_정상처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "134";
         final String case2 = "162467";
 
@@ -370,7 +370,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringNaturalNumbers_예외처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "103";
         final String case2 = "7345akvu3123";
 
@@ -396,7 +396,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateAllDifferentCharacters_정상처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "123456789";
         final String case2 = "abcdefghij";
 
@@ -416,7 +416,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateAllDifferentCharacters_예외처리_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "112";
         final String case2 = "aabbcc";
 
@@ -443,7 +443,7 @@ class ApplicationTest extends NsTest {
     @Test
     void stringToIntegerList_테스트() {
         //given
-        final Core T = new Core();
+        final Utils T = new Utils();
         final String case1 = "123";
         final String case2 = "837";
 
