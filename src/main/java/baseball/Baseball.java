@@ -12,6 +12,17 @@ class Baseball {
     int strike = ZERO;
     int ball = ZERO;
 
+    private void startGame(List<Integer> userNumbers, List<Integer> computers) {
+        for (int position = 0; position < NUMBER_SIZE; position++) {
+            int computerValue = computers.get(position);
+            int userValue = userNumbers.get(position);
+
+            checkStrike(computerValue, userValue);
+            checkBall(userValue, computers);
+        }
+        System.out.println(getScore());
+    }
+
     private void checkStrike(int computer, int user) {
         if (computer == user) {
             this.strike++;
