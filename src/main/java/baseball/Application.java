@@ -173,6 +173,9 @@ public class Application {
         List<Integer> computerNumbersList = randomNumberCreate();
         inputUserNumberService(computerNumbersList);
         checkedBaseballGaemOfUserAnswer = inputAvailableUserAnswerService();
+        if(checkedBaseballGaemOfUserAnswer.equals(String.valueOf(1))){
+            baseballGameStart();
+        }
     }
 
     public static void main(String[] args) {
