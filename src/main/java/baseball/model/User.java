@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    public static final int FIRST_GAME =0;
+    public static final int FIRST_PLAY =0;
+    public static final int RE_ANSWER = -1;
     public static final int RESTART_GAME = 1;
     public static final int END_GAME = 2;
 
@@ -19,8 +20,8 @@ public class User {
         this.numList = numList;
     }
 
-    public User(int status) {
-        this.status = status;
+    public User(int usersStatus) {
+        this.status = usersStatus;
         this.numList = new ArrayList<>();
     }
 
