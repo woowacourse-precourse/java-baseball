@@ -34,4 +34,16 @@ public class Application {
         if(selectedNum == 1 || selectedNum == 2) return selectedNum;
         else throw new IllegalArgumentException("끝내기 입력 오류");
     }
+
+    private static List<Integer> initComputer(){
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        return computer;
+    }
 }
