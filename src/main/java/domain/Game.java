@@ -4,14 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static constant.Message.*;
 import static domain.Referee.STRIKE;
 
 public class Game {
-    public static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    public static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    public static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    public static final String PROGRAM_END_MESSAGE = "프로그램이 종료되었습니다.";
 
     public static void startGame() {
         System.out.println(GAME_START_MESSAGE);
@@ -56,7 +52,7 @@ public class Game {
             playGame();
         }
         if (!(restartOrEnd.equals("1") || restartOrEnd.equals("2"))) {
-            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다. "+PROGRAM_END_MESSAGE);
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
         return true;
     }
