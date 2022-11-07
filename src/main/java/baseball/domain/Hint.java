@@ -8,6 +8,10 @@ public class Hint {
     private int ballCount;
     private int strikeCount;
 
+    public final String BALL = "%d볼";
+    public final String STRIKE = "%d스트라이크";
+    public final String BALL_AND_STRIKE = "%d볼 %d스트라이크";
+    public final String NOTHING = "낫싱";
 
     public void calculateResult(List<Integer> playerInputs, List<Integer> randomNumbers) {
         initializeBallAndStrikeCount();
@@ -33,5 +37,18 @@ public class Hint {
                 && randomNumbers.contains(playerInputs.get(index))) {
             ballCount++;
         }
+    }
+
+    private String countOfBallAndStrike() {
+        if (strikeCount == 0 && ballCount == 0) {
+            return NOTHING;
+        }
+        if (strikeCount == 0) {
+            return String.format(BALL, ballCount);
+        }
+        if (ballCount == 0) {
+            return String.format(STRIKE, strikeCount);
+        }
+        return String.format(BALL_AND_STRIKE, ballCount, strikeCount);
     }
 }
