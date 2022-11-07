@@ -19,4 +19,11 @@ public class Validator {
             throw new IllegalArgumentException(WRONG_NUMBER);
     }
 
+    public void isNotOverLap(String numbers) {
+        int size = Arrays.stream(numbers.split(SPLIT_STRING)).
+                collect(Collectors.toSet()).size();
+
+        if(size != NUMBER_LENGTH)
+            throw new IllegalArgumentException(WRONG_NUMBER);
+    }
 }
