@@ -3,11 +3,11 @@ package baseball;
 import utils.Input;
 import utils.Output;
 import utils.RandomNumberGenerator;
-
 import java.util.List;
 
 public class Baseball {
     private List<Integer> computer;
+    private List<Integer> player;
 
     public Baseball() {
         this.computer = RandomNumberGenerator.generate();
@@ -17,21 +17,21 @@ public class Baseball {
         boolean isOngoing = true;
         Output.startGame();
         while (isOngoing) {
-            List<Integer> player = Input.playerNumber();
-            int ballCount = getBallCount(player);
-            int strikeCount = getStrikeCount(player);
+            player = Input.playerNumber();
+            int ballCount = getBallCount();
+            int strikeCount = getStrikeCount();
             Output.getResult(ballCount, strikeCount);
             isOngoing = isContinue(strikeCount);
         }
         Output.endGame();
     }
 
-    private int getBallCount(List<Integer> player) {
+    private int getBallCount() {
         Ball ball = new Ball(player, computer);
         return ball.getCount();
     }
 
-    private int getStrikeCount(List<Integer> player) {
+    private int getStrikeCount() {
         Strike strike = new Strike(player, computer);
         return strike.getCount();
     }
