@@ -3,6 +3,6 @@ package baseball.inputException;
 public class ContainingZeroException extends IllegalArgumentException{
 
     public ContainingZeroException() {
-        super();
+        super("number can not contain zero.");
     }
 }
