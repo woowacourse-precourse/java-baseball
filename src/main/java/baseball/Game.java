@@ -18,7 +18,9 @@ public class Game {
 
         String inputNumber = input();
 
-        computer.checkResult(inputNumber);
+        while (!computer.checkResult(inputNumber)) {
+            inputNumber = input();
+        }
 
     }
 
