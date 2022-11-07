@@ -7,6 +7,9 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGame implements Game {
+    public BaseballGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
     @Override
     public void run() {
         Balls computerBalls = Balls.create();
