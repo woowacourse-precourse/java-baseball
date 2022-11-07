@@ -36,7 +36,7 @@ public class PlayGame {
                 input = input / 10;
             }
             return userNumbers;
-        } catch (IllegalArgumentException e)  {
+        } catch (Exception e)  {
             throw new IllegalArgumentException("프로그램 종료: 올바른 입력이 아닙니다.");
         }
     }
