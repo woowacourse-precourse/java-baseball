@@ -23,10 +23,10 @@ public class Application {
             if (!game.getGameResultOfJudge(ballStrikeCount)) {
                 continue;
             }
-            if (!game.isPlayingNewGame()) {
-                return false;
+            if (game.isPlayingNewGame()) {
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }
