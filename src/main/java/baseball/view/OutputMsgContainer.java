@@ -9,7 +9,7 @@ public enum OutputMsgContainer {
     STRIKE("스트라이크"),
     SPACE(" "),
     NOTHING("낫싱"),
-    GAME_START_MESSAGE("숫자 야구 게임을 시작합니다."),
+    GAME_START_MESSAGE("숫자 야구 게임을 시작합니다.\n"),
     GAME_END_AND_RESTART_MESSAGE(GAME_DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
             "게임을 새로 시작하려면 " + GAME_RESTART_CODE + ", 종료하려면 " + GAME_EXIT_CODE + "를 입력하세요.\n"),
     GAME_INPUT_MESSAGE("숫자를 입력해주세요 : ");
