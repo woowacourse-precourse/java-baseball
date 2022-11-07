@@ -9,7 +9,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int answer = answerNum();
-        int input = inputNumber();
+        boolean result = false;
+        while (!result) {
+            int input = inputNumber();
+            result = compareNum(answer, input);
+
+        }
 
     }
     // 서로 다른 임의의 수 3개 선택
@@ -49,4 +54,64 @@ public class Application {
         return input;
 
     }
+    public static boolean compareNum(int ans, int input){
+        String result="";
+        boolean pass = false;
+        int ball=0,strike=0;
+
+        List<Character> ansList = new ArrayList<>();
+        List<Character> inputList = new ArrayList<>();
+        for(int i=0;i<3;i++){
+            inputList.add(String.valueOf(input).charAt(i));
+            ansList.add(String.valueOf(ans).charAt(i));
+        }
+        String str="";
+        for(int i=0;i<ansList.size();i++){
+            for(int j=0;j<inputList.size();j++){
+                str += compare(inputList,ansList,i,j);
+            }
+        }
+        StringTokenizer stz = new StringTokenizer(str, " ");
+        while(stz.hasMoreTokens()){
+            String token = stz.nextToken();
+            if(token.equals("10")){
+                strike++;
+            }
+            if(token.equals("01")){
+                ball++;
+            }
+        }
+        if(ball!=0){
+            result+= ball+"볼 ";
+        }
+        if(strike!=0){
+            result += strike+"스트라이크";
+        }
+
+        if(strike==3){
+            result += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            pass = true;
+        }
+        if(ball == 0 && strike ==0){
+            result = "낫싱";
+        }
+        System.out.println(result);
+
+        return pass;
+    }
+
+    // 스트라이크와 볼을 판별하는 함수
+    public static String compare(List<Character> list1, List<Character> list2, int i, int j ){
+        String str = "";
+        if(Objects.equals(list1.get(i), list2.get(j))){
+            if(i==j){
+                str += "10 ";
+            }
+            else{
+                str += "01 ";
+            }
+        }
+        return str;
+    }
+
 }
