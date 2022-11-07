@@ -4,13 +4,13 @@ import camp.nextstep.edu.missionutils.*;
 
 
 public class Application {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         while (true) {
             Scanner sc = new Scanner(System.in);
             BaseballGame Game = new BaseballGame();
 
             List<String> resultList = new ArrayList<>();
-            List<Integer> numberList = new ArrayList<>();
+            List<Integer> userNumberList = new ArrayList<>();
             List<Integer> computerNumberList = Game.makeRandomNumber();
 
             int number = sc.nextInt();
@@ -18,10 +18,14 @@ public class Application {
             if(Game.switchGameStatus(number)) break;
             if(Game.checkErrorNumber(number)) break;
 
-            numberList = Game.splitNumber(number);
+            userNumberList = Game.splitNumber(number);
+//
+//            System.out.println(computerNumberList);
+//            System.out.println(userNumberList);
 
-            System.out.println(computerNumberList);
-            System.out.println(numberList);
+            List<Integer> checkList =Game.compareList(computerNumberList,userNumberList);
+
+            Game.printResult(checkList);
         }
     }
 
@@ -69,38 +73,49 @@ class BaseballGame {
         Collections.reverse((list));
         return list;
     }
-//
-//    void compareList(List<Integer> computerNumberList, List<List<Integer>> userNumberList) {
-//        int stikeCount = 0;
-//        int ballCount = 0;
-//        for (int userIndex = 0; userIndex < userNumberList.size(); userIndex++) {
-//            stikeCount += countStike(stikeCount, computerNumberList, userNumberList.get(userIndex));
-//            ballCount += countBall(ballCount, computerNumberList, userNumberList.get(userIndex));
-//        }
-//
-//        System.out.println(stikeCount);
-//        System.out.println(ballCount);
 
+    List<Integer> compareList(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        List<Integer> checkList = new ArrayList<>();
+
+        strikeCount += countStrike(strikeCount, computerNumberList, userNumberList);
+
+        for (int computerIdx = 0; computerIdx<computerNumberList.size(); computerIdx++) {
+            ballCount += countBall(computerIdx,ballCount, computerNumberList, userNumberList);
+        }
+
+        checkList.add(strikeCount);
+        checkList.add(ballCount);
+
+        return checkList;
     }
 
-//
-//    int countBall(int ballCount, List<Integer> computerNumberList, List<Integer> userNumberList) {
-//        for (int i = 0; i < userNumberList.size(); i++) {
-//            if (computerIndex != i && computerNumberList.get(computerIndex) == userNumberList.get(i)) {
-//                ballCount++;
-//            }
-//        }
-//
-//        return ballCount;
-//    }
-//
-//    int countStike(int stikeCount, List<Integer> computerNumberList, List<Integer> userNumberList) {
-//        for (int i = 0; i < userNumberList.size(); i++) {
-//            if (computerNumberList.get(i) == userNumberList.get(i)) {
-//                stikeCount++;
-//            }
-//        }
-//        return stikeCount;
-//    }
+
+    int countStrike(int strikeCount, List<Integer> computerNumberList, List<Integer>userNumberList){
+        int idx = 0;
+        while(idx<computerNumberList.size()){
+            if(computerNumberList.get(idx) == userNumberList.get(idx)){
+                strikeCount++;
+            }
+            idx++;
+        }
+        return strikeCount;
+    }
+
+    int countBall(int computerIdx,int ballCount,List<Integer> computerNumberList,List<Integer>userNumberList){
+        for(int userIdx = 0; userIdx<userNumberList.size();userIdx++){
+            if(computerIdx != userIdx && computerNumberList.get(computerIdx) == userNumberList.get(userIdx)){
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
+    void printResult(List<Integer>checkList){
+        System.out.printf("%d볼 %d스트라이크",checkList.get(0),checkList.get(1));
+    }
+}
 
 
