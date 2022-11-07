@@ -5,9 +5,9 @@ import static baseball.Result.getStrikeCount;
 import static baseball.Result.getResult;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class ResultTest {
 

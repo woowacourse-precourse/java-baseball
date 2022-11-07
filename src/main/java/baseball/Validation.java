@@ -29,7 +29,8 @@ public class Validation {
 
 	private static void validateNotContainZero(String input) {
 		if (input.contains("0")) {
-			throw new IllegalArgumentException("입력값에 0이 포함되어 있습니다. 1부터 9 사이의 숫자를 입력해 주세요.");
+			throw new IllegalArgumentException(
+					"입력값에 0이 포함되어 있습니다. 1부터 9 사이의 숫자를 입력해 주세요.");
 		}
 	}
 
@@ -37,16 +38,16 @@ public class Validation {
 		for (int i = 0; i < input.length(); i++) {
 			char c = input.charAt(i);
 			if (i != input.lastIndexOf(Character.toString(c))) {
-				throw new IllegalArgumentException("입력하신 값에 중복된 숫자가 있습니다. 서로 다른 3가지 숫자를 입력해 주세요.");
+				throw new IllegalArgumentException(
+						"입력하신 값에 중복된 숫자가 있습니다. 서로 다른 3가지 숫자를 입력해 주세요.");
 			}
 		}
 	}
 
 	private static void validateLength(String input) {
 		if (input.length() != 3) {
-			throw new IllegalArgumentException("입력하신 값이 3자리가 아닙니다. 3자리 수를 입력해 주세요.");
+			throw new IllegalArgumentException(
+					"입력하신 값이 3자리가 아닙니다. 3자리 수를 입력해 주세요.");
 		}
 	}
-	
-	
 }

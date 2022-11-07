@@ -1,11 +1,11 @@
 package baseball;
 
+import static baseball.Validation.validateAnswer;
+import static baseball.Validation.validateOneOrTwo;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.Validation.validateAnswer;
-import static baseball.Validation.validateOneOrTwo;
 
 public class Game {
 	private List<Integer> pitcher;
@@ -49,7 +49,4 @@ public class Game {
 
 		return hitter;
 	}
-
-
-
 }

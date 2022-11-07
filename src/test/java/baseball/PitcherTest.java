@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-
 class PitcherTest {
 	@Test
 	void 컴퓨터가_생성한_수_검증() {

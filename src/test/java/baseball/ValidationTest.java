@@ -1,14 +1,11 @@
 package baseball;
 
-
-import org.assertj.core.api.Assert;
-import org.junit.jupiter.api.Test;
-
-
 import static baseball.Validation.validateAnswer;
 import static baseball.Validation.validateOneOrTwo;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 // private 메소드를 직접 테스트하는 방법도 있지만, 우회적인 테스트를 구현했다.
 class ValidationTest {
@@ -31,5 +28,4 @@ class ValidationTest {
 		assertDoesNotThrow(() -> validateOneOrTwo("1"));
 		assertDoesNotThrow(() -> validateOneOrTwo("2"));
 	}
-
 }
