@@ -110,6 +110,7 @@ class ApplicationTest extends NsTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
     @Nested
     class mainTest {
         @Test
@@ -122,6 +123,7 @@ class ApplicationTest extends NsTest {
             );
         }
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
