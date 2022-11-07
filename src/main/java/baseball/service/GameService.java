@@ -28,10 +28,21 @@ public class GameService {
                 throw new IllegalArgumentException("1에서 9 사이의 숫자만 입력할 수 있습니다.");
             }
         }
+
+        //TODO: 중복 입력 방지
     }
 
     public Game initAnswer(Game game) {
-        game.setNumbers(Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, MAX_COUNT));
+        List<Integer> newAnswer = new ArrayList<>();
+
+        while(newAnswer.size() < MAX_COUNT){
+            int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+            if(!newAnswer.contains(randomNumber)){
+                newAnswer.add(randomNumber);
+            }
+        }
+
+        game.setNumbers(newAnswer);
 
         return game;
     }
