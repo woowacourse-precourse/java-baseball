@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.domain.User;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -54,6 +55,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
@@ -70,4 +72,19 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(computer.getRandomNumber().size()).isEqualTo(3);
     }
+
+    @Test
+    void 유저_입력값_생성_테스트() {
+        //given
+        User user = new User();
+        List<Integer> list = List.of(1, 2, 3);
+
+        //when
+        user.setSelectNumber(list);
+
+        //then
+        assertThat(user.getSelectNumber().size()).isEqualTo(3);
+
+    }
+
 }
