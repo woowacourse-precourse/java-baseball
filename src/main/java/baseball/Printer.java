@@ -22,6 +22,10 @@ public class Printer {
         println(FINISH_GAME);
     }
 
+    public static void inputNumber() {
+        print(INPUT_NUMBER);
+    }
+
     private static void print(String s){
         try {
             bufferedWriter.write(s);
