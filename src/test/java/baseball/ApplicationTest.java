@@ -1,20 +1,15 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -99,9 +94,6 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.closeOrRestart("다"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
-
 
 
     @Override
