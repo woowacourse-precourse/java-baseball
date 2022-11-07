@@ -9,8 +9,6 @@ import java.util.HashSet;
 
 
 public class Application {
-    static int threeStrike = 0; // BallStrikeChecker 내부로 들어갈 예정
-    static int firstGame = 1; // 없앨 예정
 
     // RandomNumberGenerator 내부로 들어갈 예정
     static void generateRandomNumber(ArrayList<Integer> answer) {
@@ -111,17 +109,19 @@ public class Application {
     }
 
     static void runLoop() {
-        ArrayList<Integer> answer = new ArrayList<>();
-        String guess;
+        /*
+        RandomNumberGenerator answer = new RandomNumberGenerator();
+        Guess myGuess;
+        BallStrikeChecker checker = new BallStrikeChecker();
+        ResultBoard board;
 
-        generateRandomNumber(answer);
-        do {
-            System.out.print("숫자를 입력해주세요 : ");
-            guess = Console.readLine();
-            if (checkValidityOfGuess(guess)) {
-                judgeGuess(guess, answer);
-            }
-        } while (threeStrike != 1);
+        while(checker.threeStrike){
+            System.out.println("숫자를 입력해주세요 : ");
+            myGuess= new Guess(Console.readLine());
+            checker.countBallAndStrike(answer,myGuess);
+            board = new ResultBoard(checker.judgement);
+            board.showResult();
+        }*/
     }
 
     static void endOrRestart() throws IllegalArgumentException {
@@ -145,17 +145,12 @@ public class Application {
     }
 
     static void initializeAndStartGame() {
-        threeStrike = 0;
-
-        if (firstGame == 1) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            firstGame = 0;
-        }
         runLoop();
         endOrRestart();
     }
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         initializeAndStartGame();
     }
 }
