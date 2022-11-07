@@ -22,14 +22,20 @@ public class Application {
         return Console.readLine();
     }
 
+    private static int compare(List<Integer> com_num){
+        String user_num;
+        do{
+            user_num = user_num_input();
+        } while ();
+    }
+
     private static void game(){
         int game_status;
-        String user_num;
         List<Integer> computer = new ArrayList<>();
 
         do {
             rand_num_decision(computer);
-
+            compare(computer);
         } while (game_status == 1);
     }
 
