@@ -21,7 +21,6 @@ public class BaseballGame {
     public void playGame(boolean isPlay) {
         System.out.println(BaseballMessage.GAME_START_MESSAGE.getMessage());
         while (isPlay) {
-            pitcher.initThrownBallList();
             isPlay = playInning();
         }
     }

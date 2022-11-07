@@ -7,12 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Pitcher {
-    private List<Integer> thrownBallList;
-
-    public Pitcher() {
-        initThrownBallList();
-    }
-
+    
     public Balls throwRandomBalls(int count) {
         return new Balls(IntStream.range(0, count)
                         .mapToObj(this::throwRandomBall)
@@ -24,22 +19,24 @@ public class Pitcher {
     }
 
     private int getNotDuplicatedRandomNumber() {
+        List<Integer> thrownBallList = initThrownBallList();
         while (true) {
             int number = Randoms.pickNumberInRange(1, 9);
-            if (isNotDuplicated(number)) {
+            if (isNotDuplicated(thrownBallList, number)) {
                 thrownBallList.set(number, 1);
                 return number;
             }
         }
     }
 
-    private boolean isNotDuplicated(int number) {
+    private boolean isNotDuplicated(List<Integer> thrownBallList, int number) {
         return thrownBallList.get(number) == 0;
     }
 
-    public void initThrownBallList() {
-        thrownBallList = new ArrayList<>();
+    private List<Integer> initThrownBallList() {
+        List<Integer> thrownBallList = new ArrayList<>();
         IntStream.range(0, 10)
                 .forEach(order -> thrownBallList.add(0));
+        return thrownBallList;
     }
 }
