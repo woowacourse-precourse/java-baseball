@@ -25,13 +25,13 @@ public class Application {
 
         int ball = checkBall(computer_num,answer);
 
+        printResult(strike,ball);
+
         if (strike == 3) {
             quitOrContinue = askContinue();
-
-
-        } else {
-            printResult(strike,ball);
         }
+
+
 
 
 
@@ -73,7 +73,7 @@ public class Application {
                 System.out.print(ball+"볼 ");
             }
             if (strike > 0) {
-                System.out.print(strike+"스트라이크 ");
+                System.out.println(strike+"스트라이크 ");
             }
 
         }

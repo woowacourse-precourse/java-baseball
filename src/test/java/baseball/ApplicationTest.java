@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -85,6 +87,20 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("낫싱","1볼 1스트라이크");
 
 
+    }
+
+
+
+    @Test
+    void 정답을_맞출_경우_선택지_테스트() {
+
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        String answer =  Application.askContinue();
+        assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료","게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        assertThat(answer).isEqualTo("1");
 
     }
 
