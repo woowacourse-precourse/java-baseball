@@ -10,18 +10,16 @@ public class NumberCompareResult {
 
     private List<List<String>> compareResult;
 
-    public NumberCompareResult(int strike, int ball){
+    public NumberCompareResult(int strike, int ball) {
         List<List<String>> compareResult = new ArrayList<>();
 
-        if(ball != 0){
-            compareResult.add(List.of(String.valueOf(ball),"볼"));
+        if (ball != 0) {
+            compareResult.add(List.of(String.valueOf(ball), "볼"));
         }
-
-        if(strike != 0){
-            compareResult.add(List.of(String.valueOf(strike),"스트라이크"));
+        if (strike != 0) {
+            compareResult.add(List.of(String.valueOf(strike), "스트라이크"));
         }
-
-        if(compareResult.size() == 0){
+        if (compareResult.size() == 0) {
             compareResult.add(List.of("낫싱"));
         }
 
@@ -31,15 +29,15 @@ public class NumberCompareResult {
     /**
      * @return CompareResult 객체를 문자열 형태로 반환
      */
-    public String toString(){
+    public String toString() {
         StringBuilder outputString = new StringBuilder();
 
-        for(List<String> result : compareResult){
-            if(outputString.length() != 0){
+        for (List<String> result : compareResult) {
+            if (outputString.length() != 0) {
                 outputString.append(" ");
             }
 
-            for(String part : result) {
+            for (String part : result) {
                 outputString.append(part);
             }
         }

@@ -24,7 +24,7 @@ public class RandomManager {
                 integers[i] = randomInt;
             }
             return integers;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
 
