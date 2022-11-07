@@ -2,10 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class User {
     List userNumList = new ArrayList();
@@ -13,6 +10,7 @@ public class User {
     public void InputNum() {
         String number = Console.readLine();
         isValid(number);
+        userNumList = converToList(number);
     }
 
     public void isValid(String num) {
@@ -53,4 +51,16 @@ public class User {
             throw new IllegalArgumentException("중복된 수가 입력되었습니다.");
         }
     }
+
+    public List converToList (String num) {
+        int intNum = Integer.parseInt(num);
+        List list = new ArrayList();
+        for(int idx = 0; idx < 3; idx++){
+            list.add(intNum % 10);
+            intNum /= 10;
+        }
+        Collections.reverse(list);
+        return list;
+    }
+
 }
