@@ -15,9 +15,10 @@ public class Application {
         manager.printGameStart();
 
         Computer computer = appConfig.computer();
-        List<Integer> computerNumber = computer.createOtherNumber();
+        List<Integer> computerNumbers = computer.createOtherNumber();
 
         manager.printInputGameValue();
         String gameValueOfUser = manager.inputGameValue();
+        computer.printCorrectResult(gameValueOfUser, computerNumbers);
     }
 }

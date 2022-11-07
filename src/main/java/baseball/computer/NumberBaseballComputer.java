@@ -3,7 +3,9 @@ package baseball.computer;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 숫자 야구 게임 컴퓨터는 유저가 게임을 시작할 때 숫자 생성
@@ -14,6 +16,9 @@ import java.util.List;
  * @author chlskreh2
  */
 public class NumberBaseballComputer implements Computer{
+
+    private final int STRIKE = 0;
+    private final int BALL = 1;
 
     /**
      * 서로 다른 임의의 수 3개를 생성
@@ -35,9 +40,10 @@ public class NumberBaseballComputer implements Computer{
      * 볼, 스트라이크, 낫싱 출력
      */
     @Override
-    public void printCorrectResult(String gameValueOfUser) {
+    public void printCorrectResult(String gameValueOfUser, List<Integer> computerNumbers) {
         int gameNumberOfUser = validateUserNumber(gameValueOfUser);
-        List<Integer> userNumber = ConvertUserNumber(gameNumberOfUser);
+        Map<Integer, Integer> ballOrStrikeNumbers =
+                countBallOrStrike(convertUserNumber(gameNumberOfUser), computerNumbers);
     }
 
     private int validateUserNumber(String gameValueOfUser) {
@@ -51,12 +57,30 @@ public class NumberBaseballComputer implements Computer{
         }
     }
 
-    private List<Integer> ConvertUserNumber(int gameNumberOfUser) {
+    private Map<Integer, Integer> countBallOrStrike(List<Integer> userNumbers, List<Integer> computerNumbers) {
+        Map<Integer, Integer> ballOrStrikeNumbers = new HashMap<>();
+        ballOrStrikeNumbers.put(STRIKE, 0);
+        ballOrStrikeNumbers.put(BALL, 0);
+        for (int userNumberIndex = 0; userNumberIndex < userNumbers.size(); ++userNumberIndex) {
+            int computerNumberIndex = computerNumbers.indexOf(userNumbers.get(userNumberIndex));
+            if (computerNumberIndex == -1) {
+                continue;
+            }
+            if (computerNumberIndex == userNumberIndex) {
+                ballOrStrikeNumbers.put(STRIKE, ballOrStrikeNumbers.get(STRIKE) + 1);
+            } else {
+                ballOrStrikeNumbers.put(BALL, ballOrStrikeNumbers.get(BALL) + 1);
+            }
+        }
+        return ballOrStrikeNumbers;
+    }
+
+    private List<Integer> convertUserNumber(int gameNumberOfUser) {
         int hundredPlace = gameNumberOfUser / 100;
         int tenPlace = gameNumberOfUser / 10 % 10;
         int onePlace = gameNumberOfUser % 10;
-        List<Integer> userNumber = List.of(hundredPlace, tenPlace, onePlace);
-        return userNumber;
+        List<Integer> userNumbers = List.of(hundredPlace, tenPlace, onePlace);
+        return userNumbers;
     }
 
     private void checkNumberRange(int gameNumberOfUser) {
