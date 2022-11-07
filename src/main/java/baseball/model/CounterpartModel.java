@@ -1,15 +1,27 @@
 package baseball.model;
 
+import java.util.ArrayList;
+
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class CounterpartModel {
-    private final int resultNum;
+    private ArrayList<Integer> resultArray;
 
     public CounterpartModel() {
-        this.resultNum = pickNumberInRange(1, 9);
+        GenerateRandomNum();
     }
 
-    public int getResultNum() {
-        return resultNum;
+    public void GenerateRandomNum() {
+        resultArray = new ArrayList<>();
+        while(resultArray.size() != 3) {
+            int num = pickNumberInRange(1, 9);
+            if(!resultArray.contains(num)) {
+                resultArray.add(num);
+            }
+        }
+    }
+
+    public ArrayList<Integer> getResultNum() {
+        return resultArray;
     }
 }

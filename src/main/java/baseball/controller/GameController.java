@@ -14,8 +14,32 @@ public class GameController {
 
     public int inputNumber() {
         AppView.output("숫자를 입력해주세요 : ");
-        String myAnswer = AppView.inputLine();
-        return Integer.parseInt(myAnswer);
+        int myAnswer = 0;
+        try {
+            myAnswer = Integer.parseInt(AppView.inputLine());
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if(!checkRangeNum(myAnswer)) {
+            throw new IllegalArgumentException();
+        }
+
+        return myAnswer;
+    }
+
+    public boolean checkRangeNum(int num) {
+        // 3자리인지 체크
+        if(num / 100 >= 10) return false;
+        if(num / 100 == 0) return false;
+        // 1자리
+        if((num % 10) == 0) return false;
+        // 10자리
+        if(((num % 100) / 10) == 0) return false;
+        // 100자리
+        if((num / 100) == 0) return false;
+
+        return true;
     }
 
     public void correctResult() {
@@ -24,18 +48,24 @@ public class GameController {
     }
 
     public void inquiryStartOrTerminate() {
+        AppView.outputLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int myResponse = 0;
-
-        while(myResponse != 1 || myResponse != 2) {
-            AppView.outputLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
             myResponse = Integer.parseInt(AppView.inputLine());
-            if(myResponse == 1) {
-                counterpart = new CounterpartModel();
-            }
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
 
-            if(myResponse == 2) {
-                isAnswerAndTerminate = true;
-            }
+        if(myResponse != 1 && myResponse != 2) {
+            throw new IllegalArgumentException();
+        }
+
+        if(myResponse == 1) {
+            counterpart = new CounterpartModel();
+        }
+
+        if(myResponse == 2) {
+            isAnswerAndTerminate = true;
         }
     }
 
