@@ -11,4 +11,9 @@ public class Score {
     this.strikeCount = 0;
     this.ballCount = 0;
   }
+
+  public void compareTwoNumber(List<Integer> computer, List<Integer> user) {
+    setStrikeCount(computer, user);
+    setBallCount(computer, user);
+  }
 }
