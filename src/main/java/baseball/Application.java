@@ -123,6 +123,11 @@ public class Application {
     public static boolean printBaseballOfResult(int strikeSize, int ballSize){
         int strikeNumber = strikeSize;
         int ballNumber = ballSize;
+
+        if(strikeNumber == 3){
+
+        }
+
         return false;
     }
 
