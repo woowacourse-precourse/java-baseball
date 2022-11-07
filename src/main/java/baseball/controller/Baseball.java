@@ -1,5 +1,6 @@
-package baseball;
+package baseball.controller;
 
+import baseball.State;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.Player;
@@ -13,7 +14,7 @@ public class Baseball {
     private final Hint hint;
     private final InputValidator inputValidator;
 
-    Baseball() {
+    public Baseball() {
         computer = new Computer();
         player = new Player();
         hint = new Hint();
