@@ -34,10 +34,10 @@ public class BaseBallGameNumber {
   }
 
   private void checkDifferentNumbers() {
-    for (int i = 1; i < gameNumberList.size(); i++) {
-      if (gameNumberList.get(i) == gameNumberList.get(i - 1))
-        throw new IllegalArgumentException("중복되는 숫자가 있습니다.");
-    }
+    if (gameNumberList.get(0) == gameNumberList.get(1)
+            || gameNumberList.get(1) == gameNumberList.get(2)
+            || gameNumberList.get(0) == gameNumberList.get(2))
+      throw new IllegalArgumentException("중복되는 숫자가 있습니다.");
   }
 
   private void checkIncludeZero() {
