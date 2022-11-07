@@ -15,7 +15,7 @@ public class Application {
         Application application = new Application();
         application.create();
         application.plyerNuber();
-        application.check();
+
     }
 
     //컴퓨터 임의의 숫자 3개
@@ -43,6 +43,7 @@ public class Application {
         System.out.println("내 숫자= " + playerNum);
         return playerNum;
     }
+
     public int check(List<Integer> computer, List<Integer> plyerNuber) {
         int result = 0;
         for (int i = 0; i < plyerNuber.size(); i++) {
@@ -52,7 +53,17 @@ public class Application {
         }
         return result;
     }
+    public int strike(List<Integer> computer, List<Integer> plyerNuber) {
+        int countStrike = 0;
+        for (int i = 0; i < plyerNuber.size(); i++) {
+            if (computer.get(i) == plyerNuber.get(i)) {
+                countStrike += 1;
+            }
+        }
+        return countStrike;
+    }
 }
+
 
 
 
