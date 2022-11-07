@@ -16,8 +16,8 @@ public class GameTextPrinter {
         System.out.print(USER_INPUT_TEXT);
     }
 
-    public static void printNoting(String NOTING) {
-        System.out.println(NOTING);
+    public static void printNoting(String noting) {
+        System.out.println(noting);
     }
 
     public static void printCompareResult(Map<String, Integer> result) {
