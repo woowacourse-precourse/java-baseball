@@ -19,10 +19,6 @@ public class Game {
 
         List<Integer> computer = getComputerNumber();
         List<Integer> user = getUserNumber(userInput);
-        if(user == null) {
-            System.out.println("사용자 입력 에러발생!!");
-            return;
-        }
 
         // count stikes & balls
         int strikes = countStrikes(user,computer);
