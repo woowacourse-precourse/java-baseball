@@ -78,6 +78,12 @@ class ApplicationTest extends NsTest {
         assertThat(getNumbersToUserNumber(number)).isEqualTo(result);
     }
 
+    @Test
+    void 사용자_번호를_나눠_숫자로_변경하는_테스트_숫자_아님() {
+        String number = "23e";
+        assertThatThrownBy(() -> getNumbersToUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
