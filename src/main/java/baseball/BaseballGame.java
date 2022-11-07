@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 public class BaseballGame {
     private static final int NUMBER_OF_BALLS = 3;
     private static final int REPLAY = 1;
+    private static final int OVER = 2;
     private static final String INVALID_NUMBER_RANGE_REGEX = "[^1-9]";
 
     private final Hitter hitter;
@@ -57,7 +58,15 @@ public class BaseballGame {
         System.out.println(BaseballMessage.REPLAY_MESSAGE.getMessage());
         Integer number = Integer.valueOf(Console.readLine());
 
-        return number.equals(REPLAY);
+        if (number.equals(REPLAY)) {
+            return true;
+        }
+
+        if (number.equals(OVER)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
     }
 
     private void printResult(int strikeCount, int ballCount) {
