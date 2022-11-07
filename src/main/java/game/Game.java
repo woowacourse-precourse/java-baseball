@@ -5,6 +5,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
+    Hint hint = new Hint();
     private static final int STARTING_INDEX = 0;
     private static final int MAX_LENGTH_OF_NUMBER = 3;
 
