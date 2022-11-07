@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.domain.BaseballGame;
 import baseball.domain.Hints;
 import baseball.domain.Numbers;
-import baseball.domain.RandomGenerator;
+import baseball.util.RandomGenerator;
 import baseball.view.Input;
 import baseball.view.Output;
 
