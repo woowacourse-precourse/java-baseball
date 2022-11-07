@@ -9,14 +9,19 @@ public class Computer {
     private final Set<Integer> randomNumbers;
 
     public Computer() {
-        randomNumbers = new HashSet<>();
-        while (randomNumbers.size() != 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            randomNumbers.add(randomNumber);
-        }
+        this.randomNumbers = this.generateNumbers();
     }
 
     public Set<Integer> getRandomNumbers() {
         return this.randomNumbers;
+    }
+
+    private Set<Integer> generateNumbers() {
+        Set<Integer> numbers = new HashSet<>();
+        while (randomNumbers.size() != 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            numbers.add(randomNumber);
+        }
+        return numbers;
     }
 }
