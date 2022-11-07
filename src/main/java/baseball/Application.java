@@ -72,9 +72,9 @@ public class Application {
         String pattern = String.format("^[%d-%d]{%d}$", MIN_INT, MAX_INT, TARGET_LENGTH);
         boolean isNonzeroThreeDigits = Pattern.matches(pattern, userInput);
         if (!isNonzeroThreeDigits) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input value must be a three-digit natural number :" + userInput);
         } else if (new HashSet<>(Arrays.asList(userInput.split(""))).size() < TARGET_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Each digit of input value should be unique :" + userInput);
         }
     }
 
@@ -126,7 +126,7 @@ public class Application {
         } else if (userInput.equals(CONTINUE_STR)) {
             return true;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Invalid input :" + userInput);
         }
     }
 }
