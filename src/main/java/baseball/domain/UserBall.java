@@ -17,8 +17,9 @@ public class UserBall {
 		return new UserBall(0, 0);
 	}
 
-	public String getStatus() {
-		return status;
+	public String createUserBallStatusDto() {
+		String userBallStatusDto = status + "";
+		return userBallStatusDto;
 	}
 
 	public boolean is3Strike() {
