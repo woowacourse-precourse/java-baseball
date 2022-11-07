@@ -16,7 +16,7 @@ public class PlayBaseBall {
       }
       if (strike == Constant.MAX_STRIKE) {
         PrintOut.endMessage();
-        PrintOut.continueMessage(); //ask, request ~~~
+        PrintOut.askMessage();
         if (!ContinueOrStop.choice(UserScanner.input())) { //choice 이름 /  과정이 눈에 보이게 //
           break;
         }
