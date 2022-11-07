@@ -9,10 +9,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
@@ -26,8 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-
-
 
     @Test
     @DisplayName("랜덤숫자가 서로다른 숫자를 가지고 있는지 확인")
@@ -67,7 +67,7 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("1을 입력하면 게임 재시작 , 2는 종료")
     void restartOrEnd() throws Exception {
-        String  data = String.valueOf(Randoms.pickNumberInList(List.of(1,2)));
+        String data = String.valueOf(Randoms.pickNumberInList(List.of(1,2)));
         InputStream in = new ByteArrayInputStream(data.getBytes());
         System.setIn(in);
 
@@ -82,10 +82,19 @@ class ApplicationTest extends NsTest {
             Assertions.assertThat(endGame.invoke(app)).isEqualTo(true);
         }
 
+    }
 
+    @Test
+    @DisplayName("게임 재시작 혹은 종료시 입력값 검증")
+    void optionValidate() throws Exception {
+        Application app = new Application();
+        Method optionValidate = app.getClass().getDeclaredMethod("optionValidate", int.class);
+        optionValidate.setAccessible(true);
 
-
-
+        Assertions.assertThatThrownBy(()->
+                 optionValidate.invoke(app, 0))
+                        .isInstanceOf(InvocationTargetException.class)
+                                .getRootCause().isInstanceOf(IllegalArgumentException.class);
     }
 
 
@@ -96,7 +105,7 @@ class ApplicationTest extends NsTest {
                     run("246", "135", "1", "597", "589", "2");
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
+                1,  3, 5, 5, 8, 9
         );
     }
 
