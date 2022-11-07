@@ -1,6 +1,6 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
-
+import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -26,7 +26,6 @@ public class Application {
 
             }
         }
-
         int num = 0;
 
 
@@ -95,15 +94,24 @@ public class Application {
     public static void main(String[] args) {
         //컴퓨터 숫자 선언
 
-        int num2=1;
+        int num2;
 
         Scanner sc = new Scanner(System.in);
-        while(num2==1){
+        while(true){
             game();
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             num2 = sc.nextInt();
+            if(num2==1){
+                continue;
+            }
+            else if (num2==2){
+                break;
+            }
+            else{
+                throw new IllegalArgumentException();
+            }
 
         }
 
