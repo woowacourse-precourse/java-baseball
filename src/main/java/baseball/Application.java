@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -46,5 +47,17 @@ public class Application {
         }
 
         return player;
+    }
+
+    static int countStrike(List<Integer> computer, List<Integer> player) {
+        int strike = 0;
+
+        for (int i = 0; i < player.size(); i++) {
+            if (Objects.equals(computer.get(i), player.get(i))) {
+                strike += 1;
+            }
+        }
+
+        return strike;
     }
 }
