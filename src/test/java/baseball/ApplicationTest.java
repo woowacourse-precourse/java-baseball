@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +30,18 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+    @Nested
+    class ComputerTest {
+        @Test
+        void generatingNumber() {
+            int result = 0;
+            HashMap<Integer,Integer> RandomNumberMap = Computer.generateRandomNumber();
+            assertThat(RandomNumberMap).hasSize(3);
+            assertThat(RandomNumberMap).containsValues(1,2,3);
+            assertThat(RandomNumberMap).doesNotContainKey(0);
+        }
+
     }
 
     @Override
