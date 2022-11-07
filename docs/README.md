@@ -27,18 +27,21 @@
 ### 7. isDuplicate
     * 입력된 값 중에 중복된 숫자가 있는지 확인한다.
 
-### 8. compareComputerAndUserNumber
+### 8. isContainZero
+    * 입력된 값 중에 0이 있는지 확인한다.
+
+### 9. compareComputerAndUserNumber
     * match가 true가 될 때까지 반복한다.
     * computer의 random number와 user가 입력한 number을 비교한다.
     * existStrike와 existBall을 호출하여 strike와 ball의 개수를 센다.
     * checkResult를 통해 결과를 화면에 보여준다.
 
-### 9. existStrike
+### 10. existStrike
     * strike가 있으면 true를 반환한다.
 
-### 10. existBall
+### 11. existBall
     * ball이 있으면 true를 반환한다.
 
-### 11. checkResult
+### 12. checkResult
     * strike, ball, 낫싱 중 무엇인지 판별하고, 3strike일 경우에는 match를 true로 해준다.
     * StringBuilder에 문자를 담아 함수 값을 반환한다.
