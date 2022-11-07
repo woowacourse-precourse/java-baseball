@@ -14,16 +14,16 @@ public class RandomNumberMakerTest {
     void checkBallLength() {
         // 배열의 길이가 3
         final int EXPECTED_LENGTH = 3;
-        ArrayList<Integer> computer = RandomNumberMaker.computer();
-        System.out.println(computer);
-        assertThat(computer).hasSize(EXPECTED_LENGTH);
+        String computer = RandomNumberMaker.computer();
+        assertThat(computer.length()).isEqualTo(EXPECTED_LENGTH);
     }
 
 
-    public static boolean isDuplicated(ArrayList<Integer> input) {
+    public static boolean isDuplicated(String input) {
+        int[] digits = input.chars().map(c -> c-'0').toArray();
         // 중복된 값이 있을 경우 True 반환
         HashSet tempSet = new HashSet();
-        for (Integer integer : input) {
+        for (Integer integer : digits) {
             if (!tempSet.add(integer)) {
                 return true;
             }
@@ -33,13 +33,13 @@ public class RandomNumberMakerTest {
 
     @Test
     void checkDuplicated() {
-        ArrayList<Integer> computer = RandomNumberMaker.computer();
-        ArrayList<Integer> duplicated = new ArrayList<Integer>(Arrays.asList(4, 4, 4));
-        ArrayList<Integer> notDuplicated = new ArrayList<Integer>(Arrays.asList(3, 4, 5));
+        String computer = RandomNumberMaker.computer();
+        String duplicated = "444";
+        String notDuplicated = "345";
 
         assertThat(RandomNumberMakerTest.isDuplicated(computer)).isFalse();
-        assertThat(RandomNumberMakerTest.isDuplicated(notDuplicated)).isFalse();
-        assertThat(RandomNumberMakerTest.isDuplicated(duplicated)).isTrue();
+        assertThat(RandomNumberMakerTest.isDuplicated(duplicated)).isFalse();
+        assertThat(RandomNumberMakerTest.isDuplicated(notDuplicated)).isTrue();
     }
 
 }
