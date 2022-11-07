@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.numbergenerator.NumberGenerator;
 import baseball.numbergenerator.NumberGeneratorRandomImpl;
+import baseball.numbergenerator.NumberGeneratorSequenceImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import java.util.Map;
 import static baseball.Application.ScoreConst.*;
 
 public class Application {
-    private static NumberGenerator numberGenerator = NumberGeneratorRandomImpl.getInstance();
+    private static NumberGenerator numberGenerator = new NumberGeneratorSequenceImpl(List.of(123,456,789));
 
     public static void setNumberGenerator(NumberGenerator numberGenerator) {
         Application.numberGenerator = numberGenerator;
