@@ -1,37 +1,31 @@
 package baseball;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import baseball.io.EndOrRe;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class EndOrReTest {
 
-    private static ByteArrayOutputStream outContent;
     private EndOrRe endOrRe;
 
     @BeforeEach
     public void setEndOrTest() {
-        outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         endOrRe = new EndOrRe();
     }
 
     @Test
     void 입력된_값_확인1() {
-        String result = "1";
-        endOrRe.printInputString(result);
-        assertEquals("1", outContent.toString().trim());
+        int oneOrTwo = endOrRe.printInputString("1");
+        int result = 1;
+        Assertions.assertThat(oneOrTwo).isEqualTo(result);
     }
 
     @Test
     void 입력된_값_확인2() {
-        String result = "2";
-        endOrRe.printInputString(result);
-        assertEquals("2", outContent.toString().trim());
+        int oneOrTwo = endOrRe.printInputString("2");
+        int result = 2;
+        Assertions.assertThat(oneOrTwo).isEqualTo(result);
     }
 
     @Test
