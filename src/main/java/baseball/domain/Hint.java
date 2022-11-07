@@ -13,7 +13,6 @@ public class Hint {
     public final String BALL_AND_STRIKE = "%d볼 %d스트라이크";
     public final String NOTHING = "낫싱";
 
-
     public boolean isThreeStrike() {
         if (strikeCount == Constant.SIZE_NUMBER) {
             initializeBallAndStrikeCount();
