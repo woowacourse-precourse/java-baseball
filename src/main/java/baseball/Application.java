@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Application {
+    public static final int RESTART = 1;
+    public static final int GAMEOVER = 2;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -63,10 +66,10 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         String input = Console.readLine();
-        if (input.equals("1")) {
+        if (input.equals(Integer.toString(RESTART))) {
             return true;
         }
-        if (input.equals("2")) {
+        if (input.equals(Integer.toString(GAMEOVER))) {
             return false;
         }
         else {
