@@ -24,6 +24,16 @@ public class Player {
         }
 
     }
+
+    public int getAnswerAboutRestart() {
+        try{
+            int playerInput =  Integer.parseInt(Console.readLine());
+            return playerInput;
+
+        }catch(Exception e){
+            throw new IllegalArgumentException("입력값이 잘못되었습니다.");
+        }
+    }
     public List<Integer> getPlayerGameNumbers() {
         return playerGameNumbers;
     }
