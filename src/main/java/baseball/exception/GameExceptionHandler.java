@@ -24,4 +24,10 @@ public class GameExceptionHandler {
 			throw new IllegalArgumentException("Input number contains 0.");
 		}
 	}
+
+	public static void handleRestartInputException(String input) throws IllegalArgumentException {
+		if (input.matches("^[1-2]$") == false) {
+			throw new IllegalArgumentException("Input number is not 1 or 2.");
+		}
+	}
 }
