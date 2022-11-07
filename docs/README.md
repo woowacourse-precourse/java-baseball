@@ -3,6 +3,7 @@
 - Controller
   - GamePlayController
     - 전반적인 게임 실행 관리를 담당하는 기능
+    - 유저의 입력을 View로부터 받고, 컴퓨터와의 값을 비교해주는 기능
     - 게임 종료 후 다음 게임의 여부를 담당하는 기능
 
 - Service
