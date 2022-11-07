@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Number {
     private static List<Integer> userNumbers;
@@ -15,6 +16,12 @@ class Number {
 
     public static List<Integer> getUserNumbers() {
         return userNumbers;
+    }
+
+    private static List<Integer> stringToList(String userNumber) {
+        return userNumber.chars()
+                .mapToObj(e -> Integer.parseInt(Character.toString((char) e)))
+                .collect(Collectors.toList());
     }
 
     private List<Integer> initComputerNumber() {
