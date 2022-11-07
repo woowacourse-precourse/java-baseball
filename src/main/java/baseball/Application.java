@@ -17,6 +17,7 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while (computer.size() < 3){
+
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)){
                 computer.add(randomNumber);
@@ -36,7 +37,7 @@ public class Application {
 
         List<Integer> user = new ArrayList<>();
 
-        for (int i = 0; i < input.length(); i++){
+        for (int i = 0; i < 3; i++){
             user.add(Character.getNumericValue(input.charAt(i)));
         }
 
@@ -54,8 +55,44 @@ public class Application {
      * 컴퓨터가 고른 숫자와 사용자가 입력한 숫자를 비교하여 결과를 반환
      */
     public String getGameResult(List<Integer> computer, List<Integer> user){
-        // TODO: 컴퓨터가 고른 숫자와 사용자가 입력한 숫자를 비교하여 결과를 반환
-        return "";
+
+        int ball = 0;
+        int strike = 0;
+        boolean isBall = false;
+
+        for(int i = 0; i < 3; i++){
+
+            // 볼 혹은 스트라이크일 경우
+            if (computer.contains(user.get(i))){
+                isBall = true;
+                ball++;
+            }
+
+            // 스트라이크일 경우
+            if (isBall && computer.get(i).equals(user.get(i))){
+                ball--;
+                strike++;
+            }
+
+            isBall = false;
+        }
+
+        String result = "";
+        
+        if (ball == 0 && strike == 0){
+            result += "낫싱";
+            return result;
+        }
+
+        if (ball > 0){
+            result += ball + "볼 ";
+        }
+
+        if (strike > 0){
+            result += strike + "스트라이크";
+        }
+
+        return result.trim();
     }
 
     /*
