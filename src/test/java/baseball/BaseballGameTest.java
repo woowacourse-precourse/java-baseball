@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class BaseballGameTest {
     @Test
     void getScore1() {
-        ExecuteBaseBallGame baseBallGame = new ExecuteBaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.computer = "713";
         String user = "123";
 
@@ -23,7 +23,7 @@ public class BaseballGameTest {
 
     @Test
     void getScore2() {
-        ExecuteBaseBallGame baseBallGame = new ExecuteBaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.computer = "713";
         String user = "145";
 
@@ -38,7 +38,7 @@ public class BaseballGameTest {
 
     @Test
     void getScore3() {
-        ExecuteBaseBallGame baseBallGame = new ExecuteBaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.computer = "713";
         String user = "671";
 
@@ -54,7 +54,7 @@ public class BaseballGameTest {
 
     @Test
     void getScore4() {
-        ExecuteBaseBallGame baseBallGame = new ExecuteBaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.computer = "713";
         String user = "216";
 
@@ -67,7 +67,7 @@ public class BaseballGameTest {
 
     @Test
     void getScore5() {
-        ExecuteBaseBallGame baseBallGame = new ExecuteBaseBallGame();
+        BaseBallGame baseBallGame = new BaseBallGame();
         baseBallGame.computer = "713";
         String user = "713";
 

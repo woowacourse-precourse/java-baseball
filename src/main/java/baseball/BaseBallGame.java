@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.*;
 
-public class ExecuteBaseBallGame {
+public class BaseBallGame {
     String INDEX_VALUE_ARE_CORRECT = "스트라이크";
     String VALUE_IS_CORRECT = "볼";
     String INDEX_VALUE_ARE_WRONG = "낫싱";
