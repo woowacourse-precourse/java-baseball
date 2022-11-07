@@ -19,4 +19,15 @@ public class SystemComputerModel {
 
     public SystemComputerModel() {
     }
+
+    public void setRandomNumber() {
+        List<Integer> digitSet = new ArrayList<>();
+        while(digitSet.size()<DIGIT_COUNT){
+            int randomNumber=Randoms.pickNumberInRange(1, 9);
+            if(!digitSet.contains(randomNumber)){
+                digitSet.add(randomNumber);
+            }
+        }
+        digits=new ArrayList<>(digitSet);
+    }
 }
