@@ -9,4 +9,5 @@
 7. isStrike() : 스트라이크인가요? (boolean)
 8. isBall() : 볼인가요? (boolean)
 9. outputResultComparisonOfNumbers() : 숫자끼리 비교한 결과 출력
-10. startNewGame() : 새로운 게임을 시작할건가요? (boolean)
+10. outputAskPlayNewGameStatement() : 새로운 게임을 시작할지 질문하는 문구 출력
+11. startNewGame() : 새로운 게임을 시작할건가요? (boolean)
