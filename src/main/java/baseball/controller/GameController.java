@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.decision.Decision;
 import baseball.decision.DecisionMaker;
 import baseball.game.Game;
 
@@ -19,9 +20,9 @@ public class GameController {
     }
 
     public void playRecurringGame() {
-        String decision = "Play";
+        Decision decision = Decision.PLAY;
         game.printStartingMessage();
-        while (decision.equals("Play")) {
+        while (decision.equals(Decision.PLAY)) {
             playGame();
             decision = getUserDecision();
         }
@@ -36,7 +37,7 @@ public class GameController {
         timesOfPlayGame+=1;
     }
 
-    private String getUserDecision() {
+    private Decision getUserDecision() {
         return decisionMaker.getDecision();
     }
 
