@@ -1,3 +1,13 @@
+## **5가지를 최대한 만족하는 코드 작성**
+
+1. 객체지향 생활체조 원칙 9가지
+2. Git commit conventions
+3. Java conventions
+4. test code
+5. clean code
+
+
+
 ## **구현 기능 목록**
 
 1. 게임
