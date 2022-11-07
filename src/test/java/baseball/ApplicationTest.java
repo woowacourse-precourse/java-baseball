@@ -27,7 +27,7 @@ class ApplicationTest extends NsTest {
                     run("246", "135", "2");
                     assertThat(output()).contains("낫싱", "3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
+                1, 3, 5
         );
     }
 
@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
                     assertThatThrownBy(() -> runException("246", "135", "123"))
                             .isInstanceOf(IllegalArgumentException.class);
                 },
-                1, 3, 5, 5, 8, 9
+                1, 3, 5
         );
     }
 
@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
                     run("246", "998", "135", "2");
                     assertThat(output()).contains("낫싱", "정답은 세자리 모두 다 다릅니다.","3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
+                1, 3, 5
         );
     }
 
