@@ -6,7 +6,7 @@ public class User {
 
     public String input;
 
-    public void setInput() {
+    public void setInputForAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
         this.input = readLine();
     }
