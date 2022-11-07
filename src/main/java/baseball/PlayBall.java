@@ -22,6 +22,6 @@ public class PlayBall {
     }
 
     public void handleUserInput(){
-        List<Integer> userNumber = playBallUI.takeUserInput();
+        String userNumber = playBallUI.takeUserInput();
     }
 }
