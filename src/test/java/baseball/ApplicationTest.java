@@ -33,6 +33,18 @@ class ApplicationTest extends NsTest {
 
         assertThat(expectedOutput).isEqualTo(realOutput);
     }
+
+    @Test
+    void doesNotHaveDuplicateInputElement_입력에_중복된_문자가_없는_경우_참(){
+        List<String> playerInput = List.of("123", "112");
+        List<Boolean> expectedOutput = List.of(true, false);
+
+        List<Boolean> realOutput = playerInput.stream()
+                .map(input -> Player.doesNotHaveDuplicateInputElement(input))
+                .collect(Collectors.toList());
+
+        assertThat(expectedOutput).isEqualTo(realOutput);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
