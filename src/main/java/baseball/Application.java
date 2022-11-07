@@ -25,7 +25,7 @@ public class Application {
     	while(start==1) {
 
     		computer = makeComputer();
-
+    		System.out.println(computer);
     		game();
     	}
     }
@@ -147,15 +147,15 @@ public class Application {
     }
     
     public static int successMessage() {
-    	int coin = 0;
+    	String coin = "";
     	System.out.println(strike+"스트라이크");
 		System.out.println(strike+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		coin = Integer.parseInt(Console.readLine());
-		if(coin==1) {
-			return coin;
-		}else if(coin==2) {
-			return coin;
+		coin = Console.readLine();
+		if(coin.equals("1")) {
+			return 1;
+		}else if(coin.equals("2")) {
+			return 2;
 		}else {
 			throw new IllegalArgumentException();
 		}
