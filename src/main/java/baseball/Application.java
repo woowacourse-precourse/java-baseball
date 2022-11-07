@@ -28,6 +28,7 @@ public class Application {
             }
             sentence += strike + "스트라이크";
             if (strike == 3) {
+                System.out.println(sentence);
                 return true;
             }
         }
@@ -68,7 +69,7 @@ public class Application {
 
     // TODO: [1] 사용자 입력 및 게임 재시작/종료 기능 구현
     public static boolean game() {
-        String answer = "123";
+        String answer = randomGenerator();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
