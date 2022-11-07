@@ -11,16 +11,14 @@ public class RefereeTest {
 
     @Test
     void 스트라이크() {
-        Assertions.assertThat(referee.isStrike(
-            new ArrayList<>(List.of(1,5,9)), List.of(1,5,9)
-        )).isEqualTo(3);
+        referee.isStrike(new ArrayList<>(List.of(1,5,9)), List.of(1,5,9));
+        Assertions.assertThat(referee.getStrike()).isEqualTo(3);
     }
 
     @Test
     void 볼() {
-        Assertions.assertThat(referee.isBall(
-            List.of(1,2,3), List.of(2,3,4)
-        )).isEqualTo(2);
+        referee.isBall(List.of(1,2,3), List.of(2,3,4));
+        Assertions.assertThat(referee.getBall()).isEqualTo(2);
     }
 
     @Test
