@@ -6,27 +6,29 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) throws IllegalArgumentException{
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true){
-            start();
+            gameStart();
+            break;
         }
     }
 
-    public static void start() throws IllegalArgumentException{
-        List<Integer> computerNumber = computerNumber();
+    public static void gameStart(){
+        List<Integer> computerNumber = makeComputerNumber();
         List<Integer> strikeBallList;
+        List<Integer> userNumber;
         String input;
-        int strike, ball;
         while (true){
             System.out.print("숫자를 입력해주세요 : ");
             input = readLine();
             inputCheck(input);
-
+            userNumber = makeUserNumber(input);
+            break;
         }
-
     }
 
-    public static List<Integer> computerNumber(){
+    public static List<Integer> makeComputerNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -45,6 +47,13 @@ public class Application {
         if (input.matches("[0-9]") && overlapcheck.size() == 3) return;
         if (input.matches("[1-2]{1}"))  return;
         new IllegalArgumentException("잘못된 입력입니다.");
+    }
+
+    public static List<Integer> makeUserNumber(String input){
+        int num1 = Character.getNumericValue(input.charAt(0));
+        int num2 = Character.getNumericValue(input.charAt(1));
+        int num3 = Character.getNumericValue(input.charAt(2));
+        return Arrays.asList(num1,num2,num3);
     }
 
     public static List<Integer> checkStrikeBall(List<Integer> userNumber, List<Integer> computerNumber){
