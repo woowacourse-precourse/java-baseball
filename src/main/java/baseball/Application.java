@@ -27,22 +27,22 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
         }
-        while (proceedTurn(baseballNum) == 1);
+        while (proceedTurn(baseballNum));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     /**
      * 한 번의 턴을 진행한다.
      * 비교 결과를 출력하고 승리 여부를 파악한다.
-     * @return 게임이 종료되면 0, 다음 턴을 수행해야 하면 1을 반환
+     * @return 게임이 종료되면 false, 다음 턴을 수행해야 하면 true를 반환
      */
-    private static int proceedTurn(BaseballNum baseballNum) {
+    private static boolean proceedTurn(BaseballNum baseballNum) {
         int input = BaseballInput.nextBaseballNum();
         TurnResult result = TurnResult.compare(baseballNum, input);
         System.out.println(result);
 
         if (result.getStrikes() == 3)
-            return 0;
-        return 1;
+            return false;
+        return true;
     }
 }
