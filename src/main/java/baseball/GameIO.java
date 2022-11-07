@@ -32,10 +32,7 @@ public class GameIO {
     public boolean isOnlyNumber(String input) {
         Pattern pattern = Pattern.compile("\\D");
         Matcher matcher = pattern.matcher(input);
-        if (matcher.find()) {
-            return false;
-        }
-        return true;
+        return !matcher.find();
     }
     public boolean isThreeDigit(String input) {
         if (input.length() != 3) {
