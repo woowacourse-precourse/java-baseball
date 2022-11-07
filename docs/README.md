@@ -5,8 +5,11 @@
 5. 3스트라이크일 때 게임 재시작 여부 질문 출력 및 답 입력받는 함수 구현
 
 
+* isIllegalInput 함수에 대하여 
+  - userInput 값에 따라 true, false return 테스트
 
-* wrongInputValueCheck 함수에대하여
+
+* wrongInputValueCheck 함수에 대하여
   - 각 자리 수가 서로 다른 사용자 입력값을 받지 않았을 때 false 를 return 하는지 테스트
   - 각 자리 수가 서로 다른 사용자 입력값을 받았을 때 true 를 return 하는지 테스트
   - 각 자리 숫자 중 0이 존재할 때 false 를 return 하는지 테스트
