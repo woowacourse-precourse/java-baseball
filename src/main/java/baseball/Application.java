@@ -28,6 +28,19 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
+    private static void check(String user, List<Integer> com){
+        int i, ball = 0, strike = 0;
+        for (i = 0; i < 3; i++){
+            if (Character.getNumericValue(user.charAt(i)) == com.get(i)){
+                strike++;
+                continue;
+            }
+            if (com.contains(Character.getNumericValue(user.charAt(i)))){
+                ball++;
+            }
+        }
+    }
+
     private static int compare(List<Integer> com_num){
         String user_num;
         do{
