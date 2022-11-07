@@ -88,6 +88,21 @@ class ApplicationTest extends NsTest {
         assertThat(closeOrRestart).isTrue();
     }
 
+    @Test
+    void 종료_재시작_예외테스트1() {
+        assertThatThrownBy(() -> Application.closeOrRestart("3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 종료_재시작_예외테스트2() {
+        assertThatThrownBy(() -> Application.closeOrRestart("다"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+
+
 
     @Override
     public void runMain() {
