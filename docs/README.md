@@ -2,27 +2,27 @@
 
 ## 📋 구현 기능 목록
 
-[Baseball] 객체
+### [Baseball] 객체
 - 3스트라이크 시 inning 종료
 - 게임 재시작/종료 판단
 
-[PlayingNumber] 원시값 포장
+### [PlayingNumber] 원시값 포장
 - 숫자 유효성 검사 (1부터 9까지 서로 다른 수로 이루어진 3자리의 수)
 - playingNumber 정수 반환
 - playingNumber 자리수를 쪼갠 리스트 반환
 
-[Pitcher] 객체
+### [Pitcher] 객체
 - playingNumber를 포함한다.
 - 임의의 3자리 숫자로 이루어진 문자열 생성 (컴퓨터)
 
-[Batter] 객체
+### [Batter] 객체
 - playingNumber를 포함한다.
 - 임의의 3자리 숫자로 이루어진 문자열 입력 (유저)
 
-[Referee] 객체
+### [Referee] 객체
 - 게임 결과 판별 (볼 / 스트라이크 / 낫싱)
 
-[Broadcast] 객체
+### [Broadcast] 객체
 - 게임 시작 문구 출력 (숫자 야구 게임을 시작합니다.)
 - 입력 안내 문구 출력 (숫자를 입력해주세요 :)
 - 게임 결과 문구 출력 (입력한 수에 대한 결과를 볼 - 스트라이크 순으로 개수로 표시 / 없으면 낫싱 )
