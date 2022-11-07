@@ -1,11 +1,9 @@
 package baseball.view;
 
 class InputValidator {
-
     private static final int VALID_BASEBALL_LENGTH = 3;
     private static final char START_RANGE = '1';
     private static final char END_RANGE = '9';
-
     private static final String VALID_GAME_STATUS_PLAY = "1";
     private static final String VALID_GAME_STATUS_STOP = "2";
 

@@ -1,7 +1,6 @@
 package baseball.domain;
 
 public class BaseballGameMachine {
-
     private BaseballNumbers computer;
     private BaseballGameStatus gameStatus;
 

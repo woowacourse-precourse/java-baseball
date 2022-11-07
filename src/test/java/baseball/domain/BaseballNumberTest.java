@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BaseballNumberTest {
+
     @Nested
     class valueOf_메서드는 {
 
