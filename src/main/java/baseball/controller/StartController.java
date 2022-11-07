@@ -5,6 +5,7 @@ import baseball.domain.Computer;
 import baseball.view.StartEndGameView;
 
 public class StartController {
+    private static final int EXIT_CODE = 2;
     final StartEndGameView startEndGameView;
 
     public StartController() {
@@ -19,8 +20,11 @@ public class StartController {
     }
 
     public int askOneMore() {
-        startEndGameView.endGamePrint();
+        startEndGameView.successGamePrint();
         Again again = new Again(startEndGameView.inputToQuestion());
+        if (again.getDoTry() == EXIT_CODE) {
+            startEndGameView.endGamePrint();
+        }
         return again.getDoTry();
     }
 }

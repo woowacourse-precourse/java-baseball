@@ -1,23 +1,14 @@
 package baseball;
 
-import baseball.controller.GameController;
 import baseball.controller.StartController;
-import baseball.domain.Computer;
-
-import java.io.IOException;
 
 public class Application {
-    public static void main(String[] args) throws IOException {
+    private static final int EXIT_CODE = 2;
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Computer computer;
-        GameController gameController;
-        StartController startController;
+        StartController startController = new StartController();
         do {
-            computer = new Computer();
-            startController = new StartController();
-            gameController = new GameController();
-            computer = startController.startController();
-            gameController.playGame(computer);
-        } while(startController.askOneMore() == 1);
+            startController.startGame();
+        } while(startController.askOneMore() != EXIT_CODE);
     }
 }
