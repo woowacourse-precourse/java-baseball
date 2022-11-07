@@ -30,25 +30,34 @@ public class Application {
     public static void main(String[] args) {
         printGameStartMessage();
 
-        List<Integer> computerNumber = Randoms.pickUniqueNumbersInRange(1, 9, MAX_DIGIT);
-
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> userNumber = splitStrNumberToList(Console.readLine());
+            List<Integer> computerNumber = Randoms.pickUniqueNumbersInRange(1, 9, MAX_DIGIT);
+            System.out.println(computerNumber);
 
-            HashMap<BaseballResult, Integer> gameResultMap = new HashMap<>();
-            for (int i = 0; i < userNumber.size(); i++) {
-                BaseballResult currentIdxGameResult = getCurrentIdxGameResult(i, userNumber, computerNumber);
-                gameResultMap.put(currentIdxGameResult, gameResultMap.getOrDefault(currentIdxGameResult, 0) + 1);
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                List<Integer> userNumber = splitStrNumberToList(Console.readLine());
+
+                HashMap<BaseballResult, Integer> gameResultMap = new HashMap<>();
+                for (int i = 0; i < userNumber.size(); i++) {
+                    BaseballResult currentIdxGameResult = getCurrentIdxGameResult(i, userNumber, computerNumber);
+                    gameResultMap.put(currentIdxGameResult, gameResultMap.getOrDefault(currentIdxGameResult, 0) + 1);
+                }
+                System.out.println(getGameResult(gameResultMap));
+
+                if (gameResultMap.getOrDefault(BaseballResult.STRIKE, 0) == MAX_DIGIT) {
+                    System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", MAX_DIGIT);
+                    break;
+                }
             }
-            System.out.println(getGameResult(gameResultMap));
 
-            if (gameResultMap.getOrDefault(BaseballResult.STRIKE, 0) == MAX_DIGIT) {
-                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", MAX_DIGIT);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int gameRestartUserSelection = Integer.parseInt(Console.readLine());
+
+            if (!isRestartGame(gameRestartUserSelection)) {
                 break;
             }
         }
-
     }
 
     private static void printGameStartMessage() {
@@ -99,5 +108,9 @@ public class Application {
         strikeCnt.ifPresent(integer -> sb.append(integer).append(BaseballResult.STRIKE.getKorName()).append(" "));
 
         return sb.toString();
+    }
+
+    private static boolean isRestartGame(int userSelect) {
+        return userSelect == 1;
     }
 }
