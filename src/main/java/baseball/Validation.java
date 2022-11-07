@@ -34,4 +34,20 @@ public class Validation {
         if (set.size() == 3) return true;
         else return false;
     }
+
+    // 숫자에 0이 포함되는 가?
+    public static boolean isContainZero(Integer n) {
+        while (n != 0) {
+            if (n % 10 == 0) return false;
+            n /= 10;
+        }
+        return true;
+    }
+
+    // 재시작에 대한 답변이 옳은 가?
+    public static boolean isAnswer(String s) {
+        if (s.equals("1") || s.equals("2")) {
+            return true;
+        } else return false;
+    }
 }
