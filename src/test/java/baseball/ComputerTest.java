@@ -1,5 +1,7 @@
 package baseball;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,17 +10,41 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ComputerTest {
 
-    @Test
-    void computer_난수값_생성이_제대로_되는지_테스트() {
-        // given
-        Computer computer = new Computer(new NumberGenerator());
+    private Computer computer;
 
+    @BeforeEach
+    public void setUp() {
+        this.computer = new Computer(new NumberGenerator());
+    }
+
+    @Test
+    @DisplayName("난수 값의 생성이 제대로 되는지 테스트")
+    void computer_난수값_생성이_제대로_되는지_테스트() {
         // when
-        computer.generateNumbers();
+        List<Integer> numbers = computer.getNumbers();
 
         // then
-        List<Integer> numbers = computer.getNumbers();
+        assertThat(numbers.isEmpty()).isFalse();
         assertThat(numbers.size()).isEqualTo(3);
-        assertThat(numbers.stream().allMatch(number -> number >= 1 && number <= 9)).isTrue();
+        assertThat(numbers.stream().allMatch(number -> number >= 1 && number <= 9))
+                .isTrue();
+    }
+
+    @Test
+    @DisplayName("플레이어가 넘겨준 리스트와 심판에게 넘겨져 저장된 난수 리스트가 같은지 테스트")
+    void giveNumbersToReferee() {
+        // given
+        Rule rule = new Rule();
+        Referee referee = new Referee(rule);
+
+        // when
+        computer.giveNumbersToReferee(referee);
+
+        // then
+        List<Integer> computerNumbers = computer.getNumbers();
+        List<Integer> selectedNumbers = rule.getSelectedNumbers();
+
+        assertThat(selectedNumbers).isEqualTo(computerNumbers);
+        assertThat(selectedNumbers.size()).isEqualTo(computerNumbers.size());
     }
 }
