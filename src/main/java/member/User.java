@@ -19,14 +19,14 @@ public class User {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 게임 종료");
         }
 
-        setNumber(input);
+        setNumbers(input);
     }
 
-    public List<Integer> getNumber() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public void setNumber(String input) {
+    public void setNumbers(String input) {
 
         for (int index = STARTING_INDEX; index < MAX_LENGTH_OF_NUMBER; index++) {
             numbers.add(Character.getNumericValue(input.charAt(index)));
@@ -53,7 +53,7 @@ public class User {
         return true;
     }
 
-    public void clearNumber() {
+    public void clearNumbers() {
         numbers.clear();
     }
 }

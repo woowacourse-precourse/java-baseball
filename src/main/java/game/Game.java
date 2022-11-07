@@ -17,14 +17,14 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             initialize();
-            play(computer.getNumber(), user.getNumber());
+            play(computer.getNumbers(), user.getNumbers());
         } while (waiting());
     }
 
     public void initialize() {
-        computer.clearNumber();
-        computer.setNumber();
-        user.clearNumber();
+        computer.clearNumbers();
+        computer.setNumbers();
+        user.clearNumbers();
         hint.clearHint();
     }
 
@@ -32,7 +32,7 @@ public class Game {
 
         while (!isThreeStrike()) {
             hint.clearHint();
-            user.clearNumber();
+            user.clearNumbers();
             user.inputNumber();
 
             checkBallAndStrike(computerNumbers, userNumbers);
