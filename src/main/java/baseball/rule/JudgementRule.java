@@ -8,7 +8,6 @@ import baseball.domain.Strike;
 public class JudgementRule {
 
     private static final int REGULAR_NUMBERS_SIZE = 3;
-    private static final int NO_COUNT = 0;
 
     public static BallCount makeBallCounts(Numbers computerNumbers, Numbers userNumbers) {
         Strike strikes = new Strike(0);
