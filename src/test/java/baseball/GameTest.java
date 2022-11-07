@@ -4,7 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -49,11 +51,21 @@ class GameTest {
     }
 
     @Test
-    void requestAnswer() {
+    void requestAnswer_출력문확인() {
+        InputStream in = new ByteArrayInputStream("123".getBytes());
+        System.setIn(in);
         Game game = new Game();
         game.requestAnswer();
         String result = Settings.ANSWER_REQUEST_MESSAGE + "\r\n";
         assertThat(result).isEqualTo(output.toString());
+    }
+
+    @Test
+    void requestAnswer_입력예외처리() {
+        InputStream in = new ByteArrayInputStream("abc".getBytes());
+        System.setIn(in);
+        Game game = new Game();
+        assertThatThrownBy(()->game.requestAnswer()).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
