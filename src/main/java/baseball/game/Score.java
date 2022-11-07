@@ -31,4 +31,13 @@ public class Score {
         }
         return score;
     }
+
+    public Boolean ifNothing(){
+        for (int i = 0; i<user.size();i++){
+            int n = user.get(i);
+            if (game.getComputers().contains(n))
+                return false;
+        }
+        return true;
+    }
 }
