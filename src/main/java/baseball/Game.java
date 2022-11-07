@@ -46,6 +46,7 @@ public class Game {
                 strikeAndBallCount.put("Ball", strikeAndBallCount.get("Ball") + 1);
             }
         }
+
         return strikeAndBallCount;
     }
 
