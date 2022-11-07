@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -55,13 +56,20 @@ public class NumberBaseball {
 
             if (ballCount > 0 && strikeCount > 0) {
                 System.out.printf("%d볼 %d스트라이크%s", ballCount, strikeCount, System.lineSeparator());
-            } else if (ballCount > 0) {
-                System.out.printf("%d볼%s", ballCount, System.lineSeparator());
-            } else if (strikeCount > 0) {
-                System.out.printf("%d스트라이크%s", strikeCount, System.lineSeparator());
-            } else {
-                System.out.printf("낫싱%s", System.lineSeparator());
+                continue;
             }
+
+            if (ballCount > 0) {
+                System.out.printf("%d볼%s", ballCount, System.lineSeparator());
+                continue;
+            }
+
+            if (strikeCount > 0) {
+                System.out.printf("%d스트라이크%s", strikeCount, System.lineSeparator());
+                continue;
+            }
+
+            System.out.printf("낫싱%s", System.lineSeparator());
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -115,9 +123,8 @@ public class NumberBaseball {
     }
 
     private boolean isBall(char value, int index) {
-        boolean condition1 = this.numbers.contains(Character.valueOf(value));
-        boolean condition2 = this.numbers.indexOf(Character.valueOf(value)) != index;
-        return condition1 && condition2;
+        return this.numbers.contains(Character.valueOf(value))
+                && this.numbers.indexOf(Character.valueOf(value)) != index;
     }
 
     private void checkNumberCharacter(char value) {
