@@ -132,7 +132,7 @@ public class Application {
             System.out.println("낫싱");
         }
         if(strikeNumber == 0 && ballNumber >0){
-
+            System.out.println(ballNumber+"볼");
         }
         return false;
     }
