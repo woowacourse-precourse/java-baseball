@@ -4,6 +4,8 @@ import baseball.domain.Opponent;
 import baseball.domain.Player;
 import baseball.domain.StrikeAndBall;
 import baseball.util.RandomUtil;
+import baseball.view.GameMessage;
+import baseball.view.RequestPlayerInput;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -16,7 +18,6 @@ public class Game {
 	private static final int END_NUMBER = 9;
 	private static final int NUMBER_LENGTH = 3;
 	private static final int MAX_STRIKE_COUNT = 3;
-
 
 	Player player;
 	Opponent opponent;
@@ -41,7 +42,7 @@ public class Game {
 	public void playGame() {
 		List<Integer> playerInputNumbers;
 
-		System.out.println("숫자 야구 게임을 시작합니다.");
+		GameMessage.printStartMessage();
 
 		while(strikeAndBall.getStrike() != MAX_STRIKE_COUNT) {
 			strikeAndBall.setStrike(0);
@@ -52,12 +53,12 @@ public class Game {
 
 			judgeStrikeAndBallCount();
 
-			printResult(strikeAndBall.getStrike(), strikeAndBall.getBall());
+			GameMessage.printResultOfInput(strikeAndBall.getStrike(), strikeAndBall.getBall());
 		}
 	}
 
 	private List<Integer> getPlayerInput() {
-		System.out.print("숫자를 입력해주세요: ");
+		RequestPlayerInput.requestInputPlayerNumbers();
 		String[] playerInputs = Console.readLine().split("");
 
 		checkInput(playerInputs);
@@ -116,22 +117,7 @@ public class Game {
 		return 0;
 	}
 
-	protected void printResult(int strike, int ball) {
-		if (strike == 0 && ball == 0) {
-			System.out.println("낫싱");
-		}
-		if (strike !=0 && ball == 0) {
-			System.out.printf("%d스트라이크\n", strike);
-		}
-		if (strike == 0 && ball != 0) {
-			System.out.printf("%d볼\n", ball);
-		}
-		if (strike !=0 && ball != 0) {
-			System.out.printf("%d볼 %d스트라이크\n", ball, strike);
-		}
-	}
-
 	public void endGame() {
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		GameMessage.printEndMessage();
 	}
 }

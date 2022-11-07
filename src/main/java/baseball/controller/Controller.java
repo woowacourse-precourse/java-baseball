@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.service.Game;
+import baseball.view.RequestPlayerInput;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
@@ -26,7 +27,7 @@ public class Controller {
     }
 
     public void retry() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		RequestPlayerInput.requestRetry();
 		String retryNumber = Console.readLine();
 
 		if (retryNumber.equals("1")) {
