@@ -109,12 +109,16 @@ public class Game {
     private static boolean checkAgainGame() {
 
         String input = Console.readLine();
-        checkIsNumberError(input);
+        if (checkIsNumberError(input)) {
+            throw new IllegalArgumentException();
+        }
 
         int toBeContinue = Integer.valueOf(input);
         System.out.println(toBeContinue);
 
-        checkIsContinueError(toBeContinue);
+        if (checkIsContinueError(toBeContinue)) {
+            throw new IllegalArgumentException();
+        }
 
         boolean again = false;
 
@@ -128,23 +132,25 @@ public class Game {
 
     private static void runException(String input) {
 
-        if (checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
+        if (checkIsNumberError(input) || checkSizeError(input) || checkRangeError(input) || checkVisitedError(input)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void checkIsContinueError(int toBeContinue) {
+    private static boolean checkIsContinueError(int toBeContinue) {
         if (toBeContinue != AGAIN && toBeContinue != EXIT) {
-            throw new IllegalArgumentException();
+            return true;
         }
+        return false;
     }
 
-    private static void checkIsNumberError(String input) {
+    private static boolean checkIsNumberError(String input) {
         try {
             int value = Integer.valueOf(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            return true;
         }
+        return false;
     }
 
     private static boolean checkRangeError(String input) {
