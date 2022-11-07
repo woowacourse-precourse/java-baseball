@@ -34,9 +34,14 @@ public class BaseballComputer {
         }
 
         printRestartOrEnd();
-        String choice = inputRestartOrEnd();
+        int choice = inputRestartOrEnd();
 
-        if(choice.equals("1")){
+        if(1< choice && choice < 3){
+            System.out.println("out of number");
+            return 0;
+        }
+
+        if(choice == 1){
             init();
         }
         return 0;
@@ -60,8 +65,10 @@ public class BaseballComputer {
         return this.computerNumber;
     }
 
-    public String inputRestartOrEnd(){
-        return Console.readLine();
+    public int inputRestartOrEnd(){
+        String beforeIntChange = Console.readLine();
+        int afterIntChange = Integer.parseInt(beforeIntChange);
+        return afterIntChange;
     }
 
     public void printRestartOrEnd(){
