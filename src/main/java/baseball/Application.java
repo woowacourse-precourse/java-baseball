@@ -46,22 +46,24 @@ public class Application {
         return printBallStrike(createCountArray(ball, strike));
     }
     public static boolean errorPlayerNumber(String playerNumber) {
-        boolean error = true;
-        if (playerNumber.length() != 3)
-            error = false;
-        for (int i=0;i<3;++i)
+        boolean error = (playerNumber.length() == 3);
+        for (int i=0;i<playerNumber.length();++i)
             if (playerNumber.charAt(i) < '1' || playerNumber.charAt(i) > '9') {
                 error = false;
                 break;
             }
         return error;
     }
-    public static List<Integer> inputPlayerNumber() {
-        String number = Console.readLine();
+    public static List<Integer> arrayPlayerNumber(String number) {
         List<Integer> playerNumber = new ArrayList<>();
-        for (int i=0;i<3;++i)
+        for (int i=0;i<number.length();++i)
             playerNumber.add((int)number.charAt(i) - 48);
         return playerNumber;
+    }
+    public static String inputPlayerNumber() {
+        String number = Console.readLine();
+        checkError(errorPlayerNumber(number));
+        return number;
     }
     public static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -75,7 +77,7 @@ public class Application {
     public static void inputGame(boolean end, List<Integer> randomNumber) {
         while (!end) {
             System.out.print("숫자를 입력해주세요 : ");
-            end = compareNumber(inputPlayerNumber(), randomNumber);
+            end = compareNumber(arrayPlayerNumber(inputPlayerNumber()), randomNumber);
         }
     }
     public static void restartGame(boolean restart) {
