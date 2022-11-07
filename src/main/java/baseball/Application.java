@@ -27,9 +27,15 @@ public class Application {
 
         while(!find) {
             List<Integer> user = getInputAsList();
+            int strike = countStrike(computer, user);
+            int ball = countBall(computer, user);
             find = computer.equals(user);
+
+            if (!find) {
+                printResult(strike, ball);
+            }
         }
-        
+        System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
