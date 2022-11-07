@@ -25,6 +25,7 @@ public class User {
         for (int i = 0; i < Constants.INPUT_SIZE; i++) {
             UserNumber.add(charToInt(str.charAt(i)));
         }
+        Exceptions.checkSameNum(UserNumber);
         return UserNumber;
     }
 }

@@ -1,5 +1,9 @@
 package baseball.utils;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Exceptions {
     public static void isNumber(String str){
         for (int i=0; i<Constants.INPUT_SIZE; i++){
@@ -15,6 +19,13 @@ public class Exceptions {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void checkSameNum(ArrayList<Integer> numList){
+        Set<Integer> numSet = new HashSet<>(numList);
+        if (numSet.size() != numList.size()){
+            throw new IllegalArgumentException();
+        };
+    };
 
     public static void restartInput(String str){
         if (str.length()!=1){
