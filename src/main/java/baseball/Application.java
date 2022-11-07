@@ -10,7 +10,18 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
 
+    public static void verification_user_answer(char[] user_answer){
+        List<Character> user_list = Arrays.asList(user_answer[0], user_answer[1], user_answer[2]);
 
+        if(user_list.size() != 3){
+            // System.out.println("잘못입력하였습니다.");
+            throw new IllegalArgumentException("잘못입력하였습니다");
+        }
+        if(user_list.size() != user_list.stream().distinct().count()){
+            // System.out.println("중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+    }
     public static List<Integer> make_number(){
         List<Integer> computer = new ArrayList<>();
 
@@ -20,10 +31,13 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+
         return computer;
     }
 
     public static List<Integer> compare_answer(List<Integer> computer, char[] user_answer){
+        // 사용자 입력값 검증
+        verification_user_answer(user_answer);
         List<Integer> current_score = Arrays.asList(0, 0, 0);
         int strike = 0;
         int ball = 0;
@@ -43,6 +57,7 @@ public class Application {
         current_score.set(0, strike);
         current_score.set(1, ball);
         current_score.set(2, nothing);
+
         return current_score;
     }
 
