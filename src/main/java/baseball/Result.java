@@ -35,4 +35,20 @@ public class Result {
     public boolean isWrongAnswer(){
         return strikeCount < 3;
     }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public void setBallCount(int ballCount) {
+        this.ballCount = ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public void setStrikeCount(int strikeCount) {
+        this.strikeCount = strikeCount;
+    }
 }
