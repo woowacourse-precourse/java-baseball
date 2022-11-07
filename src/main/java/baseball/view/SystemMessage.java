@@ -34,4 +34,8 @@ public class SystemMessage {
             System.out.println(ball + RESULT_BALL_MESSAGE + " " + strike + RESULT_STRIKE_MESSAGE);
         }
     }
+
+    public static void printWinMessage() {
+        System.out.println(GAME_WIN_MESSAGE);
+    }
 }

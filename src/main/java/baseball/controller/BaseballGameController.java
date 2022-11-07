@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.service.BaseballGameService;
+import baseball.view.SystemMessage;
 
 public class BaseballGameController {
 
@@ -9,6 +10,7 @@ public class BaseballGameController {
     public void run() {
         setBaseballGame();
         playingBaseballGame();
+        baseballGameOver();
     }
 
     private void setBaseballGame() {
@@ -17,5 +19,9 @@ public class BaseballGameController {
 
     private void playingBaseballGame() {
         baseballGameService.playingBaseballGame();
+    }
+
+    private void baseballGameOver() {
+        SystemMessage.printWinMessage();
     }
 }
