@@ -96,11 +96,18 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
     }
     @Override
     protected void writeOutput() {
-
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        prepareOutputData();
+        System.out.println(gameStatus.getOutputData());
     }
 
     private void prepareOutputData() {
-
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        String str = gameStatus.getBallCount() +
+                "볼 " +
+                gameStatus.getStrikeCount() +
+                "스트라이크";
+        gameStatus.setOutputData(str);
     }
 
     private void resetCount() {

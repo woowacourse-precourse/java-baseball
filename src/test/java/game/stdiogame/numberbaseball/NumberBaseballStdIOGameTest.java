@@ -31,9 +31,10 @@ class NumberBaseballStdIOGameTest {
     }
 
     @AfterEach
-    void afterEach() {
+    void afterEach() throws IOException{
         System.setOut(ps);
         System.setIn(System.in);
+        os.close();
     }
 
     @Test
@@ -66,7 +67,7 @@ class NumberBaseballStdIOGameTest {
     }
 
     @Test
-    void readInput() throws IOException {
+    void readInput(){
         buf = "123";
         is = new ByteArrayInputStream(buf.getBytes());
         System.setIn(is);
@@ -302,5 +303,22 @@ class NumberBaseballStdIOGameTest {
 
     @Test
     void writeOutput() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('3', 0);
+        targetNumber.put('2', 1);
+        targetNumber.put('1', 2);
+        nbGame.readInput();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.operateRule();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("2볼 1스트라이크");
     }
 }
