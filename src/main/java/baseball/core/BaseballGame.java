@@ -23,7 +23,6 @@ public class BaseballGame {
     public void play() throws IllegalArgumentException {
         console.printStartMessage();
         playBaseball();
-        restartOrExitGame();
     }
 
     private void playBaseball() {
@@ -32,8 +31,11 @@ public class BaseballGame {
             inputThreeNumbers();
             answer = processAnswering();
         } while (isWrongAnswer(answer));
-        processFinishGame();
+        console.printFinishMessage();
+
+        restartOrExitGame();
     }
+
 
     private void inputThreeNumbers() {
         console.printNumberInputMessage();
@@ -44,7 +46,8 @@ public class BaseballGame {
         console.printRestartOrExitMessage();
         StatusCode code = player.inputStatusCode(Console.readLine());
         if (isStartCode(code)) {
-            new BaseballGame().play();
+            computer.setNewAnswer(RandomNumberGenerator.generate());
+            playBaseball();
         }
     }
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Computer {
 
-    private final List<Integer> randomNumbers;
+    private List<Integer> randomNumbers;
 
     public Computer(List<Integer> randomNumbers) {
         this.randomNumbers = randomNumbers;
@@ -24,6 +24,10 @@ public class Computer {
             }
         }
         return new BallStrike(ballCount, strikeCount);
+    }
+
+    public void setNewAnswer(List<Integer> randomNumbers) {
+        this.randomNumbers = randomNumbers;
     }
 
     private boolean isStrike(int i, int number) {
