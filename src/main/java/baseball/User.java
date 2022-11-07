@@ -26,6 +26,7 @@ public class User {
     public List<Integer> duplicateCheck(String input) {
         numbers = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
+                .distinct()
                 .collect(Collectors.toList());
         if (numbers.size() != 3) {
             throw new IllegalArgumentException("서로 다른 수로 이루어진 3자리의 수를 입력해야 합니다.");
