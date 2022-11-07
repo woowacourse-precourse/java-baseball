@@ -59,14 +59,15 @@ public class BaseBallController {
     }
 
     protected boolean is3Number(String userInput) {
-        boolean is3Number = true;
         if(userInput.length() != 3)
-            is3Number = false;
+            return false;
         for(int i=0;i<3;i++){
             char temp = userInput.charAt(i);
-            is3Number = checkNumber(temp);
+            if(!checkNumber(temp)){
+                return false;
+            }
         }
-        return is3Number;
+        return true;
     }
 
     private boolean checkNumber(char temp) {
@@ -89,6 +90,7 @@ public class BaseBallController {
     }
 
     private int endGame() {
+        System.out.println(ScreenString.GAME_END.getCommonMessage());
         return Integer.parseInt(Console.readLine());
     }
 
