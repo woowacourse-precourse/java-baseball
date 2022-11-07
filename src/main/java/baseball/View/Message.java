@@ -2,16 +2,16 @@ package baseball.View;
 
 public class Message {
     public static void printResultMessage(int strike, int ball) {
-        if(ball != 0 && strike != 0) {
+        if (ball != 0 && strike != 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크 ");
         }
-        if(ball != 0 && strike == 0) {
+        if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
         }
-        if(ball == 0 && strike != 0) {
+        if (ball == 0 && strike != 0) {
             System.out.println(strike + "스트라이크");
         }
-        if(ball == 0 && strike == 0) {
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
     }
@@ -26,5 +26,9 @@ public class Message {
 
     public static void printRequestUserNumber() {
         System.out.print("숫자를 입력해 주세요: ");
+    }
+
+    public static void printStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }
