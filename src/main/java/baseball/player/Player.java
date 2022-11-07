@@ -65,4 +65,12 @@ public class Player {
         }
     }
 
+    public void isDifferent(List<Integer> input){
+        Set<Integer> inputSet = new HashSet<>(input);
+
+        if(inputSet.size() != input.size()){
+            throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
+        }
+    }
+
 }
