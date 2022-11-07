@@ -1,5 +1,6 @@
 package baseball.domain.view;
 
+import baseball.domain.exception.InputNumberException;
 import baseball.domain.util.Util;
 
 public class InputView {
@@ -7,6 +8,8 @@ public class InputView {
 
     public static String printNumbers() {
         System.out.print(inputNumbers);
-        return Util.input();
+        String input = Util.input();
+        InputNumberException.inputNumberVerifier(input);
+        return input;
     }
 }

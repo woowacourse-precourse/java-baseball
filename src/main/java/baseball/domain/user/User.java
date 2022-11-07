@@ -14,8 +14,8 @@ public class User {
 
     private void verifier(String randomNumbers) {
         do {
+            System.out.println("randomNumbers = " + randomNumbers);
             inputNumbers = InputView.printNumbers();
-            InputNumberException.inputNumberVerifier(inputNumbers);
         } while (!NumberVerifier.numberVerifier(randomNumbers, inputNumbers));
     }
 }
