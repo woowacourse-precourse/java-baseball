@@ -3,7 +3,9 @@ HELP.md
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
-!**/src/test/**
+#!**/src/test/**
+!**/src/test/java/baseball/**
+**/src/test/java/study/**
 
 ### STS ###
 .apt_generated

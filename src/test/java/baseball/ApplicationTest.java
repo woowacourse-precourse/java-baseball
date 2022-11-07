@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,4 +35,66 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void test_checkInputLength() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkInputLength("1", 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void test_checkInputInteger() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkInputInteger("1a*"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void test1_checkInputInteger() {
+        List <Integer> result = Arrays.asList(1,2,3);
+        assertSimpleTest(() ->
+                assertThat(Application.checkInputInteger("123")).isEqualTo(result)
+        );
+    }
+
+    @Test
+    void test_checkInputDuplicate() {
+        List <Integer> input = Arrays.asList(1,2,1);
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkInputDuplicate(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void test_checkOption() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.checkOption("3"))
+                        .isInstanceOf(RuntimeException.class)
+        );
+    }
+
+    @Test
+    void test_guessResult() {
+        List <Integer> computer = Arrays.asList(1,2,3);
+        List <Integer> player = Arrays.asList(1,3,2);
+        List <Integer> result = Arrays.asList(2,1);
+        assertSimpleTest(() ->
+                assertThat(Application.guessResult(computer, player)).isEqualTo(result)
+        );
+    }
+
+    @Test
+    void test_createGuessResultMessage() {
+        List <Integer> guessResult = Arrays.asList(1, 2);
+        String result = "1볼 2스트라이크";
+        assertSimpleTest(() ->
+                assertThat(Application.createGuessResultMessage(guessResult)).isEqualTo(result)
+        );
+    }
+
+
 }

@@ -1,0 +1,14 @@
+# 기능 목록
+- 메세지 출력 *(printMessage)*
+- 랜덤 숫자 생성 *(createRandomNumber)*
+- 사용자 입력 받기 *(receiveInput)*
+- 예외 체크
+    - 사용자가 입력한 숫자 
+      - 문자열의 길이가 3인지 체크 *(checkInputLength)*
+      - 모두 숫자인지 체크 *(checkInputInteger)*
+      - 모두 서로 다른 숫자인지 체크 *(checkInputDuplicate)*
+    - 옵션 입력
+      - "1" 또는 "2" 인지 체크 *(checkOption)*
+- 추측 결과 계산 - 볼, 스트라이크 수 계산 *(guessResult)*
+- 추측 결과 메세지 생성 *(createGuessResultMessage)*
+- 게임 시작 *(startGame)*
