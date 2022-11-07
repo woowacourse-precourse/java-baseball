@@ -84,8 +84,10 @@ public class Game {
 
     public int checkStrikeCount(List<Integer> userInput) {
         int strikeCount = 0;
-        for (int i = 0; i < computer.getComputerNumbers().size(); i++) {
-            if (Objects.equals(computer.getComputerNumbers().get(i), userInput.get(i))) {
+        List<Integer> computerNumber = computer.getComputerNumbers();
+
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if (Objects.equals(computerNumber.get(i), userInput.get(i))) {
                 strikeCount++;
             }
         }
@@ -96,6 +98,7 @@ public class Game {
     public int checkBallCount(List<Integer> userInput) {
         int ballCount = 0;
         List<Integer> computerNumber = computer.getComputerNumbers();
+
         for (int i = 0; i < computerNumber.size(); i++) {
             if(!Objects.equals(computerNumber.get(i), userInput.get(i))
                     && computerNumber.contains(userInput)) {
