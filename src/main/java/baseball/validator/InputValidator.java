@@ -10,73 +10,60 @@ import java.util.Set;
 
 public class InputValidator {
     public void validatePlayerNumber(String playerNumber) {
-        if (!isValidType(playerNumber)) {
-            throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
-        }
-
-        if (!isValidDigitLength(playerNumber)) {
-            throw new IllegalArgumentException(Message.DIGIT_LENGTH_EXCEPTION);
-        }
-
-        if (!isValidDuplication(playerNumber)) {
-            throw new IllegalArgumentException(Message.DUPLICATION_EXCEPTION);
-        }
-
-        if (!isValidRange(playerNumber)) {
-            throw new IllegalArgumentException(Message.DIGIT_RANGE_EXCEPTION);
-        }
+        validateType(playerNumber);
+        validateDigitLength(playerNumber);
+        validateDuplication(playerNumber);
+        validateRange(playerNumber);
     }
 
-    private boolean isValidType(String number) {
+    private void validateType(String number) {
         for (char digit : number.toCharArray()) {
-            if (Character.isLetter(digit)) {
-                return false;
+            if (!Character.isDigit(digit)) {
+                throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
             }
         }
-        return true;
     }
 
-    private boolean isValidDigitLength(String playerNumber) {
-        return playerNumber.length() == Config.DIGIT_SIZE;
+    private void validateDigitLength(String playerNumber) {
+        if(playerNumber.length() != Config.DIGIT_SIZE) {
+            throw new IllegalArgumentException(Message.DIGIT_LENGTH_EXCEPTION);
+        }
     }
 
-    private boolean isValidDuplication(String playerNumber) {
+    private void validateDuplication(String playerNumber) {
         String[] digits = playerNumber.split("");
         Set<String> deduplicationNumbers = new HashSet<>(Arrays.asList(digits));
 
-        return playerNumber.length() == deduplicationNumbers.size();
+        if(playerNumber.length() != deduplicationNumbers.size()) {
+            throw new IllegalArgumentException(Message.DUPLICATION_EXCEPTION);
+        }
     }
 
-    private boolean isValidRange(String playerNumber) {
+    private void validateRange(String playerNumber) {
         for (char digit : playerNumber.toCharArray()) {
             int digitNumber = Character.getNumericValue(digit);
 
             if (Config.DIGIT_MIN > digitNumber || Config.DIGIT_MAX < digitNumber) {
-                return false;
+                throw new IllegalArgumentException(Message.DIGIT_RANGE_EXCEPTION);
             }
         }
-        return true;
     }
 
     public void validateStateNumber(String stateNumber) {
-        if (!isValidType(stateNumber)) {
-            throw new IllegalArgumentException(Message.TYPE_EXCEPTION);
-        }
+        validateType(stateNumber);
+        validateStateLength(stateNumber);
+        validateNumber(stateNumber);
+    }
 
-        if (!isValidStateLength(stateNumber)) {
+    private void validateStateLength(String stateNumber) {
+        if(stateNumber.length() != Config.STATE_SIZE) {
             throw new IllegalArgumentException(Message.STATE_LENGTH_EXCEPTION);
         }
+    }
 
-        if (!isValidNumber(stateNumber)) {
+    private void validateNumber(String stateNumber) {
+        if(!State.isValidNumber(stateNumber)) {
             throw new IllegalArgumentException(Message.STATE_NUMBER_EXCEPTION);
         }
-    }
-
-    private boolean isValidStateLength(String stateNumber) {
-        return stateNumber.length() == Config.STATE_SIZE;
-    }
-
-    private boolean isValidNumber(String stateNumber) {
-        return State.isValidNumber(stateNumber);
     }
 }
