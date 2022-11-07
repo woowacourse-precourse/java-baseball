@@ -1,4 +1,4 @@
-package baseball.validation;
+package baseball;
 
 import java.util.HashMap;
 import java.util.Map;

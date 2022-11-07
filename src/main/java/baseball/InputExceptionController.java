@@ -1,6 +1,4 @@
-package baseball.domain;
-
-import baseball.validation.InputValidation;
+package baseball;
 
 public class InputExceptionController {
     private final InputValidation inputValidation = new InputValidation();
