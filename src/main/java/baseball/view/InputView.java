@@ -11,6 +11,6 @@ public class InputView {
     }
 
     private static void printInputMessage() {
-        System.out.println(ENTER_NUMBER);
+        System.out.print(ENTER_NUMBER);
     }
 }
