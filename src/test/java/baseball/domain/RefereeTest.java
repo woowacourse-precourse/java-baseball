@@ -1,8 +1,6 @@
 package baseball.domain;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.setRemoveAssertJRelatedElementsFromStackTrace;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +24,12 @@ public class RefereeTest {
         assertThatThrownBy(() -> Referee.validateUserInput(invalidString2, userNumbers)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Referee.validateUserInput(invalidString3, userNumbers)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Referee.validateUserInput(invalidString4, userNumbers)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 낫싱_검증(){
+        Assertions.assertThat(Referee.checkNothing(0,0)).isEqualTo(true);
+        Assertions.assertThat(Referee.checkNothing(1,1)).isEqualTo(false);
     }
 
 }
