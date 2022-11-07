@@ -3,8 +3,8 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
 import java.util.InputMismatchException;
+import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class PlayerTest {
@@ -16,8 +16,8 @@ public class PlayerTest {
         @DisplayName("사용자의 입력에 대한 예외처리 테스트")
         void case1() {
             String playerInput = "315";
-            boolean result = player.isValidBaseballNumber(playerInput);
-            assertThat(result).isTrue();
+            List<Integer> result = List.of(3, 1, 5);
+            assertThat(player.isValidBaseballNumber(playerInput)).isEqualTo(result);
         }
 
         @Test
@@ -45,7 +45,7 @@ public class PlayerTest {
         void case4() {
             String playerInput = "숫자말고문자";
             assertThatThrownBy(() -> player.isValidBaseballNumber(playerInput))
-                    .isInstanceOf( NumberFormatException.class)
+                    .isInstanceOf(NumberFormatException.class)
                     .hasMessageContaining("숫자만 입력해주세요");
         }
 
@@ -67,5 +67,4 @@ public class PlayerTest {
                     .hasMessageContaining("1~9까지의 수를 입력해주세요");
         }
     }
-
 }
