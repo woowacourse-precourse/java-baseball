@@ -16,7 +16,7 @@ public class Exception {
 		}
 	}
 
-	public void reduplication(List<Integer> playerNum, String input, int i) {
+	public void reduplication(List<Integer> playerNum, String input, int i) throws IllegalArgumentException {
 		if (playerNum.contains((input.charAt(i)) - '0')) {
 			throw new IllegalArgumentException("중복 되었습니다.");
 		}
