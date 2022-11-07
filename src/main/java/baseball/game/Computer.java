@@ -3,7 +3,7 @@ package baseball.game;
 
 import static baseball.util.InputValidator.COMPUTER_BALLS_SIZE;
 
-import baseball.message.SystemMessage;
+import baseball.constant.SystemMessage;
 import baseball.util.BallGenerator;
 import java.util.List;
 import java.util.function.Predicate;

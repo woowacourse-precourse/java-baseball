@@ -2,7 +2,7 @@ package baseball.util;
 
 import static baseball.util.InputValidator.COMPUTER_BALLS_SIZE;
 
-import baseball.message.SystemMessage;
+import baseball.constant.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

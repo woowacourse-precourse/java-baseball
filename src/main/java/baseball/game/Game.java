@@ -4,7 +4,7 @@ import static baseball.game.Computer.BALL_COUNT;
 import static baseball.game.Computer.STRIKE_COUNT;
 import static baseball.util.InputValidator.CONTINUE_GAME;
 
-import baseball.message.SystemMessage;
+import baseball.constant.SystemMessage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

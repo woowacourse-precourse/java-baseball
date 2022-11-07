@@ -1,4 +1,4 @@
-package baseball.message;
+package baseball.constant;
 
 public final class SystemMessage {
     public static final String START_NUMBER_BASEBALL_GAME = "숫자 야구 게임을 시작합니다.";
