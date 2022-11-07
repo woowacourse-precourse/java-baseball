@@ -11,4 +11,7 @@ public enum SystemScoreModel {
     SystemScoreModel(final String score) {
         this.score = score;
     }
+    public String getScore() {
+        return score;
+    }
 }
