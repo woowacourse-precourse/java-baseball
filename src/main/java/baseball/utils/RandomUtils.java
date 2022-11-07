@@ -2,7 +2,7 @@ package baseball.utils;
 
 public class RandomUtils {
 
-	private RandomUtils() {
+	public RandomUtils() {
 
 	}
 	public static int[] getRandomNumbers() {
