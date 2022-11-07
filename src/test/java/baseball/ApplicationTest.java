@@ -87,4 +87,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void test_createGuessResultMessage() {
+        List <Integer> guessResult = Arrays.asList(1, 2);
+        String result = "1볼 2스트라이크";
+        assertSimpleTest(() ->
+                assertThat(Application.createGuessResultMessage(guessResult)).isEqualTo(result)
+        );
+    }
+
+
 }
