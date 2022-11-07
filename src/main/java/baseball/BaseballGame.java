@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class BaseballGame extends Game {
     private final int NUMBER_LIMIT = 3;
     private final int RESTART_NUMBER = 1;
@@ -29,6 +31,13 @@ public class BaseballGame extends Game {
 
     @Override
     protected boolean restart() {
-        return false;
+        if (isFirst) {
+            isFirst = false;
+            return true;
+        }
+        System.out.println(RESTART_MESSAGE);
+        int input = Integer.parseInt(Console.readLine());
+
+        return input == RESTART_NUMBER;
     }
 }
