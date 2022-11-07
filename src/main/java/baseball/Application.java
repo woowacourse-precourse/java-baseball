@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
