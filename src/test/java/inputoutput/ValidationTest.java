@@ -1,16 +1,18 @@
 package inputoutput;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ValidationTest {
     Validation validator = new Validation();
 
-    @Test
-    void 플레이어_입력_숫자_검사() {
-        boolean validateValue = validator.checkPlayerNumber("134");
-        assertThat(validateValue).isEqualTo(true);
+    @ParameterizedTest
+    @CsvSource(value = {"1234,false", "1fd,false", "850,false", "343,false", "243,true", "912,true"})
+    void 플레이어_입력_숫자_검사(String playerNumber, boolean expected) {
+        assertThat(validator.checkPlayerNumber(playerNumber)).isEqualTo(expected);
     }
 
     @Test
