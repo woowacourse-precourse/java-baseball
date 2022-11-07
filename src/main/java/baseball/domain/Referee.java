@@ -15,13 +15,13 @@ public class Referee {
     }
 
     public Result judge() {
-        Ball ball = countBallInPlayerInput();
-        Strike strike = countStrikeInPlayerInput();
+        Ball ball = generateBall();
+        Strike strike = generateStrike();
 
         return new Result(ball, strike);
     }
 
-    public Ball countBallInPlayerInput() {
+    public Ball generateBall() {
         List<Integer> answer = computer.getAnswerNumbers();
         List<Integer> playerInput = player.getPlayerInput();
 
@@ -39,7 +39,7 @@ public class Referee {
         return ball;
     }
 
-    public Strike countStrikeInPlayerInput() {
+    public Strike generateStrike() {
         List<Integer> answer = computer.getAnswerNumbers();
         List<Integer> playerInput = player.getPlayerInput();
 
