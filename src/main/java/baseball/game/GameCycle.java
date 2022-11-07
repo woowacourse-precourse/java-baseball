@@ -1,23 +1,9 @@
-package baseball;
+package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameCycle {
-    public String drawNumber() {
-        List<String> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(String.valueOf(number))) {
-                randomNumbers.add(String.valueOf(number));
-            }
-        }
-        String randomNumber = String.join("", randomNumbers);
-        return randomNumber;
-    }
+
     public void outputWriteNumber(){
         System.out.print("숫자를 입력해주세요 : ");
     }
@@ -95,7 +81,8 @@ public class GameCycle {
         output("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public void play(){
-        String answer = drawNumber();
+        Computer computer = new Computer();
+        String answer = computer.getANSWER();
         while(true){
             String playerNumber = playerInputNumber();
             String countStatus = countResponse(answer, playerNumber);
