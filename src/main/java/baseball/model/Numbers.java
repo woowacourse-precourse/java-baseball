@@ -6,9 +6,9 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Numbers {
-    private static List<Integer> numbers = new ArrayList<>();
+    private List<Integer> numbers = new ArrayList<>();
 
-    public static void createRandomNumbers() {
+    public void createRandomNumbers() {
 	while (numbers.size() < 3) {
 	    int randomNumber = Randoms.pickNumberInRange(1, 9);
 	    if (!numbers.contains(randomNumber)) {
@@ -17,22 +17,27 @@ public class Numbers {
 	}
     }
 
-    public static void setNumbers(String inputNumber) {
+    public void setNumbers(String inputNumber) {
+	clearNumbers();
 	for (Character c: inputNumber.toCharArray()) {
 	    numbers.add(Character.getNumericValue(c));
 	}
     }
 
-    public static List<Integer> getNumbers() {
+    private void clearNumbers() {
+	numbers.clear();
+    }
+
+    public List<Integer> getNumbers() {
 	return numbers;
     }
 
-    public static int compareStrikeByInput(Numbers n) {
-	List<Integer> compareNumbers = n.getNumbers();
+    public int compareStrikeByInput(Numbers n) {
+	List<Integer> inputNumbers = n.getNumbers();
 	int countStrike = 0;
 
 	for (int i = 0; i < 3; ++i) {
-	    if (numbers.get(i).equals(compareNumbers.get(i))) {
+	    if (numbers.get(i).equals(inputNumbers.get(i))) {
 		countStrike++;
 	    }
 	}
@@ -40,15 +45,15 @@ public class Numbers {
 	return countStrike;
     }
 
-    public static int compareBallByInput(Numbers n) {
-	List<Integer> compareNumbers = n.getNumbers();
+    public int compareBallByInput(Numbers n) {
+	List<Integer> inputNumbers = n.getNumbers();
 	int countBall = 0;
 
 	for (int i = 0; i < 3; ++i) {
-	    if (numbers.get(i).equals(compareNumbers.get(i))) {
+	    if (numbers.get(i).equals(inputNumbers.get(i))) {
 		continue;
 	    }
-	    if (!numbers.contains(compareNumbers.get(i))) {
+	    if (!numbers.contains(inputNumbers.get(i))) {
 		continue;
 	    }
 	    countBall++;
