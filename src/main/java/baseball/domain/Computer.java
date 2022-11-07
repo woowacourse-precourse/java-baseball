@@ -36,4 +36,33 @@ public class Computer {
     public List<Integer> getRandomNumbers() {
         return randomNumbers;
     }
+
+    public int getBallCounts(List<Integer> userNumbers) {
+        int ballCount = 0;
+        for (int i = 0; i < THREE_DIGITS; i++) {
+            final int userNumber = userNumbers.get(i);
+            final int randomNumber = randomNumbers.get(i);
+            if (userNumber != randomNumber && randomNumbers.contains(userNumber)) {
+                ballCount++;
+            }
+        }
+        return ballCount;
+    }
+
+    public int getStrikeCounts(List<Integer> userNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < THREE_DIGITS; i++) {
+            final int userNumber = userNumbers.get(i);
+            final int randomNumber = randomNumbers.get(i);
+            if (userNumber == randomNumber) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    // === 테스트 메서드 ===
+    public void generateTestNumbers() {
+        randomNumbers = List.of(1, 2, 3);
+    }
 }
