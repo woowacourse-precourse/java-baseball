@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("InputValidator 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
@@ -18,15 +20,11 @@ class InputValidatorTest {
 
         @Nested
         class 만약_1과_9사이의_중복되지_않는_3자리_숫자를_입력받으면 {
-            private final String givenValidInput1 = "123";
-            private final String givenValidInput2 = "456";
-            private final String givenValidInput3 = "719";
-
-            @Test
-            void 예외가_발생하지_않는다() {
-                InputValidator.validateBaseballNumber(givenValidInput1);
-                InputValidator.validateBaseballNumber(givenValidInput2);
-                InputValidator.validateBaseballNumber(givenValidInput3);
+            
+            @ParameterizedTest
+            @ValueSource(strings = {"123", "456", "719"})
+            void 예외가_발생하지_않는다(String givenInput) {
+                InputValidator.validateBaseballNumber(givenInput);
             }
         }
 
@@ -69,13 +67,11 @@ class InputValidatorTest {
 
         @Nested
         class 만약_1이나_2를_입력받는_경우 {
-            private final String givenValidInput1 = "1";
-            private final String givenValidInput2 = "2";
 
-            @Test
-            void 예외가_발생하지_않는다() {
-                InputValidator.validateGameStatus(givenValidInput1);
-                InputValidator.validateGameStatus(givenValidInput2);
+            @ParameterizedTest
+            @ValueSource(strings = {"1", "2"})
+            void 예외가_발생하지_않는다(String givenInput) {
+                InputValidator.validateGameStatus(givenInput);
             }
         }
 
