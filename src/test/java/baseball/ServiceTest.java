@@ -209,7 +209,7 @@ public class ServiceTest {
         //given
         Service service = new Service();
         int gameClearCondition = 3;
-        boolean isMaintainTrue = false;
+        int lastAnswer = 0;
         String restart = "1";
         InputStream restartInput = new ByteArrayInputStream(restart.getBytes());
         Method testMethod = service.getClass().getDeclaredMethod("askEndingCondition", int.class);
@@ -223,9 +223,9 @@ public class ServiceTest {
         } catch (InterruptedException e) {
         }
 
-        isMaintainTrue = (boolean) testMethod.invoke(service, gameClearCondition);
+        lastAnswer = (int)testMethod.invoke(service, gameClearCondition);
         //then
-        assertEquals(true, isMaintainTrue);
+        assertEquals(1, lastAnswer);
     }
 
     @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 종료")
@@ -234,7 +234,7 @@ public class ServiceTest {
         //given
         Service service = new Service();
         int gameClearCondition = 3;
-        boolean isMaintainFalse = true;
+        int lastAnswer = 0;
         String stop = "2";
         InputStream stopInput = new ByteArrayInputStream(stop.getBytes());
         Method testMethod = service.getClass().getDeclaredMethod("askEndingCondition", int.class);
@@ -248,9 +248,9 @@ public class ServiceTest {
         } catch (InterruptedException e) {
         }
 
-        isMaintainFalse = (boolean) testMethod.invoke(service, gameClearCondition);
+        lastAnswer = (int)testMethod.invoke(service, gameClearCondition);
         //then
-        assertEquals(false, isMaintainFalse);
+        assertEquals(2, lastAnswer);
     }
 
     @DisplayName("정답을 체크하는 메서드 테스트")
@@ -269,7 +269,7 @@ public class ServiceTest {
         wrongBallCount.put("strikeCount", 3);
 
         //when, then
-        assertTrue(service.checkAnswer(wrongBallCount, correctBallCount.size()));
+        assertEquals(0, service.checkAnswer(wrongBallCount, correctBallCount.size()));
 
         thread.start();
         try {
@@ -277,7 +277,7 @@ public class ServiceTest {
             System.setIn(correctInput);
         } catch (InterruptedException e) {
         }
-        assertFalse(service.checkAnswer(correctBallCount, 3));
+        assertEquals(2, service.checkAnswer(correctBallCount, 3));
     }
 
 }

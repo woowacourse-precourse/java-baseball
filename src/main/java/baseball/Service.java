@@ -76,7 +76,7 @@ public class Service {
         Set<String> deduplicateUserInput = new HashSet<>(userInputList);
 
         if (userInputList.size() != lengthCondition || deduplicateUserInput.size() != lengthCondition) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Wrong number");
         }
 
         List<String> patternExclusionList = userInputList.stream()
@@ -84,7 +84,7 @@ public class Service {
                 .collect(Collectors.toList());
 
         if (patternExclusionList.size() != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Wrong number");
         }
         return userInputList;
     }
@@ -104,29 +104,24 @@ public class Service {
         }
     }
 
-    public boolean checkAnswer(Map<String, Integer> ballCount, int gameClearConditions) {
-        boolean isWrongAnswer = true;
+    public int checkAnswer(Map<String, Integer> ballCount, int gameClearConditions) {
+        int lastAnswer = 0;
 
         if (ballCount.get("strikeCount").equals(gameClearConditions)) {
-            isWrongAnswer = askEndingCondition(gameClearConditions);
+            lastAnswer = askEndingCondition(gameClearConditions);
         }
-        return isWrongAnswer;
+        return lastAnswer;
     }
 
-    private boolean askEndingCondition(int gameClearCondition) {
-        boolean isMaintain = false;
+    private int askEndingCondition(int gameClearCondition) {
         System.out.println(gameClearCondition + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String askingFinish = Console.readLine();
 
-        if (askingFinish.equals("1")) {
-            isMaintain = true;
-        } else if (askingFinish.equals("2")) {
-            isMaintain = false;
-        } else {
-            throw new IllegalArgumentException();
+        if(!askingFinish.equals("1") && !askingFinish.equals("2")) {
+            throw new IllegalArgumentException("Wrong ending number");
         }
-        return isMaintain;
+        return Integer.parseInt(askingFinish);
     }
 
 }
