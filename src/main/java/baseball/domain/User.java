@@ -54,7 +54,7 @@ public class User {
     // 유저의 입력값 중 0이 들어가있으면 예외처리
     private void validateNumber(List<Integer> userNumber) {
         long zeroCount = userNumber.stream()
-                .filter(i -> i == 0)
+                .filter(digit -> digit == 0)
                 .count();
         if (zeroCount > 0) {
             throw new IllegalArgumentException();
