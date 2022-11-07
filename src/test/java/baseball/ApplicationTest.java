@@ -54,13 +54,13 @@ class ApplicationTest extends NsTest {
 		System.setIn(new ByteArrayInputStream(wrongInput.getBytes()));
 		List<Integer> digits1 = Converter.convertStringToIntegerList(wrongInput);
 		numberComparator.compare(digits1);
-		assertThat(numberComparator.isCorrect()).isFalse();
+		assertThat(numberComparator.hasCorrectNumber()).isFalse();
 
 		String rightInput = "492";
 		System.setIn(new ByteArrayInputStream(rightInput.getBytes()));
 		List<Integer> digits2 = Converter.convertStringToIntegerList(rightInput);
 		numberComparator.compare(digits2);
-		assertThat(numberComparator.isCorrect()).isTrue();
+		assertThat(numberComparator.hasCorrectNumber()).isTrue();
 	}
 
 	@Test
@@ -70,7 +70,7 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void printGettingRightAnswerMessage_메소드로_정답을_맞춘_경우_게임_종료를_안내() {
-		outputView.printGettingRightAnswerMessage(LENGTH_OF_NUMBER);
+		outputView.printHavingCorrectNumberMessage(LENGTH_OF_NUMBER);
 		System.out.print("이 문장은 다음 줄에 출력되어야 합니다.");
 		assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n이 문장은 다음 줄에 출력되어야 합니다.");
 	}
@@ -115,7 +115,7 @@ class ApplicationTest extends NsTest {
 
 	@Test
 	void generateRandomNumber_메소드로_서로_다른_세개의_숫자_선택() {
-		assertThat(RandomNumberGenerator.generateRandomNumber()).doesNotHaveDuplicates();
+		assertThat(RandomNumberGenerator.generate()).doesNotHaveDuplicates();
 	}
 
 	@Test

@@ -21,7 +21,7 @@ public class InputView {
 		return Console.readLine();
 	}
 
-	public String getRestartResponse() {
+	public String getRestartRequest() {
 		printRestartOrNotMessage();
 		return Console.readLine();
 	}

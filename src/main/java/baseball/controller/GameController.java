@@ -20,7 +20,7 @@ public class GameController {
 	}
 
 	private void init() {
-		final List<Integer> answer = RandomNumberGenerator.generateRandomNumber();
+		final List<Integer> answer = RandomNumberGenerator.generate();
 		numberComparator = new NumberComparator(answer);
 	}
 
@@ -32,12 +32,12 @@ public class GameController {
 			List<Integer> digits = Converter.convertStringToIntegerList(number);
 			numberComparator.compare(digits);
 			outputView.printResult(numberComparator.getBallsCount(), numberComparator.getStrikesCount());
-		} while (!numberComparator.isCorrect());
-		outputView.printGettingRightAnswerMessage(GameConstants.LENGTH_OF_NUMBER);
+		} while (!numberComparator.hasCorrectNumber());
+		outputView.printHavingCorrectNumberMessage(GameConstants.LENGTH_OF_NUMBER);
 	}
 
 	public boolean askRestart() {
-		String request = inputView.getRestartResponse();
+		String request = inputView.getRestartRequest();
 		Validator.validateRestartOrNotInput(request);
 		return request.equals(GameConstants.RESTART_GAME);
 	}

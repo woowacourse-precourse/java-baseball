@@ -44,7 +44,7 @@ public class NumberComparator {
 		return strikesCount;
 	}
 
-	public boolean isCorrect() {
+	public boolean hasCorrectNumber() {
 		return isCorrect;
 	}
 }
