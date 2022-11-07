@@ -7,7 +7,7 @@ import baseball.model.User;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import exception.Exceptions;
+import baseball.exception.Exceptions;
 
 public class Controller {
     private boolean GAME_END = true;
@@ -30,6 +30,7 @@ public class Controller {
         user = new User();
 
     }
+
     public void playGame() {
         computerNumber = computer.addRandomNumbers();
         InputView.startMessage();
@@ -74,12 +75,12 @@ public class Controller {
         }
     }
 
-    private void modifyStrikeBallCount(){
-        ball = countBall(computerNumber,userNumber);
-        for(int i=0; i<userNumber.size(); i++){
-            if(isStrikeNumber(computerNumber, userNumber.get(i), userNumber.indexOf(userNumber.get(i)))){
-                ball -=1;
-                strike +=1;
+    private void modifyStrikeBallCount() {
+        ball = countBall(computerNumber, userNumber);
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (isStrikeNumber(computerNumber, userNumber.get(i), userNumber.indexOf(userNumber.get(i)))) {
+                ball -= 1;
+                strike += 1;
             }
         }
     }
