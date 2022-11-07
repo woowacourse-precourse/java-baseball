@@ -10,6 +10,15 @@ public class GameController {
     private final Judgement judgement = new Judgement();
     private final InputExceptionController inputExceptionController = new InputExceptionController();
 
+    public void playGame() {
+        boolean play = true;
+
+        while (play) {
+            start();
+            play = askRestart();
+        }
+    }
+
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
