@@ -103,19 +103,29 @@ class Baseball {
         }
         return success;
     }
-    public boolean gameRestartOrEnd() {
+    public void printGameOver() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+    public String gameRestartOrEnd() {
         String optionNumber = null;
-        boolean option = false;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(ir);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             optionNumber = br.readLine();
         } catch (Exception e) { }
-
+        return optionNumber;
+    }
+    public boolean optionRestartOrEnd(String optionNumber) {
+        boolean option;
         if (optionNumber.equals("1")) {
             option = true;
+        } else if (optionNumber.equals("2")) {
+            option = false;
+        } else {
+            System.out.println("옵션값이 아닙니다.");
+            optionNumber = gameRestartOrEnd();
+            option = optionRestartOrEnd(optionNumber);
         }
         return option;
     }
