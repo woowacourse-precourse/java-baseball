@@ -25,6 +25,7 @@ public class Number {
         List<Integer> userNumbers = new ArrayList<>();
         String readNumber = Number.getUserNumbers();
         numberSplit(userNumbers, readNumber);
+        validateDuplication(userNumbers);
         return userNumbers;
     }
 
@@ -51,6 +52,12 @@ public class Number {
 
     public static boolean isDuplicated(List<Integer> numbersList, int number) {
         return numbersList.contains(number);
+    }
+
+    public static void validateDuplication(List<Integer> userNumbers) {
+        if (userNumbers.size() < NUMBERS_SIZE) {
+            throw new IllegalArgumentException("Enter 3 different numbers for each.");
+        }
     }
 
     public static void validateDigits(final String numbers) {
