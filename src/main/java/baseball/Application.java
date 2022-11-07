@@ -108,8 +108,6 @@ public class Application {
                 break;
             }
 
-            StrikeBallCheck(userInput, gameNumber);
-
             if (gameRestartChecker(StrikeBallCheck(userInput, gameNumber)) == 1) {
                 Scanner reGameScanner = new Scanner(System.in);
                 String reGameCheck = reGameScanner.next();
