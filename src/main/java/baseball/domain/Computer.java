@@ -14,6 +14,16 @@ public class Computer {
         return computerRandomNumberList;
     }
 
+    public void setComputerRandomNumberList() {
+        initComputerRandomNumberList();
+        while (computerRandomNumberList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(Constant.MIN_NUMBER, Constant.MAX_NUMBER);
+            if (!computerRandomNumberList.contains(randomNumber)) {
+                computerRandomNumberList.add(randomNumber);
+            }
+        }
+    }
+
 
 
 
