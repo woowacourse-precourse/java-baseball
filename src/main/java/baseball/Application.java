@@ -17,7 +17,7 @@ public class Application {
     }
 
     public static String isValidFlag(String readLine) {
-        boolean isOneOrTwo = (readLine.charAt(0) == 1 || readLine.charAt(0) == 2);
+        boolean isOneOrTwo = (readLine.charAt(0) == '1' || readLine.charAt(0) == '2');
 
         if (isOneOrTwo) {
             return readLine;
