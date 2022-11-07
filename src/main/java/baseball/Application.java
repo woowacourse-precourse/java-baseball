@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static int getStrike(List<Integer> answer, String userInput) {
@@ -22,10 +24,13 @@ public class Application {
         System.out.print("숫자 야구 게임을 시작합니다.");
     }
 
-    public static String getUserInput() {
+    public static List<Integer> getUserInput() {
         System.out.print("숫자를 입력해주세요 : ");
 
-        return Console.readLine();
+        return Arrays
+                .stream(Console.readLine().split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public static List<Integer> getAnswer() {
