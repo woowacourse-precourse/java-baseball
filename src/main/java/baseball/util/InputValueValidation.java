@@ -12,10 +12,7 @@ public class InputValueValidation {
     }
 
     public boolean isValidNumber(String numbersValue) {
-        if (isNumber(numbersValue) && isLengthThree(numbersValue) && noDuplicates(numbersValue)) {
-            return true;
-        }
-        return false;
+        return isNumber(numbersValue) && isLengthThree(numbersValue) && noDuplicates(numbersValue);
     }
 
     public boolean isNumber(String inputValue) {
