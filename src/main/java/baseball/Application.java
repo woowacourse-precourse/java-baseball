@@ -83,6 +83,18 @@ public class Application {
         System.out.println(result);
     }
 
+    public static boolean restart(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String flag = Console.readLine();
+
+        if (flag.contentEquals("1")){
+            return true;
+        } else if (flag.contentEquals("2")){
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
     public static void main(String[] args) {
         getUserNumber();
         initOpponentNumber();
