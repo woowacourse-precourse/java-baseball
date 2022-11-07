@@ -21,11 +21,11 @@ public class Controller {
 		return service.setComputerNumbers();
 	}
 
-	public static List<Integer> getUserNumbers() {
+	public List<Integer> getUserNumbers() {
 		return service.setUserNumbers();
 	}
 
-	public static Map<String, Integer> getGameScore(List<Integer> comNumber) {
+	public Map<String, Integer> getGameScore(List<Integer> comNumber) {
 		return service.setGameScore(comNumber);
 	}
 
@@ -33,7 +33,7 @@ public class Controller {
 		service.scoreProcess(userScore);
 	}
 
-	public static void getGameContinued() {
+	public void getGameContinued() {
 		service.gameContinued();
 	}
 }
