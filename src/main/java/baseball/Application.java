@@ -18,6 +18,22 @@ public class Application {
 
     public static void main(String[] args) {
         Application app = new Application();
+        app.setBaseballGame();
+    }
+
+    // TODO : 숫자베이스볼 게임을 시작한다.
+    public void setBaseballGame() {
+        printStartSentence();
+        while (true) {
+            List<Integer> computer = SelectRandomNumbers();
+
+            while (!threeStrike)
+                startGame(computer);
+            threeStrike = false;
+
+            printReStartSentence();
+            if (!playNewGame()) break;
+        }
     }
 
     // TODO : 사용자에게 숫자를 입력받고 힌트를 얻는다.
