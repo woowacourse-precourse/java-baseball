@@ -37,6 +37,7 @@ public class BallCount {
         StringBuilder stringBuilder = new StringBuilder();
         if (getStrike() == 3) {
             stringBuilder.append(getStrike()).append(STRIKE_COUNT).append("\n").append(ALL_MATCHED_MESSAGE);
+            return stringBuilder.toString();
         }
         if (getBall() > 0) {
             stringBuilder.append(getBall()).append(BALL_COUNT);
