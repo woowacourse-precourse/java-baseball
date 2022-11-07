@@ -14,14 +14,14 @@ public class Referee {
     public void saveOpponentAnswer(List<Integer> opponentAnswer) {
         this.opponentAnswer = opponentAnswer;
     }
-    private boolean isStrike(Player quessNumber, int idx) {
+    private boolean isStrike(List<Integer> quessNumber, int idx) {
 
         if(quessNumber.equals(Opponent.getNumber(idx))){
             return true;
         }
         return false;
     }
-    private boolean isBall(Player quessNumber, int idx) {
+    private boolean isBall(List<Integer> quessNumber, int idx) {
         if(opponentAnswer.contains(quessNumber)){
             return true;
         }
@@ -33,5 +33,18 @@ public class Referee {
 
     public boolean isAllStrike(){
         return strike == 3;
+    }
+
+    public void CaculateResult(List<Integer> playerAnswer){
+        for ( int idx = 0; idx < playerAnswer.size(); idx++ ) {
+            if ( isStrike(playerAnswer, idx) ) {
+                strike++;
+                continue;
+            }
+
+            if ( isBall(playerAnswer, idx) ) {
+                ball++;
+            }
+        }
     }
 }
