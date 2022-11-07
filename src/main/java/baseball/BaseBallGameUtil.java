@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.ArgumentExcpetion.isException;
+
 /**
  * @Author : Jeeseob
  * @CreateAt : 2022/11/07
@@ -24,24 +26,23 @@ public class BaseBallGameUtil {
     // 데이터 입력받아, Integer List로 반환
     public static List<Integer> inputUserAnsweByLength(int length) {
         String input = Console.readLine();
-        if(input.length() != length) {
-            throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_UNCONFORMABLE_LENGTH.getMessage());   // 입력받은 값의 길이가 요구사항과 다른 경우
-        }
+        isException(
+                input.length() != length,
+                ArgumentExceptionMessage.INPUT_UNCONFORMABLE_LENGTH); // 입력받은 값의 길이가 요구사항과 다른 경우
         return toIntegerList(input);
     }
 
     private static List<Integer> toIntegerList(String input) {
         List<Integer> userAnswer = new ArrayList<>();
-        for (String digit : input.split("")) {
-            if(userAnswer.contains(Integer.parseInt(digit))) {
-                throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_OVERLAP.getMessage());   // 입력받은 값에 중복되는 값이 존재하는 경우
-            }
-            if ('1' <= digit.charAt(0) && digit.charAt(0) <= '9') {
-                userAnswer.add(Integer.parseInt(digit));
-            }
-            else {
-                throw new IllegalArgumentException(ArgumentExceptionMessage.INPUT_NOT_INTEGER.getMessage());   // 입력받은 값이 숫자가 아닌 경우
-            }
+        for (char tempInput : input.toCharArray()) {
+            isException(
+                    !Character.isDigit(tempInput),
+                    ArgumentExceptionMessage.INPUT_NOT_INTEGER);  // 입력받은 값이 정수로 이루어져 있지 않은 경우
+            int digit = Character.getNumericValue(tempInput);
+            isException(
+                    userAnswer.contains(digit),
+                    ArgumentExceptionMessage.INPUT_OVERLAP);  // 입력받은 값에 중복되는 값이 존재하는 경우
+            userAnswer.add(digit);
         }
         return userAnswer;
     }
