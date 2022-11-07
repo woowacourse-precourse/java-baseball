@@ -8,12 +8,6 @@ public class Number {
     public final Digit second;
     public final Digit third;
 
-    public Number(int first, int second, int third) {
-        this.first = new Digit(first);
-        this.second = new Digit(second);
-        this.third = new Digit(third);
-    }
-
     public Number(List<Integer> digits) {
         this.first = new Digit(digits.get(0));
         this.second = new Digit(digits.get(1));
