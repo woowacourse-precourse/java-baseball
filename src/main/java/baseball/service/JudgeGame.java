@@ -13,15 +13,30 @@ public class JudgeGame {
         return inputNumberList;
     }
 
-    private static int verifyStrike(List<Integer> inputNumberList, List<Integer> ComputerNumberList){
+    private static int verifyStrike(List<Integer> inputNumberList, List<Integer>  computerNumberList){
         int strikeCounter = 0;
 
         for (int i=0; i < inputNumberList.size(); i++){
-            if (inputNumberList.get(i).equals(ComputerNumberList.get(i))){
+            Integer inputNumber = inputNumberList.get(i);
+            Integer computerNumber = computerNumberList.get(i);
+            if (inputNumber.equals(computerNumber)){
                 strikeCounter += 1;
             }
         }
         return strikeCounter;
+    }
+
+    private static int verifyBall(List<Integer> inputNumberList, List<Integer> computerNumberList){
+        int ballCount = 0;
+        for (int i=0; i<inputNumberList.size(); i++){
+            Integer inputNumber = inputNumberList.get(i);
+            Integer computerNumber = computerNumberList.get(i);
+            if (!inputNumber.equals(computerNumber)
+                    && computerNumberList.contains(inputNumber)){
+                ballCount += 1;
+            }
+        }
+        return ballCount;
     }
 
 }
