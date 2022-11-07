@@ -29,7 +29,7 @@ public class GameController {
         return userAnswer;
     }
 
-    private static Boolean afterPlaying(){
+    public Boolean afterPlaying(){
         String userInput = UserInput.endInput();
 
         if (userInput.equals(PLAY_AGAIN)){
@@ -38,7 +38,7 @@ public class GameController {
         return false;
     }
 
-    private static Boolean isThreeStrike(String answer, String user){
+    public Boolean isThreeStrike(String answer, String user){
         int[] count = countStrikeBall(answer, user);
         int ball = count[0], strike = count[1];
 
@@ -47,7 +47,7 @@ public class GameController {
         return strike == BALL_NUMBER;
     }
 
-    private static int[] countStrikeBall(String answer, String user){
+    public int[] countStrikeBall(String answer, String user){
         int ball = 0, strike = 0;
 
         for (int i=0; i<BALL_NUMBER; i++){
