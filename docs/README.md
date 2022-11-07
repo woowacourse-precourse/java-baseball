@@ -26,7 +26,7 @@ Constant Class
 Baseball Class
 - LinkedHashSet 일급 컬렉션 생성 ✔
 - ArrayList 변환 기능 ✔
-- 입력받은 수 예외 검증 ❌
+- 입력받은 수 예외 검증 ✔
 - 컴퓨터 객체 생성 ❌
 - 플레이어 객체 생성 ❌
 
