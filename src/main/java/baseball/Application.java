@@ -88,11 +88,19 @@ public class Application {
     static int strikeNumber(ArrayList<Integer> input){
         int result=0;
 
+        for(int i=0; i<computerNumberList.size(); i++){
+            if(computerNumberList.get(i) == input.get(i)){
+                result += 1;
+            }
+        }
+
         return result ;
     }
+
     static int ballNumber(ArrayList<Integer> input, int strike){
         int result=0;
-        return result ;
+
+        return result;
     }
 
 
