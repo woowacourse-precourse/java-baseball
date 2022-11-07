@@ -1,14 +1,13 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import baseball.utils.Util;
+import baseball.utils.Utility;
 
 public class BaseballNumber {
     public List<Integer> listNumber;
     public BaseballNumber(int number) {
-        this.listNumber = Util.splitDigitsIntoList(number);
+        this.listNumber = Utility.splitDigitsIntoList(number);
     }
 
     public int getNumberAt(int index) {

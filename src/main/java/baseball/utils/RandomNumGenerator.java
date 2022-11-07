@@ -1,6 +1,5 @@
 package baseball.utils;
 
-import baseball.utils.Util;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -24,8 +23,8 @@ public final class RandomNumGenerator {
         do {
             int randomDigit = makeRandomDigit();
             resultList.add(randomDigit);
-            size = Util.getDistinctCountInIntegerList(resultList);
+            size = Utility.getDistinctCountInIntegerList(resultList);
         } while (size < sizeLimit);
-        return Util.mergeDistinctIntegerInList(resultList);
+        return Utility.mergeDistinctIntegerInList(resultList);
     }
 }

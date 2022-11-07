@@ -5,7 +5,7 @@ import baseball.verifier.GameVerifier;
 import baseball.verifier.Verifier;
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputHandler {
+public final class InputHandler {
     private String readLine() {
         return Console.readLine();
     }
