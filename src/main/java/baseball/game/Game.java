@@ -28,7 +28,7 @@ public class Game {
                 .collect(Collectors.toList());
     }
 
-    private void inputCheck(String input) {
+    public void inputCheck(String input) {
         if (!input.matches("^[1-9]*$")) {
             throw new IllegalArgumentException("1~9까지의 숫자만 입력이 가능합니다.");
         }
