@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.message.PitchStatusMessage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -89,6 +90,16 @@ class PitchResultTest {
         pitchResult.setResult(userInput, numbers);
 
         assertThat(pitchResult.getPitchStatusMessage()).isEqualTo("2볼 1스트라이크");
+    }
+
+    @DisplayName("스트라이크와 볼 미존재시 \"낫싱\" 출력후 줄 바꿈")
+    @Test
+    void 볼과_스트라이크_모두_존재하지않는_낫싱_메시지_출력() {
+        String userInput = "123";
+        List<Integer> numbers = List.of(4, 5, 6);
+        pitchResult.setResult(userInput, numbers);
+
+        assertThat(pitchResult.getPitchStatusMessage()).isEqualTo(PitchStatusMessage.NOTHING);
     }
 
 }

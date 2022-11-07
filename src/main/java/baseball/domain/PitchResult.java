@@ -75,6 +75,7 @@ public class PitchResult {
         if (isBallAndStrike()) {
             return String.format(PitchStatusMessage.BALL_AND_STRIKE, ballCount,strikeCount);
         }
-        return null;
+
+        return String.format(PitchStatusMessage.NOTHING);
     }
 }
