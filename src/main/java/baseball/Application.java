@@ -1,8 +1,23 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Application {
+
+    public static void game() {
+        List<Integer> randomNum= random();
+
+        while(true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> inputNum=input();
+            boolean returnValue=checkNum(randomNum,inputNum);
+            if(returnValue)
+                break;
+            else
+                continue;
+        }
+    }
 
     public static void startGame() throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
