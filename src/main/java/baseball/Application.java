@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -48,9 +49,10 @@ public class Application {
         int flag = 1;
 
         List<Integer> COM = randomize();
-
+        Scanner sc = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
             String N = readLine();
             if (N.length() != 3) {
                 throw new IllegalArgumentException();
@@ -66,7 +68,19 @@ public class Application {
                 }
             }
             printResult(strike, ball, nothing);
-
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                flag = sc.nextInt();
+                if (flag == 2) {
+                    break;
+                } else if (flag != 1) {
+                    throw new IllegalArgumentException();
+                }
+            }
+            strike = 0;
+            ball = 0;
+            nothing = 0;
         }
     }
 }
