@@ -12,8 +12,15 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        answerValidate();
-        gmae();
+        while(true) {
+            answerValidate();
+            gmae();
+            boolean exit = exitGameValidate();
+            answer.removeAll(answer);
+            if (exit) {
+                break;
+            }
+        }
 
     }
     public static void gmae(){
@@ -31,7 +38,9 @@ public class Application {
 
     public static void answerValidate(){
         while(true){
-            if(answer.size() == 3) break;
+            if(answer.size() == 3) {
+                break;
+            }
             int rd = Randoms.pickNumberInRange(1,9);
             if(!answer.contains(rd)) {
                 answer.add(rd);
@@ -39,9 +48,9 @@ public class Application {
         }
     }
 
-    public static void inputValidate(String input){
-        lengthCheck(input);
-        numberCheck(input);
+    public static void inputValidate(String value){
+        lengthCheck(value);
+        numberCheck(value);
         notEqualCheck();
 
     }
@@ -52,17 +61,21 @@ public class Application {
                 int value = Integer.parseInt(str.substring(i, i+1));
                 input.add(value);
             }
-        }catch(NumberFormatException nfe){throw new IllegalArgumentException();}
+        }catch(NumberFormatException nfe){
+            throw new IllegalArgumentException();
+        }
     }
-    public static void lengthCheck(String input){
-        if(input.length() != 3){
+    public static void lengthCheck(String value){
+        if(value.length() != 3){
             throw new IllegalArgumentException();
         }
     }
     public static void notEqualCheck(){
         for(int i=0; i<input.size(); i++){
             int value = input.get(i);
-            if(input.indexOf(value) != input.lastIndexOf(value)) throw new IllegalArgumentException();  // 리스트에 값이 여러 개 존재한다는 의미이므로 IllegalArgumentException 발생
+            if(input.indexOf(value) != input.lastIndexOf(value)){
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -70,7 +83,10 @@ public class Application {
         int strike = strikeCheck();
         int ball = ballCheck(strike);
         printResult(strike, ball);
-        return (strike == 3);
+        if(strike==3){
+            return true;
+        }
+        return false;
     }
 
     public static int ballCheck(int strike){
@@ -100,10 +116,23 @@ public class Application {
         } else if (strike == 0) {
             System.out.println(ball + "볼");
         } else {
-            System.out.println(ball + "볼" + strike + "스트라이크");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
     public static boolean exitGameValidate(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String value = Console.readLine();
+        try{
+            int userChoice = Integer.parseInt(value);
+            if(userChoice == 1){
+                return false;
+            }
+            else if(userChoice == 2){
+                return true;
+            }
+        }catch(NumberFormatException nfe){
+            throw new IllegalArgumentException();
+        }
         throw new IllegalArgumentException();
     }
 
