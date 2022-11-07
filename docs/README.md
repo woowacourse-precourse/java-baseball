@@ -41,24 +41,24 @@
 
 ## 기능
 
-- [ ] 문자열 출력 `showGameLog`
+- [ ] 게임 시작 관련 메세지 출력 `gameStart` 
 - [x] 컴퓨터의 숫자를 랜덤으로 선택하는 메서드 `setComputersRandomAnswer`
     - [x] 리스트 안에 들어 있는 숫자를 제외한 숫자 중에서 랜덤으로 숫자를 리턴하는 메서드 `getRandomIntegerExcludeInList`
-- [ ] 게임에서 사용자의 입력을 받는 메서드 `getUsersAnswer`
-    - [ ] 입력 받은 문자열을 각 자리수로 쪼갠 숫자 리스트로 반환하는 메서드 `stringToSeparatedIntergerList`
-    - [ ] 입력을 받고 에러처리까지 해준다.
+- [x] 게임에서 사용자의 입력을 받는 메서드 `getUserPredictedAnswer`
+    - [x] 입력 받은 문자열을 각 자리수로 쪼갠 숫자 리스트로 반환하는 메서드 `stringToSeparatedIntergerList`
+    - [x] 입력을 받고 에러처리까지 해준다.
 - [x] 숫자를 비교해서 결과를 반환하는 메서드 `judgeUserGuess`
     - [x] `볼`의 갯수를 세는 메서드 `countBall`
     - [x] `스트라이크`의 갯수를 세는 메서드 `countStrike`
-- [ ] 받은 결과 판별하는 메서드 `낫싱, 볼, 스트라이크, 게임 종료` `getGameResult`
-- [ ] 게임이 끝난 후 게임을 다시할 지 물어보는 메서드 `isPlayingNewGame`
+- [x] 받은 결과 판별하는 메서드 `낫싱, 볼, 스트라이크, 게임 종료` `getGameResult`
+- [x] 게임이 끝난 후 게임을 다시할 지 물어보는 메서드 `isPlayingNewGame`
 
 ## 오류
 
 - [x] 숫자가 아니고 다른 입력이 들어온 경우 `isContainLetter`
-- [ ] 들어온 숫자가 3자리가 아닌 경우
-- [ ] 같은 숫자가 2개 이상 들어온 경우
-- [ ] 숫자 1,2 이외에 다른 숫자가 들어온 경우
+- [x] 들어온 숫자가 n자리가 아닌 경우 `isInputLength`
+- [x] 같은 숫자가 2개 이상 들어온 경우 `hasSameNumberInList`
+- [x] 숫자 1,2 이외에 다른 숫자가 들어온 경우 `isIllegalChoice`
 
 ### 고민(think about)
 
