@@ -344,6 +344,20 @@ class BaseballTest {
 
             assertThat(field.get(gameController)).isInstanceOf(Ball.class);
         }
+
+        @Test
+        @DisplayName("setComputerBall 메소드가 두 번 호출되면 멤버변수를 서로 다르게 갖는지 확인")
+        void setComputerBall_twice_call_test() throws NoSuchFieldException, IllegalAccessException {
+            Field field = gameController.getClass().getDeclaredField("computerBall");
+            field.setAccessible(true);
+
+            gameController.setComputerBall();
+            Ball firstBall = (Ball) field.get(gameController);
+            gameController.setComputerBall();
+            Ball secondBall = (Ball) field.get(gameController);
+
+            assertThat(firstBall).isNotEqualTo(secondBall);
+        }
     }
 
     @Nested
