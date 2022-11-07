@@ -46,7 +46,7 @@ public class Application {
         while (bool) {
             System.out.print("\n숫자를 입력해주세요 : ");
             List<Integer> userList = writeUser();
-            if (userList.size() > 3) {
+            if (userList.size() > 3){
                 throw new IllegalArgumentException();
             }
 
@@ -75,6 +75,19 @@ public class Application {
                 result.set(1, result.get(1) + 1);
             else if (!computer.contains(writeUser.get(i)))
                 result.set(2, result.get(2) + 1);
+        }
+        return result;
+    }
+
+    static boolean lastMessage() {
+        boolean result = true;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        switch (readUser()) {
+            case 1:
+                showProblem();
+            case 2:
+                result = false;
         }
         return result;
     }
