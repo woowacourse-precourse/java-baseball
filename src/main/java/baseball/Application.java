@@ -7,10 +7,9 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> randomNumList = makeRandomNum();
-        List<Integer> inputNumList = makeInputNumList();
+        playGame();
     }
-    public static List<Integer> makeRandomNum() {
+    public static List<Integer> makeRandomNumList() {
         List<Integer> randomNumList = new ArrayList<>();
         while(randomNumList.size() < 3) {
             int newRandomNum = Randoms.pickNumberInRange(1, 9);
@@ -28,6 +27,7 @@ public class Application {
         List<Integer> inputNumList = new ArrayList<>();
         for (int inputStringIdx = 0; inputStringIdx < inputString.length(); inputStringIdx++) {
             int inputNum = (int) inputString.charAt(inputStringIdx) - 48;
+//            int inputNum = inputString.charAt(inputStringIdx);
             inputNumList.add(inputNum);
         }
         if (isValidList(inputNumList)) {
@@ -55,22 +55,22 @@ public class Application {
     public static Integer cntContain(List<Integer> inputNumInfo, List<Integer> answerNumInfo) {
         int contain = 0;
         int inputNum = inputNumInfo.get(1);
-        int anwerNum = answerNumInfo.get(1);
+        int answerNum = answerNumInfo.get(1);
 
-        if (inputNum == anwerNum) {
+        if (inputNum == answerNum) {
             contain ++;
         }
         return contain;
     }
     public static Integer cntStrike(List<Integer> inputNumInfo, List<Integer> answerNumInfo) {
         int strike = 0;
-        int inputidx = inputNumInfo.get(0);
+        int inputIdx = inputNumInfo.get(0);
         int inputNum = inputNumInfo.get(1);
-        int answeridx = answerNumInfo.get(0);
-        int anwerNum = answerNumInfo.get(1);
+        int answerIdx = answerNumInfo.get(0);
+        int answerNum = answerNumInfo.get(1);
 
-        if (inputNum == anwerNum) {
-            if (inputidx == answeridx) {
+        if (inputNum == answerNum) {
+            if (inputIdx == answerIdx) {
                 strike ++;
             }
         }
@@ -90,5 +90,52 @@ public class Application {
         }
         int ball = contain - strike;
         return List.of(ball, strike);
+    }
+    public static String makeResultString (List<Integer> resultList) {
+        String resultString = "";
+        int ball = resultList.get(0);
+        int strike = resultList.get(1);
+        if (ball == 0 && strike == 0) {
+            return "낫싱";
+        }
+        if (ball != 0) {
+            resultString += ball + "볼 ";
+        }
+        if (strike != 0) {
+            resultString += strike + "스트라이크";
+        }
+        return  resultString;
+    }
+    public static void playGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> answerNumList = makeRandomNumList();
+        while (true) {
+            List<Integer> inputNumList = makeInputNumList();
+            List<Integer> resultList = makeResultList(inputNumList, answerNumList);
+            String resultString = makeResultString(resultList);
+            printResult(resultString);
+            if (Objects.equals(resultString, "3스트라이크")) break;
+        }
+    }
+    public static void printResult(String resultString) {
+        System.out.println(resultString);
+        if (Objects.equals(resultString, "3스트라이크")) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (isReplayGame()) playGame();
+        }
+    }
+    public static boolean isReplayGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputOneOrTwo = Console.readLine();
+        if (Objects.equals(inputOneOrTwo, "1")) {
+            return true;
+        }
+        else if (Objects.equals(inputOneOrTwo, "2")) {
+            return false;
+        }
+        else {
+            isReplayGame();
+            return false;
+        }
     }
 }
