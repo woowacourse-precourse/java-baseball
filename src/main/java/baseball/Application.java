@@ -68,7 +68,6 @@ public class Application {
 
         if(strike == 3){
             System.out.println(strike+"스트라이크");
-
         }
         else if (ball > 0 && strike > 0) {
             System.out.println(ball+"볼 "+strike+"스트라이크");
@@ -137,13 +136,11 @@ public class Application {
 
         // 입력한 문자열의 길이가 3자리가 아니라면 false
         if (usersNumber.length() != 3) {
-            System.out.println("세자리 아님" + usersNumber);
             return false;
         }
 
         // 정규 표현식 숫자가 아닐 때 ! <- 부정 표현 추후 리팩토링
         if (!Pattern.matches("^[0-9]+$", usersNumber)) {
-            System.out.println("숫자가 아님! " + usersNumber);
             return false;
         }
 
