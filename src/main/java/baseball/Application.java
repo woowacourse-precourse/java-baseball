@@ -1,6 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,8 +23,8 @@ public class Application {
             if (isExceptionStatus(status)) {
                 throw new IllegalArgumentException();
             }
-
             GameFormatter.gameStartMessage();
+            String answer = initComputerAnswer();
             GameFormatter.gameInputMessage();
             GameFormatter.gameEndMessage();
             status = setGameStatus(Console.readLine());
@@ -58,5 +61,18 @@ public class Application {
         return status.equals(GameStatus.EXCEPTION);
     }
 
+    /**
+     * 상대방(컴퓨터)가 1부터 9까지 셔플한 결과 중 3개를 뽑아 문자열로 반환
+     * @return answer
+     */
+    String initComputerAnswer(){
+        StringBuffer answer = new StringBuffer();
+        // 1~9까지 숫자 중 shuffle 한 다음, 앞의 3개의 수를 반환
+        List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        for(Integer uniqueNum : list){
+            answer.append(uniqueNum);
+        }
+        return answer.toString();
+    }
 
 }
