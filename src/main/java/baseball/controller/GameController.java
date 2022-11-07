@@ -10,9 +10,10 @@ public class GameController {
     private final int END_RANGE = 9;
 
     public GameController() {
+        setGame();
     }
 
-    public void setGame() {
+    private void setGame() {
         gameService.setGame(DIGIT, START_RANGE, END_RANGE);
     }
 
