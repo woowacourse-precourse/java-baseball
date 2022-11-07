@@ -16,24 +16,20 @@ public class GameProgress {
 
     public void playGame() {
         List<Integer> randomNumber = Random.getRandomNumber();
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> userNumber = getUserNumber();
-        List<Integer> resultList = getResultList(randomNumber, userNumber);
-        int strike = resultList.get(0);
+        int strike = guessAnswer(randomNumber);
         while (strike != 3) {
-            String resultMessage = checkResult(resultList);
-            System.out.println(resultMessage);
+            strike = guessAnswer(randomNumber);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         finishOrRestart();
     }
 
-    public void finishOrRestart(){
+    public void finishOrRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
         CheckInput check = new CheckInput();
-        if(check.checkInput(userInput)){
-            if(userInput.equals("1")){
+        if (check.checkInput(userInput)) {
+            if (userInput.equals("1")) {
                 playGame();
             }
         }
@@ -65,5 +61,15 @@ public class GameProgress {
             return ball + "볼";
         }
         return "낫싱";
+    }
+
+    private int guessAnswer(List<Integer> randomNumber) {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> userNumber = getUserNumber();
+        List<Integer> resultList = getResultList(randomNumber, userNumber);
+        int strike = resultList.get(0);
+        String resultMessage = checkResult(resultList);
+        System.out.println(resultMessage);
+        return strike;
     }
 }
