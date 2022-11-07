@@ -33,26 +33,6 @@ public class BaseballGameManager {
         }
     }
 
-    public void printBaseballScore(BaseballScore baseballScore) {
-        StringBuilder scoreString = new StringBuilder();
-
-        if (baseballScore.getBallCount() > 0) {
-            scoreString.append(baseballScore.getBallCount());
-            scoreString.append("볼 ");
-        }
-
-        if (baseballScore.getStrikeCount() > 0) {
-            scoreString.append(baseballScore.getStrikeCount());
-            scoreString.append("스트라이크");
-        }
-
-        if (scoreString.toString().length() == 0) {
-            scoreString.append("낫싱");
-        }
-
-        System.out.println(scoreString.toString().trim());
-    }
-
     public BaseballScore calculateBaseballScore(List<Integer> inputNumberList) {
         int ballCount = 0;
         int strikeCount = 0;
@@ -75,5 +55,25 @@ public class BaseballGameManager {
         }
 
         return new BaseballScore(ballCount, strikeCount);
+    }
+
+    public void printBaseballScore(BaseballScore baseballScore) {
+        StringBuilder scoreString = new StringBuilder();
+
+        if (baseballScore.getBallCount() > 0) {
+            scoreString.append(baseballScore.getBallCount());
+            scoreString.append("볼 ");
+        }
+
+        if (baseballScore.getStrikeCount() > 0) {
+            scoreString.append(baseballScore.getStrikeCount());
+            scoreString.append("스트라이크");
+        }
+
+        if (scoreString.toString().length() == 0) {
+            scoreString.append("낫싱");
+        }
+
+        System.out.println(scoreString.toString().trim());
     }
 }
