@@ -18,6 +18,7 @@ public class Application {
             do {
                 String numberPlayer = Input.player();
                 System.out.println(numberPlayer);
+                Input.checkError(numberPlayer);
 
 
 

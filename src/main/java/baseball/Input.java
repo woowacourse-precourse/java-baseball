@@ -20,7 +20,6 @@ class Input {
     static String player() {
         System.out.print("숫자를 입력해주세요 : " );
         String number = Console.readLine();
-        checkError(number);
         return number;
     }
 
