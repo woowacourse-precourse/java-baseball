@@ -14,9 +14,9 @@ public class Application {
     public static void main(String[] args) {
 
         startGamePrint();
-        //while
+
         while (true) {
-            //컴퓨터 수 생성
+
             targetNumber = makeTargetNumber();
             System.out.println(targetNumber);
 
@@ -32,7 +32,6 @@ public class Application {
                     break;
                 }
                 ballAndStrike.print();
-
 
             }
 
