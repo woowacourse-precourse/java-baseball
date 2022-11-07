@@ -13,7 +13,7 @@ public class GameTest {
     Game game = new Game();
 
     @Test
-    void checkInputPlayGame_테스트_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    void 게임_재시작_테스트_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Method checkInputPlayGameMethod = Game.class.getDeclaredMethod("checkInputPlayGame", String.class);
         checkInputPlayGameMethod.setAccessible(true);
 
@@ -23,7 +23,7 @@ public class GameTest {
     }
 
     @Test
-    void checkInputPlayGame_테스트2() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    void 게임_재시작_테스트_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Method checkInputPlayGameMethod = Game.class.getDeclaredMethod("checkInputPlayGame", String.class);
         checkInputPlayGameMethod.setAccessible(true);
 
@@ -31,4 +31,7 @@ public class GameTest {
 
         assertThat(isPlay).isEqualTo(false);
     }
+
+
+
 }
