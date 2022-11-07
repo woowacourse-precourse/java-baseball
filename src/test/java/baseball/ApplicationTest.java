@@ -10,7 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @DisplayName("게임 시작 문구 출력 테스트")
     @Test
+    void printGameStartMessageTest() {
+        Application.printGameStartMessage();
+        assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.");
+    }
+
     @Test
     @DisplayName("게임 실행 종료 후 재시작 테스트")
     void 게임종료_후_재시작() {
