@@ -9,7 +9,7 @@ public class Application {
     static int strike =0;
     static int ball =0;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         startMessage();
         createRandomTargetNum();
@@ -33,8 +33,8 @@ public class Application {
         }
     }
 
-    private static void getUserInput() {
-        while(true){
+    private static void getUserInput()  {
+        while(strike!=3){
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             List<String> inputNum = List.of(input.split(""));
@@ -80,20 +80,26 @@ public class Application {
         }
     }
 
-    private static boolean endGame() throws Exception {
+    private static boolean endGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int option = Integer.parseInt(Console.readLine());
         optionValidate(option);
 
         if(option==1){
-            targetNum.clear();
+            init();
             return false;
         }
         return true;
     }
 
-     static void optionValidate(int option) {
+    private static void init() {
+        targetNum.clear();
+        strike=0;
+        ball=0;
+    }
+
+    static void optionValidate(int option) {
         if(option !=1 && option !=2){
             throw new IllegalArgumentException();
         }
