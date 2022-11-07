@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,4 +23,13 @@ public class Game {
         }
     }
 
+    int makeRandomNumber(List<Integer> targetNumber) { // 1.1 랜덤한 숫자를 중복하지 않고 선택하기
+        int randomNumber = 0;
+
+        do {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+        } while (targetNumber.contains(randomNumber));
+
+        return randomNumber;
+    }
 }
