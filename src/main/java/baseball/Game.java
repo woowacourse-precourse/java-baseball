@@ -20,6 +20,15 @@ public class Game {
             System.out.print("숫자를 입력해주세요 : ");
             String str = Console.readLine();
             getNumInput(numInput, str);
+
+            List<Integer> score = ScoreCalculator.calScore(numComputer, numInput);
+
+            printScore(score);
+
+            int strikeCount = score.get(1);
+            if (strikeCount == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
         }
     }
 
@@ -57,4 +66,26 @@ public class Game {
 
         return true;
     }
+
+    private void printScore(List<Integer> score) {
+        int ballCount = score.get(0);
+        int strikeCount = score.get(1);
+
+        if ((ballCount == 0) && (strikeCount == 0)) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (ballCount != 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+
+        if (strikeCount != 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+
+        System.out.println();
+        return;
+    }
+
 }
