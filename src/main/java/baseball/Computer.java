@@ -62,4 +62,13 @@ public class Computer {
         }
         return ballCount;
     }
+
+    public boolean isGameOver(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (answer.get(i) != (input.charAt(i) - '0')) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
