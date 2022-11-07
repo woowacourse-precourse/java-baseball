@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberManagement {
-
-    int number;
-
+    
     public static List<Integer> randomNumberMake(int loopFrequency) {
         List<Integer> randomList = new ArrayList<>();
         while(randomList.size()<loopFrequency) {
