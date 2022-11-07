@@ -33,15 +33,13 @@
 
 - Controller
   - 야구 게임을 진행시킴
-    - [ ] 정답 초기화
     - [x] 사용자의 입력 받기
     - [ ] 게임을 계속 진행할지 말지 입력 받기
 - View
   - [ ] InputView : 사용자의 입력과 관련된 View 생성
   - [ ] OutputView : 출력과 관련된 View를 생성
 - Service
-  - [ ] model과 controller를 연결
-  - [ ] 추가 기능 구현
+  - [x] model과 controller를 연결
 - Model
   - [x] 정답을 가진 객체 생성
     - [x] 사용자의 입력과 비교하여 맞은 갯수 반환
