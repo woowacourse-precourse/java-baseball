@@ -1,4 +1,4 @@
-package baseball.domain.strategy;
+package baseball.domain.ballscreatestrategy;
 
 import baseball.domain.Ball;
 

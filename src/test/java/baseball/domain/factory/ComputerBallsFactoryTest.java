@@ -3,7 +3,7 @@ package baseball.domain.factory;
 import baseball.domain.Ball;
 import baseball.domain.BallStatus;
 import baseball.domain.Balls;
-import baseball.domain.strategy.BallsCreateStrategy;
+import baseball.domain.ballscreatestrategy.BallsCreateStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
