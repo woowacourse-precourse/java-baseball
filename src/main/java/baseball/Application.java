@@ -11,7 +11,7 @@ public class Application {
         HashSet<Character> removeDuplication = new HashSet<>();
         while (removeDuplication.size() < 3) {
             int random = Randoms.pickNumberInRange(1, 9);
-            char randomChar= (char) (random + '0');
+            char randomChar = (char) (random + '0');
             removeDuplication.add(randomChar);
         }
         return new ArrayList<>(removeDuplication);
@@ -45,7 +45,7 @@ public class Application {
     private static HashMap<Integer, Integer> ballOrStrike(HashMap<Integer, Integer> comparedMap,
                                                           char answer, char input) {
         comparedMap.put(NOTHING, 0);
-        if (answer==input) {
+        if (answer == input) {
             addOneToMap(comparedMap, STRIKE);
         } else {
             addOneToMap(comparedMap, BALL);
@@ -82,24 +82,24 @@ public class Application {
     private static List<Character> getInputInGame()
             throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
-        String input= Console.readLine();
+        String input = Console.readLine();
         char[] inputChars = input.toCharArray();
 
-        if (inputChars.length!=3) {
-            System.out.println("숫자가 세 자리가 아닙니다");
-            throw new IllegalArgumentException();
-        }
-
-        List<Character> inputList=new ArrayList<>();
+        List<Character> inputList = new ArrayList<>();
         HashSet<Character> isRepeated = new HashSet<>();
-        for(char c : inputChars){
+        for (char c : inputChars) {
             isRepeated.add(c);
             inputList.add(c);
         }
 
-        for(char isInt: inputList) {
+        if (inputList.size() != 3) {
+            System.out.println("숫자가 세 자리가 아닙니다");
+            throw new IllegalArgumentException();
+        }
+
+        for (char isInt : inputList) {
             int changed = isInt - '0';
-            if((changed>9) ||(changed<0)) {
+            if ((changed > 9) || (changed < 0)) {
                 System.out.println("입력 값이 숫자가 아닙니다");
                 throw new IllegalArgumentException();
             }
@@ -116,27 +116,24 @@ public class Application {
         return inputList;
     }
 
-    private static char getInputEndGame()
-            throws IllegalArgumentException {
-        String input= Console.readLine();
-        char inputChar=input.charAt(0);
-        if ((inputChar != '1') && (inputChar != '2')) {
-            System.out.println("1이나 2가 아닙니다");
-            throw new IllegalArgumentException();
-        }
+    private static char getInputEndGame() {
+        String input = Console.readLine();
+        char inputChar = input.charAt(0);
         return inputChar;
     }
 
-    private static boolean restartOrEndGame() throws IllegalArgumentException{
-        boolean newGame = true;
+    private static boolean restartOrEndGame() throws IllegalArgumentException {
+        boolean newGame;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int userInput = getInputEndGame();
         if (userInput == CONTINUE_GAME) {
             newGame = true;
         } else if (userInput == END_GAME) {
             newGame = false;
+        } else {
+            System.out.println("1이나 2가 아닙니다");
+            throw new IllegalArgumentException();
         }
-        //else 예외사항 추가
         return newGame;
     }
 
