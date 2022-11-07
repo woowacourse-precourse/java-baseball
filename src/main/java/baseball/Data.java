@@ -12,23 +12,7 @@ public class Data {
     public Data(LocalDateTime tryDate, int tryCount) {
         this.tryDate = tryDate;
         this.tryCount = tryCount;
-        this.dateFormat = this.tryDate.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-    }
-
-    public LocalDateTime getTryDate() {
-        return tryDate;
-    }
-
-    public int getTryCount() {
-        return tryCount;
-    }
-
-    public void modifyTryData(LocalDateTime newTryData) {
-        this.tryDate = newTryData;
-    }
-
-    public void modifyTryCount(int newTryCount) {
-        this.tryCount = newTryCount;
+        this.dateFormat = this.tryDate.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분"));
     }
 
     @Override
