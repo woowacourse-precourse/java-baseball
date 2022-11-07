@@ -17,5 +17,13 @@ class IntInputNumberTest {
                                 .isEqualTo(intNumber);
 
     }
-    
+    @Test
+    void 콘솔을_통해_입력받은_숫자가_아닌_값_생성자를_통해_생성() {
+        String name = "김종준";
+        String message = "숫자만 입력할 수 있습니다";
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new IntInputNumber(name))
+                .withMessage(message);
+    }
 }
