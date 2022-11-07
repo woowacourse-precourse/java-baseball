@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.RepeatedTest;
@@ -18,6 +19,9 @@ class ApplicationTest extends NsTest {
     public static final int TARGET_LENGTH = Application.TARGET_LENGTH;
     public static final int MIN_INT = Application.MIN_INT;
     public static final int MAX_INT = Application.MAX_INT;
+    public static final int BALL_INT = Application.BALL_INT;
+    public static final int STRIKE_INT = Application.STRIKE_INT;
+    public static final int NOTHING_INT = Application.NOTHING_INT;
 
     @Test
     void 게임종료_후_재시작() {
@@ -71,7 +75,6 @@ class ApplicationTest extends NsTest {
                 }
         );
     }
-
 
     @Test
     void verifyInput_길이_예외_확인() {
@@ -148,11 +151,36 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("Input value must be a three-digit natural number : 1234"));
+    void judgeEachNumber_볼_확인() {
+        final List<Integer> target = new ArrayList<>(List.of(5, 3, 7));
+        assertAll(
+                () -> assertThat(Application.judgeEachNumber(target, 0, 3)).isEqualTo(BALL_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 0, 7)).isEqualTo(BALL_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 1, 5)).isEqualTo(BALL_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 1, 7)).isEqualTo(BALL_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 2, 5)).isEqualTo(BALL_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 2, 3)).isEqualTo(BALL_INT)
+        );
+    }
+
+    @Test
+    void judgeEachNumber_스트라이크_확인() {
+        final List<Integer> target = new ArrayList<>(List.of(4, 9, 1));
+        assertAll(
+                () -> assertThat(Application.judgeEachNumber(target, 0, 4)).isEqualTo(STRIKE_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 1, 9)).isEqualTo(STRIKE_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 2, 1)).isEqualTo(STRIKE_INT)
+        );
+    }
+
+    @Test
+    void judgeEachNumber_낫싱_확인() {
+        final List<Integer> target = new ArrayList<>(List.of(8, 7, 6));
+        assertAll(
+                () -> assertThat(Application.judgeEachNumber(target, 0, 1)).isEqualTo(NOTHING_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 1, 2)).isEqualTo(NOTHING_INT),
+                () -> assertThat(Application.judgeEachNumber(target, 2, 3)).isEqualTo(NOTHING_INT)
+        );
     }
 
     @Override
