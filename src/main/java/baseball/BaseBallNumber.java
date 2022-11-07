@@ -21,21 +21,21 @@ public final class BaseBallNumber {
     public static void validateSize(List<Character> numbers) {
         if (numbers.size() != GAME_NUMBER_SIZE) {
             throw new IllegalArgumentException(
-                "Baseball number length should be " + GAME_NUMBER_SIZE);
+                    "Baseball number length should be " + GAME_NUMBER_SIZE);
         }
     }
 
     public static void validateDuplicate(List<Character> numbers) {
         Set<Character> number = new HashSet<>(numbers);
         if (number.size() != numbers.size()) {
-            throw new IllegalArgumentException("Baseball number has duplicate number.");
+                throw new IllegalArgumentException("Baseball number has duplicate number.");
         }
     }
 
     @Override
     public String toString() {
         return (numbers.stream()
-            .map(String::valueOf)
-            .collect(Collectors.joining()));
+                .map(String::valueOf)
+                .collect(Collectors.joining()));
     }
 }

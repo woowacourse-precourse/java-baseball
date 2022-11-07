@@ -12,7 +12,8 @@ public final class Player {
     private static final int END_GAME = 2;
 
     public boolean guessAnswer(Answer answer) {
-        return answer.compare(new BaseBallNumber(stringToList(Console.readLine()))) == THREE_STRIKE;
+        return answer
+                .compare(new BaseBallNumber(stringToList(Console.readLine()))) == THREE_STRIKE;
     }
 
     public int chooseToContinue() {
@@ -27,14 +28,14 @@ public final class Player {
     public static void validateChoice(int choice) {
         if (choice != ONE_MORE_GAME && choice != END_GAME) {
             throw new IllegalArgumentException(
-                "Choice should be " + ONE_MORE_GAME + " or " + END_GAME);
+                    "Choice should be " + ONE_MORE_GAME + " or " + END_GAME);
         }
     }
 
     public static List<Character> stringToList(String string) {
         return IntStream.range(0, string.length())
-            .mapToObj(string::charAt)
-            .collect(Collectors.toList());
+                .mapToObj(string::charAt)
+                .collect(Collectors.toList());
     }
 
 }

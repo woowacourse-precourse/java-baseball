@@ -12,7 +12,7 @@ public final class Computer {
         final List<Character> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < RANDOM_NUMBERS_LENGTH) {
             final Character randomNumber =
-                Character.forDigit(Randoms.pickNumberInRange(1, 9), 10);
+                    Character.forDigit(Randoms.pickNumberInRange(1, 9), 10);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
