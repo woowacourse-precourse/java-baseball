@@ -1,5 +1,11 @@
 package baseball;
 
 public class NextBehavior {
-    // 종료 또는 재시작 여부를 입력받아 관련 조치 혹은 예외처리를 하는 클래스.
+    Integer decision;
+    public NextBehavior(String decision) throws IllegalArgumentException {
+        this.decision = Integer.parseInt(decision);
+        if(this.decision != 1 && this.decision != 2){
+            throw new IllegalArgumentException("1과 2중의 하나의 값만 입력해야합니다.");
+        }
+    }
 }

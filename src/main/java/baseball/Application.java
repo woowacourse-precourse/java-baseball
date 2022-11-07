@@ -125,20 +125,19 @@ public class Application {
     }
 
     static void endOrRestart()  {
-        //NextBehavior next;
+        NextBehavior next;
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-       /* next = new NextBehavior(Console.readLine());
+        next = new NextBehavior(Console.readLine());
         if (next.decision == 1) {
             initializeAndStartGame();
             return;
         }
         if (next.decision == 2) {
             return;
-        }*/
-
+        }
     }
 
     static void initializeAndStartGame() {
