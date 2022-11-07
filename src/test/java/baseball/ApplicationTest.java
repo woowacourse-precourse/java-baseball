@@ -2,9 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -117,17 +122,25 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
     void 명령_번호가_유효한_숫자인지_확인_테스트_1_2_미포함() {
         String number = "3";
         assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest(name="{0}을 넣었을때 true를 반환")
-    @ValueSource(strings = {"1","2"})
+    @ParameterizedTest(name = "{0}을 넣었을 때 true를 반환")
+    @ValueSource(strings = {"1", "2"})
     @DisplayName("명령 번호가 유효한 숫자인지 확인 테스트")
     void 명령_번호가_유효한_숫자인지_확인_테스트(String number) {
         assertThat(isValidCommandNumber(number)).isTrue();
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("랜덤 번호가 중복이 없는지 확인하는 테스트")
+    void 랜덤_번호_생성_확인_테스트() {
+        List<Integer> randomNumbers = getRandomNumbers();
+        Set<Integer> notDistinctNumbers = new HashSet<>(randomNumbers);
+
+        assertThat(randomNumbers.size()).isEqualTo(notDistinctNumbers.size());
     }
 
     @Override
