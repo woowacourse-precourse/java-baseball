@@ -1,8 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -20,7 +22,19 @@ public class Application {
         return comNum;
     }
 
-
+    private static List<Integer> makeMyNum() {
+        List<Integer> myNum = new ArrayList<>();
+        int num = Integer.parseInt(Console.readLine());
+        if(num < Math.pow(10, NUM_SIZE - 1) || Math.pow(10, NUM_SIZE) <= num) {
+            throw new IllegalArgumentException();
+        }
+        for(int i = 0; i < NUM_SIZE; i++) {
+            myNum.add(num%10);
+            num /= 10;
+        }
+        Collections.reverse(myNum);
+        return myNum;
+    }
 
     public static void main(String[] args) {
 
