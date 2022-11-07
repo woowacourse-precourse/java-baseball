@@ -47,6 +47,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력값_중복숫자포함() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "998", "135", "2");
+                    assertThat(output()).contains("낫싱", "정답은 세자리 모두 다 다릅니다.","3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
