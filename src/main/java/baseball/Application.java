@@ -51,6 +51,7 @@ public class Application {
             strike = 0;
             ball = 0;
             getStrike();
+            trynum = reStartGame(trynum);
         }
         return trynum;
     }
@@ -82,6 +83,12 @@ public class Application {
         }
         printResult(ball,strike);
         return strike;
+    }
+    public static String reStartGame(String trynum){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        trynum = readLine();
+        return trynum;
     }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
