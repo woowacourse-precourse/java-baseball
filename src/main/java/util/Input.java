@@ -35,7 +35,7 @@ public class Input {
 
     private static void validateInputNum(String readLine) {
         if (isContainCorrectAnswer(readLine)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Input 의 readLine에 잘못된 값이 들어왔습니다. readLine: " + readLine);
         }
     }
 

@@ -21,7 +21,7 @@ public class Balls {
 
     private void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Balls numbers의 범위가 벗어났습니다. numbers: " + numbers);
         }
     }
 
@@ -41,6 +41,4 @@ public class Balls {
 
         return gameResult;
     }
-
-
 }

@@ -26,13 +26,13 @@ public final class Ball {
 
     private void validateNumRange(int num) {
         if (num < MINIMUM_NUM_RANGE || MAXIMUM_NUM_RANGE < num) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Ball의 number 범위를 벗어났습니다. num: " + num);
         }
     }
 
     private void validateIndexRange(int index) {
         if (index < MINIMUM_INDEX_RANGE || MAXIMUM_INDEX_RANGE < index) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Ball의 index 범위가 벗어났습니다. index: " + index);
         }
     }
 
