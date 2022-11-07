@@ -66,7 +66,9 @@ public class BaseballGameController {
 	}
 
 	public static BaseballGameResult judge(Balls ballsPickedByComputer, Balls ballsPickedByUser) {
-		return new BaseballGameResult(-1, -1);
+		int numberOfStrike = judgeStrike(ballsPickedByComputer, ballsPickedByUser);
+		int numberOfBall = judgeBall(ballsPickedByComputer, ballsPickedByUser);
+		return new BaseballGameResult(numberOfStrike, numberOfBall);
 	}
 
 	private static boolean askRestartGame() {
