@@ -5,33 +5,37 @@ import camp.nextstep.edu.missionutils.*;
 
 public class Application {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BaseballGame Game = new BaseballGame();
+        List<Integer> computerNumberList = Game.makeRandomNumber();
+        System.out.println(computerNumberList);
+        System.out.println("-----------------");
         while (true) {
-            Scanner sc = new Scanner(System.in);
-            BaseballGame Game = new BaseballGame();
 
-            List<String> resultList = new ArrayList<>();
+            List<Integer> resultList = new ArrayList<>();
             List<Integer> userNumberList = new ArrayList<>();
-            List<Integer> computerNumberList = Game.makeRandomNumber();
 
             int number = sc.nextInt();
+            resultList.add(number);
 
             if(Game.switchGameStatus(number)) break;
             if(Game.checkErrorNumber(number)) break;
 
             userNumberList = Game.splitNumber(number);
-//
-//            System.out.println(computerNumberList);
-//            System.out.println(userNumberList);
+
+            System.out.println(userNumberList);
 
             List<Integer> checkList =Game.compareList(computerNumberList,userNumberList);
-
             Game.printResult(checkList);
+
         }
     }
 
 }
 
 class BaseballGame {
+
+    void GameStart();
     //숫자 3개를 임의로 추출 하고 컴퓨터에 해당하는 변수에 할당하는 기능
     List<Integer> makeRandomNumber() {
         List<Integer> computer = new ArrayList<>();
