@@ -24,7 +24,7 @@ public class GameService {
 
     public void run() {
         OutputUtils.printInitView();
-        while (game.isExitStatus()) {
+        while (!game.isExitStatus()) {
             OutputUtils.printInputView();
             player.setInputBall();
 

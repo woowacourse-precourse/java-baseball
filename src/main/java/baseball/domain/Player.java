@@ -23,6 +23,7 @@ public final class Player {
     }
 
     private void validateBall(String number) {
+        NumberExceptionUtils.isDigit(number);
         NumberExceptionUtils.isPositiveDigits(number);
         NumberExceptionUtils.isThreeDigits(number);
         NumberExceptionUtils.isNotDuplicateNumber(number);

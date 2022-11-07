@@ -38,6 +38,15 @@ public class NumberExceptionTest extends NsTest {
         );
     }
 
+    @Test
+    void 특수문자_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("ㄱㄴㄷ@"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(INVALID_CHARACTER_EXCEPTION.message())
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
