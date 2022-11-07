@@ -1,0 +1,26 @@
+package baseball;
+
+import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GamePlayer {
+    public List<Integer> getThreeNumber() {
+        String threeNumber = Console.readLine();
+
+        // 정상적인 입력인지 예외처리
+
+        return makeListOfThreeNumbers(threeNumber);
+    }
+
+    private List<Integer> makeListOfThreeNumbers(String threeNumber) {
+        List<Integer> threeNumbers = new ArrayList<>();
+
+        for(int i = 0; i < 3; i++) {
+            int number = threeNumber.charAt(i) - '0';
+            threeNumbers.add(number);
+        }
+
+        return threeNumbers;
+    }
+}
