@@ -20,8 +20,8 @@ public class Player {
         System.out.println(SystemMessage.REQUEST_INPUT_NUMBER);
         String inputNumber = Console.readLine();
         validateNumber(inputNumber);
-        List<Integer> list = splitAnswer(inputNumber);
-        return list;
+
+        return splitAnswer(inputNumber);
     }
 
     private static void validateNumber( String inputNumber ) {
@@ -31,7 +31,7 @@ public class Player {
             throw new IllegalArgumentException( INVALID_LENGTH );
         }
 
-        for( int idx = 0; idx<3; idx++) {
+        for( int idx = 0; idx < 3; idx++) {
             char number = inputNumber.charAt(idx);
             if ( number < (char) ( 1 + '0' ) || number > ( 9 + '0' ) ) {
                 throw new IllegalArgumentException( INVALID_NUMBER );

@@ -6,11 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Opponent {
-    protected static List<Integer> answer;
-    public Opponent(){
-        Opponent.answer = createAnswer();
-    }
-
     public static boolean checkRandomNumber(int num, List<Integer> list) {
         return !list.contains(num);
     }
@@ -23,11 +18,10 @@ public class Opponent {
             }
             list.add(randomNumber);
         }
-        System.out.println(list);
         return list;
     }
 
-    public static Integer getNumber(int idx){
-        return answer.get(idx);
+    public static Integer getNumber(List<Integer> opponentAnswer, int idx){
+        return opponentAnswer.get(idx);
     }
 }

@@ -16,19 +16,19 @@ public class Referee {
     }
     private boolean isStrike(List<Integer> quessNumber, int idx) {
 
-        if(quessNumber.equals(Opponent.getNumber(idx))){
+        if(quessNumber.get(idx)== Opponent.getNumber(opponentAnswer, idx)){
             return true;
         }
         return false;
     }
     private boolean isBall(List<Integer> quessNumber, int idx) {
-        if(opponentAnswer.contains(quessNumber)){
+        if(opponentAnswer.contains(quessNumber.get(idx))){
             return true;
         }
         return false;
     }
     private boolean isNothing() {
-        return strike == 0 & ball == 0;
+        return strike + ball == 0;
     }
 
     public boolean isAllStrike(){
@@ -45,11 +45,14 @@ public class Referee {
         for ( int idx = 0; idx < playerAnswer.size(); idx++ ) {
             if ( isStrike(playerAnswer, idx) ) {
                 strike++;
+                System.out.println("strike"+ strike);
                 continue;
             }
 
             if ( isBall(playerAnswer, idx) ) {
                 ball++;
+                System.out.println("ball"+ ball);
+
             }
         }
     }
