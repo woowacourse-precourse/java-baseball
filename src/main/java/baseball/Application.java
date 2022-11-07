@@ -104,7 +104,7 @@ public class Application {
         boolean onlyStrikes = (ball == 0) && strike > 0;
         boolean onlyBalls = (strike == 0) && ball > 0;
         if (isHit) {
-            GameFormatter.gameOnlyStrikeMessage(3);
+            GameFormatter.gameHitMessage(strike);
             return true;
         } else if (isNothing) {
             GameFormatter.gameNothingMessage();
