@@ -16,6 +16,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseballTest {
     private final static int NUMBER_LIMIT = 3;
+    private final static int RESTART_NUMBER = 1;
+    private final static int CLOSE_NUMBER = 2;
+
     private static BaseballGame sut;
 
     @BeforeAll
@@ -106,6 +109,14 @@ public class BaseballTest {
         assertThatThrownBy(() -> sut.validateInputNumber(source))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "gi", "이런거가능하나?", "3", "4", "0", "22", "11"})
+    void validateRestartNumber_유효한_입력_값이_아닌_경우_예외_발생(String source) {
+        assertThatThrownBy(() -> sut.validateRestartNumber(source))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("게임을 새로 시작하려면 " + RESTART_NUMBER + ", 종료하려면 " + CLOSE_NUMBER + "를 입력하세요.");
     }
 
 }
