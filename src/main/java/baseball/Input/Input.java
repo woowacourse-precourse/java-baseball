@@ -13,11 +13,30 @@ public class Input {
         return numbers;
     }
 
-    public void input(){
+    public void input() throws IllegalArgumentException  {
         Print.inputMsg();
-        String userInput = Console.readLine();
-        numbers = Stream.of(userInput.split(""))
-                .map(Integer::parseInt).collect(Collectors.toList());
+
+        try {
+            String userInput = Console.readLine();
+            numbers = Stream.of(userInput.split(""))
+                    .map(Integer::parseInt).collect(Collectors.toList());
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+
+        if (!valid(numbers))
+            throw new IllegalArgumentException();
     }
 
+    private Boolean valid(List<Integer> numbers){
+        if (numbers.size() > 3 || numbers.isEmpty())
+            return false;
+
+        return checkDuplicate(numbers);
+    }
+
+    private Boolean checkDuplicate(List<Integer> numbers){
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        return numberSet.size() == numbers.size();
+    }
 }
