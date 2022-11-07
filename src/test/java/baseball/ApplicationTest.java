@@ -102,4 +102,19 @@ class ApplicationTest extends NsTest {
         assertThat(baseballGameService.getStrikeCount()).isEqualTo(3);
     }
 
+    @Test
+    void 볼_카운트_테스트() {
+        //given
+        List<Integer> computerNumber = List.of(3, 7, 8);
+        List<Integer> userNumber = List.of(1, 2, 3);
+        BaseballGameService baseballGameService = new BaseballGameService();
+
+        //when
+        baseballGameService.updateBallCount(computerNumber, userNumber);
+
+        //then
+        assertThat(baseballGameService.getBallCount()).isEqualTo(1);
+    }
+
+
 }
