@@ -99,6 +99,11 @@ public class Application {
     }
 
     public static void main(String[] args) {
-
+        int gameStatus = 1;
+        while (gameStatus == 1){
+            runBaseballGame();
+            String userStatus = Console.readLine();
+            gameStatus = Integer.parseInt(userStatus);
+        }
     }
 }
