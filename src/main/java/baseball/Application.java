@@ -22,11 +22,13 @@ public class Application {
     static final String REGEX_PATTERN = "[+-]?\\d*(\\.\\d+)?";
     static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    static final String CORRECT_AND_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String REQUEST_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     static public void startGame() {
         String randomNumber = makeRandomNumber();
         while (inGame(randomNumber)) {}
+        finishGame();
     }
 
     static public String makeRandomNumber() {
@@ -150,6 +152,13 @@ public class Application {
             repeat = false;
         }
         return repeat;
+    }
+
+    static public void finishGame() {
+        System.out.println(CORRECT_AND_FINISH_MESSAGE);
+        String restart = getRestartInput();
+        restartInputValidator(restart);
+        restartGame(restart);
     }
 
     static public String getRestartInput() {
