@@ -36,7 +36,7 @@ public class InputView {
 
             return numbers;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new InputNotNumberException();
         }
     }
 
