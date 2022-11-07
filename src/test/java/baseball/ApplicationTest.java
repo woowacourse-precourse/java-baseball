@@ -59,9 +59,28 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException(null))
                         .isInstanceOf(NullPointerException.class)
         );
-
     }
 
+    @Test
+    void 입력_숫자_예외_테스트(){
+        // 숫자가 아닌 값이 들어가는 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 한 글자만 숫자가 아닌 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1-2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 같은 숫자가 중복으로 입력되는 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
