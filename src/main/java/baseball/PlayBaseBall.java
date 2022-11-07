@@ -6,11 +6,14 @@ public class PlayBaseBall {
     private Messenger messenger;
     private AnswerChecker answerChecker;
 
+
+    // - 게임 진행 - //
+
     public void ready() {
         do {
             makeAnswer();
             start();
-        } while (messenger.selectRepalyOrEnd(user.getUserOpinion()));
+        } while (userWantsReplay());
     }
 
     public void start() {
@@ -18,8 +21,11 @@ public class PlayBaseBall {
             enterNumber();
             checkAnswer();
             printMessage();
-        } while (!answerChecker.isAnswer());
+        } while (isNotAnswer());
     }
+
+
+    // - 게임 진행 기능 리스트 - //
 
     public void makeAnswer() {
         computer = new Computer();
@@ -39,5 +45,13 @@ public class PlayBaseBall {
     public void printMessage() {
         messenger = new Messenger();
         messenger.printResultMessage(answerChecker);
+    }
+
+    public boolean userWantsReplay() {
+        return messenger.selectRepalyOrEnd(user.getUserOpinion());
+    }
+
+    public boolean isNotAnswer() {
+        return !answerChecker.isAnswer();
     }
 }
