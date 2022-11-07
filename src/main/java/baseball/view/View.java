@@ -21,18 +21,6 @@ public class View {
     }
 
     public static void printResult(Result result) {
-        int ballCount = result.getBallCount();
-        int strikeCount = result.getStrikeCount();
-
-        if (ballCount != 0) {
-            System.out.print(ballCount+BALL);
-        }
-        if (strikeCount != 0) {
-            System.out.print(strikeCount+STRIKE);
-        }
-        if (ballCount == 0 && strikeCount == 0) {
-            System.out.print(NOTHING);
-        }
-        System.out.println();
+        System.out.println(result.toString());
     }
 }

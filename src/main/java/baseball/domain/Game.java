@@ -29,10 +29,6 @@ public class Game {
             String guessNumber = player.getInput();
             result = computer.compareNumber(guessNumber);
             View.printResult(result);
-        } while (isNotFinished(result));
-    }
-
-    public boolean isNotFinished(Result result) {
-        return result.getStrikeCount() != MAX_STRIKE;
+        } while (result.isNotOver());
     }
 }
