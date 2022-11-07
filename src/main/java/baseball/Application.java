@@ -11,7 +11,32 @@ import org.assertj.core.util.Arrays;
 
 public class Application {
 	
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+    	String message = "";
+    	Boolean again = true;
+//    	computer.add(1);
+//    	computer.add(3);
+//    	computer.add(5);
+    	while(again) {
+    		int total = 0, strike = 0 ,ball = 0;
+    		List<Integer> computer = ComputerRandomMake();
+    		
+    		System.out.println(computer);
+    		while(strike != 3) {
+    			System.out.println("숫자 3자리를 입력하세요~");
+    			List<Integer> userInput = userInputList();
+    			total = totalMatch(computer,userInput);
+    			strike = strike(computer,userInput);
+    			ball = total - strike;	
+    			message = message(strike, ball);
+    			System.out.println(message);
+    		}
+    		again = againGame();
+//    		computer.removeAll(computer);
+//    		computer.add(5);
+//    		computer.add(8);
+//    		computer.add(9);
+    	}
     }
     
     // 컴퓨터 랜덤 숫자 만들기
