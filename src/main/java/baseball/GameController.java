@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.logging.ConsoleHandler;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class GameController {
     private static final Boolean gameStart = true;
     public void start() {
@@ -16,7 +18,7 @@ public class GameController {
             gameSimulation.playGame();
             success();
 
-            String response = Console.readLine();
+            String response = readLine();
             checkEndOfGame(response);
         }
     }
