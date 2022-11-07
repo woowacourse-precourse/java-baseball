@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -32,19 +33,31 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 스트라이크_테스트(){
-        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
-        List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 3));
-        assertThat(Application.strike(computer,user)).isEqualTo(3);
-    }
+    @Nested
+    class strikeTest{
+        @Test
+        void case1(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 3));
+            int result = 3;
+            assertThat(Application.strike(computer,user)).isEqualTo(result);
+        }
 
-    @Test
-    void 볼_테스트(){
-        List<Integer> computer = new ArrayList<>(Arrays.asList(3, 2, 1));
-        List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 3));
-        int strike = 1;
-        assertThat(Application.ball(computer, user, strike)).isEqualTo(2);
+        @Test
+        void case2(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 5));
+            int result = 2;
+            assertThat(Application.strike(computer,user)).isEqualTo(result);
+        }
+
+        @Test
+        void case3(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(5, 6, 7));
+            int result = 0;
+            assertThat(Application.strike(computer, user)).isEqualTo(result);
+        }
     }
 
     @Override
