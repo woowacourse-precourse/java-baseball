@@ -53,26 +53,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void inputNumber() {
-        /*given*/
-        List<Integer> givenNumber = new ArrayList<>();
-        givenNumber.add(2);
-        givenNumber.add(4);
-        givenNumber.add(6);
-
-        /*when*/
-
-        /*then*/
-    }
-
-    @Test
-    void checkException() {
-        /*given*/
-        /*when*/
-        /*then*/
-    }
-
-    @Test
     void strike() {
         /*given*/
         /*when*/
