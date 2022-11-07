@@ -8,7 +8,7 @@ public class Compute {
 	private static int strike;
 	private static int ball;
 
-	public static void computeResult(User user, Opponent opponent) {
+	public static boolean computeResult(User user, Opponent opponent) {
 		init();
 		List<Integer> injectNumber = user.getInjectNumber();
 		List<Integer> answer = opponent.getAnswer();
@@ -25,6 +25,11 @@ public class Compute {
 			}
 		}
 		print();
+
+		if (strike == DIGIT_LENGTH) {
+			return false;
+		}
+		return true;
 	}
 
 	private static void init() {
@@ -46,7 +51,4 @@ public class Compute {
 			System.out.println(ball+ "볼" + strike +" 스트라이크");
 		}
 	}
-
-
-
 }
