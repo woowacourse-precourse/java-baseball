@@ -10,43 +10,6 @@ import java.util.HashSet;
 
 public class Application {
 
-
-    // 파싱을 사용하지 않아 불필요해질 예정
-    static ArrayList<Integer> parseStringIntoInteger(String guess) {
-        int guessIntFormat = Integer.parseInt(guess);
-        ArrayList<Integer> parsed = new ArrayList<>();
-
-        for (int divisor = 100; divisor != 0; guessIntFormat %= divisor, divisor /= 10) {
-            parsed.add(guessIntFormat / divisor);
-        }
-        return parsed;
-    }
-
-    // Guess 내부로 들어갈 예정
-    static boolean checkValidityOfGuess(String guess) throws IllegalArgumentException {
-        Integer guessIntFormat = Integer.parseInt(guess);
-        ArrayList<Integer> guessParsed = parseStringIntoInteger(guess);
-        ;
-        Set<Integer> uniqueElementOnly;
-
-        if (guessIntFormat < 123 || guessIntFormat > 987) {
-            throw new IllegalArgumentException("범위를 준수하지 않았습니다.");
-        }
-
-        for (Integer toCheck : guessParsed) {
-            if (toCheck == 0) {
-                throw new IllegalArgumentException("1부터 9까지의 수로만 이루어져야 합니다.");
-            }
-        }
-
-        uniqueElementOnly = new HashSet<>(guessParsed);
-        if (uniqueElementOnly.size() != guessParsed.size()) {
-            throw new IllegalArgumentException("숫자의 중복이 있습니다.");
-        }
-
-        return true;
-    }
-
     //BallStrikeChecker 내부로 들어갈 예정
     static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> guessList, ArrayList<Integer> answers) {
         ArrayList<Integer> ballStrikeCnt = new ArrayList<>() {{
@@ -94,16 +57,16 @@ public class Application {
         ArrayList<Integer> guessParsed;
         ArrayList<Integer> ballStrikeCnt;
 
-        guessParsed = parseStringIntoInteger(guess);
+   /*     guessParsed = parseStringIntoInteger(guess);
         ballStrikeCnt = countBallAndStrike(guessParsed, answer);
-        showResult(ballStrikeCnt);
+        showResult(ballStrikeCnt);*/
     }
 
     static void runLoop() {
 
         RandomNumberGenerator answer = new RandomNumberGenerator();
-        /*  Guess myGuess;
-        BallStrikeChecker checker = new BallStrikeChecker();
+        Guess myGuess;
+        /*  BallStrikeChecker checker = new BallStrikeChecker();
         ResultBoard board;
 
         while(checker.threeStrike){
