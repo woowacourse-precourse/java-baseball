@@ -13,8 +13,17 @@ public class Score {
         this.strike = Strike.from(strikeCount);
     }
 
+    private Score() {
+        this.ball = Ball.ZERO;
+        this.strike = Strike.ZERO;
+    }
+
     public static Score calculate(Digits player, Digits computer) {
         return new Score(player, computer);
+    }
+
+    public static Score ZERO() {
+        return new Score();
     }
 
 
