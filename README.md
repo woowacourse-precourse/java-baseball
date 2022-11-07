@@ -173,7 +173,7 @@ while (computer.size() < 3) {
 6. 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 >'게임 진행의 경우 서로 다른 3자리의 수를 입력하여야 하며, 게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수'
 라는 입력 조건을 만족하지 않는 수를 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료시킨다.
-* 게임 진행에 있어 입력 받는 수의 경우 3자리 자연수 외의 실수는 인정하지 않으며, 이 경우 `IllegalArgument`를 통해 예외 처리한다.
+* 게임 진행에 있어 입력 받는 수의 경우 3자리 자연수 외의 실수는 인정하지 않으며, 이 경우 `IllegalArgumentException`을 통해 예외 처리한다.
 * 게임 종료 시 입력 받는 수의 경우 1과 2 이외의 수는 모두 `IllegalArgumentException`을 통해 예외 처리한다.
 
 
