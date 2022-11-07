@@ -27,11 +27,11 @@ public class BaseBall extends RandomMaker {
         return new ArrayList<>(numbers);
     }
 
-    public Answer compareAnswer(List<Integer> input) {
+    public Score compareAnswer(List<Integer> input) {
         int strike = findStrike(input);
         int ball = findBall(input);
 
-        return new Answer(strike, ball);
+        return new Score(strike, ball);
     }
 
     private int findStrike(List<Integer> input) {

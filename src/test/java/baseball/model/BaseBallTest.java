@@ -58,7 +58,7 @@ class BaseBallTest {
     @DisplayName("정답과 입력값을 비교하는 메서드 테스트")
     @ParameterizedTest
     @MethodSource("compareInputAndAnswer")
-    void compareAnswer(List<Integer> inputs, List<Integer> answers, Answer answer) {
+    void compareAnswer(List<Integer> inputs, List<Integer> answers, Score answer) {
         //given
         BaseBall baseBall = new BaseBall() {
             @Override
@@ -68,7 +68,7 @@ class BaseBallTest {
         };
 
         //when
-        Answer score = baseBall.compareAnswer(inputs);
+        Score score = baseBall.compareAnswer(inputs);
 
         //then
         assertThat(score).isEqualTo(answer);
@@ -76,12 +76,12 @@ class BaseBallTest {
 
     private static Stream<Arguments> compareInputAndAnswer() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), new Answer(3, 0)),
-                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 5), new Answer(2, 0)),
-                Arguments.of(List.of(3, 2, 1), List.of(1, 2, 3), new Answer(1, 2)),
-                Arguments.of(List.of(3, 2, 1), List.of(1, 3, 2), new Answer(0, 3)),
-                Arguments.of(List.of(1, 2, 3), List.of(1, 3, 7), new Answer(1, 1)),
-                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 7), new Answer(0, 0))
+                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 3), new Score(3, 0)),
+                Arguments.of(List.of(1, 2, 3), List.of(1, 2, 5), new Score(2, 0)),
+                Arguments.of(List.of(3, 2, 1), List.of(1, 2, 3), new Score(1, 2)),
+                Arguments.of(List.of(3, 2, 1), List.of(1, 3, 2), new Score(0, 3)),
+                Arguments.of(List.of(1, 2, 3), List.of(1, 3, 7), new Score(1, 1)),
+                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 7), new Score(0, 0))
         );
     }
 }
