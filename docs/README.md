@@ -9,6 +9,7 @@
   - userInput 값에 따라 true, false return 테스트
 
 
+
 * wrongInputValueCheck 함수에 대하여
   - 각 자리 수가 서로 다른 사용자 입력값을 받지 않았을 때 false 를 return 하는지 테스트
   - 각 자리 수가 서로 다른 사용자 입력값을 받았을 때 true 를 return 하는지 테스트
