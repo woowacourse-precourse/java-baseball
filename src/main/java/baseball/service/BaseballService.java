@@ -29,6 +29,11 @@ public class BaseballService {
         baseballMachine.matchNumber();
     }
 
+    // 힌트 출력 기능
+    public void displayHint() {
+        System.out.println(baseballMachine.getHint());
+    }
+
     // 게임 클리어 유무 확인
     public boolean isCorrect() {
         if (baseballMachine.checkAnswer()) {
