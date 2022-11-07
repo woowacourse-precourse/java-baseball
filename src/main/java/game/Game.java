@@ -16,8 +16,16 @@ public class Game {
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-
+            initialize();
+            play(computer.getNumber(), user.getNumber());
         } while (waiting());
+    }
+
+    public void initialize() {
+        computer.clearNumber();
+        computer.setNumber();
+        user.clearNumber();
+        hint.clearHint();
     }
 
     public void play(List<Integer> computerNumbers, List<Integer> userNumbers) {
