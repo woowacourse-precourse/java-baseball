@@ -80,6 +80,15 @@ public class Application {
         return list.stream().collect(Collectors.joining(" "));
     }
 
+    public static boolean isCorrectAnswer(String count){
+        if (count.equals("03")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public static String readInput(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
