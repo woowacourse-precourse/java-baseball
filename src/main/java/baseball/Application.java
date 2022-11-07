@@ -1,7 +1,9 @@
 package baseball;
 
+import baseball.model.Ball;
 import baseball.utils.InputNumberUtil;
 import baseball.utils.RandomNumberGeneratorUtil;
+import baseball.utils.StrikeBallUtil;
 
 import java.util.List;
 
@@ -33,14 +35,14 @@ public class Application {
 
             String user = InputNumberUtil.inputNumber();
 
-            List<Integer> strikeAndBall = game.findStrikeAndBall(user, computer);
+            Ball ball = StrikeBallUtil.findStrikeAndBall(user, computer);
 
-            int strike = strikeAndBall.get(0);
-            int ball = strikeAndBall.get(1);
+            int strikeCount = ball.getStrike();
+            int ballCount = ball.getBall();
 
-            game.printStrikeAndBall(strike, ball);
+            game.printStrikeAndBall(strikeCount, ballCount);
 
-            if (game.isCorrectAllNumber(strike)) {
+            if (game.isCorrectAllNumber(strikeCount)) {
                 System.out.println(GAME_FINISH);
                 System.out.println(RESTART_GAME);
                 restart = game.getRestart();
