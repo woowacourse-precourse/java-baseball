@@ -38,4 +38,17 @@ public class Application {
 
         return count;
     }
+
+    public static int getBallCount(List<Integer> computerNum, String input) {
+        int count = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int index = computerNum.indexOf(input.charAt(i) - '0');
+            if (index != -1 && index != i) {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
