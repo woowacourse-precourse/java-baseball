@@ -31,7 +31,21 @@ public class BaseBallGame {
     public String getRestartToken() {
         return restartToken;
     }
+
     public void inputUserNumber() {
         userNumber = Console.readLine();
+    }
+
+    public int isEqualToComputerNumber() {
+        if (computer.getFirstRandomNumber() != (int)userNumber.charAt(0)) {
+            return 0;
+        }
+        if (computer.getSecondRandomNumber() != (int)userNumber.charAt(1)) {
+            return 0;
+        }
+        if (computer.getThirdRandomNumber() != (int)userNumber.charAt(2)) {
+            return 0;
+        }
+        return 1;
     }
 }
