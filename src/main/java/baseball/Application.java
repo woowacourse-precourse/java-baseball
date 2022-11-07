@@ -8,6 +8,10 @@ public class Application {
     public static void main(String[] args) {
         Map<String, List<Integer>> inputValue = new HashMap<>();
         int start = 1;
+        while (start == 1) {
+            inputValue = inputUser();
+            untilEnd(inputValue);
+        }
     }
     public static List<Integer> inputComputer() {
         List<Integer> computer = new ArrayList<>();
@@ -109,5 +113,13 @@ public class Application {
             strike.add(computerValue);
         }
         return strike;
+    }
+    public static void untilEnd(Map<String, List<Integer>> inputValue) {
+        while (compareComputerAndUser(inputValue.get("computer"), inputValue.get("user"))) {
+            List<Integer> user = new ArrayList<>();
+            userValue(user);
+            inputValue.replace("user", user);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
