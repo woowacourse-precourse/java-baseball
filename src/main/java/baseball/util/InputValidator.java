@@ -8,6 +8,7 @@ public class InputValidator {
     private static final String INPUT_THREE_NUMBERS = "3자리의 숫자를 입력해주세요.";
     private static final String CANNOT_INPUT_ZERO = "숫자 0은 입력할 수 없습니다.";
     private static final int MAX_INPUT_LENGTH = 3;
+    public static final char ZERO = '0';
 
     private static Set<Character> duplicateChecker;
 
@@ -29,18 +30,18 @@ public class InputValidator {
 
     private static void hasZero(String input) {
         for (int index = 0; index < MAX_INPUT_LENGTH; index++) {
-            ifZeroThrowException(input, index);
+            ifZeroThrowException(input.charAt(index));
         }
     }
 
-    private static void ifZeroThrowException(String input, int index) {
-        if (isZero(input, index)) {
+    private static void ifZeroThrowException(char number) {
+        if (isZero(number)) {
             throw new IllegalArgumentException(CANNOT_INPUT_ZERO);
         }
     }
 
-    private static boolean isZero(String input, int index) {
-        return input.charAt(index) == 0;
+    private static boolean isZero(char number) {
+        return number == ZERO;
     }
 
     private static void checkDuplicateNumber(String input) {
