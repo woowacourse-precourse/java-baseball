@@ -31,4 +31,11 @@ public class GameServiceImpl implements GameService{
         gameMessenger.sendHint(hint);
         return gameReferee.judgeIsAnswer(hint);
     }
+
+    @Override
+    public boolean endOrRestart() {
+        final String response = gameMessenger.requestContinueOrStop();
+        gameValidator.validateContinueOrStop(response);
+        return gameReferee.judgeContinueOrStop(response);
+    }
 }

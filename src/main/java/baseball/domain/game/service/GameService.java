@@ -9,4 +9,6 @@ public interface GameService {
     void validateNumber(String number);
 
     boolean judge(Balls playerBall, Balls answerBall);
+
+    boolean endOrRestart();
 }

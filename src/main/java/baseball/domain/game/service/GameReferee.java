@@ -8,4 +8,6 @@ public interface GameReferee {
     Hint createHint(Balls playerBall, Balls answerBall);
 
     boolean judgeIsAnswer(Hint hint);
+
+    boolean judgeContinueOrStop(String response);
 }

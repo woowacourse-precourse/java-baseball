@@ -27,4 +27,8 @@ public class GameFacade {
     public boolean judge(Balls playerBall, Balls answerBall) {
         return gameService.judge(playerBall, answerBall);
     }
+
+    public boolean gameEndOrRestart() {
+        return gameService.endOrRestart();
+    }
 }

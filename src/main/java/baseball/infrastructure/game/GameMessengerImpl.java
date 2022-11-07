@@ -29,6 +29,12 @@ public class GameMessengerImpl implements GameMessenger {
         hintMessenger.printMessage(hint);
     }
 
+    @Override
+    public String requestContinueOrStop() {
+        System.out.println(TextMessage.CONTINUE_OR_END);
+        return Console.readLine();
+    }
+
     private HintMessenger routingHintMessenger(Hint hint) {
         return hintMessengers.stream()
                 .filter(hintMessenger -> hintMessenger.support(hint))

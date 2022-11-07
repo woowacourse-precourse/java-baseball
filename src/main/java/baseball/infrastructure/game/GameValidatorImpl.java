@@ -20,6 +20,13 @@ public class GameValidatorImpl implements GameValidator {
         isNotDuplicate(number);
     }
 
+    @Override
+    public void validateContinueOrStop(String response) {
+        if (!(response.equals(Number.CONTINUE) || response.equals(Number.STOP))) {
+            throw new IllegalArgumentException(ErrorMessage.INCORRECT_RESPONSE);
+        }
+    }
+
     private void isThreeDigits(String number) {
         if (number.toCharArray().length != Number.THREE) {
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_THREE_DIGITS);
