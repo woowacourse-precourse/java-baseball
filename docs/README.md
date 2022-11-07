@@ -46,7 +46,7 @@
 - [x] 매개변수들을 strikeNumber와 ballNumber에 저장
 - [x] strikeNumber이 3인지 비교
 - [x] true이면, "3스트라이크" 출력
-- [ ] true을 리턴
+- [x] true을 리턴
 - [ ] strikeNumber가 0이고, ballNumber가 0인지 비교
 - [ ] true이면 "낫싱" 출력
 - [ ] strikeNumber가 0이고, ballNumber가 0보다 큰지 비교
