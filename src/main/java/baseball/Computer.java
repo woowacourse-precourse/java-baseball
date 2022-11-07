@@ -35,4 +35,38 @@ public class Computer {
         }
         return true;
     }
+
+    public List<Integer> compareWithAnswer(List<Integer> numbers) {
+        if(!isValidNumber(numbers))
+            throw new IllegalArgumentException();
+
+        List<Integer> result = new ArrayList<>();
+        result.add(getStrikeCnt(numbers));
+        result.add(getBallCnt(numbers));
+        return result;
+    }
+
+    private Integer getStrikeCnt(List<Integer> numbers) {
+        Integer cntStrike = 0;
+        for(int i=0; i<3; i++) {
+            if(numbers.get(i)==answerNumber.get(i)) {
+                cntStrike++;
+            }
+        }
+        return cntStrike;
+    }
+
+    private Integer getBallCnt(List<Integer> numbers) {
+        Integer cntBall = 0;
+        if(numbers.get(0)==answerNumber.get(1) || numbers.get(0)==answerNumber.get(2)) {
+            cntBall++;
+        }
+        if(numbers.get(1)==answerNumber.get(0) || numbers.get(1)==answerNumber.get(2)) {
+            cntBall++;
+        }
+        if(numbers.get(2)==answerNumber.get(0) || numbers.get(2)==answerNumber.get(1)) {
+            cntBall++;
+        }
+        return cntBall;
+    }
 }
