@@ -1,6 +1,5 @@
 package baseball.domain;
 
-
 import baseball.utils.NumberValidator;
 import java.util.List;
 import java.util.stream.Collectors;
