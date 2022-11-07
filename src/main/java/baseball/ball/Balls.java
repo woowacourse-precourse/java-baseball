@@ -18,7 +18,7 @@ public class Balls {
                 .anyMatch(x -> x.getBallNumber() == ball.getBallNumber());
     }
 
-    public void containBalls(Ball ball) {
+    public void addBall(Ball ball) {
         balls.add(ball);
     }
 }

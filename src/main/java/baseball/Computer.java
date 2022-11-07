@@ -23,7 +23,7 @@ public class Computer {
         while (!computerBalls.validateBallsSize()) {
             Ball candidateBall = createComputerBall();
             if (!computerBalls.hasBall(candidateBall)) {
-                computerBalls.containBalls(candidateBall);
+                computerBalls.addBall(candidateBall);
             }
         }
         return computerBalls;
