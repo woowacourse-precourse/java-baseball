@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     List<Integer> targetNumber;
-    private boolean isPlayerWin=false;
+    protected boolean isPlayerWin=false;
 
     public void generateTargetNumber() {
         while(targetNumber.size() < 3) {
