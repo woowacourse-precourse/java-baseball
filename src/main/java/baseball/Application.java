@@ -118,18 +118,46 @@ public class Application {
         System.out.println(resultOutput.toString().strip());
     }
 
+    /**
+     * 게임종료 후 새로 시작할지를 플레이어로부터 입력받아 반환
+     *
+     * @return 새로 시작할지 여부
+     * @throws IllegalArgumentException 새로 시작/종료 명령어 이외의 명령어를 입력한 경우
+     */
+    public static boolean isContinue() throws IllegalArgumentException {
+        String playerInput;
+        final String CONTINUE_COMMAND = "1";
+        final String QUIT_COMMAND = "2";
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        playerInput = Console.readLine();
+        if (!playerInput.equals(CONTINUE_COMMAND) && !playerInput.equals(QUIT_COMMAND)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (playerInput.equals(QUIT_COMMAND)) {
+            return false;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String answer = generateRandomNumberString();
-        int strike = 0;
-        int ball = 0;
+        do {
+            String answer = generateRandomNumberString();
+            int strike = 0;
+            int ball = 0;
 
-        while (strike != 3) {
-            String guessNumberString = getGuessNumberInput();
-            strike = calcStrikeCount(answer, guessNumberString);
-            ball = calcBallCount(answer, guessNumberString);
-            printGuessResult(strike, ball);
-        }
+            while (strike != 3) {
+                String guessNumberString = getGuessNumberInput();
+
+                strike = calcStrikeCount(answer, guessNumberString);
+                ball = calcBallCount(answer, guessNumberString);
+                printGuessResult(strike, ball);
+            }
+        } while (isContinue());
     }
 }
