@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,6 +14,12 @@ public class Balls {
         balls = ballNumbers.stream()
                 .map(Ball::new)
                 .collect(Collectors.toList());
+    }
+
+    public Balls(String numbers) {
+        this(Arrays.asList(numbers.split("")).stream()
+                .map(s->Integer.parseInt(s))
+                .collect(Collectors.toList()));
     }
 
 
@@ -46,5 +53,17 @@ public class Balls {
             return Optional.of(Judgement.BALL);
         }
         return Optional.empty();
+    }
+
+    public Result play(Balls playerBalls) {
+        Result result = new Result();
+        for (int i=0; i<3; i++) {
+            result.report(play(i,playerBalls.ballOf(i)).orElse(Judgement.NOTHING));
+        }
+        return result;
+    }
+
+    private Ball ballOf(int i) {
+        return balls.get(i);
     }
 }

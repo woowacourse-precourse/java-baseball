@@ -62,11 +62,4 @@ public class BallsTest {
         listOfArguments.add(Arguments.of(List.of(1,1,2)));
         return listOfArguments.stream();
     }
-    private static Stream<Arguments> generateForPlay() {
-        List<Arguments> listOfArguments = new LinkedList<>();
-        listOfArguments.add(Arguments.of(List.of(1,2)));
-        listOfArguments.add(Arguments.of(List.of(1,2,3,4)));
-        listOfArguments.add(Arguments.of(List.of(1,1,2)));
-        return listOfArguments.stream();
-    }
 }
