@@ -22,11 +22,18 @@ public class Application {
         return Console.readLine();
     }
 
+    private static int game_reset(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Integer.parseInt(Console.readLine());
+    }
+
     private static int compare(List<Integer> com_num){
         String user_num;
         do{
             user_num = user_num_input();
         } while ();
+        return game_reset();
     }
 
     private static void game(){
@@ -35,7 +42,7 @@ public class Application {
 
         do {
             rand_num_decision(computer);
-            compare(computer);
+            game_status = compare(computer);
         } while (game_status == 1);
     }
 
