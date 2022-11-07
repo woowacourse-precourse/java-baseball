@@ -28,4 +28,9 @@ public class Application {
 
 
     }
+
+    static boolean isValidSelection(String selection){
+        List<String> candidates = List.of("1", "2");
+        return  candidates.contains(selection);
+    }
 }
