@@ -3,7 +3,8 @@ package baseball.domain;
 import baseball.dto.ScoreResult;
 import baseball.dto.ScoreResultType;
 import baseball.util.ShowGameMessage;
-import baseball.util.input.ContinueInput;
+import baseball.util.input.GameEndInput;
+import baseball.util.input.UserInput;
 import baseball.util.input.NumberBallsInput;
 import java.util.List;
 
@@ -31,8 +32,8 @@ public class NumberBaseballGame {
     }
 
     private void endGame() {
-        ContinueInput continueInput = new ContinueInput();
-        if (continueInput.continueGame()) {
+        GameEndInput gameEndInput = new GameEndInput(UserInput.get());
+        if (gameEndInput.continueGame()) {
             scoreBoard = new ScoreBoard(NumberBall.systemNumberBalls());
             return;
         }
@@ -40,7 +41,7 @@ public class NumberBaseballGame {
     }
 
     private List<NumberBall> getUserNumberBall() throws IllegalArgumentException {
-        NumberBallsInput numberBallsInput = new NumberBallsInput();
+        NumberBallsInput numberBallsInput = new NumberBallsInput(UserInput.get());
         return numberBallsInput.toNumberBalls();
     }
 }
