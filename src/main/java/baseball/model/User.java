@@ -43,4 +43,9 @@ public class User {
         return userNumber.length() != MAX_NUMBER_SIZE;
     }
 
+    public boolean checkSpace(String userNumber) {
+        return userNumber.contains(" ");
+    }
+
+
 }
