@@ -2,27 +2,26 @@ package baseball;
 
 public class CheckException {
 
-    public static boolean restartStatusValid(String restartStatus) {
+    public static boolean restartStatusValid(String restartStatus) throws ProgressException{
 
         if (!(restartStatus.equals("1")) && !(restartStatus.equals("2"))) {
-            throw new IllegalArgumentException();
+            throw new ProgressException("재시작 입력값이 잘못 입력되었습니다. 게임을 종료합니다.");
         }
-
         return true;
     }
 
-    public static void inputGameValid(String inputValue) {
+    public static void inputGameValid(String inputValue) throws ProgressException{
 
         if (inputValue.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new ProgressException("입력값의 길이가 다릅니다. 게임을 종료합니다.");
         }
 
         if (!isNumeric(inputValue)) {
-            throw new IllegalArgumentException();
+            throw new ProgressException("입력값의 형식이 다릅니다. 게임을 종료합니다.");
         }
 
         if (!isDiffAllDigits(inputValue)) {
-            throw new IllegalArgumentException();
+            throw new ProgressException("입력값에 중복이 있습니다. 게임을 종료합니다.");
         }
 
     }

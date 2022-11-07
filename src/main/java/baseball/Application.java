@@ -20,16 +20,9 @@ public class Application {
             List<Integer> targetNumber = makeRandomWithoutDuplicate();
             System.out.println(targetNumber);
 
-            try {
-                Game game = new Game(scanner);
-                game.play(targetNumber);
-                endingWorking(scanner);
-            } catch (IllegalArgumentException e) {
-               System.out.println("입력값을 잘못 입력하셨습니다. 게임을 종료합니다.");
-                restartStatus = false;
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            Game game = new Game(scanner);
+            game.play(targetNumber);
+            endingWorking(scanner);
         } while (restartStatus);
     }
 
