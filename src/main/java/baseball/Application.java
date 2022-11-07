@@ -2,22 +2,19 @@ package baseball;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
+import java.util.Arrays;
+
 public class Application {
     public static void main(String[] args) {
         // 컴퓨터 숫자 생성
         System.out.println("숫자 야구 게임을 시작합니다.");
         int[] pcNum = genPcNum();
-        // System.out.println(pcNum[0]+" "+pcNum[1]+" "+pcNum[2]);
-
-        // 테스트용 pc - input set
-        // int[] testPc = {1,2,3};
-        // int[] testInput = {3,2,1};
 
         // 플레이어 입력값 분석
         int[] judgement = getUmpire(inputNum, pcNum);
-        // int[] judgement = getUmpire(testInput, testPc);
-        // System.out.println("ball : " + judgement[0]);
-        // System.out.println("strike : " + judgement[1]);
+
+        // 분석 결과에 따른 힌트 도출
+        String hint = getHint(judgement);
     }
     private static int[] genPcNum() {
         int[] pcNum = new int[3];
@@ -40,6 +37,19 @@ public class Application {
             }
         }    
         return judgement;
+    }
+    private static String getHint(int[] judgement) {
+        String hint;
+        if (judgement[0] + judgement[1] == 0) {
+            hint = "낫싱";
+        } else if (judgement[0] == 0) {
+            hint = String.valueOf(judgement[1]) + "스트라이크";
+        } else if (judgement[0] == 0) {
+            hint = String.valueOf(judgement[0]) + "볼";
+        } else {
+            hint = String.valueOf(judgement[0]) + "볼 " + String.valueOf(judgement[1]) + "스트라이크";
+        }
+        return hint;
     }
 
 }
