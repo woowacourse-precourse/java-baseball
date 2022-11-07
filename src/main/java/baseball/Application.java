@@ -20,6 +20,7 @@ public class Application {
             application.gamer.inputNumber();
             int ball_num = application.countBall();
             int strike_num = application.countStrike();
+            application.proposeHint(ball_num,strike_num);
         }
     }
     public int countBall() {
@@ -46,5 +47,16 @@ public class Application {
             }
         }
         return strike;
+    }
+    public void proposeHint(int ball_num,int strike_num) {
+        if (ball_num != 0) {
+            System.out.print(ball_num + "볼 ");
+        }
+        if (strike_num != 0) {
+            System.out.print(strike_num + "스트라이크");
+        }
+        if (ball_num == 0 && strike_num == 0) {
+            System.out.println("낫싱");
+        }
     }
 }
