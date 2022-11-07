@@ -1,6 +1,10 @@
 package baseball;
 
+import baseball.global.constants.Constants.Korean;
+import baseball.utils.TestUtils;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -31,5 +35,20 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    @DisplayName("게임 Start Message")
+    void printGameStartMessage_Test() {
+        // given
+        ByteArrayOutputStream output = TestUtils.setOutToByteArray();
+
+        // when
+        Application.printGameStartMessage();
+
+        // then
+        String printResult = output.toString().trim();
+        assertThat(printResult).isEqualTo(Korean.GAME_START_MESSAGE);
+        TestUtils.clearSetOutToByteArray(output);
     }
 }
