@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import com.sun.nio.sctp.IllegalReceiveException;
 
 import java.util.*;
 
@@ -16,11 +17,12 @@ public class Application {
         result.add(0); // ball 수
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         String randomNum = makeRandomNum();
 
         while(result.get(0)!=3) {
             System.out.println("숫자를 입력해 주세요. :");
-            String userNum = Console.readLine();
+            String userNum =isRightUserNum(Console.readLine());
             result = analyseNumber(randomNum, userNum);
 
             printResult(result);
@@ -29,7 +31,7 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        String choice = Console.readLine();
+        String choice = isRightChoice(Console.readLine());
         if(choice.equals("1")) {
             playBaseball();
         } else {
@@ -37,6 +39,28 @@ public class Application {
         }
 
 
+    }
+
+    private static String isRightChoice(String readLine) {
+        if(!readLine.equals("1") && !readLine.equals("2")) {
+            throw new IllegalArgumentException("올바른 값을 입력하세요. 게임을 종료합니다.");
+        }
+        return readLine;
+    }
+
+    public static String isRightUserNum(String readLine) throws IllegalArgumentException {
+        char[] split = readLine.toCharArray();
+        for(int i=0; i<readLine.length(); i++) {
+            if(!Character.isDigit(split[i])) {
+                throw new IllegalArgumentException("올바른 값을 입력하세요. 게임을 종료합니다.");
+            }
+        }
+
+        if(!(readLine.length()==3)) {
+            throw new IllegalArgumentException("올바른 값을 입력하세요. 게임을 종료합니다.");
+        }
+
+        return readLine;
     }
 
     public static void printResult(List<Integer> result) {
