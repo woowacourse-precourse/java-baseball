@@ -14,6 +14,12 @@ public class BaseBallDto {
         if (strike==0&&ball==0){
             return "낫싱";
         }
+        if (strike == 0) {
+            return String.format("%s볼\n", ball);
+        }
+        if (ball == 0) {
+            return String.format("%s스트라이크\n", strike);
+        }
         return String.format("%s볼 %s스트라이크\n", ball, strike);
     }
 
