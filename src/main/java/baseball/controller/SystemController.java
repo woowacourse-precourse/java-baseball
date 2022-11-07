@@ -49,4 +49,13 @@ public class SystemController {
             increase_strike_or_ball(systemScoreModel);
         }
     }
+
+    public void increase_strike_or_ball(SystemScoreModel systemScoreModel){
+        if (systemScoreModel == BALL) {
+            ball++;
+        }
+        if (systemScoreModel == STRIKE) {
+            strike++;
+        }
+    }
 }
