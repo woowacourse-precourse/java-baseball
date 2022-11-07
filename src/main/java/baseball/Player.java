@@ -12,10 +12,7 @@ public final class Player {
     private static final int END_GAME = 2;
 
     public boolean guessAnswer(Answer answer) {
-        if (answer.compare(new BaseBallNumber(stringToList(Console.readLine()))) == THREE_STRIKE) {
-            return Computer.endMessage();
-        }
-        return false;
+        return answer.compare(new BaseBallNumber(stringToList(Console.readLine()))) == THREE_STRIKE;
     }
 
     public int chooseToContinue() {

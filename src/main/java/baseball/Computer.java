@@ -6,7 +6,6 @@ import java.util.List;
 
 public final class Computer {
 
-    private static final boolean CORRECT = true;
     private static final int RANDOM_NUMBERS_LENGTH = 3;
 
     public Answer createAnswer() {
@@ -19,10 +18,5 @@ public final class Computer {
             }
         }
         return new Answer(randomNumbers);
-    }
-
-    public static boolean endMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        return CORRECT;
     }
 }
