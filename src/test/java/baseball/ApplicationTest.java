@@ -82,4 +82,10 @@ class ApplicationTest extends NsTest {
 		assertThat(0).isEqualTo(game.getStrikeCount());
 	}
 
+	@Test
+	void 입력_메세지() {
+
+		assertThat("숫자를 입력해주세요 : ").isEqualTo(systemMessage.PrintProgress());
+	}
+
 }
