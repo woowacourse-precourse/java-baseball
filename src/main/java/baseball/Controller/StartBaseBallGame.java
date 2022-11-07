@@ -9,8 +9,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static baseball.Constants.*;
+import static baseball.Domain.Computer.*;
+import static baseball.Domain.User.*;
 import static baseball.Message.OutputMessage.*;
-import static baseball.Validator.*;
+
 
 public class StartBaseBallGame {
 
@@ -24,15 +26,13 @@ public class StartBaseBallGame {
     private static void playGame() {
         int strikeResult;
         int ballResult;
-        List<Integer> computerNumber = generateComputerNumber();
-        String computerNumberResult = computerNumberListToString(computerNumber);
+        String computerNumberResult = computerRandomNumberResult();
         do {
             numberInputMessage();
-            String userInput = Console.readLine();
-            System.out.println("컴퓨터의 숫자 : " + computerNumberResult);
-            checkedValidate(userInput);
-            ballResult = countBall(userInput, computerNumberResult);
-            strikeResult = countStrike(userInput, computerNumberResult);
+            String userInput = inputUserNumber();
+            System.out.println("컴퓨터의 숫자 : " + computerNumberResult); // 지우는거
+            ballResult = countBall(userInput, computerNumberResult); // 판단
+            strikeResult = countStrike(userInput, computerNumberResult); // 판단
             if (!checkedNotThing(ballResult, strikeResult)) {
                 if (ballResult > ZERO) {
                     System.out.print(ballResult+ "볼 ");
@@ -54,30 +54,6 @@ public class StartBaseBallGame {
             return false;
         }
         throw new IllegalArgumentException(ILLEGAL_ERR_MSG);
-    }
-    private static void checkedValidate(String input) {
-        validateInputRange(input);
-        checkDuplicatedNumber(input);
-        validateContainZero(input);
-    }
-    private static List<Integer> generateComputerNumber() {
-        List<Integer> computerNumberList = new ArrayList<>();
-        for (int i = 0; i < RESULT_SIZE; i++) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (computerNumberList.contains(randomNumber)) {
-                i--;
-            }
-            if (!computerNumberList.contains(randomNumber)) {
-                computerNumberList.add(randomNumber);
-            }
-        }
-        return computerNumberList;
-    }
-
-    private static String computerNumberListToString(List<Integer> computerNumberList) {
-        return computerNumberList.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining());
     }
 
     /**
