@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Game {
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다";
@@ -31,19 +32,26 @@ public class Game {
         do {
             resetCount();
             userNumber = user.getUserNumber();
-            for (int i = 0; i < 3; i++) {
-                calculateCount(computerNumber, userNumber.get(i), i);
-            }
+            calculateCount(computerNumber, userNumber);
             printMessage(strike, ball);
         } while (this.strike != 3);
     }
 
-    void calculateCount(List<Integer> computerNum, int userNumber, int idx) {
+    void calculateCount(List<Integer> computerNum, List<Integer> userNum) {
+        String computerNumString = computerNum.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        String userNumberString = userNum.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+
         for (int i = 0; i < 3; i++) {
-            if (computerNum.get(i) == userNumber && i == idx) {
-                strike++;
-            } else if (computerNum.get(i) == userNumber) {
-                ball++;
+            int idx = userNumberString.indexOf(computerNumString.charAt(i));
+
+            if (idx == i) {
+                this.strike++;
+            } else if (idx != -1) {
+                this.ball++;
             }
         }
     }
