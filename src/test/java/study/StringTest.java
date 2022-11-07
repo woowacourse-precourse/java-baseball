@@ -1,6 +1,9 @@
 package study;
 
+import baseball.BaseballComputer;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -46,5 +49,11 @@ public class StringTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
     }
-
+    @Test
+    void 숫자_생성(){
+        BaseballComputer baseballComputer = new BaseballComputer();
+        baseballComputer.createRandomNumber();
+        List<Integer> random = baseballComputer.getRandomNumber();
+        assertThat(random).isNotEmpty();
+    }
 }
