@@ -12,6 +12,29 @@ public class Computer {
         this.answer = createAnswer();
     }
 
+    public String getScore(String inputNum) {
+        StringBuilder sb = new StringBuilder();
+
+        int strike = countStrike(inputNum);
+        int ball = countBall(inputNum);
+
+        if (ball != 0) {
+            sb.append(ball).append("볼");
+        }
+
+        if (strike != 0) {
+            if (sb.length() != 0) sb.append(" ");
+
+            sb.append(strike).append("스트라이크");
+        }
+
+        if (sb.length() == 0) {
+            sb.append("낫싱");
+        }
+
+        return sb.toString();
+    }
+
     public int countBall(String inputNum) {
         int count = 0;
 

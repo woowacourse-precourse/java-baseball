@@ -65,8 +65,6 @@ class ComputerTest {
                 .append(result.getAnswer().charAt(0))
                 .append(result.getAnswer().charAt(1));
 
-        System.out.println(sb);
-
         assertThat(result.countBall(sb.toString()))
                 .isEqualTo(3);
 
@@ -86,6 +84,52 @@ class ComputerTest {
 
         assertThat(result.countBall("000"))
                 .isEqualTo(0);
+
+    }
+
+    @Test
+    void total_점수_확인_3스트라이크() {
+        Computer result = new Computer();
+
+        assertThat(result.getScore(result.getAnswer()))
+                .isEqualTo("3스트라이크");
+
+    }
+
+    @Test
+    void total_점수_확인_3볼() {
+        Computer result = new Computer();
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(result.getAnswer().charAt(2))
+                .append(result.getAnswer().charAt(0))
+                .append(result.getAnswer().charAt(1));
+
+        assertThat(result.getScore(sb.toString()))
+                .isEqualTo("3볼");
+
+    }
+
+    @Test
+    void total_점수_확인_2볼_1스트라이크() {
+        Computer result = new Computer();
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(result.getAnswer().charAt(2))
+                .append(result.getAnswer().charAt(1))
+                .append(result.getAnswer().charAt(0));
+
+        assertThat(result.getScore(sb.toString()))
+                .isEqualTo("2볼 1스트라이크");
+
+    }
+
+    @Test
+    void total_점수_확인_낫싱() {
+        Computer result = new Computer();
+
+        assertThat(result.getScore("000"))
+                .isEqualTo("낫싱");
 
     }
 

@@ -15,10 +15,8 @@ public class Game {
 
             gameException.inputException(inputNum);
 
-            int strike = computer.countStrike(inputNum);
-            int ball = computer.countBall(inputNum);
 
-            endPoint = checkScore(strike, ball);
+            endPoint = checkEndPoint(computer, inputNum);
         }
 
         endGame(gameException);
@@ -36,10 +34,10 @@ public class Game {
         }
     }
 
-    private boolean checkScore(int strike, int ball) {
-        System.out.println(getScore(strike, ball));
+    private boolean checkEndPoint(Computer computer, String inputNum) {
+        System.out.println(computer.getScore(inputNum));
 
-        if (strike == 3) {
+        if (computer.countStrike(inputNum) == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
         }
@@ -47,24 +45,5 @@ public class Game {
         return true;
     }
 
-    private String getScore(int strike, int ball) {
-        StringBuilder sb = new StringBuilder();
-
-        if (ball != 0) {
-            sb.append(ball).append("볼");
-        }
-
-        if (strike != 0) {
-            if (sb.length() != 0) sb.append(" ");
-
-            sb.append(strike).append("스트라이크");
-        }
-
-        if (sb.length() == 0) {
-            sb.append("낫싱");
-        }
-
-        return sb.toString();
-    }
 
 }
