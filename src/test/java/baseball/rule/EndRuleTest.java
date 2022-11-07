@@ -39,12 +39,4 @@ public class EndRuleTest {
         boolean isProgramEnd = EndRule.isProgramEnd("2");
         assertThat(isProgramEnd).isEqualTo(true);
     }
-
-    @Test
-    @DisplayName("유저가 1과 2 이외의 값 입력시 IllegalArgumentException 예외 발생")
-    void 유저입력값_1과2_이외값_입력시_예외발생() {
-        Assertions.assertThatThrownBy(
-            () -> EndRule.isProgramEnd("3")
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
 }
