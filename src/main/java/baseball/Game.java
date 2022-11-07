@@ -73,13 +73,13 @@ public class Game {
             throw new IllegalArgumentException();
         } else if (!checkUserInputNumber(userInputNumber)) {
             throw new IllegalArgumentException();
-        } else if (checkUserInputDuplicateNumber(userInputNumber)) {
+        } else if (!checkUserInputDuplicateNumber(userInputNumber)) {
             throw new IllegalArgumentException();
         }
     }
 
     public static boolean checkUserInputLength(String userInputNumber) {
-        return userInputNumber.length() == NUMBER_SIZE;
+        return NUMBER_SIZE.equals(userInputNumber.length());
     }
 
     public static boolean checkUserInputContainZero(String userInputNumber) {
@@ -96,6 +96,7 @@ public class Game {
     }
 
     public static boolean checkUserInputDuplicateNumber(String userInputNumber) {
-        return userInputNumber.length() == Arrays.stream(userInputNumber.split("")).distinct().count();
+        int distinctCount = (int) Arrays.stream(userInputNumber.split("")).distinct().count();
+        return userInputNumber.length() == distinctCount;
     }
 }
