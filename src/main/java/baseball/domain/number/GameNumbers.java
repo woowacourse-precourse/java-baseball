@@ -17,6 +17,9 @@ public class GameNumbers {
 
     private final List<GameNumber> gameNumbers;
 
+    /**
+     * 컴퓨터 정답을 생성하는 기본 생성자
+     */
     public GameNumbers() {
         Set<Integer> uniqueNumbers = new HashSet<>();
 
@@ -34,6 +37,11 @@ public class GameNumbers {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * 플레이어가 입력한 정답을 List GameNumber로 변환하는 생성자
+     *
+     * @param playerAnswer 플레이어가 입력한 정답 문자열
+     */
     public GameNumbers(String playerAnswer) {
         validatePlayerAnswer(playerAnswer);
 
