@@ -40,4 +40,20 @@ public class Game {
         }
         return Ballnum;
     }
+
+    public void resultHint(int toStrike, int toBall){
+        if(toStrike > 0 && toBall > 0){
+            System.out.println(toStrike + "스트라이크" + toBall + "볼");
+        }
+        else if(toStrike > 0){
+            System.out.println(toStrike + "스트라이크");
+        }
+        else if(toBall > 0){
+            System.out.println(toBall + "볼");
+        }
+        else if(toStrike == 0 && toBall == 0){
+            System.out.println("낫싱");
+        }
+
+    }
 }
