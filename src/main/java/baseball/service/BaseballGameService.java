@@ -1,9 +1,11 @@
 package baseball.service;
 
 
+import baseball.domain.Computer;
 import baseball.domain.User;
 import baseball.exception.InputUserNumberException;
 import baseball.view.BaseballGameView;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,8 @@ public class BaseballGameService {
     private BaseballGameView baseballGameView = new BaseballGameView();
 
     private User user = new User();
+
+    private Computer computer = new Computer();
 
     public void updateStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         strikeCount = 0;
@@ -72,6 +76,16 @@ public class BaseballGameService {
         return user.getSelectNumber();
     }
 
+    public void setComputerNumber() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
+        computer.setRandomNumber(randomNumbers);
+    }
 }
 
 
