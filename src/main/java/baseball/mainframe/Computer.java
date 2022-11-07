@@ -24,6 +24,6 @@ public class Computer {
                 randomNumberList.add(String.valueOf(randomNumber));
             }
         }
-        setRandomNumber(String.join("",randomNumberList));
+        setRandomNumber(String.join("", randomNumberList));
     }
 }
