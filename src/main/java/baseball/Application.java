@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        baseball();
     }
     
     public static String random(){
@@ -41,15 +41,10 @@ public class Application {
         return true;
     }
     
-    public static Boolean checkInput(String input){
+    public static Boolean checkInput(String input) throws IllegalArgumentException{
         if (input.strip().length() == 3){
-            try{
-                Integer.valueOf(input);
-                return false;
-            }
-            catch(IllegalArgumentException e){
-                return true;
-            }
+            Integer.valueOf(input);
+            return false;
         }
         else{
             return true;
@@ -73,7 +68,7 @@ public class Application {
         }
     }
     
-    public boolean compare(String answer, String input){
+    public static boolean compare(String answer, String input){
         String reply = "";
         int strike = 0, ball = 0, miss = 0;
         for(int n = 0; n < 3; n++){
@@ -106,7 +101,7 @@ public class Application {
         }
     }
     
-    public void baseball(){
+    public static void baseball(){
         boolean run = true, newRandom = false;
         String random = random();
         while(run){
