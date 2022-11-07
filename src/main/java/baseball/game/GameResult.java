@@ -30,6 +30,13 @@ public class GameResult {
         }
     }
 
+    public BaseballStatus determineCorrect() {
+        if (isWinCondition()) {
+            return BaseballStatus.CORRECT;
+        }
+        return BaseballStatus.GUESSING;
+    }
+
     public boolean isWinCondition() {
         return this.strikeCount == WIN_CONDITION;
     }

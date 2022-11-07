@@ -47,8 +47,6 @@ public class InputTest {
             String readLine = "135";
             assertThatExceptionOfType(IllegalArgumentException.class)
                     .isThrownBy(() -> Input.readLineAfterGame(readLine));
-
         }
     }
-
 }
