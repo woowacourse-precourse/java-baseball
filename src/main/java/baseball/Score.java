@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static baseball.Constant.*;
 
@@ -26,8 +27,8 @@ public class Score {
 
     private static Integer getStrike() {
         int strike = 0;
-        for (int i = 0; i < NUMBERS_LENGTH; i++) {
-            if (isStrike(computerNumbers.get(i), userNumbers.get(i))) {
+        for (int index = 0; index < NUMBERS_LENGTH; index++) {
+            if (isStrike(index)) {
                 strike += 1;
             }
         }
@@ -36,20 +37,19 @@ public class Score {
 
     private static Integer getBall() {
         int ball = 0;
-        for (int i = 0; i < NUMBERS_LENGTH; i++) {
-            if (isBall(computerNumbers, userNumbers.get(i))
-                        && !isStrike(computerNumbers.get(i), userNumbers.get(i))) {
+        for (int index = 0; index < NUMBERS_LENGTH; index++) {
+            if (isBall(index) && !isStrike(index)) {
                 ball += 1;
             }
         }
         return ball;
     }
 
-    private static boolean isStrike(Integer computerNumber, Integer userNumber) {
-        return computerNumber.equals(userNumber);
+    private static boolean isStrike(int index) {
+        return Objects.equals(computerNumbers.get(index), userNumbers.get(index));
     }
 
-    private static boolean isBall(List<Integer> computerNumbers, Integer userNumber) {
-        return computerNumbers.contains(userNumber);
+    private static boolean isBall(int index) {
+        return computerNumbers.contains(userNumbers.get(index));
     }
 }
