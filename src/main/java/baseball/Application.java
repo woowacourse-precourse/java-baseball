@@ -29,28 +29,36 @@ public class Application {
 
     public static List<Integer> makeUserCount(String input) {
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 3; i++) list.add(input.charAt(i), i);
+        for (int i = 0; i < 3; i++) list.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         return list;
     }
     public static void main(String[] args) {
 
         String input;
         Boolean replay = true;
-        List <Integer> playerCount;
+        Boolean endFlag = false;
+        List <Integer> playerCount = null;
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (replay) {
-            input = Console.readLine();
-            if (checkInput(input)) {
-                playerCount = makeUserCount(input);
-            }
-            // 여기서 baseball 클래스에서 게임구현
+            Baseball playGame = new Baseball();
 
+            while(!endFlag) {
+                System.out.print("숫자를 입력해주세요: ");
+                input = Console.readLine();
+                if (checkInput(input)) playerCount = makeUserCount(input);
+
+                if (playGame.countCheck(playerCount)) endFlag = true;
+                //endFlag = true;
+            }
+
+            replay = false;
         }
     }
 }
 
 class Baseball {
-    List<Integer> baseballCount;
+    private List<Integer> baseballCount;
     public Baseball() {
         // 카운트 랜덤 생성
         baseballCount = new ArrayList<>();
@@ -62,9 +70,42 @@ class Baseball {
         }
     }
     // 같은지 다른지 체크하는 메소드
-    // 스트라이크 볼 확인 메소드
+    // 볼 확인 -> 스트라이크 확인
     // 스트라이크 볼 출력 메소드
-    /*public Boolean countCheck(List<Integer> player) {
+    public Boolean countCheck(List<Integer> player) {
+        System.out.println(player);
+        int strike = 0;
+        int ball = 0;
 
-    }*/
+
+        for (int i = 0; i < player.size(); i++) {
+            System.out.println(player.get(i));
+            System.out.println(player.contains(baseballCount.get(i)));
+            if (player.contains(baseballCount.get(i))) ball++;
+
+            if (player.get(i) == baseballCount.get(i)) {
+                ball--;
+                strike++;
+            }
+        }
+        announceCount(strike, ball);
+        if (strike == 3) return true;
+        return false;
+    }
+    public void announceCount(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (ball == 3) {
+            System.out.println(ball +"볼");
+            return;
+        }
+        if (strike == 3) {
+            System.out.println(strike +"스트라이크");
+            return;
+        }
+
+        System.out.println(ball + "볼" + strike + "스트라이크");
+    }
 }
