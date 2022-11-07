@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class GameManagerTest {
 
     @Test
-    void checkRestartGame_return_True_Test() {
+    void checkRestartGame_메서드_1입력시_true_반환() {
 
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -19,7 +19,7 @@ public class GameManagerTest {
     }
 
     @Test
-    void checkRestartGame_return_false_Test() {
+    void checkRestartGame_메서드_2입력시_false_반환() {
 
         String input = "2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -29,7 +29,7 @@ public class GameManagerTest {
     }
 
     @Test
-    void checkRestartGame_Exception_Test() {
+    void checkRestartGame_메서드_1or2_아닌값_입력시_IllegalArgumentException_발생() {
 
         String input = "3";
         InputStream in = new ByteArrayInputStream(input.getBytes());
