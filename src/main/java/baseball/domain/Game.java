@@ -22,22 +22,17 @@ public class Game {
     public void startGame() {
         computerAnswer = computer.getComputerAnswer();
         message.initialGameMessage();
-        play();
-    }
-
-    public void play() {
 
         boolean isCorrectSet = false;
         while (!isCorrectSet) {
-            isCorrectSet = playSet();
+            isCorrectSet = startSet();
         }
-
         if (replay()) {
             startGame();
         }
     }
 
-    private boolean playSet() {
+    private boolean startSet() {
         message.askPlayerInputAnswer();
         List<String> userAnswer = user.getUserAnswer();
 
