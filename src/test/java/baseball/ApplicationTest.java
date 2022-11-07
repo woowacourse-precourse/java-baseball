@@ -90,6 +90,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void should_IllegalArgumentException_When_DigitIsNot1or2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {

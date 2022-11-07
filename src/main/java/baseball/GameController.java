@@ -41,6 +41,19 @@ public class GameController {
 
     public void endGame() {
         Message.endGame();
+        Message.replay();
+
+        int checkReplay = Integer.parseInt(Console.readLine());
+
+        if (!Exception.isValidNumber(checkReplay)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (checkReplay == 1) {
+            start();
+        } else if (checkReplay == 2) {
+            return;
+        }
     }
 
     public static String hint(String userNumber, String goalNumber) {
