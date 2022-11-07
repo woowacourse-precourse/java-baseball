@@ -13,15 +13,16 @@ public class GameProgram {
     private List<Integer> userNumList;
 
     private boolean endGame = false;
+    private boolean endError = false;
     private String input;
     private int ball;
     private int strike;
 
-    public void start(){
-        UserNumber user = new UserNumber();
-        CalculateScore calculator = new CalculateScore();
-        ComputerNumber computer = new ComputerNumber();
+    private final UserNumber user = new UserNumber();
+    private final CalculateScore calculator = new CalculateScore();
+    private final ComputerNumber computer = new ComputerNumber();
 
+    public void start(){
         computer.makeNumber();
         computerNumList = computer.getNumbers();
 
@@ -55,7 +56,7 @@ public class GameProgram {
             }
 
             if (strike == 3) {
-
+                gameContinue();
             }
         }
     }
@@ -67,5 +68,25 @@ public class GameProgram {
             ball++;
         }
     }
-    
+
+    private void gameContinue() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        endError = false;
+
+        while (!endError) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            input = Console.readLine();
+
+            if (input.equals("2")) {
+                endError = true;
+                endGame = true;
+            } else if (input.equals("1")) {
+                computer.makeNumber();
+                computerNumList = computer.getNumbers();
+
+                calculator.setComputerNumber(computerNumList);
+                endError = true;
+            }
+        }
+    }
 }
