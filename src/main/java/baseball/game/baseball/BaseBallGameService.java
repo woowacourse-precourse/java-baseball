@@ -3,17 +3,18 @@ package baseball.game.baseball;
 import baseball.domain.baseball.GameNumbers;
 import baseball.domain.baseball.BaseBallGamePlayer;
 import baseball.domain.baseball.BaseBallGameResult;
+import baseball.util.NumberGenerator;
 
 public class BaseBallGameService implements GameService {
 
-    private final GameNumbers gameNumbers;
+    private final GameNumbers computerNumbers;
     private final int LIMITED_NUMBER_SIZE = 3;
     public static final String inputMessage = "숫자를 입력해주세요 : ";
     public static final String startMessage = "숫자 야구 게임을 시작합니다.\n";
 
 
     public BaseBallGameService() {
-        this.gameNumbers = new GameNumbers();
+        this.computerNumbers = new GameNumbers(NumberGenerator.createGameNumbers());
     }
 
     @Override
@@ -22,15 +23,17 @@ public class BaseBallGameService implements GameService {
         startMessage();
         do {
             inputMessage();
-            player = new BaseBallGamePlayer(gameNumbers);
+            player = new BaseBallGamePlayer(computerNumbers);
             showGameResult(player);
         } while (player.getStrikeCount() != LIMITED_NUMBER_SIZE);
     }
 
+    @Override
     public void inputMessage() {
         System.out.print(inputMessage);
     }
 
+    @Override
     public void startMessage() {
         System.out.print(startMessage);
     }
@@ -51,7 +54,7 @@ public class BaseBallGameService implements GameService {
     }
 
     boolean isNothing(BaseBallGamePlayer player) {
-        return player.getUserInput().stream()
-                .noneMatch(gameNumbers::isContains);
+        return player.getUserInput().getNumberList().stream()
+                .noneMatch(computerNumbers::isContains);
     }
 }
