@@ -15,6 +15,9 @@ public class UserService {
 
     public void inputBaseballNumber() {
         userBaseballNumber = Console.readLine();
+
+        checkBaseballNumber();
+
         user.setBaseballNumber(userBaseballNumber);
     }
 
@@ -31,5 +34,18 @@ public class UserService {
         return user.getRestartNumber();
     }
 
+    private void checkBaseballNumber() {
+        if (checkNumberLength()) {
+            throw new IllegalArgumentException("프로그램을 종료합니다.");
+        }
+    }
+
+    private boolean checkNumberLength() {
+        boolean returnCheckNumber = true;
+        if (userBaseballNumber.length() != 3) {
+            returnCheckNumber = false;
+        }
+        return returnCheckNumber;
+    }
 
 }
