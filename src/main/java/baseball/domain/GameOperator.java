@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import baseball.constants.ComparingResults;
 import baseball.constants.GuideSentences;
+import baseball.exception.GameExceptionHandler;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameOperator {
@@ -60,6 +61,7 @@ public class GameOperator {
 
 	private void getInputNumbers() {
 		String input = Console.readLine();
+		GameExceptionHandler.handleInGameException(input);
 
 		Arrays.stream(input.split(""))
 				.map(Integer::parseInt)
@@ -122,6 +124,7 @@ public class GameOperator {
 		boolean restart = true;
 
 		String restartInput = Console.readLine();
+		GameExceptionHandler.handleAfterGameOverException(restartInput);
 
 		if (restartInput.equals("2")) {
 			restart = false;
