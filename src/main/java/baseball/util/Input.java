@@ -10,6 +10,7 @@ public class Input {
 
     public void setUserInputByRead() {
         this.userInput = readUserInput();
+        Validate.isAcceptAbleEndGame(userInput);
     }
 
     public String readUserInput() {

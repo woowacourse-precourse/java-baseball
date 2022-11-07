@@ -3,6 +3,9 @@ package baseball.util;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.util.ProcessCode.FINISH;
+import static baseball.util.ProcessCode.RESTART;
+
 public class Validate {
 
     public static boolean isRuleDigit(String input) {
@@ -36,4 +39,15 @@ public class Validate {
         return true;
     }
 
+    public static boolean isAcceptAbleEndGame(String userInput) {
+        return isReStartGame(userInput) || isFinishGame(userInput);
+    }
+
+    public static boolean isReStartGame(String userInput) {
+        return userInput.equals(RESTART.getValue());
+    }
+
+    private static boolean isFinishGame(String userInput) {
+        return userInput.equals(FINISH.getValue());
+    }
 }
