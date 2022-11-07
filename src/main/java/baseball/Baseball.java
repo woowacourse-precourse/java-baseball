@@ -24,7 +24,6 @@ class Baseball {
             checkStrike(computerValue, userValue);
             checkBall(userValue, computers);
         }
-        System.out.println(getScore());
     }
 
     private void checkStrike(int computer, int user) {

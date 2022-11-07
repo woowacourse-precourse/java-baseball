@@ -25,6 +25,7 @@ public class Application {
         Number user = new Number(Console.readLine());
         Exception.handleException(user.getUserNumbers());
         Baseball baseball = new Baseball(computer.getComputers(), user.getUserNumbers());
+        System.out.println(baseball.getScore());
         return baseball.getStrike();
     }
 
