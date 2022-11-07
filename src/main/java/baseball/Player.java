@@ -57,4 +57,10 @@ public class Player {
 
         return input.equals(RESTART_GAME_CODE);
     }
+
+    private void checkValidRestartOrQuitInput(String input) {
+        if (!input.equals(RESTART_GAME_CODE)&&!input.equals(QUIT_GAME_CODE)) {
+            throw new IllegalArgumentException("1, 2 중 하나의 수를 입력해주세요.");
+        }
+    }
 }
