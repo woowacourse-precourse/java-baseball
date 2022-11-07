@@ -2,8 +2,8 @@ package baseball;
 
 public class RestartUtil {
     public void restartGame(boolean restart) {
-        PrintUtil printUtil = new PrintUtil();
+        CountUtil countUtil = new CountUtil();
         if (restart)
-            printUtil.playGame();
+            countUtil.playGame();
     }
 }
