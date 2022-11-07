@@ -30,9 +30,13 @@ public class BaseballGame {
     public void startGame() {
         int gameControlNum = RESTART_NUM;
         computerNums = computerUtil.generateNumber();
-        
+
+        while (gameControlNum == RESTART_NUM) {
+            messageUtil.printInputMsg();
+            String userInput = userUtil.getInputNumber();
+            List<Integer> userNums = validator.validateInputNum(userInput);
+        }
 
     }
-
 
 }
