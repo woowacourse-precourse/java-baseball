@@ -25,9 +25,13 @@ public final class RandomDigits extends Digits {
     private void generateRandom() {
         //100의 자리에서는 0이 올 수 없기에 미리 1부터 9까지 추가해둠
         append(random.pickRandomInRange(1, 9));
-        while (size() < BASEBALL_NUMBER_LENGTH) {
+        while (isSmallerThanLimit()) {
             tryToAppend();
         }
+    }
+
+    private boolean isSmallerThanLimit() {
+        return size() < BASEBALL_NUMBER_LENGTH;
     }
 
     private void tryToAppend() {
