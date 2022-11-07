@@ -11,15 +11,13 @@ public class User {
 
     private List<Integer> verifiedValueList = new ArrayList<>();
 
-    public void guessComputerNumbers() {
+    public void guessComputerNumbers(Scanner scanner) {
         List<Character> unverifiedValueList;
-
-        Scanner scanner = new Scanner(System.in);
 
         String userEnteredValues = scanner.nextLine();
 
-        checkEnteredValuesOverlap(userEnteredValues);
         checkEnteredValuesLength(userEnteredValues);
+        checkEnteredValuesOverlap(userEnteredValues);
 
         unverifiedValueList = userEnteredValues.chars()
                 .mapToObj(value -> (char) value)
@@ -29,7 +27,6 @@ public class User {
             checkEnteredValueIsNum(enteredValue);
             verifiedValueList.add(Integer.parseInt(enteredValue.toString()));
         }
-
     }
 
     private void checkEnteredValuesOverlap(String userEnteredValues) {
@@ -62,6 +59,17 @@ public class User {
 
     public void init() {
         this.verifiedValueList = new ArrayList<>();
+    }
+
+    public int isEndGame(Scanner scanner) {
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            int exitCode = scanner.nextInt();
+            if (exitCode == 1 || exitCode == 2) {
+                return exitCode;
+            }
+            System.out.println("1 또는 2를 입력하세요.");
+        }
     }
 
 }
