@@ -20,21 +20,4 @@ public class Answer {
 
         return new CountResult(ballCount, strikeCount);
     }
-
-    /**
-     * 테스트용 메서드 입니다.
-     */
-    int size() {
-        return answer.size();
-    }
-
-    /**
-     * 테스트용 메서드 입니다.
-     */
-    boolean isDuplicated() {
-        int count = (int) answer.stream()
-                .distinct()
-                .count();
-        return count != 3;
-    }
 }
