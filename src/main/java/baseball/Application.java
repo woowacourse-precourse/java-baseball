@@ -72,6 +72,8 @@ public class Application {
             Input.add((int)(input.charAt(i) -'0'));
         }
         noException(input, Input);
+        strike = getResult(ball,strike,input,computernum,Input);
+        return strike;
     }
     public static int getResult(int ball, int strike, String input, List<Integer> computernum, List<Integer> Input){
         for( int i = 0;i< input.length();i++){
@@ -82,6 +84,7 @@ public class Application {
         return strike;
     }
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        tryGame();
     }
 }
