@@ -8,6 +8,9 @@ public class UserUtil {
 
     private static final String ZERO = "0";
 
+    private UserUtil() {
+    }
+
     public static List<Integer> getUserNumbers() {
         List<Integer> userNumbers = new ArrayList<>();
 
