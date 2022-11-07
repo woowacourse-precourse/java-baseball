@@ -17,4 +17,12 @@ public class ExceptionTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 동일한_숫자가_등장할_경우_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> isSameNum(Arrays.asList(1,2,1)))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
