@@ -15,12 +15,6 @@ public class Referee {
 
     private final List<Integer> numbers = new ArrayList<>();
 
-    private final BallCount ballCount;
-
-    public Referee() {
-        this.ballCount = new BallCount();
-    }
-
     public List<Integer> makeRandomValues() {
         initNumbers();
         while (numbers.size() < DIGITS) {
@@ -32,8 +26,8 @@ public class Referee {
         return numbers;
     }
 
-    public String checkCounts(List<Integer> inputs) {
-        ballCount.init();
+    public BallCount checkCounts(List<Integer> inputs) {
+        BallCount ballCount = new BallCount();
 
         inputs.stream()
                 .filter(numbers::contains)
@@ -45,11 +39,7 @@ public class Referee {
                 ballCount.increaseStrike();
             }
         }
-        return ballCount.toString();
-    }
-
-    public boolean isAllStrike() {
-        return ballCount.isAllStrike();
+        return ballCount;
     }
 
     private void initNumbers() {

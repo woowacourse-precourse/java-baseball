@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static baseball.rule.Digit.DIGITS;
+
 import baseball.constant.BallCountText;
 
 public class BallCount {
@@ -7,11 +9,6 @@ public class BallCount {
     private int ball;
 
     private int strike;
-
-    public void init() {
-        this.ball = 0;
-        this.strike = 0;
-    }
 
     public void increaseBall() {
         this.ball++;
@@ -40,7 +37,7 @@ public class BallCount {
     }
 
     public boolean isAllStrike() {
-        return this.strike == 3;
+        return this.strike == DIGITS;
     }
 
     private boolean isBallZero() {
