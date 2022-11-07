@@ -123,6 +123,8 @@ public class Application {
     private static int userInputRestartOrFinish() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInputCommand = Console.readLine();
+
+        validateUserInputCommand(userInputCommand);
         return Integer.parseInt(userInputCommand);
     }
 
@@ -156,6 +158,20 @@ public class Application {
     private static void validateUserNumListNotContainZero() {
         if (userNumList.contains(0)) {
             throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+        }
+    }
+
+    private static void validateUserInputCommand(String userInputCommand) {
+        try {
+            Integer.parseInt(userInputCommand);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
+
+        int userInputCommandToInt = Integer.parseInt(userInputCommand);
+
+        if (userInputCommandToInt != 1 && userInputCommandToInt != 2) {
+            throw new IllegalArgumentException("숫자 1 혹은 2만 입력 가능합니다.");
         }
     }
 
