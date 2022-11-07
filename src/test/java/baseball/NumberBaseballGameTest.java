@@ -33,7 +33,7 @@ public class NumberBaseballGameTest {
     }
 
     @Test
-    void 게임_시작_문구를_출력한다() {
+    void 게임_시작_문구를_출력한다() throws IOException {
         BaseballGame baseballGame = new BaseballGame();
         String result = "숫자 야구 게임을 시작합니다.";
 
@@ -361,5 +361,69 @@ public class NumberBaseballGameTest {
 
         assertThat(referee.getStrikeCount()).isEqualTo(resultStrikeCount);
         assertThat(referee.getBallCount()).isEqualTo(resultBallCount);
+    }
+
+    @Test
+    void 볼_카운트가_2이면_2볼을_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+        Method method = baseballGame.getClass().getDeclaredMethod("printResult", Referee.class);
+        method.setAccessible(true);
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(3, 0), new Ball(2, 1), new Ball(4, 2));
+        String result = "2볼";
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+        method.invoke(baseballGame, referee);
+
+        assertThat(outputStream.toString().trim()).isEqualTo(result);
+    }
+
+    @Test
+    void 스트라이크_카운트가_1이면_1스트라이크를_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+        Method method = baseballGame.getClass().getDeclaredMethod("printResult", Referee.class);
+        method.setAccessible(true);
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(6, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(5, 2));
+        String result = "1스트라이크";
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+        method.invoke(baseballGame, referee);
+
+        assertThat(outputStream.toString().trim()).isEqualTo(result);
+    }
+
+    @Test
+    void 볼_카운트가_2_스트라이크_카운트가_1이면_2볼_1스트라이크를_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+        Method method = baseballGame.getClass().getDeclaredMethod("printResult", Referee.class);
+        method.setAccessible(true);
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(2, 0), new Ball(5, 1), new Ball(4, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(4, 1), new Ball(5, 2));
+        String result = "2볼 1스트라이크";
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+        method.invoke(baseballGame, referee);
+
+        assertThat(outputStream.toString().trim()).isEqualTo(result);
+    }
+
+    @Test
+    void 아무것도_없으면_낫싱을_출력한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        BaseballGame baseballGame = new BaseballGame();
+        Method method = baseballGame.getClass().getDeclaredMethod("printResult", Referee.class);
+        method.setAccessible(true);
+        Referee referee = new Referee();
+        List<Ball> hitterBalls = List.of(new Ball(5, 0), new Ball(6, 1), new Ball(7, 2));
+        List<Ball> pitcherBalls = List.of(new Ball(2, 0), new Ball(3, 1), new Ball(4, 2));
+        String result = "낫싱";
+
+        referee.judgeGameResult(hitterBalls, pitcherBalls);
+        method.invoke(baseballGame, referee);
+
+        assertThat(outputStream.toString().trim()).isEqualTo(result);
     }
 }
