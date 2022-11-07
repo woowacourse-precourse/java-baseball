@@ -32,7 +32,7 @@ public class User {
             numbers.add(Character.getNumericValue(input.charAt(index)));
         }
     }
-    
+
     private boolean isCorrectRange(String inputNumber) {
         String pattern = "[1-9]{1,3}";
 
@@ -51,5 +51,9 @@ public class User {
         }
 
         return true;
+    }
+
+    public void clearNumber() {
+        numbers.clear();
     }
 }

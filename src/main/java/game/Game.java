@@ -20,19 +20,19 @@ public class Game {
         } while (waiting());
     }
 
-    public void play(List<Integer> computerNumbers, List<Integer> userNumbers) {
-
-//        while (!isThreeStrike()) {
-            hint.clearHint();
-            user.clearNumber();
-            user.inputNumber();
-
-            checkBallAndStrike(computerNumbers, userNumbers);
-            hint.print();
-        }
-
-//        stop();
-    }
+//    public void play(List<Integer> computerNumbers, List<Integer> userNumbers) {
+//
+////        while (!isThreeStrike()) {
+//            hint.clearHint();
+//            user.clearNumber();
+//            user.inputNumber();
+//
+//            checkBallAndStrike(computerNumbers, userNumbers);
+//            hint.print();
+//        }
+//
+////        stop();
+//    }
 
 
     public boolean waiting() {
