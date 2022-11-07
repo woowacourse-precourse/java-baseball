@@ -86,14 +86,4 @@ public class GameController {
             return;
         }
     }
-
-    private List<Integer> changeList(String inputNumber) {
-        List<Integer> list = new ArrayList<>();
-
-        for (int i = 0; i < inputNumber.length(); i++) {
-            char temp = inputNumber.charAt(i);
-            list.add(i);
-        }
-        return list;
-    }
 }
