@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -26,6 +27,18 @@ public class Application {
         }
         return result;
     }
+    static void printResult(int strike, int ball, int nothing) {
+        if(nothing == 3) {
+            System.out.println("낫싱");
+        }
+        if(ball != 0) {
+            System.out.println(ball+"볼 ");
+        }
+        if(strike != 0) {
+            System.out.println(strike+"스트라이크 ");
+        }
+        System.out.println();
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -35,12 +48,25 @@ public class Application {
         int flag = 1;
 
         List<Integer> COM = randomize();
-        String N = readLine();
-        if(N.length() != 3) {
-            throw new IllegalArgumentException();
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            String N = readLine();
+            if (N.length() != 3) {
+                throw new IllegalArgumentException();
+            }
+            List<Integer> M = splitString(N);
+            for (int i = 0; i < 3; i++) {
+                if (Objects.equals(M.get(i), COM.get(i))) {
+                    strike++;
+                } else if (M.contains(COM.get(i))) {
+                    ball++;
+                } else {
+                    nothing++;
+                }
+            }
+            printResult(strike, ball, nothing);
+
         }
-        List<Integer> M = splitString(N);
-
-
     }
 }
