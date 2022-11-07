@@ -1,9 +1,9 @@
 package baseball.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import baseball.constants.ComparingResults;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -11,7 +11,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class QuestionNumberSetter {
 	private List<Integer> randomNumbers = new ArrayList<>();
 	private List<Integer> inputNumbers = new ArrayList<>();
-	private Map<ComparingResults, Integer> comparingResult = new HashMap<>();
+	private Map<ComparingResults, Integer> comparingResult = new TreeMap<>();
 
 	public List<Integer> pickThreeRandomNumbers() {
 		randomNumbers.clear();

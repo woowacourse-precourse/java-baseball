@@ -2,9 +2,9 @@ package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import baseball.constants.ComparingResults;
 import baseball.constants.GuideSentences;
@@ -12,70 +12,121 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameOperator {
 	private QuestionNumberSetter questionNumberSetter;
-	private Map<ComparingResults, Integer> resultMap = new HashMap<>();
-	private final String threeStrike = "3스트라이크";
-	private String resultString = "";
+	private Map<ComparingResults, Integer> resultMap = new TreeMap<>();
+	private List<Integer> inputNumberList = new ArrayList<>();
 
 	public GameOperator() {
 		questionNumberSetter = new QuestionNumberSetter();
 	}
 
 	public void numberBaseballGame() {
+		boolean start = true;
+
 		System.out.println(GuideSentences.START_GUIDE.getSentence());
-		while (true) {
+
+		while (start) {
 			questionNumberSetter.pickThreeRandomNumbers();
 
-			while (!resultString.equals(threeStrike)) {
-				System.out.print(GuideSentences.INPUT_GUIDE.getSentence());
+			oneGame();
 
-				List<Integer> inputNumbers = new ArrayList<>();
+			start = askAboutRestart();
+		}
+	}
 
+	/* === 게임 1회 진행 === */
+	private void oneGame() {
+		String resultString = "";
 
-				String input = Console.readLine();
-				Arrays.stream(input.split(""))
-						.map(Integer::parseInt)
-						.forEach(inputNumbers::add);
+		while (!resultString.equals("3스트라이크")) {
+			getNumbersFromUser();
 
-				resultMap =	questionNumberSetter.compareWithRandomNumbers(inputNumbers);
+			compareWithRandomNumbers();
 
-				List<String> resultList = new ArrayList<>();
+			resultString = makeResultSentence();
 
-				if (resultMap.containsKey(ComparingResults.NOTHING)) {
-					String nothingSentence = ComparingResults.NOTHING.getResult();
+			System.out.println(resultString);
+		}
+	}
 
-					resultList.add(nothingSentence);
-				} else {
-					if (resultMap.containsKey(ComparingResults.BALL)) {
-						String ballSentence = resultMap.get(ComparingResults.BALL).toString() +
-								ComparingResults.BALL.getResult();
+	/* 게임 1회 : 사용자 입력 관련 메소드 */
+	private void getNumbersFromUser() {
+		guideToInputNumbers();
+		getInputNumbers();
+	}
 
-						resultList.add(ballSentence);
-					}
+	private void guideToInputNumbers() {
+		System.out.print(GuideSentences.INPUT_GUIDE.getSentence());
+	}
 
-					if (resultMap.containsKey(ComparingResults.STRIKE)) {
-						String strikeSentence = resultMap.get(ComparingResults.STRIKE).toString() +
-								ComparingResults.STRIKE.getResult();
+	private void getInputNumbers() {
+		String input = Console.readLine();
 
-						resultList.add(strikeSentence);
-					}
-				}
+		Arrays.stream(input.split(""))
+			.map(Integer::parseInt)
+			.forEach(inputNumberList::add);
+	}
 
-				resultString = String.join(" ", resultList);
+	/* 게임 1회 : 숫자 비교 메소드 */
+	private void compareWithRandomNumbers() {
+		resultMap =	questionNumberSetter.compareWithRandomNumbers(inputNumberList);
+		inputNumberList.clear();
+	}
 
-				System.out.println(resultString);
-				resultMap.clear();
-			}
+	/* 게임 1회 : 결과 출력 메소드 */
+	private String makeResultSentence() {
+		String resultString = convertResultMapToString();
 
-			System.out.println(GuideSentences.END_GUIDE.getSentence());
-			System.out.println(GuideSentences.RESTART_GUIDE.getSentence());
+		return resultString;
+	}
 
-			String restartInput = Console.readLine();
+	private String convertResultMapToString() {
+		List<String> resultList = divideEachResult();
 
-			if (restartInput.equals("1")) {
-				resultString = "";
-			} else if (restartInput.equals("2")) {
+		String resultString = String.join(" ", resultList);
+
+		return resultString;
+	}
+
+	private List<String> divideEachResult() {
+		List<String> resultList = new ArrayList<>();
+
+		for (Map.Entry<ComparingResults, Integer> oneResult : resultMap.entrySet() ) {
+			if (oneResult.getKey() == ComparingResults.NOTHING) {
+				resultList.add(oneResult.getKey().getResult());
 				break;
 			}
+
+			String resultSentence = oneResult.getValue().toString() + oneResult.getKey().getResult();
+			resultList.add(resultSentence);
 		}
+		resultMap.clear();
+
+		return resultList;
+	}
+
+	/* === 재시작 여부 확인 관련 메소드 === */
+	private boolean askAboutRestart() {
+		guideGameOverAndRestart();
+
+		boolean restart = getRestartInput();
+
+		return restart;
+	}
+
+	private void guideGameOverAndRestart() {
+		System.out.println(GuideSentences.END_GUIDE.getSentence());
+		System.out.println(GuideSentences.RESTART_GUIDE.getSentence());
+	}
+
+	private boolean getRestartInput() {
+		boolean restart = true;
+
+		String restartInput = Console.readLine();
+
+		if (restartInput.equals("2")) {
+			restart = false;
+		}
+
+		return restart;
 	}
 }
