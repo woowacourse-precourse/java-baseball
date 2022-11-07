@@ -13,7 +13,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class ServiceTests {
+public class ServiceTest {
 
     @DisplayName("문자열을 한글자씩 잘라 리스트로 반환하는 메서드 테스트")
     @Test
