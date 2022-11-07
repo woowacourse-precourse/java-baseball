@@ -6,15 +6,15 @@ import baseball.Model.NumberItem;
 import baseball.Service.interfaces.CompareService;
 import baseball.View.PrintInformationView;
 
+import static baseball.Model.StatusItem.THREE_STRIKE_CORRECT;
+import static baseball.Model.StatusItem.RE_COMPARE;
+
 import java.util.List;
 
 
 public class CompareServiceImpl implements CompareService {
 
     private final PrintInformationView printInformationView = new PrintInformationView();
-    private static final int NUMBER_SIZE = 3;
-    private static final int THREE_STRIKE_CORRECT = 1;
-    private static final int NOT_CORRECT = 2;
 
     @Override
     public int compare(NumberItem computerNumberItem, NumberItem userNumberItem) {
@@ -38,6 +38,6 @@ public class CompareServiceImpl implements CompareService {
         if(ballCountItem.getStrike() == 3){
             return THREE_STRIKE_CORRECT;
         }
-        return NOT_CORRECT;
+        return RE_COMPARE;
     }
 }

@@ -10,9 +10,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberServiceImpl implements NumberService {
+import static baseball.Model.StatusItem.NUMBER_SIZE;
 
-    private static final int NUMBER_SIZE = 3;
+public class NumberServiceImpl implements NumberService {
 
     @Override
     public Integer check_3_Digits_Number(List<Integer> numberList) throws IllegalArgumentException {
