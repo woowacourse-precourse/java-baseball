@@ -1,12 +1,18 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -27,6 +33,49 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("asd"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void generateAnswer_테스트() {
+        ArrayList<Integer> result = generateAnswer();
+        System.out.println(result);
+        assertEquals(result.size(), 3);
+    }
+
+    @Test
+    void outputInText_테스트 () {
+        String outputInText = "";
+        int strikeCount = 0;
+        int ballCount = 0;
+        String result = outputInText(outputInText, strikeCount, ballCount);
+        assertThat(result).isEqualTo("낫싱");
+    }
+
+    @Test
+    void outputInText_테스트2 () {
+        String outputInText = "";
+        int strikeCount = 3;
+        int ballCount = 0;
+        String result = outputInText(outputInText, strikeCount, ballCount);
+        assertThat(result).isEqualTo("3스트라이크");
+    }
+
+    @Test
+    void outputInText_테스트3 () {
+        String outputInText = "";
+        int strikeCount = 2;
+        int ballCount = 2;
+        String result = outputInText(outputInText, strikeCount, ballCount);
+        assertThat(result).isEqualTo("2볼 2스트라이크");
+    }
+
 
     @Override
     public void runMain() {

@@ -25,7 +25,7 @@ public class Application {
         }
     }
 
-    private static int gameController(ArrayList<Integer> generateAnswer) {
+    public static int gameController(ArrayList<Integer> generateAnswer) {
         
         int gameControllerNumber;
         int errNumber = 0;
@@ -48,7 +48,7 @@ public class Application {
         return gameControllerNumber;
     }
 
-    private static ArrayList<Integer> generateAnswer() {
+    public static ArrayList<Integer> generateAnswer() {
         ArrayList<Integer> answerNumber = new ArrayList<>();
 
         while (answerNumber.size() < 3) {
@@ -60,7 +60,7 @@ public class Application {
         return answerNumber;
     }
 
-    private static ArrayList<Integer> inputUserValue() {
+    public static ArrayList<Integer> inputUserValue() {
         ArrayList<Integer> inputNumberArray = new ArrayList<>();
         String inputNumber = Console.readLine();
         int firstBall = 0;
@@ -90,7 +90,7 @@ public class Application {
         return inputNumberArray;
     }
 
-    private static String compareAnswerAndValue(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserValue) {
+    public static String compareAnswerAndValue(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserValue) {
 
         String outputInText = "";
         int strikeCount = 0;
@@ -131,7 +131,7 @@ public class Application {
         return outputInText;
     }
 
-    private static String outputInText(String outputInText, int strikeCount, int ballCount) {
+    public static String outputInText(String outputInText, int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount == 0) {
             outputInText += "낫싱";
         } else if (strikeCount == 0) {
@@ -144,7 +144,7 @@ public class Application {
         return outputInText;
     }
 
-    private static int restart() {
+    public static int restart() {
         System.out.println("계속하시겠습니까?1=계속,2=끝");
         int toBeContinue = Integer.parseInt(Console.readLine());
         int continueNumber = 1;
