@@ -31,4 +31,8 @@ public class GameResultView {
         System.out.println(THREE_STRIKE_PRINT);
         System.out.println(AFTER_GAME_PRINT);
     }
+
+    public void printCreateController() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 }
