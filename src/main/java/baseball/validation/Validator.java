@@ -49,5 +49,11 @@ public class Validator {
         }
     }
 
+    public static void validateInputRestartOrEnd(String input) {
+        if (input.equals("1") || input.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException("[IllegalArgumentException]: 새로 시작(1)/종료하(2)중 하나의 수가 아닙니다.\n");
+    }
 
 }
