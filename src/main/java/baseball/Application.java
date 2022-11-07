@@ -92,4 +92,15 @@ public class Application {
     static void clearGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    static boolean continueGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputMenu = Console.readLine();
+        if (inputMenu == "1")
+            return true;
+        if (inputMenu == "2")
+            return false;
+        throwException();
+        return false;
+    }
 }
