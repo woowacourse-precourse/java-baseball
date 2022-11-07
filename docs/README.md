@@ -44,7 +44,10 @@
     - 길이가 1일경우 1,2일때는 pass
     - 중복되는 값이 있는지 판단
     - 위배될 경우 false 통과할 경우 true 리턴
-
+  
+- ## validate_duplication
+  - 길이가 3인 문자열에 한하여 중복되는 문자가 있는지 판단
+  
 - ## make_error
   - check_input 값이 false 면 exception 발생
 
