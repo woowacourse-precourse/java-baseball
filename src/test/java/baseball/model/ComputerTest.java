@@ -13,8 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest extends NsTest {
     private Computer computer = new Computer();
+
     @Test
-    public void 서로다른_3자리의_숫자(){
+    public void 서로다른_3자리의_숫자() {
         computer.generateNumber();
         int[] generatedNumbers = computer.getNumbers();
         long distinctNumberCount = Arrays.stream(generatedNumbers).distinct().count();
@@ -23,7 +24,7 @@ class ComputerTest extends NsTest {
     }
 
     @Test
-    public void 힌트_출력(){
+    public void 힌트_출력() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "571", "175", "587", "2");

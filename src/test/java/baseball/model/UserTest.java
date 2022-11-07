@@ -10,12 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     private User user = new User();
+
     @Test
-    public void 사용자_숫자_입력_예외_테스트(){
+    public void 사용자_숫자_입력_예외_테스트() {
         InputStream input = generateUserInput("12345");     // 3자리가 넘는 숫자입력
         System.setIn(input);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-           user.inputNumber();
+            user.inputNumber();
         });
 
         input = generateUserInput("abcd");  // 영문입력
@@ -32,7 +33,7 @@ class UserTest {
     }
 
     @Test
-    public void 사용자_재시작_입력_예외_테스트(){
+    public void 사용자_재시작_입력_예외_테스트() {
         InputStream input = generateUserInput("3"); // 1,2가 아닌 숫자 입력
         System.setIn(input);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {

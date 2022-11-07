@@ -11,22 +11,21 @@ public class Computer {
     private int strikeCount = 0;
     private int[] numbers = new int[3];
 
-    public void generateNumber(){
+    public void generateNumber() {
         do {
             numbers = pickNumbers();
-
         } while (!Util.isDuplicated(numbers));
 
     }
 
-    public int[] pickNumbers(){
+    private int[] pickNumbers() {
         return Arrays.stream(new int[3])
                 .map(num -> Randoms.pickNumberInRange(1, 9))
                 .toArray();
     }
 
     public void compare(int[] guessNumbers) {
-        for (int i = 0; i < numbers.length; i++){
+        for (int i = 0; i < numbers.length; i++) {
             search(guessNumbers[i], i);
         }
 
@@ -46,9 +45,9 @@ public class Computer {
             System.out.println("낫싱");
         } else if (ballCount == 0) {
             System.out.println(strikeCount + "스트라이크");
-        } else if (strikeCount == 0){
+        } else if (strikeCount == 0) {
             System.out.println(ballCount + "볼");
-        }else {
+        } else {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         }
     }
@@ -58,17 +57,29 @@ public class Computer {
         strikeCount = 0;
     }
 
-    private void search(int guessNumber, int index){
+    private void search(int guessNumber, int index) {
 
-        if (guessNumber == numbers[index]){
+        if (guessNumber == numbers[index]) {
             strikeCount++;
             return;
         }
 
-        for(int i = 0; i < numbers.length; i++){
-            if (guessNumber == numbers[i]){
+        for (int i = 0; i < numbers.length; i++) {
+            if (guessNumber == numbers[i]) {
                 ballCount++;
             }
         }
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int[] getNumbers() {
+        return numbers;
     }
 }
