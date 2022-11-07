@@ -14,6 +14,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -57,6 +58,33 @@ class ApplicationTest extends NsTest {
         score[1] = Application.checkBall(computer_num,answer);
 
         assertThat(score).containsExactly(1,2);
+
+    }
+
+    @Test
+    void 점수에_따른_출력값_테스트() {
+        List<Integer> computer_num = new ArrayList<>();
+
+        computer_num.add(1);
+        computer_num.add(3);
+        computer_num.add(9);
+
+        String answer = "267";
+        String answer2 = "192";
+
+        int strike = Application.checkStrike(computer_num, answer);
+        int ball = Application.checkBall(computer_num, answer);
+
+        int strike2 = Application.checkStrike(computer_num, answer2);
+        int ball2 = Application.checkBall(computer_num, answer2);
+
+
+        Application.printResult(strike,ball);
+        Application.printResult(strike2,ball2);
+
+        assertThat(output()).contains("낫싱","1볼 1스트라이크");
+
+
 
     }
 
