@@ -14,8 +14,7 @@ public class CreateBaseBall implements Game {
 
     @Override
     public void startGame(String randomNumber, String input) throws IOException {
-        Refree refree = new Refree();
-        refree.compareToUserInput(randomNumber, input);
+        Refree.compareToUserInput(randomNumber, input);
     }
 
     public UserInput getUserInputInput(){
@@ -25,9 +24,9 @@ public class CreateBaseBall implements Game {
 
     @Override
     public boolean endGame() throws IOException {
-        UserInput userInputInput = getUserInputInput();
-        userInputInput.getEndGameInput();
-        return (getUserInputInput().getInput()=="2") ? true:false;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int endGameInput = getUserInputInput().getEndGameInput();
+        return (endGameInput == 2) ? true:false;
     }
 
     @Override

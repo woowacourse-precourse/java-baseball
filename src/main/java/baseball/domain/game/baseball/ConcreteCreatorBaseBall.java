@@ -1,6 +1,5 @@
 package baseball.domain.game.baseball;
 
-import baseball.domain.Game;
 import baseball.domain.GameCreator;
 import baseball.view.BaseBallInput;
 import baseball.view.UserInput;
@@ -13,19 +12,21 @@ public class ConcreteCreatorBaseBall extends GameCreator {
         CreateBaseBall game = new CreateBaseBall();
         UserInput userInput = new BaseBallInput();
         String input = "";
-        while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            String randomNumber = game.generateRandomNumber();
-            System.out.println("randomNumber = " + randomNumber);
-            do {
-                System.out.print("숫자를 입력해주세요 : ");
-                input = userInput.getInput();
-                game.startGame(randomNumber, input);
-            }while(!input.equals(randomNumber));
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
-            if(game.endGame()){
-                break;
-            }
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String randomNumber = game.generateRandomNumber();
+        System.out.println("randomNumber = " + randomNumber);
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            input = userInput.getInput();
+            game.startGame(randomNumber, input);
+        }while(!input.equals(randomNumber));
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        }
+    public void startGame() throws IOException {
+        createGame();
+        CreateBaseBall game = new CreateBaseBall();
+        if(!game.endGame()){
+            startGame();
         }
     }
 }

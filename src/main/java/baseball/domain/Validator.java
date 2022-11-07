@@ -5,6 +5,7 @@ public class Validator {
     private static final String FORBIDDEN_FORMAT_MESSAGE = "세자리 숫자만 입력해주세요";
     private static final String CONTAIN_CHAR_REGEX = "^[a-zA-Z가-힣]*$";
     private static final String BLANK = " ";
+    private static final String FORBIDDEN_ZERO_MESSAGE = "0을 입력하지 마세요";
 
     public static void validate(String input) {
         validateRandomNumberExceedLength(input);
@@ -33,7 +34,7 @@ public class Validator {
 
     public static void validateContainZero(String input) {
         if(input.contains("0")){
-            throw new IllegalArgumentException(FORBIDDEN_FORMAT_MESSAGE);
+            throw new IllegalArgumentException(FORBIDDEN_ZERO_MESSAGE);
         }
     }
 }

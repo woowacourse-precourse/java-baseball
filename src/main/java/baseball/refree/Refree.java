@@ -8,7 +8,7 @@ public class Refree {
     private static int DEFAULT_ZERO = 0;
     private static String DEFAULT_BLANK = "";
 
-    public void compareToUserInput(String randomNumber,String input){
+    public static void compareToUserInput(String randomNumber, String input){
         int strike = DEFAULT_ZERO;
         int ball = DEFAULT_ZERO;
         int nothing = DEFAULT_ZERO;
@@ -26,6 +26,18 @@ public class Refree {
                 nothing++;
             }
         }
-        System.out.println(strike + "스트라이크 " + ball + "볼 " + nothing +"낫띵");
+        printResult(strike, ball, nothing);
+    }
+
+    private static void printResult(int strike, int ball, int nothing) {
+        if(strike > 0 && ball > 0) {
+            System.out.println(strike + "스트라이크 " + ball + "볼");
+        }else if(strike > 0 && ball == 0){
+            System.out.println(strike + "스트라이크");
+        }else if(strike == 0 && ball > 0){
+            System.out.println(ball + "볼");
+        }else{
+            System.out.println("낫싱");
+        }
     }
 }
