@@ -44,7 +44,7 @@
 <br>
 
 ### 4. 사용자가 잘못된 값을 넣었을 때의 종료 기능
-- 용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
+- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션을 종료한다.
 
 <br>
 
