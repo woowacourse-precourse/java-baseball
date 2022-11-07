@@ -126,6 +126,7 @@ public class Application {
 
         if(strikeNumber == 3){
             System.out.println("3스트라이크");
+            return true;
         }
 
         return false;
