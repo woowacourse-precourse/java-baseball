@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Application {
     final static String RESTART = "1";
+    final static String GAME_OVER = "2";
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
@@ -94,6 +96,8 @@ public class Application {
         String input = Console.readLine();
         if (input.equals(RESTART)) {
             continueGame(setComputer());
+        }else if (!input.equals(GAME_OVER)) {
+            throw new IllegalArgumentException();
         }
     }
 }
