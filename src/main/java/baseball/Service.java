@@ -70,11 +70,11 @@ public class Service {
         return ballCountMap;
     }
 
-    public List<String> getUserInputToList(String userInput, int lengthCondition, Pattern patternCondition){
+    public List<String> getUserInputToList(String userInput, int lengthCondition, Pattern patternCondition) {
         List<String> userInputList = stringToList(userInput);
         Set<String> deduplicateUserInput = new HashSet<>(userInputList);
 
-        if(userInputList.size() != lengthCondition || deduplicateUserInput.size() != lengthCondition){
+        if (userInputList.size() != lengthCondition || deduplicateUserInput.size() != lengthCondition) {
             throw new IllegalArgumentException();
         }
 
@@ -82,11 +82,25 @@ public class Service {
                 .filter(userNumber -> !patternCondition.matcher(userInput).matches())
                 .collect(Collectors.toList());
 
-        if(patternExclusionList.size() != 0){
+        if (patternExclusionList.size() != 0) {
             throw new IllegalArgumentException();
         }
         return userInputList;
     }
 
+    public void printBallCountMap(Map<String, Integer> ballCount) {
+        Integer numberOfStrike = ballCount.get("strikeCount");
+        Integer numberOfBall = ballCount.get("ballCount");
+
+        if (numberOfStrike != 0 && numberOfBall != 0) {
+            System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
+        } else if (numberOfStrike != 0) {
+            System.out.println(numberOfStrike + "스트라이크");
+        } else if (numberOfBall != 0) {
+            System.out.println(numberOfBall + "볼");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
 
 }
