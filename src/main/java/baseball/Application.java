@@ -15,8 +15,10 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             input = Console.readLine();
+
             List<Integer> inputNumbers = Util.toIntegerArray(input);
             String comment = takeTurn(computer, inputNumbers);
+            System.out.println(comment);
             break outer;
         }
     }
@@ -25,7 +27,13 @@ public class Application {
         String comment = "";
         comment += countBall(computer, inputNumbers);
         comment += countStrike(computer, inputNumbers);
+        return checkComment(comment);
+    }
 
+    private static String checkComment(String comment) {
+        if (comment.isEmpty()) {
+            comment = "낫싱";
+        }
         return comment;
     }
 
@@ -40,7 +48,7 @@ public class Application {
     }
 
     private static String setStrikeComment(int strikes) {
-        String strikeComment = String.format("%d스트라이크",strikes);
+        String strikeComment = String.format("%d스트라이크", strikes);
         if (strikes == 0) {
             strikeComment = "";
         }
@@ -59,7 +67,7 @@ public class Application {
     }
 
     private static String setBallComment(int balls) {
-        String ballComment = String.format("%d볼 ",balls);
+        String ballComment = String.format("%d볼 ", balls);
         if (balls == 0) {
             ballComment = "";
         }
