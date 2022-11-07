@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -101,6 +102,22 @@ public class Service {
         } else {
             System.out.println("낫싱");
         }
+    }
+
+    private boolean askEndingCondition(int endingCondition) {
+        boolean maintain = false;
+        System.out.println(endingCondition + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String askingFinish = Console.readLine();
+
+        if (askingFinish.equals("1")) {
+            maintain = true;
+        } else if (askingFinish.equals("2")) {
+            maintain = false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return maintain;
     }
 
 }
