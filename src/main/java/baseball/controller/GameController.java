@@ -60,13 +60,13 @@ public class GameController {
         setComputerBall();
     }
 
-    public Action initializeAction() {
+    public Action initializeStartAction() {
         return new Action(Action.START);
     }
 
     public void runGameMain() {
         startGame();
-        Action action = initializeAction();
+        Action action = initializeStartAction();
 
         while (action.isStart()) {
             runBaseballGame();
