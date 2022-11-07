@@ -4,8 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@DisplayName("숫자 야구 게임은")
 class ApplicationTest extends NsTest {
 
 
@@ -18,6 +24,8 @@ class ApplicationTest extends NsTest {
         return stringBuilder.toString();
     }
     @Test
+    @Order(1)
+    @DisplayName("같은 수가 같은 자리에 있으면 스트라이크라고 알려줘야 합니다.")
     void 스트라이크_테스트() {
         Game baseballGame = new Game();
         String answer = getAnswer(baseballGame);
@@ -33,6 +41,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Order(2)
+    @DisplayName("같은 수가 다른 자리에 있으면 볼이라고 알려줘야 합니다.")
     void 볼_테스트() {
         Game baseballGame = new Game();
         String answer = getAnswer(baseballGame);
@@ -48,6 +58,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Order(3)
+    @DisplayName("같은 수가 전혀 없으면 낫싱이라고 알려줘야 합니다.")
     void 낫싱_테스트() {
         Game baseballGame = new Game();
         baseballGame.operate("000");
@@ -55,6 +67,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Order(4)
+    @DisplayName("게임을 종료한 후 1을 입력해 게임을 다시 시작할 수 있어야 합니다.")
     void 게임종료_후_재시작() {
         Game baseballGame = new Game();
         String answer = getAnswer(baseballGame);
@@ -64,6 +78,8 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @Order(6)
+    @DisplayName("게임 도중 게임 후 명령을 입력하면 예외를 반환합니다.")
     void 입력_예외_테스트() {
         boolean exceptionCaught = false;
         Game baseballGame = new Game();
