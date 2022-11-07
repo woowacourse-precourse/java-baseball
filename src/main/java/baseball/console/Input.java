@@ -1,7 +1,7 @@
 package baseball.console;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
-import java.util.Scanner;
 
 public class Input {
     private static final String inputMessage = "숫자를 입력해주세요 : ";
@@ -9,12 +9,10 @@ public class Input {
 
     public static String get() {
         System.out.print(inputMessage);
-        Scanner scanner = new Scanner(System.in);
-        String number = scanner.nextLine();
+        String number = Console.readLine();
         if (!isValid(number)) {
             throw new IllegalArgumentException();
         }
-        scanner.close();
         return number;
     }
 
@@ -40,12 +38,10 @@ public class Input {
 
     public static String restart() {
         System.out.println(restartMessage);
-        Scanner scanner = new Scanner(System.in);
-        String number = scanner.nextLine();
+        String number = Console.readLine();
         if (!isValidRestartNumber(number)) {
             throw new IllegalArgumentException();
         }
-        scanner.close();
         return number;
     }
 
