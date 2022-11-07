@@ -17,8 +17,8 @@ public class Application {
 class Baseball {
     protected static String userNumber;
     protected static HashMap<String, Integer> countBallStrike;
-    private static int restartGame;
-    private static List<Integer> computerNumber;
+    protected static int restartGame;
+    protected static List<Integer> computerNumber;
 
     protected static final String BLANK = " ";
     protected static final String BALL = "볼";
@@ -26,10 +26,10 @@ class Baseball {
     protected static final String NOTHING = "낫싱";
     protected static final int NEW_GAME = 1;
     protected static final int END_GAME = 2;
+    protected static final int NUMBER_PITCH = 3;
+    protected static final int EMPTY = 0;
     private static final int START_NUM_INCLUSIVE = 1;
     private static final int END_NUM_INCLUSIVE = 9;
-    private static final int NUMBER_PITCH = 3;
-    private static final int EMPTY = 0;
 
     protected static void playGame() {
         Message.printStartMessage();
@@ -65,8 +65,8 @@ class Baseball {
 
     private static void inputUserNumber() {
         userNumber = Console.readLine();
-        if (!isValidNumber() || !isOverlapNumber()) {
-            illegalArgumentException();
+        if (!Exception.isValidNumber() || !Exception.isOverlapNumber()) {
+            Exception.illegalArgumentException();
         }
         Message.printInputNumberMessage();
     }
@@ -105,8 +105,8 @@ class Baseball {
 
     private static void checkRestartGame() {
         restartGame = Integer.parseInt(Console.readLine());
-        if (!isValidRestartNumber()) {
-            illegalArgumentException();
+        if (!Exception.isValidRestartNumber()) {
+            Exception.illegalArgumentException();
         }
         if (restartGame == NEW_GAME) {
             Message.printNewGameValue();
@@ -146,22 +146,6 @@ class Baseball {
         return computerNumber.get(i).equals(Integer.parseInt(userNumber.substring(i, i + 1)));
     }
 
-    private static boolean isValidNumber() {
-        return userNumber.matches("^[1-9]{3}$");
-    }
-
-    private static boolean isValidRestartNumber() {
-        return restartGame == NEW_GAME || restartGame == END_GAME;
-    }
-
-    private static boolean isOverlapNumber() {
-        HashSet<String> checkOverlapUserNumber = new HashSet<>();
-        for (int i = 0; i < userNumber.length(); i++) {
-            checkOverlapUserNumber.add(userNumber.substring(i, i + 1));
-        }
-        return checkOverlapUserNumber.size() == computerNumber.size();
-    }
-
     private static boolean isExistBall() {
         return countBallStrike.get(BALL) != EMPTY;
     }
@@ -174,9 +158,6 @@ class Baseball {
         return countBallStrike.get(STRIKE) == NUMBER_PITCH;
     }
 
-    private static void illegalArgumentException() {
-        throw new IllegalArgumentException();
-    }
 }
 
 class Message extends Baseball {
@@ -225,5 +206,27 @@ class Message extends Baseball {
         System.out.println(countBallStrike.get(BALL) + BALL
                 + BLANK
                 + countBallStrike.get(STRIKE) + STRIKE);
+    }
+}
+
+class Exception extends Baseball {
+    protected static boolean isValidNumber() {
+        return userNumber.matches("^[1-9]{3}$");
+    }
+
+    protected static boolean isValidRestartNumber() {
+        return restartGame == NEW_GAME || restartGame == END_GAME;
+    }
+
+    protected static boolean isOverlapNumber() {
+        HashSet<String> checkOverlapUserNumber = new HashSet<>();
+        for (int i = 0; i < userNumber.length(); i++) {
+            checkOverlapUserNumber.add(userNumber.substring(i, i + 1));
+        }
+        return checkOverlapUserNumber.size() == computerNumber.size();
+    }
+
+    protected static void illegalArgumentException() {
+        throw new IllegalArgumentException();
     }
 }
