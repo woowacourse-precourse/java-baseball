@@ -1,11 +1,16 @@
 package baseball;
+
+import java.util.Scanner;
+
 public class Application {
     public static void game_start_message(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void input_number_message(){
+    public static String input_number_message(){
         System.out.println("숫자를 입력해주세요 : ");
+        String input_number = camp.nextstep.edu.missionutils.Console.readLine();
+        return input_number;
     }
 
     public static void three_strike_message(){
