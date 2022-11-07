@@ -28,11 +28,30 @@ class ApplicationTest extends NsTest {
     final PrintStream standardOut = System.out;
 
     @Test
-    void 게임종료_후_재시작() {
+    void overallTest_많은_출력() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "1", "589", "1", "751", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9, 7, 5, 1
+        );
+    }
+
+    @Test
+    void overallTest_적은_출력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "1", "123", "589", "2");
+                    assertThat(output()).contains("3스트라이크", "낫싱", "게임 종료");
+                    assertThat(output()).doesNotContain("1스트라이크", "2스트라이크", "볼");
                 },
                 1, 3, 5, 5, 8, 9
         );
