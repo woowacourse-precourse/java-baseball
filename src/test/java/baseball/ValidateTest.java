@@ -19,6 +19,20 @@ class ValidateTest {
 			.hasMessageContaining(
 				Message.USER_INPUT_LENGTH_INVALID.getMsg() +
 				Message.INVALID_INPUT_END_GAME.getMsg());
+
+		String duplicateNumber = "113";
+		assertThatThrownBy(() -> Validate.checkCorrectInput(duplicateNumber))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(
+				Message.USER_INPUT_DUPLICATED.getMsg() +
+					Message.INVALID_INPUT_END_GAME.getMsg());
+
+		String numberHasZero = "012";
+		assertThatThrownBy(() -> Validate.checkCorrectInput(numberHasZero))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(
+				Message.USER_INPUT_NUMBER_RANGE_INVALID.getMsg() +
+					Message.INVALID_INPUT_END_GAME.getMsg());
 	}
 
 	@Test
@@ -61,5 +75,17 @@ class ValidateTest {
 	void isDuplicated_메서드_중복없는_숫자_false_리턴(){
 		String input = "123";
 		assertThat(Validate.isDuplicated(input)).isEqualTo(false);
+	}
+
+	@Test
+	void isNumberNotInRange_메서드_0이_존재하면_true_리턴(){
+		String input = "012";
+		assertThat(Validate.isNumberNotInRange(input)).isEqualTo(true);
+	}
+
+	@Test
+	void isNumberNotInRange_메서드_유효한_숫자면_false_리턴(){
+		String input = "312";
+		assertThat(Validate.isNumberNotInRange(input)).isEqualTo(false);
 	}
 }
