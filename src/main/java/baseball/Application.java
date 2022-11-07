@@ -1,7 +1,13 @@
 package baseball;
 
+import java.util.Arrays;
+
+import baseball.constants.Constants;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    	System.out.println(Constants.startMessage);
+    	Controller controller = new Controller();
+    	controller.run();
     }
 }
