@@ -89,10 +89,6 @@ public class BaseballComputer {
         return false;
     }
 
-    public List<Integer> getRandomNumber() {
-        return this.computerNumber;
-    }
-
     public int inputRestartOrEnd(){
         String beforeIntChange = Console.readLine();
         return changeType.StringToInt(beforeIntChange);
