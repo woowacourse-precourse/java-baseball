@@ -79,7 +79,7 @@ public class Application {
     }
     
     public static boolean checkException() {
-    	if(inputNumber.length()==3&&!inputNumber.contains("0")&&checkType(inputNumber)&&checkDiff(inputNumber)) {
+    	if(inputNumber.length()==3&&checkType(inputNumber)&&checkDiff(inputNumber)) {
     		return true;
     	}else
     		return false;
