@@ -27,6 +27,7 @@ public class Game {
     }
 
     void playOneTime() {
+        this.target.reset();
         Turn turn = new Turn(this.target);
         turn.repeatToEnd();
         OutputView.announceEndOfThisGame();
