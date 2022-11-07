@@ -10,6 +10,8 @@ public class Game {
     private static List<Integer> computer;
     private static List<Integer> userInput;
     private static boolean end = false;
+    private int strike = 0;
+    private  int ball = 0;
 
     public void runGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -17,6 +19,11 @@ public class Game {
         setRandomNumber();
         while (!end) {
             proceedGame();
+            if (strike == 3) {
+                restart();
+                resetData();
+            }
+            resetData();
         }
     }
 
@@ -24,34 +31,22 @@ public class Game {
         number.userInput();
         userInput = number.userInputNumber;
         checkAnswer();
-        resetData();
+        userInput.clear();
     }
 
     public void setRandomNumber() {
         computer = number.createRandomNumber();
     }
     public void checkAnswer() {
-        int strike = 0;
-        int ball = 0;
-
         for (Integer input: userInput) {
-            boolean isBallNum = isBall(input);
-            boolean isStrikeNum = isStrike(input);
-
-            if (isBallNum && isStrikeNum) {
+            if (isBall(input) && isStrike(input)) {
                 strike++;
             }
-            if (isBallNum && !isStrikeNum) {
+            if (isBall(input) && !isStrike(input)) {
                 ball++;
             }
         }
-        printResult(strike, ball);
-
-        if (strike == 3) {
-            if (restart()) {
-                computer = number.createRandomNumber();
-            }
-        }
+        printResult();
     }
 
     public boolean isBall(Integer userInputNumber) {
@@ -68,7 +63,7 @@ public class Game {
         return false;
     }
 
-    public void printResult(int strike, int ball) {
+    public void printResult() {
         if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -93,21 +88,22 @@ public class Game {
         }
     }
 
-    public boolean restart() {
+    public void restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restart = Console.readLine();
         if (restart.equals("2")) {
             end = true;
             computer.clear();
-            return false;
         }
         if (restart.equals("1")) {
             userInput.clear();
             computer.clear();
-            return true;
+            setRandomNumber();
         }
         throw new IllegalArgumentException();
     }
     public void resetData() {
-        userInput.clear();
+        strike = 0;
+        ball = 0;
     }
 }
