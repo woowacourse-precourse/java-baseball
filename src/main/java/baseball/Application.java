@@ -50,6 +50,13 @@ public class Application {
     }
 
     public static boolean checkExitGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        try{
+            int userChoice = Integer.parseInt(input);
+            if(userChoice == 1) return false;  // 1을 입력하면 재시작
+            if(userChoice == 2) return true; // 2를 입력하면 게임 종료
+        }catch(NumberFormatException nfe) {throw new IllegalArgumentException();}
         return false;
     }
 
