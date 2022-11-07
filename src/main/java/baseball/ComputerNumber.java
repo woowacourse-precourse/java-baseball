@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -19,7 +20,7 @@ public class ComputerNumber {
     }
 
     public void makeComputerNumber() {
-        HashSet<Integer> randomNumbers = new HashSet<>();
+        HashSet<Integer> randomNumbers = new LinkedHashSet<>();
         while (randomNumbers.size() < GameConstants.NUMBER_LENGTH) {
             int number = Randoms.pickNumberInRange(GameConstants.MIN_NUMBER, GameConstants.MAX_NUMBER);
             randomNumbers.add(number);
