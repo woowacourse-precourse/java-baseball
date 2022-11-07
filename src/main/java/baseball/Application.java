@@ -3,8 +3,6 @@ package baseball;
 import baseball.computer.ComputerFunction;
 import baseball.game.GameFunction;
 import baseball.user.UserFunction;
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
