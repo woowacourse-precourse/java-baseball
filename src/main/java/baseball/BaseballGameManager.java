@@ -4,16 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class BaseballGameManager {
     private static final String BASEBALL_GAME_GET_USER_INPUT_MESSAGE = "숫자를 입력하세요.";
-    private static final String BASEBALL_GAME_FORCE_EXIT_MESSAGE = "※ 30초 이상 입력이 없어 게임을 자동 종료합니다. ※";
     private static final String BASEBALL_GAME_ASK_FOR_DIVIDED_NUMBER_MESSAGE = "※ 서로 다른 숫자 %d개를 입력해주세요. ※\n";
 
     private List<Integer> baseballNumberList;
     private ElementListMaker<Integer> elementListMaker;
+    private UserInputTimer inputTimer;
     private int numberCount;
 
     public BaseballGameManager(List<Integer> baseballNumberList, ElementListMaker<Integer> elementListMaker) {
@@ -42,18 +40,11 @@ public class BaseballGameManager {
     }
 
     private String getValidInput() {
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println(BASEBALL_GAME_FORCE_EXIT_MESSAGE);
-                System.exit(0);
-            }
-        };
-
-        timer.schedule(task, 30 * 1000);
+        inputTimer = new UserInputTimer();
+        inputTimer.setTimer();
         String userInput = Console.readLine();
-        timer.cancel();
+        inputTimer.closeTimer();
+
         try {
             // userInput이 Integer로 타입 변환이 가능한지 (숫자가 아닌 값 입력시 예외처리)
             Integer.parseInt(userInput);

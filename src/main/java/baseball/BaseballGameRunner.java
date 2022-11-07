@@ -2,10 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class BaseballGameRunner {
     private static final int NUMBER_LIST_LENGTH = 3;
@@ -14,12 +11,11 @@ public class BaseballGameRunner {
     private static final String BASEBALL_GAME_STARTING_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String BASEBALL_GAME_RESTART_CHECK_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String BASEBALL_GAME_EXIT_MESSAGE = "게임 종료";
-    private static final String BASEBALL_GAME_FORCE_EXIT_MESSAGE = "※ 30초 이상 입력이 없어 게임을 자동 종료합니다. ※";
-
 
     private ElementListMaker<Integer> numberElementListMaker;
     private List<Integer> randomNumberList;
     private BaseballGameManager gameManager;
+    private UserInputTimer inputTimer;
 
     public BaseballGameRunner(ElementListMaker<Integer> numberElementListMaker) {
         this.numberElementListMaker = numberElementListMaker;
@@ -50,17 +46,10 @@ public class BaseballGameRunner {
         System.out.println(BASEBALL_GAME_RESTART_CHECK_MESSAGE);
 
         try {
-            Timer timer = new Timer();
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
-                    System.out.println(BASEBALL_GAME_FORCE_EXIT_MESSAGE);
-                    System.exit(0);
-                }
-            };
-            timer.schedule(task, 30 * 1000);
+            inputTimer = new UserInputTimer();
+            inputTimer.setTimer();
             int restartCheck = Integer.parseInt(Console.readLine());
-            timer.cancel();
+            inputTimer.closeTimer();
 
             if (restartCheck == BASEBALL_GAME_RESTART) {
                 return true;
@@ -73,6 +62,5 @@ public class BaseballGameRunner {
             return checkRestart();
         }
     }
-
 }
 
