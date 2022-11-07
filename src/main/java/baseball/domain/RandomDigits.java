@@ -13,13 +13,14 @@ public final class RandomDigits extends Digits {
     }
 
     private void generateRandom() {
+        append(Digit.from(Randoms.pickNumberInRange(1, 9)));
         while (size() < 3) {
             tryToAppend();
         }
     }
 
     private void tryToAppend() {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (!contains(Digit.from(randomNumber))) {
             append(Digit.from(randomNumber));
         }
