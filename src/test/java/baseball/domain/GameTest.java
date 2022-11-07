@@ -3,6 +3,7 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import baseball.utils.UserInputAdapter;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -42,7 +43,7 @@ public class GameTest {
         String typeErrorMessage = "숫자만 입력 가능합니다.";
 
         //when,then
-        assertThatThrownBy(() -> testGame.changeUserInputToArray("안123"))
+        assertThatThrownBy(() -> UserInputAdapter.changeStrToArray("안123"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(typeErrorMessage);
     }
@@ -54,7 +55,7 @@ public class GameTest {
         String testString = "123";
 
         //when
-        List<Integer> testArray = testGame.changeUserInputToArray(testString);
+        List<Integer> testArray = UserInputAdapter.changeStrToArray(testString);
 
         //when,then
         Assertions.assertThat(testArray).isEqualTo(List.of(1, 2, 3));

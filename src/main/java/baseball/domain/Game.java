@@ -3,8 +3,8 @@ package baseball.domain;
 import baseball.utils.AnswerGenerator;
 import baseball.utils.Constants;
 import baseball.utils.InputValidator;
+import baseball.utils.UserInputAdapter;
 import baseball.view.GameView;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -27,17 +27,8 @@ public class Game {
 
     public List<Integer> getUserInput() {
         String userInputStr = GameView.askUserInput();
-        List<Integer> userInput = changeUserInputToArray(userInputStr);
+        List<Integer> userInput = UserInputAdapter.changeStrToArray(userInputStr);
         InputValidator.hasValidInput(userInput);
-        return userInput;
-    }
-
-    public List<Integer> changeUserInputToArray(String userInputStr) {
-        InputValidator.hasValidType(userInputStr);
-        List<Integer> userInput = new ArrayList<>();
-        for (int i = 0; i < userInputStr.length(); i++) {
-            userInput.add(userInputStr.charAt(i) - '0');
-        }
         return userInput;
     }
 
