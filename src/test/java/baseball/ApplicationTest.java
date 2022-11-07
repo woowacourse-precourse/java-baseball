@@ -1,41 +1,40 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Nested;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
 
-    @Nested
-    class 종료_테스트 {
-
-        @Test
-        void 게임종료_후_재시작() {
-            assertRandomNumberInRangeTest(
-                    () -> {
-                        run("246", "135", "1", "597", "589", "2");
-                        assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                    },
-                    1, 3, 5, 5, 8, 9
-            );
-        }
+    private String getAnswer(Game game) {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<Integer> answerNumbers = game.getAnswerNumbers();
+        answerNumbers.stream()
+                .map(number -> Integer.toString(number))
+                .forEach(stringBuilder::append);
+        return stringBuilder.toString();
+    }
+    @Test
+    void 게임종료_후_재시작() {
+        Game baseballGame = new Game();
+        String answer = getAnswer(baseballGame);
+        baseballGame.operate(answer);
+        baseballGame.operate("1");
+        assertThat(output()).doesNotContain("게임종료");
     }
 
-    @Nested
-    class 오류_테스트 {
-
-        @Test
-        void 예외_테스트() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("1234"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
+    @Test
+    void 예외_테스트() {
+        boolean exceptionCaught = false;
+        Game baseballGame = new Game();
+        try {
+            baseballGame.operate("1234");
+        } catch (IllegalArgumentException e) {
+            exceptionCaught = true;
         }
+        assertThat(exceptionCaught).isTrue();
     }
 
     @Override
