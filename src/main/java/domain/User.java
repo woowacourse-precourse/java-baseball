@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 public class User {
 
     private List<Integer> verifiedValueList = new ArrayList<>();
+    private static final int INAPPROPRIATE_SIZE = 3;
+    private static final int NUMBER_OF_DIGITS = 3;
 
     public void guessComputerNumbers(Scanner scanner) {
         List<Character> unverifiedValueList;
@@ -30,19 +32,19 @@ public class User {
     }
 
     private void checkEnteredValuesOverlap(String userEnteredValues) {
-        Set<String> overlapCheckValue = new HashSet<>();
+        Set<String> overlapCheckValues = new HashSet<>();
 
         for (int i = 0; i < userEnteredValues.length(); i++) {
-            overlapCheckValue.add(String.valueOf(userEnteredValues.charAt(i)));
+            overlapCheckValues.add(String.valueOf(userEnteredValues.charAt(i)));
         }
 
-        if (overlapCheckValue.size() != 3) {
+        if (overlapCheckValues.size() != INAPPROPRIATE_SIZE) {
             throw new IllegalArgumentException("중복되는 수는 입력할 수 없습니다.");
         }
     }
 
     private void checkEnteredValuesLength(String userEnteredValues) {
-        if (userEnteredValues.length() != 3) {
+        if (userEnteredValues.length() != NUMBER_OF_DIGITS) {
             throw new IllegalArgumentException("세자리 숫자가 입력 되어야 합니다.");
         }
     }

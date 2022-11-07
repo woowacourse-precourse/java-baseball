@@ -9,6 +9,9 @@ import java.util.Scanner;
 
 public class Application {
 
+    public static final int END_CODE = 1;
+    public static final int SUCCESS_CODE = 3;
+
     public static void main(String[] args) {
         User user = new User();
         Computer computer = new Computer();
@@ -21,7 +24,7 @@ public class Application {
             Scanner scanner = new Scanner(System.in);
             playBaseballGame(user, computer, referee, scanner);
             playingStatus = user.isEndGame(scanner);
-        } while (playingStatus == 1);
+        } while (playingStatus == END_CODE);
     }
 
     private static void playBaseballGame(User user, Computer computer, Referee referee, Scanner scanner) {
@@ -38,7 +41,7 @@ public class Application {
                 out.println(getRefereeBall(referee) + "볼");
             }
 
-            if (getRefereeStrike(referee) > 0 && getRefereeBall(referee) == 0 ) {
+            if (getRefereeStrike(referee) > 0 && getRefereeBall(referee) == 0) {
                 out.println(getRefereeStrike(referee) + "스트라이크");
             }
 
@@ -50,7 +53,7 @@ public class Application {
                 out.println("낫싱");
             }
 
-            if (getRefereeStrike(referee) == 3) {
+            if (getRefereeStrike(referee) == SUCCESS_CODE) {
                 user.init();
                 referee.init();
                 computer.init();

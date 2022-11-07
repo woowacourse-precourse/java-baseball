@@ -11,6 +11,8 @@ public class Referee {
     private final User user;
     private int strike = 0;
     private int ball = 0;
+    private static final int MAXIMUM_NUMBER_INPUT = 3;
+    private static final int MAXIMUM_SET_SIZE = 6;
 
     public Referee(Computer computer, User user) {
         this.computer = computer;
@@ -23,7 +25,7 @@ public class Referee {
         List<Integer> computerNumbers = computer.getNumbers();
         List<Integer> userNumbers = user.getVerifiedValueList();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < MAXIMUM_NUMBER_INPUT; i++) {
             if (Objects.equals(computerNumbers.get(i), userNumbers.get(i))) {
                 strike++;
             }
@@ -32,7 +34,7 @@ public class Referee {
             judgeSet.add(userNumbers.get(i));
         }
 
-        this.ball = 6 - judgeSet.size() - this.strike;
+        this.ball = MAXIMUM_SET_SIZE - judgeSet.size() - this.strike;
     }
 
     public int getStrike() {
