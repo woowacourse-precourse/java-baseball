@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.BaseballGameManager.NUMBER_COUNT_TO_CREATED;
+import static baseball.RandomNumberCreator.NUMBER_COUNT_TO_CREATED;
 
 public class InputValidator {
 

@@ -1,28 +1,18 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class BaseballGameManager {
 
-    public final static int NUMBER_COUNT_TO_CREATED = 3;
-
     private ResultProvider resultProvider = new ResultProvider();
-    private List<Integer> randomNumbers = new ArrayList<>();
+    private RandomNumberCreator randomNumberCreator = new RandomNumberCreator();
     private int strikeCount;
     private int ballCount;
 
     public void createRandomNumbers() {
-        while (randomNumbers.size() < NUMBER_COUNT_TO_CREATED) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
-            }
-        }
+        randomNumberCreator.create();
     }
 
     public void printResult(String input) {
@@ -32,7 +22,7 @@ public class BaseballGameManager {
 
     public boolean isGameClear() {
         if (strikeCount == 3) {
-            randomNumbers.clear();
+            randomNumberCreator.clear();
             return true;
         }
         return false;
@@ -43,17 +33,7 @@ public class BaseballGameManager {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        strikeCount = (int) IntStream.range(0, 3)
-                .filter(idx -> isStrike(idx, inputNumbers))
-                .count();
-
-        ballCount = (int) IntStream.range(0, 3)
-                .filter(idx -> randomNumbers.contains(inputNumbers.get(idx)))
-                .filter(idx -> !isStrike(idx, inputNumbers))
-                .count();
-    }
-
-    private boolean isStrike(int idx, List<Integer> inputNumbers) {
-        return randomNumbers.get(idx).equals(inputNumbers.get(idx));
+        strikeCount = randomNumberCreator.getStrikeCount(inputNumbers);
+        ballCount = randomNumberCreator.getBallCount(inputNumbers);
     }
 }
