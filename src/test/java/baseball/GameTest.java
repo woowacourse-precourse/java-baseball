@@ -177,4 +177,35 @@ class GameTest {
             assertThat(game.isFinish()).isEqualTo(false);
         }
     }
+    @Nested
+    class FunctionTest10 {
+        @Test
+        void 입력값없음_테스트() {
+            Game game = new Game();
+            String number = "";
+            assertThatThrownBy(() -> game.checkInputValidation(number))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+        @Test
+        void 입력값_개수_초과_테스트() {
+            Game game = new Game();
+            String number = "1234";
+            assertThatThrownBy(() -> game.checkInputValidation(number))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+        @Test
+        void 입력값_개수_미만_테스트() {
+            Game game = new Game();
+            String number = "12";
+            assertThatThrownBy(() -> game.checkInputValidation(number))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+        @Test
+        void 입력값_중복_테스트() {
+            Game game = new Game();
+            String number = "122";
+            assertThatThrownBy(() -> game.checkInputValidation(number))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
