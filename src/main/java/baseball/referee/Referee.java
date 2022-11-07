@@ -1,49 +1,43 @@
 package baseball.referee;
 
+import baseball.baesball.Baseball;
 import baseball.hint.Hint;
 import baseball.hint.HintGenerator;
 
-import static baseball.hint.HintType.*;
-import static baseball.referee.GameRule.BASEBALL_STRIKE_WIN_COUNT;
+import static baseball.game.GameRule.BASEBALL_STRIKE_WIN_COUNT;
+import static baseball.hint.HintType.STRIKE;
 import static baseball.referee.JudgeType.GAME_LOSE;
 import static baseball.referee.JudgeType.GAME_WIN;
 
 public class Referee {
     private final HintGenerator hintGenerator;
+    private final Megaphone megaphone;
 
-    public Referee(HintGenerator hintGenerator) {
+    public Referee(HintGenerator hintGenerator, Megaphone megaphone) {
         this.hintGenerator = hintGenerator;
+        this.megaphone = megaphone;
     }
 
-    public JudgeType judgeBy(Hint hint) {
-        int strikeCount = judgeStrikeBy(hint);
-        int ballCount = judgeBallBy(hint);
-        int nothingCount = judgeNothingBy(hint);
+    public void announceStartGame() {
+        megaphone.speakGameStart();
+    }
 
-        if (strikeCount == BASEBALL_STRIKE_WIN_COUNT.getRule()) {
-            return GAME_WIN;
+    public void announcePlayerToStart() {
+        megaphone.speakToInputNumbers();
+    }
+
+    public JudgeType judgeFrom(Baseball computer, Baseball player) {
+        Hint hint = hintGenerator.generate(computer, player);
+        JudgeType judgeType = GAME_LOSE;
+        if (judgeWin(hint)) {
+            judgeType = GAME_WIN;
         }
-        return GAME_LOSE;
+        megaphone.speakJudgement(judgeType, hint);
+        return judgeType;
     }
 
-    public int judgeStrikeBy(Hint hint) {
-        return (int) hint.getHints()
-                .stream()
-                .filter(hintType -> hintType == STRIKE)
-                .count();
-    }
-
-    public int judgeBallBy(Hint hint) {
-        return (int) hint.getHints()
-                .stream()
-                .filter(hintType -> hintType == BALL)
-                .count();
-    }
-
-    public int judgeNothingBy(Hint hint) {
-        return (int) hint.getHints()
-                .stream()
-                .filter(hintType -> hintType == NOTHING)
-                .count();
+    private boolean judgeWin(Hint hint) {
+        int strikeCount = hint.findCountBy(STRIKE);
+        return strikeCount == BASEBALL_STRIKE_WIN_COUNT.getRule();
     }
 }
