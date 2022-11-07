@@ -1,5 +1,8 @@
-package baseball;
+package baseball.model;
 
+import baseball.Rule;
+import baseball.Validator;
+import baseball.view.View;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;

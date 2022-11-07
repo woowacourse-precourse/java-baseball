@@ -1,14 +1,19 @@
-package baseball;
+package baseball.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import baseball.Rule;
+import baseball.view.View;
+import baseball.model.Model;
+
+
 public class Controller {
 
-//    private  computerNumber;
-    private  boolean isPlaying = true;
+    private List<Integer> computerNumber;
+    private boolean isPlaying = true;
 
     private static final String STRIKE ="strike";
     private static final String STRIKE_KOR ="스트라이크";
@@ -21,41 +26,41 @@ public class Controller {
     private static final String COMMAND_END = Rule.COMMAND_END.toString();
 
 
+//    public void generate() {
+//        View.printStart();
+//        do{
+//            List<Integer> computerNumber = Model.createComputerNumber();
+//            play(computerNumber);
+//            String exitInput = View.getExitInput();
+//            restartOrEnd(exitInput);
+//        }while (isPlaying);
+//
+//    }
+//
+//    public void play(List<Integer> computerNumber){
+//        Map<String, Integer>resultMap;
+//        do {
+////            System.out.println(computerNumber);
+//            List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
+//            resultMap = checkAnswer(computerNumber, playerNumber);
+//            View.printHint(createHint(resultMap));
+//        }while(!isCorrect(resultMap));
+//    }
+
     public void generate() {
         View.printStart();
-        do{
-            List<Integer> computerNumber = Model.createComputerNumber();
-            play(computerNumber);
-            String exitInput = View.getExitInput();
-            restartOrEnd(exitInput);
-        }while (isPlaying);
-
-    }
-
-    public void play(List<Integer> computerNumber){
-        Map<String, Integer>resultMap;
+        computerNumber = Model.createComputerNumber();
         do {
-//            System.out.println(computerNumber);
+            System.out.println(computerNumber);
             List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
-            resultMap = checkAnswer(computerNumber, playerNumber);
+            Map<String, Integer>resultMap = checkAnswer(computerNumber, playerNumber);
             View.printHint(createHint(resultMap));
-        }while(!isCorrect(resultMap));
+            if (isCorrect(resultMap)) {
+                String exitInput = View.getExitInput();
+                restartOrEnd(exitInput);
+            }
+        }while(isPlaying);
     }
-
-//    public static void generate() {
-//        View.printStart();
-//        computerNumber = Model.createComputerNumber();
-//        do {
-//            System.out.println(computerNumber);
-//            List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
-//            Map<String, Integer>resultMap = checkAnswer(computerNumber, playerNumber);
-//            View.printHint(createHint(resultMap));
-//            if (isCorrect(resultMap)) {
-//                String exitInput = View.getExitInput();
-//                restartOrEnd(exitInput);
-//            }
-//        }while(isPlaying);
-//    }
 
     public Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
         Map<String, Integer> resultMap = new HashMap<>();
