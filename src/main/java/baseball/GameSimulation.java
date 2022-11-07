@@ -12,8 +12,16 @@ public class GameSimulation {
     private int ball;
     private static final boolean INVALID = false;
 
-    public GameSimulation() {
+    public GameSimulation(Computer computer) {
+        this.computer = computer;
+        this.strike = 0;
+        this.ball = 0;
     }
+
+    public void init() {
+        computer.init();
+    }
+
 
     public void playGame() {
         List<Integer> userNumber;
