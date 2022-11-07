@@ -20,4 +20,8 @@ public class OutputView {
     public static void printResultTurnOfOnlyBalls(int balls) {
         System.out.println(balls + "볼");
     }
+
+    public static void printResultTurnOfOnlyStrikes(int strikes) {
+        System.out.println(strikes + "스트라이크");
+    }
 }
