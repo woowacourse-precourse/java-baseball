@@ -8,29 +8,34 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        //  run("246", "135", "1", "597", "589", "2");
-
         System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean flag = true;git add
         List<Integer> computer = new ArrayList<>();
         List<Integer> user = new ArrayList<>();
 
 
-        do {
-            user.clear();
-            computer.clear();
+    while (flag){
+        user.clear();
+        computer.clear();
 
-            gameRun(computer, user);
-            //더 수행할지 여부를
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String oneMore = readLine();
-            if (oneMore.equals("1")) continue;
-            if (oneMore.equals("2")) {
-                System.out.println("게임 종료");
-                break;
-            }
-        } while (true);
+        gameRun(computer, user);
+        flag = oneMore();
+    }
 
 
+    }
+
+    /**
+     * 게임을 반복할지 확인하는 메서드
+    */
+    private static boolean oneMore() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String oneMore = readLine();
+        if (oneMore.equals("2")) {
+            System.out.println("게임 종료");
+            return false;
+        }
+        return true;
     }
 
     /**
