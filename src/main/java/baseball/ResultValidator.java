@@ -8,6 +8,8 @@ public class ResultValidator {
         List<Integer> result = new ArrayList<>();
         int strike = countStrike(input, createdNumber);
         int ball = countBall(input, createdNumber);
+        result.add(strike);
+        result.add(ball);
 
         return result;
     }
