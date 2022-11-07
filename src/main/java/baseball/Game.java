@@ -25,23 +25,4 @@ public class Game {
         }
         return computer;
     }
-
-    List<String> getNumber() {
-        System.out.print(systemMessage.INSERT_NUMBER_MESSAGE);
-        List<String> numberList = new ArrayList<>(Arrays.asList(Console.readLine().split("")));
-        return numberList;
-    }
-    void result (List<String> numberList) {
-
-    }
-    char gameRestartController() {
-        System.out.println(systemMessage.RESTART_GAME_MESSAGE);
-        String inputRestartValue = Console.readLine();
-
-        if (inputRestartValue.length() == 1) {
-            return inputRestartValue.charAt(0);
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
 }
