@@ -6,11 +6,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Application {
 
     public static void main(String[] args) {
-
         while(true){
             if( playGame(generateRandomNumber()).equals("2")) break;
         }
@@ -38,7 +38,7 @@ public class Application {
             System.out.println(input);
             String[] inputSplits = input.split("");
 
-            validateCase(inputSplits);
+            validateInputCase(inputSplits);
 
             int[] inputNumbers = Arrays.stream(inputSplits).mapToInt(Integer::valueOf).toArray();
 
@@ -86,6 +86,7 @@ public class Application {
         }
         return sb.toString();
     }
+
     public static class GameStatus{
         Boolean nothing = true;
 
@@ -94,8 +95,9 @@ public class Application {
         Integer strike = 0;
 
     }
-    private static void validateCase(String[] inputSplits){
-        if(inputSplits.length != 3) throw new IllegalArgumentException();
 
+    private static void validateInputCase(String[] inputSplits){
+        if(inputSplits.length != 3) throw new IllegalArgumentException();
+        if(!Pattern.matches("[1-9]", Arrays.toString(inputSplits))) throw new IllegalArgumentException();
     }
 }

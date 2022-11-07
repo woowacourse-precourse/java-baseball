@@ -9,7 +9,7 @@
   - [X] 볼 변수에 해당하는 횟수 저장
   - [X] 스트라이크 변수에 해당하는 횟수 저장
 - [X] 종료 or 재시작 하기
-- [ ] IllegalArgumentException 처리
+- [X] IllegalArgumentException 처리
 - [ ] 테스트 코드 체크
 - [ ] 리팩토링
 
