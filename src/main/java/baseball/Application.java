@@ -22,20 +22,20 @@ public class Application {
     public static void main(String[] args) {
         Application application = new Application();
         GameTextPrinter.printGameStartText();
-        application.playGame();
+        application.startGame();
     }
 
-    private void playGame() {
+    private void startGame() {
         Computer computer = new Computer();
         User user = new User();
 
         while (!gameExit) {
-            playMatch(computer, user);
+            playGame(computer, user);
             checkUserWantsToRestartGame(computer);
         }
     }
 
-    private void playMatch(Computer computer, User user) {
+    private void playGame(Computer computer, User user) {
         computer.generateRandomNumber();
         while (!gameOver) {
             GameTextPrinter.printUserInputText();
