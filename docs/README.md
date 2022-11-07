@@ -181,6 +181,9 @@ class NumberBaseballStdIOGame {
   -void countBall()
   -void countStrike()
   -void prepareOutputData()
+  -boolean isStrike(idx)
+  -boolean isBall(idx)
+  -void count() 
 }
 class GameStatus {
   -boolean isStart
@@ -281,6 +284,11 @@ NumberBaseballStdIOGameManager "1" --* "1" NumberBaseballStdIOGame : has
   - `private void countStrike()`
 - 현재 상태를 보고 출력문을 작성한다.
   - `private void prepareOutputData()`
+- 사용자 입력의 인덱스와 프로그램이 지닌 숫자의 인덱스를 비교한다.
+  - `private boolean isStrike(int idx)`
+  - `private boolean isBall(int idx)`
+- `볼`과 `스트라이크`를 계산한다.
+  - `private void count()`
 
 #### GameStatus
 

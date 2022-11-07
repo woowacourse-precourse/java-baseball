@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import game.GameStatus;
 import game.stdiogame.SimpleStdIOGame;
 
+import java.util.Map;
+
 public class NumberBaseballStdIOGame extends SimpleStdIOGame {
     public NumberBaseballStdIOGame(String name, GameStatus gameStatus) {
         super(name, gameStatus);
@@ -53,19 +55,47 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
 
     @Override
     public void operateRule() {
-
+        count();
     }
 
+    private boolean isStrike(int idx) {
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        String input = gameStatus.getInputData();
+        Map<Character, Integer> targetNumber = gameStatus.getTargetNumber();
+        return targetNumber.get(input.charAt(idx)) != null && targetNumber.get(input.charAt(idx)).equals(idx);
+    }
+
+    private boolean isBall(int idx) {
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        String input = gameStatus.getInputData();
+        Map<Character, Integer> targetNumber = gameStatus.getTargetNumber();
+        return targetNumber.get(input.charAt(idx)) != null && !targetNumber.get(input.charAt(idx)).equals(idx);
+    }
+    private void count() {
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        String input = gameStatus.getInputData();
+        int len = input.length();
+        for (int i = 0; i < len; ++i) {
+            countStrike(i);
+            countBall(i);
+        }
+    }
+
+    private void countBall(int idx) {
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        if (isBall(idx)) {
+            gameStatus.setBallCount(gameStatus.getBallCount() + 1);
+        }
+    }
+
+    private void countStrike(int idx) {
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        if (isStrike(idx)) {
+            gameStatus.setStrikeCount(gameStatus.getStrikeCount() + 1);
+        }
+    }
     @Override
     protected void writeOutput() {
-
-    }
-
-    private void countBall() {
-
-    }
-
-    private void countStrike() {
 
     }
 
@@ -73,4 +103,9 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
 
     }
 
+    private void resetCount() {
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        gameStatus.setStrikeCount(0);
+        gameStatus.setBallCount(0);
+    }
 }

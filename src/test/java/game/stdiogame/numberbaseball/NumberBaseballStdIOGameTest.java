@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -19,6 +20,14 @@ class NumberBaseballStdIOGameTest {
     @BeforeEach
     void beforeEach() {
         System.setOut(new PrintStream(os));
+        resetCount();
+    }
+
+    private void resetCount() {
+        NumberBaseballStdIOGame game = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) game.getGameStatus();
+        gameStatus.setStrikeCount(0);
+        gameStatus.setBallCount(0);
     }
 
     @AfterEach
@@ -94,7 +103,201 @@ class NumberBaseballStdIOGameTest {
     }
 
     @Test
-    void operateRule() {
+    void operateRule_낫싱() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('4', 0);
+        targetNumber.put('5', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(0);
+        assertThat(ballCount).isEqualTo(0);
+    }
+
+    @Test
+    void operateRule_1스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('1', 0);
+        targetNumber.put('5', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(0);
+    }
+
+    @Test
+    void operateRule_2스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('1', 0);
+        targetNumber.put('5', 1);
+        targetNumber.put('3', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(2);
+        assertThat(ballCount).isEqualTo(0);
+    }
+
+    @Test
+    void operateRule_3스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('1', 0);
+        targetNumber.put('2', 1);
+        targetNumber.put('3', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(3);
+        assertThat(ballCount).isEqualTo(0);
+    }
+
+    @Test
+    void operateRule_1볼() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('4', 0);
+        targetNumber.put('1', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(0);
+        assertThat(ballCount).isEqualTo(1);
+    }
+
+    @Test
+    void operateRule_2볼() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('2', 0);
+        targetNumber.put('1', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(0);
+        assertThat(ballCount).isEqualTo(2);
+    }
+
+    @Test
+    void operateRule_3볼() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('2', 0);
+        targetNumber.put('3', 1);
+        targetNumber.put('1', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(0);
+        assertThat(ballCount).isEqualTo(3);
+    }
+
+    @Test
+    void operateRule_1볼_1스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('4', 0);
+        targetNumber.put('2', 1);
+        targetNumber.put('1', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(1);
+    }
+
+    @Test
+    void operateRule_2볼_1스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('3', 0);
+        targetNumber.put('2', 1);
+        targetNumber.put('1', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+
+        int strikeCount = nbGameStatus.getStrikeCount();
+        int ballCount = nbGameStatus.getBallCount();
+        assertThat(strikeCount).isEqualTo(1);
+        assertThat(ballCount).isEqualTo(2);
     }
 
     @Test
