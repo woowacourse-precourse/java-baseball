@@ -87,4 +87,15 @@ public class SystemController {
         }
         return SystemScoreModeltoStringBuilder();
     }
+
+    public String SystemScoreModeltoStringBuilder(){
+        StringBuilder sb = new StringBuilder();
+        if (ball > 0) {
+            sb.append(ball).append(BALL.getScore()).append(" ");
+        }
+        if (strike > 0) {
+            sb.append(strike).append(STRIKE.getScore());
+        }
+        return sb.toString();
+    }
 }
