@@ -40,7 +40,7 @@ public class Game {
     }
 
     public void verifyPlayerNumbers(String gamePlayerNumberInput) {
-        ExceptionForPlayerNumbers.checkGamePlayerNumberInput(gamePlayerNumberInput);
+        PlayerNumbersException.verifyPlayerNumbers(gamePlayerNumberInput);
     }
 
     public String getResult(String gamePlayerInput) {
