@@ -35,7 +35,7 @@ public class UserService {
     }
 
     private void checkBaseballNumber() {
-        if (checkNumberLength()) {
+        if (!checkNumberLength() || !checkIsInteger()) {
             throw new IllegalArgumentException("프로그램을 종료합니다.");
         }
     }
@@ -45,6 +45,22 @@ public class UserService {
         if (userBaseballNumber.length() != 3) {
             returnCheckNumber = false;
         }
+        return returnCheckNumber;
+    }
+
+    private  boolean checkIsInteger(){
+        boolean returnCheckNumber = true;
+        char number;
+
+        for(int i=0; i<userBaseballNumber.length(); i++){
+            number = userBaseballNumber.charAt(i);
+
+            if(!Character.isDigit(number)){
+                returnCheckNumber = false;
+                break;
+            }
+        }
+
         return returnCheckNumber;
     }
 
