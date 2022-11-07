@@ -54,6 +54,9 @@ public class Game {
         else if(toStrike == 0 && toBall == 0){
             System.out.println("낫싱");
         }
+    }
 
+    public void succesGame(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
