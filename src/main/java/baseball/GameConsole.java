@@ -1,9 +1,11 @@
 package baseball;
 
 import java.util.List;
+
 public class GameConsole {
 
     public static List<Integer> computer;
+    public static List<Integer> player;
 
     public static Integer strikeCount(List<Integer> computerNumber, List<Integer> playerNumber) {
         int strike = 0;
@@ -34,17 +36,16 @@ public class GameConsole {
 
     }
 
-    public static boolean exitOrContinue(){
+    public static boolean exitOrContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int inputNumber = Integer.parseInt(PlayerNumber.getString());
 
-        if (inputNumber == 1){
+        if (inputNumber == 1) {
             computer = ComputerNumber.arrayGetNumber();
             return true;
-        }else if (inputNumber == 2){
+        } else if (inputNumber == 2) {
             return false;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -56,8 +57,9 @@ public class GameConsole {
 
         computer = ComputerNumber.arrayGetNumber();
 
-        String hint = "";
+
         boolean bool = true;
+        StringBuilder hint = new StringBuilder();
         while (bool) {
             System.out.print("숫자를 입력해주세요 : ");
             String playerNumber = PlayerNumber.getString();
@@ -65,26 +67,24 @@ public class GameConsole {
             List<Integer> player = PlayerNumber.convertNumberList(playerNumber);
 
             if (ballCount(computer, player) > 0) {
-                hint += ballCount(computer, player) + "볼 ";
+                hint.append(ballCount(computer, player)).append("볼 ");
             }
 
             if (strikeCount(computer, player) > 0) {
-                hint += strikeCount(computer, player) + "스트라이크";
+                hint.append(strikeCount(computer, player)).append("스트라이크");
             }
-            if (hint == "") {
-                hint += "낫싱";
+            if (hint.toString().equals("")) {
+                hint.append("낫싱");
             }
             System.out.println(hint);
-            hint = "";
+            hint = new StringBuilder();
+
             if (strikeCount(computer, player) == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 bool = exitOrContinue();
             }
         }
     }
-
-
-
 
 
 }

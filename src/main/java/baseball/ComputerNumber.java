@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ComputerNumber {
 
-    private static Integer getRandomNumber() {
+    public static Integer getRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
 

@@ -59,20 +59,5 @@ class GameConsoleTest {
         assertEquals(2, gameConsole.ballCount(ballTestList5, ballTestList6));
     }
 
-    /*
-    @Test
 
-    void 낫싱_검사(){
-        // 낫싱 O
-        List<Integer> nothingTestList1 = new ArrayList<>(Arrays.asList(1,2,3));
-        List<Integer> nothingTestList2 = new ArrayList<>(Arrays.asList(4,5,6));
-        // 낫싱 X
-        List<Integer> nothingTestList3 = new ArrayList<>(Arrays.asList(1,2,3));
-        List<Integer> nothingTestList4 = new ArrayList<>(Arrays.asList(4,5,1));
-
-        assertEquals("낫싱", gameConsole.nothingCheck(nothingTestList1,nothingTestList2));
-        assertEquals("", gameConsole.nothingCheck(nothingTestList3,nothingTestList4));
-
-    }
-    */
 }

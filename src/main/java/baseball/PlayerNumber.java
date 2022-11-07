@@ -3,14 +3,17 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
-// readLine()
+
 
 public class PlayerNumber {
 
 
-    public static String getString(){
-        String inputString = Console.readLine();
-        return inputString;
+    public static String getString() {
+        return Console.readLine();
+    }
+
+    public static String getCharacter() {
+        return Console.readLine();
     }
 
     public static List<Integer> convertNumberList(String inputNumber) {
@@ -36,10 +39,10 @@ public class PlayerNumber {
     }
 
     public static boolean lengthCheck(String inputNumber) {
-        if (inputNumber.length() == 3) {
-            return true;
+        if (inputNumber.length() != 3) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public static boolean zeroCheck(String inputNumber) {
@@ -49,6 +52,14 @@ public class PlayerNumber {
             }
         }
         return true;
+
+    }
+
+    public static boolean validCheck(String inputNumber) {
+        if (zeroCheck(inputNumber) && lengthCheck(inputNumber) && duplicationCheck(inputNumber)) {
+            return true;
+        }
+        return false;
     }
 
 }
