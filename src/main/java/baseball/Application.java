@@ -5,7 +5,22 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Application application = new Application();
+        application.inGame();
+    }
+
+    public void inGame(){
+        do{
+            printStartGame();
+            int randomNumber = makeRandomNumber();
+            int [] score;
+            do{
+                int insertedNumber = insertNumber();
+                score = judge(randomNumber, insertedNumber);
+                printJudge(score);
+            }while(!isEnd(score));
+            printEndGame(true);
+        }while(isContinueOrEnd());
     }
 
     public void printStartGame(){
@@ -43,9 +58,10 @@ public class Application {
     }
 
     public int[] judge(int answer, int value){
-        int n = 100;
+        int [] pos = {0,0,0,0,0,0,0,0,0};
         int [] result = {0,0};
-        compareEachDigit(answer, value, n, result);
+        figureAnswer(answer, pos);
+        figureValuePos(value, pos, result);
         return result;
     }
 
@@ -65,7 +81,6 @@ public class Application {
 
     public void printEndGame(boolean state){
         if(state){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
     }
@@ -101,17 +116,25 @@ public class Application {
         else if(strikes == 3) return "3스트라이크";
         else return balls+"볼 "+strikes+"스트라이크";
     }
-
-    private void compareEachDigit(int answer, int value, int n, int[] result) {
+    private void figureValuePos(int value, int[] pos, int[] result) {
+        int n = 100, index = 1;
         while(n >=1){
-            if(answer/n == value/n) result[0]++;
-            else result[1]++;
-            answer %= n;
+            if(pos[value/n-1] == index) result[0]++;
+            else if(pos[value/n-1] != 0) result[1]++;
             value %= n;
             n /= 10;
+            index++;
         }
     }
-
+    private void figureAnswer(int answer, int[] pos) {
+        int n = 100, index = 1;
+        while(n >=1){
+            pos[answer/n-1] = index;
+            answer %= n;
+            n /= 10;
+            index++;
+        }
+    }
     private void checkIfThreeDigit(int input){
         if(input < 100 || input > 999) throw new IllegalArgumentException("입력하신 변수가 3자리 정수가 아닙니다");
     }

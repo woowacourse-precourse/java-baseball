@@ -236,6 +236,67 @@ class UnitTest {
     public void judge_모두_틀렸을때_테스트(){
         //given
         int answer = 123;
+        int value = 456;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(0,0);
+    }
+
+    @Test
+    public void judge_2_스트라이크(){
+        //given
+        int answer = 123;
+        int value = 523;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(2,0);
+    }
+    @Test
+    public void judge_1_스트라이크(){
+        //given
+        int answer = 123;
+        int value = 526;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(1,0);
+    }
+    @Test
+    public void judge_1_볼(){
+        //given
+        int answer = 123;
+        int value = 356;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(0,1);
+    }
+    @Test
+    public void judge_2_볼(){
+        //given
+        int answer = 123;
+        int value = 351;
+
+        //when
+        int[] judge = application.judge(answer, value);
+
+        //then
+        Assertions.assertThat(judge).containsExactly(0,2);
+    }
+    @Test
+    public void judge_3_볼(){
+        //given
+        int answer = 123;
         int value = 312;
 
         //when
@@ -244,69 +305,20 @@ class UnitTest {
         //then
         Assertions.assertThat(judge).containsExactly(0,3);
     }
-
     @Test
-    public void judge_백의_자리가_다를_경우_테스트(){
+    public void judge_1볼_1스트라이크(){
         //given
         int answer = 123;
-        int value = 223;
+        int value = 152;
 
         //when
         int[] judge = application.judge(answer, value);
 
         //then
-        Assertions.assertThat(judge).containsExactly(2,1);
+        Assertions.assertThat(judge).containsExactly(1,1);
     }
     @Test
-    public void judge_십의_자리가_다를_경우_테스트(){
-        //given
-        int answer = 123;
-        int value = 143;
-
-        //when
-        int[] judge = application.judge(answer, value);
-
-        //then
-        Assertions.assertThat(judge).containsExactly(2,1);
-    }
-    @Test
-    public void judge_일의_자리가_다를_경우_테스트(){
-        //given
-        int answer = 123;
-        int value = 124;
-
-        //when
-        int[] judge = application.judge(answer, value);
-
-        //then
-        Assertions.assertThat(judge).containsExactly(2,1);
-    }
-    @Test
-    public void judge_백의자리와_십의자리가_다를떄_테스트(){
-        //given
-        int answer = 123;
-        int value = 213;
-
-        //when
-        int[] judge = application.judge(answer, value);
-
-        //then
-        Assertions.assertThat(judge).containsExactly(1,2);
-    }
-    @Test
-    public void judge_십의자리와_일의자리가_다를떄_테스트(){
-        //given
-        int answer = 123;
-        int value = 132;
-
-        //when
-        int[] judge = application.judge(answer, value);
-
-        //then
-        Assertions.assertThat(judge).containsExactly(1,2);
-    }
-    @Test
-    public void judge_백의자리와_일의자리가_다를떄_테스트(){
+    public void judge_2볼_1스트라이크(){
         //given
         int answer = 123;
         int value = 321;
@@ -317,7 +329,6 @@ class UnitTest {
         //then
         Assertions.assertThat(judge).containsExactly(1,2);
     }
-
     @Test
     public void printJudge_3스트라이크_출력(){
         //given
