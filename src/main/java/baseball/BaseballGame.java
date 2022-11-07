@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.console.ConsoleOutput;
 import baseball.core.StatusCode;
-import baseball.core.ComputerOpponent;
+import baseball.core.Computer;
 import baseball.core.Player;
 import baseball.core.BallStrike;
 import baseball.core.RandomNumberGenerator;
@@ -13,10 +13,10 @@ public class BaseballGame {
 
     private final ConsoleOutput console;
     private final Player player;
-    private final ComputerOpponent opponent;
+    private final Computer computer;
 
     public BaseballGame() {
-        this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
+        this.computer = new Computer(RandomNumberGenerator.generate());
         this.player = new Player();
         this.console = new ConsoleOutput();
     }
@@ -51,7 +51,7 @@ public class BaseballGame {
 
     private BallStrike processAnswering() {
         List<Integer> threeNumbers = player.sayThreeNumbers();
-        BallStrike answer = opponent.answer(threeNumbers);
+        BallStrike answer = computer.answer(threeNumbers);
         console.printResultMessage(answer);
         return answer;
     }

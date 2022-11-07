@@ -2,11 +2,11 @@ package baseball.core;
 
 import java.util.List;
 
-public class ComputerOpponent {
+public class Computer {
 
     private final List<Integer> randomNumbers;
 
-    public ComputerOpponent(List<Integer> randomNumbers) {
+    public Computer(List<Integer> randomNumbers) {
         this.randomNumbers = randomNumbers;
     }
 
