@@ -19,6 +19,7 @@ public class Number {
         }
 
         int afterCheck = Integer.parseInt(beforeCheck);
+        int finalNumber = afterCheck;
         int [] duplicate = new int[3];
         duplicate[0] = afterCheck/100;
         afterCheck %=100;
@@ -28,7 +29,10 @@ public class Number {
         if(duplicate[0]==duplicate[1] || duplicate[1]==duplicate[2] || duplicate[0]==duplicate[2]){
                 throw new IllegalArgumentException("같은 숫자를 중복해서 입력할 수 없습니다.");
         }
-        return afterCheck;
+        if(duplicate[0]==0 || duplicate[1]==0 || duplicate[2]==0){
+            throw new IllegalArgumentException("0은 포함할 수 없습니다.");
+        }
+        return finalNumber;
     }
 
 
