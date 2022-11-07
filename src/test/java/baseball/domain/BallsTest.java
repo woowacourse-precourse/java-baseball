@@ -1,7 +1,8 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ class BallsTest {
 
         int strike = answer.equalsExactly(guess);
 
-        Assertions.assertThat(strike).isEqualTo(2);
+        assertThat(strike).isEqualTo(2);
     }
 
     @Test
@@ -26,7 +27,13 @@ class BallsTest {
 
         int ball = answer.containsCountWithoutEqual(guess);
 
-        Assertions.assertThat(ball).isEqualTo(1);
+        assertThat(ball).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("공이 중복되면 예외를 발생한다")
+    void uniqueBallTest() {
+        assertThatThrownBy(()-> Balls.convertNumberToBalls(List.of(1, 1, 2)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
