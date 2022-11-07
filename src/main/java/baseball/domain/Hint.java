@@ -13,17 +13,26 @@ public class Hint {
     public final String BALL_AND_STRIKE = "%d볼 %d스트라이크";
     public final String NOTHING = "낫싱";
 
+
+    public boolean isThreeStrike() {
+        if (strikeCount == Constant.SIZE_NUMBER) {
+            initializeBallAndStrikeCount();
+            return true;
+        }
+        return false;
+    }
+
+    private void initializeBallAndStrikeCount() {
+        ballCount = 0;
+        strikeCount = 0;
+    }
+
     public void calculateResult(List<Integer> playerInputs, List<Integer> randomNumbers) {
         initializeBallAndStrikeCount();
         for (int i = 0; i < Constant.SIZE_NUMBER; i++) {
             calculateStrikeCount(i, playerInputs, randomNumbers);
             calculateBallCount(i, playerInputs, randomNumbers);
         }
-    }
-
-    private void initializeBallAndStrikeCount() {
-        ballCount = 0;
-        strikeCount = 0;
     }
 
     private void calculateStrikeCount(int index, List<Integer> playerInputs, List<Integer> randomNumbers) {
