@@ -30,7 +30,7 @@ public class BallStrikeChecker {  // 이 클래스에서 모든 판단을 끝내
         return ball;
     }
 
-    public void printHint(int strike, int ball) {
+    public void printHint(int ball, int strike) {
         if (strike == 3) {
             System.out.println("3스트라이크");
         } else if (strike == 0 && ball == 0) {
