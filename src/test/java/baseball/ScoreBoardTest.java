@@ -35,7 +35,7 @@ public class ScoreBoardTest {
 
         String output = "2볼 1스트라이크";
 
-        Assertions.assertThat(out.toString()).isEqualTo(output);
+        Assertions.assertThat(out.toString().trim()).isEqualTo(output);
     }
 
     @Test
@@ -48,6 +48,6 @@ public class ScoreBoardTest {
 
         String output = "낫싱";
 
-        Assertions.assertThat(out.toString()).isEqualTo(output);
+        Assertions.assertThat(out.toString().trim()).isEqualTo(output);
     }
 }
