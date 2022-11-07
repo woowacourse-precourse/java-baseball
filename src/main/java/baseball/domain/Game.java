@@ -9,4 +9,20 @@ public class Game {
     private int startRange;
     private int endRange;
 
+    public Computer getComputer() {
+        return computer;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
 }
