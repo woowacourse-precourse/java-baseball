@@ -17,5 +17,12 @@ public class Application {
             throw new IllegalArgumentException("아무것도 입력하지 않았습니다.");
         }
     }
+
+    private static void validateSize(String numbers) {
+        if (numbers.length() != 3) {
+            throw new IllegalArgumentException("3자리의 숫자를 입력하십시오");
+        }
+    }
+
     }
 }
