@@ -37,16 +37,22 @@ public class Application {
 
     private static void startGame() {
         List<Integer> computerNumbers = createComputerNumbers();
-        while (true){
+        boolean isCorrectAnswer = false;
+        while (!isCorrectAnswer){
             List<Integer> userNumbers = InputUserNumber();
             String hint = getHint(computerNumbers, userNumbers);
             System.out.println(hint);
-            if (hint.equals(ANSWER)) {
-                System.out.println(CONGRATULATION_MESSAGE);
-                break;
-            }
+            isCorrectAnswer = isCorrectAnswer(hint);
         }
         gameOver();
+    }
+
+    private static boolean isCorrectAnswer(String hint) {
+        if (hint.equals(ANSWER)) {
+            System.out.println(CONGRATULATION_MESSAGE);
+            return true;
+        }
+        return false;
     }
 
     public static void gameOver() {
@@ -124,18 +130,18 @@ public class Application {
 
     public static void validUserNumbers(String userNumbers){
         if (!userNumbers.matches("^[1-9]{3}$")){
-            throw new IllegalArgumentException(INPUT_USER_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(String.join(":",INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
         }
         if (userNumbers.charAt(0) == userNumbers.charAt(1) ||
                 userNumbers.charAt(0) == userNumbers.charAt(2) ||
                 userNumbers.charAt(1) == userNumbers.charAt(2)){
-            throw new IllegalArgumentException(INPUT_USER_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(String.join(":",INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
         }
     }
 
     public static void validGameOption(String gameOption) {
         if (!gameOption.matches("^[1-2]$")) {
-            throw new IllegalArgumentException(GAME_OPTION_ERROR_MESSAGE);
+            throw new IllegalArgumentException(String.join(":",GAME_OPTION_ERROR_MESSAGE, gameOption));
         }
     }
 }
