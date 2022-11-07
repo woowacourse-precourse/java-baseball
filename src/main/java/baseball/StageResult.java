@@ -1,10 +1,10 @@
 package baseball;
 
-public class Result {
+public class StageResult {
     private int strike;
     private int ball;
 
-    public Result(Number computerNumber, Number userNumber) {
+    public StageResult(Number computerNumber, Number userNumber) {
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.get(i) == userNumber.get(i)) {
                 strike++;
@@ -24,9 +24,5 @@ public class Result {
         } else if (strike != 0) {
             System.out.println(strike + "스트라이크");
         }
-    }
-
-    public boolean isCorrect() {
-        return this.strike == 3;
     }
 }
