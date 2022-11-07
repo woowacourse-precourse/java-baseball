@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class InputNum implements Input{
     static final String INPUT_TEXT = "숫자를 입력해주세요 : ";
 
+    @Override
     public String input(int size) {
         String inputNum;
         System.out.println(INPUT_TEXT);
@@ -15,6 +16,7 @@ public class InputNum implements Input{
         return inputNum;
     }
 
+    @Override
     public void validateInput(String input, int size) {
         Pattern p = Pattern.compile("[0-9]{"+size+"}");
         if (!p.matcher(input).matches()) {
