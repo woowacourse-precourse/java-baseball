@@ -45,6 +45,14 @@ public class Hint {
         return strike == 0 && ball == 0;
     }
 
+    private void countBall(int digit, int[] answer, int playerAnswer) {
+        for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
+            if (i != digit && answer[i] == playerAnswer){
+                this.ball++;
+            }
+        }
+    }
+
     private void countStrike(int answer, int playerAnswer) {
         if (answer == playerAnswer){
             this.strike++;
