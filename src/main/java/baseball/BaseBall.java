@@ -120,4 +120,17 @@ public class BaseBall {
         return false;
     }
 
+    private void restart() {
+        System.out.println(END_MENTION);
+        System.out.println(RESTART_MENTION);
+        String restartInput = makeRestartInput();
+        if (restartInput.equals(RESTART_NUMBER)) {
+            System.out.println(START_GAME);
+            randomList = makeRandom();
+            this.isRestart = true;
+        } else if (restartInput.equals(END_NUMBER2)) {
+            this.isRestart = false;
+        }
+    }
+
 }
