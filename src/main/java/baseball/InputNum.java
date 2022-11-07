@@ -2,9 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 
-public class InputNum implements Input{
+public class InputNum implements Input {
 
     @Override
     public String input(int size) {
@@ -18,9 +20,28 @@ public class InputNum implements Input{
 
     @Override
     public void validateInput(String input, int size) {
-        Pattern p = Pattern.compile("[1-9]{"+size+"}");
+        Pattern p = Pattern.compile("[1-9]{" + size + "}");
+
         if (!p.matcher(input).matches()) {
             throw new IllegalArgumentException();
         }
+
+        if (isDuplicated(input)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isDuplicated(String input) {
+        Set<String> deduplicatedSet = new HashSet<>();
+        String[] inputArr = input.split("");
+        for (String str : inputArr) {
+            deduplicatedSet.add(str);
+        }
+        int inputLength = input.length();
+        if (deduplicatedSet.size() != inputLength) {
+            return true;
+        }
+
+        return false;
     }
 }
