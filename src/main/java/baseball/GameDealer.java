@@ -8,6 +8,17 @@ import java.util.regex.Pattern;
 
 public class GameDealer {
     public static String Str_Problem_Num = "";
+    public static String GEN_PROBLEM(){
+        String result = "";
+
+        while(result.length() < 3){
+            String tmp =  String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if(!result.contains(tmp)){
+                result += tmp;
+            }
+        }
+        return result;
+    }
     public static boolean ONE_GAME_LOOP() throws IllegalArgumentException{
         boolean result = true;
         boolean Check_Ans = false;
