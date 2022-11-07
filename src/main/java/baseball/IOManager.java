@@ -19,19 +19,22 @@ public class IOManager {
         System.out.print(messages.get("REQUIRE_INPUT"));
         String line = Console.readLine();
 
-        if(!checkValidInput(line))
+        if(!checkValidInput(line)) {
             throw new IllegalArgumentException("wrong user input");
+        }
 
         return Integer.parseInt(line);
     }
 
     private static boolean checkValidInput(String line) {
-        if(line.length() != GameConfig.ANSWER_LEN)
+        if(line.length() != GameConfig.ANSWER_LEN) {
             return false;
+        }
 
         for(int idx = 0; idx < GameConfig.ANSWER_LEN; idx++)
-            if(line.charAt(idx) < '1' || line.charAt(idx) > '9')
+            if(line.charAt(idx) < '1' || line.charAt(idx) > '9') {
                 return false;
+            }
 
         return true;
     }
@@ -39,15 +42,19 @@ public class IOManager {
     public static void getHint(int ballNum, int strikeNum) {
         String hint = "";
 
-        if(ballNum > 0)
+        if(ballNum > 0) {
             hint += String.valueOf(ballNum) + "볼";
-        if(ballNum > 0 && strikeNum > 0)
+        }
+        if(ballNum > 0 && strikeNum > 0) {
             hint += " ";
-        if(strikeNum > 0)
+        }
+        if(strikeNum > 0) {
             hint += String.valueOf(strikeNum) + "스트라이크";
+        }
 
-        if(hint.length() == 0)
+        if(hint.length() == 0) {
             hint = "낫싱";
+        }
 
         System.out.println(hint);
     }
@@ -60,10 +67,12 @@ public class IOManager {
         System.out.print(messages.get("ASK_RESTART"));
         String line = Console.readLine();
 
-        if(line.equals("1"))
+        if(line.equals("1")) {
             return true;
-        else if(line.equals("2"))
+        }
+        else if(line.equals("2")) {
             return false;
+        }
 
         throw new IllegalArgumentException("wrong restart format");
     }

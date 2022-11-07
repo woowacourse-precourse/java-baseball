@@ -20,13 +20,15 @@ public class RandomAnswerGenerator {
     }
 
     private static int getRandomNumeric(Set<Integer> usedNumeric) {
-        if(usedNumeric.size() >= 9)
+        if(usedNumeric.size() >= 9) {
             return -1;
+        }
 
         while(true) {
             int numeric = Randoms.pickNumberInRange(1, 9);
-            if(!usedNumeric.contains(numeric))
+            if(!usedNumeric.contains(numeric)) {
                 return numeric;
+            }
         }
     }
 }
