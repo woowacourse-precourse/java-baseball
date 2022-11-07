@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class Turn {
     private ResultTurn resultTurn;
     private Target target;
+    private TurnScore turnScore = new TurnScore();
 
     Turn (Target target) {
         this.resultTurn = ResultTurn.Nothing;
@@ -44,13 +45,13 @@ public class Turn {
         int countSameValueInSameIndex = countSameValueInSameIndex(targetNumberList, numberOfList);
         int countValueContainTogether = countValueContainTogether(targetNumberList, numberOfList);
         int balls = countValueContainTogether - countSameValueInSameIndex;
-//        TurnScore.setBalls(balls);
+        this.turnScore.setBalls(balls);
     }
 
     void countStrikes(List<Integer> numberOfList) {
         List<Integer> targetNumberList = target.get();
         int strikes = countSameValueInSameIndex(targetNumberList, numberOfList);
-//        TurnScore.setStrikes(strikes);
+        this.turnScore.setStrikes(strikes);
     }
 
     int countSameValueInSameIndex(List<Integer> targetNumberList, List<Integer> compareNumberList) {
