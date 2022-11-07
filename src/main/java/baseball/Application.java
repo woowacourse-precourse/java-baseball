@@ -13,43 +13,44 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        boolean gameFinishFlag = false, equalNumberFlag = false;
-        int userNumber = 0, strikeCount, ballCount;
-        while (!gameFinishFlag) {
+        boolean finishGame = false;
 
-            equalNumberFlag = false;
-            int randomNumber = makeRandomNumber();
-            System.out.println(randomNumber);
+        while (!finishGame) {
+
+            int userNumber = 0;
+            int answerNumber = getAnswerNumber();
+            boolean equalNumber = false;
 
             // TODO : 게임 진행 과정은 추가적인 메소드로 분리해야 할 듯!
-            while (!equalNumberFlag) {
+            while (!equalNumber) {
                 System.out.print("숫자를 입력해주세요 : ");
+
+
                 try {
                     userNumber = Integer.parseInt(Console.readLine());
                 } catch (NumberFormatException ex) {
                     // 유효하지 않은 사용자 입력에 대해 예외 처리하는 메소드 호출
                 }
 
-                strikeCount = countStrike(userNumber, randomNumber);
-                ballCount = countBall(userNumber, randomNumber);
-                System.out.println(strikeCount + " " + ballCount);
+                int strikes = countStrikes(userNumber, answerNumber);
+                int balls = countBalls(userNumber, answerNumber);
 
-                boolean nothing = isNothing(strikeCount, ballCount);
+                boolean nothing = isNothing(strikes, balls);
 
                 // TODO : 결과 출력에 대해 추가적인 메소드로 분리해야 할 듯!
                 if (nothing) {
                     System.out.println("낫싱");
                 } else {
-                    if (strikeCount == 0 && ballCount != 0)
-                        System.out.println(ballCount + "볼");
-                    else if (strikeCount != 0 && ballCount == 0)
-                        System.out.println(strikeCount + "스트라이크");
+                    if (strikes == 0 && balls != 0)
+                        System.out.println(balls + "볼");
+                    else if (strikes != 0 && balls == 0)
+                        System.out.println(strikes + "스트라이크");
                     else
-                        System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+                        System.out.println(balls + "볼 " + strikes + "스트라이크");
                 }
 
                 // 판정 결과를 정답과 비교하는 메소드 호출
-                equalNumberFlag = equalNumber(strikeCount);
+                equalNumber = equalNumber(strikes);
             }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -58,14 +59,14 @@ public class Application {
             // TODO : 3스트라이크 이후의 로직은 추가적인 메소드로 분리해야 할 듯!
             userNumber = Integer.parseInt(Console.readLine());
             if(userNumber == 1)
-                gameFinishFlag = false;
+                finishGame = false;
             else if(userNumber == 2) {
-                gameFinishFlag = true;
+                finishGame = true;
             }
         }
     }
 
-    public static int makeRandomNumber() {
+    public static int getAnswerNumber() {
 
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -80,37 +81,37 @@ public class Application {
         return computerNumber;
     }
 
-    public static int countStrike(int userNumber, int randomNumber) {
+    public static int countStrikes(int userNumber, int answerNumber) {
 
         int count = 0;
         for (int i = 0; i < 3; i++) {
-            if (userNumber % 10 == randomNumber % 10) count += 1;
+            if (userNumber % 10 == answerNumber % 10) count += 1;
 
             userNumber /= 10;
-            randomNumber /= 10;
+            answerNumber /= 10;
         }
 
         return count;
     }
 
-    public static int countBall(int userNumber, int randomNumber) {
+    public static int countBalls(int userNumber, int answerNumber) {
 
         int count = 0;
 
         List<Integer> userDigits = new ArrayList<>();
-        List<Integer> randomDigits = new ArrayList<>();
+        List<Integer> answerDigits = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             userDigits.add(userNumber % 10);
-            randomDigits.add(randomNumber % 10);
+            answerDigits.add(answerNumber % 10);
             userNumber /= 10;
-            randomNumber /= 10;
+            answerNumber /= 10;
         }
 
         for (int i = 0; i < 3; i++) {
 
             int number = userDigits.get(i);
-            if (randomDigits.contains(number)) {
-                if (randomDigits.get(i) != number)
+            if (answerDigits.contains(number)) {
+                if (answerDigits.get(i) != number)
                     count += 1;
             }
         }
