@@ -67,7 +67,7 @@ public class NumberBaseballService {
         return strikeCount;
     }
 
-    public int convertCharacterToInteger(char characterToConvert) {
+    private int convertCharacterToInteger(char characterToConvert) {
         return characterToConvert - ASCII_ZERO.getAsciiNumber();
     }
 }

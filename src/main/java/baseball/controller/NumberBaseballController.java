@@ -28,14 +28,14 @@ public class NumberBaseballController {
         inputUserAnswer();
     }
 
-    private void inputUserAnswer() {
+    public void inputUserAnswer() {
         List<Integer> resultList = numberBaseballService.inputUserAnswer(numberBaseballView.inputUserAnswer());
         GameResult gameResult = new GameResult(resultList.get(STRIKE_INDEX), resultList.get(BALL_INDEX));
         GuessResultStatus resultType = numberBaseballView.printResult(gameResult);
         determineNextMove(resultType);
     }
 
-    private void determineNextMove(GuessResultStatus resultType) {
+    public void determineNextMove(GuessResultStatus resultType) {
         if (resultType == GuessResultStatus.WIN) {
             String userAnswer = numberBaseballView.inputNewGameAnswer();
             userAnswerValidator.validateNewGameAnswer(userAnswer);
@@ -43,7 +43,7 @@ public class NumberBaseballController {
         }
     }
 
-    private void inputNewGameAnswer(String userAnswer) {
+    public void inputNewGameAnswer(String userAnswer) {
         if (userAnswer.equals(RESTART)) {
             restartGame();
             return;
