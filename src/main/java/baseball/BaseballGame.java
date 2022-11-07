@@ -40,18 +40,6 @@ public class BaseballGame {
         return getReplayOrNot();
     }
 
-    private boolean getReplayOrNot() {
-        String replayInput = InputView.getReplayOrNotByInput();
-
-        NumberValidator.checkReplayInput(replayInput);
-
-        return convertReplayInputToBool(replayInput);
-    }
-
-    private boolean convertReplayInputToBool(String replayInput) {
-        return replayInput.equals(GAME_REPLAY);
-    }
-
     private List<Integer> getNumbersByInput(String userInput) {
         List<Integer> numbers = new ArrayList<>();
 
@@ -107,6 +95,18 @@ public class BaseballGame {
 
     private boolean isGoOrStop(int strikeCount) {
         return strikeCount != STRIKE_NUM;
+    }
+
+    private boolean getReplayOrNot() {
+        String replayInput = InputView.getReplayOrNotByInput();
+
+        NumberValidator.checkReplayInput(replayInput);
+
+        return convertReplayInputToBool(replayInput);
+    }
+
+    private boolean convertReplayInputToBool(String replayInput) {
+        return replayInput.equals(GAME_REPLAY);
     }
 
 }
