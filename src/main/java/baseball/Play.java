@@ -9,7 +9,16 @@ public class Play {
         int number = createThreeNumber();
     }
     public static int createThreeNumber() {
-        int number = Randoms.pickNumberInRange(1, 9);
-        return number;
+        int size = 0;
+        int randomNumber = 0;
+        while (size > 3) {
+            randomNumber =  randomNumber * 10 + Randoms.pickNumberInRange(1, 9);
+            if (Exception.isRedundancy(randomNumber)) {
+                randomNumber /= 10;
+                size--;
+            }
+            size++;
+        }
+        return randomNumber;
     }
 }
