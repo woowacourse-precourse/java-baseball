@@ -1,6 +1,7 @@
 package baseball.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -74,6 +75,29 @@ class GameServiceTest {
         String result = GameService.printGameScore(strike, ball);
         String expected = "2스트라이크";
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test()
+    public void 게임의_재시작_종료를_구분할_숫자를_입력_받는다_1() {
+        int input = 1;
+        boolean result = GameService.checkEndInput(input);
+        boolean expected = true;
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test()
+    public void 게임의_재시작_종료를_구분할_숫자를_입력_받는다_2() {
+        int input = 2;
+        boolean result = GameService.checkEndInput(input);
+        boolean expected = false;
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test()
+    public void 게임의_재시작_종료를_구분할_숫자를_입력_받는다_예외_발생() {
+        int input = 3;
+        assertThatThrownBy(() -> GameService.checkEndInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 
