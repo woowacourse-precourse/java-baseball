@@ -74,6 +74,10 @@ public class GameService {
         return strike;
     }
 
+    public int getBallCount() {
+        return ball;
+    }
+
 
 
 }
