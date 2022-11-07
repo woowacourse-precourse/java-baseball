@@ -85,6 +85,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void checkAndCountBallTest() {
+
+        assertThat(Application.checkAndCountBall(0, 1, 1, 1, 2)).isEqualTo(1);
+    }
+
+    @Test
     void countingBallTest() {
 
         // given
