@@ -44,4 +44,11 @@ public class HintService {
             sb.append("낫싱");
         }
     }
+
+    public void resetCount() {
+
+        sb.setLength(0);
+        strike = Constant.INITIAL_NUMBER;
+        ball = Constant.INITIAL_NUMBER;
+    }
 }
