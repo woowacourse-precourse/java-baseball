@@ -23,4 +23,7 @@ public class BaseBallDto {
         return String.format("%s볼 %s스트라이크\n", ball, strike);
     }
 
+    public boolean isStrikeOut() {
+        return strike == 3;
+    }
 }
