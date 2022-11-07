@@ -56,7 +56,7 @@ public class UnitTest {
             InputStream is = new ByteArrayInputStream(guessNumberInput.getBytes());
 
             System.setIn(is);
-            assertThatThrownBy(() -> Application.getGuessNumberInput())
+            assertThatThrownBy(Application::getGuessNumberInput)
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -67,7 +67,7 @@ public class UnitTest {
             InputStream is = new ByteArrayInputStream(guessNumberInput.getBytes());
 
             System.setIn(is);
-            assertThatThrownBy(() -> Application.getGuessNumberInput())
+            assertThatThrownBy(Application::getGuessNumberInput)
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -78,7 +78,7 @@ public class UnitTest {
             InputStream is = new ByteArrayInputStream(guessNumberInput.getBytes());
 
             System.setIn(is);
-            assertThatThrownBy(() -> Application.getGuessNumberInput())
+            assertThatThrownBy(Application::getGuessNumberInput)
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -89,7 +89,7 @@ public class UnitTest {
             InputStream is = new ByteArrayInputStream(guessNumberInput.getBytes());
 
             System.setIn(is);
-            assertThatThrownBy(() -> Application.getGuessNumberInput())
+            assertThatThrownBy(Application::getGuessNumberInput)
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -100,7 +100,7 @@ public class UnitTest {
             InputStream is = new ByteArrayInputStream(guessNumberInput.getBytes());
 
             System.setIn(is);
-            assertThatThrownBy(() -> Application.getGuessNumberInput())
+            assertThatThrownBy(Application::getGuessNumberInput)
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
