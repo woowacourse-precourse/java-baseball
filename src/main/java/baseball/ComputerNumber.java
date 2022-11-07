@@ -13,7 +13,7 @@ public class ComputerNumber {
     private static final int MAX_RANDOM_NUMBER = 9;
     private static final int DEFAULT_SIZE_NUMBER = 3;
 
-    public List<Integer> generateRandomNumber() {
+    public static List<Integer> generateRandomNumber() {
         Set<Integer> computerNumbers = new LinkedHashSet<>();
         while (computerNumbers.size() != DEFAULT_SIZE_NUMBER) {
             computerNumbers.add(Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER));
