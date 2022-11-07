@@ -26,4 +26,13 @@ public class HintService {
             }
         }
     }
+
+    public void countBall(String answerNumber, String playerNumber) {
+
+        for (int i = 0; i < playerNumber.length(); i++) {
+            if (answerNumber.contains(Character.toString(playerNumber.charAt(i)))) {
+                ball += 1;
+            }
+        }
+    }
 }
