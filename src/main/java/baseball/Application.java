@@ -41,9 +41,10 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
         Application main = new Application();
-        String answer;
+        String answer, gameagain;
         int[] answersplit = new int[3];
         boolean again = true, runstop = false;
+        int integer_gameagain;
 
         while(computer.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -72,6 +73,8 @@ public class Application {
             if(again == false){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
                 System.out.println("게임을 새로 시작혀려면 1, 종료하려면 2를 입력하세요.");
+                gameagain = camp.nextstep.edu.missionutils.Console.readLine();
+                integer_gameagain = Integer.parseInt(gameagain);
 
             }
         }
