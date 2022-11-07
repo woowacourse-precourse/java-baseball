@@ -19,4 +19,8 @@ public class Opponent {
 			}
 		}
 	}
+
+	public List<Integer> getAnswer() {
+		return answer;
+	}
 }

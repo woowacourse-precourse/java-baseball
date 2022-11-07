@@ -23,4 +23,8 @@ public class User {
 		}
 	}
 
+	public List<Integer> getInjectNumber() {
+		return injectNumber;
+	}
+
 }
