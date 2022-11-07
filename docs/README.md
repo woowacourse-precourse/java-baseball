@@ -28,9 +28,9 @@
 
 ### 플레이어 - Domain
 : 플레이어가 입력한 숫자 저장 
-- [ ] 숫자 저장
-- [ ] 입력값 String -> List<Integer>로 변환
-- [ ] 숫자 리턴
+- [x] 숫자 저장
+- [x] 입력값 String -> List<Integer>로 변환
+- [x] 숫자 리턴
 
 ### 심판 - Domain
 : 볼/스트라이크 여부 판별
