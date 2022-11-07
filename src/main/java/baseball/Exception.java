@@ -13,6 +13,7 @@ public class Exception {
 
 class ExceptionFor2 extends Exception {
     final static int NUMBER_LENGTH = 3;
+
     public static void checkGamePlayerNumberInput(String gamePlayerNumberInput) {
         checkNumberLength(gamePlayerNumberInput);
         hasSameNumber(gamePlayerNumberInput);
@@ -20,8 +21,7 @@ class ExceptionFor2 extends Exception {
     }
 
     private static void checkNumberLength(String stringGamePlayerInput) {
-        int stringLength =  stringGamePlayerInput.length();
-        if (stringLength > NUMBER_LENGTH || stringLength < 1) {
+        if (stringGamePlayerInput.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -43,8 +43,8 @@ class ExceptionFor4 extends Exception {
 
     public static void checkException(String input) {
         input = input.trim();
-        hasCharacters(input);
         checkInputLength(input);
+        hasCharacters(input);
         checkYesOrNo(input);
     }
 
