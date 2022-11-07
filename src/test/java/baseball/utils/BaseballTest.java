@@ -14,6 +14,7 @@ class BaseballTest {
     void getBaseballNumberTest() {
         String input = "123";
         Baseball player = Baseball.createPlayer(input);
+
         assertThat(player.getBaseballNumber()).isEqualTo(Arrays.asList(1,2,3));
     }
 
