@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.service.BaseBallService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -7,6 +8,7 @@ public class BaseballController {
 
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
+    private BaseBallService baseBallService = new BaseBallService();
 
     public void gameStart() {
         do {
