@@ -16,8 +16,8 @@ public class Referee {
     }
 
     public void judgeGameResult(List<Ball> hitterBalls, List<Ball> pitcherBalls) {
-        hitterBalls.stream()
-                .forEach(hitterBall -> count(hitterBall.getResult(pitcherBalls)));
+        hitterBalls.forEach(hitterBall ->
+                count(hitterBall.getResult(pitcherBalls)));
     }
 
     private void count(BaseballJudge baseballJudge) {
