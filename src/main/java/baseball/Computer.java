@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Computer {
 
-  private static final int ANSWER_LENGTH = 3;
-
   private List<Integer> answer;
+  private final RandomNumberGenerator generator;
 
   public Computer(RandomNumberGenerator generator) {
-    generateAnswer(generator);
+    this.generator = generator;
+    generateAnswer();
   }
 
   public boolean getPlayerWinOrNotAndPrintResult(List<Integer> guessedNumber) {
@@ -19,6 +19,14 @@ public class Computer {
     int balls = checkBall(guessedNumber);
     printGuessResultMessage(strikes, balls);
     return isPlayerWinGame(strikes);
+  }
+
+  public void resetAnswer() {
+    generateAnswer();
+  }
+
+  private void generateAnswer() {
+    this.answer = this.generator.generate(3);
   }
 
   private boolean isPlayerWinGame(int strikes) {
@@ -72,10 +80,6 @@ public class Computer {
 
   private boolean isBall(List<Integer> guessedNumber, int guessedPos, int answerPos) {
     return guessedPos != answerPos && guessedNumber.get(guessedPos).equals(this.answer.get(answerPos));
-  }
-
-  private void generateAnswer(RandomNumberGenerator generator) {
-    this.answer = generator.generate(ANSWER_LENGTH);
   }
 }
 

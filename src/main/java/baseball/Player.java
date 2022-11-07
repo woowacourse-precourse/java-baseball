@@ -14,6 +14,12 @@ public class Player {
     this.inputReader = inputReader;
   }
 
+  public int selectRetryOrExit() {
+    String inputMenu = inputReader.readLine();
+    validateInputMenu(inputMenu);
+    return inputMenu.charAt(0) - '0';
+  }
+
   public List<Integer> guessNumber() {
     printInputMessage();
     String inputNumber = inputReader.readLine();
@@ -27,6 +33,12 @@ public class Player {
       result.add(fromCh - '0');
     }
     return Collections.unmodifiableList(result);
+  }
+
+  private void validateInputMenu(String inputMenu) {
+    if (!inputMenu.equals("1") && !inputMenu.equals("2")) {
+      throw new IllegalArgumentException("1과 2중에서 선택해주세요.");
+    }
   }
 
   private void validateInputNumber(String inputNumber) {
