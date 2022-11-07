@@ -10,37 +10,37 @@ public class Exception {
     }
 
     public static void checkNumberFormatException(String number) {
-        try{
+        try {
             Integer.parseInt(number);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throwException(Constants.NUMBER_FORMAT_ERROR_MESSAGE);
         }
     }
 
     public static void checkNumberRangeException(String number) {
-        Pattern p = Pattern.compile(Constants.RANGE_FORMAT_PATTERN);
-        Matcher m = p.matcher(number);
-        if(!m.matches()){
+        Pattern pattern = Pattern.compile(Constants.RANGE_FORMAT_PATTERN);
+        Matcher matcher = pattern.matcher(number);
+        if (!matcher.matches()) {
             throwException(Constants.NUMBER_RANGE_ERROR_MESSAGE);
         }
     }
 
     public static void checkNumberLengthException(String number) {
-        if(number.length() != Constants.NUMBER_LENGTH){
+        if (number.length() != Constants.NUMBER_LENGTH) {
             throwException(Constants.NUMBER_LENGTH_ERROR_MESSAGE);
         }
     }
 
     public static void checkRepeatedNumberException(String number) {
-        Pattern p = Pattern.compile(Constants.REPEATED_PATTERN);
-        Matcher m = p.matcher(number);
-        if(m.find()){
+        Pattern pattern = Pattern.compile(Constants.REPEATED_PATTERN);
+        Matcher matcher = pattern.matcher(number);
+        if (matcher.find()) {
             throwException(Constants.REPEATED_NUMBER_ERROR_MESSAGE);
         }
     }
 
     public static void checkChoiceException(String choice) {
-        if(!(choice.equals(Constants.RESTART) || choice.equals(Constants.QUIT))) {
+        if (!(choice.equals(Constants.RESTART) || choice.equals(Constants.QUIT))) {
             throwException(Constants.CHOICE_ERROR_MESSAGE);
         }
     }

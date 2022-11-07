@@ -82,7 +82,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("asd"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("숫자만 입력해주세요.")
+                            .hasMessageContaining("숫자만 입력해주세요.")
             );
         }
 
@@ -92,7 +92,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("12~"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("숫자만 입력해주세요.")
+                            .hasMessageContaining("숫자만 입력해주세요.")
             );
         }
 
@@ -102,7 +102,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("104"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("1에서 9사이의 숫자만 입력해주세요.")
+                            .hasMessageContaining("1에서 9사이의 숫자만 입력해주세요.")
             );
         }
 
@@ -112,7 +112,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("-12"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("1에서 9사이의 숫자만 입력해주세요.")
+                            .hasMessageContaining("1에서 9사이의 숫자만 입력해주세요.")
             );
         }
 
@@ -122,7 +122,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("1234"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("올바른 길이의 숫자를 입력해주세요.")
+                            .hasMessageContaining("올바른 길이의 숫자를 입력해주세요.")
             );
         }
 
@@ -132,7 +132,7 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("933"))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("서로 다른 숫자를 입력해주세요.")
+                            .hasMessageContaining("서로 다른 숫자를 입력해주세요.")
             );
         }
     }

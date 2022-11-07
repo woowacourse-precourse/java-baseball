@@ -17,30 +17,30 @@ public class Game {
             System.out.println(Constants.SUCCESS_MESSAGE);
             System.out.println(Constants.GAME_FINISH_MESSAGE);
             System.out.println(Constants.RESTART_OR_QUIT_MESSAGE);
-        } while(player.getChoice() == Constants.RESTART_CHOICE);
+        } while (player.getChoice() == Constants.RESTART_CHOICE);
     }
 
     public void guessAndCheck() {
         Result result;
-        do{
+        do {
             System.out.print(Constants.INPUT_MESSAGE);
             String guessNumber = player.getInput();
             result = computer.compareNumber(guessNumber);
             showResult(result);
-        } while(isNotFinished(result));
+        } while (isNotFinished(result));
     }
 
     public void showResult(Result result) {
         int ballCount = result.getBallCount();
         int strikeCount = result.getStrikeCount();
 
-        if(ballCount != 0){
+        if (ballCount != 0) {
             System.out.print(ballCount+Constants.BALL);
         }
-        if(strikeCount != 0){
+        if (strikeCount != 0) {
             System.out.print(strikeCount+Constants.STRIKE);
         }
-        if(ballCount == 0 && strikeCount == 0) {
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.print(Constants.NOTHING);
         }
         System.out.println();

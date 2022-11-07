@@ -18,14 +18,14 @@ public class Computer {
 
     public void generateNumber() {
         initNumbers();
-        while(numbers.size() < Constants.NUMBER_LENGTH) {
+        while (numbers.size() < Constants.NUMBER_LENGTH) {
             int number = getRandomNumber();
             addIfNotUsed(number);
         }
     }
 
     public void addIfNotUsed(int number) {
-        if(!numbers.contains(number)){
+        if (!numbers.contains(number)) {
             numbers.add(number);
         }
     }
