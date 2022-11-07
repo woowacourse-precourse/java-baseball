@@ -8,6 +8,7 @@ public class Computer {
   private BaseBallGameNumber gameNumber;
 
   public void setAnswerNumber() {
+    gameNumber = new BaseBallGameNumber();
     List<Integer> numList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
     gameNumber.setGameNumberByList(numList);
   }
