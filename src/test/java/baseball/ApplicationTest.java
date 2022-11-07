@@ -53,15 +53,16 @@ class ApplicationTest extends NsTest {
         @Test
         @DisplayName("정답의 길이가 3인지 확인")
         void checkAnswerSize() {
-            assertThat(answer.size()==3).isTrue();
+            assertThat(answer.size()).isEqualTo(3);
         }
 
         @Test
         @DisplayName("각 자리의 수가 모두 다른지 확인")
         void checkRandomNumber () {
-            assertThat(Objects.equals(answer.get(0), answer.get(1))).isFalse();
-            assertThat(Objects.equals(answer.get(1), answer.get(2))).isFalse();
-            assertThat(Objects.equals(answer.get(0), answer.get(2))).isFalse();
+            assertThat(answer.stream()
+                .distinct()
+                .count()
+            ).isEqualTo(3);
         }
     }
 
