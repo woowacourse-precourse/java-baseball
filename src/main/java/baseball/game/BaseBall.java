@@ -12,10 +12,10 @@ public class BaseBall {
     public void start() {
         printGameStart();
 
-        boolean check = true;
-        while (check) {
+        boolean answer = true;
+        while (answer) {
             createAnswerBalls();
-
+            answer = playerAction();
         }
     }
 
@@ -29,10 +29,22 @@ public class BaseBall {
         userBalls.setNumberList(getUserNumber());
     }
 
-    // 힌트를 출력하고 판단한다.
     public boolean printHint() {
         return isCorrect(answerBalls.getNumberList(), userBalls.getNumberList());
     }
 
-    // 재시작 여부를 사용자에게 입력받는다.
+    public boolean restart() {
+        return isRestart();
+    }
+
+    public boolean playerAction() {
+        boolean answer = true;
+        while (answer == true) {
+            inputUserBalls();
+            answer = !printHint();
+        }
+
+        return restart();
+    }
+
 }

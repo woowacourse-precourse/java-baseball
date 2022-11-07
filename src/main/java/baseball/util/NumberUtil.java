@@ -138,4 +138,26 @@ public class NumberUtil {
 
         return false;
     }
+
+    public static boolean isRestart() {
+        String inputString = Console.readLine();
+        int inputNumber = toInteger(inputString);
+
+        if (inputNumber == 1) {
+            return true;
+        }
+        if (inputNumber == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static int toInteger(String inputString) {
+        try {
+            return Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
