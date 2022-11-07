@@ -12,4 +12,12 @@ class GameServiceTest {
         int strike = GameService.getStrikeNumber(userNumber, computerNumber);
         assertEquals(1, strike);
     }
+
+    @Test()
+    public void 볼의_개수를_계산한다() {
+        int computerNumber = 234;
+        int userNumber = 124;
+        int ball = GameService.getBallNumber(userNumber, computerNumber);
+        assertEquals(1, ball);
+    }
 }
