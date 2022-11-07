@@ -42,6 +42,8 @@ public class BaseballGameController {
     }
 
     private boolean gameRestart() {
+        baseballGameView.gameRestartMessage();
+
         return true;
     }
 
