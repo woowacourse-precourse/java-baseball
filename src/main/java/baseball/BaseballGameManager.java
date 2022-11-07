@@ -5,10 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
 import java.util.List;
 
-public class BaseballGameManager {
-    private static final String BASEBALL_GAME_GET_USER_INPUT_MESSAGE = "숫자를 입력하세요.";
-    private static final String BASEBALL_GAME_ASK_FOR_DIVIDED_NUMBER_MESSAGE = "※ 서로 다른 숫자 %d개를 입력해주세요. ※\n";
+import static baseball.InGameMessage.*;
 
+public class BaseballGameManager {
     private List<Integer> baseballNumberList;
     private ElementListMaker<Integer> elementListMaker;
     private UserInputTimer inputTimer;
@@ -23,7 +22,7 @@ public class BaseballGameManager {
     public void executeGame() {
         boolean isAllStrikes = false;
         while (!isAllStrikes) {
-            System.out.println(BASEBALL_GAME_GET_USER_INPUT_MESSAGE);
+            System.out.println(BASEBALL_GAME_GET_USER_INPUT_MESSAGE.getMessage());
 
             String userInput = this.getValidInput();
             List<Integer> userInputElementList = elementListMaker.convertToElementList(userInput);
@@ -65,7 +64,7 @@ public class BaseballGameManager {
             }
 
         } catch (NumberFormatException numberFormatException) {
-            System.out.printf(BASEBALL_GAME_ASK_FOR_DIVIDED_NUMBER_MESSAGE, numberCount);
+            System.out.printf(BASEBALL_GAME_ASK_FOR_DIVIDED_NUMBER_MESSAGE.getMessage(), numberCount);
             getValidInput();
         }
         */
@@ -97,23 +96,21 @@ public class BaseballGameManager {
     }
 
     public void printBaseballScore(BaseballScore baseballScore) {
-        StringBuilder scoreString = new StringBuilder();
-
         if (baseballScore.getBallCount() > 0) {
-            scoreString.append(baseballScore.getBallCount());
-            scoreString.append("볼 ");
+            if (baseballScore.getStrikeCount() > 0) {
+                System.out.printf(BASEBALL_GAME_RESULT_BALL_STRIKE.getMessage(), baseballScore.getBallCount(), baseballScore.getStrikeCount());
+            } else {
+                System.out.printf(BASEBALL_GAME_RESULT_BALL.getMessage(),baseballScore.getBallCount());
+            }
+            return;
         }
 
         if (baseballScore.getStrikeCount() > 0) {
-            scoreString.append(baseballScore.getStrikeCount());
-            scoreString.append("스트라이크");
+            System.out.printf(BASEBALL_GAME_RESULT_STRIKE.getMessage(), baseballScore.getStrikeCount());
+            return;
         }
 
-        if (scoreString.toString().length() == 0) {
-            scoreString.append("낫싱");
-        }
-
-        System.out.println(scoreString.toString().trim());
+        System.out.println(BASEBALL_GAME_RESULT_NOTHING.getMessage());
     }
 
     private boolean hasDuplicateNumberElement(String userInput) {

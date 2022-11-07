@@ -3,9 +3,9 @@ package baseball;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class UserInputTimer {
-    private static final String BASEBALL_GAME_FORCE_EXIT_MESSAGE = "※ 30초 이상 입력이 없어 게임을 자동 종료합니다. ※";
+import static baseball.InGameMessage.BASEBALL_GAME_FORCE_EXIT_MESSAGE;
 
+public class UserInputTimer {
     private Timer inputTimer = new Timer();
     private TimerTask taskAfterTimeout;
     private int timeout = 30;
@@ -14,7 +14,7 @@ public class UserInputTimer {
         taskAfterTimeout = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(BASEBALL_GAME_FORCE_EXIT_MESSAGE);
+                System.out.printf(BASEBALL_GAME_FORCE_EXIT_MESSAGE.getMessage(),timeout);
                 System.exit(0);
             }
         };
