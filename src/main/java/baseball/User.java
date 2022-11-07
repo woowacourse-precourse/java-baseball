@@ -15,8 +15,11 @@ public class User {
         String temp = Console.readLine();
         this.baseballList = new BaseballList(
                 Arrays.stream(temp.split(""))
-                        .map(number -> Integer.parseInt(number))
+                        .map(Integer::parseInt)
                         .collect(Collectors.toList())
         );
+    }
+    public void getUserBaseballList(){
+        this.baseballList.getBaseballList();
     }
 }
