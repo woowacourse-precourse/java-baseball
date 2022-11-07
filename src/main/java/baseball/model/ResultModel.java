@@ -30,29 +30,13 @@ public class ResultModel {
         this.strikeNum = 0;
     }
 
-    public int getBallNum() {
-        return ballNum;
-    }
-
-    public void setBallNum(int ballNum) {
-        this.ballNum = ballNum;
-    }
-
-    public int getStrikeNum() {
-        return strikeNum;
-    }
-
-    public void setStrikeNum(int strikeNum) {
-        this.strikeNum = strikeNum;
-    }
-
     public void injectElementToList(List<Integer> NumList, int num) {
         NumList.add(num % 10);
-        NumList.add((num / 10) % 10 % 10);
-        NumList.add(num / 100 % 10);
+        NumList.add((num % 100) / 10);
+        NumList.add(num / 100);
     }
 
-    public void compareInputNumWithResultList(int inputNum, List<Integer> , int idx) {
+    public void compareInputNumWithResultList(int inputNum, List<Integer> resultNumList, int idx) {
         if(resultNumList.contains(inputNum)) {
             if(resultNumList.get(idx) == inputNum) {
                 strikeNum = strikeNum + 1;
@@ -67,7 +51,6 @@ public class ResultModel {
     public void calResult(int inputNum, List<Integer> resultNumList) {
         List<Integer> inputNumList = new ArrayList<>();
         injectElementToList(inputNumList, inputNum);
-        injectElementToList(resultNumList, resultNum);
 
         for(int idx=0 ; idx<3 ; idx++) {
             compareInputNumWithResultList(inputNumList.get(idx), resultNumList, idx);

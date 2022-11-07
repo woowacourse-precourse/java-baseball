@@ -73,7 +73,7 @@ public class GameController {
         AppView.outputLine("숫자 야구 게임을 시작합니다.");
         do {
             ResultModel aSetOfGame = new ResultModel();
-            aSetOfGame.calResult(inputNumber(), counterpart.getResultNum());
+            aSetOfGame.calResult(inputNumber(), counterpart.getResultNumList());
             aSetOfGame.printResult();
             if(aSetOfGame.distinguishResult()) {
                 // 정답이라면
