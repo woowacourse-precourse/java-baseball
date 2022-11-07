@@ -2,13 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import com.sun.security.jgss.GSSUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Application {
@@ -22,6 +18,21 @@ public class Application {
 
             // 컴퓨터가 3자리 숫자의 리스트 생성
             List<Integer> computerNumber = GenerateRandomNumber();
+
+            // 야구 게임
+            playBaseBall(computerNumber);
+
+            // 재시작/종료 탐색
+            usersAnswer = reGameOrEnd(usersNumber());
+        }
+
+    }
+
+    private static void playBaseBall(List<Integer> computerNumber) {
+
+        boolean endGame = true;
+
+        while (endGame) {
             // 유저의 문자 입력 받기
             String usersNumber = usersNumber();
 
@@ -37,22 +48,17 @@ public class Application {
             // 결과 출력
             announcedResult(result);
 
-            // 정답
-            if (isRight(result.get(1))) {
-                // 정답 시 재시작/종료 탐색 기능
-                usersAnswer = reGameOrEnd(usersNumber());
-            }
-
-
+            // 3스트라이크 시 while문 종료
+            endGame = isRight(result.get(1));
         }
 
     }
 
     private static boolean isRight(Integer strike) {
         if (strike == 3) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private static void announcedResult(List<Integer> result) {
@@ -70,6 +76,8 @@ public class Application {
             System.out.println(ball+"볼");
         } else if (ball == 0 && strike > 0) {
             System.out.println(strike+"스트라이크");
+        } else{
+            System.out.println("낫싱");
         }
 
     }
