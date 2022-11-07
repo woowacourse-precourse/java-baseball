@@ -1,6 +1,6 @@
 package baseball.exception;
 
-public enum ErrorCode {
+public enum ErrorMessage {
     // 유저의 숫자야구 추측 입력시
     NUMERIC_INPUT_EXCEPTION("1 ~ 9사이의 숫자만 입력해야 합니다."),
     NUMERIC_LENGTH_EXCEPTION("3글자의 숫자를 입력해야 합니다."),
@@ -11,7 +11,7 @@ public enum ErrorCode {
 
     private final String message;
 
-    ErrorCode(String message) {
+    ErrorMessage(String message) {
         this.message = message;
     }
 

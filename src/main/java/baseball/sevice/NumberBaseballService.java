@@ -5,7 +5,7 @@ import static baseball.enums.AsciiType.ASCII_ONE;
 import static baseball.enums.AsciiType.ASCII_ZERO;
 
 import baseball.domain.ComputerNumber;
-import baseball.exception.ErrorCode;
+import baseball.exception.ErrorMessage;
 import baseball.repository.NumberBaseballRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,15 +64,15 @@ public class NumberBaseballService {
 
     public void validateUserAnswer(String userAnswer) {
         if (!checkNumber(userAnswer)) {
-            throw new IllegalArgumentException(ErrorCode.NUMERIC_INPUT_EXCEPTION
+            throw new IllegalArgumentException(ErrorMessage.NUMERIC_INPUT_EXCEPTION
                     .getMessage());
         }
         if (!checkLength(userAnswer)) {
-            throw new IllegalArgumentException(ErrorCode.NUMERIC_LENGTH_EXCEPTION
+            throw new IllegalArgumentException(ErrorMessage.NUMERIC_LENGTH_EXCEPTION
                     .getMessage());
         }
         if (!checkSameNumber(userAnswer)) {
-            throw new IllegalArgumentException(ErrorCode.SAME_NUMBER_EXCEPTION
+            throw new IllegalArgumentException(ErrorMessage.SAME_NUMBER_EXCEPTION
                     .getMessage());
         }
     }
