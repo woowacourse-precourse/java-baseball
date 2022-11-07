@@ -1,4 +1,4 @@
-package baseball.opponent;
+package baseball.core;
 
 import baseball.core.Computer;
 import baseball.core.BallStrike;

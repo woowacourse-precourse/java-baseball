@@ -1,4 +1,4 @@
-package baseball.converter;
+package baseball.core;
 
 import baseball.core.StatusCode;
 import baseball.exception.InvalidStatusCodeException;
