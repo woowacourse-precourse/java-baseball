@@ -84,6 +84,12 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> getNumbersToUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 번호가_중복인지_확인하는_테스트_True() {
+        String number = "2234e";
+        assertThat(isDistinct(number)).isTrue();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
