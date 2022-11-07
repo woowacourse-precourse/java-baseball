@@ -8,7 +8,6 @@ public class ConsoleInput implements Input {
 
     @Override
     public int getInputInteger() {
-        System.out.print(InputMessage.ASK_INPUT_INTEGER);
         String inputMessage = Console.readLine();
 
         try {
