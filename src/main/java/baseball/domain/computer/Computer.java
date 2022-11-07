@@ -2,9 +2,11 @@ package baseball.domain.computer;
 
 import baseball.domain.exception.InputNumberException;
 import baseball.domain.game.GameController;
+import baseball.domain.util.Util;
 import baseball.domain.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
@@ -16,9 +18,9 @@ public class Computer {
     }
 
     private static String getRandomNumbers() {
-        List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> randomNumbers = Util.getRandomNumbers();
         StringBuilder sb = new StringBuilder();
-        for (int i : list) {
+        for (int i : randomNumbers) {
             sb.append(i);
         }
         return sb.toString();
