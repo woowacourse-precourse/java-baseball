@@ -49,7 +49,7 @@
 - [x] true을 리턴
 - [x] strikeNumber가 0이고, ballNumber가 0인지 비교
 - [x] true이면 "낫싱" 출력
-- [ ] strikeNumber가 0이고, ballNumber가 0보다 큰지 비교
+- [x] strikeNumber가 0이고, ballNumber가 0보다 큰지 비교
 - [ ] true이면 "ballNumber + 볼" 출력
 - [ ] ballNumber이 0이고, strikeNumber이 0보다 큰지 비교
 - [ ] true이면, "strikeNumber + 스트라이크" 출력
