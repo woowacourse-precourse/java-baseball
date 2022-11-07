@@ -11,6 +11,9 @@ public class BaseballGameManager {
     public final static String NOTHING = "낫싱";
     public final static String BLANK = " ";
 
+    public final static int FULL_COUNT = 3;
+    public final static int NO_COUNT = 0;
+
     private NumberAdministrator numberAdministrator = new NumberAdministrator();
     private int strikeCount;
     private int ballCount;
@@ -26,7 +29,7 @@ public class BaseballGameManager {
     }
 
     public boolean isGameClear() {
-        if (strikeCount == 3) {
+        if (strikeCount == FULL_COUNT) {
             numberAdministrator.clearRandomNumbers();
             return true;
         }
@@ -43,15 +46,15 @@ public class BaseballGameManager {
     }
 
     private String getResultMessage(int strikeCount, int ballCount) {
-        if (strikeCount == 0 && ballCount == 0) {
+        if (strikeCount == NO_COUNT && ballCount == NO_COUNT) {
             return NOTHING;
         }
 
-        if (strikeCount == 0 && ballCount != 0) {
+        if (strikeCount == NO_COUNT && ballCount != NO_COUNT) {
             return ballCount + BALL;
         }
 
-        if (strikeCount != 0 && ballCount == 0) {
+        if (strikeCount != NO_COUNT && ballCount == NO_COUNT) {
             return strikeCount + STRIKE;
         }
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
