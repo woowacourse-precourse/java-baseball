@@ -1,6 +1,5 @@
 package baseball;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,10 +8,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-class InputTest {
+class UsersTest {
     @Test
-    @DisplayName("정상 값")
-    void getInput() {
+    void getInputList_123_123() {
         //given
         //when
         Users input = new Users("123");
@@ -25,20 +23,25 @@ class InputTest {
     }
 
     @Test
-    @DisplayName("잘못된 길이")
-    void CheckLength() {
+    void CheckLength_InputLessThen3_ExceptionThrown() {
         //given
         //when
         //then
-        assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Users("1234"));
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new Users("12"));
     }
 
     @Test
-    @DisplayName("겹치는 수 입력")
-    void CheckContinuous() {
+    void CheckLength_InputMoreThen3_ExceptionThrown() {
+        //given
+        //when
+        //then
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new Users("1234"));
+    }
+
+    @Test
+    void CheckContinuous_Input112_ExceptionThrown() {
         //given
         //when
         //then
@@ -47,8 +50,7 @@ class InputTest {
     }
 
     @Test
-    @DisplayName("잘못된 입력 범위")
-    void CheckLange() {
+    void CheckRange_OutOfRangeInput0_ExceptionThrown() {
         //given
         //when
         //then
