@@ -10,13 +10,15 @@ public class Application {
     public static final int NUM_OF_DIGIT = 3;
     public static final int DIGIT_MIN = 1;
     public static final int DIGIT_MAX = 9;
+
     public static final int INPUT_NUM_MIN = 123;
     public static final int INPUT_NUM_MAX = 987;
+
     public static final int START_IDX = 0;
     public static final int END_IDX = 2;
+
     public static final int RESTART = 1;
     public static final int EXIT = 2;
-
 
     public static List<Integer> computerNumList = new ArrayList<>();
     public static List<Integer> userNumList = new ArrayList<>();
