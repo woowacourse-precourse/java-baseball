@@ -16,12 +16,14 @@ public class Application {
 //        기능1. 컴퓨터 숫자선정
         int randomNumber = 0;
         int restart = 1;
+
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             int strikeNball = 0;
             int strike = 0;
             int ball = 0;
             int userNumber = 0;
+            int attempt = 0;
 
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -39,8 +41,8 @@ public class Application {
                 strike = 0;
                 ball = 0;
                 userNumber = 0;
-
-                System.out.print("\n숫자를 입력해주세요: ");
+                attempt = attempt+1;
+                System.out.printf("[%d차시도] 숫자를 입력해주세요: ", attempt);
 
                 userNumber = Integer.parseInt(Console.readLine());
 
