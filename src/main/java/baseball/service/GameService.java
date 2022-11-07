@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.domain.Game;
+import baseball.utils.Message;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import java.util.List;
 
 public class GameService {
     private Game game;
+    private final int RETRY_OK = 1;
+    private final int RETRY_NO = 2;
 
     public GameService() {
     }
@@ -17,13 +20,13 @@ public class GameService {
     }
 
     public void startGame() throws IllegalArgumentException {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        Message.printStartGame();
         game.pickComputerNum();
         do {
             game.initTurn();
             doTurn();
         } while (game.getStrike() != game.getDigit());
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        Message.printEndGame(game.getDigit());
     }
 
     private void doTurn() throws IllegalArgumentException {
@@ -32,13 +35,14 @@ public class GameService {
     }
 
     private void pickUserNum() throws IllegalArgumentException {
-        System.out.print("숫자를 입력해주세요 : ");
+        Message.printInput();
         String userInput = Console.readLine();
+
         List<Integer> userNum = new ArrayList<>();
         for (char x : userInput.toCharArray()) {
             userNum.add(x - '0');
         }
-        if (!game.getUser().isValid(userNum)) {
+        if (!game.getUser().isValid(userNum, game)) {
             throw new IllegalArgumentException();
         }
         game.getUser().setUserNum(userNum);
@@ -50,7 +54,7 @@ public class GameService {
         for (int com = 0; com < computerNum.size(); com++) {
             compareNum(computerNum, userNum, com);
         }
-        printScore();
+        Message.printScore(game.getStrike(), game.getBall());
     }
 
     private void compareNum(List<Integer> computerNum, List<Integer> userNum, int com) {
@@ -70,32 +74,13 @@ public class GameService {
         }
     }
 
-    private void printScore() {
-        int strike = game.getStrike();
-        int ball = game.getBall();
-
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            return;
-        }
-        if (strike == 0) {
-            System.out.println(ball + "볼");
-            return;
-        }
-        if (ball == 0) {
-            System.out.println(strike + "스트라이크");
-            return;
-        }
-        System.out.println(ball + "볼 " + strike + "스트라이크");
-    }
-
     public boolean isReplay() throws IllegalArgumentException {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Message.printReplayGame(RETRY_OK, RETRY_NO);
         int userInput = Integer.parseInt(Console.readLine());
-        if (userInput != 1 && userInput != 2) {
+        if (userInput != RETRY_OK && userInput != RETRY_NO) {
             throw new IllegalArgumentException();
         }
-        if (userInput == 1) {
+        if (userInput == RETRY_OK) {
             return true;
         }
         return false;
