@@ -10,13 +10,13 @@ import java.util.List;
 public class GameController {
 
     public void run() {
+        OutputView.printStartMessage();
         playGame();
-        endGame();
     }
 
     private void playGame() {
-        OutputView.printStartMessage();
         playRounds(getAnswer());
+        endGame();
     }
 
     private void playRounds(Balls answer) {
@@ -30,7 +30,7 @@ public class GameController {
 
     private void endGame() {
         if (InputView.yesOrNo()) {
-            run();
+            playGame();
         }
     }
 
