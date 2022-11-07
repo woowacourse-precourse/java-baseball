@@ -1,135 +1,137 @@
 package baseball.domain;
 
+import baseball.constants.ComparingResults;
+import baseball.constants.GuideSentences;
+import baseball.exception.GameExceptionHandler;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import baseball.constants.ComparingResults;
-import baseball.constants.GuideSentences;
-import baseball.exception.GameExceptionHandler;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameOperator {
-	private QuestionNumberSetter questionNumberSetter;
-	private Map<ComparingResults, Integer> resultMap = new TreeMap<>();
-	private List<Integer> inputNumberList = new ArrayList<>();
 
-	public GameOperator() {
-		questionNumberSetter = new QuestionNumberSetter();
-	}
+    private QuestionNumberSetter questionNumberSetter;
+    private Map<ComparingResults, Integer> resultMap = new TreeMap<>();
+    private List<Integer> inputNumberList = new ArrayList<>();
 
-	public void numberBaseballGame() {
-		boolean start = true;
+    public GameOperator() {
+        questionNumberSetter = new QuestionNumberSetter();
+    }
 
-		System.out.println(GuideSentences.START_GUIDE.getSentence());
+    public void numberBaseballGame() {
+        boolean start = true;
 
-		while (start) {
-			questionNumberSetter.pickThreeRandomNumbers();
+        System.out.println(GuideSentences.START_GUIDE.getSentence());
 
-			oneGame();
+        while (start) {
+            questionNumberSetter.pickThreeRandomNumbers();
 
-			start = askAboutRestart();
-		}
-	}
+            oneGame();
 
-	/* === 게임 1회 진행 === */
-	private void oneGame() {
-		String resultString = "";
+            start = askAboutRestart();
+        }
+    }
 
-		while (!resultString.equals("3스트라이크")) {
-			getNumbersFromUser();
+    /* === 게임 1회 진행 === */
+    private void oneGame() {
+        String resultString = "";
 
-			compareWithRandomNumbers();
+        while (!resultString.equals("3스트라이크")) {
+            getNumbersFromUser();
 
-			resultString = makeResultSentence();
+            compareWithRandomNumbers();
 
-			System.out.println(resultString);
-		}
-	}
+            resultString = makeResultSentence();
 
-	/* 게임 1회 : 사용자 입력 관련 메소드 */
-	private void getNumbersFromUser() {
-		guideToInputNumbers();
-		getInputNumbers();
-	}
+            System.out.println(resultString);
+        }
+    }
 
-	private void guideToInputNumbers() {
-		System.out.print(GuideSentences.INPUT_GUIDE.getSentence());
-	}
+    /* 게임 1회 : 사용자 입력 관련 메소드 */
+    private void getNumbersFromUser() {
+        guideToInputNumbers();
+        getInputNumbers();
+    }
 
-	private void getInputNumbers() {
-		String input = Console.readLine();
-		GameExceptionHandler.handleInGameException(input);
+    private void guideToInputNumbers() {
+        System.out.print(GuideSentences.INPUT_GUIDE.getSentence());
+    }
 
-		Arrays.stream(input.split(""))
-				.map(Integer::parseInt)
-				.forEach(inputNumberList::add);
-	}
+    private void getInputNumbers() {
+        String input = Console.readLine();
+        GameExceptionHandler.handleInGameException(input);
 
-	/* 게임 1회 : 숫자 비교 메소드 */
-	private void compareWithRandomNumbers() {
-		resultMap =	questionNumberSetter.compareWithRandomNumbers(inputNumberList);
-		inputNumberList.clear();
-	}
+        Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .forEach(inputNumberList::add);
+    }
 
-	/* 게임 1회 : 결과 출력 메소드 */
-	private String makeResultSentence() {
-		String resultString = convertResultMapToString();
+    /* 게임 1회 : 숫자 비교 메소드 */
+    private void compareWithRandomNumbers() {
+        resultMap = questionNumberSetter.compareWithRandomNumbers(inputNumberList);
+        inputNumberList.clear();
+    }
 
-		return resultString;
-	}
+    /* 게임 1회 : 결과 출력 메소드 */
+    private String makeResultSentence() {
+        String resultString = convertResultMapToString();
 
-	private String convertResultMapToString() {
-		List<String> resultList = divideEachResult();
+        return resultString;
+    }
 
-		String resultString = String.join(" ", resultList);
+    private String convertResultMapToString() {
+        List<String> resultList = divideEachResult();
 
-		return resultString;
-	}
+        String resultString = String.join(" ", resultList);
 
-	private List<String> divideEachResult() {
-		List<String> resultList = new ArrayList<>();
+        return resultString;
+    }
 
-		for (Map.Entry<ComparingResults, Integer> oneResult : resultMap.entrySet() ) {
-			if (oneResult.getKey() == ComparingResults.NOTHING) {
-				resultList.add(oneResult.getKey().getResult());
-				break;
-			}
+    private List<String> divideEachResult() {
+        List<String> resultList = new ArrayList<>();
 
-			String resultSentence = oneResult.getValue().toString() + oneResult.getKey().getResult();
-			resultList.add(resultSentence);
-		}
-		resultMap.clear();
+        for (Map.Entry<ComparingResults, Integer> oneResult : resultMap.entrySet()) {
+            if (oneResult.getKey() == ComparingResults.NOTHING) {
+                resultList.add(oneResult.getKey().getResult());
+                break;
+            }
 
-		return resultList;
-	}
+            String resultSentence =
+                    oneResult.getValue().toString() + oneResult.getKey().getResult();
+            resultList.add(resultSentence);
+        }
+        resultMap.clear();
 
-	/* === 재시작 여부 확인 관련 메소드 === */
-	private boolean askAboutRestart() {
-		guideGameOverAndRestart();
+        return resultList;
+    }
 
-		boolean restart = getRestartInput();
+    /* === 재시작 여부 확인 관련 메소드 === */
+    private boolean askAboutRestart() {
+        guideGameOverAndRestart();
 
-		return restart;
-	}
+        boolean restart = getRestartInput();
 
-	private void guideGameOverAndRestart() {
-		System.out.println(GuideSentences.END_GUIDE.getSentence());
-		System.out.println(GuideSentences.RESTART_GUIDE.getSentence());
-	}
+        return restart;
+    }
 
-	private boolean getRestartInput() {
-		boolean restart = true;
+    private void guideGameOverAndRestart() {
+        System.out.println(GuideSentences.END_GUIDE.getSentence());
+        System.out.println(GuideSentences.RESTART_GUIDE.getSentence());
+    }
 
-		String restartInput = Console.readLine();
-		GameExceptionHandler.handleAfterGameOverException(restartInput);
+    private boolean getRestartInput() {
+        boolean restart = true;
 
-		if (restartInput.equals("2")) {
-			restart = false;
-		}
+        String restartInput = Console.readLine();
+        GameExceptionHandler.handleAfterGameOverException(restartInput);
 
-		return restart;
-	}
+        if (restartInput.equals("2")) {
+            restart = false;
+        }
+
+        return restart;
+    }
 }

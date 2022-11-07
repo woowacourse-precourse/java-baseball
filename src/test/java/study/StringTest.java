@@ -1,5 +1,15 @@
 package study;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.Assertions.entry;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -8,13 +18,6 @@ import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class StringTest {
@@ -69,7 +72,8 @@ public class StringTest {
     @RepeatedTest(5)
     @DisplayName("반복 테스트 연습")
     void repeatedTest(RepetitionInfo repetitionInfo) {
-        System.out.println(repetitionInfo.getCurrentRepetition() + " / " + repetitionInfo.getTotalRepetitions());
+        System.out.println(repetitionInfo.getCurrentRepetition() + " / "
+                + repetitionInfo.getTotalRepetitions());
     }
 
     @ParameterizedTest
@@ -85,18 +89,20 @@ public class StringTest {
         String string = "Woowa Tech Course";
 
         assertThat(string)
-            .isNotNull()
-            .isNotEmpty()
-            .startsWith("Woowa")
-            .endsWith("Course")
-            .contains("Tech")
-            .isEqualTo("Woowa Tech Course")
-            .isNotEqualTo("abcd");
+                .isNotNull()
+                .isNotEmpty()
+                .startsWith("Woowa")
+                .endsWith("Course")
+                .contains("Tech")
+                .isEqualTo("Woowa Tech Course")
+                .isNotEqualTo("abcd");
     }
 
     public class ExampleClass {
+
         public String string;
-        public ExampleClass(String string){
+
+        public ExampleClass(String string) {
             this.string = string;
         }
     }
@@ -119,10 +125,10 @@ public class StringTest {
         map.put("b", 2);
 
         assertThat(map)
-            .containsKey("a")
-            .containsValue(1)
-            .containsEntry("a", 1)
-            .contains(entry("a", 1), entry("b", 2));
+                .containsKey("a")
+                .containsValue(1)
+                .containsEntry("a", 1)
+                .contains(entry("a", 1), entry("b", 2));
     }
 
     @Test
@@ -134,10 +140,10 @@ public class StringTest {
         }).isInstanceOf(IndexOutOfBoundsException.class);
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-            .isThrownBy(() -> {
-                List<String> list = new ArrayList<>(List.of("a", "b"));
-                list.get(2);
-            });
+                .isThrownBy(() -> {
+                    List<String> list = new ArrayList<>(List.of("a", "b"));
+                    list.get(2);
+                });
 
         Throwable thrown = catchThrowable(() -> {
             List<String> list = new ArrayList<>(List.of("a", "b"));
@@ -145,7 +151,7 @@ public class StringTest {
         });
 
         assertThat(thrown)
-            .isInstanceOf(IndexOutOfBoundsException.class);
+                .isInstanceOf(IndexOutOfBoundsException.class);
     }
 
 }

@@ -1,84 +1,86 @@
 package baseball.domain;
 
+import baseball.constants.ComparingResults;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import baseball.constants.ComparingResults;
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class QuestionNumberSetter {
-	private List<Integer> randomNumbers = new ArrayList<>();
-	private List<Integer> inputNumbers = new ArrayList<>();
-	private Map<ComparingResults, Integer> comparingResult = new TreeMap<>();
 
-	public List<Integer> pickThreeRandomNumbers() {
-		randomNumbers.clear();
-		while (randomNumbers.size() < 3) {
-			int uniqueNumber = pickUniqueRandomNumber();
-			randomNumbers.add(uniqueNumber);
-		}
+    private List<Integer> randomNumbers = new ArrayList<>();
+    private List<Integer> inputNumbers = new ArrayList<>();
+    private Map<ComparingResults, Integer> comparingResult = new TreeMap<>();
 
-		return randomNumbers;
-	}
+    public List<Integer> pickThreeRandomNumbers() {
+        randomNumbers.clear();
 
-	private int pickUniqueRandomNumber() {
-		int uniqueNumber = 0;
+        while (randomNumbers.size() < 3) {
+            int uniqueNumber = pickUniqueRandomNumber();
+            randomNumbers.add(uniqueNumber);
+        }
 
-		do {
-			uniqueNumber = Randoms.pickNumberInRange(1, 9);
-		} while (randomNumbers.contains(uniqueNumber));
+        return randomNumbers;
+    }
 
-		return uniqueNumber;
-	}
+    private int pickUniqueRandomNumber() {
+        int uniqueNumber = 0;
+
+        do {
+            uniqueNumber = Randoms.pickNumberInRange(1, 9);
+        } while (randomNumbers.contains(uniqueNumber));
+
+        return uniqueNumber;
+    }
 
 
-	public Map<ComparingResults, Integer> compareWithRandomNumbers(List<Integer> inputNumbersParameter) {
-		this.comparingResult.clear();
-		this.inputNumbers = inputNumbersParameter;
+    public Map<ComparingResults, Integer> compareWithRandomNumbers(
+            List<Integer> inputNumbersParameter) {
+        this.comparingResult.clear();
+        this.inputNumbers = inputNumbersParameter;
 
-		for (int inputNumber : inputNumbers) {
-			if (randomNumbers.contains(inputNumber)) {
-				countBallOrStrike(inputNumber);
-			}
-		}
+        for (int inputNumber : inputNumbers) {
+            if (randomNumbers.contains(inputNumber)) {
+                countBallOrStrike(inputNumber);
+            }
+        }
 
-		if (comparingResult.isEmpty() == true) {
-			comparingResult.put(ComparingResults.NOTHING, 1);
-		}
+        if (comparingResult.isEmpty() == true) {
+            comparingResult.put(ComparingResults.NOTHING, 1);
+        }
 
-		return comparingResult;
-	}
+        return comparingResult;
+    }
 
-	private void countBallOrStrike(int inputNumber) {
-		int inputNumberPosition = inputNumbers.indexOf(inputNumber);
-		int randomNumberPosition = randomNumbers.indexOf(inputNumber);
+    private void countBallOrStrike(int inputNumber) {
+        int inputNumberPosition = inputNumbers.indexOf(inputNumber);
+        int randomNumberPosition = randomNumbers.indexOf(inputNumber);
 
-		if (randomNumberPosition == inputNumberPosition) {
-			countStrike();
-		} else {
-			countBall();
-		}
-	}
+        if (randomNumberPosition == inputNumberPosition) {
+            countStrike();
+        } else {
+            countBall();
+        }
+    }
 
-	private void countStrike() {
-		int count = 1;
+    private void countStrike() {
+        int count = 1;
 
-		if (comparingResult.containsKey(ComparingResults.STRIKE)) {
-			count = comparingResult.get(ComparingResults.STRIKE) + 1;
-		}
+        if (comparingResult.containsKey(ComparingResults.STRIKE)) {
+            count = comparingResult.get(ComparingResults.STRIKE) + 1;
+        }
 
-		comparingResult.put(ComparingResults.STRIKE, count);
-	}
+        comparingResult.put(ComparingResults.STRIKE, count);
+    }
 
-	private void countBall() {
-		int count = 1;
+    private void countBall() {
+        int count = 1;
 
-		if (comparingResult.containsKey(ComparingResults.BALL)) {
-			count = comparingResult.get(ComparingResults.BALL) + 1;
-		}
+        if (comparingResult.containsKey(ComparingResults.BALL)) {
+            count = comparingResult.get(ComparingResults.BALL) + 1;
+        }
 
-		comparingResult.put(ComparingResults.BALL, count);
-	}
+        comparingResult.put(ComparingResults.BALL, count);
+    }
 }

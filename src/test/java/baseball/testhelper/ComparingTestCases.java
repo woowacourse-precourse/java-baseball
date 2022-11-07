@@ -1,111 +1,111 @@
 package baseball.testhelper;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.HashMap;
-import java.util.Map;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.constants.ComparingResults;
 import baseball.domain.QuestionNumberSetter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ComparingTestCases {
-	private QuestionNumberSetter questionNumberSetter;
 
-	public ComparingTestCases(QuestionNumberSetter questionNumberSetter) {
-		this.questionNumberSetter = questionNumberSetter;
-	}
+    private QuestionNumberSetter questionNumberSetter;
 
-	public void oneBallTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.ONE_BALL.getNumbers());
+    public ComparingTestCases(QuestionNumberSetter questionNumberSetter) {
+        this.questionNumberSetter = questionNumberSetter;
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.BALL, 1));
+    public void oneBallTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.ONE_BALL.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.BALL, 1));
 
-	public void twoBallTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.TWO_BALL.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.BALL, 2));
+    public void twoBallTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.TWO_BALL.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.BALL, 2));
 
-	public void threeBallTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.THREE_BALL.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.BALL, 3));
+    public void threeBallTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.THREE_BALL.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.BALL, 3));
 
-	public void oneStrikeTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.ONE_STRIKE.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.STRIKE, 1));
+    public void oneStrikeTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.ONE_STRIKE.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.STRIKE, 1));
 
-	public void twoStrikeTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.TWO_STRIKE.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.STRIKE, 2));
+    public void twoStrikeTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.TWO_STRIKE.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.STRIKE, 2));
 
-	public void threeStrikeTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.THREE_STRIKE.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.STRIKE, 3));
+    public void threeStrikeTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.THREE_STRIKE.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>(Map.of(ComparingResults.STRIKE, 3));
 
-	public void oneBallOneStrikeTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.ONE_BALL_ONE_STRIKE.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>();
-		expected.put(ComparingResults.BALL, 1);
-		expected.put(ComparingResults.STRIKE, 1);
+    public void oneBallOneStrikeTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.ONE_BALL_ONE_STRIKE.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>();
+        expected.put(ComparingResults.BALL, 1);
+        expected.put(ComparingResults.STRIKE, 1);
 
-	public void twoBallOneStrikeTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.TWO_BALL_ONE_STRIKE.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = new HashMap<>();
-		expected.put(ComparingResults.BALL, 2);
-		expected.put(ComparingResults.STRIKE, 1);
+    public void twoBallOneStrikeTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.TWO_BALL_ONE_STRIKE.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = new HashMap<>();
+        expected.put(ComparingResults.BALL, 2);
+        expected.put(ComparingResults.STRIKE, 1);
 
-	public void nothingTest() {
-		Map<ComparingResults, Integer> comparingResult =
-				questionNumberSetter.compareWithRandomNumbers(
-						ComparingResultExample.NOTHING.getNumbers());
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 
-		Map<ComparingResults, Integer> expected = Map.of(ComparingResults.NOTHING, 1);
+    public void nothingTest() {
+        Map<ComparingResults, Integer> comparingResult =
+                questionNumberSetter.compareWithRandomNumbers(
+                        ComparingResultExample.NOTHING.getNumbers());
 
-		assertThat(comparingResult).isEqualTo(expected);
-	}
+        Map<ComparingResults, Integer> expected = Map.of(ComparingResults.NOTHING, 1);
+
+        assertThat(comparingResult).isEqualTo(expected);
+    }
 }
