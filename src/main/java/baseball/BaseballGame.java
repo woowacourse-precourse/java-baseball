@@ -41,7 +41,7 @@ public class BaseballGame extends Game {
             return true;
         }
         System.out.println(RESTART_MESSAGE);
-        int input = Integer.parseInt(Console.readLine());
+        int input = Integer.parseInt(Console.readLine().replaceAll(" ", ""));
 
         return input == RESTART_NUMBER;
     }
