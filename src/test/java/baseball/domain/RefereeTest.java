@@ -3,6 +3,7 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.sql.Array;
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -76,4 +77,26 @@ public class RefereeTest {
         Assertions.assertThat(Referee.getBallCount(originList, comparedList2)).isEqualTo(2);
         Assertions.assertThat(Referee.getBallCount(originList, comparedList3)).isEqualTo(1);
     }
+
+    @Test
+    void 카운트_개수_세기() {
+        List<Integer> originList = Arrays.asList(1, 2, 3);
+        List<Integer> nothingList = Arrays.asList(4, 5, 6);
+        List<Integer> oneBallList = Arrays.asList(3, 5, 6);
+        List<Integer> twoBallList = Arrays.asList(2, 3, 6);
+        List<Integer> threeBallList = Arrays.asList(2, 3, 1);
+        List<Integer> oneStrikeList = Arrays.asList(1, 5, 6);
+        List<Integer> twoStrikeList = Arrays.asList(1, 2, 6);
+        List<Integer> twoBallOneStrikeList = Arrays.asList(1, 3, 2);
+
+        Assertions.assertThat(Referee.checkResult(originList, originList)).isEqualTo("3스트라이크");
+        Assertions.assertThat(Referee.checkResult(originList, nothingList)).isEqualTo("낫싱");
+        Assertions.assertThat(Referee.checkResult(originList, oneBallList)).isEqualTo("1볼");
+        Assertions.assertThat(Referee.checkResult(originList, twoBallList)).isEqualTo("2볼");
+        Assertions.assertThat(Referee.checkResult(originList, threeBallList)).isEqualTo("3볼");
+        Assertions.assertThat(Referee.checkResult(originList, oneStrikeList)).isEqualTo("1스트라이크");
+        Assertions.assertThat(Referee.checkResult(originList, twoStrikeList)).isEqualTo("2스트라이크");
+        Assertions.assertThat(Referee.checkResult(originList, twoBallOneStrikeList)).isEqualTo("2볼 1스트라이크");
+    }
+
 }
