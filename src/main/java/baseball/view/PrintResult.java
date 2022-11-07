@@ -4,6 +4,9 @@ import baseball.domain.BallCount;
 
 public class PrintResult {
 
+    public static void printStartMent(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
     public static void printBallCount(BallCount ballCount) {
         System.out.println(ballCount.ballCountResult());
     }
