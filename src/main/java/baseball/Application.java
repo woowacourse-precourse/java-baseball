@@ -125,4 +125,21 @@ public class Application {
         printStateOfBallAndStrike = stateBallAndStrike(numberOfBall,numberOfStrike);
         return printStateOfBallAndStrike;
     }
+
+    private static void gamePlay(List <Integer> answer){
+        List <Integer> user = Collections.emptyList();
+        String threeStrike = "3스트라이크";
+
+        while(true){
+            user = userInput();
+            System.out.println(getBallAndStrike(answer,user));
+
+            if(getBallAndStrike(answer,user).equals(threeStrike)) {
+                break;
+            }
+
+        }
+
+    }
+
 }
