@@ -27,12 +27,13 @@ public class Hint {
         strikeCount = 0;
     }
 
-    public void calculateResult(List<Integer> playerInputs, List<Integer> randomNumbers) {
+    public String calculateResult(List<Integer> playerInputs, List<Integer> randomNumbers) {
         initializeBallAndStrikeCount();
         for (int i = 0; i < Constant.SIZE_NUMBER; i++) {
             calculateStrikeCount(i, playerInputs, randomNumbers);
             calculateBallCount(i, playerInputs, randomNumbers);
         }
+        return countOfBallAndStrike();
     }
 
     private void calculateStrikeCount(int index, List<Integer> playerInputs, List<Integer> randomNumbers) {
