@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -24,8 +25,8 @@ public class Number {
     }
 
     public void userInput() {
-        System.out.println("숫자를 입력해주세요 : ");
-        String inputNumber = System.console().readLine();
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputNumber = Console.readLine();
         changeStringToSet(inputNumber);
     }
 
@@ -35,21 +36,21 @@ public class Number {
     }
 
     public void changeStringToSet(String userInput) {
-        int number = Integer.parseInt(userInput);
+        int number = 0;
+        if (isValidInput(userInput)) {
+            number = Integer.parseInt(userInput);
+        }
         while (number > 0) {
             int n = number % 10;
             userInputNumber.add(n);
             number /= 10;
         }
-        if (!isValidInput(userInput)) {
-            throw new IllegalArgumentException();
-        }
         Collections.reverse(userInputNumber);
     }
 
     public boolean isValidInput(String userInput) {
-        if (!isValidLength(userInput) || !isValidString(userInput) || !isNotDuplicate()) {
-            return false;
+        if (!(isValidLength(userInput) && isValidString(userInput) && isNotDuplicate(userInput))) {
+            throw new IllegalArgumentException();
         }
         return true;
     }
@@ -69,8 +70,12 @@ public class Number {
         return true;
     }
 
-    public boolean isNotDuplicate() {
-        Set<Integer> userInputSet = new HashSet<>(userInputNumber);
+    public boolean isNotDuplicate(String userInput) {
+        Set<String> userInputSet = new HashSet<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            String str = String.valueOf(userInput.charAt(i));
+            userInputSet.add(str);
+        }
         if (userInputSet.size() != 3) {
             return false;
         }
