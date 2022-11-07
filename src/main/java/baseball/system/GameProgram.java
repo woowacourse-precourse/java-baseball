@@ -61,7 +61,7 @@ public class GameProgram {
         }
     }
 
-    public void scoreCounter (int result) {
+    private void scoreCounter (int result) {
         if (result == 1){
             strike++;
         } else if (result == 2) {
@@ -69,7 +69,7 @@ public class GameProgram {
         }
     }
 
-    public void gameContinue() {
+    private void gameContinue() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         endError = false;
 
