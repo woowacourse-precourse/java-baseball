@@ -9,6 +9,11 @@ public class BallCountItem {
         this.ball = 0;
     }
 
+    public void initialization() {
+        this.strike = 0;
+        this.ball = 0;
+    }
+
     public int getStrike() {
         return strike;
     }

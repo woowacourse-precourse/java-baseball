@@ -15,11 +15,14 @@ import java.util.List;
 
 public class CompareServiceImpl implements CompareService {
 
+    static BallCountItem ballCountItem = new BallCountItem();
+    static List<Integer> computerNumber;
+    static List<Integer> userNumber;
     @Override
     public int compare(NumberItem computerNumberItem, NumberItem userNumberItem) {
-        BallCountItem ballCountItem = new BallCountItem();
-        List<Integer> computerNumber = computerNumberItem.getNumber();
-        List<Integer> userNumber = userNumberItem.getNumber();
+        ballCountItem.initialization();
+        computerNumber = computerNumberItem.getNumber();
+        userNumber = userNumberItem.getNumber();
 
         for( int index = 0; index < userNumber.size() ; index++){
             if(userNumber.get(index).equals(computerNumber.get(index))) {
