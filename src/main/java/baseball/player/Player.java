@@ -25,4 +25,7 @@ public class Player {
         }
         return opponent;
     }
+    public <T, U> List<U> transform(List<T> list, Function<T, U> function){
+        return list.stream().map(function).collect(Collectors.toList());
+    }
 }
