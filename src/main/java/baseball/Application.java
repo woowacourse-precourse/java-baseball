@@ -19,10 +19,26 @@ public class Application {
         }
         return computer;
     }
+
     public static boolean checkTwoNumbersAreSame(int num1,int num2){
         if(num1 ==num2){
             return true;
         }
         return false;
+    }
+
+    public static void checkUserInput(String userString){
+        if(userString.charAt(0)=='0'){
+            throw new IllegalStateException();
+        }
+        if(userString.length()!=3){ //이런 건 메소드로 나누는게 좋은가?
+            throw new IllegalStateException();
+        }
+        for(int i=0;i<userString.length();i++){
+            char c = userString.charAt(i);
+            if(c<'0' || c >'9'){
+                throw new IllegalStateException();
+            }
+        }
     }
 }
