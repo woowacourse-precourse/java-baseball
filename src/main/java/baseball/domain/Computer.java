@@ -24,7 +24,9 @@ public class Computer {
         }
     }
 
-
+    public void initComputerRandomNumberList() {
+        computerRandomNumberList = new ArrayList<>();
+    }
 
 
 }
