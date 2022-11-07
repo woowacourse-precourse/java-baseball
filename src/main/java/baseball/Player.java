@@ -1,22 +1,21 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Player {
     private static final int DESIRED_LENGTH = 3;
     private static final int NUM_OF_SELECTABLE_MENU = 2;
 
-    Scanner sc = Application.sc;
-
     public int guessRandomNumber() {
-        String input = sc.nextLine();
+        String input = Console.readLine();
         validateGuess(input);
         return Integer.parseInt(input);
     }
 
     public int selectExitMenu() {
-        String input = sc.nextLine();
+        String input = Console.readLine();
         validateMenuSelection(input);
         return Integer.parseInt(input);
     }
