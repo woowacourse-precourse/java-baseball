@@ -9,7 +9,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
+    public static String isValidFlag(String readLine) {
+        boolean isOneOrTwo = (readLine.charAt(0) == 1 || readLine.charAt(0) == 2);
 
+        if (isOneOrTwo) {
+            return readLine;
+        }
+        throw new IllegalArgumentException();
+    }
 
     public static String isValid(String readLine) {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
@@ -104,6 +111,5 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        getUserInput();
     }
 }
