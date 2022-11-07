@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Condition {
-	static Application application = new Application();
+public class Condition {	
 
 	public static List<Integer> userNumbersException(String userNumbers) throws IllegalArgumentException {
 
@@ -35,11 +34,11 @@ public class Condition {
 	}
 
 	public static void continuedExceptionProcess(String continued) throws IllegalArgumentException {
-
+		Controller controller = new Controller();
 		if (continued.equals("1")) {
-			application.gameStart(application.getComputerNumbers());
+			controller.gameStart(controller.getComputerNumbers());
 		} else if (continued.equals("2")) {
-			application.gameSet = false;
+			controller.gameSet = false;
 		} else {
 			throw new IllegalArgumentException();
 		}
