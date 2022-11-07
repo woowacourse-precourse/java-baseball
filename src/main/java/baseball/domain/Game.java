@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.List;
+
 public class Game {
     private int strike;
     private int ball;
@@ -37,5 +39,25 @@ public class Game {
     public void addStrike() {
         this.strike += 1;
         this.ball -= 1;
+    }
+
+    public Game checkBallStrike(List<Integer> computerAnswer, List<Integer> UserAnswer){
+        Game game = new Game();
+        for (int aLetter : UserAnswer) {
+            if (letterIncludeAnswerCheck(computerAnswer, aLetter)) {
+                game.addBall();
+                if (computerAnswer.indexOf(aLetter) == UserAnswer.indexOf(aLetter)) {
+                    game.addStrike();
+                }
+            }
+        }
+        return game;
+    }
+
+    public boolean letterIncludeAnswerCheck(List<Integer> computerAnswer, int aLetter) {
+        if (computerAnswer.contains(aLetter)) {
+            return true;
+        }
+        return false;
     }
 }
