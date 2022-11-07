@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 enum BaseballResult {
     NOTHING("낫띵"),
@@ -31,12 +28,17 @@ public class Application {
         printGameStartMessage();
 
         while (true) {
-            List<Integer> computerNumber = Randoms.pickUniqueNumbersInRange(1, 9, MAX_DIGIT);
+            List<Integer> computerNumber = getComputerNumber();
             System.out.println(computerNumber);
 
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                List<Integer> userNumber = splitStrNumberToList(Console.readLine());
+                String userBaseballNumberInput = Console.readLine();
+                System.out.println(userBaseballNumberInput);
+                validateBaseballNumber(userBaseballNumberInput);
+
+                List<Integer> userNumber = splitStrNumberToList(userBaseballNumberInput);
+
 
                 HashMap<BaseballResult, Integer> gameResultMap = new HashMap<>();
                 for (int i = 0; i < userNumber.size(); i++) {
@@ -62,6 +64,19 @@ public class Application {
 
     private static void printGameStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    private static List<Integer> getComputerNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+        return computerNumber;
     }
 
     public static List<Integer> splitStrNumberToList(String strNumber) {
