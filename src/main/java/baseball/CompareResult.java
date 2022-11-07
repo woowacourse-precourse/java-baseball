@@ -2,8 +2,11 @@ package baseball;
 
 import static baseball.BallStatus.*;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CompareResult {
 
@@ -28,5 +31,22 @@ public class CompareResult {
 	public boolean isAllNothing() {
 		return occurrences.containsKey(NOTHING)
 		&& occurrences.get(NOTHING) == 3;
+	}
+
+	public List<String> getResults() {
+		if (isAllNothing()) {
+			return List.of(NOTHING.getStatus());
+		}
+		return occurrences.keySet()
+			.stream()
+			.filter(BallStatus::isStrikeOrBall)
+			.sorted(Comparator.comparing(BallStatus::getStatus))
+			.map(this::formatStatus)
+			.collect(Collectors.toList());
+	}
+
+	private String formatStatus(BallStatus status) {
+		String count = String.valueOf(occurrences.get(status));
+		return String.join("", count, status.getStatus());
 	}
 }

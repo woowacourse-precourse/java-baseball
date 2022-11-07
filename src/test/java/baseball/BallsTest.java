@@ -143,4 +143,15 @@ public class BallsTest {
 		CompareResult result = com.compareTo(player);
 		assertThat(result.getStrikes()).isEqualTo(3);
 	}
+
+	@DisplayName("숫자 비교 테스트 N:M - 결과 출력")
+	@Test
+	void getCompareResult_숫자_비교_N_M_결과출력() {
+		Balls com = new Balls(List.of(4, 2, 5));
+		Balls player = new Balls(List.of(4, 5, 2));
+
+		CompareResult result = com.compareTo(player);
+		assertThat(result.getResults())
+			.isEqualTo(List.of("2볼", "1스트라이크"));
+	}
 }
