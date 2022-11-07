@@ -41,8 +41,20 @@ class ApplicationTest extends NsTest {
                 1, 3, 5
         );
     }
+
     @Test
     void 입력_숫자_길이를_초과한_경우() {
+    void 게임_진행_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("789", "158", "357", "138", "531", "135", "1", "719", "2");
+                    assertThat(output()).contains(
+                            "낫싱", "1볼 1스트라이크", "2볼", "2스트라이크", "2볼 1스트라이크", "3스트라이크",
+                            "게임 종료");
+                },
+                1, 3, 5, 7, 1, 9
+        );
+    }
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
