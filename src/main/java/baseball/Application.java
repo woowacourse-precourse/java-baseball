@@ -1,28 +1,101 @@
 package baseball;
 
-import  camp.nextstep.edu.*;
+//import  camp.nextstep.edu.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 public class Application {
+    static ArrayList<Integer> computerNumberList;
     public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        //전역변수로 수정
+        computerNumberList = computerGetRandom3Number();
 
-        ArrayList<Integer> computerNumberList = computerGetRandom3Number();
-
+        try {
+            gameStart();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     static ArrayList<Integer> computerGetRandom3Number() {
 
         ArrayList<Integer> computerNumberList = new ArrayList<>();
-        while(computerNumberList.size() <3){
+        while (computerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if(!computerNumberList.contains(randomNumber)){
+            if (!computerNumberList.contains(randomNumber)) {
                 computerNumberList.add(randomNumber);
             }
         }
         return computerNumberList;
     }
+
+    static void gameStart() throws IllegalArgumentException, IOException  {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        while (true){
+
+            String strInput[] = br.readLine().split("");
+
+            ArrayList<Integer> input = new ArrayList<Integer>();
+            for(int i=0; i<strInput.length; i++){
+                input.add(Integer.parseInt(strInput[i]));
+            }
+            //check
+            //throw new IllegalArgumentException("잘못 입력하셨습니다.");
+            int strikeNum = strikeNumber(input);
+            int ballNum = ballNumber(input, strikeNum);
+
+            if(strikeNum >0 && ballNum >0){
+                bw.append(ballNum + "볼 " +strikeNum +"스트라이크");
+                bw.newLine();
+
+            }
+            else if(strikeNum >0 ){
+                bw.append(strikeNum +"스트라이크");
+                bw.newLine();
+                if(strikeNum == 3){
+                    //게임종료
+                    bw.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    bw.newLine();
+                    break;
+
+                }
+
+
+            }
+            else if(ballNum >0){
+                bw.append(ballNum + "볼");
+                bw.newLine();
+            }
+            else {
+                bw.append("낫싱");
+                bw.newLine();
+            }
+            bw.flush();
+        }
+
+        bw.close();
+    }
+
+    static int strikeNumber(ArrayList<Integer> input){
+        int result=0;
+
+        return result ;
+    }
+    static int ballNumber(ArrayList<Integer> input, int strike){
+        int result=0;
+        return result ;
+    }
+
+
 }
+
+
