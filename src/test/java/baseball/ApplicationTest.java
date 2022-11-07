@@ -5,12 +5,14 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -37,25 +39,21 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 컴퓨터_숫자_다른숫자_테스트(){
-        org.junit.jupiter.api.Assertions.assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(1)));
-        org.junit.jupiter.api.Assertions.assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(2)));
+        assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(1)));
+        assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(2)));
     }
-
     @Test
     void 숫자_동일여부_테스트(){
-        org.junit.jupiter.api.Assertions.assertTrue(Application.checkTwoNumbersAreSame(1,1));
-        org.junit.jupiter.api.Assertions.assertFalse(Application.checkTwoNumbersAreSame(1,3));
+        assertTrue(Application.checkTwoNumbersAreSame(1,1));
+        assertFalse(Application.checkTwoNumbersAreSame(1,3));
     }
-
     @Test
     void 유저_입력_숫자_예외_테스트(){
-        List<String> testStringList = new ArrayList<>();
-        testStringList.add("044");
-        testStringList.add("abc");
-        testStringList.add("1234");
+        List<String> testStringList = Arrays.asList("044","abc","1234");
         for(int i=0;i<testStringList.size();i++){
+            int finalI = i;
             assertSimpleTest(()->
-                    assertThatThrownBy(()-> Application.checkUserInput("044"))
+                    assertThatThrownBy(()-> Application.checkUserInput(testStringList.get(finalI)))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -69,7 +67,6 @@ class ApplicationTest extends NsTest {
         integerList.add(3);
         Assertions.assertThat(Application.StringToIntegerList("123")).isEqualTo(integerList);
     }
-
 
 
 
