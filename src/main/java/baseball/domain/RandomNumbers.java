@@ -7,6 +7,7 @@ import java.util.List;
 
 public class RandomNumbers {
     private final List<Integer> numbers;
+
     public RandomNumbers() {
         this.numbers = generateComputerRandomNumbers();
     }
