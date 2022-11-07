@@ -8,12 +8,25 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int answer = answerNum();
-        boolean result = false;
-        while (!result) {
-            int input = inputNumber();
-            result = compareNum(answer, input);
+        boolean start = false;
 
+        while(!start) {
+            // 0. 정답으로 되는 세자리 숫자 랜덤 생성
+            int answer = answerNum();
+            boolean result = false;
+            while (!result) {    // 3스트라이크가 될때까지 반복
+                // 1. 세자리 숫자 입력받기
+                int input = inputNumber();
+
+                // 2. 숫자에 대한 결과 리턴
+                //    맞추는 순간 게임종료 문구가 뜬다.
+                result = compareNum(answer, input);
+
+            }
+
+            // 3. 1또는 2로 입력을 받음
+            //    입력받은 숫자가 1이면 1<<로 리턴하고 2이면 종료
+            start = Judge();
         }
 
     }
@@ -112,6 +125,20 @@ public class Application {
             }
         }
         return str;
+    }
+    public static boolean Judge(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input = Integer.parseInt(Console.readLine());
+        if(input==1){
+            return false;
+        }
+        else if(input==2){
+            return true;
+        }
+        else{
+            Judge();
+            return true;
+        }
     }
 
 }
