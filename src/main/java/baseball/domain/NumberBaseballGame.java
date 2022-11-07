@@ -10,15 +10,17 @@ import java.util.List;
 public class NumberBaseballGame {
     private final ShowGameMessage showGameMessage;
     private ScoreBoard scoreBoard;
+    private boolean isPlaying;
 
     public NumberBaseballGame(ShowGameMessage showGameMessage, ScoreBoard scoreBoard) {
         this.showGameMessage = showGameMessage;
         this.scoreBoard = scoreBoard;
         showGameMessage.gameStartMessage();
+        isPlaying = true;
     }
 
     public void play() {
-        while (scoreBoard.isPlaying()) {
+        while (isPlaying) {
             showGameMessage.inputUserNumberMessage();
             ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
             showGameMessage.gameResultMessage(result);
@@ -31,10 +33,10 @@ public class NumberBaseballGame {
     private void endGame() {
         ContinueInput continueInput = new ContinueInput();
         if (continueInput.continueGame()) {
-            scoreBoard.initialize();
+            scoreBoard = new ScoreBoard(NumberBall.systemNumberBalls());
             return;
         }
-        scoreBoard.setIsPlaying();
+        isPlaying = false;
     }
 
     private List<NumberBall> getUserNumberBall() throws IllegalArgumentException {

@@ -6,15 +6,9 @@ import java.util.stream.IntStream;
 
 public class ScoreBoard {
     private List<NumberBall> systemNumberBalls;
-    private boolean isPlaying;
 
     public ScoreBoard(List<NumberBall> systemNumberBalls) {
-        if(systemNumberBalls == null) {
-            initialize();
-            return;
-        }
         this.systemNumberBalls = systemNumberBalls;
-        isPlaying = true;
     }
 
     public ScoreResult getScoreResult(List<NumberBall> userNumberBalls) {
@@ -35,18 +29,5 @@ public class ScoreBoard {
                 .filter(idx -> !systemNumberBalls.get(idx).equals(userNumberBalls.get(idx)))
                 .filter(idx -> systemNumberBalls.contains(userNumberBalls.get(idx)))
                 .count();
-    }
-
-    public boolean isPlaying() {
-        return isPlaying;
-    }
-
-    public void setIsPlaying() {
-        isPlaying = false;
-    }
-
-    public void initialize() {
-        systemNumberBalls = NumberBall.systemNumberBalls();
-        isPlaying = true;
     }
 }
