@@ -89,10 +89,6 @@ public class Application {
 
     private static void printAResult(int ball, int strike) {
         if (ball != 0) {
-            System.out.printf("%d볼", ball);
-        }
-
-        if (ball != 0) {
             if (strike == 0) {
                 System.out.println(ball + "볼");
             } else {
