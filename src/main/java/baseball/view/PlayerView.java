@@ -11,23 +11,23 @@ public class PlayerView {
         input = "";
     }
 
-    public void requestInput(){
+    public String getPlayerOpinion(){
+        requestInput();
+        readInput();
+        return getInput();
+    }
+
+    private void requestInput(){
         System.out.print(INPUT_REQUEST);
     }
 
-    public void readInput(){
+    private void readInput(){
         input = Console.readLine();
         PlayerException playerException = new PlayerException();
         playerException.checkException(input);
     }
 
-    public String getInput(){
+    private String getInput(){
         return input;
-    }
-
-    public String getPlayerOpinion(){
-        requestInput();
-        readInput();
-        return getInput();
     }
 }
