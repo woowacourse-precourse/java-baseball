@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.controller.BaseballCountController;
+import baseball.model.ComputerNums;
+import baseball.model.UserNums;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -74,13 +77,13 @@ class ApplicationTest extends NsTest {
         void 볼_테스트() {
             List<Integer> usernums = List.of(1, 2, 3);
             List<Integer> computernums = List.of(2, 3, 1);
-            BaseballCount baseballCount = new BaseballCount(computernums, usernums);
-            assertThat(baseballCount.getBallcount()).isEqualTo(3);
+            BaseballCountController baseballCountController = new BaseballCountController(computernums, usernums);
+            assertThat(baseballCountController.getBallcount()).isEqualTo(3);
 
             List<Integer> usernums2 = List.of(1, 2, 3);
             List<Integer> computernums2 = List.of(1, 2, 3);
-            BaseballCount baseballCount2 = new BaseballCount(computernums2, usernums2);
-            assertThat(baseballCount2.getBallcount()).isEqualTo(0);
+            BaseballCountController baseballCountController2 = new BaseballCountController(computernums2, usernums2);
+            assertThat(baseballCountController2.getBallcount()).isEqualTo(0);
 
            /* assertRandomNumberInRangeTest(() -> {
                 run("312", "123", "1", "645", "456", "2");
@@ -92,13 +95,13 @@ class ApplicationTest extends NsTest {
         void 스트라이크_테스트() {
             List<Integer> usernums = List.of(1, 2, 3);
             List<Integer> computernums = List.of(2, 3, 1);
-            BaseballCount baseballCount = new BaseballCount(computernums, usernums);
-            assertThat(baseballCount.getStrikecount()).isEqualTo(0);
+            BaseballCountController baseballCountController = new BaseballCountController(computernums, usernums);
+            assertThat(baseballCountController.getStrikecount()).isEqualTo(0);
 
             List<Integer> usernums2 = List.of(1, 2, 3);
             List<Integer> computernums2 = List.of(1, 2, 3);
-            BaseballCount baseballCount2 = new BaseballCount(computernums2, usernums2);
-            assertThat(baseballCount2.getStrikecount()).isEqualTo(3);
+            BaseballCountController baseballCountController2 = new BaseballCountController(computernums2, usernums2);
+            assertThat(baseballCountController2.getStrikecount()).isEqualTo(3);
 
             assertRandomNumberInRangeTest(() -> {
                 run("124", "123", "1", "476", "456", "2");

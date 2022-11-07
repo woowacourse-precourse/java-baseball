@@ -1,13 +1,15 @@
-package baseball;
+package baseball.view;
 
-public class SystemOutput {
+import baseball.controller.BaseballCountController;
+
+public class SystemOutputView {
 
     private final int strikecount;
     private final int ballcount;
 
-    public SystemOutput(BaseballCount baseballCount) {
-        this.strikecount = baseballCount.getStrikecount();
-        this.ballcount = baseballCount.getBallcount();
+    public SystemOutputView(BaseballCountController baseballCountController) {
+        this.strikecount = baseballCountController.getStrikecount();
+        this.ballcount = baseballCountController.getBallcount();
     }
     public void printOutputMessage(){
         baseballCountMessage();

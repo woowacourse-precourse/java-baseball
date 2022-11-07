@@ -1,8 +1,8 @@
-package baseball;
+package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class UserInput {
+public class SystemInputView {
 
     public static String startInput() {
         System.out.print("숫자를 입력해주세요 : ");

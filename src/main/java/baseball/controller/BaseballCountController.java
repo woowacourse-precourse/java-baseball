@@ -1,14 +1,13 @@
-package baseball;
+package baseball.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballCount {
+public class BaseballCountController {
 
     private final int strikecount;
     private final int ballcount;
 
-    public BaseballCount(List<Integer> computernums, List<Integer> usernums) {
+    public BaseballCountController(List<Integer> computernums, List<Integer> usernums) {
         strikecount = StrikeCount(computernums, usernums);
         ballcount = BallCount(computernums, usernums);
     }
