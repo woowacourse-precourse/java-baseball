@@ -24,7 +24,7 @@ public class BaseballGame extends Game {
 
     @Override
     protected void close() {
-
+        System.out.println(CLOSE_MESSAGE);
     }
 
     @Override
