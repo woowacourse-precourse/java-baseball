@@ -12,6 +12,8 @@ import java.util.Set;
 public class IOUtil {
 
     public static List<Integer> getNumbersFromPlayer() {
+        // TODO : console try catch
+        System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
         List<Integer> playerNumbers = new ArrayList<>();
         for (int i = 0; i < str.length(); i++) {
@@ -24,6 +26,19 @@ public class IOUtil {
         validateNumbers(playerNumbers);
 
         return playerNumbers;
+    }
+
+    public static int getMenuSelectOption() {
+        try {
+            String str = Console.readLine();
+            int option = Integer.parseInt(str);
+            if (option != 1 && option != 2) {
+                throw new IllegalArgumentException();
+            }
+            return option;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+        }
     }
 
     private static void validateNumbers(List<Integer> numbers) {
@@ -41,7 +56,7 @@ public class IOUtil {
     }
 
     public static void printExitMenuMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static void printMapToConsole(Map<State, Integer> resultMap) {
