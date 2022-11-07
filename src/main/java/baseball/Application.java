@@ -30,14 +30,11 @@ public class Application {
             if(charList.contains(number.charAt(n))){
                 return true;
             }
-            if(charList.size() == 3){
-                return false;
-            }
             else {
                 charList.add(number.charAt(n));
             }
         }
-        return true;
+        return false;
     }
     
     public static Boolean checkInput(String input) throws IllegalArgumentException{
