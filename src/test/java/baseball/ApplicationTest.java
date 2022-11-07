@@ -46,6 +46,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("null이 들어갔을 경우 숫자 확인 테스트")
     void 사용자_번호가_유효한_숫자인지_확인_테스트_Null() {
         String number = "";
         assertThatThrownBy(() -> isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
@@ -74,18 +75,20 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
     @ValueSource(strings = {"1e4", "1#3", "~23,", "00 "})
-    @DisplayName("숫자가 아닌 번호를 숫자로 변경시 에러 확인 테스트")
+    @DisplayName("숫자가 아닌 번호를 숫자로 변경시 예외 확인 테스트")
     void 번호를_숫자로_변경하는_테스트_숫자가_아님(String number) {
         assertThatThrownBy(() -> getNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
+    @DisplayName("숫자인 변호를 숫자로 변경시 나온 숫자가 예상한 결과와 같은지 확인 테스트")
     void 번호를_숫자로_변경하는_테스트_숫자() {
         String number = "234";
         assertThat(getNumber(number)).isEqualTo(234);
     }
 
     @Test
+    @DisplayName("숫자인 사용자 변호를 숫자로 변경시 나온 결과가 예상한 결과와 같은지 확인 테스트")
     void 사용자_번호를_나눠_숫자로_변경하는_테스트_숫자() {
         String number = "234";
         assertThat(getNumbersToUserNumber(number)).containsExactly(2, 3, 4);
@@ -93,7 +96,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
     @ValueSource(strings = {"1e4", "1#3)", "~23,", "00 "})
-    @DisplayName("사용자 번호가 숫자로 변경되는지 확인 테스트")
+    @DisplayName("숫자가 아닌 사용자 번호가 숫자로 변경시 예외 발생 확인 테스트")
     void 사용자_번호를_나눠_숫자로_변경하는_테스트_숫자_아님() {
         String number = "23e";
         assertThatThrownBy(() -> getNumbersToUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
@@ -101,26 +104,27 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest(name = "{0}을 넣었을 때 true를 반환")
     @ValueSource(strings = {"1ee4", "1#3#?6)", "~2334@67,", "00000"})
-    @DisplayName("번호가 중복인지 확인 테스트")
+    @DisplayName("중복인 번호가 중복인지 확인 테스트")
     void 번호가_중복인지_확인하는_테스트_True(String number) {
         assertThat(isDistinct(number)).isTrue();
     }
 
     @ParameterizedTest(name = "{0}을 넣었을 때 false를 반환")
     @ValueSource(strings = {"12e4", "1#34?6)", "~234@67,", "0123456789"})
-    @DisplayName("번호가 중복인지 확인 테스트")
+    @DisplayName("중복이 아닌 번호가 중복이 아닌지 확인 테스트")
     void 번호가_중복인지_확인하는_테스트_False(String number) {
         assertThat(isDistinct(number)).isFalse();
     }
 
     @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
     @ValueSource(strings = {"1234", "1234567", "12345678", "0123456789"})
-    @DisplayName("명령 번호가 유효한 숫자인지 확인 테스트")
+    @DisplayName("명령 번호가 길이가 1이 아닐때 예외 발생 확인 테스트")
     void 명령_번호가_유효한_숫자인지_확인_테스트_길이_초과(String number) {
         assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
+    @DisplayName("명령 번호가 null일 때 예외 발생 확인 테스트")
     void 명령_번호가_유효한_숫자인지_확인_테스트_공백() {
         String number = "";
         assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
@@ -128,7 +132,7 @@ class ApplicationTest extends NsTest {
 
     @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
     @ValueSource(strings = {"0", "3", "4", "5"})
-    @DisplayName("명령 번호가 유효한 숫자인지 확인 테스트")
+    @DisplayName("명령 번호가 1, 2가 아닐 때 예외 발생 확인 테스트")
     void 명령_번호가_유효한_숫자인지_확인_테스트_1_2_미포함(String number) {
         assertThatThrownBy(() -> isValidCommandNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
