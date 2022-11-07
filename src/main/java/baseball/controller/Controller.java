@@ -56,7 +56,7 @@ public class Controller {
         if (ex.regameException(input)) throw new IllegalArgumentException();
 
         if (Objects.equals("1", input)) {
-            repository = new Repository(service.generateScore());
+            repository.setScore(service.generateScore());
         } else if (Objects.equals("2", input)) {
             return true;
         }
