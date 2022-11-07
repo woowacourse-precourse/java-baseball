@@ -33,7 +33,7 @@ public class Computer {
         if (strikeCount == 3) {
             System.out.println(GameComment.THREE_STRIKE);
             System.out.println(GameComment.GAME_END_MSG);
-            return GameComment.GAME_END;
+            return closeGame();
         } else if (ballCount < 1 && strikeCount < 1) {
             System.out.println(GameComment.NOTHING);
         }else if (strikeCount < 1){
@@ -46,17 +46,17 @@ public class Computer {
         return GameComment.NOT_GAME_END;
     }
 
-    public boolean closeGame() {
+    public String closeGame() {
         System.out.print(GameComment.RESTART_MSG);
         String input = Console.readLine();
         return getStatusByInput(input);
     }
 
-    public boolean getStatusByInput(String input) {
+    public String getStatusByInput(String input) {
         if (input.equals("1")) {
-            return true;
+            return "재시작";
         } else if (input.equals("2"))
-            return false;
+            return "완전한 종료";
         else
             throw new IllegalArgumentException();
     }
