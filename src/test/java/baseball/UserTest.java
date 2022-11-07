@@ -22,4 +22,11 @@ public class UserTest {
             assertThat(user.getUserNumberList().get(i)).isEqualTo(answer.get(i));
         }
     }
+
+    @Test
+    @DisplayName("유저 입력에 중복이 없는지 테스트")
+    void checkDuplicate() {
+        String userInput = "446";
+        assertThat(user.checkDuplicateNumber(userInput)).isTrue();
+    }
 }
