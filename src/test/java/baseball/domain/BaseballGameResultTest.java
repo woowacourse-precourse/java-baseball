@@ -18,9 +18,9 @@ class BaseballGameResultTest {
     class toEnum_메서드는 {
 
         @Nested
-        class 만약_Enum_범위_내_존재하는_숫자를_입력받으면 {
-            private final int givenStrike = 1;
-            private final int givenBall = 0;
+        class 만약_Enum_범위_내의_스트라이크와_볼을_입력받으면 {
+            private final Strike givenStrike = Strike.valueOf(1);
+            private final Ball givenBall = Ball.valueOf(0);
 
             @Test
             void 적절한_BaseballGameResult를_리턴한다() {
@@ -30,9 +30,9 @@ class BaseballGameResultTest {
         }
 
         @Nested
-        class 만약_Enum_범위_내_존재하지_않는_숫자를_입력받으면 {
-            private final int givenStrike = 0;
-            private final int givenBall = 4;
+        class 만약_Enum_범위_내_존재하지_않는_스트라이크와_볼을_입력받으면 {
+            private final Strike givenStrike = Strike.valueOf(2);
+            private final Ball givenBall = Ball.valueOf(3);
 
             @Test
             void BaseballGameException을_던진다() {

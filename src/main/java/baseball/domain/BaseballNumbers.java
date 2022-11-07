@@ -32,12 +32,12 @@ public class BaseballNumbers {
     }
 
     public BaseballGameResult play(BaseballNumbers opponent) {
-        int strike = calculateStrike(opponent);
-        int ball = calculateBall(opponent, strike);
-        return BaseballGameResult.toEnum(strike, ball);
+        int strikeCount = calculateStrikeCount(opponent);
+        int ballCount = calculateBallCount(opponent, strikeCount);
+        return BaseballGameResult.toEnum(Strike.valueOf(strikeCount), Ball.valueOf(ballCount));
     }
 
-    private int calculateStrike(BaseballNumbers opponent) {
+    private int calculateStrikeCount(BaseballNumbers opponent) {
         return (int) IntStream.rangeClosed(BASEBALL_NUMBERS_START_INDEX, BASEBALL_NUMBERS_END_INDEX)
                 .filter(isStrike(opponent))
                 .count();
@@ -47,10 +47,10 @@ public class BaseballNumbers {
         return i -> opponent.baseballNumbers.get(i).equals(this.baseballNumbers.get(i));
     }
 
-    private int calculateBall(BaseballNumbers opponent, int strike) {
+    private int calculateBallCount(BaseballNumbers opponent, int strikeCount) {
         return (int) opponent.baseballNumbers.stream()
                 .filter(this::isBall)
-                .count() - strike;
+                .count() - strikeCount;
     }
 
     private boolean isBall(BaseballNumber baseballNumber) {
