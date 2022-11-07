@@ -60,4 +60,42 @@ public class TurnScoreTest {
         ResultTurn result = turnScore.getResultTurn();
         assertThat(result).isEqualTo(ResultTurn.StrikesAndBalls);
     }
+
+    @DisplayName("아웃 여부 확인")
+    @Test
+    void checkIsOut() {
+        TurnScore turnScore = new TurnScore();
+        turnScore.setBalls(0);
+        turnScore.setStrikes(3);
+        boolean result = turnScore.checkIsOut();
+        assertThat(result).isEqualTo(true);
+    }
+
+    @DisplayName("낫 여부 확인")
+    @Test
+    void checkIsNothing() {
+        TurnScore turnScore = new TurnScore();
+        turnScore.setBalls(0);
+        turnScore.setStrikes(0);
+        boolean result = turnScore.checkIsNothing();
+        assertThat(result).isEqualTo(true);
+    }
+
+    @DisplayName("볼 수가 0인지 확인")
+    @Test
+    void checkIsBallsZero() {
+        TurnScore turnScore = new TurnScore();
+        turnScore.setBalls(0);
+        boolean result = turnScore.checkIsBallsZero();
+        assertThat(result).isEqualTo(true);
+    }
+
+    @DisplayName("스트라이 수가 0인지 확인")
+    @Test
+    void checkIsStrikesZero() {
+        TurnScore turnScore = new TurnScore();
+        turnScore.setStrikes(0);
+        boolean result = turnScore.checkIsStrikesZero();
+        assertThat(result).isEqualTo(true);
+    }
 }
