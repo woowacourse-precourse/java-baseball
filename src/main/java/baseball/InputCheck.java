@@ -24,13 +24,7 @@ public class InputCheck {
         char c2 = input.charAt(1);
         char c3 = input.charAt(2);
 
-        if ((c1 == c2) || (c1 == c3)) {
-            return true;
-        }
-        if (c2 == c3) {
-            return true;
-        }
-        return false;
+        return (c1 == c2) || (c1 == c3) || (c2 == c3);
     }
 
     public static boolean isEndInputError(String input) {
