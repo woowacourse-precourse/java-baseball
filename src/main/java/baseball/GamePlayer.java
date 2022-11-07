@@ -38,14 +38,14 @@ public class GamePlayer {
         final int NUMBER_LENGTH = 3;
 
         if (player_number.size() != NUMBER_LENGTH) {
-            throw new PlayerInputException();
+            throw new IllegalArgumentException();
         }
 
         if (player_number.stream()
                 .filter(GamePlayer::validateInputRange)
                 .distinct()
                 .count() != NUMBER_LENGTH) {
-            throw new PlayerInputException();
+            throw new IllegalArgumentException();
         }
     }
 
