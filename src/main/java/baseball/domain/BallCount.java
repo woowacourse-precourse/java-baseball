@@ -10,6 +10,8 @@ public class BallCount {
     private int Balls;
 
     public BallCount(int strikes, int balls) {
+        validateStrikeCount(strikes);
+        validateBallCount(balls);
         Strikes = strikes;
         Balls = balls;
     }
