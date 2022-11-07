@@ -24,7 +24,27 @@ public class Application {
         }
     }
 
+    public static int[] getUserNumber(){
+        String num = Console.readLine();
+
+        if (num.length() != 3)
+            throw new IllegalArgumentException("3자리수를 입력해주세요!");
+
+        try {
+            Integer.parseInt(num);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("숫자로만 입력해주세요!");
+        }
+
+        return new int[]{
+                num.charAt(0) - '0',
+                num.charAt(1) - '0',
+                num.charAt(2) - '0'
+        };
+    }
+
     public static void main(String[] args) {
+        getUserNumber();
         initOpponentNumber();
     }
 }
