@@ -6,7 +6,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumberList {
-    public final List<Number> computerNumber;
+    public List<Number> computerNumber;
 
     public ComputerNumberList() {
         this.computerNumber = getComputerRandomNumber();
