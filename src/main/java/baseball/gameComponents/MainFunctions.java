@@ -2,6 +2,7 @@ package baseball.gameComponents;
 
 import baseball.exception.ExceptionCode;
 import baseball.exception.GameException;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -65,6 +66,24 @@ public class MainFunctions {
             || balls < 0 || balls > 3
             || strikes < 0 || strikes > 3|| balls + strikes > 3) {
             throw new GameException(ExceptionCode.BALLS_AND_STRIKES_NOT_VALID);
+        }
+    }
+
+    public boolean restartOrEndGame(boolean isCorrectGuess) {
+        if(!isCorrectGuess) return false;
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        while(true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+
+            if(input.equals("1")) {
+                return true;
+            } else if(input.equals("2")) {
+                return false;
+            } else {
+                throw new GameException(ExceptionCode.ONLY_1_OR_2_POSSIBLE);
+            }
         }
     }
 }
