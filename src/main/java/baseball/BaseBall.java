@@ -85,5 +85,12 @@ public class BaseBall {
         return Arrays.asList(s.split(""));
     }
 
+    private void checkSameOfRandomAndMy(List<String> randomList, List<String> inputList) {
+        for (int i = 0; i < randomList.size(); i++) {
+            if (inputList.contains(randomList.get(i))) {
+                checkSameNumberOfDigits(randomList.get(i), i, inputList);
+            }
+        }
+    }
 
 }
