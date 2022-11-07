@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static baseball.View.*;
 
@@ -30,5 +28,38 @@ public class Application {
         printInputMsg();
         String computer = getRandomNumber();
         String userInput = Console.readLine();
+        validateNum(userInput);
+    }
+
+    private static void validateNum(String userInput) {
+        if(userInput.length() != 3)
+            throw new IllegalArgumentException("3자리 수를 입력해주세요");
+        if(!isNumeric(userInput))
+            throw new IllegalArgumentException("1과 9사이의 숫자를 입력해주세요");
+        if(isDuplicate(userInput))
+            throw new IllegalArgumentException("중복이 없는 숫자를 입력해주세요");
+    }
+
+    public static boolean isNumeric(String input) {
+       for(int iter = 0; iter < input.length(); iter++){
+           char c = input.charAt(iter);
+           if(c < '1' || c > '9'){
+               return false;
+           }
+       }
+       return true;
+    }
+
+    public static boolean isDuplicate(String input) {
+        List<Integer> list = new ArrayList<>();
+        String [] strList = input.split("");
+        for(int iter = 0; iter < input.length(); iter++){
+            list.add(Integer.parseInt(strList[iter]));
+        }
+        Set<Integer> set = new HashSet<>(list);
+        if(list.size() != set.size()){
+            return true;
+        }
+        return false;
     }
 }
