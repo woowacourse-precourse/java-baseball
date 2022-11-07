@@ -12,6 +12,7 @@ import baseball.view.UserInput;
 public class GamePlay {
 
     public static void play(NumberProducingStrategy numberProducingStrategy) {
+        PrintResult.printStartMent();
         endProgramWhenPress2(numberProducingStrategy, false);
     }
 
