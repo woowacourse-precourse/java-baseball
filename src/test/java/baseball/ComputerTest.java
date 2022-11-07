@@ -15,4 +15,10 @@ public class ComputerTest {
         assertThat(Integer.parseInt(computer.randoms().stream().map(String::valueOf).collect(Collectors.joining())))
                 .isPositive().isBetween(123, 987); // 숫자가 양수이며 세자리 숫자인지
     }
+
+    @Test
+    void 게임시작문구() {
+        Computer computer = new Computer();
+        assertThat(computer.gameStart()).isEqualTo("숫자 야구 게임을 시작합니다.");
+    }
 }
