@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.utils.Constants;
 import baseball.utils.Exceptions;
 import baseball.view.GameOutput;
 import baseball.view.UserInput;
@@ -19,7 +20,7 @@ public class GameService {
 
     public void getStrikeCount(ArrayList<Integer> User, ArrayList<Integer> Computer) {
         //자리, 숫자가 맞으면 Strike
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.INPUT_SIZE; i++) {
             if (User.get(i)==Computer.get(i)) {
                 Strikescore += 1;
             }
@@ -28,35 +29,27 @@ public class GameService {
 
     public void getBallCount(ArrayList<Integer> User, ArrayList<Integer> Computer) {
         //자리는 안 맞지만 숫자는 맞으면 Ball
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.INPUT_SIZE; i++) {
             if (Computer.contains(User.get(i)) && User.get(i)!=Computer.get(i)){
                 Ballscore += 1;
             }
         }
     }
 
-    public void getCount(int User, int Computer,int score){
-        if (User==Computer){
-            score+=1;
-        }
-    }
-    public Integer finalScore(){
-        this.Strikescore = Strikescore;
-        this.Ballscore = Ballscore;
+    public int finalScore(){
         GameOutput.scoreMessage(Ballscore,Strikescore);
-        if (Strikescore==3) {
+        if (Strikescore==Constants.THREE_STRIKE) {
             return isRestart();
         }
         return 0;
     }
 
-    public Integer isRestart(){
-        this.Strikescore=Strikescore;
+    public int isRestart(){
         UserInput.getRetryUserNumber();
         String str = Console.readLine();
         Exceptions.restartInput(str);
-        Integer replay_input=Integer.parseInt(str);
-        if (replay_input==2){
+        int replay_input=Integer.parseInt(str);
+        if (replay_input==Constants.END_GAME){
             GameOutput.finishGame();
         }
         return replay_input;

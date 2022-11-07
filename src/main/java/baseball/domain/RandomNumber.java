@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.utils.Constants;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -15,8 +16,8 @@ public class RandomNumber {
     public static ArrayList<Integer> makeRandomNum(){
         //1부터 9까지의 난수3개 생성
         ArrayList<Integer> RandomNumList= new ArrayList<>();
-        while(RandomNumList.size()<3){
-            int ran_num = Randoms.pickNumberInRange(1, 9);
+        while(RandomNumList.size()< Constants.INPUT_SIZE){
+            int ran_num = Randoms.pickNumberInRange(Constants.RANDOM_START_NUM, Constants.RANDOM_END_NUM);
             RandomNumList.add(ran_num);
         }
 

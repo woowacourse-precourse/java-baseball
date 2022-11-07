@@ -1,21 +1,26 @@
 package baseball.domain;
-import java.util.ArrayList;
 
+import baseball.utils.Constants;
 import baseball.utils.Exceptions;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 
 public class User {
+    public static void checkUserInput(String str){
+        Exceptions.checkNumSize(str);
+        Exceptions.isNumber(str);
+    }
+    public static int charToInt(char ch){
+        int num = ch-'0';
+        return num;
+    }
     public static ArrayList<Integer> makeUserList() {
-        //UserInput.getUserNumber();
         ArrayList<Integer> UserNumber = new ArrayList<>();
-        String num = Console.readLine();
-        Exceptions.isNumber(num);
-        Exceptions.checkNumSize(num);
-        for (int i = 0; i < 3; i++) {
-            //아스키코드 '0'이 45임을 이용한다.
-            UserNumber.add(num.charAt(i) - '0');
+        String str = Console.readLine();
+        checkUserInput(str);
+        for (int i = 0; i < Constants.INPUT_SIZE; i++) {
+            UserNumber.add(charToInt(str.charAt(i)));
         }
-
         return UserNumber;
     }
 }
