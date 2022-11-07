@@ -30,6 +30,7 @@ public class Game {
         if(choice.equals("1")){
             return true;
         }
+        System.out.println("게임 종료");
         return false;
     }
 
@@ -39,6 +40,7 @@ public class Game {
 
         if (strikeCount == END_STRIKE_COUNT) {
             System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
 
