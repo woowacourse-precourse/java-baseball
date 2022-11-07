@@ -4,16 +4,17 @@ import baseball.model.BallCounts;
 
 public class Output {
     public static void outputStart() {
-        System.out.print("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public static void outputBallCounts(BallCounts ballCounts) {
         outputBall(ballCounts.getBall());
         outputStrike(ballCounts.getStrike());
         outputNothing(ballCounts.getIsNothing());
+        System.out.println();
     }
     public static void outputRestart() {
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static void outputBall(int countBall) {
