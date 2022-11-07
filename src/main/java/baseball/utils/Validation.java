@@ -3,8 +3,9 @@ package baseball.utils;
 import java.util.List;
 
 public class Validation {
-    public static void validateSize(String input) {
+    public static String validateSize(String input) {
         if (input.length() != 3) {throwInputException();}
+        return input;
     }
     public static void validateArguments(char arg, List<Character> inputList) {
         if (!Character.isDigit(arg) | inputList.contains(arg)) {

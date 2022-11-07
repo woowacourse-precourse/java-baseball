@@ -18,12 +18,10 @@ public class GameService {
     }
 
     public void playGame() {
-        int strike = 0;
-        while (strike < 3) {
+        while (game.getStrikeCounter() < 3) {
             game.initialGameValue();
             user.setUserInput(getInput());
             countLoop(game.getAnswer(), user.getUserInput());
-            strike = game.getStrikeCounter();
         }
     }
 
@@ -37,9 +35,7 @@ public class GameService {
 
     public List<Integer> getInput() {
         SystemMessage.getInputMessage();
-        String input = userRequest.numberInput();
-        Validation.validateSize(input);
-        return Parser.stringToInt(input, new ArrayList<>());
+        return Parser.stringToInt(Validation.validateSize(userRequest.numberInput()), new ArrayList<>());
     }
 
     public void countBallStrike(List<Integer> answer, List<Integer> userInput, int i) {
