@@ -12,8 +12,7 @@ public class Batter {
         while (hitDigits.size() != 3) {
             readyHitDigit(hitDigits);
         }
-        return hitDigits.stream().map(String::valueOf)
-                .collect(Collectors.joining(""));
+        return hitDigits.stream().map(String::valueOf).collect(Collectors.joining(""));
     }
 
     private void readyHitDigit(List<Integer> hitDigits) {
