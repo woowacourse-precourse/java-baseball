@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ public class GameView {
 
     public static void startGame() {
         // TODO: 프로그램 구현
-        createRandomNumber();
+
+        Game();
 
     }
 
@@ -24,5 +26,18 @@ public class GameView {
         }
 //        System.out.println("랜덤 수 생성"+computer);
         return computer;
+    }
+
+    public static void Game() {
+        createRandomNumber();
+        BaseballGame baseballGame = new BaseballGame();
+        InputException inputException = new InputException();
+
+        System.out.println("숫자를 입력해주세요 :");
+        String input = Console.readLine();
+        List<Integer> inputNumber = baseballGame.StringToIntList(input);
+        System.out.println(input);
+
+
     }
 }
