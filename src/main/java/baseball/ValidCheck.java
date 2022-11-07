@@ -10,7 +10,7 @@ public class ValidCheck {
     private static final int AGAIN = 1;
     private static final int EXIT = 2;
 
-    public static boolean checkIsContinueError(int toBeContinue) {
+    public static boolean checkIsContinueError(Integer toBeContinue) {
         if (toBeContinue != AGAIN && toBeContinue != EXIT) {
             return true;
         }

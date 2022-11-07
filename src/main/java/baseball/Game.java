@@ -34,8 +34,7 @@ public class Game {
         record.setEachCounts(computer, user);
         record.displayRecord();
 
-        int strikeCount = record.strikeCount;
-        boolean result = checkSuccess(strikeCount);
+        boolean result = checkSuccess(record);
 
         if (!result) {
             Game.play(computer);
@@ -94,9 +93,11 @@ public class Game {
         System.out.println(AGAIN_QUESTION_MESSAGE);
     }
 
-    private static boolean checkSuccess(int strikeCount) {
+    private static boolean checkSuccess(Record record) {
 
         boolean success = false;
+
+        int strikeCount = record.strikeCount;
 
         if (strikeCount == TOTAL_SIZE) {
             System.out.println(SUCCESS_MESSAGE);
