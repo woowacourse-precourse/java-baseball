@@ -26,7 +26,7 @@ public class Output {
 
     private static void outputNothing(boolean isNothing) {
         if (isNothing) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
     }
 
