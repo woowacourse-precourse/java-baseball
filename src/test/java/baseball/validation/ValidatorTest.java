@@ -2,6 +2,9 @@ package baseball.validation;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ValidatorTest {
@@ -29,6 +32,13 @@ class ValidatorTest {
         assertThatThrownBy(() -> {Validator.validatePlayerInput("120");})
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[IllegalArgumentException]: 각 자릿수가 " + MIN_VALUE + "~" + MAX_VALUE + "사이 숫자가 아닙니다.\n");
+    }
+
+    @Test
+    void validateInputDuplication() {
+        assertThatThrownBy(() -> {Validator.validatePlayerInput("111");})
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[IllegalArgumentException]: 각 자릿수에 중복이 있습니다.\n");
     }
 
 }
