@@ -17,7 +17,6 @@ class CreateRandomNumberTest {
         List<Integer> computerAnswer = CreateRandomNumber.getComputerAnswer();
         int numberCount = computerAnswer.size();
         assertThat(numberCount).isEqualTo(3);
-
         for (Integer integer : computerAnswer) {
             assertThat(integer).isBetween(1, 9);
         }
