@@ -4,11 +4,11 @@ import static baseball.BaseballGameManager.NUMBER_COUNT_TO_CREATED;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class BaseballGame {
+public class Player {
 
     private BaseballGameManager gameManager = new BaseballGameManager();
 
-    public void start() {
+    public void play() {
         gameManager.createRandomNumbers();
         do {
             String input = inputAnswer();

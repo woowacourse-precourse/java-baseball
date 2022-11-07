@@ -15,9 +15,9 @@ public class BaseballGameLauncher {
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
-        BaseballGame baseballGame = new BaseballGame();
+        Player baseballGame = new Player();
         do {
-            baseballGame.start();
+            baseballGame.play();
             System.out.println(GAME_CLEAR_MESSAGE);
         } while (isRestartGame());
         System.out.println(GAME_CLOSE_MESSAGE);
