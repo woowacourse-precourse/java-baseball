@@ -113,11 +113,11 @@ public class Application {
             hint += ballCount + BALL_HINT;
         }
 
-        if (ballCount == 0 && strike > 0) {
+        if (ballCount == 0 && strikeCount > 0) {
             hint += strikeCount + STRIKE_HINT;
         }
 
-        if (ballCount == 0 && strike == 0) {
+        if (ballCount == 0 && strikeCount == 0) {
             hint += NOTHING_HINT;
         }
 
