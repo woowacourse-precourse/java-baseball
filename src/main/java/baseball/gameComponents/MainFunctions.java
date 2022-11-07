@@ -38,7 +38,7 @@ public class MainFunctions {
         }
     }
 
-    public boolean printExamineResult(int[] ballsAndStrikes) {
+    public boolean examineResultAndPrint(int[] ballsAndStrikes) {
         validateBallsAndStrike(ballsAndStrikes);
         //하나도 맞추지 못한 경우
         if(ballsAndStrikes[0] == 0 && ballsAndStrikes[1] == 0) {

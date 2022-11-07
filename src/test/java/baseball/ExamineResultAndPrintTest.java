@@ -3,7 +3,6 @@ package baseball;
 
 import baseball.exception.GameException;
 import baseball.gameComponents.MainFunctions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -11,7 +10,7 @@ import java.io.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
-public class PrintExamineResultTest {
+public class ExamineResultAndPrintTest {
     private MainFunctions mainFunctions = new MainFunctions();
 
 
@@ -90,7 +89,7 @@ public class PrintExamineResultTest {
     //[0] : ball
     //[1] : strike
     public boolean printExamineResult(int[] ballsAnsStrikes) {
-        return mainFunctions.printExamineResult(ballsAnsStrikes);
+        return mainFunctions.examineResultAndPrint(ballsAnsStrikes);
     }
 
 }
