@@ -154,6 +154,9 @@ public class Application {
         int ballNumber = checkedBallNumbers(computerNumbersList,userNumbersList);
         Map<String,Integer> baseballResult = calculatedStrikeBallNumber(strikeNumber,ballNumber);
         checkedAnswer = printBaseballOfResult(baseballResult);
+        if(!checkedAnswer){
+            inputUserNumberService();
+        }
     }
 
     public static void main(String[] args) {
