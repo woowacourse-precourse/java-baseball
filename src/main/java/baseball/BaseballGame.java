@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import org.mockito.internal.matchers.Null;
+
 import java.util.ArrayList;
 
 public class BaseballGame {
@@ -55,4 +58,14 @@ public class BaseballGame {
             System.out.println(ballNumber + "볼 " + strikeNumber + "스트라이크");
     }
 
+    public boolean isRestart(){
+        int restartNumber = Integer.valueOf(Console.readLine());
+        if(restartNumber == 1)
+            return true;
+        if(restartNumber == 0)
+            return false;
+        if(restartNumber != 1 || restartNumber != 0)
+            throw new IllegalArgumentException();
+        return false;
+    }
 }
