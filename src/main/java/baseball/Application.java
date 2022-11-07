@@ -8,7 +8,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     private static final int NUM_SIZE = 3;
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         GameStart();
     }
 
@@ -40,8 +39,9 @@ public class Application {
 
     private static List<Integer> StringToList(String input) {
         List<Integer> user = new ArrayList<>();
-        for(int i=0; i<input.length(); i++)
+        for (int i=0; i<input.length(); i++) {
             user.add(input.charAt(i) - '0');
+        }
         return user;
     }
 
@@ -53,7 +53,7 @@ public class Application {
     }
 
     private static boolean isSize3(String input) {
-        if (input.length() == 3){
+        if (input.length() == 3) {
             return true;
         }
         return false;
