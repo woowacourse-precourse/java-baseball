@@ -19,14 +19,15 @@ public class Application {
 
     private static int doRepeat() {
         String repeatInput = getRepeatInput();
-        if (!Numbers.checkRepeatInput_regex(repeatInput)) {
-            throw new IllegalArgumentException();
-        }
         return Integer.parseInt(repeatInput);
     }
 
     private static String getRepeatInput() {
-        return IO.ask_repeat();
+        String repeatInput = IO.ask_repeat();
+        if (!Numbers.checkRepeatInput_regex(repeatInput)) {
+            throw new IllegalArgumentException();
+        }
+        return repeatInput;
     }
 
 }
