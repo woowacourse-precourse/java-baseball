@@ -5,10 +5,10 @@ import baseball.Config;
 import java.util.List;
 
 public class Hint {
-    public static final String STRIKE = "스트라이크";
-    public static final String BALL = "볼";
-    public static final String NOTHING = "낫싱";
-    public static final String BLANK = " ";
+    private static final String STRIKE = "스트라이크";
+    private static final String BALL = "볼";
+    private static final String NOTHING = "낫싱";
+    private static final String BLANK = " ";
 
     int strikeCnt;
     int ballCnt;
