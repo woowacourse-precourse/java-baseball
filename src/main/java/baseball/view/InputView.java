@@ -13,7 +13,7 @@ public class InputView {
     private static final String NUMBER_EXCEPTION_MESSAGE = "숫자가 아닙니다.";
 
     public static List<Integer> getBalls() {
-        System.out.println(INPUT_BALL_MESSAGE);
+        System.out.print(INPUT_BALL_MESSAGE);
         String number = inputNumber();
         return Arrays.stream(number.split(DELIMITER))
                 .map(Integer::parseInt)
