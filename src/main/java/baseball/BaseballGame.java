@@ -42,19 +42,13 @@ public class BaseballGame {
      * pitch 인스턴스를 재 생성합니다.
      * */
     public void start() {
-
-        //정답을 생성한다.
         answer = new CorrectAnswer();
-        //반복(정답 시 탈출)
         Pitch pitch = new Pitch();
-        //사용자에게 입력받고 Pitch 인스턴스를 생성한다.
-        //입력을 받고 예외를 검사한다.
 
-        //조건문 안에서 비교 후 같지 않다면 다시 pitch를 초기화한다.
         while (pitchIsNotCorrect(pitch)) {
             //입력을 다시 받는다.
             pitch = new Pitch();
         }
-//        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
