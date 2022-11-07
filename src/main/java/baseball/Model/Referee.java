@@ -10,7 +10,7 @@ public class Referee {
     private static final int ZERO = 0;
     private static final String CHOICEONETWO = "[1-2]";
 
-    public int isStrike(List<Integer> user, List<Integer> computer) {
+    public void isStrike(List<Integer> user, List<Integer> computer) {
         strike = 0;
         for (int position = MAX_LEN; position >= ZERO; position--) {
             if (user.get(position).equals(computer.get(position))) {
@@ -18,17 +18,15 @@ public class Referee {
                 user.remove(position);
             }
         }
-        return strike;
     }
 
-    public int isBall(List<Integer> user, List<Integer> computer) {
+    public void isBall(List<Integer> user, List<Integer> computer) {
         ball = 0;
         for (Integer integer : user) {
             if (computer.contains(integer)) {
                 ball++;
             }
         }
-        return ball;
     }
 
     public boolean isStart(String answer) {
