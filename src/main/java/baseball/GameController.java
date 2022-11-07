@@ -36,6 +36,7 @@ public class GameController {
     }
 
     private void startGame() {
+
         do {
             inputPlayerNumber();
             referee.judgeResult( player.getPlayerNumber() );
