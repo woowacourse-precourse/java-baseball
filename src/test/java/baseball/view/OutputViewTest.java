@@ -70,7 +70,7 @@ class OutputViewTest {
 
             @Test
             void 화면에_출력한다() {
-                BaseballGameResult baseballGameResult = BaseballGameResult._0_STRIKE_2_BALL;
+                BaseballGameResult baseballGameResult = BaseballGameResult._2_BALL;
                 sut.printGameResult(baseballGameResult);
                 assertThat(output.toString()).isEqualTo(consolePrint);
             }

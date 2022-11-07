@@ -57,7 +57,7 @@ class BaseballGameResultTest {
 
         @Nested
         class 만약_게임_결과가_3_스트라이크가_아닌_경우 {
-            BaseballGameResult baseballGameResult = BaseballGameResult._0_STRIKE_1_BALL;
+            BaseballGameResult baseballGameResult = BaseballGameResult._1_BALL;
 
             @Test
             void 거짓을_리턴한다() {

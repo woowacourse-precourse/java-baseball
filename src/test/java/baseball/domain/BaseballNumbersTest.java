@@ -1,12 +1,12 @@
 package baseball.domain;
 
-import static baseball.domain.BaseballGameResult._0_STRIKE_1_BALL;
-import static baseball.domain.BaseballGameResult._0_STRIKE_2_BALL;
-import static baseball.domain.BaseballGameResult._0_STRIKE_3_BALL;
+import static baseball.domain.BaseballGameResult._1_BALL;
 import static baseball.domain.BaseballGameResult._1_STRIKE;
 import static baseball.domain.BaseballGameResult._1_STRIKE_1_BALL;
 import static baseball.domain.BaseballGameResult._1_STRIKE_2_BALL;
+import static baseball.domain.BaseballGameResult._2_BALL;
 import static baseball.domain.BaseballGameResult._2_STRIKE;
+import static baseball.domain.BaseballGameResult._3_BALL;
 import static baseball.domain.BaseballGameResult._3_STRIKE;
 import static baseball.domain.BaseballGameResult._NOTHING;
 import static baseball.domain.BaseballNumber.valueOf;
@@ -143,7 +143,7 @@ class BaseballNumbersTest {
             @Test
             void _0_Strike_1_Ball의_값을_가진_BaseballGameResult를_반환한다() {
                 BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_0_STRIKE_1_BALL);
+                assertThat(gameResult).isEqualTo(_1_BALL);
             }
         }
 
@@ -155,7 +155,7 @@ class BaseballNumbersTest {
             @Test
             void _0_Strike_2_Ball의_값을_가진_BaseballGameResult를_반환한다() {
                 BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_0_STRIKE_2_BALL);
+                assertThat(gameResult).isEqualTo(_2_BALL);
             }
         }
 
@@ -167,7 +167,7 @@ class BaseballNumbersTest {
             @Test
             void _0_Strike_3_Ball의_값을_가진_BaseballGameResult를_반환한다() {
                 BaseballGameResult gameResult = computer.play(player);
-                assertThat(gameResult).isEqualTo(_0_STRIKE_3_BALL);
+                assertThat(gameResult).isEqualTo(_3_BALL);
             }
         }
     }

@@ -8,9 +8,9 @@ public enum BaseballGameResult {
     _1_STRIKE(Strike.valueOf(1), Ball.valueOf(0), "1스트라이크"),
     _1_STRIKE_2_BALL(Strike.valueOf(1), Ball.valueOf(2), "2볼 1스트라이크"),
     _1_STRIKE_1_BALL(Strike.valueOf(1), Ball.valueOf(1), "1볼 1스트라이크"),
-    _0_STRIKE_3_BALL(Strike.valueOf(0), Ball.valueOf(3), "3볼"),
-    _0_STRIKE_2_BALL(Strike.valueOf(0), Ball.valueOf(2), "2볼"),
-    _0_STRIKE_1_BALL(Strike.valueOf(0), Ball.valueOf(1), "1볼"),
+    _3_BALL(Strike.valueOf(0), Ball.valueOf(3), "3볼"),
+    _2_BALL(Strike.valueOf(0), Ball.valueOf(2), "2볼"),
+    _1_BALL(Strike.valueOf(0), Ball.valueOf(1), "1볼"),
     _NOTHING(Strike.valueOf(0), Ball.valueOf(0), "낫싱");
 
     private final Strike strike;
