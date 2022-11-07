@@ -1,30 +1,27 @@
 package baseball.sevice;
 
-import static baseball.enums.AsciiType.ASCII_NINE;
-import static baseball.enums.AsciiType.ASCII_ONE;
 import static baseball.enums.AsciiType.ASCII_ZERO;
 
 import baseball.domain.ComputerNumber;
-import baseball.exception.ErrorMessage;
 import baseball.repository.NumberBaseballRepository;
+import baseball.validator.UserAnswerValidator;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballService {
-    private static final int CORRECT_LENGTH = 3;
     private static final int FIRST_NUMBER = 0;
     private static final int SECOND_NUMBER = 1;
     private static final int THIRD_NUMBER = 2;
 
-    private NumberBaseballRepository numberBaseballRepository = NumberBaseballRepository.getInstance();
-
+    private final NumberBaseballRepository numberBaseballRepository = NumberBaseballRepository.getInstance();
+    private final UserAnswerValidator userAnswerValidator = new UserAnswerValidator();
 
     public void initNumber() {
         numberBaseballRepository.generateComputerNumber();
     }
 
     public List<Integer> inputUserAnswer(String userAnswer) {
-        validateUserAnswer(userAnswer);
+        userAnswerValidator.validateUserAnswer(userAnswer);
         List<Integer> userAnswerResultList = new ArrayList<>();
         userAnswerResultList.add(getStrikeCount(numberBaseballRepository.findComputerNumber(), userAnswer));
         userAnswerResultList.add(getBallCount(numberBaseballRepository.findComputerNumber(), userAnswer));
@@ -60,49 +57,5 @@ public class NumberBaseballService {
             strikeCount++;
         }
         return strikeCount;
-    }
-
-    public void validateUserAnswer(String userAnswer) {
-        if (!checkNumber(userAnswer)) {
-            throw new IllegalArgumentException(ErrorMessage.NUMERIC_INPUT_EXCEPTION
-                    .getMessage());
-        }
-        if (!checkLength(userAnswer)) {
-            throw new IllegalArgumentException(ErrorMessage.NUMERIC_LENGTH_EXCEPTION
-                    .getMessage());
-        }
-        if (!checkSameNumber(userAnswer)) {
-            throw new IllegalArgumentException(ErrorMessage.SAME_NUMBER_EXCEPTION
-                    .getMessage());
-        }
-    }
-
-    private boolean checkSameNumber(String userAnswer) {
-        if (userAnswer.charAt(FIRST_NUMBER) == userAnswer.charAt(SECOND_NUMBER)
-                || userAnswer.charAt(FIRST_NUMBER) == userAnswer.charAt(THIRD_NUMBER)
-                || userAnswer.charAt(SECOND_NUMBER) == userAnswer.charAt((THIRD_NUMBER))) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean checkLength(String userAnswer) {
-        return userAnswer.length() == CORRECT_LENGTH;
-    }
-
-    private boolean checkNumber(String userAnswer) {
-        if (userAnswer.charAt(FIRST_NUMBER) < ASCII_ONE.getAsciiNumber()
-                || userAnswer.charAt(FIRST_NUMBER) > ASCII_NINE.getAsciiNumber()) {
-            return false;
-        }
-        if (userAnswer.charAt(SECOND_NUMBER) < ASCII_ONE.getAsciiNumber()
-                || userAnswer.charAt(SECOND_NUMBER) > ASCII_NINE.getAsciiNumber()) {
-            return false;
-        }
-        if (userAnswer.charAt(THIRD_NUMBER) < ASCII_ONE.getAsciiNumber()
-                || userAnswer.charAt(THIRD_NUMBER) > ASCII_NINE.getAsciiNumber()) {
-            return false;
-        }
-        return true;
     }
 }
