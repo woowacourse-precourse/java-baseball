@@ -4,10 +4,22 @@ import baseball.view.ErrorView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import static baseball.config.GameConstants.GAME_END_MESSAGE;
+import static baseball.config.GameConstants.INPUT_ERROR;
+import static baseball.config.GameConstants.INPUT_MESSAGE;
+import static baseball.config.GameConstants.NOTHING;
+import static baseball.config.GameConstants.ONE_BALL;
+import static baseball.config.GameConstants.ONE_STRIKE;
+import static baseball.config.GameConstants.THREE_BALL;
+import static baseball.config.GameConstants.THREE_STRIKE;
+import static baseball.config.GameConstants.TWO_BALL;
+import static baseball.config.GameConstants.TWO_STRIKE;
+
 public final class BaseballGame implements Game {
-    InputView inputView;
-    OutputView outputView;
-    ErrorView errorView;
+    public static final String LINE_FEED = "\n";
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final ErrorView errorView;
 
     public BaseballGame(InputView inputView, OutputView outputView, ErrorView errorView) {
         this.inputView = inputView;
@@ -37,57 +49,57 @@ public final class BaseballGame implements Game {
             return PlayerInput.from(playerValue);
         } catch (IllegalArgumentException e) {
             errorView.printError(e.getMessage());
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException(INPUT_ERROR, e);
         }
     }
 
     private void printInputMessage() {
-        outputView.print("숫자를 입력해주세요 : ");
+        outputView.print(INPUT_MESSAGE);
     }
 
     private void printEndMessage() {
-        outputView.print("3개의 숫자를 모두 맞히셨습니다 !게임 종료\n");
+        outputView.print(GAME_END_MESSAGE);
     }
 
     private void printScore(Score score) {
         printBall(score);
         printStrike(score);
         printNothing(score);
-        outputView.print("\n");
+        outputView.print(LINE_FEED);
     }
 
 
     private void printBall(Score score) {
         if (score.isOneBall()) {
-            outputView.print("1볼 ");
+            outputView.print(ONE_BALL);
             return;
         }
         if (score.isTwoBall()) {
-            outputView.print("2볼 ");
+            outputView.print(TWO_BALL);
             return;
         }
         if (score.isThreeBall()) {
-            outputView.print("3볼 ");
+            outputView.print(THREE_BALL);
         }
     }
 
     private void printStrike(Score score) {
         if (score.isOneStrike()) {
-            outputView.print("1스트라이크");
+            outputView.print(ONE_STRIKE);
             return;
         }
         if (score.isTwoStrike()) {
-            outputView.print("2스트라이크");
+            outputView.print(TWO_STRIKE);
             return;
         }
         if (score.isThreeStrike()) {
-            outputView.print("3스트라이크");
+            outputView.print(THREE_STRIKE);
         }
     }
 
     private void printNothing(Score score) {
         if (score.isZeroScore()) {
-            outputView.print("낫싱");
+            outputView.print(NOTHING);
         }
     }
 }

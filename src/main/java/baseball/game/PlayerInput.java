@@ -3,10 +3,13 @@ package baseball.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.config.GameConstants.INPUT_DUPLICATE;
+import static baseball.config.GameConstants.INPUT_OUT_OF_RANGE;
+
 public final class PlayerInput extends Digits {
     private PlayerInput(int value) {
         if (!isInputValidInRange(value)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_OUT_OF_RANGE);
         }
         splitDigit(value).forEach(this::appendIfNotExist);
     }
@@ -32,7 +35,7 @@ public final class PlayerInput extends Digits {
 
     private void appendIfNotExist(Digit digit) {
         if (contains(digit)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_DUPLICATE);
         }
         append(digit);
     }

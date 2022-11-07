@@ -3,6 +3,8 @@ package baseball.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.config.GameConstants.DIGITS_OUT_OF_INDEX;
+
 public class Digits {
     private final List<Digit> digitList;
 
@@ -20,7 +22,7 @@ public class Digits {
 
     public Digit getDigitInIndex(int index) {
         if (isOutsideOfTheRange(index)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(DIGITS_OUT_OF_INDEX);
         }
         return digitList.get(index);
     }
