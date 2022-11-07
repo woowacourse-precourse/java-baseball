@@ -22,7 +22,7 @@ public class GameManager {
         System.out.println(START_MESSAGE);
     }
 
-    public void playGame() {
+    public static void playGame() {
         while (true) {
             play();
 
@@ -34,7 +34,7 @@ public class GameManager {
         }
     }
 
-    public void play() {
+    public static void play() {
         NumberManager.setAnswer();
 
         while (true) {
@@ -46,22 +46,23 @@ public class GameManager {
                 break;
             } else {
                 NumberManager.getHint(predictInput);
-                printHint();
+                System.out.println(getHintString());
             }
         }
     }
 
-    private void printHint() {
+    public static String getHintString() {
+        String hint = "";
         if (isNothing) {
-            System.out.print(NOTHING);
+            hint += NOTHING;
         }
         if (ball != 0) {
-            System.out.print(ball + BALL + " ");
+            hint += ball + BALL + " ";
         }
         if (strike != 0) {
-            System.out.print(strike + STRIKE);
+            hint += strike + STRIKE;
         }
-        System.out.println();
+        return hint;
     }
 
 }
