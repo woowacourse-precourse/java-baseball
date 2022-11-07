@@ -4,13 +4,13 @@ package baseball;
 
 
 
-import static baseball.GameUtils.*;
+import baseball.service.GameService;
 
 
 public class Application {
 
     public static void main(String[] args) {
-        initBaseBallGame();
-        playBaseBallGame();
+        GameService gameService = new GameService();
+        gameService.run();
     }
 }

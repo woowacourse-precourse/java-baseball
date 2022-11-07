@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.domain.GameResult;
+import baseball.domain.Game;
 
 public class OutputUtils {
 
@@ -20,7 +20,7 @@ public class OutputUtils {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static void printGameResultView(GameResult gameResult) {
-        System.out.println(gameResult);
+    public static void printGameResultView(Game game) {
+        System.out.println(game);
     }
 }
