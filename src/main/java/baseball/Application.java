@@ -8,11 +8,23 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+        GameStatus gameStatus = GameStatus.ON;
+        while (gameStatus == GameStatus.ON){
+            List<Integer> inputNumber = User.getInputNumber();
+            List<Integer> answer = Computer.pickRandomNumber();
+            Game.strike(inputNumber, answer);
+            Game.ball(inputNumber, answer);
+            Print.result(ball, strike);
+//             3번 스트라이크면 게임 status input 받기
+//            termainte 면 game status 상태 변경
+
+
+
     }
 }
 
 class Computer {
-    List<Integer> pickRandomNumber(){
+    static List<Integer> pickRandomNumber(){
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3){
             int number = Randoms.pickNumberInRange(1, 9);
@@ -26,7 +38,7 @@ class Computer {
 
 class User {
     public static int INPUT_LENGTH = 3;
-    public static List<Integer> getInputNumber(){
+    static List<Integer> getInputNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         if (input.length() > INPUT_LENGTH){
@@ -50,13 +62,15 @@ class User {
         return inputNum;
     }
 
+
+
 }
 
-class game {
+class Game {
     public static int ball;
     public static int strike;
 
-    public void strike(List<Integer> input, List<Integer> answer){
+    public static void strike(List<Integer> input, List<Integer> answer){
         for (int idx = 0; idx < User.INPUT_LENGTH; idx++){
             if (input.get(idx) == answer.get(idx)){
                 strike++;
@@ -64,7 +78,7 @@ class game {
         }
     }
 
-    public void ball(List<Integer> input, List<Integer> answer){
+    public static void ball(List<Integer> input, List<Integer> answer){
         int idx = 0;
         for (int Number : input){
             if (answer.contains(Number) && answer.indexOf(Number) != idx){
@@ -73,10 +87,19 @@ class game {
             idx++;
         }
     }
-
 }
 
-class print {
+enum GameStatus {
+    ON(1),
+    TERMINATE(2);
+
+    private final int value;
+    GameStatus(int value){
+        this.value = value;
+    }
+}
+
+class Print {
     static void nothing(){
         System.out.println("낫싱");
     }
@@ -88,11 +111,11 @@ class print {
 
     static void result(int ball, int strike){
         if (strike == 3) {
-            print.threeStrike();
+            Print.threeStrike();
             return ;
         }
         if (ball == 0 && strike == 0){
-            print.nothing();
+            Print.nothing();
             return ;
         }
         if (ball > 0){
