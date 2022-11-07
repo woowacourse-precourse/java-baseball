@@ -9,7 +9,7 @@ public class Application {
         Computer computer = new Computer();
         while(true) {
             // 1. 컴퓨터가 1애서 9 사이 서로 다른 임의의 수 3개 선택
-            List<Integer> randoms = computer.randoms();
+            List<Integer> answers = computer.randoms();
 
             while(true) {
                 // 2. 게임 시작 문구 출력
@@ -17,10 +17,10 @@ public class Application {
 
                 // 3. 게임 플레이어는 숫자 3자리 입력
                 Message.getNumsMessage();
-                List<Integer> nums = computer.stringToInteger(Console.readLine());
+                List<Integer> numbers = computer.stringToInteger(Console.readLine());
 
                 // 4. 입력한 숫자에 대한 결과 출력
-                if(computer.baseballGame(randoms, nums)) break;
+                if(computer.baseballGame(answers, numbers)) break;
             }
             // 5. 게임 끝난 경우 재시작/종료 질문 및 동작
             Message.retryGameMessage();

@@ -2,29 +2,33 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
 
 public class Computer {
     public static final int LENGTH = 3;
 
     public List<Integer> randoms() {
-        List<Integer> randoms = new ArrayList<>();
-        while (randoms.size() < LENGTH) {
+        List<Integer> answers = new ArrayList<>();
+        while (answers.size() < LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!randoms.contains(randomNumber)) {
-                randoms.add(randomNumber);
+            if (!answers.contains(randomNumber)) {
+                answers.add(randomNumber);
             }
         }
-        return randoms;
+        return answers;
     }
 
     public List<Integer> stringToInteger(String input) {
         if(!checkNum(input)) throw new IllegalArgumentException(); // 숫자 유효성 체크
-        List<Integer> nums = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < LENGTH; i++) {
-            nums.add(input.charAt(i) - '0');
+            numbers.add(input.charAt(i) - '0');
         }
-        return nums;
+        return numbers;
     }
 
     private boolean checkNum(String input) {
