@@ -1,6 +1,7 @@
 package baseball.game;
 
 public class GameCycle {
+    private static final boolean CONTINUE = true;
 
     public void outputWriteNumber() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -91,7 +92,7 @@ public class GameCycle {
     public void play() {
         Computer computer = new Computer();
         String answer = computer.getANSWER();
-        while (true) {
+        while (CONTINUE) {
             String playerNumber = playerInputNumber();
             String countStatus = countResponse(answer, playerNumber);
             output(countStatus);
