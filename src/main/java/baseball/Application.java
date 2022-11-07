@@ -6,63 +6,99 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        Game game = new Game();
+        while (game.gameEnd()){
+            game.playGame();
+            }
+        }// TODO: 프로그램 구현
+}
+class Game {
+    private Integer strike;
+    private Integer ball;
+    private List<Integer> ComputerNum;
+    private List<Integer> PlayerNum;
+    public Game() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> ComputerNumber = CreatComputer();
-        System.out.println("computer = " + ComputerNumber);
-        List<Integer> UserNumber = playerNumber();
-        System.out.println("UserNumber = " + UserNumber);
-        // TODO: 프로그램 구현
+        init();
+    }//게임을 시작하는 기능
+    public void init() {
+        ComputerNum = new ArrayList<>();
+        for (int i = 0; i < 3; ) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!ComputerNum.contains(num)) {
+                ComputerNum.add(num);
+                i++;
+            }
+        }
     }
-    public String FixResult(List<Integer> computer, List<Integer> playerNum){
-        int total = AllCount(computer,playerNum);
-        int strike = CountStrike(computer,playerNum);
-        int ball = total - strike;
-        if (total == 0){
-            return "낫싱";
+    public void playGame() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        this.PlayerNum = MakeList(userInput);
+        DateUserNum();
+        compareNumbers();
+        System.out.println(compareResultReturn());
+    }//플레이어의 숫자를 입력받는 기능
+    public List<Integer> MakeList(String userInput) {
+        String[] arrayInput = userInput.split("");
+        List<Integer> userNumbers = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            userNumbers.add(Integer.parseInt(arrayInput[i]));
         }
-        if (strike == 0){
-            return ball + "볼";
+        return userNumbers;
+    }//플레이어의 숫자를 입력받아 리스트로 변환하는 기능
+    public void DateUserNum() {
+        if (PlayerNum.size() != 3) {
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다. 세자리 숫자를 입력해주세요.");
         }
-        if (ball == 0){
-            return strike + "스트라이크";
+        if (PlayerNum.contains(0)) {
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다. 0을 제외한 숫자를 입력해주세요.");
         }
-        return ball + "볼"+strike+"스트라이크";
-    }//총 갯수에서 스트라이크 숫자를 빼서 볼을 출력 그리고 하나도없는경우는 낫싱을 출력
-    public int CountStrike(List<Integer> computer, List<Integer> playerNum){
-        int strike = 0;
-        for (int loop = 0; loop<playerNum.size();loop++){
-            if (computer.get(loop)==playerNum.get(loop)){
-                strike += 1;
+        for (int i = 0; i < PlayerNum.size(); i++) {
+            if (Collections.frequency(PlayerNum, PlayerNum.get(i)) != 1) {
+                throw new IllegalArgumentException("올바른 숫자가 아닙니다. 서로 다른 숫자로 이루어져야 합니다.");
             }
         }
-        return strike;
-    }//유저와 컴퓨터의 번호를 비교해서 자릿수까지 같은 스트라이크를 구하는기능
-    public int AllCount(List<Integer> computer, List<Integer> playerNum){
-        int result = 0;
-        for (int loop=0;loop<playerNum.size();loop++){
-            if (computer.contains(playerNum.get(loop))){
-                result +=1;
+    }//플레이어 입력 오류시 오류메시지 출력 기능
+    public void compareNumbers() {
+        this.strike = 0;
+        this.ball = 0;
+        for (int i = 0; i < PlayerNum.size(); i++) {
+            if (ComputerNum.indexOf(PlayerNum.get(i)) == i) {
+                strike++;
+                continue;
+            }
+            if (ComputerNum.contains(PlayerNum.get(i))) {
+                ball++;
             }
         }
-        return result;
-    }//유저와 컴퓨터의 번호의 스트라이크,볼 총갯수 구하는 기능
-    public static List<Integer> playerNumber(){
-        System.out.println("숫자를 입력해주세요");
-        String UserNumber = Console.readLine();
-        List<Integer> playerNum = new ArrayList<>();
-        for(String number: UserNumber.split("")){
-            playerNum.add(Integer.parseInt(number));
+    }//스트라이크와 볼의 총갯수 구하기
+    public String compareResultReturn() {
+        if (ball != 0 && strike != 0) {
+            return (ball + "볼" + " " + strike + "스트라이크");
         }
-        return playerNum;
-    }//유저 넘버를 입력받고 List<Integer>타입으로 변환
-    public static List<Integer> CreatComputer(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+        if (ball == 0 && strike != 0) {
+            return (strike + "스트라이크");
+        }
+        if (ball != 0 && strike == 0) {
+            return (ball + "볼");
+        }
+        return ("낫싱");
+    }//스트라이크, 볼 갯수 구하는 기능
+    public boolean gameEnd() {
+        if (strike != null && strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
+            String response = Console.readLine();
+            if (response.equals("1")) {
+                init();
+                return true;
             }
-        }//컴퓨터 랜덤 숫자 생성
-        return computer;
+            if (response.equals("2")) {
+                return false;
+            }
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다. 1 또는 2를 입력하세요.");
+        }//게임 재개및 종료 입력 받기
+        return true;
     }
 }
