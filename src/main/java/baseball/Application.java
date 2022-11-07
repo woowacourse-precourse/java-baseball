@@ -59,6 +59,42 @@ public class Application {
         }
         return userAnswer;
     }
+    public static boolean checkBallStrike(List<Integer> gameAnswer, List<Integer> input) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int count = 0; count < input.size(); count++) {
+            int ch = input.get(count);
+            if (gameAnswer.get(count) == ch)
+                strike++;
+            else if (gameAnswer.contains(ch))
+                ball++;
+        }
+        return printBallStrike(strike, ball);
+    }
+    public static boolean printBallStrike(int strike, int ball) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        if (ball != 0) {
+            System.out.print(ball);
+            System.out.print("볼");
+            if (strike != 0)
+                System.out.print(" ");
+            else if (strike == 0)
+                System.out.println("");
+        }
+        if (strike != 0) {
+            System.out.print(strike);
+            System.out.println("스트라이크 ");
+        }
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
     public static boolean checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userAnswer = Console.readLine();
