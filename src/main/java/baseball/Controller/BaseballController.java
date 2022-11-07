@@ -12,11 +12,15 @@ public class BaseballController {
     private BaseballService baseballService;
 
     private int strike=0;
-    private int matchCount=0;
+    private int ball=0;
+//    private int matchCount=0;
+    public static List<String> randomList = new ArrayList<>();
+    private List<String> inputList = new ArrayList<>();
 
     //게임 시작
     public void startBaseballGame() {
-
+        randomList = baseballService.createRandomNumber();
+        inputList = readInputNumber();
     }
 
     //유저가 입력한 숫자 받기
@@ -29,17 +33,11 @@ public class BaseballController {
         return userNumber;
     }
 
-    //스트라이크 판정
-    public int checkStrike(List<String> randomNumber, List<String> inputNumber) {
-        for(String number: inputNumber) {
-            if(randomNumber.contains(number)) {
-                if(randomNumber.indexOf(number)==inputNumber.indexOf(number)) {
-                    strike+=1;
-                }
-            }
+    //스트라이크 판정 및 카운트
+    public void isNumberStrike(List<String> randomNumber, List<String> inputNumber, String number) {
+        if (randomNumber.contains(number) && randomNumber.indexOf(number) == inputNumber.indexOf(number)) {
+            strike = countStrikeOrBall(strike);
         }
-
-        return strike;
     }
 
 }
