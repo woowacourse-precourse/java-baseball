@@ -23,22 +23,20 @@ public class BaseballMachine {
         return strikeModel.getStrike() == 3;
     }
 
-    // 볼 스트라이크에 따라 구분하여 힌트 메세지 출력
-    private boolean classify(int ball, int strike) {
+    // 볼 스트라이크에 따라 구분하여 힌트 문자열 반환
+    public String getHint() {
+        int ball = strikeModel.getBall();
+        int strike = strikeModel.getStrike();
         if (ball > 0 && strike > 0) {
-            System.out.println(ballAndStrikeMessage(ball, strike));
-            return false;
+            return ballAndStrikeMessage(ball, strike);
         }
         if (ball > 0 && strike == 0) {
-            System.out.println(ballMessage(ball));
-            return false;
+            return ballMessage(ball);
         }
         if (ball == 0 && strike > 0) {
-            System.out.println(strikeMessage(strike));
-            return strike == 3;
+            return strikeMessage(strike);
         }
-        System.out.println(nothingMessage());
-        return false;
+        return nothingMessage();
     }
 
     // 유저 일급컬렉션 생성
