@@ -54,9 +54,9 @@ public class FunctionTest {
 
     @Test
     void 입력된_input이_3글자인가() {
-        assertFalse(userNumber.isInputLengthUnder3("12"));
-        assertFalse(userNumber.isInputLengthUnder3("126890"));
-        assertTrue(userNumber.isInputLengthUnder3("179"));
+        assertFalse(userNumber.isInputUnderMaxLength("12"));
+        assertFalse(userNumber.isInputUnderMaxLength("126890"));
+        assertTrue(userNumber.isInputUnderMaxLength("179"));
     }
 
     @Test
@@ -83,9 +83,10 @@ public class FunctionTest {
 
     @Test
     void 입력된_input이_1또는_2인가() {
-        assertTrue(userNumber.isBetween1to2("1"));
-        assertTrue(userNumber.isBetween1to2("2"));
-        assertFalse(userNumber.isBetween1to2("3"));
+        assertTrue(userNumber.is1or2("1"));
+        assertTrue(userNumber.is1or2("2"));
+        assertFalse(userNumber.is1or2("3"));
+        assertFalse(userNumber.is1or2("0"));
     }
 }
 

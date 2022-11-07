@@ -11,7 +11,7 @@ public class PlayerView {
         String input = Console.readLine();
 
         if(!userNumber.isInputDigit(input)
-                || !userNumber.isInputLengthUnder3(input)
+                || !userNumber.isInputUnderMaxLength(input)
                 || !userNumber.isBetween1to9(input)
                 || !userNumber.isInputNotDuplicate(input)){
             throw new IllegalArgumentException();
@@ -25,7 +25,7 @@ public class PlayerView {
         String input = Console.readLine();
 
         if(!userNumber.isInputDigit(input)
-                || !userNumber.isBetween1to2(input)){
+                || !userNumber.is1or2(input)){
             throw new IllegalArgumentException();
         }
         if(input.equals("1")){

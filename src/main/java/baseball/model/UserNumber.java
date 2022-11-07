@@ -4,13 +4,17 @@ import java.util.*;
 
 public class UserNumber {
     private List<Integer> userNumbers;
+    private static final int MAX_LENGTH = 3;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
+    private static final int MIN_REPLAY_RANGE = 1;
+    private static final int MAX_REPLAY_RANGE = 3;
 
-    //입력받고 number로 리스트에 저장하는 기능
     public void setUserNumbers(String input) {
         userNumbers = new ArrayList<>();
         int inputToInt = Integer.parseInt(input);
 
-        while (inputToInt > 0){
+        while (inputToInt > 0) {
             userNumbers.add(inputToInt % 10);
             inputToInt /= 10;
         }
@@ -21,27 +25,24 @@ public class UserNumber {
         return userNumbers;
     }
 
-    //입력받는 부분을 검증할것 1. 숫자인가?
-    public boolean isInputDigit(String input){
-        for(int i = 0; i < input.length(); i++){
-            if(!Character.isDigit(input.charAt(i))){
+    public boolean isInputDigit(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
                 return false;
             }
         }
         return true;
     }
 
-    //입력받는 부분을 검증할것 2. 3글자인가?
-    public boolean isInputLengthUnder3(String input){
-        return input.length() == 3;
+    public boolean isInputUnderMaxLength(String input) {
+        return input.length() == MAX_LENGTH;
     }
 
-    //입력받는 부분을 검증할것 3. 중복이 아닌가?
-    public boolean isInputNotDuplicate(String input){
+    public boolean isInputNotDuplicate(String input) {
         List<Character> checkInputArrayList = new ArrayList<>();
         Set<Character> checkDuplicate;
 
-        for(int i = 0; i < input.length(); i++){
+        for (int i = 0; i < input.length(); i++) {
             checkInputArrayList.add(input.charAt(i));
         }
 
@@ -50,21 +51,20 @@ public class UserNumber {
         return checkInputArrayList.size() == checkDuplicate.size();
     }
 
-    //입력받는 부분을 검증할것 4. 1에서 9까지의 숫자인가?
-    public boolean isBetween1to9(String input){
-        for(int i = 0; i < input.length(); i++){
-            if(!(Character.getNumericValue(input.charAt(i)) <= 9) ||
-                    !(Character.getNumericValue(input.charAt(i)) > 0)){
+    public boolean isBetween1to9(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!(Character.getNumericValue(input.charAt(i)) <= MAX_RANGE) ||
+                    !(Character.getNumericValue(input.charAt(i)) >= MIN_RANGE)) {
                 return false;
             }
         }
         return true;
     }
-    //입력받는 부분을 검증할것 4. 1 혹은 2인 숫자인가?
-    public boolean isBetween1to2(String input){
-        for(int i = 0; i < input.length(); i++){
-            if(!(Character.getNumericValue(input.charAt(i)) <= 2) ||
-                    !(Character.getNumericValue(input.charAt(i)) > 0)){
+
+    public boolean is1or2(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!(Character.getNumericValue(input.charAt(i)) < MAX_REPLAY_RANGE) ||
+                    !(Character.getNumericValue(input.charAt(i)) >= MIN_REPLAY_RANGE)) {
                 return false;
             }
         }

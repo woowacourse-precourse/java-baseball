@@ -6,21 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerNumber {
-    private List<Integer> computerNumber;
+    private List<Integer> computerNumbers;
+    private static final int MAX_LENGTH = 3;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
+
 
     public void setComputerNumber() {
 
-        computerNumber = new ArrayList<>();
+        computerNumbers = new ArrayList<>();
 
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
+        while (computerNumbers.size() < MAX_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
     }
 
     public List<Integer> getComputerNumber(){
-        return  computerNumber;
+        return  computerNumbers;
     }
 }
