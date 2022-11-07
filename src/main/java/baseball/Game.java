@@ -123,7 +123,10 @@ public class Game {
     private static boolean checkUserInputNumber(String userInputNumber) {
         try {
             int numberValue = Integer.parseInt(userInputNumber);
-        } catch (NumberFormatException e){
+            if (numberValue / 100 == 0) {
+                return false;
+            }
+        } catch (NumberFormatException e) {
             return false;
         }
         return true;
