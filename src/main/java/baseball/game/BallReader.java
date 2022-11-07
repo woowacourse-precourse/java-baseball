@@ -29,19 +29,14 @@ public class BallReader {
         return makeMapByStrikeAndBall(strikeAndBall);
     }
 
-    private List<ResultOfBall> makeStrikeAndBall(Ball userBall, Ball computerBall) {
-        List<ResultOfBall> strikeAndBallResult = new ArrayList<>();
-
+    private void validateBalls(Ball userBall, Ball computerBall) {
         List<Integer> userBallData = userBall.getBallData();
         List<Integer> computerBallData = computerBall.getBallData();
-        for (int number : userBallData) {
-            int userIndex = userBallData.indexOf(number);
-            int computerIndex = computerBallData.indexOf(number);
-            ResultOfBall result = judgeStrikeOrBall(userIndex, computerIndex);
-            strikeAndBallResult.add(result);
+        if (userBallData.size() != computerBallData.size()) {
+            throw new IllegalArgumentException("서로 호환 되지 않는 공입니다");
         }
-        return strikeAndBallResult;
     }
+
 
     private ResultOfBall judgeStrikeOrBall(int userIndex, int computerIndex) {
         final int noNumberInComputer = -1;
@@ -56,7 +51,6 @@ public class BallReader {
 
     private Map<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
         Map<ResultOfBall, Integer> result = new HashMap<>();
-        while (ballData.remove(ResultOfBall.MISS)) {}
         for (ResultOfBall data : ballData) {
             result.computeIfPresent(data, (key, value) -> value + 1);
             result.computeIfAbsent(data, key -> 1);
@@ -64,11 +58,19 @@ public class BallReader {
         return result;
     }
 
-    private void validateBalls(Ball userBall, Ball computerBall) {
+    private List<ResultOfBall> makeStrikeAndBall(Ball userBall, Ball computerBall) {
+        List<ResultOfBall> strikeAndBallResult = new ArrayList<>();
+
         List<Integer> userBallData = userBall.getBallData();
         List<Integer> computerBallData = computerBall.getBallData();
-        if (userBallData.size() != computerBallData.size()) {
-            throw new IllegalArgumentException("서로 호환 되지 않는 공입니다");
+        for (int number : userBallData) {
+            int userIndex = userBallData.indexOf(number);
+            int computerIndex = computerBallData.indexOf(number);
+            ResultOfBall result = judgeStrikeOrBall(userIndex, computerIndex);
+            strikeAndBallResult.add(result);
         }
+        return strikeAndBallResult;
     }
+
+
 }
