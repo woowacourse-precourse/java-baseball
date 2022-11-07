@@ -5,9 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 
 public class Computer {
+    final int numberLength = 3;
+
     public String createRandomNumber() {
         String randomNumber = "";
-        while (randomNumber.length() < 3) {
+        while (randomNumber.length() < numberLength) {
             int temp = Randoms.pickNumberInRange(1, 9);
             if (!randomNumber.contains(Integer.toString(temp))) {
                 randomNumber = randomNumber + temp;
@@ -16,44 +18,44 @@ public class Computer {
         return randomNumber;
     }
 
-    public HashMap<String, Integer> getHint(String userNumber, String goalNumber) {
+    public HashMap<String, Integer> getHint(String userNumber, String randomNumber) {
         HashMap<String, Integer> hint = new HashMap<>();
         hint.put("strike", 0);
         hint.put("ball", 0);
 
-        strike(hint, userNumber, goalNumber);
-        ball(hint, userNumber, goalNumber);
+        strike(hint, userNumber, randomNumber);
+        ball(hint, userNumber, randomNumber);
 
         return hint;
     }
 
-    private HashMap<String, Integer> strike(HashMap<String, Integer> hint, String userNumber, String goalNumber) {
-        for (int i = 0; i < goalNumber.length(); i++) {
-            if (goalNumber.charAt(i) == userNumber.charAt(i)) {
+    private HashMap<String, Integer> strike(HashMap<String, Integer> hint, String userNumber, String randomNumber) {
+        for (int i = 0; i < numberLength; i++) {
+            if (randomNumber.charAt(i) == userNumber.charAt(i)) {
                 hint.put("strike", hint.get("strike") + 1);
             }
         }
         return hint;
     }
 
-    private HashMap<String, Integer> ball(HashMap<String, Integer> hint, String userNumber, String goalNumber) {
+    private HashMap<String, Integer> ball(HashMap<String, Integer> hint, String userNumber, String randomNumber) {
         StringBuffer userNumber_sb = new StringBuffer();
-        StringBuffer goalNumber_sb = new StringBuffer();
+        StringBuffer randomNumber_sb = new StringBuffer();
         userNumber_sb.append(userNumber);
-        goalNumber_sb.append(goalNumber);
+        randomNumber_sb.append(randomNumber);
 
-        for (int i = 0; i < userNumber_sb.length(); i++) {
-            if (goalNumber.charAt(i) == userNumber.charAt(i)) {
-                goalNumber_sb.deleteCharAt(i);
+        for (int i = 0; i < randomNumber_sb.length(); i++) {
+            if (randomNumber.charAt(i) == userNumber.charAt(i)) {
+                randomNumber_sb.deleteCharAt(i);
                 userNumber_sb.deleteCharAt(i);
             }
         }
 
-        goalNumber = goalNumber_sb.toString();
+        randomNumber = randomNumber_sb.toString();
         int count = 0;
 
-        for (int i = 0; i < userNumber.length(); i++) {
-            if (goalNumber.contains(String.valueOf(userNumber.charAt(i)))) {
+        for (int i = 0; i < numberLength; i++) {
+            if (randomNumber.contains(String.valueOf(userNumber.charAt(i)))) {
                 count++;
             }
         }

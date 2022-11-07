@@ -2,29 +2,28 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 
 public class GameController {
     Computer computer = new Computer();
     Exception exception = new Exception();
-    String goalNumber;
+    String randomNumber;
+    final int replay = 1;
+    final int end = 2;
 
     public void start() {
         Message.start();
-        setGoalNumber();
+        setRandomNumber();
         playing();
     }
 
-    private void setGoalNumber() {
-        goalNumber = computer.createRandomNumber();
+    private void setRandomNumber() {
+        randomNumber = computer.createRandomNumber();
     }
 
     private void playing() {
         String userNumber = getUserNumber();
-        String hint = hint(userNumber, goalNumber);
+        String hint = hint(userNumber, randomNumber);
 
         gameResult(hint);
     }
@@ -42,8 +41,8 @@ public class GameController {
         return userNumber;
     }
 
-    public String hint(String userNumber, String goalNumber) {
-        HashMap<String, Integer> hint = computer.getHint(userNumber, goalNumber);
+    public String hint(String userNumber, String randomNumber) {
+        HashMap<String, Integer> hint = computer.getHint(userNumber, randomNumber);
 
         if (hint.get("strike") == 0 && hint.get("ball") == 0) {
             return "낫싱";
@@ -80,9 +79,9 @@ public class GameController {
             throw new IllegalArgumentException();
         }
 
-        if (checkReplay == 1) {
+        if (checkReplay == replay) {
             start();
-        } else if (checkReplay == 2) {
+        } else if (checkReplay == end) {
             return;
         }
     }
