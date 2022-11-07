@@ -52,7 +52,7 @@ public class BaseballNumbers {
 
     private boolean isDuplicateNumbers(int index) {
         BaseballNumber baseballNumber = ballNumbers.get(index);
-        for(int nextIndex = index; nextIndex < ballNumbers.size(); nextIndex++) {
+        for(int nextIndex = index+1; nextIndex < ballNumbers.size(); nextIndex++) {
             BaseballNumber nextBaseballNumber = ballNumbers.get(nextIndex);
             if(baseballNumber.equals(nextBaseballNumber)){
                 return true;
