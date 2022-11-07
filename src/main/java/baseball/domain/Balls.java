@@ -47,7 +47,6 @@ public class Balls {
     }
 
     private void addRandomBall() {
-        validateRandomBall();
         int number = getRandomNumber();
         int position = currentBallsSize() + 1;
         balls.add(Ball.of(Number.from(number), Position.from(position)));
@@ -60,12 +59,6 @@ public class Balls {
             newNumber = Number.getRandomNumber();
         }
         return newNumber;
-    }
-
-    private void validateRandomBall() {
-        if (currentBallsSize() >= BALLS_SIZE) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_OUT_OF_RANGE_BALLS_SIZE);
-        }
     }
 
     private int currentBallsSize() {
