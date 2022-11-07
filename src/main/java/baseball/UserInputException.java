@@ -24,7 +24,7 @@ public class UserInputException {
     }
 
     public boolean isIllegalChoice(String choice) {
-        return choice.equals("1") || choice.equals("2");
+        return !choice.equals("1") && !choice.equals("2");
     }
 
 }
