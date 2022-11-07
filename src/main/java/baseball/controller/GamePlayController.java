@@ -23,11 +23,14 @@ public class GamePlayController {
     public void startGame() {
         computer.setupGameNumbers();
         while (!gameStatusService.isExitGame()) {
-            System.out.println(computer.getComputerGameNumbers());
-            user.setUserGameNumbers(userInputView.setUserGameNumbers());
-            strikeAndBallCount = gameNumberCalculatorService.calculateGameNumber(user.getUserGameNumbers(), computer.getComputerGameNumbers());
+            inputUserNumberAndCalculate();
             getGameResult();
         }
+    }
+
+    public void inputUserNumberAndCalculate() {
+        user.setUserGameNumbers(userInputView.setUserGameNumbers());
+        strikeAndBallCount = gameNumberCalculatorService.calculateGameNumber(user.getUserGameNumbers(), computer.getComputerGameNumbers());
     }
 
     public void getGameResult() {
