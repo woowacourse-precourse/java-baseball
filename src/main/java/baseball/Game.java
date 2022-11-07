@@ -8,7 +8,9 @@ public class Game {
 
     private static final int NUMBER_LENGTH = 3;
 
-    public void play() {
+
+
+    private void play() {
         List<Character> computerNumberList = getComputerNumberList();
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
