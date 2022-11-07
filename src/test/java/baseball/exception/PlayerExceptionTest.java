@@ -14,10 +14,10 @@ public class PlayerExceptionTest {
         playerException = new PlayerException();
     }
 
-    @Test
+    /*@Test
     void 숫자가_아니면_참을_반환(){
         assertThat(playerException.isNotNumber("abcd")).isEqualTo(true);
-    }
+    }*/
 
     @Test
     void 숫자가_아니면_예외처리(){
@@ -25,36 +25,36 @@ public class PlayerExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
-
+    /*
     @Test
     void 세자리가_아니면_참을_반환(){
         assertThat(playerException.isNotThreeDigit("0123")).isEqualTo(true);
     }
-
+    */
     @Test
     void 세자리가_아니면_예외처리(){
         assertThatThrownBy(()->playerException.checkException("0123"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
-
+    /*
     @Test
     void 숫자0이_있으면_참을_반환(){
         assertThat(playerException.containsZero("012")).isEqualTo(true);
     }
-
+     */
     @Test
     void 숫자0이_있으면_예외처리(){
         assertThatThrownBy(()->playerException.checkException("012"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
-
+    /*
     @Test
     void 같은_숫자가_있으면_참을_반환(){
         assertThat(playerException.containsSameNumber("112")).isEqualTo(true);
     }
-
+     */
     @Test
     void 같은_숫자가_있으면_예외처리(){
         assertThatThrownBy(()->playerException.checkException("112"))
