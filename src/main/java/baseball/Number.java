@@ -29,4 +29,8 @@ public class Number {
 
         return input;
     }
+
+    public boolean isNotLength3(String input) {
+        return input.length() != LENGTH;
+    }
 }
