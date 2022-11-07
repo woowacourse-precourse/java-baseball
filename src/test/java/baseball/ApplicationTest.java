@@ -23,13 +23,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 게임종료_후_재시작2() {
+    void 게임종료_후_재시작_예외값입력() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("123", "453", "1", "843", "347", "2");
-                    assertThat(output()).contains("1스트라이크", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    assertThatThrownBy(() -> runException("123", "345", "1", "456", "789", "12"))
+                            .isInstanceOf(IllegalArgumentException.class);
                 },
-                4, 5, 3, 3, 4, 7
+                3, 4, 5, 7, 8, 9
         );
     }
 
