@@ -25,7 +25,7 @@ public class Game {
         return Console.readLine();
     }
 
-    public boolean checkUserAnswerWhichIsCorrect(String userAnswer) {
+    public boolean checkUserAnswer(String userAnswer) {
         HashMap<String, Integer> strikeAndBallCount = new HashMap<>();
 
         strikeAndBallCount.put("Strike", 0);
