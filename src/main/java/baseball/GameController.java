@@ -33,13 +33,13 @@ public class GameController {
 
     private String generateOutput(int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            return "낫싱";
+            return NOTHING;
         } else if (strike == 0 && ball != 0) {
-            return ball + "볼";
+            return ball + BALL;
         } else if (strike != 0 && ball == 0) {
-            return strike + "스트라이크";
+            return strike + STRIKE;
         } else {
-            return ball + "볼 " + strike + "스트라이크";
+            return ball + BALL + " " + strike + STRIKE;
         }
     }
 
@@ -60,7 +60,7 @@ public class GameController {
     }
 
     public void play() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
 
         int exit = 0;
         while (exit != EXIT_CODE) {
@@ -68,8 +68,8 @@ public class GameController {
             while (!judge()) {
                 user.generateNumber();
             }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(GAME_END_MESSAGE);
+            System.out.println(RETRY_EXIT_MESSAGE);
             exit = Integer.parseInt(Console.readLine());
         }
     }
