@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -29,6 +31,10 @@ public class Game {
             resetCount();
             countHit();
             printResult();
+
+            if (strike == 3) {
+                getPlayerChoice();
+            }
         }
     }
 
@@ -77,5 +83,16 @@ public class Game {
 
     private void printResult() {
         System.out.println(getResultString());
+    }
+
+    private void getPlayerChoice() {
+        int choice = Integer.parseInt(Console.readLine());
+        if (choice == 1) {
+            setComputer();
+        } else if (choice == 2) {
+            gameContinue = false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
