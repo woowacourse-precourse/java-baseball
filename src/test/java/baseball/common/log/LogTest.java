@@ -20,6 +20,10 @@ class LogTest {
             thread.start();
         }
 
+        while (logList.size() < 100) {
+
+        }
+        
         Log log = logList.get(0);
 
         long sameCount = logList.stream()
