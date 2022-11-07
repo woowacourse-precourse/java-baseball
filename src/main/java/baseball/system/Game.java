@@ -4,18 +4,21 @@ import static baseball.util.Constant.*;
 
 import baseball.player.Computer;
 import baseball.player.Player;
+import baseball.validation.Validation;
 import java.util.List;
 
 public class Game {
 
     private Computer computer;
     private Player player;
+    private Validation validation;
     private int strikeCnt;
     private int ballCnt;
 
     public Game() {
         computer = new Computer();
         player = new Player();
+        validation = new Validation();
         strikeCnt = 0;
         ballCnt = 0;
     }
@@ -61,7 +64,7 @@ public class Game {
             hint = ballCnt + BALL;
         } else if (ballCnt == 0) {
             hint = strikeCnt + STRIKE;
-        } else if(!(strikeCnt == 0 && ballCnt == 0)){
+        } else if (!(strikeCnt == 0 && ballCnt == 0)) {
             hint = ballCnt + BALL + " " + strikeCnt + STRIKE;
         }
         System.out.println(hint);
@@ -72,11 +75,26 @@ public class Game {
      * @return 3스트라이크이면 true 반환 그렇지 않으면 false 반환
      */
     public boolean correct() {
-        if(strikeCnt == 3){
+        if (strikeCnt == 3) {
             System.out.println(GAME_END_MSG);
             return true;
         }
         return false;
     }
 
+    /**
+     * 게임을 재시작하는지 판별하는 기능
+     * @return 게임을 재시작하면 true 그러지 않으면 false 잘못된 값이 입력되면 오류발생
+     */
+    public boolean checkReplay() {
+        System.out.println(RESTART_OR_EXIT);
+        String reply = player.restartOrExit();
+        if (reply.equals("1")) {
+            return true;
+        } else if (reply.equals("2")) {
+            return false;
+        }
+        validation.checkRestartOrExitValidation(reply);
+        return false;
+    }
 }
