@@ -5,32 +5,35 @@ import java.util.HashSet;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
+import static camp.nextstep.edu.missionutils.Randoms.*;
 
 public class BaseballGame {
 
-    private final Baseball baseball;
-
-    public BaseballGame() {
-        this.baseball = new Baseball();
-    }
+    private int targetNumber;
 
     void startNewGame() {
 
         // 1. 게임 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int targetNumber = baseball.createTargetNumber();
+        int targetNumber = createTargetNumber();
 
         // 2. 사용자에게 숫자 받기
         getUserInput();
     }
 
+    private int createTargetNumber() {
+        int newTarget = pickNumberInRange(1, 999);
+        this.targetNumber = newTarget;
+        return newTarget;
+    }
+
     private void getUserInput() {
 
-        // 숫자 입력받기
+        // 1. 숫자 입력받기
         System.out.println("숫자를 입력해주세요 : ");
         int userInput = Integer.parseInt(readLine());
 
-        // 입력받은 숫자 유효성 검사
+        // 1-1. 입력받은 숫자 유효성 검사
         if (!isInvalidNumber(userInput)) {
             throw new IllegalArgumentException();
         }
