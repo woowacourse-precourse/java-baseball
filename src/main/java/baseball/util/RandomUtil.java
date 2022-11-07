@@ -1,20 +1,16 @@
 package baseball.util;
 
+import baseball.status.NumberStatus;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static baseball.status.NumberStatus.MAX_NUMBER;
-import static baseball.status.NumberStatus.ANSWER_MAX_NUMBER;
-import static baseball.status.NumberStatus.ANSWER_MIN_NUMBER;
-
 public class RandomUtil {
 
     public static List<String> getComputerNumberList() {
         List<String> computerNumberList = new ArrayList<>();
-        while (computerNumberList.size() < MAX_NUMBER.getNumber()) {
-            String randomNumber = String.valueOf(Randoms.pickNumberInRange(ANSWER_MIN_NUMBER.getNumber(), ANSWER_MAX_NUMBER.getNumber()));
+        while (computerNumberList.size() < NumberStatus.MAX_NUMBER.getNumber()) {
+            String randomNumber = String.valueOf(Randoms.pickNumberInRange(NumberStatus.ANSWER_MIN_NUMBER.getNumber(), NumberStatus.ANSWER_MAX_NUMBER.getNumber()));
             if (!computerNumberList.contains(randomNumber)) {
                 computerNumberList.add(randomNumber);
             }

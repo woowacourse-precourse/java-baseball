@@ -1,16 +1,12 @@
 package baseball.util;
 
+import baseball.status.ControlNumberStatus;
+import baseball.status.NumberStatus;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import static baseball.status.ControlNumberStatus.START_NUMBER;
-import static baseball.status.ControlNumberStatus.END_NUMBER;
-import static baseball.status.ControlNumberStatus.DONT_CONTAIN_THIS_NUMBER;
-import static baseball.status.NumberStatus.MAX_NUMBER;
-
 public class UserUtil {
     public static String getUserNumberString() {
         String userNumberString = Console.readLine();
@@ -51,14 +47,14 @@ public class UserUtil {
     }
 
     private static boolean checkZeroInNumber(String userNumberString) {
-        if (userNumberString.contains(DONT_CONTAIN_THIS_NUMBER.getText())) {
+        if (userNumberString.contains(ControlNumberStatus.DONT_CONTAIN_THIS_NUMBER.getText())) {
             return true;
         }
         return false;
     }
 
     private static boolean checkNumberLength(String userNumberString) {
-        if (userNumberString.length() != MAX_NUMBER.getNumber()) {
+        if (userNumberString.length() != NumberStatus.MAX_NUMBER.getNumber()) {
             return true;
         }
         return false;
@@ -72,7 +68,7 @@ public class UserUtil {
     }
 
     private static void checkUserInput(String userNumberString) {
-        if (!(userNumberString.equals(START_NUMBER.getText()) || userNumberString.equals(END_NUMBER.getText()))) {
+        if (!(userNumberString.equals(ControlNumberStatus.START_NUMBER.getText()) || userNumberString.equals(ControlNumberStatus.END_NUMBER.getText()))) {
             throw new IllegalArgumentException();
         }
     }

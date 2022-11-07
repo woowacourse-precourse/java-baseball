@@ -2,17 +2,13 @@ package baseball.service;
 
 import baseball.repository.GameStartRepository;
 import baseball.status.HintStatus;
+import baseball.status.NumberStatus;
 import baseball.util.RandomUtil;
 import baseball.util.UserUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static baseball.status.HintStatus.BALL;
-import static baseball.status.HintStatus.STRIKE;
-import static baseball.status.NumberStatus.MAX_NUMBER;
-import static baseball.status.NumberStatus.MIN_NUMBER;
 
 public class GameStartService {
     public static void saveUserNumber() {
@@ -48,28 +44,28 @@ public class GameStartService {
         int ball = GameStartRepository.ball;
         int strike = GameStartRepository.strike;
         String result = "";
-        if (strike == MAX_NUMBER.getNumber()) {
+        if (strike == NumberStatus.MAX_NUMBER.getNumber()) {
             result += HintStatus.ANSWER.getText();
-        } else if (strike == MIN_NUMBER.getNumber() && ball == MIN_NUMBER.getNumber()) {
+        } else if (strike == NumberStatus.MIN_NUMBER.getNumber() && ball == NumberStatus.MIN_NUMBER.getNumber()) {
             result += HintStatus.NOTHING.getText();
-        } else if (strike == MIN_NUMBER.getNumber() && !(ball == MIN_NUMBER.getNumber())) {
-            result += ball + BALL.getText();
-        } else if (!(strike == MIN_NUMBER.getNumber()) && ball == MIN_NUMBER.getNumber()) {
-            result += strike + STRIKE.getText();
+        } else if (strike == NumberStatus.MIN_NUMBER.getNumber() && !(ball == NumberStatus.MIN_NUMBER.getNumber())) {
+            result += ball + HintStatus.BALL.getText();
+        } else if (!(strike == NumberStatus.MIN_NUMBER.getNumber()) && ball == NumberStatus.MIN_NUMBER.getNumber()) {
+            result += strike + HintStatus.STRIKE.getText();
         } else {
-            result += ball + BALL.getText() + " " + strike + STRIKE.getText();
+            result += ball + HintStatus.BALL.getText() + " " + strike + HintStatus.STRIKE.getText();
         }
 
         return result;
     }
 
     public static void initBallAndStrike() {
-        GameStartRepository.ball = MIN_NUMBER.getNumber();
-        GameStartRepository.strike = MIN_NUMBER.getNumber();
+        GameStartRepository.ball = NumberStatus.MIN_NUMBER.getNumber();
+        GameStartRepository.strike = NumberStatus.MIN_NUMBER.getNumber();
     }
 
     private static void isStrike(List<String> computerNumber, List<String> userNumber) {
-        for (int i = MIN_NUMBER.getNumber(); i < MAX_NUMBER.getNumber(); i++) {
+        for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i++) {
             if (computerNumber.get(i).equals(userNumber.get(i))) {
                 GameStartRepository.strike++;
                 GameStartRepository.ball--;
@@ -79,7 +75,7 @@ public class GameStartService {
 
 
     private static void isBall(List<String> computerNumber, List<String> userNumber) {
-        for (int i = MIN_NUMBER.getNumber(); i < MAX_NUMBER.getNumber(); i++) {
+        for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
                 GameStartRepository.ball++;
             }
