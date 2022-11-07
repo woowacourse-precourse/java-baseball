@@ -16,4 +16,17 @@ public class Player {
 
         return guessTokenList.size() == guessTokenSet.size();
     }
+
+    static boolean hasOnlyNaturalNumberAsInput(String playerInput){
+        char maxValueOfGame = Character.forDigit(Game.MAX_NUMBER_OF_ANSWER, 10);
+        char minValueOfGame = Character.forDigit(Game.MIN_NUMBER_OF_ANSWER, 10);
+        char[] guessTokenArray = playerInput.toCharArray();
+
+        for(char token : guessTokenArray){
+            if((token < minValueOfGame) || (token > maxValueOfGame)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
