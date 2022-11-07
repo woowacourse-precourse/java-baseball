@@ -85,6 +85,9 @@ public class BaseballGameController {
 	}
 
 	private static boolean isGameOver(BaseballGameResult result) {
+		if (result.getNumberOfStrike() == NUMBER_OF_BALLS_FOR_BASEBALL_GAME) {
+			return true;
+		}
 		return false;
 	}
 }
