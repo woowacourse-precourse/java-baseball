@@ -18,6 +18,16 @@ public class BallCountTest {
         ballCount.validateBallCount(randomNumbers, inputNumbers);
         assertThat(ballCount.toString())
                 .isEqualTo(input);
-
     }
+
+    @Test
+    void case2_랜덤값과_인풋값_비교_후_스트라이크_개수_확인() {
+        randomNumbers.createBaseballNumbers("123");
+        inputNumbers.createBaseballNumbers("145");
+        String input = "1스트라이크";
+        ballCount.validateBallCount(randomNumbers, inputNumbers);
+        assertThat(ballCount.toString())
+                .isEqualTo(input);
+    }
+
 }
