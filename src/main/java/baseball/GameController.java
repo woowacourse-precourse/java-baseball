@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.GameConst.EXIT_CODE;
+import static baseball.GameConst.THREE_STRIKE;
 import static baseball.RuleConst.*;
 
 public class GameController {
@@ -45,7 +47,7 @@ public class GameController {
         if (strike == 0 && ball == 0) {
             output = "낫싱";
         }
-        if (strike == 3) {
+        if (strike == THREE_STRIKE) {
             output += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
 
@@ -67,13 +69,13 @@ public class GameController {
 
         System.out.println(generateOutput(strike, ball));
 
-        return (strike == 3);
+        return (strike == THREE_STRIKE);
     }
 
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int exit = 0;
-        while (exit != 2) {
+        while (exit != EXIT_CODE) {
             ready();
             while (!judge()) {
                 user.generateNumber();
