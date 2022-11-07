@@ -8,7 +8,6 @@ public class SystemMessage {
     private static final String END_OR_RETRY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
     private static final String END_MESSAGE = "게임이 종료되었습니다.";
 
-    public static final String ERROR_MESSAGE = "잘못된 값을 입력했습니다. 게임이 종료됩니다.";
     public static final String NOT_INTEGER_MESSAGE = "숫자가 아닌 값을 입력했습니다. 게임이 종료됩니다.";
     public static final String NOT_THREE_SIZE_MESSAGE = "숫자는 3개만 입력 가능합니다. 게임이 종료됩니다.";
     public static final String CONTAINS_ZERO_MESSAGE = "0은 입력할 수 없습니다. 게임이 종료됩니다.";
@@ -34,10 +33,6 @@ public class SystemMessage {
     public static void printEnd() {
         System.out.println(END_MESSAGE);
     }
-
-    public static void printError() {
-        System.out.println(END_MESSAGE);
-    } // TODO: 예상된 예외사항에 이외의 경우에 출력 필요
 
     public static void printNotInteger() {
         System.out.println(NOT_INTEGER_MESSAGE);
