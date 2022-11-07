@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -72,5 +74,29 @@ class ApplicationTest extends NsTest {
         String input = "123";
 
         assertThat(Application.addToList(input)).contains(1, 2, 3);
+    }
+
+    @Test
+    void countCount_컴퓨터의_숫자와_입력받은_수를_비교해_스트라이크_볼_나싱을_반환() {
+        List<Integer> computer = List.of(1, 2, 3);
+        List<Integer> input = List.of(4, 5, 6);
+        List<Integer> input2 = List.of(3, 1, 2);
+        List<Integer> input3 = List.of(1, 2, 3);
+        List<Integer> input4 = List.of(1, 4, 5);
+        List<Integer> input5 = List.of(3, 2, 1);
+        List<Integer> input6 = List.of(3, 6, 7);
+        List<Integer> input7 = List.of(8, 2, 3);
+        List<Integer> input8 = List.of(3, 1, 9);
+        List<Integer> input9 = List.of(6, 1, 3);
+
+        assertThat(Application.countCount(computer, input)).isEqualTo(List.of(0, 0, 3));
+        assertThat(Application.countCount(computer, input2)).isEqualTo(List.of(0, 3, 0));
+        assertThat(Application.countCount(computer, input3)).isEqualTo(List.of(3, 0, 0));
+        assertThat(Application.countCount(computer, input4)).isEqualTo(List.of(1, 0, 2));
+        assertThat(Application.countCount(computer, input5)).isEqualTo(List.of(1, 2, 0));
+        assertThat(Application.countCount(computer, input6)).isEqualTo(List.of(0, 1, 2));
+        assertThat(Application.countCount(computer, input7)).isEqualTo(List.of(2, 0, 1));
+        assertThat(Application.countCount(computer, input8)).isEqualTo(List.of(0, 2, 1));
+        assertThat(Application.countCount(computer, input9)).isEqualTo(List.of(1, 1, 1));
     }
 }
