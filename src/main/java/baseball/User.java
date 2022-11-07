@@ -9,12 +9,11 @@ public class User {
     private static final int CORRECTINPUTLENGTH = 3;
 
     public static String inputValue(int whatMode) {
-        String input = Console.readLine();
-        return (validateInput(whatMode, input));
+        return (validateInput(whatMode, Console.readLine()));
     }
 
     private static String validateInput(int whatMode, String input) {
-        if ((whatMode == PLAYAGAINMODE) && !(input.equals("1") == true || input.equals("2") == true)) {
+        if ((whatMode == PLAYAGAINMODE) && !(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("input value is not 1 or 2.");
         }
         if (whatMode == PLAYINGMODE) {
@@ -47,12 +46,10 @@ public class User {
     }
 
     public static String inputValueTestPlayingMode(String testInput) {
-        //input = testInput;
         return (validateInput(PLAYINGMODE, testInput));
     }
 
     public static String inputValueTestPlayAgainMode(String testInput) {
-        //input = testInput;
         return (validateInput(PLAYAGAINMODE, testInput));
     }
 }
