@@ -10,7 +10,7 @@ public class InputNum implements Input{
     @Override
     public String input(int size) {
         String inputNum;
-        System.out.println(INPUT_TEXT);
+        System.out.print(INPUT_TEXT);
         inputNum = Console.readLine();
         validateInput(inputNum, size);
         return inputNum;
@@ -18,7 +18,7 @@ public class InputNum implements Input{
 
     @Override
     public void validateInput(String input, int size) {
-        Pattern p = Pattern.compile("[0-9]{"+size+"}");
+        Pattern p = Pattern.compile("[1-9]{"+size+"}");
         if (!p.matcher(input).matches()) {
             throw new IllegalArgumentException();
         }
