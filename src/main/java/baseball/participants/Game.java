@@ -12,8 +12,9 @@ public class Game {
         referee = new Referee();
         pitcher = new Pitcher();
         hitter = new Hitter();
+
         hitter.swing();
-        while (referee.isGameInProgress) {
+        while (!referee.doesPitcherWin()) {
             playInning();
         }
     }

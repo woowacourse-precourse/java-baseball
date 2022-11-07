@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Referee {
-    public boolean isGameInProgress;
+    private boolean winsGame;
+    final private int WIN_CONDITION = 3;
 
     public Referee() {
-        isGameInProgress = true;
     }
 
+    public boolean doesPitcherWin() {
+        return winsGame;
+    }
 
     public void judge(StrikeZone pitchZone, StrikeZone swingZone) {
         int strike;
@@ -22,6 +25,7 @@ public class Referee {
         ball = countBall(pitches, swings);
 
         printJudgement(strike, ball);
+        winsGame = (strike == WIN_CONDITION);
     }
 
     private Integer countStrike(String pitches, String swings) {
@@ -96,13 +100,6 @@ public class Referee {
             System.out.println(ball + "볼");
             return;
         }
-        if (ball == 0 && strike < 3) {
-            System.out.println(strike + "스트라이크");
-            return;
-        }
-        if (strike == 3) {
-            System.out.println("3스트라이크");
-            isGameInProgress = false;
-        }
+        System.out.print(strike + "스트라이크"); // ball == 0
     }
 }
