@@ -9,8 +9,16 @@ public class Rule {
         gameOver = false;
     }
 
-    public String getHint(List<Integer> numbers) {
-        return "";
+    public void getHint(List<Integer> numbers, List<Integer> computerNumbers) {
+        for(int i=0; i<numbers.size(); i++) {
+            int number = computerNumbers.indexOf(numbers.get(i));
+            if(i == number) {
+                Hint.addCount(Hint.STRIKE);
+            }
+            else if(number != -1) {
+                Hint.addCount(Hint.BALL);
+            }
+        }
     }
 
     public String gameOver() {
