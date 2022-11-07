@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import game.NumberBaseBallGame;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import validator.Validator;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -31,5 +34,11 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 시작_끝_입력값_예외_테스트() {
+        String input = "3";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> Validator.checkStartOrEndInput(input));
     }
 }
