@@ -5,9 +5,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
+    public static boolean isValid(String readLine) {
+        boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
+        boolean isTriple = (readLine.length() == 3);
+
+        return (isNumeric && isTriple);
+    }
+
     public static void result(List<Integer> answer, List<Integer> userInput) {
         int ball = getBall(answer, userInput);
         int strike = getStrike(answer, userInput);
@@ -47,15 +55,15 @@ public class Application {
         return strike;
     }
 
-    public void startGame() {
+    public static void startGame() {
         System.out.print("숫자 야구 게임을 시작합니다.");
     }
 
-    public static List<Integer> getUserInput() {
+    public static List<Integer> getUserInput(String readLine) {
         System.out.print("숫자를 입력해주세요 : ");
 
         return Arrays
-                .stream(Console.readLine().split(""))
+                .stream(readLine.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
