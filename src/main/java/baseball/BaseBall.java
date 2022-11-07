@@ -93,4 +93,12 @@ public class BaseBall {
         }
     }
 
+    private void checkSameNumberOfDigits(String random, int index, List<String> inputList) {
+        if (!inputList.get(index).equals(random)) {
+            this.ball++;
+        } else {
+            this.strike++;
+        }
+    }
+
 }
