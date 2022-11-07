@@ -31,6 +31,7 @@ public class Game {
     public void printUserInputPrompt() {
         System.out.print("숫자를 입력해주세요 : ");
     }
+
     public List<Integer> parseUserInput(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++) {
@@ -51,6 +52,18 @@ public class Game {
         if (userInput.get(0) == userInput.get(1) || userInput.get(0) == userInput.get(2)
                 || userInput.get(1) == userInput.get(2)) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public void printGameStatus(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
     }
