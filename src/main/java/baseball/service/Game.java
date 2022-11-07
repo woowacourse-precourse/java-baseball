@@ -45,9 +45,6 @@ public class Game {
 		GameMessage.printStartMessage();
 
 		while(strikeAndBall.getStrike() != MAX_STRIKE_COUNT) {
-			strikeAndBall.setStrike(0);
-			strikeAndBall.setBall(0);
-
 			playerInputNumbers = getPlayerInput();
 			player.setPlayerNumbers(playerInputNumbers);
 
@@ -83,24 +80,31 @@ public class Game {
 	}
 
 	protected void judgeStrikeAndBallCount() {
+		int strikeCount = 0;
+		int ballCount = 0;
+		List<Integer> counter;
+
 		for (int i = 0;i < NUMBER_LENGTH; i++) {
-			judgeStrikeAndBall(i, opponent.getAnswerNumbers(), player.getPlayerNumbers());
+			counter = judgeStrikeAndBall(i, opponent.getAnswerNumbers(), player.getPlayerNumbers());
+			strikeCount += counter.get(0);
+			ballCount += counter.get(1);
 		}
+
+		strikeAndBall = new StrikeAndBall(strikeCount, ballCount);
 	}
 
-	private void judgeStrikeAndBall(int position, List<Integer> opponentNumbers, List<Integer> playerNumbers) {
+	private List<Integer> judgeStrikeAndBall(int position, List<Integer> opponentNumbers, List<Integer> playerNumbers) {
 		int strike = 0;
 		int ball = 0;
 
-		for (int i = 0;i <opponentNumbers.size(); i++) {
+		for (int i = 0;i < opponentNumbers.size(); i++) {
 			if (playerNumbers.get(position) == opponentNumbers.get(i)) {
 				strike += judgeStrike(position, i);
 				ball += judgeBall(position, i);
 			}
 		}
 
-		strikeAndBall.setStrike(strikeAndBall.getStrike() + strike);
-		strikeAndBall.setBall(strikeAndBall.getBall() + ball);
+		return List.of(strike, ball);
 	}
 
 	private int judgeStrike(int position1, int position2) {
