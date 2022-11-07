@@ -7,7 +7,7 @@ public class OutputView {
     private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public static void printSuccess() {
-        System.out.printf(SUCCESS_MESSAGE+"\n");
+        System.out.printf(SUCCESS_MESSAGE + "\n");
     }
 
     public static void printBallCount(int ball) {

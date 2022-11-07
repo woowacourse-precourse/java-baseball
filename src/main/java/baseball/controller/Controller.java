@@ -10,15 +10,16 @@ import baseball.view.OutputView;
 import baseball.exception.Exceptions;
 
 public class Controller {
-    private boolean GAME_END = true;
-    private boolean GAME_NOT_END = false;
     private static final String END_MESSAGE = "2";
     private static final String RESTART_MESSAGE = "1";
     private static final int END_STRIKE_COUNT = 3;
     private static final String END_EXCEPTION_MESSAGE = "입력이 잘못되었어요";
+
+    private boolean GAME_END = true;
+    private boolean GAME_NOT_END = false;
+    private boolean isGameEnd = false;
     private List<Integer> userNumber;
     private List<Integer> computerNumber;
-    private boolean isGameEnd = false;
     private int strike;
     private int ball;
 
@@ -28,7 +29,6 @@ public class Controller {
     public Controller() {
         computer = new Computer();
         user = new User();
-
     }
 
     public void playGame() {
@@ -119,6 +119,5 @@ public class Controller {
             throw new IllegalArgumentException(END_EXCEPTION_MESSAGE);
         }
     }
-
 
 }
