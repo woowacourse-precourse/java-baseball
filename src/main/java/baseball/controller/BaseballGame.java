@@ -23,8 +23,11 @@ public class BaseballGame {
         boolean isRun = true;
         while (isRun) {
             player.guessBall(InputView.getBalls());
-            int result = getResult();
-            if (result == 3) {
+            Balls guessBall = player.getGuessBall();
+            int strike = computer.getStrike(guessBall);
+            int ball = computer.getBall(guessBall);
+            printResult(strike, ball);
+            if (isCorrect(strike)) {
                 OutputView.printFinish();
                 isRun = false;
                 restart();
@@ -32,22 +35,22 @@ public class BaseballGame {
         }
     }
 
+    private boolean isCorrect(int strike) {
+        return strike == 3;
+    }
+
+    private void printResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            OutputView.printNothing();
+        }
+        OutputView.printStrikeAndBall(strike, ball);
+    }
+
     private void restart() {
         GameStatus status = GameStatus.getGameStatus(InputView.restart());
         if (status.isRestart()) {
             play();
         }
-    }
-
-    private int getResult() {
-        Balls guessBall = player.getGuessBall();
-        int strike = computer.getStrike(guessBall);
-        int ball = computer.getBall(guessBall);
-        if (strike == 0 && ball == 0) {
-            OutputView.printNothing();
-        }
-        OutputView.printResult(strike, ball);
-        return strike;
     }
 
 }

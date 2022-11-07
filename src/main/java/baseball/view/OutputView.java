@@ -13,7 +13,7 @@ public class OutputView {
         System.out.println(START_MESSAGE);
     }
 
-    public static void printResult(int strike, int ball) {
+    public static void printStrikeAndBall(int strike, int ball) {
         String result = String.join(SPACE_DELIMITER, printBall(ball), printStrike(strike));
         System.out.println(result.trim());
     }
