@@ -163,7 +163,43 @@ class GamePlay {
 }
 
 class GameEnd {
+    int answer;
+    GameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        answer = ask();
+        if (answer == 1)
+            new GameInit();
+    }
+
+    private int ask() {
+        try{
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            answer = answerInput();
+        } catch(WrongAnswerException e) {
+            System.out.println(e.getMessage());
+        }
+        return answer;
+    }
+
+    private int answerInput() {
+        String answer = Console.readLine();
+        checkAnswerFormat(answer);
+        return Integer.parseInt(answer);
+    }
+
+    private void checkAnswerFormat(String answer) {
+        if (answer.equals("1") || answer.equals("2"))
+            return;
+        throw new WrongAnswerException("1과 2만 입력 가능합니다.");
+    }
 }
+
+class WrongAnswerException extends IllegalArgumentException{
+    WrongAnswerException(String message) {
+        super(message);
+    }
+}
+
 
 public class Application {
     public static void main(String[] args) {
