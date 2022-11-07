@@ -54,4 +54,20 @@ public class UserUtil {
             throw new IllegalArgumentException("input should be integer", e);
         }
     }
+
+    public static boolean checkRestartOrExit() {
+        String input = getInput();
+
+        int number = numberOf(input);
+
+        if (number == 1) {
+            return true;
+        }
+
+        if (number == 2) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("input should be 1 or 2");
+    }
 }
