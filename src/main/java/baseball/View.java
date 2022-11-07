@@ -38,11 +38,6 @@ public class View {
         System.out.println(GAME_END_MESSAGE);
     }
 
-    public static void showGameRestartErrorMessage() {
-        System.out.println(GAME_RESTART_ERROR_MESSAGE);
-    }
-
-
 
     public static void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) {
         if (!Character.isDigit(separatedInput)) {
@@ -66,14 +61,9 @@ public class View {
     }
 
     public static void raiseErrorWhenInputIsNotOneOrTwo(String userInput) {
-        try {
-            if (!(userInput.equals(GAME_RESTART) || userInput.equals(GAME_END))) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            showGameRestartErrorMessage();
-            raiseErrorWhenInputIsNotOneOrTwo(userInput);
+        if (!(userInput.equals(GAME_RESTART) || userInput.equals(GAME_END))) {
+            System.out.println(GAME_RESTART_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
         }
     }
-
 }
