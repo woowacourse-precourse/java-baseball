@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.domain.Game;
 import baseball.utils.RandomUtils;
+import baseball.utils.Validation;
 import baseball.view.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -16,14 +17,16 @@ public class GameService {
     public GameService() {
         game.initGame();
     }
-    public void retryGame(){
+
+    public void retryGame() {
         game.initGame();
         startGame();
     }
+
     public void startGame() {
         SystemMessage.startGameMessage();
         answerList = RandomUtils.makeRandomList();
-        while (game.getStrikeCount()<3) {
+        while (game.getStrikeCount() < 3) {
             game.initGame();
             getUserNumber();
             compareNumber();
@@ -35,6 +38,7 @@ public class GameService {
     public void getUserNumber() {
         SystemMessage.requestNumberMessage();
         String userString = Console.readLine();
+        Validation.checkInputNumber(userString);
         userList = makeList(userString);
         System.out.println("유저: " + userList + ", 랜덤 숫자:" + answerList);
     }
@@ -58,16 +62,18 @@ public class GameService {
         SystemMessage.printResultMessage(game.getStrikeCount(), game.getBallCount());
     }
 
-    public void askRetry(){
-       SystemMessage.requestGameMessage();
+    public void askRetry() {
+        SystemMessage.requestGameMessage();
 
-       String responseStr=Console.readLine();
-       int responseNumber=Integer.parseInt(responseStr);
+        String responseStr = Console.readLine();
+        Validation.checkRetryRange(responseStr);
 
-       if(responseNumber==1)
-           retryGame();
-       else if(responseNumber==2)
-           return;
+        int responseNumber = Integer.parseInt(responseStr);
+
+        if (responseNumber == 1)
+            retryGame();
+        if (responseNumber == 2)
+            return;
 
     }
 }
