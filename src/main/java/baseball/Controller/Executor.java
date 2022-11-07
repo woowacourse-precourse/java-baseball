@@ -13,8 +13,8 @@ public class Executor {
     private final Checker checker = new Checker();
     private boolean flag = true;
     public void startGame(){
-        Baseball computerRandomBaseball = new Computer().createRandomBaseball();
         Printer.gameStart();
+        Baseball computerRandomBaseball = createComputerRandomNumber();
         while(flag){
             Printer.inputNumber();
             guessResult = guessNumber(computerRandomBaseball);
@@ -28,6 +28,9 @@ public class Executor {
                 System.out.println(resultString);
             }
         }
+    }
+    public Baseball createComputerRandomNumber(){
+        return new Computer().createRandomBaseball();
     }
     public BaseballResult guessNumber(Baseball computerRandomBaseBall){
         Baseball userBaseball = inputUserBaseball();
