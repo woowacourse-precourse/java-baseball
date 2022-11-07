@@ -1,8 +1,10 @@
 package baseball.service;
 
+import baseball.controller.ReceiveConsole;
 import baseball.model.Computer;
 import baseball.model.User;
 import baseball.view.PrintConsole;
+import java.util.List;
 
 public class Game {
 
@@ -30,6 +32,17 @@ public class Game {
 
     private void generateRandomNum() {
         computer.getRandomNum();
+    }
+
+    private void receiveNumToUser() {
+        PrintConsole.receiveNum();
+        List<Integer> usersNumList = ReceiveConsole.receiveNumIncludeAllException();
+        user.updateNumList(usersNumList);
+    }
+
+    private void printResult() {
+        computer.compareUsersNum(user.getNumList());
+        PrintConsole.printResult(computer);
     }
 
 
