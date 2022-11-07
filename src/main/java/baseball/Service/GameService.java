@@ -2,6 +2,8 @@ package baseball.Service;
 
 import baseball.Domain.*;
 
+import java.util.List;
+
 public class GameService {
 
     private Computer computer;
@@ -24,11 +26,28 @@ public class GameService {
         player.insertPlayerNumbers();
     }
 
+    public void countResult() {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            int comDigit = computer.getGameNumbers().get(i);
+            int playerDigit = player.getPlayerGameNumbers().get(i);
+            if (comDigit == playerDigit) {
+                strike++;
+            }
+            if (computer.getGameNumbers().contains(player.getPlayerGameNumbers().get(i))) {
+                ball++;
+            }
+        }
+        ball -= strike;
+        hint.setGameResult(List.of(strike, ball));
+    }
 
 
     public Player getPlayer() {
         return player;
     }
+
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -36,6 +55,7 @@ public class GameService {
     public Computer getComputer() {
         return computer;
     }
+
     public void setCom(Computer com) {
         this.computer = com;
     }
@@ -44,6 +64,7 @@ public class GameService {
     public Hint getHint() {
         return hint;
     }
+
     public void setHint(Hint hint) {
         this.hint = hint;
     }
