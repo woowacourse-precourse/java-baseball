@@ -52,6 +52,19 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 사용자가_잘못된값_입력시_예외() {
+        Computer computer = appConfig.computer();
+        assertThatThrownBy(() -> computer.storeCorrectResult("abc", computer.createOtherNumber()))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> computer.storeCorrectResult("99", computer.createOtherNumber()))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> computer.storeCorrectResult("1000", computer.createOtherNumber()))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> computer.storeCorrectResult("122", computer.createOtherNumber()))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
