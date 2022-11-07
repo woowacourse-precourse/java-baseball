@@ -52,7 +52,7 @@ public class Player {
         }
     }
 
-    public String getRestart() {
+    public String getRestartCommand() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         return Console.readLine();
     }
@@ -66,7 +66,7 @@ public class Player {
         return letter == '1' || letter == '2';
     }
 
-    public void isValidRestart(String restart) {
+    public void isValidRestartCommand(String restart) {
         if (!isOneLetter(restart)) {
             isNotValid();
         }

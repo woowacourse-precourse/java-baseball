@@ -22,8 +22,8 @@ public class Application {
         while (restart) {
             Game game = new Game(player);
             game.start();
-            String restartCommand = player.getRestart();
-            player.isValidRestart(restartCommand);
+            String restartCommand = player.getRestartCommand();
+            player.isValidRestartCommand(restartCommand);
             restart = checkRestart(restartCommand);
         }
     }
