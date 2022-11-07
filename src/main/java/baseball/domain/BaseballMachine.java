@@ -35,10 +35,7 @@ public class BaseballMachine {
         }
         if (ball == 0 && strike > 0) {
             System.out.println(strikeMessage(strike));
-            if (strike == 3) {
-                return true;
-            }
-            return false;
+            return strike == 3;
         }
         System.out.println(nothingMessage());
         return false;
