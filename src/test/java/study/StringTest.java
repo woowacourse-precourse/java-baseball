@@ -8,9 +8,13 @@ public class StringTest {
 
     @Test
     void split_메서드로_주어진_값을_구분() {
+        /*given*/
         String input = "1,2";
+
+        /*when*/
         String[] result = input.split(",");
 
+        /*then*/
         assertThat(result).contains("2", "1");
         assertThat(result).containsExactly("1", "2");
     }
