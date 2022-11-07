@@ -11,6 +11,7 @@ public class BaseballGameRunner {
     private static final int BASEBALL_GAME_EXIT = 2;
     private static final String BASEBALL_GAME_STARTING_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String BASEBALL_GAME_RESTART_CHECK_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String BASEBALL_GAME_EXIT_MESSAGE = "게임 종료";
 
 
     private ElementListMaker<Integer> numberElementListMaker;
@@ -31,6 +32,8 @@ public class BaseballGameRunner {
         if (checkRestart()) {
             this.runGame();
         }
+
+        System.out.println(BASEBALL_GAME_EXIT_MESSAGE);
     }
 
     private void initializeGameSettings() {
