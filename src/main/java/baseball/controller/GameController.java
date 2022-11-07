@@ -15,7 +15,7 @@ public class GameController {
         userService.initGame();
     }
 
-    public boolean runningGame(){
+    public boolean runningGame() {
         String finishedValue = "3스트라이크";
         String checkResult = "";
 
@@ -25,11 +25,17 @@ public class GameController {
         checkResult = userService.getCheckResult();
         System.out.println(checkResult);
 
-        if (checkResult.equals(finishedValue)){
+        if (checkResult.equals(finishedValue)) {
             System.out.println(FINISHED_MESSAGE);
             return true;
         }
 
         return false;
+    }
+
+    public String restartGame() {
+        System.out.println(GET_RESTART_MESSAGE);
+        userService.inputRestartNumber();
+        return userService.getRestartNumber();
     }
 }
