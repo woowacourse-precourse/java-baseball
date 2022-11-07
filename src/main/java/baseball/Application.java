@@ -15,13 +15,14 @@ public class Application {
 
     static void startGame() {
         String randomThree = getRandomThree();
-        System.out.println(randomThree);
+//        System.out.println(randomThree);
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String s = Console.readLine();
-            if (isNotLengthThree(s) || isNotNemeric(s)) {
-                throw new IllegalArgumentException();
-            }
+
+            isNotLengthThree(s);
+            isNotNemeric(s);
+
             printResult(s,randomThree);
 
             if (s.equals(randomThree)) {
@@ -33,18 +34,20 @@ public class Application {
         chooseResetOrExit();
     }
 
-    static  Boolean isNotLengthThree(String s) {
-        if (s.length() != 3) return true;
-        return false;
+    static  void isNotLengthThree(String s) {
+        if (s.length() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    static Boolean isNotNemeric(String s) {
-        String pattern = "[0-9]";
+    static void isNotNemeric(String s) {
         for (int i=0;i<3;i++) {
-            if (!Pattern.matches(pattern, s))
-                return true;
+            char c = s.charAt(i);
+            if ('0' > c || '9' < c){
+                throw new IllegalArgumentException();
+            }
+
         }
-        return false;
     }
 
     static String getRandomThree() {
