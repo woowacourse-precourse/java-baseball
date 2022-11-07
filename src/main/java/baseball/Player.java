@@ -26,7 +26,7 @@ public class Player {
     }
 
     public static void isNumber(String input) {
-        if (!Pattern.matches("^[0-9]*$", input)) {
+        if (!Pattern.matches("^[1-9]*$", input)) {
             throw new IllegalArgumentException("[1,9] 범위 내의 숫자만 사용할 수 있습니다.");
         }
     }

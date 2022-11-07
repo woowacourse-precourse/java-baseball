@@ -35,7 +35,7 @@ public class ComputerTest {
         List<Integer> computerNumber = computer.getComputerNumber();
 
         String result = String.valueOf(computerNumber.get(i));
-        Assertions.assertThat(Pattern.matches("^[0-9]*$", result)).isTrue();
+        Assertions.assertThat(Pattern.matches("^[1-9]*$", result)).isTrue();
     }
 
 }
