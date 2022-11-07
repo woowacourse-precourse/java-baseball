@@ -7,8 +7,8 @@ public class Constant {
     public static final String INPUT_IS_NOT_NUMBER_EXCEPTION = "입력은 숫자로 주어져야 합니다";
     public static final String OUT_OF_RANGE_NUMBER_EXCEPTION = "범위를 벗어난 숫자입니다";
 
-    public static final int START_RANDOM_NUMBER_RANGE = 1;
-    public static final int END_RANDOM_NUMBER_RANGE = 9;
+    public static final int START_NUMBER_RANGE = 1;
+    public static final int END_NUMBER_RANGE = 9;
     public static final int GAME_NUMBERS_SIZE = 3;
 
     public static final String START_BASEBALL_GAME = "숫자 야구 게임을 시작합니다.";
