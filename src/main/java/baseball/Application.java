@@ -147,6 +147,7 @@ public class Application {
     public static void inputUserNumberService(){
         String stringBuilderUserNumber = "";
         boolean checkedAnswer = false;
+        List<Integer> computerNumbersList = randomNumberCreate();
         stringBuilderUserNumber = inputAvailableUserNumberService();
         List<Integer> userList = stringToListCreate(stringBuilderUserNumber);
     }
