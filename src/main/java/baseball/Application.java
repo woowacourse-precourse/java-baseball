@@ -129,38 +129,33 @@ public class Application {
 
 	public static List<Integer> getPlayerNumbers() throws IllegalArgumentException {
 
-		List<Integer> playerNumbers = new ArrayList<Integer>(LENGTH);
-
-		for (int count = 0; count < LENGTH; count++) {
-
-			Integer number = handleNumberException(playerNumbers);
-			playerNumbers.add(number);
-		}
-
-		return playerNumbers;
-	}
-
-	public static Integer handleNumberException(List<Integer> playerNumbers) throws IllegalArgumentException {
-
 		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
 
 		boolean isNumeric = isNumeric(input);
-		if (!isNumeric) {
+		boolean isSameLength = input.length() == LENGTH;
+		if (!isNumeric || !isSameLength) {
 
 			throw new IllegalArgumentException();
 		}
 
-		Integer number = Integer.parseInt(input);
-
-		boolean isZero = number == 0;
-		boolean isOverlap = playerNumbers.contains(number);
-		if (isZero || isOverlap) {
-
-			throw new IllegalArgumentException();
+		List<Integer> playerNumbers = new ArrayList<Integer>(LENGTH);
+		
+		for (int character = 0; character < input.length(); character++) {
+			
+			int number = Character.getNumericValue(input.charAt(character));
+			
+			boolean isZero = number == 0;
+			boolean isOverlap = playerNumbers.contains(number);
+			if (isZero || isOverlap) {
+				
+				throw new IllegalArgumentException();
+			}
+			
+			playerNumbers.add(number);
 		}
-
-		return number;
+		
+		return playerNumbers;
 	}
 
 	public static boolean isNumeric(String input) {
