@@ -99,4 +99,30 @@ public class Application {
 
         return printStateOfBallAndStrike;
     }
+
+    public static String getBallAndStrike(List <Integer> answer, List <Integer> user){
+        int numberOfStrike = 0;
+        int numberOfBall = 0;
+        String printStateOfBallAndStrike = "";
+
+        for(int i = 0; i < 3; i++){
+
+            if(answer.contains(user.get(i))){
+                numberOfBall++;
+            }
+
+        }
+
+        for(int i = 0; i < 3; i++){
+
+            if(answer.get(i).equals(user.get(i))){
+                numberOfStrike++;
+                numberOfBall--;
+            }
+
+        }
+
+        printStateOfBallAndStrike = stateBallAndStrike(numberOfBall,numberOfStrike);
+        return printStateOfBallAndStrike;
+    }
 }
