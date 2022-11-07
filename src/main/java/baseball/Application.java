@@ -164,6 +164,7 @@ public class Application {
         boolean checkedAvailableUserAnswer = false;
 
         printToRestartingGameMessage();
+        userAnswer = inputUserAnswer();
         return "";
     }
 
