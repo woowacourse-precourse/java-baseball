@@ -27,5 +27,14 @@ public class BaseballController {
         return computerNumber;
     }
 
+    //유저가 입력한 숫자 받기
+    private List<String> readUserNumber() {
+        String readNumber = Console.readLine();
+
+        String[] numberToArray = readNumber.split("");
+        List<String> userNumber = new ArrayList<String>(Arrays.asList(numberToArray));
+
+        return userNumber;
+    }
 
 }
