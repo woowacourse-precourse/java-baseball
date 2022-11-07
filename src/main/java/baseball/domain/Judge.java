@@ -11,11 +11,11 @@ public class Judge {
     }
 
     public boolean isStrike(int inputNumber, int index) {
-        return this.answer.isContain(inputNumber) && this.answer.getIndex(inputNumber) == index;
+        return answer.isContain(inputNumber) && answer.getIndex(inputNumber) == index;
     }
 
     public boolean isBall(int inputNumber, int index) {
-        return this.answer.isContain(inputNumber) && this.answer.getIndex(inputNumber) != index;
+        return answer.isContain(inputNumber) && answer.getIndex(inputNumber) != index;
     }
 
     public int getStrikeCount(List<Integer> userInput) {
