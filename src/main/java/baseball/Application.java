@@ -74,19 +74,19 @@ public class Application {
         if (strike == 3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
+            return false;
         } else if (strike==0 && ball==0){
             System.out.println("낫싱");
-            return false;
+            return true;
         } else if (strike > 0 && ball > 0){
             System.out.println(ball+"볼"+" "+strike+"스트라이크");
-            return false;
+            return true;
         } else if (strike == 0 && ball > 0) {
             System.out.println(ball+"볼");
-            return false;
+            return true;
         } else {
             System.out.println(strike+"스트라이크");
-            return false;
+            return true;
         }
     }
 
