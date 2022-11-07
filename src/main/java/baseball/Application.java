@@ -7,39 +7,32 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
-        //시작 안내 문구 출력
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         //게임 상태값 - 1: 진행 2: 종료
         int status = 1;
+        int strike = 0;
 
-        //DO
+        //첫 판 시작
         do {
             //랜덤 숫자 생성
             int[] computer = pickRandomNumbers();
-            System.out.println(Arrays.toString(computer));
 
-            int strike = 0;
-
+            //게임 시작
             while (strike == 0){
-
                 //사용자 값 입력
                 int[] guess = guessRandomNumbers();
-                System.out.println(Arrays.toString(guess));
 
-
-                //판별
+                //스트라이크 볼 카운트 및 판정
                 int[] StrikeBall = countStrikeBall(computer, guess);
-
                 strike = judge(StrikeBall, strike);
-                if( strike == 1){
-                    break;
                 }
-            }
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            //게임 종료되며 스트라이크 초기화
+            strike = 0;
 
             //재시작 1, 종료 2
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -75,7 +68,6 @@ public class Application {
 
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
-        System.out.println();
         if (userInput.length() > 3 || userInput.length() < 3 || !userInput.matches(REGEX)){
             throw new IllegalArgumentException();
         }
@@ -131,5 +123,4 @@ public class Application {
         }
     }
 
-    // 재시작 or 종료 메소드
 }
