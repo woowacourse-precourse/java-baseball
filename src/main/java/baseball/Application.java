@@ -12,10 +12,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import net.bytebuddy.asm.Advice.Exit;
 
-public class Application {	
-	
+public class Application {
+
 	public static void main(String[] args) {
-		
-		Controller.gameStart();;	
+
+		Controller.gameStart();
 	}
 }

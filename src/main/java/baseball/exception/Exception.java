@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import baseball.controller.Controller;
 import baseball.service.Service;
 
-public class Exception {	
+public class Exception {
 
 	public static List<Integer> userNumbersException(String userNumbers) throws IllegalArgumentException {
 

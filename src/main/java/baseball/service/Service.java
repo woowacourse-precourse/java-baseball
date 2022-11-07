@@ -12,11 +12,12 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Service {
-	
+
 	static Exception condition = new Exception();
 	static Message message = new Message();
 	public static boolean gameSet = true;
 	static Controller controller = new Controller();
+
 	public static void gameStart(List<Integer> comNumber) {
 
 		System.out.println(message.getGameStart());
