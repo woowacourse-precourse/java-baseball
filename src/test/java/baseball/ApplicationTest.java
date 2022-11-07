@@ -3,8 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import static baseball.Application.StrikeBallResultPrint;
-import static baseball.Application.gameRestartChecker;
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
@@ -27,6 +26,24 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void wrongInputValueCheck_false_return_테스트(){
+        String userInput = "121";
+        init();
+        boolean funcResult = wrongInputValueCheck(userInput);
+
+        assertThat(funcResult).isEqualTo(false);
+    }
+
+    @Test
+    void wrongInputValueCheck_true_return_테스트(){
+        String userInput = "123";
+        init();
+        boolean funcResult = wrongInputValueCheck(userInput);
+
+        assertThat(funcResult).isEqualTo(true);
     }
 
     @Test
