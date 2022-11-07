@@ -7,10 +7,10 @@ public class TurnScore {
     private int strikes;
     private ResultTurn resultTurn;
 
-    TurnScore() {
+    public TurnScore() {
     }
 
-    TurnScore(int balls, int strikes, ResultTurn resultTurn) {
+    public TurnScore(int balls, int strikes, ResultTurn resultTurn) {
         this.balls = balls;
         this.strikes = strikes;
         this.resultTurn = resultTurn;
