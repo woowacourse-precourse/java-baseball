@@ -81,4 +81,17 @@ public class GameTest {
 
         assertThat(game.isWin(strike)).isTrue();
     }
+
+    @Test
+    void play_볼과_스트라이크의_개수를_세는지_확인() {
+        Score score = new Score();
+        List<Integer> userNumber = Arrays.asList(1,2,3);
+        List<Integer> computerNumber = Arrays.asList(1,2,3);
+
+        Game game = new Game();
+        game.play(score, userNumber, computerNumber);
+
+        assertThat(score.getBall()).isEqualTo(0);
+        assertThat(score.getStrike()).isEqualTo(3);
+    }
 }
