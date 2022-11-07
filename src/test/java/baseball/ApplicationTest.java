@@ -34,14 +34,14 @@ class ApplicationTest extends NsTest {
         @Test
         void 잘못된점수_음수_테스트() {
             int score = -1;
-            assertThatThrownBy(() -> Result.getResultByScore(score))
+            assertThatThrownBy(() -> Result.getResult(score))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 잘못된점수_enum에_포함되지_않는경우_테스트() {
             int score = 4;
-            assertThatThrownBy(() -> Result.getResultByScore(score))
+            assertThatThrownBy(() -> Result.getResult(score))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -51,14 +51,14 @@ class ApplicationTest extends NsTest {
         @Test
         void 잘못된옵션_음수_테스트() {
             int option = -1;
-            assertThatThrownBy(() -> Status.getStatusByGameOption(option))
+            assertThatThrownBy(() -> Status.getStatus(option))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 잘못된옵션_2보다_큰수_테스트() {
             int option = 3;
-            assertThatThrownBy(() -> Status.getStatusByGameOption(option))
+            assertThatThrownBy(() -> Status.getStatus(option))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
