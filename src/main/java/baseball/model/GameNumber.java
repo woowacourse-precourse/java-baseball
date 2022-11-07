@@ -1,8 +1,10 @@
 package baseball.model;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class GameNumber {
     private static final int NUMBERS_SIZE = 3;
@@ -21,6 +23,20 @@ public class GameNumber {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public static GameNumber from(String input) {
+        try {
+            return new GameNumber(convertToList(input));
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static List<Integer> convertToList(String input) {
+        return Arrays.stream(input.split(""))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
     }
 
     private void checkDuplicated(List<Integer> numbers) {
