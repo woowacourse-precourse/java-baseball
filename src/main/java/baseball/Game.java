@@ -17,8 +17,7 @@ public class Game {
     public Game(Player player, Referee referee) {
         this.player = player;
         this.referee = referee;
-        this.initAnswer();
-        player.announce(START_ANNOUNCE);
+        initProcess();
     }
 
     public void initAnswer() {
@@ -48,9 +47,7 @@ public class Game {
 
     public void doWantRegame() {
         if (player.askRegame()) {
-            this.initAnswer();
-            player.announce(START_ANNOUNCE);
-            referee.playGame();
+            initProcess();
         }
     }
 
@@ -58,6 +55,12 @@ public class Game {
         while (referee.isPlaying()) {
             play();
         }
+    }
+
+    private void initProcess() {
+        this.initAnswer();
+        player.announce(START_ANNOUNCE);
+        referee.playGame();
     }
 
     private boolean isDuplicated(List<Integer> answer) {
