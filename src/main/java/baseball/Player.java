@@ -38,6 +38,7 @@ public class Player {
         for (int i = 0; i < input.length(); i++) {
             int number = Character.getNumericValue(input.charAt(i));
             validateInputRangeNumber(number);
+            validateDuplicateInput(number);
             this.numbers.add(number);
         }
     }
@@ -61,7 +62,12 @@ public class Player {
         }
     }
 
-    private void validateGameOverInput(int number) {
+    public void validateDuplicateInput(int number) {
+        if (this.numbers.contains(number)) {
+            throw new IllegalArgumentException("중복된 값이 존재합니다.");
+        }
+    }
+
         if (number < 1 || number > 2) {
             throw new IllegalArgumentException("입력값은 1 또는 2 의 값이어야 합니다.");
         }
