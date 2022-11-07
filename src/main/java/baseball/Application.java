@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class Application {
 
-    static boolean isDuplicate(char c, String str)
-    {
+    static boolean isDuplicate(char c, String str){
         int cnt = 0;
         for (int i = 0; i < str.length(); i++){
             if (c == str.charAt(i)){
@@ -18,8 +17,7 @@ public class Application {
         }
         return false;
     }
-    static boolean isValidNumber(String str)
-    {
+    static boolean isValidNumber(String str){
         for (int i = 0; i < str.length(); i++){
             if (!(str.charAt(i) >= '1' && str.charAt(i) <= '9')){
                 return false;
@@ -34,8 +32,7 @@ public class Application {
 
         return true;
     }
-    static String getInput() throws IllegalArgumentException
-    {
+    static String getInput() throws IllegalArgumentException{
         String ret = camp.nextstep.edu.missionutils.Console.readLine();
 
         if (ret.length() != 3 || !isValidNumber(ret)){
@@ -44,12 +41,23 @@ public class Application {
         return ret;
     }
 
+    static String getOneMoreInput() throws IllegalArgumentException{
+        String ret = camp.nextstep.edu.missionutils.Console.readLine();
+
+        if (ret.equals("1") || ret.equals("2")){
+            return ret;
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         String input;
-        while (true)
+        String oneMore = "1";
+        while (oneMore.equals("1"))
         {
             input = getInput();
+            oneMore = getOneMoreInput();
         }
     }
 }
