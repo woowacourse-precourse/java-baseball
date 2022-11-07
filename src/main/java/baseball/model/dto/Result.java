@@ -1,6 +1,8 @@
 package baseball.model.dto;
 
 public class Result {
+    private static final int ZERO_COUNT = 0;
+    private static final int FULL_COUNT = 3;
     int ballCount;
     int strikeCount;
 
@@ -21,18 +23,18 @@ public class Result {
     }
 
     public boolean hasNothing() {
-        return ballCount == 0 && strikeCount == 0;
+        return ballCount == ZERO_COUNT && strikeCount == ZERO_COUNT;
     }
 
     public boolean hasBall() {
-        return ballCount != 0;
+        return ballCount != ZERO_COUNT;
     }
 
     public boolean hasStrike() {
-        return strikeCount != 0;
+        return strikeCount != ZERO_COUNT;
     }
 
     public boolean isGameOver() {
-        return strikeCount == 3;
+        return strikeCount == FULL_COUNT;
     }
 }
