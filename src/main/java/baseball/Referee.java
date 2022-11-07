@@ -6,13 +6,12 @@ import static baseball.Hint.NOTHING;
 import static baseball.Hint.S3;
 
 public class Referee {
-    public String getHint(List<Integer> catcherBalls, List<Integer> pitcherBalls) {
+    public Hint getHint(List<Integer> catcherBalls, List<Integer> pitcherBalls) {
         if (catcherBalls.equals(pitcherBalls)) {
-            return S3.getLabel();
+            return S3;
         }
         List<Integer> ballAndStrikeCounts = countBallAndStrike(catcherBalls, pitcherBalls);
-        Hint hint = generateHint(ballAndStrikeCounts);
-        return hint.getLabel();
+        return generateHint(ballAndStrikeCounts);
     }
 
     private List<Integer> countBallAndStrike(List<Integer> catcherBalls, List<Integer> pitcherBalls) {
