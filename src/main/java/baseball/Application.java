@@ -48,6 +48,17 @@ public class Application {
             return false;
         return true;
     }
+    public static List<Integer> getUserAnswer() {
+        List<Integer> userAnswer = new ArrayList<>();
+        String input = Console.readLine();
+        if (!validInput(input))
+            throwIllegalArgumentException();
+        for (int index = 0; index < input.length(); index++) {
+            int temp = input.charAt(index) - '0';
+            userAnswer.add(temp);
+        }
+        return userAnswer;
+    }
     public static boolean checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userAnswer = Console.readLine();
