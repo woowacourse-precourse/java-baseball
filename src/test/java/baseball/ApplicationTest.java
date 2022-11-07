@@ -37,15 +37,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 사용자_번호가_유효한_숫자인지_확인_테스트_길이_초과() {
+    @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
+    @ValueSource(strings = {"14015", "47", "111023", "5"})
+    @DisplayName("길이가 3이 아닌 숫자 확인 테스트")
+    void 사용자_번호가_유효한_숫자인지_확인_테스트_길이_오류() {
         String number = "12345";
-        assertThatThrownBy(() -> isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 사용자_번호가_유효한_숫자인지_확인_테스트_길이_미만() {
-        String number = "12";
         assertThatThrownBy(() -> isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
