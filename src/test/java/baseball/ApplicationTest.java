@@ -215,6 +215,21 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    void playGameTest() {
+
+        List<Integer> random_input = new ArrayList<>();
+        random_input.add(1);
+        random_input.add(2);
+        random_input.add(3);
+
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Application.playGame(random_input);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
