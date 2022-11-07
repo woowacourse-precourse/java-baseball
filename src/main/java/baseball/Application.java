@@ -152,6 +152,7 @@ public class Application {
         List<Integer> userNumbersList = stringToListCreate(stringBuilderUserNumber);
         int strikeNumber = checkStrikeNumbers(computerNumbersList,userNumbersList);
         int ballNumber = checkedBallNumbers(computerNumbersList,userNumbersList);
+        Map<String,Integer> baseballResult = calculatedStrikeBallNumber(strikeNumber,ballNumber);
     }
 
     public static void main(String[] args) {
