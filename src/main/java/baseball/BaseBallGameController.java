@@ -13,8 +13,8 @@ public class BaseBallGameController {
         userNumber = new UserNumber();
     }
 
-    public void startGame() {
-        baseBallGameModel.createRandomNumber();
+    public void run() {
+        baseBallGameModel.initialize();
 
         while (!baseBallGameModel.isFinish()) {
             System.out.print("숫자를 입력해주세요 : ");

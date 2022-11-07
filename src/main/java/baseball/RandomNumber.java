@@ -9,7 +9,7 @@ public class RandomNumber {
     private static final int START_RANGE = 1;
     private static final int END_RANGE = 9;
 
-    public List<Integer> initialize(int length) {
+    public List<Integer> createNumbers(int length) {
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < length) {
