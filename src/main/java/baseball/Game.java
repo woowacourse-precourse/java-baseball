@@ -53,7 +53,11 @@ public class Game {
 
 
     private static void checkTotalNumberCount(Integer totalNumber, List<Integer> secretNumber, List<Integer> hitCount) {
-
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            Integer number = Integer.valueOf(totalNumber.toString().charAt(i));
+            System.out.println(number);
+            checkOneDigitNumberCount(number, i, secretNumber, hitCount);
+        }
     }
 
     private static List<Integer> initHitCount() {
