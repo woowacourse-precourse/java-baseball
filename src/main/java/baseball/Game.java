@@ -34,7 +34,7 @@ public class Game {
             InputException.occur(userInput);
 
             this.userNumber = Change.numberToList(userInput);
-            play();
+            play(score, userNumber, computerNumber);
 
             System.out.println(getGameResult(this.score.getBall(), this.score.getStrike()));
             if (!isWin(this.score.getStrike())) {
@@ -50,15 +50,15 @@ public class Game {
         }
     }
 
-    public void play() {
+    public void play(Score score, List<Integer> userNumber, List<Integer> computerNumber) {
         for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
-            if (this.userNumber.get(i).equals(this.computerNumber.get(i))) {
-                this.score.setStrike(score.getStrike() + 1);
+            if (userNumber.get(i).equals(computerNumber.get(i))) {
+                score.setStrike(score.getStrike() + 1);
                 continue;
             }
 
-            if (this.computerNumber.contains(this.userNumber.get(i))) {
-                this.score.setBall(score.getBall() + 1);
+            if (computerNumber.contains(userNumber.get(i))) {
+                score.setBall(score.getBall() + 1);
             }
         }
     }
