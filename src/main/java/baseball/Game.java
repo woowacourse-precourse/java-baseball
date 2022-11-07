@@ -113,6 +113,9 @@ public class Game {
 		if(ball > 0) {
 			result.append(ball).append(BALL_STR);
 		}
+		if(ball > 0 && strike > 0) {
+			result.append(" ");
+		}
 		if(strike > 0) {
 			result.append(strike).append(STRIKE_STR);
 		}
