@@ -1,4 +1,4 @@
-package baseball;
+package baseball.util;
 
 public enum GameStatus {
     START(1), END(2);

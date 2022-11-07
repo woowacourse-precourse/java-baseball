@@ -1,14 +1,18 @@
-package baseball;
+package baseball.service;
 
+import baseball.util.Digits;
+import baseball.util.GameMessage;
+import baseball.util.GameStatus;
+import baseball.domain.StrikeAndBallDomain;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FigureOutDigitsGame {
+public class GameService {
     public void starGame() {
-        sendMassage(GameMassage.START_MASSAGE);
+        sendMassage(GameMessage.START_MASSAGE);
 
         GameStatus restartOrEnd = GameStatus.START;
         while (restartOrEnd != GameStatus.END) {
@@ -21,33 +25,33 @@ public class FigureOutDigitsGame {
     private void figureOutComputerDigits(List<Integer> computer) {
         boolean answer = false;
         while (!answer) {
-            sendMassage(GameMassage.INPUT_NUMBER);
+            sendMassage(GameMessage.INPUT_NUMBER);
             List<Integer> user = getUserInput();
             answer = calculationDigits(computer, user);
         }
     }
 
     private GameStatus getRestartOrEndGame() {
-        sendMassage(GameMassage.ANSWER);
-        sendMassage(GameMassage.RESTART_OR_END);
+        sendMassage(GameMessage.ANSWER);
+        sendMassage(GameMessage.RESTART_OR_END);
         if (isRestart(Console.readLine())) {
             return GameStatus.START;
         }
         return GameStatus.END;
     }
 
-    private void sendMassage(GameMassage massage) {
+    private void sendMassage(GameMessage massage) {
         System.out.print(massage.getMassage());
     }
 
     private boolean calculationDigits(List<Integer> computer, List<Integer> user) {
-        StrikeAndBall strikeAndBall = new StrikeAndBall();
-        strikeAndBall.isStrikeOrBall(computer, user);
-        GameMassage gameMassage = strikeAndBall.getResult();
+        StrikeAndBallDomain strikeAndBallDomain = new StrikeAndBallDomain();
+        strikeAndBallDomain.isStrikeOrBall(computer, user);
+        GameMessage gameMassage = strikeAndBallDomain.getResult();
 
         sendMassage(gameMassage);
 
-        return gameMassage == GameMassage.ALL_STRIKE;
+        return gameMassage == GameMessage.ALL_STRIKE;
     }
 
     private boolean isRestart(String str) {

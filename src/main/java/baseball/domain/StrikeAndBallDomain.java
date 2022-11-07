@@ -1,13 +1,23 @@
-package baseball;
+package baseball.domain;
+
+import baseball.util.GameMessage;
 
 import java.util.List;
 
-public class StrikeAndBall {
+public class StrikeAndBallDomain {
     int strike, ball;
 
-    StrikeAndBall() {
+    public StrikeAndBallDomain() {
         strike = 0;
         ball = 0;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
     }
 
     private void addStrike() {
@@ -18,8 +28,8 @@ public class StrikeAndBall {
         this.ball++;
     }
 
-    public GameMassage getResult() {
-        return GameMassage.findStrikeAndBallMessage(this);
+    public GameMessage getResult() {
+        return GameMessage.findStrikeAndBallMessage(this);
     }
 
     private void isStrike(int computerDigit, int userDigit) {
