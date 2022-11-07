@@ -32,6 +32,10 @@ public class UserUtil {
         if (input.length() != 3) {
             throw new IllegalArgumentException("input should have three digits");
         }
+
+        if (input.contains("0")) {
+            throw new IllegalArgumentException("input cannot contains zero");
+        }
     }
 
     private static int numberOf(String digit) {
