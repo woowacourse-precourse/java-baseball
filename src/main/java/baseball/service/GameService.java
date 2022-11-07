@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 public class GameService {
     public static final int LENGTH_OF_NUM = 3;
     public static GAME_RESULT finishNumber = GAME_RESULT.START_GAME;
-    private final Player computer = new ComputerPlayer();
-    private final Player user = new UserPlayer();
+    public final Player computer = new ComputerPlayer();
+    public final Player user = new UserPlayer();
 
     private static GAME_RESULT inputFinish() throws IllegalArgumentException {
         int intInput = Integer.parseInt(Console.readLine());
@@ -24,7 +24,7 @@ public class GameService {
         }
     }
 
-    private static int getStrikeNumber(int input, int computer) {
+    public static int getStrikeNumber(int input, int computer) {
         int strike = 0;
         int[] arrInput = Stream.of(String.valueOf(input).split("")).mapToInt(Integer::parseInt).toArray();
         int[] arrComputer = Stream.of(String.valueOf(computer).split("")).mapToInt(Integer::parseInt).toArray();
@@ -90,7 +90,7 @@ public class GameService {
         return false;
     }
 
-    private boolean checkFinish() throws IllegalArgumentException {
+    public boolean checkFinish() throws IllegalArgumentException {
         if (user.number == computer.number) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
