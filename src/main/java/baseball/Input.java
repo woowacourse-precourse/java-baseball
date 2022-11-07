@@ -14,6 +14,11 @@ public class Input {
         for(String number: input.split("")){
             playerNum.add(Integer.parseInt(number));
         }
+        if (playerNum.size() != 3){
+            throw new IllegalArgumentException();
+        } else if(playerNum.size() != playerNum.stream().distinct().count()){
+                throw new IllegalArgumentException();
+        }
         return playerNum;
     }
 }
