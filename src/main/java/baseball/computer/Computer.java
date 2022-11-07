@@ -1,5 +1,6 @@
 package baseball.computer;
 
+import baseball.BaseballChecker;
 import baseball.View;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,7 +11,7 @@ import static baseball.BaseballConstants.*;
 
 public class Computer {
     private final List<Character> baseballNumber = new ArrayList<>();
-    private final CounterBaseball counterBaseball = new CounterBaseball();
+    private final BaseballCounter baseballCounter = new BaseballCounter();
 
     public void makeRandomNumber() {
         baseballNumber.clear();
@@ -28,31 +29,18 @@ public class Computer {
     }
 
     public void countBallAndStrike(String input) {
-        counterBaseball.countBallAndStrike(baseballNumber, input);
+        baseballCounter.countBallAndStrike(baseballNumber, input);
     }
 
-    public void replyBallAndStrike() {
-        int ball = counterBaseball.getBall();
-        int strike = counterBaseball.getStrike();
-        if ((ball == NO_BALL) && (strike == NO_STRIKE)) {
-            View.printNothing();
-        }
-        if ((ball == NO_BALL) && !(strike == NO_STRIKE)) {
-            View.printStrike(strike);
-            if (strike == ALL_STRIKE) {
-                View.printCollect();
-            }
-        }
-        if (!(ball == NO_BALL) && (strike == NO_STRIKE)) {
-            View.printBall(ball);
-        }
-        if (!(ball == NO_BALL) && !(strike == NO_STRIKE)) {
-            View.printBallAndStrike(ball, strike);
-        }
+    public void replyBallAndStrike(){
+        BaseballChecker baseballchecker = new BaseballChecker();
+        int ball = baseballCounter.getBall();
+        int strike = baseballCounter.getStrike();
+        baseballchecker.reply(ball, strike);
     }
 
     public boolean isCollect() {
-        return (counterBaseball.getStrike() == ALL_STRIKE);
+        return (baseballCounter.getStrike() == ALL_STRIKE);
     }
 
 }

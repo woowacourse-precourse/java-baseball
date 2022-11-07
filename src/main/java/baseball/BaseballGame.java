@@ -26,7 +26,7 @@ public class BaseballGame {
             View.printPleaseInputNumber();
             String userInput = checkVerifierInputToBaseballGame(View.getUserInput());
             computer.countBallAndStrike(userInput);
-            computer.replyBallAndStrike2();
+            computer.replyBallAndStrike();
         } while (!(computer.isCollect()));
     }
 
