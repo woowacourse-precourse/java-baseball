@@ -81,4 +81,8 @@ public class Game {
         return userInputNumber.length() == NUMBER_SIZE;
     }
 
+    public static boolean checkUserInputContainZero(String userInputNumber) {
+        return userInputNumber.contains("0");
+    }
+
 }
