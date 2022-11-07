@@ -51,4 +51,11 @@ public class HintService {
         strike = Constant.INITIAL_NUMBER;
         ball = Constant.INITIAL_NUMBER;
     }
+
+    public void printStrikeHint(int number, String strike) {
+
+        if (number != 0) {
+            sb.append(number).append(strike).append(" ");
+        }
+    }
 }
