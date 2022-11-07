@@ -6,7 +6,7 @@ import baseball.mvc.model.Request;
 import baseball.mvc.structure.consts.GameModelKeyConst;
 import baseball.mvc.structure.consts.GameRequestKeyConst;
 import baseball.mvc.view.GameGuideView;
-import baseball.mvc.view.GameResultView;
+import baseball.mvc.view.GameHintView;
 import baseball.util.GameStatus;
 
 public class FrontController {
@@ -50,7 +50,7 @@ public class FrontController {
     private void printLog(ModelAndView modelAndView, GameStatus presentStatus, GameStatus nowStatus) {
         if (presentStatus == GameStatus.PLAY) {
             GameResult result = modelAndView.getModelAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class);
-            GameResultView.printGameResultLog(result);
+            GameHintView.printGameHintLog(result);
         }
         if (nowStatus == GameStatus.END) {
             GameGuideView.END.printGuideLog();

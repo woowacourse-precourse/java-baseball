@@ -11,10 +11,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class GameResultViewTest extends OutputSettings {
+class GameHintViewTest extends OutputSettings {
 
     @Nested
-    @DisplayName("printGameResultLog 메소드는")
+    @DisplayName("printGameHintLog 메소드는")
     class PrintGameResultLogMethodTest {
 
         @ParameterizedTest
@@ -29,11 +29,11 @@ class GameResultViewTest extends OutputSettings {
         @DisplayName("만약 스트라이크와 볼이 있는 GameResult가 주어진다면 ?볼 ?스트라이크라는 형식의 문구를 출력한다.")
         void strike_and_ball_log_test(long strike, long ball) {
             GameResult gameResult = new GameResult(strike, ball);
-            GameResultView.printGameResultLog(gameResult);
+            GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
-                            .getMessage(GameResultView.STRIKE_AND_BALL, gameResult, testOut));
+                            .getMessage(GameHintView.STRIKE_AND_BALL, gameResult, testOut));
         }
 
         @ParameterizedTest
@@ -41,11 +41,11 @@ class GameResultViewTest extends OutputSettings {
         @DisplayName("만약 볼만 있는 GameResult가 주어진다면 ?볼이라는 형식의 문구를 출력한다.")
         void only_ball_log_test(long ball) {
             GameResult gameResult = new GameResult(0L, ball);
-            GameResultView.printGameResultLog(gameResult);
+            GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
-                            .getMessage(GameResultView.ONLY_BALL, gameResult, testOut));
+                            .getMessage(GameHintView.ONLY_BALL, gameResult, testOut));
         }
 
         @ParameterizedTest
@@ -53,22 +53,22 @@ class GameResultViewTest extends OutputSettings {
         @DisplayName("만약 스트라이크만 있는 GameResult가 주어진다면 ?스트라이크라는 형식의 문구를 출력한다.")
         void only_strike_log_test(long strike) {
             GameResult gameResult = new GameResult(strike, 0L);
-            GameResultView.printGameResultLog(gameResult);
+            GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
-                            .getMessage(GameResultView.ONLY_STRIKE, gameResult, testOut));
+                            .getMessage(GameHintView.ONLY_STRIKE, gameResult, testOut));
         }
 
         @Test
         @DisplayName("만약 아무것도 없는 GameResult가 주어진다면 낫싱을 출력한다.")
         void nothing_log_test() {
             GameResult gameResult = new GameResult(0L, 0L);
-            GameResultView.printGameResultLog(gameResult);
+            GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
                     .isEqualTo(GameResultViewTestUtils
-                            .getMessage(GameResultView.NOTHING, gameResult, testOut));
+                            .getMessage(GameHintView.NOTHING, gameResult, testOut));
         }
     }
 }

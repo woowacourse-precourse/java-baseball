@@ -2,7 +2,7 @@ package baseball.helper.util;
 
 import baseball.domain.game.GameResult;
 import baseball.helper.exception.CannotReflectionException;
-import baseball.mvc.view.GameResultView;
+import baseball.mvc.view.GameHintView;
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Field;
 
@@ -13,10 +13,10 @@ public final class GameResultViewTestUtils {
     private GameResultViewTestUtils() {
     }
 
-    public static String getMessage(GameResultView view, GameResult gameResult, ByteArrayOutputStream out) {
+    public static String getMessage(GameHintView view, GameResult gameResult, ByteArrayOutputStream out) {
         out.reset();
 
-        Field message = ReflectionFieldUtils.processReflectionField(GameResultView.class, MESSAGE_FIELD_NAME);
+        Field message = ReflectionFieldUtils.processReflectionField(GameHintView.class, MESSAGE_FIELD_NAME);
 
         try {
             String format;
