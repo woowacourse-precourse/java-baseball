@@ -3,6 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,6 +21,13 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
                 },
                 1, 3, 5, 5, 8, 9
+        );
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "456", "789", "798", "987", "1","246", "135", "2");
+                    assertThat(output()).contains("낫싱", "낫싱", "2볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "낫싱", "3스트라이크");
+                },
+                9,8,7, 1, 3, 5
         );
     }
 
@@ -37,13 +48,13 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 힌트코드_테스트() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("123", "456", "789", "798", "987", "1","246", "135", "2");
-                    assertThat(output()).contains("낫싱", "낫싱", "2볼 1스트라이크", "2볼 1스트라이크", "3스트라이크", "낫싱", "3스트라이크");
-                },
-                9,8,7, 1, 3, 5
-        );
+        Baseball baseball = new Baseball();
+        List<Integer> baseballCount = new ArrayList<>(Arrays.asList(1,2));
+
+        assertThat(baseball.getHintCode(baseballCount)).isEqualTo("1볼 2스트라이크");
+        assertThat(baseball.getHintCode(Arrays.asList(0,0))).isEqualTo("낫싱");
+        assertThat(baseball.getHintCode(Arrays.asList(0,3))).isEqualTo("3스트라이크");
+        assertThat(baseball.getHintCode(Arrays.asList(3,0))).isEqualTo("3볼");
     }
 
     @Test

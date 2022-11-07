@@ -88,6 +88,6 @@ public class Baseball {
             hintCode.append(" "+strikeCount+"스트라이크");
         }
 
-        return hintCode.toString();
+        return hintCode.toString().strip();
     }
 }
