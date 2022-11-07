@@ -13,7 +13,7 @@ class InputUserNumberTest extends NsTest {
 
     @DisplayName("사용자 입력 숫자 개수 테스트")
     @Test
-    void InputUserNumberSizeTest(){
+    void InputUserNumberSizeTest() {
         // given
         InputUserNumber inputUserNumber = new InputUserNumber();
         String userInput1 = "123";
