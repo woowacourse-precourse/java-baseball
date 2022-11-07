@@ -44,4 +44,8 @@ public class BaseBall {
     public int getBall() {
         return ball;
     }
+
+    public boolean isNotting() {
+        return strike == 0 && ball == 0;
+    }
 }

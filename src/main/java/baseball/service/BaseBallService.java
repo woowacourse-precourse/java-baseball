@@ -53,6 +53,10 @@ public class BaseBallService {
         return baseBall.getStrike();
     }
 
+    public boolean isNotting() {
+        return baseBall.isNotting();
+    }
+
     // 테스트를 위한 컴퓨터 숫자 수정 메서드
     public void setComputerNumberList(List<Integer> computerNumberList) {
         computer.setComputerNumberList(computerNumberList);
