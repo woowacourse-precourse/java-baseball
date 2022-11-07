@@ -42,15 +42,16 @@ public class GameManager {
 
         int gameContinue = Integer.parseInt(Console.readLine());
 
-        switch (gameContinue) {
-            case CONTINUE:
-                numberManager.setRandomNumber();
-                return true;
-            case EXIT:
-                return false;
-            default:
-                throw new IllegalArgumentException();
+        if(gameContinue == CONTINUE) {
+            numberManager.setRandomNumber();
+            return true;
         }
+
+        if(gameContinue == EXIT) {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
 
     }
 }
