@@ -44,7 +44,7 @@ public class Application {
         return answer;
     }
 
-    public static boolean checkAnswer(List<Integer> answer) {   // Key ( 0 : BALL / 1 : STRIKE )
+    public static boolean checkAnswer(List<Integer> answer) {   // Index ( 0 : BALL / 1 : STRIKE )
         if (answer.get(1) == 3) {
             return true;
         } else {
@@ -56,7 +56,7 @@ public class Application {
 
         List<Integer> digits = new ArrayList<>();
 
-        while(number > 0) {
+        while (number > 0) {
             digits.add(number % 10);
             number /= 10;
         }
@@ -67,17 +67,39 @@ public class Application {
 
     }
 
+    public static Integer countBall(List<Integer> answer, List<Integer> digits) {
+
+        int count = 0;
+
+        for (int i = 0; i < digits.size(); i++) {
+
+            int digit = digits.get(i);
+
+            for (int j = 0; j < answer.size(); j++) {
+
+                if (answer.get(j) == digit && i != j) {
+                    count++;
+                }
+
+            }
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
 
         boolean status = playGame();
         List<Integer> answer = createAnswer();
 
         while (status != false) {
-            List<Integer> count = new ArrayList<>();
 
             System.out.print("숫자를 입력해주세요 : ");
             int number = Integer.parseInt(Console.readLine());
             List<Integer> digits = separateNumberToDigit(number);
+
+            List<Integer> count = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
+            count.add(countBall(answer, digits));
 
             if (checkAnswer(count)) {
                 status = restartGame();
@@ -86,7 +108,6 @@ public class Application {
         }
 
     }
-
 
 
 }
