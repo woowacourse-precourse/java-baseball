@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 public class BaseballGame {
     private ArrayList<Integer> comAnswer = new ArrayList<>();
+    private ArrayList<Integer> userAnswer = new ArrayList<>();
+    private int strike = 0;
+    private int ball = 0;
+
 
     private void initAnswer() {
         while (comAnswer.size() < 3) {
@@ -15,10 +19,13 @@ public class BaseballGame {
             if (comAnswer.indexOf(randomInt) == -1)
                 comAnswer.add(randomInt);
         }
+        System.out.println(comAnswer);
     }
 
-    public ArrayList<Integer> inputAnswer() {
-        ArrayList<Integer> userAnswer = new ArrayList<>();
+    public void inputAnswer() {
+        userAnswer = new ArrayList<>();
+
+        System.out.print("숫자를 입력하주세요 : ");
 
         String line = Console.readLine();
         char[] chars = line.toCharArray();
@@ -44,8 +51,6 @@ public class BaseballGame {
 
             userAnswer.add(num);
         }
-
-        return userAnswer;
     }
 
     private int checkValue(int value, int digit) {
@@ -66,8 +71,9 @@ public class BaseballGame {
     }
 
 
-    public int[] checkAnswer(ArrayList<Integer> userAnswer) {
-        int[] result = {0, 0};
+    public void checkAnswer() {
+        strike = 0;
+        ball = 0;
 
         for (int i = 0; i < 3; i ++) {
             int num = userAnswer.get(i);
@@ -76,16 +82,19 @@ public class BaseballGame {
 
             // 결과 저장
             if (status == 2)
-                result[0] += 1;
+                strike += 1;
             else if (status == 1)
-                result[1] += 1;
+                ball += 1;
         }
-
-        return result;
     }
 
 
     void endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        System.out.print("숫자를 입력하주세요 : ");
+
         String line = Console.readLine();
         char[] chars = line.toCharArray();
 
@@ -105,10 +114,36 @@ public class BaseballGame {
 
         // 재시작일 경우
         if (num == 1)
-            inputAnswer();
+            startGame();
 
     }
 
 
+    void printResult() {
+        if (strike == 0 && ball == 0)
+            System.out.println("낫싱\n");
+        else if (strike == 0)
+            System.out.printf("%d볼\n", ball);
+        else if (ball == 0)
+            System.out.printf("%d스트라이크\n", strike);
+        else
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+    }
+
+
+    public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        initAnswer();
+        while (true) {
+            inputAnswer();
+            checkAnswer();
+            printResult();
+
+            if (strike == 3)
+                break;
+        }
+
+        endGame();
+    }
 }
 
