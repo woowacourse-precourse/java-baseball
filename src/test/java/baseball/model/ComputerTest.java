@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.*;
         computer = new Computer();
     }
 
+    /*
     @Test
     void 랜덤값은_1부터_9사이(){
         assertThat(computer.createRandomNumber()).isLessThanOrEqualTo(9)
@@ -36,4 +37,6 @@ import static org.assertj.core.api.Assertions.*;
         computer.putNumber(1);
         assertThat(computer.isAlreadyInNumbers(2)).isFalse();
     }
+     */
+
 }

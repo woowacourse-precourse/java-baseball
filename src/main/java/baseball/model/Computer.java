@@ -9,21 +9,21 @@ public class Computer {
     private static final int MINIMUM_VALUE_OF_NUMBER = 1;
     private static final int MAXIMUM_VALUE_OF_NUMBER = 9;
     private static final int LIST_LIMIT = 3;
-    List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Computer(){
         numbers = new ArrayList<>();
     }
 
-    public int createRandomNumber(){
+    private int createRandomNumber(){
         return Randoms.pickNumberInRange(MINIMUM_VALUE_OF_NUMBER, MAXIMUM_VALUE_OF_NUMBER);
     }
 
-    public void putNumber(int number){
+    private void putNumber(int number){
         numbers.add(number);
     }
 
-    public boolean isAlreadyInNumbers(int number){
+    private boolean isAlreadyInNumbers(int number){
         return numbers.contains(number);
     }
 
@@ -31,7 +31,7 @@ public class Computer {
         return numbers;
     }
 
-    public void insertNumber(){
+    private void insertNumber(){
         int number = createRandomNumber();
         if(!isAlreadyInNumbers(number)) putNumber(number);
     }
