@@ -10,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
 
     }
+
     static List<Integer> generateNum() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
@@ -30,8 +31,8 @@ public class Application {
         if (userNumber.size() != 3 || userNumber.size() != userNumber.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
-        for(int number : userNumber){
-            if(Character.isDigit(number) || number == 0){
+        for (int number : userNumber) {
+            if (Character.isDigit(number) || number == 0) {
                 throw new IllegalArgumentException();
             }
         }
@@ -61,6 +62,10 @@ public class Application {
             return strike + "스트라이크";
         }
         return ball + "볼 " + strike + "스트라이크";
+    }
+
+    static String inputSystem() {
+        return Console.readLine();
     }
 }
 
