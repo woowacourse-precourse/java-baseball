@@ -50,4 +50,16 @@ class ValidateTest {
 		String input = "56789";
 		assertThat(Validate.isNumberLengthLegal(input)).isEqualTo(false);
 	}
+
+	@Test
+	void isDuplicated_메서드_중복된_숫자_true_리턴(){
+		String input = "113";
+		assertThat(Validate.isDuplicated(input)).isEqualTo(true);
+	}
+
+	@Test
+	void isDuplicated_메서드_중복없는_숫자_false_리턴(){
+		String input = "123";
+		assertThat(Validate.isDuplicated(input)).isEqualTo(false);
+	}
 }
