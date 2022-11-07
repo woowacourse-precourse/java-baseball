@@ -71,9 +71,9 @@ class ApplicationTest extends NsTest {
             //given
             List<Integer> numberList = computer.getRandomNumber();
             //when
-            int firstNumber = computer.getSecondRandomNumber();
+            int secondNumber = computer.getSecondRandomNumber();
             //then
-            assertThat(numberList.get(1)).isEqualTo((firstNumber));
+            assertThat(numberList.get(1)).isEqualTo((secondNumber));
         }
 
         @Test
@@ -81,9 +81,9 @@ class ApplicationTest extends NsTest {
             //given
             List<Integer> numberList = computer.getRandomNumber();
             //when
-            int firstNumber = computer.getThirdRandomNumber();
+            int thirdNumber = computer.getThirdRandomNumber();
             //then
-            assertThat(numberList.get(2)).isEqualTo((firstNumber));
+            assertThat(numberList.get(2)).isEqualTo((thirdNumber));
         }
     }
 
