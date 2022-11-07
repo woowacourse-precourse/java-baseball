@@ -1,4 +1,4 @@
-package baseball.domain.rule;
+package baseball.rule;
 
 import static org.assertj.core.api.Assertions.*;
 
