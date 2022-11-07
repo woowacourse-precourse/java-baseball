@@ -11,7 +11,7 @@ public class User {
             throw new IllegalArgumentException("문자가 포함되어 있습니다.");
         }
 
-        if (UserInputException.isInputLength(input, 3)) {
+        if (!UserInputException.isInputLength(input, 3)) {
             throw new IllegalArgumentException("입력의 숫자의 길이가 맞지 않습니다.");
         }
 
