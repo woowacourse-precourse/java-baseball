@@ -14,6 +14,10 @@ public class GameDealer {
     public static void PRINT_PROMPT() {
         System.out.print("숫자를 입력해주세요 : ");
     }
+    public static void PRINT_GAME_CLEAR_MSG() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     public static String GEN_PROBLEM(){
         String result = "";
 
