@@ -5,15 +5,15 @@ public class GameSystem {
         PickNumbers pickNumbers = new PickNumbers();
         UserInput userInput = new UserInput();
         pickNumbers.pickRandomNumbers();
-        Decision.playing = true;
-        while (Decision.playing) {
+        Decision.newGame();
+        while (Decision.isPlaying()) {
             userInput.numbers();
             Decision.call();
             if (!Decision.out) {
                 continue;
             }
             userInput.reStartOrQuit();
-            if (Decision.playing) {
+            if (Decision.isPlaying()) {
                 pickNumbers.pickRandomNumbers();
             }
         }
