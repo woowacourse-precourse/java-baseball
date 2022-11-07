@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 
 public class Decision {
+    public static final int MAX_STRIKE = 3;
 
     public int countStrike(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int strike = 0;
@@ -29,5 +30,9 @@ public class Decision {
         }
 
         return ball;
+    }
+
+    public boolean isThreeStrike(int strike) {
+        return strike == MAX_STRIKE;
     }
 }
