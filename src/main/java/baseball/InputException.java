@@ -6,6 +6,8 @@ import java.util.Set;
 public class InputException {
     private static final String INVALID_INPUT_NUMBER_ERROR_MESSAGE = "ERROR!! 정상적인 값이 아닙니다. 게임을 종료합니다.";
     private static int NUMBER_LENGTH = 3;
+    private static String RESTART_NUMBER = "1";
+    private static String END_NUMBER = "2";
 
     public static void checkInputNumberValidation(String number) {
         if (isThreeLength(number) && isInteger(number) && hasNotZero(number) && hasNotDuplicate(number)) {
@@ -15,7 +17,7 @@ public class InputException {
     }
 
     public static void checkInputRestartValidation(String number) {
-        if ("1".equals(number) || "2".equals(number)) {
+        if (RESTART_NUMBER.equals(number) || END_NUMBER.equals(number)) {
             return;
         }
         throw new IllegalArgumentException(INVALID_INPUT_NUMBER_ERROR_MESSAGE);
