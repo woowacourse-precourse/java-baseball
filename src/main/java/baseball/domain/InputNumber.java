@@ -10,8 +10,7 @@ public class InputNumber {
         String number = scanner.next();
         System.out.println("숫자를 입력해주세요 : " + number);
 
-        new ExceptionInspection(number);
-
+        ExceptionInspection.inspectException(number);
         return number;
     }
 
