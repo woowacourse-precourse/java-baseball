@@ -25,8 +25,8 @@ public class Computer {
     public List<Integer> stringToInteger(String input) {
         if(!checkNum(input)) throw new IllegalArgumentException(); // 숫자 유효성 체크
         List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < LENGTH; i++) {
-            numbers.add(input.charAt(i) - '0');
+        for (int idx = 0; idx < LENGTH; idx++) {
+            numbers.add(input.charAt(idx) - '0');
         }
         return numbers;
     }
@@ -36,8 +36,8 @@ public class Computer {
         if(input.length() != LENGTH) return false;
 
         // 2. 숫자인지 확인
-        for (int i = 0; i < LENGTH; i++) {
-            if(!('0' <= input.charAt(i) && input.charAt(i) <= '9')) return false;
+        for (int idx = 0; idx < LENGTH; idx++) {
+            if(!('0' <= input.charAt(idx) && input.charAt(idx) <= '9')) return false;
         }
 
         // 3. 중복되는 수가 있는지 확인 -> 중복 값 허용하지 않는 Set 이용
@@ -49,25 +49,25 @@ public class Computer {
     public boolean baseballGame(List<Integer> randoms, List<Integer> nums) {
         Integer ball = 0;
         Integer strike = 0;
-        for (int i = 0; i < LENGTH; i++) {
-            if(isBall(randoms, nums.get(i), i)) ball++;
-            if(isStrike(randoms, nums.get(i), i)) strike++;
+        for (int idx = 0; idx < LENGTH; idx++) {
+            if(isBall(randoms, nums.get(idx), idx)) ball++;
+            if(isStrike(randoms, nums.get(idx), idx)) strike++;
         }
         Message.baseballGameMessage(ball, strike);
         if(strike == 3 && ball == 0) return true;
         else return false;
     }
 
-    private boolean isBall(List<Integer> randoms, Integer num, int i) {
-        for (int j = 0; j < LENGTH; j++) {
-            if(num.equals(randoms.get(j)) && i != j) return true;
+    private boolean isBall(List<Integer> randoms, Integer num, int idx) {
+        for (int idx2 = 0; idx2 < LENGTH; idx2++) {
+            if(num.equals(randoms.get(idx2)) && idx != idx2) return true;
         }
         return false;
     }
 
-    private boolean isStrike(List<Integer> randoms, Integer num, int i) {
-        for (int j = 0; j < LENGTH; j++) {
-            if(num.equals(randoms.get(j)) && i == j) return true;
+    private boolean isStrike(List<Integer> randoms, Integer num, int idx) {
+        for (int idx2 = 0; idx2 < LENGTH; idx2++) {
+            if(num.equals(randoms.get(idx2)) && idx == idx2) return true;
         }
         return false;
     }
