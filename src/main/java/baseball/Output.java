@@ -1,6 +1,9 @@
 package baseball;
 
 public class Output {
+    public void printStartingMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 
     public void printDecisionResult(int strike, int ball) {
         printStrikeOnly(strike, ball);
@@ -31,5 +34,9 @@ public class Output {
         if(strike == 0 && ball == 0) {
             System.out.println("낫싱");
         }
+    }
+
+    public void printEndingMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
