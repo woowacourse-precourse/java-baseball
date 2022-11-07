@@ -23,4 +23,21 @@ public class Application {
         }
         return num.toString();
     }
+    
+    public static boolean checkRepeat(String number){
+        ArrayList<Character> charList = new ArrayList<>();
+        for(int n = 0;n < 3; n++){
+            if(charList.contains(number.charAt(n))){
+                return true;
+            }
+            if(charList.size() == 3){
+                return false;
+            }
+            else {
+                charList.add(number.charAt(n));
+            }
+        }
+        return true;
+    }
+    
 }
