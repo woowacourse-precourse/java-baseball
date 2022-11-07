@@ -23,6 +23,21 @@ public class BaseballGame {
         String inputStr = Console.readLine();
         return inputStr;
     }
+    public void compareWithTargetNum(String input) {
+        int strikeCount=0;
+        int ballCount=0;
+
+        for(int order=0; order<3; order++){
+            int targetDigit = targetNumber.get(order);
+            int inputDigit = Integer.valueOf(input.charAt(order));
+
+            if (targetDigit == inputDigit) {
+                strikeCount++;
+            } else if (input.contains(Integer.toString(targetDigit))) {
+                ballCount++;
+            }
+        }
+    }
 
     public void startGame() {
         // TODO: 타겟 넘버 생성, 사용자 입력 실행 등 새 게임 시작
