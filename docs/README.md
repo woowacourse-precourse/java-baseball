@@ -14,3 +14,14 @@
     - 입력받은 숫자들 중 자리가 같고 값이 같으면 Strike
     - 입력받은 숫자들 중 자리가 다르고 값을 포함하면 ball
     - 입력받은 숫다들 중 값을 가지고 있지 않으면 낫싱
+
+### 예외값 정의
+-
+    - 입력받은 숫자가 3자리
+    - 숫자가 입력되야한다
+    - 게임 재시작 시 1 또는 2 반환
+
+### 제약조건
+-
+    - camp.nextstep.edu.missionutils.console 사용
+    - camp.nextstep.edu.missionutils.randoms 사용
