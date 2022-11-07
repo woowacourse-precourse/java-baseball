@@ -87,4 +87,22 @@ public class InputValidationTest {
     assertEquals(true, isItRestartInput);
 
   }
+
+  @Test
+  void 유저가_게임_종료를_위해_2를_입력한_경우_정상적으로_동작하는가() {
+
+    // given
+    GameController controller = new GameController();
+    InputStream inputStream = readUserInput("2");
+    System.setIn(inputStream);
+
+    // when
+    boolean isntItEndInput = controller.checkRestart();
+
+    // then
+    assertEquals(false, isntItEndInput);
+
+  }
+
+
 }
