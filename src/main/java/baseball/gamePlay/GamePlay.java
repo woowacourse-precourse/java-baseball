@@ -2,7 +2,6 @@ package baseball.gamePlay;
 
 import baseball.domain.BallCount;
 import baseball.domain.Numbers;
-import baseball.dto.InputToNumbers;
 import baseball.rule.EndRule;
 import baseball.rule.JudgementRule;
 import baseball.strategy.NumberProducingStrategy;
@@ -28,8 +27,7 @@ public class GamePlay {
         boolean isGameEnd) {
         Numbers computerNumbers = new Numbers(numberProducingStrategy.produceNumbers());
         while (!isGameEnd) {
-            Numbers userNumbers = new Numbers(
-                InputToNumbers.toNumbers(UserInput.InputUserNumbers()));
+            Numbers userNumbers = new Numbers(UserInput.InputUserNumbers());
             isGameEnd = continuegameUntilGetAnswer(computerNumbers, isGameEnd, userNumbers);
         }
     }
