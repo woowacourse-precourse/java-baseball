@@ -26,7 +26,7 @@ public class Application {
      */
     public static List<Integer> myThreeNum() {
         List<Integer> myThreeNum = new ArrayList<Integer>();
-        System.out.println("숫자를 입력해주세요 :  ");
+        System.out.print("숫자를 입력해주세요 : ");
 
         String myPickNum = Console.readLine();
 
@@ -46,7 +46,7 @@ public class Application {
         // 랜덤숫자 1~9
 
         List<Integer> computerThreeNum = new ArrayList<Integer>();
-        while (computerThreeNum.size() < 3) {
+        while (computerThreeNum.size() != 3) {
             int computerNum = Randoms.pickNumberInRange(1, 9);
 
             if (!computerThreeNum.contains(computerNum)) {
@@ -68,8 +68,10 @@ public class Application {
         checkValidation(myThreeNum);
         List<Integer> computerThreeNum = computerThreeNum();
         boolean equalList = equalList(computerThreeNum, myThreeNum);
-        int strike = strike(computerThreeNum, myThreeNum);
-        int ball = ball(computerThreeNum, myThreeNum);
+        if (equalList == false) {
+            int strike = strike(computerThreeNum, myThreeNum);
+            int ball = ball(computerThreeNum, myThreeNum);
+        }
 
     }
 
@@ -78,8 +80,8 @@ public class Application {
         boolean equalList = true;
         // index, 내용 같으면 true ------> 3스트라이크!
         if (myThreeNum.containsAll(computerThreeNum)) {
-            System.out.println("3 스트라이크!");
         }
+        System.out.println("3 스트라이크!");
         System.out.println("3개의 숫자를 모두 맞히셨습니다!");
         System.out.println("게임종료");
         return equalList;
@@ -112,9 +114,18 @@ public class Application {
 
     public static int ball(List<Integer> computerThreeNum, List<Integer> myThreeNum) {
         // FALSE ------------>
-        // 반복------>숫자 3개 맞을때까지!!!
+        int ballCount = 0;
+
         // ball count ++
-        return 0;
+        for (int i = 0; i < computerThreeNum.size(); i++) {
+            Set<Integer> ball = new HashSet<>(computerThreeNum);
+            if (ball.retainAll(myThreeNum)) {
+                ballCount++;
+            }
+        }
+        System.out.println(ballCount + "볼");
+
+        return ballCount;
     }
 
     public static void checkValidation(List<Integer> myThreeNum) {
