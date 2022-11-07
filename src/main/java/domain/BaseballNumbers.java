@@ -7,9 +7,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+
 public class BaseballNumbers {
     public static final int SIZE = 3;
-    List<BaseballNumber> numbers = new ArrayList<>();
+    private final List<BaseballNumber> numbers;
 
     private BaseballNumbers(List<BaseballNumber> numbers) {
         this.numbers = numbers;

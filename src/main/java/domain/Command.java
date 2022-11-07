@@ -3,7 +3,7 @@ package domain;
 public class Command {
     private final String RESTART = "1";
     private final String EXIT = "2";
-    private String value;
+    private final String value;
 
     public Command(String inputCommand){
         validateInput(inputCommand);
