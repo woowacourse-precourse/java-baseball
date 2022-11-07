@@ -13,6 +13,12 @@ public class Controller {
     public static final char MINIMUM_RANGE = '1';
     public static final int DIGITS = 3;
 
+    /**
+     * 게임플레이어 클래스에 담을 서로 다른 숫자 값이 유효한지 검사한다.
+     *
+     * @param numbers 서로 다른 숫자
+     * @return 유효할 경우 true, 아니라면 false
+     */
     public static boolean validateNumbers(String numbers) {
         if (!isLengthCorrect(numbers)) {
             return false;
@@ -68,12 +74,22 @@ public class Controller {
         return (int) (ch1 - ch2);
     }
 
+    /**
+     * 잘못된 입력이 들어올 경우 IllegalArgumentException을 발생시키고 종료한다.
+     *
+     * @param result false일 때만 발생시킨다. true라면 아무런 동작도 하지 않는다.
+     */
     public static void handleException(boolean result) {
         if (!result) {
             throw new IllegalArgumentException("잘못된 값을 입력하여 종료합니다.");
         }
     }
 
+    /**
+     * 컴퓨터의 서로 다른 3자리수 랜덤값과 게임플레이어에게서 입력 받은 서로 다른 3자리수 비교한다.
+     *
+     * @return 일치하는 만큼 key: "strike", "ball"에 저장한다.
+     */
     public static HashMap<String, Integer> compareTo(Computer computer, GamePlayer gamePlayer) {
         HashMap<String, Integer> result = new HashMap<>();
         result.put("strike", 0);
@@ -99,6 +115,11 @@ public class Controller {
         return result;
     }
 
+    /**
+     * 3스트라이크시 사용하는 함수, 입력을 받는데 "1"일 경우 재시작, "2"일 경우 종료한다. 잘못된 입력이 들어올 경우 IllegalArgumentException을 발생시키고 종료한다.
+     *
+     * @return 종료시 true, 재시작시 false;
+     */
     public static boolean gameOver() {
         Print.gameOver();
         String power = Input.power();
