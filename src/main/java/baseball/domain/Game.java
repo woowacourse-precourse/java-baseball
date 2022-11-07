@@ -11,25 +11,12 @@ public class Game {
         this.ball = 0;
     }
 
-    public Game(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
-    }
-
     public int getStrike() {
-        return strike;
-    }
-
-    public void setStrike(int strike) {
-        this.strike = strike;
+        return this.strike;
     }
 
     public int getBall() {
-        return ball;
-    }
-
-    public void setBall(int ball) {
-        this.ball = ball;
+        return this.ball;
     }
 
     public void addBall() {
@@ -41,23 +28,18 @@ public class Game {
         this.ball -= 1;
     }
 
-    public Game checkBallStrike(List<Integer> computerAnswer, List<Integer> UserAnswer){
-        Game game = new Game();
+    public void checkBallStrike(List<Integer> computerAnswer, List<Integer> UserAnswer){
         for (int aLetter : UserAnswer) {
             if (letterIncludeAnswerCheck(computerAnswer, aLetter)) {
-                game.addBall();
+                addBall();
                 if (computerAnswer.indexOf(aLetter) == UserAnswer.indexOf(aLetter)) {
-                    game.addStrike();
+                    addStrike();
                 }
             }
         }
-        return game;
     }
 
     public boolean letterIncludeAnswerCheck(List<Integer> computerAnswer, int aLetter) {
-        if (computerAnswer.contains(aLetter)) {
-            return true;
-        }
-        return false;
+        return computerAnswer.contains(aLetter);
     }
 }

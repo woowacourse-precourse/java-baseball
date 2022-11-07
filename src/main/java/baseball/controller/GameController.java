@@ -12,7 +12,7 @@ public class GameController {
         do {
             playingGameView.enterNumberPrint();
             User user = new User(playingGameView.inputToQuestion());
-            game = game.checkBallStrike(computer.getComputerAnswer(), user.getUserAnswer());
+            game.checkBallStrike(computer.getComputerAnswer(), user.getUserAnswer());
             playingGameView.gameResultPrint(game.getStrike(), game.getBall());
         } while (game.getStrike() != 3);
     }

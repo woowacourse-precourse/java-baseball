@@ -4,33 +4,32 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Computer {
     private static final int ANSWER_SIZE = 3;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
-    private List<Integer> computerAnswer;
+    private final List<Integer> computerAnswer;
 
     public Computer() {
         this.computerAnswer = new ArrayList<>();
-        computerNumberDecide(computerAnswer);
+        computerNumberDecide();
     }
 
     public List<Integer> getComputerAnswer() {
-        return computerAnswer;
+        return this.computerAnswer;
     }
 
-    public void computerNumberDecide(List<Integer> computerAnswer) {
-        while (computerAnswer.size() < ANSWER_SIZE) {
-            newRandomNumber(computerAnswer);
+    public void computerNumberDecide() {
+        while (this.computerAnswer.size() < ANSWER_SIZE) {
+            newRandomNumber();
         }
     }
 
-    public void newRandomNumber(List<Integer> computerAnswer) {
+    public void newRandomNumber() {
         int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-        if (!computerAnswer.contains(randomNumber)) {
-            computerAnswer.add(randomNumber);
+        if (!this.computerAnswer.contains(randomNumber)) {
+            this.computerAnswer.add(randomNumber);
         }
     }
 
