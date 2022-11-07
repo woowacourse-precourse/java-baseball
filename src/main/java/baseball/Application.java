@@ -48,9 +48,19 @@ public class Application {
         return resultList;
     }
 
+//    private static
+
     private static boolean eachGame() {
+        int strike = 0;
+        int ball = 0;
+
         System.out.print("숫자를 입력해주세요 : ");
         int inputNumber = stdinScanner.nextInt();
+        List<Integer> score = gameResult(inputNumber);
+
+        for (Integer eachScore : score) {
+
+        }
 
         return false;
     }
