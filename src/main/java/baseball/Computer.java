@@ -9,4 +9,7 @@ public class Computer {
         this.baseballList = new BaseballList(Randoms.pickUniqueNumbersInRange(1,9,3));
     }
 
+    public void getComputerBaseballList(){
+        this.baseballList.getBaseballList();
+    }
 }
