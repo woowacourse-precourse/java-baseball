@@ -22,31 +22,30 @@ public class ReceiveConsole {
         return answerToInt;
     }
 
-    public static NumListDto receiveNumIncludeAllException() throws IllegalArgumentException {
-        NumListDto numListDto;
+    public static List<Integer> receiveNumIncludeAllException() throws IllegalArgumentException {
+        List<Integer> numList;
         try {
-            numListDto = receiveNum();
+            numList = receiveNum();
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-        return numListDto;
+        return numList;
     }
 
-    private static NumListDto receiveNum() throws IllegalArgumentException{
+    private static List<Integer> receiveNum() throws IllegalArgumentException{
         List<Integer> numList = new ArrayList<>();
         String numString = Console.readLine();
         for (int i = 0; i < numString.length(); i++) {
             numList.add((int) (numString.charAt(i)-'0'));
         }
-        NumListDto numListDto = new NumListDto(numList);
 
-        NotValidInputException(numListDto);
+        NotValidInputException(numList);
 
-        return numListDto;
+        return numList;
     }
 
-    private static void NotValidInputException(NumListDto numListDto) {
-        if (!Valid.isValidNumList(numListDto.getNumList())) {
+    private static void NotValidInputException(List<Integer> numList) {
+        if (!Valid.isValidNumList(numList)) {
             throw new IllegalArgumentException();
         }
     }
