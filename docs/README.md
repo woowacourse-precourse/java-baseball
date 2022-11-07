@@ -84,7 +84,7 @@
 - [x] computerNumbersList에 randomNumberCreate함수를 실행한 결과를 저장.
 - [x] inputAvailableUserNumberService함수를 실행
 - [x] StringToList함수를 실행
-- [ ] checkStrickNumbers함수를 실행
+- [x] checkStrickNumbers함수를 실행
 - [ ] checkedBallNumbers함수를 실행
 - [ ] calculatedStrikeBallNumber함수를 실행
 - [ ] printBaseballOfResult함수를 실행 후 결과값을 checkedAnswer에 저장
