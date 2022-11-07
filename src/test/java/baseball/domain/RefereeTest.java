@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class RefereeTest {
+
     private Referee referee;
 
     @BeforeEach
@@ -34,5 +35,14 @@ public class RefereeTest {
 
         referee.reset();
         assertThat(computer).isNotEqualTo(referee.getComputer());
+    }
+
+    @Test
+    void 재시작_검증_테스트() {
+        String restartMessage = "1";
+        assertThat(referee.judgeRestart(restartMessage)).isTrue();
+
+        String quitMessage = "2";
+        assertThat(referee.judgeRestart(quitMessage)).isFalse();
     }
 }

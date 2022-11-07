@@ -39,4 +39,21 @@ public class ValidatorTest {
         String num = "aa";
         assertThat(validator.isNumeric(num)).isFalse();
     }
+
+    @Test
+    void 유효하지_않은_재시작_숫자_검증() {
+        String num = "3";
+        assertThatThrownBy(() -> validator.restartValidate(num)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 유효한_재시작_숫자_검증() {
+        String num1 = "1";
+        validator.restartValidate(num1);
+
+        String num2 = "2";
+        validator.restartValidate(num2);
+
+        assertThatNoException();
+    }
 }

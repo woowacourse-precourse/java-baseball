@@ -38,6 +38,18 @@ public class Referee {
         this.computer = new Computer();
     }
 
+    public boolean judgeRestart(String inputMessage) {
+        int exitMessage = Integer.valueOf(inputMessage);
+        if (exitMessage == 1) {
+            return true;
+        }
+
+        if (exitMessage == 2) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

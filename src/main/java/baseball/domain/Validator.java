@@ -1,9 +1,12 @@
 package baseball.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Validator {
+    private final static List<Integer> restartCode = new ArrayList<>(Arrays.asList(1, 2));
 
     public void isValidate(String number) {
         number = number.trim();
@@ -42,8 +45,26 @@ public class Validator {
         return listNumber.stream().distinct().count() != listNumber.size();
     }
 
+    public void restartValidate(String message) {
+        message = message.trim();
+        if (message.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        if (!isNumeric(message)) {
+            throw new IllegalArgumentException();
+        }
+
+        int exitNumber = Integer.valueOf(message);
+        if (!restartCode.contains(exitNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static List<Character> convertStringToCharList(String str) {
-        List<Character> chars = str.chars().mapToObj(e -> (char) e).collect(Collectors.toList());
+        List<Character> chars = str
+                .chars()
+                .mapToObj(e -> (char) e)
+                .collect(Collectors.toList());
 
         return chars;
     }
