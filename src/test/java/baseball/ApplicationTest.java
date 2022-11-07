@@ -46,6 +46,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 게임매적넘버_테스트() {
+        Baseball.GameStatus exitStatus = Baseball.GameStatus.EXIT;
+        assertThat(exitStatus.getGameStatus()).isEqualTo("2");
+        assertThat(Baseball.GameStatus.RESTART.getGameStatus()).isEqualTo("1");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

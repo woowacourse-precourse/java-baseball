@@ -7,6 +7,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Baseball {
+    public enum GameStatus {
+        RESTART("1"),
+        EXIT("2");
+
+        private final String status;
+
+        GameStatus(String status) {
+            this.status = status;
+        }
+
+        public String getGameStatus() {
+            return status;
+        }
+    }
     public static final int GAME_NUMBER_SIZE = 3;
 
     List<Integer> gameNumber = new ArrayList<>();

@@ -24,7 +24,7 @@ public class Application {
             startEachGame();
 
             String gameStatus = Console.readLine();
-            if ("2".equals(gameStatus)) {
+            if (Baseball.GameStatus.EXIT.getGameStatus().equals(gameStatus)) {
                 break;
             }
         }
