@@ -46,4 +46,7 @@ public class Compute {
 			System.out.println(ball+ "볼" + strike +" 스트라이크");
 		}
 	}
+
+
+
 }
