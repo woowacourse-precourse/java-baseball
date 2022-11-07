@@ -21,6 +21,7 @@ Service
 - check : Strike , Ball 처리
 - printBaseBallCount : 스트라이크 , 볼 숫자에 따라 다른 결과를 출력해준다
 - randNumGenerate : 랜덤한 숫자를 생성해준다
+- errorCheck : 입력된 숫자의 예외처리를 해준다
 
 ChangeToChar : Int숫자값을 char배열로 바꿔 반환해준다
 
