@@ -1,8 +1,11 @@
 package baseball.controller;
 
+import baseball.model.GameResult;
 import baseball.service.BaseballGameInputService;
 import baseball.service.BaseballGameService;
 import baseball.view.BaseballGameView;
+
+import java.util.List;
 
 public class BaseballGameController {
 
@@ -14,8 +17,25 @@ public class BaseballGameController {
         baseballGameView.gameIntroMessage();
     }
 
-    public void gameStart() {
-        
+    public void gameProcess() {
+        do {
+            gameStart();
+        } while (gameRestart());
+    }
+
+    private void gameStart() {
+        GameResult gameResult = new GameResult(0, 0);
+        List<Integer> answerNumbers = baseballGameService.getRandomNumber();
+
+    }
+
+
+    private boolean gameRestart() {
+        return true;
+    }
+
+    private boolean isThreeStrike(GameResult gameResult) {
+        return true;
     }
 
 }
