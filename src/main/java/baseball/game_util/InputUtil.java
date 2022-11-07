@@ -24,3 +24,7 @@ import static baseball.common.Constants.MAX_USER_NUMBER_INPUT;
         return userInput.matches(Constants.VALID_NUMBER_PATTERN);
     }
 
+    private static int[] changeStringToIntArray(String userInput) {
+        return Stream.of(userInput.split("")).mapToInt(Integer::parseInt).toArray();
+    }
+}
