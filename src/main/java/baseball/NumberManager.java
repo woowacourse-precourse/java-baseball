@@ -2,8 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.List;
-
 public class NumberManager {
 
     private static String answer;
@@ -15,9 +13,17 @@ public class NumberManager {
      * 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 생성
      */
     public static void setAnswer() {
-        List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, ANSWER_LENGTH);
-        answer = randomNumberList.toString().replaceAll("[^1-9]", "");
-//        System.out.println("answer = " + answer);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while (stringBuilder.length() != ANSWER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+            String randomNumberToString = Integer.toString(randomNumber);
+
+            if (stringBuilder.indexOf(randomNumberToString) == -1) {
+                stringBuilder.append(randomNumberToString);
+            }
+        }
+        answer = stringBuilder.toString();
     }
 
     /**
