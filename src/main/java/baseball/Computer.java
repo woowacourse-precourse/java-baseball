@@ -27,10 +27,4 @@ public class Computer {
         }
         return numberList;
     }
-
-
-    public boolean isSameNumber(List<Integer> integerList) {
-        List<Integer> number = this.number.getNumber();
-        return number.equals(integerList);
-    }
 }
