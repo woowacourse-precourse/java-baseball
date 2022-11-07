@@ -34,17 +34,16 @@ public class Application {
         return numbers;
     }
 
-    // TODO : 사용자가 숫자를 선택한 숫자를 리턴
-    public List<Integer> selectNumbers(){
-        String inputNumber = Console.readLine();
-
-        // TODO : 사용자가 잘못된 값을 입력할 시 IllegalArgumentException 발생
-        isInputMatch(inputNumber);
-
-        // TODO : 사용자가 선택한 숫자를 List에 담아 리턴
+    // TODO : 사용자에게 3자리 수를 입력 받는다.
+    public List<Integer> selectNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        for (char number : inputNumber.toCharArray())
-            numbers.add(Character.getNumericValue(number));
+
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+//        if(isLengthThree(input) && isCorrectRange(input) && isEachOtherDifferent(input)){
+//            for (char number : input.toCharArray())
+//                numbers.add(Character.getNumericValue(number));
+//        }
 
         return numbers;
     }
