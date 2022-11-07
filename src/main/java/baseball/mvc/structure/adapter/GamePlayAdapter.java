@@ -7,7 +7,7 @@ import baseball.mvc.structure.Adapter;
 import baseball.mvc.model.Model;
 import baseball.mvc.structure.ModelAndView;
 import baseball.mvc.model.Request;
-import baseball.mvc.util.GameRequestKeyConst;
+import baseball.mvc.structure.consts.GameRequestKeyConst;
 import baseball.util.GameStatus;
 
 public class GamePlayAdapter implements Adapter {

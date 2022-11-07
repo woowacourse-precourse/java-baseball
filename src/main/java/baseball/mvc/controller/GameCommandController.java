@@ -1,6 +1,6 @@
 package baseball.mvc.controller;
 
-import baseball.mvc.util.GameCommand;
+import baseball.mvc.structure.enums.GameCommand;
 import baseball.util.GameStatus;
 
 public class GameCommandController {

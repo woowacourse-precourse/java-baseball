@@ -1,4 +1,4 @@
-package baseball.mvc.util;
+package baseball.mvc.structure.consts;
 
 public final class GameRequestKeyConst {
 

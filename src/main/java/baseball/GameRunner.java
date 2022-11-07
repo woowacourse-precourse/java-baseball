@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.mvc.structure.FrontController;
-import baseball.mvc.util.ApplicationRuntimeException;
+import baseball.mvc.exception.ApplicationRuntimeException;
 import baseball.mvc.view.GameGuideView;
 import baseball.mvc.view.GameInputView;
 import baseball.util.GameStatus;

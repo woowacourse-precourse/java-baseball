@@ -1,4 +1,4 @@
-package baseball.mvc.util;
+package baseball.mvc.structure.enums;
 
 import baseball.util.GameStatus;
 import java.util.Arrays;

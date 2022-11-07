@@ -1,4 +1,4 @@
-package baseball.mvc.util;
+package baseball.mvc.exception;
 
 public class ApplicationRuntimeException extends RuntimeException {
 

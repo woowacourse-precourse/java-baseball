@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.game.GameComputer;
 import baseball.mvc.model.Model;
-import baseball.mvc.util.GameModelKeyConst;
+import baseball.mvc.structure.consts.GameModelKeyConst;
 import baseball.util.GameStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

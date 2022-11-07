@@ -7,7 +7,7 @@ import baseball.mvc.controller.GamePlayController;
 import baseball.mvc.controller.GameSettingsController;
 import baseball.mvc.structure.ModelAndView;
 import baseball.mvc.model.Request;
-import baseball.mvc.util.GameModelKeyConst;
+import baseball.mvc.structure.consts.GameModelKeyConst;
 import baseball.util.GameStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

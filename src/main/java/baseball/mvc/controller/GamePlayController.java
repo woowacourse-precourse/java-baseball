@@ -4,7 +4,7 @@ import baseball.domain.game.GameComputer;
 import baseball.domain.game.GameResult;
 import baseball.domain.number.GameNumbers;
 import baseball.mvc.model.Model;
-import baseball.mvc.util.GameModelKeyConst;
+import baseball.mvc.structure.consts.GameModelKeyConst;
 import baseball.util.GameStatus;
 
 public class GamePlayController {
