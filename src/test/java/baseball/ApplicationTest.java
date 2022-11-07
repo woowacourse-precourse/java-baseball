@@ -3,12 +3,15 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -31,5 +34,12 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    private void mockIO(String input){
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
     }
 }
