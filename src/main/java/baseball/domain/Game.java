@@ -18,7 +18,11 @@ public class Game {
     }
 
     public void pickComputerNum() {
-        this.computer = new Computer(digit, startRange, endRange);
+        this.computer = new Computer(this);
+    }
+
+    public void pickUserNum() throws IllegalArgumentException {
+        this.user.pickUserNum(this);
     }
 
     public void initTurn() {
