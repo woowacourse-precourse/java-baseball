@@ -1,8 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
