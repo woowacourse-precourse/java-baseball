@@ -15,6 +15,8 @@ public class BaseballGame {
             if (comAnswer.indexOf(randomInt) == -1)
                 comAnswer.add(randomInt);
         }
+
+        System.out.println(comAnswer);
     }
 
     private ArrayList<Integer> inputAnswer() {
@@ -29,7 +31,6 @@ public class BaseballGame {
                 throw new IllegalArgumentException();
 
             int num = Character.getNumericValue(c);
-
             // 중복값 검사
             if (userAnswer.indexOf(num) != -1)
                 throw new IllegalArgumentException();
@@ -39,5 +40,23 @@ public class BaseballGame {
 
         return userAnswer;
     }
+
+    private int checkValue(int value, int digit) {
+
+        for (int i = 0; i < 3; i ++) {
+            int comValue = comAnswer.get(i);
+
+            // 자리수와 값이 같을 경우 > 스트라이크
+            if ((value == comValue) && (digit == i))
+                return 2;
+
+            // 값만 같을 경우 > 볼
+            else if ((value == comValue))
+                return 1;
+        }
+
+        return 0;
+    }
+
 }
 
