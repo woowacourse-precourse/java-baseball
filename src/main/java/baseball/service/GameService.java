@@ -70,6 +70,11 @@ public class GameService {
         }
     }
 
+    public int getStrikeCount() {
+        return strike;
+    }
+
+
 
 }
 
