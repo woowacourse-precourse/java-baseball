@@ -24,9 +24,10 @@ class BaseBallGame {
     private static String userNumber = "";
     private static String computerNumber = "";
 
-    public static void setUserNumber(String inputNumber){
+    public static void setUserNumber(String inputNumber) {
         BaseBallGame.userNumber = inputNumber;
     }
+
     public static void setComputerNumber(String randomNumber) {
         BaseBallGame.computerNumber = randomNumber;
     }
