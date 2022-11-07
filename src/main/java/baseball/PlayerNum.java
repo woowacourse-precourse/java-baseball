@@ -23,7 +23,7 @@ public class PlayerNum implements Number {
     @Override
     public List<Integer> createNumber() {
         List<Integer> number;
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(GameComment.WELCOME_MSG);
         String input = Console.readLine();
         verifyInput(input);
         number = transformInput(input);

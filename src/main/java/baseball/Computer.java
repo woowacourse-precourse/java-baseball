@@ -5,9 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Computer {
-    private final String STRIKE = "스트라이크";
-    private final String BALL = "볼";
-    private final String NOTHING = "낫싱";
     private int strikeCount = 0;
     private int ballCount = 0;
     private Number numFactory;
@@ -34,22 +31,22 @@ public class Computer {
         }
 
         if (strikeCount == 3) {
-            System.out.println("3" + STRIKE);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return "3스트라이크";
+            System.out.println(GameComment.THREE_STRIKE);
+            System.out.println(GameComment.GAME_END_MSG);
+            return GameComment.GAME_END;
         } else if (ballCount < 1 && strikeCount < 1)
-            System.out.println(NOTHING);
+            System.out.println(GameComment.NOTHING);
         else if (strikeCount < 1)
-            System.out.println(ballCount + BALL);
+            System.out.println(ballCount + GameComment.BALL);
         else if (ballCount < 1)
-            System.out.println(strikeCount + STRIKE);
+            System.out.println(strikeCount + GameComment.STRIKE);
         else
-            System.out.println(ballCount + BALL  +" "+ strikeCount + STRIKE);
-        return "아직 게임이 진행중 입니다";
+            System.out.println(ballCount + GameComment.BALL + " " + strikeCount + GameComment.STRIKE);
+        return GameComment.NOT_GAME_END;
     }
 
     public boolean closeGame() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print(GameComment.RESTART_MSG);
         String input = Console.readLine();
         return getStatusByInput(input);
     }

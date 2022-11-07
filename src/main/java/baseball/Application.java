@@ -10,7 +10,7 @@ public class Application {
         while (true) {
             playerNumber = numFactory.createNumber();
             numFactory.verifyNumber(playerNumber);
-            if (computer.getResult(playerNumber) == "3스트라이크") {
+            if (computer.getResult(playerNumber) == GameComment.GAME_END) {
                 if (computer.closeGame()) {
                     computer = new Computer();
                     continue;
