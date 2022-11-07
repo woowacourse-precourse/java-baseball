@@ -40,6 +40,14 @@ class NumberTest {
             assertThat(number.value()).as("공 위치 값이 동일하게 대입 되었는지 확인.")
                     .isEqualTo(value);
         }
+
+        @Test
+        @DisplayName("랜덤 공 숫자값이 1~9 사이 정상 생성되는지 확인한다.")
+        void createRandomBallNumberValue() {
+            int randomNumber = Number.getRandomNumber();
+            assertThat(randomNumber).as("1~9 사이 랜덤 값 생성여부 확인")
+                    .isBetween(EXPECTED_MIN_NUMBER, EXPECTED_MAX_NUMBER);
+        }
     }
 
     @Nested

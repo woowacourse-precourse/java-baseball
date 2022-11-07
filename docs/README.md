@@ -35,31 +35,29 @@
 
 ### Ball
 
-- [ ] Ball
-  - [ ] 1~9 사이의 정수값을 가진다.
-  - [ ] 같은 Ball은 같은 값과 같은 위치이다.
+- [x] Ball
+  - [x] 1~9 사이의 정수값을 가진다.
+  - [x] 같은 Ball은 같은 값과 같은 위치이다.
 - [ ] BallType
   - [ ] 스트라이크, 볼, 낫싱
 
 ### Balls: 3개의 Ball을 갖는 컬렉션 클래스
 
-- [ ] `Randoms`의 `pickNumberInRange()`를 통해 computerBalls를 생성한다.
-  - [ ] RandomNumber를 구현 할 때 고려한다.
-- [ ] 문자열을 입력 받아 `Balls`를 생성한다.
-- [ ] 제약 조건
-  - [ ] 3개의 Ball을 갖는다.
-  - [ ] 중복된 Ball을 갖지 않는다.
-- [ ] Ball의 `position`을 `index`로 갖게끔 리팩토링 한다.
+- [x] `Randoms`의 `pickNumberInRange()`를 통해 computerBalls를 생성한다.
+- [x] 문자열을 입력 받아 `Balls`를 생성한다.
+- [x] 제약 조건
+  - [x] 3개의 Ball을 갖는다.
+  - [x] 중복된 Ball을 갖지 않는다.
 
 ### Computer
 
--[ ]RandomNumber를 통해 Balls를 생성한다.
+- [x] RandomNumber를 통해 Balls를 생성한다.
 
 ### RandomNumber
 
-- [ ] 3개의 정수값을 랜덤으로 생성한다.
-  - [ ] 1~9 사이의 정수값을 가진다.
-  - [ ] 3개의 정수값은 중복되지 않는다.
+- [x] 3개의 정수값을 랜덤으로 생성한다.
+  - [x] 1~9 사이의 정수값을 가진다.
+  - [x] 3개의 정수값은 중복되지 않는다.
 
 ### GameResult
 
