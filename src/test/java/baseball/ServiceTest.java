@@ -1,8 +1,11 @@
 package baseball;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -183,8 +186,8 @@ public class ServiceTest {
         System.setOut(new PrintStream(outputStreamCaptor));
         Map<String, Integer> ballCount = new HashMap<>();
 
-        ballCount.put("strikeCount",1);
-        ballCount.put("ballCount",2);
+        ballCount.put("strikeCount", 1);
+        ballCount.put("ballCount", 2);
         //when
         service.printBallCountMap(ballCount);
         //then
@@ -194,5 +197,77 @@ public class ServiceTest {
         System.setOut(System.out);
     }
 
+    @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 재시작")
+    @Test
+    void askEndingCondition_restart() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        //given
+        Service service = new Service();
+        int gameClearCondition = 3;
+        boolean isMaintainTrue = false;
+        String restart = "1";
+        InputStream restartInput = new ByteArrayInputStream(restart.getBytes());
+        Method testMethod = service.getClass().getDeclaredMethod("askEndingCondition", int.class);
+        testMethod.setAccessible(true);
+        Thread thread = new Thread();
+        thread.start();
+        //when
+        try {
+            thread.sleep(1000);
+            System.setIn(restartInput);
+        } catch (InterruptedException e) {
+        }
 
+        isMaintainTrue = (boolean) testMethod.invoke(service, gameClearCondition);
+        //then
+        assertEquals(true, isMaintainTrue);
+    }
+
+    @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 종료")
+    @Test
+    void askEndingCondition_stop() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        //given
+        Service service = new Service();
+        int gameClearCondition = 3;
+        boolean isMaintainFalse = true;
+        String stop = "2";
+        InputStream stopInput = new ByteArrayInputStream(stop.getBytes());
+        Method testMethod = service.getClass().getDeclaredMethod("askEndingCondition", int.class);
+        testMethod.setAccessible(true);
+        Thread thread = new Thread();
+        thread.start();
+        //when
+        try {
+            thread.sleep(1000);
+            System.setIn(stopInput);
+        } catch (InterruptedException e) {
+        }
+
+        isMaintainFalse = (boolean) testMethod.invoke(service, gameClearCondition);
+        //then
+        assertEquals(false, isMaintainFalse);
+    }
+
+    @DisplayName("끝낼건지 물어보고 해당 값에 따라 boolean을 반환하는 메서드 테스트 - 예외")
+    @Test
+    void askEndingCondition_exception() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        //given
+        Service service = new Service();
+        int gameClearCondition = 3;
+        String exception = "9";
+        InputStream exceptionInput = new ByteArrayInputStream(exception.getBytes());
+        Method testMethod = service.getClass().getDeclaredMethod("askEndingCondition", int.class);
+        testMethod.setAccessible(true);
+        Thread thread = new Thread();
+        thread.start();
+        //when
+        try {
+            thread.sleep(1000);
+            System.setIn(exceptionInput);
+        } catch (InterruptedException e) {
+        }
+        //when,then
+        assertThrows(IllegalArgumentException.class, () -> {
+            testMethod.invoke(service, gameClearCondition);
+        });
+    }
 }
