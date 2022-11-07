@@ -1,6 +1,5 @@
 package baseball;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 class UserTest {
 
@@ -29,7 +28,37 @@ class UserTest {
             List<Integer> resultList = (List<Integer>) stringToSeparatedIntegerList.invoke(user, input);
 
             //Then
-            Assertions.assertThat(resultList).isEqualTo(List.of(1, 2, 3));
+            assertThat(resultList).isEqualTo(List.of(1, 2, 3));
+        }
+
+        @Test
+        @DisplayName("문자가 포함되어 있을 때")
+        void hasLetter() throws Exception {
+            //Given
+            User user = new User();
+            Method stringToSeparatedIntegerList = User.class.getDeclaredMethod("stringToSeparatedIntegerList", String.class);
+            stringToSeparatedIntegerList.setAccessible(true);
+
+            String input = "1a3";
+            //When
+            assertThatThrownBy(() -> stringToSeparatedIntegerList.invoke(user, input))
+                    .getCause()
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("입력의 길이가 맞지 않을 때")
+        void inputLengthException() throws Exception {
+            //Given
+            User user = new User();
+            Method stringToSeparatedIntegerList = User.class.getDeclaredMethod("stringToSeparatedIntegerList", String.class);
+            stringToSeparatedIntegerList.setAccessible(true);
+
+            String input = "1234";
+            //When
+            assertThatThrownBy(() -> stringToSeparatedIntegerList.invoke(user, input))
+                    .getCause()
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 
