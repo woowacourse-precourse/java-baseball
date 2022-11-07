@@ -15,13 +15,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class MyTest {
 
     @Test
-    @DisplayName("게임 시작")
-    void 게임_시작() {
-        startGame();
-        assertThat(true).isTrue();
-    }
-
-    @Test
     @DisplayName("사용자 숫자 입력시 유효성 검증")
     void 사용자_숫자_입력시_유효성_검증() {
         String input = "123";
