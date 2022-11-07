@@ -21,7 +21,7 @@ public class Application {
             String input = Console.readLine();
             List<Integer> user = Play.getNumberFrom(input);
             Score.SCORE.of(user, computer);
-            // TODO: printScore
+            Score.SCORE.print();
             // TODO: update strikeOut
             strikeOut = true;
         }
