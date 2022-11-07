@@ -21,7 +21,7 @@ public class Referee {
         this.playerNumbers = numbers;
     }
 
-    public ResponseView answerNumber() {
+    public ViewService answerNumber() {
         return rule.answerNumber(playerNumbers);
     }
 }

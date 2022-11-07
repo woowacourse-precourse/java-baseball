@@ -1,11 +1,11 @@
 package baseball;
 
-public class ResponseView {
+public class ViewService {
 
     private final int strikeCount;
     private final int ballCount;
 
-    public ResponseView(int strikeCount, int ballCount) {
+    public ViewService(int strikeCount, int ballCount) {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }

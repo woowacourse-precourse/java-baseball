@@ -12,13 +12,13 @@ public class Rule {
         this.selectedNumbers = computerNumbers;
     }
 
-    public ResponseView answerNumber(List<Integer> target) {
+    public ViewService answerNumber(List<Integer> target) {
         for (int index = 0; index < target.size(); index++) {
             Integer value = target.get(index);
             contains(index, value);
         }
 
-        ResponseView gameMessage = new ResponseView(strikeCount, ballCount);
+        ViewService gameMessage = new ViewService(strikeCount, ballCount);
         clear();
         return gameMessage;
     }
