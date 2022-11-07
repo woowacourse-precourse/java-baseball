@@ -16,7 +16,7 @@ public class Application {
             Database data = new Database();
             data.setAnswer(GameStarter.createAnswer());
             while (!finish) {
-                data.setUserInput(game.userInput());
+                data.setUserInput(UserInput.whileRunning());
                 game.checkInputException(data.getUserInput());
                 data.setBall(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[0]);
                 data.setStrike(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[1]);
@@ -49,17 +49,6 @@ class GameManager {
     int numberSize = 3;
     int restart = 1;
     int terminate = 2;
-
-    public List<Integer> userInput() {
-        List<Integer> intUserInput = new ArrayList<>();
-        String[] stringUserInput = {};
-        System.out.print("숫자를 입력해주세요 : ");
-        stringUserInput = Console.readLine().split("");
-        for (String number : stringUserInput) {
-            intUserInput.add(Integer.parseInt(number));
-        }
-        return intUserInput;
-    }
 
     public void checkInputException(List<Integer> userInput) {
 
@@ -98,6 +87,19 @@ class GameManager {
             throw new IllegalArgumentException();
         }
         return true;
+    }
+}
+
+class UserInput {
+    static List<Integer> whileRunning() {
+        List<Integer> intUserInput = new ArrayList<>();
+        String[] stringUserInput = {};
+        System.out.print("숫자를 입력해주세요 : ");
+        stringUserInput = Console.readLine().split("");
+        for (String number : stringUserInput) {
+            intUserInput.add(Integer.parseInt(number));
+        }
+        return intUserInput;
     }
 }
 
