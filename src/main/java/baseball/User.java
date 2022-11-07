@@ -7,6 +7,7 @@ import java.util.List;
 
 public class User {
     private static final int DIGITS_SIZE = 3;
+    private static final char WRONG_DIGIT = '0';
 
     public User() {
     }
@@ -63,7 +64,7 @@ public class User {
     }
 
     private boolean isWrong(char digit) {
-        return !Character.isDigit(digit);
+        return !Character.isDigit(digit) || digit == WRONG_DIGIT;
     }
 
     private void validateLength(char[] input) {
