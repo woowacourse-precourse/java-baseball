@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -9,19 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ComputerTest extends NsTest {
     @Test
-    @DisplayName("정상 값")
-    void getInput() {
-        //given
-        //when
-        Computer opponent = new Computer();
-
-        //then
-        System.out.println(opponent.getComputer());
-    }
-
-    @Test
-    @DisplayName("주어진 렌덤 테스트")
-    void checkForApplicationTest() {
+    void getComputer_135_135() {
         assertRandomNumberInRangeTest(
                 () -> {
                     Computer opponent = new Computer();
