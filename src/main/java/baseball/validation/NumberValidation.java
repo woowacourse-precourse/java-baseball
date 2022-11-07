@@ -35,7 +35,9 @@ public class NumberValidation {
     }
 
     public void validateIsNumber(String input) {
-        if (input.matches(REGEX_NOT_NUMBER.getRegex())) {
+        Pattern pattern = Pattern.compile(REGEX_NOT_NUMBER.getRegex());
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.find()) {
             throw new IllegalArgumentException("input value must be number");
         }
     }
