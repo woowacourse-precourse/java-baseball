@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class RandomNumberMaker {
     private static final int MAX_NUM = 9;
@@ -10,7 +11,7 @@ public class RandomNumberMaker {
     private static final int BALL_LENGTH = 3;
 
 
-    static ArrayList<Integer> computer() {
+    static String computer() {
         ArrayList<Integer> computerNumber = new ArrayList<>(BALL_LENGTH);
         while (computerNumber.size() < BALL_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
@@ -18,6 +19,7 @@ public class RandomNumberMaker {
                 computerNumber.add(randomNumber);
             }
         }
-        return computerNumber;
+        return computerNumber.stream().map(String::valueOf)
+                .collect(Collectors.joining(""));
     }
 }
