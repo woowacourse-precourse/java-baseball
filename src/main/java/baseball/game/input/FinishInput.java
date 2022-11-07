@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.game.input;
 
 public enum FinishInput {
     RESTART_GAME(1),
