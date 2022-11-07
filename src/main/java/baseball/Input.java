@@ -3,7 +3,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Input {
@@ -70,5 +72,16 @@ public class Input {
         if(!inputNumber.equals("1") && !inputNumber.equals("2")) {
             throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 종료합니다.");
         }
+    }
+
+    public List<Integer> inputToList(String userNumber) {
+        List<Integer> inputUserNumbers = new ArrayList<>();
+
+        for(int index = 0; index < NUMBER_SIZE; index++) {
+            char number = userNumber.charAt(index);
+            inputUserNumbers.add(Character.getNumericValue(number));
+        }
+
+        return inputUserNumbers;
     }
 }
