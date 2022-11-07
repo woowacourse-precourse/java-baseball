@@ -21,7 +21,7 @@ public class InputNumbersException {
 
     public void isContainedOnlyNumber(String numberTypeOfString) {
         for (int i = 0; i < numberTypeOfString.length(); i++) {
-            if (!numberTypeOfString.matches(ONLY_NUMBER_REGEX)) {
+            if (!isUserInputContainsOnlyNumber(numberTypeOfString)) {
                 throw new IllegalArgumentException("1~9의 숫자만 입력해주세요.");
             }
         }
@@ -35,5 +35,12 @@ public class InputNumbersException {
         if (numSet.size() != REQUIRE_NUMBER_SIZE) {
             throw new IllegalArgumentException("중복되지 않은 수를 입력해주세요.");
         }
+    }
+
+    public boolean isUserInputContainsOnlyNumber(String numberTypeOfString) {
+        if (numberTypeOfString.matches(ONLY_NUMBER_REGEX)) {
+            return true;
+        }
+        return false;
     }
 }
