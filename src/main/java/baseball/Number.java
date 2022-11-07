@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Number {
+    private static final int NUM_LENGTH = 3;
+
     public static int readNum() {
         System.out.print("숫자를 입력해주세요 : ");
 
@@ -26,7 +28,7 @@ public class Number {
     public static int generateRandomNumber() {
         List<Integer> numList = new ArrayList<>();
 
-        while (numList.size() != 3) {
+        while (numList.size() != NUM_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numList.contains(randomNumber)) {
                 numList.add(randomNumber);
@@ -48,7 +50,7 @@ public class Number {
 
     private static void validateNumLength(int number) {
         int length = (int) (Math.log10(number) + 1);
-        if (length != 3) {
+        if (length != NUM_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -82,7 +84,7 @@ public class Number {
         List<Integer> eachDigits = new ArrayList<>();
 
         int denominator = 100;
-        for (int index = 0; index < 3; index++) {
+        for (int index = 0; index < NUM_LENGTH; index++) {
             eachDigits.add(number / denominator);
 
             number %= denominator;
@@ -93,7 +95,7 @@ public class Number {
 
     public static int numListToThreeDigits(List<Integer> eachDigits) {
         int threeDigits = 0;
-        for (int index = 0; index < 2; index++) {
+        for (int index = 0; index < NUM_LENGTH - 1; index++) {
             threeDigits += eachDigits.get(index);
             threeDigits *= 10;
         }

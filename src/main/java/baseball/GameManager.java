@@ -6,6 +6,8 @@ import static baseball.Number.generateRandomNumber;
 import static baseball.Player.guessAnswer;
 
 public class GameManager {
+    private static final int RESTART_INPUT = 1;
+    private static final int END_INPUT = 2;
 
     public static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -13,6 +15,7 @@ public class GameManager {
         while (startRound()) {
         }
     }
+
     public static boolean startRound() {
         int opponentNum = generateRandomNumber();
 
@@ -35,11 +38,11 @@ public class GameManager {
             throw new IllegalArgumentException();
         }
 
-        if (!(inputNum == 1 || inputNum == 2)) {
+        if (!(inputNum == RESTART_INPUT || inputNum == END_INPUT)) {
             throw new IllegalArgumentException();
         }
 
-        if (inputNum == 1) {
+        if (inputNum == RESTART_INPUT) {
             return true;
         }
         return false;
