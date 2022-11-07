@@ -9,4 +9,20 @@ public class BaseballController {
     public BaseballController() {
         this.baseballService = new BaseballService();
     }
+
+    // 게임 생성
+    public void createGame() {
+        baseballService.welcome();
+        do {
+            startGame();
+        } while (baseballService.reStart());
+    }
+
+    // 게임 시작
+    private void startGame() {
+        baseballService.initGame();
+        do {
+            baseballService.playBaseballGame();
+        } while (!baseballService.isCorrect());
+    }
 }
