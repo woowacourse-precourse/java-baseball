@@ -2,12 +2,12 @@ package baseball.controller;
 
 import baseball.validator.PlayerInputValidator;
 import baseball.view.GameView;
-import baseball.view.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.model.Computer;
 import baseball.model.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -75,8 +75,19 @@ public class GameController {
     public void inputPlayerNumbers() {
         gameView.printAskingForPlayerInput();
         String input = Console.readLine();
-        List<Integer> inputNumberList = playerInputValidator.getDigitList(input);
+        playerInputValidator.checkPlayerInput(input);
+        List<Integer> inputNumberList = changeInputToList(input);
         player.setPlayerNumbers(inputNumberList);
+    }
+
+    private List<Integer> changeInputToList(String input) {
+        List<Integer> inputNumberList = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            int digit = input.charAt(i);
+            inputNumberList.add(digit);
+        }
+
+        return inputNumberList;
     }
 
     public int getBallCount() {
