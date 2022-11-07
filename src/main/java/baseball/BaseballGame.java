@@ -51,8 +51,12 @@ public class BaseballGame {
             System.out.print(ballCount + "볼 " + strikeCount + "스트라이크\n");
         }
         if (strikeCount==3) {
-            // TODO: 게임 종료 함수 호출
+            endGame();
         }
+    }
+
+    public void endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public void startGame() {
