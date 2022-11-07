@@ -17,6 +17,12 @@ public class Player {
         } while ((!gameManager.isGameClear()));
     }
 
+    public String selectOptionAfterGameClear() {
+        String input = Console.readLine();
+        validator.validateRestartOption(input);
+        return input;
+    }
+
     private String inputAnswer() {
         String input = Console.readLine();
         validator.isWrongInputValue(input);

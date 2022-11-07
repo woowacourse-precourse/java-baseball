@@ -234,8 +234,8 @@ class ApplicationTest extends NsTest {
         @Test
         void wrongRestartInput() {
             assertRandomNumberInRangeTest(() -> {
-                run("246", "3","3","3","2");
-                assertThat(output()).contains("3스트라이크", "올바른 값을 입력해주세요","게임을 완전히 종료합니다.");
+                assertThatThrownBy(() -> run("246", "3"))
+                        .isInstanceOf(IllegalArgumentException.class);
             }, 2, 4, 6);
         }
 

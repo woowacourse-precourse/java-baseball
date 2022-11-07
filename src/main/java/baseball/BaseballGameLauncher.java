@@ -15,28 +15,19 @@ public class BaseballGameLauncher {
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
-        Player baseballGame = new Player();
+        Player player = new Player();
         do {
-            baseballGame.play();
+            player.play();
+            System.out.println(GAME_RESTART_MESSAGE);
             System.out.println(GAME_CLEAR_MESSAGE);
-        } while (isRestartGame());
+        } while (isRestartGame(player.selectOptionAfterGameClear()));
         System.out.println(GAME_CLOSE_MESSAGE);
     }
 
-    private boolean isRestartGame() {
-        System.out.println(GAME_RESTART_MESSAGE);
-
-        String input = Console.readLine();
-
+    private boolean isRestartGame(String input) {
         if (input.equals(RESTART_GAME)) {
             return true;
         }
-
-        if (input.equals(CLOSE_GAME)) {
-            return false;
-        }
-
-        System.out.println(INVALID_VALUE_MESSAGE);
-        return isRestartGame();
+        return false;
     }
 }

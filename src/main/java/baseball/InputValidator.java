@@ -21,4 +21,10 @@ public class InputValidator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateRestartOption(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
