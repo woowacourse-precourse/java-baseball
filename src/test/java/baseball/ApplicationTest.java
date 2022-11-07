@@ -88,38 +88,6 @@ class ApplicationTest extends NsTest {
         assertThat(compareBall(computerBall, userBall)).isEqualTo(result);
     }
 
-    @Test
-    void restartGame_에서_재시작의_경우_테스트() {
-        String input = "1";
-        computerBall = Arrays.asList(1, 2, 3);
-        List<Integer> result = Arrays.asList(1, 2, 3);
-
-        restartGame(input);
-
-        assertThat(computerBall.equals(result)).isFalse();
-    }
-
-    @Test
-    void restartGame_에서_종료의_경우_테스트() {
-        String input = "2";
-        restart = false;
-        boolean result = false;
-
-        restartGame(input);
-
-        assertThat(computerBall.equals(result)).isFalse();
-    }
-
-    @Test
-    void restartGame_에서_예외의_경우_테스트() {
-        String input = "4";
-
-        assertThatThrownBy(() -> {
-            restartGame(input);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-
     @Override
     public void runMain() {
         Application.main(new String[]{});

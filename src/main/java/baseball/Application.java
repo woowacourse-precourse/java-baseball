@@ -10,26 +10,31 @@ import java.util.Objects;
 import static baseball.Exception.*;
 
 public class Application {
-    static List<Integer> computerBall;
-    static boolean restart = false;
 
     public static void main(String[] args) {
+        List<Integer> computerBall = makeRandomBall();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computerBall = makeRandomBall();
 
-        while (!restart) {
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userBall = StringToIntList(Console.readLine());
             String result = compareBall(computerBall, userBall);
 
-            if (result.equals("3스트라이크")) {
+            if (!result.equals("3스트라이크")) {
                 System.out.println(result);
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                String input = Console.readLine();
-                restartGame(input);
+                continue;
+            }
+
+            System.out.println(result);
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String input = Console.readLine();
+            if (Objects.equals(input, "1")) {
+                computerBall = makeRandomBall();
+            } else if (Objects.equals(input, "2")) {
+                break;
             } else {
-                System.out.println(result);
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -83,15 +88,5 @@ public class Application {
         }
 
         return ball + "볼 " + strike + "스트라이크";
-    }
-
-    public static void restartGame(String input) {
-        if (Objects.equals(input, "1")) {
-            computerBall = makeRandomBall();
-        } else if (Objects.equals(input, "2")) {
-            restart = true;
-        } else {
-            throw new IllegalArgumentException();
-        }
     }
 }
