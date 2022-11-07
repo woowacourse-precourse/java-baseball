@@ -20,6 +20,10 @@ public class Counter {
         this.countStrike();
     }
 
+    protected Map<String, Integer> getCount(){
+        return this.count;
+    }
+
     protected Map<String, Integer> countBall(){
         this.ballCount = (int) answer.stream()
                 .filter(inputData -> input.stream().anyMatch(Predicate.isEqual(inputData)))
