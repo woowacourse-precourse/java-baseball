@@ -2,13 +2,17 @@ package baseball.utils;
 
 public class Validation {
     public static void checkInputNumber(String userList) {
-        checkRange(userList);
+        checkLength(userList);
+        checkNumberRange(userList);
         checkSameNumber(userList);
     }
 
-    public static void checkRange(String userList) {
+    public static void checkLength(String userList) {
         if (userList.length() != 3)
             throw new IllegalArgumentException("문자의 길이가 다릅니다.");
+    }
+
+    public static void checkNumberRange(String userList) {
         if (!userList.matches("[1-9][1-9][1-9]"))
             throw new IllegalArgumentException("숫자를 입력해주세요.");
     }
