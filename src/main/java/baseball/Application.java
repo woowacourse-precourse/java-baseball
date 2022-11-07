@@ -1,9 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.List;
 import java.util.ArrayList;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static List<Integer> makeRandomNumber() {
@@ -17,8 +18,14 @@ public class Application {
         return computer;
     }
 
+    public static int askNumber() {
+        String userNumberString = readLine();
+        return Integer.parseInt(userNumberString);
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumber = makeRandomNumber();
+        int userNumber = askNumber();
     }
 }
