@@ -9,8 +9,7 @@ import java.util.List;
 public class ValidationNumber {
 
     public List<Integer> checkTotalAndConvertIntegerList(String number) {
-        checkIsNumberAndNotHaveZero(number);
-        // 위의 check를 통과했다면 주어진 number에는 숫자만 존재한다. parseInt() 에러 발생 X
+        checkHaveZero(number);
         List<Integer> numberList = stringToIntegerList(number);
         checkOverlap(numberList);
         checkNumberSize(numberList);
@@ -21,15 +20,23 @@ public class ValidationNumber {
         List<Integer> returnList = new ArrayList<>();
         String[] split = number.split("");
         for (String target : split) {
-            returnList.add(Integer.parseInt(target));
+            returnList.add(stringToInt(target));
         }
         return returnList;
     }
 
-    private void checkIsNumberAndNotHaveZero(String number) {
-        String numberRegex = "^[1-9]*$";
-        if (!number.matches(numberRegex)) {
-            throw new IllegalArgumentException(ExceptionType.NOT_NUMBER_OR_HAVE_ZERO.getMessage());
+    private int stringToInt(String target) {
+        try {
+            return Integer.parseInt(target);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionType.NOT_NUMBER.getMessage());
+        }
+    }
+
+    private void checkHaveZero(String number) {
+        String noZeroRegex = "^((?!0).)*$";
+        if (!number.matches(noZeroRegex)) {
+            throw new IllegalArgumentException(ExceptionType.HAVE_ZERO.getMessage());
         }
     }
 
