@@ -15,8 +15,15 @@ public class Game {
     // 스트라이크 , 볼
     private List<Integer> count;
 
+    // { true, false } = { 다시한다, 다시 안한다 }
+    private boolean reStart;
+
+    // { true, false } = { 게임 종료, 게임 진행 중 }
+    private boolean endGame = false;
+
     private final String startComment = "숫자 야구 게임을 시작합니다.";
     private final String inputComment = "숫자를 입력해주세요 : ";
+    private final String endComment = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요\n";
 
     // 랜덤 넘버 생성 기능
     private List<Integer> makeRandomNumber() {
@@ -75,21 +82,40 @@ public class Game {
         } else {
             System.out.println(count.get(1) + "볼 " + count.get(0) + "스트라이크");
         }
+
+        if (count.get(0) == 3) {
+            System.out.println(endComment);
+            String restartQuestion = Console.readLine();
+            if (restartQuestion.equals("1")) {
+                this.reStart = true;
+            } else {
+                this.reStart = false;
+            }
+        }
     }
 
     public Game() {
+        System.out.println(startComment);
         // 랜덤 넘버 생성
         this.computer = makeRandomNumber();
 
-        // 사용자 입력 받기
-        this.inputNumber = input();
+        while (true) {
+            System.out.print(inputComment);
+            // 사용자 입력 받기
+            this.inputNumber = input();
+
+            // 입력에 대한 결과 저장
+            checkInput();
+
+            // 입력에 대한 결과 출력
+            out();
+
+            if(endGame)
+                break;
+        }
     }
 
-    public List<Integer> getComputer() {
-        return computer;
-    }
-
-    public List<Integer> getInputNumber() {
-        return inputNumber;
+    public boolean isReStart() {
+        return reStart;
     }
 }
