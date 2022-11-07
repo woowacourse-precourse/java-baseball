@@ -8,9 +8,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 public class Generatenumber {
-    private final int range_start = 1;
-    private final int range_end = 9;
-    private final int input_size =3;
     private List<Integer> randomNum;
 
     public Generatenumber() {
@@ -18,17 +15,15 @@ public class Generatenumber {
     }
 
     public List<Integer> getNum() {
-        List<Integer> computerNum = generateNumber();
-        return computerNum;
+        return randomNum;
     }
 
-    public List<Integer> generateNumber() {
+    public void generateNumber() {
         HashSet<Integer> numbers = new LinkedHashSet<>();
-        while(numbers.size()<input_size){
-            int randomNum = Randoms.pickNumberInRange(range_start, range_end);
-            numbers.add(randomNum);
+        while (numbers.size() < 3) {
+            int number = Randoms.pickNumberInRange(1, 9);
+            numbers.add(number);
         }
         randomNum = new ArrayList<>(numbers);
-        return randomNum;
     }
 }
