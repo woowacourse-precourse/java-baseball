@@ -1,11 +1,10 @@
 package baseball.view;
 
-import baseball.view.PlayerView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+
 
 public class PlayerViewTest {
 
@@ -23,8 +22,8 @@ public class PlayerViewTest {
         System.setOut(new PrintStream(out));
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        playerView.readInput();
-        assertThat(playerView.getInput()).isEqualTo(input);
+        String result = playerView.getPlayerOpinion();
+        assertThat(result).isEqualTo(input);
     }
 
     @Test
@@ -32,7 +31,7 @@ public class PlayerViewTest {
         String input = "abc";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(()->playerView.readInput())
+        assertThatThrownBy(()->playerView.getPlayerOpinion())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
@@ -42,7 +41,7 @@ public class PlayerViewTest {
         String input = "0123";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(()->playerView.readInput())
+        assertThatThrownBy(()->playerView.getPlayerOpinion())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
@@ -52,7 +51,7 @@ public class PlayerViewTest {
         String input = "012";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(()->playerView.readInput())
+        assertThatThrownBy(()->playerView.getPlayerOpinion())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
@@ -62,7 +61,7 @@ public class PlayerViewTest {
         String input = "112";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(()->playerView.readInput())
+        assertThatThrownBy(()->playerView.getPlayerOpinion())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력은 1부터 9중 서로 다른 3개의 숫자여야 합니다.");
     }
