@@ -21,7 +21,7 @@ public class Game {
             player.sayNumbers(readLine);
             player.giveNumbersToReferee(referee);
 
-            GameMessage gameMessage = referee.answerNumber();
+            ResponseView gameMessage = referee.answerNumber();
             helper = gameMessage.check();
         } while (!helper);
         {

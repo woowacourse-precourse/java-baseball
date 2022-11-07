@@ -19,7 +19,7 @@ public class Referee {
         this.playerNumbers = numbers;
     }
 
-    public GameMessage answerNumber() {
+    public ResponseView answerNumber() {
         return rule.answerNumber(playerNumbers);
     }
 }
