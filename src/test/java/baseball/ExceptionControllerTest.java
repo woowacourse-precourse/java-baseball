@@ -62,4 +62,23 @@ class ExceptionControllerTest {
                     .hasMessageContaining("서로 다른 세 개의 수를 입력해야 합니다.");
         }
     }
+
+    @Nested
+    class 종료코드_입력이_유효하지_않을_때_예외발생_테스트 {
+        @Test
+        void 유효하지_않은_숫자가_입력된_경우_1() {
+            String input = "3";
+            assertThatThrownBy(() -> ExceptionController.handleInvalidFinishCode(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력해야 합니다.");
+        }
+
+        @Test
+        void 유효하지_않은_숫자가_입력된_경우_2() {
+            String input = "*1";
+            assertThatThrownBy(() -> ExceptionController.handleInvalidFinishCode(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("1 또는 2를 입력해야 합니다.");
+        }
+    }
 }
