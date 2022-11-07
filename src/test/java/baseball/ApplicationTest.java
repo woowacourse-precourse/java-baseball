@@ -55,8 +55,21 @@ class ApplicationTest extends NsTest {
     @Test
     void strike() {
         /*given*/
+        int strikeTest = 1;
+        List<Integer> userInput = new ArrayList<>();
+        userInput.add(1);
+        userInput.add(2);
+        userInput.add(3);
+        List<Integer> computerInput = new ArrayList<>();
+        computerInput.add(1);
+        computerInput.add(5);
+        computerInput.add(7);
+
         /*when*/
+        int testOuput = game.strike(userInput, computerInput);
+
         /*then*/
+        assertThat(testOuput).isEqualTo(strikeTest);
     }
 
     @Test
