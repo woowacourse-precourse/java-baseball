@@ -6,20 +6,20 @@ public enum Decision {
     RE_GAME("1"),
     END("2");
 
-    private final String signal;
+    private final String decision;
 
-    Decision(String signal) {
-        this.signal = signal;
+    Decision(String decision) {
+        this.decision = decision;
     }
 
     public static Decision from(String input) {
         return Arrays.stream(values())
-                .filter(signal -> signal.match(input))
+                .filter(decision -> decision.match(input))
                 .findAny()
                 .orElseThrow(IllegalArgumentException::new);
     }
 
     private boolean match(String input) {
-        return signal.equals(input);
+        return decision.equals(input);
     }
 }
