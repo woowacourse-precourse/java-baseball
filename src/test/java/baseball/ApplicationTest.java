@@ -6,19 +6,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.ClassOrderer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestClassOrder;
 
 @DisplayName("숫자야구 게임은")
-@TestClassOrder(ClassOrderer.OrderAnnotation.class)
 class ApplicationTest extends NsTest {
 
     @Nested
-    @Order(1)
     @DisplayName("게임 종료 후")
     class 종료_테스트 {
 
@@ -36,7 +31,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    @Order(2)
     @DisplayName("잘못된 값을 입력할 경우")
     class 오류_테스트 {
 
