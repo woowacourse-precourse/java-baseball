@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
-import validator.InputValidator;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,15 +13,36 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class NumberTest extends NsTest {
 
     @Test
-    void 컴퓨터_숫자_검증() {
+    void 컴퓨터_숫자_크기_테스트() {
         BaseballNumber baseballNumber = new BaseballNumber();
-        List<Integer> numbers = baseballNumber.makeRandomNumber();
 
-        String number = numbers.stream()
+        List<Integer> computerNumber = baseballNumber.makeRandomNumber();
+
+        assertThat(computerNumber).size().isEqualTo(3);
+    }
+
+    @Test
+    void 컴퓨터_숫자_범위_테스트() {
+        BaseballNumber baseballNumber = new BaseballNumber();
+
+        List<Integer> number = baseballNumber.makeRandomNumber();
+        String computerNumber = number.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        assertThat(InputValidator.isRightInput(number)).isTrue();
+        assertThat(computerNumber).matches("[1-9]*$");
+    }
+
+    @Test
+    void 컴퓨터_숫자_중복_테스트() {
+        BaseballNumber baseballNumber = new BaseballNumber();
+
+        List<Integer> number = baseballNumber.makeRandomNumber();
+        List<Integer> computerNumber = number.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        assertThat(computerNumber).size().isEqualTo(3);
     }
 
     @Test
