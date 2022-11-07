@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.game_util.InputUtil;
+import baseball.game_util.RandomUtil;
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -82,4 +85,14 @@ class ApplicationTest extends NsTest {
                 }, 1, 2, 3
         );
     }
+    @Test
+    void 게임_종료후_1과2가_아닌_인풋이_들어온_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("123", "0"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                }, 1, 2, 3
+        );
+    }
+
 }
