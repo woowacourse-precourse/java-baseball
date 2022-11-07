@@ -27,5 +27,6 @@ public class Game {
             rule.getHint(gamer.inputNumbers(), computer.getRandomNumbers());
         }
 
+        printGameOver();
     }
 }
