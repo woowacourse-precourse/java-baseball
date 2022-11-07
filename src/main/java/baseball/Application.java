@@ -23,25 +23,29 @@ public class Application {
         while (true) {
 
             targetNumber = makeTargetNumber();
-            while (true) {
-                //사용자 값 입력
-                getNumberPrint();
-                userInput = Console.readLine();
-                validUserInput(Integer.parseInt(userInput));
-
-                BallAndStrike ballAndStrike = compareNumbers(targetNumber, Integer.parseInt(userInput));
-                if (ballAndStrike.getStrike() == 3) {
-                    gameOverPrint();
-                    break;
-                }
-                ballAndStrike.print();
-            }
+            userAttempt();
 
             //게임 진행할지 여부
             gameContinuePrint();
             userInput = Console.readLine();
             validGameContinueInput(Integer.parseInt(userInput));
             if (userInput.equals("2")) break;
+        }
+    }
+
+    private static void userAttempt() {
+        while (true) {
+            //사용자 값 입력
+            getNumberPrint();
+            userInput = Console.readLine();
+            validUserInput(Integer.parseInt(userInput));
+
+            BallAndStrike ballAndStrike = compareNumbers(targetNumber, Integer.parseInt(userInput));
+            if (ballAndStrike.getStrike() == 3) {
+                gameOverPrint();
+                break;
+            }
+            ballAndStrike.print();
         }
     }
 
