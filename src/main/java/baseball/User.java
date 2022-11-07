@@ -20,6 +20,7 @@ public class User {
         numbers.clear();
         System.out.print("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
+        System.out.println(inputNum);
         if (checkInvalid(inputNum)) {
             throw new IllegalArgumentException();
         }
