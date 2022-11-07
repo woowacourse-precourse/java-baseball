@@ -18,7 +18,7 @@ public class Game {
         do {
             hitCount = initHitCount();
             Integer totalNumber = inputTotalNumber();
-            hitCount = checkTotalNumberCount(totalNumber, secretNumber);
+            checkTotalNumberCount(totalNumber, secretNumber, hitCount);
             showHitCount(hitCount);
         } while(!checkWin(hitCount));
         System.out.println("3대의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -38,8 +38,8 @@ public class Game {
     }
 
 
-    private static List<Integer> checkTotalNumberCount(Integer totalNumber, List<Integer> secretNumber) {
-        return new ArrayList<>();
+    private static void checkTotalNumberCount(Integer totalNumber, List<Integer> secretNumber, List<Integer> hitCount) {
+
     }
 
     private static List<Integer> initHitCount() {
