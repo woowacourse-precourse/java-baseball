@@ -15,8 +15,15 @@ class game{
     List<Integer> computer;
     List<Integer> my_num_list;
     int my_num;
+    int ball_cnt;
+    int strike_cnt;
+    boolean end_gamer=false;
     Scanner sc = new Scanner(System.in);
     public game(){};
+    public void ball_strike_setter(){
+        ball_cnt=0;
+        strike_cnt=0;
+    }
     public void setComputerNum(){
         this.computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -30,10 +37,27 @@ class game{
         System.out.print("숫자를 입력해주세요 : ");
         this.my_num = sc.nextInt();
     }
-    public void checker(){
+    public void ball_counter(){
+        makeMynumToList();
+        ball_strike_setter();
+        for(int i=0;i<computer.size();i++){
+            ball_checker(i);
+        }
     }
-    public void reStarter(){
-
+    public void ball_checker(int my_index){
+        int temp_my = my_num_list.get(my_index);
+        int temp_cmp = computer.get(my_index);
+        if((temp_cmp != temp_my)&&computer.contains(temp_my)){
+            this.ball_cnt++;
+        } else if (temp_cmp==temp_my) {
+            this.strike_cnt++;
+        }
+    }
+    public void makeMynumToList(){
+        my_num_list.clear();
+        my_num_list.add(my_num/100);
+        my_num_list.add((my_num%100)/10);
+        my_num_list.add(my_num%10);
     }
 
 }
