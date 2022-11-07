@@ -5,10 +5,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 class StrikeScoreTest {
+    @DisplayName("올바른 스코어인지 확인")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(ints = {1, 2, 3})
+    void correct_score(int score) {
+        assertThatNoException()
+                .isThrownBy(() -> new StrikeScore(score));
+    }
+    
     @Test
     @DisplayName("3스트라이크 => 게임 종료인지 확인")
     void is_end() {

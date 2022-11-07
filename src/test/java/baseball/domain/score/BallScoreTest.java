@@ -19,7 +19,7 @@ class BallScoreTest {
     @DisplayName("올바른 스코어인지 확인")
     @ParameterizedTest(name = "{displayName} => {0}")
     @ValueSource(ints = {1, 2, 3})
-    void correct_position(int score) {
+    void correct_score(int score) {
         assertThatNoException()
                 .isThrownBy(() -> new BallScore(score));
     }
