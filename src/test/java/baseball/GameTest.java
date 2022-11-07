@@ -139,4 +139,47 @@ class GameTest {
         }
     }
 
+    @Nested
+    @DisplayName("게임을 다시 할것인지")
+    class IsPlayingNewGame {
+
+        @Test
+        @DisplayName("게임을 다시 시작")
+        void restart() throws Exception {
+            //Given
+            Game game = new Game();
+
+            //When
+            boolean playingNewGame = game.isPlayingNewGame("1");
+
+            //Then
+            assertThat(playingNewGame).isTrue();
+        }
+
+        @Test
+        @DisplayName("게임을 종료함")
+        void gameEnd() throws Exception {
+            //Given
+            Game game = new Game();
+
+            //When
+            boolean playingNewGame = game.isPlayingNewGame("2");
+
+            //Then
+            assertThat(playingNewGame).isFalse();
+        }
+
+        @Test
+        @DisplayName("잘못된 선택")
+        void illegalChoice() throws Exception {
+            //Given
+            Game game = new Game();
+
+            //When
+            //Then
+            assertThatThrownBy(() -> game.isPlayingNewGame("3"))
+                    .isInstanceOf(IllegalArgumentException.class);
+
+        }
+    }
 }
