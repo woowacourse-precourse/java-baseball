@@ -49,7 +49,7 @@ public class Controller {
 
     private void running() {
         resetScore();
-        ball = countBall(computerNumber, userNumber);
+        countBall();
         modifyStrikeBallCount();
         OutputView.printResult(ball, strike);
         if (strike == END_STRIKE_COUNT) {
@@ -92,13 +92,12 @@ public class Controller {
         return false;
     }
 
-    private int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
+    private void countBall() {
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
                 ball += 1;
             }
         }
-        return ball;
     }
 
     private void resetScore() {
