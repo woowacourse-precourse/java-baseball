@@ -30,6 +30,10 @@ public class GameController {
         outputView.printMissionCompleteMessage();
     }
 
+    public void startNumberBaseballGame() {
+        gameService.startNumberBaseballGame();
+    }
+
 
 
 
