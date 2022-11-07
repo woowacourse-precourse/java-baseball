@@ -6,19 +6,43 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static baseball.GameStatus.*;
 
 public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> answer = getRandomNumber();
-        System.out.println("answer = " + answer.toString());
+        List<Integer> answer = null;
+        GameStatus now = RESTART;
+        while (!now.equals(END)) {
+            if (now.equals(RESTART)) {
+                answer = getRandomNumber();
+                now = IN_GAME;
+            }
+            List<Integer> guess = getUserAnswerList(getInputString());
+            List<Integer> ballAndStrike = getBallCountAndStrikeCount(answer, guess);
+            printResult(ballAndStrike.get(0), ballAndStrike.get(1));
 
-        List<Integer> guess = getUserAnswerList(getInputString());
-        List<Integer> ballAndStrike = getBallCountAndStrikeCount(answer, guess);
-        printResult(ballAndStrike.get(0), ballAndStrike.get(1));
+            // 정답인 경우
+            if (ballAndStrike.get(1) == 3) {
+                printSuccess();
+                String nextStatus = Console.readLine();
+                now = Arrays.stream(GameStatus.values())
+                        .filter(gameStatus -> gameStatus.getNumber().equals(nextStatus))
+                        .findFirst()
+                        .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다."));
+            }
+        }
 
+    }
+
+    /**
+     * 정답일 경우 출력되는 내용
+     */
+    private static void printSuccess() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     /**
@@ -84,6 +108,9 @@ public class Application {
         return List.of(ballCount, strikeCount);
     }
 
+    /**
+     * 볼 개수, 스트라이크 개수에 따라 결과 출력
+     */
     private static void printResult(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.print("낫싱");
