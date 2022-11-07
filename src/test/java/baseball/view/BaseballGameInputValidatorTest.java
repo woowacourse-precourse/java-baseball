@@ -15,7 +15,7 @@ class BaseballGameInputValidatorTest {
         String input = "12";
 
         // when
-        final boolean result = BaseballGameInputValidator.validate(input);
+        final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
 
         // then
         assertFalse(result);
@@ -28,7 +28,7 @@ class BaseballGameInputValidatorTest {
         String input = "112";
 
         // when
-        final boolean result = BaseballGameInputValidator.validate(input);
+        final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
 
         // then
         assertFalse(result);
@@ -41,7 +41,7 @@ class BaseballGameInputValidatorTest {
         String input = "1a2";
 
         // when
-        final boolean result = BaseballGameInputValidator.validate(input);
+        final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
 
         // then
         assertFalse(result);
@@ -54,7 +54,7 @@ class BaseballGameInputValidatorTest {
         String input = "123";
 
         // when
-        final boolean result = BaseballGameInputValidator.validate(input);
+        final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
 
         // then
         assertTrue(result);
