@@ -12,7 +12,7 @@ public class Computer {
         this.answer = createAnswer();
     }
 
-    public int countBall(String inputNum, int strike) {
+    public int countBall(String inputNum) {
         int count = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -20,9 +20,13 @@ public class Computer {
             if (answer.contains(String.valueOf(inputNum.charAt(i)))) {
                 count++;
             }
+
+            if (answer.charAt(i) == inputNum.charAt(i)) {
+                count--;
+            }
         }
 
-        return count - strike;
+        return count;
     }
 
     public int countStrike(String inputNum) {

@@ -59,17 +59,32 @@ class ComputerTest {
     @Test
     void ball_점수_확인_3점() {
         Computer result = new Computer();
+        StringBuilder sb = new StringBuilder();
 
-        assertThat(result.countBall(result.getAnswer(),0))
+        sb.append(result.getAnswer().charAt(2))
+                .append(result.getAnswer().charAt(0))
+                .append(result.getAnswer().charAt(1));
+
+        System.out.println(sb);
+
+        assertThat(result.countBall(sb.toString()))
                 .isEqualTo(3);
+
+    }
+    @Test
+    void ball_점수_확인_3스트라이크_0점() {
+        Computer result = new Computer();
+
+        assertThat(result.countBall(result.getAnswer()))
+                .isEqualTo(0);
 
     }
 
     @Test
-    void ball_점수_확인_0점() {
+    void ball_점수_확인_0스트라이크_0점() {
         Computer result = new Computer();
 
-        assertThat(result.countBall("000",0))
+        assertThat(result.countBall("000"))
                 .isEqualTo(0);
 
     }

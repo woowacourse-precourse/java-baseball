@@ -16,7 +16,7 @@ public class Game {
             gameException.inputException(inputNum);
 
             int strike = computer.countStrike(inputNum);
-            int ball = computer.countBall(inputNum, strike);
+            int ball = computer.countBall(inputNum);
 
             endPoint = checkScore(strike, ball);
         }
