@@ -29,10 +29,9 @@ class ApplicationTest extends NsTest {
     @Test
     void generateRandomNumber_테스트() {
         //given
-        final Utils T = new Utils();
 
         //when
-        final List<Integer> computerRandomNumber = T.generateRandomNumber(3);
+        final List<Integer> computerRandomNumber = Utils.generateRandomNumber(3);
 
         //then
         assertThat(computerRandomNumber.size())
@@ -146,16 +145,15 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringOneOrTwo_정상처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "1";
         final String case2 = "2";
 
         //when
         final Throwable thrown1 = catchThrowable(() -> {
-            T.validateStringOneOrTwo(case1);
+            Utils.validateStringOneOrTwo(case1);
         });
         final Throwable thrown2 = catchThrowable(() -> {
-            T.validateStringOneOrTwo(case2);
+            Utils.validateStringOneOrTwo(case2);
         });
 
         //then
@@ -166,7 +164,6 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringOneOrTwo_예외처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "3";
         final String case2 = "294";
         final String case3 = "Exception String";
@@ -175,16 +172,16 @@ class ApplicationTest extends NsTest {
 
         //when
         final Throwable thrown1 = catchThrowable(() -> {
-            T.validateStringOneOrTwo(case1);
+            Utils.validateStringOneOrTwo(case1);
         });
         final Throwable thrown2 = catchThrowable(() -> {
-            T.validateStringOneOrTwo(case2);
+            Utils.validateStringOneOrTwo(case2);
         });
         final Throwable thrown3 = catchThrowable(() -> {
-            T.validateStringOneOrTwo(case3);
+            Utils.validateStringOneOrTwo(case3);
         });
         final Throwable thrown4 = catchThrowable(() -> {
-            T.validateStringOneOrTwo(case4);
+            Utils.validateStringOneOrTwo(case4);
         });
 
         //then
@@ -209,16 +206,15 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringThreeDifferentDigits_정상처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "384";
         final String case2 = "247";
 
         //when
         final Throwable thrown1 = catchThrowable(() -> {
-            T.validateStringThreeDifferentDigits(case1);
+            Utils.validateStringThreeDifferentDigits(case1);
         });
         final Throwable thrown2 = catchThrowable(() -> {
-            T.validateStringThreeDifferentDigits(case2);
+            Utils.validateStringThreeDifferentDigits(case2);
         });
 
         //then
@@ -229,7 +225,6 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringThreeDifferentDigits_예외처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "000";
         final String case2 = "272";
         final String case3 = "12345";
@@ -238,19 +233,19 @@ class ApplicationTest extends NsTest {
 
         //when
         final Throwable thrown1 = catchThrowable(() -> {
-            T.validateStringThreeDifferentDigits(case1);
+            Utils.validateStringThreeDifferentDigits(case1);
         });
         final Throwable thrown2 = catchThrowable(() -> {
-            T.validateStringThreeDifferentDigits(case2);
+            Utils.validateStringThreeDifferentDigits(case2);
         });
         final Throwable thrown3 = catchThrowable(() -> {
-            T.validateStringThreeDifferentDigits(case3);
+            Utils.validateStringThreeDifferentDigits(case3);
         });
         final Throwable thrown4 = catchThrowable(() -> {
-            T.validateStringThreeDifferentDigits(case4);
+            Utils.validateStringThreeDifferentDigits(case4);
         });
         final Throwable thrown5 = catchThrowable(() -> {
-            T.validateStringThreeDifferentDigits(case5);
+            Utils.validateStringThreeDifferentDigits(case5);
         });
 
         //then
@@ -279,20 +274,19 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringLength_정상처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "134";
         final String case2 = "";
         final String case3 = "abcde fg";
 
         //when
         final Throwable result1 = catchThrowable(() -> {
-            T.validateStringLength(case1, 3);
+            Utils.validateStringLength(case1, 3);
         });
         final Throwable result2 = catchThrowable(() -> {
-            T.validateStringLength(case2, 0);
+            Utils.validateStringLength(case2, 0);
         });
         final Throwable result3 = catchThrowable(() -> {
-            T.validateStringLength(case3, 8);
+            Utils.validateStringLength(case3, 8);
         });
 
         //then
@@ -304,16 +298,15 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringLength_예외처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "13";
         final String case2 = "";
 
         //when
         final Throwable result1 = catchThrowable(() -> {
-            T.validateStringLength(case1, 3);
+            Utils.validateStringLength(case1, 3);
         });
         final Throwable result2 = catchThrowable(() -> {
-            T.validateStringLength(case2, 3);
+            Utils.validateStringLength(case2, 3);
         });
 
         //then
@@ -330,16 +323,15 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringNaturalNumbers_정상처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "134";
         final String case2 = "162467";
 
         //when
         final Throwable result1 = catchThrowable(() -> {
-            T.validateStringNaturalNumbers(case1);
+            Utils.validateStringNaturalNumbers(case1);
         });
         final Throwable result2 = catchThrowable(() -> {
-            T.validateStringNaturalNumbers(case2);
+            Utils.validateStringNaturalNumbers(case2);
         });
 
         //then
@@ -350,16 +342,15 @@ class ApplicationTest extends NsTest {
     @Test
     void validateStringNaturalNumbers_예외처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "103";
         final String case2 = "7345akvu3123";
 
         //when
         final Throwable result1 = catchThrowable(() -> {
-            T.validateStringNaturalNumbers(case1);
+            Utils.validateStringNaturalNumbers(case1);
         });
         final Throwable result2 = catchThrowable(() -> {
-            T.validateStringNaturalNumbers(case2);
+            Utils.validateStringNaturalNumbers(case2);
         });
 
         //then
@@ -376,16 +367,15 @@ class ApplicationTest extends NsTest {
     @Test
     void validateAllDifferentCharacters_정상처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "123456789";
         final String case2 = "abcdefghij";
 
         //when
         final Throwable result1 = catchThrowable(() -> {
-            T.validateAllDifferentCharacters(case1);
+            Utils.validateAllDifferentCharacters(case1);
         });
         final Throwable result2 = catchThrowable(() -> {
-            T.validateAllDifferentCharacters(case2);
+            Utils.validateAllDifferentCharacters(case2);
         });
 
         //then
@@ -396,16 +386,15 @@ class ApplicationTest extends NsTest {
     @Test
     void validateAllDifferentCharacters_예외처리_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "112";
         final String case2 = "aabbcc";
 
         //when
         final Throwable result1 = catchThrowable(() -> {
-            T.validateAllDifferentCharacters(case1);
+            Utils.validateAllDifferentCharacters(case1);
         });
         final Throwable result2 = catchThrowable(() -> {
-            T.validateAllDifferentCharacters(case2);
+            Utils.validateAllDifferentCharacters(case2);
         });
 
         //then
@@ -423,13 +412,12 @@ class ApplicationTest extends NsTest {
     @Test
     void stringToIntegerList_테스트() {
         //given
-        final Utils T = new Utils();
         final String case1 = "123";
         final String case2 = "837";
 
         //when
-        final List<Integer> result1 = T.stringToIntegerList(case1);
-        final List<Integer> result2 = T.stringToIntegerList(case2);
+        final List<Integer> result1 = Utils.stringToIntegerList(case1);
+        final List<Integer> result2 = Utils.stringToIntegerList(case2);
 
         //then
         assertThat(result1).as("stringToIntegerList 테스트").isEqualTo(List.of(1, 2, 3));
