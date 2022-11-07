@@ -5,12 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Input {
-    public static final char ZERO = '0';
-    public static final char NINE = '9';
+    private static final char ZERO = '0';
+    private static final char NINE = '9';
 
     public static BaseballGameNumber readNumber() {
         String line = removeBlank(Console.readLine());
         return new BaseballGameNumber(toInts(line));
+    }
+
+    public static GameStatus readGameStatus() {
+        String line = removeBlank(Console.readLine());
+        return GameStatus.findGameStatus(line);
     }
 
     private static String removeBlank(String line) {
