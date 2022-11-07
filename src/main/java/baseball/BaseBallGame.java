@@ -43,6 +43,7 @@ public class BaseBallGame {
 
         if (isValidInput(userInput)) {
             setUserNumbers(userInput);
+            printGameResult();
         }
     }
 
@@ -61,5 +62,29 @@ public class BaseBallGame {
             int number = Character.getNumericValue(userInput.charAt(index));
             userNumbers.add(number);
         }
+    }
+
+    public void printGameResult() {
+        Map<String, Integer> gameResult = getGameResult();
+    }
+
+    public Map<String, Integer> getGameResult() {
+        Map<String, Integer> gameResult = new HashMap<>();
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int index = 0; index < COMPUTER_NUMBERS_SIZE; index++) {
+            if (userNumbers.get(index) == computerNumbers.get(index)) {
+                strikeCount++;
+                continue;
+            }
+            if (computerNumbers.contains(userNumbers.get(index))) {
+                ballCount++;
+            }
+        }
+
+        gameResult.put("ball", ballCount);
+        gameResult.put("strike", strikeCount);
+        return gameResult;
     }
 }
