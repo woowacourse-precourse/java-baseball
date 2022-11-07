@@ -12,16 +12,16 @@ public class RandomUniqueNumber {
     private static final int MAXIMUM_RANDOM_NUMBER_RANGE = 9;
 
     public static List<Integer> getRandomUniqueNumbers(int size) {
-        Set<Integer> computer = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
 
-        while (computer.size() < size) {
+        while (set.size() < size) {
             int randomNumber = Randoms.pickNumberInRange(MINIMUM_RANDOM_NUMBER_RANGE, MAXIMUM_RANDOM_NUMBER_RANGE);
 
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!set.contains(randomNumber)) {
+                set.add(randomNumber);
             }
         }
 
-        return new ArrayList<>(computer);
+        return new ArrayList<>(set);
     }
 }
