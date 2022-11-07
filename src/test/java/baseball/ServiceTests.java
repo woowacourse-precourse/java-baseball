@@ -34,7 +34,7 @@ public class ServiceTests {
         assertEquals(expectedResult, stringToList);
     }
 
-    @DisplayName("리스트에 이미 문자열이 있다면 추가하지 않는 메서드")
+    @DisplayName("리스트에 이미 문자열이 있다면 추가하지 않는 메서드 테스트")
     @Test
     void AddToListExcludeContainsStringTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         //given
@@ -56,7 +56,7 @@ public class ServiceTests {
         assertEquals(3, addUnduplicatedString.size());
     }
 
-    @DisplayName("리스트에 이미 문자열이 있다면 추가하지 않는 메서드")
+    @DisplayName("중복 제거한 난수 생성 메서드 테스트")
     @Test
     void generateRandomNumberTest() {
         //given
