@@ -32,7 +32,8 @@ public abstract class NumberBaseballGame {
         if (isPower) {
             answerNumberList.clear();
             playerNumberList.clear();
-            ball = 0; strike = 0;
+            ball = 0;
+            strike = 0;
             isPower = false;
         }
     }
@@ -56,7 +57,7 @@ public abstract class NumberBaseballGame {
             inputPlayerNumberList();
             countBallAndStrike();
             printHint();
-        } while(!isGameOver());
+        } while (!isGameOver());
     }
 
     protected static void inputPlayerNumberList() {
@@ -64,7 +65,8 @@ public abstract class NumberBaseballGame {
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumberStr = Console.readLine();
 
-        if (!isValidNumberStr(playerNumberStr)) throw new IllegalArgumentException(getNumberStrExceptionMessage(playerNumberStr));
+        if (!isValidNumberStr(playerNumberStr))
+            throw new IllegalArgumentException(getNumberStrExceptionMessage(playerNumberStr));
         for (int i = 0; i < playerNumberStr.length(); i++) {
             int playerNumber = Integer.parseInt(playerNumberStr.substring(i, i + 1));
             playerNumberList.add(playerNumber);
@@ -98,7 +100,8 @@ public abstract class NumberBaseballGame {
             throw new IllegalStateException("시스템 오류로 정답과 답안이 유효하지 않은 값으로 변경되었습니다.");
         }
 
-        ball = 0; strike = 0;
+        ball = 0;
+        strike = 0;
         for (int i = 0; i < playerNumberList.size(); i++) {
             int playerNumber = playerNumberList.get(i);
             if (isStrike(i)) strike++;
@@ -108,11 +111,11 @@ public abstract class NumberBaseballGame {
 
     private static boolean isValidNumberList(List<Integer> numberList) {
         return numberList.size() == 3 &&
-               numberList.stream().allMatch(num -> num >= 1 && num <= 9) &&
-               numberList.stream().allMatch(src ->
-                       numberList.stream()
-                               .filter(dest -> Objects.equals(dest, src))
-                               .count() == 1);
+                numberList.stream().allMatch(num -> num >= 1 && num <= 9) &&
+                numberList.stream().allMatch(src ->
+                        numberList.stream()
+                                .filter(dest -> Objects.equals(dest, src))
+                                .count() == 1);
     }
 
     private static boolean isStrike(int position) {
@@ -145,6 +148,7 @@ public abstract class NumberBaseballGame {
     protected static void printGameOverPhrase() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
     //========== Getter ==========
 
     protected static List<Integer> getAnswerNumberList() {
