@@ -18,7 +18,7 @@ public class UserService {
         user.setBaseballNumber(userBaseballNumber);
     }
 
-    public String setBaseballNumber() {
+    public String getBaseballNumber() {
         return user.getBaseballNumber();
     }
 
@@ -27,7 +27,9 @@ public class UserService {
         user.setUserRestartNumber(userRestartNumber);
     }
 
-    public String setRestartNumber() {
+    public String getRestartNumber() {
         return user.getRestartNumber();
     }
+
+
 }
