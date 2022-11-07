@@ -7,11 +7,14 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class AnswerNumber {
     private String answerNumber;
-    private List<String> saveAnswerNumber;
+    private List<String> saveAnswerNumber = new ArrayList<>();
 
     public AnswerNumber(){
         this. answerNumber= "";
-        saveAnswerNumber = new ArrayList<>();
+    }
+
+    public List<String> saveAnswerNumber(){
+        return saveAnswerNumber;
     }
 
     public void RandomNumber(){
@@ -25,5 +28,6 @@ public class AnswerNumber {
                 }
             }
             answerNumber =  numbers.toString();
+            saveAnswerNumber.add(answerNumber);
     }
 }
