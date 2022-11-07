@@ -92,7 +92,7 @@ public class GameController {
 
     public int getBallCount() {
         int ballCount = 0;
-        for (int number: player.getNumbers()) {
+        for (int number : player.getNumbers()) {
             if (computer.getNumbers().contains(number)) {
                 ballCount++;
             }
