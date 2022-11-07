@@ -15,22 +15,17 @@ import java.util.stream.IntStream;
 
 import static baseball.message.GameProgressMessage.*;
 import static baseball.message.ResultMessage.*;
+import static baseball.util.GameCode.*;
+import static baseball.util.RegexCode.*;
 
 public class BullsAndCows {
-
-    private static final int NUMBER_LENGTH = 3;
-    private static final String REGEX_NOT_NUMBER = "^\\d";
-    private static final String REGEX_HAS_DUPLICATE_VALUE = "(\\w)\\1+";
-    private static final int STRIKE_COUNT_FOR_END = 3;
-    private static final int RESTART_GAME = 1;
-    private static final int END_GAME = 2;
 
     private final List<Integer> answerNumberList = new ArrayList<>();
     private List<Integer> userInput;
     private int strikeCount = 0;
     private int ballCount = 0;
 
-    BullsAndCows() {
+    public BullsAndCows() {
         createAnswerNumber();
     }
 
@@ -58,7 +53,7 @@ public class BullsAndCows {
     }
 
     private boolean isEnd() {
-        return strikeCount == STRIKE_COUNT_FOR_END;
+        return strikeCount == STRIKE_COUNT_FOR_END.getCode();
     }
 
     private void restart() {
@@ -87,11 +82,11 @@ public class BullsAndCows {
     private GameProgressMessage getResultOfEndGame(String userInput) {
         int flag = Integer.parseInt(userInput);
 
-        if (flag == (RESTART_GAME)) {
+        if (flag == (RESTART_GAME.getCode())) {
             return RESTART;
         }
 
-        if (flag == END_GAME) {
+        if (flag == END_GAME.getCode()) {
             return END;
         }
 
@@ -166,19 +161,19 @@ public class BullsAndCows {
     }
 
     private void validateLength(String input) {
-        if (input.length() != NUMBER_LENGTH) {
+        if (input.length() != NUMBER_LENGTH.getCode()) {
             throw new IllegalArgumentException("number length must be 3");
         }
     }
 
     private void validateIsNumber(String input) {
-        if (input.matches(REGEX_NOT_NUMBER)) {
+        if (input.matches(REGEX_NOT_NUMBER.getRegex())) {
             throw new IllegalArgumentException("input value must be number");
         }
     }
 
     private void validateDuplicate(String input) {
-        Pattern pattern = Pattern.compile(REGEX_HAS_DUPLICATE_VALUE);
+        Pattern pattern = Pattern.compile(REGEX_HAS_DUPLICATE_VALUE.getRegex());
         Matcher matcher = pattern.matcher(input);
         if (matcher.find()) {
             throw new IllegalArgumentException("number must not be duplicated");
