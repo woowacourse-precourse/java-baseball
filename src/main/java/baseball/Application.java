@@ -21,6 +21,9 @@ public class Application {
     //[플레이어] 서로 다른 3개의 숫자 입력
     public static List<Integer> input(List<Integer> inputNumber){
         String input = Console.readLine();
+        if (input.length() > 3) { //예외처리
+            throw new IllegalArgumentException();
+        }
         for(int i=0; i<input.length(); i++){
             inputNumber.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         }
