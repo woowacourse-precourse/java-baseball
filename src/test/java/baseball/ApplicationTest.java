@@ -1,7 +1,13 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +32,88 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void testComputersPickIsValid() {
+        Computer computer = new Computer();
+        List<Integer> picks = new ArrayList<>();
+
+        for (int num : computer.getNumbers()) {
+            assertThat(picks).doesNotContain(num);
+            picks.add(num);
+        }
+    }
+
+    @Test
+    void testThrowExceptionForInvalidUserInput() {
+        String[] invalidCases = {
+                "1234",
+                "1e34",
+                "1e3",
+                "112",
+                "1"
+        };
+        User user = new User();
+        for (String invalidCase : invalidCases) {
+            assertThatThrownBy(() -> user.validateInput(invalidCase))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    void testCountBallsAndStrikes() {
+        GameResult result = new GameResult();
+        List<Integer>[] computers = new List[]{
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(2, 5, 1),
+                Arrays.asList(7, 9, 6),
+                Arrays.asList(4, 5, 6),
+        };
+        List<Integer>[] users = new List[]{
+                Arrays.asList(1, 3, 4), // 1b 1s
+                Arrays.asList(6, 8, 9), // out
+                Arrays.asList(7, 9, 6), // 3s
+                Arrays.asList(5, 6, 4), // 3b
+        };
+        int[][] results = {
+                {1, 1},
+                {0, 0},
+                {0, 3},
+                {3, 0}
+        };
+        for (int i = 0; i < computers.length; i++) {
+            result.compare(computers[i], users[i]);
+            assertThat(result.getBallCount()).isEqualTo(results[i][0]);
+            assertThat(result.getStrikeCount()).isEqualTo(results[i][1]);
+        }
+    }
+
+    @Test
+    void testResultToString() {
+        GameResult result = new GameResult();
+        List<Integer>[] computers = new List[]{
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(2, 5, 1),
+                Arrays.asList(7, 9, 6),
+                Arrays.asList(4, 5, 6),
+        };
+        List<Integer>[] users = new List[]{
+                Arrays.asList(1, 3, 4),
+                Arrays.asList(6, 8, 9),
+                Arrays.asList(7, 9, 6),
+                Arrays.asList(5, 6, 4),
+        };
+        String[] results = {
+                "1볼 1스트라이크",
+                "낫싱",
+                "3스트라이크",
+                "3볼"
+        };
+        for (int i = 0; i < computers.length; i++) {
+            result.compare(computers[i], users[i]);
+            assertThat(result.toString()).isEqualTo(results[i]);
+        }
     }
 
     @Override
