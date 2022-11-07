@@ -41,4 +41,10 @@ public class baseballGame {
         ballCount = 0;
     }
 
+    public void checkMatch(String inputNumber) {
+        for (int i = 0; i < 3; i++) {
+            countStrikeAndBall(inputNumber, i);
+        }
+    }
+
 }
