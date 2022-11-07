@@ -1,8 +1,3 @@
-/* 
-<해결해야 할 것>
-1. readline()메서드가 왜 WARING을 부르는지 이해하기 -> 일단 Pass
-2. IllegalArgumentException이 발생했을 때, 프로그램을 종료할 수 있도록 하기
- */
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
