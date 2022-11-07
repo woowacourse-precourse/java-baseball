@@ -10,12 +10,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 class PitcherTest {
-    Pitcher p;
-
+    Pitcher p = new Pitcher("713");
     @Test
     void 입력한_수가_투수의_리스트에_분리돼서_저장() {
         List<Integer> expected = List.of(7, 1, 3);
-        Pitcher p = new Pitcher("713");
+
 
         assertThat(p.getPitcherNumbers()).isEqualTo(expected);
     }
@@ -25,17 +24,17 @@ class PitcherTest {
         String input = "abc";
 
         assertThatThrownBy(() -> p.setPitcherNumbers(input))
-                .isInstanceOf(IllegalFormatException.class)
-                .hasMessageContaining("숫자 형식으로 입력해주세요");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자가 아닙니다. 다시 입력해주세요.");
     }
 
     @Test
     void 입력의_숫자가_중복될_경우() {
-        String input = "111";
+        String input = "114";
 
         assertThatThrownBy(() -> p.setPitcherNumbers(input))
-                .isInstanceOf(ShouldNotHaveDuplicates.class)
-                .hasMessageContaining("중복되지 않는 수를 입력해주세요");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자가 중복됩니다. 다시 입력해주세요.");
     }
 
     @Test
@@ -43,7 +42,7 @@ class PitcherTest {
         String input = "1234";
         assertThatThrownBy(() -> p.setPitcherNumbers(input))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("3자리 수로 입력해주세요");
+                .hasMessageContaining("3글자로 입력해주세요.");
 
 
     }

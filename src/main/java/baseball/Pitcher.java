@@ -1,6 +1,9 @@
 package baseball;
 
+import baseball.Messages.ErrorMessages;
+
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
 import java.util.List;
 
 public class Pitcher {
@@ -12,8 +15,18 @@ public class Pitcher {
     }
 
     public void setPitcherNumbers(String input) {
+        if(input.length() != 3) {
+            throw new StringIndexOutOfBoundsException(ErrorMessages.STRING_OUT_OF_BOUNDS);
+        }
         String[] nums = input.split("");
-        for(String num : nums) {
+        if(nums[0].equals(nums[1]) || nums[1].equals(nums[2])) {
+            throw new IllegalArgumentException(ErrorMessages.DUPLICATE_NUMBERS);
+        }
+
+        for (String num : nums) {
+            if(Character.isLetter(num.charAt(0))) {
+                throw new IllegalArgumentException(ErrorMessages.NOT_A_NUMBER);
+            }
             pitcherNumbers.add(Integer.parseInt(num));
         }
     }
