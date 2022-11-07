@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Game {
     private ProblemMaker problemMaker = new ProblemMaker();
     private ProblemSolver problemSolver = new ProblemSolver();
@@ -39,6 +41,18 @@ public class Game {
     }
 
     public void countResult(){
+        List<Integer> numbers = problemSolver.getNumbers();
+        for(int i = 0;i<Settings.SIZE_OF_NUMBERS;i++){
+            int number = numbers.get(i);
+            boolean doesAnswerHasNumber = problemMaker.hasNumber(number);
+            boolean isNumberAndAnswerSameAtGivenLocation = problemMaker.isSameAtGivenLocation(number, i);
+
+            if(doesAnswerHasNumber && isNumberAndAnswerSameAtGivenLocation){
+                result.increaseStrikeCount();
+            }else if(doesAnswerHasNumber){
+                result.increaseBallCount();
+            }
+        }
 
     }
 
