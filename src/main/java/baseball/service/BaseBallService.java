@@ -43,6 +43,10 @@ public class BaseBallService {
 
         baseBall.setStrike(strike);
         baseBall.setBall(ball);
+
+        if (strike == 3) {
+            winGame();
+        }
     }
 
     public int getBall() {

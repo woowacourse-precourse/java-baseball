@@ -33,6 +33,11 @@ public class BaseballController {
                 continue;
             }
 
+            if (baseBallService.isWinGame()) {
+                outputView.printWinGame();
+                break;
+            }
+
             outputView.printResult(baseBallService.getStrike(), baseBallService.getBall());
 
         }
