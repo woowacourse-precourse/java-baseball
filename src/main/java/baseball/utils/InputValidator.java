@@ -1,7 +1,7 @@
 package baseball.utils;
 
 public class InputValidator {
-    private static final int MAX_LENGTH=3;
+    private static final int MAX_LENGTH = 3;
 
     public static boolean isValidNumbers(String numbers) {
         if (!isLengthNumberThree(numbers)) {

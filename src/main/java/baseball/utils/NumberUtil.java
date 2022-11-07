@@ -15,7 +15,7 @@ public class NumberUtil {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < LIMIT_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(START_VALUE, END_VALUE);
-            if (isUnique(randomNumbers, randomNumber)){
+            if (isUnique(randomNumbers, randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
         }
@@ -28,7 +28,7 @@ public class NumberUtil {
 
     public static List<Integer> getNumberList(String numbers) {
         return numbers.chars()
-                .map(n->n-'0')
+                .map(n -> n - '0')
                 .boxed()
                 .collect(Collectors.toList());
     }

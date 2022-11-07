@@ -14,16 +14,16 @@ public class OutputView {
         }
 
         if (hasStrikeAndBall(ballCount)) {
-            System.out.println(ballCount.getBall()+"볼 "+ ballCount.getStrike()+"스트라이크");
+            System.out.println(ballCount.getBall() + "볼 " + ballCount.getStrike() + "스트라이크");
             return;
         }
 
-        if(hasStrike(ballCount)){
-            System.out.println(ballCount.getStrike()+"스트라이크");
+        if (hasStrike(ballCount)) {
+            System.out.println(ballCount.getStrike() + "스트라이크");
             return;
         }
 
-        System.out.println(ballCount.getBall()+"볼");
+        System.out.println(ballCount.getBall() + "볼");
     }
 
     public void printFinishGame() {
@@ -31,14 +31,14 @@ public class OutputView {
     }
 
     private boolean hasStrike(BallCount ballCount) {
-        if(ballCount.getStrike()!=0){
+        if (ballCount.getStrike() != 0) {
             return true;
         }
         return false;
     }
 
     private boolean hasStrikeAndBall(BallCount ballCount) {
-        if (ballCount.getStrike() != 0 && ballCount.getBall() != 0){
+        if (ballCount.getStrike() != 0 && ballCount.getBall() != 0) {
             return true;
         }
         return false;
