@@ -32,5 +32,16 @@ public class InputValidationTest {
     }
   }
 
+  @Test
+  void 입력값의_길이가_3이_아닐때_예외를_던지는가_2() {
+    try {
+      InputValidator validator = new PlayingInputValidator();
+      String userInput = "1234";
+      validator.validate(userInput);
+    } catch (IllegalArgumentException e) {
+      assertEquals(ExceptionMessages.INPUT_LENGTH_IS_NOT_THREE.getExceptionMessage(), e.getMessage());
+    }
+  }
+
 
 }
