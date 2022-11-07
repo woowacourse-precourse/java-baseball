@@ -27,5 +27,20 @@ public class functionTest {
 
     }
 
-    @
+    @Test
+    void 인풋_발리데이션_로직_체크() {
+        //given
+        List<Integer> correctInput = List.of(1, 2, 3);
+        List<Integer> duplciateinput = List.of(1, 2, 2);
+        List<Integer> outOfRangeInput = List.of(1, 2, 10);
+        List<Integer> negativeInput = List.of(1, 2, -5);
+
+        //then
+        assertThat(Application.validateInput(correctInput)).isEqualTo(true);
+        assertThatThrownBy(() -> Application.validateInput(duplciateinput)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateInput(outOfRangeInput)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateInput(negativeInput)).isInstanceOf(IllegalArgumentException.class);
+
+
+    }
 }
