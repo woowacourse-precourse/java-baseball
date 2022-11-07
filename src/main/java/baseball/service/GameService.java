@@ -53,6 +53,14 @@ public class GameService {
         countBall(computerNumberList, userNumberList);
     }
 
+    public void countStrike(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        for (int i = 0; i < Constant.MAX_NUMBER_SIZE; i++) {
+            if ((computerNumberList.get(i) == userNumberList.get(i))) {
+                addStrikeCount();
+            }
+        }
+    }
+
 
 }
 
