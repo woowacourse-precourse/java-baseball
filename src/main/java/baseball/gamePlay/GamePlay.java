@@ -12,38 +12,40 @@ public class GamePlay {
 
     public static void play(NumberProducingStrategy numberProducingStrategy) {
         PrintResult.printStartMent();
-        endProgramWhenPress2(numberProducingStrategy, false);
+        endProgramWhenPress2(numberProducingStrategy);
     }
 
-    private static void endProgramWhenPress2(NumberProducingStrategy numberProducingStrategy,
-        boolean isProgramEnd) {
-        while (!isProgramEnd) {
-            startGame(numberProducingStrategy, false);
-            isProgramEnd = EndRule.isProgramEnd(UserInput.SelectRestartOrExit());
+    private static void endProgramWhenPress2(NumberProducingStrategy numberProducingStrategy) {
+        while (true) {
+            startGame(numberProducingStrategy);
+            if (EndRule.isProgramEnd(UserInput.SelectRestartOrExit())) {
+                return;
+            }
         }
     }
 
-    private static void startGame(NumberProducingStrategy numberProducingStrategy,
-        boolean isGameEnd) {
+    private static void startGame(NumberProducingStrategy numberProducingStrategy) {
         Numbers computerNumbers = new Numbers(numberProducingStrategy.produceNumbers());
-        while (!isGameEnd) {
+        while (true) {
             Numbers userNumbers = new Numbers(UserInput.InputUserNumbers());
-            isGameEnd = continuegameUntilGetAnswer(computerNumbers, isGameEnd, userNumbers);
+            if (continuegameUntilGetAnswer(computerNumbers, userNumbers)){
+                return;
+            }
         }
     }
 
-    private static boolean continuegameUntilGetAnswer(Numbers computerNumbers, boolean isGameEnd,
+    private static boolean continuegameUntilGetAnswer(Numbers computerNumbers,
         Numbers userNumbers) {
         BallCount ballCount = JudgementRule.makeBallCounts(computerNumbers, userNumbers);
         PrintResult.printBallCount(ballCount);
-        return checkGetAnswer(isGameEnd, ballCount);
+        return checkGetAnswer(ballCount);
     }
 
-    private static boolean checkGetAnswer(boolean isGameEnd, BallCount ballCount) {
+    private static boolean checkGetAnswer(BallCount ballCount) {
         if (EndRule.isGameEnd(ballCount)) {
             PrintResult.gameClearMent(EndRule.isGameEnd(ballCount));
-            isGameEnd = EndRule.isGameEnd(ballCount);
+            return true;
         }
-        return isGameEnd;
+        return false;
     }
 }
