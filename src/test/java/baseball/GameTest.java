@@ -30,4 +30,12 @@ public class GameTest {
         assertThatThrownBy(() -> game.restart(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void restart_문자를_입력할때() {
+        String input = "a";
+        Game game = new Game();
+        assertThatThrownBy(() -> game.restart(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
