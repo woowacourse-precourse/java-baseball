@@ -8,24 +8,24 @@ public class Computer {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
-    private Balls balls;
+    private Balls computerBalls;
 
     public Computer() {
-        balls = new Balls();
+        computerBalls = new Balls();
     }
 
-    private Ball createBall() {
+    private Ball createComputerBall() {
         int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
         return new Ball(randomNumber);
     }
 
-    private Balls createBalls() {
-        while (!balls.validateBallsSize()) {
-            Ball candidateBall = createBall();
-            if (!balls.hasBall(candidateBall)) {
-                balls.containBalls(candidateBall);
+    private Balls createComputerBalls() {
+        while (!computerBalls.validateBallsSize()) {
+            Ball candidateBall = createComputerBall();
+            if (!computerBalls.hasBall(candidateBall)) {
+                computerBalls.containBalls(candidateBall);
             }
         }
-        return balls;
+        return computerBalls;
     }
 }
