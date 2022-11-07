@@ -9,6 +9,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
+    public static Integer getFlag() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        return Integer.parseInt(isValidFlag(Console.readLine()));
+    }
+
     public static String isValidFlag(String readLine) {
         boolean isOneOrTwo = (readLine.charAt(0) == 1 || readLine.charAt(0) == 2);
 
@@ -111,5 +118,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        getFlag();
     }
 }
