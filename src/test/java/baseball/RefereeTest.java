@@ -97,4 +97,161 @@ public class RefereeTest {
 	private static void makeAllSameBalls(List<Integer> computerBalls, List<Integer> playerBalls) {
 		playerBalls.retainAll(computerBalls);
 	}
+
+	@Test
+	@DisplayName("1스트라이크 테스트")
+	void 원_스트라이크_테스트() {
+		// when
+		int expectedStrikeNum = 1;
+		int expectedBallNum = 0;
+		playerBalls = makeOnlyStrikeBalls(computerBalls, playerBalls, expectedStrikeNum);
+
+		int resultStrikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+		int resultBallNum = referee.countBallNum(computerBalls, playerBalls);
+
+		// then
+		Assertions.assertThat(resultStrikeNum).isEqualTo(expectedStrikeNum);
+		Assertions.assertThat(resultBallNum).isEqualTo(expectedBallNum);
+
+	}
+
+	@Test
+	@DisplayName("2스트라이크 테스트")
+	void 투_스트라이크_테스트() {
+		// when
+		int expectedStrikeNum = 2;
+		int expectedBallNum = 0;
+		playerBalls = makeOnlyStrikeBalls(computerBalls, playerBalls, expectedStrikeNum);
+
+		int resultStrikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+		int resultBallNum = referee.countBallNum(computerBalls, playerBalls);
+
+		// then
+		Assertions.assertThat(resultStrikeNum).isEqualTo(expectedStrikeNum);
+		Assertions.assertThat(resultBallNum).isEqualTo(expectedBallNum);
+
+	}
+
+	@Test
+	@DisplayName("3스트라이크 테스트")
+	void 쓰리_스트라이크_테스트() {
+		// when
+		int expectedStrikeNum = 3;
+		int expectedBallNum = 0;
+		playerBalls = makeOnlyStrikeBalls(computerBalls, playerBalls, expectedStrikeNum);
+
+		int strikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+		int ballNum = referee.countBallNum(computerBalls, playerBalls);
+
+		// then
+		Assertions.assertThat(strikeNum).isEqualTo(expectedStrikeNum);
+		Assertions.assertThat(ballNum).isEqualTo(expectedBallNum);
+
+	}
+
+	private List<Integer> makeOnlyStrikeBalls(List<Integer> computerBalls, List<Integer> playerBalls,
+			int wantStrikeNum) {
+		playerBalls.removeAll(computerBalls);
+		for (int ballIdx = 0; ballIdx < wantStrikeNum; ballIdx++) {
+			playerBalls.add(ballIdx, computerBalls.get(ballIdx));
+		}
+
+		return playerBalls.subList(0, 3);
+	}
+
+	@Test
+	@DisplayName("3볼 테스트")
+	void 쓰리_볼_테스트() {
+		// given
+		List<Integer> computerBalls = List.of(1, 4, 9);
+		List<Integer> playerBalls = List.of(9, 1, 4);
+
+		// when
+		int expectedBallNum = 3;
+		int expectedStrikeNum = 0;
+
+		// then
+		int resultBallNum = referee.countBallNum(computerBalls, playerBalls);
+		int resultStrikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+
+		Assertions.assertThat(expectedBallNum).isEqualTo(resultBallNum);
+		Assertions.assertThat(expectedStrikeNum).isEqualTo(resultStrikeNum);
+	}
+
+	@Test
+	@DisplayName("2볼 1스트라이크 테스트")
+	void 투_볼_원_스트라이크_테스트() {
+		// given
+		List<Integer> computerBalls = List.of(1, 4, 9);
+		List<Integer> playerBalls = List.of(1, 9, 4);
+
+		// when
+		int expectedBallNum = 2;
+		int expectedStrikeNum = 1;
+
+		// then
+		int resultBallNum = referee.countBallNum(computerBalls, playerBalls);
+		int resultStrikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+
+		Assertions.assertThat(resultBallNum).isEqualTo(expectedBallNum);
+		Assertions.assertThat(resultStrikeNum).isEqualTo(expectedStrikeNum);
+	}
+
+	@Test
+	@DisplayName("2볼 테스트")
+	void 투_볼_테스트() {
+		// given
+		List<Integer> computerBalls = List.of(1, 4, 9);
+		List<Integer> playerBalls = List.of(7, 9, 4);
+
+		// when
+		int expectedBallNum = 2;
+		int expcetedStrikeNum = 0;
+
+		// then
+		int resultBallNum = referee.countBallNum(computerBalls, playerBalls);
+		int resultStrikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+
+		Assertions.assertThat(resultBallNum).isEqualTo(expectedBallNum);
+		Assertions.assertThat(resultStrikeNum).isEqualTo(expcetedStrikeNum);
+	}
+
+	@Test
+	@DisplayName("1볼 1스트라이크 테스트")
+	void 원_볼_원_스트라이크_테스트() {
+		// given
+		List<Integer> computerBalls = List.of(1, 4, 9);
+		List<Integer> playerBalls = List.of(3, 1, 9);
+
+		// when
+		int expectedBallNum = 1;
+		int expectedStrikeNum = 1;
+
+		// then
+		int resultBallNum = referee.countBallNum(computerBalls, playerBalls);
+		int resultStrikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+
+		Assertions.assertThat(resultBallNum).isEqualTo(expectedBallNum);
+		Assertions.assertThat(resultStrikeNum).isEqualTo(expectedStrikeNum);
+	}
+
+	@Test
+	@DisplayName("1볼 테스트")
+	void 원_볼_테스트() {
+		// given
+		List<Integer> computerBalls = List.of(1, 4, 9);
+		List<Integer> playerBalls = List.of(6, 1, 7);
+
+		// when
+		int expectedBallNum = 1;
+		int expectedStrikeNum = 0;
+
+		// then
+		int resultBallNum = referee.countBallNum(computerBalls, playerBalls);
+		int resultStrikeNum = referee.countStrikeNum(computerBalls, playerBalls);
+
+		Assertions.assertThat(resultBallNum).isEqualTo(expectedBallNum);
+		Assertions.assertThat(resultStrikeNum).isEqualTo(expectedStrikeNum);
+	}
+
 }
