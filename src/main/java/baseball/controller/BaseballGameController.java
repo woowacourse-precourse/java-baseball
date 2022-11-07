@@ -1,5 +1,8 @@
 package baseball.controller;
 
+import static baseball.exception.Exception.isOneOrTwo;
+
+import baseball.exception.Exception;
 import baseball.model.AnswerNumber;
 import baseball.model.PlayerNumber;
 import baseball.service.HintService;
@@ -35,4 +38,11 @@ public class BaseballGameController {
         playerNumber.setPlayerNumber(InputView.setPlayerNumber());
     }
 
+    public boolean keepGoingOrDone() {
+
+        OutputView.printRestartOrEndGame();
+        int number = InputView.setNumberRestartOrEndGame();
+        Exception.isOneOrTwo(number);
+        return number == 1;
+    }
 }
