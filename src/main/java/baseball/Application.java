@@ -102,6 +102,13 @@ public class Application {
         }
     }
 
+    public static boolean isAnswer(int strikeCnt){
+        if(strikeCnt == 3)
+            return true;
+        else
+            return false;
+    }
+
     public static class StrikeBallResult{
         int strikeCnt;
         int ballCnt;
