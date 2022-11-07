@@ -36,6 +36,8 @@ public class Baseball {
             List<Integer> userNumbers = getUserNumbers();
 
             countStrikeAndBall(computerNumbers, userNumbers);
+
+            printHint();
         }
     }
 
@@ -77,6 +79,11 @@ public class Baseball {
 
     private boolean hasSameIndex(int i, int index) {
         return i == index;
+    }
+
+    private void printHint() {
+        String hint = getHint(ballCount, strikeCount);
+        System.out.println(hint);
     }
 
     private String getHint(int ballCount, int strikeCount) {
