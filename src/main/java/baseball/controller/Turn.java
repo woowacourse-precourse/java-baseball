@@ -10,44 +10,44 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Turn {
-    static ResultTurn resultTurn;
+    ResultTurn resultTurn;
 
-    static void repeatToEnd() {
+    void repeatToEnd() {
         while(checkCanRepeat()) {
             playOneTurn();
         }
     }
 
-    static void playOneTurn() {
+    void playOneTurn() {
         String userNumberOfString = InputView.userNumber();
         List<Integer> userNumberOfList = convertNumberStringToList(userNumberOfString);
         compareWithTarget(userNumberOfList);
     }
 
-    static boolean checkCanRepeat() {
-        return resultTurn != ResultTurn.Out;
+    boolean checkCanRepeat() {
+        return this.resultTurn != ResultTurn.Out;
     }
 
-    static void compareWithTarget(List<Integer> numberOfList) {
+    void compareWithTarget(List<Integer> numberOfList) {
         countBalls(numberOfList);
         countStrikes(numberOfList);
     }
 
-    static void countBalls(List<Integer> numberOfList) {
+    void countBalls(List<Integer> numberOfList) {
         List<Integer> targetNumberList = Target.get();
         int countSameValueInSameIndex = countSameValueInSameIndex(targetNumberList, numberOfList);
         int countValueContainTogether = countValueContainTogether(targetNumberList, numberOfList);
         int balls = countValueContainTogether - countSameValueInSameIndex;
-        TurnScore.setBalls(balls);
+//        TurnScore.setBalls(balls);
     }
 
-    static void countStrikes(List<Integer> numberOfList) {
+    void countStrikes(List<Integer> numberOfList) {
         List<Integer> targetNumberList = Target.get();
         int strikes = countSameValueInSameIndex(targetNumberList, numberOfList);
-        TurnScore.setStrikes(strikes);
+//        TurnScore.setStrikes(strikes);
     }
 
-    static int countSameValueInSameIndex(List<Integer> targetNumberList, List<Integer> compareNumberList) {
+    int countSameValueInSameIndex(List<Integer> targetNumberList, List<Integer> compareNumberList) {
         int count = 0;
         for (int indexOfList = 0; indexOfList < compareNumberList.size(); indexOfList++) {
             int targetNumber = targetNumberList.get(indexOfList);
@@ -57,14 +57,14 @@ public class Turn {
         return count;
     }
 
-    static int returnOneIfSameOrZero(int targetNumber, int compareNumber) {
+    int returnOneIfSameOrZero(int targetNumber, int compareNumber) {
         if (targetNumber == compareNumber) {
             return 1;
         }
         return 0;
     }
 
-    static int countValueContainTogether(List<Integer> targetNumberList, List<Integer> compareNumberList) {
+    int countValueContainTogether(List<Integer> targetNumberList, List<Integer> compareNumberList) {
         int count = 0;
         for (int indexOfList = 0; indexOfList < compareNumberList.size(); indexOfList++) {
             int compareNumber = compareNumberList.get(indexOfList);
@@ -73,14 +73,14 @@ public class Turn {
         return count;
     }
 
-    static int returnOneIfListContainNumber(List<Integer> targetNumberList, int compareNumber) {
+    int returnOneIfListContainNumber(List<Integer> targetNumberList, int compareNumber) {
         if (targetNumberList.contains(compareNumber)) {
             return 1;
         }
         return 0;
     }
 
-    static List<Integer> convertNumberStringToList(String numberOfString) {
+    List<Integer> convertNumberStringToList(String numberOfString) {
         List<String> numberOfStringList = new ArrayList<>(Arrays.asList(numberOfString.split("")));
         List<Integer> numberOfList = numberOfStringList.stream()
                 .map(Integer::new)
