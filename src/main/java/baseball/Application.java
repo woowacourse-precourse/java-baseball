@@ -47,6 +47,9 @@ public class Application {
     }
     public static boolean errorPlayerNumber(String playerNumber) {
         boolean error = (playerNumber.length() == 3);
+        if ((playerNumber.charAt(0) == playerNumber.charAt(1)) || (playerNumber.charAt(0) == playerNumber.charAt(2))
+                || (playerNumber.charAt(1) == playerNumber.charAt(2)))
+            error = false;
         for (int i=0;i<playerNumber.length();++i)
             if (playerNumber.charAt(i) < '1' || playerNumber.charAt(i) > '9') {
                 error = false;
