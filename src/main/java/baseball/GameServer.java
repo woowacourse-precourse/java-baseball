@@ -26,6 +26,7 @@ public class GameServer {
     }
 
     public void createRandomNumber() {
+        computerNumbers.clear();
         while (computerNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
@@ -43,6 +44,7 @@ public class GameServer {
     public void setUserNumber(String userNum) {
         int userNumber = Integer.parseInt(userNum);
         int divideNum = 100;
+        userNumbers.clear();
         for (int i = 0; i < 3; i++) {
             userNumbers.add(userNumber / divideNum);
             userNumber %= divideNum;
@@ -71,6 +73,7 @@ public class GameServer {
         String userNumber = Console.readLine();
         if (userNumber.equals("1")) {
             restart = true;
+            isAnswer = false;
         }
         if (userNumber.equals("2")) {
             restart = false;
@@ -134,10 +137,8 @@ public class GameServer {
             }
             checkUsersInputIsAnswer();
             printGameResult();
-            if (isAnswer) {
-                finishGame();
-            }
         }
+        finishGame();
     }
 
     public void printGameStart() {
