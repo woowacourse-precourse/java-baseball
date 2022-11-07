@@ -31,7 +31,7 @@ public class BaseballNumbers {
         return new BaseballNumbers(computerNumbers);
     }
 
-    private static void addRandomNumber(List<BaseballNumber> randomNumbers, BaseballNumber randomNumber){
+    private static void addDistinctRandomNumber(List<BaseballNumber> randomNumbers, BaseballNumber randomNumber){
         if(!randomNumbers.contains(randomNumber)){
             randomNumbers.add(randomNumber);
         }
@@ -42,7 +42,7 @@ public class BaseballNumbers {
         while(randomNumbers.size() < SIZE){
             int randomInt = Randoms.pickNumberInRange(BaseballNumber.MIN_NUMBER, BaseballNumber.MAX_NUMBER);
             BaseballNumber randomNumber = BaseballNumber.valueOf(randomInt);
-            addRandomNumber(randomNumbers, randomNumber);
+            addDistinctRandomNumber(randomNumbers, randomNumber);
         }
         return randomNumbers;
     }
