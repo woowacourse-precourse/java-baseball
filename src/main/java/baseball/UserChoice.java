@@ -20,12 +20,6 @@ public class UserChoice {
 
     private void validate(String input) {
         Validator validator = new Validator(input);
-        try {
-            validator.isOneOrTwo();
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        validator.isOneOrTwo();
     }
-
-
 }

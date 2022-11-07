@@ -26,14 +26,10 @@ public class UserNumber {
 
     private void validate(String input) {
         Validator validator = new Validator(input);
-        try {
-            validator.isLengthThree();
-            validator.isAllNumber();
-            validator.notContainsZero();
-            validator.isAllDifferent();
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        validator.isLengthThree();
+        validator.isAllNumber();
+        validator.notContainsZero();
+        validator.isAllDifferent();
     }
 
     private List<Integer> makeList(String input) {
