@@ -72,5 +72,30 @@ public class Application {
 
     }
 
+    public static String printBallAndStrike(List<Integer> ballAndStrike) {
+        String message = "";
+        Integer ball = ballAndStrike.get(0);
+        Integer strike = ballAndStrike.get(1);
+        String ballMessage="";
+        String strikeMessage="";
+        if (ball > 0) {
+            ballMessage = String.valueOf(ball) + "볼";
+        }
+        if (strike > 0) {
+            strikeMessage = String.valueOf(strike) + "스트라이크";
+        }
+
+        if (ball > 0 && strike == 0) {
+            return ballMessage;
+        } else if (ball==0 && strike>0) {
+            return strikeMessage;
+        } else if (ball > 0 && strike > 0) {
+            return ballMessage + " " + strikeMessage;
+        } else if (ball == 0 && strike == 0) {
+            return "낫싱";
+        } else {
+            throw new IllegalStateException("ball <0 && strike <0");
+        }
+    }
 
 }
