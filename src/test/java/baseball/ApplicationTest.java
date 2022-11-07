@@ -24,19 +24,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void applicationtest(){
-        String[] num = {"0","1","2","3","4","5","6","7","8","9"};
-        String str = "123";
-        Character c =str.charAt(0);
-        System.out.println("c = " + c);
-        String s = c.toString();
-        System.out.println("s = " + s);
-        List<String> nums = Arrays.asList(num);
-        if(nums.contains(s)){
-            System.out.println("yes");
-        }
-    }
 
     @Test
     void 예외_테스트() {

@@ -7,8 +7,7 @@ public class CheckInput {
     private CheckInput(){
     }
     public static boolean check_input(String str) {
-        String[] num = {"0","1","2","3","4","5","6","7","8","9"};
-        List<String> nums = Arrays.asList(num);
+        List<String> nums = Arrays.asList("0","1","2","3","4","5","6","7","8","9");
         int len = str.length();
         for(int i= 0; i<len ; i++){
             char c = str.charAt(i);

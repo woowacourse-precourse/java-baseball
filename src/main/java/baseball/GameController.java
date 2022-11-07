@@ -24,7 +24,8 @@ public class GameController {
             if(ans.equals("1")){
                 computer = make_computer_number();
                 continue;
-            }else if(ans.equals("2")){
+            }
+            else if(ans.equals("2")){
                 return;
             }
             else{
