@@ -46,4 +46,16 @@ public class BaseballGame {
     private void end() {
         Message.showGameEndMessage();
     }
+
+    public Computer getComputer() {
+        return computer;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Referee getReferee() {
+        return referee;
+    }
 }
