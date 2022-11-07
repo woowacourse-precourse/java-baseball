@@ -43,7 +43,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력_숫자_길이를_초과한_경우() {
     void 게임_진행_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -55,10 +54,63 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 7, 1, 9
         );
     }
+
+    @Test
+    void 입력_숫자_길이를_초과한_경우_예외테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 중복된_숫자_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("558"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 잘못된_범위_입력값_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void null_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException((String) null))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자가_아닌_알파벳_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자가_아닌_공백_입력_예외테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("3 5"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 재시작_여부_잘못된_입력_예외테스트() {
+        assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "3");
+                },
+                1, 3, 5, 5, 8, 9
+        )).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
