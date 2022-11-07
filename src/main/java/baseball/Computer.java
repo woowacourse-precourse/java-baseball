@@ -9,6 +9,12 @@ public class Computer {
         this.answer = answer;
     }
 
+    public Computer(String answer, int ball, int strike) {
+        this.answer = answer;
+        this.ball = ball;
+        this.strike = strike;
+    }
+
     public String getHint(String inputNumber) {
         ball = 0;
         strike = 0;
