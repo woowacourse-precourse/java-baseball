@@ -6,6 +6,8 @@ public class Application {
         Game game = new Game();
         game.start();
 
+        disableWarning();
+
         Computer computer = new Computer();
         computer.setAnswer();
 
@@ -45,4 +47,10 @@ public class Application {
         }
 
     }
+
+    public static void disableWarning() {
+        System.err.close();
+        System.setErr(System.out);
+    }
+
 }
