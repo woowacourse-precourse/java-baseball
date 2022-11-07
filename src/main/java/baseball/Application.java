@@ -19,39 +19,8 @@ public class Application {
 
             int userNumber = 0;
             int answerNumber = getAnswerNumber();
-            boolean equalNumber = false;
 
-            // TODO : 게임 진행 과정은 추가적인 메소드로 분리해야 할 듯!
-            while (!equalNumber) {
-                System.out.print("숫자를 입력해주세요 : ");
-
-
-                try {
-                    userNumber = Integer.parseInt(Console.readLine());
-                } catch (NumberFormatException ex) {
-                    // 유효하지 않은 사용자 입력에 대해 예외 처리하는 메소드 호출
-                }
-
-                int strikes = countStrikes(userNumber, answerNumber);
-                int balls = countBalls(userNumber, answerNumber);
-
-                boolean nothing = isNothing(strikes, balls);
-
-                // TODO : 결과 출력에 대해 추가적인 메소드로 분리해야 할 듯!
-                if (nothing) {
-                    System.out.println("낫싱");
-                } else {
-                    if (strikes == 0 && balls != 0)
-                        System.out.println(balls + "볼");
-                    else if (strikes != 0 && balls == 0)
-                        System.out.println(strikes + "스트라이크");
-                    else
-                        System.out.println(balls + "볼 " + strikes + "스트라이크");
-                }
-
-                // 판정 결과를 정답과 비교하는 메소드 호출
-                equalNumber = equalNumber(strikes);
-            }
+            playGame(answerNumber);
 
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -79,6 +48,42 @@ public class Application {
 
         int computerNumber = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
         return computerNumber;
+    }
+
+    public static void playGame(int answerNumber) {
+
+        boolean equalNumber = false;
+
+        while (!equalNumber) {
+            System.out.print("숫자를 입력해주세요 : ");
+
+            int userNumber = 0;
+            try {
+                userNumber = Integer.parseInt(Console.readLine());
+            } catch (NumberFormatException ex) {
+                // 유효하지 않은 사용자 입력에 대해 예외 처리하는 메소드 호출
+            }
+
+            int strikes = countStrikes(userNumber, answerNumber);
+            int balls = countBalls(userNumber, answerNumber);
+
+            boolean nothing = isNothing(strikes, balls);
+
+            // TODO : 결과 출력에 대해 추가적인 메소드로 분리해야 할 듯!
+            if (nothing) {
+                System.out.println("낫싱");
+            } else {
+                if (strikes == 0 && balls != 0)
+                    System.out.println(balls + "볼");
+                else if (strikes != 0 && balls == 0)
+                    System.out.println(strikes + "스트라이크");
+                else
+                    System.out.println(balls + "볼 " + strikes + "스트라이크");
+            }
+
+            // 판정 결과를 정답과 비교하는 메소드 호출
+            equalNumber = equalNumber(strikes);
+        }
     }
 
     public static int countStrikes(int userNumber, int answerNumber) {
