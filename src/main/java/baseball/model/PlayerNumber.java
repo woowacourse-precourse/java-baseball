@@ -14,5 +14,10 @@ public class PlayerNumber {
         isExistSameNumber(playerNumber);
         this.playerNumber = playerNumber;
     }
+
+    public String getPlayerNumber() {
+
+        return playerNumber;
+    }
 }
 
