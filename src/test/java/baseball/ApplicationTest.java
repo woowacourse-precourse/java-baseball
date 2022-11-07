@@ -28,6 +28,40 @@ class ApplicationTest extends NsTest {
         );
     }
 
+  @Test
+  void 임의의_수_생성() {
+    runMain();
+  }
+
+  @Test
+  void 예외_테스트2() {
+    assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("abc"))
+                    .isInstanceOf(IllegalArgumentException.class)
+    );
+  }
+
+    @Test
+    void 예외_테스트3() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("246", "135", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+
+  @Test
+  void 예외_테스트4() {
+    assertRandomNumberInRangeTest(
+            () -> {
+              assertThatThrownBy(() -> runException("246", "135", "A"))
+                      .isInstanceOf(IllegalArgumentException.class);
+            },
+            1, 3, 5
+    );
+  }
     @Override
     public void runMain() {
         Application.main(new String[]{});
