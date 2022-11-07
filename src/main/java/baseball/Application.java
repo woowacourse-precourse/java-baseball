@@ -95,5 +95,15 @@ public class Application {
     Collections.sort(list);
     return list;
   }
+
+  private static List<Integer> fineSameNumber(List<Integer> listA, List<Integer> listB){
+    List<Integer> sameNumberList = new ArrayList<>();
+    for(int i=0;i<3;i++){
+      if(listA.get(i)==listB.get(i)){
+        sameNumberList.add(listA.get(i));
+      }
+    }
+    return sameNumberList;
+  }
 }
 
