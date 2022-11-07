@@ -5,12 +5,12 @@ public class CheckValidArgument {
 
     // 세자리 숫자인지 점검
     public void isMaxSize(String number) throws IllegalArgumentException {
-        if (number.length() < MAX_NUMBER_SIZE) {
+        if (number.length() != MAX_NUMBER_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    // 숫자가 입력됐는지 점검
+    // 올바른 숫자가 입력됐는지 점검
     public void isNumber(String number) throws IllegalArgumentException {
 
     }

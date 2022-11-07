@@ -26,10 +26,11 @@ public class NumberBaseballGame {
     }
 
     // 사용자로부터 숫자를 입력받는 메소드
-    public void inputNumber() {
+    public String inputNumber() {
         // System.out.println(randomNumber);
         System.out.print("숫자를 입력해주세요 : ");
         number = Console.readLine();
+        return number;
     }
 
     // 숫자 판단으로 게임 결과 체크하기
