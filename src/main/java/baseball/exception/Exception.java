@@ -40,4 +40,11 @@ public class Exception {
             throw new IllegalArgumentException("중복된 숫자가 존재합니다");
         }
     }
+
+    public static void isExistZeroInNumber(String number) throws IllegalArgumentException {
+
+        if (number.contains("0")) {
+            throw new IllegalArgumentException("0이 포함되면 안됩니다");
+        }
+    }
 }
