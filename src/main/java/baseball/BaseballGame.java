@@ -11,6 +11,7 @@ public class BaseballGame {
     protected boolean isPlayerWin=false;
 
     public void generateTargetNumber() {
+        this.targetNumber = new ArrayList<>();
         while(targetNumber.size() < 3) {
             int randomNumber=Randoms.pickNumberInRange(1, 9);
             if (!targetNumber.contains(randomNumber)) {
