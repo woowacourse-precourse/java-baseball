@@ -23,17 +23,21 @@
 
 * ### User
   * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
+  * `isZeroAtFirst`
+    * 입력 String 첫 자리가 0인지 검사
+  * `checkLength`
+    * 입력 String 길이가 3인지 검사
+  * `countNumber`
+    * 입력 String에 target의 등장 횟수를 return
+  * `anyDuplicated`
+    * [1, 9] 범위를 countNumber로 검사하여 두 번 이상 등장하는 수가 있으면 true return
+  * `isLegalNumber`
+    * `isBlank`, `isZeroAtFirst`, `checkLength`, `anyDuplicated`를 사용해 잘못된 값인지 검사
+    * Integer로 캐스팅이 불가능한 경우 또는 잘못된 값일 경우 `IllegalArgumentException` 발생 후 종료
   * `generateNumber`
     * 사용자의 3자리 수 입력 받기
-  * `isLegalNumber`
-    * 사용자의 입력이 요구 사항에 부합하는지 검사(서로 다른 3자리 수)
-    * 잘못된 값일 경우 `IllegalArgumentException` 발생 후 종료
-    * 잘못된 값의 경우
-      * Integer로 캐스팅이 불가능한 경우
-      * 길이가 3이 아니거나, 첫자리에 0이 있는 경우
-      * 같은 숫자가 2번 이상 등장하는 경우
-  * `countNumber`
-    * 특정 숫자를 검사하여 사용자 입력에서 해당 숫자의 등장 횟수를 구한다
+    * `isLegalNumber`를 사용해 잘못된 값인지 검사
+    * `setNumbers`를 사용해 `numbers`에 3자리 수 저장
 
 * ### Computer
   * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
