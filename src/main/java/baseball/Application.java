@@ -63,6 +63,17 @@ public class Application {
         return false;
     }
 
+    public static void runGame() {
+        List<Integer> computer = generateRandomNumber();
+        List<Integer> guess = new ArrayList<>();
+        while(true) {
+            getUserGuess(guess);
+            if (checkGuess(computer, guess)) {
+                return;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         /**
          * 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고,
