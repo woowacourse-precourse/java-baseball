@@ -7,11 +7,11 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         View.start();
-        boolean isFinished;
+        boolean isRestart;
         do {
             Game game = new Game();
-            isFinished = game.start();
+            isRestart = game.start();
 
-        } while (isFinished);
+        } while (isRestart);
     }
 }
