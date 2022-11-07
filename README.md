@@ -168,6 +168,6 @@ while (computer.size() < 3) {
 - controller
   - Game을 진행하는 Controller클래스 구성 후 메인 메소드에서 인스턴스 생성 및 호출
   - 난수 생성 후 Model에 적용
-  - 숫자를 입력받고 Model로 판별
+  - 숫자를 입력받고 결과 model 생성
   - 결과를 판별하고 표현하는 로직
   - 게임을 더 할 것인지 물어보고 진행, 종료하는 로직
