@@ -158,6 +158,54 @@ class ApplicationTest extends NsTest {
                 baseBallGame.setRestartToken();
             });
         }
+
+        @Test
+        void 유저_입력_길이_테스트() {
+            //given
+            String userNumber = "1234";
+            InputStream in = new ByteArrayInputStream(userNumber.getBytes());
+            System.setIn(in);
+            //then
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                baseBallGame.inputUserNumber();
+            });
+        }
+
+        @Test
+        void 유저_입력_숫자_테스트() {
+            //given
+            String userNumber = "1a4";
+            InputStream in = new ByteArrayInputStream(userNumber.getBytes());
+            System.setIn(in);
+            //then
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                baseBallGame.inputUserNumber();
+            });
+        }
+
+        @Test
+        void 유저_입력_중복_테스트() {
+            //given
+            String userNumber = "112";
+            InputStream in = new ByteArrayInputStream(userNumber.getBytes());
+            System.setIn(in);
+            //then
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                baseBallGame.inputUserNumber();
+            });
+        }
+
+        @Test
+        void 유저_입력_범위_테스트() {
+            //given
+            String userNumber = "103";
+            InputStream in = new ByteArrayInputStream(userNumber.getBytes());
+            System.setIn(in);
+            //then
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                baseBallGame.inputUserNumber();
+            });
+        }
     }
 
     @Override
