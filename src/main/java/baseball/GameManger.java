@@ -9,7 +9,7 @@ public class GameManger {
     public static int strikeCount;
     public static int ballCount;
 
-    public static final int MAX_COUNT = 3; //answer
+    public static final int ANSWER = 3; //answer
 
     public GameManger(){
         computerAnswer = CreateRandomNumber.getComputerAnswer();
@@ -27,7 +27,7 @@ public class GameManger {
 
     // 게임이 끝났는지 물어보는 함수
     public boolean isGameEnd(){
-        if(strikeCount == MAX_COUNT){
+        if(strikeCount == ANSWER){
             PrintMessage.resultMessage();
             PrintMessage.askContinueMessage();
             if(ValidCheck.isContinueGame(Console.readLine())){
