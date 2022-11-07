@@ -1,8 +1,8 @@
 package baseball.model.player;
 
-import static baseball.model.Constant.END_RANDOM_NUMBER_RANGE;
+import static baseball.model.Constant.END_NUMBER_RANGE;
 import static baseball.model.Constant.GAME_NUMBERS_SIZE;
-import static baseball.model.Constant.START_RANDOM_NUMBER_RANGE;
+import static baseball.model.Constant.START_NUMBER_RANGE;
 
 import baseball.model.hint.Hint;
 import baseball.model.number.BaseballNumbers;
@@ -23,7 +23,7 @@ public class Computer {
     }
 
     private Integer createRandomNumber() {
-        int randomNumber = Randoms.pickNumberInRange(START_RANDOM_NUMBER_RANGE, END_RANDOM_NUMBER_RANGE);
+        int randomNumber = Randoms.pickNumberInRange(START_NUMBER_RANGE, END_NUMBER_RANGE);
         return randomNumber;
     }
 
