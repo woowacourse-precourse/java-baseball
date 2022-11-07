@@ -24,7 +24,7 @@ public class GameException {
             }
 
             if (inputNum.replace(String.valueOf(c), "").length() != 2) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("잘못된 입력 값입니다.");
             }
 
         }

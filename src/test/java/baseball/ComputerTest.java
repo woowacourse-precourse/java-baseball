@@ -69,6 +69,7 @@ class ComputerTest {
                 .isEqualTo(3);
 
     }
+
     @Test
     void ball_점수_확인_3스트라이크_0점() {
         Computer result = new Computer();

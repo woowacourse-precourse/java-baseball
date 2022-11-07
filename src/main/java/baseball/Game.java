@@ -19,19 +19,16 @@ public class Game {
             endPoint = checkEndPoint(computer, inputNum);
         }
 
-        endGame(gameException);
     }
 
-    private void endGame(GameException gameException) {
+    public int restartGame(GameException gameException) {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         int startOrEnd = Integer.parseInt(Console.readLine());
 
         gameException.restartException(startOrEnd);
 
-        if (startOrEnd == 1) {
-            startGame(gameException);
-        }
+        return startOrEnd;
     }
 
     private boolean checkEndPoint(Computer computer, String inputNum) {
