@@ -5,6 +5,7 @@ public class Action {
     private static final String ONE_NUMBER_REGULAR_EXPRESSION = "[12]";
     public static final String EXCEPTION_MESSAGE_FOR_INVALID_FORM = "숫자 1 혹은 2만 입력할 수 있습니다.";
     public static final String START = "1";
+    public static final String END = "2";
 
     public Action(String numberAction) {
         validateForm(numberAction);
