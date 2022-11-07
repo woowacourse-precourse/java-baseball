@@ -9,6 +9,20 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PlayerTest {
+    public PlayerTest() {
+        문자열을_리스트로_저장 문자열을_리스트로_저장 = new 문자열을_리스트로_저장();
+        문자열을_리스트로_저장.case1();
+        문자열을_리스트로_저장.case2();
+        문자열을_리스트로_저장.case3();
+        플레이어의_입력받은_수의_개수_예외_처리 개수 = new 플레이어의_입력받은_수의_개수_예외_처리();
+        개수.case1();
+        개수.case2();
+        개수.case3();
+        플레이어의_입력받은_수의_중복_예외_처리 중복 = new 플레이어의_입력받은_수의_중복_예외_처리();
+        중복.case1();
+        중복.case2();
+        중복.case3();
+    }
 
     @Nested
     class 문자열을_리스트로_저장 {

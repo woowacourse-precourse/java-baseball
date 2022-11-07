@@ -6,6 +6,19 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class GameExceptionTest {
+
+    public GameExceptionTest() {
+        runCodeTest runCodeTest = new runCodeTest();
+        runCodeTest.input_1();
+        runCodeTest.input_2();
+        runCodeTest.input_others();
+        runCodeLengthTest runCodeLengthTest = new runCodeLengthTest();
+        runCodeLengthTest.length_0();
+        runCodeLengthTest.length_1();
+        runCodeLengthTest.length_2();
+        runCodeLengthTest.length_3();
+    }
+
     @Nested
     class runCodeTest {
         GameException gameException = new GameException();

@@ -9,6 +9,12 @@ import java.util.List;
 import java.util.Set;
 
 class ComputerTest {
+
+    public ComputerTest() {
+        컴퓨터의_랜덤숫자_리스트의_크기는_3();
+        컴퓨터의_랜덤숫자_범위는_1부터9();
+    }
+
     @Test
     void 컴퓨터의_랜덤숫자_리스트의_크기는_3() {
         Computer computer = new Computer();

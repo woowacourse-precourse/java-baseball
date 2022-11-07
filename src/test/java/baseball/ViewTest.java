@@ -7,6 +7,21 @@ import org.junit.jupiter.api.Test;
 import static baseball.view.PrintMessage.*;
 
 public class ViewTest {
+
+    public ViewTest() {
+        지시문 지시문 = new 지시문();
+        지시문.게임시작();
+        지시문.데이터입력();
+        지시문.재시작_중지();
+        결과 결과 = new 결과();
+        결과.낫싱();
+        결과.볼();
+        결과.스트라이크();
+        볼_스트라이크 볼_스트라이크 = new 볼_스트라이크();
+        볼_스트라이크.볼1_스트라이크1();
+        볼_스트라이크.볼2_스트라이크1();
+    }
+
     @Nested
     class 지시문 {
         @Test
@@ -48,19 +63,20 @@ public class ViewTest {
             Assertions.assertThat(NOTHING.getMessage()).isEqualTo("낫싱");
         }
 
-        @Nested
-        class 볼_스트라이크 {
-            @Test
-            void 볼1_스트라이크1() {
-                Assertions.assertThat(1 + BALL.getMessage() + " " + 1 + STRIKE.getMessage())
-                        .isEqualTo("1볼 1스트라이크");
-            }
+    }
 
-            @Test
-            void 볼2_스트라이크1() {
-                Assertions.assertThat(2 + BALL.getMessage() + " " + 1 + STRIKE.getMessage())
-                        .isEqualTo("2볼 1스트라이크");
-            }
+    @Nested
+    class 볼_스트라이크 {
+        @Test
+        void 볼1_스트라이크1() {
+            Assertions.assertThat(1 + BALL.getMessage() + " " + 1 + STRIKE.getMessage())
+                    .isEqualTo("1볼 1스트라이크");
+        }
+
+        @Test
+        void 볼2_스트라이크1() {
+            Assertions.assertThat(2 + BALL.getMessage() + " " + 1 + STRIKE.getMessage())
+                    .isEqualTo("2볼 1스트라이크");
         }
     }
 }
