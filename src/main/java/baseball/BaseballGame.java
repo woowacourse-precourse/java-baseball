@@ -1,6 +1,8 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.List;
+
 import static baseball.Const.START_MESSAGE;
 
 public class BaseballGame {
@@ -17,10 +19,9 @@ public class BaseballGame {
 
     public void start() {
         System.out.println(START_MESSAGE);
-        answerGenerator.generateAnswer();
+        List<Integer> answer= answerGenerator.generateAnswer();
         do{
-            //userInput.setNumberOfUser();
-            baseballGameHint.getHint(userInput.setNumberOfUser(),answerGenerator.getAnswer());
+            baseballGameHint.getHint(userInput.setNumberOfUser(),answer);
         }while(!baseballGameHint.isAnswer());
 
         String userChoice = userInput.inputRestartOrStop();
