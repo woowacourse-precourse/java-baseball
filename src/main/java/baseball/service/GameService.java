@@ -41,4 +41,17 @@ public class GameService {
 		}
 	}
 
+	public void compare(User user, List<Integer> computer) {
+		for (int i = 0; i < computer.size(); i++) {
+			if (computer.get(i) == user.getUserNumber(i)) {
+				game.strikeAdd();
+				continue;
+			}
+			if (computer.contains(user.getUserNumber(i))) {
+				game.ballAdd();
+			}
+		}
+
+	}
+
 }
