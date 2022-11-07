@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-
+        startGame();
     }
 
     /**
@@ -139,4 +139,56 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    /**
+     * 게임을 시작 / 진행
+     */
+    private static void startGame() {
+        String userInput;
+        List<Integer> userInputList;
+        List<Integer> computerNumberList;
+        boolean canStartNewGame;
+        boolean isNewGame = true;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (true) {
+            System.out.print("숫자를 입력해주세요 :");
+            userInput = Console.readLine();
+
+            validateUserInput(userInput);
+
+            userInputList = getStringInputToList(userInput);
+            computerNumberList = getThreeRandomNumbersList();
+
+            canStartNewGame = printGameResult(userInputList, computerNumberList);
+
+            if (canStartNewGame) {
+                isNewGame = getUserGoStop();
+            }
+
+            if (!isNewGame) {
+                break;
+            }
+        }
+    }
+
+    /**
+     * 게임이 끝난 경우 새로 시작할지 말지에 대한 유저 입력 받음
+     *
+     * @return 계속 게임을 지속하는 경우 true, 그렇지 않은 경우 false 반환
+     */
+    private static boolean getUserGoStop() throws IllegalArgumentException {
+        String userInput = Console.readLine();
+
+        if (userInput.equals("1")) {
+            return true;
+        } else if (userInput.equals("2")) {
+            System.out.println("게임 종료\n");
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
