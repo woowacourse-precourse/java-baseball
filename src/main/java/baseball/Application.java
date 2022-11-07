@@ -3,21 +3,58 @@ package baseball;
 import java.util.Scanner;
 
 public class Application {
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        String input;
+        String oneMore = "1";
+        int randomNumber;
+        while (oneMore.equals("1")){
+            randomNumber = getRandomNumber();
+            oneMore = getOneMoreInput();
+        }
+    }
 
-    static boolean isDuplicate(char c, String str){
-        int cnt = 0;
-        for (int i = 0; i < str.length(); i++){
-            if (c == str.charAt(i)){
-                cnt++;
+    static int getRandomNumber(){
+        int ret;
+
+        while (true){
+            ret = camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(100, 999);
+            if (isValidRandomNumber(ret)){
+                break;
             }
         }
-
-        if (cnt > 1){
-            return true;
-        }
-        return false;
+        return ret;
     }
-    static boolean isValidNumber(String str){
+
+    static boolean isValidRandomNumber(int num){
+        int one;
+        int ten;
+        int hundred;
+
+        one = num % 10;
+        num /= 10;
+
+        ten = num % 10;
+        num /= 10;
+
+        hundred = num % 10;
+
+        if (hundred == ten || hundred == one || ten == one){
+            return false;
+        }
+        return true;
+    }
+
+    static String getInput() throws IllegalArgumentException{
+        String ret = camp.nextstep.edu.missionutils.Console.readLine();
+
+        if (ret.length() != 3 || !isValidInputNumber(ret)){
+            throw new IllegalArgumentException();
+        }
+        return ret;
+    }
+
+    static boolean isValidInputNumber(String str){
         for (int i = 0; i < str.length(); i++){
             if (!(str.charAt(i) >= '1' && str.charAt(i) <= '9')){
                 return false;
@@ -32,13 +69,19 @@ public class Application {
 
         return true;
     }
-    static String getInput() throws IllegalArgumentException{
-        String ret = camp.nextstep.edu.missionutils.Console.readLine();
 
-        if (ret.length() != 3 || !isValidNumber(ret)){
-            throw new IllegalArgumentException();
+    static boolean isDuplicate(char c, String str){
+        int cnt = 0;
+        for (int i = 0; i < str.length(); i++){
+            if (c == str.charAt(i)){
+                cnt++;
+            }
         }
-        return ret;
+
+        if (cnt > 1){
+            return true;
+        }
+        return false;
     }
 
     static String getOneMoreInput() throws IllegalArgumentException{
@@ -48,16 +91,5 @@ public class Application {
             return ret;
         }
         throw new IllegalArgumentException();
-    }
-
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        String input;
-        String oneMore = "1";
-        while (oneMore.equals("1"))
-        {
-            input = getInput();
-            oneMore = getOneMoreInput();
-        }
     }
 }
