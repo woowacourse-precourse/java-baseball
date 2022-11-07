@@ -60,6 +60,36 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    class ballTest{
+        @Test
+        void case1(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(5, 6, 7));
+            int strike = 0;
+            int result = 0;
+            assertThat(Application.ball(computer, user, strike)).isEqualTo(result);
+        }
+
+        @Test
+        void case2(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(1, 3, 2));
+            int strike = 1;
+            int result = 2;
+            assertThat(Application.ball(computer, user, strike)).isEqualTo(result);
+        }
+
+        @Test
+        void case3(){
+            List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+            List<Integer> user = new ArrayList<>(Arrays.asList(3, 1, 2));
+            int strike = 0;
+            int result = 3;
+            assertThat(Application.ball(computer, user, strike)).isEqualTo(result);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
