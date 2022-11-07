@@ -13,7 +13,7 @@ public class Application {
 
         boolean resetComputer = false;
         int userNumToEndGame = 0;
-        while(true) {
+        while(userNumToEndGame != 2) {
             if(resetComputer) {
                 computerInput = computer.setComputer();
                 resetComputer = false;
@@ -31,8 +31,6 @@ public class Application {
             if(userNumToEndGame == 1) {
                 resetComputer = true;
                 userNumToEndGame = 0;
-            } else if (userNumToEndGame == 2) {
-                break;
             }
         }
     }
