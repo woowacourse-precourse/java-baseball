@@ -1,20 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Game {
+
     private static final int DIGIT = 3;
-    private static final int MIN_NUM = 1;
-    private static final int MAX_NUM = 9;
 
-
-    private List<Integer> computerNum;
-    private List<Integer> userNum;
+    private Computer computer;
+    private Player player;
     private int strike = 0;
     private int ball = 0;
     private boolean nothing = false;
@@ -24,46 +18,53 @@ public class Game {
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        computerNum = createComputerNum();
+        computer = new Computer();
+        player = new Player();
+        computer.setNumber();
         while (!EXIT) {
             strike = 0;
             ball = 0;
             nothing = false;
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            userNum = getUserNum(input);
+            player.setNumber(input);
             calculateResult();
             printResult();
-            if (strike == 3) {
-               EXIT = checkExit();
-            }
+            checkIfAnswer();
         }
 
     }
 
-    public boolean checkExit(){
+    public void makeNewRound(){
+        computer.setNumber();
+        EXIT = false;
+    }
+
+    public void checkExit(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
         if(!userInput.equals("1") && !userInput.equals("2")){
             throw new IllegalArgumentException();
         }
         if (userInput.equals("1")){
-            computerNum = createComputerNum();
-            System.out.println(computerNum);
-            return false;
+            makeNewRound();
         }
-            return true;
+        if(userInput.equals("2")){
+            EXIT = true;
+        }
+    }
 
+    public void checkIfAnswer(){
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            checkExit();
+        }
     }
 
 
     public void printResult() {
         String result = getResult();
         System.out.println(result);
-
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
     }
 
     public String getResult() {
@@ -104,79 +105,23 @@ public class Game {
     }
 
     public boolean isBall(int index) {
-        return !isStrike(index) && computerNum.contains(userNum.get(index));
+        return !isStrike(index) && computer.getNumber().contains(player.getNumber().get(index));
     }
 
     public boolean isStrike(int index) {
-        return computerNum.get(index) == userNum.get(index);
+        return computer.getNumber().get(index) == player.getNumber().get(index);
     }
 
-    public List<Integer> createComputerNum() {
-        Set<Integer> computer = new HashSet<>();
-        while (computer.size() < DIGIT) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
-            computer.add(randomNumber);
-        }
-        return convertSettoList(computer);
-    }
 
-    private List<Integer> convertSettoList(Set<Integer> set) {
-        return new ArrayList<>(set);
-    }
 
-    public List<Integer> getUserNum(String input) {
-        int num = validateNum(input);
-        List<Integer> userNum = convertInttoList(num);
-        validateRangeForAll(userNum);
-        validateDigit(userNum);
-        validateDuplication(userNum);
 
-        return userNum;
 
-    }
 
-    public void validateRangeForAll(List<Integer> nums) {
-        for (int elem : nums) {
-            validateRange(elem);
-        }
-    }
 
-    public List<Integer> convertInttoList(int num) {
-        int[] array = Stream.of(String.valueOf(num)
-                        .split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
-        return Arrays.stream(array)
-                .boxed()
-                .collect(Collectors.toList());
-    }
 
-    public static int validateNum(String s) {
-        try {
-            int num = Integer.parseInt(s);
-            return num;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자 외 문자가 입력되었습니다.");
-        }
-    }
 
-    public void validateRange(int num) {
-        if (num > 9 || num < 1) {
-            throw new IllegalArgumentException("입력된 숫자가 범위를 초과했습니다.");
-        }
-    }
 
-    public void validateDigit(List<Integer> nums) {
-        if (nums.size() != 3) {
-            throw new IllegalArgumentException("세 자리 수가 아닙니다.");
-        }
-    }
 
-    public void validateDuplication(List<Integer> nums) {
-        if (nums.size() != nums.stream().distinct().count()) {
-            throw new IllegalArgumentException("중복된 수가 있습니다.");
-        }
-    }
 
 
 }
