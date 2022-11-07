@@ -86,4 +86,7 @@ Summary
     6. 유저의 입력을 요청하는 print 함수 
         - method : printInputRequestMsg
 
- 
+에러
+--
+    1. 사용자가 입력한 값이 문제가 있을 경우 IllegalArgumentException 발생시키는 클래스 구현
+        - class : UserInputException
