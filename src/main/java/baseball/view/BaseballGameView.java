@@ -40,7 +40,6 @@ public class BaseballGameView {
     }
 
     public String inputNumber() {
-        String inputNumber = readLine();
-        return inputNumber;
+        return readLine();
     }
 }
