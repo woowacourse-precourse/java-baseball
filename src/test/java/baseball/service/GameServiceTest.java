@@ -38,7 +38,7 @@ class GameServiceTest {
     void 숫자_클리어_테스트() {
         randomBallNumber.createRandomNumber();
         gameService.clearRandomBallNumber();
-        assertThat(randomBallNumber.randomNumbers.size()).isSameAs(0);
+        assertThat(randomBallNumber.getRandomNumbers().size()).isSameAs(0);
     }
 
     @Test
