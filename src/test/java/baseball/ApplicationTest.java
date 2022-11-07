@@ -29,15 +29,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void isIllegalInput_테스트_true_return() throws Exception {
-        String userInput = "1234";
-        init();
-        boolean funcResult = isIllegalInput(userInput);
-
-        assertThat(funcResult).isEqualTo(true);
-    }
-
-    @Test
     void isIllegalInput_테스트_false_return(){
         String userInput = "123";
         init();
