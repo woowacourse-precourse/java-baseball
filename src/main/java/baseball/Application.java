@@ -1,19 +1,19 @@
 package baseball;
 
+import baseball.utils.InputNumberUtil;
 import baseball.utils.RandomNumberGeneratorUtil;
 import baseball.validation.UserValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import static baseball.constant.BaseballConstant.GAME_FINISH;
+import static baseball.constant.BaseballConstant.GAME_START;
+import static baseball.constant.BaseballConstant.INPUT_NUMBER;
+import static baseball.constant.BaseballConstant.RESTART_GAME;
+import static baseball.constant.BaseballConstant.WRONG_FORMAT_NUMBER;
+
 public class Application {
-
-    public static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    public static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
-    public static final String WRONG_FORMAT_NUMBER = "잘못된 숫자 입력입니다.";
-    public static final String GAME_FINISH = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String RESTART_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
 
     public static void main(String[] args) {
 
@@ -36,7 +36,7 @@ public class Application {
 
             String user = Console.readLine();
 
-            if (UserValidator.inputNumberValidation(user)) {
+            if (!UserValidator.inputNumberValidation(user)) {
                 throw new IllegalArgumentException(WRONG_FORMAT_NUMBER);
             }
 
