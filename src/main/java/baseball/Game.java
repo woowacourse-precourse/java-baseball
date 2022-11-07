@@ -75,7 +75,7 @@ public class Game {
 
         for(char c : input.toCharArray()) {
             if (48 <= c && c <= 57)
-                return null;
+                return "";
         }
 
         return input;
