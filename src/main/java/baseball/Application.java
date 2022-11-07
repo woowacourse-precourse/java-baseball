@@ -87,9 +87,6 @@ class GameManager {
         if (userInput == terminate) {
             return false;
         }
-        if (finish == true) {
-            throw new IllegalArgumentException();
-        }
         return true;
     }
 }
@@ -146,6 +143,30 @@ class Referee {
             }
         }
         return judgement;
+    }
+}
+
+class ExceptionChecker extends Exception {
+    static int numberSize = 3;
+    public static void checkGuessingInput(List<Integer> userInput) {
+
+        if (userInput.size() != numberSize) {
+            throw new IllegalArgumentException();
+        }
+        for (int inputElement : userInput) {
+            if (inputElement < 1 || inputElement > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+        if (userInput.stream().distinct().count() != numberSize) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void checkAfterGameInput(int inputAfterGameFinished) {
+        if (inputAfterGameFinished != 1 && inputAfterGameFinished != 2) {
+            throw new IllegalArgumentException();
+        }
     }
 }
 
