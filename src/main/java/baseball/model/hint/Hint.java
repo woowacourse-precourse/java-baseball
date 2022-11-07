@@ -1,14 +1,14 @@
 package baseball.model.hint;
 
+import static baseball.model.Constant.BALL_STRING;
+import static baseball.model.Constant.NOTHING_STRING;
+import static baseball.model.Constant.NULL_STRING;
+import static baseball.model.Constant.SPACE_STRING;
+import static baseball.model.Constant.STRIKE_STRING;
+
 import baseball.model.number.BaseballNumbers;
 
 public class Hint {
-    private static final String BALL_STRING = "볼";
-    private static final String STRIKE_STRING = "스트라이크";
-    private static final String NOTHING_STRING = "낫싱";
-    private static final String SPACE_STRING = " ";
-    private static final String NULL_STRING = "";
-
     private final BaseballNumbers answerBaseballNumbers;
     private final BaseballNumbers inputBaseballNumbers;
 

@@ -1,13 +1,14 @@
 package baseball.controller;
 
+import static baseball.model.Constant.END_CODE_END;
+import static baseball.model.Constant.END_CODE_RESTART;
+
 import baseball.model.hint.Hint;
 import baseball.model.number.BaseballNumbers;
 import baseball.model.player.Computer;
 import baseball.view.BaseballGameView;
 
 public class BaseballGame {
-    private static final int END_CODE_RESTART = 1;
-    private static final int END_CODE_END = 2;
     private final BaseballGameView gameView;
     private final Computer computer;
     private boolean isEnd = false;

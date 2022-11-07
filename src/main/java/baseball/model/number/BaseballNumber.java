@@ -1,8 +1,9 @@
 package baseball.model.number;
 
+import static baseball.model.Constant.INPUT_IS_NOT_NUMBER_EXCEPTION;
+import static baseball.model.Constant.OUT_OF_RANGE_NUMBER_EXCEPTION;
+
 public class BaseballNumber {
-    private static final String INPUT_IS_NOT_NUMBER_EXCEPTION = "입력은 숫자로 주어져야 합니다";
-    private static final String OUT_OF_RANGE_NUMBER_EXCEPTION = "범위를 벗어난 숫자입니다";
     Integer ballNumber;
 
     BaseballNumber(char ballNumber) {

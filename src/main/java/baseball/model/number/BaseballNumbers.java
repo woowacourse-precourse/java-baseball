@@ -1,12 +1,12 @@
 package baseball.model.number;
 
+import static baseball.model.Constant.DUPLICATE_NUMBER_EXCEPTION;
+import static baseball.model.Constant.INPUT_SIZE_EXCEPTION;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {
-    private static final String INPUT_SIZE_EXCEPTION = "입력하는 수는 3자리여야 합니다";
-    private static final String DUPLICATE_NUMBER_EXCEPTION = "중복되지 않는 수를 입력해야 합니다";
-
     List<BaseballNumber> ballNumbers;
 
     public BaseballNumbers(String numberString) {

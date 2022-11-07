@@ -1,5 +1,9 @@
 package baseball.model.player;
 
+import static baseball.model.Constant.END_RANDOM_NUMBER_RANGE;
+import static baseball.model.Constant.RANDOM_NUMBERS_SIZE;
+import static baseball.model.Constant.START_RANDOM_NUMBER_RANGE;
+
 import baseball.model.hint.Hint;
 import baseball.model.number.BaseballNumbers;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -7,10 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static final int START_RANDOM_NUMBER_RANGE = 1;
-    private static final int END_RANDOM_NUMBER_RANGE = 9;
-    private static final int RANDOM_NUMBERS_SIZE = 3;
-
     private BaseballNumbers computerBaseballNumbers;
 
     public void createRandomNumbers() {
