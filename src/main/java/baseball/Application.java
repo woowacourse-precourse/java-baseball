@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,13 +20,12 @@ public class Application {
         return computer;
     }
 
-    public static List<Integer> getUserGuess() {
+    public static void getUserGuess(List<Integer> guess) {
         String[] numbers = Console.readLine().split("");
-        List<Integer> guess = new ArrayList<>();
+        guess.clear();
         for(String number:numbers) {
             guess.add(Integer.parseInt(number));
         }
-        return guess;
     }
 
     public static boolean checkGuess(List<Integer> computer, List<Integer> guess) {
