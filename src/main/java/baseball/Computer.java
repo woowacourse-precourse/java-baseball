@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private final String computerNumbers;
+
     private final List<Integer> computerNumbersList;
 
     public Computer() {
         this.computerNumbersList = setComputerNumbersByList();
-        this.computerNumbers = setComputerNumbersToString(this.computerNumbersList);
+    }
+
+    public List<Integer> getComputerNumbersList() {
+        return this.computerNumbersList;
     }
 
     private List<Integer> setComputerNumbersByList() {
@@ -23,14 +26,5 @@ public class Computer {
             }
         }
         return newComputerNumber;
-    }
-
-    public List<Integer> getComputerNumbersList() {
-        return this.computerNumbersList;
-    }
-
-    // set 수정 필요
-    private String setComputerNumbersToString(List<Integer> computerNumbersList) {
-        return this.computerNumbers;
     }
 }
