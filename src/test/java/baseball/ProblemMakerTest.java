@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -35,7 +36,26 @@ class ProblemMakerTest {
     }
 
     @Test
-    void hasNumber() {
+    void hasNumber_없는숫자일경우() {
+        ProblemMaker problemMaker = new ProblemMaker();
+        problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
+        List<Integer> numbers = problemMaker.getNumbers();
+        int num = Randoms.pickNumberInRange(1,9);
+        while(numbers.contains(num)){
+            num = Randoms.pickNumberInRange(1,9);
+        }
+        boolean result = false;
+        assertThat(result).isEqualTo(problemMaker.hasNumber(num));
+    }
+
+    @Test
+    void hasNumber_있는숫자일경우() {
+        ProblemMaker problemMaker = new ProblemMaker();
+        problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
+        List<Integer> numbers = problemMaker.getNumbers();
+        int num = numbers.get(0);
+        boolean result = true;
+        assertThat(result).isEqualTo(problemMaker.hasNumber(num));
     }
 
     @Test
