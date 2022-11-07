@@ -3,6 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +30,13 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 스트라이크_테스트(){
+        List<Integer> computer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 3));
+        assertThat(Application.strike(computer,user)).isEqualTo(3);
     }
 
     @Override
