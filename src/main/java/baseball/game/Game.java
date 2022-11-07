@@ -8,11 +8,15 @@ import util.RandomUniqueNumber;
 import java.util.List;
 
 public class Game {
-    public void play() {
-        GameStatus gameStatus = GameStatus.PROGRESSING;
+    public static final int BALL_SIZE = 3;
+    public GameStatus gameStatus;
 
+    public Game() {
+        this.gameStatus = GameStatus.PROGRESSING;
+    }
+
+    public void play() {
         while (gameStatus.isProgressing()) {
-            gameStatus = play(RandomNumber.getRandom3Numbers());
             List<Integer> randomUniqueNumbers = RandomUniqueNumber.getRandomUniqueNumbers(BALL_SIZE);
             gameStatus = play(randomUniqueNumbers);
         }
