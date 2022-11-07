@@ -17,10 +17,14 @@ public class NumberBaseballGame {
         randomNumber = String.valueOf(Randoms.pickNumberInRange(100, 999));
     }
 
+    public int getGoGameAnswer() {
+        return goGameAnswer;
+    }
+
     // 사용자로부터 숫자를 입력받는 메소드
     public void inputNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
         System.out.println(randomNumber);
+        System.out.print("숫자를 입력해주세요 : ");
         number = Console.readLine();
     }
 
