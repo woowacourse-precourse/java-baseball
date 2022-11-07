@@ -28,6 +28,83 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void isThreeNumber_메서드_올바른_값_테스트() {
+        String input = "123";
+        boolean result = true;
+        assertThat(Application.isThreeNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isThreeNumber_메서드_잘못된_값_길이_테스트() {
+        String input = "1234";
+        boolean result = false;
+        assertThat(Application.isThreeNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isThreeNumber_메서드_잘못된_값_문자_테스트() {
+        String input = "12a";
+        boolean result = false;
+        assertThat(Application.isThreeNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isDifferentNumber_메서드_올바른_값_테스트() {
+        String input = "123";
+        boolean result = true;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isDifferentNumber_메서드_잘못된_값_중복_테스트() {
+        String input = "121";
+        boolean result = false;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isValidNumber_메서드_올바른_값_테스트() {
+        String input = "123";
+        boolean result = true;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isValidNumber_메서드_잘못된_값_테스트() {
+        String input = "11a";
+        boolean result = false;
+        assertThat(Application.isDifferentNumber(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isOneOrTwo_메서드_올바른_값_테스트() {
+        String input = "1";
+        boolean result = true;
+        assertThat(Application.isOneOrTwo(input)).isEqualTo(result);
+    }
+
+    @Test
+    void isOneOrTwo_메서드_잘못된_값_테스트() {
+        String input = "4";
+        boolean result = false;
+        assertThat(Application.isOneOrTwo(input)).isEqualTo(result);
+    }
+
+    @Test
+    void checkIfDone_메서드_끝난_경우_테스트() {
+        String input = "2";
+        boolean result = true;
+        assertThat(Application.checkIfDone(input)).isEqualTo(result);
+    }
+
+    @Test
+    void checkIfDone_메서드_재시작하는_경우_테스트() {
+        String input = "1";
+        boolean result = false;
+        assertThat(Application.checkIfDone(input)).isEqualTo(result);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
