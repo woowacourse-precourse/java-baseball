@@ -1,7 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -25,6 +28,40 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_중복() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("131"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_문자입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12s"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 컴퓨터_숫자생성_확인() {
+        Computer computer = new Computer();
+        List<Integer> integers = computer.initRandomNumber();
+        Assertions.assertEquals(3, integers.size());
+    }
+
+    @Test
+    void 볼_스트라이크_확인_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "456", "789", "258", "379", "396", "369", "2");
+                    assertThat(output()).contains("1볼", "1볼", "1스트라이크", "2스트라이크", "2볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                3,6,9
         );
     }
 
