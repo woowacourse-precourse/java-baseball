@@ -24,6 +24,22 @@ public class Application {
                 userNumbers = getNumbersToUserNumber(userNumber);
                 gameResult = getGameResult(computerNumbers, userNumbers);
             }
+            break;
+        }
+    }
+
+    static void printGameResult(int[] gameResult) {
+        if (gameResult[0] > 0 && gameResult[1] > 0) {
+            System.out.println(gameResult[1] + "볼 " + gameResult[0] + "스트라이크");
+
+        } else if (gameResult[0] > 0) {
+            System.out.println(gameResult[0] + "스트라이크");
+
+        } else if (gameResult[1] > 0) {
+            System.out.println(gameResult[1] + "볼");
+
+        } else {
+            System.out.println("낫싱");
         }
     }
 
