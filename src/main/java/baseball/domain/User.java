@@ -4,50 +4,34 @@ import baseball.util.Validation;
 
 import java.util.List;
 
-import static baseball.domain.User.UserInputValidation.*;
+import static baseball.domain.User.UserValidation.*;
 import static baseball.util.Constant.*;
 import static baseball.util.Utilization.convertStringToIntegerList;
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
     private List<Integer> numbers;
 
     public User() {}
 
-    public void generateNumbers() {
-        String userInput = input();
-        if (!validateUserNumber(userInput)) {
+    public void generateNumbers(String value) {
+        if (!validateUserNumber(value)) {
             throw new IllegalArgumentException(EXCEPTION_INVALID_NUMBER);
         }
-        numbers = convertStringToIntegerList(userInput);
+        numbers = convertStringToIntegerList(value);
     }
 
-    public int inputRestart() {
-        String userInput = input();
-        if (!validateRestartValue(userInput)) {
+    public int generateRestart(String value) {
+        if (!validateRestartValue(value)) {
             throw new IllegalArgumentException(EXCEPTION_INVALID_NUMBER);
         }
-        return Integer.parseInt(userInput);
-    }
-
-    private String input() {
-        String userInput = readLine();
-        if (!validateInput(userInput)) {
-            throw new IllegalArgumentException(EXCEPTION_INVALID_INPUT);
-        }
-        return userInput;
+        return Integer.parseInt(value);
     }
 
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    static class UserInputValidation extends Validation {
-        public static boolean validateInput(String userInput) {
-            return validateNotNull(userInput)
-                    && isInteger(userInput);
-        }
-
+    static class UserValidation extends Validation {
         public static boolean validateUserNumber(String userInput) {
             return validateStringLength(userInput, NUMBER_LENGTH)
                     && validateEachUserNumberInRange(userInput)

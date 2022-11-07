@@ -1,21 +1,22 @@
 package baseball.game;
 
-import baseball.domain.User;
 import baseball.domain.Computer;
+import baseball.domain.User;
 
 import java.util.List;
 
-import static baseball.game.View.show;
 import static baseball.util.Constant.*;
 
 public class Controller {
+    private final View view;
     private final Computer computer;
     private final User user;
 
     public Controller() {
+        view = new View();
         computer = new Computer();
         user = new User();
-        show(GAME_START_MESSAGE);
+        view.show(GAME_START_MESSAGE);
     }
 
     public void run() {
@@ -27,11 +28,11 @@ public class Controller {
     }
 
     private void play() {
-        show(USER_NUMBER_INPUT_MESSAGE);
-        user.generateNumbers();
+        view.show(USER_NUMBER_INPUT_MESSAGE);
+        user.generateNumbers(view.input());
 
         List<Integer> hint = Service.countHint(user.getNumbers(), computer.getNumbers());
-        show(Service.printHint(hint));
+        view.show(Service.printHint(hint));
 
         if (!hint.equals(THREE_STRIKE)) {
             play();
@@ -39,8 +40,8 @@ public class Controller {
     }
 
     private boolean restart() {
-        show(THREE_STRIKE_MESSAGE);
-        show(GAME_RESTART_OR_TERMINATE_MESSAGE);
-        return user.inputRestart() == GAME_RESTART_VALUE;
+        view.show(THREE_STRIKE_MESSAGE);
+        view.show(GAME_RESTART_OR_TERMINATE_MESSAGE);
+        return user.generateRestart(view.input()) == GAME_RESTART_VALUE;
     }
 }
