@@ -20,6 +20,8 @@
 - Input 클래스
   - [x] 입력받는 기능
   - [x] String을 List로 바꾸는 기능
+- InputValidity 클래스
+  - [x] Input 클래스에 들어오는 input의 유효성 검사
 - Computer 클래스
   - [x] random 값을 생성하는 기능
   - [x] int 값을 character로 만드는 기능
