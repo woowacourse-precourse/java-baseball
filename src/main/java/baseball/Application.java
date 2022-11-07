@@ -36,7 +36,7 @@ public class Application {
         return userNumber;
     }
 
-    public static void availableUserNumberIsChecked(String word){
+    public static void availableUserNumberIsChecked(String word) throws IllegalArgumentException{
         String regularExpression = "^[1-9]{3}$";
         boolean result = Pattern.matches(regularExpression,word);
 
@@ -155,7 +155,7 @@ public class Application {
         Map<String,Integer> baseballResult = calculatedStrikeBallNumber(strikeNumber,ballNumber);
         checkedAnswer = printBaseballOfResult(baseballResult);
         if(!checkedAnswer){
-            inputAvailableUserNumberService();
+            inputUserNumberService(computerNumbersList);
         }
     }
 
