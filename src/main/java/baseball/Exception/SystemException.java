@@ -15,4 +15,8 @@ public class SystemException {
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }
+
+    public static boolean isValidInput(String input) {
+        return isValidNumber(input) && isNotContainsZero(input) && isNotDuplicate(input);
+    }
 }
