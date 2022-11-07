@@ -9,11 +9,11 @@ public class Computer {
     private static List<Integer> computerAnswer;
 
     public static int createNumber(){
-        return Randoms.pickNumberInRange(1, 9);
+        return Randoms.pickNumberInRange(Range.RANGE_MIN, Range.RANGE_MAX);
     }
 
     public List<Integer> decideAnswer() {
-        while (computerAnswer.size() <= 3) {
+        while (computerAnswer.size() <= Range.DIGIT) {
             int randomNum = createNumber();
             addNum(randomNum);
         }

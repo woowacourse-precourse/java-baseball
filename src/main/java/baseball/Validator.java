@@ -7,7 +7,7 @@ import java.util.*;
 public class Validator {
 
     public List<Integer> getInput(){
-        System.out.println("숫자를 입력해주세요: ");
+        System.out.println(Message.INPUT_ASK.getMessage());
         String inputNum = Console.readLine();
         return convertor(inputNum);
     }
@@ -32,7 +32,7 @@ public class Validator {
     }
 
     public boolean checkLength(String playerNum){
-        return playerNum.length() == 3;
+        return playerNum.length() == Range.DIGIT;
     }
 
     public boolean checkNum(String playerNum){
