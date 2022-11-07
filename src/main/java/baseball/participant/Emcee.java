@@ -14,15 +14,16 @@ public class Emcee {
     }
 
     public void showResultMessage(ResultType resultType, int numberOfBall, int numberOfStrike) {
-        if (resultType == ResultType.EXACT_MATCH)
+        if (resultType == ResultType.EXACT_MATCH) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        else if (resultType == ResultType.BALL_AND_STRIKE)
+        } else if (resultType == ResultType.BALL_AND_STRIKE) {
             System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
-        else if (resultType == ResultType.ONLY_STRIKE)
+        } else if (resultType == ResultType.ONLY_STRIKE) {
             System.out.println(numberOfStrike + "스트라이크");
-        else if (resultType == ResultType.ONLY_BALL)
+        } else if (resultType == ResultType.ONLY_BALL) {
             System.out.println(numberOfBall + "볼");
-        else if (resultType == ResultType.NOTHING)
+        } else if (resultType == ResultType.NOTHING) {
             System.out.println("낫싱");
+        }
     }
 }
