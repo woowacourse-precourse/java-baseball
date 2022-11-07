@@ -18,3 +18,6 @@ gamemanager
   - 종료예외처리 : 1이나 2가 아니면 예외발생
 - 출력
   - 결과출력 : 결과변수를 참조하여 결과를 출력한다.
+
+main
+- manager 객체 생성 후 startGame
