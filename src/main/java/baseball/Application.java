@@ -61,7 +61,7 @@ public class Application {
     static int check_user_number(List<Character> user_number_char_list) {
         List<Character> temp_user_number_char_list = user_number_char_list;
 
-        if (temp_user_number_char_list.isEmpty() || temp_user_number_char_list.size() != 3) {
+        if (temp_user_number_char_list.size() != 3) {
             return 1;
         }
 
