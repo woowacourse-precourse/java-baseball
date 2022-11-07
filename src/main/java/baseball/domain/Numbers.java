@@ -19,7 +19,7 @@ public class Numbers {
         List<Number> numbers = ints.stream()
                 .map(Number::of)
                 .collect(Collectors.toList());
-        
+
         validateNumbersSize(numbers);
         validateDifferentEachNumber(numbers);
         this.numbers = numbers;
@@ -37,7 +37,7 @@ public class Numbers {
         }
     }
 
-    public Hints match(Numbers matchNumbers) {
+    public Hints compare(Numbers matchNumbers) {
         List<Hint> hintList = IntStream.range(0, NUMBER_SIZE)
                 .mapToObj(number -> hint(matchNumbers, number))
                 .filter(Objects::nonNull)

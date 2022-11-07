@@ -12,7 +12,7 @@ public class BaseballGame {
     }
 
     public Hints result(Numbers numbers) {
-        return this.numbers.match(numbers);
+        return this.numbers.compare(numbers);
     }
 
     public boolean isNotEnd(Hints hints) {
