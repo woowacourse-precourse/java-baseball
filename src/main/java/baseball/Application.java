@@ -55,6 +55,18 @@ public class Application {
         return result;
     }
 
+    public static String gameResult(List<Integer> result){
+        if(result.get(0) != 0 && result.get(1) == 0){
+            return (result.get(0) + "볼");
+        }
+        if(result.get(0) == 0 && result.get(1) != 0){
+            return (result.get(1) + "스트라이크");
+        }
+        if(result.get(0) != 0 && result.get(1) != 0){
+            return (result.get(0) + "볼 " + result.get(1) + "스트라이크");
+        }
+        return ("낫싱");
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -65,11 +77,8 @@ public class Application {
         if(!(isThree(number) || isValid(UserNum(number)))){
             throw new IllegalArgumentException();
         }
-        List<Integer> result = Compare(computer,UserNum(number));
-        if(result.get(0)==0&&result.get(1)==0)
-            System.out.println("낫씽");
-        if(result.get(1)==3)
-            System.out.println("승리");
+        System.out.println(gameResult(Compare(computer,UserNum(number))));
+
 
 
 
