@@ -40,6 +40,7 @@ public class NumberBaseballGame {
             if (response.equals("2")) {
                 return false;
             }
+            throw new IllegalArgumentException("잘못된 입력입니다. 1 또는 2를 입력해주세요.");
         }
         return true;
     }
