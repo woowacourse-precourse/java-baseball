@@ -21,7 +21,9 @@ class MakeRandomNumbersTest extends NsTest{
     void check_answer_has_three_different_numbers(){
         for(int i=0;i<3;i++){
             int inumber = Integer.parseInt(String.valueOf(number.charAt(i)));
-            assertTrue(inumber > 0 && inumber < 9);
+            System.out.println("test");
+            System.out.println(inumber);
+            assertTrue(inumber > 0 && inumber < 10);
         }
     }
     @Override
