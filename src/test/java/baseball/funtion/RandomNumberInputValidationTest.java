@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import baseball.InputValidation;
 
-public class InputValidationTest {
+public class RandomNumberInputValidationTest {
 	@Test
 	@DisplayName("3자리 서로 다른 수 입력될 경우")
 	void test1() {
