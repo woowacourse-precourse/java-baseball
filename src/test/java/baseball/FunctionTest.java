@@ -114,17 +114,21 @@ public class FunctionTest extends NsTest {
         }
 
         @Test
-        @DisplayName("재시작 여부 확인")
+        @DisplayName("재시작 입력이 1,2가 아닌 경우")
         void test2() {
             Game game = new Game();
 
-            System.setIn(new ByteArrayInputStream("1".getBytes()));
-            assertThat(game.isFinish()).isTrue();
-
-            System.setIn(new ByteArrayInputStream("2".getBytes()));
-            assertThat(game.isFinish()).isFalse();
-
             System.setIn(new ByteArrayInputStream("3".getBytes()));
+            assertThatThrownBy(() -> {
+                game.isFinish();
+            }).isInstanceOf(IllegalArgumentException.class);
+
+            System.setIn(new ByteArrayInputStream(" ".getBytes()));
+            assertThatThrownBy(() -> {
+                game.isFinish();
+            }).isInstanceOf(IllegalArgumentException.class);
+
+            System.setIn(new ByteArrayInputStream("!@#".getBytes()));
             assertThatThrownBy(() -> {
                 game.isFinish();
             }).isInstanceOf(IllegalArgumentException.class);
