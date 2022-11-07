@@ -29,8 +29,9 @@ public class BaseballService {
 
     public void createRandomNumbers() {
         ArrayList<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() != 3) {
-            int number = Randoms.pickNumberInRange(1, 9);
+        while (randomNumbers.size() != Constant.COMPUTER_NUMBER_LENGTH.getNumber()) {
+            int number = Randoms.pickNumberInRange(Constant.MIN_NUM.getNumber(),
+                    Constant.MAX_NUM.getNumber());
             if (!checkDuplication(randomNumbers, number)) {
                 randomNumbers.add(number);
             }
@@ -106,7 +107,6 @@ public class BaseballService {
                 , Constant.RESTART_NUMBER_MAX.getNumber(), Constant.RESTART_EXCEPTION.getMessage());
         selectRestart(answerint);
     }
-
 
     public void selectRestart(int answer) {
         if (answer == Constant.RESTART.getNumber()) {

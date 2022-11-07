@@ -18,6 +18,7 @@ public enum Constant implements defaultValue {
     RESTART_NUMBER_LENGTH(1),
     RESTART_NUMBER_MIN(1),
     RESTART_NUMBER_MAX(2),
+    COMPUTER_NUMBER_LENGTH(3),
     RESTART(1),
     EXIT(2),
     MIN_NUM(1),
