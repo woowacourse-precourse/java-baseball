@@ -128,10 +128,9 @@ public class Application {
     public static void compare(List<Integer> computer, String inputNumber) {
     	char[] arr = inputNumber.toCharArray();
     	for(int i=0;i<arr.length;i++) {
-    		if(computer.contains(Character.getNumericValue(arr[i]))&&
-    								computer.indexOf(Character.getNumericValue(arr[i]))==i) {
-    				strike+=1;
-    		}else
+    		if(computer.indexOf(Character.getNumericValue(arr[i]))==i) {
+    			strike+=1;
+    		}else if(computer.contains(Character.getNumericValue(arr[i])))
     			ball+=1;
     		}
     }
