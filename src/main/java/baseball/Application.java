@@ -24,7 +24,7 @@ public class Application {
             Score.SCORE.print();
             strikeOut = Score.SCORE.strikeOut();
         }
-        // TODO: congratulate user
+        System.out.println(Message.CONGRATULATIONS);
         // TODO: update user willingness
         userWantsToPlay = false;
     }
