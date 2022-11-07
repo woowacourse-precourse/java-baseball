@@ -95,28 +95,25 @@ public class Application {
 //                System.out.println("중복전체: " + strikeNball);     //strike + ball 중복 카운트
 //                System.out.println("스트라이크: " + strike);        //strike 카운트
 //                System.out.println("볼: " + ball);                //ball 카운트
-                if (ball ==0 && 0 < strike && strike<3) {
+                if (ball ==0 && 0 < strike) {
                     System.out.printf("%d스트라이크\n", strike);
                 } else if(ball !=0&&strike == 0) {
                     System.out.printf("%d볼\n", ball);
                 } else if(strike == 0 && ball == 0 ){
                         System.out.println("낫싱");
-                } else if(strike == 3){
-                    System.out.println("삼진아웃");
                 } else{
                     System.out.printf("%d볼 %d스트라이크\n", ball, strike);
                 }
 
             } while (strike < 3);
 
-            System.out.println("3개의 숫자를 모두 맞히셨습니다.");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 눌러주세요.");
             Scanner newgame = new Scanner(System.in);
             restart = newgame.nextInt();
 
         } while (restart < 2);
 
-        System.out.println("숫자야구게임을 완전히 종료하겠습니다.");
+        System.out.println("게임 종료");
 
 //        boolean compare = computer.get(0) == user.get(0);
 //        System.out.println(compare);
