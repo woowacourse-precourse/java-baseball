@@ -61,15 +61,16 @@ class ApplicationTest extends NsTest {
 
     @Test
     void String_to_IntegerList_테스트(){
-        List<Integer> integerList = new ArrayList<>();
-        integerList.add(1);
-        integerList.add(2);
-        integerList.add(3);
+        List<Integer> integerList = Arrays.asList(1,2,3);
         Assertions.assertThat(Application.StringToIntegerList("123")).isEqualTo(integerList);
     }
 
+    @Test
+    void String_to_IntegerList_예외처리포함_테스트(){
+        List<Integer> integerList = Arrays.asList(1,2,3);
+        Assertions.assertThat(Application.getUserIntegerList("123")).isEqualTo(integerList);
 
-
+    }
 
 
     @Override
