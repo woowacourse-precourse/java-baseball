@@ -68,4 +68,13 @@ public class BaseBall {
         checkSameNumberOfDigits(randomList, inputList);
     }
 
+    private void checkSameNumberOfDigits(List<String> randomList, List<String> inputList) {
+        for (int i = 0; i < randomList.size(); i++) {
+            if (!randomList.get(i).equals(inputList.get(i))) {
+                ball++;
+            }
+            strike++;
+        }
+    }
+
 }
