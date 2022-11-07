@@ -7,13 +7,13 @@ public class Computer {
     private final int NUMBERS_LENGTH = 3;
     private final int START_INCLUSIVE = 0;
     private final int FINISH_INCLUSIVE = 9;
-
+    private String number;
 
     /**
      * NUMBER_LENGTH 크기의 랜덤한 숫자를 생성해 반환
      * @return 컴퓨터가 사용할 랜덤한 숫자
      */
-    public String getRandomNumber() {
+    private String getRandomNumber() {
 
         String randomNumber = "";
 
@@ -28,6 +28,14 @@ public class Computer {
         }
 
         return randomNumber;
+    }
+
+    public void setRandomNumber() {
+        this.number = getRandomNumber();
+    }
+
+    public String getNumber() {
+        return this.number;
     }
 
 }

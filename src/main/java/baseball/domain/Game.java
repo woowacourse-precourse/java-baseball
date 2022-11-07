@@ -1,6 +1,7 @@
 package baseball.domain;
 
 public class Game {
+
     private Computer computer;
     private User user;
     private InputValidation inputValidation = new InputValidation();
