@@ -42,7 +42,7 @@ public class Application {
             checkUserNumber(numberString);
 
             int[] userNumbers = {0, 0, 0};
-            addNumber(userNumbers, numberString);
+            addUserNumberInUserArray(userNumbers, numberString);
 
             int strike = countingStrike(0, userNumbers, randomNumberList);
             int ball = countingBall(0, userNumbers, randomNumberList);
@@ -121,7 +121,7 @@ public class Application {
 
     }
 
-    public static void addNumber(int[] userNumbers, String numberString) {
+    public static void addUserNumberInUserArray(int[] userNumbers, String numberString) {
 
         for (int i = 0; i < numberString.length(); i++) {
             userNumbers[i] = numberString.charAt(i) - 48;
