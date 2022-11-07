@@ -37,4 +37,29 @@ public class Computer {
     public void initNumbers() {
         numbers.clear();
     }
+
+    public Result compareNumber(String guessNumber) {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for(int i = 0; i < NUMBER_LENGTH; i++) {
+            int number = Character.getNumericValue(guessNumber.charAt(i));
+
+            if(isStrike(number, i)){
+                strikeCount++;
+            }
+            else if(isBall(number)){
+                ballCount++;
+            }
+        }
+        return new Result(ballCount, strikeCount);
+    }
+
+    public boolean isBall(int number){
+        return numbers.contains(number);
+    }
+
+    public boolean isStrike(int number, int index){
+        return numbers.get(index) == number;
+    }
 }

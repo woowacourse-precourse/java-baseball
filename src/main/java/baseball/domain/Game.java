@@ -1,6 +1,8 @@
 package baseball.domain;
 
 public class Game {
+    public static final int MAX_STRIKE = 3;
+
     public static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
@@ -22,12 +24,15 @@ public class Game {
     }
 
     public void guessAndCheck() {
+        Result result;
         do{
             System.out.print(INPUT_MESSAGE);
             String guessNumber = player.getInput();
-        } while(isNotFinished());
+            result = computer.compareNumber(guessNumber);
+        } while(isNotFinished(result));
     }
 
-    public boolean isNotFinished() {
+    public boolean isNotFinished(Result result) {
+        return result.getStrikeCount() != MAX_STRIKE;
     }
 }
