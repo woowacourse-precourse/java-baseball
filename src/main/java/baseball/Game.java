@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.lang.reflect.Array;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,18 +11,19 @@ public class Game {
     final static String WIN_CONDITION = "3스트라이크";
     final static int NUMBER_LENGTH = 3;
     private Computer computer;
+    private String computerNumbers;
 
     Game() {
         this.computer = new Computer();
+        this.computerNumbers = computer.getRandomNumbers();
     }
 
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            String gamePlayerInput = getGamePlayerInput();
-            checkGamePlayerNumberInput(gamePlayerInput);
-            String result = getResult(computer.getRandomNumbers(), gamePlayerInput);
+            String playerNumbers = getGamePlayerInput();
+            String result = getResult(playerNumbers);
             System.out.println(result);
             if (result.contains(WIN_CONDITION)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -33,17 +33,20 @@ public class Game {
     }
 
     public String getGamePlayerInput() {
-        return Console.readLine();
+        String temporaryPlayerNumbers = Console.readLine();
+        verifyPlayerNumbers(temporaryPlayerNumbers);
+
+        return temporaryPlayerNumbers;
     }
 
-    public void checkGamePlayerNumberInput(String gamePlayerNumberInput) {
-        ExceptionFor2.checkGamePlayerNumberInput(gamePlayerNumberInput);
+    public void verifyPlayerNumbers(String gamePlayerNumberInput) {
+        ExceptionForPlayerNumbers.checkGamePlayerNumberInput(gamePlayerNumberInput);
     }
 
-    public String getResult(String computerRandomNumbers, String gamePlayerInput) {
+    public String getResult(String gamePlayerInput) {
         List<Integer> result = new ArrayList<>(2);
-        result.add(countStrikes(computerRandomNumbers, gamePlayerInput));
-        result.add(countBalls(computerRandomNumbers, gamePlayerInput ) - result.get(STRIKE));
+        result.add(countStrikes(this.computerNumbers, gamePlayerInput));
+        result.add(countBalls(this.computerNumbers, gamePlayerInput ) - result.get(STRIKE));
 
         return getResultMessage(result);
     }
@@ -51,7 +54,7 @@ public class Game {
     private String getResultMessage(List<Integer> result) {
         String resultMessage = "";
         if (result.get(BALL) > 0) {
-            resultMessage = resultMessage.concat(Integer.toString(result.get(BALL)) + "볼 ");
+            resultMessage = resultMessage.concat(Integer.toString(result.get(BALL)) + "볼" + " ");
         }
 
         if (result.get(STRIKE) > 0) {
