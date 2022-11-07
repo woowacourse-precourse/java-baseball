@@ -62,4 +62,23 @@ public class Application {
         }
 
     }
+
+    private static List<Integer> userInput(){
+        List<Integer> input = new ArrayList<>();
+
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputString = Console.readLine();
+
+        exceptionCheck(inputString);
+
+        int index = 0;
+
+        while (input.size() < 3){
+            int inputNumber = Integer.parseInt(inputString.substring(index, index+1));
+            input.add(inputNumber);
+            index++;
+        }
+
+        return input;
+    }
 }
