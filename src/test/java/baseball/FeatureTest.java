@@ -48,4 +48,49 @@ public class FeatureTest {
             assertThat(num).isGreaterThanOrEqualTo(1).isLessThanOrEqualTo(9);
         }
     }
+
+    @Test
+    @DisplayName("2볼 1스트라이크")
+    void 사용자_대답_판단_테스트() {
+        // given
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> guess = List.of(2, 1, 3);
+
+        // when
+        List<Integer> ballAndStrike = Application.getBallCountAndStrikeCount(answer, guess);
+
+        // then
+        assertThat(ballAndStrike.get(0)).isEqualTo(2);
+        assertThat(ballAndStrike.get(1)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("낫싱 - 0볼 0스트라이크")
+    void 사용자_대답_판단_테스트2() {
+        // given
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> guess = List.of(4, 5, 6);
+
+        // when
+        List<Integer> ballAndStrike = Application.getBallCountAndStrikeCount(answer, guess);
+
+        // then
+        assertThat(ballAndStrike.get(0)).isEqualTo(0);
+        assertThat(ballAndStrike.get(1)).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("3스트라이크")
+    void 사용자_대답_판단_테스트3() {
+        // given
+        List<Integer> answer = List.of(1, 2, 3);
+        List<Integer> guess = List.of(1, 2, 3);
+
+        // when
+        List<Integer> ballAndStrike = Application.getBallCountAndStrikeCount(answer, guess);
+
+        // then
+        assertThat(ballAndStrike.get(0)).isEqualTo(0);
+        assertThat(ballAndStrike.get(1)).isEqualTo(3);
+    }
 }

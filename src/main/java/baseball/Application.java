@@ -12,8 +12,12 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        List<Integer> userAnswer = getUserAnswerList(getInputString());
+        List<Integer> answer = getRandomNumber();
+        System.out.println("answer = " + answer.toString());
 
+        List<Integer> guess = getUserAnswerList(getInputString());
+        List<Integer> ballAndStrike = getBallCountAndStrikeCount(answer, guess);
+        printResult(ballAndStrike.get(0), ballAndStrike.get(1));
 
     }
 
@@ -35,7 +39,6 @@ public class Application {
         if (userAnswer.length() != 3) {
             throw new IllegalArgumentException("숫자 3개를 입력해야 함");
         }
-
         if (userAnswer.chars().distinct().count() != 3) {
             throw new IllegalArgumentException("서로 다른 숫자여야 함");
         }
@@ -56,11 +59,44 @@ public class Application {
      */
     protected static List<Integer> getRandomNumber() {
         Set<Integer> numbers = new LinkedHashSet<>();
-
         while (numbers.size() < 3) {
             numbers.add(Randoms.pickNumberInRange(1, 9));
         }
-
         return new ArrayList<>(numbers);
+    }
+
+    /**
+     * 사용자 대답에 대하여 볼, 스트라이크 개수 반환
+     * @param answer 정답
+     * @param guess 사용자 대답
+     */
+    protected static List<Integer> getBallCountAndStrikeCount(List<Integer> answer, List<Integer> guess) {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i=0; i<3; i++) {
+            if (answer.get(i) == guess.get(i)) {
+                strikeCount++;
+            } else if (guess.contains(answer.get(i))) {
+                ballCount++;
+            }
+        }
+        return List.of(ballCount, strikeCount);
+    }
+
+    private static void printResult(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.print("낫싱");
+        }
+        if (ballCount > 0) {
+            System.out.print(ballCount + "볼");
+        }
+        if (strikeCount > 0) {
+            if (ballCount > 0) {
+                System.out.print(" ");
+            }
+            System.out.print(strikeCount + "스트라이크");
+        }
+        System.out.println();
     }
 }
