@@ -27,6 +27,10 @@ public class Number {
         System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
 
+        if (isNotLength3(input) || hasNonNumber(input) || isDuplicated(input)) {
+            throw new IllegalArgumentException();
+        }
+
         return input;
     }
 
