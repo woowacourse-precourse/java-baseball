@@ -8,6 +8,10 @@ public class Output {
     private static final int BLANK = 0;
     private static final int END = 3;
 
+    private Output() throws InstantiationException {
+        throw new InstantiationException("Output 클래스는 생성할 수 없습니다.");
+    }
+
     public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
@@ -39,7 +43,7 @@ public class Output {
             return "";
         }
         if (count == END) {
-            return END + "스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return END + "스트라이크\n" + END + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         return count + "스트라이크 ";
     }
