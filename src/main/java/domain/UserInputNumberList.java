@@ -8,9 +8,10 @@ import java.util.stream.Collectors;
 public class UserInputNumberList {
     public List<Number> userInputNumberList;
 
-    public UserInputNumberList(){}
+    public UserInputNumberList() {
+    }
 
-    public void setUserInputNumberList(String input){
+    public void setUserInputNumberList(String input) {
         userInputNumberList = verificationDuplicateNumbers(input);
     }
 
