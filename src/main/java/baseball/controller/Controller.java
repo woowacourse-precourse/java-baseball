@@ -53,6 +53,7 @@ public class Controller {
         }
     }
 
+
     private boolean hasDuplicate(String userInput){
         HashSet<Character> hashSet = new HashSet<>();
         for (int i = 0; i < userInput.length(); i++){
@@ -73,6 +74,7 @@ public class Controller {
         }
         return false;
     }
+
 
 
 }

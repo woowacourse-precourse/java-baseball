@@ -14,9 +14,9 @@ public class Application {
         View view = new View();
         Game game = new Game();
         Controller controller = new Controller(computer, user, game, view);
-
         String userInput = Console.readLine();
         controller.checkInputValidation(userInput);
+        controller.setUserNumeralList(controller.toList(userInput));
 
     }
 }

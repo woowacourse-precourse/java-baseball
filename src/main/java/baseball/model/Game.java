@@ -11,7 +11,7 @@ public class Game {
         this.gameState = GameState.RUNNING;
     }
 
-
-
-
+    public GameState getGameState() {
+        return this.gameState;
+    }
 }

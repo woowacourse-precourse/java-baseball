@@ -12,7 +12,7 @@ public class Computer {
     }
 
     private void generateComputerNumber(){
-        while (numeralList.size() < 3) {
+        while (numeralList.size() < Game.ANSWER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numeralList.contains(randomNumber)) {
                 numeralList.add(randomNumber);
