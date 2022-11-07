@@ -27,6 +27,21 @@ public class Application {
         return true;
     }
 
+    public static String generateRandomNumber() {
+        boolean[] used = {false, false, false, false, false, false, false, false, false, false};
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (i < 3) {
+            int num = (int) (Math.random() * (9 - 1 + 1) + 1);
+            if (!used[num]) {
+                sb.append(num);
+                used[num] = true;
+                i++;
+            }
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }

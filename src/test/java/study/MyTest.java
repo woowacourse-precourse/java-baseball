@@ -5,8 +5,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static baseball.Application.startGame;
-import static baseball.Application.validation;
+import java.util.stream.Stream;
+
+import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -47,6 +48,14 @@ public class MyTest {
         assertThatThrownBy(() -> {
             validation(wrongInput5);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
 
+    @Test
+    @DisplayName("랜덤 숫자 생성")
+    void 랜덤_숫자_생성() {
+        for (int i = 0; i < 10000; i++) {
+            String randomNumber = generateRandomNumber();
+            assertThat(validation(randomNumber)).isTrue();
+        }
     }
 }
