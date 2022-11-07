@@ -37,4 +37,16 @@ public class ExceptionTest {
     void 문자를_입력() {
         assertThat(Exception.isNumber("문자3")).isFalse();
     }
+    @Test
+    void 세자리_숫자() {
+        assertThat(Exception.isThreeNumber("324")).isTrue();
+    }
+    @Test
+    void 세자리_미만_숫자() {
+        assertThat(Exception.isThreeNumber("24")).isFalse();
+    }
+    @Test
+    void 세자리_초과_숫자() {
+        assertThat(Exception.isThreeNumber("2433")).isFalse();
+    }
 }

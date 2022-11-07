@@ -15,4 +15,10 @@ public class Exception {
             return true;
         return false;
     }
+    public static boolean isThreeNumber(String number) {
+        if (number.length() != 3) {
+            return false;
+        }
+        return true;
+    }
 }
