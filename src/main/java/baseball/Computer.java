@@ -11,11 +11,10 @@ public class Computer {
 	static final List<Integer> computerNums = new ArrayList<>();
 
 	public Computer() {
-		generateRandomThreeNums();
-		System.out.println(computerNums);
+		resetComputerNums();
 	}
 
-	private void generateRandomThreeNums() {
+	public void generateRandomThreeNums() {
 		for (int i = 0; i < NUMBER_LENGTH; i++) {
 			int randomNum = getRandomNum();
 			if (isContains(randomNum)) {
@@ -34,7 +33,7 @@ public class Computer {
 		return computerNums.contains(randomNum);
 	}
 
-	public static void resetComputerNums() {
+	private static void resetComputerNums() {
 		computerNums.clear();
 	}
 }

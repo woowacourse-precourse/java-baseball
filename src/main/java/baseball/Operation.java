@@ -12,21 +12,21 @@ public class Operation {
 	}
 
 	public void start() {
-		new Computer();
+		Computer com = new Computer();
+		com.generateRandomThreeNums();
 		guessAnswer();
 		restart();
 	}
 
 	private static void guessAnswer() {
 		do {
-			User.putInput();
+			User.inputNumber();
 			Hint.search();
 		} while (!Hint.isRightAnswer());
 	}
 
 	private void restart() {
 		if (User.isRestart()) {
-			Computer.resetComputerNums();
 			start();
 		}
 	}
