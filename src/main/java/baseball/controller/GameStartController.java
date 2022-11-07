@@ -21,10 +21,6 @@ public class GameStartController {
         }
     }
 
-    private static void finishGame() {
-        View.printFinishGame();
-    }
-
     public static void startFirstGame() {
         View.printStartGame();
         startGame();
@@ -35,6 +31,19 @@ public class GameStartController {
         View.printInputUserNumber();
         saveNumber();
         compareNumber();
+    }
+
+    private static void saveNumber() {
+        saveUserNumber();
+        saveComputerNumber();
+    }
+
+    private static void saveComputerNumber() {
+        GameStartService.saveComputerNumber();
+    }
+
+    private static void saveUserNumber() {
+        GameStartService.saveUserNumber();
     }
 
     private static void compareNumber() {
@@ -53,17 +62,8 @@ public class GameStartController {
         }
     }
 
-    private static void saveNumber() {
-        saveComputerNumber();
-        saveUserNumber();
-    }
-
-    private static void saveUserNumber() {
-        GameStartService.saveUserNumber();
-    }
-
-    private static void saveComputerNumber() {
-        GameStartService.saveComputerNumber();
+    private static void finishGame() {
+        View.printFinishGame();
     }
 }
 

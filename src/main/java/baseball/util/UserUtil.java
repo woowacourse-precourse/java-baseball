@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
 public class UserUtil {
     public static String getUserNumberString() {
         String userNumberString = Console.readLine();
@@ -42,8 +43,9 @@ public class UserUtil {
 
     private static boolean checkOnlyNumber(String userNumberString) {
         char[] numberCharList = userNumberString.toCharArray();
-        for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i ++){
-            if(numberCharList[i] < NumberStatus.ANSWER_MIN_NUMBER.getNumber() || numberCharList[i] > NumberStatus.MAX_NUMBER.getNumber()){
+        for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i++) {
+            if (numberCharList[i] < NumberStatus.ANSWER_MIN_NUMBER_CHAR.getNumber() ||
+                    numberCharList[i] > NumberStatus.ANSWER_MAX_NUMBER_CHAR.getNumber()) {
                 return true;
             }
         }
@@ -72,7 +74,8 @@ public class UserUtil {
     }
 
     private static void checkUserInput(String userNumberString) {
-        if (!(userNumberString.equals(ControlNumberStatus.START_NUMBER.getText()) || userNumberString.equals(ControlNumberStatus.END_NUMBER.getText()))) {
+        if (!(userNumberString.equals(ControlNumberStatus.START_NUMBER.getText()) ||
+                userNumberString.equals(ControlNumberStatus.END_NUMBER.getText()))) {
             throw new IllegalArgumentException(ExceptionStatus.NOT_GAME_NUMBER.getMessage());
         }
     }

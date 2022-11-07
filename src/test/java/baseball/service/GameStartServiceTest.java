@@ -28,7 +28,7 @@ class GameStartServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"123"})
+    @ValueSource(strings = {"123","987"})
     void 사용자가_입력한_값이_저장되는지_체크(String input) {
         InputStream in = generateUserInput(input);
         System.setIn(in);
@@ -59,7 +59,7 @@ class GameStartServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"3","12", "999", "1234", " ", "012", "qs","0"})
+    @ValueSource(strings = {"3","12", "999", "1234", " ", "012", "qs","0","-1"})
     void 게임_재시작시_사용자_입력이_유효한지_체크(String input) {
         InputStream in = generateUserInput(input);
         System.setIn(in);
