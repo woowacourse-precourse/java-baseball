@@ -164,15 +164,19 @@ public class Application {
 
         printToRestartingGameMessage();
         userAnswer = inputUserAnswer();
-        availableUserNumberIsChecked(userAnswer);
+        availableUserAnswerIsChecked(userAnswer);
         return userAnswer;
     }
 
+    public static void baseballGameService(){
+        String checkedBaseballGaemOfUserAnswer = "";
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
         List<Integer> computerNumbersList = randomNumberCreate();
         inputUserNumberService(computerNumbersList);
+        inputAvailableUserAnswerService();
     }
 }
