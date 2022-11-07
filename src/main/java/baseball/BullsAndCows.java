@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,7 +29,7 @@ public class BullsAndCows {
 
         while (true) {
             String predictInput = getPredictInput(); // 사용자 입력
-            if (!checkPredictInputRegex(predictInput)) {
+            if (!checkPredictInput_regex(predictInput) || !checkPredictInput_duplicate(predictInput)) {
                 throw new IllegalArgumentException();
             }
 
@@ -55,11 +57,21 @@ public class BullsAndCows {
         return Console.readLine();
     }
 
-    private boolean checkPredictInputRegex(String predictInput) {
-        String regex = "\\d{3}$"; // 3자리 숫자
+    private boolean checkPredictInput_regex(String predictInput) {
+        String regex = "[1-9]{" + (ANSWER_LENGTH) + "}$"; // 각각 1 ~ 9의 범위를 가지는 3자리 숫자
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(predictInput);
         return matcher.matches();
+    }
+
+    private boolean checkPredictInput_duplicate(String predictInput) {
+        Set<Character> predictInputSet = new HashSet<>();
+        for (int i = 0; i < predictInput.length(); i++) {
+            predictInputSet.add(predictInput.charAt(i));
+        }
+
+        // 중복된 숫자가 없었을 경우 Set의 크기는 3
+        return predictInputSet.size() == 3;
     }
 
     private boolean isAnswer(String predictInput) {
