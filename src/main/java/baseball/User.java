@@ -7,7 +7,7 @@ import java.util.*;
 public class User {
     List userNumList = new ArrayList();
 
-    public void InputNum() {
+    public void inputNum() {
         String number = Console.readLine();
         isValid(number);
         userNumList = converToList(number);
@@ -52,10 +52,10 @@ public class User {
         }
     }
 
-    public List converToList (String num) {
+    public List converToList(String num) {
         int intNum = Integer.parseInt(num);
         List list = new ArrayList();
-        for(int idx = 0; idx < 3; idx++){
+        for (int idx = 0; idx < 3; idx++) {
             list.add(intNum % 10);
             intNum /= 10;
         }
@@ -63,4 +63,15 @@ public class User {
         return list;
     }
 
+    public int inputPlayAgain() {
+        String answer = Console.readLine();
+        if (Integer.parseInt(answer) != 1 && Integer.parseInt(answer) != 2) {
+            throw new IllegalArgumentException("적절한 번호가 아닙니다.");
+        }
+        return Integer.parseInt(answer);
+    }
+
+    public List getUserNumList() {
+        return userNumList;
+    }
 }
