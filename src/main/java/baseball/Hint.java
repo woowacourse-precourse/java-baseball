@@ -14,7 +14,6 @@ public enum Hint {
         this.hintStringExpression = hintString;
     }
 
-
     public String hintString(Long i) {
         if (i != 0) {
             return hintStringExpression.apply(i);
