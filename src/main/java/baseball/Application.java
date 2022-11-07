@@ -7,6 +7,10 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        playBaseball();
+    }
+
+    public static void playBaseball() {
         List<Integer> result = new ArrayList<>();
         result.add(0); // strike 수
         result.add(0); // ball 수
@@ -23,7 +27,6 @@ public class Application {
             printResult(result);
 
         }
-        System.out.println();
 
 
     }
