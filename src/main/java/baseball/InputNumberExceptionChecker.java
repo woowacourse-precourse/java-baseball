@@ -42,10 +42,18 @@ public class InputNumberExceptionChecker {
         }
     }
 
-    // 위의 세 개 중 하나라도 만족하지 않음을 확인하는 메서드 (총평?)
-    public boolean hasException(String number, int restartNumber) {
-        if (isValidLength(number) && hasDifferentNumberElement(number)
-                && isValidRestartNumber(restartNumber) && hasZero(number)) {
+    // String type을 parameter로 받아서 판단
+    public boolean hasException(String number) {
+        if (isValidLength(number) && hasDifferentNumberElement(number) && hasZero(number)) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    // int type을 parameter로 받아서 판단 (오버로딩)
+    public boolean hasException(int restartNumber) {
+        if (isValidRestartNumber(restartNumber)) {
             return true;
         } else {
             throw new IllegalArgumentException();
