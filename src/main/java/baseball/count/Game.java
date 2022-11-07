@@ -17,4 +17,11 @@ public class Game {
 		ballCount += 1;
 	}
 
+	public int getStrikeCount() {
+		return strikeCount;
+	}
+
+	public int getBallCount() {
+		return ballCount;
+	}
 }
