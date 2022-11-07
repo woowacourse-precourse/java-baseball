@@ -121,6 +121,8 @@ public class Application {
         num /= 10;
 
         hundred = num % 10;
+        if (hundred == 0 || ten == 0 || one == 0)
+            return false;
 
         if (hundred == ten || hundred == one || ten == one) {
             return false;
