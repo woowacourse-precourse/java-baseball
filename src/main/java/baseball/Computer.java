@@ -15,6 +15,10 @@ public class Computer {
         return computerNumbers;
     }
 
+    public void setComputerNumbers(List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
+    }
+
     public void init() {
         while (isValidateNumber(computerNumbers)) {
             generateNumbers();

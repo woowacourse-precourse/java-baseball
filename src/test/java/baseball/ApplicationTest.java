@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
@@ -165,6 +167,31 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> game.isDuplicatedNumber(test2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("Input is duplicated.");
+    }
+
+    @Test
+    void 스트라이크검증_테스트() throws Exception {
+        //given
+        Computer computer = new Computer();
+        Game game = new Game(computer);
+        Method method = game.getClass().getDeclaredMethod("stringToIntegerList", String.class);
+        method.setAccessible(true);
+        //when
+        List<Integer> test = (List<Integer>) method.invoke(game,"123");
+        computer.setComputerNumbers(test);
+
+        List<Integer> testStrikeList1 = new ArrayList<>();
+        testStrikeList1.add(1);
+        testStrikeList1.add(2);
+        testStrikeList1.add(3);
+
+        List<Integer> testStrikeList2 = new ArrayList<>();
+        testStrikeList2.add(1);
+        testStrikeList2.add(5);
+        testStrikeList2.add(3);
+        //then
+        assertThat(game.checkStrikeCount(testStrikeList1)).isEqualTo(3);
+        assertThat(game.checkStrikeCount(testStrikeList2)).isEqualTo(2);
     }
 
     @Override
