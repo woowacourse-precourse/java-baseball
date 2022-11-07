@@ -1,7 +1,7 @@
 # 숫자 야구 게임 구현 기능 목록 
 
 ## 컴퓨터 숫자 선택 기능
-- ✅ generateComputerRandomNumber 메서드 구현
+- ✅ generateRandomNumber 메서드 구현
   - ✅ 각 자릿수가 다른 random한 세 자리 숫자 리스트 생성
     - ✅ `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용하여 random number 생성
     - ✅ 생성된 random number와 중복인 숫자가 리스트 내 존재하는지 검사 후 추가
@@ -37,7 +37,7 @@
 - ✅ 게임 재시작/프로그램 종료 여부 결정값을 입력받음
   - ✅ 게임이 끝난 경우 재시작/종료를 구분하는 1과 2중 하나의 값만을 입력받음
   - ✅ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
-- ✅ validateUserInputOneOrTwo 메서드 구현
+- ✅ validateStringOneOrTwo 메서드 구현
   - ✅ 사용자 입력값이 1또는 2이면 통과
   - ✅ 1과 2 이외의 값이라면 IllegalArgumentException 예외 발생
 - ✅ 사용자의 입력값이 1이면 게임 재개, 2이면 프로그램을 종료한다.
@@ -46,9 +46,15 @@
 - ✅ 사용자의 예측 정답값 입력
   - ✅ 서로 다른 3자리의 수
   - ✅ `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자의 입력값을 받는다.
-- ✅ validateUserInputThreeDifferentNumbers 메서드 구현
+- ✅ validateStringThreeDifferentNumbers 메서드 구현
   - ✅ 사용자 입력값이 각 자릿수가 1~9사이의 모두 다른 세자리 숫자면 통과
   - ✅ 이외의 값이라면 IllegalArgumentException 예외 발생
+  - ✅ validateStringLength 메서드 구현
+    - ✅ 주어진 문자열이 정해진 길이의 문자열인지 검증
+  - ✅ validateStringNaturalNumbers 메서드 구현
+    - ✅ 주어진 문자열이 자연수로 이루어진 문자열인지 검증
+  - ✅ validateAllDifferentCharacters 메서드 구현
+    - ✅ 주어진 문자열이 서로 다른 문자들로만 이루어진 문자열인지 검증
 - ✅ stringToIntegerList 메서드 구현
   - ✅ 숫자 문자열을 입력받아 각 자릿수를 요소로 가지는 리스트를 반환
 
