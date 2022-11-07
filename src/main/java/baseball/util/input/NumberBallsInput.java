@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class NumberBallsInput implements UserInput {
     private final String numberBallsInput;
-    private final int BALL_LENGTH = 3;
+    public static final int BALL_COUNT = 3;
 
     public NumberBallsInput() {
         numberBallsInput = get();
@@ -41,7 +41,7 @@ public class NumberBallsInput implements UserInput {
     }
 
     private boolean supportsInputLength(String userInput) {
-        return userInput.length() == BALL_LENGTH;
+        return userInput.length() == BALL_COUNT;
     }
 
     public List<NumberBall> toNumberBalls() {
