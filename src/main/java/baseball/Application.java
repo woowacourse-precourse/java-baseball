@@ -10,18 +10,19 @@ import java.util.Objects;
 import static baseball.Exception.*;
 
 public class Application {
-    static List<Integer> computerBall = makeRandomBall();
+    static List<Integer> computerBall;
     static boolean restart = false;
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        computerBall = makeRandomBall();
 
         while (!restart){
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userBall = StringToIntList(Console.readLine());
             String result = compareBall(computerBall, userBall);
 
-            if(result.equals("3스크라이크")){
+            if(result.equals("3스트라이크")){
                 System.out.println(result);
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -34,7 +35,15 @@ public class Application {
     }
 
     public static List<Integer> makeRandomBall(){
-        return Randoms.pickUniqueNumbersInRange(1,9,3);
+        List<Integer> computerBall = new ArrayList<>();
+        while (computerBall.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerBall.contains(randomNumber)) {
+                computerBall.add(randomNumber);
+            }
+        }
+
+        return computerBall;
     }
 
     public static List<Integer> StringToIntList(String user){
@@ -68,12 +77,12 @@ public class Application {
         if(strike == 0 && ball == 0) {
             return "낫싱";
         }else if(ball == 0){
-            return strike + "스크라이크";
+            return strike + "스트라이크";
         }else if(strike == 0){
             return ball + "볼";
         }
 
-        return ball + "볼 " + strike + "스크라이크";
+        return ball + "볼 " + strike + "스트라이크";
     }
 
     public static void restartGame(String input) {
