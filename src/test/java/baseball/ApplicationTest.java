@@ -19,24 +19,26 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+
     @Test
-    void 게임종료_후_초기화_체크(){
+    void 게임종료_후_초기화_체크() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("146", "135", "1", "597", "589", "2");
-                assertThat(output()).contains("1스트라이크", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-            },
-            1, 3, 5, 5, 8, 9
+                () -> {
+                    run("146", "135", "1", "597", "589", "2");
+                    assertThat(output()).contains("1스트라이크", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
         );
     }
+
     @Test
-    void 볼_스트라이크_개수_체크(){
+    void 볼_스트라이크_개수_체크() {
         assertRandomNumberInRangeTest(
-            () -> {
-                run("928", "135", "192", "597", "892", "2");
-                assertThat(output()).contains("3볼", "낫싱", "1볼 1스트라이크", "1볼", "3스트라이크", "게임 종료");
-            },
-            8, 9, 2
+                () -> {
+                    run("928", "135", "192", "597", "892", "2");
+                    assertThat(output()).contains("3볼", "낫싱", "1볼 1스트라이크", "1볼", "3스트라이크", "게임 종료");
+                },
+                8, 9, 2
         );
     }
 
@@ -47,28 +49,28 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("1a4"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("1a4"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("14"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("14"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("122"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("122"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("939"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("939"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("012"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
         assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("777"))
-                .isInstanceOf(IllegalArgumentException.class)
+                assertThatThrownBy(() -> runException("777"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
