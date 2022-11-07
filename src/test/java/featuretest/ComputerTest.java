@@ -34,4 +34,13 @@ public class ComputerTest {
         assertThat(computer.getBall()).isEqualTo(2);
         assertThat(computer.getStrike()).isEqualTo(1);
     }
+
+    @Test
+    void 결과_스트링_체크(){
+        List<Integer> testAnswerNumber = List.of(1, 4, 5);
+        List<Integer> testUserNumber = List.of(4, 1, 5);
+        computer.setAnswerNumber(testAnswerNumber);
+        computer.checkNumberCount(testUserNumber);
+        assertThat(computer.countResultString()).isEqualTo("2볼 1스트라이크");
+    }
 }
