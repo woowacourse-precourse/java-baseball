@@ -12,4 +12,8 @@ public class User {
 		}
 	}
 
+	public int getUserNumber(int index) {
+		return userNumber.get(index);
+	}
+
 }
