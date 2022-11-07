@@ -5,12 +5,13 @@ import java.util.stream.Collectors;
 
 public class GameController {
 
-    static InputController inputController = new InputController();
-    static RandomNumber randomNumber = new RandomNumber();
-    static ShowMessage showMessage = new ShowMessage();
+    InputController inputController = new InputController();
+    RandomNumber randomNumber = new RandomNumber();
+    ShowMessage showMessage = new ShowMessage();
+    Exception exception = new Exception();
 
-    static List<Integer> userNumberList;
-    static List<Integer> randomNumberList;
+    List<Integer> userNumberList;
+    List<Integer> randomNumberList;
     int gameFlagNumber = 0;
 
 
@@ -21,23 +22,30 @@ public class GameController {
         while (gameFlag) {
             randomNumberList = randomNumber.gameRandomNumber(); // 난수 생성
             gameFlagNumber = keepGame();
-            if(gameFlagNumber == 2){
+            if (gameFlagNumber == 2) {
                 gameFlag = false;
             }
         }
     }
 
+    public List<Integer> inputConvertToList(String userNumber) {
+        ShowMessage.showInputNumber();
+        userNumber = inputController.getInput(); // 입력받기
+        exception.inputNumberException(userNumber);
+        userNumberList = inputController.userNumberConvertToList(userNumber);
+        return userNumberList;
+    }
+
     public int keepGame() {
 
         boolean gameFlag = true;
+        String userNumber = "";
         gameFlagNumber = 0;
 
         while (gameFlag) {
-            userNumberList = inputController.gameUserInput(); // 입력받기
+            userNumberList = inputConvertToList(userNumber);
             gameFlagNumber = gameResult(); // 게임 결과 체크
-
             if (gameFlagNumber == 1 || gameFlagNumber == 2) {
-                System.out.println("종료:" + gameFlagNumber + ":");
                 return gameFlagNumber;
             }
         }
@@ -45,13 +53,12 @@ public class GameController {
     }
 
     public int gameResult() {
-        int ballCount = checkIntersection(userNumberList, randomNumberList);
-        System.out.println("교집합:" + ballCount + ":");
+        int ballCount = checkIntersection();
         return checkNotMatch(ballCount); // 결과 계산;
     }
 
     // userNumberList와 randomNumberList의 교집합 검사
-    public int checkIntersection(List<Integer> userNumberList, List<Integer> randomNumberList) {
+    public int checkIntersection() {
         return randomNumberList.stream().filter(userNumberList::contains).collect(Collectors.toList()).size();
     }
 
@@ -77,19 +84,21 @@ public class GameController {
             }
         }
         ballCount -= strikeCount;
+
         showMessage.showGameScore(ballCount, strikeCount);
 
         return checkGame(strikeCount, answerCount);
     }
 
-    public int checkGame(int strikeCount, int answerCount){
+    public int checkGame(int strikeCount, int answerCount) {
 
         String userNumber = "";
         int number = 0;
 
-        if(strikeCount == answerCount){
-            ShowMessage.showNewGameCheck();
-//            userNumber = inputException(userNumber);
+        if (strikeCount == answerCount) {
+            ShowMessage.showEndGameNewGameCheck();
+            userNumber = inputController.getInput();
+            exception.checkNewGameException(userNumber);
             number = Integer.parseInt(userNumber);
             return number;
         }
