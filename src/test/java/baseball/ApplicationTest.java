@@ -29,10 +29,17 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 컴퓨터_숫자_크기_테스트(){
         Assertions.assertThat(Application.reComputerNumber().size()).isEqualTo(3);
     }
+    @Test
+    void 컴퓨터_숫자_다른숫자_테스트(){
+        org.junit.jupiter.api.Assertions.assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(1)));
+        org.junit.jupiter.api.Assertions.assertFalse(Application.reComputerNumber().get(0).equals(Application.reComputerNumber().get(2)));
+    }
+
 
     @Override
     public void runMain() {
