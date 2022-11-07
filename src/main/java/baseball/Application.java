@@ -5,9 +5,9 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    static int getNumber(String userNumber) {
+    static int getNumber(String number) {
         try {
-            return Integer.parseInt(userNumber);
+            return Integer.parseInt(number);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
