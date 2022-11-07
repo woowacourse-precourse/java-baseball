@@ -5,9 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constant.MAX;
+import static baseball.Constant.STRIKE;
+
 public class Computer {
-    public static final int MAX = 3;
-    public static final String STRIKE = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final Computer COMPUTER = new Computer();
 
     public static Computer getComputer() {

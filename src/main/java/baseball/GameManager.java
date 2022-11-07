@@ -5,12 +5,12 @@ import sun.misc.Unsafe;
 import java.lang.reflect.Field;
 import java.util.List;
 
-import static baseball.Computer.STRIKE;
 import static baseball.Computer.getComputer;
+import static baseball.Constant.OVER;
+import static baseball.Constant.STRIKE;
 import static baseball.Player.getPlayer;
 
 public class GameManager {
-    private static final int OVER = 2;
     private List<Integer> answer;
     private List<Integer> userInput;
     private boolean continuation = true;

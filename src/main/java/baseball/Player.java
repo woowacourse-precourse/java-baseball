@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static baseball.Computer.MAX;
+import static baseball.Constant.MAX;
 
 public class Player {
     private static final String INT_REGEX = "^[0-9]*$";

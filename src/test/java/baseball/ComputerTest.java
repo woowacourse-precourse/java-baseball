@@ -7,7 +7,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.Computer.*;
+
+import static baseball.Computer.getComputer;
+import static baseball.Constant.MAX;
+import static baseball.Constant.STRIKE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest {
