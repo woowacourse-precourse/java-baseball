@@ -9,7 +9,7 @@ import java.util.List;
 public class BaseballException {
 
     public static void InputLengthException(String input){
-        List<String> inputList = new ArrayList<>();
+        List<String> inputList;
 
         inputList = Arrays.asList(input.split(""));
 

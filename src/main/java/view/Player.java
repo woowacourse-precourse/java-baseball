@@ -53,7 +53,7 @@ public class Player {
 
         again = Console.readLine();
 
-        return again.equals("2");
+        return again.equals(GameConstant.STOP);
     }
 }
 

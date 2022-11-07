@@ -13,4 +13,5 @@ public final class GameConstant {
     public static final String STRIKE = "스트라이크";
     public static final String NOTHING = "낫싱";
     public static final String AGAIN = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public static final String STOP = "2";
 }
