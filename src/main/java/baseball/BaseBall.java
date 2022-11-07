@@ -57,4 +57,15 @@ public class BaseBall {
         return Arrays.asList(s.split(""));
     }
 
+    private void checkSameOfRandomAndMy(List<String> randomList, List<String> inputList) {
+        Boolean isSameNumber = false;
+        for (int i = 0; i < randomList.size(); i++) {
+            isSameNumber = inputList.contains(randomList.get(i));
+        }
+        if (isSameNumber == false) {
+            nothing++;
+        }
+        checkSameNumberOfDigits(randomList, inputList);
+    }
+
 }
