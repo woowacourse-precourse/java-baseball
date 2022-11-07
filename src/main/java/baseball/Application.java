@@ -15,23 +15,23 @@ public class Application {
 }
 
 class Baseball {
-    public static String userNumber;
-    public static HashMap<String, Integer> countBallStrike;
-    public static int restartGame;
+    protected static String userNumber;
+    protected static HashMap<String, Integer> countBallStrike;
+    private static int restartGame;
     private static List<Integer> computerNumber;
 
-    public static final String BLANK = " ";
-    public static final String BALL = "볼";
-    public static final String STRIKE = "스트라이크";
-    public static final String NOTHING = "낫싱";
-    public static final int NEW_GAME = 1;
-    public static final int END_GAME = 2;
+    protected static final String BLANK = " ";
+    protected static final String BALL = "볼";
+    protected static final String STRIKE = "스트라이크";
+    protected static final String NOTHING = "낫싱";
+    protected static final int NEW_GAME = 1;
+    protected static final int END_GAME = 2;
     private static final int START_NUM_INCLUSIVE = 1;
     private static final int END_NUM_INCLUSIVE = 9;
     private static final int NUMBER_PITCH = 3;
     private static final int EMPTY = 0;
 
-    public static void playGame() {
+    protected static void playGame() {
         Message.printStartMessage();
         newGame();
     }
@@ -179,51 +179,51 @@ class Baseball {
     }
 }
 
-class Message {
+class Message extends Baseball {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String WIN_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public static void printStartMessage() {
+    protected static void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
 
-    public static void printInputNumberMessage() {
-        System.out.println(INPUT_NUMBER_MESSAGE + Baseball.userNumber);
+    protected static void printInputNumberMessage() {
+        System.out.println(INPUT_NUMBER_MESSAGE + userNumber);
     }
 
-    public static void printWinMessage() {
+    protected static void printWinMessage() {
         System.out.println(WIN_MESSAGE);
     }
 
-    public static void printInputRestartMessage() {
+    protected static void printInputRestartMessage() {
         System.out.println(INPUT_RESTART_MESSAGE);
     }
 
-    public static void printNewGameValue() {
-        System.out.println(Baseball.NEW_GAME);
+    protected static void printNewGameValue() {
+        System.out.println(NEW_GAME);
     }
 
-    public static void printEndGameValue() {
-        System.out.println(Baseball.END_GAME);
+    protected static void printEndGameValue() {
+        System.out.println(END_GAME);
     }
 
-    public static void printNothing() {
-        System.out.println(Baseball.NOTHING);
+    protected static void printNothing() {
+        System.out.println(NOTHING);
     }
 
-    public static void printBallOnly() {
-        System.out.println(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL);
+    protected static void printBallOnly() {
+        System.out.println(countBallStrike.get(BALL) + BALL);
     }
 
-    public static void printStrikeOnly() {
-        System.out.println(Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
+    protected static void printStrikeOnly() {
+        System.out.println(countBallStrike.get(STRIKE) + STRIKE);
     }
 
-    public static void printBallStrike() {
-        System.out.println(Baseball.countBallStrike.get(Baseball.BALL) + Baseball.BALL
-                + Baseball.BLANK
-                + Baseball.countBallStrike.get(Baseball.STRIKE) + Baseball.STRIKE);
+    protected static void printBallStrike() {
+        System.out.println(countBallStrike.get(BALL) + BALL
+                + BLANK
+                + countBallStrike.get(STRIKE) + STRIKE);
     }
 }
