@@ -1,11 +1,12 @@
 package baseball.controller;
 
 import java.util.ArrayList;
+
 import baseball.view.InputView;
 
 public class InputUserNumber {
-    private static InputView inputView = new InputView();
     private static HandleException handleException = new HandleException();
+
     public ArrayList<Integer> InputUserNumber(String userInput) {
         handleException.UserInputNumberException(userInput);
 
