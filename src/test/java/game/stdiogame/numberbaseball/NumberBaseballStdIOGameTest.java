@@ -300,9 +300,176 @@ class NumberBaseballStdIOGameTest {
         assertThat(strikeCount).isEqualTo(1);
         assertThat(ballCount).isEqualTo(2);
     }
+    @Test
+    void writeOutput_낫싱() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('4', 0);
+        targetNumber.put('5', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("낫싱");
+    }
 
     @Test
-    void writeOutput() {
+    void writeOutput_1스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('1', 0);
+        targetNumber.put('5', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("1스트라이크");
+    }
+
+    @Test
+    void writeOutput_2스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('1', 0);
+        targetNumber.put('5', 1);
+        targetNumber.put('3', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("2스트라이크");
+    }
+
+    @Test
+    void writeOutput_3스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('1', 0);
+        targetNumber.put('2', 1);
+        targetNumber.put('3', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("3스트라이크");
+    }
+
+    @Test
+    void writeOutput_1볼() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('4', 0);
+        targetNumber.put('1', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("1볼");
+    }
+
+    @Test
+    void writeOutput_2볼() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('2', 0);
+        targetNumber.put('1', 1);
+        targetNumber.put('6', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("2볼");
+    }
+
+    @Test
+    void writeOutput_3볼() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('2', 0);
+        targetNumber.put('3', 1);
+        targetNumber.put('1', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("3볼");
+    }
+
+    @Test
+    void writeOutput_1볼_1스트라이크() {
+        buf = "123";
+        is = new ByteArrayInputStream(buf.getBytes());
+        System.setIn(is);
+        NumberBaseballStdIOGame nbGame = (NumberBaseballStdIOGame) gameManager.getGame();
+        NumberBaseballStdIOGameStatus nbGameStatus = (NumberBaseballStdIOGameStatus) nbGame.getGameStatus();
+        Map<Character, Integer> targetNumber = nbGameStatus.getTargetNumber();
+
+        targetNumber.clear();
+        targetNumber.put('4', 0);
+        targetNumber.put('2', 1);
+        targetNumber.put('1', 2);
+        nbGame.readInput();
+        nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
+        nbGame.writeOutput();
+
+        assertThat(os.toString().trim()).isEqualTo("1볼 1스트라이크");
+    }
+
+    @Test
+    void writeOutput_2볼_1스트라이크() {
         buf = "123";
         is = new ByteArrayInputStream(buf.getBytes());
         System.setIn(is);
@@ -315,8 +482,8 @@ class NumberBaseballStdIOGameTest {
         targetNumber.put('2', 1);
         targetNumber.put('1', 2);
         nbGame.readInput();
-        ((ByteArrayOutputStream)os).reset();
         nbGame.operateRule();
+        ((ByteArrayOutputStream)os).reset();
         nbGame.writeOutput();
 
         assertThat(os.toString().trim()).isEqualTo("2볼 1스트라이크");

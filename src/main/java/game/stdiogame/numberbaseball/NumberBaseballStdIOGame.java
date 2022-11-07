@@ -32,9 +32,9 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
     @Override
     protected void writeGameMessage() {
         NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
-        if (getGameStatus().isStart()) {
+        if (gameStatus.isStart()) {
             System.out.print("");
-        } else if (getGameStatus().isFinish()) {
+        } else if (gameStatus.isFinish()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
@@ -56,6 +56,14 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
     @Override
     public void operateRule() {
         count();
+        if (isThreeStrike()) {
+            finish();
+        }
+    }
+
+    private boolean isThreeStrike() {
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        return gameStatus.getStrikeCount() == 3;
     }
 
     private boolean isStrike(int idx) {
@@ -99,15 +107,29 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
         NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
         prepareOutputData();
         System.out.println(gameStatus.getOutputData());
+        resetCount();
     }
 
     private void prepareOutputData() {
         NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
-        String str = gameStatus.getBallCount() +
-                "볼 " +
-                gameStatus.getStrikeCount() +
-                "스트라이크";
-        gameStatus.setOutputData(str);
+        int ball = gameStatus.getBallCount();
+        int strike = gameStatus.getStrikeCount();
+        StringBuilder stringBuilder = new StringBuilder();
+        if (ball == 0 && strike == 0) {
+            stringBuilder.append("낫싱");
+        }
+        if (ball > 0) {
+            stringBuilder.append(ball);
+            stringBuilder.append("볼");
+        }
+        if (strike > 0) {
+            if (ball > 0) {
+                stringBuilder.append(" ");
+            }
+            stringBuilder.append(strike);
+            stringBuilder.append("스트라이크");
+        }
+        gameStatus.setOutputData(stringBuilder.toString());
     }
 
     private void resetCount() {
