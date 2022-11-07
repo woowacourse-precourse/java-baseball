@@ -46,25 +46,25 @@ public class NumberBaseballGame {
         return true;
     }
 
-    public void readyNewGame(){
+    public void readyNewGame() {
         computerNumber.clear();
         getRandomThreeDigitNumber();
     }
 
-    public void validateUserNumber(){
-        if(userNumber.size() != 3){
+    public void validateUserNumber() {
+        if (userNumber.size() != 3) {
             throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.ENTER_THREE_DIGIT_NUMBER);
         }
-        if(userNumber.contains(0)){
+        if (userNumber.contains(0)) {
             throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.ENTER_EXCEPT_ZERO);
         }
-        if(userNumber.size() != userNumber.stream().distinct().count()){
+        if (userNumber.size() != userNumber.stream().distinct().count()) {
             throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.NO_OVERLAP);
         }
     }
 
     public void getRandomThreeDigitNumber() {
-        for (int i = 0; i < 3;) {
+        for (int i = 0; i < 3; ) {
             int num = Randoms.pickNumberInRange(Constant.MIN_RANGE_NUM, Constant.MAX_RANGE_NUM);
             if (!computerNumber.contains(num)) {
                 computerNumber.add(num);
