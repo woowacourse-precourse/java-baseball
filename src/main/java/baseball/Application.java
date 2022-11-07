@@ -44,12 +44,16 @@ public class Application {
         for (int i = 0; i < input.length(); i++){
             overlapCheck.add(input.charAt(i));
         }
-        if (input.matches("[0-9]+") && overlapCheck.size() == 3) return;
+        if (input.matches("[0-9]+") && overlapCheck.size() == 3) {
+            return;
+        }
         throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
     public static void startEndInputCheck(String input) throws IllegalArgumentException { // 시작 종료의 값이 제대로 입력 되는지 확인
-        if (input.matches("[1-2]{1}"))  return;
+        if (input.matches("[1-2]{1}"))  {
+            return;
+        }
         throw  new IllegalArgumentException("잘못된 입력입니다.");
     }
 
@@ -63,8 +67,12 @@ public class Application {
     public static List<Integer> checkStrikeBall(List<Integer> userNumber, List<Integer> computerNumber){ // 스트라이크 볼 수를 계산하여 리스크로 리턴.
         int strikeCount = 0, ballCount = 0;
         for (int i = 0; i < 3; i++){ // 스트라이크와 볼을 계산한다.
-            if (Objects.equals(userNumber.get(i), computerNumber.get(i))) strikeCount++;
-            else if (computerNumber.contains(userNumber.get(i))) ballCount++;
+            if (Objects.equals(userNumber.get(i), computerNumber.get(i))) {
+                strikeCount++;
+            }
+            else if (computerNumber.contains(userNumber.get(i))) {
+                ballCount++;
+            }
         }
         return Arrays.asList(strikeCount,ballCount);
     }
@@ -76,8 +84,12 @@ public class Application {
         }
 
         StringBuilder printStrikeBall = new StringBuilder();
-        if (ball > 0) printStrikeBall.append(ball).append("볼 ");
-        if (strike > 0) printStrikeBall.append(strike).append("스트라이크 ");
+        if (ball > 0) {
+            printStrikeBall.append(ball).append("볼 ");
+        }
+        if (strike > 0) {
+            printStrikeBall.append(strike).append("스트라이크 ");
+        }
         System.out.println(printStrikeBall);
     }
 
