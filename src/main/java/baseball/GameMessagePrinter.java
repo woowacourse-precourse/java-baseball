@@ -10,7 +10,7 @@ public class GameMessagePrinter {
     }
 
     public static void printScore(ScoreBoard scoreBoard) {
-        if (scoreBoard.isNothing()) {
+        if (scoreBoard.isNoScore()) {
             System.out.println("낫싱");
 
             return;

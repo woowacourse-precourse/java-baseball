@@ -4,7 +4,7 @@ package baseball;
 public class ScoreBoard {
     private int strikeCount;
     private int ballCount;
-    private boolean nothing;
+
 
 
     public ScoreBoard() {
@@ -15,17 +15,14 @@ public class ScoreBoard {
     public void initiate() {
         this.strikeCount = 0;
         this.ballCount = 0;
-        this.nothing = true;
     }
 
     public void upStrikeCount() {
         this.strikeCount++;
-        this.nothing = false;
     }
 
     public void upBallCount() {
         this.ballCount++;
-        this.nothing = false;
     }
 
     public int getStrikeCount() {
@@ -36,7 +33,11 @@ public class ScoreBoard {
         return this.ballCount;
     }
 
-    public boolean isNothing() {
-        return this.nothing;
+    public boolean isNoScore() {
+        if (this.ballCount > 0 || this.strikeCount > 0) {
+            return false;
+        }
+
+        return true;
     }
 }
