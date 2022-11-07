@@ -12,5 +12,13 @@ public class Rule {
         }
         return false;
     }
-
+   public boolean Strike(char answer, char input)
+   {
+       if(answer==input)
+       {
+           return true;
+       }else {
+           return false;
+       }
+   }
 }
