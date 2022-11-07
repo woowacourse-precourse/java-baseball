@@ -18,7 +18,6 @@ public class Game {
         Game.strikeAndball_Message();
     }
     public static void strikeAndball_Message() {
-
         if (User.ball_count() != 0) {
             System.out.print(User.ball_count() + "볼 " );
         }
