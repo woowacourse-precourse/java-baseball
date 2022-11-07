@@ -64,4 +64,11 @@ public class BaseBall {
         this.isRestart = true;
     }
 
+    private void playGame() {
+        System.out.print(ENTER_INPUT);
+        List<String> inputList = makeMyInput();
+        checkSameOfRandomAndMy(randomList, inputList);
+        makeResult();
+    }
+
 }
