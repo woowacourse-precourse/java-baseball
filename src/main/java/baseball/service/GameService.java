@@ -5,8 +5,9 @@ import baseball.utils.Exceptions;
 import baseball.view.GameOutput;
 import baseball.view.UserInput;
 
-import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 
 public class GameService {
     //판단해서 점수를 산출하는 함수

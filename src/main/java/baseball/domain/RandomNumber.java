@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.utils.Constants;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -20,7 +21,6 @@ public class RandomNumber {
             int ran_num = Randoms.pickNumberInRange(Constants.RANDOM_START_NUM, Constants.RANDOM_END_NUM);
             RandomNumList.add(ran_num);
         }
-
         if (isSet(RandomNumList)) {
             return RandomNumList;
         }

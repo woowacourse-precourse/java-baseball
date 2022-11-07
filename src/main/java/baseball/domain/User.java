@@ -2,7 +2,9 @@ package baseball.domain;
 
 import baseball.utils.Constants;
 import baseball.utils.Exceptions;
+
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 
 public class User {
@@ -10,10 +12,12 @@ public class User {
         Exceptions.checkNumSize(str);
         Exceptions.isNumber(str);
     }
+
     public static int charToInt(char ch){
         int num = ch-'0';
         return num;
     }
+
     public static ArrayList<Integer> makeUserList() {
         ArrayList<Integer> UserNumber = new ArrayList<>();
         String str = Console.readLine();

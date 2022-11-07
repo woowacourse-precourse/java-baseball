@@ -32,6 +32,7 @@ public class Controller {
     public static ArrayList<Integer> getUser(){
         return User.makeUserList();
     }
+
     public static ArrayList<Integer> getRandomNumbers(){
         return RandomNumber.makeRandomNum();
     }
