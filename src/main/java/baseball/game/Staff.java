@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import static baseball.constant.Rules.END_NUMBER;
 import static baseball.constant.Rules.FINISH;
-import static baseball.constant.Rules.FORBIDDEN_NUMBER;
 import static baseball.constant.Rules.MORE;
 import static baseball.constant.Rules.PICK_COUNT;
+import static baseball.constant.Rules.RANGE_COUNT_PATTERN;
 import static baseball.constant.Rules.START_NUMBER;
 
 public class Staff {
@@ -36,8 +36,8 @@ public class Staff {
 
         validateInputNull(input);
         validateInputLength(input);
+        validateForbiddenString(input);
         List<Integer> userNumbers = convertInputToUserNumbers(input);
-        validateForbiddenNumber(userNumbers);
         validateDuplicateValue(userNumbers);
 
         return userNumbers;
@@ -56,18 +56,15 @@ public class Staff {
     }
 
     private List<Integer> convertInputToUserNumbers(String input) {
-        try {
-            return Arrays.stream(input.split(""))
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값을 숫자로 변환시킬 수 없습니다.");
-        }
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
-    private void validateForbiddenNumber(List<Integer> userNumbers) {
-        if (userNumbers.contains(FORBIDDEN_NUMBER)) {
-            throw new IllegalArgumentException("허용되지 않은 숫자 " + FORBIDDEN_NUMBER + "이 포함되어 있습니다.");
+    private void validateForbiddenString(String input) {
+        if (!RANGE_COUNT_PATTERN.matcher(input).matches()) {
+            throw new IllegalArgumentException("허용되지 않은 문자가 포함되어 있습니다. "
+                    + START_NUMBER + "부터 " + END_NUMBER + "까지의 값을 " + PICK_COUNT + "번 사용해주세요");
         }
     }
 
