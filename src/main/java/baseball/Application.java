@@ -48,10 +48,8 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userInput = getValidUserInput(Console.readLine());
-            System.out.println(userInput);
             int strike = getStrike(answer, userInput);
             int ball = getBall(answer, userInput, strike);
-            System.out.println(answer);
             Response response = new Response(strike, ball);
             response.view();
             if (response.isCompleted) {
