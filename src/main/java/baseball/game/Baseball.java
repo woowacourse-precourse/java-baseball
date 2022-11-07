@@ -7,6 +7,7 @@ import static baseball.game_util.InputUtil.getUserThreeInputNumber;
 import static baseball.game_util.RandomUtil.createRandomComputerNumbers;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Baseball {
     public void RunBaseballGame() {
@@ -24,16 +25,16 @@ public class Baseball {
 
 
     private void progressGame() {
-        int[] computerNumbers = createRandomComputerNumbers();
+        List<Integer> computerNumberList = createRandomComputerNumbers();
         Hint hint = new Hint();
 
         while (true){
             hint.setHint(0,0);
             printStartMessage();
 
-            int[] userInputNumbers = getUserThreeInputNumber();
+            List<Integer> userInputNumberList = getUserThreeInputNumber();
 
-            hint.checkAnswerAndPlayerNumber(computerNumbers, userInputNumbers);
+            hint.checkAnswerAndPlayerNumber(computerNumberList, userInputNumberList);
             hint.printHint();
 
             if (hint.getStrike() == 3){

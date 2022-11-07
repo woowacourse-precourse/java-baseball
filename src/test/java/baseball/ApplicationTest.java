@@ -1,9 +1,8 @@
 package baseball;
 
-import baseball.game_util.InputUtil;
 import baseball.game_util.RandomUtil;
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -45,8 +44,8 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 서로다른_랜덤_숫자_생성_테스트() {
-        int[] randomNumber = RandomUtil.createRandomComputerNumbers();
-        assertThat(randomNumber[0]).isNotEqualTo(randomNumber[1]).isNotEqualTo(randomNumber[2]);
+        List<Integer> computerNumberList = RandomUtil.createRandomComputerNumbers();
+        assertThat(computerNumberList.get(0)).isNotEqualTo(computerNumberList.get(1)).isNotEqualTo(computerNumberList.get(2));
     }
     @Test
     void 게임실행_테스트() {

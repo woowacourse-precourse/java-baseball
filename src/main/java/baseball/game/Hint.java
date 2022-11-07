@@ -2,6 +2,8 @@ package baseball.game;
 
 import static baseball.common.Constants.MAX_NUMBER_COUNT;
 
+import java.util.List;
+
 
 public class Hint {
     private int strike;
@@ -45,26 +47,26 @@ public class Hint {
         return strike == 0 && ball == 0;
     }
 
-    public void checkAnswerAndPlayerNumber(int[] answer, int[] playerAnswer){
+    public void checkAnswerAndPlayerNumber(List<Integer> answer, List<Integer> playerAnswer) {
         for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
-            countStrike(answer[i], playerAnswer[i]);
-            countBall(i, answer, playerAnswer[i]);
+            countStrike(answer.get(i), playerAnswer.get(i));
+            countBall(i, answer, playerAnswer.get(i));
         }
     }
 
-    private void countBall(int digit, int[] answer, int playerAnswer) {
+    private void countBall(int digit, List<Integer> answer, int playerAnswer) {
         for (int i = 0; i < MAX_NUMBER_COUNT; i++) {
-            if (i != digit && answer[i] == playerAnswer){
+            if (i != digit && answer.get(i) == playerAnswer) {
                 this.ball++;
             }
         }
     }
 
     private void countStrike(int answer, int playerAnswer) {
-        if (answer == playerAnswer){
+        if (answer == playerAnswer) {
             this.strike++;
         }
     }
-    
+
 }
 
