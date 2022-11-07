@@ -60,4 +60,15 @@ public class ValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("서로 다른 숫자만 입력 가능합니다.");
     }
+
+    @Test
+    @DisplayName("게임 종료 후 1 혹은 2가 아닌 다른 값을 입력한 경우 에러 발생")
+    void inputValueIsOneOrTwoTest() {
+        String inputValue = "12";
+
+        InputValidation inputValidation = new InputValidation();
+        assertThatThrownBy(() -> inputValidation.validateIsOneOrTwo(inputValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 또는 2만 입력 가능합니다.");
+    }
 }
