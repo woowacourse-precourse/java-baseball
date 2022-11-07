@@ -92,9 +92,9 @@ public class Application {
         boolean equalList = false;
 
         if (myThreeNum.equals(computerThreeNum)) {
-            System.out.println("3 스트라이크!");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다!");
-            System.out.println("게임종료");
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+
             return true;
         }
         return equalList;
@@ -114,7 +114,7 @@ public class Application {
             return false;
         }
         if (endGame.equals("2")) {
-            System.out.println("게임을 종료합니다.");
+            System.out.println("게임 종료");
             return true;
         } else {
             return endBaseball();
