@@ -10,7 +10,7 @@ public class Balls {
     private static final int BALLS_RULE_SIZE = 3;
     private final List<Ball> balls;
 
-    public Balls(List<Integer> numbers) {
+    private Balls(List<Integer> numbers) {
         validate(numbers);
         this.balls = new ArrayList<>();
         mapToBalls(numbers);

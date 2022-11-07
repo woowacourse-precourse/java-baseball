@@ -23,31 +23,31 @@ public class BallsTest {
     @Test
     public void 매개변수_길이_검증() {
         assertThatThrownBy(
-            () -> new Balls(List.of(1))
+            () -> Balls.of(List.of(1))
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> new Balls(List.of(1, 2))
+            () -> Balls.of(List.of(1, 2))
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> new Balls(List.of(1, 2, 3, 4))
+            () -> Balls.of(List.of(1, 2, 3, 4))
         ).isInstanceOf(IllegalArgumentException.class);
 
-        assertDoesNotThrow(() -> new Balls(List.of(1, 2, 3)));
+        assertDoesNotThrow(() -> Balls.of(List.of(1, 2, 3)));
     }
 
     @Test
     public void 매개변수_중복_검증() {
         assertThatThrownBy(
-            () -> new Balls(List.of(7, 7, 7))
+            () -> Balls.of(List.of(7, 7, 7))
         ).isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(
-            () -> new Balls(List.of(7, 1, 7))
+            () -> Balls.of(List.of(7, 1, 7))
         ).isInstanceOf(IllegalArgumentException.class);
 
-        assertDoesNotThrow(() -> new Balls(List.of(1, 2, 3)));
+        assertDoesNotThrow(() -> Balls.of(List.of(1, 2, 3)));
     }
 
     @Test
