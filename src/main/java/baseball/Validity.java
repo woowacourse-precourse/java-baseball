@@ -2,20 +2,10 @@ package baseball;
 
 public class Validity {
 
-    public int[] InputCheckValidAndReturn() {
+
+    public void isInputNumberValid(char[] InputCharArray) {
         Revert revert = new Revert();
-        Computer computer = new Computer();
-
-        String InputString = computer.descriptionAndInput("숫자를 입력해주세요:");
-        char[] InputCharArray = revert.revertStringToCharArray(InputString);
-        int[] InputAsciiArray = revert.revertCharArrayToAsciiArray(InputCharArray);
-
-        isInputNumberValid(InputAsciiArray);
-
-        return revert.revertCharArrToIntArr(InputCharArray);
-    }
-
-    public void isInputNumberValid(int[] inputAsciiArray) {
+        int[] inputAsciiArray = revert.revertCharArrayToAsciiArray(InputCharArray);
 
         if (!isLength3(inputAsciiArray)) {
             throw new IllegalArgumentException();

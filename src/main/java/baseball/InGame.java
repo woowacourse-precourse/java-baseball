@@ -14,6 +14,7 @@ public class InGame {
     public void gameLoop(){
         Computer computer = new Computer();
         Validity valid = new Validity();
+        Revert revert = new Revert();
 
         int[] RandomizedArray = computer.makeRandomizedArray();
         System.out.println(Arrays.toString(RandomizedArray));
@@ -21,9 +22,13 @@ public class InGame {
         while (strike < 3) {
             strike = 0;
             ball = 0;
-            int[] input = valid.InputCheckValidAndReturn();
-            ifNumberAndLocationEqualsAddStrike(RandomizedArray, input);
-            ifNumberEqualsAddBall(RandomizedArray, input);
+
+            String InputString = computer.descriptionAndInput("숫자를 입력해주세요:");
+            char[] InputCharArray = revert.revertStringToCharArray(InputString);
+            valid.isInputNumberValid(InputCharArray);
+
+            ifNumberAndLocationEqualsAddStrike(RandomizedArray, revert.revertCharArrToIntArr(InputCharArray));
+            ifNumberEqualsAddBall(RandomizedArray, revert.revertCharArrToIntArr(InputCharArray));
             ball = ball - strike;
 
             printCaseBeforeSuccess();

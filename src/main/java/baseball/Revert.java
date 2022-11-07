@@ -3,6 +3,7 @@ package baseball;
 public class Revert {
 
     public char[] revertStringToCharArray(String input) {
+
         return input.toCharArray();
     }
 
