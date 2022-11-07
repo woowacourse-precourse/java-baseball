@@ -6,6 +6,7 @@ import java.util.List;
 import baseball.count.Game;
 import baseball.player.User;
 import baseball.view.SystemMessage;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameService {
@@ -52,6 +53,19 @@ public class GameService {
 			}
 		}
 
+	}
+
+	public int[] inputNumber() {
+		systemMessage.PrintProgress();
+		String input = Console.readLine();
+		exception.checkSize(input);
+		int[] number = new int[input.length()];
+		for (int i = 0; i < input.length(); i++) {
+			exception.checkNumberSize(input.charAt(i));
+			exception.checkOverlap(number, input.charAt(i));
+			number[i] = input.charAt(i) - '0';
+		}
+		return number;
 	}
 
 }
