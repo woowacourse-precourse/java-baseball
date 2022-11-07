@@ -44,4 +44,14 @@ public class SystemComputerModel {
         }
         return NOTHING;
     }
+
+    public SystemScoreModel IS_STRIKE_OR_BALL(int UserNumber, int UserDigit, Integer ComputerNumber, int ComputerDigit) {
+        if (ComputerNumber == UserNumber && ComputerDigit == UserDigit) {
+            return STRIKE;
+        }
+        if(ComputerNumber == UserNumber && ComputerDigit != UserDigit){
+            return BALL;
+        }
+        return ZERO;
+    }
 }
