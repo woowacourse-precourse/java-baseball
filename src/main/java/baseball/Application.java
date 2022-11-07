@@ -67,25 +67,26 @@ class baseball {
 		
 		getrandomNum();
 		get_user_input_num();
-		compare(tmp_List, correct);
-		result();
+		do {
+		compare();
+		}while(result());
 		
 		//System.out.println("숫자를 모두 맞히셨습니다! 게임 종료");
 		}while(repeat_game() == 1);
 		
 	}
 	
-	void result() {
+	boolean result() {
 		//random사용해서 정답과 비교수를 compare로 넘김
 		result_num = 713;
 		user_num = 713;
+		return true;
 		
-		if(compare(this.result_num, this.user_num) == 1) {
-		}
+
 		
 	}
 	
-	int compare() {
+	void compare() {
 		int ball = 0;
 		int strike = 0;
 		int cipher;
@@ -93,16 +94,28 @@ class baseball {
 			if(tmp_List.get(cipher) == correct.get(cipher)) {
 				strike++;
 			}
+			
+			else if(tmp_List.contains(correct.get(cipher))) {
+				ball++;
+			}
+			
 		}
 		System.out.println("result : " + correct);
 		System.out.println(tmp_List);
-		System.out.println(strike);
-		
-		return 1;
+		if(ball > 0 && strike > 0) {
+			System.out.println(ball + "볼 " + strike + "스트라이크");
+		}else if(ball > 0 && strike < 1) {
+			System.out.println(ball +"볼");
+		}else if(ball < 1 && strike > 0) {
+			System.out.println(strike +"스트라이크");
+		}else if(ball < 1 && strike < 1) {
+			System.out.println("낫싱");
+		}
 	}
 	
-	
 }
+
+
 
 
 public class Application {
