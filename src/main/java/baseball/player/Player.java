@@ -10,6 +10,7 @@ import java.util.Set;
 public class Player {
     private static List<Integer> inputNum;
     private static final String INPUT_STRING = "숫자를 입력해주세요 : ";
+    private static final int GAME_STRING_LENGTH = 3;
 
     public void inputNumber(){
         System.out.print(INPUT_STRING);
@@ -45,6 +46,12 @@ public class Player {
             Integer.parseInt(input);
         } catch (NumberFormatException e){
             throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+    }
+
+    public void checkInputLength(List<Integer> input){
+        if (input.size() != GAME_STRING_LENGTH){
+            throw new IllegalArgumentException("세자리 숫자를 입력해주세요.");
         }
     }
 
