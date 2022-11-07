@@ -18,6 +18,6 @@ class GameTest {
     void 컴퓨터_랜덤숫자_범위테스트() {
         Game game = new Game();
         List<Integer> result = game.pickThreeNumber();
-        assertThat(result.stream().allMatch(n -> n>=1 && n<=9)).isTrue();
+        assertThat(result.stream().allMatch(n -> n >= 1 && n <= 9)).isTrue();
     }
 }

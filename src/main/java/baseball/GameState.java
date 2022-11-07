@@ -14,26 +14,32 @@ public class GameState {
     public void addStrike() {
         ++strike;
     }
+
     public void addBall() {
         ++ball;
     }
 
-    public int getStrike() { return strike; }
-    public int getBall() { return ball; }
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 
     public void printGameState() {
-        if (this.strike==ZERO && this.ball==ZERO) {
+        if (this.strike == ZERO && this.ball == ZERO) {
             System.out.println(NOTHING);
             return;
         }
-        if (this.ball==ZERO) {
-            System.out.println(this.strike+STRIKE);
+        if (this.ball == ZERO) {
+            System.out.println(this.strike + STRIKE);
             return;
         }
-        if (this.strike==ZERO) {
-            System.out.println(this.ball+BALL);
+        if (this.strike == ZERO) {
+            System.out.println(this.ball + BALL);
             return;
         }
-        System.out.println(this.ball+BALL+" "+this.strike+STRIKE);
+        System.out.println(this.ball + BALL + " " + this.strike + STRIKE);
     }
 }

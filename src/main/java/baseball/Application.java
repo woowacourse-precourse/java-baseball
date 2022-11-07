@@ -13,11 +13,11 @@ public class Application {
             if (!game.isAnswer()) {
                 continue;
             }
-            if (!game.canRestart()){
+            if (!game.canRestart()) {
                 isContinue = false;
                 continue;
             }
             game = new Game();
-        } while(isContinue);
+        } while (isContinue);
     }
 }

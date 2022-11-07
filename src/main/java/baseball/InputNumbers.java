@@ -16,8 +16,8 @@ public class InputNumbers {
         System.out.println(userInput);
 
         List<Integer> inputNumbers = new ArrayList<>();
-        for (int idx = INITIAL_NUMBER; idx<NUMBER_LENGTH; idx++) {
-            inputNumbers.add(userInput.charAt(idx)-ZERO_ASCII);
+        for (int idx = INITIAL_NUMBER; idx < NUMBER_LENGTH; idx++) {
+            inputNumbers.add(userInput.charAt(idx) - ZERO_ASCII);
         }
         return inputNumbers;
     }
@@ -30,7 +30,7 @@ public class InputNumbers {
     }
 
     public static boolean validInputNumber(String numbers) {
-        if (numbers.length()!=NUMBER_LENGTH) {
+        if (numbers.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException(INVALID_INPUT_RADIX);
         }
         if (!isValidDigit(numbers)) {
@@ -49,8 +49,8 @@ public class InputNumbers {
     }
 
     public static boolean isValidDigit(String num) {
-        for (int idx = INITIAL_NUMBER; idx<num.length(); idx++) {
-            if (num.charAt(idx)<=ZERO_ASCII||num.charAt(idx)>NINE_ASCII) {
+        for (int idx = INITIAL_NUMBER; idx < num.length(); idx++) {
+            if (num.charAt(idx) <= ZERO_ASCII || num.charAt(idx) > NINE_ASCII) {
                 return false;
             }
         }
@@ -58,8 +58,8 @@ public class InputNumbers {
     }
 
     public static boolean duplicateNumber(String numbers) {
-        for (int idx = INITIAL_NUMBER; idx<numbers.length(); idx++) {
-            if (numberCount(numbers, numbers.charAt(idx))!=NOT_DUPLICATE_NUMBER) {
+        for (int idx = INITIAL_NUMBER; idx < numbers.length(); idx++) {
+            if (numberCount(numbers, numbers.charAt(idx)) != NOT_DUPLICATE_NUMBER) {
                 return false;
             }
         }
