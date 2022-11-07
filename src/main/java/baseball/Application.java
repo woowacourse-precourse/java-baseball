@@ -9,6 +9,46 @@ import java.util.Scanner;
 public class Application {
     public static List<Integer> randomNumber;
 
+
+    public static class BaseBall{
+        public int ball;
+        public int strike;
+        public String result;
+
+        public BaseBall(List<Integer> userNumber){
+            CountStrike(userNumber);
+            this.ball = CountSameNum(userNumber) - strike;
+            GetOutputResult();
+        }
+
+        private void GetOutputResult(){
+            result = "";
+            if(this.ball != 0)
+                result += ball + "볼 ";
+            if(this.strike != 0)
+                result += strike + "스트라이크";
+            if(result.isEmpty())
+                result = "낫싱";
+        }
+
+        private void CountStrike(List<Integer> userNumber){
+            this.strike = 0;
+            for(int i =0; i < userNumber.size(); i++){
+                if(userNumber.get(i) == randomNumber.get(i))
+                    strike++;
+            }
+        }
+
+        private int CountSameNum(List<Integer> userNumber){
+            int count = 0;
+            for(int i = 0; i < userNumber.size(); i++){
+                if(randomNumber.contains(userNumber.get(i)))
+                    count++;
+            }
+            return count;
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         StartGame();
@@ -20,7 +60,7 @@ public class Application {
         while(continueGame){
             List<Integer> userNumber = GetInputNumber();
             if(userNumber == null) return;
-
+            BaseBall baseBall = new BaseBall(userNumber);
 
         }
     }
