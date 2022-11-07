@@ -16,4 +16,8 @@ class ResponseMessage {
     static void stopProgram() {
         System.out.println("프로그램이 종료되었습니다.");
     }
+
+    static String stopExceptionProgram() {
+        return "잘못된 값으로 인해 프로그램이 종료되었습니다.";
+    }
 }
