@@ -32,4 +32,8 @@ public class BaseBall {
     public boolean isWin() {
         return isWin;
     }
+
+    public void winGame() {
+        this.isWin = true;
+    }
 }

@@ -18,6 +18,8 @@ public class BaseBallService {
     }
 
     public void winGame() {
-        baseBall.setWin(true);
+        baseBall.winGame();
     }
+
+
 }
