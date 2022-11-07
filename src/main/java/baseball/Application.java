@@ -69,5 +69,24 @@ public class Application {
         }
         return randomNumber;
     }
+
+    // 유저가 입력한 문자열 체크
+    private static String[] getUserNumber(String userInput) {
+        String[] userNumber = userInput.split("");
+
+        // 입력받은 문자 중 숫자가 아닌 것이 있으면 예외 발생
+        for (int i = 0; i < userInput.length(); i++) {
+            if (!Character.isDigit(userInput.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        //입력받은 숫자가 세글자가 아니거나 중복된 숫자 포함 시 예외 발생
+        //Set.of는 동일한 키값 존재 시 자체적으로 예외 처리
+        if (Set.of(userNumber).size() != 3) {
+            throw new IllegalArgumentException();
+        }
+        return userNumber;
+    }
 }
 
