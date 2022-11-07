@@ -23,6 +23,8 @@ public class Application {
 
             if (game.isGameOver()) {
                 OutputView.displayGameOverMessage();
+                InputView.displayInputGameStateCommandMessage();
+
             }
         }
     }
