@@ -9,7 +9,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean flag = true;git add
+        boolean flag = true;
         List<Integer> computer = new ArrayList<>();
         List<Integer> user = new ArrayList<>();
 
