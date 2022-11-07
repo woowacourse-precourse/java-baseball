@@ -31,5 +31,13 @@ public class Game {
     public void printUserInputPrompt() {
         System.out.print("숫자를 입력해주세요 : ");
     }
+    public List<Integer> parseUserInput(String userInput) {
+        List<Integer> userInputList = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            userInputList.add(Integer.parseInt(userInput.substring(i, i + 1)));
+        }
+        return userInputList;
+    }
+
     }
 }
