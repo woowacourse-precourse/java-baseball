@@ -1,14 +1,12 @@
 package baseball;
 
 public class PlayBaseBall {
-  static ContinueOrStop continueOrStop = new ContinueOrStop();
-
   public static void playGame() { //싱글톤
     PrintOut.startMessage();
-    String computerNumber = CreateRandomNumber.numberMaker(); //computerNumber
+    String computerNumber = CreateRandomNumber.numberMaker();
     while (true) //게임 테이블 / 내부의 턴 횟수 구분
     {
-      PrintOut.inputMessage(); //requsetInput~
+      PrintOut.requestInputMessage();
       String user = UserScanner.input();
       int strike = Hint.strikeCount(computerNumber, user);
       if (InputValidator.isValidNumber(user)) {  // void형식
