@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 class Baseball {
     private static final String SCORE_NOTHING = "낫싱";
     private static final String SCORE_BALL = "볼";
@@ -13,6 +15,12 @@ class Baseball {
     private void checkStrike(int computer, int user) {
         if (computer == user) {
             this.strike++;
+        }
+    }
+
+    private void checkBall(int user, List<Integer> computers) {
+        if (computers.contains(user)) {
+            this.ball++;
         }
     }
 
