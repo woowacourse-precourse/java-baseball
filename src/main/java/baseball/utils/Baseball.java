@@ -33,21 +33,18 @@ public class Baseball {
         while (computerBalls.size() < TOTAL_BALL_CNT) {
             computerBalls.add(Randoms.pickNumberInRange(1, 9));
         }
-
-        Baseball computer = new Baseball(computerBalls);
-        return computer;
+        return new Baseball(computerBalls);
     }
 
     public static Baseball createPlayer(String inputNumber) {
-        LinkedHashSet<Integer> ballOfPlayer = new LinkedHashSet<>();
+        LinkedHashSet<Integer> playerBalls = new LinkedHashSet<>();
         int num;
 
         for (int i = 0; i < inputNumber.length(); i++) {
             num = Character.getNumericValue(inputNumber.charAt(i));
-            ballOfPlayer.add(num);
+            playerBalls.add(num);
         }
-        validateBaseballNumber(ballOfPlayer);
-        Baseball player = new Baseball(ballOfPlayer);
-        return player;
+        validateBaseballNumber(playerBalls);
+        return new Baseball(playerBalls);
     }
 }
