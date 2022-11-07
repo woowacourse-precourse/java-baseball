@@ -52,28 +52,42 @@ public class Application {
         }
     }
 
-    public static List<Integer> separateNumberToDigit(int number) {
+    public static void showCount(List<Integer> countList) {   // Index ( 0 : BALL / 1 : STRIKE )
 
-        List<Integer> digits = new ArrayList<>();
+        int count;
 
-        while (number > 0) {
-            digits.add(number % 10);
-            number /= 10;
+        if ((count = countList.get(0)) != 0) {
+            System.out.printf("%d볼 ", count);
         }
 
-        Collections.reverse(digits);
-
-        return digits;
+        if ((count = countList.get(1)) != 0) {
+            System.out.printf("%d스트라이크 ", count);
+        }
 
     }
 
-    public static Integer countBall(List<Integer> answer, List<Integer> digits) {
+    public static List<Integer> separateNumberToDigit(int number) {
+
+        List<Integer> digitList = new ArrayList<>();
+
+        while (number > 0) {
+            digitList.add(number % 10);
+            number /= 10;
+        }
+
+        Collections.reverse(digitList);
+
+        return digitList;
+
+    }
+
+    public static Integer countBall(List<Integer> answer, List<Integer> digitList) {
 
         int count = 0;
 
-        for (int i = 0; i < digits.size(); i++) {
+        for (int i = 0; i < digitList.size(); i++) {
 
-            int digit = digits.get(i);
+            int digit = digitList.get(i);
 
             for (int j = 0; j < answer.size(); j++) {
 
@@ -87,13 +101,13 @@ public class Application {
         return count;
     }
 
-    public static Integer countStrike(List<Integer> answer, List<Integer> digits) {
+    public static Integer countStrike(List<Integer> answer, List<Integer> digitList) {
 
         int count = 0;
 
-        for (int i = 0; i < digits.size(); i++) {
+        for (int i = 0; i < digitList.size(); i++) {
 
-            int digit = digits.get(i);
+            int digit = digitList.get(i);
 
             for (int j = 0; j < answer.size(); j++) {
 
@@ -116,13 +130,14 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
             int number = Integer.parseInt(Console.readLine());
-            List<Integer> digits = separateNumberToDigit(number);
+            List<Integer> digitList = separateNumberToDigit(number);
 
-            List<Integer> count = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
-            count.add(countBall(answer, digits));
-            count.add(countStrike(answer,digits));
+            List<Integer> countList = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
+            countList.add(countBall(answer, digitList));
+            countList.add(countStrike(answer,digitList));
+            showCount(countList);
 
-            if (checkAnswer(count)) {
+            if (checkAnswer(countList)) {
                 status = restartGame();
                 answer = createAnswer();
             }
