@@ -9,6 +9,7 @@ public class User {
     private static final int MAX_NUMBER_SIZE = 3;
 
     public void setUserNumber(String userNumber) throws IllegalArgumentException {
+        userValidation(userNumber);
         for (int i = 0; i < userNumber.length(); i++) {
             int eachNumber = Integer.parseInt(String.valueOf(userNumber.charAt(i)));
 

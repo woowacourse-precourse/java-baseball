@@ -19,7 +19,7 @@ public class BaseBallService {
         baseBall.winGame();
     }
 
-    public void userInputSave(String userNumber) {
+    public void userInputSave(String userNumber) throws IllegalArgumentException {
         user.setUserNumber(userNumber);
     }
 

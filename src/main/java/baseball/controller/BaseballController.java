@@ -15,7 +15,6 @@ public class BaseballController {
         do {
             inProgress();
         } while (restart());
-
     }
 
     public boolean restart() {
@@ -32,7 +31,7 @@ public class BaseballController {
         return startFlag;
     }
 
-    public void inProgress() {
+    public void inProgress() throws IllegalArgumentException {
         while (!baseBallService.isWinGame()) {
             String userNumber = inputView.inputNumber();
             baseBallService.userInputSave(userNumber);
@@ -44,7 +43,7 @@ public class BaseballController {
             }
 
             if (baseBallService.isWinGame()) {
-                outputView.printWinGame();
+                outputView.printWinGame(baseBallService.getStrike());
                 break;
             }
 
