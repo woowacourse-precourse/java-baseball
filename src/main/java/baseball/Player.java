@@ -20,4 +20,14 @@ public class Player {
         }
         return guess;
     }
+
+    public boolean inputRetry() throws IllegalArgumentException {
+        String input = Console.readLine();
+
+        validator.isNumeric(input);
+        validator.checkFlagLength(input);
+        validator.checkFlag(input);
+
+        return input.equals("1");
+    }
 }
