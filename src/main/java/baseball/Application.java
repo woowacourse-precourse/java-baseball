@@ -41,7 +41,7 @@ public class Application {
         while (answerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answerNumber.contains(randomNumber)) {
-            answerNumber.add(randomNumber);
+                answerNumber.add(randomNumber);
             }
         }
         return answerNumber;
@@ -57,12 +57,14 @@ public class Application {
             ||!Character.isDigit(inputNumber.charAt(2)) || inputNumber.charAt(0) ==0 || inputNumber.charAt(1)==0
             || inputNumber.charAt(2) ==0){
             inputNumberArray.add(0);
+
             return inputNumberArray;
         }
 
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(0)));
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(1)));
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(2)));
+
         return inputNumberArray;
     }
 
@@ -71,49 +73,47 @@ public class Application {
         String answer = "";
         int strike = 0;
         int ball = 0;
+        int firstBall = 0;
+        int secondBall = 1;
+        int thirdBall =2;
 
-        for (int i=0; i<3; i++){
-            if(Objects.equals(generateAnswer.get(0), inputUserNumber.get(i))) {
-                if(i == 0){
-                    strike++;
-                }else{
-                    ball++;
-                }
+        for(int j=0; j<3; j++){
+            if(Objects.equals((generateAnswer.get(firstBall)),inputUserNumber.get(j)) && j==firstBall){
+                strike++;
+            }
+            if(Objects.equals((generateAnswer.get(firstBall)),inputUserNumber.get(j)) && j!=firstBall){
+                ball++;
+            }
+        }
+        for(int j=0; j<3; j++){
+            if(Objects.equals((generateAnswer.get(secondBall)),inputUserNumber.get(j)) && j==secondBall){
+                strike++;
+            }
+            if(Objects.equals((generateAnswer.get(secondBall)),inputUserNumber.get(j)) && j!=secondBall){
+                ball++;
+            }
+        }
+        for(int j=0; j<3; j++){
+            if(Objects.equals((generateAnswer.get(thirdBall)),inputUserNumber.get(j)) && j==thirdBall){
+                strike++;
+            }
+            if(Objects.equals((generateAnswer.get(thirdBall)),inputUserNumber.get(j)) && j!=thirdBall){
+                ball++;
             }
         }
 
-        for (int i=0; i<3; i++){
-            if(Objects.equals(generateAnswer.get(1), inputUserNumber.get(i))) {
-                if(i == 1){
-                    strike++;
-                }else{
-                    ball++;
-                }
-            }
-        }
-
-        for (int i=0; i<3; i++){
-            if(Objects.equals(generateAnswer.get(2), inputUserNumber.get(i))) {
-                if(i == 2){
-                    strike++;
-                }else{
-                    ball++;
-                }
-            }
-        }
 
         if (strike == 0 && ball ==0){
             answer += "낫싱";
         }
-
         else if (strike == 0){
             answer += (ball+"볼");
         }
-
         else if (ball ==0){
             answer += (strike+"스트라이크");
         }
         else{answer += (ball+"볼")+" "+(strike+"스트라이크");}
+
         return answer;
     }
     public static int restart (){
@@ -124,5 +124,4 @@ public class Application {
         }
         return toBeContinue;
     }
-}
 
