@@ -3,6 +3,10 @@ package baseball.view;
 import baseball.model.BallCounts;
 
 public class Output {
+    public static void outputStart() {
+        System.out.print("숫자 야구 게임을 시작합니다.");
+    }
+
     public static void outputBallCounts(BallCounts ballCounts) {
         outputBall(ballCounts.getBall());
         outputStrike(ballCounts.getStrike());

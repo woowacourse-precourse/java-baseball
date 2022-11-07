@@ -16,7 +16,7 @@ public class GameController {
     private BallCounts ballCounts = new BallCounts();
 
     public GameController() {
-	System.out.print("숫자 야구 게임을 시작합니다.");
+        outputView.outputStart();
     }
 
     public void start() {
@@ -39,10 +39,10 @@ public class GameController {
     private void setInputNumbers(Numbers answerNumbers) throws IllegalArgumentException {
         String inputString = Console.readLine();
 
-        if (!validation.checkValidation(inputString.toString())) {
+        if (!validation.checkValidation(inputString)) {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
         }
-        inputNumbers.setNumbers(inputString.toString());
+        inputNumbers.setNumbers(inputString);
         ballCounts.setBallCounts(answerNumbers, inputNumbers);
     }
 }
