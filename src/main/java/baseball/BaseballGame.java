@@ -30,13 +30,28 @@ public class BaseballGame {
                 strikeCount++;
             }
         }
-        
+
         return strikeCount;
+    }
+
+    public int checkBalls(List<Integer> computer, List<Integer> proposal) {
+        int ballCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            Integer comNum = computer.get(i);
+            if (comNum.equals(proposal.get((i + 1) % 3)) ||
+                    comNum.equals(proposal.get((i + 2) % 3))) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
     }
 
     public List<Integer> checkNumber(List<Integer> computer, List<Integer> proposal) {
         List<Integer> checkList = new ArrayList<>();
         int strikeCount = checkStrikes(computer, proposal);
+        int ballCount = checkBalls(computer, proposal);
 
         return checkList;
     }
