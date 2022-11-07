@@ -17,6 +17,25 @@ public class Application {
 		playGame(computerNumbers);
 
 	}
+	
+	public static void startGame() {
+
+		System.out.println("숫자 야구 게임을 시작합니다.");
+	}
+
+	public static List<Integer> getComputerNumbers() {
+
+		List<Integer> computer = new ArrayList<>();
+		while (computer.size() < LENGTH) {
+
+			int randomNumber = Randoms.pickNumberInRange(1, 9);
+			if (!computer.contains(randomNumber)) {
+
+				computer.add(randomNumber);
+			}
+		}
+		return computer;
+	}
 
 	public static void playGame(List<Integer> computerNumbers) {
 
@@ -47,76 +66,7 @@ public class Application {
 		System.out.println(playerNumbers);
 		playGame(computerNumbers);
 	}
-
-	public static int sumBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-
-		int count = 0;
-		for (int index = 0; index < LENGTH; index++) {
-
-			int player = playerNumbers.get(index);
-			boolean isBall = computerNumbers.contains(player);
-			if (isBall) {
-				count++;
-			}
-		}
-		return count;
-	}
-
-	public static int sumStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-
-		int count = 0;
-		for (int index = 0; index < LENGTH; index++) {
-
-			int computer = computerNumbers.get(index);
-			int player = playerNumbers.get(index);
-
-			boolean isStrike = computer == player;
-			if (isStrike) {
-				count++;
-			}
-		}
-		return count;
-	}
-
-	public static void endGame() {
-
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-		String result = Console.readLine();
-		
-		// ㅜ false
-		// System.out.println(input == "1");
-		
-		if (result.equals("1")) {
-
-			List<Integer> computerNumbers = getComputerNumbers();
-			playGame(computerNumbers);
-		}
-
-		else if (result.equals("2")) {
-			return;
-		}
-
-		else {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	public static List<Integer> getComputerNumbers() {
-
-		List<Integer> computer = new ArrayList<>();
-		while (computer.size() < LENGTH) {
-
-			int randomNumber = Randoms.pickNumberInRange(1, 9);
-			if (!computer.contains(randomNumber)) {
-
-				computer.add(randomNumber);
-			}
-		}
-		return computer;
-	}
-
+	
 	public static List<Integer> getPlayerNumbers() {
 
 		System.out.print("숫자를 입력해주세요 : ");
@@ -141,13 +91,13 @@ public class Application {
 
 				throw new IllegalArgumentException();
 			}
-
+			
 			playerNumbers.add(number);
 		}
 
 		return playerNumbers;
 	}
-
+	
 	public static boolean isNumeric(String input) {
 
 		try {
@@ -160,8 +110,58 @@ public class Application {
 		}
 	}
 
-	public static void startGame() {
+	public static int sumStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
 
-		System.out.println("숫자 야구 게임을 시작합니다.");
+		int count = 0;
+		for (int index = 0; index < LENGTH; index++) {
+
+			int computer = computerNumbers.get(index);
+			int player = playerNumbers.get(index);
+
+			boolean isStrike = computer == player;
+			if (isStrike) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public static int sumBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+
+		int count = 0;
+		for (int index = 0; index < LENGTH; index++) {
+
+			int player = playerNumbers.get(index);
+			boolean isBall = computerNumbers.contains(player);
+			if (isBall) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public static void endGame() {
+
+		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+		String result = Console.readLine();
+		
+		// ㅜ false
+		// System.out.println(input == "1");
+		
+		if (result.equals("1")) {
+
+			List<Integer> computerNumbers = getComputerNumbers();
+			playGame(computerNumbers);
+		}
+
+		else if (result.equals("2")) {
+			return;
+		}
+
+		else {
+			throw new IllegalArgumentException();
+		}
 	}
 }
