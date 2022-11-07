@@ -37,9 +37,12 @@ public class Computer {
         randomNumbers = new ArrayList<>();
     }
 
+    /**
+     * 서로 다른 SIZE 크기의 자리수 생성 및 해당 숫자들을 collection에 표시한다.
+     */
     public void createDifferentRandomNumbers() {
         randomNumbers.clear();
-        while (randomNumbers.size() < 3) {
+        while (randomNumbers.size() < SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
@@ -48,6 +51,9 @@ public class Computer {
         initCollection();
     }
 
+    /**
+     * 직접 서로 다른 숫자를 지정하였을 경우 사용한다. collection을 다시 표시한다.
+     */
     public void initCollection() {
         Arrays.fill(collection, false);
         for (Integer randomNumber : randomNumbers) {
