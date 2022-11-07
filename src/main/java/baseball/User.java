@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    private static List<Integer> numbers;
+    private List<Integer> numbers;
+
+    public User() {
+        this.numbers = Collections.emptyList();
+    }
 
     private String inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
