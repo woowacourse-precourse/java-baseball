@@ -1,8 +1,9 @@
 package baseball.service;
 
 
+import baseball.domain.User;
 import baseball.exception.InputUserNumberException;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.BaseballGameView;
 import java.util.List;
 
 public class BaseballGameService {
@@ -11,6 +12,10 @@ public class BaseballGameService {
     private InputUserNumberException inputUserNumberException = new InputUserNumberException();
 
     private final int NUMBER_LENGTH = 3;
+
+    private BaseballGameView baseballGameView = new BaseballGameView();
+
+    private User user;
 
     public void updateStrikeCount(List<Integer> computerNumber, List<Integer> userNumber) {
         strikeCount = 0;
@@ -41,7 +46,7 @@ public class BaseballGameService {
     }
 
     public String choiceRestartGame() {
-        String choiceRestartNumber = Console.readLine().trim();
+        String choiceRestartNumber = baseballGameView.inputNumber();
         inputUserNumberException.checkInputRestartNumber(choiceRestartNumber);
         return choiceRestartNumber;
     }
@@ -49,6 +54,12 @@ public class BaseballGameService {
     public void initStrikeCountAndBallCount() {
         strikeCount = 0;
         ballCount = 0;
+    }
+    public void setUserNumber(){
+        user = new User();
+        String userNumber = baseballGameView.inputNumber();
+        inputUserNumberException.findUserNumberException(userNumber);
+        user.setSelectNumber(userNumber);
     }
 }
 
