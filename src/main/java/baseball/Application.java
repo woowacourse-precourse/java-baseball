@@ -28,23 +28,23 @@ public class Application {
         answer = generateAnswer();
 
         boolean isContinue = true;
-        while(isContinue) {
+        while (isContinue) {
             try {
                 input = gameIO.getInput();
                 gameIO.isLegalInput(input);
+
+                tryCount++;
+
+                String judgement = referee.judge(input, answer);
+                gameIO.printResult(judgement);
+
+                if (judgement == Referee.THREE_STRIKE) {
+                    gameIO.printGameEndInfo();
+                    isContinue = isFinishGame();
+                }
             } catch (IllegalArgumentException illegalArgumentException) {
                 gameIO.printInputExceptionLog();
-                throw new IllegalArgumentException("예외로 인한 프로그램 종료");
-            }
-
-            tryCount++;
-
-            String judgement = referee.judge(input, answer);
-            gameIO.printResult(judgement);
-
-            if (judgement == Referee.THREE_STRIKE) {
-                gameIO.printGameEndInfo();
-                isContinue = isFinishGame();
+                throw illegalArgumentException;
             }
         } // end of While
 
