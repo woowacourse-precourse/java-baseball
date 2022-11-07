@@ -1,8 +1,8 @@
-package baseball;
+package Exception;
 
 public class CheckException {
 
-    public static boolean restartStatusValid(String restartStatus) throws ProgressException{
+    public static boolean restartStatusValid(String restartStatus) throws ProgressException {
 
         if (!(restartStatus.equals("1")) && !(restartStatus.equals("2"))) {
             throw new ProgressException("재시작 입력값이 잘못 입력되었습니다. 게임을 종료합니다.");

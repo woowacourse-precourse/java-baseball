@@ -1,4 +1,4 @@
-package baseball;
+package Exception;
 
 public class ProgressException extends IllegalArgumentException {
 
