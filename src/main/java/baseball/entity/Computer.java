@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public class Computer {
     private final int numberLength = 3;
-    String answer;
+    private String answer;
 
     public Computer() {
         answer = "";
@@ -20,5 +20,9 @@ public class Computer {
         for (int i : set) {
             answer += i;
         }
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }
