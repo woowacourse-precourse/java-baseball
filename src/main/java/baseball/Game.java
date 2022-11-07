@@ -7,8 +7,15 @@ import java.util.List;
 public class Game {
 
     private static final int NUMBER_LENGTH = 3;
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
 
-
+    private String checkInputValidity(String restartState) {
+        if (!restartState.equals(RESTART) && !restartState.equals(EXIT)) {
+            throw new IllegalArgumentException("1이나 2가 아닌 숫자가 입력됐습니다.");
+        }
+        return restartState;
+    }
 
     private void play() {
         List<Character> computerNumberList = getComputerNumberList();
