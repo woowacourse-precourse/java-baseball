@@ -8,15 +8,6 @@ import java.util.List;
 public class FunctionTest {
 
     @Test
-    public void TEST1_1() {
-        Number computerNumber = Utils.pickComputerNumber();
-
-        Assertions.assertThat(computerNumber.size()).isEqualTo(3);
-        Assertions.assertThat(computerNumber.get(0)).isNotEqualTo(computerNumber.get(1))
-                .isNotEqualTo(computerNumber.get(2));
-    }
-
-    @Test
     public void TEST1_3_Strike() {
         List<Integer> computerNumber = List.of(1, 2, 3);
         List<Integer> userNumber = List.of(1, 2, 3);
@@ -24,11 +15,9 @@ public class FunctionTest {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
-            // strike 확인
             if (computerNumber.get(i) == userNumber.get(i)) {
                 strike++;
             } else if (computerNumber.contains(userNumber.get(i))) {
-                // ball 확인
                 ball++;
             }
         }
@@ -46,11 +35,9 @@ public class FunctionTest {
         int ball = 0;
         int strike = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
-            // strike 확인
             if (computerNumber.get(i) == userNumber.get(i)) {
                 strike++;
             } else if (computerNumber.contains(userNumber.get(i))) {
-                // ball 확인
                 ball++;
             }
         }
