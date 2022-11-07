@@ -65,4 +65,65 @@ public class InputTest {
             );
         }
     }
+
+    @Nested
+    public class InputIntegerTest {
+
+        private MockedStatic<Console> mockConsole;
+
+        @ParameterizedTest(name = "When input {0}")
+        @ArgumentsSource(InputIntegerNormalTestData.class)
+        void inputIntegerTest_NormalCase(String inputMessage, int expected) {
+            given(Console.readLine()).willReturn(inputMessage);
+
+            int result = Input.getInputInteger();
+
+            assertThat(result).isEqualTo(expected);
+        }
+
+        @ParameterizedTest(name = "When input {0}")
+        @ArgumentsSource(InputIntegerAbnormalTestData.class)
+        void inputIntegerTest_AbnormalCase(String inputMessage) {
+            given(Console.readLine()).willReturn(inputMessage);
+
+            assertThrows(IllegalArgumentException.class, () -> {
+                Input.getInputInteger();
+            });
+        }
+
+
+        @BeforeEach
+        void mockClass() {
+            mockConsole = mockStatic(Console.class);
+        }
+
+        @AfterEach
+        void closMockClass() {
+            mockConsole.close();
+        }
+    }
+
+    static class InputIntegerNormalTestData implements ArgumentsProvider {
+
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
+            return Stream.of(
+                    Arguments.of("1516", 1516),
+                    Arguments.of("211", 211),
+                    Arguments.of("8", 8)
+            );
+        }
+    }
+
+    static class InputIntegerAbnormalTestData implements ArgumentsProvider {
+
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
+            return Stream.of(
+                    Arguments.of("15T"),
+                    Arguments.of("pobi"),
+                    Arguments.of("1564*")
+            );
+        }
+    }
 }
