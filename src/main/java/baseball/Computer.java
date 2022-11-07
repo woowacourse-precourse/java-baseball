@@ -17,5 +17,13 @@ public class Computer {
         }
         return Answer;
     }
+
+    public static boolean hasSameNumber(List<Integer> list) {
+        List<Boolean> checkList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            checkList.add(Answer.contains(list.get(i)));
+        }
+        return checkTrue(checkList);
+    }
 }
 
