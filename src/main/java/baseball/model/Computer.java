@@ -9,7 +9,7 @@ public class Computer {
     private List<Integer> computerNumberList = new ArrayList<>();
 
     public void randomGenerate() {
-        while(computerNumberList.size() < 3) {
+        while (computerNumberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumberList.contains(randomNumber)) {
                 computerNumberList.add(randomNumber);

@@ -20,7 +20,7 @@ public class OutputView {
         if (ball > 0) {
             result += ball + BALL + " ";
         }
-        if (strike > 0 ) {
+        if (strike > 0) {
             result += strike + STRIKE;
         }
         System.out.println(result);
