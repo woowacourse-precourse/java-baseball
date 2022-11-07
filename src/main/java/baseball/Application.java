@@ -14,7 +14,6 @@ public class Application {
         List<Integer> computer = Util.makeRandomNumbers();
         String input;
 
-        outer:
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             input = Console.readLine();
@@ -22,9 +21,14 @@ public class Application {
             List<Integer> inputNumbers = Util.toIntegerArray(input);
             String comment = takeTurn(computer, inputNumbers);
             System.out.println(comment);
-
-            break outer;
+            if (isEnd(comment)) {
+                break;
+            }
         }
+    }
+
+    private static boolean isEnd(String comment) {
+        return comment.contains("게임 종료");
     }
 
     private static void askContinueOrEnd(String comment) {
