@@ -34,6 +34,10 @@ public class Game {
 
         } while (!referee.countOut());
         System.out.println(CLEAR_MESSAGE);
+        String restartOrEndInput = InputRestartOrEnd();
+        if (Integer.parseInt(restartOrEndInput) == RESTART) {
+            start();
+        }
     }
 
     private void playGame() {
@@ -55,5 +59,11 @@ public class Game {
             System.out.printf(referee.getStrike() + STRIKE);
         }
         System.out.println();
+    }
+
+    private static String InputRestartOrEnd() {
+        System.out.println(RESTART_OR_END_MESSAGE);
+        String restartOrEndInput = Console.readLine();
+        return restartOrEndInput;
     }
 }
