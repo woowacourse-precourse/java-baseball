@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BaseballNumber {
     private final int MAX_SIZE = 3;
@@ -20,5 +21,9 @@ public class BaseballNumber {
                 set.add(randomNumber);
             }
         }
+    }
+
+    public BaseballNumber(String input) {
+        baseballNumber = input.chars().map(c -> c - '0').boxed().collect(Collectors.toList());
     }
 }
