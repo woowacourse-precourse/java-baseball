@@ -1,4 +1,8 @@
 ## 📋 기능 목록
+### 숫자 야구 게임 플레이
+```
+numberBaseballGame()
+```
 ### 컴퓨터 랜덤 값
 - [x] 3자리 숫자를 랜덤으로 세팅
 ```
@@ -79,6 +83,7 @@ outputResultForTest()
 - **Application.class : 메인**
 ```
 main()
+numberBaseballGame()
 ```
 - **PrepareGame.class : 게임 준비 단계**
 ```
