@@ -46,17 +46,17 @@ public class Application {
         boolean again = true, runstop = false;
         int integer_gameagain;
 
-        while(computer.size() < 3){
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if(!computer.contains(randomNumber))
-                computer.add(randomNumber);
-        }
-
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
 
         while (again){
+            while(computer.size() < 3){
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+                if(!computer.contains(randomNumber))
+                    computer.add(randomNumber);
+            }
+
+            System.out.print("숫자를 입력해주세요 : ");
             answer = camp.nextstep.edu.missionutils.Console.readLine();
 
             if(answer.length()!=3)
