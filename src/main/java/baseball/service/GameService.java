@@ -82,6 +82,10 @@ public class GameService {
         strike += 1;
     }
 
+    public void addBallCount() {
+        ball += 1;
+    }
+
 
 
 }
