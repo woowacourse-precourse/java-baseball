@@ -55,6 +55,17 @@ public class Application {
         return computer;
     }
 
+    private int numOfStrike(List<Integer> userInput, List<Integer> computer){
+        return (int)IntStream.range(0, 3)
+                .filter(i -> Objects.equals(userInput.get(i), computer.get(i)))
+                .count();
+    }
+
+    private int numOfBall(List<Integer> userInput, List<Integer> computer){
+        return (int)IntStream.range(0, 3)
+                .filter(i -> !Objects.equals(userInput.get(i), computer.get(i)) && computer.contains(userInput.get(i)))
+                .count();
+    }
 
 
     public static void main(String[] args) {
