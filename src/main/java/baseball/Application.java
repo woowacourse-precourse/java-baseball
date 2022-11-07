@@ -5,11 +5,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class Application {
-    //예외메소드
-    public static void func1() throws Exception {
-        throw new IllegalArgumentException();
 
-    }
     public static void game(String str){
         int num = 0;
         int num2=0;
@@ -21,18 +17,19 @@ public class Application {
             int ball = 0;
 
             System.out.print("숫자를 입력해주세요 : ");
-            num = sc.nextInt();
+
+            try{ num = sc.nextInt();}
+            catch (InputMismatchException ime){
+                throw new IllegalArgumentException();
+            }
             //동일한 경우 게임 종료
             if (Integer.parseInt(str) == num) {
                 break;
+
             }
             //서로다른 숫자 3숫자 입력이 아닐시 예외처리
             if(Integer.toString(num).length()!=3){
-                try {
-                    func1();
-                } catch (Exception e) {
-                    System.exit(0);
-                }
+                throw new IllegalArgumentException();
 
             }
             int[] digits = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
@@ -43,11 +40,7 @@ public class Application {
             Set<Integer> set = new HashSet<Integer>(intList);
 
             if(set.size()!=intList.size()){
-                try {
-                    func1();
-                } catch (Exception e) {
-                    System.exit(0);
-                }
+                throw new IllegalArgumentException();
             }
 
 
