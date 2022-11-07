@@ -8,10 +8,10 @@ public class NumberController {
     }
 
     public static List<Integer> getStrikesAndBalls(RandomNumber users, RandomNumber computers) {
-        List<Integer> userNumbers = users.getNumbers();
-        List<Integer> answerNumbers = computers.getNumbers();
         int strikes = 0;
         int balls = 0;
+        List<Integer> userNumbers = users.getNumbers();
+        List<Integer> answerNumbers = computers.getNumbers();
 
         for (int i = 0; i < userNumbers.size(); i++) {
             if (userNumbers.get(i).equals(answerNumbers.get(i))) {
