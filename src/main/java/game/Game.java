@@ -3,11 +3,15 @@ package game;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
+import member.Computer;
+import member.User;
 
 public class Game {
-    Hint hint = new Hint();
     private static final int STARTING_INDEX = 0;
     private static final int MAX_LENGTH_OF_NUMBER = 3;
+    private final User user = new User();
+    private final Computer computer = new Computer();
+    private final Hint hint = new Hint();
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -15,6 +19,21 @@ public class Game {
 
         } while (waiting());
     }
+
+    public void play(List<Integer> computerNumbers, List<Integer> userNumbers) {
+
+//        while (!isThreeStrike()) {
+            hint.clearHint();
+            user.clearNumber();
+            user.inputNumber();
+
+            checkBallAndStrike(computerNumbers, userNumbers);
+            hint.print();
+        }
+
+//        stop();
+    }
+
 
     public boolean waiting() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");

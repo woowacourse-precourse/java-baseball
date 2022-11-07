@@ -19,4 +19,9 @@ public class Hint {
     public void incrementStrike() {
         strike++;
     }
+
+    public void clearHint() {
+        ball = 0;
+        strike = 0;
+    }
 }
