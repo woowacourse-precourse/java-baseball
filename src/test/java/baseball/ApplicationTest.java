@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -178,6 +180,16 @@ class ApplicationTest extends NsTest {
         Assertions.assertEquals("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", message.toString());
 
         System.setOut(System.out);
+    }
+
+    @Test
+    void replayGameTest() {
+
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThat(true).isEqualTo(Application.replayGame());
     }
 
     @Override
