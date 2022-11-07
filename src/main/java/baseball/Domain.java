@@ -5,13 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Domain {
 
-    String userNumber;
-    List<Integer> computerNumber;
     final int NUMBER_SIZE = 3;
 
 
@@ -19,16 +16,8 @@ public class Domain {
         return convertStringToIntegerList(getInputUserNumber());
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
-    }
-
     public List<Integer> getComputerNumber() {
         return computerRandomNumberExtract();
-    }
-
-    public void setComputerNumber(List<Integer> computerNumber) {
-        this.computerNumber = computerNumber;
     }
 
     public List<Integer> computerRandomNumberExtract() {
@@ -86,7 +75,7 @@ public class Domain {
     }
 
 
-    public List<Integer> inputProcess(String userNumber) { // test 입력시오류경우_확인
+    public List<Integer> inputProcess(String userNumber) {
         return convertStringToIntegerList(userNumber);
     }
 
