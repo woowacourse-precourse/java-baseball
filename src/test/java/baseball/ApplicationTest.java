@@ -60,6 +60,14 @@ class ApplicationTest extends NsTest {
 		);
 	}
 
+	@Test
+	void 범위_내_숫자가_아닐때() {
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException("034"))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
