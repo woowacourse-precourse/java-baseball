@@ -7,8 +7,31 @@ public class Application {
         player = new Player();
     }
 
+    public void startMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public boolean checkRestart(String playerRestart) {
+        char letter = playerRestart.charAt(0);
+        return letter == '1';
+    }
+
+    public void start() {
+        startMessage();
+        boolean restart = true;
+        while (restart) {
+            Game game = new Game(player);
+            game.start();
+            String playerRestart = player.getRestart();
+            if (!player.isValidRestart(playerRestart)) {
+                Player.isNotValid();
+            }
+            restart = checkRestart(playerRestart);
+        }
+    }
+
     public static void main(String[] args) {
-        Game game = new Game();
-        game.restartLoop();
+        Application app = new Application();
+        app.start();
     }
 }
