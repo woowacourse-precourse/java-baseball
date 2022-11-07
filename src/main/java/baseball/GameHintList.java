@@ -11,7 +11,11 @@ public class GameHintList {
 
     public void printGameHintList() {
         StringBuilder hintlist = sortHintHashMap();
-        System.out.println(hintlist);
+        if (isNothingSame()) {
+            System.out.println("낫싱");
+        } else {
+            System.out.println(hintlist);
+        }
     }
 
     public StringBuilder sortHintHashMap() {
@@ -27,7 +31,7 @@ public class GameHintList {
 
         return hintlist;
     }
-    
+
     public HashMap<String, Integer> allGameHintList() {
         HashMap<String, Integer> allHintHashMap = new HashMap<>();
         if (countOfBall() == 0 && countOfStrike() != 0) {
@@ -66,4 +70,5 @@ public class GameHintList {
     public boolean isNothingSame() {
         return countOfBall() == 0 && countOfStrike() == 0;
     }
+
 }
