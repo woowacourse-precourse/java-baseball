@@ -3,7 +3,7 @@ package baseball.mvc.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.game.GameResult;
-import baseball.helper.util.GameResultViewTestUtils;
+import baseball.helper.util.GameHintViewTestUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .contains(GameResultViewTestUtils
+                    .contains(GameHintViewTestUtils
                             .getMessage(GameHintView.STRIKE_AND_BALL, gameResult, testOut));
         }
 
@@ -50,7 +50,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .contains(GameResultViewTestUtils
+                    .contains(GameHintViewTestUtils
                             .getMessage(GameHintView.ONLY_BALL, gameResult, testOut));
         }
 
@@ -68,7 +68,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .contains(GameResultViewTestUtils
+                    .contains(GameHintViewTestUtils
                             .getMessage(GameHintView.ONLY_STRIKE, gameResult, testOut));
         }
 
@@ -79,7 +79,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .contains(GameResultViewTestUtils
+                    .contains(GameHintViewTestUtils
                             .getMessage(GameHintView.NOTHING, gameResult, testOut));
         }
     }

@@ -6,11 +6,11 @@ import baseball.mvc.view.GameHintView;
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Field;
 
-public final class GameResultViewTestUtils {
+public final class GameHintViewTestUtils {
 
     private static final String MESSAGE_FIELD_NAME = "message";
 
-    private GameResultViewTestUtils() {
+    private GameHintViewTestUtils() {
     }
 
     public static String getMessage(GameHintView view, GameResult gameResult, ByteArrayOutputStream out) {
