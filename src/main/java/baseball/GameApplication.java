@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class GameApplication {
     private static final String GAME_START_SENTENCE = "숫자 야구 게임을 시작합니다.";
@@ -11,6 +12,7 @@ public class GameApplication {
     private static final String STRIKE_SENTENCE = "스트라이크";
     private static final String BALL_SENTENCE = "볼";
     private static final String RIGHT_ANSWER_SENTENCE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String pattern = "^[1-2]$";
 
     private List<Integer> computer;
     private List<Integer> user;
@@ -23,26 +25,8 @@ public class GameApplication {
     public void gameStart() {
         while (true) {
             baseballGame();
-
-            System.out.print(RESTART_OR_EXIT_SENTENCE);
-            if (RestartOrExit()) break;
-        }
-    }
-
-    // 재시작 || 종료를 입력하는 메소드
-    private boolean RestartOrExit() {
-        String input = Console.readLine();
-        isRightInput(input);
-        if (input.equals("2")) {
-            return true;
-        }
-        return false;
-    }
-
-    // 입력 문자가 1과2 이외의 것일 경우
-    private void isRightInput(String input) {
-        if (!input.equals("1") && !input.equals("2")) {
-            throw new IllegalArgumentException();
+            System.out.println(RESTART_OR_EXIT_SENTENCE);
+            if (restartOrExit()) break;
         }
     }
 
@@ -68,6 +52,26 @@ public class GameApplication {
 
             // 3스트라이크 시 게임 종료
             if (executeApplication(result)) break;
+        }
+    }
+
+    // 재시작 || 종료를 입력하는 메소드
+    private boolean restartOrExit() {
+        String input = Console.readLine();
+
+        // 예외처리
+        isRightInput(input);
+
+        if (input.equals("2")) {
+            return true;
+        }
+        return false;
+    }
+
+    // 입력 문자가 1과2 이외의 것일 경우, 자바 정규식 사용
+    private void isRightInput(String input) {
+        if (!(Pattern.matches(pattern, input))) {
+            throw new IllegalArgumentException();
         }
     }
 
