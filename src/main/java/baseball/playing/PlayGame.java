@@ -13,10 +13,11 @@ public class PlayGame {
 
     private String computerNumber;
     private String userNumber;
+    private Player player;
 
     public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Player player = new Computer();
+        player = new Computer();
         computerNumber = player.generateNumbers();
     }
 
@@ -26,7 +27,7 @@ public class PlayGame {
         Map<String, Integer> getStrikeBall;
 
         while (true) {
-            Player player = new User();
+            player = new User();
             userNumber = player.generateNumbers();
             String result = strikeOrBall.printStrikeOrBall(computerNumber, userNumber);
             System.out.println(result);
