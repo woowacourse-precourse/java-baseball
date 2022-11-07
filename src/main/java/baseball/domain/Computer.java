@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import baseball.utils.RandomUtils;
 import java.util.ArrayList;
