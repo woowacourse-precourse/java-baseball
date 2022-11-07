@@ -1,5 +1,6 @@
 package baseball.ball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BallNumbers {
@@ -28,5 +29,15 @@ public class BallNumbers {
 		if (ballNumbers.stream().distinct().count() != NUMBER_OF_BALLS) {
 			throw new IllegalArgumentException("야구공의 숫자에 중복이 존재합니다.");
 		}
+	}
+
+	public static BallNumbers convertUserInputToBallNumbers(char[] userInput) {
+		List<BallNumber> ballNumbers = new ArrayList<>();
+
+		for (char input : userInput) {
+			ballNumbers.add(BallNumber.from(Character.getNumericValue(input)));
+		}
+
+		return BallNumbers.from(ballNumbers);
 	}
 }
