@@ -2,8 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -24,8 +23,17 @@ public class GenerateTest {
             for (int number : random) {
                 input.add(String.valueOf(number));
             }
-
             assertThat(Integer.valueOf(String.join("", input))).isBetween(111, 999);
+        }
+    }
+
+    @Test
+    void randomNumber_랜덤_숫자_유일한지_확인() {
+        for (int i = 0; i < 1000; i++) {
+            List<Integer> random = Generate.randomNumber();
+            Set<Integer> input = new HashSet<>();
+            input.addAll(random);
+            assertThat(input.size()).isEqualTo(3);
         }
     }
 }
