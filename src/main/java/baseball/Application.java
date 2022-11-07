@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
-import org.junit.jupiter.api.Test;
 
 public class Application {
 
@@ -60,15 +59,15 @@ class RunGame {
 
     public void checkInput(List<Integer> userInput) {
 
-        if(userInput.size() != 3) {
+        if (userInput.size() != 3) {
             throw new IllegalArgumentException();
         }
-        for(int inputElement : userInput) {
-            if(inputElement < 1 || inputElement > 9) {
+        for (int inputElement : userInput) {
+            if (inputElement < 1 || inputElement > 9) {
                 throw new IllegalArgumentException();
             }
         }
-        if(userInput.stream().distinct().count() != 3) {
+        if (userInput.stream().distinct().count() != 3) {
             throw new IllegalArgumentException();
         }
     }
@@ -79,6 +78,7 @@ class RunGame {
         }
         return false;
     }
+
     public boolean isAgain(boolean finish) {
         int userInput = -1;
         if (finish == true) {
