@@ -1,7 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -26,6 +30,18 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void getRandomNum_format() {
+        //given
+        //when
+        List<Integer> result = Application.getRandomNum();
+        //then
+        //3자리 숫자인지
+        assertThat(result.size()).isEqualTo(3);
+        //모두 1~9사이의 숫자인지
+        assertThat(result.stream().allMatch(x -> x >= 1 && x <= 9)).isTrue();
     }
 
     @Override
