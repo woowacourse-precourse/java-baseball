@@ -4,12 +4,22 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballInput {
 
+    /**
+     * 중복 없는 3자리 수를 입력받는다.
+     * @return 3자리 정수
+     * @throws IllegalArgumentException 사용자의 입력에 숫자 형식이 잘못되었거나, 중복이 있을 경우 예외가 발생한다.
+     */
     public static int nextBaseballNum() throws IllegalArgumentException {
         return nextBaseballNum(Console.readLine());
     }
 
-    public static int nextSelect() throws IllegalArgumentException {
-        return nextSelect(Console.readLine());
+    /**
+     * 1 또는 2를 입력받는다.
+     * @return 1을 입력 받으면 true / 2를 입력 받으면 false
+     * @throws IllegalArgumentException 사용자가 1, 2 외의 다른 입력을 한 경우 예외가 발생한다.
+     */
+    public static boolean nextGameSelect() throws IllegalArgumentException {
+        return nextGameSelect(Console.readLine());
     }
 
     public static int nextBaseballNum(String line) throws IllegalArgumentException {
@@ -30,13 +40,16 @@ public class BaseballInput {
 
     }
 
-    public static int nextSelect(String line) throws IllegalArgumentException {
+    public static boolean nextGameSelect(String line) throws IllegalArgumentException {
 
         try {
             int num = Integer.parseInt(line);
 
-            if (num == 1 || num == 2)
-                return num;
+            if (num == 1)
+                return true;
+            else if (num == 2)
+                return false;
+
             throw new IllegalArgumentException("1 또는 2만 입력할 수 있습니다.");
 
         } catch (NumberFormatException e) {

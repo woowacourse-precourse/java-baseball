@@ -51,14 +51,14 @@ public class BaseballInputTest {
 
     @Test
     void nextSelect_isNotNumber() {
-        assertThatThrownBy(() -> BaseballInput.nextSelect("da"))
+        assertThatThrownBy(() -> BaseballInput.nextGameSelect("da"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자만 입력할 수 있습니다.");
     }
 
     @Test
     void nextSelect_hasSpaceInner() {
-        assertThatThrownBy(() -> BaseballInput.nextSelect("2 1"))
+        assertThatThrownBy(() -> BaseballInput.nextGameSelect("2 1"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자만 입력할 수 있습니다.");
     }
@@ -67,7 +67,7 @@ public class BaseballInputTest {
     void nextSelect_wrongSelect() {
         List<String> inputs = Arrays.asList("-2", "0", "3", "5");
         inputs.forEach(it ->
-                assertThatThrownBy(() -> BaseballInput.nextSelect(it))
+                assertThatThrownBy(() -> BaseballInput.nextGameSelect(it))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("1 또는 2만 입력할 수 있습니다.")
                 );
@@ -75,7 +75,7 @@ public class BaseballInputTest {
 
     @Test
     void nextSelect_correct() {
-        assertThat(BaseballInput.nextSelect("1")).isEqualTo(1);
-        assertThat(BaseballInput.nextSelect("2")).isEqualTo(2);
+        assertThat(BaseballInput.nextGameSelect("1")).isEqualTo(true);
+        assertThat(BaseballInput.nextGameSelect("2")).isEqualTo(false);
     }
 }

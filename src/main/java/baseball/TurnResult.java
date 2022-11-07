@@ -24,6 +24,8 @@ public class TurnResult {
         return new TurnResult(baseballNum, inputNum);
     }
 
+
+    // 한 문자마다 인덱스에 의한 비교를 실행하여 스트라이크와 볼을 카운트한다.
     private void proceedCmp() {
         int temp = inputNum;
         for (int pos = 3; pos >= 1; pos--) {
