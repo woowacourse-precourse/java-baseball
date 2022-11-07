@@ -1,16 +1,14 @@
-package baseball;
+package baseball.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import baseball.user.User;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class UserTest {
+public class UserNumbersTest {
 
     private User user = new User();
 
