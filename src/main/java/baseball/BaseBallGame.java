@@ -21,6 +21,24 @@ class BaseBallGame {
     public static String RESTART = "1";
     public static String EXIT = "2";
 
+    private static String userNumber = "";
+    private static String computerNumber = "";
+
+    public static void setUserNumber(String inputNumber){
+        BaseBallGame.userNumber = inputNumber;
+    }
+    public static void setComputerNumber(String randomNumber) {
+        BaseBallGame.computerNumber = randomNumber;
+    }
+
+    public static String getUserNumber() {
+        return BaseBallGame.userNumber;
+    }
+
+    public static String getComputerNumber() {
+        return BaseBallGame.computerNumber;
+    }
+
     private BaseBallGame() {
     }
 
@@ -33,7 +51,7 @@ class BaseBallGame {
     }
 
     public void gamePlaying() throws IllegalArgumentException {
-        String computerNumber = getRandomDiff3DigitNumber();
+        setComputerNumber(getRandomDiff3DigitNumber());
         boolean isSolved = false;
         while (!isSolved) {
             isSolved = solvingProblem(computerNumber);
@@ -59,9 +77,10 @@ class BaseBallGame {
     }
 
     public boolean solvingProblem(String computerNumber) throws IllegalArgumentException {
-        String userNumber = inputNumber();
+        String inputNumber = inputNumber();
+        setUserNumber(inputNumber);
         int ball, strike;
-        List<Integer> hint = getHint(userNumber, computerNumber);
+        List<Integer> hint = getHint();
         ball = hint.get(0);
         strike = hint.get(1);
 
@@ -173,11 +192,11 @@ class BaseBallGame {
     }
 
 
-    public List<Integer> getHint(String userNumber, String computerNumber) {
+    public List<Integer> getHint() {
         List<String> userNumList = new ArrayList<String>(
-                Arrays.asList(userNumber.split("")));
+                Arrays.asList(BaseBallGame.getUserNumber().split("")));
         List<String> computerNumList = new ArrayList<String>(
-                Arrays.asList(computerNumber.split("")));
+                Arrays.asList(BaseBallGame.getComputerNumber().split("")));
 
         List<Integer> ballAndStrikeList = ballAndStrikeCount(userNumList, computerNumList);
 
