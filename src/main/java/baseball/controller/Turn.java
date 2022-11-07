@@ -61,4 +61,19 @@ public class Turn {
         return 0;
     }
 
+    static int countValueContainTogether(List<Integer> targetNumberList, List<Integer> compareNumberList) {
+        int count = 0;
+        for (int indexOfList = 0; indexOfList < compareNumberList.size(); indexOfList++) {
+            int compareNumber = compareNumberList.get(indexOfList);
+            count += returnOneIfListContainNumber(targetNumberList, compareNumber);
+        }
+        return count;
+    }
+
+    static int returnOneIfListContainNumber(List<Integer> targetNumberList, int compareNumber) {
+        if (targetNumberList.contains(compareNumber)) {
+            return 1;
+        }
+        return 0;
+    }
 }
