@@ -29,15 +29,15 @@ public class Application {
 
     public static void checkUserInput(String userString){
         if(userString.charAt(0)=='0'){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         if(userString.length()!=3){ //이런 건 메소드로 나누는게 좋은가?
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         for(int i=0;i<userString.length();i++){
             char c = userString.charAt(i);
             if(c<'0' || c >'9'){
-                throw new IllegalStateException();
+                throw new IllegalArgumentException();
             }
         }
     }
