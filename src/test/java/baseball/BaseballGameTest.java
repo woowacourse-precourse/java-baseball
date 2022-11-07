@@ -51,19 +51,6 @@ class BaseballGameTest {
     }
 
     @Test
-    void 게임이_시작되면_컴퓨터가_생성한_정답은_길이가_3이다() {
-        // given
-        BaseballGame baseballGame = new BaseballGame();
-        Computer computer = baseballGame.getComputer();
-
-        // when
-        computer.generateAnswer();
-
-        // then
-        assertThat(computer.getAnswer().length()).isEqualTo(3);
-    }
-
-    @Test
     void 게임이_시작되면_사용자는_3자리_숫자를_입력한다() {
         // given
         BaseballGame baseballGame = new BaseballGame();
