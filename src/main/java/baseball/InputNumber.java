@@ -1,16 +1,22 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputNumber {
 
-    private String userNumber;
+    private List<String> userNumber;
 
     public InputNumber(){
-        this.userNumber = "" ;
+        userNumber = new ArrayList<>() ;
     }
 
-    public String userInputNumber(){
+    public List<String> userInputNumber(){
         System.out.println("숫자를 입력해주세요.");
-        userNumber = Console.readLine();
+        String userInput = Console.readLine();
+        userNumber.add(userInput);
         return userNumber;
     }
 
