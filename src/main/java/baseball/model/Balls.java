@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Balls {
 
-    private static final int BALLS_SIZE = 3;
+    public static final int BALLS_SIZE = 3;
 
     private final List<Ball> balls = new ArrayList<>();
 
