@@ -1,25 +1,33 @@
-package baseball;
+package baseball.Domain;
 
-import static baseball.Constants.*;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.Constants.*;
+import static baseball.Constants.DUPLICATED_ERR_MSG;
 
-public class Validator {
-    /**
-     * 세자리 이상일 때
-     */
+public class User {
+    public static String userInput = "";
+    public static String inputUserNumber() {
+        String userInput = Console.readLine();
+        checkedValidate(userInput);
+        return userInput;
+    }
+
+    public static void checkedValidate(String input) {
+        validateInputRange(input);
+        checkDuplicatedNumber(input);
+        validateContainZero(input);
+    }
     public static void validateInputRange(String userInput) {
         String[] input = userInput.split("");
         if (input.length != 3) {
             throw new IllegalArgumentException(RANGE_ERR_MSG);
         }
     }
-    /**
-     * 입력받은 수에 0이 포함되어 있을 시
-     */
     public static void validateContainZero(String userInput) {
         if (userInput.contains("0")) {
             throw new IllegalArgumentException(CONTAIN_ZERO_ERR_MSG);
