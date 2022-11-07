@@ -29,23 +29,22 @@ public class GameController {
             runEachSet(randomNumber);
 
             output.printlnMessage(OutputMessage.END);
+
             gameContext.updateContext(input.endInput());
         }
     }
 
     private void runEachSet(List<Integer> randomNumber) {
-        while (true) {
+        while (referee.isEachSetContext()) {
             output.printMessage(OutputMessage.NUMBER_REQUEST);
-            String userInput = input.baseballInput();
+            String baseballInput = input.baseballInput();
 
-            String baseballResult = computer.checkBallAndStrike(randomNumber, userInput);
+            String baseballResult = computer.checkBallAndStrike(randomNumber, baseballInput);
             output.printlnMessage(baseballResult);
 
-            if (referee.isEndGameSet(baseballResult)) {
-                output.printlnMessage(OutputMessage.SUCCESS);
-                break;
-            }
+            referee.updateEachSetContext(baseballResult);
         }
+        output.printlnMessage(OutputMessage.SUCCESS);
+        referee.clearEachSetContext();
     }
-
 }
