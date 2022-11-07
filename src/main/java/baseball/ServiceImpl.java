@@ -13,13 +13,15 @@ public class ServiceImpl implements Service {
     public ServiceImpl() {
     }
     @Override
-    public void readyGame() {
+    public void readyGame() throws IllegalArgumentException{
         int strike = 0;
         char[] number = changeToChar.changetoChar(randNumGenerate(1, 9));
 
         while(strike != 3) {
             System.out.print("숫자를 입력해주세요 : ");
-            char[] input = changeToChar.changetoChar(getInput.getInput());
+            int inputNumber = getInput.getInput();
+            errorCheck(inputNumber);
+            char[] input = changeToChar.changetoChar(inputNumber);
             int[] count = baseBall(number,input);
             strike = count[0];
             printBaseBallCount(count);
@@ -37,7 +39,7 @@ public class ServiceImpl implements Service {
     @Override
     public int randNumGenerate(int minNum, int maxNum) {
         int number = 0;
-        List<Integer> numList = new ArrayList();
+        List<Integer> numList = new ArrayList<>();
         int digit = 100;
 
         do {
@@ -77,6 +79,19 @@ public class ServiceImpl implements Service {
             System.out.println(count[0] + "스트라이크");
         } else if (count[0] == 0 && count[1] != 0) {
             System.out.println(count[1] + "볼");
+        }
+    }
+    @Override
+    public void errorCheck(int number) throws IllegalArgumentException{
+        List<Integer> numList = new ArrayList<>();
+        int digit = 100;
+
+        for(int i =0; i< 3; i++) {
+            if (numList.contains(number)==true){
+                throw new IllegalArgumentException();
+            }
+            numList.add(number%10);
+            number = number/10;
         }
     }
 }
