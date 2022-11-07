@@ -1,31 +1,34 @@
-package baseball;
+package baseball.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import baseball.constants.Message;
+import baseball.controller.Controller;
+import baseball.exception.Exception;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Controller {
+public class Service {
 	
-	static Condition condition = new Condition();
+	static Exception condition = new Exception();
 	static Message message = new Message();
-	static boolean gameSet = true;
-	
+	public static boolean gameSet = true;
+	static Controller controller = new Controller();
 	public static void gameStart(List<Integer> comNumber) {
 
 		System.out.println(message.getGameStart());
 		Map<String, Integer> userScore = new HashMap<>();
 
 		while (gameSet) {
-			userScore = gameScorePut(comNumber);
-			scoreProcess(userScore);
+			userScore = controller.getGameScore(comNumber);
+			controller.getScoreProcess(userScore);
 		}
 	}
 
-	public static List<Integer> getComputerNumbers() {
+	public static List<Integer> setComputerNumbers() {
 
 		List<Integer> computerNumbers = new ArrayList<>();
 
@@ -39,7 +42,7 @@ public class Controller {
 		return computerNumbers;
 	}
 
-	public static List<Integer> getUserNumbers() {
+	public static List<Integer> setUserNumbers() {
 
 		System.out.print(message.getInputNumbers());
 		String userAnotherNumbers = Console.readLine();
@@ -48,10 +51,10 @@ public class Controller {
 		return userNumbersList;
 	}
 
-	public static Map<String, Integer> gameScorePut(List<Integer> comNumber) {
+	public static Map<String, Integer> setGameScore(List<Integer> comNumber) {
 
 		Map<String, Integer> userScore = new HashMap<>();
-		List<Integer> userNumber = getUserNumbers();
+		List<Integer> userNumber = setUserNumbers();
 
 		for (int i = 0; i < userNumber.size(); i++) {
 			if (userNumber.get(i) == comNumber.get(i)) {
@@ -75,14 +78,14 @@ public class Controller {
 		} else if (strike != null && ball == null) {
 			System.out.println(strike + message.getStrike());
 			if (strike == 3) {
-				gameContinued(strike);
+				controller.getGameContinued();
 			}
 		} else {
 			System.out.println(ball + message.getBall());
 		}
 	}
 
-	public static void gameContinued(Integer strike) {
+	public static void gameContinued() {
 
 		System.out.println(message.getGameOver());
 		String continued = Console.readLine();

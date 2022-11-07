@@ -1,11 +1,14 @@
-package baseball;
+package baseball.exception;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Condition {	
+import baseball.controller.Controller;
+import baseball.service.Service;
+
+public class Exception {	
 
 	public static List<Integer> userNumbersException(String userNumbers) throws IllegalArgumentException {
 
@@ -35,10 +38,11 @@ public class Condition {
 
 	public static void continuedExceptionProcess(String continued) throws IllegalArgumentException {
 		Controller controller = new Controller();
+		Service service = new Service();
 		if (continued.equals("1")) {
-			controller.gameStart(controller.getComputerNumbers());
+			controller.gameStart();
 		} else if (continued.equals("2")) {
-			controller.gameSet = false;
+			service.gameSet = false;
 		} else {
 			throw new IllegalArgumentException();
 		}

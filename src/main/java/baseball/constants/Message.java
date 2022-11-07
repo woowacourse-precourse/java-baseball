@@ -1,6 +1,7 @@
-package baseball;
+package baseball.constants;
 
 public class Message {
+	
 	private final String gameStart = "숫자 야구 게임을 시작합니다.";
 	private final String inputNumbers = "숫자를 입력해주세요 : ";
 	private final String strike = "스트라이크";
