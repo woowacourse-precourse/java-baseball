@@ -14,5 +14,7 @@ public class User {
 
     public static List<Integer> userInputNumberList;
 
-
+    public static List<Integer> getUserInputNumberList() {
+        return userInputNumberList;
+    }
 }
