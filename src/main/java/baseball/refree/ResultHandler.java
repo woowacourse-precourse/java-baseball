@@ -4,6 +4,7 @@ import baseball.constant.BallStrikeConstant;
 import baseball.constant.GameProcedureConstantInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ResultHandler {
 
@@ -22,7 +23,7 @@ public class ResultHandler {
     private static int strikeCountCollector(int index, List<Integer> computerRandomNonDuplicateIntegerList,
                                             List<Integer> userNonDuplicateIntegerList) {
         int resultCount = 0;
-        if (computerRandomNonDuplicateIntegerList.get(index) == userNonDuplicateIntegerList.get(index)) {
+        if (Objects.equals(computerRandomNonDuplicateIntegerList.get(index), userNonDuplicateIntegerList.get(index))) {
             resultCount += 1;
         }
         return resultCount;
@@ -41,7 +42,7 @@ public class ResultHandler {
 
         for (Integer idx :
                 exceptForIndex) {
-            if (computerRandomNonDuplicateIntegerList.get(index) == userNonDuplicateIntegerList.get(idx)) {
+            if (Objects.equals(computerRandomNonDuplicateIntegerList.get(index), userNonDuplicateIntegerList.get(idx))) {
                 resultCount += 1;
             }
         }
