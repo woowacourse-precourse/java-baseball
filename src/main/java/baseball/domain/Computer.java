@@ -14,7 +14,6 @@ public class Computer {
 
     public void generateAnswer() {
         answer = makeRandomNumber();
-        System.out.println("answer = " + answer);
     }
 
     private String makeRandomNumber() {
