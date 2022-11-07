@@ -14,13 +14,38 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 게임종료_후_재시작() {
+    void 게임_1회_종료() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    run("246", "137", "135", "2");
+                    assertThat(output()).contains("낫싱", "2스트라이크", "3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 게임_2회_종료() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("147", "417", "453", "459", "1", "315", "351", "2");
+                    assertThat(output()).contains("1볼", "1스트라이크", "2스트라이크", "3스트라이크", "게임 종료",
+                            "2볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                4, 5, 9, 3, 5, 1
+        );
+    }
+
+    @Test
+    void 게임_3회_종료() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("156", "641", "631", "1", "762", "726", "1", "123", "587", "2");
+                    assertThat(output()).contains("2볼", "2스트라이크", "3스트라이크", "게임 종료",
+                            "2볼 1스트라이크", "3스트라이크", "게임 종료",
+                            "낫싱", "3스트라이크", "게임 종료");
+                },
+                6, 3, 1, 7, 2, 6, 5, 8, 7
         );
     }
 
