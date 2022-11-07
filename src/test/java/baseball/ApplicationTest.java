@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import javax.lang.model.type.ArrayType;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,6 +51,21 @@ class ApplicationTest extends NsTest {
             expectResult.put(2,2);
             expectResult.put(3,3);
             assertThat(InputNumberMap).isEqualTo(expectResult);
+        }
+        @Test
+        void judgeNumber() {
+            GameManager manager = new GameManager();
+            manager.init();
+            String input = "123";
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            HashMap<Integer,Integer> InputNumberMap = manager.scanNumber();
+            HashMap<Character, Integer> result = manager.judgeResult();
+            assertThat(result).containsKeys('S','B','O');
+            ArrayList<Integer> numArray = new ArrayList(result.values());
+            assertThat(numArray.stream().mapToInt(Integer::intValue).sum()).isEqualTo(3);
         }
     }
     @Nested
