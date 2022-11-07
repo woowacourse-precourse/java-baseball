@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,7 +17,7 @@ public class BaseballGame {
     }
 
     public void start() {
-        System.out.println("게임시작");
+        System.out.println("숫자 야구 게임을 시작합니다");
         while (true) {
             List<Integer> baseballNumberList = createBaseballNumberList();
             BaseBallDto result = baseballService.getResult(baseballNumberList);
@@ -38,8 +40,24 @@ public class BaseballGame {
     }
 
     private void validateBaseballNumber(String baseballNumber) {
+        String pattern = "^[0-9]*$"; // 숫자만 등장하는지
         if (baseballNumber.length() > 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3자리 정수를 입력해야합니다.");
         }
+        if (!Pattern.matches(pattern, baseballNumber)){
+            throw new IllegalArgumentException("정수만 포함되어야 합니다.");
+        }
+            hasDuplicateNumbers(baseballNumber);
+
+    }
+
+    private void hasDuplicateNumbers(String baseballNumber) {
+        long count = Arrays.stream(baseballNumber.split(""))
+                           .distinct()
+                           .count();
+        if (count != 3) {
+            throw new IllegalArgumentException("서로 다른 정수를 입력해야 합니다.");
+        }
+
     }
 }
