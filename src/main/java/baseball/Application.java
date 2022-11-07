@@ -15,7 +15,23 @@ public class Application {
                 ballcount++;
             }
         }
-        
+
+    }
+
+    public static void tellresult(int strikecount, int ballcount){
+        if(strikecount==3){
+            System.out.println(strikecount+"스트라이크");
+        }
+        if(strikecount==0&&ballcount==0){
+            System.out.println("낫씽");
+        }
+        if(strikecount==0){
+            System.out.println(ballcount+"볼");
+        }
+        if(ballcount==0){
+            System.out.println(strikecount+"스트라이크");
+        }
+        System.out.println(ballcount+"볼 "+strikecount+"스트라이크");
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
