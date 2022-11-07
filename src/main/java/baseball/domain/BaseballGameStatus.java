@@ -3,8 +3,8 @@ package baseball.domain;
 import java.util.Arrays;
 
 public enum BaseballGameStatus {
-
-    PLAY(1), STOP(2);
+    PLAY(1),
+    STOP(2);
 
     private Integer statusCode;
 
@@ -16,7 +16,7 @@ public enum BaseballGameStatus {
         return Arrays.stream(values())
                 .filter(status -> status.statusCode.equals(statusCode))
                 .findAny()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(BaseballGameException::new);
     }
 
     public boolean isGameContinues() {

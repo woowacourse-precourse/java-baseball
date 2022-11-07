@@ -41,9 +41,9 @@ class BaseballGameStatusTest {
             private final Integer given = 50;
 
             @Test
-            void IllegalArgumentException_예외를_던진다() {
+            void BaseballGameException_예외를_던진다() {
                 assertThatThrownBy(() -> BaseballGameStatus.getEnum(given))
-                        .isInstanceOf(IllegalArgumentException.class);
+                        .isInstanceOf(BaseballGameException.class);
             }
         }
     }
