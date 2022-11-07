@@ -28,6 +28,20 @@ public class Game {
 //        }
     }
 
+    private boolean printResult(int none) {
+        if (none == 0) {
+            System.out.println("낫싱");
+        } else if (ball > 0 && strike <= 0) {
+            System.out.println(ball + "볼");
+        } else if (ball <= 0 && strike > 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            return true;
+        }
+        return false;
+    }
+
     private int findDigitNumber(int number, int where) {
         int digit = (int) Math.pow(10, where);
         int digit_under = (int) Math.pow(10, where - 1);
