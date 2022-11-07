@@ -21,7 +21,6 @@ public class Application {
             computerNumbers.clear();
             playerNumbers.clear();
             makeRandomNumbers(computerNumbers);
-            System.out.println(computerNumbers);
             do {
                 resultMap.clear();
                 playerNumbers = IOUtil.getNumbersFromPlayer();
