@@ -27,8 +27,18 @@ public class Application {
         user = getUserInput();
         computer = makeComputerNumber();
 
-        for (int data : user) {
-            System.out.println(data);
+        //사용자_입력_테스트 || 예외_테스트() 용 출력
+        //System.out.println(computer);
+
+        List<Integer> ballStrike;
+        while(true) {
+            ballStrike = compareList(user, computer);
+            // 볼_스트라이크_개수_확인 테스트 출력
+            System.out.println(ballStrike);
+            if (ballStrike.get(0) == numberLength) {
+                break;
+            }
+            user = getUserInput();
         }
     }
 
@@ -52,6 +62,19 @@ public class Application {
         if (input.length() != numberLength) {
             throw new IllegalArgumentException("입력 숫자의 길이는" + numberLength + "이 되어야 합니다.");
         }
+        if (deleteDuplicate(input).length() < 3) {
+            throw new IllegalArgumentException("중복되는 숫자가 없어야 합니다.");
+        }
+    }
+
+    private static String deleteDuplicate(String input) {
+        String inputAfterDelete = "";
+        for (int i = 0; i < input.length(); i++) {
+            if(input.indexOf(input.charAt(i)) == i) {
+                inputAfterDelete += input.charAt(i);
+            }
+        }
+        return inputAfterDelete;
     }
 
     private static List<Integer> makeComputerNumber() {
@@ -63,6 +86,28 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    private static List<Integer> compareList(List<Integer> user, List<Integer> computer) {
+        int ball = 0, strike = 0;
+        int userIdx = 0, computerIdx = 0;
+        do {
+            if (user.get(userIdx).equals(computer.get(computerIdx)) && userIdx == computerIdx) {
+                strike++;
+            }
+            if (user.get(userIdx).equals(computer.get(computerIdx)) && userIdx != computerIdx) {
+                ball++;
+            }
+            computerIdx++;
+            if (computerIdx == 3) {
+                userIdx++;
+                computerIdx = 0;
+            }
+        } while (userIdx != 3);
+        List<Integer> ballStrike = new ArrayList<>();
+        ballStrike.add(strike);
+        ballStrike.add(ball);
+        return ballStrike;
     }
 }
 
