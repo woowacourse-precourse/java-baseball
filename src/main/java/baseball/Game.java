@@ -2,8 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 
 public class Game {
     private static final int NUM_START_RANGE = 1;
@@ -80,9 +81,9 @@ public class Game {
         if (restart.equals("1")) {
             this.randomNum = generateRandomNumber(NUM_START_RANGE, NUM_END_RANGE);
             start();
-        }
-        else
+        } else {
             endGame();
+        }
     }
 
     /**
@@ -93,6 +94,7 @@ public class Game {
      */
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         boolean isThreeStrike = false;
         List<Integer> userInput;
         List<Integer> resultList;
@@ -103,7 +105,7 @@ public class Game {
             } catch (IllegalArgumentException e) {
                 throw e;
             }
-            resultList = Hint.result(userInput, this);
+            resultList = Hint.result(userInput,this);
             Hint.printResult(resultList);
             if (resultList.equals(new ArrayList<>(Arrays.asList(0, 3)))) {
                 isThreeStrike = true;
@@ -112,6 +114,5 @@ public class Game {
                 restart();
             }
         }
-
     }
 }
