@@ -22,7 +22,9 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             List<Integer> user = getNums();
 
-            // 결과 계산 로직
+            List<Integer> result = getResult(user, computer);
+            strike = result.get(0);
+            ball = result.get(1);
 
             if (ball > 0) {
                 System.out.print(ball + "볼 ");
@@ -91,5 +93,23 @@ public class Application {
         }
 
         throw new IllegalArgumentException();
+    }
+
+    // 스트라이크, 볼 결과 확인
+    private static List<Integer> getResult(List<Integer> user, List<Integer> computer) {
+        List<Integer> result = new ArrayList<>();
+        result.add(0);
+        result.add(0);
+
+        for (int i = 0; i < 3; i++) {
+            if (user.get(i) == computer.get(i)) {
+                result.set(0, result.get(0) + 1);
+            }
+            else if (computer.contains(user.get(i))) {
+                result.set(1, result.get(1) + 1);
+            }
+        }
+
+        return result;
     }
 }
