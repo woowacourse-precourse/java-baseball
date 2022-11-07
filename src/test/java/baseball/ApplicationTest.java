@@ -24,18 +24,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 게임종료_후_재시작_예외 () {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    assertThatThrownBy(() -> runException("123", "9"))
-                            .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
-                },
-                1, 2,3
-        );
 
-    }
 
     @Test
     void 볼_스트라이크_판정 () {
@@ -54,49 +43,7 @@ class ApplicationTest extends NsTest {
         assertSame("3스트라이크", result);
     }
 
-    @Test
-    void 입력이_세자리가_아닌경우() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력하신 숫자가 세 자리가 아닙니다.")
-        );
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("9123"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력하신 숫자가 세 자리가 아닙니다.")
-        );
-    }
 
-    @Test
-    void 입력이_1부터_9사이의_숫자가_아닌경우() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("q12"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력하신 내용 중에 숫자가 아니거나, 0인 값이 있습니다.")
-        );
-
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("qwe"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력하신 내용 중에 숫자가 아니거나, 0인 값이 있습니다.")
-        );
-    }
-
-    @Test
-    void 같은_숫자를_입력한경우() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("122"))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("입력하신 내용 중에 중복되는 숫자가 있습니다.")
-        );
-
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("333"))
-                        .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력하신 내용 중에 중복되는 숫자가 있습니다.")
-        );
-    }
 
     @Test
     void 세개의_난수_생성() {
