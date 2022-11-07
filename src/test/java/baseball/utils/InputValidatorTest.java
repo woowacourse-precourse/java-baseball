@@ -8,28 +8,22 @@ class InputValidatorTest {
 
     @Test
     void 게임_입력값_올바른값() {
-        String input = "321";
-        InputValidator.checkBaseballInput(input);
+        InputValidator.checkBaseballInput("321");
 
-        input = "154";
-        InputValidator.checkBaseballInput(input);
+        InputValidator.checkBaseballInput("154");
 
-        input = "926";
-        InputValidator.checkBaseballInput(input);
+        InputValidator.checkBaseballInput("926");
     }
 
     @Test
     void 게임_입력값_잘못된값() {
-        String input1 = "3test";
-        assertThatThrownBy(() -> InputValidator.checkBaseballInput(input1))
+        assertThatThrownBy(() -> InputValidator.checkBaseballInput("3test"))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        String input2 = "tes";
-        assertThatThrownBy(() -> InputValidator.checkBaseballInput(input2))
+        assertThatThrownBy(() -> InputValidator.checkBaseballInput("tes"))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        String input3 = "#$@";
-        assertThatThrownBy(() -> InputValidator.checkBaseballInput(input3))
+        assertThatThrownBy(() -> InputValidator.checkBaseballInput("#$@"))
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(() -> InputValidator.checkBaseballInput("333"))
@@ -41,25 +35,20 @@ class InputValidatorTest {
 
     @Test
     void 게임_재진행여부_올바른값() {
-        String input = "1";
-        InputValidator.checkProgressInput(input);
+        InputValidator.checkProgressInput("1");
 
-        input = "2";
-        InputValidator.checkProgressInput(input);
+        InputValidator.checkProgressInput("2");
     }
 
     @Test
     void 게임_재진행여부_잘못된값() {
-        String input1 = "3";
-        assertThatThrownBy(() -> InputValidator.checkProgressInput(input1))
+        assertThatThrownBy(() -> InputValidator.checkProgressInput("3"))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        String input2 = "t";
-        assertThatThrownBy(() -> InputValidator.checkProgressInput(input2))
+        assertThatThrownBy(() -> InputValidator.checkProgressInput("t"))
                 .isInstanceOf(IllegalArgumentException.class);
 
-        String input3 = "12";
-        assertThatThrownBy(() -> InputValidator.checkProgressInput(input3))
+        assertThatThrownBy(() -> InputValidator.checkProgressInput("12"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
