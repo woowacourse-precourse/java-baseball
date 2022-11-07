@@ -56,4 +56,14 @@ public class Validator {
     private boolean compare(char digit1, char digit2) {
         return digit1 == digit2;
     }
+
+    public void validateGameProcessValue(String gameProcessValue) {
+        if (!validateGameProcessLength(gameProcessValue)) {
+            throw new IllegalArgumentException("1자리 수를 입력해주세요.");
+        }
+    }
+
+    private boolean validateGameProcessLength(String value) {
+        return value.length() == 1;
+    }
 }
