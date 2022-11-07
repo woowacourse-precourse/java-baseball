@@ -62,6 +62,21 @@ public class Application {
         }
         return countStrike;
     }
+
+    public String referee(List<Integer> computer, List<Integer> plyerNuber){
+        int totalNumber = check(computer,plyerNuber);
+        int strikeNumber = strike(computer,plyerNuber);
+        int ballNumber = totalNumber - strikeNumber;
+
+        if(totalNumber == 0){
+            return "낫싱";
+        } else if(strikeNumber==0){
+            return ballNumber +"볼";
+        } else if(ballNumber==0){
+            return strikeNumber + "스트라이크";
+        }
+         return ballNumber + "볼" + strikeNumber +"스트라이크";
+    }
 }
 
 
