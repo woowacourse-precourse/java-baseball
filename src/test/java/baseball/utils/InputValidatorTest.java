@@ -1,8 +1,7 @@
-package baseball.domain.view;
+package baseball.utils;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import baseball.utils.InputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
