@@ -12,7 +12,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameHintListTest {
 
     @Test
-    void printGameHintList() {
+    @DisplayName("플레이어가 입력한 수에 대한 결과가 정상적으로 반환된다")
+    void sortHintHashMap() {
+        //given
+        GameHintList gameHintList = new GameHintList();
+        GameHintList.computerSelectedNumbers = new ArrayList<>(Arrays.asList("2","3","8"));
+        GameHintList.userSelectedNumbers = new ArrayList<>(Arrays.asList("3","2","8"));
+
+        //when
+        StringBuilder testGameHintList = gameHintList.sortHintHashMap();
+
+        //then
+        Assertions.assertThat(testGameHintList.toString().trim().getBytes())
+                .isEqualTo("2볼 1스트라이크".getBytes());
     }
 
     @Test

@@ -27,7 +27,7 @@ public class GameHintList {
 
         return hintlist;
     }
-
+    
     public HashMap<String, Integer> allGameHintList() {
         HashMap<String, Integer> allHintHashMap = new HashMap<>();
         if (countOfBall() == 0 && countOfStrike() != 0) {
