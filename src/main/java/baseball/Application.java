@@ -21,8 +21,6 @@ public class Application {
 
         } while (answer == 1);
 
-        System.exit(0);
-
     }
 
 
