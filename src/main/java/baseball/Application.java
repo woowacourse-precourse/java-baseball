@@ -42,9 +42,7 @@ public class Application {
 
             String numberString = putInNumber();
 
-            if (!checkUserNumber(numberString)) {
-                return false;
-            }
+            checkUserNumber(numberString);
 
             int[] userNumbers = {0, 0, 0};
             addNumber(userNumbers, numberString);
@@ -81,18 +79,18 @@ public class Application {
         return Console.readLine();
     }
 
-    public static boolean checkUserNumber(String numberString) {
+    public static void checkUserNumber(String numberString) {
 
         try {
 
-            if (!checkingUserNumberIsCorrect(numberString)) throw new IllegalArgumentException();
+            if (!checkingUserNumberIsCorrect(numberString)) {
 
-            return true;
+                throw new IllegalArgumentException();
+            }
 
+        } catch (IllegalArgumentException e) {
 
-        } catch (IllegalStateException e) {
-
-            return false;
+            throw new IllegalArgumentException();
         }
 
     }
