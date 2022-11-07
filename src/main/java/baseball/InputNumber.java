@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,11 +54,24 @@ public class InputNumber {
      *                    숫자만을 받아들여야만 하여 정규식을 사용하여 예외처리를 해줌.
      */
     private static boolean gameNumberExceptionCheck(String inputNumber) {
-        if (inputNumber.length() == GAME_NUMBER_LENGTH) {
-            Matcher matchNum = NUMBER_PATTERN.matcher(inputNumber);
-            return matchNum.find();
+        if (inputNumber.length() != GAME_NUMBER_LENGTH) {
+            return false;
         }
-        return false;
+
+        if (!NUMBER_PATTERN.matcher(inputNumber).find()) {
+            return false;
+        }
+
+        HashSet<Integer> numbers = new HashSet<>();
+        for (int i = 0; i < inputNumber.length(); i++) {
+            numbers.add(Integer.parseInt(String.valueOf(inputNumber.charAt(i))));
+        }
+
+        if (numbers.size() != GAME_NUMBER_LENGTH) {
+            return false;
+        }
+
+        return true;
     }
 
 }
