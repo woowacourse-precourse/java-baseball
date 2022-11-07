@@ -29,4 +29,16 @@ public class unitTest {
         boolean result = Application.isValid(randomString);
         assertThat(result).isEqualTo(true);
     }
+
+    @Test
+    void is3Strike_유효성_검증_숫자가_다른_경우() {
+        boolean result = Application.is3Strike("123", "234");
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void is3Strike_유효성_검증_숫자가_같은_경우() {
+        boolean result = Application.is3Strike("234", "234");
+        assertThat(result).isEqualTo(true);
+    }
 }
