@@ -13,9 +13,16 @@ public class User {
     public void Game() {
         baseballGame = new BaseballGame();
 
-        System.out.print("숫자를 입력해주세요 : ");
-        int userNumber = input();
-        checkThreeDigit(userNumber);
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            int userNumber = input();
+            checkThreeDigit(userNumber);
+
+            int end = baseballGame.checkGameResult(userNumber);
+            if (end == 1) {
+                break;
+            }
+        }
     }
 
     public int input() {
