@@ -16,6 +16,10 @@ public class Application {
     public static final String ballMessage = "볼";
     public static final String strikeMessage = "스트라이크";
 
+    public static final String startMessage = "숫자 야구 게임을 시작합니다.";
+    public static final String inputNumberMessage = "숫자를 입력해주세요 : ";
+    public static final String successMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     public static void printMessage(String message){
         System.out.println(message);
     }
@@ -93,6 +97,26 @@ public class Application {
         else if(ball!=0 && strike!=0) message = ball + ballMessage+ " " + strike + strikeMessage;
         return message;
     }
+
+    public static void startGame(List <Integer> computer){
+        String inputString;
+        List <Integer> input;
+        List <Integer> result;
+        String resultMessage;
+        printMessage(startMessage);
+        do{
+            printMessage(inputNumberMessage);
+            inputString = receiveInput();
+            checkInputLength(inputString, 3);
+            input = checkInputInteger(inputString);
+            checkInputDuplicate(input);
+            result = guessResult(computer, input);
+            resultMessage = createGuessResultMessage(result);
+            printMessage(resultMessage);
+            if(result.get(1)==3) printMessage(successMessage);
+        }while(!(result.get(1)==3));
+    }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
