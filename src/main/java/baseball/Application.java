@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Application {
     public static boolean endGame(List<Integer> countBallStrike) {
-        return countBallStrike.get(1) == 3;
+         return countBallStrike.get(1) == 3;
     }
     public static int countBall(int playerNumber, List<Integer> randomNumber, int i) {
         int ball = 0;
@@ -44,6 +44,17 @@ public class Application {
                 ball += countBall(playerNumber.get(i), randomNumber, i);
         }
         return printBallStrike(createCountArray(ball, strike));
+    }
+    public static boolean errorPlayerNumber(String playerNumber) {
+        boolean error = true;
+        if (playerNumber.length() != 3)
+            error = false;
+        for (int i=0;i<3;++i)
+            if (playerNumber.charAt(i) < '1' || playerNumber.charAt(i) > '9') {
+                error = false;
+                break;
+            }
+        return error;
     }
     public static List<Integer> inputPlayerNumber() {
         String number = Console.readLine();
