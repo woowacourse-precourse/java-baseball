@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Revert {
 
-    public char[] revertStringToCharArray(String input) {
+    public static char[] revertStringToCharArray(String input) {
 
         return input.toCharArray();
     }
@@ -20,7 +20,7 @@ public class Revert {
         return asciiArray;
     }
 
-    public int[] revertCharArrToIntArr(char[] charArr) {
+    public static int[] revertCharArrToIntArr(char[] charArr) {
         int[] intArr = new int[charArr.length];
         for (int i = 0; i < charArr.length; i++) {
             intArr[i] = Integer.parseInt(String.valueOf(charArr[i]));
@@ -28,7 +28,7 @@ public class Revert {
         return intArr;
     }
 
-    public List<Integer> revertIntArrayToList(int[] array){
+    public static List<Integer> revertIntArrayToList(int[] array){
         return Arrays.stream(array)
                 .boxed()
                 .collect(Collectors.toList());

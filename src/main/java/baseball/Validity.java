@@ -3,7 +3,7 @@ package baseball;
 public class Validity {
 
 
-    public void isInputNumberValid(char[] InputCharArray) {
+    public static void isInputNumberValid(char[] InputCharArray) {
         Revert revert = new Revert();
         int[] inputAsciiArray = revert.revertCharArrayToAsciiArray(InputCharArray);
 
@@ -25,17 +25,15 @@ public class Validity {
     }
 
     public static boolean isLength3(int[] array) {
-
         return (array.length == 3);
     }
 
-    public void checkEndInput(String input){
-        InGame game= new InGame();
+    public static int checkEndInput(String input){
 
         if ((Integer.parseInt(input) == 1)) {
-            game.afterGameStart();
+            return 1;
         } else if (Integer.parseInt(input) == 2) {
-
+            return 0;
         } else {
             throw new IllegalArgumentException();
         }
