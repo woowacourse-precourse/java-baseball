@@ -3,6 +3,11 @@ import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import static camp.nextstep.edu.missionutils.Console.*;
 
+import org.junit.jupiter.api.Test;
+
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.*;
+
 public class Application {
     public static List<Integer> getRandomNum() {
         List<Integer> computer = new ArrayList<>();
@@ -66,7 +71,6 @@ public class Application {
         int checkstrike;
         String gostop;
         List<Integer> answer = getRandomNum();
-        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
             String number = numberInput();
             if (number.length() !=3) {
@@ -82,10 +86,12 @@ public class Application {
         return gostop;
     }
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while(true) {
             if (gamePlay().equals(String.valueOf('2'))) {
                 break;
             }
         }
     }
+
 }
