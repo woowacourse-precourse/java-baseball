@@ -13,10 +13,8 @@ public class InputView {
     public void enterGameNumber() {
         System.out.print(INPUT_NUMBER_MESSAGE);
         String inputNumber = Console.readLine();
-        System.out.println("inputNumber : " + inputNumber);
 
         gameNumber.setInputString(inputNumber);
-        System.out.println("getInputString : " + gameNumber.getInputString());
+        gameNumber.setComputerNumbers();
     }
-
 }
