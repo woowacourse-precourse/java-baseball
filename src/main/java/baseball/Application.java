@@ -9,21 +9,17 @@ import java.util.List;
 public class Application {
     public static boolean gameStart() throws IllegalArgumentException {
         List<Integer> computer = new ArrayList<>();
-        computer = getNumberOfComputer(computer);
-        System.out.println("computer = " + computer); // 테스트 출력
-
         List<Integer> user = new ArrayList<>();
 
+        computer = getNumberOfComputer(computer);
+
         String ballCount = "";
-
         while (isNeedReEnter(ballCount)) {
-
             try {
                 user = getNumberOfUserForList(user);
             } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException();
             }
-
             ballCount = getBallCount(computer, user);
             UI.printBallCount(ballCount);
         }
@@ -32,7 +28,6 @@ public class Application {
         int restartOrExit = Integer.parseInt(Console.readLine());
         boolean restartOrNot = setRestartOrNot(restartOrExit);
         return restartOrNot;
-
     }
 
     private static List<Integer> getNumberOfComputer(List<Integer> computer) {
@@ -46,9 +41,7 @@ public class Application {
     }
 
     private static boolean isValidStringInputOfUser(String stringInputOfUser) throws IllegalArgumentException {
-
         int num = 0;
-
         try {
             num = Integer.parseInt(stringInputOfUser);
         } catch (NumberFormatException e) {
@@ -191,7 +184,6 @@ public class Application {
     private static void preSettingToRestartGame(List<Integer> computer, List<Integer> user) {
         computer.clear();
         computer = getNumberOfComputer(computer);
-        System.out.println("computer = " + computer); // 테스트 출력 : 여기까지 이상없이 되는 것 확인했음
         user.clear();
     }
 
