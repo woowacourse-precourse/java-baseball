@@ -1,6 +1,5 @@
 package baseball.game;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -30,10 +29,7 @@ public class Staff {
         return targetNumbers;
     }
 
-    public List<Integer> getUserNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-
+    public List<Integer> getUserNumbers(String input) {
         validateInputNull(input);
         validateInputLength(input);
         validateForbiddenString(input);
@@ -74,18 +70,16 @@ public class Staff {
         }
     }
 
-    public boolean isUserWantMoreGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
+    public boolean isUserWantFinish(String input) {
 
         if (MORE.equals(input)) {
+            return false;
+        }
+
+        if (FINISH.equals(input)) {
             return true;
         }
 
-        if (!FINISH.equals(input)) {
-            throw new IllegalArgumentException(MORE + " 또는 " + FINISH + "의 값이 아닙니다.");
-        }
-
-        return false;
+        throw new IllegalArgumentException(MORE + " 또는 " + FINISH + "의 값이 아닙니다.");
     }
 }
