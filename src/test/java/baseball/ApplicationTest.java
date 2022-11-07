@@ -168,6 +168,18 @@ class ApplicationTest extends NsTest {
         System.setOut(System.out);
     }
 
+    @Test
+    void endGameTest() {
+
+        ByteArrayOutputStream message = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(message));
+
+        Application.endGame();
+        Assertions.assertEquals("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n", message.toString());
+
+        System.setOut(System.out);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
