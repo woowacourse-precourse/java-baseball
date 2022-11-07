@@ -19,11 +19,25 @@ public class Application {
         return computer;
     }
 
+    // ball, strike 판단해서 개수 증가한 정보 반환
+    private static GameInfo getGameInfo(List<Integer> computer, String numStr) {
+        GameInfo gameInfo = new GameInfo();
+        for (int i = 0; i < 3; i++) {
+            int num = numStr.charAt(i) - '0';
+            if (computer.contains(num) && computer.get(i) == num)
+                gameInfo.increaseStrike();
+            else if (computer.contains(num))
+                gameInfo.increaseBall();
+        }
+        return gameInfo;
+    }
+
     private static void playGame() {
         List<Integer> computer = getComputerNumber();
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String num = Console.readLine();
+            GameInfo gameInfo = getGameInfo(computer, num);
         }
     }
 
