@@ -15,7 +15,7 @@ public class Application {
     }
 
     private static void dependencyInjection() {
-        Table table = Table.init("000");
+        Table table = new Table();
         BaseBallService baseBallService = new BaseBallService(table);
         BaseBallController baseBallController = new BaseBallController(baseBallService);
         viewer = new Viewer(baseBallController);
