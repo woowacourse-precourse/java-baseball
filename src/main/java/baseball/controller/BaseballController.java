@@ -23,6 +23,7 @@ public class BaseballController {
         baseballService.initGame();
         do {
             baseballService.playBaseballGame();
+            baseballService.displayHint();
         } while (!baseballService.isCorrect());
     }
 }
