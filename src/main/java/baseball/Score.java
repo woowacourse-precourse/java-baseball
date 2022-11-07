@@ -9,7 +9,7 @@ public class Score {
     public Score(List<Integer> computerNumbers, List<Integer> userNumbers) {
         this.strike = getStrikeCount(computerNumbers, userNumbers);
         this.ball = getBallCount(computerNumbers, userNumbers);
-        getResult(strike,ball);
+        getResult(strike, ball);
     }
 
     public static Score getResult(List<Integer> computerNumbers, List<Integer> userNumbers) {
@@ -39,7 +39,7 @@ public class Score {
             }
         }
 
-        return ball-strike;
+        return ball - strike;
     }
 
     private void getResult(int strikeCount, int ballCount) {
