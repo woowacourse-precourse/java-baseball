@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -17,6 +18,12 @@ public class Application {
     private static void putUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String numbers = Console.readLine();
+        List<String> numberList = stringToStringList(numbers);
+    }
+
+    private static List<String> stringToStringList(String numbers) {
+        String[] arr = numbers.split("");
+        return Arrays.asList(arr);
     }
 
     public static List<Integer> createComputerNumberList() {
