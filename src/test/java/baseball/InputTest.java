@@ -49,7 +49,16 @@ public class InputTest extends NsTest {
         String input = "0";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(Game::restartOrEnd)
+        assertThatThrownBy(Input::restartOrEnd)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 종료_재시작_코드_예외_테스트2() {
+        String input = "a";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(Input::restartOrEnd)
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

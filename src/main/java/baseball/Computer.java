@@ -1,5 +1,7 @@
 package baseball;
 
+import static constant.Constant.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,13 +10,6 @@ public class Computer {
     private Integer[] answer;
     private int ball;
     private int strike;
-    private static final int MAX_LENGTH = 3;
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String BALL = "볼";
-    private static final String STRIKE = "스트라이크";
-    private static final String NOTHING = "낫싱";
 
     public Computer() {
         answer = new Integer[MAX_LENGTH];

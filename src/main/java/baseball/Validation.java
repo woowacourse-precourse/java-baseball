@@ -1,11 +1,11 @@
 package baseball;
 
+import static constant.Constant.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class Validation {
-    private static final int MAX_LENGTH = 3;
-
     public static void checkInput(String input) {
         if (!isThreeLength(input) || !isInRange(input) || !isNotDuplicate(input)) {
             throw new IllegalArgumentException();
