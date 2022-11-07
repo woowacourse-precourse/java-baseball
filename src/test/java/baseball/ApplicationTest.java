@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -20,11 +21,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 빈_배열_입력() {
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
+    void 예외_테스트2() {
         assertThatThrownBy(() -> {
-            new NumberValidator().validateIsEmptyNumbers("");
+            new NumberValidator().validateInputCount("1234");
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("numbers cannot be empty.");
+                .hasMessageContaining("enter a three-digit number.");
     }
 
     @Test

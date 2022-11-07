@@ -11,7 +11,7 @@ public class BaseballGame {
     private static boolean IS_CONTINUE = true;
 
     Computer computer = new Computer();
-    Player gameUser = new Player();
+    Player player = new Player();
     List<Integer> playerNumbers = new ArrayList<>();
     List<Integer> computerNumbers = new ArrayList<>();
 
@@ -25,12 +25,11 @@ public class BaseballGame {
     }
 
     private void gameStart() {
-        computer.generateRandomNumber();
-        computerNumbers = computer.getComputerNumber();
+        computerNumbers = computer.generateRandomNumber();
 
         while (true) {
-            gameUser.inputPlayerNumber();
-            playerNumbers = gameUser.getUserNumber();
+            player.inputPlayerNumber();
+            playerNumbers = player.getUserNumber();
             new GameJudge().judgeGame(computerNumbers, playerNumbers);
 
             if (playerNumbers.equals(computerNumbers)) {
