@@ -46,10 +46,10 @@ public class BaseballGame {
         return checkContinue(Console.readLine());
     }
 
-    private boolean checkContinue(String code) {
-        if (code.equals(RESTART_BASEBALL_GAME)) {
+    private boolean checkContinue(String continueCode) {
+        if (continueCode.equals(RESTART_BASEBALL_GAME)) {
             return true;
-        } else if (code.equals(QUIT_BASEBALL_GAME)) {
+        } else if (continueCode.equals(QUIT_BASEBALL_GAME)) {
             return false;
         }
         throw new IllegalArgumentException(GameStatus.ERROR_CODE.message());

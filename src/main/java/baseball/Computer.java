@@ -9,6 +9,7 @@ public class Computer {
     private static final int MINIMUM_BALL_NUMBER = 1;
     private static final int MAXIMUM_BALL_NUMBER = 9;
     private static final int BALL_COUNT = 3;
+    
     List<Integer> computerNumbers = new ArrayList<>();
 
     public List<Integer> getComputerNumbers() {
