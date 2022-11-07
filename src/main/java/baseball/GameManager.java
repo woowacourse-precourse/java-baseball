@@ -11,6 +11,7 @@ public class GameManager {
     }
 
     static HashMap<Integer, Integer> scanNumber() {
+        InputNumberHash.clear();
         String numberString = Console.readLine();
         int index=0;
         for (char character: numberString.toCharArray()) {
