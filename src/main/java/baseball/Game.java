@@ -46,6 +46,7 @@ public class Game {
 
     private void runGame() {
         computerService.initComputer();
+        scoreBoardService.getScoreBoard().setThreeStrike(false);
         List<Integer> computerNumbers = computerService.getComputer().getNumbers();
         while (!scoreBoardService.isThreeStrike()) {
             String inputNumbers = instructionView.printInputNumbers();
@@ -54,8 +55,8 @@ public class Game {
             scoreBoardService.setScoreBoard(computerNumbers, playerNumbers);
             printResult();
         }
-        int runCode = inputRunCode();
-        if (runCode == RESTART) {
+        resultView.printSuccess();
+        if (inputRunCode() == RESTART) {
             runGame();
         }
     }

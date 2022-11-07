@@ -9,7 +9,7 @@ public class ResultView {
         System.out.println(strike + "스트라이크");
     }
 
-    public void success() {
+    public void printSuccess() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
