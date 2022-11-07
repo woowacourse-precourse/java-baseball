@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.enums.Announcement;
+import baseball.enums.BallCount;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -34,5 +35,49 @@ public class GameMachine {
             integerList.add(convertedElement);
         }
         return integerList;
+    }
+
+    public void updateBallCount(List<Integer> threeDiffDigitOfGamer, Game game) {
+        judgeBall(threeDiffDigitOfGamer, game);
+        String ballCount = convertBallCountStr(game);
+        game.setBallCount(ballCount);
+    }
+
+    private void judgeBall(List<Integer> threeDiffDigitOfGamer, Game game) {
+        for (int idx = 0; idx < 3; idx++) {
+            for (int jdx = 0; jdx < 3; jdx++) {
+                int digitOfGame = game.getThreeDiffDigit().get(idx);
+                int digitOfGamer = threeDiffDigitOfGamer.get(jdx);
+
+                countBallType(digitOfGame, digitOfGamer, idx, jdx, game);
+            }
+        }
+    }
+    private void countBallType(int digitOfGame, int digitOfGamer, int idx, int jdx, Game game) {
+        if (digitOfGame == digitOfGamer) {
+            if (idx == jdx) {
+                game.setNumberOfStrike(game.getNumberOfStrike() + 1);
+            }
+            if (idx != jdx) {
+                game.setNumberOfBall(game.getNumberOfBall() + 1);
+            }
+        }
+    }
+
+    private String convertBallCountStr(Game game) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (game.getNumberOfBall() > 0) {
+            stringBuilder.append(game.getNumberOfBall()).append(BallCount.BALL.getKorean());
+        }
+        if (game.getNumberOfStrike() > 0) {
+            stringBuilder.append(game.getNumberOfStrike()).append(BallCount.STRIKE.getKorean());
+        }
+
+        if (game.getNumberOfBall() == 0 && game.getNumberOfStrike() == 0) {
+            stringBuilder.append(BallCount.NOTHING.getKorean());
+        }
+
+        return String.valueOf(stringBuilder);
     }
 }
