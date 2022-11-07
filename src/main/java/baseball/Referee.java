@@ -27,4 +27,7 @@ public class Referee {
         }
         return false;
     }
+    private boolean isNothing() {
+        return strike == 0 & ball == 0;
+    }
 }
