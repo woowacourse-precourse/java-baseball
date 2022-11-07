@@ -8,35 +8,30 @@ public class Set {
     List<String> userAnswer;
     int ball = 0;
     int strike = 0;
-    Count count;
+    Calculator calculator;
 
     public Set(List<String> computerAnswer, List<String> userAnswer) {
-        this.computerAnswer = computerAnswer;
-        this.userAnswer = userAnswer;
-        count = new Count(computerAnswer, userAnswer);
-    }
-
-    public void startSet(List<String> computerAnswer, List<String> userAnswer) {
+        calculator = new Calculator(computerAnswer, userAnswer);
         setComputerAnswer(computerAnswer);
         setUserAnswer(userAnswer);
         countBall();
         countStrike();
     }
 
-    public void setUserAnswer(List<String> userInput) {
+    private void setUserAnswer(List<String> userInput) {
         this.userAnswer = userInput;
     }
 
-    public void setComputerAnswer(List<String> computerNumber) {
+    private void setComputerAnswer(List<String> computerNumber) {
         this.computerAnswer = computerNumber;
     }
 
-    public void countBall() {
-        this.ball = count.ballResult;
+    private void countBall() {
+        this.ball = calculator.ballResult;
     }
 
-    public void countStrike() {
-        this.strike = count.strikeResult;
+    private void countStrike() {
+        this.strike = calculator.strikeResult;
     }
 
 }

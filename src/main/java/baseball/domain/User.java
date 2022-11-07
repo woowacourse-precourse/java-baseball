@@ -9,11 +9,15 @@ public class User {
     public User() {
     }
 
-    public List<String> inputUserAnswer() {
+    public List<String> getUserAnswer() {
+        return inputUserAnswer();
+    }
+
+    private List<String> inputUserAnswer() {
         return Input.inputNumber();
     }
 
-    public String replay() {
+    public String getUserReplayAnswer() {
         return Input.inputReplayAnswer();
     }
 
