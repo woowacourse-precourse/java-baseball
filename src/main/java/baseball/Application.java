@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.*;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -106,22 +107,22 @@ public class Application {
     private static Integer getUserIntInGame()
             throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
-        Scanner sc = new Scanner(System.in);
-        int input = sc.nextInt();
-        if ((input < 100) || (input > 999)) {
+        String input= Console.readLine();
+        int inputInt=Integer.valueOf(input);
+        if ((inputInt < 100) || (inputInt > 999)) {
             throw new IllegalArgumentException();
         }
-        return input;
+        return inputInt;
     }
 
     private static Integer getUserIntEndGame()
             throws IllegalArgumentException {
-        Scanner sc = new Scanner(System.in);
-        int input = sc.nextInt();
-        if ((input != 1) && (input != 2)) {
+        String input= Console.readLine();
+        int inputInt=Integer.valueOf(input);
+        if ((inputInt != 1) && (inputInt != 2)) {
             throw new IllegalArgumentException();
         }
-        return input;
+        return inputInt;
     }
 
     private static boolean restartOrEndGame() {
