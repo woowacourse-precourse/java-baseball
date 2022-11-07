@@ -76,4 +76,12 @@ public class GameService {
 		return computer.size();
 	}
 
+	public int strikeCount() {
+		return game.getStrikeCount();
+	}
+
+	public int ballCount() {
+		return game.getBallCount();
+	}
+
 }
