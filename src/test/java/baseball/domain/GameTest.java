@@ -43,7 +43,7 @@ public class GameTest {
         String typeErrorMessage = "숫자만 입력 가능합니다.";
 
         //when,then
-        assertThatThrownBy(() -> UserInputAdapter.changeStrToArray("안123"))
+        assertThatThrownBy(() -> UserInputAdapter.changeStrToIntegerArray("안123"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(typeErrorMessage);
     }
@@ -55,7 +55,7 @@ public class GameTest {
         String testString = "123";
 
         //when
-        List<Integer> testArray = UserInputAdapter.changeStrToArray(testString);
+        List<Integer> testArray = UserInputAdapter.changeStrToIntegerArray(testString);
 
         //when,then
         Assertions.assertThat(testArray).isEqualTo(List.of(1, 2, 3));

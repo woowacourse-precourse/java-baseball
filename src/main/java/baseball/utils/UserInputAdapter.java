@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserInputAdapter {
-    public static List<Integer> changeStrToArray(String userInputStr) {
+    public static List<Integer> changeStrToIntegerArray(String userInputStr) {
         InputValidator.hasValidType(userInputStr);
         List<Integer> userInput = new ArrayList<>();
         for (int i = 0; i < userInputStr.length(); i++) {

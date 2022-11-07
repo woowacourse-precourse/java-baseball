@@ -27,7 +27,7 @@ public class Game {
 
     public List<Integer> getUserInput() {
         String userInputStr = GameView.askUserInput();
-        List<Integer> userInput = UserInputAdapter.changeStrToArray(userInputStr);
+        List<Integer> userInput = UserInputAdapter.changeStrToIntegerArray(userInputStr);
         InputValidator.hasValidInput(userInput);
         return userInput;
     }
