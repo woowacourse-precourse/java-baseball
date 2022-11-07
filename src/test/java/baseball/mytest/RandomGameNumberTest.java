@@ -11,7 +11,7 @@ import java.util.List;
 public class RandomGameNumberTest {
 
     @Test
-    void 랜덤_숫자_테스태() {
+    void 랜덤_숫자_테스트() {
         int n=0;
         while (n < 100) {
             List<Integer> uniqueNumbers = Application.pickUniqueNumbersInRange(1, 9, 3);
@@ -19,13 +19,7 @@ public class RandomGameNumberTest {
             n++;
         }
     }
-//
-//    @Test
-//    void 랜덤_숫자_테스트(){
-//        List<Integer> randomNums = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-//
-//    }
-//
+
     @Test
     void 랜덤_숫자_객체_생성_테스트() {
         List<Integer> randomNums = Randoms.pickUniqueNumbersInRange(1, 9, 3);

@@ -43,7 +43,6 @@ public class GameTest {
         GameNumber gameNumber = new GameNumber(gameNumbers);
 
         UserNumber userNumber = new UserNumber("345");
-        List<Integer> userNums = userNumber.getUserNums();
 
         int strikes = gameNumber.getStrikes(userNumber);
         int balls = gameNumber.getBalls(userNumber);
@@ -58,7 +57,6 @@ public class GameTest {
         GameNumber gameNumber = new GameNumber(gameNumbers);
 
         UserNumber userNumber = new UserNumber("345");
-        List<Integer> userNums = userNumber.getUserNums();
 
         int strikes = gameNumber.getStrikes(userNumber);
         int balls = gameNumber.getBalls(userNumber);
@@ -73,7 +71,6 @@ public class GameTest {
         GameNumber gameNumber = new GameNumber(gameNumbers);
 
         UserNumber userNumber = new UserNumber("345");
-        List<Integer> userNums = userNumber.getUserNums();
 
         int strikes = gameNumber.getStrikes(userNumber);
         int balls = gameNumber.getBalls(userNumber);
