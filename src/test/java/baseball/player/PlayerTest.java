@@ -20,5 +20,16 @@ public class PlayerTest {
         Player player = new Player();
         assertThat(player.initializeOpponent()).doesNotHaveDuplicates();
     }
+    @Test
+    @DisplayName("check player makes 3 digit integer properly")
+    public void initialize_player_test(){
+        String userInput="456";
+        List<Integer> result=List.of(4,5,6); //result: [4,5,6]
+
+        Player player = new Player();
+        List<String> separatedUserInput = List.of(userInput.split(""));
+        List<Integer> playerNumber = player.transform(separatedUserInput, Integer::parseInt);
+        assertThat(playerNumber).isEqualTo(result);
+    }
 
 }
