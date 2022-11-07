@@ -9,4 +9,10 @@ public class SystemException {
 
     public SystemException() {
     }
+
+    public static boolean isValidRestartInput(String input) {
+        Pattern pattern = Pattern.compile(Restart_OR_Exit);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+    }
 }
