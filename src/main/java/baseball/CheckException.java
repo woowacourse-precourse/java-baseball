@@ -2,20 +2,29 @@ package baseball;
 
 public class CheckException {
 
-    public static boolean restartStatusValue(String restartStatus) {
+    public static boolean restartStatusValid(String restartStatus) {
 
-        return !(restartStatus.equals("1") || restartStatus.equals("2"));
-    }
-
-    public static boolean inputGameValue(String inputValue) {
-
-        if (inputValue.length() != 3) return false;
-
-        if (!isNumeric(inputValue)) return false;
-
-        if(!isDiffAllDigits(inputValue)) return false;
+        if (!(restartStatus.equals("1")) && !(restartStatus.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
 
         return true;
+    }
+
+    public static void inputGameValid(String inputValue) {
+
+        if (inputValue.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!isNumeric(inputValue)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!isDiffAllDigits(inputValue)) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     private static boolean isNumeric(String inputValue) {
@@ -30,12 +39,10 @@ public class CheckException {
 
     private static boolean isDiffAllDigits(String inputValue) {
 
-        if(inputValue.charAt(0) == inputValue.charAt(1)) return false;
+        if (inputValue.charAt(0) == inputValue.charAt(1)) return false;
 
-        if(inputValue.charAt(1) == inputValue.charAt(2)) return false;
+        if (inputValue.charAt(1) == inputValue.charAt(2)) return false;
 
-        if (inputValue.charAt(0) == inputValue.charAt(2)) return false;
-
-        return true;
+        return inputValue.charAt(0) != inputValue.charAt(2);
     }
 }

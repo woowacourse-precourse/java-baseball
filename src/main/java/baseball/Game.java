@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+
 public class Game {
 
     private final Scanner scanner;
@@ -22,10 +23,7 @@ public class Game {
         while (!isGameOver) {
             System.out.print("숫자를 입력해주세요 : ");
             String inputValue = scanner.nextLine();
-
-            if(!isInputValueValid(inputValue)) {
-                throw new IllegalArgumentException();
-            }
+            CheckException.inputGameValid(inputValue);
             predictedNumber = convertToList(inputValue);
             scoreCalculator();
             isGameOver = checkCorrectAnswer(getStrikeScore());
@@ -77,11 +75,6 @@ public class Game {
         } else {
             System.out.println(ballScore + "볼 " + strikeScore + "스트라이크");
         }
-    }
-
-    private boolean isInputValueValid(String inputValue) {
-
-        return CheckException.inputGameValue(inputValue);
     }
 
     private boolean checkCorrectAnswer(int strikeScore) {

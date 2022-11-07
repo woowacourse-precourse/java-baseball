@@ -12,7 +12,9 @@ public class Application {
 
     public static void main(String[] args) {
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         Scanner scanner = new Scanner(System.in);
+
 
         do {
             List<Integer> targetNumber = makeRandomWithoutDuplicate();
@@ -22,9 +24,11 @@ public class Application {
                 Game game = new Game(scanner);
                 game.play(targetNumber);
                 endingWorking(scanner);
-            } catch (ProgressException IAE) {
-                System.out.println("입력값을 잘못 입력하셨습니다. 게임을 종료합니다.");
+            } catch (IllegalArgumentException e) {
+               System.out.println("입력값을 잘못 입력하셨습니다. 게임을 종료합니다.");
                 restartStatus = false;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         } while (restartStatus);
     }
@@ -44,23 +48,20 @@ public class Application {
     private static void endingWorking(Scanner scanner) {
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        restartStatus = isEndingValueValid(scanner.nextLine());
+        String input = scanner.nextLine();
+        System.out.println(input);
+        restartStatus = isEndingValueValid(input);
+        restartStatus = setRestartStatus(input);
     }
 
     private static boolean isEndingValueValid(String restartStatusValue) {
-
-        if (CheckException.restartStatusValue(restartStatusValue)) {
-            occurException();
-            return false;
-        }
-        return setRestartStatus(restartStatusValue);
+        return CheckException.restartStatusValid(restartStatusValue);
     }
+
+
 
     private static boolean setRestartStatus(String defineRestartValue) {
         return defineRestartValue.equals("1");
     }
 
-    private static void occurException() {
-        throw new IllegalArgumentException();
-    }
 }
