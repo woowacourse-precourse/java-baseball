@@ -60,4 +60,16 @@ public class BaseballNumber {
             return false;
         return true;
     }
+
+    public boolean isError(String numbersStr){
+        if(!is3Digit(numbersStr))
+            return false;
+        if(!isAllInteger(numbersStr))
+            return false;
+        if(!isNonZero(numbersStr))
+            return false;
+        if(!isNotRepeat(numbersStr))
+            return false;
+        return true;
+    }
 }
