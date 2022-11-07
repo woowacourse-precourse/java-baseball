@@ -6,8 +6,13 @@ public class BaseballReferee {
     private List<Integer> computer;
     private List<Integer> user;
 
-    int strike = 0;
-    int ball = 0;
+    int strike;
+    int ball;
+
+    public BaseballReferee() {
+        this.strike = 0;
+        this.ball = 0;
+    }
 
     public BaseballReferee(List<Integer> computer, List<Integer> user) {
         this.computer = computer;

@@ -19,15 +19,13 @@ public class Application {
     }
 
     private static void game(List<Integer> computer) {
-        boolean isThreeStrike = false;
+        BaseballReferee baseballReferee = new BaseballReferee();
 
-        while (!isThreeStrike) {
+        while (!baseballReferee.isThreeStrike()) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> user = new Users(readLine()).getInputList();
 
-            BaseballReferee baseballReferee = new BaseballReferee(computer, user);
-
-            isThreeStrike = baseballReferee.isThreeStrike();
+            baseballReferee = new BaseballReferee(computer, user);
         }
     }
 
