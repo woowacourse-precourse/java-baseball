@@ -30,6 +30,21 @@ public class Application {
             // 여기서 baseball 클래스에서 게임구현
 
         }
+    }
+}
+
+class Baseball {
+    List<Integer> baseballCount;
+    public Baseball() {
+        // 카운트 랜덤 생성
+        baseballCount = new ArrayList<>();
+        while (baseballCount.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!baseballCount.contains(randomNumber)) {
+                baseballCount.add(randomNumber);
+            }
+        }
+        
 
     }
 }
