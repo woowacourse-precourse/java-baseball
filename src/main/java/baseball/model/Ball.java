@@ -17,12 +17,12 @@ public class Ball {
     }
 
     private void validateNumber(int number) {
-        if (!isValideNumber(number)) {
+        if (!isValidNumber(number)) {
             throw new IllegalArgumentException("1~9사이의 숫자만 입력 가능합니다.");
         }
     }
 
-    private boolean isValideNumber(int number) {
+    private boolean isValidNumber(int number) {
         return MIN_NUMBER <= number && number <= MAX_NUMBER;
     }
 
