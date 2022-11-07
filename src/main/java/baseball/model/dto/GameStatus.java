@@ -12,7 +12,7 @@ public class GameStatus {
     }
 
     public boolean isRestart() {
-        return status == 1;
+        return status == GAME_RESTART_STATUS;
     }
 
     public void validateGameStatusValue(int status) {
