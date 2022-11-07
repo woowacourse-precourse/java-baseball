@@ -51,4 +51,15 @@ class ExceptionControllerTest {
                     .hasMessageContaining("숫자만 입력해야 합니다.");
         }
     }
+
+    @Nested
+    class 입력에_중복된_숫자가_있을_때_예외발생_테스트 {
+        @Test
+        void 중복된_숫자가_입력된_경우() {
+            String input = "122";
+            assertThatThrownBy(() -> ExceptionController.handleInvalidThreeRandomNumber(input))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("서로 다른 세 개의 수를 입력해야 합니다.");
+        }
+    }
 }
