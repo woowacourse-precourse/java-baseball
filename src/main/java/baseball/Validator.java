@@ -3,8 +3,6 @@ package baseball;
 import java.util.List;
 import java.util.Set;
 
-import static baseball.Rule.*;
-
 public class Validator {
     private static final int DIGITS = Rule.DIGITS.getValue();
     private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
@@ -15,6 +13,9 @@ public class Validator {
     public static boolean isNumber(String input) {
         return input.chars()
                 .allMatch(Character::isDigit);
+    }
+    public static boolean isNull (String input) {
+        return input == null;
     }
 
     public static boolean isValidNumber(List<Integer> playerNumber) {
