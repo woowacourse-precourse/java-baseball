@@ -23,7 +23,9 @@ public class Application {
 
         while (again){
             answer = camp.nextstep.edu.missionutils.Console.readLine();
-
+            if(answer.length()!=3){
+                throw new IllegalArgumentException();
+            }
         }
 
         // TODO: 프로그램 구현
