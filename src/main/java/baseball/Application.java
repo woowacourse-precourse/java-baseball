@@ -5,7 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        boolean continueGame = true;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while(continueGame){
+            numBaseballGame();
+            continueGame = approveOfContinueGame();
+        }
     }
 
     public static void numBaseballGame(){
