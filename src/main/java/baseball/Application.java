@@ -41,11 +41,16 @@ public class Application {
     
     public static Boolean checkInput(String input) throws IllegalArgumentException{
         if (input.strip().length() == 3){
-            Integer.valueOf(input);
-            return false;
+            try {
+                Integer.valueOf(input);
+                return false;
+            }
+            catch (IllegalArgumentException e){
+                throw new IllegalArgumentException("");
+            }
         }
         else{
-            return true;
+            throw new IllegalArgumentException();
         }
     }
     
