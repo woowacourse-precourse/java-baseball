@@ -41,24 +41,6 @@ public class Application {
         }
     }
 
-    static void addUserNumber(List<Integer> user, String userNumber) throws IllegalArgumentException {
-        for (int i = 0; i < 3; i++) {
-            int n = Character.getNumericValue(userNumber.charAt(i));
-            if (checkOverlap(user, n)) {
-                user.add(n);
-            }
-        }
-    }
-
-    static void checkAdequateNumber(String userNumber) throws IllegalArgumentException {
-        for (int i = 0; i < 3; i++) {
-            int n = Character.getNumericValue(userNumber.charAt(i));
-            if (n < 1 || n > 9) {
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
     static void getComputerNumber(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -71,6 +53,24 @@ public class Application {
     static void checkNumberLength(String userNumber) throws IllegalArgumentException {
         if (userNumber.length() != 3) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    static void checkAdequateNumber(String userNumber) throws IllegalArgumentException {
+        for (int i = 0; i < 3; i++) {
+            int n = Character.getNumericValue(userNumber.charAt(i));
+            if (n < 1 || n > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    static void addUserNumber(List<Integer> user, String userNumber) throws IllegalArgumentException {
+        for (int i = 0; i < 3; i++) {
+            int n = Character.getNumericValue(userNumber.charAt(i));
+            if (checkOverlap(user, n)) {
+                user.add(n);
+            }
         }
     }
 
@@ -109,14 +109,6 @@ class Count {
         }
     }
 
-    void printBall(int ball) {
-        System.out.printf("%d볼", ball);
-    }
-
-    void printStrike(int strike) {
-        System.out.printf("%d스트라이크", strike);
-    }
-
     int printCount() {
         if (this.ball == 0 && this.strike == 0) {
             System.out.println("낫싱");
@@ -137,6 +129,14 @@ class Count {
             System.out.println();
         }
         return 3;
+    }
+
+    void printBall(int ball) {
+        System.out.printf("%d볼", ball);
+    }
+
+    void printStrike(int strike) {
+        System.out.printf("%d스트라이크", strike);
     }
 
     static int restartOrExit() throws IllegalArgumentException {
