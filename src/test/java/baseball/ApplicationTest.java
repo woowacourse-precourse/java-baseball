@@ -31,61 +31,43 @@ class ApplicationTest extends NsTest {
     @Test
     void 입력_글자_수_예외_테스트() {
         // 4글자
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> runException("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
 
         // 2글자
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("12"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> runException("12"))
+                .isInstanceOf(IllegalArgumentException.class);
 
         // 1글자
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> runException("1"))
+                .isInstanceOf(IllegalArgumentException.class);
 
         // Enter
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("\n"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> runException("\n"))
+                .isInstanceOf(IllegalArgumentException.class);
 
         // null
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(null))
-                        .isInstanceOf(NullPointerException.class)
-        );
+        assertThatThrownBy(() -> runException(null))
+                .isInstanceOf(NullPointerException.class);
     }
 
     @Test
     void 입력_문자열_숫자_예외_테스트() {
         // 같은 숫자가 중복으로 입력되는 경우
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("112"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> Application.generateUserNumber("112"))
+                .isInstanceOf(IllegalArgumentException.class);
 
         // 0이 들어간 모두 다른 3자리 숫자의 경우
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("094"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> runException("094"))
+                .isInstanceOf(IllegalArgumentException.class);
 
         // 한 글자만 숫자가 아닌 경우
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1-2"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> runException("1-2"))
+                .isInstanceOf(IllegalArgumentException.class);
 
         // 숫자가 아닌 값이 들어가는 경우
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("abc"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
+        assertThatThrownBy(() -> runException("abc"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
