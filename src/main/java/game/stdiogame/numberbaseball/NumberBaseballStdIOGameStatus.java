@@ -18,7 +18,7 @@ public class NumberBaseballStdIOGameStatus extends SimpleStdIOGameStatus {
         putRandomNumbersToTargetNumbers();
     }
 
-    private void changeTargetNumbers() {
+    public void changeTargetNumbers() {
         targetNumber.clear();
         putRandomNumbersToTargetNumbers();
     }
@@ -27,7 +27,7 @@ public class NumberBaseballStdIOGameStatus extends SimpleStdIOGameStatus {
         int idx = 0;
         while (targetNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            targetNumber.put((char)randomNumber, idx++);
+            targetNumber.put((char)(randomNumber+'0'), idx++);
         }
     }
 
