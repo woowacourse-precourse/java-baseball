@@ -105,4 +105,19 @@ public class Application {
             System.out.println(combineAnswer(generatedNumber, inputNumber));
         } while (!combineAnswer(generatedNumber, inputNumber).contains("모두"));
     }
+    public static String selectReplay() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String action = Console.readLine();
+        if (action.equals("2")) {
+            System.out.println("게임 종료");
+            return action;
+        }
+        if (action.equals("1")) {
+            System.out.println("TEST");
+            gameProcess();
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return action;
+    }
 }
