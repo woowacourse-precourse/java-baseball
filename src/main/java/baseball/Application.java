@@ -68,4 +68,14 @@ public class Application {
         return result;
     }
 
+    public static int getBallCnt(List<Integer> A, List<Integer> B) {
+        int result = 0;
+        for (int i = 0; i < A.size(); i++) {
+            //B에 A[i]가 포함되고 strike는 아니라면
+            if (B.contains(A.get(i)) && A.get(i) != B.get(i)) {
+                result++;
+            }
+        }
+        return result;
+    }
 }
