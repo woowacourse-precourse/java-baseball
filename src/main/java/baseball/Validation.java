@@ -8,7 +8,7 @@ public class Validation {
     // 입력이 숫자인가?
     public static boolean isNumber(String s) {
         try {
-            int num = Integer.parseInt(s);
+            Integer.parseInt(s);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -17,9 +17,7 @@ public class Validation {
 
     // 입력이 3자리 숫자인가?
     public static boolean isThreePosition(Integer n) {
-        if (n > 99 && n < 1000) {
-            return true;
-        } else return false;
+        return n > 99 && n < 1000;
     }
 
     // 서로 다른 세자리 숫자인가?
@@ -31,8 +29,7 @@ public class Validation {
             n /= 10;
         }
 
-        if (set.size() == 3) return true;
-        else return false;
+        return set.size() == 3;
     }
 
     // 숫자에 0이 포함되는 가?
@@ -46,8 +43,6 @@ public class Validation {
 
     // 재시작에 대한 답변이 옳은 가?
     public static boolean isAnswer(String s) {
-        if (s.equals("1") || s.equals("2")) {
-            return true;
-        } else return false;
+        return s.equals("1") || s.equals("2");
     }
 }
