@@ -14,20 +14,26 @@ public class ComparisonResult {
 
 	private void countHint(List<Integer> userNums, List<Integer> computerNums) {
 		resetCount();
-		for (int i = 0; i < NUMBER_LENGTH; i++) {
-			if (userNums.get(i).equals(computerNums.get(i))) {
-				strikeCount++;
-				continue;
-			}
-			if (computerNums.contains(userNums.get(i))) {
-				ballCount++;
-			}
-		}
+		strikeCount = getStrikeCount(userNums, computerNums);
+		ballCount = getBallCount(userNums, computerNums);
 	}
 
 	private static void resetCount() {
 		strikeCount = 0;
 		ballCount = 0;
+	}
+
+	private static int getBallCount(List<Integer> userNums, List<Integer> computerNums) {
+		return (int)userNums.stream()
+			.filter(number -> computerNums.indexOf(number) != userNums.indexOf(number))
+			.filter(computerNums::contains)
+			.count();
+	}
+
+	private static int getStrikeCount(List<Integer> userNums, List<Integer> computerNums) {
+		return (int)userNums.stream()
+			.filter(number -> computerNums.indexOf(number) == userNums.indexOf(number))
+			.count();
 	}
 }
 

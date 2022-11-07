@@ -42,5 +42,3 @@ public class GameView {
 		System.out.println(RESTART_INSTRUCTION);
 	}
 }
-
-

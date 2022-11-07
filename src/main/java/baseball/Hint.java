@@ -13,7 +13,7 @@ public class Hint {
 			hintStrike();
 		}
 		if (isRightAnswer()) {
-			hintCorrect();
+			hintRightAnswer();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class Hint {
 		GameView.printStrike(ComparisonResult.strikeCount);
 	}
 
-	private static void hintCorrect() {
+	private static void hintRightAnswer() {
 		GameView.printEndGame();
 		GameView.printRestartInstruction();
 	}
