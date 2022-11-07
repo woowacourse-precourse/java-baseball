@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 // 랜덤한 숫자 3자리 문자 구현
 public class Computer {
 	
-	public static ArrayList<Integer> setComputerNumber() {
+	public ArrayList<Integer> setComputerNumber() {
 		ArrayList<Integer> computerNumber = new ArrayList<>();
 		computerNumber = makeComputerNumber(computerNumber);
 		return computerNumber;
