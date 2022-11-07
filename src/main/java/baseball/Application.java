@@ -107,6 +107,9 @@ public class Application {
 
         List<Integer> duplicatedList = new ArrayList<>();
         for (int number : disassembledNumber) {
+            if (!(number >= 1 && number <= 9)) {
+                throw new IllegalArgumentException();
+            }
             if (duplicatedList.contains(number)) {
                 throw new IllegalArgumentException();
             }
