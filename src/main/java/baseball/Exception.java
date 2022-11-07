@@ -27,4 +27,8 @@ class Exception {
     static boolean isInvalidRange(List<Integer> userNumbers) {
         return userNumbers.contains(ZERO_IS_NOT_RANGE);
     }
+
+    static boolean checkDuplicate(List<Integer> deduplicated) {
+        return deduplicated.size() != NUMBER_SIZE;
+    }
 }
