@@ -13,7 +13,8 @@ public class GameStart {
         boolean allStrike;
         do {
             BaseballCount baseballCount = new BaseballCount(computerNums.getNumbers(), new UserNums(UserInput.startInput()).getNumbers());
-            new SystemOutput(baseballCount);
+            SystemOutput systemOutput= new SystemOutput(baseballCount);
+            systemOutput.printOutputMessage();
             allStrike = AllStrike(baseballCount);
         } while (!allStrike);
         SystemOutput.allStrikeMessage();

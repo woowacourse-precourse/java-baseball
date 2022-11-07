@@ -8,6 +8,8 @@ public class SystemOutput {
     public SystemOutput(BaseballCount baseballCount) {
         this.strikecount = baseballCount.getStrikecount();
         this.ballcount = baseballCount.getBallcount();
+    }
+    public void printOutputMessage(){
         baseballCountMessage();
         onlyBallMessage();
         onlyStrikeMessage();
