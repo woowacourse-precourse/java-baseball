@@ -7,6 +7,18 @@ public class UserInputException {
     public UserInputException() {
     }
 
+    // 아래의 예외처리들을 하나의 메소드로 검사
+    public boolean checkAllCondition(String inputString){
+        if (checkIfInputIsThreeDigit(inputString)
+                && checkInputIsInteger(inputString)
+                && checkZeroAtInput(inputString)
+                && checkAllDigitDifference(inputString)){
+            return true;
+        }
+        else
+            return false;
+    }
+
     // 입력받은 자릿수가 세자리가 아니라면 false 리턴
     private boolean checkIfInputIsThreeDigit(String inputString) {
         return inputString.length() == 3;
@@ -31,7 +43,7 @@ public class UserInputException {
         }
         return true;
     }
-    
+
     // 입력받은 값 중에 겹치는 값이 있다면 false 리턴
     private boolean checkAllDigitDifference(String input){
         List<Integer> numberList = new ArrayList<>();
