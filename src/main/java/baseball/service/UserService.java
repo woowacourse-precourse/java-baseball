@@ -27,6 +27,9 @@ public class UserService {
 
     public void inputRestartNumber() {
         userRestartNumber = Console.readLine();
+
+        checkRestartNumber();
+
         user.setUserRestartNumber(userRestartNumber);
     }
 
@@ -34,10 +37,24 @@ public class UserService {
         return user.getRestartNumber();
     }
 
-    private void checkBaseballNumber() {
-        if (!checkNumberLength() || !checkIsInteger()) {
-            throw new IllegalArgumentException("프로그램을 종료합니다.");
+    private void checkRestartNumber() {
+        if (!checkRestartlength() || checkIsInteger(userRestartNumber)) {
+            throw new IllegalArgumentException("에러발생 프로그램을 종료합니다.");
         }
+    }
+
+    private void checkBaseballNumber() {
+        if (!checkNumberLength() || !checkIsInteger(userBaseballNumber)) {
+            throw new IllegalArgumentException("에러발생 프로그램을 종료합니다.");
+        }
+    }
+
+    private boolean checkRestartlength() {
+        boolean returnCheckNumber = true;
+        if (userBaseballNumber.length() != 2) {
+            returnCheckNumber = false;
+        }
+        return returnCheckNumber;
     }
 
     private boolean checkNumberLength() {
@@ -48,14 +65,14 @@ public class UserService {
         return returnCheckNumber;
     }
 
-    private  boolean checkIsInteger(){
+    private boolean checkIsInteger(String userInputNumber) {
         boolean returnCheckNumber = true;
         char number;
 
-        for(int i=0; i<userBaseballNumber.length(); i++){
-            number = userBaseballNumber.charAt(i);
+        for (int i = 0; i < userInputNumber.length(); i++) {
+            number = userInputNumber.charAt(i);
 
-            if(!Character.isDigit(number)){
+            if (!Character.isDigit(number)) {
                 returnCheckNumber = false;
                 break;
             }
