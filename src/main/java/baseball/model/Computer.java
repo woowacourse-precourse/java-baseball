@@ -29,14 +29,6 @@ public class Computer {
         }
 
         hintPrint();
-
-        if (strikeCount == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            GamePlay.restart = true;
-        }
-
-        resetHint();
     }
 
     private void hintPrint() {
@@ -51,7 +43,7 @@ public class Computer {
         }
     }
 
-    private void resetHint() {
+    public void resetHint() {
         ballCount = 0;
         strikeCount = 0;
     }
@@ -67,6 +59,10 @@ public class Computer {
                 ballCount++;
             }
         }
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
     }
 
     public int[] getNumbers() {
