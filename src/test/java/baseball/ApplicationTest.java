@@ -28,6 +28,36 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 스트라이크_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246","346","345","2");
+                    assertThat(output()).contains("1스트라이크","2스트라이크","3스트라이크","게임 종료");
+                },
+                3, 4, 5
+        );
+    }
+
+    @Test
+    void 볼넷_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("521","356","345","2");
+                    assertThat(output()).contains("1볼 ", "1볼 1스트라이크", "3스트라이크","게임 종료");
+                },
+                3, 4, 5
+        );
+    }
+
+    @Test
+    void 입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abcd"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
