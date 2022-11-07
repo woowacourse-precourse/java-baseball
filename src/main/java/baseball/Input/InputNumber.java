@@ -1,19 +1,17 @@
 package baseball.Input;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+
+
 
 public class InputNumber {
     public int getInputNumber(){
-        Scanner number = new Scanner(System.in);
-        int receivedNumber = number.nextInt();
 
-        return receivedNumber;
+        return Integer.parseInt(Console.readLine());
     }
 
     public int getRestartAndEndNumber(){
-        Scanner getNumber = new Scanner(System.in);
-        int buttonNumber = getNumber.nextInt();
 
-        return buttonNumber;
+        return Integer.parseInt(Console.readLine());
     }
 }
