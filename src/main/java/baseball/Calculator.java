@@ -11,9 +11,8 @@ public class Calculator {
      *
      * @return int
      * */
-    public static int calculateScore(Computer computer, User user) {
+    public static int calculateScore(Computer computer, String userGameNumber) {
         Map<Character, Integer> numberIndexMap = computer.getNumberIndexMap();
-        String userGameNumber = user.getGameNumber();
         int score = 0;
 
         for (int index = 0; index < userGameNumber.length(); index++) {

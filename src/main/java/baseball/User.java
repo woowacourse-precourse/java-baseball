@@ -5,18 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
     private static final String INVALID_NUMBER_INPUT = "잘못된 숫자 입력입니다.";
     private static final String INVALID_OPTION_INPUT = "잘못된 옵션 입력입니다.";
-    private static String gameNumber;
-    private static int gameOption;
 
-    public User() {}
-
-    public String getGameNumber() {
-        return gameNumber;
-    }
-
-    public int getGameOption() {
-        return gameOption;
-    }
+    private User() {}
 
     /*
     * 3자리이고, 중복이 없으며 1 ~ 9 사이의 숫자로 이루어진 문자열 반환
@@ -24,14 +14,14 @@ public class User {
     *
     * @return void
     * */
-    public static void setGameNumber() {
+    public static String getGameNumber() {
         String number = Console.readLine();
 
         if (!isValidNumber(number)) {
             throw new IllegalArgumentException(INVALID_NUMBER_INPUT);
         }
 
-        gameNumber = number;
+        return number;
     }
 
     /*
@@ -40,14 +30,14 @@ public class User {
     *
     * @return void
     * */
-    public static void setGameOption() {
+    public static int getGameOption() {
         int option = Integer.parseInt(Console.readLine());
 
         if (!isValidOption(option)) {
             throw new IllegalArgumentException(INVALID_OPTION_INPUT);
         }
 
-        gameOption = option;
+        return option;
     }
 
     /*

@@ -10,7 +10,6 @@ public class Game {
     private static Status status;
     private static Result result;
     private static Computer computer;
-    private static User user;
 
     private Game() {}
 
@@ -25,7 +24,8 @@ public class Game {
                 initialize();
 
                 // 3. Computer와 User 정보를 이용해 Result가 THREESTRIKE가 아닐 동안 게임 진행
-                proceedGame(computer, user);
+                proceedGame();
+
                 System.out.println(GUESS_ALL);
 
                 // 4. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
@@ -42,13 +42,12 @@ public class Game {
 
     /*
      * 게임 진행을 위한 초기화 작업
-     * Computer, User 객체를 만들고, result 초기화
+     * Computer 객체를 만들고, result 초기화
      *
      * @return void
      * */
     private static void initialize() {
         computer = new Computer();
-        user = new User();
         result = Result.NOTHING;
     }
 
@@ -57,12 +56,11 @@ public class Game {
      *
      * @return void
      * */
-    private static void proceedGame(Computer computer, User user) {
+    private static void proceedGame() {
         while (result != Result.THREESTRIKE) {
             System.out.print(INPUT_MESSAGE);
-            User.setGameNumber();
 
-            result = Result.getResultByScore(Calculator.calculateScore(computer, user));
+            result = Result.getResultByScore(Calculator.calculateScore(computer, User.getGameNumber()));
             System.out.println(result.getMessage());
         }
     }
@@ -73,7 +71,6 @@ public class Game {
      * @return void
      * */
     private static void changeStatusByGameOption() {
-        User.setGameOption();
-        status = Status.getStatusByGameOption(user.getGameOption());
+        status = Status.getStatusByGameOption(User.getGameOption());
     }
 }
