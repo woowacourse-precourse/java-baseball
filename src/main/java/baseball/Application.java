@@ -133,7 +133,7 @@ public class Application {
 
             boolean recycle_flag = progress_GameRule(ballAndStrikeCount);
             if (!recycle_flag) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
