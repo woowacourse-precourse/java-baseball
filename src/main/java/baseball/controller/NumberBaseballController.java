@@ -49,7 +49,6 @@ public class NumberBaseballController {
     public void inputNewGameAnswer(String userAnswer) {
         if (userAnswer.equals(RESTART)) {
             restartGame();
-            return;
         }
         if (userAnswer.equals(END)) {
             numberBaseballView.endGame();
