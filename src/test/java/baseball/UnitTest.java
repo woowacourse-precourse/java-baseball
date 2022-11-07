@@ -342,12 +342,42 @@ class UnitTest {
     @Test
     public void printJudge_낫싱_출력(){
         //given
-        int [] score = {0,3};
+        int [] score = {0,0};
         //when
         application.printJudge(score);
 
         //then
         assertEquals("낫싱", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printJudge_2스트라이크_출력(){
+        //given
+        int [] score = {2,0};
+        //when
+        application.printJudge(score);
+
+        //then
+        assertEquals("2스트라이크", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printJudge_1스트라이크_출력(){
+        //given
+        int [] score = {1,0};
+        //when
+        application.printJudge(score);
+
+        //then
+        assertEquals("1스트라이크", outputStreamCaptor.toString().trim());
+    }
+    @Test
+    public void printJudge_1볼_1스트라이크_출력(){
+        //given
+        int [] score = {1,1};
+        //when
+        application.printJudge(score);
+
+        //then
+        assertEquals("1볼 1스트라이크", outputStreamCaptor.toString().trim());
     }
     @Test
     public void printJudge_2볼_1스트라이크_출력(){
@@ -358,16 +388,6 @@ class UnitTest {
 
         //then
         assertEquals("2볼 1스트라이크", outputStreamCaptor.toString().trim());
-    }
-    @Test
-    public void printJudge_1볼_2스트라이크_출력(){
-        //given
-        int [] score = {2,1};
-        //when
-        application.printJudge(score);
-
-        //then
-        assertEquals("1볼 2스트라이크", outputStreamCaptor.toString().trim());
     }
     @Test
     public void printJudge_첫번째_원소가_범위_밖에_있을떄(){

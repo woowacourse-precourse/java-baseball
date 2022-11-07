@@ -112,8 +112,9 @@ public class Application {
     }
 
     private String returnStringByCondition(int strikes, int balls){
-        if(balls == 3) return "낫싱";
-        else if(strikes == 3) return "3스트라이크";
+        if(strikes == 0 && balls == 0) return "낫싱";
+        else if(balls == 0) return strikes + "스트라이크";
+        else if(strikes == 0) return strikes + "볼";
         else return balls+"볼 "+strikes+"스트라이크";
     }
     private void figureValuePos(int value, int[] pos, int[] result) {
