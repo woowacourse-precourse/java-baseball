@@ -1,4 +1,4 @@
-package baseball;
+package baseball.participant;
 
 import baseball.participant.Batter;
 import org.junit.jupiter.api.Test;

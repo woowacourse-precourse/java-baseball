@@ -1,4 +1,4 @@
-package baseball;
+package baseball.participant;
 
 import baseball.result.Result;
 import baseball.participant.Referee;
