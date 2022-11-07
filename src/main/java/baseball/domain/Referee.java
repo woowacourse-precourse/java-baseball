@@ -19,7 +19,7 @@ public class Referee {
         this.ball = ball;
     }
 
-    public void addScore(BallStatus status) {
+    public void addScore(BallMatchResult status) {
         if (status.isStrike()) {
             strike++;
         }

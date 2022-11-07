@@ -1,6 +1,6 @@
 package baseball.domain;
 
-public enum BallStatus {
+public enum BallMatchResult {
     STRIKE, BALL, NOTHING;
 
     public boolean isStrike() {

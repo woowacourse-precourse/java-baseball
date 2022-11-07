@@ -52,18 +52,18 @@ public class Player {
         Referee referee = new Referee();
 
         for (Ball ball : balls) {
-            BallStatus ballStatus = otherPlayer.playRound(ball);
-            referee.addScore(ballStatus);
+            BallMatchResult ballMatchResult = otherPlayer.playRound(ball);
+            referee.addScore(ballMatchResult);
         }
         return referee;
     }
 
-    private BallStatus playRound(Ball otherBall) {
+    private BallMatchResult playRound(Ball otherBall) {
         return balls.stream()
                 .map(ball -> ball.match(otherBall))
-                .filter(ballStatus -> !ballStatus.isNothing())
+                .filter(ballMatchResult -> !ballMatchResult.isNothing())
                 .findFirst()
-                .orElse(BallStatus.NOTHING);
+                .orElse(BallMatchResult.NOTHING);
     }
 
     public void changeBalls(List<Integer> newBallNumbers) {

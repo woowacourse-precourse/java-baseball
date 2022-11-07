@@ -25,14 +25,14 @@ public class Ball {
         return (number >= MINIMUM_BALL_NUMBER) && (number <= MAXIMUM_BALL_NUMBER);
     }
 
-    public BallStatus match(Ball otherBall) {
+    public BallMatchResult match(Ball otherBall) {
         if (this.isStrike(otherBall)) {
-            return BallStatus.STRIKE;
+            return BallMatchResult.STRIKE;
         }
         if (this.isBall(otherBall)) {
-            return BallStatus.BALL;
+            return BallMatchResult.BALL;
         }
-        return BallStatus.NOTHING;
+        return BallMatchResult.NOTHING;
     }
 
     private boolean isStrike(Ball otherBall) {
