@@ -1,12 +1,9 @@
-package baseball.controller;
+package baseball;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import baseball.view.View;
-import baseball.model.Model;
 
 
 public class Controller {
@@ -23,7 +20,8 @@ public class Controller {
     private static final int DIGITS = Rule.DIGITS.getValue();
     private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
     private static final String COMMAND_END = Rule.COMMAND_END.toString();
-
+    private static final View view = new View();
+    private static final Model model = new Model();
 
 //    public void generate() {
 //        View.printStart();
@@ -47,14 +45,14 @@ public class Controller {
 //    }
 
     public void generate() {
-        View.printStart();
-        computerNumber = Model.createComputerNumber();
+        view.printStart();
+        computerNumber = model.createComputerNumber();
         do {
-            List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
+            List<Integer> playerNumber = model.createPlayerNumber();           //유효하지 않으면 예외발생
             Map<String, Integer>resultMap = checkAnswer(computerNumber, playerNumber);
-            View.printHint(createHint(resultMap));
+            view.printHint(createHint(resultMap));
             if (isCorrect(resultMap)) {
-                String exitInput = View.getExitInput(); //예외발생
+                String exitInput = view.getExitInput(); //예외발생
                 restartOrEnd(exitInput);
             }
         }while(isPlaying);
@@ -106,7 +104,7 @@ public class Controller {
 
     public void restartOrEnd(String input) {
         if (input.equals(COMMAND_RESTART)) {
-            computerNumber = Model.createComputerNumber();
+            computerNumber = model.createComputerNumber();
         }
         if (input.equals(COMMAND_END)) {
             isPlaying = false;

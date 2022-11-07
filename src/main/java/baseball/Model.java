@@ -1,8 +1,5 @@
-package baseball.model;
+package baseball;
 
-import baseball.controller.Rule;
-import baseball.controller.Validator;
-import baseball.view.View;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -13,8 +10,9 @@ public class Model {
     private static final int DIGITS = Rule.DIGITS.getValue();
     private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
     private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
-
-    public static List<Integer> createComputerNumber() {
+    private static final View view = new View();
+    private static final Validator validator = new Validator();
+    public List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < DIGITS) {
             int randomNumber = Randoms.pickNumberInRange(RANDOM_MIN, RANDOM_MAX);
@@ -25,16 +23,16 @@ public class Model {
         return computerNumber;
     }
 
-    public static List<Integer> createPlayerNumber() throws IllegalArgumentException {
-        String userInput = View.getUserInput(); // 숫자가 아니면 예외 발생
+    public List<Integer> createPlayerNumber() throws IllegalArgumentException {
+        String userInput = view.getUserInput(); // 숫자가 아니면 예외 발생
         List<Integer> playerNumber = stringToList(userInput);
-        if(!Validator.isValidNumber(playerNumber)){
+        if(!validator.isValidNumber(playerNumber)){
             throw new IllegalArgumentException();
         }
         return playerNumber;
     }
 
-    public static List<Integer> stringToList(String input) {
+    public List<Integer> stringToList(String input) {
         return input.chars()
                 .map(i -> i - '0')
                 .boxed()
