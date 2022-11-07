@@ -1,17 +1,33 @@
 package baseball.service;
 
+import baseball.view.InputView;
+
 public class Game {
+    private static final int RESTART = 1;
+    private static final int EXIT = 2;
+
     private Rule rule;
 
+    public Game() {
+        this.rule = new Rule();
+    }
+
     public void run() {
-        rule = new Rule(new Player(), new Computer());
-        do {
-            rule.printStart();
-            rule.generateRandomNumber();
-            rule.getNumber();
-            rule.isValid();
-            rule.decideStrikeOrBall();
-            rule.printResult();
-        } while (rule.reStart);
+        InputView.printStartMessage();
+        init();
+        process();
+        reStrart();
+    }
+
+    private void init() {
+
+    }
+
+    private boolean process() {
+
+    }
+
+    private int reStrart() {
+
     }
 }
