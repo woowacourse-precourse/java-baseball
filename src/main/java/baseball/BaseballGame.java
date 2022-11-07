@@ -10,15 +10,15 @@ public class BaseballGame {
     // 애플리케이션 실행
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        
+
         // 게임 진행 1, 종료 2
         int game = 1;
         // 컴퓨터의 숫자 초기화
         List<Integer> computer = initAnswerNumber();
-        
+
         // 사용자 초기화
         List<Integer> human = Collections.emptyList();
-        
+
         while (game == 1) {
             System.out.print("숫자를 입력해주세요 : ");
 
@@ -27,10 +27,13 @@ public class BaseballGame {
 
             // 입력 값과 결과 비교
             Baseball result = compareInputWithAnswer(human, computer);
-            
-        }
-        
 
+            // 출력
+            printResult(result);
+
+            //
+
+        }
 
 
     }
@@ -107,8 +110,8 @@ public class BaseballGame {
 
     public int returnBallCount(List<Integer> human, List<Integer> computer) {
         int ball = 0;
-        for (int i = 0; i < human.size() ; i++) {
-            for (int j = 0; j < computer.size() ; j++) {
+        for (int i = 0; i < human.size(); i++) {
+            for (int j = 0; j < computer.size(); j++) {
                 ball += checkBallCount(i, j, human, computer);
             }
         }
@@ -122,7 +125,7 @@ public class BaseballGame {
 
         if (human.get(i).equals(computer.get(j))) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
@@ -138,8 +141,23 @@ public class BaseballGame {
     public int checkStrike(int i, List<Integer> human, List<Integer> computer) {
         if (human.get(i).equals(computer.get(i))) {
             return 1;
-        }else{
+        } else {
             return 0;
+        }
+    }
+
+    public void printResult(Baseball result) {
+        if (result.getBall() == 0 && result.getStrike() == 0) {
+            System.out.println("낫싱");
+        } else if (result.getBall() > 0 && result.getStrike() > 0) {
+            System.out.println(result.getBall() + "볼 " + result.getStrike() + "스트라이크");
+        } else if (result.getBall() == 0 && result.getStrike() > 0) {
+            System.out.println(result.getStrike() + "스트라이크");
+        } else if (result.getBall() > 0 && result.getStrike() == 0) {
+            System.out.println(result.getBall() + "볼");
+        } else{
+            System.out.println(result.getStrike()+"스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
