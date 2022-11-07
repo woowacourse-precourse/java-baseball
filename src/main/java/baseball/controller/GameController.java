@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import static baseball.type.GameType.WRONG_ANSWER;
-
 import static baseball.type.RetryOrExitType.EXIT;
 import static baseball.type.RetryOrExitType.RETRY;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -17,12 +16,10 @@ import java.util.List;
 public class GameController {
     public static void startGame() {
         InputView.printStartMessage();
-
         do {
             playGame();
             OutputView.printAnswerMessage();
-            OutputView.printRetryOrExitMessage();
-        } while (retryOrExit().equals(RETRY.getString()));
+        } while (retryGame());
     }
 
     private static void playGame() {
@@ -33,19 +30,20 @@ public class GameController {
             InputView.printInputMessage();
 
             List<Integer> userNumbers = UserNumberService.generate();
-            Hint hint = HintService.generate(userNumbers, computerNumbers);
+            Hint hint = HintService.getHint(userNumbers, computerNumbers);
 
             HintService.printHint(hint);
             gameStatus = HintService.isAnswer(hint);
         }
     }
 
-    private static String retryOrExit() {
+    private static boolean retryGame() {
+        OutputView.printRetryOrExitMessage();
         String retryOrExit = readLine();
 
         if (!retryOrExit.equals(RETRY.getString()) && !retryOrExit.equals(EXIT.getString())) {
             throw new IllegalArgumentException();
         }
-        return retryOrExit;
+        return retryOrExit.equals(RETRY.getString());
     }
 }

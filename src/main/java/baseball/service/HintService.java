@@ -7,13 +7,12 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class HintService {
-    public static Hint generate(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    public static Hint getHint(List<Integer> userNumbers, List<Integer> computerNumbers) {
         return new Hint(userNumbers, computerNumbers);
     }
 
     public static boolean isAnswer(Hint hint) {
         int strike = hint.getStrike();
-
         return strike == NUMBER_SIZE.getValue();
     }
 
