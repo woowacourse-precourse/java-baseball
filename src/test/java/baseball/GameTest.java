@@ -110,6 +110,14 @@ public class GameTest extends NsTest {
             assertThat(output()).isEqualTo("2스트라이크");
         }, 1, 2, 3);
     }
+
+    @DisplayName("게임 종료 메세지 출력 테스트")
+    @Test
+    void printGameEnd() {
+        game.printGameEnd();
+        assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     }
 
     @Override
