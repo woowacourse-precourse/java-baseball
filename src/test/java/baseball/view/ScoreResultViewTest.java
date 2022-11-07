@@ -46,7 +46,7 @@ public class ScoreResultViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         scoreResultView.printScore();
-        assertThat(out.toString()).isEqualTo("낫싱");
+        assertThat(out.toString()).isEqualTo("낫싱\n");
     }
 
     @Test
