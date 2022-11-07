@@ -34,9 +34,12 @@ public class Game {
             System.out.print("숫자를 입력해 주세요 : ");
             userInput = readLine();
             validateUserInput(userInput);
+
             userNumbers = stringToIntegerList(userInput);
             isValidateSize(userNumbers);
             isValidateRange(userNumbers);
+
+            strike = checkStrikeCount(userNumbers);
         }
     }
 
@@ -60,7 +63,7 @@ public class Game {
     }
 
     public void isValidateSize(List<Integer> userInput) {
-        if(userInput.size() != 3) {
+        if (userInput.size() != 3) {
             throw new IllegalArgumentException("Input size is too long.");
         }
     }
@@ -74,19 +77,32 @@ public class Game {
     }
 
     public void isDuplicatedNumber(List<Integer> userInput) {
-        if(userInput.stream().distinct().count() != userInput.size()) {
+        if (userInput.stream().distinct().count() != userInput.size()) {
             throw new IllegalArgumentException("Input is duplicated.");
         }
     }
 
     public int checkStrikeCount(List<Integer> userInput) {
         int strikeCount = 0;
-        for(int i = 0; i < computer.getComputerNumbers().size(); i++) {
-            if(Objects.equals(computer.getComputerNumbers().get(i), userInput.get(i))) {
+        for (int i = 0; i < computer.getComputerNumbers().size(); i++) {
+            if (Objects.equals(computer.getComputerNumbers().get(i), userInput.get(i))) {
                 strikeCount++;
             }
         }
 
         return strikeCount;
+    }
+
+    public int checkBallCount(List<Integer> userInput) {
+        int ballCount = 0;
+        List<Integer> computerNumber = computer.getComputerNumbers();
+        for (int i = 0; i < computerNumber.size(); i++) {
+            if(!Objects.equals(computerNumber.get(i), userInput.get(i))
+                    && computerNumber.contains(userInput)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
     }
 }
