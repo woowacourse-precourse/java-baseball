@@ -139,12 +139,12 @@ public class Application {
             return false;
         }
 
-        // 정규 표현식 숫자가 아닐 때 ! <- 부정 표현 추후 리팩토링
-        if (!Pattern.matches("^[0-9]+$", usersNumber)) {
-            return false;
+        // 정규표현식 숫자로만 구성되어 있다면 true 반환
+        if (Pattern.matches("[0-9]+$", usersNumber)) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     private static boolean reGameOrEnd(String usersAnswer) {
