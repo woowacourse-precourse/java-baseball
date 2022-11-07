@@ -26,6 +26,21 @@ public class Application {
         }
         return inputNumber;
     }
+    //[기능] 2번 : 스트라이크, 볼 갯수 판별
+    public static List<Integer> caseCheck(List<Integer> computer, List<Integer>inputNumber, List<Integer>result) {
+        int strike = 0;
+        int ball = 0;
+        for(int i=0; i<3; i++){
+            if(inputNumber.get(i) == computer.get(i)){
+                strike ++;
+            } else if ( computer.contains(inputNumber.get(i)) ) {
+                ball++;
+            }
+        }
+        result.add(strike);
+        result.add(ball);
+        return result;
+    }
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -34,11 +49,18 @@ public class Application {
         while (true) {
 
             List<Integer> inputNumber = new ArrayList<>();
+            List<Integer> gameResult = new ArrayList<>();
+            int strike = 0;
+            int ball = 0;
 
             makeNumber(computer);
 
             System.out.print("숫자를 입력해주세요 : ");
             input(inputNumber);
+
+            caseCheck(computer, inputNumber, gameResult);
+            strike = gameResult.get(0);
+            ball = gameResult.get(1);
         }
     }
 }
