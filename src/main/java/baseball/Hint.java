@@ -4,8 +4,8 @@ public class Hint {
 	private Hint() {
 	}
 
-	public static void searchHint() {
-		new ComparisonResult(User.userNums, Computer.computerNums);
+	public static void search() {
+		new ResultOfComparison(User.userNums, Computer.computerNums);
 		if (isNothing()) {
 			hintNothing();
 		}
@@ -21,19 +21,19 @@ public class Hint {
 	}
 
 	private static boolean isNothing() {
-		return ComparisonResult.strikeCount == 0 && ComparisonResult.ballCount == 0;
+		return ResultOfComparison.strikeCount == 0 && ResultOfComparison.ballCount == 0;
 	}
 
 	private static boolean isBall() {
-		return ComparisonResult.ballCount > 0;
+		return ResultOfComparison.ballCount > 0;
 	}
 
 	private static boolean isStrike() {
-		return ComparisonResult.strikeCount > 0;
+		return ResultOfComparison.strikeCount > 0;
 	}
 
 	public static boolean isRightAnswer() {
-		return ComparisonResult.strikeCount == 3;
+		return ResultOfComparison.strikeCount == 3;
 	}
 
 	private static void hintNothing() {
@@ -42,14 +42,14 @@ public class Hint {
 
 	private static void hintBall() {
 		if (isStrike()) {
-			GameView.printBallAndStrike(ComparisonResult.ballCount);
+			GameView.printBallAndStrike(ResultOfComparison.ballCount);
 		} else {
-			GameView.printBall(ComparisonResult.ballCount);
+			GameView.printBall(ResultOfComparison.ballCount);
 		}
 	}
 
 	private static void hintStrike() {
-		GameView.printStrike(ComparisonResult.strikeCount);
+		GameView.printStrike(ResultOfComparison.strikeCount);
 	}
 
 	private static void hintRightAnswer() {

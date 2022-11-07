@@ -13,14 +13,14 @@ public class Operation {
 
 	public void start() {
 		new Computer();
-		guessNums();
+		guessAnswer();
 		restart();
 	}
 
-	private static void guessNums() {
+	private static void guessAnswer() {
 		do {
-			User.getUserInput();
-			Hint.searchHint();
+			User.putInput();
+			Hint.search();
 		} while (!Hint.isRightAnswer());
 	}
 

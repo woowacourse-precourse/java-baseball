@@ -13,7 +13,7 @@ public class User {
 	private User() {
 	}
 
-	public static void getUserInput() {
+	public static void putInput() {
 		GameView.printInstruction();
 		String userInput = Console.readLine();
 		checkUserInput(userInput);
