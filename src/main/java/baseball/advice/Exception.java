@@ -1,4 +1,4 @@
-package baseball;
+package baseball.advice;
 
 public class Exception {
     public static final String NUMERIC_ERROR_MESSAGE = "숫자가 아닙니다.";

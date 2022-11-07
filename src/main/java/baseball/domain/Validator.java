@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.Exception;
+import baseball.advice.Exception;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
