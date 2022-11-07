@@ -24,12 +24,12 @@ public class Application {
         String input = Console.readLine();
 
         while (player.size() < 3) {
+            int playerIdx = 0;
             //잘못 입력한 경우에 대한 예외처리 기능 구현해야 함
-            int idx = 0;
-            char inputNumber = input.charAt(idx);
+            char inputNumber = input.charAt(playerIdx);
             int inputNumberToInt = inputNumber - '0';
             player.add(inputNumberToInt);
-            idx++;
+            playerIdx++;
         }
         return player;
     }
@@ -44,19 +44,18 @@ public class Application {
         return strikeNumber;
     }
 
-    public static void findBall(List<Integer> computer, List<Integer> player) {
-
+    public static int findBall(List<Integer> computer, List<Integer> player) {
+        int ballNumber = 0;
+        for (int computerIdx = 0; computerIdx < 3; computerIdx++) {
+            for (int playerIdx = 0; playerIdx < 3; playerIdx++) {
+                if ((computerIdx != playerIdx) && (computer.get(computerIdx) == player.get(playerIdx))) {
+                    ballNumber++;
+                }
+            }
+        }
+        return ballNumber;
     }
-
-    public static void compare(List<Integer> computer, List<Integer> player) {
-        int strikeNumber = findStrike(computer, player);
-
-
-
-    }
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        compare(computerNumber(), playerNumber());
     }
 }
