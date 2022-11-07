@@ -40,6 +40,10 @@ public class Game {
         return false;
     }
 
+    /**
+     * @param result
+     * @return true = end
+     */
     public boolean getGameResultOfJudge(List<Integer> result) {
         int ballCount = result.get(0);
         int strikeCount = result.get(1);
