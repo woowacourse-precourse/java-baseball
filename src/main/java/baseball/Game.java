@@ -9,20 +9,24 @@ public class Game {
 
 
     public void play() {
-        boolean regame = false;
         do {
             List<Integer> computerBallsList = Computer.makeBalls();
-            while (strike != Computer.BallsLength) {
-                ball = 0;
-                strike = 0;
-                List<Integer> userBallsList = User.inputBalls();
-                compareComputerAndUser(computerBallsList, userBallsList);
-                printResult();
-            }
-            strike = 0;
-            regame = User.wantRegame();
-        } while (regame);
+            play2(computerBallsList);
+        } while (User.wantRegame());
     }
+
+
+    public void play2(List<Integer> computerBallsList){
+        do {
+            ball = 0;
+            strike = 0;
+
+            List<Integer> userBallsList = User.inputBalls();
+            compareComputerAndUser(computerBallsList, userBallsList);
+            System.out.println(printResult());
+        } while(strike<3);
+    }
+
 
     private void compareComputerAndUser(List<Integer> computerBallsList, List<Integer> userBallsList) {
         for (int i = 0; i < computerBallsList.size(); i++) {
@@ -33,35 +37,27 @@ public class Game {
                 strike++;
             }
         }
-
         ball -= strike;
-        /*System.out.println(computerBallsList.toString());
-        System.out.println(userBallsList.toString());
-        System.out.println("ball : "+ ball);
-        System.out.println("strike : "+ strike);*/
     }
 
 
-    private void printResult() {
-        String message = "";
+    private String printResult() {
 
         if (ball == 0 && strike == 0) {
-            message = "낫싱";
-
-        } else if (strike == Computer.BallsLength) {
-            message = strike + "스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-
-        } else if (ball == 0) {
-            message = strike + "스트라이크";
-
-        } else if (strike == 0) {
-            message = ball + "볼";
-
-        } else {
-            message = ball + "볼 " + strike + "스트라이크";
+            return "낫싱";
+        }
+        if (strike == Computer.BallsLength) {
+            return strike + "스트라이크\n" + Computer.BallsLength + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+        }
+        if (ball == 0) {
+            return strike + "스트라이크";
+        }
+        if (strike == 0) {
+            return ball + "볼";
         }
 
-        System.out.println(message);
+        return ball + "볼 " + strike + "스트라이크";
+
     }
 
 }

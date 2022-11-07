@@ -57,7 +57,6 @@ public class User {
         }
 
         return userBallsList;
-
     }
 
 
