@@ -14,6 +14,7 @@ public class ResultPrinter {
         final String BALL_STRING = "볼";
         final String STRIKE_STRING = "스트라이크";
         final String NOTHING_STRING = "낫싱";
+        final String CORRECT_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
         ResultValidator resultValidator = new ResultValidator();
         List<Integer> result = resultValidator.validate(input, createdNumber);
@@ -30,6 +31,7 @@ public class ResultPrinter {
         }
         if (strike == 3) {
             isCorrect = true;
+            System.out.println(CORRECT_MESSAGE);
         }
     }
 
