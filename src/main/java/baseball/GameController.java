@@ -22,7 +22,7 @@ public class GameController {
             GameHintList.computerSelectedNumbers = computerSelected;
             GameHintList.userSelectedNumbers = userSelected;
 
-            gameHintList.printGameHintList();
+            gameHintList.printAllHintListToString();
 
         } while (GameHintList.countOfStrike() != 3);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
