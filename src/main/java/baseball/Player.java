@@ -15,6 +15,7 @@ public class Player {
   }
 
   public List<Integer> guessNumber() {
+    printInputMessage();
     String inputNumber = inputReader.readLine();
     validateInputNumber(inputNumber);
     return convertToImmutableIntegerList(inputNumber);
@@ -49,5 +50,9 @@ public class Player {
     return input.charAt(0) == input.charAt(1) ||
             input.charAt(1) == input.charAt(2) ||
             input.charAt(0) == input.charAt(2);
+  }
+
+  private void printInputMessage() {
+    System.out.print("숫자를 입력해주세요 : ");
   }
 }
