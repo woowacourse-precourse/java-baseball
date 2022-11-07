@@ -46,6 +46,7 @@ public class Player {
     public void setComputerNumbers() {
         while (this.numbers.size() < 3) {
             int randomNumber = pickNumberInRange(1, 9);
+            ValidateUtils.checkDuplicateInput(numbers, randomNumber);
             this.numbers.add(randomNumber);
         }
     }
