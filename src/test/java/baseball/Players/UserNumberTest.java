@@ -3,7 +3,6 @@ package baseball.Players;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.Players.UserNumber;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -12,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 class UserNumberTest {
 
-    // TODO 테스트 성공 이후에 실행이 계속되는 문제 해결하기
     @Test
     void getNumberList_InvalidInput_ExceptionThrown() {
         String input = "1111";
