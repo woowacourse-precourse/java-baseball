@@ -10,6 +10,9 @@ public class Game {
     private List<Integer> computer;
     private List<Integer> player;
 
+    private int ball = 0;
+    private int strike = 0;
+
     public void startGame() {
         System.out.println(START_SENTENCE);
 
@@ -17,6 +20,7 @@ public class Game {
 
         while (gameContinue) {
             setPlayer();
+            resetCount();
         }
     }
 
@@ -28,5 +32,10 @@ public class Game {
     private void setPlayer() {
         Number number = new Number();
         this.player = number.getPlayerNumber();
+    }
+
+    private void resetCount() {
+        ball = 0;
+        strike = 0;
     }
 }
