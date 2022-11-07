@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -34,6 +32,38 @@ public class Application {
         }
 
         return userAnswer;
+    }
+
+    private static boolean isUserInputLengthConstant(int minLength, int maxLength, String userInput) {
+        if (userInput.length() < minLength && userInput.length() > maxLength) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean isUserInputNumeric(String userInput) {
+        for (int i = 0; i < userInput.length(); i++) {
+            char eachChar = userInput.charAt(i);
+            if (!Character.isDigit(eachChar)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean isUserInputNotDuplicated(String userInput) {
+        Set<String> tokenizedStringSet = new HashSet<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            tokenizedStringSet.add(userInput.substring(i, i + 1));
+        }
+
+        if(tokenizedStringSet.size() != userInput.length()) {
+            return false;
+        }
+
+        return true;
     }
 
 }
