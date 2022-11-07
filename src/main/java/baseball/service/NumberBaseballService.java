@@ -17,12 +17,14 @@ public class NumberBaseballService {
         answer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
     }
 
-    public StrikeBallCountDto compareInputAndAnswer(List<Integer> input) {
+    public StrikeBallCountDto compareInputAndAnswer(int input) {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for (int idx = 0; idx < input.size(); idx++) {
-            Integer inputDigit = input.get(idx);
+        List<Integer> inputDigitList = parseIntegerToDigitList(input);
+
+        for (int idx = 0; idx < inputDigitList.size(); idx++) {
+            Integer inputDigit = inputDigitList.get(idx);
             Integer answerDigit = answer.get(idx);
 
             if (inputDigit.equals(answerDigit)) {
