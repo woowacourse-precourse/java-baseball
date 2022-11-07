@@ -1,6 +1,6 @@
 package baseball.model;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class UserGenerate {
 
     public UserGenerate() {
         System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
+        String input = InputView.startInput();
         if (CheckInput(input)) {
             List<Integer> user = StringToList(input);
         }
