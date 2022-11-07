@@ -39,6 +39,11 @@ public class Application {
 
      */
     static boolean checkExit(String userInput) {
+        // userInput이 null 이라면 -> 예외발생
+        if (userInput == null) {
+            throw new IllegalArgumentException();
+        }
+
         // 입력 값의 길이가 1이 아니라면 예외 발생
         if (userInput.length() != 1) {
             throw new IllegalArgumentException();
