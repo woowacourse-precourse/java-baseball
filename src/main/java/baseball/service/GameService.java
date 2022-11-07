@@ -4,7 +4,6 @@ import baseball.domain.Game;
 import baseball.utils.Message;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
@@ -22,30 +21,18 @@ public class GameService {
     public void startGame() throws IllegalArgumentException {
         Message.printStartGame();
         game.pickComputerNum();
+
         do {
-            game.initTurn();
             doTurn();
         } while (game.getStrike() != game.getDigit());
+
         Message.printEndGame(game.getDigit());
     }
 
     private void doTurn() throws IllegalArgumentException {
-        pickUserNum();
+        game.initTurn();
+        game.pickUserNum();
         countScore();
-    }
-
-    private void pickUserNum() throws IllegalArgumentException {
-        Message.printInput();
-        String userInput = Console.readLine();
-
-        List<Integer> userNum = new ArrayList<>();
-        for (char x : userInput.toCharArray()) {
-            userNum.add(x - '0');
-        }
-        if (!game.getUser().isValid(userNum, game)) {
-            throw new IllegalArgumentException();
-        }
-        game.getUser().setUserNum(userNum);
     }
 
     private void countScore() throws IllegalArgumentException {

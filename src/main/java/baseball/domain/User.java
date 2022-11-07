@@ -1,5 +1,9 @@
 package baseball.domain;
 
+import baseball.utils.Message;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -12,11 +16,11 @@ public class User {
         return userNum;
     }
 
-    public void setUserNum(List<Integer> userNum) {
+    private void setUserNum(List<Integer> userNum) {
         this.userNum = userNum;
     }
 
-    public boolean isValid(List<Integer> userNum, Game game) {
+    private boolean isValid(List<Integer> userNum, Game game) {
         if (userNum.size() != game.getDigit()) {
             return false;
         }
@@ -29,6 +33,20 @@ public class User {
             }
         }
         return true;
+    }
+
+    public void pickUserNum(Game game) throws IllegalArgumentException {
+        Message.printInput();
+        String userInput = Console.readLine();
+
+        List<Integer> userNum = new ArrayList<>();
+        for (char x : userInput.toCharArray()) {
+            userNum.add(x - '0');
+        }
+        if (!isValid(userNum, game)) {
+            throw new IllegalArgumentException();
+        }
+        setUserNum(userNum);
     }
 
 }
