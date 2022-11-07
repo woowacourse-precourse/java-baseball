@@ -45,7 +45,6 @@ class GameTest {
         assertThat(game.getBall(game.computer, player1)).isEqualTo(0);
         assertThat(game.getBall(game.computer, player2)).isEqualTo(2);
         assertThat(game.getBall(game.computer, player3)).isEqualTo(3);
-
     }
 
     @Test
@@ -67,6 +66,18 @@ class GameTest {
         System.setOut(new PrintStream(out));
         game.printResult(0, 0);
         assertThat("낫싱" + "\n").isEqualTo(out.toString());
+    }
+
+    @Test
+    void isEnd_인풋으로_끝났는지판단() {
+        Game game = new Game();
+        game.computer = List.of(1, 2, 3);
+
+        assertThat(game.isEnd("123")).isEqualTo(true);
+        assertThat(game.isEnd("2")).isEqualTo(false);
+        assertThat(game.isEnd("asfa")).isEqualTo(false);
+        assertThat(game.isEnd("")).isEqualTo(false);
+        assertThat(game.isEnd(".")).isEqualTo(false);
     }
 }
 
