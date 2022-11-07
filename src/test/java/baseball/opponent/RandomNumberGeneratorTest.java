@@ -1,6 +1,6 @@
 package baseball.opponent;
 
-import baseball.core.RandomNumberGenerator;
+import baseball.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
