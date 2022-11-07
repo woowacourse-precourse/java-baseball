@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    private static final String NUMBER_PATTERN = "^[0-9]*$";
+    private static final String NUMBER_REGEX = "^[0-9]*$";
 
     public static List<Integer> getBalls() {
         System.out.println("숫자를 입력해주세요 : ");
@@ -22,14 +22,14 @@ public class InputView {
         return Integer.parseInt(status);
     }
 
-    private static String inputNumber() {
+    public static String inputNumber() {
         String input = Console.readLine();
         validateNumber(input);
         return input;
     }
 
     private static void validateNumber(String input) {
-        if (!input.matches(NUMBER_PATTERN)) {
+        if (!input.matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
         }
     }
