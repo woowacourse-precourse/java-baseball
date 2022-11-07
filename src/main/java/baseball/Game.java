@@ -26,7 +26,7 @@ public class Game {
 
 	public boolean restart() {
 		System.out.println(RESTART_MESSAGE);
-		String restart = readLine();
+		String restart = Valid.validRestartNumber(readLine());
 
 		if (restart.equals("1")) {
 			return true;

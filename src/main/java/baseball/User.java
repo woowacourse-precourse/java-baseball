@@ -14,7 +14,7 @@ public class User {
 
 	public void inputNumber() {
 		System.out.print(INPUT_MESSAGE);
-		String inputNumber = readLine();
+		String inputNumber = Valid.validInputNumber(readLine());
 		injectNumber.clear();
 
 		for (int index = 0; index < DIGIT_LENGTH; index++) {
