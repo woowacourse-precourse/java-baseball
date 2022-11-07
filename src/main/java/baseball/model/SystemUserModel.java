@@ -9,4 +9,9 @@ public class SystemUserModel {
 
     public SystemUserModel() {
     }
+
+    public Integer getDigit(int index) {
+        return digits.get(index);
+    }
+
 }
