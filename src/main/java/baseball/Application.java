@@ -7,6 +7,8 @@ public class Application {
         String userInput = new String();
         printGameStartMessage();
         do {
+            Game game = new Game();
+            game.start();
             printGameRestartMessage();
             userInput = Console.readLine();
         } while (parseUserInputForRestart(userInput));
