@@ -1,5 +1,5 @@
 package baseball.model;
 
 public enum BallStatus {
-    BALL, STRIKE
+    BALL, NOTHING, STRIKE
 }

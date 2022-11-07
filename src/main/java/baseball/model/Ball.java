@@ -33,7 +33,7 @@ public class Ball {
         if(isBall(ball)){
             return BallStatus.BALL;
         }
-        return null;
+        return BallStatus.NOTHING;
     }
 
     private boolean isStrike(Ball ball) {

@@ -1,6 +1,5 @@
 package baseball.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -40,5 +39,11 @@ class BallTest {
     @Test
     void ball() {
         assertThat(ball.match(new Ball(1, 1))).isEqualTo(BallStatus.BALL);
+    }
+
+    @DisplayName("같은 수가 전혀 없으면 낫싱이다.")
+    @Test
+    void nothing() {
+        assertThat(ball.match(new Ball(1, 2))).isEqualTo(BallStatus.NOTHING);
     }
 }
