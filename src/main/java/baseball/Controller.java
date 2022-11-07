@@ -7,30 +7,29 @@ import java.util.Map;
 
 public class Controller {
 
-    private static List<Integer> computerNumber;
-    private static boolean isPlaying = true;
+    private List<Integer> computerNumber;
+    private List<Integer> playerNumber;
+    private Map<String, Integer> resultMap;
+    private boolean isPlaying = true;
+
     private static final String STRIKE ="strike";
     private static final String STRIKE_KOR ="스트라이크";
     private static final String BALL ="ball";
     private static final String BALL_KOR ="볼";
     private static final String NOTHING ="nothing";
     private static final String NOTHING_KOR ="낫싱";
+    private static final int DIGITS = Rule.DIGITS.toInt();
+    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
+    private static final String COMMAND_END = Rule.COMMAND_END.toString();
 
-    private static final int DIGITS = Rule.DISITS.getValue();
-    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.getValue()+"";
-    private static final String COMMAND_END = Rule.COMMAND_END.getValue()+"";
 
     public void generate() {
-        //1. 컴퓨터 수 생성
+        View.printStart();
         computerNumber = Model.createComputerNumber();
         do {
-            //2.플레이어수 생성(예외)
-            List<Integer> playerNumber = Model.createPlayerNumber();
-            //3. 플레이어 수 비교하기
-            Map<String, Integer> resultMap = checkAnswer(computerNumber, playerNumber);
-            //4.힌트 출력하기
+            playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
+            resultMap = checkAnswer(computerNumber, playerNumber);
             View.printHint(createHint(resultMap));
-            //5.정답확인하기 (예외)
             if (isCorrect(resultMap)) {
                 String exitInput = View.getExitInput();
                 restartOrEnd(exitInput);
@@ -38,24 +37,23 @@ public class Controller {
         }while(isPlaying);
     }
 
-    public static Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
+    public Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
         Map<String, Integer> resultMap = new HashMap<>();
-
-        for (int i = 0; i < computerNumber.size(); i++) { //세자리 수 비교
-            if (computerNumber.contains(playerNumber.get(i))) { //포함하는지
+        for (int i = 0; i < DIGITS ; i++) {
+            if (computerNumber.contains(playerNumber.get(i))) {
                 checkBallOrStrike(computerNumber.get(i), playerNumber.get(i), resultMap);
                 continue;
             }
+
             int oldValue = resultMap.getOrDefault(NOTHING, 0);
             resultMap.put(NOTHING, oldValue + 1);
-
         }
         return resultMap;
     }
 
-    //4-1. 볼인지 스트라이크인지 확인하기
-    public static void checkBallOrStrike(Integer computerNum, Integer playerNum, Map<String, Integer> resultMap) {
-        if (computerNum.equals(playerNum)) { //일치하는지
+    //볼인지 스트라이크인지 확인하기
+    public void checkBallOrStrike(Integer computerNum, Integer playerNum, Map<String, Integer> resultMap) {
+        if (computerNum.equals(playerNum)) {
             int oldValue = resultMap.getOrDefault(STRIKE, 0);
             resultMap.put(STRIKE, oldValue + 1);
             return;
@@ -64,7 +62,7 @@ public class Controller {
         resultMap.put(BALL, oldValue + 1);
     }
 
-    public static String createHint(Map<String, Integer> resultMap) {
+    public String createHint(Map<String, Integer> resultMap) {
         List<String> answer = new ArrayList<>();
         if (resultMap.containsKey(BALL)) {
             answer.add(String.format("%d%s", resultMap.get(BALL), BALL_KOR));
@@ -73,18 +71,18 @@ public class Controller {
             answer.add(String.format("%d%s", resultMap.get(STRIKE), STRIKE_KOR));
         }
         if (resultMap.containsKey(NOTHING)
-                && resultMap.get(NOTHING).equals(DIGITS)) {
+                && resultMap.get(NOTHING) == DIGITS) {
             answer.add(NOTHING_KOR);
         }
 
         return String.join(" ", answer).trim();
     }
 
-    public static boolean isCorrect(Map<String, Integer> resultMap) {
+    public boolean isCorrect(Map<String, Integer> resultMap) {
         return resultMap.containsKey(STRIKE) && resultMap.get(STRIKE) == DIGITS;
     }
 
-    public static void restartOrEnd(String input) {
+    public void restartOrEnd(String input) {
         if (input.equals(COMMAND_RESTART)) {
             computerNumber = Model.createComputerNumber();
         }
