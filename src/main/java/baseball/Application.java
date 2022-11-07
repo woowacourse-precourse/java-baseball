@@ -38,7 +38,7 @@ public class Application {
 
         inputNumber();
         calc(userNumbers, comNumbers);
-
+        printAResult(ball, strike);
     }
 
     static List<Integer> generateNumber() {
@@ -75,7 +75,7 @@ public class Application {
         return userNumbers;
     }
 
-    private static void calc(List<Integer> userNumbers, List<Integer> comNumbers) {
+    static void calc(List<Integer> userNumbers, List<Integer> comNumbers) {
         strike = ball = 0;
         for (int i = 0; i < 3; i++) {
             int digit = userNumbers.get(i);
@@ -87,5 +87,21 @@ public class Application {
         }
     }
 
+    private static void printAResult(int ball, int strike) {
+        if (ball != 0) {
+            System.out.printf("%d볼", ball);
+        }
 
+        if (ball != 0) {
+            if (strike == 0) {
+                System.out.println(ball + "볼");
+            } else {
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            }
+        } else if (strike == 0) {
+            System.out.println("낫싱");
+        } else {
+            System.out.println(strike + "스트라이크");
+        }
+    }
 }
