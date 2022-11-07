@@ -39,7 +39,7 @@ public class Application {
     }
 
     // <상대 컴퓨터의 3자리수 랜덤숫자뽑기 메서드>
-    public static List<Integer> computerThreeNum() {
+    public static final List<Integer> computerThreeNum() {
         // 1~9로 이루어진 서로 다른 3자리 수 List<Integer> [0,0,0]
         // 1~9까지 수의 랜덤숫자 뽑기로 자리 하나씩 채우기
         // Random값 추출 -> camp.nextstep.edu.missionutile.Randoms의 pickNumberInRange() 활용
@@ -66,24 +66,28 @@ public class Application {
         // checkValidation 호출
         // computerThreeNum 호출
         List<Integer> computerThreeNum = computerThreeNum();
-        List<Integer> myThreeNum = myThreeNum();
-        checkValidation(myThreeNum);
-        boolean equalList = equalList(computerThreeNum, myThreeNum);
-        if (equalList == false) {
-            int strike = strike(computerThreeNum, myThreeNum);
-            int ball = ball(computerThreeNum, myThreeNum);
-        }
+        while (true) {
+            List<Integer> myThreeNum = myThreeNum();
+            checkValidation(myThreeNum);
+            boolean equalList = equalList(computerThreeNum, myThreeNum);
+            if (equalList == false) {
+                int strike = strike(computerThreeNum, myThreeNum);
+                int ball = ball(computerThreeNum, myThreeNum);
+                continue;
+            }
 
+        }
     }
 
     public static boolean equalList(List<Integer> computerThreeNum, List<Integer> myThreeNum) {
         // list A.containsAll(list B) 리스트 내용 비교
-        boolean equalList = true;
+        boolean equalList = false;
         // index, 내용 같으면 true ------> 3스트라이크!
         if (myThreeNum.equals(computerThreeNum)) {
             System.out.println("3 스트라이크!");
             System.out.println("3개의 숫자를 모두 맞히셨습니다!");
             System.out.println("게임종료");
+            return true;
         }
         return equalList;
     }
