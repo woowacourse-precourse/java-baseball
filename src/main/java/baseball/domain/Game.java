@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.validator.InputValidator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -15,6 +16,15 @@ public class Game {
     }
 
     public void start() {
+        try {
+            play();
+
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    public void play() {
         OutputView.printGameStartMessage();
         computer.generateAnswer();
 
@@ -25,6 +35,7 @@ public class Game {
             OutputView.printAnswerInputGuideMessage();
 
             String stringGuessedAnswer = InputView.getGuessedAnswer();
+            InputValidator.validateInputForm(stringGuessedAnswer);
             user.setGuessedAnswer(stringGuessedAnswer);
 
             Integer[] guessedAnswer = user.getGuessedAnswer();
