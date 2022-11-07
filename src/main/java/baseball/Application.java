@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 /*
 1. 게임을 시작한다. -> 게임 시작 메소드 필요
@@ -20,5 +22,17 @@ import java.util.ArrayList;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    }
+}
+
+class Game{
+
+    // 1. 난수 발생 메서드 구현
+    public ArrayList<Integer> makingRandomNum(){
+        ArrayList<Integer> randomNum = new ArrayList<>();
+        for(int i = 0; i < 3; i ++){
+            randomNum.add(Randoms.pickNumberInRange(1,9));
+        }
+        return randomNum;
     }
 }
