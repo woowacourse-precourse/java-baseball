@@ -22,6 +22,17 @@ public class Application {
         } while (restart());
     }
 
+    private static int countBall(List<Integer> makeAnswer, List<Integer> inputNumber) {
+        int equalNumber = 0;
+        for (int i = 0; i < 3; i++) {
+            if (makeAnswer.contains(inputNumber.get(i))) {
+                equalNumber += 1;
+            }
+        }
+        int strike = countStrike(makeAnswer, inputNumber);
+        return equalNumber - strike;
+    }
+
     private static int countStrike(List<Integer> makeAnswer, List<Integer> inputNumber) {
         int strike = 0;
         for (int i = 0; i < 3; i++) {
