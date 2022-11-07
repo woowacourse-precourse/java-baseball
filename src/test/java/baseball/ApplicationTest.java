@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -79,6 +82,22 @@ class ApplicationTest extends NsTest {
     void checkReplayNumberTest() {
 
         assertThatThrownBy(() -> Application.checkReplayNumber("3")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void countingBallTest() {
+
+        // given
+        List<Integer> random_input = new ArrayList<>();
+        random_input.add(1);
+        random_input.add(2);
+        random_input.add(3);
+
+        // when
+        int[] user_input = {2, 3, 1};
+
+        // then
+        assertThat(Application.countingBall(0, user_input, random_input)).isEqualTo(3);
     }
 
     @Override
