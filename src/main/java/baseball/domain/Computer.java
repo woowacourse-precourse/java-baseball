@@ -1,23 +1,17 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
+import baseball.util.GenerateComputerGameNumber;
 import java.util.List;
 
 public class Computer {
     private List<Integer> computerGameNumbers;
+    private GenerateComputerGameNumber generateComputerGameNumber = new GenerateComputerGameNumber();
 
     public List<Integer> getComputerGameNumbers() {
         return computerGameNumbers;
     }
 
     public void setupGameNumbers() {
-        computerGameNumbers = new ArrayList<>();
-        while (computerGameNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerGameNumbers.contains(randomNumber)) {
-                computerGameNumbers.add(randomNumber);
-            }
-        }
+        computerGameNumbers = generateComputerGameNumber.generateComputerGameNumber();
     }
 }
