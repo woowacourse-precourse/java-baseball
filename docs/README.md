@@ -27,4 +27,6 @@
 4. 예외 사항
 - 잘못된 값 입력 시 IllegalArgumentException 발생 후 종료.
   - 진행 중: 세 자리의 숫자가 아님, 세 자리에 같은 숫자가 포함됨.
+    - 숫자가 아닌 경우? userInput을 int로 변환하지 말고 char로 처리한다
   - 종료: 1 혹은 2가 아님.
+    - 숫자가 아닌 경우? userInput을 int로 변환하지 말고 char로 처리한다
