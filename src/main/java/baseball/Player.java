@@ -9,9 +9,6 @@ import java.util.List;
 import static baseball.SystemMessage.*;
 
 public class Player {
-    protected static List<Integer> answer;
-    public Player(){}
-
     public static List<Integer> splitAnswer(String number){
         List<Integer> list = new ArrayList<>();
         for(int i = 0; i < number.length(); i++){
@@ -20,10 +17,10 @@ public class Player {
         return list;
     }
     public static List<Integer> getAnswer(){
-        List<Integer> list = new ArrayList<>();
         System.out.println(SystemMessage.REQUEST_INPUT_NUMBER);
-        String str = Console.readLine();
-        list = splitAnswer(str);
+        String inputNumber = Console.readLine();
+        validateNumber(inputNumber);
+        List<Integer> list = splitAnswer(inputNumber);
         return list;
     }
 
