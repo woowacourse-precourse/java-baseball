@@ -46,16 +46,19 @@ public class BaseballGameRunner {
     private boolean checkRestart() {
         System.out.println(BASEBALL_GAME_RESTART_CHECK_MESSAGE);
 
-        int restartCheck = Integer.parseInt(Console.readLine());
+        try {
+            int restartCheck = Integer.parseInt(Console.readLine());
 
-        if (restartCheck == BASEBALL_GAME_RESTART) {
-            return true;
+            if (restartCheck == BASEBALL_GAME_RESTART) {
+                return true;
+            }
+            if (restartCheck == BASEBALL_GAME_EXIT) {
+                return false;
+            }
+            return checkRestart();
+        } catch (NumberFormatException e) {
+            return checkRestart();
         }
-        if (restartCheck == BASEBALL_GAME_EXIT) {
-            return false;
-        }
-
-        return false;
     }
 
 }
