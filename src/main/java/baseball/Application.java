@@ -12,6 +12,10 @@ public class Application {
     public static final String optionOne = "1";
     public static final String optionTwo = "2";
 
+    public static final String nothingMessage = "낫싱;";
+    public static final String ballMessage = "볼";
+    public static final String strikeMessage = "스트라이크";
+
     public static void printMessage(String message){
         System.out.println(message);
     }
@@ -77,6 +81,17 @@ public class Application {
         result.add(ball);
         result.add(strike);
         return result;
+    }
+
+    public static String createGuessResultMessage(List <Integer> result){
+        int ball = result.get(0);
+        int strike = result.get(1);
+        String message = "";
+        if(ball==0 && strike==0) message = nothingMessage;
+        else if(ball==0 && strike!=0) message = Integer.toString(strike).concat(strikeMessage);
+        else if(ball!=0 && strike==0) message = Integer.toString(ball).concat(ballMessage);
+        else if(ball!=0 && strike!=0) message = ball + ballMessage+ " " + strike + strikeMessage;
+        return message;
     }
 
     public static void main(String[] args) {
