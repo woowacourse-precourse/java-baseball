@@ -28,21 +28,30 @@ class BaseballTest {
 
     @Test
     void createPlayerTest() {
-        String input1 = "123";
-        String input2 = "1234";
-        String input3 = "1233";
-        String input4 = "12";
+        String input = "123";
 
-        assertThat(Baseball.class).isEqualTo(Baseball.createPlayer(input1).getClass());
+        assertThat(Baseball.class).isEqualTo(Baseball.createPlayer(input).getClass());
+    }
+
+    @Test
+    void validateSameNumberTest(){
+        String input = "1233";
+
+        assertThatThrownBy(() -> Baseball.createPlayer(input))
+                .isInstanceOf(IllegalArgumentException.class);
+
+
+    }
+
+    @Test
+    void validateInputNumberCntTest(){
+        String input1 = "1234";
+        String input2 = "12";
+
+        assertThatThrownBy(() -> Baseball.createPlayer(input1))
+                .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(() -> Baseball.createPlayer(input2))
                 .isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> Baseball.createPlayer(input3))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> Baseball.createPlayer(input4))
-                .isInstanceOf(IllegalArgumentException.class);
-
     }
 }
