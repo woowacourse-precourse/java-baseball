@@ -12,8 +12,12 @@ public class Computer {
     private List<Integer> number;
 
     public void setNumber() {
-        BaseballNumber baseballNumber = new BaseballNumber(createComputerNum());
-        this.number = baseballNumber.getNumber();
+        try {
+            BaseballNumber baseballNumber = new BaseballNumber(createComputerNum());
+            this.number = baseballNumber.getNumber();
+        } catch (Exception e) {
+            setNumber();
+        }
     }
 
     public List<Integer> getNumber() {
