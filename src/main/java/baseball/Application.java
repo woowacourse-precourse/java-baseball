@@ -16,12 +16,11 @@ public class Application {
             computerNum = createRandomNum();
             String checkMessage = "";
             while (!(checkMessage.equals("3스트라이크"))) {
-                String userNum = guessNum();
+                String userNum = guessNum(inputValue());
                 checkMessage = checkNum(computerNum, userNum);
-                System.out.println(computerNum);
                 System.out.println(checkMessage);
             }
-            run = closeOrRestart();
+            run = closeOrRestart(inputValue());
         }
     }
 
@@ -63,21 +62,19 @@ public class Application {
         return ballCnt - strikeCnt + "볼 " + strikeCnt + "스트라이크";
     }
 
-    public static String guessNum() {
-        String userName = readLine();
-        if (userName.length() != 3) {
+    public static String guessNum(String userNum) {
+        if (userNum.length() != 3) {
             throw new IllegalArgumentException();
         }
-        for (Character x : userName.toCharArray()) {
+        for (Character x : userNum.toCharArray()) {
             if (!Character.isDigit(x)) {
                 throw new IllegalArgumentException();
             }
         }
-        return userName;
+        return userNum;
     }
 
-    public static boolean closeOrRestart() {
-        String oneOrTwo = readLine();
+    public static boolean closeOrRestart(String oneOrTwo) {
         if (oneOrTwo.equals("1")) {
             return true;
         } else if (oneOrTwo.equals("2")) {
@@ -87,5 +84,7 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-
+    public static String inputValue() {
+        return readLine();
+    }
 }
