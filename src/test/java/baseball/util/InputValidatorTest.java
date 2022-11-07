@@ -15,4 +15,12 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("숫자에 0이 포함되어 있으면 예외를 발생시킨다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"120", "102", "034"})
+    void validateZero(String input) {
+        assertThatThrownBy(() -> InputValidator.validate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
