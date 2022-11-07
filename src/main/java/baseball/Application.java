@@ -18,7 +18,8 @@ public class Application {
         printGameStartMessage(); //
         do {
             playGame();
-        } while (reGameMessage());
+            retryGameMessage();
+        } while (retryGame());
         /*
         1. 난수 생성
         2. 유저 입력
@@ -33,17 +34,17 @@ public class Application {
         List<Integer> computerNumber = generateComputerNumber();
         String computerNumberResult = computerNumberListToString(computerNumber);
         do {
-            System.out.print("숫자를 입력해 주세요 : ");
+            numberInputMessage();
             String userInput = Console.readLine();
-
+            System.out.println("컴퓨터의 숫자 : " + computerNumberResult);
             checkedValidate(userInput);
             strikeResult = countStrike(userInput, computerNumberResult);
             ballResult = countBall(userInput, computerNumberResult);
             if (!checkedNotThing(ballResult, strikeResult)) {
-                if (ballResult != ZERO) {
+                if (ballResult > ZERO) {
                     System.out.print(ballResult+ "볼 ");
                 }
-                if (strikeResult != ZERO) {
+                if (strikeResult > ZERO) {
                     System.out.print(strikeResult+ "스트라이크 ");
                 }
             }
@@ -51,11 +52,14 @@ public class Application {
         } while (strikeResult != 3);
         printGameSetMessage();
     }
-
-    // 얘도 나눠라 한 번에 두개 한다.
-    public static boolean reGameMessage() {
-        String reGameInput = Console.readLine();
+    public static void numberInputMessage(){
+        System.out.println(NUMBER_INPUT_MSG);
+    }
+    public static void retryGameMessage(){
         System.out.println(REGAME_SUGGESTION_MSG);
+    }
+    public static boolean retryGame() {
+        String reGameInput = Console.readLine();
         if (reGameInput.equals("1")) {
             return true;
         }

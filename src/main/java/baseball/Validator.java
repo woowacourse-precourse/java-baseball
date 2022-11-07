@@ -17,7 +17,6 @@ public class Validator {
             throw new IllegalArgumentException(RANGE_ERR_MSG);
         }
     }
-
     /**
      * 입력받은 수에 0이 포함되어 있을 시
      */
