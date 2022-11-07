@@ -37,7 +37,6 @@ public class Application {
 
     public static boolean playGame() {
         List<Integer> computerNumber = createThreeDigitsRandomNumber();
-        System.out.println(computerNumber);
         while (true) {
             System.out.print(INPUT_NUMBER_NOTICE);
             String inputNumber = Console.readLine();
