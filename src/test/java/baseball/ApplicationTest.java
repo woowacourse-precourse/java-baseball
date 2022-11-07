@@ -42,6 +42,42 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력값_테스트_비정상입력_길이초과() {
+        assertThatThrownBy(() -> runException("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_INPUT_RADIX);
+
+    }
+
+    @Test
+    void 입력값_테스트_비정상입력_길이미달() {
+        assertThatThrownBy(() -> runException("1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_INPUT_RADIX);
+    }
+
+    @Test
+    void 입력값_테스트_비정상입력_문자포함() {
+        assertThatThrownBy(() -> runException("12c"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_INPUT_VALUE);
+    }
+
+    @Test
+    void 입력값_테스트_비정상입력_같은숫자포함() {
+        assertThatThrownBy(() -> runException("224"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DUPLICATE_INPUT_VALUE);
+    }
+
+    @Test
+    void 입력값_테스트_비정상입력_범위벗어난_숫자() {
+        assertThatThrownBy(() -> runException("102"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INVALID_INPUT_VALUE);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
