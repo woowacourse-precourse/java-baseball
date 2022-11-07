@@ -8,17 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceImpl implements Service {
-
+    GetInput getInput = new GetInput();
+    ChangeToChar changeToChar = new ChangeToChar();
     public ServiceImpl() {
     }
     @Override
     public void readyGame() {
         int strike = 0;
-        char[] number = // 숫자생성;
+        char[] number = changeToChar.changetoChar(randNumGenerate(1, 9));
 
         while(strike != 3) {
             System.out.print("숫자를 입력해주세요 : ");
-            char[] input = //입력
+            char[] input = changeToChar.changetoChar(getInput.getInput());
             int[] count = baseBall(number,input);
             strike = count[0];
         }
@@ -52,4 +53,5 @@ public class ServiceImpl implements Service {
 
         return number;
     }
+
 }
