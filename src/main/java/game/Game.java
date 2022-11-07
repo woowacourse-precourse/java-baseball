@@ -26,9 +26,8 @@ public class Game {
         }
     }
     public void getCaseThreeStrike() {
-        Announce.finishAnnounce();
-        String oneOrTwo = Console.readLine();
-        finishOrRestart(oneOrTwo);
+        finishAnnounce();
+        finishOrRestart(Console.readLine());
     }
     public void getCaseNotThreeStrike() {
         System.out.println(hint.printHint());
@@ -45,8 +44,7 @@ public class Game {
     }
     public void repeatGameUntilSuccess() {
         System.out.print("숫자를 입력해주세요 : ");
-        String userEnterNumber = Console.readLine();
-        enterNumber.getList(userEnterNumber);
+        enterNumber.getList(Console.readLine());
         count.calStrike(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
         count.calBall(randomNumber.getRandomNumber(), enterNumber.getEnterNumber());
         separateCase();
