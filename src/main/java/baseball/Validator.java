@@ -34,7 +34,7 @@ public class Validator {
         return number < '1' || '9' < number;
     }
 
-    public boolean checkFinish(String input) {
+    public boolean userWantRestart(String input) {
         if (Objects.equals(input, RESTART)) {
             return true;
         } else if (Objects.equals(input, FINISH)) {

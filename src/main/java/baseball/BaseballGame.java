@@ -45,21 +45,17 @@ public class BaseballGame {
         validator.validateInput(input);
 
         if (checker.isUserGuessRight(input, this.randomNumber)) {
-            this.isPlaying = isRestart();
-            return;
+            this.checkUserDecision();
         }
-
-        this.isPlaying = true;
     }
 
-    private boolean isRestart() {
+    private void checkUserDecision() {
 
-        if (validator.checkFinish(Console.readLine())) {
-            this.randomNumber = generator.generateRandomNumber();
-            return true;
+        if (validator.userWantRestart(Console.readLine())) {
+            init();
         }
 
-        return false;
+        this.isPlaying = false;
     }
 
 }
