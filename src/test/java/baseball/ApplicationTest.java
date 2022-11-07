@@ -167,6 +167,18 @@ class ApplicationTest extends NsTest {
 
         assertThat(expectedOutput).isEqualTo(realOutput);
     }
+
+    @Test
+    void isAllStrike_올스트라이크인_경우_참(){
+        List<Integer> strikeCnts = List.of(3, 2);
+        List<Boolean> expectedOutput = List.of(true, false);
+
+        List<Boolean> realOutput = strikeCnts.stream()
+                .map(cnt -> Game.isAllStrike(cnt))
+                .collect(Collectors.toList());
+
+        assertThat(expectedOutput).isEqualTo(realOutput);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
