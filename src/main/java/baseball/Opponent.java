@@ -26,4 +26,8 @@ public class Opponent {
         System.out.println(list);
         return list;
     }
+
+    public static Integer getNumber(int idx){
+        return answer.get(idx);
+    }
 }
