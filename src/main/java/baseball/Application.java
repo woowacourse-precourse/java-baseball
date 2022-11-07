@@ -22,7 +22,7 @@ public class Application {
             if (getResult(computerNumbersList, userNumbersList)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                startSwitch = Integer.parseInt(Console.readLine());
+                startSwitch = getStartSwitch();
                 computerNumbersList = getRandomThreeNumbers();
             }
         }
@@ -46,6 +46,14 @@ public class Application {
             }
         }
         return false;
+    }
+
+    public static int getStartSwitch(){
+        String stringStartSwitch = Console.readLine();
+        if(!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(stringStartSwitch);
     }
 
     public static List<Integer> getRandomThreeNumbers() {
