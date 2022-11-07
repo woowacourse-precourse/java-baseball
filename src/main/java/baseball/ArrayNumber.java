@@ -18,4 +18,8 @@ public class ArrayNumber {
     private int[] digits;
 
     public ArrayNumber() {}
+
+    public int[] getDigits() {
+        return this.digits;
+    }
 }
