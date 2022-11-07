@@ -59,6 +59,27 @@ public class StringTest {
     }
 
     @Test
+    void ball_개수(){
+        assertThat(0).isEqualTo(BaseballGame.ballCount(Arrays.asList(1, 2, 3),Arrays.asList(1, 2, 3)));
+        assertThat(2).isEqualTo(BaseballGame.ballCount(Arrays.asList(1, 2, 3),Arrays.asList(3, 2, 1)));
+        assertThat(1).isEqualTo(BaseballGame.ballCount(Arrays.asList(1, 3, 2),Arrays.asList(4, 2, 5)));
+    }
+
+    @Test
+    void strike_개수(){
+        assertThat(3).isEqualTo(BaseballGame.strikeCount(Arrays.asList(1, 2, 3),Arrays.asList(1, 2, 3)));
+        assertThat(1).isEqualTo(BaseballGame.strikeCount(Arrays.asList(1, 2, 3),Arrays.asList(3, 2, 1)));
+        assertThat(0).isEqualTo(BaseballGame.strikeCount(Arrays.asList(1, 2, 3),Arrays.asList(4, 3, 5)));
+    }
+
+    @Test
+    void 힌트제공(){
+        assertThat(Arrays.asList(0,3)).isEqualTo(BaseballGame.HintProvider(Arrays.asList(1, 2, 3),Arrays.asList(1, 2, 3)));
+        assertThat(Arrays.asList(2,1)).isEqualTo(BaseballGame.HintProvider(Arrays.asList(1, 2, 3),Arrays.asList(3, 2, 1)));
+        assertThat(Arrays.asList(1,0)).isEqualTo(BaseballGame.HintProvider(Arrays.asList(1, 2, 3),Arrays.asList(4, 3, 5)));
+    }
+
+    @Test
     void split_메서드로_주어진_값을_구분() {
         String input = "1,2";
         String[] result = input.split(",");
