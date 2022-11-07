@@ -65,4 +65,36 @@ class BaseballGameInputValidatorTest {
             assertTrue(result);
         }
     }
+
+    @Nested
+    @DisplayName("재시작 유효성 검증")
+    class ReplayInputValidation {
+
+        @DisplayName("잘못된 값인 경우")
+        @Test
+        public void invalidInput() {
+            // given
+            String input = "a";
+
+            // when
+            final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
+
+            // then
+            assertFalse(result);
+        }
+
+        @DisplayName("올바른 값인 경우")
+        @Test
+        public void validInput() {
+            // given
+            String input = "1";
+
+            // when
+            final boolean result = BaseballGameInputValidator.validatePlayerNumber(input);
+
+            // then
+            assertTrue(result);
+        }
+
+    }
 }
