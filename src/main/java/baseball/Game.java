@@ -3,12 +3,22 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
     private List<Integer> computerNumber = new ArrayList<>();
 
-    public void start() {}
+    public void start() {
+        computerNumber = getComputerNumber();
+        List<Integer> userNumber = new ArrayList<>();
+        do {
+            printUserInputPrompt();
+            userNumber = parseUserInput(Console.readLine());
+            isUserNumberValid(userNumber);
+        } while (!isUserNumberCorrect(userNumber));
+        printGameEnd();
+    }
 
     public void setComputerNumber() {
         List<Integer> newComputerNumber = new ArrayList<>();
