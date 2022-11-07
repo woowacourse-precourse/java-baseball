@@ -2,7 +2,6 @@ package iosystem;
 
 import baseball.GameMessage;
 import camp.nextstep.edu.missionutils.Console;
-import user.UserValidator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,15 +15,15 @@ public class InputSystem {
     public static List<Integer> inputTryNumber(){
         System.out.print(GameMessage.TRY_CORRECT);
         String input = Console.readLine();
-        UserValidator.validate(input);
+        TryValidator.validate(input);
         List<String> characterList = Arrays.asList(input.split(""));
         return characterList.stream().map(Integer::valueOf).collect(Collectors.toList());
     }
 
-    public boolean inputRetryNumber(){
+    public static boolean inputRetryNumber(){
         System.out.print(GameMessage.RETRY_GAME);
         String input = Console.readLine();
-        // TODO 검증
+        RetryValidator.validate(input);
         int isRetrySignalNumber = Integer.parseInt(input);
         return isRetrySignal(isRetrySignalNumber);
     }
