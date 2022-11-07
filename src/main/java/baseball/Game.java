@@ -93,8 +93,12 @@ public class Game {
     }
 
     private int countStrikes(List<Integer> user, List<Integer> computer) {
-        // TODO 스트라이크 갯수를 반환
-        return 0;
+        int count = 0;
+        for(int i=0; i<3; i++) {
+            if (user.get(i).equals( computer.get(i) )) count++;
+        }
+
+        return count;
     }
 
     private int countBalls(List<Integer> user, List<Integer> computer) {
