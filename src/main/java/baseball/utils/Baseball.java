@@ -19,11 +19,10 @@ public class Baseball {
         return new ArrayList<>(baseballNumber);
     }
 
-    private static void validateBaseballNumber(LinkedHashSet<Integer> baseballNumber) throws IllegalArgumentException {
-        long ballCnt = baseballNumber.stream().distinct().count();
-        // LinkedHashSet 사용으로 서로 다른 숫자 검증부 생략
+    private static void validateSameNumber(LinkedHashSet<Integer> balls) {
+        long ballCnt = balls.stream().distinct().count();
         if (ballCnt != TOTAL_BALL_CNT) {
-            throw new IllegalArgumentException("Exception because of inputted Number: " + baseballNumber.toString());
+            throw new IllegalArgumentException("Exception because of inputted Number: " + balls.toString());
         }
     }
 
@@ -50,7 +49,7 @@ public class Baseball {
             num = Character.getNumericValue(inputNumber.charAt(i));
             playerBalls.add(num);
         }
-        validateBaseballNumber(playerBalls);
+        validateSameNumber(playerBalls);
         return new Baseball(playerBalls);
     }
 }
