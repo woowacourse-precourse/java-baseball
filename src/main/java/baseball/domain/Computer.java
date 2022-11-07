@@ -14,4 +14,8 @@ public class Computer {
         this.arbitraryNumbers = Randoms.pickUniqueNumbersInRange(INCLUSIVE_START_NUMBER, INCLUSIVE_END_NUMBER, NUMBER_OF_NUMBERS);
     }
 
+    public List<Integer> getNumbers() {
+        return arbitraryNumbers;
+    }
+
 }

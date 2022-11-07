@@ -27,7 +27,12 @@ public class BaseballGameController {
     }
 
     private void startGame() {
-        baseballGameView.displayPleaseEnterNumber();
+        baseballGameService.initComputer();
+        do {
+            baseballGameView.displayPleaseEnterNumber();
+            baseballGameService.throwBaseball();
+        } while (baseballGameService.isThreeStrike());
+        //finish game
     }
 
     private void readInputOfOneAndTwo() {
