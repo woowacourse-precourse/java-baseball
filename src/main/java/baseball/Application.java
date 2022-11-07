@@ -4,14 +4,31 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        String restart_or_not = "";
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while(true) {
-            List<Integer> answer = Game.MakeAnswer();
-            List<Integer> user_num_list = User.InputNum();
+        int ball_num = 0, strike_num = 0;
 
-            int ball_num = Game.HowManyBall(answer, user_num_list);
-            int strike_num = Game.HowManyStrike(answer, user_num_list);
-            System.out.println(Game.WhatBallStrike(ball_num, strike_num));
+        List<Integer> answer = Game.MakeAnswer();
+        while(true) {
+            if (restart_or_not.equals("1")) {
+                restart_or_not = "";
+                continue;
+            } else if (restart_or_not.equals("2")) {
+                System.out.println("게임을 종료합니다.");
+                break;
+            } else {
+                List<Integer> user_num_list = User.InputNum();
+
+                strike_num = Game.HowManyStrike(answer, user_num_list);
+                ball_num = Game.HowManyBall(answer, user_num_list) - strike_num;
+                System.out.println(Game.WhatBallStrike(ball_num, strike_num));
+            }
+            if (strike_num == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                restart_or_not = Game.RestartOrNot();
+                answer = Game.MakeAnswer();
+                strike_num = 0;
+            }
         }
     }
 }
@@ -64,6 +81,23 @@ class Game {
         } else {
             return ball_num + "볼 " + strike_num + "스트라이크";
         }
+    }
+
+    static String RestartOrNot() {
+        String restart_or_not = "";
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restart_or_not = scanner.nextLine();
+            if (!(restart_or_not.equals("1")) && !(restart_or_not.equals("2"))) {
+                System.out.println("1 또는 2를 입력해 주세요.");
+            } else {
+                break;
+            }
+        }
+
+        return restart_or_not;
     }
 }
 
