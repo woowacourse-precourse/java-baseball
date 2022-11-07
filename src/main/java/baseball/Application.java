@@ -18,7 +18,10 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             String userNumber = Console.readLine();
             checkNumberLength(userNumber);
-            checkAdequateNumber(userNumber);
+            for (int i = 0; i < 3; i++) {
+                int number = charToInt(userNumber.charAt(i));
+                checkAdequateNumber(number);
+            }
             addUserNumber(user, userNumber);
 
             Count c = new Count();
@@ -54,12 +57,9 @@ public class Application {
         return Character.getNumericValue(number);
     }
 
-    static void checkAdequateNumber(String userNumber) throws IllegalArgumentException {
-        for (int i = 0; i < 3; i++) {
-            int n = Character.getNumericValue(userNumber.charAt(i));
-            if (n < 1 || n > 9) {
+    static void checkAdequateNumber(int number) throws IllegalArgumentException {
+        if (number < 1 || number > 9) {
                 throw new IllegalArgumentException();
-            }
         }
     }
 
