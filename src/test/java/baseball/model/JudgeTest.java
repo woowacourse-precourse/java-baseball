@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static baseball.model.Judge.Result.*;
-
 class JudgeTest {
 
     private Judge judge = new Judge();
@@ -28,22 +26,12 @@ class JudgeTest {
     }
 
     @Test
-    void isStrikeOrBall_볼_스트라이크_판별() {
+    void countAllScoreOfStrikeAndBall_총_점수_계산() {
         judge.setAnswer(Arrays.asList(1,2,3));
         judge.setPlayerNumbers(Arrays.asList(1,3,9));
 
-        Assertions.assertEquals(judge.isBallOrStrike(0), STRIKE);
-        Assertions.assertEquals(judge.isBallOrStrike(1), BALL);
-        Assertions.assertEquals(judge.isBallOrStrike(2), NOTHING);
-    }
-
-    @Test
-    void countScoreOfStrikeAndBall_총_점수_계산() {
-        judge.setAnswer(Arrays.asList(1,2,3));
-        judge.setPlayerNumbers(Arrays.asList(1,3,9));
-
-        Score score = judge.countScoreOfStrikeAndBall();
-        Assertions.assertEquals(score.getStrike(), 1);
-        Assertions.assertEquals(score.getBall(), 1);
+        judge.countAllScoreOfStrikeAndBall();
+        Assertions.assertEquals(judge.getStrike(), 1);
+        Assertions.assertEquals(judge.getBall(), 1);
     }
 }

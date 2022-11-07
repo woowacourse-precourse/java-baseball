@@ -1,7 +1,7 @@
 package baseball.view;
 
 import baseball.model.Hint;
-import baseball.model.Score;
+import baseball.model.Judge;
 
 public class OutputView {
     private static final String START_GAME= "숫자 야구 게임을 시작합니다.";
@@ -35,12 +35,12 @@ public class OutputView {
         System.out.println(GAME_CLEAR);
     }
 
-    public static void printHint(Score score) {
-        Hint hint = score.getScoreHint();
+    public static void printHint(Judge judge) {
+        Hint hint = judge.getScoreHint();
 
         if (hint.equals(Hint.NOTHING)) OutputView.printNothing();
-        if (hint.equals(Hint.BALL_AND_STRIKE)) OutputView.printBallAndStrike(score.getBall(), score.getStrike());
-        if (hint.equals(Hint.ONLY_BALL)) OutputView.printBall(score.getBall());
-        if (hint.equals(Hint.ONLY_STRIKE)) OutputView.printStrike(score.getStrike());
+        if (hint.equals(Hint.BALL_AND_STRIKE)) OutputView.printBallAndStrike(judge.getBall(), judge.getStrike());
+        if (hint.equals(Hint.ONLY_BALL)) OutputView.printBall(judge.getBall());
+        if (hint.equals(Hint.ONLY_STRIKE)) OutputView.printStrike(judge.getStrike());
     }
 }

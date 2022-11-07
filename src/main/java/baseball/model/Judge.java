@@ -2,16 +2,13 @@ package baseball.model;
 
 import java.util.List;
 
-import static baseball.model.Judge.Result.*;
-
 public class Judge {
 
     private List<Integer> playerNumbers;
     private List<Integer> answer;
 
-    enum Result {
-        BALL, STRIKE, NOTHING;
-    }
+    private int ball;
+    private int strike;
 
     public Judge() {
 
@@ -26,23 +23,25 @@ public class Judge {
         return  (playerNumbers.equals(answer));
     }
 
-    public Score countScoreOfStrikeAndBall() {
-        Score score = new Score();
-        for (int i = 0; i< answer.size(); i++ ) {
-            Result result = isBallOrStrike(i);
-            if (result.equals(BALL)) score.countBall();
-            if (result.equals(STRIKE)) score.countStrike();
-        }
-        return score;
+    public Hint getScoreHint() {
+        if (ball == 0 && strike == 0) return Hint.NOTHING;
+        if (ball == 0) return Hint.ONLY_STRIKE;
+        if (strike == 0) return Hint.ONLY_BALL;
+        return Hint.BALL_AND_STRIKE;
     }
 
-    public Result isBallOrStrike(int index) {
+    public void countAllScoreOfStrikeAndBall() {
+        for (int i = 0; i< answer.size(); i++ ) {
+            countBallOrStrike(i);
+        }
+    }
+
+    public void countBallOrStrike(int index) {
         Integer target = playerNumbers.get(index);
 
         int findIndex = answer.indexOf(target);
-        if (findIndex == index) return STRIKE;
-        if (findIndex != -1) return BALL;
-        return NOTHING;
+        if (findIndex == index) strike++;
+        else if (findIndex != -1) ball++;
     }
 
     // 테스트용 set 메소드, 실제 개발에는 사용X
@@ -52,5 +51,13 @@ public class Judge {
 
     public void setAnswer(List<Integer> answer) {
         this.answer = answer;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
     }
 }
