@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Computer.NUMBER_COUNT_TO_CREATED;
+import static baseball.BaseballGameManager.NUMBER_COUNT_TO_CREATED;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
@@ -11,12 +11,12 @@ public class BaseballGame {
     private int strikeCount;
     private int ballCount;
 
-    private Computer computer = new Computer();
+    private BaseballGameManager gameManager = new BaseballGameManager();
     private MessageCreator messageCreator = new MessageCreator();
 
 
     public void start() {
-        computer.createRandomNumbers();
+        gameManager.createRandomNumbers();
         do {
             String input = inputAnswer();
             isWrongInputValue(input);
@@ -24,7 +24,7 @@ public class BaseballGame {
             messageCreator.printResultMessage(strikeCount, ballCount);
         } while ((strikeCount != 3));
 
-        computer.clearRandomNumbers();
+        gameManager.clearRandomNumbers();
         messageCreator.printGameClearMessage();
     }
 
@@ -35,7 +35,7 @@ public class BaseballGame {
     }
 
     private void calculateBallCount(String input) {
-        List<Integer> computerNumbers = computer.getRandomNumbers();
+        List<Integer> computerNumbers = gameManager.getRandomNumbers();
         strikeCount = (int) IntStream.range(0, 3)
                 .filter(idx -> computerNumbers.get(idx).equals(Integer.parseInt(String.valueOf(input.charAt(idx)))))
                 .count();

@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer {
+public class BaseballGameManager {
 
     public final static int NUMBER_COUNT_TO_CREATED = 3;
 
