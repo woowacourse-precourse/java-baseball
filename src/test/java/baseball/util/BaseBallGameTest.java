@@ -1,5 +1,6 @@
 package baseball.util;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,6 +11,14 @@ import java.io.PrintStream;
 import java.util.List;
 
 public class BaseBallGameTest {
+    private OutputStream captor;
+
+    @BeforeEach
+    final void init() {
+        captor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(captor));
+    }
+
     @Test
     void 랜덤값과_사용자입력값_비교_후_볼_스트라이크_갯수_반환() {
         List<Integer> computerValue = List.of(1, 2, 3);
@@ -22,9 +31,6 @@ public class BaseBallGameTest {
 
     @Test
     void 볼_스트라이크_프린트() {
-        OutputStream captor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(captor));
-
         List<Integer> ballStrikeStatus = List.of(3, 0);
         BaseBallGame.printByBallAndStrikeStatus(ballStrikeStatus);
 
@@ -33,9 +39,6 @@ public class BaseBallGameTest {
 
     @Test
     void 게임_시작() {
-        OutputStream captor = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(captor));
-
         final byte[] buf = "456\n189\n312\n123".getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
