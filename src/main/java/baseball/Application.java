@@ -75,6 +75,20 @@ public class Application {
         return NOT_STRIKE;
     }
 
+    static public int getBallCount(String randomNumber, String userGuessNumber) {
+        int ballCount = 0;
+
+        for (int randomNumberIndex = 0; randomNumberIndex < RANDOM_NUMBER_LENGTH; randomNumberIndex++) {
+            for (int userGuessNumberIndex = 0; userGuessNumberIndex < USER_GUESS_NUMBER_LENGTH; userGuessNumberIndex++) {
+                char randomNumberDigit = randomNumber.charAt(randomNumberIndex);
+                char userGuessNumberDigit = userGuessNumber.charAt(userGuessNumberIndex);
+                ballCount += isBall(randomNumberIndex, userGuessNumberIndex, randomNumberDigit, userGuessNumberDigit);
+            }
+        }
+
+        return ballCount;
+    }
+
     static public int isBall(int randomNumberIndex, int userGuessNumberIndex, char randomNumberDigit, char userGuessNumberDigit) {
         boolean sameIndex = randomNumberIndex == userGuessNumberIndex;
         boolean sameDigit = randomNumberDigit == userGuessNumberDigit;
