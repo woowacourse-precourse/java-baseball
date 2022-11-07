@@ -6,12 +6,7 @@ import java.util.List;
 
 public class OutputResolver {
     public void print() {
-        Integer ball = Result.getBall();
-        Integer strike = Result.getStrike();
-
-        String resultPrompt = buildPrompt(ball, strike);
-
-        System.out.println(resultPrompt);
+        System.out.println(buildPrompt(Result.getBall(), Result.getStrike()));
     }
 
     public void print(String prompt) {
