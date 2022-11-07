@@ -93,9 +93,17 @@ class ApplicationTest extends NsTest {
         assertThat(Application.compareNumber(computerNum, myNum, myIdx)).isEqualTo(result);
     }
 
-
-
-
+    @RepeatedTest(100)
+    void 결과출력(){
+        int ball = Randoms.pickNumberInRange(0,3);
+        int strike = Randoms.pickNumberInRange(0,3);
+        boolean isEnd = false;
+        System.out.println(ball+" "+strike);
+        if (strike == 3){
+            isEnd = true;
+        }
+        assertThat(Application.printResult(ball, strike)).isEqualTo(isEnd);
+    }
 
 
     @Override
