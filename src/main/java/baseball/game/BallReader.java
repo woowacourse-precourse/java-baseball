@@ -15,6 +15,10 @@ public class BallReader {
         this.requiredStrikes = 3;
     }
 
+    public BallReader(int countOfStrike) {
+        this.requiredStrikes = countOfStrike;
+    }
+
     public boolean isFinished(Ball userBall, Ball computerBall) {
         Map<ResultOfBall, Integer> result = getStrikeAndBall(userBall, computerBall);
         if (result.get(STRIKE) == null) {
