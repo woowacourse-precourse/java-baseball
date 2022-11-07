@@ -40,7 +40,6 @@ public class GameService {
         String userString = Console.readLine();
         Validation.checkInputNumber(userString);
         userList = makeList(userString);
-        System.out.println("유저: " + userList + ", 랜덤 숫자:" + answerList);
     }
 
     public List<Integer> makeList(String str) {
@@ -74,6 +73,5 @@ public class GameService {
             retryGame();
         if (responseNumber == 2)
             return;
-
     }
 }
