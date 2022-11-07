@@ -78,6 +78,7 @@ class BaseballGame {
     }
 
     private boolean checkResult() {
+        final int THREE_STRIKE=3;
         boolean threeStrike = false;
         List<String> resultForPlayer = new ArrayList<>();
         Map<HitStatus, Integer> result = countAllHitStatus();
@@ -87,7 +88,7 @@ class BaseballGame {
         }
         if (result.get(STRIKE) != 0) {
             resultForPlayer.add(result.get(STRIKE) + STRIKE.getName());
-            if (result.get(STRIKE) == 3) {
+            if (result.get(STRIKE) == THREE_STRIKE) {
                 threeStrike = true;
                 resultForPlayer.add("\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
