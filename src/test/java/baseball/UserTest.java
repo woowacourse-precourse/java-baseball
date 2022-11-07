@@ -82,7 +82,7 @@ public class UserTest {
 
     @Test
     void 빈_문자열_입력() {
-        final byte[] buf = new byte[1];
+        final byte[] buf = new String(" ").getBytes();
         System.setIn(new ByteArrayInputStream(buf));
 
         Assertions.assertThatThrownBy(() -> user.generateNumber()).isInstanceOf(IllegalArgumentException.class);
