@@ -2,8 +2,6 @@ package baseball;
 
 import baseball.utils.InputNumberUtil;
 import baseball.utils.RandomNumberGeneratorUtil;
-import baseball.validation.UserValidator;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -11,7 +9,6 @@ import static baseball.constant.BaseballConstant.GAME_FINISH;
 import static baseball.constant.BaseballConstant.GAME_START;
 import static baseball.constant.BaseballConstant.INPUT_NUMBER;
 import static baseball.constant.BaseballConstant.RESTART_GAME;
-import static baseball.constant.BaseballConstant.WRONG_FORMAT_NUMBER;
 
 public class Application {
 
@@ -34,11 +31,7 @@ public class Application {
         while (true) {
             System.out.print(INPUT_NUMBER);
 
-            String user = Console.readLine();
-
-            if (!UserValidator.inputNumberValidation(user)) {
-                throw new IllegalArgumentException(WRONG_FORMAT_NUMBER);
-            }
+            String user = InputNumberUtil.inputNumber();
 
             List<Integer> strikeAndBall = game.findStrikeAndBall(user, computer);
 
