@@ -52,4 +52,14 @@ public class Application {
         }
         return true;
     }
+    public static Integer cntContain(List<Integer> inputNumInfo, List<Integer> answerNumInfo) {
+        int contain = 0;
+        int inputNum = inputNumInfo.get(1);
+        int anwerNum = answerNumInfo.get(1);
+
+        if (inputNum == anwerNum) {
+            contain ++;
+        }
+        return contain;
+    }
 }
