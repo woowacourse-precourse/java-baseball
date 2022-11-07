@@ -12,9 +12,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static baseball.util.BaseballConst.MAX_BALL_COUNT;
+
 public class Player {
 
-    public static final int NUMBER_RANGE_SIZE = 3;
 
     private List<Integer> threeNumbers;
     private String inputString;
@@ -49,7 +50,7 @@ public class Player {
     }
 
     private void validateRange(List<Integer> integerList) {
-        if (integerList.size() != NUMBER_RANGE_SIZE) {
+        if (integerList.size() != MAX_BALL_COUNT) {
             throw new InputNumberOutOfRangeException(inputString);
         }
     }

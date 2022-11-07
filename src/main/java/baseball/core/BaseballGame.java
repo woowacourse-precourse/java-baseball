@@ -1,9 +1,12 @@
 package baseball.core;
 
 import baseball.console.ConsoleOutput;
+import baseball.util.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+
+import static baseball.util.BaseballConst.STRIKE_OUT;
 
 public class BaseballGame {
 
@@ -53,7 +56,7 @@ public class BaseballGame {
     }
 
     private boolean isWrongAnswer(BallStrike answer) {
-        return answer.getStrikeCount() != 3;
+        return answer.getStrikeCount() != STRIKE_OUT;
     }
 
     private void processFinishGame() {
