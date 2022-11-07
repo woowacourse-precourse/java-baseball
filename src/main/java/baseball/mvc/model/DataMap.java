@@ -7,7 +7,7 @@ public abstract class DataMap {
 
     private final Map<String, Object> dataMap;
 
-    public DataMap() {
+    protected DataMap() {
         this.dataMap = new HashMap<>();
     }
 
