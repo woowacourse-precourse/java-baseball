@@ -63,14 +63,10 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 9),
                 List.of(9, 5, 2)
         );
-        //when
+        //when & then
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < INPUT_CORRECT.length; i++) {
-            result.add(Application.parseUserInput(INPUT_CORRECT[i]));
-        }
-        //then
-        for (int i = 0; i < INPUT_CORRECT.length; i++) {
-            assertThat(result).isEqualTo(EXPECTED);
+            assertThat(Application.parseUserInput(INPUT_CORRECT[i])).isEqualTo(EXPECTED.get(i));
         }
     }
 
@@ -139,14 +135,14 @@ class ApplicationTest extends NsTest {
                 1,
                 0
         );
-        //when
-        List<Integer> result = new ArrayList<>();
+        //when & then
         for (int i = 0; i < A.size(); i++) {
-            result.add(Application.getStrikeCnt(A.get(i), B.get(i)));
+            assertThat(
+                    Application.getStrikeCnt(
+                            A.get(i), B.get(i)
+                    )
+            ).isEqualTo(EXPECTED.get(i));
         }
-
-        //then
-        assertThat(result).isEqualTo(EXPECTED);
     }
 
     @Test
@@ -202,14 +198,16 @@ class ApplicationTest extends NsTest {
                 3,
                 3
         );
-        //when
-        List<Integer> result = new ArrayList<>();
+        //when & then
         for (int i = 0; i < A.size(); i++) {
-            result.add(Application.getBallCnt(A.get(i), B.get(i)));
+            assertThat(
+                    Application.getBallCnt(
+                            A.get(i), B.get(i)
+                    )
+            ).isEqualTo(EXPECTED.get(i));
         }
 
-        //then
-        assertThat(result).isEqualTo(EXPECTED);
+
     }
 
     @Test
