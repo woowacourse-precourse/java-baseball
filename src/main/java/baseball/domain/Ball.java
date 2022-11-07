@@ -7,7 +7,14 @@ public class Ball {
     private int number;
 
     public Ball(int number) {
+        validateRange(number);
         this.number = number;
+    }
+
+    private void validateRange(int number) {
+        if (number < 1 || number > 9) {
+            throw new IllegalArgumentException("1 ~ 9 사이 숫자를 입력해주세요");
+        }
     }
 
     @Override
