@@ -16,12 +16,12 @@ public class NumberBaseballGame {
         computerNumber = new ArrayList<>();
         strike = 0;
         ball = 0;
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println(Constant.START_BASEBALL_GAME);
         getRandomThreeDigitNumber();
     }
 
     public void gameStart() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Constant.ENTER_NUMBER);
         String inputNumber = Console.readLine();
         userNumber = getUserNumberList(inputNumber);
         validateUserNumber();
@@ -31,17 +31,17 @@ public class NumberBaseballGame {
 
     public boolean checkGameEnd() {
         if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(Constant.CORRECT_ANSWER);
+            System.out.println(Constant.SELECT_NEWGAME);
             String response = Console.readLine();
-            if (response.equals("1")) {
+            if (response.equals(Constant.ONE)) {
                 readyNewGame();
                 return true;
             }
-            if (response.equals("2")) {
+            if (response.equals(Constant.TWO)) {
                 return false;
             }
-            throw new IllegalArgumentException("잘못된 입력입니다. 1 또는 2를 입력해주세요.");
+            throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.ENTER_ONE_OR_TWO);
         }
         return true;
     }
@@ -53,19 +53,19 @@ public class NumberBaseballGame {
 
     public void validateUserNumber(){
         if(userNumber.size() != 3){
-            throw new IllegalArgumentException("잘못된 입력입니다. 세자리 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.ENTER_THREE_DIGIT_NUMBER);
         }
         if(userNumber.contains(0)){
-            throw new IllegalArgumentException("잘못된 입력입니다. 0을 포함하지 않는 세자리 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.ENTER_EXCEPT_ZERO);
         }
         if(userNumber.size() != userNumber.stream().distinct().count()){
-            throw new IllegalArgumentException("잘못된 입력입니다. 서로 다른 세개의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException(Constant.WRONG_INPUT + Constant.NO_OVERLAP);
         }
     }
 
     public void getRandomThreeDigitNumber() {
         for (int i = 0; i < 3;) {
-            int num = Randoms.pickNumberInRange(1, 9);
+            int num = Randoms.pickNumberInRange(Constant.MIN_RANGE_NUM, Constant.MAX_RANGE_NUM);
             if (!computerNumber.contains(num)) {
                 computerNumber.add(num);
                 i++;
@@ -98,15 +98,15 @@ public class NumberBaseballGame {
 
     public String getResultToString() {
         if (ball != 0 && strike != 0) {
-            return ball + "볼 " + strike + "스트라이크";
+            return ball + Constant.BALL + " " + strike + Constant.STRIKE;
         }
         if (ball != 0 && strike == 0) {
-            return ball + "볼";
+            return ball + Constant.BALL;
         }
         if (ball == 0 && strike != 0) {
-            return strike + "스트라이크";
+            return strike + Constant.STRIKE;
         }
-        return "낫싱";
+        return Constant.NOTHING;
     }
 
 }
