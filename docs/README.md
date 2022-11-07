@@ -1,27 +1,25 @@
-# 기능 구현 목록 - 2차
-## 1. 시작 문구 출력
-### 1-1. "숫자 야구 게임을 시작합니다."
-## 2. 랜덤으로 3개 숫자열을 Collection으로 받음
-### 2-1. 데이터베이스 클래스 구현
-#### 2-1-1. 필드
-a. 정답 List
-<br>b. 사용자 입력 List
-<br>c. Strike 저장 변수
-<br>d. Ball 저장 변수
-<br>e. 낫싱 저장 변수
-### 2-2. 랜덤 3자리 생성하여 데이터베이스 클래스에 저장.
-#### 2-2-1. GameManager 클래스 구현하여 answer값을 데이터베이스 클래스에 저장.
-## 3. 입력을 Collection으로 받음
-## 4. Strike를 비교하는 class
-## 5. Ball을 비교하는 class
-## 6. Strike와 Ball을 제외한 낫싱을 계산하는 class
-## 7. 정답이 아닐 경우의 출력
-### 7-1. 해당 게임의 종료 여부를 담당하는 boolean을 기준으로 구현
-## 8. 정답일 경우 결과 출력, 1 or 2를 입력으로 받음
-### 8.1 해당 게임 종료, 새 게임 시작 or 종료 여부를 담당하는 boolean 구현
-## 9. 예외 처리
-### 9-1. '서로 다른', '세 자리', '숫자', '게임 종료후 1 or 2'에 벗어나는 입력에 대해 'IllegalArgumentException' 발생
-#### 9-1-1. '세 자리' 제한
-#### 9-1-2. '숫자' 제한
-#### 9-1-3. '서로 다른' 제한
-#### 9-1-4. '게임 종료후 1 or 2'
+# 기능 구현 목록 - 최종
+## GameManager class : 게임의 전체적인 진행 관리
+### 정답 생성 : createAnswer
+### 정답 맞춘 후 해당 게임 종료 확인 : isFinish
+### 재시작여부 확인 : isAgain
+## Input class : 게임중 유저의 인풋 입력
+### 인풋 받기 : whileRunning
+## Output class : 게임중 모든 출력 관리
+### 매 결과 출력 : printResult
+### 시작 문구 출력 : printStartingMent
+### 종료 문구 출력 : printFinishingMent
+## 스트라이크, 볼 판정 관리 : Referee
+### 스트라이크, 볼 여부 저장하여 리턴 : judge
+## ExceptionChecker : 게임 내 예외 상황 관리
+### 게임중 인풋 예외 처리 : checkGuessingInput
+### 3strike 후 재시작 여부 예외 처리 : checkAfterGameInput
+## Database : 게임 내 모든 데이터 관리
+### 정답 저장 : setAnswer
+### 정답 추출 : getAnswer
+### 유저 인풋 저장 : setUserInput
+### 유저 인풋 추출 : getUserInput
+### 스트라이크 저장 : setStrike
+### 스트라이크 추출 : getStrike
+### 볼 저장 : setBall
+### 볼 추출 : getBall
