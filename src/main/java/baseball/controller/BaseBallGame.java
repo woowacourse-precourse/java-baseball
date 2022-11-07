@@ -1,4 +1,4 @@
-package controller;
+package baseball.controller;
 
 import baseball.domain.GameLogic;
 import baseball.domain.RandomNumbers;
@@ -17,20 +17,23 @@ public class BaseBallGame {
     }
 
     public void startGame() {
-        getRandomNumbers();
-        Boolean play = true;
+        boolean play = true;
         OutputView.printStartMessage();
         do {
+            getRandomNumbers();
+            play = oneGame();
+        } while (play);
+    }
+
+    private boolean oneGame() {
+        while (true) {
             List<Integer> playerNumbers = getPlayerRandomNumbers();
             GameLogic result = new GameLogic(computerNumbers, playerNumbers);
             OutputView.printResult(result);
             if (result.equals("3스트라이크")) {
                 OutputView.printSuccessMessage();
-                play = InputView.restartOrEndGame();
+                return InputView.restartOrEndGame();
             }
-        } while (play);
+        }
     }
-
-
-
 }
