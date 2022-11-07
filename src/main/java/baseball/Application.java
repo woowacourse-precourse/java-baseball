@@ -14,8 +14,7 @@ public class Application {
     static ArrayList<Integer> computerNumberList;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        //전역변수로 수정
-        computerNumberList = computerGetRandom3Number();
+
 
         try {
             gameStart();
@@ -41,9 +40,11 @@ public class Application {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+        //전역변수로 수정
+        //게임 재시작을 위해 위치 옮김
+        computerNumberList = computerGetRandom3Number();
 
-
-        while (true){
+        while (true) {
 
             //String strInput[] = br.readLine().split("");
             String strInput[] = Console.readLine().split("");
@@ -60,7 +61,6 @@ public class Application {
             if(strikeNum >0 && ballNum >0){
                 bw.append(ballNum + "볼 " +strikeNum +"스트라이크");
                 bw.newLine();
-
             }
             else if(strikeNum >0 ){
                 bw.append(strikeNum +"스트라이크");
@@ -69,11 +69,10 @@ public class Application {
                     //게임종료
                     bw.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     bw.newLine();
+                    bw.flush();
+
                     break;
-
                 }
-
-
             }
             else if(ballNum >0){
                 bw.append(ballNum + "볼");
@@ -86,6 +85,7 @@ public class Application {
             bw.flush();
         }
 
+        gameRestartOrEnd();
         bw.close();
     }
 
@@ -110,6 +110,34 @@ public class Application {
             }
         }
         return result - strike;
+    }
+
+    static void gameRestartOrEnd() throws IOException{
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        bw.append("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        bw.newLine();
+        bw.flush();
+        int input = Integer.parseInt(Console.readLine());
+
+        //재시작
+        if(input == 1){
+            try {
+                computerNumberList.clear();
+                gameStart();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //종료
+        else if(input == 2){
+            return;
+        }
+        else {
+            //잘못 입력시 종료
+            throw new IllegalArgumentException("");
+        }
+
+
     }
 
 
