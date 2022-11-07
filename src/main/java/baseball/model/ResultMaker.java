@@ -30,6 +30,7 @@ public class ResultMaker {
         return  getBallCount(ballCount) +" " + getStrikeCount(strikeCount);
     }
 
+    private String getStrikeCount(int strikeCount) {
         String strikeCountStr = "";
         if (strikeCount != 0) {
             strikeCountStr = strikeCount + "스트라이크";
@@ -37,9 +38,8 @@ public class ResultMaker {
         return strikeCountStr;
     }
 
-    private String getBallCount() {
+    private String getBallCount(int ballCount) {
         String ballCountStr = "";
-        int ballCount = totalSameCount - strikeCount;
         if (ballCount != 0) {
             ballCountStr = ballCount + "볼";
         }
