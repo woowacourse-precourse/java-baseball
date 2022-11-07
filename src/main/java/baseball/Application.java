@@ -7,50 +7,33 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
-    private static List<Integer> generateRandomNoDuplication3Numbers() {
-        HashSet<Integer> removeDuplication = new HashSet<>();
+    private static List<Character> generateRandomNoDuplication3Numbers() {
+        HashSet<Character> removeDuplication = new HashSet<>();
         while (removeDuplication.size() < 3) {
             int random = Randoms.pickNumberInRange(1, 9);
-            removeDuplication.add(random);
+            char randomChar= (char) (random + '0');
+            removeDuplication.add(randomChar);
         }
         return new ArrayList<>(removeDuplication);
     }
 
-    private static List<Integer> startGame() {
+    private static List<Character> startGame() {
         return generateRandomNoDuplication3Numbers();
     }
-
-    private static List<Integer> seperate3Numbers(int input)
-            throws IllegalArgumentException {
-        List<Integer> separated = new ArrayList<>();
-        for (int i = 2; i >= 0; i--) {
-            int digit = input / (int) Math.pow(10, i);
-            input = input % (int) Math.pow(10, i);
-            separated.add(digit);
-        }
-        HashSet<Integer> isRepeated = new HashSet<>(separated);
-        if (isRepeated.size() < 3) {
-            throw new IllegalArgumentException();
-        } else if (isRepeated.contains(0)) {
-            throw new IllegalArgumentException();
-        }
-        return separated;
-    }
-
 
     static final int NOTHING = 0;
     static final int BALL = 1;
     static final int STRIKE = 2;
 
-    private static HashMap<Integer, Integer> checkBallOrStrike(List<Integer> answerList,
-                                                               List<Integer> userInputList) {
+    private static HashMap<Integer, Integer> checkBallOrStrike(List<Character> answerList,
+                                                               List<Character> userInputList) {
         HashMap<Integer, Integer> comparedMap = new HashMap<>();
         comparedMap.put(BALL, 0);
         comparedMap.put(STRIKE, 0);
         comparedMap.put(NOTHING, 1);
         for (int comparingNum = 0; comparingNum < 3; comparingNum++) {
-            int answer = answerList.get(comparingNum);
-            int input = userInputList.get(comparingNum);
+            char answer = answerList.get(comparingNum);
+            char input = userInputList.get(comparingNum);
             if (answerList.contains(input)) {
                 comparedMap.put(NOTHING, 0);
                 comparedMap = ballOrStrike(comparedMap, answer, input);
@@ -59,14 +42,10 @@ public class Application {
         return comparedMap;
     }
 
-    private static boolean isStrike(int answer, int input) {
-        return answer == input;
-    }
-
     private static HashMap<Integer, Integer> ballOrStrike(HashMap<Integer, Integer> comparedMap,
-                                                          int answer, int input) {
+                                                          char answer, char input) {
         comparedMap.put(NOTHING, 0);
-        if (isStrike(answer, input)) {
+        if (answer==input) {
             addOneToMap(comparedMap, STRIKE);
         } else {
             addOneToMap(comparedMap, BALL);
@@ -99,38 +78,51 @@ public class Application {
         System.out.print("\n");
     }
 
-    private static List<Integer> getAndSeperateInput() {
-        int userInput = getUserIntInGame();
-        return seperate3Numbers(userInput);
-    }
 
-    private static Integer getUserIntInGame()
+    private static List<Character> getInputInGame()
             throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String input= Console.readLine();
-        int inputInt=Integer.parseInt(input);
-        if ((inputInt < 100) || (inputInt > 999)) {
+        char[] inputChars = input.toCharArray();
+        List<Character> inputList=new ArrayList<>();
+
+        if (inputChars.length!=3) {
             System.out.println("숫자가 세 자리가 아닙니다");
             throw new IllegalArgumentException();
         }
-        return inputInt;
+
+        HashSet<Character> isRepeated = new HashSet<>();
+        for(char c : inputChars){
+            isRepeated.add(c);
+            inputList.add(c);
+        }
+
+        if (isRepeated.size() < 3) {
+            System.out.println("중복되는 숫자를 입력했습니다");
+            throw new IllegalArgumentException();
+        } else if (isRepeated.contains('0')) {
+            System.out.println("입력한 숫자에 0이 포함됩니다");
+            throw new IllegalArgumentException();
+        }
+
+        return inputList;
     }
 
-    private static Integer getUserIntEndGame()
+    private static char getInputEndGame()
             throws IllegalArgumentException {
         String input= Console.readLine();
-        int inputInt=Integer.parseInt(input);
-        if ((inputInt != 1) && (inputInt != 2)) {
+        char inputChar=input.charAt(0);
+        if ((inputChar != '1') && (inputChar != '2')) {
             System.out.println("1이나 2가 아닙니다");
             throw new IllegalArgumentException();
         }
-        return inputInt;
+        return inputChar;
     }
 
     private static boolean restartOrEndGame() throws IllegalArgumentException{
         boolean newGame = true;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int userInput = getUserIntEndGame();
+        int userInput = getInputEndGame();
         if (userInput == CONTINUE_GAME) {
             newGame = true;
         } else if (userInput == END_GAME) {
@@ -143,9 +135,9 @@ public class Application {
     static final int CONTINUE_GAME = 1;
     static final int END_GAME = 2;
 
-    private static boolean playGame(List<Integer> answer) {
+    private static boolean playGame(List<Character> answer) {
         boolean gameOn;
-        List<Integer> separatedInput = getAndSeperateInput();
+        List<Character> separatedInput = getInputInGame();
         HashMap<Integer, Integer> comparedMap = checkBallOrStrike(answer, separatedInput);
         printResult(comparedMap);
         if (correctAnswer(comparedMap)) {
@@ -162,7 +154,7 @@ public class Application {
             boolean newGame = true;
             while (newGame) {
                 System.out.println("숫자 야구 게임을 시작합니다.");
-                List<Integer> answer = startGame();
+                List<Character> answer = startGame();
 //                System.out.println(answer);
                 boolean gameOn = true;
                 while (gameOn) {
