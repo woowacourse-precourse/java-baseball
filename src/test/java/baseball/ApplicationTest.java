@@ -45,14 +45,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 잘못된_값을_입력했을_경우_예외처리가_정상적으로_이루어지는지_확인() {
-        String input = "";
-        boolean result = false;
-        assertThatThrownBy(() -> User.checkTheNumber(input))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
     void Str에서_int형으로_정상적으로_변환되는지_확인() {
         String number = "123";
         int result = 123;
