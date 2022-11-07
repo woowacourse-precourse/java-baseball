@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.util;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,4 +23,7 @@ public interface Constant {
     int STRIKE_INDEX = 1;
 
     List<Integer> THREE_STRIKE = Arrays.asList(0, 3);
+
+    String EXCEPTION_INVALID_INPUT = "올바르지 않은 입력입니다.";
+    String EXCEPTION_INVALID_NUMBER = "숫자 형식이 올바르지 않습니다.";
 }
