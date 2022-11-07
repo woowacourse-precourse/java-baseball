@@ -18,13 +18,13 @@ public class InputValidation {
         return input;
     }
 
-    public void validateLength(String input) {
+    private void validateLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 수를 입력해야 합니다.");
         }
     }
 
-    public void validateNumberRange(String input) {
+    private void validateNumberRange(String input) {
         char[] chars = input.toCharArray();
 
         for (char letter : chars) {
@@ -34,7 +34,7 @@ public class InputValidation {
         }
     }
 
-    public void validateDuplication(String input) {
+    private void validateDuplication(String input) {
         Map<String, Integer> map = new HashMap<>();
 
         for (String letter : input.split("")) {
@@ -46,7 +46,7 @@ public class InputValidation {
         }
     }
 
-    public void validateChoice(String input) {
+    private void validateChoice(String input) {
         if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
         }
