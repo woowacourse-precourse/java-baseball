@@ -15,9 +15,16 @@ public class InningManager {
             List<Integer> userNumber = UserNumber.generate(BaseballGameInput.getUserNumber());
             Count count = new Count(computerNumber, userNumber);
             BaseballGameOutput.printGameResult(count);
+            isCorrect = isCorrect(count);
         }
     }
 
+    private static boolean isCorrect(Count count) {
+        if (count.isCorrect()) {
+            BaseballGameOutput.printCorrect();
+        }
+        return count.isCorrect();
+    }
 
 }
 
