@@ -141,7 +141,7 @@ class CompareNumbers {
 
 class DataBase {
 
-    static List<Integer> answer = new ArrayList<>();
+    static private List<Integer> answer = new ArrayList<>();
     private List<Integer> userInput = new ArrayList<>();
     private int strike = 0;
     private int ball = 0;
