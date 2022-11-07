@@ -31,11 +31,11 @@ public class Computer {
         int strikeCnt = strikeAndBallCount[0];
         int ballCnt = strikeAndBallCount[1];
 
+        System.out.println(buildSentence(strikeCnt, ballCnt));
         if (strikeCnt == MAX_STRIKE) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }else{
-            System.out.println(buildFailSentence(strikeCnt, ballCnt));
             return false;
         }
     }
@@ -62,7 +62,7 @@ public class Computer {
         return c - '0';
     }
 
-    private String buildFailSentence(int strikeCnt, int ballCnt){
+    private String buildSentence(int strikeCnt, int ballCnt){
         StringBuilder sb = new StringBuilder();
         if (ballCnt != 0) {
             sb.append(ballCnt).append("볼 ");
