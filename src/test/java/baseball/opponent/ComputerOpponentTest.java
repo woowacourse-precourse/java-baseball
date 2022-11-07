@@ -1,7 +1,7 @@
 package baseball.opponent;
 
 import baseball.core.ComputerOpponent;
-import baseball.core.dto.BallStrikeDto;
+import baseball.core.BallStrike;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -25,10 +25,10 @@ class ComputerOpponentTest {
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(4, 5, 6);
             opponent = new ComputerOpponent(opponentRandomNum);
-            BallStrikeDto expected = new BallStrikeDto(0, 0);
+            BallStrike expected = new BallStrike(0, 0);
 
             //when
-            BallStrikeDto res = opponent.answer(numList);
+            BallStrike res = opponent.answer(numList);
 
             //then
             assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
@@ -42,10 +42,10 @@ class ComputerOpponentTest {
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(3, 4, 5);
             opponent = new ComputerOpponent(opponentRandomNum);
-            BallStrikeDto expected = new BallStrikeDto(1, 0);
+            BallStrike expected = new BallStrike(1, 0);
 
             //when
-            BallStrikeDto res = opponent.answer(numList);
+            BallStrike res = opponent.answer(numList);
 
             //then
             assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
@@ -59,10 +59,10 @@ class ComputerOpponentTest {
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 8, 9);
             opponent = new ComputerOpponent(opponentRandomNum);
-            BallStrikeDto expected = new BallStrikeDto(0, 1);
+            BallStrike expected = new BallStrike(0, 1);
 
             //when
-            BallStrikeDto res = opponent.answer(numList);
+            BallStrike res = opponent.answer(numList);
 
             //then
             assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
@@ -76,10 +76,10 @@ class ComputerOpponentTest {
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 3, 5);
             opponent = new ComputerOpponent(opponentRandomNum);
-            BallStrikeDto expected = new BallStrikeDto(1, 1);
+            BallStrike expected = new BallStrike(1, 1);
 
             //when
-            BallStrikeDto res = opponent.answer(numList);
+            BallStrike res = opponent.answer(numList);
 
             //then
             assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
@@ -93,10 +93,10 @@ class ComputerOpponentTest {
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 3, 2);
             opponent = new ComputerOpponent(opponentRandomNum);
-            BallStrikeDto expected = new BallStrikeDto(2, 1);
+            BallStrike expected = new BallStrike(2, 1);
 
             //when
-            BallStrikeDto res = opponent.answer(numList);
+            BallStrike res = opponent.answer(numList);
 
             //then
             assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
@@ -110,10 +110,10 @@ class ComputerOpponentTest {
             List<Integer> opponentRandomNum = List.of(1, 2, 3);
             List<Integer> numList = List.of(1, 2, 3);
             opponent = new ComputerOpponent(opponentRandomNum);
-            BallStrikeDto expected = new BallStrikeDto(0, 3);
+            BallStrike expected = new BallStrike(0, 3);
 
             //when
-            BallStrikeDto res = opponent.answer(numList);
+            BallStrike res = opponent.answer(numList);
 
             //then
             assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());

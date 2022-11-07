@@ -1,6 +1,6 @@
 package baseball.console;
 
-import baseball.core.dto.BallStrikeDto;
+import baseball.core.BallStrike;
 
 public class ConsoleOutput {
 
@@ -8,12 +8,6 @@ public class ConsoleOutput {
     private static final String NUMBER_INPUT_MESSAGE = "숫자를 압력해주세요 : ";
     private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
-    private final ResultMessageGenerator resultMessageGenerator;
-
-    public ConsoleOutput() {
-        this.resultMessageGenerator = new ResultMessageGenerator();
-    }
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -23,8 +17,8 @@ public class ConsoleOutput {
         System.out.print(NUMBER_INPUT_MESSAGE);
     }
 
-    public void printResultMessage(BallStrikeDto dto) {
-        System.out.println(resultMessageGenerator.generateMessage(dto));
+    public void printResultMessage(BallStrike ballStrike) {
+        System.out.println(ballStrike.toString());
     }
 
     public void printFinishMessage() {

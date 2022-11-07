@@ -1,7 +1,5 @@
 package baseball.core;
 
-import baseball.core.dto.BallStrikeDto;
-
 import java.util.List;
 
 public class ComputerOpponent {
@@ -12,7 +10,7 @@ public class ComputerOpponent {
         this.randomNumbers = randomNumbers;
     }
 
-    public BallStrikeDto answer(List<Integer> threeNumbers) {
+    public BallStrike answer(List<Integer> threeNumbers) {
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -25,7 +23,7 @@ public class ComputerOpponent {
                 ballCount++;
             }
         }
-        return new BallStrikeDto(ballCount, strikeCount);
+        return new BallStrike(ballCount, strikeCount);
     }
 
     private boolean isStrike(int i, int number) {
