@@ -9,7 +9,26 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+class makeRandomNumbersTest extends NsTest{
+    String number = baseball.Application.makeRandomNumbers();
+    @Test
+    void check_answer_is_three_numbers(){
+        assertThat(number.length()).isEqualTo(3);
+    }
+    @Test
+    void check_answer_has_three_different_numbers(){
+        for(int i=0;i<3;i++){
+            int inumber = Integer.parseInt(String.valueOf(number.charAt(i)));
+            assertTrue(inumber > 0 && inumber < 9);
+        }
+    }
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
+}
 class ApplicationTest extends NsTest {
     @Test
     void check_playball_function(){
