@@ -65,6 +65,8 @@ class GameReadyMachine {
 }
 
 class GameProcessor {
+    final int USER_USED_NUMBER = -1;
+    final int COMPUTER_USED_NUMBER = -2;
     private String lastInput = null;
     private int lastInputInt = -1;
     private int strike = 0;
@@ -133,9 +135,6 @@ class GameProcessor {
         }
 
     }
-
-    final int USER_USED_NUMBER = -1;
-    final int COMPUTER_USED_NUMBER = -2;
 
     public void strikeChecker(int[] userValue, int[] computerValue) {
         int strikeCount = 0;
