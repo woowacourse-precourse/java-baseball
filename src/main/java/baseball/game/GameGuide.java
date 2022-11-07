@@ -12,7 +12,7 @@ public class GameGuide {
     }
 
     public static void inputMessage() {
-        System.out.println(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE);
     }
 
     public static void reOrEndGameMessage() {
