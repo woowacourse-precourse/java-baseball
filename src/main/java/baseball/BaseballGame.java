@@ -1,11 +1,10 @@
 package baseball;
 
-import static baseball.NumberGenerator.*;
+import static baseball.NumberGenerator.createNonDuplicateNumbers;
 
 public class BaseballGame {
 
-	private static final String START_GAME_MESSAGE
-		= "숫자 야구 게임을 시작합니다.";
+	private static final String START_GAME_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
 	private Balls answer;
 

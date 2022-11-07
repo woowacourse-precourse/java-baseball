@@ -1,6 +1,8 @@
 package baseball;
 
-import static baseball.BallStatus.*;
+import static baseball.BallStatus.STRIKE;
+import static baseball.BallStatus.BALL;
+import static baseball.BallStatus.NOTHING;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -30,7 +32,7 @@ public class CompareResult {
 
 	public boolean isAllNothing() {
 		return occurrences.containsKey(NOTHING)
-		&& occurrences.get(NOTHING) == 3;
+			&& occurrences.get(NOTHING) == 3;
 	}
 
 	public boolean isGameEnd() {

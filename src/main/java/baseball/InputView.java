@@ -12,7 +12,8 @@ public class InputView {
 
 	private static final String GET_BALL_NUMBERS = "숫자를 입력해주세요 : ";
 
-	private static final String GET_GAME_OPTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	private static final String GET_GAME_OPTION
+		= "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	public static List<Integer> getBallNumbers() {
 		System.out.print(GET_BALL_NUMBERS);
