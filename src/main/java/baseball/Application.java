@@ -24,7 +24,6 @@ class Computer {
     private List<Integer> number;
 
     public void setNumber() {
-        showInputStatement();
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -33,15 +32,11 @@ class Computer {
             }
         }
         number = numberList;
-        System.out.println("컴퓨터 생성숫자: " + number);
+        // System.out.println("컴퓨터 생성숫자: " + number);
     }
 
     public List<Integer> getNumber() {
         return number;
-    }
-
-    public void showInputStatement() {
-        System.out.println("숫자를 입력해주세요 : ");
     }
 }
 
@@ -49,6 +44,7 @@ class Player {
     private List<Integer> number;
 
     public void inputNumber() throws IllegalArgumentException {
+        showInputStatement();
         List<Integer> numberList = new ArrayList<>();
         int num;
         try {
@@ -65,7 +61,11 @@ class Player {
         }
         Collections.reverse(numberList);
         number = numberList;
-        System.out.println("플레이어 입력 숫자: " + number);
+        //System.out.println("플레이어 입력 숫자: " + number);
+    }
+
+    public void showInputStatement() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     public List<Integer> getNumber() {
@@ -156,7 +156,7 @@ class Operator {
         } else {
             throw new IllegalArgumentException("숫자를 잘못 입력했습니다. 프로그램을 종료합니다.(재시작/종료 숫자가 아님)");
         }
-        System.out.println("재시작 숫자: " + inputString);
+        // System.out.println("재시작 숫자: " + inputString);
     }
 
     public void showResult() {
