@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,6 +64,23 @@ public class BaseballTest {
     void getBall_정확한_볼의_갯수_찾기(int source, int target, int expected) {
         int actual = sut.getBall(source, target) - sut.getStrike(source, target);
         assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void getRandomNumber_1에서_9까지_서로_다른_난수를_반환() {
+        for (int i = 0; i < 4; i++) {
+            String random = Integer.toString(sut.getRandomNumber());
+            int actual = new HashSet<>(List.of(random.split(""))).size();
+            assertThat(actual).isEqualTo(NUMBER_LIMIT);
+        }
+    }
+
+    @Test
+    void getRandomNumber_정해진_자리수와_같은_자리수의_난수를_반환() {
+        for (int i = 0; i < 4; i++) {
+            int actual = Integer.toString(sut.getRandomNumber()).length();
+            assertThat(actual).isEqualTo(NUMBER_LIMIT);
+        }
     }
 
 }
