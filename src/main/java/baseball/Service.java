@@ -2,7 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Service {
 
@@ -18,7 +25,7 @@ public class Service {
     }
 
     public List<String> generateRandomNumber(int min, int max, int size) {
-        List<String> randomNumbers = new LinkedList<>();
+        List<String> randomNumbers = new ArrayList<>();
 
         while (size > randomNumbers.size()) {
             String randomNumber = Integer.toString(Randoms.pickNumberInRange(min, max));
@@ -61,4 +68,23 @@ public class Service {
 
         return ballCountMap;
     }
+
+    public List<String> getUserInputToList(String userInput, int length, String pattern){
+        List<String> userInputList = stringToList(userInput);
+        Set<String> deduplicateUserInput = new HashSet<>(userInputList);
+
+        if(userInputList.size() != length || deduplicateUserInput.size() != length){
+            throw new IllegalArgumentException();
+        }
+
+        List<String> patternExclusionList = userInputList.stream()
+                .filter(userNumber -> userNumber.matches(pattern))
+                .collect(Collectors.toList());
+        if(patternExclusionList.size() != 0){
+            throw new IllegalArgumentException();
+        }
+        return userInputList;
+    }
+
+
 }
