@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 입력값을 받을 수 있다. BaseballGame 에서 정답을 맞추는 주체이다.
+ */
 public class Human implements Playable {
     private List<Integer> answer;
 
@@ -17,13 +20,15 @@ public class Human implements Playable {
         return answer;
     }
 
+    /**
+     * 정답을 입력받는다. 길이가 3을 넘거나 숫자가 아닌 문자를 입력할 시, <code>IllegalArgumentException</code>예외를 던진다.
+     */
     @Override
     public void inputAnswer() {
         answer.clear();
 
         String input = Console.readLine();
         validateInputLength(input);
-
         String[] inputSplit = input.split("");
         try {
             for (String numStr : inputSplit) {

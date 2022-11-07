@@ -5,7 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Computer implements Playable{
+/**
+ * 랜덤으로 정답을 생성하는 역할을 맡는다.
+ */
+public class Computer implements Playable {
+
     private List<Integer> answer;
 
     public Computer() {
