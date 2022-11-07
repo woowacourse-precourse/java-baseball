@@ -7,7 +7,7 @@ class Exception {
     private static final int ZERO_IS_NOT_RANGE = 0;
 
     static void isAllNumeric(String userNumbers) {
-        if(!userNumbers.chars().allMatch(Character::isDigit)){
+        if (!userNumbers.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(ResponseMessage.stopExceptionProgram());
         }
     }

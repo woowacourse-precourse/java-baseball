@@ -44,6 +44,13 @@ class ApplicationTest extends NsTest {
         assertThat(size).isNotEqualTo(1);
     }
 
+    @Test
+    void 모든_번호가_숫자() {
+        String input = "123";
+        Exception.isAllNumeric(input);
+        assertThat(input).isEqualTo("123");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
