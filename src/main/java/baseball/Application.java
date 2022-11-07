@@ -56,6 +56,14 @@ public class Application {
         return result;
     }
 
+    private static boolean checkNothing(int ballCount, int strikeCount) {
+        boolean check = false;
+        if(ballCount == 0 && strikeCount == 0) {
+            check = true;
+        }
+        return check;
+    }
+
     public static void main(String[] args) {
 
     }
