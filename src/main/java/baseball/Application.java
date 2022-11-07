@@ -21,8 +21,8 @@ public class Application {
             for (int i = 0; i < 3; i++) {
                 int number = charToInt(userNumber.charAt(i));
                 checkAdequateNumber(number);
+                addUserNumber(user, number);
             }
-            addUserNumber(user, userNumber);
 
             Count c = new Count();
             c.countBall(computer, user);
@@ -63,12 +63,9 @@ public class Application {
         }
     }
 
-    static void addUserNumber(List<Integer> user, String userNumber) throws IllegalArgumentException {
-        for (int i = 0; i < 3; i++) {
-            int n = Character.getNumericValue(userNumber.charAt(i));
-            if (checkOverlap(user, n)) {
-                user.add(n);
-            }
+    static void addUserNumber(List<Integer> user, int number) throws IllegalArgumentException {
+        if (checkOverlap(user, number)) {
+            user.add(number);
         }
     }
 
