@@ -9,38 +9,45 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int restartNumber;
+        int gameControllerNumber;
+
+        int errNumber = 0;
+        int continueNumber = 1;
+        int exitNumber = 2;
+
         do {
             System.out.println("숫자 야구 게임을 시작합니다!!!");
             ArrayList<Integer> generateAnswer = generateAnswer();
             System.out.println("정답은" + generateAnswer);
-            restartNumber = getRestartNumber(generateAnswer);
-        } while (restartNumber != 2 && restartNumber != 0);
+            gameControllerNumber = gameController(generateAnswer);
+        } while (gameControllerNumber != exitNumber && gameControllerNumber != errNumber);
         System.out.println("게임 종료");
-        if (restartNumber == 0) {
+        if (gameControllerNumber == errNumber) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static int getRestartNumber(ArrayList<Integer> generateAnswer) {
-        int restartNumber;
-        int breakWhileCode = 0;
-        ArrayList<Integer> inputUserNumber;
+    private static int gameController(ArrayList<Integer> generateAnswer) {
+        
+        int gameControllerNumber;
+        int errNumber = 0;
+
+        ArrayList<Integer> inputUserValue;
         while (true) {
-            inputUserNumber = inputUserNumber();
-            if (inputUserNumber.get(0) == breakWhileCode) {
-                restartNumber = breakWhileCode;
+            inputUserValue = inputUserValue();
+            if (inputUserValue.get(0) == errNumber) {
+                gameControllerNumber = errNumber;
                 break;
             }
-            String numberReferee = numberReferee(generateAnswer, inputUserNumber);
-            System.out.println(numberReferee);
-            if (numberReferee.equals("3스트라이크")) {
+            String compareAnswerAndValue = compareAnswerAndValue(generateAnswer, inputUserValue);
+            System.out.println(compareAnswerAndValue);
+            if (compareAnswerAndValue.equals("3스트라이크")) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                restartNumber = restart();
+                gameControllerNumber = restart();
                 break;
             }
         }
-        return restartNumber;
+        return gameControllerNumber;
     }
 
     private static ArrayList<Integer> generateAnswer() {
@@ -54,13 +61,13 @@ public class Application {
         return answerNumber;
     }
 
-    private static ArrayList<Integer> inputUserNumber() {
+    private static ArrayList<Integer> inputUserValue() {
         ArrayList<Integer> inputNumberArray = new ArrayList<>();
         String inputNumber = Console.readLine();
         int firstBall = 0;
         int secondBall = 1;
         int thirdBall = 2;
-
+        int errNumber = 0;
         if (inputNumber.charAt(firstBall) == inputNumber.charAt(secondBall)
             || inputNumber.charAt(firstBall) == inputNumber.charAt(thirdBall)
             || inputNumber.charAt(secondBall) == inputNumber.charAt(thirdBall)
@@ -71,8 +78,7 @@ public class Application {
             || inputNumber.charAt(firstBall) == 0
             || inputNumber.charAt(secondBall) == 0
             || inputNumber.charAt(thirdBall) == 0 ) {
-            inputNumberArray.add(firstBall);
-
+            inputNumberArray.add(errNumber);
             return inputNumberArray;
         }
 
@@ -83,7 +89,7 @@ public class Application {
         return inputNumberArray;
     }
 
-    private static String numberReferee(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserNumber) {
+    private static String compareAnswerAndValue(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserValue) {
 
         String answer = "";
         int strike = 0;
@@ -93,32 +99,38 @@ public class Application {
         int thirdBall = 2;
 
         for (int j = 0; j < 3; j++) {
-            if (Objects.equals((generateAnswer.get(firstBall)), inputUserNumber.get(j)) && j == firstBall) {
+            if (Objects.equals((generateAnswer.get(firstBall)), inputUserValue.get(j)) && j == firstBall) {
                 strike++;
             }
-            if (Objects.equals((generateAnswer.get(firstBall)), inputUserNumber.get(j)) && j != firstBall) {
+            if (Objects.equals((generateAnswer.get(firstBall)), inputUserValue.get(j)) && j != firstBall) {
                 ball++;
             }
         }
         
         for (int j = 0; j < 3; j++) {
-            if (Objects.equals((generateAnswer.get(secondBall)), inputUserNumber.get(j)) && j == secondBall) {
+            if (Objects.equals((generateAnswer.get(secondBall)), inputUserValue.get(j)) && j == secondBall) {
                 strike++;
             }
-            if (Objects.equals((generateAnswer.get(secondBall)), inputUserNumber.get(j)) && j != secondBall) {
+            if (Objects.equals((generateAnswer.get(secondBall)), inputUserValue.get(j)) && j != secondBall) {
                 ball++;
             }
         }
         
         for (int j = 0; j < 3; j++) {
-            if (Objects.equals((generateAnswer.get(thirdBall)), inputUserNumber.get(j)) && j == thirdBall) {
+            if (Objects.equals((generateAnswer.get(thirdBall)), inputUserValue.get(j)) && j == thirdBall) {
                 strike++;
             }
-            if (Objects.equals((generateAnswer.get(thirdBall)), inputUserNumber.get(j)) && j != thirdBall) {
+            if (Objects.equals((generateAnswer.get(thirdBall)), inputUserValue.get(j)) && j != thirdBall) {
                 ball++;
             }
         }
 
+        answer = outputInText(answer, strike, ball);
+
+        return answer;
+    }
+
+    private static String outputInText(String answer, int strike, int ball) {
         if (strike == 0 && ball == 0) {
             answer += "낫싱";
         } else if (strike == 0) {
@@ -128,15 +140,17 @@ public class Application {
         } else {
             answer += (ball + "볼") + " " + (strike + "스트라이크");
         }
-
         return answer;
     }
 
     private static int restart() {
         System.out.println("계속하시겠습니까?1=계속,2=끝");
         int toBeContinue = Integer.parseInt(Console.readLine());
-        if (toBeContinue != 1 && toBeContinue != 2) {
-            toBeContinue = 2;
+        int continueNumber = 1;
+        int exitNumber = 2;
+
+        if (toBeContinue != continueNumber && toBeContinue != exitNumber) {
+            toBeContinue = exitNumber;
         }
         return toBeContinue;
     }
