@@ -38,6 +38,16 @@ public class Application {
         List<Integer> user = new ArrayList<>();
         char[] user_chArr = Console.readLine().toCharArray();
 
+        for (char character : user_chArr) {
+            int num = character - '0';
+            //서로 다른 수가 아닌 경우
+            if (user.contains(num)) {
+                throw new IllegalArgumentException();
+            } else {
+                user.add(num);
+            }
+        }
+
         return user;
     }
 }
