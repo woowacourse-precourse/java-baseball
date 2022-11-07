@@ -16,7 +16,7 @@ class UserTest {
         String userInput = "1234a";
         assertThatThrownBy(() -> {
             boolean result = user.validateUserGuessInput(userInput);
-        }).isInstanceOf(NumberFormatException.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -25,7 +25,7 @@ class UserTest {
         String userInput = "";
         assertThatThrownBy(() -> {
             boolean result = user.validateUserGuessInput(userInput);
-        }).isInstanceOf(NumberFormatException.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -34,7 +34,7 @@ class UserTest {
         String userInput = " ";
         assertThatThrownBy(() -> {
             boolean result = user.validateUserGuessInput(userInput);
-        }).isInstanceOf(NumberFormatException.class);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
