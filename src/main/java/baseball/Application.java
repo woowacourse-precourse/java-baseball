@@ -2,16 +2,21 @@ package baseball;
 
 public class Application {
     public Computer computer;
+    public User user;
 
-    public Application(Computer computer) {
+    public Application(Computer computer, User user) {
         this.computer = computer;
+        this.user = user;
     }
 
     public static void main(String[] args) {
         Computer computer = new Computer();
-        Application application = new Application(computer);
+        User user = new User();
+        Application application = new Application(computer, user);
         application.computer.pickRandomNumber();
         application.printStartGame();
+        application.user.getUserGuessInput();
+        System.out.println(application.user.getUserInputList());
     }
 
     public void printStartGame() {
