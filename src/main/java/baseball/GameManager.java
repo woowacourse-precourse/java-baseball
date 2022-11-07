@@ -7,6 +7,7 @@ public class GameManager {
     private static HashMap<Integer,Integer> RandomNumberHash = new HashMap<>();
     private static HashMap<Integer,Integer> InputNumberHash = new HashMap<>();
     private static HashMap<Character,Integer> resultHash = new HashMap<>();
+    private static Boolean isContinue = true;
     void init() {
         RandomNumberHash = Computer.generateRandomNumber();
     }
@@ -63,4 +64,20 @@ public class GameManager {
         return resultString;
     }
 
+    void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        this.init();
+        while (isContinue) {
+            System.out.println("숫자를 입력해주세요 : ");
+            this.scanNumber();
+            this.judgeResult();
+            this.printResult();
+            if (resultHash.get('S')==3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                scanIsContinue();
+                this.init();
+            }
+        }
+    }
 }
