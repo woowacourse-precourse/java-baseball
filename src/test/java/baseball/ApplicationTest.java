@@ -28,6 +28,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 중복된_숫자_입력(){
+        String input = "121";
+        assertThatThrownBy(()-> runException(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
