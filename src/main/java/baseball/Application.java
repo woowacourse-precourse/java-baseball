@@ -220,7 +220,7 @@ public class Application {
         try {
 
             if (!checkReplayNumberLength(replayNumberString) || !checkReplayNumberCount(replayNumberString)) {
-                throw new IllegalStateException();
+                throw new IllegalArgumentException();
             }
 
             return true;
