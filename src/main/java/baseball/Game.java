@@ -16,9 +16,10 @@ public class Game {
         List<Integer> comNumber = computerRandomNumber.makeComputerNumber();
 
         do{
-            System.out.println(comNumber);
             userInputToList.userNumList(UserInput.userNumberInput());
         }while (referee.refereeCheck(userInputToList.getUserNum(), comNumber));
 
+        if(UserInput.replayOrStop().equals("1"))
+            run();
     }
 }
