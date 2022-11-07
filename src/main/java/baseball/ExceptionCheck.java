@@ -29,4 +29,9 @@ public class ExceptionCheck {
             throw new IllegalArgumentException("같은 숫자가 있는 수가 입력되었습니다.");
         }
     }
+    public static void checkExceptionforTryNum(String trynum){
+        if(!trynum.equals("1") && !trynum.equals("2")){
+            throw new IllegalArgumentException("1, 2가 아닌 다른 숫자가 입력되었습니다.");
+        }
+    }
 }
