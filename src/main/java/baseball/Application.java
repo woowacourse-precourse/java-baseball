@@ -2,10 +2,15 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Application {
     public static void main(String[] args) {
@@ -59,5 +64,18 @@ public class Application {
         }
 
         return strike;
+    }
+    static int countBall(List<Integer> computer, List<Integer> player) {
+        int ball = 0;
+
+        for (int i = 0; i < player.size(); i++) {
+            if (Objects.equals(computer.get(i), player.get(i))) {
+                continue;
+            } else if (player.contains(computer.get(i))) {
+                ball += 1;
+            }
+        }
+
+        return ball;
     }
 }
