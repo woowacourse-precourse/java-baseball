@@ -65,7 +65,10 @@ public class Application {
         if(!(isThree(number) || isValid(UserNum(number)))){
             throw new IllegalArgumentException();
         }
-        System.out.println(Compare(computer,UserNum(number)));
+        List<Integer> result = Compare(computer,UserNum(number));
+        if(result.get(0)==0&&result.get(1)==0){
+            System.out.println("낫씽");
+        }
 
 
 
