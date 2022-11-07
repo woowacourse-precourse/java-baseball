@@ -64,12 +64,13 @@ class PlayerNumber {
     }
 
     private boolean isNumber(String inputString) {
+        String numbers = "123456789";
         for (int i = 0; i < 3; i++) {
             char tmp = inputString.charAt(i);
-            if (('1' <= tmp) && (tmp <= '9'))
-                return true;
+            if (numbers.indexOf(tmp) == -1)
+                return false;
         }
-        return false;
+        return true;
     }
 
     private boolean isAllDifferent(String inputString) {
