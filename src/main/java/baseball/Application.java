@@ -45,7 +45,7 @@ public class Application {
         return false;
     }
 */
-    /*
+    
     public static List<Integer> check(List<Character> answer, List<Character> input) {
         List<Integer> ball = new ArrayList<>();
         int strike_count = 0;
@@ -60,7 +60,7 @@ public class Application {
         ball.add(ball_count);
         return ball;
     }
-*/
+
    public static List<Integer> compare(String answer, String input) {
         List<Character> answer_List = new ArrayList<>();
         List<Character> input_List = new ArrayList<>();
