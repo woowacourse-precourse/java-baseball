@@ -7,8 +7,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 class BaseballGame {
-    private List<Integer> computer;
-    private List<Integer> player;
+    private final List<Integer> computer;
+    private final List<Integer> player;
     private static final String pleaseInput = "숫자를 입력해주세요 : ";
     private static boolean inputCondition;
     int ball;
@@ -28,7 +28,7 @@ class BaseballGame {
         while (inputCondition) {
             System.out.print(getPleaseInput());
             String input = Console.readLine();
-            selectNumberByPlayer(player, input);
+            isPlayerInputValid(input);
 
             getBallCounts(getComputerNumberList(), getPlayerNumberList());
             inputCondition = checkGameCondition(ball, strike);
@@ -55,16 +55,15 @@ class BaseballGame {
         }
     }
 
-    private List<Integer> selectNumberByPlayer(List<Integer> player, String input) throws IllegalArgumentException {
+    private void isPlayerInputValid(String input) throws IllegalArgumentException {
         try {
-            isValidPlayerInput(input);
+            throwExceptionIfInvalid(input);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
-        return player;
     }
 
-    private boolean isValidPlayerInput(String input) {
+    private void throwExceptionIfInvalid(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -75,7 +74,6 @@ class BaseballGame {
         } else {
             checkEqualityOfPlayerInput(input);
         }
-        return true;
     }
 
     private void checkEqualityOfPlayerInput(String input) {
