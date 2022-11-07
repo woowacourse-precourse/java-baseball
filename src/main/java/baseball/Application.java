@@ -1,9 +1,12 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 class Game {
     public final int RESTART = 1;
@@ -54,18 +57,30 @@ class Computer {
         return true;
     }
 
-//    public void printResult(List<Integer> userList) {
-//        String result;
-//
-//        if isEqualNum(userList) {
-//            result = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-//        }
-//
-//
-//
-//
-//        System.out.println(result);
-//    }
+    public String strikeCheck(int index) {
+        return "스트라이크";
+    }
+
+    public void printResultAll(Map<String, Integer> result) {
+        System.out.println("결과출력");
+    }
+
+    public void printResult(List<Integer> userList) {
+        Map<String, Integer> result = new HashMap<>();
+        result.put("볼", 0);
+        result.put("스트라이크", 0);
+        result.put("낫싱", 0);
+
+        //각 자리를 보며 결과값을 모음
+        for (int i = 0; i < 3; i++) {
+            int indexNum = userList.get(i);
+            String indexNumResult = strikeCheck(indexNum);
+            result.put(indexNumResult, result.get(indexNumResult) + 1);
+        }
+
+        // 최종값 합쳐서 출력
+        printResultAll(result);
+    }
 }
 
 
@@ -73,5 +88,9 @@ public class Application {
     public static void main(String[] args) {
         Game game = new Game();
         game.startGame();
+
+
+
+        //game.end();
     }
 }
