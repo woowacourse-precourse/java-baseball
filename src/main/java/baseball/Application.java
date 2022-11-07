@@ -21,8 +21,6 @@ public class Application {
   private static void setInput() {
     List<Integer> computerNumberGroup = setComputerNumberGroup();
     List<Integer> myNumberGroup = setMyNumberGroup();
-    System.out.println(computerNumberGroup);
-    System.out.println(myNumberGroup);
   }
 
   private static List<Integer> setComputerNumberGroup() {
@@ -104,7 +102,7 @@ public class Application {
     return list;
   }
 
-  private static List<Integer> fineSameNumber(List<Integer> listA, List<Integer> listB){
+  private static List<Integer> findSameNumber(List<Integer> listA, List<Integer> listB){
     List<Integer> sameNumberList = new ArrayList<>();
     for(int i=0;i<3;i++){
       if(listA.get(i)==listB.get(i)){
@@ -125,6 +123,12 @@ public class Application {
       }
     }
     return resultStrikeAndBall;
+  }
+
+  private static void run(List<Integer> myNumberGroup, List<Integer> computerNumberGroup){
+    List<Integer> sameNumberList = findSameNumber(sortList(myNumberGroup),sortList(computerNumberGroup));
+    HashMap<String,Integer> resultStrikeAndBall = findResultStrikeAndBall(myNumberGroup
+            ,computerNumberGroup,sameNumberList);
   }
 }
 
