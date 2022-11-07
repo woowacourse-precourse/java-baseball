@@ -21,4 +21,18 @@ class RefereeTest {
         assertThat(referee.getBall()).isEqualTo(2);
     }
 
+    @Test
+    void countOut() {
+        //given
+        Referee referee = new Referee();
+        referee.scoreStrikeAndBallCount(new int[]{1,2,3},new int[]{1,2,3});
+
+        //when
+        boolean result = referee.countOut();
+
+        //then
+        assertThat(referee.getStrike()).isEqualTo(COUNT_VALUE);
+        assertThat(result).isTrue();
+    }
+
 }
