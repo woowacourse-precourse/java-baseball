@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.game.GameCycle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,31 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameCycleTest {
     private static GameCycle game;
+
     @BeforeEach
-    public void beforeEach(){
+    public void beforeEach() {
         game = new GameCycle();
     }
 
-    @Test
-    public void numberDrawTest() throws Exception{
-        //given
-        //expect
-        System.out.println(game.drawNumber());
-    }
 
-    @Test
-    public void playerInput() throws Exception {
-        //given
-        String input = "123";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        //when
-        String playerNumber = game.inputNumber();
-
-        //then
-        assertEquals(playerNumber, "123");
-    }
     @Test
     public void numberLengthIsThreeTest() {
         //given;
@@ -42,8 +25,9 @@ class GameCycleTest {
         String inputFalse = "12344";
         //expect
         assertEquals(game.numberLengthIsThree(inputTrue), true);
-        assertThrows(IllegalArgumentException.class,()->game.numberLengthIsThree(inputFalse));
+        assertThrows(IllegalArgumentException.class, () -> game.numberLengthIsThree(inputFalse));
     }
+
     @Test
     public void validIsDigit() throws Exception {
         //given
@@ -51,8 +35,9 @@ class GameCycleTest {
         String inputFalse = "12b";
         //expect
         assertEquals(game.numberIsDigit(inputTrue), true);
-        assertThrows(IllegalArgumentException.class,()->game.numberIsDigit(inputFalse));
+        assertThrows(IllegalArgumentException.class, () -> game.numberIsDigit(inputFalse));
     }
+
     @Test
     public void validNotZero() throws Exception {
         //given
@@ -60,8 +45,9 @@ class GameCycleTest {
         String inputFalse = "120";
         //expect
         assertEquals(game.numberIsNotZero(inputTrue), true);
-        assertThrows(IllegalArgumentException.class,()->game.numberIsNotZero(inputFalse));
+        assertThrows(IllegalArgumentException.class, () -> game.numberIsNotZero(inputFalse));
     }
+
     @Test
     public void validNotDuplicate() throws Exception {
         //given
@@ -69,8 +55,9 @@ class GameCycleTest {
         String inputFalse = "112";
         //expect
         assertEquals(game.numberIsNotDuplicate(inputTrue), true);
-        assertThrows(IllegalArgumentException.class,()->game.numberIsNotDuplicate(inputFalse));
+        assertThrows(IllegalArgumentException.class, () -> game.numberIsNotDuplicate(inputFalse));
     }
+
     @Test
     public void checkPlayer() throws Exception {
         //given
@@ -89,8 +76,9 @@ class GameCycleTest {
         System.setIn(in);
 
         //when
-        assertThrows(IllegalArgumentException.class, ()->game.playerInputNumber());
+        assertThrows(IllegalArgumentException.class, () -> game.playerInputNumber());
     }
+
     @Test
     public void countStrike() throws Exception {
         //given
@@ -100,6 +88,7 @@ class GameCycleTest {
         assertEquals(game.countStrike(answer, input), 3);
         //then
     }
+
     @Test
     public void countBall() throws Exception {
         //given
@@ -108,6 +97,7 @@ class GameCycleTest {
         //expect
         assertEquals(game.countBall(answer, input), 3);
     }
+
     @Test
     public void countResponseTest() throws Exception {
         //expect
@@ -115,6 +105,7 @@ class GameCycleTest {
         assertEquals(game.countResponse("123", "145"), "1스트라이크");
         assertEquals(game.countResponse("123", "142"), "1볼 1스트라이크");
     }
+
     @Test
     public void printResultTest() throws Exception {
         //given

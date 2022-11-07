@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
     private final String INPUT_NUMBER;
-
     public Player() {
         INPUT_NUMBER = Console.readLine().trim();
     }
