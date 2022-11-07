@@ -22,6 +22,7 @@ class ApplicationTest extends NsTest {
                     1, 3, 5, 5, 8, 9
             );
         }
+
         @Test
         void 게임종료_후_재시작_후_재시작() {
             assertRandomNumberInRangeTest(
@@ -37,18 +38,20 @@ class ApplicationTest extends NsTest {
     @Nested
     class ExceptionTest {
         @Test
-        void 세자리_수_숫자인지_체크() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException("1234"))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
-
-        @Test
         void 숫자인지_체크() {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("abc"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력된 값은 숫자가 아닙니다")
+            );
+        }
+
+        @Test
+        void 세자리_수_숫자인지_체크() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("1234"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력된 값은 세자리 수가 아닙니다")
             );
         }
 
@@ -57,6 +60,31 @@ class ApplicationTest extends NsTest {
             assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("122"))
                             .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("중복된 자리수가 존재합니다")
+            );
+        }
+
+        @Test
+        void 컨트롤_값이_숫자인지_체크() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        assertThatThrownBy(() -> run("246", "135", "notNumeric"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                                .hasMessageContaining("입력된 값은 숫자가 아닙니다");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        }
+
+        @Test
+        void 컨트롤_값이_이해가능한_값인지_체크() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        assertThatThrownBy(() -> run("246", "135", "5"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                                .hasMessageContaining("알 수 없는 컨트롤 값입니다");
+                    },
+                    1, 3, 5, 5, 8, 9
             );
         }
     }
