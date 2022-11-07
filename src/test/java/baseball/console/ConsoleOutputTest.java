@@ -27,6 +27,13 @@ class ConsoleOutputTest {
     assertThat(outputStreamCaptor.toString()).isEqualTo(startMessage);
   }
 
+  @Test
+  void 게임종료_메시지출력(){
+    output.printEndMessage();
+    String endMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
+    assertThat(outputStreamCaptor.toString()).isEqualTo(endMessage);
+  }
+
   @AfterEach
   public void tearDown() {
     System.setOut(standardOut);
