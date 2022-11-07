@@ -19,6 +19,7 @@ public class MatchResult {
         if(strike > 0){
             System.out.print(strike + "스트라이크");
         }
+        System.out.print(System.lineSeparator());
     }
     public boolean isCorrect(){
         return (strike == 3);
