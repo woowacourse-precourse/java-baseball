@@ -6,18 +6,18 @@ public class DecisionMaker {
 
     final String InformationMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public String getDecision() {
+    public Decision getDecision() {
         return acceptOpinion();
     }
 
-    private String acceptOpinion() {
+    private Decision acceptOpinion() {
         printInformation();
         String opinion = Console.readLine();
         if (opinion.equals("1")) {
-            return "Play";
+            return Decision.PLAY;
         }
         if (opinion.equals("2")) {
-            return "Stop";
+            return Decision.STOP;
         }
         throw new IllegalArgumentException("유효하지 않은 입력입니다.");
     }
