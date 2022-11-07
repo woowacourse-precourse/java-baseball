@@ -40,6 +40,7 @@ public class Game {
 
     void checkIsUserRepeatGame() {
         String oneIfGameRepeatOrTwo = InputView.checkIsGameRepeatFromUserByGetOneOrTwo();
+        ExceptionHandler.validateOneIfGameRepeatOrTwo(oneIfGameRepeatOrTwo);
         if (checkIsOne(oneIfGameRepeatOrTwo)) {
             setResultGameInProgress();
             return;

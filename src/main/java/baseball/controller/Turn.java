@@ -31,6 +31,7 @@ public class Turn {
 
     void playOneTurn() {
         String userNumberOfString = InputView.userNumber();
+        ExceptionHandler.validateUserNumberOfString(userNumberOfString);
         List<Integer> userNumberOfList = convertNumberStringToList(userNumberOfString);
         compareWithTarget(userNumberOfList);
         this.turnScore.setResultTurn();
