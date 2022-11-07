@@ -39,7 +39,8 @@ public final class BaseballGame implements Game {
     @Override
     public void play() {
         Score score = Score.ZERO();
-        Digits computerAnswer = RandomDigits.createRandom();
+        RandomInRange randomGenerator = new MissionRandom();
+        Digits computerAnswer = RandomDigits.createRandom(randomGenerator);
 
         while (!score.isThreeStrike()) {
             Digits playerChoice = getPlayerInput();

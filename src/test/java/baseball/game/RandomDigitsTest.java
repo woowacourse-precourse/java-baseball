@@ -9,14 +9,22 @@ public class RandomDigitsTest {
     @DisplayName("생성시 랜덤값으로 초기화됨")
     @Test
     void 랜덤_생성() {
-        Digits randomDigits = RandomDigits.createRandom();
+        RandomInRange random = new RandomInRange() {
+            private int key = 1;
+
+            @Override
+            public Digit pickRandomInRange(int startInclusive, int endInclusive) {
+                return Digit.from(key++);
+            }
+        };
+        Digits randomDigits = RandomDigits.createRandom(random);
         assertThat(randomDigits.size()).isEqualTo(3);
         Digit first = randomDigits.getDigitInIndex(0);
         Digit second = randomDigits.getDigitInIndex(1);
         Digit third = randomDigits.getDigitInIndex(2);
 
-        assertThat(first).isNotEqualTo(second);
-        assertThat(second).isNotEqualTo(third);
-        assertThat(third).isNotEqualTo(first);
+        assertThat(first).isEqualTo(Digit.ONE);
+        assertThat(second).isEqualTo(Digit.TWO);
+        assertThat(third).isEqualTo(Digit.THREE);
     }
 }
