@@ -5,8 +5,6 @@ import baseball.domain.randomnumber.RandomNumbers;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 
-import static baseball.domain.inputnumber.InputNumberFactory.newInstance;
-
 public class BaseballGame {
 
     private final NumberScanner numberScanner;
@@ -27,7 +25,7 @@ public class BaseballGame {
             messagePrinter.printEnterNumberMessage();
 
             String inputValue = numberScanner.inputNumber();
-            InputNumbers inputNumber = newInstance(inputValue);
+            InputNumbers inputNumber = new InputNumbers(inputValue);
 
             CountResult countResult = randomNumbers.ballAndStrikeCount(inputNumber);
             messagePrinter.printBallAndStrikeCount(countResult.stringFormatOfCountResult());
