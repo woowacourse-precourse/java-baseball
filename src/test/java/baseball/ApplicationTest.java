@@ -119,4 +119,14 @@ class ApplicationTest extends NsTest {
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@Test
+	void 숫자의_범위확인() {
+
+		char number = '0';
+
+		assertThatThrownBy(() -> {
+			exception.checkNumberSize(number);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
 }
