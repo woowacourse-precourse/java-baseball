@@ -34,7 +34,7 @@ public class BaseballGame {
             countStrikeOrBall();
             printResult();
 
-            if(checkTerminateOrContinue() == 0)
+            if (checkTerminateOrContinue() == 0)
                 return;
         }
     }
@@ -46,12 +46,33 @@ public class BaseballGame {
 
     private void checkNumberInput(String input) throws IllegalArgumentException {
         if (input.length() != SIZE)
-            throw new IllegalArgumentException("잘못된 입력");
+            throw new IllegalArgumentException("3자리 수를 입력해주세요");   // 예외, 3자리 수가 아닌 경우
         else {
             inputs.clear();
             for (int i = 0; i < SIZE; i++)
                 inputs.add(Character.toString(input.charAt(i)));
+
+            if (checkSameNum())
+                throw new IllegalArgumentException("서로 다른 3자리 수를 입력해주세요");  //예외, 같은 수가 입력된 경우
         }
+    }
+
+    private boolean checkSameNum() {
+        boolean flag = false;
+        for (String s : inputs)
+            flag = compare(s, inputs.indexOf(s));
+        return flag;
+    }
+
+    private boolean compare(String s, int startIndex) {
+        boolean flag = false;
+        for (int i = startIndex + 1; i < inputs.size(); i++) {
+            if (s.equals(inputs.get(i))) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 
     private boolean checkAnswer(String continued) {
@@ -60,7 +81,8 @@ public class BaseballGame {
         else if (continued.equals("2"))
             return true;
         else
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("게임을 새로 시작하려면 1," +
+                    " 종료하려면 2를 입력하세요");   //예외, 1 or 2 이외의수 입력
     }
 
     private void countStrikeOrBall() {
@@ -75,8 +97,10 @@ public class BaseballGame {
     private void printResult() {
         if (strikeCount != 0 && ballCount != 0)
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+
         else if (strikeCount == 0 && ballCount != 0)
             System.out.println(ballCount + "볼");
+
         else if (strikeCount != 0) {
             if (strikeCount == 3) {
                 System.out.println("3스트라이크\n" +
@@ -89,7 +113,7 @@ public class BaseballGame {
     }
 
     private int checkTerminateOrContinue() {
-        if(strikeCount == 3) {
+        if (strikeCount == 3) {
             String continued = Console.readLine();
             System.out.println(continued);
             answer.clear();
@@ -98,7 +122,7 @@ public class BaseballGame {
                 return 0;
             }
 
-            initAnswer();
+            initAnswer();   // 한 게임이 종료되었으므로 정답 초기화
         }
 
         ballCount = 0;
