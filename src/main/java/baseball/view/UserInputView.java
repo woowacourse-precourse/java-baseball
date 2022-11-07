@@ -10,12 +10,29 @@ import java.util.List;
 public class UserInputView {
     private List<Integer> userGameNumbers = new ArrayList<>();
     private InputNumbersException inputNumbersException = new InputNumbersException();
+    private String userInput;
 
     public List<Integer> setUserGameNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String numberTypeOfString = Console.readLine();
-        inputNumbersException.checkValidOfUserInput(numberTypeOfString);
-        userGameNumbers = stringNumToIntegerNumListParser(numberTypeOfString);
+        printQuestion();
+        getUserInput();
+        checkUserInputException(userInput);
+        toIntegerList(userInput);
         return userGameNumbers;
+    }
+
+    public void printQuestion() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public void getUserInput() {
+        userInput = Console.readLine();
+    }
+
+    public void checkUserInputException(String userInput) {
+        inputNumbersException.checkValidOfUserInput(userInput);
+    }
+
+    public void toIntegerList(String userInput) {
+        userGameNumbers = stringNumToIntegerNumListParser(userInput);
     }
 }
