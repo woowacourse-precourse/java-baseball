@@ -7,8 +7,7 @@ import java.util.List;
 public class GamePlayer {
     public List<Integer> getThreeNumber() {
         String threeNumber = Console.readLine();
-
-        // 정상적인 입력인지 예외처리
+        ExceptionController.handleInvalidThreeRandomNumber(threeNumber);
 
         return makeListOfThreeNumbers(threeNumber);
     }
