@@ -9,8 +9,10 @@ public class Application {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTING = "낫싱";
+    private static final int REQUIRED_STRIKE_COUNT = 3;
 
     private Map<String, Integer> result = new HashMap<>();
+    private boolean gameOver = false;
 
     public static void main(String[] args) {
         Application application = new Application();
@@ -23,9 +25,17 @@ public class Application {
         User user = new User();
 
         computer.generateRandomNumber();
-        GameTextPrinter.printUserInputText();
-        user.inputNumber();
-        compareTwoNumbers(computer.getNumber(), user.getNumber());
+        while (!gameOver) {
+            GameTextPrinter.printUserInputText();
+            user.inputNumber();
+            compareTwoNumbers(computer.getNumber(), user.getNumber());
+            clearUserNumberAndResult(user);
+        }
+    }
+
+    private void clearUserNumberAndResult(User user) {
+        user.clearNumber();
+        result.clear();
     }
 
     private void compareTwoNumbers(List<Integer> computerNumber, List<Integer> userNumber) {
@@ -43,6 +53,8 @@ public class Application {
 
             GameTextPrinter.printCompareResult(result);
         }
+
+        checkGameOver(strikeCount);
     }
 
     private boolean isNothing(int sameDigitCount) {
@@ -57,5 +69,15 @@ public class Application {
             }
         }
         return strikeCount;
+    }
+
+    private void checkGameOver(int strikeCount) {
+        if (isGameOver(strikeCount)) {
+            gameOver = true;
+        }
+    }
+
+    private boolean isGameOver(int strikeCount) {
+        return Objects.equals(strikeCount, REQUIRED_STRIKE_COUNT);
     }
 }

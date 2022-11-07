@@ -22,4 +22,8 @@ public class User {
     public List<Integer> getNumber() {
         return number;
     }
+
+    public void clearNumber() {
+        number.clear();
+    }
 }
