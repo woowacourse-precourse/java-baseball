@@ -44,10 +44,7 @@ public class Game {
         if (!checkInputPlayGame(userInput)) {
             throw new IllegalArgumentException();
         }
-        if (userInput.equals("1")) {
-            return true;
-        }
-        return false;
+        return userInput.equals("1");
     }
 
     private static void checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
