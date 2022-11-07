@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static baseball.View.*;
+
 public class Application {
     public static void main(String[] args) {
+        printStartMsg();
         playGame();
     }
 
@@ -24,6 +27,7 @@ public class Application {
     }
 
     public static void playGame(){
+        printInputMsg();
         String computer = getRandomNumber();
         String userInput = Console.readLine();
     }
