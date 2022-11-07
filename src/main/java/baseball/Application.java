@@ -33,7 +33,7 @@ class PlayerNumber {
         try{
             System.out.print("숫자를 입력해주세요 : ");
             playerNumber = playerInput();
-        } catch(WrongInputException e) {
+        } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -46,11 +46,11 @@ class PlayerNumber {
 
     private void checkInputFormat(String inputString) {
         if (inputString.length() != 3)
-            throw new WrongInputException("3자리 수만 입력 가능합니다.");
+            throw new IllegalArgumentException("3자리 수만 입력 가능합니다.");
         if (!isNumber(inputString))
-            throw new WrongInputException("숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         if (!isAllDifferent(inputString))
-            throw new WrongInputException("서로 다른 수로 이루어져야 합니다.");
+            throw new IllegalArgumentException("서로 다른 수로 이루어져야 합니다.");
     }
 
     private List<Integer> convertToIntegerList(String playerInputString) {
@@ -81,12 +81,6 @@ class PlayerNumber {
     }
 }
 
-class WrongInputException extends IllegalArgumentException{
-    WrongInputException(String message) {
-        super(message);
-    }
-}
-
 class GameInit{
     List<Integer> computerNumber;
     List<Integer> playerNumber;
@@ -108,8 +102,8 @@ class GameInit{
 class GamePlay {
     boolean isRight;
     GamePlay(List<Integer> computerNumber, List<Integer> playerNumber) {
-        isRight = isRight(computerNumber, playerNumber);
         getHint(computerNumber, playerNumber);
+        isRight = isRight(computerNumber, playerNumber);
     }
 
     private boolean isRight(List<Integer> computerNumber, List<Integer> playerNumber) {
@@ -179,7 +173,7 @@ class GameEnd {
         try{
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             answer = answerInput();
-        } catch(WrongAnswerException e) {
+        } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         return answer;
@@ -194,16 +188,9 @@ class GameEnd {
     private void checkAnswerFormat(String answer) {
         if (answer.equals("1") || answer.equals("2"))
             return;
-        throw new WrongAnswerException("1과 2만 입력 가능합니다.");
+        throw new IllegalArgumentException("1과 2만 입력 가능합니다.");
     }
 }
-
-class WrongAnswerException extends IllegalArgumentException{
-    WrongAnswerException(String message) {
-        super(message);
-    }
-}
-
 
 public class Application {
     public static void main(String[] args) {
