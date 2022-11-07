@@ -17,7 +17,7 @@ public class MyTest extends NsTest {
 
     @Test
     void 컴퓨터가_다른_3가지수_선택() {
-        List<Integer> spyList = spy(Application.class).setComputer();
+        List<Integer> spyList = spy(Computer.class).setComputer();
 
         assertThat(spyList.size()).as("out of range").isEqualTo(3);
     }
@@ -29,11 +29,11 @@ public class MyTest extends NsTest {
         List<Integer> userListOne = List.of(1);
 
 
-        assertThatThrownBy( () -> spy(Application.class).checkUserHasException(userListError) )
+        assertThatThrownBy( () -> spy(UserException.class).checkUserHasException(userListError) )
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatCode( () -> spy(Application.class).checkUserHasException(userListNormal) )
+        assertThatCode( () -> spy(UserException.class).checkUserHasException(userListNormal) )
                 .doesNotThrowAnyException();
-        assertThatCode( () -> spy(Application.class).checkUserHasException(userListOne) )
+        assertThatCode( () -> spy(UserException.class).checkUserHasException(userListOne) )
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -46,14 +46,14 @@ public class MyTest extends NsTest {
         List<Integer> oneBalloneStrike = Arrays.asList(3, 2, 6);
         List<Integer> endOfGame = Arrays.asList(1, 2, 3);
 
-        assertThat( spy(Application.class).countStrikeBall(oneBall, computer) )
+        assertThat( spy(BallOrStrike.class).countStrikeBall(oneBall, computer) )
                 .as("볼만 있는 쪽 다시 체크")
                 .isEqualTo(false);
 
-        assertThat( spy(Application.class).countStrikeBall(oneBalloneStrike, computer) )
+        assertThat( spy(BallOrStrike.class).countStrikeBall(oneBalloneStrike, computer) )
                 .as("볼이랑 스트라이크 있는 쪽 다시 체크")
                     .isEqualTo(false);
-        assertThat( spy(Application.class).countStrikeBall(endOfGame, computer) )
+        assertThat( spy(BallOrStrike.class).countStrikeBall(endOfGame, computer) )
                 .as("스트라이크 있는 쪽 다시 체크")
                     .isEqualTo(true);
 
@@ -61,19 +61,19 @@ public class MyTest extends NsTest {
 
     @Test
     void 일혹은이_입력하지_않으면_예외발생하는지_체크() {
-        String normal = "1";
-        String error1 = "5";
-        String error2 = "11";
+        int normal = 1;
+        int error1 = 5;
+        int error2 = 11;
 
-        assertThat(spy(Application.class).checkUserHasOneOrTwo(normal)).as("5러규").isEqualTo(1);
+        assertThat(spy(UserEndGameException.class).checkUserHasOneOrTwo(normal)).as("5러규").isEqualTo(1);
 
-        assertThatThrownBy( () -> spy(Application.class).checkUserHasOneOrTwo(error1) )
+        assertThatThrownBy( () -> spy(UserEndGameException.class).checkUserHasOneOrTwo(error1) )
                 .as("예외")
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy( () -> spy(Application.class).checkUserHasOneOrTwo(error2) )
+        assertThatThrownBy( () -> spy(UserEndGameException.class).checkUserHasOneOrTwo(error2) )
                 .as("예외")
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatCode( () -> spy(Application.class).checkUserHasOneOrTwo(normal) )
+        assertThatCode( () -> spy(UserEndGameException.class).checkUserHasOneOrTwo(normal) )
                 .as("보통")
                 .doesNotThrowAnyException();
 
