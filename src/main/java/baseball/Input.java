@@ -21,4 +21,8 @@ public class Input {
 		exception.inputRange(playerNum);
 		return playerNum;
 	}
+
+	public int conversion(String input, int i) {
+		return (input.charAt(i)) - '0';
+	}
 }
