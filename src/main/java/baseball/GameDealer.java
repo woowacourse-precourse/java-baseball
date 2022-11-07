@@ -8,6 +8,9 @@ import java.util.regex.Pattern;
 
 public class GameDealer {
     public static String Str_Problem_Num = "";
+    public static void PRINT_START_MSG(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
     public static String GEN_PROBLEM(){
         String result = "";
 
