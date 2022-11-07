@@ -2,7 +2,9 @@ package baseball;
 
 import org.junit.jupiter.api.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -142,15 +144,16 @@ class GameTest {
     @Nested
     @DisplayName("게임을 다시 할것인지")
     class IsPlayingNewGame {
-
         @Test
         @DisplayName("게임을 다시 시작")
         void restart() throws Exception {
             //Given
             Game game = new Game();
+            ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
+            System.setIn(in);
 
             //When
-            boolean playingNewGame = game.isPlayingNewGame("1");
+            boolean playingNewGame = game.isPlayingNewGame();
 
             //Then
             assertThat(playingNewGame).isTrue();
@@ -161,9 +164,11 @@ class GameTest {
         void gameEnd() throws Exception {
             //Given
             Game game = new Game();
+            ByteArrayInputStream in = new ByteArrayInputStream("2".getBytes());
+            System.setIn(in);
 
             //When
-            boolean playingNewGame = game.isPlayingNewGame("2");
+            boolean playingNewGame = game.isPlayingNewGame();
 
             //Then
             assertThat(playingNewGame).isFalse();
@@ -174,10 +179,12 @@ class GameTest {
         void illegalChoice() throws Exception {
             //Given
             Game game = new Game();
+            ByteArrayInputStream in = new ByteArrayInputStream("3".getBytes());
+            System.setIn(in);
 
             //When
             //Then
-            assertThatThrownBy(() -> game.isPlayingNewGame("3"))
+            assertThatThrownBy(() -> game.isPlayingNewGame())
                     .isInstanceOf(IllegalArgumentException.class);
 
         }
