@@ -64,6 +64,24 @@ public class Application {
         return check;
     }
 
+    private static void printResult(int ballCount, int strikeCount) {
+        String result = "";
+        if(checkNothing(ballCount, strikeCount)) {
+            result = "낫싱";
+        } else {
+            if(ballCount != 0) {
+                result += ballCount + "볼";
+            }
+            if(ballCount != 0 && strikeCount != 0) {
+                result += " ";
+            }
+            if(strikeCount != 0) {
+                result += strikeCount + "스트라이크";
+            }
+        }
+        System.out.println(result);
+    }
+
     public static void main(String[] args) {
 
     }
