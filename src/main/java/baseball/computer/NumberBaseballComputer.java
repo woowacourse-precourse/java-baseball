@@ -81,7 +81,7 @@ public class NumberBaseballComputer implements Computer{
         int countStrike = ballOrStrikeNumbers.get(STRIKE);
         if (countBall == 0 && countStrike > 0) {
             if (countStrike == 3) {
-                return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+                return "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
             }
             return ballOrStrikeNumbers.get(STRIKE) + "스트라이크";
         }
