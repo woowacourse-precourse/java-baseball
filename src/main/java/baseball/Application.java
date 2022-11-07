@@ -42,12 +42,12 @@ public class Application {
     public static void printResult(List<Integer> result) {
         int strike = result.get(0);
         int ball = result.get(1);
-        if(strike==0) {
-            System.out.println(result.get(1)+"볼");
+        if(strike==0 && ball ==0){
+            System.out.println("낫싱");
         } else if(ball==0) {
             System.out.println(result.get(0)+"스트라이크");
-        } else if(strike==0 && ball ==0){
-            System.out.println("낫싱");
+        } else if(strike==0) {
+            System.out.println(result.get(1)+"볼");
         } else {
             System.out.println(result.get(1)+"볼 "+result.get(0)+"스트라이크");
         }
