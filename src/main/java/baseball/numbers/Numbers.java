@@ -5,6 +5,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Numbers {
     private static final int NUMBERS_COUNT = 3;
@@ -31,12 +32,13 @@ public class Numbers {
 
     public Map<BallTypes, Integer> compare(Numbers other) {
         Map<BallTypes, Integer> result = initialResult();
-
-        for (int sequence = 0; sequence < NUMBERS_COUNT; sequence++) {
-            BallTypes type = other.contains(sequence, numbers.get(sequence));
-            result.put(type, result.get(type) + 1);
-        }
+        IntStream.range(0, NUMBERS_COUNT).forEach(sequence -> checkBallTypes(result, other, sequence));
         return result;
+    }
+
+    private void checkBallTypes(Map<BallTypes, Integer> result, Numbers other, int sequence) {
+        BallTypes type = other.contains(sequence, numbers.get(sequence));
+        result.put(type, result.get(type) + 1);
     }
 
     private static List<Integer> convert(String input) {
