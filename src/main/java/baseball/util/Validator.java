@@ -37,4 +37,9 @@ public class Validator {
         if(!Pattern.matches(NUMBER_PATTERN,numbers))
             throw new IllegalArgumentException(WRONG_NUMBER);
     }
+
+    public void isRightSelect(String select){
+        if(!(select.equals(RESTART_SELECT) || select.equals(END_SELECT)))
+            throw new IllegalArgumentException(WRONG_NUMBER);
+    }
 }
