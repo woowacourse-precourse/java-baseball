@@ -9,6 +9,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ServiceTest {
 
@@ -132,6 +133,24 @@ public class ServiceTest {
         //then
         assertEquals(1, ballCount.get("strikeCount"));
         assertEquals(1, ballCount.get("ballCount"));
+    }
+
+    @DisplayName("유저의 문자열을 한글자씩 잘라 리스트로 반환하는 메서드 - 예외 테스트")
+    @Test
+    void getUserInputToListTest() {
+        //given
+        Service service = new Service();
+        String pattern = "^[1-9]*$";
+        //when, then
+        assertThrows(IllegalArgumentException.class, () -> {
+            service.getUserInputToList("012", 3, pattern);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            service.getUserInputToList("121", 3, pattern);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            service.getUserInputToList("1234", 3, pattern);
+        });
     }
 
 }
