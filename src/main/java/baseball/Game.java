@@ -81,6 +81,7 @@ public class Game {
         BaseBall baseBall = new BaseBall();
 
         baseBall.setStrike(countStrike(targetNumber, playerNumber, baseBall));
+        baseBall.setBall(countBall(targetNumber, playerNumber, baseBall));
         return baseBall.toString();
     }
 
@@ -96,5 +97,19 @@ public class Game {
         if (targetNumber == playNumber)
             return strike + 1;
         return strike;
+    }
+
+    int countBall(List<Integer> targetNumber, List<Integer> playerNumber, BaseBall baseBall) { //3.3 입력 받은 숫자의 Ball 숫자 세기
+        for (int index = 0; index < targetNumber.size(); index++) {
+            baseBall.setBall(checkBall(index, playerNumber.get(index), targetNumber, baseBall.getBall()));
+        }
+
+        return baseBall.getBall();
+    }
+
+    int checkBall(int playerIndex, int playerNumber, List<Integer> targetNumber, int ball) { //3.4 입력 받은 숫자의 Ball 판별하기
+        if (targetNumber.indexOf(playerNumber) != playerIndex && targetNumber.contains(playerNumber))
+            return ball + 1;
+        return ball;
     }
 }
