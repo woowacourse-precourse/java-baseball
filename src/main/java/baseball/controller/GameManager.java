@@ -9,7 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.utils.SystemMsgPrinter.*;
+import static baseball.view.OutputMsgContainer.*;
 
 public class GameManager {
     private final InputHandler inputStream = new InputHandler();
@@ -22,7 +22,7 @@ public class GameManager {
     }
 
     private void startFirstGame() {
-        printGameStartMessage();
+        printMessage(GAME_START_MESSAGE);
         startLoop();
     }
 
@@ -39,14 +39,14 @@ public class GameManager {
     private void startLoop() {
         List<Integer> userScore;
         do {
-            printGameInputMessage();
+            printMessage(GAME_INPUT_MESSAGE);
             int userInput = inputStream.readIntWithVerification();
             baseballManager.addUserBaseballNumInfo(new BaseballNumber(userInput));
             baseballManager.computeUserScore();
             userScore = baseballManager.getUserScore();
             outputStream.printMessageForData(userScore);
         } while (!isGameOver(userScore));
-        printGameEndAndRestartMessage();
+        printMessage(GAME_END_AND_RESTART_MESSAGE);
     }
 
     private boolean isGameOver(List<Integer> userScore) {
