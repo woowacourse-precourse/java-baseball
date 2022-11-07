@@ -37,12 +37,12 @@ public class BaseballGame {
             }
 
             // 3-2. 받은 숫자의 스트라이크, 볼 개수 세기
-            int strikeCnt = countStrikes(targetNumber, userInput);
-            int ballCnt = countBalls(targetNumber, userInput);
-            String cntInfo = buildCntInfo(strikeCnt, ballCnt);
-            System.out.println(cntInfo);
+            int[] strikesAndBalls = countStrikesAndBalls(targetNumber, userInput);
+            int strikes = strikesAndBalls[0];
+            int balls = strikesAndBalls[1];
+            System.out.println(makeInfoString(strikes, balls));
 
-            if (strikeCnt == 3) {
+            if (strikes == 3) {
                 gotAnswer = true;
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
@@ -88,32 +88,20 @@ public class BaseballGame {
         return invalidTF;
     }
 
-    private int countStrikes(int targetNum, int inputNum) {
+    private int[] countStrikesAndBalls(int targetNum, int inputNum) {
 
         List<Integer> targetDigits = decomposeNumber(targetNum);
         List<Integer> inputDigits = decomposeNumber(inputNum);
 
-        int strikeCnt = 0;
+        int[] strikesAndBalls = {0, 0};
         for (int i = 0; i < targetDigits.size(); i++) {
             if (targetDigits.get(i) == inputDigits.get(i)) {
-                strikeCnt++;
+                strikesAndBalls[0] += 1;
+            } else if (targetDigits.contains(inputDigits.get(i))) {
+                strikesAndBalls[1] += 1;
             }
         }
-        return strikeCnt;
-    }
-
-    private int countBalls(int targetNum, int inputNum) {
-
-        List<Integer> targetDigits = decomposeNumber(targetNum);
-        List<Integer> inputDigits = decomposeNumber(inputNum);
-
-        int ballCnt = 0;
-        for (int i = 0; i < targetDigits.size(); i++) {
-            if (targetDigits.get(i) != inputDigits.get(i) && targetDigits.contains(inputDigits.get(i))) {
-                ballCnt++;
-            }
-        }
-        return ballCnt;
+        return strikesAndBalls;
     }
 
     private List<Integer> decomposeNumber(int num) {
@@ -125,7 +113,7 @@ public class BaseballGame {
         return digitList;
     }
 
-    private String buildCntInfo(int strikeCnt, int ballCnt) {
+    private String makeInfoString(int strikeCnt, int ballCnt) {
         String info = "";
 
         if (ballCnt > 0 && strikeCnt > 0) {
