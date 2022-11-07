@@ -1,5 +1,10 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
 class Game {
     public final int RESTART = 1;
     public final int END = 2;
@@ -22,6 +27,20 @@ class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+}
+
+
+class Computer {
+    public List<Integer> makeRandomNumber() {
+        List<Integer> randomNumberList = new ArrayList<>();
+        while (randomNumberList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumberList.contains(randomNumber)) {
+                randomNumberList.add(randomNumber);
+            }
+        }
+        return randomNumberList;
+    }
 }
 
 
