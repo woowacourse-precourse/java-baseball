@@ -114,14 +114,14 @@ public class Application {
     return sameNumberList;
   }
 
-  private static List<String> findResultStrikeAndBall(List<Integer> myNumberGroup, List<Integer> computerNumberGroup
-          ,List<Integer> sameNumberList){
-    List<String> resultStrikeAndBall = new ArrayList<>();
+  private static HashMap<String,Integer> findResultStrikeAndBall(List<Integer> myNumberGroup
+          ,List<Integer> computerNumberGroup,List<Integer> sameNumberList){
+    HashMap<String,Integer> resultStrikeAndBall = new HashMap<>();
     for(int sameNumber : sameNumberList){
       if(myNumberGroup.indexOf(sameNumber)==computerNumberGroup.indexOf(sameNumber)){
-        resultStrikeAndBall.add(STRIKE);
+        resultStrikeAndBall.put(STRIKE,resultStrikeAndBall.getOrDefault(STRIKE,0)+1);
       }else{
-        resultStrikeAndBall.add(BALL);
+        resultStrikeAndBall.put(BALL,resultStrikeAndBall.getOrDefault(BALL,0)+1);
       }
     }
     return resultStrikeAndBall;
