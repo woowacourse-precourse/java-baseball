@@ -61,9 +61,4 @@ public class NumberBaseballService {
 
         return digitList;
     }
-
-    //getter for test code
-    public List<Integer> getAnswer() {
-        return answer;
-    }
 }
