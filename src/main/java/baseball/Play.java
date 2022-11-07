@@ -16,6 +16,7 @@ public class Play {
         }
         int ball = countBall(playerNumber, answerNumber);
         int strike = countStrike(playerNumber, answerNumber);
+        printResult(ball, strike);
     }
     public static String createThreeNumber() {
         int size = 0;
@@ -47,5 +48,20 @@ public class Play {
             }
         }
         return strike;
+    }
+    public static void printResult(int ball, int strike) {
+        ball = ball - strike;
+        if (ball != 0 && strike != 0) {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
+        if (ball != 0 && strike == 0) {
+            System.out.println(ball+"볼");
+        }
+        if (ball == 0 && strike != 0) {
+            System.out.println(strike+"스트라이크");
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
     }
 }
