@@ -102,7 +102,6 @@ class ApplicationTest extends NsTest {
         Scanner scanner = new Scanner(System.in);
         boolean result = true;
         assertEquals(result,endGame());
-
     }
     @Override
     public void runMain() {

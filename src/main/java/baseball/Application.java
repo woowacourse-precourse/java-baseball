@@ -88,7 +88,7 @@ public class Application {
 
     public static boolean playBaseball() {
         List<Integer> answer = new ArrayList<>();
-        boolean correctAnswer;
+        boolean isCorrect;
         boolean quitGame;
         for (int i=0; i<3; i++) {
             answer.add(pickNumberInRange(1,9));
@@ -100,8 +100,8 @@ public class Application {
             int strike = checkStrike(answer,userInput);
             ball = ball-strike;
             printStrikeAndBall(ball,strike);
-            correctAnswer = returnAnswer(strike);
-            if (correctAnswer) {
+            isCorrect = returnAnswer(strike);
+            if (isCorrect) {
                 quitGame = endGame();
                 break;
             }
