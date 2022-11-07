@@ -16,4 +16,10 @@ public class Validator {
             throw new IllegalArgumentException("guess only 3 numbers.");
         }
     }
+
+    public void checkRange(int input) throws IllegalArgumentException {
+        if(input < 1 || input > 9 ) {
+            throw new IllegalArgumentException("guess between 1 ~ 9.");
+        }
+    }
 }
