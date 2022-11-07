@@ -55,14 +55,21 @@ public class Application {
 
     public static void showCount(List<Integer> countList) {   // Index ( 0 : BALL / 1 : STRIKE )
 
-        int count;
+        int ball, strike;
+        ball = countList.get(0);
+        strike = countList.get(1);
 
-        if ((count = countList.get(0)) != 0) {
-            System.out.printf("%d볼 ", count);
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return;
         }
 
-        if ((count = countList.get(1)) != 0) {
-            System.out.printf("%d스트라이크 ", count);
+        if (ball != 0) {
+            System.out.printf("%d볼 ", ball);
+        }
+
+        if (strike != 0) {
+            System.out.printf("%d스트라이크 ", strike);
         }
 
     }
