@@ -12,29 +12,37 @@ public class Judgment {
 	private static final int NOTHING = -1;
 
 	public Judgment() {
-		initCount();
+		initCounts();
 	}
 
-	private void initCount() {
+	private void initCounts() {
 		ballCount = INIT_COUNT;
 		strikeCount = INIT_COUNT;
 	}
 
 	public void compareNumber(List<Integer> userNumbers, List<Integer> computerNumbers) {
-		initCount();
+		initCounts();
 		for (int userNumberIndex = 0; userNumberIndex < ConstValue.NUMBER_COUNT; userNumberIndex++) {
-			checkStrikeAndBall(userNumberIndex, computerNumbers.indexOf(userNumbers.get(userNumberIndex)));
+			Integer computerNumberIndex = findIndex(userNumbers, computerNumbers, userNumberIndex);
+			isStrike(userNumberIndex, computerNumberIndex);
+			isBall(userNumberIndex, computerNumberIndex);
 		}
 		printStrikeAndBallMessage();
 	}
 
-	private void checkStrikeAndBall(Integer userNumberIndex, Integer computerNumbersIndex) {
-		if (computerNumbersIndex == NOTHING) {
-			return;
-		}
-		if (computerNumbersIndex.equals(userNumberIndex)) {
+	private Integer findIndex(List<Integer> userNumbers, List<Integer> computerNumbers, Integer userNumberIndex) {
+		return computerNumbers.indexOf(userNumbers.get(userNumberIndex));
+
+	}
+
+	private void isStrike(Integer userNumberIndex, Integer computerNumberIndex) {
+		if (computerNumberIndex.equals(userNumberIndex)) {
 			strikeCount++;
-		} else if (computerNumbersIndex < ConstValue.NUMBER_COUNT) {
+		}
+	}
+
+	private void isBall(Integer userNumberIndex, Integer computerNumberIndex) {
+		if (!userNumberIndex.equals(computerNumberIndex) && computerNumberIndex != NOTHING) {
 			ballCount++;
 		}
 	}
