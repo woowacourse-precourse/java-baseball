@@ -14,7 +14,12 @@ public class ExceptionController {
     }
 
     private static void handleNotNumberInput(String input) {
-
+        for(int i = 0; i < 3; i++) {
+            char character = input.charAt(i);
+            if ((character < '0') || (character > '9')) {
+                throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+            }
+        }
     }
 
     private static void handleDuplicatedNumberInput(String input) {
