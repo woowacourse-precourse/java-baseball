@@ -1,10 +1,18 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Game {
 
     private static final int NUMBER_LENGTH = 3;
+
+    private List<Character> getComputerNumberList() {
+        ComputerNumber computerNumber = new ComputerNumber();
+        List<Character> computerNumberList = computerNumber.getNumberList();
+        return computerNumberList;
+    }
 
     private String printState(int strike, int ball) {
         String state = "";
