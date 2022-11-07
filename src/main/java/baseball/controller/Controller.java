@@ -31,7 +31,9 @@ public class Controller {
 
     }
 
-    static boolean isStrikeNumber(List<Integer> computerNumber, int userNumber, int userNumberIndex) {
+
+
+    private boolean isStrikeNumber(List<Integer> computerNumber, int userNumber, int userNumberIndex) {
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.get(i) == userNumber && i == userNumberIndex) {
                 return true;
