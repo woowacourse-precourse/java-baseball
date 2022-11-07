@@ -34,55 +34,105 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    public void checkInputConditionTest_NormalCase() throws Exception{
+    public void checkInputConditionTest_NormalCase() throws Exception {
         //given
         int inputNumber = 123;
         //when
         //then
         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class);
-     }
+    }
+
     @Test
-    public void checkInputConditionTest_MoreDigits() throws Exception{
+    public void checkInputConditionTest_MoreDigits() throws Exception {
         //given
         int inputNumber = 1234;
         //when
         //then
+        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void checkInputConditionTest_LessDigits() throws Exception {
+        //given
+        int inputNumber = 12;
+        //when
+        //then
         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class);
-     }
+    }
 
-     @Test
-     public void checkInputConditionTest_LessDigits() throws Exception{
-         //given
-         int inputNumber = 12;
-         //when
-         //then
-         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
-                 .isInstanceOf(IllegalArgumentException.class);
-      }
+    @Test
+    public void checkInputConditionTest_RedundantNumber() throws Exception {
+        //given
+        int inputNumber = 122;
+        //when
+        //then
+        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
-     @Test
-     public void checkInputConditionTest_RedundantNumber() throws Exception{
-         //given
-         int inputNumber = 122;
-         //when
-         //then
-         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
-                 .isInstanceOf(IllegalArgumentException.class);
-      }
+    @Test
+    public void convertIntegerIntoListTest() throws Exception {
+        //given
+        int number = 123;
+        List<Integer> actual = Arrays.asList(1, 2, 3);
+        //when
+        List<Integer> expected = Application.convertIntegerIntoList(number);
 
-      @Test
-      public void convertIntegerIntoListTest() throws Exception{
-          //given
-          int number = 123;
-          List<Integer> actual = Arrays.asList(1,2,3);
-          //when
-          List<Integer> expected = Application.convertIntegerIntoList(number);
+        //then
+        assertEquals(expected, actual);
+    }
 
-          //then
-          assertEquals(expected, actual);
-       }
+    @Test
+    public void countBallsAndStrikesTest_ThreeStrikes() throws Exception {
+        //given
+        List<Integer> answer = Arrays.asList(1, 2, 3);
+        List<Integer> input = Arrays.asList(1, 2, 3);
+
+        //when
+        int[] expectedResult = new int[]{0, 3};
+        int[] actualResult = Application.countBallsAndStrikes(answer, input);
+
+        //then
+        assertArrayEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void countBallsAndStrikesTest_TwoBallsOneStrike() throws Exception {
+        //given
+        List<Integer> answer = Arrays.asList(1, 2, 3);
+        List<Integer> input = Arrays.asList(3, 2, 1);
+        //when
+        int[] expectedResult = new int[]{2, 1};
+        int[] actualResult = Application.countBallsAndStrikes(answer, input);
+        //then
+        assertArrayEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void countBallsAndStrikesTest_ThreeBallsNoStrike() throws Exception{
+        //given
+        List<Integer> answer = Arrays.asList(1, 2, 3);
+        List<Integer> input = Arrays.asList(3, 1, 2);
+        //when
+        int[] expectedResult = new int[]{3, 0};
+        int[] actualResult = Application.countBallsAndStrikes(answer, input);
+        //then
+        assertArrayEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void countBallsAndStrikesTest_Nothing() throws Exception{
+        //given
+        List<Integer> answer = Arrays.asList(1, 2, 3);
+        List<Integer> input = Arrays.asList(4, 5, 6);
+        //when
+        int[] expectedResult = new int[]{0, 0};
+        int[] actualResult = Application.countBallsAndStrikes(answer, input);
+        //then
+        assertArrayEquals(expectedResult, actualResult);
+    }
 
     @Override
     public void runMain() {
