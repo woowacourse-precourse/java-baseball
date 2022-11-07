@@ -75,7 +75,7 @@ class BaseballGame {
         return continueGame;
     }
 
-    private boolean checkThreeStrike() {
+    private boolean checkResult() {
         boolean threeStrike = false;
         List<String> resultForPlayer = new ArrayList<>();
         Map<HitStatus, Integer> result = countAllHitStatus();
@@ -99,7 +99,8 @@ class BaseballGame {
 
     private boolean analyzeResult() {
         boolean continueGame;
-        if (checkThreeStrike()) {
+        boolean isThreeStrike = checkResult();
+        if (isThreeStrike) {
             boolean wantContinueGame = userContinueGame();
             if (wantContinueGame) {
                 continueGame = true;
