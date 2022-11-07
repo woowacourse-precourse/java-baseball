@@ -14,7 +14,7 @@ public class Application {
     private final String RESTART = "1";
     private final String NO_RESTART = "2";
 
-    String input = "";
+    String userInput = "";
     String answer = "";
     int tryCount = 0;
 
@@ -29,12 +29,12 @@ public class Application {
         boolean isContinue = true;
         while (isContinue) {
             try {
-                input = gameIO.getInput();
-                gameIO.isLegalInput(input);
+                userInput = gameIO.getInput();
+                gameIO.isLegalInput(userInput);
 
                 tryCount++;
 
-                String judgement = referee.judge(input, answer);
+                String judgement = referee.judge(userInput, answer);
                 gameIO.printResult(judgement);
 
                 if (judgement == Referee.THREE_STRIKE) {

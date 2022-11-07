@@ -46,10 +46,10 @@ public class GameIO {
     }
 
     public boolean isAllDifferent(String input) {
-        char first = input.charAt(0);
-        char second = input.charAt(1);
-        char third = input.charAt(2);
-        if (first == second || second == third || first == third) {
+        char firstChar = input.charAt(0);
+        char secondChar = input.charAt(1);
+        char thirdChar = input.charAt(2);
+        if (firstChar == secondChar || secondChar == thirdChar || firstChar == thirdChar) {
             return false;
         }
         return true;
