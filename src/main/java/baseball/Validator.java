@@ -26,4 +26,8 @@ public class Validator {
                 .distinct()
                 .count() == NUMBER_LENGTH;
     }
+
+    public static boolean checkRestartException(String restart) {
+        return restart.equals(RESTART) || restart.equals(QUIT);
+    }
 }
