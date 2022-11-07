@@ -8,8 +8,8 @@ public class UserNums {
     private final List<Integer> numbers = new ArrayList<>();
 
     public UserNums(String userinput) {
-        if (userinput.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
+        if (userinput.length() != BaseballRule.num_length) {
+            throw new IllegalArgumentException("자리수가 맞지않습니다.");
         }
         for (char usernumchar : userinput.toCharArray()) {
             numbersAdd(usernumchar);

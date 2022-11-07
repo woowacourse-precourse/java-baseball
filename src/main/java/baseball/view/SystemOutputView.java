@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.controller.BaseballCountController;
+import baseball.model.BaseballRule;
 
 public class SystemOutputView {
 
@@ -11,7 +12,8 @@ public class SystemOutputView {
         this.strikecount = baseballCountController.getStrikecount();
         this.ballcount = baseballCountController.getBallcount();
     }
-    public void printOutputMessage(){
+
+    public void printOutputMessage() {
         baseballCountMessage();
         onlyBallMessage();
         onlyStrikeMessage();
@@ -19,7 +21,7 @@ public class SystemOutputView {
     }
 
     public static void allStrikeMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(BaseballRule.num_length+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private void baseballCountMessage() {

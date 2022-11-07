@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.model.BaseballRule;
 import baseball.model.ComputerNums;
 import baseball.model.UserNums;
 import baseball.view.SystemOutputView;
@@ -14,11 +15,10 @@ public class BaseballGameController {
     }
 
     private static void gameStart() {
-        ComputerNums computerNums = new ComputerNums(3);
+        ComputerNums computerNums = new ComputerNums(BaseballRule.num_length);
         boolean allStrike;
         do {
-            BaseballCountController baseballCountController = new BaseballCountController(computerNums.getNumbers(), new UserNums(
-                SystemInputView.startInput()).getNumbers());
+            BaseballCountController baseballCountController = new BaseballCountController(computerNums.getNumbers(), new UserNums(SystemInputView.startInput()).getNumbers());
             SystemOutputView systemOutputView = new SystemOutputView(baseballCountController);
             systemOutputView.printOutputMessage();
             allStrike = AllStrike(baseballCountController);
@@ -47,7 +47,7 @@ public class BaseballGameController {
     }
 
     private static boolean AllStrike(BaseballCountController baseballCountController) {
-        return baseballCountController.getStrikecount() == 3;
+        return baseballCountController.getStrikecount() == BaseballRule.num_length;
     }
 
 
