@@ -36,4 +36,19 @@ public class Score {
         return ball;
     }
 
+    private static void getResult(int strikeCount, int ballCount) {
+        if (strikeCount != 0 && ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
+            return;
+        }
+        if (strikeCount != 0 && ballCount == 0) {
+            System.out.println(ballCount + "볼");
+            return;
+        }
+        if (strikeCount != 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            return;
+        }
+        System.out.println("낫싱");
+    }
 }
