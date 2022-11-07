@@ -31,14 +31,14 @@ public class GameView {
         generateUserNumber(inputUser());
         System.out.println(gameController
                 .calculateHint()
-                .toString());
+                .hintToString());
         if (!gameController.isThreeStrike()) {
             play();
         }
-        System.out.println(THREE_STRIKE_MESSAGE);
     }
 
     private boolean restart() {
+        System.out.println(THREE_STRIKE_MESSAGE);
         System.out.println(GAME_RESTART_OR_TERMINATE_MESSAGE);
         return restartOrTerminate(inputUser());
     }
@@ -55,9 +55,8 @@ public class GameView {
         if (!validateUserNumber(userInput)) {
             throw new IllegalArgumentException();
         }
-        gameController
-                .setUserNumber(UserNumber
-                        .generate(userInput));
+        gameController.setUserNumber(
+                        UserNumber.generate(userInput));
     }
 
     private boolean restartOrTerminate(String userInput) {
