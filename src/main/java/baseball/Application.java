@@ -84,9 +84,9 @@ public class Application {
 
     public static void OutputString(String str, boolean isLineBreak){
         if(isLineBreak)
-            System.out.printf(str);
-        else
             System.out.println(str);
+        else
+            System.out.printf(str);
     }
 
     public static List<Integer> GetInputNumber(){
