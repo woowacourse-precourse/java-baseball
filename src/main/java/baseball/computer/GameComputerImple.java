@@ -33,5 +33,13 @@ public class GameComputerImple implements GameComputer {
         return computerGameEndChecker.isNotGameEnd(input, this.numbers);
     }
 
+    @Override
+    public boolean isNumberGenerated(int size){
+        if(numbers.size()==size) {
+            return true;
+        }
+        return false;
+    }
+
 
 }

@@ -8,6 +8,8 @@ public interface GameComputer {
     String printHintForInput(List<Integer> input);
 
     boolean isNotGameEndCase(List<Integer> input);
+
+    boolean isNumberGenerated(int size);
 }
 
 
