@@ -6,4 +6,8 @@ public class User {
     public String getUserNumber() {
         return this.userNumber;
     }
+
+    public void setUserNumber(String userInput){
+        this.userNumber = userInput;
+    }
 }
