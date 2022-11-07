@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class BaseballGame {
 
@@ -27,11 +24,14 @@ public class BaseballGame {
 
             // 사용자의 입력값 저장
             human = inputHumanNumber(Console.readLine());
+
+            // 입력 값과 결과 비교
+            Baseball result = compareInputWithAnswer(human, computer);
             
         }
         
 
-        // 입력 값과 결과 비교
+
 
     }
 
@@ -51,7 +51,7 @@ public class BaseballGame {
     // 초기화시 중복 검사
     public boolean checkOverlap(List<Integer> answerNumber, int i) {
         for (int j = 0; j < i; j++) {
-            if (answerNumber.get(i) == answerNumber.get(j)) {
+            if (Objects.equals(answerNumber.get(i), answerNumber.get(j))) {
                 return false;
             }
         }
@@ -87,8 +87,60 @@ public class BaseballGame {
                 throw new IllegalArgumentException("중복 값을 입력하였습니다.");
             }
         }
-
         return humanNumberList;
+    }
+
+    // 입력 값과 결과를 비교
+    public Baseball compareInputWithAnswer(List<Integer> human, List<Integer> computer) {
+        Baseball result = new Baseball();
+        // 스트라이크 비교
+        int strike = returnStrike(human, computer);
+        // 볼 비교
+        int ball = returnBallCount(human, computer);
+
+        // 스트라이크, 볼 정보 저장
+        result.setStrike(strike);
+        result.setBall(ball);
+
+        return result;
+    }
+
+    public int returnBallCount(List<Integer> human, List<Integer> computer) {
+        int ball = 0;
+        for (int i = 0; i < human.size() ; i++) {
+            for (int j = 0; j < computer.size() ; j++) {
+                ball += checkBallCount(i, j, human, computer);
+            }
+        }
+        return ball;
+    }
+
+    public int checkBallCount(int i, int j, List<Integer> human, List<Integer> computer) {
+        if (i == j) {
+            return 0;
+        }
+
+        if (human.get(i).equals(computer.get(j))) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public int returnStrike(List<Integer> human, List<Integer> computer) {
+        int strike = 0;
+        for (int i = 0; i < human.size(); i++) {
+            strike += checkStrike(i, human, computer);
+        }
+        return strike;
+    }
+
+    public int checkStrike(int i, List<Integer> human, List<Integer> computer) {
+        if (human.get(i).equals(computer.get(i))) {
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
 
