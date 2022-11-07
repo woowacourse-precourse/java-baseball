@@ -39,8 +39,9 @@ public class Game {
     }
 
     // 사용자 입력 저장 기능
-    private List<Integer> input() {
+    public List<Integer> input() {
         List<Integer> inputNumber = new ArrayList<>();
+        System.out.print(inputComment);
         String input = Console.readLine();
 
         if (!Validation.isNumber(input)) {
@@ -67,7 +68,7 @@ public class Game {
     }
 
     // 입력에 대한 결과 기능
-    private void checkInput() {
+    public void checkInput() {
         count = new ArrayList<>();
         count.add(0);
         count.add(0);
@@ -78,7 +79,7 @@ public class Game {
         }
     }
 
-    private void strikeOrBall(int i, int j) {
+    public void strikeOrBall(int i, int j) {
         if (inputNumber.get(i).equals(computer.get(j)) && i == j) {
             count.set(0, count.get(0) + 1);
         } else if (inputNumber.get(i).equals(computer.get(j)) ) {
@@ -87,7 +88,7 @@ public class Game {
     }
 
     // 입력에 대한 결과 출력 기능
-    private void out() {
+    public void out() {
         if (count.get(0) == 0 && count.get(1) == 0) {
             System.out.println("낫싱");
         } else if (count.get(0) == 0) {
@@ -118,7 +119,6 @@ public class Game {
         this.computer = makeRandomNumber();
 
         do {
-            System.out.print(inputComment);
             // 사용자 입력 받기
             this.inputNumber = input();
 
