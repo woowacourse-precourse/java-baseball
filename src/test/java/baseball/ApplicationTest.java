@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,6 +20,34 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void 입력에_0이_있는경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("210"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자가아닌_문자가_있는경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 공백이_포함된_경우() {
+        String userNumber = " 12";
+        assertThat(Application.isValidNumber(userNumber)).isEqualTo(false);
+    }
+
+    @Test
+    void 중복되는_숫자가_있는경우() {
+        String userNumber = "121";
+        assertThat(Application.isValidNumber(userNumber)).isEqualTo(false);
     }
 
     @Test
