@@ -7,6 +7,7 @@ import java.util.*;
 public class BaseballGame {
     public static final int NUM_LENGTH = 3;
 
+
     public static List<Integer> ComputerNumGenerator(){
         List<Integer> num = new ArrayList<>();
         while (num.size() < 3) {
@@ -84,4 +85,12 @@ public class BaseballGame {
         return count;
     }
 
+    public static boolean exit(String userInput) throws IllegalArgumentException {
+        if (userInput.equals("1"))
+            return false;
+        else if (userInput.equals("2"))
+            return true;
+
+        throw new IllegalArgumentException();
+    }
 }
