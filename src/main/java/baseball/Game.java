@@ -14,7 +14,9 @@ public class Game {
 
     public void play() {
         do {
-            referee.compareComputerWith(Translator.translateStringToIntegerList(InputView.inputNumbers()));
+            String input = InputView.inputNumbers();
+            Validator.validateInputLength(input);
+            referee.compareComputerWith(Translator.translateStringToIntegerList(input));
             printHint(referee.getBallCount(), referee.getStrikeCount());
         } while(referee.getStrikeCount() != 3);
         OutputView.showVictoryMessage();
