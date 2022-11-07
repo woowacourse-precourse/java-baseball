@@ -16,8 +16,10 @@ public class GameManager {
             isBall();
             printResult();
         }
+        System.out.println(computer.getRandomNumList().size() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     private void isStrike() {
+        strike_num = 0;
         for (int i = 0; i < user.getUserInput().size(); i++) {
             if (computer.getRandomNumList().get(i) == user.getUserInput().get(i)) {
                 strike_num++;
@@ -25,6 +27,7 @@ public class GameManager {
         }
     }
     private void isBall() {
+        ball_num = 0;
         for (int i = 0; i < computer.getRandomNumList().size(); i++) {
             if (computer.getRandomNumList().contains(user.getUserInput().get(i))) {
                 ball_num++;
