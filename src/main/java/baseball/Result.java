@@ -16,6 +16,7 @@ public enum Result {
 
     private int score;
     private String message;
+    private static final String EXCEPTION_MESSAGE = "잘못된 점수입니다.";
 
     Result(int score, String message) {
         this.score = score;
@@ -36,6 +37,6 @@ public enum Result {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 점수입니다."));
+                .orElseThrow(() -> new IllegalArgumentException(EXCEPTION_MESSAGE));
     }
 }

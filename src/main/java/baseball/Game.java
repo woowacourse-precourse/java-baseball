@@ -3,7 +3,6 @@ package baseball;
 public class Game {
     private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String INVALID_INPUT = "잘못된 입력입니다.";
     private static final String GUESS_ALL = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String OPTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String END_GAME = "숫자 야구 게임을 종료합니다.";
@@ -34,7 +33,7 @@ public class Game {
                 changeStatusByOption();
             }
         } catch (IllegalArgumentException exception) {
-            System.out.println(INVALID_INPUT);
+            System.out.println(exception.getMessage());
             throw new IllegalArgumentException();
         }
 
@@ -59,16 +58,12 @@ public class Game {
      * @return void
      * */
     private static void proceedGameUntil3S(Computer computer, User user) {
-        try {
-            while (result != Result.THREESTRIKE) {
-                System.out.print(INPUT_MESSAGE);
-                User.setGameNumber();
+        while (result != Result.THREESTRIKE) {
+            System.out.print(INPUT_MESSAGE);
+            User.setGameNumber();
 
-                result = Result.getResultByCode(Calculator.calculateScore(computer, user));
-                System.out.println(result.getMessage());
-            }
-        } catch (IllegalArgumentException exception) {
-            throw new IllegalArgumentException();
+            result = Result.getResultByCode(Calculator.calculateScore(computer, user));
+            System.out.println(result.getMessage());
         }
     }
 
@@ -78,11 +73,7 @@ public class Game {
      * @return void
      * */
     private static void changeStatusByOption() {
-        try {
-            User.setGameOption();
-            status = Status.getStatusByGameOption(user.getGameOption());
-        } catch (IllegalArgumentException exception) {
-            throw new IllegalArgumentException();
-        }
+        User.setGameOption();
+        status = Status.getStatusByGameOption(user.getGameOption());
     }
 }

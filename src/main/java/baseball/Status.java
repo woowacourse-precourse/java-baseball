@@ -7,6 +7,7 @@ public enum Status {
     RESTART(1),
     EXIT(2);
 
+    private static final String EXCEPTION_MESSAGE = "잘못된 옵션입니다.";
     private int code;
 
     Status(int code) {
@@ -23,6 +24,6 @@ public enum Status {
         return Arrays.stream(Status.values())
                 .filter(status -> status.code == gameOption)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 옵션입니다."));
+                .orElseThrow(() -> new IllegalArgumentException(EXCEPTION_MESSAGE));
     }
 }
