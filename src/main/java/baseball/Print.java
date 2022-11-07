@@ -4,17 +4,13 @@ import static features.Hint.getCountBall;
 import static features.Hint.getCountNothing;
 import static features.Hint.getCountStrike;
 
-import java.util.Map;
-
 public class Print{
 
-    private static int countStrike = getCountStrike();
-    private static int countBall = getCountBall();
-    private static int countNothing = getCountNothing();
+    private static final int countStrike = getCountStrike();
+    private static final int countBall = getCountBall();
+    private static final int countNothing = getCountNothing();
 
-    private static String strike = String.format("%d스트라이크", countStrike);
-    private static String ball = String.format("%d볼 %d스트라이크", countBall, countStrike);
-    private static String nothing = "낫싱";
+
 
 
 
@@ -22,13 +18,13 @@ public class Print{
         String result = "";
 
         if (countStrike == 3) {
-            result = strike;
+            result = String.format("%d스트라이크", countStrike);;
         }
         if (countBall > 1) {
-            result = ball;
+            result = String.format("%d볼 %d스트라이크", countBall, countStrike);;
         }
         if (countNothing == 3) {
-            return nothing;
+            result = "낫싱";
         }
 
         return result;

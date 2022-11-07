@@ -1,53 +1,66 @@
 package extract;
 
-import static java.lang.String.valueOf;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validation {
+
     private static boolean exception = false;
 
+
     //  예외 검사 기능
-    public static boolean validationCheck(String userLine) {
+    public static boolean validationCheck(String validation) {
 
+        // 숫자 외 정보 입력 (특수 기호, 문자열)
+        patternCheck(validation);
 
-        String onlyNumberCheck = "1234567890";
+        // 중복 검사
+        duplicateCheck(validation);
 
-        String asterRiskPattern = "^[[0-9]₩~!@#$%^&*()-+=/.,|]*$";
-        String stringPattern = "^[[0-9]abcdefghijklmnopqrstuvwxyz]*$";
+        // 범위를 벗어난 수 검사
+        rangeCheck(validation);
 
-        // 특수 기호, 문자열 검사
-        Pattern.compile(asterRiskPattern);
-        Pattern.compile(stringPattern);
+        return exception;
 
-        boolean asterRiskCheck = asterRiskPattern.matches(userLine);
-        boolean stringCheck = stringPattern.matches(userLine);
+    }
 
-        int inputToInteger = Integer.parseInt(userLine);
+    private static void patternCheck(String validation) {
 
-        // 세자리 범위
-        if ( inputToInteger < 100 || inputToInteger > 999
-                || !asterRiskCheck || !stringCheck ) {
-            exception = true;
+        String asterRiskExpression = "^[₩~!@#$%^&*()-+=/.,|]*$";
+        String stringExpression = "^[abcdefghijklmnopqrstuvwxyz]*$";
+
+        Pattern compileAsterRisk = Pattern.compile(asterRiskExpression);
+        Pattern compileString = Pattern.compile(stringExpression);
+
+        Matcher asterRiskCheck = compileAsterRisk.matcher(validation);
+        Matcher stringCheck = compileString.matcher(validation);
+
+        if ( asterRiskCheck.find() || stringCheck.find() ) {
+            throw new IllegalArgumentException("서로 다른 수로 이루어진 세자리 수를 입력해주세요.");
         }
+    }
 
-        char checkDuplicateZero = userLine.charAt(0);
-        char checkDuplicateOne = userLine.charAt(1);
-        char checkDuplicateTwo = userLine.charAt(2);
+
+    private static void rangeCheck(String validation)  {
+        if (Integer.parseInt(validation) < 100 || Integer.parseInt(validation) > 999) {
+            throw new IllegalArgumentException("서로 다른 수로 이루어진 세자리 수를 입력해주세요.");
+        }
+    }
+
+    private static void duplicateCheck(String validation) {
+
+        char checkDuplicateZero = validation.charAt(0);
+        char checkDuplicateOne = validation.charAt(1);
+        char checkDuplicateTwo = validation.charAt(2);
 
         // 중복 검사
         if (checkDuplicateZero == checkDuplicateOne
                 || checkDuplicateZero == checkDuplicateTwo
                 || checkDuplicateOne == checkDuplicateTwo) {
-            exception = true;
+            throw new IllegalArgumentException("서로 다른 수로 이루어진 세자리 수를 입력해주세요.");
         }
-
-        return exception;
     }
+
 }
 
 

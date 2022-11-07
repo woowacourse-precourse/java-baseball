@@ -1,48 +1,33 @@
+package configuration;
 
-import configuration.Factory;
-import extract.Validation;
 import features.Game;
 import features.Hint;
 import features.Input;
 import features.Player;
 import features.Print;
-import java.util.Map;
 
-public class AppConfig implements Factory {
+// 역할 관리자 : 의존성 연결을 책임지기, DIP
+public class AppConfig{
 
-    @Override
-    public Map<Integer, Character> inputUserNumber() {
-        return Input.inputUserNumber();
+
+    public Player createComputerNumber() {
+        return new Player();
     }
 
-    @Override
-    public Map<Integer, Character> createComputerNumber() {
-        return Player.createComputerNumber();
+    public Input inputUserNumber() {
+        return new Input();
     }
 
-    @Override
-    public void loopHint(Map<Integer, Character> userNumber, Map<Integer, Character> computerNumber) {
-
-        Hint.getCountStrike();
-        Hint.getCountBall();
-        Hint.getCountNothing();
-
+    public Hint loopHint() {
+        return new Hint();
     }
 
-    @Override
-    public String printResult() {
-        return Print.printResult();
+    public Print printResult() {
+        return new Print();
     }
 
-    @Override
-    public String playGame() {
-        return Game.playGame();
+    public Game playGame() {
+        return new Game(
+                new Print());
     }
-
-    @Override
-    public boolean validationCheck(String userLine) {
-        return Validation.validationCheck(userLine);
-    }
-
-
 }

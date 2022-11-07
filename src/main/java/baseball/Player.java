@@ -1,31 +1,24 @@
 package features;
 
-import static java.lang.String.valueOf;
+import static extract.Constant.MAX_INDEX;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Player {
 
     // 플레이어 기능 : 상대방(컴퓨터)의 수를 생성
-    public static Map<Integer, Character> createComputerNumber() {
+    public static Map<Integer, Integer> createComputerNumber() {
 
-        Map<Integer, Character> computerRepository = new HashMap<>();
+        Map<Integer, Integer> computerRepository = new HashMap<>();;
+        for (int keyIndex = 0; keyIndex < MAX_INDEX; keyIndex++) {
 
-        int playerNumber = Randoms.pickNumberInRange(1, 9);
-        String numberToString = valueOf(playerNumber);
+            computerRepository.put(keyIndex, pickNumberInRange(1, 9));
 
-        char valueZero = numberToString.charAt(0);
-        char valueOne = numberToString.charAt(1);
-        char valueTwo = numberToString.charAt(2);
-
-        computerRepository.put(0, valueZero);
-        computerRepository.put(1, valueOne);
-        computerRepository.put(2, valueTwo);
+        }
 
         return computerRepository;
     }
+
 }

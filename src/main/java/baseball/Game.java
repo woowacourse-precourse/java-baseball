@@ -1,68 +1,73 @@
 package features;
 
-import configuration.AppConfig;
-import java.util.Map;
+
+import static extract.Constant.GAME_END;
+import static extract.Constant.GAME_OVER;
+import static extract.Constant.STRIKE;
+import static extract.Constant.VICTORY;
+import static features.Print.printResult;
+
+import camp.nextstep.edu.missionutils.Console;
+import extract.Constant;
 
 public class Game {
 
-    private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    private static final String GAME_OVER = "게임을 재시작하려면 1, 종료하려면 2를 입력해주세요.";
-    private static final String STRIKE = "3스트라이크";
-
-    private static AppConfig game;
-
-    private static boolean recursion = STRIKE.equals(game.printResult());
-
-    // 생성자 주입
-    private Game(AppConfig appConfig, AppConfig result) {
-
-        this.game = appConfig;
+    public static Print print;
+    private static boolean recursion = STRIKE.equals(printResult());
 
 
+    public Game(Print print) {
+
+        this.print = print;
     }
 
     // 게임 반복 기능
     public static String playGame() {
 
-        System.out.println(startGame());
+
+
+        if ( recursion ){
+            victory();
+            System.out.println(GAME_OVER);
+            Game.rebootGame();
+        }
 
         do {
+            Console.readLine();
+            System.out.println(printResult());
+        } while ( !recursion );
 
-            recursionGame();
-            boolean recursion = STRIKE.equals(game.printResult());
+        return GAME_END;
 
+    }
+
+    private static String rebootGame() {
+
+        if (Console.readLine().equals(1)) {
+            playGame();
         }
-        while (!recursion);
+        if (Console.readLine().equals(2)) {
+            end();
+        }
 
-        victory();
-
-        System.out.println(GAME_OVER);
-
-        return GAME_OVER;
-
+        return GAME_END;
     }
 
-    // 게임 시작 기능
-    private static String startGame() {
-        return GAME_START;
-    }
-
-    // 게임 실행 기능
-    public static Game recursionGame() {
-        Map<Integer, Character> user = game.inputUserNumber();
-        Map<Integer, Character> computer = game.createComputerNumber();
 
 
-        game.loopHint(user, computer);
-        game.printResult();
-
-
-        return recursionGame();
-    }
-
-    // 게임 종료 기능
+    // 게임 종료 기능 - 승리
     private static String victory() {
-        String victory = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-        return victory;
+
+        System.out.println(VICTORY);
+
+        return VICTORY;
+
+    }
+
+    public static String end() {
+
+        System.out.println(GAME_END);
+
+        return Constant.GAME_END;
     }
 }

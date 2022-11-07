@@ -1,53 +1,40 @@
 package features;
 
 
-import static extract.Validation.*;
+import static extract.Constant.MAX_INDEX;
+import static extract.Validation.validationCheck;
+import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 
-public class Input extends Exception{
+public class Input {
 
-    private static Map<Integer, Character> userRepository = new HashMap<>();
-    private static java.lang.IllegalArgumentException IllegalArgumentException;
+    private static Map<Integer, Integer> userRepository = new HashMap<>();
+
 
 
     // 입력 기능
-    public static Map<Integer, Character> inputUserNumber() {
+    public static Map<Integer, Integer> inputUserNumber(String userLine) {
 
-        String userLine = Console.readLine();
+        userLine = Console.readLine();
+        validationCheck(userLine);
 
 
-        try {
-            validationCheck(userLine);
-        }catch (IllegalArgumentException illegalArgumentException) {
-            illegalArgumentException.toString();
-
+        for ( int keyIndex = 0; keyIndex < MAX_INDEX; keyIndex++ ) {
+            int valueByKey = parseInt(valueOf(valueOf(userLine).charAt(keyIndex)));
+            userRepository.put(keyIndex, valueByKey);
         }
 
-        String numberToString = valueOf(userLine);
-
-        char indexZero = getIndex(numberToString, 0);
-        char indexOne = getIndex(numberToString, 1);
-        char indexTwo = getIndex(numberToString, 2);
-
-        getPut(0, indexZero);
-        getPut(1, indexOne);
-        getPut(2, indexTwo);
 
         return userRepository;
     }
 
-    private static char getIndex(String numberToString, int index) {
-        return numberToString.charAt(index);
-    }
 
-    private static Character getPut(int key, char indexValue) {
-        return userRepository.put(key, indexValue);
-    }
+
+
 
 }
