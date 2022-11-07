@@ -8,6 +8,7 @@ public class RandomUtils {
 	public static int[] getRandomNumbers() {
 		int[] numbers = new int[3];
 
+
 		for (int i = 0; i < numbers.length; i++) {
 			numbers[i] = (int)(Math.random() * 9) + 1;
 
