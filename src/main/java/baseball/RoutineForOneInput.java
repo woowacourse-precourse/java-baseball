@@ -9,7 +9,6 @@ public class RoutineForOneInput {
     public RoutineForOneInput(int random_number) {
         this.random_number = random_number;
         this.input_number = new InputNumber();
-
     }
 
     public boolean routine() {

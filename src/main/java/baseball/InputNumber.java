@@ -13,6 +13,9 @@ public class InputNumber {
     private void setInputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         num = Integer.parseInt(readLine());
+        if (num < 100 || num > 999) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getInputNumber() {
