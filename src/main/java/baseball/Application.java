@@ -44,6 +44,15 @@ public class Application {
         }
         return result;
     }
+
+    public static void errorHandle(List<Integer> e) {
+        if (e.get(0) == e.get(1) || e.get(1) == e.get(2) || e.get(0) == e.get(2)) {
+            throw new IllegalArgumentException("서로 다른 숫자 세 개를 입력해주세요");
+        }
+        if (e.get(0) < 1 || e.get(0) > 9 || e.get(1) < 1 || e.get(1) > 9 || e.get(2) < 1 || e.get(2) > 9) {
+            throw new IllegalArgumentException("1~9사이의 수를 입력해주세요.");
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
