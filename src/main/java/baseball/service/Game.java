@@ -7,13 +7,15 @@ import baseball.view.PrintConsole;
 import java.util.List;
 
 public class Game {
+    private static final boolean USER_FIRST_GAME=true;
+    private static final boolean USER_RESTART_GAME=false;
 
     private Computer computer;
     private User user;
 
     public Game(){
         computer = new Computer();
-        user = new User(User.FIRST_GAME);
+        user = new User(USER_FIRST_GAME);
     }
 
     public Computer getComputer() {
@@ -25,7 +27,7 @@ public class Game {
     }
 
     private void printStartConsole() {
-        if (user.isFirst()==false) {
+        if (user.isFirstGame()) {
             PrintConsole.startGame();
         }
     }
@@ -56,6 +58,32 @@ public class Game {
             choiceRestartOrEnd();
         }
     }
+
+    private void computerResetForPlaying() {
+        computer.resetCompareComponent();
+    }
+
+    private void computerAndUserResetForRestart(){
+        computer = new Computer();
+        user = new User(USER_RESTART_GAME);
+
+    }
+
+
+//    public void switchGameToUsersAnswer(){
+//        switch (user.getStatus()) {
+//            case User.PLAYING:
+//                computerReset();
+//                break;
+//            case User.RESTART_GAME:
+//                resetForRestartGame();
+//                Start();
+//                Play();
+//                break;
+//            case END_GAME:
+//                return;
+//        }
+//    }
 
 
 }
