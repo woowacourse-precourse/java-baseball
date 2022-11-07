@@ -25,6 +25,7 @@ public class Application {
                 OutputView.displayGameOverMessage();
                 InputView.displayInputGameStateCommandMessage();
                 Program.changeStatus(InputView.getUserInputCommand());
+                Computer.reInitIfProgramContinue();
             }
         }
     }

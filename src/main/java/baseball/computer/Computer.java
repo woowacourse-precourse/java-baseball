@@ -1,6 +1,7 @@
 package baseball.computer;
 
 import baseball.ball.BallNumbers;
+import baseball.program.Program;
 import baseball.utils.RandomAnswerBallNumberGenerator;
 
 public class Computer {
@@ -15,5 +16,11 @@ public class Computer {
 
 	public static BallNumbers getAnswerBallNumbers() {
 		return answerBallNumbers;
+	}
+
+	public static void reInitIfProgramContinue() {
+		if (Program.isProgramContinue()) {
+			init();
+		}
 	}
 }

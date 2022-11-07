@@ -10,4 +10,8 @@ public class Program {
 	public static void changeStatus(ProgramStatus programStatus) {
 		Program.programStatus = programStatus;
 	}
+
+	public static boolean isProgramContinue() {
+		return programStatus == ProgramStatus.RESTART;
+	}
 }
