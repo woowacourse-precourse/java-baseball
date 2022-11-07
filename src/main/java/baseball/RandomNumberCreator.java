@@ -22,18 +22,23 @@ public class RandomNumberCreator {
 
     public int getStrikeCount(List<Integer> inputNumbers) {
         return (int) IntStream.range(0, 3)
-                .filter(idx -> randomNumbers.get(idx).equals(inputNumbers.get(idx)))
+                .filter(idx -> isStrike(idx, inputNumbers))
                 .count();
     }
 
     public int getBallCount(List<Integer> inputNumbers) {
         return (int) IntStream.range(0, 3)
                 .filter(idx -> randomNumbers.contains(inputNumbers.get(idx)))
-                .filter(idx -> !randomNumbers.get(idx).equals(inputNumbers.get(idx)))
+                .filter(idx -> !isStrike(idx, inputNumbers))
                 .count();
     }
-
+    
     public void clear() {
         randomNumbers.clear();
     }
+
+    private boolean isStrike(int idx, List<Integer> inputNumbers) {
+        return randomNumbers.get(idx).equals(inputNumbers.get(idx));
+    }
+
 }
