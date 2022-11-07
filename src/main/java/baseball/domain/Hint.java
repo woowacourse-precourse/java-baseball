@@ -9,6 +9,7 @@ public class Hint{
   public void countStrikeAndBall(Balls userNumbers, Balls computerNumbers){
     for(int i=0; i<BALL_SIZE.getBallSetting(); i++){
       strike += countStrike(userNumbers,computerNumbers,i);
+      ball += countBall(userNumbers, computerNumbers, i);
     }
   }
   private int countStrike(Balls userNumbers, Balls computerNumbers, int index){
@@ -20,6 +21,15 @@ public class Hint{
     return 0;
   }
 
+  private int countBall(Balls userNumbers, Balls computerNumbers, int index){
+    int userNumber = userNumbers.getBalls().get(index);
+    int computerNumber = computerNumbers.getBalls().get(index);
+    if (computerNumbers.getBalls().contains(userNumber)
+        && !(userNumber==computerNumber)){
+      return 1;
+    }
+    return 0;
+  }
 
   public int getStrike(){
     return strike;
