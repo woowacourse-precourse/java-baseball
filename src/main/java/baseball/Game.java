@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.InputMismatchException;
+import java.util.List;
 
 public class Game {
     private boolean gameStatus;
@@ -46,5 +47,12 @@ public class Game {
         this.gameStatus = false;
         this.gamehost = null;
         this.player = null;
+    }
+
+    public String beingGame() {
+        player.getPlayerInput();
+        List<Integer> playerInput = player.getBaseballNumber();
+        gamehost.setHint(playerInput);
+        return gamehost.getHint();
     }
 }
