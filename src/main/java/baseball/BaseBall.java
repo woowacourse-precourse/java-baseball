@@ -37,4 +37,8 @@ public class BaseBall {
         checkSameOfRandomAndMy(randomList, inputList);
     }
 
+    private String makeRandom() {
+        return String.valueOf(pickNumberInRange(111, 999));
+    }
+
 }
