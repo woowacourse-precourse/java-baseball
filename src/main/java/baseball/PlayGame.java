@@ -16,7 +16,6 @@ public class PlayGame {
                 gameNumbers.add(randomNumber);
             }
         }
-
         return gameNumbers;
     }
 
@@ -37,9 +36,26 @@ public class PlayGame {
                 input = input / 10;
             }
             return userNumbers;
-
         } catch (IllegalArgumentException e)  {
             throw new IllegalArgumentException("게임종료: 입력이 숫자가 아닙니다.");
         }
+    }
+
+    public static List<Integer> getCounts(List<Integer> gameNumbers, List<Integer> userNumbers) {
+        List<Integer> counts = new ArrayList<>();
+        int ball = 0;
+        int strike = 0;
+
+        for (int i = 0; i < 3; i ++){
+            if (gameNumbers.get(i) == userNumbers.get(i)) {
+                strike += 1;
+            } else if (userNumbers.contains(gameNumbers.get(i))) {
+                ball += 1;
+            }
+        }
+
+        counts.add(ball);
+        counts.add(strike);
+        return counts;
     }
 }
