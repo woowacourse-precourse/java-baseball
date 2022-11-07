@@ -31,8 +31,12 @@ public class Application {
 
 
     public static void main(String[] args) {
-        notifyGameStart();
-        startGame();
+        try {
+            notifyGameStart();
+            startGame();
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage().concat("\n").concat(CLOSE_MESSAGE));
+        }
     }
 
     private static void startGame() {
