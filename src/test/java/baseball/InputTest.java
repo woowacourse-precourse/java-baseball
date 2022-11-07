@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class InputTest {
@@ -82,5 +84,16 @@ class InputTest {
     void inputRestartOrExitNumberValid() {
         String inputNumber = "33";
         assertThatIllegalArgumentException().isThrownBy(() -> input.inputRestartOrExitNumberValid(inputNumber));
+    }
+
+    @DisplayName("사용자 입력값인 문자열 List로 변환 테스트")
+    @Test
+    void inputUserNumberToList() {
+        String userNumber = "123";
+
+        List<Integer> userNumbers = input.inputToList(userNumber);
+        List<Integer> result = List.of(1, 2, 3);
+
+        assertThat(userNumbers).isEqualTo(result);
     }
 }
