@@ -25,7 +25,7 @@ public class Ball {
         return (number >= MINIMUM_BALL_NUMBER) && (number <= MAXIMUM_BALL_NUMBER);
     }
 
-    public BallStatus play(Ball otherBall) {
+    public BallStatus match(Ball otherBall) {
         if (this.isStrike(otherBall)) {
             return BallStatus.STRIKE;
         }

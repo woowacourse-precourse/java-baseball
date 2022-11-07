@@ -25,20 +25,20 @@ public class BallTest {
     void 두개의_볼_비교하여_스트라이크_반환() {
         Ball ball = new Ball(1, 2);
         Ball otherBall = new Ball(1, 2);
-        assertThat(ball.play(otherBall)).isEqualTo(BallStatus.STRIKE);
+        assertThat(ball.match(otherBall)).isEqualTo(BallStatus.STRIKE);
     }
 
     @Test
     void 두개의_볼_비교하여_볼_반환() {
         Ball ball = new Ball(1, 2);
         Ball otherBall = new Ball(2, 2);
-        assertThat(ball.play(otherBall)).isEqualTo(BallStatus.BALL);
+        assertThat(ball.match(otherBall)).isEqualTo(BallStatus.BALL);
     }
 
     @Test
     void 두개의_볼_비교하여_낫싱_반환() {
         Ball ball = new Ball(1, 2);
         Ball otherBall = new Ball(2, 3);
-        assertThat(ball.play(otherBall)).isEqualTo(BallStatus.NOTHING);
+        assertThat(ball.match(otherBall)).isEqualTo(BallStatus.NOTHING);
     }
 }

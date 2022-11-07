@@ -60,7 +60,7 @@ public class Player {
 
     private BallStatus playRound(Ball otherBall) {
         return balls.stream()
-                .map(ball -> ball.play(otherBall))
+                .map(ball -> ball.match(otherBall))
                 .filter(ballStatus -> !ballStatus.isNothing())
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
