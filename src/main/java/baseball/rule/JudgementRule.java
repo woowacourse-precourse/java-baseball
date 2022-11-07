@@ -1,7 +1,9 @@
 package baseball.rule;
 
+import baseball.domain.Ball;
 import baseball.domain.BallCount;
 import baseball.domain.Numbers;
+import baseball.domain.Strike;
 
 public class JudgementRule {
 
@@ -9,18 +11,18 @@ public class JudgementRule {
     private static final int NO_COUNT = 0;
 
     public static BallCount makeBallCounts(Numbers computerNumbers, Numbers userNumbers) {
-        int strikes = NO_COUNT;
-        int balls = NO_COUNT;
+        Strike strikes = new Strike(0);
+        Ball balls = new Ball(0);
         for (int i = 0; i < REGULAR_NUMBERS_SIZE; i++) {
             if (computerNumbers.numbers.get(i).equals(userNumbers.numbers.get(i))) {
-                strikes += 1;
+                strikes.addCount();
                 continue;
             }
             if (userNumbers.numbers.contains(computerNumbers.numbers.get(i))) {
-                balls += 1;
+                balls.addCount();
             }
         }
-        return new BallCount(strikes, balls);
+        return new BallCount(strikes.getCount(), balls.getCount());
     }
 
 }
