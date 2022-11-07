@@ -22,6 +22,7 @@ public class Game {
             inputNumber = input();
         }
 
+
     }
 
     private String input(){
@@ -31,31 +32,33 @@ public class Game {
         return input;
     }
     private void inputCheck(String input){
-        if(isInputCorrectSize(input) && isInputNumeric(input) && isInputDuplicate(input)){
-            return;
-        }
-        throw new IllegalArgumentException();
+        isInputCorrectSize(input);
+        isInputNumeric(input);
+        isInputDuplicate(input);
     }
 
-    private boolean isInputCorrectSize(String input){
+    private void isInputCorrectSize(String input){
         if (input.length() != INPUT_LENGTH) {
-            return false;
+            throw new IllegalArgumentException("3 자리의 수를 입력해야 합니다.");
         }
-        return true;
+
     }
 
-    private boolean isInputNumeric(String input){
-        return (input.matches("[0-9]+"));
+    private void isInputNumeric(String input){
+        if (!input.matches("[0-9]+")) {
+            throw new IllegalArgumentException("숫자만 입력해야 합니다.");
+        }
     }
 
-    private boolean isInputDuplicate(String input){
+    private void isInputDuplicate(String input){
         Set<Character> duplicateCheck = new HashSet<>();
         for (int i = 0; i < input.length(); i++) {
             if (!duplicateCheck.add(input.charAt(i))) {
-                return false;
+                throw new IllegalArgumentException("중복되지 않는 숫자만 합니다.");
             }
         }
-        return true;
     }
+
+
 
 }
