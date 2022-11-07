@@ -19,23 +19,23 @@ public class GameController {
         gameService.start();
     }
 
-    private void end(){
+    private void end() {
         SystemMessage.printEndMessage();
     }
 
-    private void retry(){
+    private void retry() {
         SystemMessage.printRetryMessage();
         int inputRetry = getCorrectRetryNumber();
 
-        if (inputRetry == SystemValue.GAME_RESTART_KEY){
+        if (inputRetry == SystemValue.GAME_RESTART_KEY) {
             run();
         }
     }
 
-    private int getCorrectRetryNumber(){
+    private int getCorrectRetryNumber() {
         int number = Integer.parseInt(Console.readLine());
 
-        if (number < SystemValue.GAME_RESTART_KEY || number > SystemValue.GAME_END_KEY){
+        if (number < SystemValue.GAME_RESTART_KEY || number > SystemValue.GAME_END_KEY) {
             throw new IllegalArgumentException();
         }
         return number;

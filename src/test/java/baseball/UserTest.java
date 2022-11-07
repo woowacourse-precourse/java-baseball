@@ -17,7 +17,7 @@ public class UserTest {
     }
 
     @Test
-    void 사용자에게_받은_입력값이_숫자로만_이루어_져있는지() throws Exception{
+    void 사용자에게_받은_입력값이_숫자로만_이루어_져있는지() throws Exception {
         Method method = User.class.getDeclaredMethod("isNumberOfString", String.class);
         method.setAccessible(true);
 
@@ -59,7 +59,7 @@ public class UserTest {
     }
 
     @Test
-    void 사용자에게_받은_입력값이_3자리_수인지() throws Exception{
+    void 사용자에게_받은_입력값이_3자리_수인지() throws Exception {
         Method method = User.class.getDeclaredMethod("isThreeInSize", List.class);
         method.setAccessible(true);
 

@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Answer {
-    private List<Integer> value;
+public class Game {
+    private List<Integer> answer;
 
-    public Answer() {
-        value = answerGenerator();
+    public Game() {
+        answer = answerGenerator();
     }
 
     private List<Integer> answerGenerator() {
@@ -29,7 +29,7 @@ public class Answer {
         }
     }
 
-    public List<Integer> getValue() {
-        return value;
+    public List<Integer> getAnswer() {
+        return answer;
     }
 }

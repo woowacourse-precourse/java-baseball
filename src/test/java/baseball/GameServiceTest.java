@@ -2,7 +2,6 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.model.User;
 import baseball.service.GameService;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -16,12 +15,15 @@ public class GameServiceTest {
     Method countingBallMethod;
 
     @BeforeEach
-    void init() throws Exception{
+    void init() throws Exception {
         gameService = new GameService();
 
-        countingStrikeMethod = GameService.class.getDeclaredMethod("countingStrike", List.class, List.class);
-        countingContainAnswerMethod = GameService.class.getDeclaredMethod("countingContainAnswer", List.class, List.class);
-        countingBallMethod = GameService.class.getDeclaredMethod("countingBall", int.class, int.class);
+        countingStrikeMethod = GameService.class
+                .getDeclaredMethod("countingStrike", List.class, List.class);
+        countingContainAnswerMethod = GameService.class
+                .getDeclaredMethod("countingContainAnswer", List.class, List.class);
+        countingBallMethod = GameService.class
+                .getDeclaredMethod("countingBall", int.class, int.class);
 
         countingStrikeMethod.setAccessible(true);
         countingContainAnswerMethod.setAccessible(true);
@@ -30,8 +32,8 @@ public class GameServiceTest {
 
     @Test
     void 스트라이크가_0_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(2,4,7);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(2, 4, 7);
 
         int predictStrike = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);
         assertThat(predictStrike).isEqualTo(0);
@@ -39,8 +41,8 @@ public class GameServiceTest {
 
     @Test
     void 스트라이크가_1_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(1,4,7);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(1, 4, 7);
 
         int predictStrike = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);
         assertThat(predictStrike).isEqualTo(1);
@@ -48,8 +50,8 @@ public class GameServiceTest {
 
     @Test
     void 스트라이크가_2_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(1,3,7);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(1, 3, 7);
 
         int predictStrike = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);
         assertThat(predictStrike).isEqualTo(2);
@@ -57,8 +59,8 @@ public class GameServiceTest {
 
     @Test
     void 스트라이크가_3_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(1,3,5);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(1, 3, 5);
 
         int predictStrike = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);
         assertThat(predictStrike).isEqualTo(3);
@@ -66,8 +68,8 @@ public class GameServiceTest {
 
     @Test
     void 볼이_0_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(7,2,4);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(7, 2, 4);
 
         int containCount = (int) countingContainAnswerMethod.invoke(gameService, answerList, inputList);
         int strikeCount = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);
@@ -78,8 +80,8 @@ public class GameServiceTest {
 
     @Test
     void 볼이_1_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(2,1,7);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(2, 1, 7);
 
         int containCount = (int) countingContainAnswerMethod.invoke(gameService, answerList, inputList);
         int strikeCount = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);
@@ -90,8 +92,8 @@ public class GameServiceTest {
 
     @Test
     void 볼이_2_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(3,1,7);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(3, 1, 7);
 
         int containCount = (int) countingContainAnswerMethod.invoke(gameService, answerList, inputList);
         int strikeCount = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);
@@ -102,8 +104,8 @@ public class GameServiceTest {
 
     @Test
     void 볼이_3_나오는_경우() throws Exception {
-        List<Integer> answerList = List.of(1,3,5);
-        List<Integer> inputList = List.of(5,1,3);
+        List<Integer> answerList = List.of(1, 3, 5);
+        List<Integer> inputList = List.of(5, 1, 3);
 
         int containCount = (int) countingContainAnswerMethod.invoke(gameService, answerList, inputList);
         int strikeCount = (int) countingStrikeMethod.invoke(gameService, answerList, inputList);

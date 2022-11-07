@@ -7,10 +7,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class User {
-    private List<Integer> inputNumberList;
+    private List<Integer> inputNumber;
 
     public User(String input) {
-        this.inputNumberList = getValidList(input);
+        this.inputNumber = getValidList(input);
     }
 
     private List<Integer> getValidList(String input) {
@@ -18,13 +18,13 @@ public class User {
             throw new IllegalArgumentException();
         }
 
-        List<Integer> inputNumberList = parseIntegerList(input);
+        List<Integer> newInputNumber = parseIntegerList(input);
 
-        if (!isThreeInSize(inputNumberList) || !isComposedUniqueNumber(inputNumberList) || !isNumberFromOneToNine(
-                inputNumberList)) {
+        if (!isThreeInSize(newInputNumber) || !isComposedUniqueNumber(newInputNumber) || !isNumberFromOneToNine(
+                newInputNumber)) {
             throw new IllegalArgumentException();
         }
-        return inputNumberList;
+        return newInputNumber;
     }
 
     private boolean isNumberOfString(String text) {
@@ -53,7 +53,7 @@ public class User {
         return true;
     }
 
-    public List<Integer> getInputNumberList() {
-        return inputNumberList;
+    public List<Integer> getInputNumber() {
+        return inputNumber;
     }
 }
