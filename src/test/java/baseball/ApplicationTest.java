@@ -3,12 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    Application application = new Application();
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -26,6 +30,16 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 프로그램_시작_출력_테스트() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method printProgramStart = Application.class.getDeclaredMethod("printProgramStart");
+        printProgramStart.setAccessible(true);
+        
+        printProgramStart.invoke(application);
+
+        assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.");
     }
 
     @Override
