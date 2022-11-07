@@ -110,6 +110,28 @@ public class Application {
         return ballCnt;
     }
 
+    public static boolean isTrialCorrect(int ballCnt, int strikeCnt){
+
+        if(strikeCnt == 3) {
+            printGameEnd();
+            return true;
+        }
+
+        else if(ballCnt > 0 && strikeCnt > 0)
+            System.out.println(Integer.toString(ballCnt) + "볼 " + Integer.toString(strikeCnt) + "스트라이크");
+
+        else if(ballCnt > 0 && strikeCnt == 0)
+            System.out.println(Integer.toString(ballCnt) + "볼");
+
+        else if(ballCnt == 0 && strikeCnt > 0)
+            System.out.println(Integer.toString(strikeCnt) + "스트라이크");
+
+        else if(ballCnt == 0 && strikeCnt == 0)
+            System.out.println("낫싱");
+
+        return false;
+    }
+
     public static List<Integer> getThreeDigitsValues(int number){
         // 세 자리의 정수가 입력되면 각 자릿수를 List에 담아 반환
         List<Integer> digits = new ArrayList<>();
