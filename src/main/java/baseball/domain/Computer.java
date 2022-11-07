@@ -10,10 +10,14 @@ public class Computer {
     private static final int MAX_NUMBER = 9;
     private static final int NUMBER_LENGTH = 3;
 
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public Computer() {
         numbers = new ArrayList<>();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     public void generateNumber() {
