@@ -1,9 +1,13 @@
 package baseball.entity;
 
 public class User {
-    String number;
+    private String number;
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getNumber() {
+        return number;
     }
 }
