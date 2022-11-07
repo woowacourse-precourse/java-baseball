@@ -42,7 +42,7 @@ public class GameTest extends NsTest {
     @Test
     void BallReader_반환_값에_따른_게임_종료() {
         //given
-        when(ballReader.isFinished(any(), any()))
+        when(ballReader.isGameOver(any(), any()))
                 .thenReturn(false)
                 .thenReturn(true);
 
@@ -63,7 +63,7 @@ public class GameTest extends NsTest {
     @Test
     void BallReader_반환_값에_따른_출력_검사() {
         //given
-        when(ballReader.isFinished(any(), any()))
+        when(ballReader.isGameOver(any(), any()))
                 .thenReturn(false)
                 .thenReturn(false)
                 .thenReturn(false)

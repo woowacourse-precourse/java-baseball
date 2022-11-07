@@ -50,7 +50,7 @@ public class BallReaderTest {
         System.out.println("result = " + result);
         System.out.println();
 
-        assertThat(ballReader.isFinished(firstBall, secondBall)).isTrue();
+        assertThat(ballReader.isGameOver(firstBall, secondBall)).isTrue();
     }
 
     @DisplayName("BallReader가 3스트라이크를 아닐 때 게임이 끝나지 않았다 판단하는지 판독")
@@ -59,7 +59,7 @@ public class BallReaderTest {
         Ball firstBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
         Ball secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
 
-        while (ballReader.isFinished(firstBall, secondBall)) {
+        while (ballReader.isGameOver(firstBall, secondBall)) {
             secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
         }
 
@@ -69,6 +69,6 @@ public class BallReaderTest {
         System.out.println("result = " + result);
         System.out.println();
 
-        assertThat(ballReader.isFinished(firstBall, secondBall)).isFalse();
+        assertThat(ballReader.isGameOver(firstBall, secondBall)).isFalse();
     }
 }
