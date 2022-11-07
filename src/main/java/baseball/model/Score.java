@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Score {
     private static final String STRIKE_AND_BALL_CANNOT_BE_OVER_THREE = "스트라이크와 볼의 합이 3초과 일수는 없습니다.";
     public static final String SPACE = " ";
+    public static final int MAX_BASEBALL_LENGTH = 3;
 
     private int strike;
     private int ball;
@@ -55,6 +56,10 @@ public class Score {
 
     private String makeMessage(int score, String message) {
         return score + message;
+    }
+
+    public boolean canContinue() {
+        return strike != MAX_BASEBALL_LENGTH;
     }
 
     @Override

@@ -7,10 +7,9 @@ public class InputView {
 
     public static void printStartMessage() {
         System.out.println(GAME_START);
-        printInputMessage();
     }
 
-    private static void printInputMessage() {
+    public static void printInputMessage() {
         System.out.print(ENTER_NUMBER);
     }
 }

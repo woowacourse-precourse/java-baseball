@@ -6,6 +6,8 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Objects;
+
 public class BaseBallController {
 
     private final BaseBallService baseBallService;
@@ -17,8 +19,23 @@ public class BaseBallController {
     public void run() {
         baseBallService.init();
         InputView.printStartMessage();
-        String input = Console.readLine();
-        Score score = baseBallService.inputAndCompareAnswer(input);
-        OutputView.printResultMessage(score);
+        gameStart();
+    }
+
+    private void gameStart() {
+        playGameUntilEnd(new Score(0, 0));
+    }
+
+    private void playGameUntilEnd(Score score) {
+        while (canContinueGame(score)) {
+            InputView.printInputMessage();
+            String input = Console.readLine();
+            score = baseBallService.inputAndCompareAnswer(input);
+            OutputView.printResultMessage(score);
+        }
+    }
+
+    private static boolean canContinueGame(Score score) {
+        return Objects.isNull(score) || score.canContinue();
     }
 }
