@@ -41,13 +41,15 @@ public class BaseballGameController {
 
     }
 
-
     private boolean gameRestart() {
         return true;
     }
 
     private boolean isThreeStrike(GameResult gameResult) {
-        return true;
+        if (gameResult.getStrike() == 3) {
+            return true;
+        }
+        return false;
     }
 
 }
