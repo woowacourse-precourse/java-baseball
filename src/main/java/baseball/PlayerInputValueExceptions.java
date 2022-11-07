@@ -15,5 +15,11 @@ public class PlayerInputValueExceptions {
             throw new IllegalArgumentException("서로 다른 3자리의 수를 입력하세요");
         }
     }
+
+    static void whenExitingNumberOneOrTwo(String userSelectedNumber) {
+        if (!(userSelectedNumber.equals("1") || userSelectedNumber.equals("2"))) {
+            throw new IllegalArgumentException("1 또는 2만 입력하세요");
+        }
+    }
 }
 
