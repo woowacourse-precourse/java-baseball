@@ -60,5 +60,7 @@ public class Computer {
         return set;
     }
 
-
+    public String getAnswer() {
+        return answer;
+    }
 }
