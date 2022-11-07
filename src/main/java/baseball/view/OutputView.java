@@ -20,7 +20,7 @@ public class OutputView {
 
         result += getBallStr(score.getBall());
         result += getBetweenStr(score);
-        result += getStringStr(score.getStrike());
+        result += getStrikeStr(score.getStrike());
         result += getNothingStr(score);
         System.out.println(result);
     }
@@ -32,7 +32,7 @@ public class OutputView {
         return "";
     }
 
-    private static String getStringStr(int strike) {
+    private static String getStrikeStr(int strike) {
         if (strike > 0) {
             return strike + STRIKE;
         }
