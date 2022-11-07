@@ -73,4 +73,11 @@ public class SystemController {
             systemComputerModel.setRandomNumber();
         }
     }
+
+    public void printResult() {
+        System.out.println(SystemScoreModeltoString());
+        if (strike == DIGIT_COUNT) {
+            System.out.println(THREE_STRIKE);
+        }
+    }
 }
