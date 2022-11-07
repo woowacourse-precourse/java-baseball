@@ -37,16 +37,21 @@ public class Application {
         return usernumArray;
     }
 
-    public static List<Integer> Compare(List<Integer> computer,List<Integer> User){
+    public static List<Integer> Compare(List<Integer> computer,List<Integer> user){
         int ball =0;
+        int strike=0;
         List<Integer> result = new ArrayList<>();
         for(int i=0;i<3;i++){
             for(int j=0;j<3;j++){
-                if(computer.get(i)==computer.get(j))
+                if(computer.get(i)==user.get(j) && i==j)
+                    strike++;
+                else if (computer.get(i)==user.get(j)&&i!=j){
                     ball++;
+                }
             }
         }
         result.add(ball);
+        result.add(strike);
         return result;
     }
 
