@@ -9,12 +9,12 @@ public class Application {
     public static void main(String[] args) {
         boolean run = true;
         boolean finish = true;
-        AlphaAndOmega.printStartingMent();
+        Output.printStartingMent();
         while (run && finish) {
             finish = false;
             GameManager game = new GameManager();
             Database data = new Database();
-            data.setAnswer(AlphaAndOmega.createAnswer());
+            data.setAnswer(GameManager.createAnswer());
             while (!finish) {
                 data.setUserInput(Input.whileRunning());
                 ExceptionChecker.checkGuessingInput(data.getUserInput());
@@ -25,11 +25,14 @@ public class Application {
                 run = game.isAgain(finish);
             }
         }
-        AlphaAndOmega.printFinishingMent();
+        Output.printFinishingMent();
     }
 }
 
-class AlphaAndOmega {
+class GameManager {
+
+    static int restart = 1;
+    static int terminate = 2;
 
     public static List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
@@ -41,20 +44,6 @@ class AlphaAndOmega {
         }
         return answer;
     }
-
-    public static void printStartingMent() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    public static void printFinishingMent() {
-        System.out.println("게임 종료");
-    }
-}
-
-class GameManager {
-
-    static int restart = 1;
-    static int terminate = 2;
 
     public static boolean isFinish(int strike) {
         if (strike == 3) {
@@ -112,6 +101,12 @@ class Output {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
+    }
+    public static void printStartingMent() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+    public static void printFinishingMent() {
+        System.out.println("게임 종료");
     }
 }
 
