@@ -10,7 +10,10 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
 
         while (true) {
-            getComputerNumber(computer);
+//            getComputerNumber(computer);
+            while (computer.size() < 3) {
+                addComputerNumber(computer, getRandomNumber());
+            }
 
             List<Integer> user = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
@@ -31,7 +34,7 @@ public class Application {
             try {
                 answer = c.printCount();
             } catch (IllegalArgumentException e) {
-                return;
+                throw new IllegalArgumentException();
             }
             if (answer == 1) {
                 computer.clear();
@@ -39,6 +42,10 @@ public class Application {
                 break;
             }
         }
+    }
+
+    static int getRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 
     static void getComputerNumber(List<Integer> computer) {
