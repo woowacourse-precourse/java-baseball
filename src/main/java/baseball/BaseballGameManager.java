@@ -6,6 +6,11 @@ import java.util.stream.Collectors;
 
 public class BaseballGameManager {
 
+    public final static String STRIKE = "스트라이크";
+    public final static String BALL = "볼";
+    public final static String NOTHING = "낫싱";
+    public final static String BLANK = " ";
+
     private RandomNumberCreator randomNumberCreator = new RandomNumberCreator();
     private int strikeCount;
     private int ballCount;
@@ -38,18 +43,17 @@ public class BaseballGameManager {
     }
 
     private String getResultMessage(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            return NOTHING;
+        }
+
         if (strikeCount == 0 && ballCount != 0) {
-            return ballCount + "볼";
+            return ballCount + BALL;
         }
 
         if (strikeCount != 0 && ballCount == 0) {
-            return strikeCount + "스트라이크";
+            return strikeCount + STRIKE;
         }
-
-        if (strikeCount != 0 && ballCount != 0) {
-            return ballCount + "볼 " + strikeCount + "스트라이크";
-        }
-
-        return "낫싱";
+        return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
 }
