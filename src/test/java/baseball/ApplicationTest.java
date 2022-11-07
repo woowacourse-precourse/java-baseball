@@ -52,18 +52,18 @@ class ApplicationTest extends NsTest {
 
         assertThatThrownBy(() -> Application.validateUserNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 값을 입력하였습니다.");
+                .hasMessageContaining("세자리가 아닌 수를 입력하였습니다.");
 
         input = "a13";
 
         assertThatThrownBy(() -> Application.validateUserNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 값을 입력하였습니다.");
+                .hasMessageContaining("숫자가 아닌 값을 입력하였습니다.");
 
         input = "112";
 
         assertThatThrownBy(() -> Application.validateUserNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잘못된 값을 입력하였습니다.");
+                .hasMessageContaining("중복된 수를 입력하였습니다.");
     }
 }
