@@ -9,7 +9,7 @@ import static baseball.Constant.*;
 public class Computer {
     private BaseballNumber answer;
 
-    public void putAnswer() {
+    public void makeAnswer() {
         List<Integer> numbers = makeNotDuplicatedRandomNumbers();
         this.answer = new BaseballNumber(numbers);
         System.out.println("(임시) 숫자야구의 정답 : " + answer); // TODO: 마지막에 삭제

@@ -17,7 +17,7 @@ public class BaseballGame {
 
     public void start() {
         Input.startGameMessage();
-        computer.putAnswer();
+        computer.makeAnswer();
         while (true) {
             Result result = checkResultOfEnteredValue();
             if (result.isThreeStrike()) {
