@@ -9,4 +9,9 @@ public class OutputView {
     public static void printStrike(int strike) {
         System.out.printf("%d 스트라이크", strike);
     }
+
+    public static void printBall(int ball) {
+        System.out.printf("%d 볼", ball);
+    }
+
 }
