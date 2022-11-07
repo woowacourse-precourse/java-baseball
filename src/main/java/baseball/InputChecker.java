@@ -2,6 +2,9 @@ package baseball;
 
 import baseball.Constants.EndCommand;
 
+/**
+ * 각각의 상황에 입력이 올바른지 확인해주는 메서드를 제공하는 클래스입니다.
+ */
 public class InputChecker {
 
     private static boolean hasLengthOf(String input, int length) {
