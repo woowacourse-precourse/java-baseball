@@ -11,6 +11,7 @@ public class Validator {
     public static void validatePlayerInput(String input) {
         validateInputLength(input);
         validateInputInteger(input);
+        validateInputNumberScope(input);
     }
 
     public static void validateInputLength(String input) {
@@ -26,5 +27,15 @@ public class Validator {
             }
         }
     }
+
+    public static void validateInputNumberScope(String input) {
+        for (Character character : input.toCharArray()) {
+            if (MIN_VALUE > Character.getNumericValue(character)
+                    || Character.getNumericValue(character) > MAX_VALUE) {
+                throw new IllegalArgumentException("[IllegalArgumentException]: 각 자릿수가 " + MIN_VALUE + "~" + MAX_VALUE + "사이 숫자가 아닙니다.\n");
+            }
+        }
+    }
+
 
 }
