@@ -2,6 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.security.KeyStore;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +41,24 @@ class ValidCheckTest {
 
     @Test
     void isContinueGame() {
+        String test1 = "1";
+        String test2 = "2";
+        String test3 = "22";
+        String test4 = "derw";
+        String test5 = "1234";
 
+        assertThat(ValidCheck.isContinueGame(test1)).isEqualTo(true);
+        assertThat(ValidCheck.isContinueGame(test2)).isEqualTo(false);
+        assertThatThrownBy(() -> ValidCheck.isContinueGame(test3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1, 2 의 숫자를 입력하셨습니다");
+
+        assertThatThrownBy(() -> ValidCheck.isContinueGame(test4))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1, 2 의 숫자를 입력하셨습니다");
+
+        assertThatThrownBy(() -> ValidCheck.isContinueGame(test5))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1, 2 의 숫자를 입력하셨습니다");
     }
 }
