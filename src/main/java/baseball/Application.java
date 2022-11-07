@@ -106,7 +106,7 @@ public class Application {
             return ("낫싱");
         }
         if (strike == 3) {
-            return ("3스트라이크\n"+"3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return ("3스트라이크");
         }
         if (strike == 0) {
             return (ball+"볼");
@@ -117,10 +117,19 @@ public class Application {
         return (ball+"볼 "+strike+"스트라이크");
     }
 
+    private static void GameRestart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int input = Integer.valueOf(Console.readLine());
+        if (input == 1) {
+            GameStart();
+        }
+    }
+
     private static void GameStart() {
         List<Integer> computer = ComputerGenerate();
         List<Integer> user = UserGenerate();
         System.out.println(computer);
         System.out.println(Hint(computer,user));
+
     }
 }
