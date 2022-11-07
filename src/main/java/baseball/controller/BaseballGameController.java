@@ -10,17 +10,22 @@ public class BaseballGameController {
     private static final int GAME_EXIT = 2;
 
     private final BaseballGameService baseballGameService = new BaseballGameService();
-
+    private final GameScreen gameScreen = new GameScreen();
+    
     public void run() {
-        GameScreen.printGameStart();
+        gameScreen.printStart();
         start();
     }
 
     public void start() {
-        GameScreen.printUserInput();
-        String playerInputNumbers = Console.readLine();
+        String playerInputNumbers = getPlayerInput();
         baseballGameService.newGame(playerInputNumbers);
         play();
+    }
+
+    private String getPlayerInput() {
+        gameScreen.printPlayerInput();
+        return Console.readLine();
     }
 
     public void play() {
@@ -28,21 +33,20 @@ public class BaseballGameController {
         while (!isClear) {
             isClear = guessNumber();
         }
-        GameScreen.printGameEnd();
+        gameScreen.printEnd();
         askRestart();
     }
 
     public boolean guessNumber() {
-        GameScreen.printUserInput();
-        String playerInputNumbers = Console.readLine();
+        String playerInputNumbers = getPlayerInput();
         GameResult gameResult = baseballGameService.playGame(playerInputNumbers);
-        GameScreen.printGameResult(gameResult);
+        gameScreen.printResult(gameResult);
 
         return gameResult.isAllStrike();
     }
 
     private void askRestart() {
-        GameScreen.printAskNewGame();
+        gameScreen.printAskRestart();
         int playerPressKey = Integer.parseInt(Console.readLine());
 
         if (playerPressKey != NEW_GAME && playerPressKey != GAME_EXIT) {
