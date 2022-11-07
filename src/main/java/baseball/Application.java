@@ -74,7 +74,7 @@ public class Application {
         return result;
     }
 
-    static void repeatInput(List<Integer> computer) {
+    static void playGame(List<Integer> computer) {
         while (true) {
             System.out.print("숫자를 입력해 주세요 : ");
             List<Integer> input = getInputNumber();
@@ -117,7 +117,7 @@ public class Application {
         boolean isPlay = true;
         while (isPlay) {
             List<Integer> computer = createRandomNumber();
-            repeatInput(computer);
+            playGame(computer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
             isPlay = isPlay();
         }
