@@ -98,10 +98,11 @@ public class Application {
         return error;
     }
     public static boolean restartQuestion() {
+        ErrorUtil errorUtil = new ErrorUtil();
         boolean restart = false;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String number = Console.readLine();
-        checkError(checkErrorRestartNumber(number));
+        errorUtil.checkError(checkErrorRestartNumber(number));
         if (number.charAt(0) == '1')
             restart = true;
         return restart;
