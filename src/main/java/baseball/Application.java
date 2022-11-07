@@ -8,8 +8,19 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     public static String makeRandomNumbers(){
         StringBuilder result = new StringBuilder();
+        int[] numberArray = new int[3];
+
         for(int i=0;i<3;i++){
-            result.append(Randoms.pickNumberInRange(1, 9));
+            numberArray[i] = Randoms.pickNumberInRange(1, 9);
+            for(int j=0;j < i;j++){
+                if(numberArray[i] == numberArray[j]){
+                    i--;
+                }
+            }
+        }
+
+        for(int number: numberArray){
+            result.append(number);
         }
         return result.toString();
     }
