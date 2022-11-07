@@ -14,32 +14,30 @@ public class GameController {
 
     public int inputNumber() {
         AppView.output("숫자를 입력해주세요 : ");
-        int myAnswer = 0;
+        String myAnswer = AppView.inputLine();
+        checkInputNum(myAnswer);
+
+        return Integer.parseInt(myAnswer);
+    }
+
+    public void checkInputNum(String myAnswer) {
+        int num = 0;
         try {
-            myAnswer = Integer.parseInt(AppView.inputLine());
+            num = Integer.parseInt(myAnswer);
         } catch(NumberFormatException e) {
             throw new IllegalArgumentException();
         }
 
-        if(!checkRangeNum(myAnswer)) {
-            throw new IllegalArgumentException();
-        }
-
-        return myAnswer;
-    }
-
-    public boolean checkRangeNum(int num) {
-        // 3자리인지 체크
-        if(num / 100 >= 10) return false;
-        if(num / 100 == 0) return false;
-        // 1자리
-        if((num % 10) == 0) return false;
-        // 10자리
-        if(((num % 100) / 10) == 0) return false;
-        // 100자리
-        if((num / 100) == 0) return false;
-
-        return true;
+        // 3자리인지 , 각 자리수가 1~9 인지 , 하나라도 같은 자리수가 있는지
+        if((num / 100 >= 10) ||
+                (num / 100 == 0) ||
+                ((num % 10) == 0) ||
+                (((num % 100) / 10) == 0) ||
+                ((num / 100) == 0) ||
+                ((num % 10) == ((num % 100) / 10)) ||
+                ((num % 10) == (num / 100)) ||
+                (((num % 100) / 10) == (num / 100))
+        ) throw new IllegalArgumentException();
     }
 
     public void correctResult() {
