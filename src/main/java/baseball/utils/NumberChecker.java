@@ -1,5 +1,7 @@
 package baseball.utils;
 
+import static baseball.utils.BaseballConstants.*;
+
 public class NumberChecker {
 
     public static void checkUserInput(String userInput){
@@ -8,7 +10,7 @@ public class NumberChecker {
         hasSameNumber(userInput);
     }
     private static void checkRange(String num){
-        if (num.length() != 3){
+        if (num.length() != BALL_NUMBER){
             throw new IllegalArgumentException("문자의 길이가 다릅니다.");
         }
     }
