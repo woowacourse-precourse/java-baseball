@@ -18,7 +18,7 @@ public class Controller {
     private static final String BALL_KOR ="볼";
     private static final String NOTHING ="nothing";
     private static final String NOTHING_KOR ="낫싱";
-    private static final int DIGITS = Rule.DIGITS.toInt();
+    private static final int DIGITS = Rule.DIGITS.getValue();
     private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
     private static final String COMMAND_END = Rule.COMMAND_END.toString();
 

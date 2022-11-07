@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Model {
-    private static final int DIGITS = Rule.DISITS.getValue();
+    private static final int DIGITS = Rule.DIGITS.getValue();
     private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
     private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
+
     public static List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < DIGITS) {
@@ -18,12 +19,11 @@ public class Model {
                 computerNumber.add(randomNumber);
             }
         }
-
         return computerNumber;
     }
 
     public static List<Integer> createPlayerNumber(){
-        String userInput = View.getUserInput(); // 숫자인지 확인
+        String userInput = View.getUserInput(); // 숫자가 아니면 예외 발생
         List<Integer> playerNumber = stringToList(userInput);
         if(!Validator.isValidNumber(playerNumber)){
             throw new IllegalArgumentException();
