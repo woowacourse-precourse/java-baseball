@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -105,8 +104,8 @@ public class Game {
     }
 
     private void calculateBall() {
-        List<String> randomDigits = Arrays.asList(getSplit(randomNumber));
-        List<String> userDigits = Arrays.asList(getSplit(userNumber));
+        List<String> randomDigits = getSplitList(randomNumber);
+        List<String> userDigits = getSplitList(userNumber);
         for(String userDigit: userDigits) {
             boolean isContained = randomDigits.contains(userDigit);
             int randomIndex = randomDigits.indexOf(userDigit);
@@ -119,8 +118,8 @@ public class Game {
     }
 
     private void calculateStrike() {
-        List<String> randomDigits = Arrays.asList(getSplit(randomNumber));
-        List<String> userDigits = Arrays.asList(getSplit(userNumber));
+        List<String> randomDigits = getSplitList(randomNumber);
+        List<String> userDigits = getSplitList(userNumber);
         for(String userDigit: userDigits) {
             boolean isContained = randomDigits.contains(userDigit);
             int randomIndex = randomDigits.indexOf(userDigit);
@@ -132,8 +131,8 @@ public class Game {
         }
     }
 
-    private String[] getSplit(int randomNumber) {
-        return String.valueOf(randomNumber).split("");
+    private List<String> getSplitList(int randomNumber) {
+        return Arrays.asList(String.valueOf(randomNumber).split(""));
     }
 
     private void initializeBallCount() {
