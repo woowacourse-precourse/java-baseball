@@ -230,7 +230,7 @@ class ApplicationTest extends NsTest {
             }, 2, 4, 6);
         }
 
-        @DisplayName("1과 2 이외의 값 입력하면 제대로 된 입력을 요구한다..")
+        @DisplayName("1과 2 이외의 값 입력하면 IllegalArumentException을 반환한다")
         @Test
         void wrongRestartInput() {
             assertRandomNumberInRangeTest(() -> {
