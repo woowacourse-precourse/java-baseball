@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Computer {
@@ -16,5 +17,18 @@ public class Computer {
                 answerNumber.add(randomNumber);
             }
         }
+        if(!isValidNumber(answerNumber))
+            throw new IllegalArgumentException();
+    }
+
+    private boolean isValidNumber(List<Integer> numbers) {
+        for(Integer number: numbers) {
+            int overlapCnt = Collections.frequency(numbers, number);
+            if(overlapCnt > 1)
+                return false;
+            if(number < 1 || number > 9)
+                return false;
+        }
+        return true;
     }
 }
