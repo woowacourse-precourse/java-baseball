@@ -47,15 +47,6 @@ class ApplicationTest extends NsTest {
             );
         }
 
-
-        @Test
-        void 빈_문자열() {
-            assertSimpleTest(() ->
-                    assertThatThrownBy(() -> runException(""))
-                            .isInstanceOf(IllegalArgumentException.class)
-            );
-        }
-
         @Test
         void 숫자가_아닌_값() {
             assertSimpleTest(() ->
