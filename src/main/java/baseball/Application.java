@@ -15,6 +15,7 @@ public class Application {
 	static List<Integer> inputList = new ArrayList<>();
 	static String inputNumber = "";
 	static boolean inputCheck = false;
+	static boolean exceptionCheck = false;
 	static int strike = 0;
 	static int ball = 0;
 	
@@ -36,6 +37,8 @@ public class Application {
 		    	inputNumber = Console.readLine();
 		    	
 		    	// 사용자 입력 예외 발생 검사
+		    	exceptionCheck = checkException();
+		    	
 		    	if(inputNumber.length()==3&&!inputNumber.contains("0")&&checkType(inputNumber)&&checkDiff(inputNumber)) {
 		    		// 정상 처리 경우 두 수 비교
 		    		ball=0;
@@ -89,9 +92,21 @@ public class Application {
     	// 사용자 입력 메서드
     	while(start==1) {
     		inputNumber();
+    		exceptionCheck = checkException();
+    		if(exceptionCheck) {
+    			//두 수 비교 메서드
+    			ball = 0;
+    			strike = 0;
+    			compare(computer,inputNumber);
+    		}
+    		else {
+    			throw new IllegalArgumentException("잘못된 값을 입력했습니다!");
+    		}
+    		
+    		
     	}
     	
-    	
+    	return 0;
     }
     
     // 사용자 입력 메서드
@@ -100,6 +115,15 @@ public class Application {
     	String s = Console.readLine();
     	return s;
     }
+    
+    // 예외 발생 확인 메서드
+    public static boolean checkException() {
+    	if(inputNumber.length()==3&&!inputNumber.contains("0")&&checkType(inputNumber)&&checkDiff(inputNumber)) {
+    		return true;
+    	}else
+    		return false;
+    }
+    
     // 정수 입력 확인
     public static boolean checkType(String inputNumber) {
     	char[] arr = inputNumber.toCharArray();
