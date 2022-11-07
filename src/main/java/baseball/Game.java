@@ -7,19 +7,21 @@ import static baseball.Constant.*;
 
 public class Game {
 
-    public void startGame() {
-        User user = new User();
+    public void startProgram() {
         Computer computer = new Computer();
-
-        System.out.println(START_PROGRAM);
-
         computer.setRandomNumber();
-        List<Integer> computerNumber = computer.getComputerNumber();
+        startGame(computer.getComputerNumber());
+    }
 
-        user.inputNumber();
-        String userNumber = user.getUserNumber();
+    public void startGame(List<Integer> computerNumber) {
+        User user = new User();
+        String gameScore = "";
 
-        System.out.println(getHint(userNumber, computerNumber));
+        while (!gameScore.equals(ALL_STRIKE)) {
+            user.inputNumber();
+            gameScore = getHint(user.getUserNumber(), computerNumber);
+            System.out.println(gameScore);
+        }
     }
 
     public String getHint(String userNumber, List<Integer> computerNumber) {
