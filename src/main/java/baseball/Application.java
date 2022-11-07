@@ -6,28 +6,27 @@ import baseball.participants.Pitcher;
 import baseball.participants.Referee;
 
 public class Application {
-    private static SportsCaster sportsCaster = new SportsCaster();
-    private static Referee referee = new Referee();
-    private static Pitcher pitcher = new Pitcher();
-    private static Hitter hitter = new Hitter();
-
     public static void main(String[] args) {
+        SportsCaster sportsCaster = new SportsCaster();
         sportsCaster.guideGameProcess();
-        while (!referee.toTerminateGame) {
-            play1Game();
-            referee.playAgainOrNot();
+        while (sportsCaster.willPlay) {
+            sportsCaster.startGame();
+            playGame();
+            sportsCaster.endGame();
+            sportsCaster.askToPlayAgain();
         }
         sportsCaster.terminateProgram();
     }
 
-    private static void play1Game() {
-        referee.startGame();
+    private static void playGame() {
+        Referee referee = new Referee();
+        Pitcher pitcher = new Pitcher();
+        Hitter hitter = new Hitter();
         hitter.swing();
+
         while (referee.isGameInProgress) {
-            referee.startPitch();
             pitcher.pitch();
             referee.judge(pitcher.pitchZone, hitter.swingZone);
         }
-        referee.endGame();
     }
 }
