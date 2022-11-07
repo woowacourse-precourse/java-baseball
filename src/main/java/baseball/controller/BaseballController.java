@@ -5,13 +5,8 @@ import baseball.view.OutputView;
 
 public class BaseballController {
 
-    private final InputView inputView;
-    private final OutputView outputView;
-
-    public BaseballController(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
-        this.outputView = outputView;
-    }
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
 
     public void gameStart() {
         do {
