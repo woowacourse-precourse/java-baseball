@@ -1,5 +1,6 @@
-package baseball;
+package baseball.service;
 
+import baseball.view.OutputView;
 import java.util.List;
 import java.util.stream.IntStream;
 

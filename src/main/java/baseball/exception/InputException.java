@@ -1,4 +1,4 @@
-package baseball;
+package baseball.exception;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;

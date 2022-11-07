@@ -1,5 +1,6 @@
-package baseball;
+package baseball.view;
 
+import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {

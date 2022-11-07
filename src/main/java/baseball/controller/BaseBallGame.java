@@ -1,4 +1,10 @@
-package baseball;
+package baseball.controller;
+
+import baseball.domain.Computer;
+import baseball.domain.User;
+import baseball.service.GameProcessor;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseBallGame {
 

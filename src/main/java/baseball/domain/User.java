@@ -1,5 +1,6 @@
-package baseball;
+package baseball.domain;
 
+import baseball.view.InputView;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
