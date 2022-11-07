@@ -2,8 +2,8 @@ package baseball.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputController {
-    private InputController() {
+public class ExitFlagController {
+    private ExitFlagController() {
     }
 
     private static void validateFlagNum(String input) {

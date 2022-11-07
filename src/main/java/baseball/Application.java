@@ -1,7 +1,7 @@
 package baseball;
 
+import baseball.controller.ExitFlagController;
 import baseball.controller.InfoPrinter;
-import baseball.controller.InputController;
 import baseball.controller.NumberController;
 import baseball.vo.AnswerNumber;
 import baseball.vo.UserNumber;
@@ -19,17 +19,16 @@ public class Application {
             while (true) {
                 InfoPrinter.printInputInfo();
                 UserNumber userNumber = new UserNumber(Console.readLine());
-                List<Integer> strikesAndBalls = NumberController.getStrikesAndBalls(userNumber.getNumbers(),
-                        answerNumber.getNumbers());
+                List<Integer> strikesAndBalls = NumberController.getStrikesAndBalls(userNumber, answerNumber);
 
                 InfoPrinter.printStrikesAndBalls(strikesAndBalls);
 
-                if (strikesAndBalls.get(0) == 3) {
+                if (strikesAndBalls.get(0) == UserNumber.MAX_NUMBER_OF_DIGIT) {
                     break;
                 }
             }
         InfoPrinter.printExitInfo();
-        flag = InputController.getExitFlag();
+        flag = ExitFlagController.getExitFlag();
         }
         System.out.println("게임 종료");
     }
