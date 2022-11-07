@@ -6,6 +6,8 @@ import baseball.domain.User;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -26,6 +28,10 @@ public class Application {
             System.out.print("숫자를 입력해주세요: ");
             user.setNumber(Console.readLine());
             game.validateComputerNumber(user.getNumber());
+
+            //4. 게임 결과를 받아온 뒤 출력
+            String printMent = game.getScoreMent(computer.getNumber(), user.getNumber());
+            System.out.println(printMent);
 
         } catch (IllegalArgumentException e) {
             throw e;
