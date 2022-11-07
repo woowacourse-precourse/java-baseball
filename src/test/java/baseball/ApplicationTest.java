@@ -88,4 +88,12 @@ class ApplicationTest extends NsTest {
 		assertThat("숫자를 입력해주세요 : ").isEqualTo(systemMessage.PrintProgress());
 	}
 
+	@Test
+	void 카운트_메세지1() {
+		int strike = 2;
+		int ball = 1;
+
+		assertThat("1볼 2스트라이크").isEqualTo(systemMessage.PrintCount(strike, ball));
+	}
+
 }
