@@ -7,6 +7,25 @@ import java.util.ArrayList;
 
 public class Application {
 
+    public static void exception(String inputString) throws IllegalArgumentException {
+
+        if(inputString.length()!=3) {
+            throw new IllegalArgumentException();
+        }
+        if(inputString.contains("0")) {
+            throw new IllegalArgumentException();
+        }
+        if(!inputString.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new IllegalArgumentException();
+        }
+        char zero= inputString.charAt(0);
+        char one= inputString.charAt(1);
+        char two= inputString.charAt(2);
+        if(zero==one||zero==two||one==two) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static List<Integer> input() {
         List<Integer> inputNum =new ArrayList<Integer>();
 
