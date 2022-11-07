@@ -21,6 +21,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void Only_스트라이크_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("124", "238", "865", "137", "185", "935", "135", "2");
+                    assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+    @Test
     void 입력_숫자_길이를_초과한_경우() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
