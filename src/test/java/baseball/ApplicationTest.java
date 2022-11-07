@@ -230,6 +230,16 @@ class ApplicationTest extends NsTest {
         Application.playGame(random_input);
     }
 
+    @Test
+    void putInRandomNumberTest() {
+
+        List<Integer> random_input = new ArrayList<>();
+        Application.putInRandomNumber(random_input);
+
+        assertThat(true).isEqualTo(random_input.get(0) != random_input.get(1) && random_input.get(1) != random_input.get(2)
+                && random_input.get(2) != random_input.get(0));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
