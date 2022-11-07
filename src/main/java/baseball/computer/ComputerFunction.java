@@ -9,7 +9,7 @@ public class ComputerFunction {
     private List<Integer> createRandomList() {
         List<Integer> list = new ArrayList<>();
         while (list.size() != 3) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
+            int randomNum = getRandomNumber();
             checkAddNumber(list, randomNum);
         }
         return list;
