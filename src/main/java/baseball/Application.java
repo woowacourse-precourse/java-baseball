@@ -64,4 +64,22 @@ public class Application {
         }
     }
 
+    private static void printBaseballResult() {
+        String result = "";
+
+        if (ballCnt == 0 && strikeCnt == 0) {
+            result = "낫싱";
+        }
+
+        if (ballCnt != 0) {
+            result += ballCnt + "볼 ";
+        }
+
+        if (strikeCnt != 0) {
+            result += strikeCnt + "스트라이크";
+        }
+
+        System.out.println(result);
+    }
+
 }
