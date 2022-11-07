@@ -12,7 +12,6 @@ public class Application {
 
         while(restartOrNot() == 1)
             gameStart();
-
     }
 
     public static void printProgramStart() {
@@ -37,13 +36,16 @@ public class Application {
         return true;
     }
 
-    public static int makeAnswerNumber() {
-        int answerNum = Randoms.pickNumberInRange(123, 987);
+    public static List<Integer> makeAnswerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
 
-        while (!isAnswerNumberValid(answerNum))
-            answerNum = Randoms.pickNumberInRange(123, 987);
-
-        return answerNum;
+        return computer;
     }
 
     public static boolean isInteger(String inputValue) {
@@ -147,9 +149,8 @@ public class Application {
     }
 
     public static void gameStart(){
-        int answerNum = makeAnswerNumber();
         int trialNum = tryAnswer();
-        List<Integer> answerDigits = getThreeDigitsValues(answerNum);
+        List<Integer> answerDigits = makeAnswerNumber();
         List<Integer> trialDigits = getThreeDigitsValues(trialNum);
 
         while(!isTrialCorrect(countBall(answerDigits, trialDigits), countStrike(answerDigits, trialDigits))) {
