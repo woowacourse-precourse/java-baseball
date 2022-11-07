@@ -1,7 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.*;
 
 public class Application {
@@ -61,7 +63,7 @@ public class Application {
         }
         return false;
     }
-    
+
     private static List<Integer> compareList( List<Integer> ball_strike_count, List<Integer> computer_num,List<Integer> player_num){
         if(computer_num.get(0)!=player_num.get(0)&&computer_num.get(1)==player_num.get(1)){
             ball_strike_count.set(0,ball_strike_count.get(0)+1);
@@ -123,16 +125,12 @@ public class Application {
     private static int userInput(int play_mode) {
         String input_String;
         int input_int;
-        Scanner scanner = new Scanner(System.in);
 
-        input_String = scanner.next();
-        try {
-            input_int = input_String_to_int(input_String, play_mode);
-            return input_int;
-        } catch (IllegalArgumentException e) {
-            System.out.println("입력 에러\n프로그램을 종료합니다.");
-            return -1;
-        }
+        input_String= Console.readLine();
+        System.out.println(input_String);
+
+        input_int=input_String_to_int(input_String,play_mode);
+        return input_int;
     }
 
     private static int input_String_to_int(String input_String, int play_mode) {
