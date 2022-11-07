@@ -51,4 +51,24 @@ public class BaseballGame {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
+
+    static boolean playGame() {
+        List<Integer> computer = Input.computerRandomNumber();
+
+        while (true) {
+            String player = Input.userNumber();
+            Input.userNumberErrorCheck(player);
+            List<Integer> user = Input.cutNumber(player);
+            int strike = strikeCheck(user, computer);
+            int ball = ballCheck(user, computer);
+
+            if (endCheck(strike)) {
+                return true;
+            } else if (notingCheck(strike, ball)) {
+                System.out.println("낫싱");
+            } else {
+                ballAndStrike(strike, ball);
+            }
+        }
+    }
 }
