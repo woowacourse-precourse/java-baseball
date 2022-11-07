@@ -21,5 +21,8 @@ public class BaseBallService {
         baseBall.winGame();
     }
 
+    public void userInputSave(String userNumber) {
+        user.setUserNumber(userNumber);
+    }
 
 }

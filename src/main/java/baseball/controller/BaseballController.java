@@ -14,6 +14,7 @@ public class BaseballController {
         do {
             inProgress();
         } while (restart());
+
     }
 
     public boolean restart() {
@@ -21,10 +22,15 @@ public class BaseballController {
     }
 
     public void inProgress() {
-        inputView.inputNumber();
+        initGame();
+        while (!baseBallService.isWinGame()) {
+            String userNumber = inputView.inputNumber();
+            baseBallService.userInputSave(userNumber);
+        }
     }
 
     public void initGame() {
         outputView.printInitGameMessage();
+        baseBallService.initGame();
     }
 }
