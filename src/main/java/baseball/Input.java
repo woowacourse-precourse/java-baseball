@@ -28,17 +28,11 @@ public class Input {
     }
 
     public boolean isdifferentNumber(){ //123
-        String sub = input.substring(0);
-        String compare = input.substring(1);
-        if(sub.equals(compare)) return false;
-
-        compare = input.substring(2);
-        if(sub.equals(compare)) return false;
-
-        sub = input.substring(1);
-        compare = input.substring(2);
-        if(sub.equals(compare)) return false;
-        return true;
+        String[] num = input.split("");
+        if(num[0].equals(num[1])) return false;
+        if(num[0].equals(num[2])) return false;
+        if(num[1].equals(num[2])) return false;
+        else return true;
     }
 
     public boolean isNumber(){
