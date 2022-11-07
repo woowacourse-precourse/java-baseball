@@ -27,7 +27,18 @@ class PlayerInputValueExceptionsTest {
     }
 
     @Test
+    @DisplayName("입력된 세자리 수에 중복이 있으면 예외 발생")
     void haveDuplicateNumbers() {
+        //given
+        ArrayList<String> userSelectedNumbers = new ArrayList<>(
+                Arrays.asList("1", "3", "3")
+        );
+
+        //then
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            PlayerInputValueExceptions.haveDuplicateNumbers(userSelectedNumbers); //when
+        });
+        assertEquals("서로 다른 3자리의 수를 입력하세요", exception.getMessage());
     }
 
     @Test
