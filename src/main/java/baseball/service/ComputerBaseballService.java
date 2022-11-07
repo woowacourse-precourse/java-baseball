@@ -47,4 +47,17 @@ public class ComputerBaseballService {
         }
         return computerBaseballGameNumberRepository.getComputerBaseballGameNumberList();
     }
+
+    public Integer[] getGameResult(List<Integer> computerBaseballGameNumberList) {
+        Integer[] gameResult = {0, 0};
+        List<Integer> playerInputNumberList = OperatorService.getInstance().getPlayerGameNumberList();
+
+        for (int i = 0; i < playerInputNumberList.size(); i++) {
+            Integer findIndex = computerBaseballGameNumberList.indexOf(playerInputNumberList.get(i));
+            if (findIndex == -1) continue;
+            if (findIndex != i) ++gameResult[0]; // 볼
+            if (findIndex == i) ++gameResult[1]; // 스트라이크
+        }
+        return gameResult;
+    }
 }

@@ -1,5 +1,7 @@
 package baseball.service;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import baseball.vo.enumtype.GameRule;
 import baseball.vo.enumtype.UserInterfaceMessage;
 import baseball.vo.enumtype.ValidationMessage;
@@ -25,7 +27,7 @@ public class OperatorService {
         System.out.println(UserInterfaceMessage.GAME_INFO.getValue());
     }
 
-    public void validateGameNumber(String inputGameNumber) throws IllegalArgumentException {
+    public void validateGameNumber(String inputGameNumber) {
         ValidationMessage validationMessage = validateUserInputCase(inputGameNumber);
         if (validationMessage != ValidationMessage.PROPER_TYPE) {
             System.out.println(validationMessage.getValue());
@@ -56,9 +58,44 @@ public class OperatorService {
         }
         return (arrUserInput.length != userInputSet.size());
     }
-    public void operateGame(List<Integer> computerBaseballGameNumberList, String inputGameNumber) {
-        playerGameNumberList = generateGameNumberList(inputGameNumber);
+    public String operateGame(List<Integer> computerBaseballGameNumberList, String inputGameNumber) {
+        this.playerGameNumberList = generateGameNumberList(inputGameNumber);
+        Integer[] gameResult = ComputerBaseballService.getInstance().getGameResult(computerBaseballGameNumberList);
+        printGameResult(gameResult);
+        if (gameResult[1] == GameRule.GAME_NUMBER_LEN.getValue()) {
+            return strikeProcess();
+        }
+        return "1"; // 게임 계속 진행
+    }
 
+    private String strikeProcess() {
+        System.out.println(String.valueOf(GameRule.GAME_NUMBER_LEN.getValue()) + UserInterfaceMessage.GAME_RESULT_SUCCESS.getValue());
+        System.out.println(UserInterfaceMessage.GAME_END_RESTART.getValue());
+        String inputGameNumber = readLine();
+        System.out.println(inputGameNumber);
+        if (inputGameNumber.equals("1")) {
+            ComputerBaseballService.getInstance().createNewBaseballGameNumberList();
+        }
+        return inputGameNumber;
+    }
+
+    private void printGameResult(Integer[] gameResultArray) {
+        System.out.println(gameResultArray2String(gameResultArray));
+    }
+
+    private String gameResultArray2String(Integer[] gameResultArray) {
+        if (gameResultArray[0] != 0 && gameResultArray[1] != 0) { // 볼 & 스트라이크
+            return String.valueOf(gameResultArray[0]) + UserInterfaceMessage.GAME_RESULT_BALL.getValue() + " "
+                    + String.valueOf(gameResultArray[1]) + UserInterfaceMessage.GAME_RESULT_STRIKE.getValue();
+        }
+        if (gameResultArray[0] != 0 && gameResultArray[1] == 0) {
+            return String.valueOf(gameResultArray[0]) + UserInterfaceMessage.GAME_RESULT_BALL.getValue(); // 볼
+        }
+        if (gameResultArray[0] == 0 && gameResultArray[1] != 0) {
+            return String.valueOf(gameResultArray[1]) + UserInterfaceMessage.GAME_RESULT_STRIKE.getValue(); // 스트라이크
+        }
+
+        return UserInterfaceMessage.GAME_RESULT_NOTHING.getValue(); // if (gameResultArray[0] == 0 && gameResultArray[1] == 0)
     }
 
     public List<Integer> generateGameNumberList(String playerInputGameNumber) {

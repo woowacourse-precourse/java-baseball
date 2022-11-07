@@ -41,9 +41,10 @@ public class BaseballController {
                 operatorService.validateGameNumber(inputGameNumber);
             } catch (IllegalArgumentException exception) {
                 System.out.println(ValidationMessage.STOP_GAME.getValue());
-                break;
+                throw new IllegalArgumentException(); // 예외를 잡지말고 다시 던져서 문제의 Test case를 통과함...
+//                break;
             }
-            operatorService.operateGame(getComputerBaseballGameNumberList(), inputGameNumber);
+            inputGameNumber = operatorService.operateGame(getComputerBaseballGameNumberList(), inputGameNumber);
         } while (!inputGameNumber.equals("2"));
     }
 }
