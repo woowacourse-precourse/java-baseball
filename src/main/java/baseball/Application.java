@@ -117,8 +117,20 @@ public class Application {
         }
     }
 
+    private boolean isEndGame(){
+        int inputNumber;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        inputNumber = Integer.parseInt(Console.readLine());
+        if (inputNumber == 1){
+            return true;
+        } else if (inputNumber == 2){
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
         baseballGameRun();
 
     }
