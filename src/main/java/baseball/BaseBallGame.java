@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class BaseBallGame implements AutoCloseable {
+public class BaseBallGame  {
 
     State currentState;
     Trigger currentTrigger;
@@ -19,6 +19,7 @@ public class BaseBallGame implements AutoCloseable {
         rules.put(List.of(State.ON_GAME.ordinal(), Trigger.CORRECT_ANSWER.ordinal()), State.FINISH_GAME);
         rules.put(List.of(State.FINISH_GAME.ordinal(), Trigger.EXIT.ordinal()), State.EXIT_GAME);
         rules.put(List.of(State.FINISH_GAME.ordinal(), Trigger.RE_GAME.ordinal()), State.START_GAME);
+        rules.put(List.of(State.START_GAME.ordinal(), Trigger.COMPLETE_INITIATION.ordinal()), State.ON_GAME);
     }
 
     protected List<Integer> answerNumber;
@@ -28,34 +29,31 @@ public class BaseBallGame implements AutoCloseable {
         currentTrigger = null;
     }
 
-    @Override
-    public void close() throws Exception {
-
-    }
 
     public void run() {
         while (true) {
-            List<Integer> input;
-            System.out.printf("current State : %d", currentState.ordinal());
-            switch (currentState) {
-                case START_GAME:
-                    System.out.println("숫자 야구 게임을 시작합니다.");
-                    LocalDateTime now = LocalDateTime.now();
-                    generateNumber(now.hashCode());
-                    currentState = State.ON_GAME;
-                    continue;
-                case FINISH_GAME:
-                case ON_GAME:
-                    input = getUserInput();
-                    getResultOfInput(input);
-                    break;
-                case EXIT_GAME:
-                default:
-                    return;
-
-            }
+            doStateRoutine();
+            if(currentState == State.EXIT_GAME)
+                return;
             currentState = rules.get(List.of(currentState.ordinal(), currentTrigger.ordinal()));
 
+        }
+    }
+
+    private void doStateRoutine(){
+        List<Integer> input;
+        switch (currentState) {
+            case START_GAME:
+                System.out.println("숫자 야구 게임을 시작합니다.");
+                LocalDateTime now = LocalDateTime.now();
+                generateNumber(now.hashCode());
+                currentTrigger = Trigger.COMPLETE_INITIATION;
+                return;
+            case FINISH_GAME:
+            case ON_GAME:
+                input = getUserInput();
+                getResultOfInput(input);
+                break;
         }
     }
 
@@ -184,7 +182,7 @@ public class BaseBallGame implements AutoCloseable {
     }
 
     enum Trigger {
-        INVALID_USER_INPUT, INCORRECT_ANSWER, CORRECT_ANSWER, RE_GAME, EXIT;
+        INVALID_USER_INPUT, INCORRECT_ANSWER, CORRECT_ANSWER, RE_GAME, EXIT, COMPLETE_INITIATION;
     }
 
 
