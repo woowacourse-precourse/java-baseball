@@ -11,16 +11,26 @@ public class NumberManager {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
 
+    /**
+     * 1부터 9까지 서로 다른 수로 이루어진 3자리의 수 생성
+     */
     public static void setAnswer() {
-        List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, ANSWER_LENGTH); // 1 ~ 9까지 서로 다른 임의의 수 3개를 선택
+        List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, ANSWER_LENGTH);
         answer = randomNumberList.toString().replaceAll("[^1-9]", "");
 //        System.out.println("answer = " + answer);
     }
 
+    /**
+     * @param predictInput 사용자가 입력한 3자리 수
+     * @return answer와 같을 시 true / 다를 경우 false
+     */
     public static boolean isAnswer(String predictInput) {
         return predictInput.compareTo(answer) == 0;
     }
 
+    /**
+     * @param predictInput 사용자가 입력한 3자리 수
+     */
     public static void getHint(String predictInput) {
         int ball = 0;
         int strike = 0;
