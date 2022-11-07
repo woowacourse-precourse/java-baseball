@@ -1,28 +1,23 @@
 package baseball.utils;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
 
-    public final static Integer RESTART = 1;
-    public final static Integer EXIT = 2;
-    public final static Integer CHECK_PROGRESS_INPUT_LENGTH = 1;
+    public final static String RESTART = "1";
+    public final static String EXIT = "2";
     public final static Integer BASEBALL_INPUT_LENGTH = 3;
 
     public static void checkBaseballInput(String baseballInput) {
-        checkNumbers(baseballInput);
+        checkBaseballNumbers(baseballInput);
         checkLength(baseballInput, BASEBALL_INPUT_LENGTH);
+        checkDuplicateNumbers(baseballInput);
     }
 
     public static void checkProgressInput(String progressInput) {
-        checkNumbers(progressInput);
-        checkLength(progressInput, CHECK_PROGRESS_INPUT_LENGTH);
-        checkRightRetryNumber(Integer.parseInt(progressInput));
-    }
-
-    private static void checkRightRetryNumber(Integer progressNumber) {
-        if (progressNumber.equals(RESTART) && progressNumber.equals(EXIT)) {
+        if (!progressInput.equals(RESTART) && !progressInput.equals(EXIT)) {
             throw new IllegalArgumentException();
         }
     }
@@ -33,14 +28,11 @@ public class InputValidator {
         }
     }
 
-    private static void checkNumbers(String input) {
-        Set<Integer> duplicateNumbers = new HashSet<>();
+    private static void checkBaseballNumbers(String input) {
         for (char ch : input.toCharArray()) {
             checkDigit(ch);
-            checkNumberRange(Character.getNumericValue(ch));
-            duplicateNumbers.add(Character.getNumericValue(ch));
+            checkBaseballNumberRange(Character.getNumericValue(ch));
         }
-        checkDuplicateNumbers(duplicateNumbers);
     }
 
     private static void checkDigit(char ch) {
@@ -49,13 +41,14 @@ public class InputValidator {
         }
     }
 
-    private static void checkNumberRange(Integer number) {
+    private static void checkBaseballNumberRange(Integer number) {
         if (number < 1 || number > 10) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void checkDuplicateNumbers(Set<Integer> duplicateNumbers) {
+    private static void checkDuplicateNumbers(String input) {
+        Set<String> duplicateNumbers = new HashSet<>(List.of(input.split("")));
         if (duplicateNumbers.size() != BASEBALL_INPUT_LENGTH) {
             throw new IllegalArgumentException();
         }
