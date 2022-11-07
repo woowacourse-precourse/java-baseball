@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.message.GameProgressMessage;
 import baseball.service.ProgressService;
-import baseball.validation.UserInputValidation;
+import baseball.validation.NumberValidation;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.message.GameProgressMessage.*;
@@ -10,11 +10,11 @@ import static baseball.message.GameProgressMessage.*;
 public class BullsAndCows {
 
     private final ProgressService progressService;
-    private final UserInputValidation userInputValidation;
+    private final NumberValidation validation;
 
     public BullsAndCows() {
         progressService = new ProgressService();
-        userInputValidation = new UserInputValidation();
+        validation = new NumberValidation();
     }
 
     public void playGame() {
@@ -22,7 +22,7 @@ public class BullsAndCows {
         while (!progressService.isEnd()) {
             System.out.println(PROGRESS_MESSAGE);
             String userInput = Console.readLine();
-            userInputValidation.validateUserInput(userInput);
+            validation.validateUserInput(userInput);
 
             String message = progressService.getResultMessageOfGuessNumber(userInput);
             System.out.println(message);

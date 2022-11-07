@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.message.GameProgressMessage;
-import baseball.validation.UserInputValidation;
+import baseball.validation.NumberValidation;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -16,13 +16,13 @@ import static baseball.util.GameCode.*;
 
 public class ProgressService {
 
-    private final UserInputValidation validation;
+    private final NumberValidation validation;
     private ScoreService scoreService;
 
     private boolean endFlag = false;
 
     public ProgressService() {
-        validation = new UserInputValidation();
+        validation = new NumberValidation();
         initProgress();
     }
 

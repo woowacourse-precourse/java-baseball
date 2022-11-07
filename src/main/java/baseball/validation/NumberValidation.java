@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 import static baseball.util.GameCode.*;
 import static baseball.util.RegexCode.*;
 
-public class UserInputValidation {
+public class NumberValidation {
 
-    public UserInputValidation() {
+    public NumberValidation() {
 
     }
 
