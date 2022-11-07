@@ -10,12 +10,13 @@ public class InputException {
     private static final String NOT_NUMBER = "숫자가 아닙니다.";
     private static final String NOT_NUMBER_LENGTH = "숫자의 길이가 맞지 않습니다.";
     private static final String DUPLICATE = "중복된 숫자가 있습니다.";
+    private static final String NUMBER_REGEX = "^[0-9]*$";
 
     private InputException() {
     }
 
     public static void isNumber(String inputNumbers) {
-        if (!Pattern.matches("^[0-9]*$", inputNumbers)) {
+        if (!Pattern.matches(NUMBER_REGEX, inputNumbers)) {
             exception(NOT_NUMBER);
         }
     }
