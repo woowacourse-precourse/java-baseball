@@ -17,7 +17,7 @@ public class Application {
         application.plyerNuber();
     }
 
-
+    //컴퓨터 임의의 숫자 3개
     public List<Integer> create() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -27,12 +27,9 @@ public class Application {
             }
         }
         System.out.println("컴퓨터 숫자= " + computer);
-
         return computer;
-
     }
-
-    // 입력값
+    // 플레이어 입력값
     public List<Integer> plyerNuber() {
         System.out.println("숫자를 입력하세요");
         String userNum = Console.readLine();
@@ -43,7 +40,6 @@ public class Application {
         }
         System.out.println("내 숫자= " + playerNum);
         return playerNum;
-
     }
 }
 

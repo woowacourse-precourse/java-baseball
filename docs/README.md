@@ -15,8 +15,9 @@
   - -Dfile.encoding=UTF-8  <== 추가입력
   - 인텔리제이 재시작
   - 성공
-
-
 2. String 매개변수를 List(Integer)로 전환하기
-
-3. 컴퓨터 숫자와 내 숫자를 비교하는 check() 메소드 만들기
+3. (리팩토링) input 값을 클래스로 만들기 
+4.  computer 숫자와 player 숫자를 비교하는 check() 메소드 만들기
+5.  computer 숫자와 player 숫자를 비교하는 strike()메소드 만들기
+6.  computer 숫자와 player 숫자를 판정하는 referee() 메소드 만들기
+7.  경기 재시작 여부 playAgain() 만들기
