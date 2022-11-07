@@ -20,7 +20,7 @@ public class Application {
             int ball = 0;
 
             System.out.println("숫자를 입력해주세요 : ");
-            String user = getNums();
+            List<Integer> user = getNums();
 
             // 결과 계산 로직
 
@@ -56,7 +56,7 @@ public class Application {
     }
 
     // 사용자 숫자 얻기
-    private static String getNums() {
+    private static List<Integer> getNums() {
         // 예상 숫자 입력
         String str = Console.readLine();
         System.out.println("str = " + str);
@@ -66,6 +66,30 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        return str;
+        // 1 ~ 9의 숫자가 아닌 경우 예외처리
+        List<Integer> nums = new ArrayList<>();
+        nums.add(getInteger(str.charAt(0)));
+        nums.add(getInteger(str.charAt(1)));
+        nums.add(getInteger(str.charAt(2)));
+
+        // 동일한 숫자가 있는 경우 예외처리
+        if (nums.get(0) == nums.get(1) || nums.get(1) == nums.get(2) || nums.get(2) == nums.get(0)) {
+            throw new IllegalArgumentException();
+        }
+
+        return nums;
+    }
+
+    // int 반환 함수
+    private static int getInteger(char word) {
+        char arr[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+        for (int i = 0; i < 9; i++) {
+            if (word == arr[i]) {
+                return i + 1;
+            }
+        }
+
+        throw new IllegalArgumentException();
     }
 }
