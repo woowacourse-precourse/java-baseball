@@ -19,4 +19,15 @@ public class BallsTest {
     Exception exception = assertThrows(IllegalArgumentException.class,()-> new Balls(notThreeBalls));
     assertEquals(exception.getMessage(), INCORRECT_BALL_SIZE.getErrorMessage());
   }
+
+  @Test
+  @DisplayName("숫자가 중복 될 경우 예외 처리 테스트")
+  void 중복_숫자_테스트(){
+    List<Integer> notThreeBalls = new ArrayList<>(Arrays.asList(2, 2, 4));
+    Exception exception = assertThrows(IllegalArgumentException.class,()-> new Balls(notThreeBalls));
+    assertEquals(exception.getMessage(), DUPLICATE_NUMBER.getErrorMessage());
+  }
+
+
+
 }
