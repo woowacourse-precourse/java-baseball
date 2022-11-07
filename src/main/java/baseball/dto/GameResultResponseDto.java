@@ -29,7 +29,7 @@ public class GameResultResponseDto {
         return ball == CRITERION_ZERO;
     }
 
-    public boolean isThreeStrike() {
+    public boolean isGameEndScore() {
         return strike == Player.GAME_ROUND;
     }
 }

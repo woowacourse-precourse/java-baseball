@@ -46,7 +46,7 @@ public class GameController {
 
     private int checkRestart(GameResultResponseDto responseDto) {
         int restart = CRITERION_DEFAULT;
-        if (responseDto.isThreeStrike()) {
+        if (responseDto.isGameEndScore()) {
             OutputView.printGameEnd();
             OutputView.printGameRestart();
             restart = InputView.inputRestart();
