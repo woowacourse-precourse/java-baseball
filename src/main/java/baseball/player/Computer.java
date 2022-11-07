@@ -11,13 +11,24 @@ public class Computer {
   private Set<Integer> computer = new LinkedHashSet<>();
 
   public Computer() {
-    while (getSetSize() < NUMBER_SIZE) {
-      Number randomNumber = new Number();
-      computer.add(randomNumber.getNumber());
-    }
+    init();
+    createRandomThreeDigitNumber();
   }
 
-  public Integer getSetSize(){
+  private void init(){
+    this.computer.clear();
+  }
+
+  private void createRandomThreeDigitNumber() {
+    while (getSetSize() < NUMBER_SIZE) {
+      Number randomNumber = new Number();
+      this.computer.add(randomNumber.getNumber());
+    }
+
+    System.out.println(computer);
+  }
+
+  private Integer getSetSize(){
     return this.computer.size();
   }
 
