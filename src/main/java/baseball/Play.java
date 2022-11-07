@@ -19,7 +19,7 @@ public class Play {
     public static String createThreeNumber() {
         int size = 0;
         String randomNumber = "";
-        while (size > 3) {
+        while (size < 3) {
             randomNumber += Randoms.pickNumberInRange(1, 9);
             if (Exception.isRedundancy(randomNumber)) {
                 randomNumber = randomNumber.substring(0, randomNumber.length()-1);
