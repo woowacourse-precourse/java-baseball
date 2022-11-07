@@ -99,8 +99,18 @@ public class Application {
         return recycle_flag;
     }
 
-    private void close_game() {
+    private boolean is_Close() {
         // 기능 요구사항 6번
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String selectEnd = Console.readLine();
+        if (selectEnd.equals("1")) {
+            return false;
+        } else if (selectEnd.equals("2")) {
+            return true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     private void play() {
@@ -109,7 +119,10 @@ public class Application {
             int maxLength = 3;
             List<String> computerNum = make_RandomNum(maxLength);
             eachGame(maxLength,computerNum);
-            close_game();
+            if (is_Close()) {
+                break;
+            }
+
         }
     }
 
