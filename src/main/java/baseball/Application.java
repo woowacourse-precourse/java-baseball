@@ -41,4 +41,12 @@ public class Application {
             }
         }
     }
+
+    public static List<Integer> StringToIntegerList(String string){
+        List<Integer> integerList = new ArrayList<>();
+        for(int i=0;i<string.length();i++){
+            integerList.add(string.charAt(i)-'0');
+        }
+        return integerList;
+    }
 }
