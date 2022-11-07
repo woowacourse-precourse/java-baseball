@@ -2,22 +2,24 @@ package baseball.util;
 
 import baseball.domain.Game;
 
+import static baseball.util.OutputMessage.*;
+
 public class OutputUtils {
 
     public static void printInitView() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(INIT_GAME.message());
     }
 
     public static void printInputView() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(INPUT_NUMBER.message());
     }
 
     public static void printFinishView() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(EXIT_GAME.message());
     }
 
     public static void printRestartView() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(INPUT_RESTART_OR_EXIT.message());
     }
 
     public static void printGameResultView(Game game) {
