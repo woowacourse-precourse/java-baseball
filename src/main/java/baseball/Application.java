@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 public class Application {
     static BaseBallGame baseBallGame;
+    static RadomNumberCreator radomNumberCreator;
     static InputHandler inputHandler;
     static OutputHandler outputHandler;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -13,11 +14,11 @@ public class Application {
         inputHandler = new InputHandler();
         outputHandler = new OutputHandler();
         baseBallGame = new BaseBallGame();
+        radomNumberCreator = new RadomNumberCreator();
         while (true) {
-            // TODO: 랜덤 수 생성
-            String comNum = "713";
-            // TODO: 사용자 수 입력 - 도메인테스트
+            String comNum = radomNumberCreator.makeRandomNumber();
 
+            // TODO: 사용자 수 입력 - 도메인테스트
             baseBallGame.baseballGame(comNum);
             outputHandler.printRestart_orExit();
             int restart_orExit = inputHandler.getRestartNum();
