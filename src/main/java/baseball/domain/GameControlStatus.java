@@ -4,6 +4,7 @@ public class GameControlStatus {
 
     public static final int RESTART_VALUE = 1;
     public static final int STOP_VALUE = 2;
+    public static final String INVALID_INPUT_MESSAGE = "유효하지 않은 입력입니다.";
 
     private int value;
 
@@ -18,7 +19,7 @@ public class GameControlStatus {
 
     private void validateValue() {
         if(!isValidValue()) {
-            throw new IllegalArgumentException("유효하지 않은 입력입니다.");
+            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
     }
 
