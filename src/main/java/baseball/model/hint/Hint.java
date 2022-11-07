@@ -3,7 +3,7 @@ package baseball.model.hint;
 import java.util.List;
 
 public class Hint {
-    static final int LENGTH = 3;
+    static final int NUMBER_DIGITS = 3;
     static final String NOTHING = "낫싱";
 
     private int ball = 0;
@@ -26,7 +26,7 @@ public class Hint {
     }
 
     public void calculateBall(List<Integer> computer, List<Integer> player) {
-        for (int index = 0; index < LENGTH; index++) {
+        for (int index = 0; index < NUMBER_DIGITS; index++) {
             if (hasNumber(computer, player, index) && !isSameIndex(computer, player, index)) {
                 ball += 1;
             }
@@ -34,7 +34,7 @@ public class Hint {
     }
 
     public void calculateStrike(List<Integer> computer, List<Integer> player) {
-        for (int index = 0; index < LENGTH; index++) {
+        for (int index = 0; index < NUMBER_DIGITS; index++) {
             if (hasNumber(computer, player, index) && isSameIndex(computer, player, index)) {
                 strike += 1;
             }
@@ -42,7 +42,7 @@ public class Hint {
     }
 
     public void isNothing(List<Integer> computer, List<Integer> player) {
-        for (int index = 0; index < LENGTH; index++) {
+        for (int index = 0; index < NUMBER_DIGITS; index++) {
             if (!(hasNumber(computer, player, index))) {
                 nothing = NOTHING;
             }
@@ -64,7 +64,7 @@ public class Hint {
     }
 
     public boolean isEndGame() {
-        if (getStrike() == LENGTH) {
+        if (getStrike() == NUMBER_DIGITS) {
             return true;
         }
         return false;
