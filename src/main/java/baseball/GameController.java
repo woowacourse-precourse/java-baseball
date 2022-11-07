@@ -1,8 +1,6 @@
 package baseball;
 
-import baseball.Input.InputManageable;
 import baseball.Output.Message;
-import baseball.Output.OutputManageable;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -36,7 +34,6 @@ public class GameController {
             if(!randomNumber.contains(randInt)) randomNumber.add(randInt);
         }
 
-        System.out.println("getRandomNumber() = " + getRandomNumber());
     }
 
     public Integer getRandomNumber()

@@ -1,3 +1,6 @@
+chore(GameController) : 사용하지 않는 import 제거
+refactor(Application) : doGame 메소드로 부터 다른 일을 하는 메소드 추출
+docs(CHANGELOG.md) : 커밋 로그 작성 문서 추가
 test(ApplicationTest) : ApplicationTest에 메인 로직 테스트 코드 추가
 chore(Message) : 메세지 형식 변경
 feat(Application,GameController) : 게임의 메인 로직 추가
