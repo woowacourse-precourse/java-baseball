@@ -48,6 +48,21 @@ public class Application {
     }
 
     private static String countBall(List<Integer> computer, List<Integer> inputNumbers) {
-        return " ";
+        int balls = 0;
+        for (int i = 0; i < 3; i++) {
+            Integer inputNumber = inputNumbers.get(i);
+            if (!computer.get(i).equals(inputNumber) && computer.contains(inputNumber)) {
+                balls++;
+            }
+        }
+        return setBallComment(balls);
+    }
+
+    private static String setBallComment(int balls) {
+        String ballComment = String.format("%d볼 ",balls);
+        if (balls == 0) {
+            ballComment = "";
+        }
+        return ballComment;
     }
 }
