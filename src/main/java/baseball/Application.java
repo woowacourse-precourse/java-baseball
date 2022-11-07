@@ -151,8 +151,6 @@ public class Application {
             trialNum = tryAnswer();
             trialDigits = getThreeDigitsValues(trialNum);
         }
-
-        printGameEnd();
     }
 
     public static int restartOrNot(){
