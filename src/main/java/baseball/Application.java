@@ -16,7 +16,7 @@ public class Application {
     private static String result = null;
     private static Integer strike = 0;
     private static Integer ball = 0;
-    
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -25,6 +25,7 @@ public class Application {
             start_game();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
+            // either restart the game or terminates the program
             if (input.equals("1"))
                 continue;
             else if (input.equals("2"))
@@ -35,6 +36,7 @@ public class Application {
     }
 
     private static void start_game() {
+        // generate unique 3-digit random number
         target = new ArrayList<>();
         while (target.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -43,6 +45,7 @@ public class Application {
             }
         }
 
+        // keep guessing if fails
         while (true) {
             read();
             check();
@@ -52,6 +55,7 @@ public class Application {
         }
     }
 
+    // check read unique 3-digit numbers from user
     private static void read() {
         duplicate = new HashSet<>();
         user = new ArrayList<>();
@@ -70,6 +74,7 @@ public class Application {
         }
     }
 
+    // form up the string to inform user the result of guessing
     private static void check() {
         result = "";
         check_strike();
@@ -88,9 +93,9 @@ public class Application {
         result += '\n';
     }
 
+    // check strike count
     private static void check_strike() {
         strike = 0;
-        // check strike
         for (int i = 0; i < 3; ++i) {
             if (target.get(i).equals(user.get(i))) {
                 strike++;
@@ -100,6 +105,7 @@ public class Application {
         }
     }
 
+    // check ball count
     private static void check_ball() {
         ball = 0;
         for (int i = 0; i < 3; ++i) {
@@ -113,6 +119,7 @@ public class Application {
         }
     }
 
+    // throw uncaught exception
     private static void invalid() {
         throw new IllegalArgumentException();
     }
