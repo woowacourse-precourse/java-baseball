@@ -26,4 +26,9 @@ public class Validator {
         if(size != NUMBER_LENGTH)
             throw new IllegalArgumentException(WRONG_NUMBER);
     }
+
+    public void isRightNumber(String numbers) {
+        if(!Pattern.matches(NUMBER_PATTERN,numbers))
+            throw new IllegalArgumentException(WRONG_NUMBER);
+    }
 }
