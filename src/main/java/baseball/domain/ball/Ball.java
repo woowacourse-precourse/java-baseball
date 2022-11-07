@@ -1,19 +1,28 @@
-package baseball.domain;
+package baseball.domain.ball;
 
 import java.util.Objects;
 
 public class Ball {
 
+    private static final int BALL_MIN_RANGE = 1;
+    private static final int BALL_MAX_RANGE = 9;
     private final int position;
     private final int number;
 
-    public Ball(int number, int position) {
+    private Ball(int number, int position) {
+        validate(number);
         this.number = number;
         this.position = position;
     }
 
     public static Ball of(int number, int position) {
         return new Ball(number, position);
+    }
+
+    private void validate(int number) {
+        if ( BALL_MIN_RANGE > number || number > BALL_MAX_RANGE){
+            throw new IllegalArgumentException();
+        }
     }
 
     public BallType play(Ball ball) {
