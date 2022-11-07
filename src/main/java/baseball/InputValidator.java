@@ -12,6 +12,7 @@ public class InputValidator {
     private static final String INVALID_NUMBER_EXCEPTION_MESSAGE =
             BEGIN_NUMBER_RANGE + "부터 " + END_NUMBER_RANGE + "까지 서로 다른 수로 이루어진 " + MAX_NUMBER_OF_DIGITS
                     + "자리의 숫자를 입력해야 합니다.";
+    private static final String INVALID_USER_ANSWER_EXCEPTION_MESSAGE = "잘못된 명령어를 입력하셨습니다.";
 
     public static void validateNumber(String inputValue) {
         checkNonNumericValue(inputValue);
@@ -50,5 +51,9 @@ public class InputValidator {
 
     private static boolean isNumber(String inputValue) {
         return inputValue.chars().allMatch(Character::isDigit);
+    }
+
+    public static void executeUserAnswerException() {
+        throw new IllegalArgumentException(INVALID_USER_ANSWER_EXCEPTION_MESSAGE);
     }
 }
