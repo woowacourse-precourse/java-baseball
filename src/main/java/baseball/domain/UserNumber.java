@@ -1,12 +1,10 @@
-package baseball.number;
+package baseball.domain;
 
 import baseball.excpetion.NumberException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserNumber {
     private NumberException numberException;

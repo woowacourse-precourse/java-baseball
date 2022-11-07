@@ -1,16 +1,13 @@
-package baseball.play;
+package baseball;
 
 import baseball.excpetion.NumberException;
-import baseball.number.ComputerNumber;
-import baseball.number.UserNumber;
+import baseball.domain.ComputerNumber;
+import baseball.domain.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.lang.ref.PhantomReference;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class Play {
+public class GamePlay {
     public static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String STRIKE_MESSAGE = "스트라이크";
@@ -26,7 +23,7 @@ public class Play {
     private NumberException numberException;
     private int strike =0;
 
-    public Play(){
+    public GamePlay(){
         computerNumber = new ComputerNumber();
         userNumber = new UserNumber();
         numberException = new NumberException();
