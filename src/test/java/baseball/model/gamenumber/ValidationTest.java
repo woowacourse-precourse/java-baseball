@@ -102,10 +102,22 @@ class ValidationTest {
     void 재시작_입력_유효성_확인() {
         // given
         String inputError = "3";
+        String inputEmpty = "";
+        String inputTwoDigit1 = "12";
+        String inputTwoDigit2 = "21";
 
         //then
         assertThatThrownBy(() -> {
             validation.isValidateReplayInput(inputError);
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            validation.isValidateReplayInput(inputEmpty);
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            validation.isValidateReplayInput(inputTwoDigit1);
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> {
+            validation.isValidateReplayInput(inputTwoDigit2);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
