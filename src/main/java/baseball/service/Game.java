@@ -50,5 +50,12 @@ public class Game {
         user.updateStatus(usersStatus);
     }
 
+    private void endGame() {
+        if (computer.isThreeStrike()) {
+            PrintConsole.endGame();
+            choiceRestartOrEnd();
+        }
+    }
+
 
 }
