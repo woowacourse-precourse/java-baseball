@@ -28,7 +28,7 @@ public class GameInit {
     // 게임이 끝났는지 물어보는 함수
     public boolean isGameEnd(){
         if(strikeCount == MAX_COUNT){
-            PrintMessage.answerMessage();
+            PrintMessage.resultMessage();
             PrintMessage.gameContinueMessage();
             if(ValidCheck.isContinueGame(Console.readLine())){
                 computerAnswer = CreateRandomNumber.getComputerAnswer();

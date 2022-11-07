@@ -24,7 +24,7 @@ public class PrintMessage {
         if(strikeCount == 0 && ballCount == 0)
             System.out.println(NOTHING);
     }
-    public static void answerMessage() {
+    public static void resultMessage() {
         System.out.println(END_MESSAGE);
     }
     public static void gameContinueMessage(){

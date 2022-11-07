@@ -22,7 +22,7 @@ class PrintMessageTest {
     }
 
     @Test
-    void inputMessage() {
+    void requestInputMessage() {
         ByteArrayOutputStream outPut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outPut));
         PrintMessage.requestInputMessage();
@@ -63,10 +63,10 @@ class PrintMessageTest {
         assertThat(outPut.toString()).isEqualTo("2볼 1스트라이크\n");
     }
     @Test
-    void answerMessage() {
+    void resultMessage() {
         ByteArrayOutputStream outPut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outPut));
-        PrintMessage.answerMessage();
+        PrintMessage.resultMessage();
         String input = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
         assertThat(outPut.toString()).isEqualTo(input);
     }
