@@ -41,13 +41,13 @@ public class BaseBallGame {
     }
 
     public int isEqualToComputerNumber() {
-        if (computer.getFirstRandomNumber() != (int)userNumber.charAt(0)) {
+        if (computer.getFirstRandomNumber() != Character.getNumericValue(userNumber.charAt(0))) {
             return 0;
         }
-        if (computer.getSecondRandomNumber() != (int)userNumber.charAt(1)) {
+        if (computer.getSecondRandomNumber() != Character.getNumericValue(userNumber.charAt(1))) {
             return 0;
         }
-        if (computer.getThirdRandomNumber() != (int)userNumber.charAt(2)) {
+        if (computer.getThirdRandomNumber() != Character.getNumericValue(userNumber.charAt(2))) {
             return 0;
         }
         return 1;
