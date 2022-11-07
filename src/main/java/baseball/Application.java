@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Application {
     private static void gameStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
     private static List<Integer> makeRandomAnswer(){
         List<Integer> computer = new ArrayList<>();
 
@@ -26,5 +28,38 @@ public class Application {
         }
 
         return computer;
+    }
+
+    public static void exceptionCheck(String input){
+        int asciiNumberZero = 48;
+        int asciiNumberNine = 57;
+
+        // 숫자의 개수가 3개가 아닌경우
+        if(input.length() != 3){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        // 0을 입력한 경우
+        if(input.contains("0")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+        // 숫자가 아닌것을 입력한 경우
+        for(int i = 0; i < 3; i++){
+
+            if((int)input.charAt(i) < asciiNumberZero || asciiNumberNine < (int)input.charAt(i)){
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+
+        }
+        // 중복된 숫자를 입력한 경우
+        int i = 0;
+
+        for(i = 0; i < 2; i++){
+
+            if(input.charAt(i) == input.charAt(i+1)){
+                throw new IllegalArgumentException("잘못된 입력입니다.");
+            }
+
+        }
+
     }
 }
