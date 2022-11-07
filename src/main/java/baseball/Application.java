@@ -21,6 +21,7 @@ public class Application {
 	public static void playGame(List<Integer> computerNumbers) {
 
 		List<Integer> playerNumbers;
+
 		playerNumbers = getPlayerNumbers();
 
 		int strike = sumStrike(computerNumbers, playerNumbers);
@@ -83,18 +84,21 @@ public class Application {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 		String result = Console.readLine();
-		if (result == "1") {
+		
+		// ㅜ false
+		// System.out.println(input == "1");
+		
+		if (result.equals("1")) {
 
 			List<Integer> computerNumbers = getComputerNumbers();
 			playGame(computerNumbers);
 		}
 
-		else if (result == "2") {
+		else if (result.equals("2")) {
 			return;
 		}
 
 		else {
-			System.out.println("게임 종료");
 			throw new IllegalArgumentException();
 		}
 	}
@@ -117,12 +121,11 @@ public class Application {
 
 		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
-
+		
 		boolean isNumeric = isNumeric(input);
 		boolean isSameLength = input.length() == LENGTH;
 		if (!isNumeric || !isSameLength) {
 
-			System.out.println("게임 종료");
 			throw new IllegalArgumentException();
 		}
 
@@ -136,7 +139,6 @@ public class Application {
 			boolean isOverlap = playerNumbers.contains(number);
 			if (isZero || isOverlap) {
 
-				System.out.println("게임 종료");
 				throw new IllegalArgumentException();
 			}
 
