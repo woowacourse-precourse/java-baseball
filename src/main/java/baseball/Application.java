@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -52,6 +53,20 @@ public class Application {
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static HashMap Strike_or_Ball_Judge(List<Integer> Input, List<Integer> Answer) {
+        HashMap<String, Integer> Strike_or_Ball = new HashMap<>();
+        Strike_or_Ball.put("스트라이크", 0);
+        Strike_or_Ball.put("볼", 0);
+        for (int Index = 0; Index < 3; Index++) {
+            if (Input.get(Index) == Answer.get(Index)) {
+                Strike_or_Ball.put("스트라이크", Strike_or_Ball.get("스트라이크") + 1);
+            } else if (Input.get(Index) != Answer.get(Index) && Answer.contains(Input.get(Index))) {
+                Strike_or_Ball.put("볼", Strike_or_Ball.get("볼") + 1);
+            }
+        }
+        return Strike_or_Ball;
     }
     public static void main(String[] args) {
 
