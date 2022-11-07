@@ -4,6 +4,8 @@ import baseball.model.domain.HintDto;
 import baseball.model.domain.NumberDto;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 import static baseball.model.Constant.*;
@@ -27,9 +29,10 @@ public class GameController {
     }
 
     public GameController calculateHint() {
-        hint.setHint(Arrays.asList(
-                countBall(),
-                countStrike()));
+        List<Integer> result = Arrays.asList(0, 0);
+        result.set(BALL_INDEX, countBall());
+        result.set(STRIKE_INDEX, countStrike());
+        hint.setHint(result);
         return this;
     }
 
@@ -68,18 +71,47 @@ public class GameController {
     }
 
     private int countBall() {
-        return 0;
+        int count = 0;
+
+        if (!Objects.equals(userNumber.getNumber().get(0), computerNumber.getNumber().get(0))
+                && (Objects.equals(userNumber.getNumber().get(0), computerNumber.getNumber().get(1))
+                || Objects.equals(userNumber.getNumber().get(0), computerNumber.getNumber().get(2)))) {
+            count++;
+        }
+        if (!Objects.equals(userNumber.getNumber().get(1), computerNumber.getNumber().get(1))
+                && (Objects.equals(userNumber.getNumber().get(1), computerNumber.getNumber().get(2))
+                || Objects.equals(userNumber.getNumber().get(1), computerNumber.getNumber().get(0)))) {
+            count++;
+        }
+        if (!Objects.equals(userNumber.getNumber().get(2), computerNumber.getNumber().get(2))
+                && (Objects.equals(userNumber.getNumber().get(2), computerNumber.getNumber().get(0))
+                || Objects.equals(userNumber.getNumber().get(2), computerNumber.getNumber().get(1)))) {
+            count++;
+        }
+        return count;
     }
 
     private int countStrike() {
-        return (int) userNumber
-                .getNumber()
-                .stream()
-                .filter(user ->
-                        computerNumber
-                                .getNumber()
-                                .stream()
-                                .anyMatch(Predicate.isEqual(user)))
-                .count();
+//        return (int) userNumber
+//                .getNumber()
+//                .stream()
+//                .filter(user -> computerNumber
+//                        .getNumber()
+//                        .stream()
+//                        .allMatch(Predicate.isEqual(user)))
+//                .count();
+
+        int count = 0;
+
+        if (Objects.equals(userNumber.getNumber().get(0), computerNumber.getNumber().get(0))) {
+            count++;
+        }
+        if (Objects.equals(userNumber.getNumber().get(1), computerNumber.getNumber().get(1))) {
+            count++;
+        }
+        if (Objects.equals(userNumber.getNumber().get(2), computerNumber.getNumber().get(2))) {
+            count++;
+        }
+        return count;
     }
 }
