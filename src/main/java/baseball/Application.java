@@ -47,9 +47,7 @@ public class Application {
 
             while (strike != 3) {
                 String inputData = Console.readLine();
-                if (inputData.length() != 3){
-                    throw new IllegalArgumentException("입력 값이 잘못되었습니다.");
-                }
+                checkValid(inputData);
 
 //        입력 값과 정답 비교
                 strike = findStrikes(inputData, computer);
@@ -62,6 +60,12 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                     "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             stateOfGame = Integer.parseInt(Console.readLine());
+        }
+    }
+
+    private static void checkValid(String inputData) {
+        if (inputData.length() != 3){
+            throw new IllegalArgumentException("입력 값이 잘못되었습니다.");
         }
     }
 
