@@ -3,7 +3,7 @@ package baseball.console.input.converter;
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.EachInputNumberOutOfRangeException;
 import baseball.exception.InputNumberOutOfRangeException;
-import baseball.exception.IllegalNumberInputException;
+import baseball.exception.BaseballException;
 import baseball.exception.InputNumberFormatException;
 
 import java.util.HashSet;
@@ -16,7 +16,7 @@ public class ThreeNumberConverter {
     private static final int NUMBER_RANGE_SIZE = 3;
     private String inputString;
     
-    public List<Integer> getThreeNumbers(String inputString) throws IllegalNumberInputException {
+    public List<Integer> getThreeNumbers(String inputString) throws BaseballException {
         this.inputString = inputString;
         List<Integer> threeNumbers = getThreeNumbersByInputString();
         validateIntegerList(threeNumbers);
