@@ -58,5 +58,17 @@ public class Application {
 
         return user;
     }
+
+    static void printResult(List<Integer> computer, List<Integer> user) throws IllegalArgumentException {
+        int strike = 0, ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (computer.get(i).equals(user.get(i))) {
+                strike++;
+            } else if (user.contains(computer.get(i))) {
+                ball++;
+            }
+        }
+    }
 }
 
