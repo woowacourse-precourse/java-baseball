@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static baseball.Exception.*;
+
 public class Application {
     static List<Integer> computerBall = makeRandomBall();
     static boolean restart = false;
@@ -36,11 +38,14 @@ public class Application {
     }
 
     public static List<Integer> StringToIntList(String user){
+        isNumber(user);
         List<Integer> userBall = new ArrayList<>();
 
         for(int i = 0; i < user.length(); i++){
             userBall.add(user.charAt(i) - '0');
         }
+        isOverThreeDigit(userBall);
+        isSameNum(userBall);
 
         return userBall;
     }
