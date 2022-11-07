@@ -17,14 +17,6 @@ public class UserBall {
 		return new UserBall(0, 0);
 	}
 
-	public Integer getBall() {
-		return ball;
-	}
-
-	public Integer getStrike() {
-		return strike;
-	}
-
 	public String getStatus() {
 		return status;
 	}

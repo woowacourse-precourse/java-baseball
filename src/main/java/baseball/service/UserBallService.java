@@ -27,7 +27,7 @@ public class UserBallService {
 			.limit(ViewConst.INPUT_NUM_LENGTH)
 			.filter(i -> userInputNumList.get(i).equals(answerNumber.get(i)))
 			.count();
-		userBall.updateStrikeCount(userBall.getStrike() + strikeCount);
+		userBall.updateStrikeCount(strikeCount);
 	}
 
 	private void updateBallCount(List<Integer> answerNumber, List<Integer> userInputNumList, UserBall userBall) {
@@ -36,7 +36,7 @@ public class UserBallService {
 			.filter(i -> !userInputNumList.get(i).equals(answerNumber.get(i)) && userInputNumList.contains(
 				answerNumber.get(i)))
 			.count();
-		userBall.updateBallCount(userBall.getBall() + ballCount);
+		userBall.updateBallCount(ballCount);
 	}
 
 }
