@@ -43,7 +43,6 @@ public final class PlayerInput extends Digits {
         return result;
     }
 
-
     private void appendIfNotExist(Digit digit) {
         if (contains(digit)) {
             throw new IllegalArgumentException(INPUT_DUPLICATE);

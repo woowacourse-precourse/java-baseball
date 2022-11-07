@@ -52,7 +52,6 @@ final class ScoreCalculator {
         return computer.contains(player.getDigitInIndex(index));
     }
 
-
     public Strike getStrike() {
         return Strike.from(IntStream.range(0, BASEBALL_NUMBER_LENGTH)
                 .reduce(0, this::updateTotalStrikeCount));

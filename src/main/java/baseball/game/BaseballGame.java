@@ -78,7 +78,6 @@ public final class BaseballGame implements Game {
         outputView.print(LINE_FEED);
     }
 
-
     private void printBall(Score score) {
         if (score.isOneBall()) {
             outputView.print(ONE_BALL);
