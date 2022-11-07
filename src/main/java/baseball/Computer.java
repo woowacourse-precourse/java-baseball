@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class Computer {
@@ -19,6 +20,22 @@ public class Computer {
 
     private void init() {
         answer = Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, ANSWER_LENGTH);
+    }
+
+    public Result compareAnswer(List<Integer> playerAnswer) {
+        validateAnswer(playerAnswer);
+
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int index = 0; index < playerAnswer.size(); index++) {
+            if (Objects.equals(answer.get(index), playerAnswer.get(index))) {
+                strikeCount += 1;
+            } else if (answer.contains(playerAnswer.get(index))) {
+                ballCount += 1;
+            }
+        }
+        return new Result(strikeCount, ballCount);
     }
 
     private void validateAnswer(List<Integer> answer) {
