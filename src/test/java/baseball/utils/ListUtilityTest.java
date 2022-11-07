@@ -23,7 +23,7 @@ class ListUtilityTest {
         @ParameterizedTest
         @MethodSource("parameterProvider")
         void setZero(int number, List<Integer> expected) {
-            assertThat(Utility.splitDigitsIntoList(number)).isEqualTo(expected);
+            assertThat(ListUtility.splitDigitsIntoList(number)).isEqualTo(expected);
         }
 
         private Stream<Arguments> parameterProvider() {
@@ -41,7 +41,7 @@ class ListUtilityTest {
         @ParameterizedTest
         @CsvSource(value = {"123, false", "223, true", "222, true", "139, false"})
         void checkDuplicatedChar(String stringNumber, boolean expected) {
-            assertThat(Utility.hasDuplicatedChar(stringNumber)).isEqualTo(expected);
+            assertThat(StringUtility.hasDuplicatedChar(stringNumber)).isEqualTo(expected);
         }
     }
 
@@ -51,7 +51,7 @@ class ListUtilityTest {
         @ParameterizedTest
         @MethodSource("parameterProvider")
         void checkDistinctCountInIntegerListTest(List<Integer> list, int expected) {
-            assertThat(Utility.getDistinctCountInIntegerList(list)).isEqualTo(expected);
+            assertThat(ListUtility.getDistinctCountInIntegerList(list)).isEqualTo(expected);
         }
 
         private Stream<Arguments> parameterProvider() {
@@ -70,7 +70,7 @@ class ListUtilityTest {
         @ParameterizedTest
         @MethodSource("parameterProvider")
         void checkMergeDistinctIntegerInList(List<Integer> list, int expected) {
-            assertThat(Utility.mergeDistinctIntegerInList(list)).isEqualTo(expected);
+            assertThat(ListUtility.mergeDistinctIntegerInList(list)).isEqualTo(expected);
         }
 
         private Stream<Arguments> parameterProvider() {
