@@ -19,7 +19,13 @@ public class Application {
      */
     public static String getUserInput() {
         System.out.print("숫자를 입력해주세요: ");
-        return readLine();
+        String userInput = readLine();
+
+        if (!validateAnswerFormat(userInput)) {
+            throw new IllegalArgumentException();
+        }
+
+        return userInput;
     }
 
     /**
