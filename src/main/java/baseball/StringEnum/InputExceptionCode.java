@@ -13,13 +13,15 @@ public enum InputExceptionCode {
     NOT_3_NUMBERS {
         @Override
         public String toString() {
-            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", Ball.MIN.getValue(), Ball.MAX.getValue(), Ball.COUNT.getValue());
+            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", Ball.MIN.getValue(), Ball.MAX.getValue(),
+                    Ball.COUNT.getValue());
         }
     },
     NOT_IN_RANGE {
         @Override
         public String toString() {
-            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", Ball.MIN.getValue(), Ball.MAX.getValue(), Ball.COUNT.getValue());
+            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", Ball.MIN.getValue(), Ball.MAX.getValue(),
+                    Ball.COUNT.getValue());
         }
     },
     DUPLICATE_NUMBER {
@@ -31,7 +33,8 @@ public enum InputExceptionCode {
     NOT_RESTART_NUMBER {
         @Override
         public String toString() {
-            return String.format("새로 시작 (%d), 종료 (%d) 중 하나 만을 입력 할 수 있습니다.", Restart.RESTART.getValue(), Restart.END.getValue());
+            return String.format("새로 시작 (%d), 종료 (%d) 중 하나 만을 입력 할 수 있습니다.", Restart.RESTART.getValue(),
+                    Restart.END.getValue());
         }
     }
 

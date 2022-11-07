@@ -25,7 +25,8 @@ public enum Game {
     RESTART {
         @Override
         public String toString() {
-            return String.format("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.", Restart.RESTART.getValue(), Restart.END.getValue());
+            return String.format("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.", Restart.RESTART.getValue(),
+                    Restart.END.getValue());
         }
     }
 
