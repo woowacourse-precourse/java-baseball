@@ -11,7 +11,7 @@ public class PrintMessage {
     public static void startMessage(){
         System.out.println(START_MESSAGE);
     }
-    public static void inputMessage(){
+    public static void requestInputMessage(){
         System.out.print(INPUT_MESSAGE);
     }
     public static void ballStrikeMessage(int ballCount, int strikeCount){

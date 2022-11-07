@@ -17,7 +17,7 @@ public class GameInit {
 
     //게임을 시작하는 함수
     public void playBaseballGame(){
-        PrintMessage.inputMessage();
+        PrintMessage.requestInputMessage();
         List<Integer> userAnswer = CreateUserNumber.userAnswer(Console.readLine());
         ValidCheck.validInputNumber(userAnswer);
         strikeCount = GetGameResult.countStrike(userAnswer, computerAnswer);

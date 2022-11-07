@@ -25,7 +25,7 @@ class PrintMessageTest {
     void inputMessage() {
         ByteArrayOutputStream outPut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outPut));
-        PrintMessage.inputMessage();
+        PrintMessage.requestInputMessage();
         String input = "숫자를 입력해주세요 : ";
         assertThat(outPut.toString()).isEqualTo(input);
     }
