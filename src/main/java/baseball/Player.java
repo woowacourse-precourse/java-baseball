@@ -9,12 +9,13 @@ public class Player {
   private static final int MAX_SIZE = 3;
   public Player(){};
 
-  public ArrayList<Integer> decideNumbers(String input){
+  public void decideNumbers(String input){
     System.out.print("숫자를 입력해주세요 : ");
     //String input = Console.readLine();
     validateConsistsOfNumber(input);
     validateNumberLength(input);
     addNumber(input);
+    validateOverlap();
   }
 
   public void addNumber(String input){
@@ -25,11 +26,6 @@ public class Player {
       if(!this.numbers.contains(number)){
         this.numbers.add(number);
       }
-    }
-
-    if(this.numbers.size() != MAX_SIZE){
-      System.out.println(this.numbers);
-      throw new IllegalArgumentException("중복된 숫자가 있으면 안됩니다.");
     }
   }
 
@@ -45,6 +41,12 @@ public class Player {
   public void validateNumberLength(String input){
     if(input.length() != MAX_SIZE){
       throw new IllegalArgumentException("3개의 숫자만 입력할 수 있습니다.");
+    }
+  }
+
+  public void validateOverlap(){
+    if(this.numbers.size() != MAX_SIZE){
+      throw new IllegalArgumentException("중복된 숫자가 있으면 안됩니다.");
     }
   }
 }
