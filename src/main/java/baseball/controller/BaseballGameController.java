@@ -11,45 +11,37 @@ public class BaseballGameController {
 
     private final BaseballGameService baseballGameService = new BaseballGameService();
 
-    public void start() {
-        GameScreen.printGameStart();
-        run();
-    }
-
     public void run() {
-        newGame();
-        playGame();
-        askRetryGame();
+        GameScreen.printGameStart();
+        start();
     }
 
-    public void newGame() {
-        String playerInputNumbers = receiveInput();
+    public void start() {
+        GameScreen.printUserInput();
+        String playerInputNumbers = Console.readLine();
         baseballGameService.newGame(playerInputNumbers);
+        play();
     }
 
-    public void playGame() {
-        boolean isGameClear = false;
-        while (!isGameClear) {
-            isGameClear = guessNumber();
+    public void play() {
+        boolean isClear = false;
+        while (!isClear) {
+            isClear = guessNumber();
         }
         GameScreen.printGameEnd();
+        askRestart();
     }
 
     public boolean guessNumber() {
-        String playerInputNumbers = receiveInput();
+        GameScreen.printUserInput();
+        String playerInputNumbers = Console.readLine();
         GameResult gameResult = baseballGameService.playGame(playerInputNumbers);
         GameScreen.printGameResult(gameResult);
 
         return gameResult.isAllStrike();
     }
 
-    private String receiveInput() {
-        GameScreen.printUserInput();
-
-        return Console.readLine();
-    }
-
-    private void askRetryGame() {
+    private void askRestart() {
         GameScreen.printAskNewGame();
         int playerPressKey = Integer.parseInt(Console.readLine());
 
@@ -57,7 +49,7 @@ public class BaseballGameController {
             throw new IllegalArgumentException();
         }
         if (playerPressKey == NEW_GAME) {
-            newGame();
+            start();
         }
     }
 }
