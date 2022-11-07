@@ -98,12 +98,13 @@ public class BaseBallGame {
         }
     }
 
-    public void setRestartToken() {
+    public void setRestartToken() throws IllegalArgumentException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         restartToken = Console.readLine();
+        isRightRestartToken();
     }
 
-    public void play() {
+    public void play() throws IllegalArgumentException{
         computer.setRandomNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
