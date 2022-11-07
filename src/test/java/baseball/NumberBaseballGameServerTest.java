@@ -12,8 +12,19 @@ import org.junit.jupiter.api.Test;
 class NumberBaseballGameServerTest {
 
     @Nested
+    @DisplayName("숫자야구게임의 흐름과 순서 관리 기능")
+    class RunTest extends NsTest {
+
+        @Override
+        protected void runMain() {
+            new NumberBaseballGameServer().run();
+        }
+    }
+
+    @Nested
     @DisplayName("1~9의 서로 다른 숫자 3개로 이뤄진 숫자 생성 기능")
     class MakeNewGameNumberTest {
+
         @Test
         void 게임숫자는_3자리의_숫자입니다() {
             List<Integer> gameNumberList = new NumberBaseballGameServer().makeNewGameNumber();
@@ -39,6 +50,7 @@ class NumberBaseballGameServerTest {
     @Nested
     @DisplayName("플레이어 입력숫자를 게임숫자로 결과 판정 기능")
     class JudgeInputNumberTest {
+
         @Test
         void 플레이어_숫자_판정결과는_2스트라이크가_맞습니다() {
             List<Integer> gameNumberList = List.of(2, 3, 9);
