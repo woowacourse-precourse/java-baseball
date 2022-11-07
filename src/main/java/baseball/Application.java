@@ -30,6 +30,22 @@ public class Application {
         return strikeIndex;
     }
 
+    public static int checkBall (List<Integer> generatedNumber, List<Integer> userNumber, List<Integer> indexOfStrike){
+        List<Integer> standardNumber = new ArrayList<>(generatedNumber);
+        List<Integer> inputNumber = new ArrayList<>(userNumber);
+        List<Integer> strikeIndex = new ArrayList<>(indexOfStrike);
+        int count = 0;
+        for(int listIndex=0; listIndex < 3; listIndex++){
+            if(standardNumber.contains(inputNumber.get(listIndex))){
+                count += 1;
+            }
+            if(strikeIndex.contains(listIndex)){
+                count -= 1;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
