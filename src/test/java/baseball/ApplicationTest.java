@@ -47,13 +47,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 컴퓨터_숫자생성_확인() {
-        Computer computer = new Computer();
-        List<Integer> integers = computer.initRandomNumber();
-        Assertions.assertEquals(3, integers.size());
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
