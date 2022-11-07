@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -14,12 +17,12 @@ public class Game {
 
     public static void startGame() {
         System.out.println(GAME_START_MESSAGE);
-        List<Integer> randomNumber = RandomNumber.generateRandomNumberBySize();
+        List<Integer> randomNumber = generateRandomNumberBySize();
         System.out.println(randomNumber); // DEBUG
         boolean isFinish = false;
         while (!isFinish) {
             List<Integer> playerNumber = PlayerInput.inputPlayerNumber();
-            isFinish = GameController.calculateHint(randomNumber, playerNumber);
+            isFinish = HintCalculator.calculateHint(randomNumber, playerNumber);
         }
         System.out.println(GAME_CORRECT_MESSAGE);
         restartGame();
@@ -37,6 +40,21 @@ public class Game {
 
     private static void terminateGame() {
         System.out.println(GAME_TERMINATE_MESSAGE);
+    }
+
+    private static int generateRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
+    }
+
+    public static List<Integer> generateRandomNumberBySize() {
+        List<Integer> randomNumber = new ArrayList<>();
+        while (randomNumber.size() < Game.NUMBER_SIZE) {
+            int tempRandomNumber = generateRandomNumber();
+            if (!randomNumber.contains(tempRandomNumber)) {
+                randomNumber.add(tempRandomNumber);
+            }
+        }
+        return randomNumber;
     }
 }
 

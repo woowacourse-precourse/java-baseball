@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class GameController {
+public class HintCalculator {
 
     private static boolean isBall(int number, List<Integer> playerNumber) {
         return playerNumber.contains(number);
@@ -34,6 +34,6 @@ public class GameController {
                 }
             }
         }
-        return GameResult.printHint(ball, strike);
+        return HintOutput.printHint(ball, strike);
     }
 }
