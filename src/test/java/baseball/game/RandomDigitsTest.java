@@ -9,7 +9,7 @@ public class RandomDigitsTest {
     @DisplayName("생성시 랜덤값으로 초기화됨")
     @Test
     void 랜덤_생성() {
-        RandomDigits randomDigits = RandomDigits.createRandom();
+        Digits randomDigits = RandomDigits.createRandom();
         assertThat(randomDigits.size()).isEqualTo(3);
         Digit first = randomDigits.getDigitInIndex(0);
         Digit second = randomDigits.getDigitInIndex(1);

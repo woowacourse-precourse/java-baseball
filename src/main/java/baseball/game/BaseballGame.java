@@ -19,7 +19,7 @@ import static baseball.config.GameConstants.TWO_STRIKE;
  * 컨트롤러에서 동작할 수 있는 게임입니다
  */
 public final class BaseballGame implements Game {
-    public static final String LINE_FEED = "\n";
+    private static final String LINE_FEED = "\n";
     private final InputView inputView;
     private final OutputView outputView;
     private final ErrorView errorView;
@@ -43,10 +43,10 @@ public final class BaseballGame implements Game {
     @Override
     public void play() {
         Score score = Score.ZERO();
-        RandomDigits computerAnswer = RandomDigits.createRandom();
+        Digits computerAnswer = RandomDigits.createRandom();
 
         while (!score.isThreeStrike()) {
-            PlayerInput playerChoice = getPlayerInput();
+            Digits playerChoice = getPlayerInput();
             score = Score.calculate(playerChoice, computerAnswer);
             printScore(score);
         }
@@ -54,7 +54,7 @@ public final class BaseballGame implements Game {
     }
 
 
-    private PlayerInput getPlayerInput() {
+    private Digits getPlayerInput() {
         try {
             printInputMessage();
             String inputLine = inputView.readLine();

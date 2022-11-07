@@ -26,6 +26,7 @@ public final class PlayerInput extends Digits {
      * @param value 사용자의 입력을 통해 만들어진 정수
      * @return 조건에 맞는 경우 PlayerInput객체를 반환함
      */
+    public static Digits from(int value) {
         return new PlayerInput(value);
     }
 
