@@ -21,7 +21,7 @@ public class ConsoleView {
     }
 
     public void printSuccessMessage() {
-        System.out.print(SUCCESS_MESSAGE);
+        System.out.println(SUCCESS_MESSAGE);
     }
 
     public void printRestartMessage() {
