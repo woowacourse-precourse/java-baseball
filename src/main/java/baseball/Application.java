@@ -59,4 +59,58 @@ public class Application {
 
         return true;
     }
+
+    public static StrikeBallResult comparePlayerAndComputer(List<Integer> player , List<Integer> computer){
+        StrikeBallResult strikeBallResult = new StrikeBallResult();
+
+        int playerUnits = player.get(0);
+        int computerUnits = computer.get(0);
+        int playerTens = player.get(1);
+        int computerTens = computer.get(1);
+        int playerHundreds = player.get(2);
+        int computerHundreds = computer.get(2);
+
+        if(playerUnits == computerUnits)
+            strikeBallResult.strike();
+        else if(playerUnits == computerTens || playerUnits == computerHundreds)
+            strikeBallResult.ball();
+
+        if(playerTens == computerTens)
+            strikeBallResult.strike();
+        else if(playerTens == computerUnits || playerTens == computerHundreds)
+            strikeBallResult.ball();
+
+        if(playerHundreds == computerHundreds)
+            strikeBallResult.strike();
+        else if(playerHundreds == computerTens || playerHundreds == computerUnits)
+            strikeBallResult.ball();
+
+        return strikeBallResult;
+    }
+
+    public static class StrikeBallResult{
+        int strikeCnt;
+        int ballCnt;
+
+        public void strike(){
+            this.strikeCnt++;
+        }
+
+        public void ball(){
+            this.ballCnt++;
+        }
+
+        public StrikeBallResult() {
+            this.strikeCnt = 0;
+            this.ballCnt = 0;
+        }
+
+        public int getStrikeCnt() {
+            return strikeCnt;
+        }
+
+        public int getBallCnt() {
+            return ballCnt;
+        }
+    }
 }
