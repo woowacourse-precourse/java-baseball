@@ -41,6 +41,22 @@ public class Computer {
         System.out.println();
     }
 
+    public boolean isAnswer(Integer[] value) {
+        initBallAndStrike();
+        countBallAndStrike(value);
+        printResult();
+        if (strike == 3) {
+            System.out.println(GAME_OVER_MESSAGE);
+            return true;
+        }
+        return false;
+    }
+
+    private void initBallAndStrike() {
+        ball = 0;
+        strike = 0;
+    }
+
     private void countBallAndStrike(Integer[] value) {
         for (int index = 0; index < MAX_LENGTH; index++) {
             if (answer[index] == value[index]) {
