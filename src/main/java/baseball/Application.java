@@ -35,8 +35,9 @@ public class Application {
 
     public static String isValidFlag(String readLine) {
         boolean isOneOrTwo = (readLine.charAt(0) == '1' || readLine.charAt(0) == '2');
+        boolean isOnce = (readLine.length() == 1);
 
-        if (isOneOrTwo) {
+        if (isOneOrTwo && isOnce) {
             return readLine;
         }
         throw new IllegalArgumentException();
