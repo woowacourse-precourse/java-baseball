@@ -23,6 +23,6 @@ public class BaseballQuestion extends Question {
     }
 
     private boolean isFormatCorrect(int candidate){
-        return baseballGameType.isFormatCorrect();
+        return baseballGameType.isFormatCorrect(candidate);
     }
 }

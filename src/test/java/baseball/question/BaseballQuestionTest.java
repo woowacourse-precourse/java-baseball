@@ -20,7 +20,7 @@ public class BaseballQuestionTest {
         try (MockedConstruction<BaseballAnswer> mockBaseballAnswer = mockConstruction(BaseballAnswer.class)) {
 
             BaseballType mockBaseballType = mock(BaseballType.class);
-            when(mockBaseballType.isFormatCorrect()).thenReturn(false);
+            when(mockBaseballType.isFormatCorrect(anyInt())).thenReturn(false);
 
             assertThrows(IllegalArgumentException.class, () -> {
                new BaseballQuestion(mockBaseballType).ask(123);
@@ -33,7 +33,7 @@ public class BaseballQuestionTest {
         try (MockedConstruction<BaseballAnswer> mockBaseballAnswer = mockConstruction(BaseballAnswer.class)) {
 
             BaseballType baseballType = mock(BaseballType.class);
-            when(baseballType.isFormatCorrect()).thenReturn(true);
+            when(baseballType.isFormatCorrect(anyInt())).thenReturn(true);
             final BaseballAnswer baseballAnswer = new BaseballAnswer(baseballType);
             when(baseballAnswer.response(anyInt())).thenReturn(null);
 
