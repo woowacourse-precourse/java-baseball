@@ -11,14 +11,15 @@ public class BaseballGameLauncher {
 
     public void run() {
         System.out.println(GAME_START_MESSAGE);
+        playGame();
+        System.out.println(GAME_CLOSE_MESSAGE);
+    }
 
+    private void playGame() {
         do {
             baseballGame.start();
             System.out.println(GAME_CLEAR_MESSAGE);
             System.out.println(GAME_RESTART_SELECTION_MESSAGE);
         } while (baseballGame.isRestart());
-
-        System.out.println(GAME_CLOSE_MESSAGE);
     }
-
 }
