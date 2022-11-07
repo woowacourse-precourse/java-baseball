@@ -129,7 +129,7 @@ public class Application {
             return true;
         }
         if(strikeNumber == 0 && ballNumber == 0){
-
+            System.out.println("낫싱");
         }
 
         return false;
