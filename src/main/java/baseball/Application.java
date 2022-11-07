@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static int getBall(List<Integer> answer, List<Integer> userInput) {
-        Integer ball = 0;
+        int ball = 0;
 
         for (int index = 0; index < 3; index++) {
             if (answer.contains(userInput.get(index)) && !answer.get(index).equals(userInput.get(index))) {
@@ -21,7 +21,7 @@ public class Application {
     }
 
     public static int getStrike(List<Integer> answer, List<Integer> userInput) {
-        Integer strike = 0;
+        int strike = 0;
 
         for (int index = 0; index < 3; index++) {
             if (answer.get(index).equals(userInput.get(index))) {
