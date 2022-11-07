@@ -22,6 +22,11 @@ class ApplicationTest extends NsTest {
 		assertThat(3).isEqualTo(test.size());
 	}
 
+	@Test
+	void 몇개의_숫자가_같은지_확인() {
+		assertThat(3).isEqualTo(compare.howMany(Arrays.asList(1, 2, 3), Arrays.asList(3, 1, 2)));
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
