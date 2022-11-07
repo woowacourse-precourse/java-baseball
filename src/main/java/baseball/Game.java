@@ -17,9 +17,9 @@ public class Game {
 
     // 게임 전체 진행 순서
     public void run() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         boolean gameStart = true;
         while (gameStart) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computerNum = computer.makeNumber();
             boolean strikeOut = false;
             while (!strikeOut) {
