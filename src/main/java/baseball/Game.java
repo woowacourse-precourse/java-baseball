@@ -85,10 +85,6 @@ public class Game {
             System.out.println("낫싱");
             return;
         }
-        resolver(ball, strike);
-    }
-
-    public void resolver(int ball, int strike) {
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
