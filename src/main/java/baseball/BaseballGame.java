@@ -7,8 +7,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseballGame {
     private final int SIZE = 3;
-    private ArrayList<String> answer;
-    private ArrayList<String> inputs;
+    private final ArrayList<String> answer;
+    private final ArrayList<String> inputs;
 
     private int ballCount;
     private int strikeCount;
@@ -34,17 +34,8 @@ public class BaseballGame {
             countStrikeOrBall();
             printResult();
 
-            if (strikeCount == 3) {
-                String continued = Console.readLine();
-                System.out.println(continued);
-                answer.clear();
-                if (checkAnswer(continued))
-                    return;
-
-                initAnswer();
-            }
-            ballCount = 0;
-            strikeCount = 0;
+            if(checkTerminateOrContinue() == 0)
+                return;
         }
     }
 
@@ -95,5 +86,23 @@ public class BaseballGame {
                 System.out.println(strikeCount + "스트라이크");
         } else
             System.out.println("낫싱");
+    }
+
+    private int checkTerminateOrContinue() {
+        if(strikeCount == 3) {
+            String continued = Console.readLine();
+            System.out.println(continued);
+            answer.clear();
+            if (checkAnswer(continued)) {
+                System.out.println("게임 종료");
+                return 0;
+            }
+
+            initAnswer();
+        }
+
+        ballCount = 0;
+        strikeCount = 0;
+        return 1;
     }
 }
