@@ -19,11 +19,12 @@ public class BaseBallSimulator {
     }
 
     public void start() {
-        boolean isGameEnd = false;
         printWelcomeMessage();
-        Response response = baseBallController.create();
 
+        Response response;
+        boolean isGameEnd = false;
         while (!isGameEnd) {
+            response = baseBallController.create();
             startProgress(response.getId());
 
             printProgressEndMessage();
