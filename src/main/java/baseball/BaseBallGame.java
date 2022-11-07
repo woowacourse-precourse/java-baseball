@@ -2,6 +2,7 @@ package baseball;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -118,7 +119,14 @@ public class BaseBallGame implements AutoCloseable {
 
 
     private boolean validateUserInput(String inputString) {
-        return false;
+        switch (currentState){
+            case ON_GAME:
+                return Pattern.matches("[1-9]{3}",inputString);
+            case FINISH_GAME:
+                return Pattern.matches("[1-2]",inputString);
+            default :
+                return  false;
+        }
     }
 
     private List<Integer> getResultOfAnswer(List<Integer> challengeNumber) {
