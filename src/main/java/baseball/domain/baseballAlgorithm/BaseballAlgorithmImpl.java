@@ -7,43 +7,46 @@ import java.util.List;
 
 public class BaseballAlgorithmImpl implements BaseballAlgorithm {
 
+
     @Override
     public String checkBaseballResult(List<Integer> randomNumber, String userInput) {
         List<String> inputNumbers = new ArrayList<>(List.of(userInput.split("")));
+        BallAndStrikeResult ballAndStrikeResult = new BallAndStrikeResult();
+
         for (int i = 0; i < inputNumbers.size(); i++) {
             int number = Integer.parseInt(inputNumbers.get(i));
             if (randomNumber.contains(number)) {
-                countStrikeAndBall(randomNumber, inputNumbers, number);
+                countStrikeAndBall(randomNumber, inputNumbers, number, ballAndStrikeResult);
             }
         }
-        String baseballResultMessage = makeBaseballResultMessage();
-        clearCount();
+
+        String baseballResultMessage = makeBaseballResultMessage(ballAndStrikeResult);
+        ballAndStrikeResult.clear();
         return baseballResultMessage;
     }
 
-    private String makeBaseballResultMessage() {
-        if (ball.getCount() == 0 && strike.getCount() == 0) {
-            return "낫싱";
+    private String makeBaseballResultMessage(BallAndStrikeResult ballAndStrikeResult) {
+        int ballCount = ballAndStrikeResult.getBallCount();
+        int strikeCount = ballAndStrikeResult.getStrikeCount();
+
+        if (ballCount + strikeCount == 0) {
+            return nothing.getKoreanTag();
         }
-        if (ball.getCount() != 0 && strike.getCount() == 0) {
-            return ball.getCount() + "볼";
+        if (ballCount != 0 && strikeCount == 0) {
+            return ballCount + ball.getKoreanTag();
         }
-        if (ball.getCount() == 0 && strike.getCount() != 0) {
-            return strike.getCount() + "스트라이크";
+        if (ballCount == 0 && strikeCount != 0) {
+            return strikeCount + strike.getKoreanTag();
         }
-        return ball.getCount() + "볼 " + strike.getCount() + "스트라이크";
+        return ballCount + ball.getKoreanTag() + " " + strikeCount + strike.getKoreanTag();
     }
 
-    private void countStrikeAndBall(List<Integer> randomNumber, List<String> inputNumber, int number) {
+    private void countStrikeAndBall(List<Integer> randomNumber, List<String> inputNumber, int number,
+                                    BallAndStrikeResult ballAndStrikeResult) {
         if (randomNumber.indexOf(number) == inputNumber.indexOf(String.valueOf(number))) {
-            strike.setCount(strike.getCount()+1);
+            ballAndStrikeResult.update(strike);
             return;
         }
-        ball.setCount(ball.getCount()+1);
-    }
-
-    private void clearCount() {
-        ball.setCount(0);
-        strike.setCount(0);
+        ballAndStrikeResult.update(ball);
     }
 }
