@@ -47,5 +47,12 @@ public class User {
         return userNumber.contains(" ");
     }
 
-
+    public boolean checkNumber(String userNumber) {
+        for (int i = 0; i < userNumber.length(); i++) {
+            if (!Character.isDigit(userNumber.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
