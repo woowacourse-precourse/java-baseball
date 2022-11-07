@@ -60,11 +60,14 @@ public class BaseballGame {
 
     public boolean isRestart(){
         int restartNumber = Integer.valueOf(Console.readLine());
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
         if(restartNumber == 1)
             return true;
-        if(restartNumber == 0)
+        if(restartNumber == 2)
             return false;
-        if(restartNumber != 1 || restartNumber != 0)
+        if(restartNumber != 1 || restartNumber != 2)
             throw new IllegalArgumentException();
         return false;
     }
