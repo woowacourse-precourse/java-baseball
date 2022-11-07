@@ -50,4 +50,18 @@ public class RefereeTest {
         Assertions.assertThat(Referee.correctNumberCount(originList, comparedList2)).isEqualTo(1);
         Assertions.assertThat(Referee.correctNumberCount(originList, comparedList3)).isEqualTo(0);
     }
+
+    @Test
+    void 스트라이크_개수_세기() {
+        List<Integer> originList = Arrays.asList(1, 2, 3);
+        List<Integer> comparedList1 = Arrays.asList(1, 2, 4);
+        List<Integer> comparedList2 = Arrays.asList(1, 4, 5);
+        List<Integer> comparedList3 = Arrays.asList(4, 5, 6);
+
+        Assertions.assertThat(Referee.getStrikeCount(originList, originList)).isEqualTo(3);
+        Assertions.assertThat(Referee.getStrikeCount(originList, comparedList1)).isEqualTo(2);
+        Assertions.assertThat(Referee.getStrikeCount(originList, comparedList2)).isEqualTo(1);
+        Assertions.assertThat(Referee.getStrikeCount(originList, comparedList3)).isEqualTo(0);
+    }
+    
 }
