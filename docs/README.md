@@ -1,5 +1,5 @@
 # 기능목록
-## 3개 클래스로 구성(GameController, User, Computer)
+## 4개 클래스로 구성(GameController, User, InputValidator, Computer)
 * ### GameController
   * `ready`
     * User, Computer의 3자리 수 입력 및 생성
@@ -23,6 +23,13 @@
 
 * ### User
   * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
+  * 사용자 입력이 올바른 값인지 검증하는 `InputValidator inputvalidator`
+  * `generateNumber`
+    * 사용자의 3자리 수 입력 받기
+    * `inputValidator`의 `validate`을 사용해 잘못된 값인지 검사
+    * `setNumbers`를 사용해 `numbers`에 3자리 수 저장
+
+* ### InputValidator
   * `isZeroAtFirst`
     * 입력 String 첫 자리가 0인지 검사
   * `checkLength`
@@ -31,13 +38,9 @@
     * 입력 String에 target의 등장 횟수를 return
   * `anyDuplicated`
     * [1, 9] 범위를 countNumber로 검사하여 두 번 이상 등장하는 수가 있으면 true return
-  * `isLegalNumber`
+  * `validate`
     * `isBlank`, `isZeroAtFirst`, `checkLength`, `anyDuplicated`를 사용해 잘못된 값인지 검사
     * Integer로 캐스팅이 불가능한 경우 또는 잘못된 값일 경우 `IllegalArgumentException` 발생 후 종료
-  * `generateNumber`
-    * 사용자의 3자리 수 입력 받기
-    * `isLegalNumber`를 사용해 잘못된 값인지 검사
-    * `setNumbers`를 사용해 `numbers`에 3자리 수 저장
 
 * ### Computer
   * 서로 다른 3개 숫자를 갖는 `List<Integer> numbers`와 `getter`, `setter`
