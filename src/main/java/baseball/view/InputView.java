@@ -17,4 +17,16 @@ public class InputView {
 
         return numbers;
     }
+
+    public boolean selectReStartGame(){
+        System.out.println(SELECT_RESTART);
+
+        String select = Console.readLine();
+        validator.isRightSelect(select);
+
+        if(select.equals("1"))
+            return true;
+
+        return false;
+    }
 }
