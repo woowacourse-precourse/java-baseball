@@ -38,4 +38,15 @@ public class Application {
         else
             return true;
     }
+
+    public static boolean isExistDuplicate(List<Integer> player){
+        int hundreds = player.get(0);
+        int tens = player.get(1);
+        int units = player.get(2);
+
+        if(hundreds == tens || hundreds == units || tens == units)
+            return true;
+        else
+            return false;
+    }
 }
