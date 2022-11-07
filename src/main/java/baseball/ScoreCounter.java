@@ -1,9 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class ScoreCounter {
 
@@ -11,7 +9,7 @@ public class ScoreCounter {
   int strikeCount;
 
   public void count(List<Integer> computerNumber, String input) {
-    init();
+    initCount();
     List<Integer> userInput = convertStringToIntegerList(input);
     for (int i = 0; i < input.length(); i++) {
       if (isThereStrikes(computerNumber.get(i), userInput.get(i))) {
@@ -22,6 +20,11 @@ public class ScoreCounter {
         ballCount++;
       }
     }
+  }
+
+  private void initCount() {
+    ballCount = 0;
+    strikeCount = 0;
   }
 
   private boolean isThereStrikes(Integer computerNumber, Integer input) {
@@ -41,8 +44,4 @@ public class ScoreCounter {
     return list;
   }
 
-  private void init() {
-    ballCount = 0;
-    strikeCount = 0;
-  }
 }

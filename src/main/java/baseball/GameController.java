@@ -5,19 +5,18 @@ import baseball.io.InputReader;
 
 public class GameController {
 
-  BaseballGame game;
   MessagePrinter printer;
   InputReader reader;
 
-  private void init() {
+  public GameController() {
     reader = new InputReader();
     printer = new MessagePrinter();
+
     printer.printlnMessage(InGameMessages.GAME_START.getMessage());
-    game = new BaseballGame();
   }
 
   public void control() {
-    init();
+    BaseballGame game = new BaseballGame();
     do {
       game.play();
     } while (checkRestart());
@@ -27,7 +26,7 @@ public class GameController {
     printer.printlnMessage(InGameMessages.GAME_RESTART_OR_END.getMessage());
     String input = reader.readRestartOrEndInput();
 
-    // input을 입력받을때 validation을 끝냈기 떄문에 1인지 아닌지로만 판단
+    // input을 입력받을때 validation을 끝냈기 때문에 1인지 아닌지로만 판단
     return input.equals("1");
   }
 }

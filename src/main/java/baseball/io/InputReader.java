@@ -4,8 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputReader {
 
-  InputValidator playingInputValidator = new PlayingInputValidator();
-  InputValidator replayOrEndInputValidator = new ReplayOrEndInputValidator();
+  InputValidator playingInputValidator;
+  InputValidator replayOrEndInputValidator;
+
+  public InputReader() {
+    playingInputValidator = new PlayingInputValidator();
+    replayOrEndInputValidator = new ReplayOrEndInputValidator();
+  }
 
   public String readPlayingInput() {
     String input = Console.readLine();
