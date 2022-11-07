@@ -28,8 +28,14 @@ public class Application {
         // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
         while (isNeedReEnter(ballCount)) {
             // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
-            user = getNumberOfUserForList(user);
 
+            try {
+                user = getNumberOfUserForList(user);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+                return false;
+            }
+//            System.out.println("user = " + user); // 여기서 user가 null임
             // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
             ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
             UI.printBallCount(ballCount);
@@ -124,7 +130,11 @@ public class Application {
         }
 
         // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
-        user = getNumberOfUser(user, numberOfUserString);
+        try {
+            user = getNumberOfUser(user, numberOfUserString);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
         return user;
     }
 
@@ -142,8 +152,7 @@ public class Application {
         try {
             isValidStringInputOfUser(numberOfUserString);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            return user;
+            throw new IllegalArgumentException();
         }
 
         // 3-2-2-2 : 사용자의 입력값을 List로 바꾼다.
@@ -154,6 +163,8 @@ public class Application {
     // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
     private static String getBallCount(List<Integer> computer, List<Integer> user) {
         // 3-3-1. 스트라이크 count하기
+
+        //여기서 user가 null
         int countOfStrike = howMuchStrike(computer, user);
 
         // 3-3-2. 볼 conut하기
@@ -181,9 +192,7 @@ public class Application {
         int strikeCount = 0;
 
         for (int i = 0; i < computer.size(); i++) {
-            if (user.isEmpty()) {
-                return -1;
-            } else if (computer.get(i) == user.get(i)) {
+            if (computer.get(i) == user.get(i)) {
                 strikeCount++;
             }
         }
@@ -193,10 +202,6 @@ public class Application {
     // 3-3-2 : ball count하기
     private static int howMuchBall(List<Integer> computer, List<Integer> user) {
         int ballCount = 0;
-
-        if (user.isEmpty()) {
-            return -1;
-        }
 
         if (computer.get(0) == user.get(1) || computer.get(0) == user.get(2)) {
             ballCount++;
@@ -232,7 +237,7 @@ public class Application {
 
     // 4-3-2 : 재시작하기
     private static void restartGame(List<Integer> user) {
-        user = getNumberOfUserForList(user);
+        getNumberOfUserForList(user);
     }
 
     public static void main(String[] args) {
@@ -242,5 +247,6 @@ public class Application {
         while (repeatState) {
             repeatState = gameStart();
         }
+
     }
 }
