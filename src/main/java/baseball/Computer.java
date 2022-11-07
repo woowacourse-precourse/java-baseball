@@ -28,8 +28,6 @@ public class Computer {
     private void setToArray(Set<Integer> value) {
         int index = 0;
         for (Integer number : value) {
-            //TODO 삭제!!
-            System.out.print(number);
             answer[index] = number;
             index++;
         }
