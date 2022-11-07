@@ -54,6 +54,7 @@ public class Game {
 
     private boolean checkNothing(int strike, int ball) {
         if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
             return true;
         }
         return false;
