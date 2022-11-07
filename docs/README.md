@@ -25,6 +25,7 @@
    - [x] `calculateScore()`, `computeScoreIndex()`
 3. `Application`에 존재하는 로직을 모두 `Game` 클래스로 이동
    - `Application`에는 `Game.startGame()`만 존재
+4. `Game`에 존재하는 점수 계산 로직을 `Calculator` 클래스로 이동
 
 ## 📝 테스트
 테스트 코드는 **생성한 클래스별로 묶어서 작성**한다.
