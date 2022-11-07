@@ -32,7 +32,8 @@ public class Application {
             threeStrike = false;
 
             printReStartSentence();
-            if (!playNewGame()) break;
+            int reStart = Character.getNumericValue(Console.readLine().charAt(0));
+            if (!playNewGame(reStart)) break;
         }
     }
 
@@ -141,10 +142,9 @@ public class Application {
     }
 
     // TODO : 게임이 종료되었을 때 게임을 다시 진행할 지 선택하는 함수
-    public boolean playNewGame() throws IllegalArgumentException{
-        int input = Character.getNumericValue(Console.readLine().charAt(0));
-        if (input == NEW_GAME_NUMBER) return true;
-        if (input == END_GAME_NUMBER) return false;
+    public boolean playNewGame(int reStart) throws IllegalArgumentException{
+        if (reStart == NEW_GAME_NUMBER) return true;
+        if (reStart == END_GAME_NUMBER) return false;
         throw new IllegalArgumentException();
     }
 }
