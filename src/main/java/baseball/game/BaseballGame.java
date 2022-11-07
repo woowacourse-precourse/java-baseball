@@ -6,7 +6,7 @@ import baseball.numbers.NumbersGenerationStrategy;
 import baseball.ui.InputView;
 import baseball.ui.Result;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import static baseball.ui.OutputView.*;
@@ -23,7 +23,7 @@ public class BaseballGame {
     public void start() {
         printGameStartMessage();
         Numbers answer = new Numbers(strategy);
-        Map<BallTypes, Integer> result = new HashMap<>();
+        Map<BallTypes, Integer> result = new EnumMap<>(BallTypes.class);
 
         game(answer, result);
         decideRestartOrEnd();
