@@ -21,8 +21,6 @@ public class NumberScore {
                 strike +=1;
             } else if (randomList.contains(userList.get(i))) {
                 ball +=1;
-            } else{
-
             }
         }
         Map<String, Integer> result= new HashMap<>();
