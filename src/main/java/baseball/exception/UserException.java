@@ -32,5 +32,17 @@ public class UserException {
         return true;
     }
 
+    public boolean checkDuplicatedUserInputNumber(String userInputNumber) throws IllegalArgumentException {
+        Set<Character> UserNumberList = new HashSet<>();
+
+        for (int i = 0; i < userInputNumber.length(); i++) {
+            UserNumberList.add(userInputNumber.charAt(i));
+        }
+        if (UserNumberList.size() != userInputNumber.length()) {
+            throw new IllegalArgumentException("숫자가 중복됩니다. ");
+        }
+        return true;
+    }
+
 
 }
