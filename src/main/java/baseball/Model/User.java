@@ -11,9 +11,10 @@ public class User {
         CheckUtil.isDuplicate(userInput);
         return true;
     }
+
     public void restartInputCheck(String userInput) {
         CheckUtil.isInteger(userInput);
-        CheckUtil.lengthCheck(userInput,Constant.MIN_LENGTH);
+        CheckUtil.lengthCheck(userInput, Constant.MIN_LENGTH);
     }
 
 }

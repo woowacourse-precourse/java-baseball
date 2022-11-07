@@ -48,7 +48,7 @@ public class Game {
     public void restartCheck() {
         String input = Console.readLine();
         user.restartInputCheck(input);
-        if(!Objects.equals(input, Constant.END)){
+        if (!Objects.equals(input, Constant.END)) {
             computer.setComputerInput();
             gameStart();
             return;
