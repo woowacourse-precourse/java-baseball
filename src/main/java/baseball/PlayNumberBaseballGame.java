@@ -27,18 +27,22 @@ public class PlayNumberBaseballGame {
         int strike=0;
         int ball=0;
 
-        for(int numberLocation=0; numberLocation<3; numberLocation++){
-            if(isStrike(computer.get(numberLocation), player.get(numberLocation))){
+        if(isThreeStrike(computer,player)){
+            strike=3;
+            compareResult = outputResultComparisonOfNumbers(strike,ball);
+            return compareResult;
+        }
+
+        for (int numberLocation = 0; numberLocation < 3; numberLocation++) {
+            if (isStrike(computer, player, numberLocation)) {
                 strike++;
                 continue;
-            }
-            else if(isBall(computer, player.get(numberLocation))){
+            } else if (isBall(computer, player, numberLocation)) {
                 ball++;
             }
         }
 
         compareResult = outputResultComparisonOfNumbers(strike,ball);
-
         return compareResult;
     }
 
