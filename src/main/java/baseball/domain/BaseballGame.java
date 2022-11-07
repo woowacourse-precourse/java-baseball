@@ -7,6 +7,9 @@ import java.util.List;
 
 public class BaseballGame {
 
+    private static final int RESTART = 1;
+    private static final int END = 2;
+
     Referee referee;
     User user;
     TextForGame textForGame;
