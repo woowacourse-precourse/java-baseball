@@ -37,12 +37,14 @@ public class BaseballScore {
         if (ball == 0 && strike == 0) {
             return NOTHING_MESSAGE;
         }
-        if (ball > 0) {
-            resultMessage += ball + BALL_MESSAGE + SPACE;
+        if (ball > 0 && strike == 0) {
+            resultMessage = ball + BALL_MESSAGE;
+        } else if (strike > 0 && ball == 0) {
+            resultMessage = strike + STRIKE_MESSAGE;
+        } else if (ball > 0 && strike > 0) {
+            resultMessage = ball + BALL_MESSAGE + SPACE + strike + STRIKE_MESSAGE;
         }
-        if (strike > 0) {
-            resultMessage += strike + STRIKE_MESSAGE + SPACE;
-        }
+
         return resultMessage;
     }
 
