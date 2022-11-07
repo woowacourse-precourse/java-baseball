@@ -16,7 +16,17 @@ class GameHintListTest {
     }
 
     @Test
+    @DisplayName("플레이어가 입력한 수에 대해 스트라이크 개수가 정상적으로 반환된다")
     void countOfStrike() {
+        //given
+        GameHintList.computerSelectedNumbers = new ArrayList<>(Arrays.asList("1", "2", "3"));
+        GameHintList.userSelectedNumbers = new ArrayList<>(Arrays.asList("4", "2", "3"));
+
+        //when
+        int testCountOfStrike = GameHintList.countOfStrike();
+
+        //then
+        Assertions.assertThat(testCountOfStrike).isEqualTo(2);
     }
 
     @Test
@@ -24,8 +34,8 @@ class GameHintListTest {
     void countOfBall() {
         //given
         GameHintList gameHintList = new GameHintList();
-        GameHintList.computerSelectedNumbers = new ArrayList<>(Arrays.asList("2","4","7"));
-        GameHintList.userSelectedNumbers = new ArrayList<>(Arrays.asList("4","7","2"));
+        GameHintList.computerSelectedNumbers = new ArrayList<>(Arrays.asList("2", "4", "7"));
+        GameHintList.userSelectedNumbers = new ArrayList<>(Arrays.asList("4", "7", "2"));
 
         //when
         int testCountOfBall = gameHintList.countOfBall();
