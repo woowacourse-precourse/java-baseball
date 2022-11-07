@@ -6,7 +6,7 @@ public class Valid {
 	private static final String EXCEPTION_MESSAGE = "값을 잘못 입력했습니다. 게임을 종료합니다.";
 
 	public static String validInputNumber(String inputNumber) {
-		if (isWrongLength(inputNumber) && isNaturalNumber(inputNumber)) {
+		if (isWrongLength(inputNumber) && isNaturalNumber(inputNumber) && findDuplicate(inputNumber)) {
 			return inputNumber;
 		}
 
@@ -30,4 +30,16 @@ public class Valid {
 		return true;
 	}
 
+	private static boolean findDuplicate(String inputNumber) {
+		int firstNumber = inputNumber.charAt(0);
+		int secondNumber = inputNumber.charAt(1);
+		int thirdNumber = inputNumber.charAt(2);
+
+		if (firstNumber == secondNumber ||
+			secondNumber == thirdNumber ||
+			firstNumber == thirdNumber) {
+			return false;
+		}
+		return true;
+	}
 }
