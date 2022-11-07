@@ -13,4 +13,15 @@ public class InputValueComparator implements Comparator {
         return null;
     }
 
+    private Integer countBall(List<Integer> standard, int target, int positon) {
+        int ball = 0;
+        for(int i = 0 ; i < 3 ; i++) {
+            if(standard.get(i) == target && i != positon){
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+
 }
