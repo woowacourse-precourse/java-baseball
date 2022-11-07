@@ -33,6 +33,34 @@ public class Application {
         }
         return userNumber;
     }
+
+    static int checkNumbers(List<Integer> computerNumber, List<Integer> userNumber) {
+
+        int strike = 0;
+        int total = 0;
+
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (computerNumber.contains(userNumber.get(i))) {
+                total += 1;
+            }
+            if (computerNumber.get(i) == userNumber.get(i)) {
+                strike += 1;
+            }
+        }
+        int ball = total - strike;
+
+        if (total == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+
+        return strike;
+    }
 }
 
 
