@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Application {
+    final static int NUMBER_SIZE = 3;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         // 출력: 숫자 야구 게임을 시작합니다.
@@ -26,13 +28,13 @@ public class Application {
         int randomDigit;
         ArrayList<Integer> randomNumber = new ArrayList<>();
         int pick = 0;
-        while (pick < 3) {
+        while (pick < NUMBER_SIZE) {
             randomDigit = Randoms.pickNumberInRange(1, 9);
-            if (isPick[randomDigit-1]) {
+            if (isPick[randomDigit - 1]) {
                 continue;
             }
             randomNumber.add(randomDigit);
-            isPick[randomDigit-1] = true;
+            isPick[randomDigit - 1] = true;
             pick++;
         }
         return randomNumber;
@@ -43,7 +45,7 @@ public class Application {
         boolean loop = true;
         while (loop) {
             askNumber = getNumber();
-            loop = compareOfNumber(correctNumber, askNumber);
+            loop = compareNumber(correctNumber, askNumber);
         }
         // 종료문구 출력
         if (askRetry()) {
@@ -73,11 +75,12 @@ public class Application {
         return askArrayListInteger;
     }
 
-    private void checkNumberSize(ArrayList<Integer> arrayList){
-        if (arrayList.size() > 3){
+    private void checkNumberSize(ArrayList<Integer> arrayList) {
+        if (arrayList.size() > 3) {
             throw new IllegalArgumentException();
         }
     }
+
     private void checkOverlap(ArrayList<Integer> arrayList) {
         Set<Integer> hashSet = new HashSet<>(arrayList);
         if (arrayList.size() != hashSet.size()) {
@@ -85,10 +88,49 @@ public class Application {
         }
     }
 
-    private boolean compareOfNumber(ArrayList<Integer> correctNumber, ArrayList<Integer> askNumber) {
-        // 비교하며, 몇 볼, 몇 스트라이크 or 낫싱 인지 출력
-        // 만약 3스트라이크면 false 반환
-        return true;
+    private boolean compareNumber(ArrayList<Integer> correctNumber, ArrayList<Integer> askNumber) {
+        int ball = 0;
+        int strike = 0;
+
+        strike += countStrike(correctNumber, askNumber);
+        if (strike < NUMBER_SIZE - 1) {
+            ball += countBall(correctNumber, askNumber, strike);
+        }
+        printBallAndStrike(ball, strike);
+        return strike == NUMBER_SIZE;
+    }
+
+    private int countStrike(ArrayList<Integer> correctNumber, ArrayList<Integer> askNumber) {
+        int count = 0;
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            if (correctNumber.get(i).equals(askNumber.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int countBall(ArrayList<Integer> correctNumber, ArrayList<Integer> askNumber, int strike) {
+        int count = 0;
+        for (Integer number : correctNumber) {
+            if (askNumber.contains(number)) {
+                count++;
+            }
+        }
+        return count - strike;
+    }
+
+    private void printBallAndStrike(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+        if (ball != 0) {
+            System.out.print(ball + "볼 ");
+        }
+        if (strike != 0) {
+            System.out.print(strike + "스트라이크");
+        }
+        System.out.print("\n");
     }
 
     private boolean askRetry() {
