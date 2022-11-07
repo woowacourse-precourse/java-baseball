@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -41,6 +42,58 @@ public class GameMachineTest {
         // Then
         List<Integer> integerList = List.of(1, 2, 3);
         assertThat(threeDiffDigit).isEqualTo(integerList);
+    }
+
+    @Nested
+    class gamer_의_입력값으로_ball_인지_strike인지_판별하고_game의_ball_count_를_업데이트한다 {
+        @Test
+        void 볼_0개_스트라이크_0개() {
+            // Given
+            Game game = new Game();
+            game.setThreeDiffDigit(List.of(1, 3, 5));
+
+            List<Integer> threeDiffDigitOfGamer = List.of(2, 4, 6);
+
+            // When
+            gameMachine.updateBallCount(threeDiffDigitOfGamer, game);
+            String ballCount = game.getBallCount();
+
+            // Then
+            String result = "낫싱";
+            assertThat(ballCount).isEqualTo(result);
+        }
+        @Test
+        void 볼_0개_스트라이크_2개() {
+            // Given
+            Game game = new Game();
+            game.setThreeDiffDigit(List.of(1, 3, 5));
+
+            List<Integer> threeDiffDigitOfGamer = List.of(1, 3, 4);
+
+            // When
+            gameMachine.updateBallCount(threeDiffDigitOfGamer, game);
+            String ballCount = game.getBallCount();
+
+            // Then
+            String result = "2스트라이크";
+            assertThat(ballCount).isEqualTo(result);
+        }
+        @Test
+        void 볼_1개_스트라이크_1개() {
+            // Given
+            Game game = new Game();
+            game.setThreeDiffDigit(List.of(1, 3, 5));
+
+            List<Integer> threeDiffDigitOfGamer = List.of(1, 2, 3);
+
+            // When
+            gameMachine.updateBallCount(threeDiffDigitOfGamer, game);
+            String ballCount = game.getBallCount();
+
+            // Then
+            String result = "1볼 1스트라이크";
+            assertThat(ballCount).isEqualTo(result);
+        }
     }
 
 }
