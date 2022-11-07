@@ -118,30 +118,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class getResultString_Test{
+    class getResultString_Test {
         @Nested
-        class success_case{
+        class success_case {
             @Test
-            void case1(){
+            void case1() {
                 List<Integer> result = List.of(1, 1, 1);
                 assertThat("1볼 1스트라이크").isEqualTo(Application.getResultString(result));
 
             }
 
             @Test
-            void case2(){
+            void case2() {
                 List<Integer> result = List.of(2, 0, 1);
                 assertThat("2스트라이크").isEqualTo(Application.getResultString(result));
             }
 
             @Test
-            void case3(){
+            void case3() {
                 List<Integer> result = List.of(0, 0, 3);
                 assertThat("낫싱").isEqualTo(Application.getResultString(result));
             }
 
             @Test
-            void case4(){
+            void case4() {
                 List<Integer> result = List.of(0, 3, 0);
                 assertThat("3볼").isEqualTo(Application.getResultString(result));
             }
