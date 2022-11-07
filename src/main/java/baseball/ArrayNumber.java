@@ -23,6 +23,9 @@ public class ArrayNumber {
         return this.digits;
     }
 
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(min_nbr, max_nbr);
+    }
 
     private void setDigits(String input) {
         if(!isValidString(input)) {
