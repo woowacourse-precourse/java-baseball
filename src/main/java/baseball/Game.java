@@ -39,7 +39,7 @@ public class Game {
         do {
             setUserNumber(playerNumber);
         } while (convertListToInt(targetNumber) != convertListToInt(playerNumber));
-        
+
     }
 
     void setUserNumber(List<Integer> playerNumber) { // 2.1 사용자에게 숫자 입력받기
@@ -74,8 +74,27 @@ public class Game {
     }
 
     int convertListToInt(List<Integer> List) { // 2.3 list를 integer로 바꾸기
-
         return List.get(0) * 100 + List.get(1) * 10 + List.get(0);
     }
 
+    String checkUserNumber(List<Integer> targetNumber, List<Integer> playerNumber) { //3. 입력 받은 숫자와 원래 숫자를 비교해 힌트 출력 or 맞으면 정답 처리
+        BaseBall baseBall = new BaseBall();
+
+        baseBall.setStrike(countStrike(targetNumber, playerNumber, baseBall));
+        return baseBall.toString();
+    }
+
+    int countStrike(List<Integer> targetNumber, List<Integer> playerNumber, BaseBall baseBall) { //3.1 입력 받은 숫자의 Strike 숫자 세기
+        for (int index = 0; index < targetNumber.size(); index++) {
+            baseBall.setStrike(checkStrike(targetNumber.get(index), playerNumber.get(index), baseBall.getStrike()));
+        }
+
+        return baseBall.getStrike();
+    }
+
+    int checkStrike(int targetNumber, int playNumber, int strike) { //3.2 입력 받은 숫자의 Strike 판별하기
+        if (targetNumber == playNumber)
+            return strike + 1;
+        return strike;
+    }
 }
