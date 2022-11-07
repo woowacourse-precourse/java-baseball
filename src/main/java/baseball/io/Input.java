@@ -6,9 +6,6 @@ import java.util.List;
 
 public class Input extends EndOrRe{
 
-    private static final char MINIMUM_CHAR = '1';
-    private static final char MAXIMUM_CHAR = '9';
-
     private final int listSize;
 
     public Input(int listSize) {
@@ -17,7 +14,7 @@ public class Input extends EndOrRe{
 
     public List<Character> readAndMakeInputList() {
         String inputString = Console.readLine();
-        validStringLength(inputString);
+        InputValidity.validStringLength(inputString, listSize);
         return stringToList(inputString);
     }
 
@@ -33,7 +30,7 @@ public class Input extends EndOrRe{
      * @return 입력받은 문자열을 리스트로 만들어 반환
      */
     public List<Character> testReadAndMakeInputList(String inputString) {
-        validStringLength(inputString);
+        InputValidity.validStringLength(inputString, listSize);
         return stringToList(inputString);
     }
 
@@ -42,28 +39,7 @@ public class Input extends EndOrRe{
         for (int i = 0; i < inputString.length(); i++) {
             list.add(inputString.charAt(i));
         }
-        validOnlyOneNumInList(list);
-        validNumElementAndNoZero(list);
+        InputValidity.validForList(list);
         return list;
-    }
-
-    private void validStringLength(String inputString) {
-        if (inputString.length() != listSize) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validOnlyOneNumInList(List<Character> list) {
-        if (list.get(0) == list.get(1) || list.get(1) == list.get(2) || list.get(0) == list.get(2)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validNumElementAndNoZero(List<Character> list) {
-        for (Character character : list) {
-            if (character < MINIMUM_CHAR || MAXIMUM_CHAR < character) {
-                throw new IllegalArgumentException();
-            }
-        }
     }
 }
