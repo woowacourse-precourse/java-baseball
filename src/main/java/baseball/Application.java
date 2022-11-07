@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.game.Game;
+import baseball.system.enums.UserAction;
 import baseball.system.util.SystemUtil;
 
 import baseball.game.message.GameMessage;
@@ -19,12 +20,13 @@ public class Application {
             Game.start();
             systemUtil.print(GameMessage.WIN_GAME);
 
-            Integer userAction = systemUtil.getUserInput();
+            UserAction userAction = systemUtil.getUserInput();
 
-            if (userAction == 2) {
-                systemUtil.print(SystemMessage.STOP_PROGRAM);
-                return;
+            if (userAction == UserAction.STOP_PROGRAM) {
+                break;
             }
         }
+
+        systemUtil.print(SystemMessage.STOP_PROGRAM);
     }
 }

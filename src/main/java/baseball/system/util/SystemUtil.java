@@ -2,6 +2,7 @@ package baseball.system.util;
 
 import baseball.console.Interactive;
 import baseball.message.Message;
+import baseball.system.enums.UserAction;
 import baseball.validation.Condition;
 import baseball.system.condition.IsOperationCodeCond;
 import baseball.validation.Validator;
@@ -30,7 +31,7 @@ public class SystemUtil implements Interactive {
     }
 
     @Override
-    public Integer getUserInput() {
+    public UserAction getUserInput() {
         Integer input = Integer.parseInt(Console.readLine());
 
         List<Condition> conditions = List.of(
@@ -41,6 +42,6 @@ public class SystemUtil implements Interactive {
             throw new IllegalArgumentException();
         }
 
-        return input;
+        return UserAction.getEnumByValue(input);
     }
 }
