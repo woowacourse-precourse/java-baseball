@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,8 +11,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -64,16 +67,21 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("1을 입력하면 게임 재시작 , 2는 종료")
     void restartOrEnd() throws Exception {
-        String data = "2";
+        String  data = String.valueOf(Randoms.pickNumberInList(List.of(1,2)));
         InputStream in = new ByteArrayInputStream(data.getBytes());
         System.setIn(in);
 
+        Application app= new Application();
+        Method endGame = app.getClass().getDeclaredMethod("endGame");
+        endGame.setAccessible(true);
+
         if(data.equals("1")){
-            Assertions.assertThat(Application.endGame()).isEqualTo(false);
+            Assertions.assertThat(endGame.invoke(app)).isEqualTo(false);
         }
-        if (data.equals("2")){
-            Assertions.assertThat(Application.endGame()).isEqualTo(true);
+        if(data.equals("2")){
+            Assertions.assertThat(endGame.invoke(app)).isEqualTo(true);
         }
+
 
 
 
