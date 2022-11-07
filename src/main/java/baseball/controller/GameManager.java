@@ -22,7 +22,7 @@ public class GameManager {
     }
 
     private void startFirstGame() {
-        printMessageWithNewLine(GAME_START_MESSAGE);
+        outputStream.printMessageForData(GAME_START_MESSAGE);
         startLoop();
     }
 
@@ -46,7 +46,7 @@ public class GameManager {
             userScore = baseballManager.getUserScore();
             outputStream.printMessageForData(userScore);
         } while (!isGameOver(userScore));
-        printMessageWithNewLine(GAME_END_AND_RESTART_MESSAGE);
+        outputStream.printMessageForData(GAME_END_AND_RESTART_MESSAGE);
     }
 
     private boolean isGameOver(List<Integer> userScore) {
