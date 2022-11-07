@@ -4,12 +4,26 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
   public void start() {
-    System.out.println("숫자 야구 게임을 시작합니다.");
-    System.out.println(getUserInputNum());
+    System.out.println(GameMessage.GAME_START_MESSAGE.toString());
+    String inputData = getUserNumberInput();
   }
 
-  public String getUserInputNum() {
-    System.out.print("1~9로 이루어진 세자리 정수를 입력하세요: ");
+  private String getUserNumberInput() {
+    System.out.print(GameMessage.START_INPUT_MESSAGE.toString());
     return Console.readLine();
+  }
+
+  private enum GameMessage {
+    GAME_START_MESSAGE("숫자 야구 게임을 시작합니다."),
+    START_INPUT_MESSAGE("숫자를 입력해주세요: ");
+    private final String message;
+
+    GameMessage(String message) {
+      this.message = message;
+    }
+
+    public String toString() {
+      return message;
+    }
   }
 }
