@@ -65,8 +65,12 @@ class Umpire {
             throw new IllegalArgumentException("wrong Input");
         }
 
-        if (Player.numberString.length() != 3)
+        if (Player.numberList.size() != 3)
             throw new IllegalArgumentException("wrong size");
+
+        if (Application.getAnswer){
+
+        }
     }
 
 
@@ -93,7 +97,7 @@ class Umpire {
         }
     }
 
-    static void addBall(int i){
+    static void addBall(int i) {
         for (int j = 0; j < 3; j++) {
             if (Computer.numberList.get(i) == Player.numberList.get(j)) {
                 ball++;
@@ -102,26 +106,36 @@ class Umpire {
         }
     }
 
+    static void printResult() {
+        if (strike == 3) {
+            Application.getAnswer = true;
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+        if (ball > 0)
+            System.out.print(ball + "볼 ");
+        if (strike > 0)
+            System.out.println(strike + "스트라이크");
+        if (ball == 0 && strike == 0)
+            System.out.println("낫싱");
+    }
+
 
 }
 
 public class Application {
+   static boolean getAnswer = false;
     public static void main(String[] args) {
-        boolean getAnswer = false;
         Umpire.gameStart();
-        Computer.getThreeRandomNumber();
-        while (!getAnswer) {
-            Umpire.getNumber();
-
-            System.out.println(Computer.numberList);
-            System.out.println(Player.numberList);
-
-            Umpire.getScore();
-
-            System.out.println(Umpire.ball + " " + Umpire.strike);
-
-            return;
+        while (true) {
+            Computer.getThreeRandomNumber();
+            while (!getAnswer) {
+                Umpire.getNumber();
+                Umpire.getScore();
+                Umpire.printResult();
+//                Umpire.whenFinish();
+            }
         }
-
     }
 }
