@@ -7,14 +7,14 @@ public class BaseballNumber {
 
     private BaseballNumber(int number){
         this.number = number;
-        validateNumber();
+        validateRange();
     }
 
     public static BaseballNumber valueOf(int number){
         return new BaseballNumber(number);
     }
 
-    void validateNumber(){
+    void validateRange(){
         if(number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException("1부터 9사이의 숫자를 입력해야합니다.");
         }
