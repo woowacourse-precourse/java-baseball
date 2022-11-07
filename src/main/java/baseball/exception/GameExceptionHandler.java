@@ -2,7 +2,7 @@ package baseball.exception;
 
 public class GameExceptionHandler {
 	public static void handleNotNumberException(String input) throws IllegalArgumentException {
-		if (input.matches("^[1-9]{3}$") == false) {
+		if (input.matches("[1-9]+") == false) {
 			throw new IllegalArgumentException("Input is not number.");
 		}
 	}
@@ -29,5 +29,23 @@ public class GameExceptionHandler {
 		if (input.matches("^[1-2]$") == false) {
 			throw new IllegalArgumentException("Input number is not 1 or 2.");
 		}
+	}
+
+	public static void handleCommonException(String input) throws IllegalArgumentException {
+		handleEmptyException(input);
+		handleNotNumberException(input);
+	}
+
+	public static void handleInGameException(String input) throws IllegalArgumentException {
+		handleCommonException(input);
+
+		handleNotThreeNumbersException(input);
+		handleIncludeZeroException(input);
+	}
+
+	public static void handleAfterGameOverException(String input) throws IllegalArgumentException {
+		handleCommonException(input);
+
+		handleRestartInputException(input);
 	}
 }
