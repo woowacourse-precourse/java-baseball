@@ -14,7 +14,7 @@ public class Application {
             finish = false;
             GameManager game = new GameManager();
             Database data = new Database();
-            data.setAnswer(game.setAnswer());
+            data.setAnswer(game.createAnswer());
             while (!finish) {
                 data.setUserInput(game.userInput());
                 game.checkInput(data.getUserInput());
@@ -31,7 +31,7 @@ public class Application {
 
 class GameManager {
 
-    public List<Integer> setAnswer() {
+    public List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
