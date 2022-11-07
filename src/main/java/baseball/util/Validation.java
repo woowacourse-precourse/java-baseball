@@ -22,10 +22,6 @@ public abstract class Validation {
         return string.length() == length;
     }
 
-    public static boolean validateListSize(List<?> list, int size) {
-        return list.size() == size;
-    }
-
     public static boolean validateIntegerRange(int integer, int minValue, int maxValue) {
         return integer >= minValue
                 && integer <= maxValue;

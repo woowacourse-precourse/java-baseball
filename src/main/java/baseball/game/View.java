@@ -20,9 +20,10 @@ public class View {
     }
 
     static class InputValidation extends Validation {
-        public static boolean validateInput(String userInput) {
-            return validateNotNull(userInput)
-                    && isInteger(userInput);
+        public static boolean validateInput(String input) {
+            return validateNotNull(input)
+                    && validateStringNotEmpty(input)
+                    && isInteger(input);
         }
     }
 }

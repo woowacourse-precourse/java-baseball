@@ -13,11 +13,11 @@ public class User {
 
     public User() {}
 
-    public void generateNumbers(String value) {
-        if (!validateUserNumber(value)) {
+    public void generateNumbers(String input) {
+        if (!validateUserNumber(input)) {
             throw new IllegalArgumentException(EXCEPTION_INVALID_NUMBER);
         }
-        numbers = convertStringToIntegerList(value);
+        numbers = convertStringToIntegerList(input);
     }
 
     public int generateRestart(String value) {
@@ -32,27 +32,27 @@ public class User {
     }
 
     static class UserValidation extends Validation {
-        public static boolean validateUserNumber(String userInput) {
-            return validateStringLength(userInput, NUMBER_LENGTH)
-                    && validateEachUserNumberInRange(userInput)
-                    && validateNumberNotRepeated(convertStringToIntegerList(userInput), NUMBER_LENGTH);
+        public static boolean validateUserNumber(String input) {
+            return validateStringLength(input, NUMBER_LENGTH)
+                    && validateEachUserNumberInRange(input)
+                    && validateNumberNotRepeated(convertStringToIntegerList(input), NUMBER_LENGTH);
         }
 
-        public static boolean validateRestartValue(String userInput) {
-            return validateRestartValueInRange(userInput);
+        public static boolean validateRestartValue(String input) {
+            return validateRestartValueInRange(input);
         }
 
-        private static boolean validateEachUserNumberInRange(String userInput) {
-            for (int number : convertStringToIntegerList(userInput)) {
+        private static boolean validateEachUserNumberInRange(String input) {
+            for (int number : convertStringToIntegerList(input)) {
                 if (!validateIntegerRange(number, MIN_NUMBER_VALUE, MAX_NUMBER_VALUE))
                     return false;
             }
             return true;
         }
 
-        private static boolean validateRestartValueInRange(String userInput) {
-            return Integer.parseInt(userInput) == GAME_RESTART_VALUE
-                    || Integer.parseInt(userInput) == GAME_TERMINATE_VALUE;
+        private static boolean validateRestartValueInRange(String input) {
+            return Integer.parseInt(input) == GAME_RESTART_VALUE
+                    || Integer.parseInt(input) == GAME_TERMINATE_VALUE;
         }
     }
 }
