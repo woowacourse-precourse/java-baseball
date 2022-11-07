@@ -20,8 +20,14 @@ public class Application {
 
     public static void validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
-
+        validateSize(numberList);
         validateDuplication(numberList);
+    }
+
+    private static void validateSize(List<String> numberList) {
+        if (numberList.size() != 3) {
+            throw new IllegalArgumentException("UserNumber must be three-digit number");
+        }
     }
 
     private static void validateDuplication(List<String> numberList) {
