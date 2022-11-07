@@ -3,7 +3,7 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerInput extends Digits {
+public final class PlayerInput extends Digits {
     private PlayerInput(int value) {
         if (!isInputValidInRange(value)) {
             throw new IllegalArgumentException();

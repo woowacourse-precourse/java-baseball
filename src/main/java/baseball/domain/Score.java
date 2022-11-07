@@ -2,9 +2,9 @@ package baseball.domain;
 
 import java.util.stream.IntStream;
 
-public class Score {
-    private Ball ball;
-    private Strike strike;
+public final class Score {
+    private final Ball ball;
+    private final Strike strike;
 
     private Score(Digits player, Digits computer) {
         int strikeCount = calculateStrike(player, computer);

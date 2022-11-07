@@ -4,10 +4,10 @@ import baseball.view.ErrorView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class Controller {
-    private InputView inputView;
-    private OutputView outputView;
-    private ErrorView errorView;
+public final class Controller {
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final ErrorView errorView;
 
     public Controller(InputView inputView, OutputView outputView, ErrorView errorView) {
         this.inputView = inputView;

@@ -4,7 +4,7 @@ import baseball.view.ErrorView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-public class BaseballGame implements Game {
+public final class BaseballGame implements Game {
     InputView inputView;
     OutputView outputView;
     ErrorView errorView;

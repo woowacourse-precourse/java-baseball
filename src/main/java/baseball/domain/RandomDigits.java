@@ -2,7 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomDigits extends Digits {
+public final class RandomDigits extends Digits {
     private RandomDigits() {
         super();
         generateRandom();
