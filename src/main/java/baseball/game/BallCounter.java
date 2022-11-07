@@ -1,32 +1,37 @@
 package baseball.game;
-
+import baseball.Message;
 import baseball.number.PlayerNumber;
 import baseball.number.TargetNumber;
+import org.mockito.internal.stubbing.answers.DoesNothing;
+
+import javax.swing.*;
+
+import static baseball.Message.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BallCounter {
 
     final int MATCH_NUM = 3;
 
-    String result;
     List<String> playerNumber;
     List<String> targetNumber;
-    List<Boolean> numberState = new ArrayList<>();
+    List<Boolean> numberState = new ArrayList<>(Arrays.asList(false,false,false));
 
 
-    public String countScore(PlayerNumber playerNumber, TargetNumber targetNumber) {
+    public boolean countScore(PlayerNumber playerNumber, TargetNumber targetNumber) {
+        int strikeCnt;
+        int ballCnt;
+
         this.playerNumber = playerNumber.getNumber();
         this.targetNumber = targetNumber.getNumber();
-
         initNumberState();
-        countStrike();
-        countBall();
+        strikeCnt = countStrike();
+        ballCnt = countBall();
 
-        generateResult(countStrike(), countBall());
-
-        return "";
+        return isClear(strikeCnt, ballCnt);
     }
 
     public int countStrike() {
@@ -56,30 +61,33 @@ public class BallCounter {
 
     public void initNumberState() {
         for (int i = 0; i < targetNumber.size(); i++) {
-            numberState.add(false);
+            numberState.set(i, false);
         }
     }
 
-    public boolean generateResult(int strikeCount, int ballCount) {
-        if (ballCount == 0 && strikeCount == 0) {
-            result = "낫싱";
-            return false;
+    public void printBallCount(int strikeCnt, int ballCnt) {
+        if (ballCnt == 0 && strikeCnt == 0) {
+            System.out.println(NOTHING);
+            return;
         }
-        if (strikeCount == MATCH_NUM) {
-            result = strikeCount + "스트라이크" +"\n" + MATCH_NUM + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-            return true;
+        if (ballCnt == 0) {
+            System.out.println(strikeCnt + STRIKE);
+            return;
         }
-        if (ballCount == 0) {
-            result = strikeCount + "스트라이크";
-            return false;
+        if (strikeCnt == 0) {
+            System.out.println(ballCnt + BALL);
+            return;
         }
-        if (strikeCount == 0) {
-            result = ballCount + "볼";
-            return false;
-        }
-        result = ballCount + "볼 " + strikeCount + "스트라이크";
-        return false;
+        System.out.println(ballCnt + BALL + " " + strikeCnt + STRIKE);
     }
 
-
+    public boolean isClear(int strikeCnt, int ballCnt) {
+        if (strikeCnt == MATCH_NUM){
+            printBallCount(strikeCnt, ballCnt);
+            System.out.println(END_MESSAGE);
+            return false;
+        }
+        printBallCount(strikeCnt, ballCnt);
+        return true;
+    }
 }

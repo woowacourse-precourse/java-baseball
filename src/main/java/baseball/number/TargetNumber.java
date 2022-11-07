@@ -17,6 +17,8 @@ public class TargetNumber implements Number {
 
     public void generateTargetNumber(){
 
+        targetNumber = new ArrayList<>();
+
         while (targetNumber.size() < NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START, END);
             String number = String.valueOf(randomNumber);

@@ -11,6 +11,6 @@ public class Application {
 
         AppConfig appConfig = new AppConfig();
         BaseballGame baseballGame = appConfig.baseballGame();
-        PlayerNumber playerNumber = appConfig.playerNumber();
+        baseballGame.start();
     }
 }

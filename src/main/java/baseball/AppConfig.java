@@ -20,6 +20,6 @@ public class AppConfig {
     }
 
     public BaseballGame baseballGame() {
-        return new BaseballGame(targetNumber(), ballCounter());
+        return new BaseballGame(playerNumber(), targetNumber(), ballCounter());
     }
 }
