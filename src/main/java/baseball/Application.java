@@ -4,11 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 /* 기능 목록
 Problem1 : 컴퓨터의 수 만들기
             (1) 1-9 중 컴퓨터의 수 하나 고르기
             (2) 3자리 수의 컴퓨터의 수 만들기
-Problem2 : 게임 시도(게임 재실행 여부 1로 두고 시도), 시작을 호출
+Problem2 : 게임 시도(게임 재실행 여부 1로 두고 시도),스트라이크 값 비교할 함수 호출
 Problem3 : 게임 시작
             (1) 사용자의 입력값을 List에 저장
 Problem3.1: 예외사항 체크
@@ -24,6 +26,8 @@ Problem6 : 게임이 끝난 후 게임 재실행 여부 받고 재실행 or Not
 Problem6.1: 재실행 여부가 잘못된 값이면 예외
  */
 public class Application {
+    static int strike = 0;
+    static int ball = 0;
     public static List<Integer> makeComputerNum(){
         int i;
         List<Integer> ComputerNum = new ArrayList<>();
@@ -39,6 +43,18 @@ public class Application {
         }
         return random;
     };
+    public static String tryGame(){
+        String trynum = "1";
+        while(!trynum.equals("2")){
+            strike = 0;
+            ball = 0;
+            getStrike();
+        }
+        return trynum;
+    }
+
+    public static int getStrike(){
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
