@@ -49,6 +49,16 @@ class ApplicationTest extends NsTest {
 //                assertThatThrownBy(() -> runException("121"))
 //                        .isInstanceOf(IllegalArgumentException.class));
 //    }
+    @Test
+    void 스트라이크_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("145", "125", "123", "2");
+                    assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
 
     @Test
     void 볼_테스트(){
