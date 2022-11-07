@@ -13,8 +13,13 @@ public class Game {
 
     private int gameState = ON;
 
-    void start() { // 게임 실행
-
+    void start() {
+        while (this.gameState == ON) {
+            setTargetNumber(targetNumber);
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            startBaseBall(targetNumber, playerNumber);
+        }
+        System.out.println("게임 종료");
     }
 
     void setTargetNumber(List<Integer> targetNumber) { // 1. 랜덤 숫자 만들기
@@ -38,8 +43,10 @@ public class Game {
 
         do {
             setUserNumber(playerNumber);
+            System.out.println(checkUserNumber(targetNumber, playerNumber));
         } while (convertListToInt(targetNumber) != convertListToInt(playerNumber));
 
+        setGameState();
     }
 
     void setUserNumber(List<Integer> playerNumber) { // 2.1 사용자에게 숫자 입력받기
@@ -52,7 +59,6 @@ public class Game {
 
         int playerNum = Integer.parseInt(inputNum);
         System.out.println(playerNum);
-
         for (int i = 100; i > 0; i /= 10) {
             playerNumber.add(playerNum / i);
             playerNum %= i;
@@ -74,6 +80,8 @@ public class Game {
     }
 
     int convertListToInt(List<Integer> List) { // 2.3 list를 integer로 바꾸기
+//        String num = String.join("", (CharSequence) List);
+
         return List.get(0) * 100 + List.get(1) * 10 + List.get(0);
     }
 
@@ -111,5 +119,14 @@ public class Game {
         if (targetNumber.indexOf(playerNumber) != playerIndex && targetNumber.contains(playerNumber))
             return ball + 1;
         return ball;
+    }
+
+    void setGameState() { // 4. 재시작 할지, 종료할지 선택
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+
+        int playerNum = Integer.parseInt(Console.readLine());
+
+        this.gameState = playerNum;
     }
 }
