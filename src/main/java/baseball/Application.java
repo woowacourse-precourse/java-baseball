@@ -120,6 +120,7 @@ public class Application {
     public static boolean isTrialCorrect(int ballCnt, int strikeCnt){
 
         if(strikeCnt == 3) {
+            System.out.println("3스트라이크");
             printGameEnd();
             return true;
         }
