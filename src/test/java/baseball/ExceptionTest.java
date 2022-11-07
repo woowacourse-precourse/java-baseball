@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ExceptionTest extends NsTest {
     @Nested
-    class IllegalArgumentException {
+    class IllegalArgumentExceptionTest {
         @Test
         void 사용자의_입력이_3자리가_아닐때() {
             assertSimpleTest(() -> assertThatThrownBy(() -> runException("1234"))
