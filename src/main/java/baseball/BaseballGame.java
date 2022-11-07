@@ -28,14 +28,8 @@ public class BaseballGame {
             System.out.print("숫자를 입력해 주세요: ");
             String input = Console.readLine();
 
-            try {
-                checkNumberInput(input);
-                System.out.println(input);
-            } catch (IllegalArgumentException e) {
-                System.out.println(input);
-                e.printStackTrace();
-                return;
-            }
+            checkNumberInput(input);
+            System.out.println(input);
 
             countStrikeOrBall();
             printResult();
@@ -69,7 +63,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean checkAnswer(String continued) throws IllegalArgumentException {
+    private boolean checkAnswer(String continued) {
         if (continued.equals("1"))
             return false;
         else if (continued.equals("2"))
