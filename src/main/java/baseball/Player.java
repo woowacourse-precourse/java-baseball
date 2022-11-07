@@ -7,38 +7,20 @@ import camp.nextstep.edu.missionutils.Console;
 public class Player {
 
     private BaseballGameManager gameManager = new BaseballGameManager();
+    private InputValidator validator = new InputValidator();
 
     public void play() {
         gameManager.createRandomNumbers();
         do {
             String input = inputAnswer();
-            isWrongInputValue(input);
             gameManager.printResult(input);
         } while ((!gameManager.isGameClear()));
-
     }
 
     private String inputAnswer() {
         String input = Console.readLine();
+        validator.isWrongInputValue(input);
         System.out.println("숫자를 입력해주세요 : " + input);
         return input;
-    }
-
-    private void isWrongInputValue(String input) {
-        if (input.length() != NUMBER_COUNT_TO_CREATED) {
-            throw new IllegalArgumentException();
-        }
-
-        if (!input.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException();
-        }
-
-        if (input.contains("0")) {
-            throw new IllegalArgumentException();
-        }
-
-        if (input.length() != input.chars().distinct().count()) {
-            throw new IllegalArgumentException();
-        }
     }
 }
