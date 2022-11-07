@@ -60,6 +60,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 사용자_번호가_유효한_숫자인지_확인_테스트_중복() {
+        String number = "133";
+        assertThatThrownBy(() -> isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 번호를_숫자로_변경하는_테스트_숫자가_아님() {
         String number = "12e";
         assertThatThrownBy(() -> getNumber(number)).isInstanceOf(IllegalArgumentException.class);
