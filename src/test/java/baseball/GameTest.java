@@ -118,6 +118,13 @@ public class GameTest extends NsTest {
         assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    @DisplayName("게임 실행 테스트")
+    @Test
+    void gameStartTest() {
+        assertRandomNumberInRangeTest(() -> {
+            run("123");
+            assertThat(output()).contains("숫자를 입력해주세요 :", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }, 1, 2, 3);
     }
 
     @Override
