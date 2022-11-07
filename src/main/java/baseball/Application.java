@@ -6,19 +6,26 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
+    private static final Processing PROCESSING = new Processing();
+
     public static void main(String[] args) throws IllegalArgumentException{
         // TODO: 프로그램 구현
-        Application.Processing processing = new Application.Processing();
-        processing.printStartMessage();
+
+        PROCESSING.printStartMessage();
         do{
-            ArrayList<String> answer = processing.makeRandomAnswer();
-            processing.startGame(answer);
+            ArrayList<String> answer = PROCESSING.makeRandomAnswer();
+            PROCESSING.startGame(answer);
         }
-        while(processing.askContinue());
+        while(PROCESSING.askContinue());
 
     }
 
+    /*
+     * Validations
+     */
     public static class Validations{
+
+        // Input Validation
         public void isCorrectInput(String inputNum){
             List<String> inputNumList = List.of(inputNum.split(""));
             if(!(isSizeThree(inputNumList) && isNumber(inputNumList)) && !inputNumList.isEmpty()){
@@ -35,6 +42,7 @@ public class Application {
             return numFilter == 3 ;
         }
 
+        // Data Validation
         public boolean checkIsItNothing(ArrayList<String> answer, ArrayList<String> userNumList){
             for (String num : userNumList){
                 if(answer.contains(num)){
@@ -50,9 +58,13 @@ public class Application {
 
     }
 
+    /*
+     * Processing
+     */
     public static class Processing {
         private final Validations validations = new Validations();
 
+        // 반복 작업
         public void startGame(ArrayList<String> answer) throws IllegalArgumentException{
             boolean flag = false ;
             while (!flag){
@@ -81,15 +93,6 @@ public class Application {
             return (ArrayList<String>) answer.stream().map(Object::toString).collect(Collectors.toList());
         }
 
-        public ArrayList<String> askInputNumber() {
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputNum = Console.readLine();
-
-            validations.isCorrectInput(inputNum);
-
-            return new ArrayList<>(Arrays.asList(inputNum.split("")));
-        }
-
         public ArrayList<String> findContainedNumbers(ArrayList<String> answer, ArrayList<String> userNumList){
             for(int i = 0 ; i < 3 ; i++){
                 String checkNum = userNumList.get(i);
@@ -100,6 +103,30 @@ public class Application {
             return userNumList;
         }
 
+
+        // 입력 요청 및 입력 값 추출
+        public ArrayList<String> askInputNumber() {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputNum = Console.readLine();
+
+            validations.isCorrectInput(inputNum);
+
+            return new ArrayList<>(Arrays.asList(inputNum.split("")));
+        }
+
+        public boolean askContinue() {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String inputNum = Console.readLine();
+            if (inputNum.equals("1")){
+                return true;
+            }else if(inputNum.equals("2")){
+                return false;
+            }else{
+                throw new IllegalArgumentException();
+            }
+        }
+
+        // 필터링 및 Data 추출
         public int countContained(ArrayList<String> containedNumbers){
             return (int) containedNumbers.stream()
                     .filter(num -> num.matches("[0-9]"))
@@ -125,6 +152,8 @@ public class Application {
             return  resultMap;
         }
 
+
+        // Print
         public void printStartMessage(){
             System.out.println("숫자 야구 게임을 시작합니다.");
         }
@@ -146,16 +175,6 @@ public class Application {
             }
         }
 
-        public boolean askContinue() {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String inputNum = Console.readLine();
-            if (inputNum.contentEquals("1")){
-                return true;
-            }else if(inputNum.contentEquals("2")){
-                return false;
-            }else{
-                throw new IllegalArgumentException();
-            }
-        }
+
     }
 }

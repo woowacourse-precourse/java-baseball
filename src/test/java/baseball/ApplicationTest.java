@@ -36,15 +36,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-    @Test
-    void 입력값_Return_Test(){
-        // given
-        ArrayList<String> answer = new ArrayList<>(){{ add("4");add("2");add("3");}};
-
-        // then
-        // readLine 메서드 특성상 테스트 시점에만 해당 메서드에 고정 값 지정 후 테스트 진행
-        assertThat(answer).isEqualTo(processing.askInputNumber());
-    }
 
     @Test
     void 낫싱_Check_Test(){
