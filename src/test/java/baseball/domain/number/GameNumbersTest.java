@@ -50,7 +50,13 @@ class GameNumbersTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"112", "1", "1234"})
+        @ValueSource(
+                strings = {
+                    "112",
+                    "1",
+                    "1234"
+                }
+        )
         @DisplayName("만약 각 문자가 중복된 값이나 길이가 3이 아닌 playerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_input_exception_test(String playerInput) {
             assertThatThrownBy(() -> new GameNumbers(playerInput))
@@ -59,7 +65,13 @@ class GameNumbersTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"012", "a12", "1 3"})
+        @ValueSource(
+                strings = {
+                    "012",
+                    "a12",
+                    "1 3"
+                }
+        )
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자가 아닌 playerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test(String playerInput) {
             assertThatThrownBy(() -> new GameNumbers(playerInput))
@@ -74,12 +86,12 @@ class GameNumbersTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "123:156:1",
-                "123:126:2",
-                "123:123:3"
-            },
-            delimiter = ':'
+                value = {
+                    "123:156:1",
+                    "123:126:2",
+                    "123:123:3"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 GameNumber를 전달하면 스트라이크를 게산해서 반환한다.")
         void success_test(String computerInput, String playerInput, long expectStrike) {
@@ -98,12 +110,12 @@ class GameNumbersTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "123:278:1",
-                "123:218:2",
-                "123:231:3"
-            },
-            delimiter = ':'
+                value = {
+                    "123:278:1",
+                    "123:218:2",
+                    "123:231:3"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 GameNumber를 전달하면 볼을 게산해서 반환한다")
         void success_test(String computerInput, String playerInput, long expectBall) {

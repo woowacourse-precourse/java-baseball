@@ -20,15 +20,15 @@ class GameComputerTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "123:456:0:0",
-                "123:145:1:0",
-                "123:132:1:2",
-                "123:451:0:1",
-                "123:123:3:0",
-                "123:312:0:3"
-            },
-            delimiter = ':'
+                value = {
+                    "123:456:0:0",
+                    "123:145:1:0",
+                    "123:132:1:2",
+                    "123:451:0:1",
+                    "123:123:3:0",
+                    "123:312:0:3"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 PlayerAnswer가 주어지면 게임 결과를 GameResult 객체로 만들어 반환한다.")
         void success_test(String computerAnswer, String playerAnswer, long strike, long ball) {
@@ -41,14 +41,14 @@ class GameComputerTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "4:0",
-                "3:1",
-                "2:2",
-                "1:3",
-                "0:4"
-            },
-            delimiter = ':'
+                value = {
+                    "4:0",
+                    "3:1",
+                    "2:2",
+                    "1:3",
+                    "0:4"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 strike, ball의 합이 4 이상인 PlayerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void too_many_answer_exception_test(long strike, long ball) {

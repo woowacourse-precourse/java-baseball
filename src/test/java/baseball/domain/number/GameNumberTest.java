@@ -25,18 +25,18 @@ class GameNumberTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "1:0",
-                "2:0",
-                "3:0",
-                "4:1",
-                "5:1",
-                "6:1",
-                "7:2",
-                "8:2",
-                "9:2"
-            },
-            delimiter = ':'
+                value = {
+                    "1:0",
+                    "2:0",
+                    "3:0",
+                    "4:1",
+                    "5:1",
+                    "6:1",
+                    "7:2",
+                    "8:2",
+                    "9:2"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 1 ~ 9까지의 number와 0 ~ 2까지의 index가 주어지면 GameNumber를 생성한다.")
         void success_test(int number, int index) {
@@ -65,18 +65,18 @@ class GameNumberTest {
     class CharIntConstructorTest extends ConstructorTestExceptionMessageConst {
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "1:0",
-                "2:0",
-                "3:0",
-                "4:1",
-                "5:1",
-                "6:1",
-                "7:2",
-                "8:2",
-                "9:2"
-            },
-            delimiter = ':'
+                value = {
+                    "1:0",
+                    "2:0",
+                    "3:0",
+                    "4:1",
+                    "5:1",
+                    "6:1",
+                    "7:2",
+                    "8:2",
+                    "9:2"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자와 0 ~ 2까지의 index가 주어지면 GameNumber를 생성한다.")
         void success_test(char numberChar, int index) {
@@ -84,7 +84,15 @@ class GameNumberTest {
         }
 
         @ParameterizedTest
-        @ValueSource(chars = {'A', 'a', '+', '-', '0'})
+        @ValueSource(
+                chars = {
+                    'A',
+                    'a',
+                    '+',
+                    '-',
+                    '0'
+                }
+        )
         @DisplayName("만약 아스키 코드 상 1 ~ 9까지의 숫자가 아니라면 IllegalArgumentException 예외가 발생한다.")
         void wrong_number_exception_test(char numberChar) {
             assertThatThrownBy(() -> new GameNumber(numberChar, 1))
@@ -122,11 +130,11 @@ class GameNumberTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "1:0",
-                "2:1"
-            },
-            delimiter = ':'
+                value = {
+                    "1:0",
+                    "2:1"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 number나 index의 값이 동일하지 않은 GameNumber가 주어지면 false를 반환한다.")
         void false_test(int number, int index) {
@@ -141,7 +149,12 @@ class GameNumberTest {
     class EqualsWithoutIndexMethodTest extends StandardGameNumberClass {
 
         @ParameterizedTest
-        @ValueSource(ints = {0, 2})
+        @ValueSource(
+                ints = {
+                    0,
+                    2
+                }
+        )
         @DisplayName("만약 number만 동일한 GameNumber가 주어지면 true를 반환한다.")
         void true_test(int index) {
             GameNumber equalsGameNumber = new GameNumber(number, index);

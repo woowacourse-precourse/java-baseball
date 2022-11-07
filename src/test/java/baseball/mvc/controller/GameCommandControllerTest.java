@@ -23,11 +23,11 @@ class GameCommandControllerTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "1:START",
-                "2:EXIT"
-            },
-            delimiter = ':'
+                value = {
+                    "1:START",
+                    "2:EXIT"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 정상적인 사용자 입력이 주어졌다면 그에 맞게 변경할 GameStatus를 반환한다.")
         void success_test(String playerInput, String gameStatusName) {
@@ -39,7 +39,15 @@ class GameCommandControllerTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"a", "+", "0", "3", "@"})
+        @ValueSource(
+                strings = {
+                    "a",
+                    "+",
+                    "0",
+                    "3",
+                    "@"
+                }
+        )
         @DisplayName("만약 정상적이지 않은 사용자 입력이 주어졌다면 IllegalArgumentException 예외가 발생한다.")
         void wrong_input_exception_test(String playerWrongInput) {
             assertThatThrownBy(() -> controller.process(playerWrongInput))

@@ -50,17 +50,17 @@ class FrontControllerTest {
 
                 @ParameterizedTest
                 @CsvSource(
-                    value = {
-                        "0:0",
-                        "1:0",
-                        "2:0",
-                        "0:1",
-                        "0:2",
-                        "1:1",
-                        "2:1",
-                        "1:2"
-                    },
-                    delimiter = ':'
+                        value = {
+                            "0:0",
+                            "1:0",
+                            "2:0",
+                            "0:1",
+                            "0:2",
+                            "1:1",
+                            "2:1",
+                            "1:2"
+                        },
+                        delimiter = ':'
                 )
                 @DisplayName("플레이어 입력 값이 3스트라이크가 아니라면 GameStatus.PLAY를 반환한다.")
                 void game_status_play_return_test(long strike, long ball) {
@@ -100,7 +100,17 @@ class FrontControllerTest {
         class ProcessMethodWrongPlayerInputTest {
 
             @ParameterizedTest
-            @ValueSource(strings = {"012", "12", "1234", "1a2", "ab2", "+1", ""})
+            @ValueSource(
+                    strings = {
+                        "012",
+                        "12",
+                        "1234",
+                        "1a2",
+                        "ab2",
+                        "+1",
+                        ""
+                    }
+            )
             @DisplayName("플레이어 입력 값과 GameStatus.PLAY가 주어지면 IllegalArgumentException 예외가 발생한다.")
             void game_status_play_exception_test(String wrongPlayerInput) {
                 standardFrontController = new FrontController();
@@ -110,7 +120,15 @@ class FrontControllerTest {
             }
 
             @ParameterizedTest
-            @ValueSource(strings = {"0", "3", "a", "+", ""})
+            @ValueSource(
+                    strings = {
+                        "0",
+                        "3",
+                        "a",
+                        "+",
+                        ""
+                    }
+            )
             @DisplayName("플레이어 입력 값과 GameStatus.END가 주어지면 IllegalArgumentException 예외가 발생한다.")
             void game_status_end_exception_test(String wrongPlayerInput) {
                 standardFrontController = new FrontController();

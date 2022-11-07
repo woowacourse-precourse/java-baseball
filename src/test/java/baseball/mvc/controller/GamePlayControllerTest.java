@@ -48,17 +48,17 @@ class GamePlayControllerTest {
 
             @ParameterizedTest
             @CsvSource(
-                value = {
-                    "0:0",
-                    "1:0",
-                    "2:0",
-                    "0:1",
-                    "0:2",
-                    "1:1",
-                    "2:1",
-                    "1:2"
-                },
-                delimiter = ':'
+                    value = {
+                        "0:0",
+                        "1:0",
+                        "2:0",
+                        "0:1",
+                        "0:2",
+                        "1:1",
+                        "2:1",
+                        "1:2"
+                    },
+                    delimiter = ':'
             )
             @DisplayName("플레이어 정답을 맞추지 못한 경우 게임 결과를 Model에 저장하고 GameStatus.PLAY를 반환한다.")
             void play_test(long strike, long ball) {
@@ -74,14 +74,14 @@ class GamePlayControllerTest {
 
             @ParameterizedTest
             @CsvSource(
-                value = {
-                    "4:0",
-                    "3:1",
-                    "2:2",
-                    "1:3",
-                    "0:4"
-                },
-                delimiter = ':'
+                    value = {
+                        "4:0",
+                        "3:1",
+                        "2:2",
+                        "1:3",
+                        "0:4"
+                    },
+                    delimiter = ':'
             )
             @DisplayName("게임 결과 중 strike와 ball의 합이 4 이상이면 IllegalArgumentException 예외가 발생한다.")
             void too_many_answer_exception_test(long strike, long ball) {

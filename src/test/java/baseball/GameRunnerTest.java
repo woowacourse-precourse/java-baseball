@@ -70,7 +70,15 @@ class GameRunnerTest extends NsTest {
         class RunMethodWrongPlayerInput {
 
             @ParameterizedTest
-            @ValueSource(strings = {"111", "12", "1234", "a12", "1 2"})
+            @ValueSource(
+                    strings = {
+                        "111",
+                        "12",
+                        "1234",
+                        "a12",
+                        "1 2"
+                    }
+            )
             @DisplayName("만약 플레이어가 정답을 입력할 때라면 IllegalArgumentException 예외가 발생한다.")
             void player_answer_input_exception_test(String wrongPlayerInput) {
                 assertSimpleTest(() ->
@@ -81,13 +89,21 @@ class GameRunnerTest extends NsTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"a", "+", "0", "3", "@", "12"})
+        @ValueSource(
+                strings = {
+                    "a",
+                    "+",
+                    "0",
+                    "3",
+                    "@",
+                    "12"
+                }
+        )
         @DisplayName("만약 플레이어가 게임 재시작 유무를 결정할 때라면 IllegalArgumentException 예외가 발생한다.")
         void player_command_input_exception_test(String wrongPlayerInput) {
             assertRandomNumberInRangeTest(
                     () -> assertThatThrownBy(() -> run("123", wrongPlayerInput))
-                            .isInstanceOf(IllegalArgumentException.class), 1, 2, 3
-            );
+                            .isInstanceOf(IllegalArgumentException.class), 1, 2, 3);
         }
     }
 

@@ -19,12 +19,12 @@ class GameHintViewTest extends OutputSettings {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "1:1",
-                "1:2",
-                "2:1"
-            },
-            delimiter = ':'
+                value = {
+                    "1:1",
+                    "1:2",
+                    "2:1"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 스트라이크와 볼이 있는 GameResult가 주어진다면 ?볼 ?스트라이크라는 형식의 문구를 출력한다.")
         void strike_and_ball_log_test(long strike, long ball) {
@@ -37,7 +37,13 @@ class GameHintViewTest extends OutputSettings {
         }
 
         @ParameterizedTest
-        @ValueSource(longs = {1L, 2L, 3L})
+        @ValueSource(
+                longs = {
+                    1L,
+                    2L,
+                    3L
+                }
+        )
         @DisplayName("만약 볼만 있는 GameResult가 주어진다면 ?볼이라는 형식의 문구를 출력한다.")
         void only_ball_log_test(long ball) {
             GameResult gameResult = new GameResult(0L, ball);
@@ -49,7 +55,13 @@ class GameHintViewTest extends OutputSettings {
         }
 
         @ParameterizedTest
-        @ValueSource(longs = {1L, 2L, 3L})
+        @ValueSource(
+                longs = {
+                    1L,
+                    2L,
+                    3L
+                }
+        )
         @DisplayName("만약 스트라이크만 있는 GameResult가 주어진다면 ?스트라이크라는 형식의 문구를 출력한다.")
         void only_strike_log_test(long strike) {
             GameResult gameResult = new GameResult(strike, 0L);

@@ -88,7 +88,17 @@ class GamePlayAdapterTest {
             }
 
             @ParameterizedTest
-            @ValueSource(strings = {"1, 012, 1234, a12, 1 3, a, 12@"})
+            @ValueSource(
+                    strings = {
+                        "1",
+                        "012",
+                        "1234",
+                        "a12",
+                        "1 3",
+                        "a",
+                        "12@"
+                    }
+            )
             @DisplayName("플레이어 정답이 유효하지 않다면 IllegalArgumentException 예외가 발생한다.")
             void illegal_argument_exception_test(String wrongPlayerInput) {
                 request.addAttribute(GameRequestKeyConst.COMPUTER_KEY, new GameComputer());

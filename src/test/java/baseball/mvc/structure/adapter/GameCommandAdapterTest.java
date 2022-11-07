@@ -75,7 +75,15 @@ class GameCommandAdapterTest {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = {"a", "+", "0", "3", "@"})
+        @ValueSource(
+                strings = {
+                    "a",
+                    "+",
+                    "0",
+                    "3",
+                    "@"
+                }
+        )
         @DisplayName("만약 handler와 유효하지 않은 플레이어 입력이 저장된 request가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void wrong_input_illegal_argument_exception_test(String playerInput) {
             request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, playerInput);

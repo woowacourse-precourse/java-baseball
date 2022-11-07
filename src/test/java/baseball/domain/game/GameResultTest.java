@@ -20,12 +20,12 @@ class GameResultTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "0:0",
-                "1:1",
-                "0:1"
-            },
-            delimiter = ':'
+                value = {
+                    "0:0",
+                    "1:1",
+                    "0:1"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 합이 3 이하인 strike, ball가 주어지면 GameResult를 생성한다.")
         void success_test(long strike, long ball) {
@@ -35,14 +35,14 @@ class GameResultTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "4:0",
-                "3:1",
-                "2:2",
-                "1:3",
-                "0:4"
-            },
-            delimiter = ':'
+                value = {
+                    "4:0",
+                    "3:1",
+                    "2:2",
+                    "1:3",
+                    "0:4"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 합이 4 이상인 strike, ball가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void too_large_size_exception(long strike, long ball) {
@@ -66,12 +66,12 @@ class GameResultTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "0:0",
-                "1:1",
-                "0:1"
-            },
-            delimiter = ':'
+                value = {
+                    "0:0",
+                    "1:1",
+                    "0:1"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 스트라이크가 0이거나 볼이 0보다 크면 false를 반환한다.")
         void false_test(long strike, long ball) {
@@ -95,12 +95,12 @@ class GameResultTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "0:0",
-                "1:1",
-                "1:0"
-            },
-            delimiter = ':'
+                value = {
+                    "0:0",
+                    "1:1",
+                    "1:0"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 스트라이크가 0보다 크거나 볼이 0이면 false를 반환한다.")
         void false_test(long strike, long ball) {
@@ -124,12 +124,12 @@ class GameResultTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "0:0",
-                "0:1",
-                "1:0"
-            },
-            delimiter = ':'
+                value = {
+                    "0:0",
+                    "0:1",
+                    "1:0"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 스트라이크가 0이거나 볼이 0이라면 false를 반환한다.")
         void false_test(long strike, long ball) {
@@ -153,12 +153,12 @@ class GameResultTest {
 
         @ParameterizedTest
         @CsvSource(
-            value = {
-                "0:0",
-                "1:2",
-                "2:1"
-            },
-            delimiter = ':'
+                value = {
+                    "0:0",
+                    "1:2",
+                    "2:1"
+                },
+                delimiter = ':'
         )
         @DisplayName("만약 스트라이크가 3이 아니라면 false를 반환한다.")
         void false_test(long strike, long ball) {
