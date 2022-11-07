@@ -39,4 +39,21 @@ public class Input {
         Set<Integer> numberSet = new HashSet<>(numbers);
         return numberSet.size() == numbers.size();
     }
+
+    public Boolean replay(){
+        Print.replay();
+        int userInput  = 0;
+        try {
+            userInput = Integer.parseInt(Console.readLine());
+        }catch (Exception e){
+            throw new IllegalArgumentException();
+        }
+
+        switch (userInput){
+            case 1: return true;
+            case 2: return false;
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
 }
