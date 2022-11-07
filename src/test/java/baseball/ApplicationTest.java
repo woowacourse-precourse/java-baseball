@@ -30,27 +30,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 랜덤숫자_3자리_생성_테스트() {
-        List<Integer> numbers = Application.makeRandomNumbers();
-
-        assertThat(numbers).hasSize(3);
-    }
-
-    @Test
-    void 랜덤숫자_범위_테스트() {
-        List<Integer> numbers = Application.makeRandomNumbers();
-
-        assertThat(numbers.get(0)).isGreaterThan(0);
-        assertThat(numbers.get(0)).isLessThan(10);
-
-        assertThat(numbers.get(1)).isGreaterThan(0);
-        assertThat(numbers.get(1)).isLessThan(10);
-
-        assertThat(numbers.get(2)).isGreaterThan(0);
-        assertThat(numbers.get(2)).isLessThan(10);
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
