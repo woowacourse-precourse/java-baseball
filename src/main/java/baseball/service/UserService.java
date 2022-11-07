@@ -66,6 +66,7 @@ public class UserService {
         }
 
         returnResult = returnResultBuilder.toString();
+
         return returnResult;
 
     }

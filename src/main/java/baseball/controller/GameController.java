@@ -27,10 +27,10 @@ public class GameController {
 
         if (checkResult.equals(finishedValue)) {
             System.out.println(FINISHED_MESSAGE);
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     public String restartGame() {
