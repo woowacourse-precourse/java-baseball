@@ -21,7 +21,7 @@
 ## (List)stringToListCreate(String word)
 - [x] stringToArray에 매개변수를 배열형태로 변환하여 선언
 - [x] arrayToList에 stringToArray을 List형태로 변화하여 선언
-- [ ] 이때 arrayTo/list에 요소가 중복인지 확인
+- [ ] 이때 arrayTo/list에 요소가 중복이면 에외 처리 실행
 - [x] arrayToList를 리턴
 
 ## (int)checkStrikeNumbers(List computerNumbers,List userNumbers)
