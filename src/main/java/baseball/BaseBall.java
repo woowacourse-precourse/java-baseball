@@ -101,4 +101,16 @@ public class BaseBall {
         }
     }
 
+    private void makeResult() {
+        if (this.ball > 0 && this.strike == 0) {
+            System.out.println(this.ball + BALL);
+        } else if (this.ball > 0 && this.strike > 0) {
+            System.out.println(this.ball + BALL + this.strike + STRIKE);
+        } else if (this.ball == 0 && this.strike > 0) {
+            System.out.println(this.strike + STRIKE);
+        } else {
+            System.out.println(NOTHING);
+        }
+    }
+
 }
