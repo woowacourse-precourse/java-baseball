@@ -24,8 +24,7 @@ public class BaseballGameManager {
 
     public void provideResult(String input) {
         calculateBallCount(input);
-        String message = getResultMessage(strikeCount, ballCount);
-        System.out.println(message);
+        System.out.println(getResultMessage(strikeCount, ballCount));
     }
 
     public boolean isGameClear() {
