@@ -4,11 +4,10 @@ import baseball.domain.BaseBallGame;
 import baseball.utils.ArrayParser;
 import baseball.utils.Constants;
 import baseball.utils.InputValueValidator;
-
 import baseball.utils.RandomNumber;
 import baseball.view.BaseBallGameView;
+
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 
 public class BaseballGameService {
 
@@ -31,6 +30,7 @@ public class BaseballGameService {
             game.setScoreZero();
             getUserGameInput();
             updateScore();
+            BaseBallGameView.printHint(game.getStrikeCount(), game.getBallCount());
         }
     }
 
