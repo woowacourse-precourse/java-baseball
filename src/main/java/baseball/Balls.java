@@ -11,7 +11,6 @@ public class Balls {
 
     public Balls(List<Ball> balls) {
         validateBallLength(balls);
-        validateNumberRange(balls);
         validateNumberDuplication(balls);
         this.balls = balls;
     }
@@ -35,13 +34,6 @@ public class Balls {
     private void validateBallLength(List<Ball> balls) {
         if (balls.size() != NUMBER_OF_BALLS) {
             throw new IllegalArgumentException(NUMBER_OF_BALLS + BaseballMessage.INVALID_NUMBER_LENGTH_MESSAGE.getMessage());
-        }
-    }
-
-    private void validateNumberRange(List<Ball> balls) {
-        if (balls.stream()
-                .anyMatch(ball -> ball.getNumber() > 9 || ball.getNumber() < 1)) {
-            throw new IllegalArgumentException(BaseballMessage.INVALID_NUMBER_RANGE_MESSAGE.getMessage());
         }
     }
 

@@ -5,6 +5,7 @@ public class Ball {
     private final int order;
 
     public Ball(int number, int order) {
+        validateNumberRange(number);
         this.number = number;
         this.order = order;
     }
@@ -32,6 +33,12 @@ public class Ball {
 
     private boolean isEqualNumberAndNotEqualOrder(Ball ball) {
         return ball.getNumber() == this.number && ball.getOrder() != this.order;
+    }
+
+    private void validateNumberRange(int number) {
+        if (number < 1 || number > 9) {
+            throw new IllegalArgumentException(BaseballMessage.INVALID_NUMBER_RANGE_MESSAGE.getMessage());
+        }
     }
 
     public int getNumber() {
