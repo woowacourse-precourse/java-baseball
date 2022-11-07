@@ -176,6 +176,7 @@ public class Application {
         if(checkedBaseballGaemOfUserAnswer.equals(String.valueOf(1))){
             baseballGameStart();
         }
+        return ;
     }
 
     public static void main(String[] args) {
