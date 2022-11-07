@@ -20,10 +20,9 @@ public class RestartOrEndGameTest {
         String input = "f1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        boolean isCorrectAnswer = true;
         //when
         Throwable throwable = catchThrowable(() -> {
-            boolean isReStart = restartOrEndGame(isCorrectAnswer);
+            boolean isReStart = restartOrEndGame();
         });
         //then
         assertThat(throwable)
@@ -35,9 +34,8 @@ public class RestartOrEndGameTest {
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        boolean isCorrectAnswer = true;
         //when
-        boolean isReStart = restartOrEndGame(isCorrectAnswer);
+        boolean isReStart = restartOrEndGame();
 
         //then
         assertThat(isReStart)
@@ -49,16 +47,15 @@ public class RestartOrEndGameTest {
         String input = "2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        boolean isCorrectAnswer = true;
         //when
-        boolean isReStart = restartOrEndGame(isCorrectAnswer);
+        boolean isReStart = restartOrEndGame();
 
         //then
         assertThat(isReStart)
                 .isEqualTo(false);
     }
 
-    public boolean restartOrEndGame(boolean isCorrectGuess) {
-        return mainFunctions.restartOrEndGame(isCorrectGuess);
+    public boolean restartOrEndGame() {
+        return mainFunctions.restartOrEndGame();
     }
 }
