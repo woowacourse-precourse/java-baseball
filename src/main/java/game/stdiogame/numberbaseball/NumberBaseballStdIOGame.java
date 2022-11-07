@@ -21,12 +21,19 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
 
     @Override
     public void finish() {
-
+        GameStatus gameStatus = getGameStatus();
+        gameStatus.setFinish(true);
+        gameStatus.setStart(false);
     }
 
     @Override
     protected void writeGameMessage() {
-
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        if (getGameStatus().isStart()) {
+            System.out.print("");
+        } else if (getGameStatus().isFinish()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 
     @Override
