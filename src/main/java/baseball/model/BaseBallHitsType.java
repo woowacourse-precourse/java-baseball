@@ -3,8 +3,8 @@ package baseball.model;
 import java.util.*;
 
 public enum BaseBallHitsType {
-    STRIKE("스트라이크", 0),
     BALL("볼", 1),
+    STRIKE("스트라이크", 0),
     NOTING("낫싱", -1);
 
     private final String ballResultType;
