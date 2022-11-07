@@ -5,22 +5,22 @@ public class Ball {
     private final int MAXIMUM_NUM_RANGE = 9;
     private final int MINIMUM_INDEX_RANGE = 0;
     private final int MAXIMUM_INDEX_RANGE = 2;
-    private final int num;
+    private final int number;
     private final int index;
 
-    public int getNum() {
-        return num;
+    public int getNumber() {
+        return number;
     }
 
     public int getIndex() {
         return index;
     }
 
-    public Ball(int num, int index) {
-        validateNumRange(num);
+    public Ball(int number, int index) {
+        validateNumRange(number);
         validateIndexRange(index);
 
-        this.num = num;
+        this.number = number;
         this.index = index;
     }
 
@@ -47,10 +47,10 @@ public class Ball {
     }
 
     private boolean isNumEqualAndIndexDifferent(Ball otherBall) {
-        return num == otherBall.getNum();
+        return number == otherBall.getNumber();
     }
 
     private boolean isNumAndIndexEqual(Ball otherBall) {
-        return num == otherBall.getNum() && index == otherBall.getIndex();
+        return number == otherBall.getNumber() && index == otherBall.getIndex();
     }
 }
