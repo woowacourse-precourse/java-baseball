@@ -20,11 +20,11 @@ public class UserAnswerValidator {
     }
 
     public void validateUserAnswer(String userAnswer) {
-        if (!checkNumber(userAnswer)) {
-            throw new IllegalArgumentException(ErrorMessage.NUMERIC_INPUT_EXCEPTION);
-        }
         if (!checkLength(userAnswer)) {
             throw new IllegalArgumentException(ErrorMessage.NUMERIC_LENGTH_EXCEPTION);
+        }
+        if (!checkNumber(userAnswer)) {
+            throw new IllegalArgumentException(ErrorMessage.NUMERIC_INPUT_EXCEPTION);
         }
         if (!checkSameNumber(userAnswer)) {
             throw new IllegalArgumentException(ErrorMessage.SAME_NUMBER_EXCEPTION);
