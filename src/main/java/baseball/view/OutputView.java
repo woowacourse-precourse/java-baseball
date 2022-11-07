@@ -14,18 +14,18 @@ public class OutputView {
     }
 
     public static void printStrikeAndBall(int strike, int ball) {
-        String result = String.join(SPACE_DELIMITER, printBall(ball), printStrike(strike));
+        String result = String.join(SPACE_DELIMITER, getBallMessage(ball), getStrikeMessage(strike));
         System.out.println(result.trim());
     }
 
-    private static String printStrike(int strike) {
+    private static String getStrikeMessage(int strike) {
         if (strike == 0) {
             return NO_MESSAGE;
         }
         return String.format(STRIKE_MESSAGE, strike);
     }
 
-    private static String printBall(int ball) {
+    private static String getBallMessage(int ball) {
         if (ball == 0) {
             return NO_MESSAGE;
         }
