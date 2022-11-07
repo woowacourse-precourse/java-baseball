@@ -1,19 +1,18 @@
 package baseball.excpetion;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class NumberException {
 
     public void validNumberLength(String input){
         if(input.length()!=3){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3자리 숫자를 입력하세요.");
         }
     }
     public void validContainLetter(String input){
         if(input.matches("^[1-9]")){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("0을 제외한 숫자만 입력해주세요.");
         }
     }
     public void validDuplicateNumber(String input){
@@ -22,12 +21,12 @@ public class NumberException {
             number.add(input.charAt(i));
         }
         if(number.size()!=3){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복되는 숫자를 입력하지 마세요.");
         }
     }
     public void validOption(String option){
-        if(option !="1" || option !="2" ){
-            throw new IllegalArgumentException();
+        if(!option.equals("1") && !option.equals("2") ){
+            throw new IllegalArgumentException("숫자 1 과 2에서 고르세요.");
         }
     }
 }

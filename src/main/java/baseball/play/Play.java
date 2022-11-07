@@ -24,44 +24,58 @@ public class Play {
     private UserNumber userNumber;
     private List<Integer> userNumberList;
     private NumberException numberException;
+    private int strike =0;
 
     public Play(){
         computerNumber = new ComputerNumber();
-        computerNumberList = new ArrayList<>();
 
         userNumber = new UserNumber();
-        userNumberList = new ArrayList<>();
 
         numberException = new NumberException();
 
     }
+
+
     public void playBaseball(){
         computerNumberList = computerNumber.generateNumber();
+        while (true) {
+            System.out.print(INPUT_MESSAGE);
+            userNumberList = userNumber.inputUserNumber();
+            boolean result = getResult(userNumberList, computerNumberList);
+            if(!result){
+                break;
+            }
+        }
+        restartGame();
 
-        System.out.print(INPUT_MESSAGE);
-        userNumberList = userNumber.inputUserNumber();
-
-        getResult(userNumberList,computerNumberList);
 
     }
-    public void getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
+    public boolean getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
         int strike = checkStrike(userNumberList,computerNumberList);
         int ball = checkBall(userNumberList,computerNumberList);
-        String option = "";
-        if(strike!=0 && ball==0) {
-            System.out.println(strike+STRIKE_MESSAGE);
-        }
-        if(strike==3){
-            System.out.println(WIN_MESSAGE);
-            System.out.println(OPTION_MESSAGE);
-            restart();
-        }
-        if(strike==0 && ball!=0){
-            System.out.println(ball+BALL_MESSAGE);
-        }
         if(strike==0 && ball ==0){
             System.out.println(NOTHING_MESSAGE);
+            return true;
         }
+        if(strike!=0 && ball!=0){
+            System.out.print(ball+BALL_MESSAGE+" ");
+            System.out.println(strike+STRIKE_MESSAGE);
+            return true;
+        }
+        if(strike<3 && ball == 0) {
+            System.out.println(strike+STRIKE_MESSAGE);
+            return true;
+        }
+        if(ball!=0 && strike == 0){
+            System.out.println(ball+BALL_MESSAGE);
+            return true;
+        }
+        if (strike==3){
+            System.out.println(strike+STRIKE_MESSAGE);
+            System.out.println(WIN_MESSAGE);
+            System.out.println(OPTION_MESSAGE);
+        }
+        return false;
 
     }
 
@@ -85,10 +99,26 @@ public class Play {
         return ball;
     }
 
-    public void restart() {
-        String option = Console.readLine();
-        numberException.validOption(option);
-        if (Integer.parseInt(option) == 1) {
+    public void continueGame(int strike){
+        if(strike!=3){
+            playBaseball();
+        }
+        else{
+            String inputOption = Console.readLine();
+            restart(inputOption);
+        }
+
+    }
+    public void restart(String inputOption) {
+//        numberException.validOption(inputOption);
+        if (inputOption.equals("1")) {
+            playBaseball();
+        }
+    }
+    public void restartGame(){
+        String inputOption = Console.readLine();
+        numberException.validOption(inputOption);
+        if(inputOption.equals("1")){
             playBaseball();
         }
     }

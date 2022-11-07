@@ -9,17 +9,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserNumber {
-    private String userNumber;
-    private List<Integer> userNumberList;
     private NumberException numberException;
+
     public UserNumber(){
-        userNumberList = new ArrayList<>();
         numberException = new NumberException();
+
     }
 
     public List<Integer> inputUserNumber(){
-        userNumber = Console.readLine();
-        numberException.validContainLetter(userNumber);
+        String userNumber = Console.readLine();
+        numberException.validNumberLength(userNumber);
         numberException.validDuplicateNumber(userNumber);
         numberException.validContainLetter(userNumber);
         return stringToList(userNumber);
@@ -27,8 +26,10 @@ public class UserNumber {
     }
 
     public List<Integer> stringToList(String userNumber){
-        userNumberList = Arrays.stream(userNumber.split("")).mapToInt(Integer::parseInt)
-                .boxed().collect(Collectors.toList());
+        List<Integer> userNumberList = new ArrayList<>();
+        for(int i=0; i<userNumber.length(); i++){
+            userNumberList.add(Integer.parseInt(String.valueOf(userNumber.charAt(i))));
+        }
         return userNumberList;
     }
 }
