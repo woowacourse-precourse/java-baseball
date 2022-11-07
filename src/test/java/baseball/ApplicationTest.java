@@ -56,6 +56,12 @@ class ApplicationTest extends NsTest {
         assertThat(true).isEqualTo(Application.checkUserNumberIsDuplicate(input));
     }
 
+    @Test
+    void checkUserNumberTest() {
+
+        assertThatThrownBy(() -> Application.checkUserNumber("A123")).isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
