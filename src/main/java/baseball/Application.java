@@ -19,6 +19,9 @@ public class Application {
 
             int endStatus = playGame(computer);
 
+            if (checkEndStatus(endStatus)) {
+                break;
+            }
         }
     }
 
@@ -142,5 +145,12 @@ public class Application {
         int endStatus = Integer.parseInt(Console.readLine());
 
         return endStatus;
+    }
+
+    private static boolean checkEndStatus(int endStatus) {
+        if(endStatus == 2){
+            return true;
+        }
+        return false;
     }
 }
