@@ -1,6 +1,7 @@
 package baseball;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static java.util.Arrays.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -142,107 +143,139 @@ public class BaseballGameTest extends NsTest {
         @Test
         void case1(){
             inputUserValue = "012";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case2(){
             inputUserValue = "1";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case3() {
             inputUserValue = "12";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case4(){
             inputUserValue = "1234";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case5(){
             inputUserValue = "000";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case6(){
             inputUserValue = "112";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case7(){
             inputUserValue = "121";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case8(){
             inputUserValue = "211";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case9(){
             inputUserValue = "111";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case10(){
             inputUserValue = "1.11";
-            assertThatThrownBy(() -> Application.validUserNumbers(inputUserValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1부터 9까지의 서로 다른 3자리의 양의 정수를 입력하세요.", inputUserValue));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case11(){
             inputGameOption = "0";
-            assertThatThrownBy(() -> Application.validGameOption(inputGameOption))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1 또는 2를 입력하세요", inputGameOption));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputGameOption))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case12(){
             inputGameOption = "-1";
-            assertThatThrownBy(() -> Application.validGameOption(inputGameOption))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1 또는 2를 입력하세요", inputGameOption));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputGameOption))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case13(){
             inputGameOption = "ㅂ";
-            assertThatThrownBy(() -> Application.validGameOption(inputGameOption))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1 또는 2를 입력하세요", inputGameOption));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputGameOption))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case14(){
             inputGameOption = "@";
-            assertThatThrownBy(() -> Application.validGameOption(inputGameOption))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1 또는 2를 입력하세요", inputGameOption));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputGameOption))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
         @Test
         void case15(){
             inputGameOption = "02";
-            assertThatThrownBy(() -> Application.validGameOption(inputGameOption))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(String.join("1 또는 2를 입력하세요", inputGameOption));
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputGameOption))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @Test
+        void case16(){
+            inputUserValue = " ";
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputUserValue))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+        @Test
+        void case17(){
+            inputGameOption = " ";
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(inputGameOption))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
         }
     }
 
