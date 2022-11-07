@@ -24,4 +24,9 @@ public class Application {
     private static void printAskInputText(String txt){
         System.out.printf(txt);
     }
+    private static String getInput(){
+        String input="";
+        input = Console.readLine();
+        return input;
+    }
 }
