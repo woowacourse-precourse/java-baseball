@@ -81,4 +81,9 @@ public class BaseBall {
         return inputList;
     }
 
+    private List<String> getList(String s) {
+        return Arrays.asList(s.split(""));
+    }
+
+
 }
