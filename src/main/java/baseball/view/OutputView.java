@@ -17,6 +17,11 @@ public class OutputView {
             System.out.println(ballCount + Constant.BALL + strikeCount + Constant.STRIKE);
         }
 
+        public static void printMissionCompleteMessage() {
+            System.out.println(Constant.MISSION_COMPLETE_MESSAGE);
+        }
+
+
     }
 
 
