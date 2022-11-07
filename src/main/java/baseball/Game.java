@@ -1,9 +1,7 @@
 package features;
 
-
 import configuration.AppConfig;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Game {
 

@@ -1,5 +1,5 @@
-입package configuration;
 
+import configuration.Factory;
 import extract.Validation;
 import features.Game;
 import features.Hint;

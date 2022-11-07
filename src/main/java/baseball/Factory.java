@@ -1,5 +1,6 @@
 package configuration;
 
+
 import java.util.Map;
 
 public interface Factory {

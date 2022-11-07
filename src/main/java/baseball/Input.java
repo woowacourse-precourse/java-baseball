@@ -49,4 +49,5 @@ public class Input extends Exception{
     private static Character getPut(int key, char indexValue) {
         return userRepository.put(key, indexValue);
     }
+
 }
