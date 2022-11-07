@@ -55,7 +55,7 @@ public class Application {
 
             printResult(strikes, balls);
 
-            equalNumber = equalNumber(strikes);
+            equalNumber = threeStrikes(strikes);
         }
     }
 
@@ -128,17 +128,7 @@ public class Application {
         return count;
     }
 
-    public static boolean isNothing(int strikeCount, int ballCount) {
-        return strikeCount == 0 && ballCount == 0;
-    }
-
-    public static boolean equalNumber(int strikeCount) {
-        return strikeCount == 3;
-    }
-
     public static void printResult(int strikes, int balls) {
-
-        boolean nothing = isNothing(strikes, balls);
 
         if (strikes + balls == 0) {
             System.out.println("낫싱");
@@ -156,5 +146,10 @@ public class Application {
         }
 
         System.out.println(balls + "볼 " + strikes + "스트라이크");
+    }
+
+    public static boolean threeStrikes(int strikes) {
+
+        return strikes == 3;
     }
 }
