@@ -3,6 +3,8 @@ package baseball.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -13,8 +15,11 @@ class BallsTest {
     @DisplayName("Balls가 생성된다.")
     @Test
     void createBalls() {
-        Balls balls = new Balls("123");
-        assertThat(balls.getBalls())
+        Balls balls1 = new Balls("123");
+        Balls balls2 = new Balls(List.of(1, 2, 3));
+        assertThat(balls1.getBalls())
+                .containsExactly(new Ball(0, 1), new Ball(1, 2), new Ball(2, 3));
+        assertThat(balls2.getBalls())
                 .containsExactly(new Ball(0, 1), new Ball(1, 2), new Ball(2, 3));
     }
 

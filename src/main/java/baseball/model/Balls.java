@@ -1,16 +1,28 @@
 package baseball.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Balls {
 
     public static final int BALLS_SIZE = 3;
 
-    private final List<Ball> balls = new ArrayList<>();
+    private List<Ball> balls = new ArrayList<>();
+
+    public Balls(List<Integer> balls) {
+        if (balls == null) {
+            throw new IllegalArgumentException("볼이 생성되지 않았습니다.");
+        }
+        this.balls = mapToBalls(balls);
+    }
+
+    private List<Ball> mapToBalls(List<Integer> inputBalls) {
+        List<Ball> balls = new ArrayList<>();
+        for (int index = 0; index < inputBalls.size(); index++) {
+            balls.add(new Ball(index, inputBalls.get(index)));
+        }
+        return balls;
+    }
 
     public Balls(String inputBalls) {
         String[] splitBalls = inputBalls.split("");
