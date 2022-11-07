@@ -10,9 +10,23 @@ public class Service {
 
     public int findBall(int score, int input) {
         int count = 0;
-        if (Objects.equals(score / 100, input / 10 % 10) || Objects.equals(score / 100, input % 10)) count++;
-        if (Objects.equals(score / 10 % 10, input / 100) || Objects.equals(score / 10 % 10, input % 10)) count++;
-        if (Objects.equals(score % 10, input / 100) || Objects.equals(score % 10, input / 10 % 10)) count++;
+        for (int i = 0; i < 3; i++) {
+            count += findDeepBall(score, i, input);
+            score /= 10;
+        }
+        return count;
+    }
+
+    private static int findDeepBall(int score, int i, int input) {
+        int count = 0;
+        for (int j = 0; j < 3; j++) {
+            if (Objects.equals(i, j)) {
+                input /= 10;
+                continue;
+            }
+            if (Objects.equals(input % 10, score % 10)) count++;
+            input /= 10;
+        }
         return count;
     }
 
