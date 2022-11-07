@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.utils;
 
 import baseball.validator.NumberValidator;
 import camp.nextstep.edu.missionutils.Console;
