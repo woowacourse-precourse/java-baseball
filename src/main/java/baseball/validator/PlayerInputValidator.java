@@ -14,10 +14,16 @@ public class PlayerInputValidator {
             int digit = changeToDigit(input.charAt(i));
             digitList.add(digit);
         }
-        checkSizeOfInput(digitList);
+        checkSizeOfInput(input);
         checkNumbersUnique(digitList);
 
         return digitList;
+    }
+
+    public void checkResumeInput(String input) {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException(SystemMessage.INPUT_IS_NOT_START_OR_STOP.getMessage());
+        }
     }
 
     private int changeToDigit(Character singleLetter) {
@@ -33,8 +39,8 @@ public class PlayerInputValidator {
         }
     }
 
-    private void checkSizeOfInput(List<Integer> digitList) {
-        if (digitList.size() != 3) {
+    private void checkSizeOfInput(String input) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException(SystemMessage.INPUT_LENGTH_IS_NOT_THREE.getMessage());
         }
     }

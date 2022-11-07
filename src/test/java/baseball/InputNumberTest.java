@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputNumberTest {
 
-    GameController gameController = new GameController();
     PlayerInputValidator playerInputValidator = new PlayerInputValidator();
 
     @Test
