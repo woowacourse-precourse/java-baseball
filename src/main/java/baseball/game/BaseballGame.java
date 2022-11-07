@@ -27,7 +27,8 @@ public class BaseballGame implements Game {
         printGameStartMessage();
         setComputerNumbers();
         do {
-            input();
+            String playerInput = input();
+            setPlayerNumbers(playerInput);
             execute();
             printResult();
         } while (isNotCorrect());
@@ -56,13 +57,13 @@ public class BaseballGame implements Game {
         return this.strike != GOAL_DIGIT;
     }
 
-    private void input() {
+    private String input() {
         printInputMessage();
         String playerInput = Console.readLine();
         if (isInvalid(playerInput)) {
             throw new IllegalArgumentException();
         }
-        setPlayerNumbers(playerInput);
+        return playerInput;
     }
 
     private void printInputMessage() {
