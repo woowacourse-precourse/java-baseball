@@ -9,6 +9,95 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    GameController gameController = new GameController();
+    Computer computer = new Computer();
+
+    @Test
+    void should_Fail_When_randomNumberOverlap() {
+        String randomNumber = computer.createRandomNumber();
+        assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(1));
+        assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(2));
+        assertThat(randomNumber.charAt(1)).isNotEqualTo(randomNumber.charAt(2));
+    }
+
+    @Test
+    void should_Fail_When_randomNumberLengthIsNot3() {
+        String randomNumber = computer.createRandomNumber();
+        assertThat(randomNumber.length()).isEqualTo(3);
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberOverlap() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberLengthIsNot3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberIsNotDigit() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("number"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_NumberContain0() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("102"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void should_3Strike_When_allSame() {
+        String randomNumber = "123";
+        String userNumber = "123";
+        String gameResult = "3스트라이크";
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+    }
+
+    @Test
+    void should_Strike_When_SamePositionSameNumber() {
+        String randomNumber = "123";
+        String userNumber = "145";
+        String gameResult = "1스트라이크";
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+    }
+
+    @Test
+    void should_Ball_When_SameNumber() {
+        String randomNumber = "123";
+        String userNumber = "451";
+        String gameResult = "1볼";
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+    }
+
+    @Test
+    void should_Nothing_When_NothingSame() {
+        String randomNumber = "123";
+        String userNumber = "456";
+        String gameResult = "낫싱";
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+    }
+
+    @Test
+    void should_IllegalArgumentException_When_DigitIsNot1or2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
