@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.Constants.INPUT_LENGTH;
+import static baseball.model.Constants.INPUT_LENGTH;
+import static baseball.model.Utils.isNotDuplicate;
+import static baseball.model.Utils.isOneToNine;
 
 
 public class UserNumGenerator {
@@ -21,17 +23,6 @@ public class UserNumGenerator {
         return Arrays.asList(input.split(""))
                 .stream().map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
-    }
-
-    public boolean isOneToNine(String input) {
-        return input != null && input.matches("[1-9]+");
-    }
-
-    public boolean isNotDuplicate(String input) {
-        return Arrays.asList(input.split(""))
-                .stream()
-                .distinct()
-                .count() == INPUT_LENGTH;
     }
 
     public boolean isValid(String input) {
