@@ -50,9 +50,32 @@ public class Application {
         }
         return integerList;
     }
+    private static int getRepeat(int repeat, List<Integer> computerIntegerList) {
+        while(true){
+            System.out.print("숫자를 입력해주세요 : ");
 
-    public static List<Integer> getUserIntegerList() {
-        String userString = Console.readLine();
+            String userString = Console.readLine();
+            List<Integer> userIntegerList = getUserIntegerList(userString);
+
+            Result result = new Result();
+            result.countStrikeAndBall(userIntegerList, computerIntegerList);
+            if(result.ball==0 && result.strike ==0){
+                System.out.println("낫싱");
+            }
+            if(result.ball!=0){
+                System.out.print(result.ball+"볼 ");
+            }
+            if(result.strike!=0){
+                System.out.println(result.strike+"스트라이크");
+            }
+            if(result.strike==3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하면 2를 입력하세요.");
+                return Integer.parseInt(Console.readLine())-1;
+            }
+        }
+    }
+    public static List<Integer> getUserIntegerList(String userString) {
         checkUserInput(userString);
         return StringToIntegerList(userString);
     }
