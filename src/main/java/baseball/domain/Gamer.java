@@ -20,6 +20,10 @@ public class Gamer {
         return toList(numbers);
     }
 
+    public String inputReset() {
+        return Console.readLine();
+    }
+
     private int[] toIntArray(String inputNumbers) {
         return Stream.of(inputNumbers.split("")).mapToInt(Integer::parseInt).toArray();
     }

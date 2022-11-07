@@ -1,6 +1,10 @@
 package baseball.domain;
 
+import baseball.constant.Constant;
+
 import java.util.List;
+
+import static baseball.constant.Constant.*;
 
 public class Rule {
     public void getHint(List<Integer> numbers, List<Integer> computerNumbers) {
@@ -15,5 +19,9 @@ public class Rule {
         }
 
         System.out.println(Hint.getHintByCount());
+    }
+
+    public boolean isReset(String number) {
+        return number.equals(RESET_GAME);
     }
 }
