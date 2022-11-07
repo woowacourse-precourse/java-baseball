@@ -4,14 +4,18 @@ import baseball.model.Target;
 import baseball.type.GameStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import java.util.List;
 
 public class Game {
-    private GameStatus gameStatus;
+    private GameStatus gameStatus = GameStatus.InProgress;
     private Target target;
 
     public Game() {
-        this.gameStatus = GameStatus.InProgress;
         this.target = new Target();
+    }
+
+    public Game(List<Integer> testTargetNumberList) {
+        this.target = new Target(testTargetNumberList);
     }
 
     public void repeatUntilEnd() {

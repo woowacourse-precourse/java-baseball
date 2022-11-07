@@ -6,7 +6,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Target {
-    private List<Integer> targetNumberList = new ArrayList<>(Arrays.asList(0, 0, 0));
+    private List<Integer> targetNumberList;
+
+    public Target() {
+        this.targetNumberList = new ArrayList<>(Arrays.asList(0, 0, 0));
+    }
+
+    public Target(List<Integer> testTargetNumberList) {
+        this.targetNumberList = testTargetNumberList;
+    }
 
     public void reset() {
         setTargetIntoZeroList();
