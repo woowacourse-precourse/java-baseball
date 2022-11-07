@@ -22,4 +22,11 @@ public class ArrayNumber {
     public int[] getDigits() {
         return this.digits;
     }
+    private boolean isNotDuplicate(String input) {
+        Set<Character> set = new HashSet<>();
+        for(char s: input.toCharArray()) {
+            set.add(s);
+        }
+        return input.length() == set.size();
+    }
 }
