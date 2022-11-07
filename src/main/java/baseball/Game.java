@@ -20,6 +20,7 @@ public class Game {
 
             endPoint = checkScore(strike, ball);
         }
+
         endGame(gameException);
     }
 
