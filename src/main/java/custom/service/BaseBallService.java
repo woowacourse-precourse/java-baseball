@@ -5,6 +5,9 @@ import custom.dto.Response;
 import custom.service.vo.ReTry;
 import custom.service.vo.Score;
 import custom.table.Table;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BaseBallService {
 
@@ -15,12 +18,18 @@ public class BaseBallService {
     }
 
     public Response init() {
-        StringBuilder number = new StringBuilder();
-        for (int i = 0; i < 3; ++i) {
+        List<Integer> list = new ArrayList<>();
+        while (list.size() < 3) {
             int temp = Randoms.pickNumberInRange(0, 9);
-            number.append(temp);
+            if (list.contains(temp)) {
+                continue;
+            }
+            list.add(temp);
         }
-        table.setNumber(number.toString());
+        String number = list.stream()
+            .map(String::valueOf)
+            .collect(Collectors.joining(""));
+        table.setNumber(number);
         return Response.endOf("데이터 생성 완료");
     }
 
