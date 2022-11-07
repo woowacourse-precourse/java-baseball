@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumberGenerator {
-    public static List<Integer> randomNumber() {
+    public static List<Integer> randomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
 
         while (randomNumbers.size() < 3) {

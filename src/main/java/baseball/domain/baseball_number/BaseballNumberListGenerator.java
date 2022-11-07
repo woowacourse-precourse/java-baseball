@@ -5,7 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BaseballNumberListGenerator {
-    public static List<BaseballNumber> baseballNumberList(List<Integer> randomNumbers) {
+    public static List<BaseballNumber> baseballNumberListOfRandomNumbers() {
+        List<Integer> randomNumbers = RandomNumberGenerator.randomNumbers();
         return IntStream.range(0, 3)
                 .mapToObj(idx -> new BaseballNumber(idx, randomNumbers.get(idx)))
                 .collect(Collectors.toList());
@@ -19,5 +20,4 @@ public class BaseballNumberListGenerator {
                 ))
                 .collect(Collectors.toList());
     }
-
 }

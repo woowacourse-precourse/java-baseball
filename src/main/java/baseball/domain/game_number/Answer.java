@@ -4,15 +4,14 @@ import baseball.domain.baseball_number.BaseballNumber;
 
 import java.util.List;
 
-import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
-import static baseball.domain.baseball_number.RandomNumberGenerator.randomNumber;
+import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberListOfRandomNumbers;
 
 public class Answer {
 
     private final List<BaseballNumber> answer;
 
     public Answer() {
-        this.answer = baseballNumberList(randomNumber());
+        this.answer = baseballNumberListOfRandomNumbers();
     }
 
     public CountResult ballAndStrikeCount(Guess guess) {
