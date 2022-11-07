@@ -34,5 +34,13 @@ public class GameService {
         strike = Constant.STRIKE_DEFAULT;
         ball = Constant.BALL_DEFAULT;
     }
+
+    public List<Integer> getComputerRandomNumbers() {
+        computer.setComputerRandomNumberList();
+        List<Integer> computerRandomNumberList =computer.getComputerRandomNumberList();
+        return computerRandomNumberList;
+    }
+
+
 }
 
