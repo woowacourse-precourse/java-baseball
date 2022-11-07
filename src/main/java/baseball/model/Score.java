@@ -7,8 +7,8 @@ public class Score {
     public static final String SPACE = " ";
     public static final int MAX_BASEBALL_LENGTH = 3;
 
-    private int strike;
-    private int ball;
+    private final int strike;
+    private final int ball;
 
     public Score(int strike, int ball) {
         validateUnderThree(strike, ball);
@@ -23,7 +23,7 @@ public class Score {
     }
 
     private static boolean isOverThree(int strike, int ball) {
-        return strike + ball > 3;
+        return strike + ball > MAX_BASEBALL_LENGTH;
     }
 
     public String makeResultMessage(String ballMessage, String strikeMessage, String nothingMessage) {
@@ -47,11 +47,11 @@ public class Score {
     }
 
     private boolean isZeroBall() {
-        return ball == 0 || strike != 0;
+        return ball == 0 && strike != 0;
     }
 
     private boolean isZeroStrike() {
-        return strike == 0 || ball != 0;
+        return strike == 0 && ball != 0;
     }
 
     private String makeMessage(int score, String message) {
