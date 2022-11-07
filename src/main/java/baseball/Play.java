@@ -11,6 +11,10 @@ public class Play {
 
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumber = Console.readLine();
+        if (!Exception.isNumber(playerNumber) || !Exception.isThreeNumber(playerNumber) || Exception.isRedundancy(playerNumber)) {
+            throw new IllegalArgumentException("3자리의 서로 다른 숫자가 아닙니다.");
+        }
+
     }
     public static String createThreeNumber() {
         int size = 0;
