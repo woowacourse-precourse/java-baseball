@@ -34,4 +34,12 @@ public class GameController {
         player = new Player();
         player.setPlayerNumbers(playerNumber);
     }
+
+    public Boolean isGameSuccess() {
+        judge = new Judge(computer, player);
+
+        Boolean gameSuccess = judge.isGameSuccess();
+        printSuccessOrFailHint(gameSuccess);
+        return gameSuccess;
+    }
 }
