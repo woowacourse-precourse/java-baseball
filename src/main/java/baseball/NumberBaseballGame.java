@@ -31,10 +31,11 @@ public class NumberBaseballGame {
 
     public boolean checkGameEnd() {
         if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String response = Console.readLine();
             if (response.equals("1")) {
+                readyNewGame();
                 return true;
             }
             if (response.equals("2")) {
@@ -43,6 +44,11 @@ public class NumberBaseballGame {
             throw new IllegalArgumentException("잘못된 입력입니다. 1 또는 2를 입력해주세요.");
         }
         return true;
+    }
+
+    public void readyNewGame(){
+        computerNumber.clear();
+        getRandomThreeDigitNumber();
     }
 
     public void validateUserNumber(){
