@@ -25,14 +25,14 @@ public class BaseballGameTest {
                 .isEqualTo(new Hints(List.of(Hint.BALL, Hint.STRIKE, Hint.BALL)));
     }
 
-    @DisplayName("힌트 콜렉션의 스트라이크 3개면 true를 반환한다.")
+    @DisplayName("힌트 콜렉션의 스트라이크 3개면 false를 반환한다.")
     @Test
-    void isEnd() {
+    void isNotEnd() {
         Assertions.assertAll(
-                () -> assertThat(baseballGame.isEnd(new Hints(List.of(Hint.STRIKE, Hint.STRIKE, Hint.STRIKE))))
-                        .isTrue(),
-                () -> assertThat(baseballGame.isEnd(new Hints(List.of(Hint.STRIKE, Hint.STRIKE, Hint.BALL))))
-                        .isFalse()
+                () -> assertThat(baseballGame.isNotEnd(new Hints(List.of(Hint.STRIKE, Hint.STRIKE, Hint.STRIKE))))
+                        .isFalse(),
+                () -> assertThat(baseballGame.isNotEnd(new Hints(List.of(Hint.STRIKE, Hint.STRIKE, Hint.BALL))))
+                        .isTrue()
         );
     }
 

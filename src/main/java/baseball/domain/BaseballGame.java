@@ -15,8 +15,8 @@ public class BaseballGame {
         return this.numbers.match(numbers);
     }
 
-    public boolean isEnd(Hints hints) {
-        return hints.count(Hint.STRIKE) == RESULT_END;
+    public boolean isNotEnd(Hints hints) {
+        return hints.count(Hint.STRIKE) != RESULT_END;
     }
 
     public boolean isRestart(int number) {

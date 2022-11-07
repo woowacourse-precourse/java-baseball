@@ -31,7 +31,7 @@ public class BaseballController {
     }
 
     private void endGame(BaseballGame baseballGame, Hints hints) {
-        if (!baseballGame.isEnd(hints)) {
+        if (baseballGame.isNotEnd(hints)) {
             play(baseballGame);
         }
     }
