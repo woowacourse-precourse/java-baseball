@@ -43,9 +43,21 @@ public class Player {
     public void replay() {
         System.out.println(replayMessage);
         String replay = Console.readLine();
+
+        replayValidationCheck(replay);
         this.replay = replay;
     }
 
+    public void replayValidationCheck(String input) {
+        //IllegalArgumentException 발생 처리
+        //입력이 없는 경우
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("입력을 해야합니다");
+        }
+        //1, 2 값이 아닌 경우
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다");
+        }
     }
 
     public String getInput() {
