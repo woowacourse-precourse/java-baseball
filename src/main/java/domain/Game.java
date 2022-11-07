@@ -6,10 +6,13 @@ public class Game {
     int strike;
     int ball;
 
+    public int[] getComputerNumber() {
+        return computerNumber;
+    }
+
     public void setComputerNumber(int[] randomNumber) {
         computerNumber = randomNumber;
     }
-
     public void initStrike() {
         strike = 0;
     }
