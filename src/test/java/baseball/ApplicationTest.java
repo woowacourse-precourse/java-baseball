@@ -34,6 +34,11 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
 
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
         // 각 자리가 서로 다른 숫자인지
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("111"))
