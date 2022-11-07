@@ -6,12 +6,16 @@ public class Game {
     private ScoreJudge scoreJudge;
     private CreateRandom createrandom;
 
+    private static final String ENDOFGAME  = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String ASKRESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     public Game() {
         this.scoreJudge = new ScoreJudge();
         this.createrandom = new CreateRandom();
     }
 
     public void startGame() {
+        createrandom.initializer();
         String result = "";
         int[] random = createrandom.makeRandomNums();
 
@@ -19,8 +23,8 @@ public class Game {
     }
 
     public int askRegame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(ENDOFGAME);
+        System.out.println(ASKRESTART);
 
         int input = Integer.parseInt(Console.readLine());
 
