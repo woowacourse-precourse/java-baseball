@@ -12,7 +12,7 @@ public class Application {
         computer.start();
         while (!computer.finished()) {
             Integer userInput = computer.getUserInput(user);
-            computer.guessNumber(userInput);
+            computer.guessNumber(userInput, user);
         }
     }
 }

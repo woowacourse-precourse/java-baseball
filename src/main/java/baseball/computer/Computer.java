@@ -10,6 +10,23 @@ public class Computer {
     private List<Integer> answers;
     private boolean finished;
 
+    private void setFinish(User user) {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        String userInput = user.getUserInput();
+
+        if (!Validator.isInteger(userInput))
+            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        Integer input = Integer.parseInt(userInput);
+        if (!Validator.isValidAnswer(input))
+            throw new IllegalArgumentException("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        if (input == 1)
+            start();
+        else
+            finished = true;
+    }
+
     private List<Integer> generateRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -22,7 +39,7 @@ public class Computer {
         return computer;
     }
 
-    public void guessNumber(Integer n) {
+    public void guessNumber(Integer n, User user) {
         int strike = 0;
         int ball = 0;
 
@@ -46,6 +63,7 @@ public class Computer {
 
         if (strike == 3) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            setFinish(user);
         } else if (strike > 0 && ball > 0) {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         } else if (ball > 0) {
