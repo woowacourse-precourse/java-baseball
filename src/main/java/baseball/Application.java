@@ -10,7 +10,7 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         String answer;
         int[] answersplit = new int[3];
-        boolean again = true;
+        boolean again = true, runstop = false;
 
         while(computer.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -29,6 +29,11 @@ public class Application {
             }
             for(int i=0;i<3;i++){
                 answersplit[i] = answer.charAt(i) - '0';
+                if(answersplit[i]==0)
+                    runstop = true;
+            }
+            if(runstop == true){
+                throw new IllegalArgumentException();
             }
         }
 
