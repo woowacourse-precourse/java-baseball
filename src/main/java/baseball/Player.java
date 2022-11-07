@@ -22,7 +22,7 @@ public class Player {
             throw new IllegalArgumentException("숫자 3개만 입력해주세요");
         }
 
-        return userAnswerToList(userAnswer);
+        return userAnswerToListOrThrow(userAnswer);
     }
 
     public void announce(String announcement) {
@@ -46,7 +46,7 @@ public class Player {
         }
     }
 
-    private List<Integer> userAnswerToList(String userAnswer) {
+    private List<Integer> userAnswerToListOrThrow(String userAnswer) {
         List<Integer> parsedAnswer = new ArrayList<>();
 
         try {
