@@ -61,4 +61,5 @@ class ComputerTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> computer.getUserInput());
     }
+
 }

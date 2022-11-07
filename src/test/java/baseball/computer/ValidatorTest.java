@@ -12,7 +12,7 @@ public class ValidatorTest {
 
         boolean output = Validator.isInteger(n);
 
-        Assertions.assertEquals(true, output);
+        Assertions.assertTrue(output);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class ValidatorTest {
 
         boolean output = Validator.isInteger(n);
 
-        Assertions.assertEquals(false, output);
+        Assertions.assertFalse(output);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ValidatorTest {
 
         boolean output = Validator.isValidInteger(n);
 
-        Assertions.assertEquals(true, output);
+        Assertions.assertTrue(output);
     }
 
     @Test
@@ -39,6 +39,34 @@ public class ValidatorTest {
 
         boolean output = Validator.isValidInteger(n);
 
-        Assertions.assertEquals(false, output);
+        Assertions.assertFalse(output);
     }
+
+    @Test
+    public void test_게임진행여부_유효성_체크() {
+        Integer n = 0;
+
+        boolean output = Validator.isValidAnswer(n);
+
+        Assertions.assertTrue(output);
+    }
+
+    @Test
+    public void test_게임진행여부_유효성_체크2() {
+        Integer n = 1;
+
+        boolean output = Validator.isValidAnswer(n);
+
+        Assertions.assertTrue(output);
+    }
+
+    @Test
+    public void test_게임진행여부_유효성_체크3() {
+        Integer n = 2;
+
+        boolean output = Validator.isValidAnswer(n);
+
+        Assertions.assertFalse(output);
+    }
+
 }
