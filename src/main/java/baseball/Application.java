@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
 
     static boolean keepGaming = true;
+    static int strike, ball;
 
     static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -31,8 +32,12 @@ public class Application {
     }
 
     static void playSmallGame() {
+        List<Integer> comNumbers = new ArrayList<>();
+        List<Integer> userNumbers = new ArrayList<>();
         generateNumber();
+
         inputNumber();
+        calc(userNumbers, comNumbers);
     }
 
     static List<Integer> generateNumber() {
@@ -59,4 +64,18 @@ public class Application {
         }
         return userNumbers;
     }
+
+    private static void calc(List<Integer> userNumbers, List<Integer> comNumbers) {
+        strike = ball = 0;
+        for (int i = 0; i < 3; i++) {
+            int digit = userNumbers.get(i);
+            if (digit == comNumbers.get(i)) {
+                strike++;
+            } else if (digit == comNumbers.get((i + 1) / 3) || digit == comNumbers.get((i - 1) / 3)) {
+                ball++;
+            }
+        }
+    }
+
+
 }
