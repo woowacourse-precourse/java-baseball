@@ -34,4 +34,14 @@ public class SystemComputerModel {
     public boolean isReadyToExit(String input) {
         return EXIT_CODE.equals(input);
     }
+
+    public SystemScoreModel getScore(int num, int index) {
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            Integer digit = digits.get(i);
+            if(ZERO!=IS_STRIKE_OR_BALL(num, index, digit, i)){
+                return IS_STRIKE_OR_BALL(num, index, digit, i);
+            }
+        }
+        return NOTHING;
+    }
 }
