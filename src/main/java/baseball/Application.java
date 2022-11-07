@@ -32,6 +32,18 @@ public class Application {
         return strikeCount;
     }
 
+    static int getBallCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int ballCount = 0;
+        for (int i = 0; i < INPUT_DIGIT; i++) {
+            int playNumber = playerNumbers.get(i);
+            int computerNumberIndex = computerNumbers.indexOf(playNumber);
+            if (computerNumberIndex != -1 && computerNumberIndex != i) {
+                ballCount += 1;
+            }
+        }
+        return ballCount;
+    }
+
     static List<Integer> getPlayerRandomNumbers() {
         String input = Console.readLine();
 
