@@ -166,6 +166,16 @@
 
 
 - 기능 설명
-    1. `Console.readLine()`을 활용하여 사용자의 입력을 `userInput`에 받는다.
-    2. `userInput`이 `"1"`인 경우 `continue`, `"2"`인 경우 `keepPlaying`을 `false`로 변경한다.
-    3. `userInput`이 `"1"`, `"2"` 모두 아닌 경우 `IllegalArgumentException`을 일으킨다.
+  1. `Console.readLine()`을 활용하여 사용자의 입력을 `userInput`에 받는다.
+  2. `userInput`이 `"1"`인 경우 `continue`, `"2"`인 경우 `keepPlaying`을 `false`로 변경한다.
+  3. `userInput`이 `"1"`, `"2"` 모두 아닌 경우 `IllegalArgumentException`을 일으킨다.
+
+<br>
+
+### 종합 테스트 `overallTest()`
+
+- 테스트 함수
+  1. `overallTest_많은_출력()` : 여러 판의 게임을 진행하며 원하는 결과를 보유한지 확인
+  2. `overallTest_적은_출력()` : 존재할 수 없는 출력이 존재하지 않음을 확인
+
+
