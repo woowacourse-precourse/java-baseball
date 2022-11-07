@@ -7,10 +7,25 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void 숫자_0이_들어오는지_검증() {
+        String fistZeroNumber = "012";
+        String middleZeroNumber = "103";
+        String endZeroNumber = "340";
+
+        assertThatThrownBy(() -> Application.validateUserNumber(fistZeroNumber))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber can't have Zero");
+        assertThatThrownBy(() -> Application.validateUserNumber(middleZeroNumber))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber can't have Zero");
+        assertThatThrownBy(() -> Application.validateUserNumber(endZeroNumber))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber can't have Zero");
+    }
 
     @Test
     void 중복된_숫자_2개_입력() {
@@ -19,12 +34,13 @@ class ApplicationTest extends NsTest {
         String middleEndNumber = "233";
         String firstEndNumber = "191";
 
+
         //when, then
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(firstMiddleNumber))
+        assertThatThrownBy(() -> Application.validateUserNumber(firstMiddleNumber))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber has duplicate number");
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(middleEndNumber))
+        assertThatThrownBy(() -> Application.validateUserNumber(middleEndNumber))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber has duplicate number");
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(firstEndNumber))
+        assertThatThrownBy(() -> Application.validateUserNumber(firstEndNumber))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber has duplicate number");
     }
     @Test
@@ -34,9 +50,9 @@ class ApplicationTest extends NsTest {
         String givenNumber2 = "222";
 
         //when, then
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber))
+        assertThatThrownBy(() -> Application.validateUserNumber(givenNumber))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber has duplicate number");
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
+        assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber has duplicate number");
     }
 
@@ -47,9 +63,9 @@ class ApplicationTest extends NsTest {
         String givenNumber2 = "987654";
 
         //when, then
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber1))
+        assertThatThrownBy(() -> Application.validateUserNumber(givenNumber1))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
+        assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
     }
     @Test
@@ -59,9 +75,9 @@ class ApplicationTest extends NsTest {
         String givenNumber2 = "5";
 
         //when, then
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber1))
+        assertThatThrownBy(() -> Application.validateUserNumber(givenNumber1))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
-        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
+        assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
     }
 
