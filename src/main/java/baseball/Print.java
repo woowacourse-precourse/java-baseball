@@ -1,18 +1,16 @@
-package features;
-
-import static features.Hint.getCountBall;
-import static features.Hint.getCountNothing;
-import static features.Hint.getCountStrike;
+package baseball;
 
 public class Print{
 
-    private static final int countStrike = getCountStrike();
-    private static final int countBall = getCountBall();
-    private static final int countNothing = getCountNothing();
+    private static int countStrike;
+    private static int countBall;
+    private static int countNothing;
 
-
-
-
+    public Print(Hint hint) {
+        this.countStrike = hint.getStrike();;
+        this.countBall = hint.getBall();;
+        this.countNothing = hint.getNothing();;
+    }
 
     public static String printResult() {
         String result = "";

@@ -1,19 +1,18 @@
-package features;
+package baseball;
 
 
-import static extract.Constant.GAME_END;
-import static extract.Constant.GAME_OVER;
-import static extract.Constant.STRIKE;
-import static extract.Constant.VICTORY;
-import static features.Print.printResult;
+import static baseball.Constant.GAME_END;
+import static baseball.Constant.STRIKE;
+import static baseball.Constant.VICTORY;
 
 import camp.nextstep.edu.missionutils.Console;
-import extract.Constant;
 
 public class Game {
 
     public static Print print;
-    private static boolean recursion = STRIKE.equals(printResult());
+
+
+    static AppConfig baseball = new AppConfig();
 
 
     public Game(Print print) {
@@ -24,21 +23,32 @@ public class Game {
     // 게임 반복 기능
     public static String playGame() {
 
+        Print result = baseball.printResult();
+        System.out.println(result);
 
-
-        if ( recursion ){
+        if (STRIKE.equals(result)) {
             victory();
-            System.out.println(GAME_OVER);
-            Game.rebootGame();
+            rebootGame();
         }
 
+        Print resultAgain;
         do {
-            Console.readLine();
-            System.out.println(printResult());
-        } while ( !recursion );
+            resultAgain = recursion();
+
+        } while (!STRIKE.equals(resultAgain));
 
         return GAME_END;
 
+    }
+
+    private static Print recursion() {
+        Print resultAgain;
+        Input.inputUserNumber(Console.readLine());
+        Hint.loopHint(Input.inputUserNumber(Console.readLine()), Player.createComputerNumber());
+
+        resultAgain = baseball.printResult();
+        System.out.println(resultAgain);
+        return resultAgain;
     }
 
     private static String rebootGame() {

@@ -3,6 +3,7 @@ package study;
 
 import static baseball.Validation.validationCheck;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import baseball.AppConfig;
@@ -10,6 +11,7 @@ import baseball.Hint;
 import baseball.Input;
 import baseball.Player;
 import baseball.Print;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,15 +19,15 @@ import org.junit.jupiter.api.Test;
 
 
 public class FeatureTest {
+    AppConfig appConfig = new AppConfig();
 
     @BeforeEach
     public void beforeEach() {
-        AppConfig appConfig = new AppConfig();
 
         Print print = appConfig.printResult();
         Hint hint = appConfig.loopHint();
         Player computerNumber = appConfig.createComputerNumber();
-        Input input = appConfig.inputUserNumber();
+        Map<Integer, Integer> input = appConfig.inputUserNumber(Console.readLine());
     }
 
     @Test
@@ -67,13 +69,39 @@ public class FeatureTest {
    }
 
    @Test
-   public void 게임_기능은_조건대로_무한_재귀를_탈출() throws Exception{
+   public void 입력_기능_올바른_동작() throws Exception{
 
        //given
-
+       Input input = new Input();
+       Map<Integer, Integer> userNumber = input.inputUserNumber("246");
 
        //when
+       boolean assertSize = userNumber.size() == 3;
+       Integer valueByZero = userNumber.get(0);
+       Integer valueByOne = userNumber.get(1);
+       Integer valueByTwo = userNumber.get(2);
 
        //then
+       assertEquals(assertSize, true);
+       assertThat(valueByZero).isNotEqualTo(valueByOne);
+       assertThat(valueByZero).isNotEqualTo(valueByTwo);
+       assertThat(valueByOne).isNotEqualTo(valueByTwo);
+
+   }
+
+   @Test
+   public void 힌트_기능_개수_세기() throws Exception{
+       //given
+       Player computerNumber = appConfig.createComputerNumber();
+       Map<Integer, Integer> userNumber = appConfig.inputUserNumber("123");
+       Hint hint = new Hint();
+
+       //when
+       int strike = hint.getStrike();
+       int ball = hint.getBall();
+       int nothing = hint.getNothing();
+
+       //then
+       assertThat(strike>0).isEqualTo(true);
    }
 }

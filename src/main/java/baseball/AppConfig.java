@@ -1,10 +1,7 @@
-package configuration;
+package baseball;
 
-import features.Game;
-import features.Hint;
-import features.Input;
-import features.Player;
-import features.Print;
+import camp.nextstep.edu.missionutils.Console;
+import java.util.Map;
 
 // 역할 관리자 : 의존성 연결을 책임지기, DIP
 public class AppConfig{
@@ -14,20 +11,24 @@ public class AppConfig{
         return new Player();
     }
 
-    public Input inputUserNumber() {
-        return new Input();
+    public Map<Integer, Integer> inputUserNumber(String readLine) {
+        return Input.inputUserNumber(Console.readLine());
     }
 
     public Hint loopHint() {
         return new Hint();
     }
 
+    public Hint getCountStrike() { return new Hint(); }
+    public Hint getCountBall() { return new Hint(); }
+    public Hint getCountNothing() { return new Hint(); }
+
     public Print printResult() {
-        return new Print();
+        return new Print(new Hint());
     }
 
     public Game playGame() {
         return new Game(
-                new Print());
+                new Print(new Hint()));
     }
 }
