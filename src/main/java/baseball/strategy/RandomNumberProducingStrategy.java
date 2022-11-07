@@ -6,9 +6,9 @@ import java.util.List;
 
 public class RandomNumberProducingStrategy implements NumberProducingStrategy {
 
-    private final int MIN_NUMBER_SIZE = 1;
-    private final int MAX_NUMBER_SIZE = 9;
-    private final int REGULAR_NUMBERS_SIZE = 3;
+    private static final int MIN_NUMBER_SIZE = 1;
+    private static final int MAX_NUMBER_SIZE = 9;
+    private static final int REGULAR_NUMBERS_SIZE = 3;
 
     @Override
     public List<Integer> produceNumbers() {
