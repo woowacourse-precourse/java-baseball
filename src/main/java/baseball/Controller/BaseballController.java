@@ -33,6 +33,15 @@ public class BaseballController {
         return userNumber;
     }
 
+    //스트라이크 또는 볼 판정
+    public void countStrikeOrBall(List<String> randomNumber, List<String> inputNumber) {
+        for(String number: inputNumber) {
+            isNumberStrike(randomNumber, inputNumber, number);
+            isNumberBall(randomNumber, inputNumber, number);
+        }
+    }
+
+
     //스트라이크 판정 및 카운트
     public void isNumberStrike(List<String> randomNumber, List<String> inputNumber, String number) {
         if (randomNumber.contains(number) && randomNumber.indexOf(number) == inputNumber.indexOf(number)) {
