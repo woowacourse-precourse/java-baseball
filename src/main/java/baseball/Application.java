@@ -64,26 +64,34 @@ class baseball {
 	
 	void game() {
 		do {
-		
 		getrandomNum();
 		get_user_input_num();
-		do {
-		compare();
-		}while(result());
-		
-		//System.out.println("숫자를 모두 맞히셨습니다! 게임 종료");
+			do {
+				compare();
+				get_user_input_num();
+			}while(!result());
 		}while(repeat_game() == 1);
-		
 	}
 	
 	boolean result() {
 		//random사용해서 정답과 비교수를 compare로 넘김
-		result_num = 713;
-		user_num = 713;
-		return true;
+		int cipher;
+		int cnt = 0;
 		
+		for(cipher = 0; cipher < 3; cipher++) {
+			if(tmp_List.get(cipher) == correct.get(cipher)) {
+				cnt++;
+			}
+		}
+		if(cnt == 3) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-		
+			tmp_List.clear();
+			correct.clear();
+
+			return true;
+		}
+		return false;
 	}
 	
 	void compare() {
@@ -100,8 +108,8 @@ class baseball {
 			}
 			
 		}
-		System.out.println("result : " + correct);
-		System.out.println(tmp_List);
+		System.out.println("result : " + correct);//test용 문구
+		System.out.println(tmp_List);//test용 문구
 		if(ball > 0 && strike > 0) {
 			System.out.println(ball + "볼 " + strike + "스트라이크");
 		}else if(ball > 0 && strike < 1) {
@@ -112,7 +120,6 @@ class baseball {
 			System.out.println("낫싱");
 		}
 	}
-	
 }
 
 
