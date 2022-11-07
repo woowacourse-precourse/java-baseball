@@ -1,13 +1,16 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class CountTest {
+class CountTest extends NsTest {
 
     @Test
     void countBall() {
@@ -39,5 +42,14 @@ class CountTest {
 
     @Test
     void restartOrExit() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Override
+    protected void runMain() {
+        Count.restartOrExit();
     }
 }
