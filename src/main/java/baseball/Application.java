@@ -20,6 +20,8 @@ public class Application {
     public static final String inputNumberMessage = "숫자를 입력해주세요 : ";
     public static final String successMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
+    public static final String selectOptionMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     public static void printMessage(String message){
         System.out.println(message);
     }
@@ -117,8 +119,16 @@ public class Application {
         }while(!(result.get(1)==3));
     }
 
-
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String curOption;
+        List <Integer> computer;
+        do{
+            computer = createRandomNumber();
+            startGame(computer);
+            printMessage(selectOptionMessage);
+            curOption = receiveInput();
+            checkOption(curOption);
+        }while(curOption.equals(optionOne));
     }
+
 }
