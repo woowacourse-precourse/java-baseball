@@ -7,6 +7,39 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Application {
+    // TODO: [4] 숫자 일치, 포함 여부 판독 기능
+    public static boolean is3Strike(String answer, String user_answer) {
+        int strike = 0;
+        int ball = 0;
+        for (int i=0; i < user_answer.length(); i++) {
+            if (user_answer.charAt(i) == answer.charAt(i)) {
+                strike++;
+            } else if (answer.indexOf(user_answer.charAt(i)) >= 0) {
+                ball++;
+            }
+        }
+        String sentence = "";
+        if (ball != 0) {
+            sentence += ball + "볼";
+        }
+        if (strike != 0) {
+            if (!sentence.equals("")) {
+                sentence += " ";
+            }
+            sentence += strike + "스트라이크";
+            if (strike == 3) {
+                return true;
+            }
+        }
+
+        if (sentence.equals("")) {
+            sentence = "낫싱";
+        }
+
+        System.out.println(sentence);
+        return false;
+    }
+
     // TODO: [3] 랜덤 숫자 생성 기능
     public static String randomGenerator() {
         String computer = "";
@@ -44,7 +77,7 @@ public class Application {
                 throw new IllegalArgumentException("1-9 사이의 서로 다른 숫자 3개를 공백없이 입력해주셔야 합니다.");
             }
 
-            if (answer.equals(inputString)) {
+            if (is3Strike(answer, inputString)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return true;
             }
