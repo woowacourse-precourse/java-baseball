@@ -3,6 +3,8 @@ package baseball;
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 import baseball.count.Game;
@@ -55,6 +57,14 @@ class ApplicationTest extends NsTest {
 	void 컴퓨터_숫자_생성() {
 		service.ramdomNumberSetting();
 		assertThat(3).isEqualTo(service.computerSize());
+	}
+
+	@Test
+	void 컴퓨터와_사용자의_숫자비교_후_카운트() {
+		int[] userNumber = new int[] {1, 2, 3};
+		user.setUserNumber(userNumber);
+		service.compare(user, Arrays.asList(1, 2, 3));
+		assertThat(3).isEqualTo(service.strikeCount());
 	}
 
 }
