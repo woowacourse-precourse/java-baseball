@@ -23,6 +23,7 @@ public class PlayGame {
         compareNumberForStrike();
         compareNumberForBall();
         List<Integer> ballStrike = List.of(ball, strike);
+        outputResult();
         return ballStrike;
     }
 
