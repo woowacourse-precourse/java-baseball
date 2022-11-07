@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FigureOutDigitsGame {
-    public void starGame(){
+    public void starGame() {
         sendMassage(GameMassage.START_MASSAGE);
 
         GameStatus restartOrEnd = GameStatus.START;
@@ -18,7 +18,7 @@ public class FigureOutDigitsGame {
         }
     }
 
-    private void figureOutComputerDigits(List<Integer> computer){
+    private void figureOutComputerDigits(List<Integer> computer) {
         boolean answer = false;
         while (!answer) {
             sendMassage(GameMassage.INPUT_NUMBER);
@@ -42,7 +42,7 @@ public class FigureOutDigitsGame {
 
     private boolean calculationDigits(List<Integer> computer, List<Integer> user) {
         StrikeAndBall strikeAndBall = new StrikeAndBall();
-        strikeAndBall.compareDigits(computer, user);
+        strikeAndBall.isStrikeOrBall(computer, user);
         GameMassage gameMassage = strikeAndBall.getResult();
 
         sendMassage(gameMassage);
@@ -94,9 +94,9 @@ public class FigureOutDigitsGame {
         }
     }
 
-    private  List<Integer> randomThreeDigit() {
+    private List<Integer> randomThreeDigit() {
         List<Integer> digits = new ArrayList<>();
-        while (digits.size() < Digits.RANGE.getDigit()) {
+        while (digits.size() < Digits.SIZE.getDigit()) {
             int randomNumber = Randoms.pickNumberInRange(Digits.FIRST.getDigit(),
                     Digits.LAST.getDigit());
             addNumber(digits, randomNumber);

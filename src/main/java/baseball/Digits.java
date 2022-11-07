@@ -1,9 +1,9 @@
 package baseball;
 
 public enum Digits {
-    FIRST(1), LAST(9), RANGE(3);
+    ZERO(0), FIRST(1), LAST(9), SIZE(3);
 
-    private int digit;
+    private final int digit;
 
     Digits(int digit) {
         this.digit = digit;
