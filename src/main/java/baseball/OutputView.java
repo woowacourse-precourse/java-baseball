@@ -6,16 +6,16 @@ public class OutputView {
     public static final String MESSGAE_FOUR_BALL = "볼넷";
     public static final String MESSAGE_VICTORY = "3개의 숫자를 모두 맞히셨습니다! 당신의 승리입니다.";
 
-    public static void showOnlyBallResult(BaseballScore baseballScore) {
-        System.out.println(String.format(MESSAGE_BALL, baseballScore.getBall()));
+    public static void showOnlyBallResult(int ball) {
+        System.out.println(String.format(MESSAGE_BALL, ball));
     }
 
-    public static void showOnlyStrikeResult(BaseballScore baseballScore) {
-        System.out.println(String.format(MESSAGE_STRIKE, baseballScore.getStrike()));
+    public static void showOnlyStrikeResult(int strike) {
+        System.out.println(String.format(MESSAGE_STRIKE, strike));
     }
 
-    public static void showStrikeAndBallResult(BaseballScore baseballScore) {
-        System.out.println(String.format(MESSAGE_BALL + " " + MESSAGE_STRIKE, baseballScore.getBall(), baseballScore.getStrike()));
+    public static void showBallAndStrikeResult(int ball, int strike) {
+        System.out.println(String.format(MESSAGE_BALL + " " + MESSAGE_STRIKE, ball, strike));
     }
 
     public static void showFourBallResult() {

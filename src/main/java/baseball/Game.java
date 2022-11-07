@@ -15,20 +15,20 @@ public class Game {
     public void play() {
         do {
             referee.compareComputerWith(Translator.translateStringToIntegerList(InputView.inputNumbers()));
-            printHint(referee.getBaseballScore());
+            printHint(referee.getBallCount(), referee.getStrikeCount());
         } while(referee.getStrikeCount() != 3);
         OutputView.showVictoryMessage();
     }
 
-    private void printHint(BaseballScore baseballScore) {
-        if(baseballScore.getBall() == 4) {
+    private void printHint(int ball, int strike) {
+        if(ball == 4) {
             OutputView.showFourBallResult();
-        } else if (baseballScore.getStrike() == 0 && baseballScore.getBall() > 0) {
-            OutputView.showOnlyBallResult(baseballScore);
-        } else if(baseballScore.getStrike() > 0 && baseballScore.getBall() == 0) {
-            OutputView.showOnlyStrikeResult(baseballScore);
-        } else if(baseballScore.getStrike() > 0 && baseballScore.getBall() > 0) {
-            OutputView.showStrikeAndBallResult(baseballScore);
+        } else if (ball > 0 && strike == 0) {
+            OutputView.showOnlyBallResult(ball);
+        } else if(ball == 0 && strike > 0) {
+            OutputView.showOnlyStrikeResult(strike);
+        } else if(ball > 0 && strike > 0) {
+            OutputView.showBallAndStrikeResult(ball, strike);
         }
     }
 }
