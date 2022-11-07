@@ -16,9 +16,17 @@ public class InputExceptionTest extends NsTest {
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
                 },
-                1, 2,3
+                1, 2, 3
         );
 
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("123", "1", "457", "456", "@"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
+                },
+                1, 2, 3, 4, 5, 6
+        );
     }
 
     @Test
@@ -29,7 +37,7 @@ public class InputExceptionTest extends NsTest {
                         .hasMessage("입력하신 숫자가 세 자리가 아닙니다.")
         );
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("9123"))
+                assertThatThrownBy(() -> runException("1"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage("입력하신 숫자가 세 자리가 아닙니다.")
         );
