@@ -53,4 +53,15 @@ public class GameTest {
         // then
         Assertions.assertThat(method.invoke(game, 0, 0)).isEqualTo(true);
     }
+
+    @Test
+    void 볼_스트라이크_상태출력_기능() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("printState", int.class, int.class);
+        method.setAccessible(true);
+
+        // then
+        Assertions.assertThat(method.invoke(game, 2, 1)).isEqualTo("1볼 2스트라이크");
+    }
 }
