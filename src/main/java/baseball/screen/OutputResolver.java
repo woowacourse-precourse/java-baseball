@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OutputResolver {
-    public void print() {
+    public void printResult() {
         System.out.println(buildPrompt(Result.getBall(), Result.getStrike()));
     }
 
-    public void print(String prompt) {
+    public void printResult(String prompt) {
         System.out.print(prompt);
     }
 
