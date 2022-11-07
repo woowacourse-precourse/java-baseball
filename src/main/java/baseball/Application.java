@@ -114,18 +114,24 @@ public class Application {
         if (input_str.equals("1")){
             return true;
         }
-        else{
+        else if(input_str.equals("2")){
             return false;
+        }else{
+            throw new IllegalArgumentException();
         }
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean again = true;
-        while(again) {
-            List<Integer> answer_num = make_rand_num();
-            doing_baseball(answer_num);
-            again = check_again();
+        try {
+            while (again) {
+                List<Integer> answer_num = make_rand_num();
+                doing_baseball(answer_num);
+                again = check_again();
+            }
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException();
         }
     }
 
