@@ -14,4 +14,7 @@ public class Constant {
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
     public static final String NOT_THING = "낫싱";
+    public static final String ONLY_BALL = "%d볼\n";
+    public static final String ONLY_STRIKE = "%d스트라이크\n";
+    public static final String BALL_AND_STRIKE = "%d볼 %d스트라이크\n";
 }
