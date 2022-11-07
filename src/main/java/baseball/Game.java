@@ -26,17 +26,17 @@ public class Game {
         }
     }
 
-    private static void validateSelect(String select) {
+    private void validateSelect(String select) {
         if (select.length() != 1 || !Character.isDigit(getCharacter(select)) || !isRightSelect(select))
             throw new IllegalArgumentException("1이나 2만 입력 가능합니다.");
     }
 
-    private static boolean isRightSelect(String select) {
+    private boolean isRightSelect(String select) {
         int digit = Integer.parseInt(select);
         return digit == CONTINUE || digit == END;
     }
 
-    private static char getCharacter(String select) {
+    private char getCharacter(String select) {
         return select.charAt(0);
     }
 
@@ -44,7 +44,7 @@ public class Game {
         return Console.readLine();
     }
 
-    private static void playGame(Computer computer, User user) {
+    private void playGame(Computer computer, User user) {
         int game = CONTINUE;
         while (isContinue(game)) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -54,11 +54,11 @@ public class Game {
         }
     }
 
-    private static boolean isContinue(int game) {
+    private boolean isContinue(int game) {
         return game == CONTINUE;
     }
 
-    private static int isEnd(Ball ball) {
+    private int isEnd(Ball ball) {
         if (ball.isEnd())
             return END;
         return CONTINUE;
