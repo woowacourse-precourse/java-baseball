@@ -19,7 +19,7 @@ class BaseballGameCalculatorTest {
         List<int[]> calculateResultList = new ArrayList<>();
         for (String input : testUserInputList) {
             calculateResultList.add(
-                    BaseballGameCalculator.calculateBSO(BaseballNumber.createByUserInput(input), answer));
+                    BaseballGameCalculator.calculateBallStrikeCount(BaseballNumber.createByUserInput(input), answer));
         }
 
         //then

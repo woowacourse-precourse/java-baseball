@@ -7,7 +7,12 @@ public class BaseballGameCalculator {
     private static final int BALL = 0;
     private static final int STRIKE = 1;
 
-    public static int[] calculateBSO(BaseballNumber number1, BaseballNumber number2) {
+    /**
+     * @param number1 야구게임 계산할 baseballNumber
+     * @param number2 야구게임 계산할 baseballNumber
+     * @return 야구게임의 결과를 담은 int형 배열  인덱스 0은 ball의 개수, 인덱스 1은 strike의 개수
+     */
+    public static int[] calculateBallStrikeCount(BaseballNumber number1, BaseballNumber number2) {
         clearBSOResult();
         List<Integer> numbers1 = number1.getNumbers();
         List<Integer> numbers2 = number2.getNumbers();

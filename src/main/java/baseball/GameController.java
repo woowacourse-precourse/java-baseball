@@ -33,7 +33,7 @@ public class GameController {
         do {
             ov.printInputMessage();
             BaseballNumber user = BaseballNumber.createByUserInput(iv.getUserBaseballNumber());
-            result = BaseballGameCalculator.calculateBSO(computer, user);
+            result = BaseballGameCalculator.calculateBallStrikeCount(computer, user);
             ov.printBSOResult(result);
         } while (!Arrays.equals(result, STRIKE_3));
 
