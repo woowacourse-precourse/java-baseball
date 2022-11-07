@@ -1,7 +1,120 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
+
 public class Application {
+    static List<Integer> computerNumbersList = getRandomThreeNumbers();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int startSwitch = 1;
+        while (startSwitch == 1) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String stringUserNumber = Console.readLine();
+            handleInputException(stringUserNumber);
+            int userNumber = Integer.parseInt(stringUserNumber);
+            List<Integer> userNumbersList = getUserNumberList(userNumber);
+            if (getResult(computerNumbersList, userNumbersList)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                startSwitch = getStartSwitch();
+            }
+        }
+    }
+
+    public static List<Integer> getRandomThreeNumbers() {
+        List<Integer> numberList = new ArrayList<>();
+        while (numberList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!numberList.contains(randomNumber)) {
+                numberList.add(randomNumber);
+            }
+        }
+        return numberList;
+    }
+
+    public static boolean getResult(List<Integer> computerNumbersList, List<Integer> userNumbersList) {
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(computerNumbersList.get(i), userNumbersList.get(i))) {
+                strikeCount++;
+            }
+            if (!Objects.equals(computerNumbersList.get(i), userNumbersList.get(i))
+                    && computerNumbersList.contains(userNumbersList.get(i))) {
+                ballCount++;
+            }
+        }
+        printResult(strikeCount, ballCount);
+        return strikeCount == 3;
+    }
+
+    public static void printResult(int strikeCount, int ballCount) {
+        if (strikeCount != 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        } else if (strikeCount != 0) {
+            System.out.println(strikeCount + "스트라이크");
+        } else if (ballCount != 0) {
+            System.out.println(ballCount + "볼");
+        } else {
+            System.out.println("낫싱");
+        }
+    }
+
+    public static List<Integer> getUserNumberList(int userNumber) {
+        List<Integer> userNumbersList = new ArrayList<>();
+        while (userNumber > 0) {
+            userNumbersList.add(userNumber % 10);
+            userNumber /= 10;
+        }
+        Collections.reverse(userNumbersList);
+        return userNumbersList;
+    }
+
+    public static boolean hasDuplication(String s) {
+        for (char c : s.toCharArray()) {
+            if (s.chars().filter(ch -> ch == c).count() > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasOtherNumbersOrChars(String s) {
+        for (char c : s.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return true;
+            } else if (c == '0') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int getStartSwitch() {
+        String stringStartSwitch = Console.readLine();
+        if (!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
+            throw new IllegalArgumentException("잘못된 숫자가 입력되었습니다.");
+        }
+        if (Objects.equals(stringStartSwitch, "1")) {
+            computerNumbersList = getRandomThreeNumbers();
+        }
+        return Integer.parseInt(stringStartSwitch);
+    }
+
+    public static void handleInputException(String stringUserNumber) {
+        if (hasDuplication(stringUserNumber)) {
+            throw new IllegalArgumentException("중복된 숫자가 입력되었습니다.");
+        } else if (stringUserNumber.length() > 3) {
+            throw new IllegalArgumentException("세 자리를 초과하는 숫자가 입력되었습니다.");
+        } else if (hasOtherNumbersOrChars(stringUserNumber)) {
+            throw new IllegalArgumentException("정해진 범위 이외의 숫자나 문자가 입력되었습니다.");
+        }
     }
 }
