@@ -19,7 +19,7 @@ class GameGuideViewTest extends OutputSettings {
             GameGuideView.START.printGuideLog();
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameGuideViewTestUtils.getMessage(GameGuideView.START, testOut));
+                    .contains(GameGuideViewTestUtils.getMessage(GameGuideView.START, testOut));
         }
 
         @Test
@@ -28,7 +28,7 @@ class GameGuideViewTest extends OutputSettings {
             GameGuideView.END.printGuideLog();
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameGuideViewTestUtils.getMessage(GameGuideView.END, testOut));
+                    .contains(GameGuideViewTestUtils.getMessage(GameGuideView.END, testOut));
         }
     }
 }

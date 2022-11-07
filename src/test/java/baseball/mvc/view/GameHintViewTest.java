@@ -32,7 +32,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameResultViewTestUtils
+                    .contains(GameResultViewTestUtils
                             .getMessage(GameHintView.STRIKE_AND_BALL, gameResult, testOut));
         }
 
@@ -50,7 +50,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameResultViewTestUtils
+                    .contains(GameResultViewTestUtils
                             .getMessage(GameHintView.ONLY_BALL, gameResult, testOut));
         }
 
@@ -68,7 +68,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameResultViewTestUtils
+                    .contains(GameResultViewTestUtils
                             .getMessage(GameHintView.ONLY_STRIKE, gameResult, testOut));
         }
 
@@ -79,7 +79,7 @@ class GameHintViewTest extends OutputSettings {
             GameHintView.printGameHintLog(gameResult);
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameResultViewTestUtils
+                    .contains(GameResultViewTestUtils
                             .getMessage(GameHintView.NOTHING, gameResult, testOut));
         }
     }

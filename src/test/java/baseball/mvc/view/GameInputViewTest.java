@@ -45,7 +45,7 @@ class GameInputViewTest {
             GameInputView.printGameInputLog(GameStatus.PLAY);
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameInputViewTestUtils
+                    .contains(GameInputViewTestUtils
                             .getMessage(GameInputView.ANSWER_INPUT, System.out::print, testOut));
         }
 
@@ -55,7 +55,7 @@ class GameInputViewTest {
             GameInputView.printGameInputLog(GameStatus.END);
 
             assertThat(testOut.toString())
-                    .isEqualTo(GameInputViewTestUtils
+                    .contains(GameInputViewTestUtils
                             .getMessage(GameInputView.RESTART_INPUT, System.out::println, testOut));
         }
     }
