@@ -1,4 +1,6 @@
-package baseball.validation.condition;
+package baseball.system.condition;
+
+import baseball.validation.Condition;
 
 import java.util.List;
 

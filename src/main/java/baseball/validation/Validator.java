@@ -1,7 +1,5 @@
 package baseball.validation;
 
-import baseball.validation.condition.Condition;
-
 import java.util.List;
 
 public class Validator {

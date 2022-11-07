@@ -2,8 +2,8 @@ package baseball.system.util;
 
 import baseball.console.Interactive;
 import baseball.message.Message;
-import baseball.validation.condition.Condition;
-import baseball.validation.condition.IsOperationCodeCond;
+import baseball.validation.Condition;
+import baseball.system.condition.IsOperationCodeCond;
 import baseball.validation.Validator;
 import camp.nextstep.edu.missionutils.Console;
 

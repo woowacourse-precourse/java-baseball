@@ -1,6 +1,6 @@
 package baseball.game.condition;
 
-import baseball.validation.condition.Condition;
+import baseball.validation.Condition;
 
 import static baseball.game.util.GameUtil.NUMBER_SIZE;
 

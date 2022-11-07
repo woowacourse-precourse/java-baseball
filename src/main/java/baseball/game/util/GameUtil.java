@@ -2,7 +2,7 @@ package baseball.game.util;
 
 import baseball.console.Interactive;
 import baseball.validation.Validator;
-import baseball.validation.condition.Condition;
+import baseball.validation.Condition;
 import baseball.game.condition.AllDigitsUniqueCond;
 import baseball.game.condition.AllDigitsNumberCond;
 import baseball.game.condition.SmallerThanMaxSizeCond;
