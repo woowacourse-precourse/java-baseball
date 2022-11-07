@@ -11,12 +11,12 @@ import static java.util.stream.Collectors.toList;
 public class BaseBallGamePlayer {
     private final long ballCount;
     private final long strikeCount;
-    private final List<Integer> userInput;
-    private final GameNumbers gameNumbers;
+    private final GameNumbers userNumbers;
+    private final GameNumbers computerNumbers;
 
-    public BaseBallGamePlayer(GameNumbers gameNumbers) {
-        this.gameNumbers = gameNumbers;
-        this.userInput = userInput();
+    public BaseBallGamePlayer(GameNumbers computerNumbers) {
+        this.computerNumbers = computerNumbers;
+        this.userNumbers = new GameNumbers(userInput());
         ballCount = countBall();
         strikeCount = countStrike();
     }
@@ -33,8 +33,8 @@ public class BaseBallGamePlayer {
         return ballCount;
     }
 
-    public List<Integer> getUserInput() {
-        return userInput;
+    public GameNumbers getUserInput() {
+        return userNumbers;
     }
 
     public long getStrikeCount() {
@@ -42,23 +42,23 @@ public class BaseBallGamePlayer {
     }
 
     long countBall() {
-        return userInput.stream()
-                .filter(gameNumbers::isContains)
+        return userNumbers.getNumberList().stream()
+                .filter(computerNumbers::isContains)
                 .filter(this::isBall)
                 .count();
     }
 
     long countStrike() {
-        return userInput.stream()
+        return userNumbers.getNumberList().stream()
                 .filter(this::isStrike)
                 .count();
     }
 
     boolean isStrike(int number) {
-        return userInput.indexOf(number) == gameNumbers.getIndex(number);
+        return userNumbers.getNumberList().indexOf(number) == computerNumbers.getIndex(number);
     }
 
     boolean isBall(int number) {
-        return userInput.indexOf(number) != gameNumbers.getIndex(number);
+        return userNumbers.getNumberList().indexOf(number) != computerNumbers.getIndex(number);
     }
 }
