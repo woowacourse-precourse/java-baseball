@@ -26,7 +26,7 @@ public class UserInput {
         }
     }
 
-    public void numbers() { // 추후에 이름 변경 필요 numbers
+    public void numbers() {
         PrintMessage.enterNumber();
         this.input = Console.readLine();
         isValid();
@@ -65,7 +65,7 @@ public class UserInput {
         }
     }
     private boolean isValidRangeNumber() {
-        return !input.contains("0");
+        return !input.contains(OUT_OF_RANGE_NUMBER);
     }
     private boolean isValidLength() {
         return input.length() == NUMBERS_LENGTH;
