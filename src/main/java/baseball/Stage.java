@@ -13,17 +13,18 @@ public class Stage {
         this.computerNumber = computerNumber;
     }
 
-    public boolean isComplete() {
-        return computerNumber.equals(userNumber);
-    }
-
     public void start() {
         System.out.print("숫자를 입력해주세요 : ");
         String line = Console.readLine();
         validNumberInput(line);
+
         userNumber = new Number(line);
         StageResult stageResult = new StageResult(computerNumber, userNumber);
         stageResult.print();
+    }
+
+    public boolean isComplete() {
+        return computerNumber.equals(userNumber);
     }
 
     private void validNumberInput(String line) {

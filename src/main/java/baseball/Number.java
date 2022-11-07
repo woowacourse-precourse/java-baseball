@@ -24,8 +24,7 @@ public class Number {
     }
 
     public boolean contains(int i) {
-        Set<Integer> set = new HashSet<>(numbers);
-        return set.contains(i);
+        return numbers.contains(i);
     }
 
     @Override
