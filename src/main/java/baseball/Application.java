@@ -20,8 +20,19 @@ public class Application {
             List<Integer> inputNumbers = Util.toIntegerArray(input);
             String comment = takeTurn(computer, inputNumbers);
             System.out.println(comment);
+
             break outer;
         }
+    }
+
+    private static void askContinueOrEnd(String comment) {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        answerContinueOrEnd(input);
+    }
+
+    private static void answerContinueOrEnd(String input) {
+
     }
 
     private static String takeTurn(List<Integer> computer, List<Integer> inputNumbers) {
