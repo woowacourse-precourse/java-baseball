@@ -65,6 +65,15 @@
             return true;
         }
 
+### 문자열 검증 후 예외 수정
+
+조건과 다른 예외 코드 수정 ( 테스트 케이스 덕분에 발견하였습니다.)
+
+    // 변경 전
+    IllegalStateException
+    // 변경 후
+    IllegalArgumentException
+
 
 ### 구현 기능 추가
 
