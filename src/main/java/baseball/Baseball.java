@@ -12,6 +12,10 @@ class Baseball {
     int strike = ZERO;
     int ball = ZERO;
 
+    Baseball(List<Integer> computers, List<Integer> userNumbers) {
+        startGame(userNumbers, computers);
+    }
+
     private void startGame(List<Integer> userNumbers, List<Integer> computers) {
         for (int position = 0; position < NUMBER_SIZE; position++) {
             int computerValue = computers.get(position);
