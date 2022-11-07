@@ -15,7 +15,7 @@ public class ComputerPlayer {
 	}
 
 	public void selectNumbers() {
-		int randomNumber;
+		Integer randomNumber;
 
 		while (numberList.size() < DIGIT_NUMBER.getCode()) {
 			randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER.getCode(), MAXIMUM_NUMBER.getCode());

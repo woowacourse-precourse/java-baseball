@@ -2,7 +2,6 @@ package baseball;
 
 import static baseball.GameRules.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -12,49 +11,95 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 	private static ComputerPlayer computerPlayer;
-	private static List<Integer> userPlayer;
+	private static UserPlayer userPlayer;
+	private static BaseballGameModel baseballGameModel;
+	private static boolean gameStatus;
 
-    public static void main(String[] args) {
-		computerPlayer = new ComputerPlayer();
+	public static void main(String[] args) {
+		String userInput;
+		List<Integer> scoreList;
 
-        // TODO: 프로그램 구현
-		/*
-		컴퓨터플레이어 클래스
-		숫자야구 게임모델 클래스
-			- 매개변수로 넘어온 입력값 판단
-			- 예외처리.. 어디서 처리?
-		어플리케이션 : 사용자 입력 & 화면 처리
-			- 입력 게임모델클래스에 넘겨줌
-		* */
-		String userInput = Console.readLine();
+		System.out.println("숫자 야구 게임을 시작합니다.");
+		gameInit();
 
+		while (gameStatus) {
+			System.out.print("숫자를 입력해주세요 : ");
+			userInput = Console.readLine();
 
-		try {
-			isOnlyNumber(userInput);
-			isDigitNumber(userInput);
-			isDifferentNumber(userInput);
-		} catch (IllegalArgumentException e){
-			System.out.println(e.getMessage());
-			return;
+			try {
+				isValidUserInput(userInput);
+			} catch (IllegalArgumentException e){
+				System.out.println(e.getMessage());
+				return;
+			}
+			userPlayer.setNumberList(userInput);
+
+			scoreList = baseballGameModel.getMatchResult();
+
+			if (baseballGameModel.isGameOver()) {
+				System.out.println(DIGIT_NUMBER.getCode()+"스트라이크");
+				System.out.println(DIGIT_NUMBER.getCode()+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+				choiceGameProgress();
+				continue;
+			}
+			printMatchResult(scoreList);
 		}
-
-		userPlayer = setUserPlayer(userInput);
-
-		System.out.println("userPlayer = " + userPlayer);
-		System.out.println("프로그램 끝");
 
     }
 
-	/*public static boolean isValidUserInput(String userInput) {
-		try {
-			isOnlyNumber(userInput);
-		} catch (IllegalArgumentException e){
-			System.out.println(e.getMessage());
-			return true;
-		}
-		return false;
+	public static void gameInit() {
+		computerPlayer = new ComputerPlayer();
+		userPlayer = UserPlayer.getInstance();
+		baseballGameModel = new BaseballGameModel(computerPlayer);
+		gameStatus = true;
+	}
 
-	}*/
+	public static void choiceGameProgress() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		String gameProgressNumber = Console.readLine();
+
+		isValidProgressNumber(gameProgressNumber);
+
+		if (Integer.parseInt(gameProgressNumber) == GAME_END.getCode()) {
+			gameStatus = false;
+			System.out.println("게임을 진짜 종료합니다.");
+			return;
+		}
+
+		System.out.println("새로운 게임을 시작합니다.");
+		gameInit();
+	}
+
+	public static void printMatchResult(List<Integer> scoreList) {
+		if (scoreList.isEmpty()) {
+			System.out.println("낫싱");
+			return;
+		}
+
+		for (int i = 0; i < scoreList.size(); i++) {
+			if (scoreList.get(i) == 0) {
+				continue;
+			}
+			if (i == 0) {
+				System.out.print(scoreList.get(i)+"볼 ");
+				continue;
+			}
+			System.out.println(scoreList.get(i)+"스트라이크");
+		}
+		System.out.println();
+	}
+
+	public static void isValidUserInput(String userInput) {
+		isOnlyNumber(userInput);
+		isDigitNumber(userInput);
+		isDifferentNumber(userInput);
+	}
+
+	public static void isValidProgressNumber(String userInput) {
+		isOnlyNumber(userInput);
+		isCorrectNumber(userInput);
+	}
 
 	public static void isOnlyNumber(String userInput) throws IllegalArgumentException{
 		final Pattern numberOnly = Pattern.compile("^[1-9]*?");
@@ -83,10 +128,11 @@ public class Application {
 		}
 	}
 
-	public static List<Integer> setUserPlayer(String userInput){
-		String[] userInputArray = userInput.split("");
-		return Arrays.stream(userInputArray)
-			.map(Integer::parseInt)
-			.collect(Collectors.toList());
+	public static void isCorrectNumber(String userInput) throws IllegalArgumentException {
+		int UserNumber = Integer.parseInt(userInput);
+		if (!GAME_RESTART.getCode().equals(UserNumber) && !GAME_END.getCode().equals(UserNumber)) {
+			throw new IllegalArgumentException(
+				"게임 재시작(" + GAME_RESTART.getCode() + ") 또는 " + "게임종료(" + GAME_END.getCode() + ") 만 입력가능합니다.");
+		}
 	}
 }

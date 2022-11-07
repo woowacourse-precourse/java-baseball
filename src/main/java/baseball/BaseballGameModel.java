@@ -7,9 +7,10 @@ import java.util.List;
 
 public class BaseballGameModel {
 	private final ComputerPlayer computerPlayer;
-	private UserPlayer userPlayer = UserPlayer.getInstance();
+	private final UserPlayer userPlayer = UserPlayer.getInstance();
 	private List<Integer> computerNumbers;
 	private List<Integer> userNumbers;
+	private boolean gameOver = false;
 	private int strike = 0;
 	private int ball = 0;
 
@@ -17,21 +18,25 @@ public class BaseballGameModel {
 		this.computerPlayer = computerPlayer;
 	}
 
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
 	public List<Integer> getMatchResult() {
 		computerNumbers = computerPlayer.getNumberList();
 		userNumbers = userPlayer.getNumberList();
 
+		initGameModel();
 		countBall();
 		if (ball == 0) {
 			return Collections.emptyList();
 		}
 
 		countStrike();
-		// strike 예외처리하기
+		if (DIGIT_NUMBER.getCode().equals(strike)) {
+			this.gameOver = true;
+		}
 		return List.of(ball, strike);
-
-		/*initGameModel();*/
-
 	}
 
 	public void countBall() {
