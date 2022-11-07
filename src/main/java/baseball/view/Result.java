@@ -4,7 +4,7 @@ import static baseball.view.PrintMessage.*;
 
 public class Result {
     public void printBall(int ball) {
-        System.out.println(ball + BALL.getMessage());
+        System.out.print(ball + BALL.getMessage() + " ");
     }
 
     public void printBallAndStrike(int ball, int strike) {
