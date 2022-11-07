@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
@@ -16,7 +17,8 @@ public class Application {
         List<Integer> computer = Play.getRandomNumber();
         boolean strikeOut = false;
         while (!strikeOut) {
-            // TODO: promptForNumber
+            System.out.print(Message.PROMPT_FOR_NUMBER);
+            String input = Console.readLine();
             // TODO: getNumberFrom
             // TODO: getScore
             // TODO: printScore
