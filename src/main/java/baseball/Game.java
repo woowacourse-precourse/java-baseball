@@ -46,4 +46,22 @@ public class Game {
         this.ball = this.same_cnt - this.strike;
     }
 
+    public void printResult() {
+
+        if (this.strike != 0 && this.ball != 0) {
+            System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
+        } else if (this.strike == 0) {
+            System.out.println(this.ball + "볼");
+        } else if (this.ball == 0) {
+            System.out.println(this.strike + "스트라이크");
+
+            if (this.strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            }
+
+        }
+
+    }
+
 }
