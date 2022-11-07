@@ -6,8 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    boolean check(int[] ans, List<Integer> com){
+        boolean again = true;
+
+        return again;
+    }
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
+        Application main = new Application();
         String answer;
         int[] answersplit = new int[3];
         boolean again = true, runstop = false;
@@ -35,6 +41,7 @@ public class Application {
             if(runstop == true){
                 throw new IllegalArgumentException();
             }
+            again = main.check(answersplit, computer);
         }
 
         // TODO: 프로그램 구현
