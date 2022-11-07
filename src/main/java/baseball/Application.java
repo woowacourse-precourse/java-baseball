@@ -38,9 +38,10 @@ public class Application {
         input = Console.readLine();
         if (input.equals("1")) {
             return true;
-        } else {
+        } else if(input.equals("2")) {
             return false;
         }
+        throw new IllegalArgumentException("1과 2만 허용됩니다.");
     }
 
     public static void PrintResult(int strike, int ball){
