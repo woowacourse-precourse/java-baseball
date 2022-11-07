@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.repository.Repository;
+import baseball.service.Service;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +28,21 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 점수_저장_반환() {
+        Repository rp = new Repository(586);
+        assertThat(rp.getScore()).isEqualTo(586);
+    }
+
+    @Test
+    void 점수_생성후_예외사항발생X() {
+        Service svc = new Service();
+        Repository rp = new Repository(svc.generateScore());
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> run(String.valueOf(rp.getScore()))
+                ));
     }
 
     @Override
