@@ -73,4 +73,13 @@ class ApplicationTest extends NsTest {
                 }, 1, 2, 3
         );
     }
+    @Test
+    void 네개_이상의_입력값이_들어온_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("1234"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                }, 1, 2, 3
+        );
+    }
 }
