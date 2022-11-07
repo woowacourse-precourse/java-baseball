@@ -134,7 +134,20 @@ public class Application {
     }
 
     private boolean askRetry() {
-        // 입력받기
-        return false;
+        int value;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            String answer = readLine().replace(" ", "");
+            value = Integer.parseInt(answer);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        if (value == 1) {
+            return true;
+        } else if (value == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 }
