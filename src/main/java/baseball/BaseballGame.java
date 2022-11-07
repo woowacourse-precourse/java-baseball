@@ -43,8 +43,8 @@ public class BaseballGame {
             System.out.println(cntInfo);
 
             if (strikeCnt == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 gotAnswer = true;
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
         }
     }
@@ -78,39 +78,24 @@ public class BaseballGame {
     private boolean isValidNumber(int num) {
         boolean invalidTF = true;
 
-        // 한자리씩 분해하기
-        List<Integer> checkArr = new ArrayList<>();
-        while (num > 0) {
-            checkArr.add(num % 10);
-            num /= 10;
-        }
-
-        // HashSet을 통해 중복된 숫자 지우기
-        HashSet<Integer> hashSet = new HashSet<>(checkArr);
+        List<Integer> digitList = decomposeNumber(num);
+        HashSet<Integer> digitSet = new HashSet<>(digitList);
 
         // 입력받은 숫자가 세자리가 아니거나, 세자리 수여도 서로 다른 숫자들이 아닐 경우
-        if (checkArr.size() != 3 || hashSet.size() != 3) {
+        if (digitList.size() != 3 || digitSet.size() != 3) {
             invalidTF = false;
         }
         return invalidTF;
     }
 
     private int countStrikes(int targetNum, int inputNum) {
-        List<Integer> targetNums = new ArrayList<>();
-        while (targetNum > 0) {
-            targetNums.add(targetNum % 10);
-            targetNum /= 10;
-        }
 
-        List<Integer> inputNums = new ArrayList<>();
-        while (inputNum > 0) {
-            inputNums.add(inputNum % 10);
-            inputNum /= 10;
-        }
+        List<Integer> targetDigits = decomposeNumber(targetNum);
+        List<Integer> inputDigits = decomposeNumber(inputNum);
 
         int strikeCnt = 0;
-        for (int i = 0; i < targetNums.size(); i++) {
-            if (targetNums.get(i) == inputNums.get(i)) {
+        for (int i = 0; i < targetDigits.size(); i++) {
+            if (targetDigits.get(i) == inputDigits.get(i)) {
                 strikeCnt++;
             }
         }
@@ -118,25 +103,26 @@ public class BaseballGame {
     }
 
     private int countBalls(int targetNum, int inputNum) {
-        List<Integer> targetNums = new ArrayList<>();
-        while (targetNum > 0) {
-            targetNums.add(targetNum % 10);
-            targetNum /= 10;
-        }
 
-        List<Integer> inputNums = new ArrayList<>();
-        while (inputNum > 0) {
-            inputNums.add(inputNum % 10);
-            inputNum /= 10;
-        }
+        List<Integer> targetDigits = decomposeNumber(targetNum);
+        List<Integer> inputDigits = decomposeNumber(inputNum);
 
         int ballCnt = 0;
-        for (int i = 0; i < targetNums.size(); i++) {
-            if (targetNums.get(i) != inputNums.get(i) && targetNums.contains(inputNums.get(i))) {
+        for (int i = 0; i < targetDigits.size(); i++) {
+            if (targetDigits.get(i) != inputDigits.get(i) && targetDigits.contains(inputDigits.get(i))) {
                 ballCnt++;
             }
         }
         return ballCnt;
+    }
+
+    private List<Integer> decomposeNumber(int num) {
+        List<Integer> digitList = new ArrayList<>();
+        while (num > 0) {
+            digitList.add(num % 10);
+            num /= 10;
+        }
+        return digitList;
     }
 
     private String buildCntInfo(int strikeCnt, int ballCnt) {
