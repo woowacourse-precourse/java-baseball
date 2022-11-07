@@ -5,18 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    List<Integer> computerNumber = new ArrayList<>();
+    List<Integer> computerNumber;
 
-    public void generateRandomNumber() {
-        while (computerNumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            inspectList(randomNumber);
-        }
+    public Computer() {
+        this.computerNumber = new ArrayList<>();
     }
 
-    public void inspectList(int number) {
-        if (!computerNumber.contains(number)) {
-            computerNumber.add(number);
-        }
+    public Computer(List<Integer> numberList) {
+        this.computerNumber = numberList;
+    }
+
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
     }
 }
