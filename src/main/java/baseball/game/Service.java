@@ -7,40 +7,17 @@ import java.util.Objects;
 import static baseball.util.Constant.*;
 
 public class Service {
-    public static String printHint(List<Integer> hint) {
-        StringBuilder string = new StringBuilder();
 
-        string.append(combine(hint.get(BALL_INDEX), BALL_MESSAGE))
-                .append(combine(hint.get(STRIKE_INDEX), STRIKE_MESSAGE));
-        if (string.toString().isEmpty()) {
-            return NOTHING_MESSAGE + NEWLINE;
-        }
-        return string
-                .append(NEWLINE)
-                .toString();
-    }
+    public Service() {}
 
-    private static String combine(int value, String message) {
-        StringBuilder string = new StringBuilder();
-
-        if (value > 0) {
-            string.append(value)
-                    .append(message);
-            if (message.equals(BALL_MESSAGE)) {
-                string.append(BLANK);
-            }
-        }
-        return string.toString();
-    }
-
-    public static List<Integer> countHint(List<Integer> userNumber, List<Integer> computerNumber) {
+    public List<Integer> calculateHint(List<Integer> userNumber, List<Integer> computerNumber) {
         List<Integer> hint = new ArrayList<>();
-        hint.add(countBall(userNumber, computerNumber));
-        hint.add(countStrike(userNumber, computerNumber));
+        hint.add(calculateBall(userNumber, computerNumber));
+        hint.add(calculateStrike(userNumber, computerNumber));
         return hint;
     }
 
-    public static int countBall(List<Integer> userNumber, List<Integer> computerNumber) {
+    public int calculateBall(List<Integer> userNumber, List<Integer> computerNumber) {
         int count = 0;
 
         for (int index = 0; index < NUMBER_LENGTH; index++) {
@@ -53,7 +30,7 @@ public class Service {
         return count;
     }
 
-    public static int countStrike(List<Integer> userNumber, List<Integer> computerNumber) {
+    public static int calculateStrike(List<Integer> userNumber, List<Integer> computerNumber) {
         int count = 0;
 
         for (int index = 0; index < NUMBER_LENGTH; index++) {
@@ -62,5 +39,31 @@ public class Service {
             }
         }
         return count;
+    }
+
+    public String hintToString(List<Integer> hint) {
+        StringBuilder string = new StringBuilder();
+
+        string.append(combine(hint.get(BALL_INDEX), BALL_MESSAGE))
+                .append(combine(hint.get(STRIKE_INDEX), STRIKE_MESSAGE));
+        if (string.toString().isEmpty()) {
+            return NOTHING_MESSAGE + NEWLINE;
+        }
+        return string
+                .append(NEWLINE)
+                .toString();
+    }
+
+    private String combine(int value, String message) {
+        StringBuilder string = new StringBuilder();
+
+        if (value > 0) {
+            string.append(value)
+                    .append(message);
+            if (message.equals(BALL_MESSAGE)) {
+                string.append(BLANK);
+            }
+        }
+        return string.toString();
     }
 }

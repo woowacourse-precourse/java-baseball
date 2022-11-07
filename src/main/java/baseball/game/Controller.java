@@ -9,13 +9,16 @@ import static baseball.util.Constant.*;
 
 public class Controller {
     private final View view;
+    private final Service service;
     private final Computer computer;
     private final User user;
 
     public Controller() {
         view = new View();
+        service = new Service();
         computer = new Computer();
         user = new User();
+
         view.show(GAME_START_MESSAGE);
     }
 
@@ -31,8 +34,8 @@ public class Controller {
         view.show(USER_NUMBER_INPUT_MESSAGE);
         user.generateNumbers(view.input());
 
-        List<Integer> hint = Service.countHint(user.getNumbers(), computer.getNumbers());
-        view.show(Service.printHint(hint));
+        List<Integer> hint = service.calculateHint(user.getNumbers(), computer.getNumbers());
+        view.show(service.hintToString(hint));
 
         if (!hint.equals(THREE_STRIKE)) {
             play();
