@@ -7,7 +7,8 @@ public class TurnScore {
     private int strikes;
     private ResultTurn resultTurn;
 
-    TurnScore() {}
+    TurnScore() {
+    }
 
     TurnScore(int balls, int strikes, ResultTurn resultTurn) {
         this.balls = balls;
@@ -34,4 +35,53 @@ public class TurnScore {
     public ResultTurn getResultTurn() {
         return this.resultTurn;
     }
+
+    public void setResultTurn() {
+        if (checkIsOut()) {
+            return;
+        }
+        if (checkIsNothing()) {
+            return;
+        }
+        if (checkIsStrikesZero()) {
+            this.resultTurn = ResultTurn.OnlyBalls;
+            return;
+        }
+        if (checkIsBallsZero()) {
+            this.resultTurn = ResultTurn.OnlyStrikes;
+            return;
+        }
+        this.resultTurn = ResultTurn.StrikesAndBalls;
+    }
+
+    public boolean checkIsOut() {
+        if (this.strikes == 3) {
+            this.resultTurn = ResultTurn.Out;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIsNothing() {
+        if (checkIsBallsZero() && checkIsStrikesZero()) {
+            this.resultTurn = ResultTurn.Nothing;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIsBallsZero() {
+        if (this.balls == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIsStrikesZero() {
+        if (this.strikes == 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
