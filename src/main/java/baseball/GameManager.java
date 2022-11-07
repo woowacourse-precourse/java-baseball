@@ -1,6 +1,7 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
+import java.util.List;
 
 public class GameManager {
     private static HashMap<Integer,Integer> RandomNumberHash = new HashMap<>();
@@ -37,6 +38,29 @@ public class GameManager {
         });
         System.out.println(resultHash);
         return resultHash;
+    }
+
+    static String printResult() {
+        String resultString = "";
+        List<Character> resultKeys = List.of('B', 'S', 'O');
+        if (resultHash.get('S')==3) {
+            resultString = "3스트라이크";
+            System.out.println(resultString);
+            return resultString;
+        }
+        if (resultHash.get('O')==3) {
+            resultString="낫싱";
+            System.out.println(resultString);
+            return resultString;
+        }
+        for (char SBO: resultKeys) {
+            if (resultHash.get(SBO)==0) continue;
+            if (SBO=='B') resultString=resultString+resultHash.get(SBO)+"볼 ";
+            if (SBO=='S') resultString=resultString+resultHash.get(SBO)+"스트라이크 ";
+        }
+        resultString = resultString.substring(0,resultString.length()-1);
+        System.out.println(resultString);
+        return resultString;
     }
 
 }
