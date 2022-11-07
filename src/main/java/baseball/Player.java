@@ -8,6 +8,9 @@ import java.util.List;
 
 public class Player {
 
+    private static final String GAME_START_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String GAME_OVER_AGAIN_MESSAGE = "축하합니다! 경기를 다시 시작하겠습니까? 다시 시작 : 1, 종료 : 2";
+
     private final List<Integer> numbers;
 
     public Player() {
@@ -19,12 +22,12 @@ public class Player {
     }
 
     public void input() {
-        System.out.printf("숫자를 입력해주세요 : ");
+        System.out.printf(GAME_START_MESSAGE);
         setUserNumbers();
     }
 
     public int gameOverInput() {
-        System.out.println("축하합니다! 경기를 다시 시작하겠습니까? 다시 시작 : 1, 종료 : 2");
+        System.out.println(GAME_OVER_AGAIN_MESSAGE);
         String input = readLine();
         ValidateUtils.checkInputLength(input.length(), 1);
         ValidateUtils.checkGameOverInput(Integer.parseInt(input));
