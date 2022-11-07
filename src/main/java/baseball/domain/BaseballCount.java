@@ -26,6 +26,10 @@ public class BaseballCount {
         return combineMessage(getBall(), getStrike());
     }
 
+    // 정답확인 기능
+    public boolean isCorrect() {
+        return getStrike() == 3;
+    }
 
     // 볼과 스트라이크 갯수에 따른 메세지 결합 기능
     private String combineMessage(int ball, int strike) {

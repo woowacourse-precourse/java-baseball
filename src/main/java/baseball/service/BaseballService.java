@@ -27,4 +27,15 @@ public class BaseballService {
         System.out.println(baseballCount.displayHint());
     }
 
+    //정답을 맞췄는지 확인여부에 따른 메세지 출력 기능
+    public boolean isCorrect() {
+        if (baseballCount.isCorrect()) {
+            System.out.println(STRIKE_END_MESSAGE);
+            System.out.println(RESTART_OR_END_MESSAGE);
+            return true;
+        }
+        return false;
+    }
+
+
 }
