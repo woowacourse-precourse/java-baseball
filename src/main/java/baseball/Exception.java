@@ -23,4 +23,8 @@ class Exception {
     static boolean isInvalidLength(List<Integer> userNumbers) {
         return userNumbers.size() != NUMBER_SIZE;
     }
+
+    static boolean isInvalidRange(List<Integer> userNumbers) {
+        return userNumbers.contains(ZERO_IS_NOT_RANGE);
+    }
 }
