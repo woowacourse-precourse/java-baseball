@@ -66,13 +66,10 @@ public class Game {
 
     public void beingGame() {
         while (true) {
+            String playerBaseballNumber = getPlayerBaseballNumber();
             try {
-                System.out.println("숫자를 입력해주세요 :");
-                String playerInput = scanner.nextLine();
-                List<Integer> playerInputNumbers = player.isValidBaseballNumber(playerInput);
-                player.setBaseballNumber(playerInputNumbers);
-
-            } catch (IllegalStateException e) {
+                player.isValidBaseballNumber(playerBaseballNumber);
+            } catch (IllegalArgumentException exception) {
                 continue;
             }
 
@@ -86,6 +83,11 @@ public class Game {
                 break;
             }
         }
+    }
+
+    public String getPlayerBaseballNumber() {
+        System.out.println("숫자를 입력해주세요 :");
+        return scanner.nextLine();
     }
 }
 

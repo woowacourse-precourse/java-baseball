@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InputUtils {
-    protected static final int BASEBALL_NUMBER_LENGTH = 3;
+    public static final int BASEBALL_NUMBER_LENGTH = 3;
 
     public static boolean isDigit(String input) {
         try{

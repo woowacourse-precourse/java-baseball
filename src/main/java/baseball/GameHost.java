@@ -1,5 +1,7 @@
 package baseball;
 
+import utils.InputUtils;
+
 import java.util.*;
 
 public class GameHost extends BaseballNumber {
@@ -41,7 +43,7 @@ public class GameHost extends BaseballNumber {
     public void setHint(List<Integer> playerNumber) {
         setHintDefault();
 
-        for (int i = 0; i < super.BASEBALLNUMBERLENGTH; i++) {
+        for (int i = 0; i < playerNumber.size(); i++) {
             int playerNum = playerNumber.get(i);
             int baseballNum = this.baseballNumber.get(i);
 
