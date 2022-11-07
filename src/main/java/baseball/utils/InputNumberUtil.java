@@ -1,10 +1,9 @@
 package baseball.utils;
 
-import baseball.constant.BaseballConstant;
 import baseball.validation.UserValidator;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.constant.BaseballConstant.*;
+import static baseball.constant.BaseballConstant.WRONG_FORMAT_NUMBER;
 
 public class InputNumberUtil {
 

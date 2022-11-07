@@ -23,7 +23,7 @@ public class UserValidator {
         for (int i = 0; i < input.length(); i++) {
             char character = input.charAt(i);
 
-            if(isZero(character) || !Character.isDigit(character)) return false;
+            if (isZero(character) || !Character.isDigit(character)) return false;
 
             duplicatedCheck.add(character);
         }

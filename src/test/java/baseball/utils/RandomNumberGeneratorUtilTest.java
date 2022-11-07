@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RandomNumberGeneratorUtilTest {
 
     @Test
-    @DisplayName("Computer 는 서로 다른 3개의 숫자를 만들 수 있다")
+    @DisplayName("Computer는 서로 다른 3개의 숫자를 만들 수 있다")
     void testComputerMakesThreeDifferentNumber() throws Exception {
         //given
         List<Integer> numberList = RandomNumberGeneratorUtil.makesDifferenceThreeNumber();
