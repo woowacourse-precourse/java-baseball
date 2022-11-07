@@ -5,11 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static baseball.validator.NumberValidator.validateRange;
 import static baseball.validator.NumbersValidator.*;
 
 public class Application {
+    private final static int INPUT_DIGIT = 3;
     private final static String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     public static void main(String[] args) {
@@ -18,6 +20,16 @@ public class Application {
         System.out.println(GAME_START_MESSAGE);
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> playerNumbers = getPlayerRandomNumbers();
+    }
+
+    static int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < INPUT_DIGIT; i++) {
+            if (Objects.equals(computerNumbers.get(i), playerNumbers.get(i))) {
+                strikeCount += 1;
+            }
+        }
+        return strikeCount;
     }
 
     static List<Integer> getPlayerRandomNumbers() {
