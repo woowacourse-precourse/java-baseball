@@ -34,6 +34,10 @@
 
 * Stage : 사용자가 숫자를 제시하고, 컴퓨터의 숫자와 비교해 결과를 나타내는 한 번의 행위
 
+* GameCard : 게임 패, 숫자 세 개
+
+* GameResult : 게임 패 끼리 비교한 결과
+
 ```
 Application 시작
 Application 진행
