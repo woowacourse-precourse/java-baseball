@@ -1,6 +1,7 @@
 # 목차
 - 구현할 기능 목록
 - 의사코드
+- 기능 상세 기술
 - 미션 - 숫자 야구
 ---
 
@@ -27,6 +28,47 @@
 6. 재시작 혹은 종료를 사용자가 1, 2번을 통해 선택할 수 있도록 한다.
 
 ---
+
+## 🚀 기능 상세 기술
+
+- 사용된 클래스 리스트
+  - Application
+  - answerNumber
+  - inputNumber
+  - printCase
+  - startGame
+
+**핵심기능**
+> - 정답 숫자와 입력된 숫자를 비교하여 케이스별 결과 출력기능 
+<br>
+> - 게임 종료시 사용자에게 숫자를 입력받아 재시작, 종료 기능
+
+### Application
+메인 함수
+<br>
+startGame 이 구현된 메소드
+
+### answerNumber
+
+1-9 까지의 숫자 중 랜덤한 3개의 숫자를 정하여 리스트로 반환하는 기능
+
+
+### inputNumber
+
+사용자에게 숫자를 입력받아 리스트로 반환하는 기능
+<br>
+입력 예외 발생시 **IllegalArgumentException** 예외 반환
+
+### printCase
+
+answerNumber 와 inputNumber를 비교하여 케이스 별 결과를 print하는 기능 
+
+### startGame
+
+answerNumber 와 inputNumber 가 구현된 메소드
+<br>
+정답을 맞출 경우 사용자에게 숫자를 입력받아 재시작 혹은 종료 기능
+
 
 # 미션 - 숫자 야구
 
