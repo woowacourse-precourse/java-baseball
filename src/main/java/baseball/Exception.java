@@ -9,6 +9,12 @@ class Exception {
     private static final int NUMBER_SIZE = 3;
     private static final int ZERO_IS_NOT_RANGE = 0;
 
+    static void handleException(List<Integer> userNumbers) {
+        if (isInvalidLength(userNumbers) || isInvalidRange(userNumbers) || checkDuplicate(deduplicated(userNumbers))) {
+            throw new IllegalArgumentException(ResponseMessage.stopExceptionProgram());
+        }
+    }
+
     static void isInvalidInput(int gameExecution) {
         if (gameExecution == RESTART_GAME || gameExecution == STOP_PROGRAM) {
             return;
