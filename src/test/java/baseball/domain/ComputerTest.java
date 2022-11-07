@@ -1,8 +1,7 @@
-package baseball;
+package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.domain.Computer;
 import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +22,7 @@ class ComputerTest {
         assertRandomNumbers(randomNumbers);
     }
 
-    private void assertRandomNumbers(List<Integer> randomNumbers) {
+    public static void assertRandomNumbers(List<Integer> randomNumbers) {
         assertThat(randomNumbers.size()).isEqualTo(3);
 
         for (Integer randomNumber : randomNumbers) {
