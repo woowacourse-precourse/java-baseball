@@ -71,4 +71,13 @@ public class MyTest {
         assertThat(judgeResult(mine2, computer)).isEqualTo("11");
         assertThat(judgeResult(mine3, computer)).isEqualTo("00");
     }
+
+    @Test
+    @DisplayName("결과 출력")
+    void 결과_출력(){
+        assertThat(printResult("00")).isEqualTo("낫싱");
+        assertThat(printResult("10")).isEqualTo("1볼");
+        assertThat(printResult("01")).isEqualTo("1스트라이크");
+        assertThat(printResult("11")).isEqualTo("1볼 1스트라이크");
+    }
 }

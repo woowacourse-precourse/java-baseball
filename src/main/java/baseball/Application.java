@@ -1,6 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -43,24 +45,42 @@ public class Application {
     }
 
     public static String judgeResult(String key, String target) {
-        int[] result = {0, 0};
+        int[] count = {0, 0};
         for (int i = 0; i < 3; i++) {
-            compare(key, target, result, i);
+            compare(key, target, count, i);
         }
-        return Arrays.stream(result).mapToObj(String::valueOf).collect(Collectors.joining());
+        return Arrays.stream(count).mapToObj(String::valueOf).collect(Collectors.joining());
     }
 
-    private static void compare(String key, String target, int[] result, int i) {
+    private static void compare(String key, String target, int[] count, int i) {
         for (int j = 0; j < 3; j++) {
             char tc = target.charAt(i);
             char kc = key.charAt(j);
             if (tc == kc && i == j) {
-                result[0] += 1;
+                count[1] += 1;
             } else if (tc == kc && i != j) {
-                result[1] += 1;
+                count[0] += 1;
             }
         }
     }
+
+    public static String printResult(String count) {
+        char ballCount = count.charAt(0);
+        char strikeCount = count.charAt(1);
+        List<String> list = new ArrayList<>();
+        if (strikeCount == '0' && ballCount == '0') {
+            list.add("낫싱");
+        } else {
+            if (ballCount != '0') {
+                list.add(String.format("%c볼", ballCount));
+            }
+            if (strikeCount != '0') {
+                list.add(String.format("%c스트라이크", strikeCount));
+            }
+        }
+        return list.stream().collect(Collectors.joining(" "));
+    }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
