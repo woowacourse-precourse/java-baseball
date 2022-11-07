@@ -6,11 +6,6 @@ import java.util.*;
 
 public class Validator {
 
-    public List<Integer> getInput(){
-        System.out.println(Message.INPUT_ASK.getMessage());
-        String inputNum = Console.readLine();
-        return convertor(inputNum);
-    }
 
     public List<Integer> convertor(String inputNum){
         List<Integer> playerAnswer = new ArrayList<>();
@@ -49,7 +44,11 @@ public class Validator {
     }
 
     public boolean validateTotal(String playerNum){
-        return checkDuplicate(playerNum) && checkLength(playerNum) && checkNum(playerNum);
+        if (checkDuplicate(playerNum) && checkLength(playerNum) && checkNum(playerNum)){
+            return true;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 
 }
