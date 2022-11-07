@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class UserTest {
     private User user = new User();
 
@@ -37,19 +35,19 @@ class UserTest {
         InputStream input = generateUserInput("3"); // 1,2가 아닌 숫자 입력
         System.setIn(input);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.inputRestart();
+            user.inputRestartNumber();
         });
 
         input = generateUserInput("abc");   //  문자입력시
         System.setIn(input);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.inputRestart();
+            user.inputRestartNumber();
         });
 
         input = generateUserInput("1 ");   //  공백포함
         System.setIn(input);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            user.inputRestart();
+            user.inputRestartNumber();
         });
     }
 

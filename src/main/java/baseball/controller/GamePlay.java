@@ -2,10 +2,7 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.User;
-import baseball.util.Util;
-import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
 
 public class GamePlay {
     public static boolean restart = false;
@@ -35,7 +32,7 @@ public class GamePlay {
     }
 
     public boolean restartGame() {
-        boolean restartFlag = user.inputRestart();
+        boolean restartFlag = user.inputRestartNumber();
 
         if (!restartFlag) {
             computer.generateNumber();

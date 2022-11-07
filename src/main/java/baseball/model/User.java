@@ -17,9 +17,9 @@ public class User {
         return inputNumbers;
     }
 
-    public boolean inputRestart() {
+    public boolean inputRestartNumber() {
         int restartNumber = Integer.parseInt(Console.readLine());
-        Util.isCorrectInputRestart(restartNumber);
+        Util.isCorrectInputRestartNumber(restartNumber);
         if (restartNumber == 2) {
             return true;
         }

@@ -29,7 +29,7 @@ public class Computer {
             search(guessNumbers[i], i);
         }
 
-        resultPrint();
+        hintPrint();
 
         if (strikeCount == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
@@ -37,10 +37,10 @@ public class Computer {
             GamePlay.restart = true;
         }
 
-        reset();
+        resetHint();
     }
 
-    private void resultPrint() {
+    private void hintPrint() {
         if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
         } else if (ballCount == 0) {
@@ -52,7 +52,7 @@ public class Computer {
         }
     }
 
-    private void reset() {
+    private void resetHint() {
         ballCount = 0;
         strikeCount = 0;
     }
@@ -69,14 +69,6 @@ public class Computer {
                 ballCount++;
             }
         }
-    }
-
-    public int getBallCount() {
-        return ballCount;
-    }
-
-    public int getStrikeCount() {
-        return strikeCount;
     }
 
     public int[] getNumbers() {
