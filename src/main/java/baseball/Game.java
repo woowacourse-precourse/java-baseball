@@ -18,6 +18,7 @@ public class Game {
     private final String RESTART_STATUS = "1";
     private final String END_GAME_STATUS = "2";
     private final String RESTART_END_MESSAGE = "게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.\n";
+
     private String[] computer;
     private String[] player;
     private int strike;

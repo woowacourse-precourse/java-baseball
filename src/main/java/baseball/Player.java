@@ -22,15 +22,19 @@ public class Player {
 
     public void setNumber() {
         System.out.print(INPUT_MESSAGE);
-        String input = readLine();
-        isValidInput(input.split(""));
-        this.number = input.split("");
+        String[] input = readLine().split("");
+        isValidInput(input);
+        this.number = input;
     }
 
     private void isValidInput(String[] input) {
         if (!isRightLength(input) || isDuplicated(input) || !isDigitRange(input)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean isRightLength(String[] input) {
+        return input.length == MAX_STRIKE;
     }
 
     private boolean isDuplicated(String[] input) {
@@ -41,9 +45,5 @@ public class Player {
     private boolean isDigitRange(String[] input) {
         Pattern pattern = Pattern.compile(INPUT_PATTERN);
         return Arrays.stream(input).allMatch(s -> pattern.matcher(s).matches());
-    }
-
-    private boolean isRightLength(String[] input) {
-        return input.length == MAX_STRIKE;
     }
 }
