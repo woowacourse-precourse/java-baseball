@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import static baseball.Application.getNumber;
 import static baseball.Application.isValidUserNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -51,6 +52,12 @@ class ApplicationTest extends NsTest {
     void 사용자_번호가_유효한_숫자인지_확인_테스트_0_포함() {
         String number = "120";
         assertThatThrownBy(()->isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 번호를_숫자로_변경하는_테스트_숫자가_아님() {
+        String number = "12e";
+        assertThatThrownBy(()->getNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
