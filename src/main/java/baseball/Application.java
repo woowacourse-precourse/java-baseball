@@ -31,6 +31,18 @@ public class Application {
 
     }
 
+    public static List<Integer> createAnswer() {
+
+        List<Integer> answer = new ArrayList<>();
+        while (answer.size() < 3) {
+            int randNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answer.contains(randNumber)) {
+                answer.add(randNumber);
+            }
+        }
+        return answer;
+    }
+
     public static boolean checkAnswer(List<Integer> answer) {   // Key ( 0 : BALL / 1 : STRIKE )
         if (answer.get(1) == 3) {
             return true;
@@ -42,12 +54,14 @@ public class Application {
     public static void main(String[] args) {
 
         boolean status = playGame();
+        List<Integer> answer = createAnswer();
 
         while (status != false) {
-            List<Integer> answer = new ArrayList<>();
+            List<Integer> count = new ArrayList<>();
 
-            if (checkAnswer(answer)) {
+            if (checkAnswer(count)) {
                 status = restartGame();
+                answer = createAnswer();
             }
         }
 
