@@ -6,6 +6,8 @@ import java.util.List;
 
 public class UserUtil {
 
+    private static final String ZERO = "0";
+
     public static List<Integer> getUserNumbers() {
         List<Integer> userNumbers = new ArrayList<>();
 
@@ -33,7 +35,7 @@ public class UserUtil {
             throw new IllegalArgumentException("input should have three digits");
         }
 
-        if (input.contains("0")) {
+        if (input.contains(ZERO)) {
             throw new IllegalArgumentException("input cannot contains zero");
         }
     }
