@@ -12,7 +12,7 @@ public final class Count {
     private static int ball;
     private static int strike;
 
-    public boolean count(final List<Character> answer, final String comparison){
+    public boolean count(final List<Character> answer, final String comparison) {
         IntStream.range(0, 3).forEach(i -> {
             if (answer.get(i) == comparison.charAt(i)) {
                 strike++;
@@ -24,7 +24,7 @@ public final class Count {
         return strike == 3;
     }
 
-    private static void judge(final List<Character> answer,final String comparison) {
+    private static void judge(final List<Character> answer, final String comparison) {
         if (ball != 0 && strike == 0) {
             System.out.println(ball + "볼");
         } else if (ball == 0 && strike != 0) {

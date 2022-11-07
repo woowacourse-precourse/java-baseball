@@ -11,6 +11,6 @@ public final class Answer {
     }
 
     public boolean compare(final BaseBallNumber number) {
-      return new Count().count(answer, number.toString());
+        return new Count().count(answer, number.toString());
     }
 }

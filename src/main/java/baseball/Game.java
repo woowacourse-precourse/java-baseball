@@ -23,7 +23,7 @@ public final class Game {
         answer = new Computer().createAnswer();
     }
 
-    public static void progress(){
+    public static void progress() {
         while (true) {
             if (player.guess(answer)) {
                 break;
