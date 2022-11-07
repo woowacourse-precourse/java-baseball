@@ -1,27 +1,21 @@
 package baseball;
 
 public class ValidInput {
-    String userInput;
-
-    public ValidInput(String userInput) {
-        this.userInput = userInput;
-    }
-
-    public void inspectInputLength() throws IllegalArgumentException {
+    public void inspectInputLength(String userInput) throws IllegalArgumentException {
         // 문자열 길이 검사
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요!");
         }
     }
 
-    public void inspectAlphabetOrSpecialCharacter() throws IllegalArgumentException {
+    public void inspectAlphabetOrSpecialCharacter(String userInput) throws IllegalArgumentException {
         // 문자열에 숫자 외에 다른 것이 있는지 검증
         if (!(String.valueOf(userInput).matches("^[0-9]*$"))) {
             throw new IllegalArgumentException("숫자 외에 다른 문자가 검출되었습니다!");
         }
     }
 
-    public void inspectDuplicatedNumber() throws IllegalArgumentException {
+    public void inspectDuplicatedNumber(String userInput) throws IllegalArgumentException {
         // 사용자의 입력을 char형 배열에 한 글자씩 저장
         char[] userInputArray = userInput.toCharArray();
 
