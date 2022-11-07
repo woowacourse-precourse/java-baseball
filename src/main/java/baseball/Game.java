@@ -20,5 +20,9 @@ public class Game {
     }
     public void play() {
         printStartGame();
+
+        while (!rule.isGameOver()) {
+
+        }
     }
 }
