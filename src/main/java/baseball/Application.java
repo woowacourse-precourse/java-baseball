@@ -42,10 +42,10 @@ public class Application {
 
     private void askAndAnswerLoop(ArrayList<Integer> correctNumber) {
         ArrayList<Integer> askNumber;
-        boolean loop = true;
-        while (loop) {
+        boolean correct = false;
+        while (!correct) {
             askNumber = getNumber();
-            loop = compareNumber(correctNumber, askNumber);
+            correct = compareNumber(correctNumber, askNumber);
         }
         // 종료문구 출력
         if (askRetry()) {
