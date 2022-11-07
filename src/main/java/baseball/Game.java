@@ -69,19 +69,4 @@ public class Game {
             }
         }
     }
-
-    public boolean isCorrectInput(String user) {
-        if(user.length() != 3) return false;
-
-        Set<Integer> duplicatedCheck = new HashSet<>();
-
-        for (int i = 0; i < user.length(); i++) {
-            int number = user.charAt(i) - '0';
-
-            duplicatedCheck.add(number);
-            if(number <= 0) return false;
-        }
-
-        return duplicatedCheck.size() == 3;
-    }
 }

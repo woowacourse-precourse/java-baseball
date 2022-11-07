@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.validation.UserValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class Application {
 
             String user = Console.readLine();
 
-            if (!game.isCorrectInput(user)) {
+            if (UserValidator.inputNumberValidation(user)) {
                 throw new IllegalArgumentException(WRONG_FORMAT_NUMBER);
             }
 
