@@ -42,12 +42,18 @@ public class Application {
             return true;
         }
 
+        for (int i = 0; i < 3; i++){
+            if (input.get(i) < 1 || input.get(i) > 9){
+                return true;
+            }
+        }
+
         return false;
     }
 
-    private static boolean process_exception(List<Integer> input_num) {
+    private static boolean process_exception(boolean is_exception) {
         try {
-            if (is_execption(input_num)) {
+            if (is_exception) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
@@ -104,7 +110,7 @@ public class Application {
             List<Integer> input_num = rand_num_input();
 
             //3. 사용자로부터 입력 받은 수가 잘못된 값인 경우 프로그램을 종료한다.
-            if (process_exception(input_num)) {
+            if (process_exception(is_execption(input_num))) {
                 break;
             }
 
@@ -119,11 +125,13 @@ public class Application {
             //6. 두 수가 같다면, 게임을 종료 후 재시작 여부를 사용자에게 입력받는다.
             String input = exit_and_restart();
 
-            //8. 재시작 여부에 대한 입력에 따라 처리한다.
+            //7. 재시작 여부에 대한 입력에 따라 처리한다.
             if (input.equals("1")){
                 rand_num = rand_num_gen();
-            } else{
+            } else if (input.equals("2")){
                 break;
+            } else{
+
             }
         }
     }
