@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -72,7 +73,7 @@ public class Game {
             throw new IllegalArgumentException();
         } else if (!checkUserInputNumber(userInputNumber)) {
             throw new IllegalArgumentException();
-        } else if (checkUserInputDuplcateNumber(userInputNumber)) {
+        } else if (checkUserInputDuplicateNumber(userInputNumber)) {
             throw new IllegalArgumentException();
         }
     }
@@ -92,5 +93,9 @@ public class Game {
             return false;
         }
         return true;
+    }
+
+    public static boolean checkUserInputDuplicateNumber(String userInputNumber) {
+        return userInputNumber.length() == Arrays.stream(userInputNumber.split("")).distinct().count();
     }
 }
