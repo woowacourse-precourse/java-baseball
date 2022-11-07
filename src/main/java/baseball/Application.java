@@ -76,6 +76,10 @@ public class Application {
             resultString.append(strike).append("스트라이크");
         }
 
+        if ((ball + strike) == 0){
+            resultString.append("낫싱");
+        }
+
         System.out.println(resultString);
 
         if (strike == 3) {
@@ -117,7 +121,7 @@ public class Application {
         }
     }
 
-    private boolean isEndGame(){
+    private static boolean isEndGame(){
         int inputNumber;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         inputNumber = Integer.parseInt(Console.readLine());
@@ -126,12 +130,14 @@ public class Application {
         } else if (inputNumber == 2){
             return false;
         }
+        return false;
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
-        baseballGameRun();
-
+        boolean isContinueGame = false;
+        do {
+            baseballGameRun();
+            isContinueGame = isEndGame();
+        } while (isContinueGame);
     }
 }
