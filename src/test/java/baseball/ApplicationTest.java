@@ -37,6 +37,11 @@ class ApplicationTest extends NsTest {
 		assertThat(3).isEqualTo(compare.countBall(Arrays.asList(3, 1, 2), Arrays.asList(1, 2, 3)));
 	}
 
+	@Test
+	void 세개의_스트라이크_확인() {
+		assertThat("3스트라이크").isEqualTo(judge.judgement(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3)));
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
