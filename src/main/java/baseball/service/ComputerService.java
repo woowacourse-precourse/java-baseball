@@ -13,6 +13,7 @@ public class ComputerService {
 
     /**
      * 리스트에 1부터 9 사이의 겹치지 않는 숫자를 더한다.
+     *
      * @param numbers 숫자를 담은 리스트
      */
     private static void addNumberToList(List<Integer> numbers) {
@@ -24,10 +25,19 @@ public class ComputerService {
 
     /**
      * 컴퓨터의 랜덤 숫자들을 초기화한다.
+     *
      * @return computer
      */
-    public Computer initComputer() {
+    public void initComputer() {
         computer.setNumbers(getRandomNumbers());
+    }
+
+    /**
+     * 컴퓨터를 가져온다.
+     *
+     * @return 컴퓨터
+     */
+    public Computer getComputer() {
         return computer;
     }
 

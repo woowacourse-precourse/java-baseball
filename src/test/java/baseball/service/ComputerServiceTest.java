@@ -14,7 +14,8 @@ class ComputerServiceTest {
 
     @BeforeEach
     void initComputer() {
-        computer = computerService.initComputer();
+        computerService.initComputer();
+        computer = computerService.getComputer();
     }
 
     @Test
