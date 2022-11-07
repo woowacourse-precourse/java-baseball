@@ -1,10 +1,10 @@
-package baseball.domain.BaseballGame;
+package baseball.domain.game;
 
-import baseball.StringEnum.Game;
-import baseball.domain.Computer.Computer;
-import baseball.domain.Hint.Hint;
-import baseball.domain.Hint.HintString;
-import baseball.domain.Player.Player;
+import baseball.stringenum.Game;
+import baseball.domain.computer.Computer;
+import baseball.domain.hint.Hint;
+import baseball.domain.hint.HintString;
+import baseball.domain.player.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {

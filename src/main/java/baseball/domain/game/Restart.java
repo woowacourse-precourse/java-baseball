@@ -1,4 +1,4 @@
-package baseball.domain.BaseballGame;
+package baseball.domain.game;
 
 import java.util.Map;
 import java.util.stream.Collectors;

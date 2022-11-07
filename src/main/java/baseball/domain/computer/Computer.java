@@ -1,6 +1,6 @@
-package baseball.domain.Computer;
+package baseball.domain.computer;
 
-import baseball.domain.BaseballGame.Ball;
+import baseball.domain.game.Ball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

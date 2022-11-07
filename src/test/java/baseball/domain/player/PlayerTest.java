@@ -1,6 +1,6 @@
-package baseball.domain.Player;
+package baseball.domain.player;
 
-import static baseball.StringEnum.InputExceptionCode.*;
+import static baseball.stringenum.InputExceptionCode.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package baseball.StringEnum;
+package baseball.stringenum;
 
-import baseball.domain.BaseballGame.Ball;
-import baseball.domain.BaseballGame.Restart;
+import baseball.domain.game.Ball;
+import baseball.domain.game.Restart;
 
 public enum Game {
     START {

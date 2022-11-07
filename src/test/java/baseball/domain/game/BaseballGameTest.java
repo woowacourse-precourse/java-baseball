@@ -1,8 +1,8 @@
-package baseball.domain.BaseballGame;
+package baseball.domain.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.domain.Hint.HintString;
+import baseball.domain.hint.HintString;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;

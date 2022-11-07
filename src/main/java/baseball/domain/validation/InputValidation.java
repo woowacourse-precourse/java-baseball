@@ -1,9 +1,9 @@
-package baseball.domain.Validation;
+package baseball.domain.validation;
 
-import static baseball.StringEnum.InputExceptionCode.*;
+import static baseball.stringenum.InputExceptionCode.*;
 
-import baseball.domain.BaseballGame.Ball;
-import baseball.domain.BaseballGame.Restart;
+import baseball.domain.game.Ball;
+import baseball.domain.game.Restart;
 import java.util.List;
 
 public class InputValidation {

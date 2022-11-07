@@ -1,4 +1,4 @@
-package baseball.domain.Hint;
+package baseball.domain.hint;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

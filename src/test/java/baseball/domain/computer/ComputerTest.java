@@ -1,6 +1,6 @@
-package baseball.domain.Computer;
+package baseball.domain.computer;
 
-import static baseball.domain.BaseballGame.Ball.*;
+import static baseball.domain.game.Ball.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.BaseballGame.BaseballGame;
+import baseball.domain.game.BaseballGame;
 
 public class Application {
     public static void main(String[] args) {

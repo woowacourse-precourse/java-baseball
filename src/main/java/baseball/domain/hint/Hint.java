@@ -1,6 +1,6 @@
-package baseball.domain.Hint;
+package baseball.domain.hint;
 
-import baseball.domain.BaseballGame.Ball;
+import baseball.domain.game.Ball;
 import java.util.List;
 
 public class Hint {

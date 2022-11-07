@@ -1,6 +1,6 @@
-package baseball.domain.Player;
+package baseball.domain.player;
 
-import baseball.domain.Validation.InputValidation;
+import baseball.domain.validation.InputValidation;
 import java.util.ArrayList;
 import java.util.List;
 
