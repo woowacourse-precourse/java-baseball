@@ -21,6 +21,7 @@ public class Application {
     }
 
     public static void getUserGuess(List<Integer> guess) {
+        System.out.print("숫자를 입력해주세요 : ");
         String[] numbers = Console.readLine().split("");
         guess.clear();
         for(String number:numbers) {
@@ -65,6 +66,7 @@ public class Application {
 
     public static void runGame() {
         List<Integer> computer = generateRandomNumber();
+        System.out.println(computer);
         List<Integer> guess = new ArrayList<>();
         while(true) {
             getUserGuess(guess);
@@ -85,6 +87,21 @@ public class Application {
          * 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
          * 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션은 종료되어야 한다.
          */
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String answer;
+        while(true) {
+            runGame();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            answer = Console.readLine();
+            if (answer.contentEquals("1")) {
+                continue;
+            }
+            else if (answer.contentEquals("2")) {
+                break;
+            }
+            else {
+                throw new IllegalArgumentException("1 과 2만 입력으로 받습니다");
+            }
+        }
     }
 }
