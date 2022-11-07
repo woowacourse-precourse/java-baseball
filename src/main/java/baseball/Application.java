@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.domain.BaseballGame;
-import baseball.domain.Controller;
-import baseball.domain.Game;
+import baseball.controller.Controller;
+import baseball.game.BaseballGame;
+import baseball.game.Game;
 import baseball.view.ErrorView;
 import baseball.view.InputView;
 import baseball.view.OutputView;

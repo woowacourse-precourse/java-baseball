@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.game;
 
 import java.util.stream.IntStream;
 

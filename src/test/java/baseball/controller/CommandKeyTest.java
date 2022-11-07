@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
