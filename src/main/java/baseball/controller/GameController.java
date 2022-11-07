@@ -50,4 +50,9 @@ public class GameController {
 
         if (gameSuccess) OutputView.printGameClear();
     }
+
+    public void isGameRestartOrStop() {
+        Boolean isGameRestart = InputView.isGameRestart();
+        if (isGameRestart) init();
+    }
 }
