@@ -40,7 +40,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 숫자_아닌_다른_글자_입력() {
+    void 입력값_숫자_아닌_다른_글자_포함() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("a12"))
                         .isInstanceOf(IllegalArgumentException.class)
