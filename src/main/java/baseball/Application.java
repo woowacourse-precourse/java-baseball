@@ -8,6 +8,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
+    public static void result(List<Integer> answer, List<Integer> userInput) {
+        int ball = getBall(answer, userInput);
+        int strike = getStrike(answer, userInput);
+
+        if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        }
+        else if (strike == 0) {
+            System.out.println(ball + "볼");
+        }
+        else {
+            System.out.println("낫싱");
+        }
+    }
+
     public static int getBall(List<Integer> answer, List<Integer> userInput) {
         int ball = 0;
 
