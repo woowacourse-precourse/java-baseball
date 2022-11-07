@@ -114,7 +114,7 @@ public class UserService {
 
 
     private void checkRestartNumber() {
-        if (!checkRestartlength() || !checkIsInteger(userRestartNumber)) {
+        if (!checkRestartLength() || !checkIsInteger(userRestartNumber)) {
             throw new IllegalArgumentException("에러발생 프로그램을 종료합니다.");
         }
     }
@@ -125,9 +125,9 @@ public class UserService {
         }
     }
 
-    private boolean checkRestartlength() {
+    private boolean checkRestartLength() {
         boolean returnCheckNumber = true;
-        if (userBaseballNumber.length() != 2) {
+        if (userRestartNumber.length() != 1) {
             returnCheckNumber = false;
         }
         return returnCheckNumber;

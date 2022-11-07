@@ -13,6 +13,7 @@ public class Application {
             }
 
             if (restartGameValue.equals("2")) {
+                System.out.print("게임 종료");
                 break;
             }
 
