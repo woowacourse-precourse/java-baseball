@@ -207,6 +207,12 @@ class ApplicationTest extends NsTest {
             String expectedOutput = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
             assertThat(actualOutput).isEqualTo(expectedOutput);
         }
+        @Test
+        void 맞춘_뒤에_입력시_0이나_1이_아닌_수를_입력하면_예외처리() {
+            String inValidChoice = "3";
+            assertThatThrownBy(() -> testGame.inputValidator.validateChoice(inValidChoice))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Test
