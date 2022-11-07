@@ -68,6 +68,13 @@ class ApplicationTest extends NsTest {
         assertThat(true).isEqualTo(Application.checkUserNumberLength("1"));
     }
 
+    @Test
+    void checkReplayNumberCountTest() {
+
+        assertThat(true).isEqualTo(Application.checkReplayNumberCount("1"));
+        assertThat(true).isEqualTo(Application.checkReplayNumberCount("2"));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
