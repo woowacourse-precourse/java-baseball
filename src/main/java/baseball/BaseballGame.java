@@ -8,8 +8,7 @@ import java.util.List;
 public class BaseballGame {
     private static final String RESTART_BASEBALL_GAME = "1";
     private static final String QUIT_BASEBALL_GAME = "2";
-    private static final boolean GAME_WIN = true;
-    private static boolean IS_CONTINUE = true;
+    private boolean GAME_WIN = true;
 
     Computer computer = new Computer();
     Player player = new Player();
@@ -19,11 +18,12 @@ public class BaseballGame {
     public void gameInit() {
         System.out.println(GameStatus.INIT.message());
 
-        while (IS_CONTINUE) {
+        boolean isContinue = true;
+        while (isContinue) {
             gameStart();
-            IS_CONTINUE = inputContinue();
+            isContinue = inputContinue();
         }
-        return;
+        System.out.println("게임 종료");
     }
 
     private void gameStart() {

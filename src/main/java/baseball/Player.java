@@ -17,12 +17,7 @@ public class Player {
         System.out.print(GameStatus.INPUT.message());
         String inputNumbers = Console.readLine();
 
-        try {
-            numberValidator.validateInput(inputNumbers);
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        } finally {
-            this.userNumbers = converter.convertStringToListInteger(inputNumbers);
-        }
+        numberValidator.validateInput(inputNumbers);
+        this.userNumbers = converter.convertStringToListInteger(inputNumbers);
     }
 }
