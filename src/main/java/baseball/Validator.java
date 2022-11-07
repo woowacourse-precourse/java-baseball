@@ -11,6 +11,10 @@ public class Validator {
         if (!validateIsAllDigitExceptForZero(pitchValue)) {
             throw new IllegalArgumentException("0을 제외한 숫자만 입력해주세요.");
         }
+
+        if (validateIsComposedOfSeparateNumbers(pitchValue)) {
+            throw new IllegalArgumentException("서로 다른 3자리 수를 입력해주세요.");
+        }
     }
 
     private boolean validateGameNumberLength(String value) {
@@ -27,5 +31,29 @@ public class Validator {
             }
         }
         return true;
+    }
+
+    private boolean validateIsComposedOfSeparateNumbers(String value) {
+        return hasSameNumber(value, 0, 0, "");
+    }
+
+    private boolean hasSameNumber(String value, int startIdx, int combinationLength, String combination) {
+        if (combinationLength == 2) {
+            if (compare(combination.charAt(0), combination.charAt(1))) {
+                return true;
+            }
+        }
+        boolean result = false;
+        for (int idx = startIdx; idx < value.length(); idx++) {
+            result = hasSameNumber(value, idx + 1, combinationLength + 1, combination + value.charAt(idx));
+            if (result) {
+                break;
+            }
+        }
+        return result;
+    }
+
+    private boolean compare(char digit1, char digit2) {
+        return digit1 == digit2;
     }
 }
