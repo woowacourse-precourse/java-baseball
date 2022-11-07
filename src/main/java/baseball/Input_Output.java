@@ -10,7 +10,7 @@ import java.util.List;
 public class Input_Output {
     List<Integer> computer = new ArrayList<>();
     List<Integer> Scan = new ArrayList<>();
-    String End_Number;
+
 
     public void Computer_RandomNumber() {//컴퓨터 랜덤 숫자 생성
 
@@ -22,6 +22,7 @@ public class Input_Output {
     }
 
     public void User_enter() {//유저 숫자 입력
+        System.out.println("숫자를 입력해주세요 : ");
         String Number = Console.readLine();
         int a = Integer.parseInt(Number);
 
@@ -35,25 +36,25 @@ public class Input_Output {
 
     public void User_File_Check()//사용자 입력 중 예외 사항 체크
     {
-        if(Scan.size()>3)
-            throw new IllegalArgumentException();
+        if(Scan.size()!=3)
+            throw new IllegalArgumentException("세자리 숫자가 아닙니다. 다시 입력하세요.");
+        if(Scan.contains(0))
+            throw new IllegalArgumentException("0을 제외한 숫자를 입력하세요.");
+        for(int i = 0; i<Scan.size();i++)
+        {
+            if(Collections.frequency(Scan,Scan.get(i)) != 1)
+                throw new IllegalArgumentException("서로 다른 숫자가 아닙니다. 다시 입력하세요.");
+
+        }
 
     }
 
-    public void Ending_Enter()
+    public String Ending_Enter()
     {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        End_Number=Console.readLine();
-        End_File_Check();
-
+        String End_Number=Console.readLine();
+        return End_Number;
     }
 
-    public void End_File_Check()//게임이 끝난 후 사용자 입력 중 예외 사항 체크
-    {
-        if(End_Number.length()>2)
-            throw new IllegalArgumentException();
-        if(End_Number !="1" &&End_Number!="2")
-            throw new IllegalArgumentException();
-    }
 }
