@@ -22,4 +22,11 @@ public class Validator {
             throw new IllegalArgumentException("서로 다른 수만 입력 가능합니다.");
         }
     }
+
+    private static void validateInteger() {
+        String numbers = input.replaceAll("[^1-9]", "");
+        if (numbers.length() != 3) {
+            throw new IllegalArgumentException("1 ~ 9 사이의 숫자만 입력 가능합니다.");
+        }
+    }
 }
