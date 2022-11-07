@@ -1,5 +1,6 @@
 package baseball.user;
 
+import baseball.option.validation.OptionValidation;
 import baseball.user.validation.UserValidation;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class User {
 
     public boolean inputOption() {
         String userInput = Console.readLine();
+        OptionValidation.validate(userInput);
         return Integer.parseInt(userInput) == 1;
     }
 }
