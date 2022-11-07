@@ -1,5 +1,6 @@
 package baseball;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -50,8 +51,7 @@ public class Application {
                 }
             }
         }
-        result.add(ball);
-        result.add(strike);
+        Collections.addAll(result,ball,strike);
         return result;
     }
 
