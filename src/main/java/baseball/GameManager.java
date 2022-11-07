@@ -12,10 +12,12 @@ public class GameManager {
         RandomNumberHash = Computer.generateRandomNumber();
     }
 
+
     static HashMap<Integer, Integer> scanNumber() {
         InputNumberHash.clear();
         System.out.println("숫자를 입력해주세요 : ");
         String numberString = Console.readLine();
+        ValidCheck.checkExceptionNumber(numberString, InputNumberHash);
         int index=0;
         for (char character: numberString.toCharArray()) {
             index++;
@@ -28,6 +30,7 @@ public class GameManager {
     static void scanIsContinue() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String numberString = Console.readLine();
+        ValidCheck.checkExceptionIsContinue(numberString);
         if (numberString.equals("1")) isContinue = true;
         else isContinue = false;
     }
