@@ -14,14 +14,6 @@ public class Application {
         int strike=0;
         int matchCount=0;
 
-        //랜덤한 숫자 3개 뽑기
-
-        List<String> computerNumber = new ArrayList<>();
-
-        for(int i=0; i<3; i++) {
-            computerNumber.add(Integer.toString(Randoms.pickNumberInRange(1, 9)));
-        }
-
         //사용자에게 숫자 입력받기
         String readNumber = Console.readLine();
 
