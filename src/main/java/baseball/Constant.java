@@ -8,5 +8,7 @@ public class Constant{
     public static final int SECOND = 1;
     public static final int THIRD = 2;
     public static final int CORRECT_ANSWER = 3;
+    public static final String RESTART_BUTTON = "1";
+    public static final String FINISH_BUTTON = "2";
 }
 

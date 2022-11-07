@@ -1,6 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
+import static baseball.Constant.FINISH_BUTTON;
+import static baseball.Constant.RESTART_BUTTON;
 import static baseball.Util.*;
 
 import java.util.ArrayList;
@@ -26,5 +29,15 @@ public class Gamer {
         checkException(input_number);
         int guess_number = Integer.parseInt(input_number);
         putInGamerNumber(guess_number);
+    }
+    public boolean inputRestartNumber(){
+        String restart_number = Console.readLine();
+        if(restart_number.equals(RESTART_BUTTON)){
+            return false;
+        }else if(restart_number.equals(FINISH_BUTTON)){
+            return true;
+        }else{
+            throw new IllegalArgumentException();
+        }
     }
 }
