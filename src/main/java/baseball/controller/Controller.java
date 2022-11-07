@@ -93,7 +93,6 @@ public class Controller {
     }
 
     private int countBall(List<Integer> computerNumber, List<Integer> userNumber) {
-        int ball = 0;
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
                 ball += 1;
