@@ -26,18 +26,6 @@ public class Computer {
         return randNumbers;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Computer computer = (Computer) o;
-        return Objects.equals(randNumbers, computer.randNumbers);
-    }
-
     public boolean isStrike(Integer now, int i) {
         if (randNumbers.get(i) == now) {
             return true;
@@ -50,5 +38,17 @@ public class Computer {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Computer computer = (Computer) o;
+        return Objects.equals(randNumbers, computer.randNumbers);
     }
 }
