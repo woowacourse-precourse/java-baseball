@@ -56,7 +56,7 @@ public class Game {
             playGame();
         }
         if (!(restartOrEnd.equals("1") || restartOrEnd.equals("2"))) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다. "+PROGRAM_END_MESSAGE);
         }
         return true;
     }
