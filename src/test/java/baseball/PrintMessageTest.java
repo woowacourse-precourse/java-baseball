@@ -44,5 +44,10 @@ class PrintMessageTest {
 
     @Test
     void gameContinueMessage() {
+        ByteArrayOutputStream outPut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outPut));
+        PrintMessage.gameContinueMessage();
+        String gameContinue = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
+        assertThat(outPut.toString()).isEqualTo(gameContinue);
     }
 }
