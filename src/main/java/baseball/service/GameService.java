@@ -43,33 +43,33 @@ public class GameService {
         }
     }
 
-    public List<Integer> getPlayerNumbers(){
+    private List<Integer> getPlayerNumbers(){
         return player.getNumbers();
     }
 
-    public List<Integer> getComputersNumbers(){
+    private List<Integer> getComputersNumbers(){
         return computer.getNumbers();
     }
 
-    public void scoreGameWithIndex(int index){
+    private void scoreGameWithIndex(int index){
         if(isStrike(index)) increaseStrike();
         if(isBall(index)) increaseBall();
     }
 
-    public boolean isStrike(int index){
+    private boolean isStrike(int index){
         return getPlayerNumbers().get(index)
                 .equals(getComputersNumbers().get(index));
     }
 
-    public boolean isBall(int index){
+    private boolean isBall(int index){
         return !isStrike(index) && getComputersNumbers().contains(getPlayerNumbers().get(index));
     }
 
-    public void increaseStrike(){
+    private void increaseStrike(){
         strikeCount++;
     }
 
-    public void increaseBall(){
+    private void increaseBall(){
         ballCount++;
     }
 }
