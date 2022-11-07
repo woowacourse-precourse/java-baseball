@@ -101,7 +101,7 @@ public class Game {
 
         for (int i = 0; i < computerNumber.size(); i++) {
             if(!Objects.equals(computerNumber.get(i), userInput.get(i))
-                    && computerNumber.contains(userInput)) {
+                    && computerNumber.contains(userInput.get(i))) {
                 ballCount++;
             }
         }

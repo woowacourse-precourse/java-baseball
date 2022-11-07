@@ -177,7 +177,7 @@ class ApplicationTest extends NsTest {
         Method method = game.getClass().getDeclaredMethod("stringToIntegerList", String.class);
         method.setAccessible(true);
         //when
-        List<Integer> test = (List<Integer>) method.invoke(game,"123");
+        List<Integer> test = (List<Integer>) method.invoke(game, "123");
         computer.setComputerNumbers(test);
 
         List<Integer> testStrikeList1 = new ArrayList<>();
@@ -192,6 +192,31 @@ class ApplicationTest extends NsTest {
         //then
         assertThat(game.checkStrikeCount(testStrikeList1)).isEqualTo(3);
         assertThat(game.checkStrikeCount(testStrikeList2)).isEqualTo(2);
+    }
+
+    @Test
+    void 볼검증_테스트() throws Exception{
+        //given
+        Computer computer = new Computer();
+        Game game = new Game(computer);
+        Method method = game.getClass().getDeclaredMethod("stringToIntegerList", String.class);
+        method.setAccessible(true);
+        //when
+        List<Integer> test = (List<Integer>) method.invoke(game, "123");
+        computer.setComputerNumbers(test);
+
+        List<Integer> testStrikeList1 = new ArrayList<>();
+        testStrikeList1.add(1);
+        testStrikeList1.add(3);
+        testStrikeList1.add(2);
+
+        List<Integer> testStrikeList2 = new ArrayList<>();
+        testStrikeList2.add(2);
+        testStrikeList2.add(3);
+        testStrikeList2.add(1);
+        //then
+        assertThat(game.checkBallCount(testStrikeList1)).isEqualTo(2);
+        assertThat(game.checkBallCount(testStrikeList2)).isEqualTo(3);
     }
 
     @Override
