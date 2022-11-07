@@ -29,9 +29,20 @@ public class BaseballGame {
     }
 
     public boolean rerun() {
+        boolean flag = false;
+
         System.out.println(Message.GAME_RESTART);
         Integer userInput = Integer.valueOf(Console.readLine());
 
-        return true;
+        if (userInput == 1) {
+            flag = true;
+        }
+        if (userInput == 2) {
+            flag = false;
+        }
+        if (userInput != 1 && userInput != 2) {
+            throw new IllegalArgumentException();
+        }
+        return flag;
     }
 }
