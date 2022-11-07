@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     private static final int RESTART_GAME = 1;
     private static final int STOP_PROGRAM = 2;
@@ -8,6 +10,11 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    }
+
+    private static void checkExecution() {
+        gameExecution = Integer.parseInt(Console.readLine());
+        Exception.isInvalidInput(gameExecution);
     }
 
     private static Number restartGame(Number computer) {
