@@ -3,15 +3,28 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class BaseBall {
-    public static final int MAX_BASEBALL_LENGTH = 3;
+public class BaseBall extends RandomMaker {
+    public static final int MAX_BASEBALL_SIZE = 3;
+    public static final int MIN_RANDOM_PICK = 1;
+    public static final int MAX_RANDOM_PICK = 9;
 
     private static List<Integer> answer = new ArrayList<>();
 
     public BaseBall() {
-        this.answer = Randoms.pickUniqueNumbersInRange(0, 9, 3);
+        answer = makeThreeRandomNumbers();
+    }
+
+    @Override
+    protected List<Integer> makeThreeRandomNumbers() {
+        Set<Integer> numbers = new HashSet<>();
+        while (numbers.size() != MAX_BASEBALL_SIZE) {
+            numbers.add(Randoms.pickNumberInRange(MIN_RANDOM_PICK, MAX_RANDOM_PICK));
+        }
+        return new ArrayList<>(numbers);
     }
 
     public Answer compareAnswer(List<Integer> input) {
@@ -23,7 +36,7 @@ public class BaseBall {
 
     private int findStrike(List<Integer> input) {
         int strike = 0;
-        for (int inputIndex = 0; inputIndex < MAX_BASEBALL_LENGTH; inputIndex++) {
+        for (int inputIndex = 0; inputIndex < MAX_BASEBALL_SIZE; inputIndex++) {
             Integer currentNumber = input.get(inputIndex);
             strike = compareAnswerWhetherStrike(strike, inputIndex, currentNumber);
         }
@@ -31,7 +44,7 @@ public class BaseBall {
     }
 
     private static int compareAnswerWhetherStrike(int strike, int inputIndex, Integer currentNumber) {
-        for (int answerIndex = 0; answerIndex < MAX_BASEBALL_LENGTH; answerIndex++) {
+        for (int answerIndex = 0; answerIndex < MAX_BASEBALL_SIZE; answerIndex++) {
             strike = increaseIfStrike(strike, inputIndex, currentNumber, answerIndex);
         }
         return strike;
@@ -60,7 +73,7 @@ public class BaseBall {
 
     private int findBall(List<Integer> input) {
         int ball = 0;
-        for (int inputIndex = 0; inputIndex < MAX_BASEBALL_LENGTH; inputIndex++) {
+        for (int inputIndex = 0; inputIndex < MAX_BASEBALL_SIZE; inputIndex++) {
             Integer currentNumber = input.get(inputIndex);
             ball = compareAnswerWhetherBall(ball, inputIndex, currentNumber);
         }
@@ -68,7 +81,7 @@ public class BaseBall {
     }
 
     private static int compareAnswerWhetherBall(int ball, int inputIndex, Integer currentNumber) {
-        for (int answerIndex = 0; answerIndex < MAX_BASEBALL_LENGTH; answerIndex++) {
+        for (int answerIndex = 0; answerIndex < MAX_BASEBALL_SIZE; answerIndex++) {
             ball = increaseIfBall(ball, inputIndex, currentNumber, answerIndex);
         }
         return ball;
