@@ -12,13 +12,11 @@ public class baseballGame {
     private Set<Integer> randomNumberSet;
     private int strikeCount;
     private int ballCount;
-    private int restart;
 
     public baseballGame() {
         computer = new ArrayList<>();
         strikeCount = 0;
         ballCount = 0;
-        restart = 0;
     }
 
     public void createRandomNumber() {
@@ -64,8 +62,7 @@ public class baseballGame {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             user.inputRestart();
-            restart = user.getRestart();
-            checkRestart(restart);
+            checkRestart(user.getRestart());
             return;
         }
         if (ballCount > 0) {
