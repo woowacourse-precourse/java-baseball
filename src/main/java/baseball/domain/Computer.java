@@ -11,7 +11,8 @@ public class Computer {
     private List<Integer> computerAnswer;
 
     public Computer() {
-        this.computerAnswer = new ArrayList<>();computerNumberDecide(computerAnswer);
+        this.computerAnswer = new ArrayList<>();
+        computerNumberDecide(computerAnswer);
     }
 
     public List<Integer> getComputerAnswer() {
