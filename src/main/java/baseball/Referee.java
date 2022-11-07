@@ -1,5 +1,10 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class Referee {
 
     private final int MAX_NUMBER_SIZE = 3;
@@ -34,20 +39,21 @@ public class Referee {
     }
 
     public int countBall(String input, String answer) {
+        Queue<Character> queue = new LinkedList<>();
+        for (int i = 0; i < answer.length(); i++) {
+            queue.add(answer.charAt(i));
+        }
+
         int count = 0;
-        char[] inputCharArray = input.toCharArray();
-        char[] answerCharArray = answer.toCharArray();
+        for (int inputIdx = 0; inputIdx < input.length(); inputIdx++) {
+            char target = input.charAt(inputIdx);
+            char firstChar = queue.poll();
 
-        for (int inputIdx = 0; inputIdx < MAX_NUMBER_SIZE; inputIdx++) {
-            for (int answerIdx = 0; answerIdx < MAX_NUMBER_SIZE; answerIdx++) {
-                if(inputIdx == answerIdx) {
-                    continue;
-                }
-
-                if(inputCharArray[inputIdx] == answerCharArray[answerIdx]) {
-                    count++;
-                }
+            if(queue.contains(target)) {
+                count++;
             }
+
+            queue.add(firstChar);
         }
 
         return count;
