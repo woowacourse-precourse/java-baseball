@@ -20,6 +20,12 @@ public class Application {
         while(true){
             System.out.println("숫자를 입력해주세요: ");
             inputValidate(Console.readLine());
+            boolean result = resultCheck();
+            input.removeAll(input);
+            if(result){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 
@@ -60,19 +66,42 @@ public class Application {
         }
     }
 
-    public static void resultCheck(){
-
+    public static boolean resultCheck(){
+        int strike = strikeCheck();
+        int ball = ballCheck(strike);
+        printResult(strike, ball);
+        return (strike == 3);
     }
 
     public static int ballCheck(int strike){
-        return 0;
+        int ball = 0;
+        for(int i=0; i<input.size(); i++){
+            if(answer.contains(input.get(i))) {
+                ball++;
+            }
+        }
+        return (ball-strike);
     }
     public static int strikeCheck(){
-        return 0;
+        int strike = 0;
+        for(int i=0; i<input.size(); i++){
+            if(input.get(i).intValue() == answer.get(i).intValue()) {
+                strike++;
+            }
+        }
+        return strike;
     }
 
-    public static void printResult(){
-
+    public static void printResult(int strike, int ball){
+        if(strike ==0 && ball ==0){
+            System.out.println("낫싱");
+        } else if (strike != 0 && ball == 0) {
+            System.out.println(strike+"스트라이크");
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else {
+            System.out.println(ball + "볼" + strike + "스트라이크");
+        }
     }
     public static boolean exitGameValidate(){
         throw new IllegalArgumentException();
