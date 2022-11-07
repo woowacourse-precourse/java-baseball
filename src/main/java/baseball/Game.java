@@ -66,5 +66,28 @@ public class Game {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
+
+    public boolean isUserNumberCorrect(List<Integer> userNumber) {
+        if (userNumber.equals(computerNumber)) {
+            printGameStatus(3, 0);
+            return true;
+        } else {
+            compareUserNumberWithComputerNumber(userNumber);
+            return false;
+        }
+    }
+
+    private void compareUserNumberWithComputerNumber(List<Integer> userNumber) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i < userNumber.size(); i++) {
+            if (userNumber.get(i) == computerNumber.get(i)) {
+                strike++;
+            } else if (computerNumber.contains(userNumber.get(i))) {
+                ball++;
+            }
+        }
+        printGameStatus(strike, ball);
+    }
     }
 }
