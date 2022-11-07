@@ -37,14 +37,14 @@ public class Application {
         }
     }
 
-    static int getRandomNumber() {
-        return Randoms.pickNumberInRange(1, 9);
-    }
-
     static void addComputerNumber(List<Integer> computer, int randomNumber) {
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber);
         }
+    }
+
+    static int getRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 
     static void checkNumberLength(String userNumber) throws IllegalArgumentException {
