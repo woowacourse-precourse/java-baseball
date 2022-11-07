@@ -11,9 +11,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public boolean checkRestart(String playerRestart) {
-        char letter = playerRestart.charAt(0);
-        return letter == '1';
+    public boolean checkRestart(String restartCommand) {
+        char command = restartCommand.charAt(0);
+        return command == '1';
     }
 
     public void start() {
