@@ -52,7 +52,7 @@ public class BaseballGameService {
 
     private int calculateStrike(int i, int j, ArrayList<Integer> answerNumber, ArrayList<Integer> userNumber, int strike) {
         // 같은 수가 같은 자리에 있으면 스트라이크
-        if (i==j && (Objects.equals(answerNumber.get(i), userNumber.get(j)))) {
+        if (i == j && (Objects.equals(answerNumber.get(i), userNumber.get(j)))) {
             strike += 1;
         }
         return strike;
@@ -60,7 +60,7 @@ public class BaseballGameService {
 
     private int calculateBall(int i, int j, ArrayList<Integer> answerNumber, ArrayList<Integer> userNumber, int ball) {
         // 같은 수가 다른 자리에 있으면 볼
-        if (i!=j && (Objects.equals(answerNumber.get(i), userNumber.get(j)))) {
+        if (i != j && (Objects.equals(answerNumber.get(i), userNumber.get(j)))) {
             ball += 1;
         }
         return ball;

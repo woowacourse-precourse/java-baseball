@@ -11,8 +11,8 @@ public class User {
 
     public void setUserNumbers(String userInput) {
         ArrayList<Integer> userNumberList = new ArrayList<>();
-        for(int i=0; i<userInput.length(); i++){
-            userNumberList.add(userInput.charAt(i)-'0');
+        for (int i = 0; i < userInput.length(); i++) {
+            userNumberList.add(userInput.charAt(i) - '0');
         }
         this.userNumbers = userNumberList;
     }
