@@ -19,5 +19,15 @@ class HintTest {
     hint.countStrikeAndBall(balls1, balls2);
     assertEquals(hint.toString(), "1볼 1스트라이크");
   }
+
+  @Test
+  @DisplayName("3스트라이크 테스트")
+  void 스트라이크_테스트(){
+    Balls balls1 = new Balls(new ArrayList<>(Arrays.asList(1,4,5)));
+    Balls balls2 = new Balls(new ArrayList<>(Arrays.asList(1,4,5)));
+    Hint hint = new Hint();
+    hint.countStrikeAndBall(balls1, balls2);
+    assertEquals(hint.toString(), "3스트라이크");
+  }
   
 }
