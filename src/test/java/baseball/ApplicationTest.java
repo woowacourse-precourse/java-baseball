@@ -67,4 +67,12 @@ class ApplicationTest extends NsTest {
 		assertThat(3).isEqualTo(service.strikeCount());
 	}
 
+	@Test
+	void 사용자의_숫자를_지움() {
+		int[] userNumber = new int[] {1, 2, 3};
+		user.setUserNumber(userNumber);
+		user.userReset();
+		assertThat(0).isEqualTo(user.userSize());
+	}
+
 }
