@@ -27,4 +27,12 @@ public class Controller {
 		System.out.println(systamMassage.PrintGoal());
 	}
 
+	public void retryGame(int number) throws IllegalArgumentException {
+
+		if (number == 1) {
+			service.computerReset();
+			run();
+		}
+	}
+
 }
