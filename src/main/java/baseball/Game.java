@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Game {
 
-    private final List<Integer> computer;
+    private List<Integer> computer;
     private List<Integer> inputNumber;
 
     // 스트라이크 , 볼
@@ -20,9 +20,9 @@ public class Game {
     // { true, false } = { 게임 종료, 게임 진행 중 }
     private boolean endGame;
 
-    private final String startComment = "숫자 야구 게임을 시작합니다.";
-    private final String inputComment = "숫자를 입력해주세요 : ";
-    private final String endComment = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요\n";
+    private static final String startComment = "숫자 야구 게임을 시작합니다.";
+    private static final String inputComment = "숫자를 입력해주세요 : ";
+    private static final String endComment = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요\n";
 
     // 랜덤 넘버 생성 기능
     public List<Integer> makeRandomNumber() {
@@ -112,7 +112,7 @@ public class Game {
         }
     }
 
-    public Game() {
+    public void gamePlay() {
         System.out.println(startComment);
         // 랜덤 넘버 생성
         this.computer = makeRandomNumber();
@@ -129,6 +129,9 @@ public class Game {
             out();
 
         } while (!endGame);
+    }
+
+    public Game() {
     }
 
     public boolean isReStart() {
