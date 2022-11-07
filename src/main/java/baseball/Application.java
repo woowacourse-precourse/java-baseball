@@ -23,14 +23,8 @@ public class Application {
     }
 
     public static boolean isIllegalInput(String userInput) {
-        try {
-            if (userInput.length() != 3 || !wrongInputValueCheck(userInput)) {
-                throw new IllegalArgumentException();
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return true;
+        if(userInput.length() != 3 || !wrongInputValueCheck(userInput)){
+            throw new IllegalArgumentException();
         }
         return false;
     }
