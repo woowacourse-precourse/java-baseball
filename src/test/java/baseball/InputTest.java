@@ -43,7 +43,7 @@ public class InputTest {
     @DisplayName("3자리 수인지 확인하는 테스트")
     @Test
     void validateDigit() {
-        final int input = 2222;
+        final String input = "";
 
         assertThrows(IllegalArgumentException.class, ()->{
             NumbersValidator.validateDigit(input);
