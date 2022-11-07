@@ -7,6 +7,7 @@ public class Game {
     public static final int NUMBER_LENGTH = 3;
     public static final String STRIKE = "strike";
     public static final String BALL = "ball";
+    public static final String GAME_STOP_RESPONSE = "2";
     public static MessagePrinter messagePrinter = new MessagePrinter();
 
     public boolean runningState = true;
@@ -33,6 +34,18 @@ public class Game {
         }
         messagePrinter.printFinish();
         checkRestart();
+    }
+
+    private void checkRestart() {
+        messagePrinter.askReplay();
+        String response = user.getRestartResponse();
+        updateRunningState(response);
+    }
+
+    private void updateRunningState(String response) {
+        if (response.equals(GAME_STOP_RESPONSE)) {
+            runningState = false;
+        }
     }
 
     private static boolean checkAnswer(int strikeCount) {
