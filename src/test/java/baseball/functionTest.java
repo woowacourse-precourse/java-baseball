@@ -76,6 +76,13 @@ public class functionTest {
         assertThat(Application.compareAnswerToInput(answer, input7)).containsExactly(3,0);
         System.out.println("3스트라이크 통과");
 
+    }
 
+    @Test
+    void 볼과_스트라이크_프린트_체크() {
+        assertThat(Application.printBallAndStrike(List.of(0, 0))).isEqualTo("낫싱");
+        assertThat(Application.printBallAndStrike(List.of(1, 0))).isEqualTo("1볼");
+        assertThat(Application.printBallAndStrike(List.of(0, 1))).isEqualTo("1스트라이크");
+        assertThat(Application.printBallAndStrike(List.of(1, 1))).isEqualTo("1볼 1스트라이크");
     }
 }
