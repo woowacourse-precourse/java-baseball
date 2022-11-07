@@ -42,13 +42,6 @@ public class Core {
         return count;
     }
 
-    public boolean isEndFlagged(int strikes) {
-        if (strikes == 3) {
-            return true;
-        }
-        return false;
-    }
-
     public void printGameResult(int strikes, int balls) {
         if (strikes == 3) {
             System.out.println("3스트라이크");
