@@ -7,14 +7,15 @@ public class InputCheck {
     }
 
     public static boolean hasNonDigit(String input) {
-        char temp;
+        char c;
 
         for (int i = 0; i < input.length(); i++) {
-            temp = input.charAt(i);
-            if (!Character.isDigit(temp)) {
+            c = input.charAt(i);
+            if (!Character.isDigit(c)) {
                 return true;
             }
         }
+
         return false;
     }
 
