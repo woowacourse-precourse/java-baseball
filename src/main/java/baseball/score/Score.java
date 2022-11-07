@@ -16,4 +16,11 @@ public class Score {
     setStrikeCount(computer, user);
     setBallCount(computer, user);
   }
+
+  public void setStrikeCount(List<Integer> computer, List<Integer> user) {
+    this.strikeCount = (int) IntStream.range(0, computer.size())
+        .filter(i -> computer.get(i).equals(user.get(i)))
+        .count();
+  }
+
 }
