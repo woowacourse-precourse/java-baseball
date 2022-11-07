@@ -37,16 +37,16 @@ public class Application {
         for (int index = 0; index < consoleInput.length(); index++) {
             charInString = consoleInput.charAt(index);
             digit = (int)(charInString - '0');
-            if (isUsed[digit]) return false;
+            if (isUsed[digit]) return true;
             isUsed[digit] = true;
         }
-        return true;
+        return false;
     }
 
     public static void validateInput(String consoleInput) {
         if (!isCorrectLength(consoleInput) || !isIntWithNonzeroDigits(consoleInput)) {
             throw new IllegalArgumentException("Input should be 3-digit integer with non-zero digits");
-        } else if (!isDigitDuplicated(consoleInput)) {
+        } else if (isDigitDuplicated(consoleInput)) {
             throw new IllegalArgumentException("Input should consist of non-duplicated digits");
         }
     }
