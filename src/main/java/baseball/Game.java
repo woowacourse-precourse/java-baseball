@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
     public static final int NUMBER_OF_DIGIT = 3;
@@ -27,6 +29,32 @@ public class Game {
             result.add(num);
         }
 
+        if (!validateInput(result)) {
+            throw new IllegalArgumentException();
+        }
+
         return;
+    }
+
+    private boolean validateInput(List<Integer> input) {
+        if (input.size() != NUMBER_OF_DIGIT) {
+            return false;
+        }
+
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < NUMBER_OF_DIGIT; i++) {
+            int digit = input.get(i);
+            if (digit == 0) {
+                return false;
+            }
+
+            set.add(digit);
+        }
+
+        if (set.size() != NUMBER_OF_DIGIT) {
+            return false;
+        }
+
+        return true;
     }
 }
