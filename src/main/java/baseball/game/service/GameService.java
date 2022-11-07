@@ -9,6 +9,7 @@ import baseball.utils.NumberUtil;
 import java.util.List;
 
 public class GameService {
+    private static final int MAX_LENGTH=3;
     private Computer computer;
     private User user;
 
@@ -67,7 +68,7 @@ public class GameService {
     }
 
     public boolean isFinishGame(final BallCount ballCount) {
-        if(ballCount.getStrike()==3){
+        if(ballCount.getStrike()==MAX_LENGTH){
             return true;
         }
         return false;
