@@ -1,6 +1,9 @@
 package baseball.utils;
 
+import java.util.List;
+
 import static baseball.values.Constant.Console.*;
+import static baseball.values.Constant.Digit.*;
 import static baseball.values.Constant.Hint.*;
 
 public class Game {
@@ -8,6 +11,31 @@ public class Game {
     private static int ballCnt = 0;
     private static boolean noting = false;
 
+
+
+
+    private static void compare(List<Integer> computerNums, List<Integer> playerNums) {
+        int playerNum, computerNum;
+
+        for (int i = 0; i < TOTAL_BALL_CNT; i++) {
+            computerNum = computerNums.get(i);
+            playerNum = playerNums.get(i);
+            checkBallOrStrike(computerNums, playerNum, computerNum);
+        }
+        if (ballCnt == 0 && strikeCnt == 0) {
+            noting = true;
+        }
+    }
+
+    private static void checkBallOrStrike(List<Integer> computerNums, int playerNum, int computerNum) {
+        if (computerNums.contains(playerNum)) {
+            if (computerNum == playerNum) {
+                strikeCnt++;
+                return;
+            }
+            ballCnt++;
+        }
+    }
 
     private static void printHint() {
         if (noting == true) {
