@@ -63,6 +63,10 @@ public class Hint {
             sb.append(HintString.STRIKE.print(strike));
         }
 
+        if (strike == 0) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
         return sb.toString();
     }
 }

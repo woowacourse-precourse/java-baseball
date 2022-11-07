@@ -27,6 +27,7 @@ class HintTest {
         List<Integer> computerBalls = List.of(1, 2, 3);
         hint = new Hint(playerBalls, computerBalls);
         String result = HintString.BALL.print(3);
+        result = result.substring(0, result.length() - 1);
 
         assertThat(hint.printHint()).isEqualTo(result);
     }
