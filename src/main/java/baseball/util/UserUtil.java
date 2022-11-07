@@ -29,13 +29,17 @@ public class UserUtil {
     }
 
     private static void isValidInput(String input) {
-        if (input.length() != 3) {
+        if (!hasThreeDigits(input)) {
             throw new IllegalArgumentException("input should have three digits");
         }
 
         if (input.contains("0")) {
             throw new IllegalArgumentException("input cannot contains zero");
         }
+    }
+
+    private static boolean hasThreeDigits(String input) {
+        return input.length() == 3;
     }
 
     private static int numberOf(String digit) {
