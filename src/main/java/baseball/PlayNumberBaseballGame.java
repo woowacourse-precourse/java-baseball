@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -44,6 +45,13 @@ public class PlayNumberBaseballGame {
 
         compareResult = outputResultComparisonOfNumbers(strike,ball);
         return compareResult;
+    }
+
+    public boolean isThreeStrike(List<Integer> computer, List<Integer> player){
+        if(Arrays.equals(computer.toArray(), player.toArray())){
+            return true;
+        }
+        return false;
     }
 
 }
