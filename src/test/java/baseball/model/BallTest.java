@@ -1,6 +1,7 @@
 package baseball.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,5 +25,12 @@ class BallTest {
         assertThatThrownBy(() -> {
             new Ball(0, input);
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("숫자와 위치가 같을 경우 STRIKE이다.")
+    @Test
+    void strike() {
+        Ball ball = new Ball(0, 1);
+        assertThat(ball.match(new Ball(0, 1))).isEqualTo(BallStatus.STRIKE);
     }
 }

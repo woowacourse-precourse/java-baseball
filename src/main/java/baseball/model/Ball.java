@@ -26,6 +26,17 @@ public class Ball {
         return MIN_NUMBER <= number && number <= MAX_NUMBER;
     }
 
+    public BallStatus match(Ball ball) {
+        if (isStrike(ball)) {
+            return BallStatus.STRIKE;
+        }
+        return null;
+    }
+
+    private boolean isStrike(Ball ball) {
+        return ball.equals(this);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
