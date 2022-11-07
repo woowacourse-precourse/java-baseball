@@ -48,5 +48,11 @@ public class GameService {
         return users;
     }
 
+    public void setSumOfStrikeCountAndBallCount(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        countStrike(computerNumberList, userNumberList);
+        countBall(computerNumberList, userNumberList);
+    }
+
+
 }
 
