@@ -6,6 +6,7 @@ import java.util.List;
 import baseball.count.Game;
 import baseball.player.User;
 import baseball.view.SystemMessage;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameService {
 	Game game = new Game();
@@ -29,6 +30,15 @@ public class GameService {
 		game.gameSetting();
 		user.setUserNumber(inputNumber());
 		compare(user, computer);
+	}
+
+	public void ramdomNumberSetting() {
+		while (computer.size() < 3) {
+			int randomNumber = Randoms.pickNumberInRange(1, 9);
+			if (!computer.contains(randomNumber)) {
+				computer.add(randomNumber);
+			}
+		}
 	}
 
 }
