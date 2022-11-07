@@ -23,6 +23,17 @@ class ApplicationTest extends NsTest {
     }
 
 
+    private boolean setUp(){
+        if(num[0] == num[1] || num[0] == num[2] || num[1] == num[2]){
+            return false;
+        }
+        return true;
+    }
+    @Test
+    void 숫자_중복_테스트(){
+        assertThat(setUp()).isEqualTo(true);
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
