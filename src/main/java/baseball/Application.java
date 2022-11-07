@@ -73,19 +73,40 @@ public class Application {
 
         String userString = Console.readLine();
 
-        int userNumber;
-        try {
-            userNumber = Integer.parseInt(userString);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
-        }
+        checkNegativeNumber(userString);
+        checkZeroInNumber(userString);
+        checkLengthAndDuplication(userString);
 
-        Set numberSet = new HashSet<>();
+        return userStringToInteger(userString);
+    }
+
+    public static void checkNegativeNumber(String userString) {
+        if(userString.contains("-"))
+            throw new IllegalArgumentException("입력은 양수여야 합니다.");
+    }
+
+    public static void checkZeroInNumber(String userString) {
+        if(userString.contains("0"))
+            throw new IllegalArgumentException("입력은 1부터 9까지의 수로 이루어져야 합니다.");
+    }
+
+    public static void checkLengthAndDuplication(String userString) {
+        Set<Object> numberSet = new HashSet<>();
         for (int i = 0; i < 3; i++)
             numberSet.add(userString.charAt(i));
 
         if (numberSet.size() != 3 || userString.length() > 3)
-            throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
+            throw new IllegalArgumentException("입력은 서로 다른 3자리 숫자여야 합니다.");
+    }
+
+    public static int userStringToInteger(String userString) {
+
+        int userNumber;
+        try {
+            userNumber = Integer.parseInt(userString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력은 숫자여야 합니다.");
+        }
 
         return userNumber;
     }
