@@ -16,4 +16,8 @@ public class OutputView {
     public static void printResultTurnOfNothing() {
         System.out.println("낫싱");
     }
+
+    public static void printResultTurnOfOnlyBalls(int balls) {
+        System.out.println(balls + "볼");
+    }
 }
