@@ -27,11 +27,8 @@ public class GameController {
     }
 
     public boolean isBall(int index) {
-        List<Integer> userNumber = user.getNumbers();
-        List<Integer> computerNumber = computer.getNumbers();
-
-        if (computerNumber.contains(userNumber.get(index))) {
-            return !computerNumber.get(index).equals(userNumber.get(index));
+        if (computer.getNumbers().contains(user.getNumbers().get(index))) {
+            return !isStrike(index);
         }
         return false;
     }
