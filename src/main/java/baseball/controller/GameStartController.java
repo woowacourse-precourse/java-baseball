@@ -10,12 +10,12 @@ public class GameStartController {
     private static void controlGame() {
         View.printRestartOrStop();
         String userInput = GameStartService.getUserInput();
-        if(userInput.equals(ControlNumberStatus.START_NUMBER.getText())){
+        if (userInput.equals(ControlNumberStatus.START_NUMBER.getText())) {
             GameStartService.initGame();
             startGame();
-        }else if(userInput.equals(ControlNumberStatus.END_NUMBER.getText())){
+        } else if (userInput.equals(ControlNumberStatus.END_NUMBER.getText())) {
             finishGame();
-        }else{
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -24,7 +24,7 @@ public class GameStartController {
         View.printFinishGame();
     }
 
-    public static void startFirstGame(){
+    public static void startFirstGame() {
         View.printStartGame();
         startGame();
     }
@@ -43,10 +43,10 @@ public class GameStartController {
 
     private static void showHint(String hint) {
         View.printHint(hint);
-        if(hint.equals(HintStatus.ANSWER.getText())){
+        if (hint.equals(HintStatus.ANSWER.getText())) {
             View.printCompleteGame();
             controlGame();
-        }else{
+        } else {
             startGame();
         }
     }

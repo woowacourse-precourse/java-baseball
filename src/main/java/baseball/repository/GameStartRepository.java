@@ -8,7 +8,7 @@ public class GameStartRepository {
     public static int strike = 0;
     public static int ball = 0;
 
-    public static void saveUserNumber(List<String> userNumberList){
+    public static void saveUserNumber(List<String> userNumberList) {
         lastUserNumberList = userNumberList;
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RandomUtil {
 
-    public static List<String> getComputerNumberList(){
+    public static List<String> getComputerNumberList() {
         List<String> computerNumberList = new ArrayList<>();
         while (computerNumberList.size() < NumberStatus.MAX_NUMBER.getNumber()) {
             String randomNumber = String.valueOf(Randoms.pickNumberInRange(NumberStatus.ANSWER_MIN_NUMBER.getNumber(), NumberStatus.ANSWER_MAX_NUMBER.getNumber()));

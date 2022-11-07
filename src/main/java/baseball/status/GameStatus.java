@@ -8,6 +8,7 @@ public enum GameStatus {
     COMPLETE_GAME("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
 
     private final String text;
+
     GameStatus(String text) {
         this.text = text;
     }
