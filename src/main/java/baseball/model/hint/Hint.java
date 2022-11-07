@@ -14,15 +14,15 @@ public class Hint {
     }
 
     public int getBall() {
-        return this.ball;
+        return ball;
     }
 
     public int getStrike() {
-        return this.strike;
+        return strike;
     }
 
     public String getNothing() {
-        return this.nothing;
+        return nothing;
     }
 
     public void calculateBall(List<Integer> computer, List<Integer> player) {
