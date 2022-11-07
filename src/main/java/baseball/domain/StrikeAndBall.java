@@ -1,6 +1,7 @@
 package baseball.domain;
 
 public class StrikeAndBall {
+
 	int strike;
 	int ball;
 
