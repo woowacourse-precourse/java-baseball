@@ -39,6 +39,7 @@ public class Application {
         int num3 = userInputNumber / 100 % 10;
 
         if (num1 == num2 || num1 == num3 || num2 == num3) return false;
+        if (num1 == 0 || num2 == 0 || num3 ==0) return false;
 
         return true;
     }
@@ -91,6 +92,7 @@ public class Application {
         boolean newNumberFlag = true;
         String gameNumber = null;
         Scanner scanner = new Scanner(System.in);
+        Scanner reGameScanner = new Scanner(System.in);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -109,7 +111,6 @@ public class Application {
             }
 
             if (gameRestartChecker(StrikeBallCheck(userInput, gameNumber)) == 1) {
-                Scanner reGameScanner = new Scanner(System.in);
                 String reGameCheck = reGameScanner.next();
 
                 if (reGameCheck == "2") return;
