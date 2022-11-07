@@ -6,6 +6,7 @@ import baseball.domain.Ball;
 import baseball.model.Computer;
 import baseball.view.Messenger;
 import baseball.view.PrintMessages;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,11 +21,9 @@ class BaseballTest {
     @Nested
     @DisplayName("Ball 클래스")
     class Ball_test {
-
         @Nested
         @DisplayName("validateForm 메소드는")
         class validateForm_test {
-
             @Nested
             @DisplayName("세 자리 숫자가 입력되지 않았을 때")
             class Context_with_non_three_digit_number {
@@ -43,7 +42,6 @@ class BaseballTest {
         @Nested
         @DisplayName("validateDuplication 메소드는")
         class validateDuplication_test {
-
             @Nested
             @DisplayName("중복을 갖는 숫자가 입력되었을 때")
             class Context_with_duplicate_number {
@@ -65,29 +63,32 @@ class BaseballTest {
             String nonDuplicateThreeDigitNumber = "123";
             Ball ball = new Ball(nonDuplicateThreeDigitNumber);
 
-            assertThat(ball.toString()).isEqualTo(nonDuplicateThreeDigitNumber);
+            String ballString = ball.toString();
+
+            assertThat(ballString).isEqualTo(nonDuplicateThreeDigitNumber);
         }
 
         @Nested
         @DisplayName("compareByIndex 메소드는")
         class CompareByIndex_test {
             @Nested
-            @DisplayName("숫자가 동일한 Ball 인스턴스가 입력되었을 때")
-            class Context_with_identical_number_Ball_instance {
+            @DisplayName("각 숫자의 위치와 값이 동일한 Ball 인스턴스가 입력되었을 때")
+            class Context_with_same_number_Ball_instance {
                 @Test
                 @DisplayName("3을 반환한다.")
                 void it_returns_integer_vale_of_3() {
                     String number = "123";
-
                     Ball ball = new Ball(number);
-                    Ball identicalNumberBall = new Ball(number);
+                    Ball sameNumberBall = new Ball(number);
 
-                    assertThat(ball.compareByIndex(identicalNumberBall)).isEqualTo(3);
+                    int countOfSameNumber = ball.compareByIndex(sameNumberBall);
+
+                    assertThat(countOfSameNumber).isEqualTo(3);
                 }
             }
 
             @Nested
-            @DisplayName("숫자가 하나 다른 Ball 인스턴스가 입력되었을 때")
+            @DisplayName("각 숫자의 위치와 값이 하나 다른 Ball 인스턴스가 입력되었을 때")
             class Context_with_different_one_number_Ball_instance {
                 @Test
                 @DisplayName("2를 반환한다.")
@@ -97,7 +98,9 @@ class BaseballTest {
                     Ball ball = new Ball(number);
                     Ball differentNumberBall = new Ball(differentNumber);
 
-                    assertThat(ball.compareByIndex(differentNumberBall)).isEqualTo(2);
+                    int countOfSameNumber = ball.compareByIndex(differentNumberBall);
+
+                    assertThat(countOfSameNumber).isEqualTo(2);
                 }
             }
         }
@@ -106,17 +109,36 @@ class BaseballTest {
         @DisplayName("compareByValue 메소드는")
         class compareByValue_test {
             @Nested
-            @DisplayName("Ball 인스턴스가 입력되었을 때")
-            class Context_with_Ball_instance {
+            @DisplayName("위치와 무관하게 숫자가 동일한 Ball 인스턴스가 입력되었을 때")
+            class Context_with_same_number_Ball_instance {
                 @Test
-                @DisplayName("포함하는 숫자를 세서 반환한다.")
+                @DisplayName("3을 반환한다.")
+                void it_returns_integer_value_of_3() {
+                    String number = "123";
+                    String sameNumber = "312";
+                    Ball ball = new Ball(number);
+                    Ball sameBall = new Ball(sameNumber);
+
+                    int countOfSameNumber = ball.compareByValue(sameBall);
+
+                    assertThat(countOfSameNumber).isEqualTo(3);
+                }
+            }
+
+            @Nested
+            @DisplayName("위치와 무관하게 숫자가 하나 다른 Ball 인스턴스가 입력되었을 때")
+            class Context_with_different_number_Ball_instance {
+                @Test
+                @DisplayName("2를 반환한다.")
                 void it_returns_count_of_containing_number() {
                     String number = "123";
-                    String otherNumber = "512";
+                    String differentNumber = "512";
                     Ball ball = new Ball(number);
-                    Ball otherBall = new Ball(otherNumber);
+                    Ball differentBall = new Ball(differentNumber);
 
-                    assertThat(ball.compareByValue(otherBall)).isEqualTo(2);
+                    int countOfSameNumber = ball.compareByValue(differentBall);
+
+                    assertThat(countOfSameNumber).isEqualTo(2);
                 }
             }
         }
@@ -292,6 +314,7 @@ class BaseballTest {
     @DisplayName("GameController 클래스")
     class GameController_test {
 
+        private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         private final GameController gameController = new GameController();
 
         @Test
@@ -300,38 +323,46 @@ class BaseballTest {
             String input = "123";
             InputStream inputStream = new ByteArrayInputStream(input.getBytes());
             System.setIn(inputStream);
+            System.setOut(new PrintStream(outContent));
 
             assertThat(gameController.receiveUserBall()).isInstanceOf(Ball.class);
+            assertThat(outContent.toString()).isEqualTo(PrintMessages.INPUT.getMessage());
         }
 
         @Test
         @DisplayName("compareComputerBallWith 메소드에 Ball 객체가 입력되었을 때 스트라이크의 개수를 int 값으로 반환하는지 확인")
         void compareComputerBallWith_test() {
+            System.setOut(new PrintStream(outContent));
             String input = "123";
             Ball ball = new Ball(input);
             gameController.setComputerBall();
 
             assertThat(gameController.compareComputerBallWith(ball)).isInstanceOf(Integer.class);
+            assertThat(outContent.toString()).isNotNull();
         }
 
         @Test
         @DisplayName("receiveUserAction 메소드가 \"1\"을 입력받으면 Action 객체를 생성해 반환하는지 확인")
         void receiveUserAction_test_with_String_1() {
+            System.setOut(new PrintStream(outContent));
             String input = "1";
             InputStream inputStream = new ByteArrayInputStream(input.getBytes());
             System.setIn(inputStream);
 
             assertThat(gameController.receiveUserAction()).isInstanceOf(Action.class);
+            assertThat(outContent.toString()).isNotNull();
         }
 
         @Test
         @DisplayName("receiveUserAction 메소드가 \"2\"을 입력받으면 Action 객체를 생성해 반환하는지 확인")
         void receiveUserAction_test_String_2() {
+            System.setOut(new PrintStream(outContent));
             String input = "2";
             InputStream inputStream = new ByteArrayInputStream(input.getBytes());
             System.setIn(inputStream);
 
             assertThat(gameController.receiveUserAction()).isInstanceOf(Action.class);
+            assertThat(outContent.toString()).isNotNull();
         }
 
         @Test
@@ -410,19 +441,23 @@ class BaseballTest {
         @DisplayName("생성자에 숫자 12가 입력되었을 때 예외를 발생시키는지 확인")
         void constructor_with_integer_12_test() {
             String exceptionNumber = "12";
-            assertThatThrownBy(() -> new Action(exceptionNumber)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> new Action(exceptionNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(Action.EXCEPTION_MESSAGE_FOR_INVALID_FORM);
         }
 
         @Test
         @DisplayName("생성자에 숫자 3이 입력되었을 때 예외를 발생시키는지 확인")
         void constructor_with_integer_3_test() {
             String exceptionNumber = "3";
-            assertThatThrownBy(() -> new Action(exceptionNumber)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> new Action(exceptionNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(Action.EXCEPTION_MESSAGE_FOR_INVALID_FORM);
         }
 
         @Test
-        @DisplayName("isRestart 메소드가 멤버변수 numberAction 으로 \"1\"을 가진 Action 객체를 참조하여 호출하였을 때 true를 반환하는지 확인")
-        void isRestart_with_integer_1_test() {
+        @DisplayName("isStart 메소드가 멤버변수 numberAction 으로 \"1\"을 가진 Action 객체를 참조하여 호출하였을 때 true를 반환하는지 확인")
+        void isStart_with_integer_1_test() {
             String numberAction = "1";
             Action actionOf1 = new Action(numberAction);
 
@@ -430,8 +465,8 @@ class BaseballTest {
         }
 
         @Test
-        @DisplayName("isRestart 메소드가 멤버변수 numberAction 으로 \"2\"를 가진 Action 객체를 참조하여 호출하였을 때 false를 반환하는지 확인")
-        void isRestart_with_integer_2_test() {
+        @DisplayName("isStart 메소드가 멤버변수 numberAction 으로 \"2\"를 가진 Action 객체를 참조하여 호출하였을 때 false를 반환하는지 확인")
+        void isStart_with_integer_2_test() {
             String numberAction = "2";
             Action actionOf2 = new Action(numberAction);
 
