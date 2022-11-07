@@ -33,6 +33,7 @@ public class Controller {
     public void playGame() {
         computerNumber = computer.addRandomNumbers();
         InputView.startMessage();
+        System.out.println(computerNumber);
         while (!isGameEnd) {
             String numbers = InputView.gameMessage();
             try {
@@ -57,6 +58,10 @@ public class Controller {
         }
     }
 
+    public boolean getGameEnd() {
+        return isGameEnd;
+    }
+
     private void askAgainRestart() {
         String message = InputView.endMessage();
         try {
@@ -70,8 +75,8 @@ public class Controller {
     }
 
     private void modifyStrikeBallCount(){
-        countBall(computerNumber,userNumber);
-        for(int i=0; i<computerNumber.size(); i++){
+        ball = countBall(computerNumber,userNumber);
+        for(int i=0; i<userNumber.size(); i++){
             if(isStrikeNumber(computerNumber, userNumber.get(i), userNumber.indexOf(userNumber.get(i)))){
                 ball -=1;
                 strike +=1;
