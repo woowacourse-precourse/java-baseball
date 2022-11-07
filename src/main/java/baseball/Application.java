@@ -9,13 +9,13 @@ import java.util.List;
 public class Application {
     public final static int RESTART = 1;
     public final static int END = 2;
-    public final static String numberBaseballStartMessage = "숫자 야구 게임을 시작합니다.";
-    public final static String playerNumberInputMessage = "숫자를 입력해주세요 : ";
-    public final static String gameEndMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public final static String playerOptionMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    public final static String NUMBER_BASEBALL_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    public final static String PLAYER_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    public final static String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public final static String PLAYER_OPTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void main(String[] args) {
-        System.out.println(numberBaseballStartMessage);
+        System.out.println(NUMBER_BASEBALL_START_MESSAGE);
 
         do {
             startGame();
@@ -23,8 +23,8 @@ public class Application {
     }
 
     public static int selectPlayerOption() {
-        System.out.println(gameEndMessage);
-        System.out.println(playerOptionMessage);
+        System.out.println(GAME_END_MESSAGE);
+        System.out.println(PLAYER_OPTION_MESSAGE);
 
         int playerSelect = Integer.parseInt(Console.readLine());
 
@@ -41,7 +41,7 @@ public class Application {
         setIsBall(isBall, computerNumber);
 
         while(true){
-            System.out.print(playerNumberInputMessage);
+            System.out.print(PLAYER_NUMBER_INPUT_MESSAGE);
             String playerNumber = Console.readLine();
 
             if(!checkPlayerNumber(playerNumber)){
@@ -54,7 +54,7 @@ public class Application {
         }
     }
 
-    private static boolean compareNumbers(boolean[] isBall,
+    public static boolean compareNumbers(boolean[] isBall,
                                           String computerNumber,
                                           String playerNumber) {
         int ballCount = 0;
