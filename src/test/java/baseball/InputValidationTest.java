@@ -14,7 +14,7 @@ public class InputValidationTest {
 	@ValueSource(strings = {"abc", "가나다라마바사", "◀▲▶▼⇓①◦→⁍•⁸⅕⅔", "\uD83D\uDCEE\uD83D\uDD0D"})
 	void 숫자_입력_검증(final String userInput) {
 		assertThatThrownBy(
-			() -> InputValidation.validateInput(userInput)
+			() -> InputValidation.validateIsAllDigit(userInput)
 		).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("1에서 9까지의 숫자만 입력가능합니다.");
 	}
