@@ -9,7 +9,7 @@ public class Computer {
     /**
      * 1~9까지 서로 다른 수로 이루어진 3자리의 컴퓨터 수를 생성한다.
      */
-    protected List<Integer> createComputerNumbers() {
+    public List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
 
         while (computerNumbers.size() != 3) {
