@@ -19,9 +19,20 @@ public class User {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 게임 종료");
         }
 
-//        setNumber(input);
+        setNumber(input);
     }
 
+    public List<Integer> getNumber() {
+        return numbers;
+    }
+
+    public void setNumber(String input) {
+
+        for (int index = STARTING_INDEX; index < MAX_LENGTH_OF_NUMBER; index++) {
+            numbers.add(Character.getNumericValue(input.charAt(index)));
+        }
+    }
+    
     private boolean isCorrectRange(String inputNumber) {
         String pattern = "[1-9]{1,3}";
 
