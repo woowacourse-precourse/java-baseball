@@ -29,6 +29,7 @@ public class NumberBaseballView {
     public GuessResultStatus printResult(GameResult gameResult) {
         setGameResult(gameResult);
         if (isWin()) {
+            System.out.println(createResultMessage());
             System.out.println(GameMessage.WIN);
             return GuessResultStatus.WIN;
         }
