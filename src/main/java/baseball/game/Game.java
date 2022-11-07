@@ -13,7 +13,10 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
     public static void start() {
-        Game game = new Game();
+        Game game = Game.create();
+    }
+    public static Game create() {
+        return new Game();
     }
 
     private List<Integer> getInputUserNumber() {
