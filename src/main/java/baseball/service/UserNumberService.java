@@ -3,7 +3,7 @@ package baseball.service;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static utils.Converter.convertStringToIntegerList;
 
-import baseball.domain.Validation;
+import utils.Validation;
 import java.util.List;
 
 public class UserNumberService {

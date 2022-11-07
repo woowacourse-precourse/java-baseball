@@ -1,4 +1,4 @@
-package baseball.domain;
+package utils;
 
 import static baseball.type.NumberType.NUMBER_SIZE;
 
