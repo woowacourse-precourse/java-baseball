@@ -8,7 +8,7 @@ public class User {
         return this.userBaseballNumber;
     }
 
-    public void setBaseballNumber(String userInput){
+    public void setBaseballNumber(String userInput) {
         this.userBaseballNumber = userInput;
     }
 
@@ -16,7 +16,7 @@ public class User {
         return this.userRestartNumber;
     }
 
-    public void setUserRestartNumber(String userInput){
+    public void setUserRestartNumber(String userInput) {
         this.userRestartNumber = userInput;
     }
 }
