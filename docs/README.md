@@ -73,3 +73,7 @@
 ---
 ### 초기 요구사항 구현 결과 (commit#88ef721)
 <img src = "img/imple_UML.jpeg">
+
+---
+### 최종 리팩토링 후 클래스 다이어그램
+<img src = "img/final_imple_UML.jpg">
