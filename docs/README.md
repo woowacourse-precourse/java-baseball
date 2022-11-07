@@ -27,4 +27,7 @@
     - 두번째 value: 스트라이크 수
   - 출력: boolean으로 3Strike면 true, 아니면 false리턴
 - restartOrEndGame()
-  - 정답을 맞췄을 때, 재시작할지 종료할지 결정하는 기능
+  - 정답을 맞췄을 때, player로부터 재시작할지 종료할지 여부 판단
+  - 입력: boolean 정답을 맞췄는지 여부
+  - 출력: 재시작이면 true, 종료면 false
+  - 예외: 입력값이 "1" 또는 "2"가 아니면 예외 발생
