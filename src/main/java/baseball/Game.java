@@ -9,14 +9,13 @@ public class Game {
 
     int strikeCount = 0;
     int ballCount = 0;
-
     public final int ballsLength = 3;
-    Player player = new Player();
-    Validator validator = new Validator();
-
     final String strikeCall = "스트라이크";
     final String ballCall = "볼";
     final String Nothing = "낫싱";
+
+    Player player = new Player();
+    Validator validator = new Validator();
 
     public Game() {
 
@@ -31,6 +30,7 @@ public class Game {
                 comBalls.add(ball);
             }
         }
+
         return new Balls(comBalls);
     }
 
@@ -50,7 +50,7 @@ public class Game {
     }
 
     private boolean isBall(Balls playerBalls, Balls computerBalls, int i) {
-        return computerBalls.contains(playerBalls.get(i))&&computerBalls.indexOf(playerBalls.get(i))!=i;
+        return computerBalls.contains(playerBalls.get(i)) && computerBalls.indexOf(playerBalls.get(i)) != i;
     }
 
     public void playBall() {
@@ -61,12 +61,14 @@ public class Game {
 
     public void start() {
         Balls computerBalls = makeComputerBalls();
-        while(!isAnswer()){
+
+        while (!isAnswer()) {
             initializeBallCount();
             Balls playerBalls = player.makePlayerBalls();
             checkBallCounts(playerBalls, computerBalls);
             System.out.println(printMessage());
         }
+
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         initializeBallCount();
     }
@@ -79,12 +81,12 @@ public class Game {
     }
 
     private void initializeBallCount() {
-        strikeCount=0;
-        ballCount=0;
+        strikeCount = 0;
+        ballCount = 0;
     }
 
     private boolean isAnswer() {
-        return strikeCount==3;
+        return strikeCount == 3;
     }
 
     public String printMessage() {

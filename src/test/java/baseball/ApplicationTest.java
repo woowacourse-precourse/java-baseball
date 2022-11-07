@@ -22,7 +22,7 @@ class ApplicationTest extends NsTest {
     void 게임즉시종료() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("156","381", "397", "937", "379", "2");
+                    run("156", "381", "397", "937", "379", "2");
                     assertThat(output()).contains("낫싱", "1스트라이크", "2볼 1스트라이크", "3볼", "3스트라이크", "게임 종료");
                 },
                 3, 7, 9
