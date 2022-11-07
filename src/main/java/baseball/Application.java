@@ -19,4 +19,18 @@ public class Application {
     	int num = (int) (Math.random()*9 + 1);
     	return num;
     }
+    
+    // 리스트 배열에 랜덤 숫자 추가
+    public static List<Integer> ComputerRandomMake(){
+    	List<Integer> computerNum = new ArrayList<>();
+    	while(computerNum.size() < 3) {
+    		int random = RandomNum();
+    		if(computerNum.contains(random)) {
+    			continue;
+    		} else {
+    			computerNum.add(random);    			
+    		}
+    	}
+    	return computerNum;
+    }
 }
