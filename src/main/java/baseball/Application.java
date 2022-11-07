@@ -22,8 +22,7 @@ public class Application {
             List<Integer> user = Play.getNumberFrom(input);
             Score.SCORE.of(user, computer);
             Score.SCORE.print();
-            // TODO: update strikeOut
-            strikeOut = true;
+            strikeOut = Score.SCORE.strikeOut();
         }
         // TODO: congratulate user
         // TODO: update user willingness
