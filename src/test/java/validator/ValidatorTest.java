@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ValidatorTest {
     private static final String LENGTH_VALIDATION_FAILED = "입력한 숫자의 길이가 3이 아닙니다.";
-    private static final String DIGIT_VALIDATION_FAILED = "입력내용은 모두 숫자로 구성되어야 합니다.";
+    private static final String DIGIT_VALIDATION_FAILED = "입력내용은 모두 1~9 사이의 숫자로 구성되어야 합니다.";
     private static final String DUPLICATION_VALIDATION_FAILED = "입력내용은 서로 다른 3개의 숫자로 구성되어 합니다.";
 
     @Test
@@ -36,6 +36,7 @@ public class ValidatorTest {
         String input3 = "12 ";
         String input4 = "12$";
         String input5 = "12_";
+        String input6 = "120";
 
         assertThat(Validator.validateEachDigit(input1))
                 .isTrue();
@@ -49,6 +50,9 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
         assertThatThrownBy(() -> Validator.validateEachDigit(input5))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DIGIT_VALIDATION_FAILED);
+        assertThatThrownBy(() -> Validator.validateEachDigit(input6))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DIGIT_VALIDATION_FAILED);
     }
@@ -77,6 +81,7 @@ public class ValidatorTest {
         String input2 = "1234";
         String input3 = "12a";
         String input4 = "122";
+        String input5 = "120";
 
         assertThat(Validator.validate(input1)).isTrue();
         assertThatThrownBy(() -> Validator.validate(input2))
@@ -88,5 +93,8 @@ public class ValidatorTest {
         assertThatThrownBy(() -> Validator.validate(input4))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATION_VALIDATION_FAILED);
+        assertThatThrownBy(() -> Validator.validate(input5))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DIGIT_VALIDATION_FAILED);
     }
 }
