@@ -21,7 +21,7 @@ public class Computer {
 	private List<String> makeRandomNumber() {
 		Set<String> randomNumberSet = new HashSet<>();
 
-		while(randomNumberSet.size() < 3) {
+		while(randomNumberSet.size() < Game.DIGIT_NUMBER) {
 			randomNumberSet.add(String.valueOf(Randoms.pickNumberInRange(1, 9)));
 		}
 

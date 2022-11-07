@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-	private static final int DIGIT_NUMBER = 3;
+	public static final int DIGIT_NUMBER = 3;
 
 	private boolean isContinue;
 

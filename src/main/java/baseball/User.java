@@ -25,7 +25,7 @@ public class User {
 	}
 
 	private void validateNumberLength(String number) {
-		if(number.trim().length() != 3) {
+		if(number.trim().length() != Game.DIGIT_NUMBER) {
 			throw new IllegalArgumentException();
 		}
 	}
