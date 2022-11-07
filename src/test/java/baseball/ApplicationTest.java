@@ -45,4 +45,25 @@ class ApplicationTest extends NsTest {
         assertThat(secondNumber).isNotEqualTo(thirdNumber);
         assertThat(thirdNumber).isNotEqualTo(firstNumber);
     }
+
+    @Test
+    void validateUserNumbers_사용자가_조건에_부합하지_않는_수를_입력했을_때_예외발생() {
+        String input = "1234";
+
+        assertThatThrownBy(() -> Application.validateUserNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 값을 입력하였습니다.");
+
+        input = "a13";
+
+        assertThatThrownBy(() -> Application.validateUserNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 값을 입력하였습니다.");
+
+        input = "112";
+
+        assertThatThrownBy(() -> Application.validateUserNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 값을 입력하였습니다.");
+    }
 }
