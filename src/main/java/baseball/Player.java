@@ -11,8 +11,9 @@ public class Player {
 
   public ArrayList<Integer> decideNumbers(String input){
     System.out.print("숫자를 입력해주세요 : ");
-    //String input = "122";
+    //String input = Console.readLine();
     validateConsistsOfNumber(input);
+    validateNumberLength(input);
     addNumber(input);
   }
 
@@ -38,6 +39,12 @@ public class Player {
 
     if(!result) {
       throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+    }
+  }
+
+  public void validateNumberLength(String input){
+    if(input.length() != MAX_SIZE){
+      throw new IllegalArgumentException("3개의 숫자만 입력할 수 있습니다.");
     }
   }
 }
