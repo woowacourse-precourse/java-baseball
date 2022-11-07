@@ -64,6 +64,19 @@ public class Application {
         return ball + "볼 " + strike + "스트라이크";
     }
 
+    static boolean finish(String input) {
+
+        int restart = Integer.parseInt(input);
+
+        if (restart == 1) {
+            return true;
+        } else if (restart == 2) {
+            return false;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
     static String inputSystem() {
         return Console.readLine();
     }
