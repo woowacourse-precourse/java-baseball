@@ -48,12 +48,5 @@ public class Check {
         }
     }
 
-    public int getStrike() {
-        return this.strike;
-    }
-
-    public int getBall() {
-        return this.ball;
-    }
 
 }

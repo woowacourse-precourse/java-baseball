@@ -21,8 +21,6 @@ public class BaseBall {
         } else if (restart == 0) {
             System.out.print("게임을 종료합니다.");
         }
-
-
     }
 
     public int reStartOrExit() {

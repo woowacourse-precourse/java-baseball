@@ -76,16 +76,4 @@ public class BallList {
         return false;
     }
 
-    public void getBallList() {
-        for (int i=0;i<this.ballList.size();i++) {
-            System.out.print(this.ballList.get(i).getBall());
-        }
-
-    }
-
-    public List<Ball> getArrayList() {
-        return this.ballList;
-    }
-    
-
 }
