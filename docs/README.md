@@ -20,7 +20,7 @@
   - 사용자가 3개의 숫자를 입력하는 함수
 
 
-- void addNumber(int[], String)
+- void addUserNumberInUserArray(int[], String)
   - 사용자가 입력한 숫자로 된 문자열을 숫자로 배열에 저장하는 함수
 
 
