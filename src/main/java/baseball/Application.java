@@ -20,9 +20,13 @@ public class Application {
 
             userNumber = Console.readLine();
 
-            if (isValidUserNumber(userNumber)) {
-                userNumbers = getNumbersToUserNumber(userNumber);
-                gameResult = getGameResult(computerNumbers, userNumbers);
+            isValidUserNumber(userNumber);
+            userNumbers = getNumbersToUserNumber(userNumber);
+            gameResult = getGameResult(computerNumbers, userNumbers);
+            printGameResult(gameResult);
+
+            if (gameResult[0] == 3) {
+
             }
             break;
         }
