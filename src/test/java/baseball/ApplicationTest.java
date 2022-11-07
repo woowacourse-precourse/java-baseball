@@ -156,6 +156,18 @@ class ApplicationTest extends NsTest {
         System.setOut(System.out);
     }
 
+    @Test
+    void showGameStartTest() {
+
+        ByteArrayOutputStream message = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(message));
+
+        Application.showGameStart();
+        Assertions.assertEquals("숫자 야구 게임을 시작합니다.\n", message.toString());
+
+        System.setOut(System.out);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
