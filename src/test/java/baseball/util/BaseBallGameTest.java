@@ -3,6 +3,9 @@ package baseball.util;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 public class BaseBallGameTest {
@@ -14,5 +17,16 @@ public class BaseBallGameTest {
         List<Integer> result = BaseBallGame.threeRandomValueCompareToUserInput(computerValue, userInput);
 
         assertThat(result).isEqualTo(List.of(2, 0));
+    }
+
+    @Test
+    void 볼_스트라이크_프린트() {
+        OutputStream captor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(captor));
+
+        List<Integer> ballStrikeStatus = List.of(3, 0);
+        BaseBallGame.printByBallAndStrikeStatus(ballStrikeStatus);
+
+        assertThat(captor.toString().trim()).isEqualTo("3볼");
     }
 }
