@@ -6,6 +6,12 @@ import java.util.List;
 
 public class Computer {
 
+    public String numbers;
+
+    public Computer() {
+        this.numbers = getRandomNumbers();
+    }
+
     public static String getRandomNumbers() {
         List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         StringBuilder sb = new StringBuilder();

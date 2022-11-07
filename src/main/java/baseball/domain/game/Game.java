@@ -9,7 +9,8 @@ import baseball.domain.view.OutputView;
 public class Game {
     public Game() {
         OutputView.printStart();
-        String randomNumbers = Computer.getRandomNumbers();
+        String randomNumbers = new Computer().numbers;
+        System.out.println(randomNumbers);
         validateInputNumbers(randomNumbers);
         OutputView.printEnd();
         restartGameInputOneOrElseEndGame();
