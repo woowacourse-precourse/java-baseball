@@ -40,4 +40,14 @@ public class Application {
         }
         return strike_cnt;
     }
+
+    public static int numberOfBalls(List<Integer> userInput, List<Integer> computer){
+        int ball_cnt = 0;
+        for(int i=0; i<userInput.size(); i++){
+            if(!userInput.get(i).equals(computer.get(i)) && computer.contains(userInput.get(i)))   {
+                ball_cnt++;
+            }
+        }
+        return ball_cnt;
+    }
 }

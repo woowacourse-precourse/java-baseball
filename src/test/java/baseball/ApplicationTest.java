@@ -35,6 +35,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 볼(){
+        List<Integer> userInput = Arrays.asList(1,2,3);
+        List<Integer> computer = Arrays.asList(2,5,1);
+
+        int ball = numberOfBalls(userInput,computer);
+        int result = 2;
+
+        assertThat(ball).isEqualTo(result);
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
