@@ -36,6 +36,42 @@ public class Application {
     public static List<Integer> userValue(List<Integer> user) {
         System.out.print("숫자를 입력해주세요 : ");
         String text = Console.readLine();
+        textSize(text, 3);
+        makeUserList(user, text);
         return user;
+    }
+    private static void makeUserList(List<Integer> user, String text) {
+        for (int i = 0; i < text.length(); i++) {
+            int value = isValidateInt(text.charAt(i), 1, 9);
+            isContainUser(user, value);
+            user.add(value);
+        }
+        if (user.size() > 3) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public static int isValidateInt(Character str, int start, int end) {
+        int value = 0;
+        try {
+            Integer.parseInt(str.toString());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+        if ((Integer.parseInt(str.toString()) >= start) && (Integer.parseInt(str.toString()) <= end)) {
+            value = Integer.parseInt(str.toString());
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return value;
+    }
+    public static void isContainUser(List<Integer> user, int value) {
+        if (user.contains(value)) {
+            throw new IllegalArgumentException();
+        }
+    }
+    public static void textSize(String text, int size) {
+        if (text.length() != size) {
+            throw new IllegalArgumentException();
+        }
     }
 }
