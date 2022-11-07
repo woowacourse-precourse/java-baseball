@@ -1,7 +1,7 @@
 package baseball.console;
 
-public interface Interactive {
+public interface Interactive<UserInput> {
 
-    Integer getUserInput();
+    UserInput getUserInput();
 
 }
