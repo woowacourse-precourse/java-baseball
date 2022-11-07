@@ -69,8 +69,13 @@ public class NumberManagerTest {
     @Test
     void getHint_낫싱_테스트() {
         StringBuilder nothing = new StringBuilder();
-        for (int i = 0; i < answer.length(); i++) {
-            nothing.append((answer.charAt(i) + 1) % 9 + 1);
+        int num = 1;
+        while (nothing.length() != 3) {
+            String numToString = Integer.toString(num);
+            if (!answer.contains(numToString)) {
+                nothing.append(numToString);
+            }
+            num += 1;
         }
         NumberManager.getHint(nothing.toString());
 
