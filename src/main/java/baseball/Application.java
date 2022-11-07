@@ -82,4 +82,13 @@ public class Application {
         System.out.println(result);
     }
 
+    private static boolean checkThreeStrike() {
+        if (strikeCnt == NUM_OF_DIGIT) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
+    }
+
 }
