@@ -24,7 +24,7 @@ public class UserInputNumbers {
 
     public static String getUserControlNumber() {
         String userInput = Console.readLine();
-        validUserInputRestart(userInput);
+        validUserInputControl(userInput);
         System.out.println(userInput);
         return userInput;
     }
@@ -42,7 +42,7 @@ public class UserInputNumbers {
         return true;
     }
 
-    public static void validUserInputRestart(String num) {
+    public static void validUserInputControl(String num) {
         if (!num.equals(RESTART) && !num.equals(END)) {
             throw new IllegalArgumentException(INVALID_INPUT_VALUE);
         }
