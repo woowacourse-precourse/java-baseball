@@ -24,14 +24,14 @@ public class BaseballGameRunner {
         System.out.println(BASEBALL_GAME_STARTING_MESSAGE.getMessage());
 
         this.initializeGameSettings();
-        
+
         gameManager.executeGame();
 
         if (checkRestart()) {
             this.runGame();
+        } else {
+            System.out.println(BASEBALL_GAME_EXIT_MESSAGE.getMessage());
         }
-
-        System.out.println(BASEBALL_GAME_EXIT_MESSAGE.getMessage());
     }
 
     private void initializeGameSettings() {
