@@ -25,5 +25,12 @@ public class Application {
         }
         return computer;
     }
+
+    static void continueGame(List<Integer> computer) throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> user = getUser();
+
+        printResult(computer, user);
+    }
 }
 
