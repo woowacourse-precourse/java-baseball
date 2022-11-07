@@ -112,21 +112,24 @@ public class Application {
         while (true) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             String answer = generateRandomNumber();
-            System.out.println("answer = " + answer);
-            while (true) {
-                String input = readInput();
-                String result = judgeResult(input, answer);
-                System.out.println(printResult(result));
-                if (isCorrectAnswer(result)) {
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    break;
-                }
-            }
+            doTrial(answer);
             if (!restartGame()) {
                 break;
             }
         }
 
+    }
+
+    private static void doTrial(String answer) {
+        while (true) {
+            String input = readInput();
+            String result = judgeResult(input, answer);
+            System.out.println(printResult(result));
+            if (isCorrectAnswer(result)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
     }
 
 }
