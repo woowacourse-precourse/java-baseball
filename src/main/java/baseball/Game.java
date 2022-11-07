@@ -12,7 +12,7 @@ public class Game {
     private List<Integer> computer = new ArrayList<Integer>();
     private List<Integer> user = new ArrayList<Integer>();
     private String input;
-    private String[] inputs;
+    private String[] splitInputs; // input 을 한글자씩 쪼개 배열에 담음
 
     public void run() {
         createComputerAnswer();
@@ -45,7 +45,7 @@ public class Game {
     private void inputUserNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         input = Console.readLine();
-        inputs = input.split("");
+        splitInputs = input.split("");
 
         if (isValidInput()) {
             setUserList();
@@ -71,8 +71,8 @@ public class Game {
     }
 
     private boolean isEachNumberFrom1To9() {
-        for (String input : inputs) {
-            int in = Integer.parseInt(input);
+        for (String splitInput : splitInputs) {
+            int in = Integer.parseInt(splitInput);
             if (!(in >= 1 && in <= 9)){
                 System.out.println("잘못된 입력값 입니다. 1이상 9이하 숫자를 입력하세요.");
                 return false;
@@ -82,10 +82,10 @@ public class Game {
     }
 
     private boolean isDifferentNumbers() {
-        int[] ints = new int[inputs.length];
+        int[] ints = new int[splitInputs.length];
 
-        for (int i = 0; i < inputs.length; i++)
-            ints[i] = Integer.parseInt(inputs[i]);
+        for (int i = 0; i < splitInputs.length; i++)
+            ints[i] = Integer.parseInt(splitInputs[i]);
 
         if ((ints[0] != ints[1]) && (ints[0] != ints[2]) && (ints[1] != ints[2]))
             return true;
@@ -96,7 +96,7 @@ public class Game {
 
     private void setUserList() {
         for (int i = 0; i < LENGTH; i++)
-            user.set(i, Integer.parseInt(inputs[i]));
+            user.set(i, Integer.parseInt(splitInputs[i]));
     }
 
     private boolean isCorrect() {
@@ -121,13 +121,10 @@ public class Game {
 
         if (ball == 0 && strike == 0)
             System.out.print("낫싱");
-
         if (ball > 0)
             System.out.print(ball + "볼 ");
-
         if (strike > 0)
             System.out.print(strike + "스트라이크");
-
         System.out.println("");
     }
 
