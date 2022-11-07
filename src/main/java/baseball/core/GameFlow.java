@@ -3,17 +3,16 @@ package baseball.core;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.core.GameStatus.*;
+import static baseball.display.OutputStatement.*;
 
 public class GameFlow {
 
-    public static GameStatus getNextStatus(BaseballGame baseballGame) {
-        GameStatus currentStatus = baseballGame.getCurrentStatus();
+    public static GameStatus playGame(BaseballGame baseballGame) {
 
-        while (currentStatus == START) {
-            currentStatus = ONGOING;
-            baseballGame.setCurrentStatus(currentStatus);
-            currentStatus = executeGame(baseballGame);
-        }
+        System.out.println(gameStart);
+        GameStatus currentStatus = ONGOING;
+        baseballGame.setCurrentStatus(currentStatus);
+        currentStatus = executeGame(baseballGame);
         baseballGame.setCurrentStatus(currentStatus);
         return currentStatus;
     }
@@ -22,17 +21,37 @@ public class GameFlow {
         GameStatus currentStatus = baseballGame.getCurrentStatus();
         String targetNumber = baseballGame.getTargetNumber();
         while (currentStatus == ONGOING) {
+            System.out.print(enterNumber);
             String inputNumber = Console.readLine();
             Integer numberOfBall = baseballGame.countTheNumberOfBall(targetNumber, inputNumber);
             Integer numberOfStrike = baseballGame.countTheNumberOfStrike(targetNumber, inputNumber);
 
             if (numberOfStrike == 3) {
+                System.out.println(correctNumber);
                 String selectGameStatus = Console.readLine();
-                if (selectGameStatus == "1") currentStatus = START;
-                else if (selectGameStatus == "2") currentStatus = QUIT;
-                baseballGame.setCurrentStatus(currentStatus);
+                currentStatus = changeGameStatus(currentStatus, selectGameStatus);
+            } else {
+                printBallAndStrike(numberOfBall, numberOfStrike);
             }
         }
         return currentStatus;
+    }
+
+    private static GameStatus changeGameStatus(GameStatus currentStatus, String selectGameStatus) {
+        if (selectGameStatus.equals("1")) currentStatus = START;
+        if (selectGameStatus.equals("2")) currentStatus = QUIT;
+        return currentStatus;
+    }
+
+    private static void printBallAndStrike(Integer numberOfBall, Integer numberOfStrike) {
+        if (numberOfBall == 0 && numberOfStrike == 0) {
+            System.out.println(nothing);
+        } else if (numberOfBall > 0 && numberOfStrike == 0) {
+            System.out.println(numberOfBall + ball);
+        } else if (numberOfBall == 0 && numberOfStrike > 0) {
+            System.out.println(numberOfStrike + strike);
+        } else {
+            System.out.println(numberOfBall + ball + " " + numberOfStrike + strike);
+        }
     }
 }

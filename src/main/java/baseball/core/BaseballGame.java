@@ -10,7 +10,6 @@ public class BaseballGame {
         this.currentStatus = currentStatus;
     }
 
-
     // 볼의 개수 확인
     public Integer countTheNumberOfBall(String targetNumber, String inputNumber) {
 
