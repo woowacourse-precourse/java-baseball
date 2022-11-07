@@ -9,8 +9,12 @@ public class GameManager {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
     private void game() {
+        computer.computer_random_num();
         while (!isCorrect()) {
-
+            user.userInput();
+            isStrike();
+            isBall();
+            printResult();
         }
     }
     private void isStrike() {
@@ -34,5 +38,16 @@ public class GameManager {
             else return false;
         }
         return true;
+    }
+    private void printResult() {
+        if (strike_num != 0 && ball_num != 0) { // n 볼 n 스트라이크
+            System.out.println(ball_num + "볼 " + strike_num + "스트라이크");
+        } else if (strike_num != 0 && ball_num == 0) { // n 스트라이크
+            System.out.println(strike_num + "스트라이크");
+        } else if (strike_num == 0 && ball_num != 0) { // n 볼
+            System.out.println(ball_num + "볼");
+        } else if (strike_num == 0 && ball_num == 0) { // 낫싱
+            System.out.println("낫싱");
+        }
     }
 }
