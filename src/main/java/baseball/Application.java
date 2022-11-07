@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Application {
+    //git commit test
     public static void game_start_message(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }

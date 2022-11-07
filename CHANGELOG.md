@@ -1,13 +1,22 @@
-- feat: changelog.md test
-- [Modify] 숫자입력 출력 형식 수정
-- [Modify] 3스트라이크 출력 기능 수정
-- [Add]  3스트라이크 판단 기능 구현
-- [Add] 결과출력 í 기능 구현
-- [Add] 스트라이크 볼 판단 함수 추가
-- [Add] ] 컴퓨터의 숫자와 사용ì자의 숫자를 List화
-- [Modify] 출력 메시지 함수 수정
-- README.md Modify
-- 출력í함수 작성 및 기능목록 추가
-- Second commit
-- First commit
-- feat: setup precourse baseball project
+#### 2022-11-07
+
+##### New Features
+
+*  changelog.md test (783274ed)
+*  setup precourse baseball project (313e8f1b)
+
+##### Bug Fixes
+
+*  changelog.md test (7622bede)
+
+#### 2022-11-07
+
+##### New Features
+
+*  changelog.md test (783274ed)
+*  setup precourse baseball project (313e8f1b)
+
+##### Bug Fixes
+
+*  changelog.md test (7622bede)
+
