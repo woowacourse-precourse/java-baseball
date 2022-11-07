@@ -11,9 +11,10 @@ import java.util.stream.Collectors;
 
 public class Turn {
     private ResultTurn resultTurn;
-    private Target target = new Target();
+    private Target target;
 
     Turn (Target target) {
+        this.resultTurn = ResultTurn.Nothing;
         this.target = target;
     }
 
