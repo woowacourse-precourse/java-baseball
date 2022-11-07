@@ -11,7 +11,7 @@ class BallTest {
     @DisplayName("스트라이크 추가")
     void addStrike() {
         int result = 1;
-        Ball ball = new Ball(0, 0);
+        Ball ball = new Ball();
 
         ball.addStrike();
         assertEquals(result, ball.getStrike());
@@ -21,7 +21,7 @@ class BallTest {
     @DisplayName("볼 추가")
     void addBall() {
         int result = 1;
-        Ball ball = new Ball(0, 0);
+        Ball ball = new Ball();
 
         ball.addBall();
         assertEquals(result, ball.getBall());
@@ -30,16 +30,25 @@ class BallTest {
     @Test
     @DisplayName("게임 끝났는지")
     void isEnd() {
-        Ball ball = new Ball(3, 0);
+        Ball ball = new Ball();
+        addStrike(ball, 3);
 
         assertTrue(ball.isEnd());
+    }
+
+    private void addStrike(Ball ball, int count) {
+        for (int i = 0; i < count; i++) {
+            ball.addStrike();
+        }
     }
 
     @Test
     @DisplayName("결과 출력")
     void testToString() {
         String result = "1볼 2스트라이크";
-        Ball ball = new Ball(2, 1);
+        Ball ball = new Ball();
+        addStrike(ball, 2);
+        ball.addBall();
 
         assertEquals(result, ball.toString());
     }

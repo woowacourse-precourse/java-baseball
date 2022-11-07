@@ -21,7 +21,7 @@ public class Computer {
     }
 
     public Ball compareDigits(List<Integer> inputDigits) {
-        Ball ball = new Ball(0, 0);
+        Ball ball = new Ball();
 
         for (int row = 0; row < DIGITS_SIZE; row++) {
             compareDigitsByColumn(inputDigits, ball, row);

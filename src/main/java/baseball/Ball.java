@@ -6,9 +6,7 @@ public class Ball {
     private int strike;
     private int ball;
 
-    public Ball(int strike, int ball) {
-        this.strike = strike;
-        this.ball = ball;
+    public Ball() {
     }
 
     public int getStrike() {
