@@ -8,11 +8,6 @@ import java.util.stream.Stream;
 
 public class InputController {
 
-    public List<Integer> inputConvert(String inputNumber) {
-        List<Integer> userNumberList = userNumberConvertToList(inputNumber); // 자릿수로 나눈 리스트로 변환
-        return userNumberList;
-    }
-
     public String getInput(){
         String inputNumber = Console.readLine(); // 입력 받기
         return inputNumber;
