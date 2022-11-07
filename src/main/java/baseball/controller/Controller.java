@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import baseball.Rule;
 import baseball.view.View;
 import baseball.model.Model;
 
@@ -51,12 +50,11 @@ public class Controller {
         View.printStart();
         computerNumber = Model.createComputerNumber();
         do {
-            System.out.println(computerNumber);
             List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
             Map<String, Integer>resultMap = checkAnswer(computerNumber, playerNumber);
             View.printHint(createHint(resultMap));
             if (isCorrect(resultMap)) {
-                String exitInput = View.getExitInput();
+                String exitInput = View.getExitInput(); //예외발생
                 restartOrEnd(exitInput);
             }
         }while(isPlaying);
@@ -108,8 +106,7 @@ public class Controller {
 
     public void restartOrEnd(String input) {
         if (input.equals(COMMAND_RESTART)) {
-            isPlaying = true;
-//            computerNumber = Model.createComputerNumber();
+            computerNumber = Model.createComputerNumber();
         }
         if (input.equals(COMMAND_END)) {
             isPlaying = false;

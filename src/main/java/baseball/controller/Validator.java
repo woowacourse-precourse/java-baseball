@@ -1,4 +1,6 @@
-package baseball;
+package baseball.controller;
+
+import baseball.controller.Rule;
 
 import java.util.List;
 import java.util.Set;

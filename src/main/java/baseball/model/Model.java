@@ -1,7 +1,7 @@
 package baseball.model;
 
-import baseball.Rule;
-import baseball.Validator;
+import baseball.controller.Rule;
+import baseball.controller.Validator;
 import baseball.view.View;
 import camp.nextstep.edu.missionutils.Randoms;
 
