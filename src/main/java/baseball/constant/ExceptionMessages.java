@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public enum ExceptionMessages {
   INPUT_IS_NOT_UNIQUE("The input value contains a duplicate number."),

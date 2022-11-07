@@ -1,6 +1,6 @@
 package baseball.io;
 
-import baseball.ExceptionMessages;
+import baseball.constant.ExceptionMessages;
 
 public class ReplayOrEndInputValidator implements InputValidator{
 

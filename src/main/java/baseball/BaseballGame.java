@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.constant.InGameMessages;
+import baseball.constant.InGameTerms;
 import baseball.io.MessagePrinter;
 import baseball.io.InputReader;
 

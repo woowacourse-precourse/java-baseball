@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public enum InGameTerms {
   BALL("볼"),
