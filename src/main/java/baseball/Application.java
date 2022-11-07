@@ -12,6 +12,7 @@ public class Application {
         int select = 1;
         while (select == 1){
             game.start();
+            System.out.println("게임을 새로 시작하여면 1, 종료하려면 2를 입력하세요.");
             select = Integer.parseInt(Console.readLine());
         }
         //야구 게임 시작
