@@ -131,7 +131,8 @@ public class Application {
             } else if (input.equals("2")){
                 break;
             } else{
-
+                process_exception(true);
+                break;
             }
         }
     }
