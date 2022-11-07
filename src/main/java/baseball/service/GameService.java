@@ -12,7 +12,7 @@ public class GameService {
     private final int MAX_VALUE = 9;
     private final int MIN_VALUE = 1;
 
-    public void validate(Game game){
+    public void validate(Game game) {
         List<Integer> numbers = game.getNumbers();
 
         if(numbers.size() < MAX_COUNT) {
@@ -31,7 +31,7 @@ public class GameService {
     }
 
     public Game initAnswer(Game game) {
-        game.setNumbers(Randoms.pickUniqueNumbersInRange(1, 9, 3));
+        game.setNumbers(Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, MAX_COUNT));
 
         return game;
     }
@@ -53,7 +53,33 @@ public class GameService {
     }
 
     public boolean compareAnswer(Game answer, Game userInput) {
+        int ball = 0;
+        int strike = 0;
 
-        return true;
+        List<Integer> answerList = answer.getNumbers();
+        List<Integer> userList = userInput.getNumbers();
+
+        for(int index = 0; index < answerList.size(); index++){
+            int answerNum = answerList.get(index);
+            int userNum = userList.get(index);
+
+            if(answerNum == userNum){
+                strike++;
+            }
+
+            if(answerNum != userNum && answerList.contains(userNum)){
+                ball++;
+            }
+        }
+
+        //printOutput(ball, strike);
+
+        if(strike == MAX_COUNT) {
+            return true;
+        }
+
+        return false;
     }
+
+
 }
