@@ -10,8 +10,8 @@ class BaseballGameTest {
     @Test
     void countTheNumberOfBall() {
 
-        BaseballGame baseballGame = new BaseballGame();
         String targetNumber = "123";
+        BaseballGame baseballGame = new BaseballGame(targetNumber, GameStatus.START);
         String inputNumber = "357";
 
         Integer numberOfBall = baseballGame.countTheNumberOfBall(targetNumber, inputNumber);
@@ -21,8 +21,8 @@ class BaseballGameTest {
     @Test
     void countTheNumberOfStrike() {
 
-        BaseballGame baseballGame = new BaseballGame();
         String targetNumber = "482";
+        BaseballGame baseballGame = new BaseballGame(targetNumber, GameStatus.START);
         String inputNumber = "462";
 
         Integer numberOfStrike = baseballGame.countTheNumberOfStrike(targetNumber, inputNumber);
