@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class GameProcess {
@@ -16,6 +18,10 @@ public class GameProcess {
         List<Integer> randomNum = RandomNum.generate();
 
         System.out.print("숫자를 입력해주세요 : ");
+
+        // 사용자 입력값 받기
+        String inputNum = Console.readLine();
+
     }
 
 }

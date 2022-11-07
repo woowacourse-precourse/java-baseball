@@ -16,7 +16,7 @@
 ```
 숫자를 입력해주세요 : 
 ```
-- [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자 입력값 받음
+- [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용하여 사용자 입력값 받음
     - 입력 문구 바로 옆
   
 ### 3. 사용자 입력값 검증
