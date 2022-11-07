@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Pitcher {
+    private static final int NUMBER_MIN = 1;
+    private static final int NUMBER_MAX = 9;
     
     public Balls throwRandomBalls(int count) {
         List<Integer> thrownBallList = initThrownBallList();
@@ -21,7 +23,7 @@ public class Pitcher {
 
     private int getNotDuplicatedRandomNumber(List<Integer> thrownBallList) {
         while (true) {
-            int number = Randoms.pickNumberInRange(1, 9);
+            int number = Randoms.pickNumberInRange(NUMBER_MIN, NUMBER_MAX);
             if (isNotDuplicated(thrownBallList, number)) {
                 thrownBallList.set(number, 1);
                 return number;
