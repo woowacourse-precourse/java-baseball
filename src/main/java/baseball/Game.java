@@ -48,9 +48,24 @@ public class Game {
 
         int playerNum = Integer.parseInt(inputNum);
         System.out.println(playerNum);
+
         for (int i = 100; i > 0; i /= 10) {
             playerNumber.add(playerNum / i);
             playerNum %= i;
         }
+    }
+
+    void isValidNum(String s) { // 2.2 사용자가 입력한 숫자가 유효한 숫자인지 확인하기
+
+        if (s.length() != 3)
+            throw new IllegalArgumentException("유효하지 않은 값");
+
+        try {
+            Double.parseDouble(s);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("유효하지 않은 값");
+        }
+
     }
 }
