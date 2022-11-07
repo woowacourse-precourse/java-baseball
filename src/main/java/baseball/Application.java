@@ -25,7 +25,7 @@ public class Application {
     	while(start==1) {
 
     		computer = makeComputer();
-    		System.out.println(computer);
+    		
     		game();
     	}
     }
