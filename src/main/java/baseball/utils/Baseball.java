@@ -1,5 +1,7 @@
 package baseball.utils;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.List;
 import static baseball.values.Constant.Digit.TOTAL_BALL_CNT;
 
 public class Baseball {
-
     private final LinkedHashSet<Integer> baseballNumber;
 
     public Baseball(LinkedHashSet<Integer> baseballNumber) {
@@ -24,5 +25,16 @@ public class Baseball {
         if (ballCnt != TOTAL_BALL_CNT) {
             throw new IllegalArgumentException("Exception because of inputted Number: " + baseballNumber.toString());
         }
+    }
+
+    public static Baseball createComputer() {
+        LinkedHashSet<Integer> computerBalls = new LinkedHashSet<>();
+
+        while (computerBalls.size() < TOTAL_BALL_CNT) {
+            computerBalls.add(Randoms.pickNumberInRange(1, 9));
+        }
+
+        Baseball computer = new Baseball(computerBalls);
+        return computer;
     }
 }
