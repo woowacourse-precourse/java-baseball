@@ -21,7 +21,7 @@ public class NumberBaseballGame {
     }
 
     public void gameStart() {
-        System.out.print("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         userNumber = getUserNumberList(inputNumber);
         compareUserAndComputer();
@@ -33,10 +33,10 @@ public class NumberBaseballGame {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String response = Console.readLine();
-            if (response == "1") {
+            if (response.equals("1")) {
                 return true;
             }
-            if (response == "2") {
+            if (response.equals("2")) {
                 return false;
             }
         }
@@ -44,10 +44,11 @@ public class NumberBaseballGame {
     }
 
     public void getRandomThreeDigitNumber() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3;) {
             int num = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(num)) {
                 computerNumber.add(num);
+                i++;
             }
         }
     }
@@ -62,6 +63,8 @@ public class NumberBaseballGame {
     }
 
     public void compareUserAndComputer() {
+        strike = 0;
+        ball = 0;
         for (int i = 0; i < userNumber.size(); i++) {
             if (computerNumber.indexOf(userNumber.get(i)) == i) {
                 strike++;
