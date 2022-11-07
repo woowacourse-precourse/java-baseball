@@ -65,7 +65,8 @@ public class Number {
             return false;
         }
         Number number = (Number) o;
-        return first == number.first && second == number.second && third == number.third;
+        return Objects.equals(first, number.first) && Objects.equals(second, number.second)
+                && Objects.equals(third, number.third);
     }
 
     @Override
