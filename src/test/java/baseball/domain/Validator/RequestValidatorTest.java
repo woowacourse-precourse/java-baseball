@@ -33,4 +33,12 @@ class RequestValidatorTest {
 
     }
 
+    @Test
+    void DUPLICATE_VALIDATION_CHECK(){
+        UserInputRequest testForDuplicate = new UserInputRequest(List.of('2', '2', '3'));
+        assertThatThrownBy(() -> RequestValidator.inputValidation(testForDuplicate))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 숫자를 입력하면 안됩니다.");
+    }
+
 }
