@@ -22,11 +22,11 @@ public class Application {
         while (restart) {
             Game game = new Game(player);
             game.start();
-            String playerRestart = player.getRestart();
-            if (!player.isValidRestart(playerRestart)) {
+            String restartCommand = player.getRestart();
+            if (!player.isValidRestart(restartCommand)) {
                 Player.isNotValid();
             }
-            restart = checkRestart(playerRestart);
+            restart = checkRestart(restartCommand);
         }
     }
 
