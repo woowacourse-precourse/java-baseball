@@ -28,10 +28,15 @@ class User {
     public static List<Integer> getInputNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        if (input.length > 3){
+        if (input.length() > 3){
             throw new IllegalArgumentException();
         }
-        int inputNumber = Integer.parseInt(input);
+        for (int idx = 0; idx < 3; idx++){
+            if (input.charAt(idx) < '1' || input.charAt(idx) > '9'){
+                throw new IllegalArgumentException();
+            }
+        }
+
 
 
 
