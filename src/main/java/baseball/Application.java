@@ -74,10 +74,8 @@ class Baseball {
         }
     }
     public Boolean countCheck(List<Integer> player) {
-        System.out.println(player);
         int strike = 0;
         int ball = 0;
-
 
         for (int i = 0; i < player.size(); i++) {
             if (player.contains(baseballCount.get(i))) ball++;
@@ -104,7 +102,6 @@ class Baseball {
             System.out.println(strike +"스트라이크");
             return;
         }
-
         System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 }
