@@ -142,4 +142,17 @@ public class Baseball {
             System.out.println(result);
         } while (!result.equals(Message.CLEAR));
     }
+
+    public boolean continueCheck() {
+        System.out.println(Message.ASK);
+        String answer = readLine();
+
+        if (answer.equals("1")) {
+            return true;
+        } else if (answer.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }
