@@ -14,20 +14,43 @@ public class Application {
 		startGame();
 
 		List<Integer> computerNumbers = getComputerNumbers();
+		playGame(computerNumbers);
+		
+	}
+	
+	public static void playGame(List<Integer> computerNumbers) {
+		
 		List<Integer> playerNumbers = getPlayerNumbers();
 
 		int strike = sumStrike(computerNumbers, playerNumbers);
+		if (strike == LENGTH) {
+
+			System.out.println("3스트라이크");
+			endGame();
+			return;
+		}
+
 		int ball = sumBall(computerNumbers, playerNumbers) - strike;
-		
+
+		boolean isNothing = strike == 0 && ball == 0;
+		if (isNothing) {
+			System.out.println("낫싱");
+		}
+
+		else {
+			System.out.println(ball + "볼 " + strike + "스트라이크");
+		}
+
 		System.out.println(computerNumbers);
 		System.out.println(playerNumbers);
+		playGame(computerNumbers);
 	}
-	
+
 	public static int sumBall(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-		
+
 		int count = 0;
 		for (int index = 0; index < LENGTH; index++) {
-			
+
 			int player = playerNumbers.get(index);
 			boolean isBall = computerNumbers.contains(player);
 			if (isBall) {
@@ -36,15 +59,15 @@ public class Application {
 		}
 		return count;
 	}
-	
+
 	public static int sumStrike(List<Integer> computerNumbers, List<Integer> playerNumbers) {
-		
+
 		int count = 0;
 		for (int index = 0; index < LENGTH; index++) {
-			
+
 			int computer = computerNumbers.get(index);
 			int player = playerNumbers.get(index);
-			
+
 			boolean isStrike = computer == player;
 			if (isStrike) {
 				count++;
@@ -61,7 +84,8 @@ public class Application {
 		int result = Integer.parseInt(Console.readLine());
 		if (result == 1) {
 
-			startGame();
+			List<Integer> computerNumbers = getComputerNumbers();
+			playGame(computerNumbers);
 		}
 	}
 
@@ -92,8 +116,9 @@ public class Application {
 
 	public static Integer handleNumberException(List<Integer> playerNumbers) {
 
+		System.out.print("숫자를 입력해주세요 : ");
 		String input = Console.readLine();
-		
+
 		boolean isNumeric = isNumeric(input);
 		if (!isNumeric) {
 			throw new IllegalArgumentException();
@@ -116,7 +141,7 @@ public class Application {
 			Double.parseDouble(input);
 			return true;
 		}
-		
+
 		catch (NumberFormatException e) {
 			return false;
 		}
