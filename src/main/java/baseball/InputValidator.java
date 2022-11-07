@@ -9,7 +9,7 @@ public class InputValidator {
     if (userNumber.length() != Constant.REQUIRED_NUMBER_LENGTH) {
       throw new IllegalArgumentException();
     }
-    return true; //여기 true도 전역변수로???
+    return true;
   }
 
   //중복된 숫자가 있으면
