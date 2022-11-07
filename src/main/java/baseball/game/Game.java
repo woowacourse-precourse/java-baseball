@@ -49,4 +49,20 @@ public class Game {
             throw new IllegalArgumentException("서로 다른 수만 입력이 가능합니다.");
         }
     }
+
+    private static Map<String, Integer> getBallStrikeCount(List<Integer> user, List<Integer> computer) {
+        Map<String, Integer> result = new HashMap<>();
+        result.put("볼", 0);
+        result.put("스트라이크", 0);
+
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.contains(user.get(i)) && user.get(i) == computer.get(i)) {
+                result.put("스트라이크", result.get("스트라이크") + 1);
+            } else if (computer.contains(user.get(i))) {
+                result.put("볼", result.get("볼") + 1);
+            }
+        }
+
+        return result;
+    }
 }
