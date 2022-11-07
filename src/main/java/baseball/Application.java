@@ -130,17 +130,7 @@ public class Application {
 
     // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
     public static String getNumberOfUserString() {
-        /*
-         * WARNING이 나는 이유가 Reflection API 때문인 것 같다.
-         * Console.java 클래스를 들어가보니,
-         * final Field sourceClosedField = Scanner.class.getDeclaredField("sourceClosed");
-         * 여기에서 오류가 난 것 같다.
-         *
-         * 하지만 Exception이 발생했다면 "unable to determine if the scanner is closed."를 출력했어야 했을 것이다.
-         * 그렇지 않았으므로, 다른 문제가 발생한 것으로 볼 수 있다.
-         * 이 이상의 것은 구현하고 나서 다시 수정하는 것이 더 빠른 길이라고 생각이 든다. 일단 구현부터...
-         */
-        String numOfUserString = Console.readLine(); // readLine은 Call Stack의 최하부에 위치하도록 조치.
+        String numOfUserString = Console.readLine();
         return numOfUserString;
     }
 
