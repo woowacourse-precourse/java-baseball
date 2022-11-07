@@ -15,12 +15,12 @@ public class BaseBallDto {
             return "낫싱";
         }
         if (strike == 0) {
-            return String.format("%s볼\n", ball);
+            return String.format("%s볼", ball);
         }
         if (ball == 0) {
-            return String.format("%s스트라이크\n", strike);
+            return String.format("%s스트라이크", strike);
         }
-        return String.format("%s볼 %s스트라이크\n", ball, strike);
+        return String.format("%s볼 %s스트라이크", ball, strike);
     }
 
     public boolean isStrikeOut() {
