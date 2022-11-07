@@ -40,4 +40,12 @@ public class Player {
         return inputList;
     }
 
+    public void isInt(String input){
+        try{
+            Integer.parseInt(input);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+    }
+
 }
