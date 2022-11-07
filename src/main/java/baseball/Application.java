@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -48,8 +50,6 @@ public class Application {
         return resultList;
     }
 
-//    private static
-
     private static boolean eachGame() {
         int strike = 0;
         int ball = 0;
@@ -59,6 +59,14 @@ public class Application {
         List<Integer> score = gameResult(inputNumber);
 
         for (Integer eachScore : score) {
+            if (eachScore == 1) {
+                ball += 1;
+            } else if (eachScore == 2){
+                strike += 1;
+            }
+        }
+
+        if(strike == 3){
 
         }
 
@@ -81,7 +89,7 @@ public class Application {
         }
 
         for (int i = 0; i < 3; i++) {
-            answerNumber += numberList.get(i) * Math.max(1, Math.pow(10, 2 - i));
+            answerNumber += numberList.get(i) * Randoms.pickNumberInRange(1,9);
         }
     }
 
