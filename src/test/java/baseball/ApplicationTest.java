@@ -76,10 +76,6 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("게임 재시작할 때 1or2가 아닐 때 예외")
     void 예외_테스트7() {
-//        assertSimpleTest(() ->
-//                assertThatThrownBy(() -> run("3"))
-//                        .isInstanceOf(IllegalArgumentException.class)
-//        );
         //given
         RestartGameException restartGameException = new RestartGameException();
         int gameStart = 1;
