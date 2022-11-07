@@ -13,6 +13,25 @@ public class Application {
 
     }
 
+
+    public static void game() {
+        List<Integer> answer = createAnswer();
+        Boolean userInputMatchAnswerFlag = false;
+
+        while (userInputMatchAnswerFlag == false) {
+            List<Integer> userInput = getInput();
+            List<Integer> comparisonResult = compareAnswerToInput(answer, userInput);
+            System.out.println(printBallAndStrike(comparisonResult));;
+
+            if (comparisonResult.get(0) == 0 && comparisonResult.get(1) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                userInputMatchAnswerFlag = true;
+            }
+
+        }
+
+    }
+
     public static List<Integer> createAnswer() {
         List<Integer> answerNumbers = new ArrayList<>();
 
@@ -43,8 +62,12 @@ public class Application {
             if (!allowedInputNumber.contains(eachInputNumber)) {
                 throw new IllegalArgumentException("out of range input");
             } else if (inputList.size() != inputSet.size()) {
+                throw new IllegalArgumentException("duplicating number");
+            } else if (inputList.size() != 3){
                 throw new IllegalArgumentException("number of unique input integer  is not 3");
             }
+
+
         }
 
         return true;
