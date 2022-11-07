@@ -7,7 +7,10 @@ import baseball.service.GameService;
 import baseball.view.OutputView;
 
 public class Config {
+    public static GameService gameService() {
+        return new GameService(new InputBallNumber(), new RandomBallNumber());
+    }
     public static PlayGameController playGameController() {
-        return new PlayGameController(new GameService(new InputBallNumber(), new RandomBallNumber()), new OutputView());
+        return new PlayGameController(gameService(), new OutputView());
     }
 }
