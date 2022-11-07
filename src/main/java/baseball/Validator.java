@@ -10,4 +10,10 @@ public class Validator {
             throw new IllegalArgumentException("input is now numeric.");
         }
     }
+
+    public void checkGuessLength(String input) throws IllegalArgumentException {
+        if(input.length() != MAX_LENGTH) {
+            throw new IllegalArgumentException("guess only 3 numbers.");
+        }
+    }
 }
