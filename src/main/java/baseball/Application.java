@@ -25,11 +25,25 @@ public class Application {
         }
     }
     public static List<Integer> make_rand_num(){
+       /*
         List<Integer> answer= new ArrayList<>();
         while(answer.size()<3) {
             int rand_num = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(rand_num))
                 answer.add(rand_num);
+        }
+        return answer;
+
+        */
+        List<Integer> number_pool = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        List<Integer> answer = new ArrayList<>();
+        int pool_size = 8;
+        while(answer.size()<3){
+            int next_num_idx = Randoms.pickNumberInRange(0,pool_size);
+            System.out.println(next_num_idx);
+            answer.add(number_pool.get(next_num_idx));
+            number_pool.remove(next_num_idx);
+            pool_size--;
         }
         return answer;
     }
@@ -68,7 +82,7 @@ public class Application {
         List<Integer> answer = make_rand_num();
 
        // answer = List.of( 5,8,9 );
-        //System.out.println(answer);
+        System.out.println(answer);
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer>input = number_input();
