@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Arrays;
 
 class computer {
-    List computerNumber(){
+    List<String> computerNumber(){
         List<Integer> computer = new ArrayList<>();
         while(computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -15,7 +15,11 @@ class computer {
                 computer.add(randomNumber);
             }
         }
-        return computer;
+        List<String> computerNumberToString = new ArrayList<>();
+        computerNumberToString.add(String.valueOf(computer.get(0)));
+        computerNumberToString.add(String.valueOf(computer.get(1)));
+        computerNumberToString.add(String.valueOf(computer.get(2)));
+        return computerNumberToString;
     }
 }
 
@@ -60,7 +64,7 @@ class inputException extends computer {
 
     void restartJudgeException(String a) {
         this.judgeNotNumber(a);
-        if(!a.equals("1") || !a.equals("2")) {
+        if(!a.equals("1") && !a.equals("2")) {
             throw new IllegalArgumentException("다시 시작하세요");
         }
     }
@@ -133,8 +137,22 @@ class entireGame extends playGame {
     }
 }
 
+class entireProgram extends entireGame {
+    void baseballGame() {
+        while(true) {
+            this.fullGame(this.computerNumber());
+            String endNumber = Console.readLine();
+            this.restartJudgeException(endNumber);
+            if(endNumber.equals("2")) {
+                break;
+            }
+        }
+    }
+}
 public class Application {
     public static void main(String[] args) {
-        
+        entireProgram game = new entireProgram();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        game.baseballGame();
     }
 }
