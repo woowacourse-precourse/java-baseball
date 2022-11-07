@@ -31,6 +31,17 @@ public class PlayerTest {
   @DisplayName("플레이어가 입력한 숫자를 확인하는 테스트")
   void testWithPlayerSource(){
     player.decideNumbers("456");
-    assertThat(player.getNumbers()).containsExactly(4, 5, 6);
+    assertThat(player.getNumbers())
+            .as("플레이어는 456을 고르지 않았습니다")
+            .containsExactly(4, 5, 6);
+  }
+
+  @Test
+  @DisplayName("플레이어가 입력한 숫자길이가 정확한지 테스트")
+  void testWithPlayerSourceLength(){
+    player.decideNumbers("456");
+    assertThat(player.getNumbers().size())
+            .as("숫자길이가 3이  아닙니다.")
+            .isEqualTo(MAX_SIZE);
   }
 }
