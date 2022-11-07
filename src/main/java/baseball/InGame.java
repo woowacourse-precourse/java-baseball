@@ -20,9 +20,8 @@ public class InGame extends UserGuessInput{
         while(!isAllStrike){
             this.input = processUserInput();
             this.count = new Counter(input, answer).getCount();
-            if(count.get("strike").equals(3)){
-                break;
-            }
+            boolean isEnd = new Result(count).computeResult();
+            if(isEnd) break;
         }
     }
 }
