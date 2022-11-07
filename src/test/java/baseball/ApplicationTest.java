@@ -74,7 +74,18 @@ class ApplicationTest extends NsTest {
         String answer = getAnswer(baseballGame);
         baseballGame.operate(answer);
         baseballGame.operate("1");
-        assertThat(output()).doesNotContain("게임종료");
+        assertThat(baseballGame.getStatus()).isEqualTo(Status.PLAYING);
+    }
+
+    @Test
+    @Order(5)
+    @DisplayName("게임을 종료한 후 2를 입력해 완전히 종료할 수 있어야 합니다.")
+    void 게임종료_후_끝() {
+        Game baseballGame = new Game();
+        String answer = getAnswer(baseballGame);
+        baseballGame.operate(answer);
+        baseballGame.operate("2");
+        assertThat(baseballGame.getStatus()).isEqualTo(Status.DONE);
     }
 
     @Test
