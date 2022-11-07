@@ -3,6 +3,7 @@ package baseball;
 public class BaseballGame {
     private CorrectAnswer answer;
 
+
     /**
      * 생성된 랜덤 문자열과 사용자가 입력한 pitch 인스턴스를 비교하여
      * 결과를 출력하고 3스트라이크가 아니라면 true를 반환합니다.
@@ -11,7 +12,15 @@ public class BaseballGame {
      * */
     private boolean pitchIsNotCorrect(Pitch pitch){
         //answer과 비교하여 결과 출력 후 3스트라이크면 false 반환
-        return false;
+        int strike = 0, ball = 0;
+        for(int i = 0; i < 3; i++){
+            PitchResult result = answer.batPitchedBall(pitch.getNumber(i), i);
+            if(result == PitchResult.BALL)
+                ball++;
+            if(result == PitchResult.STRIKE)
+                strike++;
+        }
+        return strike != 3;
     }
 
     /**
