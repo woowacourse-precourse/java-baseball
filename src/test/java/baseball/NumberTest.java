@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class NumberTest extends NsTest{
-    @Test
+    @RepeatedTest(5)
     @DisplayName("상대 숫자의 자릿수가 3인지 확인")
     void validateOpponentNumberDigits() {
         List<Integer> opponentNumbers = Number.getOpponentNumbersInList();
@@ -20,10 +21,20 @@ public class NumberTest extends NsTest{
     }
 
     @Test
-    @DisplayName("예외: 사용자 입력이 세자리가 아닌 경우")
-    void exception1() {
+    @DisplayName("예외: 사용자의 숫자가 3개 초과인 경우")
+    void exception1_1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Enter a three-digit number.")
+        );
+    }
+
+    @Test
+    @DisplayName("예외: 사용자의 숫자가 3개 미만인 경우")
+    void exception1_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("14"))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("Enter a three-digit number.")
         );
