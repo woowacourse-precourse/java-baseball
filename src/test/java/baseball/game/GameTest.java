@@ -2,6 +2,7 @@ package baseball.game;
 
 import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -11,6 +12,13 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 public class GameTest extends NsTest {
+
+    Game game;
+
+    @BeforeEach
+    void 초기화() {
+        game = Game.create();
+    }
 
     @Test
     void 게임시작시_시작메세지가_출력되어야한다() {
@@ -24,7 +32,6 @@ public class GameTest extends NsTest {
 
     @Test
     void 사용자가_잘못된_입력을_할_경우_예외_처리_해야한다() {
-        Game game = Game.create();
         assertThatThrownBy(() -> game.inputCheck("1234"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리 입력만 가능합니다.");
@@ -45,7 +52,6 @@ public class GameTest extends NsTest {
 
     @Test
     void 볼_스트라이크_개수를_가져와야_한다() {
-        Game game = Game.create();
         assertThat(
                 game.getBallStrikeCount(Arrays.asList(1, 2, 3), Arrays.asList(2, 4, 3))
                         .equals(Map.of(
@@ -68,7 +74,6 @@ public class GameTest extends NsTest {
 
     @Test
     void 볼과_스트라이크의_개수가_나와야_한다() {
-        Game game = Game.create();
         assertSimpleTest(() -> {
             game.printGameResult(Map.of(
                     "볼", 1,
@@ -80,7 +85,6 @@ public class GameTest extends NsTest {
 
     @Test
     void 스트라이크만_3이_나와야_한다() {
-        Game game = Game.create();
         assertSimpleTest(() -> {
             game.printGameResult(Map.of(
                     "볼", 0,
@@ -92,7 +96,6 @@ public class GameTest extends NsTest {
 
     @Test
     void 볼만_3이_나와야_한다() {
-        Game game = Game.create();
         assertSimpleTest(() -> {
             game.printGameResult(Map.of(
                     "볼", 3,
@@ -104,7 +107,6 @@ public class GameTest extends NsTest {
 
     @Test
     void 낫싱이_나와야_한다() {
-        Game game = Game.create();
         assertSimpleTest(() -> {
             game.printGameResult(Map.of(
                     "볼", 0,
