@@ -24,7 +24,7 @@ public class Validation {
     }
 
     private boolean checkAllDigitUnique(String playerNumber) {
-        List<String> number = new ArrayList<>(Arrays.asList(playerNumber.split("")));
+        List<String> number = Arrays.asList(playerNumber.split(""));
 
         return number.stream()
                 .allMatch(num ->
