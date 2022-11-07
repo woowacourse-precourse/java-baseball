@@ -39,6 +39,7 @@ public class Game {
                 user.input();
                 Print.score(new Score(this));
             }
+            replay();
         }
 
     }
@@ -46,6 +47,14 @@ public class Game {
     public void init(){
         Print.start();
         pickNumbers();
+    }
+
+    public void replay(){
+        Print.correct();
+        if (user.replay()){
+            correct = false;
+            return;
+        }
     }
 
     private void pickNumbers(){
