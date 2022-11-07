@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class BaseballTest {
+    Baseball baseball = new Baseball();
     @Test
     void 메시지_상수로_구분하기() {
         Assertions.assertEquals(Message.ASK, "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -13,5 +14,11 @@ public class BaseballTest {
         Assertions.assertEquals(Message.STRIKE, "스트라이크");
         Assertions.assertEquals(Message.NOTHING, "낫싱");
         Assertions.assertEquals(Message.START, "숫자 야구 게임을 시작합니다.");
+    }
+
+    @Test
+    void 사용자_변수_난수_초기화하기() {
+        Assertions.assertEquals(baseball.getUserNumber(), "");
+        Assertions.assertEquals(baseball.getRandomNumber(), "");
     }
 }
