@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Number {
+    public static final int FULL_SIZE = 3;
     public final Digit first;
     public final Digit second;
     public final Digit third;

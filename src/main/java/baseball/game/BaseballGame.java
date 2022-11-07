@@ -51,7 +51,7 @@ public class BaseballGame {
 
     private void generateRandomNumber() {
         List<Integer> digits = new ArrayList<>();
-        while (digits.size() < 3) {
+        while (digits.size() < Number.FULL_SIZE) {
             addUniqueRandomDigit(digits);
         }
         randomNumber = new Number(digits);
