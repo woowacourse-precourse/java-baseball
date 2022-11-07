@@ -9,6 +9,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.io.ByteArrayInputStream;
+
 class ApplicationTest extends NsTest {
 
     @DisplayName("게임 시작 문구 출력 테스트")
@@ -36,5 +38,10 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[] {});
+    }
+
+    private void setSystemInput(final String... args) {
+        final byte[] buf = String.join("\n", args).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
     }
 }
