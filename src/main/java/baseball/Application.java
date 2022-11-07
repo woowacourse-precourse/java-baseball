@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -14,10 +15,10 @@ public class Application {
     }
 
     /**
-     * Scan user input to start a number baseball game.
-     * @return userInput
+     * Scan input to start a number baseball game.
+     * @return list of integer if input is validated.
      */
-    public static String getUserInput() {
+    public static List<Integer> getInputAsList() {
         System.out.print("숫자를 입력해주세요: ");
         String userInput = readLine();
 
@@ -25,7 +26,9 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        return userInput;
+        return Arrays.stream(userInput.split(""))
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
     }
 
     /**
