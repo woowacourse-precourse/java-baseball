@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -32,26 +31,30 @@ public class Application {
             System.out.println("낫싱");
         }
         if(ball != 0) {
-            System.out.print(ball+"볼");
-            System.out.print(" ");
+            System.out.print(ball+"볼 ");
         }
         if(strike != 0) {
             System.out.print(strike + "스트라이크");
         }
         System.out.println();
     }
+    static void printStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
 
+    static void printInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
     public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
         int strike = 0;
         int ball = 0;
         int nothing = 0;
         String flag;
-        Scanner sc = new Scanner(System.in);
         List<Integer> COM = randomize();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printStart();
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            printInput();
             String N = readLine();
             if (N.length() != 3) {
                 throw new IllegalArgumentException();
