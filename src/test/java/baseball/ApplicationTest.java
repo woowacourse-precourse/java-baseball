@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,6 +13,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+	@Test
+	@DisplayName("컴퓨터가 1부터 9까지의 숫자만 생성하는지")
+	void 랜덤생성숫자_1부터_9까지인지(){
+		Computer computer = new Computer();
+		List<Integer> computerNumbers = computer.getNumbers();
+
+		for (int i=0;i<computerNumbers.size();i++){
+			assertThat(computerNumbers.get(i)).isBetween(1,9);
+		}
+	}
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
