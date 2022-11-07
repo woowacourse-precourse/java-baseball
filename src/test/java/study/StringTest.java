@@ -1,7 +1,16 @@
 package study;
 
+import baseball.Computer;
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
+import static baseball.Computer.NUM_LIMIT_LENGTH;
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
@@ -47,4 +56,14 @@ public class StringTest {
                 .hasMessageContaining("String index out of range: 5");
     }
 
+    @DisplayName("Computer 클래스 - createRandomNumbers() 메서드 테스트")
+    @Test
+    void createRandomNumbersTest() {
+        Computer computer = new Computer();
+        List<Integer> list = computer.createRandomNumbers();
+        System.out.println(list);
+        assertThat(list.size()).isEqualTo(3);
+        assertThat(list.stream().allMatch(n -> n >= 1 && n <= 9)).isTrue();
+        assertThat(list.stream().distinct().allMatch(n -> list.size() == 3)).isTrue();
+    }
 }
