@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 class User {
     private enum Message {
         GREET("숫자 야구 게임을 시작합니다."),
@@ -27,5 +29,10 @@ class User {
 
     static void greet() {
         System.out.println(Message.GREET);
+    }
+
+    static String promptForNumber() {
+        System.out.print(Message.PROMPT_FOR_NUMBER);
+        return Console.readLine();
     }
 }
