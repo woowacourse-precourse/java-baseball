@@ -14,7 +14,7 @@ public class Result {
     }
 
     public void increaseStrikeCount(){
-
+        strikeCount++;
     }
 
     public String createResultMessage(){
