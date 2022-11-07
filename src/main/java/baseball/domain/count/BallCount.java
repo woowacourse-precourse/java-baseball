@@ -18,6 +18,7 @@ public class BallCount extends Count {
         return String.format("%d%s", super.count, BALL_MESSAGE);
     }
 
+    @Override
     protected void update() {
         for (int answerIdx = 0; answerIdx < answer.list().size(); ++answerIdx) {
             for (int inputIdx = 0; inputIdx < input.list().size(); ++inputIdx) {
