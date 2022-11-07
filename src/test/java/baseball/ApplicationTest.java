@@ -166,5 +166,58 @@ class ApplicationTest extends NsTest {
             Result result = computer.compareNumber(numberToCompare);
             assertThat(result.getBallCount()).isEqualTo(3);
         }
+
+        @DisplayName("결과 출력 테스트 1")
+        @Test
+        void printTest1() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "853", "183", "153", "135", "2");
+                        assertThat(output()).contains("낫싱", "2볼", "1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크","3개의 숫자를 모두 맟히셨습니다! ","게임 종료");
+                    },
+                    1, 3, 5
+            );
+        }
+
+        @DisplayName("결과 출력 테스트 2")
+        @Test
+        void printTest2() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("248", "213", "258", "581", "587", "589", "2");
+                        assertThat(output()).contains("1볼", "낫싱", "2볼", "2스트라이크", "2스트라이크", "3스트라이크", "3개의 숫자를 모두 맟히셨습니다! ", "게임 종료");
+                    },
+                    5, 8, 9
+            );
+        }
     }
+
+    @DisplayName("게임 종료 후 사용자 입력 예외 처리 테스트")
+    @Nested
+    class ChoiceTest {
+        @DisplayName("숫자 외의 입력값 예외 처리 테스트")
+        @Test
+        void case1() {
+            assertRandomNumberInRangeTest(() ->
+                            assertThatThrownBy(() ->
+                                    run("123", "asd"))
+                                    .isInstanceOf(IllegalArgumentException.class)
+                                    .hasMessageContaining("숫자만 입력해주세요."),
+                    1, 2, 3
+            );
+        }
+
+        @DisplayName("1 또는 2가 아닌 입력값 예외 처리 테스트")
+        @Test
+        void case2() {
+            assertRandomNumberInRangeTest(() ->
+                            assertThatThrownBy(() ->
+                                    run("123", "3"))
+                                    .isInstanceOf(IllegalArgumentException.class)
+                                    .hasMessageContaining("1 또는 2를 입력해주세요."),
+                    1, 2, 3
+            );
+        }
+    }
+
 }
