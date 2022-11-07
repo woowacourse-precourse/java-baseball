@@ -2,16 +2,14 @@ package baseball.helper.factory;
 
 import baseball.domain.game.GameComputer;
 import baseball.domain.number.GameNumbers;
+import baseball.helper.exception.CannotReflectionException;
 import baseball.helper.factory.stub.StubGameNumbers;
+import baseball.helper.util.ReflectionFieldUtils;
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public final class GameComputerFactory {
 
     private static final String ANSWER_FIELD_NAME = "answer";
-    private static final int FIELD_INDEX = 0;
 
     private GameComputerFactory() {
     }
@@ -20,18 +18,13 @@ public final class GameComputerFactory {
         GameComputer computer = new GameComputer();
         GameNumbers computerAnswer = new GameNumbers(computerNumberString);
 
-        List<Field> fields = Arrays.stream(computer.getClass().getDeclaredFields())
-                .filter(field -> field.getName().equals(ANSWER_FIELD_NAME))
-                .collect(Collectors.toList());
-
-        Field answer = fields.get(FIELD_INDEX);
-        answer.setAccessible(true);
+        Field answer = ReflectionFieldUtils.processReflectionField(GameComputer.class, ANSWER_FIELD_NAME);
 
         try {
             answer.set(computer, computerAnswer);
             return computer;
         } catch (Exception e) {
-            return new GameComputer();
+            throw new CannotReflectionException(e);
         }
     }
 
@@ -39,18 +32,13 @@ public final class GameComputerFactory {
         GameComputer computer = new GameComputer();
         GameNumbers computerAnswer = new StubGameNumbers(returnStrike, returnBall);
 
-        List<Field> fields = Arrays.stream(computer.getClass().getDeclaredFields())
-                .filter(field -> field.getName().equals(ANSWER_FIELD_NAME))
-                .collect(Collectors.toList());
-
-        Field answer = fields.get(FIELD_INDEX);
-        answer.setAccessible(true);
+        Field answer = ReflectionFieldUtils.processReflectionField(GameComputer.class, ANSWER_FIELD_NAME);
 
         try {
             answer.set(computer, computerAnswer);
             return computer;
         } catch (Exception e) {
-            return new GameComputer();
+            throw new CannotReflectionException(e);
         }
     }
 }

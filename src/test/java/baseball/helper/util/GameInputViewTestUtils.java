@@ -1,5 +1,6 @@
 package baseball.helper.util;
 
+import baseball.helper.exception.CannotReflectionException;
 import baseball.mvc.view.GameInputView;
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Field;
@@ -13,16 +14,15 @@ public final class GameInputViewTestUtils {
     }
 
     public static String getMessage(GameInputView view, Consumer<String> printLog, ByteArrayOutputStream out) {
+        out.reset();
+
+        Field message = ReflectionFieldUtils.processReflectionField(GameInputView.class, MESSAGE_FIELD_NAME);
+
         try {
-            out.reset();
-
-            final Field enumMessage = view.getClass().getDeclaredField(MESSAGE_FIELD_NAME);
-            enumMessage.setAccessible(true);
-
-            printLog.accept((String) enumMessage.get(view));
+            printLog.accept((String) message.get(view));
             return out.toString();
         } catch (Exception e) {
-            return "";
+            throw new CannotReflectionException(e);
         }
     }
 }
