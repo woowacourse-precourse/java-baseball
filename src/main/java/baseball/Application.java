@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+	private static List<Integer> random_number_list =new ArrayList<>();
 	public static void main(String[] args) {
-		String user_input_number = Console.readLine();
+		random_number_list=RandomNumber.createRandomNumber();
 		try{
+			String user_input_number = Console.readLine();
 			Validation.validation("user_input_number_validation",user_input_number);
-
-			List<Integer> random_number_list = RandomNumber.createRandomNumber();
 
 			CompareNumber.compareUserNumberAndRandomNumber(user_input_number,random_number_list);
 
@@ -34,4 +34,5 @@ public class Application {
 			System.out.println(ball_score+"볼 "+strike_score+"스트라이크");
 		}
 	}
+
 }
