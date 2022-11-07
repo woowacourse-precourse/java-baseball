@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Game {
@@ -92,17 +93,18 @@ public class Game {
     }
 
     private void printOutResult() {
-        String result = "";
-        if (ball == 0 && strike == 0) {
-            result = STRING_NOTHING;
-        }else if (ball == 0 && strike > 0) {
-            result = strike + STRING_STRIKE;
-        }else if (ball > 0 && strike == 0) {
-            result = ball + STRING_BALL;
-        }else if (ball > 0 && strike > 0){
-            result = ball + STRING_BALL + " " + strike + STRING_STRIKE;
+        HashMap<Boolean, String> result = new HashMap<>(){{
+            put(ball == 0 && strike == 0, STRING_NOTHING);
+            put(ball == 0 && strike > 0, strike + STRING_STRIKE);
+            put(ball > 0 && strike == 0, ball + STRING_BALL);
+            put(ball > 0 && strike > 0, ball + STRING_BALL + " " + strike + STRING_STRIKE);
+        }};
+
+        for(Boolean key: result.keySet()) {
+            if(key) {
+                System.out.println(result.get(key));
+            }
         }
-        System.out.println(result);
     }
 
     private void setDigits() {
