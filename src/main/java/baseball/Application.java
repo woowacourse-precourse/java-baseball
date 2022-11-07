@@ -35,7 +35,7 @@ public class Application {
         return answer;
 
         */
-        List<Integer> number_pool = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        List<Integer> number_pool = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9));
         List<Integer> answer = new ArrayList<>();
         int pool_size = 8;
         while(answer.size()<3){
