@@ -2,6 +2,9 @@ package baseball.game;
 
 import java.util.Arrays;
 
+/**
+ * 게임 도중에 나올 수 있는 Ball의 범위를 관리하는 enum입니다
+ */
 public enum Ball {
     ZERO(0),
     ONE(1),
@@ -14,6 +17,12 @@ public enum Ball {
         this.value = value;
     }
 
+    /**
+     * 정적 팩토리 메서드로 0~3사이에 해당하는 숫자를 받아서 해당하는 enum을 반환해줍니다
+     *
+     * @param value 0,1,2,3에 해당하는 정수
+     * @return 실제 값을 감싼 Ball의 enum객체
+     */
     public static Ball from(int value) {
         return Arrays.stream(Ball.values())
                 .filter(it -> it.value == value)

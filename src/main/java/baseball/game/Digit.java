@@ -2,6 +2,9 @@ package baseball.game;
 
 import java.util.Arrays;
 
+/**
+ * 1자리 숫자의 범위를 관리하는 enum입니다
+ */
 public enum Digit {
     ZERO(0),
     ONE(1),
@@ -19,6 +22,12 @@ public enum Digit {
         this.value = value;
     }
 
+    /**
+     * 정적 팩토리 메서드로 0~9 사이에 해당하는 숫자를 받아서 해당하는 enum을 반환해줍니다
+     *
+     * @param value 0,1,2,3,4,5,6,7,8,9에 해당하는 정수
+     * @return 실제 값을 감싼 Digit의 enum객체
+     */
     public static Digit from(int value) {
         return Arrays.stream(Digit.values())
                 .filter(it -> it.value == value)

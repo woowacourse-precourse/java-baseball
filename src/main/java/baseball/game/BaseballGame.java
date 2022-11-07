@@ -15,18 +15,31 @@ import static baseball.config.GameConstants.THREE_STRIKE;
 import static baseball.config.GameConstants.TWO_BALL;
 import static baseball.config.GameConstants.TWO_STRIKE;
 
+/**
+ * 컨트롤러에서 동작할 수 있는 게임입니다
+ */
 public final class BaseballGame implements Game {
     public static final String LINE_FEED = "\n";
     private final InputView inputView;
     private final OutputView outputView;
     private final ErrorView errorView;
 
+    /**
+     * Controller와 똑같이 view들을 받아서 생성합니다
+     *
+     * @param inputView  사용자의 입력을 받게 되는 객체입니다
+     * @param outputView 결과를 출력하게 되는 객체입니다
+     * @param errorView  에러 발생시 출력하게 될 객체입니다
+     */
     public BaseballGame(InputView inputView, OutputView outputView, ErrorView errorView) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.errorView = errorView;
     }
 
+    /**
+     * 메서드를 실행 시키면 3스트라이크가 나올 때까지 숫자 야구 게임을 진행합니다
+     */
     @Override
     public void play() {
         Score score = Score.ZERO();
