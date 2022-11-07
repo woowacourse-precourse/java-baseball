@@ -19,4 +19,8 @@ public class Controller {
 		service.ramdomNumberSetting();
 	}
 
+	public void startGame() {
+		service.playGame();
+	}
+
 }
