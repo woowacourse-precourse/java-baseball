@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computer = Util.makeRandomNumbers();
         String input;
+        System.out.println(computer);
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         outer:
@@ -33,6 +34,9 @@ public class Application {
     private static String checkComment(String comment) {
         if (comment.isEmpty()) {
             comment = "낫싱";
+        }
+        if (comment.contains("3스트라이크")) {
+            comment += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         return comment;
     }
