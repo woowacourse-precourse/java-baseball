@@ -11,11 +11,10 @@ public class GameController {
     public static void gameStart() {
         Print.printEndsWithEnter(GameProcedureConstantString.GAME_START_MESSAGE.getStringMessage());
         boolean isFinish = false;
-        do {
+        while (!isFinish) {
             List<Integer> computerRandomNonDuplicateIntegerList = Computer.createNonDuplicateIntegerList();
             GameLogic.doGameLogicUntilGameFinish(computerRandomNonDuplicateIntegerList);
             isFinish = User.isGameFinish();
-        } while (!isFinish);
-
+        }
     }
 }
