@@ -1,5 +1,7 @@
 package baseball.game;
 
+import baseball.game.number.Digit;
+import baseball.game.number.Number;
 import java.util.List;
 
 public class GameResultCalculator {
