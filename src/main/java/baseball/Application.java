@@ -37,6 +37,17 @@ public class Application {
         return false;
     }
 
+    public static boolean hasOtherNumbersOrChars(String s){
+        for(char c : s.toCharArray()){
+            if(!Character.isDigit(c)){
+                return true;
+            } else if(c == '0'){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static List<Integer> getRandomThreeNumbers() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
