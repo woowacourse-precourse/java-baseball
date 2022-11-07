@@ -23,6 +23,16 @@ public class ArrayNumber {
         return this.digits;
     }
 
+    public void setRandomNbr() {
+        Set<Integer> digitSet = new HashSet<>();
+
+        while(digitSet != null && digitSet.size() < cnt_nbr) {
+            digitSet.add(getRandomNumber());
+        }
+
+        this.digits = convertIntegerSetToIntArray(digitSet);
+    }
+
     public void inputAnswer() {
         System.out.print(str_input);
         String input = Console.readLine();
