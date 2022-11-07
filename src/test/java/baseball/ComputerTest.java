@@ -19,7 +19,6 @@ class ComputerTest {
     void 컴퓨터의_랜덤숫자_리스트의_크기는_3() {
         Computer computer = new Computer();
         List<Integer> randomNumbers = computer.getRandomNumbers();
-        System.out.println("randomNumbers = " + randomNumbers.toString());
         Assertions.assertThat(randomNumbers).hasSize(3);
     }
 

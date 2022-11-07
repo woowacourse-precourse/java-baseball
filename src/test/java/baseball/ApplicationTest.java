@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void others() {
+    void 전체_테스트() {
         ComparatorTest comparatorTest = new ComparatorTest();
         ComputerTest computerTest = new ComputerTest();
         GameExceptionTest gameExceptionTest = new GameExceptionTest();
