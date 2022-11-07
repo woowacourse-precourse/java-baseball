@@ -28,16 +28,14 @@ public class User {
         this.numbers = new ArrayList<>(List.of(0, 0, 0));
 
         System.out.println("숫자를 입력해주세요 : ");
-
         String number = Console.readLine();
 
         isLegalNumber(number);
-
         setNumbers(number);
     }
 
     private void isLegalNumber(String number) {
-        if (number.isBlank()) {
+        if (number.isBlank() || isZeroAtFirst(number) || !checkLength(number) || anyDuplicated(number)) {
             throw new IllegalArgumentException();
         }
 
@@ -46,17 +44,24 @@ public class User {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
 
-        if ((number.charAt(0) == '0') || number.length() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isZeroAtFirst(String number) {
+        return number.charAt(0) == '0';
+    }
 
+    private boolean checkLength(String number) {
+        return number.length() == NUMBER_LENGTH;
+    }
+
+    private boolean anyDuplicated(String number) {
         for (int i = 1; i < 10; i++) {
             char characterized = (char) (i + 48);
             if (countNumber(number, characterized) > 1) {
-                throw new IllegalArgumentException();
+                return true;
             }
         }
+        return false;
     }
 
     private long countNumber(String number, char target) {

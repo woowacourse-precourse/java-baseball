@@ -4,13 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.GameConst.EXIT_CODE;
-import static baseball.GameConst.THREE_STRIKE;
+import static baseball.GameConst.*;
 import static baseball.RuleConst.*;
 
 public class GameController {
-    private Computer computer;
-    private User user;
+    private final Computer computer;
+    private final User user;
 
     public GameController() {
         computer = new Computer();
@@ -23,7 +22,8 @@ public class GameController {
     }
 
     public boolean isStrike(int index) {
-        return computer.getNumbers().get(index).equals(user.getNumbers().get(index));
+        return computer.getNumbers().get(index)
+                .equals(user.getNumbers().get(index));
     }
 
     public boolean isBall(int index) {
@@ -60,10 +60,8 @@ public class GameController {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             if (isStrike(i)) {
                 strike++;
-            } else {
-                if (isBall(i)) {
-                    ball++;
-                }
+            } else if (isBall(i)) {
+                ball++;
             }
         }
 
@@ -74,6 +72,7 @@ public class GameController {
 
     public void play() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         int exit = 0;
         while (exit != EXIT_CODE) {
             ready();
