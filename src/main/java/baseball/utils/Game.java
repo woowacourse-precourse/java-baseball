@@ -72,6 +72,7 @@ public class Game {
 
     private static StringBuffer getHint(int ballCnt, int strikeCnt) {
         StringBuffer gameHint = new StringBuffer();
+
         if (ballCnt > 0) {
             gameHint.append(ballCnt);
             gameHint.append(BALL);
@@ -83,6 +84,7 @@ public class Game {
             gameHint.append(strikeCnt);
             gameHint.append(STRIKE);
         }
+
         return gameHint;
     }
 
