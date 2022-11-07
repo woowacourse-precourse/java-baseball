@@ -40,26 +40,31 @@ public class Play {
 
         System.out.println(computerNumberList);
         System.out.println(userNumberList);
+        userNumberList = Arrays.asList(1,2,3);
+        computerNumberList = Arrays.asList(1,2,3);
 
-        checkStrike(userNumberList,computerNumberList);
-        checkBall(userNumberList,computerNumberList);
+        getResult(userNumberList,computerNumberList);
 
     }
-    public String getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
+    public void getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
         int strike = checkStrike(userNumberList,computerNumberList);
         int ball = checkBall(userNumberList,computerNumberList);
-        System.out.println(strike);
-        System.out.println(ball);
+        String option = "";
         if(strike!=0 && ball==0) {
-            return strike + STRIKE_MESSAGE;
+            System.out.println(strike+STRIKE_MESSAGE);
+        }
+        if(strike==3){
+            System.out.println(WIN_MESSAGE);
+            System.out.println(OPTION_MESSAGE);
+            restart();
         }
         if(strike==0 && ball!=0){
-            return ball + BALL_MESSAGE;
+            System.out.println(ball+BALL_MESSAGE);
         }
         if(strike==0 && ball ==0){
-            return NOTHING_MESSAGE;
+            System.out.println(NOTHING_MESSAGE);
         }
-        return strike+STRIKE_MESSAGE +" "+ ball+BALL_MESSAGE;
+
     }
 
     public int checkStrike(List<Integer> userNumberList, List<Integer> computerNumberList){
@@ -82,4 +87,10 @@ public class Play {
         return ball;
     }
 
+    public void restart() {
+        String option = Console.readLine();
+        if (Integer.parseInt(option) == 1) {
+            playBaseball();
+        }
+    }
 }
