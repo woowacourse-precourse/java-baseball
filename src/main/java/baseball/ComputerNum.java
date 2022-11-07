@@ -15,4 +15,10 @@ public class ComputerNum {
 		}
 		return computerNumber;
 	}
+
+	public void overlapCheck(List<Integer> computerNumber, int randomNumber) {
+		if (!computerNumber.contains(randomNumber)) {
+			computerNumber.add(randomNumber);
+		}
+	}
 }
