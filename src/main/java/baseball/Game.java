@@ -12,6 +12,7 @@ public class Game {
     public void startGame(int choice) {
         this.computer = new Computer();
         this.player = new Player();
+
         if (choice == 0) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             gameStart();
@@ -24,20 +25,24 @@ public class Game {
         List<Integer> result = new ArrayList<>();
         result.add(0);
         result.add(0);
-        //2. 3자리 랜덤 숫자 생성
+
         computer.createRandomNumber();
         while (result.get(1) != 3) {
+
             System.out.print("숫자를 입력해주세요 : ");
-            //3. 숫자 입력
             player.receiveInput();
-            //4. 컴퓨터와 숫자 비교
+
             result = calculate(computer.RandomNumber, player.playerNumber);
             printResult(result);
         }
-        //7. 재시작(1) or 종료(2) 그 외 IllegalArgumentException
+
         String input = Console.readLine();
-        if (input.equals("1"))
+        if (input.equals("1")) {
             startGame(1);
+        } else if (input.equals("2")) ;
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 
     private List<Integer> calculate(List<Integer> computer, List<Integer> player) {
@@ -71,7 +76,7 @@ public class Game {
     private void printResult(List<Integer> result) {
         int ball = result.get(0);
         int strike = result.get(1);
-        StringBuilder stringBuilder = new StringBuilder();
+
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else if (ball == 0 && strike == 3) {
@@ -83,7 +88,6 @@ public class Game {
                 System.out.println(ball + "볼 " + strike + "스트라이크");
             } else if (ball != 0) {
                 System.out.println(ball + "볼");
-
             } else if (strike != 0) {
                 System.out.println(strike + "스트라이크");
             }
