@@ -1,13 +1,14 @@
 package baseball;
 
+import static baseball.Range.START;
+import static baseball.Range.END;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
 
-    private static final int RANGE_START = 1;
-    private static final int RANGE_END = 9;
     private static final int RESTART_NUMBER = 1;
     private List<Integer> computerNumbers;
     private int strike;
@@ -65,7 +66,7 @@ public class Computer {
     }
 
     private int getRandomNumber() {
-        return Randoms.pickNumberInRange(RANGE_START, RANGE_END);
+        return Randoms.pickNumberInRange(START.getPoint(), END.getPoint());
     }
 
     private void countStrike(List<Integer> userNumbers) {
