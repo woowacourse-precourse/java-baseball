@@ -42,7 +42,7 @@
 ## 기능
 
 - [ ] 문자열 출력 `showGameLog`
-- [ ] 컴퓨터의 숫자를 랜덤으로 선택하는 메서드 `setComputersRandomAnswer`
+- [x] 컴퓨터의 숫자를 랜덤으로 선택하는 메서드 `setComputersRandomAnswer`
     - [x] 리스트 안에 들어 있는 숫자를 제외한 숫자 중에서 랜덤으로 숫자를 리턴하는 메서드 `getRandomIntegerExcludeInList`
 - [ ] 게임에서 사용자의 입력을 받는 메서드 `getUsersAnswer`
     - [ ] 입력 받은 문자열을 각 자리수로 쪼갠 숫자 리스트로 반환하는 메서드 `stringToSeparatedIntergerList`
@@ -55,10 +55,10 @@
 
 ## 오류
 
-* 숫자가 아니고 다른 입력이 들어온 경우
-* 들어온 숫자가 3자리가 아닌 경우
-* 같은 숫자가 2개 이상 들어온 경우
-* 숫자 1,2 이외에 다른 숫자가 들어온 경우
+- [x] 숫자가 아니고 다른 입력이 들어온 경우 `isContainLetter`
+- [ ] 들어온 숫자가 3자리가 아닌 경우
+- [ ] 같은 숫자가 2개 이상 들어온 경우
+- [ ] 숫자 1,2 이외에 다른 숫자가 들어온 경우
 
 ### 고민(think about)
 
