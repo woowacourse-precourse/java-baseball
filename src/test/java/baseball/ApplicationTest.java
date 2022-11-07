@@ -1,13 +1,9 @@
 package baseball;
 
-import baseball.domain.Referee;
-import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -15,9 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-
-    private InputView inputView = new InputView();
-    private Referee referee = new Referee();
 
     @Test
     void 게임종료_후_재시작() {
@@ -28,30 +21,6 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
-    }
-
-    @Test
-    void 단일값_테스트(){
-        String input = "1";
-        mockIO(input);
-
-        int result = inputView.inputNumber();
-        assertThat(Integer.parseInt(input)).isEqualTo(result);
-    }
-
-    @Test
-    void 다중값_테스트(){
-        String input = "123";
-        mockIO(input);
-
-        List<Integer> list = inputView.inputNumbers();
-        assertThat(input.length()).isEqualTo(list.size());
-    }
-
-    @Test
-    void 랜덤값_생성_테스트(){
-        List<Integer> list = referee.makeRandomValues();
-        assertThat(list.size()).isEqualTo(3);
     }
 
     @Test
