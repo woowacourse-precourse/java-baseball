@@ -11,9 +11,10 @@ public class Computer {
     public Computer(NumberGenerator generateNumber) {
         this.numberGenerator = generateNumber;
         this.numbers = new ArrayList<>();
+        generateNumbers();
     }
 
-    public void generateNumbers() {
+    private void generateNumbers() {
         numberGenerator.generate(numbers);
     }
 
