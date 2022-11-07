@@ -1,13 +1,17 @@
 package baseball.controller;
 
+import static baseball.message.GameMessage.*;
 import static baseball.message.InputMessage.*;
 import static baseball.util.setting.BallSetting.*;
+import static baseball.util.setting.MenuSetting.*;
 
 import baseball.domain.Balls;
 import baseball.domain.Computer;
 import baseball.domain.Hint;
 import baseball.domain.User;
 import baseball.message.InputMessage;
+import baseball.util.setting.MenuSetting;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
@@ -19,6 +23,15 @@ public class GameController {
     this.computer = computer;
   }
 
+  public void run(){
+    OutputView.printMessage(START_GAME.getMessage());
+    playGame();
+    OutputView.printMessage(ASK_RESTART_GAME.getMessage());
+    while(InputView.inputMenu()== RESTART_GAME.getMenuNumber()){
+      playGame();
+    }
+  }
+
   public void playGame(){
     Balls computerBalls = computer.generateBalls();
     while(true){
@@ -27,6 +40,7 @@ public class GameController {
       Hint judgement = judge(userBalls, computerBalls);
       OutputView.printMessage(judgement.toString());
       if(checkThreeStrike(judgement)){
+        OutputView.printMessage(STRIKE_OUT.getMessage());
         break;
       }
     }
