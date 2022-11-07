@@ -6,9 +6,29 @@ import java.util.stream.Stream;
 
 public class Application {
 
-    public static void game(String str){
+    public static void game(){
+
+        int value;
+        int num2=1;
+        String str = "";
+        Random random = new Random();
+        //서로 다른 수 세자리 만들기
+        while (true) {
+            if (str.length() == 3) {
+                break;
+            }
+            //요구사항에 맞게 수정
+            value = Randoms.pickNumberInRange(1, 9);
+
+            if (!str.contains(Integer.toString(value))) {
+
+                str += value;
+
+            }
+        }
+
         int num = 0;
-        int num2=0;
+
 
         Scanner sc = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -75,30 +95,11 @@ public class Application {
     public static void main(String[] args) {
         //컴퓨터 숫자 선언
 
-        int value;
         int num2=1;
-        String str = "";
-        Random random = new Random();
-        //서로 다른 수 세자리 만들기
-        while (true) {
-            if (str.length() == 3) {
-                break;
-            }
-            //요구사항에 맞게 수정
-            value = Randoms.pickNumberInRange(1, 9);
-
-            if (!str.contains(Integer.toString(value))) {
-
-                str += value;
-
-            }
-        }
-
 
         Scanner sc = new Scanner(System.in);
         while(num2==1){
-            game(str);
-
+            game();
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
