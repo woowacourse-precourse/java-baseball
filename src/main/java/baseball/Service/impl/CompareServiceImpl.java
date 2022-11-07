@@ -4,7 +4,8 @@ package baseball.Service.impl;
 import baseball.Model.BallCountItem;
 import baseball.Model.NumberItem;
 import baseball.Service.interfaces.CompareService;
-import baseball.View.PrintInformationView;
+
+import static baseball.View.PrintInformationView.printResultMessage;
 
 import static baseball.Model.StatusItem.THREE_STRIKE_CORRECT;
 import static baseball.Model.StatusItem.RE_COMPARE;
@@ -13,8 +14,6 @@ import java.util.List;
 
 
 public class CompareServiceImpl implements CompareService {
-
-    private final PrintInformationView printInformationView = new PrintInformationView();
 
     @Override
     public int compare(NumberItem computerNumberItem, NumberItem userNumberItem) {
@@ -34,7 +33,7 @@ public class CompareServiceImpl implements CompareService {
             }
         }
 
-        printInformationView.printResultMessage(ballCountItem.getStrike(), ballCountItem.getBall());
+        printResultMessage(ballCountItem.getStrike(), ballCountItem.getBall());
         if(ballCountItem.getStrike() == 3){
             return THREE_STRIKE_CORRECT;
         }

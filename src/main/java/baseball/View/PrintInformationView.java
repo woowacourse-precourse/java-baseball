@@ -15,7 +15,7 @@ public class PrintInformationView {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public void printResultMessage(int strike, int ball){
+    public static void printResultMessage(int strike, int ball){
         if (strike==0 && ball==0)
             System.out.println("낫싱");
         else if (strike == 0 && ball != 0)

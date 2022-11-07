@@ -9,14 +9,11 @@ import baseball.Service.impl.NumberServiceImpl;
 import baseball.Service.interfaces.CompareService;
 import baseball.Service.interfaces.NumberService;
 
-import baseball.View.PrintInformationView;
-
 import static baseball.Model.StatusItem.GAME_START;
 import static baseball.Model.StatusItem.GAME_TERMINATE;
 import static baseball.Model.StatusItem.GAME_RESTART;
 import static baseball.Model.StatusItem.FIRST_COMPARE;
 import static baseball.Model.StatusItem.THREE_STRIKE_CORRECT;
-import static baseball.Model.StatusItem.RE_COMPARE;
 
 import static baseball.View.PrintInformationView.printRequestNumber;
 import static baseball.View.PrintInformationView.printCorrectMessage;
@@ -75,6 +72,7 @@ public class BaseballController {
     public int gameRestart() throws IllegalArgumentException{
         int returnValue;
         String restart = Console.readLine();
+        //todo update
         if (restart.equals("1")) {
             returnValue = GAME_RESTART;
         }
