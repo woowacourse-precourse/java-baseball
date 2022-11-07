@@ -18,7 +18,7 @@ public class Umpire {
 
     private boolean isNothing(List<Integer> computerNumber, List<Integer> playerNumber) {
         return ((int) playerNumber.stream()
-                .filter(digit -> computerNumber.stream().anyMatch(digit::equals))
+                .filter(computerNumber::contains)
                 .count()) == hint.getMin();
     }
 
