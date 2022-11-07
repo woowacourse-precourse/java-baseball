@@ -31,6 +31,7 @@ public class Response {
         printBallIsNotZero(ball);
         System.out.print(" ");
         printStrikeIsNotZero(strike);
+        System.out.println();
     }
 
     private void printIsAnswer() {

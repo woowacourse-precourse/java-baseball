@@ -16,24 +16,6 @@ class ApplicationTest extends NsTest {
     Application application = new Application();
 
     @Test
-    @DisplayName("getStrike 테스트")
-    void getStrikeTest() {
-        List<Integer> answer = List.of(2, 2, 2);
-        List<Integer> userInput = List.of(3, 2, 2);
-
-        assertThat(application.getStrike(answer, userInput)).isEqualTo(2);
-    }
-
-    @Test
-    @DisplayName("getBall 메서드 테스트")
-    void getBallTest() {
-        List<Integer> answer = List.of(2, 2, 2);
-        List<Integer> userInput = List.of(3, 2, 2);
-
-        assertThat(application.getBall(answer, userInput, 2)).isEqualTo(0);
-    }
-
-    @Test
     @DisplayName("getValidUserInput 테스트")
     void getValidUserInputTest() {
 

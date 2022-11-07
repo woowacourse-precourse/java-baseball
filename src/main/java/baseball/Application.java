@@ -47,8 +47,9 @@ public class Application {
         List<Integer> answer = createNewAnswer();
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
-            Scanner scanner = new Scanner(System.in);
-            List<Integer> userInput = getValidUserInput(scanner.nextLine());
+            List<Integer> userInput = getValidUserInput(Console.readLine());
+            System.out.println(answer);
+            System.out.println(userInput);
             int strike = getStrike(answer, userInput);
             int ball = getBall(answer, userInput, strike);
             Response response = new Response(strike, ball);
@@ -60,11 +61,11 @@ public class Application {
     }
 
     public int getBall(List<Integer> answer, List<Integer> userInput, int strike) {
-        Set<Integer> matchedIndexSet = new HashSet<>();
+        List<Integer> matchedList = new ArrayList<>();
         for (int i = 0; i < answer.size(); i++) {
-            addIndexIfMatchedAnswer(matchedIndexSet, answer.get(i), userInput);
+            addIndexIfMatchedAnswer(matchedList, answer.get(i), userInput);
         }
-        int ballCount = ifMinusChangeZero(matchedIndexSet.size() - strike);
+        int ballCount = ifMinusChangeZero(matchedList.size() - strike);
         return ballCount;
     }
 
@@ -75,13 +76,12 @@ public class Application {
         return integer;
     }
 
-    private Set<Integer> addIndexIfMatchedAnswer(Set<Integer> matchedIndexSet, int answer, List<Integer> userInput) {
-        for (int i = 0; i < userInput.size(); i++) {
-            if (userInput.get(i) == answer) {
-                matchedIndexSet.add(i);
-            }
+    //bug
+    private List<Integer> addIndexIfMatchedAnswer(List<Integer> matchedIndexList, int answer, List<Integer> userInput) {
+        if (userInput.contains(answer)) {
+            matchedIndexList.add(answer);
         }
-        return matchedIndexSet;
+        return matchedIndexList;
     }
 
     public int getStrike(List<Integer> answer, List<Integer> userInput) {
