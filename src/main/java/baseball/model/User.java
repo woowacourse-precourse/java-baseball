@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.GameState;
+import baseball.GameConstants;
 import baseball.util.InputValueValidation;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public class User {
     public boolean isReplayGame() {
         int isReplayValue = Integer.parseInt(Console.readLine().strip());
         validateReplayValue(isReplayValue);
-        return isReplayValue == GameState.START.ordinal();
+        return isReplayValue == GameConstants.GAME_START;
     }
 
     public void validateNumberValue(String numbers) {

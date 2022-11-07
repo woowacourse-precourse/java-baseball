@@ -1,14 +1,13 @@
 package baseball.util;
 
 import baseball.GameConstants;
-import baseball.GameState;
 import java.util.Arrays;
 import java.util.List;
 
 public class InputValueValidation {
 
     public boolean isValidReplay(int replayValue) {
-        return replayValue == GameState.START.ordinal() || replayValue == GameState.END.ordinal();
+        return replayValue == GameConstants.GAME_START || replayValue == GameConstants.GAME_END;
     }
 
     public boolean isValidNumber(String numbersValue) {
