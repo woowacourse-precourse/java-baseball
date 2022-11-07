@@ -53,4 +53,8 @@ public class BaseBall {
         return input;
     }
 
+    private List<String> getList(String s) {
+        return Arrays.asList(s.split(""));
+    }
+
 }
