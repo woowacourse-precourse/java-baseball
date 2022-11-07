@@ -9,12 +9,12 @@ public class Game {
     private GameStatus gameStatus;
     private Target target;
 
-    Game() {
+    public Game() {
         this.gameStatus = GameStatus.InProgress;
         this.target = new Target();
     }
 
-    void repeatUntilEnd() {
+    public void repeatUntilEnd() {
         OutputView.informStartGame();
         setResultGameInProgress();
         while (checkIsGameStatusInProgress()) {
