@@ -16,7 +16,7 @@ public class Application {
 
     private static void putUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        String number = Console.readLine();
+        String numbers = Console.readLine();
     }
 
     public static List<Integer> createComputerNumberList() {
