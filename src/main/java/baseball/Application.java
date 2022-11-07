@@ -84,6 +84,7 @@ public class Application {
                     again = true;
                     computer = new ArrayList<>();
                 } else if(integer_gameagain == 2){
+                    System.out.println("게임 종료");
                     break;
                 } else {
                     throw new IllegalArgumentException();
