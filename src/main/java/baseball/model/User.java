@@ -1,18 +1,15 @@
-package baseball;
+package baseball.model;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static baseball.model.Constants.INPUT_LENGTH;
-import static baseball.model.Utils.isNotDuplicate;
-import static baseball.model.Utils.isOneToNine;
+import static baseball.model.Utils.*;
 
 
-public class UserNumGenerator {
+public class User {
     public final List<Integer> NUMS;
 
-    public UserNumGenerator(String input) {
+    public User(String input) {
         NUMS = generate(input);
     }
 
@@ -20,9 +17,7 @@ public class UserNumGenerator {
         if (!isValid(input)) {
             throw new IllegalArgumentException();
         }
-        return Arrays.asList(input.split(""))
-                .stream().map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
+        return stringToIntList(input);
     }
 
     public boolean isValid(String input) {

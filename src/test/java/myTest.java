@@ -1,13 +1,11 @@
 import baseball.Application;
-import baseball.ComputerNumGenerator;
-import baseball.Game;
-import baseball.UserNumGenerator;
+import baseball.model.Game;
+import baseball.model.User;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Scanner;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.*;
@@ -20,8 +18,8 @@ public class myTest extends NsTest {
 
     @Test
     void 컴퓨터_숫자가_정상적으로_생성되는지() {
-        List<Integer> nums = new ComputerNumGenerator().NUMS;
-        String num = nums.toString().replaceAll("[^1-9]","");
+        Game game = new Game();
+        String num = game.computerNum.toString().replaceAll("[^1-9]","");
         boolean result = false;
         if (num.matches("[0-9]{3}") ) {
             result = true;
@@ -31,25 +29,25 @@ public class myTest extends NsTest {
 
     @Test
     void 유저_숫자_검증1() {
-        assertThatThrownBy(() -> new UserNumGenerator("12324"))
+        assertThatThrownBy(() -> new User("12324"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 유저_숫자_검증2() {
-        assertThatThrownBy(() -> new UserNumGenerator("012"))
+        assertThatThrownBy(() -> new User("012"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 유저_숫자_검증3() {
-        assertThatThrownBy(() -> new UserNumGenerator("111"))
+        assertThatThrownBy(() -> new User("111"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 유저_숫자가_정상일_때() {
-        List<Integer> nums = new UserNumGenerator("153").NUMS;
+        List<Integer> nums = new User("153").NUMS;
         List<Integer> result = List.of(1, 5, 3);
         assertThat(result.toString()).isEqualTo(nums.toString());
     }

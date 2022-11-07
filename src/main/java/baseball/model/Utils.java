@@ -1,10 +1,10 @@
-package baseball;
+package baseball.model;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.Constants.INPUT_LENGTH;
+import static baseball.model.Constants.INPUT_LENGTH;
 
 public class Utils {
     public static boolean isOneToNine(String input) {
