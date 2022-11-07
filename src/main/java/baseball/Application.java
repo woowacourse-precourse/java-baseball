@@ -20,5 +20,13 @@ public class Application {
             computerNumber.add(Integer.toString(Randoms.pickNumberInRange(1, 9)));
         }
 
+        //사용자에게 숫자 입력받기
+        String readNumber = Console.readLine();
+
+        String[] numberToArray = readNumber.split("");
+        List<String> userNumber = new ArrayList<String>(Arrays.asList(numberToArray));
+
+
+
     }
 }
