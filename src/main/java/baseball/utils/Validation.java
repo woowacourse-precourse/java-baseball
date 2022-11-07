@@ -16,4 +16,9 @@ public class Validation {
         }
     }
 
+    public static void IsRestartOrEnd(String input) {
+        if (input.equals("1") == false && input.equals("2") == false) {
+            throw new IllegalArgumentException("게임이 끝난뒤에는 1 또는 2의 숫자를 입력해야만 합니다.");
+        }
+    }
 }
