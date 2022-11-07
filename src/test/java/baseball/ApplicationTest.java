@@ -43,7 +43,7 @@ class ApplicationTest extends NsTest {
             //given
             List<Integer> numberList = computer.getRandomNumber();
             //then
-            assertThat(3).isEqualTo((numberList.size()));
+            assertThat(numberList.size()).isEqualTo(3);
         }
 
         @Test
@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
             //when
             Set<Integer> numberSet = new HashSet<>(numberList);
             //then
-            assertThat(3).isEqualTo((numberSet.size()));
+            assertThat(numberSet.size()).isEqualTo(3);
         }
 
         @Test
@@ -63,7 +63,7 @@ class ApplicationTest extends NsTest {
             //when
             int firstNumber = computer.getFirstRandomNumber();
             //then
-            assertThat(numberList.get(0)).isEqualTo((firstNumber));
+            assertThat(firstNumber).isEqualTo(numberList.get(0));
         }
 
         @Test
@@ -73,7 +73,7 @@ class ApplicationTest extends NsTest {
             //when
             int secondNumber = computer.getSecondRandomNumber();
             //then
-            assertThat(numberList.get(1)).isEqualTo((secondNumber));
+            assertThat(secondNumber).isEqualTo(numberList.get(1));
         }
 
         @Test
@@ -83,7 +83,7 @@ class ApplicationTest extends NsTest {
             //when
             int thirdNumber = computer.getThirdRandomNumber();
             //then
-            assertThat(numberList.get(2)).isEqualTo((thirdNumber));
+            assertThat(thirdNumber).isEqualTo(numberList.get(2));
         }
     }
 
