@@ -38,8 +38,8 @@ public class OutputView {
 		System.out.println(ViewConstants.NOTHING_MESSAGE.get());
 	}
 
-	public void printHavingCorrectNumberMessage(int lengthOfNumber) {
-		System.out.printf(ViewConstants.HAVING_CORRECT_NUMBER_MESSAGE.get(), lengthOfNumber);
+	public void printFinishingGameMessage(int lengthOfNumber) {
+		System.out.printf(ViewConstants.FINISHING_GAME_MESSAGE.get(), lengthOfNumber);
 		System.out.println();
 	}
 

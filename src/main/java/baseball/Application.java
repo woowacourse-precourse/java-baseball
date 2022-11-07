@@ -9,10 +9,9 @@ public class Application {
 
 	private static void execute() {
 		GameController gameController = new GameController();
-
 		gameController.start();
 		do {
 			gameController.control();
-		} while (gameController.askRestart());
+		} while (gameController.hasRestartRequest());
 	}
 }

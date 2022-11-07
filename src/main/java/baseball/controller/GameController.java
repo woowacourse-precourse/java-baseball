@@ -19,26 +19,37 @@ public class GameController {
 		outputView.printGameStartMessage();
 	}
 
+	public void control() {
+		init();
+		play();
+		finishGame();
+	}
+
+	public boolean hasRestartRequest() {
+		String request = inputView.getRestartRequest();
+		Validator.validateRestartOrNotInput(request);
+		return request.equals(GameConstants.RESTART_GAME);
+	}
+
 	private void init() {
 		final List<Integer> answer = RandomNumberGenerator.generate();
 		numberComparator = new NumberComparator(answer);
 	}
 
-	public void control() {
-		init();
+	private void play() {
 		do {
-			String number = inputView.getNumberFromUser();
-			Validator.validateNumberInput(number);
-			List<Integer> digits = Converter.convertStringToIntegerList(number);
-			numberComparator.compare(digits);
+			numberComparator.compare(getDigits());
 			outputView.printResult(numberComparator.getBallsCount(), numberComparator.getStrikesCount());
 		} while (!numberComparator.hasCorrectNumber());
-		outputView.printHavingCorrectNumberMessage(GameConstants.LENGTH_OF_NUMBER);
 	}
 
-	public boolean askRestart() {
-		String request = inputView.getRestartRequest();
-		Validator.validateRestartOrNotInput(request);
-		return request.equals(GameConstants.RESTART_GAME);
+	private List<Integer> getDigits() {
+		String number = inputView.getNumberFromUser();
+		Validator.validateNumberInput(number);
+		return Converter.convertStringToIntegerList(number);
+	}
+
+	private void finishGame() {
+		outputView.printFinishingGameMessage(GameConstants.LENGTH_OF_NUMBER);
 	}
 }
