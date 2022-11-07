@@ -74,7 +74,7 @@ public class Game {
         String input = sc.nextLine();
 
         for(char c : input.toCharArray()) {
-            if (48 <= c && c <= 57)
+            if (48 < c && c < 57)
                 return "";
         }
 
@@ -82,7 +82,9 @@ public class Game {
     }
     private List<Integer> getUserNumber(String user) {
         // Exception: not 3 Number
-        if (user.length() != 3) return null;
+        if (user.length() != 3) {
+            throw new IllegalArgumentException("3자리 숫자 입력");
+        }
 
         List<Integer> userNumbers = new ArrayList<>();
         for(char c : user.toCharArray()) {
