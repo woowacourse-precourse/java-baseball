@@ -4,34 +4,34 @@ public class ScoreConfirmation {
 
     private static final int NUMBER_COUNT_NOTHING = 0;
 
-    public void confirm(int ball, int strike) {
-        confirmBallStrikeNothingCase(ball, strike);
-        confirmBallCase(ball, strike);
-        confirmStrikeCase(ball, strike);
-        confirmBallStrikeCase(ball, strike);
+    public static void confirm(NumberCheck numberCheck) {
+        confirmBallStrikeNothingCase(numberCheck);
+        confirmBallCase(numberCheck);
+        confirmStrikeCase(numberCheck);
+        confirmBallStrikeCase(numberCheck);
     }
 
-    private void confirmBallStrikeNothingCase(int ball, int strike) {
-        if (ball == NUMBER_COUNT_NOTHING && strike == NUMBER_COUNT_NOTHING) {
+    private static void confirmBallStrikeNothingCase(NumberCheck numberCheck) {
+        if (numberCheck.getBall() == NUMBER_COUNT_NOTHING && numberCheck.getStrike() == NUMBER_COUNT_NOTHING) {
             Output.printNothingMessage();
         }
     }
 
-    private void confirmBallCase(int ball, int strike) {
-        if (ball > NUMBER_COUNT_NOTHING && strike == NUMBER_COUNT_NOTHING) {
-            Output.printBallMessage(ball);
+    private static void confirmBallCase(NumberCheck numberCheck) {
+        if (numberCheck.getBall() > NUMBER_COUNT_NOTHING && numberCheck.getStrike() == NUMBER_COUNT_NOTHING) {
+            Output.printBallMessage(numberCheck.getBall());
         }
     }
 
-    private void confirmStrikeCase(int ball, int strike) {
-        if (ball == NUMBER_COUNT_NOTHING && strike > NUMBER_COUNT_NOTHING) {
-            Output.printStrikeMessage(strike);
+    private static void confirmStrikeCase(NumberCheck numberCheck) {
+        if (numberCheck.getBall() == NUMBER_COUNT_NOTHING && numberCheck.getStrike() > NUMBER_COUNT_NOTHING) {
+            Output.printStrikeMessage(numberCheck.getStrike());
         }
     }
 
-    private void confirmBallStrikeCase(int ball, int strike) {
-        if (ball > NUMBER_COUNT_NOTHING && strike > NUMBER_COUNT_NOTHING) {
-            Output.printBallStrikeMessage(ball, strike);
+    private static void confirmBallStrikeCase(NumberCheck numberCheck) {
+        if (numberCheck.getBall() > NUMBER_COUNT_NOTHING && numberCheck.getStrike() > NUMBER_COUNT_NOTHING) {
+            Output.printBallStrikeMessage(numberCheck.getBall(), numberCheck.getStrike());
         }
     }
 
