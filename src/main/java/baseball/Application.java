@@ -26,9 +26,13 @@ public class Application {
 	    	// 랜덤 수 발생
     		computer = makeComputer();
     		
+    		// 게임 실행 메서드
+    		game();
+    		
 	    	while(start == 1) {
 		    	// 사용자 입력
-		    	System.out.print(inputMessage);
+	    		inputNumber();
+	    		System.out.print(inputMessage);
 		    	inputNumber = Console.readLine();
 		    	
 		    	// 사용자 입력 예외 발생 검사
@@ -61,11 +65,13 @@ public class Application {
     	
     	
     }
+    
     // 게임 시작 출력 메서드
     public static void gameStart() {
     	System.out.println(startMessage);
     }
-    // 컴퓨터 수 만들기
+    
+    // 컴퓨터 수 생성 메서드
     public static List<Integer> makeComputer() {
     	List<Integer> list = new ArrayList<>();
     	while (list.size() < 3) {
@@ -75,6 +81,24 @@ public class Application {
     	    }
     	}
     	return list;
+    }
+    
+    //게임 실행 메서드
+    public static int game() {
+    	
+    	// 사용자 입력 메서드
+    	while(start==1) {
+    		inputNumber();
+    	}
+    	
+    	
+    }
+    
+    // 사용자 입력 메서드
+    public static String inputNumber() {
+    	System.out.println(inputMessage);
+    	String s = Console.readLine();
+    	return s;
     }
     // 정수 입력 확인
     public static boolean checkType(String inputNumber) {
