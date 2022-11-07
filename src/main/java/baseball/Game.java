@@ -28,4 +28,16 @@ public class Game {
         }
         return strikenum;
     }
+
+
+    public int toBall(List<Integer> toList, List<Integer> computer){
+
+        int Ballnum = 0;
+        for(int i = 0; i < toList.size(); i++){
+            if(computer.contains(toList.get(i))){
+                Ballnum++;
+            }
+        }
+        return Ballnum;
+    }
 }
