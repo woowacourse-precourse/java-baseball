@@ -22,4 +22,18 @@ public class process {
     private int ball = 0;
     private boolean exit = false;
     public process() {}
+
+    private String getResStr() {
+        if(strike == 0 && ball == 0) {
+            return str_nothing;
+        }
+        StringBuilder sb = new StringBuilder();
+        if(ball > 0) {
+            sb.append(ball).append(str_ball);
+        }
+        if(strike > 0) {
+            sb.append(strike).append(str_strike);
+        }
+        return sb.toString();
+    }
 }
