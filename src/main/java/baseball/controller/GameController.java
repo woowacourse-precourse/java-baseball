@@ -19,6 +19,11 @@ public class GameController {
         this.decisionMaker = new DecisionMaker();
     }
 
+    public GameController(int ballCount){
+        this.game = new Game(ballCount);
+        this.decisionMaker = new DecisionMaker();
+    }
+
     public void playRecurringGame() {
         Decision decision = Decision.PLAY;
         game.printStartingMessage();
@@ -27,6 +32,7 @@ public class GameController {
             decision = getUserDecision();
         }
     }
+
 
     public int getTimesOfPlayGame() {
         return timesOfPlayGame;
