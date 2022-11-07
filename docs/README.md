@@ -36,16 +36,15 @@
 
 
 + get result String
-  + public static java/baseball/Application.getResultStr(int StrikeCnt, int BallCnt) => String
+  + public static java/baseball/Application.getResultStr(int strikeCnt, int ballCnt) => String
   + Strike 개수와 Ball 개수를 합쳐서 결과 문장 생성
 
-
 + check strike
-  + public static java/baseball/Application.getStrikeCnt(List\<Integer> A, List\<Integer> B) => int
-  + A와 B간의 스트라이크 개수 반환
+  + public static java/baseball/Application.getStrikeCnt(List\<Integer> x, List\<Integer> y) => int
+  + x와 y간의 스트라이크 개수 반환
   
 
 + check ball
-  + public static java/baseball/Application.getBallCnt(List\<Integer> A, List\<Integer> B) => int
-  + A와 B간의 볼 개수 반환
+  + public static java/baseball/Application.getBallCnt(List\<Integer> x, List\<Integer> y) => int
+  + x와 y간의 볼 개수 반환
   
