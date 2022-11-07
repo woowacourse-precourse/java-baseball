@@ -27,6 +27,10 @@ public class BaseballGameService {
         }
     }
 
+    public boolean replay() {
+        return BaseballGameInputView.selectReplay();
+    }
+
     public BallCount getCounts() {
         BaseballNumber player = BaseballGameInputView.getPlayerNumber();
         int strike = 0;
