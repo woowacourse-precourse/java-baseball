@@ -1,5 +1,32 @@
 # 미션 - 숫자 야구
 
+## 구현 기능 목록
+
+- 컴퓨터 랜덤 값 생성
+    - 1-9 사이의 값
+    - 3자리 수
+    - 서로 다른 숫자
+- 사용자에게 값 받기
+- 사용자 입력 예외 처리 -> `IllegalArgumentException`
+    - 3글자를 벗어나는 경우
+    - 숫자 이외의 값을 포함하는 경우
+    - 1-9 외의 숫자) `< 1`
+    - 같은 수가 포함된 경우
+- nothing
+- ball
+- strike
+- 결과
+    - 오답 : 결과 반환 후 사용자 입력 반복
+        - 볼 > 스트라이크 순
+    - 정답 : 종료 문구
+- 종료/재시작 입력 받기
+- 종료/재시작 예외 처리 -> `IllegalArgumentException`
+    - 1, 2가 아닌 다른 값이 들어왔을 때
+- 1 : 게임 재시작
+- 2 : 프로그램 종료
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -42,7 +69,8 @@ BUILD SUCCESSFUL in 0s
         - 123을 제시한 경우 : 1스트라이크
         - 456을 제시한 경우 : 1볼 1스트라이크
         - 789를 제시한 경우 : 낫싱
-- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한 숫자에 대한
+- 위 숫자 야구 게임에서 상대방의 역할을 컴퓨터가 한다. 컴퓨터는 1에서 9까지 서로 다른 임의의 수 3개를 선택한다. 게임 플레이어는 컴퓨터가 생각하고 있는 서로 다른 3개의 숫자를 입력하고, 컴퓨터는 입력한
+  숫자에 대한
   결과를 출력한다.
 - 이 같은 과정을 반복해 컴퓨터가 선택한 3개의 숫자를 모두 맞히면 게임이 종료된다.
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
@@ -135,13 +163,13 @@ BUILD SUCCESSFUL in 0s
 #### 사용 예시
 
 ```java
-List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+List<Integer> computer=new ArrayList<>();
+        while(computer.size()< 3){
+        int randomNumber=Randoms.pickNumberInRange(1,9);
+        if(!computer.contains(randomNumber)){
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
