@@ -27,7 +27,7 @@ public class PrintMessage {
     public static void resultMessage() {
         System.out.println(END_MESSAGE);
     }
-    public static void gameContinueMessage(){
+    public static void askContinueMessage(){
         System.out.println(CONTINUE_GAME_ASK);
     }
 }

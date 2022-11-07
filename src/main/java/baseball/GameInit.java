@@ -29,7 +29,7 @@ public class GameInit {
     public boolean isGameEnd(){
         if(strikeCount == MAX_COUNT){
             PrintMessage.resultMessage();
-            PrintMessage.gameContinueMessage();
+            PrintMessage.askContinueMessage();
             if(ValidCheck.isContinueGame(Console.readLine())){
                 computerAnswer = CreateRandomNumber.getComputerAnswer();
                 return true;
