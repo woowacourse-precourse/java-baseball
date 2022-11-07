@@ -35,6 +35,8 @@ public class Application {
     }
 
     static boolean isValidate(String userNumber) {
+        if (userNumber.length() != 3)
+            return false;
         Set<Integer> eachNumber = new HashSet<>();
         for (int digit = 0; digit < userNumber.length(); digit++) {
             if (eachNumber.contains(userNumber.charAt(digit) - '0'))
