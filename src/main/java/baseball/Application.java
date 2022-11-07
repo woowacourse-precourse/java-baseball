@@ -38,7 +38,6 @@ public class Application {
 
             if (!answerDigits.contains(randomNumber)) {
                 answerDigits.add(randomNumber);
-                System.out.print(randomNumber);
             }
         }
 
