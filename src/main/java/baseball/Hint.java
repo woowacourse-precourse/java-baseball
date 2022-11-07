@@ -22,7 +22,6 @@ public class Hint {
 
     @Override
     public String toString() {
-        // TODO 개선
         List<String> hintList = new ArrayList<>();
         if (this.ball > 0) {
             hintList.add(this.ball + "볼");
