@@ -220,7 +220,7 @@ class Exception extends Baseball {
 
     protected static boolean isOverlapNumber() {
         HashSet<String> checkOverlapUserNumber = new HashSet<>();
-        for (int i = 0; i < userNumber.length(); i++) {
+        for (int i = 0; i < NUMBER_PITCH; i++) {
             checkOverlapUserNumber.add(userNumber.substring(i, i + 1));
         }
         return checkOverlapUserNumber.size() == computerNumber.size();
