@@ -1,6 +1,7 @@
 package baseball.domain.ball;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Balls {
 
@@ -18,23 +19,29 @@ public class Balls {
         return balls;
     }
 
-    public Integer getStrikeCount(Balls answerBall) {
+    public List<Integer> getBallNumbers() {
+        return balls.stream()
+                .map(Ball::getNumber)
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    public Integer getStrikeCount(Balls playerBall) {
         return (int) balls.stream()
-                .filter(answerBall::isStrike)
+                .filter(playerBall::isStrike)
                 .count();
     }
 
-    public Integer getBallCount(Balls answerBall) {
+    public Integer getBallCount(Balls playerBall) {
         return (int) balls.stream()
-                .filter(answerBall::isBall)
+                .filter(playerBall::isBall)
                 .count();
     }
 
-    private boolean isStrike(Ball ball) {
-        return balls.get(ball.getPosition()).isStrike(ball);
+    private boolean isStrike(Ball playerBall) {
+        return balls.get(playerBall.getPosition()).isStrike(playerBall);
     }
 
-    private boolean isBall(Ball ball) {
-        return balls.get(ball.getPosition()).isBall(ball);
+    private boolean isBall(Ball playerBall) {
+        return getBallNumbers().contains(playerBall.getNumber()) && !isStrike(playerBall);
     }
 }

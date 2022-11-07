@@ -29,8 +29,4 @@ public class Ball {
     public boolean isStrike(Ball ball) {
         return this.getNumber() == ball.getNumber() && this.getPosition() == ball.getPosition();
     }
-
-    public boolean isBall(Ball ball) {
-        return this.getNumber() == ball.getNumber() && this.getPosition() != ball.getPosition();
-    }
 }
