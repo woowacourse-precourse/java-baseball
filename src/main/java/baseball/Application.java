@@ -16,7 +16,6 @@ public class Application {
         ramdomNumber.ramdomComputer(computer);
         String number = "";
         while (true) {
-            System.out.println(computer);
             System.out.print("숫자를 입력해 주세요 : ");
             number = Console.readLine();
             List<Integer> user = new ArrayList<>();
