@@ -41,8 +41,8 @@ public class User {
         }
     }
 
-    private boolean isSameDigit(char c, char c1) {
-        return c == c1;
+    private boolean isSameDigit(char rowCharacter, char columnCharacter) {
+        return rowCharacter == columnCharacter;
     }
 
     private void convertToInt(char[] input, List<Integer> digits) {
