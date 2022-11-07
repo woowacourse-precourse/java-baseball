@@ -17,7 +17,7 @@ class CountTest {
 
         count.countBall(computer, user);
 
-        assertThat(count.ball).isEqualTo(2);
+        assertThat(count.getBall()).isEqualTo(2);
     }
 
     @Test
@@ -29,8 +29,8 @@ class CountTest {
         count.countBall(computer, user);
         count.countStrike(computer, user);
 
-        assertThat(count.ball).isEqualTo(1);
-        assertThat(count.strike).isEqualTo(1);
+        assertThat(count.getBall()).isEqualTo(1);
+        assertThat(count.getStrike()).isEqualTo(1);
     }
 
     @Test

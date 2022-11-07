@@ -79,8 +79,8 @@ public class Application {
 }
 
 class Count {
-    int ball;
-    int strike;
+    private int ball;
+    private int strike;
 
     Count() {
         ball = 0;
