@@ -35,7 +35,7 @@ public class Controller {
     public void play(List<Integer> computerNumber){
         Map<String, Integer>resultMap;
         do {
-            System.out.println(computerNumber);
+//            System.out.println(computerNumber);
             List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
             resultMap = checkAnswer(computerNumber, playerNumber);
             View.printHint(createHint(resultMap));
