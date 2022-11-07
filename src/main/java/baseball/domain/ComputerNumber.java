@@ -14,7 +14,7 @@ public class ComputerNumber {
     public ComputerNumber(){
         hundredNumber = Randoms.pickNumberInRange(1, 9);
         tenNumber = Randoms.pickNumberInRange(1, 9);
-        number = Randoms.pickNumberInRange(1, 9)
+        number = Randoms.pickNumberInRange(1, 9);
     }
 
 
