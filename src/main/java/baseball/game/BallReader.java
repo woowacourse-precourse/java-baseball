@@ -39,7 +39,8 @@ public class BallReader {
 
     private Map<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
         Map<ResultOfBall, Integer> result = new HashMap<>();
-        for (ResultOfBall data : ballData) {
+        List<ResultOfBall> onlyStrikeAndBall = removeMissBall(ballData);
+        for (ResultOfBall data : onlyStrikeAndBall) {
             result.computeIfPresent(data, (key, value) -> value + 1);
             result.computeIfAbsent(data, key -> 1);
         }
@@ -58,6 +59,13 @@ public class BallReader {
             strikeAndBallResult.add(result);
         }
         return strikeAndBallResult;
+    }
+
+    private List<ResultOfBall> removeMissBall(List<ResultOfBall> ballData) {
+        List<ResultOfBall> result = new ArrayList<>(ballData);
+        while (result.remove(ResultOfBall.MISS)) {
+        }
+        return result;
     }
 
     private ResultOfBall judgeStrikeOrBall(int userIndex, int computerIndex) {
