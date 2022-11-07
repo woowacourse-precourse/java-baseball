@@ -29,7 +29,7 @@ public class GameManager {
             printAnswer(question);
             isGameEnd(question);
 
-            if(gameState == GameState.END) {
+            if (gameState == GameState.END) {
                 restartGame();
             }
         }
