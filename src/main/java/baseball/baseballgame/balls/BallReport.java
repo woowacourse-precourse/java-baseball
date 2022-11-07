@@ -6,21 +6,22 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class BallReport {
+    public static final int DEFAULT_VALUE = 0;
+    public static final int ADD_COUNT = 1;
     private final EnumMap<JudgementType, Integer> ballReport;
 
     public BallReport() {
         ballReport = JudgementType.creatEnumMap();
-
     }
 
     public void add(JudgementType judgementType) {
-        ballReport.putIfAbsent(judgementType, 0);
-        ballReport.put(judgementType, ballReport.get(judgementType) + 1);
+        ballReport.putIfAbsent(judgementType, DEFAULT_VALUE);
+        ballReport.put(judgementType, ballReport.get(judgementType) + ADD_COUNT);
     }
 
     public List<Integer> reportToList() {
         return ballReport.keySet().stream()
-                .map(judgementType -> ballReport.getOrDefault(judgementType, 0))
+                .map(judgementType -> ballReport.getOrDefault(judgementType, DEFAULT_VALUE))
                 .collect(Collectors.toList());
     }
 
