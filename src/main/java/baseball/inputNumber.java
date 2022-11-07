@@ -5,26 +5,26 @@ import java.util.List;
 import java.util.Scanner;
 
 public class inputNumber {
-    public static List<Integer> makeInputNumber() {
+    public static List<Integer> makeInputNumber() throws IllegalArgumentException {
         List<Integer> inputNumber = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         Scanner in = new Scanner(System.in);
 
-//        try {
-//            for(int i=0; i<3; i++) {
-//                inputNumber.add(in.nextInt());
-//            }
-//
-//        } catch (IllegalArgumentException e) {
-//            throw new IllegalArgumentException();
-//        }
+        int num = in.nextInt();
 
-        for(int i=0; i<3; i++) {
-            inputNumber.add(in.nextInt());
+        String s = Integer.toString(num);
+
+        if(s.length()>3) {
+            throw new IllegalArgumentException("잘못 입력하였습니다.");
         }
 
-        System.out.println(inputNumber);
+        for(int i=0; i<3; i++) {
+            char character = s.charAt(i);
+            String string = String.valueOf(character);
+            Integer integer = Integer.valueOf(string);
+            inputNumber.add(integer);
+        }
+//        System.out.println(inputNumber);
         return inputNumber;
-
     }
 }
