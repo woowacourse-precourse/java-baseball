@@ -26,6 +26,7 @@ public class BaseballController {
         while (!baseBallService.isWinGame()) {
             String userNumber = inputView.inputNumber();
             baseBallService.userInputSave(userNumber);
+            baseBallService.saveResult();
         }
     }
 

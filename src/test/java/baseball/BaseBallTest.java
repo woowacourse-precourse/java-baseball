@@ -19,7 +19,7 @@ public class BaseBallTest {
         baseBallService.userInputSave("123");
 
         baseBallService.setComputerNumberList(List.of(1,4,2));
-        baseBallService.checkResult();
+        baseBallService.saveResult();
 
         assertThat(baseBallService.getStrike()).isEqualTo(1);
         assertThat(baseBallService.getBall()).isEqualTo(1);
