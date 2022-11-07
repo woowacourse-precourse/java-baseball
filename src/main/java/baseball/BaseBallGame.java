@@ -1,18 +1,39 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class BaseBallGame implements AutoCloseable {
 
     State currentState;
+    Trigger currentTrigger;
+    static Map<List<Integer>, State> rules;
+
+    static {
+        rules = new HashMap<>();
+        rules.put(List.of(State.ON_GAME.ordinal(),
+                Trigger.INCORRECT_ANSWER.ordinal()),
+                State.ON_GAME);
+        rules.put(List.of(State.ON_GAME.ordinal(),
+                 Trigger.INVALID_USER_INPUT.ordinal()),
+                State.EXIT_GAME);
+        rules.put(List.of(State.ON_GAME.ordinal(),
+                        Trigger.CORRECT_ANSWER.ordinal()),
+                State.FINISH_GAME);
+        rules.put(List.of(State.FINISH_GAME.ordinal(),
+                Trigger.EXIT.ordinal()),
+                State.EXIT_GAME);
+        rules.put(List.of(State.FINISH_GAME.ordinal(),
+                        Trigger.RE_GAME.ordinal()),
+                State.START_GAME);
+    }
     protected List<Integer> answerNumber;
 
     public BaseBallGame(int hashcode) {
-        generateNumber(hashcode);
+        currentState = State.START_GAME;
+        currentTrigger = null;
     }
 
     @Override
@@ -20,8 +41,28 @@ public class BaseBallGame implements AutoCloseable {
 
     }
 
-    public void run() {
+    public void run()  {
+        while(true){
+            List<Integer> input;
+            switch(currentState){
+                case START_GAME:
+                    System.out.println("숫자 야구 게임을 시작합니다.");
+                    LocalDateTime now = LocalDateTime.now();
+                    generateNumber(now.hashCode());
+                    currentState = State.ON_GAME;
+                    break;
+                case FINISH_GAME:
+                case ON_GAME:
+                    input = getUserInput();
+                    getResultOfAnswer(input);
+                    break;
+                case EXIT_GAME:
+                default :
+                    return;
 
+            }
+            currentState = rules.get(List.of(currentState.ordinal(),currentTrigger));
+        }
     }
 
     private void generateNumber(int randomSeed) {
@@ -39,7 +80,7 @@ public class BaseBallGame implements AutoCloseable {
         }
     }
 
-    private List<Integer> getUserINput() {
+    private List<Integer> getUserInput() {
         return Collections.emptyList();
     }
 
@@ -59,6 +100,7 @@ public class BaseBallGame implements AutoCloseable {
         ,ON_GAME
         ,FINISH_GAME
         ,EXIT_GAME;
+
     }
 
     private enum Trigger {
