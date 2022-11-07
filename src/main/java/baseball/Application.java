@@ -1,4 +1,5 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    private static List<Integer> createRandomThreeNums(){
+    private static List<Integer> createRandomThreeNums() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -20,7 +21,7 @@ public class Application {
         return computer;
     }
 
-    public static Boolean isNothing(List<Integer> userInput, List<Integer> computer){
+    public static Boolean isNothing(List<Integer> userInput, List<Integer> computer) {
         boolean isNothing = true;
         for (Integer integer : userInput) {
             if (computer.contains(integer)) {
@@ -31,23 +32,35 @@ public class Application {
         return isNothing;
     }
 
-    public static int numberOfStrikes(List<Integer> userInput, List<Integer> computer){
+    public static int numberOfStrikes(List<Integer> userInput, List<Integer> computer) {
         int strike_cnt = 0;
-        for(int i=0; i<userInput.size(); i++){
-            if(userInput.get(i).equals(computer.get(i))) {
+        for (int i = 0; i < userInput.size(); i++) {
+            if (userInput.get(i).equals(computer.get(i))) {
                 strike_cnt++;
             }
         }
         return strike_cnt;
     }
 
-    public static int numberOfBalls(List<Integer> userInput, List<Integer> computer){
+    public static int numberOfBalls(List<Integer> userInput, List<Integer> computer) {
         int ball_cnt = 0;
-        for(int i=0; i<userInput.size(); i++){
-            if(!userInput.get(i).equals(computer.get(i)) && computer.contains(userInput.get(i)))   {
+        for (int i = 0; i < userInput.size(); i++) {
+            if (!userInput.get(i).equals(computer.get(i)) && computer.contains(userInput.get(i))) {
                 ball_cnt++;
             }
         }
         return ball_cnt;
+    }
+
+    public static void printResult(int strike_cnt, int ball_cnt) {
+        List<String> result = new ArrayList<>();
+        if (ball_cnt > 0) {
+            result.add(ball_cnt + "볼");
+        }
+
+        if (strike_cnt > 0) {
+            result.add(strike_cnt + "스트라이크");
+        }
+        System.out.println(String.join(" ", result));
     }
 }

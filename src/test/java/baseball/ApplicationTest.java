@@ -1,8 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +18,15 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
+    @BeforeEach
+    public void setUpStreams() { System.setOut(new PrintStream(output));}
+    @AfterEach
+    public void restoreStreams(){
+        System.setOut(System.out);
+        output.reset();
+    }
     @Test
     void 낫싱(){
         List<Integer> userInput = Arrays.asList(1,2,3);
@@ -45,6 +58,17 @@ class ApplicationTest extends NsTest {
         assertThat(ball).isEqualTo(result);
     }
 
+    @Test
+    void 숫자야구_시도_결과_출력(){
+
+        int strike = 2;
+        int ball = 0;
+
+        String result = "2스트라이크\n";
+        printResult(strike,ball);
+
+        assertThat(result).isEqualTo(output.toString());
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
