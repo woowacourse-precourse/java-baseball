@@ -76,6 +76,12 @@ public class GameTest extends NsTest {
         assertThatThrownBy(() -> game.isUserNumberValid(testNumber)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("상태 출력 테스트")
+    @Test
+    void printGameStatusTest() {
+        game.printGameStatus(1, 1);
+        assertThat(output()).isEqualTo("1볼 1스트라이크");
+    }
     }
 
     @Override
