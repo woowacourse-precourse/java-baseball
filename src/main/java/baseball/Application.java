@@ -60,7 +60,7 @@ public class Application {
             }
         }
 
-        if (strNumber.length() > 3 ||checkList.size() < 3) {
+        if (strNumber.length() != 3 || checkList.size() < 3) {
             throw new IllegalArgumentException();
         }
     }
