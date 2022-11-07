@@ -1,7 +1,5 @@
 package baseball.hint;
 
-import baseball.referee.JudgeType;
-
 public enum HintType {
     STRIKE("스트라이크"),
     BALL("볼"),

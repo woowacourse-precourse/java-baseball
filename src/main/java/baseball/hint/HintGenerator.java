@@ -23,6 +23,7 @@ public class HintGenerator {
                     }
                     return HintType.NOTHING;
                 }).collect(Collectors.toUnmodifiableList());
+
         return new Hint(hints);
     }
 
