@@ -10,6 +10,15 @@ public class Game {
     private static final String RESTART = "1";
     private static final String EXIT = "2";
 
+    public void restart() {
+        while (true) {
+            play();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartState = checkInputValidity(Console.readLine());
+            if (restartState.equals(EXIT)) break;
+        }
+    }
+
     private String checkInputValidity(String restartState) {
         if (!restartState.equals(RESTART) && !restartState.equals(EXIT)) {
             throw new IllegalArgumentException("1이나 2가 아닌 숫자가 입력됐습니다.");
