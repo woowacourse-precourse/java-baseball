@@ -84,17 +84,25 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String input= Console.readLine();
         char[] inputChars = input.toCharArray();
-        List<Character> inputList=new ArrayList<>();
 
         if (inputChars.length!=3) {
             System.out.println("숫자가 세 자리가 아닙니다");
             throw new IllegalArgumentException();
         }
 
+        List<Character> inputList=new ArrayList<>();
         HashSet<Character> isRepeated = new HashSet<>();
         for(char c : inputChars){
             isRepeated.add(c);
             inputList.add(c);
+        }
+
+        for(char isInt: inputList) {
+            int changed = isInt - '0';
+            if((changed>9) ||(changed<0)) {
+                System.out.println("입력 값이 숫자가 아닙니다");
+                throw new IllegalArgumentException();
+            }
         }
 
         if (isRepeated.size() < 3) {
