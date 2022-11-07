@@ -1,10 +1,8 @@
 package baseball;
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
@@ -12,20 +10,16 @@ public class Application {
         /*do while문 사용*/
         do{
 
-            int judgeNum = JudgeNum();
+            int judgeNum = JudgeInputNum();
             if(judgeNum == 2)
                 break;
         }
         while(true);
 
-
-        /* 스트라이크,볼,낫싱 판단 메소드 구현*/
-
-
     }
 
     /* 재시작, 종료 판별 메소드 구현*/
-    private static int JudgeNum(){
+    private static int JudgeInputNum(){
         while(true){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             int inputNum = Integer.parseInt(readLine());
@@ -65,8 +59,15 @@ public class Application {
     }
 
     /* 사용자 입력 메소드 구현*/
-    private static List<Integer> inputNum(){
+    private static int inputNum(){
         String str = readLine();
-        return null;
+        int num = handleException(str);
+        return num;
     }
+
+    /* 스트라이크,볼,낫싱 판단 메소드 구현*/
+//    private static String BaseBallJudge(List<Integer> ,int num){
+//        String
+//    }
+
 }
