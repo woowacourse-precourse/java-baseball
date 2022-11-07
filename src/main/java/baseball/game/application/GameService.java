@@ -2,6 +2,7 @@ package baseball.game.application;
 
 import baseball.game.domain.Game;
 import baseball.game.domain.repository.GameRepository;
+import baseball.game.support.MessageStore;
 import baseball.game.support.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -12,25 +13,25 @@ public class GameService {
     private final int CONTINUE=1;
     private final int CONTINUE_INPUT_SIZE=1;
     private final GameRepository gameRepository;
-    private final MessageService messageService;
+    private final MessageStore messageStore;
     private final Parser parser;
     private GameService() {
         gameRepository = GameRepository.getInstance();
-        messageService = MessageService.getInstance();
+        messageStore = MessageStore.getInstance();
         parser=new Parser();
     }
     public static GameService getInstance() {
         return instance;
     }
     public void run(){
-        messageService.gameStartMessage();
+        messageStore.gameStartMessage();
     }
     public void play() {
         Game game=startGameSet();
         while (!Objects.equals(game.getStrikeCount(), gameRepository.getSize())) {
             List<Integer> clientInputData=inputData();
             countResult(clientInputData,game.getGameNumber());
-            messageService.resultMessage(game.getStrikeCount(),game.getBallCount());
+            messageStore.resultMessage(game.getStrikeCount(),game.getBallCount());
         }
         endGame();
     }
@@ -39,7 +40,7 @@ public class GameService {
         return gameRepository.getGame();
     }
     private void endGame(){
-        messageService.gameEndMessage();
+        messageStore.gameEndMessage();
         checkContinue(inputContinue());
     }
     private void countResult(List<Integer> inputData, List<Integer> randomNumber){
@@ -61,12 +62,12 @@ public class GameService {
         }
     }
     public List<Integer> inputData(){
-        messageService.inputMessage();
+        messageStore.inputMessage();
         gameRepository.initCount();
         return parser.parseClientInput(Console.readLine(),gameRepository.getSize());
     }
     public List<Integer> inputContinue(){
-        messageService.continueMessage();
+        messageStore.continueMessage();
         return parser.parseClientInput(Console.readLine(),CONTINUE_INPUT_SIZE);
     }
 }

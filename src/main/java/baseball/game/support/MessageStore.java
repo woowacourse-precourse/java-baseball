@@ -1,9 +1,9 @@
-package baseball.game.application;
+package baseball.game.support;
 
-public class MessageService {
-    private static final MessageService instance=new MessageService();
-    private MessageService(){}
-    public static MessageService getInstance(){
+public class MessageStore {
+    private static final MessageStore instance=new MessageStore();
+    private MessageStore(){}
+    public static MessageStore getInstance(){
         return instance;
     }
     public void gameStartMessage(){
