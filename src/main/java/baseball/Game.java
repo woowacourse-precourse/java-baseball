@@ -2,21 +2,16 @@ package baseball;
 
 import java.util.List;
 
+import static baseball.Constants.*;
 import static baseball.Functions.*;
 import static baseball.UserInput.*;
 
 public class Game {
-    public final static int BALL = 0;
-    public final static int STRIKE = 1;
-    public final static int Max_size = 3;
-    public final static String CONTINUE = "1";
-    public final static String END = "2";
-
     public static void start() {
-        begin_message();
+        System.out.println(BEGIN_MESSAGE);
         do {
             play();
-            end_message();
+            System.out.println(END_MESSAGE);
         } while (askContinue());
     }
 
@@ -37,23 +32,11 @@ public class Game {
     }
 
     private static boolean askContinue() {
-        cont_message();
+        System.out.println(CONT_MESSAGE);
         String input = continueInput();
         if (input.equals(CONTINUE)) {
             return true;
         }
         return false;
-    }
-
-    private static void begin_message() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-    }
-
-    private static void end_message() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
-    private static void cont_message() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }

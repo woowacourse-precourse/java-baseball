@@ -6,18 +6,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.Constants.*;
 import static baseball.Functions.stringToIntegerList;
-import static baseball.Game.Max_size;
-import static baseball.Game.CONTINUE;
-import static baseball.Game.END;
-
 public class UserInput {
     public static String numberInput() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_NUMBER);
         String input = Console.readLine();
         input = input.trim();
         if (!isValidInput(input))
-            throw new IllegalArgumentException("잘못된 입력입니다. 프로그램이 종료됩니다.");
+            throw new IllegalArgumentException(INPUT_EXCEPTION);
         return input;
     }
 
@@ -25,7 +22,7 @@ public class UserInput {
         String input = Console.readLine();
         input = input.trim();
         if (!isValidContInput(input))
-            throw new IllegalArgumentException("잘못된 입력입니다. 프로그램이 종료됩니다.");
+            throw new IllegalArgumentException(INPUT_EXCEPTION);
         return input;
     }
 

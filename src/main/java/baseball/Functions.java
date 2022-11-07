@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static baseball.Game.Max_size;
-import static baseball.Game.STRIKE;
-import static baseball.Game.BALL;
+import static baseball.Constants.*;
 
 public class Functions {
     public static List<Integer> createTargetNums() {
@@ -19,7 +17,6 @@ public class Functions {
                 targetNums.add(randomNumber);
             }
         }
-
         return targetNums;
     }
 
@@ -36,7 +33,7 @@ public class Functions {
         int strikes = count_strikes(targetNums, userNums);
         balls -= strikes;
 
-        List<Integer> b_s_list = Arrays.asList(balls,strikes);
+        List<Integer> b_s_list = Arrays.asList(balls, strikes);
         return b_s_list;
     }
 
