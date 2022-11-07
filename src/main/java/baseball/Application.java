@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 import static baseball.validator.NumberValidator.validateRange;
 import static baseball.validator.NumbersValidator.*;
@@ -20,6 +21,23 @@ public class Application {
         System.out.println(GAME_START_MESSAGE);
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> playerNumbers = getPlayerRandomNumbers();
+    }
+
+    static String baseBallGame(List<Integer> computerNumbers, List<Integer> playerNumbers) {
+        int strikeScore = getStrikeCount(computerNumbers, playerNumbers);
+        int ballScore = getBallCount(computerNumbers, playerNumbers);
+
+        StringJoiner result = new StringJoiner(" ");
+        if (ballScore != 0) {
+            result.add(String.format("%d볼", ballScore));
+        }
+        if (strikeScore != 0) {
+            result.add(String.format("%d스트라이크", strikeScore));
+        }
+        if (ballScore == 0 && strikeScore == 0) {
+            result.add("낫싱");
+        }
+        return result.toString();
     }
 
     static int getStrikeCount(List<Integer> computerNumbers, List<Integer> playerNumbers) {
