@@ -71,4 +71,15 @@ public class ComputerTest {
         assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(1, 4, 5)))).isFalse(); // 1스트라이크
         assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(1, 2, 3)))).isTrue(); // 3스트라이크
     }
+
+    @Test
+    void 재시작여부() {
+        Computer computer = new Computer();
+        assertThat(computer.retryGame("1")).isTrue();
+        assertThat(computer.retryGame("2")).isFalse();
+        assertThatThrownBy(() -> computer.retryGame("3"))
+                .isInstanceOf(IllegalArgumentException.class); // 1,2 외의 숫자
+        assertThatThrownBy(() -> computer.retryGame("abc"))
+                .isInstanceOf(IllegalArgumentException.class); // 문자
+    }
 }

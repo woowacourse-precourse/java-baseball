@@ -84,4 +84,10 @@ public class Computer {
             return false;
         }
     }
+
+    public boolean retryGame(String input) {
+        if(input.equals("1")) return true;
+        else if(input.equals("2")) return false;
+        else throw new IllegalArgumentException();
+    }
 }
