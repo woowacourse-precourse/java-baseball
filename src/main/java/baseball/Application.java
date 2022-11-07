@@ -49,6 +49,26 @@ public class Application {
 
 
     }
+    static int ballCheck(List<Integer> computerNumber,List<Integer>userNumber)
+    {
+        int ballCnt = 0;
+        for(Iterator<Integer> i = userNumber.iterator(); i.hasNext();){
+            if(computerNumber.contains(i.next())){
+                ballCnt++;
+            }
+        }
+        return ballCnt;
+    }
+    static int strikeCheck(List<Integer> computerNumber,List<Integer>userNumber)
+    {
+        int strikeCnt = 0;
+        for(int i =0;i < userNumber.size();i++){
+            if(computerNumber.get(i) == userNumber.get(i)){
+                strikeCnt++;
+            }
+        }
+        return strikeCnt;
+    }
 
 
 
