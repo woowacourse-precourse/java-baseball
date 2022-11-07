@@ -27,5 +27,18 @@ public class Application {
         int input = sc.nextInt();
         System.out.println(input);
 
+        int dv = 100;
+
+        List<Integer> input_list = new ArrayList<>();
+        for (int i=0;i<3;i++) {
+            input_list.add(input/dv);
+            input = input%dv;
+            dv = dv/10;
+
+        }
+
+        System.out.println(input_list);
+
+
     }
 }
