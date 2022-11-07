@@ -1,12 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import baseball.Game;
 
 public class GameCondition {
     String condition;
     final String CHOOSE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    final String END_MESSAGE = "게임 종료";
 
-    public GameCondition(){
+    public GameCondition() {
         System.out.println(CHOOSE_MESSAGE);
         condition = Console.readLine();
         bringCondition();
@@ -19,13 +21,12 @@ public class GameCondition {
             exit();
     }
 
-    void restart(){
+    void restart() {
         Game restart = new Game();
         restart.start();
     }
 
-    void exit(){
-        Game end = new Game();
-        end.end();
+    void exit() {
+        System.out.println(END_MESSAGE);
     }
 }

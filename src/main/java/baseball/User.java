@@ -4,33 +4,35 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
+import baseball.Comparing;
+
 public class User {
     private String userInput;
     private List<Integer> computerNum;
     final String RECEIVE_MESSAGE = "숫자를 입력해주세요 : ";
 
-    public User(List<Integer> computerNum, List<Integer> userNum){
+    public User(List<Integer> computerNum, List<Integer> userNum) {
         userNum.clear();
         this.computerNum = computerNum;
         receiveUserInput(userNum);
     }
 
-    void receiveUserInput(List<Integer> userNum){
+    void receiveUserInput(List<Integer> userNum) {
         printReceiveMessage();
         userInput = Console.readLine();
         checkUserInput(userNum);
     }
 
-    void checkUserInput(List<Integer> userNum){
+    void checkUserInput(List<Integer> userNum) {
         checkInputLength();
         checkBeforeAdd(userNum);
         addUserNum(userNum);
         Comparing comparing = new Comparing(computerNum, userNum);
     }
 
-    void checkInputLength(){
+    void checkInputLength() {
         if (userInput.length() != 3)
-            throw new IllegalArgumentException( );
+            throw new IllegalArgumentException();
     }
 
     void checkBeforeAdd(List<Integer> userNum) {
@@ -41,24 +43,24 @@ public class User {
         }
     }
 
-    void checkInputRange(int userChar){
+    void checkInputRange(int userChar) {
         if (userChar <= 0 | userChar > 9)
             throw new IllegalArgumentException();
     }
 
-    void checkDuplicate(List<Integer> userNum, int userChar){
+    void checkDuplicate(List<Integer> userNum, int userChar) {
         if (userNum.contains(userChar))
             throw new IllegalArgumentException();
     }
 
-    void addUserNum(List<Integer> userNum){
+    void addUserNum(List<Integer> userNum) {
         for (int i = 0; i < userInput.length(); i++) {
             int userChar = userInput.charAt(i) - '0';
             userNum.add(userChar);
         }
     }
 
-    void printReceiveMessage(){
+    void printReceiveMessage() {
         System.out.print(RECEIVE_MESSAGE);
     }
 }

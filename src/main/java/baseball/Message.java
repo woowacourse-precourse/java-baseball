@@ -2,6 +2,9 @@ package baseball;
 
 import java.util.List;
 
+import baseball.User;
+import baseball.Game;
+
 public class Message {
     final String ALL_STRIKE_MESSAGE = "3스트라이크";
     final String WINNING_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -10,54 +13,52 @@ public class Message {
     final String BALL = "볼";
     private List<Integer> computerNum;
 
-
-    public Message(){
+    public Message() {
         printWin();
     }
 
-    public Message(List<Integer> computerNum, List<Integer> userNum){
+    public Message(List<Integer> computerNum, List<Integer> userNum) {
         this.computerNum = computerNum;
         printNothing(userNum);
     }
 
-    public Message(int strike, int ball, List<Integer> computerNum, List<Integer> userNum){
+    public Message(int strike, int ball, List<Integer> computerNum, List<Integer> userNum) {
         this.computerNum = computerNum;
-        if(ball == 0)
+        if (ball == 0)
             printStrike(strike, userNum);
-        else if(strike == 0)
+        else if (strike == 0)
             printBall(ball, userNum);
         else
             printBallStrike(strike, ball, userNum);
     }
 
-    void printNothing(List<Integer> userNum){
+    void printNothing(List<Integer> userNum) {
         System.out.println(NOTHING_MESSAGE);
         User user = new User(computerNum, userNum);
     }
 
-    void printWin(){
+    void printWin() {
         System.out.println(ALL_STRIKE_MESSAGE);
         System.out.println(WINNING_MESSAGE);
         chooseCondition();
     }
 
-    void printStrike(int strike, List<Integer> userNum){
+    void printStrike(int strike, List<Integer> userNum) {
         System.out.println(strike + STRIKE);
         User user = new User(computerNum, userNum);
     }
 
-    void printBall(int ball, List<Integer> userNum){
+    void printBall(int ball, List<Integer> userNum) {
         System.out.println(ball + BALL);
         User user = new User(computerNum, userNum);
     }
 
-    void printBallStrike(int strike, int ball, List<Integer> userNum){
+    void printBallStrike(int strike, int ball, List<Integer> userNum) {
         System.out.println(ball + BALL + " " + strike + STRIKE);
         User user = new User(computerNum, userNum);
     }
 
-    void chooseCondition(){
-        Game game = new Game();
-        game.chooseGameConditions();
+    void chooseCondition() {
+        GameCondition gameCondition = new GameCondition();
     }
 }
