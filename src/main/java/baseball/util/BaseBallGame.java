@@ -70,7 +70,17 @@ public class BaseBallGame {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
         }
+        String status = "";
+        if (ballStrikeStatus.get(BALL) > 0) {
+            status += ballStrikeStatus.get(BALL) + "볼";
+        }
 
-        System.out.println(ballStrikeStatus.get(BALL) + "볼 " + ballStrikeStatus.get(STRIKE) + "스트라이크");
+        if (ballStrikeStatus.get(STRIKE) > 0) {
+            if (!status.isEmpty()) {
+                status += " ";
+            }
+            status += ballStrikeStatus.get(STRIKE) + "스트라이크";
+        }
+        System.out.println(status);
     }
 }
