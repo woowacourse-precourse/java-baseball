@@ -148,6 +148,7 @@ public class Application {
         String stringBuilderUserNumber = "";
         boolean checkedAnswer = false;
         stringBuilderUserNumber = inputAvailableUserNumberService();
+        List<Integer> userList = stringToListCreate(stringBuilderUserNumber);
     }
 
     public static void main(String[] args) {
