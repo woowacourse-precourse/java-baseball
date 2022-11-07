@@ -22,8 +22,7 @@ public class InputUtil {
     private static void checkUserInputValidate(String userInput) {
         if (!isMaxLength(userInput)
                 || !isDigit(userInput)
-                || !isDuplicate(userInput)
-                || !isInRange(userInput)) {
+                || !isDuplicate(userInput)) {
             throw new IllegalArgumentException();
         }
 
@@ -31,15 +30,6 @@ public class InputUtil {
 
     private static boolean isMaxLength(String userInput) {
         return (userInput.length() == MAX_USER_NUMBER_INPUT);
-    }
-
-    private static boolean isInRange(String userInput) {
-        for (int i = 0; i < userInput.length(); i++) {
-            if (userInput.charAt(i) == '0') {
-                return false;
-            }
-        }
-        return true;
     }
 
     private static boolean isDuplicate(String userInput) {
