@@ -73,18 +73,25 @@ public class Application {
         }
         return Integer.parseInt(continueornot);
     }
+
+    private static boolean inputAndMatchNumber(HashMap computer) {
+        String user = inputUserNumber();
+        int[] result = matchNumber(computer, user);
+        printResult(result);
+        if (result[0] == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
     private static Integer playGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         HashMap computer = chooseComputerNumber();
-        while(true) {
-            String user = inputUserNumber();
-            int[] result = matchNumber(computer, user);
-            printResult(result);
-            if (result[0] == 3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
-        }
+        boolean res;
+        do{
+            res = inputAndMatchNumber(computer);
+        }while(!res);
+
         return selectContinueOrNot();
     }
 
