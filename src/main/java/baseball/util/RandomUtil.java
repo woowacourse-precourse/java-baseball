@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.status.NumberStatus.*;
+import static baseball.status.NumberStatus.MAX_NUMBER;
+import static baseball.status.NumberStatus.ANSWER_MAX_NUMBER;
+import static baseball.status.NumberStatus.ANSWER_MIN_NUMBER;
 
 public class RandomUtil {
 

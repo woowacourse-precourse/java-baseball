@@ -1,6 +1,11 @@
 package baseball.view;
 
-import static baseball.status.GameStatus.*;
+import static baseball.status.GameStatus.END_GAME;
+import static baseball.status.GameStatus.START_GAME_MESSAGE;
+import static baseball.status.GameStatus.RESTART_OR_STOP_GAME;
+import static baseball.status.GameStatus.INPUT_USER_NUMBER;
+import static baseball.status.GameStatus.COMPLETE_GAME;
+
 
 public class View {
 
@@ -8,7 +13,7 @@ public class View {
         System.out.println(RESTART_OR_STOP_GAME.getText());
     }
     public static void printStartGame() {
-        System.out.println(START_GAME.getText());
+        System.out.println(START_GAME_MESSAGE.getText());
     }
     public static void printFinishGame() {
         System.out.println(END_GAME.getText());

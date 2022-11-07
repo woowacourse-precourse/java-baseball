@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static baseball.status.HintStatus.*;
-import static baseball.status.NumberStatus.*;
+import static baseball.status.HintStatus.BALL;
+import static baseball.status.HintStatus.STRIKE;
+import static baseball.status.NumberStatus.MAX_NUMBER;
+import static baseball.status.NumberStatus.MIN_NUMBER;
 
 public class GameStartService {
     public static void saveUserNumber() {

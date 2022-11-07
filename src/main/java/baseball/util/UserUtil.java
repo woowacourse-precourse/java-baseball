@@ -2,10 +2,14 @@ package baseball.util;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-import static baseball.status.ControlNumberStatus.*;
-import static baseball.status.NumberStatus.*;
+import static baseball.status.ControlNumberStatus.START_NUMBER;
+import static baseball.status.ControlNumberStatus.END_NUMBER;
+import static baseball.status.ControlNumberStatus.DONT_CONTAIN_THIS_NUMBER;
+import static baseball.status.NumberStatus.MAX_NUMBER;
 
 public class UserUtil {
     public static String getUserNumberString() {
@@ -16,16 +20,16 @@ public class UserUtil {
 
     private static void checkUserNumber(String userNumberString) {
         if (checkNumberLength(userNumberString)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력하신 수는 세자리가 아닙니다.");
         }
         if (checkZeroInNumber(userNumberString)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력하신 수에 0이 포함됩니다.");
         }
         if (checkOnlyNumber(userNumberString)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력하신 수가 자연수로 이루어져있지 않습니다.");
         }
         if (checkOverlapNumber(userNumberString)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력하신 수에 중복된 수가 존재함니다.");
         }
 
     }
