@@ -54,7 +54,6 @@ public class BaseballGame {
         isExit = false;
         computer.setRandomNumber();
         computerValue = computer.getDigits();
-        System.out.println("computer = " + computerValue);
     }
 
     private void compareNumbers() {
