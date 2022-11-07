@@ -62,6 +62,12 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.checkUserNumber("A123")).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void checkReplayNumberLengthTest() {
+
+        assertThat(true).isEqualTo(Application.checkUserNumberLength("1"));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
