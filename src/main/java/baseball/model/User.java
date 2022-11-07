@@ -21,9 +21,27 @@ public class User {
         }
     }
 
-
-
     public List<Integer> getUserNumberList() {
         return userNumberList;
     }
+
+    // User validator 메서드들
+    /**
+     * @param userNumber
+     * @return 중복된 숫자가 있으면 true, 없으면 false return
+     */
+    public boolean checkDuplicateNumber(String userNumber) {
+        int[] checkArray = new int[11];
+        for (int i = 0; i < userNumber.length(); i++) {
+            int num = Integer.parseInt(String.valueOf(userNumber.charAt(i)));
+            checkArray[num]++;
+        }
+        for (int i = 0; i < checkArray.length; i++) {
+            if (checkArray[i] > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
