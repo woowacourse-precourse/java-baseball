@@ -1,7 +1,5 @@
 package baseball.Message;
 
-import static baseball.Constants.*;
-
 public class OutputMessage {
     public static final String GAME_START_MSG = "숫자 야구 게임을 시작합니다.";
     public static final String NUMBER_INPUT_MSG = "숫자를 입력해 주세요 : ";
