@@ -56,7 +56,7 @@ public class ScoreResultViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         scoreResultView.printScore();
-        assertThat(out.toString()).isEqualTo("3볼 ");
+        assertThat(out.toString()).isEqualTo("3볼 \n");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class ScoreResultViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         scoreResultView.printScore();
-        assertThat(out.toString()).isEqualTo("2스트라이크");
+        assertThat(out.toString()).isEqualTo("2스트라이크\n");
     }
 
     @Test
@@ -76,6 +76,6 @@ public class ScoreResultViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         scoreResultView.printScore();
-        assertThat(out.toString()).isEqualTo("2볼 1스트라이크");
+        assertThat(out.toString()).isEqualTo("2볼 1스트라이크\n");
     }
 }
