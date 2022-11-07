@@ -91,4 +91,36 @@ class UserInputExceptionTest {
         }
     }
 
+    @Nested
+    @DisplayName("유저의 입력이 허용된 인력인지 판발")
+    class IsIllegalChoice {
+        @Test
+        @DisplayName("허용되지 않는 입력일 때")
+        void illegalChoice() throws Exception {
+            //Given
+            UserInputException exception = new UserInputException();
+            String choice = "3";
+
+            //When
+            boolean choiceResult = exception.isIllegalChoice(choice);
+
+            //Then
+            assertThat(choiceResult).isTrue();
+        }
+
+        @Test
+        @DisplayName("허용된 입력일 때")
+        void legalChoice() throws Exception {
+            //Given
+            UserInputException exception = new UserInputException();
+            String choice = "2";
+
+            //When
+            boolean choiceResult = exception.isIllegalChoice(choice);
+
+            //Then
+            assertThat(choiceResult).isFalse();
+        }
+    }
+
 }
