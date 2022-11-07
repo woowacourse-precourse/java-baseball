@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.repository.Repository;
 import baseball.service.Service;
 import baseball.view.View;
 import baseball.exception.Exception;
@@ -11,15 +12,14 @@ public class Controller {
     Service service = new Service();
     View view = new View();
     Exception ex = new Exception();
+    Repository repository = new Repository();
     String input;
     int number;
     int strike;
     int ball;
-    int score;
 
     public void start() {
         view.startMention();
-        score = service.generateScore();
         while (true) {
             view.printInput();
             input = Console.readLine();
@@ -34,8 +34,8 @@ public class Controller {
         if (!ex.checkInputSame(input)) throw new IllegalArgumentException();
 
         number = Integer.parseInt(input);
-        strike = service.findStrike(score, number);
-        ball = service.findBall(score, number);
+        strike = service.findStrike(repository.getScore(), number);
+        ball = service.findBall(repository.getScore(), number);
 
         if (Objects.equals(ball, 0) && Objects.equals(strike, 0)) {
             view.incorrect();
@@ -56,7 +56,7 @@ public class Controller {
         if (ex.regameException(input)) throw new IllegalArgumentException();
 
         if (Objects.equals("1", input)) {
-            score = service.generateScore();
+            repository = new Repository();
         } else if (Objects.equals("2", input)) {
             return true;
         }
