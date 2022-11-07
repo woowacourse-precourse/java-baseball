@@ -76,7 +76,7 @@
    - [ ]  각 경우에 따른 오류 메시지 전달 (IllegalArgumentException 발생 후 종료)
    - [x]  세 자리인지 확인
    - [x]  숫자인지 확인
-   - [ ]  서로 다른 숫자인지 확인
+   - [x]  서로 다른 숫자인지 확인
 
 
 4. RandomUtility
