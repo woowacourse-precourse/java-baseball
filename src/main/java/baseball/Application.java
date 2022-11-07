@@ -32,6 +32,7 @@ public class Application {
 
     static void playSmallGame() {
         generateNumber();
+        inputNumber();
     }
 
     static List<Integer> generateNumber() {
@@ -43,5 +44,19 @@ public class Application {
             }
         } while (comNumbers.size() < 3);
         return comNumbers;
+    }
+
+    static List<Integer> inputNumber() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String userNum = Console.readLine();
+        List<Integer> userNumbers = new ArrayList<>();
+        if (userNumbers.size() != 3) {
+            throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
+        }
+        for (int i = 0; i < 3; i++) {
+            int digit = Integer.parseInt(userNum.substring(i, i + 1));
+            userNumbers.add(digit);
+        }
+        return userNumbers;
     }
 }
