@@ -46,6 +46,10 @@ public class Game {
         return result;
     }
 
+    public static boolean isAllStrike(int strike){
+        return strike == ANSWER_SIZE;
+    }
+
     int countNumbersContainedInAnswer(List<Integer> playerGuess){
         return (int) playerGuess.stream()
                 .filter(input -> answer.contains(input))
