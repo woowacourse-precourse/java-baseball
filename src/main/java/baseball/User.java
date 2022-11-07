@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class User {
 
-    String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
-    String REGEX = "[0-9]{3,3}";
+    private static final String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
+    private static final String REGEX = "[0-9]{3,3}";
     int userNumber;
 
     public User() {}

@@ -5,26 +5,28 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Game {
-    static final int NUMBER_LENGTH = 3;
-    String STRING_BALL = "볼";
-    String STRING_STRIKE = "스트라이크";
-    String STRING_NOTHING = "낫싱";
-    String INPUT_RESTART = "1";
-    String INPUT_QUIT = "2";
-    String OUTPUT_START = "숫자 야구 게임을 시작합니다.";
-    String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    String OUTPUT_RESTART_OR_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final int NUMBER_LENGTH = 3;
+    private static final String STRING_BALL = "볼";
+    private static final String STRING_STRIKE = "스트라이크";
+    private static final String STRING_NOTHING = "낫싱";
+    private static final String INPUT_RESTART = "1";
+    private static final String INPUT_QUIT = "2";
+    private static final String OUTPUT_START = "숫자 야구 게임을 시작합니다.";
+    private static final String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String OUTPUT_RESTART_OR_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private int strike;
     private int ball;
     private int randomNumber;
     private int userNumber;
+    private List<String> randomDigits;
+    private List<String> userDigits;
     private boolean quit = false;
     public String input;
     public List<String> inputArrList;
-    private Computer computer;
-    private List<String> randomDigits;
-    private List<String> userDigits;
+    private Computer computer = new Computer();;
+    private User user = new User();
+
 
     public Game() {
     }
@@ -36,9 +38,6 @@ public class Game {
     }
 
     public void play() {
-        computer = new Computer();
-        User user = new User();
-
         System.out.println(OUTPUT_START);
 
         computer.setRandomNumber();
@@ -47,10 +46,9 @@ public class Game {
         while(!quit) {
             user.setUserNumber();
             userNumber = user.getUserNumber();
-            setDigits();
-
 
             initializeBallCount();
+            setDigits();
             calculateStrike();
             calculateBall();
             printOutResult();
