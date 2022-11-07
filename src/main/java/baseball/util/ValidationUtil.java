@@ -5,7 +5,9 @@ public class ValidationUtil {
     public static boolean ValidateInputNumber(String input) {
         if (input.length() == 3 || input.contains("0")
                 || validateIsDigit(input)) {
+            return true;
         }
+        return false;
     }
 
     private static boolean validateIsDigit(String input) {
