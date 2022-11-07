@@ -1,7 +1,6 @@
 package baseball.validator;
 
 import baseball.constant.Constant;
-
 import java.util.ArrayList;
 import java.util.List;
 
