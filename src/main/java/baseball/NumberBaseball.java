@@ -17,8 +17,12 @@ public class NumberBaseball {
         }
         return ret;
     }
-    private boolean isCorrectNumber(String number) {
+    private static boolean isCorrectNumber(String number) {
         if (number.length() != 3) {
+            return false;
+        }
+        if (number.charAt(0) == number.charAt(1) || number.charAt(1) == number.charAt(2)
+                || number.charAt(0) == number.charAt(2)) {
             return false;
         }
         for (int i = 0; i < 3; i++) {
@@ -26,10 +30,29 @@ public class NumberBaseball {
                 return false;
             }
         }
-        if (number.charAt(0) == number.charAt(1) || number.charAt(1) == number.charAt(2)
-                || number.charAt(0) == number.charAt(2)) {
-            return false;
-        }
         return true;
+    }
+    private static String judgeBallCount(String num1, String num2) {
+        int strike = 0;
+        int ball = 0;
+        String ret = "";
+
+        for (int i = 0; i < 3; i++) {
+            if (num1.charAt(i) == num2.charAt(i)) {
+                strike++;
+            } else if (num1.indexOf(num2.charAt(i)) >= 0) {
+                ball++;
+            }
+        }
+        if (ball > 0) {
+            ret += String.format("%d볼 ", ball);
+        }
+        if (strike > 0) {
+            ret += String.format("%d스트라이크 ", strike);
+        }
+        if (ball == 0 && strike == 0) {
+            ret = "낫싱";
+        }
+        return ret.trim();
     }
 }
