@@ -40,56 +40,6 @@ public class GameController {
         } while (isResume());
     }
 
-    private void playSet() {
-        initGame();
-        do {
-            inputPlayerNumbers();
-        } while (!isGuessed());
-        gameView.printSuccess();
-    }
-
-    public boolean isResume() {
-        gameView.printRestartOrStop();
-        String input = Console.readLine();
-        playerInputValidator.checkResumeInput(input);
-
-        return input.equals("1");
-    }
-
-    private boolean isGuessed() {
-        int strikeCount = getStrikeCount();
-        int ballCount = getBallCount();
-        if (ballCount == 0 && strikeCount == 0) {
-            gameView.printNothing();
-        } else if (strikeCount == 0) {
-            gameView.printBall(ballCount);
-        } else if (ballCount == 0) {
-            gameView.printStrike(strikeCount);
-            return strikeCount == 3;
-        } else {
-            gameView.printBallAndStrike(ballCount, strikeCount);
-        }
-        return false;
-    }
-
-    public void inputPlayerNumbers() {
-        gameView.printAskingForPlayerInput();
-        String input = Console.readLine();
-        playerInputValidator.checkPlayerInput(input);
-        List<Integer> inputNumberList = changeInputToList(input);
-        player.setPlayerNumbers(inputNumberList);
-    }
-
-    private List<Integer> changeInputToList(String input) {
-        List<Integer> inputNumberList = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            int digit = input.charAt(i);
-            inputNumberList.add(digit);
-        }
-
-        return inputNumberList;
-    }
-
     public int getBallCount() {
         int ballCount = 0;
         for (int number : player.getNumbers()) {
@@ -113,5 +63,55 @@ public class GameController {
         }
 
         return strikeCount;
+    }
+
+    public boolean isResume() {
+        gameView.printRestartOrStop();
+        String input = Console.readLine();
+        playerInputValidator.checkResumeInput(input);
+
+        return input.equals("1");
+    }
+
+    private void playSet() {
+        initGame();
+        do {
+            inputPlayerNumbers();
+        } while (!isGuessed());
+        gameView.printSuccess();
+    }
+
+    private boolean isGuessed() {
+        int strikeCount = getStrikeCount();
+        int ballCount = getBallCount();
+        if (ballCount == 0 && strikeCount == 0) {
+            gameView.printNothing();
+        } else if (strikeCount == 0) {
+            gameView.printBall(ballCount);
+        } else if (ballCount == 0) {
+            gameView.printStrike(strikeCount);
+            return strikeCount == 3;
+        } else {
+            gameView.printBallAndStrike(ballCount, strikeCount);
+        }
+        return false;
+    }
+
+    private void inputPlayerNumbers() {
+        gameView.printAskingForPlayerInput();
+        String input = Console.readLine();
+        playerInputValidator.checkPlayerInput(input);
+        List<Integer> inputNumberList = changeInputToList(input);
+        player.setPlayerNumbers(inputNumberList);
+    }
+
+    private List<Integer> changeInputToList(String input) {
+        List<Integer> inputNumberList = new ArrayList<>();
+        for (int i = 0; i < input.length(); i++) {
+            int digit = input.charAt(i);
+            inputNumberList.add(digit);
+        }
+
+        return inputNumberList;
     }
 }
