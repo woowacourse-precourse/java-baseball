@@ -6,7 +6,6 @@ import baseball.player.Computer;
 import baseball.player.Player;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Game {
 
@@ -56,16 +55,16 @@ public class Game {
      */
     public void giveHint(List<Integer> problem, String answer) {
         isStrikeOrBall(problem, answer);
+        String hint = "";
         if (strikeCnt == 0 && ballCnt == 0) {
-            System.out.println(NOTHING);
-            return;
+            hint = NOTHING;
         } else if (strikeCnt == 0) {
-            System.out.println(ballCnt + BALL);
-            return;
+            hint = ballCnt + BALL;
         } else if (ballCnt == 0) {
-            System.out.println(strikeCnt + STRIKE);
-            return;
+            hint = strikeCnt + STRIKE;
+        } else if(!(strikeCnt == 0 && ballCnt == 0)){
+            hint = ballCnt + BALL + " " + strikeCnt + STRIKE;
         }
-        System.out.println(ballCnt + BALL + " " + strikeCnt + STRIKE);
+        System.out.println(hint);
     }
 }
