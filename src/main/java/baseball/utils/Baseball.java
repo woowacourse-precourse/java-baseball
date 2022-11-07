@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import static baseball.values.Constant.Digit.TOTAL_BALL_CNT;
+import static baseball.values.Constant.Digit.*;
+import static baseball.values.Constant.Exception.*;
 
 public class Baseball {
     private final LinkedHashSet<Integer> baseballNumber;
@@ -24,13 +25,13 @@ public class Baseball {
         long ballCnt = balls.stream().distinct().count();
 
         if (ballCnt != TOTAL_BALL_CNT) {
-            throw new IllegalArgumentException("Exception because of inputted Number: " + balls.toString());
+            throw new IllegalArgumentException(SAME_NUMBER);
         }
     }
 
     private static void validateInputNumberCnt(String inputNumber) {
-        if (inputNumber.length() != TOTAL_BALL_CNT){
-            throw new IllegalArgumentException("Exception because of inputted Number: " + inputNumber);
+        if (inputNumber.length() != TOTAL_BALL_CNT) {
+            throw new IllegalArgumentException(INPUTTED_NUMBER_CNT);
         }
     }
 
