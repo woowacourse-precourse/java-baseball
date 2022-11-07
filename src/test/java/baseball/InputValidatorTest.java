@@ -1,24 +1,16 @@
 package baseball;
 
 import baseball.validator.InputValidator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class InputValidatorTest {
-    InputValidator inputValidator;
-
-    @BeforeEach
-    void setUp() {
-        inputValidator = new InputValidator();
-    }
-
     @Test
     void 입력받은_수의_타입을_검사한다() {
         assertThatThrownBy(() -> {
-            inputValidator.validatePlayerNumber("12삼");
+            InputValidator.validatePlayerNumber("12삼");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.TYPE_EXCEPTION);
     }
@@ -26,17 +18,17 @@ public class InputValidatorTest {
     @Test
     void 입력받은_수의_자리_수를_검사한다() {
         assertThatThrownBy(() -> {
-            inputValidator.validatePlayerNumber("12");
+            InputValidator.validatePlayerNumber("12");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DIGIT_LENGTH_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validatePlayerNumber("");
+            InputValidator.validatePlayerNumber("");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DIGIT_LENGTH_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validatePlayerNumber("1234");
+            InputValidator.validatePlayerNumber("1234");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DIGIT_LENGTH_EXCEPTION);
     }
@@ -44,12 +36,12 @@ public class InputValidatorTest {
     @Test
     void 입력받은_수의_중복여부를_검사한다() {
         assertThatThrownBy(() -> {
-            inputValidator.validatePlayerNumber("122");
+            InputValidator.validatePlayerNumber("122");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DUPLICATION_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validatePlayerNumber("111");
+            InputValidator.validatePlayerNumber("111");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DUPLICATION_EXCEPTION);
     }
@@ -57,7 +49,7 @@ public class InputValidatorTest {
     @Test
     void 입력받은_수의_범위를_검사한다() {
         assertThatThrownBy(() -> {
-            inputValidator.validatePlayerNumber("120");
+            InputValidator.validatePlayerNumber("120");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.DIGIT_RANGE_EXCEPTION);
     }
@@ -65,37 +57,37 @@ public class InputValidatorTest {
     @Test
     void 입력받은_수가_모든_테스트를_통과한다() {
         assertThatCode(() -> {
-            inputValidator.validatePlayerNumber("123");
+            InputValidator.validatePlayerNumber("123");
         }).doesNotThrowAnyException();
 
         assertThatCode(() -> {
-            inputValidator.validatePlayerNumber("456");
+            InputValidator.validatePlayerNumber("456");
         }).doesNotThrowAnyException();
 
         assertThatCode(() -> {
-            inputValidator.validatePlayerNumber("789");
+            InputValidator.validatePlayerNumber("789");
         }).doesNotThrowAnyException();
     }
 
     @Test
     void 게임상태를_나타내는_수의_타입을_검사한다() {
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber("일");
+            InputValidator.validateStateNumber("일");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.TYPE_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber("A");
+            InputValidator.validateStateNumber("A");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.TYPE_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber("!");
+            InputValidator.validateStateNumber("!");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.TYPE_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber(" ");
+            InputValidator.validateStateNumber(" ");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.TYPE_EXCEPTION);
     }
@@ -103,12 +95,12 @@ public class InputValidatorTest {
     @Test
     void 게임상태를_나타내는_수의_자리_수를_검사한다() {
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber("12");
+            InputValidator.validateStateNumber("12");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.STATE_LENGTH_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber("");
+            InputValidator.validateStateNumber("");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.STATE_LENGTH_EXCEPTION);
     }
@@ -116,12 +108,12 @@ public class InputValidatorTest {
     @Test
     void 게임상태를_나타내는_수의_범위를_검사한다() {
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber("0");
+            InputValidator.validateStateNumber("0");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
 
         assertThatThrownBy(() -> {
-            inputValidator.validateStateNumber("3");
+            InputValidator.validateStateNumber("3");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Message.STATE_NUMBER_EXCEPTION);
     }
