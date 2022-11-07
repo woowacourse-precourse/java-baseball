@@ -51,7 +51,11 @@ public class Game {
     }
 
     private static List<Integer> initHitCount() {
-        return new ArrayList<>();
+        List<Integer> hitCount = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            hitCount.add(0);
+        }
+        return hitCount;
     }
 
     private static void showHitCount(List<Integer> hitCount) {
