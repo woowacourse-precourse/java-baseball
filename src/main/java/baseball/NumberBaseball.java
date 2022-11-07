@@ -17,4 +17,19 @@ public class NumberBaseball {
         }
         return ret;
     }
+    private boolean isCorrectNumber(String number) {
+        if (number.length() != 3) {
+            return false;
+        }
+        for (int i = 0; i < 3; i++) {
+            if (!('1' <= number.charAt(i) && number.charAt(i) <= '9')) {
+                return false;
+            }
+        }
+        if (number.charAt(0) == number.charAt(1) || number.charAt(1) == number.charAt(2)
+                || number.charAt(0) == number.charAt(2)) {
+            return false;
+        }
+        return true;
+    }
 }
