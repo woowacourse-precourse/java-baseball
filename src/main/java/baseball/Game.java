@@ -1,9 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Game {
-    //  reduce instance vars? after fixing the way to restart the game
     public Boolean again;
     public Computer computer;
     public Player player;
@@ -21,7 +22,6 @@ public class Game {
             System.out.println("숫자를 입력해주세요 : ");
             playerInput();
         }
-        //TODO player input 1 or 2 to play again or not
     }
 
     public void playerInput() throws IllegalArgumentException {
@@ -43,7 +43,6 @@ public class Game {
         }
     }
 
-    // 정리좀...
     public String makeAnnouncement(List<String> hint) {
         String ball = concatBall(hint.get(0));
         String strike = concatStrike(hint.get(1));
@@ -77,6 +76,20 @@ public class Game {
     public void answerCorrect() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        //TODO input (2 -> this.again = false)
+        askPlayAgain();
+    }
+
+    public void askPlayAgain() {
+        String inputAnswer = Console.readLine();
+        if (inputAnswer.equals("1")) {
+            start();
+            return;
+        }
+        if (inputAnswer.equals("2")) {
+            this.again = false;
+            return;
+        }
+        System.out.println("잘못 입력하셨습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        askPlayAgain();
     }
 }
