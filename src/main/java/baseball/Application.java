@@ -2,8 +2,8 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
@@ -19,16 +19,24 @@ public class Application {
         }
         return computer;
     }
-    //int형으로 입려받는 userInput을 List형으로 변환함
-    public static List<Integer> convertUserInputToList (int userinput){
-        List<Integer> returnData = new ArrayList<Integer>();
-        returnData.add(userinput/100);
-        returnData.add(userinput/10 - returnData.get(0)*10);
-        returnData.add(userinput % 10);
+    public static List<String> convertComputerList(List<Integer> computer){
+        List<String> returnData = new ArrayList<String>();
+        returnData.add(String.valueOf(computer.get(0)));
+        returnData.add(String.valueOf(computer.get(1)));
+        returnData.add(String.valueOf(computer.get(2)));
+
+        return returnData;
+    }
+    //String형으로 입려받는 userInput을 List형으로 변환함
+    public static List<String> convertUserInputToList (String userinput){
+        List<String> returnData = new ArrayList<String>();
+        returnData.add(Character.toString(userinput.charAt(0)));
+        returnData.add(Character.toString(userinput.charAt(1)));
+        returnData.add(Character.toString(userinput.charAt(2)));
         return returnData;
     }
     //userInput를 몇스트라이크 몇볼인지 검사해줌
-    public static int[] inspectUserInput(List<Integer> userInput , List<Integer> computer){
+    public static int[] inspectUserInput(List<String> userInput , List<String> computer){
         int[] returnData = new int[2];
 
         for(int i = 0; i < userInput.size(); i++){
@@ -49,19 +57,25 @@ public class Application {
             System.out.println("낫싱");
         }
         else{
-            System.out.println(hint[0]+"볼 "+hint[1]+"스트라이크");
+            if(hint[0] != 0){
+                System.out.println(hint[0]+"볼 ");
+            }
+            else if(hint[1] != 0){
+                System.out.println(hint[1]+"스트라이크");
+            }
         }
     }
     public static void runGame(){
-        Scanner sc = new Scanner(System.in);
         List<Integer> computer = setComputer();
+        List<String> computer_StringList = convertComputerList(computer);
         System.out.println(computer);
         boolean state = true;
+        String userinput;
         while(state) {
             System.out.print("숫자를 입력해주세요 : ");
-            int userinput = sc.nextInt();
-            List<Integer> userInput_List = convertUserInputToList(userinput);
-            int[] hint = inspectUserInput(userInput_List, computer);
+            userinput = Console.readLine();
+            List<String> userInput_List = convertUserInputToList(userinput);
+            int[] hint = inspectUserInput(userInput_List, computer_StringList);
             printHint(hint);
             if (hint[1] == 3) {
                 break;
@@ -71,17 +85,21 @@ public class Application {
     }
     public static void endGame(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        Scanner sc = new Scanner(System.in);
-        int userinput = sc.nextInt();
-        if(userinput == 1){
+        String userinput = Console.readLine();
+        if(userinput.equals("1")){
             runGame();
         }
-        else if(userinput == 2){
+        else if(userinput.equals("2")){
 
         }
     }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         runGame();
+//        List<String> a = List.of("1","2","3");
+//        List<String> b = List.of("1","2","3");
+//        System.out.println(a.indexOf(b.get(1)));
+
+
     }
 }
