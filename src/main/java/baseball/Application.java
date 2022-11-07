@@ -36,6 +36,7 @@ public class Application {
 
     public static List<Integer> getPlayerNumbers() {
         List<Integer> playerNumbers = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumberString = Console.readLine();
 
         validateEmpty(inputNumberString);
@@ -45,6 +46,8 @@ public class Application {
 
         for(int i=0; i<inputNumberString.length() ; i++) {
             playerNumbers.add(Integer.parseInt(inputNumberString.substring(i,i+1)));
+        for (int i = 0; i < inputNumberString.length(); i++) {
+            playerNumbers.add(Integer.parseInt(inputNumberString.substring(i, i + 1)));
         }
         return playerNumbers;
     }
