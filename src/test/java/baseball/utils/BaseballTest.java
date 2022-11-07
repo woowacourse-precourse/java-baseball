@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static baseball.values.Constant.Exception.INPUTTED_NUMBER_CNT;
+import static baseball.values.Constant.Exception.SAME_NUMBER;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -15,7 +17,7 @@ class BaseballTest {
         String input = "123";
         Baseball player = Baseball.createPlayer(input);
 
-        assertThat(player.getBaseballNumber()).isEqualTo(Arrays.asList(1,2,3));
+        assertThat(player.getBaseballNumber()).isEqualTo(Arrays.asList(1, 2, 3));
     }
 
     @Test
@@ -34,24 +36,28 @@ class BaseballTest {
     }
 
     @Test
-    void validateSameNumberTest(){
-        String input = "1233";
+    void validateSameNumberTest() {
+        String input = "122";
 
         assertThatThrownBy(() -> Baseball.createPlayer(input))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(SAME_NUMBER);
 
 
     }
 
     @Test
-    void validateInputNumberCntTest(){
+    void validateInputNumberCntTest() {
         String input1 = "1234";
         String input2 = "12";
 
         assertThatThrownBy(() -> Baseball.createPlayer(input1))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INPUTTED_NUMBER_CNT);
+
 
         assertThatThrownBy(() -> Baseball.createPlayer(input2))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(INPUTTED_NUMBER_CNT);
     }
 }

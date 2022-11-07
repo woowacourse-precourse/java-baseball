@@ -19,4 +19,9 @@ public class Constant {
         public static final int TOTAL_BALL_CNT = 3;
         public static final int MAX_STRIKE_CNT = 3;
     }
+
+    public static class Exception {
+        public static final String SAME_NUMBER = "Exception because of inputted number has same value";
+        public static final String INPUTTED_NUMBER_CNT = "Exception because of inputted number count";
+    }
 }
