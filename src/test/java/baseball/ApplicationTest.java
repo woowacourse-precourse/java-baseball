@@ -77,4 +77,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void test_guessResult() {
+        List <Integer> computer = Arrays.asList(1,2,3);
+        List <Integer> player = Arrays.asList(1,3,2);
+        List <Integer> result = Arrays.asList(2,1);
+        assertSimpleTest(() ->
+                assertThat(Application.guessResult(computer, player)).isEqualTo(result)
+        );
+    }
+
 }
