@@ -40,14 +40,16 @@ public class Player {
         return third != first;
     }
 
-    public boolean isValidNumber(String number) {
+    public void isValidNumber(String number) {
         if (!isThreeLetter(number)) {
-            return false;
+            isNotValid();
         }
         if (!isNumber(number)) {
-            return false;
+            isNotValid();
         }
-        return isAllDifferent(number);
+        if (!isAllDifferent(number)) {
+            isNotValid();
+        }
     }
 
     public String getRestart() {
@@ -64,14 +66,16 @@ public class Player {
         return letter == '1' || letter == '2';
     }
 
-    public boolean isValidRestart(String restart) {
+    public void isValidRestart(String restart) {
         if (!isOneLetter(restart)) {
-            return false;
+            isNotValid();
         }
-        return isOneOrTwo(restart);
+        if (!isOneOrTwo(restart)) {
+            isNotValid();
+        }
     }
 
-    public static void isNotValid() {
+    public void isNotValid() {
         throw new IllegalArgumentException();
     }
 }

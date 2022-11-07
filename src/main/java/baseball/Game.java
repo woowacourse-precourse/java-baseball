@@ -14,9 +14,7 @@ public class Game {
 
     public boolean tryCycle() {
         String playerNumber = player.getNumber();
-        if (!player.isValidNumber(playerNumber)) {
-            Player.isNotValid();
-        }
+        player.isValidNumber(playerNumber);
         Result result = computer.judgeNumber(playerNumber);
         System.out.println(result.toString());
         return result.checkFinish();

@@ -23,9 +23,7 @@ public class Application {
             Game game = new Game(player);
             game.start();
             String restartCommand = player.getRestart();
-            if (!player.isValidRestart(restartCommand)) {
-                Player.isNotValid();
-            }
+            player.isValidRestart(restartCommand);
             restart = checkRestart(restartCommand);
         }
     }
