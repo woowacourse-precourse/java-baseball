@@ -6,13 +6,13 @@ import baseball.domain.GameResult;
 public class BaseBallGameService {
 	private static final String RESTART_NUMBER = "1";
 	private static final String END_NUMBER = "2";
-	private final BaseBallGame baseBallGame;
+	private BaseBallGame baseBallGame;
 
-	public BaseBallGameService() {
+	public void initBaseBallGame() {
 		this.baseBallGame = new BaseBallGame();
 	}
 
-	public GameResult playGame(String userInput) {
+	public GameResult compareTwoNumber(String userInput) {
 		baseBallGame.inputUserNumber(userInput);
 		baseBallGame.countScore();
 		return baseBallGame.getGameResult();
