@@ -4,16 +4,24 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameView {
     private static final String OUTPUT_NEWLINE = "\n";
     public int inputToQuestion() {
-        int input = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
         print(input);
-        return input;
+        return inputValidate(input);
     }
 
-    public void print(String output) {
-        System.out.print(output);
+    public int inputValidate(String input) {
+        if (input.equals("")) {
+            throw new IllegalArgumentException();
+        }
+        try {
+            return Integer.parseInt(input);
+        }
+        catch(NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public void print(int output) {
+    public void print(Object output) {
         System.out.print(output);
     }
 
