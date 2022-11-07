@@ -27,11 +27,11 @@ public class Application {
 
         while(!find) {
             List<Integer> user = getInputAsList();
-            int strike = countStrike(computer, user);
-            int ball = countBall(computer, user);
             find = computer.equals(user);
 
             if (!find) {
+                int strike = countStrike(computer, user);
+                int ball = countBall(computer, user);
                 printResult(strike, ball);
             }
         }
