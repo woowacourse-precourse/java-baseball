@@ -26,19 +26,14 @@ public class GameController {
     }
 
     private void controlGameByResult(Numbers answerNumbers) {
-        try {
-            do {
-                inputView.inputGameNumber();
-                setInputNumbers(answerNumbers);
-                outputView.outputBallCounts(ballCounts);
-            } while (ballCounts.getStrike() != 3);
+        do {
+            inputView.inputGameNumber();
+            setInputNumbers(answerNumbers);
+            outputView.outputBallCounts(ballCounts);
+        } while (ballCounts.getStrike() != 3);
 
-            outputView.outputRestart();
-            inputView.inputRestartNumber();
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error Message : " + e.getMessage());
-            e.printStackTrace();
-        }
+        outputView.outputRestart();
+        inputView.inputRestartNumber();
     }
 
     private void setInputNumbers(Numbers answerNumbers) throws IllegalArgumentException {
