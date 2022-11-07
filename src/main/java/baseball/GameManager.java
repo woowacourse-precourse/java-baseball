@@ -21,10 +21,26 @@ public class GameManager {
             List<Integer> compareResult = Game.compareWithComputer(input, computer);
             String compareResultString = Game.resultToString(compareResult);
             System.out.println(compareResultString);
+
             if (compareResultString.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
+
+        afterGame();
+    }
+
+    static void afterGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            onGame();
+        }
+        if (input.equals("2")) {
+            return;
+        }
+        // 입력 예외처리
     }
 
 
