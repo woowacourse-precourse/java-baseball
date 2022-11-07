@@ -50,5 +50,10 @@ public class Controller {
         return ball;
     }
 
+    private void resetScore() {
+        ball = 0;
+        strike = 0;
+    }
+
 
 }
