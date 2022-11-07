@@ -40,6 +40,7 @@ public class Application {
                     continue;
                 }
 
+                throw new IllegalArgumentException();
             }
         }
     }
