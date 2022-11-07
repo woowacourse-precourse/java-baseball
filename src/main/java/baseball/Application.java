@@ -50,7 +50,6 @@ public class Application {
         int num = 0;
         if(str.length() != 3)
             throw new IllegalArgumentException();
-
         try{
             num = Integer.parseInt(str);
         }catch(Exception e){
@@ -83,7 +82,8 @@ public class Application {
             int currRandomNum = RandomNum.get(i);
             if(numList.contains(currRandomNum) && numList.get(i)==currRandomNum){
                 countStrike ++;
-            } else if (numList.contains(currRandomNum)) {
+            }
+            else if (numList.contains(currRandomNum)) {
                 countBall ++;
             }
         }
