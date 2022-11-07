@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
     List<Integer> targetNumber;
+    private boolean isPlayerWin=false;
 
     public void generateTargetNumber() {
         while(targetNumber.size() < 3) {
@@ -55,11 +56,16 @@ public class BaseballGame {
         }
     }
 
-    public void endGame() {
+    private void endGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        isPlayerWin=true;
     }
 
     public void startGame() {
-        // TODO: 타겟 넘버 생성, 사용자 입력 실행 등 새 게임 시작
+        generateTargetNumber();
+        while(isPlayerWin==false){
+            String newInput = getInput();
+            compareWithTargetNum(newInput);
+        }
     }
 }
