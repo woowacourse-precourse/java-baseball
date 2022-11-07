@@ -9,7 +9,17 @@ public class Balls {
     private List<Ball> balls;
 
     private Balls(List<Ball> balls) {
+        validateUnique(balls);
         this.balls = balls;
+    }
+
+    private void validateUnique(List<Ball> balls) {
+        int count = (int) balls.stream()
+                .distinct()
+                .count();
+        if (count != balls.size()) {
+            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다");
+        }
     }
 
     //TODO 더 좋은 네이밍 생각해보기
