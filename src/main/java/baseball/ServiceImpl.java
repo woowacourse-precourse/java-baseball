@@ -29,9 +29,8 @@ public class ServiceImpl implements Service {
         int[] count = new int[]{0, 0};
 
         for(int i = 0; i < 3; ++i) {
-            // 스트라이크 볼 처리
+            check(number,input[i],i,count);
         }
-
         return count;
     }
     @Override
@@ -53,5 +52,16 @@ public class ServiceImpl implements Service {
 
         return number;
     }
-
+    @Override
+    public void check(char[] number, char input, int cur, int[] count) {
+        for(int i = 0; i < 3; ++i) {
+            if (number[i] == input && i==cur) {
+                count[0]++;
+                return;
+            }else if(number[i]==input){
+                count[1]++;
+                return;
+            }
+        }
+    }
 }
