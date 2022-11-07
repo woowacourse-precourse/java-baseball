@@ -21,3 +21,4 @@
 5.  computer 숫자와 player 숫자를 비교하는 strike()메소드 만들기
 6.  computer 숫자와 player 숫자를 판정하는 referee() 메소드 만들기
 7.  경기 재시작 여부 playAgain() 만들기
+8.  만들어진 메소드 조합해서 main()에 반영하기
