@@ -1,9 +1,13 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -14,6 +18,56 @@ class NumberBaseballGameServerTest {
     @Nested
     @DisplayName("숫자야구게임의 흐름과 순서 관리 기능")
     class RunTest extends NsTest {
+
+        @Test
+        void 게임을_한번만_하는_시나리오에서_정상동작한다() {
+            assertRandomNumberInRangeTest(
+                () -> {
+                    run("197", "179", "2");
+                    String expected = List.of(
+                            "숫자 야구 게임을 시작합니다.",
+                            "숫자를 입력해주세요 : 2볼 1스트라이크",
+                            "숫자를 입력해주세요 : 3스트라이크",
+                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+                        ).
+                        stream().collect(Collectors.joining("\n"));
+                    assertThat(output()).isEqualTo(expected);
+                },
+                1, 7, 9
+            );
+        }
+
+        @Test
+        void 게임종료하고_한번_더_하는_시나리오에서_정상동작한다() {
+            assertRandomNumberInRangeTest(
+                () -> {
+                    run("197", "179", "1", "317", "123", "2");
+                    String expected = List.of(
+                            "숫자 야구 게임을 시작합니다.",
+                            "숫자를 입력해주세요 : 2볼 1스트라이크",
+                            "숫자를 입력해주세요 : 3스트라이크",
+                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.",
+                            "숫자를 입력해주세요 : 2볼",
+                            "숫자를 입력해주세요 : 3스트라이크",
+                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+                        ).
+                        stream().collect(Collectors.joining("\n"));
+                    assertThat(output()).isEqualTo(expected);
+                },
+                1, 7, 9, 1, 2, 3
+            );
+        }
+
+        @Test
+        void 플레이어_게임숫자_입력_시_예외처리는_정상동작한다() {
+            assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                    .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
 
         @Override
         protected void runMain() {
