@@ -12,7 +12,7 @@ public class Application {
         System.out.println(txt);
     }
     private static List<Integer> createRandomNumber(){
-        List<Integer> computer = new ArrayList<>();ß
+        List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
