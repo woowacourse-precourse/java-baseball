@@ -11,25 +11,24 @@ public class Application {
 
     public static int THE_NUMBER_OF_BALLS = 3;
 
-    // main()¸Ş¼­µå¿¡¼­ °ªÀ» ¹Ş¾Æ Ã³¸®ÇÏ´Â Å¬·¡½º
+    // main()ë©”ì„œë“œì—ì„œ ê°’ì„ ë°›ì•„ ì²˜ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
     public static class Model {
 
-        private List<Integer> computerNumberList = new ArrayList<>();
-        private List<Integer> inputNumberList = new ArrayList<>();
+        private final List<Integer> computerNumberList = new ArrayList<>();
+        private final List<Integer> inputNumberList = new ArrayList<>();
         private int strikeCounting;
         private int ballCounting;
 
-        // ÀÔ·Â°ªÀ» ¹ÙÅÁÀ¸·Î ½ºÆ®¶óÀÌÅ©¿Í º¼À» Ã£¾Æ³»´Â °ÔÀÓ ÁøÇà ¸Ş¼­µå
+        // ì…ë ¥ê°’ì„ ë°”íƒ•ìœ¼ë¡œ ìŠ¤íŠ¸ë¼ì´í¬ì™€ ë³¼ì„ ì°¾ì•„ë‚´ëŠ” ê²Œì„ ì§„í–‰ ë©”ì„œë“œ
         public void proceedGame (String inputString) {
             inputNumberList.clear();
             splitNumber(inputNumberList, inputString);
-            distinguishStrike();
-            distinguishBall();
-
+            getStrikeCounting();
+            getBallCounting();
         }
 
-        // ½ºÆ®¶óÀÌÅ©¸¦ ±¸º°ÇÏ´Â ¸Ş¼­µå
-        public void distinguishStrike() {
+        // ìŠ¤íŠ¸ë¼ì´í¬ë¥¼ êµ¬ë³„í•˜ëŠ” ë©”ì„œë“œ
+        public void getStrikeCounting() {
             int methodInStrikeCounting = 0;
 
             for (int i = 0; i < THE_NUMBER_OF_BALLS; i++) {
@@ -41,8 +40,8 @@ public class Application {
             strikeCounting = methodInStrikeCounting;
         }
 
-        // º¼À» ±¸º°ÇÏ´Â ¸Ş¼­µå
-        public void distinguishBall() {
+        // ë³¼ì„ êµ¬ë³„í•˜ëŠ” ë©”ì„œë“œ
+        public void getBallCounting() {
             int methodInBallCounting = 0;
 
             for (int number: inputNumberList) {
@@ -55,9 +54,8 @@ public class Application {
             ballCounting = methodInBallCounting - strikeCounting;
         }
 
-        // ÄÄÇ»ÅÍÀÇ 3ÀÚ¸® ¼ıÀÚ¸¦ ¼³Á¤ÇÏ´Â ¸Ş¼­µå
-        public void makeComputerNumber() {
-            computerNumberList.clear();
+        // ì»´í“¨í„°ì˜ 3ìë¦¬ ìˆ«ìë¥¼ ì„¤ì •í•˜ëŠ” ë©”ì„œë“œ
+        public void getComputerNumber() {
             strikeCounting = 0;
 
             while (computerNumberList.size() < THE_NUMBER_OF_BALLS) {
@@ -69,7 +67,7 @@ public class Application {
             }
         }
 
-        // »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ 3ÀÚ¸® ¼ıÀÚ¸¦ ¸®½ºÆ®·Î ºĞ¸®ÇÏ´Â ¸Ş¼­µå
+        // ì‚¬ìš©ìê°€ ì…ë ¥í•œ 3ìë¦¬ ìˆ«ìë¥¼ ë¦¬ìŠ¤íŠ¸ë¡œ ë¶„ë¦¬í•˜ëŠ” ë©”ì„œë“œ
         public void splitNumber(List<Integer> inputNumberList, String inputNumber) {
 
             for (char number: inputNumber.toCharArray()) {
@@ -77,7 +75,7 @@ public class Application {
             }
         }
 
-        // °ÔÀÓÁ¾·á ½Ã ´Ù½Ã ½ÃÀÛÇÒÁö °áÁ¤ÇÏ´Â ¸Ş¼­µå
+        // ê²Œì„ì¢…ë£Œ ì‹œ ë‹¤ì‹œ ì‹œì‘í• ì§€ ê²°ì •í•˜ëŠ” ë©”ì„œë“œ
         public boolean decideRestart(String decidedRestartString) {
             int decidedRestart = Integer.parseInt(decidedRestartString);
 
@@ -85,25 +83,22 @@ public class Application {
             else return false;
         }
 
-        // 3ÀÚ¸® ¼ıÀÚ¸¦ ÀÔ·ÂÇÒ ¶§ ¿¹¿Ü ¹ß»ı½ÃÅ°´Â ¸Ş¼­µå
+        // 3ìë¦¬ ìˆ«ìë¥¼ ì…ë ¥í•  ë•Œ ì˜ˆì™¸ ë°œìƒì‹œí‚¤ëŠ” ë©”ì„œë“œ
         public void discoverInputNumberException(String inputNumber) throws IllegalArgumentException {
             checkNumberItem(inputNumber);
             checkNumberRange(inputNumber);
             checkDuplicatedNumber(inputNumber);
         }
 
-        // ÀÔ·ÂµÈ 3ÀÚ¸® ¼ıÀÚ Áß¿¡¼­ Áßº¹µÈ ¼ıÀÚ°¡ ÀÖ´ÂÁö È®ÀÎÇÏ´Â ¸Ş¼­µå
+        // ì…ë ¥ëœ 3ìë¦¬ ìˆ«ì ì¤‘ì—ì„œ ì¤‘ë³µëœ ìˆ«ìê°€ ìˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ë©”ì„œë“œ
         public void checkDuplicatedNumber (String inputNumber) throws IllegalArgumentException{
-            HashSet<Character> inputNumberInSet = new HashSet<>();
-
-            for (int p = 0; p <THE_NUMBER_OF_BALLS; p++) {
-                inputNumberInSet.add(inputNumber.charAt(p));
-            }
+            HashSet<Integer> inputNumberInSet = new HashSet<>();
+            inputNumber.chars().forEach(number -> inputNumberInSet.add(number));
 
             if (inputNumberInSet.size() < THE_NUMBER_OF_BALLS) throw new IllegalArgumentException();
         }
 
-        // ÁÖ¾îÁø ¼ıÀÚ°¡ 3ÀÚ¸®°¡ ¾Æ´Ñ °æ¿ì ¿¹¿Ü ¹ß»ı
+        // ì£¼ì–´ì§„ ìˆ«ìê°€ 3ìë¦¬ê°€ ì•„ë‹Œ ê²½ìš° ì˜ˆì™¸ ë°œìƒ
         public void checkNumberItem (String inputNumber) throws IllegalArgumentException{
 
             if (inputNumber.length() != THE_NUMBER_OF_BALLS) {
@@ -111,21 +106,20 @@ public class Application {
             }
         }
 
-        // ÀÔ·ÂµÈ 3ÀÚ¸®ÀÇ ¼ıÀÚ°¡ 1~9ÀÇ ¹üÀ§ ³»¿¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+        // ì…ë ¥ëœ 3ìë¦¬ì˜ ìˆ«ìê°€ 1~9ì˜ ë²”ìœ„ ë‚´ì— ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸
         public void checkNumberRange (String inputNumber) throws  IllegalArgumentException{
 
             inputNumber.chars().forEach(number -> {
-                        if (number < 49 || number > 57) throw new IllegalArgumentException();
-
+                if (number < 49 || number > 57) throw new IllegalArgumentException();
             });
         }
 
-        // Àç½ÃÀÛ °áÁ¤ ½Ã¿¡ ÀÔ·ÂµÇ´Â ¼ıÀÚÀÇ ¿¹¿Ü¸¦ ¹ß»ı½ÃÅ°´Â ¸Ş¼­µå
+        // ì¬ì‹œì‘ ê²°ì • ì‹œì— ì…ë ¥ë˜ëŠ” ìˆ«ìì˜ ì˜ˆì™¸ë¥¼ ë°œìƒì‹œí‚¤ëŠ” ë©”ì„œë“œ
         public void discoverRestartNumberException (String restartNumber) throws IllegalArgumentException{
             if (!restartNumber.equals("1") && !restartNumber.equals("2")) throw new IllegalArgumentException();
         }
 
-        // ¼ıÀÚ ÀÔ·Â°ú ¿¹¿ÜÃ³¸®¸¦ µ¿½Ã¿¡ ÇÏ´Â ¸Ş¼­µå
+        // ìˆ«ì ì…ë ¥ê³¼ ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ë™ì‹œì— í•˜ëŠ” ë©”ì„œë“œ
         public  String inputBallAndRestartNumber () {
             String inputNumber = Console.readLine();
 
@@ -137,21 +131,21 @@ public class Application {
 
     }
 
-    // model¿¡¼­ Ã³¸®µÈ °ªÀ» Ãâ·ÂÇÏ´Â Å¬·¡½º
+    // modelì—ì„œ ì²˜ë¦¬ëœ ê°’ì„ ì¶œë ¥í•˜ëŠ” í´ë˜ìŠ¤
     public static class View {
         public void printResult(int ballCounting, int strikeCounting) {
 
             if (strikeCounting == THE_NUMBER_OF_BALLS) {
-                System.out.println("3½ºÆ®¶óÀÌÅ©");
-                System.out.println("3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓ Á¾·á");
+                System.out.println("3ìŠ¤íŠ¸ë¼ì´í¬");
+                System.out.println("3ê°œì˜ ìˆ«ìë¥¼ ëª¨ë‘ ë§íˆì…¨ìŠµë‹ˆë‹¤! ê²Œì„ ì¢…ë£Œ");
             } else if (strikeCounting > 0 && ballCounting == 0) {
-                System.out.printf("%d½ºÆ®¶óÀÌÅ©\r\n", strikeCounting);
+                System.out.printf("%dìŠ¤íŠ¸ë¼ì´í¬\r\n", strikeCounting);
             } else if (strikeCounting == 0 && ballCounting > 0) {
-                System.out.printf("%dº¼\r\n", ballCounting);
+                System.out.printf("%dë³¼\r\n", ballCounting);
             } else if (strikeCounting > 0 && ballCounting > 0) {
-                System.out.printf("%dº¼ %d½ºÆ®¶óÀÌÅ©\r\n", ballCounting, strikeCounting);
+                System.out.printf("%dë³¼ %dìŠ¤íŠ¸ë¼ì´í¬\r\n", ballCounting, strikeCounting);
             } else {
-                System.out.println("³´½Ì");
+                System.out.println("ë‚«ì‹±");
             }
         }
     }
@@ -163,15 +157,15 @@ public class Application {
         while (true) {
             Model model = new Model();
 
-            System.out.println("¼ıÀÚ ¾ß±¸ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
-            model.makeComputerNumber();
+            System.out.println("ìˆ«ì ì•¼êµ¬ ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
+            model.getComputerNumber();
 
             while (model.strikeCounting < THE_NUMBER_OF_BALLS) {
                 model.proceedGame(model.inputBallAndRestartNumber());
                 view.printResult(model.ballCounting, model.strikeCounting);
             }
 
-            System.out.println("°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+            System.out.println("ê²Œì„ì„ ìƒˆë¡œ ì‹œì‘í•˜ë ¤ë©´ 1, ì¢…ë£Œí•˜ë ¤ë©´ 2ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 
             if (!model.decideRestart(model.inputBallAndRestartNumber())) break;
 
