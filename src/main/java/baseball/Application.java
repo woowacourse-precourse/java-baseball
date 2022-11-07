@@ -126,6 +126,19 @@ public class Application {
     }
 
     private static void endGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playerInput = Console.readLine();
+        endGameException(playerInput);
+        int response = Integer.parseInt(playerInput);
+        if (response == 1) {
+            selectComputerNumber();
+        }
+        else if (response == 2) {
+            return;
+        }
+    }
+
+    private static void endGameException(String playerInput) {
 
     }
 
