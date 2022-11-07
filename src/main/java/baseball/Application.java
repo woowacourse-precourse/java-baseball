@@ -35,6 +35,20 @@ public class Application {
     }
 
     /**
+     * Verify string is numeric.
+     * @param string the string to be checked.
+     * @return true if string is numeric.
+     */
+    private static boolean isNumeric(String string) {
+        try {
+            Double.parseDouble(string);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
+    }
+
+    /**
      * Generate the correct answer for a number baseball game.
      * @return answer
      */
