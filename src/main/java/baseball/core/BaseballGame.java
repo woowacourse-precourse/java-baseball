@@ -1,11 +1,6 @@
-package baseball;
+package baseball.core;
 
 import baseball.console.ConsoleOutput;
-import baseball.core.StatusCode;
-import baseball.core.Computer;
-import baseball.core.Player;
-import baseball.core.BallStrike;
-import baseball.core.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
