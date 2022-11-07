@@ -5,5 +5,5 @@ public interface Game {
     void start();
     void play();
     void end();
-    void score();
+    void score(int strikePoint, int ballPoint);
 }
