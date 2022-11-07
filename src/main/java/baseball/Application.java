@@ -3,18 +3,18 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.List;
 
 class computer {
-    int computerNumber(){
-        ArrayList<Integer> computer = new ArrayList<>();
+    List computerNumber(){
+        List<Integer> computer = new ArrayList<>();
         while(computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        int number = computer.get(0)*100 + computer.get(1)*10 + computer.get(2);
-        return number;
+        return computer;
     }
 }
 
@@ -66,8 +66,23 @@ class inputException {
     }
 }
 
+class playGame {
+    int ball;
+    int strike;
+    
+    void nothing(List<String> playerNumber, List<String> computerNumber) {
+        for(String a : playerNumber) {
+            if(computerNumber.contains(a)) {
+                return;
+            }
+        }
+        System.out.println("낫싱");
+    }
+
+    
+}
 public class Application {
     public static void main(String[] args) {
-    
+        
     }
 }
