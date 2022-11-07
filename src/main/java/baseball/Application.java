@@ -32,6 +32,10 @@ public class Application {
 
                 String gameStr = restartAndExitCheck(System.in);
 
+                if(gameStr.equals("2")){
+                    break;
+                }
+
             }
         }
     }
