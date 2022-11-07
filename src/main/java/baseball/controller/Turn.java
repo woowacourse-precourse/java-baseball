@@ -4,6 +4,7 @@ import baseball.model.Target;
 import baseball.model.TurnScore;
 import baseball.type.ResultTurn;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,17 +14,17 @@ public class Turn {
     private Target target;
     private TurnScore turnScore = new TurnScore();
 
-    Turn (Target target) {
+    Turn(Target target) {
         this.target = target;
     }
 
-    Turn (Target target, TurnScore turnScore) {
+    Turn(Target target, TurnScore turnScore) {
         this.turnScore = turnScore;
         this.target = target;
     }
 
     void repeatToEnd() {
-        while(checkCanRepeat()) {
+        while (checkCanRepeat()) {
             playOneTurn();
         }
     }
@@ -100,4 +101,29 @@ public class Turn {
                 .collect(Collectors.toList());
         return numberOfList;
     }
+
+    void printResultOfThisTurn() {
+        ResultTurn resultTurn = turnScore.getResultTurn();
+        int balls = turnScore.getBalls();
+        int strikes = turnScore.getStrikes();
+
+        if (resultTurn == ResultTurn.Out) {
+            OutputView.printResultTurnOfOut();
+            return;
+        }
+        if (resultTurn == ResultTurn.Nothing) {
+            OutputView.printResultTurnOfNothing();
+            return;
+        }
+        if (resultTurn == ResultTurn.OnlyBalls) {
+            OutputView.printResultTurnOfOnlyBalls(balls);
+            return;
+        }
+        if (resultTurn == ResultTurn.OnlyStrikes) {
+            OutputView.printResultTurnOfOnlyStrikes(strikes);
+            return;
+        }
+        OutputView.printResultTurnOfStrikesAndBalls(balls, strikes);
+    }
+
 }
