@@ -41,8 +41,7 @@ class PlayerNumber {
     private List<Integer> playerInput() {
         String playerInputString = Console.readLine();
         checkInputFormat(playerInputString);
-        List<Integer> playerInput = convertToIntegerList(playerInputString);
-        return playerInput;
+        return convertToIntegerList(playerInputString);
     }
 
     private void checkInputFormat(String inputString) {
@@ -77,10 +76,7 @@ class PlayerNumber {
         char first = inputString.charAt(0);
         char second = inputString.charAt(1);
         char third = inputString.charAt(2);
-        if ((first != second) && (second != third) && (third != first)) {
-            return true;
-        }
-        return false;
+        return ((first != second) && (second != third) && (third != first));
     }
 }
 
@@ -94,8 +90,8 @@ class GameInit{
     List<Integer> computerNumber;
     List<Integer> playerNumber;
     public GameInit() {
-        List<Integer> computerNumber = new ComputerNumber().computerNumber;
-        List<Integer> playerNumber = new PlayerNumber().playerNumber;
+        computerNumber = new ComputerNumber().computerNumber;
+        playerNumber = new PlayerNumber().playerNumber;
         GamePlay gamePlay = new GamePlay(computerNumber, playerNumber);
     }
 }
@@ -171,6 +167,6 @@ class GameEnd {
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        GameInit startGame = new GameInit();
+        new GameInit();
     }
 }
