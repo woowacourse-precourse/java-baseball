@@ -12,7 +12,12 @@ public class Application {
         Baseball baseball = new Baseball();
         do {
             baseball.pickRandomNumber();
-
+            do {
+                baseball.getPlayerNumber();
+                baseball.comparisonPlayerComputer();
+                baseball.printBaseballScore();
+            } while (!baseball.rightAnswer());
+            baseball.gameRestartOrEnd();
         } while (true);
     }
 }
@@ -94,12 +99,12 @@ class Baseball {
     public boolean rightAnswer() {
         boolean success = false;
         if (baseballCount.get(0) == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             success = true;
         }
         return success;
     }
     public boolean gameRestartOrEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         String optionNumber = null;
         boolean option = false;
         try {
