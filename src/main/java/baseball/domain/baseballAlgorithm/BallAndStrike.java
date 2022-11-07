@@ -1,20 +1,17 @@
 package baseball.domain.baseballAlgorithm;
 
 public enum BallAndStrike {
-    ball(0),
-    strike(0);
+    ball("볼"),
+    strike("스트라이크"),
+    nothing("낫싱");
 
-    private int count;
+    private final String koreanTag;
 
-    BallAndStrike(int count) {
-        this.count = count;
+    BallAndStrike(String koreanTag) {
+        this.koreanTag = koreanTag;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
+    public String getKoreanTag() {
+        return koreanTag;
     }
 }
