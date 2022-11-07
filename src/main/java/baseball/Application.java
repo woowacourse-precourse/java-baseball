@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        repeatBaseBallGame();
         // TODO: 프로그램 구현
     }
 
@@ -59,6 +60,7 @@ public class Application {
 
             Result result = new Result();
             result.countStrikeAndBall(userIntegerList, computerIntegerList);
+
             if(result.ball==0 && result.strike ==0){
                 System.out.println("낫싱");
             }
@@ -78,5 +80,14 @@ public class Application {
     public static List<Integer> getUserIntegerList(String userString) {
         checkUserInput(userString);
         return StringToIntegerList(userString);
+    }
+
+    public static void repeatBaseBallGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int repeat =0;
+        while (repeat==0){
+            List<Integer> computerIntegerList = reComputerNumber();
+            repeat = getRepeat(repeat,computerIntegerList);
+        }
     }
 }
