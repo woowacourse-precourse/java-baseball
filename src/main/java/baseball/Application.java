@@ -89,6 +89,7 @@ public class Application {
             restart_game();
         } else {
             System.out.println(ball_announcement + " " + strike_announcement);
+            //scanner.close();
             getUserAnswer(answer, userAnswer);
         }
     }
@@ -100,5 +101,7 @@ public class Application {
             user_answer.clear();
             getRandomNum(answer, user_answer);
         }
+        else throw new IllegalArgumentException("잘못 입력하였습니다.");
     }
+
 }
