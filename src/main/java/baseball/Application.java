@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Application {
@@ -122,7 +121,6 @@ public class Application {
         if(number != 1 && number != 2){
             throw new IllegalArgumentException("1 또는 2 중에 입력해야합니다.");
         }
-
     }
 
 }
