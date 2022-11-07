@@ -1,8 +1,8 @@
 package baseball.view;
 
 public enum Command {
-    QUIT("1"),
-    REPLAY("2"),
+    QUIT("2"),
+    REPLAY("1"),
     ;
 
     private final String value;
@@ -23,5 +23,9 @@ public enum Command {
 
     public String getValue() {
         return value;
+    }
+
+    public boolean isReplay() {
+        return this == REPLAY;
     }
 }
