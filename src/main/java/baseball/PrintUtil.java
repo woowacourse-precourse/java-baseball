@@ -4,6 +4,7 @@ import java.util.List;
 
 public class PrintUtil {
     public void playGame() {
+        RestartUtil restartUtil = new RestartUtil();
         PrintUtil printUtil = new PrintUtil();
         ArrayUtil arrayUtil = new ArrayUtil();
         InputUtil inputUtil = new InputUtil();
@@ -11,7 +12,7 @@ public class PrintUtil {
         boolean end = false;
         printUtil.inputGame(end, randomNumber);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        restartGame(inputUtil.restartQuestion());
+        restartUtil.restartGame(inputUtil.restartQuestion());
     }
     public void startApplication() {
         System.out.println("숫자 야구 게임을 시작합니다.");
