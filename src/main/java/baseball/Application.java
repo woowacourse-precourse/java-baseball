@@ -54,11 +54,36 @@ public class Application {
 
                 System.out.println("strike : " + strike);
                 System.out.println("ball : " + ball);
+
+                getHints(strike, ball);
+
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                     "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             stateOfGame = Integer.parseInt(Console.readLine());
         }
+    }
+
+    private static void getHints(int strike, int ball) {
+        List<String> hint= new ArrayList<>();
+        if(ball !=0)
+        {
+            hint.add(ball +"볼");
+        }
+        if (strike !=0)
+        {
+            hint.add(strike +"스트라이크");
+        }
+        if(hint.isEmpty())
+        {
+            hint.add("낫싱");
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String item : hint){
+            sb.append(item);
+            sb.append(" ");
+        }
+        System.out.println(sb);
     }
 
     private static List<Integer> getRandomList() {
