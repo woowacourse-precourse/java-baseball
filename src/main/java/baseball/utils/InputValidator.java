@@ -1,5 +1,8 @@
 package baseball.utils;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputValidator {
 
     public final static Integer RESTART = 1;
@@ -19,7 +22,7 @@ public class InputValidator {
     }
 
     private static void checkRightRetryNumber(Integer progressNumber) {
-        if (progressNumber != RESTART && progressNumber != EXIT) {
+        if (progressNumber.equals(RESTART) && progressNumber.equals(EXIT)) {
             throw new IllegalArgumentException();
         }
     }
@@ -31,10 +34,13 @@ public class InputValidator {
     }
 
     private static void checkNumbers(String input) {
+        Set<Integer> duplicateNumbers = new HashSet<>();
         for (char ch : input.toCharArray()) {
             checkDigit(ch);
             checkNumberRange(Character.getNumericValue(ch));
+            duplicateNumbers.add(Character.getNumericValue(ch));
         }
+        checkDuplicateNumbers(duplicateNumbers);
     }
 
     private static void checkDigit(char ch) {
@@ -45,6 +51,12 @@ public class InputValidator {
 
     private static void checkNumberRange(Integer number) {
         if (number < 1 || number > 10) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkDuplicateNumbers(Set<Integer> duplicateNumbers) {
+        if (duplicateNumbers.size() != BASEBALL_INPUT_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
