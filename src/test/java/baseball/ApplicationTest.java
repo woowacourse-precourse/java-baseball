@@ -123,7 +123,7 @@ class ApplicationTest extends NsTest {
     void 숫자가아닌_문자를_입력했을때_테스트() {
         String input = "ab2";
 
-        assertThatThrownBy(() -> Validation.IsOnlyNumber(input))
+        assertThatThrownBy(() -> Validation.isOnlyNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("숫자 외의 문자를 입력하셨습니다.");
     }
@@ -132,7 +132,7 @@ class ApplicationTest extends NsTest {
     void 입력한_숫자가_3개인지_확인하는_테스트() {
         String input = "1234";
 
-        assertThatThrownBy(() -> Validation.IsNumberThree(input))
+        assertThatThrownBy(() -> Validation.isNumberThree(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력값은 3글자의 숫자입니다.");
     }
@@ -141,7 +141,7 @@ class ApplicationTest extends NsTest {
     void 입력한_숫자가_1또는_2인지_테스트() {
         String input = "3";
 
-        assertThatThrownBy(() -> Validation.IsRestartOrEnd(input))
+        assertThatThrownBy(() -> Validation.isRestartOrEnd(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("게임이 끝난뒤에는 1 또는 2의 숫자를 입력해야만 합니다.");
     }
@@ -150,7 +150,7 @@ class ApplicationTest extends NsTest {
     void 입력한_숫자가_중복인지_테스트() {
         String input = "313";
 
-        assertThatThrownBy(() -> Validation.IsDistinct(input))
+        assertThatThrownBy(() -> Validation.isDistinct(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복된 숫자는 입력할 수 없습니다.");
     }

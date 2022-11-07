@@ -16,9 +16,9 @@ public class PrintAndRead {
         System.out.print("숫자를 입력해주세요 : ");
         String question = Console.readLine();
 
-        Validation.IsOnlyNumber(question);
-        Validation.IsNumberThree(question);
-        Validation.IsDistinct(question);
+        Validation.isOnlyNumber(question);
+        Validation.isNumberThree(question);
+        Validation.isDistinct(question);
 
         return convertToIntegerList(question);
     }
@@ -55,7 +55,7 @@ public class PrintAndRead {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String answer = Console.readLine();
-        Validation.IsRestartOrEnd(answer);
+        Validation.isRestartOrEnd(answer);
 
         return Integer.parseInt(answer);
     }
