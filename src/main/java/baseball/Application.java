@@ -140,4 +140,16 @@ public class Application {
         digits.add(number%10);
         return digits;
     }
+
+    public static void gameStart(){
+        int answerNum = makeAnswerNumber();
+        int trialNum = tryAnswer();
+        List<Integer> answerDigits = getThreeDigitsValues(answerNum);
+        List<Integer> trialDigits = getThreeDigitsValues(trialNum);
+
+        while(!isTrialCorrect(countBall(answerDigits, trialDigits), countStrike(answerDigits, trialDigits))) {
+            trialNum = tryAnswer();
+            trialDigits = getThreeDigitsValues(trialNum);
+        }
+    }
 }
