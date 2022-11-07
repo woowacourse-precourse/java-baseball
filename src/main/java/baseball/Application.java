@@ -13,17 +13,14 @@ public class Application {
         DataProcessing process = new DataProcessing();
         OutputPrint print = new OutputPrint();
 
-        while (true) {
+        do {
             print.printRequest();
             input.inputNumber(THREE_INPUT);
             inputList = input.getInputValue();
             process.setData(inputList);
             processedData = process.getProcessedData();
             print.printGameResult(processedData);
-            if (processedData[0] == 3) {    //세가지 숫자와 위치를 다 맞춰 게임이 끝났을 때
-                break;
-            }
-        }
+        } while(processedData[0] != 3);
     }
 
     private static void gameStart() {
@@ -32,16 +29,13 @@ public class Application {
         DataInput input = new DataInput();
 
         print.printStart();
-        while (true) {
+        do {
             inGame();
             print.printWin();
             print.printRestart();
             input.inputNumber(ONE_INPUT);
             inputList = input.getInputValue();
-            if (inputList.get(0) == 2) {    //게임 진행의사가 없어서 게임을 아예 종료 시킬 때
-                break;
-            }
-        }
+        } while (inputList.get(0) == 1);
     }
 
     public static void main(String[] args) {
