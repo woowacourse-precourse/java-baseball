@@ -39,8 +39,9 @@ public class GameController {
     }
 
     private boolean restartGame() {
-        String inputCommand = inputStatementNumber();
-        return inputCommand.equals(RESTART_STATEMENT);
+        String inputStatement = inputStatementNumber();
+        validateStatement(inputStatement);
+        return inputStatement.equals(RESTART_STATEMENT);
     }
 
     private void validateStatement( String command ) {
