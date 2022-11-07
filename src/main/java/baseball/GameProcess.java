@@ -62,9 +62,10 @@ public class GameProcess {
 
     private void setAnswer(){
         // 랜덤으로 지정된 3자리 입력받기, temp = 입력받은거;
-        int[] temp = new int[]{7, 1, 3};
+        int[] gotThreeNumber = InputOutput.getRandomAnswer();
+        answer = new int[10];
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            answer[temp[i]] = i + 1;
+            answer[gotThreeNumber[i]] = i + 1;
         }
     }
 

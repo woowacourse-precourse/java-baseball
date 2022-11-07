@@ -1,6 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.*;
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputOutput {
     public static int[] getThreeNumber(){
@@ -21,6 +22,22 @@ public class InputOutput {
         // 예외처리 다 해주고
 
         return charToInt(line.charAt(0));
+    }
+
+    public static int[] getRandomAnswer(){
+        int[] duplicationChecking = new int[10];
+        int[] gotThreeNumber = new int[3];
+
+        int i = 0;
+        while (i < 3){
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (duplicationChecking[num] == 0){
+                duplicationChecking[num] = 1;
+                gotThreeNumber[i] = num;
+                i += 1;
+            }
+        }
+        return gotThreeNumber;
     }
 
     public static void printGameStart(){
