@@ -13,6 +13,14 @@ public class Valid {
 		throw new IllegalArgumentException(EXCEPTION_MESSAGE);
 	}
 
+	public static String validRestartNumber(String inputNumber) {
+		if (isOneOrTwo(inputNumber)) {
+			return inputNumber;
+		}
+
+		throw new IllegalArgumentException(EXCEPTION_MESSAGE);
+	}
+
 	private static boolean isWrongLength(String inputNumber) {
 		if (inputNumber.length() == DIGIT_LENGTH) {
 			return true;
@@ -41,5 +49,12 @@ public class Valid {
 			return false;
 		}
 		return true;
+	}
+
+	private static boolean isOneOrTwo(String inputNumber) {
+		if (inputNumber.equals("1") || inputNumber.equals("2")) {
+			return true;
+		}
+		return false;
 	}
 }
