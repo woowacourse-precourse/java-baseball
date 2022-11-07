@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Constant.*;
+import static baseball.Constant.CORRECT_ANSWER;
 
 public class Application {
     public Computer computer;
@@ -21,6 +22,9 @@ public class Application {
             int ball_num = application.countBall();
             int strike_num = application.countStrike();
             application.proposeHint(ball_num,strike_num);
+            if (application.checkAllStrike(strike_num)) {
+                break;
+            }
         }
     }
     public int countBall() {
@@ -58,5 +62,18 @@ public class Application {
         if (ball_num == 0 && strike_num == 0) {
             System.out.println("낫싱");
         }
+    }
+    public boolean checkAllStrike(int strike_num) {
+        if (strike_num == CORRECT_ANSWER) {
+            if (choiceRestartGame()){
+                return true;
+            }
+            else {
+                computer.randomNumber.clear();
+                computer.makeRandomNumber();
+                return false;
+            }
+        }
+        else {return false;}
     }
 }
