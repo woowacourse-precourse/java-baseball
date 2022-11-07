@@ -57,6 +57,18 @@ class ApplicationTest extends NsTest {
 
         assertThat(expectedOutput).isEqualTo(realOutput);
     }
+
+    @Test
+    void isValidInput_입력이_유효한_경우_참(){
+        List<String> playerInput = List.of("012", "112", "12", "1234", "", "123");
+        List<Boolean> expectedOutput = List.of(false, false, false, false, false, true);
+
+        List<Boolean> realOutput = playerInput.stream()
+                .map(input -> Player.isValidInput(input))
+                .collect(Collectors.toList());
+
+        assertThat(realOutput).isEqualTo(expectedOutput);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
