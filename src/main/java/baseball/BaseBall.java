@@ -133,4 +133,11 @@ public class BaseBall {
         }
     }
 
+    private String makeRestartInput() {
+        String restartInput = readLine();
+        if (!(restartInput.equals(RESTART_NUMBER) || restartInput.equals(END_NUMBER2))) {
+            throw new IllegalArgumentException();
+        }
+        return restartInput;
+    }
 }
