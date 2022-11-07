@@ -63,4 +63,12 @@ public class Computer {
     public List<Integer> getAnswerNumber() {
         return answerNumber;
     }
+
+    public void setAnswerNumber(List<Integer> answerNumber) {
+        this.answerNumber = answerNumber;
+    }
+
+    public Integer getBall() {
+        return ball;
+    }
 }
