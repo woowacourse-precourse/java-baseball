@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 
 import static baseball.type.NumberType.NUMBER_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,6 +23,7 @@ public class ComputerNumberServiceTest {
         List<Integer> computerNumbers = ComputerNumberService.generate();
 
         assertThat(computerNumbers)
+                .isNotNull()
                 .isEqualTo(computerNumbers
                         .stream()
                         .distinct()
