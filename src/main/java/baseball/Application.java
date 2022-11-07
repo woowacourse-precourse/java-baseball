@@ -93,12 +93,15 @@ class GameInit{
     public GameInit() {
         computerNumber = new ComputerNumber().computerNumber;
         playerNumber = new PlayerNumber().playerNumber;
-        GamePlay gamePlay = new GamePlay(computerNumber, playerNumber);
-        while (!gamePlay.isRight) {
-            playerNumber = new PlayerNumber().playerNumber;
-            gamePlay = new GamePlay(computerNumber, playerNumber);
+        try {
+            GamePlay gamePlay = new GamePlay(computerNumber, playerNumber);
+            while (!gamePlay.isRight) {
+                playerNumber = new PlayerNumber().playerNumber;
+                gamePlay = new GamePlay(computerNumber, playerNumber);
+            }
+            new GameEnd();
+        } catch (NullPointerException e) {
         }
-        new GameEnd();
     }
 }
 
