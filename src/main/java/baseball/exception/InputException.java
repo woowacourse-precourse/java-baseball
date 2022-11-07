@@ -6,6 +6,10 @@ import java.util.stream.IntStream;
 
 public class InputException {
 
+    private static final int USER_NUMBER_LENGTH = 3;
+    private static final String RESTART_NUMBER = "1";
+    private static final String END_NUMBER = "2";
+
     public static String validUserNumberException(String userNumber) {
         if (isThreeLength(userNumber) || isInteger(userNumber)
                 || isIncludeZero(userNumber) || isDuplicationNumber(userNumber)) {
@@ -18,7 +22,7 @@ public class InputException {
         Set<Character> set = new HashSet<>();
         IntStream.range(0, 3)
                 .forEach(i -> set.add(userNumber.charAt(i)));
-        return 3 != set.size();
+        return USER_NUMBER_LENGTH != set.size();
     }
 
     private static boolean isIncludeZero(String userNumber) {
@@ -34,11 +38,11 @@ public class InputException {
     }
 
     private static boolean isThreeLength(String userNumber) {
-        return userNumber.length() != 3;
+        return userNumber.length() != USER_NUMBER_LENGTH;
     }
 
     public static String validRestartNumberException(String restartNumber) {
-        if (!restartNumber.equals("1") && !restartNumber.equals("2")) {
+        if (!restartNumber.equals(RESTART_NUMBER) && !restartNumber.equals(END_NUMBER)) {
             throw new IllegalArgumentException();
         }
         return restartNumber;
