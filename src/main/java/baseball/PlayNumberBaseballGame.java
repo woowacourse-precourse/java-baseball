@@ -19,36 +19,42 @@ public class PlayNumberBaseballGame {
         return computer;
     }
 
-    public String outputGameStartStatement(){
+    public String outputGameStartStatement() {
         return "숫자 야구 게임을 시작합니다.";
     }
 
-    public String compareNumbersBetweenComputerAndPlayer(List<Integer> computer, List<Integer> player){
-        String compareResult="";
-        int strike=0;
-        int ball=0;
+    public String compareNumbersBetweenComputerAndPlayer(List<Integer> computer, List<Integer> player) {
+        String compareResult = "";
+        int strike = 0;
+        int ball = 0;
 
-        if(isThreeStrike(computer,player)){
-            strike=3;
-            compareResult = outputResultComparisonOfNumbers(strike,ball);
+        if (isThreeStrike(computer, player)) {
+            strike = 3;
+            compareResult = outputResultComparisonOfNumbers(strike, ball);
             return compareResult;
         }
 
         for (int numberLocation = 0; numberLocation < 3; numberLocation++) {
-            if (isStrike(computer, player, numberLocation)) {
+            if (isStrike(computer.get(numberLocation), player.get(numberLocation))) {
                 strike++;
-                continue;
-            } else if (isBall(computer, player, numberLocation)) {
+            } else if (isBall(computer, player.get(numberLocation))) {
                 ball++;
             }
         }
 
-        compareResult = outputResultComparisonOfNumbers(strike,ball);
+        compareResult = outputResultComparisonOfNumbers(strike, ball);
         return compareResult;
     }
 
-    public boolean isThreeStrike(List<Integer> computer, List<Integer> player){
-        if(Arrays.equals(computer.toArray(), player.toArray())){
+    public boolean isThreeStrike(List<Integer> computer, List<Integer> player) {
+        if (Arrays.equals(computer.toArray(), player.toArray())) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isStrike(int computerNum, int playerNum){
+        if(computerNum==playerNum){
             return true;
         }
         return false;
