@@ -16,4 +16,15 @@ public class CountTest {
         assertThat(Count.Strike(opponent, user)).isEqualTo(strikeCount);
     }
 
+    @Test
+    void countOverlapNumbers() {
+        int overlapCount = 2;
+        assertThat(Count.countOverlapNumbers(opponent, user)).isEqualTo(overlapCount);
+    }
+
+    @Test
+    void countBalls() {
+        int ballCount = 1;
+        assertThat(Count.Ball(opponent, user)).isEqualTo(ballCount);
+    }
 }
