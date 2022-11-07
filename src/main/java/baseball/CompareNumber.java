@@ -14,8 +14,6 @@ public class CompareNumber {
 				getUserNumberInStrike(user_number_list, random_number_list,i,k);
 			}
 		}
-		System.out.println(STRIKE);
-		System.out.println(BALL);
 		RoundScore.addScoreAtUserInputNumber(STRIKE,BALL);
 	}
 
@@ -32,7 +30,8 @@ public class CompareNumber {
 		}
 	}
 
-	private static void getUserNumberInBall(int user_num, List<Integer> random_number_list,int index1,int index2) {
+	private static void getUserNumberInBall(int user_num, List<Integer> random_number_list,
+													int index1,int index2) {
 		if (user_num==random_number_list.get(index2)&&index1!=index2) {
 			BALL++;
 		}
