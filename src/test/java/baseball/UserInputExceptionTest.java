@@ -40,4 +40,21 @@ class UserInputExceptionTest {
         }
     }
 
+    @Test
+    void isInputLength() throws Exception {
+        //Given
+        UserInputException exception = new UserInputException();
+        String input = "1232";
+
+        //When
+        int wrightLength = 4;
+        int wrongLength = 3;
+        boolean wright = exception.isInputLength(input, wrightLength);
+        boolean wrong = exception.isInputLength(input, wrongLength);
+
+        //Then
+        assertThat(wright).isTrue();
+        assertThat(wrong).isFalse();
+    }
+
 }
