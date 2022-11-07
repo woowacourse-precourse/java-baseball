@@ -2,7 +2,7 @@ package baseball.domain;
 
 import java.util.List;
 
-public class Count {
+public class Calculator {
 
     List<String> computerAnswer;
     List<String> userAnswer;
@@ -10,16 +10,14 @@ public class Count {
     public int ballResult;
     public int strikeResult;
 
-    public Count(List<String> computerAnswer, List<String> userAnswer) {
+    public Calculator(List<String> computerAnswer, List<String> userAnswer) {
         this.computerAnswer = computerAnswer;
         this.userAnswer = userAnswer;
         this.size = Computer.COMPUTER_NUMBER_SIZE;
-        this.ballResult = 0;
-        this.strikeResult = 0;
-        count();
+        calculate();
     }
 
-    public void count() {
+    public void calculate() {
         for (int i = 0; i < size; i++) {
             isValidBall(i);
             isValidStrike(i);
