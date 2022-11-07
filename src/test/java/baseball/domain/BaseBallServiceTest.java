@@ -1,9 +1,6 @@
 package baseball.domain;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
@@ -19,27 +16,46 @@ class BaseBallServiceTest {
         baseBallService = new BaseBallServiceImpl();
     }
 
-    @RepeatedTest(100)
-    @Test
-    void selectRandomNumbers() {
+    @Nested
+    class RandomNumberTest {
+        @RepeatedTest(100)
+        @Test
+        void selectRandomNumbers() {
 
-        //when
-        List<Integer> numbers = baseBallService.selectRandomNumbers();
+            //when
+            List<Integer> numbers = baseBallService.selectRandomNumbers();
 
-        //then
-        assertDoesNotThrow(()->{
-            validateNumbers(numbers);
-        });
-    }
+            //then
+            assertDoesNotThrow(() -> {
+                validateNumbers(numbers);
+            });
+        }
 
-     void validateNumbers(List<Integer> numbers){
+        void validateNumbers(List<Integer> numbers) {
 
-        if(numbers.size() != 3)
-            throw new IllegalArgumentException();
-
-        for(int num : numbers){
-            if(num <1 || num >9)
+            if (numbers.size() != 3)
                 throw new IllegalArgumentException();
+
+            for (int num : numbers) {
+                if (num < 1 || num > 9)
+                    throw new IllegalArgumentException();
+            }
         }
     }
+
+    @Nested
+    class verifyingTest{
+
+        @Test
+        void 입력받은_문자_검증_예외처리_테스트(){
+            assertThrows(IllegalArgumentException.class,()->{
+
+            });
+        }
+    }
+
+//
+//    List<Integer> stringToStringList(String str);
+//    void compareNumbers(List<Integer> numbers);
+//    int inputQuestionRestart();
 }

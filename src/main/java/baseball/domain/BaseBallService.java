@@ -6,7 +6,9 @@ public interface BaseBallService {
 
     List<Integer> selectRandomNumbers();
     void saveRandomNumbers(List<Integer> numbers);
-    void inputNumbers();
+    String inputString();
+    void verify(String input);
+    List<Integer> stringToIntegerList(String str);
     void compareNumbers(List<Integer> numbers);
     int inputQuestionRestart();
 }

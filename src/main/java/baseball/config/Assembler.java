@@ -2,6 +2,8 @@ package baseball.config;
 
 import baseball.domain.BaseBallService;
 import baseball.domain.BaseBallServiceImpl;
+import baseball.domain.Verification;
+import baseball.domain.VerificationImpl;
 import baseball.domain.entity.NumberRepository;
 import baseball.domain.entity.NumberRepositoryImpl;
 import baseball.view.MessagePrinter;
@@ -19,5 +21,8 @@ public class Assembler {
 
     public NumberRepository numberRepository(){
         return new NumberRepositoryImpl();
+    }
+    public Verification verification(){
+        return new VerificationImpl();
     }
 }

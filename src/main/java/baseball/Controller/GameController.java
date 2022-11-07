@@ -14,12 +14,20 @@ public class GameController {
     public GameController(Assembler assembler){
         messagePrinter = assembler.messagePrinter();
         baseBallService = assembler.baseBallService();
-
     }
 
     public void run(){
         messagePrinter.printGameStart();
-        List<Integer> number = baseBallService.selectRandomNumbers();
-        baseBallService.saveRandomNumbers(number);
+        List<Integer> selectedNumber = baseBallService.selectRandomNumbers();
+        baseBallService.saveRandomNumbers(selectedNumber);
+        List<Integer> UserInputNumbers = inputNumber();
+    }
+
+    public List<Integer> inputNumber(){
+        messagePrinter.printReqGameNumbersInput();
+        String input = baseBallService.inputString();
+        baseBallService.verify(input);
+
+        return baseBallService.stringToIntegerList(input);
     }
 }

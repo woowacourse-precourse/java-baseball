@@ -36,4 +36,16 @@ class MessagePrinterTest {
         //then
         assertEquals(expectOutput, outputStreamCaptor.toString().trim());
     }
+
+    @Test
+    void printInputNumber(){
+        //given
+        String expectOutput = "숫자를 입력해주세요 : ";
+
+        //when
+        messagePrinter.printReqGameNumbersInput();
+
+        //then
+        assertEquals(expectOutput,outputStreamCaptor.toString().replaceAll("(\r\n|\r|\n|\n\r)", ""));
+    }
 }
