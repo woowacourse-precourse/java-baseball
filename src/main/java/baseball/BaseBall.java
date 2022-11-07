@@ -4,7 +4,6 @@ public class BaseBall {
 	public static final String RESTART = "1";
 
 	public static void start() {
-		GameMessage.startGame();
 		Balls computer = Balls.createRandom();
 		GameResult gameResult = GameResult.createEmpty();
 
