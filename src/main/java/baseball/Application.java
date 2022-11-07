@@ -95,6 +95,21 @@ public class Application {
         return strikeCnt;
     }
 
+    public static int countBall(List<Integer> answerDigits, List<Integer> trialDigits){
+        int ballCnt = 0;
+
+        if(trialDigits.get(0) == answerDigits.get(1) || trialDigits.get(0) == answerDigits.get(2))
+            ballCnt++;
+
+        if(trialDigits.get(1) == answerDigits.get(0) || trialDigits.get(1) == answerDigits.get(2))
+            ballCnt++;
+
+        if(trialDigits.get(2) == answerDigits.get(0) || trialDigits.get(2) == answerDigits.get(1))
+            ballCnt++;
+
+        return ballCnt;
+    }
+
     public static List<Integer> getThreeDigitsValues(int number){
         // 세 자리의 정수가 입력되면 각 자릿수를 List에 담아 반환
         List<Integer> digits = new ArrayList<>();
