@@ -32,7 +32,7 @@ class Baseball {
         }
     }
 
-    public void playerNumberList () {
+    public void getPlayerNumber() {
         String getPlayerNumber = null;
         try {
             InputStreamReader ir = new InputStreamReader(System.in);
@@ -40,11 +40,13 @@ class Baseball {
             System.out.print("숫자를 입력해주세요 :");
             getPlayerNumber = br.readLine();
         } catch (Exception e) { }
-
-        int num = Integer.parseInt(getPlayerNumber);
+        playerNumberList(getPlayerNumber);
+    }
+    public void playerNumberList(String getPlayerNumber) {
+        int playerNum = Integer.parseInt(getPlayerNumber);
         for (int i = 0; i < 3; i++) {
-            playerNumber.set(i, (num % 10));
-            num /= 10;
+            playerNumber.set(i, (playerNum % 10));
+            playerNum /= 10;
         }
     }
 
