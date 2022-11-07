@@ -21,7 +21,10 @@ public class Application {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
 
-            playGame(randomNumberList);
+            if (!playGame(randomNumberList)) {
+
+                break;
+            }
             endGame();
 
         } while (replayGame());
@@ -32,14 +35,14 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void playGame(List<Integer> randomNumberList) {
+    public static boolean playGame(List<Integer> randomNumberList) {
 
         while(true) {
 
             String numberString = putInNumber();
 
             if (!checkUserNumber(numberString)) {
-                continue;
+                return false;
             }
 
             int[] userNumbers = {0, 0, 0};
@@ -54,6 +57,8 @@ public class Application {
             }
 
         }
+
+        return true;
     }
 
     public static void putInRandomNumber(List<Integer> randomNumberList) {
