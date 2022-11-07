@@ -6,8 +6,8 @@ public class Computer {
 
     private final List<Integer> targetNumber;
 
-    public Computer(List<Integer> targetNumber) {
-        this.targetNumber = targetNumber;
+    public Computer() {
+        this.targetNumber = RandomGenerator.generateDistinctThreeRandomNumber();
     }
 
     public List<Integer> getTargetNumber() {
