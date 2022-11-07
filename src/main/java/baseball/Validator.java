@@ -1,7 +1,11 @@
 package baseball;
 
 import static baseball.Const.FINISH;
+import static baseball.Const.INPUT_3_NUMBERS;
+import static baseball.Const.INPUT_WITHOUT_OVERLAP;
+import static baseball.Const.ONLY_NUMBER;
 import static baseball.Const.RESTART;
+import static baseball.Const.RESTART_1_FINISH_2;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,23 +19,30 @@ public class Validator {
         overlapChecker = new HashSet<>();
 
         if (input.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INPUT_3_NUMBERS);
         }
 
         for (int i = 0; i < 3; i++) {
             char number = input.charAt(i);
-            if (isWrongNumber(number)) {
-                throw new IllegalArgumentException();
-            }
+            checkInput(number);
         }
     }
 
-    private boolean isWrongNumber(char number) {
-        return isCharacter(number) || !overlapChecker.add(number);
+    private void checkInput(char number) {
+        checkCharacter(number);
+        checkOverlap(number);
     }
 
-    private boolean isCharacter(char number) {
-        return number < '1' || '9' < number;
+    private void checkOverlap(char number) {
+        if (!overlapChecker.add(number)) {
+            throw new IllegalArgumentException(INPUT_WITHOUT_OVERLAP);
+        }
+    }
+
+    private void checkCharacter(char number) {
+        if (number < '1' || '9' < number) {
+            throw new IllegalArgumentException(ONLY_NUMBER);
+        }
     }
 
     public boolean userWantRestart(String input) {
@@ -40,7 +51,7 @@ public class Validator {
         } else if (Objects.equals(input, FINISH)) {
             return false;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(RESTART_1_FINISH_2);
         }
     }
 
