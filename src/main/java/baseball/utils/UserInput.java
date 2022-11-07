@@ -1,11 +1,12 @@
 package baseball.utils;
 
+import static baseball.utils.BaseballConstants.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class UserInput {
 
     public static String input(){
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(WRITE_NUMBER);
         String userInput = readLine();
 
         NumberChecker.checkUserInput(userInput);
@@ -14,7 +15,7 @@ public class UserInput {
     }
 
     public static String endInput(){
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.print(RESTART);
         String userInput = readLine();
 
         NumberChecker.isOneOrTwo(userInput);
