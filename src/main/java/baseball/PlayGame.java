@@ -13,10 +13,11 @@ public class PlayGame {
         this.userNumber = setUserNumber;
     }
 
-    public void checkStrikeAndBall(){
+    public int checkStrikeAndBall(){
         compareNumberForStrike();
         compareNumberForBall();
         outputResult();
+        return strike;
     }
 
     public List<Integer> checkStrikeAndBallForTest(){
