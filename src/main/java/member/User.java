@@ -15,11 +15,11 @@ public class User {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        if (!isCorrectRange(input)) {
+        if (!isCorrectRange(input) || !isUniqueDigits(input)) {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 게임 종료");
         }
 
-        setNumber(input);
+//        setNumber(input);
     }
 
     private boolean isCorrectRange(String inputNumber) {
@@ -28,4 +28,17 @@ public class User {
         return Pattern.matches(pattern, inputNumber);
     }
 
+    public boolean isUniqueDigits(String inputNumber) {
+        List<Integer> checkNumbers = new ArrayList<>();
+
+        for (int i = STARTING_INDEX; i < MAX_LENGTH_OF_NUMBER; i++) {
+
+            if (checkNumbers.contains(Character.getNumericValue(inputNumber.charAt(i)))) {
+                return false;
+            }
+            checkNumbers.add(Character.getNumericValue(inputNumber.charAt(i)));
+        }
+
+        return true;
+    }
 }
