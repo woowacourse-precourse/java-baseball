@@ -13,6 +13,8 @@
 
 > ***게임 종료 및 실행***
 > - gameBreak() 메서드 생성
-> - [ ] 입력이 2가 들어오면 True 반환
-> - [ ] 입력이 1이면 false 반환
-> - [ ] 그 외 상황은 IllegalException 반환
+> - [x] 입력값을 Integer 데이터로 변환
+> - getBreakConditional() 메서드 생성
+> - [x] 입력이 2가 들어오면 True 반환
+> - [x] 입력이 1이면 false 반환
+> - [x] 그 외 상황은 IllegalException 반환
