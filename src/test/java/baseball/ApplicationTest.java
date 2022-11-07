@@ -28,6 +28,44 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 유저_입력_올바른지_확인_3자리_미만(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("0을 제외한 서로 다른 세 자리의 숫자를 입력 해주세요.")
+        );
+    }
+
+    @Test
+    void 유저_입력_올바른지_확인_3자리_초과(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("0을 제외한 서로 다른 세 자리의 숫자를 입력 해주세요.")
+        );
+    }
+
+    @Test
+    void 유저_입력_올바른지_확인_숫자만(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12r"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("0을 제외한 서로 다른 세 자리의 숫자를 입력 해주세요.")
+        );
+    }
+
+    @Test
+    void 유저_입력_올바른지_확인_중복_있는지(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("121"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("0을 제외한 서로 다른 세 자리의 숫자를 입력 해주세요.")
+        );
+    }
+
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
