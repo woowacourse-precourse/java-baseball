@@ -1,12 +1,12 @@
 package baseball.game.enums;
 
-public enum Result {
+public enum GuessTarget {
     STRIKE("스트라이크"),
     BALL("볼");
 
     private final String value;
 
-    Result(String value) {
+    GuessTarget(String value) {
         this.value = value;
     }
 

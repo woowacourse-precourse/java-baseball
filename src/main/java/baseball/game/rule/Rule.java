@@ -1,10 +1,10 @@
 package baseball.game.rule;
 
-import baseball.game.enums.Result;
+import baseball.game.enums.GuessTarget;
 
 public interface Rule {
 
-    Result getResult();
+    GuessTarget getResult();
 
     Integer check(Integer answer, Integer guess);
 }

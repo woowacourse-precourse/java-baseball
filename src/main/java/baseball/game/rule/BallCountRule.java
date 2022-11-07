@@ -1,14 +1,14 @@
 package baseball.game.rule;
 
 
-import baseball.game.enums.Result;
+import baseball.game.enums.GuessTarget;
 
 import static baseball.game.util.GameUtil.NUMBER_SIZE;
 
 public class BallCountRule implements Rule {
 
     private static final Rule instance = new BallCountRule();
-    private static final Result result = Result.BALL;
+    private static final GuessTarget guessTarget = GuessTarget.BALL;
 
     private BallCountRule() {
     }
@@ -18,8 +18,8 @@ public class BallCountRule implements Rule {
     }
 
     @Override
-    public Result getResult() {
-        return result;
+    public GuessTarget getResult() {
+        return guessTarget;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.game.enums.Result;
+import baseball.game.enums.GuessTarget;
 import baseball.game.rule.Rule;
 import baseball.game.rule.RuleChecker;
 import baseball.game.rule.BallCountRule;
@@ -27,7 +27,7 @@ public class Game {
         while (true) {
             Integer guess = gameUtil.getUserInput();
 
-            Map<Result, Integer> guessResult = validateGuess(answer, guess);
+            Map<GuessTarget, Integer> guessResult = validateGuess(answer, guess);
             printResult(guessResult);
 
             if (isStrikeOut(guessResult)) {
@@ -37,11 +37,11 @@ public class Game {
     }
 
 
-    private static boolean isStrikeOut(Map<Result, Integer> guessResult) {
-        return guessResult.get(Result.STRIKE) == STRIKE_OUT_COUNT;
+    private static boolean isStrikeOut(Map<GuessTarget, Integer> guessResult) {
+        return guessResult.get(GuessTarget.STRIKE) == STRIKE_OUT_COUNT;
     }
 
-    private static void printResult(Map<Result, Integer> guessResult) {
+    private static void printResult(Map<GuessTarget, Integer> guessResult) {
         if (isNothing(guessResult)) {
             systemUtil.print(NOTHING);
             return;
@@ -51,16 +51,16 @@ public class Game {
         systemUtil.print(resultString);
     }
 
-    private static boolean isNothing(Map<Result, Integer> guessResult) {
-        return guessResult.get(Result.BALL) == 0 && guessResult.get(Result.STRIKE) == 0;
+    private static boolean isNothing(Map<GuessTarget, Integer> guessResult) {
+        return guessResult.get(GuessTarget.BALL) == 0 && guessResult.get(GuessTarget.STRIKE) == 0;
     }
 
-    private static String getResultMessage(Map<Result, Integer> guessResult) {
+    private static String getResultMessage(Map<GuessTarget, Integer> guessResult) {
         List<String> results = new ArrayList<>();
 
-        Set<Map.Entry<Result, Integer>> entries = guessResult.entrySet();
-        for (Map.Entry<Result, Integer> entry : entries) {
-            Result key = entry.getKey();
+        Set<Map.Entry<GuessTarget, Integer>> entries = guessResult.entrySet();
+        for (Map.Entry<GuessTarget, Integer> entry : entries) {
+            GuessTarget key = entry.getKey();
             Integer value = entry.getValue();
 
             if (value != 0) {
@@ -71,14 +71,14 @@ public class Game {
         return String.join(" ", results);
     }
 
-    private static Map<Result, Integer> validateGuess(Integer answer, Integer guess) {
+    private static Map<GuessTarget, Integer> validateGuess(Integer answer, Integer guess) {
         // should keep this list element order for correct console output
         List<Rule> scoreRules = List.of(
                 BallCountRule.getInstance(),
                 StrikeCountRule.getInstance()
         );
 
-        Map<Result, Integer> guessResult = RuleChecker.check(scoreRules, answer, guess);
+        Map<GuessTarget, Integer> guessResult = RuleChecker.check(scoreRules, answer, guess);
 
         return guessResult;
     }

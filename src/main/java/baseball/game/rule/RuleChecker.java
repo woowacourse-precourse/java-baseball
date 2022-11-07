@@ -1,6 +1,6 @@
 package baseball.game.rule;
 
-import baseball.game.enums.Result;
+import baseball.game.enums.GuessTarget;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -11,8 +11,8 @@ public class RuleChecker {
     private RuleChecker() {
     }
 
-    public static Map<Result, Integer> check(List<Rule> rules, Integer answer, Integer guess) {
-        Map<Result, Integer> guessResult = new LinkedHashMap<>();
+    public static Map<GuessTarget, Integer> check(List<Rule> rules, Integer answer, Integer guess) {
+        Map<GuessTarget, Integer> guessResult = new LinkedHashMap<>();
 
         for (Rule rule : rules) {
             guessResult.put(rule.getResult(), rule.check(answer, guess));
