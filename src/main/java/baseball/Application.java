@@ -5,7 +5,6 @@ import static java.lang.System.out;
 import domain.Computer;
 import domain.Referee;
 import domain.User;
-import java.util.Scanner;
 
 public class Application {
 
@@ -21,19 +20,19 @@ public class Application {
 
         int playingStatus;
         do {
-            Scanner scanner = new Scanner(System.in);
-            playBaseballGame(user, computer, referee, scanner);
-            playingStatus = user.isEndGame(scanner);
+            playBaseballGame(user, computer, referee);
+            playingStatus = user.isEndGame();
         } while (playingStatus == END_CODE);
     }
 
-    private static void playBaseballGame(User user, Computer computer, Referee referee, Scanner scanner) {
+    private static void playBaseballGame(User user, Computer computer, Referee referee) {
+        computer.init();
         computer.createRandomNumbers();
 
         do {
             user.init();
             out.print("숫자를 입력해주세요 : ");
-            user.guessComputerNumbers(scanner);
+            user.guessComputerNumbers();
             referee.init();
             referee.judge();
 

@@ -1,9 +1,9 @@
 package domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -13,10 +13,10 @@ public class User {
     private static final int INAPPROPRIATE_SIZE = 3;
     private static final int NUMBER_OF_DIGITS = 3;
 
-    public void guessComputerNumbers(Scanner scanner) {
+    public void guessComputerNumbers() {
         List<Character> unverifiedValueList;
 
-        String userEnteredValues = scanner.nextLine();
+        String userEnteredValues = Console.readLine();
 
         checkEnteredValuesLength(userEnteredValues);
         checkEnteredValuesOverlap(userEnteredValues);
@@ -63,10 +63,10 @@ public class User {
         this.verifiedValueList = new ArrayList<>();
     }
 
-    public int isEndGame(Scanner scanner) {
+    public int isEndGame() {
         while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int exitCode = scanner.nextInt();
+            int exitCode = Integer.parseInt(Console.readLine());
             if (exitCode == 1 || exitCode == 2) {
                 return exitCode;
             }

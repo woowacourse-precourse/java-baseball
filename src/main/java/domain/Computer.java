@@ -12,7 +12,9 @@ public class Computer {
     private static final int COUNT = 3;
 
     public void createRandomNumbers() {
-        this.numbers = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT);
+        for (int i = 0; i < COUNT; i++) {
+            numbers.add(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
+        }
     }
 
     public List<Integer> getNumbers() {
