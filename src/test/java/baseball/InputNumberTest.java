@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class InputNumberTest {
 
     @Test
-    void 사용자_입력_세자리_숫자_공백_예외_테스트() {
+    void inputGameNumber_공백_예외_테스트() {
         String input = "1 3";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -26,7 +26,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_세자리_숫자_세자리_아닌_수_예외_테스트() {
+    void inputGameNumber_세자리_아닌_수_예외_테스트() {
         String input = "2";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -40,7 +40,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_세자리_숫자_숫자가_아닐_때_예외_테스트() {
+    void inputGameNumber_숫자가_아닐_때_예외_테스트() {
         String input = "1가2";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -54,7 +54,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_세자리_숫자_테스트() {
+    void inputGameNumber_테스트() {
         String input = "123";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -65,7 +65,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_재시작_숫자_테스트() {
+    void inputRestartNumber_테스트() {
         String input = "1";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -77,7 +77,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_재시작_숫자_한자리_아닌_수_예외_테스트() {
+    void inputRestartNumber_한자리_아닌_수_예외_테스트() {
         String input = "123";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -91,7 +91,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_재시작_숫자_숫자가_아닐_때_예외_테스트() {
+    void inputRestartNumber_숫자가_아닐_때_예외_테스트() {
         String input = "가";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -105,7 +105,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_재시작_숫자_공백_예외_테스트() {
+    void inputRestartNumber_공백_예외_테스트() {
         String input = " ";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -119,7 +119,7 @@ class InputNumberTest {
     }
 
     @Test
-    void 사용자_입력_재시작_숫자_중복_예외_테스트() {
+    void inputRestartNumber_중복_예외_테스트() {
         String input = "112";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
