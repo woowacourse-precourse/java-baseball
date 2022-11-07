@@ -5,10 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
 
+import static baseball.constant.Constant.*;
+
 public class Computer {
-    private static final int RANDOM_NUMBERS_LENGTH = 3;
-    private static final int START_RANDOM_NUMBER = 1;
-    private static final int END_RANDOM_NUMBER = 9;
     private final Set<Integer> randomNumbers;
 
     public Computer() {
