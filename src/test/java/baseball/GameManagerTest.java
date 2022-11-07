@@ -29,13 +29,13 @@ public class GameManagerTest {
     }
 
     @Test
-    void checkRestartGame_메서드_1or2_아닌값_입력시_IllegalArgumentException_발생() {
+    void checkRestartGame_메서드_선택옵션이_아닌값_입력시_IllegalArgumentException_발생() {
 
         String input = "3";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
         Assertions.assertThatThrownBy(() -> GameManager.checkRestartGame()).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
+                .hasMessageContaining("선택 옵션에 없는 숫자입니다.");
     }
 }
