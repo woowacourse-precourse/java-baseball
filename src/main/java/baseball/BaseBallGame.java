@@ -123,6 +123,9 @@ public class BaseBallGame {
             play();
         }
     }
-
-
+    private void isRightRestartToken() throws IllegalArgumentException {
+        if (!restartToken.equals("1") && !restartToken.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
