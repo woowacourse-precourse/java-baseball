@@ -14,9 +14,9 @@ public class BaseballGame {
     private static final int REPLAY = 1;
     private static final int OVER = 2;
 
-    private Hitter hitter;
-    private Pitcher pitcher;
-    private Referee referee;
+    private final Hitter hitter;
+    private final Pitcher pitcher;
+    private final Referee referee;
 
     public BaseballGame(Hitter hitter, Pitcher pitcher, Referee referee) {
         this.hitter = hitter;
