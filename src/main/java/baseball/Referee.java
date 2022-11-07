@@ -6,7 +6,7 @@ public class Referee {
 
     private static RandomNumber randomNum;
 
-    Referee() {
+    public static void generateRandom() {
         randomNum = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
     }
 
