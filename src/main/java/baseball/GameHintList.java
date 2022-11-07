@@ -9,17 +9,9 @@ public class GameHintList {
     static ArrayList<String> computerSelectedNumbers;
     static ArrayList<String> userSelectedNumbers;
 
-    public HashMap<String, Integer> allGameHintList() {
-        HashMap<String, Integer> allHintHashMap = new HashMap<>();
-        if (countOfBall() == 0 && countOfStrike() != 0) {
-            allHintHashMap.put("스트라이크", countOfStrike());
-        } else if (countOfBall() != 0 && countOfStrike() == 0) {
-            allHintHashMap.put("볼", countOfBall());
-        } else {
-            allHintHashMap.put("볼", countOfBall());
-            allHintHashMap.put("스트라이크", countOfStrike());
-        }
-        return allHintHashMap;
+    public void printGameHintList() {
+        StringBuilder hintlist = sortHintHashMap();
+        System.out.println(hintlist);
     }
 
     public StringBuilder sortHintHashMap() {
@@ -34,6 +26,19 @@ public class GameHintList {
         }
 
         return hintlist;
+    }
+
+    public HashMap<String, Integer> allGameHintList() {
+        HashMap<String, Integer> allHintHashMap = new HashMap<>();
+        if (countOfBall() == 0 && countOfStrike() != 0) {
+            allHintHashMap.put("스트라이크", countOfStrike());
+        } else if (countOfBall() != 0 && countOfStrike() == 0) {
+            allHintHashMap.put("볼", countOfBall());
+        } else {
+            allHintHashMap.put("볼", countOfBall());
+            allHintHashMap.put("스트라이크", countOfStrike());
+        }
+        return allHintHashMap;
     }
 
     public static int countOfStrike() {
