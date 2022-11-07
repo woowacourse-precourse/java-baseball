@@ -2,6 +2,10 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        boolean game_cont = true;
+        while(game_cont){
+            game_cont = GameDealer.ONE_GAME(args);
+        }
     }
 }
+
