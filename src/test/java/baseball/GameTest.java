@@ -32,4 +32,10 @@ public class GameTest {
         }, 1, 2, 3);
     }
 
+    @DisplayName("숫자 입력 메세지 출력")
+    @Test
+    void printUserInputPromptTest() {
+        game.printUserInputPrompt();
+    }
+
 }
