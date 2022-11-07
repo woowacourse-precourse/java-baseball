@@ -1,21 +1,24 @@
 package baseball.controller;
 
+import baseball.vo.RandomNumber;
 import java.util.*;
 
 public class NumberController {
     private NumberController() {
     }
 
-    public static List<Integer> getStrikesAndBalls(List<Integer> users, List<Integer> computers) {
+    public static List<Integer> getStrikesAndBalls(RandomNumber users, RandomNumber computers) {
+        List<Integer> userNumbers = users.getNumbers();
+        List<Integer> answerNumbers = computers.getNumbers();
         int strikes = 0;
         int balls = 0;
 
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).equals(computers.get(i))) {
+        for (int i = 0; i < userNumbers.size(); i++) {
+            if (userNumbers.get(i).equals(answerNumbers.get(i))) {
                 strikes++;
                 continue;
             }
-            if (computers.contains(users.get(i))) {
+            if (answerNumbers.contains(userNumbers.get(i))) {
                 balls++;
             }
         }

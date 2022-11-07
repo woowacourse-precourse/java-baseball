@@ -16,16 +16,13 @@ public class Application {
         while (flag != FINISH_FLAG) {
         InfoPrinter.printStartInfo();
         AnswerNumber answerNumber = new AnswerNumber();
-            while (true) {
+        int strikes = 0;
+            while (strikes < AnswerNumber.MAX_NUMBER_OF_DIGIT) {
                 InfoPrinter.printInputInfo();
                 UserNumber userNumber = new UserNumber(Console.readLine());
                 List<Integer> strikesAndBalls = NumberController.getStrikesAndBalls(userNumber, answerNumber);
-
                 InfoPrinter.printStrikesAndBalls(strikesAndBalls);
-
-                if (strikesAndBalls.get(0) == UserNumber.MAX_NUMBER_OF_DIGIT) {
-                    break;
-                }
+                strikes = strikesAndBalls.get(0);
             }
         InfoPrinter.printExitInfo();
         flag = ExitFlagController.getExitFlag();
