@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class UserInputExceptionTest {
@@ -55,6 +57,38 @@ class UserInputExceptionTest {
         //Then
         assertThat(wright).isTrue();
         assertThat(wrong).isFalse();
+    }
+
+    @Nested
+    @DisplayName("종복된 숫자가 들어왔는지 판별하는 메소드")
+    class HasSameNumberInList {
+        @Test
+        @DisplayName("종복이 없을 때")
+        void hasNoDuplicate() throws Exception {
+            //Given
+            UserInputException exception = new UserInputException();
+            List<Integer> input = List.of(1, 2, 3);
+
+            //When
+            boolean result = exception.hasSameNumberInList(input);
+
+            //Then
+            assertThat(result).isFalse();
+        }
+
+        @Test
+        @DisplayName("중복이 있을 때")
+        void hasDuplication() throws Exception {
+            //Given
+            UserInputException exception = new UserInputException();
+            List<Integer> input = List.of(1, 2, 1);
+
+            //When
+            boolean result = exception.hasSameNumberInList(input);
+
+            //Then
+            assertThat(result).isTrue();
+        }
     }
 
 }
