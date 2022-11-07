@@ -10,6 +10,6 @@ public class ContinueOrStop {
         return false;
       }
     }
-    throw new IllegalArgumentException(); //InputException 안으로
+    throw new IllegalArgumentException();
   }
 }

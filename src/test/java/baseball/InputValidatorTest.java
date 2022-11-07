@@ -2,7 +2,6 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 // 올바르지 않은 입력값이면 throw를 하고 있는지
 class InputValidatorTest {
@@ -30,9 +29,13 @@ class InputValidatorTest {
   @Test
   void isValidNumber() {
 
+    assertThatThrownBy(() -> InputValidator.isValidNumber("a25"))
+            .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
   void isValidButton() {
+    assertThatThrownBy(() -> InputValidator.isValidButton("a"))
+            .isInstanceOf(IllegalArgumentException.class);
   }
 }
