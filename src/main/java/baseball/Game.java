@@ -2,10 +2,10 @@ package baseball;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
-import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.Status.*;
-import static constant.Constants.*;
+import static baseball.Status.Playing;
+import static constant.Constants.GAME_FINISH_MSG;
+import static constant.Constants.START_MSG;
 
 public class Game {
     private final Computer computer = new Computer();
@@ -13,44 +13,30 @@ public class Game {
     private final Score score =new Score();
     private Status status;
 
-    public Game() {
-        computer.setRandNums();
-        score.setAnswerNums(computer.getNums());
-        status = Playing;
+    public void start() {
+        do {
+            initGame();
+            play();
+        } while (user.scanWantReplayingGame());
     }
 
-    public void start() {
+    private void play() {
         System.out.println(START_MSG);
 
         while (status == Playing) {
             user.scanUserNums();
-
             score.setUserNums(user.getNums());
-            score.countResult();
-            score.showResult();
+            score.calculateAndShowResult();
             status = score.checkingStatus();
         }
 
         System.out.println(GAME_FINISH_MSG);
-
-        if (wantReplayGame()) {
-            restart();
-        }
     }
 
-    private boolean wantReplayGame() {
-        System.out.println(CHECKING_REPLAYING_MSG);
-        int userStatus = Integer.parseInt(Console.readLine());
-
-        if (userStatus == wantReplay) return true;
-        else if (userStatus == wantEnd) return false;
-        else throw new IllegalArgumentException();
-    }
-
-    private void restart() {
+    private void initGame() {
         computer.setRandNums();
         score.setAnswerNums(computer.getNums());
         status = Playing;
-        start();
     }
+
 }

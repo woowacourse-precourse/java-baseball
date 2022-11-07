@@ -5,8 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-import static constant.Constants.INPUT_MSG;
-import static constant.Constants.ballSize;
+import static constant.Constants.*;
 
 public class User extends Player {
 
@@ -15,6 +14,15 @@ public class User extends Player {
         String inputNums = Console.readLine();
         checkingNums(inputNums);
         setNums(inputsToList(inputNums));
+    }
+
+    public boolean scanWantReplayingGame(){
+        System.out.println(CHECKING_REPLAYING_MSG);
+        int userStatus = Integer.parseInt(Console.readLine());
+
+        if (userStatus == wantReplay) return true;
+        else if (userStatus == wantEnd) return false;
+        else throw new IllegalArgumentException();
     }
 
     public void checkingNums(String inputNums) {
