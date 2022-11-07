@@ -55,8 +55,7 @@ public class Ball {
     public int compareByValue(Ball ball) {
         String expectedBall = ball.toString();
         return (int) expectedBall.chars()
-                .mapToObj(Character::toString)
-                .filter(numberBall::contains)
+                .filter(x -> numberBall.chars().anyMatch(y -> x == y))
                 .count();
     }
 }
