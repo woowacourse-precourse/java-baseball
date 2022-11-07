@@ -74,7 +74,8 @@ public class Application {
             if (input.equals(RESTART)) {
                 resetGame();
                 return true;
-            } else if (input.equals(NO_RESTART)) {
+            }
+            if (input.equals(NO_RESTART)) {
                 return false;
             }
         }
