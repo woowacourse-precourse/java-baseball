@@ -14,14 +14,23 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<String> answer = makeAnswer();
-        System.out.println(answer);
-//        System.out.println(answer.get(0).equals("1"));
-//        System.out.println(answer.get(1).equals("1"));
-//        System.out.println(answer.get(2).equals("1"));
+//        System.out.println(answer);
         while (true) {
+            System.out.print("숫자를 입력해 주세요 : ");
             List<String> playerInput = checkAvailable(Input());
             List<Integer> compareResult = compareNumbers(answer, playerInput);
             showResult(compareResult);
+            if (compareResult.get(0).equals(3)) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                List<String> checkTerminate = Input();
+                if (checkTerminate.get(0).equals("1")) {
+                    answer = makeAnswer();
+                } else if (checkTerminate.get(0).equals("2")) {
+                    break;
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            }
         }
 
     }
@@ -37,7 +46,7 @@ public class Application {
         return answerList;
     }
     public static List<String> Input() {
-        System.out.print("숫자를 입력해 주세요 : ");
+
         String numString = Console.readLine();
         List<String> numList = new ArrayList<>(Arrays.asList(numString.split("")));
         return numList;
