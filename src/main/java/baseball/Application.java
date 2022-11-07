@@ -25,7 +25,15 @@ public class Application {
             strikeOut = Score.SCORE.strikeOut();
         }
         System.out.println(Message.CONGRATULATIONS);
-        // TODO: update user willingness
-        userWantsToPlay = false;
+        playOn();
+    }
+
+    private static void playOn() {
+        System.out.println(Message.PROMPT_PLAY_ON);
+        String input = Console.readLine();
+        if (!input.matches("^[12]$")) {
+            throw new IllegalArgumentException();
+        }
+        userWantsToPlay = input.equals("1");
     }
 }
