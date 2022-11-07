@@ -1,10 +1,9 @@
 package baseball.core;
 
-import org.junit.jupiter.api.Test;
-
 public class BaseballGame {
 
-    // 1-1. 볼의 개수 확인
+
+    // 볼의 개수 확인
     public Integer countTheNumberOfBall(String targetNumber, String inputNumber) {
 
         Integer numberOfBall = 0;
@@ -16,7 +15,7 @@ public class BaseballGame {
         return numberOfBall;
     }
 
-    // 1-2. 스트라이크의 개수 확인
+    // 스트라이크의 개수 확인
     public Integer countTheNumberOfStrike(String targetNumber, String inputNumber) {
 
         Integer numberOfStrike = 0;
