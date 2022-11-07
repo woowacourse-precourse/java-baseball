@@ -33,6 +33,16 @@ public class Application {
         return true;
     }
 
+    static boolean isValidCommandNumber(String commandNumber) {
+        if (commandNumber.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+        if (!(commandNumber.contains("1") || commandNumber.contains("2"))) {
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+
     static boolean isDistinct(String number) {
         return number.length() != Stream.of(number.split("")).distinct().count();
     }
