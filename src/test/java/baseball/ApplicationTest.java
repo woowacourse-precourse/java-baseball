@@ -125,9 +125,9 @@ class ApplicationTest extends NsTest {
             System.setIn(in);
             //when
             baseBallGame.inputUserNumber();
-            int strikeCount = baseBallGame.countStrikeCount();
+            baseBallGame.countStrikeCount();
             //then
-            assertThat(strikeCount).isEqualTo(3);
+            assertThat(baseBallGame.getStrikeCount()).isEqualTo(3);
         }
 
         @Test
@@ -139,9 +139,9 @@ class ApplicationTest extends NsTest {
             System.setIn(in);
             //when
             baseBallGame.inputUserNumber();
-            int ballCount = baseBallGame.countBallCount();
+            baseBallGame.countBallCount();
             //then
-            assertThat(ballCount).isEqualTo(0);
+            assertThat(baseBallGame.getBallCount()).isEqualTo(0);
         }
     }
 
