@@ -153,3 +153,40 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+## 기능 목록
+
+#### 0. 게임을 시작한다 ```startGame```
+
+#### 1. 컴퓨터가 1에서 9까지 서로 다른 임의의 수 3개를 선택한다 ```ComputerSelectNumbers```
+
+#### 2. 게임 플레이어가 유추한 답을 입력한다 ```guessAnswerOfGame```
+- 입력의 유효성을 확인한다 ```isValidInput```
+    
+    아래 세가지 조건을 모두 만족할 경우 참을 반환한다
+
+  - 입력의 자리수가 게임정답의 자리수와 동일한가 ```isInputSizeEqualToAnswerSize```
+  - 입력에 중복된 문자가 없는가 ```doesNotHaveDuplicateInputElement```
+  - 1에서 9까지의 수만 입력했는가 ```hasOnlyNaturalNumberAsInput```
+
+
+- 문자열 타입의 입력을 정수형 리스트로 변환한다 ```convertStringToIntegerList```
+
+<br>
+
+#### 3. 게임 플레이어의 입력에 대한 결과를 반환한다
+
+- 볼 / 스트라이크 개수를 반환한다 ```getBallStrikeCnt```
+  - 게임정답에 포함된 입력의 개수를 반환한다 ```countNumbersContainedInAnswer```
+  - 스트라이크 개수를 반환한다 ```countStrike```
+
+
+- 볼 / 스트라이크 개수에 따른 결과 문구를 반환한다 ```getResultOfGuess```
+
+<br>
+
+#### 4. 게임 재시작 혹은 애플리케이션 종료를 선택한다 ```restartOrNot```
+
+- 게임 플레이어가 선택한 값이 유효한 경우 참을 반환한다 ```isValidSelection```
+
