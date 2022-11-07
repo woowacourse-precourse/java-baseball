@@ -7,7 +7,7 @@
 
 ## (void)userNumberMessagePrint()
 - [x] printMessage에 "숫자를 입력하세요 : "를 저장
-- [ ] printMessage를 출력
+- [x] printMessage를 출력
 
 ## (String word)userNumberInput()
 - [x] readLine()함수를 통해 사용자에게 받은 입력값을 userNumber에 저장
