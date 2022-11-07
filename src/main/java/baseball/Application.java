@@ -7,12 +7,15 @@ import java.util.Scanner;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    public static String NewGameNumber(){
+    public static String newGameNumber(){
         String targetNumber = "";
+        StringBuffer sbf = new StringBuffer();
+
         while(targetNumber.length() < 3){
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if (!targetNumber.contains(Integer.toString(randomNumber))){
-                targetNumber += Integer.toString(randomNumber);
+                sbf.append(Integer.toString(randomNumber));
+                targetNumber = sbf.toString();
             }
         }
 
@@ -97,7 +100,7 @@ public class Application {
 
         while(true){
             if (newNumberFlag) {
-                gameNumber = NewGameNumber();
+                gameNumber = newGameNumber();
             }
 
             newNumberFlag = false;
