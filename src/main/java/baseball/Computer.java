@@ -8,8 +8,6 @@ public class Computer {
 
     private static final int RANGE_START = 1;
     private static final int RANGE_END = 9;
-    private static final String NOTHING_MESSAGE = "낫싱";
-    private static final String CORRECT_ANSWER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final int RESTART_NUMBER = 1;
     private List<Integer> computerNumbers;
     private int strike;
@@ -45,7 +43,7 @@ public class Computer {
                     .append("스트라이크");
         }
         if (gameResultMessage.length() == 0) {
-            gameResultMessage.append(NOTHING_MESSAGE);
+            gameResultMessage.append(Message.NOTHING_MESSAGE);
         }
         System.out.println(gameResultMessage);
         if (isCorrectAnswer()) {
@@ -93,7 +91,7 @@ public class Computer {
     }
 
     private void printCorrectAnswerMessage() {
-        System.out.println(CORRECT_ANSWER_MESSAGE);
+        System.out.println(Message.CORRECT_ANSWER_MESSAGE);
     }
 
 }

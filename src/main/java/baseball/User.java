@@ -8,16 +8,13 @@ import java.util.Set;
 
 public class User {
 
-    private static final String RECEIVE_THREE_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String RECEIVE_ONE_NUMBER_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
     private final List<Integer> inputNumber = new ArrayList<>();
 
     public User() {
     }
 
     public void receiveThreeNumber() {
-        System.out.print(RECEIVE_THREE_NUMBER_MESSAGE);
+        System.out.print(Message.RECEIVE_THREE_NUMBER_MESSAGE);
         String input = Console.readLine();
         if (!isValidateThreeNumber(input)) {
             throw new IllegalArgumentException();
@@ -34,7 +31,7 @@ public class User {
     }
 
     public void receiveOneNumber() {
-        System.out.println(RECEIVE_ONE_NUMBER_MESSAGE);
+        System.out.println(Message.RECEIVE_ONE_NUMBER_MESSAGE);
         String input = Console.readLine();
         if (!isValidateOneNumber(input)) {
             throw new IllegalArgumentException();
