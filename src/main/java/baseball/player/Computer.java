@@ -20,7 +20,6 @@ public class Computer implements Playable{
     @Override
     public void inputAnswer() {
         answer.clear();
-        List<Integer> list = new ArrayList<>();
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
