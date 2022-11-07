@@ -1,6 +1,5 @@
-package baseball;
+package baseball.objects;
 
-import baseball.objects.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class NumbersGeneratorTest {
+class NumberGeneratorTest {
 
     @Test
     @DisplayName("1부터 9까지의 난수 숫자 3자리를 생성하는 테스트")

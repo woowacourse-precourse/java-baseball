@@ -1,9 +1,5 @@
-package baseball;
+package baseball.objects;
 
-import baseball.objects.Computer;
-import baseball.objects.NumberGenerator;
-import baseball.objects.Referee;
-import baseball.objects.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

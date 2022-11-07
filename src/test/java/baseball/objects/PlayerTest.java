@@ -1,8 +1,5 @@
-package baseball;
+package baseball.objects;
 
-import baseball.objects.Player;
-import baseball.objects.Referee;
-import baseball.objects.Rule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +44,7 @@ class PlayerTest {
         // given
         Referee referee = new Referee(new Rule());
 
-        Player player =  new Player();
+        Player player = new Player();
         player.sayNumbers("123");
 
         // when

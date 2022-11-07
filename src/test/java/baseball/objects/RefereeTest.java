@@ -1,7 +1,5 @@
-package baseball;
+package baseball.objects;
 
-import baseball.objects.Referee;
-import baseball.objects.Rule;
 import baseball.view.message.GameMessage;
 import baseball.view.service.ViewService;
 import org.junit.jupiter.api.AfterEach;
