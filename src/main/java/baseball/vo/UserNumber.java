@@ -1,7 +1,9 @@
 package baseball.vo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class UserNumber implements RandomNumber{
@@ -44,14 +46,11 @@ public class UserNumber implements RandomNumber{
     }
 
     private boolean isUniqueChars(String str) {
-        List<Character> strings = new ArrayList<>();
+        Set<Character> strings = new HashSet<>();
         for (char c : str.toCharArray()) {
-            if (strings.contains(c)) {
-                return false;
-            }
             strings.add(c);
         }
-        return true;
+        return strings.size() == str.length();
     }
 
 }
