@@ -9,12 +9,12 @@ public class BaseBallNumber {
 
   private static final int GAME_NUMBER_SIZE = 3;
 
-  private static List<Character> numbers;
+  private final List<Character> numbers;
 
   public BaseBallNumber(List<Character> numbers) {
     validateSize(numbers);
     validateDuplicate(numbers);
-    BaseBallNumber.numbers = numbers;
+    this.numbers = numbers;
   }
 
   public static void validateSize(List<Character> numbers) {
