@@ -3,6 +3,9 @@ package baseball;
 public class ScoreJudge {
     private NumsInputFromUser input;
     private int strike, ball, nothing;
+    private final static String NOTHING_MESSAGE = "낫싱";
+    private final static String STRIKE_MESSAGE  = "스트라이크";
+    private final static String BALL_MESSAGE    = "볼";
 
     public ScoreJudge() {
         this.input  = new NumsInputFromUser();
@@ -21,9 +24,7 @@ public class ScoreJudge {
 
          if (strike == 0 && ball == 0) nothing += 1;
 
-         String result = resultString();
-
-         return result;
+         return resultString();
     }
 
     private void computeScore(int[] inputNums, int[] randomNums) {
@@ -51,16 +52,16 @@ public class ScoreJudge {
     }
 
     private String resultString() {
-        if (this.nothing == 1) return "낫싱";
+        if (this.nothing == 1) return NOTHING_MESSAGE;
 
         String result = "";
 
-        if (ball > 0) result += Integer.toString(ball) + "볼";
+        if (ball > 0) result += ball + BALL_MESSAGE;
         if (strike > 0) {
             if (result.length() != 0) {
-                result += " " + Integer.toString(strike) + "스트라이크";
+                result += " " + strike + STRIKE_MESSAGE;
             } else {
-                result += Integer.toString(strike) + "스트라이크";
+                result += strike + STRIKE_MESSAGE;
             }
         }
 
