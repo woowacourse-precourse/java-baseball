@@ -15,13 +15,13 @@ public class ComputerTest {
     }
 
     @Test
-    void hasSameNumber_같은_숫자가_있는가_판별(){
+    void isNothing_낫싱인지_판별(){
         Computer computer = new Computer();
         List<Integer> case_1 = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         List<Integer> case_2 = List.of(0, 0, 0);
-        boolean result_1 = computer.hasSameNumber(case_1);
-        boolean result_2 = computer.hasSameNumber(case_2);
-        assertThat(result_1).isEqualTo(true);
-        assertThat(result_2).isEqualTo(false);
+        boolean result_1 = computer.isNothing(case_1);
+        boolean result_2 = computer.isNothing(case_2);
+        assertThat(result_1).isEqualTo(false);
+        assertThat(result_2).isEqualTo(true);
     }
 }

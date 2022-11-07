@@ -5,6 +5,7 @@ import static baseball.Function.*;
 
 public class Computer {
     protected static List<Integer> Answer;
+    protected static String result;
 
     public Computer() {
         this.Answer = makeAnswer();
@@ -18,12 +19,12 @@ public class Computer {
         return Answer;
     }
 
-    public static boolean hasSameNumber(List<Integer> list) {
+    public static boolean isNothing(List<Integer> list) {
         List<Boolean> checkList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             checkList.add(Answer.contains(list.get(i)));
         }
-        return checkTrue(checkList);
+        return !checkTrue(checkList);
     }
 }
 
