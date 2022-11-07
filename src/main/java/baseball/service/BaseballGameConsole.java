@@ -15,6 +15,7 @@ public class BaseballGameConsole {
 
     public void startWithPitcher(Pitcher pitcher) {
         emcee.showStartingGuide(pitcher.getName());
+
         boolean replay = true;
         while (replay) {
             playSingleGame(pitcher);
@@ -24,8 +25,8 @@ public class BaseballGameConsole {
 
     private void playSingleGame(Pitcher pitcher) {
         String hitNumber = batter.readyToHitNumberBall();
+        
         boolean strikeOut = false;
-
         while (!strikeOut) {
             System.out.print("숫자를 입력해주세요. : ");
             String pitchNumber = pitcher.pitchNumberBall();
