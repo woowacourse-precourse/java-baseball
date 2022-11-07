@@ -1,6 +1,8 @@
 package baseball.view.input;
 
 
+import static baseball.utils.message.ExceptionMessage.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -35,14 +37,14 @@ public class InputImpl implements Input {
         if (endInputNumber == NEW_GAGE || endInputNumber == QUIT) {
             return true;
         }
-        throw new IllegalArgumentException("새로운 게임을 시작혀려면1, 종료하려면 2를 입력하세요.");
+        throw new IllegalArgumentException(END_INPUT_EXCEPTION_MESSAGE);
     }
 
     private boolean isAllowedBaseballInput(String baseballInput) throws IllegalArgumentException {
         if (baseballInput.matches(REGEX)) {
             return true;
         }
-        throw new IllegalArgumentException("서로다른 3자리 숫자만 입력 가능합니다.");
+        throw new IllegalArgumentException(BASEBALL_INPUT_EXCEPTION_MESSAGE);
     }
 
     private boolean isEachNumberDifferent(String baseballInput) throws IllegalArgumentException{
@@ -53,7 +55,7 @@ public class InputImpl implements Input {
         if (distinctNumber.size() == 3) {
             return true;
         }
-        throw new IllegalArgumentException("서로다른 3자리 숫자만 입력 가능합니다.");
+        throw new IllegalArgumentException(BASEBALL_INPUT_EXCEPTION_MESSAGE);
     }
 
 }
