@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.utils.Validation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -117,6 +118,15 @@ class ApplicationTest extends NsTest {
 
             assertThat(computer.checkGameEnd(question)).isEqualTo(result);
         }
+    }
+
+    @Test
+    void 숫자가아닌_문자를_입력했을때_테스트() {
+        String input = "ab2";
+
+        assertThatThrownBy(() -> Validation.IsOnlyNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자 외의 문자를 입력하셨습니다.");
     }
 
     Object getPrivateField(String name, Object transferObject) throws Exception {
