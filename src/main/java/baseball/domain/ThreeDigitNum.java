@@ -27,20 +27,29 @@ public class ThreeDigitNum {
         validateValue();
     }
 
-    private static List<Integer> numToDigitList(int num) {
+    private List<Integer> numToDigitList(int num) {
         List<Integer> list = new ArrayList<>(Collections.nCopies(SIZE, 0));
         int idx = SIZE - 1;
         while (num > 0) {
             validateIdx(idx);
-            list.set(idx, num % 10);
+            list.set(idx, digitOf(num));
 
-            num /= 10;
+            num = subtractLastDigit(num);
             idx = getNextIdx(idx);
         }
         return list;
     }
 
-    private static void validateIdx(int idx) {
+    private int subtractLastDigit(int num) {
+        num /= 10;
+        return num;
+    }
+
+    private int digitOf(int num) {
+        return num % 10;
+    }
+
+    private void validateIdx(int idx) {
         if (idx < 0) {
             throw new IllegalArgumentException(OVER_SIZE_MESSAGE);
         }
@@ -56,7 +65,7 @@ public class ThreeDigitNum {
 
     private void validateValue() {
         validateSize();
-        List<Boolean> freq = new ArrayList<>(Collections.nCopies(END_RANGE + 1, false));
+        List<Boolean> freq = falseFillFor(END_RANGE + 1);
 
         for (int valueEach : value) {
             validateValue(freq, valueEach);
@@ -64,7 +73,11 @@ public class ThreeDigitNum {
         }
     }
 
-    private static void validateValue(List<Boolean> freq, int valueEach) {
+    private static List<Boolean> falseFillFor(int size) {
+        return new ArrayList<>(Collections.nCopies(size, false));
+    }
+
+    private void validateValue(List<Boolean> freq, int valueEach) {
         if (!isValidRange(valueEach)) {
             throw new IllegalArgumentException(INVALID_DIGIT_MESSAGE);
         }
@@ -73,11 +86,11 @@ public class ThreeDigitNum {
         }
     }
 
-    private static Boolean isUsedValue(List<Boolean> freq, int valueEach) {
+    private Boolean isUsedValue(List<Boolean> freq, int valueEach) {
         return freq.get(valueEach);
     }
 
-    private static boolean isValidRange(int valueEach) {
+    private boolean isValidRange(int valueEach) {
         return START_RANGE <= valueEach && valueEach <= END_RANGE;
     }
 
