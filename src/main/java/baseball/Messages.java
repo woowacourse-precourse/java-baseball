@@ -2,7 +2,7 @@ package baseball;
 
 public class Messages {
     private static final String END_MESSAGE = "게임 종료";
-    private static final String CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String CLEAR_MESSAGE = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
@@ -34,7 +34,7 @@ public class Messages {
     }
 
     public static void printClearMessage() {
-        System.out.println(CLEAR_MESSAGE);
+        System.out.println(Application.NUMBER_LENGTH()+CLEAR_MESSAGE);
     }
 
     public static void printEndMessage() {
