@@ -7,19 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
     public static void main(String[] args) {
         boolean run = true;
         List<Integer> computerNum;
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (run) {
             computerNum = createRandomNum();
             String checkMessage = "";
             while (!(checkMessage.equals("3스트라이크"))) {
+                System.out.println(computerNum);
+                System.out.print("숫자를 입력해주세요 : ");
                 String userNum = guessNum(inputValue());
                 checkMessage = checkNum(computerNum, userNum);
                 System.out.println(checkMessage);
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             run = closeOrRestart(inputValue());
         }
     }
@@ -68,6 +71,9 @@ public class Application {
         }
         for (Character x : userNum.toCharArray()) {
             if (!Character.isDigit(x)) {
+                throw new IllegalArgumentException();
+            }
+            if (userNum.contains(x+"")){
                 throw new IllegalArgumentException();
             }
         }
