@@ -26,6 +26,10 @@ public class OutputView {
         System.out.println(ballCount.getBall()+"볼");
     }
 
+    public void printFinishGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     private boolean hasStrike(BallCount ballCount) {
         if(ballCount.getStrike()!=0){
             return true;

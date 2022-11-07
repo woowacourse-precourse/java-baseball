@@ -11,22 +11,30 @@ public class GameController {
     private final GameService gameService;
 
     public GameController() {
-        outputView=new OutputView();
-        inputView=new InputView();
-        gameService=new GameService();
+        outputView = new OutputView();
+        inputView = new InputView();
+        gameService = new GameService();
     }
 
     public void play() {
         outputView.printGameStart();
         gameService.computeComputerNumbers();
 
-        while(true) {//종료 조건 걸어야함
-            String userNumbers=inputView.inputNumbers();
+        while (true) {
+            String userNumbers = inputView.inputNumbers();
             gameService.setUserNumbers(userNumbers);
-            
-            BallCount ballCount=gameService.computeBallCount();
+
+            BallCount ballCount = gameService.computeBallCount();
             outputView.printBallCount(ballCount);
-            break;
+            if (gameService.isFinishGame(ballCount)) {
+                outputView.printFinishGame();
+                String restartStatus = inputView.inputRestartStatus();
+                if(restartStatus.equals("1")){
+                    gameService.computeComputerNumbers();
+                    continue;
+                }
+                break;
+            }
         }
     }
 }

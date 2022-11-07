@@ -66,4 +66,10 @@ public class GameService {
         return false;
     }
 
+    public boolean isFinishGame(final BallCount ballCount) {
+        if(ballCount.getStrike()==3){
+            return true;
+        }
+        return false;
+    }
 }
