@@ -1,11 +1,10 @@
-package baseball;
+package Game;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import Exception.CheckException;
-
 
 public class Game {
 
@@ -19,6 +18,7 @@ public class Game {
     }
 
     public Game play(List<Integer> targetNumber) {
+
         this.targetNumber = targetNumber;
 
         while (!isGameOver) {

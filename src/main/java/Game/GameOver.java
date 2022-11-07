@@ -1,4 +1,4 @@
-package baseball;
+package Game;
 
 import java.util.Scanner;
 import Exception.CheckException;
@@ -22,5 +22,4 @@ public class GameOver {
     private static boolean setRestartStatus(String defineRestartValue) {
         return defineRestartValue.equals("1");
     }
-
 }
