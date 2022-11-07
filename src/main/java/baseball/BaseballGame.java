@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class BaseballGame {
@@ -108,7 +109,7 @@ public class BaseballGame {
     }
 
     private void validateNumberRange(String number) {
-        if (number.matches("[^1-9]")) {
+        if (Pattern.compile("[^1-9]").matcher(number).find()) {
             throw new IllegalArgumentException("1과 9사이의 숫자만 입력 가능합니다.");
         }
     }
