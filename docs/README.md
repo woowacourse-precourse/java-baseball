@@ -1,0 +1,11 @@
+- Application.java에 추상화 주석 추가하기
+- Application.java에 선택지에 따라 반복하는 코드 추가하기
+- Application.java에서 반복 수행할 BaseballGame.java의 추상화 주석 추가하기
+- BaseballGame.java에서 매번 다시 배정할 자동 생성 정수 배열 일급 콜렉션 CorrectAnswer 만들기.
+- BaseballGame.java에서 반복해서 사용자에게 입력을 받아 생성되는 정수 배열 일급 콜렉션 Pitch 만들기
+- CorrectAnswer에 숫자 추가시 중복체크 후 생성하는 기능 추가
+- CorrectAnswer에서 생성된 수를 정수 리스트에 추가하는 기능 추가
+- 자릿수 비교시 결과 반환을 위한 PitchResult 열거형 추가
+- 자릿수를 비교하는 batPitchedBall 메소드 추가
+- pitch와 correctAnswer을 비교하여 3스트라이크일 때 false반환하여 while문을 빠져나올 pitchIsNotCorrect 메소드 추가
+- 출력형식 조정 
