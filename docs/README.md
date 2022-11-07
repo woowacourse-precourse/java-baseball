@@ -2,16 +2,16 @@
 #### 모델
 
 1. BallNumber
-   1. 수동생성, 범위제한(1~9) /hashCode/ equals/TestCase
+   1. 수동생성, 범위제한(1~9) 
+   2. hashCode /equals
 2. Ball
-   1. BallNumber 받고 생성 , equals / hashCode/TestCase
-3. BallList
-   1. Ball를 추가 기능
-   2. computerBallList와 userBallList 비교 하고 힌트를 받고 BallReport 반환하는 기능
-      - 같은 수가 같은 자리에 있으면 스트라이크,
-      - 다른 자리에 있으면 볼
-      - 같은 수가 전혀 없으면 낫싱
+   1. BallNumber 받고 생성 
+   2. equals / hashCode
+3. Balls
+   1. 숫자 리스트를 받고 Balls 생성 기능
+   2. computerBalls와 userBalls 비교 하고 JudgementType를 받고 BallReport 반환하는 기능
    3. Ball 포함 여부 기능
+   4. 범위 제한 기능
 4. JudgmentType
    1. 스트라이크 / 볼 / 낫싱
    2. EnumMap 생성 기능 (EnumType(JudgementType))
