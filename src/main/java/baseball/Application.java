@@ -10,7 +10,6 @@ public class Application {
     public static void main(String[] args) {
 
     }
-
     static List<Integer> generateNum() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
@@ -19,15 +18,20 @@ public class Application {
                 computerNumber.add(randomNumber);
             }
         }
+        System.out.println(computerNumber);
         return computerNumber;
     }
 
-    static List<Integer> inputNum() {
-        System.out.print("숫자를 입력해주세요 : ");
+    static List<Integer> inputNum(String input) {
         List<Integer> userNumber = new ArrayList<>();
-        for (String number : Console.readLine().split("")) {
+        for (String number : input.split("")) {
             userNumber.add(Integer.parseInt(number));
-            if (userNumber.size() > 3 || userNumber.size() != userNumber.stream().distinct().count()) {
+        }
+        if (userNumber.size() != 3 || userNumber.size() != userNumber.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+        for(int number : userNumber){
+            if(Character.isDigit(number) || number == 0){
                 throw new IllegalArgumentException();
             }
         }
@@ -59,6 +63,7 @@ public class Application {
         return ball + "볼 " + strike + "스트라이크";
     }
 }
+
 
 
 
