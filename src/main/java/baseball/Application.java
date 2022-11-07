@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Application {
     private static boolean userWantsToPlay = true;
 
@@ -11,7 +13,7 @@ public class Application {
     }
 
     private static void playBall() {
-        // TODO: getRandomNumber
+        List<Integer> computer = Play.getRandomNumber();
         boolean strikeOut = false;
         while (!strikeOut) {
             // TODO: promptForNumber
