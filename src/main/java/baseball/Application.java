@@ -60,5 +60,14 @@ public class Application {
             result();
         }
     }
+    //랜덤수 생성
+    private static LinkedHashSet<String> getRandomNumber() {
+        // 들어온 숫서대로 받기 위해 LinkedHashSet 사용
+        LinkedHashSet<String> randomNumber = new LinkedHashSet<>();
+        while (randomNumber.size() < 3) { // 길이가 3개인지 체크
+            randomNumber.add(String.valueOf(Randoms.pickNumberInRange(1, 9)));
+        }
+        return randomNumber;
+    }
 }
 
