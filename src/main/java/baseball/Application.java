@@ -31,15 +31,11 @@ public class Application {
 
 
     public static void main(String[] args) {
-        try {
             notifyGameStart();
             startGame();
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage().concat("\n").concat(CLOSE_MESSAGE));
-        }
     }
 
-    private static void startGame() {
+    private static void startGame() throws IllegalArgumentException{
         List<Integer> computerNumbers = createComputerNumbers();
         boolean isCorrectAnswer = false;
         while (!isCorrectAnswer){
@@ -59,13 +55,13 @@ public class Application {
         return false;
     }
 
-    public static void gameOver() {
+    public static void gameOver() throws IllegalArgumentException{
         System.out.println(GAME_OPTION_MESSAGE);
         String gameOption = Console.readLine();
         validGameOption(gameOption);
         if (gameOption.equals(RESTART_GAME)){
             startGame();
-        }else if (gameOption.equals(GAME_OVER)){
+        } else if (gameOption.equals(GAME_OVER)) {
             System.out.println(CLOSE_MESSAGE);
         }
     }
@@ -86,7 +82,7 @@ public class Application {
         System.out.println(GAME_START_MESSAGE);
     }
 
-    public static List<Integer> InputUserNumber(){
+    public static List<Integer> InputUserNumber() throws IllegalArgumentException{
         System.out.print(INPUT_USER_NUMBER_MESSAGE);
         String userNumbers = Console.readLine();
         validUserNumbers(userNumbers);
@@ -132,7 +128,7 @@ public class Application {
         return ballCnt;
     }
 
-    public static void validUserNumbers(String userNumbers){
+    public static void validUserNumbers(String userNumbers) throws IllegalArgumentException{
         if (!userNumbers.matches("^[1-9]{3}$")){
             throw new IllegalArgumentException(String.join(":",INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
         }
@@ -143,7 +139,7 @@ public class Application {
         }
     }
 
-    public static void validGameOption(String gameOption) {
+    public static void validGameOption(String gameOption) throws IllegalArgumentException {
         if (!gameOption.matches("^[1-2]$")) {
             throw new IllegalArgumentException(String.join(":",GAME_OPTION_ERROR_MESSAGE, gameOption));
         }
