@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 class Input {
-    private final static int LENGTH_MAX = 3;
+    private final static int LENGTH = 3;
 
     static String computer () {
         String number = new String();
-        while (number.length() < LENGTH_MAX) {
+        while (number.length() < LENGTH) {
             String str = String.valueOf(Randoms.pickNumberInRange(1,9));
             if (!number.contains(str)) {
                 number = number.concat(str);
@@ -26,7 +26,7 @@ class Input {
 
     static void checkError(String number) {
         char[] numberArray = number.toCharArray();
-        if (number.length() != LENGTH_MAX) {
+        if (number.length() != LENGTH) {
             throw new IllegalArgumentException("3자리가 아닙니다.");
         }
 
@@ -36,7 +36,7 @@ class Input {
             }
         }
 
-        for (int i = 0; i < LENGTH_MAX; i++) {
+        for (int i = 0; i < LENGTH; i++) {
             if (numberArray[i] == numberArray[(i+1)%3] || numberArray[i] == numberArray[(i+2)%3]) {
                 throw new IllegalArgumentException("숫자를 중복하여 입력하셨습니다.");
             }
