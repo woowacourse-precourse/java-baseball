@@ -96,4 +96,12 @@ class ApplicationTest extends NsTest {
 		assertThat("1볼 2스트라이크").isEqualTo(systemMessage.PrintCount(strike, ball));
 	}
 
+	@Test
+	void 카운트_메세지2() {
+		int strike = 0;
+		int ball = 0;
+		assertThat("낫싱").isEqualTo(systemMessage.PrintCount(strike, ball));
+
+	}
+
 }
