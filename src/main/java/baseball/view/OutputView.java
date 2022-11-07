@@ -13,7 +13,7 @@ public class OutputView {
     }
 
     public static void printInputMessage() {
-        System.out.println(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE);
     }
 
     public static void printSuccessMessage() {
@@ -21,7 +21,7 @@ public class OutputView {
     }
 
     public static void printResult(GameLogic result) {
-        System.out.println(result);
+        System.out.println(result.toString());
     }
 
     public static void printRestartOrEnd() {
