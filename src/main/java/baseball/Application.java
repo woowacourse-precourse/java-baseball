@@ -13,39 +13,34 @@ import java.util.List;
 
 public class Application {
     // 0. 게임의 시작을 분리한다.
-    private static boolean gameStart() throws IllegalArgumentException {
+    public static boolean gameStart() throws IllegalArgumentException {
+        // 1. 상대방(컴퓨터)의 숫자를 설정한다.
+        List<Integer> computer = new ArrayList<>();
+        computer = getNumberOfComputer(computer);
+        System.out.println("computer = " + computer); // 테스트 출력
 
-        try {
-            // 1. 상대방(컴퓨터)의 숫자를 설정한다.
-            List<Integer> computer = new ArrayList<>();
-            computer = getNumberOfComputer(computer);
-            System.out.println("computer = " + computer); // 테스트 출력
+        // 2. 사용자에게서 숫자를 입력받는다.
+        List<Integer> user = new ArrayList<>();
 
-            // 2. 사용자에게서 숫자를 입력받는다.
-            List<Integer> user = new ArrayList<>();
+        // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
+        String ballCount = "";
 
-            // 3. 사용자의 입력값에 따라 Ball Count를 출력한다.
-            String ballCount = "";
+        // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
+        while (isNeedReEnter(ballCount)) {
+            // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
+            user = getNumberOfUserForList(user);
 
-            // 3-1 : 재입력이 필요하면 true를 반환하고, 그렇지 않으면 false를 반환한다.
-            while (isNeedReEnter(ballCount)) {
-                // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
-                user = getNumberOfUserForList(user);
-
-                // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
-                ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
-                UI.printBallCount(ballCount);
-            }
-
-            // 4. 3개의 숫자를 모두 맞힌 경우, 게임 재시작 안내 메세지 출력 및 1 또는 2의 값을 입력받도록 한다.
-            UI.printAnswerMsg();
-            int restartOrExit = Integer.parseInt(Console.readLine());
-            boolean restartOrNot = setRestartOrNot(restartOrExit);
-            return restartOrNot;
-
-        } catch (IllegalArgumentException e) {
-            return false;
+            // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
+            ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
+            UI.printBallCount(ballCount);
         }
+
+        // 4. 3개의 숫자를 모두 맞힌 경우, 게임 재시작 안내 메세지 출력 및 1 또는 2의 값을 입력받도록 한다.
+        UI.printAnswerMsg();
+        int restartOrExit = Integer.parseInt(Console.readLine());
+        boolean restartOrNot = setRestartOrNot(restartOrExit);
+        return restartOrNot;
+
     }
 
     // 1. 상대방(컴퓨터)의 숫자를 설정한다.
@@ -121,7 +116,12 @@ public class Application {
         UI.printInputNumOfUserMsg();
 
         // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
-        String numberOfUserString = getNumberOfUserString();
+        String numberOfUserString;
+        try {
+            numberOfUserString = getNumberOfUserString();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
 
         // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
         user = getNumberOfUser(user, numberOfUserString);
@@ -129,7 +129,7 @@ public class Application {
     }
 
     // 3-2-1 : user의 Number을 String의 형태로 얻어온다.
-    private static String getNumberOfUserString() {
+    public static String getNumberOfUserString() {
         /*
          * WARNING이 나는 이유가 Reflection API 때문인 것 같다.
          * Console.java 클래스를 들어가보니,
@@ -145,7 +145,8 @@ public class Application {
     }
 
     // 3-2-2 : String의 형태를 List의 형태로 바꾼다.
-    private static List<Integer> getNumberOfUser(List<Integer> user, String numberOfUserString) throws IllegalArgumentException {
+    private static List<Integer> getNumberOfUser(List<Integer> user, String numberOfUserString) throws
+            IllegalArgumentException {
 
         // 3-2-2-1 : 사용자의 입력값을 검증한다.
         try {
@@ -176,7 +177,7 @@ public class Application {
             totalCount = countOfBall + "볼";
         } else if (countOfBall == 0 && countOfStrike == 0) {
             totalCount = "낫싱";
-        } else if (countOfBall != 0 && countOfStrike != 0) {
+        } else if (countOfBall > 0 && countOfStrike > 0) {
             totalCount = countOfBall + "볼 " + countOfStrike + "스트라이크";
         } else {
             totalCount = "비정상";
@@ -190,7 +191,9 @@ public class Application {
         int strikeCount = 0;
 
         for (int i = 0; i < computer.size(); i++) {
-            if (computer.get(i) == user.get(i)) {
+            if (user.isEmpty()) {
+                return -1;
+            } else if (computer.get(i) == user.get(i)) {
                 strikeCount++;
             }
         }
@@ -200,6 +203,10 @@ public class Application {
     // 3-3-2 : ball count하기
     private static int howMuchBall(List<Integer> computer, List<Integer> user) {
         int ballCount = 0;
+
+        if (user.isEmpty()) {
+            return -1;
+        }
 
         if (computer.get(0) == user.get(1) || computer.get(0) == user.get(2)) {
             ballCount++;
