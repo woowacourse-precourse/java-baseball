@@ -11,21 +11,15 @@ public final class Player {
     private static final int ONE_MORE_GAME = 1;
     private static final int END_GAME = 2;
 
-    public boolean guess(Answer answer) {
-        System.out.print("숫자를 입력해주세요 : ");
-        final String input = Console.readLine();
-        final List<Character> numbers = stringToList(input);
-        final BaseBallNumber baseBallNumber = new BaseBallNumber(numbers);
-        if (answer.compare(baseBallNumber) == THREE_STRIKE) {
+    public boolean guessAnswer(Answer answer) {
+        if (answer.compare(new BaseBallNumber(stringToList(Console.readLine()))) == THREE_STRIKE) {
             return Computer.endMessage();
         }
         return false;
     }
 
-    public int choose() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        final String input = Console.readLine();
-        final int choice = Integer.parseInt(input);
+    public int chooseToContinue() {
+        final int choice = Integer.parseInt(Console.readLine());
         validateChoice(choice);
         if (choice == END_GAME) {
             return END_GAME;
