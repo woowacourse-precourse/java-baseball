@@ -3,18 +3,29 @@ package baseball;
 public class Game {
     private int random_number;
     private int input_number;
-    private int strike;
-    private int ball;
+    private int strike = 0;
+    private int ball = 0;
 
     public Game() {
 
 
     }
 
-
-
     public void routine() {
-
+        int none = 0;
+        for (int i = 0; i < 3; i++) {
+            if (isStrike(i)) {
+                strike++;
+            } else if (isBall(i)) {
+                ball++;
+            } else {
+                none++;
+            }
+        }
+        printResult(none);
+//        if (none == 3) {
+//
+//        }
     }
 
     private int findDigitNumber(int number, int where) {
