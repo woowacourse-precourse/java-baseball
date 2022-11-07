@@ -8,6 +8,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
+    public static int getBall(List<Integer> answer, List<Integer> userInput) {
+        Integer ball = 0;
+
+        for (int index = 0; index < 3; index++) {
+            if (answer.contains(userInput.get(index)) && !answer.get(index).equals(userInput.get(index))) {
+                ball += 1;
+            }
+        }
+
+        return ball;
+    }
+
     public static int getStrike(List<Integer> answer, List<Integer> userInput) {
         Integer strike = 0;
 
