@@ -30,6 +30,7 @@ public class Application {
 
         return selectRandomNumbers();
     }
+    
     private static List<Integer> selectRandomNumbers() {
         List<Integer> computer = new ArrayList<>();
 
