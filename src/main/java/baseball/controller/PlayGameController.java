@@ -4,8 +4,7 @@ import baseball.dto.Result;
 import baseball.service.GameService;
 import baseball.view.OutputView;
 
-import static baseball.Const.RESTART_GAME;
-import static baseball.Const.THREE_STRIKE;
+import static baseball.Const.*;
 
 public class PlayGameController {
 
@@ -23,18 +22,15 @@ public class PlayGameController {
         outputView.result(strikeAndBall); //게임 결과 출력
 
         int strike = strikeAndBall.getStrike();
-        if (strike == THREE_STRIKE) { //3스트라이크 = 게임 종료문 출력 후 재시작, 종료 선택
-            String choiceRestartOrQuitGame = gameService.inputOneOrTwo();
+        String choiceRestartOrQuitGame = "";
+        if (strike == THREE_STRIKE) { //3스트라이크 == 게임 종료문 출력 후 재시작, 종료 선택
+            choiceRestartOrQuitGame = gameService.inputOneOrTwo();
             gameService.isNotRestartedAndQuitedGame(choiceRestartOrQuitGame);
-            restartGame(gameService, choiceRestartOrQuitGame);
         }
-        if (strike != THREE_STRIKE) { //3스트라이크 아니면 다시 시작
+        if (strike != THREE_STRIKE) { //3스트라이크 아니면 다시 입력
             run();
         }
-    }
-
-    private void restartGame(GameService gameService, String choiceRestartOrQuitGame) {
-        if (choiceRestartOrQuitGame.equals(RESTART_GAME)) { //재시작 시 리스트에 있는 숫자 비우고 다시 시작
+        if (choiceRestartOrQuitGame.equals(RESTART_GAME)) { //재시작 시 리스트에 있는 숫자 비우고 다시 시작, 아니면 종료
             gameService.clearRandomBallNumber();
             run();
         }
