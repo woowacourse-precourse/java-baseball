@@ -1,7 +1,12 @@
 ## 📋 기능 목록
 ### 숫자 야구 게임 플레이
+- [ ] 숫자 야구 게임 플레이
 ```
 numberBaseballGame()
+```
+- [ ] 3스트라이크가 나올때까지 게임 반복
+```
+repeatGameUntilThreeStrike()
 ```
 ### 컴퓨터 랜덤 값
 - [x] 3자리 숫자를 랜덤으로 세팅
@@ -60,6 +65,10 @@ countBall()
 ```
 outputResult()
 ```
+- [ ] 게임 종료 여부 입력
+```
+setGameOver()
+```
 - [ ] 게임 종료 여부 확인
 ```
 isGameExit()
@@ -84,6 +93,7 @@ outputResultForTest()
 ```
 main()
 numberBaseballGame()
+repeatGameUntilThreeStrike()
 ```
 - **PrepareGame.class : 게임 준비 단계**
 ```
@@ -103,6 +113,7 @@ exceptStrikeNumber()
 compareNumberForBall()
 countBall()
 outputResult()
+setGameOver()
 isGameExit()
 ```
 
