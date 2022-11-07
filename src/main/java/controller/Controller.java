@@ -90,7 +90,7 @@ public class Controller {
 
             if (target == currentNumber) {
                 currentStrike++;
-            } else if (collection[currentNumber]) {
+            } else if (collection[currentNumber - Computer.MINIMUM_NUMBER]) {
                 currentBall++;
             }
             result.replace("strike", currentStrike);
@@ -99,11 +99,11 @@ public class Controller {
         return result;
     }
 
-    public static boolean gameOver(boolean result) {
+    public static boolean gameOver() {
         Print.gameOver();
         String power = Input.power();
         handleException(validatePower(power));
-        if (power.equals(2)) {
+        if (power.equals("2")) {
             return true;
         }
         return false;

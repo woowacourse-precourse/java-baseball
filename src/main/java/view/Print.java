@@ -16,7 +16,7 @@ public class Print {
         Integer ballCount = result.get("ball");
         Integer strikeCount = result.get("strike");
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱\n");
+            System.out.println("낫싱");
             return false;
         }
 
