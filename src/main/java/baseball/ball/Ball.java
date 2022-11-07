@@ -8,20 +8,20 @@ public final class Ball {
     private final int number;
     private final int index;
 
-    public int getNumber() {
-        return number;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
     public Ball(int number, int index) {
         validateNumRange(number);
         validateIndexRange(index);
 
         this.number = number;
         this.index = index;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     private void validateNumRange(int num) {
