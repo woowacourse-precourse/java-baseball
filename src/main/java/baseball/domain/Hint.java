@@ -19,24 +19,20 @@ public enum Hint {
         hint.count++;
     }
 
-    public static void printHintByCount() {
-        String hint;
-        if(STRIKE.count > 0 && BALL.count > 0) {
-            hint = BALL.count + BALL.value + " " + STRIKE.count + STRIKE.value;
-        }
-        else {
-            if(BALL.count > 0) {
-                hint = BALL.count + BALL.value;
-            }
-            else if(STRIKE.count > 0) {
-                hint = STRIKE.count + STRIKE.value;
-            }
-            else {
-                hint = NOTHING.value;
-            }
+    public static String getHintByCount() {
+        StringBuilder hint = new StringBuilder();
+        if(BALL.count ==0 && STRIKE.count == 0) {
+            return NOTHING.value;
         }
 
-        System.out.println(hint);
+        if(BALL.count > 0) {
+            hint.append(BALL.count).append(BALL.value).append(" ");
+        }
+
+        if(STRIKE.count > 0) {
+            hint.append(STRIKE.count).append(STRIKE.value);
+        }
+        return hint.toString();
     }
 
     public static int getStrikeCount() {

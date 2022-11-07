@@ -21,7 +21,6 @@ public class Game {
 
     public void play() {
         printStartGame();
-        System.out.println(computer.getRandomNumbers());
         while (Hint.getStrikeCount() != RANDOM_NUMBERS_LENGTH) {
             inputNumbers();
             rule.getHint(gamer.inputNumbers(), computer.getRandomNumbers());

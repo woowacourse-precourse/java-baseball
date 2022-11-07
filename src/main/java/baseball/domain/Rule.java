@@ -17,7 +17,8 @@ public class Rule {
             }
         }
 
-        Hint.printHintByCount();
+//        Hint.printHintByCount();
+        System.out.println(Hint.getHintByCount());
     }
 
     public boolean isReset(String number) {
