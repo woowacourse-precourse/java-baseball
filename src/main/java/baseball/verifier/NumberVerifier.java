@@ -1,5 +1,6 @@
 package baseball.verifier;
 
+import baseball.utils.ExceptionMessage;
 import baseball.utils.SystemConstant;
 
 public class NumberVerifier implements Verifier {
@@ -10,12 +11,16 @@ public class NumberVerifier implements Verifier {
     }
 
     private void checkNumeric(String input) {
-        Integer.parseInt(input);
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMERIC);
+        }
     }
 
     private void checkThreeDigits(String input) {
         if (input.length() != SystemConstant.GAME_DIGIT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.NOT_THREE_DIGITS);
         }
     }
 }
