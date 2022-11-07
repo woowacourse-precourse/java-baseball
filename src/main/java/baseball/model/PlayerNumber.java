@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static baseball.exception.Exception.*;
+import baseball.exception.Exception;
 
 public class PlayerNumber {
 
@@ -8,10 +8,10 @@ public class PlayerNumber {
 
     public void setPlayerNumber(String playerNumber) {
 
-        isInputLengthThree(playerNumber);
-        isInputTypeNumber(playerNumber);
-        isExistZeroInNumber(playerNumber);
-        isExistSameNumber(playerNumber);
+        Exception.isInputLengthThree(playerNumber);
+        Exception.isInputTypeNumber(playerNumber);
+        Exception.isExistZeroInNumber(playerNumber);
+        Exception.isExistSameNumber(playerNumber);
         this.playerNumber = playerNumber;
     }
 
