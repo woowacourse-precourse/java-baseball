@@ -8,17 +8,26 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class User {
-    private static final  Pattern compile= Pattern.compile("(([^1-9])\\2{0,})");
+    private static final Pattern compile = Pattern.compile("(([^1-9])\\2{0,})");
     private BaseBallNumber number;
-    public String getConsoleInput() {
-        String input = Console.readLine();
-        if(compile.matcher(input).find()) throw new IllegalArgumentException();
-        return input;
-    }
 
     public void makeBaseBallNumber() {
         String consoleInput = getConsoleInput();
-        List<Integer> integerList = Arrays.stream(consoleInput.split("")).map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        number=BaseBallNumber.of(integerList);
+        List<Integer> integerList = toIntegerList(consoleInput);
+        number = BaseBallNumber.of(integerList);
+    }
+
+    public String getConsoleInput() {
+        String input = Console.readLine();
+        if (compile.matcher(input).find()) throw new IllegalArgumentException();
+        return input;
+    }
+
+    private List<Integer> toIntegerList(String consoleInput) {
+        return Arrays.stream(splitChar(consoleInput)).map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    private String[] splitChar(String consoleInput) {
+        return consoleInput.split("");
     }
 }
