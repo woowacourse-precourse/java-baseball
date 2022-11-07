@@ -11,8 +11,8 @@ public class ValidationNumber {
     public List<Integer> checkTotalAndConvertIntegerList(String number) {
         checkHaveZero(number);
         List<Integer> numberList = stringToIntegerList(number);
-        checkOverlap(numberList);
         checkNumberSize(numberList);
+        checkOverlap(numberList);
         return numberList;
     }
 
