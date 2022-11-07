@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Referee {
@@ -9,6 +10,7 @@ public class Referee {
 
     public Referee(Rule rule) {
         this.rule = rule;
+        this.playerNumbers = new ArrayList<>();
     }
 
     public void receiveComputerNumbers(List<Integer> numbers) {
