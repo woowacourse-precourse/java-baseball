@@ -27,12 +27,12 @@ public class BallsTest {
         Balls computerBalls = new Balls(List.of(1, 2, 3));
 
         Balls userBalls = new Balls(List.of(1, 2, 3));
-        BallReport judge = computerBalls.judge(userBalls);
+        BallReport ballReport = computerBalls.judge(userBalls);
 
         BallReport ballReportStrikeCase = new BallReport();
-        ballReportStrikeCase.add(JudgementType.STRIKE, 3);
+        ballReportStrikeCase.add(JudgementType.STRIKE);
 
-        assertThat(judge).isEqualTo(ballReportStrikeCase);
+        assertThat(ballReport.reportToList()).isEqualTo(List.of(3, 0, 0));
     }
 
 

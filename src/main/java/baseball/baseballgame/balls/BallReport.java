@@ -18,10 +18,6 @@ public class BallReport {
         ballReport.put(judgementType, ballReport.get(judgementType) + 1);
     }
 
-    public void add(JudgementType strike, Integer count) {
-        ballReport.put(strike, count);
-    }
-
     public List<Integer> reportToList() {
         return ballReport.keySet().stream()
                 .map(judgementType -> ballReport.getOrDefault(judgementType, 0))
