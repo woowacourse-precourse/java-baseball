@@ -36,25 +36,20 @@ public class BaseballGameManager {
     }
 
     private String getValidInput() {
-        String userInput = null;
-        boolean isInputValid = false;
+        String userInput = Console.readLine();;
 
-        while (!isInputValid) {
-            userInput = Console.readLine();
+        try {
+            // userInput이 Integer로 타입 변환이 가능한지 (숫자가 아닌 값 입력시 예외처리)
+            Integer.parseInt(userInput);
 
-            try {
-                // userInput이 Integer로 타입 변환이 가능한지 (숫자가 아닌 값 입력시 예외처리)
-                Integer.parseInt(userInput);
-
-                // userInput이 정해진 갯수의 숫자가 입력되지 않은 경우
-                if (userInput.length() != numberCount) {
-                    throw new NumberFormatException();
-                }
-
-                isInputValid = true;
-            } catch (NumberFormatException numberFormatException) {
-                System.out.printf("※서로 다른 숫자 %d개를 입력해주세요.※\n", numberCount);
+            // userInput이 정해진 갯수의 숫자가 입력되지 않은 경우
+            if (userInput.length() != numberCount) {
+                throw new NumberFormatException();
             }
+
+        } catch (NumberFormatException numberFormatException) {
+            System.out.printf("※서로 다른 숫자 %d개를 입력해주세요.※\n", numberCount);
+            getValidInput();
         }
 
         return userInput;
