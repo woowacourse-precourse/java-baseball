@@ -62,9 +62,12 @@ public class Application {
             inputNumber2 = inputNumber1 % 100 / 10;
             inputNumber3 = inputNumber1 % 10;
             inputNumber1 = inputNumber1 / 100;
-        } else {
+
+        } else if (inputNumber1>0 && inputNumber1<10){
             inputNumber2 = scanner.nextInt();
             inputNumber3 = scanner.nextInt();
+        }else{
+            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
         if (inputRequirements(inputNumber1, inputNumber2, inputNumber3)) {
             usersNumbers.add(0, inputNumber1);
