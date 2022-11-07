@@ -55,18 +55,21 @@ public class Referee {
     }
 
     public String getResult(){
-        String result;
         if(isNothing()){
-            result = NOTHING;
+            return NOTHING;
         }
-        else {
-            if(strike == 0)
-                result = ball+BALL;
-            else if(ball == 0)
-                result = strike+STRIKE;
-            else
-                result = ball + BALL + " " + strike + STRIKE;
+        return BallORStrike();
+    }
+
+    private String BallORStrike(){
+        if(strike == 0){
+            return ball+BALL;
         }
-        return result;
+
+        if(ball == 0){
+            return strike+STRIKE;
+        }
+
+        return ball + BALL + " " + strike + STRIKE;
     }
 }
