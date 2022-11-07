@@ -30,4 +30,8 @@ public class TurnScore {
     public void setStrikes(int strikes) {
         this.strikes = strikes;
     }
+
+    public ResultTurn getResultTurn() {
+        return this.resultTurn;
+    }
 }
