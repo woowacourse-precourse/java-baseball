@@ -30,4 +30,8 @@ public class Referee {
     private boolean isNothing() {
         return strike == 0 & ball == 0;
     }
+
+    public boolean isAllStrike(){
+        return strike == 3;
+    }
 }
