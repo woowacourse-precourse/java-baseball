@@ -1,0 +1,28 @@
+- fix(NumberManager): use Randoms.pickNumberInRange
+- docs(gitignore): add node_modules in gitignore
+- fix(NumberManagerTest): fix getHint_낫싱_테스트
+- add(UserManagerTest): tests for UserManager
+- add(NumberManagerTest): tests for NumberManager
+- fix(GameManager): fix printHint() method
+- refactor: add Javadoc
+- refactor: refactor every four classes
+- fix(Application): move checkRepeatInput methods
+- fix(BullsAndCows): fix timing of alert_startGame
+- fix(BullsAndCows): move checkPredictInput methods
+- add(IO): create class, move methods of I/O to here
+- add(Numbers): create class, move methods of nums
+- fix(BullsAndCows): fix checking predictInput
+- fix(BullsAndCows): add constant, fix isAnswer()
+- feat(BullsAndCows): add method for printing hint
+- fix(BullsAndCows): change names to predictInput
+- feat(Application): add methods for asking repeat
+- fix(Application): fix do-while to while in main()
+- feat(BullsAndCows): add methods checking input&ans
+- feat(Application): add try-catch for exception
+- feat(BullsAndCows): add methods for input
+- feat(BullsAndCows): add methods to start game
+- docs(gitignore): hide package.json from git
+- fix(Application): set the entire flow of the program
+- add(BullsAndCows): create class, draw a frame of functions
+- docs(README): add list of functions
+- feat: setup precourse baseball project
