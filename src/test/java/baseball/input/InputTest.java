@@ -26,16 +26,16 @@ public class InputTest {
 
         private MockedStatic<Console> mockConsole;
 
-        @ParameterizedTest(name = "isRestart Test When input {0}")
+        @ParameterizedTest(name = "When input {0}")
         @ArgumentsSource(InputTestIsRestartData.class)
-        void isRestartTest_NormalCase(String inputMessage, boolean excepted) {
+        void isRestartTest_NormalCase(String inputMessage, boolean expected) {
             given(Console.readLine()).willReturn(inputMessage);
 
-            assertThat(Input.isRestart()).isEqualTo(excepted);
+            assertThat(Input.isRestart()).isEqualTo(expected);
         }
 
         @Test
-        @DisplayName("isRestart Test When input another Text")
+        @DisplayName("When input another Text")
         void isRestartTest_throwExceptionCase() {
             given(Console.readLine()).willReturn("213");
 
