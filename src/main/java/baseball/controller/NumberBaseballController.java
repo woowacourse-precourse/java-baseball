@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.GameResult;
-import baseball.enums.GuessResultType;
+import baseball.enums.GuessResultStatus;
 import baseball.sevice.NumberBaseballService;
 import baseball.view.NumberBaseballView;
 import java.util.List;
@@ -21,12 +21,12 @@ public class NumberBaseballController {
     private void inputUserAnswer() {
         List<Integer> resultList = numberBaseballService.inputUserAnswer(numberBaseballView.inputUserAnswer());
         GameResult gameResult = new GameResult(resultList.get(STRIKE_INDEX), resultList.get(BALL_INDEX));
-        GuessResultType resultType = numberBaseballView.printResult(gameResult);
+        GuessResultStatus resultType = numberBaseballView.printResult(gameResult);
         determineNextMove(resultType);
     }
 
-    private void determineNextMove(GuessResultType resultType) {
-        if (resultType == GuessResultType.WIN) {
+    private void determineNextMove(GuessResultStatus resultType) {
+        if (resultType == GuessResultStatus.WIN) {
             String userAnswer = numberBaseballView.inputNewGameAnswer();
         }
     }

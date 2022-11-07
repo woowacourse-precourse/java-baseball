@@ -1,6 +1,6 @@
 package baseball.sevice;
 
-import static baseball.enums.AsciiType.ASCII_ZERO;
+import static baseball.enums.AsciiCodeStatus.ASCII_ZERO;
 
 import baseball.domain.ComputerNumber;
 import baseball.repository.NumberBaseballRepository;

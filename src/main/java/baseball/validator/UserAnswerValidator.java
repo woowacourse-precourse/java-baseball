@@ -1,7 +1,7 @@
 package baseball.validator;
 
-import static baseball.enums.AsciiType.ASCII_NINE;
-import static baseball.enums.AsciiType.ASCII_ONE;
+import static baseball.enums.AsciiCodeStatus.ASCII_NINE;
+import static baseball.enums.AsciiCodeStatus.ASCII_ONE;
 
 import baseball.message.ErrorMessage;
 

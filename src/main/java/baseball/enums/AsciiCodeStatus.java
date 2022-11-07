@@ -1,13 +1,13 @@
 package baseball.enums;
 
-public enum AsciiType {
+public enum AsciiCodeStatus {
     ASCII_ZERO(48),
     ASCII_ONE(49),
     ASCII_NINE(57);
 
     private final int asciiNumber;
 
-    AsciiType(int asciiNumber) {
+    AsciiCodeStatus(int asciiNumber) {
         this.asciiNumber = asciiNumber;
     }
 

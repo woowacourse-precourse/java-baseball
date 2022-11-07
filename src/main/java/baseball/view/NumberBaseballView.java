@@ -2,7 +2,7 @@ package baseball.view;
 
 import baseball.domain.GameResult;
 import baseball.message.GameMessage;
-import baseball.enums.GuessResultType;
+import baseball.enums.GuessResultStatus;
 import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseballView {
@@ -26,18 +26,18 @@ public class NumberBaseballView {
         return Console.readLine();
     }
 
-    public GuessResultType printResult(GameResult gameResult) {
+    public GuessResultStatus printResult(GameResult gameResult) {
         setGameResult(gameResult);
         if (isWin()) {
             System.out.println(GameMessage.WIN);
-            return GuessResultType.WIN;
+            return GuessResultStatus.WIN;
         }
         if (isNothing()) {
             System.out.println(GameMessage.NOTHING);
-            return GuessResultType.NOT_WIN;
+            return GuessResultStatus.NOT_WIN;
         }
         System.out.println(createResultMessage());
-        return GuessResultType.NOT_WIN;
+        return GuessResultStatus.NOT_WIN;
     }
 
     private boolean isNothing() {
