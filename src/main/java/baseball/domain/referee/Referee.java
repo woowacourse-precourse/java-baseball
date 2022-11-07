@@ -1,5 +1,10 @@
 package baseball.domain.referee;
 
 public interface Referee {
-    boolean isEndGameSet(String resultMessage);
+
+    boolean isEachSetContext();
+
+    void updateEachSetContext(String resultMessage);
+
+    void clearEachSetContext();
 }
