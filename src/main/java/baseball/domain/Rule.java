@@ -1,13 +1,12 @@
 package baseball.domain;
 
-import baseball.constant.Constant;
-
 import java.util.List;
 
 import static baseball.constant.Constant.*;
 
 public class Rule {
     public void getHint(List<Integer> numbers, List<Integer> computerNumbers) {
+        Hint.init();
         for(int i=0; i<numbers.size(); i++) {
             int number = computerNumbers.indexOf(numbers.get(i));
             if(i == number) {
@@ -18,7 +17,7 @@ public class Rule {
             }
         }
 
-        System.out.println(Hint.getHintByCount());
+        Hint.printHintByCount();
     }
 
     public boolean isReset(String number) {
