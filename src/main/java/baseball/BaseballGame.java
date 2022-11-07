@@ -10,7 +10,7 @@ import java.util.List;
 public class BaseballGame {
 
     public static void run(){
-        OutputView.initSystemMessage();
+        OutputView.initGameMessage();
         while (true) {
             String restartCheckInput = startGame();
             if (restartCheckInput.equals("2")) {
