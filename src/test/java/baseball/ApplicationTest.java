@@ -43,6 +43,14 @@ class ApplicationTest extends NsTest {
         assertThat(Application.hasDuplication("123")).isFalse();
     }
 
+    @Test
+    void 다른_숫자나_문자가_있는지_판별() {
+        assertThat(Application.hasOtherNumbersOrChars("ABC")).isTrue();
+        assertThat(Application.hasOtherNumbersOrChars("102")).isTrue();
+        assertThat(Application.hasOtherNumbersOrChars("A21")).isTrue();
+        assertThat(Application.hasOtherNumbersOrChars("123")).isFalse();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
