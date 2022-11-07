@@ -23,7 +23,8 @@ public class Executor {
                 String resultString = guessResult.getResult();
                 Printer.printMessage(resultString);
                 Printer.allCorrect();
-                askRestart();
+                int restartAnswer = askRestart();
+                processRestartAnswer(restartAnswer);
             }else{
                 String resultString = guessResult.getResult();
                 System.out.println(resultString);
@@ -42,10 +43,13 @@ public class Executor {
         return user.getInput();
     }
 
-    public void askRestart(){
+    public int askRestart(){
         Printer.askRestart();
-        String s = Console.readLine();
-        int reStart = Integer.parseInt(s);
+        int restart = getRestart();
+        return restart;
+    }
+
+    public void processRestartAnswer(int reStart){
         if(reStart == RESTART){
             startGame();
         }else if(reStart != EXIT){
@@ -53,5 +57,11 @@ public class Executor {
         }else{
             flag = false;
         }
+    }
+
+    public int getRestart(){
+        String s = Console.readLine();
+        int reStart = Integer.parseInt(s);
+        return reStart;
     }
 }
