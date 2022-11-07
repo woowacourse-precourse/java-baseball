@@ -12,9 +12,9 @@ import org.assertj.core.util.Arrays;
 public class Application {
 	
     public static void main(String[] args) {
-    	 // 컴퓨터 랜덤 숫자 만들기
     }
     
+    // 컴퓨터 랜덤 숫자 만들기
     public static int RandomNum() {
     	int num = (int) (Math.random()*9 + 1);
     	return num;
