@@ -51,4 +51,10 @@ class ApplicationTest extends NsTest {
 		assertThat(3).isEqualTo(user.userSize());
 	}
 
+	@Test
+	void 컴퓨터_숫자_생성() {
+		service.ramdomNumberSetting();
+		assertThat(3).isEqualTo(service.computerSize());
+	}
+
 }
