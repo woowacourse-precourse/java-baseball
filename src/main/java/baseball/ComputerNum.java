@@ -24,9 +24,9 @@ public class ComputerNum implements Number {
     @Override
     public void verifyNumber(List<Integer> presnum) {
         for (int number : presnum) {
-            if (number < 1 || number > 9) {    //1~9까지 숫자 제한
+            if (number < 1 || number > 9) {
                 throw new IllegalArgumentException();
-            } else if (presnum.size() != 3 || presnum.size() != presnum.stream().distinct().count()) {    //중복이랑 3개 제한
+            } else if (presnum.size() != 3 || presnum.size() != presnum.stream().distinct().count()) {
                 throw new IllegalArgumentException();
             }
         }
