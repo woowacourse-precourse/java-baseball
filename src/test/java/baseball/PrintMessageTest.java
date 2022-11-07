@@ -3,14 +3,20 @@ package baseball;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.assertj.core.api.Assertions.*;
 
 class PrintMessageTest {
 
     @Test
     void startMessage() {
+        ByteArrayOutputStream outPut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outPut));
         PrintMessage.startMessage();
-        org.assertj.core.api.Assertions.assertThat(1).isEqualTo(2);
+        String start = "숫자 야구 게임을 시작합니다.\n";
+        assertThat(outPut.toString()).isEqualTo(start);
     }
 
     @Test
