@@ -4,11 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
     }
     private static void gameStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -80,5 +82,21 @@ public class Application {
         }
 
         return input;
+    }
+
+    private static String stateBallAndStrike(int ball,int strike){
+        String printStateOfBallAndStrike = "";
+
+        if(ball == 0 && strike == 0){
+            printStateOfBallAndStrike = "낫싱";
+        } else if(ball == 0){
+            printStateOfBallAndStrike = (strike + "스트라이크");
+        } else if(strike == 0){
+            printStateOfBallAndStrike = (ball + "볼");
+        } else{
+            printStateOfBallAndStrike = (ball + "볼 " + strike +  "스트라이크");
+        }
+
+        return printStateOfBallAndStrike;
     }
 }
