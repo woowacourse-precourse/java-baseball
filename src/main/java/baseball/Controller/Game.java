@@ -20,13 +20,13 @@ public class Game {
         outputView.startGameMessage();
         while (startOrEnd) {
             player.saveComputerNumber(number.createComputerNumber());
-            oneGame();
+            playOneGame();
             outputView.printStartOrEnd();
             startOrEnd = referee.isStart(inputView.inputUser());
         }
     }
 
-    private void oneGame() {
+    private void playOneGame() {
         boolean pass = true;
         while (pass) {
             outputView.inputNumMessage();
