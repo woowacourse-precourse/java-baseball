@@ -38,7 +38,14 @@ public class Application {
     private static List<Integer> gameResult(int inputNumber) {
         ArrayList<Integer> resultList = new ArrayList<>();
 
+        for (int i = 1; i <= 3; i++) {
+            int inputOneNumber = inputNumber / (Math.max(1, (int) Math.pow(10, 3 - i)));
+            int result = checkEachNumber(inputOneNumber, i);
+            resultList.add(result);
+            inputNumber -= inputOneNumber * (int) Math.pow(10, 3 - i);
+        }
 
+        return resultList;
     }
 
     private static boolean eachGame() {
