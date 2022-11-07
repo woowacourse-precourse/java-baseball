@@ -13,7 +13,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Service {
 
-	static IllegalException condition = new IllegalException();
+	static IllegalException exception = new IllegalException();
 	static Message message = new Message();
 	public static boolean gameSet = true;
 	static Controller controller = new Controller();
@@ -38,7 +38,7 @@ public class Service {
 			if (!computerNumbers.contains(randomComputerNumber)) {
 				computerNumbers.add(randomComputerNumber);
 			}
-		}
+		}		
 		System.out.println("초보자용 컴퓨터 번호: " + computerNumbers);
 		return computerNumbers;
 	}
@@ -46,8 +46,8 @@ public class Service {
 	public static List<Integer> setUserNumbers() {
 
 		System.out.print(message.getInputNumbers());
-		String userAnotherNumbers = Console.readLine();
-		List<Integer> userNumbersList = condition.userNumbersException(userAnotherNumbers);
+		String userAnotherNumbers = Console.readLine();		
+		List<Integer> userNumbersList = exception.userNumbersException(userAnotherNumbers);
 
 		return userNumbersList;
 	}
@@ -75,7 +75,7 @@ public class Service {
 		if (strike == null && ball == null) {
 			System.out.println(message.getNothing());
 		} else if (strike != null && ball != null) {
-			System.out.println(ball + message.getBall() + strike + message.getStrike());
+			System.out.println(ball + message.getBall() +" "+ strike + message.getStrike());
 		} else if (strike != null && ball == null) {
 			System.out.println(strike + message.getStrike());
 			if (strike == 3) {
@@ -90,6 +90,6 @@ public class Service {
 
 		System.out.println(message.getGameOver());
 		String continued = Console.readLine();
-		condition.continuedExceptionProcess(continued);
+		exception.continuedExceptionProcess(continued);
 	}
 }

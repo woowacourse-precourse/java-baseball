@@ -18,7 +18,7 @@ public class IllegalException {
 		final Matcher matchUserNumber = userNumberPattern.matcher(userNumbers);
 		final boolean isUserNumberMatch = matchUserNumber.find();
 		char[] charUserNumbers = new char[userNumbers.length()];
-
+		
 		if (!isUserNumberMatch) {
 			throw new IllegalArgumentException();
 		}

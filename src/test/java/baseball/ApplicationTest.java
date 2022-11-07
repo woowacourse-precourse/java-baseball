@@ -11,11 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-	/**
-	 * 제공된 라이브러리를 이용할때 반복문에서 사용하면 Scanner.nextLine()에서
-	 * NoSuchElementException 오류 처리해버림..
-	 */
-	@DisplayName("예제")
+	// 구현완료
+	@DisplayName("예제") 
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -26,6 +23,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+	// throws 로 런타임 에러를 실행시킴 -> 애플리케이션에서 정상적으로 작동됨, runException에서 읽지못함.
     @DisplayName("범위에 벗어난 입력")
     @Test
     void 예외_테스트() {
