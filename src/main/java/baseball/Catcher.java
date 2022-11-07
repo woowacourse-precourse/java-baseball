@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Catcher {
@@ -22,5 +23,12 @@ public class Catcher {
 
     public List<Integer> getCatcherNumbers() {
         return catcherNumbers;
+    }
+
+    public void forTest_setter() {
+        catcherNumbers.clear();
+        catcherNumbers.add(7);
+        catcherNumbers.add(1);
+        catcherNumbers.add(3);
     }
 }
