@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.constant.Message;
 import baseball.util.RandomNumberGenerator;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class BaseballGame {
@@ -21,5 +22,16 @@ public class BaseballGame {
             gameResult.showResult();
 
         } while (gameResult.strike != 3);
+    }
+
+    public void end() {
+        System.out.println(Message.GAME_END);
+    }
+
+    public boolean rerun() {
+        System.out.println(Message.GAME_RESTART);
+        Integer userInput = Integer.valueOf(Console.readLine());
+
+        return true;
     }
 }
