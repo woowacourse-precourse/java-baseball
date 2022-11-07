@@ -1,8 +1,7 @@
 package baseball.controller;
 
-import static baseball.Constant.*;
+import static baseball.Constant.CORRECT_ANSWER_NUMBER_SIZE;
 
-import baseball.Constant;
 import baseball.service.ResultService;
 import baseball.view.OutputView;
 

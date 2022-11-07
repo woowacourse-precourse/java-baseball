@@ -12,6 +12,11 @@ public class Constant {
 	public static final String RESTART_QUESTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
 	public static final String INPUT_ANSWER_IS_NOT_DIGIT_ERROR_MESSAGE = "숫자가 아닙니다.";
-	public static final String INPUT_ANSWER_IS_NOT_ENOUGH_SIZE_ERROR_MESSAGE = CORRECT_ANSWER_NUMBER_SIZE + "자리 수여야합니다.";
+	public static final String INPUT_ANSWER_IS_NOT_ENOUGH_SIZE_ERROR_MESSAGE =
+			CORRECT_ANSWER_NUMBER_SIZE + "자리 수여야합니다.";
 	public static final String INPUT_ANSWER_IS_DUPLICATED_ERROR_MESSAGE = "중복되는 숫자가 존재합니다.";
+	public static final String RESTART_INPUT_INVALID_ERROR_MESSAGE = "1이나 2를 입력하세요.";
+
+	public static final String RESTART_INPUT_NUMBER = "1";
+	public static final String EXIT_INPUT_NUMBER = "2";
 }

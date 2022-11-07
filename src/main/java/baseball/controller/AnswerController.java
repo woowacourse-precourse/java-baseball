@@ -1,13 +1,8 @@
 package baseball.controller;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import baseball.service.AnswerService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class AnswerController {
 	private static AnswerController instance;
