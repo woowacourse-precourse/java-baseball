@@ -3,18 +3,7 @@ package baseball;
 public class InputCheck {
 
     public static boolean isInputError(String input) {
-        char temp;
-
-        if (input.length() != 3) {
-            return true;
-        }
-        if (hasNonDigit(input)) {
-            return true;
-        }
-        if (hasSameNumber(input)) {
-            return true;
-        }
-        return false;
+        return (input.length() != 3) || hasNonDigit(input) || hasSameNumber(input);
     }
 
     public static boolean hasNonDigit(String input) {
