@@ -8,6 +8,8 @@ import java.util.List;
 
 
 public class GameController {
+    Computer computer = new Computer();
+    Exception exception = new Exception();
     String goalNumber;
 
     public void start() {
@@ -17,7 +19,7 @@ public class GameController {
     }
 
     private void setGoalNumber() {
-        goalNumber = Computer.createRandomNumber();
+        goalNumber = computer.createRandomNumber();
     }
 
     private void playing() {
@@ -27,37 +29,21 @@ public class GameController {
         gameResult(hint);
     }
 
-    public void gameResult(String hint) {
-        if (hint.equals("3스트라이크")) {
-            endGame();
-        } else if (hint.contains("nothing")) {
-            Message.nothing();
-            playing();
-        } else {
-            Message.hint(hint);
-            playing();
-        }
-    }
+    private String getUserNumber() throws IllegalArgumentException {
+        Message.getUserNumber();
+        String userNumber = Console.readLine();
 
-    public void endGame() {
-        Message.endGame();
-        Message.replay();
-
-        int checkReplay = Integer.parseInt(Console.readLine());
-
-        if (!Exception.isValidNumber(checkReplay)) {
+        if (!exception.isCheckDigit(userNumber)
+                || !exception.isCheckLength(userNumber)
+                || !exception.isCheckOverlap(userNumber)
+                || !exception.isCheckRange(userNumber)) {
             throw new IllegalArgumentException();
         }
-
-        if (checkReplay == 1) {
-            start();
-        } else if (checkReplay == 2) {
-            return;
-        }
+        return userNumber;
     }
 
-    public static String hint(String userNumber, String goalNumber) {
-        HashMap<String, Integer> hint = Computer.getHint(userNumber, goalNumber);
+    public String hint(String userNumber, String goalNumber) {
+        HashMap<String, Integer> hint = computer.getHint(userNumber, goalNumber);
 
         if (hint.get("strike") == 0 && hint.get("ball") == 0) {
             return "낫싱";
@@ -72,17 +58,33 @@ public class GameController {
         }
     }
 
-    public String getUserNumber() throws IllegalArgumentException {
-        Message.getUserNumber();
-        String userNumber = Console.readLine();
+    private void gameResult(String hint) {
+        if (hint.equals("3스트라이크")) {
+            endGame();
+        } else if (hint.contains("nothing")) {
+            Message.nothing();
+            playing();
+        } else {
+            Message.hint(hint);
+            playing();
+        }
+    }
 
-        if (!Exception.isCheckDigit(userNumber)
-                || !Exception.isCheckLength(userNumber)
-                || !Exception.isCheckOverlap(userNumber)
-                || !Exception.isCheckRange(userNumber)) {
+    private void endGame() {
+        Message.endGame();
+        Message.replay();
+
+        int checkReplay = Integer.parseInt(Console.readLine());
+
+        if (!exception.isValidNumber(checkReplay)) {
             throw new IllegalArgumentException();
         }
-        return userNumber;
+
+        if (checkReplay == 1) {
+            start();
+        } else if (checkReplay == 2) {
+            return;
+        }
     }
 
     private List<Integer> changeList(String inputNumber) {

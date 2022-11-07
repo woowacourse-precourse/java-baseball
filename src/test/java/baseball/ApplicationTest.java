@@ -3,25 +3,28 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.plaf.ComponentUI;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    @Test
-    void randomNumber_중복확인() {
-        String randomNumber = Computer.createRandomNumber();
+    GameController gameController = new GameController();
+    Computer computer = new Computer();
 
+    @Test
+    void should_Fail_When_randomNumberOverlap() {
+        String randomNumber = computer.createRandomNumber();
         assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(1));
         assertThat(randomNumber.charAt(0)).isNotEqualTo(randomNumber.charAt(2));
         assertThat(randomNumber.charAt(1)).isNotEqualTo(randomNumber.charAt(2));
     }
 
     @Test
-    void randomNumber_길이확인() {
-        String randomNumber = Computer.createRandomNumber();
-
+    void should_Fail_When_randomNumberLengthIsNot3() {
+        String randomNumber = computer.createRandomNumber();
         assertThat(randomNumber.length()).isEqualTo(3);
     }
 
@@ -62,7 +65,7 @@ class ApplicationTest extends NsTest {
         String randomNumber = "123";
         String userNumber = "123";
         String gameResult = "3스트라이크";
-        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test
@@ -70,7 +73,7 @@ class ApplicationTest extends NsTest {
         String randomNumber = "123";
         String userNumber = "145";
         String gameResult = "1스트라이크";
-        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test
@@ -78,7 +81,7 @@ class ApplicationTest extends NsTest {
         String randomNumber = "123";
         String userNumber = "451";
         String gameResult = "1볼";
-        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test
@@ -86,7 +89,7 @@ class ApplicationTest extends NsTest {
         String randomNumber = "123";
         String userNumber = "456";
         String gameResult = "낫싱";
-        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
+        assertThat(gameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test

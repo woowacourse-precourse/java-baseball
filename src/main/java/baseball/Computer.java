@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 
 public class Computer {
-    public static String createRandomNumber() {
+    public String createRandomNumber() {
         String randomNumber = "";
         while (randomNumber.length() < 3) {
             int temp = Randoms.pickNumberInRange(1, 9);
@@ -16,7 +16,7 @@ public class Computer {
         return randomNumber;
     }
 
-    public static HashMap<String, Integer> getHint(String userNumber, String goalNumber) {
+    public HashMap<String, Integer> getHint(String userNumber, String goalNumber) {
         HashMap<String, Integer> hint = new HashMap<>();
         hint.put("strike", 0);
         hint.put("ball", 0);
@@ -27,7 +27,7 @@ public class Computer {
         return hint;
     }
 
-    public static HashMap<String, Integer> strike(HashMap<String, Integer> hint, String userNumber, String goalNumber) {
+    private HashMap<String, Integer> strike(HashMap<String, Integer> hint, String userNumber, String goalNumber) {
         for (int i = 0; i < goalNumber.length(); i++) {
             if (goalNumber.charAt(i) == userNumber.charAt(i)) {
                 hint.put("strike", hint.get("strike") + 1);
@@ -36,7 +36,7 @@ public class Computer {
         return hint;
     }
 
-    public static HashMap<String, Integer> ball(HashMap<String, Integer> hint, String userNumber, String goalNumber) {
+    private HashMap<String, Integer> ball(HashMap<String, Integer> hint, String userNumber, String goalNumber) {
         StringBuffer userNumber_sb = new StringBuffer();
         StringBuffer goalNumber_sb = new StringBuffer();
         userNumber_sb.append(userNumber);
