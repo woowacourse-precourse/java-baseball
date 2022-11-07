@@ -1,8 +1,9 @@
 package baseball;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import camp.nextstep.edu.missionutils.test.NsTest;
 
 import java.util.ArrayList;
 import java.util.List;
