@@ -41,12 +41,16 @@ public class Ball {
     }
 
     private void appendBall(StringBuilder string) {
-        if (ball != 0){
+        if (hasBall(ball)){
             string.append(ball + "볼 ");
         }
-        if (strike != 0) {
+        if (hasBall(strike)) {
             string.append(strike + "스트라이크");
         }
+    }
+
+    private boolean hasBall(int ball) {
+        return ball != 0;
     }
 
     private boolean isNothing() {
