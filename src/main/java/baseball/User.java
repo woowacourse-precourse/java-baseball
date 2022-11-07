@@ -20,6 +20,6 @@ public class User {
         );
     }
     public void getUserBaseballList(){
-        this.baseballList.getBaseballList();
+        this.baseballList.printBaseballList();
     }
 }

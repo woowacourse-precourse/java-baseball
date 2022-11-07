@@ -9,7 +9,7 @@ public class Baseball {
         this.baseball = number;
     }
 
-    public void getBaseball(){
+    public void printBaseball(){
         System.out.println(this.baseball);
     }
 
