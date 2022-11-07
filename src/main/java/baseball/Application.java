@@ -69,6 +69,32 @@ public class Application {
         }
         return strikeCnt;
     }
+    static boolean checkGame(List<Integer> computerNumber, List<Integer> userNumber) {
+        int ballCnt=ballCheck(computerNumber,userNumber);
+        int strikeCnt=strikeCheck(computerNumber,userNumber);
+        ballCnt = ballCnt-strikeCnt;
+        if(strikeCnt == 3)
+        {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+        else if(ballCnt ==0 && strikeCnt ==0)
+        {
+            System.out.println("낫싱");
+            return true;
+        }
+        else {
+            if (ballCnt != 0) {
+                System.out.print(ballCnt + "볼 ");
+            }
+            if (strikeCnt != 0) {
+                System.out.print(strikeCnt + "스트라이크");
+            }
+            System.out.println("\n");
+            return true;
+        }
+    }
 
 
 
