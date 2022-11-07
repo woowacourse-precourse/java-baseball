@@ -30,4 +30,10 @@ public class InputValidation {
         return inputNumberOk;
     }
 
+    public void restartValidation(String gameRestartInput) {
+        if (!gameRestartInput.matches("[1|2]")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

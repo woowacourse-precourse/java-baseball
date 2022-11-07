@@ -20,6 +20,7 @@ public class BaseballGame {
 
         List<Integer> computer = makeComputerNumber();
         boolean running = true;
+        boolean restartFlag = false;
 
         while (running) {
 
@@ -32,6 +33,16 @@ public class BaseballGame {
 
             alertScore(score);
 
+            if (score.get("strike") == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+                running = restart();
+                restartFlag = true;
+            }
+            if (running && restartFlag) {
+                computer = makeComputerNumber();
+                restartFlag = false;
+            }
         }
     }
 
@@ -83,6 +94,21 @@ public class BaseballGame {
         }
 
         System.out.println(sb.toString().trim());
+    }
+
+    public boolean restart() {
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String gameRestartInput = Console.readLine();
+
+        inputValidation.restartValidation(gameRestartInput);
+
+        if (gameRestartInput.equals("1")) {
+            return true;
+        }
+
+        return false;
     }
 
 }
