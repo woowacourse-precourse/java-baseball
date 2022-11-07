@@ -4,11 +4,19 @@ import java.util.ArrayList;
 
 public class BaseballController {
 
-    BaseballModel model = new BaseballModel();
-    BaseballView view = new BaseballView();
+    private final BaseballModel model = new BaseballModel();
+    private final BaseballView view = new BaseballView();
 
     private int ballCount = 0;
     private int strikeCount = 0;
+
+    public BaseballModel getModel() {
+        return model;
+    }
+
+    public BaseballView getView() {
+        return view;
+    }
 
     private void resetBallCount() {
         strikeCount = 0;
