@@ -20,6 +20,10 @@ public class BaseBallGame {
         return userNumber;
     }
 
+    public Computer getComputer() {
+        return computer;
+    }
+
     public int getBallCount() {
         return ballCount;
     }
