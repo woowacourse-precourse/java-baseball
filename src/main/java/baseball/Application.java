@@ -17,6 +17,27 @@ public class Application {
     public static void three_strike_message(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    public static void add_ball_index(
+            String[] input_number_list, String[] computer_number_list, List<Integer> strike_ball_nothing_list
+    ){
+        for (int i = 0; i < input_number_list.length; i++) {
+            if (Arrays.asList(computer_number_list).contains(input_number_list[i])) {
+                strike_ball_nothing_list.set(i, 1);
+            }
+        }
+    }
+
+    public static void add_strike_index(
+            String[] input_number_list, String[] computer_number_list, List<Integer> strike_ball_nothing_list
+    ){
+        for (int i = 0; i < input_number_list.length; i++) {
+            if (input_number_list[i].equals(computer_number_list[i])) {
+                strike_ball_nothing_list.set(i, 2);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         //First commit
