@@ -38,4 +38,37 @@ public class BaseballMachine {
         }
         return user;
     }
+
+    public static boolean checkNumber(String userInput){
+        String check = "";
+        //3자리 확인
+        if(userInput.length() != 3){
+            return false;
+        }
+        //숫자인지 확인
+        for(char single : userInput.toCharArray()){
+            if(single < 49 || single > 57)
+                return false;
+        }
+        //중복되는 숫자 확인
+        for(char single : userInput.toCharArray()){
+            if(check.indexOf(single) != -1){
+                return false;
+            }
+            check += single;
+        }
+
+        return true;
+    }
+
+    //String을 List<Integer>로 바꾸는 함수
+    public static List<Integer> stringToInt(String str){
+        List<Integer> integerList = new ArrayList<>();
+        for(char single : str.toCharArray()){
+            int tmp;
+            tmp = single - '0';
+            integerList.add(tmp);
+        }
+        return integerList;
+    }
 }
