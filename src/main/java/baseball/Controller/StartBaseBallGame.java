@@ -1,18 +1,14 @@
 package baseball.Controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static baseball.Constants.*;
 import static baseball.Domain.Computer.*;
 import static baseball.Domain.User.*;
+import static baseball.Message.ExceptionMessage.*;
 import static baseball.Message.OutputMessage.*;
-
 
 public class StartBaseBallGame {
 
@@ -29,10 +25,9 @@ public class StartBaseBallGame {
         String computerNumberResult = computerRandomNumberResult();
         do {
             numberInputMessage();
-            String userInput = inputUserNumber();
-            System.out.println("컴퓨터의 숫자 : " + computerNumberResult); // 지우는거
-            ballResult = countBall(userInput, computerNumberResult); // 판단
-            strikeResult = countStrike(userInput, computerNumberResult); // 판단
+            String userNumberResult = inputUserNumber();
+            ballResult = countBall(userNumberResult, computerNumberResult);
+            strikeResult = countStrike(userNumberResult, computerNumberResult);
             if (!checkedNotThing(ballResult, strikeResult)) {
                 if (ballResult > ZERO) {
                     System.out.print(ballResult+ "볼 ");
@@ -41,7 +36,6 @@ public class StartBaseBallGame {
                     System.out.print(strikeResult+ "스트라이크 ");
                 }
             }
-            System.out.println();
         } while (strikeResult != 3);
         printGameSetMessage();
     }
@@ -59,20 +53,21 @@ public class StartBaseBallGame {
     /**
      * 유저의 입력값과 컴퓨터의 입력값을 받아 스트라이크 갯수를 리턴
      */
-    private static int countStrike (String userInput, String computerInput) {
+    private static int countStrike (String userInputNumber, String computerInputNumber) {
         return (int) IntStream.range(0,3)
-                .filter(i -> userInput.charAt(i) == computerInput.charAt(i))
+                .filter(i -> userInputNumber.charAt(i) == computerInputNumber.charAt(i))
                 .count();
     }
+
     /**
      * 유저의 입력값과 컴퓨터의 입력값을 받아 볼의 갯수를 리턴
      */
-    private static int countBall (String userInput, String computerInput) {
-        return (int) userInput.chars()
+    private static int countBall (String userInputNumber, String computerInputNumber) {
+        return (int) userInputNumber.chars()
                 .map(value -> (char) value - INT_TO_CHAR_CONVERSION_CONSTANT)
                 .mapToObj(String::valueOf)
-                .filter(computerInput::contains)
-                .count() - countStrike(userInput,computerInput);
+                .filter(computerInputNumber::contains)
+                .count() - countStrike(userInputNumber,computerInputNumber);
     }
 
     /**

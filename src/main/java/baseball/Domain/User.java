@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import static baseball.Constants.*;
-import static baseball.Constants.DUPLICATED_ERR_MSG;
+import static baseball.Message.ExceptionMessage.*;
 
 public class User {
     public static String userInput = "";
