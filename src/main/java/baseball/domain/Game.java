@@ -1,12 +1,10 @@
 package baseball.domain;
 
 
-import static baseball.domain.Command.isExit;
-import static baseball.domain.Command.isRestart;
-import static baseball.domain.Game.GameStatus.END;
-import static baseball.domain.Game.GameStatus.RESTART;
-import static baseball.domain.Hint.*;
+import static baseball.common.Constant.MAX_STRIKE_SIZE;
 
+import static baseball.domain.Hint.*;
+import static baseball.domain.GameStatus.*;
 
 public final class Game {
 
@@ -14,23 +12,23 @@ public final class Game {
 
     private int ball;
 
-    public enum GameStatus {
-        PROGRESS,
-        RESTART,
-        END
-    }
-
     private GameStatus gameStatus;
 
     public Game() {
         this.gameStatus = GameStatus.PROGRESS;
     }
 
-    public GameStatus getStatus() {
-        return gameStatus;
+    public boolean isRestartStatus() {
+        return gameStatus.equals(RESTART);
     }
 
-    public int getStrike() { return strike; }
+    public boolean isExitStatus() {
+        return gameStatus.equals(EXIT);
+    }
+
+    public boolean isMaxStrike() {
+        return strike == MAX_STRIKE_SIZE;
+    }
 
     public void setGameResult(int strike, int ball) {
         this.strike = strike;
@@ -38,16 +36,16 @@ public final class Game {
     }
 
     public void setStatusByCommand(String command){
-        if (isExit(command)) {
-            this.gameStatus = END;
+        if (GameStatus.isExit(command)) {
+            this.gameStatus = EXIT;
         }
 
-        if (isRestart(command)) {
+        if (GameStatus.isRestart(command)) {
             this.gameStatus = RESTART;
         }
     }
 
-    public void restart() {
+    public void restartGame() {
         this.gameStatus = GameStatus.PROGRESS;
     }
 

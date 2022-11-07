@@ -1,6 +1,6 @@
 package baseball.exception;
 
-import baseball.domain.Command;
+import baseball.domain.GameStatus;
 
 import static baseball.exception.ExceptionMessage.*;
 
@@ -25,7 +25,7 @@ public class NumberExceptionUtils {
     }
 
     public static void isValidCommandDigit(String num) {
-        if (!Command.hasValue(num)) {
+        if (!GameStatus.hasValue(num)) {
             throw new IllegalArgumentException(INVALID_COMMAND_DIGIT_EXCEPTION.message());
         }
     }

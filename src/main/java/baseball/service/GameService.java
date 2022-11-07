@@ -1,17 +1,12 @@
 package baseball.service;
 
-import baseball.domain.Computer;
-import baseball.domain.Game;
-import baseball.domain.Game.GameStatus;
-import baseball.domain.Judge;
-import baseball.domain.Player;
+import baseball.domain.*;
 import baseball.exception.NumberExceptionUtils;
 import baseball.util.OutputUtils;
 import camp.nextstep.edu.missionutils.Console;
 
 
-import static baseball.common.Constant.*;
-import static baseball.domain.Game.GameStatus.*;
+
 
 
 
@@ -29,19 +24,19 @@ public class GameService {
 
     public void run() {
         OutputUtils.printInitView();
-        while (!game.getStatus().equals(END)) {
+        while (game.isExitStatus()) {
             OutputUtils.printInputView();
             player.setInputBall();
 
-            if (game.getStatus().equals(GameStatus.RESTART)) {
-                game.restart();
+            if (game.isRestartStatus()) {
+                game.restartGame();
                 computer = new Computer();
             }
 
             playBaseBallGame();
             OutputUtils.printGameResultView(game);
 
-            if (game.getStrike() == MAX_STRIKE_SIZE) {
+            if (game.isMaxStrike()) {
                 String command = getRestartOrExitFromPlayer();
                 game.setStatusByCommand(command);
             }
