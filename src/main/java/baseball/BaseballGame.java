@@ -1,6 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
+
+import static baseball.Application.sc;
 
 public class BaseballGame {
     private final List<Integer> answers = new ArrayList<>();
@@ -13,13 +17,11 @@ public class BaseballGame {
         strike = 0;
         ball = 0;
         initAnswer();
-        System.out.println(answers);
 
         while (true) {
             inputNum();
-            System.out.println(inputs);
             checkInput();
-            if (showResult()) {
+            if (showAndCheckResult()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
@@ -35,21 +37,32 @@ public class BaseballGame {
     }
 
     private void inputNum() {
-        Scanner sc = new Scanner(System.in);
         System.out.printf("숫자를 입력해주세요 : ");
-        int input = sc.nextInt();
-        sc.nextLine();
+        try {
+            int input = sc.nextInt();
+            mapAndValidateInput(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void mapAndValidateInput(int input) {
+        if(input < 100 || input > 999){
+            throw new IllegalArgumentException();
+        }
+
         for (int i = 0; i < 3; i++) {
-            inputs.add(input % 10);
+            int digit = input % 10;
+            if(digit == 0 || inputs.contains(digit)) throw new IllegalArgumentException();
+            inputs.add(digit);
             input /= 10;
         }
         Collections.reverse(inputs);
     }
 
     private void initAnswer() {
-        Random random = new Random();
         for (int i = 0; i < 3; i++) {
-            int randInt = random.nextInt(9) + 1;
+            int randInt = Randoms.pickNumberInRange(1, 9);
             if (answers.contains(randInt)) {
                 i--;
                 continue;
@@ -58,7 +71,7 @@ public class BaseballGame {
         }
     }
 
-    private boolean showResult() {
+    private boolean showAndCheckResult() {
         if (strike + ball == 0) {
             System.out.println("낫싱");
         } else if (strike == 0) {
@@ -68,6 +81,7 @@ public class BaseballGame {
         } else {
             System.out.printf("%d볼 %d스트라이크\n", ball, strike);
         }
+
         if(strike == 3) return true;
         strike  = 0;
         ball = 0;
