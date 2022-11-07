@@ -59,4 +59,11 @@ public class Input {
         throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 종료합니다.");
     }
 
+    public String inputNumberGameRestartOrExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String inputNumber = Console.readLine();
+
+        return inputNumber;
+    }
+
 }
