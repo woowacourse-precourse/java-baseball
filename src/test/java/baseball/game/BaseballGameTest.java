@@ -52,8 +52,7 @@ class BaseballGameTest {
 
         game.start();
 
-        var expected = List.of("3스트라이크", "낫싱", "3스트라이크", "1스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-        assertThat(output()).contains(expected);
+        assertThat(output()).contains("3스트라이크", "낫싱", "3스트라이크", "1스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
     }
 
     @ValueSource(strings = {"111", "122", "1", "12", "1234", "가나다", "!#@"})
