@@ -9,7 +9,15 @@ public class Application {
     private static int gameExecution = 0;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ResponseMessage.startGame();
+        Number computer = new Number();
+
+        while (gameExecution != STOP_PROGRAM) {
+            int strikeNumber = playGame(computer);
+            stopGame(strikeNumber);
+            stopProgram();
+            computer = restartGame(computer);
+        }
     }
 
     private static int playGame(Number computer) {
