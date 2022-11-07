@@ -24,4 +24,11 @@ class ValidatorTest {
                 .hasMessageContaining("[IllegalArgumentException]: 정수가 아닙니다.\n");
     }
 
+    @Test
+    void validateInputNumberScope() {
+        assertThatThrownBy(() -> {Validator.validatePlayerInput("120");})
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[IllegalArgumentException]: 각 자릿수가 " + MIN_VALUE + "~" + MAX_VALUE + "사이 숫자가 아닙니다.\n");
+    }
+
 }
