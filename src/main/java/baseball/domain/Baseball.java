@@ -32,7 +32,7 @@ public class Baseball {
         }
         userNumber = new ArrayList<>();
         for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
-            userNumber.add(Integer.valueOf(number.charAt(digit) - '0'));
+            userNumber.add(number.charAt(digit) - '0');
         }
         return userNumber;
     }
@@ -43,19 +43,19 @@ public class Baseball {
         }
         Set<Integer> digitset = new HashSet<>();
         for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
-            int giditNumber = number.charAt(digit) - '0';
-            if (giditNumber < 0 || giditNumber > 9) {
+            int digitNumber = number.charAt(digit) - '0';
+            if (digitNumber < 0 || digitNumber > 9) {
                 return false;
             }
-            if (digitset.contains(giditNumber)) {
+            if (digitset.contains(digitNumber)) {
                 return false;
             }
-            digitset.add(giditNumber);
+            digitset.add(digitNumber);
         }
         return true;
     }
 
-    public List<Integer> playGame() { //stream?
+    public List<Integer> playGame() {
         List<Integer> hints = Arrays.asList(0, 0, 0);
         for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
             if (computer.indexOf(userNumber.get(digit)) == -1) {
@@ -78,12 +78,12 @@ public class Baseball {
         return readLine.equals("1");
     }
 
-    private boolean isControllNumber(String str) {
-        if (str.length() != 1) {
+    private boolean isControllNumber(String digit) {
+        if (digit.length() != 1) {
             return false;
         }
-        int charNumber = str.charAt(0) - '0';
-        if (charNumber != 1 && charNumber != 2) {
+        int number = digit.charAt(0) - '0';
+        if (number != 1 && number != 2) {
             return false;
         }
         return true;
