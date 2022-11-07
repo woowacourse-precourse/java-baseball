@@ -20,6 +20,9 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         return generateGameAnswer();
     }
+    public static void throwIllegalArgumentException() {
+        throw new IllegalArgumentException("입력 값이 유효하지 않아 프로그램이 종료됩니다.");
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
