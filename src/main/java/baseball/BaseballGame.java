@@ -71,4 +71,13 @@ public class BaseballGame {
             }
         }
     }
+
+    static boolean replayCheck(int replay) {
+        if (replay == 1) {
+            return true;
+        } else if (replay != 1 && replay != 2) {
+            throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
+        }
+        return false;
+    }
 }
