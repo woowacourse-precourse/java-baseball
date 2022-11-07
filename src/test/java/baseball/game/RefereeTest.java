@@ -5,13 +5,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CompareTwoListTest {
+class RefereeTest {
 
-    private CompareTwoList compareTwoList;
+    private Referee referee;
 
     @BeforeEach
     public void setCompareClass() {
-        compareTwoList = new CompareTwoList();
+        referee = new Referee();
     }
 
     @Test
@@ -25,25 +25,25 @@ class CompareTwoListTest {
         List<Integer> result7 = List.of(3, 0);
 
         Assertions.assertThat(
-                compareTwoList.compareLists(List.of('4', '5', '6'), List.of('1', '2', '3')))
+                referee.compareLists(List.of('4', '5', '6'), List.of('1', '2', '3')))
             .isEqualTo(result1);
         Assertions.assertThat(
-                compareTwoList.compareLists(List.of('4', '5', '1'), List.of('1', '2', '3')))
+                referee.compareLists(List.of('4', '5', '1'), List.of('1', '2', '3')))
             .isEqualTo(result2);
         Assertions.assertThat(
-                compareTwoList.compareLists(List.of('3', '1', '6'), List.of('1', '2', '3')))
+                referee.compareLists(List.of('3', '1', '6'), List.of('1', '2', '3')))
             .isEqualTo(result3);
         Assertions.assertThat(
-                compareTwoList.compareLists(List.of('2', '3', '1'), List.of('1', '2', '3')))
+                referee.compareLists(List.of('2', '3', '1'), List.of('1', '2', '3')))
             .isEqualTo(result4);
         Assertions.assertThat(
-                compareTwoList.compareLists(List.of('1', '3', '5'), List.of('1', '2', '3')))
+                referee.compareLists(List.of('1', '3', '5'), List.of('1', '2', '3')))
             .isEqualTo(result5);
         Assertions.assertThat(
-                compareTwoList.compareLists(List.of('1', '2', '8'), List.of('1', '2', '3')))
+                referee.compareLists(List.of('1', '2', '8'), List.of('1', '2', '3')))
             .isEqualTo(result6);
         Assertions.assertThat(
-                compareTwoList.compareLists(List.of('1', '2', '3'), List.of('1', '2', '3')))
+                referee.compareLists(List.of('1', '2', '3'), List.of('1', '2', '3')))
             .isEqualTo(result7);
     }
 }
