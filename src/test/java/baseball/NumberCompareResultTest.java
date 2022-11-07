@@ -26,10 +26,10 @@ public class NumberCompareResultTest {
         }
 
         @Test
-        @DisplayName("strike/ball 모두 1 이상인 경우 [개수][스트라이크] [개수][볼] 형태의 문자열을 반환한다")
+        @DisplayName("strike/ball 모두 1 이상인 경우 [개수][볼] [개수][스트라이크] 형태의 문자열을 반환한다")
         void it_returns_string_contains_numberOf_strike_and_ball(){
             NumberCompareResult numberCompareResultStrike = new NumberCompareResult(1,1);
-            Assertions.assertThat(numberCompareResultStrike.toString()).isEqualTo("1스트라이크 1볼");
+            Assertions.assertThat(numberCompareResultStrike.toString()).isEqualTo("1볼 1스트라이크");
         }
 
         @Test
