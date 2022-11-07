@@ -20,7 +20,7 @@ public class Application {
             System.out.print(Message.PROMPT_FOR_NUMBER);
             String input = Console.readLine();
             List<Integer> user = Play.getNumberFrom(input);
-            // TODO: getScore
+            Score.SCORE.of(user, computer);
             // TODO: printScore
             // TODO: update strikeOut
             strikeOut = true;
