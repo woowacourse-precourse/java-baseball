@@ -62,7 +62,11 @@ public class BaseBallGame implements AutoCloseable {
     }
 
     private enum Trigger {
-
+        INVALID_USER_INPUT,
+        INCORRECT_ANSWER,
+        CORRECT_ANSWER,
+        RE_GAME,
+        EXIT;
     }
 
 
