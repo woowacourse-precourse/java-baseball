@@ -48,7 +48,7 @@ class ApplicationTest extends NsTest {
     @Test
     void parseUserInput_correct() {
         //given
-        String iptCorrect[] = {
+        final String INPUT_CORRECT[] = {
                 "123",
                 "789",
                 "147",
@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
                 "952"
         };
 
-        List<List<Integer>> optCorrect = List.of(
+        final List<List<Integer>> EXPECTED = List.of(
                 List.of(1, 2, 3),
                 List.of(7, 8, 9),
                 List.of(1, 4, 7),
@@ -65,12 +65,12 @@ class ApplicationTest extends NsTest {
         );
         //when
         List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < iptCorrect.length; i++) {
-            result.add(Application.parseUserInput(iptCorrect[i]));
+        for (int i = 0; i < INPUT_CORRECT.length; i++) {
+            result.add(Application.parseUserInput(INPUT_CORRECT[i]));
         }
         //then
-        for (int i = 0; i < iptCorrect.length; i++) {
-            assertThat(result).isEqualTo(optCorrect);
+        for (int i = 0; i < INPUT_CORRECT.length; i++) {
+            assertThat(result).isEqualTo(EXPECTED);
         }
     }
 
@@ -78,7 +78,7 @@ class ApplicationTest extends NsTest {
     @Test
     void parseUserInput_illegal() {
         //given
-        final String iptIllegal[] = {
+        final String INPUT_ILLEGAL[] = {
                 //길이가 길거나 짧음
                 "",
                 "1",
@@ -96,7 +96,7 @@ class ApplicationTest extends NsTest {
         };
 
         //when & then
-        for (String ipt : iptIllegal) {
+        for (String ipt : INPUT_ILLEGAL) {
             assertThatThrownBy(() -> Application.parseUserInput(ipt)).
                     isInstanceOf(IllegalArgumentException.class);
         }
@@ -105,7 +105,7 @@ class ApplicationTest extends NsTest {
     @Test
     void getStrikeCnt() {
         //given
-        List<List<Integer>> A = List.of(
+        final List<List<Integer>> A = List.of(
                 List.of(1, 3, 6),
                 List.of(1, 3, 6),
                 List.of(1, 3, 6),
@@ -115,7 +115,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 6),
                 List.of(1, 3, 6)
         );
-        List<List<Integer>> B = List.of(
+        final List<List<Integer>> B = List.of(
                 //3strike
                 List.of(1, 3, 6),
                 //2strike
@@ -129,7 +129,7 @@ class ApplicationTest extends NsTest {
                 //0strike
                 List.of(3, 6, 1)
         );
-        List<Integer> expected = List.of(
+        final List<Integer> EXPECTED = List.of(
                 3,
                 2,
                 2,
@@ -146,13 +146,13 @@ class ApplicationTest extends NsTest {
         }
 
         //then
-        assertThat(result).isEqualTo(expected);
+        assertThat(result).isEqualTo(EXPECTED);
     }
 
     @Test
     void getBallCnt() {
         //given
-        List<List<Integer>> A = List.of(
+        final List<List<Integer>> A = List.of(
                 List.of(1, 3, 6),
                 List.of(1, 3, 6),
                 List.of(1, 3, 6),
@@ -167,7 +167,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 3, 6),
                 List.of(1, 3, 6)
         );
-        List<List<Integer>> B = List.of(
+        final List<List<Integer>> B = List.of(
                 //0Ball
                 List.of(1, 3, 6),
                 List.of(1, 7, 6),
@@ -187,7 +187,7 @@ class ApplicationTest extends NsTest {
                 List.of(3, 6, 1)
 
         );
-        List<Integer> expected = List.of(
+        final List<Integer> EXPECTED = List.of(
                 0,
                 0,
                 0,
@@ -209,7 +209,7 @@ class ApplicationTest extends NsTest {
         }
 
         //then
-        assertThat(result).isEqualTo(expected);
+        assertThat(result).isEqualTo(EXPECTED);
     }
 
     @Override

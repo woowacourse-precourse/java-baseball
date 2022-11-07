@@ -58,24 +58,25 @@ public class Application {
         return result;
     }
 
-    public static int getStrikeCnt(List<Integer> A, List<Integer> B) {
+    public static int getStrikeCnt(List<Integer> x, List<Integer> y) {
         int result = 0;
-        for (int i = 0; i < A.size(); i++) {
-            if (A.get(i) == B.get(i)) {
+        for (int i = 0; i < x.size(); i++) {
+            if (x.get(i) == y.get(i)) {
                 result++;
             }
         }
         return result;
     }
 
-    public static int getBallCnt(List<Integer> A, List<Integer> B) {
+    public static int getBallCnt(List<Integer> x, List<Integer> y) {
         int result = 0;
-        for (int i = 0; i < A.size(); i++) {
-            //B에 A[i]가 포함되고 strike는 아니라면
-            if (B.contains(A.get(i)) && A.get(i) != B.get(i)) {
+        for (int i = 0; i < x.size(); i++) {
+            //y에 x[i]가 포함되고 strike는 아니라면
+            if (y.contains(x.get(i)) && x.get(i) != y.get(i)) {
                 result++;
             }
         }
         return result;
     }
+
 }
