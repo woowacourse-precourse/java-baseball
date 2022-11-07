@@ -2,7 +2,7 @@ package baseball.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import baseball.model.gamenumber.Validation;
+import baseball.model.validation.Validation;
 
 public class PlayerNumberInput extends Input {
     private final Validation validation = new Validation();
