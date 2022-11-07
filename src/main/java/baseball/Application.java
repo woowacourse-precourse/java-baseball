@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static List<Integer> computernumber = new ArrayList<>();
@@ -33,6 +34,18 @@ public class Application {
         }
         System.out.println(ballcount+"볼 "+strikecount+"스트라이크");
     }
+
+    public static void enternumber(){
+        System.out.println("숫자를 입력해 주세요 : ");
+        Scanner sc=new Scanner(System.in);
+        List<Integer> playernumber=new ArrayList<>();
+        String number=sc.next();
+        for(int i=0;i<3;i++){
+            playernumber.add(Integer.parseInt(number.substring(i,i+1)));
+        }
+        checkstrikeball(playernumber);
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
