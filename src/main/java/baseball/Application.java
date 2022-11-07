@@ -67,7 +67,7 @@ public class Application {
                 System.out.println("낫싱");
             } else if (ballCount > 0 && ballCount < 3 && strikeCount > 0 && strikeCount < 3){
                 System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
-            } else if (ballCount == 0){
+            } else if (ballCount == 0 && strikeCount < 3){
                 System.out.println(strikeCount + "스트라이크" );
             } else if (strikeCount == 0) {
                 System.out.println(ballCount + "볼" );
@@ -95,6 +95,7 @@ public class Application {
             // 예외사항 (아직 x)//
 
             if (newGame == 1) {
+                computer = new ArrayList<>();
                 while (computer.size() < 3) {
                     int randomNumber = Randoms.pickNumberInRange(1, 9);
                     if (!computer.contains(randomNumber)) {
