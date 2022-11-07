@@ -22,9 +22,8 @@ public class UserGuessInput{
     }
 
     protected List<Integer> processGuess(){
-        System.out.println("숫자를 입력해 주세요: ");
+        System.out.println("숫자를 입력해주세요:");
         String inputString = Console.readLine();
-
         return convertStringToList(inputString);
     }
 
@@ -32,7 +31,6 @@ public class UserGuessInput{
         List<Integer> convertedList = Arrays.stream(inputString.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-
         return convertedList;
     }
 }

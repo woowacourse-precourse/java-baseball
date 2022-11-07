@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Game {
-    protected Game(){
-        this.GameProcess();
-    }
 
     protected void GameProcess(){
         Exception exception = new Exception();
@@ -16,8 +13,8 @@ public class Game {
             new InGame(answer, false);
             Integer input = new UserTerminateInput().getUserTerminate();
             exception.chkUserTerminateInputValid(input);
-
             if(input.equals(2)){
+                System.out.println("게임 종료");
                 break;
             }
         }

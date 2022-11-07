@@ -19,7 +19,7 @@ public class InGame{
     protected void InGameProcess(){
         Exception exception = new Exception();
         while(!isAllStrike){
-            this.input = new UserGuessInput().processUserInput();
+            this.input = new UserGuessInput().getUserGuess();
             exception.chkUserGuessInputValid(input);
             this.count = new Counter(input, answer).getCount();
             boolean isEnd = new Result(count).computeResult();
