@@ -24,4 +24,10 @@ public class Exception {
         }
         return true;
     }
+    public static int validateCheckPoint(String number) {
+        if (!number.equals("1") && !number.equals("2")) {
+            throw new IllegalArgumentException("입력값은 1 또는 2만 가능합니다.");
+        }
+        return Integer.parseInt(number);
+    }
 }
