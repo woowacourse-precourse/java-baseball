@@ -16,7 +16,7 @@ public class ViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         View.printStartGame();
-        assertThat("숫자 야구 게임을 시작합니다.").isEqualTo(out.toString().trim());
+        assertThat("숫자 야구 게임을 시작합니다.\r\n").isEqualTo(out.toString());
     }
 
     @Test
@@ -24,7 +24,7 @@ public class ViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         View.printChoiceEndOrNewGame();
-        assertThat("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.").isEqualTo(out.toString().trim());
+        assertThat("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\r\n").isEqualTo(out.toString());
     }
     @Test
     void 숫자를_입력해주세요메시지_출력(){
@@ -39,7 +39,7 @@ public class ViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         View.printStrike(1);
-        assertThat("1스트라이크").isEqualTo(out.toString().trim());
+        assertThat("1스트라이크\r\n").isEqualTo(out.toString());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         View.printBall(2);
-        assertThat("2볼").isEqualTo(out.toString().trim());
+        assertThat("2볼\r\n").isEqualTo(out.toString());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class ViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         View.printBallAndStrike(2,1);
-        assertThat("2볼 1스트라이크").isEqualTo(out.toString().trim());
+        assertThat("2볼 1스트라이크\r\n").isEqualTo(out.toString());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class ViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         View.printNothing();
-        assertThat("낫싱").isEqualTo(out.toString().trim());
+        assertThat("낫싱\r\n").isEqualTo(out.toString());
     }
 
     @Test
@@ -71,6 +71,6 @@ public class ViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         View.printCollect();
-        assertThat("3개의 숫자를 모두 맞히셨습니다! 게임 종료").isEqualTo(out.toString().trim());
+        assertThat("3개의 숫자를 모두 맞히셨습니다! 게임 종료\r\n").isEqualTo(out.toString());
     }
 }
