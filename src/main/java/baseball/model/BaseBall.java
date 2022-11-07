@@ -19,11 +19,7 @@ public class BaseBall {
         this.ball = ballCount;
     }
 
-    public void setWin(boolean isWin) {
-        this.isWin = isWin;
-    }
-
-    public void resetCount() {
+    public void resetGame() {
         this.strike = 0;
         this.ball = 0;
         this.isWin = false;
