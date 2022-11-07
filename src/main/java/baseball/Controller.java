@@ -8,16 +8,15 @@ import baseball.utils.Constants;
 import java.util.ArrayList;
 
 public class Controller {
-    //객체를 모두 가져온다.
+
     public void playGame() throws IllegalArgumentException{
         ArrayList<Integer> RandomNum=getRandomNumbers();
         for (int i=0; i< Constants.GAME_NUM; i++){
             GameService Game = new GameService();
             Game.initScore();
             ArrayList<Integer> User = getUser();
-            Game.getBallCount(User,RandomNum);
-            Game.getStrikeCount(User,RandomNum);
-            //다시 시작하거나 게임 끝내기
+            Game.getBallCount(User, RandomNum);
+            Game.getStrikeCount(User, RandomNum);
             int isEnd = Game.finalScore();
             if (isEnd==Constants.END_GAME){
                 break;

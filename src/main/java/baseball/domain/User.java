@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class User {
+
     public static void checkUserInput(String str){
         Exceptions.checkNumSize(str);
         Exceptions.isNumber(str);

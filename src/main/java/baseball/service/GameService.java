@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class GameService {
-    //판단해서 점수를 산출하는 함수
+
     int Strikescore;
     int Ballscore;
 

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Exceptions {
+
     public static void isNumber(String str){
         for (int i=0; i<Constants.INPUT_SIZE; i++){
             if (str.charAt(i)>intToChar(Constants.RANDOM_END_NUM)

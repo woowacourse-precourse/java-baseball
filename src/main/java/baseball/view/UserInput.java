@@ -1,6 +1,7 @@
 package baseball.view;
 
 public class UserInput {
+
     public static void getUserNumber() {
         System.out.println("1에서 9까지의 수 3개를 입력하세요");
     }
