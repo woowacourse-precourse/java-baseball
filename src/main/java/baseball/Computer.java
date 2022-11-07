@@ -9,6 +9,10 @@ import java.util.List;
 public class Computer {
     private static List<Integer> answerNumber;
 
+    public List<Integer> getAnswerNumber() {
+        return answerNumber;
+    }
+
     public void generateNewRandomAnswer() {
         answerNumber = new ArrayList<>();
         while (answerNumber.size() < 3) {
