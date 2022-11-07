@@ -54,4 +54,21 @@ public class Application {
             return true;
         }
     }
+    
+    public static boolean input(String input){
+        boolean result = true;
+        result = checkInput(input);
+        if (result == false){
+            result = checkRepeat(input);
+            if (result == false){
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            return true;
+        }
+    }
 }
