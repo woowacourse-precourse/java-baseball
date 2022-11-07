@@ -31,7 +31,8 @@ public class BaseballGame {
      */
     private void printResult(int ball, int strike){
         if(ball > 0)System.out.print(ball+"볼 ");
-        if(strike > 0)System.out.println(strike+"스트라이크");
+        if(strike > 0)System.out.print(strike+"스트라이크");
+        if(ball == 0 && strike == 0)System.out.print("낫싱");
     }
     /**
      * 게임 시작.
@@ -41,7 +42,7 @@ public class BaseballGame {
      * pitch 인스턴스를 재 생성합니다.
      * */
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+
         //정답을 생성한다.
         answer = new CorrectAnswer();
         //반복(정답 시 탈출)
@@ -54,6 +55,6 @@ public class BaseballGame {
             //입력을 다시 받는다.
             pitch = new Pitch();
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+//        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

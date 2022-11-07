@@ -27,7 +27,7 @@ public class Pitch {
         String inputNumber = Console.readLine();
         if(inputNumber.length() != 3)
             throw new IllegalArgumentException();
-        for(int i = 2; i >= 0 ; i--){
+        for(int i = 0; i < 3 ; i++){
             if(!Character.isDigit(inputNumber.charAt(i)))
                 throw new IllegalArgumentException();
             pitchNumbers.add(inputNumber.charAt(i)-'0');
