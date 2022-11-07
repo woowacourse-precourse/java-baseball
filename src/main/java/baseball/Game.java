@@ -107,4 +107,24 @@ public class Game {
     public void replay(){
         play();
     }
+    public void checkInputValidation(String numberStr){
+        if (numberStr.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int cur = numberStr.charAt(i) - '0';
+            if (cur < 1 || cur > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        int firstNumber = numberStr.charAt(0);
+        int secondNumber = numberStr.charAt(1);
+        int thirdNumber = numberStr.charAt(2);
+
+        if (firstNumber == secondNumber || firstNumber == thirdNumber || secondNumber == thirdNumber) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
