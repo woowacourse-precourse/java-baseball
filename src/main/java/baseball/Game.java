@@ -9,19 +9,27 @@ public class Game {
     private int strike;
 
     public void startGame() {
-        getStartGameMessage();
+        View.getStartGameMessage();
         playGame();
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
     }
 
     private void playGame() {
         Computer computer = new Computer();
         int gameRound = 0;
         while (gameRound != 1) {
-            getInputMessage();
+            View.getInputMessage();
             player = new Player();
             swingBat(computer.getComputerNumbersList(), player.getPlayerNumbersList());
             gameRound = setResultGame();
-            getResultGameMessage(gameRound);
+            View.getResultGameMessage(gameRound,this.getBall(),this.getStrike());
         }
         checkRestartGame();
     }
@@ -53,12 +61,12 @@ public class Game {
     }
 
     private void checkRestartGame() {
-        getRestartGameMessage();
+        View.getRestartGameMessage();
         String inputNumber = getOneInputNumber();
         if (inputNumber.equals("1")) {
             playGame();
         } else {
-            getEndGameMessage();
+            View.getEndGameMessage();
         }
     }
 
@@ -66,33 +74,6 @@ public class Game {
         String inputNumber = player.inputNumbers();
         Exception.checkInputNumber(inputNumber);
         return inputNumber;
-    }
-
-    private void getRestartGameMessage() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
-
-    private void getEndGameMessage() {
-        System.out.println("게임을 완전히 종료합니다.");
-    }
-
-    private void getResultGameMessage(int gameRound) {
-        if (gameRound == 0) {
-            System.out.println("낫싱");
-        } else if (gameRound == 1) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        } else {
-            System.out.println(ball + "볼 " + strike + "스트라이크");
-        }
-    }
-
-    private void getStartGameMessage() {
-        System.out.print("숫자 야구 게임을 시작합니다.");
-    }
-
-    private void getInputMessage() {
-        System.out.print("숫자를 입력해 주세요 : ");
     }
 
 }
