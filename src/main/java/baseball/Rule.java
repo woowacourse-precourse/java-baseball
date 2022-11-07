@@ -46,4 +46,8 @@ public class Rule {
     private boolean contains(Integer value) {
         return selectedNumbers.contains(value);
     }
+
+    public List<Integer> getSelectedNumbers() {
+        return selectedNumbers;
+    }
 }
