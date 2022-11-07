@@ -17,9 +17,17 @@ public class GameControlStatus {
     }
 
     private void validateValue() {
-        if(value != RESTART_VALUE && value != STOP_VALUE) {
+        if(!isValidValue()) {
             throw new IllegalArgumentException("유효하지 않은 입력입니다.");
         }
+    }
+
+    private boolean isValidValue() {
+        return isRestart() || isStop();
+    }
+
+    public boolean isStop() {
+        return value == STOP_VALUE;
     }
 
     public boolean isRestart() {

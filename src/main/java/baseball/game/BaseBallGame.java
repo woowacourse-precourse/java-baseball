@@ -9,12 +9,12 @@ public class BaseBallGame {
 
     private User user;
     private Opponent opponent;
-    private GameControlStatus GameControlStatus;
+    private GameControlStatus gameControlStatus;
 
     public BaseBallGame(User user, Opponent opponent) {
         this.user = user;
         this.opponent = opponent;
-        this.GameControlStatus = null;
+        this.gameControlStatus = null;
     }
 
     public static BaseBallGame makeBaseBallGame(User user, Opponent opponent) {
@@ -45,11 +45,11 @@ public class BaseBallGame {
     }
 
     private boolean isGameStop() {
-        return GameControlStatus != null && !GameControlStatus.isRestart();
+        return gameControlStatus != null && gameControlStatus.isStop();
     }
 
     private void updateGameStatus() {
-        this.GameControlStatus = user.inputGameControlNum();
+        this.gameControlStatus = user.inputGameControlNum();
 
     }
 
