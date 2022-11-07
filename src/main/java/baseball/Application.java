@@ -57,6 +57,7 @@ public class Application {
         validateUserInputNumRange(userInputNum);
 
         userNumList = splitStringAndParseInt(userInputNum);
+        validateUserNumListNoRepetition();
     }
 
     private static List<Integer> splitStringAndParseInt(String userInputNum) {
@@ -137,6 +138,17 @@ public class Application {
 
         if (userInputNumToInt < 123 || userInputNumToInt > 987) {
             throw new IllegalArgumentException("123 이상 987 이하의 숫자만 입력 가능합니다.");
+        }
+    }
+
+    private static void validateUserNumListNoRepetition() {
+        for (int idx = 0; idx <= NUM_OF_DIGIT - 1; idx++) {
+            int numAtIdx = userNumList.get(idx);
+            List<Integer> userNumListAfterIdx = userNumList.subList(idx + 1, NUM_OF_DIGIT);
+
+            if (userNumListAfterIdx.contains(numAtIdx)) {
+                throw new IllegalArgumentException("같은 수를 중복해서 입력할 수 없습니다.");
+            }
         }
     }
 
