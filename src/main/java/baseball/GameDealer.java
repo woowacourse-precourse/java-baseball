@@ -91,6 +91,17 @@ public class GameDealer {
 
         return result;
     }
+    public static boolean CHECK_SAME_DIGIT(String User_Try){
+        boolean result = false;
+        char a = User_Try.charAt(0);
+        char b = User_Try.charAt(1);
+        char c = User_Try.charAt(2);
+
+        if((a == b) || (a == c) || (b == c)){
+            result = true;
+        }
+        return result;
+    }
     public static boolean ONE_GAME_LOOP() throws IllegalArgumentException{
         boolean result = true;
         boolean Check_Ans = false;
