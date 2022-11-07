@@ -25,6 +25,8 @@ public class Application {
 
         BaseBallPoint baseBallPoint = countBallAndStrike(computer, numStr);
 
+        printBallAndStrike(baseBallPoint.getBall(), baseBallPoint.getStrike());
+
     }
 
     static class BaseBallPoint{
@@ -54,6 +56,20 @@ public class Application {
 
         return new BaseBallPoint(ball, strike);
     }
+
+    public static void printBallAndStrike(int ball, int strike){
+
+        if(ball > 0 && strike > 0){
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }else if(ball > 0 && strike == 0){
+            System.out.println(ball + "볼 ");
+        } else if(strike > 0 && ball == 0){
+            System.out.println(strike + "스트라이크");
+        } else if(strike ==0 && ball == 0) {
+            System.out.println("낫싱");
+        }
+    }
+
 
     public static List<Integer> setAnswerNumber(){
         List<Integer> computer = new ArrayList<>();
