@@ -3,11 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -42,6 +38,31 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber has duplicate number");
         Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber has duplicate number");
+    }
+
+    @Test
+    void 자리수_3개_초과() {
+        //given
+        String givenNumber1 = "1234";
+        String givenNumber2 = "987654";
+
+        //when, then
+        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber1))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
+        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
+    }
+    @Test
+    void 자리수_3개_미만() {
+        //given
+        String givenNumber1 = "12";
+        String givenNumber2 = "5";
+
+        //when, then
+        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber1))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
+        Assertions.assertThatThrownBy(() -> Application.validateUserNumber(givenNumber2))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("UserNumber must be three-digit number");
     }
 
     @Test
