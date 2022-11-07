@@ -2,42 +2,23 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// class @Nest
-@SuppressWarnings("unchecked")
 class ComputerTest {
-    List<String> getPrivateAccessToComputerAnswer(Computer computer) {
-        List<String> computerAnswer = new ArrayList<>();
-        try {
-            Field privateField = computer.getClass().getDeclaredField("computerAnswer");
-            privateField.setAccessible(true);
-
-            return (List<String>) privateField.get(computer);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return computerAnswer;
-    }
+    Computer computer = new Computer();
+    List<String> computerAnswer = computer.computerAnswer;
 
     @Test
     void sizeOfAnswerShouldBeThree() {
-        Computer computer = new Computer();
-        List<String> computerAnswer = getPrivateAccessToComputerAnswer(computer);
-
         assertEquals(3, computerAnswer.size());
     }
 
     @Test
     void digitsShouldBeInRangeOneToNine() {
-        Computer computer = new Computer();
-        List<String> computerAnswer = getPrivateAccessToComputerAnswer(computer);
         Boolean inRange = true;
 
         for (String stringDigit : computerAnswer){
@@ -52,8 +33,6 @@ class ComputerTest {
 
     @Test
     void digitsShouldBeDistinct() {
-        Computer computer = new Computer();
-        List<String> computerAnswer = getPrivateAccessToComputerAnswer(computer);
         Boolean distinct = true;
         HashMap<String, String> digitsMap = new HashMap<>();
 
@@ -69,9 +48,6 @@ class ComputerTest {
 
     @Test
     void giveHintTest() {
-        Computer computer = new Computer();
-        List<String> computerAnswer = getPrivateAccessToComputerAnswer(computer);
-
         List<String> playerAnswer = new ArrayList<>();
         List<String> hint = new ArrayList<>();
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private List<String> computerAnswer;
+    public List<String> computerAnswer;
 
     Computer() {
         setComputerAnswer();
