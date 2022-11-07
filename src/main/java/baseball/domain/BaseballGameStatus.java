@@ -14,9 +14,13 @@ public enum BaseballGameStatus {
 
     public static BaseballGameStatus getEnum(Integer statusCode) {
         return Arrays.stream(values())
-                .filter(status -> status.statusCode.equals(statusCode))
+                .filter(baseballGameStatus -> isStatusCodeEqual(baseballGameStatus, statusCode))
                 .findAny()
                 .orElseThrow(BaseballGameException::new);
+    }
+
+    private static boolean isStatusCodeEqual(BaseballGameStatus baseballGameStatus, Integer statusCode) {
+        return baseballGameStatus.statusCode.equals(statusCode);
     }
 
     public boolean isGameContinues() {
