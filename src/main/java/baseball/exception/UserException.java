@@ -25,5 +25,12 @@ public class UserException {
         return true;
     }
 
+    public boolean checkUserInputNumberAboutOnlyNumber(String userInputNumber) throws IllegalArgumentException {
+        if (!userInputNumber.matches(Constant.USER_NUMBER_OPTION)) {
+            throw new IllegalArgumentException("숫자로만 입력해주세요. ");
+        }
+        return true;
+    }
+
 
 }
