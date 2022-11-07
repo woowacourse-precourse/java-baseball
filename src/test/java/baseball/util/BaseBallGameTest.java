@@ -3,6 +3,7 @@ package baseball.util;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -28,5 +29,19 @@ public class BaseBallGameTest {
         BaseBallGame.printByBallAndStrikeStatus(ballStrikeStatus);
 
         assertThat(captor.toString().trim()).isEqualTo("3볼");
+    }
+
+    @Test
+    void 게임_시작() {
+        OutputStream captor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(captor));
+
+        final byte[] buf = "456\n189\n312\n123".getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+
+        BaseBallGame baseBallGame = new BaseBallGame(List.of(1, 2, 3));
+        baseBallGame.gameStart();
+
+        assertThat(captor.toString().trim()).contains("낫싱", "1스트라이크", "3볼", "3스트라이크");
     }
 }
