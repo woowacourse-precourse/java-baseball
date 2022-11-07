@@ -18,5 +18,13 @@ public class BaseBallGame {
         do {
             user.selectUserNumber();
         } while (gameProcessor.isThreeStrike(computer.getComputerNumbers(), user.getUserInputNumbers()));
+        OutputView.printVictoryMessage();
+        endOrRestart();
+    }
+
+    private void endOrRestart() {
+        if (InputView.selectEndOrRestartInput()) {
+            this.run();
+        }
     }
 }
