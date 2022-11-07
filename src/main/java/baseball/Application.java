@@ -17,24 +17,15 @@ public class Application {
             List<Integer> user = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
             String userNumber = Console.readLine();
-            try {
-                checkNumberLength(userNumber);
-                checkAdequateNumber(userNumber);
-                addUserNumber(user, userNumber);
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException();
-            }
+            checkNumberLength(userNumber);
+            checkAdequateNumber(userNumber);
+            addUserNumber(user, userNumber);
 
             Count c = new Count();
             c.countBall(computer, user);
             c.countStrike(computer, user);
 
-            int answer;
-            try {
-                answer = c.printCount();
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException();
-            }
+            int answer = c.printCount();
             if (answer == 1) {
                 computer.clear();
             } else if (answer == 2) {
@@ -57,6 +48,10 @@ public class Application {
         if (userNumber.length() != 3) {
             throw new IllegalArgumentException();
         }
+    }
+
+    static int charToInt(char number) {
+        return Character.getNumericValue(number);
     }
 
     static void checkAdequateNumber(String userNumber) throws IllegalArgumentException {

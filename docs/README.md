@@ -4,6 +4,7 @@
 - 수를 computer 리스트에 추가하는 함수 : void addComputerNumber()
 2. 사용자의 수를 입력받아 적합성 판단
 - Console.readLine()
+- 입력한 String의 요소를 int로 바꾸는 기능 : int charToInt()
 - 숫자의 개수가 3이 아닌지 판단하는 기능 : void checkNumberLength()
 - 1~9가 아닌 문자가 있는지 판단하는 기능 : void checkAdequateNumber()
 - 입력한 숫자를 리스트에 추가하는 기능 : void addUserNumber()
