@@ -82,4 +82,10 @@ public class Application {
             System.out.printf("낫싱");
         System.out.println();
     }
+
+    static boolean isWrongAnswer(ballCount result) {
+        if (result.strike == 3)
+            return false;
+        return true;
+    }
 }
