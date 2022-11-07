@@ -66,6 +66,7 @@ public class BaseBallGame {
 
     public void printGameResult() {
         Map<String, Integer> gameResult = getGameResult();
+        this.gameMessageDisplay.printGameResultMessage(gameResult);
     }
 
     public Map<String, Integer> getGameResult() {
