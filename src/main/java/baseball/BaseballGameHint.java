@@ -9,11 +9,11 @@ public class BaseballGameHint {
     private int strike;
 
     public void getHint(int[] ExpectedAnswer, int[] Answer){
-        countStrikeAndBall(ExpectedAnswer,Answer);
+        generateHint(ExpectedAnswer,Answer);
         printHint();
     }
 
-    private void countStrikeAndBall(int[] userInput, int[] Answer) {
+    private void generateHint(int[] userInput, int[] Answer) {
         resetBallAndStrike();
         for (int userInputIndex  =0 ;userInputIndex < userInput.length;userInputIndex++) {
             int expectedAnswerTarget=userInput[userInputIndex];
