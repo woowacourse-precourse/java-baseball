@@ -47,4 +47,12 @@ public class baseballGame {
         }
     }
 
+    private void countStrikeAndBall(String inputNumber, int index) {
+        if ((inputNumber.charAt(index) - '0') == computer.get(index)) {
+            strikeCount += 1;
+        } else if (randomNumberSet.contains((inputNumber.charAt(index) - '0'))) {
+            ballCount += 1;
+        }
+    }
+
 }
