@@ -14,6 +14,12 @@ public class TurnResult {
         proceedCmp();
     }
 
+    /**
+     * 기준이 되는 BaseballNum과 입력된 수를 비교하여 결과를 반환합니다.
+     * @param baseballNum 기준이 되는 BaseballNum
+     * @param inputNum 비교할 3자리 정수
+     * @return TurnResult 객체가 반환됩니다.
+     */
     public static TurnResult compare(BaseballNum baseballNum, int inputNum) {
         return new TurnResult(baseballNum, inputNum);
     }
@@ -41,6 +47,13 @@ public class TurnResult {
         return balls;
     }
 
+    /**
+     * 볼, 스트라이크를 정해진 포맷으로 반환합니다.
+     * 볼과 스트라이크 모두 0일 경우 낫싱을 반환합니다.
+     * 볼 또는 스트라이크 중 하나가 0일 경우 해당 항목은 표시되지 않습니다.
+     *
+     * @return 낫싱 또는 x볼 y스트라이크 형태의 문자열
+     */
     @Override
     public String toString() {
         if (balls == 0 && strikes == 0)
