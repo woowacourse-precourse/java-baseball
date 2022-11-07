@@ -56,7 +56,7 @@ class BaseballGameTest {
         assertThat(output()).contains(expected);
     }
 
-    @ValueSource(strings = {"111", "112", "122", "121", "1", "12", "1234", "가나다", "!#@"})
+    @ValueSource(strings = {"111", "122", "1", "12", "1234", "가나다", "!#@"})
     @ParameterizedTest
     void 올바르지_않은_입력이_주어지면_예외가_발생한다(String input) {
         BaseballGame game = new BaseballGame(() -> List.of(1, 2, 3));
