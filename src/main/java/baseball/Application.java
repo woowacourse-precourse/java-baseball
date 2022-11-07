@@ -47,4 +47,8 @@ public class Application {
         }
         return true;
     }
+
+    static void throwException() {
+        throw new IllegalArgumentException();
+    }
 }
