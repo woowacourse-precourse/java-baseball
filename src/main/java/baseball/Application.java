@@ -64,6 +64,32 @@ public class Application {
         }
         return count;
     }
+
+    public static boolean validation(int input){
+        boolean validation = true;
+        //3자리 숫자여부 판단
+        String inputStr = Integer.toString(input);
+        if(!inputStr.matches("^[0-9]{3}$")){
+            validation = false;
+        }
+        //리스트에 각 자리 숫자 넣기
+        List<Integer> inputList = new ArrayList<>();
+        for(int i=0; i<3; i++){
+            inputList.add(input % 10);
+            input /= 10;
+        }
+        //각 자리 숫자 반복 여부 판단
+        for(int i=0; i<2; i++){
+            if(inputList.get(0).equals(inputList.get(i+1))){
+                validation = false;
+            }
+        }
+        if(inputList.get(1).equals(inputList.get(2))){
+            validation = false;
+        }
+
+        return validation;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int input = Integer.parseInt(Console.readLine());
