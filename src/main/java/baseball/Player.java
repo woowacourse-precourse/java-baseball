@@ -18,7 +18,7 @@ public class Player {
     }
     public static List<Integer> getAnswer(){
         List<Integer> list = new ArrayList<>();
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(SystemMessage.REQUEST_INPUT_NUMBER);
         String str = Console.readLine();
         list = splitAnswer(str);
         return list;
