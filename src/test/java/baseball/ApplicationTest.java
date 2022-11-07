@@ -34,55 +34,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
-    void 숫지가_1과9사이가_아니라면_오류를_던진다() {
-        int testNumber = 10;
-
-        assertThatThrownBy(() -> new BallNumber(testNumber))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 야구공_개수가_3개가_아니라면_오류를_던진다() {
-        // given
-        List<BallNumber> testBallNumberSet = new ArrayList<>();
-        testBallNumberSet.add(new BallNumber(1));
-        testBallNumberSet.add(new BallNumber(2));
-        testBallNumberSet.add(new BallNumber(3));
-        testBallNumberSet.add(new BallNumber(4));
-
-        // when, then
-        assertThatThrownBy(() -> new PlayerNumber(testBallNumberSet))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 컴퓨터는_3자리의_숫자를_생성한다() {
-        // given
-        int randomNumberSetSize = 3;
-
-        // when
-        List<BallNumber> testBallNumberList = GameNumber.generateRandomNumberSet();
-
-        // then
-        assertThat(randomNumberSetSize).isEqualTo(testBallNumberList.size());
-    }
-
-    @Test
-    @Description("List를 Set으로 변경했을 때 크기가 변화지 않다면, 중복된 숫자가 없다.")
-    void 컴퓨터는_서로다른_숫자의_집합을_생성한다() {
-        // given
-        int randomNumberSetSize = 3;
-        List<BallNumber> testBallNumberList = GameNumber.generateRandomNumberSet();
-
-        // when
-        Set<BallNumber> testBallNumberSet = Sets.newHashSet(testBallNumberList);
-
-        // then
-        assertThat(randomNumberSetSize).isEqualTo(testBallNumberSet.size());
-    }
-
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
