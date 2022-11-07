@@ -35,4 +35,12 @@ public class OutputManager {
 
         System.out.println(output);
     }
+
+    public static void notifyEnd() {
+        System.out.println(Text.NOTIFY_END);
+    }
+
+    public static void requestPlayerChoice() {
+        System.out.println(Text.RESTART_OR_END);
+    }
 }

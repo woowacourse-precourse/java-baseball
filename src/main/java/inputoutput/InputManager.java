@@ -19,4 +19,11 @@ public class InputManager {
 
         throw new IllegalArgumentException();
     }
+
+    public String getPlayerChoice() {
+        OutputManager.requestPlayerChoice();
+        String playerChoice = Console.readLine();
+
+        return playerChoice;
+    }
 }

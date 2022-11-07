@@ -57,4 +57,8 @@ public class Umpire {
         return hintRecord;
     }
 
+    public boolean isPlayerWin() {
+        return hintRecord.get(Text.STRIKE) == hint.getMax();
+    }
+
 }

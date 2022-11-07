@@ -17,10 +17,12 @@ public class GameManager {
     private List<Integer> playerNumber;
     private InputManager inputManager;
     private Umpire umpire;
+    private String playerChoice;
 
     public GameManager() {
         inputManager = new InputManager();
         umpire = new Umpire();
+        playerChoice = "";
     }
 
     private void generateComputerNumber() {
@@ -48,6 +50,36 @@ public class GameManager {
     private void reportHint() {
         Map<Text, Integer> hintRecord = umpire.compareNumber(computerNumber, playerNumber);
         OutputManager.printHint(hintRecord);
+    }
+
+    private void playOneRound() {
+        setPlayerNumber();
+        reportHint();
+    }
+
+    private void isPlayEnd() {
+        if (umpire.isPlayerWin()) {
+            OutputManager.notifyEnd();
+            playerChoice = inputManager.getPlayerChoice();
+            resetGame();
+        }
+    }
+
+    public void startPlay() {
+        generateComputerNumber();
+
+        while (!playerChoice.equals(Text.END.toString())) {
+            playOneRound();
+            isPlayEnd();
+        }
+
+    }
+
+    private void resetGame() {
+        if (playerChoice.equals(Text.RESTART.toString())) {
+            generateComputerNumber();
+            playerChoice = "";
+        }
     }
 
 }
