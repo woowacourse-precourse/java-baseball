@@ -51,7 +51,6 @@ public class Application {
         initCommonMessageMap();
         initComputerNumber();
 
-
         while (true) {
             System.out.print(commonMessageMap.get("inputMessage"));
             String userInput = readeUserInput();
