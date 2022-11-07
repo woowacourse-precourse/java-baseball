@@ -12,6 +12,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -120,6 +121,28 @@ class ApplicationTest extends NsTest {
         HashMap<String, Integer> result = baseball.Application.getResult(input, computer);
 
         assertThat(result).isEqualTo(expect);
+    }
+
+    @Test
+    void isPlay_게임을_새로_시작하려면_1반환() {
+        String input = "1";
+        boolean isPlay = Application.isPlay(input);
+
+        assertThat(isPlay).isEqualTo(true);
+    }
+    @Test
+    void isPlay_게임을_종료하려면_2를_반환() {
+        String input = "2";
+        boolean isPlay = Application.isPlay(input);
+
+        assertThat(isPlay).isEqualTo(false);
+    }
+    @Test
+    void isPlay_잘못된_입력() {
+        assertThrows(IllegalArgumentException.class,() ->{
+            String input = "abc";
+            boolean isPlay = Application.isPlay(input);
+        });
     }
 
     @Override
