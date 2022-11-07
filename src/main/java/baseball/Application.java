@@ -46,7 +46,17 @@ public class Application {
         return count;
     }
 
+    public static List<Integer> stringToList (String input){
+        int integerInput = Integer.parseInt(input);
+        List<Integer> listInput = new ArrayList<>();
+        while(integerInput > 0){
+            listInput.add(integerInput % 10);
+            integerInput /= 10;
+        }
+        return listInput;
+    }
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
     }
 }
