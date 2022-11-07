@@ -1,4 +1,6 @@
 package baseball;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -89,7 +91,8 @@ public class Application {
             if (str.length() == 3) {
                 break;
             }
-            value = random.nextInt(9) + 1;
+            //요구사항에 맞게 수정
+            value = Randoms.pickNumberInRange(1, 9);
 
             if (!str.contains(Integer.toString(value))) {
 
