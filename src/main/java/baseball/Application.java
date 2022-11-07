@@ -8,7 +8,19 @@ import java.util.HashMap;
 import java.util.List;
 
 enum BaseballResult {
-    NOTHING, BALL, STRIKE
+    NOTHING("낫띵"),
+    BALL("볼"),
+    STRIKE("스트라이크");
+
+    private final String korName;
+
+    BaseballResult(String korName) {
+        this.korName = korName;
+    }
+
+    public String getKorName() {
+        return korName;
+    }
 }
 
 public class Application {
