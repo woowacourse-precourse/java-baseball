@@ -16,15 +16,6 @@ public class Game {
     }
 
     public void start() {
-        try {
-            play();
-
-        } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
-        }
-    }
-
-    public void play() {
         OutputView.printGameStartMessage();
         computer.generateAnswer();
 
