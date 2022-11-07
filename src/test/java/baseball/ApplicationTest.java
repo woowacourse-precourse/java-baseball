@@ -39,7 +39,17 @@ class ApplicationTest extends NsTest {
         assertThat(output()).isEqualTo("2스트라이크");
     }
 
+    @Test
+    void 볼_스트라이크_계산_테스트() {
+        ArrayList<Integer> computers = new ArrayList<>(Arrays.asList(5, 1, 9));
+        ArrayList<Integer> users = new ArrayList<>(Arrays.asList(6, 1, 3));
+        ArrayList<Integer> result = new ArrayList<>();
 
+        result = Application.comparing(computers, users);
+
+        assertThat(result).containsExactly(1,0);
+
+    }
 
     @Override
     public void runMain() {
