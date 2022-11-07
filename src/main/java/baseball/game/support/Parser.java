@@ -27,16 +27,19 @@ public class Parser {
         return input.charAt(index) - '0';
     }
     private void checkDuplicate(List<Integer> result,Integer number){
-        if(result.contains(number))
+        if(result.contains(number)) {
             throw new IllegalArgumentException();
+        }
 
     }
     private void checkDigit(String input,Integer index){
-        if('0' > input.charAt(index) || input.charAt(index) > '9')
+        if('0' > input.charAt(index) || input.charAt(index) > '9') {
             throw new IllegalArgumentException();
+        }
     }
     private void checkSize(String input,Integer size){
-        if(input.length()>size)
+        if(input.length()>size) {
             throw new IllegalArgumentException();
+        }
     }
 }

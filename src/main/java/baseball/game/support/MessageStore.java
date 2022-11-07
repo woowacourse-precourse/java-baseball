@@ -19,20 +19,24 @@ public class MessageStore {
         notThingMessage(strikeCount,ballCount);
     }
     public void strikeMessage(Integer strikeCount,Integer ballCount){
-        if(strikeCount!=0&&ballCount==0)
-            System.out.println(strikeCount+"스트라이크");
+        if(strikeCount!=0&&ballCount==0) {
+            System.out.println(strikeCount + "스트라이크");
+        }
     }
     public void ballMessage(Integer strikeCount,Integer ballCount){
-        if(strikeCount==0&&ballCount!=0)
-            System.out.println(ballCount+"볼");
+        if(strikeCount==0&&ballCount!=0) {
+            System.out.println(ballCount + "볼");
+        }
     }
     public void strikeAndBallMessage(Integer strikeCount,Integer ballCount){
-        if(strikeCount!=0&&ballCount!=0)
-            System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
+        if(strikeCount!=0&&ballCount!=0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        }
     }
     public void notThingMessage(Integer strikeCount,Integer ballCount){
-        if(strikeCount==0&&ballCount==0)
+        if(strikeCount==0&&ballCount==0) {
             System.out.println("낫싱");
+        }
     }
     public void gameEndMessage(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");

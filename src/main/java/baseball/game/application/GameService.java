@@ -45,8 +45,9 @@ public class GameService {
     }
     private void countResult(List<Integer> inputData, List<Integer> randomNumber){
         for (int i=0;i<inputData.size();i++) {
-            if (randomNumber.contains(inputData.get(i)))
+            if (randomNumber.contains(inputData.get(i))) {
                 strikeAndBallCount(randomNumber.get(i), inputData.get(i));
+            }
         }
     }
     private void strikeAndBallCount(Integer randomNumber,Integer containNumber){
