@@ -104,4 +104,10 @@ public class Application {
         }
         return 0;
     }
+    public static List<Integer> isSame(List<Integer> strike, Integer computerValue, Integer userValue) {
+        if (computerValue.equals(userValue)) {
+            strike.add(computerValue);
+        }
+        return strike;
+    }
 }
