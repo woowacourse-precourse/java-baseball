@@ -13,14 +13,13 @@ public class Application {
         // TODO: 프로그램 구현
         List<Integer> computerNumberList = createComputerNumberList();
         System.out.println("숫자 야구 게임을 시작합니다.");
-        putUserNumber();
+        System.out.print("숫자를 입력해주세요 : ");
+        String userNumber = Console.readLine();
+        validateUserNumber(userNumber);
     }
 
-    private static void putUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String numbers = Console.readLine();
-        List<String> numberList = stringToStringList(numbers);
-
+    private static void validateUserNumber(String userNumbers) {
+        List<String> numberList = stringToStringList(userNumbers);
         validDuplicate(numberList);
     }
 
