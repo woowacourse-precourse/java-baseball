@@ -28,18 +28,18 @@ public class BaseballGame {
     }
 
     private void game(Numbers answer) {
-        Map<BallTypes, Integer> result = new EnumMap<>(BallTypes.class);
+        Map<BallTypes, Integer> compareResult = new EnumMap<>(BallTypes.class);
 
-        while (inProgress(result)) {
-            Numbers numbers = new Numbers(InputView.numbers());
-            result = answer.compare(numbers);
-            printCompareResult(new Result(result));
+        while (inProgress(compareResult)) {
+            Numbers userNumbers = new Numbers(InputView.numbers());
+            compareResult = answer.compare(userNumbers);
+            printCompareResult(new Result(compareResult));
         }
         printGameOverMessage();
     }
 
-    private boolean inProgress(Map<BallTypes, Integer> result) {
-        int strike = result.getOrDefault(BallTypes.STRIKE, 0);
+    private boolean inProgress(Map<BallTypes, Integer> compareResult) {
+        int strike = compareResult.getOrDefault(BallTypes.STRIKE, 0);
         return strike != TOTAL_BASEBALL_COUNT;
     }
 
