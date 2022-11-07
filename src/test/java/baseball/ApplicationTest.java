@@ -103,7 +103,6 @@ class ApplicationTest extends NsTest {
         NumberGenerator generator = new NumberGenerator();
         generator.generateNumber();
 
-        // 세 개의 난수를 생성하였는 지를 확인
         assertSame(3, generator.getNumbers().size());
 
         // 1부터 9사이의 숫자인 지와 빈도 수를 통해 중복되는 값이 있는 지를 확인

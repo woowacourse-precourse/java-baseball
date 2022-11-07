@@ -10,7 +10,6 @@ public class Application {
         while (playAgain) {
             user.inputNumber();
             numberGenerator.generateNumber();
-            //System.out.println("answer : " + numberGenerator.getNumbers());
             String answer = judge.judgement(numberGenerator.getNumbers(), user.getNumbers());
 
             while(!(judge.getStrike() == 3)) {
