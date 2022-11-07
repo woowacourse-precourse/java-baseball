@@ -2,8 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Game {
+import java.util.HashSet;
+import java.util.Set;
 
+public class Game {
+    private final int INPUT_LENGTH = 3;
     private Computer computer;
     public Game(){
     }
@@ -14,7 +17,7 @@ public class Game {
         this.computer = computer;
 
         String inputNumber = input();
-
+        inputCheck(inputNumber);
 
     }
 
@@ -23,6 +26,32 @@ public class Game {
         String input = Console.readLine();
         return input;
     }
+    private void inputCheck(String input){
+        if(isInputCorrectSize(input) && isInputNumeric(input) && isInputDuplicate(input)){
+            return;
+        }
+        throw new IllegalArgumentException();
+    }
 
+    private boolean isInputCorrectSize(String input){
+        if (input.length() != INPUT_LENGTH) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isInputNumeric(String input){
+        return (input.matches("[0-9]+"));
+    }
+
+    private boolean isInputDuplicate(String input){
+        Set<Character> duplicateCheck = new HashSet<>();
+        for (int i = 0; i < input.length(); i++) {
+            if (!duplicateCheck.add(input.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
