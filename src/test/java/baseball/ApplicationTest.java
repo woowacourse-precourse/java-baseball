@@ -104,9 +104,10 @@ class ApplicationTest extends NsTest {
         assertThat(isDistinct(number)).isTrue();
     }
 
-    @Test
-    void 번호가_중복인지_확인하는_테스트_False() {
-        String number = "234e";
+    @ParameterizedTest(name = "{0}을 넣었을 때 false를 반환")
+    @ValueSource(strings = {"12e4", "1#34?6)", "~234@67,", "0123456789"})
+    @DisplayName("번호가 중복인지 확인 테스트")
+    void 번호가_중복인지_확인하는_테스트_False(String number) {
         assertThat(isDistinct(number)).isFalse();
     }
 
