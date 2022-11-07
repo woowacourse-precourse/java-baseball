@@ -19,25 +19,29 @@ public class BaseballGame {
         textForGame = new TextForGame();
         result = new ArrayList<>();
 
-        startAndPlaying();
+        start();
     }
 
-    private void startAndPlaying() {
+    private void start() {
         isPlaying = true;
         referee.setDefenceNumber();
+        playingOneRound();
+    }
 
-        while (isPlaying) {
-            textForGame.inputText();
-            List<Integer> offenceNumber = user.inputGameNumber();
-            referee.setOffenceNumber(offenceNumber);
+    private void playingOneRound() {
+        textForGame.inputText();
+        List<Integer> offenceNumber = user.inputGameNumber();
+        referee.setOffenceNumber(offenceNumber);
 
-            result = referee.getBallAndStrikeCount();
+        result = referee.getBallAndStrikeCount();
+        textForGame.printResult(result.get(BALL_INDEX), result.get(STRIKE_INDEX));
 
-            textForGame.printResult(result.get(BALL_INDEX), result.get(STRIKE_INDEX));
+        if (result.get(STRIKE_INDEX) == GAME_NUMBER_SIZE) {
+            endOrRestart();
+        }
 
-            if (result.get(STRIKE_INDEX) == GAME_NUMBER_SIZE) {
-                endOrRestart();
-            }
+        if(isPlaying) {
+            playingOneRound();
         }
     }
 
@@ -47,10 +51,14 @@ public class BaseballGame {
         int number = Integer.parseInt(numberString);
 
         if (number == END) {
-            isPlaying = false;
+            end();
         }
         if (number == RESTART) {
-            startAndPlaying();
+            start();
         }
+    }
+
+    private void end() {
+        isPlaying = false;
     }
 }
