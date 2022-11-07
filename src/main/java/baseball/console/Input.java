@@ -46,9 +46,9 @@ public class Input {
     }
 
     private static boolean isValidRestartNumber(String number) {
-        if (!number.equals("1") && !number.equals("2")) {
-            return false;
+        if (number.equals("1") || number.equals("2")) {
+            return true;
         }
-        return true;
+        return false;
     }
 }
