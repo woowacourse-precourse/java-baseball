@@ -29,8 +29,6 @@ public class Game {
     }
 
     public void play(String input) {
-        int strike = 0;
-        int ball = 0;
         List<Integer> player = inputToArrayList(input);
         int strike = getStrike(computer, player);
         int ball = getBall(computer, player);
