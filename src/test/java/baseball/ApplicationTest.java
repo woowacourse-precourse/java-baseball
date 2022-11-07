@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,6 +33,24 @@ class ApplicationTest extends NsTest {
         );
     }
     @Nested
+    class GameManagerTest {
+        @Test
+        void scanNumber() {
+            int result = 0;
+            String input = "123";
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            HashMap<Integer,Integer> InputNumberMap = GameManager.scanNumber();
+            HashMap<Integer,Integer> expectResult = new HashMap<>();
+            expectResult.put(1,1);
+            expectResult.put(2,2);
+            expectResult.put(3,3);
+            assertThat(InputNumberMap).isEqualTo(expectResult);
+        }
+    }
+    @Nested
     class ComputerTest {
         @Test
         void generatingNumber() {
@@ -41,7 +60,6 @@ class ApplicationTest extends NsTest {
             assertThat(RandomNumberMap).containsValues(1,2,3);
             assertThat(RandomNumberMap).doesNotContainKey(0);
         }
-
     }
 
     @Override
