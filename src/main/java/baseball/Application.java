@@ -8,6 +8,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
+    public static String input(){
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        checkInput(input);
+        return input;
+    }
+
     public static Boolean isThree(String number){
         if(number.length()==3)
             return true;
@@ -19,6 +26,15 @@ public class Application {
            return true;
         }
         return false;
+    }
+
+    public static void checkInput(String number) {
+        if (!isThree(number)) {
+            throw new IllegalArgumentException();
+        }
+        if (!isValid(UserNum(number))) {
+            throw new IllegalArgumentException();
+        }
     }
     public static List<Integer> RandomNum() {
        List <Integer> computer = new ArrayList<>();
@@ -68,19 +84,21 @@ public class Application {
         return ("낫싱");
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    public static void runGame(){
         List<Integer> computer = RandomNum();
         System.out.println(computer);
-        System.out.print("숫자를 입력해주세요 : ");
-        String number = Console.readLine();
-        if(!(isThree(number) || isValid(UserNum(number)))){
-            throw new IllegalArgumentException();
+        String result="";
+        while(!result.equals("3 스트라이크")){
+            String number = input();
+            result = gameResult(Compare(computer,UserNum(number)));
+            System.out.println(result);
         }
-        System.out.println(gameResult(Compare(computer,UserNum(number))));
 
+    }
 
-
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        runGame();
 
 
     }
