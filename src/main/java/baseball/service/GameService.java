@@ -68,4 +68,8 @@ public class GameService {
 		return number;
 	}
 
+	public void printCount() {
+		System.out.println(systemMessage.PrintCount(game.getStrikeCount(), game.getBallCount()));
+	}
+
 }
