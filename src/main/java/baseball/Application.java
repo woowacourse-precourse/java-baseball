@@ -76,12 +76,15 @@ public class Application {
         }
 
         if (!isNothing(sameDigitCount)) {
-            result.put(BALL, ballCount);
-            result.put(STRIKE, strikeCount);
-
+            setResult(strikeCount, ballCount);
             GameTextPrinter.printCompareResult(result);
         }
         checkGameOver(strikeCount);
+    }
+
+    private void setResult(int strikeCount, int ballCount) {
+        result.put(BALL, ballCount);
+        result.put(STRIKE, strikeCount);
     }
 
     private boolean isNothing(int sameDigitCount) {
