@@ -20,6 +20,19 @@ public class Game {
         return answer;
     }
 
+    public boolean isPlayingNewGame(String choice) throws IllegalArgumentException {
+        if (UserInputException.isIllegalChoice(choice)) {
+            throw new IllegalArgumentException("잘못된 선택입니다.");
+        }
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        if(choice.equals("1")){
+            return true;
+        }
+        return false;
+    }
+
     public boolean getGameResultOfJudge(List<Integer> result) {
         int ballCount = result.get(0);
         int strikeCount = result.get(1);
@@ -29,15 +42,15 @@ public class Game {
             return true;
         }
 
-        if( ballCount == 0 && strikeCount == 0){
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
             return false;
         }
 
-        if(ballCount != 0){
+        if (ballCount != 0) {
             System.out.print(ballCount + "볼 ");
         }
-        if(strikeCount != 0){
+        if (strikeCount != 0) {
             System.out.print(strikeCount + "스트라이크");
         }
         System.out.println();
