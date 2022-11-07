@@ -56,7 +56,13 @@ public class Application {
     }
     public static void input_test(List<Integer> input){
         if(input.size()!=3){
-            throw(new IllegalArgumentException("잘못된 입력"));
+            throw(new IllegalArgumentException("잘못된 길이 입력"));
+        }
+        int num1=input.get(0);
+        int num2=input.get(1);
+        int num3=input.get(2);
+        if(num1==num2 || num2==num3 || num3==num1){
+            throw new IllegalArgumentException("중복 숫자 입력");
         }
     }
     public static String how_many_correct(List<Integer>input, List<Integer> answer){
