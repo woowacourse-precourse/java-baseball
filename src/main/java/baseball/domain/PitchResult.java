@@ -59,6 +59,10 @@ public class PitchResult {
         return strikeCount > 0 && ballCount == 0;
     }
 
+    private boolean isBallAndStrike() {
+        return ballCount > 0 && strikeCount > 0;
+    }
+
     public String getPitchStatusMessage() {
         if (isOnlyBall()) {
             return String.format(PitchStatusMessage.BALL, ballCount);
@@ -66,6 +70,10 @@ public class PitchResult {
 
         if (isOnlyStrike()) {
             return String.format(PitchStatusMessage.STRIKE, strikeCount);
+        }
+
+        if (isBallAndStrike()) {
+            return String.format(PitchStatusMessage.BALL_AND_STRIKE, ballCount,strikeCount);
         }
         return null;
     }
