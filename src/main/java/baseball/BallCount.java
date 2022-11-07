@@ -10,12 +10,15 @@ public class BallCount {
     private int strike;
     private int ball;
 
-    public BallCount(List<Integer> answer, List<Integer> userAnswer) {
-        countStrike(answer, userAnswer);
-        countBall(answer, userAnswer);
+    private BallCount() {}
+
+    public static String calc(List<Integer> answer, List<Integer> userAnswer) {
+        BallCount ballCount = new BallCount();
+        ballCount.countStrike(answer, userAnswer);
+        ballCount.countBall(answer, userAnswer);
+        return ballCount.toString();
     }
 
-    // TODO: stirke 계산
     private void countStrike(List<Integer> answer, List<Integer> userAnswer) {
         this.strike = 0;
         for (int i = 0; i < answer.size(); i++) {
@@ -24,7 +27,7 @@ public class BallCount {
             }
         }
     }
-    // TODO: ball 계산
+
     private void countBall(List<Integer> answer, List<Integer> userAnswer) {
         this.ball = 0;
         for (int i = 0; i < answer.size(); i++) {
@@ -34,7 +37,6 @@ public class BallCount {
         }
     }
 
-    // TODO: ballcount comment 반환 override toString
     @Override
     public String toString() {
         if (ball == 0 && strike == 0) return "낫싱";
