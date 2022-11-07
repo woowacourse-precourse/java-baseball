@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberBaseballRepository {
-    private static final int LIMIT_NUMBER = 10;
+    private static final int LIMIT_NUMBER = 9;
     private static final int START_NUMBER = 1;
     private static final int LIMIT_PICK_COUNT = 3;
     private static final int COMPUTER_NUMBER = 0;
