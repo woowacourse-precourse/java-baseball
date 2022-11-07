@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Application {
@@ -76,6 +77,16 @@ public class Application {
             return strikeNumber + "스트라이크";
         }
          return ballNumber + "볼" + strikeNumber +"스트라이크";
+    }
+
+    public boolean playAgain(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner kb = new Scanner(System.in);
+        char answer = kb.next().charAt(0);
+        if (answer == '1') {
+            return true;
+        }
+        return false;
     }
 }
 
