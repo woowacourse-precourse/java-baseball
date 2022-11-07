@@ -30,6 +30,8 @@ public class BaseballGameController {
         do {
             baseballGameView.gameStartMessage();
 
+            List<Integer> userInput = baseballGameInputService.getUserInput();
+
 
         } while (isThreeStrike(gameResult));
 
