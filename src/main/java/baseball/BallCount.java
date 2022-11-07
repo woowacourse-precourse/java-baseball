@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.List;
-
 public class BallCount {
     public static final String STRIKE = "스트라이크";
     public static final String BALL = "볼";
@@ -15,6 +13,7 @@ public class BallCount {
     public void validateBallCount(BaseballNumbers randomNumbers, BaseballNumbers inputBaseballNumbers) {
         this.inputBaseballNumbers = inputBaseballNumbers;
         validateBall(randomNumbers);
+        validateStrike(randomNumbers);
     }
 
     private void validateBall(BaseballNumbers randomNumbers) {
@@ -35,6 +34,14 @@ public class BallCount {
     private void validateBallPlus(int inputNumber, int randomNUmber) {
         if (inputNumber == randomNUmber) {
             this.ball++;
+        }
+    }
+
+    private void validateStrike(BaseballNumbers randomNumbers) {
+        for (int index = BaseballConstants.FIRST_INDEX_OF_BASEBALL_NUMBER; index < BaseballConstants.LAST_INDEX_OF_BASEBALL_NUMBER; index++) {
+            if (inputBaseballNumbers.get(index) == randomNumbers.get(index)) {
+                this.strike++;
+            }
         }
     }
 
