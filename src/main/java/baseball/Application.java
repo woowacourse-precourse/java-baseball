@@ -12,17 +12,17 @@ import java.util.StringTokenizer;
 
 public class Application {
     static ArrayList<Integer> computerNumberList;
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
+    public static void main(String[] args) {
 
         try {
             gameStart();
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
+        return;
     }
-
 
     static ArrayList<Integer> computerGetRandom3Number() {
 
@@ -46,15 +46,18 @@ public class Application {
 
         while (true) {
 
-            //String strInput[] = br.readLine().split("");
             String strInput[] = Console.readLine().split("");
 
             ArrayList<Integer> input = new ArrayList<Integer>();
             for(int i=0; i<strInput.length; i++){
                 input.add(Integer.parseInt(strInput[i]));
             }
-            //check
-            //throw new IllegalArgumentException("잘못 입력하셨습니다.");
+
+            //예외처리
+            if(!(input.size()==3)){
+                throw new IllegalArgumentException();
+            }
+
             int strikeNum = strikeNumber(input);
             int ballNum = ballNumber(input, strikeNum);
 
@@ -70,7 +73,6 @@ public class Application {
                     bw.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     bw.newLine();
                     bw.flush();
-
                     break;
                 }
             }
@@ -84,12 +86,13 @@ public class Application {
             }
             bw.flush();
         }
-
+        //게임 재시작 or 종료
         gameRestartOrEnd();
         bw.close();
     }
 
     static int strikeNumber(ArrayList<Integer> input){
+
         int result=0;
 
         for(int i=0; i<computerNumberList.size(); i++){
@@ -97,11 +100,11 @@ public class Application {
                 result += 1;
             }
         }
-
         return result ;
     }
 
     static int ballNumber(ArrayList<Integer> input, int strike){
+
         int result=0;
 
         for(int i=0; i<computerNumberList.size(); i++){
@@ -109,6 +112,7 @@ public class Application {
                 result += 1;
             }
         }
+        //contains 개수에서 스트라이크 개수를 빼면 ball 개수가 됨
         return result - strike;
     }
 
@@ -126,6 +130,7 @@ public class Application {
                 gameStart();
             } catch (IOException e) {
                 e.printStackTrace();
+                return;
             }
         }
         //종료
@@ -136,11 +141,7 @@ public class Application {
             //잘못 입력시 종료
             throw new IllegalArgumentException("");
         }
-
-
     }
-
-
 }
 
 
