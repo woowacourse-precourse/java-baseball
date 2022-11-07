@@ -45,14 +45,11 @@ public class Referee {
         for ( int idx = 0; idx < playerAnswer.size(); idx++ ) {
             if ( isStrike(playerAnswer, idx) ) {
                 strike++;
-                System.out.println("strike"+ strike);
                 continue;
             }
 
             if ( isBall(playerAnswer, idx) ) {
                 ball++;
-                System.out.println("ball"+ ball);
-
             }
         }
     }

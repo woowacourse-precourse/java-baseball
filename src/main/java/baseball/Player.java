@@ -17,7 +17,7 @@ public class Player {
         return list;
     }
     public static List<Integer> getAnswer(){
-        System.out.println(SystemMessage.REQUEST_INPUT_NUMBER);
+        System.out.print(SystemMessage.REQUEST_INPUT_NUMBER);
         String inputNumber = Console.readLine();
         validateNumber(inputNumber);
 
