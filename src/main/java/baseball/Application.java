@@ -62,4 +62,33 @@ public class Application {
         }
         return contain;
     }
+    public static Integer cntStrike(List<Integer> inputNumInfo, List<Integer> answerNumInfo) {
+        int strike = 0;
+        int inputidx = inputNumInfo.get(0);
+        int inputNum = inputNumInfo.get(1);
+        int answeridx = answerNumInfo.get(0);
+        int anwerNum = answerNumInfo.get(1);
+
+        if (inputNum == anwerNum) {
+            if (inputidx == answeridx) {
+                strike ++;
+            }
+        }
+        return  strike;
+    }
+    public static List<Integer> makeResultList (List<Integer> inputNumList, List<Integer> answerList) {
+        int strike = 0, contain = 0;
+        for (int inputIdx = 0; inputIdx < 3; inputIdx++) {
+            for (int answerIdx = 0; answerIdx < 3; answerIdx++) {
+                int inputNum = inputNumList.get(inputIdx);
+                int answerNum = answerList.get(answerIdx);
+                List<Integer> inputNumInfo = List.of(inputIdx, inputNum);
+                List<Integer> answerNumInfo = List.of(answerIdx, answerNum);
+                contain = contain + cntContain(inputNumInfo, answerNumInfo);
+                strike = strike + cntStrike(inputNumInfo, answerNumInfo);
+            }
+        }
+        int ball = contain - strike;
+        return List.of(ball, strike);
+    }
 }
