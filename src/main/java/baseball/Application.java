@@ -4,19 +4,27 @@ import camp.nextstep.edu.missionutils.*;
 
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            BaseballGame Game = new BaseballGame();
 
-        // TODO: 프로그램 구현
-        BaseballGame Game = new BaseballGame();
-        List<Integer> computerNumberList=Game.makeRandomNumber();
-        List<List<Integer>> userNumberList = Game.inputNumber();
+            List<String> resultList = new ArrayList<>();
+            List<Integer> numberList = new ArrayList<>();
+            List<Integer> computerNumberList = Game.makeRandomNumber();
 
-        System.out.println(computerNumberList);
-        System.out.println(userNumberList);
+            int number = sc.nextInt();
 
+            if(Game.switchGameStatus(number)) break;
+            if(Game.checkErrorNumber(number)) break;
 
-//        Game.compareList(computerNumberList,userNumberList);
+            numberList = Game.splitNumber(number);
+
+            System.out.println(computerNumberList);
+            System.out.println(numberList);
+        }
     }
+
 }
 
 class BaseballGame {
@@ -32,17 +40,23 @@ class BaseballGame {
         return computer;
     }
 
-    List<List<Integer>> inputNumber() {
-        Scanner sc = new Scanner(System.in);
-        List<List<Integer>> numberList = new ArrayList<>();
-        //입력값의 길이가 3인지 확인하는 기능(#22)
-        while (numberList.size() < 3) {
-            int number = sc.nextInt();
-            // 자리수를 분리
-            List<Integer> tmpList = splitNumber(number);
-            numberList.add(tmpList);
+    boolean switchGameStatus(int number){
+        if (number == 2) {
+            return true;
+        } else {
+            return false;
         }
-        return numberList;
+    }
+
+    boolean checkErrorNumber(int number){
+        try{
+            if(number/10>100){
+                throw new IllegalArgumentException();
+            }
+        }catch(IllegalArgumentException e){
+            return true;
+        }
+        return false;
     }
 
     List<Integer> splitNumber(int number) {
