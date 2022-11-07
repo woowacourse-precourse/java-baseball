@@ -52,6 +52,14 @@ class ApplicationTest extends NsTest {
 		assertThat("낫싱").isEqualTo(judge.judgement(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6)));
 	}
 
+	@Test
+	void 입력_자릿수가_세자리가_아닐때() {
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException("1234"))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
