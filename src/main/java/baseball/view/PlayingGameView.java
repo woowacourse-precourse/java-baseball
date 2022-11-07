@@ -7,9 +7,7 @@ public class PlayingGameView extends GameView {
     private static final String OUTPUT_NOTHING = "낫싱";
     private static final int ZERO = 0;
     public void enterNumberPrint() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(OUTPUT_ENTER_NUMBER);
-        print(sb.toString());
+        print(OUTPUT_ENTER_NUMBER);
     }
 
     public void gameResultPrint(int strike, int ball) {
@@ -28,7 +26,7 @@ public class PlayingGameView extends GameView {
     }
 
     public void outputBuilder(StringBuilder output, int judgmentCount, String judgmentString) {
-        output.append(judgmentCount + judgmentString);
+        output.append(judgmentCount).append(judgmentString);
     }
 
     public void outputBuilder(StringBuilder output, String judgmentString) {
