@@ -14,10 +14,16 @@ public class BaseballList {
                 .collect(Collectors.toList());
     }
 
-    public void getBaseballList() {
+    public void printBaseballList() {
         for(Baseball baseball: this.baseballList) {
-            baseball.getBaseball();
+            baseball.printBaseball();
         }
+    }
+    public Baseball getBaseballByIndex(int index){
+        return this.baseballList.get(index);
+    }
+    public Integer size(){
+        return this.baseballList.size();
     }
     @Override
     public boolean equals(Object o) {
