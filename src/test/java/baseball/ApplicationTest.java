@@ -94,19 +94,27 @@ class ApplicationTest extends NsTest {
                 assertThat(true).isEqualTo(Application.isValidData(425));
             }
         }
-/*
+
         @Nested
         class fail_case {
             @Test
             void case1() {
-                assertThatThrownBy(IllegalArgumentException.class,)
+                assertThatThrownBy(() -> Application.isValidData(1234))
+                        .isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
             void case2() {
-                assertThat(false).isEqualTo(Application.isValidData(12));
+                assertThatThrownBy(() -> Application.isValidData(1))
+                        .isInstanceOf(IllegalArgumentException.class);
             }
-        }*/
+
+            @Test
+            void case3() {
+                assertThatThrownBy(() -> Application.isValidData(102))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+        }
     }
 
     @Nested
