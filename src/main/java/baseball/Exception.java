@@ -30,8 +30,6 @@ public class Exception {
     }
 
     public static void checkNumbersLength(List<Integer> playerNumber) {
-        System.out.println("this is player Number");
-        System.out.println(playerNumber);
         if (!(playerNumber.size() == 3)) {
             throw new IllegalArgumentException();
         }
