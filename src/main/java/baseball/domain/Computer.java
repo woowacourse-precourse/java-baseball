@@ -11,8 +11,7 @@ public class Computer {
 
     private void setNumbers() {
         for (int i = 0; i < 3; i++) {
-            int number = Randoms.pickNumberInRange(1, 9);
-            numbers += number;
+            numbers += Randoms.pickNumberInRange(1, 9);
         }
     }
 

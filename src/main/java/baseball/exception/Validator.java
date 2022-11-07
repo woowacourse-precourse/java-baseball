@@ -12,11 +12,7 @@ public class Validator {
     }
 
     private boolean isElementsAreNumber(String input) {
-        char first = input.charAt(0);
-        char second = input.charAt(1);
-        char third = input.charAt(2);
-
-        return isNumber(first) && isNumber(second) && isNumber(third);
+        return isNumber(input.charAt(0)) && isNumber(input.charAt(1)) && isNumber(input.charAt(2));
     }
 
     private boolean isNumber(char element) {
