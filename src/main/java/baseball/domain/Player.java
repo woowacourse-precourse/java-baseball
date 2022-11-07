@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,9 +14,10 @@ public class Player {
     public static final String NUMBER_DUPLICATE_EX_MESSAGE = "입력값은 같은 수가 하나라도 있으면 안됩니다.";
     public static final int START_POSITION_NUMBER = 1;
 
-    private List<Ball> balls;
+    private final List<Ball> balls;
 
     public Player() {
+        balls = new ArrayList<>();
     }
 
     public Player(List<Integer> numbers) {
@@ -68,6 +70,7 @@ public class Player {
 
     public void changeBalls(List<Integer> newBallNumbers) {
         validate(newBallNumbers);
-        balls = mapToBall(newBallNumbers);
+        balls.clear();
+        balls.addAll(mapToBall(newBallNumbers));
     }
 }
