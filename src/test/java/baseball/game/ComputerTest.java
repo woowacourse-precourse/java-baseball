@@ -1,4 +1,4 @@
-package baseball;
+package baseball.game;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,13 +12,13 @@ class ComputerTest {
 
     @BeforeEach
     public void setComputerClass() {
-        computer = new Computer(3);
+        computer = new Computer();
     }
 
     @Test
     void 진짜_난수인지() {
         for (int i = 0; i < 100; i++) {
-            List<Character> characters = computer.makeRandomNum();
+            List<Character> characters = computer.makeRandomNum(3);
             assertThat(characters.get(0)).isNotEqualTo(characters.get(1));
             assertThat(characters.get(1)).isNotEqualTo(characters.get(2));
             assertThat(characters.get(0)).isNotEqualTo(characters.get(2));

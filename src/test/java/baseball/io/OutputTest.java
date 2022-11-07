@@ -1,4 +1,4 @@
-package baseball;
+package baseball.io;
 
 import static org.junit.jupiter.api.Assertions.*;
 
