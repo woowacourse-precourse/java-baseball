@@ -45,8 +45,8 @@ class ApplicationTest extends NsTest {
         Integer computerNumber = 583;
         Integer userNumber = 532;
         Map<String, Integer> score = Application.calculateScore(computerNumber, userNumber);
-        assertThat(score.get(Application.ScoreConst.STRIKE)).isEqualTo(1);
-        assertThat(score.get(Application.ScoreConst.BALL)).isEqualTo(1);
+        assertThat(score.get(ScoreConst.STRIKE)).isEqualTo(1);
+        assertThat(score.get(ScoreConst.BALL)).isEqualTo(1);
     }
 
     @Test
@@ -54,8 +54,8 @@ class ApplicationTest extends NsTest {
         Integer computerNumber = 123;
         Integer userNumber = 231;
         Map<String, Integer> score = Application.calculateScore(computerNumber, userNumber);
-        assertThat(score.get(Application.ScoreConst.STRIKE)).isEqualTo(0);
-        assertThat(score.get(Application.ScoreConst.BALL)).isEqualTo(3);
+        assertThat(score.get(ScoreConst.STRIKE)).isEqualTo(0);
+        assertThat(score.get(ScoreConst.BALL)).isEqualTo(3);
     }
 
     @Test
