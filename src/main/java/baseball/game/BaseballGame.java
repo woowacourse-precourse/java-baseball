@@ -7,12 +7,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class BaseballGame {
     protected Number randomNumber;
     private GameInput playerInput;
     private State state;
 
     private final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private final String INPUT_PROMPT = "숫자를 입력해주세요 : ";
     private final String PAUSE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
@@ -22,7 +23,7 @@ public class Game {
     private final String STRIKE = "스트라이크";
     private final String NOTHING = "낫싱";
 
-    public Game() {
+    public BaseballGame() {
     }
 
 
@@ -36,6 +37,7 @@ public class Game {
     public void play() {
         List<Integer> result;
         do {
+            System.out.print(INPUT_PROMPT);
             readInput();
             result = calculateResult();
             printResult(result);
@@ -91,13 +93,13 @@ public class Game {
 
     private int countStrike() {
         int count = 0;
-        if (randomNumber.first == playerInput.number.first) {
+        if (randomNumber.first.equals(playerInput.number.first)) {
             count++;
         }
-        if (randomNumber.second == playerInput.number.second) {
+        if (randomNumber.second.equals(playerInput.number.second)) {
             count++;
         }
-        if (randomNumber.third == playerInput.number.third) {
+        if (randomNumber.third.equals(playerInput.number.third)) {
             count++;
         }
         return count;
@@ -106,13 +108,13 @@ public class Game {
     private int countBall() {
         int count = 0;
 
-        int firstInput = playerInput.number.first;
-        int secondInput = playerInput.number.second;
-        int thirdInput = playerInput.number.third;
+        Digit firstInput = playerInput.number.first;
+        Digit secondInput = playerInput.number.second;
+        Digit thirdInput = playerInput.number.third;
 
-        boolean isFirstBall = firstInput != randomNumber.first && randomNumber.hasDigit(firstInput),
-                isSecondBall = secondInput != randomNumber.second && randomNumber.hasDigit(secondInput),
-                isThirdBall = thirdInput != randomNumber.third && randomNumber.hasDigit(thirdInput);
+        boolean isFirstBall = firstInput != randomNumber.first && randomNumber.contains(firstInput),
+                isSecondBall = secondInput != randomNumber.second && randomNumber.contains(secondInput),
+                isThirdBall = thirdInput != randomNumber.third && randomNumber.contains(thirdInput);
 
         if (isFirstBall) {
             count++;
