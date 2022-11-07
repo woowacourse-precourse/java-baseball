@@ -1,7 +1,7 @@
 package baseball.numbers;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -63,7 +63,7 @@ public class Numbers {
     }
 
     private Map<BallTypes, Integer> initialResult() {
-        Map<BallTypes, Integer> result = new HashMap<>();
+        Map<BallTypes, Integer> result = new EnumMap<>(BallTypes.class);
         result.put(BallTypes.STRIKE, 0);
         result.put(BallTypes.BALL, 0);
         result.put(BallTypes.MISS, 0);
