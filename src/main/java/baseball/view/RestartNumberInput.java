@@ -4,11 +4,11 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.model.validation.Validation;
 
-public class ReplayNumberInput extends Input {
+public class RestartNumberInput extends Input {
     private final Validation validation = new Validation();
     String input;
 
-    public ReplayNumberInput() {
+    public RestartNumberInput() {
     }
 
     public String inputReplayNumber() {

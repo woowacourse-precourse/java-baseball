@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Validation extends IllegalArgumentException {
     private static final String ZERO = "0";
-    private static final String REPLAY = "1";
+    private static final String RESTART = "1";
     private static final String EXIT = "2";
     private static final int NUMBER_DIGITS = 3;
 
@@ -71,7 +71,7 @@ public class Validation extends IllegalArgumentException {
     }
 
     public void isValidateReplayInput(String input) {
-        if (!input.equals(REPLAY) && !input.equals(EXIT)) {
+        if (!input.equals(RESTART) && !input.equals(EXIT)) {
             throwError();
         }
     }

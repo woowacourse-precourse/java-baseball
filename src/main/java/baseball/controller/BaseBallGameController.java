@@ -3,7 +3,7 @@ package baseball.controller;
 import baseball.service.BaseBallGame;
 import baseball.view.PlayerNumberInput;
 import baseball.view.PrintGuideMessage;
-import baseball.view.ReplayNumberInput;
+import baseball.view.RestartNumberInput;
 
 public class BaseBallGameController {
     private static final String RESTART = "1";
@@ -18,7 +18,7 @@ public class BaseBallGameController {
         baseBallGame.createComputerNumber();
         playGame();
         PrintGuideMessage.printWinMessage();
-        checkReplay();
+        checkRestart();
     }
 
     public void playGame() {
@@ -36,16 +36,16 @@ public class BaseBallGameController {
         baseBallGame.createPlayerNumber(input);
     }
 
-    public void checkReplay() {
-        if (getReplayNumberInput()) {
+    public void checkRestart() {
+        if (getRestartNumberInput()) {
             startGame();
         }
     }
 
-    public boolean getReplayNumberInput() {
+    public boolean getRestartNumberInput() {
         PrintGuideMessage.printRestartMessage();
-        ReplayNumberInput replayNumberInput = new ReplayNumberInput();
-        String input = replayNumberInput.inputReplayNumber();
+        RestartNumberInput restartNumberInput = new RestartNumberInput();
+        String input = restartNumberInput.inputReplayNumber();
         if (input.equals(RESTART)) {
             return true;
         }
