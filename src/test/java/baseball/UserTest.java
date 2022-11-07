@@ -32,14 +32,14 @@ class UserTest {
   @Test
   @Order(1)
   void inputValueTestLengthNoError1() {
-    String returnValue = User.inputValueTestPlayingMode("123");
+    String returnValue = User.inputValueTestByMode("123", 1);
     Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
   @Test
   @Order(2)
   void inputValueTestLengthNoError2() {
-    String returnValue = User.inputValueTestPlayingMode("123");
+    String returnValue = User.inputValueTestByMode("123", 1);
     Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
@@ -47,7 +47,7 @@ class UserTest {
   @Order(3)
   void inputValueTestLengthError1() {
     Assertions.assertThatThrownBy(() -> {
-      User.inputValueTestPlayingMode("");
+      User.inputValueTestByMode("", 1);
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
@@ -55,21 +55,21 @@ class UserTest {
   @Order(4)
   void inputValueTestLengthError2() {
         Assertions.assertThatThrownBy(() -> {
-      User.inputValueTestPlayingMode("1234");
+      User.inputValueTestByMode("1234", 1);
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
   @Order(5)
   void inputValueTestOnlyNumNoError1() {
-    String returnValue = User.inputValueTestPlayingMode("123");
+    String returnValue = User.inputValueTestByMode("123", 1);
     Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
   @Test
   @Order(6)
   void inputValueTestOnlyNumNoError2() {
-    String returnValue = User.inputValueTestPlayingMode("124");
+    String returnValue = User.inputValueTestByMode("124", 1);
     Assertions.assertThat("124").isEqualTo(returnValue);
   }
 
@@ -77,7 +77,7 @@ class UserTest {
   @Order(7)
   void inputValueTestOnlyNumError1() {
     Assertions.assertThatThrownBy(() -> {
-      User.inputValueTestPlayingMode("120");
+      User.inputValueTestByMode("120", 1);
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
@@ -85,7 +85,7 @@ class UserTest {
   @Order(8)
   void inputValueTestOnlyNumError2() {
     Assertions.assertThatThrownBy(() -> {
-      User.inputValueTestPlayingMode("");
+      User.inputValueTestByMode("", 1);
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
@@ -93,14 +93,14 @@ class UserTest {
   @Order(8)
   void inputValueTestOnlyNumError3() {
     Assertions.assertThatThrownBy(() -> {
-      User.inputValueTestPlayingMode("122");
+      User.inputValueTestByMode("122", 1);
     }).isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
   @Order(9)
   void inputValueTestPlayAgainInput() {
-    String returnValue = User.inputValueTestPlayAgainMode("1");
+    String returnValue = User.inputValueTestByMode("1", 2);
     Assertions.assertThat("1").isEqualTo(returnValue);
   }
 
@@ -108,7 +108,7 @@ class UserTest {
   @Order(10)
   void inputValueTestPlayAgainInputError() {
     Assertions.assertThatThrownBy(() -> {
-      User.inputValueTestPlayAgainMode("");
+      User.inputValueTestByMode("",2);
     }).isInstanceOf(IllegalArgumentException.class);
   }
 }
