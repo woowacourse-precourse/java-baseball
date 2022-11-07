@@ -75,17 +75,11 @@ public class Application {
         List<Character> temp_user_number_char_list = user_number_char_list;
         List<Character> check_duplicate = new ArrayList<>();
 
-        try {
-            if (temp_user_number_char_list.isEmpty() || temp_user_number_char_list.size() != 3) {
-                throw new IllegalArgumentException();
-            }
+        if (temp_user_number_char_list.isEmpty() || temp_user_number_char_list.size() != 3) {
+            return 1;
+        }
 
-            if (check_correct_number(user_number_char_list) == 1) {
-                throw new IllegalArgumentException();
-            }
-
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        if (check_correct_number(user_number_char_list) == 1) {
             return 1;
         }
 
@@ -176,16 +170,11 @@ public class Application {
         String user_number_string;
         user_number_string = readLine();
 
-        try {
-            if (user_number_string.equals("1")) {
-                return 1;
-            } else if (user_number_string.equals("2")) {
-                return 2;
-            } else {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        if (user_number_string.equals("1")) {
+            return 1;
+        } else if (user_number_string.equals("2")) {
+            return 2;
+        } else {
             return 0;
         }
     }
@@ -199,19 +188,18 @@ public class Application {
         while (next_game == 1) {
             List<Integer> computer_number_list = new ArrayList<Integer>();
             computer_number_list = computer_create_number();
-            System.out.print(computer_number_list);
 
             int error;
             error = compare_computer_user(computer_number_list);
 
             if (error == 1) {
-                return;
+                throw new IllegalArgumentException();
             }
 
             next_game = check_user_want_new_game();
 
             if (next_game == 0) {
-                return;
+                throw new IllegalArgumentException();
             }
         }
     }
