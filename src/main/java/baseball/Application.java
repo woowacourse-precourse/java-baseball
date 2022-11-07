@@ -96,11 +96,11 @@ public class Application {
         List<Integer> answerList = generateRandomNumber(3);
         int[] judg = new int[]{0, 0};
         while (judg[1] != 3) {
-            judg = getJudg(answerList);
+            judg = getJudgArray(answerList);
         }
     }
 
-    private static int[] getJudg(List<Integer> answerList) {
+    private static int[] getJudgArray(List<Integer> answerList) {
         int[] judg;
         System.out.print("숫자를 입력해주세요 : ");
         try {
@@ -118,10 +118,10 @@ public class Application {
         if (judg[0] != 0) {
             result += judg[0] + "볼";
         }
+        if (judg[0] != 0 && judg[1] != 0) {
+            result += " ";
+        }
         if (judg[1] != 0) {
-            if (!result.equals("")) {
-                result += " ";
-            }
             result += judg[1] + "스트라이크";
         }
         if (result.equals("")) {
