@@ -61,9 +61,17 @@ public class Validator {
         if (!validateGameProcessLength(gameProcessValue)) {
             throw new IllegalArgumentException("1자리 수를 입력해주세요.");
         }
+
+        if (!validateIsDigit(gameProcessValue)) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
     }
 
     private boolean validateGameProcessLength(String value) {
         return value.length() == 1;
+    }
+
+    private boolean validateIsDigit(String value) {
+        return Character.isDigit(value.charAt(0));
     }
 }
