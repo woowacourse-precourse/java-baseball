@@ -7,6 +7,10 @@ public class Printer {
         System.out.println(message);
     }
 
+    public static void printMessage(String m){
+        System.out.println(m);
+    }
+
     public static void inputNumber(){
         String message = "숫자를 입력해주세요 : ";
         System.out.println(message);

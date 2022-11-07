@@ -21,7 +21,7 @@ public class Executor {
             guessResult = compareNumber(computerRandomBaseball, userInputNumber);
             if(guessResult.isAllCorrect()){
                 String resultString = guessResult.getResult();
-                System.out.println(resultString);
+                Printer.printMessage(resultString);
                 Printer.allCorrect();
                 askRestart();
             }else{
