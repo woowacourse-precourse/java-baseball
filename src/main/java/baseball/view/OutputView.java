@@ -12,4 +12,8 @@ public class OutputView {
     public static void printResultTurnOfOut() {
         System.out.println("3스트라이크");
     }
+
+    public static void printResultTurnOfNothing() {
+        System.out.println("낫싱");
+    }
 }
