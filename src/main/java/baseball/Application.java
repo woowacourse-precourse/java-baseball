@@ -32,10 +32,9 @@ public class Application {
             try {
                 user = getNumberOfUserForList(user);
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-                return false;
+                throw new IllegalArgumentException();
             }
-//            System.out.println("user = " + user); // 여기서 user가 null임
+
             // 3-3 : computer와 user을 비교하여 BallCount를 반환한다.
             ballCount = getBallCount(computer, user); // ex) 1볼 1스트라이크
             UI.printBallCount(ballCount);
@@ -113,7 +112,6 @@ public class Application {
         } else {
             return false;
         }
-//        return !ballCount.equals("3스트라이크");
     }
 
     // 3-2 : user의 정보를 얻어와 String으로 받고, List로 변환한다.
