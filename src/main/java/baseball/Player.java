@@ -1,9 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Player {
@@ -21,20 +19,22 @@ public class Player {
       throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
     }
     addNumber(input);
-    if(this.numbers.size() != MAX_SIZE){
-      System.out.println(this.numbers);
-      throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해야 합니다.");
-    }
     return this.numbers;
   }
 
   public void addNumber(String input){
     this.numbers = new ArrayList<>();
+
     for(int i = 0; i < input.length(); i++){
       int number = Integer.parseInt(String.valueOf(input.charAt(i)));
       if(!this.numbers.contains(number)){
         this.numbers.add(number);
       }
+    }
+
+    if(this.numbers.size() != MAX_SIZE){
+      System.out.println(this.numbers);
+      throw new IllegalArgumentException("서로 다른 3개의 숫자를 입력해야 합니다.");
     }
   }
 }
