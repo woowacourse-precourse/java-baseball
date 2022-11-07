@@ -33,4 +33,14 @@ public class Computer {
 
         return ball;
     }
+
+    private int countStrike(String input) {
+        int strike;
+
+        strike = (int) IntStream.range(0, input.length()).
+                filter(idx -> input.charAt(idx) == answer.charAt(idx)).
+                count();
+
+        return strike;
+    }
 }
