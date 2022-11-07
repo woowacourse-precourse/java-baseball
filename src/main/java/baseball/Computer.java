@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
+import java.util.stream.IntStream;
 
 public class Computer {
     private String answer;
@@ -19,5 +20,17 @@ public class Computer {
         }
 
         this.answer = answerBuilder.toString();
+    }
+
+    private int countBall(String Input) {
+        int ball;
+
+        ball = (int) IntStream.range(0, Input.length()).
+                filter(guessIdx -> IntStream.range(0, answer.length()).
+                        filter(answerIdx -> guessIdx != answerIdx).
+                        anyMatch(answerIdx -> Input.charAt(guessIdx) == answer.charAt(answerIdx))).
+                count();
+
+        return ball;
     }
 }
