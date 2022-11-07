@@ -20,6 +20,9 @@ public class GameSimulation {
         String userInput = readLine();
         List<Integer> userNumber = makeList(userInput);
         validateUserNumber(userNumber);
+
+        ball = computer.addBallScore(userNumber);
+        strike = computer.addStrikeScore(userNumber);
     }
 
     public List<Integer> makeList(String userInput) {
