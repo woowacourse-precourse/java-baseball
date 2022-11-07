@@ -109,6 +109,7 @@ public class BaseBallGame {
     }
 
     public boolean askStopOrRegame() {
+        this.gameMessageDisplay.printStopOrRegameRequestMessage();
         return STOP;
     }
 }
