@@ -16,13 +16,13 @@ public class ComputerTest {
         computer = new Computer();
     }
     @Test
-    void create_computer_number() {
+    void pickTargetNumber_메서드가_중복되지않는_숫자를_반환() {
         List<Integer> targetNumber = computer.pickTargetNumber();
         Set<Integer> numberSet = new HashSet<>(targetNumber);
         assertThat(targetNumber.size()).isEqualTo(numberSet.size());
     }
     @Test
-    void compare_test() {
+    void compare_메서드가_입력에_따른_strike_ball_반환() {
         computer.targetNumber = List.of(1,2,3);
         assertThat(computer.compare(List.of(1, 2, 3)).strike == 3);
         assertThat(computer.compare(List.of(1, 2, 3)).ball == 0);

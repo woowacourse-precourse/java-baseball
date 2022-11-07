@@ -26,9 +26,13 @@ public class BaseballGameTest {
     }
 
     @Test
-    void check_user_number_test() {
+    void checkUserNumber_메서드가_올바른_입력에_맞는_리스트_반환() {
         assertThat(game.checkUserNumber("123")).isEqualTo(List.of(1, 2, 3));
         assertThat(game.checkUserNumber("359")).isEqualTo(List.of(3, 5, 9));
+    }
+
+    @Test
+    void checkUserNumber_메서드가_올바르지않은_입력에_예외_발생() {
         assertThatThrownBy(() -> game.checkUserNumber("3456")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> game.checkUserNumber("61")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> game.checkUserNumber("ab2")).isInstanceOf(IllegalArgumentException.class);
@@ -55,25 +59,25 @@ public class BaseballGameTest {
         }
 
         @Test
-        void print_result_strike_and_ball_test() {
+        void printResult_메서드가_스트라이크_볼_출력() {
             game.printResult(computer.new GameResult(1, 2));
             assertThat(captor.toString().trim()).isEqualTo("2볼 1스트라이크");
         }
 
         @Test
-        void print_result_only_strike_test() {
+        void printResult_메서드가_스트라이크만_출력() {
             game.printResult(computer.new GameResult(3, 0));
             assertThat(captor.toString().trim()).isEqualTo("3스트라이크");
         }
 
         @Test
-        void print_result_only_ball_test() {
+        void printResult_메서드가_볼만_출력() {
             game.printResult(computer.new GameResult(0, 2));
             assertThat(captor.toString().trim()).isEqualTo("2볼");
         }
 
         @Test
-        void print_result_nothing_test() {
+        void printResult_메서드가_낫싱_출력() {
             game.printResult(computer.new GameResult(0, 0));
             assertThat(captor.toString().trim()).isEqualTo("낫싱");
         }
@@ -90,7 +94,7 @@ public class BaseballGameTest {
         }
 
         @Test
-        void next_turn_test() {
+        void nextTurn_메서드가_조건에_맞는_boolean_반환() {
             boolean next = game.nextTurn(computer. new GameResult(3, 0));
             assertThat(next).isEqualTo(false);
             next = game.nextTurn(computer. new GameResult(2, 1));
@@ -101,9 +105,13 @@ public class BaseballGameTest {
     }
 
     @Test
-    void check_user_answer_test() {
+    void checkUserAnswer_메서드가_올바른_입력에_맞는_정수_반환() {
         assertThat(game.checkUserAnswer("1")).isEqualTo(1);
         assertThat(game.checkUserAnswer("2")).isEqualTo(2);
+    }
+
+    @Test
+    void checkUserAnswer_메서드가_올바르지않은_입력에_맞는_예외_발생() {
         assertThatThrownBy(() -> game.checkUserNumber("3")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> game.checkUserNumber(".")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> game.checkUserNumber("21")).isInstanceOf(IllegalArgumentException.class);
