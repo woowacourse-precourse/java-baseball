@@ -116,7 +116,7 @@ class UnitTest {
         //then
         assertThatThrownBy(() -> application.insertNumber())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력하신 변수가 3자리 정수가 아닙니다");
+                .hasMessageContaining("입력하신 변수가 3자리 양의 정수가 아닙니다");
     }
 
     @Test
@@ -133,9 +133,24 @@ class UnitTest {
         //then
         assertThatThrownBy(() -> application.insertNumber())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력하신 변수가 3자리 정수가 아닙니다");
+                .hasMessageContaining("입력하신 변수가 3자리 양의 정수가 아닙니다");
     }
+    @Test
+    public void insertNumber_예외_테스트_입력받는_것이_0을_포함할때(){
+        //given
+        String input = "023";
 
+        //when
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        //then
+        assertThatThrownBy(() -> application.insertNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력하신 변수가 3자리 양의 정수가 아닙니다");
+    }
     @Test
     public void insertNumber_예외_테스트_입력받는_것이_2자리정수일때(){
         //given
@@ -150,7 +165,7 @@ class UnitTest {
         //then
         assertThatThrownBy(() -> application.insertNumber())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력하신 변수가 3자리 정수가 아닙니다");
+                .hasMessageContaining("입력하신 변수가 3자리 양의 정수가 아닙니다");
     }
 
     @Test

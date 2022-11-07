@@ -137,7 +137,7 @@ public class Application {
         }
     }
     private void checkIfThreeDigit(int input){
-        if(input < 100 || input > 999) throw new IllegalArgumentException("입력하신 변수가 3자리 정수가 아닙니다");
+        if(input < 100 || input > 999) throw new IllegalArgumentException("입력하신 변수가 3자리 양의 정수가 아닙니다");
     }
 
     private void checkIfAllDigitsDifferent(int input){
