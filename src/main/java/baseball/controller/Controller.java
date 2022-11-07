@@ -4,6 +4,7 @@ import baseball.model.Computer;
 import baseball.model.Game;
 import baseball.model.User;
 import baseball.view.View;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,6 +23,8 @@ public class Controller {
         this.game = game;
         this.view = view;
     }
+
+
 
     public Game.GameState getGameState(){
         return game.getGameState();
@@ -47,7 +50,7 @@ public class Controller {
         printJudgement();
         if (isGameOver()){
             view.printGameClear(Game.ANSWER_LENGTH);
-            game.setGameState(Game.GameState.OVER);
+            game.setGameState(Game.GameState.CLEAR);
         }
     }
 

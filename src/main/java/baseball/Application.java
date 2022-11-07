@@ -18,9 +18,10 @@ public class Application {
         while (controller.getGameState() == Game.GameState.RUNNING) {
             String userInput = Console.readLine();
             controller.setUserNumeralList(controller.toList(userInput));
-            System.out.println("cpuNumeral : " + computer.getNumeralList());
-            System.out.println("userInput : " + user.getNumeralList());
             controller.judge();
+            if (controller.getGameState() == Game.GameState.OVER) {
+
+            }
         }
 
 

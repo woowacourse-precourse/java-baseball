@@ -8,7 +8,7 @@ public class Game {
     private int ballCount;
     private int strikeCount;
     public enum GameState{
-        RUNNING, OVER
+        RUNNING, CLEAR, OVER
     }
 
     public Game(){
