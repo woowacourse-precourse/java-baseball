@@ -32,16 +32,6 @@ public class NumberBaseballGameTest {
     }
 
     @Test
-    void 게임_시작_문구를_출력한다() {
-        BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher());
-        String result = "숫자 야구 게임을 시작합니다.";
-
-        baseballGame.playGame(false);
-
-        assertThat(outputStream.toString().trim()).isEqualTo(result);
-    }
-
-    @Test
     void 특정_숫자와_순서를_가진_공을_하나_생성한다() {
         Ball ball = new Ball(1, 0);
 
