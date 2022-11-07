@@ -48,7 +48,6 @@ public class Game {
 	private void compare() {
 		initCounts();
 		requestInput();
-		System.out.println(user.getValidatedUserInput());
 
 		for (int index = MIN_LIST_INDEX; index < MAX_LIST_INDEX; index++) {
 			if (computer.getComputersList().contains(user.getValidatedUserInput().get(index))) {
