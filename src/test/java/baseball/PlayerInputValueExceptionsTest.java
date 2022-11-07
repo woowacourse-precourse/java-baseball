@@ -42,6 +42,16 @@ class PlayerInputValueExceptionsTest {
     }
 
     @Test
+    @DisplayName("종료 시 입력된 수가 1 또는 2가 아니면 예외 발생")
     void whenExitingIsNumberOneOrTwo() {
+        //given
+        String userSelectedNumbers = "3";
+
+        //then
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            PlayerInputValueExceptions.whenExitingIsNumberOneOrTwo(userSelectedNumbers); //when
+        });
+        assertEquals("1 또는 2만 입력하세요", exception.getMessage());
     }
+
 }
