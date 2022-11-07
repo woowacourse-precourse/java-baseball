@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +49,11 @@ public class Application {
             integerList.add(string.charAt(i)-'0');
         }
         return integerList;
+    }
+
+    private static List<Integer> getUserIntegerList() {
+        String userString = Console.readLine();
+        checkUserInput(userString);
+        return StringToIntegerList(userString);
     }
 }
