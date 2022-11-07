@@ -21,34 +21,6 @@ public class RuleTest {
     }
 
     @Test
-    void 규칙_테스트1() {
-        // given
-        List<Integer> user = List.of(1, 4, 3);
-        List<Integer> computer = List.of(2, 7, 3);
-
-        // when
-        rule.check(user, computer);
-
-        // then
-        assertThat(rule.getBall()).isEqualTo(0);
-        assertThat(rule.getStrike()).isEqualTo(1);
-    }
-
-    @Test
-    void 규칙_테스트2() {
-        // given
-        List<Integer> user = List.of(7, 2, 3);
-        List<Integer> computer = List.of(2, 7, 3);
-
-        // when
-        rule.check(user, computer);
-
-        // then
-        assertThat(rule.getBall()).isEqualTo(2);
-        assertThat(rule.getStrike()).isEqualTo(1);
-    }
-
-    @Test
     void 출력_테스트1() {
         //given
         List<Integer> user = List.of(7, 2, 3);
@@ -83,13 +55,15 @@ public class RuleTest {
         //given
         List<Integer> user = List.of(1, 2, 3);
         List<Integer> computer = List.of(1, 2, 3);
-        String output = "게임 종료";
+        String output = "3스트라이크";
+        String gameClear = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
         // when
         rule.check(user, computer);
         rule.showResult();
 
         // then
-        assertThat(output).isEqualTo(out.toString().trim());
+        assertThat(out.toString()).contains(output);
+        assertThat(out.toString()).contains(gameClear);
     }
 }
