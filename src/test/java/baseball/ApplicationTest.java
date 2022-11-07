@@ -19,11 +19,11 @@ class ApplicationTest extends NsTest {
         List<Integer> randomballs;
         boolean doublecheck = true;
         randomballs = GameService.makeRandomBall();
-        for(int i=0; randomballs.size()<3;i++){
-            for(int j=0 ; randomballs.size()<3; j++){
-                if(i!=j && randomballs.get(i) == randomballs.get(j)) doublecheck = false;
-            }
-        }
+
+        if (randomballs.get(0).equals(randomballs.get(1))) doublecheck = false;
+        if (randomballs.get(1).equals(randomballs.get(2))) doublecheck = false;
+        if (randomballs.get(0).equals(randomballs.get(2))) doublecheck = false;
+
         assertThat(true).isEqualTo(doublecheck);
     }
     @Test
