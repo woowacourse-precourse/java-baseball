@@ -1,65 +1,55 @@
 package baseball;
 
-import baseball.console.GameConsole;
+import baseball.console.ConsoleOutput;
 import baseball.core.StatusCode;
 import baseball.core.ComputerOpponent;
 import baseball.core.User;
 import baseball.core.dto.BallStrikeDto;
-import baseball.core.opponent.RandomNumberGenerator;
+import baseball.core.RandomNumberGenerator;
 
 import java.util.List;
 
-import static baseball.console.input.converter.RestartOrExitCodeConverter.START_CODE;
-
 public class BaseballGame {
 
-    private final GameConsole console;
+    private final ConsoleOutput console;
     private final User user;
-    private ComputerOpponent opponent;
+    private final ComputerOpponent opponent;
 
     public BaseballGame() {
+        this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
         this.user = new User();
-        this.console = new GameConsole();
+        this.console = new ConsoleOutput();
     }
 
     public void play() throws IllegalArgumentException {
-        int statusCode;
-
         console.printStartMessage();
-        do {
-            playGameCycle();
-            statusCode = restartOrExitProcess();
-        } while (isStartCode(statusCode));
-    }
-
-    private void playGameCycle() {
-        try {
-            playBaseball();
-        } catch (Exception e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        playBaseball();
+        restartOrExitGame();
     }
 
     private void playBaseball() {
-        initOpponent();
         BallStrikeDto answer;
         do {
-            inputProcess();
-            answer = answerProcess();
+            inputThreeNumbers();
+            answer = processAnswering();
         } while (isWrongAnswer(answer));
-        finishProcess();
+        processFinishGame();
     }
 
-    private void initOpponent() {
-        this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
-    }
-
-    private void inputProcess() {
+    private void inputThreeNumbers() {
         console.printNumberInputMessage();
-        user.inputThreeNumbers(console);
+        user.inputThreeNumbers();
     }
 
-    private BallStrikeDto answerProcess() {
+    private void restartOrExitGame() {
+        console.printRestartOrExitMessage();
+        StatusCode code = user.inputStatusCode();
+        if (isStartCode(code)) {
+            new BaseballGame().play();
+        }
+    }
+
+    private BallStrikeDto processAnswering() {
         List<Integer> threeNumbers = user.sayThreeNumbers();
         BallStrikeDto answer = opponent.answer(threeNumbers);
         console.printResultMessage(answer);
@@ -70,16 +60,11 @@ public class BaseballGame {
         return answer.getStrikeCount() != 3;
     }
 
-    private void finishProcess() {
+    private void processFinishGame() {
         console.printFinishMessage();
     }
 
     private boolean isStartCode(StatusCode code) {
         return code.equals(StatusCode.START_CODE);
-        return console.inputCode();
-    }
-
-    private boolean isStartCode(int statusCode) {
-        return statusCode == START_CODE;
     }
 }

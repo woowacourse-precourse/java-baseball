@@ -1,6 +1,6 @@
 package baseball.printer;
 
-import baseball.console.output.ConsoleOutput;
+import baseball.console.ConsoleOutput;
 import baseball.core.dto.BallStrikeDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

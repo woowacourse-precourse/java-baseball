@@ -1,6 +1,6 @@
 package baseball.console;
 
-import baseball.console.input.converter.ThreeNumberConverter;
+import baseball.core.converter.ThreeNumberConverter;
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.EachInputNumberOutOfRangeException;
 import baseball.exception.InputNumberOutOfRangeException;
