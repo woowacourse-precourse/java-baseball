@@ -9,8 +9,6 @@ import java.util.stream.IntStream;
 
 public class GameProcessor {
 
-    private int strikeCount;
-    private int ballCount;
     private final Computer computer;
     private final User user;
 
@@ -36,25 +34,24 @@ public class GameProcessor {
     }
 
     public boolean isThreeStrike(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
-        getStrikeCount(computerNumbers, userInputNumbers);
-        getBallCount(computerNumbers, userInputNumbers);
-
+        int strikeCount = countStrike(computerNumbers, userInputNumbers);
+        int ballCount = countBall(computerNumbers, userInputNumbers);
         OutputView.printGameResult(strikeCount, ballCount);
-        return isGameOver();
+        return isGameOver(strikeCount);
     }
 
-    private boolean isGameOver() {
+    private boolean isGameOver(int strikeCount) {
         return strikeCount != 3;
     }
 
-    private int getStrikeCount(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
-        return strikeCount = (int) IntStream.range(0, 3)
+    private int countStrike(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
+        return (int) IntStream.range(0, 3)
                 .filter(i -> computerNumbers.get(i) == userInputNumbers.get(i))
                 .count();
     }
 
-    private int getBallCount(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
-        return ballCount = (int) IntStream.range(0, 3)
+    private int countBall(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
+        return (int) IntStream.range(0, 3)
                 .filter(i -> computerNumbers.get(i) != userInputNumbers.get(i)
                         && computerNumbers.contains(userInputNumbers.get(i)))
                 .count();
