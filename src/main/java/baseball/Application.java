@@ -11,7 +11,7 @@ public class Application {
     private static final String NOTING = "낫싱";
     private static final int REQUIRED_STRIKE_COUNT = 3;
 
-    private Map<String, Integer> result = new HashMap<>();
+    private final Map<String, Integer> result = new HashMap<>();
     private boolean gameOver = false;
 
     public static void main(String[] args) {
