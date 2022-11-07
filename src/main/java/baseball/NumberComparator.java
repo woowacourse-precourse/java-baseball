@@ -4,15 +4,15 @@ import java.util.List;
 
 public class NumberComparator {
 
-    private final List<Integer> inputNumberList;
-    private final List<Integer> resultNumberList;
+    private final List<Integer> inputNumbers;
+    private final List<Integer> resultNumbers;
 
     private int strike;
     private int ball;
 
-    public NumberComparator(List<Integer> inputNumberList, List<Integer> resultNumberList) {
-        this.inputNumberList = inputNumberList;
-        this.resultNumberList = resultNumberList;
+    public NumberComparator(List<Integer> inputNumbers, List<Integer> resultNumbers) {
+        this.inputNumbers = inputNumbers;
+        this.resultNumbers = resultNumbers;
         strike = 0;
         ball = 0;
     }
@@ -31,11 +31,11 @@ public class NumberComparator {
     }
 
     public boolean isStrike(int index) {
-        return inputNumberList.get(index) == resultNumberList.get(index);
+        return inputNumbers.get(index) == resultNumbers.get(index);
     }
 
     public boolean isBall(int index) {
-        return resultNumberList.contains(inputNumberList.get(index));
+        return resultNumbers.contains(inputNumbers.get(index));
     }
 
     public String getCompareResult() {

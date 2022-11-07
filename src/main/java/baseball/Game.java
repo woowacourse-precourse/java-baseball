@@ -34,4 +34,5 @@ public class Game {
         String finishFlag = "3스트라이크";
         return result.equals(finishFlag);
     }
+
 }

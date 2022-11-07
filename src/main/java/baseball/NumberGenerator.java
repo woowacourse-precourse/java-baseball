@@ -10,20 +10,20 @@ public class NumberGenerator {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
 
-    List<Integer> baseballNumberList;
+    List<Integer> baseballNumbers;
 
     public List<Integer> generateRandomNumber() {
-        this.baseballNumberList = new ArrayList<>();
+        this.baseballNumbers = new ArrayList<>();
         for (int i = 0; i < LENGTH; i++) {
-            baseballNumberList.add(getUniqueNumber());
+            baseballNumbers.add(getUniqueNumber());
         }
-        return baseballNumberList;
+        return baseballNumbers;
     }
 
     private int getUniqueNumber() {
         while (true) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!baseballNumberList.contains(randomNumber)) {
+            if (!baseballNumbers.contains(randomNumber)) {
                 return randomNumber;
             }
         }
