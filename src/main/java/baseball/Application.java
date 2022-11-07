@@ -27,6 +27,7 @@ public class Application {
 
     private List<String> input_PlayerNum(int maxLength) {
         // 기능 요구사항 3번
+        System.out.print("숫자를 입력해주세요 : ");
         String playerNum_string = Console.readLine();
         if (check_PlayerNum(playerNum_string, maxLength)) {
             String[] playerNum_array = playerNum_string.split("");
@@ -49,9 +50,7 @@ public class Application {
         int ballCnt = find_BallCount(computer, player);
         int strikeCnt = find_StrikeCount(computer, player);
 
-        int[] judgeCnt = {ballCnt, strikeCnt};
-
-        return judgeCnt;
+        return new int[]{ballCnt, strikeCnt};
 
     }
 
