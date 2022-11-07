@@ -56,12 +56,25 @@ public class functionTest {
         List<Integer> input7 = List.of(3, 1, 2);// 3볼
 
         assertThat(Application.compareAnswerToInput(answer, input1)).containsExactly(0,3);
+        System.out.println("3스트라이크 통과");
+
         assertThat(Application.compareAnswerToInput(answer, input2)).containsExactly(0,0);
+        System.out.println("낫싱 통과");
+
         assertThat(Application.compareAnswerToInput(answer, input3)).containsExactly(2,1);
+        System.out.println("2볼 1스트라이크 통과");
+
         assertThat(Application.compareAnswerToInput(answer, input4)).containsExactly(1,1);
-        assertThat(Application.compareAnswerToInput(answer, input5)).containsExactly(2);
+        System.out.println("1볼 1스트라이크 통과");
+
+        assertThat(Application.compareAnswerToInput(answer, input5)).containsExactly(2, 0);
+        System.out.println("2볼 통과");
+
         assertThat(Application.compareAnswerToInput(answer, input6)).containsExactly(0,1);
+        System.out.println("1스트라이크 통과");
+
         assertThat(Application.compareAnswerToInput(answer, input7)).containsExactly(3,0);
+        System.out.println("3스트라이크 통과");
 
 
     }
