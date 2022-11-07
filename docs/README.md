@@ -7,4 +7,4 @@
 ![숫자야구_값비교](https://user-images.githubusercontent.com/54941130/200213647-7007acdf-305a-4e5c-bcda-d910e80efb8e.png)
 
 - [X] 3스트라이크시, 종료문구를 출력하는 기능
-- [ ] 다시하기 or 종료를 입력받는 기능
+- [X] 다시하기 or 종료를 입력받는 기능
