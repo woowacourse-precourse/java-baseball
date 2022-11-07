@@ -9,7 +9,6 @@ public class UserGenerate {
     public List<Integer> user = new ArrayList<>();
 
     public UserGenerate() {
-        System.out.print("숫자를 입력해주세요 : ");
         String input = InputView.startInput();
         if (CheckInput(input)) {
             List<Integer> user = StringToList(input);
