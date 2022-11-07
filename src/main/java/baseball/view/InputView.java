@@ -1,6 +1,8 @@
 package baseball.view;
 
 import baseball.ball.BallNumbers;
+import baseball.input.Input;
+import baseball.program.ProgramStatus;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -19,5 +21,14 @@ public class InputView {
 
 	public static void displayInputGameStateCommandMessage() {
 		System.out.println(INPUT_GAME_STATE_COMMAND_MESSAGE);
+	}
+
+	public static ProgramStatus getUserInputCommand() {
+		int userInput = Input.validateRestartOrEndInput(Console.readLine());
+
+		if (userInput == 1) {
+			return ProgramStatus.RESTART;
+		}
+		return ProgramStatus.END;
 	}
 }
