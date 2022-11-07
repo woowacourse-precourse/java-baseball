@@ -6,30 +6,31 @@ import java.util.List;
 
 public class Game {
 
+    Number number;
     private static List<Integer> computer;
     private static List<Integer> userInput;
     private static boolean end = false;
 
     public void runGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        Number number = new Number();
-        setRandomNumber(number);
+        number = new Number();
+        setRandomNumber();
         while (!end) {
-            proceedGame(number);
+            proceedGame();
         }
     }
 
-    public void proceedGame(Number number) {
+    public void proceedGame() {
         number.userInput();
         userInput = number.userInputNumber;
-        checkAnswer(number);
+        checkAnswer();
         resetData();
     }
 
-    public void setRandomNumber(Number number) {
+    public void setRandomNumber() {
         computer = number.createRandomNumber();
     }
-    public void checkAnswer(Number number) {
+    public void checkAnswer() {
         int strike = 0;
         int ball = 0;
 
@@ -99,9 +100,12 @@ public class Game {
             computer.clear();
             return false;
         }
-        userInput.clear();
-        computer.clear();
-        return true;
+        if (restart.equals("1")) {
+            userInput.clear();
+            computer.clear();
+            return true;
+        }
+        throw new IllegalArgumentException();
     }
     public void resetData() {
         userInput.clear();
