@@ -18,6 +18,13 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         String userNum = sc.nextLine();
 
+        if(userNum.length() != 3){
+            //System.out.println("숫자 3자리만 입력해주세요.");
+            throw new IllegalArgumentException();
+        }else if(!doubleCheck(userNum)){
+            //System.out.println("숫자 중복 없이 입력하시오.");
+            throw new IllegalArgumentException();
+        }
         //System.out.println("userNum: " + userNum);
 
         String[] userNumArr = userNum.split("");
@@ -61,5 +68,16 @@ public class Game {
         }
 
         return result;
+    }
+
+    public static boolean doubleCheck(String nums) {
+        String[] num  = nums.split("");
+
+        for(int index = 0; index < 3; index++){
+            if(nums.contains(num[index])){
+                return false;
+            }
+        }
+        return true;
     }
 }
