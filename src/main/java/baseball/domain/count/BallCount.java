@@ -18,15 +18,15 @@ public class BallCount extends Count {
         return String.format("%d%s", super.count, BALL_MESSAGE);
     }
 
-    protected void updateCount() {
+    protected void update() {
         for (int answerIdx = 0; answerIdx < answer.list().size(); ++answerIdx) {
             for (int inputIdx = 0; inputIdx < input.list().size(); ++inputIdx) {
-                updateCountEach(answerIdx, inputIdx);
+                updateEach(answerIdx, inputIdx);
             }
         }
     }
 
-    private void updateCountEach(int answerIdx, int inputIdx) {
+    private void updateEach(int answerIdx, int inputIdx) {
         if (answerIdx == inputIdx) {
             return;
         }
@@ -34,6 +34,6 @@ public class BallCount extends Count {
             return;
         }
 
-        addCount();
+        add();
     }
 }

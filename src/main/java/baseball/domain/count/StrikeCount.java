@@ -20,18 +20,18 @@ public class StrikeCount extends Count {
     }
 
     @Override
-    protected void updateCount() {
+    protected void update() {
         for (int idx = 0; idx < answer.list().size(); ++idx) {
-            updateCountEach(idx);
+            updateEach(idx);
         }
     }
 
 
-    private void updateCountEach(int idx) {
+    private void updateEach(int idx) {
         if (!isEqualBirth(idx)) {
             return;
         }
-        addCount();
+        add();
     }
 
     public boolean isAnswer() {

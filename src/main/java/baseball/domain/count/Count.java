@@ -14,7 +14,7 @@ abstract public class Count {
 
         this.count = 0;
 
-        updateCount();
+        update();
     }
 
     @Override
@@ -24,7 +24,7 @@ abstract public class Count {
         return count == 0;
     }
 
-    abstract void updateCount();
+    abstract void update();
 
     boolean isEqualBirth(int idx) {
         return isEqualValue(answer.list().get(idx), input.list().get(idx));
@@ -34,7 +34,7 @@ abstract public class Count {
         return answerDigit.equals(inputDigit);
     }
 
-    protected void addCount() {
+    protected void add() {
         ++count;
     }
 
