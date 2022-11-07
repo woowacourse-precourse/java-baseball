@@ -38,4 +38,8 @@ public class BaseballService {
         }
         return strike;
     }
+
+    public void resetNumberList() {
+        computerBaseball.resetNumeberList();
+    }
 }

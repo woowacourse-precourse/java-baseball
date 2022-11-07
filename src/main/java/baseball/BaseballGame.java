@@ -17,12 +17,31 @@ public class BaseballGame {
     }
 
     public void start() {
-        System.out.println("숫자 야구 게임을 시작합니다");
         while (true) {
             List<Integer> baseballNumberList = createBaseballNumberList();
             BaseBallDto result = baseballService.getResult(baseballNumberList);
             view.printBaseBallResult(result);
             //3스트라이크 체크 후 다음 동작
+            if (result.isStrikeOut()) {
+                GameOption gameOption = createGameOption();
+                if (gameOption.equals(GameOption.EXIT)) {
+                    break;
+                }
+                baseballService.resetNumberList();
+            }
+        }
+    }
+
+
+    private GameOption createGameOption() {
+        String input = view.inputExitOrRestart();
+        validDateSelectOption(input);
+        return GameOption.of(input);
+    }
+
+    private void validDateSelectOption(String selectOption) {
+        if (!(selectOption.equals("1") || selectOption.equals("2"))) {
+            throw new IllegalArgumentException("1 또는 2를 선택해야 합니다");
         }
     }
 
