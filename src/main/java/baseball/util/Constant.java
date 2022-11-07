@@ -11,6 +11,7 @@ public class Constant {
     public static final String ERROR_LENGTH_THREE = "[error] 제시한 답의 길이가 3이 아닙니다.";
     public static final String ERROR_CONSIST_OF_NUM = "[error] 제시한 답은 숫자로만 구성되어 있지 않습니다.";
     public static final String ERROR_OVERLAP_NUM = "[error 제시한 답은 서로다른 숫자로 구성되어 있지 않습니다.";
+    public static final String ERROR_INPUT = "[error] 잘못된 값이 입력되었습니다.";
 
     public static final String NOTHING = "낫싱";
     public static final String BALL = "볼";

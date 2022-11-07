@@ -55,4 +55,14 @@ public class Validation {
             throw new IllegalArgumentException(ERROR_OVERLAP_NUM);
         }
     }
+
+    /**
+     * 플레이어가 재시작 및 종료 응답을 검증하는 기능
+     * @param reply 사용자의 응답
+     */
+    public void checkRestartOrExitValidation(String reply) {
+        if(!(reply.equals("1") || reply.equals("2"))){
+            throw new IllegalArgumentException(ERROR_INPUT);
+        }
+    }
 }
