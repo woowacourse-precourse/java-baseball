@@ -40,7 +40,9 @@ class BaseballGameTest {
                 ()->assertThrows(IllegalArgumentException.class,
                         () ->Validation.validate("901")),
                 ()->assertThrows(IllegalArgumentException.class,
-                        () ->Validation.validate("a23"))
+                        () ->Validation.validate("a23")),
+                ()->assertThrows(IllegalArgumentException.class,
+                        () ->Validation.validate("1"))
         );
     }
 }
