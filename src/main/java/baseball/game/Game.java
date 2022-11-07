@@ -73,6 +73,6 @@ public class Game {
             return false;
         }
 
-        throw new IllegalArgumentException(WarningMessage.IllegalInputWarningMessage.getMessage());
+        throw new IllegalArgumentException(WarningMessage.WrongInputWarningMessage.getMessage());
     }
 }

@@ -10,7 +10,7 @@ import java.util.Set;
 public class Validator {
     public static void isDigit(char ch) {
         if(! Character.isDigit(ch)) {
-            throw new IllegalArgumentException(WarningMessage.IllegalInputWarningMessage.getMessage());
+            throw new IllegalArgumentException(WarningMessage.WrongInputWarningMessage.getMessage());
         }
     }
 
@@ -23,7 +23,7 @@ public class Validator {
     private static void isBetweenOneAndNine(List<Integer> numbers) {
         for(Integer number : numbers) {
             if(number < 1 || 9 < number) {
-                throw new IllegalArgumentException(WarningMessage.IllegalValueWarningMessage.getMessage());
+                throw new IllegalArgumentException(WarningMessage.InValidValueWarningMessage.getMessage());
             }
         }
     }
@@ -37,7 +37,7 @@ public class Validator {
 
     private static void isThreeDigits(List<Integer> numbers) {
         if(numbers.size() != 3) {
-            throw new IllegalArgumentException(WarningMessage.IllegalInputWarningMessage.getMessage());
+            throw new IllegalArgumentException(WarningMessage.WrongInputWarningMessage.getMessage());
         }
     }
 }
