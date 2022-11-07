@@ -1,6 +1,7 @@
 package baseball.model.number;
 
 import static baseball.model.Constant.DUPLICATE_NUMBER_EXCEPTION;
+import static baseball.model.Constant.GAME_NUMBERS_SIZE;
 import static baseball.model.Constant.INPUT_SIZE_EXCEPTION;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class BaseballNumbers {
     }
 
     private void validateSize(String uncheckNumbers) {
-        if (uncheckNumbers.length() != 3) {
+        if (uncheckNumbers.length() != GAME_NUMBERS_SIZE) {
             throw new IllegalArgumentException(INPUT_SIZE_EXCEPTION);
         }
     }
@@ -63,7 +64,7 @@ public class BaseballNumbers {
 
     public int getStrike(BaseballNumbers otherBaseballNumbers) {
         int strikeCount = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < GAME_NUMBERS_SIZE; i++) {
             BaseballNumber baseballNumber = ballNumbers.get(i);
             BaseballNumber otherBaseballNumber = otherBaseballNumbers.ballNumbers.get(i);
             if (baseballNumber.equals(otherBaseballNumber)) {
@@ -76,7 +77,7 @@ public class BaseballNumbers {
     public int getBall(BaseballNumbers otherBaseballNumbers) {
         List<BaseballNumber> otherBaseballNumberList = otherBaseballNumbers.ballNumbers;
         int ballCount = 0;
-        for (int baseballIndex = 0; baseballIndex < 3; baseballIndex++) {
+        for (int baseballIndex = 0; baseballIndex < GAME_NUMBERS_SIZE; baseballIndex++) {
             BaseballNumber baseballNumber = ballNumbers.get(baseballIndex);
             int otherBaseballIndex = otherBaseballNumberList.indexOf(baseballNumber);
             if (otherBaseballIndex >= 0 && baseballIndex != otherBaseballIndex) {
@@ -88,7 +89,7 @@ public class BaseballNumbers {
 
     public boolean isNothing(BaseballNumbers otherBaseballNumbers) {
         List<BaseballNumber> otherBaseballNumberList = otherBaseballNumbers.ballNumbers;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < GAME_NUMBERS_SIZE; i++) {
             BaseballNumber otherBaseballNumber = otherBaseballNumberList.get(i);
             boolean isSameNumber = ballNumbers.contains(otherBaseballNumber);
             if (isSameNumber) {
