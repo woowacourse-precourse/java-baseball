@@ -3,15 +3,17 @@ package baseball;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Balls {
 
-	private static final int BALLS_SIZE = 3;
+	private static final int BALL_NUMBERS_SIZE = 3;
 
 	private final List<Ball> balls;
 
 	public Balls(final List<Integer> numbers) {
-		validateNumbers(numbers);
+		validateSize(numbers);
+		validateDuplicate(numbers);
 		this.balls = new ArrayList<>();
 		initBalls(numbers);
 	}
@@ -22,18 +24,17 @@ public class Balls {
 		}
 	}
 
-	private void validateNumbers(final List<Integer> numbers) {
-		if (!isValidSize(numbers) || isDuplicated(numbers)) {
-			throw new IllegalArgumentException();
+	private void validateSize(final List<Integer> numbers) {
+		if (numbers.size() != BALL_NUMBERS_SIZE) {
+			throw new IllegalArgumentException("야구 번호는 3개만 가능합니다.");
 		}
 	}
 
-	private boolean isDuplicated(final List<Integer> numbers) {
-		return new HashSet<>(numbers).size() != BALLS_SIZE;
-	}
-
-	private boolean isValidSize(final List<Integer> numbers) {
-		return numbers.size() == BALLS_SIZE;
+	private void validateDuplicate(final List<Integer> numbers) {
+		Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
+		if (nonDuplicateNumbers.size() != BALL_NUMBERS_SIZE) {
+			throw new IllegalArgumentException("야구 번호는 중복될 수 없습니다.");
+		}
 	}
 
 	public BallStatus compareTo(final Ball other) {

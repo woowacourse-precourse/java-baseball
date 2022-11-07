@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
@@ -14,22 +15,31 @@ import org.junit.jupiter.api.Test;
 )
 public class BallsTest {
 
+	private static final String INVALID_SIZE_ERR_MESSAGE
+		= "야구 번호는 3개만 가능합니다.";
+
+	private static final String DUPLICATED_ERR_MESSAGE
+		= "야구 번호는 중복될 수 없습니다.";
+
 	@DisplayName("balls 길이 검증 테스트")
 	@Test
 	void balls_길이_검증() {
 		assertThatThrownBy(
 			() -> new Balls(List.of(1, 2, 3, 4))
-		).isInstanceOf(IllegalArgumentException.class);
+		).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(INVALID_SIZE_ERR_MESSAGE);
 
 		assertThatThrownBy(
 			() -> new Balls(List.of(1, 2))
-		).isInstanceOf(IllegalArgumentException.class);
+		).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(INVALID_SIZE_ERR_MESSAGE);
 
 		assertThatThrownBy(
 			() -> new Balls(List.of(1))
-		).isInstanceOf(IllegalArgumentException.class);
+		).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(INVALID_SIZE_ERR_MESSAGE);
 
-		assertThat(new Balls(List.of(1, 2, 3))).isNotNull();
+		assertDoesNotThrow(() -> new Balls(List.of(1, 2, 3)));
 	}
 
 	@DisplayName("balls 중복 검증 테스트")
@@ -37,13 +47,15 @@ public class BallsTest {
 	void balls_중복_검증() {
 		assertThatThrownBy(
 			() -> new Balls(List.of(1, 1, 1))
-		).isInstanceOf(IllegalArgumentException.class);
+		).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(DUPLICATED_ERR_MESSAGE);
 
 		assertThatThrownBy(
 			() -> new Balls(List.of(2, 1, 2))
-		).isInstanceOf(IllegalArgumentException.class);
+		).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining(DUPLICATED_ERR_MESSAGE);
 
-		assertThat(new Balls(List.of(1, 2, 3))).isNotNull();
+		assertDoesNotThrow(() -> new Balls(List.of(1, 2, 3)));
 	}
 
 	@DisplayName("숫자 비교 테스트 N:1 - 낫싱")
@@ -61,6 +73,7 @@ public class BallsTest {
 		BallStatus status = com.compareTo(new Ball(4, 1));
 		assertThat(status).isEqualTo(BallStatus.STRIKE);
 	}
+
 	@DisplayName("숫자 비교 테스트 N:1 - 볼")
 	@Test
 	void compareTo_숫자_비교_N_1_볼() {
