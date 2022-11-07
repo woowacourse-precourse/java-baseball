@@ -23,6 +23,19 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    private void calScore() {
+        for(int i = 0; i < cnt_nbr; i++) {
+            int score = StrikeOrBall(user[i], i);
+            if(score ==ball_nbr) {
+                ball++;
+                continue;
+            }
+            if(score ==strike_nbr) {
+                strike++;
+            }
+        }
+    }
+
     private void resetScore() {
         strike = 0;
         ball = 0;
