@@ -38,8 +38,7 @@ public class Game {
 
     public void play() {
         List<Integer> userAnswer = player.askNumbers();
-        String decision = referee.scoring(answer, userAnswer);
-        player.announce(decision);
+        player.announce(referee.judge(answer, userAnswer));
         if (referee.isEnd()) {
             doWantRegame();
         }
