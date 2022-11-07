@@ -6,6 +6,7 @@ public class Constant {
     public static final String HINT_BALL = "볼";
     public static final String HINT_STRIKE = "스트라이크";
     public static final String HINT_NOTHING = "낫싱";
+    public static final String STRIKE_OUT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static final String RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
     public static final Integer MAX_LENGTH = 3;
     public static final Integer MIN_LENGTH = 1;

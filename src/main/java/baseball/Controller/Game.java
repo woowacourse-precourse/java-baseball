@@ -36,9 +36,18 @@ public class Game {
     public void StrikeOutCheck(String userInput) {
         String ball = ballHint(userInput);
         print.hintMessage(ball);
-        if (!Objects.equals(ball, 3 + Constant.HINT_STRIKE)){
+        if (!Objects.equals(ball, 3 + Constant.HINT_STRIKE)) {
             gameStart();
+            return;
         }
+        print.hintMessage(Constant.STRIKE_OUT);
+        print.hintMessage(Constant.RESTART);
+        restartCheck();
+    }
+
+    public void restartCheck() {
+        String input = Console.readLine();
+        user.inputCheck(input);
     }
 
 }
