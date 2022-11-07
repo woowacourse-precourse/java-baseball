@@ -144,6 +144,10 @@ public class Application {
         return false;
     }
 
+    public static void inputUserNumberService(){
+        String stringBuilderUserNumber = "";
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
