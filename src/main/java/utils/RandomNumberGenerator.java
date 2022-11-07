@@ -7,7 +7,9 @@ import java.util.List;
 
 public class RandomNumberGenerator {
 
-    public static List<Integer> generateRandomNumber() {
+    private RandomNumberGenerator() {}
+
+    public static List<Integer> generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
