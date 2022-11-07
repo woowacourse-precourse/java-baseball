@@ -21,8 +21,8 @@ public class GameTextPrinter {
     }
 
     public static void printCompareResult(Map<String, Integer> result) {
-        result.keySet().stream().filter(baseballLingo -> result.get(baseballLingo) > 0)
-                .forEach(baseballLingo -> System.out.print(result.get(baseballLingo) + baseballLingo));
+        result.keySet().stream().filter(baseballLingo -> result.get(baseballLingo) > 0).sorted()
+                .forEach(baseballLingo -> System.out.print(result.get(baseballLingo) + baseballLingo + " "));
         System.out.println();
     }
 
