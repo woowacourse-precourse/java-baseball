@@ -19,7 +19,7 @@ public class Computer {
     }
 
     protected String NOTHING = "낫싱";
-    protected String BALL = "%d볼 ";
+    protected String BALL = "%d볼";
     protected String STRIKE = "%d스트라이크";
     protected String GAMEOVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
@@ -32,6 +32,9 @@ public class Computer {
             result += String.format(BALL, getBallCount(input));
         }
         if (getStrikeCount(input) > 0) {
+            if (!result.isEmpty()) {
+                result += " ";
+            }
             result += String.format(STRIKE, getStrikeCount(input));
         }
         if (isGameOver(input)) {
