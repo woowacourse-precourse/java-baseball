@@ -34,8 +34,19 @@ public class GameController {
         gameService.startNumberBaseballGame();
     }
 
+    public void askRestartNumberBaseballGame() {
+        inputView.askRestartGameMessage();
+        String computerOptionNumber = Console.readLine();
+        ComputerException computerException = new ComputerException();
+        computerException.checkComputerExceptions(computerOptionNumber);
 
-
+        if (computerOptionNumber.equals(Constant.COMPUTER_GAME_RESTART)) {
+            run();
+        }
+        if (computerOptionNumber.equals(Constant.COMPUTER_GAME_EXIT)) {
+            OutputView.printExitMessage();
+        }
+    }
 
 
 }
