@@ -1,7 +1,17 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<Integer> computer = getRandomNumberList();
     }
+
+    private static List<Integer> getRandomNumberList() {
+        List computer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        return computer;
+    }
+
 }
