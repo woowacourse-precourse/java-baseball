@@ -37,4 +37,18 @@ public class Computer {
         Computer computer = (Computer) o;
         return Objects.equals(randNumbers, computer.randNumbers);
     }
+
+    public boolean isStrike(Integer now, int i) {
+        if (randNumbers.get(i) == now) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBall(Integer now) {
+        if (randNumbers.contains(now)) {
+            return true;
+        }
+        return false;
+    }
 }

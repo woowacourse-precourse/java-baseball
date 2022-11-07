@@ -17,11 +17,11 @@ public class Referee {
 
         for (int i = 0; i < CNT; i++) {
             Integer now = Character.getNumericValue(userNumber.charAt(i));
-            if (now == answer.get(i)) {
+            if (computer.isStrike(now, i)) {
                 number.hitStrike();
                 continue;
             }
-            if (answer.contains(now)) {
+            if (computer.isBall(now)) {
                 number.hitBall();
             }
         }
