@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class InputNum implements Input{
-    static final String INPUT_TEXT = "숫자를 입력해주세요 : ";
 
     @Override
     public String input(int size) {
+        final String INPUT_TEXT = "숫자를 입력해주세요 : ";
         String inputNum;
         System.out.print(INPUT_TEXT);
         inputNum = Console.readLine();
