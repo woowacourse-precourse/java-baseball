@@ -1,3 +1,28 @@
+package baseball.game;
+
+
+import static baseball.common.Constants.FINISH_GAME;
+import static baseball.common.Constants.RESTART_GAME;
+import static baseball.game_util.InputUtil.getUserThreeInputNumber;
+import static baseball.game_util.RandomUtil.createRandomComputerNumbers;
+
+import camp.nextstep.edu.missionutils.Console;
+
+public class Baseball {
+    public void RunBaseballGame() {
+        while (true){
+            progressGame();
+            printRestartOrEndMessage();
+            boolean check = checkProgress();
+
+            if (!check){
+                prinGameEndMessage();
+                break;
+            }
+        }
+    }
+
+
     private void progressGame() {
         int[] computerNumbers = createRandomComputerNumbers();
         Hint hint = new Hint();
