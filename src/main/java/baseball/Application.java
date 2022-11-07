@@ -9,21 +9,22 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Application {
-    private static final String OPENING_STR = "숫자 야구 게임을 시작합니다.";
-    public static final String INPUT_STR = "숫자를 입력해주세요 : ";
-    public static final String RESTART_ASK_STR = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final String CLOSING_STR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public static final String CONTINUE_STR = "1";
-    public static final String EXIT_STR = "2";
-    public static final String BALL_STR = "볼 ";
-    public static final String STRIKE_STR = "스트라이크";
-    public static final String NOTHING_STR = "낫싱";
-    public static final int STRIKE_INT = 1;
-    public static final int NOTHING_INT = -1;
-    public static final int BALL_INT = 0;
-    public static final int TARGET_LENGTH = 3;
-    private static final int MIN_INT = 1;
-    private static final int MAX_INT = 9;
+    static final String OPENING_STR = "숫자 야구 게임을 시작합니다.";
+    static final String INPUT_STR = "숫자를 입력해주세요 : ";
+    static final String RESTART_ASK_STR = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static final String CLOSING_STR = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String CONTINUE_STR = "1";
+    static final String EXIT_STR = "2";
+    static final String BALL_STR = "볼 ";
+    static final String STRIKE_STR = "스트라이크";
+    static final String NOTHING_STR = "낫싱";
+    static final int STRIKE_INT = 1;
+    static final int NOTHING_INT = -1;
+    static final int BALL_INT = 0;
+    static final int TARGET_LENGTH = 3;
+
+    static final int MIN_INT = 1;
+    static final int MAX_INT = 9;
 
     public static void main(String[] args) {
         boolean keepPlaying = true;
@@ -35,7 +36,7 @@ public class Application {
         }
     }
 
-    private static List<Integer> createTargetNumber() {
+    static List<Integer> createTargetNumber() {
         List<Integer> targetNumber = new ArrayList<>();
         while (targetNumber.size() < TARGET_LENGTH) {
             int newNumber = Randoms.pickNumberInRange(MIN_INT, MAX_INT);
@@ -46,7 +47,7 @@ public class Application {
         return targetNumber;
     }
 
-    private static void guessNumber(List<Integer> targetNumber) {
+    static void guessNumber(List<Integer> targetNumber) {
         List<Integer> BallStrikeCount = Arrays.asList(0, 0);
         while (BallStrikeCount.get(STRIKE_INT) < TARGET_LENGTH) {
             List<Integer> userNumber = inputUserNumber();
@@ -56,7 +57,7 @@ public class Application {
         System.out.println(CLOSING_STR);
     }
 
-    private static List<Integer> inputUserNumber() {
+    static List<Integer> inputUserNumber() {
         System.out.print(INPUT_STR);
         String userInput = Console.readLine();
         verifyInput(userInput);
@@ -68,7 +69,7 @@ public class Application {
         return userNumber;
     }
 
-    private static void verifyInput(String userInput) {
+    static void verifyInput(String userInput) {
         String pattern = String.format("^[%d-%d]{%d}$", MIN_INT, MAX_INT, TARGET_LENGTH);
         boolean isNonzeroThreeDigits = Pattern.matches(pattern, userInput);
         if (!isNonzeroThreeDigits) {
@@ -78,7 +79,7 @@ public class Application {
         }
     }
 
-    private static List<Integer> judgeUserNumber(List<Integer> targetNumber, List<Integer> userNumber) {
+    static List<Integer> judgeUserNumber(List<Integer> targetNumber, List<Integer> userNumber) {
         List<Integer> BallStrikeCount = Arrays.asList(0, 0);
         for (int position = 0; position < TARGET_LENGTH; position++) {
             int judgeResult = judgeEachNumber(targetNumber, position, userNumber.get(position));
@@ -89,7 +90,7 @@ public class Application {
         return BallStrikeCount;
     }
 
-    private static int judgeEachNumber(List<Integer> targetNumber, int position, int userInt) {
+    static int judgeEachNumber(List<Integer> targetNumber, int position, int userInt) {
         int judgeResult = NOTHING_INT;
         if (targetNumber.contains(userInt)) {
             if (targetNumber.get(position) == userInt) {
@@ -101,7 +102,7 @@ public class Application {
         return judgeResult;
     }
 
-    private static void printResult(List<Integer> ballStrikeCount) {
+    static void printResult(List<Integer> ballStrikeCount) {
         String resultString = "";
         int ball = ballStrikeCount.get(BALL_INT);
         int strike = ballStrikeCount.get(STRIKE_INT);
@@ -118,7 +119,7 @@ public class Application {
         System.out.println(resultString.trim());
     }
 
-    private static boolean inputKeepPlaying() {
+    static boolean inputKeepPlaying() {
         System.out.println(RESTART_ASK_STR);
         String userInput = Console.readLine();
         if (userInput.equals(EXIT_STR)) {
