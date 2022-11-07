@@ -17,7 +17,7 @@ public class Application {
             data.setAnswer(game.createAnswer());
             while (!finish) {
                 data.setUserInput(game.userInput());
-                game.checkInput(data.getUserInput());
+                game.checkInputException(data.getUserInput());
                 data.setBall(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[0]);
                 data.setStrike(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[1]);
                 Output.printResult(data.getStrike(), data.getBall());
@@ -53,7 +53,7 @@ class GameManager {
         return intUserInput;
     }
 
-    public void checkInput(List<Integer> userInput) {
+    public void checkInputException(List<Integer> userInput) {
 
         if (userInput.size() != 3) {
             throw new IllegalArgumentException();
