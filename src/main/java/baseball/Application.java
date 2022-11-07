@@ -18,19 +18,19 @@ public class Application {
         String judgeString = "";
         List<Character> computerNumbers =
                 computer.chars()
-                        .mapToObj(e -> (char)e)
+                        .mapToObj(e -> (char) e)
                         .collect(Collectors.toList());
 
-        for(int i=0; i<userInput.length(); i++) {
+        for (int i = 0; i < userInput.length(); i++) {
             char input = userInput.charAt(i);
-            if(computerNumbers.contains(input) && computerNumbers.indexOf(input) == i) strike++;
-            if(computerNumbers.contains(input) && computerNumbers.indexOf(input) != i) ball++;
+            if (computerNumbers.contains(input) && computerNumbers.indexOf(input) == i) strike++;
+            if (computerNumbers.contains(input) && computerNumbers.indexOf(input) != i) ball++;
         }
 
-        if(strike == 3) judgeString = "3스트라이크";
-        else if(ball != 0) judgeString += (char)(ball + '0') + "볼 ";
-        else if(strike != 0) judgeString += (char)(strike + '0') + "스트라이크";
-        else if(ball == 0 && strike == 0) judgeString = "낫싱";
+        if (strike == 3) judgeString = "3스트라이크";
+        else if (ball != 0) judgeString += (char) (ball + '0') + "볼 ";
+        else if (strike != 0) judgeString += (char) (strike + '0') + "스트라이크";
+        else if (ball == 0 && strike == 0) judgeString = "낫싱";
 
         return judgeString;
     }
@@ -45,10 +45,20 @@ public class Application {
                 computer += randomNumberToChar;
         }
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
         // 유저의 입력들
         for (String userInput : args) {
             // TODO: 재시작 / 종료 예외처리
+
+            System.out.println("숫자를 입력해주세요 : " + userInput);
+
             String judgeString = getJudgeString(computer, userInput);
+            if (judgeString.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            } else {
+                System.out.println(judgeString);
+            }
         }
     }
 }
