@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +24,8 @@ class ApplicationTest extends NsTest {
     public static final int BALL_INT = Application.BALL_INT;
     public static final int STRIKE_INT = Application.STRIKE_INT;
     public static final int NOTHING_INT = Application.NOTHING_INT;
+    final ByteArrayOutputStream newOut = new ByteArrayOutputStream();
+    final PrintStream standardOut = System.out;
 
     @Test
     void 게임종료_후_재시작() {
@@ -181,6 +185,52 @@ class ApplicationTest extends NsTest {
                 () -> assertThat(Application.judgeEachNumber(target, 1, 2)).isEqualTo(NOTHING_INT),
                 () -> assertThat(Application.judgeEachNumber(target, 2, 3)).isEqualTo(NOTHING_INT)
         );
+    }
+
+    @Test
+    void printResult_확인() {
+        System.setOut(new PrintStream(newOut));
+        Application.printResult(new ArrayList<>(List.of(0, 0)));
+        assertThat(newOut.toString().trim()).isEqualTo("낫싱");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(1, 0)));
+        assertThat(newOut.toString().trim()).isEqualTo("1볼");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(2, 0)));
+        assertThat(newOut.toString().trim()).isEqualTo("2볼");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(3, 0)));
+        assertThat(newOut.toString().trim()).isEqualTo("3볼");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(0, 1)));
+        assertThat(newOut.toString().trim()).isEqualTo("1스트라이크");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(1, 1)));
+        assertThat(newOut.toString().trim()).isEqualTo("1볼 1스트라이크");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(2, 1)));
+        assertThat(newOut.toString().trim()).isEqualTo("2볼 1스트라이크");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(0, 2)));
+        assertThat(newOut.toString().trim()).isEqualTo("2스트라이크");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(1, 2)));
+        assertThat(newOut.toString().trim()).isEqualTo("1볼 2스트라이크");
+        newOut.reset();
+
+        Application.printResult(new ArrayList<>(List.of(0, 3)));
+        assertThat(newOut.toString().trim()).isEqualTo("3스트라이크");
+        newOut.reset();
+
+        System.setOut(standardOut);
     }
 
     @Override
