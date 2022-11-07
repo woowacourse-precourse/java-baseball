@@ -28,6 +28,9 @@ public class User {
 
     public void inputNumber() {
         number = readLine();
+        if (number.length() != 3) {
+            throw new IllegalArgumentException("세 자릿수를 입력해주세요.");
+        }
     }
 
     public void inputRestart() {
