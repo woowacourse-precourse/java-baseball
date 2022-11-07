@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -114,6 +111,27 @@ public class ServiceTest {
         int numberOfBalls = (int) testMethod.invoke(service, questionNumbers, answerNumbers, 1);
         //then
         assertEquals(1, numberOfBalls);
+    }
+
+    @DisplayName("볼카운트(볼, 스트라이크 개수)를 반환하는 메서드 테스트")
+    @Test
+    void getBallCountTest() {
+        //given
+        Service service = new Service();
+        List<String> answerNumbers = new ArrayList<>();
+        List<String> questionNumbers = new ArrayList<>();
+
+        answerNumbers.add("5");
+        answerNumbers.add("1");
+        answerNumbers.add("3");
+        questionNumbers.add("1");//ball
+        questionNumbers.add("6");//포함되지 않은 문자열
+        questionNumbers.add("3");//strike
+        //when
+        Map<String, Integer> ballCount = service.getBallCount(questionNumbers, answerNumbers);
+        //then
+        assertEquals(1, ballCount.get("strikeCount"));
+        assertEquals(1, ballCount.get("ballCount"));
     }
 
 }
