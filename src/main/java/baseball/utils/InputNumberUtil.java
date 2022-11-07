@@ -17,4 +17,15 @@ public class InputNumberUtil {
 
         return userInput;
     }
+
+    public static int getRestartNumber() {
+
+        while (true) {
+            String input = Console.readLine();
+
+            if (UserValidator.restartValidation(input)) {
+                return Integer.parseInt(input);
+            }
+        }
+    }
 }

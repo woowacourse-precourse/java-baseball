@@ -42,7 +42,7 @@ public class Application {
             if (game.isCorrectAllNumber(ball)) {
                 System.out.println(GAME_FINISH);
                 System.out.println(RESTART_GAME);
-                restart = game.getRestart();
+                restart = InputNumberUtil.getRestartNumber();
                 break;
             }
         }
