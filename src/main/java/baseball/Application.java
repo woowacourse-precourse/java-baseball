@@ -81,9 +81,16 @@ public class Application {
 
         if (userSet.size() != user.size()) {
 
-            throw new IllegalArgumentException("중복된 숫자 입력!");
+            throw new IllegalArgumentException();
 
         }
+
+        if (user.size() != 3) {
+
+            throw new IllegalArgumentException();
+
+        }
+
 
     }
 
