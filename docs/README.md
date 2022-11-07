@@ -1,0 +1,9 @@
+- [x] main() 에서 실행할 class 작성
+- [x] random number 만드는 기능
+- [x] computer class 구현
+- [x] user class 구현
+- [x] 스트라이크 판별 기능
+- [x] 볼 판별 기능
+- [x] 모두 맞을 경우을 판별하는 기능
+- [x] game 함수 구현
+- [x] 다시 시작할 때 기능 구현
