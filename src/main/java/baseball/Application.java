@@ -119,7 +119,7 @@ class Baseball {
     }
 
     private static int countBall() {
-        int countBall = 0;
+        int countBall = EMPTY;
         for (int i = 0; i < computerNumber.size(); i++) {
             if (!isUserNumberEqualsComputerNumber(i) && isUserNumberContainsComputerNumber(i)) {
                 countBall++;
@@ -129,7 +129,7 @@ class Baseball {
     }
 
     private static int countStrike() {
-        int countStrike = 0;
+        int countStrike = EMPTY;
         for (int i = 0; i < computerNumber.size(); i++) {
             if (isUserNumberEqualsComputerNumber(i)) {
                 countStrike++;
