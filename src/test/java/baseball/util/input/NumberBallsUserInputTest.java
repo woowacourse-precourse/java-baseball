@@ -17,7 +17,7 @@ class NumberBallsUserInputTest {
     @DisplayName("문자열로 생성 시 예외 발생")
     void exceptionCase1() {
         assertThatThrownBy(() -> makeNumberBallsInput("abc"))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_LENGTH);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     @Test
@@ -25,49 +25,49 @@ class NumberBallsUserInputTest {
     void exceptionCase2() {
         assertDoesNotThrow(() -> makeNumberBallsInput("013"));
         assertThatThrownBy(() -> makeNumberBallsInput("013").toNumberBalls())
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_RANGE);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_NUMBER_FROM_ONE_TO_NINE);
     }
 
     @Test
     @DisplayName("숫자 세자리 미만으로 생성 시 예외 발생")
     void exceptionCase3() {
         assertThatThrownBy(() -> makeNumberBallsInput("23"))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_LENGTH);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     @Test
     @DisplayName("숫자 세자리 초과로 생성 시 예외 발생")
     void exceptionCase4() {
         assertThatThrownBy(() -> makeNumberBallsInput("2345"))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_LENGTH);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     @Test
     @DisplayName("문자열과 숫자로 생성 시 예외 발생")
     void exceptionCase5() {
         assertThatThrownBy(() -> makeNumberBallsInput("12a"))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_LENGTH);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     @Test
     @DisplayName("중복 숫자로 생성 시 예외 발생")
     void exceptionCase6() {
         assertThatThrownBy(() -> makeNumberBallsInput("122"))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_LENGTH);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     @Test
     @DisplayName("중복 숫자로 생성 시 예외 발생2")
     void exceptionCase7() {
         assertThatThrownBy(() -> makeNumberBallsInput("222"))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_LENGTH);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     @Test
     @DisplayName("빈문자열 예외 발생")
     void exceptionCase8() {
         assertThatThrownBy(() -> makeNumberBallsInput(""))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.USER_NUMBER_LENGTH);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     @Test

@@ -18,7 +18,7 @@ public class NumberBall {
     }
     private void validate(int number) {
        if(!supportsNumberRange(number)) {
-           throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_RANGE);
+           throw new IllegalArgumentException(GameExceptionMessage.ENTER_NUMBER_FROM_ONE_TO_NINE);
        }
     }
     private boolean supportsNumberRange(int number) {

@@ -16,15 +16,15 @@ public class NumberBaseballGame {
     public NumberBaseballGame(ShowGameMessage showGameMessage, ScoreBoard scoreBoard) {
         this.showGameMessage = showGameMessage;
         this.scoreBoard = scoreBoard;
-        showGameMessage.gameStartMessage();
+        showGameMessage.gameStart();
         isPlaying = true;
     }
 
     public void play() {
         while (isPlaying) {
-            showGameMessage.inputUserNumberMessage();
+            showGameMessage.inputUserNumber();
             ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
-            showGameMessage.gameResultMessage(result);
+            showGameMessage.gameResult(result);
             if (result.getScoreResultType() == ScoreResultType.ALL_STRIKE) {
                 endGame();
             }

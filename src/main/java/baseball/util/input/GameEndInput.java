@@ -14,14 +14,14 @@ public class GameEndInput {
 
     public void validate(String continueInput) {
         if (continueInput.length() > 1) {
-            throw new IllegalArgumentException(GameExceptionMessage.CONTINUE_OR_EXIT);
+            throw new IllegalArgumentException(GameExceptionMessage.ENTER_CONTINUE_NUMBER_OR_EXIT_NUMBER);
         }
         try {
             if (!continueOrExit(Integer.parseInt(continueInput))) {
-                throw new IllegalArgumentException(GameExceptionMessage.CONTINUE_OR_EXIT);
+                throw new IllegalArgumentException(GameExceptionMessage.ENTER_CONTINUE_NUMBER_OR_EXIT_NUMBER);
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(GameExceptionMessage.CONTINUE_OR_EXIT);
+            throw new IllegalArgumentException(GameExceptionMessage.ENTER_CONTINUE_NUMBER_OR_EXIT_NUMBER);
         }
     }
 

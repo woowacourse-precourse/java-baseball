@@ -17,7 +17,7 @@ class GameEndInputTest {
     void exceptionCase1() {
         assertThatThrownBy(() -> makeGameEndInput("a"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(GameExceptionMessage.CONTINUE_OR_EXIT);
+                .hasMessage(GameExceptionMessage.ENTER_CONTINUE_NUMBER_OR_EXIT_NUMBER);
     }
 
     @Test
@@ -25,7 +25,7 @@ class GameEndInputTest {
     void exceptionCase2() {
         assertThatThrownBy(() -> makeGameEndInput("aaa"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(GameExceptionMessage.CONTINUE_OR_EXIT);
+                .hasMessage(GameExceptionMessage.ENTER_CONTINUE_NUMBER_OR_EXIT_NUMBER);
     }
 
     @Test
@@ -33,7 +33,7 @@ class GameEndInputTest {
     void exceptionCase3() {
         assertThatThrownBy(() -> makeGameEndInput(""))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(GameExceptionMessage.CONTINUE_OR_EXIT);
+                .hasMessage(GameExceptionMessage.ENTER_CONTINUE_NUMBER_OR_EXIT_NUMBER);
     }
 
     @Test
@@ -41,7 +41,7 @@ class GameEndInputTest {
     void exceptionCase4() {
         assertThatThrownBy(() -> makeGameEndInput("3"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(GameExceptionMessage.CONTINUE_OR_EXIT);
+                .hasMessage(GameExceptionMessage.ENTER_CONTINUE_NUMBER_OR_EXIT_NUMBER);
     }
 
     @Test

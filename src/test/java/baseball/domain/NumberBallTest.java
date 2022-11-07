@@ -17,14 +17,14 @@ class NumberBallTest {
     @DisplayName("0으로 공 생성 예외 발생")
     void case1() {
         assertThatThrownBy(() -> makeNumberBall(0)).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(GameExceptionMessage.USER_NUMBER_RANGE);
+                .hasMessage(GameExceptionMessage.ENTER_NUMBER_FROM_ONE_TO_NINE);
     }
 
     @Test
     @DisplayName("9이상 숫자로 공 생성 예외 발생")
     void case2() {
         assertThatThrownBy(() -> makeNumberBall(15)).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(GameExceptionMessage.USER_NUMBER_RANGE);
+                .hasMessage(GameExceptionMessage.ENTER_NUMBER_FROM_ONE_TO_NINE);
     }
 
     @Test

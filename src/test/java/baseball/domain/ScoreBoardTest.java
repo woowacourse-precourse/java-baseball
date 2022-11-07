@@ -49,7 +49,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(0);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.STRIKE);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("1스트라이크");
     }
 
@@ -61,7 +61,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(0);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.STRIKE);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("2스트라이크");
     }
 
@@ -73,7 +73,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(0);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.ALL_STRIKE);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("3스트라이크\n"
                 + "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
                 + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -87,7 +87,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(1);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.BALL);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("1볼");
     }
 
@@ -99,7 +99,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(2);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.BALL);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("2볼");
     }
 
@@ -111,7 +111,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(3);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.BALL);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("3볼");
     }
 
@@ -123,7 +123,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(1);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.BALL_STRIKE);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("1볼 1스트라이크");
     }
 
@@ -135,7 +135,7 @@ class ScoreBoardTest {
         assertThat(scoreResult.getBall()).isEqualTo(2);
         assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.BALL_STRIKE);
 
-        showGameMessage.gameResultMessage(scoreResult);
+        showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("2볼 1스트라이크");
     }
 }

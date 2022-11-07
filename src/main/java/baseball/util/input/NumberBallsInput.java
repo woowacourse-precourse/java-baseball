@@ -17,17 +17,17 @@ public class NumberBallsInput {
 
     public void validate(String numberBallsInput) {
         if (!supportsNumberBallsInputLength(numberBallsInput)) {
-            throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
+            throw new IllegalArgumentException(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
         }
 
         try {
             hasNumber(numberBallsInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
+            throw new IllegalArgumentException(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
         }
 
         if (includesDuplicateNumber(numberBallsInput)) {
-            throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
+            throw new IllegalArgumentException(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
         }
     }
 
