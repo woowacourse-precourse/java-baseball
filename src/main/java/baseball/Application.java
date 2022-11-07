@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import static baseball.Game.ball;
 import static baseball.Game.strike;
 import static baseball.GameStatus.EXIT;
@@ -15,19 +16,24 @@ public class Application {
     public static void main(String[] args) {
 
         GameStatus gameStatus = ON;
-        while (gameStatus == ON){
-            List<Integer> inputNumber = User.getInputNumber();
+        while (gameStatus == ON) {
             List<Integer> answer = Computer.pickRandomNumber();
-            strike(inputNumber, answer);
-            ball(inputNumber, answer);
-            Print.result(ball, strike);
-//             3번 스트라이크면 게임 status input 받기
-//            termainte 면 game status 상태 변경
+            while (true) {
+                List<Integer> inputNumber = User.getInputNumber();
 
-
-
+                strike(inputNumber, answer);
+                ball(inputNumber, answer);
+                boolean result = Print.result(ball, strike);
+                if (result) {
+                    break;
+                }
+            }
+            int gameStatusNumber = User.getExitOrRestart();
+            if (gameStatusNumber == 2){
+                gameStatus = EXIT;
+            }
+        }
     }
-}
 
 class Computer {
     static List<Integer> pickRandomNumber(){
@@ -68,13 +74,14 @@ class User {
         return inputNum;
     }
 
-    static String getExitOrRestart(){
+    static int getExitOrRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputStatus = Console.readLine();
-        if (!inputStatus.equals(ON) && !inputStatus.equals(EXIT)){
+        if (!inputStatus.equals("1") && !inputStatus.equals("2"){
             throw new IllegalArgumentException();
         }
-        return inputStatus;
+        int inputStatusNumber = Integer.parseInt(inputStatus);
+        return inputStatusNumber;
     }
 }
 
@@ -125,14 +132,13 @@ class Print {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    static void result(int ball, int strike){
+    static boolean result(int ball, int strike){
         if (strike == 3) {
             Print.threeStrike();
-            return ;
+            return true;
         }
         if (ball == 0 && strike == 0){
             Print.nothing();
-            return ;
         }
         if (ball > 0){
             System.out.print(ball + "볼 ");
@@ -141,6 +147,6 @@ class Print {
             System.out.print(strike + "스트라이크 ");
         }
         System.out.println();
-        return ;
+        return false;
     }
 }
