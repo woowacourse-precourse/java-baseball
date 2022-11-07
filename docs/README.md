@@ -88,7 +88,7 @@
 - [x] checkedBallNumbers함수를 실행
 - [x] calculatedStrikeBallNumber함수를 실행
 - [x] printBaseballOfResult함수를 실행 후 결과값을 checkedAnswer에 저장
-- [ ] checkedAnswer의 값이 false이면, inputUserNumberService함수를 실행
+- [x] checkedAnswer의 값이 false이면, inputUserNumberService함수를 실행
 
 ## (String)inputAvailableUserAnswerService()
 - [ ] 사용자가 응답을 저장할 userAnswer에 ""으로 초기화
