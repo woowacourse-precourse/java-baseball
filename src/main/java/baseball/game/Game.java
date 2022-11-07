@@ -1,7 +1,6 @@
 package baseball.game;
 
 import java.util.EnumMap;
-import java.util.Map;
 
 public class Game {
     private static final int RESULT_HAVE_BALL_AND_STRIKE = 2;
