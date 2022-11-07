@@ -7,7 +7,7 @@ import java.util.List;
 
 public class User {
     private static final int DIGITS_SIZE = 3;
-    private static final char WRONG_DIGIT = '0';
+    private static final char ZERO = '0';
 
     public User() {
     }
@@ -47,8 +47,12 @@ public class User {
 
     private void convertToInt(char[] input, List<Integer> digits) {
         for (int index = 0; index < DIGITS_SIZE; index++) {
-            digits.add(input[index] - '0');
+            digits.add(toInt(input[index]));
         }
+    }
+
+    private int toInt(char input) {
+        return input - ZERO;
     }
 
     private void validateDigit(char[] digits) {
@@ -64,7 +68,7 @@ public class User {
     }
 
     private boolean isWrong(char digit) {
-        return !Character.isDigit(digit) || digit == WRONG_DIGIT;
+        return !Character.isDigit(digit) || digit == ZERO;
     }
 
     private void validateLength(char[] input) {
