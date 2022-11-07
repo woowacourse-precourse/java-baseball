@@ -57,8 +57,12 @@ public class Game {
     }
 
     boolean isFinish() {
-        int flag = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        int flag = Integer.parseInt(input);
 
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException();
+        }
         if (flag == 1) {
             return true;
         } else if (flag == 2) {
