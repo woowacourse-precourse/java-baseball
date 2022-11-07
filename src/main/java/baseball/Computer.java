@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Command.RESTART;
 import static baseball.Range.START;
 import static baseball.Range.END;
 
@@ -9,7 +10,6 @@ import java.util.List;
 
 public class Computer {
 
-    private static final int RESTART_NUMBER = 1;
     private List<Integer> computerNumbers;
     private int strike;
     private int ball;
@@ -60,9 +60,10 @@ public class Computer {
         strike = 0;
         ball = 0;
     }
-    public boolean isRestart(List<Integer> exitStatus) {
-        Integer status = exitStatus.get(0);
-        return status.equals(RESTART_NUMBER);
+    public boolean isRestart(List<Integer> command) {
+        Integer commandInt = command.get(0);
+        int restart = RESTART.getCommand();
+        return commandInt.equals(restart);
     }
 
     private int getRandomNumber() {
