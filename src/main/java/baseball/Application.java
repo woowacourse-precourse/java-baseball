@@ -20,9 +20,23 @@ public class Application {
 
     public static void validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
+        validateDigit(numberList);
         validateSize(numberList);
         validateDuplication(numberList);
     }
+
+    private static void validateDigit(List<String> numberList) {
+        for (String number : numberList) {
+            isDigit(number);
+        }
+    }
+
+    private static void isDigit(String number) {
+        if (!Character.isDigit(number.charAt(0))) {
+            throw new IllegalArgumentException("UserNumber must be digit");
+        }
+    }
+
 
     private static void validateSize(List<String> numberList) {
         if (numberList.size() != 3) {
