@@ -47,7 +47,7 @@ class Input {
             System.out.println(EXCEPTION_CONTAINS_ZERO);
             throw new IllegalArgumentException();
         } else if (isRepeated.size() != 3) {
-            //System.out.println(EXCEPTION_DIGITS_NOT_3);
+            System.out.println(EXCEPTION_DIGITS_NOT_3);
             throw new IllegalArgumentException();
         }
         for (char isInt : isRepeated) {
@@ -69,7 +69,7 @@ class Input {
     static char getInputEndGame() throws IllegalArgumentException {
         String input = Console.readLine();
         char inputChar = input.charAt(0);
-        if ((inputChar != 1) && (inputChar != 2)) {
+        if ((inputChar != '1') && (inputChar != '2')) {
             System.out.println(EXCEPTION_NOT_1_OR_2);
             throw new IllegalArgumentException();
         }
@@ -120,8 +120,8 @@ class Game {
     static final String NOTHING = "낫싱";
     static final String BALL = "볼";
     static final String STRIKE = "스트라이크";
-    static final int CONTINUE_GAME = 1;
-    static final int END_GAME = 2;
+    static final char CONTINUE_GAME = '1';
+    static final char END_GAME = '2';
     static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     static final String GAME_RESTART_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static final String GAME_CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -144,10 +144,10 @@ class Game {
             System.out.print(NOTHING);
         }
         if (comparedMap.get(BALL) != 0) {
-            System.out.printf(balls + BALL);
+            System.out.print(balls + BALL + " ");
         }
         if (comparedMap.get(STRIKE) != 0) {
-            System.out.printf(strikes + STRIKE);
+            System.out.print(strikes + STRIKE);
         }
         System.out.print("\n");
     }
@@ -160,7 +160,7 @@ class Game {
     static boolean restartOrEndGame() {
         boolean newGame;
         System.out.println(GAME_RESTART_OR_END);
-        int userInput = Input.getInputEndGame();
+        char userInput = Input.getInputEndGame();
 
         if (userInput == CONTINUE_GAME) {
             newGame = true;
