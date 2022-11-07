@@ -2,7 +2,9 @@ package baseball;
 
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 import static camp.nextstep.edu.missionutils.Randoms.*;
@@ -39,6 +41,16 @@ public class BaseBall {
 
     private String makeRandom() {
         return String.valueOf(pickNumberInRange(111, 999));
+    }
+
+    private String makeMyInput() {
+        String input = readLine();
+        List<String> inputList = getList(input);
+        Set<String> inputSet = new HashSet<>(inputList);
+        if (inputSet.size() != inputList.size()) {
+            throw new IllegalArgumentException("입력값이 서로 다른 3자리의 수가 아닙니다.");
+        }
+        return input;
     }
 
 }
