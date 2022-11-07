@@ -49,3 +49,8 @@ void run()
 ```java
 List<Integer> createSecretNumber()
 ```
+
+- 사용자로부터 입력받은 숫자가 올바른지 확인하는 함수
+```java
+void checkUserInput(String userInputNumber)
+```
