@@ -21,18 +21,18 @@ public class GameController {
         this.referee = referee;
     }
 
-    public void run() {
+    public void runBaseballGame() {
         output.printlnMessage(OutputMessage.START);
         String runStatus = "start";
         while (!runStatus.equals("2")) {
             List<Integer> randomNumber = computer.generateRandomNumber();
-            runSetGame(randomNumber);
+            runEachSet(randomNumber);
             output.printlnMessage(OutputMessage.END);
             runStatus = input.endInput();
         }
     }
 
-    private void runSetGame(List<Integer> randomNumber) {
+    private void runEachSet(List<Integer> randomNumber) {
         while (true) {
             output.printMessage(OutputMessage.NUMBER_REQUEST);
             String userInput = input.baseballInput();
