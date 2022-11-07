@@ -8,7 +8,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
 public class ComputerController {
-    GameNumber gameNumber = new GameNumber();
     OutputView outputView = new OutputView();
     InputView inputView = new InputView();
 
@@ -19,28 +18,32 @@ public class ComputerController {
     private int strikeCount;
     private int ballCount;
 
-    public void startGame() {
+    public void startGame(GameNumber gameNumber) {
         outputView.printStartGame();
         gameNumber.setComputerNumbers();
         String inputNumber = Console.readLine();
         gameNumber.setInputString(inputNumber);
-        int[] playerNumbers = gameNumber.getPlayerNumbers();
-        for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
-            countStrike(playerNumbers[i], i);
-            countBall(playerNumbers[i], i);
-        }
 
+        compareNumbers(gameNumber);
         provideHint();
     }
 
-    private void countStrike(int playerNumber, int numberIndex) {
-        if (gameNumber.getComputerNumbers()[numberIndex] == playerNumber) {
+    public void compareNumbers(GameNumber gameNumber) {
+        int[] playerNumbers = gameNumber.getPlayerNumbers();
+        int[] computerNumbers = gameNumber.getComputerNumbers();
+        for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
+            countStrike(computerNumbers, playerNumbers[i], i);
+            countBall(computerNumbers, playerNumbers[i], i);
+        }
+    }
+
+    private void countStrike(int[] computerNumbers, int playerNumber, int numberIndex) {
+        if (computerNumbers[numberIndex] == playerNumber) {
             strikeCount++;
         }
     }
 
-    private void countBall(int playerNumber, int numberIndex) {
-        int[] computerNumbers = gameNumber.getComputerNumbers();
+    private void countBall(int[] computerNumbers, int playerNumber, int numberIndex) {
         if ((computerNumbers[numberIndex] != playerNumber) && Arrays.stream(computerNumbers).anyMatch(number -> number == playerNumber)) {
             ballCount++;
         }
