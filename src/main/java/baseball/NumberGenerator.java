@@ -17,10 +17,6 @@ public class NumberGenerator {
         }
     }
 
-    public void truncateNumbers() {
-        this.numbers.clear();
-    }
-
     public List<Integer> getNumbers() {
         return this.numbers;
     }

@@ -30,6 +30,7 @@ public class User {
 
     public boolean inputFlag() throws IllegalArgumentException {
         char inputValue;
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         inputValue = Console.readLine().charAt(0);
 
@@ -42,10 +43,10 @@ public class User {
     private boolean validateFlag(char inputValue) throws IllegalArgumentException {
         boolean flag = false;
 
-        if(inputValue == '0')
+        if(inputValue == '1')
             flag = true;
 
-        else if(inputValue == '1')
+        else if(inputValue == '2')
             flag = false;
 
         else throw new IllegalArgumentException("1 혹은 2 이외의 숫자를 입력 하셨습니다.");
@@ -90,6 +91,4 @@ public class User {
     public List<Integer> getNumbers() {
         return this.numbers;
     }
-
-    public void truncateNumbers() { this.numbers.clear(); }
 }

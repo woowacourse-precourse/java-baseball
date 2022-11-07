@@ -10,18 +10,18 @@ public class Application {
         while (playAgain) {
             user.inputNumber();
             numberGenerator.generateNumber();
+            System.out.println("answer : " + numberGenerator.getNumbers());
             String answer = judge.judgement(numberGenerator.getNumbers(), user.getNumbers());
-            System.out.println(answer);
-            finallyData();
 
-            if(judge.getStrike() == 3)
-                playAgain = user.inputFlag();
+            while(!(judge.getStrike() == 3)) {
+                System.out.println(answer);
+                user.inputNumber();
+                judge.truncateMembers();
+                answer = judge.judgement(numberGenerator.getNumbers(), user.getNumbers());
+            }
+
+            judge.truncateMembers();
+            playAgain = user.inputFlag();
         }
-    }
-
-    private static void finallyData() {
-        user.truncateNumbers();
-        numberGenerator.truncateNumbers();
-        judge.truncateMembers();
     }
 }
