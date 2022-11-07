@@ -11,6 +11,8 @@ public class Player {
     private static List<Integer> inputNum;
     private static final String INPUT_STRING = "숫자를 입력해주세요 : ";
     private static final int GAME_STRING_LENGTH = 3;
+    private static final int INT_MIN = 1;
+    private static final int INT_MAX = 9;
 
     public void inputNumber(){
         System.out.print(INPUT_STRING);
@@ -52,6 +54,14 @@ public class Player {
     public void checkInputLength(List<Integer> input){
         if (input.size() != GAME_STRING_LENGTH){
             throw new IllegalArgumentException("세자리 숫자를 입력해주세요.");
+        }
+    }
+
+    public void isIntRange(List<Integer> input){
+        for (int i = 0; i < input.size(); i++){
+            if(input.get(i) < INT_MIN || input.get(i) > INT_MAX){
+                throw new IllegalArgumentException("0을 제외한 1~9 숫자만 입력해주세요.");
+            }
         }
     }
 
