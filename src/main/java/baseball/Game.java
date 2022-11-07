@@ -4,29 +4,28 @@ import java.util.List;
 import java.util.Objects;
 
 public class Game {
-    static Input_Output IO = new Input_Output();
-    static int Strike_count=0;
-    static int Ball_count=0;
+    Input_Output IO = new Input_Output();
+    private static int Strike_count=0;
+    private static int Ball_count=0;
+
+
+    public Game()
+    {
+        init();
+    }
+    public void init()
+    {
+        IO.Computer_RandomNumber();//Input_Output에서 받은 컴퓨터의 수를 호출
+    }
     public void Game_Progress()
     {
-
-
-        IO.Computer_RandomNumber();//Input_Output에서 받은 컴퓨터의 수를 호출
-        System.out.println(IO.computer);
         IO.User_enter();//Input_Output에서 받은 사용자의 수를 호출
         IO.User_File_Check();
         BaseNumber_Check(IO.computer,IO.Scan);
-        Checking_Game_Number();//게임이 끝났는지 혹은 끝나지 않았으면 숫자확인을 해준다.
-
+        System.out.println(Print_Current_Game());
     }
 
-    public void Checking_Game_Number()
-    {
-        if(Strike_count==3)
-            Ending_Progress();
-        else
-            System.out.println(Print_Current_Game());
-    }
+
 
     public String Print_Current_Game()
     {
@@ -68,23 +67,28 @@ public class Game {
 
     public static boolean Number_Check(int computer,int User)//같은 숫자가 맞는지 확인
     {
-        if (Objects.equals(computer, User))
+        if(Objects.equals(computer, User))
             return true;
 
         return false;
     }
 
-    public void Ending_Progress()
+    public boolean Ending_Progress()
     {
-        IO.Ending_Enter();
-        Runtime_Check();
+        if(Strike_count==3) {
+            String End_Number = IO.Ending_Enter();
+            if (End_Number.equals("1")) {
+                init();
+                return true;
+            }
+            if (End_Number.equals("2")) {
+                return false;
+            }
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
- public static boolean Runtime_Check()
- {
-    if(IO.End_Number=="2")
-        return false;
-     return true;
- }
+
 
 
 }
