@@ -13,10 +13,6 @@ public final class RandomNumGenerator {
     private RandomNumGenerator() {
     }
 
-    private static int makeRandomDigit() {
-        return Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
-    }
-
     public static int makeDistinctRandomNumWithSize(int sizeLimit) {
         List<Integer> resultList = new ArrayList<>();
         int size;
@@ -26,5 +22,9 @@ public final class RandomNumGenerator {
             size = Utility.getDistinctCountInIntegerList(resultList);
         } while (size < sizeLimit);
         return Utility.mergeDistinctIntegerInList(resultList);
+    }
+
+    private static int makeRandomDigit() {
+        return Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
     }
 }
