@@ -1,6 +1,7 @@
 package baseball.user;
 
 import baseball.exception.UserInputException;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +31,10 @@ public class UserFunction {
         }
 
         return inputNumList;
+    }
+
+    public String requestInputData() {
+        return Console.readLine();
     }
 
     public boolean inputLengthCheck(String input) {
