@@ -41,6 +41,28 @@ public class InputValidationTest {
     assertEquals(expectedBoolean, isItRestartInput);
   }
 
+  @ParameterizedTest
+  @MethodSource("provideExpectedInputAndActualErrorMessage")
+  void 플레이어가_입력한_3자리_숫자가_잘못된_값인_경우_특정_메시지를_포함한_예외를_던지는가(String input, String actualErrorMessage) {
+    try {
+      InputValidator validator = new PlayingInputValidator();
+      String userInput = input;
+      validator.validate(userInput);
+    } catch (IllegalArgumentException e) {
+      assertEquals(actualErrorMessage, e.getMessage());
+    }
+  }
+
+  static Stream<Arguments> provideExpectedInputAndActualErrorMessage() {
+    return Stream.of(
+      Arguments.of("112", ExceptionMessages.INPUT_IS_NOT_UNIQUE.getExceptionMessage()),
+      Arguments.of("12", ExceptionMessages.INPUT_LENGTH_IS_NOT_THREE.getExceptionMessage()),
+      Arguments.of("1234", ExceptionMessages.INPUT_LENGTH_IS_NOT_THREE.getExceptionMessage()),
+      Arguments.of("120", ExceptionMessages.INPUT_IS_NOT_DIGIT.getExceptionMessage()),
+      Arguments.of("가나다", ExceptionMessages.INPUT_IS_NOT_DIGIT.getExceptionMessage())
+    );
+  }
+
   private InputStream readUserInput(String input) {
     return new ByteArrayInputStream(input.getBytes());
   }
