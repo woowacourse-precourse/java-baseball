@@ -75,14 +75,10 @@ public class BaseballGame {
             int status = checkValue(num, i);
 
             // 결과 저장
-            switch (status) {
-                case 2:
-                    result[0] += 1;
-                    break;
-                case 1:
-                    result[1] += 1;
-                    break;
-            }
+            if (status == 2)
+                result[0] += 1;
+            else if (status == 1)
+                result[1] += 1;
         }
 
         return result;
@@ -112,5 +108,7 @@ public class BaseballGame {
             inputAnswer();
 
     }
+
+
 }
 
