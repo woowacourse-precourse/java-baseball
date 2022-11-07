@@ -28,8 +28,7 @@ public class PlayerException extends Exception {
         boolean[] checkNumbers = new boolean[10];
         for (Integer playerNumber : playerNumbers) {
             if (checkNumbers[playerNumber]) {
-                throw new IllegalArgumentException(
-                        DUPLICATE_NUMBER.getErrorMessage());
+                throw new IllegalArgumentException(DUPLICATE_NUMBER.getErrorMessage());
             }
             checkNumbers[playerNumber] = true;
         }
@@ -43,8 +42,7 @@ public class PlayerException extends Exception {
      */
     private void numberSizeException(List<Integer> playerNumbers) throws IllegalArgumentException {
         if (playerNumbers.size() != INPUT_NUMBER_SIZE) {
-            throw new IllegalArgumentException(
-                    INPUT_SIZE.getErrorMessage());
+            throw new IllegalArgumentException(INPUT_SIZE.getErrorMessage());
         }
     }
 }

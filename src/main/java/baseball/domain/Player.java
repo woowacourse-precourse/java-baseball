@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.exception.PlayerException;
+import baseball.exception.TypeException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,6 +9,7 @@ import java.util.List;
 
 public class Player {
     private final PlayerException playerException = new PlayerException();
+    private final TypeException typeException = new TypeException();
     private List<Integer> playerNumbers = new ArrayList<>(Collections.emptyList());
 
     public Player(String inputNumbers) {
@@ -34,12 +36,13 @@ public class Player {
     }
 
     /**
-     * 문자열을 리스트로 변환한다.
+     * 문자열을 리스트로 변환하며 예외가 있으면 던진다.
      *
      * @param inputNumbersString 플레이어의 입력한 숫자들
      * @return 플레이어의 입력한 숫자들 리스트로 변환한 것을 반환
      */
     private List<Integer> toList(String inputNumbersString) {
+        typeException.typeException(inputNumbersString);
         List<Integer> list = new ArrayList<>(Collections.emptyList());
         for (String number : inputNumbersString.split("")) {
             addNumberByList(list, number);

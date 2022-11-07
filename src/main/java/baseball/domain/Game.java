@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.exception.GameException;
+import baseball.exception.TypeException;
 import baseball.view.Instruction;
 import baseball.view.Result;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,9 +10,10 @@ public class Game {
 
     private static final int START = 1;
     private static final int THREE_STRIKE = 3;
+    private static final Instruction instruction = new Instruction();
+    private static final GameException gameException = new GameException();
+    private static final TypeException typeException = new TypeException();
     Result result = new Result();
-    Instruction instruction = new Instruction();
-    GameException gameException = new GameException();
     Computer computer;
     Player player;
 
@@ -35,7 +37,8 @@ public class Game {
 
     /**
      * 사용자의 입력과 컴퓨터의 번호가 동일하여 성공이 가능한지 판단한다.
-     * @return  성공하면 true
+     *
+     * @return 성공하면 true
      */
     private boolean canSuccess() {
         int[] ballAndStrike = new Comparator(computer.getRandomNumbers(), player.getPlayerNumbers()).getResult();
@@ -57,8 +60,9 @@ public class Game {
 
     /**
      * 입력받은 재시작/종료 코드를 검증하여 예외 상황이 있으면 던진다.
-     * @param runCode   재시작/종료 코드
-     * @return  재시작/종료 코드
+     *
+     * @param runCode 재시작/종료 코드
+     * @return 재시작/종료 코드
      */
     private String inputRunCode(String runCode) {
         gameException.runCodeLengthException(runCode);
@@ -67,8 +71,9 @@ public class Game {
 
     /**
      * 볼이 있는지 확인하고 볼이 몇개인지 출력한다.
-     * @param ball  볼
-     * @return  볼이 있으면 true
+     *
+     * @param ball 볼
+     * @return 볼이 있으면 true
      */
     private boolean isBall(int ball) {
         if (ball == 0) {
@@ -80,8 +85,9 @@ public class Game {
 
     /**
      * 스트라이크가 있는지 확인하고 스트라이크가 몇개인지 출력한다.
-     * @param strike    스트라이크
-     * @return  스트라이크가 있으면 true
+     *
+     * @param strike 스트라이크
+     * @return 스트라이크가 있으면 true
      */
     private boolean isStrike(int strike) {
         if (strike == 0) {
@@ -93,12 +99,16 @@ public class Game {
 
     /**
      * 스트라이크가 THREE_STRIKE 와 동일한지 확인하고 동일하면 성공메시지를 출력한다.
+     *
      * @param strike 스트라이크
-     * @return  스트라이크가 THREE_STRIKE 와 동일하면 true
+     * @return 스트라이크가 THREE_STRIKE 와 동일하면 true
      */
     private boolean isThreeStrike(int strike) {
-        result.printSuccess();
-        return strike == THREE_STRIKE;
+        if(strike == THREE_STRIKE) {
+            result.printSuccess();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -110,7 +120,8 @@ public class Game {
 
     /**
      * 재시작/종료 코드를 설정한다.
-     * @return  재시작/종료 코드
+     *
+     * @return 재시작/종료 코드
      */
     private int setRunCode() {
         instruction.printRunCode();
@@ -128,10 +139,12 @@ public class Game {
 
     /**
      * 정수형으로 변환하며 검증을 거쳐 예외 사항이 있으면 던진다.
-     * @param runCode   문자형 재시작/종료 코드
-     * @return  정수형 재시작/종료 코드
+     *
+     * @param runCode 문자형 재시작/종료 코드
+     * @return 정수형 재시작/종료 코드
      */
     private int toInt(String runCode) {
+        typeException.typeException(runCode);
         int intRunCode = Integer.parseInt(runCode);
         gameException.runCodeValidation(intRunCode);
         return intRunCode;
