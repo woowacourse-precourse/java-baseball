@@ -24,7 +24,7 @@ public class Game {
         }
 
         for(int i=0; i<3; i++){
-            if(userNumber.charAt(i) < '1' && userNumber.charAt(i) > '9') {
+            if(userNumber.charAt(i) < '1' || userNumber.charAt(i) > '9') {
                 throw new IllegalArgumentException();
             }
             setNumber.add(userNumber.charAt(i));
