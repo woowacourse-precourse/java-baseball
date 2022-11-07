@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
     private static final int NUMBERS_SIZE = 3;
@@ -14,24 +11,26 @@ public class Application {
     public static void main(String[] args) {
         Comments comments = new Comments(setComments());
         Player computer = new Player(selectComputerNumber());
+
         comments.printStartComment();
         while (true){
             comments.printInputComment();
             Player user = new Player(toIntegers(split(Console.readLine())));
+
             if(playGame(computer, user, comments))
                 continue;
+
             Restart restart = new Restart(toInt(Console.readLine()));
             if(!restart.isRestart())
                 break;
             computer = new Player(selectComputerNumber());
         }
-
     }
 
     public static List<Integer> selectComputerNumber(){
         List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < 3) {
+        while (computer.size() < NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -51,9 +50,7 @@ public class Application {
 
     public static List<Integer> toIntegers(String[] input){
         List<Integer> player = new ArrayList<>();
-
-        for(String number : input)
-            player.add(Integer.parseInt(number));
+        Arrays.stream(input).forEach(number -> player.add(Integer.parseInt(number)));
 
         return player;
     }

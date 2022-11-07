@@ -196,6 +196,25 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("1볼 1스트라이크");
     }
 
+    @Test
+    void 입력_값이_숫자가_아닐_때_예외_처리_테스트(){
+        assertThatThrownBy(() -> Application.toInt("가"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력_값들을_String에서_Integer로_변환_테스트(){
+        String[] input = "123".split("");
+        assertThat(Application.toIntegers(input)).containsExactly(1,2,3);
+    }
+
+    @Test
+    void 입력_값들이_숫자가_아닐_때_예외_처리_테스트(){
+        String[] input = "1가나".split("");
+        assertThatThrownBy(() -> Application.toIntegers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
