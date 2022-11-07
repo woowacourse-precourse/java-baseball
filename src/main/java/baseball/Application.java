@@ -21,4 +21,7 @@ public class Application {
         }
         return computer;
     }
+    private static void printAskInputText(String txt){
+        System.out.printf(txt);
+    }
 }
