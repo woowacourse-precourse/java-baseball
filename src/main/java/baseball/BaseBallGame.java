@@ -20,7 +20,7 @@ public class BaseBallGame {
     private static void playGame() {
         List<Integer> answer = BaseBallGameUtil.createAnswerByLength(LENGTH_OF_NUMBER);
         List<Integer> userAnswer = List.of(0, 0, 0);
-        while(isFinished(answer,userAnswer)){
+        while(!isFinished(answer,userAnswer)){
             System.out.print(INPUT_MESSAGE);
             userAnswer = BaseBallGameUtil.inputUserAnsweByLength(LENGTH_OF_NUMBER);
             System.out.println(BallCount.calc(answer, userAnswer));
@@ -29,6 +29,6 @@ public class BaseBallGame {
 
     // 게임 종료 여부 판단
     private static boolean isFinished(List<Integer> answer, List<Integer> userAnswer) {
-        return !answer.equals(userAnswer);
+        return answer.equals(userAnswer);
     }
 }
