@@ -2,6 +2,11 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ServiceImpl implements Service {
 
     public ServiceImpl() {
@@ -27,5 +32,24 @@ public class ServiceImpl implements Service {
         }
 
         return count;
+    }
+    @Override
+    public int randNumGenerate(int minNum, int maxNum) {
+        int number = 0;
+        List<Integer> numList = new ArrayList();
+        int digit = 100;
+
+        do {
+            int tempnumber;
+            do {
+                tempnumber = Randoms.pickNumberInRange(minNum, maxNum);
+            } while(numList.contains(tempnumber));
+
+            numList.add(tempnumber);
+            number += tempnumber * digit;
+            digit /= 10;
+        } while(digit != 0);
+
+        return number;
     }
 }
