@@ -8,7 +8,8 @@ public class Application {
     public static int BALL_INDEX = 0;
     public static int STRIKE_INDEX = 1;
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        startGame();
     }
 
     static void startGame() {
