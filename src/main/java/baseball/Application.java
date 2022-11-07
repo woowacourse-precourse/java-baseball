@@ -42,7 +42,9 @@ public class Application {
       }
 
       boolean correctFlag = checkPlayerResult(ball, strike);
-      gameFlag = checkRerunGame(correctFlag, gameFlag);
+      if (correctFlag) {
+        gameFlag = checkRerunGame();
+      }
     }
   }
 
@@ -81,21 +83,18 @@ public class Application {
     return correctFlag;
   }
 
-  private static int checkRerunGame(boolean correctFlag, int gameFlag) {
-    if (correctFlag) {
-      System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-      String inputNumber = Console.readLine();
+  private static int checkRerunGame() {
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    String inputNumber = Console.readLine();
 
-      if (inputNumber.equals("1")) {
-        computer = createComputerNumber();
-        gameFlag = 1;
-      } else if (inputNumber.equals("2")) {
-        gameFlag = 2;
-      } else {
-        throw new IllegalArgumentException();
-      }
+    if (inputNumber.equals("1")) {
+      computer = createComputerNumber();
+      return 1;
+    } else if (inputNumber.equals("2")) {
+      return 2;
+    } else {
+      throw new IllegalArgumentException();
     }
-    return gameFlag;
   }
 
 }
