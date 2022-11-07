@@ -7,11 +7,14 @@ public class Exception {
     public static final String RANGE_FORMAT_PATTERN = "(^[1-9]*$)";
     public static final String REPEATED_PATTERN = "(.)\\1+";
     public static final int CORRECT_LENGTH = 3;
+    public static final String RESTART = "1";
+    public static final String QUIT = "2";
 
     public static final String NUMBER_FORMAT_ERROR_MESSAGE = "숫자만 입력해주세요.";
     public static final String NUMBER_RANGE_ERROR_MESSAGE = "1에서 9사이의 숫자만 입력해주세요.";
     public static final String NUMBER_LENGTH_ERROR_MESSAGE = "올바른 길이의 숫자를 입력해주세요.";
     public static final String REPEATED_NUMBER_ERROR_MESSAGE = "서로 다른 숫자를 입력해주세요.";
+    public static final String CHOICE_ERROR_MESSAGE = "1 또는 2를 입력해주세요.";
 
     public static void throwException(String message) {
         throw new IllegalArgumentException(message);
@@ -44,6 +47,12 @@ public class Exception {
         Matcher m = p.matcher(number);
         if(m.matches()){
             throwException(REPEATED_NUMBER_ERROR_MESSAGE);
+        }
+    }
+
+    public static void checkChoiceException(String choice) {
+        if(!(choice.equals(RESTART) || choice.equals(QUIT))) {
+            throwException(CHOICE_ERROR_MESSAGE);
         }
     }
 }

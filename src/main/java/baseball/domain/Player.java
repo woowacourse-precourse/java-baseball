@@ -12,13 +12,19 @@ public class Player {
 
     public int getChoice() {
         String choice = Console.readLine();
+        validateChoice(choice);
         return Integer.parseInt(choice);
     }
 
     public void validateInput(String input) {
         Exception.checkNumberFormatException(input);
-        Exception.checkNumberLengthException(input)
+        Exception.checkNumberLengthException(input);
         Exception.checkNumberRangeException(input);
         Exception.checkRepeatedNumberException(input);
+    }
+
+    public void validateChoice(String input) {
+        Exception.checkNumberFormatException(input);
+        Exception.checkChoiceException(input);
     }
 }
