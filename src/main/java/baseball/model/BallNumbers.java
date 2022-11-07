@@ -53,8 +53,9 @@ public class BallNumbers {
                 .map(BallNumber::ballNumber)
                 .collect(Collectors.toList());
     }
-    private static final void checkMax(List<Character> hits){
-        if (hits.size() < MAX){
+
+    private static void checkMax(List<Character> hits) {
+        if (hits.size() > MAX) {
             throw new BallInputException("세 자리 이상 입력받을 수 없습니다.");
         }
     }

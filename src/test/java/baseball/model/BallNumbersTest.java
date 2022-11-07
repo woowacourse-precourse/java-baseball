@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.BallInputException;
 import baseball.model.BallNumber;
 import baseball.model.BallNumbers;
 import baseball.model.BaseBallHitsType;
@@ -16,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class BallNumbersTest {
     private static Stream<Arguments> provideInput() {
         return Stream.of(
-                Arguments.of(List.of('1', '2', '2'),
-                        List.of('1', '0', '3'),
-                        List.of('2', '3', '1', '4'))
+                Arguments.of(List.of('1', '2', '2')),
+                Arguments.of(List.of('2', '3', '1', '4')),
+                Arguments.of(List.of('1','0','9'))
         );
     }
 
