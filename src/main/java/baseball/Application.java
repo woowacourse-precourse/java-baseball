@@ -54,6 +54,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputNum = Console.readLine();
         validateUserInputNumFormat(userInputNum);
+        validateUserInputNumRange(userInputNum);
 
         userNumList = splitStringAndParseInt(userInputNum);
     }
@@ -128,6 +129,14 @@ public class Application {
             Integer.parseInt(userInputNum);
         } catch (Exception e) {
             throw new IllegalArgumentException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
+    }
+
+    private static void validateUserInputNumRange(String userInputNum) {
+        int userInputNumToInt = Integer.parseInt(userInputNum);
+
+        if (userInputNumToInt < 123 || userInputNumToInt > 987) {
+            throw new IllegalArgumentException("123 이상 987 이하의 숫자만 입력 가능합니다.");
         }
     }
 
