@@ -2,11 +2,10 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // TODO: 프로그램 구현s
 
         while(true)
         {
@@ -24,7 +23,6 @@ public class Application {
     {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String randomNum = getRandomNum();
-        System.out.println("randomNum" + randomNum);
 
         startGame(randomNum);
     }
@@ -50,8 +48,11 @@ public class Application {
     //입력한 숫자를 체크하는 메서드
     private static void checkNum(String inputNum) throws IllegalArgumentException
     {
-        char[] inputNumArray = inputNum.toCharArray();
+        String regex = "[1-9]\\d{0,3}";
+        if(inputNum.matches(regex))
+            throw new IllegalArgumentException();
 
+        char[] inputNumArray = inputNum.toCharArray();
         int k = 0;
         for(int i = 0; i < inputNumArray.length; i++)
         {
@@ -98,9 +99,9 @@ public class Application {
 
         String result = "";
         if(match[0] != 0)
-            result = match[0] + "볼 ";
+            result += match[0] + "볼 ";
         if(match[1] != 0)
-            result = match[1] + "스트라이크";
+            result += match[1] + "스트라이크";
 
         return result.trim();
     }
@@ -115,22 +116,20 @@ public class Application {
         for(int i = 0; i < randomNum.length(); i++)
         {
             if(inputNum.contains(String.valueOf(randomNumArray[i])))
-            {
-                match = calResult(match, matchNum(inputNum, randomNumArray[i]));
-            }
+                match = calResult(match, matchNum(inputNum, randomNumArray[i], i));
         }
 
         return match;
     }
 
     //ball인지 strike인지 구별하는 메서드
-    private static char matchNum(String num, char numchar)
+    private static char matchNum(String inputNum, char numchar, int index)
     {
         boolean isStrike = false;
-        char[] nr = num.toCharArray();
-        for(int i = 0; i < nr.length; i++)
+        char[] inputNumArray = inputNum.toCharArray();
+        for(int i = 0; i < inputNumArray.length; i++)
         {
-            if(numchar == nr[i])
+            if(i == index && numchar == inputNumArray[i])
                 isStrike = true;
         }
 
@@ -151,4 +150,3 @@ public class Application {
         return match;
     }
 }
-//값이 제대로 안 매칭되고있음 그 자리 수와 매칭돼야하는데 전체에서 매칭되는것을 보고있는 느낌
