@@ -39,30 +39,12 @@ public class BaseBallGame {
     public void provideHint() {
         System.out.print(ProgramMessages.PLEASE_TYPE_NUMBER);
         String input = Console.readLine();
-        validateInput(input);
         user = new Pitcher(input);
         hg = new HintGenerator(user, com);
         hint = hg.generateHint();
         System.out.println(hint);
         isStrikeOut(hint);
     }
-
-    /**
-     * input이 1 또는 2가 아닐 때 예외처리 해주는 함수
-     *
-     * @param input
-     */
-    public void validateInput(String input) {
-        if (input.length() != 1) {
-            throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
-        } else if (!Character.isDigit(input.charAt(0))) {
-            throw new IllegalArgumentException(ErrorMessages.NOT_A_NUMBER);
-        } else if (input.equals(ProgramMessages.RESTART)
-                || input.equals(ProgramMessages.QUIT)) {
-            throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
-        }
-    }
-
     /**
      * hint가 3스트라이크인지 확인하는 함수
      */
@@ -80,11 +62,28 @@ public class BaseBallGame {
     public void quitOrRestart() {
         System.out.println(ProgramMessages.QUIT_OR_RESTART);
         String input = Console.readLine();
+        validateInput(input);
         if(input.equals(ProgramMessages.RESTART)) {
             quit = false;
         } else if (input.equals(ProgramMessages.QUIT)) {
             quit = true;
         }
 
+    }
+
+    /**
+     * input이 1 또는 2가 아닐 때 예외처리 해주는 함수
+     *
+     * @param input
+     */
+    public void validateInput(String input) {
+        if (input.length() != 1) {
+            throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
+        } else if (!Character.isDigit(input.charAt(0))) {
+            throw new IllegalArgumentException(ErrorMessages.NOT_A_NUMBER);
+        } else if (input.equals(ProgramMessages.RESTART)
+                || input.equals(ProgramMessages.QUIT)) {
+            throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
+        }
     }
 }
