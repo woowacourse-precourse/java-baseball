@@ -112,6 +112,8 @@ class ApplicationTest extends NsTest {
     @Test
     void allStrike() {
         /*given*/
+        String end = "게임종료";
+
         /*when*/
         /*then*/
     }
