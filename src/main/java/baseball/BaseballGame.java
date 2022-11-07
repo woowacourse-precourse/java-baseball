@@ -15,6 +15,7 @@ public class BaseballGame {
             int addNum = num.charAt(i)-'0';
             number.add(addNum);
         }
+        inputNum = number;
     }
 
     public void makeRandomNum() {
@@ -50,6 +51,23 @@ public class BaseballGame {
     }
 
     public String getResult() { //스트라이크 낫싱 볼
-        return null;
+        int strike = 0, ball = 0;
+        for (int i = 0; i < 3; i++) { //스트라이크와 볼의 개수 카운트
+            if(inputNum.get(i)==answer.get(i)){
+                strike++;
+            } else if(answer.contains(inputNum.get(i))){
+                ball++;
+            }
+        }
+
+        if(strike==0&&ball==0){
+            return "낫싱";
+        } else{
+            if(strike==0) return ball+"볼";
+            else if(ball==0) return strike+"스트라이크";
+            else{
+                return ball+"볼 "+strike+"스트라이크";
+            }
+        }
     }
 }
