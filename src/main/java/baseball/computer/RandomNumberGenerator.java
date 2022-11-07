@@ -41,8 +41,4 @@ public class RandomNumberGenerator {
         }
         return noDuplicatedNumbers;
     }
-
-    public static void main(String[] args) {
-        checkDuplicateNumbers(List.of(1,2,3));
-    }
 }
