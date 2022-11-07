@@ -56,6 +56,7 @@ public class GameController {
     }
 
     private String inputCommandNumber() {
+        
         System.out.println( ANSWER_AND_GAME_OVER );
         System.out.println( REQUEST_RESTART_OR_END );
         return Console.readLine();
