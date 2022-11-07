@@ -9,14 +9,17 @@ public class BaseballGameLauncher {
     public final static String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public final static String GAME_CLOSE_MESSAGE = "게임을 완전히 종료합니다.";
 
+    private Player player = new Player();
+
     public void run() {
         System.out.println(GAME_START_MESSAGE);
-        Player player = new Player();
+
         do {
             player.play();
             System.out.println(GAME_RESTART_SELECTION_MESSAGE);
             System.out.println(GAME_CLEAR_MESSAGE);
         } while (isRestartGame(player.selectOptionAfterGameClear()));
+
         System.out.println(GAME_CLOSE_MESSAGE);
     }
 
