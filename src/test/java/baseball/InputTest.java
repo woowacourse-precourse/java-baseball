@@ -39,6 +39,32 @@ public class InputTest {
                 .hasMessageContaining("숫자가 아닌 문자가 포함되었습니다.");
     }
 
+    @Test
+    public void readGameStatus_메서드로_게임_재시작을_입력받는_경우() {
+        command("1");
+        GameStatus gameStatus = Input.readGameStatus();
+
+        assertThat(gameStatus).isEqualTo(GameStatus.RESTART);
+    }
+
+    @Test
+    public void readGameStatus_메서드로_게임종료를_입력받는_경우() {
+        command("2");
+        GameStatus gameStatus = Input.readGameStatus();
+
+        assertThat(gameStatus).isEqualTo(GameStatus.GAME_OVER);
+    }
+
+    @Test
+    public void readGameStatus_메서드_사용시_1또는2_외의_입력을_받는_경우() {
+        assertThatThrownBy(() -> {
+            command("5");
+            GameStatus gameStatus = Input.readGameStatus();
+        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 값이 입력되었습니다.");
+    }
+
     private void command(final String... args) {
         final byte[] buf = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(buf));
