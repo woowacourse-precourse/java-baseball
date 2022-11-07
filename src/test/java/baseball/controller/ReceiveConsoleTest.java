@@ -1,16 +1,11 @@
 package baseball.controller;
 
 
-import baseball.dto.NumListDto;
+
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.List;
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
@@ -26,9 +21,9 @@ class ReceiveConsoleTest {
         //given
         System.setIn(new ByteArrayInputStream(("123"+'\n').getBytes()));
         //when
-        NumListDto numListDto = ReceiveConsole.receiveNumIncludeAllException();
+        List<Integer> numList=ReceiveConsole.receiveNumIncludeAllException();
         //then
-        assertThat(numListDto.getNumList()).isEqualTo(Arrays.asList(1,2,3));
+        assertThat(numList).isEqualTo(Arrays.asList(1,2,3));
     }
 
 

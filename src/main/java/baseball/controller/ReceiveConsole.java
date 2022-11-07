@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.dto.NumListDto;
+
 import baseball.view.PrintConsole;
 
 import camp.nextstep.edu.missionutils.Console;
