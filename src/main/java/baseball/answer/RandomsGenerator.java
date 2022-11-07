@@ -25,8 +25,7 @@ public class RandomsGenerator implements AnswerGenerator {
     }
 
     /**
-     * generateWithSet()은 Randoms.pickNumberInRange()을 사용하지 않는 요구사항 위반<br>
-     * generate()를 사용해야 함
+     * generateWithSet()은 Randoms.pickNumberInRange()을 사용하지 않는 요구사항 위반<br> generate()를 사용해야 함
      */
     @Deprecated
     public List<Integer> generateWithSet() {

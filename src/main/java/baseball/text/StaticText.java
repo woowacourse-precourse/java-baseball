@@ -5,7 +5,7 @@ public enum StaticText {
     PROGRAM_END("게임 종료"),
     ASK_ANSWER("숫자를 입력해 주세요 : "),
     ASK_RETRY("게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요 : "),
-;
+    ;
 
     private final String message;
 

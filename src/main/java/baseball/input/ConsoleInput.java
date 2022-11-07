@@ -1,12 +1,11 @@
 package baseball.input;
 
-import baseball.input.validator.ConsoleValidator;
-import baseball.input.validator.Validator;
-
-import camp.nextstep.edu.missionutils.Console;
-
 import static baseball.text.StaticText.ASK_ANSWER;
 import static baseball.text.StaticText.ASK_RETRY;
+
+import baseball.input.validator.ConsoleValidator;
+import baseball.input.validator.Validator;
+import camp.nextstep.edu.missionutils.Console;
 
 /**
  * camp.nextstep.edu.missionutils.Console에 의존하는 구현체
@@ -17,9 +16,6 @@ public class ConsoleInput implements UserInput {
      */
     private final Validator validator = new ConsoleValidator();
 
-    /**
-     * @return 서로 다른 3자리 숫자만 허용
-     */
     @Override
     public String readAnswer() {
         ASK_ANSWER.print();
@@ -28,9 +24,6 @@ public class ConsoleInput implements UserInput {
         return input;
     }
 
-    /**
-     * @return 숫자 1, 2만 허용
-     */
     @Override
     public String readRetryable() {
         ASK_RETRY.print();

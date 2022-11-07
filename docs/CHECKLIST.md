@@ -22,7 +22,7 @@
 프로젝트 구현
 - [x] 2.1 기능을 구현하기 전 `docs/README.md`에 구현 기능 목록 정리
 - [x] 2.2 구현 완료
-- [ ] 2.3 리팩토링
+- [ ] 2.3 리팩토링 [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java)
 
 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 2022년 11월 7일(월) 14시 00분 ~ 2022년 11월 8일(화) 23시 59분
 - [ ] 3.1 - 과제 제출: Git

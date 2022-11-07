@@ -3,7 +3,6 @@ package baseball;
 import baseball.answer.AnswerGenerator;
 import baseball.input.UserInput;
 import baseball.text.GameResultText;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
