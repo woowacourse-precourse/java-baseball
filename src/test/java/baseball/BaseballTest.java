@@ -358,6 +358,34 @@ class BaseballTest {
 
             assertThat(firstBall).isNotEqualTo(secondBall);
         }
+
+        @Test
+        @DisplayName("resetComputerBall 메소드가 new Action(Action.START)를 입력받으면 멤버변수를 다시 초기화하는지 확인")
+        void resetComputerBall_test_with_start_action() throws NoSuchFieldException, IllegalAccessException {
+            Field field = gameController.getClass().getDeclaredField("computerBall");
+            field.setAccessible(true);
+
+            gameController.setComputerBall();
+            Ball firstBall = (Ball) field.get(gameController);
+            gameController.resetComputerBall(new Action(Action.START));
+            Ball secondBall = (Ball) field.get(gameController);
+
+            assertThat(firstBall).isNotEqualTo(secondBall);
+        }
+
+        @Test
+        @DisplayName("resetComputerBall 메소드가 new Action(Action.END)를 입력받으면 멤버변수 그대로인지 확인")
+        void resetComputerBall_test_with_end_action() throws NoSuchFieldException, IllegalAccessException {
+            Field field = gameController.getClass().getDeclaredField("computerBall");
+            field.setAccessible(true);
+
+            gameController.setComputerBall();
+            Ball firstBall = (Ball) field.get(gameController);
+            gameController.resetComputerBall(new Action(Action.END));
+            Ball secondBall = (Ball) field.get(gameController);
+
+            assertThat(firstBall).isEqualTo(secondBall);
+        }
     }
 
     @Nested
