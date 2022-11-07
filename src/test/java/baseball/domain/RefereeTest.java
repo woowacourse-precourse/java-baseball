@@ -36,4 +36,21 @@ class RefereeTest {
         // then
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    void judge_매서드로_사용자_입력값에_ball과_strike가_몇_개있는지_반환() {
+        // given
+        Computer computer = new Computer(List.of(1, 4, 5));
+        Player player = new Player(List.of(1, 5, 4));
+        Referee referee = new Referee(computer, player);
+
+        // when
+        Result result = referee.judge();
+        int ballCount = result.getBallCount();
+        int strikeCount = result.getStrikeCount();
+
+        // then
+        assertThat(ballCount).isEqualTo(2);
+        assertThat(strikeCount).isEqualTo(1);
+    }
 }
