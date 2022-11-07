@@ -78,20 +78,24 @@ public class Application {
         return userNumber;
     }
 
-    public static boolean continueOrExit() {
+    public static boolean continueOrExit() throws IllegalArgumentException {
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        int userChoice = Integer.parseInt(Console.readLine());
+        int userChoice;
+        try {
+            userChoice = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력값입니다.");
+        }
 
         if (userChoice == 1)
             return false;
         if (userChoice == 2)
             return true;
 
-        // TODO : 1이나 2 이외의 잘못된 값이 들어왔을 때 예외처리 로직이 필요할 듯!
-        return false;
+        throw new IllegalArgumentException("잘못된 입력값입니다.");
     }
 
     public static int countStrikes(int userNumber, int answerNumber) {
