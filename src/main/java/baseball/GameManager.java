@@ -80,6 +80,9 @@ public class GameManager {
         return false;
     }
 
+    /**
+     * @return: 자기 자신 index를 제외한 동일한 숫자가 있는가??
+     */
     private boolean hasEqualDigit(String input, int index) {
         for(int i = 0;i < input.length();i++) {
             if(i != index && input.charAt(i) == input.charAt(index)) {
