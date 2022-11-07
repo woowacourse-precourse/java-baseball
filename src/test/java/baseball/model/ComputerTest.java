@@ -6,7 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
  class ComputerTest {
 
-    Computer computer;
+     private static final int FIRST_INDEX = 0;
+     private static final int SECOND_INDEX = 1;
+     private static final int THIRD_INDEX = 2;
+     private static final int NUMBERS_SIZE = 3;
+
+     Computer computer;
 
     @BeforeEach
     void initializeComputer(){
@@ -38,5 +43,14 @@ import static org.assertj.core.api.Assertions.*;
         assertThat(computer.isAlreadyInNumbers(2)).isFalse();
     }
      */
+
+     @Test
+     void 숫자_생성시_모두_다른_3개_1부터_9의_자연수(){
+         computer.makeThreeDigitNumber();
+         assertThat(computer.getNumbers().get(FIRST_INDEX)).isNotEqualTo(computer.getNumbers().get(SECOND_INDEX));
+         assertThat(computer.getNumbers().get(SECOND_INDEX)).isNotEqualTo(computer.getNumbers().get(THIRD_INDEX));
+         assertThat(computer.getNumbers().get(THIRD_INDEX)).isNotEqualTo(computer.getNumbers().get(FIRST_INDEX));
+         assertThat(computer.getNumbers().size()).isEqualTo(NUMBERS_SIZE);
+     }
 
 }
