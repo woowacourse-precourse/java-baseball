@@ -66,9 +66,11 @@ public class Application {
             throw new IllegalArgumentException();
         }
         List<Integer> result = Compare(computer,UserNum(number));
-        if(result.get(0)==0&&result.get(1)==0){
+        if(result.get(0)==0&&result.get(1)==0)
             System.out.println("낫씽");
-        }
+        if(result.get(1)==3)
+            System.out.println("승리");
+
 
 
 
