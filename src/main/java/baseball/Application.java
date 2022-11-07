@@ -32,6 +32,8 @@ class Game {
 
 class Computer {
     public List<Integer> NumberList;
+    public List<String> result;
+
 
     public List<Integer> makeRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
@@ -44,10 +46,26 @@ class Computer {
         return randomNumberList;
     }
 
-    public boolean isEqualNum(int userNum, int index) {
-        int computerNum = NumberList.get(index);
-        return computerNum == userNum;
+    public boolean isEqualNumList(List<Integer> userNumList) {
+        for (int i = 0; i < 3; i++) {
+            if (userNumList.get(i) != NumberList.get(i))
+                return false;
+        }
+        return true;
     }
+
+//    public void printResult(List<Integer> userList) {
+//        String result;
+//
+//        if isEqualNum(userList) {
+//            result = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+//        }
+//
+//
+//
+//
+//        System.out.println(result);
+//    }
 }
 
 
