@@ -25,18 +25,18 @@ public class BaseballNum {
     /**
      * 랜덤이 아닌 지정된 수를 이용해 BaseballNum을 생성
      * @param num  3자리 수
-     * @throws IllegalArgumentException 입력된 수가 3자리가 아니거나, 중복이 있을 경우 예외를 발생시킨다.
+     * @throws NotBaseballNumException 입력된 수가 3자리가 아니거나, 중복이 있을 경우 예외를 발생시킨다.
      */
-    public BaseballNum(int num) throws IllegalArgumentException {
+    public BaseballNum(int num) throws NotBaseballNumException {
 
-        if (num < 0) throw new IllegalArgumentException();
+        if (num < 0) throw new NotBaseballNumException("음수는 입력할 수 없습니다.");
 
         String numStr = Integer.toString(num);
-        if (numStr.length() != 3) throw new IllegalArgumentException();
+        if (numStr.length() != 3) throw new NotBaseballNumException("3자리 수만 입력할 수 있습니다.");
 
         for (int i = 0; i < numStr.length(); i++) {
             int digit = numStr.charAt(i) - '0';
-            if (indexes[digit] != 0) throw new IllegalArgumentException();
+            if (indexes[digit] != 0) throw new NotBaseballNumException("중복된 숫자가 포함되어 있습니다.");
 
             indexes[digit] = i + 1;
             nums[i] = digit;
@@ -65,6 +65,12 @@ public class BaseballNum {
             return indexes[num];
         } catch (IndexOutOfBoundsException e) {
             return 0;
+        }
+    }
+
+    public class NotBaseballNumException extends Exception {
+        public NotBaseballNumException(String msg) {
+            super(msg);
         }
     }
 
