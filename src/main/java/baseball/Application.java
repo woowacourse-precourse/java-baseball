@@ -1,15 +1,16 @@
 package baseball;
 
 import baseball.controller.BaseballGameController;
-import baseball.view.InputView;
-import baseball.view.OutputView;
+import baseball.domain.BaseballGameMachine;
+import baseball.domain.BaseballNumbersFactory;
 
 public class Application {
     public static void main(String[] args) {
         BaseballGameController baseballGameController = new BaseballGameController(
-                InputView.INSTANCE,
-                OutputView.INSTANCE
+                new BaseballNumbersFactory(),
+                new BaseballGameMachine()
         );
+
         baseballGameController.run();
     }
 }
