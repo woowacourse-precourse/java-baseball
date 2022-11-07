@@ -23,6 +23,18 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    private void readyToExit(ArrayNumber computerNumber) {
+        String input = inputExit();
+        if(exit_nbr.equals(input)) {
+            System.out.println("2");
+            exit = true;
+        } else {
+            computerNumber.setRandomNbr();
+            System.out.println("1");
+            computer = computerNumber.getDigits();
+        }
+    }
+
     private String inputExit() {
         System.out.println(str_exit);
         String input = Console.readLine();
