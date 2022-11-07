@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class User {
 
@@ -67,11 +69,12 @@ public class User {
     }
 
     private boolean isDifferentNumber(String input) {
-        char number1 = input.charAt(0);
-        char number2 = input.charAt(1);
-        char number3 = input.charAt(2);
-
-        return (number1 != number2 && number2 != number3 && number3 != number1);
+        Set<Character> numberOfThings = new HashSet<>();
+        for (int i = 0; i < input.length(); i++) {
+            char charNumber = input.charAt(i);
+            numberOfThings.add(charNumber);
+        }
+        return numberOfThings.size() == 3;
     }
 
     private void setInputNumber(String input) {
