@@ -30,4 +30,9 @@ public class GameController {
 
         outputView.endGame();
     }
+    private void resetStates(){
+        this.exitGame = false;
+        this.strike = 0;
+        this.ball = 0;
+    }
 }
