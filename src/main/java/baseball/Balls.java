@@ -49,7 +49,7 @@ public class Balls {
 		CompareResult result = new CompareResult();
 
 		for (Ball ball : balls) {
-			result.addStatus(other.compareTo(ball));
+			result.addResult(other.compareTo(ball));
 		}
 		return result;
 	}

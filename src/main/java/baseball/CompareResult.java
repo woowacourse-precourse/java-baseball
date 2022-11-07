@@ -16,7 +16,7 @@ public class CompareResult {
 		this.occurrences = new HashMap<>();
 	}
 
-	public void addStatus(BallStatus ballStatus) {
+	public void addResult(BallStatus ballStatus) {
 		occurrences.merge(ballStatus, 1, Integer::sum);
 	}
 
