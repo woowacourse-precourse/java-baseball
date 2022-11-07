@@ -4,11 +4,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class GameTest {
-    Game game = new Game();
+    Scanner scanner = new Scanner(System.in);
+    Game game = new Game(scanner);
 
     @Test
     @DisplayName("사용자가 게임 재시작을 원할 경우")

@@ -12,6 +12,10 @@ public class GameHost extends BaseballNumber {
         put(NOTHING, 0);
     }};
 
+    public GameHost() {
+        setBaseballNumber();
+    }
+
     public String getHint() {
         StringJoiner hintToPlayer = new StringJoiner(" ");
         boolean isSameNum = false;
