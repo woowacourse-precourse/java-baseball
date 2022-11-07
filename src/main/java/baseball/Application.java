@@ -28,47 +28,6 @@ public class Application {
         }
     }
 
-    public static boolean hasDuplication(String s) {
-        for (char c : s.toCharArray()) {
-            if (s.chars().filter(ch -> ch == c).count() > 1) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static boolean hasOtherNumbersOrChars(String s) {
-        for (char c : s.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                return true;
-            } else if (c == '0') {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static void handleInputException(String stringUserNumber) {
-        if (hasDuplication(stringUserNumber)) {
-            throw new IllegalArgumentException();
-        } else if (stringUserNumber.length() > 3) {
-            throw new IllegalArgumentException();
-        } else if (hasOtherNumbersOrChars(stringUserNumber)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static int getStartSwitch() {
-        String stringStartSwitch = Console.readLine();
-        if (!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
-            throw new IllegalArgumentException();
-        }
-        if (Objects.equals(stringStartSwitch, "1")) {
-            computerNumbersList = getRandomThreeNumbers();
-        }
-        return Integer.parseInt(stringStartSwitch);
-    }
-
     public static List<Integer> getRandomThreeNumbers() {
         List<Integer> numberList = new ArrayList<>();
         while (numberList.size() < 3) {
@@ -116,5 +75,46 @@ public class Application {
         }
         Collections.reverse(userNumbersList);
         return userNumbersList;
+    }
+
+    public static boolean hasDuplication(String s) {
+        for (char c : s.toCharArray()) {
+            if (s.chars().filter(ch -> ch == c).count() > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasOtherNumbersOrChars(String s) {
+        for (char c : s.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return true;
+            } else if (c == '0') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int getStartSwitch() {
+        String stringStartSwitch = Console.readLine();
+        if (!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
+            throw new IllegalArgumentException();
+        }
+        if (Objects.equals(stringStartSwitch, "1")) {
+            computerNumbersList = getRandomThreeNumbers();
+        }
+        return Integer.parseInt(stringStartSwitch);
+    }
+
+    public static void handleInputException(String stringUserNumber) {
+        if (hasDuplication(stringUserNumber)) {
+            throw new IllegalArgumentException();
+        } else if (stringUserNumber.length() > 3) {
+            throw new IllegalArgumentException();
+        } else if (hasOtherNumbersOrChars(stringUserNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
