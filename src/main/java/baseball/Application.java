@@ -11,7 +11,6 @@ public class Application {
 	static String startMessage = "숫자 야구 게임을 시작합니다.";
 	static String inputMessage = "숫자를 입력해주세요 : ";
 	static List<Integer> computer = new ArrayList<>();
-	static List<Integer> inputList = new ArrayList<>();
 	static String inputNumber = "";
 	static boolean inputCheck = false;
 	static boolean exceptionCheck = false;
