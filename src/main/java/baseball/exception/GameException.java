@@ -3,7 +3,7 @@ package baseball.exception;
 import static baseball.exception.ErrorMessage.INPUT_SIZE;
 import static baseball.exception.ErrorMessage.RUN_CODE;
 
-public class GameException {
+public class GameException extends Exception{
     private static final int INPUT_NUMBER_SIZE = 1;
     private static final int RESTART = 1;
     private static final int STOP = 2;

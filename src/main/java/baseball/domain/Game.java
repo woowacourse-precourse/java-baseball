@@ -16,12 +16,7 @@ public class Game {
     Computer computer;
     Player player;
 
-
-    public Game() {
-        initGame();
-    }
-
-    private void initGame() {
+    public void initGame() {
         instruction.printStart();
         startGame();
     }
