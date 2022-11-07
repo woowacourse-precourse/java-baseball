@@ -3,10 +3,13 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NumberBaseballGame {
     private final int MAX_NUMBER_SIZE = 3;
     private int goGameAnswer;
-    private String randomNumber;
+    private List<Integer> randomNumber = new ArrayList<>();
     private int[] gameResults = {0, 0};
     private String number;
 
@@ -14,9 +17,10 @@ public class NumberBaseballGame {
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         goGameAnswer = 1;
-        randomNumber = String.valueOf(Randoms.pickNumberInRange(100, 999));
+        createRandomNumber();
     }
 
+    // 게임 지속 여부 반환하기
     public int getGoGameAnswer() {
         return goGameAnswer;
     }
@@ -32,16 +36,17 @@ public class NumberBaseballGame {
     public void countGameResults() {
         gameResults = new int[]{0, 0};
         for (int i = 0; i < MAX_NUMBER_SIZE; i++) {
-            char dividedNumber = number.charAt(i);
+            int dividedNumber = Integer.parseInt(String.valueOf(number.charAt(i)));
             hasNumber(dividedNumber, i);
         }
     }
 
     // 해당 숫자가 포함되어 있는지 확인하기
-    public void hasNumber(char dividedNumber, int index) {
-        if (randomNumber.indexOf(dividedNumber) == index) {
+    public void hasNumber(int dividedNumber, int index) {
+        if (randomNumber.get(index) == dividedNumber) {
             gameResults[0]++;
-        } else if (randomNumber.indexOf(dividedNumber) != -1) {
+        } else if (randomNumber.contains(dividedNumber)) {
+            // 같은 자리는 아니지만 해당 값을 포함하고 있다면
             gameResults[1]++;
         }
     }
@@ -64,7 +69,19 @@ public class NumberBaseballGame {
         goGameAnswer = Integer.parseInt(Console.readLine());
 
         if (goGameAnswer == 1) {
-            randomNumber = String.valueOf(Randoms.pickNumberInRange(100, 999));
+            createRandomNumber();
+        }
+    }
+
+    // 중복 없는 세자리 난수 생성
+    // 들여쓰기 3 이상
+    public void createRandomNumber() {
+        randomNumber.clear();
+        while (randomNumber.size() < MAX_NUMBER_SIZE) {
+            int number = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumber.contains(number)) {
+                randomNumber.add(number);
+            }
         }
     }
 
