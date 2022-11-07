@@ -14,6 +14,15 @@ public class GameController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
 
+    public void run() {
+
+        askUserInputNumberMessage();
+        startNumberBaseballGame();
+        endNumberBaseballGameMessage();
+        askRestartNumberBaseballGame();
+    }
+
+
 
 
 
