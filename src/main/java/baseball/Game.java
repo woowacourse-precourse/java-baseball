@@ -8,6 +8,12 @@ public class Game {
 
     private static final int NUMBER_LENGTH = 3;
 
+    private List<Character> getUserNumberList(String userInput) {
+        UserNumber userNumber = new UserNumber(userInput);
+        List<Character> userNumberList = userNumber.getNumberList();
+        return userNumberList;
+    }
+
     private List<Character> getComputerNumberList() {
         ComputerNumber computerNumber = new ComputerNumber();
         List<Character> computerNumberList = computerNumber.getNumberList();
