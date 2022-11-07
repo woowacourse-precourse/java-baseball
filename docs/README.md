@@ -61,6 +61,7 @@
 - `setUserNumberForTest()` : 사용자 입력 값 체크 테스트
 - `checkStrikeAndBallForTest()` : 볼과 스트라이크 세는 기능 테스트
 - `outputResultForTest()` : 결과 출력 테스트
+- `isGameExitForTest()` : 게임 종료 여부 확인 테스트
 
 ## 🗂️ class 파일 구조
 **Application.class : 숫자 야구 게임**
@@ -78,6 +79,8 @@ setUserNumberForTest()
 isNumber()
 isThreeDigitNumber()
 userNumberToString()
+isGameExit()
+isGameExitForTest()
 ```
 **PlayGame.class : 게임 실행**
 ```
@@ -90,5 +93,4 @@ compareNumberForBall()
 countBall()
 outputResult()
 outputResultForTest()
-isGameExit()
 ```
