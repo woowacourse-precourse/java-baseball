@@ -1,7 +1,119 @@
 package baseball;
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Application {
+	static int start = 1;
+	static String startMessage = "숫자 야구 게임을 시작합니다.";
+	static String inputMessage = "숫자를 입력해 주세요 : ";
+	static String resultMessage = "";
+	static List<Integer> computer = new ArrayList<>();
+	static List<Integer> inputList = new ArrayList<>();
+	static String inputNumber = "";
+	static boolean inputCheck = false;
+	static int strike = 0;
+	static int ball = 0;
+	
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    	// 게임 시작 메시지 출력.
+		gameStart();
+		
+    	while(true) {
+	    	// 랜덤 수 발생
+    		computer = makeComputer();
+	    	
+	    	while(start == 1) {
+		    	// 사용자 입력
+		    	System.out.print(inputMessage);
+		    	inputNumber = Console.readLine();
+		    	
+		    	// 사용자 입력 예외 발생 검사
+		    	if(inputNumber.length()==3&&!inputNumber.contains("0")&&checkType(inputNumber)&&checkDiff(inputNumber)) {
+		    		// 정상 처리 경우 두 수 비교
+		    		ball=0;
+		    		strike=0;
+		    		compare(computer,inputNumber);
+		    	}else {
+		    		// 예외 발생 처리
+		    		throw new IllegalArgumentException("잘못된 값을 입력했습니다!");
+		    	}
+		    	
+		    	//strike, ball 변수 파악하여 결과 출력
+		    	if(strike==0&&ball==0) {
+		    		System.out.println("낫싱");
+		    	}
+		    	else if(strike==3) {
+		    		System.out.println(strike+"스트라이크");
+		    		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		    		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		    		start = Integer.parseInt(Console.readLine());
+		    		break;
+		    	}
+		    	else {
+		    		System.out.println(ball+"볼"+" "+strike + "스트라이크");
+		    	}
+	    	}
+    	}
+    	
+    	
     }
+    // 게임 시작 출력 메서드
+    public static void gameStart() {
+    	System.out.println(startMessage);
+    }
+    // 컴퓨터 수 만들기
+    public static List<Integer> makeComputer() {
+    	List<Integer> list = new ArrayList<>();
+    	while (list.size() < 3) {
+    	    int randomNumber = Randoms.pickNumberInRange(1, 9);
+    	    if (!list.contains(randomNumber)) {
+    	    	list.add(randomNumber);
+    	    }
+    	}
+    	return list;
+    }
+    // 정수 입력 확인
+    public static boolean checkType(String inputNumber) {
+    	char[] arr = inputNumber.toCharArray();
+    	boolean check = true;
+    	for(int i=0;i<arr.length;i++) {
+    		if(!Character.isDigit(arr[i])) check = false;
+    	}
+    	
+    	if(check)
+    		return true;
+    	else
+    		return false;
+    }
+    // 다른 숫자 3개로 이루어져 있는지 확인
+    public static boolean checkDiff(String inputNumber) {
+    	char[] arr = inputNumber.toCharArray();
+    	Map<Character,Object> inputMap = new HashMap<>();
+    	
+    	for(int i=0;i<arr.length;i++) {
+    		inputMap.put(arr[i],"");
+    	}
+    	
+    	if(inputMap.size()!=3)return false;
+    	else return true;
+    }
+    // 컴퓨터 수와 사용자 수 비교
+    public static void compare(List<Integer> computer, String inputNumber) {
+    	char[] arr = inputNumber.toCharArray();
+    	for(int i=0;i<arr.length;i++) {
+    		// 해당 숫자가 포함되었을 때
+    		if(computer.contains(Character.getNumericValue(arr[i]))) {
+    			// 인덱스까지 같으면 스트라이크
+    			if(computer.indexOf(Character.getNumericValue(arr[i]))==i) {
+    				strike+=1;
+    			}else // 다르면 볼
+    				ball+=1;
+    		}
+    	}
+    }
+    
 }
