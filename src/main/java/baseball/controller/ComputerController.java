@@ -13,6 +13,9 @@ public class ComputerController {
     InputView inputView = new InputView();
 
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String BALL_MESSAGE = "볼";
+    private static final String NOTHING_MESSAGE = "낫싱";
     private int strikeCount;
     private int ballCount;
 
@@ -22,13 +25,12 @@ public class ComputerController {
         String inputNumber = Console.readLine();
         gameNumber.setInputString(inputNumber);
         int[] playerNumbers = gameNumber.getPlayerNumbers();
-        System.out.println("playerNumbers : " + Arrays.toString(gameNumber.getPlayerNumbers()));
         for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
             countStrike(playerNumbers[i], i);
             countBall(playerNumbers[i], i);
         }
 
-        System.out.println("strick : " + strikeCount + ", ball : " + ballCount);
+        provideHint();
     }
 
     private void countStrike(int playerNumber, int numberIndex) {
@@ -42,5 +44,23 @@ public class ComputerController {
         if ((computerNumbers[numberIndex] != playerNumber) && Arrays.stream(computerNumbers).anyMatch(number -> number == playerNumber)) {
             ballCount++;
         }
+    }
+
+    private void provideHint() {
+        String hintMessage = "";
+
+        if (ballCount > 0) {
+            hintMessage = hintMessage + ballCount + BALL_MESSAGE + ' ';
+        }
+
+        if (strikeCount > 0) {
+            hintMessage = hintMessage + strikeCount + STRIKE_MESSAGE + ' ';
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            hintMessage += NOTHING_MESSAGE;
+        }
+
+        System.out.println(hintMessage);
     }
 }
