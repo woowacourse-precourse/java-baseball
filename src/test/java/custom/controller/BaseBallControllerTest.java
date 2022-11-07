@@ -14,7 +14,9 @@ class BaseBallControllerTest {
 
     private static final String LARGE_INPUT = "125612";
     private static final String CHARACTER_INPUT = "ab1";
+    private static final String DUPLICATE_INPUT = "111";
     private static final String INVALID_RETRY_INPUT = "0";
+
 
     private final BaseBallService baseBallService = mock(BaseBallService.class);
     private final BaseBallController baseBallController = new BaseBallController(baseBallService);
@@ -27,6 +29,17 @@ class BaseBallControllerTest {
         // expect
         assertThatThrownBy(() -> baseBallController.matchNumber(LARGE_INPUT)).isInstanceOf(
             IllegalArgumentException.class);
+    }
+
+    @Test
+    void matchNumber_validateInputTestWhenDuplicateInput() {
+        // given
+        when(baseBallService.matchNumber(anyString())).thenReturn(Response.keepOf("계속"));
+
+        // expect
+        assertThatThrownBy(() -> baseBallController.matchNumber(DUPLICATE_INPUT)).isInstanceOf(
+            IllegalArgumentException.class);
+
     }
 
     @Test
