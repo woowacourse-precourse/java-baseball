@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class Application {
 
@@ -61,21 +59,27 @@ public class Application {
 
     public static int getUserNumber() {
 
-        int userNumber = Integer.parseInt(Console.readLine());
+        String userString = Console.readLine();
 
-        String userNumberToStr = Integer.toString(userNumber);
+        int userNumber;
+        try {
+            userNumber = Integer.parseInt(userString);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
+        }
+
         Set numberSet = new HashSet<>();
         for(int i=0; i<3; i++)
-            numberSet.add(userNumberToStr.charAt(i));
-        System.out.println(numberSet);
+            numberSet.add(userString.charAt(i));
 
-        if (numberSet.size() != 3)
+        if (numberSet.size() != 3 || userString.length() > 3)
             throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
 
         return userNumber;
     }
 
     public static boolean continueOrExit() {
+
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
@@ -93,6 +97,7 @@ public class Application {
     public static int countStrikes(int userNumber, int answerNumber) {
 
         int count = 0;
+
         for (int i = 0; i < 3; i++) {
             if (userNumber % 10 == answerNumber % 10) count += 1;
 
