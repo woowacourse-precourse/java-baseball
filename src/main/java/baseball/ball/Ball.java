@@ -20,4 +20,8 @@ public class Ball {
             throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_NUMBER);
         }
     }
+
+    public int getBallNumber(){
+        return ballNumber;
+    }
 }
