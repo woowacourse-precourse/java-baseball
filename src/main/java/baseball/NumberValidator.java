@@ -1,7 +1,9 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class NumberValidator {
     private static final String IS_OUT_OF_RANGE_MESSAGE = "You must enter a number between 1 and 9.";
@@ -39,13 +41,13 @@ public class NumberValidator {
 
     public void validateIsDuplicate(final String numbers) {
         List<Integer> inputNumbers = new Converter().convertStringToListInteger(numbers);
-        List<Integer> duplicateCheckNumberList = new ArrayList<>();
+        Set<Integer> duplicateCheckNumberSet = new HashSet();
 
         for (int number : inputNumbers) {
-            if (duplicateCheckNumberList.contains(number)) {
+            if (duplicateCheckNumberSet.contains(number)) {
                 throw new IllegalArgumentException(IS_DUPLICATED_MESSAGE);
             }
-            duplicateCheckNumberList.add(number);
+            duplicateCheckNumberSet.add(number);
         }
     }
 }
