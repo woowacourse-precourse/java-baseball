@@ -48,14 +48,14 @@ public class BaseballGameManager {
         if (strikeCount == NO_COUNT && ballCount == NO_COUNT) {
             return NOTHING;
         }
-
-        if (strikeCount == NO_COUNT && ballCount != NO_COUNT) {
+        if (strikeCount == NO_COUNT) {
             return ballCount + BALL;
         }
 
-        if (strikeCount != NO_COUNT && ballCount == NO_COUNT) {
+        if (ballCount == NO_COUNT) {
             return strikeCount + STRIKE;
         }
+
         return ballCount + BALL + BLANK + strikeCount + STRIKE;
     }
 }
