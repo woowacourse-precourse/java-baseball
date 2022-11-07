@@ -12,6 +12,11 @@ public class BaseballController {
     private Player player = new Player();
     private Computer computer = new Computer();
 
+    public void run() {
+        OutputView.printStartGame();
+        startGame();
+    }
+
     private void startGame() {
         List<Integer> randomNumbers = computer.makeRandomNumbers();
         while (!isRightAnswer()) {
