@@ -1,6 +1,6 @@
 package baseball.mvc.view;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.helper.util.GameGuideViewTestUtils;
 import java.io.ByteArrayOutputStream;

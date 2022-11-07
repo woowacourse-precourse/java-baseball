@@ -1,6 +1,7 @@
 package baseball.mvc.util;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.helper.util.GameStatusTestUtils;
 import baseball.util.GameStatus;

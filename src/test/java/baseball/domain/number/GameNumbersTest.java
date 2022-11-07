@@ -1,6 +1,7 @@
 package baseball.domain.number;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.util.GameNumberConst;
 import baseball.helper.util.GameNumbersTestUtils;

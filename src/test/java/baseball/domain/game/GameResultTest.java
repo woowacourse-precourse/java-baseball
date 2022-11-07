@@ -1,6 +1,8 @@
 package baseball.domain.game;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -28,7 +30,7 @@ class GameResultTest {
         @DisplayName("만약 합이 3 이하인 strike, ball가 주어지면 GameResult를 생성한다.")
         void success_test(long strike, long ball) {
             assertThatCode(() -> new GameResult(strike, ball))
-                .doesNotThrowAnyException();
+                    .doesNotThrowAnyException();
         }
 
         @ParameterizedTest

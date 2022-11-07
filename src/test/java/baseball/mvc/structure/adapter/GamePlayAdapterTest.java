@@ -1,6 +1,7 @@
 package baseball.mvc.structure.adapter;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.domain.game.GameComputer;
 import baseball.domain.game.GameResult;
@@ -67,23 +68,23 @@ class GamePlayAdapterTest {
 
                 assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.PLAY);
                 assertThat(modelAndView
-                                .getModelAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
-                                        .isNotNull();
+                        .getModelAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
+                                .isNotNull();
             }
 
             @Test
             @DisplayName("플레이어 정답이 유효하면서 3스트라이크라면 게임 결과와 GameStatus.END를 반환한다.")
             void game_status_end_test() {
                 request.addAttribute(GameRequestKeyConst.COMPUTER_KEY,
-                    GameComputerFactory.createFakeGameComputer(3L, 0L));
+                        GameComputerFactory.createFakeGameComputer(3L, 0L));
                 request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, "123");
 
                 ModelAndView modelAndView = adapter.handle(controller, request);
 
                 assertThat(modelAndView.getGameStatus()).isSameAs(GameStatus.END);
                 assertThat(modelAndView
-                                .getModelAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
-                                        .isNotNull();
+                        .getModelAttribute(GameModelKeyConst.GAME_RESULT_KEY, GameResult.class))
+                                .isNotNull();
             }
 
             @ParameterizedTest

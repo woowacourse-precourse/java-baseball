@@ -52,7 +52,7 @@ class GameHandlerManagerTest {
         @DisplayName("만약 Controller가 아닌 Object가 주어지면 NullPointerException 예외가 발생한다.")
         void null_pointer_exception_test() {
             assertThatThrownBy(() -> manager.getHandlerAdapter("123"))
-                .isInstanceOf(NullPointerException.class);
+                    .isInstanceOf(NullPointerException.class);
         }
     }
 

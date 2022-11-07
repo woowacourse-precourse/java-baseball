@@ -1,6 +1,6 @@
 package baseball.mvc.structure.adapter;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.game.GameComputer;
 import baseball.mvc.controller.GamePlayController;

@@ -1,6 +1,6 @@
 package baseball.mvc.controller;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.game.GameComputer;
 import baseball.mvc.model.Model;
