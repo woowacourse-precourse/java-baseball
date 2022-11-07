@@ -45,7 +45,7 @@ public class Exception {
     public static void checkRepeatedNumberException(String number) {
         Pattern p = Pattern.compile(REPEATED_PATTERN);
         Matcher m = p.matcher(number);
-        if(m.matches()){
+        if(m.find()){
             throwException(REPEATED_NUMBER_ERROR_MESSAGE);
         }
     }
