@@ -31,10 +31,8 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
-
     @Test
-    void 예외_테스트() {
+    void 입력값_3글자아님() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
