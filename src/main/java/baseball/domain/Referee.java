@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Referee {
-    private static final int CNT = 3;
     private static final int RESTART = 1;
     private static final int STOP = 2;
     private Computer computer;
@@ -14,10 +13,8 @@ public class Referee {
     }
 
     public Number judge(String userNumber) {
-        List<Integer> answer = computer.getRandNumbers();
         Number number = new Number();
-
-        for (int i = 0; i < CNT; i++) {
+        for (int i = 0; i < Validator.CNT; i++) {
             Integer now = Character.getNumericValue(userNumber.charAt(i));
             if (computer.isStrike(now, i)) {
                 number.hitStrike();
