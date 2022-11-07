@@ -11,34 +11,34 @@ public class Pitcher {
     private static final int NUMBER_MAX = 9;
     
     public Balls throwRandomBalls(int count) {
-        List<Integer> thrownBallList = initThrownBallList();
+        List<Boolean> thrownBallList = initThrownBallList();
         return new Balls(IntStream.range(0, count)
                         .mapToObj(order -> throwRandomBall(thrownBallList, order))
                         .collect(Collectors.toList()));
     }
 
-    private Ball throwRandomBall(List<Integer> thrownBallList, int order) {
+    private Ball throwRandomBall(List<Boolean> thrownBallList, int order) {
         return new Ball(getNotDuplicatedRandomNumber(thrownBallList), order);
     }
 
-    private int getNotDuplicatedRandomNumber(List<Integer> thrownBallList) {
+    private int getNotDuplicatedRandomNumber(List<Boolean> thrownBallList) {
         while (true) {
             int number = Randoms.pickNumberInRange(NUMBER_MIN, NUMBER_MAX);
             if (isNotDuplicated(thrownBallList, number)) {
-                thrownBallList.set(number, 1);
+                thrownBallList.set(number, true);
                 return number;
             }
         }
     }
 
-    private boolean isNotDuplicated(List<Integer> thrownBallList, int number) {
-        return thrownBallList.get(number) == 0;
+    private boolean isNotDuplicated(List<Boolean> thrownBallList, int number) {
+        return !thrownBallList.get(number);
     }
 
-    private List<Integer> initThrownBallList() {
-        List<Integer> thrownBallList = new ArrayList<>();
+    private List<Boolean> initThrownBallList() {
+        List<Boolean> thrownBallList = new ArrayList<>();
         IntStream.range(0, 10)
-                .forEach(order -> thrownBallList.add(0));
+                .forEach(order -> thrownBallList.add(false));
         return thrownBallList;
     }
 }
