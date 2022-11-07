@@ -13,6 +13,7 @@ public class Computer {
     }
 
     public void setAnswer() {
+        answer = "";
         HashSet<Integer> set = new HashSet<>();
         while (set.size() != numberLength) {
             set.add(Randoms.pickNumberInRange(1, 9));
