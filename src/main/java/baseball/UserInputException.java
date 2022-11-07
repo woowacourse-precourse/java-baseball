@@ -18,4 +18,15 @@ public class UserInputException {
         }
         return true;
     }
+
+    // 입력받은 값 중에 0이 있다면 false 리턴
+    private boolean checkZeroAtInput(String input){
+        for (int i = 0; i < 3; i++){
+            if (input.charAt(i) == '0'){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
