@@ -16,4 +16,12 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[IllegalArgumentException]: " + COUNT_VALUE + "자리 자리자연수가 아닙니다.\n");
     }
+
+    @Test
+    void validateInputInteger() {
+        assertThatThrownBy(() -> {Validator.validatePlayerInput("abc");})
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[IllegalArgumentException]: 정수가 아닙니다.\n");
+    }
+
 }
