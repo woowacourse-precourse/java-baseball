@@ -27,7 +27,7 @@ class NumberScannerTest {
         assertThat(numberScanner.inputNumber()).isEqualTo(inputValue);
     }
 
-    @ParameterizedTest(name = "숫자가_아닌_것을_입력하면_IllegalArgumentException을_던진다")
+    @ParameterizedTest(name = "숫자가_아닌_것을_입력하면_예외를_던진다")
     @ValueSource(strings = {"ㅎㅇ", "", "hi", "^^"})
     void 숫자가_아닌_것을_입력한다(String inputValue) {
         InputStream inputStream = getInputStream(inputValue);

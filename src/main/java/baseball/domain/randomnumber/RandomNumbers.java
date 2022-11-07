@@ -30,13 +30,14 @@ public class RandomNumbers {
 
     /**
      * 테스트용 메서드 입니다.
-     * size() : 리스트의 사이즈 반환
-     * countSingleNumbers() : 중복 체크
      */
     int size() {
         return randomNumbers.size();
     }
 
+    /**
+     * 테스트용 메서드 입니다.
+     */
     boolean isDuplicated() {
         int count = (int) randomNumbers.stream()
                 .distinct()
