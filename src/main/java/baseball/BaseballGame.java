@@ -54,7 +54,6 @@ public class BaseballGame {
     }
 
     private int checkValue(int value, int digit) {
-
         for (int i = 0; i < 3; i ++) {
             int comValue = comAnswer.get(i);
 
@@ -89,11 +88,9 @@ public class BaseballGame {
     }
 
 
-    void endGame() {
+    private void endPhase() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        System.out.print("숫자를 입력하주세요 : ");
 
         String line = Console.readLine();
         char[] chars = line.toCharArray();
@@ -114,8 +111,7 @@ public class BaseballGame {
 
         // 재시작일 경우
         if (num == 1)
-            startGame();
-
+            processGame();
     }
 
 
@@ -131,8 +127,7 @@ public class BaseballGame {
     }
 
 
-    public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    private void processGame() {
         initAnswer();
         while (true) {
             inputAnswer();
@@ -142,8 +137,13 @@ public class BaseballGame {
             if (strike == 3)
                 break;
         }
+        endPhase();
+    }
 
-        endGame();
+
+    public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        processGame();
     }
 }
 
