@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class DecisionMaker {
 
+    private String wantPlayGame = "1";
+    private String wantStopGame = "2";
+
     private final String informationMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public Decision getDecision() {
@@ -13,10 +16,10 @@ public class DecisionMaker {
     private Decision acceptOpinion() {
         printInformation();
         String opinion = Console.readLine();
-        if (opinion.equals("1")) {
+        if (opinion.equals(wantPlayGame)) {
             return Decision.PLAY;
         }
-        if (opinion.equals("2")) {
+        if (opinion.equals(wantStopGame)) {
             return Decision.STOP;
         }
         throw new IllegalArgumentException("유효하지 않은 입력입니다.");
