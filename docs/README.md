@@ -24,7 +24,7 @@
   - 사용자가 입력한 숫자로 된 문자열을 숫자로 배열에 저장하는 함수
 
 
-- boolean checkUserNumber(String)
+- void checkUserNumber(String)
   - 사용자가 잘못된 값을 입력했는지 체크하는 함수
 
 
@@ -69,10 +69,10 @@
 
 - boolean replayGame()
   - 게임을 재시작할지, 종료할지 결정하는 함수
-  - 잘못된 값이 입력되었을 경우 false를 반환한다
+  - 잘못된 값이 입력되었을 경우 false를 반환한경
   
 
-- boolean checkReplayNumber(String)
+- void checkReplayNumber(String)
   - 게임의 재시작/종료 여부를 결정하는 입력값이 올바른지 체크하는 함수
 
 
