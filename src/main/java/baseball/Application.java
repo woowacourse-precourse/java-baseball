@@ -87,6 +87,14 @@ public class Application {
         }
     }
 
+    public static boolean isNotNumber(String input) {
+        for (int i = 0; i <input.length() ; i++) {
+            char tempCharacter = input.charAt(i);
+            if(!(tempCharacter>='0'&&tempCharacter<='9')) return false;
+        }
+        return true;
+    }
+
 
     public static void baseballGame() {
         List<Integer> answerList = GenerateRandomNumber(3);
