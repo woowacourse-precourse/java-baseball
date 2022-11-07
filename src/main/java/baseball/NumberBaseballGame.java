@@ -27,7 +27,7 @@ public class NumberBaseballGame {
 
     // 사용자로부터 숫자를 입력받는 메소드
     public void inputNumber() {
-        System.out.println(randomNumber);
+        // System.out.println(randomNumber);
         System.out.print("숫자를 입력해주세요 : ");
         number = Console.readLine();
     }
@@ -54,12 +54,17 @@ public class NumberBaseballGame {
     // 게임 결과 출력하기
     public void printGameResult() {
         if (gameResults[0] == 3) {
+            System.out.println(gameResults[0] + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             inputGoGameAnswer();
         } else if (gameResults[0] == 0 && gameResults[1] == 0) {
             System.out.println("낫싱");
+        } else if (gameResults[0] == 0) {
+            System.out.println(gameResults[1] + "볼");
+        } else if (gameResults[1] == 0) {
+            System.out.println(gameResults[0] + "스트라이크");
         } else {
-            System.out.println(gameResults[0] + "스트라이크 " + gameResults[1] + "볼");
+            System.out.println(gameResults[1] + "볼 " + gameResults[0] + "스트라이크");
         }
     }
 
@@ -70,6 +75,8 @@ public class NumberBaseballGame {
 
         if (goGameAnswer == 1) {
             createRandomNumber();
+        } else {
+            System.out.println("게임 종료");
         }
     }
 
