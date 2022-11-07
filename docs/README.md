@@ -2,6 +2,6 @@
 - [x] random number 만드는 기능
 - [x] computer class 구현
 - [x] user class 구현
-- [ ] 스트라이크 판별 기능
+- [x] 스트라이크 판별 기능
 - [ ] 볼 판별 기능
 - [ ] 낫싱 판별 기능
