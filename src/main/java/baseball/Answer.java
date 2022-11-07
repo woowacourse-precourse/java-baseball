@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Answer {
 
-    private static List<Character> answer;
+    private final List<Character> answer;
 
     public Answer(List<Character> answer) {
-        Answer.answer = answer;
+        this.answer = answer;
     }
 
-    public boolean compare(BaseBallNumber number) {
+    public boolean compare(final BaseBallNumber number) {
       return new Count().count(answer, number.toString());
     }
 }
