@@ -113,7 +113,7 @@ public class GameManager {
         return getResultString(strike, ball);
     }
 
-    private String getResultString(final int strike, final  int ball) {
+    private String getResultString(final int strike, final int ball) {
         String resultString = "";
 
         if(ball > 0) {
@@ -169,8 +169,8 @@ public class GameManager {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String replaySign = Console.readLine();
-
         validateReplaySign(replaySign);
+
         if(replaySign.equals("1")) {
             return true;
         }
