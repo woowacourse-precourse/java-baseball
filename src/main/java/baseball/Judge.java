@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Judge {
@@ -16,20 +17,16 @@ public class Judge {
         return strikeCnt;
     }
 
-    public Integer countBall(List<Integer> randomNumberList, List<Integer> userNumberList) {
+    public Integer countBall(List<Integer> randomNumberList, List<Integer> userNumberList, Integer strike) {
         Integer ballCnt=0;
 
         for(int i=0; i<randomNumberList.size(); i++) {
-            for(int j=0; j<userNumberList.size(); j++) {
-                if(i==j) {
-                    continue;
-                }
-
-                if(randomNumberList.get(i)==userNumberList.get(j)) {
-                    ballCnt++;
-                }
+            if(userNumberList.contains(randomNumberList.get(i))) {
+                ballCnt++;
             }
         }
+
+        ballCnt-=strike;
 
         return ballCnt;
     }
