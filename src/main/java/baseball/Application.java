@@ -100,21 +100,23 @@ public class Application {
 
     public static int countStrikes(int userNumber, int answerNumber) {
 
-        int count = 0;
+        int strikes = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (userNumber % 10 == answerNumber % 10) count += 1;
+            if (userNumber % 10 == answerNumber % 10) strikes += 1;
 
             userNumber /= 10;
             answerNumber /= 10;
         }
 
-        return count;
+        return strikes;
     }
 
     public static int countBalls(int userNumber, int answerNumber) {
 
-        int count = 0;
+        int strikes = countStrikes(userNumber, answerNumber);
+
+        int balls = 0;
 
         List<Integer> userDigits = new ArrayList<>();
         List<Integer> answerDigits = new ArrayList<>();
@@ -128,13 +130,11 @@ public class Application {
         for (int i = 0; i < 3; i++) {
 
             int number = userDigits.get(i);
-            if (answerDigits.contains(number)) {
-                if (answerDigits.get(i) != number)
-                    count += 1;
-            }
+            if (answerDigits.contains(number))
+                balls += 1;
         }
 
-        return count;
+        return balls - strikes;
     }
 
     public static void printResult(int strikes, int balls) {
