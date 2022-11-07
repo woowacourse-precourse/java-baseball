@@ -17,7 +17,27 @@ public class Application {
     public static int ballCnt = 0;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (true) {
+            computerRandomThreeDigitNum();
+            userInputThreeDigitNum();
+            countStrikeAndBall();
+            printBaseballResult();
+
+            int inputCommand = 0;
+
+            if (checkThreeStrike()) {
+                inputCommand = userInputRestartOrFinish();
+            }
+
+            if (inputCommand == 1) {
+                computerNumList = new ArrayList<>();
+                userNumList = new ArrayList<>();
+            } else if (inputCommand == 2) {
+                break;
+            }
+        }
     }
 
     private static void computerRandomThreeDigitNum() {
