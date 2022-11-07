@@ -9,21 +9,21 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validation {
-    public boolean validatePlayerNumber(String playerNumber) {
-        if (validateFormatPlayerNumber(playerNumber) && validateAllDifferentDigit(playerNumber)) {
+    public boolean checkPlayerNumber(String playerNumber) {
+        if (checkPlayerNumberFormat(playerNumber) && checkAllDigitUnique(playerNumber)) {
             return true;
         }
 
         return false;
     }
 
-    private boolean validateFormatPlayerNumber(String playerNumber) {
+    private boolean checkPlayerNumberFormat(String playerNumber) {
         Format format = Format.PLAYER_NUMBER;
 
         return Pattern.matches(format.getRegex(), playerNumber);
     }
 
-    private boolean validateAllDifferentDigit(String playerNumber) {
+    private boolean checkAllDigitUnique(String playerNumber) {
         List<String> number = new ArrayList<>(Arrays.asList(playerNumber.split("")));
 
         return number.stream()

@@ -9,19 +9,19 @@ public class ValidationTest {
 
     @Test
     void 플레이어_입력_숫자_검사() {
-        boolean validateValue = validator.validatePlayerNumber("134");
+        boolean validateValue = validator.checkPlayerNumber("134");
         assertThat(validateValue).isEqualTo(true);
     }
 
     @Test
     void 플레이어_입력_숫자_구성_예외_발생() {
-        assertThatThrownBy(() -> validator.validatePlayerNumber("1f5"))
+        assertThatThrownBy(() -> validator.checkPlayerNumber("1f5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 플레이어_입력_숫자_길이_예외_발생() {
-        assertThatThrownBy(() -> validator.validatePlayerNumber("1234"))
+        assertThatThrownBy(() -> validator.checkPlayerNumber("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
