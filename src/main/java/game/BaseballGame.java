@@ -19,6 +19,8 @@ public class BaseballGame {
 	}
 
 	private void roundWithComputer() throws IllegalArgumentException {
+		// 재귀 호출할 때 같은 Computer 인스턴스를 대상으로?
+		computer.resetBallAndStrike();
 		Print.printInputNumbers();
 		String userNumbers = Examine.hasDifferentNumbers(Console.readLine());
 		if (!computer.computeAndPrintResult(userNumbers)) {

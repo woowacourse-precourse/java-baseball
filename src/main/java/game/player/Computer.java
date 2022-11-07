@@ -7,42 +7,59 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
-	private List<Integer> computersDifferentThreeNumbers = new ArrayList<>();
+	private final List<Integer> computersDifferentThreeNumbers = new ArrayList<>();
 	private int strike;
 	private int ball;
 
 	public Computer() {
-		while (computersDifferentThreeNumbers.size() < 3) {
-			int randomNumber = Randoms.pickNumberInRange(1, 9);
-			if (!computersDifferentThreeNumbers.contains(randomNumber)) {
-				computersDifferentThreeNumbers.add(randomNumber);
-			}
+		createThreeNumbers();
+	}
+
+	private void createThreeNumbers() {
+		for (int i = 0; i < 3; ++i) {
+			addNumber();
+		}
+	}
+
+	private void addNumber() {
+		int randomNumber = Randoms.pickNumberInRange(1, 9);
+		if (!computersDifferentThreeNumbers.contains(randomNumber)) {
+			computersDifferentThreeNumbers.add(randomNumber);
 		}
 	}
 
 	public boolean computeAndPrintResult(String userNumbers) {
-		String[] userNumbersArr = userNumbers.split("");
-		List<String> userNumbersList = Arrays.asList(userNumbersArr);
-		for (int user_index = 0; user_index < 3; ++user_index) {
-			int number = Integer.parseInt(userNumbersList.get(user_index));
-			if (computersDifferentThreeNumbers.contains(number)) {
-				ball += 1;
-			}
-			if (computersDifferentThreeNumbers.contains(number)
-				&& user_index == computersDifferentThreeNumbers.indexOf(number)) {
-				strike += 1;
-				ball -= 1;
-			}
-		}
+		compute(userNumbers);
 		printResult();
-		if (strike == 3) {
-			return true;
-		}
-		resetBallAndStrike();
-		return false;
+		return strike == 3;
 	}
 
-	private void resetBallAndStrike() {
+	private void compute(String userNumbers) {
+		String[] userNumbersArr = userNumbers.split("");
+		List<String> userNumbersList = Arrays.asList(userNumbersArr);
+
+		for (int user_index = 0; user_index < 3; ++user_index) {
+			int number = Integer.parseInt(userNumbersList.get(user_index));
+			countBall(number);
+			countStrike(number, user_index);
+		}
+	}
+
+	private void countBall(int number) {
+		if (computersDifferentThreeNumbers.contains(number)) {
+			ball += 1;
+		}
+	}
+
+	public void countStrike(int number, int index) {
+		if (computersDifferentThreeNumbers.contains(number)
+				&& index == computersDifferentThreeNumbers.indexOf(number)) {
+			strike += 1;
+			ball -= 1;
+		}
+	}
+
+	public void resetBallAndStrike() {
 		this.ball = 0;
 		this.strike = 0;
 	}
