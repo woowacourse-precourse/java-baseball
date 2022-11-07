@@ -18,7 +18,7 @@ public class ReGame {
 
     private void isValidNumber(String number) throws IllegalArgumentException {
         if (!(YES.equals(number) || NO.equals(number))) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1 (YES), 2 (NO) 의 입력만 허용됩니다.");
         }
     }
 

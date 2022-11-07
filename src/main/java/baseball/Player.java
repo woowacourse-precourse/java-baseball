@@ -19,14 +19,14 @@ public class Player {
 
     private Set<Integer> isValid(String number) throws IllegalArgumentException {
         if (!is3NumbersFrom1To9(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("1~9의 3자리 숫자만 허용됩니다.");
         }
         LinkedHashSet<Integer> validInput = new LinkedHashSet<>();
         for (char c : number.toCharArray()) {
             validInput.add(Character.getNumericValue(c));
         }
         if (validInput.size() < 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자는 허용되지 않습니다.");
         }
         return validInput;
     }
