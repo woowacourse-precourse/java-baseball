@@ -16,11 +16,11 @@ public class BaseballGameController {
     private final String RESTART = "1";
     private final int THREE_STRIKE = 3;
 
-    private User user;
 
     public void run() {
         startGame();
         printEndGame();
+        printRestartMessage();
         choiceRestartGame();
     }
 
@@ -30,6 +30,9 @@ public class BaseballGameController {
 
     public void printEndGame() {
         baseballGameView.printEndMessage();
+    }
+    public void printRestartMessage(){
+        baseballGameView.printRestartMessage();
     }
 
     public void startGame() {
@@ -42,9 +45,8 @@ public class BaseballGameController {
     }
 
     private List<Integer> getUserNumber() {
-        user = new User();
-        user.setSelectNumber();
-        return user.getSelectNumber();
+        baseballGameService.setUserNumber();
+        return baseballGameService.getUserNumber();
     }
 
     private void updateHint(List<Integer> computerRandomNumber, List<Integer> userNumber) {
@@ -59,7 +61,6 @@ public class BaseballGameController {
     }
 
     public void choiceRestartGame() {
-        baseballGameView.printRestartMessage();
         if (baseballGameService.choiceRestartGame().equals(RESTART)) {
             baseballGameService.initStrikeCountAndBallCount();
             run();
