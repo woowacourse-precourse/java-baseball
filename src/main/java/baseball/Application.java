@@ -4,12 +4,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -56,7 +58,6 @@ public class Application {
 
     private static void gameStart(){
         List<Integer> computerNumbers = getComputerNumbers();
-        System.out.println("computerNumbers = " + computerNumbers);
         boolean iter = true;
         while (iter){
             System.out.print("숫자를 입력해주세요 : ");
@@ -66,11 +67,13 @@ public class Application {
             iter = printScoreboard(scoreboard);
         }
     }
+
+
+
+
     private static boolean printScoreboard(int[] scoreboard){
         int strike = scoreboard[0];
         int ball = scoreboard[1];
-        System.out.println("ball = " + ball);
-        System.out.println("strike = " + strike);
         if (strike == 3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
