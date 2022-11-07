@@ -10,9 +10,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ComputerTest {
     @Test
     void setNumber_정답_길이_확인() {
+        // given
         Playable computer = new Computer();
-        computer.setNumber();
-        List<Integer> answer = computer.getNumber();
+        computer.inputAnswer();
+
+        // when
+        List<Integer> answer = computer.getAnswer();
+        System.out.println(answer);
+
+        // then
         assertThat(answer.size()).isEqualTo(3);
     }
 }
