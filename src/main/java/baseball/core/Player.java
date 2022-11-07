@@ -5,12 +5,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-public class User {
+public class Player {
 
     private List<Integer> threeNumbers;
     private final ThreeNumberConverter converter;
 
-    public User() {
+    public Player() {
         this.converter = new ThreeNumberConverter();
     }
 
