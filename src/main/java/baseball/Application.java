@@ -15,6 +15,7 @@ public class Application {
         // TODO: 프로그램 구현
         while (true) {
             Baseball baseball = new Baseball();
+            while (!baseball.run()) ;
         }
     }
 }
