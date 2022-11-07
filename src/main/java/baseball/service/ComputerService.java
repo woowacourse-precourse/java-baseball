@@ -16,4 +16,12 @@ public class ComputerService {
         int thirdNumber = computerNumbers.get(2);
         computerRepository.setComputer(firstNumber,secondNumber,thirdNumber);
     }
+
+    public ArrayList<Integer> getComputerNumber() {
+        ArrayList<Integer> computerNumberList = new ArrayList<>();
+        computerNumberList.add(computerRepository.getComputer().getFirstNumber());
+        computerNumberList.add(computerRepository.getComputer().getSecondNumber());
+        computerNumberList.add(computerRepository.getComputer().getThirdNumber());
+        return computerNumberList;
+    }
 }
