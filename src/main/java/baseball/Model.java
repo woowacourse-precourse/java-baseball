@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Model {
-    private ArrayList<String> humanarraylist;
-    private ArrayList<String> computerarraylist;
+    private ArrayList<String> humanlist;
+    private ArrayList<String> computerlist;
     private String humannumber;
     private String computernumber;
 
@@ -14,8 +14,8 @@ public class Model {
     }
 
     /*
-    *Below Human number Method
-    */
+     *Below Human number Method
+     */
     public String getHumannumber() {
         return humannumber;
     }
@@ -26,17 +26,17 @@ public class Model {
         model.isContainChar(humannumber);
         model.isContainZero(humannumber);
         model.isCorrectRange(humannumber);
-        humanarraylist = model.isDuplicate(humannumber);
+        humanlist = model.isDuplicate(humannumber);
 
         this.humannumber = humannumber;
     }
 
     public ArrayList<String> getHumanArrayList() {
-        return humanarraylist;
+        return humanlist;
     }
 
     public void clearHumanArrayList() {
-        humanarraylist.clear();
+        humanlist.clear();
     }
 
     /*
@@ -48,15 +48,15 @@ public class Model {
 
     public void setComputernumber(String computernumber) {
         this.computernumber = computernumber;
-        computerarraylist = new ArrayList<>(Arrays.asList(computernumber.split("")));
+        computerlist = new ArrayList<>(Arrays.asList(computernumber.split("")));
     }
 
     public ArrayList<String> getComputerArrayList() {
-        return computerarraylist;
+        return computerlist;
     }
 
     public void clearComputerArrayList() {
-        computerarraylist.clear();
+        computerlist.clear();
     }
 
     /*

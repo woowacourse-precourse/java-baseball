@@ -28,12 +28,14 @@ public class Controller {
         while (true) {
             String number = view.numberInputText();
             model.setHumannumber(number);
+
             result = controller.compareNumber(model.getHumanArrayList(), model.getComputerArrayList(), model);
             view.gameResultOutputText(result);
 
             if (result.equals(THREE_STRIKE)) {
                 exit = Integer.parseInt(view.victoryOutputText());
             }
+
             if (exit == 2) {
                 view.gameEnd();
                 break;
@@ -50,20 +52,20 @@ public class Controller {
         ArrayList<String> computerlistcopy = controller.copyList(computerlist);
 
         int strike = controller.countStrike(humanlist, computerlist);
-        computerlistcopy = controller.countBallList(humanlist, computerlist, computerlistcopy);
+        computerlistcopy = controller.removeComputerListCopy(humanlist, computerlist, computerlistcopy);
         int ball = controller.countBall(humanlist, computerlistcopy);
 
         computerlistcopy.clear();
         model.clearHumanArrayList();
 
-        String result = controller.combineStrike(strike, ball);
+        String result = controller.combineText(strike, ball);
         return result;
     }
 
     int countStrike(ArrayList<String> humanlist, ArrayList<String> computerlist) {
         int strike = 0;
 
-        for(int pointer = 0; pointer < 3; pointer++) {
+        for (int pointer = 0; pointer < 3; pointer++) {
             if (humanlist.get(pointer).equals(computerlist.get(pointer))) {
                 strike++;
             }
@@ -74,7 +76,7 @@ public class Controller {
     int countBall(ArrayList<String> humanlist, ArrayList<String> computerlistcopy) {
         int ball = 0;
 
-        for(int pointer = 0; pointer < 3; pointer++) {
+        for (int pointer = 0; pointer < 3; pointer++) {
             if (computerlistcopy.contains(humanlist.get(pointer))) {
                 ball++;
             }
@@ -82,8 +84,8 @@ public class Controller {
         return ball;
     }
 
-    ArrayList<String> countBallList(ArrayList humanlist, ArrayList computerlist, ArrayList computerlistcopy) {
-        for(int pointer = 0; pointer < 3; pointer++) {
+    ArrayList<String> removeComputerListCopy(ArrayList humanlist, ArrayList computerlist, ArrayList computerlistcopy) {
+        for (int pointer = 0; pointer < 3; pointer++) {
             if (humanlist.get(pointer).equals(computerlist.get(pointer))) {
                 computerlistcopy.remove(humanlist.get(pointer));
             }
@@ -94,13 +96,13 @@ public class Controller {
     ArrayList<String> copyList(ArrayList<String> original) {
         ArrayList<String> copy = new ArrayList<>();
 
-        for(String index : original) {
+        for (String index : original) {
             copy.add(index);
         }
         return copy;
     }
 
-    String combineStrike(int strike, int ball) {
+    String combineText(int strike, int ball) {
         String result = "";
 
         if (strike == 3) {
@@ -127,7 +129,7 @@ public class Controller {
                 computer.add(randomNumber);
             }
         }
-        randomnumber = computer.get(0) *100 + computer.get(1) * 10 + computer.get(2);
+        randomnumber = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
         String result = Integer.toString(randomnumber);
         return result;
     }
