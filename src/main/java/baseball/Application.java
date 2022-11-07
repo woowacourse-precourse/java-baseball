@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Application {
 
     private static boolean restartStatus;
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -23,6 +24,7 @@ public class Application {
                 endingWorking(scanner);
             } catch (IllegalArgumentException e) {
                 System.out.println("입력값을 잘못 입력하셨습니다. 게임을 종료합니다.");
+                restartStatus = false;
             }
 
         } while (restartStatus);
@@ -48,11 +50,10 @@ public class Application {
 
     private static boolean isEndingValueValid(String restartStatusValue) {
 
-        if(CheckException.restartStatusValue(restartStatusValue)) {
+        if (CheckException.restartStatusValue(restartStatusValue)) {
             occurException();
             return false;
         }
-
         return setRestartStatus(restartStatusValue);
     }
 

@@ -21,7 +21,12 @@ public class Game {
 
         while (!isGameOver) {
             System.out.print("숫자를 입력해주세요 : ");
-            predictedNumber = convertToList(scanner.nextLine());
+            String inputValue = scanner.nextLine();
+
+            if(!isInputValueValid(inputValue)) {
+                throw new IllegalArgumentException();
+            }
+            predictedNumber = convertToList(inputValue);
             scoreCalculator();
             isGameOver = checkCorrectAnswer(getStrikeScore());
         }
@@ -30,7 +35,7 @@ public class Game {
     private List<Integer> convertToList(String predictedValue) {
 
         List<Integer> predictedNumber = new ArrayList<>();
-        for(int index = 0; index < predictedValue.length(); index++) {
+        for (int index = 0; index < predictedValue.length(); index++) {
             predictedNumber.add(Character.getNumericValue(predictedValue.charAt(index)));
         }
         return predictedNumber;
@@ -46,8 +51,8 @@ public class Game {
     private int getStrikeScore() {
 
         int strikeScore = 0;
-        for(int index = 0; index < 3; index++) {
-            if(Objects.equals(targetNumber.get(index), predictedNumber.get(index))) strikeScore++;
+        for (int index = 0; index < 3; index++) {
+            if (Objects.equals(targetNumber.get(index), predictedNumber.get(index))) strikeScore++;
         }
         return strikeScore;
     }
@@ -55,23 +60,28 @@ public class Game {
     private int getBallScore(int strikeScore) {
 
         int sameValueCnt = 0;
-        for(int index = 0; index < 3; index++) {
-            if(targetNumber.contains(predictedNumber.get(index))) sameValueCnt++;
+        for (int index = 0; index < 3; index++) {
+            if (targetNumber.contains(predictedNumber.get(index))) sameValueCnt++;
         }
         return sameValueCnt - strikeScore;
     }
 
     private void printScoreBoard(int strikeScore, int ballScore) {
 
-        if(strikeScore == 0 && ballScore == 0) {
+        if (strikeScore == 0 && ballScore == 0) {
             System.out.println("낫싱");
-        } else if(strikeScore == 3 || ballScore == 0) {
-            System.out.println(strikeScore+"스트라이크");
-        } else if(ballScore == 3 || strikeScore == 0){
-            System.out.println(ballScore+"볼");
+        } else if (strikeScore == 3 || ballScore == 0) {
+            System.out.println(strikeScore + "스트라이크");
+        } else if (ballScore == 3 || strikeScore == 0) {
+            System.out.println(ballScore + "볼");
         } else {
-            System.out.println(ballScore+"볼 "+strikeScore+"스트라이크");
+            System.out.println(ballScore + "볼 " + strikeScore + "스트라이크");
         }
+    }
+
+    private boolean isInputValueValid(String inputValue) {
+
+        return CheckException.inputGameValue(inputValue);
     }
 
     private boolean checkCorrectAnswer(int strikeScore) {
