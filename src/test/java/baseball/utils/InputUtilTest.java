@@ -48,7 +48,7 @@ public class InputUtilTest {
 
     @Test()
     void 중복된_숫자입력_예외처리() {
-        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 1, 1));
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3));
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             inputUtil.checkDuplicationNumber(numbers, 1);
         });

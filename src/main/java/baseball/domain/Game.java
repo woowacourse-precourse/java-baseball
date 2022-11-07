@@ -6,12 +6,7 @@ public class Game {
     private int ball;
     private boolean status;
 
-    User user;
-    Computer computer;
-
     public Game() {
-        this.user = new User();
-        this.computer = new Computer();
         this.status = true;
     }
 

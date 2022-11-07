@@ -54,7 +54,8 @@ public class BaseballService {
         game.setBall(0);
         game.setStrike(0);
         for (int i = 0; i < computer.getRandomNumbers().size(); i++) {
-            game.setStrike(game.getStrike() + isStrike(computerNumbers.get(i), userNumbers.get(i)));
+            game.setStrike(game.getStrike() + isStrike(computerNumbers.get(i),
+                    userNumbers.get(i)));
             game.setBall(game.getBall() + isBall(computerNumbers, userNumbers.get(i), i));
         }
         System.out.println(createOutput(game.getStrike(), game.getBall()));
@@ -77,7 +78,8 @@ public class BaseballService {
     public String createOutput(int strike, int ball) {
         if (strike == Constant.IS_ANSWER.getNumber()) {
             return strike + Constant.STRIKE.getMessage();
-        } else if (strike != Constant.IS_NONE.getNumber() && ball != Constant.IS_NONE.getNumber()) {
+        } else if (strike != Constant.IS_NONE.getNumber() &&
+                ball != Constant.IS_NONE.getNumber()) {
             return ball + Constant.BALL.getMessage() + " " + strike + Constant.STRIKE.getMessage();
         } else if (strike > Constant.IS_NONE.getNumber()) {
             return strike + Constant.STRIKE.getMessage();
@@ -104,7 +106,8 @@ public class BaseballService {
         inputUtil.checkIsDigit(answerstr.charAt(0), Constant.RESTART_EXCEPTION.getMessage());
         int answerint = inputUtil.charToInt(answerstr.charAt(0));
         inputUtil.checkValidNumber(answerint, Constant.RESTART_NUMBER_MIN.getNumber()
-                , Constant.RESTART_NUMBER_MAX.getNumber(), Constant.RESTART_EXCEPTION.getMessage());
+                , Constant.RESTART_NUMBER_MAX.getNumber(),
+                Constant.RESTART_EXCEPTION.getMessage());
         selectRestart(answerint);
     }
 
