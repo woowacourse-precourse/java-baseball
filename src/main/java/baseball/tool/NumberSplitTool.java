@@ -5,28 +5,27 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class BeforeVerificationSetting {
+public class NumberSplitTool {
 
-    public static char[] makeNumberSplitArrangement(int receivedNumber){
+    public static char[] makeNumberSplitArrangement(int receivedNumber) {
 
         String number = Integer.toString(receivedNumber);
-        char[] numberSplitArrangement = number.toCharArray();
-        return numberSplitArrangement;
+
+        return number.toCharArray();
     }
 
-    public static List<Integer> makeNumberSplitList(int receivedNumber){
+    public static List<Integer> makeNumberSplitList(int receivedNumber) {
         List<Integer> numberSplitList = new ArrayList<>();
 
-        for(char oneNumber : makeNumberSplitArrangement(receivedNumber)){
+        for (char oneNumber : makeNumberSplitArrangement(receivedNumber)) {
             int n = oneNumber - '0';
             numberSplitList.add(n);
         }
         return numberSplitList;
     }
 
-    public static Set<Integer> makeNumberSplitSet(int receivedNumber){
-        Set<Integer> numberSplitSet = new HashSet<>(makeNumberSplitList(receivedNumber));
+    public static Set<Integer> makeNumberSplitSet(int receivedNumber) {
 
-        return numberSplitSet;
+        return new HashSet<>(makeNumberSplitList(receivedNumber));
     }
 }
