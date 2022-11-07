@@ -10,11 +10,12 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
-        while(true){
-            init();
+        // init
+        computer = new Computer();
+        while (true) {
+            computer.initNumbers();
             doGame();
-            if(!isContinue()) break;
+            if (!isContinue()) break;
         }
     }
 
@@ -24,14 +25,9 @@ public class Application {
         int res = Integer.parseInt(Console.readLine());
 
         // Exception 처리
-        if(res == 1) return true;
-        else if(res == 0) return false;
+        if (res == 1) return true;
+        else if (res == 2) return false;
         else throw new IllegalArgumentException("0 또는 1만 입력해야 합니다.");
-    }
-
-    private static void init() {
-        if (computer == null) computer = new Computer();
-        computer.initNumbers();
     }
 
     private static void doGame() {
@@ -42,19 +38,19 @@ public class Application {
             // making list
             List<Integer> userInput = makingIntegerList(Console.readLine());
             Integer[] res = computer.checkingNumbers(userInput);
-            if(consoleOut(res)) break;
+            if (consoleOut(res)) break;
         }
     }
 
     private static boolean consoleOut(Integer[] res) {
         // input에 대하여 console 로 출력, 계속 진행여부를 return
-        if(res[0] > 0 && res[1] > 0) {
+        if (res[0] > 0 && res[1] > 0) {
             System.out.println(res[1] + "볼 " + res[0] + "스트라이크");
         } else if (res[0] > 0) {
             System.out.println(res[0] + "스트라이크");
-        } else if(res[1] > 0){
+        } else if (res[1] > 0) {
             System.out.println(res[1] + "볼");
-        }else {
+        } else {
             System.out.println("낫싱");
         }
 
@@ -71,7 +67,7 @@ public class Application {
         for (int i = 0; i < readLine.length(); i++) {
             if (Character.isDigit(readLine.charAt(i))) {
                 list.add(Character.getNumericValue(readLine.charAt(i)));
-            } else throw new IllegalArgumentException("올바른 숫자가 입력되어야 합니다. - " + (i+1) + " is not number.");
+            } else throw new IllegalArgumentException("올바른 숫자가 입력되어야 합니다. - " + (i + 1) + " is not number.");
         }
         return list;
     }
