@@ -32,9 +32,8 @@ public class Game {
         int strike = 0;
         int ball = 0;
         List<Integer> player = inputToArrayList(input);
-
-        strike = getStrike(computer, player);
-        ball = getBall(computer, player);
+        int strike = getStrike(computer, player);
+        int ball = getBall(computer, player);
 
         printResult(ball, strike);
     }
