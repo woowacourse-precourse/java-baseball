@@ -79,4 +79,21 @@ public class Application {
         return result;
     }
 
+    public static String getResultStr(int strikeCnt, int ballCnt) {
+        String result = "";
+        if (ballCnt == 0 && strikeCnt == 0) {
+            return "낫싱";
+        }
+        if (ballCnt > 0) {
+            result += ballCnt + "볼";
+        }
+        if (strikeCnt > 0) {
+            if (ballCnt == 0) {
+                result += strikeCnt + "스트라이크";
+            } else {
+                result += " " + strikeCnt + "스트라이크";
+            }
+        }
+        return result;
+    }
 }
