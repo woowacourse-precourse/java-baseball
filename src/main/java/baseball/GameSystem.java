@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class GameSystem {
@@ -19,6 +20,8 @@ public class GameSystem {
     int numStrikes;
     int numBalls;
 
+    boolean gameActivate = true;
+
 
     public GameSystem() {
 
@@ -31,10 +34,8 @@ public class GameSystem {
     }
 
     public String InputNumPlayer() {
-
         System.out.print(STR_PLAYER_INPUT);
 
-        //numOfPlayer = player.ReturnPlayerNum(inputStr);
         return Console.readLine();
     }
 
@@ -42,9 +43,11 @@ public class GameSystem {
         numStrikes = gameScore.CheckStrikes(numOfComputer, numOfPlayer);
         numBalls = gameScore.CheckBalls(numOfComputer, numOfPlayer);
     }
+
     public void GamePlay() {
 
-        numOfComputer = computer.randomNumber;
+        //numOfComputer = computer.randomNumber;
+        numOfComputer = Arrays.asList(7,2,4);
         numOfPlayer = player.ReturnPlayerNum(InputNumPlayer());
 
         GetGameReturnValue();
@@ -54,26 +57,24 @@ public class GameSystem {
 
         if(numStrikes == 3) {
             System.out.println(STR_GAME_END);
+
             GameStartAgain();
         }
     }
 
     public void GameStartAgain() {
         System.out.println(STR_GAME_AGAIN);
+
+        String inputReOrEnd = Console.readLine();
+        InputGameRestartOrEnd(inputReOrEnd);
     }
 
-    public boolean InputGameRestartOrEnd() {
-        String inputReOrEnd = Console.readLine();
+    public void InputGameRestartOrEnd(String input) {
 
-        if(inputReOrEnd.equals("1")) {
-            return true;
+        if(input.equals("1")) {
+            System.out.println(true);
+            GamePlay();
         }
-
-        if(inputReOrEnd.equals("2")) {
-            return false;
-        }
-
-        return false; // 이외의 값
     }
 
 }
