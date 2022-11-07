@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class BallGeneratorTest {
 
-    BallGenerator ballGenerator;
+    private BallGenerator ballGenerator;
 
     @BeforeEach
     void initial() {
