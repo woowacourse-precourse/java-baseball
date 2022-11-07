@@ -59,4 +59,8 @@ public class Computer {
     public Integer getStrike() {
         return strike;
     }
+
+    public List<Integer> getAnswerNumber() {
+        return answerNumber;
+    }
 }
