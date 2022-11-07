@@ -8,15 +8,13 @@ public class Play {
     public static void playStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         String answerNumber = createThreeNumber();
-
-        System.out.print("숫자를 입력해주세요 : ");
-        String playerNumber = Console.readLine();
-        if (!Exception.isNumber(playerNumber) || !Exception.isThreeNumber(playerNumber) || Exception.isRedundancy(playerNumber)) {
-            throw new IllegalArgumentException("3자리의 서로 다른 숫자가 아닙니다.");
+        while (true) {
+            int strike = checkAnswer(answerNumber);
+            if (strike == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
-        int ball = countBall(playerNumber, answerNumber);
-        int strike = countStrike(playerNumber, answerNumber);
-        printResult(ball, strike);
     }
     public static String createThreeNumber() {
         int size = 0;
@@ -63,5 +61,16 @@ public class Play {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         }
+    }
+    public static int checkAnswer(String answerNumber) {
+        System.out.print("숫자를 입력해주세요 : ");
+        String playerNumber = Console.readLine();
+        if (!Exception.isNumber(playerNumber) || !Exception.isThreeNumber(playerNumber) || Exception.isRedundancy(playerNumber)) {
+            throw new IllegalArgumentException("3자리의 서로 다른 숫자가 아닙니다.");
+        }
+        int ball = countBall(playerNumber, answerNumber);
+        int strike = countStrike(playerNumber, answerNumber);
+        printResult(ball, strike);
+        return strike;
     }
 }
