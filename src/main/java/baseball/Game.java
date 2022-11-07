@@ -15,8 +15,8 @@ public class Game {
     private User user = new User();
     private List<Integer> computerNumber;
     private List<Integer> userNumber;
-    private int strike = 0;
-    private int ball = 0;
+    int strike = 0;
+    int ball = 0;
 
     public void startGame() {
         System.out.println(START_MESSAGE);
@@ -38,7 +38,7 @@ public class Game {
         } while (this.strike != 3);
     }
 
-    private void calculateCount(List<Integer> computerNum, int userNumber, int idx) {
+    void calculateCount(List<Integer> computerNum, int userNumber, int idx) {
         for (int i = 0; i < 3; i++) {
             if (computerNum.get(i) == userNumber && i == idx) {
                 strike++;
@@ -48,7 +48,7 @@ public class Game {
         }
     }
 
-    private boolean isFinish() {
+    boolean isFinish() {
         int flag = Integer.parseInt(Console.readLine());
 
         if (flag == 1) {
@@ -60,7 +60,7 @@ public class Game {
         }
     }
 
-    private void printMessage(int strike, int ball) {
+    void printMessage(int strike, int ball) {
         if (strike == 3) {
             System.out.println(ALL_CORRECT);
         } else if (strike == 0 && ball == 0) {
