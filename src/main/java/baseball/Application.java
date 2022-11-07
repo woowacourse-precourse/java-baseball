@@ -45,6 +45,26 @@ public class Application {
         current_score.set(2, nothing);
         return current_score;
     }
+
+    public static void print_result(List<Integer> result){
+        int strike_result = result.get(0);
+        int ball_result = result.get(1);
+        int nothing_result = result.get(2);
+
+        if(nothing_result==3){
+            System.out.println("낫싱");
+        }
+        else if(strike_result==3){
+            System.out.println(strike_result + "스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String stay = readLine();
+
+        }
+        else{
+            System.out.println(ball_result + "볼" + strike_result + "스트라이크");
+        }
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
@@ -63,27 +83,10 @@ public class Application {
                 // 숫자 랜덤
                 String user_answer = readLine();
                 char[] user_input = user_answer.toCharArray();
-
+                // 비교 결과 리스트 저장
                 List<Integer> compare_result = compare_answer(computer_number, user_input);
-                int strike_result = compare_result.get(0);
-                int ball_result = compare_result.get(1);
-                int nothing_result = compare_result.get(2);
-
-                if(nothing_result==3){
-                    System.out.println("낫싱");
-                }
-                else if(strike_result==3){
-                    System.out.println(strike_result + "스트라이크");
-                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-                    String stay = readLine();
-
-                    // System.out.println(stay);
-                }
-                else{
-                    System.out.println(ball_result + "볼" + strike_result + "스트라이크");
-                }
+                // 결과 출력
+                print_result(compare_result);
 
                 break;
                 }
