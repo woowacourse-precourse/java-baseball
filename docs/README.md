@@ -18,8 +18,7 @@ Service
 
 - playGame : 실제 게임을 진행하는 메서드 사용자의 입력을 받아 야구게임을 진행한다
 - baseBall : 숫자 두개가 들어오면 각자리를 비교한다
-- checkBall : 자신과 같은자리말고 자신과 같은 숫자가 존재한다면 볼을 반환해준다
-- checkStrike : 자신과 같은 자리에 자신과 같은 숫자가 존재한다면 스트라이크를 반환해준다
+- check : Strike , Ball 처리
 - printBaseBallCount : 스트라이크 , 볼 숫자에 따라 다른 결과를 출력해준다
 - randNumGenerate : 랜덤한 숫자를 생성해준다
 
