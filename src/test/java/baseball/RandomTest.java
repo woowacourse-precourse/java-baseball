@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.model.constants.GameConstants;
 import baseball.util.InputValueValidation;
 import baseball.util.RandomUtil;
 import org.junit.jupiter.api.Nested;

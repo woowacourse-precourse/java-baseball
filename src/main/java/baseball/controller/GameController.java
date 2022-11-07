@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.BaseballScore;
-import baseball.GameConstants;
+import baseball.model.constants.BaseballScore;
+import baseball.model.constants.GameConstants;
 import baseball.model.Computer;
 import baseball.model.User;
 import baseball.view.GameMessage;

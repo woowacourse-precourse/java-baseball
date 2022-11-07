@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.BaseballScore;
+import baseball.model.constants.BaseballScore;
 import baseball.util.RandomUtil;
 import java.util.HashMap;
 import java.util.List;

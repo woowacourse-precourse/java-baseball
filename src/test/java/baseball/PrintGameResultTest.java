@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.model.constants.BaseballScore;
 import baseball.view.GameMessage;
 import java.util.HashMap;
 import java.util.Map;

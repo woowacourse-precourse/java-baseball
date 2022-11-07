@@ -1,7 +1,7 @@
 package baseball.view;
 
-import baseball.BaseballScore;
-import baseball.GameConstants;
+import baseball.model.constants.BaseballScore;
+import baseball.model.constants.GameConstants;
 import java.util.Map;
 
 public class GameMessage {

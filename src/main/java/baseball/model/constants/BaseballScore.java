@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model.constants;
 
 public enum BaseballScore {
     STRIKE("스트라이크"), BALL("볼"), NOTHING("낫싱");

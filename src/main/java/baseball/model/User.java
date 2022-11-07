@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.GameConstants;
+import baseball.model.constants.GameConstants;
 import baseball.util.InputValueValidation;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;

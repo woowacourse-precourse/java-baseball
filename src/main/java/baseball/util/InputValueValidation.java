@@ -1,6 +1,6 @@
 package baseball.util;
 
-import baseball.GameConstants;
+import baseball.model.constants.GameConstants;
 import java.util.Arrays;
 import java.util.List;
 
