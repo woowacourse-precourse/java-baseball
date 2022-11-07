@@ -1,11 +1,13 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.domain.Result;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -132,6 +134,37 @@ class ApplicationTest extends NsTest {
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage("서로 다른 숫자를 입력해주세요.")
             );
+        }
+    }
+
+    @DisplayName("숫자 비교 기능 테스트")
+    @Nested
+    class CompareTest {
+        Computer computer = new Computer();
+
+        @DisplayName("스트라이크 판정 테스트")
+        @Test
+        void strikeTest() {
+            computer.generateNumber();
+            List<Integer> testList = computer.getNumbers();
+            String numberToCompare = testList.toString().replaceAll("[^1-9]", "");
+            Result result = computer.compareNumber(numberToCompare);
+
+            assertThat(result.getStrikeCount()).isEqualTo(3);
+        }
+
+        @DisplayName("볼 판정 테스트")
+        @Test
+        void ballTest() {
+            computer.generateNumber();
+            List<Integer> testList = computer.getNumbers();
+            List<Integer> newList = new ArrayList<>();
+            newList.addAll(testList.subList(1,3));
+            newList.add(testList.get(0));
+            String numberToCompare = newList.toString().replaceAll("[^1-9]", "");
+
+            Result result = computer.compareNumber(numberToCompare);
+            assertThat(result.getBallCount()).isEqualTo(3);
         }
     }
 }
