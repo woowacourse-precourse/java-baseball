@@ -52,6 +52,18 @@ public class GameTest extends NsTest {
                                 "볼", 1,
                                 "스트라이크", 1
                         )));
+        assertThat(
+                game.getBallStrikeCount(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3))
+                        .equals(Map.of(
+                                "볼", 0,
+                                "스트라이크", 3
+                        )));
+        assertThat(
+                game.getBallStrikeCount(Arrays.asList(1, 2, 3), Arrays.asList(3, 1, 2))
+                        .equals(Map.of(
+                                "볼", 3,
+                                "스트라이크", 0
+                        )));
     }
 
     @Override
