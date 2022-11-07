@@ -24,6 +24,37 @@ public class Game {
     }
 
     /**
+     * 게임 종료 문구 출력
+     */
+    public boolean checkWinGame(String resultMent) {
+
+        if(resultMent.equals("3스트라이크")) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            return true;
+        }
+
+        return false;
+
+    }
+
+    /**
+     * 게임 재시작 여부 결정
+     */
+    public boolean restartGame(String input){
+
+        if(input.equals("1")) {
+            return true;
+        } else if(input.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("올바르지 않은 파라미터를 입력했습니다!");
+        }
+
+    }
+
+    /**
      * 전달된 컴퓨터 숫자가 모든 입력 검증 사항을 통과하는지 확인
      */
     public boolean validateComputerNumber(String computerNumber){
