@@ -30,4 +30,32 @@ public class Baseball {
 
         }
     }
+
+    private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> userNumbers) {
+        for (int i = 0; i < 3; i++) {
+            String result = getStrikeOrBall(computerNumbers, userNumbers.get(i), i);
+
+            if (result.equals("스트라이크")) {
+                strikeCount++;
+            }
+
+            if (result.equals("볼 ")) {
+                ballCount++;
+            }
+        }
+    }
+
+    private String getStrikeOrBall(List<Integer> computerNumbers, int userNumber, int index) {
+        for (int i = 0; i < 3; i++) {
+            if (computerNumbers.get(i) == userNumber && i == index) {
+                return "스트라이크";
+            }
+
+            if (computerNumbers.get(i) == userNumber) {
+                return "볼 ";
+            }
+        }
+
+        return "낫싱";
+    }
 }
