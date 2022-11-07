@@ -1,6 +1,7 @@
 package baseball.domain;
 
-import baseball.util.Converter;
+import static baseball.util.Converter.stringListToIntList;
+
 import java.util.List;
 
 public class User {
@@ -11,7 +12,7 @@ public class User {
     }
 
     public void selectUserNumber(String userNumber) {
-        userInputNumbers = List.copyOf(Converter.stringListToIntList(userNumber));
+        userInputNumbers = List.copyOf(stringListToIntList(userNumber));
     }
 
 }

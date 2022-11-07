@@ -1,9 +1,10 @@
 package baseball.service;
 
+import static baseball.view.InputView.*;
+import static baseball.view.OutputView.*;
+
 import baseball.domain.Computer;
 import baseball.domain.User;
-import baseball.view.InputView;
-import baseball.view.OutputView;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -18,25 +19,25 @@ public class GameProcessor {
     }
 
     public void startGame() {
-        OutputView.printStartMessage();
+        printStartMessage();
         computer.generateNumber();
     }
 
     public void playGame() {
         do {
-            user.selectUserNumber(InputView.selectUserNumberInput());
+            user.selectUserNumber(selectUserNumberInput());
         } while (isThreeStrike(computer.getComputerNumbers(), user.getUserInputNumbers()));
     }
 
     public boolean endOrRestartGame() {
-        OutputView.printVictoryMessage();
-        return InputView.selectEndOrRestartInput();
+        printVictoryMessage();
+        return selectEndOrRestartInput();
     }
 
     public boolean isThreeStrike(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
         int strikeCount = countStrike(computerNumbers, userInputNumbers);
         int ballCount = countBall(computerNumbers, userInputNumbers);
-        OutputView.printGameResult(strikeCount, ballCount);
+        printGameResult(strikeCount, ballCount);
         return isGameOver(strikeCount);
     }
 
