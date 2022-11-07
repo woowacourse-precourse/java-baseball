@@ -14,18 +14,18 @@ public class Application {
 
         String inputString = "1";
         while (!inputString.equals("2")){
-            List<Integer> opponent = generateOpponent();
-            List<Integer> player = receiveInputOfPlayer();
-            gameStart(opponent,player);
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            gameStart();
             inputString = Console.readLine();
         }
     }
 
-    public static void gameStart(List<Integer> opponent, List<Integer> player){
+    public static void gameStart(){
+        List<Integer> opponent = generateOpponent();
+        List<Integer> player = receiveInputOfPlayer();
         while(checkGameOver(checkOpponentAndPlayer(opponent, player))){
             player = receiveInputOfPlayer();
         }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static List<Integer> generateOpponent(){
