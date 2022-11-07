@@ -20,4 +20,11 @@ public class UserInputUtil {
             throw new IllegalArgumentException();
         }
     }
+    private static int toInteger(String input) {
+        try{
+            return Integer.parseInt(input);
+        }catch(NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
