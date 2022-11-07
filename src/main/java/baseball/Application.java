@@ -18,8 +18,8 @@ public class Application {
             while (!finish) {
                 data.setUserInput(Input.whileRunning());
                 game.checkInputException(data.getUserInput());
-                data.setBall(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[0]);
-                data.setStrike(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[1]);
+                data.setBall(Referee.judge(data.getUserInput(), data.getAnswer())[0]);
+                data.setStrike(Referee.judge(data.getUserInput(), data.getAnswer())[1]);
                 Output.printResult(data.getStrike(), data.getBall());
                 finish = game.isFinish(data.getStrike());
                 run = game.isAgain(finish);
@@ -125,8 +125,8 @@ class Output {
     }
 }
 
-class CompareNumbers {
-    static int[] checkNumber(List<Integer> userInput, List<Integer> answer) {
+class Referee {
+    static int[] judge (List<Integer> userInput, List<Integer> answer) {
         int[] ballStrike = {0, 0};
         for (int number : userInput) {
             if (answer.contains(number)) {
