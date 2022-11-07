@@ -9,8 +9,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.io.ByteArrayInputStream;
-
 class ApplicationTest extends NsTest {
 
     @DisplayName("게임 시작 문구 출력 테스트")
