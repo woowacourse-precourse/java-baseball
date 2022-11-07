@@ -171,6 +171,7 @@ public class Application {
     public static void baseballGameService(){
         String checkedBaseballGaemOfUserAnswer = "";
         List<Integer> computerNumbersList = randomNumberCreate();
+        inputUserNumberService(computerNumbersList);
     }
 
     public static void main(String[] args) {
