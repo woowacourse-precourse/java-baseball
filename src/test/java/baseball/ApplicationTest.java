@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -131,6 +132,60 @@ class ApplicationTest extends NsTest {
 
                 assertThat(ball).isEqualTo(0);
                 assertThat(strike).isEqualTo(0);
+            }
+        }
+
+        @Nested
+        class 볼_스트라이크_개수에_따른_게임결과문구_테스트 {
+            @Test
+            void case1_3스트라이크() {
+                Map<String, Integer> gameResult = new HashMap<>();
+                gameResult.put("ball", 0);
+                gameResult.put("strike", 3);
+
+                String gameResultMessage = testGame.gameMessageDisplay
+                        .getGameResultMessage(gameResult);
+                assertThat(gameResultMessage).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
+            @Test
+            void case2_3볼() {
+                Map<String, Integer> gameResult = new HashMap<>();
+                gameResult.put("ball", 3);
+                gameResult.put("strike", 0);
+
+                String gameResultMessage = testGame.gameMessageDisplay
+                        .getGameResultMessage(gameResult);
+                assertThat(gameResultMessage).isEqualTo("3볼");
+            }
+            @Test
+            void case3_2볼_1스트라이크() {
+                Map<String, Integer> gameResult = new HashMap<>();
+                gameResult.put("ball", 2);
+                gameResult.put("strike", 1);
+
+                String gameResultMessage = testGame.gameMessageDisplay
+                        .getGameResultMessage(gameResult);
+                assertThat(gameResultMessage).isEqualTo("2볼 1스트라이크");
+            }
+            @Test
+            void case4_1볼_1스트라이크() {
+                Map<String, Integer> gameResult = new HashMap<>();
+                gameResult.put("ball", 1);
+                gameResult.put("strike", 1);
+
+                String gameResultMessage = testGame.gameMessageDisplay
+                        .getGameResultMessage(gameResult);
+                assertThat(gameResultMessage).isEqualTo("1볼 1스트라이크");
+            }
+            @Test
+            void case5_0볼_0스트라이크() {
+                Map<String, Integer> gameResult = new HashMap<>();
+                gameResult.put("ball", 0);
+                gameResult.put("strike", 0);
+
+                String gameResultMessage = testGame.gameMessageDisplay
+                        .getGameResultMessage(gameResult);
+                assertThat(gameResultMessage).isEqualTo("낫싱");
             }
         }
 
