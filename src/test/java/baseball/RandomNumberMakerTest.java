@@ -38,8 +38,8 @@ public class RandomNumberMakerTest {
         String notDuplicated = "345";
 
         assertThat(RandomNumberMakerTest.isDuplicated(computer)).isFalse();
-        assertThat(RandomNumberMakerTest.isDuplicated(duplicated)).isFalse();
-        assertThat(RandomNumberMakerTest.isDuplicated(notDuplicated)).isTrue();
+        assertThat(RandomNumberMakerTest.isDuplicated(duplicated)).isTrue();
+        assertThat(RandomNumberMakerTest.isDuplicated(notDuplicated)).isFalse();
     }
 
 }
