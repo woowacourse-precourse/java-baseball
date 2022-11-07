@@ -4,7 +4,10 @@ import baseball.model.Target;
 import baseball.model.TurnScore;
 import baseball.type.ResultTurn;
 import baseball.view.InputView;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Turn {
     static ResultTurn resultTurn;
@@ -75,5 +78,13 @@ public class Turn {
             return 1;
         }
         return 0;
+    }
+
+    static List<Integer> convertNumberStringToList(String numberOfString) {
+        List<String> numberOfStringList = new ArrayList<>(Arrays.asList(numberOfString.split("")));
+        List<Integer> numberOfList = numberOfStringList.stream()
+                .map(Integer::new)
+                .collect(Collectors.toList());
+        return numberOfList;
     }
 }
