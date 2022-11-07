@@ -99,9 +99,10 @@ public class Core {
         }
     }
 
-    public List<Integer> stringToIntegerList(String str) {
+    public List<Integer> stringToIntegerList(String input) {
+        validateStringNaturalNumbers(input);
         List<Integer> integerList = new ArrayList<>();
-        for (String s : str.split("")) {
+        for (String s : input.split("")) {
             integerList.add(Integer.parseInt(s));
         }
         return integerList;
