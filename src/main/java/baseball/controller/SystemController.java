@@ -63,4 +63,14 @@ public class SystemController {
         strike = 0;
         ball = 0;
     }
+
+    public void readyToExit(SystemComputerModel systemComputerModel) {
+        String input = systemView.restartInput();
+        if (systemComputerModel.isReadyToExit(input)) {
+            exit = true;
+        }
+        if(!systemComputerModel.isReadyToExit(input)){
+            systemComputerModel.setRandomNumber();
+        }
+    }
 }
