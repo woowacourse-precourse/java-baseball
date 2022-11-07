@@ -41,10 +41,13 @@ public class UserUtil {
 
 
     private static boolean checkOnlyNumber(String userNumberString) {
-        if (userNumberString.matches("-?\\d+")) {
-            return false;
+        char[] numberCharList = userNumberString.toCharArray();
+        for (int i = NumberStatus.MIN_NUMBER.getNumber(); i < NumberStatus.MAX_NUMBER.getNumber(); i ++){
+            if(numberCharList[i] < NumberStatus.ANSWER_MIN_NUMBER.getNumber() || numberCharList[i] > NumberStatus.MAX_NUMBER.getNumber()){
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
     private static boolean checkZeroInNumber(String userNumberString) {
