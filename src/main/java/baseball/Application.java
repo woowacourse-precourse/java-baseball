@@ -15,6 +15,7 @@ public class Application {
 
             playGame(randomNumber);
 
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             if (restartOrEndGame() == 2) {
                 System.out.println("게임을 종료합니다.");
                 break;
@@ -108,7 +109,6 @@ public class Application {
 
     public static int restartOrEndGame() {
         String input = Console.readLine();
-        System.out.println("게임 다시하기: 1 \n게임 종료: 2");
         int n = Integer.parseInt(input);
 
         return breakExceptionHandler(n);
