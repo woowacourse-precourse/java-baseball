@@ -39,4 +39,17 @@ public class Service {
         }
         return strikeCount;
     }
+
+    private int getNumberOfBalls(List<String> questionNumbers, List<String> answerNumbers, int strikeCount) {
+        int ballCount = 0;
+        for (int numbersIndex = 0; answerNumbers.size() > numbersIndex; numbersIndex++) {
+
+            if (answerNumbers.contains(questionNumbers.get(numbersIndex))) {
+                ballCount++;
+            }
+        }
+        ballCount -= strikeCount;
+
+        return ballCount;
+    }
 }
