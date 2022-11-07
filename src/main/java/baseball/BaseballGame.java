@@ -8,7 +8,19 @@ public class BaseballGame {
     }
 
     private void start() {
+        Printer.start();
 
+        boolean isPlaying = false;
+
+        while (isPlaying) {
+            isPlaying = this.play();
+        }
+
+        Printer.finish();
+    }
+
+    private boolean play() {
+        return false;
     }
 
 }
