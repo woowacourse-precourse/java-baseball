@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 public class GameStartSettingTest {
 	GameStartSetting gameStartSetting = new GameStartSetting();
 	@Test
-	void mainTest() {
-		System.out.println(gameStartSetting.main());
+	void startTest() {
+		System.out.println(gameStartSetting.start());
 	}// mainTest
 	
 	@Test
-	void userInputNumberTest() {
-		System.out.println(gameStartSetting.userInputNumber());
+	void userNumberPutTest() {
+		System.out.println(gameStartSetting.userNumberPut());
 	}//userInputNumber
 }// end class
