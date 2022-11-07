@@ -1,8 +1,7 @@
-package baseball;
+package IOController;
 
 public class Screen {
 
-    private static RandomNumber RandomValue;
     private static final int GAME_START_MODE = 1;
     private static final int INPUT_NUMBER_MODE = 2;
     private static final int GAME_END_MODE = 3;
