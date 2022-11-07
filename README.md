@@ -161,8 +161,9 @@ List<Integer> computer = new ArrayList<>();
 * printHitStatus() 입력값에 따른 맞춘 상태 출력
 * getRandomNumber() 랜덤 숫자 값 getter
 * checkHitNumber() 숫자가 맞는지 확인 후 결과값 리턴
-* restartOrEnd() 게임 종료 또는 재시작
+* inputRestartOrEnd() 게임 종료 또는 재시작
 * startGameMessage() 게임 시작 메시지 출력
 * endGameMessage() 게임 종료 메시지 출력
 * inputNumberToComputerMessage() 사용자 입력 메시지 출력
 * userInputNumberInGame() 사용자 입력
+* printRestartOrEnd() 재시작 또는 종료 메시지 출력
