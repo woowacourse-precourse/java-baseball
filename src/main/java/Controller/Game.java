@@ -38,8 +38,6 @@ public class Game {
             }
             System.out.print(User.strike_count() + "스트라이크" + " ");
         }
-
-
     }
     public static void nothing_Message(){
         if (User.strike_count() == 0 && User.ball_count() == 0) {
