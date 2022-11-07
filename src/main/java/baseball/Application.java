@@ -13,6 +13,9 @@ public class Application {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
         boolean isTriple = (readLine.length() == 3);
 
+        if (isNumeric || isTriple) {
+            throw new IllegalArgumentException();
+        }
         return (isNumeric && isTriple);
     }
 
