@@ -22,12 +22,14 @@ public class BaseBall {
         userBall.addAll(userNumber);
     }
 
-    public void validateInputSize() {
-
+    public void validateInputSize(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("입력 갯수가 틀립니다.");
+        }
     }
 
     public void validateInputType() {
-
+        
     }
 
     public void validateInputUnique() {
