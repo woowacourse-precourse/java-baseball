@@ -62,10 +62,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력_숫자_예외_테스트(){
-        // 숫자가 아닌 값이 들어가는 경우
+    void 입력_문자열_숫자_예외_테스트() {
+        // 같은 숫자가 중복으로 입력되는 경우
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("abc"))
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 0이 들어간 모두 다른 3자리 숫자의 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("094"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
 
@@ -75,12 +81,13 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
 
-        // 같은 숫자가 중복으로 입력되는 경우
+        // 숫자가 아닌 값이 들어가는 경우
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("112"))
+                assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

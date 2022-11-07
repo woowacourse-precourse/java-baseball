@@ -171,12 +171,14 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
+            int number = userInput.charAt(i) - '0';
+
             // 같은 값이 들어왔다면 -> 예외 발생
-            if (userNumber.contains(userInput.charAt(i) - '0')) {
+            if (userNumber.contains(number)) {
                 throw new IllegalArgumentException();
             }
 
-            userNumber.add(userInput.charAt(i) - '0');
+            userNumber.add(number);
         }
 
         // 반환
