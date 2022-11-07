@@ -10,6 +10,13 @@ public class Application {
     public static final int NUM_OF_DIGIT = 3;
     public static final int DIGIT_MIN = 1;
     public static final int DIGIT_MAX = 9;
+    public static final int INPUT_NUM_MIN = 123;
+    public static final int INPUT_NUM_MAX = 987;
+    public static final int START_IDX = 0;
+    public static final int END_IDX = 2;
+    public static final int RESTART = 1;
+    public static final int EXIT = 2;
+
 
     public static List<Integer> computerNumList = new ArrayList<>();
     public static List<Integer> userNumList = new ArrayList<>();
@@ -31,10 +38,10 @@ public class Application {
                 inputCommand = userInputRestartOrFinish();
             }
 
-            if (inputCommand == 1) {
+            if (inputCommand == RESTART) {
                 computerNumList = new ArrayList<>();
                 userNumList = new ArrayList<>();
-            } else if (inputCommand == 2) {
+            } else if (inputCommand == EXIT) {
                 break;
             }
         }
@@ -76,8 +83,8 @@ public class Application {
         strikeCnt = 0;
         ballCnt = 0;
 
-        for (int computerIdx = 0; computerIdx <= NUM_OF_DIGIT - 1; computerIdx++) {
-            for (int userIdx = 0; userIdx <= NUM_OF_DIGIT - 1; userIdx++) {
+        for (int computerIdx = START_IDX; computerIdx <= END_IDX; computerIdx++) {
+            for (int userIdx = START_IDX; userIdx <= END_IDX; userIdx++) {
                 increaseStrikeCntAndBallCnt(computerIdx, userIdx);
             }
         }
@@ -139,13 +146,13 @@ public class Application {
     private static void validateUserInputNumRange(String userInputNum) {
         int userInputNumToInt = Integer.parseInt(userInputNum);
 
-        if (userInputNumToInt < 123 || userInputNumToInt > 987) {
+        if (userInputNumToInt < INPUT_NUM_MIN || userInputNumToInt > INPUT_NUM_MAX) {
             throw new IllegalArgumentException("123 이상 987 이하의 숫자만 입력 가능합니다.");
         }
     }
 
     private static void validateUserNumListNoRepetition() {
-        for (int idx = 0; idx <= NUM_OF_DIGIT - 1; idx++) {
+        for (int idx = START_IDX; idx <= END_IDX; idx++) {
             int numAtIdx = userNumList.get(idx);
             List<Integer> userNumListAfterIdx = userNumList.subList(idx + 1, NUM_OF_DIGIT);
 
