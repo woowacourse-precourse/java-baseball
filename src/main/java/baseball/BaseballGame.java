@@ -28,50 +28,50 @@ public class BaseballGame {
         playerNum = new Inputnumber();
     }
 
-    public void play(){
+    public void play() {
         computerNum.generateNumber();
         computerInput = computerNum.getNum();
         do {
             playerInput = playerNum.getNum();
-            strike=0;
-            ball=0;
+            strike = 0;
+            ball = 0;
             cntScore();
             messageHint();
-        } while(!(strike==size));
+        } while (!(strike == size));
         System.out.println("3개의 숫자를 모두 맞히셨습니다");
         System.out.println("게임 종료");
     }
 
-    public void cntScore(){
+    public void cntScore() {
         cntStrike(playerInput, computerInput);
         cntBall(playerInput, computerInput);
     }
 
-    public void messageHint(){
-        if(ball>0){
+    public void messageHint() {
+        if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
-        if(strike>0){
+        if (strike > 0) {
             System.out.print(strike + "스트라이크 ");
         }
-        if(strike==0 && ball==0){
+        if (strike == 0 && ball == 0) {
             System.out.print("낫싱");
         }
         System.out.println();
     }
 
-    public int cntStrike(List<Integer> player, List<Integer> computer){
-        for(int i=0; i<size; i++) {
-            if(player.get(i).equals(computer.get(i))){
+    public int cntStrike(List<Integer> player, List<Integer> computer) {
+        for (int i = 0; i < size; i++) {
+            if (player.get(i).equals(computer.get(i))) {
                 strike++;
             }
         }
         return strike;
     }
 
-    public int cntBall(List<Integer> player, List<Integer> computer){
-        for(int i=0; i<size; i++){
-            if(computer.contains(player.get(i)) && computer.get(i)!=player.get(i)){
+    public int cntBall(List<Integer> player, List<Integer> computer) {
+        for (int i = 0; i < size; i++) {
+            if (computer.contains(player.get(i)) && computer.get(i) != player.get(i)) {
                 ball++;
             }
         }
@@ -82,7 +82,7 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String restartInput = Console.readLine();
 
-        if (!RestartValidation.checkRestart(restartInput)){
+        if (!RestartValidation.checkRestart(restartInput)) {
             throw new IllegalArgumentException();
         }
         return restartInput.equals("1");
