@@ -1,10 +1,10 @@
-package baseball.util;
+package baseball.utils;
 
 import baseball.model.Score;
 
 import java.util.stream.IntStream;
 
-public class BaseBallGameScoreCounter {
+public class BaseballGameScoreCounter {
 
     public static Score checkScore(String baseballNumber, String userNumber) {
         int strikeCount = (int) IntStream.range(0, baseballNumber.length())
