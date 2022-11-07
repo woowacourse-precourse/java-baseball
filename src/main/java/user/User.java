@@ -1,13 +1,14 @@
 package user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
     private List<Integer> tryNumber;
 
-    public User(List<Integer> tryNumber) {
-        this.tryNumber = tryNumber;
+    public User() {
+        this.tryNumber = new ArrayList<>();
     }
 
     public List<Integer> getTryNumber() {
