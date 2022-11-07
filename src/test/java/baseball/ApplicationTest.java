@@ -45,6 +45,18 @@ class ApplicationTest extends NsTest {
 
         assertThat(expectedOutput).isEqualTo(realOutput);
     }
+
+    @Test
+    void hasOnlyNaturalNumberAsInput_입력이_자연수로만_구성된_경우_참(){
+        List<String> playerInput = List.of("123", "012", "1a3");
+        List<Boolean> expectedOutput = List.of(true, false, false);
+
+        List<Boolean> realOutput = playerInput.stream()
+                .map(input -> Player.hasOnlyNaturalNumberAsInput(input))
+                .collect(Collectors.toList());
+
+        assertThat(expectedOutput).isEqualTo(realOutput);
+    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
