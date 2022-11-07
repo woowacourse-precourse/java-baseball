@@ -6,6 +6,7 @@ import java.util.List;
 
 import static baseball.values.Constant.Console.*;
 import static baseball.values.Constant.Digit.*;
+import static baseball.values.Constant.Exception.*;
 import static baseball.values.Constant.Hint.*;
 
 public class Game {
@@ -31,11 +32,15 @@ public class Game {
             compare(computerNums, playerNums);
             printHint();
         }
-
         printEndText();
+
         restartCheck = Console.readLine();
         if (restartCheck.equals(RESTART)) {
             game();
+        } else if (restartCheck.equals(QUIT)){
+            return;
+        } else {
+            throw new IllegalArgumentException(RESTART_CHECK_VALUE);
         }
     }
 
