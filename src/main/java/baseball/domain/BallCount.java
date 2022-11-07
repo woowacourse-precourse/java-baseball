@@ -6,6 +6,8 @@ public class BallCount {
     private final int MAX_STRIKE_COUNT = 3;
     private final int MIN_BALL_COUNT = 0;
     private final int MAX_BALL_COUNT = 3;
+
+    private final int NO_COUNT = 0 ;
     private int Strikes;
     private int Balls;
 
@@ -17,13 +19,13 @@ public class BallCount {
     }
 
     public String ballCountResult() {
-        if (Balls == 0 && Strikes == 0) {
+        if (Balls == NO_COUNT && Strikes == NO_COUNT) {
             return "낫싱";
         }
-        if (Strikes == 0) {
+        if (Strikes == NO_COUNT) {
             return String.valueOf(Balls) + "볼";
         }
-        if (Balls == 0) {
+        if (Balls == NO_COUNT) {
             return String.valueOf(Strikes) + "스트라이크";
         }
         return String.valueOf(Balls) + "볼 " + String.valueOf(Strikes) + "스트라이크";
