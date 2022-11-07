@@ -15,7 +15,8 @@ public class ComputerNumberTest {
     @Test
     void 컴퓨터_숫자_3자리인지_검증() {
         //given
-        List<Integer> numberList = computer.setRandomNumber();
+        computer.setRandomNumber();
+        List<Integer> numberList = computer.getComputerNumber();
 
         //then
         assertThat(CNT_NUMBER).isEqualTo(numberList.size());
@@ -24,7 +25,8 @@ public class ComputerNumberTest {
     @Test
     void 컴퓨터_숫자_중복인지_검증() {
         //given
-        List<Integer> numberList = computer.setRandomNumber();
+        computer.setRandomNumber();
+        List<Integer> numberList = computer.getComputerNumber();
 
         //when
         Set<Integer> numSet = new HashSet<>(numberList);

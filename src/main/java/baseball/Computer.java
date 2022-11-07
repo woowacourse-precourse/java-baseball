@@ -9,7 +9,13 @@ import static baseball.Constant.*;
 
 public class Computer {
 
-    public List<Integer> setRandomNumber() {
+    private List<Integer> computerNumber;
+
+    public List<Integer> getComputerNumber() {
+        return computerNumber;
+    }
+
+    public void setRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
 
         while (randomNumberList.size() < CNT_NUMBER) {
@@ -18,7 +24,7 @@ public class Computer {
             if (isNumberInList(randomNumber, randomNumberList))
                 randomNumberList.add(randomNumber);
         }
-        return randomNumberList;
+        this.computerNumber = randomNumberList;
     }
 
     private boolean isNumberInList(int number, List<Integer> numberList) {

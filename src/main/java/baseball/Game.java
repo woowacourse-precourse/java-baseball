@@ -13,10 +13,11 @@ public class Game {
 
         System.out.println(START_PROGRAM);
 
-        List<Integer> computerNumber = computer.setRandomNumber();
+        computer.setRandomNumber();
+        List<Integer> computerNumber = computer.getComputerNumber();
+        
         String userNumber = user.inputNumber();
         System.out.println(getHint(userNumber, computerNumber));
-
     }
 
     public String getHint(String userNumber, List<Integer> computerNumber) {
