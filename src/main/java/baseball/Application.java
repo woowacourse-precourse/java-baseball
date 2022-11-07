@@ -9,12 +9,11 @@ import java.util.Objects;
 
 
 public class Application {
+    static List<Integer> computerNumbersList = getRandomThreeNumbers();
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int startSwitch = 1;
-        List<Integer> computerNumbersList = getRandomThreeNumbers();
         while (startSwitch == 1) {
-            System.out.println(computerNumbersList);
             System.out.print("숫자를 입력해주세요 : ");
             String stringUserNumber = Console.readLine();
             handleInputException(stringUserNumber);
@@ -24,7 +23,6 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 startSwitch = getStartSwitch();
-                computerNumbersList = getRandomThreeNumbers();
             }
         }
     }
@@ -64,6 +62,9 @@ public class Application {
         if(!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
             throw new IllegalArgumentException();
         }
+        if(Objects.equals(stringStartSwitch, "1")){
+            computerNumbersList = getRandomThreeNumbers();
+        }
         return Integer.parseInt(stringStartSwitch);
     }
 
@@ -96,7 +97,7 @@ public class Application {
 
     public static void printResult(int strikeCount, int ballCount) {
         if (strikeCount != 0 && ballCount != 0) {
-            System.out.println(strikeCount + "스트라이크 " + ballCount + "볼");
+            System.out.println( ballCount + "볼 " + strikeCount + "스트라이크" );
         } else if (strikeCount != 0) {
             System.out.println(strikeCount + "스트라이크");
         } else if (ballCount != 0) {
