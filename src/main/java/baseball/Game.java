@@ -57,10 +57,23 @@ public class Game {
     }
 
     private void strikeOrBall(int i, int j) {
-        if (i == j) {
+        if (inputNumber.get(i) == computer.get(j) && i == j) {
             count.set(0, count.get(0) + 1);
-        } else {
+        } else if (inputNumber.get(i) == computer.get(j)) {
             count.set(1, count.get(1) + 1);
+        }
+    }
+
+    // 입력에 대한 결과 출력 기능
+    private void out() {
+        if (count.get(0) == 0 && count.get(1) == 0) {
+            System.out.println("낫싱");
+        } else if (count.get(0) == 0) {
+            System.out.println(count.get(1) + "볼");
+        } else if (count.get(1) == 0) {
+            System.out.println(count.get(0) + "스트라이크");
+        } else {
+            System.out.println(count.get(1) + "볼 " + count.get(0) + "스트라이크");
         }
     }
 
