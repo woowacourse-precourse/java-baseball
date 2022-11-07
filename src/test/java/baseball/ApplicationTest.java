@@ -92,7 +92,9 @@ class ApplicationTest extends NsTest {
         assertThat(getNumbersToUserNumber(number)).isEqualTo(result);
     }
 
-    @Test
+    @ParameterizedTest(name = "{0}을 넣었을 때 IllegalArgumentException 발생")
+    @ValueSource(strings = {"1e4", "1#3)", "~23,", "00 "})
+    @DisplayName("사용자 번호가 숫자로 변경되는지 확인 테스트")
     void 사용자_번호를_나눠_숫자로_변경하는_테스트_숫자_아님() {
         String number = "23e";
         assertThatThrownBy(() -> getNumbersToUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
