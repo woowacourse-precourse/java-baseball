@@ -5,7 +5,9 @@ import baseball.constant.Constant;
 public class Ball {
 
     private final String numberBall;
-    private final String THREE_NUMBER_REGULAR_EXPRESSION = "\\d{3}";
+    private static final String THREE_NUMBER_REGULAR_EXPRESSION = "\\d{3}";
+    public static final String EXCEPTION_MESSAGE_FOR_INVALID_FORM = "세 자리 숫자만 가능합니다.";
+    public static final String EXCEPTION_MESSAGE_FOR_DUPLICATE = "숫자가 중복되지 않아야 합니다.";
 
     public Ball(String numberBall) {
         validateForm(numberBall);
@@ -15,13 +17,13 @@ public class Ball {
 
     private void validateForm(String numberBall) {
         if (!numberBall.matches(THREE_NUMBER_REGULAR_EXPRESSION)) {
-            throw new IllegalArgumentException("세 자리 숫자만 가능합니다.");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_FOR_INVALID_FORM);
         }
     }
 
     private void validateDuplication(String numberBall) {
         if (hasDuplicates(numberBall)) {
-            throw new IllegalArgumentException("숫자가 중복되지 않아야 합니다.");
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_FOR_DUPLICATE);
         }
     }
 
