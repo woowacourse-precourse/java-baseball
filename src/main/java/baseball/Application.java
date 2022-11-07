@@ -31,6 +31,8 @@ public class Application {
 
 class GameManager {
     int numberSize = 3;
+    int restart = 1;
+    int terminate = 2;
     public List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < numberSize) {
@@ -76,8 +78,6 @@ class GameManager {
     }
 
     public boolean isAgain(boolean finish) {
-        int restart = 1;
-        int terminate = 2;
         int userInput = -1;
         if (finish == true) {
             userInput = Integer.parseInt(Console.readLine());
