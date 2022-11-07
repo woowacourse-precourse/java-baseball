@@ -60,6 +60,12 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(()->getNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 번호를_숫자로_변경하는_테스트_숫자() {
+        String number = "234";
+        assertThat(getNumber(number)).isEqualTo(234);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
