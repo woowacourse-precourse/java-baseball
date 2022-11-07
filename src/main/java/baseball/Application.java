@@ -16,12 +16,14 @@ public class Application {
 		random_number_list=RandomNumber.createRandomNumber();
 		COIN=1;
 		while (COIN==1){
+
 			System.out.print("숫자를 입력해주세요 : ");
 			String user_input_number = Console.readLine();
-			System.out.println(Validation.validation("user_input_number_validation",user_input_number));
+
 			if(!Validation.validation("user_input_number_validation",user_input_number)){
 				throw new IllegalArgumentException();
 			}
+
 			CompareNumber.compareUserNumberAndRandomNumber(user_input_number, random_number_list);
 			HashMap<String, Integer> score_map = RoundScore.getScoreMap();
 			scoreConsoleOutput(score_map);
