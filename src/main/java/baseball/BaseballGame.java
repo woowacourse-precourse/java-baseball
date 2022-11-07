@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.domain.Balls;
 import baseball.domain.Computer;
+import baseball.domain.GameStatus;
 import baseball.domain.Player;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -30,8 +31,8 @@ public class BaseballGame {
     }
 
     private void restart() {
-        int restart = InputView.restart();
-        if (restart == 1) {
+        GameStatus status = GameStatus.getGameStatus(InputView.restart());
+        if (status.isRestart()) {
             play();
         }
     }
