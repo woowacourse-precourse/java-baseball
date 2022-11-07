@@ -38,10 +38,10 @@ public class Application {
             } else if (input == 2) {
                 return true;
             } else {
-                throw new IllegalArgumentException("프로그램 종료: 입력값이 1 또는 2가 아닙니다.");
+                throw new IllegalArgumentException("프로그램 종료: 올바른 입력이 아닙니다.");
             }
         } catch (IllegalArgumentException e)  {
-                throw new IllegalArgumentException("프로그램 종료: 입력이 숫자가 아닙니다.");
+                throw new IllegalArgumentException("프로그램 종료: 올바른 입력이 아닙니다.");
         }
     }
 
