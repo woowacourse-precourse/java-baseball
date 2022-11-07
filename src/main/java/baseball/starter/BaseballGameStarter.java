@@ -27,10 +27,10 @@ public class BaseballGameStarter {
         Referee referee = new Referee();
 
         while (referee.judgement(computerGeneratedValue, userInputValue).get("strikeCount") != 3) {
-                referee.sayJudgement(referee.judgement(computerGeneratedValue, userInputValue));
-                System.out.print("숫자를 입력해주세요 : ");
-                userInputValue = new User().stringConvertToStringList(
-                        Console.readLine());
+            referee.sayJudgement(referee.judgement(computerGeneratedValue, userInputValue));
+            System.out.print("숫자를 입력해주세요 : ");
+            userInputValue = new User().stringConvertToStringList(
+                    Console.readLine());
         }
         return true;
     }
