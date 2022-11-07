@@ -5,6 +5,7 @@ import java.util.*;
 import baseball.model.ComputerGenerate;
 import baseball.model.UserGenerate;
 import baseball.controller.Hint;
+import baseball.view.OutputView;
 
 import static baseball.view.InputView.restartInput;
 
@@ -20,7 +21,8 @@ public class Application {
 
         while (!result.equals("3스트라이크")) {
             user = new UserGenerate().user;
-            result = new Hint(computer,user).hintResult;
+            Hint hint = new Hint(computer,user);
+            OutputView.HintOutput(hint.strike,hint.ball);
             System.out.println(result);
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
