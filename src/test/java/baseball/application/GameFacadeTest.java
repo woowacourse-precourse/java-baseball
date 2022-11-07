@@ -18,13 +18,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class GameFacadeTest {
 
     AppConfig appConfig = new AppConfig();
+    GameFacade gameFacade = appConfig.gameFacade();
 
     @Test
     @DisplayName("컴퓨터가 랜덤으로 세자리 숫자 만들기")
     void createAnswerBalls() {
         //given
         final List<Integer> integerList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        final GameFacade gameFacade = appConfig.gameFacade();
         //when
         final Balls answerBalls = gameFacade.createAnswerBalls();
         //then
@@ -41,10 +41,7 @@ public class GameFacadeTest {
         @DisplayName("[성공]")
         void success() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             InputFactory.inputNumber("123");
-
             final List<Integer> integerList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
             //when
             final Balls playerBalls = gameFacade.createPlayerBalls();
@@ -57,7 +54,6 @@ public class GameFacadeTest {
         @DisplayName("입력받은 숫자가 3자리가 아니면 테스트 실패")
         void fail_1() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
             InputFactory.inputNumber("1234");
             //when && then
             assertThatThrownBy(gameFacade::createPlayerBalls)
@@ -69,7 +65,6 @@ public class GameFacadeTest {
         @DisplayName("입력받은 숫자에 0이 포함되어 있으면 테스트 실패")
         void fail_2() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
             InputFactory.inputNumber("120");
             //when && then
             assertThatThrownBy(gameFacade::createPlayerBalls)
@@ -81,7 +76,6 @@ public class GameFacadeTest {
         @DisplayName("입력받은 숫자에 문자열 포함되어 있으면 테스트 실패")
         void fail_3() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
             InputFactory.inputNumber("abc");
             //when && then
             assertThatThrownBy(gameFacade::createPlayerBalls)
@@ -93,7 +87,6 @@ public class GameFacadeTest {
         @DisplayName("입력받은 숫자에 중복된 숫자가 있으면 테스트 실패")
         void fail_4() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
             InputFactory.inputNumber("112");
             //when && then
             assertThatThrownBy(gameFacade::createPlayerBalls)
@@ -110,8 +103,6 @@ public class GameFacadeTest {
         @DisplayName("컴퓨터가 입력한 3자리 숫자와 사용자가 입력한 3숫자가 위치와 값이 모두 같으면 3스트라이크")
         void three_strike() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Balls answerBall = BallFactory.balls(List.of(1, 2, 3));
             final Balls playerBall = BallFactory.balls(List.of(1, 2, 3));
             //when
@@ -125,8 +116,6 @@ public class GameFacadeTest {
         @DisplayName("컴퓨터가 입력한 3자리 숫자와 사용자가 입력한 3숫자가 값은 같지만 위치가 서로 다르면 3볼")
         void three_ball() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Balls answerBall = BallFactory.balls(List.of(1, 2, 3));
             final Balls playerBall = BallFactory.balls(List.of(3, 1, 2));
             //when
@@ -140,8 +129,6 @@ public class GameFacadeTest {
         @DisplayName("컴퓨터가 입력한 3자리 숫자와 사용자가 입력한 3숫자가 값과 위치가 모두 다르면 낫싱")
         void nothing() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Balls answerBall = BallFactory.balls(List.of(1, 2, 3));
             final Balls playerBall = BallFactory.balls(List.of(4, 5, 6));
             //when
@@ -155,8 +142,6 @@ public class GameFacadeTest {
         @DisplayName("같은거 1개, 위치 다른거 2개 = 2볼1스트라이크")
         void one_strike_two_ball() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Balls answerBall = BallFactory.balls(List.of(1, 2, 3));
             final Balls playerBall = BallFactory.balls(List.of(1, 3, 2));
             //when
@@ -170,8 +155,6 @@ public class GameFacadeTest {
         @DisplayName("같은거 2개, 위치 다른거 0개 = 2스트라이크")
         void two_strike() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Balls answerBall = BallFactory.balls(List.of(1, 2, 3));
             final Balls playerBall = BallFactory.balls(List.of(1, 2, 5));
             //when
@@ -185,8 +168,6 @@ public class GameFacadeTest {
         @DisplayName("같은거 0개, 위치 다른거 2개 = 2볼")
         void two_ball() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Balls answerBall = BallFactory.balls(List.of(1, 2, 3));
             final Balls playerBall = BallFactory.balls(List.of(2, 1, 6));
             //when
@@ -205,8 +186,6 @@ public class GameFacadeTest {
         @DisplayName("3스트라이크면 정답!!")
         void isAnswer() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Hint hint = Hint.create(3, 0);
             //when
             final boolean isAnswer = gameFacade.judgeIsAnswer(hint);
@@ -218,8 +197,6 @@ public class GameFacadeTest {
         @DisplayName("3스트라이크가 아니면 정답아님!!")
         void isNotAnswer() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             final Hint hint = Hint.create(2, 1);
             //when
             final boolean isAnswer = gameFacade.judgeIsAnswer(hint);
@@ -236,8 +213,6 @@ public class GameFacadeTest {
         @DisplayName("2번을 누르면 게임 종료 boolean 값은 false")
         void gameEnd() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             InputFactory.inputNumber("2");
             //when
             final boolean isRestart = gameFacade.gameEndOrRestart();
@@ -249,8 +224,6 @@ public class GameFacadeTest {
         @DisplayName("1번을 누르면 게임 재시작 boolean 값은 true")
         void gameRestart() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             InputFactory.inputNumber("1");
             //when
             final boolean isRestart = gameFacade.gameEndOrRestart();
@@ -262,8 +235,6 @@ public class GameFacadeTest {
         @DisplayName("1,2번이 아닌 다른 입력을 하면 예외 발생")
         void fail() {
             //given
-            final GameFacade gameFacade = appConfig.gameFacade();
-
             InputFactory.inputNumber("aa");
             //when && then
             assertThatThrownBy(gameFacade::gameEndOrRestart)

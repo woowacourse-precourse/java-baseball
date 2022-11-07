@@ -13,12 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BallServiceTest {
 
     AppConfig appConfig = new AppConfig();
+    BallService ballService = appConfig.ballService();
 
     @Test
     @DisplayName("컴퓨터가 랜덤으로 세자리 숫자 만들기")
     void createAnswerBalls() {
         //given
-        final BallService ballService = appConfig.ballService();
         final List<Integer> integerList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         //when
         final Balls answerBalls = ballService.createAnswerBalls();
@@ -32,7 +32,6 @@ public class BallServiceTest {
     @DisplayName("사용자가 입력한 3자리 숫자로 Balls 일급 컬렉션 만들기")
     void createPlayerBalls () {
         //given
-        final BallService ballService = appConfig.ballService();
         final List<Integer> integerList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         //when
         final Balls playerBalls = ballService.createPlayerBalls("123");
