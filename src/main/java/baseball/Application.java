@@ -98,6 +98,7 @@ public class Application {
                     if (userNumbers[user_index]== computerNumbers.get(cpu_index)){
                         if (user_index == cpu_index){
                             scoreboard[0]++; //strike
+                            continue;
                         }
                         scoreboard[1]++; //ball
                     }
