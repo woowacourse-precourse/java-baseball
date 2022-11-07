@@ -38,10 +38,9 @@ class ApplicationTest extends NsTest {
                     run("123", "456", "1", "789", "1", "157", "2");
                     assertThat(output()).contains("낫싱", "3스트라이크", "3스트라이크", "3스트라이크", "게임 종료");
                 },
-                4,5,6,7,8,9,1,5,7
+                4, 5, 6, 7, 8, 9, 1, 5, 7
         );
     }
-
 
     @Test
     void 예외_테스트() {
@@ -62,6 +61,10 @@ class ApplicationTest extends NsTest {
         );
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1 2"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("092"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
