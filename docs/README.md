@@ -54,14 +54,14 @@
   `private HashMap<Integer, Integer> generateNumber`<br>
   `: 세 개의 무작위 수를 HashMap에 저장합니다. key는 유일한 값인 무작위 수로, value는 숫자 저장순서입니다.`<br>
   <br>
-  `private static int getRandomDigit()`<br>
-  `: 1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.`<br>
-  <br>
   `private String combineDigits(HashMap<Integer, Integer> digits)`<br>
   `: 만들어진 무작위 수 세 개를 세자리 수의 문자열로 만듭니다.`<br>
   <br>
   `private boolean isAbleToAddDigit(HashMap<Integer, Integer> digits)`<br>
   `: random Number 3개가 모두 안 만들어졌는지 확인`<br>
+  <br>
+  `private static int getRandomDigit()`<br>
+  `: 1~9 사이의 무작위 랜덤 숫자 하나를 반환한다.`<br>
   <br>
 
 * _**PlayerUser Class**_<br>
@@ -70,16 +70,16 @@
   `public static PlayerUser getInstance()`<br>
   `: 클래스에서 만들어진 싱글톤 객체를 반환한다.`<br>
   <br>
-  `public String getNumber()`<br>
+  `public String getInputNumber()`<br>
   `: playerUser 객체에 저장된 사용자 입력 Input값을 반환한다.`<br>
   <br>
-  `private String enterNumber()`<br>
+  `private String inputNumber()`<br>
   `: 사용자에게 세자리 수를 입력하게 한다.`<br>
   <br>
   `private boolean isExceptionalInput(String number)`<br>
   `: 사용자의 입력이 예외사항인지 아닌지를 확인한다.`<br>
   <br>
-  `private boolean isRightSize(String number)`<br>
+  `private boolean isRightNumberSize(String number)`<br>
   `: 세자리 수인지 확인합니다.`<br>
   <br>
   `private boolean isPositiveNumber(String number)`<br>
@@ -104,8 +104,11 @@
   `private void printMessage(List<Integer> judgement)`<br>
   `: 게임 수행결과를 출력합니다.`<br>
   <br>
-  `private List<Integer> getJudgement(String userInput, String answer)`<br>
-  `: 스트라이크와 볼의 개수를 List<Integer> judgement에 저장해서 반환합니다.`<br>
+  `private boolean isCorrectAnswer(int numberOfStrike)`<br>
+  `: 스트라이크의 개수가 3개인지 확인 후 게임을 끝내야할지 계속해야할지 판단합니다.`<br>
+  <br>
+  `private int askReplay()`<br>
+  `: 게임이 끝난 후 게임을 다시할지, 끝낼지 사용자에게 1 또는 2를 입력받아 진행합니다.`<br>
   <br>
   `private int countStrikes(String userInput, String answer)`<br>
   `: 스트라이크의 개수를 세서 리턴합니다.`<br>
@@ -119,15 +122,3 @@
   `private boolean isNothing(int strikeCounter, int ballCounter)`<br>
   `: 스트라이크 개수와 볼의 개수가 둘 다 0인지 아닌지 판단합니다.`<br>
   <br>
-  `private boolean isCorrectAnswer(int numberOfStrike)`<br>
-  `: 스트라이크의 개수가 3개인지 확인 후 게임을 끝내야할지 계속해야할지 판단합니다.`<br>
-  <br>
-  `private int askReplay()`<br>
-  `: 게임이 끝난 후 게임을 다시할지, 끝낼지 사용자에게 1 또는 2를 입력받아 진행합니다.`<br>
-  <br>
-
-
-
-
-
-
