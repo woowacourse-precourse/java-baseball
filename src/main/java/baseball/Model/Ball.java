@@ -15,7 +15,7 @@ public class Ball {
         return returnHint();
     }
 
-    private void ballHintPush(String userInput, String computerInput) {
+    public void ballHintPush(String userInput, String computerInput) {
         for (String ball : ballArr) {
             ballMap.put(ball, 0);
         }
@@ -33,7 +33,7 @@ public class Ball {
         }
     }
 
-    private String returnHint() {
+    public String returnHint() {
         List<String> resultArr = new ArrayList<>();
         if (ballMap.get(ballArr[2]) > 2) {
             resultArr.add(ballArr[2]);
