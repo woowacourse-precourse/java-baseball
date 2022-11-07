@@ -23,4 +23,10 @@ public class PlayGameTest {
 
         assertThat(playGameTest.checkStrikeAndBallForTest()).isEqualTo(answer);
     }
+
+    @Test
+    void 볼_스트라이크_출력_테스트(){
+        String answer = "1볼 2스트라이크";
+        assertThat(playGameTest.outputResultForTest(1,2)).isEqualTo(answer);
+    }
 }
