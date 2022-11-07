@@ -1,5 +1,6 @@
 package baseball.system;
 
+import baseball.system.progress.NumberComparison;
 import org.junit.jupiter.api.Test; // @Test annotation
 import org.junit.jupiter.api.BeforeEach; // @BeforeEach annotation
 
