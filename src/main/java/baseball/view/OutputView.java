@@ -26,7 +26,8 @@ public class OutputView {
         System.out.println(result);
     }
 
-    public void printWinGame() {
+    public void printWinGame(int strike) {
+        System.out.println(strike + STRIKE);
         System.out.println(WIN_GAME);
     }
 }
