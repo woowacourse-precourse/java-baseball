@@ -45,12 +45,15 @@ public final class Score {
 
 
     private int calculateStrike(Digits player, Digits computer) {
-        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0, (total, index) -> {
-            if (isStrike(player, computer, index)) {
-                return total + 1;
-            }
-            return total;
-        });
+        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0,
+                (totalStrikeCount, index) -> updateTotalStrikeCount(totalStrikeCount, player, computer, index));
+    }
+
+    private int updateTotalStrikeCount(int totalStrikeCount, Digits player, Digits computer, int index) {
+        if (isStrike(player, computer, index)) {
+            return totalStrikeCount + 1;
+        }
+        return totalStrikeCount;
     }
 
     private boolean isStrike(Digits player, Digits computer, int index) {
@@ -58,12 +61,15 @@ public final class Score {
     }
 
     private int calculateBall(Digits player, Digits computer) {
-        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0, (total, index) -> {
-            if (isBall(player, computer, index)) {
-                return total + 1;
-            }
-            return total;
-        });
+        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0,
+                (totalBallCount, index) -> updateTotalBallCount(totalBallCount, player, computer, index));
+    }
+
+    private int updateTotalBallCount(int totalBallCount, Digits player, Digits computer, int index) {
+        if (isBall(player, computer, index)) {
+            return totalBallCount + 1;
+        }
+        return totalBallCount;
     }
 
     private boolean isBall(Digits player, Digits computer, int index) {
