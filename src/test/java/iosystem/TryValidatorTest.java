@@ -55,4 +55,17 @@ class TryValidatorTest {
         // then
         assertEquals("3자리 수만 입력할 수 있습니다.", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("중복되는 숫자 입력")
+    void inputDuplicatedNumberTest() {
+        // given
+        String inputDuplicatedNumber = "133";
+
+        // when
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> TryValidator.validate(inputDuplicatedNumber));
+
+        // then
+        assertEquals("자리수 간 중복된 수를 가질 수 없습니다.", exception.getMessage());
+    }
 }

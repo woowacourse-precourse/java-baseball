@@ -1,5 +1,7 @@
 package iosystem;
 
+import java.util.*;
+
 public class TryValidator {
 
     private TryValidator(){
@@ -8,9 +10,10 @@ public class TryValidator {
     private static final int MAX_NUMBER_LENGTH = 3;
     private static final String NUMBER_REGEXP = "^[1-9]+$";
 
-    public static void validate(String userInput) {
-        isNumberBetweenOneToNine(userInput);
-        validateNumberLength(userInput);
+    public static void validate(String input) {
+        isNumberBetweenOneToNine(input);
+        validateNumberLength(input);
+        validateDuplicateNumber(input);
     }
 
     public static void isNumberBetweenOneToNine(String input) {
@@ -25,4 +28,14 @@ public class TryValidator {
         }
     }
 
+    public static void validateDuplicateNumber(String input) {
+        List<String> characterList = Arrays.asList(input.split(""));
+        if (hasDuplicatedDigit(characterList)) {
+            throw new IllegalArgumentException("자리수 간 중복된 수를 가질 수 없습니다.");
+        }
+    }
+
+    private static boolean hasDuplicatedDigit(List<String> characterList) {
+        return characterList.size() != characterList.stream().distinct().count();
+    }
 }
