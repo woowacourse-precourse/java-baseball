@@ -50,6 +50,7 @@ public class Controller {
 
     private void running() {
         resetScore();
+        ball = countBall(computerNumber, userNumber);
         modifyStrikeBallCount();
         OutputView.printResult(ball, strike);
         if (strike == END_STRIKE_COUNT) {
@@ -75,7 +76,6 @@ public class Controller {
     }
 
     private void modifyStrikeBallCount() {
-        ball = countBall(computerNumber, userNumber);
         for (int i = 0; i < userNumber.size(); i++) {
             if (isStrikeNumber(computerNumber, userNumber.get(i), userNumber.indexOf(userNumber.get(i)))) {
                 ball -= 1;
