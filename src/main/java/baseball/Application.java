@@ -31,7 +31,7 @@ public class Application {
                 System.out.println("축하드립니다 3스트라이크 입니다.");
                 System.out.println("게임을 새로 시작하려면 1번 종료하려면 2번을 입력하세요.");
                 playerPick = Integer.parseInt(Console.readLine());
-                playerPick = playerPickNo(playerPick, computerList, computer);
+                playerPick = playerPickNo(playerPick, computerList);
             } else if (strikeCount + ballCount > 0) {
                 System.out.printf("%d볼 %d스트라이크 입니다 %n", ballCount, strikeCount);
             } else if (strikeCount + ballCount == 0) {
@@ -40,7 +40,7 @@ public class Application {
         }
     }
 
-    public static int playerPickNo(int playerPick, List computerList, String computer) {
+    public static int playerPickNo(int playerPick, List computerList) {
         if (playerPick == 1) {
             List list1 = computerRandomNo();
             for (int i = 0; i < computerList.size(); i++) {
