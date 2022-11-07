@@ -55,6 +55,12 @@ public class Game {
             correct = false;
             return;
         }
+        quit();
+    }
+
+    public void quit(){
+        Print.quit();
+        play = false;
     }
 
     private void pickNumbers(){
