@@ -1,62 +1,74 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
-    public static int findBalls(String input, ArrayList<Integer> correct)
+    public static int findBalls(String input, List<Integer> computer)
     {
         int loc=0;
         int ball=0;
         while (loc<3){
             int valueOfCurrent = Character.getNumericValue(input.charAt(loc));
-            if (correct.indexOf(valueOfCurrent) != 1 && correct.contains(valueOfCurrent)){
+            if (computer.indexOf(valueOfCurrent) != loc && computer.contains(valueOfCurrent)){
                 ball++;
+                System.out.println("I think "+valueOfCurrent+" is ball.");
             }
             loc++;
         }
         return ball;
     }
-    public static int findStrikes(String input, ArrayList<Integer> correct){
+    public static int findStrikes(String input, List<Integer> computer){
         int loc=0;
         int strike=0;
         while (loc<3){
             int valueOfCurrent = Character.getNumericValue(input.charAt(loc));
-            if(correct.indexOf(valueOfCurrent) == loc)
+            if(computer.indexOf(valueOfCurrent) == loc)
             {
                 strike++;
+                System.out.println("I think "+valueOfCurrent+" is strike.");
             }
             loc++;
         }
         return strike;
     }
 
-//    게임 시작 초기값 생성 (위치, 값)
+
     public static void main(String[] args) {
-        //기능 테스트
-//        int randNum = Randoms.pickNumberInRange(0,999);
-//        System.out.println("RandomNum : " + randNum);
-//        String inputData = Console.readLine();
-//        System.out.println("InputData : " + inputData);
-        String inputData = "123";
-
-//        초기값 생성
-        ArrayList<Integer> randomArray = new ArrayList<>();
-        int loc = 0;
-        while (loc<3){
-            int randNum = Randoms.pickNumberInRange(1,9);
-            if (randomArray.contains(randNum)) continue;
-
-            randomArray.add(randNum);
-            loc++;
-        }
+        int stateOfGame = 1;
+        while (stateOfGame == 1) {
+            int strike = 0;
+            int ball = 0;
+            List<Integer> computer = getRandomList();
+            System.out.println("computer : " + computer);
+            while (strike != 3) {
+                String inputData = Console.readLine();
+                System.out.println("InputData : " + inputData);
 
 //        입력 값과 정답 비교
-        int strike = findStrikes(inputData,randomArray);
-        int ball = findBalls(inputData,randomArray);
-        System.out.println("correct : " + randomArray);
-        System.out.println("strike : "+strike);
-        System.out.println("ball : "+ball);
+                strike = findStrikes(inputData, computer);
+                ball = findBalls(inputData, computer);
+
+                System.out.println("strike : " + strike);
+                System.out.println("ball : " + ball);
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            stateOfGame = Integer.parseInt(Console.readLine());
+        }
+    }
+
+    private static List<Integer> getRandomList() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 }
