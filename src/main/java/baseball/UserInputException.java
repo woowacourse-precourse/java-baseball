@@ -6,12 +6,8 @@ import java.util.Set;
 
 public class UserInputException {
     static public boolean isContainLetter(String input) {
-        for (char eachChar : input.toCharArray()) {
-            if (Character.isLetter(eachChar)) {
-                return true;
-            }
-        }
-        return false;
+        return input.chars()
+                .anyMatch(each -> Character.isLetter(each));
     }
 
     static public boolean isInputLength(String input, int length) {
