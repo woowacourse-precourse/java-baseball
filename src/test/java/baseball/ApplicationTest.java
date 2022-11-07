@@ -32,4 +32,9 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+    @Test
+    void 서로다른_랜덤_숫자_생성_테스트() {
+        int[] randomNumber = RandomUtil.createRandomComputerNumbers();
+        assertThat(randomNumber[0]).isNotEqualTo(randomNumber[1]).isNotEqualTo(randomNumber[2]);
+    }
 }
