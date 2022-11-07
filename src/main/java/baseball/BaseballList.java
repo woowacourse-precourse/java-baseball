@@ -19,6 +19,12 @@ public class BaseballList {
             baseball.printBaseball();
         }
     }
+    public Boolean contains(Baseball comparingBaseball) {
+        for(Baseball baseball: this.baseballList) {
+            if(baseball.equals(comparingBaseball)) return true;
+        }
+        return false;
+    }
     public Baseball getBaseballByIndex(int index){
         return this.baseballList.get(index);
     }

@@ -20,4 +20,10 @@ public class Computer {
                 .filter(i -> this.baseballList.getBaseballByIndex(i).equals(userBaseballList.getBaseballByIndex(i)))
                 .count();
     }
+    public int getBalls(BaseballList userBaseballList) {
+        return (int) IntStream.range(0, BASEBALL_LIST_SIZE)
+                .filter(i -> !this.baseballList.getBaseballByIndex(i).equals(userBaseballList.getBaseballByIndex(i)))
+                .filter(i -> this.baseballList.contains(userBaseballList.getBaseballByIndex(i)))
+                .count();
+    }
 }

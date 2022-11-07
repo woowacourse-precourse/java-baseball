@@ -19,7 +19,11 @@ public class User {
                         .collect(Collectors.toList())
         );
     }
-    public void getUserBaseballList(){
+    public void printUserBaseballList(){
         this.baseballList.printBaseballList();
+    }
+
+    public BaseballList getUserBaseballList() {
+        return this.baseballList;
     }
 }
