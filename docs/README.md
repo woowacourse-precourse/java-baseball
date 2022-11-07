@@ -1,6 +1,7 @@
 ### 기능 목록
 1. 컴퓨터의 수를 랜덤으로 정하는 기능 
-- void getComputerNumber()
+- 1부터 9사이의 수 중 무작위로 뽑는 함수 : int getRandomNumber()
+- 수를 computer 리스트에 추가하는 함수 : void addComputerNumber()
 2. 사용자의 수를 입력받아 적합성 판단
 - Console.readLine()
 - 숫자의 개수가 3이 아닌지 판단하는 기능 : void checkNumberLength()
