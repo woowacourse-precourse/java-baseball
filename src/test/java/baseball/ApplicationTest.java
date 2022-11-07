@@ -1,11 +1,13 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 게임종료_후_재시작() {
-        assertRandomNumberInRangeTest(
+        Assertions.assertRandomNumberInRangeTest(
             () -> {
                 run("246", "135", "1", "597", "589", "2");
                 assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
@@ -71,5 +73,31 @@ class ApplicationTest extends NsTest {
         assertThat(Application.convertBaseBallByLine(line))
             .hasSize(3)
             .doesNotHaveDuplicates();
+    }
+
+    @Test
+    void countStrike_Input123Computer123_Strike3() {
+        List<Integer> input = new ArrayList<>();
+        List<Integer> computer = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            input.add(i + 1);
+            computer.add(i + 1);
+        }
+        assertThat(Application.countStrike(input, computer))
+            .isEqualTo(3);
+    }
+
+    @Test
+    void countStrike_Input123Computer456_Strike0() {
+        List<Integer> input = new ArrayList<>();
+        input.add(1);
+        input.add(2);
+        input.add(3);
+        List<Integer> computer = new ArrayList<>();
+        computer.add(4);
+        computer.add(5);
+        computer.add(6);
+        assertThat(Application.countStrike(input, computer))
+            .isEqualTo(0);
     }
 }
