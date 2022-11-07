@@ -21,6 +21,7 @@ class ApplicationTest extends NsTest {
     @Test
     void randomNumber_길이확인() {
         String randomNumber = Computer.createRandomNumber();
+
         assertThat(randomNumber.length()).isEqualTo(3);
     }
 
@@ -60,32 +61,32 @@ class ApplicationTest extends NsTest {
     void should_3Strike_When_allSame() {
         String randomNumber = "123";
         String userNumber = "123";
-        String result = "3스트라이크";
-        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+        String gameResult = "3스트라이크";
+        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test
     void should_Strike_When_SamePositionSameNumber() {
         String randomNumber = "123";
         String userNumber = "145";
-        String result = "1스트라이크";
-        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+        String gameResult = "1스트라이크";
+        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test
     void should_Ball_When_SameNumber() {
         String randomNumber = "123";
         String userNumber = "451";
-        String result = "1볼";
-        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+        String gameResult = "1볼";
+        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test
     void should_Nothing_When_NothingSame() {
         String randomNumber = "123";
         String userNumber = "456";
-        String result = "낫싱";
-        assertThat(Computer.getHint(userNumber, randomNumber)).isEqualTo(result);
+        String gameResult = "낫싱";
+        assertThat(GameController.hint(userNumber, randomNumber)).isEqualTo(gameResult);
     }
 
     @Test
