@@ -81,7 +81,7 @@ class ApplicationTest extends NsTest {
         int gameStart = 1;
         int gameEnd = 2;
         int missNumber = 3;
-        String missType = "ffaz";
+        String missType = "asdasd ";
 
         //when
         boolean gameState = restartGameException.hasRestartNumber(missType);

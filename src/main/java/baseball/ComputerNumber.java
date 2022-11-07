@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Randoms;
 public class ComputerNumber {
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
 
     private List<Integer> computerNumber;
 
@@ -21,7 +23,7 @@ public class ComputerNumber {
     public void makeRandomNumber() {
         Set<Integer> numbers = new LinkedHashSet<>();
         while (numbers.size() < SystemMessage.NUMBER_SIZE) {
-            int number = Randoms.pickNumberInRange(1, 9);
+            int number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             numbers.add(number);
         }
         computerNumber = new ArrayList<>(numbers);

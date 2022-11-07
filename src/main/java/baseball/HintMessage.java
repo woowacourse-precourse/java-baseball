@@ -20,8 +20,8 @@ public class HintMessage {
             getHint();
         }
         if (user.equals(com)) {
-            isFinishGame();
-            return false;
+            return isFinishGame();
+//            return false;
         }
         return true;
     }
