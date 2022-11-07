@@ -14,6 +14,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     @Test
+    void 재시작_선택시_isContinue는_true() {
+        assertThat(Application.isContinue).isEqualTo(true);
+        Application.setIsContinue("1");
+        assertThat(Application.isContinue).isEqualTo(true);
+    }
+
+    @Test
+    void 종료_선택시_isContinue는_false() {
+        assertThat(Application.isContinue).isEqualTo(true);
+        Application.setIsContinue("2");
+        assertThat(Application.isContinue).isEqualTo(false);
+    }
+
+    @Test
     void 점수_체크() {
         Score score = Application.checkAnswer(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3));
         assertThat(score.getScore()).isEqualTo("3스트라이크");

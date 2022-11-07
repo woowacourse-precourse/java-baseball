@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
+    static boolean isContinue = true;
+
     public static void main(String[] args) {
         printInitMessage();
         play();
@@ -21,6 +23,7 @@ public class Application {
 
     private static void play() {
         List<Integer> answer = pickThreeNumbers();
+        System.out.println("answer = " + answer);
         List<Integer> userAnswer = stringConvertToIntegerList(getUserAnswer()); // 입력받은 값을 리스트로 변경
         String hint = "";
 
@@ -30,6 +33,13 @@ public class Application {
             System.out.println(hint);
         }
         printGameOver();
+        setIsContinue(Console.readLine());
+    }
+
+    public static void setIsContinue(String selectedNum) {
+        if (!selectedNum.equals("1")) {
+            isContinue = false;
+        }
     }
 
     private static void printGameOver() {
