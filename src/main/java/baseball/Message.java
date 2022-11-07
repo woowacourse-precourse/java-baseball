@@ -13,6 +13,10 @@ public enum Message {
     }
 
     public void print() {
+        System.out.print(message);
+    }
+
+    public void println() {
         System.out.println(message);
     }
 }
