@@ -60,4 +60,11 @@ class ApplicationTest extends NsTest {
         assertThat(Application.getStrikeCount(new ArrayList<>(Arrays.asList(1,2,3)), "123")).isEqualTo(3);
         assertThat(Application.getStrikeCount(new ArrayList<>(Arrays.asList(1,2,9)), "123")).isEqualTo(2);
     }
+
+    @Test
+    void 볼_개수_얻기() {
+        assertThat(Application.getBallCount(new ArrayList<>(Arrays.asList(1,2,3)), "123")).isEqualTo(0);
+        assertThat(Application.getBallCount(new ArrayList<>(Arrays.asList(2,1,9)), "623")).isEqualTo(1);
+        assertThat(Application.getBallCount(new ArrayList<>(Arrays.asList(2,1,9)), "923")).isEqualTo(2);
+    }
 }
