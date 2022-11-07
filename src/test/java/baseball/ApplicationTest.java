@@ -8,9 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -105,6 +103,20 @@ class ApplicationTest extends NsTest {
         boolean result = true;
         assertEquals(result,endGame());
     }
+
+    @Test
+    void makeAnswerSizeTest() {
+        int answerSize = 3;
+        assertEquals(answerSize,makeAnswer().size());
+    }
+
+    @Test
+    void makeAnswerValueTest() {
+        List<Integer> answerList = makeAnswer();
+        Set<Integer> answerSet = new HashSet<>(answerList);
+        assertEquals(answerList.size(),answerSet.size());
+    }
+
 
     @Override
     public void runMain() {
