@@ -30,5 +30,13 @@ public class Application {
         }
     }
 
+    private static void validateOverlap(String numbers) {
+        Set<Character> overlapInspector = new HashSet<>();
+        for (char numChar : numbers.toCharArray()) {
+            overlapInspector.add(numChar);
+        }
+        if (overlapInspector.size() != 3) {
+            throw new IllegalArgumentException();
+        }
     }
 }
