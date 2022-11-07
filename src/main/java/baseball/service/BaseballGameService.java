@@ -55,12 +55,18 @@ public class BaseballGameService {
         strikeCount = 0;
         ballCount = 0;
     }
-    public void setUserNumber(){
+
+    public void setUserNumber() {
         user = new User();
         String userNumber = baseballGameView.inputNumber();
         inputUserNumberException.findUserNumberException(userNumber);
         user.setSelectNumber(userNumber);
     }
+
+    public List<Integer> getUserNumber() {
+        return user.getSelectNumber();
+    }
+
 }
 
 
