@@ -27,6 +27,10 @@ public class UserUtil {
     }
 
     private static int numberOf(String digit) {
-        return Integer.parseInt(digit);
+        try {
+            return Integer.parseInt(digit);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("input should be integer", e);
+        }
     }
 }
