@@ -14,7 +14,10 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         Scanner scanner = new Scanner(System.in);
+        run(scanner);
+    }
 
+    private static void run(Scanner scanner) throws ProgressException {
 
         do {
             List<Integer> targetNumber = makeRandomWithoutDuplicate();
@@ -25,6 +28,7 @@ public class Application {
             endingWorking(scanner);
         } while (restartStatus);
     }
+
 
     private static List<Integer> makeRandomWithoutDuplicate() {
 
@@ -50,7 +54,6 @@ public class Application {
     private static boolean isEndingValueValid(String restartStatusValue) {
         return CheckException.restartStatusValid(restartStatusValue);
     }
-
 
 
     private static boolean setRestartStatus(String defineRestartValue) {
