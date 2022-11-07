@@ -37,4 +37,17 @@ public class BaseballService {
         }
         return false;
     }
+
+    // 게임 재시작 기능
+    public boolean reStart() {
+        System.out.println(TRY_AGAIN_MESSAGE);
+        String restart = Input.inputUserNumber();
+        if (restart.equals("1")) {
+            return true;
+        }
+        if (restart.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
 }
