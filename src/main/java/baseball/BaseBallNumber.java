@@ -18,7 +18,7 @@ public final class BaseBallNumber {
     }
 
     public static void validateSize(List<Character> numbers) {
-        if (numbers.size() != 3) {
+        if (numbers.size() != GAME_NUMBER_SIZE) {
             throw new IllegalArgumentException(
                 "Baseball number length should be " + GAME_NUMBER_SIZE);
         }
