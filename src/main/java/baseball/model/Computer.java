@@ -15,6 +15,14 @@ public class Computer {
 
     private List<Integer> numbers = new ArrayList<>();
 
+    public void createRandomNumber(){
+        numbers.clear();
+        while (numbers.size() < NUMBER_SIZE){
+            int number = Randoms.pickNumberInRange(MIN_NUMBER,MAX_NUMBER);
+            isListContainNumber(number);
+        }
+    }
+
     private void isListContainNumber(Integer number){
         if(!numbers.contains(number))
             numbers.add(number);
