@@ -5,6 +5,28 @@ import java.util.List;
 
 public class Referee {
 
+	private String gameResult;
+
+	public void judge(List<Integer> computerBalls, List<Integer> playerBalls) {
+		gameResult = "";
+
+		if (isNothing(computerBalls, playerBalls)) {
+			gameResult = "낫싱";
+			return;
+		}
+
+		int ballNum = countBallNum(computerBalls, playerBalls);
+		int strikeNum = countStrikeNum(computerBalls, playerBalls);
+
+		if (ballNum > 0) {
+			gameResult = gameResult + ballNum + "볼 ";
+		}
+		if (strikeNum > 0) {
+			gameResult = gameResult + strikeNum + "스트라이크";
+		}
+		gameResult = gameResult.trim();
+	}
+
 	public boolean isNothing(List<Integer> computerBalls, List<Integer> playerBalls) {
 		List<Integer> sameBalls = new LinkedList<>();
 		sameBalls.addAll(computerBalls);
@@ -47,5 +69,9 @@ public class Referee {
 
 	private boolean canBall(List<Integer> computerBalls, int playerBall) {
 		return computerBalls.contains(playerBall);
+	}
+
+	public String getGameResult() {
+		return gameResult;
 	}
 }
