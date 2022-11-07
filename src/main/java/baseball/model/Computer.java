@@ -15,5 +15,8 @@ public class Computer {
 
     private List<Integer> numbers = new ArrayList<>();
 
-
+    private void isListContainNumber(Integer number){
+        if(!numbers.contains(number))
+            numbers.add(number);
+    }
 }
