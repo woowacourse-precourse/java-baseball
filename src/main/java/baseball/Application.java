@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -24,7 +25,7 @@ class Computer {
 }
 
 class User {
-    static int INPUT_LENGTH = 3;
+    public static int INPUT_LENGTH = 3;
     public static List<Integer> getInputNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
@@ -43,29 +44,35 @@ class User {
         int num1 = inputNum.get(0);
         int num2 = inputNum.get(1);
         int num3 = inputNum.get(2);
-
         if (num1 == num2 || num2 == num3 || num1 == num3){
             throw new IllegalArgumentException();
         }
         return inputNum;
     }
 
-
-
-    static int checkSize()
 }
 
 class game {
-    public int ball;
-    public int strike;
+    public static int ball;
+    public static int strike;
 
-    static boolean nbrInAnswer(Integer nbr, List<Integer> answer){
-        if (answer.contains(nbr)) {
-            return true;
+    public void strike(List<Integer> input, List<Integer> answer){
+        for (int idx = 0; idx < User.INPUT_LENGTH; idx++){
+            if (input.get(idx) == answer.get(idx)){
+                strike++;
+            }
         }
-        return false;
     }
 
+    public void ball(List<Integer> input, List<Integer> answer){
+        int idx = 0;
+        for (int Number : input){
+            if (answer.contains(Number) && answer.indexOf(Number) != idx){
+                ball++;
+            }
+            idx++;
+        }
+    }
 
 }
 
@@ -77,5 +84,24 @@ class print {
     static void threeStrike(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    static void result(int ball, int strike){
+        if (strike == 3) {
+            print.threeStrike();
+            return ;
+        }
+        if (ball == 0 && strike == 0){
+            print.nothing();
+            return ;
+        }
+        if (ball > 0){
+            System.out.print(ball + "볼 ");
+        }
+        if (strike > 0){
+            System.out.print(strike + "스트라이크 ");
+        }
+        System.out.println();
+        return ;
     }
 }
