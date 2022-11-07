@@ -15,15 +15,19 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
-        validateUserNumber(userNumber);
+        List<String> userNumberList = validateUserNumber(userNumber);
+
+
     }
 
-    public static void validateUserNumber(String userNumbers) {
+    public static List<String> validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
         validateDigit(numberList);
         validateZero(numberList);
         validateSize(numberList);
         validateDuplication(numberList);
+
+        return numberList;
     }
 
     private static void validateZero(List<String> numberList) {
