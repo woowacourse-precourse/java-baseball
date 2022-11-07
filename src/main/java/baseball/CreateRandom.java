@@ -3,20 +3,22 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 class CreateRandom {
+    int[] randomNumbers;
+
     public int[] makeRandomNums() {
-        int[] randomNumbers = new int[3];
+        randomNumbers = new int[3];
         int i = 0;
 
-        fillArray(i, randomNumbers);
+        fillArray(i);
 
         return randomNumbers;
     }
 
-    private void fillArray(int i, int[] randomNumbers) {
+    private void fillArray(int i) {
         int random;
         while (i < 3) {
             random = pickNumberInRange(0, 9);
-            boolean check = checkIfDuplicatedNumber(random,randomNumbers);
+            boolean check = checkIfDuplicatedNumber(random);
             if (check) continue;
 
             randomNumbers[i] = random;
@@ -24,12 +26,16 @@ class CreateRandom {
         }
     }
 
-    private boolean checkIfDuplicatedNumber(int random, int[] randomNumbers) {
+    private boolean checkIfDuplicatedNumber(int random) {
         for(int i = 0 ; i < 3; i++ ) {
             if (randomNumbers[i] == random) {
                 return true;
             }
         }
         return false;
+    }
+
+    public void initializer() {
+        randomNumbers = new int[3];
     }
 }
