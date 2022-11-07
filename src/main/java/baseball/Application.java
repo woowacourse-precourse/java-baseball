@@ -49,4 +49,14 @@ public class Application {
         else
             return false;
     }
+
+    public static boolean checkValidPlayerNum(List<Integer> player){
+        if(!isValidLength(player.size()))
+            throw new IllegalArgumentException("사용자가 잘못된 값을 입력하였습니다.");
+
+        if(isExistDuplicate(player))
+            throw new IllegalArgumentException("사용자가 중복된 숫자를 입력하였습니다.");
+
+        return true;
+    }
 }
