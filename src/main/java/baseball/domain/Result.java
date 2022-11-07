@@ -37,10 +37,6 @@ public enum Result {
         List.of(values()).forEach(result -> result.setScore(0));
     }
 
-    public static void update(Result result) {
-        result.add();
-    }
-
     public static Integer getStrike() {
         return STRIKE.getScore();
     }

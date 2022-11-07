@@ -45,8 +45,7 @@ public class GameLogic {
 
     private void updateResult( Integer userIndex, Integer computerIndex) {
         Result result = compareIndex(userIndex, computerIndex);
-
-        Result.update(result);
+        result.add();
     }
 
     private Result compareIndex(Integer userIndex, Integer computerIndex) {
