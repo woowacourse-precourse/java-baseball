@@ -8,7 +8,8 @@ public enum Hint {
     private String value;
     private int count;
 
-    Hint() {}
+    Hint() {
+    }
 
     Hint(String value, int count) {
         this.value = value;
@@ -21,15 +22,15 @@ public enum Hint {
 
     public static String getHintByCount() {
         StringBuilder hint = new StringBuilder();
-        if(BALL.count ==0 && STRIKE.count == 0) {
+        if (BALL.count == 0 && STRIKE.count == 0) {
             return NOTHING.value;
         }
 
-        if(BALL.count > 0) {
+        if (BALL.count > 0) {
             hint.append(BALL.count).append(BALL.value).append(" ");
         }
 
-        if(STRIKE.count > 0) {
+        if (STRIKE.count > 0) {
             hint.append(STRIKE.count).append(STRIKE.value);
         }
         return hint.toString();

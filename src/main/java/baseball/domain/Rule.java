@@ -17,7 +17,6 @@ public class Rule {
             }
         }
 
-//        Hint.printHintByCount();
         System.out.println(Hint.getHintByCount());
     }
 
