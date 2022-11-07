@@ -52,7 +52,7 @@ public class ScoreBoardTest {
     }
 
     @Test
-    void 스코어보드_checkStrikeOut_return_true_테스트(){
+    void 스코어보드_checkStrikeOut_return_true_테스트() {
         ScoreBoard scoreBoard = new ScoreBoard();
 
         scoreBoard.addStrike();
@@ -63,7 +63,7 @@ public class ScoreBoardTest {
     }
 
     @Test
-    void 스코어보드_checkStrikeOut_return_false_테스트(){
+    void 스코어보드_checkStrikeOut_return_false_테스트() {
         ScoreBoard scoreBoard = new ScoreBoard();
 
         scoreBoard.addStrike();
