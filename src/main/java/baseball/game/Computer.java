@@ -10,14 +10,20 @@ public class Computer {
     private static final int RANGE_LAST = 9;
     private static final int RANGE_RADIX = 10;
 
-    public List<Character> makeRandomNum(int listSize) {
+    private final int listSize;
+
+    public Computer(int listSize) {
+        this.listSize = listSize;
+    }
+
+    public List<Character> makeRandomNum() {
         List<Character> characterList = new ArrayList<>();
 
         characterList.add(oneRandomNumChar());
-        return compareAndAddList(characterList, listSize);
+        return compareAndAddList(characterList);
     }
 
-    private List<Character> compareAndAddList(List<Character> characterList, int listSize) {
+    private List<Character> compareAndAddList(List<Character> characterList) {
         char randNumChar;
 
         while (characterList.size() != listSize) {
