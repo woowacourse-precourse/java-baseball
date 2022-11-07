@@ -6,7 +6,7 @@ public class Application {
     private static boolean userWantsToPlay = true;
 
     public static void main(String[] args) {
-        User.greet();
+        System.out.println(Message.GREETING);
         while(userWantsToPlay) {
             playBall();
         }
