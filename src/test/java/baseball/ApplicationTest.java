@@ -21,9 +21,46 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 입력받은문자열의길이가_잘못된케이스() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
+                assertThatThrownBy(
+                        () -> runException("123456789"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력에중복된숫자가_들어있는케이스() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(
+                        () -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력이모두숫자지만_0이들어있는케이스() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(
+                        () -> runException("010"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력에_숫자가아닌문자열이_들어오는케이스() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(
+                        () -> runException("A11"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 입력으로_공백이들어오는케이스() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(
+                        () -> runException(" 11"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
