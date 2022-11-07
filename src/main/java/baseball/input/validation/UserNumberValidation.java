@@ -12,7 +12,7 @@ public class UserNumberValidation {
 
     public static boolean hasEachDifferentNumbers(String number) {
         Set<String> digitNumberSet = new HashSet<>(List.of(number.split("")));
-        System.out.println(digitNumberSet.size());
+
         if (digitNumberSet.size() == number.length())
             return Boolean.TRUE;
 
