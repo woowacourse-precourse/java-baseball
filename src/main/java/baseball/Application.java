@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.*;
 
 public class Application {
 
@@ -28,13 +26,14 @@ public class Application {
     public static int getAnswerNumber() {
 
         List<Integer> computer = new ArrayList<>();
+
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
+        System.out.println(computer); // TODO : 테스트용 출력! 지워야 함
 
         int computerNumber = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
         return computerNumber;
@@ -47,12 +46,7 @@ public class Application {
         while (!equalNumber) {
             System.out.print("숫자를 입력해주세요 : ");
 
-            int userNumber = 0;
-            try {
-                userNumber = Integer.parseInt(Console.readLine());
-            } catch (NumberFormatException ex) {
-                // 유효하지 않은 사용자 입력에 대해 예외 처리하는 메소드 호출
-            }
+            int userNumber = getUserNumber();
 
             int strikes = countStrikes(userNumber, answerNumber);
             int balls = countBalls(userNumber, answerNumber);
@@ -76,15 +70,31 @@ public class Application {
         }
     }
 
+    public static int getUserNumber() {
+
+        int userNumber = Integer.parseInt(Console.readLine());
+
+        String userNumberToStr = Integer.toString(userNumber);
+        Set numberSet = new HashSet<>();
+        for(int i=0; i<3; i++)
+            numberSet.add(userNumberToStr.charAt(i));
+        System.out.println(numberSet);
+
+        if (numberSet.size() != 3)
+            throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
+
+        return userNumber;
+    }
+
     public static boolean continueOrExit() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         int userChoice = Integer.parseInt(Console.readLine());
 
-        if(userChoice == 1)
+        if (userChoice == 1)
             return false;
-        if(userChoice == 2)
+        if (userChoice == 2)
             return true;
 
         // TODO : 1이나 2 이외의 잘못된 값이 들어왔을 때 예외처리 로직이 필요할 듯!
