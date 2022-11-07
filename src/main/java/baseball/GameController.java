@@ -35,4 +35,16 @@ public class GameController {
         this.strike = 0;
         this.ball = 0;
     }
+
+    private void Playing() {
+        computer.createRandomNumber();
+
+        while (strike != TARTGET_NUMBER) {
+            resetStates();
+            String input = inputView.inputGameNumber();
+            player.writeNumber(input);
+            compareNumber(computer, player);
+            outputView.showGameResult(strike,ball);
+        }
+    }
 }
