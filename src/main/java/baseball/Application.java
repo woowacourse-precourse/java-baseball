@@ -11,7 +11,8 @@ public class Application {
     public static int threeStrike = 0;
 
     public static void main(String[] args) {
-        baseballStart();
+        newGame("1");
+
     }
 
     private static void newGame(String gameStart) {
@@ -37,6 +38,9 @@ public class Application {
         while (threeStrike == 0) {
             System.out.print("숫자를 입력해 주세요 : ");
             String player = Console.readLine();
+            if (player.length() != 3) {
+                throw new IllegalArgumentException();
+            }
             baseballGame(computer, player);
         }
     }
@@ -59,7 +63,7 @@ public class Application {
         }
 
         if (strike == 0 && ball == 0) {
-            System.out.println("낫씽");
+            System.out.println("낫싱");
         } else if (strike > 0 && ball > 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         } else if (strike > 0) {
@@ -77,7 +81,6 @@ public class Application {
         }
     }
 }
-
 
 
 
