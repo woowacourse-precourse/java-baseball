@@ -100,4 +100,27 @@ public class BaseBallGame {
     public void setRestartToken() {
         restartToken = Console.readLine();
     }
+
+    public void play() {
+        computer.setRandomNumber();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            inputUserNumber();
+            int isEqual = isEqualToComputerNumber();
+            if (isEqual == 1) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+            countStrikeCount();
+            countBallCount();
+            printCount();
+        }
+        setRestartToken();
+        if (restartToken == "1") {
+            play();
+        }
+    }
+
+
 }
