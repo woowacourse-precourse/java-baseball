@@ -17,8 +17,24 @@ class ApplicationTest extends NsTest {
         answer.add("1");
         answer.add("2");
         answer.add("3");
-        String input = "341";
+        ArrayList<String> input = new ArrayList<>();
+        input.add("3");
+        input.add("4");
+        input.add("1");
         assertThat(baseball.Application.playBall(answer, input)).isEqualTo("2볼");
+    }
+
+    @Test
+    void check_playball_function2(){
+        ArrayList<String> answer = new ArrayList<>();
+        answer.add("8");
+        answer.add("3");
+        answer.add("4");
+        ArrayList<String> input = new ArrayList<>();
+        input.add("8");
+        input.add("0");
+        input.add("4");
+        assertThat(baseball.Application.playBall(answer, input)).isEqualTo("2스트라이크");
     }
     @Test
     void 게임종료_후_재시작() {
