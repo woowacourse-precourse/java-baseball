@@ -21,9 +21,9 @@ public class BaseballGame {
         return inputNumList;
     }
 
-    private void makeErrorCheckingInputSize(int[] inputNumArray) {
+    private void makeErrorCheckingInputSize(List<String> inputNumArray) {
         try {
-            if (inputNumArray.length > 3)
+            if (inputNumArray.size() > 3)
                 throw new IllegalArgumentException();
         } catch (IllegalArgumentException e) {
             System.out.println("세 자리 이상의 수를 입력하였습니다");
@@ -41,16 +41,16 @@ public class BaseballGame {
         }
     }
 
-    private int checkBall(List<String> inputNumList, List<String> computerNumList) {
+    private int checkBall(List<String> inputNumList) {
         List<String> checkBallNumList = new ArrayList<>();
         checkBallNumList = inputNumList;
         checkBallNumList.retainAll(computerNumList);
         return checkBallNumList.size();
     }
 
-    private int checkStrike(List<String> inputNumList, List<String> computerNumList) {
+    private int checkStrike(List<String> inputNumList) {
         int strikeNum = 0;
-        if (checkBall(inputNumList, computerNumList) < 1) {
+        if (checkBall(inputNumList) < 1) {
             return 0;
         }
         for (int i = 0; i < inputNumList.size(); i++) {
@@ -82,6 +82,25 @@ public class BaseballGame {
             System.out.println(strikeNum + "스트라이크");
         if (strikeNum == 0 & ballNum == 0)
             System.out.println("낫싱");
+    }
+
+    public void startGame(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int checkBall;
+        int checkStrike;
+        String receiveInput;
+        List<String> inputNumList;
+        makeComputerNumList();
+        while(true){
+            System.out.print("숫자를 입력해주세요 : ");
+            receiveInput = receiveInput();
+            inputNumList = makeInputNumList(receiveInput);
+            makeErrorCheckingInputSize(inputNumList);
+            checkBall = checkBall(inputNumList);
+            checkStrike = checkStrike(inputNumList);
+            showGameResult(checkStrike,checkBall);
+            selectGameRestart(checkStrike);
+        }
     }
 
 }
