@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball;
 
 import static baseball.type.NumberType.NUMBER_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class UserNumberServiceTest {
+public class UserNumberTest {
 
     @Test
     void 정상_입력() {

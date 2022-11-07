@@ -1,6 +1,5 @@
-package baseball.service;
+package baseball;
 
-import static baseball.type.NumberType.NUMBER_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.Hint;
@@ -13,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class HintServiceTest {
+public class HintTest {
     List<Integer> userNumbers;
     List<Integer> computerNumbers;
 
