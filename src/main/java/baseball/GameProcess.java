@@ -21,7 +21,9 @@ public class GameProcess {
 
         // 사용자 입력값 받기
         String inputNum = Console.readLine();
-
+        
+        // 입력값 검증
+        Vailidator.checkInputNum(inputNum);
     }
 
 }
