@@ -1,14 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -48,30 +48,92 @@ class ApplicationTest extends NsTest {
 
     @Nested
     class 게임진행기능_테스트 {
-        @Test
-        void 사용자입력이_3글자가_아니면_오류발생() {
-            String inValidInput = "1234";
-            assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                    .isInstanceOf(IllegalArgumentException.class);
+        @Nested
+        class 예외처리_테스트{
+            @Test
+            void 사용자입력이_3글자가_아니면_오류발생() {
+                String inValidInput = "1234";
+                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+            @Test
+            void 사용자입력이_숫자가_아니면_오류발생() {
+                String inValidInput = "12a";
+                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+            @Test
+            void 사용자입력에_0이_있으면_오류발생() {
+                String inValidInput = "023";
+                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+            @Test
+            void 사용자입력에_중복된_수가_있으면_오류발생() {
+                String inValidInput = "113";
+                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
         }
-        @Test
-        void 사용자입력이_숫자가_아니면_오류발생() {
-            String inValidInput = "12a";
-            assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                    .isInstanceOf(IllegalArgumentException.class);
+
+        @Nested
+        class 볼개수_스트라이크개수_테스트 {
+            @BeforeEach
+            void 컴퓨터_수_세팅() {
+                testGame.computerNumbers = List.of(1, 2, 3);
+            }
+            @Test
+            void case1_3스트라이크() {
+                testGame.userNumbers = List.of(1, 2, 3);
+                Map<String, Integer> gameResult = testGame.getGameResult();
+                int ball = gameResult.get("ball");
+                int strike = gameResult.get("strike");
+
+                assertThat(ball).isEqualTo(0);
+                assertThat(strike).isEqualTo(3);
+            }
+            @Test
+            void case2_3볼() {
+                testGame.userNumbers = List.of(2, 3, 1);
+                Map<String, Integer> gameResult = testGame.getGameResult();
+                int ball = gameResult.get("ball");
+                int strike = gameResult.get("strike");
+
+                assertThat(ball).isEqualTo(3);
+                assertThat(strike).isEqualTo(0);
+            }
+            @Test
+            void case3_2볼_1스트라이크() {
+                testGame.userNumbers = List.of(1, 3, 2);
+                Map<String, Integer> gameResult = testGame.getGameResult();
+                int ball = gameResult.get("ball");
+                int strike = gameResult.get("strike");
+
+                assertThat(ball).isEqualTo(2);
+                assertThat(strike).isEqualTo(1);
+            }
+            @Test
+            void case4_1볼_1스트라이크() {
+                testGame.userNumbers = List.of(1, 4, 2);
+                Map<String, Integer> gameResult = testGame.getGameResult();
+                int ball = gameResult.get("ball");
+                int strike = gameResult.get("strike");
+
+                assertThat(ball).isEqualTo(1);
+                assertThat(strike).isEqualTo(1);
+            }
+            @Test
+            void case5_0볼_0스트라이크() {
+                testGame.userNumbers = List.of(4, 5, 6);
+                Map<String, Integer> gameResult = testGame.getGameResult();
+                int ball = gameResult.get("ball");
+                int strike = gameResult.get("strike");
+
+                assertThat(ball).isEqualTo(0);
+                assertThat(strike).isEqualTo(0);
+            }
         }
-        @Test
-        void 사용자입력에_0이_있으면_오류발생() {
-            String inValidInput = "023";
-            assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                    .isInstanceOf(IllegalArgumentException.class);
-        }
-        @Test
-        void 사용자입력에_중복된_수가_있으면_오류발생() {
-            String inValidInput = "113";
-            assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                    .isInstanceOf(IllegalArgumentException.class);
-        }
+
     }
 
     @Test
