@@ -41,14 +41,14 @@ public class Application {
 
     private static void restartException(int startOrEnd) {
 
-        if(startOrEnd != 1 && startOrEnd != 2){
+        if (startOrEnd != 1 && startOrEnd != 2) {
             throw new IllegalArgumentException();
         }
 
     }
 
     private static void inputException(String inputNum) {
-        if(inputNum.length() != 3) throw new IllegalArgumentException();
+        if (inputNum.length() != 3) throw new IllegalArgumentException();
 
         char min = '1';
         char max = '9';
@@ -56,11 +56,11 @@ public class Application {
         for (int i = 0; i < inputNum.length(); i++) {
             char c = inputNum.charAt(i);
 
-            if(c<min || c>max) {
+            if (c < min || c > max) {
                 throw new IllegalArgumentException();
             }
 
-            if(inputNum.replace(String.valueOf(c),"").length() !=2){
+            if (inputNum.replace(String.valueOf(c), "").length() != 2) {
                 throw new IllegalArgumentException();
             }
 
@@ -68,18 +68,28 @@ public class Application {
     }
 
     private static boolean giveScore(int strike, int ball) {
+        StringBuilder sb = new StringBuilder();
+
+        if(ball != 0) {
+            sb.append(ball).append("볼");
+        }
+
+        if(strike != 0) {
+            if(sb.length() != 0) sb.append(" ");
+
+            sb.append(strike).append("스트라이크");
+        }
+
+        if(sb.length() == 0){
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb);
+
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
         }
-
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            return true;
-        }
-
-        System.out.println("3스트라이크");
-        System.out.println(ball + "볼 " + strike + "스트라이크");
 
         return true;
     }
@@ -92,7 +102,6 @@ public class Application {
             if (answerNum.contains(String.valueOf(inputNum.charAt(i)))) {
                 count++;
             }
-
         }
 
         return count - strike;
@@ -106,7 +115,6 @@ public class Application {
             if (answerNum.charAt(i) == inputNum.charAt(i)) {
                 count++;
             }
-
         }
 
         return count;
