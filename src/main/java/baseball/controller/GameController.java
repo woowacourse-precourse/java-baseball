@@ -34,7 +34,8 @@ public class GameController {
             Referee referee = new Referee(computer, player);
             Result result = referee.judge();
 
-            OutputView.roundOutput(result);
+            String roundOutput = OutputView.roundOutput(result);
+            System.out.println(roundOutput);
 
             state = result.isRoundFinish();
         }

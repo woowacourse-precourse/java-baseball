@@ -11,30 +11,26 @@ import baseball.domain.Result;
 
 public class OutputView {
 
-    public static void roundOutput(Result result) {
+    public static String roundOutput(Result result) {
         int ballCount = result.getBallCount();
         int strikeCount = result.getStrikeCount();
 
         if (ballCount == ZERO && strikeCount == ZERO) {
-            System.out.println(NOTTING);
-            return;
+            return NOTTING;
         }
 
         if (strikeCount == THREE) {
-            System.out.println(ALL_STRIKES);
-            return;
+            return ALL_STRIKES;
         }
 
         if (ballCount == ZERO) {
-            System.out.println(strikeCount + STRIKE);
-            return;
+            return strikeCount + STRIKE;
         }
 
         if (strikeCount == ZERO) {
-            System.out.println(ballCount + BALL);
-            return;
+            return ballCount + BALL;
         }
 
-        System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
+        return ballCount + BALL + " " + strikeCount + STRIKE;
     }
 }
