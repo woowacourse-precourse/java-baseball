@@ -60,4 +60,11 @@ public class PlayNumberBaseballGame {
         return false;
     }
 
+    public boolean isBall(List<Integer> computer, int playerNum){
+        if(computer.contains(playerNum)){
+            return true;
+        }
+        return false;
+    }
+
 }
