@@ -7,10 +7,20 @@ public class Game {
     int status = Settings.START_STATUS;
 
     public void start(){
+        while(isStartStatus()){
+            problemMaker.setNumbers(Settings.SIZE_OF_NUMBERS);
+            printMessage(Settings.START_MESSAGE);
+            while(result.isWrongAnswer()){
+                requestAnswer();
+                checkAnswer();
+            }
+            printMessage(Settings.SUCCESS_MESSAGE);
+            setStatusByProblemSolver();
+        }
 
     }
 
-    public void printMessage(){
+    public void printMessage(String message){
 
     }
 
