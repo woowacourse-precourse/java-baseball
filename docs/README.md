@@ -8,6 +8,7 @@
 ### Comparator
 - [X] 변수
   - 비교 결과 성공시 true, 실패시 false
+  - ball, strike
 - [X] getter/setter
 
 ### Computer
