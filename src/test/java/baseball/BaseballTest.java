@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseballTest {
     private final static int NUMBER_LIMIT = 3;
@@ -81,6 +82,20 @@ public class BaseballTest {
             int actual = Integer.toString(sut.getRandomNumber()).length();
             assertThat(actual).isEqualTo(NUMBER_LIMIT);
         }
+    }
+
+    @Test
+    void validateInputNumber_1에서_9까지의_숫자가_아닌_경우_예외_발생() {
+        assertThatThrownBy(() -> sut.validateInputNumber(120))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.");
+    }
+
+    @Test
+    void validateInputNumber_정해진_자리수와_다른_숫자_입력_경우_예외_발생() {
+        assertThatThrownBy(() -> sut.validateInputNumber(1234))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.");
     }
 
 }
