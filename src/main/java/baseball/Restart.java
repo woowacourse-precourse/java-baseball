@@ -1,11 +1,12 @@
 package baseball;
 
+import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import static baseball.Game.game;
-import static baseball.Computer.randomNum;
+import static baseball.controller.GameController.game;
+import static baseball.domain.Computer.randomNum;
 
 public class Restart {
 

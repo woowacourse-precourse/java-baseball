@@ -1,24 +1,9 @@
-package baseball;
+package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Console;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Scanner;
-
-import static baseball.Computer.score;
-import static baseball.Restart.reStart;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-
-public class Game {
-
-    public static boolean game(List<Integer> randomNum){
-
-        boolean result = false;
-
+public class Player {
+    public static String input(){
         System.out.print("숫자를 입력해주세요 : ");
         String userNum = readLine();
 
@@ -30,11 +15,7 @@ public class Game {
             throw new IllegalArgumentException();
         }
 
-        String[] userNumArr = userNum.split("");
-
-        result = score(userNum, randomNum, userNumArr, result);
-
-        return result;
+        return userNum;
     }
 
     public static boolean doubleCheck(String nums) {

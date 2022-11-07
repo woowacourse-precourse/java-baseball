@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import java.util.List;
 
-import static baseball.Computer.randomNum;
+import static baseball.domain.Computer.randomNum;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
