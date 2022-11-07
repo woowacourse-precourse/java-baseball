@@ -1,21 +1,11 @@
-package baseball.repository;
+package baseball.computer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Repository {
-    int score;
-
-    public int getScore() {
-        return score;
-    }
-
-    public Repository() {
-        this.score = generateScore();
-    }
-
+public class Computer {
     public int generateScore() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
