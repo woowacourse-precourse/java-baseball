@@ -2,6 +2,10 @@ package baseball;
 
 import static baseball.InputValidation.*;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -10,17 +14,20 @@ public class InputView {
 
 	private static final String GET_GAME_OPTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-	public static String getBallNumbers() {
+	public static List<Integer> getBallNumbers() {
 		System.out.print(GET_BALL_NUMBERS);
 		String ballNumbers = Console.readLine();
-		validateInput(ballNumbers);
-		return ballNumbers;
+		validateIsAllDigit(ballNumbers);
+
+		return Arrays.stream(ballNumbers.split(""))
+			.map(Integer::parseInt)
+			.collect(Collectors.toList());
 	}
 
-	public static int getGameOption() {
+	public static GameOption getGameOption() {
 		System.out.println(GET_GAME_OPTION);
 		String gameOption = Console.readLine();
-		validateOption(gameOption);
-		return Integer.parseInt(gameOption);
+		validateIsAllDigit(gameOption);
+		return GameOption.of(Integer.parseInt(gameOption));
 	}
 }

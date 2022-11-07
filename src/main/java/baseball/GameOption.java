@@ -3,6 +3,7 @@ package baseball;
 import java.util.Arrays;
 
 public enum GameOption {
+	NOT_DECIDED(-1),
 	RESTART(1),
 	TERMINATE(2);
 
@@ -12,16 +13,11 @@ public enum GameOption {
 		this.value = value;
 	}
 
-	public static boolean matchOption(int value) {
-		return Arrays.stream(values())
-			.anyMatch(option -> option.value == value);
-	}
-
 	public static GameOption of(final int value) {
 		return Arrays.stream(values())
 			.filter(gameOption -> gameOption.value == value)
 			.findFirst()
-			.orElse(null);
+			.orElse(NOT_DECIDED);
 	}
 
 	public boolean isRestart() {
