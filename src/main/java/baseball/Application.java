@@ -46,10 +46,12 @@ public class Application {
         return current_score;
     }
 
-    public static void print_result(List<Integer> result){
+    public static Integer print_result(List<Integer> result){
         int strike_result = result.get(0);
         int ball_result = result.get(1);
         int nothing_result = result.get(2);
+
+        int correct = -1;
 
         if(nothing_result==3){
             System.out.println("낫싱");
@@ -57,39 +59,59 @@ public class Application {
         else if(strike_result==3){
             System.out.println(strike_result + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String stay = readLine();
-
+            correct = 1;
         }
         else{
-            System.out.println(ball_result + "볼" + strike_result + "스트라이크");
+            System.out.println(ball_result + "볼 " + strike_result + "스트라이크");
         }
+
+        return correct;
     }
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
 
+    public static void game_start(){
         List<Integer> computer_number = make_number();
-
         for(int i=0; i<3; i++){
             System.out.print(computer_number.get(i)+" ");
         }
+
+        while(true){
+            System.out.print("숫자를 입력해주세요 : ");
+            // 숫자 랜덤
+            String user_answer = readLine();
+            char[] user_input = user_answer.toCharArray();
+            // 비교 결과 리스트 저장
+            List<Integer> compare_result = compare_answer(computer_number, user_input);
+            // 결과 출력
+            int result = print_result(compare_result);
+            // 맞추었을 때
+            if(result == 1){
+                ask_replay();
+            }
+            // 틀렸을 때
+            else if(result == -1){
+                continue;
+            }
+            break;
+        }
+    }
+
+    public static void ask_replay(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String stay = readLine();
+        if(stay.equals("1")){
+            game_start();
+        }
+        if(stay.equals("2")){
+            // 게임종료
+        }
+
+    }
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
-
-
-            while(true){
-                System.out.print("숫자를 입력해주세요 : ");
-                // 숫자 랜덤
-                String user_answer = readLine();
-                char[] user_input = user_answer.toCharArray();
-                // 비교 결과 리스트 저장
-                List<Integer> compare_result = compare_answer(computer_number, user_input);
-                // 결과 출력
-                print_result(compare_result);
-
-                break;
-                }
+            game_start();
             break;
         }
     }
