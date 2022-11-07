@@ -12,6 +12,7 @@ public class BaseballGame implements Game {
     private final static String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final static String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
+    private Baseball baseball;
 
     public BaseballGame() {
     }
