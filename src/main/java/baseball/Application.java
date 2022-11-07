@@ -1,5 +1,7 @@
 package baseball;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -81,13 +83,24 @@ class Computer {
     }
 }
 
+class Player {
+    public List<Integer> myNumber = new ArrayList<>();
+
+    public void inputNumber() {
+        String inputNum = Console.readLine();
+        for (int i = 0; i < 3; i++) {
+            int num = (int) inputNum.charAt(i);
+            myNumber.add(num);
+        }
+    }
+
+}
+
 
 public class Application {
     public static void main(String[] args) {
         Game game = new Game();
         game.startGame();
 
-
-        //game.end();
     }
 }
