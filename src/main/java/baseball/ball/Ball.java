@@ -1,6 +1,6 @@
 package baseball.ball;
 
-public class Ball {
+public final class Ball {
     private final int MINIMUM_NUM_RANGE = 1;
     private final int MAXIMUM_NUM_RANGE = 9;
     private final int MINIMUM_INDEX_RANGE = 0;
