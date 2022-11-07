@@ -15,7 +15,7 @@ public class Game {
         boolean isFinished = false;
         while (!isFinished) {
             View.pushNumber();
-            savePlayerNumber(player, referee);
+            savePlayerNumberToReferee(player, referee);
             ViewService responseView = referee.answerNumber();
             isFinished = responseView.check();
         }
@@ -23,8 +23,12 @@ public class Game {
         return restart();
     }
 
-    private void savePlayerNumber(Player player, Referee referee) {
+    private void savePlayerNumberToReferee(Player player, Referee referee) {
         player.sayNumbers(pushNumber());
+        toReferee(player, referee);
+    }
+
+    private void toReferee(Player player, Referee referee) {
         player.giveNumbersToReferee(referee);
     }
 
