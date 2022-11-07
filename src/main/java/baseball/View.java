@@ -3,12 +3,12 @@ package baseball;
 public class View {
 
     public static void start() {
-        System.out.println("숫자야구 게임을 시작합니다.");
+        System.out.println(GameMessage.START.getMessage());
     }
 
     public static void end(int strikeCount) {
         System.out.printf("%d스트라이크\n", strikeCount);
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println(GameMessage.END.getMessage());
     }
 
     public static void ballAndStrike(int ballCount, int strikeCount) {
@@ -24,6 +24,6 @@ public class View {
     }
 
     public static void nothing() {
-        System.out.println("낫싱");
+        System.out.println(GameMessage.NOTHING.getMessage());
     }
 }
