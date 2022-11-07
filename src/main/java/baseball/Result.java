@@ -10,7 +10,7 @@ public class Result {
             if(userList.get(i).equals(computerList.get(i))){
                 this.strike++; //나중에 class로 바꿀 생각
             }
-            else{
+            else if(computerList.contains(userList.get(i))){
                 this.ball++;
             }
         }
