@@ -42,4 +42,11 @@ public class SystemController {
             }
         }
     }
+
+    public void calculateScore(SystemComputerModel systemComputerModel, SystemUserModel systemUserModel) {
+        for (int i = 0; i < DIGIT_COUNT; i++) {
+            SystemScoreModel systemScoreModel = systemComputerModel.getScore(systemUserModel.getDigit(i), i);
+            increase_strike_or_ball(systemScoreModel);
+        }
+    }
 }
