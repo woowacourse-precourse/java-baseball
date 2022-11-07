@@ -36,6 +36,7 @@ public class Application {
         String input = Console.readLine();
         if (CheckInput(input)) {
             List<Integer> user = StringToList(input);
+            return user;
         }
         throw new IllegalArgumentException("잘못된 입력");
     }
