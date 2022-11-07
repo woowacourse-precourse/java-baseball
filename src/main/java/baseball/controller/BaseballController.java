@@ -32,6 +32,14 @@ public class BaseballController {
         return computer.isAnswer();
     }
 
+    private List<Integer> integerListOf(String input) {
+        List<Integer> playerInputs = new ArrayList<>();
+        for (int i = 0; i < Constant.SIZE_NUMBER; i++) {
+            playerInputs.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return playerInputs;
+    }
+
     private void printResultOf(List<Integer> randomNumbers, List<Integer> playerInputs) {
         String hintResult = hintResult(randomNumbers, playerInputs);
         OutputView.printHintResult(hintResult);
@@ -39,14 +47,6 @@ public class BaseballController {
 
     private String hintResult(List<Integer> randomNumbers, List<Integer> playerInputs) {
         return computer.resultOfGame(playerInputs, randomNumbers);
-    }
-
-    private List<Integer> integerListOf(String input) {
-        List<Integer> playerInputs = new ArrayList<>();
-        for (int i = 0; i < Constant.SIZE_NUMBER; i++) {
-            playerInputs.add(Character.getNumericValue(input.charAt(i)));
-        }
-        return playerInputs;
     }
 
     private void restartGameIfPlayerWant() {
