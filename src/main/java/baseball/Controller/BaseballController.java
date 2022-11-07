@@ -59,7 +59,7 @@ public class BaseballController {
 
     //스트라이크 또는 볼 카운트 함수
     public int countStrikeOrBall(int StrikeOrBall) {
-        return StrikeOrBall += 1 ;
+        return StrikeOrBall+1 ;
     }
 
 }
