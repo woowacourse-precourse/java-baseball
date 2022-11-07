@@ -51,7 +51,9 @@ public class NumberBaseballController {
             restartGame();
             return;
         }
-        numberBaseballView.endGame();
+        if (userAnswer.equals(END)) {
+            numberBaseballView.endGame();
+        }
     }
 
 }
