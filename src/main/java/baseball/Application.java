@@ -10,7 +10,9 @@ public class Application {
     static final int RANDOM_NUMBER_LAST_RANGE = 9;
     static final int STRIKE = 1;
     static final int NOT_STRIKE = 0;
-    
+    static final int BALL = 1;
+    static final int NOT_BALL = 0;
+
     static final String REGEX_PATTERN = "[+-]?\\d*(\\.\\d+)?";
     static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -71,6 +73,16 @@ public class Application {
             return STRIKE;
         }
         return NOT_STRIKE;
+    }
+
+    static public int isBall(int randomNumberIndex, int userGuessNumberIndex, char randomNumberDigit, char userGuessNumberDigit) {
+        boolean sameIndex = randomNumberIndex == userGuessNumberIndex;
+        boolean sameDigit = randomNumberDigit == userGuessNumberDigit;
+
+        if (!sameIndex && sameDigit) {
+            return BALL;
+        }
+        return NOT_BALL;
     }
 
     public static void main(String[] args) {
