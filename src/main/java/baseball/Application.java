@@ -34,5 +34,4 @@ public class Application {
 			System.out.println(ball_score+"볼 "+strike_score+"스트라이크");
 		}
 	}
-
 }
