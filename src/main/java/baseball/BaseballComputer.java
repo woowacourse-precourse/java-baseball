@@ -11,7 +11,7 @@ public class BaseballComputer {
     ChangeType changeType = new ChangeType();
     GameMessage gameMessage = new GameMessage();
 
-    public String userInputNumberInGame(){
+    private String userInputNumberInGame(){
         return Console.readLine();
     }
 
@@ -20,7 +20,7 @@ public class BaseballComputer {
         init();
     }
 
-    public void init(){
+    private void init(){
         gameMessage.inputNumberToComputerMessage();
         String answer = userInputNumberInGame();
 
@@ -43,7 +43,7 @@ public class BaseballComputer {
         return ;
     }
 
-    public void createRandomNumber() {
+    private void createRandomNumber() {
         computerNumber.clear();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -53,7 +53,7 @@ public class BaseballComputer {
         }
     }
 
-    public boolean checkHitNumber(String answer) {
+    private boolean checkHitNumber(String answer) {
         String [] splitWord = answer.split("");
         int [] splitNumber = changeType.StringArrToIntArr(splitWord);
         List<Integer> checkHitNumber = new ArrayList<>();
@@ -89,12 +89,12 @@ public class BaseballComputer {
         return false;
     }
 
-    public int inputRestartOrEnd(){
+    private int inputRestartOrEnd(){
         String beforeIntChange = Console.readLine();
         return changeType.StringToInt(beforeIntChange);
     }
 
-    public void printHitStatus(List<Integer> hitStatus){
+    private void printHitStatus(List<Integer> hitStatus){
         //아무것도 없을 때
         if(hitStatus.get(0) == 0 && hitStatus.get(1) == 0){
             System.out.println("낫싱");
