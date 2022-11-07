@@ -49,6 +49,13 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class));
     }
 
+    @Test
+    void 범위밖의_숫자_입력_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("206"))
+                        .isInstanceOf(IllegalArgumentException.class));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
