@@ -13,13 +13,15 @@ public class Game {
         List<Integer> ComputerNum = Num_Generator.MakeComputerNum();
         User_Input user = new User_Input();
         Referee referee = new Referee(ComputerNum);
+        boolean flag = true;
 
         System.out.println(Notice_intro);
-        while (true) {
+        while (flag) {
             System.out.println(Notice_requireNum);
             List<Integer> userInput = user.getUserInput();
+            System.out.println(ComputerNum);
             System.out.println(userInput);
-//            referee.printResult(userInput);
+            flag = referee.printResult(userInput);
         }
     }
 }
