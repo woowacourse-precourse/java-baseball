@@ -35,7 +35,8 @@ public class User {
     public boolean validateUserGuessInput(String userInput) {
         try {
             int userInt = Integer.parseInt(userInput);
-            if (userInt < 0 || userInt > 999) {
+            int userIntLength = String.valueOf(userInt).length();
+            if (userIntLength != 3 || userInt < 0 || userInt > 999) {
                 throw new NumberFormatException();
             }
             return true;
@@ -59,7 +60,8 @@ public class User {
     private boolean validateUserReplayInput(String userInput) {
         try {
             int userInt = Integer.parseInt(userInput);
-            if (userInt != 1 && userInt != 2) {
+            int userIntLength = String.valueOf(userInt).length();
+            if (userIntLength != 1 || (userInt != 1 && userInt != 2)) {
                 throw new NumberFormatException();
             }
             return true;

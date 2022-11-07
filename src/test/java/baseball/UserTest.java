@@ -45,4 +45,31 @@ class UserTest {
             boolean result = user.validateUserGuessInput(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 에상숫자_제로_0_입력(){
+        User user = new User();
+        String userInput = "000023";
+        assertThatThrownBy(() -> {
+            boolean result = user.validateUserGuessInput(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 다시플레이_여부_제로_0_입력(){
+        User user = new User();
+        String userInput = "0000000";
+        assertThatThrownBy(() -> {
+            boolean result = user.validateUserGuessInput(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 다시플레이_여부_문자열값(){
+        User user = new User();
+        String userInput = "000abc";
+        assertThatThrownBy(() -> {
+            boolean result = user.validateUserGuessInput(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
