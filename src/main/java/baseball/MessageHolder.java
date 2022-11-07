@@ -23,16 +23,30 @@ public class MessageHolder {
     }
 
     private int inGameStringToInt(String playerString) {
-        String checkIndex = "^[0-9]{3}$";
         int number = -1;
-
-        if (!playerString.matches(checkIndex)) {
-            throw new IllegalArgumentException("세자리 숫자를 입력해주십시오.");
-        }
+        
+        errorThrow(playerString);
 
         number = stringToInt(playerString);
 
         return number;
+    }
+
+    private void errorThrow(String playerString) {
+        String checkIndex = "^[0-9]{3}$";
+        if (!playerString.matches(checkIndex) || checkHasSameCharacter(playerString)) {
+            throw new IllegalArgumentException("서로 다른 세자리 숫자를 입력해주십시오.");
+        }
+    }
+
+    private boolean checkHasSameCharacter(String playerString) {
+        boolean hasSameCharacter = false;
+        if(playerString.charAt(0) == playerString.charAt(1) ||
+                playerString.charAt(0) == playerString.charAt(2) ||
+                        playerString.charAt(1) == playerString.charAt(2))
+            hasSameCharacter = true;
+            
+        return hasSameCharacter;
     }
 
     private int stringToInt(String playerString) {

@@ -28,7 +28,7 @@ public class MessageHolderTest {
         String output = holder.GetGameInput();
         System.setIn(sysInBackup);
 
-        assertEquals(output, "245");
+        assertEquals("245", output);
     }
 
     @Test
@@ -40,14 +40,14 @@ public class MessageHolderTest {
         int output = holder.getPlayerRestartInput();
         System.setIn(sysInBackup);
 
-        assertEquals(output, 1);
+        assertEquals(1, output);
     }
 
     @Test
     void testPlayerGameInputToInt() {
         assertThrows(IllegalArgumentException.class, () ->
             {
-                holder.playerGameInputToInt("1234");
+                holder.playerGameInputToInt("224");
             });
     }
 
