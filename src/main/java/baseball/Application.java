@@ -13,7 +13,7 @@ public class Application {
     public static void verification_user_answer(char[] user_answer){
         List<Character> user_list = Arrays.asList(user_answer[0], user_answer[1], user_answer[2]);
 
-        if(user_list.size() != 3){
+        if(user_answer.length != 3){
             // System.out.println("잘못입력하였습니다.");
             throw new IllegalArgumentException("잘못입력하였습니다");
         }
