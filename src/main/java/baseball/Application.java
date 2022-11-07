@@ -51,23 +51,14 @@ public class Application {
         ArrayList<Integer> inputNumberArray = new ArrayList<>();
         String inputNumber = Console.readLine();
 
-        try {
-            if (inputNumber.charAt(0) == inputNumber.charAt(1) || inputNumber.charAt(0) == inputNumber.charAt(2)
-            || inputNumber.charAt(1) == inputNumber.charAt(2) || inputNumber.length() !=3){
-            throw new IllegalArgumentException();
-            }
-            if (!Character.isDigit(inputNumber.charAt(0)) || !Character.isDigit(inputNumber.charAt(1))
-            ||!Character.isDigit(inputNumber.charAt(2))) {
-            throw new IllegalArgumentException();
-            }
-            if (inputNumber.charAt(0) ==0 || inputNumber.charAt(1)==0 || inputNumber.charAt(2) ==0){
-            throw new IllegalArgumentException();
-            }
-        }catch(IllegalArgumentException e){
+        if (inputNumber.charAt(0) == inputNumber.charAt(1) || inputNumber.charAt(0) == inputNumber.charAt(2)
+            || inputNumber.charAt(1) == inputNumber.charAt(2) || inputNumber.length() !=3
+            || !Character.isDigit(inputNumber.charAt(0)) || !Character.isDigit(inputNumber.charAt(1))
+            ||!Character.isDigit(inputNumber.charAt(2)) || inputNumber.charAt(0) ==0 || inputNumber.charAt(1)==0
+            || inputNumber.charAt(2) ==0){
             inputNumberArray.add(0);
             return inputNumberArray;
         }
-
 
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(0)));
         inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(1)));
