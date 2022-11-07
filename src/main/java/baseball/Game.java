@@ -10,6 +10,7 @@ public class Game {
 
     public boolean runningState = true;
     public Computer computer = new Computer();
+    public User user = new User();
 
     public void run() {
         messagePrinter.printInit();
@@ -31,5 +32,10 @@ public class Game {
         }
         messagePrinter.printFinish();
         checkRestart();
+    }
+
+    private String getUserNumber() {
+        messagePrinter.askInput();
+        return user.getNewNumberString();
     }
 }
