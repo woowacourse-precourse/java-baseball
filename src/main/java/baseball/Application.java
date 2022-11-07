@@ -14,7 +14,6 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-
             answer = new ArrayList<>();
             generateRandomNumber();
 
@@ -35,27 +34,29 @@ public class Application {
      */
     public static int game() {
         while (true) {
-            while (true) {
-                // 입력받기
-                System.out.print("숫자를 입력해주세요 : ");
-                String stringInput = Console.readLine().strip();
-                // 오류체크 : 숫자 수, 다른 문자 있는지?
+            // 입력받기
+            System.out.print("숫자를 입력해주세요 : ");
+            String stringInput = Console.readLine().strip();
 
-                numbers = new ArrayList<>();
-                try {
-                    for (int i = 0; i < 3; i++) {
-                        numbers.add(stringInput.charAt(i) - '0');
-                    }
-                    break;
-                } catch (NumberFormatException ex) {
-                    ex.printStackTrace();
-                    continue;
+            // 오류체크 : 숫자 수, 다른 문자 있는지?
+            if( stringInput.length() != 3)
+                throw new IllegalArgumentException("올바르지 않은 숫자 입력입니다.");
+
+            numbers = new ArrayList<>();
+            try {
+                for (int i = 0; i < 3; i++) {
+                    numbers.add(stringInput.charAt(i) - '0');
                 }
+            } catch (IllegalArgumentException ex) {
+                throw new IllegalArgumentException("올바르지 않은 숫자 입력입니다.");
             }
 
             // 계산하기
             strike = ScoreDetect.getStrikeCount(answer, numbers);
             ball = ScoreDetect.getBallCount(answer, numbers);
+
+            if (strike == -1 || ball == -1)
+                throw new IllegalArgumentException("올바르지 않은 숫자 리스트입니다.");
 
             // 출력하기
             if (strike == 3) {
@@ -64,18 +65,17 @@ public class Application {
                         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 // 입력받기
                 int number = 0;
-                while (true) {
-                    // 입력받기
-                    String stringInput = Console.readLine().strip();
+                stringInput = Console.readLine().strip();
 
-                    try {
-                        number = Integer.parseInt(stringInput);
-                        break;
-                    } catch (NumberFormatException ex) {
-                        ex.printStackTrace();
-                    }
-                    //오류체크
+                try {
+                    number = Integer.parseInt(stringInput);
+                    if (number != 1 && number != 2)
+                        throw new IllegalArgumentException();
+                } catch (IllegalArgumentException ex) {
+                    throw new IllegalArgumentException("올바르지 않은 옵션 입력입니다.");
                 }
+
+                //오류체크
                 return number;
             } else if (strike != 0 || ball != 0) {
                 System.out.println(ball + "볼 " + strike + "스트라이크");
