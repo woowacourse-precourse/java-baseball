@@ -26,10 +26,10 @@ public class Converter {
         for (int i = 0; i < userInput.length(); i++) {
             int userInputDigit = charToInt(userInput.charAt(i));
             if (userInputDigit > 0 && userInputDigit < 10) {
-                throw new IllegalArgumentException();
+                return true;
             }
         }
-        return true;
+        throw new IllegalArgumentException();
     }
 
     private boolean isUniqueInput(String userInput) throws IllegalArgumentException {
