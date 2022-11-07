@@ -50,7 +50,7 @@ public class Game {
         }
     }
 
-    public static Map<String, Integer> getBallStrikeCount(List<Integer> user, List<Integer> computer) {
+    public Map<String, Integer> getBallStrikeCount(List<Integer> user, List<Integer> computer) {
         Map<String, Integer> result = new HashMap<>();
         result.put("볼", 0);
         result.put("스트라이크", 0);
