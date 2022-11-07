@@ -117,7 +117,6 @@ public class Application {
         return new Result(strike, ball);
     }
 
-
     public static boolean correctAnswer(Result result) {
         if (result.getStrike() == 3)
             return true;
