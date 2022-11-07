@@ -21,8 +21,7 @@ class SingleNumberTest {
                 new SingleNumber(2, 3)
         );
 
-        int result = singleNumber.judgementOnBall(answer);
-        assertThat(result).isEqualTo(1);
+        assertThat(singleNumber.isBall(answer)).isTrue();
     }
 
     @Test
@@ -34,8 +33,7 @@ class SingleNumberTest {
                 new SingleNumber(2, 3)
         );
 
-        int result = singleNumber.judgementOnBall(answer);
-        assertThat(result).isEqualTo(0);
+        assertThat(singleNumber.isBall(answer)).isFalse();
     }
 
     @ParameterizedTest

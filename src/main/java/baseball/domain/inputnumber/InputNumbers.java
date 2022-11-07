@@ -14,6 +14,7 @@ public class InputNumbers {
 
     public int ballCount(List<SingleNumber> randomNumbers) {
         return (int) inputNumbers.stream()
+                .filter(singleNumber -> !randomNumbers.contains(singleNumber))
                 .filter(singleNumber -> singleNumber.isBall(randomNumbers))
                 .count();
     }
