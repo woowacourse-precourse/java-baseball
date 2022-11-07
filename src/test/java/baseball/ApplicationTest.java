@@ -39,6 +39,14 @@ class ApplicationTest extends NsTest {
         assertThat(Application.strike(computer,user)).isEqualTo(3);
     }
 
+    @Test
+    void 볼_테스트(){
+        List<Integer> computer = new ArrayList<>(Arrays.asList(3, 2, 1));
+        List<Integer> user = new ArrayList<>(Arrays.asList(1, 2, 3));
+        int strike = 1;
+        assertThat(Application.ball(computer, user, strike)).isEqualTo(2);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
