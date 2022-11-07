@@ -1,18 +1,6 @@
 package baseball.domain;
 
 public class Game {
-    public static final int MAX_STRIKE = 3;
-    public static final String BALL = "볼 ";
-    public static final String STRIKE = "스트라이크";
-    public static final String NOTHING = "낫싱";
-    public static final int RESTART = 1;
-
-    public static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    public static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맟히셨습니다! ";
-    public static final String GAME_FINISH_MESSAGE = "게임 종료";
-    public static final String RESTART_OR_QUIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
     private final Computer computer;
     private final Player player;
 
@@ -22,20 +10,20 @@ public class Game {
     }
 
     public void start() {
-        System.out.println(GAME_START_MESSAGE);
+        System.out.println(Constants.GAME_START_MESSAGE);
         do {
             computer.generateNumber();
             guessAndCheck();
-            System.out.println(SUCCESS_MESSAGE);
-            System.out.println(GAME_FINISH_MESSAGE);
-            System.out.println(RESTART_OR_QUIT_MESSAGE);
-        } while(player.getChoice() == RESTART);
+            System.out.println(Constants.SUCCESS_MESSAGE);
+            System.out.println(Constants.GAME_FINISH_MESSAGE);
+            System.out.println(Constants.RESTART_OR_QUIT_MESSAGE);
+        } while(player.getChoice() == Constants.RESTART_CHOICE);
     }
 
     public void guessAndCheck() {
         Result result;
         do{
-            System.out.print(INPUT_MESSAGE);
+            System.out.print(Constants.INPUT_MESSAGE);
             String guessNumber = player.getInput();
             result = computer.compareNumber(guessNumber);
             showResult(result);
@@ -47,18 +35,18 @@ public class Game {
         int strikeCount = result.getStrikeCount();
 
         if(ballCount != 0){
-            System.out.print(ballCount+BALL);
+            System.out.print(ballCount+Constants.BALL);
         }
         if(strikeCount != 0){
-            System.out.print(strikeCount+STRIKE);
+            System.out.print(strikeCount+Constants.STRIKE);
         }
         if(ballCount == 0 && strikeCount == 0) {
-            System.out.print(NOTHING);
+            System.out.print(Constants.NOTHING);
         }
         System.out.println();
     }
 
     public boolean isNotFinished(Result result) {
-        return result.getStrikeCount() != MAX_STRIKE;
+        return result.getStrikeCount() != Constants.MAX_STRIKE;
     }
 }

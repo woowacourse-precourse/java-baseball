@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 9;
-    private static final int NUMBER_LENGTH = 3;
-
     private final List<Integer> numbers;
 
     public Computer() {
@@ -22,7 +18,7 @@ public class Computer {
 
     public void generateNumber() {
         initNumbers();
-        while(numbers.size() < NUMBER_LENGTH) {
+        while(numbers.size() < Constants.NUMBER_LENGTH) {
             int number = getRandomNumber();
             addIfNotUsed(number);
         }
@@ -35,7 +31,7 @@ public class Computer {
     }
 
     public int getRandomNumber() {
-        return Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
+        return Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
     }
 
     public void initNumbers() {
@@ -46,7 +42,7 @@ public class Computer {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for(int i = 0; i < NUMBER_LENGTH; i++) {
+        for(int i = 0; i < Constants.NUMBER_LENGTH; i++) {
             int number = Character.getNumericValue(guessNumber.charAt(i));
 
             if(isStrike(number, i)){
