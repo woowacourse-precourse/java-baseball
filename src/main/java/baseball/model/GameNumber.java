@@ -33,4 +33,8 @@ public class GameNumber {
         computerNumbers = randomUtility.generateRandomNumbers();
         System.out.println("computerNumbers" + Arrays.toString(computerNumbers));
     }
+
+    public int[] getComputerNumbers() {
+        return computerNumbers;
+    }
 }
