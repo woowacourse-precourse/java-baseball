@@ -8,6 +8,7 @@ public class InputValidator {
     private static final int END_NUMBER_RANGE = 9;
     private static final int MAX_NUMBER_OF_DIGITS = 3;
 
+    private static final String REGEX = "";
     private static final String NON_NUMERIC_VALUE_EXCEPTION_MESSAGE = "숫자가 아닌 값을 입력하였습니다.";
     private static final String INVALID_NUMBER_EXCEPTION_MESSAGE =
             BEGIN_NUMBER_RANGE + "부터 " + END_NUMBER_RANGE + "까지 서로 다른 수로 이루어진 " + MAX_NUMBER_OF_DIGITS
@@ -30,7 +31,7 @@ public class InputValidator {
     }
 
     private static void splitNumber(String inputValue, Set<Integer> digits) {
-        for (String digit : inputValue.split("")) {
+        for (String digit : inputValue.split(REGEX)) {
             digits.add(Integer.valueOf(digit));
         }
     }

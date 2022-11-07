@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    private static final String REGEX = "";
     private final List<Integer> number = new ArrayList<>();
 
     public void inputNumber() {
@@ -14,7 +15,7 @@ public class User {
     }
 
     private void setNumber(String inputValue) {
-        for (String digit : inputValue.split("")) {
+        for (String digit : inputValue.split(REGEX)) {
             number.add(Integer.valueOf((digit)));
         }
     }
