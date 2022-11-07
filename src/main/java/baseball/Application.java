@@ -1,7 +1,12 @@
 package baseball;
 
 public class Application {
+
+    static GameController gameController = new GameController();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        ShowMessage.showGameStart(); // 게임 시작 메세지 출력
+        gameController.newGame();
     }
+
 }
