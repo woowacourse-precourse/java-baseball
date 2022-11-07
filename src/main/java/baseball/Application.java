@@ -1,11 +1,9 @@
 package baseball;
 
-import baseball.model.JudgeLogic;
 import baseball.model.NumberGenerator;
 import baseball.model.ResultMaker;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,8 +42,6 @@ public class Application {
         validateSize(inputNumberString);
         validateOverlap(inputNumberString);
 
-        for(int i=0; i<inputNumberString.length() ; i++) {
-            playerNumbers.add(Integer.parseInt(inputNumberString.substring(i,i+1)));
         for (int i = 0; i < inputNumberString.length(); i++) {
             playerNumbers.add(Integer.parseInt(inputNumberString.substring(i, i + 1)));
         }
