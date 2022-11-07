@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
@@ -19,6 +20,20 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String numbers = Console.readLine();
         List<String> numberList = stringToStringList(numbers);
+
+        validDuplicate(numberList);
+    }
+
+    private static void validDuplicate(List<String> numberList) {
+        HashMap<String, Integer> checkMap = new HashMap<>();
+
+        for (String number : numberList) {
+            checkMap.put(number, checkMap.getOrDefault(number, 0) + 1);
+        }
+
+        if (checkMap.containsValue(2) || checkMap.containsValue(3)) {
+            throw new IllegalArgumentException("UserNumber has duplicate number");
+        }
     }
 
     private static List<String> stringToStringList(String numbers) {
