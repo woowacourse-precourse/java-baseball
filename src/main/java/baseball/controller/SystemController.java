@@ -58,4 +58,9 @@ public class SystemController {
             strike++;
         }
     }
+
+    public void resetScore() {
+        strike = 0;
+        ball = 0;
+    }
 }
