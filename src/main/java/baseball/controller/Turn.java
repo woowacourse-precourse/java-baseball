@@ -19,6 +19,11 @@ public class Turn {
         this.target = target;
     }
 
+    Turn (ResultTurn resultTurn, Target target) {
+        this.resultTurn = resultTurn;
+        this.target = target;
+    }
+
     void repeatToEnd() {
         while(checkCanRepeat()) {
             playOneTurn();
