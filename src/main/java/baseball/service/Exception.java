@@ -7,4 +7,10 @@ public class Exception {
 		}
 	}
 
+	public void checkNumberSize(char input) throws IllegalArgumentException {
+		if (input < '1' || input > '9') {
+			throw new IllegalArgumentException("숫자의 범위가 맞지 않습니다.");
+		}
+	}
+
 }
