@@ -27,10 +27,24 @@ public class Application {
         return 100 <= userNumber && userNumber <= 999;
     }
 
+    public static boolean checkDuplication(int userNumber) {
+        List<Boolean> duplicationCheckList = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false, false));
+        while (userNumber > 0) {
+            int digit = userNumber % 10;
+            if (duplicationCheckList.get(digit)) {
+                return true;
+            }
+            duplicationCheckList.set(digit, true);
+            userNumber /= 10;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumber = makeRandomNumber();
         int userNumber = askNumber();
         boolean falsyLengthFlag = checkNumberLength(userNumber);
+        boolean duplicationFlag = checkDuplication(userNumber);
     }
 }
