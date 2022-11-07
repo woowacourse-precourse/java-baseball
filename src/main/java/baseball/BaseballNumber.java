@@ -19,6 +19,7 @@ public class BaseballNumber {
     }
 
     public void setNumbers(){
+        System.out.print("숫자를 입력해주세요 : ");
         String numbersStr = Console.readLine();
 
         if(!isError(numbersStr))
