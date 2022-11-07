@@ -7,11 +7,9 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class BaseballGame {
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String REPLAY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final int NUMBER_OF_BALLS = 3;
     private static final int REPLAY = 1;
+    private static final String INVALID_NUMBER_RANGE_REGEX = "[^1-9]";
 
     private final Hitter hitter;
     private final Pitcher pitcher;
@@ -24,7 +22,7 @@ public class BaseballGame {
     }
 
     public void playGame(boolean isPlay) {
-        System.out.println(GAME_START_MESSAGE);
+        System.out.println(BaseballMessage.GAME_START_MESSAGE.getMessage());
         while (isPlay) {
             pitcher.initThrownBallList();
             isPlay = playInning();
@@ -45,7 +43,7 @@ public class BaseballGame {
     }
 
     public String inputNumber() {
-        System.out.print(INPUT_NUMBER_MESSAGE);
+        System.out.print(BaseballMessage.INPUT_NUMBER_MESSAGE.getMessage());
         String number = Console.readLine();
         validate(number);
         return number;
@@ -54,14 +52,14 @@ public class BaseballGame {
 
     private boolean isGameOver() {
         if (referee.getStrikeCount() == NUMBER_OF_BALLS) {
-            System.out.println(NUMBER_OF_BALLS + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(NUMBER_OF_BALLS + BaseballMessage.GAME_OVER_MESSAGE.getMessage());
             return true;
         }
         return false;
     }
 
     private boolean isReplaying() {
-        System.out.println(REPLAY_MESSAGE);
+        System.out.println(BaseballMessage.REPLAY_MESSAGE.getMessage());
         Integer number = Integer.valueOf(Console.readLine());
 
         return number.equals(REPLAY);
@@ -79,19 +77,19 @@ public class BaseballGame {
 
     private void printBallCount(int ballCount) {
         if (ballCount > 0) {
-            System.out.print(ballCount + "볼 ");
+            System.out.print(ballCount + BaseballMessage.BALL_COUNT_MESSAGE.getMessage());
         }
     }
 
     private void printStrikeCount(int strikeCount) {
         if (strikeCount > 0) {
-            System.out.print(strikeCount + "스트라이크");
+            System.out.print(strikeCount + BaseballMessage.STRIKE_COUNT_MESSAGE.getMessage());
         }
     }
 
     private void printNothing(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.print("낫싱");
+            System.out.print(BaseballMessage.NOTHING_MESSAGE.getMessage());
         }
     }
 
@@ -103,20 +101,20 @@ public class BaseballGame {
 
     private void validateNumberLength(String number) {
         if (number.length() != NUMBER_OF_BALLS) {
-            throw new IllegalArgumentException(NUMBER_OF_BALLS + "자리 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException(NUMBER_OF_BALLS + BaseballMessage.INVALID_NUMBER_LENGTH_MESSAGE.getMessage());
         }
     }
 
     private void validateNumberRange(String number) {
-        if (Pattern.compile("[^1-9]").matcher(number).find()) {
-            throw new IllegalArgumentException("1과 9사이의 숫자만 입력 가능합니다.");
+        if (Pattern.compile(INVALID_NUMBER_RANGE_REGEX).matcher(number).find()) {
+            throw new IllegalArgumentException(BaseballMessage.INVALID_NUMBER_RANGE_MESSAGE.getMessage());
         }
     }
 
     private void validateNumberDuplication(String number) {
         if (IntStream.range(0, 10)
                 .anyMatch(digit -> getDigitCount(number, digit) >= 2)) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException(BaseballMessage.DUPLICATED_NUMBER_MESSAGE.getMessage());
         }
     }
 
