@@ -9,6 +9,7 @@ import java.util.List;
 public class BaseballGame {
     static int computer;
     static int strike;
+    static int ball;
 
     public static void process(){
         System.out.println("게임을 시작합니다.");
@@ -29,7 +30,21 @@ public class BaseballGame {
 
             checkStrike(user);
             System.out.println("strike : " + strike);
+            checkBall(user);
+            System.out.println("ball : " + ball);
         }
+    }
+
+    public static void checkBall(String user){
+        int ballCnt = 0;
+        char[] userNumber = user.toCharArray();
+        char[] computerNumber = Integer.toString(computer).toCharArray();
+
+        if(userNumber[0]==computerNumber[1] || userNumber[0]==computerNumber[2]) ballCnt++;
+        if(userNumber[1]==computerNumber[0] || userNumber[1]==computerNumber[2]) ballCnt++;
+        if(userNumber[2]==computerNumber[0] || userNumber[2]==computerNumber[1]) ballCnt++;
+
+        ball = ballCnt;
     }
 
     public static void checkStrike(String user){
