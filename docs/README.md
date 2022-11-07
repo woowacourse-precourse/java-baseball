@@ -1,14 +1,14 @@
 기능 목록
 ---
-* 컴퓨터가 임의의 3자리 숫자를 선택하는 기능
-* 사용자가 3자리의 숫자 문자열을 입력하는 기능
-    * 문자열을 분리해 정수로 변환하는 기능
+* 컴퓨터가 임의의 3자리 숫자를 선택하는 기능 (computerRandomThreeDigitNum)
+* 사용자가 3자리의 숫자 문자열을 입력하는 기능 (userInputThreeDigitNum)
+    * 문자열을 분리해 정수로 변환하는 기능 (splitStringAndParseInt)
 
 
-* 두 숫자를 비교해 스트라이크, 볼 개수 세는 기능
-* 결과값(스트라이크 / 볼 / 낫싱) 출력하는 기능
-* 3스트라이크인 경우 확인해 게임 종료하는 기능
-* 사용자가 1 입력 시 재시작, 2 입력 시 종료하는 기능
+* 두 숫자를 비교해 스트라이크, 볼 개수 세는 기능 (countStrikeAndBall, increaseStrikeCntAndBallCnt)
+* 결과값(스트라이크 / 볼 / 낫싱) 출력하는 기능 (printBaseballResult)
+* 3스트라이크인 경우 확인해 게임 종료하는 기능 (checkThreeStrike)
+* 사용자가 1 입력 시 재시작, 2 입력 시 종료하는 기능 (userInputRestartOrFinish)
 
 검증 & 예외처리 목록
 ---
