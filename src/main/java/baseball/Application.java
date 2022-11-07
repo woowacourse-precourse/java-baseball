@@ -55,4 +55,21 @@ public class Application {
         }
         return strike;
     }
+
+    public static int countBalls(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
+        int ball = 0;
+        if ((Objects.equals(generatedNumber.get(0), inputNumber.get(1))) || Objects.equals(generatedNumber.get(0),
+            inputNumber.get(2))) {
+            ball++;
+        }
+        if ((Objects.equals(generatedNumber.get(1), inputNumber.get(0))) || Objects.equals(generatedNumber.get(1),
+            inputNumber.get(2))) {
+            ball++;
+        }
+        if ((Objects.equals(generatedNumber.get(2), inputNumber.get(0))) || Objects.equals(generatedNumber.get(2),
+            inputNumber.get(1))) {
+            ball++;
+        }
+        return ball;
+    }
 }
