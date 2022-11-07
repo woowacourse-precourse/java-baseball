@@ -28,4 +28,11 @@ public class User {
         this.input = readLine();
     }
 
+    public boolean checkInputForOption() {
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+
 }
