@@ -129,4 +129,15 @@ class ApplicationTest extends NsTest {
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@Test
+	void 입력한_숫자가_중복인지확인() {
+
+		int[] number = new int[] {1, 2};
+		char input = '1';
+
+		assertThatThrownBy(() -> {
+			exception.checkOverlap(number, input);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
 }
