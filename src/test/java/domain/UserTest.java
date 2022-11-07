@@ -93,5 +93,5 @@ class UserTest {
                     .hasMessageContaining("1 또는 2를 입력하세요.");
         }
     }
-    
+
 }
