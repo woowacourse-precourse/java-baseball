@@ -25,4 +25,10 @@ public class Game {
         }
         return computer;
     }
+
+    List<String> getNumber() {
+        System.out.print(systemMessage.INSERT_NUMBER_MESSAGE);
+        List<String> numberList = new ArrayList<>(Arrays.asList(Console.readLine().split("")));
+        return numberList;
+    }
 }
