@@ -31,4 +31,14 @@ class PlayerNumbersTest {
                     .containsExactly(2, 0);
     }
 
+    @Test
+    void 낫싱() {
+        PlayerNumbers baseNumber = new PlayerNumbers(123);
+        PlayerNumbers compareNumber = new PlayerNumbers(456);
+
+        List<Integer> hints = baseNumber.makeHints(compareNumber);
+
+        Assertions.assertThat(hints)
+                .containsExactly(0, 0);
+    }
 }
