@@ -8,7 +8,7 @@ public class Referee {
     private int ballCount = 0;
     private int strikeCount = 0;
 
-    public String scoring(List<Integer> answer, List<Integer> userAnswer) {
+    public String judge(List<Integer> answer, List<Integer> userAnswer) {
         ballCount = 0;
         strikeCount = 0;
 
