@@ -24,6 +24,15 @@ public class StringTest {
     }
 
     @Test
+    void split_빈_문자열에_split을_시도할_경우() {
+        String input = "";
+        String[] result = input.split("");
+
+        assertThat(1).isEqualTo(result.length);
+        assertThat(result[0]).isEqualTo("");
+    }
+
+    @Test
     void substring_메서드로_특정_구간_값을_반환() {
         String input = "(1,2)";
         String result = input.substring(1, 4);
