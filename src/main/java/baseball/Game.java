@@ -34,12 +34,14 @@ public class Game {
         else
             return false;
     }
-//
-//    private boolean isBall(int where) {
-//        for (int i = 0; i < 3; i++) {
-//
-//        }
-//    }
+
+    private boolean isBall(int where) {
+        for (int i = 0; i < 3; i++) {
+            if (findDigitNumber(random_number, i) == findDigitNumber(input_number, where))
+                return true;
+        }
+        return false;
+    }
 }
 
 ///245   200 % 1000 -> 200
