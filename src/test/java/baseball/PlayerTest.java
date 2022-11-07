@@ -51,4 +51,15 @@ public class PlayerTest {
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1(새로 시작), 2(게임 종료) 만 입력 가능합니다.");
     }
+
+    @Test
+    public void 플레이어가_입력한_3자리_숫자의_범위_테스트() {
+        // given
+        String userInput = "015";
+        // when, then
+        assertThatThrownBy(() -> {
+            getPlayer().checkRangeNumber(userInput);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력할 수 있는 숫자 범위는 1 ~ 9 사이입니다.");
+    }
 }
