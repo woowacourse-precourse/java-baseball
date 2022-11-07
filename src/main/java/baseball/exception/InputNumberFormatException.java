@@ -1,6 +1,6 @@
 package baseball.exception;
 
-public class InputNumberFormatException extends IllegalNumberInputException {
+public class InputNumberFormatException extends BaseballException {
 
     private static final String NUMBER_FORMAT_ERROR = "잘못된 숫자 입력입니다. 입력 문자: %s";
 
