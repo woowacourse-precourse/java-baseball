@@ -13,10 +13,15 @@ import java.util.Map;
 import java.util.Set;
 
 import static baseball.game.message.GameMessage.*;
+import static baseball.game.util.GameUtil.STRIKE_OUT_COUNT;
 
 public class Game {
 
     private static final SystemUtil systemUtil = SystemUtil.getInstance();
+
+    private static boolean isStrikeOut(Map<Result, Integer> guessResult) {
+        return guessResult.get(Result.STRIKE) == STRIKE_OUT_COUNT;
+    }
 
     private static void printResult(Map<Result, Integer> guessResult) {
         if (isNothing(guessResult)) {
