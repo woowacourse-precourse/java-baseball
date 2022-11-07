@@ -105,14 +105,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 유효한_게임시작_번호(){
+    void 유효한_게임시작_번호() {
         int input = 1;
         Exception.isInvalidInput(input);
         assertThat(input).isEqualTo(1);
     }
 
+    @Test
+    void 유효한_사용자번호() {
+        List<Integer> input = List.of(1, 2, 3);
+        List<Integer> result = List.of(1, 2, 3);
+        Exception.handleException(input);
+        assertThat(result).isEqualTo(input);
+    }
 
-   @Override
+    @Override
     public void runMain() {
         Application.main(new String[]{});
     }
