@@ -223,7 +223,7 @@ class ApplicationTest extends NsTest {
         BaseBallGame baseBallGame = new BaseBallGame();
 
         //when
-        baseBallGame.startGame();
+        baseBallGame.printStartGameMessage();
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("숫자 야구 게임을 시작합니다.");
@@ -237,7 +237,7 @@ class ApplicationTest extends NsTest {
         BaseBallGame baseBallGame = new BaseBallGame();
 
         //when
-        baseBallGame.userInput();
+        baseBallGame.printUserInputMessage();
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("숫자를 입력해주세요  :  ".trim());
@@ -251,7 +251,7 @@ class ApplicationTest extends NsTest {
         BaseBallGame baseBallGame = new BaseBallGame();
 
         //when
-        baseBallGame.userWin();
+        baseBallGame.printUserWinMessage();
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료".trim());
@@ -265,7 +265,7 @@ class ApplicationTest extends NsTest {
         BaseBallGame baseBallGame = new BaseBallGame();
 
         //when
-        baseBallGame.restartOrStopMessage();
+        baseBallGame.printRestartOrStopMessage();
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.".trim());
@@ -281,7 +281,7 @@ class ApplicationTest extends NsTest {
         int strikeCount = (int) ((Math.random() * 10000) % 10);
 
         //when
-        baseBallGame.makeHint(ballCount, strikeCount);
+        baseBallGame.makeHintAndPrint(ballCount, strikeCount);
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount + "볼 " + strikeCount + "스트라이크".trim());
@@ -297,7 +297,7 @@ class ApplicationTest extends NsTest {
         int strikeCount = 0;
 
         //when
-        baseBallGame.makeHint(ballCount, strikeCount);
+        baseBallGame.makeHintAndPrint(ballCount, strikeCount);
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("낫싱".trim());
@@ -315,7 +315,7 @@ class ApplicationTest extends NsTest {
         }
         int strikeCount = 0;
         //when
-        baseBallGame.makeHint(ballCount, strikeCount);
+        baseBallGame.makeHintAndPrint(ballCount, strikeCount);
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(ballCount + "볼".trim());
@@ -334,7 +334,7 @@ class ApplicationTest extends NsTest {
         }
 
         //when
-        baseBallGame.makeHint(ballCount, strikeCount);
+        baseBallGame.makeHintAndPrint(ballCount, strikeCount);
 
         //then
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo(strikeCount + "스트라이크".trim());

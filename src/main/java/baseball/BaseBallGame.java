@@ -8,19 +8,19 @@ public class BaseBallGame {
     Computer computer = new Computer();
     User user = new User();
 
-    public void startGame() {
+    public void printStartGameMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void userInput() {
+    public void printUserInputMessage() {
         System.out.print("숫자를 입력해주세요  :  ");
     }
 
-    public void userWin() {
+    public void printUserWinMessage() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public void restartOrStopMessage() {
+    public void printRestartOrStopMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
@@ -36,10 +36,10 @@ public class BaseBallGame {
             int countBall = countBall(userInputToList, computerNumbers);
             int countStrike = countStrike(userInputToList, computerNumbers);
 
-            makeHint(countBall, countStrike);
+            makeHintAndPrint(countBall, countStrike);
 
             if (countStrike == 3) {
-                userWin();
+                printUserWinMessage();
                 break;
             }
         }
@@ -89,7 +89,7 @@ public class BaseBallGame {
         return strike;
     }
 
-    public void makeHint(int ballCount, int strikeCount) {
+    public void makeHintAndPrint(int ballCount, int strikeCount) {
 
         if (ballCount > 0 && strikeCount > 0) {
             System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");

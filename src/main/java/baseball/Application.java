@@ -6,12 +6,12 @@ public class Application {
         BaseBallGame baseBallGame = new BaseBallGame();
         User user = new User();
 
-        baseBallGame.startGame();
+        baseBallGame.printStartGameMessage();
 
         do {
-            baseBallGame.userInput();
+            baseBallGame.printUserInputMessage();
             baseBallGame.playGame();
-            baseBallGame.restartOrStopMessage();
+            baseBallGame.printRestartOrStopMessage();
 
         } while (baseBallGame.restartOrStop(user.restartOrStopInput()) == 1);
     }
