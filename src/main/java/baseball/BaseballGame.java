@@ -49,6 +49,20 @@ public class BaseballGame {
         }
     }
 
+    boolean doesRestart() {
+        boolean restartTF;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int answer = Integer.parseInt(readLine());
+        if (answer == 1) {
+            restartTF = true;
+        } else if (answer == 2) {
+            restartTF = false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return restartTF;
+    }
+
     private int createTargetNumber() {
         int newTarget = pickNumberInRange(1, 999);
         this.targetNumber = newTarget;

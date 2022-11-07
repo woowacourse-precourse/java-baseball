@@ -7,6 +7,11 @@ public class Application {
         BaseballGame baseballGame = new BaseballGame();
 
         // TODO: 프로그램 구현
-        baseballGame.startNewGame();
+        while (true) {
+            baseballGame.startNewGame();
+            if (!baseballGame.doesRestart()) {
+                break;
+            }
+        }
     }
 }
