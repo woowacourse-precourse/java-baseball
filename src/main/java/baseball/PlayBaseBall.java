@@ -4,27 +4,40 @@ public class PlayBaseBall {
     private Computer computer;
     private User user;
     private Messenger messenger;
-
-    public PlayBaseBall() {
-    }
+    private AnswerChecker answerChecker;
 
     public void ready() {
         do {
-            this.computer = new Computer();
-            computer.makeAnswerNum();
+            makeAnswer();
             start();
         } while (messenger.selectRepalyOrEnd(user.getUserOpinion()));
     }
 
     public void start() {
-        AnswerChecker answerChecker;
         do {
-            this.user = new User();
-            this.messenger = new Messenger();
-            user.inputNumbers();
-            answerChecker = new AnswerChecker(computer.getAnswer());
-            answerChecker.checkStrikeOrBall(user.getUserNumbers());
-            messenger.printResultMessage(answerChecker);
+            enterNumber();
+            checkAnswer();
+            printMessage();
         } while (!answerChecker.isAnswer());
+    }
+
+    public void makeAnswer() {
+        computer = new Computer();
+        computer.makeAnswerNum();
+    }
+
+    public void enterNumber() {
+        user = new User();
+        user.inputNumber();
+    }
+
+    public void checkAnswer() {
+        answerChecker = new AnswerChecker(computer.getAnswer());
+        answerChecker.checkStrikeOrBall(user.getUserNumbers());
+    }
+
+    public void printMessage() {
+        messenger = new Messenger();
+        messenger.printResultMessage(answerChecker);
     }
 }

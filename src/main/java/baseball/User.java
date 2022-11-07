@@ -13,7 +13,7 @@ public class User {
         userNumbers = new ArrayList<>();
     }
 
-    public void inputNumbers() {
+    public void inputNumber() {
         System.out.println(Message.INPUT_MESSAGE);
         String userInput = Console.readLine();
         checkInputException(userInput);
