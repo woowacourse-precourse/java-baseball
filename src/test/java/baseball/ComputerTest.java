@@ -12,6 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ComputerTest {
     private static Computer computer;
 
+    @Test
+    void 숫자_유효성_검사_함수_검사() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        assertThat(computer.isValidNumber(numbers)).isTrue();
+    }
+
     @BeforeEach
     private void createComputer() {
         computer = new Computer();
