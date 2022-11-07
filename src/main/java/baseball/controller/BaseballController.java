@@ -2,11 +2,14 @@ package baseball.controller;
 
 import baseball.constant.Constant;
 import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballController {
+    private Player player = new Player();
     private Computer computer = new Computer();
 
     private boolean isRightAnswer() {
@@ -28,5 +31,14 @@ public class BaseballController {
             playerInputs.add(Character.getNumericValue(input.charAt(i)));
         }
         return playerInputs;
+    }
+
+    private void restartGameIfPlayerWant() {
+        OutputView.printRightAnswer();
+        InputView.requestMoreGame();
+        String restartInput = player.enterRestartInput();
+        if (restartInput.equals(Constant.RESTART_GAME)) {
+            startGame();
+        }
     }
 }
