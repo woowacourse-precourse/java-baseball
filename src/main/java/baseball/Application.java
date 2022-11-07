@@ -10,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
 
         //시작 안내 문구 출력
-        System.out.println("시작");
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         //게임 상태값 - 1: 진행 2: 종료
         int status = 1;
@@ -29,30 +29,23 @@ public class Application {
             while (strike == 0){
 
                 //사용자 값 입력
-                System.out.print("let's guess : ");
                 int[] guess = guessRandomNumbers();
                 System.out.println(Arrays.toString(guess));
 
 
                 //판별
                 int[] StrikeBall = countStrikeBall(computer, guess);
-                System.out.println(Arrays.toString(StrikeBall));
 
-                if(judge(StrikeBall, strike) == 1){
+                strike = judge(StrikeBall, strike);
+                if( strike == 1){
                     break;
-                } else {
-                    judge(StrikeBall, strike);
                 }
             }
-//            while (guess != computer){
-//                System.out.println("wrong, guess again");
-//                guess = Integer.parseInt(readLine());
-//            }
 
-            System.out.println("right, ending the game");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             //재시작 1, 종료 2
-            System.out.println("input 1 for restart, 2 for turn-off");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             status = Integer.parseInt(readLine());
             //1 입력시 다시 시작
         } while (status == 1);
@@ -85,6 +78,7 @@ public class Application {
 
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
+        System.out.println();
         if (userInput.length() > 3 || userInput.length() < 3 || !userInput.matches(REGEX)){
             throw new IllegalArgumentException();
         }
@@ -129,9 +123,10 @@ public class Application {
             System.out.println("낫싱");
             return strike;
         } else if (strikeBall[0] != 3) {
-            System.out.printf("%d볼 %d스트라이크",strikeBall[1],strikeBall[0]);
+            System.out.printf("%d볼 %d스트라이크%n",strikeBall[1],strikeBall[0]);
             return strike;
         } else if (strikeBall[0] == 3) {
+            System.out.println("3스트라이크");
             strike = 1;
             return strike;
         } else {
