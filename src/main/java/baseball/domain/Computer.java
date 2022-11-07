@@ -9,11 +9,11 @@ import java.util.Set;
 public class Computer {
     private String answer;
 
-    public String getAnswer(){
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(){
+    public void setAnswer() {
 
         int randomNumbersSize = 3;
         int startRange = 1;
@@ -32,7 +32,7 @@ public class Computer {
             }
         }
 
-        for (int i = 0; i < randomNumbersSize; i++){
+        for (int i = 0; i < randomNumbersSize; i++) {
             setNumber += randomNumbers.get(i).toString();
         }
 
