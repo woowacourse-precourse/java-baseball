@@ -1,8 +1,7 @@
 package baseball.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -46,11 +45,10 @@ public class BallGeneratorTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        // when
-        Throwable exception = assertThrows(RuntimeException.class, () -> ballGenerator.createPlayerBalls());
-
-        // then
-        assertEquals(IllegalArgumentException.class, exception.getClass());
+        // when, then
+        assertThatThrownBy(() -> {
+            ballGenerator.createPlayerBalls();
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -60,11 +58,10 @@ public class BallGeneratorTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        // when
-        Throwable exception = assertThrows(RuntimeException.class, () -> ballGenerator.createPlayerBalls());
-
-        // then
-        assertEquals(IllegalArgumentException.class, exception.getClass());
+        // when, then
+        assertThatThrownBy(() -> {
+            ballGenerator.createPlayerBalls();
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -74,10 +71,9 @@ public class BallGeneratorTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        // when
-        Throwable exception = assertThrows(RuntimeException.class, () -> ballGenerator.createPlayerBalls());
-
-        // then
-        assertEquals(IllegalArgumentException.class, exception.getClass());
+        // when, then
+        assertThatThrownBy(() -> {
+            ballGenerator.createPlayerBalls();
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
