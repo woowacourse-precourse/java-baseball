@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -30,5 +32,15 @@ public class Application {
     static String inputUserNumber() {
         String userNumber = Console.readLine();
         return userNumber;
+    }
+
+    static boolean isValidate(String userNumber) {
+        Set<Integer> eachNumber = new HashSet<>();
+        for (int digit = 0; digit < userNumber.length(); digit++) {
+            if (eachNumber.contains(userNumber.charAt(digit) - '0'))
+                return false;
+            eachNumber.add(userNumber.charAt(digit) - '0');
+        }
+        return true;
     }
 }
