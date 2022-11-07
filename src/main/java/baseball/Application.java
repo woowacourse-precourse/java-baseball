@@ -1,7 +1,7 @@
 package baseball;
 
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args) {
 
         boolean run = true;
 
@@ -14,6 +14,7 @@ public class Application {
             }
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
+            throw e;
         }
     }
 
