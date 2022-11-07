@@ -23,7 +23,7 @@ class PlayerNumberTest {
     void 문자_숫자_리스트로_변환_검사() {
         String convertString = "123";
         List<Integer> testList = new ArrayList<>(Arrays.asList(1, 2, 3));
-        assertEquals(testList, playerNumber.convertNumberList(convertString));
+        assertEquals(testList, playerNumber.playerGetList(convertString));
 
     }
 

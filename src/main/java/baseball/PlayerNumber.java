@@ -12,13 +12,10 @@ public class PlayerNumber {
         return Console.readLine();
     }
 
-    public static String getCharacter() {
-        return Console.readLine();
-    }
 
-    public static List<Integer> convertNumberList(String inputNumber) {
+    public static List<Integer> playerGetList(String inputStringNumber) {
         List<Integer> playerNumberList = new ArrayList<>();
-        int inputIntNumber = Integer.parseInt(inputNumber);
+        int inputIntNumber = Integer.parseInt(inputStringNumber);
         while (inputIntNumber != 0) {
             playerNumberList.add(inputIntNumber % 10);
             inputIntNumber /= 10;

@@ -12,7 +12,7 @@ public class ComputerNumber {
         return Randoms.pickNumberInRange(1, 9);
     }
 
-    public static List<Integer> arrayGetNumber() {
+    public static List<Integer> computerGetList() {
         List<Integer> computerNumberList = new ArrayList<>();
         while (computerNumberList.size() < 3) {
             int randomNumber = getRandomNumber();

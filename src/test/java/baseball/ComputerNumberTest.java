@@ -20,13 +20,13 @@ class ComputerNumberTest {
 
     @Test
     void 숫자_길이_검사() {
-        List<Integer> testList = computerNumber.arrayGetNumber();
+        List<Integer> testList = computerNumber.computerGetList();
         assertThat(3).isEqualTo(testList.size());
     }
 
     @Test
     void 숫자_중복_검사() {
-        List<Integer> testList = computerNumber.arrayGetNumber();
+        List<Integer> testList = computerNumber.computerGetList();
         int firstDigitNumber = testList.get(0);
         int secondDigitNumber = testList.get(1);
         int thirdDigitNumber = testList.get(2);

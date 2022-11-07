@@ -1,16 +1,16 @@
 package baseball;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GameConsole {
 
     public static List<Integer> computer;
-    public static List<Integer> player;
 
     public static Integer strikeCount(List<Integer> computerNumber, List<Integer> playerNumber) {
         int strike = 0;
         for (int len = 0; len < computerNumber.size(); len++) {
-            if (computerNumber.get(len) == playerNumber.get(len)) {
+            if (Objects.equals(computerNumber.get(len), playerNumber.get(len))) {
                 strike += 1;
             }
         }
@@ -20,7 +20,7 @@ public class GameConsole {
     public static Integer ballCount(List<Integer> computerNumber, List<Integer> playerNumber) {
         int ball = 0;
         for (int len = 0; len < computerNumber.size(); len++) {
-            if (!(computerNumber.get(len) == playerNumber.get(len)) && computerNumber.contains(playerNumber.get(len))) {
+            if (!(Objects.equals(computerNumber.get(len), playerNumber.get(len))) && computerNumber.contains(playerNumber.get(len))) {
                 ball += 1;
             }
         }
@@ -41,7 +41,7 @@ public class GameConsole {
         int inputNumber = Integer.parseInt(PlayerNumber.getString());
 
         if (inputNumber == 1) {
-            computer = ComputerNumber.arrayGetNumber();
+            computer = ComputerNumber.computerGetList();
             return true;
         } else if (inputNumber == 2) {
             return false;
@@ -55,7 +55,7 @@ public class GameConsole {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        computer = ComputerNumber.arrayGetNumber();
+        computer = ComputerNumber.computerGetList();
 
 
         boolean bool = true;
@@ -64,7 +64,7 @@ public class GameConsole {
             System.out.print("숫자를 입력해주세요 : ");
             String playerNumber = PlayerNumber.getString();
             exceptionCheck(playerNumber);
-            List<Integer> player = PlayerNumber.convertNumberList(playerNumber);
+            List<Integer> player = PlayerNumber.playerGetList(playerNumber);
 
             if (ballCount(computer, player) > 0) {
                 hint.append(ballCount(computer, player)).append("볼 ");
