@@ -14,4 +14,9 @@ public class SystemUserModel {
         return digits.get(index);
     }
 
+    public void setDigits(String input) {
+        this.digits = Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 }
