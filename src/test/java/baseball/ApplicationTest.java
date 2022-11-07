@@ -192,6 +192,23 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Nested
+    class 게임종료기능_테스트 {
+        @Test
+        void 종료_또는_재시작_출력문구확인() {
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+
+            testGame.gameMessageDisplay.printStopOrRegameRequestMessage();
+
+            String actualOutput = out.toString()
+                    .replace(System.getProperty("line.separator").toString(), "");
+
+            String expectedOutput = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+            assertThat(actualOutput).isEqualTo(expectedOutput);
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
