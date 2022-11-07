@@ -81,7 +81,7 @@
 ## (void)inputUserNumberService()
 - [x] inputAvailableUserNumberService함수에서 출력값을 저장하는 stringBuildUserNumber을 ""으로 초기화
 - [x] 사용자가의 수가 컴퓨터의 수와 동일한지 비교후 결과값을 저장하는 checkedAnswer을 false로 초기화
-- [ ] computerNumbersList에 randomNumberCreate함수를 실행한 결과를 저장.
+- [x] computerNumbersList에 randomNumberCreate함수를 실행한 결과를 저장.
 - [x] inputAvailableUserNumberService함수를 실행
 - [x] StringToList함수를 실행
 - [ ] checkStrickNumbers함수를 실행
