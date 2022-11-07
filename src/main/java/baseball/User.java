@@ -19,6 +19,7 @@ public class User {
 
         System.out.print(INPUT_MESSAGE);
         String inputValue = Console.readLine();
+        isNumber(inputValue);
 
         for (int i = 0; i < inputValue.length(); i++) {
             userNumber.add(Integer.parseInt(inputValue.substring(i, i + 1)));
@@ -26,6 +27,12 @@ public class User {
 
         validateUserNumber(userNumber);
         return userNumber;
+    }
+
+    public void isNumber(String input) {
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public boolean validateUserNumber(List<Integer> num) {
