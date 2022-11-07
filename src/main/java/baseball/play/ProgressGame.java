@@ -37,7 +37,7 @@ public class ProgressGame {
         strikeCnt += getStrikeNumber(answerNumberList, receivedNumber);
         ballCnt += getBallNumber(answerNumberList, receivedNumber);
 
-        hint(ballCnt, strikeCnt);
+        printHint(ballCnt, strikeCnt);
         if(strikeCnt != 3){
             progressGame(answerNumberList);
         }
