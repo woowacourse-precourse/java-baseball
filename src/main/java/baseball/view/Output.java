@@ -15,7 +15,7 @@ public class Output {
             return ball_and_strike.get(1) + "스트라이크";
         }
         if (ball_and_strike.get(1).equals(0)) return ball_and_strike.get(0) + "볼";
-        return ball_and_strike.get(0) + "볼" + ball_and_strike.get(1) + "스트라이크";
+        return ball_and_strike.get(0) + "볼 " + ball_and_strike.get(1) + "스트라이크";
     }
 
 }

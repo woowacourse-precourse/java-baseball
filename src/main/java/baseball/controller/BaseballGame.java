@@ -16,14 +16,14 @@ public class BaseballGame {
         RestartGame restartGame = new RestartGame();
 
         final String ANSWER_OUTPUT = "3스트라이크";
-        List<Integer> random_num;
         List<Integer> user_num;
         String result;
         boolean restart = true;
 
         while (restart) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
             result = "";
-            random_num = randomNum.getRandomNum();
+            List<Integer> random_num = randomNum.getRandomNum();
             while (!result.equals(ANSWER_OUTPUT)) {
                 user_num = validateUserInput.getUserInput(UserInput.getUserNumber());
                 result = outputResult.outputString(random_num, user_num);

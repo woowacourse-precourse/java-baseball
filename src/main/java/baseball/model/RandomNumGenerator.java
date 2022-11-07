@@ -10,9 +10,8 @@ public class RandomNumGenerator {
     private final static int MAX_NUM = 9;
     private final static int LIST_SIZE = 3;
 
-    List<Integer> number_list = new ArrayList<>();
-
     public List<Integer> getRandomNum() {
+        List<Integer> number_list = new ArrayList<>();
         while (number_list.size() < LIST_SIZE) {
             int num = Randoms.pickNumberInRange(MIN_NUM, MAX_NUM);
             if (!number_list.contains(num)) number_list.add(num);
