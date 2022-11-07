@@ -14,8 +14,18 @@ import java.util.stream.Stream;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean Shutdown = true;
+        while (Shutdown){
+            try {
+                gameStart();
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+                Shutdown = gameBreak();
+            }catch (Exception e){
+                System.out.println(e);
+                break;
+            }
+        }
     }
 
     private static List<Integer> getComputerNumbers() {
@@ -45,14 +55,36 @@ public class Application {
     }
 
     private static void gameStart(){
-        int[] userNumbers = Stream.of(Console.readLine().split("")).mapToInt(Integer::parseInt).toArray();
-        gameStartConditional(userNumbers);
         List<Integer> computerNumbers = getComputerNumbers();
-        int[] scoreboard = getScoreboard(userNumbers, computerNumbers);
+        boolean iter = true;
+        while (iter){
+            System.out.print("숫자를 입력해주세요 : ");
+            int[] userNumbers = Stream.of(Console.readLine().split("")).mapToInt(Integer::parseInt).toArray();
+            gameStartConditional(userNumbers);
+            int[] scoreboard = getScoreboard(userNumbers, computerNumbers);
+            iter = printScoreboard(scoreboard);
+        }
+    }
+    private static boolean printScoreboard(int[] scoreboard){
         int strike = scoreboard[0];
         int ball = scoreboard[1];
-        
-
+        if (strike == 3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else if (strike==0 && ball==0){
+            System.out.println("낫싱");
+            return false;
+        } else if (strike > 0 && ball > 0){
+            System.out.println(ball+"볼"+" "+strike+"스트라이크");
+            return false;
+        } else if (strike == 0 && ball > 0) {
+            System.out.println(ball+"볼");
+            return false;
+        } else {
+            System.out.println(strike+"스트라이크");
+            return false;
+        }
     }
 
     private static int[] getScoreboard(int[] userNumbers, List<Integer> computerNumbers) {
