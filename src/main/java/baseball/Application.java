@@ -54,7 +54,7 @@ public class Application {
 
         System.out.println(commonMessageMap.get("startMessage"));
 
-        while(true) {
+        while (true) {
             System.out.print(commonMessageMap.get("inputMessage"));
             String userInput = readeUserInput();
 
@@ -63,7 +63,7 @@ public class Application {
             String hintMessage = giveHint(userInput);
             System.out.println(hintMessage);
 
-            if(checkUserInputIsThreeStrike(userInput)) {
+            if (checkUserInputIsThreeStrike(userInput)) {
                 decideExitOrProceed();
             }
         }
@@ -73,13 +73,11 @@ public class Application {
         System.out.println(commonMessageMap.get("exitOrProceedMessage"));
         String userInput = readeUserInput();
 
-        if(userInput.equals("1")) {
+        if (userInput.equals("1")) {
             startGame();
-        }
-        else if(userInput.equals("2")) {
+        } else if (userInput.equals("2")) {
             throw new EndGameException();
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -87,7 +85,7 @@ public class Application {
     public static boolean checkUserInputIsThreeStrike(String userInput) {
         int strikeCount = checkStrike(userInput);
 
-        if(strikeCount == 3) {
+        if (strikeCount == 3) {
             System.out.println(commonMessageMap.get("threeStrikeMessage"));
             return true;
         }
@@ -101,7 +99,7 @@ public class Application {
             Character computerNum = computerNumber.get(place);
             Character userNum = userInput.charAt(place);
 
-            if(computerNum.equals(userNum)) {
+            if (computerNum.equals(userNum)) {
                 strikeCount++;
             }
         }
@@ -116,7 +114,7 @@ public class Application {
             Character computerNum = computerNumber.get(place);
             Character userNum = userInput.charAt(place);
 
-            if(!computerNum.equals(userNum) && computerNumber.contains(userNum)) {
+            if (!computerNum.equals(userNum) && computerNumber.contains(userNum)) {
                 ballCount++;
             }
         }
@@ -139,14 +137,14 @@ public class Application {
     }
 
     public static void validateUserInputSize(String userInput) {
-        if(userInput.length() != 3) {
+        if (userInput.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
 
     public static void validateUserInputForm(String userInput) {
-        for(Character userNumber : userInput.toCharArray()) {
-            if(!('1' <= userNumber && userNumber <='9')) {
+        for (Character userNumber : userInput.toCharArray()) {
+            if (!('1' <= userNumber && userNumber <= '9')) {
                 throw new IllegalArgumentException();
             }
         }
@@ -157,7 +155,7 @@ public class Application {
         int strikeCount = 0;
         String hintMessage = "";
 
-        if(!checkNothing(userInput)) {
+        if (!checkNothing(userInput)) {
             ballCount = checkBall(userInput);
             strikeCount = checkStrike(userInput);
 
@@ -172,7 +170,7 @@ public class Application {
         StringBuilder hintMessageBuilder = new StringBuilder();
         String hintMessage;
 
-        if(ballCount > 0) {
+        if (ballCount > 0) {
             hintMessageBuilder.append(ballCount).append("볼").append(" ");
         }
 
@@ -180,7 +178,7 @@ public class Application {
             hintMessageBuilder.append(strikeCount).append("스트라이크");
         }
 
-        if(ballCount == 0 && strikeCount == 0) {
+        if (ballCount == 0 && strikeCount == 0) {
             hintMessageBuilder.append("낫싱");
         }
 
