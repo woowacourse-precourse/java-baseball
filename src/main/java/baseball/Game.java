@@ -53,6 +53,8 @@ public class Game {
         player.getPlayerInput();
         List<Integer> playerInput = player.getBaseballNumber();
         gamehost.setHint(playerInput);
-        return gamehost.getHint();
+        String hint = gamehost.getHint();
+        System.out.println(hint);
+        return hint;
     }
 }
