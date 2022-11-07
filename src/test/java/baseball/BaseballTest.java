@@ -333,6 +333,17 @@ class BaseballTest {
 
             assertThat(gameController.receiveUserAction()).isInstanceOf(Action.class);
         }
+
+        @Test
+        @DisplayName("setComputerBall 메소드가 호출되면 멤버변수를 초기화하는지 확인")
+        void setComputerBall_test() throws NoSuchFieldException, IllegalAccessException {
+            Field field = gameController.getClass().getDeclaredField("computerBall");
+            field.setAccessible(true);
+
+            gameController.setComputerBall();
+
+            assertThat(field.get(gameController)).isInstanceOf(Ball.class);
+        }
     }
 
     @Nested
