@@ -6,12 +6,23 @@ public class OutputView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void printStrike(int strike) {
-        System.out.printf("%d 스트라이크", strike);
+    public static void printResult(int strike, int ball) {
+        String result = String.join(" ", printBall(ball), printStrike(strike));
+        System.out.println(result.trim());
     }
 
-    public static void printBall(int ball) {
-        System.out.printf("%d 볼", ball);
+    private static String printStrike(int strike) {
+        if (strike == 0) {
+            return "";
+        }
+        return String.format("%d스트라이크", strike);
+    }
+
+    private static String printBall(int ball) {
+        if (ball == 0) {
+            return "";
+        }
+        return String.format("%d볼", ball);
     }
 
     public static void printNothing() {
@@ -19,6 +30,6 @@ public class OutputView {
     }
 
     public static void printFinish() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
