@@ -38,7 +38,6 @@ class ApplicationTest extends NsTest {
         Set<Integer> numberSet = new HashSet<>(numberList);
         assertThat(numberList).hasSameSizeAs(numberSet);
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});

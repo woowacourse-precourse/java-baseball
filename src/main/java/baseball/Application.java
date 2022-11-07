@@ -1,6 +1,5 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +8,7 @@ public class Application {
         // TODO: 프로그램 구현
         List<Integer> computerNumbers = new ArrayList<>();
         makeRandomNumbers(computerNumbers);
+        List<Integer> playerNumbers = IOUtil.getNumbersFromPlayer();
     }
 
     public static void makeRandomNumbers(List<Integer> computerNumbers) {
