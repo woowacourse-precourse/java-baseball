@@ -3,12 +3,15 @@ package baseball;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class PlayerTest {
   Player player;
+  static final int MAX_SIZE = 3;
 
   @BeforeEach
   void setUp(){
@@ -22,5 +25,12 @@ public class PlayerTest {
     Assertions.assertThrows(IllegalArgumentException.class, () -> {
       player.decideNumbers(stringArg);
     });
+  }
+
+  @Test
+  @DisplayName("플레이어가 입력한 숫자를 확인하는 테스트")
+  void testWithPlayerSource(){
+    player.decideNumbers("456");
+    assertThat(player.getNumbers()).containsExactly(4, 5, 6);
   }
 }
