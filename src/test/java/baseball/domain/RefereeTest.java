@@ -63,5 +63,17 @@ public class RefereeTest {
         Assertions.assertThat(Referee.getStrikeCount(originList, comparedList2)).isEqualTo(1);
         Assertions.assertThat(Referee.getStrikeCount(originList, comparedList3)).isEqualTo(0);
     }
-    
+
+    @Test
+    void 볼_개수_세기() {
+        List<Integer> originList = Arrays.asList(1, 2, 3);
+        List<Integer> comparedList1 = Arrays.asList(2, 3, 1);
+        List<Integer> comparedList2 = Arrays.asList(2, 3, 4);
+        List<Integer> comparedList3 = Arrays.asList(2, 4, 5);
+
+        Assertions.assertThat(Referee.getBallCount(originList, originList)).isEqualTo(0);
+        Assertions.assertThat(Referee.getBallCount(originList, comparedList1)).isEqualTo(3);
+        Assertions.assertThat(Referee.getBallCount(originList, comparedList2)).isEqualTo(2);
+        Assertions.assertThat(Referee.getBallCount(originList, comparedList3)).isEqualTo(1);
+    }
 }
