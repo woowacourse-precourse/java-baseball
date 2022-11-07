@@ -9,7 +9,9 @@ public class Application {
     private static final OutputView OUTPUT_VIEW = new OutputView();
 
     public static void main(String[] args) {
-        Game game = new Game(INPUT_VIEW, OUTPUT_VIEW);
-        game.play();
+        do {
+            new Game(INPUT_VIEW, OUTPUT_VIEW).play();
+        }
+        while (INPUT_VIEW.promptNewGame());
     }
 }
