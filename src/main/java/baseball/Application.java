@@ -11,8 +11,6 @@ public class Application {
         // TODO: 프로그램 구현
 
 
-//        String correctAnswer = makeRandomNumStr();
-//        String correctAnswer = "589";
 
         boolean run = true;
         while (run) {
@@ -24,7 +22,6 @@ public class Application {
             String next = Console.readLine();
 
             if (next.equals("1")) {
-//                run = true;
                 continue;
             } else if (next.equals("2")) {
                 System.out.println("종료합니다.");
@@ -47,7 +44,6 @@ public class Application {
         while (run) {
             System.out.print("숫자를 입력해주세요 : ");
             String userAnswer = Console.readLine();
-            System.out.println(userAnswer);
 
 //            입력값 검증
             lengthCheck(userAnswer);
