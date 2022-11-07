@@ -9,11 +9,16 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Application {
+
+
     public static String isValid(String readLine) {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
         boolean isTriple = (readLine.length() == 3);
+        boolean isDifferentEach = ((readLine.charAt(0) != readLine.charAt(1))
+                && (readLine.charAt(1) != readLine.charAt(2))
+                && (readLine.charAt(2) != readLine.charAt(0)));
 
-        if (isNumeric && isTriple) {
+        if (isNumeric && isTriple && isDifferentEach) {
             return readLine;
         }
         throw new IllegalArgumentException();
@@ -99,5 +104,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        getUserInput();
     }
 }
