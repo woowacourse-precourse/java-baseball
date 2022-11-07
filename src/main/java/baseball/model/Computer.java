@@ -27,4 +27,12 @@ public class Computer {
         if(!numbers.contains(number))
             numbers.add(number);
     }
+
+    public BallCode getScore(int index, int userScore){
+        if(numbers.get(index) == userScore)
+            return STRIKE;
+        if(numbers.contains(userScore))
+            return BALL;
+        return NOTHING;
+    }
 }
