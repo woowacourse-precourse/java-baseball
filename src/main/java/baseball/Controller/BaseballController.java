@@ -21,6 +21,7 @@ public class BaseballController {
     public void startBaseballGame() {
         randomList = baseballService.createRandomNumber();
         inputList = readInputNumber();
+        countStrikeOrBall(randomList, inputList);
     }
 
     //유저가 입력한 숫자 받기
