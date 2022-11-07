@@ -24,4 +24,33 @@ public class Input {
         return Console.readLine();
     }
 
+    static boolean userNumberLengthCheck(String input) {
+        if (input.length() != 3) {
+            return false;
+        }
+        return true;
+    }
+
+    static boolean userNumberRepeatCheck(String input) {
+        List<Integer> equal_number = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            if (equal_number.contains(input.charAt(i) - '0')) {
+                return false;
+            }
+            equal_number.add(input.charAt(i) - '0');
+        }
+        return true;
+    }
+
+    static boolean userNumberRangeCheck(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i)-'0' <= 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }
