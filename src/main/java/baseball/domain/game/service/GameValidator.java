@@ -1,8 +1,6 @@
 package baseball.domain.game.service;
 
-public interface GameService {
-
-    String requestInputNumber();
+public interface GameValidator {
 
     void validateNumber(String number);
 }
