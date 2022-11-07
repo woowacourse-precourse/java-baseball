@@ -22,4 +22,12 @@ public class GameTest {
         Game game = new Game();
         assertThat(game.restart(input)).isTrue();
     }
+
+    @Test
+    void restart_여러개의_값을_입력할때() {
+        String input = "123";
+        Game game = new Game();
+        assertThatThrownBy(() -> game.restart(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
