@@ -15,6 +15,10 @@ public class Application {
 
     }
 
+    private static void printInitMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
     private static void play() {
         List<Integer> answer = pickThreeNumbers();
         List<Integer> userAnswer = stringConvertToIntegerList(getUserAnswer()); // 입력받은 값을 리스트로 변경
@@ -25,6 +29,12 @@ public class Application {
             hint = score.getScore();
             System.out.println(hint);
         }
+        printGameOver();
+    }
+
+    private static void printGameOver() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static Score checkAnswer(List<Integer> answer, List<Integer> userAnswer) {
@@ -43,10 +53,6 @@ public class Application {
         }
 
         return score;
-    }
-
-    private static void printInitMessage() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     private static String getUserAnswer() {
