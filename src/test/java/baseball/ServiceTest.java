@@ -1,5 +1,7 @@
 package baseball;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.regex.Pattern;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import org.opentest4j.AssertionFailedError;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -170,5 +173,26 @@ public class ServiceTest {
         //then
         assertEquals(userInputList, testList);
     }
+
+    @DisplayName("볼 카운트(볼, 스트라이크 개수)를 출력해주는 메서드 테스트")
+    @Test
+    void printBallCountMap() {
+        //given
+        Service service = new Service();
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+        Map<String, Integer> ballCount = new HashMap<>();
+
+        ballCount.put("strikeCount",1);
+        ballCount.put("ballCount",2);
+        //when
+        service.printBallCountMap(ballCount);
+        //then
+        assertEquals("2볼 1스트라이크", outputStreamCaptor.toString()
+                .trim());
+
+        System.setOut(System.out);
+    }
+
 
 }
