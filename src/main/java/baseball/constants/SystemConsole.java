@@ -21,6 +21,4 @@ public class SystemConsole {
     public static void gameWinMessage() {
         System.out.println(SystemMessage.GAME_WIN_MESSAGE);
     }
-
-
 }
