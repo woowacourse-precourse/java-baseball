@@ -48,6 +48,24 @@ public class Game {
      * 볼의 수를 반환하는 기능
      */
     public int getBallCnt() {
-        return  ballCnt;
+        return ballCnt;
+    }
+
+    /**
+     * hint를 제공하는 기능
+     */
+    public void giveHint(List<Integer> problem, String answer) {
+        isStrikeOrBall(problem, answer);
+        if (strikeCnt == 0 && ballCnt == 0) {
+            System.out.println(NOTHING);
+            return;
+        } else if (strikeCnt == 0) {
+            System.out.println(ballCnt + BALL);
+            return;
+        } else if (ballCnt == 0) {
+            System.out.println(strikeCnt + STRIKE);
+            return;
+        }
+        System.out.println(ballCnt + BALL + " " + strikeCnt + STRIKE);
     }
 }
