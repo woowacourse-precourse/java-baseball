@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,9 @@ public class GameTest extends NsTest {
         when(ballMaker.getUserBall())
                 .thenReturn(new Ball(List.of(2, 1, 3)));
 
+        when(ballReader.getStrikeAndBall(any(),any()))
+                .thenReturn(new EnumMap<>(ResultOfBall.class));
+
         //when
         game.play();
 
@@ -75,17 +79,17 @@ public class GameTest extends NsTest {
         when(ballMaker.getUserBall())
                 .thenReturn(new Ball(List.of(2, 1, 3)));
 
-        Map<ResultOfBall, Integer> firstResult = new HashMap<>();
+        EnumMap<ResultOfBall, Integer> firstResult = new EnumMap<>(ResultOfBall.class);
         firstResult.put(ResultOfBall.STRIKE, 2);
 
-        Map<ResultOfBall, Integer> secondResult = new HashMap<>();
+        EnumMap<ResultOfBall, Integer> secondResult = new EnumMap<>(ResultOfBall.class);
         secondResult.put(ResultOfBall.STRIKE, 1);
         secondResult.put(ResultOfBall.BALL, 1);
 
-        Map<ResultOfBall, Integer> thirdResult = new HashMap<>();
+        EnumMap<ResultOfBall, Integer> thirdResult = new EnumMap<>(ResultOfBall.class);
         thirdResult.put(ResultOfBall.BALL, 2);
 
-        Map<ResultOfBall, Integer> fourthResult = new HashMap<>();
+        EnumMap<ResultOfBall, Integer> fourthResult = new EnumMap<>(ResultOfBall.class);
 
         when(ballReader.getStrikeAndBall(any(), any()))
                 .thenReturn(firstResult)
