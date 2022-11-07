@@ -11,23 +11,21 @@ import java.util.List;
 public class ComputerNumber {
 
 
-    public static List<Integer> getComputerRandomNumber(){
+    public static List<Integer> getComputerRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
-        while(computerNumber.size() < NumberNaming.MAX_NUMBER_SIZE){
+        while (computerNumber.size() < NumberNaming.MAX_NUMBER_SIZE) {
             createRandomNumber(computerNumber, Randoms.pickNumberInRange(NumberNaming.MIN_RANGE_NUM, NumberNaming.MAX_RANGE_NUM));
-            }
-        return computerNumber;
         }
+        return computerNumber;
+    }
 
-    public static void createRandomNumber(List<Integer> RandomNumberList, int number){
-        if(!RandomNumberList.contains(number)){
+    public static void createRandomNumber(List<Integer> RandomNumberList, int number) {
+        if (!RandomNumberList.contains(number)) {
             RandomNumberList.add(number);
         }
     }
+}
 
-    public ComputerNumber(List<Integer> computerRandomNumber) {
-        getComputerRandomNumber();
-        }
-    }
+
 
 
