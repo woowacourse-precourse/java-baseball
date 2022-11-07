@@ -20,4 +20,8 @@ public enum Message {
     public String toString() {
         return msg;
     }
+
+    void printMessage(Message msg) {
+        System.out.println(msg.msg);
+    }
 }
