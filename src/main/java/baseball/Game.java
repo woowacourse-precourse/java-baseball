@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Game {
 
-
     Player player = new Player();
 
     public void run() {
