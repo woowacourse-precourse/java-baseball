@@ -7,7 +7,7 @@ import java.util.List;
 
 import static baseball.Constant.*;
 
-public class PickNumbers {
+public class Computer {
 
     private void putNumber(List<Integer> numbers) {
         Score score = new Score();

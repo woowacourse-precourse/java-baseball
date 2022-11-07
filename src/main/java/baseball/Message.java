@@ -2,7 +2,7 @@ package baseball;
 
 import static baseball.Constant.*;
 
-public class PrintMessage {
+public class Message {
 
     public static void gameStart() {
         System.out.println(GAME_START_MESSAGE);

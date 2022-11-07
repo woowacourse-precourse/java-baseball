@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.HashSet;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class UserInput {
     }
 
     public void numbers() {
-        PrintMessage.enterNumber();
+        Message.enterNumber();
         this.input = Console.readLine();
         isValid();
         convertNumbers();
@@ -35,7 +34,7 @@ public class UserInput {
     }
 
     public void reStartOrQuit() {
-        PrintMessage.chooseRestartOrQuitGame();
+        Message.chooseRestartOrQuitGame();
         this.reStartOrQuitInput = Console.readLine();
         isValidRestartOrQuitGame();
         putChoose(this.reStartOrQuitInput);

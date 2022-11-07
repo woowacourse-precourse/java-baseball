@@ -14,23 +14,23 @@ public class Decision {
         scoreBoard = Score.total();
 
         if (threeStrikeOut()) {
-            PrintMessage.onlyStrikeCount();
+            Message.onlyStrikeCount();
             out();
             return;
         }
         if (ballAndStrikeCount()) {
-            PrintMessage.ballAndStrikeCount();
+            Message.ballAndStrikeCount();
             return;
         }
         if (onlyBallCount()) {
-            PrintMessage.onlyBallCount();
+            Message.onlyBallCount();
             return;
         }
         if (onlyStrikeCount()) {
-            PrintMessage.onlyStrikeCount();
+            Message.onlyStrikeCount();
             return;
         }
-        PrintMessage.notThing();
+        Message.notThing();
     }
 
     private static boolean threeStrikeOut() {
@@ -50,7 +50,7 @@ public class Decision {
     }
 
     private static void out() {
-        PrintMessage.gameEnd();
+        Message.gameEnd();
         out = true;
     }
 

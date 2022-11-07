@@ -2,9 +2,9 @@ package baseball;
 
 public class GameSystem {
     public void startGame() {
-        PickNumbers pickNumbers = new PickNumbers();
+        Computer computer = new Computer();
         UserInput userInput = new UserInput();
-        pickNumbers.pickRandomNumbers();
+        computer.pickRandomNumbers();
         Decision.newGame();
         while (Decision.isPlaying()) {
             userInput.numbers();
@@ -14,7 +14,7 @@ public class GameSystem {
             }
             userInput.reStartOrQuit();
             if (Decision.isPlaying()) {
-                pickNumbers.pickRandomNumbers();
+                computer.pickRandomNumbers();
             }
         }
     }
