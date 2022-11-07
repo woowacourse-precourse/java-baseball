@@ -5,7 +5,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import baseball.core.Core;
 import baseball.models.Score;
 import baseball.utils.Utils;
-
 import java.util.List;
 
 public class Baseball {
@@ -16,7 +15,6 @@ public class Baseball {
     public void run() {
         List<Integer> computer = Utils.generateRandomNumber(3);
         Score score = new Score();
-        boolean endFlag = false;
         while (score.getStrikes() != OUT) {
             List<Integer> user = getUserNumber();
             playBall(computer, user, score);
