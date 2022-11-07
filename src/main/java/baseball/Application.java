@@ -11,18 +11,16 @@ public class Application {
     public static void main(String[] args) {
         /*do while문 사용*/
         do{
-            //1 재시작, 2 종료
+
             int judgeNum = JudgeNum();
             if(judgeNum == 2)
                 break;
         }
         while(true);
 
-        /*재시작 종료 판별 메소드 구현*/
-        /* 사용자 입력값이 1 재시작, 2 종료 메소드 구현 */
-        /* 사용자 입력 메소드 구현*/
+
         /* 스트라이크,볼,낫싱 판단 메소드 구현*/
-        /*입력 예외 처리, 예외 발생시 IllegalArgumentException 발생 시키기.*/
+
 
     }
 
@@ -49,5 +47,26 @@ public class Application {
         }
         System.out.println(computer);
         return computer;
+    }
+
+    /*입력 예외 처리, 예외 발생시 IllegalArgumentException 발생 시키기.*/
+    private static int handleException(String str){
+        System.out.println("실행");
+        int num = 0;
+        if(str.length() != 3)
+            throw new IllegalArgumentException();
+
+        try{
+            num = Integer.parseInt(str);
+        }catch(Exception e){
+            throw new IllegalArgumentException();
+        }
+        return num;
+    }
+
+    /* 사용자 입력 메소드 구현*/
+    private static List<Integer> inputNum(){
+        String str = readLine();
+        return null;
     }
 }
