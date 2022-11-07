@@ -28,4 +28,7 @@ public class GameHintList {
         return count;
     }
 
+    public boolean isNothingSame() {
+        return countOfBall() == 0 && countOfStrike() == 0;
+    }
 }
