@@ -15,6 +15,7 @@ class Number {
     }
 
     Number(String userNumber) {
+        Exception.isAllNumeric(userNumber);
         userNumbers = stringToList(userNumber);
     }
 

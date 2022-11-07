@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 class Exception {
     private static final int RESTART_GAME = 1;
     private static final int STOP_PROGRAM = 2;
@@ -10,5 +13,10 @@ class Exception {
         if (!userNumbers.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(ResponseMessage.stopExceptionProgram());
         }
+    }
+
+    static List<Integer> deduplicated(List<Integer> userNumbers) {
+        return userNumbers.stream()
+                .distinct().collect(Collectors.toList());
     }
 }
