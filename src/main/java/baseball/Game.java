@@ -6,6 +6,7 @@ public class Game {
     private static final int CONTINUE = 1;
     private static final int END = 2;
     private static final char NEW_LINE = '\n';
+    private static final int SELECT_LENGTH = 1;
 
     private int system = CONTINUE;
 
@@ -16,6 +17,7 @@ public class Game {
         printMessage("숫자 야구 게임을 시작합니다." + NEW_LINE);
         while (isContinue(system)) {
             Computer computer = new Computer();
+            computer.getDigits().forEach(System.out::print);
             User user = new User();
 
             playGame(computer, user);
@@ -32,8 +34,14 @@ public class Game {
     }
 
     private void validateSelect(String select) {
-        if (select.length() != 1 || !Character.isDigit(getCharacter(select)) || !isRightSelect(select))
-            throw new IllegalArgumentException("1이나 2만 입력 가능합니다.");
+        if (isRightLength(select) && Character.isDigit(getCharacter(select)) && isRightSelect(select)) {
+            return;
+        }
+        throw new IllegalArgumentException("1이나 2만 입력 가능합니다.");
+    }
+
+    private boolean isRightLength(String select) {
+        return select.length() == SELECT_LENGTH;
     }
 
     private boolean isRightSelect(String select) {
