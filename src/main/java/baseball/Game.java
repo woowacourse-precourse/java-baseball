@@ -1,7 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static baseball.Constant.*;
 
@@ -22,6 +25,22 @@ public class Game {
             gameScore = getHint(user.getUserNumber(), computerNumber);
             System.out.println(gameScore);
         }
+
+        if (finishGame())
+            startProgram();
+    }
+
+    private boolean finishGame() throws IllegalArgumentException {
+        System.out.println(ALL_STRIKE_SENTENCE);
+        System.out.println(EXIT_SENTENCE);
+        String input = Console.readLine();
+
+        if (!isRightAnswer(input))
+            throw new IllegalArgumentException();
+
+        if (input.equals(START_CODE))
+            return true;
+        return false;
     }
 
     public String getHint(String userNumber, List<Integer> computerNumber) {
@@ -29,13 +48,13 @@ public class Game {
         List<Integer> scoreList = calculateScore(userNumber, computerNumber);
         StringBuilder sb = new StringBuilder();
 
-        if(scoreList.get(0) == 0 && scoreList.get(1) == 0) {
+        if (scoreList.get(0) == 0 && scoreList.get(1) == 0) {
             return NOTHING;
         }
-        if(scoreList.get(0) > 0) {
+        if (scoreList.get(0) > 0) {
             sb.append(scoreList.get(0)).append(BALL);
         }
-        if(scoreList.get(1) > 0) {
+        if (scoreList.get(1) > 0) {
             sb.append(scoreList.get(1)).append(STRIKE);
         }
         return sb.toString();
@@ -67,6 +86,11 @@ public class Game {
                 strike += 1;
         }
         return strike;
+    }
+
+    private boolean isRightAnswer(String input) {
+        Pattern pattern = Pattern.compile("[1-2]");
+        return pattern.matcher(input).matches();
     }
 
 }

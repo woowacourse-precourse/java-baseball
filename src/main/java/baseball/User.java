@@ -20,7 +20,7 @@ public class User {
         System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
         isValidInput(input);
-        this.userNumber =  input;
+        this.userNumber = input;
     }
 
     public void isValidInput(String input) throws IllegalArgumentException {
@@ -55,7 +55,7 @@ public class User {
 
     private boolean isRangeInput(String input) throws IllegalArgumentException {
         Pattern numberPattern = Pattern.compile(REGAX);
-        if(!numberPattern.matcher(input).matches())
+        if (!numberPattern.matcher(input).matches())
             throw new IllegalArgumentException();
         return true;
     }
