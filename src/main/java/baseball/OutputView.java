@@ -7,7 +7,7 @@ public class OutputView {
 	public static void display(final CompareResult result) {
 		System.out.println(String.join(" ", result.getResults()));
 
-		if (result.isAllStrikes()) {
+		if (result.isGameEnd()) {
 			System.out.println(GAME_END_MESSAGE);
 		}
 	}

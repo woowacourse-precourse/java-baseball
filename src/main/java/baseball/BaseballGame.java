@@ -26,7 +26,7 @@ public class BaseballGame {
 			CompareResult result = answer.compareTo(player);
 			OutputView.display(result);
 
-			if (result.isAllStrikes()) {
+			if (result.isGameEnd()) {
 				break;
 			}
 		}

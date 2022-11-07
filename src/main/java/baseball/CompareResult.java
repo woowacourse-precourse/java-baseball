@@ -33,7 +33,7 @@ public class CompareResult {
 		&& occurrences.get(NOTHING) == 3;
 	}
 
-	public boolean isAllStrikes() {
+	public boolean isGameEnd() {
 		return occurrences.containsKey(STRIKE)
 			&& occurrences.get(STRIKE) == 3;
 	}
