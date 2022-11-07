@@ -100,7 +100,7 @@ public class functionTest {
     void 유저_결과_출력_Strike() {
         OutputStream out = getOutputStream();
         calculateAndShowResult(List.of(2, 5, 8));
-        assertEquals("3스트라이크\n", out.toString());
+        assertEquals("3스트라이크", out.toString().trim());
     }
 
     @Test
@@ -108,7 +108,7 @@ public class functionTest {
     void 유저_결과_출력_Nothing() {
         OutputStream out = getOutputStream();
         calculateAndShowResult(List.of(3, 6, 7));
-        assertEquals("낫싱\n", out.toString());
+        assertEquals("낫싱", out.toString().trim());
     }
 
     @Test
@@ -116,7 +116,7 @@ public class functionTest {
     void 유저_결과_출력_BallAndStrike() {
         OutputStream out = getOutputStream();
         calculateAndShowResult(List.of(2, 8, 3));
-        assertEquals("1볼 1스트라이크\n", out.toString());
+        assertEquals("1볼 1스트라이크", out.toString().trim());
     }
 
     @Test
@@ -124,7 +124,7 @@ public class functionTest {
     void 유저_결과_출력_Ball() {
         OutputStream out = getOutputStream();
         calculateAndShowResult(List.of(8, 2, 5));
-        assertEquals("3볼\n", out.toString());
+        assertEquals("3볼", out.toString().trim());
     }
 
     @Test
