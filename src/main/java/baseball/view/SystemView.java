@@ -19,4 +19,13 @@ public class SystemView {
         }
         return input;
     }
+
+    public String restartInput() {
+        System.out.println(Choose_Restart_Or_Exit);
+        String input = Console.readLine();
+        if (!systemException.isValidRestartInput(input)) {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
 }
