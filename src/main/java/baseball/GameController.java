@@ -54,4 +54,11 @@ public class GameController {
             addScore(ballCode);
         }
     }
+
+    private void addScore(BallCode ballCode){
+        if(ballCode == STRIKE)
+            strike++;
+        if(ballCode == BALL)
+            ball++;
+    }
 }
