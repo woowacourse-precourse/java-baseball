@@ -1,7 +1,6 @@
 package baseball.model;
 
 import baseball.util.InputValidator;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +9,7 @@ public class User {
 
     private List<Integer> answer = new ArrayList<>();
 
-    public List<Integer> input() {
-        String input = Console.readLine();
+    public List<Integer> toList(String input) {
         validateInput(input);
         answer = inputToNumbers(input);
         return answer;
