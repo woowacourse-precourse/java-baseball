@@ -140,4 +140,13 @@ class ApplicationTest extends NsTest {
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@Test
+	void 재시작_여부_숫자확인() {
+		assertThatThrownBy(() -> {
+			int number = 3;
+			controller.retryGame(number);
+		}).isInstanceOf(IllegalArgumentException.class);
+
+	}
+
 }
