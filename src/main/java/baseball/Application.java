@@ -72,6 +72,43 @@ class Input {
 }
 
 
+class Compare{
+    static final String NOTHING = "낫싱";
+    static final String BALL = "볼";
+    static final String STRIKE = "스트라이크";
+    static HashMap<String, Integer> compareWithAnswer(List<Character> answerList,
+                                                      List<Character> userInputList) {
+        HashMap<String, Integer> comparedMap = new HashMap<>();
+        comparedMap.put(BALL, 0);
+        comparedMap.put(STRIKE, 0);
+        comparedMap.put(NOTHING, 1);
+        for (int comparingNum = 0; comparingNum < 3; comparingNum++) {
+            char answer = answerList.get(comparingNum);
+            char input = userInputList.get(comparingNum);
+            if (answerList.contains(input)) {
+                comparedMap.put(NOTHING, 0);
+                computeBallStrike(comparedMap, answer, input);
+            }
+        }
+        return comparedMap;
+    }
+
+    static void computeBallStrike(HashMap<String, Integer> comparedMap,
+                                  char answer, char input) {
+        comparedMap.put(NOTHING, 0);
+        if (answer == input) {
+            Utils.addOneToMap(comparedMap, STRIKE);
+        } else {
+            Utils.addOneToMap(comparedMap, BALL);
+        }
+    }
+
+    static boolean inputEqualsAnswer(HashMap<String, Integer> comparedMap) {
+        return comparedMap.get(STRIKE) == 3;
+    }
+}
+
+
 class Game {
     static final String NOTHING = "낫싱";
     static final String BALL = "볼";
@@ -92,42 +129,6 @@ class Game {
         return new ArrayList<>(removeDuplication);
     }
 
-    static List<Character> startGame() {
-        System.out.println(GAME_START);
-        return generateRandomNoDuplication3Numbers();
-    }
-
-    static HashMap<String, Integer> checkBallOrStrike(List<Character> answerList,
-                                                      List<Character> userInputList) {
-        HashMap<String, Integer> comparedMap = new HashMap<>();
-        comparedMap.put(BALL, 0);
-        comparedMap.put(STRIKE, 0);
-        comparedMap.put(NOTHING, 1);
-        for (int comparingNum = 0; comparingNum < 3; comparingNum++) {
-            char answer = answerList.get(comparingNum);
-            char input = userInputList.get(comparingNum);
-            if (answerList.contains(input)) {
-                comparedMap.put(NOTHING, 0);
-                ballOrStrike(comparedMap, answer, input);
-            }
-        }
-        return comparedMap;
-    }
-
-    static void ballOrStrike(HashMap<String, Integer> comparedMap,
-                             char answer, char input) {
-        comparedMap.put(NOTHING, 0);
-        if (answer == input) {
-            Utils.addOneToMap(comparedMap, STRIKE);
-        } else {
-            Utils.addOneToMap(comparedMap, BALL);
-        }
-    }
-
-    static boolean correctAnswer(HashMap<String, Integer> comparedMap) {
-        return comparedMap.get(STRIKE) == 3;
-    }
-
     static void printResult(HashMap<String, Integer> comparedMap) {
         int balls = comparedMap.get(BALL);
         int strikes = comparedMap.get(STRIKE);
@@ -142,6 +143,11 @@ class Game {
             System.out.printf(strikes + STRIKE);
         }
         System.out.print("\n");
+    }
+
+    static List<Character> startGame() {
+        System.out.println(GAME_START);
+        return generateRandomNoDuplication3Numbers();
     }
 
     static boolean restartOrEndGame() throws IllegalArgumentException {
@@ -167,9 +173,9 @@ public class Application {
     static boolean playGame(List<Character> answer) {
         boolean gameOn;
         List<Character> separatedInput = Input.getInputInGame();
-        HashMap<String, Integer> comparedMap = Game.checkBallOrStrike(answer, separatedInput);
+        HashMap<String, Integer> comparedMap = Compare.compareWithAnswer(answer, separatedInput);
         Game.printResult(comparedMap);
-        if (Game.correctAnswer(comparedMap)) {
+        if (Compare.inputEqualsAnswer(comparedMap)) {
             System.out.println(GAME_CORRECT_ANSWER);
             gameOn = false;
         } else {
