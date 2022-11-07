@@ -11,6 +11,8 @@ public class BaseBallGame {
 
     private boolean quit;
     private boolean strikeOut;
+    HintGenerator hg;
+    String hint;
 
 
     public void startGame() {
@@ -24,6 +26,7 @@ public class BaseBallGame {
      */
     public void playGame() {
         System.out.println(ProgramMessages.START_MESSAGE);
+        com = new Catcher();
         strikeOut = false;
         do {
             provideHint();
@@ -37,7 +40,11 @@ public class BaseBallGame {
         System.out.print(ProgramMessages.PLEASE_TYPE_NUMBER);
         String input = Console.readLine();
         validateInput(input);
-        isStrikeOut();
+        user = new Pitcher(input);
+        hg = new HintGenerator(user, com);
+        hint = hg.generateHint();
+        System.out.println(hint);
+        isStrikeOut(hint);
     }
 
     /**
@@ -59,8 +66,10 @@ public class BaseBallGame {
     /**
      * hint가 3스트라이크인지 확인하는 함수
      */
-    public void isStrikeOut() {
-
+    public void isStrikeOut(String hint) {
+        if(hint.equals("3"+ProgramMessages.STRIKE)) {
+            strikeOut = true;
+        }
     }
 
     /**
