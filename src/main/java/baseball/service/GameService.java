@@ -61,6 +61,15 @@ public class GameService {
         }
     }
 
+    public void countBall(List<Integer> computerNumberList, List<Integer> userNumberList) {
+        for (int i = 0; i < Constant.MAX_NUMBER_SIZE; i++) {
+            if (computerNumberList.contains(userNumberList.get(i)) && !computerNumberList.get(i)
+                    .equals(userNumberList.get(i))) {
+                addBallCount();
+            }
+        }
+    }
+
 
 }
 
