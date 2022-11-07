@@ -10,11 +10,17 @@ import static baseball.Constant.*;
 
 public class User {
 
-    public String inputNumber() {
+    private String userNumber;
+
+    public String getUserNumber() {
+        return userNumber;
+    }
+
+    public void inputNumber() {
         System.out.print(INPUT_SENTENCE);
         String input = Console.readLine();
         isValidInput(input);
-        return input;
+        this.userNumber =  input;
     }
 
     public void isValidInput(String input) throws IllegalArgumentException {

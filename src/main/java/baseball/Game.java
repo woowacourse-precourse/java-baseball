@@ -15,8 +15,10 @@ public class Game {
 
         computer.setRandomNumber();
         List<Integer> computerNumber = computer.getComputerNumber();
-        
-        String userNumber = user.inputNumber();
+
+        user.inputNumber();
+        String userNumber = user.getUserNumber();
+
         System.out.println(getHint(userNumber, computerNumber));
     }
 
