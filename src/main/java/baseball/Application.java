@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,13 @@ public class Application {
         List<Integer> user = getUser();
 
         printResult(computer, user);
+    }
+
+    static List<Integer> getUser() {
+        List<Integer> user = new ArrayList<>();
+        char[] user_chArr = Console.readLine().toCharArray();
+
+        return user;
     }
 }
 
