@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.computer.Computer;
 import baseball.program.Program;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Application {
@@ -14,7 +15,7 @@ public class Application {
         Computer.init();
 
         while (Program.isProgramEnd()) {
-
+            InputView.displayInputNumberMessage();
         }
     }
 }
