@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class GameManager {
     static final int GUESS_NUMBER_SIZE = 3;
@@ -57,13 +58,8 @@ public class GameManager {
     }
 
     private boolean isOneToNine(String input) {
-        for(char character: input.toCharArray()) {
-            if(character<'1'||character>'9') {
-                return false;
-            }
-        }
-
-        return true;
+        String pattern = "^[1-9]*$";
+        return Pattern.matches(pattern, input);
     }
 
     private boolean isThreeChar(String input) {
