@@ -43,8 +43,8 @@ public class PlayBaseBall {
     }
 
     public void printMessage() {
-        messenger = new Messenger();
-        messenger.printResultMessage(answerChecker);
+        messenger = new Messenger(answerChecker);
+        messenger.printResultMessage();
     }
 
     public boolean userWantsReplay() {

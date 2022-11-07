@@ -30,7 +30,6 @@ public class User {
         String[] userInputForConvert = userInput.split(Detail.NULL);
         for (String s : userInputForConvert)
             userNumbers.add(Integer.parseInt(s));
-        System.out.println(userNumbers);
     }
 
     public List<Integer> getUserNumbers() {

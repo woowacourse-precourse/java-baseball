@@ -5,12 +5,14 @@ import constantfield.*;
 public class Messenger {
     private String message = "";
 
-    public void printResultMessage(AnswerChecker answerChecker) {
-        makeResultMessage(answerChecker.getStrikeCnt(), answerChecker.getBallCnt());
-        System.out.println(message);
+    public Messenger(AnswerChecker answerChecker) {
+        makeResultMessage(answerChecker);
     }
 
-    public void makeResultMessage(int strikeCnt, int ballCnt) {
+    public void makeResultMessage(AnswerChecker answerChecker) {
+        int strikeCnt = answerChecker.getStrikeCnt();
+        int ballCnt = answerChecker.getBallCnt();
+
         if (ballCnt > Detail.ZERO_COUNT) {
             message += ballCnt + Message.BALL;
         }
@@ -20,6 +22,10 @@ public class Messenger {
         if (message.equals("")) {
             message = Message.NOTHING;
         }
+    }
+
+    public void printResultMessage() {
+        System.out.println(message);
     }
 
     public boolean selectRepalyOrEnd(String userOpinion) {
