@@ -23,6 +23,12 @@ public class ArrayNumber {
         return this.digits;
     }
 
+    private int[] convertIntegerSetToIntArray (Set<Integer> set) {
+        return set.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
+    }
+
     private int getRandomNumber() {
         return Randoms.pickNumberInRange(min_nbr, max_nbr);
     }
