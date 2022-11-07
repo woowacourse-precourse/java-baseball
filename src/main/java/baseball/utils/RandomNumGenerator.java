@@ -19,9 +19,9 @@ public final class RandomNumGenerator {
         do {
             int randomDigit = makeRandomDigit();
             resultList.add(randomDigit);
-            size = Utility.getDistinctCountInIntegerList(resultList);
+            size = ListUtility.getDistinctCountInIntegerList(resultList);
         } while (size < sizeLimit);
-        return Utility.mergeDistinctIntegerInList(resultList);
+        return ListUtility.mergeDistinctIntegerInList(resultList);
     }
 
     private static int makeRandomDigit() {

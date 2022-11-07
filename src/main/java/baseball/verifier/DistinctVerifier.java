@@ -1,7 +1,8 @@
 package baseball.verifier;
 
 import baseball.system.ExceptionMessage;
-import baseball.utils.Utility;
+import baseball.utils.ListUtility;
+import baseball.utils.StringUtility;
 
 public class DistinctVerifier implements Verifier {
     @Override
@@ -9,7 +10,7 @@ public class DistinctVerifier implements Verifier {
         checkDistinct(input);
     }
     private void checkDistinct(String input) {
-        if (Utility.hasDuplicatedChar(input)) {
+        if (StringUtility.hasDuplicatedChar(input)) {
             throw new IllegalArgumentException(ExceptionMessage.NOT_DISTINCT);
         }
     }

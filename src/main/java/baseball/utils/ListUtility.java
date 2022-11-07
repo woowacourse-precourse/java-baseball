@@ -3,8 +3,8 @@ package baseball.utils;
 import java.util.*;
 import java.util.stream.Stream;
 
-public final class Utility {
-    private Utility() {
+public final class ListUtility {
+    private ListUtility() {
     }
 
     public static ArrayList<Integer> splitDigitsIntoList(int number) {
@@ -15,12 +15,6 @@ public final class Utility {
             resultList.add(Character.getNumericValue(charDigit));
         }
         return resultList;
-    }
-
-    public static boolean hasDuplicatedChar(String target) {
-        String[] targetArray = target.split("");
-        Set<String> targetSet = new HashSet<>(Arrays.asList(targetArray));
-        return targetSet.size() != target.length();
     }
 
     public static int getDistinctCountInIntegerList(List<Integer> list) {
