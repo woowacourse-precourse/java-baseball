@@ -23,4 +23,12 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("숫자가 3자리가 아니면 예외를 발생시킨다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1234", "12", "9876", "98", "12345"})
+    void validateLength(String input) {
+        assertThatThrownBy(() -> InputValidator.validate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
