@@ -31,6 +31,8 @@ public class FunctionTest {
                 ball++;
             }
         }
+        printResult(strike, ball);
+
         Assertions.assertThat(strike).isEqualTo(3);
         Assertions.assertThat(ball).isEqualTo(0);
     }
@@ -51,6 +53,8 @@ public class FunctionTest {
                 ball++;
             }
         }
+        printResult(strike, ball);
+
         Assertions.assertThat(strike).isEqualTo(2);
         Assertions.assertThat(ball).isEqualTo(0);
     }
@@ -69,6 +73,8 @@ public class FunctionTest {
                 ball++;
             }
         }
+        printResult(strike, ball);
+
         Assertions.assertThat(strike).isEqualTo(0);
         Assertions.assertThat(ball).isEqualTo(3);
     }
@@ -87,6 +93,8 @@ public class FunctionTest {
                 ball++;
             }
         }
+        printResult(strike, ball);
+
         Assertions.assertThat(strike).isEqualTo(1);
         Assertions.assertThat(ball).isEqualTo(2);
     }
@@ -105,9 +113,25 @@ public class FunctionTest {
                 ball++;
             }
         }
+        printResult(strike, ball);
+
         Assertions.assertThat(strike).isEqualTo(0);
         Assertions.assertThat(ball).isEqualTo(0);
     }
 
+    public void printResult(int strike, int ball) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if (ball != 0 && strike != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        } else if (ball != 0) {
+            System.out.println(ball + "볼");
+        } else if (strike != 0) {
+            System.out.println(strike + "스트라이크");
+        }
 
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
 }
