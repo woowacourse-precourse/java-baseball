@@ -2,9 +2,7 @@ package baseball;
 
 public class Game {
     private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
-    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GUESS_ALL = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String OPTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String END_GAME = "숫자 야구 게임을 종료합니다.";
 
     private static Status status;
@@ -29,8 +27,7 @@ public class Game {
                 System.out.println(GUESS_ALL);
 
                 // 4. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
-                System.out.println(OPTION_MESSAGE);
-                changeStatusByGameOption();
+                changeStatus(User.getGameOption());
             }
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
@@ -58,9 +55,9 @@ public class Game {
      * */
     private static void proceedGame() {
         while (result != Result.THREESTRIKE) {
-            System.out.print(INPUT_MESSAGE);
-
-            result = Result.getResultByScore(Calculator.calculateScore(computer, User.getGameNumber()));
+            result = Result.getResult(
+                    Calculator.calculateScore(computer, User.getGameNumber())
+            );
             System.out.println(result.getMessage());
         }
     }
@@ -70,7 +67,7 @@ public class Game {
      *
      * @return void
      * */
-    private static void changeStatusByGameOption() {
-        status = Status.getStatusByGameOption(User.getGameOption());
+    private static void changeStatus(int gameOption) {
+        status = Status.getStatus(gameOption);
     }
 }

@@ -33,7 +33,7 @@ public enum Result {
      *
      * @return String
      * */
-    public static Result getResultByScore(int score) {
+    public static Result getResult(int score) {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)
                 .findAny()

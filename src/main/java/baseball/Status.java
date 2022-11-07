@@ -20,7 +20,7 @@ public enum Status {
     *
     * @return Status
     * */
-    public static Status getStatusByGameOption(int gameOption) {
+    public static Status getStatus(int gameOption) {
         return Arrays.stream(Status.values())
                 .filter(status -> status.gameOption == gameOption)
                 .findAny()

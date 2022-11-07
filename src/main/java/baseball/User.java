@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String OPTION_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String INVALID_NUMBER_INPUT = "잘못된 숫자 입력입니다.";
     private static final String INVALID_OPTION_INPUT = "잘못된 옵션 입력입니다.";
 
@@ -15,6 +17,7 @@ public class User {
     * @return void
     * */
     public static String getGameNumber() {
+        System.out.print(INPUT_MESSAGE);
         String number = Console.readLine();
 
         if (!isValidNumber(number)) {
@@ -31,6 +34,7 @@ public class User {
     * @return void
     * */
     public static int getGameOption() {
+        System.out.println(OPTION_MESSAGE);
         int option = Integer.parseInt(Console.readLine());
 
         if (!isValidOption(option)) {
