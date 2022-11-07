@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     static final int NEW_GAME_NUMBER = 1;
@@ -48,12 +50,29 @@ public class Application {
         return numbers;
     }
 
-    // TODO : 사용자가 잘못된 값을 입력할 시 IllegalArgumentException 발생하는 함수
-    public void isInputMatch(String inputNumber){
-        // 입력 값의 길이가 3이 아닐 시, 0이 포함되어 있을 시, 숫자 이외의 값이 포함되어 있을 시 예외처리
-        if (inputNumber.length() != 3
-                || inputNumber.contains("0")
-                || !inputNumber.replaceAll("[1-9]", "").isEmpty())
+    // TODO : 입력 값이 3자리가 아닌 경우 예외를 발생한다.
+    public boolean isLengthThree(String input) throws IllegalArgumentException{
+        if(input.length() != MAX_ARRAY_SIZE)
             throw new IllegalArgumentException();
+        return true;
+    }
+
+    // TODO : 입력 값의 범위가 1-9가 아닌 경우 예외를 발생한다.
+    public boolean isCorrectRange(String input) throws IllegalArgumentException{
+        if(!input.replaceAll("[1-9]", "").isEmpty())
+            throw new IllegalArgumentException();
+        return true;
+    }
+
+    // TODO : 입력 값 중 중복된 숫자가 존재하는 경우 예외를 발생한다.
+    public boolean isEachOtherDifferent(String input) throws IllegalArgumentException{
+        Set<Character> set = new HashSet<>();
+        for (char x : input.toCharArray())
+            set.add(x);
+
+        if (set.size() != MAX_ARRAY_SIZE)
+            throw new IllegalArgumentException();
+
+        return true;
     }
 }
