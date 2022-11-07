@@ -8,16 +8,16 @@ import java.util.List;
 
 public class Game {
     private final int ON = 1;
-    private List<Integer> targetNumber = new ArrayList<>();
-    private List<Integer> playerNumber = new ArrayList<>();
+    private List<Integer> targetNumber = new ArrayList<>(); // computer의 숫자
+    private List<Integer> playerNumber = new ArrayList<>(); // user의 숫자
 
     private int gameState = ON;
 
-    void start() {
+    void start() { // 게임 실행
         while (this.gameState == ON) {
-            setTargetNumber(targetNumber);
+            setTargetNumber(targetNumber); // computer의 숫자 생성
             System.out.println("숫자 야구 게임을 시작합니다.");
-            startBaseBall(targetNumber, playerNumber);
+            startBaseBall(targetNumber, playerNumber); // 숫자 맞추기 시작
         }
         System.out.println("게임 종료");
     }
@@ -50,14 +50,14 @@ public class Game {
     }
 
     void setUserNumber(List<Integer> playerNumber) { // 2.1 사용자에게 숫자 입력받기
-        playerNumber.clear();
+        playerNumber.clear(); // 사용자의 숫자를 입력 받기 전 List 비우기
 
         System.out.print("숫자를 입력해주세요 : ");
 
-        String inputNum = Console.readLine();
-        isValidNum(inputNum);
+        String inputNum = Console.readLine(); // 사용자에게 입력 받기
+        isValidNum(inputNum); // 입력받은 값 유효성 검사
 
-        int playerNum = Integer.parseInt(inputNum);
+        int playerNum = Integer.parseInt(inputNum); // String -> integer로 형변환
         System.out.println(playerNum);
         for (int i = 100; i > 0; i /= 10) {
             playerNumber.add(playerNum / i);
@@ -67,20 +67,19 @@ public class Game {
 
     void isValidNum(String s) { // 2.2 사용자가 입력한 숫자가 유효한 숫자인지 확인하기
 
-        if (s.length() != 3)
+        if (s.length() != 3) // 숫자가 3자리 수가 아니면 예외 처리
             throw new IllegalArgumentException("유효하지 않은 값");
 
         try {
             Double.parseDouble(s);
 
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) { // 입력 값이 숫자가 아니면 예외 처리
             System.out.println("유효하지 않은 값");
         }
 
     }
 
     int convertListToInt(List<Integer> List) { // 2.3 list를 integer로 바꾸기
-//        String num = String.join("", (CharSequence) List);
 
         return List.get(0) * 100 + List.get(1) * 10 + List.get(0);
     }
@@ -88,8 +87,8 @@ public class Game {
     String checkUserNumber(List<Integer> targetNumber, List<Integer> playerNumber) { //3. 입력 받은 숫자와 원래 숫자를 비교해 힌트 출력 or 맞으면 정답 처리
         BaseBall baseBall = new BaseBall();
 
-        baseBall.setStrike(countStrike(targetNumber, playerNumber, baseBall));
-        baseBall.setBall(countBall(targetNumber, playerNumber, baseBall));
+        baseBall.setStrike(countStrike(targetNumber, playerNumber, baseBall)); // Strike 숫자 세기
+        baseBall.setBall(countBall(targetNumber, playerNumber, baseBall)); // Ball 숫자 세기
         return baseBall.toString();
     }
 
@@ -125,7 +124,7 @@ public class Game {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
 
-        int playerNum = Integer.parseInt(Console.readLine());
+        int playerNum = Integer.parseInt(Console.readLine()); // 사용자에게 게임을 재시작 할지, 종료할지 입력 받기
 
         this.gameState = playerNum;
     }
