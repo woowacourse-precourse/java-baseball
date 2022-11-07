@@ -85,7 +85,7 @@ public class Application {
 
         try {
 
-            if (!checkingUserNumberIsCorrect(numberString)) throw new IllegalStateException();
+            if (!checkingUserNumberIsCorrect(numberString)) throw new IllegalArgumentException();
 
             return true;
 
