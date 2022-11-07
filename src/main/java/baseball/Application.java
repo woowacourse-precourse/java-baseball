@@ -9,10 +9,7 @@ public class Application {
     private static final int NUM_SIZE = 3;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computer = ComputerGenerate();
-        List<Integer> user = UserGenerate();
-        System.out.println(computer);
-        System.out.println(Hint(computer,user));
+        GameStart();
     }
 
     private static List<Integer> ComputerGenerate() {
@@ -118,5 +115,12 @@ public class Application {
             return (strike+"스트라이크");
         }
         return (ball+"볼 "+strike+"스트라이크");
+    }
+
+    private static void GameStart() {
+        List<Integer> computer = ComputerGenerate();
+        List<Integer> user = UserGenerate();
+        System.out.println(computer);
+        System.out.println(Hint(computer,user));
     }
 }
