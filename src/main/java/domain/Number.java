@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 public class Number {
     private int number;
 
@@ -32,6 +34,19 @@ public class Number {
     }
 
     private int getNumber(){
+        return this.number;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Number){
+            return ((Number) obj).number == this.number;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode(){
         return this.number;
     }
 }
