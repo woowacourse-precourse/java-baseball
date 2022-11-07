@@ -7,7 +7,6 @@ import java.util.List;
 
 import static baseball.Const.NUMBER_LENGTH;
 
-
 public class AnswerGenerator {
 
     public List<Integer> generateAnswer() {

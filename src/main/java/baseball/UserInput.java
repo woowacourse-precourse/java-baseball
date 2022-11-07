@@ -17,6 +17,7 @@ public class UserInput {
 
     public String inputNumber() {
         System.out.println(INPUT_MESSAGE);
+
         String names = Console.readLine();
         userInputValidation.userInputValidation(names);
         return names;
@@ -26,7 +27,6 @@ public class UserInput {
         List<Integer> expectedAnswer = new ArrayList<>();
 
         String userInput =inputNumber();
-        //System.out.println("userInput: "+userInput);
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             expectedAnswer.add(userInput.charAt(i)-'0');
         }
@@ -35,6 +35,7 @@ public class UserInput {
 
     public String inputRestartOrStop() {
         System.out.println(RESTART_MESSAGE);
+
         String restartInput = Console.readLine();
         userInputValidation.restartInputValidation(restartInput);
         return restartInput;

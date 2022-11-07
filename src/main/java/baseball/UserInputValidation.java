@@ -23,6 +23,7 @@ public class UserInputValidation {
 
     private boolean isInteger(String input) {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
+
             if (!Character.isDigit(input.charAt(i))) {
                 return false;
             }
@@ -32,6 +33,7 @@ public class UserInputValidation {
 
     private boolean haveZero(String expectedAnswer) {
         for (int i = 0; i < NUMBER_LENGTH; i++) {
+
             if ('0' == expectedAnswer.charAt(i)) {
                 return true;
             }
@@ -41,6 +43,7 @@ public class UserInputValidation {
 
     private boolean isNotDuplication(String expectedAnswer) {
         Set<Character> inputSet = new HashSet<>();
+
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             inputSet.add(expectedAnswer.charAt(i));
         }

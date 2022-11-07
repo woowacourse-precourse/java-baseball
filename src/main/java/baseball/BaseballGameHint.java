@@ -1,8 +1,12 @@
 package baseball;
 
 import java.util.List;
-import java.util.stream.IntStream;
-import static baseball.Const.*;
+
+import static baseball.Const.ANSWER_MESSAGE;
+import static baseball.Const.BALL_MESSAGE;
+import static baseball.Const.NOTHING_MESSAGE;
+import static baseball.Const.NUMBER_LENGTH;
+import static baseball.Const.STRIKE_MESSAGE;
 
 public class BaseballGameHint {
 
@@ -16,6 +20,7 @@ public class BaseballGameHint {
 
     private void generateHint(List<Integer> expectedAnswer, List<Integer> answer) {
         resetStrikeAndBall();
+
         for (int answerIndex  =0 ;answerIndex < NUMBER_LENGTH;answerIndex++) {
             int findIndex=answer.indexOf(expectedAnswer.get(answerIndex));
 
