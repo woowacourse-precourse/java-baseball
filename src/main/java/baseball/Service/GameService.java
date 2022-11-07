@@ -15,6 +15,10 @@ public class GameService {
         setHint(result);
     }
 
+    public void makeComputerNum() {
+        computer.makeRandomNumbers();
+    }
+
 
     public Player getPlayer() {
         return player;
