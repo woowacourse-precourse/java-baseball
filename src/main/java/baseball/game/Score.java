@@ -20,4 +20,15 @@ public class Score {
         }
         return score;
     }
+
+    public Integer ball(){
+        int score = 0;
+        for (int i = 0; i<user.size();i++){
+            int n = user.get(i);
+            if (game.getComputers().contains(n)
+                    && game.getComputers().indexOf(n) != i)
+                score ++;
+        }
+        return score;
+    }
 }
