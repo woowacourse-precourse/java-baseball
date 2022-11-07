@@ -18,7 +18,7 @@ public class Application {
         System.out.println("프로그램을 종료합니다.");
     }
 
-    public boolean askExit(){
+    public boolean askExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = readLine();
         Utils.validateStringOneOrTwo(userInput);
