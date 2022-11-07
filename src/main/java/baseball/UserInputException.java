@@ -4,6 +4,10 @@ import java.util.HashSet;
 
 public class UserInputException extends Exception {
     public static void lengthCheck(String strIn) throws IllegalArgumentException {
+        System.out.println(strIn.length());
+//        if (strIn.equals("")) {
+//            throw new IllegalArgumentException();
+//        }
         if (strIn.length() != 3) {
             throw new IllegalArgumentException();
         }
