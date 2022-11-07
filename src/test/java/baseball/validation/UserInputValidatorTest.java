@@ -3,8 +3,6 @@ package baseball.validation;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class UserInputValidatorTest {
 
     @Test
@@ -22,12 +20,12 @@ class UserInputValidatorTest {
         String input7 = "123 456";
 
         //then
-        Assertions.assertThatThrownBy(() -> validator.validate(input1)).isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> validator.validate(input2)).isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> validator.validate(input3)).isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> validator.validate(input4)).isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> validator.validate(input5)).isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> validator.validate(input6)).isInstanceOf(IllegalArgumentException.class);
-        Assertions.assertThatThrownBy(() -> validator.validate(input7)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input1)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input2)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input3)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input4)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input5)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input6)).isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input7)).isInstanceOf(IllegalArgumentException.class);
     }
 }

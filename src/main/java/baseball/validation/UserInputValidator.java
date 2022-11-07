@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class UserInputValidator {
 
-    public void validate(String input) throws IllegalArgumentException {
+    public void validateGuessInput(String input) throws IllegalArgumentException {
         if (!isParsableToInteger(input)) {
             throw new IllegalArgumentException("잘못된 입력! 3자리 양의 정수를 입력해주세요.");
         }
