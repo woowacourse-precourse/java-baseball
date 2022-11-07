@@ -2,25 +2,33 @@ package baseball.util;
 
 import baseball.GameConstants;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RandomUtil {
 
-    public static List<Integer> pickNumbers() {
-        Set<Integer> randomNumbers = new HashSet<>();
-        pickWithoutDuplicateNumbers(randomNumbers);
-        return toIntegerNumber(randomNumbers);
+    private static List<Integer> randomNumbers;
+
+    public RandomUtil() {
+        randomNumbers = new ArrayList<>();
     }
 
-    public static void pickWithoutDuplicateNumbers(Set<Integer> randomNumbers) {
+    public static List<Integer> pickNumbers() {
+        pickWithoutDuplicateNumbers();
+        return toIntegerNumber();
+    }
+
+    public static void pickWithoutDuplicateNumbers() {
         while (randomNumbers.size() < GameConstants.NUMBER_LENGTH) {
             int num = pickRandomNumber();
-            if (!randomNumbers.contains(num)) {
-                randomNumbers.add(num);
-            }
+            addRandomNumber(num);
+        }
+    }
+
+    public static void addRandomNumber(int num) {
+        if (!randomNumbers.contains(num)) {
+            randomNumbers.add(num);
         }
     }
 
@@ -28,7 +36,7 @@ public class RandomUtil {
         return Randoms.pickNumberInRange(GameConstants.NUMBER_MIN, GameConstants.NUMBER_MAX);
     }
 
-    public static List<Integer> toIntegerNumber(Set<Integer> randomNumbers) {
+    public static List<Integer> toIntegerNumber() {
         return randomNumbers.stream().collect(Collectors.toList());
     }
 

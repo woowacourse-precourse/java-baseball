@@ -11,7 +11,8 @@ public class Computer {
     private List<Integer> numbers;
 
     public void throwTheBall() {
-        numbers = RandomUtil.pickNumbers();
+        RandomUtil randomUtil = new RandomUtil();
+        numbers = randomUtil.pickNumbers();
     }
 
     public Map<BaseballScore, Integer> compare(List<Integer> userNumber) {
