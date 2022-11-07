@@ -170,13 +170,12 @@ public class Application {
 
     public static void baseballGameService(){
         String checkedBaseballGaemOfUserAnswer = "";
+        List<Integer> computerNumbersList = randomNumberCreate();
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
-        List<Integer> computerNumbersList = randomNumberCreate();
-        inputUserNumberService(computerNumbersList);
         inputAvailableUserAnswerService();
     }
 }
