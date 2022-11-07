@@ -7,12 +7,9 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         BaseballGame Game = new BaseballGame();
 
         Game.start();
-
-
     }
 }
 
@@ -20,11 +17,7 @@ class BaseballGame {
     int hiddenNumber;
 
     public BaseballGame() {
-        System.out.println("Baseball_Game.Baseball_Game");
-
         hiddenNumber = randomThreeDigitNumber();
-        System.out.println("hidden_number = " + hiddenNumber);
-
     }
 
 
@@ -44,7 +37,6 @@ class BaseballGame {
                 num_list.add(new_random_number);
             }
         }
-        System.out.println("num_list = " + num_list);
 
         for (int number : num_list) {
             result = result * 10 + number;
@@ -87,14 +79,52 @@ class BaseballGame {
     public void start() {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean playingGame = true;
 
-        while (true) {
+        while (playingGame) {
             int userNumber = inputUserNumber();
 
             checkValidityOfNumber(userNumber);
 
-            computeResult(userNumber, hiddenNumber);
+            playingGame = computeResult(userNumber, hiddenNumber);
+
+            if (!playingGame) {
+                playingGame = askIfTerminate();
+                handleIfRestart(playingGame);
+            }
         }
+    }
+
+    public static boolean askIfTerminate() {
+        Scanner scanner = new Scanner(System.in);
+        int terminateFlag;
+        String input;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        try {
+            input = scanner.nextLine();
+            terminateFlag = Integer.parseInt(input);
+
+            checkValidityOfTerminateFlag(terminateFlag);
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+
+        return terminateFlag == 1;
+    }
+
+    public static void checkValidityOfTerminateFlag(int terminateFlag) {
+        if (terminateFlag != 1 && terminateFlag != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void handleIfRestart(boolean restart) {
+        if(restart){
+            this.hiddenNumber = randomThreeDigitNumber();
+        }
+
     }
 
     public static int inputUserNumber() {
@@ -106,12 +136,9 @@ class BaseballGame {
         try {
             input = scanner.nextLine();
             userNumber = Integer.parseInt(input);
-
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
-
-
         return userNumber;
     }
 
@@ -158,12 +185,14 @@ class BaseballGame {
     }
 
 
-    public static void computeResult(int userNumber, int hiddenNumber) {
+    public static boolean computeResult(int userNumber, int hiddenNumber) {
         int strike;
         int ball;
 
         strike = computeStrike(userNumber, hiddenNumber);
         ball = computeBall(userNumber, hiddenNumber);
+
+        return printResult(strike, ball);
     }
 
     public static int computeStrike(int userNumber, int hiddenNumber) {
@@ -179,17 +208,44 @@ class BaseballGame {
                 strike++;
             }
         }
-        System.out.println("strike = " + strike);
         return strike;
     }
 
     public static int computeBall(int userNumber, int hiddenNumber) {
-        // TODO: ball 메소드 구현하기
         int ball = 0;
+        List<Integer> userNumberList = splitNumberByDigit(userNumber);
+        List<Integer> hiddenNumberList = splitNumberByDigit(hiddenNumber);
 
+        for (int i = 0; i < 3; i++) {
+            int currentUserNumber = userNumberList.get(i);
+            int currentHiddenNumber = hiddenNumberList.get(i);
 
-
+            if (hiddenNumberList.contains(currentUserNumber) && currentUserNumber != currentHiddenNumber) {
+                ball++;
+            }
+        }
         return ball;
     }
 
+    public static boolean printResult(int strike, int ball) {
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            return false;
+        }
+        if (strike == 0 && ball != 0) {
+            System.out.println(ball+"볼");
+            return true;
+        }
+        if (strike !=0 && ball == 0) {
+            System.out.println(strike+"스트라이크");
+            return true;
+        }
+        if (strike != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            return true;
+        }
+        System.out.println("낫싱");
+        return true;
+    }
 }
