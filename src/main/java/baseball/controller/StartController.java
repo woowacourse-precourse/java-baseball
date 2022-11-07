@@ -9,7 +9,7 @@ public class StartController {
     final StartEndGameView startEndGameView;
 
     public StartController() {
-        this.startEndGameView = new StartEndGameView();;
+        this.startEndGameView = new StartEndGameView();
         startEndGameView.startGamePrint();
     }
 

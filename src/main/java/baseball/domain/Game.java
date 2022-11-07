@@ -31,7 +31,7 @@ public class Game {
         this.ball -= 1;
     }
 
-    public void checkBallStrike(List<Integer> computerAnswer, List<Integer> UserAnswer){
+    public void checkBallStrike(List<Integer> computerAnswer, List<Integer> UserAnswer) {
         for (int aLetter : UserAnswer) {
             if (letterIncludeAnswerCheck(computerAnswer, aLetter)) {
                 addBall();

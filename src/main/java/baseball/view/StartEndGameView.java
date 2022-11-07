@@ -9,6 +9,7 @@ public class StartEndGameView extends GameView {
     public void startGamePrint() {
         outputBuilder(OUTPUT_GAME_START);
     }
+
     public void successGamePrint(){
         output = new StringBuilder();
         output.append(OUTPUT_SUCCESS);

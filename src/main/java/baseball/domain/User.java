@@ -4,13 +4,15 @@ import java.util.*;
 
 public class User {
     final static int ANSWER_SIZE = 3;
+    final static int ZERO = 0;
+    final static int TEN = 10;
     private final List<Integer> userAnswer;
 
     public User(int answer) {
         this.userAnswer = new ArrayList<>();
-        while(answer > 0) {
-            this.userAnswer.add(answer % 10);
-            answer /= 10;
+        while(answer > ZERO) {
+            this.userAnswer.add(answer % TEN);
+            answer /= TEN;
         }
         Collections.reverse(this.userAnswer);
         validate();
@@ -24,12 +26,14 @@ public class User {
         answerSizeCheck(this.userAnswer);
         divideTheAnswerByOneLetter();
     }
+
     public void divideTheAnswerByOneLetter() {
         Set<Integer> answerSet = new HashSet<>();
         for (int i = 0; i < ANSWER_SIZE; i++) {
             allDifferentNumberCheck(answerSet, userAnswer.get(i));
         }
     }
+
     public void allDifferentNumberCheck(Set<Integer> answerSet, int oneLetterFromAnswer) {
         if (answerSet.contains(oneLetterFromAnswer)) {
             throw new IllegalArgumentException();
