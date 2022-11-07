@@ -23,6 +23,11 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    private boolean RightAnswer(String input) {
+        Pattern pattern = Pattern.compile("[1-2]");
+        return pattern.matcher(input).matches();
+    }
+
     private int StrikeOrBall(int num, int index) {
         for(int i = 0; i<cnt_nbr; i++) {
             if(computer[i] == num && i == index) {
