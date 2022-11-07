@@ -5,13 +5,29 @@ import baseball.game.rule.Rule;
 import baseball.game.rule.RuleChecker;
 import baseball.game.rule.BallCountRule;
 import baseball.game.rule.StrikeCountRule;
+import baseball.system.util.SystemUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static baseball.game.message.GameMessage.*;
+
 public class Game {
+
+    private static final SystemUtil systemUtil = SystemUtil.getInstance();
+
+    private static void printResult(Map<Result, Integer> guessResult) {
+        if (isNothing(guessResult)) {
+            systemUtil.print(NOTHING);
+            return;
+        }
+
+        String resultString = getResultMessage(guessResult);
+        systemUtil.print(resultString);
+    }
+
     private static boolean isNothing(Map<Result, Integer> guessResult) {
         return guessResult.get(Result.BALL) == 0 && guessResult.get(Result.STRIKE) == 0;
     }
