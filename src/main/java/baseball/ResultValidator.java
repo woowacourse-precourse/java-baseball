@@ -7,6 +7,7 @@ public class ResultValidator {
     public List<Integer> validate(String input, String createdNumber) {
         List<Integer> result = new ArrayList<>();
         int strike = countStrike(input, createdNumber);
+        int ball = countBall(input, createdNumber);
 
         return result;
     }
@@ -19,5 +20,18 @@ public class ResultValidator {
             }
         }
         return strike;
+    }
+
+    private int countBall(String input, String createdNumber) {
+        int ball = 0;
+        String[] chars = input.split("");
+        for (String eachChar : chars) {
+            if (createdNumber.contains(eachChar)) {
+                ball = ball + 1;
+            }
+        }
+        ball = ball - countStrike(input, createdNumber);
+
+        return ball;
     }
 }
