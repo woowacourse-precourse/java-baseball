@@ -24,5 +24,11 @@ public class Application {
         }
     }
 
+    private static void validateNumber(String numbers) {
+        if (!numbers.matches("^[1-9]+$")) {
+            throw new IllegalArgumentException("1~9의 숫자만 입력하실수 있습니다.");
+        }
+    }
+
     }
 }
