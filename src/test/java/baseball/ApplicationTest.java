@@ -140,4 +140,15 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 재시작여부_입력값_오류() {
+        //given
+        String wrongNumber = "a";
+        InputUserNumberException inputUserNumberException = new InputUserNumberException();
+
+        //when,then
+        assertThatThrownBy(() -> inputUserNumberException.checkInputRestartNumber(wrongNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
