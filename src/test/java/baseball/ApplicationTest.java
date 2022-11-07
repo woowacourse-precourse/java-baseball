@@ -32,4 +32,9 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void 랜덤_숫자생성_테스트() {
+        Application.main(new String[]{});
+    }
 }
