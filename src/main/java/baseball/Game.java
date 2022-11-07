@@ -32,6 +32,7 @@ public class Game {
     public List<Integer> inputUserNumber() {
         System.out.print(INPUT_QUESTION);
         String numberStr = readLine();
+        checkInputValidation(numberStr);
         List<Integer> user = new ArrayList<>();
         for (int i=0; i<3; i++) {
             user.add(numberStr.charAt(i)-'0');
