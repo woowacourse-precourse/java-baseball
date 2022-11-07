@@ -14,4 +14,11 @@ public class BaseballGameInputValidator {
         }
         return true;
     }
+
+    public static boolean validateReplayNumber(String input) {
+        if (input.equals("1") || input.equals("2")) {
+            return true;
+        }
+        return false;
+    }
 }
