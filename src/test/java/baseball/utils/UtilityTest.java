@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UtilTest {
+class UtilityTest {
     @Nested
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     class SplitDigitsIntoList {
@@ -23,7 +23,7 @@ class UtilTest {
         @ParameterizedTest
         @MethodSource("parameterProvider")
         void setZero(int result, List<Integer> parameter) {
-            assertThat(Util.splitDigitsIntoList(result)).isEqualTo(parameter);
+            assertThat(Utility.splitDigitsIntoList(result)).isEqualTo(parameter);
         }
 
         private Stream<Arguments> parameterProvider() {
@@ -41,7 +41,7 @@ class UtilTest {
         @ParameterizedTest
         @CsvSource(value = {"123, false", "223, true", "222, true", "139, false"})
         void checkDuplicatedChar(String stringNumber, boolean expected) {
-            assertThat(Util.hasDuplicatedChar(stringNumber)).isEqualTo(expected);
+            assertThat(Utility.hasDuplicatedChar(stringNumber)).isEqualTo(expected);
         }
     }
 }

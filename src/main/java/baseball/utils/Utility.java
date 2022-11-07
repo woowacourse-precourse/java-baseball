@@ -1,10 +1,12 @@
 package baseball.utils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class Util {
+public final class Utility {
+    private Utility() {
+    }
+
     public static ArrayList<Integer> splitDigitsIntoList(int number) {
         ArrayList<Integer> resultList = new ArrayList<>();
         String stringNumber = Integer.toString(number);
@@ -25,8 +27,9 @@ public final class Util {
         return (int) makeDistinctStream(list)
                 .count();
     }
+
     public static int mergeDistinctIntegerInList(List<Integer> list) {
-        return (int) makeDistinctStream(list)
+        return makeDistinctStream(list)
                 .reduce((x, y) -> x * 10 + y)
                 .get();
     }
