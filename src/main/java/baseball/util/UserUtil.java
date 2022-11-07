@@ -16,7 +16,7 @@ public class UserUtil {
 
         String input = getInput();
 
-        isValidInput(input);
+        validInput(input);
 
         addInputToUserNumbers(userNumbers, input);
 
@@ -37,7 +37,7 @@ public class UserUtil {
         return Console.readLine();
     }
 
-    private static void isValidInput(String input) {
+    private static void validInput(String input) {
         if (!hasThreeDigits(input)) {
             throw new IllegalArgumentException("input should have three digits");
         }
