@@ -14,18 +14,17 @@ public class Game {
         this.computer = computer;
     }
 
-
-    public void gamePlay(Computer computer){
+    public void gamePlay(){
         printWindow.startPrint();
         List<Integer> playerNum = new ArrayList<>();
-        List<Integer> comNum = (List<Integer>) computer;
-
+        List<Integer> comNum = computer.getNumber();
+        int strike = 0;
 
         while (true){
             printWindow.playerTurnPrint();
             String userinput = Console.readLine();
             int ball = 0;
-            int strike = 0;
+
 
             for (int len = comNum.size(), i=0; i<len; i++){
                 int play = userinput.charAt(i);
@@ -42,7 +41,7 @@ public class Game {
                 continue;
             }if (strike ==3 ){
                 printWindow.threeStrikePrint();
-                return;
+                strike =0;
             }else {
                 printWindow.gameResult(ball,strike);
             }
