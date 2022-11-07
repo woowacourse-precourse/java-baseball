@@ -1,10 +1,8 @@
-package baseball.mvc.structure;
+package baseball.mvc.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.helper.util.DataMapTestUtils;
-import baseball.mvc.model.Model;
-import baseball.mvc.model.Request;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
