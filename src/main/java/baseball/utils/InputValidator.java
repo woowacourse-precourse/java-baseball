@@ -1,6 +1,7 @@
 package baseball.utils;
 
 public class InputValidator {
+    private static final int MAX_LENGTH=3;
 
     public static boolean isValidNumbers(String numbers) {
         if (!isLengthNumberThree(numbers)) {
@@ -19,7 +20,7 @@ public class InputValidator {
     }
 
     private static boolean isLengthNumberThree(String numbers) {
-        if (numbers.length() == 3) {
+        if (numbers.length() == MAX_LENGTH) {
             return true;
         }
         return false;
@@ -31,7 +32,7 @@ public class InputValidator {
                 .filter(n -> n != '0')
                 .count();
 
-        if (correctNumberCount == 3) {
+        if (correctNumberCount == MAX_LENGTH) {
             return true;
         }
         return false;
