@@ -21,7 +21,7 @@ public class ExceptionTest extends NsTest {
 		);
 	}
 	@Test
-	void 게임종료_후_재시작_NULL_예외() {
+	void NULL_예외() {
 		Throwable thrown = catchThrowable(() -> assertRandomNumberInRangeTest(
 				() -> run("375", null),
 				3, 7, 5

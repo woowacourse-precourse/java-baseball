@@ -1,8 +1,8 @@
 package baseball.utils;
 
 public enum Text {
-	error("INPUT VALUE ERROR"),
-	space (" "),
+	error("입력된 값이 잘못되었습니다."),
+	space(" "),
 	start("숫자 야구 게임을 시작합니다.\n"),
 	input("숫자를 입력해주세요 : "),
 	stop("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"),
@@ -11,10 +11,12 @@ public enum Text {
 	ball("볼"),
 	nothing("낫싱");
 	private final String print;
-	Text(String print) {
-		this.print = print;
-	}
+
 	public String getPrint() {
 		return print;
+	}
+
+	Text(String print) {
+		this.print = print;
 	}
 }
