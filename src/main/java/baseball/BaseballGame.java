@@ -19,7 +19,8 @@ public class BaseballGame {
         // 사용자 초기화
         List<Integer> human = Collections.emptyList();
 
-        while (game == 1) {
+        while (game != 2) {
+            System.out.println("컴퓨터 숫자 = " + computer.toString());
             System.out.print("숫자를 입력해주세요 : ");
 
             // 사용자의 입력값 저장
@@ -30,8 +31,15 @@ public class BaseballGame {
 
             // 출력
             printResult(result);
+            game = checkThreeStrike(result);
 
-            //
+            if (result.getStrike() == 3 && game == 1) {
+                computer = initAnswerNumber();
+            }
+
+            if (result.getStrike() == 3 && game == 2) {
+                System.out.println("게임 종료");
+            }
 
         }
 
@@ -158,6 +166,23 @@ public class BaseballGame {
         } else{
             System.out.println(result.getStrike()+"스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    public int checkThreeStrike(Baseball result) {
+        int game;
+
+        if (result.getStrike() == 3) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            game = Integer.parseInt(Console.readLine());
+        }else{
+            game = 1;
+        }
+
+        if (game != 1 && game != 2) {
+            throw new IllegalStateException();
+        }else{
+            return game;
         }
     }
 
