@@ -18,7 +18,6 @@ public class ProblemMaker extends Player{
     }
 
     public boolean isSameAtGivenLocation(int number, int index){
-
-        return false;
+        return getNumbers().get(index).equals(number);
     }
 }
