@@ -20,12 +20,6 @@ public class ComputerTest {
     }
 
     @Test
-    void 게임시작문구() {
-        Computer computer = new Computer();
-        assertThat(computer.gameStart()).isEqualTo("숫자 야구 게임을 시작합니다.");
-    }
-
-    @Test
     void 숫자변환() {
         Computer computer = new Computer();
         assertThat(computer.stringToInteger("123")).isEqualTo(Arrays.asList(1, 2, 3));
