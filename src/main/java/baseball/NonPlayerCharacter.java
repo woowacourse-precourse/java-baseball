@@ -23,6 +23,22 @@ public class NonPlayerCharacter {
                 "게임 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    public void countNumberOfBallAndStrike(int input) {
+        numberOfBallAndStrike = new int[3];
+        String inputString = String.valueOf(input);
+
+        for (int index = 0; index < DIGITS_OF_RANDOM_NUMBER; index++) {
+            char digit = inputString.charAt(index);
+            int comparisonResult = compareWithRandomNumber(digit, index);
+
+            if (comparisonResult == NOTHING) {
+                continue;
+            }
+
+            numberOfBallAndStrike[comparisonResult] += 1;
+        }
+    }
+
     public int compareWithRandomNumber(char digit, int index) {
         if (isStrike(digit, index)) {
             return STRIKE;
