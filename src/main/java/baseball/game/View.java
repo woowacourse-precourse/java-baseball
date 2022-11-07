@@ -8,7 +8,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class View {
     public void show(String message) {
-        System.out.println(message);
+        System.out.print(message);
     }
 
     public String input() {

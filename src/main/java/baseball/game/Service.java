@@ -10,12 +10,14 @@ public class Service {
     public static String printHint(List<Integer> hint) {
         StringBuilder string = new StringBuilder();
 
-        string.append(combine(hint.get(BALL_INDEX), BALL_MESSAGE));
-        string.append(combine(hint.get(STRIKE_INDEX), STRIKE_MESSAGE));
+        string.append(combine(hint.get(BALL_INDEX), BALL_MESSAGE))
+                .append(combine(hint.get(STRIKE_INDEX), STRIKE_MESSAGE));
         if (string.toString().isEmpty()) {
-            return NOTHING_MESSAGE;
+            return NOTHING_MESSAGE + NEWLINE;
         }
-        return string.toString();
+        return string
+                .append(NEWLINE)
+                .toString();
     }
 
     private static String combine(int value, String message) {
@@ -44,7 +46,7 @@ public class Service {
         for (int index = 0; index < NUMBER_LENGTH; index++) {
             if (!Objects.equals(userNumber.get(index), computerNumber.get(index))
                     && (Objects.equals(userNumber.get(index), computerNumber.get((index + 1) % 3))
-                    || Objects.equals(userNumber.get(index), computerNumber.get(index + 2) % 3))) {
+                    || Objects.equals(userNumber.get(index), computerNumber.get((index + 2) % 3)))) {
                 count++;
             }
         }

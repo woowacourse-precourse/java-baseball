@@ -4,14 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public interface Constant {
-    String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    String BLANK = " ";
+    String NEWLINE = "\n";
+
+    String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다." + NEWLINE;
     String USER_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    String GAME_RESTART_OR_TERMINATE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료" + NEWLINE;
+    String GAME_RESTART_OR_TERMINATE_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." + NEWLINE;
     String STRIKE_MESSAGE = "스트라이크";
     String BALL_MESSAGE = "볼";
     String NOTHING_MESSAGE = "낫싱";
-    String BLANK = " ";
 
     int GAME_RESTART_VALUE = 1;
     int GAME_TERMINATE_VALUE = 2;
