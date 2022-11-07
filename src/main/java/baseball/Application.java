@@ -9,9 +9,10 @@ import java.util.HashSet;
 
 
 public class Application {
-    static int threeStrike = 0;
-    static int firstGame = 1;
+    static int threeStrike = 0; // BallStrikeChecker 내부로 들어갈 예정
+    static int firstGame = 1; // 없앨 예정
 
+    // RandomNumberGenerator 내부로 들어갈 예정
     static void generateRandomNumber(ArrayList<Integer> answer) {
         while (answer.size() != 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -21,6 +22,7 @@ public class Application {
         }
     }
 
+    // 파싱을 사용하지 않아 불필요해질 예정
     static ArrayList<Integer> parseStringIntoInteger(String guess) {
         int guessIntFormat = Integer.parseInt(guess);
         ArrayList<Integer> parsed = new ArrayList<>();
@@ -31,9 +33,11 @@ public class Application {
         return parsed;
     }
 
+    // Guess 내부로 들어갈 예정
     static boolean checkValidityOfGuess(String guess) throws IllegalArgumentException {
         Integer guessIntFormat = Integer.parseInt(guess);
-        ArrayList<Integer> guessParsed = parseStringIntoInteger(guess);;
+        ArrayList<Integer> guessParsed = parseStringIntoInteger(guess);
+        ;
         Set<Integer> uniqueElementOnly;
 
         if (guessIntFormat < 123 || guessIntFormat > 987) {
@@ -54,6 +58,7 @@ public class Application {
         return true;
     }
 
+    //BallStrikeChecker 내부로 들어갈 예정
     static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> guessList, ArrayList<Integer> answers) {
         ArrayList<Integer> ballStrikeCnt = new ArrayList<>() {{
             add(0);
@@ -76,6 +81,7 @@ public class Application {
         return ballStrikeCnt;
     }
 
+    // Board 내부로 들어갈 예정. 로직도 if else 문 쓰지 않고 string concat 활용 예정
     static void showResult(ArrayList<Integer> ballStrikeCnt) {
         Integer ball = ballStrikeCnt.get(0);
         Integer strike = ballStrikeCnt.get(1);
@@ -94,6 +100,7 @@ public class Application {
         }
     }
 
+    // 내부에 기술된 메소드들 각각 다른 클래스로 찢어져 들어갈 예정
     static void judgeGuess(String guess, ArrayList<Integer> answer) {
         ArrayList<Integer> guessParsed;
         ArrayList<Integer> ballStrikeCnt;
