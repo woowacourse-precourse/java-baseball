@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class Referee {
-    private Computer computer;
     private static final int CNT = 3;
+    private static final int RESTART = 1;
+    private static final int STOP = 2;
+    private Computer computer;
 
     public Referee(Computer computer) {
         this.computer = computer;
@@ -40,11 +42,11 @@ public class Referee {
 
     public boolean judgeRestart(String inputMessage) {
         int exitMessage = Integer.valueOf(inputMessage);
-        if (exitMessage == 1) {
+        if (exitMessage == RESTART) {
             return true;
         }
 
-        if (exitMessage == 2) {
+        if (exitMessage == STOP) {
             return false;
         }
         return true;
