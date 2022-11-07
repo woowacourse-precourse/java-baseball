@@ -47,10 +47,14 @@ public class TurnResult {
             return "낫싱";
 
         String ret = "";
-        if (balls > 0)
+        if (balls > 0) {
             ret = ret + balls + "볼";
-        if (strikes > 0)
+        }
+        if (strikes > 0) {
+            if (!ret.isEmpty())
+                ret = ret + " ";
             ret = ret + strikes + "스트라이크";
+        }
         return ret;
     }
 }
