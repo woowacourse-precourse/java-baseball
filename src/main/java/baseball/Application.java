@@ -19,6 +19,9 @@ public class Application {
     private static boolean isRestart() {
         System.out.println(RESTART_COMMENT);
         int restartCommand = Integer.parseInt(Console.readLine());
+        if (restartCommand != RESTART_NUMBER && restartCommand != STOP_NUMBER) {
+            throw new IllegalArgumentException();   // 예외 처리
+        }
         return restartCommand == RESTART_NUMBER;
     }
 }
