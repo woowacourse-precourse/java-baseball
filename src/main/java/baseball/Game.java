@@ -19,24 +19,49 @@ public class Game {
     private int ball = 0;
     private boolean nothing = false;
 
+    private boolean EXIT = false;
+
 
     public void run() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         computerNum = createComputerNum();
-        System.out.println(computerNum);
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        userNum = getUserNum(input);
-        calculateResult();
-        printResult();
+        while (!EXIT) {
+            strike = 0;
+            ball = 0;
+            nothing = false;
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            userNum = getUserNum(input);
+            calculateResult();
+            printResult();
+            if (strike == 3) {
+               EXIT = checkExit();
+            }
+        }
 
     }
 
-    public void printResult(){
+    public boolean checkExit(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String userInput = Console.readLine();
+        if(!userInput.equals("1") && !userInput.equals("2")){
+            throw new IllegalArgumentException();
+        }
+        if (userInput.equals("1")){
+            computerNum = createComputerNum();
+            System.out.println(computerNum);
+            return false;
+        }
+            return true;
+
+    }
+
+
+    public void printResult() {
         String result = getResult();
         System.out.println(result);
 
-        if(strike==3){
+        if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
@@ -58,14 +83,14 @@ public class Game {
     }
 
     public void calculateResult() {
-        for(int i = 0; i < DIGIT; i++){
-             checkIfStrikeOrBall(i);
+        for (int i = 0; i < DIGIT; i++) {
+            checkIfStrikeOrBall(i);
         }
         nothing = checkIfNothing();
     }
 
-    public boolean checkIfNothing(){
-        if(strike==0 && ball==0){
+    public boolean checkIfNothing() {
+        if (strike == 0 && ball == 0) {
             return true;
         }
         return false;
@@ -78,10 +103,11 @@ public class Game {
             ball++;
     }
 
-    public boolean isBall(int index){
+    public boolean isBall(int index) {
         return !isStrike(index) && computerNum.contains(userNum.get(index));
     }
-    public boolean isStrike(int index){
+
+    public boolean isStrike(int index) {
         return computerNum.get(index) == userNum.get(index);
     }
 
@@ -151,11 +177,6 @@ public class Game {
             throw new IllegalArgumentException("중복된 수가 있습니다.");
         }
     }
-
-
-
-
-
 
 
 }
