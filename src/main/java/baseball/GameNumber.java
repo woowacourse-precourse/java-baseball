@@ -42,7 +42,6 @@ public class GameNumber {
         for (int idx = 0; idx < 3; idx++) {
             addNumber(user, split, idx);
         }
-        System.out.println(user);
     }
 
     // 사용자 숫자를 List 에 추가하는 메소드
@@ -71,7 +70,6 @@ public class GameNumber {
         while (isSize(computer)) {
             addRandomNumber(computer, Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
-        System.out.println(computer);
         return computer;
     }
 
