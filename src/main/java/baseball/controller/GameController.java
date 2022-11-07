@@ -10,21 +10,40 @@ public class GameController {
     private final int QUIT_GAME = 2;
     private GameService gameService = new GameService();
 
-    public void startGame(){
+    public void startGame() {
+        int choose = 0;
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        do {
+            proceed();
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            choose = Integer.parseInt(Console.readLine());
+
+        } while(choose == RESTART_GAME);
+    }
+
+    public void proceed() {
         Game answer = new Game();
 
         answer = gameService.initAnswer(answer);
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
-
         Game userInput = new Game();
-        String inputStr = Console.readLine();
 
-        // TODO: input을 한글자씩 분리해서 List에 넣어보자.
-        userInput = gameService.initInput(userInput, inputStr);
-        gameService.validate(userInput);
+        boolean result = false;
+        while(!result) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String inputStr = Console.readLine();
 
+            userInput = gameService.initInput(userInput, inputStr);
+            gameService.validate(userInput);
+
+            result = gameService.compareAnswer(answer, userInput);
+        }
+
+        if(result){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 }
