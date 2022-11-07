@@ -1,4 +1,4 @@
-package baseball.system;
+package baseball.system.constant;
 
 public class BaseballConstant {
     public static final int INPUT_LENGTH = 3;

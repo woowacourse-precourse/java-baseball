@@ -1,4 +1,4 @@
-package baseball.system;
+package baseball.system.progress;
 
 import baseball.player.*;
 import baseball.utils.Input;
@@ -7,7 +7,7 @@ public class GamePlay {
     private Computer computer;
     private User user;
 
-    GamePlay(Computer computer, User user) {
+    public GamePlay(Computer computer, User user) {
         this.computer = computer;
         this.user = user;
     }
@@ -20,8 +20,7 @@ public class GamePlay {
 
             printInputText();
 
-            String inputNumbers = Input.input();
-            user.setUser(inputNumbers);
+            InputThreeNumbers();
 
             if (numberComparison.startComparison(user.getUserNumbers())) {
                 break;
@@ -29,6 +28,11 @@ public class GamePlay {
         }
 
         printGameEndText();
+    }
+
+    private void InputThreeNumbers(){
+        String inputNumbers = Input.input();
+        user.setUser(inputNumbers);
     }
 
     private void printInputText() {

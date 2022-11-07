@@ -1,5 +1,6 @@
-package baseball.system;
+package baseball.system.progress;
 
+import baseball.system.constant.BaseballConstant;
 import baseball.utils.*;
 
 import java.util.*;
@@ -7,8 +8,8 @@ import java.util.*;
 public class NumberComparison {
     private List<Integer> computerNumbers;
     private List<Integer> userNumbers;
-    private int strikeCount;
-    private int ballCount;
+    private int strikeCount = 0;
+    private int ballCount = 0;
 
     public NumberComparison(List<Integer> computerNumbers) {
         this.computerNumbers = computerNumbers;
@@ -17,8 +18,7 @@ public class NumberComparison {
     public boolean startComparison(List<Integer> userNumbers) {
         this.userNumbers = userNumbers;
 
-        strikeCount = countStrike();
-        ballCount = countBall();
+        checkEachDigit();
 
         printStrikeBallCount(strikeCount, ballCount);
 
@@ -29,9 +29,7 @@ public class NumberComparison {
         return false;
     }
 
-    private int countBall() {
-        int ballCount = 0;
-
+    private void checkEachDigit() {
         int userNumber;
         int computerNumber;
 
@@ -40,33 +38,23 @@ public class NumberComparison {
             userNumber = userNumbers.get(index);
             computerNumber = computerNumbers.get(index);
 
-            if (!IsCollection.isSameValue(computerNumber, userNumber)
-                    && IsCollection.hasNumber(computerNumbers, userNumber)) {
-                ballCount++;
-            }
-        }
+            countBall(computerNumber, userNumber);
+            countStrike(computerNumber, userNumber);
 
-        return ballCount;
+        }
     }
 
-    private int countStrike() {
-
-        int strikeCount = 0;
-
-        int userNumber;
-        int computerNumber;
-
-        for (int index = 0; index < BaseballConstant.NUMBERS_COUNT; index++) {
-
-            userNumber = userNumbers.get(index);
-            computerNumber = computerNumbers.get(index);
-
-            if (IsCollection.isSameValue(userNumber, computerNumber)) {
-                strikeCount++;
-            }
+    private void countBall(int computerNumber, int userNumber) {
+        if (!IsCollection.isSameValue(computerNumber, userNumber)
+                && IsCollection.hasNumber(computerNumbers, userNumber)) {
+            ballCount++;
         }
+    }
 
-        return strikeCount;
+    private void countStrike(int computerNumber, int userNumber) {
+        if (IsCollection.isSameValue(userNumber, computerNumber)) {
+            strikeCount++;
+        }
     }
 
     private boolean isAnswer(int strikeCount) {
