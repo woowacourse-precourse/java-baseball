@@ -28,4 +28,8 @@ public class User {
         }
     }
 
+    public static void initNumberList() {
+        userInputNumberList = new ArrayList<>();
+    }
+
 }
