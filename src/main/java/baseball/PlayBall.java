@@ -5,9 +5,9 @@ import java.util.List;
 public class PlayBall {
     private PlayBallUI playBallUI;
     private Computer computer;
+    private ExceptionHandler exceptionHandler;
 
     public void startGame() {
-
         if (this.playBallUI == null){
             this.playBallUI = new PlayBallUI();
         }
@@ -23,5 +23,14 @@ public class PlayBall {
 
     public void handleUserInput(){
         String userNumber = playBallUI.takeUserInput();
+        exceptionHandler = new ExceptionHandler();
+        //todo Referee
+        try {
+            exceptionHandler.checkIsDigit(userNumber);
+            exceptionHandler.checkIsValidLength(userNumber);
+
+        }catch(Exception e){
+            //do nothing -> system 종료
+        }
     }
 }
