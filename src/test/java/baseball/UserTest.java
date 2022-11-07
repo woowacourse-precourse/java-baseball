@@ -38,7 +38,7 @@ public class UserTest {
         List<List<Integer>> noStrikeCases = List.of(
                 List.of(3, 1, 2), List.of(1, 3, 2), List.of(7, 8, 9),
                 //1ball
-                List.of(3, 4, 2), List.of(3, 4, 7), List.of(3, 5, 8),
+                List.of(3, 4, 2), List.of(3, 4, 7), List.of(3, 6, 8),
                 //2ball
                 List.of(1, 4, 5), List.of(6, 4, 1), List.of(5, 6, 1),
                 //3ball
