@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.exception.UserInputException;
 import java.util.List;
 
 public class GameFunction {
@@ -39,7 +40,7 @@ public class GameFunction {
             return false;
         }
 
-        throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        throw new UserInputException();
     }
 
     public void printScoreMsg(int strikeScore, int ballScore) {
