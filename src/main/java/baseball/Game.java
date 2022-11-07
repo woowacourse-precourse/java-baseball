@@ -73,7 +73,7 @@ public class Game {
     }
 
     private static boolean checkWin(List<Integer> hitCount) {
-        return true;
+        return hitCount.get(0).equals(NUMBER_SIZE);
     }
 
     private static List<Integer> createSecretNumber() {
