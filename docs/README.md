@@ -4,3 +4,4 @@
 4. 입력과 결과값을 비교하는 compare
 5. compare를 통해 나온 결과를 출력하는 solution
 6. 게임의 진행 여부를 확인하는 endCheck (진행할지 안할지)
+7. 게임의 시작을 판단하는 playGame
