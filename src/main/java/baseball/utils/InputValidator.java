@@ -11,6 +11,10 @@ public class InputValidator {
             return false;
         }
 
+        if (!isUnique(numbers)) {
+            return false;
+        }
+
         return true;
     }
 
@@ -31,5 +35,14 @@ public class InputValidator {
             return true;
         }
         return false;
+    }
+
+    private static boolean isUnique(String numbers) {
+        for (int i = 0; i < numbers.length(); i++) {
+            if (!(numbers.indexOf(numbers.charAt(i)) == i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
