@@ -27,7 +27,6 @@ public class Application {
         List<Integer> inputNumList = new ArrayList<>();
         for (int inputStringIdx = 0; inputStringIdx < inputString.length(); inputStringIdx++) {
             int inputNum = (int) inputString.charAt(inputStringIdx) - 48;
-//            int inputNum = inputString.charAt(inputStringIdx);
             inputNumList.add(inputNum);
         }
         if (isValidList(inputNumList)) {
