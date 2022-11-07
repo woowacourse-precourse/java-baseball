@@ -30,13 +30,7 @@ public class BaseBallGame {
         do {
             this.success = false;
             setComputerNumbers();
-            while (!this.success) {
-                String userInput = requestUserInput();
-                if (isValidInput(userInput)) {
-                    setUserNumbers(userInput);
-                    printGameResult();
-                }
-            }
+            guessComputerNumbersUntilSuccess();
         } while (askStopOrRegame() == REGAME);
     }
 
@@ -50,6 +44,16 @@ public class BaseBallGame {
             int randomNumber = Randoms.pickNumberInRange(COMPUTER_NUMBER_MIN, COMPUTER_NUMBER_MAX);
             if (!this.computerNumbers.contains(randomNumber)) {
                 this.computerNumbers.add(randomNumber);
+            }
+        }
+    }
+
+    public void guessComputerNumbersUntilSuccess() {
+        while (!this.success) {
+            String userInput = requestUserInput();
+            if (isValidInput(userInput)) {
+                setUserNumbers(userInput);
+                printGameResult();
             }
         }
     }
