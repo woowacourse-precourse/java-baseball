@@ -45,6 +45,11 @@ public class Hint {
         return strike == 0 && ball == 0;
     }
 
+    private void countStrike(int answer, int playerAnswer) {
+        if (answer == playerAnswer){
+            this.strike++;
+        }
+    }
     
 }
 
