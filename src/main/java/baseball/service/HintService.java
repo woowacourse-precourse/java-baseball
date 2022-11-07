@@ -17,4 +17,13 @@ public class HintService {
         nothing();
         return String.valueOf(sb);
     }
+
+    public void countStrike(String answerNumber, String playerNumber) {
+
+        for (int i = 0; i < playerNumber.length(); i++) {
+            if (answerNumber.charAt(i) == playerNumber.charAt(i)) {
+                strike += 1;
+            }
+        }
+    }
 }
