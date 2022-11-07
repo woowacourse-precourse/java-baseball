@@ -3,8 +3,8 @@ package baseball.util;
 public class ValidationUtil {
 
     public static boolean ValidateInputNumber(String input) {
-        if (input.length() == 3 || input.contains("0")
-                || validateIsDigit(input)) {
+        if (input.length()==3 && !input.contains("0")
+                && validateIsDigit(input) && validateDuplicateNumber(input)) {
             return true;
         }
         return false;
@@ -14,10 +14,10 @@ public class ValidationUtil {
         char[] inputArray = input.toCharArray();
         for (char inputChar : inputArray) {
             if (Character.isDigit(inputChar)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     private static boolean validateDuplicateNumber(String input){

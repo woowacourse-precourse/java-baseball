@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.util.ValidationUtil;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -10,16 +11,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UnitTest extends NsTest {
+
     @Test
-    void 게임종료_후_재시작() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
-                },
-                1, 3, 5, 5, 8, 9
-        );
+    void 세자리_수_입력값_적정성_검토() {
+
+        String examNum1 = "1234";
+        String examNum2 = "110";
+        String examNum3 = "ktx";
+        String examNum4 = "112";
+
+        boolean return1 = ValidationUtil.ValidateInputNumber(examNum1);
+        boolean return2 = ValidationUtil.ValidateInputNumber(examNum2);
+        boolean return3 = ValidationUtil.ValidateInputNumber(examNum3);
+        boolean return4 = ValidationUtil.ValidateInputNumber(examNum4);
+
+        assertThat(return1).isEqualTo(false);
+        assertThat(return2).isEqualTo(false);
+        assertThat(return3).isEqualTo(false);
+        assertThat(return4).isEqualTo(false);
     }
+
 
     @Override
     public void runMain() {
