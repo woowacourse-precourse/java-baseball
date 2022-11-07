@@ -16,12 +16,11 @@ public class Rule {
         strike = 0;
     }
 
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
+    public boolean getResult(List<Integer> user, List<Integer> computer) {
+        init();
+        check(user, computer);
+        showResult();
+        return isThreeStrike();
     }
 
     public void check(List<Integer> user, List<Integer> computer) {
@@ -47,5 +46,9 @@ public class Rule {
 
     public void showResult() {
         RuleOutput.showResult(ball, strike);
+    }
+
+    private boolean isThreeStrike() {
+        return strike == 3;
     }
 }
