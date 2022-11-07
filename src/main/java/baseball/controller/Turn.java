@@ -34,6 +34,8 @@ public class Turn {
         String userNumberOfString = InputView.userNumber();
         List<Integer> userNumberOfList = convertNumberStringToList(userNumberOfString);
         compareWithTarget(userNumberOfList);
+        setTurnResult();
+        printResultOfThisTurn();
     }
 
     boolean checkCanRepeat() {
