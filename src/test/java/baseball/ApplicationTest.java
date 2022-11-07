@@ -146,7 +146,7 @@ class ApplicationTest extends NsTest {
 
                 String gameResultMessage = testGame.gameMessageDisplay
                         .getGameResultMessage(gameResult);
-                assertThat(gameResultMessage).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                assertThat(gameResultMessage).isEqualTo("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
             @Test
             void case2_3볼() {
