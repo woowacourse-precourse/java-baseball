@@ -104,7 +104,15 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(false);
     }
 
-    @Override
+    @Test
+    void 유효한_게임시작_번호(){
+        int input = 1;
+        Exception.isInvalidInput(input);
+        assertThat(input).isEqualTo(1);
+    }
+
+
+   @Override
     public void runMain() {
         Application.main(new String[]{});
     }
