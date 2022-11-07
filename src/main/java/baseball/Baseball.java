@@ -14,11 +14,16 @@ public class Baseball {
     }
 
     public void run() {
+        boolean isOngoing = true;
         Output.startGame();
-        List<Integer> player = Input.playerNumber();
-        int ballCount = getBallCount(player);
-        int strikeCount = getStrikeCount(player);
-        Output.getResult(ballCount, strikeCount);
+        while (isOngoing) {
+            List<Integer> player = Input.playerNumber();
+            int ballCount = getBallCount(player);
+            int strikeCount = getStrikeCount(player);
+            Output.getResult(ballCount, strikeCount);
+            isOngoing = isContinue(strikeCount);
+        }
+        Output.endGame();
     }
 
     private int getBallCount(List<Integer> player) {
@@ -29,5 +34,17 @@ public class Baseball {
     private int getStrikeCount(List<Integer> player) {
         Strike strike = new Strike(player, computer);
         return strike.getCount();
+    }
+
+    private boolean isContinue(int strikeCount) {
+        if (!isCorrect(strikeCount)) {
+            return true;
+        }
+        Output.doneGame();
+        return false;
+    }
+
+    private boolean isCorrect(int strikeCount) {
+        return strikeCount == 3;
     }
 }
