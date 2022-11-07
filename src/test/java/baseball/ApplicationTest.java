@@ -11,6 +11,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 
 class ApplicationTest extends NsTest {
@@ -71,12 +72,87 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
+    @Test
+    void verifyInput_길이_예외_확인() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : 1234"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("77"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : 77"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : 0"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : "));
+    }
+
+    @Test
+    void verifyInput_숫자_예외_확인() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("3 a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : 3 a"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("out"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : out"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("703"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : 703"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("우테코"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Input value must be a three-digit natural number : 우테코"));
+    }
+
+    @Test
+    void verifyInput_중복_예외_확인() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("337"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Each digit of input value should be unique : 337"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("737"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Each digit of input value should be unique : 737"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("377"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Each digit of input value should be unique : 377"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("444"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("Each digit of input value should be unique : 444"));
+    }
+
+    @Test
+    void verifyInput_정상_작동_확인() {
+        assertSimpleTest(() ->
+                assertDoesNotThrow(() -> runException("389")));
+        assertSimpleTest(() ->
+                assertDoesNotThrow(() -> runException("147")));
+        assertSimpleTest(() ->
+                assertDoesNotThrow(() -> runException("798")));
+        assertSimpleTest(() ->
+                assertDoesNotThrow(() -> runException("456")));
+        assertSimpleTest(() ->
+                assertDoesNotThrow(() -> runException("123")));
+    }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
-        );
+                        .hasMessageContaining("Input value must be a three-digit natural number : 1234"));
     }
 
     @Override
