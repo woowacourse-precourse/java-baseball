@@ -37,6 +37,7 @@ public class Application {
     }
 
     private static void selectPlayerNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
         String playerInput = Console.readLine();
         selectPlayerNumberException(playerInput);
         int number1 = playerInput.charAt(0) - '0';
@@ -70,7 +71,7 @@ public class Application {
         int strike = countStrike();
         int ball = countBall();
         String hintMessage = makeHintMessage(strike, ball);
-        System.out.println("hintMessage = " + hintMessage);
+        System.out.println(hintMessage);
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             endGame();
