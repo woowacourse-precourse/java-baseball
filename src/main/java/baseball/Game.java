@@ -88,7 +88,7 @@ public class Game {
         return strike;
     }
 
-    private boolean isRightAnswer(String input) {
+    public boolean isRightAnswer(String input) {
         Pattern pattern = Pattern.compile("[1-2]");
         return pattern.matcher(input).matches();
     }

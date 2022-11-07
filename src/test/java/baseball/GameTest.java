@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -18,5 +19,11 @@ public class GameTest {
         List<Integer> computerNumber = List.of(1, 2, 3);
 
         assertThat(game.getHint(input, computerNumber)).isEqualTo(output);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"3", "", " "})
+    void 게임_재시작_종료_예외_검증(String input) {
+        assertThat(game.isRightAnswer(input)).isEqualTo(false);
     }
 }
