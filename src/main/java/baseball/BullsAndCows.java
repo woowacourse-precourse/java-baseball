@@ -5,6 +5,7 @@ public class BullsAndCows {
     private static String answer;
 
     public BullsAndCows() {
+        IO.alert_startGame();
         playGame();
     }
 
@@ -27,7 +28,6 @@ public class BullsAndCows {
 
     private void startGame() {
         answer = Numbers.setAnswer();
-        IO.alert_startGame();
     }
 
     private String getPredictInput() {

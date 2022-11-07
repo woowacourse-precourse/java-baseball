@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class IO {
 
     public static void alert_startGame() {
-        System.out.println();
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
