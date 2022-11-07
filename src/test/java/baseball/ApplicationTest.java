@@ -29,8 +29,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void wrongInputValueCheck_false_return_테스트(){
+    void wrongInputValueCheck_false_return_테스트_같은_수가_존재하는_경우(){
         String userInput = "121";
+        init();
+        boolean funcResult = wrongInputValueCheck(userInput);
+
+        assertThat(funcResult).isEqualTo(false);
+    }
+
+    @Test
+    void wrongInputValueCheck_false_return_테스트_0이_존재하는_경우(){
+        String userInput = "102";
         init();
         boolean funcResult = wrongInputValueCheck(userInput);
 
