@@ -37,16 +37,16 @@ public class NumberBaseballController {
 
     public void determineNextMove(GuessResultStatus resultType) {
         if (resultType == GuessResultStatus.WIN) {
-            String userAnswer = numberBaseballView.inputNewGameAnswer();
-            userAnswerValidator.validateNewGameAnswer(userAnswer);
-            inputNewGameAnswer(userAnswer);
+            inputNewGameAnswer();
         }
         if (resultType == GuessResultStatus.NOT_WIN) {
             inputUserAnswer();
         }
     }
 
-    public void inputNewGameAnswer(String userAnswer) {
+    public void inputNewGameAnswer() {
+        String userAnswer = numberBaseballView.inputNewGameAnswer();
+        userAnswerValidator.validateNewGameAnswer(userAnswer);
         if (userAnswer.equals(RESTART)) {
             restartGame();
         }

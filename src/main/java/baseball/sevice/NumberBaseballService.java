@@ -35,7 +35,7 @@ public class NumberBaseballService {
     public int getStrikeCount(ComputerNumber computerNumber, String userAnswer) {
         return calculateStrikeCount(computerNumber, userAnswer);
     }
-    
+
     private int calculateBallCount(ComputerNumber computerNumber, String userAnswer) {
         int ballCount = 0;
         if (convertCharacterToInteger(userAnswer.charAt(FIRST_NUMBER)) == computerNumber.getSecondNumber()
