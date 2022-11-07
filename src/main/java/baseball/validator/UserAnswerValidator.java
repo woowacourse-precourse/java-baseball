@@ -14,7 +14,7 @@ public class UserAnswerValidator {
     private static final String END_APPLICATION = "2";
 
     public void validateNewGameAnswer(String userAnswer) {
-        if (userAnswer.equals(NEW_GAME) || userAnswer.equals(END_APPLICATION)) {
+        if (!userAnswer.equals(NEW_GAME) && !userAnswer.equals(END_APPLICATION)) {
             throw new IllegalArgumentException(ErrorMessage.NEW_GAME_INPUT_EXCEPTION);
         }
     }
