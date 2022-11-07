@@ -45,10 +45,10 @@ public class UserService {
         computer.setAnswer();
     }
 
-    private Integer checkBall(){
+    private Integer checkBallStrike(String status){
         String answer;
         String baseballNumber;
-        int ballCount = 0;
+        int gameCount = 0;
 
         answer = computer.getAnswer();
         baseballNumber = user.getBaseballNumber();
@@ -56,13 +56,16 @@ public class UserService {
 
         for(int i=0; i<answer.length(); i++){
             for(int j=0; j<baseballNumber.length(); j++){
-                if (i != j && answer.charAt(i) == baseballNumber.charAt(j)){
-                    ballCount += 1;
+                if (status.equals("strike") && i == j && answer.charAt(i) == baseballNumber.charAt(j)){
+                    gameCount += 1;
+                }
+                if (status.equals("ball") && i != j && answer.charAt(i) == baseballNumber.charAt(j)){
+                    gameCount += 1;
                 }
             }
         }
 
-        return ballCount;
+        return gameCount;
     }
 
 
