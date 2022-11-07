@@ -11,13 +11,13 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         Game game = new Game();
-        AllStrike allStrike = new AllStrike();
         List<Integer> computer = game.randomPick();
-        allStrike.answer(computer);
+        game.answer(computer);
 
     }
 }
 class Game {
+
     /*랜덤으로 컴퓨터가 임의의 값 선택.*/
     public List<Integer> randomPick() {
         List<Integer> computer = new ArrayList<>();
@@ -30,11 +30,17 @@ class Game {
         return computer;
     }
 
+    /*camp.nextstep.edu.missionutils.Console 사용해서 String값 받는 함수 만들기*/
+    public String campConsole() {
+        return Console.readLine();
+    }
+
     /* 게임 플레이어가 입력한 숫자 받기*/
     public List<Integer> inputNumber() {
         List<Integer> user = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
-        String strNumber = Console.readLine();
+//        String strNumber = Console.readLine();
+        String strNumber = campConsole();
         for (String chr : strNumber.split("")) {
             user.add(Integer.parseInt(chr));
         }
@@ -93,49 +99,15 @@ class Game {
     }
 
     /*3스트라이크일때 새로시작 및 종료 분기를 주는 메서드*/
-//    public String allStrike(String counting, List<Integer> computer) {
-//
-//        if (counting.equals("3스트라이크")) {
-//            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//            String game = Console.readLine();
-//            if (game.equals("1")) {
-//                List<Integer> computerNext = randomPick();
-//
-//                return answer(computerNext);
-//            }
-//            return "게임종료";
-//        } else {
-//            return answer(computer);
-//        }
-//    }
-//
-//    /*새로시작 메서드*/
-//    public String answer(List<Integer> computer) {
-//        List<Integer> user = inputNumber();
-//        checkException(user);
-//        int countStrike = strike(user, computer);
-//        int countBall = ball(user, computer);
-//
-//        String counting = counting(countStrike, countBall);
-//        System.out.println(counting);
-//
-//        allStrike(counting, computer);
-//        return counting;
-//    }
-}
-
-class AllStrike {
-    Game gameClass = new Game();
-
     public String allStrike(String counting, List<Integer> computer) {
 
         if (counting.equals("3스트라이크")) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String game = Console.readLine();
+//            String game = Console.readLine();
+            String game = campConsole();
             if (game.equals("1")) {
-                List<Integer> computerNext = gameClass.randomPick();
+                List<Integer> computerNext = randomPick();
 
                 return answer(computerNext);
             }
@@ -145,16 +117,51 @@ class AllStrike {
         }
     }
 
+    /*새로시작 메서드*/
     public String answer(List<Integer> computer) {
-        List<Integer> user = gameClass.inputNumber();
-        gameClass.checkException(user);
-        int countStrike = gameClass.strike(user, computer);
-        int countBall = gameClass.ball(user, computer);
+        List<Integer> user = inputNumber();
+        checkException(user);
+        int countStrike = strike(user, computer);
+        int countBall = ball(user, computer);
 
-        String counting = gameClass.counting(countStrike, countBall);
+        String counting = counting(countStrike, countBall);
         System.out.println(counting);
 
         allStrike(counting, computer);
         return counting;
     }
 }
+
+//class AllStrike {
+//    Game gameClass = new Game();
+//
+//    public String allStrike(String counting, List<Integer> computer) {
+//
+//        if (counting.equals("3스트라이크")) {
+//            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//            String game = Console.readLine();
+//            if (game.equals("1")) {
+//                List<Integer> computerNext = gameClass.randomPick();
+//
+//                return answer(computerNext);
+//            }
+//            return "게임종료";
+//        } else {
+//            return answer(computer);
+//        }
+//    }
+//
+//    public String answer(List<Integer> computer) {
+//        List<Integer> user = gameClass.inputNumber();
+//        gameClass.checkException(user);
+//        int countStrike = gameClass.strike(user, computer);
+//        int countBall = gameClass.ball(user, computer);
+//
+//        String counting = gameClass.counting(countStrike, countBall);
+//        System.out.println(counting);
+//
+//        allStrike(counting, computer);
+//        return counting;
+//    }
+//}
