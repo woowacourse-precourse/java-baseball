@@ -121,8 +121,8 @@ public class Application {
     		inputMap.put(arr[i],"");
     	}
     	
-    	if(inputMap.size()!=3)return false;
-    	else return true;
+    	if(inputMap.size()<3)return false;
+    	else return true; 
     }
     // 컴퓨터 수와 사용자 수 비교
     public static void compare(List<Integer> computer, String inputNumber) {
@@ -159,7 +159,7 @@ public class Application {
     public static int successMessage() {
     	int coin = 0;
     	System.out.println(strike+"스트라이크");
-		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+		System.out.println(strike+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		coin = Integer.parseInt(Console.readLine());
 		return coin;
