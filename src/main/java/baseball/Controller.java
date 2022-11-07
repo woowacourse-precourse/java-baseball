@@ -15,4 +15,8 @@ public class Controller {
 		retryGame(Integer.parseInt(Console.readLine()));
 	}
 
+	public void computerSetting() {
+		service.ramdomNumberSetting();
+	}
+
 }
