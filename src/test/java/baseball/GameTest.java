@@ -12,7 +12,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.*;
 
-public class GameTest {
+public class GameTest extends NsTest {
+
     private Game game;
 
     @BeforeEach
@@ -39,4 +40,8 @@ public class GameTest {
         game.printUserInputPrompt();
     }
 
+    @Override
+    public void runMain() {
+        game.start();
+    }
 }
