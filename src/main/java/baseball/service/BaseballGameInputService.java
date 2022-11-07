@@ -14,13 +14,20 @@ public class BaseballGameInputService {
         List<Integer> userIntegerListInput = new ArrayList<>();
 
         validateNumberService.validateUserInput(userStringInput);
+        stringToIntegerList(userStringInput, userIntegerListInput);
 
-        return null;
+        return userIntegerListInput;
     }
 
     public static Integer getRestartInput() {
 
         return 0;
+    }
+
+    private static void stringToIntegerList(String userStringInput, List<Integer> userIntegerListInput) {
+        for (int i = 0; i < userStringInput.length(); i++) {
+            userIntegerListInput.add(Integer.parseInt(String.valueOf(userStringInput.charAt(i))));
+        }
     }
 
 }

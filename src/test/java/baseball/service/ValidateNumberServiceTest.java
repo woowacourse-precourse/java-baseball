@@ -1,9 +1,11 @@
 package baseball.service;
 
+import baseball.Application;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ValidateNumberServiceTest {
+class ValidateNumberServiceTest extends NsTest {
 
     ValidateNumberService validateNumberService = new ValidateNumberService();
 
@@ -24,6 +26,11 @@ class ValidateNumberServiceTest {
     void 길이_검증() {
         Assertions.assertThatThrownBy(() -> validateNumberService.validateUserInput("12345"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 
 }
