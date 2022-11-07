@@ -1,5 +1,6 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -93,23 +94,34 @@ class ApplicationTest extends NsTest {
             List<Integer> userTest = Arrays.asList(4, 5, 6);
             Assertions.assertThat(Application.checkNumbers(computerTest, userTest)).isEqualTo("낫싱");
         }
-
-        @Nested
-        class finishTest {
-            @Test
-            void 입력_0_예외() {
-                assertThatThrownBy(() -> Application.finish("3"))
-                        .isInstanceOf(IllegalArgumentException.class);
-            }
-
-            @Test
-            void 입력_숫자_이외값_예외() {
-                assertThatThrownBy(() -> Application.finish("다"))
-                        .isInstanceOf(IllegalArgumentException.class);
-            }
-        }
     }
 
+    @Nested
+    class finishTest {
+        @Test
+        void 입력_0_예외() {
+            assertThatThrownBy(() -> Application.finish("3"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 입력_숫자_이외값_예외() {
+            assertThatThrownBy(() -> Application.finish("다"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+    @Nested
+    class mainTest {
+        @Test
+        void 게임종료_후_재시작() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "1", "597", "589", "2");
+                        assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    }, 1, 3, 5, 5, 8, 9
+            );
+        }
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
