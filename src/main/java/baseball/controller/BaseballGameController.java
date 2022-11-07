@@ -36,5 +36,4 @@ public class BaseballGameController {
 	private boolean isGameClear(int strikeCount) {
 		return strikeCount == CYCLE_END_NUMBER;
 	}
-
 }

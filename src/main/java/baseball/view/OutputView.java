@@ -53,5 +53,4 @@ public class OutputView {
 			System.out.println(NOTHING_MESSAGE);
 		}
 	}
-
 }
