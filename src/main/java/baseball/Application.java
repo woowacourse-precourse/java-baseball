@@ -12,20 +12,15 @@ public class Application {
     }
 
     private static String getRandomThreeDigitNumberString() {
-        List<Integer> computer = new ArrayList<>();
+        List<String> computer = new ArrayList<>();
         while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            String randomNumber = Randoms.pickNumberInRange(1, 9)+"";
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        StringBuilder threeDigitNumberStringBuilder = new StringBuilder();
 
-        for (Integer digitNumber : computer) {
-            threeDigitNumberStringBuilder.append(digitNumber);
-        }
-
-        return String.valueOf(threeDigitNumberStringBuilder);
+        return String.join("",  computer);
     }
 
     private static String userInput() {
@@ -52,7 +47,6 @@ public class Application {
             }
         }
     }
-
 
     private static int compareUserInputToAnswer(String userInput, String answer) {
         int strike = 0;
