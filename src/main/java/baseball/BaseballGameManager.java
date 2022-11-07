@@ -9,15 +9,17 @@ public class BaseballGameManager {
 
     private List<Integer> baseballNumberList;
     private ElementListMaker<Integer> elementListMaker;
+    private int numberCount;
 
     public BaseballGameManager(List<Integer> baseballNumberList, ElementListMaker<Integer> elementListMaker) {
         this.baseballNumberList = baseballNumberList;
         this.elementListMaker = elementListMaker;
+        this.numberCount = baseballNumberList.size();
     }
 
     public void executeGame() {
-        boolean is3Strikes = false;
-        while (!is3Strikes) {
+        boolean isAllStrikes = false;
+        while (!isAllStrikes) {
             System.out.println(BASEBALL_GAME_GET_USER_INPUT_MESSAGE);
 
             String userInput = this.getValidInput();
@@ -26,8 +28,8 @@ public class BaseballGameManager {
             BaseballScore baseballScore = this.calculateBaseballScore(userInputElementList);
             this.printBaseballScore(baseballScore);
 
-            if (baseballScore.getStrikeCount() == 3) {
-                is3Strikes = true;
+            if (baseballScore.getStrikeCount() == numberCount) {
+                isAllStrikes = true;
             }
 
         }
@@ -41,13 +43,17 @@ public class BaseballGameManager {
             userInput = Console.readLine();
 
             try {
-                if (userInput.length() != baseballNumberList.size()) {
-                    throw new IllegalArgumentException();
+                // userInput이 Integer로 타입 변환이 가능한지 (숫자가 아닌 값 입력시 예외처리)
+                Integer.parseInt(userInput);
+
+                // userInput이 정해진 갯수의 숫자가 입력되지 않은 경우
+                if (userInput.length() != numberCount) {
+                    throw new NumberFormatException();
                 }
 
                 isInputValid = true;
-            } catch (IllegalArgumentException illegalArgumentException) {
-                System.err.println("※서로 다른 숫자 3개를 입력해주세요.※");
+            } catch (NumberFormatException numberFormatException) {
+                System.out.printf("※서로 다른 숫자 %d개를 입력해주세요.※\n", numberCount);
             }
         }
 
