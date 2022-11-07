@@ -13,7 +13,6 @@ public class Application {
 
     private static int checkOneAnswerNumberWithTargetNumber(int answerOneNumber, int targetNumber, int answerIdx, int targetIdx) {
         int result = 0;
-        System.out.println(answerOneNumber + " " + targetNumber);
 
         if (answerOneNumber == targetNumber) {
             result += 1;
@@ -111,11 +110,16 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         generateAnswerNumber();
         System.out.println(answerNumber);
-//        while ()
+        boolean gameResult = false;
+
+        while (!gameResult){
+            gameResult = eachGame();
+        }
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameRun();
+
     }
 }
