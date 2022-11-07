@@ -14,4 +14,18 @@ public class Computer {
             answer.add(num);
         }
     }
+
+    public void judge(Balls player) throws IllegalArgumentException {
+        strike = 0;
+        ball = 0;
+        for(int i = 0; i < MAX_LENGTH; i++) {
+            if (answer.balls.get(i).equals(player.balls.get(i))) {
+                strike++;
+            }
+            else if (answer.balls.contains(player.balls.get(i))) {
+                ball++;
+            }
+        }
+//        printResult();
+    }
 }
