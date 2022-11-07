@@ -5,6 +5,8 @@ import baseball.domain.Gamer;
 import baseball.domain.Hint;
 import baseball.domain.Rule;
 
+import static baseball.view.View.*;
+
 public class Game {
     private final Computer computer;
     private final  Gamer gamer;
@@ -17,6 +19,6 @@ public class Game {
         rule = new Rule();
     }
     public void play() {
-
+        printStartGame();
     }
 }
