@@ -57,7 +57,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
+    @Test
+    @DisplayName("숫자에 0이 있을 시 예외 발생")
+    void inputNumberHasZero() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Test
     @DisplayName("게임 종료 후 1, 2를 제외한 다른 숫자를 입력 시 예외 발생")
