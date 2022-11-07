@@ -3,7 +3,7 @@ package baseball;
 import baseball.console.ConsoleOutput;
 import baseball.core.StatusCode;
 import baseball.core.ComputerOpponent;
-import baseball.core.User;
+import baseball.core.Player;
 import baseball.core.dto.BallStrikeDto;
 import baseball.core.RandomNumberGenerator;
 
@@ -12,12 +12,12 @@ import java.util.List;
 public class BaseballGame {
 
     private final ConsoleOutput console;
-    private final User user;
+    private final Player player;
     private final ComputerOpponent opponent;
 
     public BaseballGame() {
         this.opponent = new ComputerOpponent(RandomNumberGenerator.generate());
-        this.user = new User();
+        this.player = new Player();
         this.console = new ConsoleOutput();
     }
 
@@ -38,19 +38,19 @@ public class BaseballGame {
 
     private void inputThreeNumbers() {
         console.printNumberInputMessage();
-        user.inputThreeNumbers();
+        player.inputThreeNumbers();
     }
 
     private void restartOrExitGame() {
         console.printRestartOrExitMessage();
-        StatusCode code = user.inputStatusCode();
+        StatusCode code = player.inputStatusCode();
         if (isStartCode(code)) {
             new BaseballGame().play();
         }
     }
 
     private BallStrikeDto processAnswering() {
-        List<Integer> threeNumbers = user.sayThreeNumbers();
+        List<Integer> threeNumbers = player.sayThreeNumbers();
         BallStrikeDto answer = opponent.answer(threeNumbers);
         console.printResultMessage(answer);
         return answer;
