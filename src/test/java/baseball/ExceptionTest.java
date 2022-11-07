@@ -13,7 +13,7 @@ public class ExceptionTest {
     @Test
     void 숫자가_3자리가_아닌_경우_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> isOverThreeDigit(Arrays.asList(1,2,3,4)))
+                assertThatThrownBy(() -> isOverThreeDigit(Arrays.asList(1, 2, 3, 4)))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
@@ -21,7 +21,7 @@ public class ExceptionTest {
     @Test
     void 동일한_숫자가_등장할_경우_예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> isSameNum(Arrays.asList(1,2,1)))
+                assertThatThrownBy(() -> isSameNum(Arrays.asList(1, 2, 1)))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
