@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    static final int RESTART_INPUT_NUMBER_LENGTH = 1;
     static final int USER_GUESS_NUMBER_LENGTH = 3;
     static final int RANDOM_NUMBER_LENGTH = 3;
     static final int RANDOM_NUMBER_FIRST_RANGE = 1;
@@ -13,6 +14,8 @@ public class Application {
     static final int BALL = 1;
     static final int NOT_BALL = 0;
 
+    static final String RESTART = "1";
+    static final String FINISH = "2";
     static final String BALL_HINT = "볼 ";
     static final String STRIKE_HINT = "스트라이크";
     static final String NOTHING_HINT = "낫싱";
@@ -153,6 +156,20 @@ public class Application {
         System.out.println(REQUEST_RESTART_MESSAGE);
         String restart = Console.readLine();
         return restart;
+    }
+
+    static public void restartInputValidator(String restart) {
+        if (restart.length() != RESTART_INPUT_NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!restart.matches(REGEX_PATTERN)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!restart.equals(RESTART) && !restart.equals(FINISH)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void main(String[] args) {
