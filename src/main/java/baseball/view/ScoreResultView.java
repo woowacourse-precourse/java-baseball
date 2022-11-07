@@ -21,42 +21,42 @@ public class ScoreResultView {
         getResultOfScores(makeResultString());
     }
 
-    public void getResultOfScores(String result){
+    private void getResultOfScores(String result){
         System.out.println(result);
     }
 
-    public String makeResultString(){
+    private String makeResultString(){
         if(isNothing()) return printNothing();
         if(isOnlyBall()) return printOnlyBall();
         if(isOnlyStrike()) return printOnlyStrike();
         return printBothBallAndStrike();
     }
 
-    public boolean isNothing(){
+    private boolean isNothing(){
         return ballCount == 0 && strikeCount == 0;
     }
 
-    public String printNothing(){
+    private String printNothing(){
         return NOTHING;
     }
 
-    public boolean isOnlyBall(){
+    private boolean isOnlyBall(){
         return ballCount != 0 && strikeCount == 0;
     }
 
-    public String printOnlyBall(){
+    private String printOnlyBall(){
         return Integer.toString(ballCount).concat(BALL_COMMAND);
     }
 
-    public boolean isOnlyStrike(){
+    private boolean isOnlyStrike(){
         return ballCount == 0 && strikeCount != 0;
     }
 
-    public String printOnlyStrike(){
+    private String printOnlyStrike(){
         return Integer.toString(strikeCount).concat(STRIKE_COMMAND);
     }
 
-    public String printBothBallAndStrike(){
+    private String printBothBallAndStrike(){
         return printOnlyBall().concat(printOnlyStrike());
     }
 }
