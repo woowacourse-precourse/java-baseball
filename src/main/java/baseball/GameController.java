@@ -19,5 +19,15 @@ public class GameController {
     private int strike = 0;
     private int ball = 0;
 
+    public void run() {
+        outputView.startGame();
 
+        do {
+            resetStates();
+            Playing();
+            exitGame = inputView.selectReStartGame();
+        }while (exitGame);
+
+        outputView.endGame();
+    }
 }
