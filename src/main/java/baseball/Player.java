@@ -8,7 +8,7 @@ public class Player {
     private InputValidator validator = new InputValidator();
 
     public void play() {
-        gameManager.createRandomNumbers();
+        gameManager.start();
         do {
             gameManager.provideResult(sendAnswer());
         } while ((!gameManager.isGameClear()));

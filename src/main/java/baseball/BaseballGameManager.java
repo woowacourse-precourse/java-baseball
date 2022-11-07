@@ -11,12 +11,12 @@ public class BaseballGameManager {
     public final static String NOTHING = "낫싱";
     public final static String BLANK = " ";
 
-    private RandomNumberCreator randomNumberCreator = new RandomNumberCreator();
+    private NumberAdministrator numberAdministrator = new NumberAdministrator();
     private int strikeCount;
     private int ballCount;
 
-    public void createRandomNumbers() {
-        randomNumberCreator.create();
+    public void start() {
+        numberAdministrator.createRandomNumbers();
     }
 
     public void provideResult(String input) {
@@ -27,7 +27,7 @@ public class BaseballGameManager {
 
     public boolean isGameClear() {
         if (strikeCount == 3) {
-            randomNumberCreator.clear();
+            numberAdministrator.clearRandomNumbers();
             return true;
         }
         return false;
@@ -38,8 +38,8 @@ public class BaseballGameManager {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        strikeCount = randomNumberCreator.getStrikeCount(inputNumbers);
-        ballCount = randomNumberCreator.getBallCount(inputNumbers);
+        strikeCount = numberAdministrator.getStrikeCount(inputNumbers);
+        ballCount = numberAdministrator.getBallCount(inputNumbers);
     }
 
     private String getResultMessage(int strikeCount, int ballCount) {

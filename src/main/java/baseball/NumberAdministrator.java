@@ -5,19 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class RandomNumberCreator {
+public class NumberAdministrator {
 
     public final static int NUMBER_COUNT_TO_CREATED = 3;
 
     List<Integer> randomNumbers = new ArrayList<>();
 
-    public void create() {
+    public void createRandomNumbers() {
         while (randomNumbers.size() < NUMBER_COUNT_TO_CREATED) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
         }
+    }
+
+    public void clearRandomNumbers() {
+        randomNumbers.clear();
     }
 
     public int getStrikeCount(List<Integer> inputNumbers) {
@@ -32,13 +36,8 @@ public class RandomNumberCreator {
                 .filter(idx -> !isStrike(idx, inputNumbers))
                 .count();
     }
-    
-    public void clear() {
-        randomNumbers.clear();
-    }
 
     private boolean isStrike(int idx, List<Integer> inputNumbers) {
         return randomNumbers.get(idx).equals(inputNumbers.get(idx));
     }
-
 }
