@@ -58,6 +58,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 최종볼갯수_테스트() {
+        Baseball baseball = new Baseball();
+        baseball.gameNumber = Arrays.asList(1,2,3);
+        assertThat(baseball.getTotalBallCount("123")).isEqualTo(Arrays.asList(0,3));
+        assertThat(baseball.getTotalBallCount("456")).isEqualTo(Arrays.asList(0,0));
+        assertThat(baseball.getTotalBallCount("126")).isEqualTo(Arrays.asList(0,2));
+        assertThat(baseball.getTotalBallCount("132")).isEqualTo(Arrays.asList(2,1));
+    }
+
+    @Test
     void 게임매적넘버_테스트() {
         Baseball.GameStatus exitStatus = Baseball.GameStatus.EXIT;
         assertThat(exitStatus.getGameStatus()).isEqualTo("2");
