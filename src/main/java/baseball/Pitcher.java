@@ -6,9 +6,9 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Pitcher {
-	private static final int PLAYING_NUMBER_SIZE = 3;
-	private static final int MIN_NUMBER = 1;
-	private static final int MAX_NUMBER = 9;
+	private final int PLAYING_NUMBER_SIZE = 3;
+	private final int MIN_NUMBER = 1;
+	private final int MAX_NUMBER = 9;
 
 	private final PlayingNumber playingNumber;
 
@@ -24,7 +24,7 @@ public class Pitcher {
 		return playingNumber.getPlayingNumbers();
 	}
 
-	private static String make3DigitNumber() {
+	private String make3DigitNumber() {
 		StringBuilder stringBuilder = new StringBuilder();
 		List<Integer> prev = new ArrayList<>();
 
