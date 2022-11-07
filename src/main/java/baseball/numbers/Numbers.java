@@ -31,6 +31,7 @@ public class Numbers {
 
     public Map<BallTypes, Integer> compare(Numbers other) {
         Map<BallTypes, Integer> result = initialResult();
+
         for (int sequence = 0; sequence < NUMBERS_COUNT; sequence++) {
             BallTypes type = other.contains(sequence, numbers.get(sequence));
             result.put(type, result.get(type) + 1);
