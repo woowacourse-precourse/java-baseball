@@ -1,5 +1,8 @@
 package baseball.service;
 
+import baseball.domain.Computer;
+import baseball.domain.User;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -8,6 +11,29 @@ public class GameProcessor {
 
     private int strikeCount;
     private int ballCount;
+    private final Computer computer;
+    private final User user;
+
+    public GameProcessor() {
+        computer = new Computer();
+        user = new User();
+    }
+
+    public void startGame() {
+        OutputView.printStartMessage();
+        computer.generateNumber();
+    }
+
+    public void playGame() {
+        do {
+            user.selectUserNumber();
+        } while (isThreeStrike(computer.getComputerNumbers(), user.getUserInputNumbers()));
+    }
+
+    public boolean endOrRestartGame() {
+        OutputView.printVictoryMessage();
+        return InputView.selectEndOrRestartInput();
+    }
 
     public boolean isThreeStrike(List<Integer> computerNumbers, List<Integer> userInputNumbers) {
         getStrikeCount(computerNumbers, userInputNumbers);
