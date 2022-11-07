@@ -12,14 +12,12 @@ public class BaseBall implements Game{
         play();
     }
     @Override
-    public void start() {
-        answer=random.pick();
-    }
-
+    public void start() {answer=random.pick();}
     @Override
     public void play() {
         String playInput;
         start();
+        System.out.println(answer);
         do{
             System.out.print("숫자를 입력해주세요 : ");
             playInput=input.playInput();
@@ -53,10 +51,10 @@ public class BaseBall implements Game{
         int ballPoint=0;
         for(int i=0; i<range; i++){
             if(answer.indexOf(playInput.charAt(i)) == i){
-                ballPoint=ballPoint+1;
+                strikePoint=strikePoint+1;
             }
             else if(answer.indexOf(playInput.charAt(i)) != -1){
-                strikePoint=strikePoint+1;
+                ballPoint=ballPoint+1;
             }
         }
         score(strikePoint,ballPoint);
