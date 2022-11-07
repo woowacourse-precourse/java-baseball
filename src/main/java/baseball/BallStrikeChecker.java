@@ -6,13 +6,14 @@ public class BallStrikeChecker {
     static boolean threeStrike;
     ArrayList<Integer> judgement;
 
-    public BallStrikeChecker(RandomNumberGenerator answer, Guess myGuess){
-        threeStrike=false;
-        judgement=countBallAndStrike(answer.numberList,myGuess.numberList);
-        if(judgement.get(1)==3){
-            threeStrike=true;
+    public BallStrikeChecker(RandomNumberGenerator answer, Guess myGuess) {
+        threeStrike = false;
+        judgement = countBallAndStrike(answer.numberList, myGuess.numberList);
+        if (judgement.get(1) == 3) {
+            threeStrike = true;
         }
     }
+
     static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> guessList, ArrayList<Integer> answers) {
         ArrayList<Integer> ballStrikeCnt = new ArrayList<>() {{
             add(0);
