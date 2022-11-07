@@ -48,10 +48,10 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userInput = getValidUserInput(Console.readLine());
-            System.out.println(answer);
             System.out.println(userInput);
             int strike = getStrike(answer, userInput);
             int ball = getBall(answer, userInput, strike);
+            System.out.println(answer);
             Response response = new Response(strike, ball);
             response.view();
             if (response.isCompleted) {
@@ -133,9 +133,13 @@ public class Application {
     }
 
     public List<Integer> createNewAnswer() {
-        int startInclusive = 1;
-        int lastInclusive = 9;
-        int count = 3;
-        return Randoms.pickUniqueNumbersInRange(startInclusive, lastInclusive, count);
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 }
