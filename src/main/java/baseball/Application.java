@@ -22,6 +22,7 @@ public class Application {
 
     static public void startGame() {
         String randomNumber = makeRandomNumber();
+        while (inGame(randomNumber)) {}
     }
 
     static public String makeRandomNumber() {
@@ -36,6 +37,13 @@ public class Application {
         }
 
         return randomNumber;
+    }
+
+    static public boolean inGame(String randomNumber) {
+        String userGuessNumber = getUserGuessNumber();
+        userInputValidator(userGuessNumber);
+        printHint(randomNumber, userGuessNumber);
+        return isRepeat(randomNumber, userGuessNumber);
     }
 
     static public String getUserGuessNumber() {
