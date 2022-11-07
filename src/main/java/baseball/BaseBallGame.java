@@ -17,4 +17,8 @@ public class BaseBallGame {
         restartToken = "";
         scanner = new Scanner(System.in);
     }
+
+    public void inputUserNumber() {
+        userNumber = scanner.nextLine();
+    }
 }
