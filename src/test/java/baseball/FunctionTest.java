@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static java.util.Arrays.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class FunctionTest {
-
     @Nested
     class ComputerTest {
         @Test
@@ -40,8 +40,26 @@ public class FunctionTest {
     @Nested
     class UserTest {
         @Test
-        @DisplayName("조건에 하나라도 부합한다면 IllegalArgumentException 발생")
+        @DisplayName("문자 또는 공백을 입력하면 IllegalArgumentException 발생")
         void test1() {
+            User user = new User();
+
+            assertThatThrownBy(() -> {
+                user.isNumber("asd");
+            }).isInstanceOf(IllegalArgumentException.class);
+
+            assertThatThrownBy(() -> {
+                user.isNumber(" ");
+            }).isInstanceOf(IllegalArgumentException.class);
+
+            assertThatThrownBy(() -> {
+                user.isNumber("!@#");
+            }).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("조건에 하나라도 부합한다면 IllegalArgumentException 발생")
+        void test2() {
             User user = new User();
 
             assertThatThrownBy(() -> {
@@ -59,7 +77,7 @@ public class FunctionTest {
 
         @Test
         @DisplayName("각 자릿수가 1~9로 이루어져 있는지 확인")
-        void test2() {
+        void test3() {
             User user = new User();
 
             assertThat(user.checkRange(asList(1, 0, 2))).isFalse();
@@ -70,7 +88,7 @@ public class FunctionTest {
 
         @Test
         @DisplayName("3자릿수 인지 확인")
-        void test3() {
+        void test4() {
             User user = new User();
 
             assertThat(user.checkLength(asList(1))).isFalse();
@@ -81,7 +99,7 @@ public class FunctionTest {
 
         @Test
         @DisplayName("각 자릿수가 모두 다른지 확인")
-        void test4() {
+        void test5() {
             User user = new User();
 
             assertThat(user.checkEachDifferent(asList(1, 1, 2))).isFalse();
