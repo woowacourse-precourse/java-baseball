@@ -15,10 +15,15 @@ public class Inputer {
 
     public List<Integer> getInput() throws IllegalArgumentException{
         String rareinput = Console.readLine();
+        List<Integer> result = null;
         if(!flag) {
-            return stopOrGo(rareinput);
+            result = stopOrGo(rareinput);
+        }
+        if(flag) {
+            result = makeInputList(rareinput);
         }
 
+        return result;
     }
 
     private List<Integer> stopOrGo(String input){
@@ -32,5 +37,27 @@ public class Inputer {
             throw new IllegalArgumentException("Please input right arguments!");
         }
     }
+
+    private List<Integer> makeInputList(String input) {
+        List<String> preResult = List.of(input.split(""));
+        ArrayList<Integer> result = new ArrayList<>();
+        if(input.length() > 3 || input.length() < 1 || !isNum(input)) {
+            throw new IllegalArgumentException("Please input right arguments!");
+        }
+        for(int i = 0 ; i < 3 ; i++) {
+            result.add(Integer.parseInt(preResult.get(i)));
+        }
+        return result;
+    }
+
+    private boolean isNum(String input) {
+        for(int i = 0 ; i < input.length() ; i++) {
+            if(!Character.isDigit(input.charAt(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
