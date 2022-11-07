@@ -55,16 +55,27 @@ public class Baseball {
 
     private String getStrikeOrBall(List<Integer> computerNumbers, int userNumber, int index) {
         for (int i = 0; i < 3; i++) {
-            if (computerNumbers.get(i) == userNumber && i == index) {
+            if (hasSameNumberAndIndex(computerNumbers, userNumber, i, index)) {
                 return STRIKE_MESSAGE;
-
             }
 
-            if (computerNumbers.get(i) == userNumber) {
+            if (hasSameNumber(computerNumbers, userNumber, i)) {
                 return BALL_MESSAGE;
             }
         }
 
         return NOTHING_MESSAGE;
+    }
+
+    private boolean hasSameNumberAndIndex(List<Integer> computerNumbers, int userNumber, int i, int index) {
+        return hasSameNumber(computerNumbers, userNumber, i) && hasSameIndex(i, index);
+    }
+
+    private boolean hasSameNumber(List<Integer> computerNumbers, int userNumber, int i) {
+        return computerNumbers.get(i) == userNumber;
+    }
+
+    private boolean hasSameIndex(int i, int index) {
+        return i == index;
     }
 }
