@@ -50,4 +50,14 @@ public class BaseballNumber {
         }
         return true;
     }
+
+    public boolean isNotRepeat(String numbersStr){
+        if(numbersStr.charAt(0) == numbersStr.charAt(1))
+            return false;
+        if(numbersStr.charAt(0) == numbersStr.charAt(2))
+            return false;
+        if(numbersStr.charAt(1) == numbersStr.charAt(2))
+            return false;
+        return true;
+    }
 }
