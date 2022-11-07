@@ -16,7 +16,7 @@ public class Ball {
     public int getCount() {
         for (Integer playerNumber : player) {
             if (isBall(playerNumber)) {
-                count += 1;
+                count++;
             }
         }
         return count;
