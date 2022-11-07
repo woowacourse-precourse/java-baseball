@@ -25,7 +25,7 @@ public class ExceptionTest {
     void 게임플레이어_입력_숫자_테스트() {
         String input = "3";
 
-        assertThatThrownBy(() -> GameRepeatMessageException.checkYesOrNo(input))
+        assertThatThrownBy(() -> GameRepeatMessageException.verifyGameRepeatMessage(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -33,15 +33,7 @@ public class ExceptionTest {
     void 게임플레이어_입력_숫자_길이_테스트() {
         String input = "31";
 
-        assertThatThrownBy(() -> GameRepeatMessageException.verifyMessageLength(input))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 게임_플레이어_입력_숫자_길이_테스트() {
-        String gamePlayerInput = "1234";
-
-        assertThatThrownBy(() -> playGame().verifyPlayerNumbers(gamePlayerInput))
+        assertThatThrownBy(() -> GameRepeatMessageException.verifyGameRepeatMessage(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -89,10 +81,4 @@ public class ExceptionTest {
         return new Game();
     }
 
-    public Game playGame() {
-        Game game = new Game();
-        game.play();
-
-        return game;
-    }
 }
