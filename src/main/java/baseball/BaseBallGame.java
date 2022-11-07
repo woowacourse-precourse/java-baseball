@@ -66,4 +66,21 @@ public class BaseBallGame {
         }
         return strikeCount;
     }
+
+    public int countBallCount() {
+        int ballCount = 0;
+        if (computer.getFirstRandomNumber() == Character.getNumericValue(userNumber.charAt(1)) ||
+                computer.getFirstRandomNumber() == Character.getNumericValue(userNumber.charAt(2))) {
+            ballCount += 1;
+        }
+        if (computer.getSecondRandomNumber() == Character.getNumericValue(userNumber.charAt(0)) ||
+                computer.getFirstRandomNumber() == Character.getNumericValue(userNumber.charAt(2))) {
+            ballCount += 1;
+        }
+        if (computer.getThirdRandomNumber() == Character.getNumericValue(userNumber.charAt(0)) ||
+                computer.getFirstRandomNumber() == Character.getNumericValue(userNumber.charAt(1))) {
+            ballCount += 1;
+        }
+        return ballCount;
+    }
 }
