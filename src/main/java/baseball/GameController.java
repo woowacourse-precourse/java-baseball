@@ -21,9 +21,9 @@ public class GameController {
         String userNumber = Console.readLine();
 
         if (!Exception.isCheckDigit(userNumber)
-            || !Exception.isCheckLength(userNumber)
-            || !Exception.isCheckOverlap(userNumber)
-            || !Exception.isCheckRange(userNumber)) {
+                || !Exception.isCheckLength(userNumber)
+                || !Exception.isCheckOverlap(userNumber)
+                || !Exception.isCheckRange(userNumber)) {
             throw new IllegalArgumentException();
         }
         return userNumber;
