@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("Strike 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
@@ -73,6 +75,32 @@ class StrikeTest {
             @Test
             void 참을_리턴한다() {
                 assertThat(givenStrike.isStrikeOut()).isFalse();
+            }
+        }
+    }
+
+    @Nested
+    class toString_메서드는 {
+
+        @Nested
+        class 만약_스트라이크_카운트가_0인_경우 {
+            private Strike strike = Strike.valueOf(0);
+
+            @Test
+            void 빈_문자열을_리턴한다() {
+                assertThat(strike.toString()).isEqualTo("");
+            }
+
+        }
+
+        @Nested
+        class 만약_스트라이크_카운트가_0이_아닌_경우 {
+
+            @ParameterizedTest
+            @CsvSource(value = {"1, 1스트라이크", "2, 2스트라이크", "3, 3스트라이크"})
+            void X스트라이크_문자열을_리턴한다(int count, String result) {
+                Strike strike = Strike.valueOf(count);
+                assertThat(strike.toString()).isEqualTo(result);
             }
         }
     }
