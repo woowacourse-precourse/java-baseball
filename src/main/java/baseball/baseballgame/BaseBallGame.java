@@ -1,6 +1,6 @@
 package baseball.baseballgame;
 
-import baseball.baseballgame.balllist.BallList;
+import baseball.baseballgame.balls.Balls;
 import baseball.inputview.InputView;
 import baseball.outview.OutView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -12,7 +12,7 @@ public class BaseBallGame {
     private static final int MAX_SIZE = 3;
     public static final int START_INCLUSIVE = 1;
     public static final int END_INCLUSIVE = 9;
-    private final BallList computerBallList;
+    private final Balls computerBallList;
 
     public BaseBallGame() {
         List<Integer> computer = new ArrayList<>();
@@ -22,7 +22,7 @@ public class BaseBallGame {
                 computer.add(randomNumber);
             }
         }
-        this.computerBallList = new BallList(computer);
+        this.computerBallList = new Balls(computer);
     }
 
     public void start() {
@@ -47,6 +47,6 @@ public class BaseBallGame {
 
     public List<Integer> checkUserBallList(String userInoutNumber) {
         List<Integer> userBallList = NumberToListChanger.change(userInoutNumber);
-        return computerBallList.judge(new BallList(userBallList)).reportToList();
+        return computerBallList.judge(new Balls(userBallList)).reportToList();
     }
 }

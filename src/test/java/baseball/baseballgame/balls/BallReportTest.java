@@ -1,4 +1,4 @@
-package baseball.baseballgame.balllist;
+package baseball.baseballgame.balls;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
