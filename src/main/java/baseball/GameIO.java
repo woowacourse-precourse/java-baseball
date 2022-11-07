@@ -25,21 +25,26 @@ public class GameIO {
     }
 
     public void isLegalInput(String input) throws IllegalArgumentException {
-        if (!(isOnlyNumber(input) && isThreeDigit(input) && isAllDifferent(input))) {
-            throw new IllegalArgumentException();
+        if (isOnlyNumber(input) && isDontContainsZero(input) && isThreeDigit(input) && isAllDifferent(input)) {
+            return;
         }
+        throw new IllegalArgumentException();
     }
+
     public boolean isOnlyNumber(String input) {
         Pattern pattern = Pattern.compile("\\D");
         Matcher matcher = pattern.matcher(input);
         return !matcher.find();
     }
-    public boolean isThreeDigit(String input) {
-        if (input.length() != 3) {
-            return false;
-        }
-        return true;
+
+    public boolean isDontContainsZero(String input) {
+        return !input.contains("0");
     }
+
+    public boolean isThreeDigit(String input) {
+        return (input.length() == 3);
+    }
+
     public boolean isAllDifferent(String input) {
         char first = input.charAt(0);
         char second = input.charAt(1);
