@@ -34,20 +34,6 @@ public class Application {
         return user_number_char_list;
     }
 
-    static int check_1_between_9_number(List<Character> user_number_char_list) {
-        List<Character> temp_user_number_char_list = user_number_char_list;
-
-        for (char user_number_char : temp_user_number_char_list) {
-            int user_number_int = Character.getNumericValue(user_number_char);
-
-            if (user_number_int < 1 || 9 < user_number_int) {
-                return 1;
-            }
-        }
-
-        return 0;
-    }
-
     static int check_correct_number(List<Character> user_number_char_list) {
         List<Character> temp_user_number_char_list = user_number_char_list;
         List<Character> check_duplicate = new ArrayList<>();
@@ -61,7 +47,8 @@ public class Application {
                 return 1;
             }
 
-            if (check_1_between_9_number(user_number_char_list) == 1) {
+            int user_number_int = Character.getNumericValue(user_number_char);
+            if (user_number_int < 1 || 9 < user_number_int) {
                 return 1;
             }
 
