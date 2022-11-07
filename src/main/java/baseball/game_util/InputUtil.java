@@ -1,4 +1,12 @@
 import static baseball.common.Constants.MAX_USER_NUMBER_INPUT;
+    private static void checkUserInputValidate(String userInput) {
+        if (!isMaxLength(userInput)
+                || !isDigit(userInput)
+                || !isDuplicate(userInput)
+                || !isInRange(userInput)) {
+            throw new IllegalArgumentException();
+        }
+
     private static boolean isMaxLength(String userInput) {
         return (userInput.length() == MAX_USER_NUMBER_INPUT);
     }
