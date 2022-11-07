@@ -66,8 +66,7 @@ public class UserService {
         }
 
         returnResult = returnResultBuilder.toString();
-        System.out.println(returnResult);
-        System.out.println("결과");
+
         return returnResult;
 
     }
@@ -75,7 +74,7 @@ public class UserService {
     private boolean checkNothing() {
         String answer;
         String baseballNumber;
-        boolean returnNothingStatus = false;
+        boolean returnNothingStatus = true;
 
         answer = getAnswer();
         baseballNumber = getBaseballNumber();
@@ -83,7 +82,7 @@ public class UserService {
         for (int i = 0; i < answer.length(); i++) {
             for (int j = 0; j < baseballNumber.length(); j++) {
                 if (answer.charAt(i) == baseballNumber.charAt(j)) {
-                    returnNothingStatus = true;
+                    returnNothingStatus = false;
                 }
             }
         }
@@ -98,7 +97,6 @@ public class UserService {
 
         answer = getAnswer();
         baseballNumber = getBaseballNumber();
-
 
         for (int i = 0; i < answer.length(); i++) {
             for (int j = 0; j < baseballNumber.length(); j++) {
