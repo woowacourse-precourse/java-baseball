@@ -25,8 +25,7 @@ public class BallReader {
 
     public Map<ResultOfBall, Integer> getStrikeAndBall(Ball userBall, Ball computerBall) {
         validateBalls(userBall, computerBall);
-        List<ResultOfBall> strikeAndBall = makeStrikeAndBall(userBall, computerBall);
-        return makeMapByStrikeAndBall(strikeAndBall);
+        return makeMapByStrikeAndBall(makeStrikeAndBall(userBall, computerBall));
     }
 
     private void validateBalls(Ball userBall, Ball computerBall) {
@@ -35,16 +34,6 @@ public class BallReader {
         if (userBallData.size() != computerBallData.size()) {
             throw new IllegalArgumentException("서로 호환 되지 않는 공입니다");
         }
-    }
-
-    private Map<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
-        Map<ResultOfBall, Integer> result = new HashMap<>();
-        List<ResultOfBall> onlyStrikeAndBall = removeMissBall(ballData);
-        for (ResultOfBall data : onlyStrikeAndBall) {
-            result.computeIfPresent(data, (key, value) -> value + 1);
-            result.computeIfAbsent(data, key -> 1);
-        }
-        return result;
     }
 
     private List<ResultOfBall> makeStrikeAndBall(Ball userBall, Ball computerBall) {
@@ -60,6 +49,17 @@ public class BallReader {
         }
         return strikeAndBallResult;
     }
+
+    private Map<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
+        Map<ResultOfBall, Integer> result = new HashMap<>();
+        List<ResultOfBall> onlyStrikeAndBall = removeMissBall(ballData);
+        for (ResultOfBall data : onlyStrikeAndBall) {
+            result.computeIfPresent(data, (key, value) -> value + 1);
+            result.computeIfAbsent(data, key -> 1);
+        }
+        return result;
+    }
+
 
     private List<ResultOfBall> removeMissBall(List<ResultOfBall> ballData) {
         List<ResultOfBall> result = new ArrayList<>(ballData);
