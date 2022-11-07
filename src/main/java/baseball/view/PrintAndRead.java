@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.utils.Validation;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class PrintAndRead {
     public static List<Integer> getBaseballNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String question = Console.readLine();
+
+        Validation.IsOnlyNumber(question);
 
         return convertToIntegerList(question);
     }
@@ -50,6 +53,7 @@ public class PrintAndRead {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String answer = Console.readLine();
+        Validation.IsOnlyNumber(answer);
 
         return Integer.parseInt(answer);
     }
