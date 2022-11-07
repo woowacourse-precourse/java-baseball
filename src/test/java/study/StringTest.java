@@ -1,10 +1,17 @@
 package study;
 
+import baseball.BaseballGame;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
+
+    @Test
+    void 컴퓨터_랜덤_숫자_생성(){
+        String num = BaseballGame.ComputerNumGenerator();
+        System.out.println("num = " + num);
+    }
 
     @Test
     void split_메서드로_주어진_값을_구분() {
