@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.Valid.INVALID;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameSimulation {
     private Computer computer;
     private int strike;
     private int ball;
-    private static final boolean INVALID = false;
 
     public GameSimulation(Computer computer) {
         this.computer = computer;
@@ -28,7 +28,7 @@ public class GameSimulation {
     public void playGame() {
         List<Integer> userNumber;
 
-        while(strike < 3) {
+        while (strike < 3) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = readLine();
             userNumber = makeList(userInput);
@@ -47,7 +47,6 @@ public class GameSimulation {
                 .stream(bitInput)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-
     }
 
     public void validateUserNumber(List<Integer> userNumber) {

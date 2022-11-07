@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Valid.INVALID;
 import static baseball.Valid.validNumberList;
 
 public class Computer {
     private List<Integer> randomNumber;
-    private static final boolean INVALID = false;
 
     public void init() {
         do {

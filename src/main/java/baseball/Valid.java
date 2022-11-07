@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Valid {
     private static final boolean VALID = true;
-    private static final boolean INVALID = false;
+    public static final boolean INVALID = false;
 
     public static boolean validNumberList(List<Integer> numberList) {
         if (numberList.size() != 3) {
