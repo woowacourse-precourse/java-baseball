@@ -14,12 +14,6 @@ public class User {
         this.numbers = Collections.emptyList();
     }
 
-    private String inputNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        return input;
-    }
-
     public void setNumbers(String input) {
         validateInput(input);
         this.numbers = validateDuplicate(input);
