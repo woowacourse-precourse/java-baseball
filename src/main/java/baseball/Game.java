@@ -18,4 +18,27 @@ public class Game {
 
     public Computer computer = new Computer();
     public Player player = new Player();
+
+    public void start() {
+        System.out.println(START_MESSAGE);
+        String answer = computer.generateRandomNumbersString();
+        run(answer);
+    }
+
+    public void run(String answer) {
+        int strike = 0;
+        int ball = 0;
+        while (!checkAnswer(strike)) {
+            String playerInput = getPlayerInput();
+        }
+    }
+
+    private String getPlayerInput() {
+        System.out.print(INPUT_MESSAGE);
+        return player.getPlayerInputNumbersString();
+    }
+    
+    private boolean checkAnswer(int strike) {
+        return strike == LENGTH;
+    }
 }
