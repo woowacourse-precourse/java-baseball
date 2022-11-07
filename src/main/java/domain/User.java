@@ -12,6 +12,8 @@ public class User {
     private List<Integer> verifiedValueList = new ArrayList<>();
     private static final int INAPPROPRIATE_SIZE = 3;
     private static final int NUMBER_OF_DIGITS = 3;
+    private static final int GAME_RESUME_CODE = 1;
+    private static final int GAME_OVER_CODE = 2;
 
     public void guessComputerNumbers() {
         List<Character> unverifiedValueList;
@@ -31,7 +33,7 @@ public class User {
         }
     }
 
-    private void checkEnteredValuesOverlap(String userEnteredValues) {
+    public void checkEnteredValuesOverlap(String userEnteredValues) {
         Set<String> overlapCheckValues = new HashSet<>();
 
         for (int i = 0; i < userEnteredValues.length(); i++) {
@@ -43,13 +45,13 @@ public class User {
         }
     }
 
-    private void checkEnteredValuesLength(String userEnteredValues) {
+    public void checkEnteredValuesLength(String userEnteredValues) {
         if (userEnteredValues.length() != NUMBER_OF_DIGITS) {
             throw new IllegalArgumentException("세자리 숫자가 입력 되어야 합니다.");
         }
     }
 
-    private void checkEnteredValueIsNum(Character enteredValue) {
+    public void checkEnteredValueIsNum(Character enteredValue) {
         if (enteredValue < '1' || enteredValue > '9') {
             throw new IllegalArgumentException("1에서 9까지의 숫자가 아닌 값이 입력 되었습니다.");
         }
@@ -64,14 +66,14 @@ public class User {
     }
 
     public int isEndGame() {
-        while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int exitCode = Integer.parseInt(Console.readLine());
-            if (exitCode == 1 || exitCode == 2) {
-                return exitCode;
-            }
-            System.out.println("1 또는 2를 입력하세요.");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int exitCode = Integer.parseInt(Console.readLine());
+
+        if (exitCode == GAME_RESUME_CODE || exitCode == GAME_OVER_CODE) {
+            return exitCode;
         }
+
+        throw new IllegalArgumentException("1 또는 2를 입력하세요.");
     }
 
 }

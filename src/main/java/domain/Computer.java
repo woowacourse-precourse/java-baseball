@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Computer {
 
-    private List<Integer> numbers;
+    private List<Integer> numbers = new ArrayList<>();
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
     private static final int COUNT = 3;
