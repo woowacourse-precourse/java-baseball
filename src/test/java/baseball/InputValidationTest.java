@@ -15,6 +15,6 @@ public class InputValidationTest {
 		assertThatThrownBy(
 			() -> InputValidation.validateIsAllDigit(userInput)
 		).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("1에서 9까지의 숫자만 입력가능합니다.");
+			.hasMessageContaining("숫자만 입력가능합니다.");
 	}
 }
