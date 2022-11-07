@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    final static String RESTART = "1";
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
@@ -86,6 +87,14 @@ public class Application {
         }
 
         continueGame(computer);
+    }
+
+    static void endGame() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals(RESTART)) {
+            continueGame(setComputer());
+        }
     }
 }
 
