@@ -16,7 +16,7 @@ public class User implements Number {
     }
 
     public static boolean isNumberValidMaxSize(List<Integer> inputNumber) {
-        
+        return inputNumber.size() == MAX_SIZE;
     }
 
     public static boolean isNumberValidRange(List<Integer> inputNumber) {
