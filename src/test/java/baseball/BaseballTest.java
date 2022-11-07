@@ -1,5 +1,0 @@
-package baseball;
-
-class BaseballTest {
-
-}
