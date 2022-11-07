@@ -1,6 +1,6 @@
 package baseball.domain.game.service;
 
-import baseball.domain.ball.Balls;
+import baseball.domain.hint.Hint;
 
 public interface GameService {
 
@@ -8,7 +8,7 @@ public interface GameService {
 
     void validateNumber(String number);
 
-    boolean judge(Balls playerBall, Balls answerBall);
+    boolean judgeIsAnswer(Hint hint);
 
     boolean endOrRestart();
 }

@@ -6,16 +6,16 @@ import baseball.domain.ball.service.BallFactory;
 import baseball.domain.ball.service.BallService;
 import baseball.domain.ball.service.BallServiceImpl;
 import baseball.domain.game.service.*;
-import baseball.domain.hint.HintMessenger;
+import baseball.domain.hint.service.HintCreator;
+import baseball.domain.hint.service.HintMessenger;
+import baseball.domain.hint.service.HintService;
+import baseball.domain.hint.service.HintServiceImpl;
 import baseball.infrastructure.ball.BallCreatorImpl;
 import baseball.infrastructure.ball.BallFactoryImpl;
 import baseball.infrastructure.game.GameMessengerImpl;
 import baseball.infrastructure.game.GameRefereeImpl;
 import baseball.infrastructure.game.GameValidatorImpl;
-import baseball.infrastructure.hint.BallMessenger;
-import baseball.infrastructure.hint.NothingMessenger;
-import baseball.infrastructure.hint.StrikeAndBallMessenger;
-import baseball.infrastructure.hint.StrikeMessenger;
+import baseball.infrastructure.hint.*;
 import baseball.presentation.BaseBallGameController;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class AppConfig {
     }
 
     public GameFacade gameFacade() {
-        return new GameFacade(ballService(), gameService());
+        return new GameFacade(ballService(), gameService(), hintService());
     }
 
     public GameService gameService() {
@@ -35,7 +35,7 @@ public class AppConfig {
     }
 
     public GameMessenger gameMessenger() {
-        return new GameMessengerImpl(hintMessengers());
+        return new GameMessengerImpl();
     }
 
     public GameValidator gameValidator() {
@@ -56,6 +56,14 @@ public class AppConfig {
 
     public BallCreator ballCreator() {
         return new BallCreatorImpl();
+    }
+
+    public HintService hintService() {
+        return new HintServiceImpl(hintCreator(), hintMessengers());
+    }
+
+    public HintCreator hintCreator() {
+        return new HintCreatorImpl();
     }
 
     public List<HintMessenger> hintMessengers() {

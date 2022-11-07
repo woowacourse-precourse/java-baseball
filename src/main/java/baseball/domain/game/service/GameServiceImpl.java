@@ -1,6 +1,5 @@
 package baseball.domain.game.service;
 
-import baseball.domain.ball.Balls;
 import baseball.domain.hint.Hint;
 
 public class GameServiceImpl implements GameService{
@@ -26,9 +25,7 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public boolean judge(Balls playerBall, Balls answerBall) {
-        final Hint hint = gameReferee.createHint(playerBall, answerBall);
-        gameMessenger.sendHint(hint);
+    public boolean judgeIsAnswer(Hint hint) {
         return gameReferee.judgeIsAnswer(hint);
     }
 
