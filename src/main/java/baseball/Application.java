@@ -22,11 +22,10 @@ public class Application {
                 Game game = new Game(scanner);
                 game.play(targetNumber);
                 endingWorking(scanner);
-            } catch (IllegalArgumentException e) {
+            } catch (ProgressException IAE) {
                 System.out.println("입력값을 잘못 입력하셨습니다. 게임을 종료합니다.");
                 restartStatus = false;
             }
-
         } while (restartStatus);
     }
 
