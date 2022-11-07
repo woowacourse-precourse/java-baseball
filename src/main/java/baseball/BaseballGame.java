@@ -33,9 +33,11 @@ public class BaseballGame {
                 throw new IllegalArgumentException();
 
             int num = Character.getNumericValue(c);
+
             // 범위 검사 (1 ~ 9)
             if (num < 1)
                 throw new IllegalArgumentException();
+
             // 중복값 검사
             if (userAnswer.indexOf(num) != -1)
                 throw new IllegalArgumentException();
@@ -87,5 +89,28 @@ public class BaseballGame {
     }
 
 
+    void endGame() {
+        String line = Console.readLine();
+        char[] chars = line.toCharArray();
+
+        // 자리수 검사
+        if (chars.length != 1)
+            throw new IllegalArgumentException();
+        char c = chars[0];
+
+        // 숫자인지 판별
+        if (!Character.isDigit(c))
+            throw new IllegalArgumentException();
+        int num = Character.getNumericValue(c);
+
+        // 범위 검사 (1 ~ 2)
+        if (num < 1 || num > 2)
+            throw new IllegalArgumentException();
+
+        // 재시작일 경우
+        if (num == 1)
+            inputAnswer();
+
+    }
 }
 
