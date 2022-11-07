@@ -19,4 +19,7 @@ public class SystemException {
     public static boolean isValidInput(String input) {
         return isValidNumber(input) && isNotContainsZero(input) && isNotDuplicate(input);
     }
-}
+
+    public static boolean isValidNumber(String input){
+        return Integer.parseInt(input)>=123&&Integer.parseInt(input)<=987;
+    }
