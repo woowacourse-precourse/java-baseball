@@ -65,8 +65,9 @@ public class Application {
         return playerNumber;
     }
     public static String inputPlayerNumber() {
+        ErrorUtil errorUtil = new ErrorUtil();
         String number = Console.readLine();
-        checkError(errorPlayerNumber(number));
+        errorUtil.checkError(errorPlayerNumber(number));
         return number;
     }
     public static List<Integer> createRandomNumber() {
@@ -115,10 +116,6 @@ public class Application {
     public static void startApplication() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         playGame();
-    }
-    public static void checkError(boolean check) {
-        if (!check)
-            throw new IllegalArgumentException();
     }
     public static void main(String[] args) {
         startApplication();
