@@ -4,17 +4,14 @@ import baseball.model.data.Data;
 import baseball.view.Output;
 
 public class Game {
-	Output output = new Output();
 	Data data = new Data();
 	Calculation calculation = new Calculation();
 	Rule rule = new Rule();
-	Judge judge = new Judge();
+	Referee referee = new Referee();
 
 	public void play() {
-
 		start();
 		round();
-
 	}
 
 	public void start() {
@@ -23,26 +20,24 @@ public class Game {
 
 	public void round() {
 		do {
-			rule.STRIKE = 0;
-			rule.BALL = 0;
+			Rule.STRIKE = 0;
+			Rule.BALL = 0;
 			data.fetchUserNumbers();
 			calculation.calculateGuess();
-			output.print(judge.getMessage());
+			Output.print(referee.getMessage());
 
-			judge.checkUserWin();
+			referee.checkUserWin();
 
 		} while (!rule.userWin());
 
 		continueOrExit();
 	}
 
-
 	public void continueOrExit() {
-		if (rule.USER_INTENTION == 1) {
-			rule.USER_INTENTION = 0;
-			rule.USER_WIN = false;
+		if (Rule.USER_INTENTION == 1) {
+			Rule.USER_INTENTION = 0;
+			Rule.USER_WIN = false;
 			play();
 		}
 	}
-
 }

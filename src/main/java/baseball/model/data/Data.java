@@ -6,7 +6,6 @@ import baseball.controller.user.User;
 import java.util.LinkedHashMap;
 
 public class Data {
-	Computer computer = new Computer();
 	User user = new User();
 
 	public static LinkedHashMap<Integer, Integer> comNumMap;
@@ -18,7 +17,7 @@ public class Data {
 	public static int userNumIdx;
 
 	public void fetchComputerNumbers() {
-		comNumMap = computer.getNumbers();
+		comNumMap = Computer.getNumbers();
 	}
 
 	public void fetchUserNumbers() {

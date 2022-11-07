@@ -11,7 +11,6 @@ public class Referee {
 	Rule rule = new Rule();
 
 	public void countStrike() {
-
 		if (rule.isStrike(Data.computerNumber, Data.computerNumIdx, Data.userNumber, Data.userNumIdx)) {
 			Rule.STRIKE++;
 		}
@@ -42,7 +41,6 @@ public class Referee {
 		}
 
 		return sb.toString();
-
 	}
 
 	public void checkUserWin() {
