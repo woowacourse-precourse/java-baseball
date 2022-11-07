@@ -1,6 +1,5 @@
 package baseball.vo;
 
-import baseball.TwoNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

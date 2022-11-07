@@ -1,7 +1,6 @@
 package baseball.vo;
 
 import org.junit.jupiter.api.*;
-
 import java.util.LinkedList;
 import java.util.List;
 

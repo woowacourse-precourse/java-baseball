@@ -1,8 +1,7 @@
 package baseball;
 
-import baseball.utils.GameUtil;
-import org.junit.jupiter.api.*;
 
+import org.junit.jupiter.api.*;
 import java.util.LinkedList;
 import java.util.List;
 
