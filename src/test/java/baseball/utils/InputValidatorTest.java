@@ -31,6 +31,12 @@ class InputValidatorTest {
 
         assertThatThrownBy(() -> InputValidator.checkBaseballInput("226"))
                 .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> InputValidator.checkBaseballInput(""))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> InputValidator.checkBaseballInput(" "))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -49,6 +55,12 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(() -> InputValidator.checkProgressInput("12"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> InputValidator.checkProgressInput(""))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> InputValidator.checkProgressInput(" "))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
