@@ -5,6 +5,8 @@ import java.util.List;
 
 public class InputValidation {
     private final int NUMBER_LENGTH = 3;
+    private final String RESTART_NUMBER = "1";
+    private final String EXIT_NUMBER = "2";
 
     public void validateInputValue(String inputValue) {
         validateValueLength(inputValue);
@@ -37,6 +39,12 @@ public class InputValidation {
         List<String> numList = new ArrayList<>(List.of(inputNumber.split("")));
         if (numList.size() != numList.stream().distinct().count()) {
             throw new IllegalArgumentException("서로 다른 숫자만 입력 가능합니다.");
+        }
+    }
+
+    public void validateIsOneOrTwo(String inputValue) {
+        if (!inputValue.equals(RESTART_NUMBER) && !inputValue.equals(EXIT_NUMBER)) {
+            throw new IllegalArgumentException(RESTART_NUMBER + " 또는 " + EXIT_NUMBER + "만 입력 가능합니다.");
         }
     }
 }
