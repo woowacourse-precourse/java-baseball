@@ -17,10 +17,11 @@
 
 ### `checkGuess` 함수
 * 사용자가 답을 올바른 형식으로 작성했는지 확인
-* 숫자인지 확인
+* 숫자인지 확인 (`isNumeric` 함수)
 * 길이가 3인지 확인
+* 중복값이 존재하는지 확인 (`isRepeated` 함수)
 * 입력: `String`
-* 출력: `IllegalArgumentException`
+* 출력: `IllegalArgumentException` 
 
 ### `splitGuess` 함수
 * 문자열 형태인 사용자의 답을 정수 리스트로 쪼갬
