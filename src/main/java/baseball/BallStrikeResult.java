@@ -18,7 +18,7 @@ public class BallStrikeResult {
     }
 
     public boolean doesWin() {
-        return (this.strikeCount == TargetNumber.TARGET_NUMBER_LENGTH);
+        return (this.strikeCount == GameNumber.GAME_NUMBER_LENGTH);
     }
 
     public String toString() {

@@ -49,18 +49,18 @@
 - 게임이 끝나면 재시작 / 종료를 구분하는 입력 받기
   - 1은 재시작, 2는 종료
   
-- String을 class `TargetNumber` 로 변환하여 반환
+- String을 class `GameNumber` 로 변환하여 반환
   - 서로 다른 3자리의 수만 변환이 허용됨. 이 외의 잘못된 숫자를 변환하려는 경우 `IllegalArgumentException` 발생
 
 - 컴퓨터의 숫자 생성 
-  - 무작위로 서로 다른 3자리 숫자 생성 `TargetNumber` 로 저장
+  - 무작위로 서로 다른 3자리 숫자 생성 `GameNumber` 로 저장
 
 - 두 숫자 비교 후 볼 / 스트라이크 결과 반환
-  - `TargetNumber` 객체 2개를 비교 후 class `BallStrikeResult` 를 통해 결과 반환
+  - `GameNumber` 객체 2개를 비교 후 class `BallStrikeResult` 를 통해 결과 반환
 
 ---
 
 ## 부록 : class 설명
 
-- `TargetNumber` : `List<Integer>` 를 Wrapping 하여 서로 다른 3자리 숫자를 저장하기 위한 class
+- `GameNumber` : `List<Integer>` 를 Wrapping 하여 서로 다른 3자리 숫자를 저장하기 위한 class
 - `BallStrikeResult` :  `ballCount`, `strikeCount` 를 멤버로 갖는 class

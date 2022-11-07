@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TargetNumber {
-    public static final int TARGET_NUMBER_LENGTH = 3;
+public class GameNumber {
+    public static final int GAME_NUMBER_LENGTH = 3;
 
     private final List<Integer> numberListByDigit;
 
-    public static TargetNumber getInstance(String input) {
+    public static GameNumber getInstance(String input) {
         validateInput(input);
 
         List<Integer> integerList = new ArrayList<>();
@@ -19,14 +19,14 @@ public class TargetNumber {
             integerList.add((int) input.charAt(i) - '0');
         }
 
-        return new TargetNumber(integerList);
+        return new GameNumber(integerList);
     }
 
-    public static TargetNumber getRandomInstance() {
-        return new TargetNumber(makeRandomOneDigitIntListWithNoDuplicate());
+    public static GameNumber getRandomInstance() {
+        return new GameNumber(makeRandomOneDigitIntListWithNoDuplicate());
     }
 
-    private TargetNumber(List<Integer> integerList) {
+    private GameNumber(List<Integer> integerList) {
         numberListByDigit = new ArrayList<>();
 
         numberListByDigit.addAll(integerList);
@@ -40,7 +40,7 @@ public class TargetNumber {
     }
 
     private static void checkExactNumberLength(String input) {
-        if(input == null || input.length() != TARGET_NUMBER_LENGTH) {
+        if(input == null || input.length() != GAME_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
@@ -64,7 +64,7 @@ public class TargetNumber {
 
     private static List<Integer> makeRandomOneDigitIntListWithNoDuplicate() {
         List<Integer> output = new ArrayList<>();
-        while (output.size() < TARGET_NUMBER_LENGTH) {
+        while (output.size() < GAME_NUMBER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!output.contains(randomNumber)) {
                 output.add(randomNumber);
@@ -78,7 +78,7 @@ public class TargetNumber {
     public int toInt() {
         int result = 0;
         int digitLevel = 1;
-        for(int i = 0; i < TARGET_NUMBER_LENGTH; i++) {
+        for(int i = 0; i < GAME_NUMBER_LENGTH; i++) {
             result += numberListByDigit.get(i) * digitLevel;
             digitLevel *= 10;
         }
@@ -86,7 +86,7 @@ public class TargetNumber {
         return result;
     }
 
-    public BallStrikeResult compareTo(TargetNumber oth) {
+    public BallStrikeResult compareTo(GameNumber oth) {
         BallStrikeResult result = new BallStrikeResult();
         for(int i = 0; i < this.numberListByDigit.size(); i++) {
             for(int j = 0; j < oth.numberListByDigit.size(); j++) {

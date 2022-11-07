@@ -8,12 +8,12 @@ public class GameManager {
     private final String GAME_END_ALERT = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String AFTER_GAME_END_ALERT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private TargetNumber oppositeNumber;
+    private GameNumber oppositeNumber;
 
     public void runGame() {
         do {
             printStartGameAlert();
-            oppositeNumber = TargetNumber.getRandomInstance();
+            oppositeNumber = GameNumber.getRandomInstance();
 
             repeatGetInputAndCompare();
         } while(getAndProcessRestartInput());
@@ -22,18 +22,18 @@ public class GameManager {
     private void repeatGetInputAndCompare() {
         BallStrikeResult result;
         do {
-            TargetNumber inputNumber = getAndProcessTargetNumberInput();
+            GameNumber inputNumber = getAndProcessGameNumberInput();
             result = oppositeNumber.compareTo(inputNumber);
             printBallStrikeResult(result);
         } while(!result.doesWin());
         printGameEndAlert();
     }
 
-    private TargetNumber getAndProcessTargetNumberInput() {
+    private GameNumber getAndProcessGameNumberInput() {
         printInputNumberAlert();
         String inputString = Console.readLine();
 
-        return TargetNumber.getInstance(inputString);
+        return GameNumber.getInstance(inputString);
     }
 
     private boolean getAndProcessRestartInput() throws IllegalArgumentException {

@@ -11,91 +11,91 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Nested
-    class IntToTargetNumberCastTest {
+    class GetGameNumberInstanceByStringCastTest {
         @Test
-        void illegalGetTargetNumberInstanceByStringTest1() {
+        void illegalGetGameNumberInstanceByStringTest1() {
             String input = "122";
 
-            assertThatThrownBy(() -> TargetNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.getInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
-        void illegalGetTargetNumberInstanceByStringTest2() {
+        void illegalGetGameNumberInstanceByStringTest2() {
             String input = "1234";
 
-            assertThatThrownBy(() -> TargetNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.getInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
-        void illegalGetTargetNumberInstanceByStringTest3() {
+        void illegalGetGameNumberInstanceByStringTest3() {
             String input = "91";
 
-            assertThatThrownBy(() -> TargetNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.getInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
-        void illegalGetTargetNumberInstanceByStringTest4() {
+        void illegalGetGameNumberInstanceByStringTest4() {
             String input = "102";
 
-            assertThatThrownBy(() -> TargetNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.getInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
-        void illegalGetTargetNumberInstanceByStringTest5() {
+        void illegalGetGameNumberInstanceByStringTest5() {
             String input = "112";
 
-            assertThatThrownBy(() -> TargetNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.getInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
-        void illegalGetTargetNumberInstanceByStringTest6() {
+        void illegalGetGameNumberInstanceByStringTest6() {
             String input = "1가2";
 
-            assertThatThrownBy(() -> TargetNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.getInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
-        void legalGetTargetNumberInstanceByStringTest1() {
+        void legalGetGameNumberInstanceByStringTest1() {
             String input = "123";
             int result = 123;
-            assertThat(TargetNumber.getInstance(input).toInt())
+            assertThat(GameNumber.getInstance(input).toInt())
                     .isEqualTo(result);
         }
     }
 
     @Nested
-    class RandomTargetNumberGeneratorTest {
+    class RandomGameNumberGeneratorTest {
         @Test
-        void randomTargetNumberGeneratorTest1() {
+        void randomGameNumberGeneratorTest1() {
             int result = 154;
             assertRandomNumberInRangeTest(
-                    () -> assertThat(TargetNumber.getRandomInstance().toInt())
+                    () -> assertThat(GameNumber.getRandomInstance().toInt())
                             .isEqualTo(result),
                     1, 5, 4, 5, 8, 9
             );
         }
 
         @Test
-        void randomTargetNumberGeneratorTest2() {
+        void randomGameNumberGeneratorTest2() {
             int result = 158;
             assertRandomNumberInRangeTest(
-                    () -> assertThat(TargetNumber.getRandomInstance().toInt())
+                    () -> assertThat(GameNumber.getRandomInstance().toInt())
                             .isEqualTo(result),
                     1, 1, 5, 5, 8, 9
             );
         }
 
         @Test
-        void randomTargetNumberGeneratorTest3() {
+        void randomGameNumberGeneratorTest3() {
             int result = 158;
             assertRandomNumberInRangeTest(
-                    () -> assertThat(TargetNumber.getRandomInstance().toInt())
+                    () -> assertThat(GameNumber.getRandomInstance().toInt())
                             .isEqualTo(result),
                     1, 1, 5, 1, 5, 8, 9
             );
@@ -178,11 +178,11 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class TargetNumberCompareToTest {
+    class GameNumberCompareToTest {
         @Test
-        void targetNumberCompareToTest1() {
-            TargetNumber number1 = TargetNumber.getInstance("924");
-            TargetNumber number2 = TargetNumber.getInstance("123");
+        void GameNumberCompareToTest1() {
+            GameNumber number1 = GameNumber.getInstance("924");
+            GameNumber number2 = GameNumber.getInstance("123");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 1);
@@ -191,9 +191,9 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        void targetNumberCompareToTest2() {
-            TargetNumber number1 = TargetNumber.getInstance("425");
-            TargetNumber number2 = TargetNumber.getInstance("456");
+        void GameNumberCompareToTest2() {
+            GameNumber number1 = GameNumber.getInstance("425");
+            GameNumber number2 = GameNumber.getInstance("456");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,1, 1);
@@ -202,9 +202,9 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        void targetNumberCompareToTest3() {
-            TargetNumber number1 = TargetNumber.getInstance("123");
-            TargetNumber number2 = TargetNumber.getInstance("789");
+        void GameNumberCompareToTest3() {
+            GameNumber number1 = GameNumber.getInstance("123");
+            GameNumber number2 = GameNumber.getInstance("789");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 0);
@@ -213,9 +213,9 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
-        void targetNumberCompareToTest4() {
-            TargetNumber number1 = TargetNumber.getInstance("954");
-            TargetNumber number2 = TargetNumber.getInstance("954");
+        void GameNumberCompareToTest4() {
+            GameNumber number1 = GameNumber.getInstance("954");
+            GameNumber number2 = GameNumber.getInstance("954");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 3);
