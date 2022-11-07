@@ -165,7 +165,7 @@ public class Application {
         printToRestartingGameMessage();
         userAnswer = inputUserAnswer();
         availableUserNumberIsChecked(userAnswer);
-        return "";
+        return userAnswer;
     }
 
 
