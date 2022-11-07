@@ -2,9 +2,10 @@
 
 + 서로 다른 세 숫자 뽑기
 + 사용자 입력 받기
-+ 사용자 입력의 유효성 체크
-  + invalid 할 경우 IllegalArgumentException을 발생시킨 후 Application을 종료
-+ 사용자 입력에 따라 판정
+  + 사용자 입력의 유효성 체크
+    + invalid 할 경우 IllegalArgumentException을 발생시킨 후 Application을 종료
+    + valid 할 경우 입력된 문자열을 List<Integer>로 변환
+      + 사용자 입력에 따라 판정
 + 판정에 따라 힌트(볼/스트라이크/낫싱) 출력
   + 숫자와 위치가 맞을 경우 스트라이크 + 1
   + 숫자만 맞을 경우 볼 + 1
