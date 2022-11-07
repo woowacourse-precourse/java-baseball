@@ -61,9 +61,10 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> isValidUserNumber(number)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    void 사용자_번호가_유효한_숫자인지_확인_테스트_True() {
-        String number = "123";
+    @ParameterizedTest(name = "{0}을 넣었을 때 true 반환")
+    @ValueSource(strings = {"143", "513", "823", "579"})
+    @DisplayName("길이가 3, 0도 포함 안 됨, 중복도 없는 유효한 숫자인지 테스트")
+    void 사용자_번호가_유효한_숫자인지_확인_테스트_True(String number) {
         assertThat(isValidUserNumber(number)).isTrue();
     }
 
