@@ -5,17 +5,22 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    public static int checkForSameNumbers(int[] numberArray, int i){
+        int result = i;
+        for(int j = 0; j < i; j++){
+            if(numberArray[result] == numberArray[j]){
+                result--;
+            }
+        }
+        return result;
+    }
     public static String makeRandomNumbers(){
         StringBuilder result = new StringBuilder();
         int[] numberArray = new int[3];
 
-        for(int i=0;i<3;i++){
+        for(int i = 0;i < 3;i++){
             numberArray[i] = Randoms.pickNumberInRange(1, 9);
-            for(int j=0;j < i;j++){
-                if(numberArray[i] == numberArray[j]){
-                    i--;
-                }
-            }
+            i = checkForSameNumbers(numberArray, i);
         }
 
         for(int number: numberArray){
@@ -32,9 +37,7 @@ public class Application {
     }
     public static String playBall(ArrayList<String> answer, ArrayList<String> input){
         int strike = 0, ballHit = 0;
-        System.out.println(answer);
         for(int i = 0; i<answer.size();i++){
-            System.out.println(answer.get(i)+" "+input.get(i));
             if(answer.get(i).equals(input.get(i))){
                 strike += 1;
                 continue;
@@ -59,23 +62,25 @@ public class Application {
         return result;
     }
 
+    public static void playGame(){
+        String answer = makeRandomNumbers();
+        String result = "";
+
+        while(!result.equals("3스트라이크")){
+            System.out.print("숫자를 입력해주세요 : ");
+            String number = Console.readLine();
+            if(number.length() > 3){
+                throw new IllegalArgumentException();
+            }
+            result = playBall(splitInputToArray(answer), splitInputToArray(number));
+            System.out.println(playBall(splitInputToArray(answer), splitInputToArray(number)));
+        }
+    }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int continueGame = 0;
         while(continueGame == 0){
-            String answer = makeRandomNumbers();
-            String result = "";
-
-            while(!result.equals("3스트라이크")){
-                System.out.print("숫자를 입력해주세요 : ");
-                String number = Console.readLine();
-                if(number.length() > 3){
-                    throw new IllegalArgumentException();
-                }
-                result = playBall(splitInputToArray(answer), splitInputToArray(number));
-                System.out.println(playBall(splitInputToArray(answer), splitInputToArray(number)));
-            }
-
+            playGame();
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
