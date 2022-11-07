@@ -19,4 +19,11 @@ public class NumberBaseballController {
         return Integer.parseInt(input);
     }
 
+    private int readRestartInput() {
+        String input = Console.readLine();
+
+        validator.validateRestartInput(input);
+
+        return Integer.parseInt(input);
+    }
 }
