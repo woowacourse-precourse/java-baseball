@@ -16,9 +16,15 @@ public class Application {
         do {
             List<Integer> targetNumber = makeRandomWithoutDuplicate();
             System.out.println(targetNumber);
-            Game game = new Game(scanner);
-            game.play(targetNumber);
-            endingWorking(scanner);
+
+            try {
+                Game game = new Game(scanner);
+                game.play(targetNumber);
+                endingWorking(scanner);
+            } catch (IllegalArgumentException e) {
+                System.out.println("입력값을 잘못 입력하셨습니다. 게임을 종료합니다.");
+            }
+
         } while (restartStatus);
     }
 
@@ -42,11 +48,11 @@ public class Application {
 
     private static boolean isEndingValueValid(String restartStatusValue) {
 
-        try {
-            if(CheckException.restartStatusValue(restartStatusValue)) occurException();
-        } catch (IllegalArgumentException e) {
-            System.out.println("재시작 입력값이 잘못되었습니다. 게임을 종료합니다.");
+        if(CheckException.restartStatusValue(restartStatusValue)) {
+            occurException();
+            return false;
         }
+
         return setRestartStatus(restartStatusValue);
     }
 
