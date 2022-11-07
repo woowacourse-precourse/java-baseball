@@ -7,12 +7,15 @@ import java.util.HashSet;
 public class Model {
     private ArrayList<String> humanarraylist;
     private ArrayList<String> computerarraylist;
-
-    Model() { }
-
     private String humannumber;
     private String computernumber;
 
+    Model() {
+    }
+
+    /*
+    *Below Human number Method
+    */
     public String getHumannumber() {
         return humannumber;
     }
@@ -28,6 +31,17 @@ public class Model {
         this.humannumber = humannumber;
     }
 
+    public ArrayList<String> getHumanArrayList() {
+        return humanarraylist;
+    }
+
+    public void clearHumanArrayList() {
+        humanarraylist.clear();
+    }
+
+    /*
+     *Below Computer number Method
+     */
     public String getComputernumber() {
         return computernumber;
     }
@@ -35,10 +49,6 @@ public class Model {
     public void setComputernumber(String computernumber) {
         this.computernumber = computernumber;
         computerarraylist = new ArrayList<>(Arrays.asList(computernumber.split("")));
-    }
-
-    public ArrayList<String> getHumanArrayList() {
-        return humanarraylist;
     }
 
     public ArrayList<String> getComputerArrayList() {
@@ -49,26 +59,25 @@ public class Model {
         computerarraylist.clear();
     }
 
-    public void clearHumanArrayList() {
-        humanarraylist.clear();
-    }
-
+    /*
+     *Below Exception Method
+     */
     private void isContainChar(String humannumber) {
         try {
             int number = Integer.parseInt(humannumber);
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException();
-        }//공백 확인
+        }
     }
 
     private void isContainZero(String humannumber) {
-        if(humannumber.contains("0")) {
+        if (humannumber.contains("0")) {
             throw new IllegalArgumentException();
         }
     }
 
     private void isCorrectRange(String humannumber) {
-        if(humannumber.length() != 3) {
+        if (humannumber.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
@@ -77,10 +86,9 @@ public class Model {
         HashSet<String> hashset = new HashSet<>(Arrays.asList(humannumber.split("")));
         ArrayList<String> arraylsit = new ArrayList<>(Arrays.asList(humannumber.split("")));
 
-        if(hashset.size() != arraylsit.size()) {
+        if (hashset.size() != arraylsit.size()) {
             throw new IllegalArgumentException();
         }
-
         return arraylsit;
     }
 }
