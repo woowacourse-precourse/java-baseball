@@ -36,7 +36,7 @@ public class Game {
             this.userNumber = Change.numberToList(userInput);
             play();
 
-            System.out.println(getGameResult());
+            System.out.println(getGameResult(this.score.getBall(), this.score.getStrike()));
             if (!isWin()) {
                 continue;
             }
@@ -67,18 +67,18 @@ public class Game {
         return this.score.getStrike() == Constant.GOAL;
     }
 
-    public String getGameResult() {
-        if (this.score.getBall() + this.score.getStrike() == 0) {
+    public String getGameResult(int ball, int strike) {
+        if (ball + strike == 0) {
             return NOTHING_TEXT;
         }
 
         StringBuilder gameResult = new StringBuilder();
-        if (this.score.getBall() > 0) {
-            gameResult.append(this.score.getBall()).append(BALL_TEXT);
+        if (ball > 0) {
+            gameResult.append(ball).append(BALL_TEXT);
         }
 
-        if (this.score.getStrike() > 0) {
-            gameResult.append(this.score.getStrike()).append(STRIKE_TEXT);
+        if (strike > 0) {
+            gameResult.append(strike).append(STRIKE_TEXT);
         }
         return gameResult.toString();
     }
