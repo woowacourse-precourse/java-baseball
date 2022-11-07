@@ -5,6 +5,7 @@ public class OutputView {
     private static final String BALL = "볼 ";
     private static final String STRIKE = "스트라이크";
     private static final int ZERO = 0;
+    private static final int THREE = 3;
     private static final String NOTTHING = "낫싱";
     private static final String THREESTRIKE = "3스트라이크";
     private static final String INPUTNUM = "숫자를 입력해주세요 : ";
@@ -21,11 +22,11 @@ public class OutputView {
     }
 
     public void printResultState(int ball, int strike) {
-        StringBuilder message = new StringBuilder();
-        if(strike == 3) {
+        if(strike == THREE) {
             printStrike();
             return;
         }
+        StringBuilder message = new StringBuilder();
         if (ball > ZERO) {
             message.append(ball).append(BALL);
         }
