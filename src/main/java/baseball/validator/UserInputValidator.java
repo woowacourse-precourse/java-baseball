@@ -1,4 +1,4 @@
-package baseball.user;
+package baseball.validator;
 
 import java.util.List;
 
