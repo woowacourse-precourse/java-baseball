@@ -21,12 +21,11 @@ public class NumberParser {
      * @param numbers 아직 문자열로 저장되어있는 숫자들
      * @return 리스트로 입력받은 숫자를 변환
      */
-    public List<Integer> parsePlayerNumber() {
+    public List<Integer> parsePlayerNumber(String playerString) {
         List<Integer> parsedNumbers;
-        String tempPlayerString = Console.readLine();
         int tempNumbers;
         try{
-            tempNumbers = Integer.parseInt(tempPlayerString);
+            tempNumbers = Integer.parseInt(playerString);
             parsedNumbers = divideNumbers(tempNumbers);
             checkGuessPhaseExceptions(parsedNumbers);
         }

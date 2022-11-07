@@ -4,6 +4,7 @@ import baseball.data.BaseballData;
 import baseball.data.NumberParser;
 import baseball.data.NumberReferee;
 import baseball.data.ComputerInput;
+import baseball.data.PlayerInput;
 import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -24,14 +25,16 @@ public class Application {
         } while (StartQuestioningPhase());
     }
 
-    public static void StartGuessingPhase(List<Integer> computer) {
+    public static void StartGuessingPhase(List<Integer> computer) { // 병목지점. 반드시 메서드를 분리해야됨.
         NumberParser numberParser = new NumberParser();
         NumberReferee numberReferee = new NumberReferee();
+        PlayerInput playerInput = new PlayerInput();
         List<Integer> player;
         int strike = 0;
         int ball = 0;
         while (strike != NumberParser.NUMBER_LENGTH) {
-            player = numberParser.parsePlayerNumber();
+            String input = playerInput.inputPlayerString();
+            player = numberParser.parsePlayerNumber(input);
             strike = numberReferee.checkStrike(player, computer);
             ball = numberReferee.checkBall(player, computer);
             System.out.println(player);
