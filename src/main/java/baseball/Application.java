@@ -18,7 +18,7 @@ public class Application {
             user.setInputForOption();
             user.checkInputForOption();
             option = user.input;
-            if(option.equals(OPTION_EXIT)){
+            if (option.equals(OPTION_EXIT)) {
                 System.out.println(NOTICE_EXITGAME);
             }
         }
