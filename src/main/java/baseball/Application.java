@@ -2,7 +2,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        new BaseBall().play();
+        new BaseBall(3).play();
         //new BaseBall().end();
     }
 }

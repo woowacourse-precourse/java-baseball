@@ -1,22 +1,29 @@
 package baseball;
 
 public class BaseBall implements Game{
-    String answer="";
+    private String answer="";
+
+    private Input input;
+    private Random random;
+    private int range;
+    public BaseBall(int range){
+        this.range=range;
+        random =new Random();
+        input =new Input(range);
+        play();
+    }
     @Override
     public void start() {
-        Random random = new Random();
         answer=random.pick();
     }
 
     @Override
     public void play() {
-        Input input =new Input();
         input.playInput();
     }
 
     @Override
     public void end() {
-        Input input =new Input();
         input.endInput();
     }
 
