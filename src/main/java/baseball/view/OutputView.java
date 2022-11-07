@@ -14,4 +14,7 @@ public class OutputView {
         System.out.printf("%d 볼", ball);
     }
 
+    public static void printNothing() {
+        System.out.println("낫싱");
+    }
 }
