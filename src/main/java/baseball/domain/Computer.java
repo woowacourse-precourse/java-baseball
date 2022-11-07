@@ -10,6 +10,11 @@ public class Computer {
 
     private List<Integer> randomNumbers = new ArrayList<>();
 
+    public List<Integer> makeRandomNumbers() {
+        initializeRandomNumbers();
+        return randomNumbers;
+    }
+
     private void initializeRandomNumbers() {
         randomNumbers.clear();
         while (randomNumbers.size() < Constant.SIZE_NUMBER) {
