@@ -100,7 +100,12 @@ public class Application {
     static int ballNumber(ArrayList<Integer> input, int strike){
         int result=0;
 
-        return result;
+        for(int i=0; i<computerNumberList.size(); i++){
+            if(input.contains(computerNumberList.get(i))){
+                result += 1;
+            }
+        }
+        return result - strike;
     }
 
 
