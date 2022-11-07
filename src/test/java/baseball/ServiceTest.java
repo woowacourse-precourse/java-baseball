@@ -1,9 +1,6 @@
 package baseball;
 
-import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +15,12 @@ public class ServiceTest {
 	void checkSameLocationTest2() {
 		assertFalse(GameService.checkSameLocation("1", "2"));
 	}
+
+	/*
 	@Test
 	void checkCompareNumber() {
 		assertThat(GameService.compareNumber("123",
 				"456")).isEqualTo(Arrays.asList(0, 0));
 	}
+	 */
 }
