@@ -15,17 +15,15 @@ public class Application {
         result.add(0); // strike 수
         result.add(0); // ball 수
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String randomNum = makeRandomNum();
+
         while(result.get(0)!=3) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            String randomNum = makeRandomNum();
-            System.out.println("randomNum: "+randomNum);
             System.out.println("숫자를 입력해 주세요. :");
             String userNum = Console.readLine();
-
             result = analyseNumber(randomNum, userNum);
 
             printResult(result);
-
         }
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -42,10 +40,14 @@ public class Application {
     }
 
     public static void printResult(List<Integer> result) {
-        if(result.get(0)==0) {
+        int strike = result.get(0);
+        int ball = result.get(1);
+        if(strike==0) {
             System.out.println(result.get(1)+"볼");
-        } else if(result.get(1)==0) {
+        } else if(ball==0) {
             System.out.println(result.get(0)+"스트라이크");
+        } else if(strike==0 && ball ==0){
+            System.out.println("낫싱");
         } else {
             System.out.println(result.get(1)+"볼 "+result.get(0)+"스트라이크");
         }
@@ -72,7 +74,6 @@ public class Application {
 
         for(int i=0; i<splitUserNum.length; i++) {
             if(randomNum.contains(splitUserNum[i])) {
-                System.out.println("i:"+splitUserNum[i]);
                 ball++;
             }
         }
