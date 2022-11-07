@@ -10,6 +10,7 @@ public class BaseballGame {
     static int computer;
     static int strike;
     static int ball;
+    static int regame;
 
     public static void process(){
         System.out.println("게임을 시작합니다.");
@@ -17,7 +18,9 @@ public class BaseballGame {
         System.out.println(computer);
         while(true){
             gamePlay();
-            break;
+            if(regame==2){
+                break;
+            }
         }
     }
 
@@ -32,6 +35,20 @@ public class BaseballGame {
             System.out.println("strike : " + strike);
             checkBall(user);
             System.out.println("ball : " + ball);
+        }
+
+        if(strike==3){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다. 게임종료!");
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. :");
+            regame = Integer.parseInt(Console.readLine());
+            System.out.println("regame : " + regame);
+            if(regame==1){
+                computer = randomNumberBall();
+            }
+        }else if(strike==0 && ball==0){
+            System.out.println("낫싱");
+        }else{
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
 
