@@ -77,4 +77,13 @@ class BaseballGameTest {
                 .hasMessageContaining(INVALID_THREE_DIGIT.getMessage());
     }
 
+    @Test
+    @DisplayName("userInput이 유효하지 않은 범위인 0을 가질 때 IllegalArgumentException 예외 발생")
+    void input_UserInput_When_Invalid_Range_Has_Zero_Then_IllegalArgumentException() {
+        String userInput = "120";
+        assertThatThrownBy(() -> baseballGame.test(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_OUT_OF_RANGE.getMessage());
+    }
+
 }
