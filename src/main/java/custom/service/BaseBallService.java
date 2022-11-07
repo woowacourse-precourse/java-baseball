@@ -65,6 +65,4 @@ public class BaseBallService {
         String answer = ball + " " + strike;
         return answer.trim();
     }
-
-
 }
