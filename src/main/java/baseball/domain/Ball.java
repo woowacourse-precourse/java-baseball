@@ -5,6 +5,8 @@ import java.util.HashMap;
 public class Ball {
     private static final int BALL_LOWER_BOUND = 0;
     private static final int BALL_UPPER_BOUND = 3;
+    private static final String BALL_MESSAGE = "볼";
+    private static final String EMPTY_STRING = "";
     private static final HashMap<Integer, Ball> CACHE = new HashMap<>();
 
     static {
@@ -18,6 +20,14 @@ public class Ball {
     private Ball(Integer count) {
         validate(count);
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        if (count == BALL_LOWER_BOUND) {
+            return EMPTY_STRING;
+        }
+        return count + BALL_MESSAGE;
     }
 
     public static Ball valueOf(Integer count) {

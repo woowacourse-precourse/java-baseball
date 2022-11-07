@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("Ball 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
@@ -49,6 +51,32 @@ class BallTest {
             void BaseballGameException을_던진다() {
                 assertThatThrownBy(() -> Ball.valueOf(givenNumber))
                         .isInstanceOf(BaseballGameException.class);
+            }
+        }
+    }
+
+    @Nested
+    class toString_메서드는 {
+
+        @Nested
+        class 만약_볼_카운트가_0인_경우 {
+            private Ball ball = Ball.valueOf(0);
+
+            @Test
+            void _빈_문자열을_리턴한다() {
+                assertThat(ball.toString()).isEqualTo("");
+            }
+
+        }
+
+        @Nested
+        class 만약_볼_카운트가_0이_아닌_경우 {
+
+            @ParameterizedTest
+            @CsvSource(value = {"1, 1볼", "2, 2볼", "3, 3볼"})
+            void X볼_문자열을_리턴한다(int count, String result) {
+                Ball ball = Ball.valueOf(count);
+                assertThat(ball.toString()).isEqualTo(result);
             }
         }
     }
