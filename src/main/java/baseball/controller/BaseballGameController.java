@@ -37,16 +37,17 @@ public class BaseballGameController {
             gameResult.setBall(gameResultList.get(1));
 
             baseballGameView.gameResultMessage(gameResult.getStrike(), gameResult.getBall());
-        } while (isThreeStrike(gameResult));
+        } while (!isThreeStrike(gameResult));
 
     }
 
     private boolean gameRestart() {
         baseballGameView.gameRestartMessage();
         Integer restartOrStop = baseballGameInputService.getRestartInput();
-
-
-        return true;
+        if (restartOrStop == 1) {
+            return true;
+        }
+        return false;
     }
 
     private boolean isThreeStrike(GameResult gameResult) {
