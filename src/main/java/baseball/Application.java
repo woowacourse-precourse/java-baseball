@@ -36,21 +36,20 @@ public class Application {
             char input = userInputList.get(comparingNum);
             if (answerList.contains(input)) {
                 comparedMap.put(NOTHING, 0);
-                comparedMap = ballOrStrike(comparedMap, answer, input);
+                ballOrStrike(comparedMap, answer, input);
             }
         }
         return comparedMap;
     }
 
-    private static HashMap<Integer, Integer> ballOrStrike(HashMap<Integer, Integer> comparedMap,
-                                                          char answer, char input) {
+    private static void ballOrStrike(HashMap<Integer, Integer> comparedMap,
+                                     char answer, char input) {
         comparedMap.put(NOTHING, 0);
         if (answer == input) {
             addOneToMap(comparedMap, STRIKE);
         } else {
             addOneToMap(comparedMap, BALL);
         }
-        return comparedMap;
     }
 
     private static void addOneToMap(HashMap<Integer, Integer> map, int key) {
@@ -118,8 +117,7 @@ public class Application {
 
     private static char getInputEndGame() {
         String input = Console.readLine();
-        char inputChar = input.charAt(0);
-        return inputChar;
+        return input.charAt(0);
     }
 
     private static boolean restartOrEndGame() throws IllegalArgumentException {
