@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -30,5 +31,20 @@ public class Application {
         }
 
         return computer;
+    }
+
+    private static List<Integer> getPlayerInput() {
+        String input = Console.readLine();
+        List<Integer> player = new ArrayList<>();
+
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < input.length(); i++) {
+            player.add(input.charAt(i) - '0');
+        }
+
+        return player;
     }
 }
