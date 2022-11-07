@@ -8,6 +8,20 @@ import java.util.List;
 public class Application {
     boolean check(int[] ans, List<Integer> com){
         boolean again = true;
+        int i, cntstrike = 0, cntball = 0;
+
+        for(i=0;i<3;i++){
+            if(com.contains(ans[i])){
+                if(com.get(i)==ans[i]){
+                    cntstrike++;
+                } else{
+                    cntball++;
+                }
+            }
+        }
+        if(cntstrike == 3){
+            again = false;
+        }
 
         return again;
     }
