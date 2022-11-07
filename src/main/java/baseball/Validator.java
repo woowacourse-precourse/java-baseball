@@ -65,6 +65,10 @@ public class Validator {
         if (!validateIsDigit(gameProcessValue)) {
             throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
+
+        if (!validateIs1Or2(gameProcessValue)) {
+            throw new IllegalArgumentException("게임이 끝난 경우 재시작/종료를 구분하는 1과 2 중 하나의 수만 입력해주세요.");
+        }
     }
 
     private boolean validateGameProcessLength(String value) {
@@ -73,5 +77,9 @@ public class Validator {
 
     private boolean validateIsDigit(String value) {
         return Character.isDigit(value.charAt(0));
+    }
+
+    private boolean validateIs1Or2(String value) {
+        return (value.charAt(0) - '0') == 1 || (value.charAt(0) - '0') == 2;
     }
 }
