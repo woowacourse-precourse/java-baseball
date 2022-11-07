@@ -55,7 +55,8 @@ public class Application {
         }
     }
 
-    private static void validateComputer(List<Integer> computer) {
+    public static void validateComputer(List<Integer> computer) {
+        // 단위 테스트를 위해 접근제한자 private -> public 변경
         if(computer.size()!=3)
             throw new IllegalArgumentException("3자리의 수가 아닙니다.");
     }
@@ -156,7 +157,8 @@ public class Application {
         return answer;
     }
 
-    private static void validateAnswer(String answer) {
+    public static void validateAnswer(String answer) {
+        // 단위 테스트를 위해 접근제한자 private -> public 변경
         if(!Pattern.matches("^[1-2]", answer)) {
             throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
         }
