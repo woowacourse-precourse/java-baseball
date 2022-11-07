@@ -91,25 +91,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Nested
-    class ontORtwoTest{
+    class oneOrTwoTest{
         @Test
         void case1(){
             String victory = "1";
             boolean result = true;
-            assertThat(Application.oneORtwo(victory)).isEqualTo(result);
+            assertThat(Application.oneOrTwo(victory)).isEqualTo(result);
         }
 
         @Test
         void case2(){
             String victory = "2";
             boolean result = false;
-            assertThat(Application.oneORtwo(victory)).isEqualTo(result);
+            assertThat(Application.oneOrTwo(victory)).isEqualTo(result);
         }
 
         @Test
         void case3() {
             String victory = "123";
-            assertThatThrownBy(() -> Application.oneORtwo(victory))
+            assertThatThrownBy(() -> Application.oneOrTwo(victory))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }

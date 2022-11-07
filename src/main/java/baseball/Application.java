@@ -99,16 +99,16 @@ public class Application {
     }
 
     //기능6. victory 함수의 결과를 구별한다.(예외 상황 추가)
-    public static boolean oneORtwo(String victory){
-        boolean oneORtwo;
+    public static boolean oneOrTwo(String victory){
+        boolean oneOrTwo;
         if (victory.equals("1")) {
-            oneORtwo = true;
+            oneOrTwo = true;
         } else if (victory.equals("2")) {
-            oneORtwo = false;
+            oneOrTwo = false;
         } else {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
-        return oneORtwo;
+        return oneOrTwo;
     }
 
     //기능7. 게임을 구현한다.
@@ -127,7 +127,7 @@ public class Application {
             }
         }
 
-        if (oneORtwo(victory())) {
+        if (oneOrTwo(victory())) {
             game();
         } else {
             System.out.println("수고하셨습니다.");
