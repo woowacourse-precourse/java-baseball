@@ -34,5 +34,10 @@ public class BaseballGameService {
     //흐름 처리 메서드
     public void throwBaseball() {
         setBallStatus();
+        displayPitchStatusMessage(pitchResult.getPitchStatusMessage());
+    }
+
+    private void displayPitchStatusMessage(String pitchStatusMessage) {
+        System.out.println(pitchStatusMessage);
     }
 }

@@ -1,11 +1,12 @@
 package baseball.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -14,10 +15,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class PitchResultTest {
 
     private PitchResult pitchResult;
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
     void setUp() {
         pitchResult = new PitchResult();
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(standardOut);
     }
 
     @Test
@@ -51,4 +60,16 @@ class PitchResultTest {
 
         assertThat(pitchResult.getBallCount()).isEqualTo(2);
     }
+
+    @DisplayName("N개의 볼인 경우 \"N볼\" 출력후 줄 바꿈")
+    @Test
+    void getPitchStatusMessage() {
+        String userInput = "123";
+        List<Integer> numbers = List.of(2, 3, 4);
+        pitchResult.setResult(userInput, numbers);
+
+        assertThat(pitchResult.getPitchStatusMessage()).isEqualTo("2볼");
+    }
+
+
 }

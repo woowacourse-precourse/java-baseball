@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.message.PitchStatusMessage;
 import baseball.util.GameRule;
 
 import java.util.List;
@@ -48,5 +49,16 @@ public class PitchResult {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    private boolean isOnlyBall() {
+        return ballCount > 0 && strikeCount == 0;
+    }
+
+    public String getPitchStatusMessage() {
+        if (isOnlyBall()) {
+            return String.format(PitchStatusMessage.BALL, ballCount);
+        }
+        return null;
     }
 }
