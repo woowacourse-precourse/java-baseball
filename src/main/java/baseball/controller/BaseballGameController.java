@@ -11,30 +11,42 @@ public class BaseballGameController {
 
     private final BaseballGameService baseballGameService = new BaseballGameService();
 
-    public void run() {
+    public void start() {
         GameScreen.printGameStart();
-        newGame();
+        run();
     }
 
-    public void newGame() {
-        baseballGameService.newGame();
-
-        boolean isGameClear = false;
-        while (!isGameClear) {
-            isGameClear = playGame();
-        }
-
-        GameScreen.printGameEnd();
+    public void run() {
+        newGame();
+        playGame();
         askRetryGame();
     }
 
-    public boolean playGame() {
-        GameScreen.printUserInput();
-        String playerInputNumbers = Console.readLine();
+    public void newGame() {
+        String playerInputNumbers = receiveInput();
+        baseballGameService.newGame(playerInputNumbers);
+    }
+
+    public void playGame() {
+        boolean isGameClear = false;
+        while (!isGameClear) {
+            isGameClear = guessNumber();
+        }
+        GameScreen.printGameEnd();
+    }
+
+    public boolean guessNumber() {
+        String playerInputNumbers = receiveInput();
         GameResult gameResult = baseballGameService.playGame(playerInputNumbers);
         GameScreen.printGameResult(gameResult);
 
         return gameResult.isAllStrike();
+    }
+
+    private String receiveInput() {
+        GameScreen.printUserInput();
+
+        return Console.readLine();
     }
 
     private void askRetryGame() {
