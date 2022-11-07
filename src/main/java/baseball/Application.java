@@ -30,6 +30,7 @@ public class Application {
 }
 
 class GameStarter {
+
     public static List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
@@ -40,15 +41,18 @@ class GameStarter {
         }
         return answer;
     }
+
     public static void printStartingMent() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }
 
 class GameManager {
-    int numberSize = 3;
+
     int restart = 1;
     int terminate = 2;
+
+    int numberSize = 3;
 
     public void checkInputException(List<Integer> userInput) {
 
@@ -91,6 +95,7 @@ class GameManager {
 }
 
 class Input {
+
     static List<Integer> whileRunning() {
         List<Integer> intUserInput = new ArrayList<>();
         String[] stringUserInput = {};
@@ -126,7 +131,8 @@ class Output {
 }
 
 class Referee {
-    static int[] judge (List<Integer> userInput, List<Integer> answer) {
+
+    static int[] judge(List<Integer> userInput, List<Integer> answer) {
         int[] judgement = {0, 0};
         for (int number : userInput) {
             if (answer.contains(number)) {
