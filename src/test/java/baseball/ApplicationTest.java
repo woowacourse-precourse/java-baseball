@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class makeRandomNumbersTest extends NsTest{
+class MakeRandomNumbersTest extends NsTest{
     String number = baseball.Application.makeRandomNumbers();
     @Test
     void check_answer_is_three_numbers(){
@@ -29,7 +29,7 @@ class makeRandomNumbersTest extends NsTest{
         Application.main(new String[]{});
     }
 }
-class ApplicationTest extends NsTest {
+class PlayballTest extends NsTest{
     @Test
     void check_playball_function(){
         ArrayList<String> answer = new ArrayList<>();
@@ -55,6 +55,13 @@ class ApplicationTest extends NsTest {
         input.add("4");
         assertThat(baseball.Application.playBall(answer, input)).isEqualTo("2스트라이크");
     }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
+}
+class ApplicationTest extends NsTest {
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
