@@ -14,4 +14,12 @@ public class Validator {
             throw new IllegalArgumentException("3개의 수만 입력 가능합니다.");
         }
     }
+
+    private static void validateDuplicateNumber() {
+        List<String> numbers = List.of(input.split(""));
+        Set<String> inputSet = new HashSet<>(numbers);
+        if (inputSet.size() != input.length()) {
+            throw new IllegalArgumentException("서로 다른 수만 입력 가능합니다.");
+        }
+    }
 }
