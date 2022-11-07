@@ -1,9 +1,6 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,28 +8,35 @@ public class BaseBallGame {
     public static final int COMPUTER_NUMBERS_SIZE = 3;
     public static final int COMPUTER_NUMBER_MIN = 1;
     public static final int COMPUTER_NUMBER_MAX = 9;
+    public static final boolean REGAME = true;
+    public static final boolean STOP = false;
 
     GameMessageDisplay gameMessageDisplay;
     Validator inputValidator;
     List<Integer> computerNumbers;
     List<Integer> userNumbers;
+    boolean success;
 
     public BaseBallGame() {
         this.gameMessageDisplay = new GameMessageDisplay();
         this.inputValidator = new Validator();
         this.computerNumbers = new ArrayList<>();
         this.userNumbers = new ArrayList<>();
+        this.success = false;
     }
 
     public void runGame() {
         printGameStart();
-        setComputerNumbers();
-        String userInput = requestUserInput();
-
-        if (isValidInput(userInput)) {
-            setUserNumbers(userInput);
-            printGameResult();
-        }
+        do {
+            setComputerNumbers();
+            while (!this.success) {
+                String userInput = requestUserInput();
+                if (isValidInput(userInput)) {
+                    setUserNumbers(userInput);
+                    printGameResult();
+                }
+            }
+        } while (askStopOrRegame() == REGAME);
     }
 
     public void printGameStart() {
@@ -88,6 +92,23 @@ public class BaseBallGame {
 
         gameResult.put("ball", ballCount);
         gameResult.put("strike", strikeCount);
+
+        if (isSuccess(gameResult)) {
+            this.success = true;
+        }
+
         return gameResult;
+    }
+
+    public boolean isSuccess(Map<String, Integer> gameResult) {
+        int strikeCount = gameResult.get("strike");
+        if (strikeCount == COMPUTER_NUMBERS_SIZE) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean askStopOrRegame() {
+        return STOP;
     }
 }
