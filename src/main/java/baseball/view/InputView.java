@@ -23,7 +23,7 @@ public class InputView {
         }
     }
 
-    public List<Integer> inputNumbers() { // 중복여부, 자릿수 여부까지
+    public List<Integer> inputNumbers() {
         try {
             String inputItems = Console.readLine();
             List<Integer> numbers = new ArrayList<>();
