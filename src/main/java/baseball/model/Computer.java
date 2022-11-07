@@ -6,30 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Computer {
-
-    private static final int NUMBER_COUNT = 3;
-
-    private List<Integer> computerNumbers;
+public class Computer extends Gamer {
 
     public void setRandomNumbers() {
-        computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < NUMBER_COUNT) {
+        List<Integer> computerNumbers = new ArrayList<>();
+        while (computerNumbers.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            this.computerNumbers.add(randomNumber);
+            computerNumbers.add(randomNumber);
 
-            if (!isRandomNumbersUnique(this.computerNumbers)) {
-                int randomNumberIndex = this.computerNumbers.size() - 1;
-                this.computerNumbers.remove(randomNumberIndex);
+            if (!isNumbersUnique(computerNumbers)) {
+                int randomNumberIndex = computerNumbers.size() - 1;
+                computerNumbers.remove(randomNumberIndex);
             }
         }
+
+        super.setNumbers(computerNumbers);
     }
 
-    public List<Integer> getComputerNumbers() {
-        return this.computerNumbers;
-    }
-
-    public boolean isRandomNumbersUnique(List<Integer> numbers) {
+    public boolean isNumbersUnique(List<Integer> numbers) {
         List<Integer> distinctNumbers = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());

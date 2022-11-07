@@ -16,13 +16,13 @@ public class RandomNumberTest {
     void 랜덤숫자_3개_생성() {
         Computer computer = new Computer();
         computer.setRandomNumbers();
-        assertThat(computer.getComputerNumbers().size()).isEqualTo(3);
+        assertThat(computer.getNumbers().size()).isEqualTo(3);
     }
 
     @Test
     void 랜덤숫자가_겹치는지_확인() {
         Computer computer = new Computer();
         List<Integer> numbers = Arrays.asList(1, 1, 2);
-        assertThat(computer.isRandomNumbersUnique(numbers)).isEqualTo(false);
+        assertThat(computer.isNumbersUnique(numbers)).isEqualTo(false);
     }
 }
