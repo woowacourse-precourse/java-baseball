@@ -12,155 +12,145 @@ public class Application {
 	public static void main(String[] args) {
 		playGame();
 	}
-
+	
 	private static void playGame() {
 		String message = "숫자 야구 게임을 시작합니다.";
 		System.out.println(message);
-
-		List<Integer> batterSelectList = batterNumberList();
-
+		
+		computerPickNumber();
+		
 		while(true) {
-			List<Integer> pitcherInputList = pitcherNumberList();
-			
-			if(pitcherInputList == null) {
-				throwException();
+			userInputNumber();
+			if(pitcherNumberList.size() == 0) {
 				return;
 			}
 			
-
-			message = roundResult(batterSelectList, pitcherInputList);
+			message = roundResult().toString();
 			System.out.println(message);
-
+			
 			if(message.equals("3스트라이크")) {
 				message = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 				System.out.println(message);
 				break;
 			}
 		}
-
+		
 		selectGameStart();
 	}
-
-	private static void selectGameStart()  {
-		String message = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
+	
+	private static void selectGameStart() {
+		String message = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 		System.out.println(message);
 		String select = Console.readLine();
-
+		
 		if(select.equals("1")) {
 			playGame();
 			return;
 		}
-
+		
 		if(select.equals("2")) {
 			return;
 		}
+		
+		throwException();
+		return;
 	}
 
-	private static List<Integer> batterNumberList() {
-		List<Integer> computerSelectList = new ArrayList<>();
+	private static List<Integer> batterNumberList;
+	private static List<Integer> pitcherNumberList;
 
-		while(computerSelectList.size() < 3) {
+	private static void computerPickNumber() {
+		batterNumberList = new ArrayList<>();
 
-			int computerSelect = Randoms.pickNumberInRange(1, 9);
+		while(batterNumberList.size() < 3) {
+			int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-			if(!computerSelectList.contains(computerSelect)) {
-				computerSelectList.add(computerSelect);
+			if(!batterNumberList.contains(randomNumber)) {
+				batterNumberList.add(randomNumber);
 			}
-
 		}
-		return computerSelectList;
+		System.out.println(batterNumberList);
 	}
 
-	private static List<Integer> pitcherNumberList() {
-		List<Integer> userSelectList = new ArrayList<>();
+	private static void userInputNumber() {
+		pitcherNumberList = new ArrayList<>();
 		
 		String message = "숫자를 입력해주세요 : ";
 		System.out.print(message);
 		String userInput = Console.readLine();
 		
-		if(!checkValidate(userInput)) {
-			return null;
+		if(!validateCheck(userInput)) {
+			throwException();
+			return;
 		}
-
-		int userInputInt = Integer.parseInt(userInput);
-		userSelectList.add(userInputInt / 100);
-		userSelectList.add(userInputInt % 100 / 10);
-		userSelectList.add(userInputInt % 10);
-
-		return userSelectList;
+		
+		for(int i = 0; i < userInput.length(); i++) {
+			pitcherNumberList.add(userInput.charAt(i) - 48);
+		}
 	}
 
-	private static boolean checkValidate(String userInput) {
+	private static boolean validateCheck(String userInput) {
 		if(userInput.length() != 3) {
 			return false;
 		}
-		
+
 		Set<Character> userInputSet = new HashSet<>();
-		
+
 		for(int i = 0; i < userInput.length(); i++) {
+			char inputCharacter = userInput.charAt(i);
+			
+			if(inputCharacter < 49 || 57 < inputCharacter) {
+				return false;
+			}
+			
 			userInputSet.add(userInput.charAt(i));
 		}
-		
+
 		if(userInputSet.size() != 3) {
 			return false;
 		}
-		
 		return true;
 	}
 	
 	private static void throwException() {
-		try {
-			throw new IllegalArgumentException();
-		} catch(IllegalArgumentException e) {
-			e.printStackTrace();
-		}
+		throw new IllegalArgumentException();
 	}
 
-	private static String roundResult(List<Integer> batterNumberList ,List<Integer> pitcherNumberList) {
-		String result = "";
-
-		int countStrike = 0, countBall = 0;
-
-		for(int i = 0; i < 3; i++) {
-			if(batterNumberList.get(i) != pitcherNumberList.get(i)) {
-
-				countBall += ballCheck(batterNumberList, pitcherNumberList.get(i));
-
+	private static StringBuilder roundResult() {
+		StringBuilder builder = new StringBuilder();
+		
+		int strikeCount = 0, ballCount = 0;
+		
+		for(int i = 0; i < batterNumberList.size(); i++) {
+			if(pitcherNumberList.get(i) == batterNumberList.get(i)) {
+				strikeCount++;
+				continue;
 			}
-
-			if(batterNumberList.get(i) == pitcherNumberList.get(i)) {
-				countStrike++;
+			
+			if(pitcherNumberList.contains(batterNumberList.get(i))) {
+				ballCount++;
+				continue;
 			}
 		}
-
-		if(countBall > 0) {
-			String space = "";
-
-			if(countStrike > 0) {
-				space = " ";
+		
+		if(strikeCount == 0 && ballCount == 0) {
+			builder.append("낫싱");
+			return builder;
+		}
+		
+		if(ballCount != 0) {
+			builder.append(ballCount + "볼");
+		}
+		
+		if(strikeCount != 0) {
+			if(builder.length() != 0) {
+				builder.append(" ");
 			}
-
-			result += countBall + "볼" + space;
+			
+			builder.append(strikeCount + "스트라이크");
 		}
-
-		if(countStrike > 0) {
-			result += (countStrike + "스트라이크");
-		}
-
-		if(countBall == 0 && countStrike == 0) {
-			result = "낫싱";
-		}
-
-		return result;
+		
+		return builder;
 	}
 	
-	private static int ballCheck(List<Integer> batterNumberList, int pitcherNumber) {
-		int result = 0;
-		
-		if(batterNumberList.contains(pitcherNumber)) {
-			result++;
-		}
-		
-		return result;
-	}
 }
