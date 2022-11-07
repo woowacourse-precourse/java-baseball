@@ -12,7 +12,7 @@ import static baseball.util.NumberUtil.*;
 public class NumberUtilTest {
     @DisplayName("컴퓨터의 정답 생성 기능 테스트")
     @Test
-    public void checkRandomThreeNumberTest() {
+    void checkRandomThreeNumberTest() {
         List<Integer> numberList = createRandomNumber();
 
         assertThat(numberList.size()).isEqualTo(3);
@@ -27,33 +27,33 @@ public class NumberUtilTest {
 
     @DisplayName("사용자 숫자 입력 예외사항 판단 기능 테스트")
     @Test
-    public void checkInputNumberTest() {
-        String input_failure1 = "1234";
-        String input_failure2 = "098";
-        String input_failure3 = "1 3";
-        String input_failure4 = "-89";
-        String input_failure5 = "f56";
+    void checkInputNumberTest() {
+        String failureInput1 = "1234";
+        String failureInput2 = "098";
+        String failureInput3 = "1 3";
+        String failureInput4 = "-89";
+        String failureInput5 = "f56";
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            checkInputException(input_failure1);
+            checkInputException(failureInput1);
         });
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            checkInputException(input_failure2);
+            checkInputException(failureInput2);
         });
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            checkInputException(input_failure3);
+            checkInputException(failureInput3);
         });
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            checkInputException(input_failure4);
+            checkInputException(failureInput4);
         });
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            checkInputException(input_failure5);
+            checkInputException(failureInput5);
         });
     }
 
     @DisplayName("힌트를 판단하고 화면에 출력하는 기능 테스트")
     @Test
-    public void chechHintTest() {
+    void chechHintTest() {
         List<Integer> answerList1 = List.of(1, 2, 3);
         List<Integer> userList1 = List.of(1, 2, 3);
 
@@ -66,7 +66,7 @@ public class NumberUtilTest {
 
     @DisplayName("문자열을 숫자로 바꾸는 메서드 예외 처리 테스트")
     @Test
-    public void checkRestart() {
+    void checkRestart() {
         String answer1 = "a";
         String answer2 = "@";
         String answer3 = "@TEST_123";

@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.view.Print.*;
+import static baseball.view.BaseBallView.*;
 
 public class NumberUtil {
     public static List<Integer> createRandomNumber() {

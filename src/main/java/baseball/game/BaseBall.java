@@ -2,12 +2,12 @@ package baseball.game;
 
 import java.util.List;
 
-import static baseball.view.Print.*;
+import static baseball.view.BaseBallView.*;
 import static baseball.util.NumberUtil.*;
 
 public class BaseBall {
-    private Balls answerBalls;
-    private Balls userBalls;
+    private Balls answerBalls = new Balls(List.of());
+    private Balls userBalls = new Balls(List.of());
 
     public void start() {
         printGameStart();
