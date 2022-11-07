@@ -55,7 +55,7 @@ public class GameServer {
     public void catchInputException(String userNumber)
             throws IllegalArgumentException {
         if (userNumber.length() != 3) {
-            throw new IllegalArgumentException();//사용할 때 try-catch문으로 throw처리
+            throw new IllegalArgumentException();
         }
         if (!userNumber.matches("^[1-9]*$")) {
             throw new IllegalArgumentException();
@@ -74,7 +74,7 @@ public class GameServer {
         decideRestart(userNumber);
     }
 
-    public void decideRestart(String userNum) {
+    public void decideRestart(String userNum) throws IllegalArgumentException {
         if (userNum.equals("1")) {
             restart = true;
             isAnswer = false;
@@ -134,11 +134,7 @@ public class GameServer {
         while (!isAnswer) {
             userNumber = getUserNumber();
             setUserNumber(userNumber);
-            try {
-                catchInputException(userNumber);
-            } catch (IllegalArgumentException e) {
-                return;
-            }
+            catchInputException(userNumber);
             checkUsersInputIsAnswer();
             printGameResult();
         }
