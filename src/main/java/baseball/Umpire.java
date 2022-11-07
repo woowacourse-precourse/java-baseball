@@ -3,7 +3,7 @@ package baseball;
 import constants.Rule;
 import constants.Text;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -13,7 +13,7 @@ public class Umpire {
     private Map<Text, Integer> hintRecord;
 
     public Umpire() {
-        hintRecord = new HashMap<>();
+        hintRecord = new EnumMap<>(Text.class);
     }
 
     private boolean isNothing(List<Integer> computerNumber, List<Integer> playerNumber) {
