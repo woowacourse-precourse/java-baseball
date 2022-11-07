@@ -28,6 +28,9 @@ public class Controller {
 	}
 
 	public void retryGame(int number) throws IllegalArgumentException {
+		if (number != 1 && number != 2) {
+			throw new IllegalArgumentException();
+		}
 
 		if (number == 1) {
 			service.computerReset();
