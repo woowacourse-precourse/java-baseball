@@ -11,7 +11,14 @@ public class Application {
         while (start == 1) {
             inputValue = inputUser();
             untilEnd(inputValue);
+            start = gameOption();
         }
+    }
+    public static int gameOption() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String text = Console.readLine();
+        textSize(text, 1);
+        return isValidateInt(text.charAt(0), 1, 2);
     }
     public static List<Integer> inputComputer() {
         List<Integer> computer = new ArrayList<>();
