@@ -28,7 +28,7 @@ public class GameExceptionHandlerTest {
 		String emptyString = "";
 
 		assertThatThrownBy(() -> {
-			GameExceptionHAndler.handleEmptyException(emptyString);
+			GameExceptionHandler.handleEmptyException(emptyString);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
