@@ -4,7 +4,6 @@ import static baseball.util.Constant.*;
 
 import baseball.player.Computer;
 import baseball.player.Player;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -67,4 +66,17 @@ public class Game {
         }
         System.out.println(hint);
     }
+
+    /**
+     * 플레이어가 정답을 맞추었는지 판별하는 기능
+     * @return 3스트라이크이면 true 반환 그렇지 않으면 false 반환
+     */
+    public boolean correct() {
+        if(strikeCnt == 3){
+            System.out.println(GAME_END_MSG);
+            return true;
+        }
+        return false;
+    }
+
 }
