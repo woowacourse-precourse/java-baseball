@@ -23,7 +23,7 @@ public class ScoreDetect {
                 || !checkDuplicate(numbers)     // 중복문자 확인
                 || !checkAllowedRange(answer)
                 || !checkAllowedRange(numbers)) // 숫자 범위 확인
-            return -1;
+            throw new IllegalArgumentException();
 
         int count = 0;
 
@@ -44,7 +44,7 @@ public class ScoreDetect {
                 || !checkDuplicate(numbers)     // 중복문자 확인
                 || !checkAllowedRange(answer)
                 || !checkAllowedRange(numbers)) // 숫자 범위 확인
-            return -1;
+            throw new IllegalArgumentException();
 
         int count = 0;
 
