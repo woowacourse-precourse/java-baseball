@@ -77,8 +77,10 @@ public class Application {
                 integer_gameagain = Integer.parseInt(gameagain);
                 if(integer_gameagain == 1){
                     again = true;
-                } else {
+                } else if(integer_gameagain == 2){
                     break;
+                } else {
+                    throw new IllegalArgumentException();
                 }
             }
         }
