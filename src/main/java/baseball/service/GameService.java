@@ -22,13 +22,10 @@ public class GameService {
         this.computer = new Player(computerNumbers);
     }
 
-    public GameResultResponseDto playGame() {
-        Referee referee = computer.playGame(player);
-        return referee.toResponseDto();
-    }
-
-    public void changePlayerBalls(List<Integer> newBallNumbers) {
+    public GameResultResponseDto playGame(List<Integer> newBallNumbers) {
         player.changeBalls(newBallNumbers);
+        Referee referee = player.playGame(computer);
+        return referee.toResponseDto();
     }
 
     public void changeComputerBalls() {

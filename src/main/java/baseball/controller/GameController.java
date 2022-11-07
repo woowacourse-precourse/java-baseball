@@ -38,8 +38,7 @@ public class GameController {
     }
 
     private GameResultResponseDto playRound(List<Integer> numbers) {
-        gameService.changePlayerBalls(numbers);
-        GameResultResponseDto responseDto = gameService.playGame();
+        GameResultResponseDto responseDto = gameService.playGame(numbers);
         OutputView.printGameResult(responseDto);
         return responseDto;
     }
