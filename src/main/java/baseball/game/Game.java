@@ -1,5 +1,7 @@
-package baseball;
+package baseball.game;
 
+import baseball.util.NumberGenerator;
+import baseball.util.UserInput;
 import java.util.List;
 
 public class Game {

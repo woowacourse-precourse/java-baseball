@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.game.BallCount;
+import baseball.util.NumberGenerator;
+import baseball.util.UserInput;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
