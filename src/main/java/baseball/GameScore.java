@@ -46,15 +46,27 @@ public class GameScore {
         return "";
     }
 
-    public boolean ReturnScore(int strike, int ball) {
+    public String ReturnScore(int strike, int ball) {
         if(CheckNothing(strike, ball).equals(GAME_VALUE.get(2))) {
-            return false;
+            return GAME_VALUE.get(2);
         }
 
         ball -= strike;
-        System.out.println("Strike: " + strike);
-        System.out.println("Ball: " + ball);
 
-        return true;
+        return ReturnStrikeOrBall(strike, ball);
+    }
+
+    private String ReturnStrikeOrBall(int strike, int ball) {
+        String strStrike = strike+GAME_VALUE.get(0);
+        String strBall = ball+GAME_VALUE.get(1);
+
+        if(ball == 0) {
+            return strStrike;
+        }
+        if(strike == 0) {
+            return strBall;
+        }
+
+        return strBall + " " + strStrike;
     }
 }
