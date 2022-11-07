@@ -34,4 +34,8 @@ public class User {
     public List<Integer> getUserNumbers() {
         return userNumbers;
     }
+
+    public void updateUserNumbers(List<Integer> userNumbers) {
+        this.userNumbers = userNumbers;
+    }
 }
