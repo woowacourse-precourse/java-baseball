@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import static baseball.view.InputView.NOT_ONE_LENGTH;
+import static baseball.view.InputView.NOT_ONE_OR_TWO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,7 +39,7 @@ class InputViewTest {
 
         assertThatThrownBy(() -> InputView.endOrRestartInput())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력된 길이가 1이 아닙니다");
+                .hasMessageContaining(NOT_ONE_LENGTH);
     }
 
     @Test
@@ -48,6 +50,6 @@ class InputViewTest {
 
         assertThatThrownBy(() -> InputView.endOrRestartInput())
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("1 또는 2를 입력해야 합니다");
+                .hasMessageContaining(NOT_ONE_OR_TWO);
     }
 }

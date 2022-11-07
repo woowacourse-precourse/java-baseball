@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.domain.baseball.Baseballs.DUPLICATE_MESSAGE;
+import static baseball.domain.baseball.Baseballs.NOT_THREE_LETTERS_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -58,9 +60,9 @@ class BaseballsTest {
 
         assertAll(
                 () -> assertThat(result.size()).isEqualTo(3),
-                () -> assertThat(result).contains((int)'1'),
-                () -> assertThat(result).contains((int)'2'),
-                () -> assertThat(result).contains((int)'3')
+                () -> assertThat(result).contains(1),
+                () -> assertThat(result).contains(2),
+                () -> assertThat(result).contains(3)
         );
     }
 
@@ -69,10 +71,10 @@ class BaseballsTest {
         assertAll(
                 () -> assertThatThrownBy(() -> Baseballs.valueOf("12"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(Baseballs.NOT_THREE_LETTERS_MESSAGE),
+                        .hasMessageContaining(NOT_THREE_LETTERS_MESSAGE),
                 () -> assertThatThrownBy(() -> Baseballs.valueOf("1345"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(Baseballs.NOT_THREE_LETTERS_MESSAGE)
+                        .hasMessageContaining(NOT_THREE_LETTERS_MESSAGE)
         );
     }
 
@@ -80,7 +82,7 @@ class BaseballsTest {
     void 중복된_숫자_입력_예외() {
         assertThatThrownBy(() -> Baseballs.valueOf("112"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining(Baseballs.DUPLICATE_MESSAGE);
+                        .hasMessageContaining(DUPLICATE_MESSAGE);
     }
 
     @Test
@@ -109,5 +111,36 @@ class BaseballsTest {
                 () -> assertThat(computerBaseballs.getBall(userBaseballs2)).isEqualTo(0),
                 () -> assertThat(computerBaseballs.getBall(userBaseballs3)).isEqualTo(3)
         );
+    }
+
+    @Test
+    void valueOf_메서드로_Baseballs생성() {
+        String input = "123";
+
+        Baseballs baseballs = Baseballs.valueOf(input);
+
+        assertAll(
+                () -> assertThat(baseballs.getBaseballs().get(0)).isEqualTo(Baseball.of(1)),
+                () -> assertThat(baseballs.getBaseballs().get(1)).isEqualTo(Baseball.of(2)),
+                () -> assertThat(baseballs.getBaseballs().get(2)).isEqualTo(Baseball.of(3))
+        );
+    }
+
+    @Test
+    void valueOf_메서드_입력이_세글자가_아님() {
+        String input = "1234";
+
+        assertThatThrownBy(() -> Baseballs.valueOf(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NOT_THREE_LETTERS_MESSAGE);
+    }
+
+    @Test
+    void valueOf_메서드_중복된_수를_입력함() {
+        String input = "112";
+
+        assertThatThrownBy(() -> Baseballs.valueOf(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DUPLICATE_MESSAGE);
     }
 }
