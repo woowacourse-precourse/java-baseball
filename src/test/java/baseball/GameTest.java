@@ -41,6 +41,16 @@ public class GameTest extends NsTest {
         assertThat(output()).isEqualTo("숫자를 입력해주세요 :");
     }
 
+    @DisplayName("유저 입력 리스트 변환 테스트")
+    @Test
+    void parseUserInputTest() {
+        String testInput = "123";
+        List<Integer> testNumber = new ArrayList<>();
+        testNumber.add(1);
+        testNumber.add(2);
+        testNumber.add(3);
+        assertThat(game.parseUserInput(testInput)).isEqualTo(testNumber);
+    }
     }
 
     @Override
