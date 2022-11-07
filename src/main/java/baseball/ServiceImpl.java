@@ -83,6 +83,7 @@ public class ServiceImpl implements Service {
     }
     @Override
     public void errorCheck(int number) throws IllegalArgumentException{
+        if (number< 123) throw new IllegalArgumentException();
         List<Integer> numList = new ArrayList<>();
         int digit = 100;
 
