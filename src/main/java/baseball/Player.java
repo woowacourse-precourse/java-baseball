@@ -26,6 +26,7 @@ public class Player {
         checkNumber(userInput);
         checkLength(userInput);
         checkDuplication(userInput);
+        checkRangeNumber(userInput);
 
         return stringToList(userInput);
     }
@@ -71,6 +72,17 @@ public class Player {
         int userContinuation = Integer.parseInt(userInput);
         if(userContinuation != 1 && userContinuation != 2) {
             throw new IllegalArgumentException("1(새로 시작), 2(게임 종료) 만 입력 가능합니다.");
+        }
+    }
+
+    public void checkRangeNumber(String userInput) throws IllegalArgumentException {
+        List<Integer> inputList = stringToList(userInput);
+        List<Integer> range = Arrays.asList(1,2,3,4,5,6,7,8,9);
+
+        for(int inputListIndex = 0; inputListIndex < MAX; inputListIndex++) {
+            if(!range.contains(inputList.get(inputListIndex))) {
+                throw new IllegalArgumentException("입력할 수 있는 숫자 범위는 1 ~ 9 사이입니다.");
+            }
         }
     }
 }
