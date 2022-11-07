@@ -53,6 +53,14 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
+        void illegalGetTargetNumberInstanceByStringTest6() {
+            String input = "1가2";
+
+            assertThatThrownBy(() -> TargetNumber.getInstance(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
         void legalGetTargetNumberInstanceByStringTest1() {
             String input = "123";
             int result = 123;
