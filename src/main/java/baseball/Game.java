@@ -10,17 +10,18 @@ public class Game {
     private List<Integer> answer;
     private BallCount ballcount;
 
-    public Game(){
+    public Game() {
         // TODO: <Func> Initializer
+        ballcount = new BallCount();
         setAnswer();
     }
 
     // <Func> : Set random answer using pickNumberInRange()
-    private void setAnswer(){
+    private void setAnswer() {
         answer = new ArrayList<>();
 
         while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1,9);
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
@@ -28,29 +29,33 @@ public class Game {
     }
 
     // <Func> : Get certain answer for testing (Overloading)
-    private void setAnswer(List<Integer> answer) {
+    public void setAnswer(List<Integer> answer) {
         this.answer = answer;
     }
 
-    private void checkAnswer(List<Integer> guess){
+    public BallCount checkAnswer(List<Integer> guess) {
         // TODO: <Func> Check input value and compare with answer
-        
-    }
+        ballcount.initCount();
+        for (int i = 0; i < 3; i++) {
+            // same index same number
+            if (answer.get(i) == guess.get(i)) {
+                ballcount.strikeUp();
+            } else if (answer.contains(guess.get(i))) {
+                ballcount.ballUp();
+            }
+        }
+        // Print ball count and init it
+        printCount();
 
-    // <Func> : Check
-    private List<Integer> countUp(){
-        // TODO: <Func> Change status
-        List<Integer> count = new ArrayList<>();
-        return count;
+        return ballcount;
     }
 
     // <Func> : Print ball count
-    private void printCount(){
+    private void printCount() {
 
         if (ballcount.getStrike() == 0 && ballcount.getBall() == 0) {
             System.out.println("낫싱");
-        }
-        else {
+        } else {
             if (ballcount.getBall() != 0) {
                 System.out.print(ballcount.getBall() + "볼");
             }
@@ -62,7 +67,7 @@ public class Game {
     }
 
     // <Func> : Check game is over and boolean value
-    private boolean isOver(){
+    public boolean isOver() {
         // TODO: <Func> Check game is over
         if (ballcount.getStrike() == 3) {
             return true;
