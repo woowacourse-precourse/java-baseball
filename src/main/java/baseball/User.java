@@ -12,6 +12,12 @@ public class User {
     }
 
     public boolean checkInputForAnswer() {
+        if (input == null) {
+            throw new IllegalArgumentException();
+        }
+        if (!input.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException();
+        }
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
