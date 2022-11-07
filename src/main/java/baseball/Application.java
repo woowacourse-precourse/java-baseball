@@ -35,24 +35,29 @@ public class Application {
     public static void main(String[] args) {
 
         String input;
+        Boolean endFlag;
         Boolean replay = true;
-        Boolean endFlag = false;
         List <Integer> playerCount = null;
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (replay) {
             Baseball playGame = new Baseball();
+            replay = false;
+            endFlag = false;
 
             while(!endFlag) {
                 System.out.print("숫자를 입력해주세요: ");
                 input = Console.readLine();
                 if (checkInput(input)) playerCount = makeUserCount(input);
 
-                if (playGame.countCheck(playerCount)) endFlag = true;
-                //endFlag = true;
+                if (playGame.countCheck(playerCount)) {
+                    endFlag = true;
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                }
             }
-
-            replay = false;
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            input = Console.readLine();
+            if (Integer.parseInt(input) == 1) replay = true;
         }
     }
 }
@@ -60,7 +65,6 @@ public class Application {
 class Baseball {
     private List<Integer> baseballCount;
     public Baseball() {
-        // 카운트 랜덤 생성
         baseballCount = new ArrayList<>();
         while (baseballCount.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -69,9 +73,6 @@ class Baseball {
             }
         }
     }
-    // 같은지 다른지 체크하는 메소드
-    // 볼 확인 -> 스트라이크 확인
-    // 스트라이크 볼 출력 메소드
     public Boolean countCheck(List<Integer> player) {
         System.out.println(player);
         int strike = 0;
@@ -79,8 +80,6 @@ class Baseball {
 
 
         for (int i = 0; i < player.size(); i++) {
-            System.out.println(player.get(i));
-            System.out.println(player.contains(baseballCount.get(i)));
             if (player.contains(baseballCount.get(i))) ball++;
 
             if (player.get(i) == baseballCount.get(i)) {
@@ -106,6 +105,6 @@ class Baseball {
             return;
         }
 
-        System.out.println(ball + "볼" + strike + "스트라이크");
+        System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 }
