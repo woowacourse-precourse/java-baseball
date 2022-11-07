@@ -2,11 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.ArrayList;
+
 public class Game {
-    final static String GAME_START_GUIDE_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    final static String PLAYER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
     final static String WIN_CONDITION = "3스트라이크";
-    final static String WIN_GUIDE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final static int NUMBER_LENGTH = 3;
     private Computer computer;
 
@@ -15,16 +16,15 @@ public class Game {
     }
 
     public void play() {
-        System.out.println(GAME_START_GUIDE_MESSAGE);
+        System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
-            System.out.print(PLAYER_INPUT_GUIDE_MESSAGE);
+            System.out.print("숫자를 입력해주세요 : ");
             String gamePlayerInput = getGamePlayerInput();
             checkGamePlayerNumberInput(gamePlayerInput);
-            System.out.println(computer.getRandomNumbers()); // 삭제
             String result = getResult(computer.getRandomNumbers(), gamePlayerInput);
             System.out.println(result);
             if (result.contains(WIN_CONDITION)) {
-                System.out.println(WIN_GUIDE_MESSAGE);
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
@@ -39,9 +39,9 @@ public class Game {
     }
 
     public String getResult(String computerRandomNumbers, String gamePlayerInput) {
+        List<Integer> result = new ArrayList<>(3);
         Integer strikes = countStrikes(computerRandomNumbers, gamePlayerInput);
         Integer balls = countBalls(computerRandomNumbers, gamePlayerInput ) - strikes;
-        StringBuilder result = new StringBuilder();
 
         if (balls > 0) {
             result.append(balls + "볼 ");
