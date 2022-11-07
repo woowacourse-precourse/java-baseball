@@ -10,7 +10,14 @@ public class Balls {
 
     private Balls(List<Ball> balls) {
         validateUnique(balls);
+        validateSize(balls);
         this.balls = balls;
+    }
+
+    private void validateSize(List<Ball> balls) {
+        if (balls.size() != 3) {
+            throw new IllegalArgumentException("3자리 숫자를 입력해주세요");
+        }
     }
 
     private void validateUnique(List<Ball> balls) {
