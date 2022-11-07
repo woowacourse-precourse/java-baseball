@@ -76,14 +76,14 @@ public class Controller {
 
     private void modifyStrikeBallCount() {
         for (int i = 0; i < userNumber.size(); i++) {
-            if (isStrikeNumber(computerNumber, userNumber.get(i), userNumber.indexOf(userNumber.get(i)))) {
+            if (isStrikeNumber(userNumber.get(i), userNumber.indexOf(userNumber.get(i)))) {
                 ball -= 1;
                 strike += 1;
             }
         }
     }
 
-    private boolean isStrikeNumber(List<Integer> computerNumber, int userNumber, int userNumberIndex) {
+    private boolean isStrikeNumber(int userNumber, int userNumberIndex) {
         for (int i = 0; i < computerNumber.size(); i++) {
             if (computerNumber.get(i) == userNumber && i == userNumberIndex) {
                 return true;
