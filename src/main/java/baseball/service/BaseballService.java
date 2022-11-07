@@ -28,4 +28,13 @@ public class BaseballService {
         System.out.print(INPUT_MESSAGE);
         baseballMachine.matchNumber();
     }
+
+    // 게임 클리어 유무 확인
+    public boolean isCorrect() {
+        if (baseballMachine.checkAnswer()) {
+            System.out.println(GAME_CLEAR_MESSAGE);
+            return true;
+        }
+        return false;
+    }
 }
