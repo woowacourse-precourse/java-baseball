@@ -5,11 +5,23 @@ import baseball.exception.GameException;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainFunctions {
     public List<Integer> generateRandomNumber() {
-        return Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        boolean[] isPicked = new boolean[10];
+        List<Integer> randomNumber = new ArrayList<>();
+        int index = 0;
+        while(index < 3) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!isPicked[num]) {
+                randomNumber.add(num);
+                isPicked[num] = true;
+                index++;
+            }
+        }
+        return randomNumber;
     }
 
     public int[] examineGuess(List<Integer> guess, List<Integer> answer) {

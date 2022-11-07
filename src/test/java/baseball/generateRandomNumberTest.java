@@ -12,8 +12,6 @@ public class generateRandomNumberTest {
     private MainFunctions mainFunctions = new MainFunctions();
     @Test
     void 항상_3자리_랜덤숫자가_나오는지_테스트() {
-        //given
-
         //when
         for(int i = 0; i < 100; i++) {
             List<Integer> actual = mainFunctions.generateRandomNumber();
