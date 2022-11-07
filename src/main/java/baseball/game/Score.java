@@ -2,6 +2,8 @@ package baseball.game;
 
 import java.util.stream.IntStream;
 
+import static baseball.config.GameConstants.BASEBALL_NUMBER_LENGTH;
+
 public final class Score {
     private final Ball ball;
     private final Strike strike;
@@ -28,7 +30,7 @@ public final class Score {
 
 
     private int calculateStrike(Digits player, Digits computer) {
-        return IntStream.range(0, 3).reduce(0, (total, index) -> {
+        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0, (total, index) -> {
             if (isStrike(player, computer, index)) {
                 return total + 1;
             }
@@ -41,7 +43,7 @@ public final class Score {
     }
 
     private int calculateBall(Digits player, Digits computer) {
-        return IntStream.range(0, 3).reduce(0, (total, index) -> {
+        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0, (total, index) -> {
             if (isBall(player, computer, index)) {
                 return total + 1;
             }

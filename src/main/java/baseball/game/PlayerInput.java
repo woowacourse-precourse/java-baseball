@@ -5,6 +5,8 @@ import java.util.List;
 
 import static baseball.config.GameConstants.INPUT_DUPLICATE;
 import static baseball.config.GameConstants.INPUT_OUT_OF_RANGE;
+import static baseball.config.GameConstants.MAX_INPUT_INCLUSIVE;
+import static baseball.config.GameConstants.MIN_INPUT_INCLUSIVE;
 
 public final class PlayerInput extends Digits {
     private PlayerInput(int value) {
@@ -20,7 +22,7 @@ public final class PlayerInput extends Digits {
     }
 
     private boolean isInputValidInRange(int value) {
-        return 100 <= value && value <= 999;
+        return MIN_INPUT_INCLUSIVE <= value && value <= MAX_INPUT_INCLUSIVE;
     }
 
     private List<Digit> splitDigit(int value) {

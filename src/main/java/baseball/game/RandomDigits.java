@@ -2,6 +2,8 @@ package baseball.game;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.config.GameConstants.BASEBALL_NUMBER_LENGTH;
+
 public final class RandomDigits extends Digits {
     private RandomDigits() {
         generateRandom();
@@ -13,7 +15,7 @@ public final class RandomDigits extends Digits {
 
     private void generateRandom() {
         append(Digit.from(Randoms.pickNumberInRange(1, 9)));
-        while (size() < 3) {
+        while (size() < BASEBALL_NUMBER_LENGTH) {
             tryToAppend();
         }
     }

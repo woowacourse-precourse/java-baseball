@@ -1,6 +1,12 @@
 package baseball.config;
 
-public class GameConstants {
+/**
+ * Game에서 사용되는 모든 메시지, 상수가 모여 있는 클래스 입니다
+ */
+public final class GameConstants {
+    public static final int BASEBALL_NUMBER_LENGTH = 3;
+    public static final int MIN_INPUT_INCLUSIVE = 100;
+    public static final int MAX_INPUT_INCLUSIVE = 999;
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다 !게임 종료\n";
 
