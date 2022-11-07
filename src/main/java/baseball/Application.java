@@ -1,7 +1,9 @@
 package baseball;
 
 public class Application {
+    private static Game game = new BaseballGame();
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        game.run();
     }
 }
