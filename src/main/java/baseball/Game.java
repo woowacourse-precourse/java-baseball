@@ -10,6 +10,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Game {
     static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String BALL = "볼";
+    static final String SPACE = " ";
     static final String STRIKE = "스트라이크";
     static final String CORRECT_ANSWER = "3스트라이크";
     static final String NOTHING = "낫싱";
@@ -60,7 +61,7 @@ public class Game {
 
         String result;
         if (ball > 0 && strike > 0) {
-            result = ball + BALL + strike + STRIKE;
+            result = ball + BALL + SPACE + strike + STRIKE;
         } else if (ball == 0 && strike > 0) {
             result = strike + STRIKE;
         } else if (ball > 0 && strike == 0) {
