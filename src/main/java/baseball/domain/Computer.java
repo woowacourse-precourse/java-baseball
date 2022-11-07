@@ -37,7 +37,7 @@ public class Computer {
         }
 
         this.answer = setNumber;
-
+        System.out.println(this.answer);
     }
 
 }

@@ -66,7 +66,8 @@ public class UserService {
         }
 
         returnResult = returnResultBuilder.toString();
-
+        System.out.println(returnResult);
+        System.out.println("결과");
         return returnResult;
 
     }
@@ -115,7 +116,7 @@ public class UserService {
 
 
     private void checkRestartNumber() {
-        if (!checkRestartlength() || checkIsInteger(userRestartNumber)) {
+        if (!checkRestartlength() || !checkIsInteger(userRestartNumber)) {
             throw new IllegalArgumentException("에러발생 프로그램을 종료합니다.");
         }
     }
