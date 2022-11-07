@@ -4,9 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RandomNumberGeneratorTest {
+    @BeforeEach
+    void init() {
+        RandomNumberGenerator.initGenerator();
+    }
+
     @Test
     void 난수_각자릿수_확인() {
         for (int testNumbers = 0; testNumbers < 100; testNumbers++) {

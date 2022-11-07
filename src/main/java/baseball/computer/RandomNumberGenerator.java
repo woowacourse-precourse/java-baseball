@@ -9,6 +9,11 @@ import java.util.stream.Collectors;
 public class RandomNumberGenerator {
     public static final int MAX_NUMBER_OF_CASE = 504;
     private static final HashSet<String> numberSet = new HashSet<>();
+
+    public static void initGenerator() {
+        numberSet.clear();
+    }
+
     public static List<Integer> generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
         while (randomNumbers.size() < 3) {
