@@ -24,4 +24,18 @@ public class Game {
         result.add(strike);
         return result;
     }
+
+    static String resultToString(List<Integer> compareResult) {
+        String result = "";
+        if (compareResult.get(0) != 0) {
+            result += compareResult.get(0) + "볼 ";
+        }
+        if (compareResult.get(1) != 0) {
+            result += compareResult.get(1) + "스트라이크";
+        }
+        if (result.equals("")) {
+            result = "낫싱";
+        }
+        return result.strip();
+    }
 }
