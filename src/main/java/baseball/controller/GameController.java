@@ -108,7 +108,7 @@ public class GameController {
     private List<Integer> changeInputToList(String input) {
         List<Integer> inputNumberList = new ArrayList<>();
         for (int i = 0; i < input.length(); i++) {
-            int digit = input.charAt(i);
+            int digit = Character.getNumericValue(input.charAt(i));
             inputNumberList.add(digit);
         }
 
