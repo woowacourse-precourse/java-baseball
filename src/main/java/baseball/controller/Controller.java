@@ -37,20 +37,17 @@ public class Controller {
 
         if (ball == 0 && strike == 0) {
             view.incorrect();
-            return true;
         } else if (ball != 0 && strike != 0) {
             view.strikeAndBall(strike, ball);
-            return true;
         } else if (ball != 0) {
             view.ball(ball);
-            return true;
         } else if (strike < 3) {
             view.strike(strike);
-            return true;
         } else if (strike == 3) {
             view.threeStrike();
+            return false;
         }
-        return false;
+        return true;
     }
 
     private boolean regame() {
