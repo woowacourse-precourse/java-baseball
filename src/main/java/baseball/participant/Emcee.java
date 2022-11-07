@@ -2,8 +2,6 @@ package baseball.participant;
 
 import baseball.result.ResultType;
 
-import static baseball.result.ResultType.*;
-
 public class Emcee {
 
     public void showStartingGuide(String playerName) {
@@ -16,15 +14,15 @@ public class Emcee {
     }
 
     public void showResultMessage(ResultType resultType, int numberOfBall, int numberOfStrike) {
-        if (resultType == EXACT_MATCH)
+        if (resultType == ResultType.EXACT_MATCH)
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        else if (resultType == BALL_AND_STRIKE)
+        else if (resultType == ResultType.BALL_AND_STRIKE)
             System.out.println(numberOfBall + "볼 " + numberOfStrike + "스트라이크");
-        else if (resultType == ONLY_STRIKE)
+        else if (resultType == ResultType.ONLY_STRIKE)
             System.out.println(numberOfStrike + "스트라이크");
-        else if (resultType == ONLY_BALL)
+        else if (resultType == ResultType.ONLY_BALL)
             System.out.println(numberOfBall + "볼");
-        else if (resultType == NOTHING)
+        else if (resultType == ResultType.NOTHING)
             System.out.println("낫싱");
     }
 }

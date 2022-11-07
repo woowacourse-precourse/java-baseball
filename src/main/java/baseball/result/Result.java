@@ -1,10 +1,8 @@
 package baseball.result;
 
-import static baseball.result.ResultType.*;
-
 public class Result {
 
-    private ResultType resultType = NOTHING;
+    private ResultType resultType = ResultType.NOTHING;
 
     private int ball = 0;
     private int strike = 0;
@@ -20,11 +18,11 @@ public class Result {
     }
 
     private void calculateType() {
-        if (strike == 3) resultType = EXACT_MATCH;
-        else if (strike > 0 && ball > 0) resultType = BALL_AND_STRIKE;
-        else if (strike > 0) resultType = ONLY_STRIKE;
-        else if (ball > 0) resultType = ONLY_BALL;
-        else resultType = NOTHING;
+        if (strike == 3) resultType = ResultType.EXACT_MATCH;
+        else if (strike > 0 && ball > 0) resultType = ResultType.BALL_AND_STRIKE;
+        else if (strike > 0) resultType = ResultType.ONLY_STRIKE;
+        else if (ball > 0) resultType = ResultType.ONLY_BALL;
+        else resultType = ResultType.NOTHING;
     }
 
     public ResultType getResultType() {

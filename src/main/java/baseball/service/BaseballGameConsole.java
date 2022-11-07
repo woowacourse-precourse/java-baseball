@@ -5,8 +5,7 @@ import baseball.participant.Emcee;
 import baseball.participant.Pitcher;
 import baseball.participant.Referee;
 import baseball.result.Result;
-
-import static baseball.result.ResultType.EXACT_MATCH;
+import baseball.result.ResultType;
 
 public class BaseballGameConsole {
 
@@ -31,7 +30,7 @@ public class BaseballGameConsole {
             System.out.print("숫자를 입력해주세요. : ");
             String pitchNumber = pitcher.pitchNumberBall();
             Result result = referee.judgeHitAndPitch(hitNumber, pitchNumber);
-            strikeOut = result.getResultType() == EXACT_MATCH;
+            strikeOut = result.getResultType() == ResultType.EXACT_MATCH;
             emcee.showResultMessage(result.getResultType(), result.numberOfBall(), result.numberOfStrike());
         }
     }
