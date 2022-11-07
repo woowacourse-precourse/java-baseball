@@ -22,7 +22,8 @@ public class ComputerNumberList {
         }
         return computerNumberList;
     }
-    public void generateNewComputerRandomNumber(){
+
+    public void generateNewComputerRandomNumber() {
         this.computerNumber = getComputerRandomNumber();
     }
 }

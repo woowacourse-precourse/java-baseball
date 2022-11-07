@@ -25,7 +25,7 @@ public class CompareNumber {
         if (strikeCount != 0 && ballCount != 0) {
             System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
         } else if (strikeCount != 0) {
-            if(strikeCount == 3){
+            if (strikeCount == 3) {
                 System.out.println(strikeCount + "스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return true;
@@ -33,17 +33,17 @@ public class CompareNumber {
             System.out.println(strikeCount + "스트라이크");
         } else if (ballCount != 0) {
             System.out.println(ballCount + "볼");
-        } else if(strikeCount == 0 && ballCount == 0){
+        } else if (strikeCount == 0 && ballCount == 0) {
             System.out.println("낫싱");
         }
         return false;
     }
 
-    public void setUserNumber(List<Number> userNumber){
+    public void setUserNumber(List<Number> userNumber) {
         this.userNumber = userNumber;
     }
 
-    public void setComputerNumber(List<Number> computerNumber){
+    public void setComputerNumber(List<Number> computerNumber) {
         this.computerNumber = computerNumber;
     }
 }

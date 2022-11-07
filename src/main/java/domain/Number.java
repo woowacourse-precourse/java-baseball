@@ -4,19 +4,18 @@ public class Number {
     private int number;
 
     public Number(int number) {
-        if(numberRangeValidationTest(number)){
+        if (numberRangeValidationTest(number)) {
             this.number = number;
         }
     }
 
-    public Number(String numberInput){
+    public Number(String numberInput) {
         try {
             int convertedNumber = Integer.parseInt(numberInput);
-            if(numberRangeValidationTest(convertedNumber)){
+            if (numberRangeValidationTest(convertedNumber)) {
                 this.number = convertedNumber;
             }
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("입력하신 값이 숫자가 아닙니다.");
         }
     }
@@ -32,15 +31,15 @@ public class Number {
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(obj instanceof Number){
+    public boolean equals(Object obj) {
+        if (obj instanceof Number) {
             return ((Number) obj).number == this.number;
         }
         return false;
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return this.number;
     }
 }
