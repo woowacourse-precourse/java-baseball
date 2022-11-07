@@ -40,7 +40,11 @@ public class BaseballGame {
             GameResult gameResult = referee.judge(computer.getAnswer(), user.getInputNumber());
             strikeCount = gameResult.getStrikeCount();
             gameResult.show();
-        } while (strikeCount != GAME_END_STRIKE_COUNT);
+        } while (isGameContinue(strikeCount));
+    }
+
+    public boolean isGameContinue(int strikeCount) {
+        return strikeCount != GAME_END_STRIKE_COUNT;
     }
 
     private void end() {
