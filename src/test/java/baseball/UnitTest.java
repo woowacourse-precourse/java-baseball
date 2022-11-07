@@ -20,16 +20,17 @@ class UnitTest extends NsTest {
         String examNum3 = "ktx";
         String examNum4 = "112";
 
-        boolean return1 = ValidationUtil.ValidateInputNumber(examNum1);
-        boolean return2 = ValidationUtil.ValidateInputNumber(examNum2);
-        boolean return3 = ValidationUtil.ValidateInputNumber(examNum3);
-        boolean return4 = ValidationUtil.ValidateInputNumber(examNum4);
+        boolean return1 = ValidationUtil.validateInputNumber(examNum1);
+        boolean return2 = ValidationUtil.validateInputNumber(examNum2);
+        boolean return3 = ValidationUtil.validateInputNumber(examNum3);
+        boolean return4 = ValidationUtil.validateInputNumber(examNum4);
 
         assertThat(return1).isEqualTo(false);
         assertThat(return2).isEqualTo(false);
         assertThat(return3).isEqualTo(false);
         assertThat(return4).isEqualTo(false);
     }
+
 
 
     @Override

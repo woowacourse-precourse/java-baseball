@@ -2,7 +2,7 @@ package baseball.util;
 
 public class ValidationUtil {
 
-    public static boolean ValidateInputNumber(String input) {
+    public static boolean validateInputNumber(String input) {
         if (input.length()==3 && !input.contains("0")
                 && validateIsDigit(input) && validateDuplicateNumber(input)) {
             return true;
