@@ -96,8 +96,76 @@ class GameInit{
     public GameInit() {
         List<Integer> computerNumber = new ComputerNumber().computerNumber;
         List<Integer> playerNumber = new PlayerNumber().playerNumber;
+        GamePlay gamePlay = new GamePlay(computerNumber, playerNumber);
+    }
+}
+
+class GamePlay {
+    GamePlay(List<Integer> computerNumber, List<Integer> playerNumber) {
+        boolean isRight = isRight(computerNumber, playerNumber);
+        while (!isRight) {
+            getHint(computerNumber, playerNumber);
+            playerNumber = new PlayerNumber().playerNumber;
+            isRight = isRight(computerNumber, playerNumber);
+        }
+        new GameEnd();
     }
 
+    private boolean isRight(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int n = computerNumber.size();
+        for (int i = 0; i < n; i++)
+            if (computerNumber.get(i) != playerNumber.get(i))
+                return false;
+        return true;
+    }
+
+    private void getHint(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strike = checkStrike(computerNumber, playerNumber);
+        int ball = checkBall(computerNumber,playerNumber);
+        printHint(strike, ball);
+    }
+
+    private int checkStrike(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int strike = 0;
+        int n = computerNumber.size();
+        for (int i = 0; i < n; i++) {
+            if (playerNumber.get(i) == computerNumber.get(i))
+                strike++;
+        }
+        return strike;
+    }
+
+    private int checkBall(List<Integer> computerNumber, List<Integer> playerNumber) {
+        int ball = 0;
+        int n = computerNumber.size();
+        for (int i = 0; i < n; i++) {
+            if (computerNumber.contains(playerNumber.get(i)))
+                ball++;
+        }
+        int strike = checkStrike(computerNumber, playerNumber);
+        return ball - strike;
+    }
+
+    private void printHint(int strike, int ball) {
+        if ((strike == 0) && (ball == 0)) {
+            System.out.println("낫싱");
+            return;
+        }
+        if ((strike == 0) && (ball != 0)) {
+            System.out.println(ball + "볼");
+            return;
+        }
+        if ((strike != 0) && (ball == 0)) {
+            System.out.println(strike + "스트라이크");
+            return;
+        }
+        if ((strike != 0) && (ball != 0)) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+    }
+}
+
+class GameEnd {
 }
 
 public class Application {
