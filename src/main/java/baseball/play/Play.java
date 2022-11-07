@@ -28,13 +28,10 @@ public class Play {
 
     public Play(){
         computerNumber = new ComputerNumber();
-
         userNumber = new UserNumber();
-
         numberException = new NumberException();
 
     }
-
 
     public void playBaseball(){
         computerNumberList = computerNumber.generateNumber();
@@ -47,9 +44,8 @@ public class Play {
             }
         }
         restartGame();
-
-
     }
+
     public boolean getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
         int strike = checkStrike(userNumberList,computerNumberList);
         int ball = checkBall(userNumberList,computerNumberList);
@@ -76,7 +72,6 @@ public class Play {
             System.out.println(OPTION_MESSAGE);
         }
         return false;
-
     }
 
     public int checkStrike(List<Integer> userNumberList, List<Integer> computerNumberList){
@@ -99,22 +94,6 @@ public class Play {
         return ball;
     }
 
-    public void continueGame(int strike){
-        if(strike!=3){
-            playBaseball();
-        }
-        else{
-            String inputOption = Console.readLine();
-            restart(inputOption);
-        }
-
-    }
-    public void restart(String inputOption) {
-//        numberException.validOption(inputOption);
-        if (inputOption.equals("1")) {
-            playBaseball();
-        }
-    }
     public void restartGame(){
         String inputOption = Console.readLine();
         numberException.validOption(inputOption);
