@@ -35,7 +35,6 @@ class ComputerTest {
     @Test
     @Order(1)
     void computerPrintStartGame() {
-        //User.inputValueTestPlayingMode("123");
         Computer.testComputerPrint(1, "");
         Assertions.assertThat("숫자 야구 게임을 시작합니다.").isEqualTo(outContent.toString().trim());
     }
@@ -43,7 +42,6 @@ class ComputerTest {
     @Test
     @Order(2)
     void computerPrintInputNumber() {
-        //User.inputValueTestPlayingMode("123");
         Computer.testComputerPrint(2, "");
         Assertions.assertThat("숫자를 입력해주세요 : ").isEqualTo(outContent.toString());
     }
