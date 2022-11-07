@@ -26,6 +26,7 @@ public class Baseball {
         do {
             setComputerNumbers();
             playGame();
+            OutputView.printGameOver();
         } while (!isShutdown());
     }
 
