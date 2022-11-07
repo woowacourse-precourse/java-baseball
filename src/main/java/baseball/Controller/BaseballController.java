@@ -40,4 +40,11 @@ public class BaseballController {
         }
     }
 
+    //볼 판정 및 카운트
+    public void isNumberBall(List<String> randomNumber, List<String> inputNumber, String number) {
+        if(randomNumber.contains(number) && randomNumber.indexOf(number)!=inputNumber.indexOf(number)) {
+            ball = countStrikeOrBall(ball);
+        }
+    }
+
 }
