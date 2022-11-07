@@ -18,7 +18,7 @@ public class DataProcessing {
         this.dataForProcess = inputData;
     }
 
-    public void makeRandomData(){
+    public void makeRandomData() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -54,7 +54,7 @@ public class DataProcessing {
         return count;
     }
 
-    public int[] getProcessedData(){
+    public int[] getProcessedData() {
         int[] dataProcessed = new int[2];
         dataProcessed[STRIKE_INDEX] = checkStrike();
         dataProcessed[BALL_INDEX] = checkBall() - dataProcessed[STRIKE_INDEX]; // 스트라이크와 중복 빼주기
