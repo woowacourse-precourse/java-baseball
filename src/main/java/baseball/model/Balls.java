@@ -34,6 +34,22 @@ public class Balls {
         }
     }
 
+    public Result match(Balls balls) {
+        Result result = new Result();
+        for (Ball ball : balls.getBalls()) {
+            result.add(match(ball));
+        }
+        return result;
+    }
+
+    private BallStatus match(Ball inputBall) {
+        return this.balls.stream()
+                .map(ball -> ball.match(inputBall))
+                .filter(status -> !status.isNothing())
+                .findFirst()
+                .orElse(BallStatus.NOTHING);
+    }
+
     public List<Ball> getBalls() {
         return Collections.unmodifiableList(balls);
     }
