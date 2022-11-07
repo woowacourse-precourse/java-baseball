@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class Application {
     public static void main(String[] args) {
 
+        //UserInput.requestBaseballNumber();
+
         NumberBaseballGame.startGame();
     }
 }
@@ -79,11 +81,15 @@ class PrintGuidSentence {
     }
     public static void printResult(int strike, int ball) {
         String dst = "";
-        if (strike > 0) {
-            dst = dst + strike + BaseballGameSentence.STRIKE;
-        }
+
         if (ball > 0) {
             dst = dst + ball + BaseballGameSentence.BALL;
+        }
+        if (strike > 0) {
+            if (ball > 0) {
+                dst = dst + " ";
+            }
+            dst = dst + strike + BaseballGameSentence.STRIKE;
         }
         if (strike + ball == 0) {
             dst = BaseballGameSentence.NOTHING;
