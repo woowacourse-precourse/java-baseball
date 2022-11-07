@@ -11,6 +11,7 @@ public class Application {
     static private List<Integer> computerNumber = new ArrayList<>();
 
     static void registerUserNumber() {
+        System.out.print("숫자를 입력해주세요: ");
         String input = Console.readLine();
         if (isValidNumber(input)) {
             int inputNumber = Integer.parseInt(input);
@@ -126,13 +127,17 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
+    static void setGame() {
+        registerComputerNumber();
+        playGame();
+    }
+
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         try {
-            registerComputerNumber();
-            playGame();
+            setGame();
             while (isRestart()) {
-                registerComputerNumber();
-                playGame();
+                setGame();
             }
         } catch (IllegalArgumentException e) {
             System.err.println(e);
