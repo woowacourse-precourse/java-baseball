@@ -15,7 +15,7 @@ public class Computer {
         this.numbers = getRandomNumbers();
     }
 
-    public static String getRandomNumbers() {
+    private static String getRandomNumbers() {
         List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
         StringBuilder sb = new StringBuilder();
         for (int i : list) {

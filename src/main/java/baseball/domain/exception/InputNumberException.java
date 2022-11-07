@@ -5,9 +5,10 @@ import java.util.List;
 
 public class InputNumberException {
 
-    public static List<Character> list = new ArrayList<>();
+    public static List<Character> list;
 
     public static void inputNumberVerifier(String numbers) {
+        list = new ArrayList<>();
         isNumbersLengthThree(numbers);
         isOnlyNumber(numbers);
         isNumbersOneToNine(numbers);
