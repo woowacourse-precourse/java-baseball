@@ -43,21 +43,21 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 숫자입력시_자리수_초과_예외처리_테스트(){
-        Parser parser=new Parser();
+        Parser parser=Parser.getInstance();
         String input="1234";
         assertThatThrownBy(()->parser.parseClientInput(input,3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 숫자입력시_올바르지_않은_값_예외처리_테스트(){
-        Parser parser=new Parser();
+        Parser parser=Parser.getInstance();
         String input="12q";
         assertThatThrownBy(()->parser.parseClientInput(input,3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 숫자입력시_중복된_값_예외처리_테스트(){
-        Parser parser=new Parser();
+        Parser parser=Parser.getInstance();
         String input="122";
         assertThatThrownBy(()->parser.parseClientInput(input,3))
                 .isInstanceOf(IllegalArgumentException.class);

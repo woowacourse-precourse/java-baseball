@@ -18,7 +18,7 @@ public class GameService {
     private GameService() {
         gameRepository = GameRepository.getInstance();
         messageStore = MessageStore.getInstance();
-        parser=new Parser();
+        parser=Parser.getInstance();
     }
     public static GameService getInstance() {
         return instance;

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
+    private static final Parser instance=new Parser();
+    private Parser(){}
+    public static Parser getInstance(){
+        return instance;
+    }
     public List<Integer> parseClientInput(String input,Integer size){
         checkSize(input,size);
         return parserInt(input, size);
