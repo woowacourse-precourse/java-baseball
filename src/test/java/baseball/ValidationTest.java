@@ -15,4 +15,15 @@ public class ValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 숫자만 입력 가능합니다.");
     }
+
+    @Test
+    @DisplayName("입력 값의 길이가 3보다 큰 경우 에러 발생")
+    void inputValueLengthTest2() {
+        String inputValue = "12345";
+
+        InputValidation inputValidation = new InputValidation();
+        assertThatThrownBy(() -> inputValidation.validateInputValue(inputValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3자리 숫자만 입력 가능합니다.");
+    }
 }
