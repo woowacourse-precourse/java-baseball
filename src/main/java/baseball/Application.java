@@ -2,7 +2,7 @@ package baseball;
 
 public class Application {
 	public static void main(String[] args) {
-		Operation operation = new Operation();
+		Operation operation = Operation.getInstance();
 		operation.start();
 	}
 }

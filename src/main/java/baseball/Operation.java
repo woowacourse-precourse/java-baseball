@@ -1,8 +1,14 @@
 package baseball;
 
 public class Operation {
-	public Operation() {
+	private static Operation uniqueOperation = new Operation();
+
+	private Operation() {
 		GameView.printStartGame();
+	}
+
+	public static Operation getInstance() {
+		return uniqueOperation;
 	}
 
 	public void start() {
