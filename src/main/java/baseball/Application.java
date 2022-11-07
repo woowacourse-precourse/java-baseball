@@ -33,7 +33,10 @@ public class Application {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         input = Console.readLine();
-        // TODO: 종료 전용 인풋체크 만들어라
+        if (InputCheck.isEndInputError(input)) {
+            throw new IllegalArgumentException("입력오류");
+        }
+
         return Integer.parseInt(input);
     }
 }
