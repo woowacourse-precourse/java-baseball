@@ -2,6 +2,8 @@ package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.domain.PitchResult;
+import baseball.message.ExceptionMessage;
+import baseball.util.Validate;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameService {
@@ -20,7 +22,13 @@ public class BaseballGameService {
 
     //유저의 게임내 숫자 맞추는 인풋 받기
     public void readUserInput() {
-        userInput = Console.readLine();
+        String input = Console.readLine();
+
+        if (Validate.isDifferentDigits(input)) {
+            throw new IllegalArgumentException(ExceptionMessage.IS_NOT_DUPLICATE_DIGITS);
+        }
+
+        userInput = input;
     }
 
     private void setBallStatus() {

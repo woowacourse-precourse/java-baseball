@@ -1,5 +1,7 @@
 package baseball.util;
 
+import baseball.message.ExceptionMessage;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +11,10 @@ import static baseball.util.ProcessCode.RESTART;
 public class Validate {
 
     public static boolean isRuleDigit(String input) {
-        return input.length() == GameRule.NUMBER_OF_NUMBERS;
+        if (input.length() == GameRule.NUMBER_OF_NUMBERS) {
+            return true;
+        }
+        throw new IllegalArgumentException(ExceptionMessage.IS_NOT_VALID_LENGTH);
     }
 
     public static boolean isDifferentDigits(String digits) {
@@ -40,7 +45,10 @@ public class Validate {
     }
 
     public static boolean isAcceptAbleEndGame(String userInput) {
-        return isReStartGame(userInput) || isFinishGame(userInput);
+        if (isReStartGame(userInput) || isFinishGame(userInput)) {
+            return true;
+        }
+        throw new IllegalArgumentException(ExceptionMessage.IS_NOT_ONE_AND_TWO);
     }
 
     public static boolean isReStartGame(String userInput) {

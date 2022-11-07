@@ -3,9 +3,18 @@ package baseball.util;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.assertj.core.api.Assertions.*;
 
 class ValidateTest {
+
+    private InputStream inputStream;
+
+    private static InputStream generateInput(String input) {
+        return new ByteArrayInputStream(input.getBytes());
+    }
 
     @DisplayName("3자리인지 확인하는 기능")
     @Test
@@ -97,6 +106,17 @@ class ValidateTest {
         String userInput = "2";
 
         assertThat(Validate.isReStartGame(userInput)).isFalse();
+    }
+
+    @DisplayName("입력 검증 기능에 부합하지 않은 입력시 예외 발생")
+    @Test
+    void 사용자_입력_1도아니고_2도아니면_예외를_확인하는_테스트() {
+        String theInput = "3";
+        inputStream = generateInput(theInput);
+        System.setIn(inputStream);
+
+        assertThatThrownBy(() -> Validate.isAcceptAbleEndGame(theInput))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }
