@@ -14,8 +14,7 @@ public class User extends Player {
         System.out.print(INPUT_MSG);
         String inputNums = Console.readLine();
         checkingNums(inputNums);
-        List<Integer> inputNumsList = inputToList(inputNums);
-        setNums(inputNumsList);
+        setNums(inputsToList(inputNums));
     }
 
     public void checkingNums(String inputNums) {
@@ -26,21 +25,22 @@ public class User extends Player {
 
     private boolean isErrorInputNums(String inputNums) {
         List<Integer> inputNumsList = new ArrayList<>();
-
-        if (inputNums.length() != ballSize) return true; //3개의 숫자가 들어오지 않은 경우
+        //3개의 숫자가 들어오지 않은 경우
+        if (inputNums.length() != ballSize) return true;
         for (int i = 0; i < ballSize; i++) {
             char eachNumC = inputNums.charAt(i);
-            if (eachNumC < '1' || '9' < eachNumC) return true;// 숫자의 범위에 해당하지 않는경우, 숫자가 아닌경우
+            // 숫자의 범위에 해당하지 않는경우, 숫자가 아닌경우
+            if (eachNumC < '1' || '9' < eachNumC) return true;
 
             int eachNumI = eachNumC - '0';
-            if (inputNumsList.contains(eachNumI)) return true; //각각의 다른숫자가 아닌경우
+            //각각의 다른 숫자가 아닌경우
+            if (inputNumsList.contains(eachNumI)) return true;
             inputNumsList.add(eachNumI);
         }
         return false;
     }
 
-
-    public List<Integer> inputToList(String inputNums) {
+    public List<Integer> inputsToList(String inputNums) {
         List<Integer> inputNumsList = new ArrayList<>();
         for (int i = 0; i < ballSize; i++) {
             int eachNumI = inputNums.charAt(i) - '0';

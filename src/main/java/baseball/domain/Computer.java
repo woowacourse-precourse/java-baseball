@@ -7,10 +7,6 @@ import java.util.List;
 
 public class Computer extends Player {
 
-    public Computer() {
-        setRandNums();
-    }
-
     public void setRandNums() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
