@@ -7,14 +7,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-    private static final int STARTGAME = 0;
-    private static final int MIDGAME = 1;
-    private static final int ENDGAME = 2;
-    private static final int EXITGAME = 3;
+    static final int STARTGAME = 0;
+    static final int MIDGAME = 1;
+    static final int ENDGAME = 2;
+    static final int EXITGAME = 3;
 
-    private static int gameState;
-    private static int ball = 0;
-    private static int strike = 0;
+    static int gameState;
+    static int ball = 0;
+    static int strike = 0;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -137,7 +137,7 @@ public class Application {
         }
     }
 
-    public static void isInput1Or2 (String userInput) {
+    public static void isInput1Or2(String userInput) {
         if (!(userInput.equals("1") || userInput.equals("2"))) {
             throw new IllegalArgumentException("1 또는 2만 입력해주세요.");
         }
