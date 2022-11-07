@@ -7,14 +7,14 @@ import java.util.List;
 
 public class Generate_function {
     public String generate_numbers() {
-        List<Integer> digits = new ArrayList<>();
-        while (digits.size() < 3) {
+        List<Integer> number = new ArrayList<>();
+        while (number.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!digits.contains(randomNumber)) {
-                digits.add(randomNumber);
+            if (!number.contains(randomNumber)) {
+                number.add(randomNumber);
             }
         }
 
-        return Transformation_function.Integer_list_2_String(digits);
+        return Transformation_function.Integer_list_2_String(number);
     }
 }
