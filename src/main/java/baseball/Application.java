@@ -62,7 +62,6 @@ public class Application {
         List<Integer> standardNumber = new ArrayList<>(generateRandomNumber());
         int strikeCount = 0;
         int ballCount;
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(strikeCount != 3){
             System.out.print("숫자를 입력해 주세요 : ");
@@ -100,6 +99,8 @@ public class Application {
 
     public static void main(String[] args) {
         int gameStatus = 1;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while (gameStatus == 1){
             runBaseballGame();
             String userStatus = Console.readLine();
