@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.utils.message;
 
 public class OutputMessage {
 

@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.domain.computer.Computer;
 import baseball.domain.referee.Referee;
-import baseball.utils.OutputMessage;
+import baseball.utils.message.OutputMessage;
 import baseball.view.input.Input;
 import baseball.view.output.Output;
 import java.util.List;
