@@ -24,8 +24,6 @@ public class Controller {
 //    private static final int DIGITS = Rule.DIGITS.getValue();
 //    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
 //    private static final String COMMAND_END = Rule.COMMAND_END.toString();
-    private final View view = new View();
-    private final Model model = new Model();
 
 //    public void generate() {
 //        View.printStart();
@@ -49,14 +47,14 @@ public class Controller {
 //    }
 
     public void generate() {
-        view.printStart();
-        computerNumber = model.createComputerNumber();
+        View.printStart();
+        computerNumber = Model.createComputerNumber();
         do {
-            List<Integer> playerNumber = model.createPlayerNumber();           //유효하지 않으면 예외발생
+            List<Integer> playerNumber = Model.createPlayerNumber();           //유효하지 않으면 예외발생
             Map<String, Integer>resultMap = checkAnswer(computerNumber, playerNumber);
-            view.printHint(createHint(resultMap));
+            View.printHint(createHint(resultMap));
             if (isCorrect(resultMap)) {
-                String exitInput = view.getExitInput(); //예외발생
+                String exitInput = View.getExitInput(); //예외발생
                 restartOrEnd(exitInput);
             }
         }while(isPlaying);
@@ -108,7 +106,7 @@ public class Controller {
 
     public void restartOrEnd(String input) {
         if (input.equals(COMMAND_RESTART)) {
-            computerNumber = model.createComputerNumber();
+            computerNumber = Model.createComputerNumber();
         }
         if (input.equals(COMMAND_END)) {
             isPlaying = false;
