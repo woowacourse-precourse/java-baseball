@@ -28,6 +28,7 @@ public class Application {
     }
 
     public static void userNumberMessagePrint(){
+        String printMessage = "숫자를 입력하세요 : ";
         System.out.print("숫자를 입력하세요 : ");
     }
 
@@ -131,14 +132,11 @@ public class Application {
         }
         if(strikeNumber == 0 && ballNumber == 0){
             System.out.println("낫싱");
-        }
-        if(strikeNumber == 0 && ballNumber >0){
+        }else if(strikeNumber == 0 && ballNumber >0){
             System.out.println(ballNumber+"볼");
-        }
-        if(ballNumber == 0 && strikeNumber >0){
+        }else if(ballNumber == 0 && strikeNumber >0){
             System.out.println(strikeNumber + "스트라이크");
-        }
-        if(ballNumber >0 && strikeNumber >0){
+        }else if(ballNumber >0 && strikeNumber >0){
             System.out.println(ballNumber +"볼 "+strikeNumber+"스트라이크");
         }
 
@@ -174,7 +172,7 @@ public class Application {
         inputUserNumberService(computerNumbersList);
         checkedBaseballGaemOfUserAnswer = inputAvailableUserAnswerService();
         if(checkedBaseballGaemOfUserAnswer.equals(String.valueOf(1))){
-            baseballGameStart();
+            baseballGameService();
         }
         return ;
     }
@@ -182,6 +180,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         baseballGameStart();
-        inputAvailableUserAnswerService();
+        baseballGameService();
+
     }
 }
