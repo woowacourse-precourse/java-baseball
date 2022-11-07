@@ -18,7 +18,8 @@ public class BaseballGame {
         do {
             int[] userNumber = userInput.getUserInput();
             gameResult.compareNumbers(randomNumber, userNumber);
+            gameResult.showResult();
 
-        } while (true);
+        } while (gameResult.strike != 3);
     }
 }

@@ -17,10 +17,21 @@ public class GameResult {
             countStrike(randomNumber.get(i).intValue(), userNumber[i]);
             countBall(randomNumber, userNumber, i);
         }
-
-        showResult();
     }
 
+    public void showResult() {
+        if (this.ball > 0) {
+            System.out.print(this.ball + "볼 ");
+        }
+        if (this.strike > 0) {
+            System.out.print(this.strike + "스트라이크 ");
+        }
+        if (this.ball == 0 && this.strike == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
+    }
+    
     private void countStrike(int random, int user) {
         if (random == user) {
             this.strike++;
@@ -36,16 +47,4 @@ public class GameResult {
         }
     }
 
-    private void showResult() {
-        if (this.ball > 0) {
-            System.out.print(this.ball + "볼 ");
-        }
-        if (this.strike > 0) {
-            System.out.print(this.strike + "스트라이크 ");
-        }
-        if (this.ball == 0 && this.strike == 0) {
-            System.out.print("낫싱");
-        }
-        System.out.println();
-    }
 }
