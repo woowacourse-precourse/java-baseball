@@ -13,7 +13,6 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (oneMore.equals("1")) {
             randomNumber = getRandomNumber();
-            ball = 0;
             strike = 0;
             while (strike != 3) {
                 input = getInput();
@@ -87,14 +86,14 @@ public class Application {
             return;
         }
         if (ball != 0 && strike != 0) {
-            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+            System.out.println(ball + "볼 " + strike + "스트라이크");
             return;
         }
         if (ball != 0) {
-            System.out.printf("%d볼\n", ball);
+            System.out.println(ball + "볼");
             return;
         }
-        System.out.printf("%d스트라이크\n", strike);
+        System.out.println(strike + "스트라이크");
     }
 
     static int getRandomNumber() {
@@ -141,6 +140,11 @@ public class Application {
     }
 
     static boolean isValidInputNumber(String str) {
+        for (int i = 0; i < str.length(); i++){
+            if (!(str.charAt(i) >= '0' && str.charAt(i) <= '9'))
+                return false;
+        }
+
         for (int i = 0; i < str.length(); i++) {
             if (isDuplicate(str.charAt(i), str)) {
                 return false;
