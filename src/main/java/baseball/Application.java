@@ -15,6 +15,9 @@ public class Application {
 
         // 분석 결과에 따른 힌트 도출
         String hint = getHint(judgement);
+
+        // 분석 결과에 따른 결과 도출
+        String result = getResult(judgement);
     }
     private static int[] genPcNum() {
         int[] pcNum = new int[3];
@@ -51,5 +54,13 @@ public class Application {
         }
         return hint;
     }
-
+    private static String getResult(int[] judgement) {
+        String result;
+        if (judgement[1] == 3) {
+            result = "win";
+        } else {
+            result = "retry";
+        }
+        return result;
+    }
 }
