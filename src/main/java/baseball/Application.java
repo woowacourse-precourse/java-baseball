@@ -9,8 +9,27 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        gameManager();
     }
 
+
+    public static void gameManager() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean restartFlag = true;
+
+        while (restartFlag == true) {
+            game();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartAnswer = Console.readLine();
+            if (restartAnswer.equals(String.valueOf("1")) ) {
+                restartFlag = true;
+            } else if (restartAnswer.equals(String.valueOf("2"))) {
+                restartFlag = false;
+            } else {
+                throw new IllegalArgumentException("wrong input : " + restartAnswer);
+            }
+        }
+    }
 
     public static void game() {
         List<Integer> answer = createAnswer();
