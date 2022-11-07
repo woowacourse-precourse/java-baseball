@@ -39,14 +39,21 @@ public class PlayerService {
 
     /**
      * 플레이어가 입력한 숫자의 개수를 확인한후 예외가 있으면 던진다. <br>
-     * 정상이라면 String 배열로 변환시킨뒤 변환된 numbers 리스트를 player 저장후 반환한다.
+     * 정상이라면 String 배열로 변환시킨뒤 변환된 numbers 리스트를 player 저장한다.
      *
      * @param inputNumbers 입력한 숫자들
      * @return 플레이어
      */
-    public Player inputNumbersToPlayer(String inputNumbers) {
+    public void inputNumbersToPlayer(String inputNumbers) {
         inputException.isInvalidNumbersSize(inputNumbers);
         player.setNumbers(getNumbersToList(inputNumbers.split("")));
+    }
+
+    /**
+     * 플레이어를 가져온다.
+     * @return 플레이어
+     */
+    public Player getPlayer() {
         return player;
     }
 

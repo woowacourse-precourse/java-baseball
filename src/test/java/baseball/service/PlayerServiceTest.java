@@ -17,24 +17,24 @@ public class PlayerServiceTest {
         @Test
         @DisplayName("123")
         void case1() {
-            Player player = new Player();
-            player = playerService.inputNumbersToPlayer("123");
+            playerService.inputNumbersToPlayer("123");
+            Player player = playerService.getPlayer();
             Assertions.assertThat(player.getNumbers()).contains(1, 2, 3);
         }
 
         @Test
         @DisplayName("456")
         void case2() {
-            Player player = new Player();
-            player = playerService.inputNumbersToPlayer("456");
+            playerService.inputNumbersToPlayer("456");
+            Player player = playerService.getPlayer();
             Assertions.assertThat(player.getNumbers()).contains(4, 5, 6);
         }
 
         @Test
         @DisplayName("789")
         void case3() {
-            Player player = new Player();
-            player = playerService.inputNumbersToPlayer("789");
+            playerService.inputNumbersToPlayer("789");
+            Player player = playerService.getPlayer();
             Assertions.assertThat(player.getNumbers()).contains(7, 8, 9);
         }
     }
