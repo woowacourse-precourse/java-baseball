@@ -13,14 +13,14 @@ public class GameSystem {
 
     GameScore gameScore = new GameScore();
     PlayerInput player = new PlayerInput();
-    Computer computer = new Computer();
+    Computer computer;
     List<Integer> numOfComputer;
     List<Integer> numOfPlayer;
 
     int numStrikes;
     int numBalls;
 
-    boolean gameActivate = true;
+    String gameValue ;
 
 
     public GameSystem() {
@@ -29,7 +29,7 @@ public class GameSystem {
 
     public void GameStart() {
         System.out.println(STR_GAME_START);
-
+        initValue();
         GamePlay();
     }
 
@@ -44,37 +44,57 @@ public class GameSystem {
         numBalls = gameScore.CheckBalls(numOfComputer, numOfPlayer);
     }
 
-    public void GamePlay() {
+    private void PrintGameValue() {
+        gameValue = gameScore.ReturnScore(numStrikes, numBalls);
+        System.out.println(gameValue);
+    }
+
+    public boolean GamePlay() {
 
         //numOfComputer = computer.randomNumber;
-        numOfComputer = Arrays.asList(7,2,4);
         numOfPlayer = player.ReturnPlayerNum(InputNumPlayer());
+        System.out.println(numOfComputer+ "    "+ numOfPlayer);
 
         GetGameReturnValue();
-
-        System.out.println(numOfComputer+"  "+numOfPlayer);
-        System.out.println(gameScore.ReturnScore(numStrikes, numBalls));
+        PrintGameValue();
 
         if(numStrikes == 3) {
             System.out.println(STR_GAME_END);
-
-            GameStartAgain();
+            return false;
         }
+
+        GamePlay();
+        return false;
     }
 
-    public void GameStartAgain() {
+    public boolean GameStartAgain() {
+        boolean boolRestart;
         System.out.println(STR_GAME_AGAIN);
 
         String inputReOrEnd = Console.readLine();
-        InputGameRestartOrEnd(inputReOrEnd);
+
+        boolRestart = InputGameRestartOrEnd(inputReOrEnd);
+        if(boolRestart) {
+            return true;
+        }
+
+        return false;
     }
 
-    public void InputGameRestartOrEnd(String input) {
-
+    public boolean InputGameRestartOrEnd(String input) {
         if(input.equals("1")) {
-            System.out.println(true);
-            GamePlay();
+            return true;
         }
+
+        return false;
+    }
+
+    public void initValue() {
+        numStrikes = 0;
+        numBalls = 0;
+
+        computer = new Computer();
+        numOfComputer = computer.randomNumber;
     }
 
 }
