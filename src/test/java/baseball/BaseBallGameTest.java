@@ -30,5 +30,14 @@ public class BaseBallGameTest {
 
             assertThat(Application.getStrikeCount(computerNumbers, playerNumbers)).isEqualTo(1);
         }
+
+        @DisplayName("볼 개수 테스트")
+        @Test
+        void getBallCount() {
+            final List<Integer> computerNumbers = List.of(5, 8, 9);
+            final List<Integer> playerNumbers = List.of(5, 9, 7);
+
+            assertThat(Application.getBallCount(computerNumbers, playerNumbers)).isEqualTo(1);
+        }
     }
 }
