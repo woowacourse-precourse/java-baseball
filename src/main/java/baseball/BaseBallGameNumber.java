@@ -14,6 +14,12 @@ public class BaseBallGameNumber {
     checkNumbersValid();
   }
 
+  public void setGameNumberByList(List<Integer> numberList){
+    gameNumberList.add(0, numberList.get(0));
+    gameNumberList.add(1, numberList.get(1));
+    gameNumberList.add(2, numberList.get(2));
+  }
+
   private int stringToInt(String inputString) {
     try {
       return Integer.parseInt(inputString);
