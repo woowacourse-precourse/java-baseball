@@ -9,16 +9,17 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
+        // 프로그램 시작
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
+            // 새로운 문제 생성
             answer = new ArrayList<>();
             generateRandomNumber();
 
+            // 새로운 게임 시작
             int again = game();
-
+            // 게임 재시작 or 종료
             if (again == 2)
                 break;
         }
@@ -33,56 +34,53 @@ public class Application {
      * play a single game
      */
     public static int game() {
+        String stringInput;
+
         while (true) {
-            // 입력받기
+            // 숫자 입력
             System.out.print("숫자를 입력해주세요 : ");
-            String stringInput = Console.readLine().strip();
+            stringInput = Console.readLine().strip();
 
-            // 오류체크 : 숫자 수, 다른 문자 있는지?
-            if( stringInput.length() != 3)
-                throw new IllegalArgumentException("올바르지 않은 숫자 입력입니다.");
-
-            numbers = new ArrayList<>();
-            try {
-                for (int i = 0; i < 3; i++) {
-                    numbers.add(stringInput.charAt(i) - '0');
-                }
-            } catch (IllegalArgumentException ex) {
-                throw new IllegalArgumentException("올바르지 않은 숫자 입력입니다.");
-            }
+            renewNumbers(stringInput);
 
             // 계산하기
-            strike = ScoreDetect.getStrikeCount(answer, numbers);
-            ball = ScoreDetect.getBallCount(answer, numbers);
-
-            if (strike == -1 || ball == -1)
+            try {
+                strike = ScoreDetect.getStrikeCount(answer, numbers);
+                ball = ScoreDetect.getBallCount(answer, numbers);
+            } catch (IllegalArgumentException e){
                 throw new IllegalArgumentException("올바르지 않은 숫자 리스트입니다.");
-
-            // 출력하기
+            }
+            
+            // 결과 출력
             if (strike == 3) {
                 System.out.println("3스트라이크\n" +
                         "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                // 입력받기
-                int number = 0;
+                // 사용자 입력 받기
                 stringInput = Console.readLine().strip();
-
-                try {
-                    number = Integer.parseInt(stringInput);
-                    if (number != 1 && number != 2)
-                        throw new IllegalArgumentException();
-                } catch (IllegalArgumentException ex) {
-                    throw new IllegalArgumentException("올바르지 않은 옵션 입력입니다.");
-                }
-
-                //오류체크
-                return number;
+                return getUserOption(stringInput); // 게임 종료
             } else if (strike != 0 || ball != 0) {
                 System.out.println(ball + "볼 " + strike + "스트라이크");
             } else {
                 System.out.println("낫싱");
             }
         }
+    }
+
+    /**
+     * parse user's option input and return  option code
+     * getUserOption
+     */
+    public static int getUserOption(String stringInput) {
+        int number;
+        try {
+            number = Integer.parseInt(stringInput);
+            if (number != 1 && number != 2)
+                throw new IllegalArgumentException();
+        } catch (IllegalArgumentException ex) {
+            throw new IllegalArgumentException("올바르지 않은 옵션 입력입니다.");
+        }
+        return number;
     }
 
     /**
@@ -94,6 +92,24 @@ public class Application {
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
+        }
+    }
+
+    /**
+     * make numbers from string input
+     */
+    public static void renewNumbers(String stringInput) {
+        // 오류체크 : 숫자 수, 다른 문자 있는지?
+        if (stringInput.length() != 3)
+            throw new IllegalArgumentException("올바르지 않은 숫자 입력입니다.");
+        for (int i = 0; i < 3; i++) {
+            if (stringInput.charAt(i) < '0' || stringInput.charAt(i) > '9')
+                throw new IllegalArgumentException("올바르지 않은 숫자 입력입니다.");
+        }
+
+        numbers = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            numbers.add(stringInput.charAt(i) - '0');
         }
     }
 
