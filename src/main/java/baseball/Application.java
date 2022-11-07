@@ -10,6 +10,14 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+    private static Number restartGame(Number computer) {
+        if (gameExecution == RESTART_GAME) {
+            gameExecution = 0;
+            return new Number();
+        }
+        return computer;
+    }
+
     private static void stopProgram() {
         if (gameExecution == STOP_PROGRAM) {
             ResponseMessage.stopProgram();
