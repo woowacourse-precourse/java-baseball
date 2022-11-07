@@ -84,10 +84,19 @@ public class Application {
         if (restart)
             playGame();
     }
+    public static boolean checkErrorRestartNumber(String number) {
+        boolean error = true;
+        if (number.length() != 1)
+            error = false;
+        else if (number.charAt(0) != '1' && number.charAt(0) != '2')
+            error = false;
+        return error;
+    }
     public static boolean restartQuestion() {
         boolean restart = false;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String number = Console.readLine();
+        checkError(checkErrorRestartNumber(number));
         if (number.charAt(0) == '1')
             restart = true;
         return restart;
