@@ -32,21 +32,15 @@ public class GameController {
     }
 
     private String generateOutput(int strike, int ball) {
-        String output = "";
-        if (ball != 0) {
-            output += ball + "볼 ";
-        }
-        if (strike != 0) {
-            output += strike + "스트라이크";
-        }
         if (strike == 0 && ball == 0) {
-            output = "낫싱";
+            return "낫싱";
+        } else if (strike == 0 && ball != 0) {
+            return ball + "볼";
+        } else if (strike != 0 && ball == 0) {
+            return strike + "스트라이크";
+        } else {
+            return ball + "볼 " + strike + "스트라이크";
         }
-        if (strike == THREE_STRIKE) {
-            output += "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-        }
-
-        return output;
     }
 
     private boolean judge() {
@@ -74,6 +68,7 @@ public class GameController {
             while (!judge()) {
                 user.generateNumber();
             }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             exit = Integer.parseInt(Console.readLine());
         }
