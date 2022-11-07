@@ -6,7 +6,7 @@ import baseball.View.Constant;
 public class Validation {
 
   public static boolean isValidInput(String number) {
-    return isNumber(number) && isRightLength(number) && isNotDuplicate(number);
+    return isNumber(number) && isRightLength(number) && isNotDuplicate(number) && isRightRange(number);
   }
 
   public static boolean isNumber(String number) {
