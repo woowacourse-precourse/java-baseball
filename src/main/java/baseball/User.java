@@ -19,7 +19,7 @@ public class User implements Number {
 
     }
 
-    public static boolean isNumberInValidRange(List<Integer> inputNumber) {
+    public static boolean isNumberValidRange(List<Integer> inputNumber) {
 
     }
 }
