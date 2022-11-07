@@ -6,22 +6,20 @@ import baseball.view.Output;
 
 import static baseball.controller.Setup.*;
 
-public class Judge {
+public class Referee {
 	User user = new User();
-	Data data = new Data();
 	Rule rule = new Rule();
-	Output output = new Output();
 
 	public void countStrike() {
 
-		if (rule.isStrike(data.computerNumber, data.computerNumIdx, data.userNumber, data.userNumIdx)) {
-			rule.STRIKE++;
+		if (rule.isStrike(Data.computerNumber, Data.computerNumIdx, Data.userNumber, Data.userNumIdx)) {
+			Rule.STRIKE++;
 		}
 	}
 
 	public void countBall() {
-		if (rule.isBall(data.computerNumber, data.computerNumIdx, data.userNumber, data.userNumIdx)) {
-			rule.BALL++;
+		if (rule.isBall(Data.computerNumber, Data.computerNumIdx, Data.userNumber, Data.userNumIdx)) {
+			Rule.BALL++;
 		}
 	}
 
@@ -29,17 +27,17 @@ public class Judge {
 		StringBuilder sb = new StringBuilder();
 
 		if (rule.isNothing()) {
-			return String.valueOf(sb.append("낫싱"));
+			return String.valueOf(sb.append(NOTHING.getValue()));
 		}
 
-		sb.append(rule.BALL).append("볼 ");
-		sb.append(rule.STRIKE).append("스트라이크");
+		sb.append(Rule.BALL).append(BALL.getValue()).append(" ");
+		sb.append(Rule.STRIKE).append(STRIKE.getValue());
 
-		if (rule.STRIKE == 0) {
+		if (Rule.STRIKE == 0) {
 			return sb.toString().replaceAll("\\s[0-9]스트라이크", "");
 		}
 
-		if (rule.BALL == 0) {
+		if (Rule.BALL == 0) {
 			return sb.toString().replaceAll("[0-9]볼\\s", "");
 		}
 
@@ -49,10 +47,9 @@ public class Judge {
 
 	public void checkUserWin() {
 		if (rule.userWin()) {
-			output.print(END_MESSAGE.getValue());
-			rule.USER_WIN = true;
-			rule.USER_INTENTION = user.getIntention();
+			Output.print(END_MESSAGE.getValue());
+			Rule.USER_WIN = true;
+			Rule.USER_INTENTION = user.getIntention();
 		}
 	}
-
 }
