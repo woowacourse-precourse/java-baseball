@@ -10,10 +10,10 @@ public class BaseBallGameResult {
     public final static String STRIKE = "스트라이크";
     public final static String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public final static String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private final List<String> answer;
+    private final List<String> gameResult;
 
     public BaseBallGameResult() {
-        answer = new ArrayList<>();
+        gameResult = new ArrayList<>();
     }
 
     public void printNothing() {
@@ -34,17 +34,17 @@ public class BaseBallGameResult {
 
     private void addBallResult(long count) {
         if (count != 0) {
-            answer.add(count + BALL);
+            gameResult.add(count + BALL);
         }
     }
 
     private void addStrikeResult(long count) {
         if (count != 0) {
-            answer.add(count + STRIKE);
+            gameResult.add(count + STRIKE);
         }
     }
 
     private String addBlank() {
-        return String.join(" ", answer);
+        return String.join(" ", gameResult);
     }
 }
