@@ -78,6 +78,27 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void 사용자가_문자_입력() throws Exception {
+
+        //given
+        String input = "abc";
+        UserInput userInput = new UserInput();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        try {
+            // when
+            userInput.getInput();
+            fail();
+        } catch (IllegalArgumentException e) {
+            //then
+            //pass
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
