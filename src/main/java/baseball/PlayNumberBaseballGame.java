@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class PlayNumberBaseballGame {
 
-    public static List<Integer> createRandomNumberOfComputer() {
+    public List<Integer> createRandomNumberOfComputer() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -16,5 +16,9 @@ public class PlayNumberBaseballGame {
             }
         }
         return computer;
+    }
+
+    public String outputGameStartStatement(){
+        return "숫자 야구 게임을 시작합니다.";
     }
 }
