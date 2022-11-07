@@ -12,7 +12,8 @@ public class GameController {
 
         do {
             userSelected = makeThreeDigitNumber.userSelectedNumber();
-
+            PlayerInputValueExceptions.allInputValueException(userSelected);
+            
         } while (GameHintList.countOfStrike() != 3);
 
     }
