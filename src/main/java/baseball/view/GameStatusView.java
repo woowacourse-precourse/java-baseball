@@ -28,32 +28,32 @@ public class GameStatusView {
         return getOpinion();
     }
 
-    public void clearOpinion(){
+    private void clearOpinion(){
         opinion = "";
     }
 
-    public void askOpinion(){
+    private void askOpinion(){
         System.out.println(END_GAME_COMMAND);
         System.out.println(ASK_OPINION_COMMAND);
     }
 
-    public void readOpinion(){
+    private void readOpinion(){
         opinion = Console.readLine();
     }
 
-    public boolean isNotCorrectAnswer(){
+    private boolean isNotCorrectAnswer(){
         return !opinion.equals(MORE_GAME_NUMBER) && !opinion.equals(END_GAME_NUMBER);
     }
 
-    public void alertWrongAnswer(){
+    private void alertWrongAnswer(){
         System.out.println(WRONG_ANSWER_ALERT);
     }
 
-    public void checkAlert(){
+    private void checkAlert(){
         if(isNotCorrectAnswer())alertWrongAnswer();
     }
 
-    public String getOpinion(){
+    private String getOpinion(){
         return opinion;
     }
 
