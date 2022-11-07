@@ -45,8 +45,8 @@ public class Application {
     }
 
     private static void gameStart(){
-        int[] input_arr = Stream.of(Console.readLine().split("")).mapToInt(Integer::parseInt).toArray();
-        gameStartConditional(input_arr);
+        int[] userNumbers = Stream.of(Console.readLine().split("")).mapToInt(Integer::parseInt).toArray();
+        gameStartConditional(userNumbers);
         List<Integer> computerNumbers = getComputerNumbers();
 
 
