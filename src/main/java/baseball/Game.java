@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
     private static final int CONTINUE = 1;
     private static final int END = 2;
+    private static final char NEW_LINE = '\n';
 
     private int system = CONTINUE;
 
@@ -12,18 +13,22 @@ public class Game {
     }
 
     public void run() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        printMessage("숫자 야구 게임을 시작합니다." + NEW_LINE);
         while (isContinue(system)) {
             Computer computer = new Computer();
             User user = new User();
 
             playGame(computer, user);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            printMessage("3개의 숫자를 모두 맞히셨습니다! 게임 종료" + NEW_LINE);
+            printMessage("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." + NEW_LINE);
             String select = inputSelect();
             validateSelect(select);
             system = Integer.parseInt(select);
         }
+    }
+
+    private void printMessage(String message) {
+        System.out.print(message);
     }
 
     private void validateSelect(String select) {
@@ -47,9 +52,9 @@ public class Game {
     private void playGame(Computer computer, User user) {
         int game = CONTINUE;
         while (isContinue(game)) {
-            System.out.print("숫자를 입력해주세요 : ");
+            printMessage("숫자를 입력해주세요 : ");
             Ball ball = computer.compareDigits(user.input());
-            System.out.println(ball.toString());
+            printMessage(ball.toString() + NEW_LINE);
             game = isEnd(ball);
         }
     }
