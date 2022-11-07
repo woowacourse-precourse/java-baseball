@@ -49,22 +49,21 @@ public class Application {
     	return list;
     }
     
-    //게임 실행 메서드
     public static void game() {
+		
     	ball = 0;
 		strike = 0;
 		
-    	// 사용자 입력 메서드
     	while(strike!=3) {
+    		
+    		ball = 0;
+    		strike = 0;
     		
     		inputNumber = inputNumber();
     		
     		exceptionCheck = checkException();
     		
     		if(exceptionCheck) {
-    			
-    			ball = 0;
-    			strike = 0;
     			compare(computer,inputNumber);
     		}
     		else {
@@ -75,7 +74,6 @@ public class Application {
     	}
     }
     
-    // 사용자 입력 메서드
     public static String inputNumber() {
     	
     	System.out.print(inputMessage);
@@ -154,7 +152,13 @@ public class Application {
 		System.out.println(strike+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		coin = Integer.parseInt(Console.readLine());
-		return coin;
+		if(coin==1) {
+			return coin;
+		}else if(coin==2) {
+			return coin;
+		}else {
+			throw new IllegalArgumentException();
+		}
     }
     
 }
