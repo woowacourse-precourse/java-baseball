@@ -17,4 +17,12 @@ public class Util {
             else{throw new IllegalArgumentException();}
         }
     }
+    public static void isSameEachNumber(String input_Number){
+        for(int i=0; i<input_Number.length()-1;i++){
+            String each_number = input_Number.substring(i+1);
+            if(each_number.contains(Character.toString(input_Number.charAt(i)))){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
