@@ -24,4 +24,10 @@ public class InputView {
         validateDuplicateNumber(player);
         return player;
     }
+
+    public static boolean restartOrEndGame() {
+        OutputView.printRestartOrEnd();
+        int startOrEnd = Integer.parseInt(Console.readLine());
+        return startOrEnd == 1;
+    }
 }
