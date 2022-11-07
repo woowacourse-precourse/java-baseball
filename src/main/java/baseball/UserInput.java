@@ -17,7 +17,7 @@ public class UserInput {
             char c = input.charAt(idx);
             int num = Character.getNumericValue(c);
 
-            if (num == -1) {
+            if (num <= 0) {
                 throw new IllegalArgumentException();
             }
 
