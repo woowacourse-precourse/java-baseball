@@ -32,6 +32,20 @@ public class Game {
 
         return List.of(ball, strike);
     }
+
+    public static String getResultOfPlayerGuess(int ball, int strike){
+        String result = "낫싱";
+        if((strike > 0) && (ball > 0)){
+            result = ball + "볼 " + strike + "스트라이크";
+        } else if(ball > 0){
+            result = ball + "볼";
+        } else if(strike > 0){
+            result = strike + "스트라이크";
+        }
+
+        return result;
+    }
+
     int countNumbersContainedInAnswer(List<Integer> playerGuess){
         return (int) playerGuess.stream()
                 .filter(input -> answer.contains(input))
