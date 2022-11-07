@@ -100,6 +100,7 @@ public class Application {
     }
     
     public static void baseball(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
         boolean run = true, newRandom = false;
         String random = random();
         while(run){
@@ -123,7 +124,7 @@ public class Application {
     
     public static  boolean endGame(){
         if(Console.readLine() == "1"){
-            System.out.println("새로운 게임 시작!");
+            System.out.println("숫자 야구 게임을 시작합니다.");
             return true;
         }
         if(Console.readLine() == "2"){
