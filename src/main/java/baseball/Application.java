@@ -7,7 +7,15 @@ import java.util.List;
 
 public class Application {
     void printresult(int cntstrike, int cntball){
-
+        if(cntball!=0 && cntstrike!=0){
+            System.out.println(cntball + "볼 "+ cntstrike + "스트라이크");
+        } else if(cntball!=0 && cntstrike==0){
+            System.out.println(cntball + "볼");
+        } else if(cntstrike!=0 && cntball==0){
+            System.out.println(cntstrike + "스트라이크");
+        } else{
+            System.out.println("낫싱");
+        }
     }
     boolean check(int[] ans, List<Integer> com){
         boolean again = true;
