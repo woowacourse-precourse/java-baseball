@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.Judge;
 import baseball.model.Player;
+import baseball.model.Score;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -41,5 +42,12 @@ public class GameController {
         Boolean gameSuccess = judge.isGameSuccess();
         printSuccessOrFailHint(gameSuccess);
         return gameSuccess;
+    }
+
+    public void printSuccessOrFailHint(Boolean gameSuccess) {
+        Score score = judge.countScoreOfStrikeAndBall();
+        OutputView.printHint(score);
+
+        if (gameSuccess) OutputView.printGameClear();
     }
 }
