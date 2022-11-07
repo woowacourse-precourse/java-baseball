@@ -11,6 +11,7 @@ public class Player {
     private String replayMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private String input;
+    private List<Integer> inputList = new ArrayList<>();
     private String replay;
 
     public void getPlayerInput() {
@@ -19,6 +20,8 @@ public class Player {
 
         inputValidationCheck(input);
         this.input = input;
+        setInputList();
+    }
 
     public void inputValidationCheck(String input) {
         //IllegalArgumentException 발생 처리
@@ -37,6 +40,13 @@ public class Player {
         }
         catch (NumberFormatException ex) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다");
+        }
+    }
+
+    public void setInputList() {
+        for(var index = 0; index < input.length(); index++) {
+            int num = Character.getNumericValue(input.charAt(index));
+            inputList.add(num);
         }
     }
 
@@ -62,6 +72,10 @@ public class Player {
 
     public String getInput() {
         return input;
+    }
+
+    public List<Integer> getInputList() {
+        return inputList;
     }
 
     public String getReplay() {
