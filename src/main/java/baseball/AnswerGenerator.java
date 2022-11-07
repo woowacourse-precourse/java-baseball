@@ -2,40 +2,31 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static baseball.Const.NUMBER_LENGTH;
 
 
 public class AnswerGenerator {
 
-    private int[] answer;
+    private List<Integer> answer;
 
     public AnswerGenerator() {
-        answer  = new int[NUMBER_LENGTH];
+        answer  = new ArrayList<>();
     }
 
-    public int[] getAnswer() {
+    public List<Integer> getAnswer() {
         return answer;
     }
 
-    public void generateAnswer()  {
-        int index=0;
+    public void generateAnswer() {
+        while (answer.size() < NUMBER_LENGTH) {
+            int randomNumber = (int) (Math.random() * 9) + 1;
 
-        while (index < NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if (!isContain(randomNumber)) {
-                answer[index]=randomNumber;
-                index++;
+            if (!answer.contains(randomNumber)) {
+                answer.add(randomNumber);
             }
         }
-    }
-
-    private boolean isContain(int randomNumber) {
-        for (int i : answer) {
-            if (i == randomNumber) {
-                return true;
-            }
-        }
-        return false;
     }
 }

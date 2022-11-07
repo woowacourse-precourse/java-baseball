@@ -2,20 +2,17 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static baseball.Const.*;
 
 public class UserInput {
 
-    private int[] expectedAnswer;
     private UserInputValidation userInputValidation;
 
     public UserInput() {
-        expectedAnswer = new int[NUMBER_LENGTH];
         userInputValidation = new UserInputValidation();
-    }
-
-    public int[] getUserInput() {
-        return expectedAnswer;
     }
 
     public String inputNumber() {
@@ -25,11 +22,15 @@ public class UserInput {
         return names;
     }
 
-    public void setNumberOfUser() {
+    public List<Integer> setNumberOfUser() {
+        List<Integer> expectedAnswer = new ArrayList<>();
+
         String userInput =inputNumber();
+        //System.out.println("userInput: "+userInput);
         for (int i = 0; i < NUMBER_LENGTH; i++) {
-            expectedAnswer[i] = userInput.charAt(i)-'0';
+            expectedAnswer.add(userInput.charAt(i)-'0');
         }
+        return expectedAnswer;
     }
 
     public String inputRestartOrStop() {

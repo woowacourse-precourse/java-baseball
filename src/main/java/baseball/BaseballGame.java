@@ -9,7 +9,7 @@ public class BaseballGame {
     private AnswerGenerator answerGenerator;
     private BaseballGameHint baseballGameHint;
 
-    public void init(){
+    public BaseballGame(){
         userInput = new UserInput();
         answerGenerator = new AnswerGenerator();
         baseballGameHint = new BaseballGameHint();
@@ -19,8 +19,8 @@ public class BaseballGame {
         System.out.println(START_MESSAGE);
         answerGenerator.generateAnswer();
         do{
-            userInput.setNumberOfUser();
-            baseballGameHint.getHint(userInput.getUserInput(), answerGenerator.getAnswer());
+            //userInput.setNumberOfUser();
+            baseballGameHint.getHint(userInput.setNumberOfUser(),answerGenerator.getAnswer());
         }while(!baseballGameHint.isAnswer());
 
         String userChoice = userInput.inputRestartOrStop();

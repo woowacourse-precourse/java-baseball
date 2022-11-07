@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.List;
 import java.util.stream.IntStream;
 import static baseball.Const.*;
 
@@ -8,32 +9,31 @@ public class BaseballGameHint {
     private int ball;
     private int strike;
 
-    public void getHint(int[] ExpectedAnswer, int[] Answer){
-        generateHint(ExpectedAnswer,Answer);
+    public void getHint(List<Integer> expectedAnswer, List<Integer> answer){
+        generateHint(expectedAnswer,answer);
         printHint();
     }
 
-    private void generateHint(int[] userInput, int[] Answer) {
-        resetBallAndStrike();
-        for (int userInputIndex  =0 ;userInputIndex < userInput.length;userInputIndex++) {
-            int expectedAnswerTarget=userInput[userInputIndex];
-            int findIndex=IntStream.range(0, Answer.length)
-                    .filter(i -> expectedAnswerTarget == Answer[i])
-                    .findFirst()
-                    .orElse(-1);
-            ballAndStrikeCount(userInputIndex, findIndex);
+    private void generateHint(List<Integer> expectedAnswer, List<Integer> answer) {
+        resetStrikeAndBall();
+        for (int answerIndex  =0 ;answerIndex < NUMBER_LENGTH;answerIndex++) {
+            int findIndex=answer.indexOf(expectedAnswer.get(answerIndex));
+
+            if(findIndex!=-1) {
+                checkStrikeOrBall(findIndex,answerIndex);
+            }
         }
     }
 
-    private void ballAndStrikeCount(int userInputIndex, int findIndex) {
-        if (userInputIndex == findIndex) {
+    private void checkStrikeOrBall(int findIndex,int answerIndex){
+        if(findIndex==answerIndex){
             strike++;
-        } else if (findIndex > -1) {
+        }else{
             ball++;
         }
     }
 
-    private void resetBallAndStrike() {
+    private void resetStrikeAndBall() {
         this.ball = 0;
         this.strike = 0;
     }
@@ -46,7 +46,6 @@ public class BaseballGameHint {
         return false;
     }
 
-    //스위치로 바구기
     private void printHint() {
         if (ball == 0 && strike == 0) {
             System.out.println(NOTHING_MESSAGE);
