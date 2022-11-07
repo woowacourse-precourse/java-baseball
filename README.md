@@ -42,7 +42,7 @@
 ## 4. ball, strike count / print result
 
 ## 4-1. 
-##public static void countBallStrike(String computer, String user) {}
+## public static void countBallStrike(String computer, String user) {}
 
 ### input
 - **String computer**
