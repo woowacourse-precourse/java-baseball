@@ -58,4 +58,10 @@ public class BaseBall {
         return randomList;
     }
 
+    private void initGame() {
+        this.strike = 0;
+        this.ball = 0;
+        this.isRestart = true;
+    }
+
 }
