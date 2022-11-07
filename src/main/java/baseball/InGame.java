@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InGame extends UserGuessInput{
+public class InGame{
     private Map<String, Integer> count = new HashMap<>();
     private List<Integer> input;
     private List<Integer> answer;
@@ -17,8 +17,10 @@ public class InGame extends UserGuessInput{
     }
 
     protected void InGameProcess(){
+        Exception exception = new Exception();
         while(!isAllStrike){
-            this.input = processUserInput();
+            this.input = new UserGuessInput().processUserInput();
+            exception.chkUserGuessInputValid(input);
             this.count = new Counter(input, answer).getCount();
             boolean isEnd = new Result(count).computeResult();
             if(isEnd) break;
