@@ -18,4 +18,13 @@ public class Computer {
         }
     }
 
+    public boolean isNothing(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (answer.contains(input.charAt(i) - '0')) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
