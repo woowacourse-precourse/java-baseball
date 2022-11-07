@@ -12,7 +12,7 @@ public class BaseballGame {
     public void playGame() {
         int going = 1;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        OutputView.printStartGameMessage();
         while (going == 1) {
             List<Integer> numbers = makeRandomNumbers();
             progressGame(numbers);
@@ -38,12 +38,12 @@ public class BaseballGame {
         boolean isRight = false;
 
         while (!isRight) {
-            System.out.print("숫자를 입력해주세요 : ");
+            OutputView.printInputNumberMessage();
             int inputNumber = InputView.getNumber();
             isRight = checkNumber(numbers, inputNumber);
         }
 
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        OutputView.printStopGameMessage();
     }
 
     private boolean checkNumber(List<Integer> numbers, int inputNumber) {
