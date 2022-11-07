@@ -66,7 +66,7 @@ public class Game {
         while (digits.size() < 3) {
             addUniqueRandomDigit(digits);
         }
-        randomNumber = new Number(digits.get(0), digits.get(1), digits.get(2));
+        randomNumber = new Number(digits);
     }
 
 

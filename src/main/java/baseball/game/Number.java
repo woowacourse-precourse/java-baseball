@@ -4,25 +4,31 @@ import java.util.List;
 import java.util.Objects;
 
 public class Number {
-    public final int first;
-    public final int second;
-    public final int third;
+    public final Digit first;
+    public final Digit second;
+    public final Digit third;
 
     public Number(int first, int second, int third) {
-        this.first = first;
-        this.second = second;
-        this.third = third;
+        this.first = new Digit(first);
+        this.second = new Digit(second);
+        this.third = new Digit(third);
+    }
+
+    public Number(List<Integer> digits) {
+        this.first = new Digit(digits.get(0));
+        this.second = new Digit(digits.get(1));
+        this.third = new Digit(digits.get(2));
     }
 
     public Number(int num) {
         List<Integer> separatedDigits = separateToDigits(num);
-        first = separatedDigits.get(0);
-        second = separatedDigits.get(1);
-        third = separatedDigits.get(2);
+        first = new Digit(separatedDigits.get(0));
+        second = new Digit(separatedDigits.get(1));
+        third = new Digit(separatedDigits.get(2));
     }
 
     public boolean hasDigit(int digit) {
-        return digit == first || digit == second || digit == third;
+        return first.isSameValue(digit) || second.isSameValue(digit) || third.isSameValue(digit);
     }
 
     protected List<Integer> separateToDigits(int num) {
