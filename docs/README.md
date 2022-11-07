@@ -35,6 +35,7 @@
    - `setGameNumber()`, `setGameOption()` 메소드 수정
 8. `Computer` 클래스에서 `numbers` 필드 제거
    - `setNumberIndexMap()`이 `setNumbers()`를 인자로 받아 사용하도록 수정
+9. 전체 메소드 인자 전달 구조 및 메세지 출력문 위치 변경
 
 ## 📝 테스트
 테스트 코드는 **생성한 클래스별로 묶어서 작성**한다.
