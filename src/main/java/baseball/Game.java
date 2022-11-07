@@ -22,18 +22,24 @@ public class Game {
         player = new Player();
         computer.setNumber();
         while (!EXIT) {
-            strike = 0;
-            ball = 0;
-            nothing = false;
+            resetResult();
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             player.setNumber(input);
+
             calculateResult();
             printResult();
             checkIfAnswer();
         }
 
     }
+
+    public void resetResult(){
+        strike = 0;
+        ball = 0;
+        nothing = false;
+    }
+
 
     public void makeNewRound(){
         computer.setNumber();
