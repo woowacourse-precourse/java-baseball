@@ -1,12 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Application {
     public static List<Integer> randomNumber;
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         StartGame();
@@ -16,13 +18,14 @@ public class Application {
         GetRandomNumber();
         boolean continueGame = true;
         while(continueGame){
-            int inputNum = GetInputNumber();
-            if(inputNum == 0)
-                return;
+            List<Integer> userNumber = GetInputNumber();
+            if(userNumber == null) return;
+
+
         }
     }
 
-    public static int GetInputNumber(){
+    public static List<Integer> GetInputNumber(){
         //잘못입력된 경우 추가 체크
         try {
             String userInput = GetUserInput();
@@ -30,20 +33,26 @@ public class Application {
             if(!CheckMandatory(userInput))
                 throw new IllegalArgumentException("입력을 잘못하여 게임이 종료됩니다.");
 
-            int inputNum = Integer.parseInt(userInput);
-
-            return inputNum;
+            return ParseStringToIntList(userInput);
         }
         catch (Exception e) {
-            return 0;
+            return null;
         }
     }
 
-public static String GetUserInput(){
-    Scanner s = new Scanner(System.in);
-    System.out.printf("숫자를 입력해주세요 : ");
-    return s.next();
-}
+    public static List<Integer> ParseStringToIntList(String numStr){
+        List<Integer> result = new ArrayList<>();
+        for(String str : numStr.split("")){
+            result.add(Integer.parseInt(str));
+        }
+        return result;
+    }
+
+    public static String GetUserInput(){
+        Scanner s = new Scanner(System.in);
+        System.out.printf("숫자를 입력해주세요 : ");
+        return s.next();
+    }
 
     /*
     입력이 잘못되었다고 판단 되는 경우
