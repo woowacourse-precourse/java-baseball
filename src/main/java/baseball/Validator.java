@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Const.BALL_LENGTH;
 import static baseball.Const.FINISH;
 import static baseball.Const.INPUT_3_NUMBERS;
 import static baseball.Const.INPUT_WITHOUT_OVERLAP;
@@ -18,11 +19,11 @@ public class Validator {
     public void validateInput(String input) {
         overlapChecker = new HashSet<>();
 
-        if (input.length() != 3) {
+        if (input.length() != BALL_LENGTH) {
             throw new IllegalArgumentException(INPUT_3_NUMBERS);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < BALL_LENGTH; i++) {
             char number = input.charAt(i);
             checkInput(number);
         }

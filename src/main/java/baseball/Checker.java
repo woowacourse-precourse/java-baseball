@@ -41,8 +41,10 @@ public class Checker {
 
     private void init(String randomNumber) {
         this.ballCounter = new HashSet<>();
+
         for (char number : randomNumber.toCharArray()) {
             ballCounter.add(number);
         }
     }
+
 }

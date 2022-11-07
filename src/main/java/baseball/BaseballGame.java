@@ -50,7 +50,6 @@ public class BaseballGame {
     }
 
     private void checkUserDecision() {
-
         if (validator.userWantRestart(Console.readLine())) {
             init();
             return;

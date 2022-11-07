@@ -1,12 +1,12 @@
 package baseball;
 
+import static baseball.Const.BALL_LENGTH;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Generator {
-
-    private static final int BALL_LENGTH = 3;
 
     public String generateRandomNumber() {
         StringBuilder counterpartNumber = new StringBuilder();

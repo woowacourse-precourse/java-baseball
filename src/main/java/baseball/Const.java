@@ -9,6 +9,8 @@ public final class Const {
     public static final String FINISH = "2";
     public static final String LF = "\n";
 
+    public static final int BALL_LENGTH = 3;
+
     public static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
     public static final String FINISH_GAME = "게임이 종료되었습니다.";
