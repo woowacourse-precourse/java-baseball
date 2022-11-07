@@ -15,15 +15,14 @@ class Number {
     }
 
     Number(String userNumber) {
-        System.out.println(getComputers());
         userNumbers = stringToList(userNumber);
     }
 
-    public static List<Integer> getComputers() {
+    public List<Integer> getComputers() {
         return computers;
     }
 
-    public static List<Integer> getUserNumbers() {
+    public List<Integer> getUserNumbers() {
         return userNumbers;
     }
 
