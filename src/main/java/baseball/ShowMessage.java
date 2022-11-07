@@ -15,15 +15,7 @@ public class ShowMessage {
     private static final String NEW_GAME_CHECK_MESSAGE = "게임을 새로 시작하려면" + NEW_GAME + ", " + "종료하려면 " + QUIT_GAME
             + "를 입력하세요.";
 
-    public String getBallWord(){
-        return BALL_WORD;
-    }
-
-    public String getStrikeWord(){
-        return STRIKE_WORD;
-    }
-
-    public static void showNotMatchWord(){
+    public static void showNotMatchWord() {
         System.out.println(NOT_MATCH_WORD);
     }
 
@@ -52,4 +44,14 @@ public class ShowMessage {
     public int getAnswerCount() {
         return ANSWER_COUNT;
     }
+
+    public static void showEndGameNewGameCheck() {
+        showEndGame();
+        showNewGameCheck();
+    }
+
+    public void showGameScore(int ballCount, int strikeCount) {
+        System.out.println(ballCount + BALL_WORD + " " + strikeCount + STRIKE_WORD);
+    }
+
 }
