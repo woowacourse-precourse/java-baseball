@@ -5,6 +5,8 @@ import baseball.console.Output;
 import baseball.entity.Computer;
 import baseball.entity.User;
 
+import java.util.HashSet;
+
 public class Game {
     private final String startMessage = "숫자 야구 게임을 시작합니다.";
     private User user;
@@ -22,15 +24,44 @@ public class Game {
         while (!isCorrect()) {
             user.setNumber(Input.get());
         }
-        Output.printAnswerMessage();
-        if (Input.restart().equals("1")) {
+        String restart = Input.restart();
+        if (restart.equals("1")) {
             start();
         }
     }
 
     private boolean isCorrect() {
-        if (user.getNumber().equals(computer.getAnswer())) {
+        String number = user.getNumber();
+        String answer = computer.getAnswer();
+        if (number.equals(answer)) {
+            Output.printAnswerMessage();
             return true;
+        }
+        int strike = 0;
+        int ball = 0;
+        HashSet<Character> set = new HashSet<>();
+        for (int i = 0; i < number.length(); i++) {
+            if (number.charAt(i) == answer.charAt(i)) {
+                strike++;
+            }
+            set.add(answer.charAt(i));
+        }
+        for (int i = 0; i < number.length(); i++) {
+            if (number.charAt(i) != answer.charAt(i) && set.contains(number.charAt(i))) {
+                ball++;
+            }
+        }
+        if (ball == 0 && strike == 0) {
+            Output.printNothingMessage();
+        }
+        else if (ball == 0) {
+            Output.printStrikeMessage(strike);
+        }
+        else if (strike == 0) {
+            Output.printBallMessage(ball);
+        }
+        else {
+            Output.printBallAndStirkeMessage(ball, strike);
         }
         return false;
     }
