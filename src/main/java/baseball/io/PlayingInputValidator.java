@@ -23,7 +23,8 @@ public class PlayingInputValidator implements InputValidator{
   }
 
   private void isDigitBetween1to9(char c) {
-    if(!Character.isDigit(c)) throw new IllegalArgumentException();
+    // digit(0~9)이 아니거나, 0을 포함하는 경우 예외를 던짐
+    if(!Character.isDigit(c) || c == 48) throw new IllegalArgumentException();
   }
 
   private void isAllUniqueDigit(String input) {
