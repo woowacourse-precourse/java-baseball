@@ -31,6 +31,8 @@ class Game {
 
 
 class Computer {
+    public List<Integer> NumberList;
+
     public List<Integer> makeRandomNumber() {
         List<Integer> randomNumberList = new ArrayList<>();
         while (randomNumberList.size() < 3) {
@@ -40,6 +42,11 @@ class Computer {
             }
         }
         return randomNumberList;
+    }
+
+    public boolean isEqualNum(int userNum, int index) {
+        int computerNum = NumberList.get(index);
+        return computerNum == userNum;
     }
 }
 
