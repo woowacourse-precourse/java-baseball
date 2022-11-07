@@ -71,5 +71,14 @@ class PitchResultTest {
         assertThat(pitchResult.getPitchStatusMessage()).isEqualTo("2볼");
     }
 
+    @DisplayName("N개의 스크라이크인 경우 \"N스트라이크\" 출력후 줄 바꿈")
+    @Test
+    void 스트라이크만_존재하는_메시지_출력() {
+        String userInput = "123";
+        List<Integer> numbers = List.of(1, 2, 4);
+        pitchResult.setResult(userInput, numbers);
+
+        assertThat(pitchResult.getPitchStatusMessage()).isEqualTo("2스트라이크");
+    }
 
 }
