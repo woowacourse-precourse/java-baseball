@@ -1,5 +1,6 @@
 package baseball.number;
 
+import baseball.excpetion.NumberException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -10,13 +11,17 @@ import java.util.stream.Collectors;
 public class UserNumber {
     private String userNumber;
     private List<Integer> userNumberList;
-
+    private NumberException numberException;
     public UserNumber(){
-        userNumberList = new ArrayList<>(3);
+        userNumberList = new ArrayList<>();
+        numberException = new NumberException();
     }
 
     public List<Integer> inputUserNumber(){
         userNumber = Console.readLine();
+        numberException.validContainLetter(userNumber);
+        numberException.validDuplicateNumber(userNumber);
+        numberException.validContainLetter(userNumber);
         return stringToList(userNumber);
 
     }

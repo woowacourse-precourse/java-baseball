@@ -1,5 +1,6 @@
 package baseball.play;
 
+import baseball.excpetion.NumberException;
 import baseball.number.ComputerNumber;
 import baseball.number.UserNumber;
 import camp.nextstep.edu.missionutils.Console;
@@ -20,8 +21,9 @@ public class Play {
 
     private List<Integer> computerNumberList;
     private ComputerNumber computerNumber;
-    public UserNumber userNumber;
+    private UserNumber userNumber;
     private List<Integer> userNumberList;
+    private NumberException numberException;
 
     public Play(){
         computerNumber = new ComputerNumber();
@@ -30,13 +32,15 @@ public class Play {
         userNumber = new UserNumber();
         userNumberList = new ArrayList<>();
 
+        numberException = new NumberException();
+
     }
     public void playBaseball(){
         computerNumberList = computerNumber.generateNumber();
 
         System.out.print(INPUT_MESSAGE);
         userNumberList = userNumber.inputUserNumber();
-        
+
         getResult(userNumberList,computerNumberList);
 
     }
@@ -83,6 +87,7 @@ public class Play {
 
     public void restart() {
         String option = Console.readLine();
+        numberException.validOption(option);
         if (Integer.parseInt(option) == 1) {
             playBaseball();
         }
