@@ -1,11 +1,9 @@
 package baseball.game;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -17,6 +15,17 @@ public class Game {
     }
     public static Game create() {
         return new Game();
+    }
+
+    public static List<Integer> getComputerNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+        return computerNumber;
     }
 
     private List<Integer> getInputUserNumber() {
