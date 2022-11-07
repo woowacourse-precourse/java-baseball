@@ -1,10 +1,17 @@
 package baseball;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Stream;
+
 public class Application {
+    //예외메소드
+    public static void func1() throws Exception {
+        throw new IllegalArgumentException();
+
+    }
     public static void game(String str){
         int num = 0;
         int num2=0;
+
         Scanner sc = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (str != Integer.toString(num)) {
@@ -13,9 +20,35 @@ public class Application {
 
             System.out.print("숫자를 입력해주세요 : ");
             num = sc.nextInt();
+            //동일한 경우 게임 종료
             if (Integer.parseInt(str) == num) {
                 break;
             }
+            //서로다른 숫자 3숫자 입력이 아닐시 예외처리
+            if(Integer.toString(num).length()!=3){
+                try {
+                    func1();
+                } catch (Exception e) {
+                    System.exit(0);
+                }
+
+            }
+            int[] digits = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
+            List<Integer> intList = new ArrayList<>();
+            for (int element : digits) {
+                intList.add(element);
+            }
+            Set<Integer> set = new HashSet<Integer>(intList);
+
+            if(set.size()!=intList.size()){
+                try {
+                    func1();
+                } catch (Exception e) {
+                    System.exit(0);
+                }
+            }
+
+
             String num_str = Integer.toString(num);
 
             for (int i = 0; i < 3; i++) {
@@ -69,6 +102,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         while(num2==1){
             game(str);
+
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
