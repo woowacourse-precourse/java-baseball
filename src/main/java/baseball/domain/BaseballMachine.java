@@ -18,9 +18,9 @@ public class BaseballMachine {
         this.strikeModel = new StrikeModel(user.getUserNumberList(), computer.getComputerNumberList());
     }
 
-    // 입력한 값을 정답과 비교하여 boolean값 반환하는 기능
+    // 스트라이크가 3개일경우 정답 반환
     public boolean checkAnswer() {
-        return classify(strikeModel.getBall(), strikeModel.getStrike());
+        return strikeModel.getStrike() == 3;
     }
 
     // 볼 스트라이크에 따라 구분하여 힌트 메세지 출력
