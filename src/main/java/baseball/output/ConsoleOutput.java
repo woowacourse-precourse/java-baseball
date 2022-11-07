@@ -9,4 +9,9 @@ public class ConsoleOutput implements Output {
     public void print(Message message) {
         System.out.print(message.toString());
     }
+
+    @Override
+    public void println(String string) {
+        System.out.println(string);
+    }
 }
