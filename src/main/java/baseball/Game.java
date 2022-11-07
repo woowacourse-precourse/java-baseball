@@ -9,29 +9,29 @@ public class Game {
 
     public static void start(int firstCheck) {
         User user = new User();
-        Computer computer = new Computer();
+        Screen screen = new Screen();
         Referee referee = new Referee();
         if (firstCheck == FIRST_START_OFGAME) {
-            computer.printGameStart();
-            progress(user, computer, referee);
+            screen.printGameStart();
+            progress(user, screen, referee);
         } else if (firstCheck == NOT_FIRST_START_OFGAME) {
-            progress(user, computer, referee);
+            progress(user, screen, referee);
         }
     }
 
-    private static void progress(User user, Computer computer, Referee referee) {
+    private static void progress(User user, Screen screen, Referee referee) {
         while (true) {
-            computer.printInputNumber();
-            String RefereeResult = computer.printCalculateResult(
+            screen.printInputNumber();
+            String RefereeResult = screen.printCalculateResult(
                 referee.calculateAnswer(user.inputValue(1)));
-            if (RefereeResult.equals("3스트라이크") && (checkContinueMode(user, computer) == ENDGAME)) {
+            if (RefereeResult.equals("3스트라이크") && (checkContinueMode(user, screen) == ENDGAME)) {
                 break;
             }
         }
     }
 
-    private static int checkContinueMode(User user, Computer computer) {
-        computer.printEndingMessage();
+    private static int checkContinueMode(User user, Screen screen) {
+        screen.printEndingMessage();
         if (user.inputValue(PLAYAGAINMODE).equals("1")) {
             Game game = new Game();
             game.start(NOT_FIRST_START_OFGAME);

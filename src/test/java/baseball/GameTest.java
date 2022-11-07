@@ -34,12 +34,4 @@ class GameTest {
         System.setErr(originalErr);
     }
 
-    @Test
-    @Order(2)
-    void GamestartArgumentCheckTest() {
-
-        Assertions.assertThat(Referee.testReferee("126", randomnumber)).isNotEqualTo("");
-
-    }
-
 }

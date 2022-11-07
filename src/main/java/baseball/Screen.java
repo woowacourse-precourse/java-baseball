@@ -1,6 +1,6 @@
 package baseball;
 
-public class Computer {
+public class Screen {
 
     private static RandomNumber RandomValue;
     private static final int GAME_START_MODE = 1;

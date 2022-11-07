@@ -2,15 +2,11 @@ package baseball;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.HashSet;
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 
 class ComputerTest {
     private final PrintStream standardOut = System.out;
@@ -35,35 +31,35 @@ class ComputerTest {
     @Test
     @Order(1)
     void computerPrintStartGame() {
-        Computer.testComputerPrint(1, "");
+        Screen.testComputerPrint(1, "");
         Assertions.assertThat("숫자 야구 게임을 시작합니다.").isEqualTo(outContent.toString().trim());
     }
 
     @Test
     @Order(2)
     void computerPrintInputNumber() {
-        Computer.testComputerPrint(2, "");
+        Screen.testComputerPrint(2, "");
         Assertions.assertThat("숫자를 입력해주세요 : ").isEqualTo(outContent.toString());
     }
 
     @Test
     @Order(3)
     void computerPrintCalculatorResult() {
-        Computer.testComputerPrint(4, "1볼 1스트라이크");
+        Screen.testComputerPrint(4, "1볼 1스트라이크");
         Assertions.assertThat("1볼 1스트라이크").isEqualTo(outContent.toString().trim());
     }
 
     @Test
     @Order(4)
     void computerPrintCalculatorResultNothing() {
-        Computer.testComputerPrint(4, "낫싱");
+        Screen.testComputerPrint(4, "낫싱");
         Assertions.assertThat("낫싱").isEqualTo(outContent.toString().trim());
     }
 
     @Test
     @Order(4)
     void computerPrintCalculatorEnding() {
-        Computer.testComputerPrint(3, "");
+        Screen.testComputerPrint(3, "");
         Assertions.assertThat("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.").isEqualTo(outContent.toString().trim());
     }
 
