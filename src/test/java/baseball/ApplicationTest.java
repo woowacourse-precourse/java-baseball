@@ -28,6 +28,40 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 입력_글자_수_예외_테스트() {
+        // 4글자
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 2글자
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // 1글자
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // Enter
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("\n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        // null
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(null))
+                        .isInstanceOf(NullPointerException.class)
+        );
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

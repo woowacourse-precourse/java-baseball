@@ -155,6 +155,11 @@ public class Application {
 
         // TODO 입력값 검증하기
 
+        // userInput이 null 이라면 -> 예외발생
+        if (userInput == null) {
+            throw new IllegalArgumentException();
+        }
+
         // 3자리 입력값이 아니라면 -> 예외발생
         if (userInput.length() != 3) {
             throw new IllegalArgumentException();
