@@ -1,6 +1,7 @@
 package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,11 +25,17 @@ public class Computer {
     public Computer() {
         collection = new boolean[MAXIMUM_NUMBER - MINIMUM_NUMBER + 1];
         Arrays.fill(collection, false);
-        randomNumbers = null;
+        randomNumbers = new ArrayList<>();
     }
 
     public void createDifferentRandomNumbers() {
-        randomNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, SIZE);
+        randomNumbers.clear();
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
         initCollection();
     }
 
