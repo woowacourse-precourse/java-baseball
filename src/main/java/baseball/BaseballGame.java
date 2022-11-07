@@ -6,6 +6,7 @@ import baseball.core.Computer;
 import baseball.core.Player;
 import baseball.core.BallStrike;
 import baseball.core.RandomNumberGenerator;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -38,12 +39,12 @@ public class BaseballGame {
 
     private void inputThreeNumbers() {
         console.printNumberInputMessage();
-        player.inputThreeNumbers();
+        player.inputThreeNumbers(Console.readLine());
     }
 
     private void restartOrExitGame() {
         console.printRestartOrExitMessage();
-        StatusCode code = player.inputStatusCode();
+        StatusCode code = player.inputStatusCode(Console.readLine());
         if (isStartCode(code)) {
             new BaseballGame().play();
         }

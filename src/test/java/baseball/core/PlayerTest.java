@@ -1,10 +1,9 @@
-package baseball.console;
+package baseball.core;
 
-import baseball.core.converter.ThreeNumberConverter;
 import baseball.exception.DuplicateNumberException;
 import baseball.exception.EachInputNumberOutOfRangeException;
-import baseball.exception.InputNumberOutOfRangeException;
 import baseball.exception.InputNumberFormatException;
+import baseball.exception.InputNumberOutOfRangeException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,14 +12,15 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
-class ThreeNumberConverterTest {
+class PlayerTest {
 
-    ThreeNumberConverter converter;
+    Player player;
 
     @BeforeEach
     void init() {
-        converter = new ThreeNumberConverter();
+        player = new Player();
     }
 
     @Test
@@ -31,7 +31,8 @@ class ThreeNumberConverterTest {
         List<Integer> expected = List.of(5, 2, 8);
 
         //when
-        List<Integer> res = converter.getThreeNumbers(inputString);
+        player.inputThreeNumbers(inputString);
+        List<Integer> res = player.sayThreeNumbers();
 
         //then
         assertThat(res).isEqualTo(expected);
@@ -45,7 +46,8 @@ class ThreeNumberConverterTest {
         List<Integer> expected = List.of(4, 9, 8);
 
         //when
-        List<Integer> res = converter.getThreeNumbers(inputString);
+        player.inputThreeNumbers(inputString);
+        List<Integer> res = player.sayThreeNumbers();
 
         //then
         assertThat(res).isEqualTo(expected);
@@ -58,7 +60,7 @@ class ThreeNumberConverterTest {
         String inputString = "hello";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(InputNumberFormatException.class)
                 .hasMessage("잘못된 숫자 입력입니다. 입력 문자: " + inputString);
     }
@@ -71,7 +73,7 @@ class ThreeNumberConverterTest {
         String inputString = "-123";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(InputNumberFormatException.class)
                 .hasMessage("잘못된 숫자 입력입니다. 입력 문자: " + inputString);
     }
@@ -83,7 +85,7 @@ class ThreeNumberConverterTest {
         String inputString = "012";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(EachInputNumberOutOfRangeException.class)
                 .hasMessage("1~9 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
@@ -95,7 +97,7 @@ class ThreeNumberConverterTest {
         String inputString = "709";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(EachInputNumberOutOfRangeException.class)
                 .hasMessage("1~9 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
@@ -107,7 +109,7 @@ class ThreeNumberConverterTest {
         String inputString = "1234";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(InputNumberOutOfRangeException.class)
                 .hasMessage("123~789 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
@@ -119,7 +121,7 @@ class ThreeNumberConverterTest {
         String inputString = "1244";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(InputNumberOutOfRangeException.class)
                 .hasMessage("123~789 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
@@ -131,7 +133,7 @@ class ThreeNumberConverterTest {
         String inputString = "12";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(InputNumberOutOfRangeException.class)
                 .hasMessage("123~789 사이의 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
@@ -143,7 +145,7 @@ class ThreeNumberConverterTest {
         String inputString = "144";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(DuplicateNumberException.class)
                 .hasMessage("서로 다른 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
@@ -155,7 +157,7 @@ class ThreeNumberConverterTest {
         String inputString = "221";
 
         //when then
-        assertThatThrownBy(() -> converter.getThreeNumbers(inputString))
+        assertThatThrownBy(() -> player.inputThreeNumbers(inputString))
                 .isInstanceOf(DuplicateNumberException.class)
                 .hasMessage("서로 다른 숫자를 입력해주세요. 입력 문자: " + inputString);
     }
