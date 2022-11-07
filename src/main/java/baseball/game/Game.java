@@ -39,7 +39,7 @@ public class Game {
         } while (!resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER));
     }
 
-    public void initialStrikeAndBallCounts(List<Integer> strikeAndBallCounts) {
+    private void initialStrikeAndBallCounts(List<Integer> strikeAndBallCounts) {
         strikeAndBallCounts.set(STRIKE_COUNT, 0);
         strikeAndBallCounts.set(BALL_COUNT, 0);
     }
