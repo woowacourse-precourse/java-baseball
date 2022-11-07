@@ -45,7 +45,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
         String tryNumber = Console.readLine();
         if (checkError(tryNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력 조건을 다시 확인해주세요");
         }
         List<Integer> user = transformInteger(tryNumber);
 
