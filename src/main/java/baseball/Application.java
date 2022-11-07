@@ -2,29 +2,9 @@ package baseball;
 import java.util.Random;
 import java.util.Scanner;
 public class Application {
-    public static void main(String[] args) {
-        //컴퓨터 숫자 선언
-
+    public static void game(String str){
         int num = 0;
-        int value;
-        String str = "";
-        Random random = new Random();
-        //서로 다른 수 세자리 만들기
-        while (true) {
-            if (str.length() == 3) {
-                break;
-            }
-            value = random.nextInt(9) + 1;
-
-            if (!str.contains(Integer.toString(value))) {
-
-                str += value;
-
-            }
-        }
-
-
-
+        int num2=0;
         Scanner sc = new Scanner(System.in);
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (str != Integer.toString(num)) {
@@ -34,8 +14,6 @@ public class Application {
             System.out.print("숫자를 입력해주세요 : ");
             num = sc.nextInt();
             if (Integer.parseInt(str) == num) {
-                System.out.println("3스트라이크");
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
             String num_str = Integer.toString(num);
@@ -66,5 +44,44 @@ public class Application {
 
 
     }
+    public static void main(String[] args) {
+        //컴퓨터 숫자 선언
 
-}
+        int value;
+        int num2=1;
+        String str = "";
+        Random random = new Random();
+        //서로 다른 수 세자리 만들기
+        while (true) {
+            if (str.length() == 3) {
+                break;
+            }
+            value = random.nextInt(9) + 1;
+
+            if (!str.contains(Integer.toString(value))) {
+
+                str += value;
+
+            }
+        }
+
+
+        Scanner sc = new Scanner(System.in);
+        while(num2==1){
+            game(str);
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            num2 = sc.nextInt();
+
+        }
+
+
+
+
+        }
+
+
+    }
+
+
