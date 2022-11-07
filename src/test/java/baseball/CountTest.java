@@ -22,18 +22,19 @@ class CountTest {
 
     @Test
     void countStrike() {
+        Count count = new Count();
+        List<Integer> computer = Arrays.asList(1, 2, 3);
+        List<Integer> user = Arrays.asList(2, 5, 3);
+
+        count.countBall(computer, user);
+        count.countStrike(computer, user);
+
+        assertThat(count.ball).isEqualTo(1);
+        assertThat(count.strike).isEqualTo(1);
     }
 
     @Test
     void printCount() {
-    }
-
-    @Test
-    void printBall() {
-    }
-
-    @Test
-    void printStrike() {
     }
 
     @Test
