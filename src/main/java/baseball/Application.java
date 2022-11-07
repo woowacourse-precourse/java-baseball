@@ -12,6 +12,7 @@ public class Application {
         Baseball baseball = new Baseball();
         String optionNumber;
         boolean option;
+        System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             baseball.pickRandomNumber();
             do {
