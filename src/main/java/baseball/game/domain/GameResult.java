@@ -59,13 +59,15 @@ public class GameResult {
     }
 
     public String toString() {
-        String message = "";
         if (isNothing()) {
-            message = nothingToString();
-        } else {
-            message = ballToString() + " " + strikeToString();
+            return nothingToString();
         }
-        return message;
+
+        if (isExistBall() && isExistStrike()) {
+            return ballToString() + " " + strikeToString();
+        }
+
+        return ballToString() + strikeToString();
     }
 
 }
