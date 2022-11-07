@@ -19,6 +19,26 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
+    private static void play() {
+        List<Integer> computerPick = getComputerPick();
+        List<Integer> userPick;
+        boolean success;
+        do {
+            userPick = getUserPick();
+            success = isSuccess(userPick, computerPick);
+        } while (!success);
+    }
+
+    private static boolean isSuccess(List<Integer> userPick, List<Integer> computerPick) {
+        List<Integer> gameResults = getGameResults(userPick, computerPick);
+        interpretGameResults(gameResults);
+        if (gameResults.get(STRIKE_INDEX) == NUMBER_DIGIT) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        return false;
+    }
+
     private static List<Integer> getComputerPick() {
         List<Integer> numbers = new ArrayList<>();
         int number;
@@ -45,6 +65,25 @@ public class Application {
         String input = Console.readLine();
         validateNumber(input);
         return input;
+    }
+
+    private static void interpretGameResults(List<Integer> results) {
+        int ball = results.get(BALL_INDEX);
+        int strike = results.get(STRIKE_INDEX);
+
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        List<String> response = new ArrayList<>();
+        if (ball > 0) {
+            response.add(ball + "볼");
+        }
+        if (strike > 0) {
+            response.add(strike + "스트라이크");
+        }
+        System.out.println(String.join(" ", response));
     }
 
     private static void validateNumber(String input) {
