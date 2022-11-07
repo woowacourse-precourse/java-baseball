@@ -20,9 +20,19 @@ public class BaseballGame {
             if(result == PitchResult.STRIKE)
                 strike++;
         }
+        printResult(ball, strike);
         return strike != 3;
     }
 
+    /**
+     * 결과를 출력합니다.
+     * @param ball 볼 수
+     * @param strike 스트라이크 수
+     */
+    private void printResult(int ball, int strike){
+        if(ball > 0)System.out.print(ball+"볼 ");
+        if(strike > 0)System.out.println(strike+"스트라이크");
+    }
     /**
      * 게임 시작.
      * 새로운 랜덤 숫자를 생성하고
@@ -31,6 +41,7 @@ public class BaseballGame {
      * pitch 인스턴스를 재 생성합니다.
      * */
     public void start() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         //정답을 생성한다.
         answer = new CorrectAnswer();
         //반복(정답 시 탈출)
@@ -41,7 +52,8 @@ public class BaseballGame {
         //조건문 안에서 비교 후 같지 않다면 다시 pitch를 초기화한다.
         while (pitchIsNotCorrect(pitch)) {
             //입력을 다시 받는다.
+            pitch = new Pitch();
         }
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
