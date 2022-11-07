@@ -37,18 +37,6 @@ public class BallReader {
         }
     }
 
-
-    private ResultOfBall judgeStrikeOrBall(int userIndex, int computerIndex) {
-        final int noNumberInComputer = -1;
-        if (userIndex == computerIndex) {
-            return STRIKE;
-        }
-        if (userIndex != computerIndex && computerIndex != noNumberInComputer) {
-            return BALL;
-        }
-        return MISS;
-    }
-
     private Map<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
         Map<ResultOfBall, Integer> result = new HashMap<>();
         for (ResultOfBall data : ballData) {
@@ -72,5 +60,15 @@ public class BallReader {
         return strikeAndBallResult;
     }
 
+    private ResultOfBall judgeStrikeOrBall(int userIndex, int computerIndex) {
+        final int noNumberInComputer = -1;
+        if (userIndex == computerIndex) {
+            return STRIKE;
+        }
+        if (userIndex != computerIndex && computerIndex != noNumberInComputer) {
+            return BALL;
+        }
+        return MISS;
+    }
 
 }
