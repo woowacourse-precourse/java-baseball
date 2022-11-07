@@ -8,6 +8,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 
 public class Application {
+
+    static boolean Exception_Status = true;
+    static boolean status = true;
     public static List<Integer> InputNumber () {
         List<Integer> user = new ArrayList<>();
         String[] userNumber;
@@ -16,14 +19,19 @@ public class Application {
 
         userNumber = Console.readLine().split("");
         for(int i=0; i<userNumber.length; i++){
-            user.add(Integer.parseInt(userNumber[i]));
+            if(userNumber[i].equalsIgnoreCase(" "));
+            else if(Integer.parseInt(userNumber[i]) >= 1 && Integer.parseInt(userNumber[i]) <= 9) {
+                user.add(Integer.parseInt(userNumber[i]));
+            }
+            else IllegalArgumentException();
         }
-
+        if(user.size()!=3 && Exception_Status==true){
+            IllegalArgumentException();
+        }
         return user;
     }
 
     public static boolean Compare(List<Integer> computer, List<Integer> Input) {
-        int index = 0;
         int strike = 0;
         int ball = 0;
         for(int i=0; i<computer.size(); i++){
@@ -46,10 +54,10 @@ public class Application {
         int strike = 0;
         for(int i=0; i<3; i++){
             if(i==index){
-                if(computer.get(i) == Input.get(index)) strike++;
+                strike += CompareInteger(computer.get(i), Input.get(index));
             }
             else {
-                if (computer.get(i) == Input.get(index)) ball++;
+                ball += CompareInteger(computer.get(i), Input.get(index));
             }
         }
         count.add(ball);
@@ -57,10 +65,23 @@ public class Application {
         return count;
     }
 
+    public static int CompareInteger(int a, int b){
+        if(a==b) return 1;
+        else return 0;
+    }
+
     public static void GameStart(){
         List<Integer> computer = ComputerNumber();
-        while(Compare(computer, InputNumber()));
-        while(NewGameStart());
+        List<Integer> Input = new ArrayList<>();
+        while(status && Exception_Status){
+            Input = InputNumber();
+            if(!Exception_Status) break;
+            status = Compare(computer, Input);
+        };
+        status = true;
+        while(status && Exception_Status){
+            status = NewGameStart();
+        };
     }
 
     public static boolean NewGameStart(){
@@ -74,7 +95,8 @@ public class Application {
             return  true;
         }
         else {
-            if (Number == 2) {
+            if (Number != 2) {
+                IllegalArgumentException();
             }
             return false;
         }
@@ -93,6 +115,11 @@ public class Application {
         System.out.println("숫자 야구게임을 시작합니다.");
         return computer;
 
+    }
+
+    public static void IllegalArgumentException(){
+        System.out.println("입력값 오류, 시스템을 종료합니다.");
+        Exception_Status = false;
     }
 
     public static void main(String[] args) {
