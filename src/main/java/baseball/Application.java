@@ -13,7 +13,8 @@ public class Application {
     public static void main(String[] args) {
         playGame();
     }
-    public static void playGame(){
+
+    public static void playGame() {
         List<Integer> whatComputerInputs = new ArrayList<>();
         boolean startAgain = false;
         System.out.println(Referee.START_GAME.ordered());
@@ -27,13 +28,6 @@ public class Application {
             String finishOrRestart = askFinishOrRestart();
             confirmFinishOrRestart(finishOrRestart);
         }
-    }
-    public static List<Integer> getWhatClientInputs() {
-        String guessedNumbers;
-        guessedNumbers = inputThreeDistinctNumbers();
-        isValid(guessedNumbers);
-        List<Integer> whatClientInputs = stringToIntegerList(guessedNumbers);
-        return whatClientInputs;
     }
 
     public static void putRandomNumbersTo(List<Integer> digitsToCompare) {
@@ -49,10 +43,27 @@ public class Application {
         }
     }
 
+    public static List<Integer> getWhatClientInputs() {
+        String guessedNumbers;
+        guessedNumbers = inputThreeDistinctNumbers();
+        isValid(guessedNumbers);
+        List<Integer> whatClientInputs = stringToIntegerList(guessedNumbers);
+        return whatClientInputs;
+    }
+
     public static String inputThreeDistinctNumbers() {
         System.out.print(Referee.ASK_NUMBERS.ordered());
         String answeredNumbers = Console.readLine();
         return answeredNumbers;
+    }
+
+    public static List<Integer> stringToIntegerList(String numbers) {
+        String[] temporaryArray = numbers.split("");
+        List<Integer> guessedNumbers = new ArrayList<>();
+        for (String stringNumber : temporaryArray) {
+            guessedNumbers.add(Integer.parseInt(stringNumber));
+        }
+        return guessedNumbers;
     }
 
     public static void isValid(String whatClientInputs) {
@@ -85,15 +96,6 @@ public class Application {
         throw exit_program;
     }
 
-    public static List<Integer> stringToIntegerList(String numbers) {
-        String[] temporaryArray = numbers.split("");
-        List<Integer> guessedNumbers = new ArrayList<>();
-        for (String stringNumber : temporaryArray) {
-            guessedNumbers.add(Integer.parseInt(stringNumber));
-        }
-        return guessedNumbers;//***문제없음
-    }
-
     public static void checkNothing(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
         int ball = countBalls(numbersToGetRight, guessedNumbers);
         int strike = countStrikes(numbersToGetRight, guessedNumbers);
@@ -123,23 +125,47 @@ public class Application {
     }
 
     public static boolean shoutBallsAndStrikes(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
-        int ball = countBalls(numbersToGetRight, guessedNumbers);
+        if (speakThreeStrike(numbersToGetRight, guessedNumbers)) {
+            return speakThreeStrike(numbersToGetRight, guessedNumbers);
+        }
+        speakBall(numbersToGetRight, guessedNumbers);
+        speakStrike(numbersToGetRight, guessedNumbers);
+        speakBallAndStrike(numbersToGetRight, guessedNumbers);
+        return false;
+    }
+
+    public static boolean speakThreeStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
         int strike = countStrikes(numbersToGetRight, guessedNumbers);
         if (strike == 3) {
             System.out.println(strike + Referee.STRIKE.ordered());
             return true;
-        }
-        if (ball != 0 && strike == 0) {
-            System.out.println(ball + Referee.BALL.ordered());
+        } else {
             return false;
         }
+    }
+
+    public static boolean speakBall(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
+        int ball = countBalls(numbersToGetRight, guessedNumbers);
+        if (ball != 0 && ball == 0) {
+            System.out.println(ball + Referee.BALL.ordered());
+        }
+        return false;
+    }
+
+    public static boolean speakStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
+        int ball = countBalls(numbersToGetRight, guessedNumbers);
+        int strike = countStrikes(numbersToGetRight, guessedNumbers);
         if (ball == 0 && strike != 0) {
             System.out.println(strike + Referee.STRIKE.ordered());
-            return false;
         }
+        return false;
+    }
+
+    public static boolean speakBallAndStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
+        int ball = countBalls(numbersToGetRight, guessedNumbers);
+        int strike = countStrikes(numbersToGetRight, guessedNumbers);
         if (ball != 0 && strike != 0) {
             System.out.println(ball + Referee.BALL.ordered() + strike + Referee.STRIKE.ordered());
-            return false;
         }
         return false;
     }
