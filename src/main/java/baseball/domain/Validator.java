@@ -17,7 +17,7 @@ public class Validator {
         }
 
         List<Character> listNumber = convertStringToCharList(number);
-        if (listNumber.size() != 3) {
+        if (listNumber.size() != CNT) {
             Exception.sizeEroor();
         }
 
