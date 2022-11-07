@@ -94,7 +94,20 @@ class ApplicationTest extends NsTest {
             Assertions.assertThat(Application.checkNumbers(computerTest, userTest)).isEqualTo("낫싱");
         }
 
+        @Nested
+        class finishTest {
+            @Test
+            void 입력_0_예외() {
+                assertThatThrownBy(() -> Application.finish("3"))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
 
+            @Test
+            void 입력_숫자_이외값_예외() {
+                assertThatThrownBy(() -> Application.finish("다"))
+                        .isInstanceOf(IllegalArgumentException.class);
+            }
+        }
     }
 
     @Override
