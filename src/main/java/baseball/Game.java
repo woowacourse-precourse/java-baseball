@@ -10,20 +10,20 @@ public class Game {
 
     public void start() {}
 
-    private List<Integer> setComputerNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < 3) {
+    public void setComputerNumber() {
+        List<Integer> newComputerNumber = new ArrayList<>();
+        while (newComputerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumber.contains(randomNumber)) {
-                computerNumber.add(randomNumber);
+            if (!newComputerNumber.contains(randomNumber)) {
+                newComputerNumber.add(randomNumber);
             }
         }
-        return computerNumber;
+        computerNumber = newComputerNumber;
     }
 
     public List<Integer> getComputerNumber() {
         if (computerNumber.isEmpty()) {
-            computerNumber = setComputerNumber();
+            setComputerNumber();
         }
         return computerNumber;
     }
