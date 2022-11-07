@@ -103,4 +103,4 @@
 - [x] inputUserNumberService함수를 실행
 - [x] inputUserAnswerService함수를 실행 후, 결과값을 checkedBaseballGaemOfUserAnswer에 저장
 - [x] checkedBaseballGaemOfUserAnswer이 1이면, baseballGameServie함수 실행
-- [ ] return를 리턴
+- [x] return를 리턴
