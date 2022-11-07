@@ -107,5 +107,23 @@ class InputValidatorTest {
         );
     }
 
+    @Test
+    @DisplayName("재시작 숫자 오류2")
+    void 사용자_입력_오류7() {
+        String userInput = ".";
+        assertThrows(IllegalArgumentException.class,
+                () -> InputValidator.checkRestartInput(userInput)
+        );
+    }
+
+    @Test
+    @DisplayName("재시작 숫자 오류3")
+    void 사용자_입력_오류8() {
+        String userInput = " ";
+        assertThrows(IllegalArgumentException.class,
+                () -> InputValidator.checkRestartInput(userInput)
+        );
+    }
+
 
 }
