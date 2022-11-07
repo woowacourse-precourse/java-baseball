@@ -115,6 +115,20 @@ class ApplicationTest extends NsTest {
         assertThat(output()).isEqualTo("2스트라이크");
     }
     @Test
+    void 볼or스트라이크_테스트(){
+        List<Integer> computer=new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> user=new ArrayList<>(Arrays.asList(1,3,5));
+        assertThat(ballorstrikeCheck(user.get(1),computer,1)==1);
+    }
+    @Test
+    void 볼체크_테스트(){
+        List<Integer> computer=new ArrayList<>(Arrays.asList(1,2,3));
+        List<Integer> user=new ArrayList<>(Arrays.asList(1,3,5));
+        assertThat(ballCheck(user.get(1),computer,1)==1);
+        assertThat(ballCheck(user.get(0),computer,0)==0);
+
+    }
+    @Test
     void 볼카운트_테스트(){
 
         List<Integer> computer=new ArrayList<>(Arrays.asList(8,4,6));
