@@ -33,6 +33,6 @@ public class Result {
         return resultMessage;
     }
     public boolean isWrongAnswer(){
-        return false;
+        return strikeCount < 3;
     }
 }
