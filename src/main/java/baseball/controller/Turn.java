@@ -38,4 +38,9 @@ public class Turn {
         TurnScore.setBalls(balls);
     }
 
+    static void countStrikes(List<Integer> numberOfList) {
+        List<Integer> targetNumberList = Target.get();
+        int strikes = countSameValueInSameIndex(targetNumberList, numberOfList);
+        TurnScore.setStrikes(strikes);
+    }
 }
