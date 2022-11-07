@@ -24,5 +24,7 @@ public class Application {
             resultValue = computer.storeCorrectResult(gameValueOfUser, computerNumbers);
             manager.printCorrectResult(resultValue);
         }
+
+        manager.printRetryOrCloseProgram();
     }
 }

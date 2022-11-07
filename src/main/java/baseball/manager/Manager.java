@@ -27,4 +27,9 @@ public interface Manager {
      * 사용자에게 입력받은 결과값 출력
      */
     void printCorrectResult(String resultValue);
+
+    /**
+     * 게임 종료 후 게임 다시 시작, 종료 문구 출력
+     */
+    void printRetryOrCloseProgram();
 }
