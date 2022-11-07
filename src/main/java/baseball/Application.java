@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.State.*;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +15,14 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         resultMap.clear();
+        IOUtil.printStartMessage();
         List<Integer> computerNumbers = new ArrayList<>();
         makeRandomNumbers(computerNumbers);
+        System.out.println(computerNumbers);
         List<Integer> playerNumbers = IOUtil.getNumbersFromPlayer();
         calculate(computerNumbers, playerNumbers);
+        IOUtil.printMapToConsole(resultMap);
+
     }
 
     public static void makeRandomNumbers(List<Integer> computerNumbers) {
@@ -32,13 +37,13 @@ public class Application {
     public static void calculate(List<Integer> computer, List<Integer> player) {
         for (int i = 0; i < computer.size(); i++) {
            if (Objects.equals(computer.get(i), player.get(i))) {
-               insertResultToMap(State.STRIKE);
+               insertResultToMap(STRIKE);
            }
            else if ( player.contains(computer.get(i))) {
-               insertResultToMap(State.BALL);
+               insertResultToMap(BALL);
            }
            else {
-               insertResultToMap(State.NOTHING);
+               insertResultToMap(NOTHING);
            }
         }
     }

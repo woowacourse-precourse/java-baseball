@@ -1,6 +1,9 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -74,6 +77,19 @@ class ApplicationTest extends NsTest {
         assertThat(map.get(State.STRIKE)).isEqualTo(1);
         assertThat(map.get(State.NOTHING)).isEqualTo(2);
         assertThat(map).doesNotContainKey(State.BALL);
+    }
+
+    @Test
+    void 출력테스트() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        List<Integer> computer = List.of(1,5,9);
+        List<Integer> player = List.of(1,9,3);
+        Application.calculate(computer, player);
+        Map<State, Integer> map = Application.getResultMap();
+        IOUtil.printMapToConsole(map);
+
+        assertThat(out).asString().isEqualTo("1볼 1스트라이크\n");
     }
     @Override
     public void runMain() {

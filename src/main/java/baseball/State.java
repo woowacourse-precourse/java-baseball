@@ -5,9 +5,14 @@ public enum State {
     NOTHING("낫싱"),
     STRIKE("스트라이크");
 
-    final String output;
+    private final String output;
 
     State(String output) {
         this.output = output;
+    }
+
+    @Override
+    public String toString() {
+        return output;
     }
 }
