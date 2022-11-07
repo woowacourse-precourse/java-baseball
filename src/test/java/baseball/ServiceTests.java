@@ -3,7 +3,6 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public class ServiceTests {
 
@@ -47,7 +45,7 @@ public class ServiceTests {
         Method testMethod = service.getClass().getDeclaredMethod("AddToListExcludeContainsString", List.class, String.class);
         testMethod.setAccessible(true);
         //when
-        List<String> addDuplicatedString = (ArrayList)testMethod.invoke(service, testDuplicated,"1");
+        List<String> addDuplicatedString = (ArrayList) testMethod.invoke(service, testDuplicated,"1");
         List<String> addUnduplicatedString = (ArrayList) testMethod.invoke(service, testUnduplicated,"9");
 
         //then
@@ -69,4 +67,28 @@ public class ServiceTests {
             assertEquals(deduplicateNumbers.size(), 3);
         }
     }
+
+    @DisplayName("스트라이크(문자열 리스트의 값과 인덱스가 모두 같은)개수를 반환하는 메서드 테스트")
+    @Test
+    void getNumberOfStrikesTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        //given
+        Service service = new Service();
+        List<String> answerNumbers = new ArrayList<>();
+        List<String> questionNumbers = new ArrayList<>();
+
+        answerNumbers.add("1");
+        answerNumbers.add("2");
+        answerNumbers.add("3");
+        questionNumbers.add("1");
+        questionNumbers.add("2");
+        questionNumbers.add("9");//해당 문자만 답과 다르다
+
+        Method testMethod = service.getClass().getDeclaredMethod("getNumberOfStrikes", List.class, List.class);
+        testMethod.setAccessible(true);
+        //when
+        int strikeCount = (int) testMethod.invoke(service, questionNumbers, answerNumbers);
+        //then
+        assertEquals(2, strikeCount);
+    }
+
 }
