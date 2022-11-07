@@ -26,6 +26,11 @@ public class GameController {
         inputView.askUserInputNumber();
     }
 
+    public void endNumberBaseballGameMessage() {
+        outputView.printMissionCompleteMessage();
+    }
+
+
 
 
 
