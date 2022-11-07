@@ -53,7 +53,7 @@ public class CompareResult {
 	}
 
 	private String formatStatus(BallStatus status) {
-		String count = String.valueOf(occurrences.get(status));
-		return String.join("", count, status.getStatus());
+		return String.format("%d%s",
+			occurrences.get(status), status.getStatus());
 	}
 }
