@@ -120,9 +120,9 @@ public class Application {
         }
     }
 
-    public static boolean printBaseballOfResult(int strikeSize, int ballSize){
-        int strikeNumber = strikeSize;
-        int ballNumber = ballSize;
+    public static boolean printBaseballOfResult(Map<String,Integer> result){
+        int strikeNumber = result.get("strike");
+        int ballNumber = result.get("ball");
 
         if(strikeNumber == 3){
             System.out.println("3스트라이크");
@@ -153,6 +153,7 @@ public class Application {
         int strikeNumber = checkStrikeNumbers(computerNumbersList,userNumbersList);
         int ballNumber = checkedBallNumbers(computerNumbersList,userNumbersList);
         Map<String,Integer> baseballResult = calculatedStrikeBallNumber(strikeNumber,ballNumber);
+        checkedAnswer = printBaseballOfResult(baseballResult);
     }
 
     public static void main(String[] args) {
