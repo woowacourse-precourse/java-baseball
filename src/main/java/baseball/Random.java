@@ -21,5 +21,4 @@ public class Random {
         return  randomString;
     }
     private Boolean contains(String randomString,int randomNum){return randomString.contains(Integer.toString(randomNum));}
-
 }
