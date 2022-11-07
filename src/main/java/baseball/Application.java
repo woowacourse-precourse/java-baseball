@@ -29,8 +29,28 @@ public class Application {
             List<Integer> user = getInputAsList();
             find = computer.equals(user);
         }
-
+        
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+
+    /**
+     * Output the results of the game's execution
+     * @param strike number of strike
+     * @param ball number of ball
+     */
+    private static void printResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else {
+            if (ball != 0) {
+                System.out.printf("%d볼 ", ball);
+            }
+
+            if (strike != 0) {
+                System.out.printf("%d스트라이크 \n", strike);
+            }
+        }
     }
 
     /**
