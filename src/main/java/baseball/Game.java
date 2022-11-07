@@ -27,4 +27,8 @@ public class Game {
         }
         return computerNumber;
     }
+
+    public void printUserInputPrompt() {
+        System.out.println("숫자를 입력해주세요 : ");
+    }
 }
