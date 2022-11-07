@@ -181,3 +181,4 @@ List<Integer> computer = new ArrayList<>();
 ### 리팩토링 및 추가 구현 기능
 - [x] InputView 와 OutputView를 통해서 값을 입출력한다.
   - [x] OutputView의 필드를 이용해서 출력해줄 메세지를 작성한다.
+- [x] for문으로 컬렉션 전체 탐색하여 사용하는 곳에 스트림 적용해보기

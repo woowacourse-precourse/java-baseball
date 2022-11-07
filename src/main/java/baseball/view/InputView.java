@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static baseball.rule.Digit.DIGITS;
+import static baseball.rule.Digit.isMatchDigit;
 
 public class InputView {
 
@@ -40,26 +40,20 @@ public class InputView {
         }
     }
 
-    private void validateNumbers(List<Integer> inputs){
+    private void validateNumbers(List<Integer> inputs) {
         validateInputDuplicate(inputs);
         validateInputMatchDigit(inputs);
     }
 
     private void validateInputDuplicate(List<Integer> inputs) {
-        for(Integer input : inputs){
-            if(Collections.frequency(inputs,input) > 1){
-                throw new InputDuplicateException();
-            }
+        if(inputs.stream().anyMatch(input -> Collections.frequency(inputs, input) > 1)){
+            throw new InputDuplicateException();
         }
     }
 
-    private void validateInputMatchDigit(List<Integer> inputs){
-        if(!isMatchDigit(inputs)){
+    private void validateInputMatchDigit(List<Integer> inputs) {
+        if (!isMatchDigit(inputs)) {
             throw new InputNotMatchDigitException();
         }
-    }
-
-    private boolean isMatchDigit(List<Integer> inputs){
-        return inputs.size() == DIGITS;
     }
 }
