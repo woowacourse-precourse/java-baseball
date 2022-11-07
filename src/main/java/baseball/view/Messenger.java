@@ -22,21 +22,25 @@ public class Messenger {
     }
 
     public void printResultMessage(int strike, int ball) {
+        System.out.print(makeResultMessage(strike, ball));
+    }
+
+    public String makeResultMessage(int strike, int ball) {
         List<String> decisions = new ArrayList<>();
         String countMessage;
         if (!isZero(ball)) {
-            countMessage = String.format("%d" + Messages.BALL.getMessage(), ball);
+            countMessage = String.format(Messages.BALL.getMessage(), ball);
             decisions.add(countMessage);
         }
         if (!isZero(strike)) {
-            countMessage = String.format("%d" + Messages.STRIKE.getMessage(), strike);
+            countMessage = String.format(Messages.STRIKE.getMessage(), strike);
             decisions.add(countMessage);
         }
         if (isZero(ball) && isZero(strike)) {
             countMessage = Messages.NOTHING.getMessage();
             decisions.add(countMessage);
         }
-        System.out.print(String.join(" ", decisions) + "\n");
+        return String.join(" ", decisions) + "\n";
     }
 
     private boolean isZero(int number) {
