@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Pitch {
 
-    private List<Integer> pitchNumbers = new ArrayList<>();
+    private final List<Integer> pitchNumbers = new ArrayList<>();
 
     /**
      * 입력된 값에서 특정 자리의 값을 반환합니다.
@@ -23,6 +23,7 @@ public class Pitch {
      * @throws IllegalArgumentException 숫자가 아닌 값이 입력됐을 때
      */
     public Pitch() {
+        System.out.print("숫자를 입력해주세요 : ");
         String inputNumber = Console.readLine();
         if(inputNumber.length() != 3)
             throw new IllegalArgumentException();
