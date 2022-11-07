@@ -27,7 +27,24 @@ public class BaseballGame extends Game {
 
     @Override
     protected void play() {
+        int answer = getRandomNumber();
+        while (true) {
+            System.out.print(INPUT_MESSAGE);
+            String input = Console.readLine().replaceAll(" ", "");
 
+            validateInputNumber(input);
+
+            int target = Integer.parseInt(input);
+            int strikeCount = getStrike(target, answer);
+            int ballCount = getBall(target, answer) - strikeCount;
+
+            if (strikeCount > 0 && ballCount > 0) System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+            else if (strikeCount > 0) System.out.println(strikeCount + "스트라이크");
+            else if (ballCount > 0) System.out.println(ballCount + "볼");
+            else System.out.println(NOTHING_MESSAGE);
+
+            if (strikeCount == NUMBER_LIMIT) break;
+        }
     }
 
     @Override
