@@ -30,4 +30,14 @@ public class Player {
         isDifferent(tempInput);
     }
 
+    public List<Integer> changeInputToList(String input){
+        List<Integer> inputList = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++){
+            inputList.add(input.charAt(i) - '0');
+        }
+
+        return inputList;
+    }
+
 }
