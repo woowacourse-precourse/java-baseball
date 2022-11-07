@@ -1,5 +1,6 @@
 package baseball;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,6 +24,12 @@ public class Validate {
 					Message.INVALID_INPUT_END_GAME.getMsg()
 			);
 		}
+		if (isNumberNotInRange(number)){
+			throw new IllegalArgumentException(
+				Message.USER_INPUT_NUMBER_RANGE_INVALID.getMsg() +
+					Message.INVALID_INPUT_END_GAME.getMsg()
+			);
+		}
 	}
 
 	public static boolean isNumeric(String number){
@@ -39,12 +46,20 @@ public class Validate {
 	}
 
 	public static boolean isDuplicated(String number){
-		String[] numberArr = number.split("");
-		ArrayList<String> numberList = new ArrayList<>(Arrays.asList(numberArr));
-		return numberList.stream()
+		return makeNumberList(number)
+			.stream()
 			.distinct()
 			.count()
 			!= number.length();
+	}
+
+	public static boolean isNumberNotInRange(String number){
+		return makeNumberList(number).contains("0");
+	}
+
+	public static ArrayList<String> makeNumberList(String number){
+		String[] numberArr = number.split("");
+		return new ArrayList<>(Arrays.asList(numberArr));
 	}
 
 }
