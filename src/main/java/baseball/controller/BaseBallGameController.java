@@ -12,12 +12,17 @@ public class BaseBallGameController {
 
     public BaseBallGameController(){
         this.gameService = new BaseballGameService();
+        printWelcomeMessage();
     }
 
-    public void play(){
+    public void run(){
         playGame();
         endGame();
         askRetryGame();
+    }
+
+    private void printWelcomeMessage(){
+        BaseBallGameView.printStartGame();
     }
 
     private void playGame(){
@@ -31,7 +36,7 @@ public class BaseBallGameController {
 
     private void askRetryGame(){
         if(getRetryInput() == Constants.BASEBALL_GAME_RETRY){
-            play();
+            run();
         }
     }
 
@@ -51,7 +56,6 @@ public class BaseBallGameController {
         boolean isRetryValue = InputValueValidator.isContainValues(input, Constants.BASEBALL_GAME_END);
 
         return (isOnlyNumber && isOneLength && isRetryValue);
-
         }
 
 }

@@ -13,10 +13,6 @@ public class BaseballGameService {
 
     private BaseBallGame game;
 
-    public BaseballGameService(){
-
-    }
-
     public void initGame(){
         int size = Constants.BASEBALL_GAME_NUMBER_LENGTH;
         int start = Constants.BASEBALL_GAME_NUMBER_RANGE_START;
