@@ -14,11 +14,11 @@ class ComputerImplTest {
         ComputerImpl computer = new ComputerImpl(new BaseballAlgorithmImpl());
 
         //when //then
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             List<Integer> randomNumber1 = computer.generateRandomNumber();
-            for (int j = 0; j < randomNumber1.size() - 1; j++) {
-                assertThat(randomNumber1.get(j)).isNotEqualTo(randomNumber1.get(j + 1));
-            }
+            assertThat(randomNumber1.get(0)).isNotEqualTo(randomNumber1.get(1));
+            assertThat(randomNumber1.get(1)).isNotEqualTo(randomNumber1.get(2));
+            assertThat(randomNumber1.get(0)).isNotEqualTo(randomNumber1.get(2));
         }
     }
 }
