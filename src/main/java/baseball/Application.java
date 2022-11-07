@@ -7,10 +7,12 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        startGame();
+    }
+    public static void startGame() {
         List<Integer> computer = Util.makeRandomNumbers();
         String input;
-        System.out.println(computer);
-        System.out.println("숫자 야구 게임을 시작합니다.");
 
         outer:
         while (true) {
