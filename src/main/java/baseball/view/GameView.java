@@ -3,10 +3,19 @@ package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 public class GameView {
     private static final String OUTPUT_NEWLINE = "\n";
+    StringBuilder output;
     public int inputToQuestion() {
+        output = new StringBuilder();
         String input = Console.readLine();
-        print(input);
+        outputBuilder(input);
         return inputValidate(input);
+    }
+
+    public void outputBuilder(String s) {//매개변수 이름 체크
+        output = new StringBuilder();
+        output.append(s);
+        newLine();
+        print();
     }
 
     public int inputValidate(String input) {
@@ -21,11 +30,11 @@ public class GameView {
         }
     }
 
-    public void print(Object output) {
-        System.out.print(output);
+    public void print() {
+        System.out.print(output.toString());
     }
 
-    public void newLine(StringBuilder sb) {
-        sb.append(OUTPUT_NEWLINE);
+    public void newLine() {
+        output.append(OUTPUT_NEWLINE);
     }
 }

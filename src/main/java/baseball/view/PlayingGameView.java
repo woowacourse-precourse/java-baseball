@@ -7,29 +7,28 @@ public class PlayingGameView extends GameView {
     private static final String OUTPUT_NOTHING = "낫싱";
     private static final int ZERO = 0;
     public void enterNumberPrint() {
-        print(OUTPUT_ENTER_NUMBER);
+        output = new StringBuilder();
+        output.append(OUTPUT_ENTER_NUMBER);
+        print();
     }
 
     public void gameResultPrint(int strike, int ball) {
-        StringBuilder output = new StringBuilder();
+        output = new StringBuilder();
         if (ball > ZERO) {
-            outputBuilder(output, ball, OUTPUT_BALL);
+            outputBuilder(ball, OUTPUT_BALL);
         }
         if (strike > ZERO) {
-            outputBuilder(output, strike, OUTPUT_STRIKE);
+            outputBuilder(strike, OUTPUT_STRIKE);
         }
         if (strike == ZERO && ball == ZERO) {
-            outputBuilder(output, OUTPUT_NOTHING);
+            outputBuilder(OUTPUT_NOTHING);
+            return;//흠 고민
         }
-        newLine(output);
-        print(output.toString());
+        newLine();
+        print();
     }
 
-    public void outputBuilder(StringBuilder output, int judgmentCount, String judgmentString) {
+    public void outputBuilder(int judgmentCount, String judgmentString) {
         output.append(judgmentCount).append(judgmentString);
-    }
-
-    public void outputBuilder(StringBuilder output, String judgmentString) {
-        output.append(judgmentString);
     }
 }
