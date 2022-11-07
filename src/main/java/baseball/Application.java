@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -38,6 +39,29 @@ public class Application {
         }
     }
 
+    public static void result_message(List<Integer> strike_ball_nothing_list) {
+        int strike_count = Collections.frequency(strike_ball_nothing_list, 2);
+        int ball_count = Collections.frequency(strike_ball_nothing_list, 1);
+        int nothing_count = Collections.frequency(strike_ball_nothing_list, 0);
+        String strike_count_message = "";
+        String ball_count_message = "";
+        if (strike_count != 0) {
+            strike_count_message = "%d스트라이크";
+        }
+
+        if (ball_count != 0) {
+            ball_count_message = "%d볼 ";
+        }
+
+        if (nothing_count == 3) {
+            System.out.println("낫싱");
+        } else if (ball_count == 0){
+            System.out.printf(strike_count_message + "\n", strike_count);
+        } else {
+            System.out.printf(ball_count_message + strike_count_message + "\n", ball_count, strike_count);
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         //First commit
@@ -48,5 +72,8 @@ public class Application {
         String input_number = input_number_message();
         String[] input_number_list = input_number.split("");
         List<Integer> strike_ball_nothing_list = Arrays.asList(0, 0, 0);
+        add_ball_index(input_number_list, computer_number_list, strike_ball_nothing_list);
+        add_strike_index(input_number_list, computer_number_list, strike_ball_nothing_list);
+        result_message(strike_ball_nothing_list);
     }
 }
