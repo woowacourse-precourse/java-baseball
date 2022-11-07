@@ -1,4 +1,4 @@
-package baseball.console.output;
+package baseball.console;
 
 import baseball.core.dto.BallStrikeDto;
 
