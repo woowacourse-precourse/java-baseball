@@ -16,7 +16,7 @@ public class ComputerBaseballTest {
         //given
         //when
         ComputerBaseball computerBaseball = new ComputerBaseball();
-        List<Integer> baseballNumberList = computerBaseball.getBaseballNumberList();
+        List<Integer> baseballNumberList = computerBaseball.getNumberList();
         //then
         assertThat(baseballNumberList.size())
                 .isEqualTo(3);

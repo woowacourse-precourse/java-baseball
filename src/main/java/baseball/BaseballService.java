@@ -31,14 +31,14 @@ public class BaseballService {
     }
 
     private int getBall(List<Integer> userBaseballNumberList) {
-        List<Integer> baseballNumberList = computerBaseball.getBaseballNumberList();
+        List<Integer> baseballNumberList = computerBaseball.getNumberList();
         return (int) userBaseballNumberList.stream()
                                            .filter(baseballNumberList::contains)
                                            .count();
     }
 
     private int getStrike(List<Integer> userBaseballNumberList) {
-        List<Integer> computerBaseballNumberList = computerBaseball.getBaseballNumberList();
+        List<Integer> computerBaseballNumberList = computerBaseball.getNumberList();
         int strike = 0;
 
         for (int i = 0; i < 3; i++) {
