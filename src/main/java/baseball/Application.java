@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         List<Integer> computer = getRandomNumberList();
         String userInput = getUserInput();
+        validate(userInput);
         List<Integer> userAnswer = convertStringToIntegerList(userInput);
     }
 
@@ -59,11 +60,21 @@ public class Application {
             tokenizedStringSet.add(userInput.substring(i, i + 1));
         }
 
-        if(tokenizedStringSet.size() != userInput.length()) {
+        if (tokenizedStringSet.size() != userInput.length()) {
             return false;
         }
 
         return true;
+    }
+
+    private static void validate(String userInput) {
+        if (!isUserInputLengthConstant(3, 3, userInput)) {
+            throw new IllegalArgumentException("값이 허용 범위를 벗어났습니다.");
+        } else if (!isUserInputNumeric(userInput)) {
+            throw new IllegalArgumentException("숫자 이외의 값이 있습니다.");
+        } else if (!isUserInputNotDuplicated(userInput)) {
+            throw new IllegalArgumentException("문자가 중복되었습니다.");
+        }
     }
 
 }
