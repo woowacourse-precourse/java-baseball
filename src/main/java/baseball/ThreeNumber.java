@@ -10,7 +10,8 @@ public class ThreeNumber {
     public ThreeNumber() {
     }
 
-    public ThreeNumber(int number1, int number2, int number3) {
+    public ThreeNumber(String role, Integer number1, Integer number2, Integer number3) {
+        this.role = role;
         this.number1 = number1;
         this.number2 = number2;
         this.number3 = number3;

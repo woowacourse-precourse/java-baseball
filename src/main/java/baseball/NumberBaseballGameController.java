@@ -27,7 +27,7 @@ public class NumberBaseballGameController {
                 computer.add(randomNumber);
             }
         }
-        ThreeNumber computerNumber = new ThreeNumber(computer.get(0), computer.get(1), computer.get(2));
+        ThreeNumber computerNumber = new ThreeNumber("computer", computer.get(0), computer.get(1), computer.get(2));
         threeNumberRepository.save("computer", computerNumber);
         selectPlayerNumber();
     }
@@ -39,7 +39,7 @@ public class NumberBaseballGameController {
         int number1 = playerInput.charAt(0) - '0';
         int number2 = playerInput.charAt(1) - '0';
         int number3 = playerInput.charAt(2) - '0';
-        ThreeNumber playerNumber = new ThreeNumber(number1, number2, number3);
+        ThreeNumber playerNumber = new ThreeNumber("player", number1, number2, number3);
         threeNumberRepository.save("player", playerNumber);
         provideHint();
     }
