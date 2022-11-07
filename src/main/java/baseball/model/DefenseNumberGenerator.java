@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class NumberGenerator {
+public class DefenseNumberGenerator {
+    private static final int DEFENSE_NUMBER_SIZE = 3;
     public List<Integer> createDefenseNumbers() {
         List<Integer> defenseNumbers = new ArrayList<>();
 
-        while (defenseNumbers.size() < 3) {
+        while (defenseNumbers.size() < DEFENSE_NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addDistinctNumber(defenseNumbers, randomNumber);
         }
