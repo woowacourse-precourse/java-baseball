@@ -13,10 +13,10 @@ public class User {
     }
 
     public String getRestartNumber() {
-        return this.userBaseballNumber;
+        return this.userRestartNumber;
     }
 
     public void setUserRestartNumber(String userInput){
-        this.userBaseballNumber = userInput;
+        this.userRestartNumber = userInput;
     }
 }
