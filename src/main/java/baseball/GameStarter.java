@@ -13,6 +13,10 @@ public class GameStarter {
     private List<Integer> user;
     private List<Integer> computer;
 
+    public GameStarter() {
+        RandomNum();
+    }
+
     //잘못된 입력을 받을 경우
     public void IllegalInput() {
         //입력이 3자리의 숫자가 아님
@@ -25,8 +29,12 @@ public class GameStarter {
         }
     }
 
-    public GameStarter() {
-        RandomNum();
+    public void playGame(){
+        System.out.println("숫자를 입력해주세요 : ");
+        this.user = InputNum();
+        IllegalInput();
+        compare();
+        System.out.println(solution());
     }
 
     //랜덤값을 추출
@@ -50,24 +58,6 @@ public class GameStarter {
         return user;
     }
 
-    //입력된 값과 정답이 일치하는지 확인
-    public String solution(){
-        String answer = "";
-        if(strike == 0 && ball == 0){
-            answer = "낫싱";
-        }
-        if(ball != 0 && strike != 0){
-            answer = ball + "볼 " + strike + "스트라이크";
-        }
-        if(ball == 0 && strike != 0){
-            answer = strike + "스트라이크";
-        }
-        if(ball != 0 && strike == 0){
-            answer = ball + "볼";
-        }
-        return answer;
-    }
-
     public void compare(){
         this.strike = 0;
         this.ball = 0;
@@ -82,11 +72,19 @@ public class GameStarter {
         }
     }
 
-    public void playGame(){
-        System.out.println("숫자를 입력해주세요 : ");
-        this.user = InputNum();
-        IllegalInput();
-        System.out.println(solution());
+    //입력된 값과 정답이 일치하는지 확인
+    public String solution(){
+        if(ball != 0 && strike == 0){
+            return (ball + "볼");
+        }
+        if(ball == 0 && strike != 0){
+            return (strike + "스트라이크");
+        }
+
+        if(ball != 0 && strike != 0){
+            return (ball + "볼 " + strike + "스트라이크");
+        }
+        return ("낫싱");
     }
 
     public boolean endCheck(){
@@ -95,6 +93,7 @@ public class GameStarter {
             System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
             String res = Console.readLine();
             if (res.equals("1")) {
+                RandomNum();
                 return true;
             }
             if (res.equals("2")) {
