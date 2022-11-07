@@ -18,7 +18,7 @@ public class Application {
         validateUserNumber(userNumber);
     }
 
-    private static void validateUserNumber(String userNumbers) {
+    public static void validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
         validDuplicate(numberList);
     }
