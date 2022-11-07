@@ -14,7 +14,7 @@ public class CustomTest {
     public class CustomGenerateNumberTest {
 
         LocalDateTime now = LocalDateTime.now();
-        BaseBallGame bg = new BaseBallGame(now.hashCode());
+        BaseBallGame bg = new BaseBallGame();
 
 
         @Test

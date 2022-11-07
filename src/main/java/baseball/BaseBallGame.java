@@ -1,15 +1,15 @@
 package baseball;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.regex.Pattern;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class BaseBallGame  {
+public class BaseBallGame {
 
     State currentState;
     Trigger currentTrigger;
+    Scanner cin;
     static Map<List<Integer>, State> rules;
 
     static {
@@ -24,29 +24,29 @@ public class BaseBallGame  {
 
     protected List<Integer> answerNumber;
 
-    public BaseBallGame(int hashcode) {
+    public BaseBallGame() {
         currentState = State.START_GAME;
         currentTrigger = null;
+        cin = new Scanner(System.in);
     }
 
 
     public void run() {
         while (true) {
             doStateRoutine();
-            if(currentState == State.EXIT_GAME)
+            if (currentState == State.EXIT_GAME)
                 return;
             currentState = rules.get(List.of(currentState.ordinal(), currentTrigger.ordinal()));
 
         }
     }
 
-    private void doStateRoutine(){
+    private void doStateRoutine() {
         List<Integer> input;
         switch (currentState) {
             case START_GAME:
                 System.out.println("숫자 야구 게임을 시작합니다.");
-                LocalDateTime now = LocalDateTime.now();
-                generateNumber(now.hashCode());
+                generateNumber();
                 currentTrigger = Trigger.COMPLETE_INITIATION;
                 return;
             case FINISH_GAME:
@@ -57,7 +57,7 @@ public class BaseBallGame  {
         }
     }
 
-    private void generateNumber(int randomSeed) {
+    private void generateNumber() {
         if (answerNumber == null) {
             answerNumber = new ArrayList<>();
         }
@@ -65,7 +65,7 @@ public class BaseBallGame  {
             answerNumber.clear();
         }
         while (answerNumber.size() < 3) {
-            int randomNumber = (Randoms.pickNumberInRange(1, 9) + randomSeed % 10) % 9 + 1;
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answerNumber.contains(randomNumber)) {
                 answerNumber.add(randomNumber);
             }
@@ -73,22 +73,26 @@ public class BaseBallGame  {
     }
 
     private List<Integer> getUserInput() {
+        List<Integer> result;
 
-        Scanner cin = new Scanner(System.in);
         String inputString;
 
         switch (currentState) {
             case ON_GAME:
                 System.out.printf("숫자를 입력해주세요 :");
                 inputString = cin.nextLine();
-                return inputStringToList(inputString);
+                System.out.println(inputString);
+                result = inputStringToList(inputString);
+                break;
             case FINISH_GAME:
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 inputString = cin.nextLine();
-                return inputStringToList(inputString);
+                result = inputStringToList(inputString);
+                break;
             default:
-                return Collections.emptyList();
+                result = Collections.emptyList();
         }
+        return result;
     }
 
     private List<Integer> inputStringToList(String inputString) {
