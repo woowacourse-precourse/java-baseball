@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 
-public class GameTest {
+public class BaseballGameTest {
     @Nested
     @DisplayName("게임 시작 시")
     class WhenGameStarts {
-        Game game;
+        BaseballGame game;
 
         @BeforeEach
         public void before() {
-            game = new Game();
+            game = new BaseballGame();
         }
 
         @Test
