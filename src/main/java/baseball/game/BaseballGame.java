@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    private final GameResultCalculator calculator;
     protected Number randomNumber;
     private GameInput playerInput;
     private State state;
@@ -24,6 +25,7 @@ public class BaseballGame {
     private final String NOTHING = "낫싱";
 
     public BaseballGame() {
+        calculator = new GameResultCalculator();
     }
 
 
@@ -35,13 +37,12 @@ public class BaseballGame {
     }
 
     public void play() {
-        List<Integer> result;
         do {
             System.out.print(INPUT_PROMPT);
             readInput();
-            result = calculateResult();
+            List<Integer> result = calculateResult();
             printResult(result);
-        } while (!isCorrect(result));
+        } while (!calculator.isThreeStrike(randomNumber, playerInput.number));
     }
 
     public void pause() {
@@ -55,12 +56,6 @@ public class BaseballGame {
 
     public boolean isEnd() {
         return state == State.END;
-    }
-
-
-    private boolean isCorrect(List<Integer> result) {
-        int strikeCount = result.get(STRIKE_IDX);
-        return strikeCount == 3;
     }
 
     private void generateRandomNumber() {
@@ -86,47 +81,9 @@ public class BaseballGame {
     }
 
     private List<Integer> calculateResult() {
-        int ballCount = countBall();
-        int strikeCount = countStrike();
+        int ballCount = calculator.countBall(randomNumber, playerInput);
+        int strikeCount = calculator.countStrike(randomNumber, playerInput);
         return List.of(ballCount, strikeCount);
-    }
-
-    private int countStrike() {
-        int count = 0;
-        if (randomNumber.first.equals(playerInput.number.first)) {
-            count++;
-        }
-        if (randomNumber.second.equals(playerInput.number.second)) {
-            count++;
-        }
-        if (randomNumber.third.equals(playerInput.number.third)) {
-            count++;
-        }
-        return count;
-    }
-
-    private int countBall() {
-        int count = 0;
-
-        Digit firstInput = playerInput.number.first;
-        Digit secondInput = playerInput.number.second;
-        Digit thirdInput = playerInput.number.third;
-
-        boolean isFirstBall = firstInput != randomNumber.first && randomNumber.contains(firstInput),
-                isSecondBall = secondInput != randomNumber.second && randomNumber.contains(secondInput),
-                isThirdBall = thirdInput != randomNumber.third && randomNumber.contains(thirdInput);
-
-        if (isFirstBall) {
-            count++;
-        }
-        if (isSecondBall) {
-            count++;
-        }
-        if (isThirdBall) {
-            count++;
-        }
-
-        return count;
     }
 
     private void printResult(List<Integer> result) {
