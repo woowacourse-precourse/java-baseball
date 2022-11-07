@@ -24,7 +24,7 @@ public class BallAndStrikeTest {
 
     @DisplayName("toString_메서드로_볼과_스트라이크_개수_출력")
     @Nested
-    class toStringTest {
+    class ToStringTest {
         @Test
         void 하나도_일치하지_않으면_낫싱_출력() {
             List<Integer> computer = List.of(1, 2, 3);
