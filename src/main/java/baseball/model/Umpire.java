@@ -11,11 +11,7 @@ public class Umpire {
         this.playerGameNumber = playerGameNumber;
     }
 
-    public Umpire(GameNumber computerGameNumber) {
-        this(computerGameNumber, null);
-    }
-
-    public void playerNewGameNumber(GameNumber playerGameNumber) {
+    public void changePlayerGameNumber(GameNumber playerGameNumber) {
         this.playerGameNumber = playerGameNumber;
     }
 

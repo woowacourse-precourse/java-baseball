@@ -12,19 +12,19 @@ public class BaseballGameService {
     private final NumberGenerator numberGenerator = new NumberGenerator();
     private Umpire umpire;
 
-    public void newGame() {
+    public void newGame(String playerInputNumbers) {
         GameNumber computerGameNumber = new GameNumber(numberGenerator.createRandomNumbers());
-        umpire = new Umpire(computerGameNumber);
+        GameNumber playerGameNumber = new GameNumber(convertToList(playerInputNumbers));
+
+        umpire = new Umpire(computerGameNumber, playerGameNumber);
     }
 
     public GameResult playGame(String playerInputNumbers) {
         GameNumber playerGameNumber = new GameNumber(convertToList(playerInputNumbers));
-        umpire.playerNewGameNumber(playerGameNumber);
+        umpire.changePlayerGameNumber(playerGameNumber);
 
         return umpire.decision();
     }
-
-
 
     private List<Integer> convertToList(String playerInputNumbers) {
         return Arrays.stream(playerInputNumbers.split(""))
