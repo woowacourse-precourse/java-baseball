@@ -8,9 +8,9 @@ import java.util.stream.Stream;
 
 public class GameService {
     public static final int LENGTH_OF_NUM = 3;
+    public static final Player computer = new ComputerPlayer();
+    public static final Player user = new UserPlayer();
     public static GAME_RESULT finishNumber = GAME_RESULT.START_GAME;
-    public final Player computer = new ComputerPlayer();
-    public final Player user = new UserPlayer();
 
     private static GAME_RESULT inputFinish() throws IllegalArgumentException {
         int intInput = Integer.parseInt(Console.readLine());
@@ -66,6 +66,16 @@ public class GameService {
         return printMessage;
     }
 
+    public static boolean checkFinish() {
+        if (user.number == computer.number) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return true;
+        }
+        return false;
+    }
+
     public void startGame() {
         computer.getNumber();
         printStartMessage();
@@ -86,20 +96,10 @@ public class GameService {
         user.getNumber();
         boolean isFinished = checkFinish();
         if (isFinished) {
-            return true;
-        }
-        computeScore();
-        return false;
-    }
-
-    public boolean checkFinish() throws IllegalArgumentException {
-        if (user.number == computer.number) {
-            System.out.println("3스트라이크");
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             finishNumber = inputFinish();
             return true;
         }
+        computeScore();
         return false;
     }
 
