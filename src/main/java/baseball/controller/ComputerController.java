@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 public class ComputerController {
     OutputView outputView = new OutputView();
-    InputView inputView = new InputView();
 
     private static final int BASEBALL_GAME_NUMBER_LENGTH = 3;
     private static final String STRIKE_MESSAGE = "스트라이크";
@@ -21,11 +20,6 @@ public class ComputerController {
     public void startGame(GameNumber gameNumber) {
         outputView.printStartGame();
         gameNumber.setComputerNumbers();
-        String inputNumber = Console.readLine();
-        gameNumber.setInputString(inputNumber);
-
-        compareNumbers(gameNumber);
-        provideHint();
     }
 
     public void compareNumbers(GameNumber gameNumber) {
@@ -49,7 +43,7 @@ public class ComputerController {
         }
     }
 
-    private void provideHint() {
+    public void provideHint() {
         String hintMessage = "";
 
         if (ballCount > 0) {
