@@ -19,4 +19,15 @@ public class Application {
         }
         return computer;
     }
+
+    public static Boolean isNothing(List<Integer> userInput, List<Integer> computer){
+        boolean isNothing = true;
+        for (Integer integer : userInput) {
+            if (computer.contains(integer)) {
+                isNothing = false;
+                break;
+            }
+        }
+        return isNothing;
+    }
 }
