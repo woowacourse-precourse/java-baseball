@@ -18,9 +18,13 @@ public class Player {
     }
 
     private void validNumbers(String readLine) {
-        if (readLine.length() != 3) {
-            throw new IllegalArgumentException("Numbers is size Exception!!");
+        if (!isDigit(readLine) || readLine.length() != 3) {
+            throw new IllegalArgumentException("Number is Not Valid Exception!!");
         }
+    }
+
+    private static boolean isDigit(String readLine) {
+        return readLine.chars().allMatch(Character::isDigit);
     }
 
     public void giveNumbersToReferee(Referee referee) {
