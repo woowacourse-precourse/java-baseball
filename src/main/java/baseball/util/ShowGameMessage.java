@@ -1,6 +1,5 @@
 package baseball.util;
 
-import baseball.dto.ScoreResultType;
 import baseball.dto.ScoreResult;
 
 public class ShowGameMessage {
@@ -13,7 +12,7 @@ public class ShowGameMessage {
     }
 
     public void gameResultMessage(ScoreResult scoreResult) {
-        switch (scoreResult.getType()) {
+        switch (scoreResult.getScoreResultType()) {
             case ALL_STRIKE:
                 strikeMessage(scoreResult.getStrike());
                 allStrikeMessage();
@@ -25,8 +24,8 @@ public class ShowGameMessage {
             case BALL:
                 ballMessage(scoreResult.getBall());
                 break;
-            case STRIKE_BALL:
-                strikeAndBallMessage(scoreResult.getStrike(), scoreResult.getBall());
+            case BALL_STRIKE:
+                ballAndStrikeMessage(scoreResult.getBall(), scoreResult.getStrike());
                 break;
             case NOTHING:
                 nothingMessage();
@@ -50,8 +49,8 @@ public class ShowGameMessage {
         System.out.printf(GameMessage.STRIKE, strike);
     }
 
-    private void strikeAndBallMessage(int strike, int ball) {
-        System.out.printf(GameMessage.STRIKE_BALL, strike, ball);
+    private void ballAndStrikeMessage(int ball, int strike) {
+        System.out.printf(GameMessage.STRIKE_BALL, ball, strike);
     }
 
     private void continueGameMessage() {
