@@ -1,8 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,6 +139,21 @@ class ApplicationTest extends NsTest {
 
         // then
         assertThat(Application.checkThreeStrike(Application.countingStrike(0, user_input, random_input))).isEqualTo(true);
+    }
+
+    @Test
+    void printCountTest() {
+
+        ByteArrayOutputStream message = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(message));
+
+        Application.printCount(0, 2);
+        Application.printCount(2, 0);
+        Application.printCount(1, 2);
+        Application.printCount(0, 0);
+        Assertions.assertEquals("2스트라이크\n2볼\n1볼 2스트라이크\n낫싱\n", message.toString());
+
+        System.setOut(System.out);
     }
 
     @Override
