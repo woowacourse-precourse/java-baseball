@@ -6,42 +6,42 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class NumberBallsInput implements UserInput {
+public class NumberBallsInput {
     private final String numberBallsInput;
     public static final int BALL_COUNT = 3;
 
-    public NumberBallsInput() {
-        numberBallsInput = get();
+    public NumberBallsInput(String numberBallsInput) {
+        validate(numberBallsInput);
+        this.numberBallsInput = numberBallsInput;
     }
 
-    @Override
-    public void validate(String input) {
-        if (!supportsInputLength(input)) {
+    public void validate(String numberBallsInput) {
+        if (!supportsNumberBallsInputLength(numberBallsInput)) {
             throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
         }
 
         try {
-            hasNumber(input);
+            hasNumber(numberBallsInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
         }
 
-        if (includesDuplicateNumber(input)) {
+        if (includesDuplicateNumber(numberBallsInput)) {
             throw new IllegalArgumentException(GameExceptionMessage.USER_NUMBER_LENGTH);
         }
     }
 
-    private boolean includesDuplicateNumber(String userInput) {
-        String exceptDuplicateUserInput = Stream.of(userInput.split("")).distinct().collect(Collectors.joining());
-        return !supportsInputLength(exceptDuplicateUserInput);
+    private boolean includesDuplicateNumber(String numberBallsInput) {
+        String exceptDuplicateUserInput = Stream.of(numberBallsInput.split("")).distinct().collect(Collectors.joining());
+        return !supportsNumberBallsInputLength(exceptDuplicateUserInput);
     }
 
-    private void hasNumber(String userInput) {
-        Integer.parseInt(userInput);
+    private void hasNumber(String numberBallsInput) {
+        Integer.parseInt(numberBallsInput);
     }
 
-    private boolean supportsInputLength(String userInput) {
-        return userInput.length() == BALL_COUNT;
+    private boolean supportsNumberBallsInputLength(String numberBallsInput) {
+        return numberBallsInput.length() == BALL_COUNT;
     }
 
     public List<NumberBall> toNumberBalls() {
