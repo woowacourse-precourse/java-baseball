@@ -3,6 +3,9 @@ package baseball.domain;
 import java.util.Objects;
 
 public class Ball {
+    private static final String RANGE_EXCEPTION_MESSAGE = "1 ~ 9 사이 숫자를 입력해주세요";
+    static final int MAX_RANGE = 9;
+    static final int MIN_RANGE = 1;
 
     private int number;
 
@@ -12,8 +15,8 @@ public class Ball {
     }
 
     private void validateRange(int number) {
-        if (number < 1 || number > 9) {
-            throw new IllegalArgumentException("1 ~ 9 사이 숫자를 입력해주세요");
+        if (number < MIN_RANGE || number > MAX_RANGE) {
+            throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
         }
     }
 

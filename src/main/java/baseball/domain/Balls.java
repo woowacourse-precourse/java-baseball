@@ -1,11 +1,18 @@
 package baseball.domain;
 
+import static baseball.domain.Ball.MAX_RANGE;
+import static baseball.domain.Ball.MIN_RANGE;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Balls {
+    private static final int BALL_SIZE = 3;
+    private static final String SIZE_EXCEPTION_MESSAGE = "3자리 숫자를 입력해주세요";
+    private static final String UNIQUE_EXCEPTION_MESSAGE = "중복된 숫자는 입력할 수 없습니다";
+
     private List<Ball> balls;
 
     private Balls(List<Ball> balls) {
@@ -15,8 +22,8 @@ public class Balls {
     }
 
     private void validateSize(List<Ball> balls) {
-        if (balls.size() != 3) {
-            throw new IllegalArgumentException("3자리 숫자를 입력해주세요");
+        if (balls.size() != BALL_SIZE) {
+            throw new IllegalArgumentException(SIZE_EXCEPTION_MESSAGE);
         }
     }
 
@@ -25,15 +32,14 @@ public class Balls {
                 .distinct()
                 .count();
         if (count != balls.size()) {
-            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다");
+            throw new IllegalArgumentException(UNIQUE_EXCEPTION_MESSAGE);
         }
     }
 
-    //TODO 더 좋은 네이밍 생각해보기
     public static Balls generateUniqueBalls() {
         List<Ball> uniqueBalls = new ArrayList<>();
-        while (uniqueBalls.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (uniqueBalls.size() < BALL_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE);
             Ball randomBall = new Ball(randomNumber);
 
             if (!uniqueBalls.contains(randomBall)) {
@@ -52,7 +58,7 @@ public class Balls {
 
     public int equalsExactly(Balls player) {
         int count = 0;
-        for (int position = 0; position < balls.size(); position++) {
+        for (int position = 0; position < BALL_SIZE; position++) {
             if (isBallEqual(player, position)) {
                 count++;
             }
@@ -70,7 +76,7 @@ public class Balls {
 
     public int containsCountWithoutEqual(Balls player) {
         int count = 0;
-        for (int position = 0; position < balls.size(); position++) {
+        for (int position = 0; position < BALL_SIZE; position++) {
             if (balls.contains(player.getBall(position)) && !isBallEqual(player, position)) {
                 count++;
             }

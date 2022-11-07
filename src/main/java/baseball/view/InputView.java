@@ -7,17 +7,21 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final String NUMBER_REGEX = "^[0-9]*$";
+    private static final String INPUT_BALL_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String DELIMITER = "";
+    private static final String NUMBER_EXCEPTION_MESSAGE = "숫자가 아닙니다.";
 
     public static List<Integer> getBalls() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.println(INPUT_BALL_MESSAGE);
         String number = inputNumber();
-        return Arrays.stream(number.split(""))
+        return Arrays.stream(number.split(DELIMITER))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
     public static int restart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_RESTART_MESSAGE);
         String status = inputNumber();
         return Integer.parseInt(status);
     }
@@ -30,7 +34,7 @@ public class InputView {
 
     private static void validateNumber(String input) {
         if (!input.matches(NUMBER_REGEX)) {
-            throw new IllegalArgumentException("숫자가 아닙니다.");
+            throw new IllegalArgumentException(NUMBER_EXCEPTION_MESSAGE);
         }
     }
 }
