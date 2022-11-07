@@ -10,6 +10,11 @@ public class Game {
     public static int MIN_NUMBER_OF_ANSWER = 1;
     public static int MAX_NUMBER_OF_ANSWER = 9;
 
+    private final List<Integer> answer;
+    Game(List<Integer> answer){
+        this.answer = answer;
+    }
+
     static List<Integer> computerSelectNumbers(){
         List<Integer> selectedNums = new ArrayList<>();
         while (selectedNums.size() < ANSWER_SIZE) {
@@ -19,5 +24,11 @@ public class Game {
             }
         }
         return selectedNums;
+    }
+
+    int countNumbersContainedInAnswer(List<Integer> playerGuess){
+        return (int) playerGuess.stream()
+                .filter(input -> answer.contains(input))
+                .count();
     }
 }
