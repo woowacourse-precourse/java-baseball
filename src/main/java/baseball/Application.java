@@ -172,6 +172,12 @@ public class Application {
         }
     }
 
+    static public void restartGame(String restart) {
+        if (restart.equals(RESTART)) {
+            startGame();
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(GAME_START_MESSAGE);
         startGame();
