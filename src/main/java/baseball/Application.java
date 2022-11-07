@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static baseball.ExceptionCheck.noException;
+import static baseball.Result.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 /* 기능 목록
@@ -71,6 +72,13 @@ public class Application {
             Input.add((int)(input.charAt(i) -'0'));
         }
         noException(input, Input);
+    }
+    public static int getResult(int ball, int strike, String input, List<Integer> computernum, List<Integer> Input){
+        for( int i = 0;i< input.length();i++){
+            ball = checkBall(computernum, Input.get(i), i,ball);
+            strike = checkStrike(computernum.get(i), Input.get(i),strike);
+        }
+        printResult(ball,strike);
         return strike;
     }
     public static void main(String[] args) {
