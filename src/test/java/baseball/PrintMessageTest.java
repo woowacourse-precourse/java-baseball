@@ -35,6 +35,11 @@ class PrintMessageTest {
 
     @Test
     void answerMessage() {
+        ByteArrayOutputStream outPut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outPut));
+        PrintMessage.answerMessage();
+        String input = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+        assertThat(outPut.toString()).isEqualTo(input);
     }
 
     @Test
