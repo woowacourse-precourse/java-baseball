@@ -4,7 +4,6 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import static baseball.Messages.*;
 
-
 public class Game {
     private static final Integer THREE_STRIKE = Application.NUMBER_LENGTH();
 
@@ -39,7 +38,6 @@ public class Game {
             printEndMessage();
             return;
         }
-
         throw new IllegalArgumentException("지정되지 않은 문자가 입력되었습니다.");
     }
 
@@ -61,10 +59,16 @@ public class Game {
 
     private static boolean isBall(List<BaseBallNumber> userNumberList, List<BaseBallNumber> randomNumberList, int index) {
         int userNumber = userNumberList.get(index).getValue();
-        int randomNumber = randomNumberList.get(index).getValue();
 
-        if ((userNumber != randomNumber) && randomNumberList.contains(userNumber)) {
-            return true;
+        for (int i = 0; i < userNumberList.size(); i++) {
+            if (i == index) {
+                continue;
+            }
+
+            int nowNumber = randomNumberList.get(i).getValue();
+            if (userNumber == nowNumber) {
+                return true;
+            }
         }
         return false;
     }

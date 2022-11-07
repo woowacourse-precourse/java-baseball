@@ -1,7 +1,5 @@
 package baseball;
 
-import baseball.Game;
-
 public class Messages {
     private static final String END_MESSAGE = "게임 종료";
     private static final String CLEAR_MESSAGE = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -24,7 +22,7 @@ public class Messages {
 
     private static void printBalls(int balls) {
         if (balls > ZERO) {
-            System.out.print(balls + BALL);
+            System.out.print(balls + BALL + " ");
         }
     }
 
