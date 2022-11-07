@@ -23,7 +23,7 @@
 
 - 테스트 케이스 목록 작성
 
-#### Commit Convention
+#### [Commit Convention]
 - feat : 새로운 기능 추가
 - fix : 버그 수정
 - docs : 문서 수정
