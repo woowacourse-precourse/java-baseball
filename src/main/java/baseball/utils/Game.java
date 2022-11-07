@@ -16,4 +16,10 @@ public class Game {
         System.out.println(END_GAME);
         System.out.println(ASK_RESTART);
     }
+
+    private static void resetGameValue() {
+        strikeCnt = 0;
+        ballCnt = 0;
+        noting = false;
+    }
 }
