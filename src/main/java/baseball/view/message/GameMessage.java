@@ -1,4 +1,4 @@
-package baseball;
+package baseball.view.message;
 
 public enum GameMessage {
 

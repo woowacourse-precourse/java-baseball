@@ -1,4 +1,6 @@
-package baseball;
+package baseball.objects;
+
+import baseball.valid.Validation;
 
 import java.util.Arrays;
 import java.util.List;

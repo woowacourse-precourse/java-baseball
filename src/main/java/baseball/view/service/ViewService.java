@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view.service;
+
+import baseball.view.View;
 
 public class ViewService {
 

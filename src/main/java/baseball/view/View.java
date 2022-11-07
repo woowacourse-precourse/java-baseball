@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.view.message.GameMessage;
 
 public class View {
 

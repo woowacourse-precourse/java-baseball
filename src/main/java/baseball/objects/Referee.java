@@ -1,4 +1,6 @@
-package baseball;
+package baseball.objects;
+
+import baseball.view.service.ViewService;
 
 import java.util.ArrayList;
 import java.util.List;

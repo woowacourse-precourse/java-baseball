@@ -1,5 +1,7 @@
-package baseball;
+package baseball.objects;
 
+import baseball.view.View;
+import baseball.view.service.ViewService;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
