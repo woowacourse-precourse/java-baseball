@@ -2,7 +2,7 @@ package baseball.domain;
 
 import baseball.util.number.NumberGenerator;
 
-public class Computer implements Player{
+public class Computer{
 
   private final NumberGenerator numberGenerator;
 
@@ -10,7 +10,6 @@ public class Computer implements Player{
     this.numberGenerator = numberGenerator;
   }
 
-  @Override
   public Balls generateBalls(){
     return new Balls(numberGenerator.generate());
   }
