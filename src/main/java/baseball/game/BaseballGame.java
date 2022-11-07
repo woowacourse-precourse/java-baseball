@@ -33,9 +33,6 @@ public class BaseballGame {
         System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
         checkValidationRestartNumber(restartNumber);
-        if (restartNumber.equals(RESTART)) {
-            playBaseballGame();
-        }
+        if (restartNumber.equals(RESTART)) playBaseballGame();
     }
-
 }

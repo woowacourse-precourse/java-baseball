@@ -15,8 +15,7 @@ public class UserNumber {
         System.out.println(INPUT_NUMBER_MESSAGE);
         String userNumber = Console.readLine();
         List<Integer> userNumberList = new ArrayList<>();
-        for (int i = ZERO; i < userNumber.length(); i++)
-            userNumberList.add(userNumber.charAt(i) - '0');
+        for (int i = ZERO; i < userNumber.length(); i++) userNumberList.add(userNumber.charAt(i) - '0');
         return userNumberList;
     }
 

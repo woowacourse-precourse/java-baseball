@@ -13,9 +13,7 @@ public class ComputerNumber {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < BALL_LEN) {
             int randomNumber = Randoms.pickNumberInRange(BALL_START, BALL_END);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
-            }
+            if (!computerNumbers.contains(randomNumber)) computerNumbers.add(randomNumber);
         }
         return computerNumbers;
     }
