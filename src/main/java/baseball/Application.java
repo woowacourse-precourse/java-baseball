@@ -46,6 +46,16 @@ public class Application {
         return result;
     }
 
+    private static int checkStrike(List<Integer> comNum, List<Integer> myNum) {
+        int result = 0;
+        for(int i = 0; i < NUM_SIZE; i++) {
+            if(comNum.get(i) == myNum.get(i)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
 
     }
