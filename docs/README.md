@@ -1,11 +1,11 @@
 # 기능 목록   [미션 - 숫자 야구]
 
-#### input Scanner --X
+#### input Scanner
 #### printOutGameStart
 
 ## gameStart
 #### newRandomNumber
-#### inGameValidation - validateInGame()
+#### inGameValidation
 
 ## restartOrFinishGame
 #### afterGameValidation
