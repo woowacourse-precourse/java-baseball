@@ -4,6 +4,10 @@ import baseball.view.ErrorView;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import static baseball.config.ControllerConstants.COMMAND_ERROR_MESSAGE;
+import static baseball.config.ControllerConstants.COMMAND_INPUT_MESSAGE;
+import static baseball.config.ControllerConstants.INIT_MESSAGE;
+
 public final class Controller {
     private final InputView inputView;
     private final OutputView outputView;
@@ -32,15 +36,15 @@ public final class Controller {
             return CommandKey.from(key);
         } catch (IllegalArgumentException e) {
             errorView.printError(e.getMessage());
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException(COMMAND_ERROR_MESSAGE, e);
         }
     }
 
     private void printCommandInputMessage() {
-        outputView.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        outputView.print(COMMAND_INPUT_MESSAGE);
     }
 
     void initController() {
-        outputView.print("숫자 야구 게임을 시작합니다.\n");
+        outputView.print(INIT_MESSAGE);
     }
 }
