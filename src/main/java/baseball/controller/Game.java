@@ -1,11 +1,18 @@
 package baseball.controller;
 
+import baseball.model.Target;
 import baseball.type.GameStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
-    private GameStatus gameStatus = GameStatus.InProgress;
+    private GameStatus gameStatus;
+    private Target target;
+
+    Game() {
+        this.gameStatus = GameStatus.InProgress;
+        this.target = new Target();
+    }
 
     void repeatUntilEnd() {
         OutputView.informStartGame();
@@ -16,7 +23,7 @@ public class Game {
     }
 
     void playOneTime() {
-        Turn turn = new Turn();
+        Turn turn = new Turn(this.target);
         turn.repeatToEnd();
         checkIsUserRepeatGame();
     }

@@ -10,7 +10,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Turn {
-    ResultTurn resultTurn;
+    private ResultTurn resultTurn;
+    private Target target = new Target();
+
+    Turn (Target target) {
+        this.target = target;
+    }
 
     void repeatToEnd() {
         while(checkCanRepeat()) {
@@ -34,7 +39,7 @@ public class Turn {
     }
 
     void countBalls(List<Integer> numberOfList) {
-        List<Integer> targetNumberList = Target.get();
+        List<Integer> targetNumberList = target.get();
         int countSameValueInSameIndex = countSameValueInSameIndex(targetNumberList, numberOfList);
         int countValueContainTogether = countValueContainTogether(targetNumberList, numberOfList);
         int balls = countValueContainTogether - countSameValueInSameIndex;
@@ -42,7 +47,7 @@ public class Turn {
     }
 
     void countStrikes(List<Integer> numberOfList) {
-        List<Integer> targetNumberList = Target.get();
+        List<Integer> targetNumberList = target.get();
         int strikes = countSameValueInSameIndex(targetNumberList, numberOfList);
 //        TurnScore.setStrikes(strikes);
     }
