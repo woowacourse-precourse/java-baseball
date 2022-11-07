@@ -1,9 +1,9 @@
 package baseball.view;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import baseball.domain.BaseballNumber;
-import baseball.exception.InvalidInputException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -26,7 +26,7 @@ class BaseballGameInputViewTest {
 
     @Test
     @DisplayName("올바르지 않은 숫자 입력")
-    public void isNotValidInput(){
+    public void isNotValidInput() {
         // given
         final String input = "111";
         System.setOut(new PrintStream(out));
@@ -35,12 +35,12 @@ class BaseballGameInputViewTest {
         // when
 
         // then
-        assertThrows(InvalidInputException.class, BaseballGameInputView::getPlayerNumber);
+        assertThrows(IllegalArgumentException.class, BaseballGameInputView::getPlayerNumber);
     }
 
     @Test
     @DisplayName("올바른 숫자 입력")
-    public void isValidInput(){
+    public void isValidInput() {
         // given
         final String input = "123";
         System.setOut(new PrintStream(out));

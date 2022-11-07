@@ -6,7 +6,6 @@ import static baseball.view.BaseballGameConstant.INPUT_NUMBER_MESSAGE;
 import static baseball.view.BaseballGameConstant.RESTART_NUMBER_ERROR_MESSAGE;
 
 import baseball.domain.BaseballNumber;
-import baseball.exception.InvalidInputException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameInputView {
@@ -14,7 +13,7 @@ public class BaseballGameInputView {
         System.out.print(INPUT_NUMBER_MESSAGE);
         String playerNumber = Console.readLine();
         if (!BaseballGameInputValidator.validatePlayerNumber(playerNumber)) {
-            throw new InvalidInputException(INPUT_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(INPUT_NUMBER_ERROR_MESSAGE);
         }
         return new BaseballNumber(playerNumber);
     }
@@ -23,7 +22,7 @@ public class BaseballGameInputView {
         System.out.println(GAME_FINISHED_MESSAGE);
         String input = Console.readLine();
         if (!BaseballGameInputValidator.validateReplayNumber(input)) {
-            throw new InvalidInputException(RESTART_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(RESTART_NUMBER_ERROR_MESSAGE);
         }
         return input.equals("1");
     }
