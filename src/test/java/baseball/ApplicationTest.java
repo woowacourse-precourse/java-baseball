@@ -45,4 +45,14 @@ class ApplicationTest extends NsTest {
         int[] randomNumber = RandomUtil.createRandomComputerNumbers();
         assertThat(randomNumber[0]).isNotEqualTo(randomNumber[1]).isNotEqualTo(randomNumber[2]);
     }
+    @Test
+    void 게임실행_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("456", "789", "123", "2");
+                    assertThat(output()).contains("낫싱", "낫싱", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
 }
