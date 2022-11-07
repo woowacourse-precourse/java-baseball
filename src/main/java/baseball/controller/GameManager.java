@@ -38,7 +38,7 @@ public class GameManager {
     private void startLoop() {
         List<Integer> userScore;
         do {
-            printMessage(GAME_INPUT_MESSAGE);
+            outputStream.printMessageForData(GAME_INPUT_MESSAGE);
             int userInput = inputStream.readGameInput();
             baseballManager.addUserBaseballNumInfo(new BaseballNumber(userInput));
             baseballManager.computeUserScore();
