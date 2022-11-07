@@ -39,5 +39,15 @@ public class Computer {
         return StrikeOrBall;
     }
 
+    public static void giveStrikeOrBall(List<Integer> list){
+        HashMap<String ,Integer> StrikeOrBall = isStrikeOrBall(list);
+        result = StrikeOrBall.get("볼") + "볼" + " " + StrikeOrBall.get("스트라이크") + "스트라이크";
+        if(StrikeOrBall.get("스트라이크") == 0){
+            result = StrikeOrBall.get("볼") + "볼";
+        }
+        if(StrikeOrBall.get("볼") == 0) {
+            result = StrikeOrBall.get("스트라이크") + "스트라이크";
+        }
+    }
 }
 
