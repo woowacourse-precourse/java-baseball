@@ -9,7 +9,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        ArrayList<Integer> inputUserNumber;
         int restartNumber;
         do {
             System.out.println("숫자 야구 게임을 시작합니다!!!");
@@ -25,11 +24,12 @@ public class Application {
 
     private static int getRestartNumber(ArrayList<Integer> generateAnswer) {
         int restartNumber;
+        int breakWhileCode = 0;
         ArrayList<Integer> inputUserNumber;
         while (true) {
             inputUserNumber = inputUserNumber();
-            if (inputUserNumber.get(0) == 0) {
-                restartNumber = 0;
+            if (inputUserNumber.get(0) == breakWhileCode) {
+                restartNumber = breakWhileCode;
                 break;
             }
             String numberReferee = numberReferee(generateAnswer, inputUserNumber);
@@ -43,7 +43,7 @@ public class Application {
         return restartNumber;
     }
 
-    public static ArrayList<Integer> generateAnswer() {
+    private static ArrayList<Integer> generateAnswer() {
         ArrayList<Integer> answerNumber = new ArrayList<>();
         while (answerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -54,28 +54,36 @@ public class Application {
         return answerNumber;
     }
 
-    public static ArrayList<Integer> inputUserNumber() {
+    private static ArrayList<Integer> inputUserNumber() {
         ArrayList<Integer> inputNumberArray = new ArrayList<>();
         String inputNumber = Console.readLine();
+        int firstBall = 0;
+        int secondBall = 1;
+        int thirdBall = 2;
 
-        if (inputNumber.charAt(0) == inputNumber.charAt(1) || inputNumber.charAt(0) == inputNumber.charAt(2)
-            || inputNumber.charAt(1) == inputNumber.charAt(2) || inputNumber.length() != 3
-            || !Character.isDigit(inputNumber.charAt(0)) || !Character.isDigit(inputNumber.charAt(1))
-            || !Character.isDigit(inputNumber.charAt(2)) || inputNumber.charAt(0) == 0 || inputNumber.charAt(1) == 0
-            || inputNumber.charAt(2) == 0) {
-            inputNumberArray.add(0);
+        if (inputNumber.charAt(firstBall) == inputNumber.charAt(secondBall)
+            || inputNumber.charAt(firstBall) == inputNumber.charAt(thirdBall)
+            || inputNumber.charAt(secondBall) == inputNumber.charAt(thirdBall)
+            || inputNumber.length() != 3
+            || !Character.isDigit(inputNumber.charAt(firstBall))
+            || !Character.isDigit(inputNumber.charAt(secondBall))
+            || !Character.isDigit(inputNumber.charAt(thirdBall))
+            || inputNumber.charAt(firstBall) == 0
+            || inputNumber.charAt(secondBall) == 0
+            || inputNumber.charAt(thirdBall) == 0 ) {
+            inputNumberArray.add(firstBall);
 
             return inputNumberArray;
         }
 
-        inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(0)));
-        inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(1)));
-        inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(2)));
+        inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(firstBall)));
+        inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(secondBall)));
+        inputNumberArray.add(Character.getNumericValue(inputNumber.charAt(thirdBall)));
 
         return inputNumberArray;
     }
 
-    public static String numberReferee(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserNumber) {
+    private static String numberReferee(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserNumber) {
 
         String answer = "";
         int strike = 0;
@@ -92,6 +100,7 @@ public class Application {
                 ball++;
             }
         }
+        
         for (int j = 0; j < 3; j++) {
             if (Objects.equals((generateAnswer.get(secondBall)), inputUserNumber.get(j)) && j == secondBall) {
                 strike++;
@@ -100,6 +109,7 @@ public class Application {
                 ball++;
             }
         }
+        
         for (int j = 0; j < 3; j++) {
             if (Objects.equals((generateAnswer.get(thirdBall)), inputUserNumber.get(j)) && j == thirdBall) {
                 strike++;
@@ -122,7 +132,7 @@ public class Application {
         return answer;
     }
 
-    public static int restart() {
+    private static int restart() {
         System.out.println("계속하시겠습니까?1=계속,2=끝");
         int toBeContinue = Integer.parseInt(Console.readLine());
         if (toBeContinue != 1 && toBeContinue != 2) {
