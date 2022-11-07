@@ -12,14 +12,7 @@ public class User {
         return selectNumber;
     }
 
-    public void setSelectNumber(String inputNumber) {
-        initList();
-        for (int index = 0; index < inputNumber.length(); index++) {
-            selectNumber.add(inputNumber.charAt(index) - '0');
-        }
-    }
-
-    public void initList() {
-        selectNumber = new ArrayList<>();
+    public void setSelectNumber(List<Integer> selectNumber) {
+        this.selectNumber = selectNumber;
     }
 }
