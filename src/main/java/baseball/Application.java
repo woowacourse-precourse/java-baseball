@@ -25,7 +25,8 @@ public class Application {
             if (!checkValidForInputThreeNumber(numberPresentedByPlayer)) {
                 throw new IllegalArgumentException("잘못된 입력입니다.");
             } else {
-                System.out.println(calculateTheNumberOfStrikes(threeNumber,numberPresentedByPlayer));
+                System.out.printf("strike : %d\n",calculateTheNumberOfStrikes(threeNumber,numberPresentedByPlayer));
+                System.out.printf("ball : %d\n",calculateTheNumberOfBalls(threeNumber,numberPresentedByPlayer));
             }
 
             break;
@@ -89,11 +90,11 @@ public class Application {
         return true;
     }
     // 스트라이크 수를 계산하는 메서드
-    public static int calculateTheNumberOfStrikes(List<String> computersThreeNumber, String usersThreeNumber){
+    public static int calculateTheNumberOfStrikes(List<String> computersThreeNumbers, String usersThreeNumbers){
         int numberOfStrikes = 0;
-        for (int index = 0; index < computersThreeNumber.size(); index++){
-            int ComputersNumber = Integer.valueOf(computersThreeNumber.get(index));
-            int UsersNumber = Character.getNumericValue(usersThreeNumber.charAt(index));
+        for (int index = 0; index < computersThreeNumbers.size(); index++){
+            int ComputersNumber = Integer.valueOf(computersThreeNumbers.get(index));
+            int UsersNumber = Character.getNumericValue(usersThreeNumbers.charAt(index));
             if (ComputersNumber == UsersNumber){ // 같은 수가 같은 자리에 있으면
                 numberOfStrikes += 1; // 스트라이크 수를 1증가
             }
@@ -101,5 +102,19 @@ public class Application {
         return numberOfStrikes;
     }
 
+    // 볼 수를 계산하는 메서드
+    public static int calculateTheNumberOfBalls(List<String> computersThreeNumbers, String usersThreeNumbers){
+        int numberOfBall = 0;
+        for (int index = 0; index < computersThreeNumbers.size(); index++){
+            //int ComputersNumber = Integer.valueOf(computersThreeNumber.get(index));
+            String UsersNumber = String.valueOf(usersThreeNumbers.charAt(index));
+            int indexOfUserNumberInComputersThreeNumbers = computersThreeNumbers.indexOf(UsersNumber);
+            // 해당 자리의 User의 숫자가 컴퓨터의 3개의 숫자 중 하나이고, 같은 자리가 아니라면(다른 자리에 있으면)
+            if ( indexOfUserNumberInComputersThreeNumbers != -1 && indexOfUserNumberInComputersThreeNumbers != index){
+                numberOfBall += 1; // 스트라이크 수를 1증가
+            }
+        }
+        return numberOfBall;
+    }
 //numberPresentedByPlayer = receivedUserInput.nextLine();
 }
