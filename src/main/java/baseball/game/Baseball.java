@@ -7,6 +7,13 @@ import java.util.List;
 
 public class Baseball {
 
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String BALL_MESSAGE = "볼 ";
+    private static final String NOTHING_MESSAGE = "낫싱";
+
+    private static final String GAME_STARTED_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
+
     private int strikeCount;
     private int ballCount;
 
@@ -23,11 +30,12 @@ public class Baseball {
             strikeCount = 0;
             ballCount = 0;
 
-            System.out.println("숫자 야구 게임을 시작합니다.");
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.println(GAME_STARTED_MESSAGE);
+            System.out.print(INPUT_NUMBER_MESSAGE);
 
             List<Integer> userNumbers = getUserNumbers();
 
+            countStrikeAndBall(computerNumbers, userNumbers);
         }
     }
 
@@ -35,11 +43,11 @@ public class Baseball {
         for (int i = 0; i < 3; i++) {
             String result = getStrikeOrBall(computerNumbers, userNumbers.get(i), i);
 
-            if (result.equals("스트라이크")) {
+            if (result.equals(STRIKE_MESSAGE)) {
                 strikeCount++;
             }
 
-            if (result.equals("볼 ")) {
+            if (result.equals(BALL_MESSAGE)) {
                 ballCount++;
             }
         }
@@ -48,14 +56,15 @@ public class Baseball {
     private String getStrikeOrBall(List<Integer> computerNumbers, int userNumber, int index) {
         for (int i = 0; i < 3; i++) {
             if (computerNumbers.get(i) == userNumber && i == index) {
-                return "스트라이크";
+                return STRIKE_MESSAGE;
+
             }
 
             if (computerNumbers.get(i) == userNumber) {
-                return "볼 ";
+                return BALL_MESSAGE;
             }
         }
 
-        return "낫싱";
+        return NOTHING_MESSAGE;
     }
 }
