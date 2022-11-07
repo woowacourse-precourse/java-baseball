@@ -60,7 +60,7 @@ public class MyTest {
         String mine2 = "456";
         String mine3 = "789";
 
-        assertThat(judgeResult(mine1, computer)).isEqualTo("10");
+        assertThat(judgeResult(mine1, computer)).isEqualTo("01");
         assertThat(judgeResult(mine2, computer)).isEqualTo("11");
         assertThat(judgeResult(mine3, computer)).isEqualTo("00");
     }
@@ -73,4 +73,5 @@ public class MyTest {
         assertThat(printResult("01")).isEqualTo("1스트라이크");
         assertThat(printResult("11")).isEqualTo("1볼 1스트라이크");
     }
+
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -33,7 +34,7 @@ public class Application {
         StringBuilder sb = new StringBuilder();
         int i = 0;
         while (i < 3) {
-            int num = (int) (Math.random() * (9 - 1 + 1) + 1);
+            int num = Randoms.pickNumberInRange(1, 9);
             if (!used[num]) {
                 sb.append(num);
                 used[num] = true;
@@ -80,38 +81,51 @@ public class Application {
         return list.stream().collect(Collectors.joining(" "));
     }
 
-    public static boolean isCorrectAnswer(String count){
-        if (count.equals("03")){
+    public static boolean isCorrectAnswer(String count) {
+        if (count.equals("03")) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public static String readInput(){
+    public static String readInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         validation(input);
         return input;
     }
 
-    public static boolean restartGame(){
+    public static boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if (input.equals("1")){
+        if (input.equals("1")) {
             return true;
-        }
-        else if (input.equals("2")){
+        } else if (input.equals("2")) {
             return false;
-        }
-        else{
+        } else {
             throw new IllegalArgumentException();
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            String answer = generateRandomNumber();
+            System.out.println("answer = " + answer);
+            while (true) {
+                String input = readInput();
+                String result = judgeResult(input, answer);
+                System.out.println(printResult(result));
+                if (isCorrectAnswer(result)) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+            }
+            if (!restartGame()) {
+                break;
+            }
+        }
 
     }
 
