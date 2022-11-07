@@ -6,12 +6,12 @@ import java.util.function.Consumer;
 
 public enum GameInputView {
     ANSWER_INPUT("숫자를 입력해주세요 : ",
-        GameStatus.PLAY,
-        System.out::print),
+            GameStatus.PLAY,
+            System.out::print),
 
     RESTART_INPUT("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.",
-        GameStatus.END,
-        System.out::println);
+            GameStatus.END,
+            System.out::println);
 
     private final String message;
     private final GameStatus gameStatus;
