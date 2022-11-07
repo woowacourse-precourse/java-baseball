@@ -31,7 +31,7 @@ public class BaseballGame implements Game {
         createNewBaseball();
         do {
             input();
-            
+            createResult().showResult();
         } while (true);
     }
 
@@ -60,5 +60,11 @@ public class BaseballGame implements Game {
         final String input = Console.readLine();
         validateInputDuringGame(input);
         userInput = stringToIntList(input);
+    }
+
+    private GameResult createResult() {
+        final int strikeCount = baseball.getStrikeCount(userInput);
+        final int ballCount = baseball.getBallCount(userInput);
+        return new BaseballGameResult(strikeCount, ballCount);
     }
 }
