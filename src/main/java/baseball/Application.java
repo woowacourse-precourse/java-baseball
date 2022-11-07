@@ -92,7 +92,6 @@ public class Application {
         boolean newNumberFlag = true;
         String gameNumber = null;
         Scanner scanner = new Scanner(System.in);
-        Scanner reGameScanner = new Scanner(System.in);
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
@@ -111,7 +110,7 @@ public class Application {
             }
 
             if (gameRestartChecker(StrikeBallCheck(userInput, gameNumber)) == 1) {
-                String reGameCheck = reGameScanner.next();
+                String reGameCheck = scanner.nextLine();
 
                 if (reGameCheck == "2") return;
 
