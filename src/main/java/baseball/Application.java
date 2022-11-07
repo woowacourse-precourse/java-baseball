@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.computer.Computer;
 import baseball.view.OutputView;
 
 public class Application {
@@ -9,6 +10,6 @@ public class Application {
     }
 
     private static void programStart() {
-
+        Computer.init();
     }
 }
