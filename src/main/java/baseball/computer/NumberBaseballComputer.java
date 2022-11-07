@@ -36,15 +36,41 @@ public class NumberBaseballComputer implements Computer{
      */
     @Override
     public void printCorrectResult(String gameValueOfUser) {
-        validateNumber(gameValueOfUser);
+        int gameNumberOfUser = validateUserNumber(gameValueOfUser);
+        List<Integer> userNumber = ConvertUserNumber(gameNumberOfUser);
     }
 
-    private int validateNumber(String gameValueOfUser) {
+    private int validateUserNumber(String gameValueOfUser) {
         try {
             int gameNumberOfUser = Integer.parseInt(gameValueOfUser);
+            checkNumberRange(gameNumberOfUser);
+            checkNumberNotSame(gameNumberOfUser);
             return gameNumberOfUser;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력값이 잘못됐습니다.", e);
+            throw new IllegalArgumentException("숫자가 아닌 값 입력", e);
+        }
+    }
+
+    private List<Integer> ConvertUserNumber(int gameNumberOfUser) {
+        int hundredPlace = gameNumberOfUser / 100;
+        int tenPlace = gameNumberOfUser / 10 % 10;
+        int onePlace = gameNumberOfUser % 10;
+        List<Integer> userNumber = List.of(hundredPlace, tenPlace, onePlace);
+        return userNumber;
+    }
+
+    private void checkNumberRange(int gameNumberOfUser) {
+        if (gameNumberOfUser < 100 || gameNumberOfUser > 999) {
+            throw new IllegalArgumentException("3자리 미만이거나 3자리 초과 숫자 입력");
+        }
+    }
+
+    private void checkNumberNotSame(int gameNumberOfUser) {
+        int hundredPlace = gameNumberOfUser / 100;
+        int tenPlace = gameNumberOfUser / 10 % 10;
+        int onePlace = gameNumberOfUser % 10;
+        if (hundredPlace == tenPlace || hundredPlace == onePlace || tenPlace == onePlace) {
+            throw new IllegalArgumentException("3자리 숫자 중 중복되는 숫자 입력");
         }
     }
 }
