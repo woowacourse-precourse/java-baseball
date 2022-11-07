@@ -90,6 +90,12 @@ public class Application {
         return 0;
     }
 
+    public static boolean isReGame(Scanner scanner){
+        String reGameCheck = scanner.nextLine();
+
+        return reGameCheck.equals("2");
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         boolean newNumberFlag = true;
@@ -112,12 +118,14 @@ public class Application {
                 break;
             }
 
+            boolean retry = false;
             if (gameRestartChecker(StrikeBallCheck(userInput, gameNumber)) == 1) {
-                String reGameCheck = scanner.nextLine();
-
-                if (reGameCheck == "2") return;
-
+                retry = isReGame(scanner);
                 newNumberFlag = true;
+            }
+
+            if(retry){
+                return;
             }
         }
     }
