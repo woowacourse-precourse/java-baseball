@@ -3,10 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
     static final int NEW_GAME_NUMBER = 1;
@@ -42,10 +39,10 @@ public class Application {
 
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-//        if(isLengthThree(input) && isCorrectRange(input) && isEachOtherDifferent(input)){
-//            for (char number : input.toCharArray())
-//                numbers.add(Character.getNumericValue(number));
-//        }
+        if(isLengthThree(input) && isCorrectRange(input) && isEachOtherDifferent(input)){
+            for (char number : input.toCharArray())
+                numbers.add(Character.getNumericValue(number));
+        }
 
         return numbers;
     }
@@ -74,5 +71,25 @@ public class Application {
             throw new IllegalArgumentException();
 
         return true;
+    }
+
+    // TODO : 같은 숫자가 같은 자리에 존재하는 경우의 수 반환
+    public int CountingStrike(List<Integer> computer, List<Integer> user){
+        int strike = ZERO_VALUE;
+        for (int i=0; i<MAX_ARRAY_SIZE; i++){
+            if (Objects.equals(computer.get(i), user.get(i)))
+                strike += 1;
+        }
+        return strike;
+    }
+
+    // TODO : 같은 숫자가 다른 자리에 존재하는 경우의 수 반환
+    public int CountingBall(List<Integer> computer, List<Integer> user){
+        int ball = ZERO_VALUE;
+        for (int number : user) {
+            if (computer.contains(number))
+                ball += 1;
+        }
+        return ball;
     }
 }
