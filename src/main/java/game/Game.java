@@ -22,14 +22,14 @@ public class Game {
 
     public void play(List<Integer> computerNumbers, List<Integer> userNumbers) {
 
-//        while (!isThreeStrike()) {
+        while (!isThreeStrike()) {
             hint.clearHint();
             user.clearNumber();
             user.inputNumber();
 
             checkBallAndStrike(computerNumbers, userNumbers);
             hint.print();
-//        }
+        }
 
         stop();
     }
