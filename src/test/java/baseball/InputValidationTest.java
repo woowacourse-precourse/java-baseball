@@ -3,6 +3,9 @@ package baseball;
 import baseball.constant.ExceptionMessages;
 import baseball.io.InputValidator;
 import baseball.io.PlayingInputValidator;
+import baseball.io.ReplayOrEndInputValidator;
+import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -52,6 +55,17 @@ public class InputValidationTest {
       Arguments.of("120", ExceptionMessages.INPUT_IS_NOT_DIGIT.getExceptionMessage()),
       Arguments.of("가나다", ExceptionMessages.INPUT_IS_NOT_DIGIT.getExceptionMessage())
     );
+  }
+
+  @Test
+  void 유저가_재시작_혹은_종료를_선택할떄_1_또는_2_외의_값을_입력한_경우_예외를_던지는가() {
+    try {
+      InputValidator validator = new ReplayOrEndInputValidator();
+      String randomNumber = Integer.toString(Randoms.pickNumberInRange(3, 10));
+      validator.validate(randomNumber);
+    } catch (IllegalArgumentException e) {
+      assertEquals(ExceptionMessages.INPUT_IS_NOT_1_OR_2.getExceptionMessage(), e.getMessage());
+    }
   }
 
   private InputStream readUserInput(String input) {
