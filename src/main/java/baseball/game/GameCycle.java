@@ -1,19 +1,16 @@
 package baseball.game;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class GameCycle {
 
-    public void outputWriteNumber(){
+    public void outputWriteNumber() {
         System.out.print("숫자를 입력해주세요 : ");
     }
-    public String inputNumber(){
-        return Console.readLine().trim();
-    }
+
     public boolean numberLengthIsThree(String number) {
         if (number.length() != 3) throw new IllegalArgumentException();
         return true;
     }
+
     public boolean numberIsDigit(String number) {
         char[] numberCharArray = number.toCharArray();
         for (char tmpChar : numberCharArray) {
@@ -21,10 +18,12 @@ public class GameCycle {
         }
         return true;
     }
+
     public boolean numberIsNotZero(String number) {
         if (number.contains("0")) throw new IllegalArgumentException();
         return true;
     }
+
     public boolean numberIsNotDuplicate(String number) {
         for (int index = 0; index < number.length(); index++) {
             char tmpChar = number.charAt(index);
@@ -32,15 +31,18 @@ public class GameCycle {
         }
         return true;
     }
+
     public String playerInputNumber() {
         outputWriteNumber();
-        String playerNumber = inputNumber();
-        if (numberIsDigit(playerNumber));
-        if (numberLengthIsThree(playerNumber));
-        if (numberIsNotDuplicate(playerNumber));
-        if (numberIsNotZero(playerNumber));
+        Player player = new Player();
+        String playerNumber = player.getINPUT_NUMBER();
+        if (numberIsDigit(playerNumber)) ;
+        if (numberLengthIsThree(playerNumber)) ;
+        if (numberIsNotDuplicate(playerNumber)) ;
+        if (numberIsNotZero(playerNumber)) ;
         return playerNumber;
     }
+
     public int countStrike(String answer, String input) {
         int strike = 0;
         for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
@@ -48,6 +50,7 @@ public class GameCycle {
         }
         return strike;
     }
+
     public int countBall(String answer, String input) {
         int ball = 0;
         for (int inputIndex = 0; inputIndex < input.length(); inputIndex++) {
@@ -57,6 +60,7 @@ public class GameCycle {
         }
         return ball;
     }
+
     public String countResponse(String answer, String input) {
         int strike = countStrike(answer, input);
         int ball = countBall(answer, input);
@@ -70,24 +74,28 @@ public class GameCycle {
         if (strike == 0 && ball == 0) response.append("낫싱");
         return response.toString();
     }
+
     public boolean isThreeStrike(String request) {
         if (request.equals("3스트라이크")) return true;
         return false; //NOT 3 STRIKE
     }
-    public void output(String message){
+
+    public void output(String message) {
         System.out.println(message);
     }
-    public void endGameMessage(){
+
+    public void endGameMessage() {
         output("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    public void play(){
+
+    public void play() {
         Computer computer = new Computer();
         String answer = computer.getANSWER();
-        while(true){
+        while (true) {
             String playerNumber = playerInputNumber();
             String countStatus = countResponse(answer, playerNumber);
             output(countStatus);
-            if(isThreeStrike(countStatus))break;
+            if (isThreeStrike(countStatus)) break;
         }
         endGameMessage();
     }
