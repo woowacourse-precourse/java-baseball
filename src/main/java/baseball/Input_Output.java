@@ -8,12 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Input_Output {
-    List<Integer> computer = new ArrayList<>();
+    List<Integer> computer;
     List<Integer> User = new ArrayList<>();
 
 
     public void Computer_RandomNumber() {//컴퓨터 랜덤 숫자 생성
-
+        computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber))//List에 숫자가 없으면 추가
