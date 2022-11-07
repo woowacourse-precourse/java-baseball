@@ -59,14 +59,42 @@ public class Application {
 //        }
 
 //      기능3. 결과값 비교
-        boolean compare = computer.get(0) == user.get(0);
-        System.out.println(compare);
+        int i = 0;
+        int j = 0;
+        int strikeNball = 0;
+        int strike = 0;
 
-        System.out.println(userNumber.getClass().getSimpleName());
+        for (i=0; i<user.toArray().length; i++) {
 
-        if (computer == user) {
-            System.out.println("True");
+            for (j=0; j<computer.toArray().length; j++) {
+                if (computer.get(i) - user.get(j) == 0) {
+                    strikeNball = strikeNball + 1;
+                }
+            }
+            j = 0;
         }
+
+        for (i=0; i<user.toArray().length; i++) {
+            if (computer.get(i)==user.get(i)) {
+                strike = strike+1;
+            }
+        }
+        int ball = strikeNball-strike;
+
+        System.out.println("중복전체: "+strikeNball);
+        System.out.println("스트라이크: "+strike);
+        System.out.println("볼: "+ball);
+
+        System.out.printf("%d 스트라이크 %d 볼\n", strike, ball);
+
+//        boolean compare = computer.get(0) == user.get(0);
+//        System.out.println(compare);
+//
+//        System.out.println(userNumber.getClass().getSimpleName());
+//
+//        if (computer == user) {
+//            System.out.println("True");
+//        }
 
 
     }
