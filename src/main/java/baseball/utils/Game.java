@@ -1,5 +1,7 @@
 package baseball.utils;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 import static baseball.values.Constant.Console.*;
@@ -12,7 +14,30 @@ public class Game {
     private static boolean noting = false;
 
 
+    public static void start() {
+        printStartText();
+        game();
+    }
 
+    private static void game() {
+        List<Integer> computerNums = Baseball.createComputer().getBaseballNumber();
+        List<Integer> playerNums;
+        String restartCheck;
+
+        resetGameValue();
+        while (strikeCnt != MAX_STRIKE_CNT) {
+            resetGameValue();
+            playerNums = Baseball.createPlayer(Console.readLine()).getBaseballNumber();
+            compare(computerNums, playerNums);
+            printHint();
+        }
+
+        printEndText();
+        restartCheck = Console.readLine();
+        if (restartCheck.equals(RESTART)) {
+            game();
+        }
+    }
 
     private static void compare(List<Integer> computerNums, List<Integer> playerNums) {
         int playerNum, computerNum;
