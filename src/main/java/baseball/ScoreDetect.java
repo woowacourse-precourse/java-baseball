@@ -13,7 +13,7 @@ public class ScoreDetect {
      * @param numbers
      * @return
      */
-    public int getStrikeCount(
+    public static int getStrikeCount(
             List<Integer> answer,
             List<Integer> numbers
     ) {
@@ -35,7 +35,7 @@ public class ScoreDetect {
         return count;
     }
 
-    public int getBallCount(
+    public static int getBallCount(
             List<Integer> answer,
             List<Integer> numbers
     ) {
@@ -62,7 +62,7 @@ public class ScoreDetect {
     /**
      * 중복검사
      */
-    private boolean checkDuplicate(List<Integer> numList) {
+    private static boolean checkDuplicate(List<Integer> numList) {
         Set<Integer> numSet = new HashSet<>(numList);
         if (numSet.size() == numList.size())
             return true;
@@ -73,7 +73,7 @@ public class ScoreDetect {
     /**
      * 범위(1~9)를 넘어가는 숫자 검사
      */
-    private boolean checkAllowedRange(List<Integer> numList) {
+    private static boolean checkAllowedRange(List<Integer> numList) {
         for (int i = 0; i < numList.size(); i++) {
             if (numList.get(i) > 9 || numList.get(i) < 1)
                 return false;
