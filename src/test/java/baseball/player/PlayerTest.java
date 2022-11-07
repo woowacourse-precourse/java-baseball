@@ -30,4 +30,11 @@ public class PlayerTest {
 
         assertThat(player.changeInputToList(inputString)).isEqualTo(list);
     }
+
+    @Test
+    void 사용자_입력이_3개를_넘을경우(){
+        List<Integer> list = List.of(1,2,3,4);
+
+        assertThatThrownBy(() -> player.checkInputLength(list)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("세자리 숫자를 입력해주세요.");
+    }
 }
