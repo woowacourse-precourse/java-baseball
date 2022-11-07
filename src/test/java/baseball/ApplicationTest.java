@@ -32,4 +32,17 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    @Test
+    void selectNumbers_임의의_수_3개_리스트에_넣어서_반환() {
+        int size = Application.selectNumbers().size();
+        int firstNumber = Application.selectNumbers().get(0);
+        int secondNumber = Application.selectNumbers().get(1);
+        int thirdNumber = Application.selectNumbers().get(2);
+
+        assertThat(size).isEqualTo(3);
+        assertThat(firstNumber).isNotEqualTo(secondNumber);
+        assertThat(secondNumber).isNotEqualTo(thirdNumber);
+        assertThat(thirdNumber).isNotEqualTo(firstNumber);
+    }
 }
