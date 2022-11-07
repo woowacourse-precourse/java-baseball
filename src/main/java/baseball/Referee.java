@@ -35,16 +35,20 @@ public class Referee {
 
     private void countBallsAndStrikes(List<Integer> answer, List<Integer> userAnswer) {
         for (int i = 0; i < answer.size(); i++) {
-            for (int j = 0; j < userAnswer.size(); j++) {
-                if (answer.get(i) == userAnswer.get(j)) {
-                    if (i == j) {
-                        strikeCount++;
-                    }
-                    else if (i != j){
-                        ballCount++;
-                    }
-                }
+            boolean isNotContainAnswer = !userAnswer.contains(answer.get(i));
+
+            if (isNotContainAnswer) {
+                continue;
             }
+
+            if (answer.get(i) == userAnswer.get(i)) {
+                strikeCount++;
+            }
+
+            else {
+                ballCount++;
+            }
+
         }
     }
 
