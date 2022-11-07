@@ -95,6 +95,13 @@ public class Application {
         }
         return false;
     }
+    public static void playGame(List<Integer> gameAnswer) {
+        boolean result = false;
+        while (!result) {
+            System.out.print("숫자를 입력해주세요 : ");
+            result = checkBallStrike(gameAnswer, getUserAnswer());
+        }
+    }
     public static boolean checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userAnswer = Console.readLine();
@@ -108,6 +115,7 @@ public class Application {
     public static void main(String[] args) {
         boolean newGame = true;
         while (newGame) {
+            playGame(initGame());
             newGame = checkRestart();
         }
     }
