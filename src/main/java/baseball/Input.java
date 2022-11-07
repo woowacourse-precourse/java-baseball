@@ -19,5 +19,9 @@ public class Input {
         }
         return computer;
     }
+    static String userNumber() {
+        System.out.print("숫자를 입력해 주세요 : ");
+        return Console.readLine();
+    }
 
 }
