@@ -15,6 +15,7 @@ public class Player {
 
     public void inputPlayerNumber() {
         String inputNumbers = Console.readLine();
+        numberValidator.validateInput(inputNumbers);
         this.userNumbers = converter.convertStringToListInteger(inputNumbers);
     }
 }
