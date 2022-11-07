@@ -16,15 +16,10 @@ public class Controller {
     public void game() {
         setAnswer();
         String hint = "";
-        while(true) {
+        while(goGame(hint)) {
             inputUserNumber();
             hint = computer.getHint(user.getInputNumber());
             System.out.println(hint);
-            if(isAnswer(hint)) {
-                if(!selectMenu().equals(CONTINUE_GAME)) {
-                    break;
-                }
-            }
         }
     }
 
@@ -38,6 +33,13 @@ public class Controller {
             }
         }
         computer = new Computer(answer);
+    }
+
+    private boolean goGame(String hint) {
+        if(isAnswer(hint)) {
+            return selectMenu().equals(CONTINUE_GAME);
+        }
+        return true;
     }
 
     private void inputUserNumber() throws IllegalArgumentException{
