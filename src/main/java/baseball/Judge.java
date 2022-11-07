@@ -13,7 +13,7 @@ public class Judge {
   }
 
   public int compareBalls(){
-    ArrayList<Integer> playerNumbers = this.player.decideNumbers();
+    ArrayList<Integer> playerNumbers = this.player.getNumbers();
     ArrayList<Integer> computerNumbers = this.computer.getNumbers();
     int strike = 0;
     int ball = 0;

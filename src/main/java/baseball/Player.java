@@ -49,4 +49,8 @@ public class Player {
       throw new IllegalArgumentException("중복된 숫자가 있으면 안됩니다.");
     }
   }
+
+  public ArrayList<Integer> getNumbers(){
+    return this.numbers;
+  }
 }
