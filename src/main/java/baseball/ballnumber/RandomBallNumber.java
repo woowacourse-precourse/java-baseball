@@ -9,7 +9,7 @@ public class RandomBallNumber {
 
     private static final int BALL_NUMBER_LENGTH = 3;
 
-    public ArrayList<String> randomNumbers = new ArrayList<>();
+    private final ArrayList<String> randomNumbers = new ArrayList<>();
     public List<String> createRandomNumber() {
         while (randomNumbers.size() < BALL_NUMBER_LENGTH) {
             String number = String.valueOf(Randoms.pickNumberInRange(1, 9));
