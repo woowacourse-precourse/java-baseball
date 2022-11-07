@@ -37,16 +37,17 @@ public class GamePlayer {
     private static void validatePlayer_number(List<Integer> player_number) {
         final int NUMBER_LENGTH = 3;
 
-        if (player_number.size() != NUMBER_LENGTH) {
+        if (player_number.size() != NUMBER_LENGTH
+                || getDistinctPlayerNumLength(player_number) != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
+    }
 
-        if (player_number.stream()
+    private static long getDistinctPlayerNumLength(List<Integer> player_number) {
+        return player_number.stream()
                 .filter(GamePlayer::validateInputRange)
                 .distinct()
-                .count() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
-        }
+                .count();
     }
 
     private static boolean validateInputRange(int num) {
