@@ -63,7 +63,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void testCountBallsAndStrikes() {
-        BaseballGame game = new BaseballGame();
+        GameResult result = new GameResult();
         List<Integer>[] computers = new List[]{
                 Arrays.asList(1, 2, 3),
                 Arrays.asList(2, 5, 1),
@@ -83,12 +83,9 @@ class ApplicationTest extends NsTest {
                 {3, 0}
         };
         for (int i = 0; i < computers.length; i++) {
-            Map<String, Integer> result = game.getResult(computers[i], users[i]);
-            int ballCount = result.getOrDefault("볼", 0);
-            int strikeCount = result.getOrDefault("스트라이크", 0);
-
-            assertThat(ballCount).isEqualTo(results[i][0]);
-            assertThat(strikeCount).isEqualTo(results[i][1]);
+            result.compare(computers[i], users[i]);
+            assertThat(result.getBallCount()).isEqualTo(results[i][0]);
+            assertThat(result.getStrikeCount()).isEqualTo(results[i][1]);
         }
     }
 
