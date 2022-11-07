@@ -1,10 +1,23 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class User {
+
+    public List<Integer> getUserPredictedAnswer() throws IllegalArgumentException {
+        String input = Console.readLine().trim();
+
+        List<Integer> guess = stringToSeparatedIntegerList(input);
+        if (UserInputException.hasSameNumberInList(guess)) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
+
+        return guess;
+    }
 
     private List<Integer> stringToSeparatedIntegerList(String input) throws IllegalArgumentException {
         if (UserInputException.isContainLetter(input)) {
@@ -20,5 +33,6 @@ public class User {
                 .boxed()
                 .collect(Collectors.toList());
     }
+
 
 }
