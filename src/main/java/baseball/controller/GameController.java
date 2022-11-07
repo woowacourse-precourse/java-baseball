@@ -40,7 +40,7 @@ public class GameController {
         return new Action(Console.readLine());
     }
 
-    public void resetComputerNumber(Action userAction) {
+    public void resetComputerBall(Action userAction) {
         if (userAction.isStart()) {
             setComputerBall();
         }
@@ -71,7 +71,7 @@ public class GameController {
         while (action.isStart()) {
             runBaseballGame();
             action = receiveUserAction();
-            resetComputerNumber(action);
+            resetComputerBall(action);
         }
     }
 }
