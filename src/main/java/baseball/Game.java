@@ -1,7 +1,5 @@
-package baseball.game;
+package baseball;
 
-import baseball.util.NumberGenerator;
-import baseball.util.UserInput;
 import java.util.List;
 
 public class Game {
@@ -39,6 +37,6 @@ public class Game {
             ballcounter.checkStrikeOrBall(user, computer, idx);
         }
 
-        System.out.println(ballcounter);
+        System.out.println(ballcounter.toString());
     }
 }
