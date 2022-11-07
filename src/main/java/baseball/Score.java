@@ -8,7 +8,7 @@ public class Score {
 
     public Score(List<Integer> computerNumbers, List<Integer> userNumbers) {
         this.strike = getStrikeCount(computerNumbers, userNumbers);
-        this.ball = getStrikeCount(computerNumbers, userNumbers);
+        this.ball = getBallCount(computerNumbers, userNumbers);
         getResult(strike,ball);
     }
 
@@ -39,11 +39,7 @@ public class Score {
             }
         }
 
-        if (strike > 0) {
-            ball -= strike;
-        }
-
-        return ball;
+        return ball-strike;
     }
 
     private void getResult(int strikeCount, int ballCount) {
@@ -51,7 +47,7 @@ public class Score {
             System.out.println(strikeCount + "스트라이크");
             return;
         }
-        if (strikeCount != 0 && ballCount == 0) {
+        if (strikeCount == 0 && ballCount != 0) {
             System.out.println(ballCount + "볼");
             return;
         }
@@ -60,5 +56,9 @@ public class Score {
             return;
         }
         System.out.println("낫싱");
+    }
+
+    public boolean endGame() {
+        return strike == 3;
     }
 }
