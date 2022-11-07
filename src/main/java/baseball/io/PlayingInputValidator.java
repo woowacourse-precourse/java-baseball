@@ -1,5 +1,7 @@
 package baseball.io;
 
+import baseball.ExceptionMessages;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +14,7 @@ public class PlayingInputValidator implements InputValidator{
   }
 
   private void checkLength(String input) {
-    if(input.length() != 3) throw new IllegalArgumentException();
+    if(input.length() != 3) throw new IllegalArgumentException(ExceptionMessages.INPUT_LENGTH_IS_NOT_THREE.getExceptionMessage());
   }
 
   private void checkEachDigit(String input) {
@@ -24,7 +26,7 @@ public class PlayingInputValidator implements InputValidator{
 
   private void isDigitBetween1to9(char c) {
     // digit(0~9)이 아니거나, 0을 포함하는 경우 예외를 던짐
-    if(!Character.isDigit(c) || c == 48) throw new IllegalArgumentException();
+    if(!Character.isDigit(c) || c == 48) throw new IllegalArgumentException(ExceptionMessages.INPUT_IS_NOT_DIGIT.getExceptionMessage());
   }
 
   private void isAllUniqueDigit(String input) {
@@ -32,6 +34,6 @@ public class PlayingInputValidator implements InputValidator{
     for (char c : input.toCharArray()) {
       set.add(c);
     }
-    if(set.size() != input.length()) throw new IllegalArgumentException();
+    if(set.size() != input.length()) throw new IllegalArgumentException(ExceptionMessages.INPUT_IS_NOT_UNIQUE.getExceptionMessage());
   }
 }
