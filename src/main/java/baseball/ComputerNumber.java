@@ -9,8 +9,8 @@ import java.util.Set;
 
 public class ComputerNumber {
 
-    private static final int MIN_RANDOM_NUMBER = 1;
-    private static final int MAX_RANDOM_NUMBER = 9;
+    public static final int MIN_RANDOM_NUMBER = 1;
+    public static final int MAX_RANDOM_NUMBER = 9;
     private static final int DEFAULT_SIZE_NUMBER = 3;
 
     public static List<Integer> generateRandomNumber() {
