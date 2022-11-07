@@ -7,6 +7,25 @@ import java.util.ArrayList;
 
 public class Application {
 
+    public static boolean checkNum(List<Integer> randomNum, List<Integer> inputNum) {
+        
+        int strike=checkStrike(randomNum,inputNum);
+        int ball=checkBall(randomNum,inputNum);
+
+        if(strike==3) {
+            return true;
+        }
+        else if(strike==0&&ball==0) {
+            System.out.println("낫싱");
+            return false;
+        }
+        else {
+            System.out.println(output(strike,ball));
+            return false;
+        }
+
+    }
+
     public static void exception(String inputString) throws IllegalArgumentException {
 
         if(inputString.length()!=3) {
