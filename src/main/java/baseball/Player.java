@@ -13,11 +13,12 @@ public class Player extends BaseballNumber{
         Scanner sc = new Scanner(System.in);
         String playerInput = sc.nextLine();
 
-        List<Integer> playerInputNumbers = changePlayerInputToList(playerInput);
+        List<Integer> playerInputNumbers = isValidBaseballNumber(playerInput);
         setBaseballNumber(playerInputNumbers);
     };
 
-    public boolean isValidBaseballNumber (List<Integer> playerNumber){
+    public List<Integer> isValidBaseballNumber (String playerInput){
+        List<Integer> playerNumber = changePlayerInputToList(playerInput);
         boolean checkNumberLength = this.isBaseballNumberLength3(playerNumber);
         boolean checkDuplicateNum = this.isNotDuplicatedNumber(playerNumber);
         boolean checkRangeNum = this.isValidRange(playerNumber);
@@ -33,7 +34,7 @@ public class Player extends BaseballNumber{
         if(!checkRangeNum) {
             throw new InputMismatchException("1~9까지의 수를 입력해주세요");
         }
-        return true;
+        return playerNumber;
     }
 
     public List<Integer> changePlayerInputToList(String playerInput) {
