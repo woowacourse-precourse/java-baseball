@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Validator {
     public final String WRONG_PLAYER_INPUTS = "입력값은 1-9까지의 서로 다른 임의의 3자리 정수 입니다.";
+    public final String WRONG_RESTART_INPUTS = "입력값은 1, 또는 2 입니다.";
 
     public void validatePlayerInputs(String playerInputs) {
         if (!isRightLength(playerInputs)
@@ -36,5 +37,15 @@ public class Validator {
             inputs.add(playerInputs.charAt(i));
         }
         return inputs.size() != inputs.stream().distinct().count();
+    }
+
+    public void validateRestartInput(String restartInput) {
+        if (!isRightValue(restartInput)) {
+            throw new IllegalArgumentException(WRONG_RESTART_INPUTS);
+        }
+    }
+
+    private boolean isRightValue(String restartInput) {
+        return restartInput.equals(Constant.RESTART_GAME) || restartInput.equals(Constant.END_GAME);
     }
 }
