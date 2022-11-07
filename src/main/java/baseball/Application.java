@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    void printresult(int cntstrike, int cntball){
+
+    }
     boolean check(int[] ans, List<Integer> com){
         boolean again = true;
         int i, cntstrike = 0, cntball = 0;
@@ -22,6 +25,8 @@ public class Application {
         if(cntstrike == 3){
             again = false;
         }
+
+        printresult(cntstrike, cntball);
 
         return again;
     }
