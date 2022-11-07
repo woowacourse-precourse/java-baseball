@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.utils.RandomNumberGeneratorUtil;
 import baseball.validation.UserValidator;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -28,7 +29,7 @@ public class Application {
         Game game = new Game();
         int restart = 1;
 
-        List<Integer> computer = game.makesDifferenceThreeNumber();
+        List<Integer> computer = RandomNumberGeneratorUtil.makesDifferenceThreeNumber();
 
         while (true) {
             System.out.print(INPUT_NUMBER);

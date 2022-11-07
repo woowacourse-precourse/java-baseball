@@ -12,19 +12,6 @@ import java.util.Set;
 public class Game {
 
 
-    public List<Integer> makesDifferenceThreeNumber() {
-        List<Integer> computer = new ArrayList<>();
-
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
-        return computer;
-    }
-
     public List<Integer> findStrikeAndBall(String user, List<Integer> computer) {
         int strike = 0, ball = 0;
 

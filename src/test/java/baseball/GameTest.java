@@ -22,19 +22,6 @@ class GameTest {
     }
 
     @Test
-    @DisplayName("Computer 는 서로 다른 3개의 숫자를 만들 수 있다")
-    void testComputerMakesThreeDifferentNumber() throws Exception {
-        //given
-        List<Integer> numberList = game.makesDifferenceThreeNumber();
-
-        //when
-        Set<Integer> numberSet = new HashSet<>(numberList);
-
-        //then
-        assertThat(numberSet.size()).isEqualTo(3);
-    }
-
-    @Test
     @DisplayName("Computer 와 User 숫자가 주어졌을 때 Strike와 Ball의 개수를 구할 수 있다")
     void testFindStrikeAndBall() throws Exception {
         //given
