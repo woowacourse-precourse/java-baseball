@@ -33,6 +33,7 @@ public class Game {
             List<Integer> result = compareAnswer(answer, playerInput);
             strike = result.get(0);
             ball = result.get(1);
+            printResult(strike, ball);
         }
     }
 
@@ -56,5 +57,22 @@ public class Game {
 
     private boolean checkAnswer(int strike) {
         return strike == LENGTH;
+    }
+
+    private void printResult(int strike, int ball) {
+        if (ball != 0) {
+            System.out.print(ball + BALL + " ");
+        }
+        if (strike != 0) {
+            System.out.print(strike + STRIKE);
+        }
+        if (ball == 0 && strike == 0) {
+            System.out.print(NOTHING);
+        }
+        System.out.println();
+
+        if (strike == LENGTH) {
+            System.out.println(RIGHT_ANSWER_MESSAGE);
+        }
     }
 }
