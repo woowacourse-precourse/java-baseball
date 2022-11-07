@@ -9,6 +9,7 @@ public class Game {
     protected int same_cnt = 0;
 
     protected int strike = 0;
+    protected int ball = 0;
 
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -39,6 +40,10 @@ public class Game {
                 this.strike++;
             }
         }
+    }
+
+    public void countBall() {
+        this.ball = this.same_cnt - this.strike;
     }
 
 }
