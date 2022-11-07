@@ -32,4 +32,14 @@ public class Application {
             throw new IllegalArgumentException("숫자가 아닌 값을 입력하였습니다.");
         }
     }
+
+    public static List<Integer> addToList(String input) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            result.add(Character.getNumericValue(input.charAt(i)));
+        }
+
+        return result;
+    }
 }
