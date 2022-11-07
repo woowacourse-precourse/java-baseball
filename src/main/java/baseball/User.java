@@ -24,14 +24,26 @@ public class User {
         return numbers;
     }
 
-    public void generateNumber() {
-        this.numbers = new ArrayList<>(List.of(0, 0, 0));
+    private boolean isZeroAtFirst(String number) {
+        return number.charAt(0) == '0';
+    }
 
-        System.out.println("숫자를 입력해주세요 : ");
-        String number = Console.readLine();
+    private boolean checkLength(String number) {
+        return number.length() == NUMBER_LENGTH;
+    }
 
-        isLegalNumber(number);
-        setNumbers(number);
+    private long countNumber(String number, char target) {
+        return number.chars().filter(ch -> ch == target).count();
+    }
+
+    private boolean anyDuplicated(String number) {
+        for (int i = 1; i < 10; i++) {
+            char characterized = (char) (i + 48);
+            if (countNumber(number, characterized) > 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void isLegalNumber(String number) {
@@ -46,25 +58,13 @@ public class User {
         }
     }
 
-    private boolean isZeroAtFirst(String number) {
-        return number.charAt(0) == '0';
-    }
+    public void generateNumber() {
+        this.numbers = new ArrayList<>(List.of(0, 0, 0));
 
-    private boolean checkLength(String number) {
-        return number.length() == NUMBER_LENGTH;
-    }
+        System.out.println("숫자를 입력해주세요 : ");
+        String number = Console.readLine();
 
-    private boolean anyDuplicated(String number) {
-        for (int i = 1; i < 10; i++) {
-            char characterized = (char) (i + 48);
-            if (countNumber(number, characterized) > 1) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private long countNumber(String number, char target) {
-        return number.chars().filter(ch -> ch == target).count();
+        isLegalNumber(number);
+        setNumbers(number);
     }
 }
