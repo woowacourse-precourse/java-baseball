@@ -22,6 +22,7 @@ public final class RandomDigits extends Digits {
     }
 
     private void generateRandom() {
+        //100의 자리에서는 0이 올 수 없기에 미리 1부터 9까지 추가해둠
         append(Digit.from(Randoms.pickNumberInRange(1, 9)));
         while (size() < BASEBALL_NUMBER_LENGTH) {
             tryToAppend();
@@ -29,6 +30,7 @@ public final class RandomDigits extends Digits {
     }
 
     private void tryToAppend() {
+        //10,1의 자리에서는 0이 올 수 있기에 0부터 9까지 뽑음
         int randomNumber = Randoms.pickNumberInRange(0, 9);
         if (!contains(Digit.from(randomNumber))) {
             append(Digit.from(randomNumber));
