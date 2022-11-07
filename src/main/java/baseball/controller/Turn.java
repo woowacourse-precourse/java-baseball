@@ -10,17 +10,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Turn {
-    private ResultTurn resultTurn;
     private Target target;
     private TurnScore turnScore = new TurnScore();
 
     Turn (Target target) {
-        this.resultTurn = ResultTurn.Nothing;
         this.target = target;
     }
 
-    Turn (ResultTurn resultTurn, Target target) {
-        this.resultTurn = resultTurn;
+    Turn (Target target, TurnScore turnScore) {
+        this.turnScore = turnScore;
         this.target = target;
     }
 
@@ -39,7 +37,8 @@ public class Turn {
     }
 
     boolean checkCanRepeat() {
-        return this.resultTurn != ResultTurn.Out;
+        ResultTurn resultTurn = this.turnScore.getResultTurn();
+        return resultTurn != ResultTurn.Out;
     }
 
     void compareWithTarget(List<Integer> numberOfList) {
