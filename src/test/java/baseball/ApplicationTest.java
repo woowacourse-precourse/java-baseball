@@ -100,6 +100,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_정수가_아닌_숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("0.12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
