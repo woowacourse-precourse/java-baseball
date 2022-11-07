@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.data.BaseballData;
+import baseball.data.NumberParser;
+import baseball.data.NumberReferee;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,26 +24,33 @@ public class Application {
     }
 
     public static void StartGuessingPhase(List<Integer> computer) {
+        NumberParser numberParser = new NumberParser();
+        NumberReferee numberReferee = new NumberReferee();
         List<Integer> player;
         int strike = 0;
         int ball = 0;
-        while(strike != 3) {
-            player = GeneratePlayerNumbers();
-            strike = CheckStrike(computer, player);
-            ball = CheckBall(computer, player) - strike;
+        while(strike != NumberParser.NUMBER_LENGTH) {
+            player = numberParser.parsePlayerNumber();
+            strike = numberReferee.checkStrike(player, computer);
+            ball = numberReferee.checkBall(player, computer);
+            System.out.println(player);
             PrintResult(strike, ball);
         }
     }
 
     public static boolean StartQuestioningPhase() {
         String input;
+
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
         input = Console.readLine();
-        if (input.equals("1")) {
+
+        if (input.equals(BaseballData.RESTART)) {
             return true;
-        } else if(input.equals("2")) {
+        } else if(input.equals(BaseballData.GAME_OVER)) {
             return false;
         }
+
         throw new IllegalArgumentException("1과 2만 허용됩니다.");
     }
 
@@ -87,11 +97,11 @@ public class Application {
         List<Integer> player = new ArrayList<>();
         String input = Console.readLine();
         int tempNumbers = Integer.parseInt(input);
-        int divider = (int)Math.pow (10, input.length() -1 );
-        while(divider > 0){
-            player.add(tempNumbers / divider);
-            tempNumbers = tempNumbers - (player.get(player.size() - 1)) * divider;
-            divider = divider / 10;
+        int digitDivider = BaseballData.DIVIDEND;
+        while(digitDivider > BaseballData.TARGET_SIZE){
+            player.add(tempNumbers / digitDivider);
+            tempNumbers = tempNumbers - (player.get(player.size() - 1)) * digitDivider;
+            digitDivider /= BaseballData.DIVIDER;
         }
         CheckPlayerNumbersException(player);
         return player;
@@ -101,15 +111,17 @@ public class Application {
         HashSet<Integer> checkSet = new HashSet<>(player);
         if(checkSet.size() != player.size()){
             throw new IllegalArgumentException("중복된 숫자가 감지되었습니다.");
-        } if(player.size() != 3){
+        } if(player.size() != BaseballData.SIZE){
             throw new IllegalArgumentException("숫자를 3개만 입력해주세요.");
         }
     }
 
     public static List<Integer> GenerateComputerNumbers(){
         List<Integer> computer = new ArrayList<>(0);
-        while(computer.size() < 3){
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        int randomNumber;
+
+        while(computer.size() < BaseballData.SIZE){
+            randomNumber = Randoms.pickNumberInRange(BaseballData.MINIMUM_NUMBER, BaseballData.MAXIMUM_NUMBER);
             if(!computer.contains(randomNumber)){
                 computer.add(randomNumber);
             }

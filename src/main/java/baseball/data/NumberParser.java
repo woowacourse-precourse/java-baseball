@@ -1,5 +1,6 @@
 package baseball.data;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,7 +11,7 @@ import net.bytebuddy.pool.TypePool.Resolution.Illegal;
  * 문자열로 입력받은 숫자들을 리스트에 옮겨담는다.
  */
 public class NumberParser {
-    private static final int NUMBER_LENGTH = 3;
+    public static final int NUMBER_LENGTH = 3;
     private static final int DIVIDE_INITIATE = 100; // 나눌 초기값
     private static final int DIVIDE_TARGET = 10; // 단계별로 줄어드는 자릿수
 
@@ -20,11 +21,12 @@ public class NumberParser {
      * @param numbers 아직 문자열로 저장되어있는 숫자들
      * @return 리스트로 입력받은 숫자를 변환
      */
-    public List<Integer> parsePlayerNumber(String numbers) {
+    public List<Integer> parsePlayerNumber() {
         List<Integer> parsedNumbers;
+        String tempPlayerString = Console.readLine();
         int tempNumbers;
         try{
-            tempNumbers = Integer.parseInt(numbers);
+            tempNumbers = Integer.parseInt(tempPlayerString);
             parsedNumbers = divideNumbers(tempNumbers);
             checkExceptions(parsedNumbers);
         }

@@ -27,6 +27,6 @@ public class NumberReferee {
                 ball++;
             }
         }
-        return ball - strike;
+        return (ball - strike);
     }
 }
