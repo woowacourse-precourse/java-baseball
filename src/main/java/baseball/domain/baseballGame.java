@@ -84,4 +84,8 @@ public class baseballGame {
         }
     }
 
+    private void resetGame() {
+        computer.clear();
+        createRandomNumber();
+    }
 }
