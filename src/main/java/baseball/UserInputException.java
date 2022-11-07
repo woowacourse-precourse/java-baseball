@@ -1,5 +1,8 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInputException {
     public UserInputException() {
     }
@@ -28,5 +31,19 @@ public class UserInputException {
         }
         return true;
     }
-
+    
+    // 입력받은 값 중에 겹치는 값이 있다면 false 리턴
+    private boolean checkAllDigitDifference(String input){
+        List<Integer> numberList = new ArrayList<>();
+        for (int i = 0; i < 3; i++){
+            int term = (int)input.charAt(i);
+            if (!numberList.contains(term)){
+                numberList.add(term);
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
 }
