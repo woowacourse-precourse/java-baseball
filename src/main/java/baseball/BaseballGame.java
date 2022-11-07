@@ -12,6 +12,7 @@ public class BaseballGame {
     List<Integer> randomList = new ArrayList<>();
 
     public BaseballGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         createNumber();
     }
 

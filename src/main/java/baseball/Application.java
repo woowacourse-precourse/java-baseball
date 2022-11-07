@@ -2,7 +2,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        BaseballGame game = new BaseballGame();
-
+        User user = new User();
+        user.Game();
     }
 }
