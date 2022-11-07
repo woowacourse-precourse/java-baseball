@@ -13,4 +13,12 @@ public class Exception {
 		}
 	}
 
+	public void checkOverlap(int[] number, char input) throws IllegalArgumentException {
+		for (int i = 0; i < number.length; i++) {
+			if (number[i] == input - '0') {
+				throw new IllegalArgumentException("숫자를 중복해서 입력 하였습니다.");
+			}
+		}
+	}
+
 }
