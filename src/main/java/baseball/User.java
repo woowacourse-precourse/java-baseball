@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 public class User {
 
     public List<Integer> getUserPredictedAnswer() throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine().trim();
 
         List<Integer> guess = stringToSeparatedIntegerList(input);
