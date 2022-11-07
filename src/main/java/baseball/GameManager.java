@@ -24,6 +24,12 @@ public class GameManager {
         return InputNumberHash;
     }
 
+    static void scanIsContinue() {
+        String numberString = Console.readLine();
+        if (numberString == "1") isContinue = true;
+        else if (numberString == "2") isContinue = false;
+    }
+
     static HashMap<Character,Integer> judgeResult() {
         resultHash.put('S', 0);
         resultHash.put('B', 0);
