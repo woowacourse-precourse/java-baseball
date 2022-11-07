@@ -28,9 +28,10 @@ public class Application {
 
     private static final int START_VALUE = 1;
     private static final int END_VALUE = 9;
+    private static final int NUMBER_COUNT = 3;
 
 
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args) {
         notifyGameStart();
         startGame();
     }
@@ -68,7 +69,7 @@ public class Application {
 
     public static List<Integer> createComputerNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < 3) {
+        while (computerNumbers.size() < NUMBER_COUNT) {
             int randomNumber = Randoms.pickNumberInRange(START_VALUE, END_VALUE);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
@@ -108,8 +109,8 @@ public class Application {
 
     private static int getStrikeCnt(List<Integer> computerNumbers, List<Integer> userNumbers) {
         int strikeCnt = 0;
-        for (int i = 0; i < userNumbers.size(); i++) {
-            if (computerNumbers.get(i).equals(userNumbers.get(i))) {
+        for (int loc = 0; loc < userNumbers.size(); loc++) {
+            if (computerNumbers.get(loc).equals(userNumbers.get(loc))) {
                 strikeCnt++;
             }
         }
@@ -128,25 +129,19 @@ public class Application {
     }
 
     public static void validUserNumbers(String userNumbers) throws IllegalArgumentException {
-//        if (userNumbers.trim().isEmpty()){
-//            throw new IllegalArgumentException(String.join(":",INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
-//        }
         if (!userNumbers.matches("^[1-9]{3}$")) {
-            throw new IllegalArgumentException(String.join(":", INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
+            throw new IllegalArgumentException(INPUT_USER_NUMBER_ERROR_MESSAGE);
         }
         if (userNumbers.charAt(0) == userNumbers.charAt(1) ||
                 userNumbers.charAt(0) == userNumbers.charAt(2) ||
                 userNumbers.charAt(1) == userNumbers.charAt(2)) {
-            throw new IllegalArgumentException(String.join(":", INPUT_USER_NUMBER_ERROR_MESSAGE, userNumbers));
+            throw new IllegalArgumentException(INPUT_USER_NUMBER_ERROR_MESSAGE);
         }
     }
 
     public static void validGameOption(String inputGameOption) throws IllegalArgumentException {
-//        if (inputGameOption.trim().isEmpty()){
-//            throw new IllegalArgumentException(String.join(":", GAME_OPTION_ERROR_MESSAGE, inputGameOption));
-//        }
         if (!inputGameOption.matches("^[1-2]$")) {
-            throw new IllegalArgumentException(String.join(":", GAME_OPTION_ERROR_MESSAGE, inputGameOption));
+            throw new IllegalArgumentException(GAME_OPTION_ERROR_MESSAGE);
         }
     }
 }
