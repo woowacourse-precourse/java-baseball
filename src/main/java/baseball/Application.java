@@ -13,6 +13,8 @@ public class Application {
 
     public static List<Integer> computerNumList = new ArrayList<>();
     public static List<Integer> userNumList = new ArrayList<>();
+    public static int strikeCnt = 0;
+    public static int ballCnt = 0;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -43,6 +45,23 @@ public class Application {
         }
 
         return ret;
+    }
+
+    private static void countStrikeAndBall() {
+        strikeCnt = 0;
+        ballCnt = 0;
+
+        for (int computerIdx = 0; computerIdx <= NUM_OF_DIGIT - 1; computerIdx++) {
+            for (int userIdx = 0; userIdx <= NUM_OF_DIGIT - 1; userIdx++) {
+                if (computerNumList.get(computerIdx) == userNumList.get(userIdx)) {
+                    if (computerIdx == userIdx) {
+                        strikeCnt++;
+                    } else {
+                        ballCnt++;
+                    }
+                }
+            }
+        }
     }
 
 }
