@@ -54,7 +54,7 @@
 - [x] ballNumber이 0이고, strikeNumber이 0보다 큰지 비교
 - [x] true이면, "strikeNumber + 스트라이크" 출력
 - [x] ballNumber이 0보다 크고, strikeNumber이 0보다 큰지 비교
-- [ ] true이면 "ballNumber + 볼 strikeNumber + 스트라이크"을 출력
+- [x] true이면 "ballNumber + 볼 strikeNumber + 스트라이크"을 출력
 - [ ] false을 리턴
 
 ## (void)printToRestartingGameMessage()
