@@ -62,7 +62,15 @@ public class Application {
             if(userNumber == null) return;
             BaseBall baseBall = new BaseBall(userNumber);
             OutputString(baseBall.result,true);
+            continueGame = !CheckGameEnd(baseBall);
         }
+    }
+
+    private static boolean CheckGameEnd(BaseBall baseBall) {
+        if(baseBall.strike == 3)
+            return true;
+
+        return false;
     }
 
     public static void OutputString(String str, boolean isLineBreak){
