@@ -9,7 +9,10 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다");
+            System.out.print("숫자를 입력해주세요 : ");
             int inputNumber = Integer.parseInt(Console.readLine());
+
 
             try {
                 checkInputCondition(inputNumber);
@@ -52,4 +55,14 @@ public class Application {
         }
     }
 
+    private static List<Integer> convertIntegerIntoList(int number) {
+        String strNumber = String.valueOf(number);
+        List<Integer> listNumber = new ArrayList<>();
+
+        for (int i = 0; i < strNumber.length(); i++) {
+            listNumber.add(Integer.parseInt(String.valueOf(strNumber.charAt(i))));
+        }
+
+        return listNumber;
+    }
 }
