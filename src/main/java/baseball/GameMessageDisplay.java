@@ -11,7 +11,7 @@ public class GameMessageDisplay {
     }
     public void printGameResultMessage(Map<String, Integer> gameResult) {
         String gameResultMessage = getGameResultMessage(gameResult);
-        System.out.print(gameResultMessage);
+        System.out.println(gameResultMessage);
     }
     public String getGameResultMessage(Map<String, Integer> gameResult) {
         int ball = gameResult.get("ball");
