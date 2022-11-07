@@ -32,7 +32,8 @@ public class Numbers {
 
     public Map<BallTypes, Integer> compare(Numbers otherNumbers) {
         Map<BallTypes, Integer> result = initialResult();
-        IntStream.range(0, NUMBERS_COUNT).forEach(sequence -> checkBallTypes(result, otherNumbers, sequence));
+        IntStream.range(0, NUMBERS_COUNT)
+                .forEach(sequence -> checkBallTypes(result, otherNumbers, sequence));
         return result;
     }
 
