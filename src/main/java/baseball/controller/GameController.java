@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.constant.Constant;
 import baseball.domain.Action;
 import baseball.domain.Ball;
 import baseball.model.Computer;
@@ -10,31 +9,30 @@ import camp.nextstep.edu.missionutils.Console;
 public class GameController {
 
     private final Messenger messenger;
-    private final int ZERO_STRIKE = 0;
-    private final int THREE_STRIKES = 3;
-    private Ball computerNumber;
+    private Ball computerBall;
+    private static final int ZERO_STRIKE = 0;
+    private static final int THREE_STRIKES = 3;
 
     public GameController() {
         this.messenger = new Messenger();
     }
 
-    public int compareBall(Ball userNumber){
-        int strike = computerNumber.compareByIndex(userNumber);
-        int ball = computerNumber.compareByValue(userNumber) - strike;
+    public int compareComputerBallWith(Ball userBall) {
+        int strike = computerBall.compareByIndex(userBall);
+        int ball = computerBall.compareByValue(userBall) - strike;
         messenger.printResultMessage(strike, ball);
         return strike;
     }
 
-    public Ball receiveBall() {
+    public Ball receiveUserBall() {
         messenger.printInputMessage();
-        String userInput = Console.readLine();
-        return new Ball(userInput);
+        return new Ball(Console.readLine());
     }
 
-    public void setComputerNumber() {
+    public void setComputerBall() {
         Computer computer = new Computer();
         computer.setComputerRandomNumber();
-        this.computerNumber = computer.getComputerRandomNumber();
+        this.computerBall = computer.getComputerRandomNumber();
     }
 
     public Action receiveUserAction() {
@@ -42,34 +40,38 @@ public class GameController {
         return new Action(Console.readLine());
     }
 
-    public boolean receiveRestartOrEndIntent() {
-        Action userAction = receiveUserAction();
-        if (userAction.isRestart()) {
-            setComputerNumber();
+    public void resetComputerNumber(Action userAction) {
+        if (userAction.isStart()) {
+            setComputerBall();
         }
-        return userAction.isRestart();
     }
 
     public void runBaseballGame() {
         int strike = ZERO_STRIKE;
         while (strike < THREE_STRIKES) {
-            Ball userNumber = receiveBall();
-            strike = compareBall(userNumber);
+            Ball userBall = receiveUserBall();
+            strike = compareComputerBallWith(userBall);
         }
         messenger.printAnswerMessage();
     }
 
     public void startGame() {
         messenger.printStartMessage();
-        setComputerNumber();
+        setComputerBall();
+    }
+
+    public Action initializeAction() {
+        return new Action(Action.START);
     }
 
     public void runGameMain() {
-        boolean connection = true;
         startGame();
-        while (connection) {
+        Action action = initializeAction();
+
+        while (action.isStart()) {
             runBaseballGame();
-            connection = receiveRestartOrEndIntent();
+            action = receiveUserAction();
+            resetComputerNumber(action);
         }
     }
 }
