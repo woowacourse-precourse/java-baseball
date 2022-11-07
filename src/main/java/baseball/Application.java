@@ -51,6 +51,16 @@ public class Application {
         strikeNum++;
     }
 
+    public static void printOutput(int ballNum, int strikeNum){
+        if (ballNum >0){
+            System.out.print(ballNum+"볼 ");
+        }
+        if (strikeNum>0){
+            System.out.println(strikeNum+"스트라이크");
+        }
+        if (ballNum ==0 && strikeNum ==0)
+            System.out.println("낫씽");
+    }
 
     public static boolean IsBall(int computerOneNumber, String userNumber) {
         return  userNumber.contains(Integer.toString(computerOneNumber));
@@ -112,12 +122,11 @@ public class Application {
         getInput();
     }
 
-
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         gameInit();
         calculateNum();
-        //printOutput(ballNum,strikeNum);
+        printOutput(ballNum,strikeNum);
 
     }
 }
