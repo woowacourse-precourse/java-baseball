@@ -17,7 +17,7 @@ public class Target {
     }
 
     //테스트를 위해 public으로 선언
-    public Target(List<Integer> targetValue) {
+    private Target(List<Integer> targetValue) {
         this.targetValue = new ArrayList<>(targetValue);
     }
 
