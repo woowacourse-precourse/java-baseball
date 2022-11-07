@@ -16,4 +16,8 @@ public class BaseBallNumber {
     public BaseBallNumber(Integer number) {
         this.baseballNumber = number;
     }
+
+    public int getValue() {
+        return baseballNumber;
+    }
 }
