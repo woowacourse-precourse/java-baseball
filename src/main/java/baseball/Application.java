@@ -6,6 +6,7 @@ public class Application {
         // TODO: 출력 Comment 추가
         do {
             // TODO: 게임 시작
+            BaseBallGame.start();
         } while (isRestart());
     }
 

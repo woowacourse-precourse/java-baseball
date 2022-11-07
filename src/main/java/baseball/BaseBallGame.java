@@ -12,7 +12,7 @@ public class BaseBallGame {
     private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String FINISH_MESSAGE = LENGTH_OF_NUMBER + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    public void start() {
+    public static void start() {
         // TODO: 게임 진행시 처음에만 출력되는 Comment 출력
         System.out.println(START_MESSAGE);
         List<Integer> answer = BaseBallGameUtil.createAnswerByLength(LENGTH_OF_NUMBER);
@@ -29,7 +29,7 @@ public class BaseBallGame {
     }
 
     // TODO: 게임 종료 여부 판단
-    private boolean isFinished(List<Integer> answer, List<Integer> userAnswer) {
+    private static boolean isFinished(List<Integer> answer, List<Integer> userAnswer) {
         // TODO: input data와 answer가 같은지 비교
         return !answer.equals(userAnswer);
     }
