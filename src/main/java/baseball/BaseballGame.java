@@ -10,7 +10,7 @@ public class BaseballGame extends Game {
     private final String CLOSE_MESSAGE = NUMBER_LIMIT + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private final String NOTHING_MESSAGE = "낫싱";
     private final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String RESTART_MESSAGE = "게임을 새로 시작하려면 " + RESTART_NUMBER + ", 종료하려면 " + CLOSE_NUMBER + "를 입력하세요.";
 
     private boolean isFirst = true;
 
