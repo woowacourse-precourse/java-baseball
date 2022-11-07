@@ -1,10 +1,10 @@
 package baseball;
 
 public class Game {
-    Player problemMaker = new ProblemMaker();
-    Player problemSolver = new ProblemSolver();
-    Result result = new Result();
-    int status = Settings.START_STATUS;
+    private Player problemMaker = new ProblemMaker();
+    private Player problemSolver = new ProblemSolver();
+    private Result result = new Result();
+    private int status = Settings.START_STATUS;
 
     public void start(){
         while(isStartStatus()){
@@ -25,7 +25,7 @@ public class Game {
     }
 
     public boolean isStartStatus(){
-        return false;
+        return status == Settings.START_STATUS;
     }
 
     public void requestAnswer(){
@@ -42,5 +42,37 @@ public class Game {
 
     public void setStatusByProblemSolver(){
 
+    }
+
+    public Player getProblemMaker() {
+        return problemMaker;
+    }
+
+    public void setProblemMaker(Player problemMaker) {
+        this.problemMaker = problemMaker;
+    }
+
+    public Player getProblemSolver() {
+        return problemSolver;
+    }
+
+    public void setProblemSolver(Player problemSolver) {
+        this.problemSolver = problemSolver;
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
