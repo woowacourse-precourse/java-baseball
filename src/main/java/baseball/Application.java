@@ -11,7 +11,8 @@ public class Application {
     final static String GAME_OVER = "2";
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        
+        startGame();
     }
 
     static void startGame() {
