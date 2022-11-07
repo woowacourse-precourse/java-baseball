@@ -148,25 +148,20 @@ public class NumberBaseballGameTest {
         Method method = baseballGame.getClass().getDeclaredMethod("validateNumberLength", String.class);
         method.setAccessible(true);
 
-        try {
-            method.invoke(baseballGame, "1234");
-        } catch (InvocationTargetException e) {
-            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class);
-        }
+        assertThatThrownBy(() -> method.invoke(baseballGame, "1234"))
+                .isInstanceOf(InvocationTargetException.class);
     }
 
     @Test
     void 입력_값이_1과_9사이의_숫자가_아니면_예외가_발생한다() throws NoSuchMethodException, IllegalAccessException {
         BaseballGame baseballGame = new BaseballGame(new Hitter(), new Pitcher(), new Referee());
 
-        Method method = baseballGame.getClass().getDeclaredMethod("validateNumberLength", String.class);
+        Method method = baseballGame.getClass().getDeclaredMethod("validateNumberRange", String.class);
         method.setAccessible(true);
 
-        try {
-            method.invoke(baseballGame, "120");
-        } catch (InvocationTargetException e) {
-            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class);
-        }
+
+        assertThatThrownBy(() -> method.invoke(baseballGame, "120"))
+                .isInstanceOf(InvocationTargetException.class);
     }
 
     @Test
@@ -176,11 +171,8 @@ public class NumberBaseballGameTest {
         Method method = baseballGame.getClass().getDeclaredMethod("validateNumberDuplication", String.class);
         method.setAccessible(true);
 
-        try {
-            method.invoke(baseballGame, "133");
-        } catch (InvocationTargetException e) {
-            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class);
-        }
+        assertThatThrownBy(() -> method.invoke(baseballGame, "133"))
+                .isInstanceOf(InvocationTargetException.class);
     }
 
     @Test
