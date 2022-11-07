@@ -66,4 +66,9 @@ public class Input {
         return inputNumber;
     }
 
+    public void inputRestartOrExitNumberValid(String inputNumber) {
+        if(!inputNumber.equals("1") && !inputNumber.equals("2")) {
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 게임을 종료합니다.");
+        }
+    }
 }
