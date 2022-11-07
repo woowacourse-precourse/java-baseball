@@ -30,7 +30,7 @@ public class BaseBallService {
             .map(String::valueOf)
             .collect(Collectors.joining(""));
         table.setNumber(number);
-        return Response.endOf("데이터 생성 완료");
+        return Response.keepOf("데이터 생성 완료");
     }
 
     public Response matchNumber(String input) {
