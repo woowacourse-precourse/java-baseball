@@ -23,6 +23,9 @@ public class User {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
+        if (input.contains("0")) {
+            throw new IllegalArgumentException();
+        }
         if ((input.charAt(0) == input.charAt(1))
             || (input.charAt(1) == input.charAt(2))
             || (input.charAt(2) == input.charAt(0))) {
