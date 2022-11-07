@@ -19,18 +19,18 @@ public class Application {
         return computer;
     }
 
-    public static void isInputFormat() {
+    public static boolean isInputFormat(String userInput) {
         String pattern = "^[1-9]{3}$";
         try {
-            String guessNumber = Console.readLine();
-            if (!guessNumber.matches(pattern)) {
+            if (!userInput.matches(pattern)) {
                 throw new IllegalArgumentException();
-            } else if (!compareNumber(guessNumber)) {
+            } else if (!compareNumber(userInput)) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException exception) {
             exception.printStackTrace();
         }
+        return true;
     }
 
     public static boolean compareNumber(String number) {
@@ -41,10 +41,12 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        String guessNumber;
         List<Integer> computerNumber = pickComputerNumber();
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
-        isInputFormat();
+        guessNumber = Console.readLine();
+        isInputFormat(guessNumber);
 
     }
 }
