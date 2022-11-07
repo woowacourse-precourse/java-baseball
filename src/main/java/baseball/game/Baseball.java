@@ -1,3 +1,23 @@
+    private void progressGame() {
+        int[] computerNumbers = createRandomComputerNumbers();
+        Hint hint = new Hint();
+
+        while (true){
+            hint.setHint(0,0);
+            printStartMessage();
+
+            int[] userInputNumbers = getUserThreeInputNumber();
+
+            hint.checkAnswerAndPlayerNumber(computerNumbers, userInputNumbers);
+            hint.printHint();
+
+            if (hint.getStrike() == 3){
+                printEndMessage();
+                break;
+            }
+        }
+    }
+
     private boolean checkProgress() {
         String input = Console.readLine();
         int number = Integer.parseInt(input);
