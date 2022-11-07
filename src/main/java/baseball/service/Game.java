@@ -2,6 +2,7 @@ package baseball.service;
 
 import baseball.model.Computer;
 import baseball.model.User;
+import baseball.view.PrintConsole;
 
 public class Game {
 
@@ -20,4 +21,12 @@ public class Game {
     public User getUser() {
         return user;
     }
+
+    private void printStartConsole() {
+        if (user.isFirst()==false) {
+            PrintConsole.startGame();
+        }
+    }
+
+
 }
