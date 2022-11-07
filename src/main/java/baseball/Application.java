@@ -3,6 +3,7 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
         while(true) {
             Game game = new Game();
             System.out.println("컴퓨터수: " + game.computer);
@@ -14,7 +15,7 @@ public class Application {
                 String userAnswer = game.inputUserAnswer();
                 game.checkExceptions(userAnswer);
                 game.stringToListInteger(userAnswer);
-                b = game.checkUserAnswerWhichIsCorrect(userAnswer);
+                b = game.checkUserAnswer(userAnswer);
             } while (!b);
 
             if (game.replayGame().equals("2")) {
