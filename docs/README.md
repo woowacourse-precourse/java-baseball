@@ -92,7 +92,7 @@
 ### 🗓️ 개발 계획
 
 - `BaseballInput` 클래스에서 담당한다.
-- 입력 받는 상황에 따라 `nextBaseballNum()` 과 `nextSelect()` 를 사용하여 결과를 얻는다.
+- 입력 받는 상황에 따라 `nextBaseballNum()` 과 `nextGameSelect()` 를 사용하여 결과를 얻는다.
 - 각 메소드는 상황에 맞지 않는 입력에 대해 `IllegalArgumentException` 을 발생시킨다.
 
 
