@@ -1,9 +1,12 @@
 package baseball;
 
 import baseball.controller.InfoPrinter;
-import baseball.controller.InputController;
 import baseball.controller.NumberController;
+import baseball.dto.ExitFlag;
+import baseball.vo.AnswerNumber;
+import baseball.vo.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -16,33 +19,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @Nested
     class NumberControllerTest {
-//        @Test
-//        void getUniqueThreeNumbersHaveValidLength() {
-//            final int length = 3;
-//            List<Integer> result = NumberController.getUniqueThreeNumbers();
-//            assertThat(result.size()).isEqualTo(length);
-//        }
-//
-//        @Test
-//        void getUniqueThreeNumbersIsUnique() {
-//            int[] oneToNine = new int[10];
-//            Arrays.fill(oneToNine, 1);
-//            oneToNine[0] = 0;
-//            List<Integer> result = NumberController.getUniqueThreeNumbers();
-//            for (int num : result) {
-//                oneToNine[num]--;
-//                assertThat(oneToNine[num] == 0).isTrue();
-//            }
-//        }
-//
-//        @Test
-//        void convertStringToNumbers() {
-//            String input = "123";
-//            List<Integer> expected = List.of(1,2,3);
-//            List<Integer> real = NumberController.convertStringToNumbers(input);
-//            assertThat(real).isEqualTo(expected);
-//            }
-
 
         @Test
         void strikesAndBallsCase1() {
@@ -70,41 +46,6 @@ class ApplicationTest extends NsTest {
             List<Integer> real = NumberController.getStrikesAndBalls(input, computers);
             assertThat(real).isEqualTo(expected);
         }
-    }
-
-
-    @Nested
-    class InputControllerTest {
-
-//        @Test()
-//        void checkThreeNumNotInt() {
-//            String input = "99l";
-//            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
-//        }
-//
-//        @Test
-//        void checkThreeNumNoInput() {
-//            String input = "";
-//            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
-//        }
-//
-//        @Test
-//        void checkThreeNumNotInRange() {
-//            String input = "301";
-//            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
-//        }
-//
-//        @Test
-//        void checkThreeNumLengthOver() {
-//            String input = "1234";
-//            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
-//        }
-//
-//        @Test
-//        void checkThreeNumDuplicate() {
-//            String input = "221";
-//            assertThatThrownBy(() -> InputController.validateThreeNum(input)).isInstanceOf(IllegalArgumentException.class);
-//        }
     }
 
     @Nested
@@ -145,16 +86,90 @@ class ApplicationTest extends NsTest {
             assertThat(output()).isEqualTo(result);
         }
 
+    }
+
+    @Nested
+    class ExitFlagTest {
         @Test
         void validateFlagNumNotInt() {
+            ExitFlag exitFlag = new ExitFlag();
             String input = "dsf";
-            assertThatThrownBy(() -> InputController.validateFlagNum(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> exitFlag.setExitFlag(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void validateFlagNumNotOneAndTwo() {
+            ExitFlag exitFlag = new ExitFlag();
             String input = "12";
-            assertThatThrownBy(() -> InputController.validateFlagNum(input)).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> exitFlag.setExitFlag(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Nested
+    class AnswerNumberTest {
+
+        @Test
+        void getUniqueThreeNumbersHaveValidLength() {
+            final int length = 3;
+            AnswerNumber answerNumber = new AnswerNumber();
+            List<Integer> result = answerNumber.getNumbers();
+            assertThat(result.size()).isEqualTo(length);
+        }
+
+        @Test
+        void getUniqueThreeNumbersIsUnique() {
+            int[] oneToNine = new int[10];
+            Arrays.fill(oneToNine, 1);
+            oneToNine[0] = 0;
+            AnswerNumber answerNumber = new AnswerNumber();
+            List<Integer> result = answerNumber.getNumbers();
+            for (int num : result) {
+                oneToNine[num]--;
+                assertThat(oneToNine[num] == 0).isTrue();
+            }
+        }
+
+    }
+
+    @Nested
+    class UserNumberTest {
+
+        @Test
+        void convertStringToNumbers() {
+            String input = "123";
+            List<Integer> expected = List.of(1,2,3);
+            List<Integer> real = new UserNumber(input).getNumbers();
+            assertThat(real).isEqualTo(expected);
+        }
+
+        @Test()
+        void userNumberNotInt() {
+            String input = "99l";
+            assertThatThrownBy(() -> new UserNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void userNumberNoInput() {
+            String input = "";
+            assertThatThrownBy(() -> new UserNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void userNumberNotInRange() {
+            String input = "301";
+            assertThatThrownBy(() -> new UserNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void userNumberLengthOver() {
+            String input = "1234";
+            assertThatThrownBy(() -> new UserNumber(input)).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void userNumberDuplicate() {
+            String input = "221";
+            assertThatThrownBy(() -> new UserNumber(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
 
