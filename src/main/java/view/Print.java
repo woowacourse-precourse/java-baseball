@@ -1,5 +1,7 @@
 package view;
 
+import java.util.HashMap;
+
 public class Print {
 
     public static void gameStart() {
