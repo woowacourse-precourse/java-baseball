@@ -28,6 +28,10 @@ public class UserService {
         return user.getBaseballNumber();
     }
 
+    public String getAnswer(){
+        return computer.getAnswer();
+    }
+
     public void inputRestartNumber() {
         userRestartNumber = Console.readLine();
 
@@ -45,13 +49,32 @@ public class UserService {
         computer.setAnswer();
     }
 
+    private boolean checkNothing(){
+        String answer;
+        String baseballNumber;
+        boolean returnNothingStatus = false;
+
+        answer = getAnswer();
+        baseballNumber = getBaseballNumber();
+
+        for(int i=0; i<answer.length(); i++){
+            for(int j=0; j<baseballNumber.length(); j++){
+                if (answer.charAt(i) == baseballNumber.charAt(j)){
+                    returnNothingStatus = true;
+                }
+            }
+        }
+
+        return returnNothingStatus;
+    }
+
     private Integer checkBallStrike(String status){
         String answer;
         String baseballNumber;
         int gameCount = 0;
 
-        answer = computer.getAnswer();
-        baseballNumber = user.getBaseballNumber();
+        answer = getAnswer();
+        baseballNumber = getBaseballNumber();
 
 
         for(int i=0; i<answer.length(); i++){
