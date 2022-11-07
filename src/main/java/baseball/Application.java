@@ -9,12 +9,12 @@ public class Application {
     public static void main(String[] args) {
         boolean run = true;
         boolean finish = true;
-        GameStarter.printStartingMent();
+        AlphaAndOmega.printStartingMent();
         while (run && finish) {
             finish = false;
             GameManager game = new GameManager();
             Database data = new Database();
-            data.setAnswer(GameStarter.createAnswer());
+            data.setAnswer(AlphaAndOmega.createAnswer());
             while (!finish) {
                 data.setUserInput(Input.whileRunning());
                 ExceptionChecker.checkGuessingInput(data.getUserInput());
@@ -25,11 +25,11 @@ public class Application {
                 run = game.isAgain(finish);
             }
         }
-        System.out.println("게임 종료");
+        AlphaAndOmega.printFinishingMent();
     }
 }
 
-class GameStarter {
+class AlphaAndOmega {
 
     public static List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
@@ -44,6 +44,10 @@ class GameStarter {
 
     public static void printStartingMent() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static void printFinishingMent() {
+        System.out.println("게임 종료");
     }
 }
 
