@@ -6,6 +6,10 @@ import java.util.HashSet;
 import java.util.stream.IntStream;
 
 public class Computer {
+    private static final String BALL_FORMAT = "%d볼 ";
+    private static final String STRIKE_FORMAT = "%d스트라이크";
+    private static final String NOTHING = "낫싱";
+
     private String answer;
 
     public void setAnswer() {
@@ -20,6 +24,26 @@ public class Computer {
         }
 
         this.answer = answerBuilder.toString();
+    }
+
+    public int computeResult(String input) {
+        int ball = countBall(input);
+        int strike = countStrike(input);
+
+        if (ball == 0 && strike == 0) {
+            System.out.print(NOTHING);
+        }
+
+        if (ball > 0) {
+            System.out.printf(BALL_FORMAT, ball);
+        }
+
+        if (strike > 0) {
+            System.out.printf(STRIKE_FORMAT, strike);
+        }
+
+        System.out.println();
+        return strike;
     }
 
     private int countBall(String Input) {
