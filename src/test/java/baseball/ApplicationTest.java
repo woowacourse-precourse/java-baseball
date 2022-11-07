@@ -27,6 +27,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임진행_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("789", "289", "239", "231", "145", "192", "129", "132", "123", "2");
+                    assertThat(output()).contains("낫싱", "1볼", "2볼", "3볼","1스트라이크","1볼 1스트라이크", "2볼 1스트라이크", "2스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Test
     void 컴퓨터_숫자는_세_개_테스트(){
         List<Integer> computer = Application.selectComputerNumber();
 

@@ -23,7 +23,7 @@ public class Comments {
     }
 
     public void printNothingComment(){
-        System.out.println("낫싱\n");
+        System.out.println("낫싱");
     }
 
    public void printResultComment(int ball, int strike){

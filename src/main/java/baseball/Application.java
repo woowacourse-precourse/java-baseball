@@ -20,6 +20,10 @@ public class Application {
             Player user = new Player(toIntegers(split(Console.readLine())));
             if(playGame(computer, user, comments))
                 continue;
+            Restart restart = new Restart(toInt(Console.readLine()));
+            if(!restart.isRestart())
+                break;
+            computer = new Player(selectComputerNumber());
         }
 
     }
@@ -39,6 +43,10 @@ public class Application {
 
     public static String[] split(String string){
         return string.split("");
+    }
+
+    public static int toInt(String input){
+        return Integer.parseInt(input);
     }
 
     public static List<Integer> toIntegers(String[] input){
@@ -100,7 +108,7 @@ public class Application {
 
     public static Map<String, String> setComments(){
         Map<String, String> comments = new HashMap<>();
-        comments.put("START", "숫자 야구 게임을 시작합니다.\n");
+        comments.put("START", "숫자 야구 게임을 시작합니다.");
         comments.put("INPUT","숫자를 입력해주세요 : ");
         comments.put("FINISH", "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
