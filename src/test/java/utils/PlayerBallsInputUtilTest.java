@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class PlayerInputUtilTest {
+public class PlayerBallsInputUtilTest {
 
 	@Test
 	@DisplayName("야구공 3개 미만 입력 예외케이스")
@@ -15,11 +15,11 @@ public class PlayerInputUtilTest {
 		String oneLengthBall = "9";
 		String zeroLengthBall = "";
 		// then
-		assertThatThrownBy(() -> PlayerInputUtil.checkLessThanThreeExecption(twoLengthBall))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkLessThanThreeExecption(twoLengthBall))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkLessThanThreeExecption(oneLengthBall))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkLessThanThreeExecption(oneLengthBall))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkLessThanThreeExecption(zeroLengthBall))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkLessThanThreeExecption(zeroLengthBall))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -30,9 +30,9 @@ public class PlayerInputUtilTest {
 		String fourLengthBall = "1234";
 		String tenLengthBall = "1234567890";
 		// then
-		assertThatThrownBy(() -> PlayerInputUtil.checkMoreThanThreeException(fourLengthBall))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkMoreThanThreeException(fourLengthBall))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkMoreThanThreeException(tenLengthBall))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkMoreThanThreeException(tenLengthBall))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -45,13 +45,13 @@ public class PlayerInputUtilTest {
 		String nonNumericBallThree = "1!";
 		String zeroBall = "210";
 		// then
-		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(nonNumericBallOne))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkOutOfRangeException(nonNumericBallOne))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(nonNumericBallTwo))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkOutOfRangeException(nonNumericBallTwo))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(nonNumericBallThree))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkOutOfRangeException(nonNumericBallThree))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkOutOfRangeException(zeroBall))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkOutOfRangeException(zeroBall))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -64,13 +64,13 @@ public class PlayerInputUtilTest {
 		String duplicateBallThree = "677";
 		String duplicateBallFour = "777";
 		// then
-		assertThatThrownBy(() -> PlayerInputUtil.checkDuplicateBallsException(duplicateBallOne))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkDuplicateBallsException(duplicateBallOne))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkDuplicateBallsException(duplicateBallTwo))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkDuplicateBallsException(duplicateBallTwo))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkDuplicateBallsException(duplicateBallThree))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkDuplicateBallsException(duplicateBallThree))
 				.isInstanceOf(IllegalArgumentException.class);
-		assertThatThrownBy(() -> PlayerInputUtil.checkDuplicateBallsException(duplicateBallFour))
+		assertThatThrownBy(() -> PlayerBallsInputUtil.checkDuplicateBallsException(duplicateBallFour))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
 
