@@ -33,7 +33,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
             }
 
             @Test
@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1);
                     }
                 };
-                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> computer.makeAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
@@ -57,7 +57,7 @@ class ApplicationTest extends NsTest {
                         return List.of(1, 8, 8);
                     }
                 };
-                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> computer.makeAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
@@ -69,7 +69,7 @@ class ApplicationTest extends NsTest {
                         return List.of(0, 8, 9);
                     }
                 };
-                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> computer.makeAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
 
             @Test
@@ -81,7 +81,7 @@ class ApplicationTest extends NsTest {
                         return List.of(1, 8, 10);
                     }
                 };
-                assertThatThrownBy(() -> computer.putAnswer()).isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> computer.makeAnswer()).isInstanceOf(IllegalArgumentException.class);
             }
         }
 
@@ -97,7 +97,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(9, 1, 4)))).isEqualTo(new Result(3, 0));
             }
 
@@ -110,7 +110,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(8, 1, 4)))).isEqualTo(new Result(2, 0));
             }
 
@@ -123,7 +123,7 @@ class ApplicationTest extends NsTest {
                         return List.of(4, 1, 9);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(9, 1, 4)))).isEqualTo(new Result(1, 2));
             }
 
@@ -136,7 +136,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(4, 1, 5)))).isEqualTo(new Result(1, 1));
             }
 
@@ -149,7 +149,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(3, 6, 4)))).isEqualTo(new Result(1, 0));
             }
 
@@ -162,7 +162,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(4, 2, 3)))).isEqualTo(new Result(0, 1));
             }
 
@@ -175,7 +175,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(4, 9, 3)))).isEqualTo(new Result(0, 2));
             }
 
@@ -188,7 +188,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(1, 4, 9)))).isEqualTo(new Result(0, 3));
             }
 
@@ -201,7 +201,7 @@ class ApplicationTest extends NsTest {
                         return List.of(9, 1, 4);
                     }
                 };
-                computer.putAnswer();
+                computer.makeAnswer();
                 assertThat(computer.returnResult(new BaseballNumber(List.of(7, 3, 8)))).isEqualTo(new Result(0, 0));
             }
         }

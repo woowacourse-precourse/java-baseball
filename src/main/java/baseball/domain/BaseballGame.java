@@ -29,29 +29,19 @@ public class BaseballGame {
     }
 
     private Result checkResultOfEnteredValue() {
-        try {
-            BaseballNumber guessNumber = new BaseballNumber(Input.enterGuessNumber());
-            Result result = computer.returnResult(guessNumber);
-            Output.showGuessResult(result);
-            return result;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-        return checkResultOfEnteredValue();
+        BaseballNumber guessNumber = new BaseballNumber(Input.enterGuessNumber());
+        Result result = computer.returnResult(guessNumber);
+        Output.showGuessResult(result);
+        return result;
     }
 
     private void decideWhatToDoNext() {
-        try {
-            Integer code = Input.askWhatToDo();
-            if (code == 1) {
-                start();
-            }
-            if (code == 2) {
-                return;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            decideWhatToDoNext();
+        Integer code = Input.askWhatToDo();
+        if (code == 1) {
+            start();
+        }
+        if (code == 2) {
+            return;
         }
     }
 }
