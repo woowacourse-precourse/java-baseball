@@ -46,7 +46,7 @@ class ApplicationTest extends NsTest {
     class randomNumberTest {
         @Test
         void 컴퓨터_랜덤숫자_크기_테스트() throws Exception {
-            computer.createBaseballNumber();
+            computer.initiate();
             List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("baseballNumber", computer);
 
             int result = 3;
@@ -56,7 +56,7 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 컴퓨터_랜덤값_숫자인지_확인() throws Exception {
-            computer.createBaseballNumber();
+            computer.initiate();
             List<Integer> computerRandomNumbers = (List<Integer>) getPrivateField("baseballNumber", computer);
 
             assertThat(computerRandomNumbers.stream().allMatch(number -> number >= 1 && number <= 9)).isTrue();
