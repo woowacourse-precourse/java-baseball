@@ -15,7 +15,7 @@ public class ComputerUtil {
         for (int i = 0; i < 3; i++) {
             int validRandomNumber = getValidRandomNumber(computerNumbers);
 
-            computerNumbers.add(i, validRandomNumber);
+            computerNumbers.set(i, validRandomNumber);
         }
 
         return computerNumbers;
