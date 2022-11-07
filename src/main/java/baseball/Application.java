@@ -24,11 +24,19 @@ public class Application {
         answer = Integer.parseInt(Console.readLine());
 
         if (answer == 1) {
+            return true;    // 게임 재시작
+        } else {
+            return false;   // 게임 종료
+        }
+
+    }
+
+    public static boolean checkAnswer(List<Integer> answer) {
+        if (answer.get(1) == 3) {
             return true;
         } else {
             return false;
         }
-
     }
 
     public static void main(String[] args) {
@@ -36,7 +44,11 @@ public class Application {
         boolean status = playGame();
 
         while (status != false) {
+            List<Integer> answer = new ArrayList<>(); // 0 : BALL 1 : STRIKE
 
+            if (checkAnswer(answer)) {
+                status = restartGame();
+            }
         }
 
     }
