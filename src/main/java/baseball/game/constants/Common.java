@@ -1,6 +1,6 @@
-package baseball.game.common;
+package baseball.game.constants;
 
-public class Constants {
+public class Common {
 
     public final static int FULL_STRIKE = 3;
     public final static int NOTHING = 0;

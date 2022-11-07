@@ -1,6 +1,6 @@
 package baseball.game.model;
 
-import baseball.game.common.Constants;
+import baseball.game.constants.Common;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -15,13 +15,13 @@ public class Count {
     }
 
     public int setBall(List<Integer> computerNumber, List<Integer> userNumber) {
-        return (int) IntStream.range(0, Constants.ESSENTIAL_LENGTH)
+        return (int) IntStream.range(0, Common.ESSENTIAL_LENGTH)
                 .filter(i -> computerNumber.get(i) != userNumber.get(i) && computerNumber.contains(userNumber.get(i)))
                 .count();
     }
 
     public int setStrike(List<Integer> computerNumber, List<Integer> userNumber) {
-        return (int) IntStream.range(0,Constants.ESSENTIAL_LENGTH)
+        return (int) IntStream.range(0, Common.ESSENTIAL_LENGTH)
                 .filter(i -> computerNumber.get(i) == userNumber.get(i))
                 .count();
     }
@@ -32,7 +32,7 @@ public class Count {
 
 
     public boolean isCorrect() {
-        return STRIKE == Constants.FULL_STRIKE;
+        return STRIKE == Common.FULL_STRIKE;
     }
 
     @Override
@@ -44,11 +44,11 @@ public class Count {
             return hint;
         }
 
-        if (BALL != Constants.NOTHING) {
+        if (BALL != Common.NOTHING) {
             hint += BALL + "볼 ";
         }
 
-        if (STRIKE != Constants.NOTHING) {
+        if (STRIKE != Common.NOTHING) {
             hint += STRIKE + "스트라이크";
         }
 

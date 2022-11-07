@@ -1,6 +1,6 @@
 package baseball.game.service;
 
-import baseball.game.common.Constants;
+import baseball.game.constants.Common;
 import baseball.game.io.BaseballGameInput;
 import baseball.game.io.BaseballGameOutput;
 
@@ -20,11 +20,11 @@ public class BaseballManager {
     }
 
     public static boolean isRegame(String rematch) {
-        if (rematch.equals(Constants.RE_GAME)) {
+        if (rematch.equals(Common.RE_GAME)) {
             return true;
         }
 
-        if (rematch.equals(Constants.END_GAME)) {
+        if (rematch.equals(Common.END_GAME)) {
             return false;
         }
 

@@ -1,4 +1,4 @@
-package baseball.game.common;
+package baseball.game.constants;
 
 public class Exception {
     public final static String NO_THREE_LENGTH = "반드시 3글자여야 합니다.";

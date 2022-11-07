@@ -1,6 +1,6 @@
 package baseball.game.service;
 
-import baseball.game.common.Exception;
+import baseball.game.constants.Exception;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
