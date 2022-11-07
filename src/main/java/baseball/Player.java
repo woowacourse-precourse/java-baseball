@@ -10,8 +10,7 @@ public class Player {
     public void play() {
         gameManager.createRandomNumbers();
         do {
-            String input = inputAnswer();
-            gameManager.printResult(input);
+            gameManager.printResult(sendAnswer());
         } while ((!gameManager.isGameClear()));
     }
 
@@ -21,7 +20,7 @@ public class Player {
         return input;
     }
 
-    private String inputAnswer() {
+    private String sendAnswer() {
         String input = Console.readLine();
         validator.isWrongInputValue(input);
         System.out.println("숫자를 입력해주세요 : " + input);
