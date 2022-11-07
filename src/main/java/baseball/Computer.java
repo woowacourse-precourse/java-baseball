@@ -26,6 +26,8 @@ public class Computer {
     }
 
     public boolean isValidNumber(List<Integer> numbers) {
+        if(numbers.size() != 3)
+            return false;
         for(Integer number: numbers) {
             int overlapCnt = Collections.frequency(numbers, number);
             if(overlapCnt > 1)
