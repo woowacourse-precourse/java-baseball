@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.utils.BaseballCount;
 import java.util.HashMap;
 import java.util.Map;
 

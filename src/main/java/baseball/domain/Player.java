@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import baseball.utils.BaseballCount;
 import baseball.utils.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;

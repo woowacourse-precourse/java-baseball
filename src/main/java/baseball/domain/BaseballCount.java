@@ -1,4 +1,4 @@
-package baseball.utils;
+package baseball.domain;
 
 public enum BaseballCount {
     STRIKE("strike", "스트라이크"),
