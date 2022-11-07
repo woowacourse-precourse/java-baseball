@@ -22,7 +22,7 @@ public class NumberBaseballGame {
             showGameMessage.inputUserNumberMessage();
             ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
             showGameMessage.gameResultMessage(result);
-            if (result.getType() == ScoreResultType.ALL_STRIKE) {
+            if (result.getScoreResultType() == ScoreResultType.ALL_STRIKE) {
                 endGame();
             }
         }
