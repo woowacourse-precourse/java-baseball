@@ -96,4 +96,8 @@ public class BaseBallGame {
             System.out.println("낫싱");
         }
     }
+
+    public void setRestartToken() {
+        restartToken = Console.readLine();
+    }
 }
