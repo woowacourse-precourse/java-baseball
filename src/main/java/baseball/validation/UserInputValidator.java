@@ -21,6 +21,18 @@ public class UserInputValidator {
         }
     }
 
+    public void validateRestartInput(String input) {
+        if (!isParsableToInteger(input)) {
+            throw new IllegalArgumentException("잘못된 입력! 1 또는 2를 입력해주세요.");
+        }
+
+        int inputNum = Integer.parseInt(input);
+
+        if (inputNum != 1 && inputNum != 2) {
+            throw new IllegalArgumentException("잘못된 입력! 1 또는 2를 입력해주세요.");
+        }
+    }
+
     public boolean hasUniqueDigits(int num) {
         if (num == 0) {
             return true;
