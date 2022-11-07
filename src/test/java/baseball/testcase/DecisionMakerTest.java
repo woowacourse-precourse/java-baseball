@@ -1,5 +1,6 @@
 package baseball.testcase;
 
+import baseball.decision.Decision;
 import baseball.decision.DecisionMaker;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
@@ -20,14 +21,14 @@ public class DecisionMakerTest extends NsTest {
     @Test
     void Play_의사결정_반환_테스트() {
         command("1");
-        assertThat(decisionMaker.getDecision()).isEqualTo("Play");
+        assertThat(decisionMaker.getDecision()).isEqualTo(Decision.PLAY);
     }
 
     @DisplayName("유저가 종료를 원할 경우 Stop라는 의사 결정을 반환한다")
     @Test
     void Stop_의사결정_반환_테스트() {
         command("2");
-        assertThat(decisionMaker.getDecision()).isEqualTo("Stop");
+        assertThat(decisionMaker.getDecision()).isEqualTo(Decision.STOP);
     }
 
     @DisplayName("1, 2외의 값을 입력했을 경우 예외를 발생시킨다")

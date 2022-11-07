@@ -1,6 +1,7 @@
 package baseball.testcase;
 
 import baseball.controller.GameController;
+import baseball.decision.Decision;
 import baseball.decision.DecisionMaker;
 import baseball.game.Game;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,9 +33,9 @@ public class GameControllerTest {
     @Test
     void 야구게임_3번_반복() {
         when(decisionMaker.getDecision())
-                .thenReturn("Play")
-                .thenReturn("Play")
-                .thenReturn("Stop");
+                .thenReturn(Decision.PLAY)
+                .thenReturn(Decision.PLAY)
+                .thenReturn(Decision.STOP);
         gameController.playRecurringGame();
 
         assertThat(gameController.getTimesOfPlayGame()).isEqualTo(3);
