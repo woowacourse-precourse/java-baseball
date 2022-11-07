@@ -29,7 +29,7 @@ class baseball {
 		    if (!correct.contains(randomNumber)) {
 		        correct.add(randomNumber);
 		    }
-		}		
+		}
 	}
 
 	
@@ -39,11 +39,26 @@ class baseball {
 	}
 	
 	void get_user_input_num() {
-		System.out.println("숫자를 입력해주세요 : "); //
+		System.out.println("숫자를 입력해주세요 : "); //get_user_input_num 구현완료
 		user_num = number.nextInt();
+		
+		int one = user_num / 100;
+		int two = user_num / 10 % 10;
+		int three = user_num % 10;
+
+		
 		int cipher;
-		for(cipher = 0; cipher < tmp_List.size(); cipher++) {
-			tmp_List.add(cipher);
+		
+		for(cipher = 0; cipher < 3; cipher++) {
+			if(cipher == 0) {
+				tmp_List.add(cipher, one);
+			}
+			else if(cipher == 1) {
+				tmp_List.add(cipher, two);
+			}
+			else if(cipher == 2) {
+				tmp_List.add(cipher, three);
+			}
 		}
 	}
 	
@@ -70,8 +85,19 @@ class baseball {
 		
 	}
 	
-	int compare(List<Integer> tmp_List2, List<Integer> correct2) {
-		System.out.println("3스트라이크");
+	int compare() {
+		int ball = 0;
+		int strike = 0;
+		int cipher;
+		for(cipher = 0; cipher < 3; cipher++ ) {
+			if(tmp_List.get(cipher) == correct.get(cipher)) {
+				strike++;
+			}
+		}
+		System.out.println("result : " + correct);
+		System.out.println(tmp_List);
+		System.out.println(strike);
+		
 		return 1;
 	}
 	
@@ -85,14 +111,6 @@ public class Application {
     	//야구게임
     baseball baseball_game = new baseball();
 
-    
-    
-    
-    
-    
-    
-    
-    
     }
 }
 
