@@ -7,7 +7,8 @@ import java.util.List;
 
 public class CorrectAnswer {
     private List<Integer> randomNumberList = new ArrayList<>();
-    private List<Boolean> isAlreadyExists = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false));
+    private List<Boolean> isAlreadyExists = new ArrayList<>(
+            List.of(false, false, false, false, false, false, false, false, false));
 
     /**
      * 정답 배열과 비교
@@ -17,10 +18,12 @@ public class CorrectAnswer {
      * @return 0: 불일치, 1: 볼, 2: 스트라이크
      */
     public PitchResult batPitchedBall(int number, int index) {
-        if (randomNumberList.get(index) == number) return PitchResult.STRIKE;
-        if (randomNumberList.contains(number)) return PitchResult.BALL;
-        //비교 후 결과를 출력한다.
-        //3스트라이크면 true 아니면 false 반환
+        if (randomNumberList.get(index) == number) {
+            return PitchResult.STRIKE;
+        }
+        if (randomNumberList.contains(number)) {
+            return PitchResult.BALL;
+        }
         return PitchResult.NONE;
     }
 
@@ -31,7 +34,7 @@ public class CorrectAnswer {
      * @return 중복여부
      */
     private boolean isExists(int number) {
-        return isAlreadyExists.get(number-1);
+        return isAlreadyExists.get(number - 1);
     }
 
     /**
@@ -41,20 +44,21 @@ public class CorrectAnswer {
      */
     private int generateRandomNumber() {
         int randomNumber = Randoms.pickNumberInRange(1, 9);
-        while (isExists(randomNumber)) randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (isExists(randomNumber)) {
+            randomNumber = Randoms.pickNumberInRange(1, 9);
+        }
         return randomNumber;
     }
 
     /**
-     * 숫자를 리스트에 추가합니다.
-     * 이 때 isAlreadyExists 리스트의 값을 true로 바꿉니다.
+     * 숫자를 리스트에 추가합니다. 이 때 isAlreadyExists 리스트의 값을 true로 바꿉니다.
      *
      * @param number 추가할 1~9사이 숫자.
      */
 
     private void addNumber(int number) {
         this.randomNumberList.add(number);
-        this.isAlreadyExists.set(number-1, true);
+        this.isAlreadyExists.set(number - 1, true);
     }
 
     /**
