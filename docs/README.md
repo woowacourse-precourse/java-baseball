@@ -1,10 +1,11 @@
-## **5가지를 최대한 만족하는 코드 작성**
+## **아래 규칙을 최대한 만족하기**
 
 1. 객체지향 생활체조 원칙 9가지
-2. Git commit conventions
-3. Java conventions
-4. test code
-5. clean code
+2. Java conventions
+3. Git commit conventions
+4. clean code
+5. test code
+6. unit test naming
 
 
 
