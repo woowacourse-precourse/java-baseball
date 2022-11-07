@@ -51,6 +51,19 @@ class ApplicationTest extends NsTest {
         assertThat(Application.hasOtherNumbersOrChars("123")).isFalse();
     }
 
+    @Test
+    void 입력_예외_테스트() {
+        assertThatThrownBy(() -> Application.handleInputException("113"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 숫자가 입력되었습니다.");
+        assertThatThrownBy(() -> Application.handleInputException("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("세 자리를 초과하는 숫자가 입력되었습니다.");
+        assertThatThrownBy(() -> Application.handleInputException("1A3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("정해진 범위 이외의 숫자나 문자가 입력되었습니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
