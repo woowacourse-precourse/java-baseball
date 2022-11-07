@@ -1,7 +1,7 @@
 package baseball.service;
 
 import baseball.dto.GameResultResponseDto;
-import baseball.domain.GameResult;
+import baseball.domain.Referee;
 import baseball.domain.Player;
 import baseball.domain.RandomNumberCreator;
 
@@ -23,8 +23,8 @@ public class GameService {
     }
 
     public GameResultResponseDto playGame() {
-        GameResult gameResult = computer.playGame(player);
-        return gameResult.toResponseDto();
+        Referee referee = computer.playGame(player);
+        return referee.toResponseDto();
     }
 
     public void changePlayerBalls(List<Integer> newBallNumbers) {

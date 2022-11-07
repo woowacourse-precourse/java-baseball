@@ -4,17 +4,17 @@ import baseball.dto.GameResultResponseDto;
 
 import java.util.Objects;
 
-public class GameResult {
+public class Referee {
 
     public static final int INIT_SCORE = 0;
     private int strike;
     private int ball;
 
-    public GameResult() {
+    public Referee() {
         this(INIT_SCORE, INIT_SCORE);
     }
 
-    public GameResult(int strike, int ball) {
+    public Referee(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
@@ -36,7 +36,7 @@ public class GameResult {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GameResult that = (GameResult) o;
+        Referee that = (Referee) o;
         return strike == that.strike && ball == that.ball;
     }
 

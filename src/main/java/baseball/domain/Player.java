@@ -48,14 +48,14 @@ public class Player {
                 .collect(Collectors.toList());
     }
 
-    public GameResult playGame(Player otherPlayer) {
-        GameResult gameResult = new GameResult();
+    public Referee playGame(Player otherPlayer) {
+        Referee referee = new Referee();
 
         for (Ball ball : balls) {
             BallStatus ballStatus = otherPlayer.playRound(ball);
-            gameResult.addScore(ballStatus);
+            referee.addScore(ballStatus);
         }
-        return gameResult;
+        return referee;
     }
 
     private BallStatus playRound(Ball otherBall) {
