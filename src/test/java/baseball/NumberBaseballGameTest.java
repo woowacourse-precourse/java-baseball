@@ -65,10 +65,11 @@ public class NumberBaseballGameTest {
     @Test
     void 랜덤한_1과_9사이의_숫자를_하나_생성한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Pitcher pitcher = new Pitcher();
+        ArrayList<Integer> thrownBallList = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 
-        Method method = pitcher.getClass().getDeclaredMethod("getNotDuplicatedRandomNumber");
+        Method method = pitcher.getClass().getDeclaredMethod("getNotDuplicatedRandomNumber", List.class);
         method.setAccessible(true);
-        int number = (int) method.invoke(pitcher);
+        int number = (int) method.invoke(pitcher, thrownBallList);
 
         assertThat(number).isGreaterThan(0).isLessThan(10);
     }
@@ -76,10 +77,11 @@ public class NumberBaseballGameTest {
     @Test
     void 투수가_랜덤한_1과_9사이의_숫자와_순서를_가진_공을_하나_생성한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Pitcher pitcher = new Pitcher();
+        ArrayList<Integer> thrownBallList = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 
-        Method method = pitcher.getClass().getDeclaredMethod("throwRandomBall", int.class);
+        Method method = pitcher.getClass().getDeclaredMethod("throwRandomBall", List.class, int.class);
         method.setAccessible(true);
-        Object ball = method.invoke(pitcher, 3);
+        Object ball = method.invoke(pitcher, thrownBallList, 3);
 
         assertThat(ball).isInstanceOf(Ball.class);
     }
@@ -87,10 +89,11 @@ public class NumberBaseballGameTest {
     @Test
     void 투수가_생성한_공에_1과_9사이의_숫자가_있는지_확인() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Pitcher pitcher = new Pitcher();
+        ArrayList<Integer> thrownBallList = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
 
-        Method method = pitcher.getClass().getDeclaredMethod("throwRandomBall", int.class);
+        Method method = pitcher.getClass().getDeclaredMethod("throwRandomBall", List.class, int.class);
         method.setAccessible(true);
-        Ball ball = (Ball) method.invoke(pitcher, 3);
+        Ball ball = (Ball) method.invoke(pitcher, thrownBallList, 3);
 
         assertThat(ball.getNumber()).isInstanceOf(Integer.class).isGreaterThan(0).isLessThan(10);
     }
