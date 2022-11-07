@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static baseball.game.InputManager.validateInputDuringGame;
+import static baseball.game.InputManager.validateInputPostGame;
 import static baseball.util.StringConverter.stringToIntList;
 
 public class BaseballGame implements Game {
@@ -37,17 +38,24 @@ public class BaseballGame implements Game {
 
     @Override
     public boolean isRestart() {
-        return true;
+        System.out.println(RESTART_MESSAGE);
+
+        final String userInput = Console.readLine();
+        validateInputPostGame(userInput);
+
+        if (userInput.equals(RESTART)) return true;
+        if (userInput.equals(TERMINATE)) return false;
+        throw new IllegalArgumentException("INPUT : " + userInput);
     }
 
     @Override
     public void showStartMessage() {
-
+        System.out.println(START_MESSAGE);
     }
 
     @Override
     public void showEndMessage() {
-        
+        System.out.println(END_MESSAGE);
     }
 
     private void createNewBaseball() {
