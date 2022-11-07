@@ -22,11 +22,20 @@ public class BaseballComputer {
         System.out.print("숫자를 입력해 주세요: ");
     }
 
+    public void printRestartOrEnd(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
     public String userInputNumberInGame(){
         return Console.readLine();
     }
 
-    public int init(){
+    public void start(){
+        createRandomNumber();
+        init();
+    }
+
+    public void init(){
         inputNumberToComputerMessage();
         String answer = userInputNumberInGame();
 
@@ -37,15 +46,15 @@ public class BaseballComputer {
         printRestartOrEnd();
         int choice = inputRestartOrEnd();
 
-        if(0< choice && choice < 3){
+        if(1 > choice || choice > 2){
             System.out.println("out of number");
-            return 0;
+            return ;
         }
 
         if(choice == 1){
-            init();
+            start();
         }
-        return 0;
+        return ;
     }
 
     public void createRandomNumber() {
@@ -88,6 +97,7 @@ public class BaseballComputer {
         checkHitNumber.add(ball);
         checkHitNumber.add(strike);
 
+
         printHitStatus(checkHitNumber);
 
         return false;
@@ -102,24 +112,20 @@ public class BaseballComputer {
         return changeType.StringToInt(beforeIntChange);
     }
 
-    public void printRestartOrEnd(){
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-    }
-
     public void printHitStatus(List<Integer> hitStatus){
         //아무것도 없을 때
-        if(hitStatus.isEmpty()){
+        if(hitStatus.get(0) == 0 && hitStatus.get(1) == 0){
             System.out.println("낫싱");
         }
 
         //ball만 있을 때
-        if(hitStatus.get(1) == 0){
-            System.out.println(hitStatus.get(1) + "볼");
+        if(hitStatus.get(1) == 0 && hitStatus.get(0) != 0){
+            System.out.println(hitStatus.get(0) + "볼");
         }
 
         //strike만 있을 때
-        if(hitStatus.get(0) == 0){
-            System.out.println(hitStatus.get(0) + "스트라이크");
+        if(hitStatus.get(0) == 0 && hitStatus.get(1) != 0){
+            System.out.println(hitStatus.get(1) + "스트라이크");
         }
 
         //둘 다 있을 때
