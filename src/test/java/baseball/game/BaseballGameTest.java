@@ -52,7 +52,7 @@ class BaseballGameTest {
 
         game.start();
 
-        List<String> expected = List.of("3스트라이크", "낫싱", "3스트라이크", "1스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+        var expected = List.of("3스트라이크", "낫싱", "3스트라이크", "1스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
         assertThat(output()).contains(expected);
     }
 
