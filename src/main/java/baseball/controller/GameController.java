@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import baseball.validator.PlayerInputValidator;
+import baseball.view.GameView;
+import baseball.view.SystemMessage;
 import camp.nextstep.edu.missionutils.Console;
 
 import baseball.model.Computer;
@@ -12,6 +14,7 @@ import java.util.Objects;
 public class GameController {
 
     private final PlayerInputValidator playerInputValidator = new PlayerInputValidator();
+    private final GameView gameView = new GameView();
     private Computer computer;
     private Player player;
 
@@ -25,6 +28,7 @@ public class GameController {
     }
 
     public void initGame() {
+        gameView.printStart();
         this.player = new Player();
         this.computer = new Computer();
         computer.setRandomNumbers();
@@ -32,18 +36,20 @@ public class GameController {
 
     public void playGame() {
         do {
-            playSingleSet();
+            playSet();
         } while (isResume());
     }
 
-    private void playSingleSet() {
+    private void playSet() {
         initGame();
         do {
             inputPlayerNumbers();
         } while (!isGuessed());
+        gameView.printSuccess();
     }
 
     public boolean isResume() {
+        gameView.printRestartOrStop();
         String input = Console.readLine();
         playerInputValidator.checkResumeInput(input);
 
@@ -54,19 +60,20 @@ public class GameController {
         int strikeCount = getStrikeCount();
         int ballCount = getBallCount();
         if (ballCount == 0 && strikeCount == 0) {
-            System.out.println("낫싱");
+            gameView.printNothing();
         } else if (strikeCount == 0) {
-            System.out.println(ballCount + "볼");
+            gameView.printBall(ballCount);
         } else if (ballCount == 0) {
-            System.out.println(strikeCount + "스트라이크");
+            gameView.printStrike(strikeCount);
             return strikeCount == 3;
         } else {
-            System.out.println(ballCount + "볼" + strikeCount + "스트라이크");
+            gameView.printBallAndStrike(ballCount, strikeCount);
         }
         return false;
     }
 
     public void inputPlayerNumbers() {
+        gameView.printAskingForPlayerInput();
         String input = Console.readLine();
         List<Integer> inputNumberList = playerInputValidator.getDigitList(input);
         player.setPlayerNumbers(inputNumberList);
