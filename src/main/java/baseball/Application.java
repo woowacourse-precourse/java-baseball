@@ -12,6 +12,7 @@ public class Application {
         // 기능 요구사항 1번
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
     private List<String> make_RandomNum(int maxLength) {
         // 기능 요구사항 2번
         List<String> computerNum = new ArrayList<>();
@@ -35,7 +36,7 @@ public class Application {
         }
     }
 
-    private boolean check_PlayerNum(String num,int maxLength) {
+    private boolean check_PlayerNum(String num, int maxLength) {
         String[] check_array = num.split("");
         HashSet<String> check_set = new HashSet<>(Arrays.asList(check_array));
         return !num.isEmpty() && num.matches("^[1-9]*$") && num.length() == maxLength
@@ -43,8 +44,35 @@ public class Application {
 
     }
 
-    private void get_BallAndStrikeCount() {
+    private int[] get_BallAndStrikeCount(List<String> computer, List<String> player) {
         // 기능 요구사항 4번
+        int ballCnt = find_BallCount(computer,player);
+        int strikeCnt = find_StrikeCount(computer,player);
+
+        int[] judgeCnt = {ballCnt, strikeCnt};
+
+        return judgeCnt;
+
+    }
+
+    private int find_BallCount(List<String> computer, List<String> player) {
+        int ballCnt = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.contains(player.get(i)) && !computer.get(i).equals(player.get(i))) {
+                ballCnt += 1;
+            }
+        }
+        return ballCnt;
+    }
+
+    private int find_StrikeCount(List<String> computer, List<String> player) {
+        int StrikeCnt = 0;
+        for (int i = 0; i < computer.size(); i++) {
+            if (computer.get(i).equals(player.get(i))) {
+                StrikeCnt += 1;
+            }
+        }
+        return StrikeCnt;
     }
 
     private void progress_GameRule() {
@@ -60,10 +88,10 @@ public class Application {
         while (true) {
             int maxLength = 3;
             List<String> computerNum = make_RandomNum(maxLength);
-
             List<String> playerNum = input_PlayerNum(maxLength);
 
-            get_BallAndStrikeCount();
+            int[] ballAndStrikeCount = get_BallAndStrikeCount(computerNum, playerNum);
+
             progress_GameRule();
             close_game();
         }
