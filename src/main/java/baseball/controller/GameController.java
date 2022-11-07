@@ -22,6 +22,9 @@ public class GameController {
         askRestartNumberBaseballGame();
     }
 
+    public void askUserInputNumberMessage() {
+        inputView.askUserInputNumber();
+    }
 
 
 
