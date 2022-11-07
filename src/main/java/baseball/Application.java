@@ -124,24 +124,21 @@ public class Application {
         }*/
     }
 
-    static void endOrRestart() throws IllegalArgumentException {
-        String decisionString;
-        int decision;
+    static void endOrRestart()  {
+        //NextBehavior next;
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        do {
-            decisionString = Console.readLine();
-            decision = Integer.parseInt(decisionString);
-            if (decision == 1) {
-                initializeAndStartGame();
-                return;
-            } else if (decision == 2) {
-                return;
-            } else {
-                throw new IllegalArgumentException();
-            }
-        } while (true);
+
+       /* next = new NextBehavior(Console.readLine());
+        if (next.decision == 1) {
+            initializeAndStartGame();
+            return;
+        }
+        if (next.decision == 2) {
+            return;
+        }*/
+
     }
 
     static void initializeAndStartGame() {
