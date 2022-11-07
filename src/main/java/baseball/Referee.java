@@ -12,8 +12,9 @@ public class Referee {
     public void saveAnswer(Opponent opponentNumber) {
         this.opponentNumber = opponentNumber;
     }
-    private boolean isStrike(Player quessNumber) {
-        if(quessNumber.equals(opponentNumber)){
+    private boolean isStrike(Player quessNumber, int idx) {
+
+        if(quessNumber.equals(Opponent.getNumber(idx))){
             return true;
         }
         return false;
