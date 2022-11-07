@@ -46,7 +46,7 @@ public class Application {
         while (bool) {
             System.out.print("\n숫자를 입력해주세요 : ");
             List<Integer> userList = writeUser();
-            if (userList.size() > 3){
+            if (userList.size() > 3) {
                 throw new IllegalArgumentException();
             }
 
@@ -63,5 +63,19 @@ public class Application {
             } else if (answer.get(2) == 3)
                 System.out.print("낫싱");
         }
+    }
+
+    static List<Integer> check(List<Integer> writeUser, List<Integer> computer) {
+        List<Integer> result = Arrays.asList(0, 0, 0);
+
+        for (int i = 0; i < writeUser.size(); i++) {
+            if (computer.contains(writeUser.get(i)) && computer.get(i) != writeUser.get(i))
+                result.set(0, result.get(0) + 1);
+            else if (computer.get(i) == writeUser.get(i))
+                result.set(1, result.get(1) + 1);
+            else if (!computer.contains(writeUser.get(i)))
+                result.set(2, result.get(2) + 1);
+        }
+        return result;
     }
 }
