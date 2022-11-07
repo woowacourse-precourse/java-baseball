@@ -14,9 +14,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 
 public class ComputerTest {
+    private Computer computer = new Computer();
+
     @Test
     void 랜덤숫자_반환() {
-        Computer computer = new Computer();
         assertThat(computer.randoms().size()).isEqualTo(Computer.LENGTH); // 자릿수 확인
         assertThat(new HashSet<>(computer.randoms()).size()).isEqualTo(Computer.LENGTH); // 숫자 중복 여부
         assertThat(Integer.parseInt(computer.randoms().stream().map(String::valueOf).collect(Collectors.joining())))
@@ -25,13 +26,11 @@ public class ComputerTest {
 
     @Test
     void 숫자변환() {
-        Computer computer = new Computer();
         assertThat(computer.stringToInteger("123")).isEqualTo(Arrays.asList(1, 2, 3));
     }
 
     @Test
     void 숫자변환_에러반환체크() {
-        Computer computer = new Computer();
         assertThatThrownBy(() -> computer.stringToInteger(""))
                 .isInstanceOf(IllegalArgumentException.class); // 미입력
         assertThatThrownBy(() -> computer.stringToInteger("abc"))
@@ -49,7 +48,6 @@ public class ComputerTest {
 
     @Test
     void 숫자야구결과() {
-        Computer computer = new Computer();
         List<Integer> randoms = new ArrayList<>(Arrays.asList(1, 2, 3));
         assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(4, 5, 6)))).isFalse(); // 낫싱
         assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(3, 1, 2)))).isFalse(); // 3볼
@@ -60,7 +58,6 @@ public class ComputerTest {
 
     @Test
     void 재시작여부() {
-        Computer computer = new Computer();
         assertThat(computer.retryGame("1")).isTrue();
         assertThat(computer.retryGame("2")).isFalse();
         assertThatThrownBy(() -> computer.retryGame("3"))
