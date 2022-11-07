@@ -1,6 +1,10 @@
 package baseball;
 
+import static baseball.Const.FINISH;
+import static baseball.Const.RESTART;
+
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Validator {
@@ -29,4 +33,15 @@ public class Validator {
     private boolean isCharacter(char number) {
         return number < '1' || '9' < number;
     }
+
+    public boolean checkFinish(String input) {
+        if (Objects.equals(input, RESTART)) {
+            return true;
+        } else if (Objects.equals(input, FINISH)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

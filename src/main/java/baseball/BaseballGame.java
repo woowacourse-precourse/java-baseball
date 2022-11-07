@@ -6,18 +6,20 @@ public class BaseballGame {
 
     private final Generator generator;
     private final Validator validator;
+    private final Checker checker;
 
     private String randomNumber;
     private boolean isPlaying;
 
-    public static void execute(Generator generator, Validator validator) {
-        BaseballGame baseballGame = new BaseballGame(generator, validator);
+    public static void execute(Generator generator, Validator validator, Checker checker) {
+        BaseballGame baseballGame = new BaseballGame(generator, validator, checker);
         baseballGame.start();
     }
 
-    private BaseballGame(Generator generator, Validator validator) {
+    private BaseballGame(Generator generator, Validator validator, Checker checker) {
         this.generator = generator;
         this.validator = validator;
+        this.checker = checker;
     }
 
     private void init() {
@@ -30,17 +32,32 @@ public class BaseballGame {
         init();
 
         while (isPlaying) {
-            isPlaying = this.play();
+            play();
         }
 
         Printer.finish();
     }
 
-    private boolean play() {
+    private void play() {
         Printer.inputNumber();
 
         String input = Console.readLine();
         validator.validateInput(input);
+
+        if (checker.isUserGuessRight(input, this.randomNumber)) {
+            this.isPlaying = isRestart();
+            return;
+        }
+
+        this.isPlaying = true;
+    }
+
+    private boolean isRestart() {
+
+        if (validator.checkFinish(Console.readLine())) {
+            this.randomNumber = generator.generateRandomNumber();
+            return true;
+        }
 
         return false;
     }
