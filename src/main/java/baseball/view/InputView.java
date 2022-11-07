@@ -15,6 +15,5 @@ public class InputView {
         String inputNumber = Console.readLine();
 
         gameNumber.setInputString(inputNumber);
-        gameNumber.setComputerNumbers();
     }
 }
