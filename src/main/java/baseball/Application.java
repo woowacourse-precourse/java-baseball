@@ -25,7 +25,7 @@ public class Application {
         }
     }
     public static List<Integer> make_rand_num(){
-       /*
+        /*
         List<Integer> answer= new ArrayList<>();
         while(answer.size()<3) {
             int rand_num = Randoms.pickNumberInRange(1, 9);
@@ -33,8 +33,8 @@ public class Application {
                 answer.add(rand_num);
         }
         return answer;
-
         */
+
         List<Integer> number_pool = new ArrayList<>(List.of(1,2,3,4,5,6,7,8,9));
         List<Integer> answer = new ArrayList<>();
         int pool_size = 8;
@@ -68,7 +68,7 @@ public class Application {
     public static String how_many_correct(List<Integer>input, List<Integer> answer){
         int strike=0;
         int ball = 0;
-        String  return_string = "";
+        String  result_string = "";
         for(int i=0; i<3; ++i){
             Integer num = input.get(i);
             if(num == answer.get(i))
@@ -77,24 +77,21 @@ public class Application {
                 ball++;
         }
         if(ball>0)
-            return_string+=String.format("%d볼 ",ball);
+            result_string+=String.format("%d볼 ",ball);
         if(strike>0)
-            return_string += String.format("%d스트라이크",strike);
-        if(return_string.length()==0)
-            return_string = "낫싱";
-        return return_string;
+            result_string += String.format("%d스트라이크",strike);
+        if(result_string.length()==0)
+            result_string = "낫싱";
+        return result_string;
     }
     public static void one_game_start(){
         List<Integer> answer = make_rand_num();
-
-       // answer = List.of( 5,8,9 );
         System.out.println(answer);
+
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer>input = number_input();
-            //System.out.println(input);
             input_test(input);
-
 
             String result = how_many_correct(input, answer);
             System.out.println(result);
