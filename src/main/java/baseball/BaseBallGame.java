@@ -40,7 +40,7 @@ public class BaseBallGame {
     }
 
     public void inputUserNumber() throws IllegalArgumentException {
-        System.out.printf("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         userNumber = Console.readLine();
         isRightUserNumberLength();
         isRightUserNumberDigit();
