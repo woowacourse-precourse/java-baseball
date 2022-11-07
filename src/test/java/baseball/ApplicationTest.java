@@ -29,34 +29,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    void 적은_숫자_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("34"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    void 숫자_제외_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("aaa"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 스트라이크_볼_판단_테스트() {
-        int[] gameNumber = {4,5,6};
-        int[] userNumber = {4,6,8};
-
-        for(int i = 0; i < 3; i++){
-            baseball.service.GameService.compute(gameNumber,userNumber,i);
-        }
-
-        int [] result = {Game.strikeCount,Game.ballCount};
-        int [] testNum = {1, 1};
-
-        assertThat(result).isEqualTo(testNum);
-    }
+//    @Test
+//    void 스트라이크_볼_판단_테스트() {
+//        int[] gameNumber = {4,5,6};
+//        int[] userNumber = {4,6,8};
+//
+//        for(int i = 0; i < 3; i++){
+//            baseball.service.GameService.compute(gameNumber,userNumber,i);
+//        }
+//
+//        int [] result = {Game.strikeCount,Game.ballCount};
+//        int [] testNum = {1, 1};
+//
+//        assertThat(result).isEqualTo(testNum);
+//    }
 
     @Override
     public void runMain() {
