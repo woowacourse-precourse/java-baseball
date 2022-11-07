@@ -25,7 +25,6 @@ public class Game {
             String userinput = Console.readLine();
             int ball = 0;
 
-
             for (int len = comNum.size(), i=0; i<len; i++){
                 int play = userinput.charAt(i);
 
@@ -35,11 +34,14 @@ public class Game {
                 if (comNum.indexOf(play)==i){
                     strike++;
                 }
+                if (comNum.indexOf(play) == -1){
+
+                }
             }
             if (ball==0 && strike==0){
                 printWindow.resultNothingPrint();
                 continue;
-            }if (strike ==3 ){
+            }if (strike==3){
                 printWindow.threeStrikePrint();
                 strike =0;
             }else {
