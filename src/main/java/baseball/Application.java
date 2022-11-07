@@ -13,22 +13,15 @@ import java.util.stream.Stream;
 
 public class Application {
 
-
-    static int inputUserNumber(){
-        String userNumber_str;
-        int userNumber;
-        System.out.print("숫자를 입력해주세요 : ");
-        userNumber_str = Console.readLine();
-        if (userNumber_str.isBlank()) throw new IllegalArgumentException();
-        try{
-            userNumber = Integer.parseInt(userNumber_str);
-            System.out.println(userNumber);
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException();
-        }
-        return userNumber;
-
-
+    static List<Integer> randNumber() {
+                List<Integer> computer = new ArrayList<>();
+                while (computer.size() < 3) {
+                    int randomNumber = Randoms.pickNumberInRange(1, 9);
+                    if (!computer.contains(randomNumber)) {
+                        computer.add(randomNumber);
+                    }
+                }
+        return computer;
     }
 
 
