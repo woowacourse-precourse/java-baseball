@@ -20,4 +20,7 @@ public class User {
 		return userNumber.size();
 	}
 
+	public void userReset() {
+		userNumber.clear();
+	}
 }
