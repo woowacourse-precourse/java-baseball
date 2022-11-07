@@ -9,7 +9,6 @@ public class GameController {
     private final Player player = new Player();
     private final Judgement judgement = new Judgement();
     private final InputValidation inputValidation = new InputValidation();
-    private final InputExceptionController inputExceptionController = new InputExceptionController();
 
     public void playGame() {
         boolean play = true;
