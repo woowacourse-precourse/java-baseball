@@ -1,14 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.*;
 
 public class Application {
     static List<Integer> targetNum = new ArrayList<>();
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static int strike =0;
     static int ball =0;
 
@@ -36,10 +33,10 @@ public class Application {
         }
     }
 
-    private static void getUserInput() throws Exception {
+    private static void getUserInput() {
         while(true){
             System.out.println("숫자를 입력해주세요 : ");
-            String input = br.readLine();
+            String input = Console.readLine();
             List<String> inputNum = List.of(input.split(""));
             inputValidate(inputNum);
             getResult(inputNum);
@@ -86,7 +83,7 @@ public class Application {
     private static boolean endGame() throws Exception {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int option = Integer.parseInt(br.readLine());
+        int option = Integer.parseInt(Console.readLine());
         optionValidate(option);
 
         if(option==1){
@@ -96,7 +93,7 @@ public class Application {
         return true;
     }
 
-    private static void optionValidate(int option) {
+     static void optionValidate(int option) {
         if(option !=1 && option !=2){
             throw new IllegalArgumentException();
         }
