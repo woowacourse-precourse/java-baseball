@@ -100,8 +100,7 @@ public class Application {
         }
     }
 
-    static boolean isPlay() {
-        String isPlaying = Console.readLine();
+    static boolean isPlay(String isPlaying) {
         if (isPlaying.equals("1")) {
             return true;
         } else if (isPlaying.equals("2")) {
@@ -119,7 +118,8 @@ public class Application {
             List<Integer> computer = createRandomNumber();
             playGame(computer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-            isPlay = isPlay();
+            String isPlaying = Console.readLine();
+            isPlay = isPlay(isPlaying);
         }
     }
 }
