@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,5 +17,24 @@ public class InputValidationTest {
 			() -> InputValidation.validateInput(userInput)
 		).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("1에서 9까지의 숫자만 입력가능합니다.");
+	}
+
+	@DisplayName("게임 재시작 옵션 입력 검증 - 예외")
+	@ParameterizedTest
+	@ValueSource(ints = {0, 3, 4, 5})
+	void validateOption_게임_재시작_옵션_입력_예외_검증(final int option) {
+		assertThatThrownBy(
+			() -> InputValidation.validateOption(option)
+		).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("잘못된 옵션을 입력하셨습니다.");
+	}
+
+	@DisplayName("게임 재시작 옵션 입력 검증")
+	@ParameterizedTest
+	@ValueSource(ints = {1, 2})
+	void validateOption_게임_재시작_옵션_입력_검증(final int option) {
+		assertDoesNotThrow(
+			() -> InputValidation.validateOption(option)
+		);
 	}
 }

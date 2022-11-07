@@ -12,4 +12,10 @@ public class InputValidation {
 		return input.chars()
 			.allMatch(Character::isDigit);
 	}
+
+	public static void validateOption(final int option) {
+		if (!GameOption.matchOption(option)) {
+			throw new IllegalArgumentException("잘못된 옵션을 입력하셨습니다.");
+		}
+	}
 }
