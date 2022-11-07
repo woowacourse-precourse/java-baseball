@@ -3,6 +3,7 @@ package custom.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import custom.dto.Response;
 import custom.service.vo.ReTry;
+import custom.service.vo.Score;
 import custom.table.Table;
 
 public class BaseBallService {
@@ -24,6 +25,17 @@ public class BaseBallService {
     }
 
     public Response matchNumber(String input) {
+        Score score = calculateScore(input);
+        int scoreOfStrike = score.getScoreOfStrike();
+        int scoreOfBall = score.getScoreOfBall();
+        String message = generateMessage(scoreOfStrike, scoreOfBall);
+        if (scoreOfStrike == 3) {
+            return Response.retryOf(message);
+        }
+        return Response.keepOf(message);
+    }
+
+    private Score calculateScore(String input) {
         int scoreOfStrike = 0;
         int scoreOfBall = 0;
         for (int i = 0; i < 3; ++i) {
@@ -36,11 +48,7 @@ public class BaseBallService {
                 scoreOfBall += 1;
             }
         }
-        String message = generateMessage(scoreOfStrike, scoreOfBall);
-        if (scoreOfStrike == 3) {
-            return Response.retryOf(message);
-        }
-        return Response.keepOf(message);
+        return new Score(scoreOfStrike, scoreOfBall);
     }
 
     public Response isKeepGo(ReTry reTry) {
