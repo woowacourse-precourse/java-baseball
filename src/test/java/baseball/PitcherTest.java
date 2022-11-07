@@ -1,20 +1,15 @@
 package baseball;
 
-import org.assertj.core.error.ShouldNotHaveDuplicates;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.util.IllegalFormatException;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
+
 class PitcherTest {
     Pitcher p = new Pitcher("713");
+
     @Test
     void 입력한_수가_투수의_리스트에_분리돼서_저장() {
         List<Integer> expected = List.of(7, 1, 3);
-
 
         assertThat(p.getPitcherNumbers()).isEqualTo(expected);
     }
@@ -41,7 +36,7 @@ class PitcherTest {
     void 입력된_숫자의_길이가_다를_경우() {
         String input = "1234";
         assertThatThrownBy(() -> p.setPitcherNumbers(input))
-                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3글자로 입력해주세요.");
 
 

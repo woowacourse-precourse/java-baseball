@@ -45,11 +45,12 @@ public class BaseBallGame {
         System.out.println(hint);
         isStrikeOut(hint);
     }
+
     /**
      * hint가 3스트라이크인지 확인하는 함수
      */
     public void isStrikeOut(String hint) {
-        if(hint.equals("3"+ProgramMessages.STRIKE)) {
+        if (hint.equals("3" + ProgramMessages.STRIKE)) {
             strikeOut = true;
             System.out.println(ProgramMessages.GAME_SET);
             quitOrRestart();
@@ -63,7 +64,7 @@ public class BaseBallGame {
         System.out.println(ProgramMessages.QUIT_OR_RESTART);
         String input = Console.readLine();
         validateInput(input);
-        if(input.equals(ProgramMessages.RESTART)) {
+        if (input.equals(ProgramMessages.RESTART)) {
             quit = false;
         } else if (input.equals(ProgramMessages.QUIT)) {
             quit = true;
@@ -81,8 +82,8 @@ public class BaseBallGame {
             throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
         } else if (!Character.isDigit(input.charAt(0))) {
             throw new IllegalArgumentException(ErrorMessages.NOT_A_NUMBER);
-        } else if (input.equals(ProgramMessages.RESTART)
-                || input.equals(ProgramMessages.QUIT)) {
+        } else if (!input.equals(ProgramMessages.RESTART)
+                && !input.equals(ProgramMessages.QUIT)) {
             throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
         }
     }
