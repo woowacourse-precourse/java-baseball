@@ -1,4 +1,4 @@
-package baseball.domain.game;
+package baseball.domain;
 
 import java.util.List;
 
@@ -10,8 +10,10 @@ public class Set {
     int strike = 0;
     Count count;
 
-    public Set() {
-        count = new Count();
+    public Set(List<String> computerAnswer, List<String> userAnswer) {
+        this.computerAnswer = computerAnswer;
+        this.userAnswer = userAnswer;
+        count = new Count(computerAnswer, userAnswer);
     }
 
     public void startSet(List<String> computerAnswer, List<String> userAnswer) {
@@ -30,11 +32,11 @@ public class Set {
     }
 
     public void countBall() {
-        this.ball = count.countBall(computerAnswer, userAnswer);
+        this.ball = count.ballResult;
     }
 
     public void countStrike() {
-        this.strike = count.countStrike(computerAnswer, userAnswer);
+        this.strike = count.strikeResult;
     }
 
 }
