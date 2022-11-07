@@ -32,7 +32,7 @@ public class Baseball {
         }
         userNumber = new ArrayList<>();
         for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
-            userNumber.add(number.charAt(digit) - '0');
+            userNumber.add(getDigitNumber(number, digit));
         }
         return userNumber;
     }
@@ -43,7 +43,7 @@ public class Baseball {
         }
         Set<Integer> digitset = new HashSet<>();
         for (int digit = 0; digit < THREE_DIGIT_NUMBER; digit++) {
-            int digitNumber = number.charAt(digit) - '0';
+            int digitNumber = getDigitNumber(number, digit);
             if (digitNumber < 0 || digitNumber > 9) {
                 return false;
             }
@@ -53,6 +53,10 @@ public class Baseball {
             digitset.add(digitNumber);
         }
         return true;
+    }
+
+    private int getDigitNumber(String number, int digit) {
+        return number.charAt(digit) - '0';
     }
 
     public List<Integer> playGame() {
@@ -82,7 +86,7 @@ public class Baseball {
         if (digit.length() != 1) {
             return false;
         }
-        int number = digit.charAt(0) - '0';
+        int number = getDigitNumber(digit, 0);
         if (number != 1 && number != 2) {
             return false;
         }
