@@ -34,11 +34,13 @@ public class functionTest {
         List<Integer> duplciateinput = List.of(1, 2, 2);
         List<Integer> outOfRangeInput = List.of(1, 2, 10);
         List<Integer> negativeInput = List.of(1, 2, -5);
+        List<Integer> fourInput = List.of(1, 2, 3, 4);
 
         //then
         assertThat(Application.validateInput(correctInput)).isEqualTo(true);
         assertThatThrownBy(() -> Application.validateInput(duplciateinput)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Application.validateInput(outOfRangeInput)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.validateInput(negativeInput)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Application.validateInput(negativeInput)).isInstanceOf(IllegalArgumentException.class);
 
 
