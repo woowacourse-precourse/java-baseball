@@ -5,7 +5,6 @@ import java.util.Objects;
 import static baseball.controller.Setup.*;
 
 public class UserError {
-
 	public static void handleGuessingError(String userInput) {
 		if (!followDuplicationRule(userInput) || !followDigitRule(userInput, Integer.parseInt(NUMBER_LENGTH.getValue())) || !followNumberOnlyRule(userInput)) {
 			throw new IllegalArgumentException(ERROR_MESSAGE.getValue());
@@ -39,5 +38,4 @@ public class UserError {
 				.distinct()
 				.count();
 	}
-
 }

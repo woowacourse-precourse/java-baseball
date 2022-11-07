@@ -1,6 +1,5 @@
 package baseball.controller.computer;
 
-import baseball.controller.computer.NumberGeneration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -9,6 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NumberGenerationTest {
+
 	@DisplayName("숫자 생성의 범위를 확인한다")
 	@Test
 	void testNumberCreationRange() {
@@ -37,7 +37,7 @@ public class NumberGenerationTest {
 
 		int[] counts = new int[10];
 
-		for (int counter = 0; counter < 70; counter++) {
+		for (int counter = 0; counter < 100; counter++) {
 			int randomNumber = NumberGeneration.generateOneRandomNumber();
 			counts[randomNumber] = 1;
 		}
@@ -50,5 +50,4 @@ public class NumberGenerationTest {
 
 		assertEquals(9, sum);
 	}
-
 }

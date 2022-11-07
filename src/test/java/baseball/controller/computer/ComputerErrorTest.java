@@ -9,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 public class ComputerErrorTest {
+
 	@DisplayName("난수 생성 후 저장시 중복을 확인한다")
 	@Test
 	void canVerifyDuplication() {
@@ -29,5 +30,4 @@ public class ComputerErrorTest {
 		assertThat(ComputerError.followDuplicationRule(list1, 3)).isFalse();
 		assertThat(ComputerError.followDuplicationRule(list2, 5)).isTrue();
 	}
-
 }

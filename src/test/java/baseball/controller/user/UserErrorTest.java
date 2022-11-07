@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class UserErrorTest {
+
 	@DisplayName("유저가 입력한 숫자의 중복 여부를 확인한다")
 	@Test
 	void testUserInputDuplication() {
@@ -45,5 +46,4 @@ public class UserErrorTest {
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessage("잘못입력하였습니다. 프로그램을 종료합니다.");
 	}
-
 }

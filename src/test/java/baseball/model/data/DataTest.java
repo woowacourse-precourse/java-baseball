@@ -11,6 +11,4 @@ public class DataTest {
 	void testProcessedComputerNumberContainsThreeValues() {
 		assertThat(data.getComNumMap().size()).isEqualTo(3);
 	}
-
-
 }

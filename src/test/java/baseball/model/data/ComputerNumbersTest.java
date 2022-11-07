@@ -23,5 +23,4 @@ public class ComputerNumbersTest {
 		};
 		assertThat(ComputerNumbers.storeNumbers(createdList)).isEqualTo(desirableMap);
 	}
-
 }
