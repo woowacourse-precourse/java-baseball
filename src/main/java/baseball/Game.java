@@ -102,7 +102,11 @@ public class Game {
     }
 
     private int countBalls(List<Integer> user, List<Integer> computer) {
-        // TODO 볼 갯수를 반환
-        return 0;
+        int count = 0;
+        for(int number : user) {
+            if (computer.contains(number)) count++;
+        }
+
+        return count;
     }
 }
