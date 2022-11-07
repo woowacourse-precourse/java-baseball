@@ -52,9 +52,13 @@ public class InputView {
     }
 
     private void validateInputDuplicate(List<Integer> inputs) {
-        if (inputs.stream().anyMatch(input -> Collections.frequency(inputs, input) > DUP_LIMIT_COUNT)) {
+        if (isDuplicate(inputs)) {
             throw new InputDuplicateException();
         }
+    }
+
+    private boolean isDuplicate(List<Integer> inputs) {
+        return inputs.stream().anyMatch(input -> Collections.frequency(inputs, input) > DUP_LIMIT_COUNT);
     }
 
     private void validateInputMatchDigit(List<Integer> inputs) {
@@ -64,12 +68,16 @@ public class InputView {
     }
 
     private void validateInputOutOfRange(List<Integer> inputs) {
-        if (inputs.stream().anyMatch(this::isOutOfRange)) {
+        if (isInputsOutOfRange(inputs)) {
             throw new InputOutOfRangeException();
         }
     }
 
-    private boolean isOutOfRange(int input) {
+    private boolean isInputsOutOfRange(List<Integer> inputs) {
+        return inputs.stream().anyMatch(this::isInputOutOfRange);
+    }
+
+    private boolean isInputOutOfRange(int input) {
         return input > LAST || input < FIRST;
     }
 }
