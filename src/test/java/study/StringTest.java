@@ -34,8 +34,8 @@ public class StringTest {
     @Test
     void charAt_메서드로_특정_위치의_문자_찾기() {
         String input = "abc";
-        char charAtElement = input.charAt(0);
-        assertThat(charAtElement).isEqualTo('a');
+        char charAtElement = input.charAt(1);
+        assertThat(charAtElement).isEqualTo('b');
     }
 
     @Test
