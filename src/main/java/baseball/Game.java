@@ -35,6 +35,9 @@ public class Game {
             ball = result.get(1);
             printResult(strike, ball);
         }
+
+        String response = getPlayerResponse();
+        checkResponse(response);
     }
 
     private String getPlayerInput() {
@@ -73,6 +76,17 @@ public class Game {
 
         if (strike == LENGTH) {
             System.out.println(RIGHT_ANSWER_MESSAGE);
+        }
+    }
+
+    private String getPlayerResponse() {
+        System.out.println(AFTER_GAME_MESSAGE);
+        return player.getPlayerResponseAfterGame();
+    }
+
+    private void checkResponse(String response) {
+        if (response.equals(RESTART_RESPONSE)) {
+            start();
         }
     }
 }
