@@ -4,10 +4,14 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> answer = Game.MakeAnswer();
-
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> user_num_list = User.InputNum();
+        while(true) {
+            List<Integer> answer = Game.MakeAnswer();
+            List<Integer> user_num_list = User.InputNum();
+
+            int ball_num = Game.HowManyBall(answer, user_num_list);
+            int strike_num = Game.HowManyStrike(answer, user_num_list);
+        }
     }
 }
 
@@ -35,6 +39,18 @@ class Game {
         }
 
         return ball_num;
+    }
+
+    static int HowManyStrike(List<Integer> answer, List<Integer> user_num_list) {
+        int strike_num = 0;
+
+        for(int i = 0; i < 3; i++) {
+            if(user_num_list.get(i) == answer.get(i)) {
+                strike_num++;
+            }
+        }
+
+        return strike_num;
     }
 }
 
