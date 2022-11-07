@@ -12,10 +12,6 @@ import static camp.nextstep.edu.missionutils.Console.*;
 
 public class Application {
 
-    private static final int BASEBALLGAME_ON = 1;
-
-    private static final int BASEBALLGAME_OFF = 2;
-
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
