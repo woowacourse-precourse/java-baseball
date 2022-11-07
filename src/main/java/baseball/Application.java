@@ -149,7 +149,8 @@ public class Application {
         boolean checkedAnswer = false;
         List<Integer> computerNumbersList = randomNumberCreate();
         stringBuilderUserNumber = inputAvailableUserNumberService();
-        List<Integer> userList = stringToListCreate(stringBuilderUserNumber);
+        List<Integer> userNumbersList = stringToListCreate(stringBuilderUserNumber);
+        int strikeNumber = checkStrikeNumbers(computerNumbersList,userNumbersList);
     }
 
     public static void main(String[] args) {
