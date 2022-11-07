@@ -14,13 +14,14 @@ public class Game {
     private final Rule rule;
 
     public Game() {
+        printStartGame();
         computer = new Computer();
         gamer = new Gamer();
         rule = new Rule();
     }
 
     public void play() {
-        printStartGame();
+        Hint.init();
         while (Hint.getStrikeCount() != RANDOM_NUMBERS_LENGTH) {
             inputNumbers();
             rule.getHint(gamer.inputNumbers(), computer.getRandomNumbers());
