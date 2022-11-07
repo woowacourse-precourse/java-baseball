@@ -49,7 +49,7 @@ public class Application {
         return createdNumber;
     }
 
-    private static void checkInputCondition(int inputNumber) {
+    static void checkInputCondition(int inputNumber) {
         List<Integer> checkList = new ArrayList<>(3);
         String strNumber = String.valueOf(inputNumber);
 
@@ -65,7 +65,7 @@ public class Application {
         }
     }
 
-    private static List<Integer> convertIntegerIntoList(int number) {
+    static List<Integer> convertIntegerIntoList(int number) {
         String strNumber = String.valueOf(number);
         List<Integer> listNumber = new ArrayList<>();
 
@@ -76,7 +76,7 @@ public class Application {
         return listNumber;
     }
 
-    private static int[] countBallsAndStrikes(List<Integer> answer, List<Integer> inputNumber) {
+    static int[] countBallsAndStrikes(List<Integer> answer, List<Integer> inputNumber) {
         int[] returnArr = new int[2];
         int ballCount = 0;
         int strikeCount = 0;
@@ -95,7 +95,7 @@ public class Application {
         return returnArr;
     }
 
-    private static String printResult(int[] countResult) {
+    static String printResult(int[] countResult) {
         int ballCount = countResult[0];
         int strikeCount = countResult[1];
 
