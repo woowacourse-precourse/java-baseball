@@ -14,22 +14,13 @@ public class BaseBallGame implements AutoCloseable {
 
     static {
         rules = new HashMap<>();
-        rules.put(List.of(State.ON_GAME.ordinal(),
-                Trigger.INCORRECT_ANSWER.ordinal()),
-                State.ON_GAME);
-        rules.put(List.of(State.ON_GAME.ordinal(),
-                 Trigger.INVALID_USER_INPUT.ordinal()),
-                State.EXIT_GAME);
-        rules.put(List.of(State.ON_GAME.ordinal(),
-                        Trigger.CORRECT_ANSWER.ordinal()),
-                State.FINISH_GAME);
-        rules.put(List.of(State.FINISH_GAME.ordinal(),
-                Trigger.EXIT.ordinal()),
-                State.EXIT_GAME);
-        rules.put(List.of(State.FINISH_GAME.ordinal(),
-                        Trigger.RE_GAME.ordinal()),
-                State.START_GAME);
+        rules.put(List.of(State.ON_GAME.ordinal(), Trigger.INCORRECT_ANSWER.ordinal()), State.ON_GAME);
+        rules.put(List.of(State.ON_GAME.ordinal(), Trigger.INVALID_USER_INPUT.ordinal()), State.EXIT_GAME);
+        rules.put(List.of(State.ON_GAME.ordinal(), Trigger.CORRECT_ANSWER.ordinal()), State.FINISH_GAME);
+        rules.put(List.of(State.FINISH_GAME.ordinal(), Trigger.EXIT.ordinal()), State.EXIT_GAME);
+        rules.put(List.of(State.FINISH_GAME.ordinal(), Trigger.RE_GAME.ordinal()), State.START_GAME);
     }
+
     protected List<Integer> answerNumber;
 
     public BaseBallGame(int hashcode) {
@@ -42,11 +33,11 @@ public class BaseBallGame implements AutoCloseable {
 
     }
 
-    public void run()  {
-        while(true){
+    public void run() {
+        while (true) {
             List<Integer> input;
-            System.out.printf("current State : %d" , currentState.ordinal());
-            switch(currentState){
+            System.out.printf("current State : %d", currentState.ordinal());
+            switch (currentState) {
                 case START_GAME:
                     System.out.println("숫자 야구 게임을 시작합니다.");
                     LocalDateTime now = LocalDateTime.now();
@@ -56,14 +47,14 @@ public class BaseBallGame implements AutoCloseable {
                 case FINISH_GAME:
                 case ON_GAME:
                     input = getUserInput();
-                    getResultOfAnswer(input);
+                    getResultOfInput(input);
                     break;
                 case EXIT_GAME:
-                default :
+                default:
                     return;
 
             }
-            currentState = rules.get(List.of(currentState.ordinal(),currentTrigger.ordinal()));
+            currentState = rules.get(List.of(currentState.ordinal(), currentTrigger.ordinal()));
 
         }
     }
@@ -88,7 +79,7 @@ public class BaseBallGame implements AutoCloseable {
         Scanner cin = new Scanner(System.in);
         String inputString;
 
-        switch (currentState){
+        switch (currentState) {
             case ON_GAME:
                 System.out.printf("숫자를 입력해주세요 :");
                 inputString = cin.nextLine();
@@ -102,15 +93,15 @@ public class BaseBallGame implements AutoCloseable {
         }
     }
 
-    private List<Integer> inputStringToList(String inputString){
-        if( !validateUserInput(inputString)){
+    private List<Integer> inputStringToList(String inputString) {
+        if (!validateUserInput(inputString)) {
             currentTrigger = Trigger.INVALID_USER_INPUT;
             throw new IllegalArgumentException();
         }
         int input = Integer.parseInt(inputString);
         List<Integer> result = new ArrayList<>();
-        while(input >= 1){
-            result.add(input %10);
+        while (input >= 1) {
+            result.add(input % 10);
             input = input / 10;
         }
         Collections.reverse(result);
@@ -119,37 +110,81 @@ public class BaseBallGame implements AutoCloseable {
 
 
     private boolean validateUserInput(String inputString) {
-        switch (currentState){
+        switch (currentState) {
             case ON_GAME:
-                return Pattern.matches("[1-9]{3}",inputString);
+                return Pattern.matches("[1-9]{3}", inputString);
             case FINISH_GAME:
-                return Pattern.matches("[1-2]",inputString);
-            default :
-                return  false;
+                return Pattern.matches("[1-2]", inputString);
+            default:
+                return false;
         }
     }
 
-    private List<Integer> getResultOfAnswer(List<Integer> challengeNumber) {
-        return Collections.emptyList();
+    private void getResultOfInput(List<Integer> input) {
+        switch (currentState) {
+            case ON_GAME:
+                getResultAndPrint(input);
+                return;
+            case FINISH_GAME:
+                selectRestartOrNot(input);
+                return;
+            default:
+                return;
+        }
     }
 
-    private void printResult(List<Integer> result) {
+    private void getResultAndPrint(List<Integer> input) {
+
+        int strike = 0, ball = 0;
+
+        for (int i : answerNumber) {
+            if (!input.contains(i)) continue;
+            if (input.indexOf(i) == answerNumber.indexOf(i)) strike++;
+            else ball++;
+        }
+        printResult(ball, strike);
+
+        if (strike == 3) currentTrigger = Trigger.CORRECT_ANSWER;
+        else currentTrigger = Trigger.INCORRECT_ANSWER;
+
     }
+
+    private void printResult(int ball, int strike) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (ball != 0 && strike == 0) {
+            System.out.printf("%d볼\n", ball);
+        } else {
+            System.out.printf("%d볼 ", ball);
+        }
+        if (strike != 0) {
+            System.out.printf("%d스트라이크\n", strike);
+        }
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
+    private void selectRestartOrNot(List<Integer> input) {
+        if (input.get(0) == 1) {
+            currentTrigger = Trigger.RE_GAME;
+        } else {
+            currentTrigger = Trigger.EXIT;
+        }
+    }
+
 
     enum State {
-        START_GAME
-        ,ON_GAME
-        ,FINISH_GAME
-        ,EXIT_GAME;
+        START_GAME, ON_GAME, FINISH_GAME, EXIT_GAME;
 
     }
 
     enum Trigger {
-        INVALID_USER_INPUT,
-        INCORRECT_ANSWER,
-        CORRECT_ANSWER,
-        RE_GAME,
-        EXIT;
+        INVALID_USER_INPUT, INCORRECT_ANSWER, CORRECT_ANSWER, RE_GAME, EXIT;
     }
 
 
