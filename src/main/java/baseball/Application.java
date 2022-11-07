@@ -2,14 +2,17 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
         /*do while문 사용*/
         do{
-
+            System.out.println(BaseBallJudge(new ArrayList<Integer>(Arrays.asList(1,2,3)) , "509"));
             int judgeNum = JudgeInputNum();
             if(judgeNum == 2)
                 break;
@@ -44,7 +47,7 @@ public class Application {
     }
 
     /*입력 예외 처리, 예외 발생시 IllegalArgumentException 발생 시키기.*/
-    private static int handleException(String str){
+    private static String handleException(String str){
         System.out.println("실행");
         int num = 0;
         if(str.length() != 3)
@@ -55,19 +58,54 @@ public class Application {
         }catch(Exception e){
             throw new IllegalArgumentException();
         }
-        return num;
+        return str;
     }
 
     /* 사용자 입력 메소드 구현*/
-    private static int inputNum(){
+    private static String inputNum(){
         String str = readLine();
-        int num = handleException(str);
-        return num;
+        String result = handleException(str);
+        return result;
     }
 
     /* 스트라이크,볼,낫싱 판단 메소드 구현*/
-//    private static String BaseBallJudge(List<Integer> ,int num){
-//        String
-//    }
+    private static String BaseBallJudge(List<Integer> RandomNum, String num){
 
+        int countBall = 0;
+        int countStrike = 0;
+
+        String result = null;
+
+        List<Integer> numList = new ArrayList<>();
+        numList.add(num.charAt(0) - '0');
+        numList.add(num.charAt(1) - '0');
+        numList.add(num.charAt(2) - '0');
+
+        for(int i = 0; i < 3; i++){
+            int currRandomNum = RandomNum.get(i);
+            if(numList.contains(currRandomNum) && numList.get(i)==currRandomNum){
+                countStrike ++;
+            } else if (numList.contains(currRandomNum)) {
+                countBall ++;
+            }
+        }
+
+        String strikeMent = "";
+        String ballMent = "";
+        if(countStrike > 0)
+            strikeMent = countStrike + "스트라이크";
+        if(countBall > 0)
+            ballMent = countBall + "볼";
+
+        String resultMent = ballMent + " " + strikeMent;
+
+        if(countBall + countStrike > 0 )
+            return resultMent;
+        return "낫싱";
+    }
+//    private static int isStrike(int currindex, int currRandomNum, List<Integer> numList){
+//        if(numList.get(currindex) == currRandomNum)
+//            return 1;
+//        return -1;
+//    }
 }
