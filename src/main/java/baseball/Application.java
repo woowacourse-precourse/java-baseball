@@ -12,8 +12,8 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (run && finish) {
             finish = false;
-            RunGame game = new RunGame();
-            DataBase data = new DataBase();
+            GameManager game = new GameManager();
+            Database data = new Database();
             data.setAnswer(game.setAnswer());
             Output output = new Output();
             while (!finish) {
@@ -32,7 +32,7 @@ public class Application {
     }
 }
 
-class RunGame {
+class GameManager {
 
     public List<Integer> setAnswer() {
         List<Integer> answer = new ArrayList<>();
@@ -138,7 +138,7 @@ class CompareNumbers {
     }
 }
 
-class DataBase {
+class Database {
 
     static private List<Integer> answer = new ArrayList<>();
     private List<Integer> userInput = new ArrayList<>();
