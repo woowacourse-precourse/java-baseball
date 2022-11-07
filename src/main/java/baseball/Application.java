@@ -68,6 +68,7 @@ public class Application {
         }
         return Strike_or_Ball;
     }
+
     public static void Final_Judge(HashMap<String, Integer> Strike_or_Ball) {
         Integer Strike_Count = Strike_or_Ball.get("스트라이크");
         Integer Ball_Count = Strike_or_Ball.get("볼");
@@ -92,8 +93,21 @@ public class Application {
             Input();
         }
     }
-    public static void main(String[] args) {
 
-        // TODO: 프로그램 구현
+    public static void End() throws IllegalArgumentException {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int New_Game_or_Finish = Integer.parseInt(Console.readLine());
+        if (New_Game_or_Finish == 1) {
+            Start();
+        } else if (New_Game_or_Finish == 2) {
+            return;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void main(String[] args) {
+        Start();
     }
 }
