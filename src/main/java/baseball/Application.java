@@ -93,18 +93,19 @@ class GameInit{
         computerNumber = new ComputerNumber().computerNumber;
         playerNumber = new PlayerNumber().playerNumber;
         GamePlay gamePlay = new GamePlay(computerNumber, playerNumber);
+        while (!gamePlay.isRight) {
+            playerNumber = new PlayerNumber().playerNumber;
+            gamePlay = new GamePlay(computerNumber, playerNumber);
+        }
+        new GameEnd();
     }
 }
 
 class GamePlay {
+    boolean isRight;
     GamePlay(List<Integer> computerNumber, List<Integer> playerNumber) {
-        boolean isRight = isRight(computerNumber, playerNumber);
-        while (!isRight) {
-            getHint(computerNumber, playerNumber);
-            playerNumber = new PlayerNumber().playerNumber;
-            isRight = isRight(computerNumber, playerNumber);
-        }
-        new GameEnd();
+        isRight = isRight(computerNumber, playerNumber);
+        getHint(computerNumber, playerNumber);
     }
 
     private boolean isRight(List<Integer> computerNumber, List<Integer> playerNumber) {
