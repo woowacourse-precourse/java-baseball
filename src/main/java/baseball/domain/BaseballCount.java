@@ -14,7 +14,41 @@ public class BaseballCount {
     public BaseballCount() {
         this.computer = new Computer();
         this.user = new User();
-        this.userInputList = user.getUserNumberList();
+    }
+
+
+    // 힌트 메세지 출력 기능
+    public String displayHint() {
+        return combineMessage(getBall(), getStrike());
+    }
+
+
+    // 볼과 스트라이크 갯수에 따른 메세지 결합 기능
+    private String combineMessage(int ball, int strike) {
+        BaseballStatusName status = judgeNumberStatus(ball, strike);
+        switch (status) {
+            case STRIKE_AND_BALL:
+                return String.format(STRIKE_AND_BALL_MESSAGE, ball, strike);
+            case BALL:
+                return String.format(BALL_MESSAGE, ball);
+            case STRIKE:
+                return String.format(STRIKE_MESSAGE, strike);
+        }
+        return NOTHING_MESSAGE;
+    }
+
+    // 숫자가 어떤 형태에 해당하는지 형태를 판단하는 기능
+    private BaseballStatusName judgeNumberStatus(int ball, int strike) {
+        if (ball > 0 && strike > 0) {
+            return BaseballStatusName.STRIKE_AND_BALL;
+        }
+        if (ball > 0 && strike == 0) {
+            return BaseballStatusName.BALL;
+        }
+        if (ball == 0 && strike > 0) {
+            return BaseballStatusName.STRIKE;
+        }
+        return BaseballStatusName.NOTHING;
     }
 
 
