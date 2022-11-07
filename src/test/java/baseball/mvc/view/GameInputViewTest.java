@@ -4,31 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.helper.util.GameInputViewTestUtils;
 import baseball.util.GameStatus;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class GameInputViewTest {
-
-    private static final ByteArrayOutputStream testOut = new ByteArrayOutputStream();
-    private static PrintStream standardOut;
-
-    @BeforeEach
-    void beforeEach() {
-        testOut.reset();
-        standardOut = System.out;
-        System.setOut(new PrintStream(testOut));
-    }
-
-    @AfterEach
-    void afterEach() {
-        System.setOut(standardOut);
-        System.out.println(testOut.toString().trim());
-    }
+class GameInputViewTest extends OutputSettings {
 
     @Nested
     @DisplayName("printGameInputLog 메소드는")

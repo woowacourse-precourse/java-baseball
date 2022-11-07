@@ -4,10 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.domain.game.GameResult;
 import baseball.helper.util.GameResultViewTestUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -15,23 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class GameResultViewTest {
-
-    private final ByteArrayOutputStream testOut = new ByteArrayOutputStream();
-    private PrintStream standardOut;
-
-    @BeforeEach
-    void beforeEach() {
-        testOut.reset();
-        standardOut = System.out;
-        System.setOut(new PrintStream(testOut));
-    }
-
-    @AfterEach
-    void afterEach() {
-        System.setOut(standardOut);
-        System.out.println(testOut.toString().trim());
-    }
+class GameResultViewTest extends OutputSettings {
 
     @Nested
     @DisplayName("printGameResultLog 메소드는")

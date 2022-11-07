@@ -3,31 +3,11 @@ package baseball.mvc.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import baseball.helper.util.GameGuideViewTestUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class GameGuideViewTest {
-
-    private final ByteArrayOutputStream testOut = new ByteArrayOutputStream();
-    private PrintStream standardOut;
-
-    @BeforeEach
-    void beforeEach() {
-        testOut.reset();
-        standardOut = System.out;
-        System.setOut(new PrintStream(testOut));
-    }
-
-    @AfterEach
-    void afterEach() {
-        System.setOut(standardOut);
-        System.out.println(testOut.toString().trim());
-    }
+class GameGuideViewTest extends OutputSettings {
 
     @Nested
     @DisplayName("printGuideLog 메소드는")
