@@ -11,8 +11,8 @@ public class GameController {
     public GameController() {
     }
 
-    private void setGame() {
-        gameService.initGame(DIGIT, START_RANGE, END_RANGE);
+    public void setGame() {
+        gameService.setGame(DIGIT, START_RANGE, END_RANGE);
     }
 
     private void startGame() throws IllegalArgumentException {
@@ -27,7 +27,6 @@ public class GameController {
     }
 
     public void run() throws IllegalArgumentException {
-        setGame();
         startGame();
         endGame();
     }
