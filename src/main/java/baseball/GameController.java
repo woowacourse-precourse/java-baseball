@@ -8,7 +8,7 @@ public class GameController {
     InputController inputController = new InputController();
     RandomNumber randomNumber = new RandomNumber();
     ShowMessage showMessage = new ShowMessage();
-    Exception exception = new Exception();
+    ExceptionController exceptionController = new ExceptionController();
 
     List<Integer> userNumberList;
     List<Integer> randomNumberList;
@@ -31,7 +31,7 @@ public class GameController {
     public List<Integer> inputConvertToList(String userNumber) {
         ShowMessage.showInputNumber();
         userNumber = inputController.getInput(); // 입력받기
-        exception.inputNumberException(userNumber);
+        exceptionController.inputNumberException(userNumber);
         userNumberList = inputController.userNumberConvertToList(userNumber);
         return userNumberList;
     }
@@ -87,10 +87,10 @@ public class GameController {
 
         showMessage.showGameScore(ballCount, strikeCount);
 
-        return checkGame(strikeCount, answerCount);
+        return checkNewGame(strikeCount, answerCount);
     }
 
-    public int checkGame(int strikeCount, int answerCount) {
+    public int checkNewGame(int strikeCount, int answerCount) {
 
         String userNumber = "";
         int number = 0;
@@ -98,7 +98,7 @@ public class GameController {
         if (strikeCount == answerCount) {
             ShowMessage.showEndGameNewGameCheck();
             userNumber = inputController.getInput();
-            exception.checkNewGameException(userNumber);
+            exceptionController.checkNewGameException(userNumber);
             number = Integer.parseInt(userNumber);
             return number;
         }

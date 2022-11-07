@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.regex.Pattern;
 
-public class Exception {
+public class ExceptionController {
 
     private final static String inputNumberRegex = "[1-9]+";
     private final static String checkNewGameRegex = "[1-2]+";
