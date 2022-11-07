@@ -57,8 +57,16 @@ class BaseballGameTest {
     @ValueSource(strings = {"111", "112", "122", "121", "1", "12", "1234", "가나다", "!#@"})
     @ParameterizedTest
     void 올바르지_않은_입력이_주어지면_예외가_발생한다(String input) {
-        command(input);
         BaseballGame game = new BaseballGame(() -> List.of(1, 2, 3));
+        command(input);
+
+        assertThatThrownBy(game::start).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_종료_후_1또는_2가_아닌_값을_입력한다() {
+        BaseballGame game = new BaseballGame(new InputNumbersGenerationStrategy(1, 2, 3));
+        command("123", "3");
 
         assertThatThrownBy(game::start).isInstanceOf(IllegalArgumentException.class);
     }
