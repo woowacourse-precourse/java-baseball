@@ -8,7 +8,6 @@ public class Computer {
     private final int START_INCLUSIVE = 0;
     private final int FINISH_INCLUSIVE = 9;
 
-    private InputValidation inputValidation = new InputValidation();
 
     /**
      * NUMBER_LENGTH 크기의 랜덤한 숫자를 생성해 반환
