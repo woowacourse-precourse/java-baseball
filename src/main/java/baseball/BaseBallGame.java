@@ -58,6 +58,7 @@ public class BaseBallGame {
     }
 
     public void setUserNumbers(String userInput) {
+        userNumbers.clear();
         for (int index = 0; index < COMPUTER_NUMBERS_SIZE; index++) {
             int number = Character.getNumericValue(userInput.charAt(index));
             userNumbers.add(number);
