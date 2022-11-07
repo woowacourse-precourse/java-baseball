@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.gamelauncher.BaseballGameLauncher;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballGameLauncher baseballGameLauncher = new BaseballGameLauncher();
+        baseballGameLauncher.run();
     }
 }
