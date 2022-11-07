@@ -44,4 +44,12 @@ public class BaseBallGameNumber {
     if (gameNumberList.get(0) * gameNumberList.get(1) * gameNumberList.get(2) == 0)
       throw new IllegalArgumentException("0이 포함되어 있습니다.");
   }
+
+  public void printNumbers() {
+    String outputString = "";
+    for (int n : gameNumberList) {
+      outputString += n + " ";
+    }
+    System.out.println(outputString);
+  }
 }
