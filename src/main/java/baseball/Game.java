@@ -13,7 +13,10 @@ public class Game {
 
     public void init(Computer computer){
         System.out.println("숫자 야구 게임을 시작합니다.");
+        run(new Computer());
+    }
 
+    private void run(Computer computer) {
         this.computer = computer;
 
         String inputNumber = input();
@@ -22,8 +25,13 @@ public class Game {
             inputNumber = input();
         }
 
-
+        int statusNumber = askRetry();
+        if (statusNumber == 1) {
+            this.run(new Computer());
+        }
     }
+
+
 
     private String input(){
         System.out.print("숫자를 입력해주세요 : ");
@@ -59,6 +67,14 @@ public class Game {
         }
     }
 
-
+    private int askRetry(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String status = Console.readLine();
+        if (!status.equals("1") && !status.equals("2")) {
+            throw new IllegalArgumentException("1 혹은 2를 입력해야 합니다.");
+        }
+        int statusNumber = Integer.parseInt(status);
+        return statusNumber;
+    }
 
 }
