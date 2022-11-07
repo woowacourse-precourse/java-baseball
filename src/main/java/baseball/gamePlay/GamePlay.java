@@ -11,6 +11,14 @@ import baseball.view.UserInput;
 
 public class GamePlay {
 
+    private static void endProgramWhenPress2(NumberProducingStrategy numberProducingStrategy,
+        boolean isProgramEnd) {
+        while (!isProgramEnd) {
+            startGame(numberProducingStrategy, false);
+            isProgramEnd = EndRule.isProgramEnd(UserInput.SelectRestartOrExit());
+        }
+    }
+
     private static void startGame(NumberProducingStrategy numberProducingStrategy,
         boolean isGameEnd) {
         Numbers computerNumbers = new Numbers(numberProducingStrategy.produceNumbers());
