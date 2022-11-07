@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -17,15 +18,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 
@@ -111,15 +108,12 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-        try {
-            runException("1234");
-        }catch (Exception e){
-            Assertions.assertThat(e).isInstanceOf(IllegalArgumentException.class);
-        }
-//        assertSimpleTest(() ->
-//                assertThatThrownBy(() -> runException("1234"))
-//                        .isInstanceOf(Exception.class)
-//        );
+        assertSimpleTest(() ->
+                assertThatThrownBy((ThrowableAssert.ThrowingCallable) catchThrowable(() -> runException("1234")))
+                        .isInstanceOf(Exception.class)
+        );
+
+
     }
 
     @Override
@@ -127,7 +121,7 @@ class ApplicationTest extends NsTest {
         try {
             Application.main(new String[]{});
         } catch (Exception e) {
-            e.printStackTrace();
         }
+
     }
 }
