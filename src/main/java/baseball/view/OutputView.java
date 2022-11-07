@@ -13,4 +13,9 @@ public class OutputView {
 
         System.out.println(Constant.START_BASEBALL_NUMBER_GAME_MESSAGE);
     }
+
+    public static void printHintMessage(String hintMessage) {
+
+        System.out.println(hintMessage);
+    }
 }
