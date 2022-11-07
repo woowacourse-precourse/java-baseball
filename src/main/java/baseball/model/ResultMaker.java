@@ -14,28 +14,22 @@ public class ResultMaker {
         if (totalSameCount == 0) {
             return "낫싱";
         }
-        currentSameCount = totalSameCount;
-        String strikeCountStr = getStrikeCount(computer, player, logic);
-        String ballCountStr = getBallCount();
-        if (ballCountStr.equals("")) {
-            return strikeCountStr;
-        }
-        else if(strikeCountStr.equals("")) {
-            return  ballCountStr;
-        }
-        return ballCountStr + " " + strikeCountStr;
-    }
-
-    private String getStrikeCount(List<Integer> computer, List<Integer> player, JudgeLogic logic) {
+        int strikeCount = 0;
         for (int i = 0; i < computer.size(); i++) {
             if (logic.isSameNumber(computer, player, i)) {
                 strikeCount++;
-                currentSameCount--;
-            }
-            if (currentSameCount == 0) {
-                break;
             }
         }
+        int ballCount = totalSameCount - strikeCount;
+        if(ballCount == 0) {
+            return  getStrikeCount(strikeCount);
+        }
+        else if(strikeCount==0) {
+            return  getBallCount(ballCount);
+        }
+        return  getBallCount(ballCount) +" " + getStrikeCount(strikeCount);
+    }
+
         String strikeCountStr = "";
         if (strikeCount != 0) {
             strikeCountStr = strikeCount + "스트라이크";
