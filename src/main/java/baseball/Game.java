@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-
     private final Computer computer;
     private final Player player;
     private int gameStatus;

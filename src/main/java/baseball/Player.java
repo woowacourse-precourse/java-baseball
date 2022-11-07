@@ -1,7 +1,6 @@
 package baseball;
 
 public class Player {
-
     private final Integer[] value;
     private static final int MAX_LENGTH = 3;
 
