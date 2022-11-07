@@ -16,9 +16,9 @@
 - [X] getter/setter
 
 ### Player
-- [ ] 변수
+- [X] 변수
   - 입력한 숫자 리스트
-- [ ] getter/setter
+- [X] getter/setter
 
 ## Service
 ### Game  
