@@ -84,4 +84,28 @@ public class Application {
 
         return returnArr;
     }
+
+    private static String printResult(int[] countResult) {
+        int ballCount = countResult[0];
+        int strikeCount = countResult[1];
+
+        StringBuilder outputStringBuilder = new StringBuilder();
+
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.println("낫싱");
+        } else if (ballCount > 0 && strikeCount > 0) {
+            outputStringBuilder.append(ballCount);
+            outputStringBuilder.append("볼 ");
+            outputStringBuilder.append(strikeCount);
+            outputStringBuilder.append("스트라이크");
+        } else if (ballCount == 0 && strikeCount > 0) {
+            outputStringBuilder.append(strikeCount);
+            outputStringBuilder.append("스트라이크");
+        } else if (ballCount > 0 && strikeCount == 0) {
+            outputStringBuilder.append("볼 ");
+            outputStringBuilder.append(strikeCount);
+        }
+
+        return outputStringBuilder.toString();
+    }
 }
