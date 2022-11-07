@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -14,8 +17,19 @@ public class Application {
         }
     }
 
-
     static void startGame(Game game){
+        boolean gameWin = false;
+        while (!gameWin){
+            UserInputException userInputException = new UserInputException();
+            System.out.print("숫자를 입력해주세요 : ");
+            final String input = Console.readLine();
+            if (userInputException.checkAllCondition(input)){
+
+            }
+            else {
+                System.out.println("입력값이 잘못되었습니다.");
+            }
+        }
     }
 
     static boolean getGameRestartWhether(){
@@ -35,4 +49,16 @@ public class Application {
             }
         }
     }
+
+    // 입력 정수값을 각 자리로 나누는 함수
+    static List<Integer> changeStringToIntegerList(String inputString) {
+        List<Integer> integerList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            integerList.add((int) inputString.charAt(i));
+        }
+
+        return integerList;
+    }
+
 }
