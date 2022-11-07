@@ -1,6 +1,7 @@
 package baseball;
 
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
 
 public class Application {
     public static void game_start_message(){
@@ -19,5 +20,12 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         //First commit
+
+        //컴퓨터 숫자 생성 함수
+        String computer_number = "451";
+        String[] computer_number_list = computer_number.split("");
+        String input_number = input_number_message();
+        String[] input_number_list = input_number.split("");
+        List<Integer> strike_ball_nothing_list = Arrays.asList(0, 0, 0);
     }
 }
