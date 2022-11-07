@@ -3,22 +3,22 @@ package baseball;
 import java.util.List;
 
 enum Score {
-    GAME;
+    SCORE;
 
     private int ball;
     private int strike;
 
     Score() {
-        resetScore();
+        reset();
     }
 
-    private void resetScore() {
+    private void reset() {
         ball = 0;
         strike = 0;
     }
 
-    void getScore(List<Integer> computer, List<Integer> user) {
-        resetScore();
+    void of(List<Integer> user, List<Integer> computer) {
+        reset();
         for (int digit : user) {
             if (!computer.contains(digit)) {
                 continue;
