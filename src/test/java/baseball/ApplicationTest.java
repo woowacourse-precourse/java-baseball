@@ -88,7 +88,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 재시작_종료를_구분하는_숫자_입력_예외_테스트() throws Exception{
+    void 재시작_종료를_구분하는_숫자_입력_예외_테스트(){
         String userGameCoin = "3";
 
         Validation validation = new Validation();
