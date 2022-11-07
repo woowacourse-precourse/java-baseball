@@ -23,24 +23,30 @@ public class Game {
     private static void game() {
         List<Integer> computerNums = Baseball.createComputer().getBaseballNumber();
         List<Integer> playerNums;
-        String restartCheck;
-
         resetGameValue();
+
         while (strikeCnt != MAX_STRIKE_CNT) {
             resetGameValue();
             playerNums = Baseball.createPlayer(Console.readLine()).getBaseballNumber();
             compare(computerNums, playerNums);
             printHint();
         }
-        printEndText();
 
-        restartCheck = Console.readLine();
-        if (restartCheck.equals(RESTART)) {
-            game();
-        } else if (restartCheck.equals(QUIT)){
-            return;
-        } else {
-            throw new IllegalArgumentException(RESTART_CHECK_VALUE);
+        printEndText();
+        checkRestart();
+    }
+
+    private static void checkRestart() {
+        String restartCheck = Console.readLine();
+
+        switch (restartCheck) {
+            case RESTART:
+                game();
+                break;
+            case QUIT:
+                return;
+            default:
+                throw new IllegalArgumentException(RESTART_CHECK_VALUE);
         }
     }
 
