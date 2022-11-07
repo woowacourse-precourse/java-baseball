@@ -11,6 +11,10 @@ import baseball.view.UserInput;
 
 public class GamePlay {
 
+    public static void play(NumberProducingStrategy numberProducingStrategy) {
+        endProgramWhenPress2(numberProducingStrategy, false);
+    }
+
     private static void endProgramWhenPress2(NumberProducingStrategy numberProducingStrategy,
         boolean isProgramEnd) {
         while (!isProgramEnd) {
