@@ -59,13 +59,16 @@ public class GameHintList {
 
     public int countOfBall() {
         int count = 0;
+
         for (int digit = 0; digit < 3; digit++) {
             String computerNumbersDigit = computerSelectedNumbers.get(digit);
             String userNumberDigit = userSelectedNumbers.get(digit);
-            if (!computerNumbersDigit.contains(userNumberDigit)) {
-                if (computerSelectedNumbers.contains(userNumberDigit)) count++;
+
+            if (!computerNumbersDigit.equals(userNumberDigit) && computerSelectedNumbers.contains(userNumberDigit)) {
+                count++;
             }
         }
+
         return count;
     }
 
