@@ -25,18 +25,30 @@ public class Application {
 
     public static int getAnswerNumber() {
 
-        List<Integer> computer = new ArrayList<>();
+        List<Integer> answerList = new ArrayList<>();
 
-        while (computer.size() < 3) {
+        while (answerList.size() < 3) {
 
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            if (!computer.contains(randomNumber))
-                computer.add(randomNumber);
+            if (!answerList.contains(randomNumber))
+                answerList.add(randomNumber);
         }
-        System.out.println(computer); // TODO : 테스트용 출력! 지워야 함
 
-        return computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
+        return ListToInteger(answerList);
+    }
+
+    public static int ListToInteger(List<Integer> answerList) {
+
+        int answer = 0, digit = 1;
+
+        Collections.reverse(answerList);
+        for(Integer number : answerList) {
+            answer += number * digit;
+            digit *= 10;
+        }
+
+        return answer;
     }
 
     public static void playGame(int answerNumber) {
@@ -69,7 +81,7 @@ public class Application {
         }
 
         Set numberSet = new HashSet<>();
-        for(int i=0; i<3; i++)
+        for (int i = 0; i < 3; i++)
             numberSet.add(userString.charAt(i));
 
         if (numberSet.size() != 3 || userString.length() > 3)
