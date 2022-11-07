@@ -143,21 +143,25 @@
 
 
 - 기능 설명
-    1. `resultString`을 `""`으로 초기화한다.
-    2. `Ball`이 `0`이 아닌 경우 `resultString`에 `{$Ball}볼 `을 추가한다.
-    3. `Strike`가 `0`이 아닌 경우 `resultString`에 `{$Strike}스트라이크`를 추가한다.
-    4. `resultString`이 `""`인 경우 `"낫싱"`으로 변경한다.
-    5. `String`의 `trim()` 메소드를 활용하여 tailing whitespace를 제거한다.
-    6. `resultString`을 출력한다.
+  1. `resultString`을 `""`으로 초기화한다.
+  2. `Ball`이 `0`이 아닌 경우 `resultString`에 `{$Ball}볼 `을 추가한다.
+  3. `Strike`가 `0`이 아닌 경우 `resultString`에 `{$Strike}스트라이크`를 추가한다.
+  4. `resultString`이 `""`인 경우 `"낫싱"`으로 변경한다.
+  5. `String`의 `trim()` 메소드를 활용하여 tailing whitespace를 제거한다.
+  6. `resultString`을 출력한다.
+
+
+- 테스트 함수
+  1. `printResult_확인()` : 가능한 모든 `BallStrikeCount`의 경우에 대해 출력이 정상적인지 확인한다.
 
 <br> 
 
 ### 4 . 게임을 다시 진행할지 입력받는 함수 `inputKeepPlaying()`
 
 - 요구사항
-    - `"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."`을 출력한다.
-    - 사용자가 `1`을 입력할 경우 새로운 게임을 시작하고, `2`를 입력할 경우 완전히 종료한다..
-    - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
+  - `"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."`을 출력한다.
+  - 사용자가 `1`을 입력할 경우 새로운 게임을 시작하고, `2`를 입력할 경우 완전히 종료한다..
+  - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 
