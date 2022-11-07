@@ -21,4 +21,25 @@ public class SystemController {
 
     public SystemController() {
     }
+
+    public void baseball() {
+        System.out.println(START);
+        SystemComputerModel systemComputerModel = new SystemComputerModel();
+        SystemUserModel systemUserModel = new SystemUserModel();
+
+        systemComputerModel.setRandomNumber();
+
+        while (!exit) {
+            String input = systemView.startInput();
+            systemUserModel.setDigits(input);
+
+            resetScore();
+            calculateScore(systemComputerModel, systemUserModel);
+            printResult();
+
+            if (strike == DIGIT_COUNT) {
+                readyToExit(systemComputerModel);
+            }
+        }
+    }
 }
