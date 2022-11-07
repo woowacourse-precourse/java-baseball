@@ -75,9 +75,7 @@ public class Application {
         }
         while (status==1) {
             // 3. 사용자 입력 받기
-            Scanner sc1 = new Scanner(System.in);
-            System.out.println("숫자를 입력해주세요 : ");
-            userInput = sc1.next();
+            userInput = Console.readLine();
         }
         // 4. 숫자 검사
         if (CheckNumber(computer, userInput)==1){
