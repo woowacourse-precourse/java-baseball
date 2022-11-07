@@ -42,5 +42,9 @@ public class Hint {
         return strConnect.toString();
     }
 
+    public void printResult(){
+        System.out.println(getHint());
+    }
+
 }
 
