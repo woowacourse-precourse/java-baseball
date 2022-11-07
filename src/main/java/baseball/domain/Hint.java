@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.constant.Constant;
-
 import java.util.List;
 
 public class Hint {
