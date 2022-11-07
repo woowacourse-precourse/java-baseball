@@ -18,14 +18,16 @@ public class BaseballController {
 
     public void game() {
         RandomGenerator randomGenerator = new RandomGenerator();
-        Numbers numbers = new Numbers(randomGenerator.pickNumbers());
-        BaseballGame baseballGame = new BaseballGame(numbers);
+        Numbers computerNumbers = new Numbers(randomGenerator.pickNumbers());
+
+        BaseballGame baseballGame = new BaseballGame(computerNumbers);
         play(baseballGame);
         restart(baseballGame);
     }
 
     private void play(BaseballGame baseballGame) {
-        Hints hints = baseballGame.result(new Numbers(input.inputBaseballNumber()));
+        Numbers myNumbers = new Numbers(input.inputBaseballNumber());
+        Hints hints = baseballGame.result(myNumbers);
         Output.result(hints);
         endGame(baseballGame, hints);
     }
