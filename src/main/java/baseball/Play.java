@@ -10,7 +10,7 @@ public class Play {
             BaseballGame baseballGame = new BaseballGame(userNumber, computerNumber);
             baseballGame.isBall();
             baseballGame.isStrike();
-            baseballGame.printCompareResult();
+            baseballGame.printResult();
             endGameCheck = baseballGame.isThreeStrike();
         } while(!endGameCheck);
     }

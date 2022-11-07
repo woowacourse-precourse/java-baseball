@@ -50,7 +50,7 @@ public class BaseballGame {
         }
     }
 
-    public void printCompareResult(){
+    public void printResult(){
         String result = "";
 
         if ((strikeCount == 0) && (ballCount == 0)) {
