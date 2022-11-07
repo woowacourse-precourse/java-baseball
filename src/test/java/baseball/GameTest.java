@@ -25,8 +25,8 @@ public class GameTest {
         Balls playerBalls = makeTestBalls(1, 2, 3);
         Balls computerBalls = makeTestBalls(4, 5, 6);
         game.checkBallCounts(playerBalls, computerBalls);
-        assertEquals(game.strike, 0);
-        assertEquals(game.ball, 0);
+        assertEquals(game.strikeCount, 0);
+        assertEquals(game.ballCount, 0);
         assertEquals(game.printMessage(), "낫싱");
     }
 
@@ -35,8 +35,8 @@ public class GameTest {
         Balls playerBalls = makeTestBalls(2, 1, 3);
         Balls computerBalls = makeTestBalls(2, 3, 7);
         game.checkBallCounts(playerBalls, computerBalls);
-        assertEquals(game.strike, 1);
-        assertEquals(game.ball, 1);
+        assertEquals(game.strikeCount, 1);
+        assertEquals(game.ballCount, 1);
         assertEquals(game.printMessage(), "1볼 1스트라이크");
     }
 
@@ -45,8 +45,8 @@ public class GameTest {
         Balls playerBalls = makeTestBalls(2, 1, 3);
         Balls computerBalls = makeTestBalls(2, 3, 1);
         game.checkBallCounts(playerBalls, computerBalls);
-        assertEquals(game.strike, 1);
-        assertEquals(game.ball, 2);
+        assertEquals(game.strikeCount, 1);
+        assertEquals(game.ballCount, 2);
         assertEquals(game.printMessage(), "2볼 1스트라이크");
     }
 
@@ -55,8 +55,8 @@ public class GameTest {
         Balls playerBalls = makeTestBalls(2, 1, 3);
         Balls computerBalls = makeTestBalls(3, 2, 1);
         game.checkBallCounts(playerBalls, computerBalls);
-        assertEquals(game.strike, 0);
-        assertEquals(game.ball, 3);
+        assertEquals(game.strikeCount, 0);
+        assertEquals(game.ballCount, 3);
         assertEquals(game.printMessage(), "3볼");
     }
 
@@ -65,8 +65,8 @@ public class GameTest {
         Balls playerBalls = makeTestBalls(2, 1, 3);
         Balls computerBalls = makeTestBalls(2, 5, 7);
         game.checkBallCounts(playerBalls, computerBalls);
-        assertEquals(game.strike, 1);
-        assertEquals(game.ball, 0);
+        assertEquals(game.strikeCount, 1);
+        assertEquals(game.ballCount, 0);
         assertEquals(game.printMessage(), "1스트라이크");
     }
 
@@ -75,8 +75,8 @@ public class GameTest {
         Balls playerBalls = makeTestBalls(2, 1, 3);
         Balls computerBalls = makeTestBalls(2, 1, 7);
         game.checkBallCounts(playerBalls, computerBalls);
-        assertEquals(game.strike, 2);
-        assertEquals(game.ball, 0);
+        assertEquals(game.strikeCount, 2);
+        assertEquals(game.ballCount, 0);
         assertEquals(game.printMessage(), "2스트라이크");
     }
 
@@ -85,8 +85,8 @@ public class GameTest {
         Balls playerBalls = makeTestBalls(2, 1, 3);
         Balls computerBalls = makeTestBalls(2, 1, 3);
         game.checkBallCounts(playerBalls, computerBalls);
-        assertEquals(game.strike, 3);
-        assertEquals(game.ball, 0);
+        assertEquals(game.strikeCount, 3);
+        assertEquals(game.ballCount, 0);
         assertEquals(game.printMessage(), "3스트라이크");
     }
 
@@ -95,5 +95,4 @@ public class GameTest {
         Balls comBalls = game.makeComputerBalls();
         assertEquals(comBalls.size(), 3);
     }
-
 }
