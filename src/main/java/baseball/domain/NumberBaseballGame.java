@@ -22,12 +22,16 @@ public class NumberBaseballGame {
 
     public void play() {
         while (isPlaying) {
-            showGameMessage.inputUserNumber();
-            ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
-            showGameMessage.gameResult(result);
-            if (result.getScoreResultType() == ScoreResultType.ALL_STRIKE) {
-                endGame();
-            }
+            inGame();
+        }
+    }
+
+    private void inGame() {
+        showGameMessage.inputUserNumber();
+        ScoreResult result = scoreBoard.getScoreResult(getUserNumberBall());
+        showGameMessage.gameResult(result);
+        if (result.getScoreResultType() == ScoreResultType.ALL_STRIKE) {
+            endGame();
         }
     }
 
