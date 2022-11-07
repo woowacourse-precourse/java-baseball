@@ -26,7 +26,6 @@ class Game {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
         return computer;
     }
 
@@ -103,10 +102,10 @@ class Game {
 
                 return answer(computerNext);
             }
+            return "게임종료";
         } else {
             return answer(computer);
         }
-        return counting;
     }
 
     /*새로시작 메서드*/
