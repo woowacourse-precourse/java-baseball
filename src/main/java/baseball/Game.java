@@ -44,6 +44,18 @@ public class Game {
         List<Integer> inputNumber = new ArrayList<>();
         String input = Console.readLine();
 
+        if (Validation.isNumber(input)) {
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
+
+        if (Validation.isThreePosition(Integer.parseInt(input))) {
+            throw new IllegalArgumentException("세 자리 입력이 아닙니다.");
+        }
+
+        if (Validation.isDifferent(Integer.parseInt(input))) {
+            throw new IllegalArgumentException("서로 다른 임의의 수 3개가 아닙니다.");
+        }
+
         for (int i = 0; i < input.length(); i++) {
             inputNumber.add(Character.getNumericValue(input.charAt(i)));
         }
@@ -110,7 +122,7 @@ public class Game {
             // 입력에 대한 결과 출력
             out();
 
-            if(endGame)
+            if (endGame)
                 break;
         }
     }
