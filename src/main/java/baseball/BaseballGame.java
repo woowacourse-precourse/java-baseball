@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -16,10 +18,10 @@ public class BaseballGame {
         }
     }
 
-    public void getInput() {
+    public String getInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputStr = Console.readLine();
-        int inputNum = Integer.valueOf(inputStr);
+        return inputStr;
     }
 
     public void startGame() {
