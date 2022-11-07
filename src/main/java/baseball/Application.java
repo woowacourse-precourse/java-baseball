@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -72,7 +73,7 @@ public class Application {
         }
     }
     
-    public void compare(String answer, String input){
+    public boolean compare(String answer, String input){
         String reply = "";
         int strike = 0, ball = 0, miss = 0;
         for(int n = 0; n < 3; n++){
@@ -88,15 +89,56 @@ public class Application {
         }
         if(miss == 3){
             System.out.println("낫싱");
+            return false;
         }
         if(strike == 3){
             System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! (1)다시 시작 (2)나가기");
+            return true;
         }
         if(strike == 0){
             System.out.println(ball + "볼");
+            return false;
         }
         else {
             System.out.println(strike + "스트라이크 " + ball + "볼");
+            return false;
+        }
+    }
+    
+    public void baseball(){
+        boolean run = true, newRandom = false;
+        String random = random();
+        while(run){
+            if(newRandom){
+                random = random();
+                newRandom = false;
+            }
+            String input = Console.readLine();
+            boolean check = input(input);
+            if (check == true){
+                break;
+            }
+            else{
+                if(compare(random,input)){
+                    newRandom = endGame();
+                    run = endGame();
+                }
+            }
+        }
+    }
+    
+    public static  boolean endGame(){
+        if(Console.readLine() == "1"){
+            System.out.println("새로운 게임 시작!");
+            return true;
+        }
+        if(Console.readLine() == "2"){
+            System.out.println("게임 끝");
+            return false;
+        }
+        else{
+            return false;
         }
     }
 }
