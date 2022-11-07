@@ -70,14 +70,23 @@ class Baseball {
         }
     }
 
+    public void printBaseballScore() {
+        if (baseballCount.get(0) == 0 && baseballCount.get(1) == 0) {
+            System.out.print("낫싱");
+        } else {
+            printBall();
+            printStrike();
+        }
+    }
+
     public void printStrike() {
         if (baseballCount.get(0) != 0) {
-            System.out.printf("%d스트라이크 ", baseballCount.get(0));
+            System.out.printf("%d스트라이크", baseballCount.get(0));
         }
     }
     public void printBall() {
         if (baseballCount.get(1) != 0) {
-            System.out.printf("%d볼", baseballCount.get(1));
+            System.out.printf("%d볼 ", baseballCount.get(1));
         }
     }
 }
