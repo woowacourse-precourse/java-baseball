@@ -90,7 +90,7 @@
 - [x] 숫자로만 이루어져 있는가
 - [x] 중복된 숫자가 사용되었는가
   ## 사용자 행동 입력 검증
-- [ ] 1 또는 2가 입력되었는가
+- [x] 1 또는 2가 입력되었는가
 
 </details>
 
@@ -98,12 +98,12 @@
 <summary>정답 비교</summary>
 
 - [x] Rule 인터페이스 선언
-- [ ] RuleChecker 구현
+- [x] RuleChecker 구현
 
 ## 게임 규칙
 
 - [x] strike 개수 파악 규칙
 - [x] ball 개수 파악 규칙
-- [ ] nothing 파악 규칙
+- [] nothing 파악 규칙
 
 </details>
