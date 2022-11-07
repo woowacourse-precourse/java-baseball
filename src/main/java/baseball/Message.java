@@ -11,6 +11,7 @@ public enum Message {
 	USER_INPUT_NOT_NUMBER("숫자만 입력 가능합니다. "),
 	USER_INPUT_LENGTH_INVALID("3자리만 입력 가능합니다. "),
 	USER_INPUT_DUPLICATED("중복된 숫자가 존재합니다. "),
+	USER_INPUT_NUMBER_RANGE_INVALID("1~9 사이의 숫자로만 구성되어야 합니다."),
 	INVALID_INPUT_END_GAME("올바르지 않은 입력입니다. 게임을 종료합니다.");
 
 	private final String msg;
