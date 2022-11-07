@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.AnswerNumber;
 import baseball.model.PlayerNumber;
 import baseball.service.HintService;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
@@ -27,6 +28,11 @@ public class BaseballGameController {
             System.out.println(answerNumber.getAnswer());
         } while (!hintService.isThreeStrike());
         OutputView.printPlayerCorrectAnswerMessage();
+    }
+
+    public void receiveInputNumberFromPlayer() {
+
+        playerNumber.setPlayerNumber(InputView.setPlayerNumber());
     }
 
 }
