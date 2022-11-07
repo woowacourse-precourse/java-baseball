@@ -82,6 +82,15 @@ public class GameDealer {
 
         return result;
     }
+
+    public static boolean ONLY_CONTAIN_NUMBER(String User_Try){
+        boolean result = true;
+        if (!Pattern.matches("^[1-9]+", User_Try) || User_Try.length() != 3) {
+            result = false;
+        }
+
+        return result;
+    }
     public static boolean ONE_GAME_LOOP() throws IllegalArgumentException{
         boolean result = true;
         boolean Check_Ans = false;
