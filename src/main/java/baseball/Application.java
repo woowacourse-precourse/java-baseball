@@ -2,12 +2,10 @@ package baseball;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Scanner;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 public class Application {
     static List<Integer> computer = new ArrayList<>();
-//    static /
 
     public static void RandomChoice() {
         if (computer.size()==3) computer.clear();
@@ -55,9 +53,8 @@ public class Application {
         else System.out.println();
         return false;
     }
-    public static int Regame(Scanner scanner) {
-//        String strMsg = Console.readLine();
-        String strMsg = scanner.nextLine();
+    public static int Regame() {
+        String strMsg = Console.readLine();
         if (strMsg.equals("1") || strMsg.equals("2") ) {
             if (strMsg.equals("1"))  RandomChoice();
             return (int)strMsg.charAt(0)-48;
@@ -67,21 +64,18 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         RandomChoice();
-        Scanner scanner = new Scanner(System.in);
         int ExitVal = 1;
         while (ExitVal == 1 ){
             System.out.println("숫자를 입력해주세요 : ");
-//            String strMsg = Console.readLine();
-            String strMsg = scanner.nextLine();
+            String strMsg = Console.readLine();
             CheckInsert(strMsg);
             boolean ReturnVal = distinction(strMsg);
             if (ReturnVal) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                ExitVal = Regame(scanner);
+                ExitVal = Regame();
             }
         }
         System.out.println("게임 종료");
-        scanner.close();
     }
 }
