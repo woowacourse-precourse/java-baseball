@@ -7,11 +7,12 @@ import java.util.regex.Pattern;
 public class Player {
   private ArrayList<Integer> numbers;
   private static final int MAX_SIZE = 3;
-  public Player(){};
 
-  public void decideNumbers(String input){
+  public String inputNumbers(){
     System.out.print("숫자를 입력해주세요 : ");
-    //String input = Console.readLine();
+    return Console.readLine();
+  }
+  public void decideNumbers(String input){
     validateConsistsOfNumber(input);
     validateNumberLength(input);
     addNumber(input);

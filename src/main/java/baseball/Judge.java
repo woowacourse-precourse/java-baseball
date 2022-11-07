@@ -10,10 +10,10 @@ public class Judge {
   public Judge(){
     this.player = new Player();
     this.computer = new Computer();
-    System.out.println("숫자 야구 게임을 시작합니다.");
   }
 
   public Result compareBalls(){
+    this.player.decideNumbers(this.player.inputNumbers());
     ArrayList<Integer> playerNumbers = this.player.getNumbers();
     ArrayList<Integer> computerNumbers = this.computer.getNumbers();
     int strike = 0;
