@@ -29,13 +29,12 @@ public class Game {
     }
 
     public static void playGame() {
-        List<Integer> COMPUTER_NUMBERS = Computer.getRandomNumbers();
+        List<Integer> computer = Computer.getRandomNumbers();
         while (true) {
             System.out.print(INPUT_NUMBER_MESSAGE);
             String userNumber = Console.readLine();
             handleException(userNumber);
-
-            String result = Referee.getJudgement(COMPUTER_NUMBERS, User.getUserNumber(userNumber));
+            String result = Referee.getJudgement(computer, User.getUserNumber(userNumber));
             System.out.println(result);
 
             if (result.equals(3 + STRIKE)) {
