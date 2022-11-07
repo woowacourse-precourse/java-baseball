@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RandomNumberList {
@@ -26,5 +27,9 @@ public class RandomNumberList {
             }
         }
         return randomNumberList;
+    }
+
+    public List<BaseBallNumber> randomNumberList() {
+        return Collections.unmodifiableList(randomNumberList);
     }
 }

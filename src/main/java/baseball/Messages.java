@@ -5,14 +5,15 @@ import baseball.Game;
 public class Messages {
     private static final String END_MESSAGE = "게임 종료";
     private static final String CLEAR_MESSAGE = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_CONTINUE_MESSAGE = makeContinueMessage();
 
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
     private static final int ZERO = 0;
-    private static final int CONTINUE_VALUE = 1;
-    private static final int END_VALUE = 2;
+    static final int CONTINUE_VALUE = 1;
+    static final int END_VALUE = 2;
 
     public static void printGameResult(int balls, int strikes) {
         printBalls(balls);
@@ -29,14 +30,18 @@ public class Messages {
 
     private static void printStrikes(int strikes) {
         if (strikes > ZERO) {
-            System.out.println(strikes + STRIKE);
+            System.out.print(strikes + STRIKE);
         }
     }
 
     private static void printNothing(int balls, int strikes) {
         if (balls == ZERO && strikes == ZERO) {
-            System.out.println(NOTHING);
+            System.out.print(NOTHING);
         }
+    }
+
+    public static void printInputNumberMessage() {
+        System.out.println(INPUT_NUMBER_MESSAGE);
     }
 
     private static String makeContinueMessage() {

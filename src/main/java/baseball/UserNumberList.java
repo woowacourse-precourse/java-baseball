@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserNumberList {
@@ -25,5 +26,9 @@ public class UserNumberList {
             userNumber.add(new BaseBallNumber(userInput.charAt(i)));
         }
         return userNumber;
+    }
+
+    public List<BaseBallNumber> UserNumberList() {
+        return Collections.unmodifiableList(userBaseballList);
     }
 }
