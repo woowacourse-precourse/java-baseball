@@ -104,7 +104,8 @@ public class Application {
         return "3스트라이크".equals(msg);
     }
 
-    private static String getMSG(List<Integer> computer, List<Integer> user) {
+    public static String getMSG(List<Integer> computer, List<Integer> user) {
+        // 단위 테스트를 위해 접근제한자 private -> public 변경
         int count = countSame(computer, user);
         int strike = countStrike(computer, user);
 
