@@ -24,7 +24,7 @@ public class Application {
         int nothingCount = 0;
 
         int escapeNumber = 1;
-        while (escapeNumber != 1){
+        while (escapeNumber == 1){
 
             System.out.println("숫자를 입력해주세요 :");
             Scanner scanner = new Scanner(System.in);
@@ -62,7 +62,7 @@ public class Application {
 
             if (nothingCount == 3){
                 System.out.println("낫싱");
-            } else if (ballCount > 0 || (strikeCount > 0 && strikeCount < 3)){
+            } else if (ballCount > 0 && ballCount < 3 && strikeCount > 0 && strikeCount < 3){
                 System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
             } else if (ballCount == 0){
                 System.out.println(strikeCount + "스트라이크" );
