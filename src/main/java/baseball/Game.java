@@ -30,6 +30,9 @@ public class Game {
         int ball = 0;
         while (!checkAnswer(strike)) {
             String playerInput = getPlayerInput();
+            List<Integer> result = compareAnswer(answer, playerInput);
+            strike = result.get(0);
+            ball = result.get(1);
         }
     }
 
@@ -37,7 +40,20 @@ public class Game {
         System.out.print(INPUT_MESSAGE);
         return player.getPlayerInputNumbersString();
     }
-    
+
+    private List<Integer> compareAnswer(String answer, String playerInput) {
+        int strike = 0, ball = 0;
+        for (int i = 0; i < LENGTH; i++) {
+            if (answer.charAt(i) == playerInput.charAt(i)) {
+                strike++;
+            }
+            else if (answer.indexOf(playerInput.charAt(i)) != -1) {
+                ball++;
+            }
+        }
+        return Arrays.asList(strike, ball);
+    }
+
     private boolean checkAnswer(int strike) {
         return strike == LENGTH;
     }
