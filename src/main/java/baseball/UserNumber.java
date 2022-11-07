@@ -1,9 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class UserNumber {
     private List<Integer> userInputNumber;
@@ -12,7 +12,7 @@ public class UserNumber {
     }
 
     public List<Integer> getUserGuessNumber() {
-        SystemMessage.printRequestUserNumber();
+        System.out.print(SystemMessage.printRequestUserNumber);
         String inputNumber = Console.readLine();
         List<Integer> userInputList = new ArrayList<>();
         for (int i = 0; i < inputNumber.length(); i++) {

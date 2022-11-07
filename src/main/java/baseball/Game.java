@@ -1,12 +1,10 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static baseball.GameConstants.NUMBER_LENGTH;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     public final ComputerNumber computerNumber;
@@ -29,7 +27,7 @@ public class Game {
     }
 
     public void startPlaying() {
-        SystemMessage.printStartMessage();
+        System.out.println(SystemMessage.printStartMessage);
         computerNumber.makeComputerNumber();
         computerNumberList = computerNumber.getComputerNumber();
         do {
@@ -40,7 +38,7 @@ public class Game {
             scoreInfo();
             printScoreInfo();
         } while (!endGame());
-        SystemMessage.printEndMessage();
+        System.out.println(SystemMessage.printEndMessage);
     }
 
     public void printScoreInfo() {
@@ -64,7 +62,7 @@ public class Game {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        for (int i = 0; i < NUMBER_LENGTH; i++) {
+        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
             int index = inputString.indexOf(answerString.charAt(i));
             if (index == i) {
                 strike++;
@@ -75,11 +73,11 @@ public class Game {
     }
 
     public boolean endGame() {
-        return strike == NUMBER_LENGTH;
+        return strike == GameConstants.NUMBER_LENGTH;
     }
 
     public boolean retryOrQuit() {
-        SystemMessage.printRetryOrQuit();
+        System.out.println(SystemMessage.printRetryOrQuit);
         String restart = Console.readLine();
         if (!Validator.checkRestartException(restart)) {
             throw new IllegalArgumentException();
