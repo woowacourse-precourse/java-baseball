@@ -1,16 +1,11 @@
 package baseball.entity;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.HashSet;
 
 public class Computer {
     private final int numberLength = 3;
     private String answer;
-
-    public Computer() {
-        answer = "";
-    }
 
     public void setAnswer() {
         answer = "";
