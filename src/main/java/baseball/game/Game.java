@@ -32,13 +32,27 @@ public class Game {
         List<Integer> strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
         String resultMessage;
         do {
-            System.out.print(SystemMessage.ENTER_NUMBER);
-            List<Integer> playerBalls = player.getPlayerBalls();
-            computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
-            resultMessage = computer.getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT),
-                    strikeAndBallCounts.get(BALL_COUNT));
+            List<Integer> playerBalls = getPlayerInput();
+            resultMessage = getResultFromComputer(computerBalls, playerBalls, strikeAndBallCounts);
             System.out.println(resultMessage);
-            computer.updateStrikeAndBallCounts(strikeAndBallCounts, 0, 0);
+            initialStrikeAndBallCounts(strikeAndBallCounts);
         } while (!resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER));
+    }
+
+    public void initialStrikeAndBallCounts(List<Integer> strikeAndBallCounts) {
+        strikeAndBallCounts.set(STRIKE_COUNT, 0);
+        strikeAndBallCounts.set(BALL_COUNT, 0);
+    }
+
+    private String getResultFromComputer(List<Integer> computerBalls, List<Integer> playerBalls,
+            List<Integer> strikeAndBallCounts) {
+        computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
+        return computer.getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT),
+                strikeAndBallCounts.get(BALL_COUNT));
+    }
+
+    private List<Integer> getPlayerInput() {
+        System.out.print(SystemMessage.ENTER_NUMBER);
+        return player.getPlayerBalls();
     }
 }
