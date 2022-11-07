@@ -12,8 +12,12 @@ class Computer{
 
 	public Computer(){
 		numbers = new ArrayList<>();
-		numbers = Randoms.pickUniqueNumbersInRange(1,9,3);
-		System.out.println("numbers: "+ numbers);
+//		numbers = Randoms.pickUniqueNumbersInRange(1,9,3);
+		while (numbers.size()<3){
+			int randomNumber = Randoms.pickNumberInRange(1,9);
+			if (!numbers.contains(randomNumber)) numbers.add(randomNumber);
+		}
+		System.out.println("numbers = " + numbers);
 	}
 
 	public List<Integer> getNumbers(){return this.numbers;}
@@ -33,9 +37,10 @@ class User{
 	}
 
 	public void generateNumbers(String stringNumbers){
-		numbers.add(Integer.parseInt(stringNumbers.substring(0,1))/100);
-		numbers.add(Integer.parseInt(stringNumbers.substring(1,2))/10);
-		numbers.add(Integer.parseInt(stringNumbers.substring(2,3)));
+		int intNumbers = Integer.parseInt(stringNumbers);
+		numbers.add(intNumbers/100);
+		numbers.add((intNumbers%100)/10);
+		numbers.add((intNumbers%100)%10);
 	}
 
 	public List<Integer> getNumbers(){return this.numbers;}
@@ -94,6 +99,7 @@ class Match{
 		int restartOrEnd = 0;
 
 		if (strike==3){
+			System.out.println("3스트라이크");
 			System.out.println("3개의 숫자를 모두 맞히셨습니다!게임 종료");
 			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 			restartOrEnd = Integer.parseInt(Console.readLine());
@@ -129,6 +135,7 @@ public class Application {
 
 		while (true){
 			if (restartOrEnd==1) computer=new Computer();
+			System.out.print("숫자를 입력해주세요 : ");
 			User user = new User();
 
 			Match match = new Match(computer,user);
