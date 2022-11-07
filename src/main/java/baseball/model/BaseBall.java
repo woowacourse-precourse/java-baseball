@@ -36,4 +36,12 @@ public class BaseBall {
     public void winGame() {
         this.isWin = true;
     }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
 }
