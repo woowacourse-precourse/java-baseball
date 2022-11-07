@@ -4,7 +4,7 @@
 -[x] 서로 다른 숫자가 맞는지 확인한다, 중복이 된다면 에러를 리턴한다 , 길이가 3 이상이어도 에러를 리턴한다. 
 -[x] array list를 비교하는 2중 배열을 만든다 
 -[x] array list에서 같은 값이 발견 된다면 ball 의 갯수를 추가해라
--[ ] array list에서 만약 index 까지 같다면 ball 이 아닌 strike의 갯수를 추가해라
+-[x] array list에서 만약 index 까지 같다면 ball 이 아닌 strike의 갯수를 추가해라
 -[ ] 만약 ball 과 strike가 모두 0 이면 낫씽이라 한다
 -[ ] strike가 3개인것을 구별한다  
 -[ ] 결과를 리턴한다
