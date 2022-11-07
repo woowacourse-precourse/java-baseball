@@ -2,8 +2,11 @@ package baseball;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,6 +15,18 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+
+    }
+
+    private static List<Integer> getComputerNumbers() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 
     public static Boolean gameBreak(){
@@ -32,7 +47,7 @@ public class Application {
     private static void gameStart(){
         int[] input_arr = Stream.of(Console.readLine().split("")).mapToInt(Integer::parseInt).toArray();
         gameStartConditional(input_arr);
-
+        List<Integer> computerNumbers = getComputerNumbers();
 
 
     }
