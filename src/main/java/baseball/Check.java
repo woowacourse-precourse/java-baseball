@@ -65,21 +65,29 @@ public class Check {
     public static int findStrike(List<Integer> user, List<Integer> computer){
         int strikeCount = 0;
         for(int i=0;i<LENGTH;i++){
-            if(user.get(i)==computer.get(i)){
-                strikeCount++;
-            }
+            strikeCount=compareStrike(user.get(i),computer.get(i),strikeCount);
+        }
+        return strikeCount;
+    }
+    public static int compareStrike(int user, int computer, int strikeCount){
+        if(user==computer){
+            strikeCount++;
         }
         return strikeCount;
     }
     public static int findBall(List<Integer> user,List<Integer> computer){
         int ballCount = 0;
         for(int i=0;i<LENGTH;i++){
-            if(user.contains(computer.get(i)) && computer.get(i)!=user.get(i)){
-                ballCount++;
-            }
+            ballCount = compareBall(user,user.get(i),computer.get(i),ballCount);
         }
         return ballCount;
 
+    }
+    public static int compareBall(List<Integer> userList, int user,int computer,int ballCount){
+        if(userList.contains(computer) && computer!=user){
+            ballCount++;
+        }
+        return ballCount;
     }
     public static void checkNew(String check){
         if (Integer.parseInt(check) != NEW_GAME && Integer.parseInt(check) != EXIT_GAME) {
