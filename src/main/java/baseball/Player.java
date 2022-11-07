@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Player {
+    static boolean isValidInput(String playerInput){
+        return isInputSizeEqualToAnswerSize(playerInput)
+                && doesNotHaveDuplicateInputElement(playerInput)
+                && hasOnlyNaturalNumberAsInput(playerInput);
+    }
     static boolean isInputSizeEqualToAnswerSize(String playerInput){
         return playerInput.length() == Game.ANSWER_SIZE;
     }
