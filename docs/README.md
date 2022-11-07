@@ -2,14 +2,15 @@
 - 
 - 게임 객체
   1) 생성자
-        - 랜덤 컴퓨터 값 생성 / unit package > init class > createComputerNumber func
+        - 랜덤 컴퓨터 값 생성 / unit package > ControlGame class > createComputerNumber func
   2) 과정
+        - 클래스 내 전역변수 초기화 / unit package > Game class > setClassVariableInit
         - 사용자가 추측한 컴퓨터 숫자 입력 / unit package > Game class > inputGuessNumber func
         - 사용자가 입력한 값 올바른지 판단 / unit package > Game class > isRightInput func  
         - 컴퓨터값, 인풋값 Strike, Ball 계산 / unit package > Game class >  calculate func
         - 컴퓨터값, 인풋값 Strike, Ball 판단 / unit package > Game class > isAllStrike func 
-  3) 끝
-      - 재시작 및 종료 판단 / unit package > init class > stopGame func
+  4) 끝
+      - 재시작 및 종료 판단 / unit package > ControlGame class > stopGame func
 
 
 - 출력

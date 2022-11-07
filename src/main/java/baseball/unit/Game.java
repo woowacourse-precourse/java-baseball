@@ -13,32 +13,31 @@ public class Game {
 
     private final List<Integer> computerNumber;
 
-    private final List<Integer> inputNumber;
-
+    private List<Integer> inputNumber;
     private int countStrike;
-
     private int countBall;
 
 
     public Game(List<Integer> computerNumber) {
         this.computerNumber = computerNumber;
-        this.inputNumber = new ArrayList<>();
-        this.countStrike = 0;
-        this.countBall= 0;
+    }
+
+    public void setClassVariableInit(){
+        inputNumber = new ArrayList<>();
+        countStrike = 0;
+        countBall = 0;
     }
 
     public void inputGuessNumber(){
-        String inputLine = new String();
-
         OutputText.printInputNumber();
 
-        inputLine = readLine();
+        String inputLine = readLine();
         if (!isRightInput(inputLine)) {
             throw new IllegalArgumentException();
         }
 
         for(String str : inputLine.split("")){
-            this.inputNumber.add(Integer.parseInt(str));
+            inputNumber.add(Integer.parseInt(str));
         }
         calculate();
     }
@@ -67,10 +66,13 @@ public class Game {
 
     private void calculate(){
         for(int i=0; i<inputNumber.size(); i++){
-            if(computerNumber.get(i) == inputNumber.get(i)){
+            int cNum = computerNumber.get(i);
+            int iNum = inputNumber.get(i);
+
+            if(cNum == iNum){
                 countStrike++;
             }
-            else if(computerNumber.contains(inputNumber.get(i))){
+            else if(computerNumber.contains(iNum)){
                 countBall++;
             }
         }

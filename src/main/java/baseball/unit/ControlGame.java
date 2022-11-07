@@ -9,7 +9,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class Init {
+public class ControlGame {
     public List<Integer> createComputerNumber(){
         List<Integer> computerNumber = new ArrayList<>();
         OutputText.printStartGame();

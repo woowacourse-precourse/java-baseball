@@ -1,30 +1,29 @@
 package baseball;
 
 import baseball.unit.Game;
-import baseball.unit.Init;
+import baseball.unit.ControlGame;
 
-import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
 
-        Init init = new Init();
-        List<Integer> computerNumber = init.createComputerNumber();
+        ControlGame control = new ControlGame();
+        Game game = new Game(control.createComputerNumber());
 
         while(true){
-            Game game = new Game(computerNumber);
+            game.setClassVariableInit();
             game.inputGuessNumber();
 
             if(!game.isAllStrike()) {
                 continue;
             }
 
-            if(init.stopGame()){
+            if(control.stopGame()){
                 break;
             }
 
-            computerNumber = init.createComputerNumber();
+            game = new Game(control.createComputerNumber());
         }
     }
 }
