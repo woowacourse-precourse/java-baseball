@@ -10,4 +10,44 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
     }
+    public static void gmae(){
+
+    }
+
+    public static void answerValidate(){
+
+    }
+
+    public static void inputValidate(){
+
+    }
+
+    public static void numberCheck(){
+
+    }
+    public static void lengthCheck(){
+
+    }
+    public static void notEqualCheck(){
+
+    }
+
+    public static void resultCheck(){
+
+    }
+
+    public static int ballCheck(int strike){
+        return 0;
+    }
+    public static int strikeCheck(){
+        return 0;
+    }
+
+    public static void printResult(){
+
+    }
+    public static boolean exitGameValidate(){
+        throw new IllegalArgumentException();
+    }
+
 }
