@@ -15,14 +15,20 @@ public class GameHost extends BaseballNumber {
 
     public String getHint() {
         StringJoiner hintToPlayer = new StringJoiner(" ");
+        boolean isSameNum = false;
         int ballValue = this.hint.get(BALL);
         if(ballValue > 0) {
+            isSameNum = true;
             hintToPlayer.add(ballValue + BALL);
         }
 
         int strikeValue = this.hint.get(STRIKE);
         if(strikeValue > 0) {
+            isSameNum = true;
             hintToPlayer.add(strikeValue + STRIKE);
+        }
+
+        if(isSameNum) {
             return hintToPlayer.toString();
         }
 
