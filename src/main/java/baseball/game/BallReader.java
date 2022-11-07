@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class BallReader {
-    private static String BALL = "BALL";
-    private static String STRIKE = "STRIKE";
-    private static String MISS = "MISS";
+    private static ResultOfBall BALL = ResultOfBall.BALL;
+    private static ResultOfBall STRIKE = ResultOfBall.STRIKE;
+    private static ResultOfBall MISS = ResultOfBall.MISS;
     private int requiredStrikes;
 
     public BallReader() {
@@ -16,35 +16,34 @@ public class BallReader {
     }
 
     public boolean isFinished(Ball userBall, Ball computerBall) {
-        Map<String, Integer> result = getStrikeAndBall(userBall, computerBall);
+        Map<ResultOfBall, Integer> result = getStrikeAndBall(userBall, computerBall);
         if (result.get(STRIKE) == null) {
             return false;
         }
         return result.get(STRIKE) == requiredStrikes;
     }
 
-    public Map<String, Integer> getStrikeAndBall(Ball userBall, Ball computerBall) {
+    public Map<ResultOfBall, Integer> getStrikeAndBall(Ball userBall, Ball computerBall) {
         validateBalls(userBall, computerBall);
-        List<String> strikeAndBall = makeStrikeAndBall(userBall, computerBall);
+        List<ResultOfBall> strikeAndBall = makeStrikeAndBall(userBall, computerBall);
         return makeMapByStrikeAndBall(strikeAndBall);
     }
 
-    private List<String> makeStrikeAndBall(Ball userBall, Ball computerBall) {
-        List<String> strikeAndBallResult = new ArrayList<>();
+    private List<ResultOfBall> makeStrikeAndBall(Ball userBall, Ball computerBall) {
+        List<ResultOfBall> strikeAndBallResult = new ArrayList<>();
 
         List<Integer> userBallData = userBall.getBallData();
         List<Integer> computerBallData = computerBall.getBallData();
-
         for (int number : userBallData) {
             int userIndex = userBallData.indexOf(number);
             int computerIndex = computerBallData.indexOf(number);
-            String result = judgeStrikeOrBall(userIndex, computerIndex);
+            ResultOfBall result = judgeStrikeOrBall(userIndex, computerIndex);
             strikeAndBallResult.add(result);
         }
         return strikeAndBallResult;
     }
 
-    private String judgeStrikeOrBall(int userIndex, int computerIndex){
+    private ResultOfBall judgeStrikeOrBall(int userIndex, int computerIndex) {
         final int noNumberInComputer = -1;
         if (userIndex == computerIndex) {
             return STRIKE;
@@ -55,9 +54,10 @@ public class BallReader {
         return MISS;
     }
 
-    private Map<String, Integer> makeMapByStrikeAndBall(List<String> ballData) {
-        Map<String, Integer> result = new HashMap<>();
-        for (String data : ballData) {
+    private Map<ResultOfBall, Integer> makeMapByStrikeAndBall(List<ResultOfBall> ballData) {
+        Map<ResultOfBall, Integer> result = new HashMap<>();
+        while (ballData.remove(ResultOfBall.MISS)) {}
+        for (ResultOfBall data : ballData) {
             result.computeIfPresent(data, (key, value) -> value + 1);
             result.computeIfAbsent(data, key -> 1);
         }
