@@ -23,4 +23,8 @@ public class Computer {
     public List<Integer> getNumber() {
         return number;
     }
+
+    public void clearComputerNumber() {
+        number.clear();
+    }
 }

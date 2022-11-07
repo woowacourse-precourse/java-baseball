@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +10,13 @@ public class Application {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTING = "낫싱";
+    private static final String RESTART = "1";
+    private static final String EXIT = "2";
     private static final int REQUIRED_STRIKE_COUNT = 3;
 
     private final Map<String, Integer> result = new HashMap<>();
+
+    private boolean gameExit = false;
     private boolean gameOver = false;
 
     public static void main(String[] args) {
@@ -24,6 +29,13 @@ public class Application {
         Computer computer = new Computer();
         User user = new User();
 
+        while (!gameExit) {
+            playMatch(computer, user);
+            checkUserWantsToRestartGame(computer);
+        }
+    }
+
+    private void playMatch(Computer computer, User user) {
         computer.generateRandomNumber();
         while (!gameOver) {
             GameTextPrinter.printUserInputText();
@@ -32,6 +44,21 @@ public class Application {
             clearUserNumberAndResult(user);
         }
         GameTextPrinter.printGameOverText(REQUIRED_STRIKE_COUNT);
+    }
+
+    private void checkUserWantsToRestartGame(Computer computer) {
+        switch (Console.readLine()) {
+            case RESTART:
+                computer.clearComputerNumber();
+                gameOver = false;
+                break;
+            case EXIT:
+                gameExit = true;
+                break;
+            default:
+                InputValidator.executeUserAnswerException();
+                break;
+        }
     }
 
     private void clearUserNumberAndResult(User user) {
