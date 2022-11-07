@@ -2,7 +2,7 @@ package baseball.game;
 
 import baseball.ball.Balls;
 import util.Input;
-import util.Print;
+import util.Output;
 import util.RandomUniqueNumber;
 
 import java.util.List;
@@ -24,18 +24,18 @@ public class Game {
 
     public GameStatus play(List<Integer> randomUniqueNumbers) {
         Balls computer = new Balls(randomUniqueNumbers);
-        Print.printStart();
+        Output.printStart();
 
         while (true) {
-            Print.printWaitForInput();
+            Output.printWaitForInput();
             List<Integer> playerNumbers = Input.makeListFromInput();
             Balls player = new Balls(playerNumbers);
 
             GameResult gameResult = computer.compare(player);
-            Print.printScore(gameResult);
+            Output.printScore(gameResult);
 
             if (gameResult.isWinCondition()) {
-                Print.printGameOver();
+                Output.printGameOver();
                 return Input.readLineAfterGame();
             }
         }
