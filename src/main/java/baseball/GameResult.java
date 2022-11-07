@@ -23,6 +23,10 @@ public class GameResult {
 		this.ball = ball;
 	}
 
+	public static GameResult create() {
+		return new GameResult();
+	}
+
 	public void addStrike() {
 		strike++;
 	}
