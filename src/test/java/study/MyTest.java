@@ -1,14 +1,9 @@
 package study;
 
-import baseball.Application;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.Stream;
-
 import static baseball.Application.*;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -60,9 +55,9 @@ public class MyTest {
         String mine2 = "456";
         String mine3 = "789";
 
-        assertThat(judgeResult(mine1, computer)).isEqualTo("01");
-        assertThat(judgeResult(mine2, computer)).isEqualTo("11");
-        assertThat(judgeResult(mine3, computer)).isEqualTo("00");
+        assertThat(calculateBallStrikeCount(mine1, computer)).isEqualTo("01");
+        assertThat(calculateBallStrikeCount(mine2, computer)).isEqualTo("11");
+        assertThat(calculateBallStrikeCount(mine3, computer)).isEqualTo("00");
     }
 
     @Test

@@ -1,6 +1,5 @@
 package baseball;
 
-import java.io.FilterOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +9,28 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+
+    public static String generateRandomNumber() {
+        boolean[] used = {false, false, false, false, false, false, false, false, false, false};
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (i < 3) {
+            int num = Randoms.pickNumberInRange(1, 9);
+            if (!used[num]) {
+                sb.append(num);
+                used[num] = true;
+                i++;
+            }
+        }
+        return sb.toString();
+    }
+
+    public static String readInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String input = Console.readLine();
+        validation(input);
+        return input;
+    }
 
     public static boolean validation(String input) {
 
@@ -29,22 +50,7 @@ public class Application {
         return true;
     }
 
-    public static String generateRandomNumber() {
-        boolean[] used = {false, false, false, false, false, false, false, false, false, false};
-        StringBuilder sb = new StringBuilder();
-        int i = 0;
-        while (i < 3) {
-            int num = Randoms.pickNumberInRange(1, 9);
-            if (!used[num]) {
-                sb.append(num);
-                used[num] = true;
-                i++;
-            }
-        }
-        return sb.toString();
-    }
-
-    public static String judgeResult(String key, String target) {
+    public static String calculateBallStrikeCount(String key, String target) {
         int[] count = {0, 0};
         for (int i = 0; i < 3; i++) {
             compare(key, target, count, i);
@@ -89,12 +95,6 @@ public class Application {
         }
     }
 
-    public static String readInput() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        validation(input);
-        return input;
-    }
 
     public static boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -105,6 +105,18 @@ public class Application {
             return false;
         } else {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private static void doTrial(String answer) {
+        while (true) {
+            String input = readInput();
+            String result = calculateBallStrikeCount(input, answer);
+            System.out.println(printResult(result));
+            if (isCorrectAnswer(result)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 
@@ -120,16 +132,6 @@ public class Application {
 
     }
 
-    private static void doTrial(String answer) {
-        while (true) {
-            String input = readInput();
-            String result = judgeResult(input, answer);
-            System.out.println(printResult(result));
-            if (isCorrectAnswer(result)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
-            }
-        }
-    }
+
 
 }
