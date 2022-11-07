@@ -35,7 +35,10 @@ public class Application {
         else System.out.println(ball+"볼 "+strike+"스트라이크");
 
         if (strike<3)        return true;
-        else return false;
+        else {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            return false;
+        }
     }
     public static List<Integer> Counting(int index, List<Integer> computer, List<Integer> Input){
         List<Integer> count = new ArrayList<>();
