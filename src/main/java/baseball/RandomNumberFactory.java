@@ -7,7 +7,7 @@ import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumber {
+public class RandomNumberFactory {
 
 	public List<Integer> createRamdomNumbers(int startNumber, int endNumber, int size) {
     	validateRange(startNumber, endNumber);

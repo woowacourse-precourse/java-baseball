@@ -10,7 +10,7 @@ import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import baseball.RandomNumber;
+import baseball.RandomNumberFactory;
 
 public class CreateRamdomNumbersTest {
 
@@ -19,7 +19,7 @@ public class CreateRamdomNumbersTest {
 	void test1() {
 		//given
 		int start = 0, end = 9, size = 3;
-		RandomNumber randomNumberFunction = new RandomNumber();
+		RandomNumberFactory randomNumberFunction = new RandomNumberFactory();
 		
 		//when
 		List<Integer> randomNumberList = randomNumberFunction.createRamdomNumbers(start, end, size);
@@ -47,7 +47,7 @@ public class CreateRamdomNumbersTest {
 	void test2() {
 		//given
 		int start = 5, end = 0, size = 3;
-		RandomNumber randomNumberFunction = new RandomNumber();
+		RandomNumberFactory randomNumberFunction = new RandomNumberFactory();
 		
 		//when&&then
 		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
@@ -63,7 +63,7 @@ public class CreateRamdomNumbersTest {
 	void test3() {
 		//given
 		int start = 0, end = 9, size = -3;
-		RandomNumber randomNumberFunction = new RandomNumber();
+		RandomNumberFactory randomNumberFunction = new RandomNumberFactory();
 
 		
 		//when&&then
