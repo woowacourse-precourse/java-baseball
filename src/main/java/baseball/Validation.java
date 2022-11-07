@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validation {
-
     private static final int MAX_LENGTH = 3;
 
     public static void checkInput(String input) {
@@ -35,8 +34,7 @@ public class Validation {
     }
 
     public static void isRestartOrEnd(String input) {
-        char number = input.charAt(0);
-        if (number != '1' || number != '2') {
+        if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
