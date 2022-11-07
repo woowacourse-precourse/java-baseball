@@ -6,6 +6,7 @@
     - [ ] 입력 값이 3개가 아니면 에러가 발생한다. - `IllegalArgumentException`
     - [ ] 숫자가 아닌 값이 입력되면 에러가 발생한다. - `IllegalArgumentException`
     - [ ] 입력 값이 범위(1~9)를 벗어나면 에러가 발생한다. - `IllegalArgumentException`
+    - [ ] 서로 다른 3개의 수로 이루어지지 않았으면 에러가 발생한다. - `IllegalArgumentException`
 - [ ] 상대방(컴퓨터)의 수와 사용자의 수를 비교한다.
 - [ ] 비교값을 기반으로 출력할 결과를 생성한다.
 - [ ] 결과를 출력한다.
