@@ -15,7 +15,7 @@
 
 - [x] Randoms를 활용한 숫자열 생성
 
-유효성 체크 기능 :white_check_mark:
+유효성 검사 기능 :white_check_mark:
 
 - [x] 사용자 숫자를 입력받는다
 
