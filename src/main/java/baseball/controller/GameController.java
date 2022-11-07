@@ -22,6 +22,7 @@ public class GameController {
         boolean isAnswer = false;
         do {
             ResultModel aSetOfGame = new ResultModel();
+            aSetOfGame.calResult(inputNumber(), counterpart.getResultNum());
         } while(!isAnswer);
     }
 }
