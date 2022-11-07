@@ -10,11 +10,14 @@ public class RandomUtils {
     public static List<Integer> getRandomValue() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
+            ifNotContain(answer, Randoms.pickNumberInRange(1, 9));
         }
         return answer;
+    }
+
+    public static void ifNotContain(List<Integer> answer, int number) {
+        if (!answer.contains(number)) {
+            answer.add(number);
+        }
     }
 }

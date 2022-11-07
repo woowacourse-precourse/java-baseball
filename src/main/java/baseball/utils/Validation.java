@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Validation {
     public static void validateSize(String input) {
-        if (input.length() >3) {throwInputException();}
+        if (input.length() != 3) {throwInputException();}
     }
     public static void validateArguments(char arg, List<Character> inputList) {
         if (!Character.isDigit(arg) | inputList.contains(arg)) {
