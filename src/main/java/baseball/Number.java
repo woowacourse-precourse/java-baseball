@@ -33,4 +33,13 @@ public class Number {
     public boolean isNotLength3(String input) {
         return input.length() != LENGTH;
     }
+
+    public boolean hasNonNumber(String input) {
+        for (char ch : input.toCharArray()) {
+            if (ch < '1' || ch > '9') {
+                return true;
+            }
+        }
+        return false;
+    }
 }
