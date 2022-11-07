@@ -7,15 +7,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class BallGeneratorTest {
 
+    BallGenerator ballGenerator;
+
+    @BeforeEach
+    void initial() {
+        ballGenerator = new BallGenerator();
+    }
+
     @Test
     void 컴퓨터_공_개수_테스트() {
-        // given
-        final BallGenerator ballGenerator = new BallGenerator();
-
         // when
         List<Integer> computerBalls = ballGenerator.createComputerBalls();
 
@@ -26,9 +31,6 @@ public class BallGeneratorTest {
 
     @Test
     void 컴퓨터_공_범위_테스트() {
-        // given
-        final BallGenerator ballGenerator = new BallGenerator();
-
         // when
         List<Integer> computerBalls = ballGenerator.createComputerBalls();
 
@@ -43,7 +45,6 @@ public class BallGeneratorTest {
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        final BallGenerator ballGenerator = new BallGenerator();
 
         // when
         Throwable exception = assertThrows(RuntimeException.class, () -> ballGenerator.createPlayerBalls());
@@ -58,7 +59,6 @@ public class BallGeneratorTest {
         String input = "120";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        final BallGenerator ballGenerator = new BallGenerator();
 
         // when
         Throwable exception = assertThrows(RuntimeException.class, () -> ballGenerator.createPlayerBalls());
@@ -73,7 +73,6 @@ public class BallGeneratorTest {
         String input = "122";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        final BallGenerator ballGenerator = new BallGenerator();
 
         // when
         Throwable exception = assertThrows(RuntimeException.class, () -> ballGenerator.createPlayerBalls());
