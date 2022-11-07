@@ -8,7 +8,7 @@ public class InputView {
     private static final String END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static void startMessage() {
-        System.out.println(START_MESSAGE);
+        System.out.printf(START_MESSAGE+"\n");
     }
 
     public static String gameMessage() {
@@ -17,7 +17,7 @@ public class InputView {
     }
 
     public static String endMessage() {
-        System.out.print(END_MESSAGE);
+        System.out.print(END_MESSAGE+"\n");
         return Console.readLine();
     }
 }
