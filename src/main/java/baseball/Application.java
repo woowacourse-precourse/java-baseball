@@ -82,7 +82,23 @@ public class Application {
 
     public static String readInput(){
         System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        String input = Console.readLine();
+        validation(input);
+        return input;
+    }
+
+    public static boolean restartGame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")){
+            return true;
+        }
+        else if (input.equals("2")){
+            return false;
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void main(String[] args) {
