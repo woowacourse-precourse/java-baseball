@@ -25,17 +25,16 @@ public class MenuSelection {
     }
 
     private int selectNumber(String inputNumber) throws IllegalArgumentException {
-
-        final int PLAY_GAME = BaseballConstant.PLAY_GAME;
-        final int QUIT = BaseballConstant.QUIT;
-        final int SELECTION_NUMBER_LENGTH = BaseballConstant.SELECTION_NUMBER_LENGTH;
-
-        if (!IsCollection.isInputNumbersInRange(inputNumber, PLAY_GAME, QUIT)
-                || !IsCollection.isEqualToSetLength(inputNumber, SELECTION_NUMBER_LENGTH)) {
-            IllegalArgument.outOfRange(PLAY_GAME, QUIT);
+        if (isNotSelectionNumber(inputNumber)) {
+            IllegalArgument.outOfRange(BaseballConstant.PLAY_GAME, BaseballConstant.QUIT);
         }
 
         return Integer.parseInt(inputNumber);
+    }
+
+    private boolean isNotSelectionNumber(String inputNumber){
+        return (!IsCollection.isInputNumbersInRange(inputNumber, BaseballConstant.PLAY_GAME, BaseballConstant.QUIT))
+                || (!IsCollection.isEqualToSetLength(inputNumber, BaseballConstant.SELECTION_NUMBER_LENGTH));
     }
 
     private void printMenuSelection() {

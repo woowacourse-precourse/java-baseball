@@ -10,24 +10,25 @@ public class Computer {
     private List<Integer> computerNumbers;
 
     public Computer() {
-        this.computerNumbers = createNonDuplicationRandomThreeNumbers();
+        this.computerNumbers = createNonDuplicationRandomThreeNumbers(BaseballConstant.NUMBERS_COUNT,
+                BaseballConstant.MIN_NUMBER,BaseballConstant.MAX_NUMBER);
     }
 
-    private List<Integer> createNonDuplicationRandomThreeNumbers() {
+    private List<Integer> createNonDuplicationRandomThreeNumbers(int numbersCount,int minNumber,int maxNumber) {
         List<Integer> numbers;
-
-        final int MIN_NUMBER = BaseballConstant.MIN_NUMBER;
-        final int MAX_NUMBER = BaseballConstant.MAX_NUMBER;
-        final int NUMBERS_COUNT = BaseballConstant.NUMBERS_COUNT;
 
         for (; ; ) {
 
-            numbers = NumberParsingCollection.createRandomNumbersInRange(NUMBERS_COUNT, MIN_NUMBER, MAX_NUMBER);
+            numbers = NumberParsingCollection.createRandomNumbersInRange(numbersCount, minNumber, maxNumber);
 
-            if (!IsCollection.isDuplication(numbers)) {
+            if (isNotDuplication(numbers)) {
                 return numbers;
             }
         }
+    }
+
+    private boolean isNotDuplication(List<Integer> numbers){
+        return !IsCollection.isDuplication(numbers);
     }
 
     public List<Integer> getComputerNumbers() {

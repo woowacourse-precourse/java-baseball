@@ -10,23 +10,21 @@ public class User {
     private List<Integer> userNumbers;
 
     public void setUser(String inputNumbers) {
-        this.userNumbers = createValidNumbers(inputNumbers);
+        this.userNumbers = createValidNumbers(inputNumbers, BaseballConstant.INPUT_LENGTH,
+                BaseballConstant.MIN_NUMBER, BaseballConstant.MAX_NUMBER);
     }
 
-    private List<Integer> createValidNumbers(String inputNumbers) throws IllegalArgumentException {
+    private List<Integer> createValidNumbers(String inputNumbers, int inputLength, int minNumber, int maxNumber)
+            throws IllegalArgumentException {
 
-        final int MIN_NUMBER = BaseballConstant.MIN_NUMBER;
-        final int MAX_NUMBER = BaseballConstant.MAX_NUMBER;
-        final int INPUT_LENGTH = BaseballConstant.INPUT_LENGTH;
-
-        if (!IsCollection.isInputNumbersInRange(inputNumbers, MIN_NUMBER, MAX_NUMBER)) {
-            IllegalArgument.outOfRange(MIN_NUMBER, MAX_NUMBER);
+        if (isOutOfRange(inputNumbers, minNumber, maxNumber)) {
+            IllegalArgument.outOfRange(minNumber, maxNumber);
         }
 
         List<Integer> numbers = NumberParsingCollection.changeStringToIntegers(inputNumbers);
 
-        if (!IsCollection.isEqualToSetCount(numbers, INPUT_LENGTH)) {
-            IllegalArgument.notNNumbers(INPUT_LENGTH);
+        if (isNotEqualToSetCount(numbers, inputLength)) {
+            IllegalArgument.notNNumbers(inputLength);
         }
 
         if (IsCollection.isDuplication(numbers)) {
@@ -34,6 +32,14 @@ public class User {
         }
 
         return numbers;
+    }
+
+    private boolean isOutOfRange(String inputNumbers, int minNumber, int maxNumber) {
+        return !IsCollection.isInputNumbersInRange(inputNumbers, minNumber, maxNumber);
+    }
+
+    private boolean isNotEqualToSetCount(List<Integer> numbers, int inputLength){
+        return !IsCollection.isEqualToSetCount(numbers, inputLength);
     }
 
     public List<Integer> getUserNumbers() {

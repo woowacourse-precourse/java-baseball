@@ -13,7 +13,7 @@ public class GameSystem {
 
             startGame();
 
-            if (selectMenu() == BaseballConstant.QUIT) {
+            if (isQuit()) {
                 break;
             }
         }
@@ -31,6 +31,10 @@ public class GameSystem {
     private int selectMenu() {
         MenuSelection menuSelection = new MenuSelection();
         return menuSelection.startMenuSelection();
+    }
+
+    private boolean isQuit(){
+       return selectMenu() == BaseballConstant.QUIT;
     }
 
     private void printRunGameText() {

@@ -29,7 +29,7 @@ public class NumberComparison {
         return false;
     }
 
-    private void initNumberComparison(List<Integer> userNumbers){
+    private void initNumberComparison(List<Integer> userNumbers) {
         this.userNumbers = userNumbers;
         strikeCount = 0;
         ballCount = 0;
@@ -51,18 +51,26 @@ public class NumberComparison {
     }
 
     private void countBall(int computerNumber, int userNumber) {
-        if (!IsCollection.isSameValue(computerNumber, userNumber)
-                && IsCollection.hasNumber(computerNumbers, userNumber)) {
+        if (isBall(computerNumber,userNumber)) {
             ballCount++;
         }
     }
 
+    private boolean isBall(int computerNumber, int userNumber) {
+        return !IsCollection.isSameValue(computerNumber, userNumber)
+                && IsCollection.hasNumber(computerNumbers, userNumber);
+    }
+
     private void countStrike(int computerNumber, int userNumber) {
-        if (IsCollection.isSameValue(userNumber, computerNumber)) {
+        if (isStrike(userNumber, computerNumber)) {
             strikeCount++;
         }
     }
 
+    private boolean isStrike(int computerNumber, int userNumber) {
+        return IsCollection.isSameValue(userNumber, computerNumber);
+    }
+    
     private boolean isAnswer(int strikeCount) {
         return IsCollection.isSameValue(strikeCount, BaseballConstant.MAX_COUNT);
     }
