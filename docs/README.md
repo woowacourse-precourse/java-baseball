@@ -14,4 +14,4 @@
 - 기능 9 : 게임 시작/종료 기능
   - System.exit() 사용 불가
 - 기능 10 : 입력값 예외 처리 기능
-  - IllegalArgumentException 발생 -> 게임 종료 기능 호출
+  - IllegalArgumentException 발생
