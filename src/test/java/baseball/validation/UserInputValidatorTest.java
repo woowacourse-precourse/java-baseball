@@ -28,4 +28,20 @@ class UserInputValidatorTest {
         Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input6)).isInstanceOf(IllegalArgumentException.class);
         Assertions.assertThatThrownBy(() -> validator.validateGuessInput(input7)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void validateRestartInput() {
+        //given
+        UserInputValidator validator = new UserInputValidator();
+
+        //when
+        String input1 = "1";
+        String input2 = "2";
+        String input3 = "12";
+
+        //then
+        validator.validateRestartInput(input1);
+        validator.validateRestartInput(input2);
+        Assertions.assertThatThrownBy(() -> validator.validateRestartInput(input3)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
