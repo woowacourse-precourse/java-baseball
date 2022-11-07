@@ -24,4 +24,12 @@ public class ComputerTest {
         assertThat(result_1).isEqualTo(false);
         assertThat(result_2).isEqualTo(true);
     }
+
+    @Test
+    void isStrikeOrBall_스트라이크인지_볼인지_판별(){
+        Computer computer = new Computer();
+        List<Integer> list = List.of(0, 0, 0);
+        HashMap<String, Integer> result = computer.isStrikeOrBall(list);
+        assertThat(result.get("볼")).isEqualTo(3);
+    }
 }

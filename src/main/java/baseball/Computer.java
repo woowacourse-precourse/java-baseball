@@ -26,5 +26,18 @@ public class Computer {
         }
         return !checkTrue(checkList);
     }
+
+    public static HashMap<String, Integer> isStrikeOrBall(List<Integer> list){
+        HashMap<String ,Integer> StrikeOrBall = new HashMap<>();
+        List<Boolean> checkList = new ArrayList<>();
+        for(int i = 0; i < list.size(); i++){
+            checkList.add(Answer.get(i) == list.get(i));
+        }
+        StrikeOrBall.put("스트라이크", Collections.frequency(checkList, true));
+        StrikeOrBall.put("볼", Collections.frequency(checkList, false));
+
+        return StrikeOrBall;
+    }
+
 }
 
