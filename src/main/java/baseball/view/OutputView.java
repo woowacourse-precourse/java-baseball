@@ -1,13 +1,13 @@
 package baseball.view;
 
 public interface OutputView {
-	void printGameStartMessage();
+    void printGameStartMessage();
 
-	void printInputMessage();
+    void printInputMessage();
 
-	void printRestartMessage();
+    void printRestartMessage();
 
-	void print3StrikeMessage();
+    void print3StrikeMessage();
 
-	void printBSOResult(int[] resultBSO);
+    void printBSOResult(int[] resultBSO);
 }

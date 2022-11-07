@@ -8,35 +8,35 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class GameController {
-	private static final int[] STRIKE_3 = {0, 3};
-	private static final String GAME_RESTART_CODE = "1";
-	private final InputView iv;
-	private final OutputView ov;
+    private static final int[] STRIKE_3 = {0, 3};
+    private static final String GAME_RESTART_CODE = "1";
+    private final InputView iv;
+    private final OutputView ov;
 
-	public GameController(InputView iv, OutputView ov) {
-		this.iv = iv;
-		this.ov = ov;
-	}
+    public GameController(InputView iv, OutputView ov) {
+        this.iv = iv;
+        this.ov = ov;
+    }
 
-	public void run() {
-		do {
-			startGame();
-			ov.printRestartMessage();
-		} while (iv.askRestart().equals(GAME_RESTART_CODE));
-	}
+    public void run() {
+        do {
+            startGame();
+            ov.printRestartMessage();
+        } while (iv.askRestart().equals(GAME_RESTART_CODE));
+    }
 
-	private void startGame() {
-		ov.printGameStartMessage();
-		BaseballNumber computer = BaseballNumber.createByRandom();
-		int[] result;
+    private void startGame() {
+        ov.printGameStartMessage();
+        BaseballNumber computer = BaseballNumber.createByRandom();
+        int[] result;
 
-		do {
-			ov.printInputMessage();
-			BaseballNumber user = BaseballNumber.createByUserInput(iv.getUserBaseballNumber());
-			result = BaseballGameCalculator.calculateBSO(computer, user);
-			ov.printBSOResult(result);
-		} while (!Arrays.equals(result, STRIKE_3));
+        do {
+            ov.printInputMessage();
+            BaseballNumber user = BaseballNumber.createByUserInput(iv.getUserBaseballNumber());
+            result = BaseballGameCalculator.calculateBSO(computer, user);
+            ov.printBSOResult(result);
+        } while (!Arrays.equals(result, STRIKE_3));
 
-		ov.print3StrikeMessage();
-	}
+        ov.print3StrikeMessage();
+    }
 }

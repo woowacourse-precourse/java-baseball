@@ -1,7 +1,7 @@
 package baseball.view;
 
 public interface InputView {
-	String askRestart();
+    String askRestart();
 
-	String getUserBaseballNumber();
+    String getUserBaseballNumber();
 }
