@@ -12,6 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    Game game = new Game();
+    AllStrike allStrike = new AllStrike();
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -35,7 +37,7 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-    Game game = new Game();
+
     @Test
     void randomPick_출력_size_동일한지_확인() {
         /*랜덤값이 나중에 들어오므로 테스트할 때마다 바뀐다. 그래서 given값과 size가 3으로 동일한지 확인*/
