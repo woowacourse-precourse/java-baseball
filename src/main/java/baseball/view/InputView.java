@@ -9,4 +9,9 @@ public class InputView {
         System.out.print(Constant.INPUT_USER_NUMBER_MESSAGE);
         return Console.readLine();
     }
+
+    public static int setNumberRestartOrEndGame() {
+
+        return Integer.parseInt(Console.readLine());
+    }
 }
