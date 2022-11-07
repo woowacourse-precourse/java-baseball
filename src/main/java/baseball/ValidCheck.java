@@ -34,6 +34,6 @@ public class ValidCheck {
             if (userResponse.contains(END_BUTTON))
                 return false;
         }
-        throw new IllegalArgumentException("1, 2 의 숫자를 입력하셨습니다");
+        throw new IllegalArgumentException("올바른 입력을 부탁드립니다");
     }
 }
