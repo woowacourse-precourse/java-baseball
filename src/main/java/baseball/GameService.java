@@ -1,10 +1,8 @@
 package baseball;
 
+import baseball.Domain.Game;
+import baseball.Domain.User;
 import baseball.View.Message;
-import baseball.Game;
-import baseball.Controller;
-
-import java.util.ArrayList;
 
 public class GameService {
     User user;
