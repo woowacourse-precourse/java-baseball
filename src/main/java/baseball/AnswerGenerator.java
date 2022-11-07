@@ -2,9 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static baseball.Const.NUMBER_LENGTH;
+
+
 public class AnswerGenerator {
 
-    private final int NUMBER_LENGTH = 3;
     private int[] answer;
 
     public AnswerGenerator() {

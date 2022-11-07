@@ -3,14 +3,14 @@ package baseball;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserInputValidation {
+import static baseball.Const.ERROR_MESSAGE;
+import static baseball.Const.NUMBER_LENGTH;
 
-    private static final int NUMBER_LENGTH = 3;
-    private final String Error_Message = "잘못된 입력값 입니다.";
+public class UserInputValidation {
 
     public void userInputValidation(String expectedAnswer) {
         if (!isThreeLength(expectedAnswer) || !isInteger(expectedAnswer) || haveZero(expectedAnswer) ||!isNotDuplication(expectedAnswer)) {
-            throw new IllegalArgumentException(Error_Message);
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
@@ -54,6 +54,6 @@ public class UserInputValidation {
         if ("1".equals(input) || "2".equals(input)) {
             return;
         }
-        throw new IllegalArgumentException(Error_Message);
+        throw new IllegalArgumentException(ERROR_MESSAGE);
     }
 }

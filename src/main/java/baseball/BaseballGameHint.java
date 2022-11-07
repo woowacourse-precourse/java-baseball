@@ -1,13 +1,10 @@
 package baseball;
 
 import java.util.stream.IntStream;
+import static baseball.Const.*;
 
 public class BaseballGameHint {
 
-    private final String Nothing_Message = "낫생";
-    private final String BALL_Message = "볼";
-    private final String STRIKE_Message = "스트라이크";
-    private final String ANSWER_Message = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private int ball;
     private int strike;
 
@@ -43,21 +40,22 @@ public class BaseballGameHint {
 
     public boolean isAnswer() {
         if (strike == 3) {
-            System.out.println(ANSWER_Message);
+            System.out.println(ANSWER_MESSAGE);
             return true;
         }
         return false;
     }
 
+    //스위치로 바구기
     private void printHint() {
         if (ball == 0 && strike == 0) {
-            System.out.println(Nothing_Message);
+            System.out.println(NOTHING_MESSAGE);
         }else if(ball > 0 && strike > 0){
-            System.out.println(ball+BALL_Message+" "+strike+STRIKE_Message);
+            System.out.println(ball+BALL_MESSAGE+" "+strike+STRIKE_MESSAGE);
         }else if(ball > 0){
-            System.out.println(ball+BALL_Message);
+            System.out.println(ball+BALL_MESSAGE);
         }else if(strike > 0){
-            System.out.println(strike+STRIKE_Message);
+            System.out.println(strike+STRIKE_MESSAGE);
         }
     }
 }

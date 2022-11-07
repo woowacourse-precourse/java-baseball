@@ -1,16 +1,16 @@
 package baseball;
 
 import java.util.Arrays;
+import static baseball.Const.START_MESSAGE;
 
 public class BaseballGame {
 
-    private final String START_Message = "숫자 야구 게임을 시작합니다.";
-    private final UserInput userInput = new UserInput();
-    private final AnswerGenerator answerGenerator= new AnswerGenerator();
-    private final BaseballGameHint baseballGameHint= new BaseballGameHint();
+    private UserInput userInput = new UserInput();
+    private AnswerGenerator answerGenerator = new AnswerGenerator();
+    private BaseballGameHint baseballGameHint = new BaseballGameHint();
 
     public void start() {
-        System.out.println(START_Message);
+        System.out.println(START_MESSAGE);
         answerGenerator.generateAnswer();
         do{
             userInput.setNumberOfUser();
