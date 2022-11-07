@@ -10,16 +10,39 @@
 const computer = [];
 
 while (computer.length < 3) {
-  const getRandomNumber = () => Math.floor(Math.random() * (9 - 1) + 1);
-  const newNumber = getRandomNumber();
+    const getRandomNumber = () => Math.floor(Math.random() * (9 - 1) + 1);
+    const newNumber = getRandomNumber();
 
-  if (computer.includes(newNumber)) {
-    continue;
-  }
-  computer.push(newNumber);
+    if (computer.includes(newNumber)) {
+        continue;
+    }
+    computer.push(newNumber);
 }
 
 ```
+
+- 테스트 코드
+1. 길이가 3
+2. 중복된 값이 있는지
+
+
+### 유저가 제대로 값을 넣었는지 확인 (예외 처리)
+1. 3자리 수인가
+2. 동일한 숫자가 들어갔는가 (서로 다른 3개의 글자)
+3. 숫자 외 다른 문자가 들어갔는가
+4. 0을 제외한 1 ~ 9 사이 숫자인가
+
+regex로 처리하면 될듯
+`[1-9]`이 3번 반복 되었는가 → [1-9]{3}
+
+
+[정규표현식 — 반복찾기. 정규표현식의 가장 핵심 기능이라고 생각되는 부분이다. | by Lee MunHaeng | Medium](https://medium.com/@iamreadytocommit/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D-%EB%B0%98%EB%B3%B5%EC%B0%BE%EA%B8%B0-106dcd92f8e8)
+[Pattern (Java Platform SE 7 )](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html)
+
+Pattern p = Pattern.compile("a*b");
+Matcher m = p.matcher("aaaaab");
+boolean b = m.matches();
+
 
 
 ### 스트라이크/볼/낫싱 판별
@@ -109,29 +132,34 @@ int 형 볼갯수, 스트라이크 갯수 변수 2개 선언하고
 방법 1이 해시테이블 key value로 처리하는게 더 unmutable하고 나은듯
 
 
-- 테스트 코드 짜기
+⇨ 스트라이크 value 값이 3일 경우 게임 종료 리턴
+
+- [ ] 테스트 코드 짜기
 
 
-#### ⇨ 스트라이크 value 값이 3일 경우 게임 종료 리턴
 
 
-### 유저가 제대로 값을 넣었는지 확인 (예외 처리)
-1. 3자리 수인가
-2. 동일한 숫자가 들어갔는가 (서로 다른 3개의 글자)
-3. 숫자 외 다른 문자가 들어갔는가
-4. 0을 제외한 1 ~ 9 사이 숫자인가
-
-regex로 처리하면 될듯
-`[1-9]`
-
-잘못된 값일 경우 `IllegalArgumentException`을 발생시키고 종료한다.
-
-### 유저로부터 숫자 입력 받기
 
 
-### 게임 종료 후 재시작 여부 묻기
-게임을 새로 시작하려면 1, 종료하려면 2를 선택
-- 그 외 번호, 숫자가 아닌 문자를 입력하게 되면 입력 재요청
+
+### 게임 진행
+#### 1. 유저로부터 값 받아오기
+- 유저가 입력한 값을 검증
+  잘못된 값일 경우 `IllegalArgumentException`을 발생시키고 종료.
+- 게임을 새로 시작하려면 1, 종료하려면 2를 선택
+
+#### 2. 게임 종료 후 재시작 여부 묻기
+`1`: 게임 진행 `2`: 게임 종료 → while 문으로 게임 진행
+
+#### 3. 게임 중 3자리 숫자를 리턴하는 함수
+```
+숫자를 입력해주세요 : 145
+```
+
+
+
+
+
 
 
 내가 이 문제를 해결하기 위해 알아야 할 것
