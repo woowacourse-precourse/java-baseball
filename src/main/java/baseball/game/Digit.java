@@ -3,7 +3,7 @@ package baseball.game;
 import java.util.Objects;
 
 public class Digit {
-    private final int digitValue;
+    public final int digitValue;
 
     public Digit(int digitValue) {
         validateDigitValue(digitValue);
@@ -14,10 +14,6 @@ public class Digit {
         if (number < 1 || number > 9) {
             throw new IllegalArgumentException("1 이상 9 이하의 숫자가 아닙니다.");
         }
-    }
-
-    public boolean isSameValue(int number) {
-        return digitValue == number;
     }
 
     @Override

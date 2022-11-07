@@ -27,8 +27,8 @@ public class Number {
         third = new Digit(separatedDigits.get(2));
     }
 
-    public boolean hasDigit(int digit) {
-        return first.isSameValue(digit) || second.isSameValue(digit) || third.isSameValue(digit);
+    public boolean contains(Digit digit) {
+        return first.equals(digit) || second.equals(digit) || third.equals(digit);
     }
 
     protected List<Integer> separateToDigits(int num) {
