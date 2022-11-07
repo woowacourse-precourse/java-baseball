@@ -35,15 +35,23 @@ public class ComputerUtil {
     private static boolean isValidNumber(List<Integer> computerNumbers, int randomNumber) {
         for (int i = 0; i < 3; i++) {
             int computerNumber = computerNumbers.get(i);
-            if (computerNumber == 0) {
+            if (hasBlank(computerNumber)) {
                 break;
             }
 
-            if (computerNumber == randomNumber) {
+            if (hasSameNumber(computerNumber, randomNumber)) {
                 return false;
             }
         }
 
         return true;
+    }
+
+    private static boolean hasBlank(int computerNumber) {
+        return computerNumber == 0;
+    }
+
+    private static boolean hasSameNumber(int computerNumber, int randomNumber) {
+        return computerNumber == randomNumber;
     }
 }
