@@ -23,6 +23,36 @@ public class Application {
 
         System.out.println(numStr);
 
+        BaseBallPoint baseBallPoint = countBallAndStrike(computer, numStr);
+
+    }
+
+    static class BaseBallPoint{
+        int ball, strike;
+        public BaseBallPoint(int ball, int strike){
+            this.ball =ball;
+            this.strike = strike;
+        }
+        public int getBall() {return ball;}
+        public int getStrike() {return strike;}
+    }
+
+    private static BaseBallPoint countBallAndStrike(List<Integer> computer, String numStr) {
+        int ball = 0, strike = 0;
+
+        for(int i = 0 ; i < 3 ; i++){
+            char c = Character.forDigit(computer.get(i), 10);
+            int index = numStr.indexOf(c, 0);
+
+            if(index == i){
+                strike++;
+            }
+            if(index != -1 && index != i){
+                ball++;
+            }
+        }
+
+        return new BaseBallPoint(ball, strike);
     }
 
     public static List<Integer> setAnswerNumber(){
