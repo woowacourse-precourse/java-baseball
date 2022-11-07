@@ -6,8 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.Game.NUMBER_OF_DIGIT;
+
 public class NumComputerPicker {
-    private static final int NUMBER_OF_DIGIT = 3;
 
     public static List<Integer> pickNumComputer() {
         List<Integer> numComputer = new ArrayList<>();
