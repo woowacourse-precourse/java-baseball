@@ -10,8 +10,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InGame {
 
-    List<Character> numList = new ArrayList<>(0);
-
 
     public int[] userInputToInt(String input) {
         validate(input);
@@ -39,6 +37,7 @@ public class InGame {
     }
 
     private void duplicateNum(String input) throws IllegalArgumentException{
+        List<Character> numList = new ArrayList<>(0);
         for (int i = 0; i < input.length(); i++) {
             numList.add(input.charAt(i));
             if(numList.size() != numList.stream().distinct().count()){
@@ -60,7 +59,7 @@ public class InGame {
     }
 
     private Boolean checkDigit(String input, int i) {
-        return '0' <= input.charAt(i) && input.charAt(i) <= '9';
+        return '0' < input.charAt(i) && input.charAt(i) <= '9';
     }
 
     private int charToInt(String input, int i) {

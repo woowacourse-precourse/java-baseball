@@ -17,8 +17,8 @@ public class GameService {
     String input;
 
 
-    public void playGame() {
-        game.setComputerNumber(computer.getRandomNumber());
+    public void playGame(int startNum, int endNum) {
+        game.setComputerNumber(computer.getRandomNumber(startNum, endNum));
         int strike = 0;
         while (strike != 3) {
             print.inputRequest();
