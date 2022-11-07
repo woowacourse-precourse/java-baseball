@@ -4,11 +4,11 @@ import static baseball.domain.Balls.BALLS_FORMAL_SIZE;
 
 public class Referee {
 
-    private Balls comBalls;
+    private Balls computerBalls;
     private final Hint hint;
 
-    public Referee(Balls comBalls) {
-        this.comBalls = comBalls;
+    public Referee(Balls computerBalls) {
+        this.computerBalls = computerBalls;
         this.hint = new Hint();
     }
 
@@ -22,13 +22,13 @@ public class Referee {
     }
 
     private void decideStrike(Balls userBalls, int index) {
-        if (comBalls.isStrikePosition(userBalls,index)) {
+        if (computerBalls.isStrikePosition(userBalls,index)) {
             hint.increasePoint(Score.STRIKE);
         }
     }
 
     private void decideBall(Balls userBalls, int index) {
-        if (comBalls.isBallPosition(userBalls,index)) {
+        if (computerBalls.isBallPosition(userBalls,index)) {
             hint.increasePoint(Score.BALL);
         }
     }
