@@ -128,10 +128,7 @@ class BaseBallGame {
 
     public boolean is3DigitNumber(String inputStr) {
         String inputNumberRegex = "^[1-9]{3}$";
-        if (!inputStr.matches(inputNumberRegex)) {
-            return false;
-        }
-        return true;
+        return inputStr.matches(inputNumberRegex);
     }
 
 
