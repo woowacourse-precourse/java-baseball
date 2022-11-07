@@ -5,6 +5,11 @@ public class Result {
     private Integer strike;
     private Integer ball;
 
+    public Result(Integer strike, Integer ball) {
+        this.strike = strike;
+        this.ball = ball;
+    }
+
     public void setStrike(Integer strikeCnt) {
         this.strike = strikeCnt;
     }
