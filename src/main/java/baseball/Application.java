@@ -9,12 +9,13 @@ public class Application {
     public static void main(String[] args) {
         String restart_or_not = "";
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int ball_num = 0, strike_num = 0;
 
         List<Integer> answer = Game.MakeAnswer();
         while(true) {
+            int ball_num = 0, strike_num = 0;
             if (restart_or_not.equals("1")) {
                 restart_or_not = "";
+                answer = Game.MakeAnswer();
                 continue;
             } else if (restart_or_not.equals("2")) {
                 System.out.println("게임을 종료합니다.");
@@ -28,9 +29,8 @@ public class Application {
             }
             if (strike_num == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                restart_or_not = Game.RestartOrNot();
-                answer = Game.MakeAnswer();
-                strike_num = 0;
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                restart_or_not = Console.readLine();
             }
         }
     }
@@ -85,22 +85,6 @@ class Game {
             return ball_num + "볼 " + strike_num + "스트라이크";
         }
     }
-
-    static String RestartOrNot() {
-        String restart_or_not = "";
-
-        while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            restart_or_not = Console.readLine();
-            if (!(restart_or_not.equals("1")) && !(restart_or_not.equals("2"))) {
-                System.out.println("1 또는 2를 입력해 주세요.");
-            } else {
-                break;
-            }
-        }
-
-        return restart_or_not;
-    }
 }
 
 class User {
@@ -111,21 +95,24 @@ class User {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if(CheckInput(input)) {
-                int user_num = Integer.parseInt(input);
-
-                int first_num = user_num / 100;
-                int second_num = (user_num / 10) % 10;
-                int last_num = user_num % 10;
-
-                user_num_list.add(first_num);
-                user_num_list.add(second_num);
-                user_num_list.add(last_num);
-
+                String[] nums = input.split("");
+                user_num_list = MakeNumList(nums);
                 return user_num_list;
             } else {
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    static List<Integer> MakeNumList(String[] nums) {
+        List<Integer> num_list = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int num = Integer.parseInt(nums[i]);
+            num_list.add(num);
+        }
+
+        return num_list;
     }
 
     static boolean isNumeric(String s) {
@@ -137,9 +124,7 @@ class User {
         }
     }
     static boolean CheckInput(String input) {
-        if (!(isNumeric(input))) return false;
-        else if(input.length() != 3) return false;
-        else if(input.contains("0")) return false;
+        if (!(isNumeric(input)) || input.length() != 3 || input.contains("0")) return false;
         else return true;
     }
 }
