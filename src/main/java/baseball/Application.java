@@ -54,6 +54,13 @@ public class Application {
         }
     }
 
+    static public void printHint(String randomNumber, String userGuessNumber) {
+        int strikeCount = getStrikeCount(randomNumber, userGuessNumber);
+        int ballCount = getBallCount(randomNumber, userGuessNumber);
+        String hint = makeHint(ballCount, strikeCount);
+        System.out.println(hint);
+    }
+
     static public int getStrikeCount(String randomNumber, String userGuessNumber) {
         int strikeCount = 0;
 
