@@ -34,4 +34,11 @@ public class Computer {
         return false;
     }
 
+    public boolean isBall(int number, int index) {
+        if (answer.contains(number) && answer.indexOf(number) != index) {
+            return true;
+        }
+        return false;
+    }
+
 }
