@@ -8,6 +8,7 @@ public final class Constants {
 	public static final int MIN_NUMBER = 1;
 	public static final int MAX_NUMBER = 9;
 	public static final int ZERO = 0;
+	public static final String ONLY_NUM = "^[0-9]*$";
 
 	public static final String START_GAME = "숫자 야구 게임을 시작합니다.";
 	public static final String INPUT_INSTRUCTION = "숫자를 입력해주세요 : ";

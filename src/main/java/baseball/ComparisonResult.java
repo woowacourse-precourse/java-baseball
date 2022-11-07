@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.Constants.NUMBER_LENGTH;
-
 import java.util.List;
 
 public class ComparisonResult {
@@ -36,4 +34,3 @@ public class ComparisonResult {
 			.count();
 	}
 }
-

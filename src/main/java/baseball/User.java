@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.Constants.RESTART;
+import static baseball.Constants.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,10 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-
 	public static List<Integer> userNums;
+
+	private User() {
+	}
 
 	public static void getUserInput() {
 		GameView.printInstruction();

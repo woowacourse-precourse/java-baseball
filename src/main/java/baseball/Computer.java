@@ -1,8 +1,6 @@
 package baseball;
 
-import static baseball.Constants.NUMBER_LENGTH;
-import static baseball.Constants.MIN_NUMBER;
-import static baseball.Constants.MAX_NUMBER;
+import static baseball.Constants.*;
 
 import java.util.ArrayList;
 import java.util.List;

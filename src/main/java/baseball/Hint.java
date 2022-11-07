@@ -1,6 +1,9 @@
 package baseball;
 
 public class Hint {
+	private Hint() {
+	}
+
 	public static void searchHint() {
 		new ComparisonResult(User.userNums, Computer.computerNums);
 		if (isNothing()) {
@@ -36,7 +39,6 @@ public class Hint {
 	private static void hintNothing() {
 		GameView.printNothing();
 	}
-
 
 	private static void hintBall() {
 		if (isStrike()) {

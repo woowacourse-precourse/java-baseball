@@ -1,16 +1,10 @@
 package baseball;
 
-import static baseball.Constants.NUMBER_LENGTH;
-import static baseball.Constants.ZERO;
-import static baseball.Constants.RESTART;
-import static baseball.Constants.END;
+import static baseball.Constants.*;
 
 import java.util.List;
 
 public class InputException extends IllegalArgumentException {
-
-	public static final String ONLY_NUM = "^[0-9]*$";
-
 	public InputException() {
 	}
 

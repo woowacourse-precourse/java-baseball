@@ -1,7 +1,6 @@
 package baseball;
 
 public class Operation {
-
 	public Operation() {
 		GameView.printStartGame();
 	}

@@ -1,14 +1,10 @@
 package baseball;
 
-import static baseball.Constants.START_GAME;
-import static baseball.Constants.INPUT_INSTRUCTION;
-import static baseball.Constants.STRIKE;
-import static baseball.Constants.BALL;
-import static baseball.Constants.NOTHING;
-import static baseball.Constants.END_GAME;
-import static baseball.Constants.RESTART_INSTRUCTION;
+import static baseball.Constants.*;
 
 public class GameView {
+	private GameView() {
+	}
 
 	public static void printStartGame() {
 		System.out.println(START_GAME);
