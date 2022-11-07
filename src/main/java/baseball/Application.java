@@ -31,7 +31,7 @@ public class Application {
         validateNum(userInput);
     }
 
-    private static void validateNum(String userInput) {
+    private static void validateNum(String userInput) throws IllegalArgumentException {
         if(userInput.length() != 3)
             throw new IllegalArgumentException("3자리 수를 입력해주세요");
         if(!isNumeric(userInput))
