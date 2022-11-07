@@ -11,6 +11,10 @@ public class Computer {
     public Computer() {
     }
 
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
+    }
+
     public void init() {
         while (isValidateNumber(computerNumbers)) {
             generateNumbers();

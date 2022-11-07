@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -76,5 +77,16 @@ public class Game {
         if(userInput.stream().distinct().count() != userInput.size()) {
             throw new IllegalArgumentException("Input is duplicated.");
         }
+    }
+
+    public int checkStrikeCount(List<Integer> userInput) {
+        int strikeCount = 0;
+        for(int i = 0; i < computer.getComputerNumbers().size(); i++) {
+            if(Objects.equals(computer.getComputerNumbers().get(i), userInput.get(i))) {
+                strikeCount++;
+            }
+        }
+
+        return strikeCount;
     }
 }
