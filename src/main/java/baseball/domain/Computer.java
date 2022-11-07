@@ -16,7 +16,6 @@ public class Computer {
         while (!Validation.validateNumberNotRepeated(numbers, Constant.NUMBER_LENGTH)) {
             numbers = Utilization.pickRandomNumberList();
         }
-        System.out.println("Computer Numbers = " + numbers);
     }
 
     public List<Integer> getNumbers() {
