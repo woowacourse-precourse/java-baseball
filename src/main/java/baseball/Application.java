@@ -10,15 +10,6 @@ import java.util.HashSet;
 
 public class Application {
 
-    // RandomNumberGenerator 내부로 들어갈 예정
-    static void generateRandomNumber(ArrayList<Integer> answer) {
-        while (answer.size() != 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
-        }
-    }
 
     // 파싱을 사용하지 않아 불필요해질 예정
     static ArrayList<Integer> parseStringIntoInteger(String guess) {
@@ -87,7 +78,7 @@ public class Application {
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else if (strike == 3) {
-            threeStrike = 1;
+            /*threeStrike = 1;*/
             System.out.println("3스트라이크");
         } else if (ball == 0) {
             System.out.printf("%d스트라이크\n", strike);
@@ -109,9 +100,9 @@ public class Application {
     }
 
     static void runLoop() {
-        /*
+
         RandomNumberGenerator answer = new RandomNumberGenerator();
-        Guess myGuess;
+        /*  Guess myGuess;
         BallStrikeChecker checker = new BallStrikeChecker();
         ResultBoard board;
 
