@@ -13,13 +13,21 @@ public class GameController {
     public void gameProcess() {
         outputView.printStartGame();
         computerController.startGame(gameNumber);
+        repeatGuessingAnswer();
+    }
 
-        gameNumber.setInputString(inputView.enterGameNumber());
-        computerController.compareNumbers(gameNumber);
-        computerController.provideHint();
+    private void repeatGuessingAnswer() {
+        boolean correctAnswer = false;
+        while (!correctAnswer) {
+            String inputString = inputView.enterGameNumber();
+            gameNumber.setInputString(inputString);
+            computerController.compareNumbers(gameNumber);
+            computerController.provideHint();
 
-        if (computerController.isThreeStrike()) {
-            outputView.printEndGame();
+            correctAnswer = computerController.isThreeStrike();
+            if (correctAnswer) {
+                outputView.printEndGame();
+            }
         }
     }
 }
