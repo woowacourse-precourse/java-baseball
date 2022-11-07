@@ -1,6 +1,7 @@
 package baseball.play;
 
 import baseball.number.ComputerNumber;
+import baseball.number.UserNumber;
 
 import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
@@ -17,14 +18,22 @@ public class Play {
 
     private List<Integer> computerNumberList;
     private ComputerNumber computerNumber;
+    public UserNumber userNumber;
+    private List<Integer> userNumberList;
 
     public Play(){
         computerNumber = new ComputerNumber();
         computerNumberList = new ArrayList<>();
+
+        userNumber = new UserNumber();
+        userNumberList = new ArrayList<>();
     }
     public void playBaseball(){
         System.out.println(START_MESSAGE);
         computerNumber.generateNumber();
+        System.out.print(INPUT_MESSAGE);
+        userNumberList = userNumber.inputUserNumber();
+
 
 
 
