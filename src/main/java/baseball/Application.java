@@ -12,6 +12,10 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        do {
+            gameProcess();
+            selectReplay();
+        } while (selectReplay() == String.valueOf(2));
     }
 
     public static List generateNumber() {
