@@ -6,37 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BallCountTest {
-    @Test
-    @DisplayName("스트라이크 0 미만시 IllegalArgumentException 발생")
-    void 스트라이크_0미만_예외() {
-        assertThatThrownBy(
-            () -> new BallCount(-1, 2)
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("스트라이크 3 초과시 IllegalArgumentException 발생")
-    void 스트라이크_3초과_예외() {
-        assertThatThrownBy(
-            () -> new BallCount(4, 2)
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("볼 0 미만시 IllegalArgumentException 발생")
-    void 볼_0미만_예외() {
-        assertThatThrownBy(
-            () -> new BallCount(2, -1)
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    @DisplayName("볼 3 초과시 IllegalArgumentException 발생")
-    void 볼_3초과_예외() {
-        assertThatThrownBy(
-            () -> new BallCount(2, 4)
-        ).isInstanceOf(IllegalArgumentException.class);
-    }
 
     @Test
     @DisplayName("볼 0 스트라이크 0이면 낫싱 리턴")
