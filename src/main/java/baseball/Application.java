@@ -3,8 +3,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Application {
 	static int start = 1;
@@ -106,13 +108,13 @@ public class Application {
 
     public static boolean checkDiff(String inputNumber) {
     	char[] arr = inputNumber.toCharArray();
-    	Map<Character,Object> inputMap = new HashMap<>();
+    	Set<Character> set = new HashSet<>();
     	
     	for(int i=0;i<arr.length;i++) {
-    		inputMap.put(arr[i],"");
+    		set.add(arr[i]);
     	}
     	
-    	if(inputMap.size()<3)return false;
+    	if(set.size()<3)return false;
     	else return true; 
     }
 
