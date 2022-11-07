@@ -41,10 +41,24 @@ public class Baseball {
             return true;
         }
         Output.doneGame();
-        return false;
+        return isRestart();
     }
 
     private boolean isCorrect(int strikeCount) {
         return strikeCount == 3;
+    }
+
+    private boolean isRestart() {
+        if (getRestartFlag()) {
+            this.computer = RandomNumberGenerator.generate();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean getRestartFlag() {
+        Output.restart();
+        String restartFlag = Input.restartFlag();
+        return restartFlag.equals("1");
     }
 }
