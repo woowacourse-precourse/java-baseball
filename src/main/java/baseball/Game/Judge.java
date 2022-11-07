@@ -32,7 +32,7 @@ public class Judge {
     }
 
     // TODO "else 예약어를 쓰지 않았는가?" 객체지향 생활 체조 원칙 적용해보기
-    static void getGameScore(List<Integer> userNumbers, List<Integer> computerNumbers) {
+    static void getRoundScore(List<Integer> userNumbers, List<Integer> computerNumbers) {
         int strikeCnt = countStrike(userNumbers, computerNumbers);
         int ballCnt = countBall(userNumbers, computerNumbers);
         if (strikeCnt == 0 && ballCnt == 0) {
