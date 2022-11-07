@@ -1,25 +1,28 @@
 package baseball.view;
 
-import java.io.IOException;
-
-public class PlayingGameView extends Game{
+public class PlayingGameView extends GameView {
+    private static final String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
+    private static final String OUTPUT_BALL = "볼 ";
+    private static final String OUTPUT_STRIKE = "스트라이크";
+    private static final String OUTPUT_NOTHING = "낫싱";
     public void enterNumberPrint() {
         StringBuilder sb = new StringBuilder();
-        sb.append("숫자를 입력해주세요 : ");
+        sb.append(OUTPUT_ENTER_NUMBER);
         print(sb.toString());
     }
+
     public void gameResultPrint(int strike, int ball) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder output = new StringBuilder();
         if (ball > 0) {
-            sb.append(ball + "볼 ");
+            output.append(ball + OUTPUT_BALL);
         }
         if (strike > 0) {
-            sb.append(strike + "스트라이크 ");
+            output.append(strike + OUTPUT_STRIKE);
         }
         if (strike == 0 && ball == 0) {
-            sb.append("낫싱");
+            output.append(OUTPUT_NOTHING);
         }
-        sb.append("\n");
-        print(sb.toString());
+        newLine(output);
+        print(output.toString());
     }
 }

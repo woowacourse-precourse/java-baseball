@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Computer {
-    final static int ANSWER_SIZE = 3;
+    private static final int ANSWER_SIZE = 3;
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
     private List<Integer> computerAnswer;
 
     public Computer() {
@@ -19,10 +21,6 @@ public class Computer {
         return computerAnswer;
     }
 
-    public void setComputerAnswer(List<Integer> computerAnswer) {
-        this.computerAnswer = computerAnswer;
-    }
-
     public void computerNumberDecide(List<Integer> computerAnswer) {
         while (computerAnswer.size() < ANSWER_SIZE) {
             newRandomNumber(computerAnswer);
@@ -30,9 +28,8 @@ public class Computer {
     }
 
     public void newRandomNumber(List<Integer> computerAnswer) {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
         if (!computerAnswer.contains(randomNumber)) {
-//            System.out.println(randomNumber);
             computerAnswer.add(randomNumber);
         }
     }
