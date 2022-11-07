@@ -14,11 +14,11 @@ public class BaseballNumber {
     }
 
     public void validate(List<Integer> numbers) {
-        if(numbers.size() != NUMBER_CNT) {
+        if (numbers.size() != NUMBER_CNT) {
             throw new IllegalArgumentException("입력값의 크기는 3개여야 합니다");
         }
         HashSet<Integer> resultDuplicateRemoved = new HashSet<>(numbers);
-        if(!(resultDuplicateRemoved.size() == NUMBER_CNT)) {
+        if (!(resultDuplicateRemoved.size() == NUMBER_CNT)) {
             throw new IllegalArgumentException("값이 중복되서는 안됩니다");
         }
         Integer resultRangeValidated = (int) numbers.stream().filter(number -> 1 <= number && number <= 9).count();
@@ -37,7 +37,7 @@ public class BaseballNumber {
         System.out.println(baseballNumber);
         Integer strikeCnt = 0;
         Integer ballCnt = 0;
-        
+
         for (int i = 0; i < NUMBER_CNT; i++) {
             //입력자리수와 answer의 자리수가 같다면 -> strike
             if (answer.isStrike(baseballNumber.get(i), i)) {

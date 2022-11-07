@@ -27,7 +27,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("정상이면 오류를 일으키지 않는다")
             void 입력_정상() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -39,7 +39,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("세 개가 아니면 오류를 반환한다")
             void 입력_세개_아님_오류() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1);
@@ -51,7 +51,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("중복되면 오류를 반환한다")
             void 입력_중복_오류() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(1, 8, 8);
@@ -91,7 +91,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("모두 동일하면 3스트라이크, 0볼을 반환한다")
             void 쓰리_스트라이크() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -104,7 +104,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("2스트라이크, 0볼을 반환한다")
             void 투_스트라이크() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -117,7 +117,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("1스트라이크, 2볼을 반환한다")
             void 원_스트라이크_투_볼() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(4, 1, 9);
@@ -130,7 +130,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("1스트라이크, 1볼을 반환한다")
             void 원_스트라이크_원_볼() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -143,7 +143,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("1스트라이크, 0볼을 반환한다")
             void 원_스트라이크_0_볼() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -156,7 +156,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("0스트라이크, 1볼을 반환한다")
             void 영_스트라이크_원_볼() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -169,7 +169,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("0스트라이크, 2볼을 반환한다")
             void 영_스트라이크_투_볼() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -182,7 +182,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("0스트라이크, 3볼을 반환한다")
             void 영_스트라이크_쓰리_볼() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
@@ -195,7 +195,7 @@ class ApplicationTest extends NsTest {
             @Test
             @DisplayName("0스트라이크, 0볼을 반환한다")
             void 영_스트라이크_영_볼() {
-                Computer computer = new Computer(){
+                Computer computer = new Computer() {
                     @Override
                     protected List<Integer> makeNotDuplicatedRandomNumbers() {
                         return List.of(9, 1, 4);
