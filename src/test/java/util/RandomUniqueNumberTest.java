@@ -7,12 +7,12 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomNumberTest {
+public class RandomUniqueNumberTest {
 
     @Test
     @DisplayName("서로 다른 3자리 수 뽑기")
     void testGetRandomNumber() {
-        List<Integer> random3Numbers = RandomNumber.getRandom3Numbers();
+        List<Integer> random3Numbers = RandomUniqueNumber.getRandomUniqueNumbers(3);
 
         assertThat(random3Numbers.size()).isEqualTo(3);
         random3Numbers.stream()

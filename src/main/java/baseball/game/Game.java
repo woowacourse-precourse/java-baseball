@@ -3,7 +3,7 @@ package baseball.game;
 import baseball.ball.Balls;
 import util.Input;
 import util.Print;
-import util.RandomNumber;
+import util.RandomUniqueNumber;
 
 import java.util.List;
 
@@ -13,11 +13,13 @@ public class Game {
 
         while (gameStatus.isProgressing()) {
             gameStatus = play(RandomNumber.getRandom3Numbers());
+            List<Integer> randomUniqueNumbers = RandomUniqueNumber.getRandomUniqueNumbers(BALL_SIZE);
+            gameStatus = play(randomUniqueNumbers);
         }
     }
 
-    public GameStatus play(List<Integer> random3Numbers) {
-        Balls computer = new Balls(random3Numbers);
+    public GameStatus play(List<Integer> randomUniqueNumbers) {
+        Balls computer = new Balls(randomUniqueNumbers);
         Print.printStart();
 
         while (true) {
