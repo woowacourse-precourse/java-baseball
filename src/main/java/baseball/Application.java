@@ -15,13 +15,12 @@ public class Application {
             GameManager game = new GameManager();
             Database data = new Database();
             data.setAnswer(game.setAnswer());
-            Output output = new Output();
             while (!finish) {
                 data.setUserInput(game.userInput());
                 game.checkInput(data.getUserInput());
                 data.setBall(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[0]);
                 data.setStrike(CompareNumbers.checkNumber(data.getUserInput(), data.getAnswer())[1]);
-                output.printResult(data.getStrike(), data.getBall());
+                Output.printResult(data.getStrike(), data.getBall());
                 finish = game.isFinish(data.getStrike());
                 run = game.isAgain(finish);
             }
