@@ -9,6 +9,7 @@ public class GameController {
     private final OutputView outputView;
     private final InputView inputView;
     private final GameService gameService;
+    private final String RESTART_STATUS = "1";
 
     public GameController() {
         outputView = new OutputView();
@@ -18,26 +19,49 @@ public class GameController {
 
     public void play() {
         setGame();
+        startGame();
+        finishGame();
 
+        String restartStatus = inputView.inputRestartStatus();
+        if (isRestartGame(restartStatus)) {
+            play();
+        }
+    }
+
+    private void finishGame() {
+        outputView.printFinishGame();
+    }
+
+    private void startGame() {
         while (true) {
             String userNumbers = inputView.inputNumbers();
             gameService.setUserNumbers(userNumbers);
 
             BallCount ballCount = gameService.computeBallCount();
             outputView.printBallCount(ballCount);
-            if (gameService.isFinishGame(ballCount)) {
-                outputView.printFinishGame();
-                String restartStatus = inputView.inputRestartStatus();
-                if(restartStatus.equals("1")){
-                    gameService.computeComputerNumbers();
-                    continue;
-                }
+
+            if (isFinishGame(ballCount)) {
                 break;
             }
         }
     }
 
-    private void setGame(){
+
+    private boolean isRestartGame(String restartStatus) {
+        if (restartStatus.equals(RESTART_STATUS)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isFinishGame(BallCount ballCount) {
+        if (gameService.isFinishGame(ballCount)) {
+            return true;
+        }
+        return false;
+    }
+
+    private void setGame() {
         outputView.printGameStart();
         gameService.computeComputerNumbers();
     }
