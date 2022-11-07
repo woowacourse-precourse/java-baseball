@@ -58,10 +58,10 @@ public class Application {
         result.put("볼", 0);
         result.put("스트라이크", 0);
 
-        for (int index = 0; index < user.size(); index++) {
-            if (computer.contains(user.get(index)) && user.get(index) == computer.get(index)) {
+        for (int i = 0; i < user.size(); i++) {
+            if (computer.contains(user.get(i)) && user.get(i) == computer.get(i)) {
                 result.put("스트라이크", result.get("스트라이크") + 1);
-            } else if (computer.contains(user.get(index))) {
+            } else if (computer.contains(user.get(i))) {
                 result.put("볼", result.get("볼") + 1);
             }
         }
