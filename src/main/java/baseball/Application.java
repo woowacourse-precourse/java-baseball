@@ -65,7 +65,7 @@ public class Application {
             List<Integer> computerNum = randomNumGenerate();
             while(!gameOver) {
                 List<Integer> result = new ArrayList<>();
-                System.out.println("숫자를 입력해주세요 : ");
+                System.out.print("숫자를 입력해주세요 : ");
                 input = Console.readLine();
                 int userNum = Integer.parseInt(input);
                 List<Integer> user = new ArrayList<>();
@@ -77,11 +77,12 @@ public class Application {
                 errorHandle(user);
                 gameOver = ballStrikeNumCalculate(user, computerNum);
             }
+            System.out.println("3개의 숫자를 모두 맞히셧습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             input = Console.readLine();
             flag = Integer.parseInt(input);
             gameOver = false;
         }
-        System.out.println("종료되었습니다");
+        System.out.print("종료되었습니다");
     }
 }
