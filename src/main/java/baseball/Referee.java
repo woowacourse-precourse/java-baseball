@@ -3,7 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Referee {
+public final class Referee {
 
     public static final int CONTINUATION = 0;
     public static final int END = 1;

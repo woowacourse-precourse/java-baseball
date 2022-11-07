@@ -1,6 +1,6 @@
 package baseball;
 
-public class CommandChecker {
+public final class CommandChecker {
 
     private static final int COMMAND_LENGTH = 1;
     private static final String RESTART = "1";

@@ -1,6 +1,6 @@
 package baseball;
 
-public class GuessChecker {
+public final class GuessChecker {
 
     private static final int INPUT_LENGTH = 3;
     private static final char RANGE_START = '1';
