@@ -1,33 +1,31 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputView {
     private static final String NUMBER_PATTERN = "^[0-9]*$";
 
     public static List<Integer> getBalls() {
         System.out.println("숫자를 입력해주세요 : ");
-        int number = inputNumber();
-        List<Integer> digits = new ArrayList<>();
-        while (number > 0) {
-            digits.add(number % 10);
-            number /= 10;
-        }
-        return digits;
+        String number = inputNumber();
+        return Arrays.stream(number.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public static int restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int status = inputNumber();
-        return status;
+        String status = inputNumber();
+        return Integer.parseInt(status);
     }
 
-    private static int inputNumber() {
+    private static String inputNumber() {
         String input = Console.readLine();
         validateNumber(input);
-        return Integer.parseInt(input);
+        return input;
     }
 
     private static void validateNumber(String input) {
