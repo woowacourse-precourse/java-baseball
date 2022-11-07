@@ -15,6 +15,7 @@ public class Application {
         Application application = new Application();
         application.create();
         application.plyerNuber();
+        application.check();
     }
 
     //컴퓨터 임의의 숫자 3개
@@ -29,6 +30,7 @@ public class Application {
         System.out.println("컴퓨터 숫자= " + computer);
         return computer;
     }
+
     // 플레이어 입력값
     public List<Integer> plyerNuber() {
         System.out.println("숫자를 입력하세요");
@@ -40,6 +42,15 @@ public class Application {
         }
         System.out.println("내 숫자= " + playerNum);
         return playerNum;
+    }
+    public int check(List<Integer> computer, List<Integer> plyerNuber) {
+        int result = 0;
+        for (int i = 0; i < plyerNuber.size(); i++) {
+            if (computer.contains(plyerNuber.get(i))) {
+                result += 1;
+            }
+        }
+        return result;
     }
 }
 
