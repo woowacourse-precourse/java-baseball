@@ -148,26 +148,32 @@ public class Application {
     public static int countBalls(int userNumber, int answerNumber) {
 
         int strikes = countStrikes(userNumber, answerNumber);
-
         int balls = 0;
 
-        List<Integer> userDigits = new ArrayList<>();
-        List<Integer> answerDigits = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            userDigits.add(userNumber % 10);
-            answerDigits.add(answerNumber % 10);
-            userNumber /= 10;
-            answerNumber /= 10;
-        }
+        List<Integer> userDigits = integerToList(userNumber);
+        List<Integer> answerDigits = integerToList(answerNumber);
 
         for (int i = 0; i < 3; i++) {
 
-            int number = userDigits.get(i);
-            if (answerDigits.contains(number))
+            int digit = userDigits.get(i);
+            if (answerDigits.contains(digit))
                 balls += 1;
         }
+        balls -= strikes;
 
-        return balls - strikes;
+        return balls;
+    }
+
+    public static List<Integer> integerToList(Integer number) {
+
+        List<Integer> digits = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            digits.add(number % 10);
+            number /= 10;
+        }
+
+        return digits;
     }
 
     public static void printResult(int strikes, int balls) {
