@@ -11,7 +11,7 @@ public class Users {
 
     public Users(String input) {
         CheckLength(input);
-        CheckLange(input);
+        CheckRange(input);
         CheckContinuous(input);
         this.input = input;
     }
@@ -24,7 +24,7 @@ public class Users {
         return list;
     }
 
-    private void CheckLange(String input) {
+    private void CheckRange(String input) {
         for (int i = 0; i < 3; i += 1) {
             if (input.charAt(i) < '1' || input.charAt(i) > '9') throw new IllegalArgumentException();
         }
