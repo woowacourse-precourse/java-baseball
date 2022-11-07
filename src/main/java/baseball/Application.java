@@ -18,9 +18,7 @@ public class Application {
         while (controller.getGameState() == Game.GameState.RUNNING) {
             String userInput = Console.readLine();
             controller.setUserNumeralList(controller.toList(userInput));
-            controller.countBall();
-            controller.countStrike();
-
+            controller.judge();
 
 
         }

@@ -44,4 +44,13 @@ public class Game {
         }
         this.strikeCount = count;
     }
+
+    public int getBallCount(){
+        return ballCount;
+    }
+
+    public int getStrikeCount(){
+        return strikeCount;
+    }
+
 }

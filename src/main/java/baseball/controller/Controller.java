@@ -41,11 +41,34 @@ public class Controller {
         return userInputList;
     }
 
-    public void countBall() {
+    public void judge(){
+        countBall();
+        countStrike();
+        printJudgement();
+    }
+
+    public void printJudgement(){
+        if (game.getBallCount() != 0 && game.getStrikeCount() != 0){
+            view.printBallAndStrike(game.getBallCount(), game.getStrikeCount());
+        }
+        else if (game.getBallCount() != 0) {
+            view.printBall(game.getBallCount());
+        }
+        else if (game.getStrikeCount() != 0){
+            view.printStrike(game.getStrikeCount());
+        }
+        else {
+            view.printNothing();
+        }
+
+
+    }
+
+    private void countBall() {
         game.countBall(computer.getNumeralList(), user.getNumeralList());
     }
 
-    public void countStrike() {
+    private void countStrike() {
         game.countStrike(computer.getNumeralList(), user.getNumeralList());
     }
 
