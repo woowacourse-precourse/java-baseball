@@ -12,7 +12,12 @@ public class InputException {
     private static final String DUPLICATE = "중복된 숫자가 있습니다.";
     private static final String NUMBER_REGEX = "^[0-9]*$";
 
-    private InputException() {
+    private InputException() {}
+
+    public static void validatesNumber(String inputNumbers) {
+        isNumber(inputNumbers);
+        isLength(inputNumbers);
+        isDuplicate(inputNumbers);
     }
 
     public static void isNumber(String inputNumbers) {
