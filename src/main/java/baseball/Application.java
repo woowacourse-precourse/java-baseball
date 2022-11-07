@@ -128,15 +128,12 @@ public class Application {
     public static void compare(List<Integer> computer, String inputNumber) {
     	char[] arr = inputNumber.toCharArray();
     	for(int i=0;i<arr.length;i++) {
-    		// 해당 숫자가 포함되었을 때
-    		if(computer.contains(Character.getNumericValue(arr[i]))) {
-    			// 인덱스까지 같으면 스트라이크
-    			if(computer.indexOf(Character.getNumericValue(arr[i]))==i) {
+    		if(computer.contains(Character.getNumericValue(arr[i]))&&
+    								computer.indexOf(Character.getNumericValue(arr[i]))==i) {
     				strike+=1;
-    			}else // 다르면 볼
-    				ball+=1;
+    		}else
+    			ball+=1;
     		}
-    	}
     }
     
     // 결과 출력 메서드
