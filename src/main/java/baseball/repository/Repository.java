@@ -11,9 +11,11 @@ public class Repository {
     public int getScore() {
         return score;
     }
-    public Repository(){
+
+    public Repository() {
         this.score = generateScore();
     }
+
     public int generateScore() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
