@@ -5,6 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
     public static final int END = 2;
 
+    public static String userBaseballInput() {
+        return Console.readLine();
+    }
+
     public static int endOrRestartInput() {
         String input = Console.readLine();
 

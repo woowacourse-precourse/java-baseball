@@ -4,7 +4,6 @@ import baseball.domain.baseball.Baseballs;
 import baseball.domain.game.Result;
 import baseball.view.InputView;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballService {
     public void run(boolean isFirstStart) {
@@ -29,7 +28,7 @@ public class BaseballService {
     private void playGame(Baseballs computerBaseballs) {
         while (true) {
             OutputView.inputNumberMessage();
-            String input = Console.readLine();
+            String input = InputView.userBaseballInput();
             Baseballs userBaseballs = Baseballs.valueOf(input);
 
             GameService gameService = new GameService();
