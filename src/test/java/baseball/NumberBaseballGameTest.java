@@ -67,7 +67,7 @@ public class NumberBaseballGameTest extends NsTest {
     @Test
     void 랜덤한_1과_9사이의_숫자를_하나_생성한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Pitcher pitcher = new Pitcher();
-        ArrayList<Integer> thrownBallList = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+        ArrayList<Boolean> thrownBallList = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false, false));
 
         Method method = pitcher.getClass().getDeclaredMethod("getNotDuplicatedRandomNumber", List.class);
         method.setAccessible(true);
@@ -79,7 +79,7 @@ public class NumberBaseballGameTest extends NsTest {
     @Test
     void 투수가_랜덤한_1과_9사이의_숫자와_순서를_가진_공을_하나_생성한다() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Pitcher pitcher = new Pitcher();
-        ArrayList<Integer> thrownBallList = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+        ArrayList<Boolean> thrownBallList = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false, false));
 
         Method method = pitcher.getClass().getDeclaredMethod("throwRandomBall", List.class, int.class);
         method.setAccessible(true);
@@ -91,7 +91,7 @@ public class NumberBaseballGameTest extends NsTest {
     @Test
     void 투수가_생성한_공에_1과_9사이의_숫자가_있는지_확인() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Pitcher pitcher = new Pitcher();
-        ArrayList<Integer> thrownBallList = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+        ArrayList<Boolean> thrownBallList = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false, false));
 
         Method method = pitcher.getClass().getDeclaredMethod("throwRandomBall", List.class, int.class);
         method.setAccessible(true);
