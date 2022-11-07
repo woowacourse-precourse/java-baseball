@@ -17,9 +17,8 @@ public class Number {
 
 
     public List<Integer> checkNumberAndSave(String number) {
-        checkLength(number);
         checkNumber(number);
-        checkDuplicate(number);
+        checkDuplicateAndLength(number);
 
         List<Integer> num = new ArrayList<>();
         for (char ch : number.toCharArray()) {
@@ -39,28 +38,19 @@ public class Number {
         return num;
     }
 
-    private void checkLength(String number) {
-        if (number.length() == MAX_LEN) {
-            return;
-        }
-        throw new IllegalArgumentException(INPUT_ERROR);
-    }
-
     private void checkNumber(String number) {
-        if (number.matches(FROMONETONINE)) {
-            return;
+        if (!number.matches(FROMONETONINE)) {
+            throw new IllegalArgumentException(INPUT_ERROR);
         }
-        throw new IllegalArgumentException(INPUT_ERROR);
     }
 
-    private void checkDuplicate(String number) {
+    private void checkDuplicateAndLength(String number) {
         Set<Character> check = new HashSet<>();
         for (char ch : number.toCharArray()) {
             check.add(ch);
         }
-        if (check.size() == MAX_LEN) {
-            return;
+        if (check.size() != MAX_LEN) {
+            throw new IllegalArgumentException(INPUT_ERROR);
         }
-        throw new IllegalArgumentException(INPUT_ERROR);
     }
 }
