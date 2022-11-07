@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -29,8 +30,17 @@ public class Application {
      * 사용자가 세자리의 숫자를 입력, 각 자리값을 리스트에 담아 반환
      */
     public List<Integer> usersChoice(){
-        // TODO: 사용자가 세자리의 숫자를 입력, 각 자리값을 리스트에 담아 반환
-        return Collections.emptyList();
+
+        String input = Console.readLine();
+        inputExceptionHandler(input);   // 입력값 예외처리
+
+        List<Integer> user = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++){
+            user.add(Character.getNumericValue(input.charAt(i)));
+        }
+
+        return user;
     }
 
     /*
