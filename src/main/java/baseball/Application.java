@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
 
     }
-    static List<Integer> generate() {
+    static List<Integer> generateNum() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);

@@ -19,20 +19,20 @@ class ApplicationTest extends NsTest {
     class generateTest {
         @Test
         void 랜덤_숫자_테스트1_3자리_확인() {
-            List<Integer> random = Application.generate();
+            List<Integer> random = Application.generateNum();
             assertThat(random.size()).isEqualTo(3);
         }
 
         @Test
         void 랜덤_숫자_테스트2_숫자_범위_확인() {
-            List<Integer> random = Application.generate();
+            List<Integer> random = Application.generateNum();
             for (int i = 0; i < random.size(); i++) {
                 assertThat(random.get(i)).isBetween(0, 9);
             }
         }
         @Test
         void 랜덤_숫자_테스트2_중복_숫자() {
-            List<Integer> random = Application.generate();
+            List<Integer> random = Application.generateNum();
             Set<Integer> randomNumSet = new HashSet<>(random);
             Assertions.assertThat(random.size()).isSameAs(randomNumSet.size());
         }
