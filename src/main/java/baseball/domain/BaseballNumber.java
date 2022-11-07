@@ -9,7 +9,7 @@ public class BaseballNumber {
 
     static {
         for (int i = BASEBALL_NUMBER_LOWER_BOUND; i <= BASEBALL_NUMBER_UPPER_BOUND; i++) {
-            CACHE.putIfAbsent(i, new BaseballNumber(i));
+            CACHE.put(i, new BaseballNumber(i));
         }
     }
 
