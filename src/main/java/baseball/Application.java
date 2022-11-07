@@ -75,7 +75,9 @@ public class Application {
                 System.out.println("게임을 새로 시작혀려면 1, 종료하려면 2를 입력하세요.");
                 gameagain = camp.nextstep.edu.missionutils.Console.readLine();
                 integer_gameagain = Integer.parseInt(gameagain);
-
+                if(integer_gameagain == 1){
+                    again = true;
+                }
             }
         }
 
