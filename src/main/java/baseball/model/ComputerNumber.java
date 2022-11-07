@@ -14,7 +14,10 @@ public class ComputerNumber {
         Set<Integer> digitSet = new HashSet<>();
 
         while (digitSet.size() < 3) {
-            digitSet.add(getRandomNumber());
+            int newNum = getRandomNumber();
+            if (digitSet.contains(newNum))
+                continue;
+            digitSet.add(newNum);
         }
 
         digits = new ArrayList<>(digitSet);
