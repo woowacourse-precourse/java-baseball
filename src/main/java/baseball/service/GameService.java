@@ -40,7 +40,7 @@ public class GameService {
     }
 
     public void clearRandomBallNumber() {
-        randomBallNumber.randomNumbers.clear();
+        randomBallNumber.createRandomNumber().clear();
     }
 
     public String inputOneOrTwo() {
