@@ -38,8 +38,7 @@ public class GameSimulation {
             ball = computer.addBallScore(userNumber);
             strike = computer.addStrikeScore(userNumber);
 
-            String message = "결과 : " + checkResult();
-            System.out.println(message);
+            System.out.println(checkResult());
         }
     }
 
