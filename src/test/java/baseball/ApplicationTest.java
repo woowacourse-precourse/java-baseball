@@ -1,8 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -142,6 +145,18 @@ class ApplicationTest extends NsTest {
             baseBallGame.countBallCount();
             //then
             assertThat(baseBallGame.getBallCount()).isEqualTo(0);
+        }
+
+        @Test
+        void 재시작_토큰_예외처리() {
+            //given
+            String testToken = "0";
+            InputStream in = new ByteArrayInputStream(testToken.getBytes());
+            System.setIn(in);
+            //then
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                baseBallGame.setRestartToken();
+            });
         }
     }
 
