@@ -1,31 +1,48 @@
 package baseball.domain;
 
+import java.text.MessageFormat;
 import java.util.Arrays;
 
 public enum BaseballGameResult {
-    _3_STRIKE(Strike.valueOf(3), Ball.valueOf(0), "3스트라이크"),
-    _2_STRIKE(Strike.valueOf(2), Ball.valueOf(0), "2스트라이크"),
-    _1_STRIKE(Strike.valueOf(1), Ball.valueOf(0), "1스트라이크"),
-    _1_STRIKE_2_BALL(Strike.valueOf(1), Ball.valueOf(2), "2볼 1스트라이크"),
-    _1_STRIKE_1_BALL(Strike.valueOf(1), Ball.valueOf(1), "1볼 1스트라이크"),
-    _3_BALL(Strike.valueOf(0), Ball.valueOf(3), "3볼"),
-    _2_BALL(Strike.valueOf(0), Ball.valueOf(2), "2볼"),
-    _1_BALL(Strike.valueOf(0), Ball.valueOf(1), "1볼"),
-    _NOTHING(Strike.valueOf(0), Ball.valueOf(0), "낫싱");
+    _3_STRIKE(Strike.valueOf(3), Ball.valueOf(0)),
+    _2_STRIKE(Strike.valueOf(2), Ball.valueOf(0)),
+    _1_STRIKE(Strike.valueOf(1), Ball.valueOf(0)),
+    _1_STRIKE_2_BALL(Strike.valueOf(1), Ball.valueOf(2)),
+    _1_STRIKE_1_BALL(Strike.valueOf(1), Ball.valueOf(1)),
+    _3_BALL(Strike.valueOf(0), Ball.valueOf(3)),
+    _2_BALL(Strike.valueOf(0), Ball.valueOf(2)),
+    _1_BALL(Strike.valueOf(0), Ball.valueOf(1)),
+    _NOTHING(Strike.valueOf(0), Ball.valueOf(0));
+
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String DEFAULT_MESSAGE_FORMAT = "{0}{1}";
+    private static final String DELIMITER_MESSAGE_FORMAT = "{0} {1}";
 
     private final Strike strike;
     private final Ball ball;
-    private final String message;
 
-    BaseballGameResult(Strike strike, Ball ball, String message) {
+    BaseballGameResult(Strike strike, Ball ball) {
         this.strike = strike;
         this.ball = ball;
-        this.message = message;
     }
 
     @Override
     public String toString() {
-        return message;
+        if (isNothing()) {
+            return NOTHING_MESSAGE;
+        }
+        if (isNeedDelimiter()) {
+            return MessageFormat.format(DELIMITER_MESSAGE_FORMAT, ball, strike);
+        }
+        return MessageFormat.format(DEFAULT_MESSAGE_FORMAT, ball, strike);
+    }
+
+    private boolean isNothing() {
+        return this.equals(_NOTHING);
+    }
+
+    private boolean isNeedDelimiter() {
+        return this.equals(_1_STRIKE_1_BALL) || this.equals(_1_STRIKE_2_BALL);
     }
 
     public static BaseballGameResult toEnum(Strike strike, Ball ball) {
