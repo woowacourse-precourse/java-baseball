@@ -13,10 +13,10 @@ public class Application {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
         boolean isTriple = (readLine.length() == 3);
 
-        if (isNumeric || isTriple) {
-            throw new IllegalArgumentException();
+        if (isNumeric && isTriple) {
+            return readLine;
         }
-        return readLine;
+        throw new IllegalArgumentException();
     }
 
     public static void result(List<Integer> answer, List<Integer> userInput) {
