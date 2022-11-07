@@ -89,6 +89,36 @@ class BaseballGameTest extends NsTest {
         assertThat(output()).contains("낫싱").doesNotContain("볼", "스트라이크");
     }
 
+    @Test
+    public void 사용자입력_재시작_테스트() {
+
+        //given
+        String restartGame = "1";
+
+        //when
+        InputStream in = new ByteArrayInputStream(restartGame.getBytes());
+        System.setIn(in);
+
+        boolean restart = baseballGame.restart();
+
+        //then
+        assertThat(restart).isEqualTo(true);
+    }
+
+    @Test
+    public void 사용자입력_종료_테스트() {
+        //given
+        String endGame = "2";
+
+        //when
+        InputStream in = new ByteArrayInputStream(endGame.getBytes());
+        System.setIn(in);
+
+        boolean restart = baseballGame.restart();
+
+        //then
+        assertThat(restart).isEqualTo(false);
+    }
 
     @Override
     public void runMain() {

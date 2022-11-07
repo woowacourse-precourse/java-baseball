@@ -56,4 +56,20 @@ class InputValidationTest {
 
     }
 
+
+    @Test
+    public void 재시작_종료_입력_검증() {
+        //given
+        String input1 = "a";
+        String input2 = "22";
+
+        //when
+
+        //then
+        assertThatThrownBy(() -> inputValidation.restartValidation(input1))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> inputValidation.restartValidation(input2))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
