@@ -1,11 +1,9 @@
 package baseball;
 
-import baseball.Input.InputManageable;
 import baseball.Input.InputManager;
 import baseball.Output.Message;
 import baseball.Output.OutputManager;
 
-import java.util.List;
 
 public class Application {
     private InputManager inputManager;
@@ -20,44 +18,54 @@ public class Application {
         outputManager = new OutputManager();
         gameController = new GameController();
     }
+    private void playGameUntilCorrectAnswer()
+    {
+        String userInput = new String();
+
+        while(!gameController.isAnswer(userInput))
+        {
+            outputManager.output(Message.NUMBER_INPUT_REQUEST_MESSAGE);
+            userInput = inputManager.readInputFromUser();
+            String hintMessage = gameController.getHint(userInput);
+            outputManager.output(hintMessage);
+        }
+    }
+
+    private boolean playNextGameFromUserInput()
+    {
+        while(true)
+        {
+            try
+            {
+                String userInput = inputManager.readInputFromUser();
+                return playNextGame(Integer.parseInt(userInput));
+            }
+            catch (IllegalArgumentException e)
+            {
+                outputManager.output(e.getMessage());
+            }
+        }
+    }
 
     public void doGame()
     {
-        boolean doNextGame = true;
-        while(doNextGame)
+        boolean playNextGame = true;
+        outputManager.output(Message.GAME_START_MESSAGE);
+        while(playNextGame)
         {
             gameController.generateRandomNumber();
-            String userInput = new String();
 
-            while(!gameController.isAnswer(userInput))
-            {
-                outputManager.output(Message.NUMBER_INPUT_REQUEST_MESSAGE);
-                userInput = inputManager.readInputFromUser();
-                String hintMessage = gameController.getHint(userInput);
-                outputManager.output(hintMessage);
-            }
+            playGameUntilCorrectAnswer();
 
             outputManager.output(Message.INPUT_CORRECT_MESSAGE);
 
-            while(true)
-            {
-                try
-                {
-                    userInput = inputManager.readInputFromUser();
-                    doNextGame = hasNextGame(Integer.parseInt(userInput));
-                    break;
-                }
-                catch (IllegalArgumentException e)
-                {
-                    outputManager.output(e.getMessage());
-                }
-            }
-
+            playNextGame = playNextGameFromUserInput();
         }
 
+        outputManager.output(Message.GAME_END_MESSAGE);
     }
 
-    private Boolean hasNextGame(Integer userInput)
+    private Boolean playNextGame(Integer userInput)
     {
         if(userInput.equals(doNextGameInput))
         {
@@ -73,6 +81,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
         new Application().doGame();
     }
 }
