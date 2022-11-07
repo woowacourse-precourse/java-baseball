@@ -3,12 +3,10 @@ package baseball;
 public class BaseballGameResultDto {
     int strike;
     int ball;
-    boolean isCorrect;
 
-    public BaseballGameResultDto(int strike,int ball,boolean isCorrect){
+    public BaseballGameResultDto(int strike,int ball){
         this.strike = strike;
         this.ball = ball;
-        this.isCorrect = isCorrect;
     }
 
     public int getStrike() {
@@ -17,9 +15,5 @@ public class BaseballGameResultDto {
 
     public int getBall() {
         return ball;
-    }
-
-    public boolean getIsCorrect(){
-        return isCorrect;
     }
 }
