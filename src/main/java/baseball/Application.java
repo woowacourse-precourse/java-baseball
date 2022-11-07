@@ -27,6 +27,13 @@ public class Application {
         if (userNumber.length() != 3 || userNumber.contains("0")) {
             throw new IllegalArgumentException();
         }
+        if (isDistinct(userNumber)) {
+            throw new IllegalArgumentException();
+        }
         return true;
+    }
+
+    static boolean isDistinct(String number) {
+        return number.length() != Stream.of(number.split("")).distinct().count();
     }
 }
