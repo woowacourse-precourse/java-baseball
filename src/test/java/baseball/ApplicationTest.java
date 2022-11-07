@@ -60,6 +60,20 @@ class ApplicationTest extends NsTest {
         assertThat(Exception.deduplicated(list)).isEqualTo(result);
     }
 
+    @Test
+    void 유효한_사용자번호길이() {
+        List<Integer> list = List.of(1, 2, 3);
+        boolean result = Exception.isInvalidLength(list);
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void 유효하지않은_사용자번호길이() {
+        List<Integer> list = List.of(1, 2, 3, 4, 5);
+        boolean result = Exception.isInvalidLength(list);
+        assertThat(result).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
