@@ -43,8 +43,8 @@ public class StringTest {
         String input = "abc";
 
         assertThatThrownBy(() -> input.charAt(5))
-                .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range: 5");
+            .isInstanceOf(StringIndexOutOfBoundsException.class)
+            .hasMessageContaining("String index out of range: 5");
     }
 
 }
