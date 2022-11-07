@@ -17,7 +17,7 @@ public class UserInput {
             char c = input.charAt(idx);
             int num = Character.getNumericValue(c);
 
-            if (num <= 0) {
+            if (num <= 0 || inputList.contains(num)) {
                 throw new IllegalArgumentException();
             }
 
