@@ -20,15 +20,19 @@ public class GameService {
         List<Integer> computerRandomNumberList = getComputerRandomNumbers();
         System.out.println(computerRandomNumberList);
         strike = Constant.STRIKE_DEFAULT;
-        while(strike != Constant.THREE_STRIKE_NUMBER) {
+        while (strike != Constant.THREE_STRIKE_NUMBER) {
             initNumberStrikeAndBallCount();
             List<Integer> userNumberList = getUserInputNumbers();
             setSumOfStrikeCountAndBallCount(computerRandomNumberList, userNumberList);
-            outputView.printNumberBaseballResult(getBallCount(),getStrikeCount());
+            outputView.printNumberBaseballResult(getBallCount(), getStrikeCount());
 
         }
 
     }
 
+    public void initNumberStrikeAndBallCount() {
+        strike = Constant.STRIKE_DEFAULT;
+        ball = Constant.BALL_DEFAULT;
+    }
 }
 
