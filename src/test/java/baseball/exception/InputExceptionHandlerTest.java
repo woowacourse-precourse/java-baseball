@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
-class InputExceptionTest extends NsTest {
+class InputExceptionHandlerTest extends NsTest {
 
 	@Test
 	void containZeroExceptionTest() {
@@ -37,7 +37,7 @@ class InputExceptionTest extends NsTest {
 	@Test
 	void restartOrExitInputExceptionTest() {
 		String input = "3";
-		assertThatThrownBy(() -> InputException.isRestartOrExitNumber(input))
+		assertThatThrownBy(() -> InputExceptionHandler.isRestartOrExitNumber(input))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 

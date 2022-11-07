@@ -1,16 +1,16 @@
 package baseball.view;
 
-import baseball.exception.InputException;
+import baseball.exception.InputExceptionHandler;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 	public static String userNumber() {
 		OutputView.printInputUserNumber();
-		return InputException.checkNumberForm(Console.readLine());
+		return InputExceptionHandler.checkNumberForm(Console.readLine());
 	}
 
 	public static String restartOrExit() {
 		OutputView.printEndGame();
-		return InputException.isRestartOrExitNumber(Console.readLine());
+		return InputExceptionHandler.isRestartOrExitNumber(Console.readLine());
 	}
 }

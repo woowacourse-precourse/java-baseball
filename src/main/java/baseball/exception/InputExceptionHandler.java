@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import baseball.domain.ConstValue;
 
-public class InputException {
+public class InputExceptionHandler {
 	private static final String NUMBER_REGEX = "^[1-9]*$";
 	private static final String ZERO_NUMBER = "0";
 
