@@ -27,6 +27,12 @@ public class Baseball {
         }
     }
 
+    private static void validateInputNumberCnt(String inputNumber) {
+        if (inputNumber.length() != TOTAL_BALL_CNT){
+            throw new IllegalArgumentException("Exception because of inputted Number: " + inputNumber);
+        }
+    }
+
     public static Baseball createComputer() {
         LinkedHashSet<Integer> computerBalls = new LinkedHashSet<>();
 
@@ -39,7 +45,7 @@ public class Baseball {
     public static Baseball createPlayer(String inputNumber) {
         LinkedHashSet<Integer> playerBalls = new LinkedHashSet<>();
         int num;
-
+        validateInputNumberCnt(inputNumber);
         for (int i = 0; i < inputNumber.length(); i++) {
             num = Character.getNumericValue(inputNumber.charAt(i));
             playerBalls.add(num);
