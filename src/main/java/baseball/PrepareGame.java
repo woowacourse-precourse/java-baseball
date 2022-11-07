@@ -52,4 +52,12 @@ public class PrepareGame {
         }
         return userNumberList;
     }
+
+    public Boolean isGameExit(){
+        String gameOver = Console.readLine();
+        if(gameOver.equals("1")){
+            return true;
+        }
+        return false;
+    }
 }

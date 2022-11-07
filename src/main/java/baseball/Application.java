@@ -7,7 +7,9 @@ public class Application {
     private static PrepareGame prepareGame = new PrepareGame();
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        numberBaseballGame();
+        do {
+            numberBaseballGame();
+        } while(prepareGame.isGameExit());
     }
 
     private static void numberBaseballGame(){
