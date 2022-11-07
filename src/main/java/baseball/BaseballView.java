@@ -10,7 +10,6 @@ public class BaseballView {
 
     ArrayList<Integer> inputNumbers = new ArrayList<>();
 
-    //// TODO: 2022-11-07 입력값 예외처리
     public void inputPlayerNumber(){
         System.out.print("숫자를 입력해주세요 : ");
         String str = Console.readLine();
@@ -69,9 +68,8 @@ public class BaseballView {
 
     }
 
-    //// TODO: 2022-11-07 입력값에 대한 예외처리
     public int continueGame() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+        //System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
         String str = Console.readLine();
 
         continueValidCheck(str);

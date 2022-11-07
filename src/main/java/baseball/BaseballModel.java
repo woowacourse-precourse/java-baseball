@@ -37,6 +37,4 @@ public class BaseballModel {
 
         targetNumbers.add(number);
     }
-
-    //// TODO: 2022-11-07  배열 생성에 관한 예외처리
 }

@@ -9,6 +9,7 @@ public class NumberBaseball {
         while (true) {
             controller.startBaseBall();
             if(controller.checkEndGame()) {
+                System.out.println("게임 종료");
                 break;
             }
         }
