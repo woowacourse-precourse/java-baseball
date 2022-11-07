@@ -9,38 +9,38 @@ import java.util.regex.Pattern;
 
 public class Application {
     private static List<Integer> createRandomNumber() {
-        List<Integer> computer_num = new ArrayList<>();
+        List<Integer> computerNum = new ArrayList<>();
 
-        while (computer_num.size() < 3) {
-            int random_number = Randoms.pickNumberInRange(1, 9);
-            if (!computer_num.contains(random_number)) {
-                computer_num.add(random_number);
+        while (computerNum.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNum.contains(randomNumber)) {
+                computerNum.add(randomNumber);
             }
         }
-        return computer_num;
+        return computerNum;
     }
 
     private static List<Integer> numToDigitList(String number) {
-        List<Integer> number_list = new ArrayList<>();
+        List<Integer> numberList = new ArrayList<>();
 
-        String[] number_split = number.split("");
+        String[] numberSplit = number.split("");
 
-        for (String num : number_split) {
-            int to_int = Integer.parseInt(num);
-            number_list.add(to_int);
+        for (String num : numberSplit) {
+            int toInt = Integer.parseInt(num);
+            numberList.add(toInt);
         }
 
-        return number_list;
+        return numberList;
     }
 
     private static int countStrike(
-            List<Integer> computer_number,
-            List<Integer> user_number
+            List<Integer> computerNumber,
+            List<Integer> userNumber
     ) {
         int count = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (computer_number.get(i).equals(user_number.get(i))) {
+            if (computerNumber.get(i).equals(userNumber.get(i))) {
                 count += 1;
             }
         }
@@ -49,14 +49,14 @@ public class Application {
     }
 
     private static int countBall(
-            List<Integer> computer_number,
-            List<Integer> user_number,
+            List<Integer> computerNumber,
+            List<Integer> userNumber,
             int strike
     ) {
         int count = 0;
 
-        for (int number : user_number) {
-            if (computer_number.contains(number)) {
+        for (int number : userNumber) {
+            if (computerNumber.contains(number)) {
                 count += 1;
             }
         }
@@ -92,34 +92,34 @@ public class Application {
         return hint;
     }
 
-    private static void validateUserNumber(String user_number) {
-        if (user_number.length() != 3) {
+    private static void validateUserNumber(String userNumber) {
+        if (userNumber.length() != 3) {
             throw new IllegalArgumentException("입력된 값의 길이가 3이 아닙니다.");
         }
 
         String pattern = "^[1-9]*$";
-        boolean is_match = Pattern.matches(pattern, user_number);
+        boolean isMatch = Pattern.matches(pattern, userNumber);
 
-        if (!is_match) {
+        if (!isMatch) {
             throw new IllegalArgumentException("1-9 외의 값이 입력되었습니다.");
         }
 
-        String[] number_split = user_number.split("");
-        String digit1 = number_split[0];
-        String digit2 = number_split[1];
-        String digit3 = number_split[2];
-        boolean is_duplicate = digit1.equals(digit2) || digit1.equals(digit3) || digit2.equals(digit3);
+        String[] numberSplit = userNumber.split("");
+        String digit1 = numberSplit[0];
+        String digit2 = numberSplit[1];
+        String digit3 = numberSplit[2];
+        boolean isDuplicate = digit1.equals(digit2) || digit1.equals(digit3) || digit2.equals(digit3);
 
-        if (is_duplicate) {
+        if (isDuplicate) {
             throw new IllegalArgumentException("중복된 수가 입력되었습니다.");
         }
     }
 
-    private static void validateGameStart(String user_input) {
+    private static void validateGameStart(String userInput) {
         String pattern = "^[1-2]$";
-        boolean is_match = Pattern.matches(pattern, user_input);
+        boolean isMatch = Pattern.matches(pattern, userInput);
 
-        if (!is_match) {
+        if (!isMatch) {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
     }
@@ -128,10 +128,10 @@ public class Application {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String user_input = Console.readLine();
-            validateGameStart(user_input);
+            String userInput = Console.readLine();
+            validateGameStart(userInput);
 
-            return user_input;
+            return userInput;
         }
 
         return "1";
@@ -139,22 +139,22 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> computer_num = createRandomNumber();
-        String user_input = "1";
+        List<Integer> computerNum = createRandomNumber();
+        String userInput = "1";
 
-        while (user_input.equals("1")) {
+        while (userInput.equals("1")) {
             System.out.print("숫자를 입력해주세요 : ");
-            String guess_number = Console.readLine();
-            validateUserNumber(guess_number);
-            List<Integer> user_num = numToDigitList(guess_number);
-            int strike = countStrike(computer_num, user_num);
-            int ball = countBall(computer_num, user_num, strike);
+            String guessNumber = Console.readLine();
+            validateUserNumber(guessNumber);
+            List<Integer> user_num = numToDigitList(guessNumber);
+            int strike = countStrike(computerNum, user_num);
+            int ball = countBall(computerNum, user_num, strike);
             System.out.println(setHint(ball, strike));
 
-            user_input = isAnswer(strike);
+            userInput = isAnswer(strike);
 
-            if (strike == 3 && user_input.equals("1")) {
-                computer_num = createRandomNumber();
+            if (strike == 3 && userInput.equals("1")) {
+                computerNum = createRandomNumber();
             }
         }
     }
