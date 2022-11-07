@@ -23,6 +23,10 @@ public class ArrayNumber {
         return this.digits;
     }
 
+    private boolean lengthisthree(String input) {
+        return input.length() == cnt_nbr;
+    }
+
     private boolean isMinToMax(String input) {
         Pattern numberPattern = Pattern.compile(minus);
         return numberPattern.matcher(input).matches();
