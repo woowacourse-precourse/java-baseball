@@ -10,4 +10,5 @@ public class User {
         CheckUtil.isDuplicate(userInput);
         return true;
     }
+
 }

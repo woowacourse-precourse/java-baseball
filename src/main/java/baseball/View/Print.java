@@ -11,4 +11,8 @@ public class Print {
         String format = String.format(Constant.USER_INPUT, input);
         System.out.println(format);
     }
+
+    public void hintMessage(String input) {
+        System.out.println(input);
+    }
 }

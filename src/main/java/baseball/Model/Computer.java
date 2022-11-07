@@ -1,12 +1,17 @@
 package baseball.Model;
 
+
 import baseball.Util.RandomUtil;
-import java.util.List;
 
 public class Computer {
-    private List<Integer> computerInput;
+    private String computerInput;
+    private final Ball ball = new Ball();
 
     public void setComputerInput() {
         computerInput = RandomUtil.randomNum();
+    }
+
+    public String ballHintCheck(String userInput) {
+        return ball.ballHintResult(userInput, computerInput);
     }
 }
