@@ -50,9 +50,9 @@ public class GameSystem {
 
         do {
             GameMessagePrinter.printInput();
-            String inputNumber = readLine();
+            String input = readLine();
 
-            player.setNumber(inputNumber);
+            player.setNumber(input);
 
             this.scoreBoard.initiate();
             this.calculateScore();
