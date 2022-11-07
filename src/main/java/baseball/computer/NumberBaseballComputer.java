@@ -40,11 +40,11 @@ public class NumberBaseballComputer implements Computer{
      * 볼, 스트라이크, 낫싱 출력
      */
     @Override
-    public void printCorrectResult(String gameValueOfUser, List<Integer> computerNumbers) {
+    public String storeCorrectResult(String gameValueOfUser, List<Integer> computerNumbers) {
         int gameNumberOfUser = validateUserNumber(gameValueOfUser);
         Map<Integer, Integer> ballOrStrikeNumbers =
                 countBallOrStrike(convertUserNumber(gameNumberOfUser), computerNumbers);
-        choiceCorrectResult(ballOrStrikeNumbers);
+        return choiceCorrectResult(ballOrStrikeNumbers);
     }
 
     private int validateUserNumber(String gameValueOfUser) {
@@ -76,26 +76,22 @@ public class NumberBaseballComputer implements Computer{
         return ballOrStrikeNumbers;
     }
 
-    private void choiceCorrectResult(Map<Integer, Integer> ballOrStrikeNumbers) {
+    private String choiceCorrectResult(Map<Integer, Integer> ballOrStrikeNumbers) {
         int countBall = ballOrStrikeNumbers.get(BALL);
         int countStrike = ballOrStrikeNumbers.get(STRIKE);
-        if (countBall == 0 && countStrike == 0) {
-            System.out.println("낫싱");
-            return;
-        }
         if (countBall == 0 && countStrike > 0) {
-            System.out.println(ballOrStrikeNumbers.get(STRIKE) + "스트라이크");
-            return;
+            if (countStrike == 3) {
+                return "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            }
+            return ballOrStrikeNumbers.get(STRIKE) + "스트라이크";
         }
         if (countStrike == 0 && countBall > 0) {
-            System.out.println(ballOrStrikeNumbers.get(BALL) + "볼");
-            return;
+            return ballOrStrikeNumbers.get(BALL) + "볼";
         }
         if (countBall > 0 && countStrike > 0) {
-            System.out.println(ballOrStrikeNumbers.get(BALL) + "볼 "
-                    + ballOrStrikeNumbers.get(STRIKE) + "스트라이크");
-            return;
+            return ballOrStrikeNumbers.get(BALL) + "볼 " + ballOrStrikeNumbers.get(STRIKE) + "스트라이크";
         }
+        return "낫싱";
     }
 
     private List<Integer> convertUserNumber(int gameNumberOfUser) {

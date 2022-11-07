@@ -18,5 +18,5 @@ public interface Computer {
     /**
      * 사용자값을 확인하여 결과값 출력
      */
-    void printCorrectResult(String gameValueOfUser, List<Integer> computerNumbers);
+    String storeCorrectResult(String gameValueOfUser, List<Integer> computerNumbers);
 }

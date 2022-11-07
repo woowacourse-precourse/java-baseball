@@ -17,8 +17,12 @@ public class Application {
         Computer computer = appConfig.computer();
         List<Integer> computerNumbers = computer.createOtherNumber();
 
-        manager.printInputGameValue();
-        String gameValueOfUser = manager.inputGameValue();
-        computer.printCorrectResult(gameValueOfUser, computerNumbers);
+        String resultValue = "";
+        while (!resultValue.equals("3개의 숫자를 모두 맞히셨습니다! 게임 종료")) {
+            manager.printInputGameValue();
+            String gameValueOfUser = manager.inputGameValue();
+            resultValue = computer.storeCorrectResult(gameValueOfUser, computerNumbers);
+            manager.printCorrectResult(resultValue);
+        }
     }
 }

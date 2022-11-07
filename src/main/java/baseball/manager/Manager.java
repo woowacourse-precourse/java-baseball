@@ -22,4 +22,9 @@ public interface Manager {
      * 사용자에게 입력값 받기
      */
     String inputGameValue();
+
+    /**
+     * 사용자에게 입력받은 결과값 출력
+     */
+    void printCorrectResult(String resultValue);
 }

@@ -33,4 +33,12 @@ public class NumberBaseballManager implements Manager{
     public String inputGameValue() {
         return Console.readLine();
     }
+
+    /**
+     * 사용자에게 입력받은 숫자 야구 게임 결과값 출력
+     */
+    @Override
+    public void printCorrectResult(String resultValue) {
+        System.out.println(resultValue);
+    }
 }
