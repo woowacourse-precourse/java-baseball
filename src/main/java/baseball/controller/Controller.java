@@ -34,7 +34,6 @@ public class Controller {
     public void playGame() {
         computerNumber = computer.addRandomNumbers();
         InputView.startMessage();
-        System.out.println(computerNumber);
         while (!isGameEnd) {
             String numbers = InputView.gameMessage();
             try {
