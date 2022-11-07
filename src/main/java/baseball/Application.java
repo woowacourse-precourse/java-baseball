@@ -26,16 +26,15 @@ public class Application {
         System.out.println(gameEndMessage);
         System.out.println(playerOptionMessage);
 
-        String playerSelect = Console.readLine();
-        int playerSelectNumber = Integer.parseInt(playerSelect);
+        int playerSelect = Integer.parseInt(Console.readLine());
 
-        if(playerSelectNumber!=END && playerSelectNumber!=RESTART){
+        if(playerSelect!=END && playerSelect!=RESTART){
             throw new IllegalArgumentException();
         }
-        return playerSelectNumber;
+        return playerSelect;
     }
 
-    private static void startGame() {
+    public static void startGame() {
         boolean[] isBall = new boolean[10];
         Arrays.fill(isBall, false);
         String computerNumber = setComputerNumber();
@@ -49,28 +48,39 @@ public class Application {
                 throw new IllegalArgumentException();
             }
 
-            if (compareNumbers(isBall, computerNumber, playerNumber)) break;
+            if (compareNumbers(isBall, computerNumber, playerNumber)) {
+                break;
+            }
         }
     }
 
-    private static boolean compareNumbers(boolean[] isBall, String computerNumber, String playerNumber) {
+    private static boolean compareNumbers(boolean[] isBall,
+                                          String computerNumber,
+                                          String playerNumber) {
         int ballCount = 0;
         int strikeCount = 0;
         for (int i = 0; i < computerNumber.length(); i++) {
             char computerNum = computerNumber.charAt(i);
             char playerNum = playerNumber.charAt(i);
 
-            if (computerNum == playerNum)  strikeCount++;
-            else if (isBall[playerNum - '0'])  ballCount++;
+            if (computerNum == playerNum)  {
+                strikeCount++;
+            } else if (isBall[playerNum - '0'])  {
+                ballCount++;
+            }
         }
         System.out.println(makeCountMessage(ballCount, strikeCount));
         return strikeCount == 3;
     }
 
     public static String makeCountMessage(Integer ballCount, Integer strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) return "낫싱";
-        if (ballCount == 0)  return strikeCount.toString() + "스트라이크";
-        if (strikeCount == 0) return ballCount.toString() + "볼";
+        if (ballCount == 0 && strikeCount == 0) {
+            return "낫싱";
+        } else if (ballCount == 0) {
+            return strikeCount.toString() + "스트라이크";
+        } else if (strikeCount == 0) {
+            return ballCount.toString() + "볼";
+        }
         return ballCount.toString() + "볼" + " " + strikeCount.toString() + "스트라이크";
     }
 
@@ -85,14 +95,20 @@ public class Application {
         // 숫자 중복확인 배열
         boolean[] includedNumber=new boolean[10];
         Arrays.fill(includedNumber, false);
+
         if (playerNumber.length() != 3) {
             return false;
         }
 
         for (int i = 0; i < playerNumber.length(); i++) {
             char num = playerNumber.charAt(i);
-            if (num < '1' || num > '9') return false;
-            if (includedNumber[num - '0']) return false;
+
+            if (num < '1' || num > '9') {
+                return false;
+            } else if (includedNumber[num - '0']) {
+                return false;
+            }
+
             includedNumber[num - '0'] = true;
         }
         return true;
