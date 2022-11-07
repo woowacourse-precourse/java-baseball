@@ -21,8 +21,8 @@ public class Game {
 
 	public int play(PlayerComputer computer, PlayerUser user) {
 		int numberOfStrike;
-		String answer = computer.getRandomNumber();
 
+		String answer = computer.getRandomNumber();
 		do {
 			String userInput = user.getInputNumber();
 			List<Integer> judgement = compareUserInputToAnswer(userInput, answer);
@@ -32,25 +32,6 @@ public class Game {
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
 		return askReplay();
-	}
-
-	private int askReplay() {
-		String input;
-		int replayOrEndgame;
-
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		try {
-			input = Console.readLine();
-			replayOrEndgame = Integer.parseInt(input);
-		} catch (IllegalArgumentException e) {
-			// System.out.println("거 제대로 좀 입력합시다! 네? 아시겠어요? 아시겠냐구요?!?!");
-			throw new IllegalArgumentException();
-		}
-		return replayOrEndgame;
-	}
-
-	private boolean isCorrectAnswer(int numberOfStrike) {
-		return numberOfStrike == 3;
 	}
 
 	private List<Integer> compareUserInputToAnswer(String userInput, String answer) {
@@ -71,6 +52,30 @@ public class Game {
 		return judgement;
 	}
 
+	private void printMessage(List<Integer> judgement) {
+		String msg = generateMessage(judgement);
+		System.out.println(msg);
+	}
+
+	private boolean isCorrectAnswer(int numberOfStrike) {
+		return numberOfStrike == 3;
+	}
+
+	private int askReplay() {
+		String input;
+		int replayOrEndgame;
+
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		try {
+			input = Console.readLine();
+			replayOrEndgame = Integer.parseInt(input);
+		} catch (IllegalArgumentException e) {
+			// System.out.println("거 제대로 좀 입력합시다! 네? 아시겠어요? 아시겠냐구요?!?!");
+			throw new IllegalArgumentException();
+		}
+		return replayOrEndgame;
+	}
+
 	private int countStrikes(char userDigit, char answerDigit) {
 		if (userDigit == answerDigit) {
 			return 1;
@@ -85,11 +90,6 @@ public class Game {
 			return 1;
 		}
 		return 0;
-	}
-
-	private void printMessage(List<Integer> judgement) {
-		String msg = generateMessage(judgement);
-		System.out.println(msg);
 	}
 
 	private String generateMessage(List<Integer> judgement) {
