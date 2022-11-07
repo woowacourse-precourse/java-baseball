@@ -16,6 +16,10 @@ public class Digit {
         }
     }
 
+    public boolean isSameValue(int number) {
+        return digitValue == number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
