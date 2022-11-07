@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Service {
@@ -69,17 +70,18 @@ public class Service {
         return ballCountMap;
     }
 
-    public List<String> getUserInputToList(String userInput, int length, String pattern){
+    public List<String> getUserInputToList(String userInput, int lengthCondition, Pattern patternCondition){
         List<String> userInputList = stringToList(userInput);
         Set<String> deduplicateUserInput = new HashSet<>(userInputList);
 
-        if(userInputList.size() != length || deduplicateUserInput.size() != length){
+        if(userInputList.size() != lengthCondition || deduplicateUserInput.size() != lengthCondition){
             throw new IllegalArgumentException();
         }
 
         List<String> patternExclusionList = userInputList.stream()
-                .filter(userNumber -> userNumber.matches(pattern))
+                .filter(userNumber -> !patternCondition.matcher(userInput).matches())
                 .collect(Collectors.toList());
+
         if(patternExclusionList.size() != 0){
             throw new IllegalArgumentException();
         }

@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.regex.Pattern;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -137,10 +138,10 @@ public class ServiceTest {
 
     @DisplayName("유저의 문자열을 한글자씩 잘라 리스트로 반환하는 메서드 - 예외 테스트")
     @Test
-    void getUserInputToListTest() {
+    void getUserInputToListExceptionTest() {
         //given
         Service service = new Service();
-        String pattern = "^[1-9]*$";
+        Pattern pattern = Pattern.compile("^[1-9]*$");
         //when, then
         assertThrows(IllegalArgumentException.class, () -> {
             service.getUserInputToList("012", 3, pattern);
@@ -151,6 +152,23 @@ public class ServiceTest {
         assertThrows(IllegalArgumentException.class, () -> {
             service.getUserInputToList("1234", 3, pattern);
         });
+    }
+
+    @DisplayName("유저의 문자열을 한글자씩 잘라 리스트로 반환하는 메서드 - 정상 동작")
+    @Test
+    void getUserInputToListTest() {
+        //given
+        Service service = new Service();
+        Pattern pattern = Pattern.compile("^[1-9]*$");
+        List<String> testList = new ArrayList<>();
+
+        testList.add("1");
+        testList.add("2");
+        testList.add("3");
+        //when
+        List<String> userInputList = service.getUserInputToList("123", 3, pattern);
+        //then
+        assertEquals(userInputList, testList);
     }
 
 }
