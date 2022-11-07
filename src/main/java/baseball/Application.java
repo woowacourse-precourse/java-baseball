@@ -11,28 +11,42 @@ public class Application {
     private static final Scanner stdinScanner = new Scanner(System.in);
     private static int answerNumber;
 
-    private static int checkEachNumber(int targetNumber, int idx){
+    private static int checkOneAnswerNumberWithTargetNumber(int answerOneNumber, int targetNumber, int answerIdx, int targetIdx) {
+        int result = 0;
+
+        if (answerOneNumber == targetNumber) {
+            result += 1;
+        }
+
+        if (answerIdx == targetIdx) {
+            result += 1;
+        }
+
+        return result;
+    }
+
+    private static int checkEachNumber(int targetNumber, int idx) {
         for (int i = 1; i <= 3; i++) {
-            
+
         }
     }
 
-    private static List<Integer> gameResult(int inputNumber){
+    private static List<Integer> gameResult(int inputNumber) {
         ArrayList<Integer> resultList = new ArrayList<>();
 
 
     }
 
-    private static boolean eachGame(){
+    private static boolean eachGame() {
         System.out.print("숫자를 입력해주세요 : ");
         int inputNumber = stdinScanner.nextInt();
 
         return false;
     }
 
-    private static void baseballGameRun(){
+    private static void baseballGameRun() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        answerNumber = (int)((Math.random()*(MAX - MIN)) + MIN);
+        answerNumber = (int) ((Math.random() * (MAX - MIN)) + MIN);
         System.out.println(answerNumber);
     }
 
