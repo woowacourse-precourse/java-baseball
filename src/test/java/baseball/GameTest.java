@@ -21,57 +21,31 @@ class GameTest {
     }
 
     @Test
-    void getStrike_스트라이크_갯수_1() {
+    void getStrike_스트라이크_갯수() {
         Game game = new Game();
         game.computer = List.of(1, 2, 3);
-        List<Integer> player = List.of(1, 2, 3);
+        List<Integer> player1 = List.of(1, 2, 3);
+        List<Integer> player2 = List.of(1, 4, 3);
+        List<Integer> player3 = List.of(3, 2, 1);
 
-        assertThat(game.getStrike(game.computer, player)).isEqualTo(3);
+        assertThat(game.getStrike(game.computer, player1)).isEqualTo(3);
+        assertThat(game.getStrike(game.computer, player2)).isEqualTo(2);
+        assertThat(game.getStrike(game.computer, player3)).isEqualTo(1);
+
     }
 
     @Test
-    void getStrike_스트라이크_갯수_2() {
+    void getBall_볼_갯수() {
         Game game = new Game();
         game.computer = List.of(1, 2, 3);
-        List<Integer> player = List.of(1, 4, 3);
+        List<Integer> player1 = List.of(1, 2, 3);
+        List<Integer> player2 = List.of(3, 2, 1);
+        List<Integer> player3 = List.of(3, 1, 2);
 
-        assertThat(game.getStrike(game.computer, player)).isEqualTo(2);
-    }
+        assertThat(game.getBall(game.computer, player1)).isEqualTo(0);
+        assertThat(game.getBall(game.computer, player2)).isEqualTo(2);
+        assertThat(game.getBall(game.computer, player3)).isEqualTo(3);
 
-    @Test
-    void getStrike_스트라이크_갯수_3() {
-        Game game = new Game();
-        game.computer = List.of(1, 2, 3);
-        List<Integer> player = List.of(3 , 2, 1);
-
-        assertThat(game.getStrike(game.computer, player)).isEqualTo(1);
-    }
-
-    @Test
-    void getBall_볼_갯수_1() {
-        Game game = new Game();
-        game.computer = List.of(1, 2, 3);
-        List<Integer> player = List.of(1, 2, 3);
-
-        assertThat(game.getBall(game.computer, player)).isEqualTo(0);
-    }
-
-    @Test
-    void getBall_볼_갯수_2() {
-        Game game = new Game();
-        game.computer = List.of(1, 2, 3);
-        List<Integer> player = List.of(3 , 2, 1);
-
-        assertThat(game.getBall(game.computer, player)).isEqualTo(2);
-    }
-
-    @Test
-    void getBall_볼_갯수_3() {
-        Game game = new Game();
-        game.computer = List.of(1, 2, 3);
-        List<Integer> player = List.of(3 , 1, 2);
-
-        assertThat(game.getBall(game.computer, player)).isEqualTo(3);
     }
 
     @Test
