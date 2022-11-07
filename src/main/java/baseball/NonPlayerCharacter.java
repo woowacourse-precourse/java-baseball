@@ -23,6 +23,16 @@ public class NonPlayerCharacter {
                 "게임 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    public int compareWithRandomNumber(char digit, int index) {
+        if (isStrike(digit, index)) {
+            return STRIKE;
+        }
+        if (isBall(digit)) {
+            return BALL;
+        }
+        return NOTHING;
+    }
+
     public boolean isStrike(char input, int index) {
         return randomNumber.toString().charAt(index) == input;
     }
