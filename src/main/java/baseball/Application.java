@@ -13,13 +13,16 @@ public class Application {
     }
 }
 
+
+
+
+
 class BaseballGame {
     int hiddenNumber;
 
     public BaseballGame() {
         hiddenNumber = randomThreeDigitNumber();
     }
-
 
     /**
      * 1에서 9까지 서로 다른 임의의 수 3개를 선택
@@ -72,7 +75,6 @@ class BaseballGame {
         return list.contains(new_number);
     }
 
-
     /**
      * 숫자야구게임을 시작한다.
      */
@@ -95,6 +97,9 @@ class BaseballGame {
         }
     }
 
+    /**
+     * 게임을 새로 시작할지, 종료할지를 처리한다.
+     */
     public static boolean askIfTerminate() {
         Scanner scanner = new Scanner(System.in);
         int terminateFlag;
@@ -114,12 +119,20 @@ class BaseballGame {
         return terminateFlag == 1;
     }
 
+    /**
+     * terminate flag 가 1 또는 2인지 확인한다
+     * @param terminateFlag:int
+     */
     public static void checkValidityOfTerminateFlag(int terminateFlag) {
         if (terminateFlag != 1 && terminateFlag != 2) {
             throw new IllegalArgumentException();
         }
     }
 
+    /**
+     * 게임을 재시작할지 확인 후 3자리 숫자를 다시 설정하여 게임을 재시작한다.
+     * @param restart:boolean
+     */
     public void handleIfRestart(boolean restart) {
         if(restart){
             this.hiddenNumber = randomThreeDigitNumber();
@@ -127,6 +140,11 @@ class BaseballGame {
 
     }
 
+    /**
+     * 사용자의 숫자를 입력받는다.
+     * 이때 입력값이 정수인지 확인하여 예외처리한다.
+     * @return userNumber:int
+     */
     public static int inputUserNumber() {
         Scanner scanner = new Scanner(System.in);
         int userNumber;
@@ -142,6 +160,11 @@ class BaseballGame {
         return userNumber;
     }
 
+    /**
+     * 사용자가 입력한 숫자가 유효한지 확인한다.
+     * 숫자의 범위(3자리의 수), 들어가있는 숫자(1부터 9까지), 숫자의 중복(서로 다른 수)
+     * @param input:int
+     */
     public static void checkValidityOfNumber(int input) {
         List<Integer> numList;
         numList = splitNumberByDigit(input);
@@ -160,6 +183,11 @@ class BaseballGame {
 
     }
 
+    /**
+     * 숫자의 자릿수마다 나눈 리스트를 반환한다
+     * @param number:int
+     * @return a list each element of which is digits of the number
+     */
     public static List<Integer> splitNumberByDigit(int number) {
 
         String strNumber = Integer.toString(number);
@@ -173,6 +201,11 @@ class BaseballGame {
         return resultList;
     }
 
+    /**
+     * 사용자가 입력한 숫자에 중복된 숫자가 있는지 확인한다.
+     * @param numList:int
+     * @return boolean
+     */
     public static boolean isDuplicatedUserNumber(List<Integer> numList) {
         int numSize = numList.size();
         for (int i = 0; i < numSize; i++) {
@@ -184,7 +217,13 @@ class BaseballGame {
         return false;
     }
 
-
+    /**
+     * 사용자가 입력한 값과 hiddenNumber 를 비교하여 strike 와 ball 을 계산한다.
+     * 만약 사용자가 정답을 맞출 경우 false 가 반환되어 게임 종료상태로 들어간다.
+     * @param userNumber:int
+     * @param hiddenNumber:int
+     * @return boolean
+     */
     public static boolean computeResult(int userNumber, int hiddenNumber) {
         int strike;
         int ball;
@@ -195,6 +234,12 @@ class BaseballGame {
         return printResult(strike, ball);
     }
 
+    /**
+     * 같은 수가 같은 자리에 있으면 스트라이크
+     * @param userNumber:int
+     * @param hiddenNumber:int
+     * @return strike
+     */
     public static int computeStrike(int userNumber, int hiddenNumber) {
         int strike = 0;
         List<Integer> userNumberList = splitNumberByDigit(userNumber);
@@ -211,6 +256,12 @@ class BaseballGame {
         return strike;
     }
 
+    /**
+     * 다른 자리에 있으면 볼
+     * @param userNumber:int
+     * @param hiddenNumber:int
+     * @return ball:int
+     */
     public static int computeBall(int userNumber, int hiddenNumber) {
         int ball = 0;
         List<Integer> userNumberList = splitNumberByDigit(userNumber);
@@ -227,6 +278,12 @@ class BaseballGame {
         return ball;
     }
 
+    /**
+     * strike, ball 을 출력하고 게임 종료 여부를 반환한다.
+     * @param strike:int
+     * @param ball:int
+     * @return terminateFlag
+     */
     public static boolean printResult(int strike, int ball) {
         if (strike == 3) {
             System.out.println("3스트라이크");
@@ -245,6 +302,7 @@ class BaseballGame {
             System.out.println(ball + "볼 " + strike + "스트라이크");
             return true;
         }
+        // 같은 수가 전혀 없으면 낫싱
         System.out.println("낫싱");
         return true;
     }
