@@ -28,34 +28,4 @@ class HintGeneratorTest {
         String hint = hintGenerator.generateHint();
         assertThat(hint).isEqualTo("1볼 1스트라이크");
     }
-
-    @Test
-    void 입력이_숫자가_아닌_경우() {
-        p = new Pitcher("abc");
-        hintGenerator = new HintGenerator(p, c);
-
-        assertThatThrownBy(() -> hintGenerator.generateHint())
-                .isInstanceOf(IllegalFormatException.class)
-                .hasMessageContaining("숫자 형식으로 입력해주세요");
-    }
-
-    @Test
-    void 입력의_숫자가_중복될_경우() {
-        p = new Pitcher("111");
-        hintGenerator = new HintGenerator(p, c);
-        assertThatThrownBy(() -> hintGenerator.generateHint())
-                .isInstanceOf(ShouldNotHaveDuplicates.class)
-                .hasMessageContaining("중복되지 않는 수를 입력해주세요");
-    }
-
-    @Test
-    void 입력된_숫자의_길이가_다를_경우() {
-        p = new Pitcher("1234");
-        hintGenerator = new HintGenerator(p, c);
-        assertThatThrownBy(() -> hintGenerator.generateHint())
-                .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("3자리 수로 입력해주세요");
-
-
-    }
 }
