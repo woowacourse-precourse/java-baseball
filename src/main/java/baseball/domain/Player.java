@@ -13,6 +13,8 @@ public class Player {
     public static final int GAME_ROUND = 3;
     public static final String NUMBER_DUPLICATE_EX_MESSAGE = "입력값은 같은 수가 하나라도 있으면 안됩니다.";
     public static final int START_POSITION_NUMBER = 1;
+    public static final String BALL_SIZE_ZERO_EX_MESSAGE = "볼을 넣어야 플레이가 가능합니다.";
+    public static final int CRITERION_ZERO = 0;
 
     private final List<Ball> balls;
 
@@ -51,13 +53,23 @@ public class Player {
     }
 
     public Referee playGame(Player otherPlayer) {
+        validateBallSize(otherPlayer);
         Referee referee = new Referee();
-
         for (Ball ball : balls) {
             BallMatchResult ballMatchResult = otherPlayer.playRound(ball);
             referee.addScore(ballMatchResult);
         }
         return referee;
+    }
+
+    private void validateBallSize(Player otherPlayer) {
+        if (this.isBallSizeZero() || otherPlayer.isBallSizeZero()) {
+            throw new IllegalStateException(BALL_SIZE_ZERO_EX_MESSAGE);
+        }
+    }
+
+    private boolean isBallSizeZero() {
+        return balls.size() == CRITERION_ZERO;
     }
 
     private BallMatchResult playRound(Ball otherBall) {

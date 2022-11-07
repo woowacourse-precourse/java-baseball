@@ -117,4 +117,14 @@ public class PlayerTest {
 
         assertThat(referee).isEqualTo(new Referee(0, 0));
     }
+
+    @Test
+    void 볼의_개수가_0일때_플레이하면_예외발생() {
+        Player player = new Player();
+        Player otherPlayer = new Player(List.of(1, 2, 3));
+
+        assertThatThrownBy(() -> player.playGame(otherPlayer))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("볼을 넣어야 플레이가 가능합니다.");
+    }
 }
