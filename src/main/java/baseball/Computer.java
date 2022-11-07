@@ -52,5 +52,14 @@ public class Computer {
         return strikeCount;
     }
 
-
+    public int getBallCount(String input) {
+        int ballCount = 0;
+        for (int index = 0; index < input.length(); index++) {
+            int number = input.charAt(index) - '0';
+            if (isBall(number, index)) {
+                ballCount += 1;
+            }
+        }
+        return ballCount;
+    }
 }
