@@ -32,8 +32,10 @@ class Input {
     static final String GAME_GET_NUMBER = "숫자를 입력해주세요 : ";
     static final String EXCEPTION_REPETITION = "중복되는 숫자를 입력했습니다.";
     static final String EXCEPTION_CONTAINS_ZERO = "중복되는 숫자를 입력했습니다.";
-    static final String EXCEPTION_DIGITS_NOT_3 = "중복되는 숫자를 입력했습니다.";
+    static final String EXCEPTION_DIGITS_NOT_3 = "입력 값이 세 자리의 숫자가 아닙니다.";
     static final String EXCEPTION_NOT_NUMBER = "입력 값이 숫자가 아닙니다.";
+    static final String EXCEPTION_NOT_1_OR_2 = "입력 값이 1이나 2가 아닙니다.";
+
 
     static void checkInput(String inputString) throws IllegalArgumentException {
         HashSet<Character> isRepeated = Utils.StringToCharSet(inputString);
@@ -45,7 +47,7 @@ class Input {
             System.out.println(EXCEPTION_CONTAINS_ZERO);
             throw new IllegalArgumentException();
         } else if (isRepeated.size() != 3) {
-            System.out.println(EXCEPTION_DIGITS_NOT_3);
+            //System.out.println(EXCEPTION_DIGITS_NOT_3);
             throw new IllegalArgumentException();
         }
         for (char isInt : isRepeated) {
@@ -57,17 +59,21 @@ class Input {
         }
     }
 
-    static List<Character> getInputInGame()
-            throws IllegalArgumentException {
+    static List<Character> getInputInGame() {
         System.out.print(GAME_GET_NUMBER);
         String input = Console.readLine();
         Input.checkInput(input);
         return Utils.StringToCharList(input);
     }
 
-    static char getInputEndGame() {
+    static char getInputEndGame() throws IllegalArgumentException {
         String input = Console.readLine();
-        return input.charAt(0);
+        char inputChar = input.charAt(0);
+        if ((inputChar != 1) && (inputChar != 2)) {
+            System.out.println(EXCEPTION_NOT_1_OR_2);
+            throw new IllegalArgumentException();
+        }
+        return inputChar;
     }
 }
 
@@ -117,11 +123,10 @@ class Game {
     static final int CONTINUE_GAME = 1;
     static final int END_GAME = 2;
     static final String GAME_START = "숫자 야구 게임을 시작합니다.";
-    static final String EXCEPTION_NOT_1_OR_2 = "입력 값이 1이나 2가 아닙니다.";
     static final String GAME_RESTART_OR_END = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     static final String GAME_CORRECT_ANSWER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
-    static List<Character> generateRandomNoDuplication3Numbers() {
+    static List<Character> generateAnswer() {
         HashSet<Character> removeDuplication = new HashSet<>();
         while (removeDuplication.size() < 3) {
             int random = Randoms.pickNumberInRange(1, 9);
@@ -149,20 +154,20 @@ class Game {
 
     static List<Character> startGame() {
         System.out.println(GAME_START);
-        return generateRandomNoDuplication3Numbers();
+        return generateAnswer();
     }
 
-    static boolean restartOrEndGame() throws IllegalArgumentException {
+    static boolean restartOrEndGame() {
         boolean newGame;
         System.out.println(GAME_RESTART_OR_END);
         int userInput = Input.getInputEndGame();
+
         if (userInput == CONTINUE_GAME) {
             newGame = true;
         } else if (userInput == END_GAME) {
             newGame = false;
         } else {
-            System.out.println(EXCEPTION_NOT_1_OR_2);
-            throw new IllegalArgumentException();
+            newGame = false;
         }
         return newGame;
     }
@@ -193,13 +198,8 @@ class Game {
     }
 }
 
-
 public class Application {
     public static void main(String[] args) {
-        try {
-            Game.playGame();
-        } catch (IllegalArgumentException e) {
-            System.exit(0);
-        }
+        Game.playGame();
     }
 }
