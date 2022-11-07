@@ -5,4 +5,5 @@ public final class ErrorMessages {
     public static final String REQUIRE_THREE_DIGIT_NUMBER = "세 자리 숫자를 입력해주세요";
     public static final String BETWEEN_ONE_AND_NINE = "1에서 9 사이의 숫자로 구성된 숫자를 입력해주세요";
     public static final String REQUIRE_ONE_OR_TWO = "숫자 1 또는 2를 입력해주세요";
+    public static final String DUPLICATE_NUMBER = "중복된 숫자를 입력할 수 없습니다";
 }

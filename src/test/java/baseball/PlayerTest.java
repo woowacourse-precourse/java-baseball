@@ -22,4 +22,12 @@ class PlayerTest {
                 .isThrownBy(() -> Player.from(number))
                 .withMessage(BETWEEN_ONE_AND_NINE);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {111, 121, 344})
+    void from_메소드의_입력값에_중복된_숫자가_있으면_예외_발생(int number) {
+        Assertions.assertThatIllegalArgumentException()
+                .isThrownBy(() -> Player.from(number))
+                .withMessage(DUPLICATE_NUMBER);
+    }
 }
