@@ -20,7 +20,21 @@ class Input {
     static String player() {
         System.out.print("숫자를 입력해주세요 : " );
         String number = Console.readLine();
+        checkError(number);
         return number;
+    }
+
+    static void checkError(String number) {
+        char[] numberArray = number.toCharArray();
+        if (number.length() != LENGTH_MAX) {
+            throw new IllegalArgumentException("3자리가 아닙니다.");
+        }
+
+        for (char c : numberArray) {
+            if ((int)c < 49 || (int)c > 57) {
+                throw new IllegalArgumentException("0을 입력하셨거나 숫자가 아닌 문자를 입력하셨습니다.");
+            }
+        }
     }
 }
 
