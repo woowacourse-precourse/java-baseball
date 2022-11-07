@@ -19,7 +19,6 @@ public class Application {
 
 
             Map<String, Integer> result = NumberScore.numberCount(userNumber, randomNumber, loopFrequency);
-            System.out.println(randomNumber+"정답");
             boolean resultCheck = GameResult.resultCase(result);
             if (resultCheck) {
                 gameRunning = gameRestart();
