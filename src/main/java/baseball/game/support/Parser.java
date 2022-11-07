@@ -1,4 +1,4 @@
-package baseball.user.support;
+package baseball.game.support;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Parser {
     }
     private List<Integer> parserInt(String input,Integer size){
         List<Integer> result=new ArrayList<>();
-        for(int i=0;i<input.length();i++){
+        for(int i=0;i<size;i++){
             checkDigit(input, i);
             Integer number=convertCharToInt(input,i);
             checkDuplicate(result,number);

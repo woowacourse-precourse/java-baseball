@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.game.domain.Game;
 import baseball.game.domain.repository.GameRepository;
-import baseball.user.support.Parser;
+import baseball.game.support.Parser;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ class ApplicationTest extends NsTest {
         GameRepository gameRepository=GameRepository.getInstance();
         gameRepository.setGame();
         Game game= gameRepository.getGame();
-        Assertions.assertThat(game.getGameNumber().getRandomNumber().size()).isEqualTo(3);
+        Assertions.assertThat(game.getGameNumber().size()).isEqualTo(3);
     }
 
     @Test
