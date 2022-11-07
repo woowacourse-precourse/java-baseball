@@ -17,6 +17,19 @@ public class Application {
         }
         return generatedNumber;
     }
+
+    public static List<Integer> checkStrike (List<Integer> generatedNumber, List<Integer> userNumber){
+        List<Integer> standardNumber = new ArrayList<>(generatedNumber);
+        List<Integer> inputNumber = new ArrayList<>(userNumber);
+        List<Integer> strikeIndex = new ArrayList<>();
+        for(int listIndex=0; listIndex < 3; listIndex ++){
+            if(standardNumber.get(listIndex).equals(inputNumber.get(listIndex))){
+                strikeIndex.add(listIndex);
+            }
+        }
+        return strikeIndex;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
