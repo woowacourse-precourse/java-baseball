@@ -33,6 +33,11 @@ public class CompareResult {
 		&& occurrences.get(NOTHING) == 3;
 	}
 
+	public boolean isAllStrikes() {
+		return occurrences.containsKey(STRIKE)
+			&& occurrences.get(STRIKE) == 3;
+	}
+
 	public List<String> getResults() {
 		if (isAllNothing()) {
 			return List.of(NOTHING.getStatus());
