@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import controller.Controller;
 import org.junit.jupiter.api.Test;
 
-public class handleExceptionTest {
+public class HandleExceptionTest {
 
     @Test
     void 예외처리_발생() {
