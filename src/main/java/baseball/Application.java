@@ -23,6 +23,17 @@ public class Application {
     }
 
     /**
+     * Verify string is the same format as the correct answer.
+     * @param string the string to be checked.
+     * @return true if string is a different number of three digits.
+     */
+    private static boolean validateAnswerFormat(String string) {
+        return string.length() == 3
+            && isNumeric(string)
+            && isDistinct(string);
+    }
+
+    /**
      * Verify string contains characters that have been used once.
      * @param string the string to be checked.
      * @return true if no duplicate value exists.
