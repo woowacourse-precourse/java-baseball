@@ -12,41 +12,41 @@ public class NumberTest {
     @Test
     void 숫자가_아닌_다른게_포함되면_예외발생() {
         Assertions.assertThatThrownBy(() -> {
-            number.createUserNumber("a12");
+            number.checkNumberAndSave("a12");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 숫자가_아닌_다른게_포함되면_예외발생2() {
         Assertions.assertThatThrownBy(() -> {
-                number.createUserNumber("1 2");
+                number.checkNumberAndSave("1 2");
             }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 길이가_3_아니면_예외발생() {
         Assertions.assertThatThrownBy(() -> {
-            number.createUserNumber("1234");
+            number.checkNumberAndSave("1234");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 길이가_3_아니면_예외발생2() {
         Assertions.assertThatThrownBy(() -> {
-                number.createUserNumber("12");
+                number.checkNumberAndSave("12");
             }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 중복값이_있으면_예외발생() {
         Assertions.assertThatThrownBy(() -> {
-            number.createUserNumber("113");
+            number.checkNumberAndSave("113");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 정상적인_입력() {
-        Assertions.assertThat(number.createUserNumber("159")).containsExactly(1,5,9);
-        Assertions.assertThat(number.createUserNumber("142")).containsExactly(1,4,2);
+        Assertions.assertThat(number.checkNumberAndSave("159")).containsExactly(1,5,9);
+        Assertions.assertThat(number.checkNumberAndSave("142")).containsExactly(1,4,2);
     }
 }
