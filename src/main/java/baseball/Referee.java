@@ -20,7 +20,7 @@ public class Referee {
     public String judge(String input, String answer) {
         int strike = countStrike(input, answer);
         int ball = countBall(input, answer);
-        return createResult(strike, ball);
+        return createJudgement(strike, ball);
     }
 
     public int countStrike(String input, String answer) {
@@ -53,7 +53,7 @@ public class Referee {
         return count;
     }
 
-    public String createResult(int strike, int ball) {
+    public String createJudgement(int strike, int ball) {
         if(strike == 0 && ball == 0) {
             return NOTHING;
         } else if(strike == MAX_NUMBER_SIZE) {
