@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -11,8 +10,9 @@ public class RoundScore {
 		score_map.put("BALL",BALL);
 	}
 
-	public static HashMap<String,Integer> getScoreList(){
+	public static HashMap<String,Integer> getScoreMap(){
 		CompareNumber.setInitializeScore();
 		return score_map;
 	}
+
 }
