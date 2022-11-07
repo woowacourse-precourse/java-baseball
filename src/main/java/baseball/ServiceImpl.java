@@ -22,6 +22,7 @@ public class ServiceImpl implements Service {
             char[] input = changeToChar.changetoChar(getInput.getInput());
             int[] count = baseBall(number,input);
             strike = count[0];
+            printBaseBallCount(count);
         }
     }
     @Override
@@ -62,6 +63,20 @@ public class ServiceImpl implements Service {
                 count[1]++;
                 return;
             }
+        }
+    }
+    @Override
+    public void printBaseBallCount(int[] count) {
+        if (count[0] == 3) {
+            System.out.println("3스트라이크");
+        } else if (count[0] == 0 && count[1] == 0) {
+            System.out.println("낫싱");
+        } else if (count[0] != 0 && count[1] != 0) {
+            System.out.println(count[1] + "볼 " + count[0] + "스트라이크");
+        } else if (count[0] != 0 && count[1] == 0) {
+            System.out.println(count[0] + "스트라이크");
+        } else if (count[0] == 0 && count[1] != 0) {
+            System.out.println(count[1] + "볼");
         }
     }
 }
