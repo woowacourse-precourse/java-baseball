@@ -94,4 +94,15 @@ public class Application {
         }
         return answer;
     }
+
+    public static void gameProcess() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        ArrayList<Integer> generatedNumber = new ArrayList<>(generateNumber());
+        ArrayList<Integer> inputNumber;
+        do {
+            inputNumber = new ArrayList<>(inputNumberOfUser());
+            System.out.println(combineAnswer(generatedNumber, inputNumber));
+        } while (!combineAnswer(generatedNumber, inputNumber).contains("모두"));
+    }
 }
