@@ -8,13 +8,18 @@ public class NumberCounter {
     private static final String STRIKE = "스트라이크";
     private static final String BALL = "볼";
     private static final String NOTHING = "낫싱";
+    private static final String WIN_CONDITION = "3스트라이크";
 
     public static void printResult(List<Integer> computerNumbers, String playerNumbers) {
         String result = getResult(computerNumbers, playerNumbers);
         System.out.println(result);
     }
 
-    public static String getResult(List<Integer> computerNumbers, String playerNumbers) {
+    public static boolean isWin(List<Integer> computerNumbers, String playerNumbers) {
+        return getResult(computerNumbers, playerNumbers).equals(WIN_CONDITION);
+    }
+
+    private static String getResult(List<Integer> computerNumbers, String playerNumbers) {
         int sameCount = getSameCount(computerNumbers, playerNumbers);
         int strikeCount = getStrikeCount(computerNumbers, playerNumbers);
         int ballCount = getBallCount(computerNumbers, playerNumbers);

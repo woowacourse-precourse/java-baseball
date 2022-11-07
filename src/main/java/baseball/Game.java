@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Game {
 
-    private static final String WIN_CONDITION = "3스트라이크";
 
     Player player = new Player();
 
@@ -31,7 +30,7 @@ public class Game {
             String playerInput = getPlayerInput();
             NumberCounter.printResult(answer, playerInput);
 
-            if (NumberCounter.getResult(answer, playerInput).equals(WIN_CONDITION)) {
+            if (NumberCounter.isWin(answer, playerInput)) {
                 SystemMessage.printWin();
                 endOrRetry();
                 break;
