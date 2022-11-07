@@ -16,10 +16,19 @@ public class BaseballGame {
         play();
     }
 
-    public void play(){
+    public void play() throws IllegalArgumentException {
 
         List<Integer> computer = makeComputerNumber();
+        boolean running = true;
 
+        while (running) {
+
+            System.out.print("숫자를 입력해 주세요 : ");
+
+            String userInput = Console.readLine();
+            userInput = inputValidation.validateInput(userInput);
+
+        }
     }
 
     public static List<Integer> makeComputerNumber() {
