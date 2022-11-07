@@ -23,4 +23,10 @@ public class Score {
         .count();
   }
 
+  public void setBallCount(List<Integer> computer, List<Integer> user) {
+    this.ballCount = (int) IntStream.range(0, computer.size())
+        .filter(i -> user.contains(computer.get(i)) && i != user.indexOf(computer.get(i)))
+        .count();
+  }
+
 }
