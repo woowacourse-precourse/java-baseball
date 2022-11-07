@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "2");
-                    assertThat(output()).contains("0", "0", "3", "0");
+                    assertThat(output()).contains("낫싱", "3스트라이크");
                 },
                 1, 3, 5
         );

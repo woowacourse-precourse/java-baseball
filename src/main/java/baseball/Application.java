@@ -33,8 +33,7 @@ public class Application {
         List<Integer> ballStrike;
         while(true) {
             ballStrike = compareList(user, computer);
-            // 볼_스트라이크_개수_확인 테스트 출력
-            System.out.println(ballStrike);
+            printResult(ballStrike);
             if (ballStrike.get(0) == numberLength) {
                 break;
             }
@@ -108,6 +107,24 @@ public class Application {
         ballStrike.add(strike);
         ballStrike.add(ball);
         return ballStrike;
+    }
+
+    private static void printResult(List<Integer> ballStrike) {
+        int strike = ballStrike.get(0);
+        int ball = ballStrike.get(1);
+        if (strike > 0 && ball == 0) {
+            System.out.println(strike + "스트라이크");
+            return;
+        }
+        if (strike == 0 && ball > 0) {
+            System.out.println(ball + "볼");
+            return;
+        }
+        if (strike > 0 && ball > 0 && strike < 3 && ball < 3) {
+            System.out.println(strike + "스트라이크 " + ball + "볼");
+            return;
+        }
+        System.out.println("낫싱");
     }
 }
 
