@@ -7,7 +7,7 @@ import baseball.mvc.view.GameInputView;
 import baseball.util.GameStatus;
 import camp.nextstep.edu.missionutils.Console;
 
-public class GameRunner {
+public final class GameRunner {
 
     private static final String DEFAULT_PLAYER_INPUT = "";
     private static final FrontController FRONT_CONTROLLER = new FrontController();
