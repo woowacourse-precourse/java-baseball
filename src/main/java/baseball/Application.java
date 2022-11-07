@@ -7,10 +7,6 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-
-
-        Scanner scanner = new Scanner(System.in);
-
         // TODO: 프로그램 구현
 
         ArrayList<Integer> computersNumbers;
@@ -21,15 +17,11 @@ public class Application {
         int playStatus = 0;
 
         while (playStatus == 0) {
-
-            int threeNumbers = scanner.nextInt();
-
-            playersNumbers = splitConnectedNumbers(threeNumbers);
+            playersNumbers = getNumbers();
             scoreSheet = comparing(computersNumbers, playersNumbers);
             playStatus = gameResult(scoreSheet);
             if (playStatus == 1) {
-                int answer = scanner.nextInt();
-                playStatus = restartGameWithoutInput(answer);
+                playStatus = restartGame();
                 computersNumbers = randomNumbers();
             }
         }
@@ -56,38 +48,6 @@ public class Application {
         return false;
     }
 
-
-    public static ArrayList<Integer> splitConnectedNumbers(int input) {
-
-
-        ArrayList<Integer> usrNum = new ArrayList<Integer>();
-
-        System.out.print("숫자를 입력해주세요: ");
-        int secDigit;
-        int thrDigit;
-        int firDigit;
-
-
-        if (input > 99 && input < 1000) {
-
-            secDigit = input % 100 / 10;
-            thrDigit = input % 10;
-            firDigit = input / 100;
-
-        } else {
-            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
-        }
-        if (inputRequirements(firDigit, secDigit, thrDigit)) {
-            usrNum.add(0, firDigit);
-            usrNum.add(1, secDigit);
-            usrNum.add(2, thrDigit);
-        } else {
-            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
-        }
-        return usrNum;
-    }
-
-
     public static ArrayList<Integer> getNumbers() {
 
         Scanner scanner = new Scanner(System.in);
@@ -103,10 +63,10 @@ public class Application {
             inputNumber3 = inputNumber1 % 10;
             inputNumber1 = inputNumber1 / 100;
 
-        } else if (inputNumber1 > 0 && inputNumber1 < 10) {
+        } else if (inputNumber1>0 && inputNumber1<10){
             inputNumber2 = scanner.nextInt();
             inputNumber3 = scanner.nextInt();
-        } else {
+        }else{
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
         if (inputRequirements(inputNumber1, inputNumber2, inputNumber3)) {
@@ -144,7 +104,6 @@ public class Application {
     public static int gameResult(ArrayList<Integer> strikeAndBall) {
         int gameStatus = 0;
         if (strikeAndBall.get(0) == 3) {
-            System.out.printf("%d스트라이크\n", strikeAndBall.get(0));
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             gameStatus = 1;
         } else if (strikeAndBall.get(0) == 0 && strikeAndBall.get(1) == 0) {
@@ -173,21 +132,6 @@ public class Application {
             throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
         }
     }
-
-    public static int restartGameWithoutInput(int answer) {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
-        Scanner scanner = new Scanner(System.in);
-        //int answer = scanner.nextInt();
-        if (answer == 1) {
-            return 0;
-        } else if (answer == 2) {
-            return 1;
-        } else {
-            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
-        }
-    }
-
-
 }
 
 
