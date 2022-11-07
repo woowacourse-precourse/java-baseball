@@ -18,7 +18,12 @@ public class Application {
 
 
             // 게임 재개 판단
-            boolean isExit = checkExit();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            // 사용자로 부터 입력을 받는다.
+            String userInput = Console.readLine();
+
+            boolean isExit = checkExit(userInput);
 
             if (isExit) {
                 break;
@@ -33,13 +38,7 @@ public class Application {
     Return
 
      */
-    static boolean checkExit() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
-        // 사용자로 부터 입력을 받는다.
-        // TODO 입력값 검증
-        String userInput = Console.readLine();
-
+    static boolean checkExit(String userInput) {
         // 입력 값의 길이가 1이 아니라면 예외 발생
         if (userInput.length() != 1) {
             throw new IllegalArgumentException();
@@ -91,8 +90,12 @@ public class Application {
      */
     static void startGame(List<Integer> computerNumber) {
         while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            // 사용자로 부터 입력을 받는다.
+            String userInput = Console.readLine();
+
             // 사용자로부터 입력된 3개의 숫자 배열
-            List<Integer> userNumber = generateUserNumber();
+            List<Integer> userNumber = generateUserNumber(userInput);
 
             // 사용자로부터 입력된 배열로부터 볼과 스트라이크 갯수 계산
             List<Integer> countResult = countBallAndStrike(computerNumber, userNumber);
@@ -145,15 +148,9 @@ public class Application {
     return
     List<Integer> userNumber
     */
-    static List<Integer> generateUserNumber() {
-        System.out.print("숫자를 입력해주세요 : ");
-        // 사용자로 부터 입력을 받는다.
-        String userInput = Console.readLine();
-
+    static List<Integer> generateUserNumber(String userInput) {
         // 반환할 값 초기화
         List<Integer> userNumber = new ArrayList<>();
-
-        // TODO 입력값 검증하기
 
         // userInput이 null 이라면 -> 예외발생
         if (userInput == null) {
