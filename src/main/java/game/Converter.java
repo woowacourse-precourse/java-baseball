@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
-    public List<Integer> convertToList(String userInput, int size) throws IllegalArgumentException {
+    public List<Integer> convertToList(String userInput, int length) throws IllegalArgumentException {
         List<Integer> userInputList = new ArrayList<>();
-        if(isAppropriateLength(userInput,size) &&isAppropriateRange(userInput)
+        if(isAppropriateLength(userInput,length) &&isAppropriateRange(userInput)
                 &&isUniqueInput(userInput)){
             for(int i=0;i<userInput.length();i++){
                 userInputList.add(charToInt(userInput.charAt(i)));
@@ -15,8 +15,8 @@ public class Converter {
         return userInputList;
     }
 
-    private boolean isAppropriateLength(String userInput, int size) throws IllegalArgumentException {
-        if (userInput.length() == size) {
+    private boolean isAppropriateLength(String userInput, int length) throws IllegalArgumentException {
+        if (userInput.length() == length) {
             return true;
         }
         throw new IllegalArgumentException();
