@@ -12,7 +12,7 @@ import java.util.Map;
 import static baseball.Application.ScoreConst.*;
 
 public class Application {
-    private static NumberGenerator numberGenerator = new NumberGeneratorSequenceImpl(List.of(123,456,789));
+    private static NumberGenerator numberGenerator = new NumberGeneratorSequenceImpl(List.of(135, 589, 123, 456, 789));
 
     public static void setNumberGenerator(NumberGenerator numberGenerator) {
         Application.numberGenerator = numberGenerator;
