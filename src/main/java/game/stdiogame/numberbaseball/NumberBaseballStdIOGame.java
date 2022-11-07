@@ -1,5 +1,6 @@
 package game.stdiogame.numberbaseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import game.GameStatus;
 import game.stdiogame.SimpleStdIOGame;
 
@@ -38,7 +39,9 @@ public class NumberBaseballStdIOGame extends SimpleStdIOGame {
 
     @Override
     protected void readInput() {
-
+        System.out.print("숫자를 입력해주세요 : ");
+        NumberBaseballStdIOGameStatus gameStatus = (NumberBaseballStdIOGameStatus) getGameStatus();
+        gameStatus.setInputData(Console.readLine());
     }
 
     @Override
