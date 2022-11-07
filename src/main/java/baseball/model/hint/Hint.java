@@ -4,11 +4,9 @@ import java.util.List;
 
 public class Hint {
     static final int NUMBER_DIGITS = 3;
-    static final String NOTHING = "낫싱";
 
     private int ball = 0;
     private int strike = 0;
-    private String nothing = "";
 
     public Hint() {
     }
@@ -19,10 +17,6 @@ public class Hint {
 
     public int getStrike() {
         return strike;
-    }
-
-    public String getNothing() {
-        return nothing;
     }
 
     public void calculateBall(List<Integer> computer, List<Integer> player) {
@@ -37,14 +31,6 @@ public class Hint {
         for (int index = 0; index < NUMBER_DIGITS; index++) {
             if (hasNumber(computer, player, index) && isSameIndex(computer, player, index)) {
                 strike += 1;
-            }
-        }
-    }
-
-    public void isNothing(List<Integer> computer, List<Integer> player) {
-        for (int index = 0; index < NUMBER_DIGITS; index++) {
-            if (!(hasNumber(computer, player, index))) {
-                nothing = NOTHING;
             }
         }
     }

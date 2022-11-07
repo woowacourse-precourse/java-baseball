@@ -50,19 +50,4 @@ class HintTest {
         // then
         assertThat(strike).isEqualTo(0);
     }
-
-    @Test
-    void 낫싱_확인() {
-        // given
-        List<Integer> computerNumberList = new ArrayList<>(List.of(1, 2, 3));
-        playerNumber = new PlayerNumber("456");
-        List<Integer> playerNumberList = playerNumber.getNumberList();
-
-        // when
-        hint.isNothing(computerNumberList, playerNumberList);
-        String nothing = hint.getNothing();
-
-        // then
-        assertThat(nothing).isEqualTo("낫싱");
-    }
 }
