@@ -65,14 +65,14 @@ public class Application {
         return count;
     }
 
-    public static boolean validation(int input){
+    public static boolean validation(String inputStr){
         boolean validation = true;
-        //3자리 숫자여부 판단
-        String inputStr = Integer.toString(input);
-        if(!inputStr.matches("^[0-9]{3}$")){
-            validation = false;
+        //3자리 숫자여부 판단, 숫자가 아닐 경우 유효성 검사 종료
+        if(!inputStr.matches("^[1-9]{3}$")){
+            return false;
         }
         //리스트에 각 자리 숫자 넣기
+        int input = Integer.parseInt(inputStr);
         List<Integer> inputList = new ArrayList<>();
         for(int i=0; i<3; i++){
             inputList.add(input % 10);
@@ -92,7 +92,7 @@ public class Application {
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int input = Integer.parseInt(Console.readLine());
+        String inputStr = Console.readLine();
     }
 }
 
