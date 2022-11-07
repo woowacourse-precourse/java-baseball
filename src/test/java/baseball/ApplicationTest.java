@@ -21,10 +21,59 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void test2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("724", "274", "245", "246", "235", "247", "2");
+                    assertThat(output()).contains("3볼", "2볼 1스트라이크", "2스트라이크", "2스트라이크", "1스트라이크", "3스트라이크",
+                            "게임 종료", "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                },
+                2, 4, 7
+        );
+    }
+
+    @Test
+    void 재시작_입력_예외() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(
+                            () ->
+                    runException("578", "673")).isInstanceOf(IllegalArgumentException.class);
+                    assertThat(output().contains("3스트라이크"));
+                },
+                5, 7, 8
+        );
+    }
+
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("304")).
+                        isInstanceOf(IllegalArgumentException.class));
+    }
+
+    @Test
+    void 예외_테스트_3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("999")).
+                        isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1")).
+                isInstanceOf(IllegalArgumentException.class)
         );
     }
 
