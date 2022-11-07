@@ -18,6 +18,7 @@ public class PrintAndRead {
 
         Validation.IsOnlyNumber(question);
         Validation.IsNumberThree(question);
+        Validation.IsDistinct(question);
 
         return convertToIntegerList(question);
     }
