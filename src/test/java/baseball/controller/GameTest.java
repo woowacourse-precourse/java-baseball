@@ -25,7 +25,7 @@ public class GameTest {
         }
 
         @Test
-        @DisplayName("1) 진행 상태")
+        @DisplayName("2) 종료 상태")
         void 종료상태() {
             Game game = new Game(testTargetNumberList);
             game.setResultGameEnd();
