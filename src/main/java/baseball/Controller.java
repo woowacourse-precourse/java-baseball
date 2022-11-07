@@ -36,5 +36,4 @@ public class Controller {
         user.checkInputFormat(input);
         user.setInputNumber(input);
     }
-
 }

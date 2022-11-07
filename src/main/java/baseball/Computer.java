@@ -14,15 +14,21 @@ public class Computer {
         strike = 0;
         for(int i=0; i<inputNumber.length(); i++) {
             char c = inputNumber.charAt(i);
-
-            if(answer.charAt(i) == c) {
-                strike++;
-            }
-            else if(answer.contains(String.valueOf(c))) {
-                ball++;
-            }
+            checkHintOf(c, i);
         }
+        return getHintMessage();
+    }
 
+    public void checkHintOf(char c, int index) {
+        if(answer.charAt(index) == c) {
+            strike++;
+        }
+        else if(answer.contains(String.valueOf(c))) {
+            ball++;
+        }
+    }
+
+    public String getHintMessage() {
         if(ball == 0 && strike == 0) {
             return "낫싱";
         }
