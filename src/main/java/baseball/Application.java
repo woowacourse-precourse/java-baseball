@@ -58,11 +58,11 @@ public class Application {
 
     public static int StrikeBallResultPrint(int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            System.out.println("낫싱\n");
+            System.out.println("낫싱");
         }
 
         else if (strike != 0 && ball == 0) {
-            System.out.println(strike + "스트라이크\n");
+            System.out.println(strike + "스트라이크");
             if (strike == 3) return 1;
         }
 
@@ -71,7 +71,7 @@ public class Application {
         }
 
         else {
-            System.out.println(ball + "볼 " + strike + "스트라이크\n");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
 
         return 0;
@@ -79,8 +79,7 @@ public class Application {
 
     public static int gameRestartChecker(int ThreeStrikeCheck) {
         if (ThreeStrikeCheck == 1) {
-            System.out.println("3개의 숫자를 모두 맞히셧습니다! 게임 종료\n");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            System.out.println("3개의 숫자를 모두 맞히셧습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             return 1;
         }
@@ -93,7 +92,7 @@ public class Application {
         String gameNumber = null;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("숫자 야구 게임을 시작합니다.\n");
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         while(true){
             if (newNumberFlag == true) {
