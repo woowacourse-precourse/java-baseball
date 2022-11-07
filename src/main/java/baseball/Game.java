@@ -17,7 +17,6 @@ public class Game {
         this.computer = computer;
 
         String inputNumber = input();
-        inputCheck(inputNumber);
 
         computer.checkResult(inputNumber);
 
@@ -26,6 +25,7 @@ public class Game {
     private String input(){
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
+        inputCheck(input);
         return input;
     }
     private void inputCheck(String input){
