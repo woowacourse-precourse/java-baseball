@@ -17,6 +17,7 @@ public class BaseballGame {
 
     public void start() {
         boolean status = true;
+        System.out.println(GameMessage.GAME_START);
 
         while (status) {
             computer.initComputer();
