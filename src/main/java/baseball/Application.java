@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 enum BaseballResult {
     NOTHING("낫띵"),
@@ -70,5 +71,23 @@ public class Application {
 
     private static boolean isEqualInts(int number, int comparingNumber) {
         return number == comparingNumber;
+    }
+
+    private static String getGameResult(HashMap<BaseballResult, Integer> gameResult) {
+        StringBuilder sb = new StringBuilder();
+
+        Optional<Integer> nothingCnt = Optional.ofNullable(gameResult.get(BaseballResult.NOTHING));
+        if (nothingCnt.isPresent() && nothingCnt.get() == 3) {
+            sb.append(BaseballResult.NOTHING.getKorName()).append('\n');
+            return sb.toString();
+        }
+
+        Optional<Integer> ballCnt = Optional.ofNullable(gameResult.get(BaseballResult.BALL));
+        ballCnt.ifPresent(integer -> sb.append(integer).append(BaseballResult.BALL.getKorName()).append(" "));
+
+        Optional<Integer> strikeCnt = Optional.ofNullable(gameResult.get(BaseballResult.STRIKE));
+        strikeCnt.ifPresent(integer -> sb.append(integer).append(BaseballResult.STRIKE.getKorName()).append(" "));
+
+        return sb.toString();
     }
 }
