@@ -20,6 +20,15 @@ public class Player {
         return input;
     }
 
+    private void checkValidNumberInput(String input) {
+        if (!isValidFormat(input)) {
+            throw new IllegalArgumentException("1-9사이의 숫자 3개를 입력해주세요.");
+        }
+        if (!isAllDifferent(input)) {
+            throw new IllegalArgumentException("서로 다른 숫자를 입력해주세요.");
+        }
+    }
+
     private boolean isValidFormat(String input) {
         return input.matches(NUMBER_FORMAT);
     }
