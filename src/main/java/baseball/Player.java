@@ -17,20 +17,12 @@ public class Player {
     }
 
     public List<Integer> parseUserNumbersToList(String userAnswer) {
-        List<Integer> parsedAnswer = new ArrayList<>();
 
         if (userAnswer.length() != 3) {
             throw new IllegalArgumentException("숫자 3개만 입력해주세요");
         }
 
-        try {
-            Arrays.stream(userAnswer.split(""))
-                    .forEach((num) -> parsedAnswer.add(Integer.parseInt(num)));
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(e);
-        }
-
-        return parsedAnswer;
+        return userAnswerToList(userAnswer);
     }
 
     public void announce(String announcement) {
@@ -58,5 +50,18 @@ public class Player {
         else {
             throw new IllegalArgumentException("1 혹은 2로만 대답해주세요");
         }
+    }
+
+    private List<Integer> userAnswerToList(String userAnswer) {
+        List<Integer> parsedAnswer = new ArrayList<>();
+
+        try {
+            Arrays.stream(userAnswer.split(""))
+                    .forEach((num) -> parsedAnswer.add(Integer.parseInt(num)));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(e);
+        }
+
+        return parsedAnswer;
     }
 }
