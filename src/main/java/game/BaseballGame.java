@@ -7,39 +7,28 @@ import game.player.Computer;
 public class BaseballGame {
 	private Computer computer;
 
-	public void ready() {
+	public void ready() throws IllegalArgumentException {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 
-		try {
-			do {
-				this.computer = new Computer();
-				roundWithComputer();
-				printAllStrike();
-			} while (again());
-		} catch (IllegalArgumentException e) {
-			throw e;
-		}
+		do {
+			this.computer = new Computer();
+			roundWithComputer();
+			printAllStrike();
+		} while (again());
 	}
 
-	private void roundWithComputer() {
+	private void roundWithComputer() throws IllegalArgumentException {
 		String userNumbers = "";
 		do {
 			System.out.println("숫자를 입력해주세요 : ");
 			userNumbers = Console.readLine();
-			try {
-				Examine.hasDifferentNumbers(userNumbers);
-			} catch (IllegalArgumentException e) {
-				throw e;
-			}
+			Examine.hasDifferentNumbers(userNumbers);
 		} while (!computer.computeAndPrintResult(userNumbers));
 	}
-	private boolean again() {
-		try {
-			String str = Console.readLine();
-			Examine.isOneOrTwo(str);
-		} catch (IllegalArgumentException e) {
-			throw e;
-		}
+	private boolean again() throws IllegalArgumentException {
+		String str = Console.readLine();
+		Examine.isOneOrTwo(str);
+		return Examine.isOneOrTwo(str) == 1;
 	}
 
 	private void printAllStrike() {

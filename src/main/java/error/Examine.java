@@ -1,15 +1,11 @@
 package error;
 
 public class Examine {
-	public static void hasDifferentNumbers(String str) {
-		try {
-			isLengthThree(str);
-			isAllNumbers(str);
-			isContainZero(str);
-			isDifferent(str);
-		} catch (IllegalArgumentException e) {
-			throw e;
-		}
+	public static void hasDifferentNumbers(String str) throws IllegalArgumentException {
+		isLengthThree(str);
+		isAllNumbers(str);
+		isContainZero(str);
+		isDifferent(str);
 	}
 
 	private static void isDifferent(String str) {
@@ -46,10 +42,17 @@ public class Examine {
 		if (str.length() != 1) {
 			throw new IllegalArgumentException();
 		}
-		int number = Integer.parseInt(str);
-		if (number != 1 && number != 2) {
+		if (toNumber(str) != 1 && toNumber(str) != 2) {
 			throw new IllegalArgumentException();
 		}
-		return number;
+		return toNumber(str);
+	}
+
+	private static int toNumber(String str) {
+		try {
+			return Integer.parseInt(str);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException();
+		}
 	}
 }
