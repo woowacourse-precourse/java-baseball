@@ -8,20 +8,45 @@ public class InputException {
         if (number.length() != 3) {
             return false;
         }
-        HashSet<Character> set = new HashSet<Character>();
+        if (!isDigits(number)) {
+            return false;
+        }
+        if (containZero(number)) {
+            return false;
+        }
+        if (isDuplicate(number)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isDigits(String number) {
         for (char c : number.toCharArray()) {
             if(!Character.isDigit(c)) {
                 return false;
             }
-            if(c == '0') {
-                return false;
+        }
+        return true;
+    }
+
+    public static boolean containZero(String number) {
+        for (char c: number.toCharArray()) {
+            if (c == '0') {
+                return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean isDuplicate(String number) {
+        HashSet<Character> set = new HashSet<Character>();
+        for (char c : number.toCharArray()) {
             if(!set.isEmpty() && set.contains(c)) {
-                return false;
+                return true;
             }
             set.add(c);
         }
-        return true;
+        return false;
     }
 
     public static boolean isValidRestartInput(String number) {
