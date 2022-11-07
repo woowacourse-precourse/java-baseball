@@ -11,12 +11,13 @@ public class DataInput {
 
     public void inputNumber(int type) {
         this.inputString = Console.readLine();
-        ErrorCheck errorCheck = new ErrorCheck(this.inputString);
 
         if (type == ONE_INPUT) {
-            errorCheck.launchErrorCheck(ONE_INPUT);
+            ErrorCheck errorCheck = new OneValueCheckError(this.inputString);
+            errorCheck.launchErrorCheck();
         }
         if (type == THREE_INPUT) {
+            ErrorCheck errorCheck = new ThreeValueCheckError(this.inputString);
             errorCheck.launchErrorCheck();
         }
     }

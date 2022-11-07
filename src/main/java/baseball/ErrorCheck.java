@@ -1,25 +1,13 @@
 package baseball;
 
-public class ErrorCheck {
+abstract class ErrorCheck {
     private String target;
 
     ErrorCheck(String target){
         this.target = target;
     }
 
-    private boolean checkInputLenght() {
-        if (this.target.length() == 3) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean checkInputLenght(int type) {
-        if (this.target.length() == 1) {
-            return true;
-        }
-        return false;
-    }
+    abstract boolean checkInputLenght();
 
     private boolean checkIsNum() {
         int tempNumber = 0;
@@ -61,16 +49,34 @@ public class ErrorCheck {
             throwException();
         }
     }
+}
 
-    public void launchErrorCheck(int type) {
-        if (checkInputLenght(type) == false) {  //오버 로딩을 통해서 타입별 렝스 길이 체크(1자릿수 체크 메서드)
-            throwException();
+class OneValueCheckError extends ErrorCheck {
+    private String target;
+    OneValueCheckError(String target) {
+        super(target);
+        this.target = target;
+    }
+
+    public boolean checkInputLenght() {
+        if (target.length() == 1) {
+            return true;
         }
-        if (checkIsNum() == false) {
-            throwException();
+        return false;
+    }
+}
+
+class ThreeValueCheckError extends ErrorCheck {
+    private String target;
+    ThreeValueCheckError(String target) {
+        super(target);
+        this.target = target;
+    }
+
+    public boolean checkInputLenght() {
+        if (target.length() == 3) {
+            return true;
         }
-        if (checkDuplicate() == false) {
-            throwException();
-        }
+        return false;
     }
 }
