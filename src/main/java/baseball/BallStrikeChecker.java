@@ -40,7 +40,7 @@ public class BallStrikeChecker {  // 이 클래스에서 모든 판단을 끝내
         } else if (ball == 0) {
             System.out.println(strike + "스트라이크");
         } else {
-            System.out.println(strike + "스트라이크 " + ball + "볼");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
     }
 
