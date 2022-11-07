@@ -17,6 +17,13 @@ public class BallAndStrike {
         return this.strike;
     }
 
+    public void setStrike(int strike){
+        this.strike = strike;
+    }
+    public void setBall(int ball){
+        this.ball = ball;
+    }
+
     public void print() {
         if (this.ball == 0 || this.strike == 0) {
             if (this.ball == 0) {

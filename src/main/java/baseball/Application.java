@@ -10,7 +10,6 @@ public class Application {
     private static String userInput;
     private static int targetNumber;
 
-
     public static void main(String[] args) {
 
         startGamePrint();
@@ -61,9 +60,10 @@ public class Application {
         String input = String.valueOf(userInput);
 
         for(int i=0; i<input.length(); i++){
-//            if(input.charAt(i))
+            if(target.indexOf(input.charAt(i)) == -1) continue;
+            if(target.charAt(i) == input.charAt(i)) count.setStrike(count.getStrike() + 1);
+            else count.setBall(count.getBall() + 1);
         }
-
 
         return count;
     }
@@ -92,6 +92,7 @@ public class Application {
     private static void validUserInput(int number) {
         //세자리 수가 아닐때
         //세자리 수 중 0이 있을 때
+        //세자리 수 중 같은 수가 있을때
     }
 
     private static void validGameContinueInput(int number) {
