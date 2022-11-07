@@ -16,7 +16,8 @@ public class GameLogic {
         this.baseballDto = baseballDto;
     }
 
-    public void getBallAndStrikeCount() {
+    public void getBallAndStrikeCount(List<Integer> userNumbers) {
+        updateUserNumbers(userNumbers);
         IntStream.range(Constants.ZERO_COUNT.getNumber(), Constants.NUMBER_OF_DIGITS.getNumber())
                 .forEach(index -> {
                     int userDigit = userNumbers.get(index);
@@ -41,5 +42,9 @@ public class GameLogic {
 
     private boolean isStrike(int inputDigit, int computerDigit) {
         return inputDigit == computerDigit;
+    }
+
+    public void updateUserNumbers(List<Integer> userNumbers) {
+        this.userNumbers = userNumbers;
     }
 }

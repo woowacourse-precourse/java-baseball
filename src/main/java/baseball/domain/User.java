@@ -35,7 +35,4 @@ public class User {
         return userNumbers;
     }
 
-    public void updateUserNumbers(List<Integer> userNumbers) {
-        this.userNumbers = userNumbers;
-    }
 }
