@@ -7,10 +7,10 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class Generatenumber {
+public class Randomnumber {
     private List<Integer> randomNum;
 
-    public Generatenumber() {
+    public Randomnumber() {
         randomNum = new ArrayList<>();
     }
 

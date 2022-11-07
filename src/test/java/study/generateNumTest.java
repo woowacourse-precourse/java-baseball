@@ -1,6 +1,6 @@
 package study;
 
-import baseball.logic.Generatenumber;
+import baseball.logic.Randomnumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class generateNumTest {
     @Test
     void randomnum() {
-        Generatenumber generate = new Generatenumber();
+        Randomnumber generate = new Randomnumber();
         List<Integer> list = generate.getNum();
         System.out.println(list);
     }

@@ -2,9 +2,9 @@ package baseball.logic;
 
 import java.util.List;
 
-public class Exception {
+public class inputException {
 
-    public static boolean inputException(List<Integer> playerInput) {
+    public static boolean checkException(List<Integer> playerInput) {
         if (checkSame(playerInput) || checkThreedigit(playerInput) || checkZero(playerInput)) {
             return true;
         }

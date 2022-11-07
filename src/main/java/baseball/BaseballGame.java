@@ -1,50 +1,49 @@
 package baseball;
 
-import baseball.logic.Generatenumber;
+import baseball.logic.Randomnumber;
 import baseball.logic.Inputnumber;
 import baseball.logic.RestartValidation;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
-    static final int size = 3;
+    static final int inputsize = 3;
     private int strike;
     private int ball;
-    private List<Integer> playerInput;
-    private List<Integer> computerInput;
+    private List<Integer> playerInputList;
+    private List<Integer> computerInputList;
 
-    private final Generatenumber computerNum;
+    private final Randomnumber computerNum;
     private final Inputnumber playerNum;
 
 
     public BaseballGame() {
         strike = 0;
         ball = 0;
-        playerInput = new ArrayList<>();
-        computerInput = new ArrayList<>();
-        computerNum = new Generatenumber();
+        playerInputList = new ArrayList<>();
+        computerInputList = new ArrayList<>();
         playerNum = new Inputnumber();
+        computerNum = new Randomnumber();
     }
 
     public void play() {
         computerNum.generateNumber();
-        computerInput = computerNum.getNum();
+        computerInputList = computerNum.getNum();
         do {
-            playerInput = playerNum.getNum();
+            playerInputList = playerNum.getNum();
             strike = 0;
             ball = 0;
             cntScore();
             messageHint();
-        } while (!(strike == size));
+        } while (!(strike == 3));
         System.out.println("3개의 숫자를 모두 맞히셨습니다");
         System.out.println("게임 종료");
     }
 
     public void cntScore() {
-        cntStrike(playerInput, computerInput);
-        cntBall(playerInput, computerInput);
+        cntStrike(playerInputList, computerInputList);
+        cntBall(playerInputList, computerInputList);
     }
 
     public void messageHint() {
@@ -61,7 +60,7 @@ public class BaseballGame {
     }
 
     public int cntStrike(List<Integer> player, List<Integer> computer) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < inputsize; i++) {
             if (player.get(i).equals(computer.get(i))) {
                 strike++;
             }
@@ -70,7 +69,7 @@ public class BaseballGame {
     }
 
     public int cntBall(List<Integer> player, List<Integer> computer) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < inputsize; i++) {
             if (computer.contains(player.get(i)) && computer.get(i) != player.get(i)) {
                 ball++;
             }
