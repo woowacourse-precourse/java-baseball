@@ -8,9 +8,13 @@ public class Application {
         gameController.startGame();
 
         while (true) {
+            String restartGameValue = "1";
+            if (!gameController.runningGame()) {
+                restartGameValue = gameController.restartGame();
+            }
 
-            if(!gameController.runningGame()){
-
+            if (restartGameValue.equals("2")) {
+                break;
             }
 
         }
