@@ -8,12 +8,13 @@ import baseball.view.PlayingGameView;
 public class GameController {
     PlayingGameView playingGameView = new PlayingGameView();
     public void playGame(Computer computer) {
-        Game game = new Game();
+        Game game;
         do {
             playingGameView.enterNumberPrint();
             User user = new User(playingGameView.inputToQuestion());
+            game = new Game();
             game.checkBallStrike(computer.getComputerAnswer(), user.getUserAnswer());
             playingGameView.gameResultPrint(game.getStrike(), game.getBall());
-        } while (game.getStrike() != 3);
+        } while (game.ThreeStrikeCheck());
     }
 }
