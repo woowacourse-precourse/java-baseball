@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import utils.GameInputException;
+
+import java.io.ByteArrayInputStream;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -65,6 +66,31 @@ class ApplicationTest extends NsTest {
                 }
 
             }
+        }
+    }
+
+    @Nested
+    @DisplayName("게임중 유저 입력에 대한 반응 출력")
+    class GameUserInputTest {
+        private Baseball baseballTest = new Baseball();
+
+        private void runMainGame(String ... args) {
+            final byte[] buf = String.join("\n", args).getBytes();
+            System.setIn(new ByteArrayInputStream(buf));
+            baseballTest.play();
+        }
+
+        @Test
+        void testMainGame() {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runMainGame("456", "145", "243", "321", "365", "123");
+                        String[] expectedAnswer = {"낫싱", "1스트라이크", "1볼 1스트라이크", "2볼 1스트라이크", "1볼", "3스트라이크"};
+
+                        assertEquals(output(), "숫자를 입력해주세요 : " + String.join("\r\n숫자를 입력해주세요 : ", expectedAnswer));
+                    },
+                    1, 2,3
+            );
         }
     }
 }
