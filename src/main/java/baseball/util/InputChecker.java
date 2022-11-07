@@ -2,6 +2,8 @@ package baseball.util;
 
 import java.util.Arrays;
 
+import static baseball.util.NumberGenerator.FINAL_NUMBER;
+import static baseball.util.NumberGenerator.FIRST_NUMBER;
 import static java.util.stream.Collectors.joining;
 
 public final class InputChecker {
@@ -20,6 +22,7 @@ public final class InputChecker {
     private static void isNotExistRepeatedNumber(String input) {
         String compactInput = Arrays.stream(input.split(""))
                 .filter(InputChecker::isDigit)
+                .filter(InputChecker::isCollectRange)
                 .distinct()
                 .collect(joining());
         isSizeEqualToLimitedSize(compactInput);
@@ -36,5 +39,10 @@ public final class InputChecker {
             return true;
         }
         throw new IllegalArgumentException();
+    }
+
+    private static boolean isCollectRange(String init) {
+        int num = Integer.parseInt(init);
+        return FIRST_NUMBER <= num && num <= FINAL_NUMBER;
     }
 }
