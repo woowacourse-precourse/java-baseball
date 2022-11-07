@@ -16,11 +16,11 @@ public class ComputerImpl implements Computer {
     @Override
     public List<Integer> generateRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
-        int number = Randoms.pickNumberInRange(1, 9);
-        randomNumber.add(number);
-        for (int i = 1; i < 3; i++) {
-            number = anotherNumber(number);
-            randomNumber.add(number);
+        while (randomNumber.size() < 3) {
+            int pickedNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumber.contains(pickedNumber)) {
+                randomNumber.add(pickedNumber);
+            }
         }
         return randomNumber;
     }
@@ -29,13 +29,4 @@ public class ComputerImpl implements Computer {
     public String baseballResult(List<Integer> randomNumber, String userInput) {
         return baseballAlgorithm.checkBaseballResult(randomNumber, userInput);
     }
-
-    private int anotherNumber(int number) {
-        int randomNumber = Randoms.pickNumberInRange(1, 9);
-        while (number == randomNumber) {
-            randomNumber = Randoms.pickNumberInRange(1, 9);
-        }
-        return randomNumber;
-    }
-
 }
