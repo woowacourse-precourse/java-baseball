@@ -15,12 +15,9 @@ public class Generator {
         while (ballCounter.size() < BALL_LENGTH) {
             char number = generateRandomNumberFrom1To9();
 
-            if (ballCounter.contains(number)) {
-                continue;
+            if (ballCounter.add(number)) {
+                counterpartNumber.append(number);
             }
-
-            counterpartNumber.append(number);
-            ballCounter.add(number);
         }
 
         return counterpartNumber.toString();
