@@ -2,61 +2,25 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
-
 public class Application {
-
-
-
-    // Board 내부로 들어갈 예정. 로직도 if else 문 쓰지 않고 string concat 활용 예정
-    static void showResult(ArrayList<Integer> ballStrikeCnt) {
-        Integer ball = ballStrikeCnt.get(0);
-        Integer strike = ballStrikeCnt.get(1);
-
-        if (ball == 0 && strike == 0) {
-            System.out.println("낫싱");
-        } else if (strike == 3) {
-            /*threeStrike = 1;*/
-            System.out.println("3스트라이크");
-        } else if (ball == 0) {
-            System.out.printf("%d스트라이크\n", strike);
-        } else if (strike == 0) {
-            System.out.printf("%d볼\n", ball);
-        } else {
-            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
-        }
-    }
-
-    // 내부에 기술된 메소드들 각각 다른 클래스로 찢어져 들어갈 예정
-    static void judgeGuess(String guess, ArrayList<Integer> answer) {
-        ArrayList<Integer> guessParsed;
-        ArrayList<Integer> ballStrikeCnt;
-
-   /*     guessParsed = parseStringIntoInteger(guess);
-        ballStrikeCnt = countBallAndStrike(guessParsed, answer);
-        showResult(ballStrikeCnt);*/
-    }
-
     static void runLoop() {
-
-        RandomNumberGenerator answer = new RandomNumberGenerator();
+        RandomNumberGenerator answer= new RandomNumberGenerator();
         Guess myGuess;
         BallStrikeChecker checker;
-        /*  ResultBoard board;
+        ResultBoard board;
 
-        while(checker.threeStrike){
+        do{
             System.out.println("숫자를 입력해주세요 : ");
             myGuess= new Guess(Console.readLine());
             checker = new BallStrikeChecker(answer,myGuess);
             board = new ResultBoard(checker.judgement);
             board.showResult();
-        }*/
+        }while(!checker.threeStrike);
     }
-
     static void endOrRestart()  {
         NextBehavior next;
 
@@ -72,12 +36,10 @@ public class Application {
             return;
         }
     }
-
     static void initializeAndStartGame() {
         runLoop();
         endOrRestart();
     }
-
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         initializeAndStartGame();
