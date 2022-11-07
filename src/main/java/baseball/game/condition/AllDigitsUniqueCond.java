@@ -2,6 +2,9 @@ package baseball.game.condition;
 
 import baseball.validation.Condition;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static baseball.game.util.GameUtil.NUMBER_SIZE;
 
 public class AllDigitsUniqueCond implements Condition {
@@ -13,17 +16,14 @@ public class AllDigitsUniqueCond implements Condition {
 
     @Override
     public Boolean isTrue(Integer guess) {
-        String s = Integer.toString(guess);
+        String guessString = Integer.toString(guess);
+        Set<Character> numbers = new HashSet<>();
 
-        for (Integer i = 0; i < NUMBER_SIZE - 1; i++) {
-            for (Integer j = i + 1; j < NUMBER_SIZE; j++) {
-                if (s.charAt(i) == s.charAt(j)) {
-                    return false;
-                }
-            }
+        for (int index = 0; index < NUMBER_SIZE; index++) {
+            numbers.add(guessString.charAt(index));
         }
 
-        return true;
+        return numbers.size() == guessString.length();
     }
 
     public static Condition getInstance() {
