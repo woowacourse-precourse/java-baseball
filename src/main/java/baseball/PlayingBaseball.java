@@ -1,7 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.List;
 
 class PlayingBaseball {
     private final String numberOfComputer;
@@ -9,7 +7,7 @@ class PlayingBaseball {
     private final int LENGTH = 3;
     private int strike = 0;
     private int ball = 0;
-    private List indexOfStrike = new ArrayList<Integer>();
+
 
     PlayingBaseball (String numberComputer, String numberPlayer) {
         this.numberOfComputer = numberComputer;
@@ -19,7 +17,6 @@ class PlayingBaseball {
     int countStrikes () {
         for (int i = 0; i < LENGTH; i++) {
             if (numberOfComputer.charAt(i) == numberOfPlayer.charAt(i)) {
-                indexOfStrike.add(i);
                 strike += 1;
             }
         }
@@ -29,8 +26,11 @@ class PlayingBaseball {
     int countBalls () {
         for (int i = 0; i < LENGTH; i++) {
             String temp = String.valueOf(numberOfPlayer.charAt(i));
-            if (!indexOfStrike.contains(i) && numberOfComputer.contains(temp)) {
+            if (numberOfComputer.contains(temp)) {
                 ball += 1;
+            }
+            if (numberOfPlayer.charAt(i) == numberOfComputer.charAt(i)) {
+                ball -= 1;
             }
         }
         return ball;
