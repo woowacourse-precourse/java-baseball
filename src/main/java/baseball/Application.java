@@ -99,8 +99,18 @@ public class Application {
      * 게임 종료 후 숫자 야구 게임 재시작 여부 반환
      */
     public boolean restartGame(){
-        // TODO: 게임 종료 후 숫자 야구 게임 재시작 여부 반환
-        return false;
+
+        String input = Console.readLine();
+
+        if (Integer.valueOf(input).equals(1)){
+            return true;
+        }
+        else if (Integer.valueOf(input).equals(2)){
+            return false;
+        }
+        else{
+            throw new IllegalArgumentException("you must choose between 1 and 2");
+        }
     }
 
     public static void main(String[] args) {
