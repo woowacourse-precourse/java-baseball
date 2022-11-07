@@ -51,6 +51,17 @@ public class Application {
             throw new IllegalArgumentException("0을 입력할 수 없습니다.");
         }
 
+//      기능3. 결과값 비교
+
+        boolean compare = computer.get(0) == user.get(0);
+        System.out.println(compare);
+
+//        System.out.println(userNumber.getClass().getSimpleName());
+
+        if (computer == user) {
+            System.out.println("True");
+        }
+
 
     }
 }
