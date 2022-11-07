@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.service.GameService;
+import baseball.utils.Message;
 
 public class GameController {
     private GameService gameService = new GameService();
@@ -23,7 +24,7 @@ public class GameController {
         if (gameService.isReplay()) {
             run();
         }
-        System.out.println("게임 종료");
+        Message.printEndProgram();
     }
 
     public void run() throws IllegalArgumentException {

@@ -9,6 +9,10 @@ public class Message {
         System.out.println(digit + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    public static void printEndProgram() {
+        System.out.println("게임 종료");
+    }
+
     public static void printReplayGame(int RETRY_OK, int RETRY_NO) {
         System.out.println("게임을 새로 시작하려면 " + RETRY_OK + ", 종료하려면 " + RETRY_NO + "를 입력하세요.");
     }
