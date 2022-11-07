@@ -19,7 +19,7 @@ public class Calculator {
         for (int index = 0; index < userGameNumber.length(); index++) {
             char currentUserNumber = userGameNumber.charAt(index);
             if (numberIndexMap.containsKey(currentUserNumber)) {
-                score += computeScoreIndex(numberIndexMap.get(currentUserNumber), index);
+                score += getScoreByIndex(numberIndexMap.get(currentUserNumber), index);
             }
         }
 
@@ -32,7 +32,7 @@ public class Calculator {
      *
      * @return int
      * */
-    private static int computeScoreIndex(int numberIndex, int index) {
+    private static int getScoreByIndex(int numberIndex, int index) {
         if (numberIndex == index) {
             return 10;
         }

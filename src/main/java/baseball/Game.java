@@ -22,15 +22,15 @@ public class Game {
             // 1. Status가 EXIT가 아닐 동안 반복되는 반복문 안에서 게임 진행
             while (status != Status.EXIT) {
                 // 2. 게임 진행을 위한 초기화
-                initGame();
+                initialize();
 
                 // 3. Computer와 User 정보를 이용해 Result가 THREESTRIKE가 아닐 동안 게임 진행
-                proceedGameUntil3S(computer, user);
+                proceedGame(computer, user);
                 System.out.println(GUESS_ALL);
 
                 // 4. 사용자 입력에 따라 게임 재개 혹은 종료를 위한 Status 변경
                 System.out.println(OPTION_MESSAGE);
-                changeStatusByOption();
+                changeStatusByGameOption();
             }
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
@@ -46,7 +46,7 @@ public class Game {
      *
      * @return void
      * */
-    private static void initGame() {
+    private static void initialize() {
         computer = new Computer();
         user = new User();
         result = Result.NOTHING;
@@ -57,12 +57,12 @@ public class Game {
      *
      * @return void
      * */
-    private static void proceedGameUntil3S(Computer computer, User user) {
+    private static void proceedGame(Computer computer, User user) {
         while (result != Result.THREESTRIKE) {
             System.out.print(INPUT_MESSAGE);
             User.setGameNumber();
 
-            result = Result.getResultByCode(Calculator.calculateScore(computer, user));
+            result = Result.getResultByScore(Calculator.calculateScore(computer, user));
             System.out.println(result.getMessage());
         }
     }
@@ -72,7 +72,7 @@ public class Game {
      *
      * @return void
      * */
-    private static void changeStatusByOption() {
+    private static void changeStatusByGameOption() {
         User.setGameOption();
         status = Status.getStatusByGameOption(user.getGameOption());
     }

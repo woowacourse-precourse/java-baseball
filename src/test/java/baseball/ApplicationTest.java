@@ -34,14 +34,14 @@ class ApplicationTest extends NsTest {
         @Test
         void 잘못된점수_음수_테스트() {
             int score = -1;
-            assertThatThrownBy(() -> Result.getResultByCode(score))
+            assertThatThrownBy(() -> Result.getResultByScore(score))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
         void 잘못된점수_enum에_포함되지_않는경우_테스트() {
             int score = 4;
-            assertThatThrownBy(() -> Result.getResultByCode(score))
+            assertThatThrownBy(() -> Result.getResultByScore(score))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }

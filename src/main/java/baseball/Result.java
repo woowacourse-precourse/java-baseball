@@ -14,8 +14,8 @@ public enum Result {
     ONEBALL(1, "1볼"),
     NOTHING(0, "낫싱");
 
-    private int score;
-    private String message;
+    private final int score;
+    private final String message;
     private static final String EXCEPTION_MESSAGE = "잘못된 점수입니다.";
 
     Result(int score, String message) {
@@ -33,7 +33,7 @@ public enum Result {
      *
      * @return String
      * */
-    public static Result getResultByCode(int score) {
+    public static Result getResultByScore(int score) {
         return Arrays.stream(Result.values())
                 .filter(result -> result.score == score)
                 .findAny()
