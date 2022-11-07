@@ -41,6 +41,18 @@ public class Application {
         result.add(ball);
         return result;
     }
+    //[출력] 결과문 출력
+    public static void output(int strike, int ball) {
+        if ( ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if ( ball == 0 ){
+            System.out.println(strike+"스트라이크");
+        } else if ( strike == 0 ){
+            System.out.println(ball+"볼");
+        } else {
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }
+    }
     public static void main(String[] args) {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -61,6 +73,13 @@ public class Application {
             caseCheck(computer, inputNumber, gameResult);
             strike = gameResult.get(0);
             ball = gameResult.get(1);
+
+            if ( strike == 3) {
+                System.out.println("3스트라이크");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            } else {
+                output(strike, ball);
+            }
         }
     }
 }
