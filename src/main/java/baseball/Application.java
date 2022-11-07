@@ -72,7 +72,12 @@ class Baseball {
 
     public void printStrike() {
         if (baseballCount.get(0) != 0) {
-            System.out.printf("%d 스트라이크 ", baseballCount.get(0));
+            System.out.printf("%d스트라이크 ", baseballCount.get(0));
+        }
+    }
+    public void printBall() {
+        if (baseballCount.get(1) != 0) {
+            System.out.printf("%d볼", baseballCount.get(1));
         }
     }
 }
