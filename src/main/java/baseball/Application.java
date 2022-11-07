@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 
 public class Application {
 
@@ -17,24 +16,21 @@ public class Application {
     private static String computerNumber = "";
     private static String userNumber = "";
 
-    private static int ballNum =0;
-    private static int strikeNum =0;
+    private static int startFlag = 1;
+    private static int ballNum = 0;
+    private static int strikeNum = 0;
 
     public static void getInput() {
         System.out.print(InputSymbol);
         userNumber = Console.readLine();
         inputValidation(userNumber);
-        System.out.print(computerNumber);
-        System.out.print(userNumber);
-    }
-
-    public static void printGetResult(int ballNum, int strikeNum) {
-
+       // System.out.println(computerNumber);
+      //  System.out.println(userNumber);
     }
 
     public static void calculateNum() {
         ballNum = 0;
-        strikeNum =0;
+        strikeNum = 0;
         for (int i = 0; i < NumberLength; i++) {
             if (IsStrike(computerNumber.charAt(i) - '0', userNumber.charAt(i) - '0')) {
                 addStrike();
@@ -62,7 +58,7 @@ public class Application {
             System.out.print(strikeNum + "스트라이크");
         }
         if (ballNum == 0 && strikeNum == 0) {
-            System.out.print("낫씽");
+            System.out.print("낫싱");
         }
         System.out.println();
     }
@@ -121,26 +117,48 @@ public class Application {
         return number;
     }
 
-    public static Boolean checkEndGame(int StrikeNum) {
+    public static Boolean checkThreeStrike(int StrikeNum) {
         return StrikeNum == NumberLength;
     }
+
+    public static void getStartFlag() {
+        startFlag = Integer.parseInt(Console.readLine());
+    }
+
+    public static boolean checkEndGame() {
+        if (startFlag != 1 && startFlag != 2) {
+            throw new IllegalArgumentException();
+        }
+        return startFlag == 2;
+    }
+
     public static void gameStart() {
         System.out.println(StartSymbol);
-        computerNumber =getRandomDifferentNumber();
 
     }
-    public static void printEndMsg(){
+
+    public static void printEndMsg() {
         System.out.println(EndSymbol);
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         gameStart();
-        while (!checkEndGame(strikeNum)) {
-            getInput();
-            calculateNum();
-            printOutput(ballNum, strikeNum);
+        while (true) {
+            computerNumber = getRandomDifferentNumber();
+            while (true) {
+                getInput();
+                calculateNum();
+                printOutput(ballNum, strikeNum);
+                if (checkThreeStrike(strikeNum)) {
+                    printEndMsg();
+                    getStartFlag();
+                    break;
+                }
+            }
+            if (checkEndGame()) {
+                break;
+            }
         }
-        printEndMsg();
     }
 }
