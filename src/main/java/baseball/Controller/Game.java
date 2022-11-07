@@ -31,7 +31,7 @@ public class Game {
         while (pass) {
             outputView.inputNumMessage();
             String input = inputView.inputUser();
-            player.saveUserNumber(number.createUserNumber(input));
+            player.saveUserNumber(number.checkNumberAndSave(input));
             referee.isStrike(player.getUser(), player.getComputer());
             referee.isBall(player.getUser(), player.getComputer());
             outputView.printResultState(referee.getBall(), referee.getStrike());

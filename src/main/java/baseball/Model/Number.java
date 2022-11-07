@@ -16,7 +16,7 @@ public class Number {
     private static final char CHARZERO = '0';
 
 
-    public List<Integer> createUserNumber(String number) {
+    public List<Integer> checkNumberAndSave(String number) {
         checkLength(number);
         checkNumber(number);
         checkDuplicate(number);
