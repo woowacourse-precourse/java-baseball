@@ -27,4 +27,27 @@ public class UserInputUtil {
             throw new IllegalArgumentException();
         }
     }
+    public static int[] getThreeDigitInput() {
+        int[] userNumber = new int[3];
+
+        String input = Console.readLine();
+
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        String[] stringArray = input.split("");
+
+        for(int i = 0; i < 3; i++) {
+            userNumber[i] = toInteger(stringArray[i]);
+        }
+
+        for(int i = 0; i < 3; i++) {
+            if(userNumber[i] == 0) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        return userNumber;
+    }
 }
