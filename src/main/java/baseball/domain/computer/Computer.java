@@ -6,5 +6,5 @@ public interface Computer {
 
     List<Integer> generateRandomNumber();
 
-    String baseballResult(List<Integer> randomNumber, String userInput);
+    String checkBallAndStrike(List<Integer> randomNumber, String userInput);
 }

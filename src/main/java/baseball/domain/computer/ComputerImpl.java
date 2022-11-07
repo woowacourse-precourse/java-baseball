@@ -26,7 +26,7 @@ public class ComputerImpl implements Computer {
     }
 
     @Override
-    public String baseballResult(List<Integer> randomNumber, String userInput) {
+    public String checkBallAndStrike(List<Integer> randomNumber, String userInput) {
         return baseballAlgorithm.checkBaseballResult(randomNumber, userInput);
     }
 }
