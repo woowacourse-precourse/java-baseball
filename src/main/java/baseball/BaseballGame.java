@@ -25,4 +25,12 @@ public class BaseballGame {
         }
         return cnt;
     }
+
+    static boolean notingCheck(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
