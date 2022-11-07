@@ -14,9 +14,8 @@ public class Controller {
     private static final String RESTART_MESSAGE = "1";
     private static final int END_STRIKE_COUNT = 3;
     private static final String END_EXCEPTION_MESSAGE = "입력이 잘못되었어요";
-
-    private boolean GAME_END = true;
-    private boolean GAME_NOT_END = false;
+    private final boolean GAME_END = true;
+    private final boolean GAME_NOT_END = false;
     private boolean isGameEnd = false;
     private List<Integer> userNumber;
     private List<Integer> computerNumber;
