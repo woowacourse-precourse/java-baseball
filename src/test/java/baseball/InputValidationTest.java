@@ -1,9 +1,9 @@
 package baseball;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.InputValidation;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -16,30 +16,34 @@ class InputValidationTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1, true", "12, true", "123, false", "1234, true", "12345, true"})
-    void isNotThreeLetters(String input, boolean expected) {
-        boolean actual = inputValidation.isNotThreeLetters(input);
-        assertThat(actual).isEqualTo(expected);
+    @DisplayName("세글자가 아닐 경우 예외 발생 확인")
+    @CsvSource(value = {"1", "12", "1234", "12345"})
+    void validateLength(String input) {
+        assertThatThrownBy(() -> inputValidation.validateLength(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"a, true", "abc, true", "1, false", "123, false"})
-    void isNot1To9(String input, boolean expected) {
-        boolean actual = inputValidation.isNot1To9(input);
-        assertThat(actual).isEqualTo(expected);
+    @DisplayName("1부터 9까지 수가 아닐 경우 예외 발생 확인")
+    @CsvSource(value = {"a", "abc", "가나다"})
+    void validateNumberRange(String input) {
+        assertThatThrownBy(() -> inputValidation.validateNumberRange(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"11, true", "aa, true", "121, true", "aba, true", "123, false", "abc, false"})
-    void hasDuplicatedValues(String input, boolean expected) {
-        boolean actual = inputValidation.hasDuplicatedValues(input);
-        assertThat(actual).isEqualTo(expected);
+    @DisplayName("중복이 있을 경우 예외 발생 확인")
+    @CsvSource(value = {"11", "aa", "121", "aba"})
+    void validateDuplication(String input) {
+        assertThatThrownBy(() -> inputValidation.validateDuplication(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0, true", "3, true", "4, true", "1, false", "2, false"})
-    void isNotCorrectSelect(String input, boolean expected) {
-        boolean actual = inputValidation.isNotCorrectChoice(input);
-        assertThat(actual).isEqualTo(expected);
+    @DisplayName("1 또는 2가 아닐 경우 예외 발생 확인")
+    @CsvSource(value = {"0", "3", "4", "a"})
+    void validateChoice(String input) {
+        assertThatThrownBy(() -> inputValidation.validateChoice(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
