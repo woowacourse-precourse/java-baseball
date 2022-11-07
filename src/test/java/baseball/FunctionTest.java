@@ -77,6 +77,7 @@ public class FunctionTest {
         in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
+
             BaseBallGame.newGameOrStopGame();
         });
     }
