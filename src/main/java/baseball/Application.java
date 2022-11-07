@@ -31,6 +31,18 @@ public class Application {
     private static void userInputThreeDigitNum() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputNum = Console.readLine();
+        userNumList = splitStringAndParseInt(userInputNum);
+    }
+
+    private static List<Integer> splitStringAndParseInt(String userInputNum) {
+        List<Integer> ret = new ArrayList<>();
+        String[] splitUserInputNum = userInputNum.split("");
+
+        for (String s : splitUserInputNum) {
+            ret.add(Integer.parseInt(s));
+        }
+
+        return ret;
     }
 
 }
