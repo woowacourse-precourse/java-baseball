@@ -30,9 +30,11 @@ public class BaseballGame {
             throw new IllegalArgumentException();
         }
 
-        // 4. 스트라이크 개수 세기
+        // 4. 스트라이크, 볼 개수 세기
         int strikeCnt = countStrikes(targetNumber, userInput);
+        int ballCnt = countBalls(targetNumber, userInput);
         System.out.println(strikeCnt + "스트라이크");
+        System.out.println(ballCnt + "볼");
     }
 
     private int createTargetNumber() {
@@ -87,5 +89,27 @@ public class BaseballGame {
             }
         }
         return strikeCnt;
+    }
+
+    private int countBalls(int targetNum, int inputNum) {
+        List<Integer> targetNums = new ArrayList<>();
+        while (targetNum > 0) {
+            targetNums.add(targetNum % 10);
+            targetNum /= 10;
+        }
+
+        List<Integer> inputNums = new ArrayList<>();
+        while (inputNum > 0) {
+            inputNums.add(inputNum % 10);
+            inputNum /= 10;
+        }
+
+        int ballCnt = 0;
+        for (int i = 0; i < targetNums.size(); i++) {
+            if (targetNums.get(i) != inputNums.get(i) && targetNums.contains(inputNums.get(i))) {
+                ballCnt++;
+            }
+        }
+        return ballCnt;
     }
 }
