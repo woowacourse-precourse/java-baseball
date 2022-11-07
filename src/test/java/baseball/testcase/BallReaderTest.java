@@ -2,6 +2,7 @@ package baseball.testcase;
 
 import baseball.game.Ball;
 import baseball.game.BallReader;
+import baseball.game.ResultOfBall;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -21,10 +22,7 @@ public class BallReaderTest {
         Ball firstBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
         Ball secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1, 9, 3));
 
-        List<Integer> firstBallData = firstBall.getBallData();
-        List<Integer> secondBallData = secondBall.getBallData();
-
-        Map<String, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
+        Map<ResultOfBall, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
         System.out.println("firstBall = " + firstBall);
         System.out.println("secondBall = " + secondBall);
         System.out.println(result);
@@ -49,7 +47,7 @@ public class BallReaderTest {
         Ball firstBall = new Ball(ballData);
         Ball secondBall = new Ball(ballData);
 
-        Map<String, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
+        Map<ResultOfBall, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
         System.out.println("result = " + result);
         System.out.println();
 
@@ -66,7 +64,7 @@ public class BallReaderTest {
             secondBall = new Ball(Randoms.pickUniqueNumbersInRange(1,9,3));
         }
 
-        Map<String, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
+        Map<ResultOfBall, Integer> result = ballReader.getStrikeAndBall(firstBall, secondBall);
         System.out.println("firstBall = " + firstBall);
         System.out.println("secondBall = " + secondBall);
         System.out.println("result = " + result);

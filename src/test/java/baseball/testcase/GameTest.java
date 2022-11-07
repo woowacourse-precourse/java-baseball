@@ -1,9 +1,6 @@
 package baseball.testcase;
 
-import baseball.game.Ball;
-import baseball.game.BallMaker;
-import baseball.game.BallReader;
-import baseball.game.Game;
+import baseball.game.*;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -75,17 +72,17 @@ public class GameTest extends NsTest {
         when(ballMaker.getUserBall())
                 .thenReturn(new Ball(List.of(2,1,3)));
 
-        Map<String, Integer> firstResult = new HashMap<>();
-        firstResult.put("STRIKE", 2);
+        Map<ResultOfBall, Integer> firstResult = new HashMap<>();
+        firstResult.put(ResultOfBall.STRIKE, 2);
 
-        Map<String, Integer> secondResult = new HashMap<>();
-        secondResult.put("STRIKE", 1);
-        secondResult.put("BALL", 1);
+        Map<ResultOfBall, Integer> secondResult = new HashMap<>();
+        secondResult.put(ResultOfBall.STRIKE, 1);
+        secondResult.put(ResultOfBall.BALL, 1);
 
-        Map<String, Integer> thirdResult = new HashMap<>();
-        thirdResult.put("BALL", 2);
+        Map<ResultOfBall, Integer> thirdResult = new HashMap<>();
+        thirdResult.put(ResultOfBall.BALL, 2);
 
-        Map<String, Integer> fourthResult = new HashMap<>();
+        Map<ResultOfBall, Integer> fourthResult = new HashMap<>();
 
         when(ballReader.getStrikeAndBall(any(), any()))
                 .thenReturn(firstResult)
