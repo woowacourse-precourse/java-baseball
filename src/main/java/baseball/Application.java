@@ -6,6 +6,19 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+
+    public static Boolean isThree(String number){
+        if(number.length()==3)
+            return true;
+        return false;
+    }
+
+    public static Boolean isValid(List<Integer> usernumArray){
+        if(usernumArray.size() == usernumArray.stream().distinct().count()){
+           return true;
+        }
+        return false;
+    }
     public static List<Integer> RandomNum() {
        List <Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -29,6 +42,10 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.print("숫자를 입력해주세요 : ");
         String number = Console.readLine();
-        System.out.println(UserNum(number));
+        if(!(isThree(number) || isValid(UserNum(number)))){
+            throw new IllegalArgumentException();
+        }
+
+
     }
 }
