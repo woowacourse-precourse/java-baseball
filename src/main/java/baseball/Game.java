@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class Game {
 
 
@@ -13,5 +15,17 @@ public class Game {
 
     public void EndGame(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public int toStrike(List<Integer> toList, List<Integer> computer){
+
+        int strikenum = 0;
+        for(int i = 0; i < toList.size(); i++ ){
+            if(computer.contains(toList.get(i))){
+                strikenum++;
+            }
+
+        }
+        return strikenum;
     }
 }
