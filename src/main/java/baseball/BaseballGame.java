@@ -13,24 +13,32 @@ public class BaseballGame {
     private static final int REPLAY = 1;
     private static final int OVER = 2;
 
-    public void playGame() {
+    private Hitter hitter;
+    private Pitcher pitcher;
+    private Referee referee;
+
+    public BaseballGame(Hitter hitter, Pitcher pitcher, Referee referee) {
+        this.hitter = hitter;
+        this.pitcher = pitcher;
+        this.referee = referee;
+    }
+
+    public void playGame(boolean isPlay) {
         System.out.println(GAME_START_MESSAGE);
-        boolean isPlay = true;
-        Hitter hitter = new Hitter();
-        Referee referee = new Referee();
-        Pitcher pitcher = new Pitcher();
         while (isPlay) {
             pitcher.initThrownBallList();
-            isPlay = playInning(referee, hitter, pitcher.throwRandomBalls(NUMBER_OF_BALLS));
+            isPlay = playInning();
         }
     }
 
-    private boolean playInning(Referee referee, Hitter hitter, List<Ball> pitcherBalls) {
+    private boolean playInning() {
+        List<Ball> pitcherBalls = pitcher.throwRandomBalls(NUMBER_OF_BALLS);
         while (true) {
             referee.initCount();
             referee.judgeGameResult(hitter.hitBalls(inputNumber()), pitcherBalls);
-            printResult(referee);
-            if (isGameOver(referee)) {
+            printResult();
+
+            if (isGameOver()) {
                 return isReplaying();
             }
         }
@@ -44,7 +52,7 @@ public class BaseballGame {
     }
 
 
-    private boolean isGameOver(Referee referee) {
+    private boolean isGameOver() {
         if (referee.getStrikeCount() == NUMBER_OF_BALLS) {
             System.out.println(NUMBER_OF_BALLS + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
@@ -59,7 +67,7 @@ public class BaseballGame {
         return number.equals(REPLAY);
     }
 
-    private void printResult(Referee referee) {
+    private void printResult() {
         int ballCount = referee.getBallCount();
         int strikeCount = referee.getStrikeCount();
 
