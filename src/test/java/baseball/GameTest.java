@@ -21,16 +21,16 @@ public class GameTest extends NsTest {
         game = new Game();
     }
 
-    @DisplayName("3자리 수 생성")
+    @DisplayName("컴퓨터의 수 생성 테스트")
     @Test
-    void getComputerNumberTest() {
-        List<Integer> testComputerNumber = new ArrayList<>();
-        testComputerNumber.add(1);
-        testComputerNumber.add(2);
-        testComputerNumber.add(3);
+    void setComputerNumberTest() {
         assertRandomNumberInRangeTest(() -> {
-            game.getComputerNumber();
-            assertThat(game.getComputerNumber()).isEqualTo(testComputerNumber);
+            game.setComputerNumber();
+            List<Integer> testNumber = new ArrayList<>();
+            testNumber.add(1);
+            testNumber.add(2);
+            testNumber.add(3);
+            assertThat(game.getComputerNumber()).isEqualTo(testNumber);
         }, 1, 2, 3);
     }
 
