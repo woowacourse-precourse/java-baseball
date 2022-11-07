@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -82,6 +84,22 @@ class ApplicationTest extends NsTest {
             int firstNumber = computer.getThirdRandomNumber();
             //then
             assertThat(numberList.get(2)).isEqualTo((firstNumber));
+        }
+    }
+
+    @Nested
+    class BaseBallGameTest {
+        BaseBallGame baseBallGame = new BaseBallGame();
+        @Test
+        void 유저_숫자_입력_테스트() {
+            //given
+            String userNumber = "123";
+            InputStream in = new ByteArrayInputStream(userNumber.getBytes());
+            System.setIn(in);
+            //when
+            baseBallGame.inputUserNumber();
+            //then
+            assertThat(baseBallGame.getUserNumber()).isEqualTo(userNumber);
         }
     }
 
