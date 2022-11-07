@@ -3,7 +3,7 @@ package baseball;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public final class Count {
+public final class Referee {
 
     private static final int FIRST_NUM = 0;
     private static final int SECOND_NUM = 1;
