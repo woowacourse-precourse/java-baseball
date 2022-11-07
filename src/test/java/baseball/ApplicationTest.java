@@ -100,4 +100,46 @@ class ApplicationTest extends NsTest {
         assertThat(Application.countStrike(input, computer))
             .isEqualTo(0);
     }
+
+    @Test
+    void countBall_Input123Computer231_Ball3() {
+        List<Integer> input = new ArrayList<>();
+        input.add(1);
+        input.add(2);
+        input.add(3);
+        List<Integer> computer = new ArrayList<>();
+        computer.add(2);
+        computer.add(3);
+        computer.add(1);
+        assertThat(Application.countBall(input, computer))
+            .isEqualTo(3);
+    }
+
+    @Test
+    void countBall_Input123Computer132_Ball2AndStrike1() {
+        List<Integer> input = new ArrayList<>();
+        input.add(1);
+        input.add(2);
+        input.add(3);
+        List<Integer> computer = new ArrayList<>();
+        computer.add(1);
+        computer.add(3);
+        computer.add(2);
+        assertThat(Application.countBall(input, computer))
+            .isEqualTo(2);
+    }
+
+    @Test
+    void countBall_Input123Computer456_Ball0() {
+        List<Integer> input = new ArrayList<>();
+        input.add(1);
+        input.add(2);
+        input.add(3);
+        List<Integer> computer = new ArrayList<>();
+        computer.add(4);
+        computer.add(5);
+        computer.add(6);
+        assertThat(Application.countBall(input, computer))
+            .isEqualTo(0);
+    }
 }
