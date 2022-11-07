@@ -21,7 +21,7 @@ class UserTest extends NsTest {
         User user = new User();
 
         assertThatThrownBy(() -> runException("2345"))
-                        .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(() -> runException("102"))
                 .isInstanceOf(IllegalArgumentException.class);
