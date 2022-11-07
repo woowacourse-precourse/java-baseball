@@ -91,4 +91,29 @@ public class ServiceTests {
         assertEquals(2, strikeCount);
     }
 
+    @DisplayName("볼(문자열 리스트의 값은 포함되지만 인덱스는 다른 문자열)개수를 반환하는 메서드 테스트")
+    @Test
+    void getNumberOfBallsTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        //given
+        Service service = new Service();
+        List<String> answerNumbers = new ArrayList<>();
+        List<String> questionNumbers = new ArrayList<>();
+
+        answerNumbers.add("5");
+        answerNumbers.add("1");
+        answerNumbers.add("3");
+        questionNumbers.add("1");//해당 문자는 인덱스가 다르고 값은 포함
+        questionNumbers.add("6");//포함되지 않은 문자열
+        questionNumbers.add("3");//해당 문자는 값과 인덱스가 동일(strikeCount가 1인 이유)
+
+        int strikeCount = 1;
+
+        Method testMethod = service.getClass().getDeclaredMethod("getNumberOfBalls", List.class, List.class, int.class);
+        testMethod.setAccessible(true);
+        //when
+        int numberOfBalls = (int) testMethod.invoke(service, questionNumbers, answerNumbers, 1);
+        //then
+        assertEquals(1, numberOfBalls);
+    }
+
 }
