@@ -62,6 +62,9 @@ public class Application {
                 throw new IllegalArgumentException("each digit cannot be out of range 1 to 9");
             }
         }
+        if (playerNumberList.size() != playerNumberList.stream().distinct().count()) {
+            throw new IllegalArgumentException("each digit should be different");
+        }
     }
 
     public List<Integer> computeResult(
