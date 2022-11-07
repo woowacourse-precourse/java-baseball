@@ -28,7 +28,7 @@ public class ThreeDigitNum {
     }
 
     private List<Integer> numToDigitList(int num) {
-        List<Integer> list = new ArrayList<>(Collections.nCopies(SIZE, 0));
+        List<Integer> list = zeroFillFor(SIZE);
         int idx = SIZE - 1;
         while (num > 0) {
             validateIdx(idx);
@@ -37,6 +37,11 @@ public class ThreeDigitNum {
             num = subtractLastDigit(num);
             idx = getNextIdx(idx);
         }
+        return list;
+    }
+
+    private List<Integer> zeroFillFor(int size) {
+        List<Integer> list = new ArrayList<>(Collections.nCopies(size, 0));
         return list;
     }
 
@@ -60,7 +65,17 @@ public class ThreeDigitNum {
     }
 
     public List<Integer> list() {
-        return this.value;
+        return copiedValue();
+    }
+
+    private List<Integer> copiedValue() {
+        List<Integer> ret = zeroFillFor(SIZE);
+
+        for(int i=0;i< value.size();++i) {
+            ret.set(i, value.get(i));
+        }
+
+        return ret;
     }
 
     private void validateValue() {

@@ -43,6 +43,16 @@ class UserTest {
     class InputGuessedValueTest {
 
         @Test
+        void 불변_테스트() {
+            ThreeDigitNum t1 = new ThreeDigitNum(123);
+
+            List<Integer> t1List = t1.list();
+            t1List.set(0, -5);
+            List<Integer> l1 = List.of(1, 2, 3);
+
+            assertThat(t1.list()).isEqualTo(l1);
+        }
+        @Test
         void 세자릿수_변환_검증() {
             ThreeDigitNum t1 = new ThreeDigitNum(123);
             ThreeDigitNum t2 = new ThreeDigitNum(671);
