@@ -9,8 +9,8 @@ import baseball.util.ViewConst;
 
 public class UserBallService {
 
-	public UserBall makeUserBall(String userInputNum, List<Integer> answerNumber) {
-		List<Integer> userInputNumList = userInputNum.chars()
+	public UserBall makeUserBall(String userInputNumber, List<Integer> answerNumber) {
+		List<Integer> userInputNumList = userInputNumber.chars()
 			.mapToObj(num -> Integer.parseInt(num + "") - 48)
 			.collect(Collectors.toList());
 
@@ -27,7 +27,7 @@ public class UserBallService {
 			.limit(ViewConst.INPUT_NUM_LENGTH)
 			.filter(i -> userInputNumList.get(i).equals(answerNumber.get(i)))
 			.count();
-		userBall.changeStrikeCount(userBall.getStrike() + strikeCount);
+		userBall.updateStrikeCount(userBall.getStrike() + strikeCount);
 	}
 
 	private void updateBallCount(List<Integer> answerNumber, List<Integer> userInputNumList, UserBall userBall) {
@@ -36,7 +36,7 @@ public class UserBallService {
 			.filter(i -> !userInputNumList.get(i).equals(answerNumber.get(i)) && userInputNumList.contains(
 				answerNumber.get(i)))
 			.count();
-		userBall.changeBallCount(userBall.getBall() + ballCount);
+		userBall.updateBallCount(userBall.getBall() + ballCount);
 	}
 
 }

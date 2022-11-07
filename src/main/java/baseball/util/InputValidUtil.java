@@ -2,8 +2,8 @@ package baseball.util;
 
 public class InputValidUtil {
 
-	public boolean checkInputValid(String userInputNum) {
-		int[] inputNumInts = userInputNum.chars()
+	public boolean checkInputValid(String userInputNumber) {
+		int[] inputNumInts = userInputNumber.chars()
 			.map(num -> Integer.parseInt(num + "") - 48)
 			.toArray();
 		return has3Length(inputNumInts) && isNumber(inputNumInts) && hasDifferentNumber(inputNumInts);

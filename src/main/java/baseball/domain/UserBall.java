@@ -27,11 +27,11 @@ public class UserBall {
 		return status;
 	}
 
-	public void changeBallCount(Integer ball) {
+	public void updateBallCount(Integer ball) {
 		this.ball = ball;
 	}
 
-	public void changeStrikeCount(Integer strike) {
+	public void updateStrikeCount(Integer strike) {
 		this.strike = strike;
 	}
 

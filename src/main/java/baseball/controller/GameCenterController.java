@@ -35,12 +35,12 @@ public class GameCenterController {
 
 	public void startGame() {
 		List<Integer> answerNumber = gameStartController.initGame();
-		String userInputNum;
+		String userInputNumber;
 		UserBall userBall;
 		do {
-			userInputNum = Console.readLine();
-			inputValidUtil.checkInputValid(userInputNum);
-			userBall = userBallService.makeUserBall(userInputNum, answerNumber);
+			userInputNumber = Console.readLine();
+			inputValidUtil.checkInputValid(userInputNumber);
+			userBall = userBallService.makeUserBall(userInputNumber, answerNumber);
 			outputView.printUserBallStatus(userBall);
 		} while (!gameEndController.isAnswer(userBall));
 	}
