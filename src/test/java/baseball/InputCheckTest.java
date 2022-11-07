@@ -16,7 +16,6 @@ class InputCheckTest {
         assertThat(InputCheck.hasNonDigit(str1)).isEqualTo(true);
         assertThat(InputCheck.hasNonDigit(str2)).isEqualTo(true);
         assertThat(InputCheck.hasNonDigit(str3)).isEqualTo(false);
-
     }
 
     @Test
@@ -25,9 +24,9 @@ class InputCheckTest {
         String str2 = "242";
         String str3 = "999";
 
-        assertThat(InputCheck.hasNonDigit(str1)).isEqualTo(false);
-        assertThat(InputCheck.hasNonDigit(str2)).isEqualTo(true);
-        assertThat(InputCheck.hasNonDigit(str3)).isEqualTo(true);
+        assertThat(InputCheck.hasSameNumber(str1)).isEqualTo(false);
+        assertThat(InputCheck.hasSameNumber(str2)).isEqualTo(true);
+        assertThat(InputCheck.hasSameNumber(str3)).isEqualTo(true);
     }
 
     @Test
