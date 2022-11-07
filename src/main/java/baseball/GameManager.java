@@ -14,6 +14,7 @@ public class GameManager {
 
     static HashMap<Integer, Integer> scanNumber() {
         InputNumberHash.clear();
+        System.out.println("숫자를 입력해주세요 : ");
         String numberString = Console.readLine();
         int index=0;
         for (char character: numberString.toCharArray()) {
@@ -25,6 +26,7 @@ public class GameManager {
     }
 
     static void scanIsContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String numberString = Console.readLine();
         if (numberString == "1") isContinue = true;
         else isContinue = false;
@@ -74,13 +76,11 @@ public class GameManager {
         System.out.println("숫자 야구 게임을 시작합니다.");
         this.init();
         while (isContinue) {
-            System.out.println("숫자를 입력해주세요 : ");
             this.scanNumber();
             this.judgeResult();
             this.printResult();
             if (resultHash.get('S')==3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 scanIsContinue();
                 this.init();
             }
