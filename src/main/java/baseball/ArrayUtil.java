@@ -3,9 +3,23 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ArrayUtil {
-    public static List<Integer> createCountArray(int ball, int strike) {
+    public static boolean compareNumber(List<Integer> playerNumber, List<Integer> randomNumber) {
+        PrintUtil printUtil = new PrintUtil();
+        ArrayUtil arrayUtil = new ArrayUtil();
+        int ball = 0;
+        int strike = 0;
+        for (int i=0;i<3;++i) {
+            if (Objects.equals(playerNumber.get(i), randomNumber.get(i)))
+                strike += 1;
+            else
+                ball += countBall(playerNumber.get(i), randomNumber, i);
+        }
+        return printUtil.printBallStrike(arrayUtil.createCountArray(ball, strike));
+    }
+    public List<Integer> createCountArray(int ball, int strike) {
         List<Integer> countBallStrike = new ArrayList<>();
         countBallStrike.add(ball);
         countBallStrike.add(strike);
