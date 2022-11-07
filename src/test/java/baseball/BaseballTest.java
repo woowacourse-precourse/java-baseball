@@ -1,4 +1,3 @@
-/*
 package baseball;
 
 import baseball.controller.GameController;
@@ -6,11 +5,13 @@ import baseball.domain.Action;
 import baseball.domain.Ball;
 import baseball.model.Computer;
 import baseball.view.Messenger;
+import baseball.view.PrintMessages;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.lang.reflect.Field;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -31,7 +32,10 @@ class BaseballTest {
                 @DisplayName("IllegalArgumentException을 발생시킨다.")
                 void it_returns_IllegalArgumentException() {
                     String twoDigitNumber = "12";
-                    assertThatThrownBy(() -> new Ball(twoDigitNumber)).isInstanceOf(IllegalArgumentException.class);
+
+                    assertThatThrownBy(() -> new Ball(twoDigitNumber))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining(Ball.EXCEPTION_MESSAGE_FOR_INVALID_FORM);
                 }
             }
         }
@@ -42,12 +46,15 @@ class BaseballTest {
 
             @Nested
             @DisplayName("중복을 갖는 숫자가 입력되었을 때")
-            class Context_with_duplicated_number {
+            class Context_with_duplicate_number {
                 @Test
                 @DisplayName("IllegalArgumentException을 발생시킨다.")
                 void it_returns_IllegalArgumentException() {
-                    String duplicatedNumber = "333";
-                    assertThatThrownBy(() -> new Ball(duplicatedNumber)).isInstanceOf(IllegalArgumentException.class);
+                    String duplicateNumber = "333";
+
+                    assertThatThrownBy(() -> new Ball(duplicateNumber))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining(Ball.EXCEPTION_MESSAGE_FOR_DUPLICATE);
                 }
             }
         }
@@ -57,6 +64,7 @@ class BaseballTest {
         void toString_test() {
             String nonDuplicateThreeDigitNumber = "123";
             Ball ball = new Ball(nonDuplicateThreeDigitNumber);
+
             assertThat(ball.toString()).isEqualTo(nonDuplicateThreeDigitNumber);
         }
 
@@ -86,7 +94,6 @@ class BaseballTest {
                 void it_returns_integer_value_of_2() {
                     String number = "123";
                     String differentNumber = "124";
-
                     Ball ball = new Ball(number);
                     Ball differentNumberBall = new Ball(differentNumber);
 
@@ -106,7 +113,6 @@ class BaseballTest {
                 void it_returns_count_of_containing_number() {
                     String number = "123";
                     String otherNumber = "512";
-
                     Ball ball = new Ball(number);
                     Ball otherBall = new Ball(otherNumber);
 
@@ -124,13 +130,14 @@ class BaseballTest {
         @DisplayName("getComputerRandomNumber 메소드는")
         class getComputerRandomNumber_test {
 
+            private final Computer computer = new Computer();
+
             @Nested
             @DisplayName("setComputerRandomNumber를 호출하지 않았을 때")
             class Context_without_set_method_call {
                 @Test
                 @DisplayName("null을 반환한다.")
                 void it_returns_null() {
-                    Computer computer = new Computer();
                     assertThat(computer.getComputerRandomNumber()).isNull();
                 }
             }
@@ -141,9 +148,9 @@ class BaseballTest {
                 @Test
                 @DisplayName("동일한 값을 반환한다.")
                 void it_returns_equal_value() {
-                    Computer computer = new Computer();
                     computer.setComputerRandomNumber();
                     Ball computerNumber = computer.getComputerRandomNumber();
+
                     assertThat(computer.getComputerRandomNumber()).isEqualTo(computerNumber);
                 }
             }
@@ -154,11 +161,11 @@ class BaseballTest {
                 @Test
                 @DisplayName("서로 다른 값을 반환한다.")
                 void it_returns_equal_value() {
-                    Computer computer = new Computer();
                     computer.setComputerRandomNumber();
                     Ball computerNumber = computer.getComputerRandomNumber();
 
                     computer.setComputerRandomNumber();
+
                     assertThat(computer.getComputerRandomNumber()).isNotEqualTo(computerNumber);
                 }
             }
@@ -170,55 +177,42 @@ class BaseballTest {
     class Messenger_test {
 
         private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        private final PrintStream originalOut = System.out;
         private final Messenger messenger = new Messenger();
 
         @Test
         @DisplayName("printStartMessage 메소드가 게임 시작 메시지를 출력하는지 확인")
         void printStartMessage_test() {
             System.setOut(new PrintStream(outContent));
-
-            String startMessage = "게임을 시작합니다.\n";
             messenger.printStartMessage();
 
-            assertThat(outContent.toString()).isEqualTo(startMessage);
-            System.setOut(originalOut);
+            assertThat(outContent.toString()).isEqualTo(PrintMessages.START.getMessage());
         }
 
         @Test
         @DisplayName("printInputMessage 메소드가 숫자 입력 메시지를 출력하는지 확인")
         void printInputMessage_test() {
             System.setOut(new PrintStream(outContent));
-
-            String inputMessage = "숫자를 입력하세요. : ";
             messenger.printInputMessage();
 
-            assertThat(outContent.toString()).isEqualTo(inputMessage);
-            System.setOut(originalOut);
+            assertThat(outContent.toString()).isEqualTo(PrintMessages.INPUT.getMessage());
         }
 
         @Test
         @DisplayName("printAnswerMessage 메소드가 정답 메시지를 출력하는지 확인")
         void printAnswerMessage_test() {
             System.setOut(new PrintStream(outContent));
-
-            String answerMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
             messenger.printAnswerMessage();
 
-            assertThat(outContent.toString()).isEqualTo(answerMessage);
-            System.setOut(originalOut);
+            assertThat(outContent.toString()).isEqualTo(PrintMessages.ANSWER.getMessage());
         }
 
         @Test
         @DisplayName("printRestartOrEndMessage 메소드가 재시작/종료 메시지를 출력하는지 확인")
         void printRestartOrEndMessage_test() {
             System.setOut(new PrintStream(outContent));
-
-            String restartOrEndMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n";
             messenger.printRestartOrEndMessage();
 
-            assertThat(outContent.toString()).isEqualTo(restartOrEndMessage);
-            System.setOut(originalOut);
+            assertThat(outContent.toString()).isEqualTo(PrintMessages.RESTART_OR_END.getMessage());
         }
 
         @Nested
@@ -301,53 +295,33 @@ class BaseballTest {
         private final GameController gameController = new GameController();
 
         @Test
-        @DisplayName("receiveBall 메소드에 세 자리 숫자가 입력되었을 때 Ball 객체를 반환하는지 확인")
-        void receiveBall_test() {
+        @DisplayName("receiveUserBall 메소드에 세 자리 숫자가 입력되었을 때 Ball 객체를 반환하는지 확인")
+        void receiveUserBall_test() {
             String input = "123";
-            InputStream in = new ByteArrayInputStream(input.getBytes());
-            System.setIn(in);
+            InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+            System.setIn(inputStream);
 
-            assertThat(gameController.receiveBall()).isInstanceOf(Ball.class);
+            assertThat(gameController.receiveUserBall()).isInstanceOf(Ball.class);
         }
 
         @Test
-        @DisplayName("compareBall 메소드에 Ball 객체가 입력되었을 때 스트라이크의 개수를 int 값으로 반환하는지 확인")
-        void compareBall_test() {
+        @DisplayName("compareComputerBallWith 메소드에 Ball 객체가 입력되었을 때 스트라이크의 개수를 int 값으로 반환하는지 확인")
+        void compareComputerBallWith_test() {
             String input = "123";
             Ball ball = new Ball(input);
-            gameController.setComputerNumber();
+            gameController.setComputerBall();
 
-            assertThat(gameController.compareBall(ball)).isInstanceOf(Integer.class);
+            assertThat(gameController.compareComputerBallWith(ball)).isInstanceOf(Integer.class);
         }
 
         @Test
         @DisplayName("receiveUserAction 메소드가 \"1\"을 입력받으면 Action 객체를 생성해 반환하는지 확인")
-        void receiveUserAction_test() {
+        void receiveUserAction_test_with_String_1() {
             String input = "1";
-            InputStream in = new ByteArrayInputStream(input.getBytes());
-            System.setIn(in);
+            InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+            System.setIn(inputStream);
 
             assertThat(gameController.receiveUserAction()).isInstanceOf(Action.class);
-        }
-
-        @Test
-        @DisplayName("receiveRestartOrEndIntent 메소드가 \"1\"을 입력받으면 true를 반환하는지 확인")
-        void receiveRestartOrEndIntent_with_integer_1_test() {
-            String input = "1";
-            InputStream in = new ByteArrayInputStream(input.getBytes());
-            System.setIn(in);
-
-            assertThat(gameController.receiveRestartOrEndIntent()).isTrue();
-        }
-
-        @Test
-        @DisplayName("receiveRestartOrEndIntent 메소드가 \"2\"을 입력받으면 false를 반환하는지 확인")
-        void receiveRestartOrEndIntent_with_integer_2_test() {
-            String input = "2";
-            InputStream in = new ByteArrayInputStream(input.getBytes());
-            System.setIn(in);
-
-            assertThat(gameController.receiveRestartOrEndIntent()).isFalse();
         }
     }
 
@@ -389,7 +363,7 @@ class BaseballTest {
             String numberAction = "1";
             Action actionOf1 = new Action(numberAction);
 
-            assertThat(actionOf1.isRestart()).isTrue();
+            assertThat(actionOf1.isStart()).isTrue();
         }
 
         @Test
@@ -398,8 +372,7 @@ class BaseballTest {
             String numberAction = "2";
             Action actionOf2 = new Action(numberAction);
 
-            assertThat(actionOf2.isRestart()).isFalse();
+            assertThat(actionOf2.isStart()).isFalse();
         }
     }
 }
-*/
