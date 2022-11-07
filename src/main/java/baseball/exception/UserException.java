@@ -44,5 +44,12 @@ public class UserException {
         return true;
     }
 
+    public boolean checkLengthOfUserInputNumber(String userInputNumber) throws IllegalArgumentException {
+        if (userInputNumber.length() != 3) {
+            throw new IllegalArgumentException("세개의 숫자만 입력해주세요. ");
+        }
+        return true;
+    }
+
 
 }
