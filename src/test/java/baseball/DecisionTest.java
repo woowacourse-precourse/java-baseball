@@ -36,4 +36,24 @@ class DecisionTest {
 
         Assertions.assertThat(ball).isEqualTo(3);
     }
+
+    @DisplayName("3스트라이크 판정 테스트")
+    @Test
+    void isThreeStrike() {
+        int strike = 3;
+
+        boolean isCorrect = decision.isThreeStrike(strike);
+
+        Assertions.assertThat(isCorrect).isTrue();
+    }
+
+    @DisplayName("3스트라이크 아닌 경우 판정 테스트")
+    @Test
+    void isNotThreeStrike() {
+        int strike = 2;
+
+        boolean isCorrect = decision.isThreeStrike(strike);
+
+        Assertions.assertThat(isCorrect).isFalse();
+    }
 }
