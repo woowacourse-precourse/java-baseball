@@ -127,9 +127,15 @@ public class Application {
 
     private static void GameStart() {
         List<Integer> computer = ComputerGenerate();
-        List<Integer> user = UserGenerate();
-        System.out.println(computer);
-        System.out.println(Hint(computer,user));
+        List<Integer> user = new ArrayList<>();
+        String result = "";
 
+        while (!result.equals("3스트라이크")) {
+            user = UserGenerate();
+            result = Hint(computer,user);
+            System.out.println(result);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        GameRestart();
     }
 }
