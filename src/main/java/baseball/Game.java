@@ -112,15 +112,15 @@ public class Game {
         }
     }
 
-    public static boolean checkUserInputLength(String userInputNumber) {
+    private static boolean checkUserInputLength(String userInputNumber) {
         return NUMBER_SIZE.equals(userInputNumber.length());
     }
 
-    public static boolean checkUserInputContainZero(String userInputNumber) {
+    private static boolean checkUserInputContainZero(String userInputNumber) {
         return userInputNumber.contains("0");
     }
 
-    public static boolean checkUserInputNumber(String userInputNumber) {
+    private static boolean checkUserInputNumber(String userInputNumber) {
         try {
             int numberValue = Integer.parseInt(userInputNumber);
         } catch (NumberFormatException e){
@@ -129,7 +129,7 @@ public class Game {
         return true;
     }
 
-    public static boolean checkUserInputDuplicateNumber(String userInputNumber) {
+    private static boolean checkUserInputDuplicateNumber(String userInputNumber) {
         int distinctCount = (int) Arrays.stream(userInputNumber.split("")).distinct().count();
         return userInputNumber.length() == distinctCount;
     }
