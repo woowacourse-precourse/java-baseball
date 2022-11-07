@@ -16,7 +16,7 @@ public class GameServiceTest {
 
         assertThat(responseDto.getStrike()).isEqualTo(3);
         assertThat(responseDto.getBall()).isEqualTo(0);
-        assertThat(responseDto.isGameEndScore()).isTrue();
+        assertThat(responseDto.isGameEnd()).isTrue();
     }
 
     @Test
@@ -26,6 +26,6 @@ public class GameServiceTest {
 
         assertThat(responseDto.getStrike()).isEqualTo(0);
         assertThat(responseDto.getBall()).isEqualTo(0);
-        assertThat(responseDto.isGameEndScore()).isFalse();
+        assertThat(responseDto.isGameEnd()).isFalse();
     }
 }

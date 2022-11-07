@@ -28,8 +28,12 @@ public class Referee {
         }
     }
 
+    public boolean isGameEnd() {
+        return strike == Player.GAME_ROUND;
+    }
+
     public GameResultResponseDto toResponseDto() {
-        return new GameResultResponseDto(strike, ball);
+        return new GameResultResponseDto(isGameEnd(), strike, ball);
     }
 
     @Override

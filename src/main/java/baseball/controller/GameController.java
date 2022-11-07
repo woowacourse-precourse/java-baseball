@@ -9,9 +9,9 @@ import java.util.List;
 
 public class GameController {
 
-    public static final int CRITERION_DEFAULT = 0;
-    public static final int CRITERION_RESTART = 1;
-    public static final int CRITERION_END = 2;
+    public static final int CRITERION_GAME_CONTINUE = 0;
+    public static final int CRITERION_GAME_RESTART = 1;
+    public static final int CRITERION_GAME_OVER = 2;
 
     private final GameService gameService;
 
@@ -31,7 +31,7 @@ public class GameController {
         GameResultResponseDto responseDto = playRound(numbers);
         int restart = checkRestart(responseDto);
 
-        if (isGameEnd(restart)) {
+        if (isGameOver(restart)) {
             return;
         }
         recursiveGame();
@@ -44,8 +44,8 @@ public class GameController {
     }
 
     private int checkRestart(GameResultResponseDto responseDto) {
-        int restart = CRITERION_DEFAULT;
-        if (responseDto.isGameEndScore()) {
+        int restart = CRITERION_GAME_CONTINUE;
+        if (responseDto.isGameEnd()) {
             OutputView.printGameEnd();
             OutputView.printGameRestart();
             restart = InputView.inputRestart();
@@ -57,10 +57,11 @@ public class GameController {
     }
 
     private boolean isGameRestart(int restart) {
-        return restart == CRITERION_RESTART;
+        return restart == CRITERION_GAME_RESTART;
     }
 
-    private boolean isGameEnd(int restart) {
-        return restart == CRITERION_END;
+    private boolean isGameOver(int restart) {
+        return restart == CRITERION_GAME_OVER;
     }
+
 }
