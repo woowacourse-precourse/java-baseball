@@ -73,11 +73,11 @@ public class BaseBallGame {
             this.ballCount += 1;
         }
         if (computer.getSecondRandomNumber() == Character.getNumericValue(userNumber.charAt(0)) ||
-                computer.getFirstRandomNumber() == Character.getNumericValue(userNumber.charAt(2))) {
+                computer.getSecondRandomNumber() == Character.getNumericValue(userNumber.charAt(2))) {
             this.ballCount += 1;
         }
         if (computer.getThirdRandomNumber() == Character.getNumericValue(userNumber.charAt(0)) ||
-                computer.getFirstRandomNumber() == Character.getNumericValue(userNumber.charAt(1))) {
+                computer.getThirdRandomNumber() == Character.getNumericValue(userNumber.charAt(1))) {
             this.ballCount += 1;
         }
     }
