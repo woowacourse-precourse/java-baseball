@@ -26,19 +26,29 @@ enum BaseballResult {
 
 public class Application {
 
+    private static final int MAX_DIGIT = 3;
     public static void main(String[] args) {
         printGameStartMessage();
 
-        System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> userNumber = splitStrNumberToList(Console.readLine());
-        List<Integer> computerNumber = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> computerNumber = Randoms.pickUniqueNumbersInRange(1, 9, MAX_DIGIT);
 
-        HashMap<BaseballResult, Integer> gameResult = new HashMap<>();
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            List<Integer> userNumber = splitStrNumberToList(Console.readLine());
 
-        for (int i = 0; i < userNumber.size(); i++) {
-            BaseballResult currentIdxGameResult = getCurrentIdxGameResult(i, userNumber, computerNumber);
-            gameResult.put(currentIdxGameResult, gameResult.getOrDefault(currentIdxGameResult, 0) + 1);
+            HashMap<BaseballResult, Integer> gameResultMap = new HashMap<>();
+            for (int i = 0; i < userNumber.size(); i++) {
+                BaseballResult currentIdxGameResult = getCurrentIdxGameResult(i, userNumber, computerNumber);
+                gameResultMap.put(currentIdxGameResult, gameResultMap.getOrDefault(currentIdxGameResult, 0) + 1);
+            }
+            System.out.println(getGameResult(gameResultMap));
+
+            if (gameResultMap.getOrDefault(BaseballResult.STRIKE, 0) == MAX_DIGIT) {
+                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", MAX_DIGIT);
+                break;
+            }
         }
+
     }
 
     private static void printGameStartMessage() {
