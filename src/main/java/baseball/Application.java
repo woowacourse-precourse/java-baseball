@@ -12,6 +12,21 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    public static List<Integer> getPlayerNumbers() {
+        List<Integer> playerNumbers = new ArrayList<>();
+        String inputNumberString = Console.readLine();
+
+        validateEmpty(inputNumberString);
+        validateNumber(inputNumberString);
+        validateSize(inputNumberString);
+        validateOverlap(inputNumberString);
+
+        for(int i=0; i<inputNumberString.length() ; i++) {
+            playerNumbers.add(Integer.parseInt(inputNumberString.substring(i,i+1)));
+        }
+        return playerNumbers;
+    }
+
     private static void validateEmpty(String numbers) {
         if (numbers.isEmpty()) {
             throw new IllegalArgumentException("아무것도 입력하지 않았습니다.");
