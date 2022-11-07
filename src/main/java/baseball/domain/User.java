@@ -3,6 +3,7 @@ package baseball.domain;
 public class User {
 
     private static final int GUESSED_ANSWER_LENGTH = 3;
+
     private final Integer[] guessedAnswer;
 
     public User() {

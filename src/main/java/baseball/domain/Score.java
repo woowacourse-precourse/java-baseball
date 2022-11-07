@@ -8,6 +8,8 @@ public class Score {
 
     private static final int INITIAL_VALUE = 0;
     private static final int ANSWER_STRIKE_COUNT = 3;
+    private static final int NOT_FOUND_INDEX = -1;
+
     private int ball;
     private int strike;
 
@@ -39,25 +41,25 @@ public class Score {
         if (answerIndex == guessedAnswerIndex) {
             strike++;
 
-        } else if (answerIndex > -1) {
+        } else if (answerIndex > NOT_FOUND_INDEX) {
             ball++;
         }
     }
 
     private void setResultMessage(int ball, int strike) {
-        if (ball == 0 && strike == 0) {
+        if (ball == INITIAL_VALUE && strike == INITIAL_VALUE) {
             OutputView.setNothingMessage();
         }
 
-        if (ball > 0 && strike == 0) {
+        if (ball > INITIAL_VALUE && strike == INITIAL_VALUE) {
             OutputView.setOnlyBallMessage(ball);
         }
 
-        if (ball == 0 && strike > 0) {
+        if (ball == INITIAL_VALUE && strike > INITIAL_VALUE) {
             OutputView.setOnlyStrikeMessage(strike);
         }
 
-        if (ball > 0 && strike > 0) {
+        if (ball > INITIAL_VALUE && strike > INITIAL_VALUE) {
             OutputView.setBallAndStrikeMessage(ball, strike);
         }
     }
