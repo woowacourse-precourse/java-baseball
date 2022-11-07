@@ -63,6 +63,22 @@ public class Application {
         }
     }
 
+    public static List <Integer> guessResult(List <Integer> computer, List <Integer> player){
+        List <Integer> result = new ArrayList<>();
+        int ball = 0;
+        int strike = 0;
+        int index;
+        for(int i=0; i<player.size(); i++){
+            index = computer.indexOf(player.get(i));
+            if(index==-1) {}
+            else if(index==i) strike++;
+            else ball++;
+        }
+        result.add(ball);
+        result.add(strike);
+        return result;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
