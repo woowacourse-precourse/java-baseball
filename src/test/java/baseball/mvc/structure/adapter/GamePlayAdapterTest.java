@@ -61,7 +61,7 @@ class GamePlayAdapterTest {
             @DisplayName("플레이어 정답이 유효하면서 3스트라이크가 아니라면 게임 결과와 GameStatus.PLAY를 반환한다.")
             void game_status_play_test() {
                 request.addAttribute(GameRequestKeyConst.COMPUTER_KEY,
-                        GameComputerFactory.createFakeGameComputer(1L, 1L));
+                        GameComputerFactory.createStubGameComputer(1L, 1L));
                 request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, "123");
 
                 ModelAndView modelAndView = adapter.handle(controller, request);
@@ -76,7 +76,7 @@ class GamePlayAdapterTest {
             @DisplayName("플레이어 정답이 유효하면서 3스트라이크라면 게임 결과와 GameStatus.END를 반환한다.")
             void game_status_end_test() {
                 request.addAttribute(GameRequestKeyConst.COMPUTER_KEY,
-                        GameComputerFactory.createFakeGameComputer(3L, 0L));
+                        GameComputerFactory.createStubGameComputer(3L, 0L));
                 request.addAttribute(GameRequestKeyConst.PLAYER_INPUT_KEY, "123");
 
                 ModelAndView modelAndView = adapter.handle(controller, request);

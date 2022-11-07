@@ -35,7 +35,7 @@ public final class GameComputerFactory {
         }
     }
 
-    public static GameComputer createFakeGameComputer(long returnStrike, long returnBall) {
+    public static GameComputer createStubGameComputer(long returnStrike, long returnBall) {
         GameComputer computer = new GameComputer();
         GameNumbers computerAnswer = new StubGameNumbers(returnStrike, returnBall);
 

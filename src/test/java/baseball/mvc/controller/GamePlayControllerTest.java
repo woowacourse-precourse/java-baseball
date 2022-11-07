@@ -35,7 +35,7 @@ class GamePlayControllerTest {
             @Test
             @DisplayName("플레이어가 정답을 맞췄을 경우 게임 결과를 Model에 저장하고 GameStatus.END를 반환한다.")
             void end_test() {
-                GameComputer computer = GameComputerFactory.createFakeGameComputer(3L, 0L);
+                GameComputer computer = GameComputerFactory.createStubGameComputer(3L, 0L);
                 Model model = new Model();
 
                 GameStatus gameStatus = controller.process(computer, playerAnswer, model);
@@ -62,7 +62,7 @@ class GamePlayControllerTest {
             )
             @DisplayName("플레이어 정답을 맞추지 못한 경우 게임 결과를 Model에 저장하고 GameStatus.PLAY를 반환한다.")
             void play_test(long strike, long ball) {
-                GameComputer computer = GameComputerFactory.createFakeGameComputer(strike, ball);
+                GameComputer computer = GameComputerFactory.createStubGameComputer(strike, ball);
                 Model model = new Model();
 
                 GameStatus gameStatus = controller.process(computer, playerAnswer, model);
@@ -85,7 +85,7 @@ class GamePlayControllerTest {
             )
             @DisplayName("게임 결과 중 strike와 ball의 합이 4 이상이면 IllegalArgumentException 예외가 발생한다.")
             void too_many_answer_exception_test(long strike, long ball) {
-                GameComputer computer = GameComputerFactory.createFakeGameComputer(strike, ball);
+                GameComputer computer = GameComputerFactory.createStubGameComputer(strike, ball);
                 Model model = new Model();
 
                 assertThatThrownBy(() -> controller.process(computer, playerAnswer, model))

@@ -16,7 +16,7 @@ public final class FrontControllerFactory {
     }
 
     public static FrontController createStubFrontController(long strike, long ball) {
-        GameComputer stubGameComputer = GameComputerFactory.createFakeGameComputer(strike, ball);
+        GameComputer stubGameComputer = GameComputerFactory.createStubGameComputer(strike, ball);
 
         FrontController frontController = new FrontController();
 

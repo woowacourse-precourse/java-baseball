@@ -52,7 +52,7 @@ class GameComputerTest {
         )
         @DisplayName("만약 strike, ball의 합이 4 이상인 PlayerAnswer가 주어지면 IllegalArgumentException 예외가 발생한다.")
         void too_many_answer_exception_test(long strike, long ball) {
-            GameComputer gameComputer = GameComputerFactory.createFakeGameComputer(strike, ball);
+            GameComputer gameComputer = GameComputerFactory.createStubGameComputer(strike, ball);
 
             assertThatThrownBy(() -> gameComputer.calculateGameResult(new GameNumbers("123")))
                     .isInstanceOf(IllegalArgumentException.class)
