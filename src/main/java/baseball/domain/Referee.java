@@ -23,13 +23,10 @@ public class Referee {
 
     public List<Integer> makeRandomValues() {
         initNumbers();
-        for (int index = 0; index < DIGITS; index++) {
+        while(numbers.size() < DIGITS){
             int picked = Randoms.pickNumberInRange(1, 9);
             if (checkDuplicate(picked)) {
                 numbers.add(picked);
-                System.out.print(picked);
-            } else {
-                index--;
             }
         }
         return numbers;
@@ -38,11 +35,9 @@ public class Referee {
     public String checkCounts(List<Integer> inputs) {
         ballCount.init();
 
-        for (int input : inputs) {
-            if (numbers.contains(input)) {
-                ballCount.increaseBall();
-            }
-        }
+        inputs.stream()
+                .filter(numbers::contains)
+                .forEach(input -> ballCount.increaseBall());
 
         for (int i = 0; i < DIGITS; i++) {
             if (numbers.get(i).equals(inputs.get(i))) {
@@ -66,9 +61,8 @@ public class Referee {
         if (!usedNumber[number - 1]) {
             usedNumber[number - 1] = true;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private void initUsedNumbers() {
