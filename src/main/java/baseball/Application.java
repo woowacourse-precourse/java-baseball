@@ -6,22 +6,24 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
+    static boolean restart;
+    
     public static void main(String[] args) {
         baseball();
     }
     
     public static String random(){
-        ArrayList<Integer> num = new ArrayList<>();
+        String num ="";
         while(true){
             int random = Randoms.pickNumberInRange(1,9);
-            if(!num.contains(random)){
-                num.add(random);
+            if(!num.contains("" +random)){
+                num += random;
             }
-            if(num.size() == 3){
+            if(num.length() == 3){
                 break;
             }
         }
-        return num.toString();
+        return num;
     }
     
     public static boolean checkRepeat(String number){
@@ -64,55 +66,53 @@ public class Application {
         }
     }
     
-    public static boolean compare(String answer, String input){
+    public static void compare(String answer, String input){
+        System.out.println(answer +":" + input);
         int strike = 0, ball = 0, miss = 0;
         for(int n = 0; n < 3; n++){
-            if(answer.charAt(n) == input.charAt(n)){
+            int answern, inputn;
+            answern = Character.valueOf(answer.charAt(n));
+            inputn = Character.valueOf(input.charAt(n));
+            if(answern == inputn){
                 strike++;
             }
-            if(answer.charAt(n) != input.charAt(n) && answer.contains("" + input.charAt(n))){
+            else if(answern != inputn && answer.contains("" + input.charAt(n))){
                 ball++;
             }
             else {
                 miss++;
             }
         }
+        System.out.println(strike+ ":" + ball + ":" + miss);
         if(miss == 3){
             System.out.println("낫싱");
-            return false;
         }
-        if(strike == 3){
+        else if(strike == 3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! (1)다시 시작 (2)나가기");
-            return true;
+            restart = true;
         }
-        if(strike == 0){
+        else if(strike == 0){
             System.out.println(ball + "볼");
-            return false;
         }
         else {
             System.out.println(strike + "스트라이크 " + ball + "볼");
-            return false;
         }
     }
     
     public static void baseball(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean run = true, newRandom = false;
+        boolean run = true;
         String random = random();
         while(run){
-            if(newRandom){
-                random = random();
-                newRandom = false;
-            }
             String input = Console.readLine();
             boolean check = input(input);
             if (check == true){
                 break;
             }
             else{
-                if(compare(random,input)){
-                    newRandom = endGame();
+                compare(random.toString(), input);
+                if(restart == true){
                     run = endGame();
                 }
             }
@@ -126,10 +126,7 @@ public class Application {
         }
         if(Console.readLine() == "2"){
             System.out.println("게임 끝");
-            return false;
         }
-        else{
-            return false;
-        }
+        return false;
     }
 }
