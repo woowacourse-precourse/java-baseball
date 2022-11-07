@@ -16,7 +16,7 @@ public class InputValidationTest {
 		InputValidation inputValidation = new InputValidation();
 		
 		//when
-		boolean validation = inputValidation.isValid(input);
+		boolean validation = inputValidation.isValidRandomNumbers(input);
 		
 		//then
 		assertThat(validation).isEqualTo(true);
@@ -31,7 +31,7 @@ public class InputValidationTest {
 		InputValidation inputValidation = new InputValidation();
 		
 		//when
-		boolean validation = inputValidation.isValid(input);
+		boolean validation = inputValidation.isValidRandomNumbers(input);
 		
 		//then
 		assertThat(validation).isEqualTo(false);
@@ -46,7 +46,7 @@ public class InputValidationTest {
 		InputValidation inputValidation = new InputValidation();
 		
 		//when
-		boolean validation = inputValidation.isValid(input);
+		boolean validation = inputValidation.isValidRandomNumbers(input);
 		
 		//then
 		assertThat(validation).isEqualTo(false);
@@ -61,7 +61,7 @@ public class InputValidationTest {
 		InputValidation inputValidation = new InputValidation();
 		
 		//when
-		boolean validation = inputValidation.isValid(input);
+		boolean validation = inputValidation.isValidRandomNumbers(input);
 		
 		//then
 		assertThat(validation).isEqualTo(false);
