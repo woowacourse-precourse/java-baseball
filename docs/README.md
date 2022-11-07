@@ -31,11 +31,11 @@
 ### model
 
 1. GameNumber
-- [ ]  computerNumber 데이터 저장
-- [x]  inputNumber 데이터 저장 (문자열 형태)
-- [x]  playerNumber 데이터 저장 (inputNumber 숫자로 변환)
+- [ ]  computerNumbers 데이터 저장
+- [x]  inputString 데이터 저장 (문자열 형태)
+- [x]  playerNumbers 데이터 저장 (inputStrings 숫자로 변환)
    - [x]  데이터 유효성 검사기 체크 
-   - [x]  inputNumber 데이터 숫자로 변환
+   - [x]  inputString 데이터 숫자로 변환
 
 ### view
 
