@@ -43,7 +43,7 @@ public class Game {
 
             System.out.println(WIN_SENTENCE);
             System.out.println(RESTART_SENTENCE);
-            if (!restart()) {
+            if (!restart(Console.readLine())) {
                 break;
             }
             this.computerNumber = Generate.randomNumber();
@@ -83,8 +83,7 @@ public class Game {
         return gameResult.toString();
     }
 
-    public boolean restart() {
-        String userSelect = Console.readLine();
+    public boolean restart(String userSelect) {
         if (!(userSelect.equals("1") || userSelect.equals("2"))) {
             throw new IllegalArgumentException();
         }
