@@ -15,8 +15,10 @@ public class Computer {
 
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        threeNumberByComputer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        playGame();
+        do {
+            threeNumberByComputer = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+            playGame();
+        } while (!finishTheGame());
     }
 
     private void playGame() {
@@ -79,5 +81,16 @@ public class Computer {
             return 2;
         }
         return -1;
+    }
+
+    private boolean finishTheGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int responseNumber = gamePlayer.respondToFinishRequest();
+        if (responseNumber == 1) {
+            rightAnswer = false;
+            return false;
+        } else {
+            return true;
+        }
     }
 }
