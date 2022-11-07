@@ -1,6 +1,8 @@
 package baseball;
 
+import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -27,6 +29,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 숫자이외의_입력_예외_테스트() {
         assertSimpleTest(() ->
@@ -34,6 +37,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 숫자_중복값_입력_예외_테스트() {
         assertSimpleTest(() ->
@@ -41,6 +45,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 숫자_범위_초과_예외_테스트() {
         assertSimpleTest(() ->
@@ -48,8 +53,21 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 컴퓨터_랜덤번호생성_테스트() {
+        //given
+        Computer computer = new Computer();
+        List<Integer> list = List.of(1, 2, 3);
+        //when
+        computer.setRandomNumber(list);
+
+        //then
+        assertThat(computer.getRandomNumber().size()).isEqualTo(3);
     }
 }
