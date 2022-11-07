@@ -146,6 +146,15 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining("게임이 끝난뒤에는 1 또는 2의 숫자를 입력해야만 합니다.");
     }
 
+    @Test
+    void 입력한_숫자가_중복인지_테스트() {
+        String input = "313";
+
+        assertThatThrownBy(() -> Validation.IsDistinct(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복된 숫자는 입력할 수 없습니다.");
+    }
+
     Object getPrivateField(String name, Object transferObject) throws Exception {
         Field privateFiled = transferObject.getClass().getDeclaredField(name);
         privateFiled.setAccessible(true);
