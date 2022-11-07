@@ -36,4 +36,16 @@ class Play {
         }
         return randomNumber;
     }
+
+    static List<Integer> getNumberFrom(String input) {
+        if (input == null || !NUMBER.matcher(input).matches()) {
+            throw new IllegalArgumentException();
+        }
+        List<Integer> givenNumber = new ArrayList<>();
+        for (char digitChar : input.toCharArray()) {
+            int digitInt = Character.getNumericValue(digitChar);
+            givenNumber.add(digitInt);
+        }
+        return givenNumber;
+    }
 }
