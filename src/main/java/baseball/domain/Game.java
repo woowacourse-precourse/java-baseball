@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Game {
 
-    Message message;
+    Message message = new Message();
     User user;
     Computer computer;
     List<String> computerAnswer;
@@ -16,7 +16,6 @@ public class Game {
         isFirstGame = true;
         this.user = new User();
         this.computer = new Computer();
-        this.message = new Message();
     }
 
     public void startGame() {
@@ -35,7 +34,6 @@ public class Game {
     private boolean startSet() {
         message.askPlayerInputAnswer();
         List<String> userAnswer = user.getUserAnswer();
-
         Set set = new Set(computerAnswer, userAnswer);
         int ball = set.ball;
         int strike = set.strike;
