@@ -73,6 +73,21 @@ public class Application {
         return true;
     }
 
+    // TODO : 컴퓨터와 사용자의 숫자를 비교하여 힌트를 출력한다.
+    public void getHint(List<Integer> computer, List<Integer> user){
+        int strike = CountingStrike(computer, user);
+        int ball = CountingBall(computer, user) - strike;
+
+        if (strike == ZERO_VALUE && ball != ZERO_VALUE) System.out.println(ball+"볼");
+        if (strike != ZERO_VALUE && ball == ZERO_VALUE) System.out.println(strike+"스트라이크");
+        if (strike != ZERO_VALUE && ball != ZERO_VALUE) System.out.println(ball+"볼 "+strike+"스트라이크");
+        if (strike == ZERO_VALUE && ball == ZERO_VALUE) System.out.println("낫싱");
+        if (strike == 3) {
+            this.threeStrike = true;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+    }
+
     // TODO : 같은 숫자가 같은 자리에 존재하는 경우의 수 반환
     public int CountingStrike(List<Integer> computer, List<Integer> user){
         int strike = ZERO_VALUE;
