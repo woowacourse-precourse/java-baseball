@@ -8,6 +8,7 @@ public class GameNumberGenerator {
     public GameNumberGenerator() {
         this.numbers = new ArrayList<>(3);
     }
+
     public GameNumberGenerator(List<Integer> numbers) {
         this.numbers = numbers;
     }
@@ -15,16 +16,18 @@ public class GameNumberGenerator {
     public String getNumber() {
         while(numbers.size() < 3) {
             int number = RandomNumberGenerator.getNumber();
-            if(!numbers.contains(number))
+            if(!numbers.contains(number)) {
                 numbers.add(number);
+            }
         }
         return this.getNumberString();
     }
 
     private String getNumberString() {
         StringBuilder sb = new StringBuilder();
-        for(int number : numbers)
+        for(int number : numbers) {
             sb.append(number);
+        }
         numbers.clear(); // 재사용을 위해 비움
         return sb.toString();
     }

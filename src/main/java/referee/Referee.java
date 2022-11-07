@@ -10,7 +10,6 @@ public class Referee {
     }
 
     public boolean decision(String expected, String answer) {
-        cleanScore(); // score를 업데이트 하기 전 완전히 초기화 함
         List<Character> expectedDigits = new ArrayList<>(3); // 사용자가 입력한 수의 각 자릿수 저장
         List<Character> answerDigits = new ArrayList<>(3);   // 정답의 각 자릿수 저장
 
@@ -19,11 +18,13 @@ public class Referee {
             answerDigits.add(answer.charAt(i));
         }
 
+        cleanScore(); // score를 업데이트 하기 전 완전히 초기화 함
         for(int i=0 ; i<3 ; i++) {
-            if(expectedDigits.get(i) == answerDigits.get(i))
+            if(expectedDigits.get(i) == answerDigits.get(i)) {
                 score[1]++;
-            else if(answerDigits.contains(expectedDigits.get(i)))
+            } else if(answerDigits.contains(expectedDigits.get(i))) {
                 score[0]++;
+            }
         }
 
         return (score[1] == 3);
@@ -32,15 +33,17 @@ public class Referee {
     public String buildDecisionString() {
         StringBuilder sb = new StringBuilder();
 
-        if(score[0] == 0 && score[1] == 0)
+        if(score[0] == 0 && score[1] == 0) {
             sb.append("낫싱");
-        else if(score[1] == 3)
+        } else if(score[1] == 3) {
             sb.append("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        else {
-            if(score[0] > 0)
+        } else {
+            if(score[0] > 0) {
                 sb.append(score[0]).append("볼 ");
-            if(score[1] > 0)
+            }
+            if(score[1] > 0) {
                 sb.append(score[1]).append("스트라이크");
+            }
         }
         cleanScore(); // 재사용을 위해 값을 비움
         return sb.toString();
