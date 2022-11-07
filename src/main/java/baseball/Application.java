@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
-	private static ComputerPlayer computerPlayer;
 	private static UserPlayer userPlayer;
 	private static BaseballGameModel baseballGameModel;
 	private static boolean gameStatus;
@@ -40,7 +39,12 @@ public class Application {
 				System.out.println(DIGIT_NUMBER.getCode()+"스트라이크");
 				System.out.println(DIGIT_NUMBER.getCode()+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-				choiceGameProgress();
+				try {
+					choiceGameProgress();
+				} catch (IllegalArgumentException e){
+					System.out.println(e.getMessage());
+					return;
+				}
 				continue;
 			}
 			printMatchResult(scoreList);
@@ -49,7 +53,7 @@ public class Application {
     }
 
 	public static void gameInit() {
-		computerPlayer = new ComputerPlayer();
+		ComputerPlayer computerPlayer = new ComputerPlayer();
 		userPlayer = UserPlayer.getInstance();
 		baseballGameModel = new BaseballGameModel(computerPlayer);
 		gameStatus = true;
