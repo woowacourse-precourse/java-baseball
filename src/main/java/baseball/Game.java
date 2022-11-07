@@ -24,7 +24,7 @@ public class Game {
 
         while (!rule.isGameOver()) {
             inputNumbers();
-
+            rule.getHint(gamer.inputNumbers());
         }
     }
 }
