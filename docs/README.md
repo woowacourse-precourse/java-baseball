@@ -26,6 +26,10 @@
 3. `Application`에 존재하는 로직을 모두 `Game` 클래스로 이동
    - `Application`에는 `Game.startGame()`만 존재
 4. `Game`에 존재하는 점수 계산 로직을 `Calculator` 클래스로 이동
+5. 불필요한 `try-catch` 제거 및 `IllegalArgumentException` 처리에 사용하는 `String` 수정
+   - `User` 클래스에서 예외를 던질 때 메세지를 함께 전달하기 위해 `User` 클래스로 이동
+     - 숫자 입력 예외 메세지와 옵션 입력 예외 메세지 분리
+   - `Result`와 `Status`에서 예외 발생 시 사용하는 메세지 **final화**
 
 ## 📝 테스트
 테스트 코드는 **생성한 클래스별로 묶어서 작성**한다.
