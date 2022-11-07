@@ -2,19 +2,17 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 
 import static baseball.Game.game;
-import static baseball.RandomNum.randomNum;
+import static baseball.Computer.randomNum;
 
 public class Restart {
 
 
     public static void reStart(){
 
-        RandomNum randomNum = new RandomNum();
+        Computer randomNum = new Computer();
         String reStart = Console.readLine();
 
         if(reStart.equals("1")){

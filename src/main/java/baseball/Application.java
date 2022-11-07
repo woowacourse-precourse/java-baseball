@@ -1,13 +1,10 @@
 package baseball;
 
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
 
 import static baseball.Game.game;
-import static baseball.RandomNum.randomNum;
+import static baseball.Computer.randomNum;
 
 public class Application {
     public static void main(String[] args){
@@ -22,7 +19,5 @@ public class Application {
             check = game(randomNum);
         }
     }
-
-
 
 }
