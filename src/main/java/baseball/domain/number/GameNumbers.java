@@ -12,8 +12,8 @@ import java.util.stream.IntStream;
 
 public class GameNumbers {
 
-    private final static String WRONG_INPUT = "잘못된 입력입니다.";
-    private final static String PLAYER_INPUT_SPLIT_VALUE = "";
+    private static final String WRONG_INPUT = "잘못된 입력입니다.";
+    private static final String PLAYER_INPUT_SPLIT_VALUE = "";
 
     private final List<GameNumber> gameNumbers;
 

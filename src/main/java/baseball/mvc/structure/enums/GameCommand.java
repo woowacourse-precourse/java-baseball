@@ -8,7 +8,7 @@ public enum GameCommand {
 
     EXIT("2", GameStatus.EXIT);
 
-    private final static String WRONG_INPUT = "잘못된 입력입니다.";
+    private static final String WRONG_INPUT = "잘못된 입력입니다.";
 
     private final String command;
     private final GameStatus gameStatus;
