@@ -9,21 +9,30 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        ArrayList<Integer> inputUserNumber;
+        int restartNumber;
         do {
-            System.out.println("숫자 야구 게임을 시작합니다.");
-
+            System.out.println("숫자 야구 게임을 시작합니다!!!");
             ArrayList<Integer> generateAnswer = generateAnswer(args);
+            System.out.println("정답은"+generateAnswer);
             while (true) {
-                ArrayList<Integer> inputUserNumber = inputUserNumber(args);
+                inputUserNumber = inputUserNumber(args);
+                if (inputUserNumber.get(0) == 0) {
+                    restartNumber = 0;
+                    break;
+                }
+                System.out.println("이거찍히면안됨");
                 String AA = numberReferee(generateAnswer, inputUserNumber);
                 System.out.println(AA);
                 if (AA.equals("3스트라이크")) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    restartNumber = restart();
                     break;
                 }
             }
-        } while (restart() != 2);
+        } while (restartNumber != 2 && restartNumber != 0);
         System.out.println("게임 종료");
+        if (restartNumber == 0) {throw new IllegalArgumentException();};
     }
 
 
@@ -56,7 +65,9 @@ public class Application {
             throw new IllegalArgumentException();
             }
         }catch(IllegalArgumentException e){
-            System.out.println("게임 종료");
+            System.out.println("에러가 발생했다면");
+            inputNumberArray.add(0);
+            return inputNumberArray;
         }
 
 
@@ -122,7 +133,7 @@ public class Application {
         try{
             if(toBeContinue != 1 && toBeContinue != 2) throw new IllegalArgumentException("게임 종료");
         }catch(IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            System.out.println("맨마지막뭐뜨냐"+e.getMessage());
         }
         return toBeContinue;
     }
