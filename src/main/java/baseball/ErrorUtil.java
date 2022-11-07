@@ -1,7 +1,7 @@
 package baseball;
 
 public class ErrorUtil {
-    public static boolean checkErrorRestartNumber(String number) {
+    public boolean checkErrorRestartNumber(String number) {
         boolean error = true;
         if (number.length() != 1)
             error = false;

@@ -1,6 +1,5 @@
 package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -51,12 +50,6 @@ public class Application {
             playerNumber.add((int)number.charAt(i) - 48);
         return playerNumber;
     }
-    public static String inputPlayerNumber() {
-        ErrorUtil errorUtil = new ErrorUtil();
-        String number = Console.readLine();
-        errorUtil.checkError(errorUtil.errorPlayerNumber(number));
-        return number;
-    }
     public static List<Integer> createRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -67,31 +60,23 @@ public class Application {
         return (computer);
     }
     public static void inputGame(boolean end, List<Integer> randomNumber) {
+        InputUtil inputUtil = new InputUtil();
         while (!end) {
             System.out.print("숫자를 입력해주세요 : ");
-            end = compareNumber(arrayPlayerNumber(inputPlayerNumber()), randomNumber);
+            end = compareNumber(arrayPlayerNumber(inputUtil.inputPlayerNumber()), randomNumber);
         }
     }
     public static void restartGame(boolean restart) {
         if (restart)
             playGame();
     }
-    public static boolean restartQuestion() {
-        ErrorUtil errorUtil = new ErrorUtil();
-        boolean restart = false;
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String number = Console.readLine();
-        errorUtil.checkError(errorUtil.checkErrorRestartNumber(number));
-        if (number.charAt(0) == '1')
-            restart = true;
-        return restart;
-    }
     public static void playGame() {
+        InputUtil inputUtil = new InputUtil();
         List<Integer> randomNumber = createRandomNumber();
         boolean end = false;
         inputGame(end, randomNumber);
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        restartGame(restartQuestion());
+        restartGame(inputUtil.restartQuestion());
     }
     public static void startApplication() {
         System.out.println("숫자 야구 게임을 시작합니다.");
