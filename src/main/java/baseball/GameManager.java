@@ -18,7 +18,13 @@ public class GameManager {
         }
         return strike_num;
     }
-    private void isBall() {
+    private int isBall() {
         int ball_num = 0;
+        for (int i = 0; i < computer.getRandomNumList().size(); i++) {
+            if (computer.getRandomNumList().contains(user.getUserInput().get(i))) {
+                ball_num++;
+            }
+        }
+        return ball_num - isStrike();
     }
 }
