@@ -16,15 +16,15 @@ public class User {
         this.userNum = userNum;
     }
 
-    public boolean isValid(List<Integer> userNum) {
-        if (userNum.size() != 3) {
+    public boolean isValid(List<Integer> userNum, Game game) {
+        if (userNum.size() != game.getDigit()) {
             return false;
         }
         if (userNum.size() != userNum.stream().distinct().count()) {
             return false;
         }
         for (int num : userNum) {
-            if (num < 1 || num > 9) {
+            if (num < game.getStartRange() || num > game.getEndRange()) {
                 return false;
             }
         }
