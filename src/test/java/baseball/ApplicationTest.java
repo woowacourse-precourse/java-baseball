@@ -74,9 +74,21 @@ class ApplicationTest extends NsTest {
 
     @Test
     void ball() {
-        /*given*/
+        int ballTest = 1;
+        List<Integer> userInput = new ArrayList<>();
+        userInput.add(1);
+        userInput.add(7);
+        userInput.add(3);
+        List<Integer> computerInput = new ArrayList<>();
+        computerInput.add(1);
+        computerInput.add(5);
+        computerInput.add(7);
+
         /*when*/
+        int testOuput = game.ball(userInput, computerInput);
+
         /*then*/
+        assertThat(testOuput).isEqualTo(ballTest);
     }
 
     @Test
