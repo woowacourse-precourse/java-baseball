@@ -1,13 +1,14 @@
 package baseball;
 
-public class Game {
+public class RoutineForOneInput {
     private int random_number;
-    private int input_number;
+    private InputNumber input_number;
     private int strike = 0;
     private int ball = 0;
 
-    public Game() {
-
+    public RoutineForOneInput(int random_number) {
+        this.random_number = random_number;
+        this.input_number = new InputNumber();
     }
 
     public boolean routine() {
@@ -53,7 +54,7 @@ public class Game {
 
     private boolean isStrike(int where) {
         int random_digit_number = findDigitNumber(random_number, where);
-        int input_digit_number = findDigitNumber(input_number, where);
+        int input_digit_number = findDigitNumber(input_number.getInputNumber(), where);
         if (random_digit_number == input_digit_number)
             return true;
         else
@@ -62,7 +63,7 @@ public class Game {
 
     private boolean isBall(int where) {
         for (int i = 0; i < 3; i++) {
-            if (findDigitNumber(random_number, i) == findDigitNumber(input_number, where))
+            if (findDigitNumber(random_number, i) == findDigitNumber(input_number.getInputNumber(), where))
                 return true;
         }
         return false;
