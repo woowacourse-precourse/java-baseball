@@ -1,7 +1,7 @@
 package baseball.Service;
 
 public class Rule {
-    public boolean Ball(String answer,char input,int i)
+    public boolean ball(String answer,char input,int i)
     {
         char answers[] = answer.toCharArray();
         for(int j=0;i<answers.length;i++)
@@ -12,7 +12,7 @@ public class Rule {
         }
         return false;
     }
-   public boolean Strike(char answer, char input)
+   public boolean strike(char answer, char input)
    {
        if(answer==input)
        {
