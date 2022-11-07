@@ -1,9 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class Application {
     public static List<Integer> randomNumGenerate() {
@@ -29,7 +31,7 @@ public class Application {
                 ball++;
             }
         }
-        if (ball == 0 || strike == 0) {
+        if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
         } else if (strike == 0) {
             System.out.println(ball + "볼");
@@ -39,7 +41,7 @@ public class Application {
                 result = true;
             }
         } else {
-            System.out.println(ball + "볼");
+            System.out.print(ball + "볼 ");
             System.out.println(strike + "스트라이크");
         }
         return result;
@@ -54,6 +56,6 @@ public class Application {
         }
     }
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
     }
 }
