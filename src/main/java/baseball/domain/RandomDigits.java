@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public final class RandomDigits extends Digits {
     private RandomDigits() {
-        super();
         generateRandom();
     }
 
