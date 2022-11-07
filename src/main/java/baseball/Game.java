@@ -25,7 +25,7 @@ public class Game {
         int strikeCount = result.get(1);
 
         if (strikeCount == END_STRIKE_COUNT) {
-            System.out.println("게임 종료");
+            System.out.println("3스트라이크");
             return true;
         }
 
@@ -35,10 +35,10 @@ public class Game {
         }
 
         if(ballCount != 0){
-            System.out.print(ballCount + " 볼 ");
+            System.out.print(ballCount + "볼 ");
         }
         if(strikeCount != 0){
-            System.out.print(strikeCount + " 스트라이크");
+            System.out.print(strikeCount + "스트라이크");
         }
         System.out.println();
 
