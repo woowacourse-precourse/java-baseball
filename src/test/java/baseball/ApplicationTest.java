@@ -30,6 +30,17 @@ class ApplicationTest extends NsTest {
                 1, 3, 5
         );
     }
+
+    @Test
+    void Only_볼_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("513", "351", "578", "783", "781", "713", "517", "753", "135", "2");
+                    assertThat(output()).contains("1볼", "2볼", "3볼", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
     @Test
     void 입력_숫자_길이를_초과한_경우() {
         assertSimpleTest(() ->
