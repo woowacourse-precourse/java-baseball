@@ -21,11 +21,26 @@ public class Number {
         return opponentNumbers;
     }
 
+    public static List<Integer> getUserNumbersInList() {
+        List<Integer> userNumbers = new ArrayList<>();
+        String readNumber = Number.getUserNumbers();
+        numberSplit(userNumbers, readNumber);
+        return userNumbers;
+    }
+
     public static String getUserNumbers() {
         String readNumber = Console.readLine();
         validateDigits(readNumber);
         validateNumbers(readNumber);
         return readNumber;
+    }
+
+    public static void numberSplit(List<Integer> userNumbers, String readNumber) {
+        String[] stringArray = readNumber.split("");
+        for (String num : stringArray) {
+            int number = Integer.parseInt(num);
+            addNumber(userNumbers, number);
+        }
     }
 
     public static void addNumber(List<Integer> numbersList, int number) {
