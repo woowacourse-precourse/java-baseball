@@ -60,6 +60,14 @@ public class InputViewTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트_0입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
