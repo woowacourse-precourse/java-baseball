@@ -17,6 +17,7 @@ public class PrintAndRead {
         String question = Console.readLine();
 
         Validation.IsOnlyNumber(question);
+        Validation.IsNumberThree(question);
 
         return convertToIntegerList(question);
     }
