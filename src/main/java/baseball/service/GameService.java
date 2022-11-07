@@ -16,6 +16,19 @@ public class GameService {
     Computer computer = new Computer();
     OutputView outputView = new OutputView();
 
+    public void startNumberBaseballGame() {
+        List<Integer> computerRandomNumberList = getComputerRandomNumbers();
+        System.out.println(computerRandomNumberList);
+        strike = Constant.STRIKE_DEFAULT;
+        while(strike != Constant.THREE_STRIKE_NUMBER) {
+            initNumberStrikeAndBallCount();
+            List<Integer> userNumberList = getUserInputNumbers();
+            setSumOfStrikeCountAndBallCount(computerRandomNumberList, userNumberList);
+            outputView.printNumberBaseballResult(getBallCount(),getStrikeCount());
+
+        }
+
+    }
 
 }
 
