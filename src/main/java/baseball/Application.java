@@ -94,4 +94,13 @@ public class Application {
 
         return hint;
     }
+
+    private static boolean checkThreeStrike(int strike) {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            return true;
+        }
+
+        return false;
+    }
 }
