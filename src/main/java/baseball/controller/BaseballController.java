@@ -9,11 +9,8 @@ import baseball.view.Output;
 
 public class BaseballController {
 
-    private final Input input;
-
     public BaseballController() {
         Output.start();
-        this.input = new Input();
     }
 
     public void game() {
@@ -26,7 +23,7 @@ public class BaseballController {
     }
 
     private void play(BaseballGame baseballGame) {
-        Numbers myNumbers = new Numbers(input.inputBaseballNumber());
+        Numbers myNumbers = new Numbers(Input.inputBaseballNumber());
         Hints hints = baseballGame.result(myNumbers);
         Output.result(hints);
         endGame(baseballGame, hints);
@@ -39,7 +36,7 @@ public class BaseballController {
     }
 
     private void restart(BaseballGame baseballGame) {
-        if (baseballGame.isRestart(input.inputRestart())) {
+        if (baseballGame.isRestart(Input.inputRestart())) {
             game();
         }
     }
