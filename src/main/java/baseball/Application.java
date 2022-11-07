@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class Application {
     static List<Integer> computerNumbersList = getRandomThreeNumbers();
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         int startSwitch = 1;
@@ -27,42 +28,42 @@ public class Application {
         }
     }
 
-    public static boolean hasDuplication(String s){
-        for(char c : s.toCharArray()){
-            if(s.chars().filter(ch -> ch == c).count() > 1){
+    public static boolean hasDuplication(String s) {
+        for (char c : s.toCharArray()) {
+            if (s.chars().filter(ch -> ch == c).count() > 1) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean hasOtherNumbersOrChars(String s){
-        for(char c : s.toCharArray()){
-            if(!Character.isDigit(c)){
+    public static boolean hasOtherNumbersOrChars(String s) {
+        for (char c : s.toCharArray()) {
+            if (!Character.isDigit(c)) {
                 return true;
-            } else if(c == '0'){
+            } else if (c == '0') {
                 return true;
             }
         }
         return false;
     }
 
-    public static void handleInputException(String stringUserNumber){
-        if(hasDuplication(stringUserNumber)){
+    public static void handleInputException(String stringUserNumber) {
+        if (hasDuplication(stringUserNumber)) {
             throw new IllegalArgumentException();
-        } else if(stringUserNumber.length() > 3){
+        } else if (stringUserNumber.length() > 3) {
             throw new IllegalArgumentException();
-        } else if (hasOtherNumbersOrChars(stringUserNumber)){
+        } else if (hasOtherNumbersOrChars(stringUserNumber)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static int getStartSwitch(){
+    public static int getStartSwitch() {
         String stringStartSwitch = Console.readLine();
-        if(!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
+        if (!Objects.equals(stringStartSwitch, "1") && !Objects.equals(stringStartSwitch, "2")) {
             throw new IllegalArgumentException();
         }
-        if(Objects.equals(stringStartSwitch, "1")){
+        if (Objects.equals(stringStartSwitch, "1")) {
             computerNumbersList = getRandomThreeNumbers();
         }
         return Integer.parseInt(stringStartSwitch);
@@ -97,7 +98,7 @@ public class Application {
 
     public static void printResult(int strikeCount, int ballCount) {
         if (strikeCount != 0 && ballCount != 0) {
-            System.out.println( ballCount + "볼 " + strikeCount + "스트라이크" );
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
         } else if (strikeCount != 0) {
             System.out.println(strikeCount + "스트라이크");
         } else if (ballCount != 0) {
