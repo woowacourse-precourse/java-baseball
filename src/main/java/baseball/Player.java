@@ -7,12 +7,18 @@ import java.util.List;
 
 public class Player {
 
-    private String inputMessage = "숫자를 입력해주세요 : ";
-    private String replayMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private final String inputMessage = "숫자를 입력해주세요 : ";
+    private final String replayMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private String input;
-    private List<Integer> inputList = new ArrayList<>();
+    private List<Integer> inputList;
     private String replay;
+
+    public Player() {
+        input = null;
+        replay = null;
+        inputList = new ArrayList<>();
+    }
 
     public void getPlayerInput() {
         System.out.print(inputMessage);
@@ -44,6 +50,7 @@ public class Player {
     }
 
     public void setInputList() {
+        inputList = new ArrayList<>();
         for(var index = 0; index < input.length(); index++) {
             int num = Character.getNumericValue(input.charAt(index));
             inputList.add(num);
