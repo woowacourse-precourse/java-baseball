@@ -9,18 +9,15 @@ import static baseball.constant.Constant.*;
 import static baseball.view.View.*;
 
 public class Game {
-    private final Computer computer;
-    private final Gamer gamer;
-    private final Rule rule;
-
     public Game() {
         printStartGame();
-        computer = new Computer();
-        gamer = new Gamer();
-        rule = new Rule();
     }
 
     public void play() {
+        Computer computer = new Computer();
+        Gamer gamer = new Gamer();
+        Rule rule = new Rule();
+
         Hint.init();
         while (Hint.getStrikeCount() != RANDOM_NUMBERS_LENGTH) {
             inputNumbers();

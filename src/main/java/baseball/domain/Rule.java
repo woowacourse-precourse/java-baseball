@@ -8,11 +8,10 @@ public class Rule {
     public void getHint(List<Integer> numbers, List<Integer> computerNumbers) {
         Hint.init();
         for(int i=0; i<numbers.size(); i++) {
-            int number = computerNumbers.indexOf(numbers.get(i));
-            if(i == number) {
+            if(numbers.get(i) == computerNumbers.get(i)) {
                 Hint.addCount(Hint.STRIKE);
             }
-            else if(number != -1) {
+            else if(computerNumbers.contains(numbers.get(i))) {
                 Hint.addCount(Hint.BALL);
             }
         }
