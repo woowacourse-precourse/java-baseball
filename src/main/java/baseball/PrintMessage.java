@@ -12,7 +12,7 @@ public class PrintMessage {
         System.out.println(START_MESSAGE);
     }
     public static void inputMessage(){
-        System.out.println(INPUT_MESSAGE);
+        System.out.print(INPUT_MESSAGE);
     }
     public static void ballStrikeMessage(int ballCount, int strikeCount){
         if(strikeCount != 3 && strikeCount != 0 && ballCount == 0)
