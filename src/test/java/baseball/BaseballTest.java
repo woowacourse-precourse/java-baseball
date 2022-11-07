@@ -38,4 +38,12 @@ public class BaseballTest {
 
         Assertions.assertEquals(flag, true);
     }
+
+    @Test
+    void 사용자_난수_비교하고_결과_알려주기() {
+        baseball.initialize();
+        String number = baseball.getRandomNumber();
+        baseball.setUserNumber(number);
+        Assertions.assertEquals(baseball.compare(), "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
