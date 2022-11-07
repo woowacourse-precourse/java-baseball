@@ -44,5 +44,20 @@ public class InputValidation {
 		}
 		return true;
 	}
+
 	
+	public boolean isValidReStart(int input) {
+		String data = Integer.toString(input);
+		
+		return isValidRandomNumbers(data);
+	}
+	
+	
+	public boolean isValidReStart(String input) {
+		if(input.equals("1")||input.equals("2")){
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
