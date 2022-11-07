@@ -11,13 +11,6 @@ public class ComputerNumber {
     private int secondNumber;
     private int thirdNumber;
 
-
-    public ComputerNumber(int firstNumber, int secondNumber, int thirdNumber) {
-        this.firstNumber = firstNumber;
-        this.secondNumber = secondNumber;
-        this.thirdNumber = thirdNumber;
-    }
-
     public ComputerNumber(List<Integer> numberList) {
         this.firstNumber = numberList.get(FIRST);
         this.secondNumber = numberList.get(SECOND);
