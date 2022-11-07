@@ -1,11 +1,7 @@
 package baseball;
 
 abstract class ErrorCheck {
-    private String target;
-
-    ErrorCheck(String target){
-        this.target = target;
-    }
+    String target;
 
     abstract boolean checkInputLenght();
 
@@ -38,7 +34,9 @@ abstract class ErrorCheck {
         throw new IllegalArgumentException();
     }
 
-    public void launchErrorCheck() {
+    public void launchErrorCheck(String inputString) {
+        this.target = inputString;
+
         if (checkInputLenght() == false) {
             throwException();
         }
@@ -52,14 +50,9 @@ abstract class ErrorCheck {
 }
 
 class OneValueCheckError extends ErrorCheck {
-    private String target;
-    OneValueCheckError(String target) {
-        super(target);
-        this.target = target;
-    }
-
+    @Override
     public boolean checkInputLenght() {
-        if (target.length() == 1) {
+        if (super.target.length() == 1) {
             return true;
         }
         return false;
@@ -67,14 +60,9 @@ class OneValueCheckError extends ErrorCheck {
 }
 
 class ThreeValueCheckError extends ErrorCheck {
-    private String target;
-    ThreeValueCheckError(String target) {
-        super(target);
-        this.target = target;
-    }
-
+    @Override
     public boolean checkInputLenght() {
-        if (target.length() == 3) {
+        if (super.target.length() == 3) {
             return true;
         }
         return false;

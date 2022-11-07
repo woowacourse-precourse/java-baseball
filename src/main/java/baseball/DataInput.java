@@ -2,24 +2,22 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 public class DataInput {
     public static final int ONE_INPUT = 0;
     public static final int THREE_INPUT = 1;
     private String inputString;
+    private final ErrorCheck errorCheck;
 
-    public void inputNumber(int type) {
+    DataInput(ErrorCheck errorCheck) {
+        this.errorCheck = errorCheck;
+    }
+
+    public void inputNumber() {
         this.inputString = Console.readLine();
-
-        if (type == ONE_INPUT) {
-            ErrorCheck errorCheck = new OneValueCheckError(this.inputString);
-            errorCheck.launchErrorCheck();
-        }
-        if (type == THREE_INPUT) {
-            ErrorCheck errorCheck = new ThreeValueCheckError(this.inputString);
-            errorCheck.launchErrorCheck();
-        }
+        errorCheck.launchErrorCheck(this.inputString);
     }
 
     private ArrayList<Integer> makeIntegerList() {
