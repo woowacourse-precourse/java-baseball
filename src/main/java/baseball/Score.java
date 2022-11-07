@@ -5,10 +5,11 @@ import java.util.List;
 import static constant.Constants.*;
 
 public class Score {
-    int ballCnt = 0;
-    int strikeCnt = 0;
-    List<Integer> answer;
-    List<Integer> user;
+
+    private int ballCnt = 0;
+    private int strikeCnt = 0;
+    private List<Integer> answer;
+    private List<Integer> user;
 
     public void setAnswerNums(List<Integer> answer) {
         this.answer = answer;
@@ -18,9 +19,13 @@ public class Score {
         this.user = user;
     }
 
+    public void calculateAndShowResult() {
+        countResult();
+        showResult();
+    }
+
     public void countResult() {
         ballCnt = strikeCnt = 0;
-
         for (int i = 0; i < ballSize; i++) {
             int computerNum = answer.get(i);
             int userNum = user.get(i);
@@ -47,5 +52,13 @@ public class Score {
     public Status checkingStatus() {
         if (strikeCnt == ballSize) return Status.End;
         else return Status.Playing;
+    }
+
+    public int getBallCnt() {
+        return ballCnt;
+    }
+
+    public int getStrikeCnt() {
+        return strikeCnt;
     }
 }
