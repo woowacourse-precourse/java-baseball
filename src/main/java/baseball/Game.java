@@ -55,4 +55,10 @@ public class Game {
             throw new IllegalArgumentException("Input is wrong.");
         }
     }
+
+    public void isValidateRange(List<Integer> userInput) {
+        if(userInput.size() != 3) {
+            throw new IllegalArgumentException("Input size is too long.");
+        }
+    }
 }
