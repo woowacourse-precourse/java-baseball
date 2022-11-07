@@ -13,27 +13,27 @@ public class NumberBaseballView {
     private GameResult gameResult;
 
     public void printStartGame() {
-        System.out.println(GameMessage.START_GAME.getMessage());
+        System.out.println(GameMessage.START_GAME);
     }
 
     public String inputUserAnswer() {
-        System.out.print(GameMessage.NUMBER_INPUT.getMessage());
+        System.out.print(GameMessage.NUMBER_INPUT);
         return Console.readLine();
     }
 
     public String inputNewGameAnswer() {
-        System.out.println(GameMessage.NEW_GAME.getMessage());
+        System.out.println(GameMessage.NEW_GAME);
         return Console.readLine();
     }
 
     public GuessResultType printResult(GameResult gameResult) {
         setGameResult(gameResult);
         if (isWin()) {
-            System.out.println(GameMessage.WIN.getMessage());
+            System.out.println(GameMessage.WIN);
             return GuessResultType.WIN;
         }
         if (isNothing()) {
-            System.out.println(GameMessage.NOTHING.getMessage());
+            System.out.println(GameMessage.NOTHING);
             return GuessResultType.NOT_WIN;
         }
         System.out.println(createResultMessage());
@@ -52,10 +52,10 @@ public class NumberBaseballView {
         String strikeMessage = EMPTY_MESSAGE;
         String ballMessage = EMPTY_MESSAGE;
         if (gameResult.getStrike() > NOTHING) {
-            strikeMessage += gameResult.getStrike() + String.valueOf(GameMessage.STRIKE.getMessage());
+            strikeMessage += gameResult.getStrike() + GameMessage.STRIKE;
         }
         if (gameResult.getBall() > NOTHING) {
-            ballMessage += gameResult.getBall() + String.valueOf(GameMessage.BALL.getMessage());
+            ballMessage += gameResult.getBall() + GameMessage.BALL;
         }
         if (gameResult.getStrike() == NOTHING) {
             return ballMessage;
