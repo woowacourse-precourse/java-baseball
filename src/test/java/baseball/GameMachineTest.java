@@ -96,4 +96,36 @@ public class GameMachineTest {
         }
     }
 
+    @Nested
+    class gamer에게_입력받은_값이 {
+        @Test
+        void replay_값이면_true를_반환하고() {
+            // Given
+            Gamer gamer = new Gamer();
+            String input = "1";
+            command(input);
+
+            // When
+            boolean playFlag = gameMachine.askReplay(gamer);
+
+            // Then
+            boolean result = true;
+            assertThat(playFlag).isEqualTo(result);
+        }
+        @Test
+        void quit_값이면_false를_반환한다() {
+            // Given
+            Gamer gamer = new Gamer();
+            String input = "2";
+            command(input);
+
+            // When
+            boolean playFlag = gameMachine.askReplay(gamer);
+
+            // Then
+            boolean result = false;
+            assertThat(playFlag).isEqualTo(result);
+        }
+    }
+
 }
