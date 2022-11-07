@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static List<Integer> generateRandomNumber() {
@@ -53,6 +55,7 @@ public class Application {
             listInput.add(integerInput % 10);
             integerInput /= 10;
         }
+        Collections.reverse(listInput);
         return listInput;
     }
 
