@@ -18,5 +18,5 @@
 
 5. 게임 재시작 여부 확인
    - 정답을 맞춘 경우 호출
-   - 1을 입력받으면 True, 2를 입력받으면 False
-   - 잘못 입력받은 경우 IllegalArgumentException -> False
+   - 1을 입력받으면 재시작, 2를 입력받으면 종료
+   - 잘못 입력받은 경우 IllegalArgumentException

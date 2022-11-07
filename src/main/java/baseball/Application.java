@@ -47,6 +47,42 @@ public class Application {
         return (num[0] == opponent1 && num[1] == opponent2 && num[2] == opponent3);
     }
 
+    public static void countStrikeBall(int[] num){
+        int strikeCount = 0;
+        int ballCount = 0;
+        StringBuilder result = new StringBuilder();
+        if (num[0] == opponent1){
+            strikeCount++;
+        } else if (num[1] == opponent1 || num[2] == opponent3) {
+            ballCount++;
+        }
+
+        if (num[1] == opponent2){
+            strikeCount++;
+        } else if (num[0] == opponent2 || num[2] == opponent2){
+            ballCount++;
+        }
+
+        if (num[2] == opponent3){
+            strikeCount++;
+        } else if (num[0] == opponent3 || num[1] == opponent3) {
+            ballCount++;
+        }
+
+        if (ballCount == 0 && strikeCount == 0){
+            result.append("낫싱");
+        }
+
+        if (ballCount > 0) {
+            result.append(ballCount + "볼");
+        }
+
+        if (strikeCount > 0){
+            result.append(strikeCount + "스트라이크");
+        }
+        System.out.println(result);
+    }
+
     public static void main(String[] args) {
         getUserNumber();
         initOpponentNumber();
