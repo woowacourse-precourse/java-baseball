@@ -82,6 +82,42 @@ public class Baseball {
         return input;
     }
 
+    private boolean strikeCheck(final char userDigit, int position) {
+        for (int i = 0; i < 3; i++) {
+            if (userDigit == randomNumber.charAt(i) && position == i) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean ballCheck(final char userDigit) {
+        for (int i = 0; i < 3; i++) {
+            if (userDigit == randomNumber.charAt(i)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public String compare() {
+        int ballCount = 0;
+        int strikeCount = 0;
+
+        for (int i = 0; i < 3; i++) {
+            char userDigit = userNumber.charAt(i);
+
+            if (strikeCheck(userDigit, i)) {
+                strikeCount++;
+            } else if (ballCheck(userDigit)) {
+                ballCount++;
+            }
+        }
+
+        return "";
+    }
 
 
     public void play() {
@@ -90,6 +126,7 @@ public class Baseball {
         do {
             System.out.print(Message.INPUT);
             userNumber = inputNumber();
+            compare();
         } while (!result.equals(Message.CLEAR));
     }
 }
