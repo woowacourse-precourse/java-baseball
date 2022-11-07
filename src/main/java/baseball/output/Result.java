@@ -30,6 +30,10 @@ public class Result {
         return isCorrect;
     }
 
+    public String getResult(){
+        return result;
+    }
+
 
     private String getResult(List<Integer> userNumberList, List<Integer> computerNumberList){
         Map<String, Integer> typeScoreMap = getTypeScoreMap();
@@ -44,21 +48,21 @@ public class Result {
 
     private Map<String, Integer> getTypeScoreMap(){
         return new HashMap<>(){{
-            put("Strike", 0);
-            put("Ball", 0);
-            put("Nothing", 0);
+            put(BallType.Strike.getEnglish(), 0);
+            put(BallType.Ball.getEnglish(), 0);
+            put(BallType.Nothing.getEnglish(), 0);
         }};
     }
 
     private String getDigitResult(int nowDigit, int index, List<Integer> computerNumberList){
         int digitIndex = computerNumberList.indexOf(nowDigit);
         if(digitIndex == MISSING_INDEX){
-            return "Nothing";
+            return BallType.Nothing.getEnglish();
         }
         else if(index == digitIndex){
-            return "Strike";
+            return BallType.Strike.getEnglish();
         }
-        return "Ball";
+        return BallType.Ball.getEnglish();
     }
 
     private void putResult(Map<String, Integer> typeScoreMap, String digitResult){
@@ -68,18 +72,20 @@ public class Result {
 
     private String getResultStr(Map<String, Integer> typeScoreMap){
         sb.setLength(0);
-        appendScore(sb, "Missing", typeScoreMap);
-        appendScore(sb, "Ball", typeScoreMap);
-        appendScore(sb, "Strike", typeScoreMap);
+        appendScore(sb, BallType.Nothing.getEnglish(), typeScoreMap);
+        appendScore(sb, BallType.Ball.getEnglish(), typeScoreMap);
+        appendScore(sb, BallType.Strike.getEnglish(), typeScoreMap);
         return sb.toString().strip();
     }
 
     private void appendScore(StringBuilder sb, String type, Map<String, Integer> typeScoreMap){
         int typeScore = typeScoreMap.get(type);
-        if(type.equals("Missing") && typeScore == NUMBER_LENGTH){
-            sb.append(BallType.valueOf(type).getKorean());
+        if(type.equals(BallType.Nothing.getEnglish())){
+            if(typeScore == NUMBER_LENGTH){
+                sb.append(BallType.valueOf(type).getKorean());
+            }
         }
-        else if(typeScore > 0){
+        else if(typeScore >  0){
             sb.append(typeScoreMap.get(type))
                     .append(BallType.valueOf(type).getKorean())
                     .append(" ");

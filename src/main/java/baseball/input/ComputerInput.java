@@ -17,7 +17,7 @@ public class ComputerInput {
         return computerNumberList;
     }
 
-    public static int getValidRandomNumber(List<Integer> lst) {
+    private static int getValidRandomNumber(List<Integer> lst) {
         int pickNumber;
         do {
             pickNumber = Randoms.pickNumberInRange(1, 9);

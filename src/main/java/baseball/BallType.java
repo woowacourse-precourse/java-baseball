@@ -1,18 +1,24 @@
 package baseball;
 
 public enum BallType {
-    Strike("스트라이크"),
-    Ball("볼"),
-    Missing("미싱");
+    Strike("Strike", "스트라이크"),
+    Ball("Ball", "볼"),
+    Nothing("Nothing", "낫싱");
 
-    private final String koren;
+    private final String english;
+    private final String korean;
 
-    BallType(String koren){
-        this.koren = koren;
+    BallType(String english, String korean){
+        this.english = english;
+        this.korean = korean;
+    }
+
+    public String getEnglish(){
+        return english;
     }
 
     public String getKorean(){
-        return koren;
+        return korean;
     }
 
 }

@@ -13,14 +13,17 @@ public class Constants {
 
     // Guide
     public static final String START_GUIDE = "숫자 아구 게임을 시작합니다.";
-    public static final String END_GUIDE = String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료"
+    public static final String END_GUIDE =
+            String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료"
             , NUMBER_LENGTH);
-    public static final String RESTART_GUIDE = String.format("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요."
+    public static final String RESTART_GUIDE
+            = String.format("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요."
             , RESTART_OPTION
             , END_OPTION);
 
     // Result
-    public static final String ALL_STRIKE_RESULT = String.format("%d스트라이크", NUMBER_LENGTH);
+    public static final String ALL_STRIKE_RESULT
+            = String.format("%d스트라이크", NUMBER_LENGTH);
 
     // validation
     public static final String INVALID_RANGE = String.format("%d ~ %d 사이의 숫자가 아닙니다."

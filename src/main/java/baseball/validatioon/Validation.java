@@ -1,7 +1,5 @@
 package baseball.validatioon;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.List;
 
 import static baseball.Constants.*;
@@ -25,13 +23,13 @@ public class Validation {
     }
 
     public static void validateCharIsDigit(char c) {
-        if (Character.isDigit(c)) {
+        if (!Character.isDigit(c)) {
             throw new IllegalArgumentException(NOT_A_NUMBER);
         }
     }
 
     public static void validateOption(int number) {
-        if (number == RESTART_OPTION || number == END_OPTION) {
+        if (number != RESTART_OPTION && number != END_OPTION) {
             throw new IllegalArgumentException(INVALID_OPTION);
         }
     }
