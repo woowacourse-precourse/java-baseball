@@ -4,24 +4,24 @@ public class Result {
   private final Integer strikeCount;
   private final Integer ballCount;
 
-  private Result(Integer strikeCount, Integer ballCount){
+  public Result(Integer strikeCount, Integer ballCount){
     this.strikeCount = strikeCount;
     this.ballCount = ballCount;
   }
 
-  public boolean isNothing(){
+  private boolean isNothing(){
     return this.strikeCount == 0 && this.ballCount == 0;
   }
 
-  public boolean isBall(){
+  private boolean isBall(){
     return this.ballCount > 0;
   }
 
-  public boolean isStrike(){
+  private boolean isStrike(){
     return this.strikeCount > 0;
   }
 
-  public String getResults(Integer strikeCount, Integer ballCount) {
+  public String getResults() {
     if (isNothing()) {
       return "낫싱";
     }
@@ -29,13 +29,14 @@ public class Result {
     StringBuilder stringBuilder = new StringBuilder();
 
     if (isBall()) {
-      stringBuilder.append(ballCount).append("볼 ");
+      stringBuilder.append(this.ballCount).append("볼 ");
     }
 
     if (isStrike()) {
-      stringBuilder.append(strikeCount).append("스트라이크");
+      stringBuilder.append(this.strikeCount).append("스트라이크");
     }
 
     return stringBuilder.toString().stripTrailing();
   }
+
 }
