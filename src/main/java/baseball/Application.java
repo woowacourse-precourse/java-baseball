@@ -80,16 +80,16 @@ public class Application {
         return answerTrialNum;
     }
 
-    public static int countStrike(int answerNum, int hundred, int ten, int one) {
+    public static int countStrike(List<Integer> answerDigits, List<Integer> trialDigits) {
         int strikeCnt = 0;
 
-        if (hundred == answerNum / 100)
+        if (answerDigits.get(0) == trialDigits.get(0))
             strikeCnt++;
 
-        if (ten == (answerNum % 100) / 10)
+        if (answerDigits.get(1) == trialDigits.get(1))
             strikeCnt++;
 
-        if (one == answerNum % 10)
+        if (answerDigits.get(2) == trialDigits.get(2))
             strikeCnt++;
 
         return strikeCnt;
