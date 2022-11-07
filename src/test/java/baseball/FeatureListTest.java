@@ -8,8 +8,7 @@ import java.util.Set;
 
 import static baseball.Application.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class FeatureListTest {
 
@@ -45,6 +44,14 @@ public class FeatureListTest {
     void 입력Set의_사이즈가3인지_확인() {
         Set<Integer> set = Set.of(3, 4, 5);
         assertThat(isValidSetSize(set)).isTrue();
+    }
+
+    @Test
+    void 사용자_입력에서_숫자가_아닌_문자열_확인() {
+        String input = "12a";
+        assertThat(isNotNumber(input)).isFalse();
+        String input2 = "123";
+        assertThat(isNotNumber(input2)).isTrue();
     }
 
     @Test
