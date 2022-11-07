@@ -52,7 +52,7 @@ public class ResultModel {
         NumList.add(num / 100 % 10);
     }
 
-    public void compareInputNumWithResultList(int inputNum, List<Integer> resultNumList, int idx) {
+    public void compareInputNumWithResultList(int inputNum, List<Integer> , int idx) {
         if(resultNumList.contains(inputNum)) {
             if(resultNumList.get(idx) == inputNum) {
                 strikeNum = strikeNum + 1;
@@ -64,9 +64,8 @@ public class ResultModel {
         }
     }
 
-    public void calResult(int inputNum, int resultNum) {
+    public void calResult(int inputNum, List<Integer> resultNumList) {
         List<Integer> inputNumList = new ArrayList<>();
-        List<Integer> resultNumList = new ArrayList<>();
         injectElementToList(inputNumList, inputNum);
         injectElementToList(resultNumList, resultNum);
 
