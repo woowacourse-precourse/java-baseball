@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Computer {
+    private static final int CNT = 3;
+    private static final int START = 1;
+    private static final int END = 9;
     private List<Integer> randNumbers;
 
     public Computer() {
@@ -14,8 +17,8 @@ public class Computer {
     }
 
     public void generateRandom() {
-        while (randNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randNumbers.size() < CNT) {
+            int randomNumber = Randoms.pickNumberInRange(START, END);
             if (!randNumbers.contains(randomNumber)) {
                 randNumbers.add(randomNumber);
             }
