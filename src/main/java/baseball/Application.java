@@ -204,24 +204,17 @@ public class Application {
 
     public static boolean replayGame() {
 
-        int replayNumber = 0;
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner scanner = new Scanner(System.in);
 
-        while(true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            Scanner scanner = new Scanner(System.in);
+        String replayNumberString = scanner.nextLine();
 
-            String replayNumberString = scanner.nextLine();
+        if (!checkReplayNumber(replayNumberString)) {
 
-            if (checkReplayNumber(replayNumberString)) {
-
-                replayNumber = replayNumberString.charAt(0) - 48;
-
-                break;
-            }
+            return false;
         }
 
-        return replayNumber == 1;
-
+        return replayNumberString.charAt(0) - 48 == 1;
     }
 
     public static boolean checkReplayNumber(String replayNumberString) {
