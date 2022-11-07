@@ -10,8 +10,8 @@ public class Model {
     private static final int DIGITS = Rule.DIGITS.getValue();
     private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
     private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
-    private static final View view = new View();
-    private static final Validator validator = new Validator();
+    private final View view = new View();
+    private final Validator validator = new Validator();
     public List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < DIGITS) {

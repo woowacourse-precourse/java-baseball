@@ -20,8 +20,8 @@ public class Controller {
     private static final int DIGITS = Rule.DIGITS.getValue();
     private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.toString();
     private static final String COMMAND_END = Rule.COMMAND_END.toString();
-    private static final View view = new View();
-    private static final Model model = new Model();
+    private final View view = new View();
+    private final Model model = new Model();
 
 //    public void generate() {
 //        View.printStart();
