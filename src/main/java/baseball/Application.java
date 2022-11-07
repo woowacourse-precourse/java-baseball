@@ -42,7 +42,6 @@ public class Application {
     }
 
     public static void checkValidInput(String input){
-        System.out.println();
         checkCorrectLength(input);  // input 길이가 3인지 확인
         checkNumber(input); // input 전부 숫자인지 확인
         checkUniqueNumber();    // input 각 숫자가 서로 다른지 확인
@@ -63,7 +62,7 @@ public class Application {
             if(userChoice == 1) return false;  // 1을 입력하면 재시작
             if(userChoice == 2) return true; // 2를 입력하면 게임 종료
         }catch(NumberFormatException nfe) {throw new IllegalArgumentException();}
-        return false;
+        throw new IllegalArgumentException();
     }
 
     public static void checkNumber(String input){
