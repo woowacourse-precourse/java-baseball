@@ -21,4 +21,25 @@ public class PlayNumberBaseballGame {
     public String outputGameStartStatement(){
         return "숫자 야구 게임을 시작합니다.";
     }
+
+    public String compareNumbersBetweenComputerAndPlayer(List<Integer> computer, List<Integer> player){
+        String compareResult="";
+        int strike=0;
+        int ball=0;
+
+        for(int numberLocation=0; numberLocation<3; numberLocation++){
+            if(isStrike(computer.get(numberLocation), player.get(numberLocation))){
+                strike++;
+                continue;
+            }
+            else if(isBall(computer, player.get(numberLocation))){
+                ball++;
+            }
+        }
+
+        compareResult = outputResultComparisonOfNumbers(strike,ball);
+
+        return compareResult;
+    }
+
 }
