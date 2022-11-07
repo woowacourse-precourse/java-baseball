@@ -12,6 +12,17 @@ public class BaseballController {
     private Player player = new Player();
     private Computer computer = new Computer();
 
+    private void startGame() {
+        List<Integer> randomNumbers = computer.makeRandomNumbers();
+        while (!isRightAnswer()) {
+            InputView.requestPlayerInput();
+            String stringPlayerInput = player.enterPlayerInput();
+            List<Integer> playerInputs = integerListOf(stringPlayerInput);
+            printResultOf(randomNumbers, playerInputs);
+        }
+        restartGameIfPlayerWant();
+    }
+
     private boolean isRightAnswer() {
         return computer.isAnswer();
     }
