@@ -11,6 +11,7 @@ public class BaseballController {
     private BaseBallService baseBallService = new BaseBallService();
 
     public void gameStart() {
+        initGame();
         do {
             inProgress();
         } while (restart());
@@ -32,7 +33,6 @@ public class BaseballController {
     }
 
     public void inProgress() {
-        initGame();
         while (!baseBallService.isWinGame()) {
             String userNumber = inputView.inputNumber();
             baseBallService.userInputSave(userNumber);
