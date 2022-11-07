@@ -9,7 +9,7 @@ public class BaseballGameManager {
 
     public final static int NUMBER_COUNT_TO_CREATED = 3;
 
-    private MessageCreator messageCreator = new MessageCreator();
+    private ResultProvider resultProvider = new ResultProvider();
     private List<Integer> randomNumbers = new ArrayList<>();
     private int strikeCount;
     private int ballCount;
@@ -25,7 +25,7 @@ public class BaseballGameManager {
 
     public void printResult(String input) {
         calculateBallCount(input);
-        messageCreator.printResultMessage(strikeCount, ballCount);
+        resultProvider.printResultMessage(strikeCount, ballCount);
     }
 
     public boolean isGameClear() {

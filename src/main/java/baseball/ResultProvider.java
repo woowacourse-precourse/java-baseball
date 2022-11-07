@@ -1,6 +1,6 @@
 package baseball;
 
-public class MessageCreator {
+public class ResultProvider {
 
     public void printResultMessage(int strikeCount, int ballCount)    {
 
