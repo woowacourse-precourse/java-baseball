@@ -1,6 +1,5 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -11,38 +10,13 @@ import java.util.Set;
 
 public class Service {
 
-    public void startGame() {
-        int strike = 0;
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> answer = pick();
-        while (strike < 3) {
-            strike = stage(answer);
-        }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        restart();
-    }
-
-    private void restart() throws IllegalArgumentException{
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        if (input.equals("1")) {
-            startGame();
-        }
-        if (input.equals("2")) {
-            System.out.println("게임을 완전히 종료합니다.");
-        }
-        if (!(input.equals("1") || input.equals("2"))) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private int stage(List<Integer> answer) {
+    public int stage(List<Integer> answer) {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> input = getUserNumber();
         return hint(answer, input);
     }
 
-    private List<Integer> pick() {
+    public List<Integer> pick() {
         Set<Integer> numSet = new HashSet<>();
         while (numSet.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
