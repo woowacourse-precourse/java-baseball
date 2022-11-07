@@ -41,10 +41,10 @@ public class BaseballGame {
     private void play() {
         Printer.inputNumber();
 
-        String input = Console.readLine();
-        validator.validateInput(input);
+        String userInput = Console.readLine();
+        validator.validateInput(userInput);
 
-        if (checker.isUserGuessRight(input, this.randomNumber)) {
+        if (checker.isUserGuessRight(generator.getOverlapChecker(), userInput, this.randomNumber)) {
             this.checkUserDecision();
         }
     }

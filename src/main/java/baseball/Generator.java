@@ -8,19 +8,25 @@ import java.util.Set;
 
 public class Generator {
 
+    private Set<Character> overlapChecker;
+
     public String generateRandomNumber() {
         StringBuilder counterpartNumber = new StringBuilder();
-        Set<Character> ballCounter = new HashSet<>();
+        overlapChecker = new HashSet<>();
 
-        while (ballCounter.size() < BALL_LENGTH) {
+        while (overlapChecker.size() < BALL_LENGTH) {
             char number = generateRandomNumberFrom1To9();
 
-            if (ballCounter.add(number)) {
+            if (overlapChecker.add(number)) {
                 counterpartNumber.append(number);
             }
         }
 
         return counterpartNumber.toString();
+    }
+
+    public Set<Character> getOverlapChecker() {
+        return this.overlapChecker;
     }
 
     private char generateRandomNumberFrom1To9() {

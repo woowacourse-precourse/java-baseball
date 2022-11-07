@@ -1,16 +1,10 @@
 package baseball;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class Checker {
 
-    private Set<Character> ballCounter;
-
-    public boolean isUserGuessRight(String input, String randomNumber) {
-
-        init(randomNumber);
-
+    public boolean isUserGuessRight(Set<Character> overlapChecker, String input, String randomNumber) {
         int strikeCount = 0;
         int ballCount = 0;
 
@@ -18,11 +12,15 @@ public class Checker {
             char number = input.charAt(i);
             if (number == randomNumber.charAt(i)) {
                 strikeCount++;
-            } else if (ballCounter.contains(number)) {
+            } else if (overlapChecker.contains(number)) {
                 ballCount++;
             }
         }
 
+        return getDecision(ballCount, strikeCount);
+    }
+
+    private boolean getDecision(int ballCount, int strikeCount) {
         Printer.getScore(ballCount, strikeCount);
 
         if (isWrong(strikeCount, ballCount)) {
@@ -37,14 +35,6 @@ public class Checker {
 
     private boolean isWrong(int strike, int ball) {
         return strike < 3 || ball > 0;
-    }
-
-    private void init(String randomNumber) {
-        this.ballCounter = new HashSet<>();
-
-        for (char number : randomNumber.toCharArray()) {
-            ballCounter.add(number);
-        }
     }
 
 }
