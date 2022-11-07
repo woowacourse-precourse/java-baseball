@@ -43,4 +43,9 @@ public class PlayGameTest {
     void 게임을_다시_시작할_경우_테스트(){
         assertThat(prepareGame.isGameExitForTest("1")).isEqualTo(true);
     }
+
+    @Test
+    void 게임을_종료할_경우_테스트(){
+        assertThat(prepareGame.isGameExitForTest("2")).isEqualTo(false);
+    }
 }
