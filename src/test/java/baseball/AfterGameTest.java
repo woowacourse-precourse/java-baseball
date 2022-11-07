@@ -19,7 +19,7 @@ class AfterGameTest {
     @Test
     public void outputQuestTest() throws Exception {
         //given
-        String input = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요";
+        String input = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         after.outputQuest();
