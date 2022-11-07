@@ -11,9 +11,9 @@
 - [X] getter/setter
 
 ### Computer
-- [ ] 변수
+- [X] 변수
   - 랜덤 숫자 리스트
-- [ ] getter/setter
+- [X] getter/setter
 
 ### Player
 - [ ] 변수
