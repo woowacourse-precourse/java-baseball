@@ -40,11 +40,16 @@ public class Ball {
         String expectedBall = ball.toString();
         int count = Constant.ZERO_NUM;
         for (int i = 0; i < expectedBall.length(); i++) {
-            if (numberBall.charAt(i) == expectedBall.charAt(i)) {
-                count++;
-            }
+            count += compareByChar(numberBall.charAt(i), expectedBall.charAt(i));
         }
         return count;
+    }
+
+    private int compareByChar(char characterA, char characterB) {
+        if (characterA == characterB) {
+            return Constant.ONE_NUM;
+        }
+        return Constant.ZERO_NUM;
     }
 
     public int compareByValue(Ball ball) {
