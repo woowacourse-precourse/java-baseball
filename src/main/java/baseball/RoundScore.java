@@ -1,17 +1,18 @@
 package baseball;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class RoundScore {
-	public static List<Integer> score_list=new ArrayList<>();
-
-	public static void addScoreAtUserInputNumber(int strike,int ball){
-		score_list.add(strike);
-		score_list.add(ball);
+	public static HashMap<String,Integer> score_map=new LinkedHashMap<>();
+	public static void addScoreAtUserInputNumber(int STRIKE,int BALL){
+		score_map.put("STRIKE",STRIKE);
+		score_map.put("BALL",BALL);
 	}
 
-	public static List<Integer> getScoreList(){
-		return score_list;
+	public static HashMap<String,Integer> getScoreList(){
+		CompareNumber.setInitializeScore();
+		return score_map;
 	}
 }

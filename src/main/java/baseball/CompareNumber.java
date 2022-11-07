@@ -4,17 +4,18 @@ import java.util.List;
 
 public class CompareNumber {
 
-	private static int BALL=0;
-	private static int STRIKE=0;
+	public static int STRIKE=0;
+	public static int BALL=0;
 
 	public static void compareUserNumberAndRandomNumber(String user_number, List<Integer> random_number_list){
 		char[] user_number_list = user_number.toCharArray();
-
 		for (int i=0;i<3;i++) {
 			for (int k=0;k<3;k++){
 				getUserNumberInStrike(user_number_list, random_number_list,i,k);
 			}
 		}
+		System.out.println(STRIKE);
+		System.out.println(BALL);
 		RoundScore.addScoreAtUserInputNumber(STRIKE,BALL);
 	}
 
@@ -35,5 +36,10 @@ public class CompareNumber {
 		if (user_num==random_number_list.get(index2)&&index1!=index2) {
 			BALL++;
 		}
+	}
+
+	public static void setInitializeScore(){
+		STRIKE=0;
+		BALL=0;
 	}
 }
