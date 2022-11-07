@@ -20,6 +20,7 @@ public class Application {
             if (isExceptionStatus(status)) {
                 throw new IllegalArgumentException();
             }
+
             GameFormatter.gameStartMessage();
             GameFormatter.gameInputMessage();
             GameFormatter.gameEndMessage();
@@ -33,7 +34,7 @@ public class Application {
      * @param input
      * @return GameStatus
      */
-    public GameStatus setGameStatus(String input) {
+    GameStatus setGameStatus(String input) {
         GameStatus status;
         switch (input) {
             case "1":
@@ -49,11 +50,13 @@ public class Application {
         return status;
     }
 
-    public boolean isStopStatus(GameStatus status) {
+    boolean isStopStatus(GameStatus status) {
         return status.equals(GameStatus.STOP);
     }
 
-    public boolean isExceptionStatus(GameStatus status) {
+    boolean isExceptionStatus(GameStatus status) {
         return status.equals(GameStatus.EXCEPTION);
     }
+
+
 }
