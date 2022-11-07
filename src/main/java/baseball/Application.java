@@ -73,13 +73,17 @@ public class Application {
 
         for (int computerIdx = 0; computerIdx <= NUM_OF_DIGIT - 1; computerIdx++) {
             for (int userIdx = 0; userIdx <= NUM_OF_DIGIT - 1; userIdx++) {
-                if (computerNumList.get(computerIdx) == userNumList.get(userIdx)) {
-                    if (computerIdx == userIdx) {
-                        strikeCnt++;
-                    } else {
-                        ballCnt++;
-                    }
-                }
+                increaseStrikeCntAndBallCnt(computerIdx, userIdx);
+            }
+        }
+    }
+
+    private static void increaseStrikeCntAndBallCnt(int computerIdx, int userIdx) {
+        if (computerNumList.get(computerIdx) == userNumList.get(userIdx)) {
+            if (computerIdx == userIdx) {
+                strikeCnt++;
+            } else {
+                ballCnt++;
             }
         }
     }
