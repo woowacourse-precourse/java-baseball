@@ -8,6 +8,10 @@ public class Referee {
     private int ballCount;
 
     public Referee() {
+        initCount();
+    }
+
+    public void initCount() {
         this.strikeCount = 0;
         this.ballCount = 0;
     }

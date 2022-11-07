@@ -23,6 +23,34 @@ public class BaseballGame {
         return number;
     }
 
+    private void printResult(Referee referee) {
+        int ballCount = referee.getBallCount();
+        int strikeCount = referee.getStrikeCount();
+
+        printBallCount(ballCount);
+        printStrikeCount(strikeCount);
+        printNothing(ballCount, strikeCount);
+        System.out.println();
+    }
+
+    private void printBallCount(int ballCount) {
+        if (ballCount > 0) {
+            System.out.print(ballCount + "볼 ");
+        }
+    }
+
+    private void printStrikeCount(int strikeCount) {
+        if (strikeCount > 0) {
+            System.out.print(strikeCount + "스트라이크");
+        }
+    }
+
+    private void printNothing(int ballCount, int strikeCount) {
+        if (ballCount == 0 && strikeCount == 0) {
+            System.out.print("낫싱");
+        }
+    }
+
     private void validate(String number) {
         validateNumberLength(number);
         validateNumberRange(number);
