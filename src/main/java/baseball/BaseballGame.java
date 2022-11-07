@@ -52,4 +52,17 @@ public class BaseballGame extends Game {
 
         return strikeCount;
     }
+
+    public int getBall(int number, int target) {
+        int ballCount = 0;
+        String targetStr = Integer.toString(target);
+        String inputStr = Integer.toString(number);
+
+        for (int i = 0; i < targetStr.length(); i++) {
+            String now = String.valueOf(inputStr.charAt(i));
+            if (targetStr.contains(now)) ballCount++;
+        }
+
+        return ballCount;
+    }
 }
