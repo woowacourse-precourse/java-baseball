@@ -32,7 +32,7 @@ class BaseballGameResultTest {
         @Nested
         class 만약_Enum_범위_내_존재하지_않는_숫자를_입력받으면 {
             private final int givenStrike = 0;
-            private final int givenBall = 3;
+            private final int givenBall = 4;
 
             @Test
             void BaseballGameException을_던진다() {

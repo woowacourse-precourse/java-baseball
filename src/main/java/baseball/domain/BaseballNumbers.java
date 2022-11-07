@@ -10,7 +10,7 @@ public class BaseballNumbers {
     private static final int BASEBALL_NUMBERS_START_INDEX = 0;
     private static final int BASEBALL_NUMBERS_END_INDEX = 2;
 
-    List<BaseballNumber> baseballNumbers;
+    private List<BaseballNumber> baseballNumbers;
 
     public BaseballNumbers(List<BaseballNumber> baseballNumbers) {
         validateSize(baseballNumbers);

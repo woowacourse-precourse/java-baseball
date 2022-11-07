@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static baseball.domain.BaseballGameResult._0_STRIKE_1_BALL;
 import static baseball.domain.BaseballGameResult._0_STRIKE_2_BALL;
+import static baseball.domain.BaseballGameResult._0_STRIKE_3_BALL;
 import static baseball.domain.BaseballGameResult._1_STRIKE;
 import static baseball.domain.BaseballGameResult._1_STRIKE_1_BALL;
 import static baseball.domain.BaseballGameResult._1_STRIKE_2_BALL;
@@ -155,6 +156,18 @@ class BaseballNumbersTest {
             void _0_Strike_2_Ball의_값을_가진_BaseballGameResult를_반환한다() {
                 BaseballGameResult gameResult = computer.play(player);
                 assertThat(gameResult).isEqualTo(_0_STRIKE_2_BALL);
+            }
+        }
+
+        @Nested
+        class 만약_맞춘공이_없고_3개가_위치가_다른_경우 {
+
+            private BaseballNumbers player = generateBaseballNumbers(3, 1, 9);
+
+            @Test
+            void _0_Strike_3_Ball의_값을_가진_BaseballGameResult를_반환한다() {
+                BaseballGameResult gameResult = computer.play(player);
+                assertThat(gameResult).isEqualTo(_0_STRIKE_3_BALL);
             }
         }
     }

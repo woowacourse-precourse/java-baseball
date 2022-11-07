@@ -8,6 +8,7 @@ public enum BaseballGameResult {
     _1_STRIKE(1, 0, "1스트라이크"),
     _1_STRIKE_2_BALL(1, 2, "2볼 1스트라이크"),
     _1_STRIKE_1_BALL(1, 1, "1볼 1스트라이크"),
+    _0_STRIKE_3_BALL(0, 3, "3볼"),
     _0_STRIKE_2_BALL(0, 2, "2볼"),
     _0_STRIKE_1_BALL(0, 1, "1볼"),
     _NOTHING(0, 0, "낫싱");
