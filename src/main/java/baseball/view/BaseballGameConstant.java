@@ -10,4 +10,5 @@ public class BaseballGameConstant {
     public static String GAME_FINISHED_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static String INPUT_NUMBER_ERROR_MESSAGE = "입력한 숫자가 올바르지 않습니다.";
+    public static String RESTART_NUMBER_ERROR_MESSAGE = "1 혹은 2를 입력해주세요.";
 }
