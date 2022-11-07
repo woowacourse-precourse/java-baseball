@@ -146,6 +146,7 @@ public class BaseballGame {
             validateUserInputType(userInput);
             userNumbers = toList(userInput);
             validateUserNumbers(userNumbers);
+            break;
         }
     }
 }
