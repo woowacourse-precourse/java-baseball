@@ -74,6 +74,20 @@ class ApplicationTest extends NsTest {
         assertThat(result).isEqualTo(true);
     }
 
+    @Test
+    void 유효한_사용자번호범위(){
+        List<Integer> list = List.of(1,2,3);
+        boolean result = Exception.isInvalidRange(list);
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void 유효하지않은_사용자번호범위(){
+        List<Integer> list = List.of(0,2,3);
+        boolean result = Exception.isInvalidRange(list);
+        assertThat(result).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
