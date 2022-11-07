@@ -6,12 +6,15 @@ import java.util.List;
 public class BaseballNumberBundle {
     private List<Integer> list = new ArrayList<Integer>();
 
-    BaseballNumberBundle() {
+    public BaseballNumberBundle() {
     }
-    BaseballNumberBundle(int number1, int number2, int number3) {
+    public BaseballNumberBundle(int number1, int number2, int number3) {
         addNumber(number1);
         addNumber(number2);
         addNumber(number3);
+    }
+    public BaseballNumberBundle(List<Integer> list) {
+        this.list.addAll(list);
     }
     public List<Integer> getList() {
         return list;
