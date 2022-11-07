@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Player {
     static boolean isValidInput(String playerInput){
@@ -33,5 +34,11 @@ public class Player {
             }
         }
         return true;
+    }
+
+    static List<Integer> convertStringToIntegerList(String playerInput) {
+        return Arrays.stream(playerInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
