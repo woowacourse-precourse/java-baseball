@@ -15,6 +15,7 @@ public class ComputerNumber {
         hundredNumber = Randoms.pickNumberInRange(1, 9);
         tenNumber = Randoms.pickNumberInRange(1, 9);
         number = Randoms.pickNumberInRange(1, 9);
+        getComputerNumberList();
     }
 
     public void getComputerNumberList(){

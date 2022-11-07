@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.ComputerNumber;
 import baseball.service.JudgeGame;
 import baseball.util.ValidationUtil;
 import baseball.view.OutputView;
@@ -11,8 +12,7 @@ import java.util.ArrayList;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class UnitTest extends NsTest {
 
@@ -48,6 +48,20 @@ class UnitTest extends NsTest {
             inputNumList = JudgeGame.getInputNumberList(inputNum);
             assertThat(inputNumList).isEqualTo(answerList);
         }
+    }
+
+    void 컴퓨터_생성_세자리_난수_적정성_검토(){
+        ComputerNumber computerNumber = new ComputerNumber();
+        Integer hundredNumber = computerNumber.computerNumberList.get(0);
+        Integer tenNumber = computerNumber.computerNumberList.get(0);
+        Integer number = computerNumber.computerNumberList.get(0);
+
+        assertThat(hundredNumber).isBetween(1, 9);
+        assertThat(tenNumber).isBetween(1, 9);
+        assertThat(number).isBetween(1,9);
+        assertThat(hundredNumber).isNotEqualTo(tenNumber);
+        assertThat(hundredNumber).isNotEqualTo(number);
+        assertThat(tenNumber).isNotEqualTo(number);
     }
 
 
