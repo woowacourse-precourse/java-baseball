@@ -27,35 +27,48 @@ public enum BallStrikeConstant {
 
     public static BallStrikeConstant getResult(int ball, int strike) {
         BallStrikeConstant ballStrikeConstant = null;
-        if (ball == 0) {
-            if (strike == 0) {
-                ballStrikeConstant = NOTHING;
-            } else if (strike == 1) {
-                ballStrikeConstant = ONE_STRIKE;
-            } else if (strike == 2) {
-                ballStrikeConstant = TWO_STRIKE;
-            } else if (strike == 3) {
-                ballStrikeConstant = THREE_STRIKE;
-            }
-
-        } else if (ball == 1) {
-            if (strike == 0) {
-                ballStrikeConstant = ONE_BALL;
-            } else if (strike == 1) {
-                ballStrikeConstant = ONE_BALL_ONE_STRIKE;
-            } else if (strike == 2) {
-                ballStrikeConstant = ONE_BALL_TWO_STRIKE;
-            }
-
-        } else if (ball == 2) {
-            if (strike == 0) {
-                ballStrikeConstant = TWO_BALL;
-            } else if (strike == 1) {
-                ballStrikeConstant = TWO_BALL_ONE_STRIKE;
-            }
-        } else if (ball == 3) {
-            ballStrikeConstant = THREE_BALL;
+        switch (ball) {
+            case 0:
+                switch (strike) {
+                    case 0:
+                        ballStrikeConstant = NOTHING;
+                        break;
+                    case 1:
+                        ballStrikeConstant = ONE_STRIKE;
+                        break;
+                    case 2:
+                        ballStrikeConstant = TWO_STRIKE;
+                        break;
+                    case 3:
+                        ballStrikeConstant = THREE_STRIKE;
+                        break;
+                }
+                break;
+            case 1:
+                switch (strike) {
+                    case 0:
+                        ballStrikeConstant = ONE_BALL;
+                        break;
+                    case 1:
+                        ballStrikeConstant = ONE_BALL_ONE_STRIKE;
+                        break;
+                }
+                break;
+            case 2:
+                switch (strike) {
+                    case 0:
+                        ballStrikeConstant = TWO_BALL;
+                        break;
+                    case 1:
+                        ballStrikeConstant = TWO_BALL_ONE_STRIKE;
+                        break;
+                }
+                break;
+            case 3:
+                ballStrikeConstant = THREE_BALL;
+                break;
         }
+
         return ballStrikeConstant;
     }
 }
