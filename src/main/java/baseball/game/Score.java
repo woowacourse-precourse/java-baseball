@@ -1,9 +1,5 @@
 package baseball.game;
 
-import java.util.stream.IntStream;
-
-import static baseball.config.GameConstants.BASEBALL_NUMBER_LENGTH;
-
 /**
  * 점수 계산의 책임을 담당하는 클래스
  */
@@ -12,10 +8,9 @@ public final class Score {
     private final Strike strike;
 
     private Score(Digits player, Digits computer) {
-        int strikeCount = calculateStrike(player, computer);
-        int ballCount = calculateBall(player, computer);
-        this.ball = Ball.from(ballCount);
-        this.strike = Strike.from(strikeCount);
+        ScoreCalculator scoreCalculator = ScoreCalculator.create(player, computer);
+        this.ball = scoreCalculator.getBall();
+        this.strike = scoreCalculator.getStrike();
     }
 
     private Score() {
@@ -41,42 +36,6 @@ public final class Score {
      */
     public static Score ZERO() {
         return new Score();
-    }
-
-
-    private int calculateStrike(Digits player, Digits computer) {
-        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0,
-                (totalStrike, index) -> totalStrike + updateTotalStrikeCount(player, computer, index));
-    }
-
-    private int updateTotalStrikeCount(Digits player, Digits computer, int index) {
-        if (isStrike(player, computer, index)) {
-            return 1;
-        }
-        return 0;
-    }
-
-    private boolean isStrike(Digits player, Digits computer, int index) {
-        return player.getDigitInIndex(index) == computer.getDigitInIndex(index);
-    }
-
-    private int calculateBall(Digits player, Digits computer) {
-        return IntStream.range(0, BASEBALL_NUMBER_LENGTH).reduce(0,
-                (totalBall, index) -> totalBall + updateTotalBallCount(player, computer, index));
-    }
-
-    private int updateTotalBallCount(Digits player, Digits computer, int index) {
-        if (isBall(player, computer, index)) {
-            return 1;
-        }
-        return 0;
-    }
-
-    private boolean isBall(Digits player, Digits computer, int index) {
-        if (isStrike(player, computer, index)) {
-            return false;
-        }
-        return computer.contains(player.getDigitInIndex(index));
     }
 
     /**
