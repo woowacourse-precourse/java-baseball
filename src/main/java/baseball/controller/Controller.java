@@ -27,14 +27,21 @@ public class Controller {
         user.setUserNumeralList(userNumeralInputList);
     }
     public List<Integer> toList(String userInput){
+        checkInputValidation(userInput);
+
         List<Integer> userInputList = new ArrayList<>();
         for (int i = 0; i < userInput.length(); i++){
             userInputList.add(userInput.charAt(i) - '0');
         }
+
         return userInputList;
     }
 
-    public void checkInputValidation(String userInput){
+    public Game.GameState getGameState(){
+        return game.getGameState();
+    }
+
+    private void checkInputValidation(String userInput){
         try {
             if (userInput.length() != Game.ANSWER_LENGTH){
                 throw new IllegalArgumentException();
@@ -49,10 +56,9 @@ public class Controller {
             }
         }
         catch (IllegalArgumentException e){
-
+            throw new IllegalArgumentException();
         }
     }
-
 
     private boolean hasDuplicate(String userInput){
         HashSet<Character> hashSet = new HashSet<>();
@@ -74,6 +80,7 @@ public class Controller {
         }
         return false;
     }
+
 
 
 

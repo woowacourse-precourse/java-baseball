@@ -12,6 +12,10 @@ public class Game {
     }
 
     public GameState getGameState() {
-        return this.gameState;
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 }
