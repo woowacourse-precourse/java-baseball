@@ -5,13 +5,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
-    public static void main(String[] args) {
-        List<Integer> computer = new ArrayList<>();
-        getComputerNumber(computer);
+    public static void main(String[] args) throws IllegalArgumentException {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println(computer);
+        List<Integer> computer = new ArrayList<>();
 
         while (true) {
+            getComputerNumber(computer);
+
             List<Integer> user = new ArrayList<>();
             System.out.print("숫자를 입력해주세요 : ");
             String userNumber = Console.readLine();
@@ -20,7 +20,7 @@ public class Application {
                 checkAdequateNumber(userNumber);
                 addUserNumber(user, userNumber);
             } catch (IllegalArgumentException e) {
-                return;
+                throw new IllegalArgumentException();
             }
 
             Count c = new Count();
@@ -34,15 +34,15 @@ public class Application {
                 return;
             }
             if (answer == 1) {
-                continue;
+                computer.clear();
             } else if (answer == 2) {
                 break;
             }
         }
     }
 
-    static void addUserNumber(List<Integer> user, String userNumber) {
-        for (int i = 0; i < userNumber.length(); i++) {
+    static void addUserNumber(List<Integer> user, String userNumber) throws IllegalArgumentException {
+        for (int i = 0; i < 3; i++) {
             int n = Character.getNumericValue(userNumber.charAt(i));
             if (checkOverlap(user, n)) {
                 user.add(n);
@@ -51,7 +51,7 @@ public class Application {
     }
 
     static void checkAdequateNumber(String userNumber) throws IllegalArgumentException {
-        for (int i = 0; i < userNumber.length(); i++) {
+        for (int i = 0; i < 3; i++) {
             int n = Character.getNumericValue(userNumber.charAt(i));
             if (n < 1 || n > 9) {
                 throw new IllegalArgumentException();
@@ -136,7 +136,7 @@ class Count {
             printStrike(this.strike);
             System.out.println();
         }
-        return this.strike;
+        return 3;
     }
 
     static int restartOrExit() throws IllegalArgumentException {
