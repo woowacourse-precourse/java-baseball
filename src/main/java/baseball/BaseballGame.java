@@ -15,15 +15,17 @@ public class BaseballGame {
             if (comAnswer.indexOf(randomInt) == -1)
                 comAnswer.add(randomInt);
         }
-
-        System.out.println(comAnswer);
     }
 
-    private ArrayList<Integer> inputAnswer() {
+    public ArrayList<Integer> inputAnswer() {
         ArrayList<Integer> userAnswer = new ArrayList<>();
 
         String line = Console.readLine();
         char[] chars = line.toCharArray();
+
+        // 길이 검사 >> 만약 3이 아니면
+        if (chars.length != 3)
+            throw new IllegalArgumentException();
 
         for (char c : chars) {
             // 숫자 여부 검사
@@ -31,6 +33,9 @@ public class BaseballGame {
                 throw new IllegalArgumentException();
 
             int num = Character.getNumericValue(c);
+            // 범위 검사 (1 ~ 9)
+            if (num < 1)
+                throw new IllegalArgumentException();
             // 중복값 검사
             if (userAnswer.indexOf(num) != -1)
                 throw new IllegalArgumentException();
@@ -57,6 +62,30 @@ public class BaseballGame {
 
         return 0;
     }
+
+
+    public int[] checkAnswer(ArrayList<Integer> userAnswer) {
+        int[] result = {0, 0};
+
+        for (int i = 0; i < 3; i ++) {
+            int num = userAnswer.get(i);
+            // 자리수별로 스트라이크, 볼 판별
+            int status = checkValue(num, i);
+
+            // 결과 저장
+            switch (status) {
+                case 2:
+                    result[0] += 1;
+                    break;
+                case 1:
+                    result[1] += 1;
+                    break;
+            }
+        }
+
+        return result;
+    }
+
 
 }
 
