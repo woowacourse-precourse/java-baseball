@@ -154,4 +154,15 @@ public class Application {
 
         printGameEnd();
     }
+
+    public static int restartOrNot(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        String Input = Console.readLine();
+        int restartChoice = Integer.parseInt(Input);
+
+        if(restartChoice != 1 && restartChoice != 2)
+            throw new IllegalArgumentException("재시작 여부 입력값이 잘못되었습니다.");
+
+        return restartChoice;
+    }
 }
