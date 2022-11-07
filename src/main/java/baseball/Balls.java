@@ -18,12 +18,6 @@ public class Balls {
 		initBalls(numbers);
 	}
 
-	private void initBalls(final List<Integer> numbers) {
-		for (int i = 0; i < numbers.size(); i++) {
-			balls.add(new Ball(numbers.get(i), i+1));
-		}
-	}
-
 	private void validateSize(final List<Integer> numbers) {
 		if (numbers.size() != BALL_NUMBERS_SIZE) {
 			throw new IllegalArgumentException("야구 번호는 3개만 가능합니다.");
@@ -37,12 +31,10 @@ public class Balls {
 		}
 	}
 
-	public BallStatus compareTo(final Ball other) {
-		return balls.stream()
-			.map(ball -> ball.compareTo(other))
-			.filter(BallStatus::isStrikeOrBall)
-			.findFirst()
-			.orElse(BallStatus.NOTHING);
+	private void initBalls(final List<Integer> numbers) {
+		for (int i = 0; i < numbers.size(); i++) {
+			balls.add(new Ball(numbers.get(i), i+1));
+		}
 	}
 
 	public CompareResult compareTo(final Balls other) {
@@ -52,5 +44,13 @@ public class Balls {
 			result.addResult(other.compareTo(ball));
 		}
 		return result;
+	}
+
+	public BallStatus compareTo(final Ball other) {
+		return balls.stream()
+			.map(ball -> ball.compareTo(other))
+			.filter(BallStatus::isStrikeOrBall)
+			.findFirst()
+			.orElse(BallStatus.NOTHING);
 	}
 }
