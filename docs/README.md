@@ -25,7 +25,7 @@
 - Computer 클래스
   - [x] random 값을 생성하는 기능
   - [x] int 값을 character로 만드는 기능
-- CompareTwoList 클래스
+- Referee 클래스
   - [x] 두 리스트 비교
 - Output 클래스
   - [x] 받은 리스트로 출력하는 기능
