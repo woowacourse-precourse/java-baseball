@@ -40,7 +40,7 @@ public class Application {
             int strikeCount = ball.getStrike();
             int ballCount = ball.getBall();
 
-            game.printStrikeAndBall(strikeCount, ballCount);
+            StrikeBallUtil.printStrikeAndBall(strikeCount, ballCount);
 
             if (game.isCorrectAllNumber(strikeCount)) {
                 System.out.println(GAME_FINISH);
