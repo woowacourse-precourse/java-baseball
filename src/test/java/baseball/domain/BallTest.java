@@ -20,4 +20,13 @@ class BallTest {
         assertThatThrownBy(() -> new Ball(10))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("숫자가 같은 Ball은 같다.")
+    void equalTest() {
+        Ball first = new Ball(1);
+        Ball second = new Ball(1);
+
+        assertThat(first).isEqualTo(second);
+    }
 }
