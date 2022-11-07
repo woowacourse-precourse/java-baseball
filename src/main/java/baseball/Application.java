@@ -128,4 +128,10 @@ public class Application {
     private static boolean isRestartGame(int userSelect) {
         return userSelect == 1;
     }
+
+    private static void validateBaseballNumber(String baseballNumber) throws IllegalArgumentException {
+        if (baseballNumber.length() != 3) {
+            throw new IllegalArgumentException("올바른 3자리의 수를 입력해주세요.");
+        }
+    }
 }
