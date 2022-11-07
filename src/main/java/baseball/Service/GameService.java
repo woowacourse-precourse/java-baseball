@@ -43,6 +43,18 @@ public class GameService {
         hint.setGameResult(List.of(strike, ball));
     }
 
+    public boolean checkIsAnswer() {
+        return hint.getIsAnswer();
+    }
+
+    public void showResult() {
+        hint.printResult();
+    }
+
+    public void showEndMessage() {
+        hint.printEndMessage();
+    }
+
 
     public Player getPlayer() {
         return player;
