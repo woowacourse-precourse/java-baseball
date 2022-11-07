@@ -1,6 +1,5 @@
 package baseball.game;
 
-import java.util.List;
 import java.util.Map;
 
 public class Game {
@@ -54,18 +53,18 @@ public class Game {
     }
 
     private void printResult(Ball userBall, Ball computerBall) {
-        Map<String, Integer> result = ballReader.getStrikeAndBall(userBall, computerBall);
+        Map<ResultOfBall, Integer> result = ballReader.getStrikeAndBall(userBall, computerBall);
         if (result.isEmpty()) {
             System.out.printf(NOTHING_MESSAGE);
         }
         if (result.size() == RESULT_HAVE_BALL_AND_STRIKE) {
-            System.out.printf(BALL_AND_STRIKE_MESSAGE, result.get("STRIKE"), result.get("BALL"));
+            System.out.printf(BALL_AND_STRIKE_MESSAGE, result.get(ResultOfBall.STRIKE), result.get(ResultOfBall.BALL));
         }
-        if (result.size() == RESULT_HAVE_ONLY_BALL_OR_STRIKE && result.containsKey("STRIKE")) {
-            System.out.printf(STRIKE_MESSAGE, result.get("STRIKE"));
+        if (result.size() == RESULT_HAVE_ONLY_BALL_OR_STRIKE && result.containsKey(ResultOfBall.STRIKE)) {
+            System.out.printf(STRIKE_MESSAGE, result.get(ResultOfBall.STRIKE));
         }
-        if (result.size() == RESULT_HAVE_ONLY_BALL_OR_STRIKE && result.containsKey("BALL")) {
-            System.out.printf(BALL_MESSAGE, result.get("BALL"));
+        if (result.size() == RESULT_HAVE_ONLY_BALL_OR_STRIKE && result.containsKey(ResultOfBall.BALL)) {
+            System.out.printf(BALL_MESSAGE, result.get(ResultOfBall.BALL));
         }
     }
 
