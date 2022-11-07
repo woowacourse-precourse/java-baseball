@@ -24,6 +24,17 @@ public class Application {
 
 class Game {
 
+    private static List<Integer> gameAnswer;
+
+    Game() {
+        gameAnswer = getGameRandomNumber();
+    }
+
+    public static List<Integer> getGameAnswer() {
+        return gameAnswer;
+    }
+
+
     public List<Integer> getGameRandomNumber() {
 
         // 3개의 무작위 난수를 중복 없이 뽑는다.

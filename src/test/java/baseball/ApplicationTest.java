@@ -29,6 +29,7 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
     @Test
     void 게임랜덤테스트() {
         Game game = new Game();
@@ -36,14 +37,31 @@ class ApplicationTest extends NsTest {
         List<Integer> dupCheck = new ArrayList<>();
         List<Integer> answer = game.getGameRandomNumber();
         // 겹치는 경우를 제외하고 dupCheck 리스트에 원소를 넣는다.
-        for (int number: answer){
-            if (!dupCheck.contains(number)){
+        for (int number : answer) {
+            if (!dupCheck.contains(number)) {
                 dupCheck.add(number);
             }
         }
 
         assertThat(answer).isEqualTo(dupCheck);
     }
+
+    @Test
+    void 게임생성자테스트() {
+        Game game = new Game();
+
+        List<Integer> dupCheck = new ArrayList<>();
+        List<Integer> answer = game.getGameAnswer();
+
+        for (int number : answer) {
+            if (!dupCheck.contains(number)) {
+                dupCheck.add(number);
+            }
+        }
+
+        assertThat(answer).isEqualTo(dupCheck);
+    }
+
 
     @Override
     public void runMain() {
