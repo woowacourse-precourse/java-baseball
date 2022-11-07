@@ -28,4 +28,15 @@ public class Service {
         }
         return randomNumbers;
     }
+
+    private int getNumberOfStrikes(List<String> questionNumbers, List<String> answerNumbers) {
+        int strikeCount = 0;
+        for (int numbersIndex = 0; questionNumbers.size() > numbersIndex; numbersIndex++) {
+
+            if (answerNumbers.get(numbersIndex).equals(questionNumbers.get(numbersIndex))) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 }
