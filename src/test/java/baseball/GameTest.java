@@ -7,9 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class GameTest {
-
     private Game game;
-
     @BeforeEach
     void createGame() {
         game = new Game();
@@ -18,7 +16,6 @@ class GameTest {
     void isInputNumber1Or2() {
         game.setInput("1");
         assertTrue(game.inputArrList.contains(game.input));
-
     }
     @Test
     void isInputNumberNot1Nor2() {
@@ -26,6 +23,4 @@ class GameTest {
             game.setInput("3");
         });
     }
-
-
 }

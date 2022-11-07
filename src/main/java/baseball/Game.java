@@ -23,6 +23,8 @@ public class Game {
     public String input;
     public List<String> inputArrList;
     private Computer computer;
+    private List<String> randomDigits;
+    private List<String> userDigits;
 
     public Game() {
     }
@@ -45,6 +47,8 @@ public class Game {
         while(!quit) {
             user.setUserNumber();
             userNumber = user.getUserNumber();
+            setDigits();
+
 
             initializeBallCount();
             calculateStrike();
@@ -103,36 +107,33 @@ public class Game {
         System.out.println(result);
     }
 
+    private void setDigits() {
+        randomDigits = getSplitList(randomNumber);
+        userDigits = getSplitList(userNumber);
+    }
+
     private void calculateBall() {
-        List<String> randomDigits = getSplitList(randomNumber);
-        List<String> userDigits = getSplitList(userNumber);
         for(String userDigit: userDigits) {
             boolean isContained = randomDigits.contains(userDigit);
-            int randomIndex = randomDigits.indexOf(userDigit);
-            int userIndex = userDigits.indexOf(userDigit);
-            boolean isBall = randomIndex != userIndex;
-            if(isContained && isBall) {
+            boolean isBall = randomDigits.indexOf(userDigit) != userDigits.indexOf(userDigit);
+            if(isBall && isContained) {
                 ball++;
             }
         }
     }
 
     private void calculateStrike() {
-        List<String> randomDigits = getSplitList(randomNumber);
-        List<String> userDigits = getSplitList(userNumber);
         for(String userDigit: userDigits) {
             boolean isContained = randomDigits.contains(userDigit);
-            int randomIndex = randomDigits.indexOf(userDigit);
-            int userIndex = userDigits.indexOf(userDigit);
-            boolean isStrike = randomIndex == userIndex;
-            if(isContained && isStrike) {
+            boolean isStrike = randomDigits.indexOf(userDigit) == userDigits.indexOf(userDigit);
+            if(isStrike && isContained) {
                 strike++;
             }
         }
     }
 
-    private List<String> getSplitList(int randomNumber) {
-        return Arrays.asList(String.valueOf(randomNumber).split(""));
+    private List<String> getSplitList(int number) {
+        return Arrays.asList(String.valueOf(number).split(""));
     }
 
     private void initializeBallCount() {
