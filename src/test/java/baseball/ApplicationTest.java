@@ -1,7 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -20,6 +26,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 랜덤값_중복_여부() {
+        List<Integer> computerRandom = Application.notDuplicatedThreeRandomValue();
+        Set<Integer> deduplicationRandomList = computerRandom.stream().collect(Collectors.toSet());
+
+        assertThat(computerRandom.size()).isEqualTo(deduplicationRandomList.size());
+    }
+    
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
