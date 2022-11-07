@@ -22,4 +22,8 @@ public class TurnScore {
     public int getStrikes() {
         return this.strikes;
     }
+
+    public void setBalls(int balls) {
+        this.balls = balls;
+    }
 }
