@@ -22,6 +22,13 @@ public class BallCount {
         return ball;
     }
 
+    public boolean isFinished() {
+        if (strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         if (getBall() == 0 && getStrike() == 0) {
