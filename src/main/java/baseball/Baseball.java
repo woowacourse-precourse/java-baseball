@@ -116,9 +116,21 @@ public class Baseball {
             }
         }
 
-        return "";
+        return getResult(ballCount, strikeCount);
     }
 
+    private String getResult(int ballCount, int strikeCount) {
+        if (strikeCount == 3) {
+            return Message.CLEAR;
+        } else if (ballCount == 0 && strikeCount == 0) {
+            return Message.NOTHING;
+        } else if (ballCount == 0) {
+            return strikeCount + Message.STRIKE;
+        } else if (strikeCount == 0) {
+            return ballCount + Message.BALL;
+        }
+        return ballCount + Message.BALL + " " + strikeCount + Message.STRIKE;
+    }
 
     public void play() {
         System.out.println(Message.START);
@@ -126,7 +138,8 @@ public class Baseball {
         do {
             System.out.print(Message.INPUT);
             userNumber = inputNumber();
-            compare();
+            result = compare();
+            System.out.println(result);
         } while (!result.equals(Message.CLEAR));
     }
 }
