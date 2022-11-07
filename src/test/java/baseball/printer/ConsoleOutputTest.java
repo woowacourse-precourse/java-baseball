@@ -1,7 +1,7 @@
 package baseball.printer;
 
 import baseball.console.ConsoleOutput;
-import baseball.core.dto.BallStrikeDto;
+import baseball.core.BallStrike;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -69,7 +69,7 @@ class ConsoleOutputTest {
         @DisplayName("낫싱")
         void case1() {
             //given
-            BallStrikeDto dto = new BallStrikeDto(0, 0);
+            BallStrike dto = new BallStrike(0, 0);
             String expected = "낫싱\n";
 
             //when
@@ -83,7 +83,7 @@ class ConsoleOutputTest {
         @DisplayName("1볼")
         void case2() {
             //given
-            BallStrikeDto dto = new BallStrikeDto(1, 0);
+            BallStrike dto = new BallStrike(1, 0);
             String expected = "1볼\n";
 
             //when
@@ -97,7 +97,7 @@ class ConsoleOutputTest {
         @DisplayName("1스트라이크")
         void case3() {
             //given
-            BallStrikeDto dto = new BallStrikeDto(0, 1);
+            BallStrike dto = new BallStrike(0, 1);
             String expected = "1스트라이크\n";
 
             //when
@@ -111,7 +111,7 @@ class ConsoleOutputTest {
         @DisplayName("1볼 1스트라이크")
         void case4() {
             //given
-            BallStrikeDto dto = new BallStrikeDto(1, 1);
+            BallStrike dto = new BallStrike(1, 1);
             String expected = "1볼 1스트라이크\n";
 
             //when
@@ -125,7 +125,7 @@ class ConsoleOutputTest {
         @DisplayName("2볼 1스트라이크")
         void case5() {
             //given
-            BallStrikeDto dto = new BallStrikeDto(2, 1);
+            BallStrike dto = new BallStrike(2, 1);
             String expected = "2볼 1스트라이크\n";
 
             //when
@@ -139,7 +139,7 @@ class ConsoleOutputTest {
         @DisplayName("3스트라이크")
         void case6() {
             //given
-            BallStrikeDto dto = new BallStrikeDto(0, 3);
+            BallStrike dto = new BallStrike(0, 3);
             String expected = "3스트라이크\n";
 
             //when

@@ -4,7 +4,7 @@ import baseball.console.ConsoleOutput;
 import baseball.core.StatusCode;
 import baseball.core.ComputerOpponent;
 import baseball.core.Player;
-import baseball.core.dto.BallStrikeDto;
+import baseball.core.BallStrike;
 import baseball.core.RandomNumberGenerator;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class BaseballGame {
     }
 
     private void playBaseball() {
-        BallStrikeDto answer;
+        BallStrike answer;
         do {
             inputThreeNumbers();
             answer = processAnswering();
@@ -49,14 +49,14 @@ public class BaseballGame {
         }
     }
 
-    private BallStrikeDto processAnswering() {
+    private BallStrike processAnswering() {
         List<Integer> threeNumbers = player.sayThreeNumbers();
-        BallStrikeDto answer = opponent.answer(threeNumbers);
+        BallStrike answer = opponent.answer(threeNumbers);
         console.printResultMessage(answer);
         return answer;
     }
 
-    private boolean isWrongAnswer(BallStrikeDto answer) {
+    private boolean isWrongAnswer(BallStrike answer) {
         return answer.getStrikeCount() != 3;
     }
 
