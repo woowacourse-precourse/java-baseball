@@ -16,7 +16,7 @@ public class OutputPrint {
     }
 
     public void printRequest() {
-        System.out.println(INPUT_REQUEST);
+        System.out.print(INPUT_REQUEST);
     }
 
     public void printGameResult(int[] processedData) {
