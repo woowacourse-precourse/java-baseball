@@ -80,6 +80,17 @@ public class StringTest {
     }
 
     @Test
+    void 게임_반복_여부(){
+        assertThat(false).isEqualTo(BaseballGame.exit("1"));
+        assertThat(true).isEqualTo(BaseballGame.exit("2"));
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BaseballGame.userInputValidator("1hi4"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+    }
+
+    @Test
     void split_메서드로_주어진_값을_구분() {
         String input = "1,2";
         String[] result = input.split(",");
