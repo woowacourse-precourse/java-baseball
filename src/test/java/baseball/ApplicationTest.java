@@ -60,6 +60,20 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Test
+    void 볼_스트라이크_검사함수_테스트(){
+
+        assertThat(Application.compareInput("123", "124")).isEqualTo("2스트라이크");
+        assertThat(Application.compareInput("123", "143")).isEqualTo("2스트라이크");
+        assertThat(Application.compareInput("123", "341")).isEqualTo("2볼");
+        assertThat(Application.compareInput("123", "781")).isEqualTo("1볼");
+        assertThat(Application.compareInput("123", "213")).isEqualTo("2볼 1스트라이크");
+        assertThat(Application.compareInput("123", "132")).isEqualTo("2볼 1스트라이크");
+        assertThat(Application.compareInput("123", "456")).isEqualTo("낫싱");
+        assertThat(Application.compareInput("123", "789")).isEqualTo("낫싱");
+
+    }
+
 
 
     @Override
