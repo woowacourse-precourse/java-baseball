@@ -1,5 +1,9 @@
 package baseball;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Revert {
 
     public char[] revertStringToCharArray(String input) {
@@ -22,5 +26,11 @@ public class Revert {
             intArr[i] = Integer.parseInt(String.valueOf(charArr[i]));
         }
         return intArr;
+    }
+
+    public List<Integer> revertIntArrayToList(int[] array){
+        return Arrays.stream(array)
+                .boxed()
+                .collect(Collectors.toList());
     }
 }

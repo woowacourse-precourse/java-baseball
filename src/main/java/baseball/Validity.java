@@ -25,6 +25,7 @@ public class Validity {
     }
 
     public static boolean isLength3(int[] array) {
+
         return (array.length == 3);
     }
 

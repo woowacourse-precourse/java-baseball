@@ -1,10 +1,12 @@
 package baseball;
 
-import java.util.Arrays;
+
+import java.util.List;
+import java.util.Objects;
 
 public class InGame {
-    public static int strike=0;
-    public static int ball=0;
+    private int ball=0;
+    private int strike=0;
 
     public void afterGameStart() {
         gameLoop();
@@ -16,67 +18,51 @@ public class InGame {
         Validity valid = new Validity();
         Revert revert = new Revert();
 
-        int[] RandomizedArray = computer.makeRandomizedArray();
-        System.out.println(Arrays.toString(RandomizedArray));
-
         while (strike < 3) {
-            strike = 0;
-            ball = 0;
+            refreshBallStrike();
+            String InputString=computer.descriptionAndInput("숫자를 입력해주세요:");
+            valid.isInputNumberValid(revert.revertStringToCharArray(InputString));
+            ifValidAddBallStrike(computer.makeRandomizedArray(), revert.revertIntArrayToList(revert.revertCharArrToIntArr(revert.revertStringToCharArray(InputString))));
 
-            String InputString = computer.descriptionAndInput("숫자를 입력해주세요:");
-            char[] InputCharArray = revert.revertStringToCharArray(InputString);
-            valid.isInputNumberValid(InputCharArray);
-
-            ifNumberAndLocationEqualsAddStrike(RandomizedArray, revert.revertCharArrToIntArr(InputCharArray));
-            ifNumberEqualsAddBall(RandomizedArray, revert.revertCharArrToIntArr(InputCharArray));
-            ball = ball - strike;
-
-            printCaseBeforeSuccess();
+            printCaseBeforeSuccess(ball, strike);
             printSuccess();
         }
     }
+    public void refreshBallStrike(){
+        ball =0;
+        strike = 0;
+    }
+
     public void printSuccess(){
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
     }
 
-    public void ifNumberAndLocationEqualsAddStrike(int[] RandomNumber, int[] inputNumber) {
+    public void ifValidAddBallStrike(List<Integer> randomNumbers, List<Integer> inputNumber) {
 
-        for (int i = 0; i < RandomNumber.length; i++) {
-            if (RandomNumber[i] == inputNumber[i]) {
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            if (Objects.equals(randomNumbers.get(i), inputNumber.get(i))) {
                 strike++;
             }
-        }
-    }
-
-    public void ifNumberEqualsAddBall(int[] RandomNumber, int[] inputNumber) {
-
-        for (int i = 0; i < RandomNumber.length; i++) {
-            for (int j = 0; j < RandomNumber.length; j++) {
-                AddBallIfEquals(RandomNumber[i], inputNumber[j]);
+            else if(randomNumbers.contains(inputNumber.get(i))){
+                ball++;
             }
         }
-
-    }
-    public void AddBallIfEquals(int RandomNumber, int InputNumber) {
-        if (RandomNumber == InputNumber) {
-            ball++;
-        }
     }
 
-    public void printCaseBeforeSuccess() {
+    public void printCaseBeforeSuccess(int ball, int strike) {
         if ((ball == 0) && (strike == 0)) {
             System.out.println("낫싱");
         }
         if ((ball != 0) && (strike != 0)) {
-            System.out.println(ball + " 볼 " + strike + " 스트라이크");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
         if ((strike == 0) && (ball != 0)) {
-            System.out.println(ball + " 볼");
+            System.out.println(ball + "볼");
         }
         if ((ball == 0) && (strike != 0)) {
-            System.out.println(strike + " 스트라이크");
+            System.out.println(strike + "스트라이크");
         }
     }
 

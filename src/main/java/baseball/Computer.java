@@ -9,21 +9,22 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
 
+
     public String descriptionAndInput(String description) {
         System.out.print(description);
 
         return Console.readLine();
     }
 
-    public int[] makeRandomizedArray() {
-        List<Integer> numbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-
-        int[] RandomArray = new int[3];
-        for (int i = 0; i < 3; i++) {
-            RandomArray[i] = Randoms.pickNumberInList(numbers);
-            numbers.remove(Integer.valueOf(RandomArray[i]));
+    public List<Integer> makeRandomizedArray() {
+        List<Integer> RandomizedArr = new ArrayList<>();
+        while(RandomizedArr.size() <3){
+            int randomizedNumber = Randoms.pickNumberInRange(1, 9);
+            if(!RandomizedArr.contains(randomizedNumber)){
+                RandomizedArr.add(randomizedNumber);
+            }
         }
-        return RandomArray;
+        return RandomizedArr;
     }
 
     public void printStartJavaBaseball() {
