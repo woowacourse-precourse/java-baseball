@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import net.bytebuddy.pool.TypePool;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -11,29 +10,29 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void end_and_restart_correctly() {
+    void normal_game_Test() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    run("246", "315", "513", "135", "2");
+                    assertThat(output()).contains("낫싱", "2볼 1스트라이크", "3볼", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void Input_Exception_Test() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> runException("246", "135", "1", "597", "589", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
                 },
                 1, 3, 5, 5, 8, 9
         );
     }
 
     @Test
-    void end_and_restart_but_hasException() {
-        assertRandomNumberInRangeTest(
-                () -> {
-                    assertThatThrownBy(() -> runException("246", "135", "1", "597", "589", "3"))
-                            .isInstanceOf(IllegalArgumentException.class);
-                },
-                5, 7, 9, 2, 5, 3
-        );
-    }
-
-    @Test
-    void exception_test_overSize() {
+    void Exception_Test_OverSize() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -41,13 +40,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void exception_test_subSize() {
+    void Exception_Test_SubSize() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
 
     @Override
     public void runMain() {
