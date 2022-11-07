@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트1() {
+    void 사용자_숫자_입력_예외_테스트1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트2() {
+    void 사용자_숫자_입력_예외_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("   "))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -40,7 +40,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트3() {
+    void 사용자_숫자_입력_예외_테스트3() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("3  "))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -48,13 +48,66 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트4() {
+    void 사용자_숫자_입력_예외_테스트4() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("  4"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "11"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "22"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , " "), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "1 "), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , " 2"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트6() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "aa"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
