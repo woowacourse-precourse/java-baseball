@@ -16,4 +16,25 @@ public class GameInfo {
     public void increaseStrike() {
         strike++;
     }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
+    public String getResult() {
+        String result = "";
+        if (getBall() == 0 && getStrike() == 0)
+            result += "낫싱";
+        else {
+            if (getBall() != 0)
+                result += getBall() + "볼 ";
+            if (getStrike() != 0)
+                result += getStrike() + "스트라이크";
+        }
+        return result;
+    }
 }

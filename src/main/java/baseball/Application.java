@@ -37,7 +37,14 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String num = Console.readLine();
+
             GameInfo gameInfo = getGameInfo(computer, num);
+            String result = gameInfo.getResult();
+            System.out.println(result);
+            if (result.equals("3스트라이크")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
         }
     }
 
