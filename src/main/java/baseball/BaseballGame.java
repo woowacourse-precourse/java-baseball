@@ -1,6 +1,6 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class BaseballGame {
 
     private void getPlayerNumber(){
         player = new ArrayList<>();
-        String input = readLine();
+        String input = Console.readLine();
 
         checkLengthException(input);
         checkDuplicationException(input);
@@ -94,7 +94,7 @@ public class BaseballGame {
     }
 
     private void getPlayerOption(){
-        String input = readLine();
+        String input = Console.readLine();
         checkInvalidOptionException(input);
 
         if(input.equals("1")){
