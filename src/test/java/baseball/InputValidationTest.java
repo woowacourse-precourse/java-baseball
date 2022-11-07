@@ -43,5 +43,16 @@ public class InputValidationTest {
     }
   }
 
+  @Test
+  void 입력값에_0이_포함되어_있으면_예외를_던지는가_1() {
+    try {
+      InputValidator validator = new PlayingInputValidator();
+      String userInput = "120";
+      validator.validate(userInput);
+    } catch (IllegalArgumentException e) {
+      assertEquals(ExceptionMessages.INPUT_IS_NOT_DIGIT.getExceptionMessage(), e.getMessage());
+    }
+  }
+
 
 }
