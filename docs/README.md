@@ -31,7 +31,7 @@
 ### model
 
 1. GameNumber
-- [ ]  randomNumber 데이터 저장
+- [ ]  computerNumber 데이터 저장
 - [x]  inputNumber 데이터 저장 (문자열 형태)
 - [x]  playerNumber 데이터 저장 (inputNumber 숫자로 변환)
    - [x]  데이터 유효성 검사기 체크 
