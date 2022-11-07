@@ -5,6 +5,7 @@ public class Constants {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
     public static final int ZERO = 0;
+    public static final int INT_TO_CHAR_CONVERSION_CONSTANT = 48;
     public static final String GAME_START_MSG = "숫자 야구 게임을 시작합니다.";
     public static final String NUMBER_INPUT_MSG = "숫자를 입력해 주세요 : ";
     public static final String GAME_END_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";

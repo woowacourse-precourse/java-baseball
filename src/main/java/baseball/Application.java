@@ -38,8 +38,8 @@ public class Application {
             String userInput = Console.readLine();
             System.out.println("컴퓨터의 숫자 : " + computerNumberResult);
             checkedValidate(userInput);
-            strikeResult = countStrike(userInput, computerNumberResult);
             ballResult = countBall(userInput, computerNumberResult);
+            strikeResult = countStrike(userInput, computerNumberResult);
             if (!checkedNotThing(ballResult, strikeResult)) {
                 if (ballResult > ZERO) {
                     System.out.print(ballResult+ "볼 ");
@@ -121,7 +121,7 @@ public class Application {
      */
     static int countBall (String userInput, String computerInput) {
         return (int) userInput.chars()
-                .map(value -> (char) value)
+                .map(value -> (char) value - INT_TO_CHAR_CONVERSION_CONSTANT)
                 .mapToObj(String::valueOf)
                 .filter(computerInput::contains)
                 .count() - countStrike(userInput,computerInput);
