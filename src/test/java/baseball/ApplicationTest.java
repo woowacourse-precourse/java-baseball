@@ -76,6 +76,14 @@ class ApplicationTest extends NsTest {
 		);
 	}
 
+	@Test
+	void 문자열_정수형으로_변환() {
+		int i = 0;
+		String string = "123";
+		int test = input.conversion(string,i);
+		assertThat(1).isEqualTo(test);
+	}
+
 	@Override
 	public void runMain() {
 		Application.main(new String[] {});
