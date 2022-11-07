@@ -19,7 +19,7 @@ public class Application {
         while (!strikeOut) {
             System.out.print(Message.PROMPT_FOR_NUMBER);
             String input = Console.readLine();
-            // TODO: getNumberFrom
+            List<Integer> user = Play.getNumberFrom(input);
             // TODO: getScore
             // TODO: printScore
             // TODO: update strikeOut
