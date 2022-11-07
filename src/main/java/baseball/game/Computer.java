@@ -13,7 +13,7 @@ public class Computer {
         this.targetNumbers = NumberFactory.createRandomNumbers();
     }
 
-    public ScoreBoard scoreCheck(List<Integer> requestNumbers){
+    public ScoreBoard scoreCheck(List<Integer> requestNumbers) {
         return ScoreCalculator.calculate(targetNumbers, requestNumbers);
     }
 }

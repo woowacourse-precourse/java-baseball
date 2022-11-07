@@ -12,5 +12,4 @@ public class User {
         String input = Console.readLine().strip();
         return StringConverter.toIntegerList(input);
     }
-
 }

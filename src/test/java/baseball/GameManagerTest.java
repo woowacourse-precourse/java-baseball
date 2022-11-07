@@ -35,8 +35,7 @@ public class GameManagerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Assertions.assertThatThrownBy(() -> GameManager.checkRestartGame())
-                .isInstanceOf(IllegalArgumentException.class)
+        Assertions.assertThatThrownBy(() -> GameManager.checkRestartGame()).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1 또는 2만 입력할 수 있습니다.");
     }
 }

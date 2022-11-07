@@ -1,6 +1,5 @@
 package baseball.game.utils;
 
-import baseball.game.utils.ScoreBoard;
 import java.util.List;
 
 public class ScoreCalculator {

@@ -1,10 +1,10 @@
 package missionuutils;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomsAPITest {
 

@@ -16,8 +16,7 @@ public class StringConverter {
 
     public static List<Integer> toIntegerList(String input) {
         checkChangeableToDigit(input);
-        return Arrays.stream(input.split("")).map(Integer::parseInt)
-                .collect(Collectors.toList());
+        return Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private static void checkChangeableToDigit(String input) {

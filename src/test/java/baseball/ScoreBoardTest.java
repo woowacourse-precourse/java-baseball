@@ -11,18 +11,18 @@ import org.junit.jupiter.api.Test;
 public class ScoreBoardTest {
 
     @Test
-    void 스코어보드_addBall_addStrike_테스트(){
+    void 스코어보드_addBall_addStrike_테스트() {
         ScoreBoard scoreBoard = new ScoreBoard();
 
         scoreBoard.addBall();
         scoreBoard.addBall();
         scoreBoard.addStrike();
 
-        Assertions.assertThat(scoreBoard.getBallAndStrike()).isEqualTo(Arrays.asList(2,1));
+        Assertions.assertThat(scoreBoard.getBallAndStrike()).isEqualTo(Arrays.asList(2, 1));
     }
 
     @Test
-    void 스코어보드_printBallAndStrike_테스트(){
+    void 스코어보드_printBallAndStrike_테스트() {
         ScoreBoard scoreBoard = new ScoreBoard();
 
         scoreBoard.addBall();
@@ -39,7 +39,7 @@ public class ScoreBoardTest {
     }
 
     @Test
-    void 스코어보드_printBallAndStrike_낫싱_테스트(){
+    void 스코어보드_printBallAndStrike_낫싱_테스트() {
         ScoreBoard scoreBoard = new ScoreBoard();
 
         OutputStream out = new ByteArrayOutputStream();

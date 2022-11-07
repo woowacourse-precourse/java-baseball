@@ -17,11 +17,11 @@ public class ScoreBoard {
         this.strike++;
     }
 
-    public List<Integer> getBallAndStrike(){
+    public List<Integer> getBallAndStrike() {
         return Arrays.asList(ball, strike);
     }
 
-    public boolean checkStrikeOut(){
+    public boolean checkStrikeOut() {
         if (strike == 3) {
             return true;
         }
