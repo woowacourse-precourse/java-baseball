@@ -43,7 +43,12 @@ public class Game {
     }
 
     private static void checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
-
+        if (secretNumber.get(index.intValue()).equals(number)) {
+            hitCount.set(0, hitCount.get(0)+1);
+        } else if (secretNumber.contains(number)) {
+            System.out.println(index + " " + number);
+            hitCount.set(1, hitCount.get(1)+1);
+        }
     }
 
 
