@@ -17,22 +17,22 @@ public class PlayerException {
         }
     }
 
-    public boolean isNotNumber(String input){
+    private boolean isNotNumber(String input){
         return !Pattern.matches("^[1-9]*$", input);
     }
 
-    public void wrongNumberException(){
+    private void wrongNumberException(){
         throw new IllegalArgumentException(WRONG_NUMBER_EXCEPTION);
     }
 
-    public boolean isNotThreeDigit(String input){
+    private boolean isNotThreeDigit(String input){
         return input.length() != LENGTH_LIMIT;
     }
-    public boolean containsZero(String input){
+    private boolean containsZero(String input){
         return input.contains("0");
     }
 
-    public boolean containsSameNumber(String input){
+    private boolean containsSameNumber(String input){
         return input.charAt(FIRST) == input.charAt(SECOND)
                 || input.charAt(SECOND) == input.charAt(THIRD)
                 || input.charAt(THIRD) == input.charAt(FIRST);
