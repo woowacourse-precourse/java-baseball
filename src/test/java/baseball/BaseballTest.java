@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.List;
@@ -84,9 +85,10 @@ public class BaseballTest {
         }
     }
 
-    @Test
-    void validateInputNumber_1에서_9까지의_숫자가_아닌_경우_예외_발생() {
-        assertThatThrownBy(() -> sut.validateInputNumber("120"))
+    @ParameterizedTest
+    @ValueSource(strings = {"120", "abc", "하이요", "뭐지?", "012"})
+    void validateInputNumber_1에서_9까지의_숫자가_아닌_경우_예외_발생(String source) {
+        assertThatThrownBy(() -> sut.validateInputNumber(source))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.");
     }
@@ -94,6 +96,14 @@ public class BaseballTest {
     @Test
     void validateInputNumber_정해진_자리수와_다른_숫자_입력_경우_예외_발생() {
         assertThatThrownBy(() -> sut.validateInputNumber("1234"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"111", "222", "333", "444", "555"})
+    void validateInputNumber_서로_다른_숫자가_아닌_입력_경우_예외_발생(String source) {
+        assertThatThrownBy(() -> sut.validateInputNumber(source))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(NUMBER_LIMIT + "자리의 서로 다른 숫자(1-9)를 입력하세요.");
     }
