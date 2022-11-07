@@ -98,4 +98,10 @@ public class Application {
         }
         return check;
     }
+    public static int isBall(List<Integer> strike, List<Integer> computer, Integer userValue) {
+        if (computer.contains(userValue) && !strike.contains(userValue)) {
+            return 1;
+        }
+        return 0;
+    }
 }
