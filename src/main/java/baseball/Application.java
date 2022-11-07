@@ -58,4 +58,14 @@ public class Application {
         return result;
     }
 
+    public static int getStrikeCnt(List<Integer> A, List<Integer> B) {
+        int result = 0;
+        for (int i = 0; i < A.size(); i++) {
+            if (A.get(i) == B.get(i)) {
+                result++;
+            }
+        }
+        return result;
+    }
+
 }
