@@ -22,4 +22,9 @@ public class Compare {
 		}
 		return strike;
 	}
+
+	public int countBall(List<Integer> computer, List<Integer> player) {
+		int ball = howMany(computer, player) - countStrike(computer, player);
+		return ball;
+	}
 }
