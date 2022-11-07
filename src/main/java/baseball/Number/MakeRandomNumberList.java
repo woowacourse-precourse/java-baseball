@@ -23,9 +23,4 @@ public class MakeRandomNumberList{
     public List<Integer> getRandomNumberList() {
         return randomNumberList;
     }
-
-    public void setRandomNumberList(List<Integer> randomNumberList) {
-        this.randomNumberList = randomNumberList;
-    }
-
 }
