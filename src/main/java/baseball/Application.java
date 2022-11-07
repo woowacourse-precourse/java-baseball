@@ -39,6 +39,8 @@ public class Application {
             return false;
         Set<Integer> eachNumber = new HashSet<>();
         for (int digit = 0; digit < userNumber.length(); digit++) {
+            if (userNumber.charAt(digit) < '1' || userNumber.charAt(digit) > '9')
+                return false;
             if (eachNumber.contains(userNumber.charAt(digit) - '0'))
                 return false;
             eachNumber.add(userNumber.charAt(digit) - '0');
