@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,9 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
-public class NumberBaseballGameTest {
+public class NumberBaseballGameTest extends NsTest {
 
     final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     final PrintStream standardOut = System.out;
@@ -487,5 +489,34 @@ public class NumberBaseballGameTest {
 
         assertThatThrownBy(() -> method.invoke(baseballGame))
                 .isInstanceOf(InvocationTargetException.class);
+    }
+
+    @Test
+    void 게임_실행_후_입력값이_범위를_넘어가면_예외가_발생한다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("014"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임_실행_후_입력길이가_3을_넘어가면_예외가_발생한다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("2134"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 게임_실행_후_입력값에_중복이_있으면_예외가_발생한다() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
     }
 }
