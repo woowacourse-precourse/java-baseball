@@ -27,6 +27,10 @@ public class BaseballNumber {
         this.computerNumber = number;
     }
 
+    public MatchResult match(String guessNumber){
 
+        MatchResult matchResult = new MatchResult(0,0);
+        return matchResult;
+    }
 }
 
