@@ -44,5 +44,7 @@ public class Game {
 
     public void endGame() {
         this.gameStatus = false;
+        this.gamehost = null;
+        this.player = null;
     }
 }
