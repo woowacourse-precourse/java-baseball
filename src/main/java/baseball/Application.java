@@ -9,12 +9,44 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        int opponentNum = generateOpponentNumber();
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (guessAnswer(opponentNum)){
+        while (startGame()) {
         }
 
         return;
+    }
+
+    public static boolean startGame() {
+        int opponentNum = generateOpponentNumber();
+
+        while (guessAnswer(opponentNum)) {
+        }
+
+        boolean shouldRestartGame = endGame();
+
+        return shouldRestartGame;
+    }
+
+    public static boolean endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        int inputNum;
+        try {
+            inputNum = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (!(inputNum == 1 || inputNum == 2)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (inputNum == 1) {
+            return true;
+        }
+        return false;
     }
 
     public static boolean guessAnswer(int opponentNum) {
@@ -22,6 +54,7 @@ public class Application {
         List<Integer> result = getResult(opponentNum, playerNum);
 
         boolean shouldGuessAgain = printResult(result);
+
         return shouldGuessAgain;
     }
 
@@ -74,6 +107,8 @@ public class Application {
     }
 
     private static int readPlayerNum() {
+        System.out.print("숫자를 입력해주세요 : ");
+
         int inputNum;
         try {
             inputNum = Integer.parseInt(Console.readLine());
