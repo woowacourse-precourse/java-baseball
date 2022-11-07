@@ -15,13 +15,13 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-        startGame();
+        playGame();
     }
 
     /**
-     * function to start a number baseball game.
+     * function to play a number baseball game.
      */
-    public static void startGame() {
+    public static void playGame() {
         List<Integer> computer = generateAnswer();
         boolean find = false;
 
@@ -38,8 +38,7 @@ public class Application {
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-
-
+    
     /**
      * Output the results of the game's execution
      * @param strike number of strike
