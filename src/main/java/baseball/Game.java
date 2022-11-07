@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -24,12 +25,13 @@ public class Game {
         return answer;
     }
 
-    public boolean isPlayingNewGame(String choice) throws IllegalArgumentException {
+    public boolean isPlayingNewGame() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = Console.readLine().trim();
+
         if (UserInputException.isIllegalChoice(choice)) {
             throw new IllegalArgumentException("잘못된 선택입니다.");
         }
-
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         if(choice.equals("1")){
             return true;
