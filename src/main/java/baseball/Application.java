@@ -43,5 +43,26 @@ public class Application {
 
     }
 
+    public static String compareInput(String answer, String input){
 
+        int strike = 0, ball=0;
+        for (int i = 0; i < 3; i++) {
+            if(answer.charAt(i)==input.charAt(i)){
+                strike++;
+            }else if(answer.contains(String.valueOf(input.charAt(i)))){
+                ball++;
+            }
+        }
+
+        if(ball>0 && strike>0){
+            return ball + "볼 " + strike+"스트라이크";
+        }
+        if(ball>0){
+            return ball+ "볼";
+        }
+        if(strike>0){
+            return strike+ "스트라이크";
+        }
+        return "낫싱";
+    }
 }
