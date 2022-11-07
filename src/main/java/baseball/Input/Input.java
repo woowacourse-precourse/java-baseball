@@ -8,14 +8,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Input {
-    private List<Integer> numbers = new ArrayList<>();
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    public void input() throws IllegalArgumentException  {
+    public List<Integer> input() throws IllegalArgumentException  {
         Print.inputMsg();
-
+        List<Integer> numbers;
         try {
             String userInput = Console.readLine();
             numbers = Stream.of(userInput.split(""))
@@ -26,6 +21,7 @@ public class Input {
 
         if (!valid(numbers))
             throw new IllegalArgumentException();
+        return numbers;
     }
 
     private Boolean valid(List<Integer> numbers){

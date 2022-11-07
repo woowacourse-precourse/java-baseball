@@ -9,12 +9,13 @@ import java.util.List;
 
 public class Game {
     private List<Integer> computers;
+    private List<Integer> userNumbers;
     private Boolean play;
     private Boolean correct;
-    private final Input user;
+    private final Input input;
 
-    public Game(Input user) {
-        this.user = user;
+    public Game(Input input) {
+        this.input = input;
         this.computers = new ArrayList<>();
         this.play = true;
         this.correct = false;
@@ -25,7 +26,7 @@ public class Game {
     }
 
     public List<Integer> getUserNumbers(){
-        return user.getNumbers();
+        return userNumbers;
     }
 
     public void answerIsCorrect(){
@@ -36,7 +37,7 @@ public class Game {
         while(play){
             init();
             while(!correct){
-                user.input();
+                userNumbers=input.input();
                 Print.score(new Score(this));
             }
             replay();
@@ -51,7 +52,7 @@ public class Game {
 
     public void replay(){
         Print.correct();
-        if (user.replay()){
+        if (input.replay()){
             correct = false;
             return;
         }
