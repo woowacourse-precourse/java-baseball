@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class Game {
     Input_Output IO = new Input_Output();
-    private static int Strike_count = 0;
-    private static int Ball_count = 0;
+    private int Strike_count = 0;
+    private int Ball_count = 0;
 
 
     public Game() {
@@ -43,8 +43,8 @@ public class Game {
 
     public void BaseNumber_Check(List<Integer> computer, List<Integer> User)//받은 값을 스트라이크와 볼인지 분류
     {
-        Strike_count = 0;
-        Ball_count = 0;
+       this.Strike_count = 0;
+       this.Ball_count = 0;
         for (int i = 0; i < computer.size(); i++) {
             if (Number_Check(computer.get(i), User.get(i)))
                 Strike_count++;
