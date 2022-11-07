@@ -6,14 +6,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Controller {
 
-    final int startNum = 1;
-    final int endNum = 9;
     PrintMessage print = new PrintMessage();
     GameService gameService = new GameService();
 
     public void runGame() throws IllegalArgumentException {
         print.gameStartNotice();
-        gameService.playGame(startNum, endNum);
+        gameService.playGame();
         print.gameFinished();
         print.gameRestartOrNot();
         afterGame();

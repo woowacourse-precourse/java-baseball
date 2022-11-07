@@ -9,19 +9,19 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class RandomNumber {
 
-    public int[] getRandomNumber(int startNum, int endNum) {
+    public int[] getRandomNumber() {
         int[] numbers = new int[3];
 
         for (int i =0; i < 3; i ++) {
-            numbers[i] = newRandomNumber(startNum, endNum).get(i);
+            numbers[i] = newRandomNumber().get(i);
         }
         return numbers;
     }
 
-    private List<Integer> newRandomNumber(int startNum, int endNum) {
+    private List<Integer> newRandomNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3) {
-            int randomNumber = pickNumberInRange(startNum, endNum);
+            int randomNumber = pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
             }
