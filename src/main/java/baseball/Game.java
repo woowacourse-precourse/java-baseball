@@ -30,7 +30,7 @@ public class Game {
         return Integer.valueOf(pushNumber()).equals(1);
     }
 
-    private static String pushNumber() {
+    private String pushNumber() {
         return Console.readLine();
     }
 }
