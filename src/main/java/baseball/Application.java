@@ -27,6 +27,42 @@ public class Application {
         }
         return guess;
     }
+
+    public static boolean checkGuess(List<Integer> computer, List<Integer> guess) {
+        if (computer.equals(guess)) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+        int ball = 0;
+        int strike = 0;
+
+        for (int i=0; i < computer.size(); i++) {
+            Integer digit = guess.get(i);
+            if (digit.equals(computer.get(i))) {
+                strike += 1;
+                continue;
+            }
+            if (computer.contains(digit)) {
+                ball += 1;
+            }
+        }
+
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        }
+        else {
+            if (ball != 0) {
+                System.out.printf("%d볼 ", ball);
+            }
+            if (strike != 0) {
+                System.out.printf("%d스트라이크", strike);
+            }
+            System.out.println();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         /**
          * 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 얻고,
