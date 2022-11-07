@@ -38,4 +38,15 @@ public class ValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("1부터 9까지의 숫자만 입력 가능합니다.");
     }
+
+    @Test
+    @DisplayName("입력 값에 문자가 포함된 경우 에러 발생")
+    void inputValueCharContainedTest() {
+        String inputValue = "1h7";
+
+        InputValidation inputValidation = new InputValidation();
+        assertThatThrownBy(() -> inputValidation.validateInputValue(inputValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자만 입력 가능합니다.");
+    }
 }
