@@ -15,23 +15,23 @@ public class Application {
 
 		List<Integer> computerNumbers = getComputerNumbers();
 		List<Integer> playerNumbers = getPlayerNumbers();
-		
+
 		System.out.println(computerNumbers);
 		System.out.println(playerNumbers);
 	}
 
 	public static void endGame() {
-		
+
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		
+
 		int result = Integer.parseInt(Console.readLine());
 		if (result == 1) {
-			
+
 			startGame();
 		}
 	}
-	
+
 	public static List<Integer> getComputerNumbers() {
 
 		List<Integer> computer = new ArrayList<>();
@@ -51,10 +51,42 @@ public class Application {
 
 		for (int count = 0; count < LENGTH; count++) {
 
-			Integer number = Integer.parseInt(Console.readLine());
+			Integer number = handleNumberException(playerNumbers);
 			playerNumbers.add(number);
 		}
 		return playerNumbers;
+	}
+
+	public static Integer handleNumberException(List<Integer> playerNumbers) {
+
+		String input = Console.readLine();
+		
+		boolean isNumeric = isNumeric(input);
+		if (!isNumeric) {
+			throw new IllegalArgumentException();
+		}
+
+		Integer number = Integer.parseInt(input);
+
+		boolean isZero = number == 0;
+		boolean isOverlap = playerNumbers.contains(number);
+		if (isZero || isOverlap) {
+			throw new IllegalArgumentException();
+		}
+
+		return number;
+	}
+
+	public static boolean isNumeric(String input) {
+
+		try {
+			Double.parseDouble(input);
+			return true;
+		}
+		
+		catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 	public static void startGame() {
