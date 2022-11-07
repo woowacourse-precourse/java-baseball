@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -56,18 +55,19 @@ class Baseball {
             }
         }
     }
-
     public void comparisonNumber(int playerNumber, int computerNumber, int i, int j) {
-        int count;
         if (playerNumber == computerNumber) {
             if (i == j) {
-                count = baseballCount.get(0) + 1;
-                baseballCount.set(0, count);
+                countBaseball(0);
             } else {
-                count = baseballCount.get(1) + 1;
-                baseballCount.set(1, count);
+                countBaseball(1);
             }
         }
+    }
+    public void countBaseball(int i) {
+        int count;
+        count = baseballCount.get(i) + 1;
+        baseballCount.set(i, count);
     }
 
     public void printBaseballScore() {
@@ -78,7 +78,6 @@ class Baseball {
             printStrike();
         }
     }
-
     public void printStrike() {
         if (baseballCount.get(0) != 0) {
             System.out.printf("%d스트라이크", baseballCount.get(0));
