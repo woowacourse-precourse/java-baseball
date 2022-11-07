@@ -1,7 +1,13 @@
 package baseball.system;
 
+import static baseball.util.Constant.ERROR_CONSIST_OF_NUM;
+import static baseball.util.Constant.ERROR_INPUT;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +44,36 @@ class GameTest {
         game.isStrikeOrBall(problem, answer);
 
         assertThat(game.correct()).isEqualTo(false);
+    }
+
+    @Test
+    void 플레이어가_게임을_재시작하는_기능_테스트() {
+        String reply = "1";
+        InputStream input = new ByteArrayInputStream(reply.getBytes(StandardCharsets.UTF_8));
+        System.setIn(input);
+
+        assertThat(game.checkReplay()).isEqualTo(true);
+    }
+
+    @Test
+    void 플레이어가_게임을_종료하는_기능_테스트() {
+        String reply = "2";
+        InputStream input = new ByteArrayInputStream(reply.getBytes(StandardCharsets.UTF_8));
+        System.setIn(input);
+
+        assertThat(game.checkReplay()).isEqualTo(false);
+    }
+
+    @Test
+    void 플레이어가_잘못된_입력값을_넣었을_때_기능_테스트() {
+        String reply = "8";
+        InputStream input = new ByteArrayInputStream(reply.getBytes(StandardCharsets.UTF_8));
+        System.setIn(input);
+
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> game.checkReplay())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_INPUT)
+        );
     }
 }
