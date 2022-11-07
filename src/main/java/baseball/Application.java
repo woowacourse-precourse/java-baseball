@@ -21,11 +21,12 @@ public class Application {
         Application app = new Application();
     }
 
-    // TODO : 컴퓨터가 숫자를 랜덤으로 선택하여 리턴
+    // TODO : 컴퓨터가 1에서 9까지의 서로다른 임의의 수 3개를 선택한다.
     public List<Integer> SelectRandomNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+        while (numbers.size() < MAX_ARRAY_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUM, MAX_RANGE_NUM);
             if (!numbers.contains(randomNumber)){
                 numbers.add(randomNumber);
             }
