@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class Application {
 
@@ -51,21 +53,8 @@ public class Application {
             int strikes = countStrikes(userNumber, answerNumber);
             int balls = countBalls(userNumber, answerNumber);
 
-            boolean nothing = isNothing(strikes, balls);
+            printResult(strikes, balls);
 
-            // TODO : 결과 출력에 대해 추가적인 메소드로 분리해야 할 듯!
-            if (nothing) {
-                System.out.println("낫싱");
-            } else {
-                if (strikes == 0 && balls != 0)
-                    System.out.println(balls + "볼");
-                else if (strikes != 0 && balls == 0)
-                    System.out.println(strikes + "스트라이크");
-                else
-                    System.out.println(balls + "볼 " + strikes + "스트라이크");
-            }
-
-            // 판정 결과를 정답과 비교하는 메소드 호출
             equalNumber = equalNumber(strikes);
         }
     }
@@ -145,5 +134,27 @@ public class Application {
 
     public static boolean equalNumber(int strikeCount) {
         return strikeCount == 3;
+    }
+
+    public static void printResult(int strikes, int balls) {
+
+        boolean nothing = isNothing(strikes, balls);
+
+        if (strikes + balls == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (strikes == 0 && balls != 0) {
+            System.out.println(balls + "볼");
+            return;
+        }
+
+        if (strikes != 0 && balls == 0) {
+            System.out.println(strikes + "스트라이크");
+            return;
+        }
+
+        System.out.println(balls + "볼 " + strikes + "스트라이크");
     }
 }
