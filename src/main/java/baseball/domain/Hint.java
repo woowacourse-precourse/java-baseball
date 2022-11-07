@@ -1,71 +1,60 @@
 package baseball.domain;
 
-import static baseball.domain.count.BallCount.makeBallCount;
-import static baseball.domain.count.StrikeCount.makeStrikeCount;
+import static baseball.domain.count.CountManager.makeCountManager;
 
-import baseball.domain.count.BallCount;
-import baseball.domain.count.StrikeCount;
+import baseball.domain.count.CountManager;
 
 public class Hint {
 
     public static final String SPACE_MESSAGE = " ";
     public static final String NOTHING_MESSAGE = "낫싱";
 
-    private StrikeCount strikeCount;
-    private BallCount ballCount;
+    private CountManager countManager;
 
     public Hint(ThreeDigitNum answer, ThreeDigitNum input) {
 
-        this.strikeCount = makeStrikeCount(answer, input);
-        this.ballCount = makeBallCount(answer, input);
+        this.countManager = makeCountManager(answer, input);
     }
 
     public boolean isAnswer() {
-        return strikeCount.isAnswer();
+        return countManager.isAnswerCase();
     }
 
     @Override
     public String toString() {
-        if (isAllCountEmpty()) {
+        if (countManager.isAllCountZero()) {
             return NOTHING_MESSAGE;
         }
 
-        return makeHintMsg(strikeCount.toString(), ballCount.toString());
+        return makeHintMsg();
     }
 
-    private String makeHintMsg(String strikeMsg, String ballMsg) {
+    private String makeHintMsg() {
         StringBuffer stringBuffer = new StringBuffer();
 
-        addBallMsg(ballMsg, stringBuffer);
+        addBallMsg(countManager.ballMsg(), stringBuffer);
         addSpaceMsg(stringBuffer);
-        addStrikeMsg(strikeMsg, stringBuffer);
+        addStrikeMsg(countManager.strikeMsg(), stringBuffer);
 
         return stringBuffer.toString();
     }
 
     private void addStrikeMsg(String strikeMsg, StringBuffer stringBuffer) {
-        if (!strikeCount.isCountEmpty()) {
+        if (!countManager.isStrikeCountEmpty()) {
             stringBuffer.append(strikeMsg);
         }
     }
 
     private void addSpaceMsg(StringBuffer stringBuffer) {
-        if (isAllCountExist()) {
+        if (countManager.isAllCountExist()) {
             stringBuffer.append(SPACE_MESSAGE);
         }
     }
 
     private void addBallMsg(String ballMsg, StringBuffer stringBuffer) {
-        if (!ballCount.isCountEmpty()) {
+        if (!countManager.isBallZero()) {
             stringBuffer.append(ballMsg);
         }
     }
 
-    public boolean isAllCountExist() {
-        return !(strikeCount.isCountEmpty() || ballCount.isCountEmpty());
-    }
-
-    public boolean isAllCountEmpty() {
-        return strikeCount.isCountEmpty() && ballCount.isCountEmpty();
-    }
 }

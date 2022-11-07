@@ -20,7 +20,7 @@ abstract public class Count {
     @Override
     abstract public String toString();
 
-    public boolean isCountEmpty() {
+    public boolean isZero() {
         return count == 0;
     }
 
