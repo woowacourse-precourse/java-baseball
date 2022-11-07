@@ -72,8 +72,8 @@ public class Game {
 
     private boolean isEachNumberFrom1To9() {
         for (String splitInput : splitInputs) {
-            int in = Integer.parseInt(splitInput);
-            if (!(in >= 1 && in <= 9)){
+            char in = splitInput.charAt(0);
+            if (!((in >= '1' && in <= '9'))) {
                 System.out.println("잘못된 입력값 입니다. 1이상 9이하 숫자를 입력하세요.");
                 return false;
             }
