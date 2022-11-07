@@ -5,9 +5,13 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 class Game{
     public static String targetNumber;
     public int game_clear=0;
+    int strike_num=0;
+    int ball_num=0;
     int[] arr;
 //    public static int game_restart_flag;
     public Game(){
+        this.strike_num=0;
+        this.ball_num=0;
         this.game_clear=0;
         System.out.println("숫자 야구 게임을 시작합니다.");
         arr=new int[10];
@@ -39,6 +43,26 @@ class Game{
         user_num=camp.nextstep.edu.missionutils.Console.readLine();
         return user_num;
     }
+
+    public void check(){
+        strike_num=0;
+        ball_num=0;
+        String curString=Input();
+        for(int i=0;i<3;++i){
+            if(curString.charAt(i)==targetNumber.charAt(i)){
+                ++strike_num;
+            }
+        }
+
+    }
+//    public void game_processing(){
+//        while(true){
+//            if(game_clear==1){
+//                break;
+//            }
+//            check();
+//        }
+//    }
 
 
 
