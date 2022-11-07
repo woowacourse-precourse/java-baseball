@@ -9,6 +9,8 @@ public class User {
     protected String input;
     protected int number;
 
+    protected int game_state;
+
     ArrayList<Character> check = new ArrayList<>();
 
     public void inputNumber() {
@@ -19,6 +21,18 @@ public class User {
         checkNumberDigit(input);
 
         this.input = input;
+    }
+
+    public void inputGameState() {
+        String input = readLine();
+
+        if (input.equals("1")) {
+            this.game_state = 1;
+        } else if (input.equals("2")) {
+            this.game_state = 2;
+        } else if (!input.equals("1") || !input.equals("2")) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 
     public void checkNumberInteger(String input) {
@@ -59,7 +73,4 @@ public class User {
         this.number = Integer.valueOf(this.input);
     }
 
-    public void resetNumber() {
-        check.clear();
-    }
 }
