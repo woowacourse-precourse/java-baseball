@@ -14,24 +14,24 @@ public class GameController {
         user = new User();
     }
 
-    public void ready() {
+    private void ready() {
         computer.generateNumber();
         user.generateNumber();
     }
 
-    public boolean isStrike(int index) {
+    private boolean isStrike(int index) {
         return computer.getNumbers().get(index)
                 .equals(user.getNumbers().get(index));
     }
 
-    public boolean isBall(int index) {
+    private boolean isBall(int index) {
         if (computer.getNumbers().contains(user.getNumbers().get(index))) {
             return !isStrike(index);
         }
         return false;
     }
 
-    public String generateOutput(int strike, int ball) {
+    private String generateOutput(int strike, int ball) {
         String output = "";
         if (ball != 0) {
             output += ball + "볼 ";
@@ -49,7 +49,7 @@ public class GameController {
         return output;
     }
 
-    public boolean judge() {
+    private boolean judge() {
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < NUMBER_LENGTH; i++) {
