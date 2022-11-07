@@ -14,6 +14,6 @@ public enum ErrorMessage {
     }
 
     public String getMessage() {
-        return "[ERROR]" + message + "게임을 종료합니다.";
+        return "[ERROR] " + message + " 게임을 종료합니다.";
     }
 }
