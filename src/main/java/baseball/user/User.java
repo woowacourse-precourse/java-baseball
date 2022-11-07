@@ -1,5 +1,6 @@
 package baseball.user;
 
+import baseball.option.Option;
 import baseball.option.validation.OptionValidation;
 import baseball.user.validation.UserValidation;
 import camp.nextstep.edu.missionutils.Console;
@@ -31,6 +32,13 @@ public class User {
     public boolean inputOption() {
         String userInput = Console.readLine();
         OptionValidation.validate(userInput);
-        return Integer.parseInt(userInput) == 1;
+        boolean gameStatus = Option.RESTART.getStatus();
+        int option = Integer.parseInt(userInput);
+
+        if (option == Option.END.getOption()) {
+            gameStatus = false;
+        }
+
+        return gameStatus;
     }
 }
