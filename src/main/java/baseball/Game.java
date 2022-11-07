@@ -23,14 +23,6 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         String userNum = readLine();
 
-         /*
-        InputStreamReader ir = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(ir);
-        String userNum = br.readLine();
-
-
-          */
-
         if(userNum.length() != 3){
             //System.out.println("숫자 3자리만 입력해주세요.");
             throw new IllegalArgumentException();
@@ -42,18 +34,9 @@ public class Game {
         }
         //System.out.println("userNum: " + userNum);
 
-        /*
-        try {
-            if (!doubleCheck(userNum)) {
-                throw new IllegalArgumentException("올바른 숫자가 아닙니다. 다시 입력해주세요.");
-            }
-        } catch (Exception e) {
-            throw new IllegalArgumentException();
-        }
+
 
          */
-
-
 
         String[] userNumArr = userNum.split("");
 
