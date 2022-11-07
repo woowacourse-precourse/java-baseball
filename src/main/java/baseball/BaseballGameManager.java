@@ -14,7 +14,7 @@ public class BaseballGameManager {
         randomNumberCreator.create();
     }
 
-    public void printResult(String input) {
+    public void provideResult(String input) {
         calculateBallCount(input);
         String message = getResultMessage(strikeCount, ballCount);
         System.out.println(message);

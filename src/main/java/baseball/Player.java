@@ -10,7 +10,7 @@ public class Player {
     public void play() {
         gameManager.createRandomNumbers();
         do {
-            gameManager.printResult(sendAnswer());
+            gameManager.provideResult(sendAnswer());
         } while ((!gameManager.isGameClear()));
     }
 
