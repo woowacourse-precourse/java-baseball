@@ -3,7 +3,7 @@ package baseball.game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompareTwoList {
+public class Referee {
 
     public List<Integer> compareLists(List<Character> users, List<Character> computers) {
         List<Integer> strikeBall = new ArrayList<>();
