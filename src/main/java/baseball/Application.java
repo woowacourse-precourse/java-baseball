@@ -57,10 +57,49 @@ public class Application {
         return inputNumber;
     }
 
+    /**
+     * 스트라이크의 개수 반환
+     *
+     * @param answer            컴퓨터가 생각한 숫자 String
+     * @param guessNumberString 사용자가 생각한 숫자 String
+     * @return 같은 수가 같은 자리에 있는 숫자의 개수
+     */
+    public static int calcStrikeCount(String answer, String guessNumberString) {
+        int strike = 0;
+
+        for (int i = 0; i < answer.length(); i++) {
+            if (answer.charAt(i) == guessNumberString.charAt(i)) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    /**
+     * 볼의 개수 반환
+     *
+     * @param answer            컴퓨터가 생각한 숫자 String
+     * @param guessNumberString 사용자가 생각한 숫자 String
+     * @return 같은 수가 다른 자리에 있는 숫자의 개수
+     */
+    public static int calcBallCount(String answer, String guessNumberString) {
+        int ball = 0;
+
+        for (int i = 0; i < answer.length(); i++) {
+            if (answer.charAt(i) != guessNumberString.charAt(i)
+                    && answer.indexOf(guessNumberString.charAt(i)) != -1) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
     public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         String answer = generateRandomNumberString();
         String guessNumberString = getGuessNumberInput();
+        int strike = calcStrikeCount(answer, guessNumberString);
+        int ball = calcBallCount(answer, guessNumberString);
     }
 }
