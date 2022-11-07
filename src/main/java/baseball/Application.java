@@ -92,56 +92,56 @@ public class Application {
 
     private static String compareAnswerAndValue(ArrayList<Integer> generateAnswer, ArrayList<Integer> inputUserValue) {
 
-        String answer = "";
-        int strike = 0;
-        int ball = 0;
+        String outputInText = "";
+        int strikeCount = 0;
+        int ballCount = 0;
         int firstBall = 0;
         int secondBall = 1;
         int thirdBall = 2;
 
         for (int j = 0; j < 3; j++) {
             if (Objects.equals((generateAnswer.get(firstBall)), inputUserValue.get(j)) && j == firstBall) {
-                strike++;
+                strikeCount++;
             }
             if (Objects.equals((generateAnswer.get(firstBall)), inputUserValue.get(j)) && j != firstBall) {
-                ball++;
+                ballCount++;
             }
         }
         
         for (int j = 0; j < 3; j++) {
             if (Objects.equals((generateAnswer.get(secondBall)), inputUserValue.get(j)) && j == secondBall) {
-                strike++;
+                strikeCount++;
             }
             if (Objects.equals((generateAnswer.get(secondBall)), inputUserValue.get(j)) && j != secondBall) {
-                ball++;
+                ballCount++;
             }
         }
         
         for (int j = 0; j < 3; j++) {
             if (Objects.equals((generateAnswer.get(thirdBall)), inputUserValue.get(j)) && j == thirdBall) {
-                strike++;
+                strikeCount++;
             }
             if (Objects.equals((generateAnswer.get(thirdBall)), inputUserValue.get(j)) && j != thirdBall) {
-                ball++;
+                ballCount++;
             }
         }
 
-        answer = outputInText(answer, strike, ball);
+        outputInText = outputInText(outputInText, strikeCount, ballCount);
 
-        return answer;
+        return outputInText;
     }
 
-    private static String outputInText(String answer, int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            answer += "낫싱";
-        } else if (strike == 0) {
-            answer += (ball + "볼");
-        } else if (ball == 0) {
-            answer += (strike + "스트라이크");
+    private static String outputInText(String outputInText, int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount == 0) {
+            outputInText += "낫싱";
+        } else if (strikeCount == 0) {
+            outputInText += (ballCount + "볼");
+        } else if (ballCount == 0) {
+            outputInText += (strikeCount + "스트라이크");
         } else {
-            answer += (ball + "볼") + " " + (strike + "스트라이크");
+            outputInText += (ballCount + "볼") + " " + (strikeCount + "스트라이크");
         }
-        return answer;
+        return outputInText;
     }
 
     private static int restart() {
