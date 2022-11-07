@@ -30,7 +30,7 @@ public class BaseballGame {
             if (isCorrect(strike)) {
                 OutputView.printFinish();
                 isRun = false;
-                restart();
+                restartOrEnd();
             }
         }
     }
@@ -46,7 +46,7 @@ public class BaseballGame {
         OutputView.printStrikeAndBall(strike, ball);
     }
 
-    private void restart() {
+    private void restartOrEnd() {
         GameStatus status = GameStatus.getGameStatus(InputView.restart());
         if (status.isRestart()) {
             play();
