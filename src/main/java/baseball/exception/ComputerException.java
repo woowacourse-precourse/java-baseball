@@ -11,6 +11,7 @@ public class ComputerException {
         }
         return false;
     }
+
     public boolean checkComputerGameOptionNumberBetweenOneAndTwo(String ComputerGameOptionNumber)
             throws IllegalArgumentException {
         if (!ComputerGameOptionNumber.equals(Constant.COMPUTER_GAME_RESTART) && !ComputerGameOptionNumber.equals(
@@ -20,6 +21,12 @@ public class ComputerException {
         return true;
     }
 
-
+    public boolean checkComputerGameOptionNumberAboutOnlyOneAndTwo(String ComputerGameOptionNumber)
+            throws IllegalArgumentException {
+        if (!ComputerGameOptionNumber.matches(Constant.COMPUTER_OPTION)) {
+            throw new IllegalArgumentException("숫자만 입력해주세요. ");
+        }
+        return true;
+    }
 
 }
