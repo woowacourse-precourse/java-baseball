@@ -20,4 +20,29 @@ public class InputSystem {
         return characterList.stream().map(Integer::valueOf).collect(Collectors.toList());
     }
 
+    public boolean inputRetryNumber(){
+        System.out.print(GameMessage.RETRY_GAME);
+        String input = Console.readLine();
+        // TODO 검증
+        int isRetrySignalNumber = Integer.parseInt(input);
+        return isRetrySignal(isRetrySignalNumber);
+    }
+
+    private static boolean isRetrySignal(int isRetrySignal) {
+        return isRetrySignal == RetrySignal.RETRY_TRUE.getSignal();
+    }
+    private enum RetrySignal {
+
+        RETRY_TRUE(1),
+        RETRY_FALSE(2),
+        ;
+        private final int signal;
+
+        RetrySignal(int signal) {
+            this.signal = signal;
+        }
+        public int getSignal() {
+            return signal;
+        }
+    }
 }
