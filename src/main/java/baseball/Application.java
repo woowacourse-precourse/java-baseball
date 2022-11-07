@@ -19,19 +19,35 @@ class BaseballGame {
         inputCondition=true;
         ball=0;
         strike=0;
-        newGame(computer);
+        newGame();
     }
-    private void newGame(List<Integer> computer) {
+    private void newGame() {
         selectNumbersByComputer(computer);
-        while (inputCondition) { // 여기서 숫자를 계속 입력받아야한다.
+        while (inputCondition) {
             System.out.print(getPleaseInput());
             String input=Console.readLine();
             selectNumberByPlayer(player,input);
-            // 여기서 스트라이크인지 볼인지 판단하여 inputCondition을 조절하여야 한다.
+
             getBallCounts(getComputerNumberList(), getPlayerNumberList());
-            break;
+            inputCondition=checkGameCondition(ball,strike);
         }
     }
+
+    private boolean checkGameCondition(int ball, int strike) {
+        if (strike==3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            return false;
+        } else if (ball > 0) {
+            System.out.printf("%d볼 %d스트라이크", ball - strike, strike);
+        } else {
+            System.out.println("낫싱");
+        }
+        this.ball=0;
+        this.strike=0;
+        return true;
+    }
+
     private void selectNumbersByComputer(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -110,7 +126,9 @@ public class Application {
         while (true) {
             BaseballGame game = new BaseballGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            break;
+            String exitCode=Console.readLine();
         }
     }
+
+
 }
