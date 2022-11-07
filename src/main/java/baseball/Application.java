@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Application {
     // 컴퓨터 랜덤 숫자 생성
-    private static List<Integer> getRandomNumber(){
+    public static List<Integer> getRandomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -20,11 +20,11 @@ public class Application {
     }
 
     public static List<Integer> inputPlayerNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String playerNumber = Console.readLine();
 
         if (!checkPlayerNumber(playerNumber)) {
-            throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+            throw new IllegalArgumentException("잘못된 값을 입력했습니다. 애플리케이션 종료");
         }
 
         List<Integer> player = new ArrayList<>();
@@ -112,6 +112,7 @@ public class Application {
             System.out.println(cntBall+"볼");
         } else if(cntStrike>0){
             if(cntStrike==3){
+                System.out.println(cntStrike+"스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             } else{
                 System.out.println(cntStrike+"스트라이크");
@@ -119,20 +120,14 @@ public class Application {
         }
     }
 
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    private static void run(List<Integer> computer){
         while(true){
-            // 컴퓨터 랜덤 숫자 생성
-            List<Integer> computer = getRandomNumber();
-
             // 사용자 숫자 입력
             List<Integer> player;
             try {
                 player = inputPlayerNumber();
             } catch (IllegalArgumentException exception){
-                System.out.println(exception.getMessage());
-                break;
+                throw new IllegalArgumentException(exception.getMessage());
             }
 
             // 낫싱 판단
@@ -147,9 +142,21 @@ public class Application {
             printResult(cntBall, cntStrike);
 
             // 3스트라이크가 아닐 경우 사용자 입력
-            if(cntStrike!=3){
-                continue;
+            if(cntStrike==3){
+                break;
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while(true){
+            // 컴퓨터 랜덤 숫자 생성
+            List<Integer> computer = getRandomNumber();
+
+            // run
+            run(computer);
 
             // 게임 재시작/종료 선택
             String isReStart = inputIsReStart();
@@ -157,7 +164,5 @@ public class Application {
                 break;
             }
         }
-
-
     }
 }
