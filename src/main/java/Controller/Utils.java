@@ -42,7 +42,7 @@ public class Utils {
         return false;
     }
     public static boolean zeroOrNumber_check(String input){
-        if(input.contains("[1-9]")) return false;
+        if(input.matches("[0-9]+")) return false;
         return true;
     }
 

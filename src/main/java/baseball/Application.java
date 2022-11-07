@@ -10,7 +10,6 @@ public class Application {
 
         Computer.setNumber();
         while(true) {
-
             Game.start();
             if(Game.EXITSTATUS=="exit") break;
         }
