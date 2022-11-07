@@ -18,6 +18,7 @@ public class Game {
     public void finishOrRestart(String enterOneOrTwo) {
         if (enterOneOrTwo.equals("1")) {
             randomNumber.resetNumber();
+            enterNumber.resetNumber();
             count.resetCount();
             startGame();
         }
@@ -36,6 +37,7 @@ public class Game {
     }
     public void getCaseNotThreeStrike() {
         System.out.println(hint.printHint());
+        enterNumber.resetNumber();
         count.resetCount();
         repeatGameUntilSuccess();
     }

@@ -7,7 +7,7 @@ import java.util.List;
 public class EnterNumber {
     private final List<Integer> enterNumber;
     public EnterNumber() {
-        enterNumber = new ArrayList<>(Arrays.asList(0, 0, 0));
+        enterNumber = new ArrayList<>();
     }
     public List<Integer> getEnterNumber() {
         return this.enterNumber;
@@ -47,11 +47,14 @@ public class EnterNumber {
     public void getList(String userEnterNumber) {
         if (!exceptNumber(userEnterNumber)) {
             for (int i = 0; i < 3; i++) {
-                enterNumber.set(i, Character.getNumericValue(userEnterNumber.charAt(i)));
+                enterNumber.add(Character.getNumericValue(userEnterNumber.charAt(i)));
             }
         }
         if (exceptNumber(userEnterNumber)) {
             throw new IllegalArgumentException("정확한 세 자리 숫자를 입력해주세요");
         }
+    }
+    public void resetNumber() {
+        enterNumber.clear();
     }
 }
