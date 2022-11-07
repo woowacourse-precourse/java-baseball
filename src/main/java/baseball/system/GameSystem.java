@@ -1,13 +1,11 @@
 package baseball.system;
 
 import baseball.player.*;
+import baseball.system.constant.BaseballConstant;
+import baseball.system.progress.GamePlay;
+import baseball.system.progress.MenuSelection;
 
 public class GameSystem {
-    private Computer computer;
-    private User user;
-    private MenuSelection menuSelection;
-    private GamePlay gamePlay;
-
     public void runGame() {
         printRunGameText();
 
@@ -23,15 +21,15 @@ public class GameSystem {
     }
 
     private void startGame() {
-        computer = new Computer();
-        user = new User();
+        Computer computer = new Computer();
+        User user = new User();
 
-        gamePlay = new GamePlay(computer, user);
+        GamePlay gamePlay = new GamePlay(computer, user);
         gamePlay.playGame();
     }
 
     private int selectMenu() {
-        menuSelection = new MenuSelection();
+        MenuSelection menuSelection = new MenuSelection();
         return menuSelection.startMenuSelection();
     }
 

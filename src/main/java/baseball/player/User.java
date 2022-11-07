@@ -1,6 +1,7 @@
 package baseball.player;
 
-import baseball.system.BaseballConstant;
+import baseball.system.constant.BaseballConstant;
+import baseball.system.exception.IllegalArgument;
 import baseball.utils.*;
 
 import java.util.List;
@@ -13,19 +14,23 @@ public class User {
     }
 
     private List<Integer> createValidNumbers(String inputNumbers) throws IllegalArgumentException {
-        if (!IsCollection.isInputNumbersInRange(inputNumbers,
-                BaseballConstant.MIN_NUMBER, BaseballConstant.MAX_NUMBER)) {
-            throw new IllegalArgumentException("1~9범위에서 벗어난 숫자입니다.");
+
+        final int MIN_NUMBER = BaseballConstant.MIN_NUMBER;
+        final int MAX_NUMBER = BaseballConstant.MAX_NUMBER;
+        final int INPUT_LENGTH = BaseballConstant.INPUT_LENGTH;
+
+        if (!IsCollection.isInputNumbersInRange(inputNumbers, MIN_NUMBER, MAX_NUMBER)) {
+            IllegalArgument.outOfRange(MIN_NUMBER, MAX_NUMBER);
         }
 
         List<Integer> numbers = NumberParsingCollection.changeStringToIntegers(inputNumbers);
 
-        if (!IsCollection.isEqualToSetCount(numbers, BaseballConstant.INPUT_LENGTH)) {
-            throw new IllegalArgumentException("3개의 숫자가 아닙니다.");
+        if (!IsCollection.isEqualToSetCount(numbers, INPUT_LENGTH)) {
+            IllegalArgument.notNNumbers(INPUT_LENGTH);
         }
 
         if (IsCollection.isDuplication(numbers)) {
-            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+            IllegalArgument.duplicateNumberExists();
         }
 
         return numbers;
