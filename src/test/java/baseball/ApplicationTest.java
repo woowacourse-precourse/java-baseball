@@ -9,8 +9,7 @@ import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     Application baseball = new Application();
@@ -84,9 +83,16 @@ class ApplicationTest extends NsTest {
         assertThat(baseball.CountingStrike(computer, user) == 2);
     }
 
+    @Test
     void 게임_종료_시_재시작_진행_동작_테스트() {
         int input = 1;
-        assertThat();
+        assertThat(baseball.playNewGame(input));
+    }
+
+    @Test
+    void 게임_종료_시_프로그램종료_진행_동작_테스트() {
+        int input = 2;
+        assertThat(!baseball.playNewGame(input));
     }
 
 
