@@ -19,12 +19,15 @@ public class Application {
         }
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        int strikeCount = 0;
-        int ballCount = 0;
-        int nothingCount = 0;
+
 
         int escapeNumber = 1;
+        int newGame = 0;
         while (escapeNumber == 1){
+
+            int strikeCount = 0;
+            int ballCount = 0;
+            int nothingCount = 0;
 
             System.out.println("숫자를 입력해주세요 :");
             Scanner scanner = new Scanner(System.in);
@@ -77,6 +80,7 @@ public class Application {
 
                 if (numberRegameOrFinish == 1) {
                     escapeNumber = 1;
+                    newGame ++;
                 } else if (numberRegameOrFinish == 2) {
                     escapeNumber = 0;
 
@@ -90,13 +94,14 @@ public class Application {
 
             // 예외사항 (아직 x)//
 
-            if (escapeNumber == 1) {
+            if (newGame == 1) {
                 while (computer.size() < 3) {
                     int randomNumber = Randoms.pickNumberInRange(1, 9);
                     if (!computer.contains(randomNumber)) {
                         computer.add(randomNumber);
                     }
                 }
+                newGame = 0;
             }
 
 
