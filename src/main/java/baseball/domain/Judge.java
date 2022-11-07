@@ -41,5 +41,9 @@ public class Judge {
     public boolean isCorrect(int strikeCount) {
         return strikeCount == Constants.CORRECT_STRIKE_COUNT;
     }
+
+    public Score getUserInputScore(List<Integer> userInput) {
+        return new Score(getStrikeCount(userInput), getBallCount(userInput));
+    }
 }
 
