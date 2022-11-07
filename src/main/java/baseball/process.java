@@ -23,6 +23,15 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    private String inputExit() {
+        System.out.println(str_exit);
+        String input = Console.readLine();
+        if(!RightAnswer(input)) {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
+
     private boolean RightAnswer(String input) {
         Pattern pattern = Pattern.compile("[1-2]");
         return pattern.matcher(input).matches();
