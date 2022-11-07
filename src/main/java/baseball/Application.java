@@ -31,18 +31,40 @@ class User {
         List<Integer> user_num_list = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = scanner.nextLine();
-        int user_num = Integer.parseInt(input);
 
-        int first_num = user_num / 100;
-        int second_num = (user_num / 10) % 10;
-        int last_num = user_num % 10;
+        while(true) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = scanner.nextLine();
+            if(CheckInput(input)) {
+                int user_num = Integer.parseInt(input);
 
-        user_num_list.add(first_num);
-        user_num_list.add(second_num);
-        user_num_list.add(last_num);
+                int first_num = user_num / 100;
+                int second_num = (user_num / 10) % 10;
+                int last_num = user_num % 10;
 
-        return user_num_list;
+                user_num_list.add(first_num);
+                user_num_list.add(second_num);
+                user_num_list.add(last_num);
+
+                return user_num_list;
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    static boolean isNumeric(String s) {
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    static boolean CheckInput(String input) {
+        if (!(isNumeric(input))) return false;
+        else if(input.length() != 3) return false;
+        else if(input.contains("0")) return false;
+        else return true;
     }
 }
