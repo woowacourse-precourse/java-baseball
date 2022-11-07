@@ -1,14 +1,13 @@
-package baseball.oop;
+package baseball.model;
 
-import baseball.model.Score;
 import baseball.utils.BaseBallGameScoreCounter;
-import baseball.utils.BaseballNumber;
+import baseball.utils.BaseballNumberGenerator;
 
-public class BaseBallGameBoard {
+public class BaseballNumber {
     private String answer;
 
-    public BaseBallGameBoard() {
-        this.answer = BaseballNumber.generateNumber();
+    public BaseballNumber() {
+        this.answer = BaseballNumberGenerator.generateNumber();
     }
 
     public Score compareNumber(String userAnswer) {
