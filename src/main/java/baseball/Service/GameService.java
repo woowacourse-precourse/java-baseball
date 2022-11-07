@@ -19,6 +19,12 @@ public class GameService {
         computer.makeRandomNumbers();
     }
 
+    public void getPlayerInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        player.insertPlayerNumbers();
+    }
+
+
 
     public Player getPlayer() {
         return player;
