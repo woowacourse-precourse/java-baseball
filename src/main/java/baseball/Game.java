@@ -5,10 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
     final static String GAME_START_GUIDE_MESSAGE = "숫자 야구 게임을 시작합니다.";
     final static String PLAYER_INPUT_GUIDE_MESSAGE = "숫자를 입력해주세요 : ";
-    final static String WIN_CONDITION = "3스트라이크 ";
+    final static String WIN_CONDITION = "3스트라이크";
     final static String WIN_GUIDE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     final static int NUMBER_LENGTH = 3;
-//    String gamePlayerInput;
     private Computer computer;
 
     Game() {
@@ -21,10 +20,10 @@ public class Game {
             System.out.print(PLAYER_INPUT_GUIDE_MESSAGE);
             String gamePlayerInput = getGamePlayerInput();
             checkGamePlayerNumberInput(gamePlayerInput);
-            System.out.println(computer.getRandomNumbers());
+            System.out.println(computer.getRandomNumbers()); // 삭제
             String result = getResult(computer.getRandomNumbers(), gamePlayerInput);
             System.out.println(result);
-            if (result == WIN_CONDITION) {
+            if (result.contains(WIN_CONDITION)) {
                 System.out.println(WIN_GUIDE_MESSAGE);
                 break;
             }
@@ -44,12 +43,12 @@ public class Game {
         Integer balls = countBalls(computerRandomNumbers, gamePlayerInput ) - strikes;
         StringBuilder result = new StringBuilder();
 
-        if (strikes > 0) {
-            result.append(strikes + "스트라이크 ");
+        if (balls > 0) {
+            result.append(balls + "볼 ");
         }
 
-        if (balls > 0) {
-            result.append(balls + "볼");
+        if (strikes > 0) {
+            result.append(strikes + "스트라이크");
         }
 
         if (strikes == balls && balls == 0) {
@@ -77,13 +76,6 @@ public class Game {
             }
         }
         return balls;
-    }
-
-    private void checkNumberLength(String stringGamePlayerInput) {
-        int stringLength =  stringGamePlayerInput.length();
-        if (stringLength > NUMBER_LENGTH || stringLength < 1) {
-            throw new IllegalArgumentException();
-        }
     }
 
 }
