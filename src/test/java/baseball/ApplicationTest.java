@@ -44,6 +44,14 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 중복이_있는_경우_예외_테스트() {
+        String input = "447";
+
+        assertThatThrownBy(() -> runException(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
