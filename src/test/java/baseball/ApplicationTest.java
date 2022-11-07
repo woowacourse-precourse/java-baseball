@@ -1,7 +1,15 @@
 package baseball;
 
+import baseball.controller.InputController;
+import baseball.controller.OutputController;
+import baseball.model.ComNumber;
+import baseball.model.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
