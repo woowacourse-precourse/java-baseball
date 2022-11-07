@@ -25,12 +25,12 @@
 
 ----
 ### 프로그래밍 요구사항
-- [ ] JDK 11 버전에서 실행 가능해야 한다
-- [ ] 프로그램 실행의 시작점은 Application의 main()
-- [ ] Java 코드 컨벤션 가이드를 준수한다.
-- [ ] 프로그램 종료 시 System.exit()를 호출하지 않는다.
-- [ ] 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다.
-- [ ] indent(인덴트, 들여쓰기) depth를 2까지만 허용한다.
+- [x] JDK 11 버전에서 실행 가능해야 한다
+- [x] 프로그램 실행의 시작점은 Application의 main()
+- [x] Java 코드 컨벤션 가이드를 준수한다.
+- [x] 프로그램 종료 시 System.exit()를 호출하지 않는다.
+- [x] 프로그램 구현이 완료되면 ApplicationTest의 모든 테스트가 성공해야 한다.
+- [x] indent(인덴트, 들여쓰기) depth를 2까지만 허용한다.
 
 ### 라이브러리
 * `camp.nextstep.edu.missionutils`에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
