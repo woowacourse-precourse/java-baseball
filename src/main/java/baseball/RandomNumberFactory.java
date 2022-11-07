@@ -17,27 +17,21 @@ public class RandomNumberFactory {
     }
     
     
-    private Set<Integer> createRandomNumberSet(int start, int end, int size){
+    private List<Integer> createRandomNumberList(int start, int end, int size){
     	Set<Integer> randomNumberSet = new HashSet<>(size);
+    	List<Integer> randomNumberList = new ArrayList<>(size);
     	
     	while(true) {
     		int randomNumber = Randoms.pickNumberInRange(start, end);
-    		randomNumberSet.add(randomNumber);
+    		if(!randomNumberSet.contains(randomNumber)) {
+    			randomNumberList.add(randomNumber);
+    			randomNumberSet.add(randomNumber);
+    		}
     		
-    		if(randomNumberSet.size()==size) {
+    		if(randomNumberList.size()==size) {
     			break;
     		}
     	}
-    	return randomNumberSet;
-    }
-    
-    
-    private List<Integer> createRandomNumberList(int start, int end, int size){
-    	Set<Integer> randomNumberSet = createRandomNumberSet(start, end, size);
-    	
-    	List<Integer> randomNumberList = new ArrayList<>(size);
-    	randomNumberList.addAll(randomNumberSet);
-    	
     	return randomNumberList;
     }
     
