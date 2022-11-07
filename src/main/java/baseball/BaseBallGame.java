@@ -18,6 +18,21 @@ public class BaseBallGame {
         scanner = new Scanner(System.in);
     }
 
+    public String getUserNumber() {
+        return userNumber;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public String getRestartToken() {
+        return restartToken;
+    }
     public void inputUserNumber() {
         userNumber = scanner.nextLine();
     }
