@@ -9,11 +9,12 @@ public class Validation extends IllegalArgumentException {
     private static final String ZERO = "0";
     private static final String REPLAY = "1";
     private static final String EXIT = "2";
+    private static final int NUMBER_DIGITS = 3;
 
     public Validation() {
     }
 
-    public static void throwError() {
+    public void throwError() {
         throw new IllegalArgumentException();
     }
 
@@ -33,7 +34,7 @@ public class Validation extends IllegalArgumentException {
     }
 
     public boolean isThreeDigits(String input) {
-        if (input.length() != 3) {
+        if (input.length() != NUMBER_DIGITS) {
             return false;
         }
         return true;
@@ -41,7 +42,7 @@ public class Validation extends IllegalArgumentException {
 
     public boolean isDuplicateString(String input) {
         Set<String> stringSet = new HashSet<>(Arrays.asList(input.split("")));
-        if (stringSet.size() != 3) {
+        if (stringSet.size() != NUMBER_DIGITS) {
             return true;
         }
         return false;
