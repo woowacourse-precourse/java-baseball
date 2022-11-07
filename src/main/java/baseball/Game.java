@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Game {
@@ -9,6 +11,8 @@ public class Game {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String RESTART = "1";
+    private static final String GAME_OVER = "2";
 
     public static void run() {
         int strike = -1;
@@ -23,6 +27,7 @@ public class Game {
             strike = Count.Strike(opponent, user);
             printHint(strike, ball);
         }
+        askRestart();
     }
 
     public static void printUserNumber(List<Integer> user) {
@@ -34,6 +39,7 @@ public class Game {
     }
 
     public static void printHint(int strike, int ball) {
+        validateStrikeBall(strike, ball);
         if (strike == 0 && ball == 0) {
             System.out.println(NOTHING_MESSAGE);
         }
@@ -48,6 +54,12 @@ public class Game {
         }
     }
 
+    public static void validateStrikeBall(int strike, int ball) {
+        if (strike + ball > Number.NUMBERS_SIZE) {
+            throw new IllegalArgumentException("The number of strikes and balls is outside the allowed range.");
+        }
+    }
+
     public static void printBall(int ball) {
         System.out.println(ball + BALL_MESSAGE);
     }
@@ -59,5 +71,26 @@ public class Game {
     public static void printStrikeBall(int strike, int ball) {
         System.out.print(ball + BALL_MESSAGE + " ");
         System.out.println(strike + STRIKE_MESSAGE);
+    }
+
+    public static void askRestart() {
+        System.out.println(END_MESSAGE);
+        System.out.println(RESTART_MESSAGE);
+        String action = Console.readLine();
+        validateAction(action);
+    }
+
+    public static void validateAction(String action) {
+        if (action.equals(RESTART)) {
+            System.out.println(RESTART);
+            Game.run();
+        }
+        if (action.equals(GAME_OVER)) {
+            // 게임 종료
+            System.out.println(GAME_OVER);
+        }
+        if (!action.equals(RESTART) && !action.equals(GAME_OVER)) {
+            throw new IllegalArgumentException("Enter 1 to re-start, or 2 to quit.");
+        }
     }
 }
