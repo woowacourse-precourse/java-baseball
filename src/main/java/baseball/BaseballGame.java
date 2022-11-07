@@ -10,45 +10,46 @@ public class BaseballGame {
     static int computer;
     static int strike;
     static int ball;
-    static int regame;
+    static int reGame;
 
     public static void process(){
-        System.out.println("게임을 시작합니다.");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         computer = randomNumberBall();
-        System.out.println(computer);
         while(true){
             gamePlay();
-            if(regame==2){
+            if(reGame==2){
+                System.out.println("게임 종료");
                 break;
             }
         }
     }
 
     public static void gamePlay(){
-        System.out.print("숫자를 입력하세요 : ");
+        System.out.println("computer : " + computer);
+        System.out.print("숫자를 입력해주세요 : ");
         String user = Console.readLine();
         if(ErrorCheck.isValidLength(user) && ErrorCheck.isValidDiffer(user) && ErrorCheck.isValidNumber(user)){
-            System.out.println(Integer.parseInt(user));
-            System.out.println("올바른 값이 입력되었습니다.");
-
             checkStrike(user);
-            System.out.println("strike : " + strike);
             checkBall(user);
-            System.out.println("ball : " + ball);
         }
 
         if(strike==3){
-            System.out.println("3개의 숫자를 모두 맞히셨습니다. 게임종료!");
-            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. :");
-            regame = Integer.parseInt(Console.readLine());
-            System.out.println("regame : " + regame);
-            if(regame==1){
+            System.out.println("3스트라이크");
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. : ");
+            reGame = Integer.parseInt(Console.readLine());
+            if(reGame==1){
                 computer = randomNumberBall();
             }
         }else if(strike==0 && ball==0){
             System.out.println("낫싱");
         }else{
-            System.out.println(ball + "볼 " + strike + "스트라이크");
+            if(ball==0){
+                System.out.println(strike + "스트라이크");
+            }else if(strike==0){
+                System.out.println(ball + "볼");
+            }else{
+                System.out.println(ball + "볼 " + strike + "스트라이크");
+            }
         }
     }
 
