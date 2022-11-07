@@ -23,6 +23,32 @@ public class Application {
                 }
         return computer;
     }
+    static List<Integer> userHasNumber(int userNumber) {
+
+        int[] Numberdata = Stream.of(String.valueOf(userNumber).split("")).mapToInt(Integer::parseInt).toArray();
+        List<Integer> userNumbers = Arrays.stream(Numberdata) .boxed() .collect(Collectors.toList());
+        if(!InputNumberValidator.inputNumberExceptionCheck(userNumbers))
+        {
+            throw new IllegalArgumentException();
+        }
+        return userNumbers;
+    }
+    static int inputUserNumber(){
+        String userNumber_str;
+        int userNumber;
+        System.out.print("숫자를 입력해주세요 : ");
+        userNumber_str = Console.readLine();
+        if (userNumber_str.isBlank()) throw new IllegalArgumentException();
+        try{
+            userNumber = Integer.parseInt(userNumber_str);
+            System.out.println(userNumber);
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        return userNumber;
+
+
+    }
 
 
 
