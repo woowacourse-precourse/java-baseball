@@ -2,8 +2,10 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
@@ -57,5 +59,16 @@ public class ComputerTest {
         assertThat(computer.checkNum("1234")).isFalse(); // 네자리수
         assertThat(computer.checkNum("332")).isFalse(); // 숫자 중복
         assertThat(computer.checkNum("123")).isTrue(); // 정상인 수
+    }
+
+    @Test
+    void 숫자야구결과() {
+        Computer computer = new Computer();
+        List<Integer> randoms = new ArrayList<>(Arrays.asList(1, 2, 3));
+        assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(4, 5, 6)))).isFalse(); // 낫싱
+        assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(3, 1, 2)))).isFalse(); // 3볼
+        assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(1, 6, 2)))).isFalse(); // 1볼 1스트라이크
+        assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(1, 4, 5)))).isFalse(); // 1스트라이크
+        assertThat(computer.baseballGame(randoms, new ArrayList<>(Arrays.asList(1, 2, 3)))).isTrue(); // 3스트라이크
     }
 }

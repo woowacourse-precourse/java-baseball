@@ -8,10 +8,15 @@ public class Application {
         Computer computer = new Computer();
         List<Integer> randoms = computer.randoms();
 
-        // 2. 게임 시작 문구 출력
-        System.out.println(computer.gameStart());
+        while(true) {
+            // 2. 게임 시작 문구 출력
+            System.out.println(computer.gameStart());
 
-        // 3. 게임 플레이어는 숫자 3자리 입력
-        List<Integer> nums = computer.stringToInteger(computer.inputNum());
+            // 3. 게임 플레이어는 숫자 3자리 입력
+            List<Integer> nums = computer.stringToInteger(computer.inputNum());
+
+            // 4. 입력한 숫자에 대한 결과 출력
+            if(computer.baseballGame(randoms, nums)) break;
+        }
     }
 }
