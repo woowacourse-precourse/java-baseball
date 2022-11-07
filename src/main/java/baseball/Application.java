@@ -13,6 +13,9 @@ public class Application {
     static final int BALL = 1;
     static final int NOT_BALL = 0;
 
+    static final String BALL_HINT = "볼 ";
+    static final String STRIKE_HINT = "스트라이크";
+    static final String NOTHING_HINT = "낫싱";
     static final String REGEX_PATTERN = "[+-]?\\d*(\\.\\d+)?";
     static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     static final String REQUEST_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -97,6 +100,28 @@ public class Application {
             return BALL;
         }
         return NOT_BALL;
+    }
+
+    static public String makeHint(int ballCount, int strikeCount) {
+        String hint = "";
+
+        if (ballCount > 0 && strikeCount > 0) {
+            hint += ballCount + BALL_HINT + strikeCount + STRIKE_HINT;
+        }
+
+        if (ballCount > 0 && strikeCount == 0) {
+            hint += ballCount + BALL_HINT;
+        }
+
+        if (ballCount == 0 && strike > 0) {
+            hint += strikeCount + STRIKE_HINT;
+        }
+
+        if (ballCount == 0 && strike == 0) {
+            hint += NOTHING_HINT;
+        }
+
+        return hint;
     }
 
     public static void main(String[] args) {
