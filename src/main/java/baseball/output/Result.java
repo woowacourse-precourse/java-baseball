@@ -1,12 +1,11 @@
 package baseball.output;
 
-import baseball.BallType;
+import static baseball.Constants.*;
 
+import baseball.BallType;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static baseball.Constants.*;
 
 public class Result {
     private final StringBuilder sb = new StringBuilder();
@@ -56,7 +55,7 @@ public class Result {
         if(digitIndex == MISSING_INDEX){
             return "Nothing";
         }
-        if(index == digitIndex){
+        else if(index == digitIndex){
             return "Strike";
         }
         return "Ball";

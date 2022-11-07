@@ -1,9 +1,5 @@
 package baseball;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 public enum BallType {
     Strike("스트라이크"),
     Ball("볼"),
@@ -11,11 +7,12 @@ public enum BallType {
 
     private final String koren;
 
-    private BallType(String koren){
+    BallType(String koren){
         this.koren = koren;
     }
 
     public String getKorean(){
         return koren;
     }
+
 }
