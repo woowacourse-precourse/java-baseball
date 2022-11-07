@@ -6,9 +6,9 @@
 - [X] getter/setter
 
 ### Comparator
-- [ ] 변수
+- [X] 변수
   - 비교 결과 성공시 true, 실패시 false
-- [ ] getter/setter
+- [X] getter/setter
 
 ### Computer
 - [ ] 변수
