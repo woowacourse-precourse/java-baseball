@@ -52,12 +52,15 @@ public class Game {
         List<Integer> userInputDigit;
 
         while (true) {
+            // 잘못된 입력을 받았을 때 프로그램을 종료하지 않고 다시 입력을 받으려면
+            // 아래 주석처리 된 코드를 사용한다.
 //            try {
 //                userInputDigit = getUserInput();
 //            } catch (IllegalArgumentException e) {
 //                continue;
 //            }
 
+            // 잘못된 입력을 받았을 때 Exception을 던지며 프로그램을 종료한다.
             userInputDigit = getUserInput();
 
             // 여기 입력받은 값과 컴퓨터의 값을 비교해서 결과 출력하는 메소드
