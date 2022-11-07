@@ -28,5 +28,9 @@ public class Game {
         }
     }
 
+    private void generateRandomNum() {
+        computer.getRandomNum();
+    }
+
 
 }
