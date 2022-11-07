@@ -31,4 +31,11 @@ public class Application {
         }
         return player;
     }
+
+    public static boolean isValidLength(int playerNumLength){
+        if(playerNumLength != 3)
+            return false;
+        else
+            return true;
+    }
 }
