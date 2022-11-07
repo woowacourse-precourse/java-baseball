@@ -1,9 +1,11 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,14 +42,22 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void 스트라이크개수_구하기() {
-        assertRandomNumberInRangeTest(
-            () -> {
-                run("579");
-                assertThat(output()).contains("2");
-            },
-                5,1,9
-        );
+    void 스트라이크개수_볼_개수_구하기() {
+        int[] score = new int[2];
+
+        List<Integer> computer_num = new ArrayList<>();
+
+        computer_num.add(5);
+        computer_num.add(7);
+        computer_num.add(9);
+
+        String answer = "759";
+
+        score[0] = Application.checkStrike(computer_num,answer);
+        score[1] = Application.checkBall(computer_num,answer);
+
+        assertThat(score).containsExactly(1,2);
+
     }
 
 
@@ -57,4 +67,10 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+
+
 }
+
+
+
