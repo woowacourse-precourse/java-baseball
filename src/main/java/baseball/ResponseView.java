@@ -12,7 +12,7 @@ public class ResponseView {
 
     public boolean check() {
         if (strikeCount == 3) {
-            View.end(strikeCount);
+            View.end();
             return true;
         }
 
