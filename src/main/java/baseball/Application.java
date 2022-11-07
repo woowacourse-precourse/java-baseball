@@ -3,6 +3,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +23,16 @@ class Computer {
 }
 
 class Player {
+    static int number;
+    static String numberString;
+    static List<Integer> numberList = new ArrayList<>();
 
+    static void writeNumber() {
+        numberString = readLine();
+    }
 }
 
 class Umpire {
-    static List<Integer> playerNumberList = new ArrayList<>();
 
     static void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -33,17 +40,34 @@ class Umpire {
 
     static void getNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        changeStringToList(readLine());
+        Player.writeNumber();
+        changeStringToList();
     }
 
-    private static void changeStringToList(String playerNumberString) {
-        Integer playerNumber = Integer.parseInt(playerNumberString);
+    private static void changeStringToList() {
 
-        while (playerNumber > 0) {
-            playerNumberList.add(0, playerNumber % 10);
-            playerNumber /= 10;
+        checkInput();
+
+        while (Player.number > 0) {
+            Player.numberList.add(0, Player.number % 10);
+            Player.number /= 10;
         }
+
+
+
     }
+
+    private static void checkInput() {
+        try {
+            Player.number = Integer.parseInt(Player.numberString);
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException("wrong Input");
+        }
+
+        if (Player.numberString.length() != 3)
+            throw new IllegalArgumentException("wrong size");
+    }
+
 }
 
 public class Application {
@@ -53,7 +77,8 @@ public class Application {
         Computer.getThreeRandomNumber();
         while (!getAnswer) {
             Umpire.getNumber();
-            System.out.println(Umpire.playerNumberList);
+            System.out.println(Player.numberList);
+            return;
         }
 
     }
