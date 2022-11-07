@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
+
     }
 
     public static List<Integer> createAnswer() {
@@ -25,6 +27,13 @@ public class Application {
     }
 
 
+    public static List<Integer> getInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputString = Console.readLine();
+        List<Integer> inputList = Arrays.stream(inputString.split("")).map(Integer::parseInt).collect(Collectors.toList());
+        validateInput(inputList);
+        return inputList;
+    }
 
     public static boolean validateInput(List<Integer> inputList) {
         List<Integer> allowedInputNumber = List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -32,9 +41,9 @@ public class Application {
 
         for (Integer eachInputNumber : inputList) {
             if (!allowedInputNumber.contains(eachInputNumber)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("out of range input");
             } else if (inputList.size() != inputSet.size()) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("number of unique input integer  is not 3");
             }
         }
 
