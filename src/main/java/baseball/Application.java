@@ -15,9 +15,8 @@ public class Application {
 
 		List<Integer> computerNumbers = getComputerNumbers();
 		playGame(computerNumbers);
-
 	}
-	
+
 	public static void startGame() {
 
 		System.out.println("숫자 야구 게임을 시작합니다.");
@@ -38,10 +37,11 @@ public class Application {
 	}
 
 	public static void playGame(List<Integer> computerNumbers) {
+		
+		System.out.print("숫자를 입력해주세요 : ");
+		String input = Console.readLine();
 
-		List<Integer> playerNumbers;
-
-		playerNumbers = getPlayerNumbers();
+		List<Integer> playerNumbers = getPlayerNumbers(input);
 
 		int strike = sumStrike(computerNumbers, playerNumbers);
 		if (strike == LENGTH) {
@@ -66,12 +66,9 @@ public class Application {
 		System.out.println(playerNumbers);
 		playGame(computerNumbers);
 	}
-	
-	public static List<Integer> getPlayerNumbers() {
 
-		System.out.print("숫자를 입력해주세요 : ");
-		String input = Console.readLine();
-		
+	public static List<Integer> getPlayerNumbers(String input) {
+
 		boolean isNumeric = isNumeric(input);
 		boolean isSameLength = input.length() == LENGTH;
 		if (!isNumeric || !isSameLength) {
@@ -91,13 +88,13 @@ public class Application {
 
 				throw new IllegalArgumentException();
 			}
-			
+
 			playerNumbers.add(number);
 		}
 
 		return playerNumbers;
 	}
-	
+
 	public static boolean isNumeric(String input) {
 
 		try {
@@ -139,17 +136,17 @@ public class Application {
 		}
 		return count;
 	}
-	
+
 	public static void endGame() {
 
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 		String result = Console.readLine();
-		
+
 		// ㅜ false
 		// System.out.println(input == "1");
-		
+
 		if (result.equals("1")) {
 
 			List<Integer> computerNumbers = getComputerNumbers();
