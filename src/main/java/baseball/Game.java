@@ -13,7 +13,15 @@ public class Game {
     }
 
     private static void play() {
-
+        List<Integer> hitCount;
+        List<Integer> secretNumber = createSecretNumber();
+        do {
+            hitCount = initHitCount();
+            Integer totalNumber = inputTotalNumber();
+            hitCount = checkTotalNumberCount(totalNumber, secretNumber);
+            showHitCount(hitCount);
+        } while(!checkWin(hitCount));
+        System.out.println("3대의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static Integer inputTotalNumber() {
