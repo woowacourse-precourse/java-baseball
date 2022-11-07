@@ -22,16 +22,11 @@ public class Application {
     }
 
     private static void playGame() {
-        List<Integer> computer = new ArrayList<>();
-        List<Integer> user = new ArrayList<>();
-        user = getUserInput();
-        computer = makeComputerNumber();
-
-        //사용자_입력_테스트 || 예외_테스트() 용 출력
-        //System.out.println(computer);
+        List<Integer> computer = makeComputerNumber();
+        List<Integer> user = getUserInput();
 
         List<Integer> ballStrike;
-        while(true) {
+        while (true) {
             ballStrike = compareList(user, computer);
             printResult(ballStrike);
             if (ballStrike.get(0) == numberLength) {
@@ -42,6 +37,7 @@ public class Application {
     }
 
     private static List<Integer> getUserInput() {
+        System.out.print("숫자를 입력해주세요 : ");
         int input = Integer.parseInt(readLine());
         checkInput(Integer.toString(input));
 
@@ -69,7 +65,7 @@ public class Application {
     private static String deleteDuplicate(String input) {
         String inputAfterDelete = "";
         for (int i = 0; i < input.length(); i++) {
-            if(input.indexOf(input.charAt(i)) == i) {
+            if (input.indexOf(input.charAt(i)) == i) {
                 inputAfterDelete += input.charAt(i);
             }
         }
@@ -112,6 +108,11 @@ public class Application {
     private static void printResult(List<Integer> ballStrike) {
         int strike = ballStrike.get(0);
         int ball = ballStrike.get(1);
+        if (strike == 3 && ball == 0) {
+            System.out.println(strike + "스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return;
+        }
         if (strike > 0 && ball == 0) {
             System.out.println(strike + "스트라이크");
             return;
@@ -121,7 +122,7 @@ public class Application {
             return;
         }
         if (strike > 0 && ball > 0 && strike < 3 && ball < 3) {
-            System.out.println(strike + "스트라이크 " + ball + "볼");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
             return;
         }
         System.out.println("낫싱");

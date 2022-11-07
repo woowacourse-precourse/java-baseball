@@ -10,13 +10,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @Disabled("테스트 출력 함수 삭제로 테스트 불가")
     @Test
     void 사용자_입력_테스트() {
         run("246", "2");
         assertThat(output()).contains("2", "4", "6");
     }
 
-    @Disabled("기능 구현할 때까지 비활성화")
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -25,6 +25,17 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
                 },
                 1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
+    void 게임종료() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "145", "671", "216", "713", "2");
+                    assertThat(output()).contains("1볼 1스트라이크", "1볼", "2볼", "1스트라이크", "3스트라이크", "게임 종료");
+                },
+                7, 1, 3, 5, 1, 7
         );
     }
 
