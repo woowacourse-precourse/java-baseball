@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Ball 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
@@ -24,11 +25,10 @@ class BallTest {
         @Nested
         class 만약_0과_3사이의_값을_입력받으면 {
 
-            @Test
-            void Ball_객체를_리턴한다() {
-                for (int i = BALL_LOWER_BOUND; i < BALL_UPPER_BOUND; i++) {
-                    assertThat(Ball.valueOf(i)).isInstanceOf(Ball.class);
-                }
+            @ParameterizedTest
+            @ValueSource(ints = {0, 1, 2, 3})
+            void Ball_객체를_리턴한다(int count) {
+                assertThat(Ball.valueOf(count)).isInstanceOf(Ball.class);
             }
         }
 

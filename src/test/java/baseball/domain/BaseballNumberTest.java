@@ -10,6 +10,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("BaseballNumber 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
@@ -22,11 +24,10 @@ class BaseballNumberTest {
         @Nested
         class 만약_1과_9사이의_값을_입력받으면 {
 
-            @Test
-            void BaseballNumber_객체를_반환한다() {
-                for (int i = BASEBALL_NUMBER_LOWER_BOUND; i < BASEBALL_NUMBER_UPPER_BOUND; i++) {
-                    assertThat(BaseballNumber.valueOf(i)).isInstanceOf(BaseballNumber.class);
-                }
+            @ParameterizedTest
+            @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
+            void BaseballNumber_객체를_반환한다(int number) {
+                assertThat(BaseballNumber.valueOf(number)).isInstanceOf(BaseballNumber.class);
             }
         }
 

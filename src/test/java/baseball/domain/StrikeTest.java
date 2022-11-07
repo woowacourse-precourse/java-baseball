@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Strike 클래스")
 @SuppressWarnings({"InnerClassMayBeStatic", "NonAsciiCharacters"})
@@ -23,12 +24,11 @@ class StrikeTest {
 
         @Nested
         class 만약_0과_3사이의_값을_입력받으면 {
-
-            @Test
-            void Strike_객체를_리턴한다() {
-                for (int i = STRIKE_LOWER_BOUND; i < STRIKE_UPPER_BOUND; i++) {
-                    assertThat(Strike.valueOf(i)).isInstanceOf(Strike.class);
-                }
+            
+            @ParameterizedTest
+            @ValueSource(ints = {0, 1, 2, 3})
+            void Strike_객체를_리턴한다(int count) {
+                assertThat(Strike.valueOf(count)).isInstanceOf(Strike.class);
             }
         }
 
