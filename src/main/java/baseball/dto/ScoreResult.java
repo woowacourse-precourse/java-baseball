@@ -3,10 +3,12 @@ package baseball.dto;
 public class ScoreResult {
     private int strike;
     private int ball;
+    private ScoreResultType scoreResultType;
 
     private ScoreResult(Builder builder) {
         this.strike = builder.strike;
         this.ball = builder.ball;
+        scoreResultType = initializeType();
     }
 
     public int getStrike() {
@@ -17,17 +19,22 @@ public class ScoreResult {
         return ball;
     }
 
-    public ScoreResultType getType() {
+    private ScoreResultType initializeType() {
         if (allStrike()) {
             return ScoreResultType.ALL_STRIKE;
         } else if (onlyStrike()) {
             return ScoreResultType.STRIKE;
         } else if (onlyBall()) {
             return ScoreResultType.BALL;
-        } else if (strikeAndBall()) {
-            return ScoreResultType.STRIKE_BALL;
+        } else if (ballAndStrike()) {
+            return ScoreResultType.BALL_STRIKE;
         }
         return ScoreResultType.NOTHING;
+    }
+
+
+    public ScoreResultType getScoreResultType() {
+        return scoreResultType;
     }
 
     private boolean onlyBall() {
@@ -38,7 +45,7 @@ public class ScoreResult {
         return strike > 0 && ball == 0;
     }
 
-    private boolean strikeAndBall() {
+    private boolean ballAndStrike() {
         return strike > 0 && ball > 0;
     }
 
