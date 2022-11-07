@@ -45,10 +45,6 @@ public class Balls {
         throw new IllegalArgumentException(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
     }
 
-    public int getSize() {
-        return balls.size();
-    }
-
     public boolean isContain(Ball ball) {
         return balls.contains(ball);
     }
