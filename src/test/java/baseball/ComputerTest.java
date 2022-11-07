@@ -14,23 +14,23 @@ import static org.mockito.Mockito.mockStatic;
 public class ComputerTest {
 
     @Test
-    void testing_컴퓨터_숫자생성(){
+    void testing_컴퓨터_숫자생성() {
 
-        try (final MockedStatic<Randoms> mock=mockStatic(Randoms.class)){
+        try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
             Computer computer = new Computer();
-            mock.when(()->Randoms.pickNumberInRange(anyInt(),anyInt())).thenReturn(1,3,5);
+            mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt())).thenReturn(1, 3, 5);
             computer.makeRandomNumber();
-            assertThat(computer.isSameNumber(List.of(1,3,5))).isTrue();
+            assertThat(computer.isSameNumber(List.of(1, 3, 5))).isTrue();
         }
     }
 
     @Test
-    void testing_컴퓨터_중복_숫자생성(){
-        try (final MockedStatic<Randoms> mock=mockStatic(Randoms.class)){
+    void testing_컴퓨터_중복_숫자생성() {
+        try (final MockedStatic<Randoms> mock = mockStatic(Randoms.class)) {
             Computer computer = new Computer();
-            mock.when(()->Randoms.pickNumberInRange(anyInt(),anyInt())).thenReturn(3,5,5,1,3,5);
+            mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt())).thenReturn(3, 5, 5, 1, 3, 5);
             computer.makeRandomNumber();
-            assertThat(computer.isSameNumber(List.of(1,3,5))).isTrue();
+            assertThat(computer.isSameNumber(List.of(1, 3, 5))).isTrue();
         }
     }
 

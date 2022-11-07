@@ -10,20 +10,20 @@ public class Computer {
     BaseBallNumber number;
 
     public void makeRandomNumber() {
-        while (true){
+        while (true) {
             try {
                 List<Integer> numberList = randomNumberGenerate();
-                number= BaseBallNumber.of(numberList);
+                number = BaseBallNumber.of(numberList);
                 return;
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
             }
         }
     }
 
     private List<Integer> randomNumberGenerate() {
-        List<Integer> numberList=new ArrayList<>();
-        for(int i=0;i<3;i++){
-            numberList.add(Randoms.pickNumberInRange(1,9));
+        List<Integer> numberList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            numberList.add(Randoms.pickNumberInRange(1, 9));
         }
         return numberList;
     }

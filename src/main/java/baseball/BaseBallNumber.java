@@ -7,23 +7,23 @@ import java.util.stream.Collectors;
 public class BaseBallNumber {
 
     List<Integer> number;
-    final static int BASE_BALL_NUMBER_MAX_SIZE=3;
+    final static int BASE_BALL_NUMBER_MAX_SIZE = 3;
 
     public BaseBallNumber(List<Integer> number) {
-        if(hasSameNumber(number) || isNotNumberSizeIsThree(number)){
+        if (hasSameNumber(number) || isNotNumberSizeIsThree(number)) {
             throw new IllegalArgumentException();
         }
-        this.number=number;
+        this.number = number;
     }
 
     public boolean hasSameNumber(List<Integer> number) {
         long count = number.stream().distinct().count();
-        if(count!= number.size()) return true;
+        if (count != number.size()) return true;
         return false;
     }
 
     private boolean isNotNumberSizeIsThree(List<Integer> number) {
-        if(number.size()!=BASE_BALL_NUMBER_MAX_SIZE) return true;
+        if (number.size() != BASE_BALL_NUMBER_MAX_SIZE) return true;
         return false;
     }
 
