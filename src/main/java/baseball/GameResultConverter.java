@@ -9,12 +9,12 @@ public class GameResultConverter {
             return "낫싱";
         }
         if (isOnlyBall(gameResult)) {
-            return gameResult.get(1) + " 볼";
+            return gameResult.get(1) + "볼";
         }
         if (isOnlyStrike(gameResult)) {
-            return gameResult.get(0) + " 스트라이크";
+            return gameResult.get(0) + "스트라이크";
         }
-        return gameResult.get(1) + " 볼 " + gameResult.get(0) + " 스트라이크";
+        return gameResult.get(1) + "볼 " + gameResult.get(0) + "스트라이크";
     }
     private static boolean isNothing(List<Integer> gameResult) {
         return gameResult.get(2) != 0;

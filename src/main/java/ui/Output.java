@@ -11,4 +11,5 @@ public interface Output {
 
     void printRequestRestartGameInput();
 
+    void printGameResult(String buffer);
 }
