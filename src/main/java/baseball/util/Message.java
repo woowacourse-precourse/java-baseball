@@ -1,7 +1,5 @@
 package baseball.util;
 
-import java.util.List;
-
 public class Message {
 
     private static final String INITIAL_GAME_START = "숫자 야구 게임을 시작합니다.";
@@ -41,7 +39,7 @@ public class Message {
     }
 
     public void askPlayerReplayMessage() {
-        System.out.print(START_NEW_GAME);
+        System.out.println(START_NEW_GAME);
     }
 
 }
