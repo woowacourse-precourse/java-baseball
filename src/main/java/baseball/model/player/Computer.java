@@ -1,7 +1,7 @@
 package baseball.model.player;
 
 import static baseball.model.Constant.END_RANDOM_NUMBER_RANGE;
-import static baseball.model.Constant.RANDOM_NUMBERS_SIZE;
+import static baseball.model.Constant.GAME_NUMBERS_SIZE;
 import static baseball.model.Constant.START_RANDOM_NUMBER_RANGE;
 
 import baseball.model.hint.Hint;
@@ -15,7 +15,7 @@ public class Computer {
 
     public void createRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < RANDOM_NUMBERS_SIZE) {
+        while (randomNumbers.size() < GAME_NUMBERS_SIZE) {
             Integer randomNumber = createRandomNumber();
             addRandomNumber(randomNumbers, randomNumber);
         }
