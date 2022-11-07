@@ -8,6 +8,7 @@ public class ResultPrinter {
     public ResultPrinter() {
         isCorrect = false;
     }
+
     public void printResult(String input, String createdNumber) {
         final int STRIKE_INDEX = 0;
         final int BALL_INDEX = 1;
@@ -20,15 +21,23 @@ public class ResultPrinter {
         List<Integer> result = resultValidator.validate(input, createdNumber);
         int strike = result.get(STRIKE_INDEX);
         int ball = result.get(BALL_INDEX);
+        StringBuilder stringBuilder = new StringBuilder();
+
         if (ball != 0) {
-            System.out.println(ball + BALL_STRING);
+            stringBuilder.append(ball + BALL_STRING + " ");
         }
         if (strike != 0) {
-            System.out.println(strike + STRIKE_STRING);
+            stringBuilder.append(strike + STRIKE_STRING + " ");
         }
         if (strike == 0 && ball == 0) {
-            System.out.println(NOTHING_STRING);
+            stringBuilder.append(NOTHING_STRING);
         }
+        String resultStr = stringBuilder.toString();
+        if (resultStr.endsWith(" ")) {
+            resultStr = resultStr.substring(0, resultStr.length() - 1);
+        }
+        System.out.println(resultStr);
+
         if (strike == 3) {
             isCorrect = true;
             System.out.println(CORRECT_MESSAGE);
