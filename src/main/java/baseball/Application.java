@@ -29,4 +29,13 @@ public class Application {
         input = Console.readLine();
         return input;
     }
+    private static void ableToParseInt(String input){
+        try {
+            int temp=0;
+            temp=Integer.parseInt(input);
+        }catch (Exception e){
+            IllegalArgumentException exception = new IllegalArgumentException();
+            throw exception;
+        }
+    }
 }
