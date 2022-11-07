@@ -9,7 +9,7 @@ public class User {
     private static final int INPUT_SIZE = 3;
     private String user_input_string = "";
     public void userInput() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         user_input_string = Console.readLine();
         checkInput(user_input_string);
     }
@@ -19,6 +19,16 @@ public class User {
             input.add(Character.getNumericValue(user_input_string.charAt(i)));
         }
         return input;
+    }
+    public int userReGameInput() {
+        String input = Console.readLine();
+        if (Integer.parseInt(input) == 1) {
+            return 1;
+        } else if (Integer.parseInt(input) == 2) {
+            return 2;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
     private void checkInput(String input) {
         if (!checkInputLength(input)) {
