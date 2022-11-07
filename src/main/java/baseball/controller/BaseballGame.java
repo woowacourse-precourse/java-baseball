@@ -19,6 +19,10 @@ public class BaseballGame {
 
     public void play() {
         OutputView.startGame();
+        start();
+    }
+
+    private void start() {
         computer.generateAnswer();
         boolean isRun = true;
         while (isRun) {
@@ -42,6 +46,7 @@ public class BaseballGame {
     private void printResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             OutputView.printNothing();
+            return;
         }
         OutputView.printStrikeAndBall(strike, ball);
     }
@@ -49,7 +54,7 @@ public class BaseballGame {
     private void restartOrEnd() {
         GameStatus status = GameStatus.getGameStatus(InputView.restart());
         if (status.isRestart()) {
-            play();
+            start();
         }
     }
 
