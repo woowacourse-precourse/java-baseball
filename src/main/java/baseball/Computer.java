@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    List<Integer> computer = new ArrayList<>();
+    private List<Integer> computer = new ArrayList<>();
 
-    public Computer(){
+    public Computer() {
 
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -16,5 +16,11 @@ public class Computer {
                 computer.add(randomNumber);
             }
         }
+
+        System.out.println(computer.toString());
+    }
+
+    public List<Integer> get_number() {
+        return computer;
     }
 }
