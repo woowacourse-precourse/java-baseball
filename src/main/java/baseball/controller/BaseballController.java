@@ -18,7 +18,17 @@ public class BaseballController {
     }
 
     public boolean restart() {
-        return true;
+        String choice = inputView.controllGame();
+        boolean startFlag = true;
+        if (choice.equals("1")) {
+            baseBallService.resetGame();
+        }
+
+        if (choice.equals("2")) {
+            startFlag = false;
+        }
+
+        return startFlag;
     }
 
     public void inProgress() {
