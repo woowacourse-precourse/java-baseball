@@ -44,6 +44,64 @@ class ApplicationTest extends NsTest {
         assertThat(result.stream().allMatch(x -> x >= 1 && x <= 9)).isTrue();
     }
 
+    // parseUserInput 함수에 올바른 형식의 숫자 문자열이 들어갔을 때 올바른 숫자 리스트가 나오는지
+    @Test
+    void parseUserInput_correct() {
+        //given
+        String iptCorrect[] = {
+                "123",
+                "789",
+                "147",
+                "139",
+                "952"
+        };
+
+        List<List<Integer>> optCorrect = List.of(
+                List.of(1, 2, 3),
+                List.of(7, 8, 9),
+                List.of(1, 4, 7),
+                List.of(1, 3, 9),
+                List.of(9, 5, 2)
+        );
+        //when
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < iptCorrect.length; i++) {
+            result.add(Application.parseUserInput(iptCorrect[i]));
+        }
+        //then
+        for (int i = 0; i < iptCorrect.length; i++) {
+            assertThat(result).isEqualTo(optCorrect);
+        }
+    }
+
+    //parseUserInput 함수에 올바르지 못한 형식의 입력이 들어갔을 때 IllegalArgumentException예외가 던져지는지
+    @Test
+    void parseUserInput_illegal() {
+        //given
+        final String iptIllegal[] = {
+                //길이가 길거나 짧음
+                "",
+                "1",
+                "12",
+                "1234",
+                //자릿수가 중복되는 숫자 존재
+                "111",
+                "122",
+                "212",
+                "221",
+                //0이 존재하는 경우
+                "012",
+                "301",
+                "310"
+        };
+
+        //when & then
+        for (String ipt : iptIllegal) {
+            assertThatThrownBy(() -> Application.parseUserInput(ipt)).
+                    isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
