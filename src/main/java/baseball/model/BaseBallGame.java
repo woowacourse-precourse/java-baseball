@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import baseball.model.*;
 
@@ -8,15 +8,15 @@ import java.util.stream.Stream;
 
 public class BaseBallGame {
 
-    public Map<BaseBallHitsType, Integer> baseBallHitsTypeMap(BallNumbers hits, HomeRunStrategy homeRunStrategy) {
+    public Map<BaseBallHitsType, Integer> baseBallHitsTypeMap(BallNumbers hits, BallNumbersCreateStrategy homeRunStrategy) {
         return BaseBallHitsType.hitsTypeMap(homeRun(homeRunStrategy),hits);
     }
 
-    private BallNumbers homeRun(HomeRunStrategy homeRunStrategy) {
+    private BallNumbers homeRun(BallNumbersCreateStrategy homeRunStrategy) {
        return new BallNumbers(createChars(homeRunStrategy));
     }
 
-    public List<Character> createChars(BallNumbersCreateStrategy homeRunStrategy) {
+    private List<Character> createChars(BallNumbersCreateStrategy homeRunStrategy) {
         List<Integer> ballNumbers = homeRunStrategy.createBallNumbers();
 
         return ballNumbers.stream()
