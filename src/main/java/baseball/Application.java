@@ -22,4 +22,8 @@ public class Application {
 
         return computer;
     }
+
+    public static boolean isRightInput(String input) {
+        return input.matches("^[1-9]{3}$") && input.charAt(0) != input.charAt(1) && input.charAt(1) != input.charAt(2) && input.charAt(2) != input.charAt(0);
+    }
 }
