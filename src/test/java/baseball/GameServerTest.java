@@ -71,6 +71,7 @@ public class GameServerTest {
             gameserver.catchInputException("a12");
         });
     }
+
     @Test
     void 사용자_입력_게임끝난경우_1() {
         GameServer gameserver = new GameServer();
@@ -78,6 +79,7 @@ public class GameServerTest {
             gameserver.decideRestart("3");
         });
     }
+
     @Test
     void 사용자_입력_게임끝난경우_2() {
         GameServer gameserver = new GameServer();
