@@ -82,6 +82,34 @@ class ApplicationTest extends NsTest {
         ;
     }
 
+    @Test
+    void 재시작_다른숫자_입력_테스트() {
+        assertThatThrownBy(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "5");
+                    },
+                    1, 3, 5
+            );
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Constant.END_INPUT_INVALID_END_TYPE);
+        ;
+    }
+
+    @Test
+    void 재시작_두자리_숫자_입력_테스트() {
+        assertThatThrownBy(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "12");
+                    },
+                    1, 3, 5
+            );
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Constant.END_INPUT_INVALID_NUMBER_SIZE);
+        ;
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
