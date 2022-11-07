@@ -129,8 +129,9 @@ public class Application {
             return true;
         } else if (inputNumber == 2){
             return false;
+        } else {
+            throw new IllegalArgumentException();
         }
-        return false;
     }
 
     public static void main(String[] args) {
