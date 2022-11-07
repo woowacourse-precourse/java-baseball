@@ -1,10 +1,10 @@
 # 기능 목록
 ## makeRandomNumbers
-- 정답 만들기: 1에서 9까지 서로 다른 임의의 수 3개를 선택
-- 
+- 1에서 9까지 서로 다른 임의의 수 3개를 선택
+
 ## checkForSameNumbers
 - 서로 다른 임의의 수인지 확인하기 위한 i 값을 반환
-- 
+
 ## splitInputToArray
 - 입력받은 String값은 Array로 변환
 
@@ -17,4 +17,4 @@
   - 있다면 볼
 
 ## playGame
-- 3스트라이크가 될 때까지 playBall
+- 3스트라이크가 될 때까지 playBall 함수 실행
