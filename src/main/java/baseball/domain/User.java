@@ -7,7 +7,6 @@ import java.util.Set;
 import baseball.constants.Constants;
 import camp.nextstep.edu.missionutils.Console;
 
-// 입력한 숫자
 public class User {
 	
 	public ArrayList<Integer> userNumber;
@@ -27,14 +26,12 @@ public class User {
 		}
 	}
 	
-	// 1. 입력한 문자가 3자리 인가?
 	public static void userNumberLength(String word) {
 		if(word.length() != Constants.NUMBER_MAX_LENGTH) {
 			throw new IllegalArgumentException("Length Error");
 		}
 	}
 	
-	// 2. 입력한 문자가 모두 숫자인가?
 	public static void userNumberDigit(String word) {
 		for(int i = 0; i < word.length(); i++) {
 			userNumberDigitCheck(word.charAt(i));
@@ -47,7 +44,6 @@ public class User {
 		}
 	}
 	
-	// 3. 입력한 문자가 모두 숫자이되 중복된 값이 있는가?
 	public static void userNumberSameCheck(String word) {
 		Set<Character> set = new HashSet<>();
 		for(int i = 0; i < word.length(); i++) {
@@ -58,7 +54,21 @@ public class User {
 		}
 	}
 	
-	// 끝날 때 입력
+	public static void userNumberRange(String word) {
+		for(int i = 0; i < word.length(); i++) {
+			userNumberRangeCheck(word.charAt(i));
+		}
+	}
+	
+	public static void userNumberRangeCheck(Character number) {
+		for(int i = Constants.MIN_RANGE; i <= Constants.MAX_RANGE; i++) {
+			if(number == (i - '0')) {
+				return;
+			}
+		}
+		throw new IllegalArgumentException("Not Range in Number");
+	}
+	
 	public static boolean finishInput() throws IllegalArgumentException {
 		return finishNumber(Console.readLine());
 	}
