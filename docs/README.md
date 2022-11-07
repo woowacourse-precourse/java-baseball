@@ -1,17 +1,15 @@
 # 기능 구현 목록
 
-## 최종
+## package & class
 - constant : 프로그램에서 쓰이는 상수들을 모아놓은 패키지
   - GameConstants : 프로그램 내부에서 쓰이는 상수들
   - ViewConstants : 사용자에게 보이는 문장들을 상수로 선언
 - controller : view와 domain을 control하는 controller들을 모아놓은 패키지
-  - GameController : 정답을 생성하고 유저의 입력을 받아서 정답과 비교하여 결과를 출력하는 과정을 컨트롤
-  - RestartController : 게임의 재시작 여부를 물어보고 유저의 입려을 받아서 재시작할지 여부를 결정하는 과정을 컨트롤
+  - GameController : 정답을 생성하고 유저의 입력을 받아서 정답과 비교하여 결과를 출력하는 과정, 게임의 재시작 여부를 물어보고 유저의 입려을 받아서 재시작할지 여부를 결정하는 과정을 컨트롤
 - domain : 숫자야구의 핵심 로직을 담은 패키지
-  - Comparator : 정답과 사용자의 입력을 비교하는 로직
+  - NumberComparator : 정답과 사용자의 입력을 비교하는 로직
 - util : 프로그램에서 특정 기능을 하는 클래스들을 모아놓은 패키지
   - Converter : 유저의 입력을 정수 리스트로 변환
-  - InputGetter : 유저의 입력을 문자열로 반환
   - RandomNumberGenerator : 서로 다른 세 자리수를 생성
   - Validator : 입력에 대한 예외를 처리하는 기능
 - view : 사용자에게 직접 보이는 기능들을 모아놓은 패키지
