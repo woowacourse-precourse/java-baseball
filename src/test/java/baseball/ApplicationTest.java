@@ -110,4 +110,13 @@ class ApplicationTest extends NsTest {
 			systemMessage.PrintGoal());
 	}
 
+	@Test
+	void 숫자의_사이즈확인() {
+		String input = "1234";
+
+		assertThatThrownBy(() -> {
+			exception.checkSize(input);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
 }
