@@ -9,12 +9,12 @@ public class Application {
     public static void main(String[] args) {
         boolean run = true;
         boolean finish = true;
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        GameStarter.printStartingMent();
         while (run && finish) {
             finish = false;
             GameManager game = new GameManager();
             Database data = new Database();
-            data.setAnswer(game.createAnswer());
+            data.setAnswer(GameStarter.createAnswer());
             while (!finish) {
                 data.setUserInput(game.userInput());
                 game.checkInputException(data.getUserInput());
@@ -29,13 +29,10 @@ public class Application {
     }
 }
 
-class GameManager {
-    int numberSize = 3;
-    int restart = 1;
-    int terminate = 2;
-    public List<Integer> createAnswer() {
+class GameStarter {
+    public static List<Integer> createAnswer() {
         List<Integer> answer = new ArrayList<>();
-        while (answer.size() < numberSize) {
+        while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
@@ -43,6 +40,15 @@ class GameManager {
         }
         return answer;
     }
+    public static void printStartingMent() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+}
+
+class GameManager {
+    int numberSize = 3;
+    int restart = 1;
+    int terminate = 2;
 
     public List<Integer> userInput() {
         List<Integer> intUserInput = new ArrayList<>();
