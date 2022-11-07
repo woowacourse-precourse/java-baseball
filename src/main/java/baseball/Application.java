@@ -3,9 +3,9 @@ package baseball;
 import baseball.data.BaseballData;
 import baseball.data.NumberParser;
 import baseball.data.NumberReferee;
+import baseball.data.ComputerInput;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashSet;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -15,12 +15,13 @@ public class Application {
         StartNumberBaseballGame();
     }
 
-    public static void StartNumberBaseballGame(){
+    public static void StartNumberBaseballGame() {
         List<Integer> computer;
-        do{
-            computer = GenerateComputerNumbers();
+        ComputerInput computerInput = new ComputerInput();
+        do {
+            computer = computerInput.GenerateComputerNumbers();
             StartGuessingPhase(computer);
-        }while(StartQuestioningPhase());
+        } while (StartQuestioningPhase());
     }
 
     public static void StartGuessingPhase(List<Integer> computer) {
@@ -29,7 +30,7 @@ public class Application {
         List<Integer> player;
         int strike = 0;
         int ball = 0;
-        while(strike != NumberParser.NUMBER_LENGTH) {
+        while (strike != NumberParser.NUMBER_LENGTH) {
             player = numberParser.parsePlayerNumber();
             strike = numberReferee.checkStrike(player, computer);
             ball = numberReferee.checkBall(player, computer);
@@ -42,29 +43,28 @@ public class Application {
         String input;
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
         input = Console.readLine();
 
         if (input.equals(BaseballData.RESTART)) {
             return true;
-        } else if(input.equals(BaseballData.GAME_OVER)) {
+        } else if (input.equals(BaseballData.GAME_OVER)) {
             return false;
         }
 
         throw new IllegalArgumentException("1과 2만 허용됩니다.");
     }
 
-    public static void PrintResult(int strike, int ball){
-        if(strike == 0 && ball == 0){
+    public static void PrintResult(int strike, int ball) {
+        if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             return;
         }
-        if(ball > 0){
+        if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
-        if(strike > 0){
+        if (strike > 0) {
             System.out.print(strike + "스트라이크");
-            if(strike == 3){
+            if (strike == 3) {
                 System.out.println();
                 System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             }
@@ -72,27 +72,27 @@ public class Application {
         System.out.println();
     }
 
-    public static int CheckStrike(List<Integer> computer, List<Integer> player){
+    public static int CheckStrike(List<Integer> computer, List<Integer> player) {
         int strike = 0;
-        for(int index = 0; index < computer.size(); index ++){
-            if(computer.get(index) == player.get(index)){
-                strike ++;
+        for (int index = 0; index < computer.size(); index++) {
+            if (computer.get(index) == player.get(index)) {
+                strike++;
             }
         }
         return strike;
     }
 
 
-    public static int CheckBall(List<Integer> computer, List<Integer> player){
+    public static int CheckBall(List<Integer> computer, List<Integer> player) {
         int ball = 0;
-        for(int index = 0; index< computer.size(); index ++){
-            if(computer.contains(player.get(index))){
+        for (int index = 0; index < computer.size(); index++) {
+            if (computer.contains(player.get(index))) {
                 ball++;
             }
         }
         return ball;
     }
-
+/*
     public static List<Integer> GeneratePlayerNumbers(){
         List<Integer> player = new ArrayList<>();
         String input = Console.readLine();
@@ -115,17 +115,5 @@ public class Application {
             throw new IllegalArgumentException("숫자를 3개만 입력해주세요.");
         }
     }
-
-    public static List<Integer> GenerateComputerNumbers(){
-        List<Integer> computer = new ArrayList<>(0);
-        int randomNumber;
-
-        while(computer.size() < BaseballData.SIZE){
-            randomNumber = Randoms.pickNumberInRange(BaseballData.MINIMUM_NUMBER, BaseballData.MAXIMUM_NUMBER);
-            if(!computer.contains(randomNumber)){
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
-    }
+*/
 }

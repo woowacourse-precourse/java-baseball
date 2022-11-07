@@ -28,7 +28,7 @@ public class NumberParser {
         try{
             tempNumbers = Integer.parseInt(tempPlayerString);
             parsedNumbers = divideNumbers(tempNumbers);
-            checkExceptions(parsedNumbers);
+            checkGuessPhaseExceptions(parsedNumbers);
         }
         catch(Exception e){
             throw new IllegalArgumentException("잘못된 입력입니다.");
@@ -44,7 +44,7 @@ public class NumberParser {
      * @param parsedNumbers 플레이어가 입력한 숫자 리스트
      * @throws IllegalArgumentException
      */
-    public void checkExceptions(List<Integer> parsedNumbers) throws IllegalArgumentException {
+    public void checkGuessPhaseExceptions(List<Integer> parsedNumbers) throws IllegalArgumentException {
         Set<Integer> tempSet = new HashSet<Integer>(parsedNumbers);
         if(tempSet.size() != parsedNumbers.size()){
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
