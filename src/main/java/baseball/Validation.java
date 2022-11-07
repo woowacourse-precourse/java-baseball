@@ -8,7 +8,7 @@ import java.util.Set;
 public class Validation {
     public static void checkInput(String input) {
         if (!isThreeLength(input) || !isInRange(input) || !isNotDuplicate(input)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
@@ -35,7 +35,7 @@ public class Validation {
 
     public static void isRestartOrEnd(String input) {
         if (!input.equals("1") && !input.equals("2")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 }
