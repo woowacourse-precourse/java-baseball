@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -7,8 +8,47 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        List<Integer> computer = getNewNumber();
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (true) {
+            System.out.println("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+
+            if (!isRightInput(input)) {
+                throw new IllegalArgumentException();
+            }
+
+            String output = "";
+            int strikeCount = getStrikeCount(computer, input);
+            int ballCount = getBallCount(computer, input);
+
+            if (ballCount != 0) {
+                output += String.valueOf(ballCount);
+                output += "볼 ";
+            }
+
+            if (strikeCount != 0) {
+                output += String.valueOf(strikeCount) + "스트라이크";
+            }
+
+            if (ballCount == 0 && strikeCount == 0) {
+                output = "낫싱";
+            }
+
+            System.out.println(output);
+
+            if (strikeCount != 3) continue;
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            input = Console.readLine();
+            if (!input.matches("^[1-2]$")) throw new IllegalArgumentException();
+            else if (input.equals("2")) break;
+            computer = getNewNumber();
+
+        }
     }
+
 
     public static List<Integer> getNewNumber() {
         List<Integer> computer = new ArrayList<>();
