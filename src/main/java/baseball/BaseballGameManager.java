@@ -45,12 +45,16 @@ public class BaseballGameManager {
                 .collect(Collectors.toList());
 
         strikeCount = (int) IntStream.range(0, 3)
-                .filter(idx -> randomNumbers.get(idx).equals(inputNumbers.get(idx)))
+                .filter(idx -> isStrike(idx, inputNumbers))
                 .count();
 
         ballCount = (int) IntStream.range(0, 3)
                 .filter(idx -> randomNumbers.contains(inputNumbers.get(idx)))
-                .filter(idx -> !randomNumbers.get(idx).equals(inputNumbers.get(idx)))
+                .filter(idx -> !isStrike(idx, inputNumbers))
                 .count();
+    }
+
+    private boolean isStrike(int idx, List<Integer> inputNumbers) {
+        return randomNumbers.get(idx).equals(inputNumbers.get(idx));
     }
 }
