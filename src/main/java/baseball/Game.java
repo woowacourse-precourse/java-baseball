@@ -38,6 +38,7 @@ public class Game {
         Score score = Score.getResult(computer.getNumbers(), user.getNumbers());
         if (score.checkThreeStrike()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            computer.generateRandomNumbers();
             return restart();
         }
         return false;
