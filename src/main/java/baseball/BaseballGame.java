@@ -37,6 +37,22 @@ public class BaseballGame {
                 ballCount++;
             }
         }
+        printHint(strikeCount, ballCount);
+    }
+
+    public void printHint(int strikeCount, int ballCount) {
+        if (strikeCount == 0 && ballCount != 0) { // 볼만 있는 경우
+            System.out.print(ballCount+"볼\n");
+        } else if (strikeCount != 0 && ballCount == 0) { // 스트라이크만 있는 경우
+            System.out.print(strikeCount+"스트라이크\n");
+        } else if (strikeCount == 0 && ballCount == 0) { // 낫싱
+            System.out.print("낫싱\n");
+        } else { // 볼, 스트라이크 모두 있는 경우
+            System.out.print(ballCount + "볼 " + strikeCount + "스트라이크\n");
+        }
+        if (strikeCount==3) {
+            // TODO: 게임 종료 함수 호출
+        }
     }
 
     public void startGame() {
