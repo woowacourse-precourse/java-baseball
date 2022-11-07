@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -104,22 +105,28 @@ public class Game {
     }
 
     private void calculateBall() {
-        String[] randomNumberArr = getSplit(randomNumber);
-        String[] userNumberArr = getSplit(userNumber);
-        for(int i=0; i<NUMBER_LENGTH; i++) {
-            for (int k = 0; k < NUMBER_LENGTH; k++) {
-                if (randomNumberArr[i].equals(userNumberArr[k]) && i != k) {
-                    ball++;
-                }
+        List<String> randomDigits = Arrays.asList(getSplit(randomNumber));
+        List<String> userDigits = Arrays.asList(getSplit(userNumber));
+        for(String userDigit: userDigits) {
+            boolean isContained = randomDigits.contains(userDigit);
+            int randomIndex = randomDigits.indexOf(userDigit);
+            int userIndex = userDigits.indexOf(userDigit);
+            boolean isBall = randomIndex != userIndex;
+            if(isContained && isBall) {
+                ball++;
             }
         }
     }
 
     private void calculateStrike() {
-        String[] randomNumberArr = getSplit(randomNumber);
-        String[] userNumberArr = getSplit(userNumber);
-        for(int i=0; i<NUMBER_LENGTH; i++) {
-            if(randomNumberArr[i].equals(userNumberArr[i])) {
+        List<String> randomDigits = Arrays.asList(getSplit(randomNumber));
+        List<String> userDigits = Arrays.asList(getSplit(userNumber));
+        for(String userDigit: userDigits) {
+            boolean isContained = randomDigits.contains(userDigit);
+            int randomIndex = randomDigits.indexOf(userDigit);
+            int userIndex = userDigits.indexOf(userDigit);
+            boolean isStrike = randomIndex == userIndex;
+            if(isContained && isStrike) {
                 strike++;
             }
         }
