@@ -1,7 +1,10 @@
 package baseball.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import baseball.model.Game;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -29,7 +32,13 @@ public class GameService {
             }
         }
 
-        //TODO: 중복 입력 방지
+        boolean isDuplicated = numbers.stream()
+               .distinct()
+               .count() != numbers.size();
+
+        if(isDuplicated) {
+            throw new IllegalArgumentException("중복되는 숫자는 입력할 수 없습니다.");
+        }
     }
 
     public Game initAnswer(Game game) {
