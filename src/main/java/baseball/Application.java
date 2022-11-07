@@ -19,25 +19,21 @@ public class Application {
 	static int ball = 0;
 	
     public static void main(String[] args) {
-    	// 게임 시작 메시지 출력.
+
 		gameStart();
 		
     	while(start==1) {
-	    	// 랜덤 수 발생
+
     		computer = makeComputer();
-    		// 게임 실행 메서드
+
     		game();
     	}
-    	
-    	
     }
     
-    // 게임 시작 출력 메서드
     public static void gameStart() {
     	System.out.println(startMessage);
     }
-    
-    // 컴퓨터 수 생성 메서드
+ 
     public static List<Integer> makeComputer() {
     	
     	List<Integer> list = new ArrayList<>();
@@ -66,7 +62,7 @@ public class Application {
     		exceptionCheck = checkException();
     		
     		if(exceptionCheck) {
-    			//두 수 비교 메서드
+    			
     			ball = 0;
     			strike = 0;
     			compare(computer,inputNumber);
@@ -89,7 +85,6 @@ public class Application {
     	return s;
     }
     
-    // 예외 발생 확인 메서드
     public static boolean checkException() {
     	if(inputNumber.length()==3&&!inputNumber.contains("0")&&checkType(inputNumber)&&checkDiff(inputNumber)) {
     		return true;
@@ -97,7 +92,6 @@ public class Application {
     		return false;
     }
     
-    // 정수 입력 확인
     public static boolean checkType(String inputNumber) {
     	
     	char[] arr = inputNumber.toCharArray();
@@ -112,7 +106,7 @@ public class Application {
     	else
     		return false;
     }
-    // 다른 숫자 3개로 이루어져 있는지 확인
+
     public static boolean checkDiff(String inputNumber) {
     	char[] arr = inputNumber.toCharArray();
     	Map<Character,Object> inputMap = new HashMap<>();
@@ -124,7 +118,7 @@ public class Application {
     	if(inputMap.size()<3)return false;
     	else return true; 
     }
-    // 컴퓨터 수와 사용자 수 비교
+
     public static void compare(List<Integer> computer, String inputNumber) {
     	char[] arr = inputNumber.toCharArray();
     	for(int i=0;i<arr.length;i++) {
@@ -135,7 +129,6 @@ public class Application {
     		}
     }
     
-    // 결과 출력 메서드
     public static void resultPrint(int ball, int strike) {
     	
     	if(strike==0&&ball==0) {
@@ -155,7 +148,6 @@ public class Application {
     	}
     }
     
-    // 3스트라이크 출력 및 게임 재시작 메서드
     public static int successMessage() {
     	int coin = 0;
     	System.out.println(strike+"스트라이크");
