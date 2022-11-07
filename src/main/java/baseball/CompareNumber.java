@@ -9,7 +9,6 @@ import java.util.Objects;
 
 public class CompareNumber {
 
-    // 사용자가 입력한 숫자와 컴퓨터가 생성한 숫자를 비교하기 위한 메소드
     public GameScore compareNumber(User user, Computer computer) {
         List<List<Integer>> compareResult = new ArrayList<>();
         int[] score = {0, 0};
