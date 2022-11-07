@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class BullsAndCows {
 
     private static String answer;
@@ -22,7 +20,7 @@ public class BullsAndCows {
             }
 
             if (isAnswer(predictInput)) {
-                System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                IO.alert_endGame();
                 break;
             } else {
                 printHint(predictInput);
@@ -32,12 +30,11 @@ public class BullsAndCows {
 
     private void startGame() {
         answer = Numbers.setAnswer();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        IO.alert_startGame();
     }
 
     private String getPredictInput() {
-        System.out.print("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        return IO.ask_predict();
     }
 
     private boolean isAnswer(String predictInput) {
@@ -66,17 +63,8 @@ public class BullsAndCows {
             isNothing = true;
         }
 
-        // 출력
-        if (isNothing) {
-            System.out.println("낫싱");
-        }
-        if (ball != 0) {
-            System.out.print(ball + "볼 ");
-        }
-        if (strike != 0) {
-            System.out.print(strike + "스트라이크");
-        }
-        System.out.println();
+        // 힌트 출력
+        IO.alert_hint(strike, ball, isNothing);
     }
 
 }
