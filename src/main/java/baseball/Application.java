@@ -87,6 +87,26 @@ public class Application {
         return count;
     }
 
+    public static Integer countStrike(List<Integer> answer, List<Integer> digits) {
+
+        int count = 0;
+
+        for (int i = 0; i < digits.size(); i++) {
+
+            int digit = digits.get(i);
+
+            for (int j = 0; j < answer.size(); j++) {
+
+                if (answer.get(j) == digit && i == j) {
+                    count++;
+                }
+
+            }
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
 
         boolean status = playGame();
@@ -100,6 +120,7 @@ public class Application {
 
             List<Integer> count = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
             count.add(countBall(answer, digits));
+            count.add(countStrike(answer,digits));
 
             if (checkAnswer(count)) {
                 status = restartGame();
