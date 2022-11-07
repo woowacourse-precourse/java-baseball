@@ -153,3 +153,49 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 구현 기능 목록
+###Computer
+
+- 랜덤 3자리 숫자 생성
+    - 비교를 위해 List<String> 형식으로 생성한다.
+    - 1~9 범위의 숫자 3개를 조합한다.
+    - 3자리 숫자는 모두 서로 다른 수로 이루어져 있다.
+    
+### User
+
+- 사용자가 입력한 값에 따른 3자리 숫자 생성
+    - 비교를 위해 List<String> 형식으로 생성한다.
+- 사용자 입력 값에 대한 유효성 검사
+    - 3자리의 숫자를 입력해야한다.
+    - 첫번째 자리에 0을 입력하면 안된다.
+- 해당 숫자에 대한 ball, strike 결과 계산
+
+### Game
+
+- 게임 실행
+    - play
+        - Computer 객체 생성 : 기준이 되는 랜덤 숫자 생성
+        - 사용자에게 숫자 입력 요청 메시지 출력
+        - User 객체 생성
+- 게임 결과 체크
+    - checkGameResult
+        - 게임 결과에 대한 메시지 출력 : printGameResult
+        - 3스트라이크 일 경우 게임 종료 메시지 출력 및 다음 단계 입력 요청 메시지 출력 및 처리
+- 다음 단계 처리
+    - doNextStep
+        - NextStepInput으로 구분하여 입력에 대한 처리
+    
+### NextStepInput
+
+- 다음 단계 입력에 대한 상수 정의
+    - inputCode
+        - 1 : 재시작
+        - 2 : 종료
+- 입력에 대한 유효성 검사
+    - fromInputCode
+        - 이외의 입력일 경우 Exception 
+    
+### Message
+
+- 입/출력 메시지를 상수화
