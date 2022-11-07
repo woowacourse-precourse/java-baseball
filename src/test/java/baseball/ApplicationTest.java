@@ -53,7 +53,9 @@ class ApplicationTest extends NsTest {
     void 힌트함수_테스트1() {
         String inputNum = "123";
         String comNum = "213";
-        List<Integer> hint = baseBallGame.getHint(inputNum, comNum);
+        BaseBallGame.setUserNumber("123");
+        BaseBallGame.setComputerNumber("213");
+        List<Integer> hint = baseBallGame.getHint();
         int ball = hint.get(0);
         int strike = hint.get(1);
         assertThat(ball).isEqualTo(2);
