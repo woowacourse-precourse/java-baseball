@@ -10,7 +10,9 @@ public class User {
         userInputNumberList = new ArrayList<>();
     }
 
+    private static UserException userException = new UserException();
 
+    public static List<Integer> userInputNumberList;
 
 
 }
