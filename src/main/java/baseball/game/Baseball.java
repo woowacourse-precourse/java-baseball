@@ -34,8 +34,7 @@ public class Baseball {
         List<Integer> computerNumbers = getComputerNumbers();
 
         while (true) {
-            strikeCount = 0;
-            ballCount = 0;
+            initializeCounts();
 
             System.out.println(GAME_STARTED_MESSAGE);
             System.out.print(INPUT_NUMBER_MESSAGE);
@@ -51,6 +50,11 @@ public class Baseball {
                 break;
             }
         }
+    }
+
+    private void initializeCounts() {
+        strikeCount = 0;
+        ballCount = 0;
     }
 
     private void countStrikeAndBall(List<Integer> computerNumbers, List<Integer> userNumbers) {
