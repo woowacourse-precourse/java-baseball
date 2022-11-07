@@ -5,25 +5,25 @@ import java.util.Set;
 
 public class CheckException {
 
-    public static void restartStatusValid(String restartStatus) throws ProgressException {
+    public static void restartStatusValid(String restartStatus) throws ProcessException {
 
         if (!(restartStatus.equals("1")) && !(restartStatus.equals("2"))) {
-            throw new ProgressException("재시작 입력값이 잘못 입력되었습니다. 게임을 종료합니다.");
+            throw new ProcessException("재시작 입력값이 잘못 입력되었습니다. 게임을 종료합니다.");
         }
     }
 
-    public static void inputGameValid(String inputValue) throws ProgressException {
+    public static void inputGameValid(String inputValue) throws ProcessException {
 
         if (inputValue.length() != 3) {
-            throw new ProgressException("입력값의 길이가 다릅니다. 게임을 종료합니다.");
+            throw new ProcessException("입력값의 길이가 다릅니다. 게임을 종료합니다.");
         }
 
         if (!isNumeric(inputValue)) {
-            throw new ProgressException("입력값의 형식이 다릅니다. 게임을 종료합니다.");
+            throw new ProcessException("입력값의 형식이 다릅니다. 게임을 종료합니다.");
         }
 
         if (!isDiffAllDigits(inputValue)) {
-            throw new ProgressException("입력값에 중복이 있습니다. 게임을 종료합니다.");
+            throw new ProcessException("입력값에 중복이 있습니다. 게임을 종료합니다.");
         }
     }
 
