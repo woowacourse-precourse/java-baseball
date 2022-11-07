@@ -55,4 +55,17 @@ public class GamerTest {
         }
     }
 
+    @Test
+    void 입력값이_replay_혹은_quit_의_숫자값이_아니면_예외를_발생시킨다() {
+        // Given
+        String input = "4";
+
+        // When
+        command(input);
+
+        // Then
+        assertThatThrownBy(() -> gamer.inputPlayAgainOrNot())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
