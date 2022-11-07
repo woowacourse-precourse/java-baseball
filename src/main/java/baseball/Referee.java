@@ -5,11 +5,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Referee {
-	private static final int PLAYING_NUMBER_SIZE = 3;
-	private static final String STRIKE_MESSAGE = "%d스트라이크";
-	private static final String BALL_MESSAGE = "%d볼";
-	private static final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크";
-	private static final String NOTHING_MESSAGE = "낫싱";
+	private final int PLAYING_NUMBER_SIZE = 3;
+	private final String STRIKE_MESSAGE = "%d스트라이크";
+	private final String BALL_MESSAGE = "%d볼";
+	private final String BALL_STRIKE_MESSAGE = "%d볼 %d스트라이크";
+	private final String NOTHING_MESSAGE = "낫싱";
 
 	private final List<Integer> pitcherPlayingNumbers;
 	private final List<Integer> batterPlayingNumbers;
