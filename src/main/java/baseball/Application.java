@@ -1,7 +1,11 @@
 package baseball;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        // 1. 컴퓨터가 1애서 9 사이 서로 다른 임의의 수 3개 선택
+        Computer computer = new Computer();
+        List<Integer> randoms = computer.randoms();
     }
 }
