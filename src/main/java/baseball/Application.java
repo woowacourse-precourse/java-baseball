@@ -4,10 +4,28 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int answerNum = createRandomNum();
+        while(true){
+
+            System.out.print("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            inputValidator(input);
+
+            String ballStrike = compareInput(Integer.toString(answerNum),input);
+            System.out.println(ballStrike);
+            if(Objects.equals(ballStrike, "1")){
+                answerNum = createRandomNum();
+            }
+            if(Objects.equals(ballStrike, "2")){
+                break;
+            }
+
+        }
     }
 
     public static int createRandomNum(){
@@ -29,15 +47,15 @@ public class Application {
 
 
         if(input.length()!=3){
-            return false;
+            throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; i++) {
             if(input.charAt(i)<'1'|| input.charAt(i)>'9'){
-                return false;
+                throw new IllegalArgumentException();
             }
         }
         if(input.charAt(0)==input.charAt(1)||input.charAt(1)==input.charAt(2)||input.charAt(2)==input.charAt(0)){
-            return false;
+            throw new IllegalArgumentException();
         }
         return true;
 
@@ -60,6 +78,18 @@ public class Application {
         if(ball>0){
             return ball+ "볼";
         }
+        if(strike==3){
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String oneTwo = Console.readLine();
+            if(Objects.equals(oneTwo, "2") || Objects.equals(oneTwo, "1")){
+                return oneTwo;
+            }else {
+                throw new IllegalArgumentException();
+            }
+        }
+
         if(strike>0){
             return strike+ "스트라이크";
         }

@@ -33,7 +33,6 @@ class ApplicationTest extends NsTest {
     void 랜덤숫자_테스트(){
         for (int i = 0; i < 100; i++) {
             String input = Integer.toString(Application.createRandomNum());
-            System.out.println(input);
             String[] answer = input.split("");
             assertThat(answer.length).isEqualTo(3);
             assertThat(answer[0]).isNotEqualTo(answer[1]);
@@ -56,7 +55,7 @@ class ApplicationTest extends NsTest {
 
         String[] testArr = {"1a1", "aaa","1234","1111", "abc","106","045"};
         for (String testStr: testArr) {
-            assertThat(Application.inputValidator(testStr)).isEqualTo(false);
+            assertThatIllegalArgumentException().isThrownBy(()-> Application.inputValidator(testStr));
         }
     }
 
