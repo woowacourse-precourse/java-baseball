@@ -17,6 +17,7 @@ public class Application {
             System.out.println(computerNumbersList);
             System.out.print("숫자를 입력해주세요 : ");
             String stringUserNumber = Console.readLine();
+            handleInputException(stringUserNumber);
             int userNumber = Integer.parseInt(stringUserNumber);
             List<Integer> userNumbersList = getUserNumberList(userNumber);
             if (getResult(computerNumbersList, userNumbersList)) {
@@ -46,6 +47,16 @@ public class Application {
             }
         }
         return false;
+    }
+
+    public static void handleInputException(String stringUserNumber){
+        if(hasDuplication(stringUserNumber)){
+            throw new IllegalArgumentException();
+        } else if(stringUserNumber.length() > 3){
+            throw new IllegalArgumentException();
+        } else if (hasOtherNumbersOrChars(stringUserNumber)){
+            throw new IllegalArgumentException();
+        }
     }
 
     public static int getStartSwitch(){
