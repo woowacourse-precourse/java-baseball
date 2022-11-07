@@ -16,27 +16,16 @@ public class UserInput {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         input = input.trim();
-        try {
-            if (!isValidInput(input))
-                throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e) {
-            invalid_Input_message();
-            System.exit(0);
-        }
+        if (!isValidInput(input))
+            throw new IllegalArgumentException("잘못된 입력입니다. 프로그램이 종료됩니다.");
         return input;
     }
 
     public static String continueInput() {
         String input = Console.readLine();
         input = input.trim();
-        try {
-            if (!isValidContInput(input)) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            invalid_Input_message();
-            System.exit(0);
-        }
+        if (!isValidContInput(input))
+            throw new IllegalArgumentException("잘못된 입력입니다. 프로그램이 종료됩니다.");
         return input;
     }
 
@@ -68,9 +57,5 @@ public class UserInput {
             return true;
         }
         return false;
-    }
-
-    private static void invalid_Input_message() {
-        System.out.println("잘못된 입력입니다. 프로그램이 종료됩니다.");
     }
 }
