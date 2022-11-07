@@ -127,7 +127,6 @@ public class GameServer {
         do {
             createRandomNumber();
             guessAnswer();
-            correctAnswer();
         } while (restart);
     }
 
@@ -143,6 +142,7 @@ public class GameServer {
             checkUsersInputIsAnswer();
             printGameResult();
         }
+        correctAnswer();
     }
 
     public void printGameStart() {
