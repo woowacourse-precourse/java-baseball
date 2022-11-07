@@ -23,6 +23,11 @@ public class process {
     private boolean exit = false;
     public process() {}
 
+    private void resetScore() {
+        strike = 0;
+        ball = 0;
+    }
+
     private void readyToExit(ArrayNumber computerNumber) {
         String input = inputExit();
         if(exit_nbr.equals(input)) {
