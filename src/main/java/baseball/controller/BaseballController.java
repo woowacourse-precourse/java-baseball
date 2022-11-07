@@ -27,6 +27,14 @@ public class BaseballController {
             String userNumber = inputView.inputNumber();
             baseBallService.userInputSave(userNumber);
             baseBallService.saveResult();
+
+            if (baseBallService.isNotting()) {
+                outputView.printNothing();
+                continue;
+            }
+
+            outputView.printResult(baseBallService.getStrike(), baseBallService.getBall());
+
         }
     }
 
