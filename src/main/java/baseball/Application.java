@@ -55,7 +55,24 @@ public class Application {
         }
         return ballNumber;
     }
+
+    public static void compare(List<Integer> computer, List<Integer> player) {
+        int strikeNumber = findStrike(computer, player);
+        int ballNumber = findBall(computer, player);
+
+        if (strikeNumber != 0) {
+            System.out.print(strikeNumber + "스트라이크 ");
+        }
+        if (ballNumber != 0) {
+            System.out.print(ballNumber + "볼 ");
+        }
+        if (strikeNumber == 0 && ballNumber == 0) {
+            System.out.print("낫싱");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        compare(computerNumber(), playerNumber());
     }
 }
