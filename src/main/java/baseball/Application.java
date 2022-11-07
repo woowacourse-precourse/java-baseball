@@ -15,10 +15,6 @@ public class Application {
         do {
             answer = gameStart();
 
-            if (!(answer == 1) && !(answer == 2)) {
-                throw new IllegalArgumentException("잘못 입력!");
-            }
-
         } while (answer == 1);
 
     }
@@ -44,6 +40,12 @@ public class Application {
 
         answer = Integer.parseInt(Console.readLine());
 
+        if (!(answer == 1) && !(answer == 2)) {
+
+            throw new IllegalArgumentException("잘못 입력!");
+
+        }
+
         return answer;
     }
 
@@ -53,6 +55,7 @@ public class Application {
         List<Integer> user;
 
         while (strike != 3) {
+
             System.out.print("숫자를 입력해주세요 : ");
 
             int input = Integer.parseInt(Console.readLine());
@@ -92,6 +95,7 @@ public class Application {
         int ball;
 
         String result = "";
+
         for (int i = computer.size() - 1; i >= 0; i--) {
 
             if (Objects.equals(computer.get(i), user.get(i))) {
