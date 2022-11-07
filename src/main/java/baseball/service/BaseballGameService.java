@@ -17,7 +17,16 @@ public class BaseballGameService {
     public void gameStart() {
         BaseballGameOutputView.gameStart();
     }
-    
+
+    public void playing() {
+        boolean isFinished = false;
+        while (!isFinished) {
+            BallCount ballCount = getCounts();
+            BaseballGameOutputView.printBallCount(ballCount);
+            isFinished = ballCount.isFinished();
+        }
+    }
+
     public BallCount getCounts() {
         BaseballNumber player = BaseballGameInputView.getPlayerNumber();
         int strike = 0;
