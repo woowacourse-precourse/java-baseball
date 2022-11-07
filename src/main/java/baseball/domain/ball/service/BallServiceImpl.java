@@ -19,4 +19,10 @@ public class BallServiceImpl implements BallService{
         final List<Integer> answerList = ballFactory.getRandomNumbers();
         return ballCreator.createBalls(answerList);
     }
+
+    @Override
+    public Balls createPlayerBalls(String number) {
+        final List<Integer> numberList = ballFactory.convertStringToIntegerList(number);
+        return ballCreator.createBalls(numberList);
+    }
 }
