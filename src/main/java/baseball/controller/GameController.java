@@ -12,9 +12,24 @@ public class GameController {
 
     public void startGame() {
         System.out.println(START_MESSAGE);
-        System.out.print(GET_NUMBER_MESSAGE);
-
         userService.initGame();
     }
 
+    public boolean runningGame(){
+        String finishedValue = "3스트라이크";
+        String checkResult = "";
+
+        System.out.print(GET_NUMBER_MESSAGE);
+        userService.inputBaseballNumber();
+
+        checkResult = userService.getCheckResult();
+        System.out.println(checkResult);
+
+        if (checkResult.equals(finishedValue)){
+            System.out.println(FINISHED_MESSAGE);
+            return true;
+        }
+
+        return false;
+    }
 }
