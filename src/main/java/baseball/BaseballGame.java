@@ -7,8 +7,14 @@ import java.util.List;
 public class BaseballGame {
 
     public void run(){
-        System.out.println(Message.GAME_START);
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        UserInput userInput = new UserInput();
+
+        System.out.println(Message.GAME_START);
         List<Integer> randomNumber = randomNumberGenerator.generateRandomNumber();
+        while(true) {
+            int[] userNumber = userInput.getUserInput();
+
+        }
     }
 }
