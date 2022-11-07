@@ -18,7 +18,7 @@ class PrintConsoleTest {
         List<Integer> oneStrike = Arrays.asList(firstNum, 0, 0);
         Computer resultComputer = computer.compareUsersNum(oneStrike);
         //when
-        String result = PrintConsole.printResult(resultComputer);
+        String result = PrintConsole.result(resultComputer);
         //then
         assertThat(result).isEqualTo("1스트라이크");
     }
@@ -33,7 +33,7 @@ class PrintConsoleTest {
         List<Integer> oneBall = Arrays.asList(0, firstNum, 0);
         Computer resultComputer = computer.compareUsersNum(oneBall);
         //when
-        String result = PrintConsole.printResult(resultComputer);
+        String result = PrintConsole.result(resultComputer);
         //then
         assertThat(result).isEqualTo("1볼");
     }
@@ -49,7 +49,7 @@ class PrintConsoleTest {
         List<Integer> oneBallOneStrike = Arrays.asList(firstNum, 0, secondNum);
         Computer resultComputer = computer.compareUsersNum(oneBallOneStrike);
         //when
-        String result = PrintConsole.printResult(resultComputer);
+        String result = PrintConsole.result(resultComputer);
         //then
         assertThat(result).isEqualTo("1볼 1스트라이크");
     }
@@ -66,7 +66,7 @@ class PrintConsoleTest {
         List<Integer> threeStrike = Arrays.asList(firstNum, secondNum, thirdNum);
         Computer resultComputer = computer.compareUsersNum(threeStrike);
         //when
-        String result = PrintConsole.printResult(resultComputer);
+        String result = PrintConsole.result(resultComputer);
         //then
         assertThat(result).isEqualTo("3스트라이크");
     }
@@ -79,7 +79,7 @@ class PrintConsoleTest {
         List<Integer> nothing = Arrays.asList(0, 0, 0);
         Computer resultComputer = computer.compareUsersNum(nothing);
         //when
-        String result = PrintConsole.printResult(resultComputer);
+        String result = PrintConsole.result(resultComputer);
         //then
         assertThat(result).isEqualTo("낫싱");
     }

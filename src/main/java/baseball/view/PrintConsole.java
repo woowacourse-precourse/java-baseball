@@ -21,7 +21,12 @@ public class PrintConsole {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static String printResult(Computer resultComputer) {
+    public static void printResult(Computer resultComputer) {
+        String result = result(resultComputer);
+        System.out.println(result);
+    }
+
+    public static String result(Computer resultComputer) {
         String printBall = printBall(resultComputer);
         String printStrike = printStrike(resultComputer);
         String printNothing = printNothing(resultComputer);
@@ -37,7 +42,6 @@ public class PrintConsole {
             result += printStrike;
             result += printNothing;
         }
-        System.out.println(result);
         return result;
     }
 
