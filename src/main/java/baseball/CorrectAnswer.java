@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CorrectAnswer {
-    List<Integer> randomNumberList = new ArrayList<>();
-    List<Boolean> isAlreadyExists = List.of(false, false, false, false, false, false, false, false, false);
+    private List<Integer> randomNumberList = new ArrayList<>();
+    private List<Boolean> isAlreadyExists = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false));
 
     /**
      * 정답 배열과 비교
@@ -31,7 +31,7 @@ public class CorrectAnswer {
      * @return 중복여부
      */
     private boolean isExists(int number) {
-        return isAlreadyExists.get(number);
+        return isAlreadyExists.get(number-1);
     }
 
     /**
@@ -54,7 +54,7 @@ public class CorrectAnswer {
 
     private void addNumber(int number) {
         this.randomNumberList.add(number);
-        this.isAlreadyExists.set(number, true);
+        this.isAlreadyExists.set(number-1, true);
     }
 
     /**
