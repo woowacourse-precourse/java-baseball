@@ -59,7 +59,4 @@ public class User {
         this.number = Integer.valueOf(this.input);
     }
 
-    public void resetNumber() {
-        check.clear();
-    }
 }
