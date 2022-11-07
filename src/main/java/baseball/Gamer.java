@@ -14,7 +14,12 @@ public class Gamer {
         isNumber(input_Number);
         isSameEachNumber(input_Number);
     }
-
+    public void putInGamerNumber(int guess_number){
+        gamerNumber.clear();
+        gamerNumber.add(guess_number / 100);
+        gamerNumber.add((guess_number % 100)/10);
+        gamerNumber.add(guess_number % 10);
+    }
     public void inputNumber(){
         System.out.print("\n숫자를 입력해주세요 : ");
         String input_number = Console.readLine();
