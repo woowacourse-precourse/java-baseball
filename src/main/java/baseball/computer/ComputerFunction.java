@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ComputerFunction {
 
-    private List<Integer> createRandomList() {
+    public List<Integer> createRandomList() {
         List<Integer> list = new ArrayList<>();
         while (list.size() != 3) {
             int randomNum = getRandomNumber();
