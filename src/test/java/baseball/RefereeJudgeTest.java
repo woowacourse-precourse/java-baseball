@@ -15,7 +15,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("234");
-                    assertThat(output()).isEqualTo("1스트라이크");
+                    assertThat(output()).contains("1스트라이크");
                 },
                 2, 2, 2
         );
@@ -26,7 +26,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("262");
-                    assertThat(output()).isEqualTo("1볼");
+                    assertThat(output()).contains("1볼");
                 },
                 3, 2, 4
         );
@@ -37,7 +37,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("252");
-                    assertThat(output()).isEqualTo("1볼 1스트라이크");
+                    assertThat(output()).contains("1볼 1스트라이크");
                 },
                 2, 2, 4
         );
@@ -48,7 +48,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("262");
-                    assertThat(output()).isEqualTo("2스트라이크");
+                    assertThat(output()).contains("2스트라이크");
                 },
                 2, 3, 2
         );
@@ -59,7 +59,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("123");
-                    assertThat(output()).isEqualTo("2볼");
+                    assertThat(output()).contains("2볼");
                 },
                 2, 3, 2
         );
@@ -70,7 +70,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("232");
-                    assertThat(output()).isEqualTo("2볼");
+                    assertThat(output()).contains("2볼");
                 },
                 1, 2, 3
         );
@@ -81,7 +81,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("233");
-                    assertThat(output()).isEqualTo("2볼 1스트라이크");
+                    assertThat(output()).contains("2볼 1스트라이크");
                 },
                 3, 3, 2
         );
@@ -92,7 +92,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("561");
-                    assertThat(output()).isEqualTo("3볼");
+                    assertThat(output()).contains("3볼");
                 },
                 1, 5, 6
         );
@@ -103,7 +103,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("232");
-                    assertThat(output()).isEqualTo("3스트라이크");
+                    assertThat(output()).contains("3스트라이크");
                 },
                 2, 3, 2
         );
@@ -114,7 +114,7 @@ class RefereeJudgeTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("561");
-                    assertThat(output()).isEqualTo("낫싱");
+                    assertThat(output()).contains("낫싱");
                 },
                 2, 3, 2
         );

@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.participants.Pitcher;
-import baseball.participants.Referee;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +15,7 @@ class PitcherInputTest extends NsTest {
 
     @Override
     protected void runMain() {
-        Referee referee = new Referee();
         Pitcher pitcher = new Pitcher();
-        referee.startPitch();
         pitcher.pitch();
         System.out.println(pitcher.pitchZone.toString());
     }

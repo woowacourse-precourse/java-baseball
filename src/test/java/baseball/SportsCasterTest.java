@@ -1,12 +1,12 @@
 package baseball;
 
-import baseball.participants.Referee;
+import baseball.participants.SportsCaster;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RefereeTerminateTest extends NsTest {
+class SportsCasterTest extends NsTest {
     @Test
     void testPlayAgain() {
         run("4", "1");
@@ -21,7 +21,7 @@ class RefereeTerminateTest extends NsTest {
 
     @Override
     protected void runMain() {
-        Referee referee = new Referee();
-        referee.playAgainOrNot();
+        SportsCaster sportsCaster = new SportsCaster();
+        sportsCaster.askToPlayAgain();
     }
 }

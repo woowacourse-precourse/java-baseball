@@ -3,23 +3,13 @@ package baseball.participants;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class Referee {
     public boolean isGameInProgress;
-    public boolean toTerminateGame;
-    private final String PLAY_AGAIN = "1";
-    private final String TERMINATE = "2";
 
-    public void startGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    public Referee() {
         isGameInProgress = true;
-        toTerminateGame = false;
     }
 
-    public void startPitch() {
-        System.out.println("3자리 숫자를 입력해주세요 : ");
-    }
 
     public void judge(StrikeZone pitchZone, StrikeZone swingZone) {
         int strike;
@@ -32,31 +22,6 @@ public class Referee {
         ball = countBall(pitches, swings);
 
         printJudgement(strike, ball);
-    }
-
-    public void endGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다!");
-        isGameInProgress = false;
-    }
-
-    public void playAgainOrNot() {
-        System.out.println("게임을 다시 시작하시겠습니까? 다시시작[1] 게임종료[2]");
-        String againOrTerminate = readLine();
-        while (!validatePlayAgain(againOrTerminate)) {
-            System.out.println(PLAY_AGAIN + " 혹은 " + TERMINATE + "만 입력해주세요.");
-            againOrTerminate = readLine();
-        }
-        if (againOrTerminate.equals(PLAY_AGAIN)) {
-            System.out.println("게임을 다시 시작합니다.");
-        }
-        if (againOrTerminate.equals(TERMINATE)) {
-            System.out.println("게임을 완전히 종료합니다.");
-        }
-        toTerminateGame = againOrTerminate.equals(TERMINATE);
-    }
-
-    private boolean validatePlayAgain(String againOrTerminate) {
-        return againOrTerminate.equals(PLAY_AGAIN) || againOrTerminate.equals(TERMINATE);
     }
 
     private Integer countStrike(String pitches, String swings) {
@@ -91,7 +56,7 @@ public class Referee {
                     break;
                 }
                 if (swingIndicesCountedAsStrike.contains(swingIndex)) {
-                    swingIndex +=1;
+                    swingIndex += 1;
                     continue;
                 }
                 if (swingIndicesCountedAsBall.contains(swingIndex)) {
@@ -137,7 +102,7 @@ public class Referee {
         }
         if (strike == 3) {
             System.out.println("3스트라이크");
-            this.isGameInProgress = false;
+            isGameInProgress = false;
         }
     }
 }

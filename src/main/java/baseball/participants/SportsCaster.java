@@ -3,7 +3,17 @@ package baseball.participants;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class SportsCaster {
+    public boolean willPlay;
+    private final String PLAY_AGAIN = "1";
+    private final String TERMINATE = "2";
+
+    public SportsCaster() {
+        willPlay = true;
+    }
+
     public static void guideGameProcess() {
         List<String> guideList = new ArrayList<>();
         guideList.add("< 숫자 야구 게임 가이드 >");
@@ -24,7 +34,35 @@ public class SportsCaster {
         System.out.println(String.join("\n", guideList));
     }
 
+    public void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public void askToPlayAgain() {
+        System.out.println("게임을 다시 시작하시겠습니까? 다시시작[1] 게임종료[2]");
+        String againOrTerminate = readLine();
+        while (!validatePlayAgain(againOrTerminate)) {
+            System.out.println(PLAY_AGAIN + " 혹은 " + TERMINATE + "만 입력해주세요.");
+            againOrTerminate = readLine();
+        }
+        if (againOrTerminate.equals(PLAY_AGAIN)) {
+            System.out.println("게임을 다시 시작합니다.");
+        }
+        if (againOrTerminate.equals(TERMINATE)) {
+            System.out.println("게임을 완전히 종료합니다.");
+        }
+        willPlay = againOrTerminate.equals(PLAY_AGAIN);
+    }
+
+    public void endGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다!");
+    }
+
     public static void terminateProgram() {
         System.out.println("게임 종료");
+    }
+
+    private boolean validatePlayAgain(String againOrTerminate) {
+        return againOrTerminate.equals(PLAY_AGAIN) || againOrTerminate.equals(TERMINATE);
     }
 }

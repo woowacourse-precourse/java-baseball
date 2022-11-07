@@ -9,6 +9,7 @@ public class Pitcher {
     }
 
     public void pitch() {
+        System.out.println("3자리 숫자를 입력해주세요 : ");
         String pitch = readLine();
         this.pitchZone = new StrikeZone(pitch);
     }
