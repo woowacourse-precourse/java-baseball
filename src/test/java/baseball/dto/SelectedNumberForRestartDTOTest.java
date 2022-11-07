@@ -7,9 +7,18 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class SelectedNumberForRestartDTOTest {
     private static final String NUMBER_FORM_EXCEPTION_MESSAGE = "1 또는 2만 입력할 수 있습니다.";
+    
+    @DisplayName("올바른 재시작 선택 번호(1 or 2)인지 확인")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1", "2"})
+    void correct_selected_number_for_restart(String selectedNumberForRestart) {
+        assertThatNoException()
+                .isThrownBy(() -> new SelectedNumberForRestartDTO(selectedNumberForRestart));
+    }
     
     @DisplayName("예외 처리 : null 또는 \"\" 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
