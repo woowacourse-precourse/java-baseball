@@ -14,8 +14,8 @@ public class Game {
     }
 
     private void playGame() {
-        int gameRound = 0;
         Computer computer = new Computer();
+        int gameRound = 0;
         while (gameRound != 1) {
             getInputMessage();
             player = new Player();
@@ -54,13 +54,18 @@ public class Game {
 
     private void checkRestartGame() {
         getRestartGameMessage();
-        String inputNumber = player.inputNumbers();
-        Exception.checkInputNumber(inputNumber);
+        String inputNumber = getOneInputNumber();
         if (inputNumber.equals("1")) {
             playGame();
         } else {
             getEndGameMessage();
         }
+    }
+
+    private String getOneInputNumber() {
+        String inputNumber = player.inputNumbers();
+        Exception.checkInputNumber(inputNumber);
+        return inputNumber;
     }
 
     private void getRestartGameMessage() {
