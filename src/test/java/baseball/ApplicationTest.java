@@ -4,10 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -190,6 +187,18 @@ class ApplicationTest extends NsTest {
         System.setIn(in);
 
         assertThat(true).isEqualTo(Application.replayGame());
+    }
+
+    @Test
+    void putInNumberTest() {
+
+        String input = "123";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThat("123").isEqualTo(Application.putInNumber());
+
+        System.setOut(System.out);
     }
 
     @Override
