@@ -146,6 +146,7 @@ public class Application {
 
     public static void inputUserNumberService(){
         String stringBuilderUserNumber = "";
+        boolean checkedAnswer = false;
     }
 
     public static void main(String[] args) {
