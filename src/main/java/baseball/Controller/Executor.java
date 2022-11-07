@@ -17,7 +17,7 @@ public class Executor {
         Baseball computerRandomBaseball = createComputerRandomNumber();
         while(flag){
             Printer.inputNumber();
-            Baseball userInputNumber = getUserInputNumber();
+            Baseball userInputNumber = inputUserBaseball();
             guessResult = compareNumber(computerRandomBaseball, userInputNumber);
             if(guessResult.isAllCorrect()){
                 String resultString = guessResult.getResult();
@@ -32,9 +32,6 @@ public class Executor {
     }
     public Baseball createComputerRandomNumber(){
         return new Computer().createRandomBaseball();
-    }
-    public Baseball getUserInputNumber(){
-        return inputUserBaseball();
     }
     public BaseballResult compareNumber(Baseball computerBaseball, Baseball userBaseball){
         HashMap<String, Integer> check_result = checker.start(computerBaseball, userBaseball);
