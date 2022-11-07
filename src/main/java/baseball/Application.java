@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         startGame();
         List<Integer> computerNumber = generateComputerNumber();
+        String userNumber = inputUserNumber();
     }
 
     static void startGame() {
@@ -24,5 +25,10 @@ public class Application {
             }
         }
         return computerNumber;
+    }
+
+    static String inputUserNumber() {
+        String userNumber = Console.readLine();
+        return userNumber;
     }
 }
