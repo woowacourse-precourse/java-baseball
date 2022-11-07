@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.BaseballGameLauncher.GAME_START_MESSAGE;
+import static baseball.gamelauncher.BaseballGameLauncher.GAME_LAUNCHER_START_MESSAGE;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,10 +18,8 @@ class ApplicationTest extends NsTest {
     @Test
     void case1() {
         assertSimpleTest(() ->
-                assertThat(output().startsWith(GAME_START_MESSAGE)));
+                assertThat(output().startsWith(GAME_LAUNCHER_START_MESSAGE)));
     }
-
-
 
     @Nested
     @DisplayName("만약 플레이어가 입력한 값이")
@@ -29,7 +27,7 @@ class ApplicationTest extends NsTest {
 
         @Nested
         @DisplayName("3자리가 아닐 경우")
-        class Size_check {
+        class Sizecheck {
 
             @DisplayName("IllegalArgumentException를 반환한다 - 3자리 보다 큰 경우")
             @Test
@@ -86,40 +84,44 @@ class ApplicationTest extends NsTest {
         @DisplayName("3스트라이크")
         @Test
         void strike3() {
-            assertRandomNumberInRangeTest(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
                         runException("246");
-                assertThat(output()).contains("3스트라이크");
-            },
-        2,4, 6
+                        assertThat(output()).contains("3스트라이크");
+                    },
+                    2,4, 6
             );
         }
 
         @DisplayName("2스트라이크")
         @Test
         void strike2() {
-            assertRandomNumberInRangeTest(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
                         runException("246");
-                assertThat(output()).contains("2스트라이크");
-            },
-        2,4, 7
+                        assertThat(output()).contains("2스트라이크");
+                    },
+                    2,4, 7
             );
         }
 
         @DisplayName("1스트라이크")
         @Test
         void strike1() {
-            assertRandomNumberInRangeTest(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
                         runException("256");
-                assertThat(output()).contains("1스트라이크");
-            },
-        2,4, 7
+                        assertThat(output()).contains("1스트라이크");
+                    },
+                    2,4, 7
             );
         }
 
         @DisplayName("1볼 1스트라이크")
         @Test
         void ball1_strike1() {
-            assertRandomNumberInRangeTest(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
                         runException("265");
                         assertThat(output()).contains("1볼 1스트라이크");
                     },
@@ -130,7 +132,8 @@ class ApplicationTest extends NsTest {
         @DisplayName("2볼 1스트라이크")
         @Test
         void ball2_strike1() {
-            assertRandomNumberInRangeTest(() -> {
+            assertRandomNumberInRangeTest(
+                    () -> {
                         runException("426");
                         assertThat(output()).contains("2볼 1스트라이크");
                     },
@@ -141,44 +144,48 @@ class ApplicationTest extends NsTest {
         @DisplayName("1볼")
         @Test
         void ball1() {
-            assertRandomNumberInRangeTest(() -> {
-                runException("365");
-                assertThat(output()).contains("1볼");
-            },
-        2,4, 6
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runException("365");
+                        assertThat(output()).contains("1볼");
+                    },
+                    2,4, 6
             );
         }
 
         @DisplayName("2볼")
         @Test
         void ball2() {
-            assertRandomNumberInRangeTest(() -> {
-                runException("364");
-                assertThat(output()).contains("2볼");
-            },
-        2,4, 6
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runException("364");
+                        assertThat(output()).contains("2볼");
+                    },
+                    2,4, 6
             );
         }
 
         @DisplayName("3볼")
         @Test
         void ball3() {
-            assertRandomNumberInRangeTest(() -> {
-                runException("624");
-                assertThat(output()).contains("3볼");
-            },
-        2,4, 6
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runException("624");
+                        assertThat(output()).contains("3볼");
+                    },
+                    2,4, 6
             );
         }
 
         @DisplayName("낫싱")
         @Test
         void nothing() {
-            assertRandomNumberInRangeTest(() -> {
-                runException("357");
-                assertThat(output()).contains("낫싱");
-            },
-        2,4, 6
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runException("357");
+                        assertThat(output()).contains("낫싱");
+                    },
+                    2,4, 6
             );
         }
     }
@@ -190,19 +197,25 @@ class ApplicationTest extends NsTest {
         @DisplayName("일치하면 정답 메시지가 출력된다")
         @Test
         void rightAnswer() {
-            assertRandomNumberInRangeTest(() -> {
-                runException("246");
-                assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            }, 2, 4, 6);
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runException("246");
+                        assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    },
+                    2, 4, 6
+            );
         }
 
         @DisplayName("일치하지않으면 맞힐때까지 게임이 반복된다")
         @Test
         void wrongAnswer() {
-            assertRandomNumberInRangeTest(() -> {
-                runException("235", "245","246");
-                assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            }, 2, 4, 6);
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runException("235", "245","246");
+                        assertThat(output()).contains("1스트라이크", "2스트라이크", "3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    },
+                    2, 4, 6
+            );
         }
     }
 
@@ -213,30 +226,34 @@ class ApplicationTest extends NsTest {
         @DisplayName("1을 입력하면 다시 게임이 시작된다.")
         @Test
         void restartGame() {
-            assertRandomNumberInRangeTest(() -> {
-                runException("246", "1", "357");
-                assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-                        ,"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "3스트라이크");
-            }, 2, 4, 6, 3,5,7);
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        runException("246", "1", "357");
+                        assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "3스트라이크");
+                    },
+                    2, 4, 6, 3,5,7);
         }
 
         @DisplayName("2을 입력하면 다시 게임이 종료된다.")
         @Test
         void closeGame() {
-            assertRandomNumberInRangeTest(() -> {
-                run("246", "2");
-                assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
-                ,"게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "게임을 완전히 종료합니다.");
-            }, 2, 4, 6);
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "2");
+                        assertThat(output()).contains("3스트라이크", "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.", "게임을 완전히 종료합니다.");
+                    },
+                    2, 4, 6);
         }
 
         @DisplayName("1과 2 이외의 값 입력하면 IllegalArumentException을 반환한다")
         @Test
         void wrongRestartInput() {
-            assertRandomNumberInRangeTest(() -> {
+            assertRandomNumberInRangeTest(() ->
                 assertThatThrownBy(() -> run("246", "3"))
-                        .isInstanceOf(IllegalArgumentException.class);
-            }, 2, 4, 6);
+                        .isInstanceOf(IllegalArgumentException.class),
+                2, 4, 6);
         }
 
         @Test
@@ -249,7 +266,6 @@ class ApplicationTest extends NsTest {
                     1, 3, 5, 5, 8, 9
             );
         }
-
     }
 
     @Override
