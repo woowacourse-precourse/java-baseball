@@ -17,7 +17,32 @@ public class BaseBallGame {
         this.userInput = userInput;
     }
 
+    public void setScoreZero(){
+        strikeCount=0;
+        ballCount=0;
+    }
+
     public ArrayList<Integer> getUserInput(){
         return userInput;
+    }
+
+    public ArrayList<Integer> getAnswer(){
+        return answer;
+    }
+
+    public void increaseStrike(){
+        strikeCount+=1;
+    }
+
+    public void increaseBall(){
+        ballCount+=1;
+    }
+
+    public int getStrikeCount(){
+        return strikeCount;
+    }
+
+    public int getBallCount(){
+        return ballCount;
     }
 }

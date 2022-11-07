@@ -7,6 +7,7 @@ import baseball.utils.InputValueValidator;
 
 import baseball.utils.RandomNumber;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 
 public class BaseballGameService {
 
@@ -22,6 +23,32 @@ public class BaseballGameService {
         int end = Constants.BASEBALL_GAME_NUMBER_RANGE_END;
 
         this.game = new BaseBallGame(RandomNumber.getRandomNumber(size, start, end));
+    }
+
+    private void updateScore(){
+        for(int index=0; index<Constants.BASEBALL_GAME_NUMBER_LENGTH; index++){
+            computeScore(index);
+        }
+    }
+
+    private void computeScore(int answerIndex){
+        for(int inputIndex=0; inputIndex<Constants.BASEBALL_GAME_NUMBER_LENGTH; inputIndex++){
+            if(checkStrike(answerIndex, inputIndex)){
+                game.increaseStrike();
+                break;
+            }
+            if(checkBall(answerIndex, inputIndex)){
+                game.increaseBall();
+            }
+        }
+    }
+
+    private boolean checkStrike(int answerIndex, int inputIndex){
+        return (checkBall(answerIndex,inputIndex) && (answerIndex == inputIndex));
+    }
+
+    private boolean checkBall(int answerIndex, int inputIndex){
+        return (game.getAnswer().get(answerIndex).equals(game.getUserInput().get(inputIndex)));
     }
 
     private void getUserGameInput() throws IllegalArgumentException{
