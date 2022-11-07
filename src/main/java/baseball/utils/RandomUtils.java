@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomUtils {
-    public static List<Integer> makeRandomList(){
-        List<Integer> computer =new ArrayList<>();
+    public static List<Integer> makeRandomList() {
+        List<Integer> computer = new ArrayList<>();
 
-        while(computer.size()<3){
-            int randomNumber= Randoms.pickNumberInRange(1,9);
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
 
-            if(!computer.contains(randomNumber))
+            if (!computer.contains(randomNumber))
                 computer.add(randomNumber);
         }
         return computer;

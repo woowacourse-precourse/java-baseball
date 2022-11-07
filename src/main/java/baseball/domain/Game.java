@@ -3,9 +3,10 @@ package baseball.domain;
 public class Game {
     private int ballCount;
     private int strikeCount;
-    public void initGame(){
-        ballCount=0;
-        strikeCount=0;
+
+    public void initGame() {
+        ballCount = 0;
+        strikeCount = 0;
     }
 
     public int getBallCount() {
@@ -16,10 +17,10 @@ public class Game {
         return strikeCount;
     }
 
-    public void addBallCount(){
-        ballCount+=1;
+    public void addBallCount() {
+        ballCount += 1;
     }
-    public void addStrikeCount(){
-        strikeCount+=1;
+    public void addStrikeCount() {
+        strikeCount += 1;
     }
 }
