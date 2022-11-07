@@ -9,7 +9,11 @@ import java.util.regex.Pattern;
 
 public class BullsAndCows {
 
-    static final int ANSWER_LENGTH = 3;
+    private static final int ANSWER_LENGTH = 3;
+
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+
     static String answer;
 
     public BullsAndCows() {
@@ -42,7 +46,7 @@ public class BullsAndCows {
     }
 
     private void setAnswer() {
-        List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(1, 9, ANSWER_LENGTH); // 1 ~ 9까지 서로 다른 임의의 수 3개를 선택
+        List<Integer> randomNumberList = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, ANSWER_LENGTH); // 1 ~ 9까지 서로 다른 임의의 수 3개를 선택
         answer = randomNumberList.toString().replaceAll("[^0-9]", "");
     }
 
@@ -59,7 +63,7 @@ public class BullsAndCows {
     }
 
     private boolean isAnswer(String predictInput) {
-        return predictInput.equals(answer);
+        return predictInput.compareTo(answer) == 0;
     }
 
     private void printHint(String predictInput) {
