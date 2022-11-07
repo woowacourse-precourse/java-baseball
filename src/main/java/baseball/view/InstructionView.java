@@ -8,7 +8,7 @@ public class InstructionView {
         return Console.readLine();
     }
 
-    public String printInputNumber() {
+    public String printInputNumbers() {
         System.out.println("숫자를 입력해주세요 : ");
         return Console.readLine();
     }
