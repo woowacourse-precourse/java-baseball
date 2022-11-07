@@ -18,11 +18,9 @@ public class BaseballGame {
         this.pitcher = pitcher;
     }
 
-    public void playGame(boolean isPlay) {
+    public void playGame() {
         System.out.println(BaseballMessage.GAME_START_MESSAGE.getMessage());
-        while (isPlay) {
-            isPlay = playInning();
-        }
+        while (playInning()) { }
     }
 
     private boolean playInning() {
