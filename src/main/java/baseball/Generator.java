@@ -8,14 +8,12 @@ public class Generator {
 
     private static final int BALL_LENGTH = 3;
 
-    private Set<Character> ballCounter;
-
     public String generateRandomNumber() {
         StringBuilder counterpartNumber = new StringBuilder();
-        ballCounter = new HashSet<>();
+        Set<Character> ballCounter = new HashSet<>();
 
         while (ballCounter.size() < BALL_LENGTH) {
-            char number = integerToCharacter(Randoms.pickNumberInRange(1, 9));
+            char number = generateRandomNumberFrom1To9();
 
             if (ballCounter.contains(number)) {
                 continue;
@@ -28,8 +26,8 @@ public class Generator {
         return counterpartNumber.toString();
     }
 
-    private char integerToCharacter(int integer) {
-        return Integer.toString(integer).charAt(0);
+    private char generateRandomNumberFrom1To9() {
+        return Integer.toString(Randoms.pickNumberInRange(1, 9)).charAt(0);
     }
 
 }
