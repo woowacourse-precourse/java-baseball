@@ -53,7 +53,7 @@ public class Executor {
         if(reStart == RESTART){
             startGame();
         }else if(reStart != EXIT){
-            askRestart();
+            throw new IllegalArgumentException();
         }else{
             flag = false;
         }
