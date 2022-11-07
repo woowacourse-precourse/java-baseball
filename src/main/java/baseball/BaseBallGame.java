@@ -1,6 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.regex.Pattern;
 
 public class BaseBallGame {
     private int answerLength;
@@ -9,7 +12,7 @@ public class BaseBallGame {
 
     private int[] answer;
 
-    public BaseBallGame(int answerLength){
+    public BaseBallGame(int answerLength) {
         this.answerLength = answerLength;
     }
 
@@ -22,17 +25,14 @@ public class BaseBallGame {
     }
 
     private int[] generateBaseballGameAnswer() {
-        StringBuilder sb = new StringBuilder();
-
         int[] baseballGameAnswer = new int[10];
 
         int order = 1;
 
-        while (sb.length() < answerLength) {
+        while (order <= answerLength) {
             int generatedNumber = Randoms.pickNumberInRange(1, 9);
 
             if (baseballGameAnswer[generatedNumber] == NOT_INCLUDED) {
-                sb.append(generatedNumber);
                 baseballGameAnswer[generatedNumber] = order++;
             }
         }
@@ -40,14 +40,22 @@ public class BaseBallGame {
         return baseballGameAnswer;
     }
 
-    public BaseballGameResultDto submitAnswer(String userAnswer) {
+    public String submitAnswer(String number){
+        String regex = "^[0-9]{4}";
+        if(!Pattern.matches(regex,number)){
+            throw new IllegalArgumentException("입력 값이 잘못되었습니다");
+        }
+        return number;
+    }
+
+    public BaseballGameResultDto matchAnswer(String userAnswer) {
         int strike = 0;
         int ball = 0;
 
         for (int i = 0; i < answerLength; i++) {
             int target = answer[userAnswer.charAt(i) - '0'];
 
-            if(target==0){
+            if (target == 0) {
                 continue;
             }
 
@@ -60,9 +68,7 @@ public class BaseBallGame {
             }
         }
 
-        if(strike==answerLength){
-            return new BaseballGameResultDto(strike, ball, true);
-        }
-        return new BaseballGameResultDto(strike, ball, false);
+        return new BaseballGameResultDto(strike, ball);
+
     }
 }
