@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class BaseballNumber {
-    ArrayList<Integer> numbers = new ArrayList<>();
+    private ArrayList<Integer> numbers = new ArrayList<>();
 
     public void setNumbersByRandom(){
         numbers.clear();
@@ -29,6 +29,10 @@ public class BaseballNumber {
             int number = Integer.valueOf(numbersStr.charAt(i));
             numbers.add(number);
         }
+    }
+
+    public ArrayList<Integer> getNumbers(){
+        return numbers;
     }
 
     public boolean is3Digit(String numbersStr){
