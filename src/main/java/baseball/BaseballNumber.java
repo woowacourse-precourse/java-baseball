@@ -1,16 +1,32 @@
 package baseball;
 import camp.nextstep.edu.missionutils.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseballNumber {
 
-    private String number;
+    private String computerNumber;
 
-
-    public void BaseballNumber() {
-        this.number = "";
-        for(int i = 0; i < 3; i++){
-            this.number += Integer.toString(Randoms.pickNumberInRange(1,9));
+    public BaseballNumber() {
+        String number = "";
+        while (number.length() < 3) {
+            String randomDigit = Integer.toString(Randoms.pickNumberInRange(1, 9));
+            if (!number.contains(randomDigit)) {
+                number += randomDigit;
+            }
         }
+        computerNumber = number;
     }
+
+    public String getNumber() {
+        return computerNumber;
+    }
+
+    public void setNumber(String number) {
+        this.computerNumber = number;
+    }
+
 
 }
 
