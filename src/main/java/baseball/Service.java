@@ -31,6 +31,9 @@ public class Service {
         if (input.equals("2")) {
             System.out.println("게임을 완전히 종료합니다.");
         }
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private int stage(List<Integer> answer) {
