@@ -24,8 +24,9 @@ public class Referee {
     }
 
     public void validateBalk(String pitchNumber) {
-        if (!validateSize(pitchNumber) || !validateDigits(pitchNumber))
+        if (!validateSize(pitchNumber) || !validateDigits(pitchNumber)) {
             throw new IllegalArgumentException("잘못된 입력값입니다.");
+        }
     }
 
     private boolean validateSize(String pitchNumber) {
@@ -45,7 +46,8 @@ public class Referee {
     }
 
     public void validateReplaySelection(String replay) {
-        if (!replay.equals("1") && !replay.equals("2"))
+        if (!replay.equals("1") && !replay.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력값입니다.");
+        }
     }
 }
