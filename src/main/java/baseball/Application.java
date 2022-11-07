@@ -94,12 +94,42 @@ public class Application {
         return ball;
     }
 
+    /**
+     * 볼, 스트라이크 개수에 따른 메시지 출력
+     *
+     * @param strike 스트라이크의 개수
+     * @param ball   볼의 개수
+     */
+    public static void printGuessResult(int strike, int ball) {
+        StringBuilder resultOutput = new StringBuilder();
+
+        if (ball > 0) {
+            resultOutput.append(ball);
+            resultOutput.append("볼 ");
+        }
+        if (strike > 0) {
+            resultOutput.append(strike);
+            resultOutput.append("스트라이크 ");
+        }
+        if (strike == 0 && ball == 0) {
+            resultOutput.append("낫싱");
+        }
+
+        System.out.println(resultOutput.toString().strip());
+    }
+
     public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         String answer = generateRandomNumberString();
-        String guessNumberString = getGuessNumberInput();
-        int strike = calcStrikeCount(answer, guessNumberString);
-        int ball = calcBallCount(answer, guessNumberString);
+        int strike = 0;
+        int ball = 0;
+
+        while (strike != 3) {
+            String guessNumberString = getGuessNumberInput();
+            strike = calcStrikeCount(answer, guessNumberString);
+            ball = calcBallCount(answer, guessNumberString);
+            printGuessResult(strike, ball);
+        }
     }
 }
