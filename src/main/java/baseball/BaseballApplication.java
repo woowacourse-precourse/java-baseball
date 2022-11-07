@@ -1,8 +1,10 @@
 package baseball;
 
 import baseball.exception.ExceptionMessage;
+import baseball.gametype.BaseballType;
 import baseball.input.InputRequestMessage;
 import baseball.output.OutputMessage;
+import baseball.question.BaseballQuestion;
 import basedomain.input.Input;
 import basedomain.output.Output;
 
@@ -19,18 +21,29 @@ public class BaseballApplication {
         this.output = output;
     }
 
-    public void run() {
+    public void run(BaseballType BaseballType) {
         output.print(OutputMessage.START_MESSAGE);
 
         boolean isStart = true;
         while (isStart) {
-            startGame();
+            startGame(BaseballType);
             isStart = askRestartApplication();
         }
     }
 
-    private void startGame() {
+    private void startGame(BaseballType baseballType) {
+        BaseballQuestion question = new BaseballQuestion(baseballType);
 
+        boolean isCorrect = false;
+        while (!isCorrect) {
+            output.print(InputRequestMessage.ASK_INPUT_INTEGER);
+            int inputData = input.getInputInteger();
+
+            String result = question.ask(inputData);
+            output.println(result);
+            isCorrect = question.isCorrect(inputData);
+        }
+        output.print(OutputMessage.CORRECT_MESSAGE);
     }
 
     private boolean askRestartApplication() {
