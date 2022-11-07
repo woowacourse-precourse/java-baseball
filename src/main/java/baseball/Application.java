@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -19,6 +20,18 @@ public class Application {
     public static String getUserInput() {
         System.out.print("숫자를 입력해주세요: ");
         return readLine();
+    }
+
+    /**
+     * Verify string contains characters that have been used once.
+     * @param string the string to be checked.
+     * @return true if no duplicate value exists.
+     */
+    private static boolean isDistinct(String string) {
+        String[] strArr = string.split("");
+        return Arrays.stream(strArr)
+            .distinct()
+            .count() == strArr.length;
     }
 
     /**
