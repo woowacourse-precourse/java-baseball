@@ -3,9 +3,9 @@ package baseball;
 import java.util.List;
 
 public class Exception {
-    public Boolean isOverThreeDigit(List<Integer> input){
-        return input.size() != 3;
+    public static void isOverThreeDigit(List<Integer> list){
+        if(list.size() != 3){
+            throw new IllegalArgumentException("3자리 수가 아닙니다.");
+        }
     }
-
-
 }
