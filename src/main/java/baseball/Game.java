@@ -85,4 +85,12 @@ public class Game {
         return userInputNumber.contains("0");
     }
 
+    public static boolean checkUserInputNumber(String userInputNumber) {
+        try {
+            int numberValue = Integer.parseInt(userInputNumber);
+        } catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
 }
