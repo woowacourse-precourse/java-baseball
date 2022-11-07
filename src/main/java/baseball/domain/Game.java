@@ -3,6 +3,9 @@ package baseball.domain;
 import java.util.List;
 
 public class Game {
+    private static final int MAX_STRIKE_SIZE = 3;
+    private static final boolean SUCCESS = false;
+    private static final boolean FAIL = true;
     private int strike;
     private int ball;
 
@@ -37,6 +40,13 @@ public class Game {
                 }
             }
         }
+    }
+
+    public boolean ThreeStrikeCheck() {
+        if (this.strike == MAX_STRIKE_SIZE) {
+            return SUCCESS;
+        }
+        return FAIL;
     }
 
     public boolean letterIncludeAnswerCheck(List<Integer> computerAnswer, int aLetter) {
