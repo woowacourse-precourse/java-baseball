@@ -34,10 +34,13 @@ public class GameTest extends NsTest {
         }, 1, 2, 3);
     }
 
-    @DisplayName("숫자 입력 메세지 출력")
+    @DisplayName("유저 입력 메세지 테스트")
     @Test
     void printUserInputPromptTest() {
         game.printUserInputPrompt();
+        assertThat(output()).isEqualTo("숫자를 입력해주세요 :");
+    }
+
     }
 
     @Override
