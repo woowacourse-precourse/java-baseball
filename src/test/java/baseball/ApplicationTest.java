@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -69,5 +71,29 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
         }
 
+    }
+
+    @Nested
+    class NumberToListTest {
+        @Test
+        @DisplayName("입력받은 서로다른 숫자를 리스트로 정상 변환해주는지 테스트")
+        void NumberToIntegerList_NormalNumber_Passed() {
+            List<Integer> result = List.of(1, 2, 3);
+            assertThat(Application.NumberToIntegerList(123)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("같은 값이 포함된 숫자를 리스트로 정상 변환해주는지 테스트")
+        void NumberToIntegerList_IncludingSameNumber_Passed() {
+            List<Integer> result = List.of(9, 4, 9);
+            assertThat(Application.NumberToIntegerList(949)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("0이 포함된 숫자를 리스트로 정상 변환해주는지 테스트")
+        void NumberToIntegerList_IncludingZero_Passed() {
+            List<Integer> result = List.of(1, 0, 2);
+            assertThat(Application.NumberToIntegerList(102)).isEqualTo(result);
+        }
     }
 }
