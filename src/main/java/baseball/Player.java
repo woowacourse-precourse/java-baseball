@@ -11,14 +11,26 @@ public class Player {
     private final List<Integer> playerNumbersList;
 
     public Player() {
-        this.playerNumbers = inputNumbers();
+        this.playerNumbers = setPlayerInput();
         this.playerNumbersList = setPlayerNumberList(this.playerNumbers);
     }
 
+    public List<Integer> getPlayerNumbersList() {
+        return playerNumbersList;
+    }
+
     public String inputNumbers() {
-        String userInput = Console.readLine();
-        System.out.println(userInput);
+        return Console.readLine();
+    }
+
+    private String setPlayerInput() {
+        String userInput = inputNumbers();
+        printInputNumber(userInput);
         return userInput;
+    }
+
+    private void printInputNumber(String userInput) {
+        System.out.println(userInput);
     }
 
     private List<Integer> setPlayerNumberList(String inputNumber) {
@@ -28,9 +40,4 @@ public class Player {
         Exception.checkInputNumbers(inputNumberList);
         return inputNumberList;
     }
-
-    public List<Integer> getPlayerNumbersList() {
-        return playerNumbersList;
-    }
-
 }
