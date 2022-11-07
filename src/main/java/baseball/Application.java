@@ -30,6 +30,9 @@ public class Application {
             }
         }
         computerNumber = new ThreeNumber(computer.get(0), computer.get(1), computer.get(2));
+        System.out.println("computer: " + computer.get(0));
+        System.out.println("computer: " + computer.get(1));
+        System.out.println("computer: " + computer.get(2));
         selectPlayerNumber();
     }
 
@@ -40,7 +43,7 @@ public class Application {
         int number2 = playerInput.charAt(1) - '0';
         int number3 = playerInput.charAt(2) - '0';
         playerNumber = new ThreeNumber(number1, number2, number3);
-        determineAnswer();
+        provideHint();
     }
 
     private static void selectPlayerNumberException(String playerInput) {
@@ -63,7 +66,45 @@ public class Application {
         }
     }
 
-    private static void determineAnswer() {
+    private static void provideHint() {
+        int strike = countStrike();
+        int ball = countBall();
+        String hintMessage = makeHintMessage(strike, ball);
+        System.out.println("hintMessage = " + hintMessage);
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            endGame();
+            return;
+        }
+        selectPlayerNumber();
+    }
+
+    private static int countStrike() {
+        return 1;
+    }
+
+    private static int countBall() {
+        return 1;
+    }
+
+    private static String makeHintMessage(int strike, int ball) {
+        String hintMessage = "";
+        if (ball > 0) {
+            hintMessage += ball + "볼";
+        }
+        if (strike > 0) {
+            if (ball > 0) {
+                hintMessage += " ";
+            }
+            hintMessage += strike + "스트라이크";
+        }
+        if ((strike == 0) && (ball == 0)) {
+            hintMessage = "낫싱";
+        }
+        return hintMessage;
+    }
+
+    private static void endGame() {
 
     }
 
