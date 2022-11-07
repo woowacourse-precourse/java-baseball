@@ -13,36 +13,13 @@ import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
-    @Test
-    void listNumber1() {
-        String numList = "123456789";
-        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(123);
-    }
 
-
-    @Test
-    void listNumber2() {
-        String numList = "1222222223";
-        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(123);
-    }
-
-    @Test
-    void listNumber3() {
-        String numList = "1122345678";
-        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(123);
-    }
-
-    @Test
-    void removeRepetition() {
-        String numList = "484647168";
-        assertThat(Application.removeRepetitionNumber(numList)).isEqualTo(486);
-    }
 
     @Nested
     class userInputTest {
         @Test
         void userInput1() {
-            int num = 12;
+            String num = "12";
             assertThatThrownBy(() -> Application.exceptionHandler(num))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("n은 세자리 숫자입니다.");
@@ -50,7 +27,7 @@ class ApplicationTest extends NsTest {
 
         @Test
         void userInput2() {
-            int num = 1234;
+            String num = "1234";
             assertThatThrownBy(() -> Application.exceptionHandler(num))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("n은 세자리 숫자입니다.");
@@ -58,7 +35,7 @@ class ApplicationTest extends NsTest {
 
         @Test
         void userInput3() {
-            int num = 1;
+            String num = "1";
             assertThatThrownBy(() -> Application.exceptionHandler(num))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("n은 세자리 숫자입니다.");
@@ -66,17 +43,18 @@ class ApplicationTest extends NsTest {
 
         @Test
         void userInput4() {
-            int num = 123;
+            String num = "123";
             assertThat(Application.exceptionHandler(num)).isEqualTo(123);
         }
 
         @Test
         void userInput5() {
             int num = (int) (Math.random() * 1000) + 1;
+            String str = num+"";
             System.out.println("num = " + num);
 
             if (!(num >= 100 && num < 1000)) {
-                assertThatThrownBy(() -> Application.exceptionHandler(num))
+                assertThatThrownBy(() -> Application.exceptionHandler(str))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("n은 세자리 숫자입니다.");
             }
