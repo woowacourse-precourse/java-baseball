@@ -2,13 +2,14 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     private static String makeRandomNumbers(){
         StringBuilder result = new StringBuilder();
         for(int i=0;i<3;i++){
-            int iValue = (int)(Math.random() * 10);
-            result.append(iValue);
+            result.append(Randoms.pickNumberInRange(1, 9));
         }
         return result.toString();
     }
@@ -23,7 +24,7 @@ public class Application {
         int strike = 0, ballHit = 0;
         System.out.println(answer);
         System.out.println(input);
-        for(int i = 0;i<answer.size();i++){
+        for(int i = 0; i<answer.size();i++){
             if(input.indexOf(answer.get(i)) == i){
                 strike += 1;
                 continue;
@@ -50,19 +51,23 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Scanner inputObject = new Scanner(System.in);
-
         System.out.println("숫자 야구 게임을 시작합니다.");
-        String answer = makeRandomNumbers();
-        System.out.println(answer);
-
-        String result = "";
-        while(!result.equals("3스트라이크")){
-            System.out.print("숫자를 입력해주세요 : ");
-            String number = inputObject.nextLine();
-            result = playBall(splitInputToArray(answer), number);
-            System.out.println(playBall(splitInputToArray(answer), number));
+        int continueGame = 0;
+        while(continueGame == 0){
+            String answer = makeRandomNumbers();
+            String result = "";
+            while(!result.equals("3스트라이크")){
+                System.out.print("숫자를 입력해주세요 : ");
+                String number = Console.readLine();
+                result = playBall(splitInputToArray(answer), number);
+                System.out.println(playBall(splitInputToArray(answer), number));
+            }
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+            int newNumber = Integer.parseInt(Console.readLine());
+            if(newNumber == 2){
+                continueGame = 1;
+            }
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
