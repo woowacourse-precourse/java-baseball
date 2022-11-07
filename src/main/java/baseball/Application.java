@@ -14,21 +14,25 @@ public class Application {
         opponent1 = Randoms.pickNumberInRange(1, 9);
         while (true){
             opponent2 = Randoms.pickNumberInRange(1, 9);
-            if (opponent1 != opponent2)
+            if (opponent1 != opponent2) {
                 break;
+            }
         }
         while (true){
             opponent3 = Randoms.pickNumberInRange(1, 9);
-            if (opponent2 != opponent3 && opponent1 != opponent3)
+            if (opponent2 != opponent3 && opponent1 != opponent3) {
                 break;
+            }
         }
     }
 
     public static int[] getUserNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
         String num = Console.readLine();
 
-        if (num.length() != 3)
+        if (num.length() != 3){
             throw new IllegalArgumentException("3자리수를 입력해주세요!");
+        }
 
         try {
             Integer.parseInt(num);
@@ -51,21 +55,22 @@ public class Application {
         int strikeCount = 0;
         int ballCount = 0;
         StringBuilder result = new StringBuilder();
+
         if (num[0] == opponent1){
             strikeCount++;
-        } else if (num[1] == opponent1 || num[2] == opponent3) {
+        } else if (num[0] == opponent2 || num[0] == opponent3) {
             ballCount++;
         }
 
         if (num[1] == opponent2){
             strikeCount++;
-        } else if (num[0] == opponent2 || num[2] == opponent2){
+        } else if (num[1] == opponent3 || num[1] == opponent1){
             ballCount++;
         }
 
         if (num[2] == opponent3){
             strikeCount++;
-        } else if (num[0] == opponent3 || num[1] == opponent3) {
+        } else if (num[2] == opponent1 || num[2] == opponent2) {
             ballCount++;
         }
 
@@ -74,7 +79,7 @@ public class Application {
         }
 
         if (ballCount > 0) {
-            result.append(ballCount + "볼");
+            result.append(ballCount + "볼 ");
         }
 
         if (strikeCount > 0){
@@ -95,8 +100,21 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-    public static void main(String[] args) {
-        getUserNumber();
+
+    public static boolean gameStart(){
         initOpponentNumber();
+        while (true){
+            int[] userNum = getUserNumber();
+            boolean correct = checkAnswer(userNum);
+            countStrikeBall(userNum);
+            if (correct){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return restart();
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IllegalArgumentException{
+        while (gameStart()) {}
     }
 }
