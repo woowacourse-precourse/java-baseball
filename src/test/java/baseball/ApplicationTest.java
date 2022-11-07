@@ -20,6 +20,13 @@ class ApplicationTest extends NsTest {
         assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.");
     }
 
+    @DisplayName("게임 종료 후 사용자 입력 테스트")
+    @Test
+    void parseUserInputForRestartTest() {
+        setSystemInput("1");
+        assertThat(Application.parseUserInputForRestart()).isEqualTo(true);
+    }
+
     @Test
     @DisplayName("게임 실행 종료 후 재시작 테스트")
     void 게임종료_후_재시작() {
