@@ -11,7 +11,6 @@ public class Application {
         Restart restart = new Restart();
         boolean again = true;
         Judge judge = new Judge();
-        Rule rule = new Rule();
 
         start.startGameMessage(); // 게임 시작
 
