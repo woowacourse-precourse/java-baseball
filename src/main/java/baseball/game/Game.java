@@ -35,4 +35,19 @@ public class Game {
 	public int getBallCount() {
 		return ballCount;
 	}
+
+	public boolean isGameOver() {
+		validateGameStatus();
+		return gameStatus.equals(GameStatus.GAME_OVER);
+	}
+
+	private void validateGameStatus() {
+		if (strikeCount == MAX_STRIKE_COUNT) {
+			changeGameStatusToGameOver();
+		}
+	}
+
+	public void changeGameStatusToGameOver() {
+		gameStatus = GameStatus.GAME_OVER;
+	}
 }

@@ -21,6 +21,9 @@ public class Application {
             Game game = GameResultCalculator.calculateStrikeAndBallCount(InputView.getUserInputNumbers());
             OutputView.displayGameResult(game);
 
+            if (game.isGameOver()) {
+
+            }
         }
     }
 }
