@@ -1,16 +1,16 @@
 package baseball.controller;
 
-import baseball.type.ResultGame;
+import baseball.type.GameStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
-    private static ResultGame resultGame = ResultGame.Repeat;
+    private static GameStatus gameStatus = GameStatus.InProgress;
 
-    static void repeatToEnd() {
+    static void repeatUntilEnd() {
         OutputView.informStartGame();
-        setResultGameIntoRepeat();
-        while (checkCanRepeat()) {
+        setResultGameInProgress();
+        while (checkIsGameStatusInProgress()) {
             playOneTime();
         }
     }
@@ -20,28 +20,28 @@ public class Game {
         checkIsUserRepeatGame();
     }
 
-    static boolean checkCanRepeat() {
-        return resultGame == ResultGame.Repeat;
+    static boolean checkIsGameStatusInProgress() {
+        return gameStatus == GameStatus.InProgress;
     }
 
     static void checkIsUserRepeatGame() {
         String oneIfGameRepeatOrTwo = InputView.checkIsGameRepeatFromUserByGetOneOrTwo();
         if (checkIsOne(oneIfGameRepeatOrTwo)) {
-            setResultGameIntoRepeat();
+            setResultGameInProgress();
             return;
         }
-        setResultGameIntoEnd();
+        setResultGameEnd();
     }
 
     static boolean checkIsOne(String oneOrTwo) {
         return oneOrTwo.equals("1");
     }
 
-    static void setResultGameIntoRepeat() {
-        resultGame = ResultGame.Repeat;
+    static void setResultGameInProgress() {
+        gameStatus = GameStatus.InProgress;
     }
 
-    static void setResultGameIntoEnd() {
-        resultGame = ResultGame.End;
+    static void setResultGameEnd() {
+        gameStatus = GameStatus.End;
     }
 }
