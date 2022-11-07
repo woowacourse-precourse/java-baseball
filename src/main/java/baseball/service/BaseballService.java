@@ -7,10 +7,11 @@ import baseball.view.OutputView;
 
 public class BaseballService {
     public void run(boolean isFirstStart) {
-        OutputView.gameStartMessage();
-        run();
-    }
-    public void run() {
+        if (isFirstStart) {
+            OutputView.gameStartMessage();
+            run(false);
+            return;
+        }
         Baseballs computerBaseballs = Baseballs.random();
 
         playGame(computerBaseballs);
@@ -22,7 +23,7 @@ public class BaseballService {
             return;
         }
 
-        run();
+        run(false);
     }
 
     private void playGame(Baseballs computerBaseballs) {
