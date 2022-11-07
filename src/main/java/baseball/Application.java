@@ -23,11 +23,13 @@ public class Application {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         answer = Console.readLine();
+        System.out.println(answer);
 
         if (Integer.parseInt(answer) == 1) {
             return true;    // 게임 재시작
         } else {
-            return false;   // 게임 종료
+            System.out.println("게임 종료");
+            return false;
         }
 
     }
@@ -64,12 +66,12 @@ public class Application {
             return;
         }
 
-        if (ball != 0) {
-            System.out.printf("%d볼 ", ball);
-        }
-
-        if (strike != 0) {
-            System.out.printf("%d스트라이크 ", strike);
+        if (ball != 0 && strike != 0) {
+            System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+        } else if (ball != 0) {
+            System.out.printf("%d볼 \n", ball);
+        } else {
+            System.out.printf("%d스트라이크 \n", strike);
         }
 
     }
@@ -133,11 +135,11 @@ public class Application {
         boolean status = playGame();
         List<Integer> answer = createAnswer();
 
-
         while (status) {
 
             System.out.printf("숫자를 입력해주세요 : ");
             String number = Console.readLine();
+            System.out.println(number);
             List<Integer> digitList = separateNumberToDigit(number);
 
             List<Integer> countList = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
