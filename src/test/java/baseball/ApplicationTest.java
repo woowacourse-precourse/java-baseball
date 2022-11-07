@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
+import java.util.List;
 
 import static baseball.Game.game;
 import static baseball.RandomNum.randomNum;
@@ -14,19 +15,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    private int[] num = randomNum();
+    //private int[] num = randomNum();
 
+    private List<Integer> num = randomNum();
     @Test
     void 랜덤_숫자_길이_테스트() {
-        int len = randomNum().length;
+        //int len = randomNum().length;
+        int len = randomNum().size();
         assertThat(len).isEqualTo(3);
     }
 
-
+/*
     private boolean setUp(){
         if(num[0] == num[1] || num[0] == num[2] || num[1] == num[2]){
             return false;
         }
+
         return true;
     }
     @Test
@@ -34,6 +38,8 @@ class ApplicationTest extends NsTest {
         assertThat(setUp()).isEqualTo(true);
     }
 
+
+ */
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -56,10 +62,6 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        try {
-            Application.main(new String[]{});
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Application.main(new String[]{});
     }
 }
