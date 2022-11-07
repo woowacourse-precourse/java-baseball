@@ -4,6 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InputValidation {
+    public String validatePlayerNumbersInput(String input) {
+        validateLength(input);
+        validateNumberRange(input);
+        validateDuplication(input);
+
+        return input;
+    }
+
     public void validateLength(String input) {
         if (input.length() != 3) {
             throw new IllegalArgumentException("3자리 수를 입력해야 합니다.");
