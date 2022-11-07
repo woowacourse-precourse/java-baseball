@@ -21,4 +21,21 @@ public class BaseballTest {
         Assertions.assertEquals(baseball.getUserNumber(), "");
         Assertions.assertEquals(baseball.getRandomNumber(), "");
     }
+
+    @Test
+    void 세자리_난수_생성하기() {
+        baseball.initialize();
+        String randomNumber = baseball.getRandomNumber();
+
+        Assertions.assertEquals(randomNumber.length(), 3);
+
+        boolean flag = true;
+        for (int i = 0; i < randomNumber.length(); i++) {
+            if(randomNumber.indexOf(randomNumber.toCharArray()[i]) != i) {
+                flag = false;
+            }
+        }
+
+        Assertions.assertEquals(flag, true);
+    }
 }
