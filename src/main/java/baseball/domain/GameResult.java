@@ -6,12 +6,12 @@ import java.util.Objects;
 
 public class GameResult {
 
-    public static final int DEFAULT_SCORE = 0;
+    public static final int INIT_SCORE = 0;
     private int strike;
     private int ball;
 
     public GameResult() {
-        this(DEFAULT_SCORE, DEFAULT_SCORE);
+        this(INIT_SCORE, INIT_SCORE);
     }
 
     public GameResult(int strike, int ball) {
