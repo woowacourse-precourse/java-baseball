@@ -6,6 +6,8 @@ import baseball.view.View;
 import baseball.exception.Exception;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Objects;
+
 public class Controller {
     Service service = new Service();
     View view = new View();
@@ -21,29 +23,29 @@ public class Controller {
         while (true) {
             view.printInput();
             input = Console.readLine();
-            if (!ex.scoreException(input)) throw new IllegalArgumentException();
-            if (!ex.checkInputSame(input)) throw new IllegalArgumentException();
             if (checkBallAndStrike()) continue;
             input = Console.readLine();
-            if (ex.regameException(input)) throw new IllegalArgumentException();
             if (regame()) break;
         }
     }
 
     private boolean checkBallAndStrike() {
+        if (!ex.scoreException(input)) throw new IllegalArgumentException();
+        if (!ex.checkInputSame(input)) throw new IllegalArgumentException();
+
         number = Integer.parseInt(input);
         strike = service.findStrike(repository.getScore(), number);
         ball = service.findBall(repository.getScore(), number);
 
-        if (ball == 0 && strike == 0) {
+        if (Objects.equals(ball,0) && Objects.equals(strike,0)) {
             view.incorrect();
-        } else if (ball != 0 && strike != 0) {
+        } else if (!Objects.equals(ball,0) && !Objects.equals(strike,0)) {
             view.strikeAndBall(strike, ball);
-        } else if (ball != 0) {
+        } else if (!Objects.equals(ball,0)) {
             view.ball(ball);
-        } else if (strike < 3) {
+        } else if (!Objects.equals(strike,3)) {
             view.strike(strike);
-        } else if (strike == 3) {
+        } else if (Objects.equals(strike,3)) {
             view.threeStrike();
             return false;
         }
@@ -51,9 +53,11 @@ public class Controller {
     }
 
     private boolean regame() {
-        if ("1".equals(input)) {
+        if (ex.regameException(input)) throw new IllegalArgumentException();
+
+        if (Objects.equals("1", input)) {
             repository = new Repository(service.generateScore());
-        } else if ("2".equals(input)) {
+        } else if (Objects.equals("2", input)) {
             return true;
         }
         return false;
