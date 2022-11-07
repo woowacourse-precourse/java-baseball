@@ -2,7 +2,7 @@
 #### 1. Game class
 - 숫자 하나에 대해 볼인지, 스트라이크인지 체크하는 함수
 ```java
-List<Integer> checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount)
+void checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount)
 ```
 
 - 사용자가 입력한 숫자에 대해 볼과 스트라이크 카운트를 체크하는 함수

@@ -42,8 +42,8 @@ public class Game {
         return true;
     }
 
-    private static List<Integer> checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
-        return new ArrayList<>();
+    private static void checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
+
     }
 
 
