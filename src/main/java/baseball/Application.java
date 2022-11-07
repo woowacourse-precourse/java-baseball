@@ -8,33 +8,8 @@ public class Application {
     private static String userInput;
     private static int targetNumber;
 
-    private static class BallAndStrike {
-        private int ball;
-        private int strike;
-
-        BallAndStrike() {
-            this.ball = 0;
-            this.strike = 0;
-        }
-
-        public void print() {
-            if (this.ball == 0 || this.strike == 0) {
-                if(this.ball == 0){
-                    System.out.println(this.strike + "스트라이크");
-                }
-                else{
-                    System.out.println(this.ball + "볼");
-                }
-
-            } else {
-                System.out.println(this.ball + "볼 " + this.strike + "스트라이크");
-            }
-        }
-    }
 
     public static void main(String[] args) {
-
-        Randoms.pickNumberInRange(1, 9);
 
         startGamePrint();
         //while
@@ -49,7 +24,7 @@ public class Application {
                 validUserInput(Integer.parseInt(userInput));
 
                 BallAndStrike ballAndStrike = compareNumbers(targetNumber, Integer.parseInt(userInput));
-                if (ballAndStrike.strike == 3) {
+                if (ballAndStrike.getStrike() == 3) {
                     gameOverPrint();
                     break;
                 }
@@ -75,7 +50,6 @@ public class Application {
     //TODO
     private static BallAndStrike compareNumbers(int targetNumber, int userInput) {
         BallAndStrike count = new BallAndStrike();
-
 
 
         return count;
