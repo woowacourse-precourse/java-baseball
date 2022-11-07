@@ -24,4 +24,9 @@ public class OutputView {
     public static void printResultTurnOfOnlyStrikes(int strikes) {
         System.out.println(strikes + "스트라이크");
     }
+
+    public static void printResultTurnOfStrikesAndBalls(int balls, int strikes) {
+        System.out.println(balls + "볼 " + strikes + "스트라이크");
+    }
+
 }
