@@ -45,19 +45,6 @@ public class Application {
         }
         return printBallStrike(createCountArray(ball, strike));
     }
-    public static boolean errorPlayerNumber(String playerNumber) {
-        boolean error = (playerNumber.length() == 3);
-        for (int i=0;i<playerNumber.length();++i)
-            if (playerNumber.charAt(i) < '1' || playerNumber.charAt(i) > '9') {
-                error = false;
-                break;
-            }
-        if (playerNumber.length() == 3 && ((playerNumber.charAt(0) == playerNumber.charAt(1))
-                || (playerNumber.charAt(0) == playerNumber.charAt(2))
-                || (playerNumber.charAt(1) == playerNumber.charAt(2))))
-            error = false;
-        return error;
-    }
     public static List<Integer> arrayPlayerNumber(String number) {
         List<Integer> playerNumber = new ArrayList<>();
         for (int i=0;i<number.length();++i)
@@ -67,7 +54,7 @@ public class Application {
     public static String inputPlayerNumber() {
         ErrorUtil errorUtil = new ErrorUtil();
         String number = Console.readLine();
-        errorUtil.checkError(errorPlayerNumber(number));
+        errorUtil.checkError(errorUtil.errorPlayerNumber(number));
         return number;
     }
     public static List<Integer> createRandomNumber() {
@@ -89,20 +76,12 @@ public class Application {
         if (restart)
             playGame();
     }
-    public static boolean checkErrorRestartNumber(String number) {
-        boolean error = true;
-        if (number.length() != 1)
-            error = false;
-        else if (number.charAt(0) != '1' && number.charAt(0) != '2')
-            error = false;
-        return error;
-    }
     public static boolean restartQuestion() {
         ErrorUtil errorUtil = new ErrorUtil();
         boolean restart = false;
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String number = Console.readLine();
-        errorUtil.checkError(checkErrorRestartNumber(number));
+        errorUtil.checkError(errorUtil.checkErrorRestartNumber(number));
         if (number.charAt(0) == '1')
             restart = true;
         return restart;
