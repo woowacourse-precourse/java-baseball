@@ -4,7 +4,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -69,13 +71,19 @@ public class Application {
         if (userNum.length() != 3) {
             throw new IllegalArgumentException();
         }
-        for (Character x : userNum.toCharArray()) {
+        char[] userNumCharArr = userNum.toCharArray();
+        Set<Character> set = new HashSet<>();
+        for (Character x : userNumCharArr) {
             if (!Character.isDigit(x)) {
                 throw new IllegalArgumentException();
             }
-            if (userNum.contains(x+"")){
+            if (x == '0') {
                 throw new IllegalArgumentException();
             }
+            set.add(x);
+        }
+        if (userNumCharArr.length != set.size()) {
+            throw new IllegalArgumentException();
         }
         return userNum;
     }
