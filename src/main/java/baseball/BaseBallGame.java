@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Messages.ErrorMessages;
 import baseball.Messages.ProgramMessages;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -45,7 +46,14 @@ public class BaseBallGame {
      * @param input
      */
     public void validateInput(String input) {
-
+        if (input.length() != 1) {
+            throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
+        } else if (!Character.isDigit(input.charAt(0))) {
+            throw new IllegalArgumentException(ErrorMessages.NOT_A_NUMBER);
+        } else if (input.equals(ProgramMessages.RESTART)
+                || input.equals(ProgramMessages.QUIT)) {
+            throw new IllegalArgumentException(ErrorMessages.PLEASE_REENTER);
+        }
     }
 
     /**
