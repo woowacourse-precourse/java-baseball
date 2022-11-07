@@ -6,7 +6,7 @@ import static baseball.constant.GameMessage.*;
 import static baseball.game.BaseballGame.computerNumbers;
 import static baseball.game.BaseballGame.userNumbers;
 
-public class CompareBaseballNumber {
+public class CompareNumbers {
 
     public static int strike;
     public static int ball;
