@@ -64,4 +64,15 @@ public class GameTest {
         // then
         Assertions.assertThat(method.invoke(game, 2, 1)).isEqualTo("1볼 2스트라이크");
     }
+
+    @Test
+    void 컴퓨터가_정한_숫자의_리스트를_반환하는_기능() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        Game game = new Game();
+        Method method = game.getClass().getDeclaredMethod("getComputerNumberList");
+        method.setAccessible(true);
+
+        // then
+        Assertions.assertThat(method.invoke(game)).isInstanceOf(List.class);
+    }
 }
