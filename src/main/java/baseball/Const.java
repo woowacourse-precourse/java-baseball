@@ -7,7 +7,7 @@ public final class Const {
     public static final String BALL = "볼";
     public static final String RESTART = "1";
     public static final String FINISH = "2";
-    public static final char LF = '\n';
+    public static final String LF = "\n";
 
     public static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     public static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";

@@ -53,6 +53,7 @@ public class BaseballGame {
 
         if (validator.userWantRestart(Console.readLine())) {
             init();
+            return;
         }
 
         this.isPlaying = false;

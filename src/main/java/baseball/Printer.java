@@ -57,19 +57,20 @@ public class Printer {
     }
 
     private static void print(String s) {
-        try {
-            bufferedWriter.write(s);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        write(s);
     }
 
     private static void println(String s) {
+        write(s);
+        write(LF);
+    }
+
+    private static void write(String s) {
         try {
             bufferedWriter.write(s);
-            bufferedWriter.write(LF);
+            bufferedWriter.flush();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
