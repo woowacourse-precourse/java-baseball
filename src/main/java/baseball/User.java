@@ -3,13 +3,14 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
     private static List<Integer> numbers;
 
-    public String inputNumbers() {
+    private String inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         return input;
@@ -18,6 +19,10 @@ public class User {
     public void setNumbers(String input) {
         validateInput(input);
         this.numbers = validateDuplicate(input);
+    }
+
+    public List<Integer> getNumbers() {
+        return List.copyOf(numbers);
     }
 
     private void validateInput(String input) {
