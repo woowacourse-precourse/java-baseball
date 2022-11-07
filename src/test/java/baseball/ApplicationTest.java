@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -28,6 +29,31 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("Game, checkIsNumberError")
+    void 게임_문자_예외_메서드_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("sav"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    @DisplayName("Game, checkRangeError")
+    void 게임_범위_예외_메서드_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("012"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    @DisplayName("Game, checkVisitedError")
+    void 게임_중복_예외_메서드_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("212"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -137,7 +137,7 @@ public class Game {
         }
     }
 
-    private static boolean checkIsContinueError(int toBeContinue) {
+    public static boolean checkIsContinueError(int toBeContinue) {
         if (toBeContinue != AGAIN && toBeContinue != EXIT) {
             return true;
         }
