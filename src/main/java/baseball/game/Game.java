@@ -39,10 +39,10 @@ public class Game {
 
     public String play() {
         Ball computerBall = ballMaker.getRandomBall();
-        boolean finishGame = false;
-        while (finishGame != true) {
+        boolean gameOver = false;
+        while (gameOver != true) {
             Ball userBall = ballMaker.getUserBall();
-            finishGame = ballReader.isFinished(userBall, computerBall);
+            gameOver = ballReader.isGameOver(userBall, computerBall);
             printResult(userBall, computerBall);
             numberOfAttempts += 1;
         }

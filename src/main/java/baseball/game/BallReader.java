@@ -19,7 +19,7 @@ public class BallReader {
         this.requiredStrikes = countOfStrike;
     }
 
-    public boolean isFinished(Ball userBall, Ball computerBall) {
+    public boolean isGameOver(Ball userBall, Ball computerBall) {
         Map<ResultOfBall, Integer> result = getStrikeAndBall(userBall, computerBall);
         if (result.get(STRIKE) == null) {
             return false;
