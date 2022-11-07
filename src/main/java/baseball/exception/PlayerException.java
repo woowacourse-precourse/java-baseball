@@ -5,7 +5,7 @@ import java.util.List;
 import static baseball.exception.ErrorMessage.DUPLICATE_NUMBER;
 import static baseball.exception.ErrorMessage.INPUT_SIZE;
 
-public class PlayerException extends Exception {
+public class PlayerException {
     private static final int INPUT_NUMBER_SIZE = 3;
 
     /**
