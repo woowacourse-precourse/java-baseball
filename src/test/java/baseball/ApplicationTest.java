@@ -12,8 +12,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
 
@@ -62,6 +61,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> computer.storeCorrectResult("122", computer.createOtherNumber()))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_볼_스트라이크_낫싱_출력() {
+        Computer computer = appConfig.computer();
+        String nothing = computer.storeCorrectResult("123", List.of(4, 5, 6));
+        String oneBall = computer.storeCorrectResult("123", List.of(3,4,5));
+        String oneStrike = computer.storeCorrectResult("123", List.of(1,4,5));
+
+        assertThat(nothing).isEqualTo("낫싱");
+        assertThat(oneBall).isEqualTo("1볼");
+        assertThat(oneStrike).isEqualTo("1스트라이크");
     }
 
     @Test
