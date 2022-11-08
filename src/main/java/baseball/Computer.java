@@ -8,11 +8,7 @@ import java.util.List;
 public class Computer {
     List<Integer> threeDifferntNumber;
 
-    public Computer() {
-        this.threeDifferntNumber = getThreeDifferntNumber();
-    }
-
-    private List<Integer> getThreeDifferntNumber(){
+    public List<Integer> getThreeDifferntNumber(){
         List<Integer> randomDifferentNumber = new ArrayList<>();
 
         while (randomDifferentNumber.size() < 3) {
