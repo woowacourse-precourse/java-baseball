@@ -13,6 +13,7 @@ public class NumberBaseballGame {
 
     private final Answer answer = new Answer();
     private List<Integer> computerNumber = new ArrayList<>();
+    private List<Integer> inputNumber = new ArrayList<>();
 
     public void startGame() {
         System.out.println(START_TEXT);
@@ -22,6 +23,17 @@ public class NumberBaseballGame {
             System.out.println(INPUT_TEXT);
             String userInput = Console.readLine();
             UserInputException.checkUserInput(userInput);
+            inputNumber = changeStringToList(userInput);
+
         }
+    }
+
+    public List<Integer> changeStringToList(String userInput) {
+        List<Integer> changedList = new ArrayList<>();
+
+        for (char digit : userInput.toCharArray()) {
+            changedList.add(Character.getNumericValue(digit));
+        }
+        return changedList;
     }
 }
