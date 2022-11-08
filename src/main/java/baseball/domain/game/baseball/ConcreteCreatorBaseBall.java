@@ -21,12 +21,16 @@ public class ConcreteCreatorBaseBall extends GameCreator {
         } while (!input.equals(randomNumber));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
         }
-    public void startGame() throws IOException {
-        createGame();
-        CreateBaseBall game = new CreateBaseBall();
-        if (!game.endGame()){
-            startGame();
+    public void startGame() {
+        try {
+            createGame();
+            CreateBaseBall game = new CreateBaseBall();
+            if (!game.endGame()){
+                startGame();
+            }
+            System.out.println("게임 종료");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        System.out.println("게임 종료");
     }
 }
