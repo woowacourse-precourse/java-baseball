@@ -9,14 +9,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        java.io.Console writer = new Console(System.in);
         try {
-            gameStart();
+        	runMain();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
+        writer.flush();
     }
 
-    public static void gameStart() {
+    public static void runMain() {
         List<Integer> computerPickNums = computerPick();
         gamePlaying(computerPickNums);
         }
@@ -40,7 +42,7 @@ public class Application {
         List<Integer> playerPickNums = playerPick();
         int strike = findStrike(computerPickNums, playerPickNums);
         int ball = findball(computerPickNums, playerPickNums);
-            게임종료_후_재시작(strike, ball, computerPickNums);    
+              게임종료_후_재시작(strike, ball, computerPickNums);    
         }
 
     public static List<Integer> playerPick() {
@@ -48,16 +50,16 @@ public class Application {
         System.out.print("숫자를 입력해주세요 :");
         int playerInput = Integer.parseInt(Console.readLine());
         if (playerInput < 100 || playerInput > 999) {
-            예외_테스트();
+              예외_테스트();
         }
         int numOne = (int) (playerInput / 100) % 10;
         int numTwo = (int) (playerInput / 10) % 10;
         int numThree = playerInput % 10;
         if (numOne == 0 || numTwo == 0 || numThree == 0) {
-            예외_테스트();
+              예외_테스트();
         }
         if (numOne == numTwo || numTwo == numThree || numThree == numOne) {
-            예외_테스트();
+              예외_테스트();
         }
         answer.add(numOne);
         answer.add(numTwo);
@@ -130,10 +132,10 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int coin = Integer.parseInt(Console.readLine());
         if (coin == 1) {
-            gameStart();
+        	runMain();
         } else if (coin == 2) {
         } else {
-            예외_테스트();
+              예외_테스트();
         }
     }
 }
