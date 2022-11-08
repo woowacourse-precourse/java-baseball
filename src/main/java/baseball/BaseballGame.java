@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import static baseball.Constants.END_NUM;
 import static baseball.Constants.GAME_INPUT_LENGTH;
 import static baseball.Constants.RESTART_INPUT_LENGTH;
@@ -11,6 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    public static List<Integer> initComputerNumber() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < GAME_INPUT_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
     public static List<Integer> initUserNumber() {
         String userInput = requireUserNumber();
         exceptionUserNumber(userInput);
