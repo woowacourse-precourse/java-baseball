@@ -6,7 +6,7 @@ public class OutputView {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String BALL_MESSAGE = "%d볼";
     private static final String STRIKE_MESSAGE = "%d스트라이크";
-    private static final String WHOLE_COUNT_MESSAGE = "%d스트라이크 %d볼";
+    private static final String WHOLE_COUNT_MESSAGE = "%d볼 %d스트라이크";
 
     public static void writeGameResult(GameResult gameResult) {
         String message = getResultMessage(gameResult);
@@ -23,6 +23,6 @@ public class OutputView {
         if (gameResult.isOnlyStrike()) {
             return String.format(STRIKE_MESSAGE, gameResult.getStrikeCounts());
         }
-        return String.format(WHOLE_COUNT_MESSAGE, gameResult.getStrikeCounts(), gameResult.getBallCounts());
+        return String.format(WHOLE_COUNT_MESSAGE, gameResult.getBallCounts(), gameResult.getStrikeCounts());
     }
 }

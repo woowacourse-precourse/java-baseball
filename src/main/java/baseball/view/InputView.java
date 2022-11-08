@@ -8,10 +8,9 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class InputView {
-    private static final String INPUT_MESSAGE = "1 ~ 9 사이의 숫자 3개를 입력해주세요: ";
-    private static final String WRONG_INPUT_MESSAGE = "잘못된 입력값입니다. 다시 입력해주세요 (1 ~ 9 사이의 숫자)";
-    private static final String GAME_END_MESSAGE = "모든 숫자를 맞췄습니다. 게임을 종료합니다.";
-    private static final String INPUT_RESTART_MESSAGE = "게임을 다시 시작하려면 1, 종료하려면 2를 입력해 주세요";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String INPUT_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String DELIMITER = "";
     private static final char MIN_BASEBALL_NUMBER = '1';
     private static final char MAX_BASEBALL_NUMBER = '9';
@@ -40,13 +39,8 @@ public class InputView {
     }
 
     private boolean isValidInput(String inputBaseballs) {
-        try {
-            validateInput(inputBaseballs);
-            return true;
-        } catch (IllegalArgumentException e) {
-            System.out.println(WRONG_INPUT_MESSAGE);
-            return false;
-        }
+        validateInput(inputBaseballs);
+        return true;
     }
 
     private void validateInput(String inputBaseballs) {
@@ -69,20 +63,15 @@ public class InputView {
         System.out.println(GAME_END_MESSAGE);
         System.out.println(INPUT_RESTART_MESSAGE);
         String gameState = scanner.nextLine();
-        while (isValidGameState(gameState)) {
+        while (!isValidGameState(gameState)) {
             gameState = scanner.nextLine();
         }
         return Integer.parseInt(gameState);
     }
 
     private boolean isValidGameState(String gameState) {
-        try {
-            validateGameState(gameState);
-            return true;
-        } catch (IllegalArgumentException e) {
-            System.out.println(WRONG_INPUT_MESSAGE);
-            return false;
-        }
+        validateGameState(gameState);
+        return true;
     }
 
     private void validateGameState(String gameState) {
