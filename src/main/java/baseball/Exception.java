@@ -5,7 +5,11 @@ import java.util.Set;
 
 public class Exception {
 
-
+    public void checkInputException(String userBaseBallNumber) {
+        checkLength(userBaseBallNumber);
+        checkNumberRange(userBaseBallNumber);
+        checkOverLap(userBaseBallNumber);
+    }
 
     public void checkLength(String userBaseBallNumber) throws IllegalArgumentException {
         if (userBaseBallNumber.length() != 3) {
