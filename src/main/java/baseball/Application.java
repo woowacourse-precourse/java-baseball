@@ -123,21 +123,43 @@ public class Application {
         return BallStrike;
     }
 
-    public static void main(String[] args) {
-
-        String inputString = inputAnswer();
-        List<Integer> thrownBalls = castToInteger(inputString);
-        List<Integer> Answer = createAnswer();
-        boolean isThreeStrikes = false;
-        System.out.println("숫자 야구 게임을 시작합니다");
-
-        while (!isThreeStrikes){
-            inputString = inputAnswer();
-            thrownBalls = castToInteger(inputString);
-            isThreeStrikes = compareStrikes(thrownBalls, Answer);
+    static boolean RerunOrNot(){
+        String input = Console.readLine();
+        if (input.length() != 1) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException("Invalid input");
         }
 
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int rerunornot = Character.getNumericValue(input.charAt(0));
 
+        if (rerunornot == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        String inputString = "";
+        List<Integer> thrownBalls = new ArrayList<>();
+        List<Integer> Answer = new ArrayList<>();
+        boolean rerunornot = true;
+
+        while (rerunornot){
+            System.out.println("숫자 야구 게임을 시작합니다");
+            Answer = createAnswer();
+            boolean isThreeStrikes = false;
+
+            while (!isThreeStrikes){
+                inputString = inputAnswer();
+                thrownBalls = castToInteger(inputString);
+                isThreeStrikes = compareStrikes(thrownBalls, Answer);
+            }
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            rerunornot = RerunOrNot();
+        }
     }
 }
