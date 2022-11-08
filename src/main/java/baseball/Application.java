@@ -20,11 +20,9 @@ public class Application {
 
     public static int findBall(List<Integer> computer, List<Integer> player) {
         int ballNumber = 0;
-        for (int computerIdx = 0; computerIdx < 3; computerIdx++) {
-            for (int playerIdx = 0; playerIdx < 3; playerIdx++) {
-                if ((computerIdx != playerIdx) && (computer.get(computerIdx) == player.get(playerIdx))) {
-                    ballNumber++;
-                }
+        for (int idx = 0; idx < computer.size(); idx++) {
+            if ((computer.get(idx) != player.get(idx)) && (computer.indexOf(player.get(idx)) != -1)) {
+                ballNumber++;
             }
         }
         return ballNumber;
