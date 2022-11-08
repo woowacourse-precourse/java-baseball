@@ -57,6 +57,26 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    class length_Exception {
+        @Test
+        void 자리수가_3자리_초과일떄() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("1234"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력된 수가 3자리 초과입니다")
+            );
+        }
+
+        @Test
+        void 자리수가_3자리_미만일떄() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("12"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력된 수가 3자리 미만입니다")
+            );
+        }
+
+
 
 
     @Test
