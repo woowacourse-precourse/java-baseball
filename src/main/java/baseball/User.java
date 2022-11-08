@@ -6,18 +6,38 @@ import java.util.stream.Collectors;
 
 import static java.lang.Character.*;
 
-public class UserNumber {
+public class User {
 
     private final static int MAX_SIZE = 3;
 
-    private final List<Integer> number;
+    private List<Integer> number;
+    private Integer strike;
+    private Integer ball;
+    private Boolean end;
 
-    public UserNumber(String inputNumber) {
-        this.number = listConverter(inputNumber);
-    }
+    public User() {}
 
     public List<Integer> getNumber() {
         return number;
+    }
+
+    public Integer getStrike() {
+        return strike;
+    }
+
+    public Integer getBall() {
+        return ball;
+    }
+
+    public Boolean getEnd() {
+        return end;
+    }
+
+    public void inputNumber(String inputNumber) {
+        this.number = listConverter(inputNumber);
+        this.strike = 0;
+        this.ball = 0;
+        this.end = false;
     }
 
     private static List<Integer> listConverter(String inputNumber) {
@@ -36,7 +56,7 @@ public class UserNumber {
 
     private static List<Integer> integerConverter(List<Character> numbers) {
         return numbers.stream()
-                .map(UserNumber::getIntegerNumber)
+                .map(User::getIntegerNumber)
                 .collect(Collectors.toList());
     }
 
