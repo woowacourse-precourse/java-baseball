@@ -2,7 +2,8 @@ package baseball.view;
 
 import baseball.message.ProgramMessage;
 
-import static baseball.util.ProcessCode.*;
+import static baseball.util.ProcessCode.RESTART;
+import static baseball.util.ProcessCode.FINISH;
 
 public class BaseballGameView {
 

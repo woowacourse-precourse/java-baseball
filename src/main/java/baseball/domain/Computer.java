@@ -5,7 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.util.GameRule.*;
+import static baseball.util.GameRule.INCLUSIVE_START_NUMBER;
+import static baseball.util.GameRule.INCLUSIVE_END_NUMBER;
 
 public class Computer {
 
