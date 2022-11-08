@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.controller.RandomInRange;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -37,9 +38,8 @@ public final class BaseballGame implements Game {
      * 메서드를 실행 시키면 3스트라이크가 나올 때까지 숫자 야구 게임을 진행합니다
      */
     @Override
-    public void play() {
+    public void play(RandomInRange randomGenerator) {
         Score score = Score.ZERO();
-        RandomInRange randomGenerator = new MissionRandom();
         Digits computerAnswer = RandomDigits.createRandom(randomGenerator);
 
         while (!score.isThreeStrike()) {

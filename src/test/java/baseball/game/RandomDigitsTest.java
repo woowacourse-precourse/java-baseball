@@ -1,5 +1,6 @@
 package baseball.game;
 
+import baseball.controller.RandomInRange;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +14,8 @@ public class RandomDigitsTest {
             private int key = 1;
 
             @Override
-            public Digit pickRandomInRange(int startInclusive, int endInclusive) {
-                return Digit.from(key++);
+            public int pickRandomInRange(int startInclusive, int endInclusive) {
+                return key++;
             }
         };
         Digits randomDigits = RandomDigits.createRandom(random);

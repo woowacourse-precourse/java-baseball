@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -44,7 +45,7 @@ public class ControllerTest {
         };
         Controller controller = Controller.createWithViews(inputView, outputView);
         controller.runGame(game);
-        verify(game, times(2)).play();
+        verify(game, times(2)).play(any());
     }
 
     @DisplayName("컨트롤러가 예외를 처리한다")
@@ -75,6 +76,6 @@ public class ControllerTest {
         } catch (Exception expected) {
             assertThat(expected.getMessage()).isEqualTo("1이나 2가 아닌 값이 입력되었습니다");
         }
-        verify(game, times(1)).play();
+        verify(game, times(1)).play(any());
     }
 }

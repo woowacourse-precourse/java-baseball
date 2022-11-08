@@ -1,5 +1,7 @@
 package baseball.game;
 
+import baseball.controller.RandomInRange;
+
 import static baseball.config.GameConstants.BASEBALL_NUMBER_LENGTH;
 import static baseball.config.GameConstants.DIGIT_END;
 import static baseball.config.GameConstants.DIGIT_START;
@@ -27,7 +29,7 @@ final class RandomDigits extends Digits {
 
     private void generateRandom() {
         //100의 자리에서는 0이 올 수 없기에 미리 1부터 9까지 추가해둠
-        append(random.pickRandomInRange(HUNDRED_START, DIGIT_END));
+        append(Digit.from(random.pickRandomInRange(HUNDRED_START, DIGIT_END)));
         while (isSmallerThanLimit()) {
             tryToAppend();
         }
@@ -39,7 +41,7 @@ final class RandomDigits extends Digits {
 
     private void tryToAppend() {
         //10,1의 자리에서는 0이 올 수 있기에 0부터 9까지 뽑음
-        Digit randomNumber = random.pickRandomInRange(DIGIT_START, DIGIT_END);
+        Digit randomNumber = Digit.from(random.pickRandomInRange(DIGIT_START, DIGIT_END));
         if (!contains((randomNumber))) {
             append(randomNumber);
         }

@@ -39,8 +39,10 @@ public final class Controller {
      */
     public void runGame(Game game) {
         CommandKey commandKey = CommandKey.RETRY;
+
         while (commandKey != CommandKey.FINISH) {
-            game.play();
+            RandomInRange randomGenerator = new MissionRandom();
+            game.play(randomGenerator);
             commandKey = getCommandFromInput();
         }
     }
