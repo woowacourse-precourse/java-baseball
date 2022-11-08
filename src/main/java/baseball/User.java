@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    Numbers guess;
+    private Numbers guess;
 
     void guess() {
         System.out.print("숫자를 입력해주세요 : ");
