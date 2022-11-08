@@ -51,8 +51,16 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void askNewGame() {
+    void askNewGameInputValidation1() {
         String input = "3";
         assertThatThrownBy(() -> Application.askNewGame(input)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void userNumberRangeCheck() {
+        int input = Integer.parseInt("100");
+        assertThatThrownBy(() -> {
+            Application.userNumberRangeCheck(input);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 }
