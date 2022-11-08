@@ -62,7 +62,7 @@ public class Number {
     }
 
     private boolean isCorrectRange(String inputNumber) {
-        Pattern numberPattern = Pattern.compile("^[0-9]*$");
+        Pattern numberPattern = Pattern.compile("^[1-9]*$");
         return numberPattern.matcher(inputNumber).matches();
     }
 
