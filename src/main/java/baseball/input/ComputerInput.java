@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ComputerInput {
     public List<Integer> getNumberList() {
-        ArrayList<Integer> computerNumberList = new ArrayList<>();
+        List<Integer> computerNumberList = new ArrayList<>();
         while (computerNumberList.size() < NUMBER_LENGTH) {
             int randomNumber = getValidRandomNumber(computerNumberList);
             computerNumberList.add(randomNumber);
