@@ -54,6 +54,18 @@ public class Application {
         }
     }
 
+    private static void checkJudgment(){
+        if(judgment.get("strike") == 0 && judgment.get("ball") == 0){
+            System.out.println("낫싱");
+        } else if(judgment.get("strike") == 0){
+            System.out.println(judgment.get("ball")+"볼");
+        } else if(judgment.get("ball") == 0){
+            System.out.println(judgment.get("strike")+"스트라이크");
+        } else {
+            System.out.println(judgment.get("ball")+"볼 "+judgment.get("strike")+"스트라이크");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -68,6 +80,7 @@ public class Application {
         playerNumber(player);
 
         findNumber();
+        checkJudgment();
 
         System.out.println("게임 종료");
     }
