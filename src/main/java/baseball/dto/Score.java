@@ -8,4 +8,8 @@ public class Score {
         this.numBalls = numBalls;
         this.numStrikes = numStrikes;
     }
+
+    public int getBallCount() {
+        return this.numBalls;
+    }
 }
