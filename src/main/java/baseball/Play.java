@@ -16,6 +16,7 @@ public class Play {
             }
         }
     }
+
     public static String createThreeNumber() {
         int size = 0;
         String randomNumber = "";
@@ -29,6 +30,7 @@ public class Play {
         }
         return randomNumber;
     }
+
     public static int countBall(String playerNumber, String answerNumber) {
         int ball = 0;
         for (int index = 0; index < 3; index++) {
@@ -38,6 +40,7 @@ public class Play {
         }
         return ball;
     }
+
     public static int countStrike(String playerNumber, String answerNumber) {
         int strike = 0;
         for (int index = 0; index < 3; index++) {
@@ -47,6 +50,7 @@ public class Play {
         }
         return strike;
     }
+
     public static void printResult(int ball, int strike) {
         ball = ball - strike;
         if (ball != 0 && strike != 0) {
@@ -62,10 +66,11 @@ public class Play {
             System.out.println("낫싱");
         }
     }
+
     public static int checkAnswer(String answerNumber) {
         System.out.print("숫자를 입력해주세요 : ");
         String playerNumber = Console.readLine();
-        if (!Exception.isNumber(playerNumber) || !Exception.isThreeNumber(playerNumber) || Exception.isRedundancy(playerNumber)) {
+        if (Exception.isException(playerNumber)) {
             throw new IllegalArgumentException("3자리의 서로 다른 숫자가 아닙니다.");
         }
         int ball = countBall(playerNumber, answerNumber);
