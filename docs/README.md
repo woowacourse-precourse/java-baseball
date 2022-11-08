@@ -1,4 +1,12 @@
-# 우아한테크코스 웹 백엔드 2주차<br> java-baseball(숫자야구) by 김민찬
+<div style="text-align:center">
+
+# 우아한테크코스 웹 백엔드 2주차 <br> java-baseball(숫자야구)
+
+### 김민찬(mckim123)
+
+</div>
+
+<br>
 
 ## 전체 구조
 
@@ -41,11 +49,11 @@
   1. `createTargetNumber_정상_생성_확인()` : 지정한 값을 활용해 생성한 `targetNumber`가 제대로 생성되는지 확인한다.
   2. `createTargetNumber_정상_생성_확인_중복_제거()` : 랜덤에서 반영되는 값에 중복이 있을 때 `targetNumber`가 제대로 생성되는지 확인한다.
 
-  - 랜덤 함수에서 3, 1, 3, 1, 1, 1, 3, 1, 3, 1, 1, 1, 8 이 순서대로 반환될 경우 `targetNumber` 는 `3, 1, 8`을 순서대로 가지는 리스트
+    - 랜덤 함수에서 3, 1, 3, 1, 1, 1, 3, 1, 3, 1, 1, 1, 8 이 순서대로 반환될 경우 `targetNumber` 는 `3, 1, 8`을 순서대로 가지는 리스트
 
   3. `createTargetNumber_생성_결과_유효성_확인()` : 랜덤 생성한 `targetNumber`의 길이, 원소가 서로 다른지, 각 자리가 1과 9 사이인지 검증한다.
 
-  - 랜덤 생성 후 50회 반복 검증한다.
+    - 랜덤 생성 후 50회 반복 검증한다.
 
 <br>
 
@@ -61,7 +69,7 @@
 - 기능 설명
   1. 두 정수 변수 `Ball`, `Strike`를 담은 `List<Integer>` `BallStrikeCount`를 생성하고 각 값을 `0`으로 초기화한다.
 
-  - 후술되는 `Ball`, `Strike`는 각각 `BallStrikeCount`의 `0`, `1`번째 index의 값을 칭한다.
+    - 후술되는 `Ball`, `Strike`는 각각 `BallStrikeCount`의 `0`, `1`번째 index의 값을 칭한다.
 
   2. 함수 `inputUserNumber()`를 실행하여 유저의 입력값 `userNumber`를 입력받는다.
   3. 함수 `judgeUserNumber()`를 실행하여 유저의 입력값에 대한 결과를 `Ball`, `Strike`의 값에 저장한다.
