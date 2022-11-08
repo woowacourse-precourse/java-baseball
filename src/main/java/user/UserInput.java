@@ -11,18 +11,19 @@ public class UserInput {
     public static List<Integer> getUserInput() {
         List<Integer> userInputList = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
-        try {
-            String userInput = Console.readLine();
+        String userInput = Console.readLine();
 
-            if (userInput.length() != USER_INPUT_LENGTH) {
-                System.out.println("3개의 숫자를 입력해주세요!");
-                throw new IllegalArgumentException();
-            }
-            userInputList = changeUserInputToList(userInput);
-        } catch (Exception e) {
-
+        if (userInput.length() != USER_INPUT_LENGTH) {
+            //System.out.println("3개의 숫자를 입력해주세요!");
+            throw new IllegalArgumentException();
         }
-        ;
+        final String REGEX = "[0-9]+";
+        if (!userInput.matches(REGEX)) {
+            //System.out.println("숫자만 입력해 주세요!");
+            throw new IllegalArgumentException();
+        }
+        userInputList = changeUserInputToList(userInput);
+
         return userInputList;
     }
 
