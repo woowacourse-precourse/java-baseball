@@ -30,4 +30,15 @@ public class RandomNumbers {
     public int indexOf(int value) {
         return numbers.indexOf(value);
     }
+
+    public int size() {
+        return numbers.size();
+    }
+
+    @Override
+    public String toString() {
+        return "RandomNumbers{" +
+                "numbers=" + numbers +
+                '}';
+    }
 }
