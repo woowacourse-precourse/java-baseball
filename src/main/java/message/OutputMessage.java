@@ -1,5 +1,7 @@
 package message;
 
+import baseball.domain.BaseBall;
+
 import java.util.List;
 
 public class OutputMessage {
@@ -37,5 +39,20 @@ public class OutputMessage {
             sb.append(i);
         }
         System.out.println(sb.toString());
+    }
+
+    public void gameResultMessage(BaseBall baseBall) {
+        if(baseBall.getBall() == 0 && baseBall.getStrike() == 0 ) {
+            System.out.println(GAME_NOTHING);
+        } else if(baseBall.getBall() > 0 && baseBall.getStrike() > 0) {
+            System.out.println(baseBall.getBall() + GAME_BALL + " " + baseBall.getStrike() + GAME_STRIKE);
+        } else if(baseBall.getBall() == 0 && baseBall.getStrike() > 0 ) {
+            System.out.println(baseBall.getStrike() + GAME_STRIKE);
+        } else if(baseBall.getBall() > 0 && baseBall.getStrike() == 0 ) {
+            System.out.println(baseBall.getBall() + GAME_BALL);
+        } else {
+            System.out.println(baseBall.getStrike() + GAME_STRIKE);
+            System.out.println(WIN_MESSAGE);
+        }
     }
 }
