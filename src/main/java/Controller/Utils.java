@@ -46,5 +46,11 @@ public class Utils {
         return true;
     }
 
+    public static void check_input(String input){
+        if(redundant_Check(input)) throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        if(blank_Check(input)) throw new IllegalArgumentException("값을 입력해주세요.");
+        if(length_check(input)){ throw new IllegalArgumentException("3글자 수가 아닙니다.");}
+        if(zeroOrNumber_check(input)){ throw new IllegalArgumentException("1~9숫자를 입력해주세요.");}
+    }
 
 }
