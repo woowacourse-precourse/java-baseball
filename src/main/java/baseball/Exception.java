@@ -1,7 +1,6 @@
 package baseball;
 
 public class Exception {
-
     public static void hasCharacters(String input) {
         String regex = "^[0-9]*$";
         if (!input.matches(regex)) {
@@ -20,7 +19,7 @@ public class Exception {
 class PlayerNumbersException extends Exception {
     final static int NUMBER_LENGTH = 3;
 
-    public static void verifyPlayerNumbers(String gamePlayerNumbers) {
+    public static void verify(String gamePlayerNumbers) {
         verifyLength(gamePlayerNumbers);
         verifyUniqueness(gamePlayerNumbers);
         hasCharacters(gamePlayerNumbers);
@@ -40,7 +39,6 @@ class PlayerNumbersException extends Exception {
             }
         }
     }
-
 }
 
 class GameRepeatInputException extends Exception {
