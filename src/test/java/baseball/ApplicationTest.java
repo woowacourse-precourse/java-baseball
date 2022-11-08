@@ -63,27 +63,31 @@ class ApplicationTest extends NsTest {
         class ExceptionTest{
             @Test
             void 사용자입력이_3글자가_아니면_오류발생() {
-                String inValidInput = "1234";
-                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException("1234"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
             }
             @Test
             void 사용자입력이_숫자가_아니면_오류발생() {
-                String inValidInput = "12a";
-                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException("12a"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
             }
             @Test
             void 사용자입력에_0이_있으면_오류발생() {
-                String inValidInput = "023";
-                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException("102"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
             }
             @Test
             void 사용자입력에_중복된_수가_있으면_오류발생() {
-                String inValidInput = "113";
-                assertThatThrownBy(() -> testGame.inputValidator.validateInput(inValidInput))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertSimpleTest(() ->
+                        assertThatThrownBy(() -> runException("112"))
+                                .isInstanceOf(IllegalArgumentException.class)
+                );
             }
         }
 
@@ -233,9 +237,13 @@ class ApplicationTest extends NsTest {
         }
         @Test
         void 맞춘_뒤에_입력시_1이나_2가_아닌_수를_입력하면_예외처리() {
-            String inValidChoice = "3";
-            assertThatThrownBy(() -> testGame.inputValidator.validateChoice(inValidChoice))
-                    .isInstanceOf(IllegalArgumentException.class);
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        assertThatThrownBy(() -> run("123", "3"))
+                                .isInstanceOf(IllegalArgumentException.class);
+                    },
+                    1, 2, 3
+            );
         }
     }
 
