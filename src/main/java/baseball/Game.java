@@ -8,14 +8,9 @@ import java.util.List;
 
 public class Game {
 
-    private static final int TOTAL_SIZE = 3;
-    private static final int START_RANGE = 1;
-    private static final int END_RANGE = 9;
-    private static final int AGAIN = 1;
-    private static final int EXIT = 2;
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String SUCCESS_MESSAGE = TOTAL_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String AGAIN_QUESTION_MESSAGE = "게임을 새로 시작하려면 " + AGAIN + ", 종료하려면 " + EXIT + "를 입력하세요.";
+    private static final String SUCCESS_MESSAGE = ReferenceValue.TOTAL_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String AGAIN_QUESTION_MESSAGE = "게임을 새로 시작하려면 " + ReferenceValue.AGAIN + ", 종료하려면 " + ReferenceValue.EXIT + "를 입력하세요.";
 
     List<Integer> numbers;
 
@@ -63,7 +58,7 @@ public class Game {
     private static List<Integer> getUserNumbers(String input) {
         List<Integer> user = new ArrayList<>();
 
-        for (int i = 0; i < TOTAL_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.TOTAL_SIZE; i++) {
             char currentValue = input.charAt(i);
             int number = Character.getNumericValue(currentValue);
             user.add(number);
@@ -75,7 +70,7 @@ public class Game {
     private static List<Integer> getComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < TOTAL_SIZE) {
+        while (computer.size() < ReferenceValue.TOTAL_SIZE) {
             int randomNumber = getPickNumber();
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -85,7 +80,7 @@ public class Game {
     }
 
     private static int getPickNumber() {
-        int number = Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+        int number = Randoms.pickNumberInRange(ReferenceValue.START_RANGE, ReferenceValue.END_RANGE);
         return number;
     }
 
@@ -99,7 +94,7 @@ public class Game {
 
         int strikeCount = record.strikeCount;
 
-        if (strikeCount == TOTAL_SIZE) {
+        if (strikeCount == ReferenceValue.TOTAL_SIZE) {
             System.out.println(SUCCESS_MESSAGE);
             success = true;
         }
@@ -126,7 +121,7 @@ public class Game {
 
         boolean again = false;
 
-        if (toBeContinue == AGAIN) {
+        if (toBeContinue == ReferenceValue.AGAIN) {
             again = true;
         }
 

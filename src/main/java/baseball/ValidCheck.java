@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ValidCheck {
-    private static final int TOTAL_SIZE = 3;
-    private static final int START_RANGE = 1;
-    private static final int END_RANGE = 9;
-    private static final int AGAIN = 1;
-    private static final int EXIT = 2;
+
 
     public static boolean checkIsContinueError(Integer toBeContinue) {
-        if (toBeContinue != AGAIN && toBeContinue != EXIT) {
+        if (toBeContinue != ReferenceValue.AGAIN && toBeContinue != ReferenceValue.EXIT) {
             return true;
         }
         return false;
@@ -28,11 +24,11 @@ public class ValidCheck {
 
     public static boolean checkRangeError(String input) {
 
-        for (int i = 0; i < TOTAL_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.TOTAL_SIZE; i++) {
             char value = input.charAt(i);
             int number = Character.getNumericValue(value);
 
-            boolean rangeCheck = (number >= START_RANGE) && (number <= END_RANGE);
+            boolean rangeCheck = (number >= ReferenceValue.START_RANGE) && (number <= ReferenceValue.END_RANGE);
 
             if (!rangeCheck) {
                 return true;
@@ -44,7 +40,7 @@ public class ValidCheck {
     public static boolean checkSizeError(String input) {
         int size = input.length();
 
-        if (size != TOTAL_SIZE) {
+        if (size != ReferenceValue.TOTAL_SIZE) {
             return true;
         }
 
@@ -54,7 +50,7 @@ public class ValidCheck {
     public static boolean checkVisitedError(String input) {
         List<Integer> visitedList = new ArrayList<>();
 
-        for (int i = 0; i < TOTAL_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.TOTAL_SIZE; i++) {
             char value = input.charAt(i);
             int number = Character.getNumericValue(value);
 
