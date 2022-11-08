@@ -1,5 +1,6 @@
 package baseball;
 
+import static baseball.Utils.isContainZero;
 import static baseball.Utils.isDistinct;
 import static baseball.Utils.isNumeric;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -56,6 +57,7 @@ public class Input {
   private static boolean validateAnswerFormat(String string) {
     return string.length() == 3
         && isNumeric(string)
-        && isDistinct(string);
+        && isDistinct(string)
+        && !isContainZero(string);
   }
 }
