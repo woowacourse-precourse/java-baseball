@@ -15,7 +15,9 @@ public class BaseballController {
     }
 
     public void playGameForever() {
-        while(playGame() == 1);
+        while(playGame() == 1){
+            service.reset();
+        }
     }
 
     public int playGame() {
