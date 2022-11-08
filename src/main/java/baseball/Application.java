@@ -5,36 +5,44 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static baseball.Exception.*;
 
 public class Application {
 
+    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String INPUT_USER_BALL_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String STRIKE_MESSAGE = "스트라이크";
+    private static final String BALL_MESSAGE = "볼 ";
+    private static final String THREE_STRIKE = "3스트라이크";
+    private static final String SUCCESS_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String RESTART_OR_EXIT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String RESTART_GAME = "1";
+    private static final String END_GAME = "2";
+
     public static void main(String[] args) {
         List<Integer> computerBall = makeRandomBall();
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
 
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            System.out.print(INPUT_USER_BALL_MESSAGE);
             List<Integer> userBall = getStringToIntList(Console.readLine());
             String result = compareBall(computerBall, userBall);
 
-            if (!result.equals("3스트라이크")) {
+            if (!result.equals(THREE_STRIKE)) {
                 System.out.println(result);
                 continue;
             }
 
             System.out.println(result);
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String input = Console.readLine();
-            if (Objects.equals(input, "1")) {
+            System.out.println(SUCCESS_GAME_MESSAGE);
+            System.out.println(RESTART_OR_EXIT_MESSAGE);
+            String restart = Console.readLine();
+            if (restart.equals(RESTART_GAME)) {
                 computerBall = makeRandomBall();
-            } else if (Objects.equals(input, "2")) {
-                break;
-            } else {
-                throw new IllegalArgumentException();
+            } else if (restart.equals(END_GAME)) {
+                return;
             }
         }
     }
@@ -84,13 +92,13 @@ public class Application {
 
     private static String getStringToStrikeAndBall(int strike, int ball) {
         if (strike == 0 && ball == 0) {
-            return "낫싱";
+            return NOTHING_MESSAGE;
         } else if (ball == 0) {
-            return strike + "스트라이크";
+            return strike + STRIKE_MESSAGE;
         } else if (strike == 0) {
-            return ball + "볼";
+            return ball + BALL_MESSAGE;
         }
 
-        return ball + "볼 " + strike + "스트라이크";
+        return ball + BALL_MESSAGE + strike + STRIKE_MESSAGE;
     }
 }
