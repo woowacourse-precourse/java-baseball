@@ -35,7 +35,6 @@ public class InputHandler {
     public int getRestartNum() throws IOException {
         try {
             int restartNum = Integer.parseInt(br.readLine());
-            System.out.println("입력 수 : " + restartNum);
             return restartNum;
         }catch (NumberFormatException e){
             throw new IllegalArgumentException();
