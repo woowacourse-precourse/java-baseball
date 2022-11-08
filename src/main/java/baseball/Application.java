@@ -42,6 +42,20 @@ public class Application {
         return strike;
     }
 
+    public static int getBall(String randomNumber, String baseballNumber) {
+        int ball = 0;
+        String[] randomNumberList = randomNumber.split("");
+
+        for (String number : randomNumberList) {
+            if (baseballNumber.contains(number)) {
+                ball++;
+            }
+        }
+
+        ball = ball - getStrike(randomNumber, baseballNumber);
+        return ball;
+    }
+
     public static void baseballGame() {
         String randomNumber = "";
         String restartNumber = "";
