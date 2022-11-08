@@ -8,9 +8,9 @@ public class Application {
     public static void main(String[] args) {
         HomeRunStrategy homeRunStrategy = new HomeRunStrategy();
         BaseBallGame baseBallGame = new BaseBallGame();
-        GameFrame gameFrame = new GameFrame();
+        GameFrame gameFrame = new GameFrame(baseBallGame);
 
         gameFrame.startGuide();
-        gameFrame.start(baseBallGame, homeRunStrategy.createBallNumbers());
+        gameFrame.start(homeRunStrategy.createBallNumbers());
     }
 }

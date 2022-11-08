@@ -10,11 +10,17 @@ import java.util.Map;
 
 public class GameFrame {
 
+    private final BaseBallGame baseBallGame;
+
+    public GameFrame(BaseBallGame baseBallGame) {
+        this.baseBallGame = baseBallGame;
+    }
+
     public void startGuide() {
         InputView.printGuide();
     }
 
-    public void start(BaseBallGame baseBallGame, List<Character> homeRunNumbers) {
+    public void start(List<Character> homeRunNumbers) {
         BallNumbers hits = getInputParameters().hits();
         Map<BaseBallHitsType, Integer> hitTypeResult = hitTypeResult(baseBallGame, hits, homeRunNumbers);
 
@@ -28,14 +34,14 @@ public class GameFrame {
         }
 
         ballProcess(result);
-        start(baseBallGame, homeRunNumbers);
+        start(homeRunNumbers);
     }
 
     private void ballProcess(String result) {
         ResultView.ballProcess(result);
     }
 
-    public void reStartHandle(Button button) {
+    private void reStartHandle(Button button) {
         press(button);
     }
 
@@ -47,9 +53,7 @@ public class GameFrame {
 
     private void restart() {
         List<Character> homeRun = new HomeRunStrategy().createBallNumbers();
-        BaseBallGame restartGame = new BaseBallGame();
-        GameFrame gameFrame = new GameFrame();
-        gameFrame.start(restartGame, homeRun);
+        start(homeRun);
     }
 
     private InputParameters getInputParameters() {
