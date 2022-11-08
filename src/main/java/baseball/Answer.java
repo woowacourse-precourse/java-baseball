@@ -18,6 +18,7 @@ public class Answer implements Number {
             }
         }
         number = newAnswer;
+        Game.isRestart = false;
     }
 
     @Override
