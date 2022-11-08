@@ -1,9 +1,12 @@
 package baseball;
 
 public class BaseballGame {
+    Computer computer;
+    Player player;
 
-    BaseballGame() {
-
+    BaseballGame(Computer computer, Player player) {
+        this.computer = computer;
+        this.player = player;
     }
 
     public void start() {
