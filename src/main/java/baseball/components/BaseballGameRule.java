@@ -5,9 +5,6 @@ import java.util.List;
 
 public class BaseballGameRule {
 
-    public static final int BALL_COUNT_INDEX = 0;
-    public static final int STRIKE_COUNT_INDEX = 1;
-
     private List<Integer> computerNumbers;
 
     public BaseballGameRule(){
@@ -18,17 +15,10 @@ public class BaseballGameRule {
         this.computerNumbers = computerNumbers;
     }
 
-    /**
-     * player의 수를 입력받아 ball, strike 수 파악
-     *
-     * @param playerNumbers 3개의 Integer List
-     * @return playerScore.get(0) : ball 수
-     *         playerScore.get(1) : strike 수
-     */
-    public List<Integer> generatePlayerScore(List<Integer> playerNumbers){
+    public Score generatePlayerScore(List<Integer> playerNumbers){
         int ballCount = countBalls(playerNumbers);
         int strikeCount = countStrikes(playerNumbers);
-        List<Integer> playerScore = List.of(ballCount, strikeCount);
+        Score playerScore = new Score(ballCount, strikeCount);
         return playerScore;
     }
 
@@ -58,8 +48,8 @@ public class BaseballGameRule {
     }
 
 
-    public boolean isWin(List<Integer> playerScore){
-        int strikeCount = playerScore.get(STRIKE_COUNT_INDEX);
+    public boolean isWin(Score playerScore){
+        int strikeCount = playerScore.getStrike();
         if(strikeCount == 3){
             return true;
         }

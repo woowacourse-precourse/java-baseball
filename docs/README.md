@@ -34,7 +34,7 @@
 
 
 - [x] 판정 기준 컴퓨터 수 입력 - 입력형식 : `List<Integer>`
-- [x] player의 입력값으로 판정 결과 리스트 반환 - 입력형식 : `List<Integer>`
+- [x] player의 입력값으로 판정 결과 `Score` 반환 - 입력형식 : `List<Integer>`
     - [x] strike 판정
     - [x] ball 판정
 - [x] 게임 승리 여부 확인

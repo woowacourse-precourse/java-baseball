@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.components.BaseballGameRule;
+import baseball.components.Score;
 import baseball.utils.GameUtils;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -28,7 +29,7 @@ public class BaseballGameController {
 
         List<Integer> computerNumbers = GameUtils.generateThreeRandomNumbers();
         List<Integer> playerNumbers;
-        List<Integer> playerScore;
+        Score playerScore;
 
         baseballGameRule.setComputerNumbers(computerNumbers);
         do{
@@ -56,33 +57,9 @@ public class BaseballGameController {
         return playerNumbers;
     }
 
-    private void printBallStrikeCountScore(List<Integer> score){
-
-        int ballCount = score.get(BaseballGameRule.BALL_COUNT_INDEX);
-        int strikeCount = score.get(BaseballGameRule.STRIKE_COUNT_INDEX);
-
-        String scoreMessage = generateScoreMessage(ballCount, strikeCount);
-
+    private void printBallStrikeCountScore(Score score){
+        String scoreMessage = score.toString();
         System.out.println(scoreMessage);
-    }
-
-    private String generateScoreMessage(int ballCount, int strikeCount){
-
-        if(ballCount==0 && strikeCount==0){
-            return "낫싱";
-        }
-
-        StringBuilder stringBuilder = new StringBuilder();
-        if(ballCount != 0) {
-            stringBuilder.append(ballCount);
-            stringBuilder.append("볼 ");
-        }
-        if(strikeCount != 0) {
-            stringBuilder.append(strikeCount);
-            stringBuilder.append("스트라이크 ");
-        }
-        stringBuilder.deleteCharAt(stringBuilder.length()-1);
-        return stringBuilder.toString();
     }
 
     private boolean canPlayNextGame(){

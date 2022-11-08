@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BaseballGameRuleTest {
 
@@ -18,9 +19,12 @@ class BaseballGameRuleTest {
         BaseballGameRule baseballGameRule = new BaseballGameRule();
         baseballGameRule.setComputerNumbers(computerNumbers);
 
-        List<Integer> result = baseballGameRule.generatePlayerScore(playerNumbers);
+        Score result = baseballGameRule.generatePlayerScore(playerNumbers);
 
-        assertThat(result).isEqualTo(List.of(0, 0));
+        assertAll(
+                () -> assertThat(result.getBall()).isEqualTo(0),
+                () -> assertThat(result.getStrike()).isEqualTo(0)
+        );
     }
 
     @Test
@@ -32,9 +36,12 @@ class BaseballGameRuleTest {
         BaseballGameRule baseballGameRule = new BaseballGameRule();
         baseballGameRule.setComputerNumbers(computerNumbers);
 
-        List<Integer> result = baseballGameRule.generatePlayerScore(playerNumbers);
+        Score result = baseballGameRule.generatePlayerScore(playerNumbers);
 
-        assertThat(result).isEqualTo(List.of(2, 1));
+        assertAll(
+                () -> assertThat(result.getBall()).isEqualTo(2),
+                () -> assertThat(result.getStrike()).isEqualTo(1)
+        );
     }
 
     @Test
@@ -46,8 +53,11 @@ class BaseballGameRuleTest {
         BaseballGameRule baseballGameRule = new BaseballGameRule();
         baseballGameRule.setComputerNumbers(computerNumbers);
 
-        List<Integer> result = baseballGameRule.generatePlayerScore(playerNumbers);
+        Score result = baseballGameRule.generatePlayerScore(playerNumbers);
 
-        assertThat(result).isEqualTo(List.of(0, 3));
+        assertAll(
+                () -> assertThat(result.getBall()).isEqualTo(0),
+                () -> assertThat(result.getStrike()).isEqualTo(3)
+        );
     }
 }
