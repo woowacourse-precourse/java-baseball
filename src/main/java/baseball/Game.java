@@ -40,7 +40,7 @@ public class Game {
 
 
 
-	private static void scoreConsoleOutput(HashMap<String,Integer>score_map){
+	public static void scoreConsoleOutput(HashMap<String,Integer>score_map){
 		int strike_score = score_map.get("STRIKE");
 		int ball_score = score_map.get("BALL");
 		if (strike_score==0&&ball_score==0) {
@@ -54,7 +54,7 @@ public class Game {
 		}
 	}
 
-	private static void scoreConsoleOutputAtAllStrike(int strike_score){
+	public static void scoreConsoleOutputAtAllStrike(int strike_score){
 		System.out.println(strike_score+"스트라이크");
 		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 		reTryCondition();
