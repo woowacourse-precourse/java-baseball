@@ -18,6 +18,14 @@ public class NumberBaseBallGame {
         this.isEnd = false;
     }
 
+    public void play() {
+        Message.START.print();
+        do {
+            selectBalls();
+            processingGameResult();
+        } while (!isEnd || isRestart());
+    }
+
     private void selectBalls() {
         user.selectBalls();
         computer.selectBalls();
