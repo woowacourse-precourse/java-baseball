@@ -52,12 +52,12 @@ public class GameTest {
     void 스트라이크_개수_반환() {
         List<Integer> answerNum1 = List.of(1, 2, 3);
         List<Integer> playerNum1 = List.of(4, 2, 3);
-        int strike1 = NumberComparator.getStrikeCount(answerNum1, playerNum1);
+        int strike1 = Referee.getStrikeCount(answerNum1, playerNum1);
         assertThat(strike1).isEqualTo(2);
 
         List<Integer> answerNum2 = List.of(1, 2, 3);
         List<Integer> playerNum2 = List.of(3, 4, 1);
-        int strike2 = NumberComparator.getStrikeCount(answerNum2, playerNum2);
+        int strike2 = Referee.getStrikeCount(answerNum2, playerNum2);
         assertThat(strike2).isEqualTo(0);
     }
 
@@ -66,12 +66,12 @@ public class GameTest {
     void 볼_개수_반환() {
         List<Integer> answerNum1 = List.of(1, 2, 3);
         List<Integer> playerNum1 = List.of(4, 1, 5);
-        int ball1 = NumberComparator.getBallCount(answerNum1, playerNum1);
+        int ball1 = Referee.getBallCount(answerNum1, playerNum1);
         assertThat(ball1).isEqualTo(1);
 
         List<Integer> answerNum2 = List.of(1, 2, 3);
         List<Integer> playerNum2 = List.of(3, 2, 1);
-        int ball2 = NumberComparator.getBallCount(answerNum2, playerNum2);
+        int ball2 = Referee.getBallCount(answerNum2, playerNum2);
         assertThat(ball2).isEqualTo(2);
     }
 

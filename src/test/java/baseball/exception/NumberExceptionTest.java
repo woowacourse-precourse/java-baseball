@@ -14,7 +14,7 @@ public class NumberExceptionTest {
     void 중복_숫자_예외_테스트() {
         String number = "323";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberValidator.isNotDuplicateNumber(number);
+            NumberValidator.isNotDuplicateDigits(number);
         });
         assertThat(exception.getMessage()).isEqualTo(DUPLICATE_DIGIT_EXCEPTION.message());
     }
@@ -45,7 +45,7 @@ public class NumberExceptionTest {
     void 특수문자_예외_테스트() {
         String number = "ㄱㄴㄷ@";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberValidator.isDigit(number);
+            NumberValidator.isDigits(number);
         });
         assertThat(exception.getMessage()).isEqualTo(INVALID_CHARACTER_EXCEPTION.message());
     }

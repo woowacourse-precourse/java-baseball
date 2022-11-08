@@ -7,9 +7,9 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 
-public final class NumberComparator {
+public final class Referee {
 
-    private NumberComparator() {}
+    private Referee() {}
 
     public static int getStrikeCount(List<Integer> computer, List<Integer> player) {
         return (int) IntStream.range(0, Constant.MAX_STRIKE_SIZE)

@@ -1,9 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.*;
-import baseball.exception.NumberValidator;
 import baseball.view.OutputView;
-import camp.nextstep.edu.missionutils.Console;
 
 
 public class GameController {
@@ -40,8 +38,8 @@ public class GameController {
     }
 
     private void playBaseBall() {
-        int strikeCount = NumberComparator.getStrikeCount(player.getBalls(), computer.getBalls());
-        int ballCount = NumberComparator.getBallCount(player.getBalls(), computer.getBalls());
+        int strikeCount = Referee.getStrikeCount(player.getBalls(), computer.getBalls());
+        int ballCount = Referee.getBallCount(player.getBalls(), computer.getBalls());
         game.setGameResult(strikeCount, ballCount);
     }
 
@@ -49,15 +47,9 @@ public class GameController {
         if (!game.isMaxStrike()) {
            return GameStatus.PROGRESS.number();
         }
-        OutputView.printFinish();
-        OutputView.printRestart();
-        return getRestartResponse();
-    }
 
-    private String getRestartResponse() {
-        String command = Console.readLine();
-        NumberValidator.isValidCommandDigit(command);
-        return command;
+        OutputView.printFinishAndRestart();
+        return player.getRestartResponse();
     }
 
     public void setActionOfRestartAndExit(String command) {

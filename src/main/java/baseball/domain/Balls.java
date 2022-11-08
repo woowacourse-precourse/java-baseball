@@ -25,10 +25,10 @@ public class Balls {
     }
 
     public static void validateBall(String number) {
-        NumberValidator.isDigit(number);
+        NumberValidator.isDigits(number);
         NumberValidator.isPositiveDigits(number);
         NumberValidator.isThreeDigits(number);
-        NumberValidator.isNotDuplicateNumber(number);
+        NumberValidator.isNotDuplicateDigits(number);
     }
 
     public List<Integer> asList() {

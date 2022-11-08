@@ -14,11 +14,8 @@ public class OutputView {
         System.out.println(INPUT_NUMBER.message());
     }
 
-    public static void printFinish() {
+    public static void printFinishAndRestart() {
         System.out.println(EXIT_GAME.message());
-    }
-
-    public static void printRestart() {
         System.out.println(INPUT_RESTART_OR_EXIT.message());
     }
 

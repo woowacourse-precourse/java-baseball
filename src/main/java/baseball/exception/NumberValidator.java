@@ -7,7 +7,7 @@ import static baseball.exception.ExceptionMessage.*;
 
 public class NumberValidator {
 
-    public static void isNotDuplicateNumber(String number) {
+    public static void isNotDuplicateDigits(String number) {
         if (number.chars().distinct().count() != 3) {
             throw new IllegalArgumentException(DUPLICATE_DIGIT_EXCEPTION.message());
         }
@@ -25,7 +25,7 @@ public class NumberValidator {
         }
     }
 
-    public static void isDigit(String number) {
+    public static void isDigits(String number) {
         if (!number.matches(DIGITS)) {
             throw new IllegalArgumentException(INVALID_CHARACTER_EXCEPTION.message());
         }
