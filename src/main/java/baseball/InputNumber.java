@@ -25,5 +25,19 @@ public class InputNumber {
         userNumber = Console.readLine();
     }
 
+    public String inputNumberCheck(){
+        if(InputNumberValidator.inputNumberTotalCheck(userNumber)){
+            throw new IllegalArgumentException();
+        }
+        return userNumber;
+    }
+
+    public String restartOrEndNumberCheck(){
+        if(!InputNumberValidator.restartOrEndNumberCheck(userNumber)){
+            throw new IllegalArgumentException();
+        }
+        return userNumber;
+    }
+
 
 }
