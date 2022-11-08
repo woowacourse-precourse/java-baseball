@@ -23,4 +23,20 @@ public class Application {
         return computer;
     }
 
+    static int[] getInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+
+        int[] userInput = new int[3];
+        int idx = 2;
+        int input = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+
+        while (input > 0) {
+            userInput[idx] = input % 10;
+            input /= 10;
+            idx -= 1;
+        }
+        return userInput;
+    }
+
+
 }
