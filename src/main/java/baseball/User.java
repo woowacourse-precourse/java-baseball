@@ -35,7 +35,7 @@ class User {
 
 	public void validationNumbersInteger() throws IllegalArgumentException {
 		for (int i = 0; i < numbers.size(); i++) {
-			if (numbers.get(i) < 1 || numbers.get(i) > 9) throw new IllegalArgumentException("1부터 9까지의 숫자만 입력해주세요.");
+			if (numbers.get(i).equals(0)) throw new IllegalArgumentException("1부터 9까지의 숫자만 입력해주세요.");
 		}
 	}
 }

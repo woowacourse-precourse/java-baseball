@@ -71,6 +71,21 @@ class ApplicationTest extends NsTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("숫자를 총 3개 입력해주세요.");
 	}
+	@Test
+	@DisplayName("숫자야구에 0 입력시 예외처리")
+	void 숫자입력_0입력시_예외처리() throws IllegalArgumentException {
+		String testNumberString = "103";
+		InputStream inputStream = new ByteArrayInputStream(testNumberString.getBytes());
+
+		String inputString = new BufferedReader(
+			new InputStreamReader(inputStream, StandardCharsets.UTF_8))
+			.lines()
+			.collect(Collectors.joining("\n"));
+
+		assertThatThrownBy(()->new User(inputString))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("1부터 9까지의 숫자만 입력해주세요.");
+	}
 
 	@Test
 	void 게임종료_후_재시작() {
