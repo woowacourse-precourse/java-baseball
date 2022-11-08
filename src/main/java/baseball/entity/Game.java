@@ -4,9 +4,12 @@ public class Game {
 
     // 스트라이크 개수, 볼 개수를 관리하는 객체 Score
     // 게임 진행 상태
-    private static final int START = 0;
-    private static final int RUNNING = 1;
+    private static final int RUNNING = 0;
+    private static final int START = 1;
     private static final int STOP = 2;
+
+    private final Computer computer = new Computer();
+    private final Player player = new Player();
 
     private int GAME_STATE = START;
 
