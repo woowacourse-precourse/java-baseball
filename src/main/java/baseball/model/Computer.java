@@ -8,11 +8,14 @@ import java.util.List;
 
 public class Computer {
     private int ballCount = 0;
+
     private int strikeCount = 0;
+
     private ArrayList<Integer> numberList;
 
     public void generateNumber() {
         numberList = new ArrayList<>();
+
         while (numberList.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (Util.isNotDuplicated(numberList, randomNumber)) {

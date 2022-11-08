@@ -8,7 +8,9 @@ import java.util.List;
 
 public class GamePlay {
     public static boolean restart = false;
+
     private Computer computer = new Computer();
+
     private User user = new User();
 
     public void playContinuous() {
