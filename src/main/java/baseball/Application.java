@@ -21,9 +21,9 @@ public class Application {
             if(!createComputerNum(computerNum))
                 throw new IllegalArgumentException("컴퓨터가 랜덤수를 생성하지 못하였습니다.");
 
-            List<Integer> playerNum = new ArrayList<>();
             String inputPlayerNum = inputPlayerNum();
             checkValidPlayerNum(inputPlayerNum);
+            List<Integer> playerNum = new ArrayList<>(inputStringToList(inputPlayerNum));
 
             StrikeBallResult strikeBallResult = comparePlayerAndComputer(playerNum, computerNum);
             notifyGameResult(strikeBallResult);
@@ -98,6 +98,14 @@ public class Application {
             throw new IllegalArgumentException("사용자가 중복된 숫자를 입력하였습니다.");
 
         return true;
+    }
+
+    public static List<Integer> inputStringToList(String inputPlayerNum){
+        List<Integer> playerNum = new ArrayList<>();
+        for (int digit = 0; digit < inputPlayerNum.length(); digit++) {
+            playerNum.add(inputPlayerNum.charAt(digit)-'0');
+        }
+        return playerNum;
     }
 
     public static StrikeBallResult comparePlayerAndComputer(List<Integer> player , List<Integer> computer){
