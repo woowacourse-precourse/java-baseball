@@ -20,10 +20,7 @@ public class Application {
         return randomNumList;
     }
     public static List<Integer> makeInputNumList() {
-        System.out.print("숫자를 입력해주세요 : ");
-
         String inputString = Console.readLine();
-
         List<Integer> inputNumList = new ArrayList<>();
         for (int inputStringIdx = 0; inputStringIdx < inputString.length(); inputStringIdx++) {
             int inputNum = (int) inputString.charAt(inputStringIdx) - 48;
@@ -109,32 +106,20 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> answerNumList = makeRandomNumList();
         while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
             List<Integer> inputNumList = makeInputNumList();
             List<Integer> resultList = makeResultList(inputNumList, answerNumList);
             String resultString = makeResultString(resultList);
-            printResult(resultString);
+            System.out.println(resultString);
             if (Objects.equals(resultString, "3스트라이크")) break;
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        afterGameOver();
     }
-    public static void printResult(String resultString) {
-        System.out.println(resultString);
-        if (Objects.equals(resultString, "3스트라이크")) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            if (isReplayGame()) playGame();
-        }
-    }
-    public static boolean isReplayGame() {
+    public static void afterGameOver() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputOneOrTwo = Console.readLine();
-        if (Objects.equals(inputOneOrTwo, "1")) {
-            return true;
-        }
-        else if (Objects.equals(inputOneOrTwo, "2")) {
-            return false;
-        }
-        else {
-            isReplayGame();
-            return false;
-        }
+        if (Objects.equals(inputOneOrTwo, "1")) playGame();
+        else if (!Objects.equals(inputOneOrTwo, "2")) afterGameOver();
     }
 }
