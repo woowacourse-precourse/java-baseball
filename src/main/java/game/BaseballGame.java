@@ -35,8 +35,8 @@ public class BaseballGame {
     private void roundWithComputer() throws IllegalArgumentException {
         readNumbers();
 
-        Compare c = new Compare();
-        if (!c.isStrikeOut(computer, user)) {
+        Compare compare = new Compare();
+        if (!compare.isStrikeOut(computer, user)) {
             roundWithComputer();
         }
     }
