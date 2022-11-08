@@ -1,17 +1,13 @@
 package baseball;
 
 public class Game {
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String GAME_END_MESSAGE =
-            String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Constants.NUMBER_COUNT);
-
     public void play() {
         Computer computer = new Computer();
         Player player = new Player();
 
         int score;
 
-        System.out.println(GAME_START_MESSAGE);
+        System.out.println(Message.GAME_START.message());
         do {
             computer.setAnswer();
 
@@ -19,7 +15,20 @@ public class Game {
                 score = computer.computeResult(player.getNumberInput());
             } while (score < Constants.NUMBER_COUNT);
 
-            System.out.println(GAME_END_MESSAGE);
+            System.out.println(Message.GAME_END.message());
         } while (player.getRestartOrQuitInput());
+    }
+
+    private enum Message {
+        GAME_START("숫자를 입력해주세요 : "),
+        GAME_END(String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Constants.NUMBER_COUNT))
+        ;
+        private final String message;
+        Message(String message) {
+            this.message = message;
+        }
+        private String message(){
+            return message;
+        }
     }
 }
