@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class BaseballGameServiceTest {
 
-    private final BaseballGameService baseballGameService = new BaseballGameService();
+    private final BaseballGameService baseballGameService = new BaseballGameServiceImpl();
     private final User user = new User();
 
     @BeforeEach
