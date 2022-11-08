@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.Map;
 
 public class Application {
@@ -18,16 +19,16 @@ public class Application {
 
         Computer computer = new Computer();
 
-        while(true){
+        while (true) {
             computer.selectUniqueNumbers();
             Player player = new Player();
 
             int isContinue = StartGame(computer, player);
-            if(isContinue == RESTART){
+            if (isContinue == RESTART) {
                 continue;
             }
 
-            if(isContinue == FINISH){
+            if (isContinue == FINISH) {
                 break;
             }
         }
@@ -54,7 +55,7 @@ public class Application {
         }
     }
 
-    public static void printScore(Map<String, Integer> scoreMap){
+    public static void printScore(Map<String, Integer> scoreMap) {
         String result = "";
 
         if (scoreMap.containsKey(NOTHING)) {

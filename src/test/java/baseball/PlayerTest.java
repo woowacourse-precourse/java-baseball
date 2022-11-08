@@ -11,11 +11,11 @@ public class PlayerTest {
 
     @Nested
     @DisplayName("사용자의 입력 테스트")
-    class PlayerInputTest{
+    class PlayerInputTest {
 
         @Test
         @DisplayName("입력값에 문자가 포함된 경우 예외처리")
-        void PlayerInputTest1(){
+        void PlayerInputTest1() {
             Player player = new Player();
 
             assertThatThrownBy(() -> player.input("a23"))
@@ -26,7 +26,7 @@ public class PlayerTest {
 
         @Test
         @DisplayName("입력값에 0이 포함된 경우 예외처리")
-        void PlayerInputTest2(){
+        void PlayerInputTest2() {
             Player player = new Player();
 
             assertThatThrownBy(() -> player.input("012"))
@@ -38,7 +38,7 @@ public class PlayerTest {
 
         @Test
         @DisplayName("입력값이 세자리가 아닌 경우 예외처리")
-        void PlayerInputTest3(){
+        void PlayerInputTest3() {
             Player player = new Player();
 
             assertThatThrownBy(() -> player.input("0123"))
@@ -49,7 +49,7 @@ public class PlayerTest {
 
         @Test
         @DisplayName("입력값에 수의 중복이 존재하는 경우 예외처리")
-        void PlayerInputTest4(){
+        void PlayerInputTest4() {
             Player player = new Player();
 
             assertThatThrownBy(() -> player.input("113"))

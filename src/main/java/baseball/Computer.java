@@ -10,7 +10,7 @@ public class Computer {
 
     private static final List<Integer> computer = new ArrayList<>();
 
-    public void selectUniqueNumbers(){
+    public void selectUniqueNumbers() {
 
         computer.clear();
 
@@ -22,7 +22,7 @@ public class Computer {
         }
     }
 
-    public List<Integer> getComputer(){
+    public List<Integer> getComputer() {
         return Collections.unmodifiableList(computer);
     }
 

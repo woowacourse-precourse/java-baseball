@@ -6,8 +6,7 @@ public class Player {
 
     private static final int FIXED_INPUT_LENGTH = 3;
 
-    private static List<Integer> playerInputList = new ArrayList<>();
-//    private static Map<Integer, Integer> playerInputMap = new HashMap<>();
+    private static List<Integer> player = new ArrayList<>();
 
     public void input(String inputString) {
 
@@ -19,8 +18,8 @@ public class Player {
         inputStringToInputList(inputString);
     }
 
-    public void inputStringToInputList(String inputString){
-        playerInputList.clear();
+    public void inputStringToInputList(String inputString) {
+        player.clear();
 
         int inputLength = inputString.length();
 
@@ -28,12 +27,12 @@ public class Player {
             char token = inputString.charAt(idx);
             int tokenToInt = token - '0';
 
-            playerInputList.add(tokenToInt);
+            player.add(tokenToInt);
         }
     }
 
-    public List<Integer> getPlayerInputList() {
-        return playerInputList;
+    public List<Integer> getPlayer() {
+        return player;
     }
 
 
