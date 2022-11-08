@@ -37,12 +37,10 @@ public class ExcepetionCase {
 
     public boolean ResultNumberException(int resultNum) {
 
-        // 1 혹은 2가 아닌 숫자가 들어왔을 때,
-
-
-
-
-        return false;
+        if (resultNum != 1 && resultNum != 2){
+            return false;
+        }
+        return true;
     }
 
 }
