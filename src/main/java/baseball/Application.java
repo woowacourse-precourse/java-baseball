@@ -25,14 +25,7 @@ public class Application {
 
         int answer;
 
-        while (computer.size() < 3) {
-
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
+        computer = randomNumber(3);
 
         inputNumber(computer);
 
@@ -49,6 +42,21 @@ public class Application {
         return answer;
     }
 
+
+    public static List<Integer> randomNumber(int numberLength){
+        List<Integer> computer = new ArrayList<>();
+
+        while (computer.size() < numberLength) {
+
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        return computer;
+    }
 
     public static void inputNumber(List<Integer> computer) {
         int strike = 0;
