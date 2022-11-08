@@ -33,4 +33,10 @@ public class ValidationTest {
         assertThat(validateValue).isEqualTo(false);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1,true", "2,true", "네,false", "yes,false", "y,false", "n,false"})
+    void 재시작_종료_검사(String playerChoice, boolean expected) {
+        assertThat(validator.checkPlayerChoice(playerChoice)).isEqualTo(expected);
+    }
+
 }
