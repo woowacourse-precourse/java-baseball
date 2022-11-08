@@ -19,7 +19,8 @@ public class BaseballGame {
 
         List<Integer> computer = new ArrayList<>();
 
-        while(computer.size() < 3) {
+        // 중복되지 않는 세 개의 숫자를 선택
+        while (computer.size() < 3) {
 
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -36,12 +37,16 @@ public class BaseballGame {
     private List<Integer> usersChoice() {
 
         String input;
-        try{
+
+        // Console.readLine()은 Scanner.nextLine() 기반의 함수이므로 해당 메소드 발생 예외들을 처리해줌
+        try {
             input = Console.readLine();
-        } catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("NoSuchElementException: no line was found");
         }
+
         System.out.println(input);
+
         inputExceptionHandler(input);   // 입력값 예외처리
 
         List<Integer> user = new ArrayList<>();
@@ -58,10 +63,13 @@ public class BaseballGame {
      */
     private void inputExceptionHandler(String input) {
 
+        // 입력한 문자열의 길이가 3이 아니라면, 세 자리의 양수가 아님
         if (input.length() != 3) {
             throw new IllegalArgumentException("you can't enter more than three digits");
         }
-        if (!input.chars().allMatch( Character::isDigit )){
+
+        // 입력한 문자열이 숫자로만 구성되어 있지 않다면, 세자리의 양수가 아님
+        if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("you can't enter non-numeric values");
         }
     }
@@ -80,6 +88,7 @@ public class BaseballGame {
             if (computer.contains(user.get(i))) {
                 ball++;
             }
+
             // 스트라이크일 경우
             if (computer.get(i).equals(user.get(i))) {
                 ball--;
@@ -114,11 +123,13 @@ public class BaseballGame {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         String input;
-        try{
+
+        try {
             input = Console.readLine();
-        } catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("NoSuchElementException: no line was found");
         }
+
         System.out.println(input);
 
         if (Integer.valueOf(input).equals(1)) {
@@ -131,24 +142,26 @@ public class BaseballGame {
         }
     }
 
-    public void run(){
+    public void run() {
 
         List<String> results = new ArrayList<>();
         boolean quit = false;
 
-        computer = computersChoice();
+        computer = computersChoice();   // 1. 컴퓨터가 랜덤한 숫자를 뽑음
+
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (!quit) {
 
             System.out.print("숫자를 입력해주세요 : ");
-            List<Integer> user = usersChoice();
-            results.add(getGameResult(computer, user));
-            System.out.println(results.get(results.size() - 1));    // 숫자 판별 결과 출력
+            List<Integer> user = usersChoice(); // 2. 사용자가 입력함
 
-            // 결과가 3스트라이크라면 게임종료, 재시작 혹은 애플리케이션 종료 중 하나 선택
+            results.add(getGameResult(computer, user)); // 3. 숫자를 판별함
+            System.out.println(results.get(results.size() - 1));    // 4. 숫자 판별 결과 출력
+
+            // 5. 결과가 3스트라이크라면 게임종료, 재시작 혹은 애플리케이션 종료 중 하나 선택
             if (results.get(results.size() - 1).equals("3스트라이크")) {
-                quit = restartOrQuitGame();    // 게임을 재시작할지 종료할지 여부 결정
+                quit = restartOrQuitGame();
             }
         }
     }
