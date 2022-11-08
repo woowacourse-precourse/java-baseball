@@ -33,6 +33,7 @@ public class GameView {
 
             System.out.println(input);
 
+            inputException.checkInput(input);
 
             baseballGame.strikeBallOut(inputNumber, computerNumber);
             result = baseballGame.checkResult();
