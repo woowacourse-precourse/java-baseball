@@ -1,16 +1,25 @@
 package baseball.controller;
 
+import baseball.view.AllStrikeView;
+import baseball.model.Computer;
+import baseball.model.Referee;
+import baseball.view.PlayerInputView;
+import baseball.vo.Player;
+import baseball.vo.ScoreBoard;
+
+import java.sql.Ref;
+
 public class BaseBallController {
 
     public static void startGame()
     {
-        Referee referee = new Referee(computerSelectedNumber);
-
-        while (referee.checkAllStricke())
+        Referee referee = new Referee(Computer.computerSelectNumbers());
+        while (referee.isAllStrike() == false)
         {
-            // 1. 유저 Input을 받아라.
-            // 2. 유저의 ball, strike 갯수를 확인하라.
-            // 3. 게임 결과를 화면에 출력하라.
+            Player player = PlayerInputView.selectNumbers();
+            ScoreBoard scoreBoard = referee.giveScore(player);
+            System.out.println(scoreBoard.getBall());
+            System.out.println(scoreBoard.getStrike());
         }
         if (AllStrikeView.replayGame())
             startGame();

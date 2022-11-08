@@ -8,4 +8,8 @@ public class Player {
     public Player(List<Integer> userSelectNumbers) {
         this.userSelectNumbers = userSelectNumbers;
     }
+
+    public List<Integer> getUserSelectNumbers() {
+        return userSelectNumbers;
+    }
 }

@@ -11,13 +11,13 @@ public class Computer {
     private static final int COUNT_NUMBER = 3;
 
     public static List<Integer> computerSelectNumbers() {
-        List<Integer> SelectedNumber = new ArrayList<>();
-        while (SelectedNumber.size() < COUNT_NUMBER) {
+        List<Integer> computerSelectedNumber = new ArrayList<>();
+        while (computerSelectedNumber.size() < COUNT_NUMBER) {
             int randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
-            if (!SelectedNumber.contains(randomNumber)) {
-                SelectedNumber.add(randomNumber);
+            if (!computerSelectedNumber.contains(randomNumber)) {
+                computerSelectedNumber.add(randomNumber);
             }
         }
-        return SelectedNumber;
+        return computerSelectedNumber;
     }
 }

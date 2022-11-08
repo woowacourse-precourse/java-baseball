@@ -4,7 +4,7 @@ public class ScoreBoard {
     private final int strike;
     private final int ball;
 
-    public CheckScore(int strike, int ball) {
+    public ScoreBoard(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
