@@ -14,8 +14,8 @@ public class IllegalArgument {
     public void check(String[] userInput, int argumentLength, List<Integer> possibleNumber) {
         isNumber(userInput);
         isAnswerLength(argumentLength);
-        isPossibleNumber(possibleNumber);
         isAllUnique();
+        isPossibleNumber(possibleNumber);
     }
 
 
@@ -38,16 +38,16 @@ public class IllegalArgument {
         }
     }
 
-    private void isPossibleNumber(List<Integer> possibleNumber) {
-        validatedNumber.removeAll(possibleNumber);
-        if (validatedNumber.size() != 0) {
+    private void isAllUnique() {
+        Set<Integer> uniqueNumber = new HashSet<>(validatedNumber);
+        if (validatedNumber.size() != uniqueNumber.size()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isAllUnique() {
-        Set<Integer> uniqueNumber = new HashSet<>(validatedNumber);
-        if (validatedNumber.size() != uniqueNumber.size()) {
+    private void isPossibleNumber(List<Integer> possibleNumber) {
+        validatedNumber.removeAll(possibleNumber);
+        if (validatedNumber.size() != 0) {
             throw new IllegalArgumentException();
         }
     }
