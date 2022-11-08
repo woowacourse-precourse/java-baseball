@@ -4,6 +4,9 @@
 - Input과 targetNum이 일치하는 넘버가 있는지 check하는 멤버함수 생성, 있다면 strike_num++
 - ball을 check하기 위한 배열 생성 후 strike를 check하기 위한 과정을 수행할 때 배열[Input 각 자릿수]를 1로 설정한다. strike라면 배열[Input 각 자릿수]를 2로 설정한다.
 - Input과 targetNum의 자리는 다르지만 같은 숫자가 있는 경우 (배열[idx]의 값이 1인경우) check하는 기능 구현
+- ball의 개수와 strike의 개수 출력하는 함수 구현
+3. 예외 처리 구현
+- 
 
 
 

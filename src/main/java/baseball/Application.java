@@ -49,6 +49,18 @@ class Game{
         }
         return 0;
     }
+    public void ball_and_strike_print(int ball, int strike){
+        String to_print="";
+        if(ball>0){
+            to_print+=ball;
+            to_print+="볼 ";
+        }
+        if(strike>0){
+            to_print+=strike;
+            to_print+="스트라이크";
+        }
+        System.out.println(to_print);
+    }
     public void check(){
         strike_num=0;
         ball_num=0;
@@ -68,6 +80,7 @@ class Game{
                 ball_num+=isBall(ball_check[i]);
             }
         }
+
 //        System.out.println(targetNumber);
 //        System.out.println(strike_num);
 //        System.out.println(ball_num);
