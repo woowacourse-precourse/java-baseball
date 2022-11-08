@@ -5,7 +5,7 @@ import baseball.service.NeedForGameService;
 
 public class PlayGameController {
     public static void run(){
-        NeedForGameService.startOrder();
+        NeedForGameService.callStartOrder();
         GameService.makeRandomBall();
         GameService.CatchException();
     }

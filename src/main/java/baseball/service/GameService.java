@@ -3,6 +3,7 @@ package baseball.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import baseball.config.PrintOutput;
 import baseball.controller.PlayGameController;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -20,7 +21,7 @@ public class GameService {
     public static void CatchException() {
         while(strike != 3){
             try {   checkInput();
-            } catch (IllegalArgumentException e){   errorcheck = errorOutput();
+            } catch (IllegalArgumentException e){   errorcheck = callErrorOrder();
             }
             if(errorcheck == 1) break;
             findRandomBall();
@@ -30,6 +31,14 @@ public class GameService {
 
         if(errorcheck == 0) selectContinue();
         if(errorcheck == 1) return;
+
+    }
+
+    public static void checkInput() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputball = Console.readLine();
+        checkHandler(inputball);
+        userball = stringToList(inputball);
     }
 
     public static void findRandomBall() {
@@ -39,9 +48,7 @@ public class GameService {
     }
 
     private static void selectContinue() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-
+        PrintOutput.finishOrder();
         String selectNumber = Console.readLine();
 
         if(Integer.valueOf(selectNumber) == 1) {
@@ -50,14 +57,8 @@ public class GameService {
             userball.clear();
             PlayGameController.run();
         }
-        if(Integer.valueOf(selectNumber) == 2) return;
-    }
 
-    public static void checkInput() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String inputball = Console.readLine();
-        checkHandler(inputball);
-        userball = stringToList(inputball);
+        if(Integer.valueOf(selectNumber) == 2) return;
     }
 
     public static List<Integer> makeRandomBall() {

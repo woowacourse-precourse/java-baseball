@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.config.PrintOutput;
 import baseball.handler.ExceptionHanlder;
 
 import java.util.ArrayList;
@@ -9,18 +10,19 @@ import static baseball.service.GameService.*;
 
 public class NeedForGameService {
 
-    public static void startOrder() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    public static void callStartOrder() {
+        PrintOutput.startOrder();
     }
+
+    public static int callErrorOrder() {
+        PrintOutput.errorOrder();
+        return 1;
+    }
+
     static void initData() {
         strike = 0;
         ball = 0;
         errorcheck = 0;
-    }
-
-    public static int errorOutput() {
-        System.out.println("잘못된 입력입니다. 프로그램을 종료합니다.");
-        return 1;
     }
 
     public static List<Integer> stringToList(String inputball) {
@@ -41,7 +43,7 @@ public class NeedForGameService {
 
         exceptionHanlder.checkInputBallSize(inputball);
         exceptionHanlder.checkSameInput(inputball);
-        exceptionHanlder.nonZero(inputball);
+        exceptionHanlder.CatchNonZero(inputball);
     }
 
     public static void checkStrike(){
@@ -55,6 +57,7 @@ public class NeedForGameService {
             countBalls(i);
         }
     }
+
     public static void countBalls(int index) {
         for(int i = 0; i < BALL_COUNTS; i++){
             if(i != index && RANDOMBALL.get(i) == userball.get(index)) ball++;
