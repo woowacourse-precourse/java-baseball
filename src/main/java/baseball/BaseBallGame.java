@@ -25,23 +25,24 @@ public class BaseBallGame {
 
     private void initRandomNumber() {
         List<Integer> randomList = new ArrayList<>();
+        StringBuilder randomNumberBuilder = new StringBuilder();
         while (randomList.size() < 3) {
             int randomValue = Randoms.pickNumberInRange(1, 9);
             if (!randomList.contains(randomValue)) {
                 randomList.add(randomValue);
-                randomNumber = randomNumber.concat(String.valueOf(randomValue));
+                randomNumberBuilder.append(randomValue);
             }
         }
+
+        randomNumber = randomNumberBuilder.toString();
     }
 
     public void getInputValue() {
-        String inputString = Console.readLine();
-        if (!checkInputValue(inputString)) {
-            throw new IllegalArgumentException();
-        }
-
         System.out.print(GameMessage.INPUT_VALUE.getText());
         userInputValue = Console.readLine();
+        if (!checkInputValue(userInputValue)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private boolean checkInputValue(String inputValue) {
@@ -139,7 +140,25 @@ public class BaseBallGame {
         return resultMessage.toString();
     }
 
-    public boolean isAnswer() {
-        return false;
+    public boolean checkRestartGame() {
+        boolean isRestart = false;
+        System.out.println(GameMessage.RESTART_QUESTION.getText());
+        userInputValue = Console.readLine().trim();
+
+        if (!isNumeric(userInputValue)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (isNumeric(userInputValue) && userInputValue.length() == 1) {
+            if (userInputValue.equals("1")) {
+                isRestart = true;
+            }
+
+            if (userInputValue.equals("2")) {
+                isRestart = false;
+            }
+        }
+
+        return isRestart;
     }
 }
