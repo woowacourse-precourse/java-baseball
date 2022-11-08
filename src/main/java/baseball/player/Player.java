@@ -6,7 +6,7 @@ public class Player {
     private static final int DIGIT_NUM = 3;
     private static final String REGULAR_PATTERN = "[1-9]+";
 
-    public List<Integer> getInput(String readLine) {
+    public List<Integer> validateAndParse(String readLine) {
         String verifiedInput = inputVerification(readLine);
         List<Integer> list = getList(verifiedInput);
         return Collections.unmodifiableList(list);

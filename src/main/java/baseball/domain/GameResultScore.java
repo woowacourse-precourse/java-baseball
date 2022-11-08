@@ -24,7 +24,7 @@ public class GameResultScore {
 
     public List<Integer> getPlayerInput(Player player) {
         String playerNumber = Console.readLine();
-        return player.getInput(playerNumber);
+        return player.validateAndParse(playerNumber);
     }
 
     public static String getRestart() {
@@ -35,10 +35,13 @@ public class GameResultScore {
 
     public static String playerRestartInput() {
         String restart = Console.readLine();
+        validateCharacters(restart);
+        return restart;
+    }
 
+    private static void validateCharacters(String restart) {
         if (!(restart.matches(PATTERN))) {
             throw new IllegalArgumentException(RESTART_INPUT);
         }
-        return restart;
     }
 }
