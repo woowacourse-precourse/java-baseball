@@ -3,6 +3,11 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +31,82 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 스트라이크_확인_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Application application = new Application();
+        List<Integer> computer = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
+
+        computer.add(1);
+        computer.add(2);
+        computer.add(3);
+
+        user.add(1);
+        user.add(2);
+        user.add(4);
+
+        Method strike = application.getClass().getDeclaredMethod("strike", List.class, List.class);
+        strike.setAccessible(true);
+
+        int strikeCheck = (int)strike.invoke(application, computer, user);
+
+        assertThat(strikeCheck).isEqualTo(2);
+    }
+
+    @Test
+    void 볼_확인_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Application application = new Application();
+        List<Integer> computer = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
+
+        computer.add(1);
+        computer.add(2);
+        computer.add(3);
+
+        user.add(1);
+        user.add(4);
+        user.add(2);
+
+        Method ball = application.getClass().getDeclaredMethod("ball", List.class, List.class);
+        ball.setAccessible(true);
+
+        int ballCheck = (int)ball.invoke(application, computer, user);
+
+        assertThat(ballCheck).isEqualTo(1);
+    }
+
+    @Test
+    void 결과_힌트_출력_테스트() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException{
+        Application application = new Application();
+
+        List<Integer> computer = new ArrayList<>();
+        List<Integer> user = new ArrayList<>();
+
+        computer.add(1);
+        computer.add(2);
+        computer.add(3);
+
+        user.add(1);
+        user.add(4);
+        user.add(2);
+
+        Method strike = application.getClass().getDeclaredMethod("strike", List.class, List.class);
+        strike.setAccessible(true);
+
+        Method ball = application.getClass().getDeclaredMethod("countBall", List.class, List.class);
+        ball.setAccessible(true);
+
+        Method hint = application.getClass().getDeclaredMethod("makeHint", int.class, int.class);
+        hint.setAccessible(true);
+
+        int strikeCheck = (int)strike.invoke(application, computer, user);
+        int ballCheck = (int)ball.invoke(application, computer, user);
+
+        String result = (String) hint.invoke(application, strike, ball);
+
+        assertThat(result).isEqualTo("1볼 1스트라이크");
     }
 
     @Override
