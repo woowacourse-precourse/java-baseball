@@ -19,4 +19,13 @@ public class GameContinuity {
     System.out.println("게임을 새로 시작하려면 1, 종료하면 2를 입력하세요.");
   }
 
+  public void continuityInput(){
+    Integer input = new Input().toInt();
+    if(!input.equals(RESTART) && !input.equals(CLOSE)){
+      throw new IllegalArgumentException("invalid user input");
+    }
+
+    this.continuity = input.equals(RESTART);
+  }
+
 }
