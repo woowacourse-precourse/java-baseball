@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.model.Target;
 import baseball.model.TurnScore;
-import baseball.type.ResultTurn;
+import baseball.constant.ResultTurn;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.ArrayList;

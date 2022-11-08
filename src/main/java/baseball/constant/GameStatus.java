@@ -1,4 +1,4 @@
-package baseball.type;
+package baseball.constant;
 
 public enum GameStatus {
     End,

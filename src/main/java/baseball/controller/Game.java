@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Target;
-import baseball.type.GameStatus;
+import baseball.constant.GameStatus;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import java.util.List;

@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.type.ResultTurn;
+import baseball.constant.ResultTurn;
 
 public class TurnScore {
     private int balls;
