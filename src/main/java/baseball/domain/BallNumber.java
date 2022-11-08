@@ -14,6 +14,12 @@ public class BallNumber {
         return new BallNumber(ballNumberList);
     }
 
+    static public BallNumber fromString(String ballNumberString) {
+        List<Integer> numberList = ballNumberString.chars().map(charNumber -> charNumber - '0').boxed()
+                .collect(Collectors.toList());
+        return new BallNumber(numberList);
+    }
+
     public Integer get(int i) {
         return numberList.get(i);
     }
