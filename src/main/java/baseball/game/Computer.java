@@ -11,8 +11,7 @@ import java.util.Objects;
 public class Computer {
     private BaseballNumberBundle victoryNumbers;
     public Computer() {
-        List<Integer> randomNumbers = makeRandomNumbers();
-        setVictoryNumbers(randomNumbers);
+        setRandomVictoryNumbers();
     }
     public GameResult checkAnswer(BaseballNumberBundle answer) {
         GameResult result = new GameResult();
@@ -44,6 +43,11 @@ public class Computer {
     public void setVictoryNumbers(List<Integer> picked) {
         victoryNumbers = new BaseballNumberBundle(picked);
     }
+    public void setRandomVictoryNumbers() {
+        List<Integer> randomNumbers = makeRandomNumbers();
+        setVictoryNumbers(randomNumbers);
+    }
+
     public BaseballNumberBundle getVictoryNumbers() {
         return victoryNumbers;
     }
