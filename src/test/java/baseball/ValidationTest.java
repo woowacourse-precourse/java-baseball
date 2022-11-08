@@ -3,8 +3,38 @@ package baseball;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ValidationTest {
+    @Test
+    void validateBaseballInput_게임규격외_예외발생() {
+        String str1 = "290";
+        String str2 = "321";
+        String str3 = "";
+        String str4 = "4213";
+        String str5 = "322";
+
+        assertDoesNotThrow(() -> {
+            Validation.validateResetInput(str1);
+        });
+
+        assertDoesNotThrow(() -> {
+            Validation.validateResetInput(str2);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validation.validateResetInput(str3);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validation.validateResetInput(str4);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validation.validateResetInput(str5);
+        });
+    }
 
     @Test
     void hasNonDigit_모두_숫자인지_판별() {
@@ -29,15 +59,26 @@ class ValidationTest {
     }
 
     @Test
-    void isEndInputError_1과2아니면_에러() {
+    void validateResetInput_1과2빼면_예외발생() {
         String str1 = "1";
         String str2 = "2";
-        String str3 = "24";
-        String str4 = "";
+        String str3 = "";
+        String str4 = "424";
 
-        assertThat(Validation.isEndInputError(str1)).isEqualTo(false);
-        assertThat(Validation.isEndInputError(str2)).isEqualTo(false);
-        assertThat(Validation.isEndInputError(str3)).isEqualTo(true);
-        assertThat(Validation.isEndInputError(str4)).isEqualTo(true);
+        assertDoesNotThrow(() -> {
+            Validation.validateResetInput(str1);
+        });
+
+        assertDoesNotThrow(() -> {
+            Validation.validateResetInput(str2);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validation.validateResetInput(str3);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validation.validateResetInput(str4);
+        });
     }
 }
