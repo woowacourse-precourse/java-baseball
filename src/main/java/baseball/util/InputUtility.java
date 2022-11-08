@@ -21,6 +21,7 @@ public class InputUtility {
             .collect(Collectors.toList());
     }
 
+
     private static void validationTest(String input, int type) {
 
         if (type == GameCode.ATTACK.getValue()) {
