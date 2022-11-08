@@ -48,7 +48,7 @@ public class IOHandler {
 	}
 
 	public List<Integer> getInputList() {
-		String ansString = Console.readLine(); // Console.readLine()은 단 한 줄의 입력만을 받는 게 맞는가?
+		String ansString = Console.readLine();
 		inputValidator.validateAnsString(ansString);
 		List<Integer> inputList = new ArrayList<>(3);
 		for (char c : ansString.toCharArray()) {
@@ -58,7 +58,7 @@ public class IOHandler {
 	}
 
 	public int getRestartInt() {
-		String restartString = Console.readLine(); // Console.readLine()은 단 한 줄의 입력만을 받는 게 맞는가?
+		String restartString = Console.readLine();
 		inputValidator.validateRestartString(restartString);
 		return restartString.charAt(0)-'0';
 	}
