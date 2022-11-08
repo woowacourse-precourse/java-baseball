@@ -1,12 +1,6 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
-package baseball;
+package baseball.utils;
 
 import camp.nextstep.edu.missionutils.Console;
-
 public class GetInput {
     public GetInput() {
     }

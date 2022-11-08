@@ -1,5 +1,4 @@
-package baseball;
-
+package baseball.service;
 public interface Service {
     void readyGame();
     int[] baseBall(char[] var1, char[] var2);

@@ -1,4 +1,9 @@
-package baseball;
+package baseball.controller;
+
+import baseball.service.Service;
+import baseball.service.ServiceImpl;
+import baseball.utils.GetInput;
+
 public class Controller {
     GetInput getInput = new GetInput();
     Service service = new ServiceImpl();

@@ -1,12 +1,9 @@
-
-package baseball;
-
-
+package baseball.service;
+import baseball.utils.ChangeToChar;
+import baseball.utils.GetInput;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
-
 public class ServiceImpl implements Service {
     GetInput getInput = new GetInput();
     ChangeToChar changeToChar = new ChangeToChar();
@@ -16,7 +13,6 @@ public class ServiceImpl implements Service {
     public void readyGame() throws IllegalArgumentException{
         int strike = 0;
         char[] number = changeToChar.changetoChar(randNumGenerate(1, 9));
-
         while(strike != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             int inputNumber = getInput.getInput();
@@ -30,7 +26,6 @@ public class ServiceImpl implements Service {
     @Override
     public int[] baseBall(char[] number, char[] input) {
         int[] count = new int[]{0, 0};
-
         for(int i = 0; i < 3; ++i) {
             check(number,input[i],i,count);
         }
@@ -41,7 +36,6 @@ public class ServiceImpl implements Service {
         int number = 0;
         List<Integer> numList = new ArrayList<>();
         int digit = 100;
-
         do {
             int tempnumber;
             do {
@@ -52,7 +46,6 @@ public class ServiceImpl implements Service {
             number += tempnumber * digit;
             digit /= 10;
         } while(digit != 0);
-
         return number;
     }
     @Override
@@ -86,7 +79,6 @@ public class ServiceImpl implements Service {
         if (number< 123) throw new IllegalArgumentException();
         List<Integer> numList = new ArrayList<>();
         int digit = 100;
-
         for(int i =0; i< 3; i++) {
             if (numList.contains(number)==true){
                 throw new IllegalArgumentException();
