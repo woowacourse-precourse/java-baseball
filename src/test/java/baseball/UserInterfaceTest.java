@@ -99,6 +99,12 @@ class UserInterfaceTest {
         }
 
         @Test
+        void 길이가_3_이상이고_중복된_숫자_입력() {
+            System.setIn(generateUserInput("112233"));
+            assertThatThrownBy(UserInterface::getUsersAnswer).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
         void 숫자_0이_포함된_입력() {
             System.setIn(generateUserInput("120"));
             assertThatThrownBy(UserInterface::getUsersAnswer).isInstanceOf(IllegalArgumentException.class);
