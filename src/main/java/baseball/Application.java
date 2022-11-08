@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import com.sun.nio.sctp.IllegalReceiveException;
 
 import java.util.*;
 
@@ -41,7 +42,7 @@ public class Application {
 
     }
 
-    private static String isRightChoice(String readLine) {
+    public static String isRightChoice(String readLine) {
         if(!readLine.equals("1") && !readLine.equals("2")) {
             throw new IllegalArgumentException("올바른 값을 입력하세요. 게임을 종료합니다.");
         }
@@ -52,6 +53,12 @@ public class Application {
         char[] split = readLine.toCharArray();
         for(int i=0; i<readLine.length(); i++) {
             if(!Character.isDigit(split[i])) {
+                throw new IllegalArgumentException("올바른 값을 입력하세요. 게임을 종료합니다.");
+            }
+        }
+
+        for(int i =0; i<readLine.length()-1; i++) {
+            if(split[i]==split[i+1]) {
                 throw new IllegalArgumentException("올바른 값을 입력하세요. 게임을 종료합니다.");
             }
         }
