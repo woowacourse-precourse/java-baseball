@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력값_유효성_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    void 정답값_유효성_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Method isAnswerNumberValid = Application.class.getDeclaredMethod("isAnswerNumberValid", int.class);
         isAnswerNumberValid.setAccessible(true);
 
@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력값_유효성_테스트2_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    void 정답값_유효성_테스트2_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Method isAnswerNumberValid = Application.class.getDeclaredMethod("isAnswerNumberValid", int.class);
         isAnswerNumberValid.setAccessible(true);
 
@@ -74,7 +74,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 입력값_유효성_테스트3_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    void 정답값_유효성_테스트3_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Method isAnswerNumberValid = Application.class.getDeclaredMethod("isAnswerNumberValid", int.class);
         isAnswerNumberValid.setAccessible(true);
 
@@ -90,7 +90,6 @@ class ApplicationTest extends NsTest {
 
         assertThat(makeAnswerNumber.invoke(application)).isInstanceOf(List.class);
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
