@@ -4,11 +4,6 @@ public class Result {
     int ball;
     int strike;
 
-    public Result() {
-        this.ball = 0;
-        this.strike = 0;
-    }
-
     public int getBall() {
         return ball;
     }
