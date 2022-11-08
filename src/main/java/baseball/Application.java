@@ -43,16 +43,35 @@ class Game{
         user_num=camp.nextstep.edu.missionutils.Console.readLine();
         return user_num;
     }
-
+    public int isBall(int ball_check_num){
+        if(ball_check_num==1){
+            return 1;
+        }
+        return 0;
+    }
     public void check(){
         strike_num=0;
         ball_num=0;
         String curString=Input();
+        int[] ball_check=new int[10];
         for(int i=0;i<3;++i){
+            String partial_string=curString.substring(i,i+1);
+            int partial_string_num=Integer.parseInt(partial_string);
+            ball_check[partial_string_num]=1;
             if(curString.charAt(i)==targetNumber.charAt(i)){
+                ball_check[partial_string_num]=2;
                 ++strike_num;
             }
         }
+        for(int i=0;i<10;++i){
+            if(ball_check[i]==arr[i]){
+                ball_num+=isBall(ball_check[i]);
+            }
+        }
+//        System.out.println(targetNumber);
+//        System.out.println(strike_num);
+//        System.out.println(ball_num);
+
 
     }
 //    public void game_processing(){
@@ -75,6 +94,7 @@ public class Application {
 //        System.out.println(randomNumber);
         while(true){
             Game g=new Game();
+            g.check();
             break;
 //            if(g.game_restart_flag==2){
 //                break;
