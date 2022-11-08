@@ -9,12 +9,19 @@ import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO : 반복해서 3개의 숫자를 모두 맞히면 “3개의 숫자를 모두 맞히셨습니다! 게임 종료” 라는 말과 함께 종료
+        // TODO : 반복시행 함수화
         List<Integer> computer = makeRandomNumberList();
-        List<String> player = inputPlayerAnswerList();
-        String hint = checkAnswerAndGiveHint(computer, player);
-        System.out.println(hint);
-
+        boolean flag = true;
+        while (flag){
+            List<String> player = inputPlayerAnswerList();
+            String hint = checkAnswerAndGiveHint(computer, player);
+            if (hint == null){
+                flag = false;
+            }
+            else {
+                System.out.println(hint);
+            }
+        }
     }
 
 
