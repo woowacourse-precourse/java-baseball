@@ -44,8 +44,6 @@ public class Game {
         List<Digit> inputDigitNumber = InputSystem.inputTryNumber();
         List<Integer> targetNumber = computer.getTargetNumber();
         Digits digitTragetList = new Digits(InputSystem.convertDigit(targetNumber));
-        System.out.println("user"+inputDigitNumber);
-        System.out.println("com"+digitTragetList.getDigitList());
         List<ScoreStatus> scoreResultList = digitTragetList.checkAllDigits(new Digits(inputDigitNumber));
         score.countTotalScore(scoreResultList);
         score.printScore();
