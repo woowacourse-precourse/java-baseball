@@ -15,7 +15,7 @@ import static baseball.View.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class OutputViewTest {
+public class ViewTest {
 
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
