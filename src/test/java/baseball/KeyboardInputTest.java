@@ -33,14 +33,16 @@ class KeyboardInputTest {
   @Test
   @Order(1)
   void inputValueTestLengthNoError1() {
-    String returnValue = KeyboardInput.inputValueTestByMode("123", 1);
+    KeyboardInput keyboardInput = new KeyboardInput(3);
+    String returnValue = keyboardInput.inputValueTestByMode("123", 1);
     Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
   @Test
   @Order(2)
   void inputValueTestLengthNoError2() {
-    String returnValue = KeyboardInput.inputValueTestByMode("123", 1);
+    KeyboardInput keyboardInput = new KeyboardInput(3);
+    String returnValue = keyboardInput.inputValueTestByMode("123", 1);
     Assertions.assertThat("123").isEqualTo(returnValue);
   }
 
@@ -48,7 +50,8 @@ class KeyboardInputTest {
   @Order(3)
   void inputValueTestLengthError1() {
     Assertions.assertThatThrownBy(() -> {
-      KeyboardInput.inputValueTestByMode("", 1);
+      KeyboardInput keyboardInput = new KeyboardInput(3);
+      keyboardInput.inputValueTestByMode("", 1);
     }).isInstanceOf(IllegalArgumentException.class);
   }
 

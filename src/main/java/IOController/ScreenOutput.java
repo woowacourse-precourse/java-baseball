@@ -8,7 +8,7 @@ public class ScreenOutput {
     private static final int CALCULATED_OUTPUT_MODE = 4;
     private static int inputSize;
 
-    ScreenOutput(int inputLength) {
+    public ScreenOutput(int inputLength) {
         inputSize = inputLength;
     }
 
