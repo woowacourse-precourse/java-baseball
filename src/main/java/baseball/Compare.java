@@ -12,7 +12,6 @@ public class Compare {
         }
         return result;
     }
-
     public int countStrike(List<Integer> computer, List<Integer> player){
         int strike = 0;
         for(int i = 0; i < player.size(); i++){

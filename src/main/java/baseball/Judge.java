@@ -1,7 +1,6 @@
 package baseball;
 
 import java.util.List;
-
 public class Judge {//숫자 스트라이크,볼 판별기
     Compare compare = new Compare();
     public String judgement(List<Integer> computer, List<Integer> player){

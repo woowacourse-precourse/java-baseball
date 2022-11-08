@@ -2,7 +2,6 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class GenerateRandomNum { //랜덤숫자뽑기 기능
     public int randomMake(){
