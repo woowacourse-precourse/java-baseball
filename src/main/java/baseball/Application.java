@@ -4,13 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
-class Validation{
-    public static int Validation(List<Integer> userInput){
-        if (userInput.size()!=3){
-            return -1;
+class Valid{
+    public static int validation(List<Integer> userInput){
+        if (userInput.size()==3){
+            return 1;
         }
         else{
-            return 1;
+            throw new IllegalArgumentException();
         }
     }
 }
@@ -75,15 +75,41 @@ class Judge{
         }
     }
 }
+class Random{
+    public List<Integer> radomThreeNum(){
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+}
 
+class Convert {
+    public static List<Integer> convertStringToList(String input) {
+        List<Integer> userInput = new ArrayList();
+        for (int i = 0; i < input.length(); i++) {
+            //System.out.println(Character.getNumericValue(input.charAt(i)));
+            userInput.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return userInput;
+    }
+}
 public class Application {
 
     public static void main(String[] args) {
         //String input = null;
         List<Integer> userInput = new ArrayList();
+        List<Integer> computer = new ArrayList<>();
         String result = "";
         Judge judge = new Judge();
+        Convert convert = new Convert();
+        Random random= new Random();
         String status = "1";
+        Valid valid= new Valid();
 
         while (status.equals("1")) {
             result = "";
@@ -91,26 +117,21 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
 
             // 2. 숫자 3개 랜덤 추출
-            List<Integer> computer = new ArrayList<>();
-            while (computer.size() < 3) {
-                int randomNumber = Randoms.pickNumberInRange(1, 9);
-                if (!computer.contains(randomNumber)) {
-                    computer.add(randomNumber);
-                }
-            }
+            computer= random.radomThreeNum();
+
             while (!result.equals("3스트라이크")) {
                 userInput.clear();
                 // 3. 사용자 입력 받기
                 String input = Console.readLine();
 
-                // 3.1 사용자 입력 검증하기
+                // 3.1 사용자 입력을 list로 변환
+                userInput= convert.convertStringToList(input);
 
-                // 3.2 사용자 입력을 list로 변환
-                for (int i = 0; i < input.length(); i++) {
-                    //System.out.println(Character.getNumericValue(input.charAt(i)));
-                    userInput.add(Character.getNumericValue(input.charAt(i)));
+                // 3.2 사용자 입력 검증
+                if (valid.validation(userInput)!=1) {
+                    return;
                 }
-                //System.out.println(userInput);
+
                 // 4. 숫자검사
                 result = judge.judgement(computer, userInput);
                 System.out.println(result);
@@ -123,5 +144,4 @@ public class Application {
 
         System.out.println("게임 종료");
     }
-
 }
