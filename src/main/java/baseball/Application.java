@@ -48,12 +48,12 @@ public class Application {
         }
     }
 
-    public static String getResult(String answer, String userInput) {
+    public static String getResult(String answer, String userNumbers) {
         int strike = 0;
         int ball = 0;
 
         for (int i = 0; i < 3; i++) {
-            char a = userInput.charAt(i);
+            char a = userNumbers.charAt(i);
             if (answer.charAt(i) == a) {
                 strike++;
             } else if (answer.indexOf(a) != -1) {
@@ -95,7 +95,7 @@ public class Application {
         }
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = Console.readLine().trim();
+        String userInput = Console.readLine();
 
         if (userInput.equals("1")) {
             return true;
