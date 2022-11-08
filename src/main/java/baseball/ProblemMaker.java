@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class ProblemMaker extends Player{
     public void makeProblem(int sizeOfNumbers){
+        getNumbers().clear();
         while(getNumbers().size() < sizeOfNumbers){
             int randomNum = Randoms.pickNumberInRange(1, 9);
             if(!getNumbers().contains(randomNum)){
