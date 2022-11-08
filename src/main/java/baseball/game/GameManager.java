@@ -19,7 +19,6 @@ public class GameManager {
     private Score score;
 
     public GameManager() {
-        this.computer = new Computer();
         this.score = new Score();
     }
 
