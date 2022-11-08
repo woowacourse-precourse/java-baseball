@@ -2,6 +2,8 @@ package baseball;
 
 public class Result {
 
+    private static final int MAX_STRIKE = 3;
+
     private final int strikeCount;
     private final int ballCount;
 
@@ -11,7 +13,7 @@ public class Result {
     }
 
     public boolean isAnswer() {
-        return strikeCount == 3;
+        return strikeCount == MAX_STRIKE;
     }
 
     @Override
