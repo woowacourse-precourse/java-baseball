@@ -15,10 +15,12 @@ class GameTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
     @BeforeEach
-    public void setUpStreams(){System.setOut(new PrintStream(output));}
+    public void setUpStreams() {
+        System.setOut(new PrintStream(output));
+    }
 
     @AfterEach
-    public void restoreStreams(){
+    public void restoreStreams() {
         System.setOut(System.out);
         output.reset();
     }
@@ -26,15 +28,20 @@ class GameTest {
     @Test
     void start() {
     }
+/*
+    printMessage() 삭제됨
 
-//  printMessage() 삭제됨
-//    @Test
-//    void printMessage() {
-//        Game game = new Game();
-//        game.printMessage(Settings.START_MESSAGE);
-//        String result = Settings.START_MESSAGE + "\r\n";
-//        assertThat(result).isEqualTo(output.toString());
-//    }
+    @Test
+    void printMessage() {
+        Game game = new Game();
+        game.printMessage(Settings.START_MESSAGE);
+        String result = Settings.START_MESSAGE + "\r\n";
+        assertThat(result).isEqualTo(output.toString());
+    }
+ */
+
+/*
+    isStartStatus() private로 변경
 
     @Test
     void isStartStatus_시작상태인경우() {
@@ -51,24 +58,30 @@ class GameTest {
         assertThat(result).isEqualTo(game.isStartStatus());
     }
 
-//    requestAnswer() 삭제됨
-//    @Test
-//    void requestAnswer_출력문확인() {
-//        InputStream in = new ByteArrayInputStream("123".getBytes());
-//        System.setIn(in);
-//        Game game = new Game();
-//        game.requestAnswer(); -> 삭제됨
-//        String result = Settings.ANSWER_REQUEST_MESSAGE + "\r\n";
-//        assertThat(result).isEqualTo(output.toString());
-//    }
-//
-//    @Test
-//    void requestAnswer_입력예외처리() {
-//        InputStream in = new ByteArrayInputStream("abc".getBytes());
-//        System.setIn(in);
-//        Game game = new Game();
-//        assertThatThrownBy(()->game.requestAnswer()).isInstanceOf(IllegalArgumentException.class);
-//    }
+ */
+
+/*
+    requestAnswer() 삭제됨
+
+    @Test
+    void requestAnswer_출력문확인() {
+        InputStream in = new ByteArrayInputStream("123".getBytes());
+        System.setIn(in);
+        Game game = new Game();
+        game.requestAnswer(); -> 삭제됨
+        String result = Settings.ANSWER_REQUEST_MESSAGE + "\r\n";
+        assertThat(result).isEqualTo(output.toString());
+    }
+
+    @Test
+    void requestAnswer_입력예외처리() {
+        InputStream in = new ByteArrayInputStream("abc".getBytes());
+        System.setIn(in);
+        Game game = new Game();
+        assertThatThrownBy(()->game.requestAnswer()).isInstanceOf(IllegalArgumentException.class);
+    }
+
+ */
 
     @Test
     void checkAnswer() {

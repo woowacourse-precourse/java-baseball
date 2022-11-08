@@ -16,7 +16,7 @@ public class ProblemSolver extends Player {
         }
     }
 
-    public void checkValidAnswerInput(String answer, int sizeOfNumbers) throws IllegalArgumentException {
+    private void checkValidAnswerInput(String answer, int sizeOfNumbers) throws IllegalArgumentException {
         if (!answer.matches("^[1-9]{3}$")) {
             // 1~9 사이의 수로 이루어진 3자리 수가 아닌 경우
             throw new IllegalArgumentException();
@@ -34,7 +34,7 @@ public class ProblemSolver extends Player {
         return choice;
     }
 
-    public void checkValidRestartChoiceInput(String choice) throws IllegalArgumentException {
+    private void checkValidRestartChoiceInput(String choice) throws IllegalArgumentException {
         if (!choice.matches("^[1-2]$")) {
             // 1 또는 2가 아닌 경우
             throw new IllegalArgumentException();
