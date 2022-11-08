@@ -5,8 +5,8 @@
    
 2. InputException.java : 사용자각 잘못된 값을 입력한 경우 발생, 이후 어플리케이션은 종료
    - inputEmptyException() : 입려값 없을 경우 발생 
-   - inputNotThreeNumberException() : 길이가 3이 아니고 input이 숫자가 아닐 경우 발생 
-   - inputNotOneOrTwoException() : input이 1이나 2가 아닐 때 발생
+   - inputNotThreeNumberException() : 길이가 3이 아니고 입력값이 숫자가 아닐 경우 발생 
+   - inputNotOneOrTwoException() : 입력값이 1이나 2가 아닐 때 발생
    
 3. PlayNumberBaseballGame.java : 숫자야구놀이 전체 기능
    - playNumberBaseballOneGame : 숫자야구 게임 한번 진행 
@@ -22,5 +22,9 @@
 4. GameProgressLine.java : 게임 진행 문구 집합
 
 ---
-## 💡 기타 내용 정리
-1. enum
+##  💡 기타 내용 정리
+### enum type
+
+---
+##  🤔 소감
+
