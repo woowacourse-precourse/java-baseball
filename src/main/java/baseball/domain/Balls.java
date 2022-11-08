@@ -5,12 +5,13 @@ import java.util.List;
 
 public class Balls {
 
-	private List<Ball> balls;
+	private List<BallNumber> balls;
 
 	public Balls(String inputString) {
 		validateSize(inputString.length());
 		List<Integer> numbers = mapToList(inputString);
-		new Balls(numbers);
+		validateBalls(numbers);
+		balls = mapToBalls(numbers);
 	}
 
 	public Balls(List<Integer> numbers) {
@@ -47,11 +48,29 @@ public class Balls {
 		}
 	}
 
-	private List<Ball> mapToBalls(List<Integer> numbers) {
-		List<Ball> list = new LinkedList<>();
-		for (int index = 0; index < numbers.size(); index++) {
-			list.add(new Ball(numbers.get(index), index));
+	private List<BallNumber> mapToBalls(List<Integer> numbers) {
+		List<BallNumber> list = new LinkedList<>();
+		for (Integer number : numbers) {
+			list.add(new BallNumber(number));
 		}
 		return list;
+	}
+
+	List<BallStatus> compare(Balls otherBalls) {
+		List<BallStatus> result = new LinkedList<>();
+		for (int index = 0; index < Constants.NUMBER_SIZE; index++) {
+			result.add(compare(otherBalls.balls.get(index), index));
+		}
+		return result;
+	}
+
+	BallStatus compare(BallNumber otherBallNumber, int otherBallIndex) {
+		if (balls.get(otherBallIndex).equals(otherBallNumber)) {
+			return BallStatus.STRIKE;
+		}
+		if (balls.contains(otherBallNumber)) {
+			return BallStatus.BALL;
+		}
+		return BallStatus.NOTHING;
 	}
 }
