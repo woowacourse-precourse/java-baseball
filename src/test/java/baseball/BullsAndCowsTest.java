@@ -15,6 +15,9 @@ class BullsAndCowsTest {
 
         char charArray[] = {'1', '1', '2'};
         assertThat(bullsAndCows.isOverlap(charArray)).isTrue();
+
+        charArray[1] = '3';
+        assertThat(bullsAndCows.isOverlap(charArray)).isFalse();
     }
 
     @Test
