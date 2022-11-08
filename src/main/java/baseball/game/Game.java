@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 public class Game {
     private Game() {
+
+    }
+
+    public void init() {
         List<Integer> computerNumber = getComputerNumber();
 
         while (true) {
@@ -20,9 +24,11 @@ public class Game {
             }
         }
     }
+
     public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         Game game = Game.create();
+        game.init();
     }
     public static Game create() {
         return new Game();
