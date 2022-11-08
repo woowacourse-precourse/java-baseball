@@ -30,21 +30,27 @@ public class BaseballGame {
 
              strike = 0;
              ball = 0;
+             CheckScore(computerNumber,userNumber);
 
-             for(int i=0;i<CNT_NUMBER;i++){
-                 Score score = computerNumber.getScore(userNumber.getDigit(i),i);
-
-                 if(score == STRIKE){
-                     strike++;
-                 }else if(score == BALL){
-                     ball++;
-                 }
-
-             }
             System.out.println(this);
             if(strike == CNT_NUMBER){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 ReStartGame(computerNumber);
+            }
+
+        }
+
+    }
+
+    private void CheckScore(ComputerNumber computerNumber, UserNumber userNumber){
+
+        for(int i=0;i<CNT_NUMBER;i++){
+            Score score = computerNumber.getScore(userNumber.getDigit(i),i);
+
+            if(score == STRIKE){
+                strike++;
+            }else if(score == BALL){
+                ball++;
             }
 
         }
