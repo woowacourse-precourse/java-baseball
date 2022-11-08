@@ -25,7 +25,7 @@ public class InputValidator {
     }
 
     private static void validateDigitLength(String playerNumber) {
-        if(playerNumber.length() != Config.DIGIT_SIZE) {
+        if (playerNumber.length() != Config.DIGIT_SIZE) {
             throw new IllegalArgumentException(Message.DIGIT_LENGTH_EXCEPTION);
         }
     }
@@ -34,7 +34,7 @@ public class InputValidator {
         String[] digits = playerNumber.split("");
         Set<String> deduplicationNumbers = new HashSet<>(Arrays.asList(digits));
 
-        if(playerNumber.length() != deduplicationNumbers.size()) {
+        if (playerNumber.length() != deduplicationNumbers.size()) {
             throw new IllegalArgumentException(Message.DUPLICATION_EXCEPTION);
         }
     }
@@ -56,13 +56,13 @@ public class InputValidator {
     }
 
     private static void validateStateLength(String stateNumber) {
-        if(stateNumber.length() != Config.STATE_SIZE) {
+        if (stateNumber.length() != Config.STATE_SIZE) {
             throw new IllegalArgumentException(Message.STATE_LENGTH_EXCEPTION);
         }
     }
 
     private static void validateValue(String stateNumber) {
-        if(!State.isValidValue(stateNumber)) {
+        if (!State.isValidValue(stateNumber)) {
             throw new IllegalArgumentException(Message.STATE_VALUE_EXCEPTION);
         }
     }
