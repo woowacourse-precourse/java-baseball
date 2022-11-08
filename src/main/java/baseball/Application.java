@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.*;
 
 public class Application{
     public static void main(String[] args) {
-    	int answer = makeRandomNumber();
+    	String answer = makeRandomNumber();
     	String input;
     	
     	System.out.println("숫자 야구 게임을 시작합니다.");
@@ -20,17 +20,16 @@ public class Application{
         // TODO: 프로그램 구현
     }
     
-    public static int makeRandomNumber() {
-    	int result = 0;
-    	int cnt = 1;
-    	
+    public static String makeRandomNumber() {
+    	String result = "";
     	List<Integer> uniqueNumberList = new ArrayList<>();
+    	
     	uniqueNumberList = Randoms.pickUniqueNumbersInRange(1,9,9);
     	
     	for(int i=0;i<uniqueNumberList.size();i++) {
-    		result += uniqueNumberList.get(i)*cnt;
-    		cnt*=10;
+    		result += uniqueNumberList.get(i);
     	}
+    	
     	return result;
     }
     
