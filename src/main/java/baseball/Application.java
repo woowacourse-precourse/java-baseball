@@ -51,7 +51,7 @@ public class Application {
         }
         return integerList;
     }
-    private static int getRepeat(int repeat, List<Integer> computerIntegerList) {
+    private static int getRepeat(List<Integer> computerIntegerList) {
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
 
@@ -87,7 +87,7 @@ public class Application {
         int repeat =0;
         while (repeat==0){
             List<Integer> computerIntegerList = reComputerNumber();
-            repeat = getRepeat(repeat,computerIntegerList);
+            repeat = getRepeat(computerIntegerList);
         }
     }
 }
