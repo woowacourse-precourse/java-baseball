@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.domain.Computer;
-import baseball.domain.Game;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -44,25 +43,10 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 볼_스트라이크_상황_테스트() {
-        Game game = new Game();
-        game.initializeGame();
-
-        assertRandomNumberInRangeTest(
-                () -> {
-                    run("426");
-                    assertThat(game.getBallCount()).isEqualTo(1);
-                    assertThat(game.getStrikeCount()).isEqualTo(1);
-                },
-                1,4,6
-        );
-    }
-
-    @Test
     void 볼_스트라이크_출력_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("234", "567", "891", "271", "273");
+                    run("234", "567", "891", "271", "273", "2");
                     assertThat(output()).contains("1볼 1스트라이크", "1볼", "낫싱", "2스트라이크", "3스트라이크");
                 },
                 2, 7, 3
