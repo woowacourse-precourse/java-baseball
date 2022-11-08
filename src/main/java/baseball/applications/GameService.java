@@ -3,6 +3,7 @@ package baseball.applications;
 import baseball.domain.Computer;
 import baseball.domain.Game;
 import baseball.views.Input;
+import baseball.views.Output;
 
 public class GameService {
     private volatile static GameService INSTANCE;
@@ -32,7 +33,7 @@ public class GameService {
         String userNumber = Input.input();
         game.compare(userNumber, computerNumber);
 
-
+        Output.result(game.getStrike(), game.getBall());
     }
 
 }
