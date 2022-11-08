@@ -4,8 +4,6 @@ import java.util.HashSet;
 
 public class Validator {
 	public static final int PROPER_LENGTH = 3;
-	public static final String RESTART = "1";
-	public static final String QUIT = "2";
 	public static final String INVALID_QUIT_OR_RESTART_INPUT = "반드시 1 또는 2를 입력해주세요.";
 	public static final String DUPLICATED_DIGITS = "서로 중복되지 않는 세자리 숫자를 입력해주세요.";
 	public static final String INVALID_LENGTH = "반드시 세자리 숫자를 입력해야 합니다.";
@@ -18,7 +16,7 @@ public class Validator {
 	}
 
 	public static void validateQuitOrRestartInput(String source) {
-		if (!source.equals(RESTART) && !source.equals(QUIT)) {
+		if (!source.equals(UserResponse.RESTART.getValue()) && !source.equals(UserResponse.QUIT.getValue())) {
 			throw new IllegalArgumentException(INVALID_QUIT_OR_RESTART_INPUT);
 		}
 	}

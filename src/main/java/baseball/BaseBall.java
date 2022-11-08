@@ -1,8 +1,6 @@
 package baseball;
 
 public class BaseBall {
-	public static final String RESTART = "1";
-
 	public static void start() {
 		Balls computer = Balls.createRandom();
 		GameResult gameResult = GameResult.createEmpty();
@@ -27,7 +25,7 @@ public class BaseBall {
 		GameMessage.quitOrRestart();
 		String quitOrRestart = InputHandler.getQuitOrRestart();
 
-		if (quitOrRestart.equals(RESTART)) {
+		if (quitOrRestart.equals(UserResponse.RESTART.getValue())) {
 			start();
 		}
 	}
