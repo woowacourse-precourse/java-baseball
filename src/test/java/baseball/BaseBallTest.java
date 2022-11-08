@@ -29,9 +29,13 @@ public class BaseBallTest {
         //when
         int checker = 0;
         for(Integer a : computer){
-            if(a<1||a>9) checker++;
+            if(a<1||a>9) {
+                checker++;
+            }
         }
-        if(computer.size()>3) checker++;
+        if(computer.size()>3) {
+            checker++;
+        }
 
         //then
         assertThat(checker).isEqualTo(0);
@@ -44,9 +48,9 @@ public class BaseBallTest {
         String input = "1234";
         //when
         //then
-        assertThatThrownBy(()->validateInputString(input)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->validateInputString(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
-
 
     @Test
     @DisplayName("볼 체크")
@@ -75,7 +79,6 @@ public class BaseBallTest {
         Assertions.assertThat(strike).isEqualTo(3);
     }
 
-
     @Test
     public void 문자열로부터_변환된_정수_리스트_검증(){
         //given
@@ -89,9 +92,4 @@ public class BaseBallTest {
         //then
         assertThat(integers).isEqualTo(integerList);
     }
-
-
-
-
-
 }

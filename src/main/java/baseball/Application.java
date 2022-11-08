@@ -12,14 +12,17 @@ import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
+
         Integer restartCounter;
         Scanner sc = new Scanner(System.in);
+
         do{
             System.out.println("숫자 야구 게임을 시작합니다.");
             List<Integer> computer = randomNumberGenerator();
             List<Integer> user ;
             Integer strike = 0;
             Integer ball;
+
             while(strike!=3) {
                 String input = getInputByUser(sc);
                 user = makeListOfUser(input);
@@ -28,16 +31,18 @@ public class Application {
                 ball -= strike;
                 printResult(strike,ball);
             }
+
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restartCounter= Integer.parseInt(sc.nextLine());
+
         }while(restartCounter==1);
 
         return;
     }
 
     public static String getInputByUser(Scanner sc) throws IllegalArgumentException{
-        System.out.println("숫자를 입력해주세요 :");
+        System.out.println("숫자를 입력해주세요 : ");
         String input = sc.nextLine();
         validateInputString(input);
 
@@ -64,7 +69,9 @@ public class Application {
     public static Integer checkBall(List<Integer> computer, List<Integer> user) {
         Integer ball = 0;
         for(Integer n : user){
-            if(computer.contains(n)) ball++;
+            if(computer.contains(n)) {
+                ball++;
+            }
         }
         return ball;
     }
@@ -72,7 +79,9 @@ public class Application {
     public static Integer checkStrike(List<Integer> computer, List<Integer> user) {
         Integer strike = 0;
         for(int i = 0; i<3; i++){
-            if(computer.get(i).equals(user.get(i))) strike++;
+            if(computer.get(i).equals(user.get(i))) {
+                strike++;
+            }
         }
         return strike;
     }
@@ -98,11 +107,15 @@ public class Application {
 
     public static void validateList(List<Integer> user){
         List<Integer> temp = user.stream().distinct().collect(Collectors.toList());
-        if(temp.size()<2) throw new IllegalArgumentException();
+        if(temp.size()<2){
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
     }
 
     public static void validateChangedInteger(Integer a){
-        if(a<1||a>9) throw new IllegalArgumentException();
+        if(a<1||a>9) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
     }
     public static List<Integer> changeStringArrToIntegerList(String[] splits){
         List<Integer> temp = new ArrayList<>();
@@ -115,6 +128,8 @@ public class Application {
     }
 
     public static void validateInputString(String s){
-        if(s.length()>3) throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        if(s.length()>3) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
     }
 }
