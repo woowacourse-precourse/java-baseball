@@ -13,7 +13,9 @@ public class Player {
 
     public List<Integer> suggest() {
         String input = input();
-        if (!validSuggestion()) throw new IllegalArgumentException();
+        if (!validSuggestion()) {
+            throw new IllegalArgumentException();
+        }
         List<Integer> suggestion;
         suggestion = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
         return suggestion;
