@@ -17,6 +17,11 @@ public class InputNumber {
         return userNumber;
     }
 
+    public void userInputNumber(){
+        System.out.print("숫자를 입력해주세요 : ");
+        userNumber = Console.readLine();
+    }
+
     public void userInputBallNumber(){
         userInputNumber();
         if(!InputNumberValidator.inputNumberCorrection(userNumber)){
