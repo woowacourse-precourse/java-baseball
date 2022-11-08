@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import baseball.domain.Generator.GameGenerator;
+import baseball.domain.model.Game;
 import baseball.domain.model.Result;
 import baseball.domain.model.UserInput;
 import java.util.List;
@@ -8,10 +9,10 @@ import java.util.List;
 public class GameService {
 
     private static final int STRIKE_OUT = 3;
-    private static List<Integer> gameNumbers;
+    private static Game game;
 
     public GameService() {
-        this.gameNumbers = GameGenerator.createGame();
+        this.game = new Game(GameGenerator.createGame());
     }
 
     public Result getResult(UserInput userInput) {
@@ -21,9 +22,9 @@ public class GameService {
         List<Integer> inputs = userInput.getNumbers();
 
         for (int i = 0; i < inputs.size(); i++) {
-            if (inputs.get(i) == this.getGameNumbers().get(i)) {
+            if (inputs.get(i) == game.getGameNumbers().get(i)) {
                 strike++;
-            } else if (this.getGameNumbers().contains(inputs.get(i))) {
+            } else if (game.getGameNumbers().contains(inputs.get(i))) {
                 ball++;
             }
         }
@@ -39,7 +40,4 @@ public class GameService {
         return (strike == STRIKE_OUT);
     }
 
-    public List<Integer> getGameNumbers() {
-        return gameNumbers;
-    }
 }
