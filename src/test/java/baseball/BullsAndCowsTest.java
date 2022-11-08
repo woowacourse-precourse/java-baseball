@@ -8,9 +8,11 @@ import java.util.List;
 
 class BullsAndCowsTest {
 
+    BullsAndCows bullsAndCows = new BullsAndCows(new BullsAndCowsResult());
+
     @Test
     void 문자열_리스트_변환_테스트() {
-        List<Integer> result = BullsAndCows.checkExceptionAndInputToList("123");
+        List<Integer> result = bullsAndCows.checkExceptionAndInputToList("123");
         assertThat(result.get(0)).isEqualTo(1);
         assertThat(result.get(1)).isEqualTo(2);
         assertThat(result.get(2)).isEqualTo(3);
@@ -23,7 +25,7 @@ class BullsAndCowsTest {
         userInputNumber.add(20);
         userInputNumber.add(30);
 
-        int numberIndex = BullsAndCows.findNumberIndex(userInputNumber, 20);
+        int numberIndex = bullsAndCows.findNumberIndex(userInputNumber, 20);
         assertThat(numberIndex).isEqualTo(1);
     }
 
@@ -34,7 +36,7 @@ class BullsAndCowsTest {
         userInputNumber.add(20);
         userInputNumber.add(30);
 
-        int numberIndex = BullsAndCows.findNumberIndex(userInputNumber, 2);
+        int numberIndex = bullsAndCows.findNumberIndex(userInputNumber, 2);
         assertThat(numberIndex).isEqualTo(-1);
     }
 }
