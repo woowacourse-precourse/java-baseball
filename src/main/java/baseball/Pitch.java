@@ -33,7 +33,7 @@ public class Pitch {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < 3; i++) {
-            if (!Character.isDigit(inputNumber.charAt(i))) {
+            if (!Character.isDigit(inputNumber.charAt(i)) || inputNumber.charAt(i) == '0') {
                 throw new IllegalArgumentException();
             }
             pitchNumbers.add(inputNumber.charAt(i) - '0');
