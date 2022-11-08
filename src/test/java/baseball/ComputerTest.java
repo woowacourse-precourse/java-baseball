@@ -40,23 +40,24 @@ public class ComputerTest {
     @Test
     void checkPlayerAnswer_플레이어의_정답을_비교(){
         Computer computer = new Computer();
+        computer.Answer = List.of(1,2,3);
         computer.resetHintMap();
-        List<Integer> list = List.of(0, 0, 0);
+        List<Integer> list = List.of(2,5,3);
         for (int i =0; i<list.size(); i++){
             computer.checkPlayerAnswer(Answer.get(i), list.get(i));
         }
-        assertThat(HintMap.get("스트라이크")).isEqualTo(0);
-        assertThat(HintMap.get("볼")).isEqualTo(0);
+        assertThat(HintMap.get("스트라이크")).isEqualTo(1);
+        assertThat(HintMap.get("볼")).isEqualTo(1);
     }
 
     @Test
     void makeHintMap_플레이어의_답안에_맞춘_HintList_갱신(){
         Computer computer = new Computer();
+        computer.Answer = List.of(1,2,3);
         computer.resetHintMap();
-        List<Integer> list = List.of(0, 0, 0);
-        computer.makeHintMap(list);
-        assertThat(HintMap.get("스트라이크")).isEqualTo(0);
-        assertThat(HintMap.get("볼")).isEqualTo(0);
+        List<Integer> list = List.of(2,5,3);        computer.makeHintMap(list);
+        assertThat(HintMap.get("스트라이크")).isEqualTo(1);
+        assertThat(HintMap.get("볼")).isEqualTo(1);
     }
 
 }
