@@ -62,7 +62,7 @@ public class Controller {
         View.correctAnswer(NUMBER_LENGTH);
 
         String input = View.askRestartOrExit(USER_CHOICE);
-        validateAskRestartOrExitInput(input);
+        validateAskRestartOrExitInput(input, GAME_RESTART, GAME_EXIT);
         if(Integer.parseInt(input) == GAME_EXIT)
             return false;
         else if(Integer.parseInt(input) == GAME_RESTART)

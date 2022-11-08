@@ -3,10 +3,10 @@ package baseball.controller;
 import java.util.HashSet;
 
 public class Exception {
-    static void validateAskRestartOrExitInput(String input) {
+    static void validateAskRestartOrExitInput(String input, int GAME_RESTART, int GAME_EXIT) {
         validateInputIsNumeric(input);
         validateInputLength(input, 1);
-        validateCorrectGameChoice(input);
+        validateCorrectGameChoice(input, GAME_RESTART, GAME_EXIT);
     }
     static void validateUserInput(String input){
         validateInputIsNumeric(input);
@@ -30,8 +30,9 @@ public class Exception {
         if(checkHastSet.size() != 3)
             throw new IllegalArgumentException("중복된 숫자가 포함된 숫자 입력입니다.");
     }
-    static void validateCorrectGameChoice(String input){
-        if(!input.equals("1") && !input.equals("2"))
-            throw new IllegalArgumentException("1 또는 2의 입력이 아닙니다.");
+    static void validateCorrectGameChoice(String input, int GAME_RESTART, int GAME_EXIT){
+        int intInput = Integer.parseInt(input);
+        if(intInput != GAME_RESTART && intInput != GAME_EXIT)
+            throw new IllegalArgumentException(GAME_RESTART + " 또는 " + GAME_EXIT + "의 입력이 아닙니다.");
     }
 }
