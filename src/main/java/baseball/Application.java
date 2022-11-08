@@ -66,7 +66,7 @@ public class Application {
         }
     }
 
-    public static void validateGuessedNumber(String input) throws IllegalArgumentException {
+    public static void validateGuessedNumber(String input) {
         if (!Pattern.matches("[1-9]{3}", input)) {
             throw new IllegalArgumentException();
         }
