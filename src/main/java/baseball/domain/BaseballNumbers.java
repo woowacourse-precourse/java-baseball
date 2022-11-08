@@ -1,7 +1,9 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BaseballNumbers {
     public static final int BASEBALL_NUMBERS_LENGTH = 3;
@@ -12,5 +14,12 @@ public class BaseballNumbers {
 
     public BaseballNumbers(List<BaseballNumber> baseballNumberList){
         this.baseballNumberList = new ArrayList<>(baseballNumberList);
+    }
+
+    private void validateBaseballNumberDuplication(List<BaseballNumber> baseballNumberList){
+        Set<BaseballNumber> baseballNumberSet = new HashSet<>(baseballNumberList);
+        if(baseballNumberSet.size() < BASEBALL_NUMBERS_LENGTH){// 중복이 존재하는 경우
+            throw new IllegalArgumentException(INPUT_BASEBALL_NUMBER_DUPLICATION_EXCEPTION_MESSAGE);
+        }
     }
 }
