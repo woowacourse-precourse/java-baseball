@@ -9,10 +9,8 @@ public class GameController {
     private static final int MINIMUM_NUMBER = 1;
     private static final int MAXIMUM_NUMBER = 9;
 
-    GameService gameService = new GameService();
-
-    public void startGame() {
-
+    public static void startGame() {
+        GameService gameService = new GameService();
         gameService.setGame(GAME_NUMBER_DIGIT, MINIMUM_NUMBER, MAXIMUM_NUMBER);
 
          do {

@@ -11,6 +11,7 @@ public class NumberGenerator {
 
     public static List<Integer> createRandomNumbers(int digit, int minNumber, int maxNumber) {
         Set<Integer> numberSet = new HashSet<>();
+
         while (numberSet.size() < digit) {
             numberSet.add(Randoms.pickNumberInRange(minNumber, maxNumber));
         }

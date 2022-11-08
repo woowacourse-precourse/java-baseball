@@ -16,18 +16,15 @@ public class GameService {
 
     Master master;
     User user;
-    Validator validator = new Validator();
-    RequestMessage requestMessage = new RequestMessage();
-    SystemMessage systemMessage = new SystemMessage();
 
     public void setGame(int digit, int minNumber, int maxNumber) {
         master = new Master(NumberGenerator.createRandomNumbers(digit, minNumber, maxNumber));
     }
 
     public void getUserInputs() {
-        requestMessage.requestInputNumbers();
+        RequestMessage.requestInputNumbers();
         String userInput = Console.readLine();
-        user = new User(validator.validateUserInput(userInput));
+        user = new User(Validator.validateUserInput(userInput));
     }
 
     public void countStrikeAndBall() {
@@ -45,14 +42,14 @@ public class GameService {
             }
         }
 
-        systemMessage.showBallCounts(master.getBallCount(), master.getStrikeCount());
+        SystemMessage.showBallCounts(master.getBallCount(), master.getStrikeCount());
     }
 
     public Boolean makeResult() {
         int resultStrike = master.getStrikeCount();
 
         if (resultStrike == 3) {
-            systemMessage.showStrikeOutMessage();
+            SystemMessage.showStrikeOutMessage();
             return true;
         }
 
@@ -61,7 +58,7 @@ public class GameService {
     }
 
     public Boolean restartOrExit() {
-        requestMessage.requestRestartOrExit();
+        RequestMessage.requestRestartOrExit();
         String userInput = Console.readLine();
 
         if (userInput.equals("1")) {

@@ -3,9 +3,10 @@ package baseball.vo;
 import java.util.List;
 
 public class Master {
-    int strikeCount;
-    int ballCount;
-    List<Integer> gameNumbers;
+
+    private int strikeCount;
+    private int ballCount;
+    private final List<Integer> gameNumbers;
 
     public Master(List<Integer> numberList) {
         gameNumbers = numberList;

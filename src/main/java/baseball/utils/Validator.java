@@ -32,6 +32,7 @@ public class Validator {
 
     private static void validateDuplicates(String userInput) {
         Set<Character> characterSet = new HashSet<>();
+
         for (Character character : userInput.toCharArray()) {
             characterSet.add(character);
         }
@@ -43,6 +44,7 @@ public class Validator {
 
     private static List<Integer> finishValidation(String userInput) {
         List<Integer> userInputList = new ArrayList<>();
+
         for (Character character : userInput.toCharArray()) {
             userInputList.add(Integer.parseInt(String.valueOf(character)));
         }
