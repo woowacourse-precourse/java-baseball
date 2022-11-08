@@ -38,6 +38,7 @@ public class Game {
 
         if (strike == 3) {
             Message.printAnswerMessage();
+            Message.printRestartMessage();
             restartOrFinish();
         }
     }
