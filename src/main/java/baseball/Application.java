@@ -1,6 +1,5 @@
 package baseball;
 
-import static java.util.stream.Collector.*;
 import static java.util.stream.Collectors.toList;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -11,9 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -68,6 +65,7 @@ public class Application {
 
     public static int countRawBalls(ArrayList<Integer> generatedNumber, ArrayList<Integer> inputNumber) {
         int rawBall = 0;
+
         for (int i = 0; i < generatedNumber.size(); i++) {
             int dupCheck = Collections.frequency(inputNumber, generatedNumber.get(i));
             rawBall += dupCheck;
