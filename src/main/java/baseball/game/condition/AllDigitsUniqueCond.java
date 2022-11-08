@@ -11,6 +11,10 @@ public class AllDigitsUniqueCond implements Condition {
 
     private static final Condition instance = new AllDigitsUniqueCond();
 
+    public static Condition getInstance() {
+        return instance;
+    }
+
     private AllDigitsUniqueCond() {
     }
 
@@ -24,9 +28,5 @@ public class AllDigitsUniqueCond implements Condition {
         }
 
         return numbers.size() == guessString.length();
-    }
-
-    public static Condition getInstance() {
-        return instance;
     }
 }

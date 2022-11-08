@@ -8,15 +8,15 @@ public class LengthMatchCond implements Condition {
 
     private static final Condition instance = new LengthMatchCond();
 
+    public static Condition getInstance() {
+        return instance;
+    }
+
     private LengthMatchCond() {
     }
 
     @Override
     public Boolean isTrue(Integer guess) {
         return Integer.toString(guess).length() == NUMBER_SIZE;
-    }
-
-    public static Condition getInstance() {
-        return instance;
     }
 }
