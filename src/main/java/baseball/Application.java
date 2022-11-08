@@ -12,6 +12,23 @@ class Array {
         }
         return false;
     }
+    static boolean checkArrayContains(final char[] arr, final char number) {
+        for (int value : arr) {
+            if (value == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+    static char[] getCharArrayFromString(String str) {
+        char[] charArray = new char[str.length()];
+
+        for (int i = 0; i < str.length(); i++) {
+            charArray[i] = str.charAt(i);
+        }
+
+        return charArray;
+    }
 
 
 }
@@ -47,6 +64,60 @@ class Game {
 
     private int getRandomNumber() {//1~9까지 임의의 수
         return pickNumberInRange(Game.START, Game.END);
+    }
+
+    public static void init(Game rightAnswer) {
+        Game answer = Game.getAnswer();
+
+
+    }
+
+    private static Game getAnswer() {//2.게임 플레이어의 숫자 입력
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = readLine();
+        Game.checkInputValue(userInput);
+        return new Game(userInput);
+    }
+
+    //사용자가 잘못된 값을 입력할 경우 : 길이, 숫자인지, 같은 숫자가 있는지 확인
+    static void checkInputValue(final String str) {
+        if (!Game.checkInputLength(str)) {
+            throw new IllegalArgumentException();
+        }
+        if (!Game.checkInputNumber(str)) {
+            throw new IllegalArgumentException();
+        }
+        if (!Game.checkEqualNumber(str)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static boolean checkInputLength(final String str) {
+        return str.length() == Game.NUMBER_COUNT;
+    }
+
+    static boolean checkInputNumber(String str) {
+        try {
+            int numberValue = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        char[] numberArray = Array.getCharArrayFromString(str);
+        return !Array.checkArrayContains(numberArray, '0');
+    }
+
+    static boolean checkEqualNumber(String str) {
+        char[] checkEqual = new char[str.length()];
+        char[] word = Array.getCharArrayFromString(str);
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Array.checkArrayContains(checkEqual, word[i])) {
+                return false;
+            }
+            checkEqual[i] = word[i];
+        }
+
+        return true;
     }
 
 
