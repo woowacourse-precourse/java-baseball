@@ -28,16 +28,19 @@ public class Computer {
 
     public void startGame() {
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String inputStringNumber = Console.readLine();
-            System.out.println(inputStringNumber);
-            List<Integer> inputNumber = makeStringNumberToList(inputStringNumber);
+            List<Integer> inputNumber = makeStringNumberToList(getInputNumber());
             boolean findNumber = calculationNumber(resultNumber, inputNumber);
             if (findNumber) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
+    }
+
+    private String getInputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String inputStringNumber = Console.readLine();
+        return inputStringNumber;
     }
 
     public static boolean calculationNumber(List<Integer> resultNumber ,List<Integer> inputNumber) {
