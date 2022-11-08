@@ -7,9 +7,9 @@ import java.util.Objects;
 public class ConsoleInput implements Input{
 
     @Override
-    public String scan(final int PURPOSE, final int MAX_LEN) {
-        final int REPLAY_GAME = 1;
-        final int GUESSING_NUMBER = 2;
+    public String scan(final String PURPOSE, final int MAX_LEN) {
+        final String REPLAY_GAME = "1";
+        final String GUESSING_NUMBER = "2";
         ValidityChecker Checker = new ValidityChecker();
         String input = Console.readLine();
 
