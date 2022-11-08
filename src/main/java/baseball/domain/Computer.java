@@ -15,4 +15,12 @@ public class Computer {
         return instance;
     }
 
+    void initRandomNumbers() {
+        while (this.ballCounts.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!this.ballCounts.contains(randomNumber)) {
+                this.ballCounts.add(randomNumber);
+            }
+        }
+    }
 }
