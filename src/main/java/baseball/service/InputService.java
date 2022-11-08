@@ -55,15 +55,23 @@ public class InputService {
   public boolean doesPlayerWantToRestart() {
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     String playerInput = readLine();
-    checkValidateGameStatus(playerInput);
+    checkGameStatus(playerInput);
     return playerInput.equals(GameStatus.RESTART.getStatus());
   }
 
-  private void checkValidateGameStatus(String playerInput) {
-    if (!playerInput.equals(GameStatus.RESTART.getStatus()) &&
-        !playerInput.equals(GameStatus.END.getStatus())) {
+  private void checkGameStatus(String playerInput) {
+    if (isNotRestart(playerInput) && isNotEnd(playerInput)) {
       throw new IllegalArgumentException();
     }
+  }
+
+  private boolean isNotRestart(String playerInput) {
+    return !playerInput.equals(GameStatus.RESTART.getStatus());
+  }
+
+  private boolean isNotEnd(String playerInput) {
+    return !playerInput.equals(GameStatus.END.getStatus());
+
   }
 
   private enum GameStatus {
