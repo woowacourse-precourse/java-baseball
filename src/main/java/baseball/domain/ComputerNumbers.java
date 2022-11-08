@@ -2,11 +2,11 @@ package baseball.domain;
 
 import java.util.List;
 import java.util.stream.IntStream;
-
-import static baseball.type.BaseballBound.BASEBALL_MAX_SIZE;
+import baseball.type.BaseballBound;
 
 public class ComputerNumbers {
-    static final int START_INDEX = 0;
+    private static final int START_INDEX = 0;
+    private static final int BASEBALL_MAX_SIZE = BaseballBound.BASEBALL_MAX_SIZE.getValue();
     private final List<Integer> computerNumbers;
 
     public ComputerNumbers(List<Integer> computerNumbers) throws IllegalArgumentException {
@@ -15,13 +15,13 @@ public class ComputerNumbers {
     }
 
     public int countStrikes(BaseballNumbers baseballNumbers) {
-        return (int) IntStream.range(START_INDEX, BASEBALL_MAX_SIZE.getValue())
+        return (int) IntStream.range(START_INDEX, BASEBALL_MAX_SIZE)
                 .filter(i -> computerNumbers.get(i).equals(baseballNumbers.numbers.get(i)))
                 .count();
     }
 
     public int countBalls(BaseballNumbers baseballNumbers) {
-        return (int) IntStream.range(START_INDEX, BASEBALL_MAX_SIZE.getValue())
+        return (int) IntStream.range(START_INDEX, BASEBALL_MAX_SIZE)
                 .filter(i -> {
                     return (!this.computerNumbers.get(i).equals(baseballNumbers.numbers.get(i))) &&
                             (baseballNumbers.numbers.stream()
@@ -32,7 +32,7 @@ public class ComputerNumbers {
 
     private void validateComputerNumbers(List<Integer> computerNumbers) {
         final int UNAVAILABLE_NUMBER = 0;
-        if (computerNumbers.size() != BASEBALL_MAX_SIZE.getValue()) {
+        if (computerNumbers.size() != BASEBALL_MAX_SIZE) {
             throw new IllegalArgumentException("숫자는 3자리이어야 합니다");
         }
         for (Integer number : computerNumbers) {

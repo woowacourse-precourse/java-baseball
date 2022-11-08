@@ -2,14 +2,15 @@ package baseball.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import baseball.type.BaseballBound;
 
-import static baseball.type.BaseballBound.BASEBALL_MAX_SIZE;
 import static baseball.type.GameFlow.GAME_END;
 import static baseball.type.GameFlow.GAME_RESTART;
 
 public class InputValidator {
     private static final String RESTART = Integer.toString(GAME_RESTART.getValue());
     private static final String END = Integer.toString(GAME_END.getValue());
+    private static final int BASEBALL_MAX_SIZE = BaseballBound.BASEBALL_MAX_SIZE.getValue();
 
     public static void validateRestartFlag(String restartFlag) throws IllegalArgumentException {
         if (!((restartFlag.equals(RESTART)) || (restartFlag.equals(END)))) {
@@ -24,7 +25,7 @@ public class InputValidator {
     }
 
     private static void validateNumberSize(String playerNumber) throws IllegalArgumentException {
-        if (playerNumber.length() != BASEBALL_MAX_SIZE.getValue()) {
+        if (playerNumber.length() != BASEBALL_MAX_SIZE) {
             throw new IllegalArgumentException("잘못된 입력값입니다. 3자리의 수를 입력해주세요");
         }
     }

@@ -2,12 +2,16 @@ package baseball.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import baseball.type.BaseballBound;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static baseball.type.BaseballBound.*;
-
 public class Computer {
+    private final int BASEBALL_NUMBER_MAX = BaseballBound.BASEBALL_NUMBER_MAX.getValue();
+    private final int BASEBALL_NUMBER_MIN = BaseballBound.BASEBALL_NUMBER_MIN.getValue();
+    private final int BASEBALL_MAX_SIZE = BaseballBound.BASEBALL_MAX_SIZE.getValue();
     private final ComputerNumbers computerNumbers;
+
 
     public Computer() {
         this.computerNumbers = new ComputerNumbers(createRandomNumbers());
@@ -19,8 +23,8 @@ public class Computer {
 
     public List<Integer> createRandomNumbers() {
         List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < BASEBALL_MAX_SIZE.getValue()) {
-            Integer number = Randoms.pickNumberInRange(BASEBALL_NUMBER_MIN.getValue(), BASEBALL_NUMBER_MAX.getValue());
+        while (computerNumbers.size() < BASEBALL_MAX_SIZE) {
+            Integer number = Randoms.pickNumberInRange(BASEBALL_NUMBER_MIN, BASEBALL_NUMBER_MAX);
             if (!computerNumbers.contains(number)) {
                 computerNumbers.add(number);
             }
