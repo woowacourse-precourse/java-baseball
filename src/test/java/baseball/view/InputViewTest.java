@@ -23,4 +23,12 @@ class InputViewTest {
         assertThat(exception.getMessage()).isEqualTo("숫자를 입력해주세요.");
     }
 
+    @Test
+    void 숫자_3자리_예외테스트() {
+        inputFromUser("1234");
+        Exception exception = assertThrows(IllegalArgumentException.class, InputView::getNumber);
+        assertThat(exception.getClass()).isEqualTo(IllegalArgumentException.class);
+        assertThat(exception.getMessage()).isEqualTo("숫자 3자리를 입력해주세요.");
+    }
+
 }
