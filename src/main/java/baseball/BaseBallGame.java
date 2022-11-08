@@ -8,6 +8,8 @@ import java.util.List;
 
 public class BaseBallGame implements GameInterface {
 
+    String computerNum = getComputerNum();
+
     /**
      * 임의의 세 자리 수를 반환합니다.
      */
@@ -71,7 +73,7 @@ public class BaseBallGame implements GameInterface {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         } else {
-            System.out.println("스트라이크 : " + strike + ", 볼 :" + ball + ", Out: " + out);
+            System.out.println("스트라이크 : " + strike + ", 볼 :" + ball + ", 아웃: " + out);
         }
     }
 
@@ -126,9 +128,10 @@ public class BaseBallGame implements GameInterface {
     public void run() {
         while (true) {
             start();
+            String computerNum = getComputerNum();
             String input = getUserInput();
             exceptionHandler(validateInput(input));
-            String computerNum = getComputerNum();
+            System.out.println(computerNum);
             getUserHit(input, computerNum);
 
         }
