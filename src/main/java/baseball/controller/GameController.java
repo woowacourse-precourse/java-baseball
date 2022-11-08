@@ -13,7 +13,15 @@ public class GameController {
     private Validation validate = new Validation();
 
     public void start() {
+        int selection = 0;
+        System.out.println(GAME_START_MESSAGE);
 
+        do {
+            proceed();
+
+            System.out.println(GAME_RESTART_MESSAGE);
+            selection = checkRestartorExit();
+        } while (selection == RESTART_GAME);
     }
 
     public void proceed() {
