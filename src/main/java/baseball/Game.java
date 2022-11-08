@@ -16,7 +16,7 @@ public class Game {
         } while (player.restart());
     }
 
-    public static void play() {
+    private static void play() {
         computer.createAnswerNumber();
 
         List<Integer> guessNumber;
