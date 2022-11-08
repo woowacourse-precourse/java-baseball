@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.Controller.Controller;
+
 /**
  * ## 예상 필요 기능.
  * 1. 같은 수가 있는가?
@@ -13,5 +15,12 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Controller controller = new Controller();
+        controller.gameStart();
+        boolean endPoint = true;
+        while (endPoint!=false) {
+            endPoint=controller.gameRestart();
+        }
+
     }
 }
