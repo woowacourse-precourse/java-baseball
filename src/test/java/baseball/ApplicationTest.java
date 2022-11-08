@@ -64,8 +64,6 @@ class ApplicationTest extends NsTest {
         assertThat(game.check3Strikes()).isEqualTo(false);
     }
 
-
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
