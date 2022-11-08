@@ -47,7 +47,7 @@ public class UserTest {
         assertThat(user_selectedNumbers.stream().distinct().count()).isEqualTo(3);
     }
 
-    @DisplayName("0 또는 다른 기호 입력 IllegalArgumentException 발생")
+    @DisplayName("0 또는 다른 기호 입력 IllegalArgumentException 발생 - [실패]")
     @Test
     void givenUser_whenUserPickedWrongNumberOtherCharacters_thenReturnIllegalArgumentException(){
         // Given
@@ -64,7 +64,7 @@ public class UserTest {
 
     }
 
-    @DisplayName("숫자인데 입력이 없거나 한자리수, 두자리수 IllegalArgumentException 발생")
+    @DisplayName("숫자인데 입력이 없거나 한자리수, 두자리수 IllegalArgumentException 발생 - [실패]")
     @Test
     void givenUser_whenUserPickedWrongNumber1_thenReturnIllegalArgumentException(){
         // Given
@@ -82,7 +82,7 @@ public class UserTest {
 
     }
 
-    @DisplayName("숫자인데 세자리 초과인 경우 IllegalArgumentException 발생")
+    @DisplayName("숫자인데 세자리 초과인 경우 IllegalArgumentException 발생 - [실패]")
     @Test
     void givenUser_whenUserPickedWrongNumber2_thenReturnIllegalArgumentException(){
         // Given
@@ -96,6 +96,23 @@ public class UserTest {
 
         // Then
         assertThat(illegalArgumentException.getMessage()).isEqualTo("세자리 수를 정확하게 입력해주세요.");
+
+    }
+
+    @DisplayName("숫자인데 세자리이나 중복인 숫자를 입력한 경우 IllegalArgumentException 발생 - [실패]")
+    @Test
+    void givenUser_whenUserPickedWrongNumberAndDuplicateNumbers_thenReturnIllegalArgumentException(){
+        // Given
+        String input = "332";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        // When
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> user.pickANumber());
+
+        // Then
+        assertThat(illegalArgumentException.getMessage()).isEqualTo("중복된 숫자를 입력하셨습니다.");
 
     }
 }
