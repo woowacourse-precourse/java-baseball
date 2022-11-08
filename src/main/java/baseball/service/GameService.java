@@ -2,6 +2,7 @@ package baseball.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import baseball.view.PrintOutput;
 import baseball.controller.PlayGameController;
@@ -41,18 +42,22 @@ public class GameService {
         giveHint();
     }
 
-    private static void selectContinue() {
+    public static void selectContinue() {
         PrintOutput.finishOrder();
         String isContinue = Console.readLine();
+        isContinueGame(Integer.parseInt(isContinue));
+    }
 
-        if(Integer.parseInt(isContinue) == 1) {
+    public static void isContinueGame(int num) {
+        if(num == 1) {
             initData();
             RANDOMBALL.clear();
             userBall.clear();
             PlayGameController.run();
         }
+        if(num == 2) return;
 
-        if(Integer.parseInt(isContinue) == 2) return;
+        throw new IllegalArgumentException();
     }
 
     public static List<Integer> makeRandomBall() {
