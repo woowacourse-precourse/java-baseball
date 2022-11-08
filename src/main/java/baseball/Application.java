@@ -37,8 +37,7 @@ public class Application {
 		List<Integer> playerPickNums = playerPick();
 		int strike = findStrike(computerPickNums, playerPickNums);
 		int ball = findball(computerPickNums, playerPickNums);
-		scoreBoard(strike, ball);
-		winLose(strike, computerPickNums);
+		scoreBoard(strike, ball, computerPickNums);
 	}
 
 	public static List<Integer> playerPick() {
@@ -88,26 +87,25 @@ public class Application {
 		return ball;
 	}
 
-	public static void scoreBoard(int strike, int ball) {
+	public static void scoreBoard(int strike, int ball, List<Integer> computerPickNums) {
 		if (strike == 0 && ball == 0) {
 			System.out.println("낫싱");
+			gamePlaying(computerPickNums);
 		}else if (strike == 0){
 			System.out.println(ball + "볼");
-		}else if (ball == 0) {
+			gamePlaying(computerPickNums);
+		}else if (ball == 0 && strike!=3) {
 			System.out.println(strike + "스트라이크");
-		}else{
-			System.out.println(ball + "볼" + " " + strike + "스트라이크");
-		}
-
-	}
-
-	public static void winLose(int strike, List<Integer> computerPickNums) {
-		if (strike == 3) {
+			gamePlaying(computerPickNums);
+		}else if (strike ==3) {
+			System.out.println("3스트라이크");
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			gameReloader();
-		} else {
+		}else{
+			System.out.println(ball + "볼" + " " + strike + "스트라이크");
 			gamePlaying(computerPickNums);
 		}
+
 	}
 
 	public static void gameReloader() {
