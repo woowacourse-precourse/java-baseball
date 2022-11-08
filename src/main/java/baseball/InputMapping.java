@@ -7,8 +7,15 @@ import java.util.List;
 
 public class InputMapping {
     public List<Integer> getGameNumberList(){
-        return new ArrayList<>();
-    }
+        int inputNumber = getConsoleInt();
+        if (nonValidateGameNumber(inputNumber))
+            throw new IllegalArgumentException("nonValidateInputNumber");
+        List<Integer> getInputNumberList = new ArrayList<>();
+        while (inputNumber > 0){
+            getInputNumberList.add(inputNumber % 10);
+            inputNumber /= 10;
+        }
+        return getInputNumberList;    }
 
     public int getConsoleInt(){
         try {
