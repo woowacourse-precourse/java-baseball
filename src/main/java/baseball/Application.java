@@ -45,16 +45,8 @@ public class Application {
 
     public static boolean scoreCalculation(String input, List<Integer> computer) {
 
-        int strike = 0;
+        int strike = strikeCount(input, computer);
         int ball = ballCount(input, computer);
-
-        int i = 0;
-        for (Integer e : computer) {
-            if (strikeInspection(Character.getNumericValue(input.charAt(i)), e)) {
-                strike++;
-            }
-            i++;
-        }
 
         System.out.println(outputFormat(strike, ball));
 
@@ -78,12 +70,16 @@ public class Application {
         }
     }
 
-    public static boolean strikeInspection(int input, int computer) {
+    public static int strikeCount(String input, List<Integer> computer) {
 
-        if (input == computer) {
-            return true;
+        int strike = 0;
+
+        for (int i = 0; i < 3 ; i++ ) {
+            if( Character.getNumericValue(input.charAt(i)) == computer.get(i)){
+                strike++;
+            }
         }
-        return false;
+        return strike;
     }
 
     public static int ballCount(String input, List<Integer> computer) {
