@@ -10,10 +10,6 @@ public class Judge {
     private int ball;
     private int strike;
 
-    public Judge() {
-
-    }
-
     public Judge(Computer computer, Player player) {
         this.playerNumbers = player.getPlayerNumbers();
         this.answer = computer.getAnswer();
@@ -42,15 +38,6 @@ public class Judge {
         int findIndex = answer.indexOf(target);
         if (findIndex == index) strike++;
         else if (findIndex != -1) ball++;
-    }
-
-    // 테스트용 set 메소드, 실제 개발에는 사용X
-    public void setPlayerNumbers(List<Integer> playerNumbers) {
-        this.playerNumbers = playerNumbers;
-    }
-
-    public void setAnswer(List<Integer> answer) {
-        this.answer = answer;
     }
 
     public int getBall() {
