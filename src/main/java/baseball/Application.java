@@ -1,5 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -32,33 +37,35 @@ public class Application {
         else return true;
     }
 
-    public static int AllocationOfNumber() {
-        int TemporaryNumber = pickNumberInRange(102,987);
-
-        while(DuplicateCheck(TemporaryNumber)){
-            TemporaryNumber = pickNumberInRange(102,987);
+    public static List<Integer> AllocationOfNumber() {
+        List<Integer> TemporaryNumber = new ArrayList<>();
+        while(TemporaryNumber.size() < 3){
+            int Random = Randoms.pickNumberInRange(1,9);
+            if(!TemporaryNumber.contains(Random)){
+                TemporaryNumber.add(Random);
+            }
         }
 
         return TemporaryNumber;
     }
 
-    public static int StrikeCount(int[] CorrectAnswer_array,int[] UserDefinedNumber_array){
+    public static int StrikeCount(List<Integer> CorrectAnswer,List<Integer> UserDefinedNumber){
         int result = 0;
 
-        if(CorrectAnswer_array[0]==UserDefinedNumber_array[0]) result++;
-        if(CorrectAnswer_array[1]==UserDefinedNumber_array[1]) result++;
-        if(CorrectAnswer_array[2]==UserDefinedNumber_array[2]) result++;
+        if(CorrectAnswer.get(0)==UserDefinedNumber.get(0)) result++;
+        if(CorrectAnswer.get(1)==UserDefinedNumber.get(1)) result++;
+        if(CorrectAnswer.get(2)==UserDefinedNumber.get(2)) result++;
 
         return result;
     }
 
-    public static int BallCount(int[] CorrectAnswer_array,int[] UserDefinedNumber_array){
+    public static int BallCount(List<Integer> CorrectAnswer,List<Integer> UserDefinedNumber){
         int result = 0;
 
 
-        if(CorrectAnswer_array[0]==UserDefinedNumber_array[1]||CorrectAnswer_array[0]==UserDefinedNumber_array[2]) result++;
-        if(CorrectAnswer_array[1]==UserDefinedNumber_array[0]||CorrectAnswer_array[1]==UserDefinedNumber_array[2]) result++;
-        if(CorrectAnswer_array[2]==UserDefinedNumber_array[0]||CorrectAnswer_array[2]==UserDefinedNumber_array[1]) result++;
+        if(CorrectAnswer.get(0)==UserDefinedNumber.get(1)||CorrectAnswer.get(0)==UserDefinedNumber.get(2)) result++;
+        if(CorrectAnswer.get(1)==UserDefinedNumber.get(0)||CorrectAnswer.get(1)==UserDefinedNumber.get(2)) result++;
+        if(CorrectAnswer.get(2)==UserDefinedNumber.get(0)||CorrectAnswer.get(2)==UserDefinedNumber.get(1)) result++;
 
         return result;
     }
@@ -82,21 +89,17 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static boolean GameResult(int CorrectAnswer, int UserDefinedNumber){
+    public static boolean GameResult(List<Integer> CorrectAnswer, int UserDefinedNumber){
         int Strike, Ball = 0;
-        int[] CorrectAnswer_array = new int[3];
-        int [] UserDefinedNumber_array = new int[3];
 
-        CorrectAnswer_array[0] = HundredsExtract(CorrectAnswer);
-        CorrectAnswer_array[1] = TensExtract(CorrectAnswer);
-        CorrectAnswer_array[2] = UnitsExtract(CorrectAnswer);
+        List<Integer> UserDefinedNumber_array = new ArrayList<>();
 
-        UserDefinedNumber_array[0] = HundredsExtract(UserDefinedNumber);
-        UserDefinedNumber_array[1] = TensExtract(UserDefinedNumber);
-        UserDefinedNumber_array[2] = UnitsExtract(UserDefinedNumber);
+        UserDefinedNumber_array.add(HundredsExtract(UserDefinedNumber));
+        UserDefinedNumber_array.add(TensExtract(UserDefinedNumber));
+        UserDefinedNumber_array.add(UnitsExtract(UserDefinedNumber));
 
-        Strike = StrikeCount(CorrectAnswer_array,UserDefinedNumber_array);
-        Ball = BallCount(CorrectAnswer_array,UserDefinedNumber_array);
+        Strike = StrikeCount(CorrectAnswer,UserDefinedNumber_array);
+        Ball = BallCount(CorrectAnswer,UserDefinedNumber_array);
 
         OutputResult(Strike,Ball);
 
@@ -115,7 +118,7 @@ public class Application {
         return InputNumber;
     }
     public static void GameLoop(){
-        int CorrectAnswer = AllocationOfNumber();
+        List<Integer> CorrectAnswer = AllocationOfNumber();
         int UserDefinedNumber = 0;
 
         do {
