@@ -40,6 +40,36 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 게임_반복여부_입력_문자_포함_예외_테스트() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(
+                        () -> run("135", "a"),
+                        1, 3, 5
+                ))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_반복여부_입력_갈이_예외_테스트() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(
+                        () -> run("135", "12"),
+                        1, 3, 5
+                ))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_반복여부_입력_범위_예외_테스트() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(
+                        () -> run("135", "3"),
+                        1, 3, 5
+                ))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
