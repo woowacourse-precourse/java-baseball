@@ -18,13 +18,28 @@ public class Application {
         }
     }
 
+    // 2. 숫자 입력 기능
+    static void getSettingGuessingNumber(List<Integer> guessingNumber) {
+
+        String strNumber = Console.readLine();
+
+        for(int idx=0; idx<strNumber.length(); idx++) {
+            int intNumber = Character.getNumericValue(strNumber.charAt(idx));
+            guessingNumber.add(intNumber);
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNumber = new ArrayList<>();
+        List<Integer> guessingNumber = new ArrayList<>();
         
         // 상대 숫자 생성 함수 호출
         getSettingComputerNumber(computerNumber);
+
+        // 숫자 입력 함수 호출
+        getSettingGuessingNumber(guessingNumber);
     }
 }
 
