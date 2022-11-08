@@ -1,7 +1,5 @@
 package baseball;
 
-import static baseball.CompareResult.*;
-
 import java.util.Objects;
 
 public class GameResult {
@@ -55,13 +53,13 @@ public class GameResult {
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		if (hasNothing()) {
-			return NOTHING.toString();
+			return CompareResult.NOTHING.toString();
 		}
 		if (hasBall()) {
-			stringBuilder.append(ball).append(BALL).append(BLANK);
+			stringBuilder.append(ball).append(CompareResult.BALL).append(BLANK);
 		}
 		if (hasStrike()) {
-			stringBuilder.append(strike).append(STRIKE);
+			stringBuilder.append(strike).append(CompareResult.STRIKE);
 		}
 		return stringBuilder.toString().trim();
 	}
