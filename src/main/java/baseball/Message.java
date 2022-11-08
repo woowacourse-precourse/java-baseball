@@ -20,6 +20,6 @@ public abstract class Message {
     }
 
     public static String ballAndStrikeMessage(int ball, int strike) {
-        return ball + BALL + strike + STRIKE;
+        return ball + BALL + " " + strike + STRIKE;
     }
 }
