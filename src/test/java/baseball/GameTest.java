@@ -10,16 +10,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
     private static Game game;
+
     @BeforeAll
-    static void initAll(){
+    static void initAll() {
         game = new Game();
     }
+
     @Test
     void gameInit() {
     }
 
     @Test
     void makingRandomNum() {
+        ArrayList<Integer> randomNum = game.makingRandomNum();
+        assertEquals(3, randomNum.size());
+        assertTrue(randomNum.get(0) >= 1 && randomNum.get(0) <= 9);
+        assertTrue(randomNum.get(1) >= 1 && randomNum.get(0) <= 9);
+        assertTrue(randomNum.get(2) >= 1 && randomNum.get(0) <= 9);
     }
 
     @Test
