@@ -3,23 +3,7 @@ package judgement;
 import java.util.List;
 
 
-public class result {
-
-    public static String referee(List<Integer> computer, List<Integer> user) {
-        int sameNumberCount = compareNumberComputerWithUser(computer, user);
-        int strikeCount = strikeCount(computer, user);
-        int ballCount = sameNumberCount - strikeCount;
-
-        if(sameNumberCount == 0) {
-            return "낫싱";
-        } else if (strikeCount == 0) {
-            return ballCount + "볼";
-        } else if (ballCount == 0) {
-            return strikeCount + "스트라이크";
-        }
-
-        return ballCount + "볼 " + strikeCount + "스트라이크";
-    }
+public class Result {
 
     public static int compareNumberComputerWithUser(List<Integer> computer, List<Integer> user) {
         int count = 0;
@@ -39,5 +23,21 @@ public class result {
             }
         }
         return strike;
+    }
+
+    public static String referee(List<Integer> computer, List<Integer> user) {
+        int sameNumberCount = compareNumberComputerWithUser(computer, user);
+        int strikeCount = strikeCount(computer, user);
+        int ballCount = sameNumberCount - strikeCount;
+
+        if(sameNumberCount == 0) {
+            return "낫싱";
+        } else if (strikeCount == 0) {
+            return ballCount + "볼";
+        } else if (ballCount == 0) {
+            return strikeCount + "스트라이크";
+        }
+
+        return ballCount + "볼 " + strikeCount + "스트라이크";
     }
 }

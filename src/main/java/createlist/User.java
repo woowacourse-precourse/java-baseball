@@ -3,12 +3,12 @@ package createlist;
 import java.util.ArrayList;
 import java.util.List;
 
-import static validate.check.userListSize;
-import static validate.check.isNumberValidate;
+import static validate.Check.userListSize;
+import static validate.Check.isNumberValidate;
 
 
-public class user {
-    public static List<Integer> UserNumber(String number) {
+public class User {
+    public static List<Integer> numberList(String number) {
         List<Integer> user = new ArrayList<>();
 
         if (isNumberValidate(number) == false) {

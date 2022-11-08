@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Assertions;
+import createlist.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ class ApplicationTest extends NsTest {
         test.add(3);
 
         //when
-        List<Integer> user = Application.createUserNumberList("123");
+        List<Integer> user = User.numberList("123");
 
         //then
         assertThat(user).isEqualTo(test);
@@ -55,11 +55,11 @@ class ApplicationTest extends NsTest {
         test.add(2);
         test.add(3);
 
-        List<Integer> user = Application.createUserNumberList("732");
+        List<Integer> user = User.numberList("732");
 
 
         //when
-        int result = Application.compareNumberComputerWithUser(test, user);
+        int result = judgement.Result.compareNumberComputerWithUser(test, user);
 
         //given
         assertThat(result).isEqualTo(2);
@@ -73,11 +73,11 @@ class ApplicationTest extends NsTest {
         test.add(2);
         test.add(3);
 
-        List<Integer> user = Application.createUserNumberList("763");
+        List<Integer> user = createlist.User.numberList("763");
 
 
         //when
-        int strikeCount = Application.strikeCount(test, user);
+        int strikeCount = judgement.Result.strikeCount(test, user);
 
         //given
         assertThat(strikeCount).isEqualTo(1);
@@ -86,7 +86,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 컴퓨터_랜덤숫자_개수_테스트() {
         //given
-        List<Integer> computer = Application.computerNumberList();
+        List<Integer> computer = createlist.Computer.numberList();
 
         //then
         assertThat(computer.size()).isEqualTo(3);
@@ -106,7 +106,7 @@ class ApplicationTest extends NsTest {
         user.add(1);
 
         //when
-        String result = Application.resultJudgement(test, user);
+        String result = judgement.Result.referee(test, user);
 
         //given
         assertThat(result).isEqualTo("1볼 1스트라이크");

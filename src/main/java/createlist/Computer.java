@@ -1,12 +1,12 @@
-package createList;
+package createlist;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class computer {
-    public static List<Integer> computerNumber() {
+public class Computer {
+    public static List<Integer> numberList() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);

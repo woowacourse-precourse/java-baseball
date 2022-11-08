@@ -2,7 +2,7 @@ package validate;
 
 import java.util.List;
 
-public class check {
+public class Check {
     public static void userListSize(List<Integer> user) {
         if (user.size() != 3) {
             throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
