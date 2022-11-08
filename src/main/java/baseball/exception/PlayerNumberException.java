@@ -1,7 +1,7 @@
 package baseball.exception;
 
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class PlayerNumberException {
@@ -39,16 +39,10 @@ public class PlayerNumberException {
 
 	public static void validateOverlapNumber(String inputPlayerNumber) {
 		String[] inputPlayerNumbers = inputPlayerNumber.split("");
-		Set<String> inputPlayerNumberSet = new HashSet<>();
-		inputPlayerNumbersToSet(inputPlayerNumberSet, inputPlayerNumbers);
+		Set<String> inputPlayerNumberSet = new HashSet<>(List.of(inputPlayerNumbers));
 
 		if (inputPlayerNumberSet.size() != inputPlayerNumbers.length) {
 			throw new IllegalArgumentException(LIMIT_NUMBER_OVERLAP);
 		}
-	}
-
-	private static void inputPlayerNumbersToSet(Set<String> inputPlayerNumberSet, String[] inputPlayerNumber) {
-		Arrays.stream(inputPlayerNumber)
-			.forEach(number -> inputPlayerNumberSet.add(number));
 	}
 }
