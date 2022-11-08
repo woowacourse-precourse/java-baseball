@@ -11,4 +11,27 @@ public class UnitTest {
         String message = Application.printTheGameStartMessage();
         Assertions.assertThat(message).isEqualTo("숫자 야구 게임을 시작합니다.");
     }
+
+    // 3. Get random number
+    @Test
+    void getRandomNumberTest() {
+        String number = Application.getRandomNumber();
+        int count = 0;
+
+        char firstDigit = number.charAt(0);
+        char secondDigit = number.charAt(1);
+        char thirdDigit = number.charAt(2);
+
+        if (firstDigit != secondDigit) {
+            count += 1;
+        }
+        if (firstDigit != thirdDigit) {
+            count += 1;
+        }
+        if (secondDigit != thirdDigit) {
+            count += 1;
+        }
+
+        Assertions.assertThat(count).isEqualTo(3);
+    }
 }
