@@ -111,5 +111,19 @@ public class Application {
 
         else return false;
     }
+    
+    public static int getRegameNum(){
+        String regameNumber = readLine();
+        int intValue;
+        try {
+            intValue = Integer.parseInt(regameNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if(intValue != 1 && intValue != 2) throw new IllegalArgumentException();
+
+        return intValue;
+    }
 
 }
