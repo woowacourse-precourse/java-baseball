@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
@@ -152,6 +153,49 @@ class ApplicationTest extends NsTest {
         hint.showResult();
     }
 
+    @Test
+    void 유저입력유효성검사테스트0포함() {
+        try {
+            Game game = new Game();
+            game.validInputValue("205");
+        } catch (IllegalArgumentException e) {
+            Assertions.assertEquals("0을 제외한 1~9 사이의 겹치지 않는 3자리의 숫자를 입력해주세요.", e.getMessage());
+        }
+
+    }
+
+    @Test
+    void 유저입력유효성검사테스트2자리() {
+        try {
+            Game game = new Game();
+            game.validInputValue("15");
+        } catch (IllegalArgumentException e) {
+            Assertions.assertEquals("3자리의 1~9 사이의 겹치지 않는 숫자를 입력해주세요.", e.getMessage());
+        }
+
+    }
+
+    @Test
+    void 유저입력유효성검사테스트문자() {
+        try {
+            Game game = new Game();
+            game.validInputValue("asd");
+        } catch (IllegalArgumentException e) {
+            Assertions.assertEquals("1~9 사이의 겹치지 않는 3자리의 숫자를 입력해주세요.", e.getMessage());
+        }
+
+    }
+
+    @Test
+    void 유저입력유효성검사테스트겹치는숫자() {
+        try {
+            Game game = new Game();
+            game.validInputValue("233");
+        } catch (IllegalArgumentException e) {
+            Assertions.assertEquals("겹치지 않는 1~9 사이의 3자리 숫자를 입력해주세요.", e.getMessage());
+        }
+
+    }
 
     @Override
     public void runMain() {

@@ -35,6 +35,54 @@ class Game {
     }
 
 
+    public static String validInputValue(String userInput) {
+        // 유저 입력값 검증 메서드.
+        // 길이가 같지 않다면 Exception을 Throw한다.
+        if (!Game.validInputLength(userInput)) {
+            throw new IllegalArgumentException("3자리의 1~9 사이의 겹치지 않는 숫자를 입력해주세요.");
+        }
+        // 문자열인 경우
+        if (!Game.validIsNumber(userInput)) {
+            throw new IllegalArgumentException("1~9 사이의 겹치지 않는 3자리의 숫자를 입력해주세요.");
+        }
+        // 0이 들어있는 숫자인 경우
+        if (!Game.validHasNonZero(userInput)) {
+            throw new IllegalArgumentException("0을 제외한 1~9 사이의 겹치지 않는 3자리의 숫자를 입력해주세요.");
+        }
+        for (int index = 1; index < userInput.length(); index++) {
+            // 겹치는 숫자가 있는 경우
+            if (userInput.charAt(index - 1) == userInput.charAt(index)) {
+                throw new IllegalArgumentException("겹치지 않는 1~9 사이의 3자리 숫자를 입력해주세요.");
+            }
+        }
+        return userInput;
+    }
+
+    public static boolean validInputLength(final String strInput) {
+        // 길이가 3인지 확인하는 매서드
+        if (strInput.length() == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    static boolean validIsNumber(String strInput) {
+        // 0 이외의 숫자를 입력했는지 확인하는 매서드.
+        try {
+            int number = Integer.parseInt(strInput);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        // 0이 포함되어있는지 확인한다.
+        return true;
+    }
+
+    static boolean validHasNonZero(String strInput) {
+        // strInput에 0 값이 있는지 확인하는 메서드.
+        return !strInput.contains("0");
+    }
+
+
     public List<Integer> getGameRandomNumber() {
 
         // 3개의 무작위 난수를 중복 없이 뽑는다.
@@ -69,10 +117,10 @@ class Hint {
 
     void compareAnswer(Game guessAnswer) {
         // 게임의 정답을 가져온다.
-        List<Integer> gameAnswer = guessAnswer.getGameAnswer();
+        List<Integer> gameAnswer = Game.getGameAnswer();
         // 각 자리별로 비교하면 Strike, Ball을 계산한다.
         for (int digit = 0; digit < gameAnswer.size(); digit++) {
-            int curNumber = guessAnswer.guessNumber.get(digit);
+            int curNumber = Game.guessNumber.get(digit);
 
             if (isStrike(gameAnswer, curNumber, digit)) {
                 addStrikeCount();
