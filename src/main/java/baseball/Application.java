@@ -32,5 +32,10 @@ public class Application {
         return Integer.parseInt(input);
     }
 
-    
+    public static List<Integer> toIntegers(String[] input){
+        List<Integer> player = new ArrayList<>();
+        Arrays.stream(input).forEach(number -> player.add(Integer.parseInt(number)));
+
+        return player;
+    }
 }
