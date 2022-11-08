@@ -112,16 +112,13 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = readLine();
-        int userInputNumber;
-        if (userInput.length() != 1) {
-            throw new IllegalArgumentException();
+        if (userInput.equals("1")) {
+            return 1;
         }
-        try{
-            userInputNumber = Integer.parseInt(userInput);
-        }catch (Exception e){
-            throw new IllegalArgumentException();
+        if (userInput.equals("2")) {
+            return 2;
         }
-        return userInputNumber;
+        throw new IllegalArgumentException();
     }
 
 
