@@ -5,21 +5,20 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
-    private Computer computer = new Computer();
     public void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         running();
     }
 
     public void running() {
-        List<Integer> computerValue = computer.createNewValue();
+        List<Integer> computerValue = Computer.createNewValue();
 
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             // 입력 예외처리
-            List<Integer> compareResult = computer.compareWithInput(input, computerValue);
-            String compareResultString = computer.resultToString(compareResult);
+            List<Integer> compareResult = Computer.compareWithInput(input, computerValue);
+            String compareResultString = Computer.resultToString(compareResult);
             System.out.println(compareResultString);
 
             if (compareResultString.equals("3스트라이크")) {
