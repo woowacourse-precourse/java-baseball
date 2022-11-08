@@ -40,13 +40,13 @@ public class Game {
     }
 
     public void verifyPlayerNumbers(String playerNumbers) {
-        PlayerNumbersException.verifyPlayerNumbers(playerNumbers);
+        PlayerNumbersException.verify(playerNumbers);
     }
 
     public String getResult(String playerNumbers) {
         List<Integer> result = new ArrayList<>(2);
-        result.add(countStrikes(this.computerNumbers, playerNumbers));
-        result.add(countBalls(this.computerNumbers, playerNumbers ) - result.get(STRIKE));
+        result.add(countStrikes(playerNumbers));
+        result.add(countBalls(playerNumbers ) - result.get(STRIKE));
 
         return getResultMessage(result);
     }
@@ -54,11 +54,13 @@ public class Game {
     private String getResultMessage(List<Integer> result) {
         String resultMessage = "";
         if (result.get(BALL) > 0) {
-            resultMessage = resultMessage.concat(Integer.toString(result.get(BALL)) + "볼" + " ");
+//            resultMessage = resultMessage.concat(String.join(Integer.toString(result.get(BALL)), "볼", " "));
+            resultMessage = String.join(Integer.toString(result.get(BALL)), "볼 ");
         }
 
         if (result.get(STRIKE) > 0) {
-            resultMessage = resultMessage.concat(Integer.toString(result.get(STRIKE)) + "스트라이크");
+//            resultMessage = resultMessage.concat(String.join(Integer.toString(result.get(STRIKE)), "스트라이크"));
+            resultMessage = String.join(resultMessage, Integer.toString(result.get(STRIKE)), "스트라이크");
         }
 
         if (resultMessage.length() ==  0) {
@@ -68,20 +70,20 @@ public class Game {
         return resultMessage;
     }
 
-    private Integer countStrikes(String computerRandomNumbers, String gamePlayerInput) {
+    private Integer countStrikes(String playerNumbers) {
         int strikes = 0;
         for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
-            if (computerRandomNumbers.charAt(stringIndex) == gamePlayerInput.charAt(stringIndex)) {
+            if (this.computerNumbers.charAt(stringIndex) == playerNumbers.charAt(stringIndex)) {
                 strikes++;
             }
         }
         return strikes;
     }
 
-    private Integer countBalls(String computerRandomNumbers, String gamePlayerInput) {
+    private Integer countBalls(String playerNumbers) {
         int balls = 0;
         for (int stringIndex = 0; stringIndex < NUMBER_LENGTH; stringIndex++) {
-            if (computerRandomNumbers.contains(Character.toString(gamePlayerInput.charAt(stringIndex)))) {
+            if (this.computerNumbers.contains(Character.toString(playerNumbers.charAt(stringIndex)))) {
                 balls++;
             }
         }
