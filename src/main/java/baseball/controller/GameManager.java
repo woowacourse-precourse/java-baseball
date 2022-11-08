@@ -5,10 +5,9 @@ import baseball.domain.BaseballManager;
 import baseball.domain.BaseballNumber;
 import baseball.view.InputHandler;
 import baseball.view.OutputHandler;
+import baseball.view.OutputMsgContainer;
 
 import java.util.List;
-
-import static baseball.view.OutputMsgContainer.*;
 
 public class GameManager {
     private final InputHandler inputHandler = new InputHandler();
@@ -21,7 +20,7 @@ public class GameManager {
     }
 
     private void startFirstGame() {
-        outputHandler.printMessageForData(GAME_START_MESSAGE);
+        outputHandler.printMessageForData(OutputMsgContainer.GAME_START_MESSAGE);
         startLoop();
     }
 
@@ -38,7 +37,7 @@ public class GameManager {
     private void startLoop() {
         List<Integer> userScore;
         do {
-            outputHandler.printMessageForData(GAME_INPUT_MESSAGE);
+            outputHandler.printMessageForData(OutputMsgContainer.GAME_INPUT_MESSAGE);
 
             baseballManager.addUserBaseballNumInfo(
                     new BaseballNumber(inputHandler.readGameInput()));
@@ -47,7 +46,7 @@ public class GameManager {
 
             outputHandler.printMessageForData(userScore);
         } while (!isGameOver(userScore));
-        outputHandler.printMessageForData(GAME_END_AND_RESTART_MESSAGE);
+        outputHandler.printMessageForData(OutputMsgContainer.GAME_END_AND_RESTART_MESSAGE);
     }
 
     private boolean isGameOver(List<Integer> userScore) {
