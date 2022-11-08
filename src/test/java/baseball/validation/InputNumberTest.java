@@ -9,8 +9,14 @@ class InputNumberTest {
 
     InputNumber inputNumber = new InputNumber();
     @Test
-    void 길이가_3이상인_경우() {
+    void 길이가_3초과인_경우() {
         String input = "1234";
+        Assertions.assertThatThrownBy(() -> inputNumber.inputNumberValidate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void 길이가_3미만인_경우() {
+        String input = "12";
         Assertions.assertThatThrownBy(() -> inputNumber.inputNumberValidate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
