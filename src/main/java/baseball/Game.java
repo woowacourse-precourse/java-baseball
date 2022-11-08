@@ -24,7 +24,14 @@ public class Game {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> comRandomNumber = GetRandomNumber.getNumberList();
-        List<Integer> integerList = validateInput.validateInput();
+
+        while (true) {
+            List<Integer> integerList = validateInput.validateInput();
+            boolean isExactNumber = playGame.playWithComputer(integerList, comRandomNumber);
+            if (!isExactNumber) {
+                break;
+            }
+        }
 
 
 
