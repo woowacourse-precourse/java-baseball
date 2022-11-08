@@ -29,34 +29,13 @@ public class Application {
         return false;
     }
 
-    public static void checkUserInput(String userString){
-        if(userString.charAt(0)=='0'){
-            throw new IllegalArgumentException();
-        }
-        if(userString.length()!=3){ //이런 건 메소드로 나누는게 좋은가?
-            throw new IllegalArgumentException();
-        }
-        for(int i=0;i<userString.length();i++){
-            char c = userString.charAt(i);
-            if(c<'0' || c >'9'){
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    public static List<Integer> StringToIntegerList(String string){
-        List<Integer> integerList = new ArrayList<>();
-        for(int i=0;i<string.length();i++){
-            integerList.add(string.charAt(i)-'0');
-        }
-        return integerList;
-    }
     private static int getRepeat(List<Integer> computerIntegerList) {
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
 
-            String userString = Console.readLine();
-            List<Integer> userIntegerList = getUserIntegerList(userString);
+            User user = new User();
+            user.inputIntegerList();
+            List<Integer> userIntegerList = user.integerList;
 
             Result result = new Result();
             result.countStrikeAndBall(userIntegerList, computerIntegerList);
@@ -77,10 +56,7 @@ public class Application {
             }
         }
     }
-    public static List<Integer> getUserIntegerList(String userString) {
-        checkUserInput(userString);
-        return StringToIntegerList(userString);
-    }
+
 
     public static void repeatBaseBallGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
