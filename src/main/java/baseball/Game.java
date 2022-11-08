@@ -89,7 +89,12 @@ public class Game {
     }
 
     public String getUserInput() throws IllegalArgumentException {
-        String input = sc.next();
+        String input;
+        if (sc.hasNext()) {
+            input = sc.next();
+        }else{
+            throw new IllegalArgumentException("정상적으로 입력해주세요");
+        }
 
         for(char c : input.toCharArray()) {
             if (c < 48 || 57 < c)
