@@ -12,4 +12,13 @@ public class Application {
     static void startNumberBaseballGame(){
 
     }
+
+    static Integer stringToInteger(String input){
+        try{
+            Integer answer = Integer.parseInt(input);
+            return answer;
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+    }
 }
