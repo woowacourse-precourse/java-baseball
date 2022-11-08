@@ -16,6 +16,7 @@ public class GameController {
 
     public void proceedGame() {
         boolean gameState = true;
+
         while (gameState) {
             outputView.printStartGame();
             computerController.startGame(gameNumber);
@@ -26,6 +27,7 @@ public class GameController {
 
     private void repeatGuessingAnswer() {
         boolean correctAnswer = false;
+
         while (!correctAnswer) {
             setAndSavePlayerNumbers();
             correctAnswer = computerController.proceedComputerToDo(gameNumber);
