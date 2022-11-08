@@ -116,6 +116,7 @@ public class BaseballGame {
         return result;
     }
 
+    // 볼 확인
     public int returnBallCount(List<Integer> human, List<Integer> computer) {
         int ball = 0;
         for (int i = 0; i < human.size(); i++) {
@@ -138,6 +139,7 @@ public class BaseballGame {
         }
     }
 
+    // 스트라이크 확인
     public int returnStrike(List<Integer> human, List<Integer> computer) {
         int strike = 0;
         for (int i = 0; i < human.size(); i++) {
@@ -153,7 +155,8 @@ public class BaseballGame {
             return 0;
         }
     }
-
+    
+    // 결과 출력
     public void printResult(Baseball result) {
         if (result.getBall() == 0 && result.getStrike() == 0) {
             System.out.println("낫싱");
