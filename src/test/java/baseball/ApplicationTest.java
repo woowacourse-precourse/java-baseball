@@ -54,4 +54,40 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+    @Test
+    @DisplayName(" 0 볼 경우 ")
+    public void zeroBallScenario() throws Exception{
+        List<Integer> computer  = List.of(1,2,3);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculateBall(computer,user);
+        assertThat(ball).isEqualTo(0);
+    }
+    @Test
+    @DisplayName(" 1 볼 경우 ")
+    public void oneBallScenario() throws Exception{
+        List<Integer> computer  = List.of(1,4,3);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculateBall(computer,user);
+        assertThat(ball).isEqualTo(1);
+    }
+    @Test
+    @DisplayName(" 2 볼 경우 ")
+    public void twoBallScenario() throws Exception{
+        List<Integer> computer  = List.of(1,4,5);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculateBall(computer,user);
+        assertThat(ball).isEqualTo(2);
+    }
+    @Test
+    @DisplayName(" 3 볼 경우 ")
+    public void threeBallScenario() throws Exception{
+        List<Integer> computer  = List.of(6,4,5);
+        List<Integer> user = List.of(4,5,6);
+
+        int ball = Application.calculateBall(computer,user);
+        assertThat(ball).isEqualTo(3);
+    }
 }
