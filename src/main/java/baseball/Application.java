@@ -12,6 +12,7 @@ public class Application {
 	private static List<Integer> computerNumber;
 	private static List<Integer> userNumber;
 	private static String regex = "^[1-9]{3}$";
+	private static String regexCode = "^[1-2]$";
 	private static final String GAMESTARTSTRING = "숫자 야구 게임을 시작합니다.";
 	private static final String USERINPUTSTRING = "숫자를 입력해주세요 : ";
 	private static final String GAMECLEARSTRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -19,6 +20,32 @@ public class Application {
 
 	public static void main(String[] args) {
 		printStr(GAMESTARTSTRING);
+		int gameCode = 1;
+
+		while (gameCode != 2) {
+			createRandomNumber();
+
+			while (true) {
+				printStr(USERINPUTSTRING);
+				checkUserInput();
+				String compareResultStr = compareNumber();
+				printStr(compareResultStr);
+				if (compareResultStr.equals("3스트라이크")) {
+					printStr(GAMECLEARSTRING);
+					break;
+				}
+			}
+
+			while (true) {
+				printStr(GAMEENDSTRING);
+				String codeStr = Console.readLine();
+				if (checkGameCode(codeStr)) {
+					gameCode = Integer.parseInt(codeStr);
+					break;
+				}
+				printStr("1과 2 중에 다시 입력해주세요.");
+			}
+		}
 	}
 
 	private static void printStr(String str) {
@@ -74,5 +101,12 @@ public class Application {
 		}
 
 		return resStr;
+	}
+
+	private static boolean checkGameCode(String gameCodeStr) {
+		if (gameCodeStr.matches(regexCode)) {
+			return true;
+		}
+		return false;
 	}
 }
