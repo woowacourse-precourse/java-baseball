@@ -35,9 +35,10 @@ public class Users {
     }
 
     private void CheckDuplicate(String input) {
-        for (int i = 0; i < 3; i += 1) {
-            int tmp = input.indexOf(input.charAt(i));
-            if (tmp != i) throw new IllegalArgumentException();
+        for (int i = 0; i < input.length(); i += 1) {
+            //indexOf 메서드는 입력값이 발견되는 즉시 return 한다. 즉, 2중 포문 역할을 한다.
+            int duplicateIndex = input.indexOf(input.charAt(i));
+            if (duplicateIndex != i) throw new IllegalArgumentException();
         }
     }
 }
