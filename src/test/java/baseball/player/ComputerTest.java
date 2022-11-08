@@ -24,4 +24,13 @@ class ComputerTest {
         assertThat(selectBalls.size()).isEqualTo(3);
         assertThat(selectBalls.toString()).doesNotMatch(Valid.NOT_INPUT_NUMBER.getPattern());
     }
+
+    @Test
+    void clearSelectBalls_선택한_공_지우기() {
+        computer.selectBalls();
+        computer.clearSelectBalls();
+
+        List<String> selectBalls = computer.getSelectBalls();
+        assertThat(selectBalls.size()).isEqualTo(0);
+    }
 }
