@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /* 기능목록정리
       1. 숫자야구게임 시작문구 출력
@@ -106,6 +107,8 @@ public class Application {
 
     private static void validateCase(String[] inputList){
         if(inputList.length != 3) throw new IllegalArgumentException();
+        if(!Pattern.matches("[1-9]", Arrays.toString(inputList)))
+            throw new IllegalArgumentException();
     }
 
 
