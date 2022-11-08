@@ -29,7 +29,7 @@ public class Application {
             return computer;
         }
 
-        private static String oneGameSet(List<Integer> computer) {
+        public static String oneGameSet(List<Integer> computer) {
             boolean flag = true;
             while (flag){
                 List<String> player = inputPlayerAnswerList();
