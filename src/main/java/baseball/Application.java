@@ -31,13 +31,13 @@ class Utils {
 class Input {
     static final String GAME_GET_NUMBER = "숫자를 입력해주세요 : ";
     static final String EXCEPTION_REPETITION = "중복되는 숫자를 입력했습니다.";
-    static final String EXCEPTION_CONTAINS_ZERO = "중복되는 숫자를 입력했습니다.";
+    static final String EXCEPTION_CONTAINS_ZERO = "입력 값에 0이 포함됩니다.";
     static final String EXCEPTION_DIGITS_NOT_3 = "입력 값이 세 자리의 숫자가 아닙니다.";
     static final String EXCEPTION_NOT_NUMBER = "입력 값이 숫자가 아닙니다.";
     static final String EXCEPTION_NOT_1_OR_2 = "입력 값이 1이나 2가 아닙니다.";
 
 
-    static void validInputInGame(String inputString) throws IllegalArgumentException {
+    static void validInputinGame(String inputString) throws IllegalArgumentException {
         HashSet<Character> isRepeated = Utils.StringToCharSet(inputString);
 
         if (isRepeated.size() < 3) {
@@ -66,10 +66,10 @@ class Input {
         }
     }
 
-        static List<Character> getInputInGame() {
+    static List<Character> getInputinGame() {
         System.out.print(GAME_GET_NUMBER);
         String input = Console.readLine();
-        Input.validInputInGame(input);
+        Input.validInputinGame(input);
         return Utils.StringToCharList(input);
     }
 
@@ -177,7 +177,7 @@ class Game {
 
     static boolean userGotAnswer(List<Character> answer) {
         boolean userGotAnswer;
-        HashMap<String, Integer> comparedMap = Compare.compareWithAnswer(answer, Input.getInputInGame());
+        HashMap<String, Integer> comparedMap = Compare.compareWithAnswer(answer, Input.getInputinGame());
         Game.printResult(comparedMap);
         if (Compare.inputEqualsAnswer(comparedMap)) {
             System.out.println(GAME_CORRECT_ANSWER);
