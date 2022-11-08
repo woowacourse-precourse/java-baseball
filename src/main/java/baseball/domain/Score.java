@@ -25,7 +25,7 @@ public class Score {
     public boolean isWrongAnswer(List<Integer> answer, List<Integer> guessedAnswer) {
         initBallAndStrike();
 
-        for (int guessedAnswerIndex = 0; guessedAnswerIndex < guessedAnswer.size(); guessedAnswerIndex++) {
+        for (int guessedAnswerIndex = INITIAL_VALUE; guessedAnswerIndex < guessedAnswer.size(); guessedAnswerIndex++) {
             int number = guessedAnswer.get(guessedAnswerIndex);
             int answerIndex = answer.indexOf(number);
 
