@@ -58,14 +58,24 @@ public class Application {
         int strike = 0;
         int ball = 0;
 
-        for (int count = 0; count < input.size(); count++) {
-            int ch = input.get(count);
-            if (gameAnswer.get(count) == ch)
+        int index = 0;
+        for (Integer answer: gameAnswer) {
+            int tempIndex = input.indexOf(answer);
+
+            if (tempIndex < 0)
+                continue;
+
+            if (tempIndex == index)
                 strike++;
-            else if (gameAnswer.contains(ch))
+            else
                 ball++;
+
+            index++;
         }
-        return printBallStrike(strike, ball);
+
+        printBallStrike(strike, ball);
+
+        return strike == 3;
     }
     public static boolean printBallStrike(int strike, int ball) {
         if (ball == 0 && strike == 0) {
