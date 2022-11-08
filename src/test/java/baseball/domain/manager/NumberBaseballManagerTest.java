@@ -13,9 +13,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
-class NumberBaseBallManagerTest {
+class NumberBaseballManagerTest {
 
-    NumberBaseBallManager baseballManager = spy(new NumberBaseBallManager());
+    NumberBaseballManager baseballManager = spy(new NumberBaseballManager());
 
     @DisplayName("IN_GAME status인 경우 검증할 때 verifyGuess Method 실행")
     @Test

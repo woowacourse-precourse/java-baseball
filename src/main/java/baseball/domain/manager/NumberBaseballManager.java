@@ -8,7 +8,7 @@ import baseball.util.BallCount;
 
 import java.io.IOException;
 
-public class NumberBaseBallManager {
+public class NumberBaseballManager {
 
     private GameStatus status = GameStatus.NOT_INITIALIZED;
     private final User user = new User();
@@ -80,7 +80,7 @@ public class NumberBaseBallManager {
 
             playGame(computer);
 
-            determineToContinue();
+            askToContinueOrQuit();
         }
     }
 
@@ -111,14 +111,14 @@ public class NumberBaseBallManager {
         checkResult(result);
     }
 
-    private void determineToContinue() throws IOException {
+    private void askToContinueOrQuit() throws IOException {
         System.out.println(selectMessage());
         String responseToContinue = user.answer();
         validate(responseToContinue);
-        determineToContinue(Character.getNumericValue(responseToContinue.charAt(0)));
+        askToContinueOrQuit(Character.getNumericValue(responseToContinue.charAt(0)));
     }
 
-    public void determineToContinue(int response) {
+    public void askToContinueOrQuit(int response) {
         if( response == 1 ) {
             status=GameStatus.IN_GAME;
             return;
