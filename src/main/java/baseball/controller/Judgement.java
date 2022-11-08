@@ -59,11 +59,11 @@ public class Judgement {
   }
 
   private void printStrikeAndBall() {
-    if (strikeCount == 0 && ballCount == 0) {
+    if (strikeCount == INIT_COUNT && ballCount == INIT_COUNT) {
       View.printNothing();
     } else if (strikeCount == INIT_COUNT) {
       View.printBall(ballCount);
-    } else if (ballCount == 0) {
+    } else if (ballCount == INIT_COUNT) {
       View.printStrike(strikeCount);
     } else {
       View.printStrikeAndBall(ballCount, strikeCount);
