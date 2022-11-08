@@ -33,7 +33,7 @@
 1. GameNumber
 - [x]  computerNumbers 데이터 저장
 - [x]  inputString 데이터 저장 (문자열 형태)
-   - [ ]  띄어쓰기를 제거한 뒤 저장하기 
+   - [x]  띄어쓰기를 제거한 뒤 저장하기
 - [x]  playerNumbers 데이터 저장 (inputStrings 숫자로 변환)
    - [x]  데이터 유효성 검사기 체크 
    - [x]  inputString 데이터 숫자로 변환

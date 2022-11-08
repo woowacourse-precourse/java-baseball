@@ -13,7 +13,7 @@ public class GameNumber {
     RandomUtility randomUtility = new RandomUtility();
 
     public void setInputString(String inputString) {
-        this.inputString = inputString;
+        this.inputString = inputString.replaceAll(" ", "");
         setPlayerNumbers();
     }
 
