@@ -41,10 +41,14 @@ public class Application {
         }
 
         private String Ready() {
-//            printSetBallStatus();
+            printSetBallStatus();
 //            String ball = setBall();
 //            return trimBall(ball);
             return "";
+        }
+
+        private void printSetBallStatus() {
+            System.out.print("숫자를 입력해주세요 : ");
         }
 
         private void gameInit() {
