@@ -7,7 +7,46 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Application {
+    static int[] randomArr;
+    static boolean checkRun;
+
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        randomArr = initRandomValue();
+        checkRun = true;
+        while (checkRun) {
+            int inputValue = getInputValue();
+            int[] ballAndStrike = compareToNum(inputValue, randomArr);
+            printBallAndStrike(ballAndStrike);
+            boolean correct = isCorrect(ballAndStrike);
+            if (correct) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String oneAndTow = Console.readLine();
+                checkOneAndTowCheck(oneAndTow);
+                runOrEnd(oneAndTow);
+            }
+        }
+    }
+
+    static void runOrEnd(String oneAndTow) {
+        int num = Integer.parseInt(oneAndTow);
+        if (num == 1) {
+            randomArr = initRandomValue();
+        } else {
+            checkRun = false;
+        }
+    }
+
+    static void checkOneAndTowCheck(String str) {
+        try {
+            Integer.parseInt(str);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        if (!(Integer.parseInt(str) == 1 || Integer.parseInt(str) == 2)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     static int getRandomValue() {
@@ -85,11 +124,16 @@ public class Application {
     }
 
     static void printBallAndStrike(int[] ballAndStrike) {
-        String[] str = {"볼 ", "스트라이크 "};
+        String[] str = {"볼 ", "스트라이크\n"};
+        boolean check = true;
         for (int i = 0; i < ballAndStrike.length; i++) {
             if (ballAndStrike[i] > 0) {
-                System.out.println(ballAndStrike[i] + str[i]);
+                System.out.print(ballAndStrike[i] + str[i]);
+                check = false;
             }
+        }
+        if(check){
+            System.out.println("낫싱");
         }
     }
 
