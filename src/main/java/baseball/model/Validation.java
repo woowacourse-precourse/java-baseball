@@ -8,6 +8,7 @@ public class Validation {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
     private static final String Number_RegEx = "^[" + MIN_NUMBER + "-" + MAX_NUMBER + "]*$";
+    private static final String RestartAnswer_RegEx = "[1-2]";
 
     public Validation(){}
 
@@ -26,6 +27,10 @@ public class Validation {
         return input.length() == CNT_NUMBER;
     }
 
+    public boolean RestartAnswer(String input){
+        Pattern AnswerPattern = Pattern.compile(RestartAnswer_RegEx);
+        return AnswerPattern.matcher(input).matches();
+    }
 
 
 }
