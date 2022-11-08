@@ -36,7 +36,7 @@ public class Application {
         }
     }
 
-    private static void restart(BufferedReader br) throws IOException {
+    public static void restart(BufferedReader br) throws IOException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String[] temp = br.readLine().split("");
         if(temp.length >= 2){
@@ -49,7 +49,7 @@ public class Application {
         } else restart = true;
     }
 
-    private static void checkNumber(List<Integer> numbers) {
+    public static void checkNumber(List<Integer> numbers) {
         strick = 0;
         ball = 0;
         for(int i=0; i<3; i++){
@@ -63,7 +63,7 @@ public class Application {
         outputResult();
     }
 
-    private static void outputResult() {
+    public static void outputResult() {
         if(strick == 0 && ball == 0){
             System.out.println("낫싱");
         }else if(strick == 3){
@@ -79,7 +79,7 @@ public class Application {
         }
     }
 
-    private static void inputNumber(BufferedReader br) throws IOException {
+    public static void inputNumber(BufferedReader br) throws IOException {
         System.out.print("숫자를 입력해 주세요 : ");
         String[] temp = br.readLine().split("");
         if(temp.length >= 4){
