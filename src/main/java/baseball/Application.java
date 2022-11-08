@@ -14,17 +14,16 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 
 class Generate_Answer_test {
-    Practice p;
+    Application A;
 
     @BeforeEach
     void Setup() {
-        p = new Practice();
+        A = new Application();
     }
-
 
     @Test
     void Generate_Answer_test() {
-        List<Integer> result = p.Generate_Answer();
+        List<Integer> result = A.Generate_Answer();
 
         assertThat(result).size().isEqualTo(3);
         assertThat(result.get(0)).isNotEqualTo(result.get(1)).isNotEqualTo(result.get(2));
@@ -37,11 +36,11 @@ class Generate_Answer_test {
 }
 
 class Input_test {
-    Practice p;
+    Application A;
 
     @BeforeEach
     void Setup() {
-        p = new Practice();
+        A = new Application();
     }
 
     @Test
@@ -67,11 +66,11 @@ class Input_test {
 
 
 class Strike_Or_Ball_Judge_test {
-    Practice p;
+    Application A;
 
     @BeforeEach
     void Setup() {
-        p = new Practice();
+        A = new Application();
 
     }
 
@@ -86,7 +85,7 @@ class Strike_Or_Ball_Judge_test {
         Input.add(3);
         Input.add(4);
 
-        HashMap result = p.Strike_or_Ball_Judge(Input, Answer);
+        HashMap result = A.Strike_or_Ball_Judge(Input, Answer);
 
         HashMap<String, Integer> Strike_or_Ball = new HashMap<>();
         Strike_or_Ball.put("스트라이크", 0);
@@ -108,7 +107,7 @@ public class Application {
         Input();
     }
 
-    public void Generate_Answer() {
+    public List<Integer> Generate_Answer() {
         if (Answer_Numbers.size() != 0) {
             Answer_Numbers.clear();
         }
@@ -118,6 +117,7 @@ public class Application {
                 Answer_Numbers.add(randomNumber);
             }
         }
+        return Answer_Numbers;
     }
 
 
@@ -200,7 +200,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        Practice p = new Practice();
-        p.Start();
+        Application A = new Application();
+        A.Start();
     }
 }
