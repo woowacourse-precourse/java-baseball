@@ -133,4 +133,27 @@ public class Application {
     }
 
 
+
+    //5. 2번부터 4번까지 반복할 method
+    public static void Game(){
+        List<Integer> userNum = getUserNum();
+
+        int ball = getBall(computerNum, userNum);
+        int strike = getStrike(computerNum, userNum);
+
+        printResult(ball, strike);
+    }
+    //5. 컴퓨터 숫자 설정하고 게임 진행 method
+    public static void startGame(){
+        computerNum = getComputerNum();
+        Game();
+    }
+
+
+
+
+
+
+
+
 }
