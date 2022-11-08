@@ -20,8 +20,8 @@ public class Input {
     public void checkNumber(String inputStr) {
         if ( (inputStr.charAt(0) == inputStr.charAt(1))
                 || (inputStr.charAt(1) == inputStr.charAt(2))
-                ||(inputStr.charAt(0) == inputStr.charAt(2))
-        ) {
+                || (inputStr.charAt(0) == inputStr.charAt(2))
+        ) { // 각 자리수 중 서로 같은 수가 있다면
             throw new IllegalArgumentException("서로 다른 3자리의 수를 입력하세요.");
         }
     }
