@@ -14,7 +14,7 @@ public class Application {
 
     public static void startGame() {
         int condition = 1;
-        while(condition == 1){
+        while (condition == 1) {
             System.out.println("숫자 야구 게임을 시작합니다.");
             baseBallStart();
 
@@ -28,7 +28,7 @@ public class Application {
     }
 
     public static void validateProgramConditionInput(String input) {
-        if(!input.equals("1") && !input.equals("2")) {
+        if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
@@ -52,7 +52,7 @@ public class Application {
 
     public static List<Character> tokenizeString(String input) {
         List<Character> tokenizedResult = new ArrayList<>();
-        for(int i = 0;i<input.length();i++){
+        for (int i = 0; i < input.length(); i++) {
             tokenizedResult.add(input.charAt(i));
         }
         return tokenizedResult;
@@ -60,15 +60,15 @@ public class Application {
 
     public static List<Integer> convertCharListToIntList(List<Character> charList) {
         List<Integer> parseIntResultList = new ArrayList<>();
-        for(Character ch : charList){
+        for (Character ch : charList) {
             parseIntResultList.add(Character.getNumericValue(ch));
         }
 
         return parseIntResultList;
     }
 
-    public static List<Integer> convertInputToBaseBallInput(String input){
-        return(convertCharListToIntList(tokenizeString(input)));
+    public static List<Integer> convertInputToBaseBallInput(String input) {
+        return (convertCharListToIntList(tokenizeString(input)));
     }
 
     public static List<Integer> generateRandomNumber(int digitSize) {
@@ -86,14 +86,14 @@ public class Application {
         int strikeCount = 0;
         int ballCount = 0;
 
-        for(int i = 0; i < randomNumber.size(); i++){
+        for (int i = 0; i < randomNumber.size(); i++) {
             int currentRandomNumberDigit = randomNumber.get(i);
             int currentInputNumberDigit = input.get(i);
 
-            if(currentRandomNumberDigit == currentInputNumberDigit)
-                strikeCount+=1;
-            else if(randomNumber.contains(currentInputNumberDigit))
-                ballCount+=1;
+            if (currentRandomNumberDigit == currentInputNumberDigit)
+                strikeCount += 1;
+            else if (randomNumber.contains(currentInputNumberDigit))
+                ballCount += 1;
         }
 
         return List.of(strikeCount, ballCount);
@@ -103,21 +103,21 @@ public class Application {
         int strikeCount = baseballResult.get(0);
         int ballCount = baseballResult.get(1);
 
-        if(strikeCount == 0 && ballCount == 0)
+        if (strikeCount == 0 && ballCount == 0)
             return "낫싱";
-        else if(strikeCount == 0){
+        else if (strikeCount == 0) {
             return ballCount + "볼";
-        } else if(ballCount == 0)
-            return strikeCount+"스트라이크";
+        } else if (ballCount == 0)
+            return strikeCount + "스트라이크";
         else
-            return ballCount+"볼"+" "+strikeCount+"스트라이크";
+            return ballCount + "볼" + " " + strikeCount + "스트라이크";
     }
 
     public static void baseBallStart() {
         List<Integer> randomNumber = generateRandomNumber(RANDOM_NUMBER_DIGIT_SIZE);
         List<Integer> currentBaseBallResult;
 
-        while(true){
+        while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = getInput();
 
@@ -128,7 +128,7 @@ public class Application {
 
             System.out.println(convertBaseBallResultToConsoleOutputString(currentBaseBallResult));
 
-            if(currentBaseBallResult.get(0) == RANDOM_NUMBER_DIGIT_SIZE)
+            if (currentBaseBallResult.get(0) == RANDOM_NUMBER_DIGIT_SIZE)
                 break;
         }
     }
