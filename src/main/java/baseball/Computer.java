@@ -30,10 +30,10 @@ public class Computer {
     }
 
     public void setNumber() {
-        this.answer = (computer.get(0) * 100) + (computer.get(1) * 10) + computer.get(2);
+        this.answer = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
     }
 
-    public void madeAnswer(){
+    public void madeAnswer() {
         madeNumber();
         setNumber();
     }
