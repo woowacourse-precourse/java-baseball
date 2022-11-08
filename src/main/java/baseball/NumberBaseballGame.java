@@ -51,4 +51,17 @@ public class NumberBaseballGame {
     public void askPlayerToInputNumber() {
         System.out.println("숫자를 입력해주세요 : ");
     }
+
+    public List<Integer> getPlayerNumber() {
+        List<Integer> playerNumber = new ArrayList<>();
+        String inputNumber = Console.readLine();
+        if (isPlayerNumberException(inputNumber)){
+            throw new IllegalArgumentException();
+        }
+        for (int i=0; i<inputNumber.length(); i++) {
+            int currentDigit = Character.getNumericValue(inputNumber.charAt(i));
+            playerNumber.add(currentDigit);
+        }
+        return playerNumber;
+    }
 }
