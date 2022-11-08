@@ -36,7 +36,6 @@ class InputNumberExceptionCheckerTest {
                 .isEqualTo(true);
         assertThat(inputNumberExceptionChecker.hasZero("101"))
                 .isEqualTo(false);
-
     }
 
     @Test
@@ -51,11 +50,5 @@ class InputNumberExceptionCheckerTest {
                 .isEqualTo(false);
     }
 
-    @Test
-    void hasExceptionStringParameter() {
-    }
 
-    @Test
-    void hasExceptionIntParameter() {
-    }
 }

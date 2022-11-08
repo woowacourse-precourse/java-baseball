@@ -8,17 +8,12 @@ import static org.assertj.core.api.Assertions.*;
 class NumberMakerTest {
 
     @Test
-    void makeRandomNumber() {
+    void makeInitRandomNumber() {
         NumberMaker numberMaker = new NumberMaker();
-        String testString = numberMaker.makeRandomNumber();
+        String testString = numberMaker.makeInitRandomNumber();
         assertThat(testString.length()).isEqualTo(3);
         assertThat(Integer.parseInt(testString))
                 .isGreaterThan(122)
                 .isLessThan(988);
     }
-
-    @Test
-    void makePlayerNumber() {
-    }
-
 }

@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.GameMessage.*;
+import static resource.GameMessage.*;
 import static baseball.InputNumberExceptionChecker.hasException;
 
 public class Application {

@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class NumberMaker {
 
-    public String makeRandomNumber() {
+    public String makeInitRandomNumber() {
         String number = "";
         String randomValue = "";
         while (number.length() < 3) {
@@ -21,5 +21,4 @@ public class NumberMaker {
         String number = Console.readLine();
         return number;
     }
-
 }
