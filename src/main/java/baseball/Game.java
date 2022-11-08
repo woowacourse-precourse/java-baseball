@@ -59,11 +59,13 @@ public class Game {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
 
-        if (input.charAt(0) == '2') {
-            setFinished();
+        if (input.charAt(0) == '1') {
+            computer = getComputerNumber();
+
+            return true;
         }
 
-        return finished;
+        return false;
     }
 
     private void setFinished(){
