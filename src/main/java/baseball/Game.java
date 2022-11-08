@@ -25,23 +25,14 @@ public class Game {
             int strike = 0;
             int ball = 0;
             printWindow.playerTurnPrint();
-            String userinput = Console.readLine();
-            validator.isValidNumber(userinput);
+            String userInput = Console.readLine();
+            validator.isValidNumber(userInput);
 
-            for (int len = comNum.size(), i=0; i<len; i++){
-                int play = userinput.charAt(i)-'0';
+            int[] result = Compare.do(comNum, userInput);
+            strike = result[0];
+            ball = result[1];
 
-                if (comNum.indexOf(play) == -1){
-                    ball--;
-                }
-                if (comNum.indexOf(play) != i){
-                    ball++;
-                }
-                if (comNum.indexOf(play)==i){
-                    strike++;
-                }
-            }
-            
+
             if (ball==0 && strike==0){
                 printWindow.resultNothingPrint();
                 continue;
