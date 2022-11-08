@@ -33,15 +33,18 @@ public class Application {
     }
 
     private static boolean isException(List<Integer> input) {
+        //input의 크기가 3이 아니라면 예외 케이스이다.
         if (input.size() != 3) {
             return true;
         }
 
+        //input에 중복되는 숫자가 존재한다며 예외 케이스이다.
         Set<Integer> inputToSet = new HashSet<>(input);
         if (input.size() != inputToSet.size()) {
             return true;
         }
 
+        //input에 1에서 9사이의 숫자가 아닌 다른 수가 들어있다면 예외 케이스이다.
         for (int i = 0; i < 3; i++){
             if (input.get(i) < 1 || input.get(i) > 9){
                 return true;
