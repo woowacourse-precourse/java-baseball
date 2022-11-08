@@ -27,6 +27,7 @@ public class OutputView {
         if (isMatch(result.getBall())) {
             report.add(result.getBall() + "볼");
         }
+
         if (isMatch(result.getStrike())) {
             report.add(result.getStrike() + "스트라이크");
         }

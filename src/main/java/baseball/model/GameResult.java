@@ -11,6 +11,7 @@ public class GameResult {
         if (status.isStrike()) {
             strike++;
         }
+
         if (status.isBall()) {
             ball++;
         }

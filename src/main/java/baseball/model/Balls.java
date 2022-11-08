@@ -15,6 +15,7 @@ public class Balls {
         if (balls == null) {
             throw new IllegalArgumentException("볼이 생성되지 않았습니다.");
         }
+
         validateSize(balls);
         this.balls = mapToBalls(balls);
     }
