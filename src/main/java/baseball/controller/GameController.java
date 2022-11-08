@@ -19,7 +19,7 @@ public class GameController {
     public boolean showSelectNumberResult(String input) {
         validateInput("^[1-9]{3}", input);
 
-        View view = new SelectNumberResult(input);
+        View view = new SelectNumberResult(parseInt(input));
         view.show();
 
         return view.getResponseToBoolean();
@@ -38,7 +38,15 @@ public class GameController {
 
     public static void validateInput(String regex, String input) {
         if (!Pattern.matches(regex, input)) {
-            throw new IllegalArgumentException("조건에 맞지 않는 입력이에요.");
+            throw new IllegalArgumentException("조건에 맞게 입력해주세요.");
+        }
+    }
+
+    public static int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
     }
 }
