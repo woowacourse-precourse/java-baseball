@@ -1,5 +1,6 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -17,6 +18,24 @@ public class Application {
             }
         }
         return true;
+    }
+
+    public static String makeRandomNumber() {
+        List<Integer> nowMakingNum = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            int randNum = pickNumberInRange(1, 9);
+
+            if (checkPickNumbInMakingNum(nowMakingNum, randNum)) {
+                nowMakingNum.add(randNum);
+            } else {
+                i--;
+            }
+        }
+
+        String makeNumber = nowMakingNum.toString().replaceAll("[^0-9]", "");
+
+        return makeNumber;
     }
 
 }
