@@ -15,35 +15,38 @@ public class Comparison {
     }
 
     void compareNum(List<Integer> userNum) {
-        checkEqual(userNum);
-        compareDigits(userNum);
-    }
-
-    void checkSameNumber(List<Integer> userNum) {
-        copyUserNum = new ArrayList<>(userNum);
-        copyUserNum.retainAll(computerNum);
-    }
-
-    void checkEqual(List<Integer> userNum){
-        if(computerNum.equals(userNum)) {
+        if (isAnswer(userNum)) {
             Message win = new Message();
-        }
-    }
-
-    void compareDigits(List<Integer> userNum){
-        if(!computerNum.equals(userNum)) {
-            checkSameNumber(userNum);
+        } else {
+            retainSameNumber(userNum);
             getMessage(userNum);
         }
     }
 
+    boolean isAnswer(List<Integer> userNum) {
+        return computerNum.equals(userNum);
+    }
+
+    void retainSameNumber(List<Integer> userNum) {
+        copyUserNum = new ArrayList<>(userNum);
+        copyUserNum.retainAll(computerNum);
+    }
+
     void getMessage(List<Integer> userNum) {
-        if (copyUserNum.isEmpty()) {
-            Message nothing = new Message(computerNum, userNum);
+        if (hasSameNum()) {
+            createStrikeBallMessage(userNum);
         } else {
-            checkStrike(userNum);
-            getStrikeBallMessage(userNum); 
+            createNothingMessage(userNum);
         }
+    }
+
+    boolean hasSameNum() {
+        return (copyUserNum.isEmpty());
+    }
+
+    void createStrikeBallMessage(List<Integer> userNum) {
+        checkStrike(userNum);
+        getStrikeBallMessage(userNum);
     }
 
     void checkStrike(List<Integer> userNum) {
@@ -59,8 +62,12 @@ public class Comparison {
             this.strike++;
     }
 
-    void getStrikeBallMessage(List<Integer> userNum){
+    void getStrikeBallMessage(List<Integer> userNum) {
         ball = copyUserNum.size() - strike;
         Message ballStrike = new Message(strike, ball, computerNum, userNum);
+    }
+
+    void createNothingMessage(List<Integer> userNum) {
+        Message nothing = new Message(computerNum, userNum);
     }
 }

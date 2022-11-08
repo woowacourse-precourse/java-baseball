@@ -8,17 +8,17 @@ public class Computer {
     private int randomNumber;
 
     public Computer(List<Integer> computerNum) {
-        makeComputerNum(computerNum);
+        createComputerNum(computerNum);
     }
 
-    void makeComputerNum(List<Integer> computerNum) {
+    void createComputerNum(List<Integer> computerNum) {
         while (computerNum.size() < 3) {
-            randomNumber = getRandomNumber();
+            randomNumber = createRandomNumber();
             addComputerNum(computerNum);
         }
     }
 
-    int getRandomNumber() {
+    int createRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
 

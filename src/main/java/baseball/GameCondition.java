@@ -21,7 +21,7 @@ public class GameCondition {
     }
 
     void restart() {
-        Game newGame= new Game();
+        Game newGame = new Game();
         newGame.start();
     }
 

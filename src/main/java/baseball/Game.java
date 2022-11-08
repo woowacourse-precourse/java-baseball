@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<Integer> computerNum = new ArrayList<>();
-    private List<Integer> userNum = new ArrayList<>();
+    List<Integer> computerNum = new ArrayList<>();
+    List<Integer> userNum = new ArrayList<>();
     final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
 
     public Game() {

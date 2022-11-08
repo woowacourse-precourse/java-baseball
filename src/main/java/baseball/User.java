@@ -11,15 +11,23 @@ public class User {
     final String RECEIVE_MESSAGE = "숫자를 입력해주세요 : ";
 
     public User(List<Integer> computerNum, List<Integer> userNum) {
+        initializeUser(computerNum, userNum);
+        receiveUserInput(userNum);
+    }
+
+    void initializeUser(List<Integer> computerNum, List<Integer> userNum) {
         userNum.clear();
         this.computerNum = computerNum;
-        receiveUserInput(userNum);
     }
 
     void receiveUserInput(List<Integer> userNum) {
         printReceiveMessage();
         userInput = Console.readLine();
         checkUserInput(userNum);
+    }
+
+    void printReceiveMessage() {
+        System.out.print(RECEIVE_MESSAGE);
     }
 
     void checkUserInput(List<Integer> userNum) {
@@ -57,9 +65,5 @@ public class User {
             int userChar = userInput.charAt(i) - '0';
             userNum.add(userChar);
         }
-    }
-
-    void printReceiveMessage() {
-        System.out.print(RECEIVE_MESSAGE);
     }
 }

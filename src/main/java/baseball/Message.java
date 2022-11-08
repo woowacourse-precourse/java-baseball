@@ -2,9 +2,6 @@ package baseball;
 
 import java.util.List;
 
-import baseball.User;
-import baseball.Game;
-
 public class Message {
     final String ALL_STRIKE_MESSAGE = "3스트라이크";
     final String WINNING_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
@@ -24,10 +21,10 @@ public class Message {
 
     public Message(int strike, int ball, List<Integer> computerNum, List<Integer> userNum) {
         this.computerNum = computerNum;
-        printMessage(strike, ball, userNum);
+        printStrikeBallMessage(strike, ball, userNum);
     }
 
-    void printMessage(int strike, int ball, List<Integer> userNum){
+    void printStrikeBallMessage(int strike, int ball, List<Integer> userNum) {
         if (ball == 0)
             printStrike(strike, userNum);
         else if (strike == 0)
