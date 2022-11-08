@@ -17,6 +17,7 @@ public class BaseBallGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (isPlay) {
             play();
+            checkReplay();
         }
     }
 
@@ -101,5 +102,17 @@ public class BaseBallGame {
 
     private static boolean isGameClear() {
         return hint.getStrikeCount() == 3;
+    }
+
+    private static void checkReplay() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        System.out.println(input);
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("숫자 입력 오류");
+        }
+        if (input.equals("2")) {
+            isPlay = false;
+        }
     }
 }
