@@ -1,8 +1,8 @@
 package baseball;
 
 public class GameInfo {
-    private static int ball;
-    private static int strike;
+    private int ball;
+    private int strike;
 
     public GameInfo() {
         this.ball = 0;
