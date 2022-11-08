@@ -4,7 +4,7 @@ import java.util.List;
 
 public class NumberValidator {
 
-    public static boolean checkIfIsDuplicateNum(List<Integer> numbers) {
+    public static boolean checkIfIsNotDuplicatedNum(List<Integer> numbers) {
         return numbers.size() == numbers.stream().distinct().count();
     }
 }

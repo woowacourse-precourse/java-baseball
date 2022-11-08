@@ -1,5 +1,9 @@
 package baseball.controller;
 
+import baseball.model.ComputerNumberGenerator;
+
+import java.util.List;
+
 public class BaseballGame {
 
     public void playTheGame() {
@@ -9,6 +13,8 @@ public class BaseballGame {
     }
 
     private static void startGame() {
+//        List<Integer> numberGeneratedByComputer = new ComputerNumberGenerator();
+
 
     }
 
