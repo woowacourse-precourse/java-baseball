@@ -75,11 +75,13 @@ public class Application {
     public static List<Integer> makeResultList (List<Integer> inputNumList, List<Integer> answerList) {
         int strike = 0, contain = 0;
         for (int inputIdx = 0; inputIdx < 3; inputIdx++) {
+            int inputNum = inputNumList.get(inputIdx);
+            List<Integer> inputNumInfo = List.of(inputIdx, inputNum);
+
             for (int answerIdx = 0; answerIdx < 3; answerIdx++) {
-                int inputNum = inputNumList.get(inputIdx);
                 int answerNum = answerList.get(answerIdx);
-                List<Integer> inputNumInfo = List.of(inputIdx, inputNum);
                 List<Integer> answerNumInfo = List.of(answerIdx, answerNum);
+
                 contain = contain + cntContain(inputNumInfo, answerNumInfo);
                 strike = strike + cntStrike(inputNumInfo, answerNumInfo);
             }
