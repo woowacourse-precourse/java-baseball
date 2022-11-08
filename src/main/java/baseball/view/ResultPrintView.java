@@ -1,6 +1,7 @@
 package baseball.view;
 
 import baseball.domain.model.Result;
+import baseball.domain.model.Score;
 import baseball.view.utils.OutputUtils;
 
 public class ResultPrintView {
@@ -8,8 +9,9 @@ public class ResultPrintView {
     private static final String ZERO_SCORE = "낫싱";
 
     public void printResult(Result result) {
-        int strike = result.getStrike();
-        int ball = result.getBall();
+        Score score = result.getScore();
+        int strike = score.getStrike();
+        int ball = score.getBall();
         String resultMessage = printScore(strike, ball);
         OutputUtils.outputLine(resultMessage);
     }//feat(view): add view that print result of game

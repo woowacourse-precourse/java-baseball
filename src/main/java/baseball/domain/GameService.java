@@ -3,6 +3,7 @@ package baseball.domain;
 import baseball.domain.generator.GameGenerator;
 import baseball.domain.model.Game;
 import baseball.domain.model.Result;
+import baseball.domain.model.Score;
 import baseball.domain.model.UserInput;
 import java.util.List;
 
@@ -31,15 +32,14 @@ public class GameService {
                 ball++;
             }
         }
-
         if (isOut(strike)) {
             isOut = true;
         }
 
-        return new Result(strike, ball, isOut);
+        return new Result(new Score(strike, ball), isOut);
     }
 
-    private String decideStrikeOrBall(Integer userInput, Integer gameNumber) {
+    public String decideStrikeOrBall(Integer userInput, Integer gameNumber) {
         if (isStrike(userInput, gameNumber)) {
             return "strike";
         }
