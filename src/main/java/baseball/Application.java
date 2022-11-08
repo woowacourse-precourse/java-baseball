@@ -81,7 +81,7 @@ public class Application {
             validateUserNumbers(input);
             user = addToList(input);
             count = countCount(computer, user);
-            System.out.println(count);
+            System.out.println(printCount(count));
 
             correct = count.equals(List.of(3, 0, 0));
         }
@@ -92,15 +92,15 @@ public class Application {
 
         if (count.get(2) == 3) {
             result += "낫싱";
-        }else if (count.get(0) != 0) {
-            result += count.get(0) + "스트라이크";
-            if(count.get(1) != 0) {
-                result  = result + " " + count.get(1) + "볼";
+        }else if (count.get(1) != 0) {
+            result += count.get(1) + "볼";
+            if(count.get(0) != 0) {
+                result  = result + " " + count.get(0) + "스트라이크";
                 return result;
             }
         }
-        if (count.get(1) != 0) {
-            result = result + count.get(1) + "볼";
+        if (count.get(0) != 0) {
+            result = result + count.get(0) + "스트라이크";
         }
         return result;
     }
