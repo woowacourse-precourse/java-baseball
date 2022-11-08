@@ -17,7 +17,7 @@ public class Application {
         while (!isAnswer) {
             playerInput = Console.readLine();
             isValidInput(playerInput);
-            // TODO: 스트라이크, 볼, 정답 판독
+            isAnswer = compareAnswer(playerInput, answer);
         }
     }
 
@@ -47,6 +47,39 @@ public class Application {
             }
             input.add(playerInput.charAt(i));
         }
+    }
+
+    private static boolean compareAnswer(String playerInput, String answer) {
+        boolean isAnswer = false;
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < playerInput.length(); i++) {
+            if (playerInput.charAt(i) == answer.charAt(i)) {
+                strike++;
+            } else if (answer.contains(String.valueOf(playerInput.charAt(i)))) {
+                ball++;
+            }
+        }
+
+        if (strike == 3) {
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            isAnswer = true;
+        } else if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            isAnswer = false;
+        } else if (strike != 0 && ball != 0) {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+            isAnswer = false;
+        } else if (strike == 0 && ball != 0) {
+            System.out.println(ball + "볼");
+            isAnswer = false;
+        } else if (strike != 0 && ball == 0) {
+            System.out.println(strike + "스트라이크");
+            isAnswer = false;
+        }
+
+        return isAnswer;
     }
 
     public static void main(String[] args) {
