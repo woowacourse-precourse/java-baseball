@@ -10,9 +10,11 @@ import java.util.Set;
 public class User {
 
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    static final String INPUT_ERROR = "잘못된 입력값입니다. 게임을 종료합니다.";
     static final int MAX_SIZE = 3;
     static final char MIN_NUM_CHAR = '1';
     static final char MAX_NUM_CHAR = '9';
+
 
     private String inputNum;
     private List<Integer> userNumbers;
@@ -22,6 +24,7 @@ public class User {
         resetUserNumbers();
         inputNum = Console.readLine();
         toList(inputNum);
+        exceptionHandling(userNumbers);
 
         return userNumbers;
     }
@@ -35,6 +38,12 @@ public class User {
             userNumbers.add(inputNum.charAt(index) - '0');
         }
         return userNumbers;
+    }
+
+    public void exceptionHandling(List<Integer> userNumbers) {
+        if (!checkSize(userNumbers) || (!checkDuplicate(userNumbers)) || checkInteger(userNumbers)) {
+            throw new IllegalArgumentException(INPUT_ERROR);
+        }
     }
 
     public boolean checkSize(List<Integer> userNumbers) {
