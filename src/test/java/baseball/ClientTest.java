@@ -69,7 +69,7 @@ class ClientTest {
         void 입력이_문자라면_IllegalArgumentException이_발생한다() {
             input("간다스");
             assertThatThrownBy(
-                Client::askPlayerNumberList
+                    Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -77,7 +77,7 @@ class ClientTest {
         void 입력이_4글자_이상이면_IllegalArgumentException이_발생한다() {
             input("4321");
             assertThatThrownBy(
-                Client::askPlayerNumberList
+                    Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -85,7 +85,7 @@ class ClientTest {
         void 입력이_0글자_이하라면_IllegalArgumentException이_발생한다() {
             input("");
             assertThatThrownBy(
-                Client::askPlayerNumberList
+                    Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -93,7 +93,7 @@ class ClientTest {
         void 입력에_중복된_숫자가_있다면_IllegalArgumentException이_발생한다() {
             input("424");
             assertThatThrownBy(
-                Client::askPlayerNumberList
+                    Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -101,7 +101,7 @@ class ClientTest {
         void 공백문자만_입력되면_IllegalArgumentException이_발생한다() {
             input(" ");
             assertThatThrownBy(
-                Client::askPlayerNumberList
+                    Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -109,7 +109,7 @@ class ClientTest {
         void 숫자와_공백이_같이_입력되면_IllegalArgumentException이_발생한다() {
             input("123 ");
             assertThatThrownBy(
-                Client::askPlayerNumberList
+                    Client::askPlayerNumberList
             ).isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -121,45 +121,35 @@ class ClientTest {
         @Test
         void 결과가_3스트라이크로_주어지면_그대로_정상출력한다() {
             JudgedResultDto judgedResultDto = JudgedResultDto.make3StrikeDto();
-
             Client.showJudgedResult(judgedResultDto);
-
             assertThat(output()).isEqualTo("3스트라이크");
         }
 
         @Test
         void 결과가_2스트라이크로_주어지면_그대로_정상출력한다() {
             JudgedResultDto judgedResultDto = JudgedResultDto.makeNormalDto(0, 2);
-
             Client.showJudgedResult(judgedResultDto);
-
             assertThat(output()).isEqualTo("2스트라이크");
         }
 
         @Test
         void 결과가_2볼_1스트라이크로_주어지면_그대로_정상출력한다() {
             JudgedResultDto judgedResultDto = JudgedResultDto.makeNormalDto(2, 1);
-
             Client.showJudgedResult(judgedResultDto);
-
             assertThat(output()).isEqualTo("2볼 1스트라이크");
         }
 
         @Test
         void 결과가_3볼로_주어지면_그대로_정상출력한다() {
             JudgedResultDto judgedResultDto = JudgedResultDto.makeNormalDto(3, 0);
-
             Client.showJudgedResult(judgedResultDto);
-
             assertThat(output()).isEqualTo("3볼");
         }
 
         @Test
         void 결과가_낫싱으로_주어지면_그대로_정상출력한다() {
             JudgedResultDto judgedResultDto = JudgedResultDto.makeNothingDto();
-
             Client.showJudgedResult(judgedResultDto);
-
             assertThat(output()).isEqualTo("낫싱");
         }
     }
@@ -195,7 +185,7 @@ class ClientTest {
         void 문자가_입력되어_IllegalArgumentException으로_처리한다() {
             input("문자");
             assertThatThrownBy(
-                Client::askMoreGame
+                    Client::askMoreGame
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -203,7 +193,7 @@ class ClientTest {
         void 숫자1이나_2말고_다른_숫자가_입력되어_IllegalArgumentException으로_처리한다() {
             input("5");
             assertThatThrownBy(
-                Client::askMoreGame
+                    Client::askMoreGame
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -211,7 +201,7 @@ class ClientTest {
         void 입력으로_받아온_값이_없는_경우에는_IllegalArgumentException으로_처리한다() {
             input("");
             assertThatThrownBy(
-                Client::askMoreGame
+                    Client::askMoreGame
             ).isInstanceOf(IllegalArgumentException.class);
         }
     }

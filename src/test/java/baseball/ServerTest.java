@@ -22,50 +22,50 @@ class ServerTest {
         @Test
         void 게임을_한번만_하는_시나리오에서_정상동작한다() {
             assertRandomNumberInRangeTest(
-                () -> {
-                    run("197", "179", "2");
-                    String expected = List.of(
-                            "숫자 야구 게임을 시작합니다.",
-                            "숫자를 입력해주세요 : 2볼 1스트라이크",
-                            "숫자를 입력해주세요 : 3스트라이크",
-                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
-                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-                        ).
-                        stream().collect(Collectors.joining("\n"));
-                    assertThat(output()).isEqualTo(expected);
-                },
-                1, 7, 9
+                    () -> {
+                        run("197", "179", "2");
+                        String expected = List.of(
+                                        "숫자 야구 게임을 시작합니다.",
+                                        "숫자를 입력해주세요 : 2볼 1스트라이크",
+                                        "숫자를 입력해주세요 : 3스트라이크",
+                                        "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                                        "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+                                ).
+                                stream().collect(Collectors.joining("\n"));
+                        assertThat(output()).isEqualTo(expected);
+                    },
+                    1, 7, 9
             );
         }
 
         @Test
         void 게임종료하고_한번_더_하는_시나리오에서_정상동작한다() {
             assertRandomNumberInRangeTest(
-                () -> {
-                    run("197", "179", "1", "317", "123", "2");
-                    String expected = List.of(
-                            "숫자 야구 게임을 시작합니다.",
-                            "숫자를 입력해주세요 : 2볼 1스트라이크",
-                            "숫자를 입력해주세요 : 3스트라이크",
-                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
-                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.",
-                            "숫자를 입력해주세요 : 2볼",
-                            "숫자를 입력해주세요 : 3스트라이크",
-                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
-                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-                        ).
-                        stream().collect(Collectors.joining("\n"));
-                    assertThat(output()).isEqualTo(expected);
-                },
-                1, 7, 9, 1, 2, 3
+                    () -> {
+                        run("197", "179", "1", "317", "123", "2");
+                        String expected = List.of(
+                                        "숫자 야구 게임을 시작합니다.",
+                                        "숫자를 입력해주세요 : 2볼 1스트라이크",
+                                        "숫자를 입력해주세요 : 3스트라이크",
+                                        "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                                        "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.",
+                                        "숫자를 입력해주세요 : 2볼",
+                                        "숫자를 입력해주세요 : 3스트라이크",
+                                        "3개의 숫자를 모두 맞히셨습니다! 게임 종료",
+                                        "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
+                                ).
+                                stream().collect(Collectors.joining("\n"));
+                        assertThat(output()).isEqualTo(expected);
+                    },
+                    1, 7, 9, 1, 2, 3
             );
         }
 
         @Test
         void 플레이어_게임숫자_입력_시_예외처리는_정상동작한다() {
             assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(" "))
-                    .isInstanceOf(IllegalArgumentException.class)
+                    assertThatThrownBy(() -> runException(" "))
+                            .isInstanceOf(IllegalArgumentException.class)
             );
         }
 
@@ -112,7 +112,7 @@ class ServerTest {
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(0, 2);
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerNumberList, gameNumberList);
+                    new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
             assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
@@ -124,7 +124,7 @@ class ServerTest {
 
             JudgedResultDto expectedDto = JudgedResultDto.make3StrikeDto();
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerNumberList, gameNumberList);
+                    new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
             assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
@@ -136,7 +136,7 @@ class ServerTest {
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNothingDto();
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerNumberList, gameNumberList);
+                    new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
             assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
@@ -148,7 +148,7 @@ class ServerTest {
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(3, 0);
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerNumberList, gameNumberList);
+                    new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
             assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
@@ -160,14 +160,14 @@ class ServerTest {
 
             JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(2, 1);
             JudgedResultDto actualDto =
-                new Server().judgeInputNumber(playerNumberList, gameNumberList);
+                    new Server().judgeInputNumber(playerNumberList, gameNumberList);
 
             assertThat(compareJudgedResultDto(expectedDto, actualDto)).isTrue();
         }
 
         boolean compareJudgedResultDto(JudgedResultDto dto1, JudgedResultDto dto2) {
             return dto1.getCountStrikes() == dto2.getCountStrikes()
-                && dto1.getCountBalls() == dto2.getCountBalls();
+                    && dto1.getCountBalls() == dto2.getCountBalls();
         }
     }
 

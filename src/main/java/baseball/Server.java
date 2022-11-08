@@ -29,7 +29,7 @@ public class Server {
         while (!is3Strike) {
             List<Integer> playerNumberList = Client.askPlayerNumberList();
             JudgedResultDto dto
-                = judgeInputNumber(playerNumberList, computerNumberList);
+                    = judgeInputNumber(playerNumberList, computerNumberList);
             Client.showJudgedResult(dto);
             is3Strike = dto.is3Strike();
         }
@@ -49,7 +49,7 @@ public class Server {
     }
 
     public JudgedResultDto judgeInputNumber(List<Integer> playerNumberList,
-        List<Integer> computerNumberList) {
+                                            List<Integer> computerNumberList) {
 
         int countBalls = 0, countStrikes = 0;
 

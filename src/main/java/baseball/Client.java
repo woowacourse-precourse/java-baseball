@@ -42,7 +42,7 @@ public class Client {
 
         List<Integer> playerNumberList = new ArrayList<>();
 
-        for(String substring : line.split("")){
+        for (String substring : line.split("")) {
             int degreeNumber = Integer.parseInt(substring);
             if (playerNumberList.contains(degreeNumber)) {
                 throw new IllegalArgumentException();
