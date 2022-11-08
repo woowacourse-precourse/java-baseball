@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -10,11 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    @Test
-    void 컴퓨터의_정답숫자를_설정하는_기능(){
-        Game game = new Game();
-        Assertions.assertThat(game.setComputerNumber()).size().isEqualTo(3);
-    }
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(

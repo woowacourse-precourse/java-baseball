@@ -1,10 +1,13 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Application {
     public static void main(String[] args) {
-        Game.start(new Game());
+        Game game;
+        do {
+            game = new Game();
+            game.start();
+        } while (game.checkNewGame());
+
     }
 }
 

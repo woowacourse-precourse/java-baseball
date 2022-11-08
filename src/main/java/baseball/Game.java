@@ -1,6 +1,9 @@
 package baseball;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -18,29 +21,25 @@ public class Game {
     Game() {
     }
 
-    public static void start(Game game) {
+    public void start() {
         int ballCount, strikeCount = 0;
-        LinkedList<Integer> answer = game.setComputerNumber();
+        List<Integer> answer = getComputerNumber();
         while (strikeCount < MAX_NUMBER) {
-            LinkedList<Integer> userAnswer = game.getUserAnswer();
-            strikeCount = game.strikeCount(answer, userAnswer);
-            ballCount = game.ballCount(answer, userAnswer);
-            game.output(ballCount, strikeCount);
-        }
-        if (checkNewGame() == NEW_GAME) {
-            start(new Game());
+            List<Integer> userAnswer = getUserAnswer();
+            strikeCount = strikeCount(answer, userAnswer);
+            ballCount = ballCount(answer, userAnswer);
+            output(ballCount, strikeCount);
         }
     }
 
-    private static int checkNewGame() {
+    public boolean checkNewGame() {
         System.out.println(MAX_NUMBER + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 " + NEW_GAME + ", 종료하려면 " + QUIT_GAME + "를 입력하세요.");
-
         String restartNumber = readLine();
-        return checkRestartNumber(restartNumber);
+        return checkRestartNumber(restartNumber) == 1;
     }
 
-    private static int checkRestartNumber(String restartNumber) {
+    private int checkRestartNumber(String restartNumber) {
         int num;
         try {
             num = Integer.parseInt(restartNumber);
@@ -61,7 +60,7 @@ public class Game {
         System.out.println(result);
     }
 
-    private int strikeCount(LinkedList<Integer> answer, LinkedList<Integer> userAnswer) {
+    private int strikeCount(List<Integer> answer, List<Integer> userAnswer) {
         int result = 0;
         for (int num : userAnswer) {
             if (answer.get(userAnswer.indexOf(num)) == num)
@@ -70,60 +69,59 @@ public class Game {
         return result;
     }
 
-    private int ballCount(LinkedList<Integer> answer, LinkedList<Integer> userAnswer) {
+    private int ballCount(List<Integer> answer, List<Integer> userAnswer) {
         int result = 0;
-        for (int num : userAnswer) {
-            if (answer.get(userAnswer.indexOf(num)) == num);
-             else if (checkListContains(answer, num))
+        for (int i = 0; i < MAX_NUMBER; i++) {
+            int number = answer.get(i);
+            if (number != userAnswer.get(i) && userAnswer.contains(number)) {
                 result++;
+            }
         }
         return result;
     }
 
-    public LinkedList<Integer> setComputerNumber() {
-        int randomNumber;
-        LinkedList<Integer> result = new LinkedList<>();
-        while (result.size() < MAX_NUMBER) {
-            randomNumber = getRandomNumber();
-            if (!checkListContains(result, randomNumber))
-                result.add(randomNumber);
+    private List<Integer> getComputerNumber() {
+        Set<Integer> numbers = new HashSet<>();
+        while (numbers.size() < MAX_NUMBER) {
+            numbers.add(getRandomNumber());
         }
-        return result;
-    }
-
-    static boolean checkListContains(LinkedList<Integer> list, int num) {
-        for (int value : list) {
-            if (value == num) return true;
-        }
-        return false;
+        return new ArrayList<>(numbers);
     }
 
     private int getRandomNumber() {
         return pickNumberInRange(Game.RANDOM_START_RANGE, Game.RANDOM_END_RANGE);
     }
 
-    public LinkedList<Integer> getUserAnswer() {
-        LinkedList<Integer> userAnswer = new LinkedList<>();
+    private List<Integer> getUserAnswer() {
+        List<Integer> userAnswer = new ArrayList<>();
         System.out.println("숫자를 입력해주세요 : ");
         for (String str : readLine().split(""))
             userAnswer.add(Integer.valueOf(str));
-        Game.checkInputValue(userAnswer);
+        inputValidate(userAnswer);
         return userAnswer;
     }
 
-    private static void checkInputValue(LinkedList<Integer> userAnswer) {
-        if (userAnswer.size() != Game.MAX_NUMBER) {
+    private void inputValidate(List<Integer> userAnswer) {
+        sizeValidate(userAnswer);
+        containsZeroValidate(userAnswer);
+        duplicateValidate(userAnswer);
+
+    }
+
+    private void duplicateValidate(List<Integer> userAnswer) {
+        if (new HashSet<>(userAnswer).size() != MAX_NUMBER)
             throw new IllegalArgumentException();
-        }
+    }
+
+    private void containsZeroValidate(List<Integer> userAnswer) {
         if (userAnswer.contains(0)) {
             throw new IllegalArgumentException();
         }
-        LinkedList<Integer> result = new LinkedList<>();
-        for (int num : userAnswer) {
-            if (!checkListContains(result, num))
-                result.add(num);
-            else
-                throw new IllegalArgumentException();
+    }
+
+    private void sizeValidate(List<Integer> userAnswer) {
+        if (userAnswer.size() != Game.MAX_NUMBER) {
+            throw new IllegalArgumentException();
         }
     }
 
