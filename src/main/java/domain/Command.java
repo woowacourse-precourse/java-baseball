@@ -17,8 +17,8 @@ public class Command {
         throw new IllegalArgumentException("1또는 2를 입력해야합니다.");
     }
 
-    public boolean isExit(){
-        if(value.equals(EXIT)){
+    public boolean isRestart(){
+        if(value.equals(RESTART)){
             return true;
         }
         return false;
