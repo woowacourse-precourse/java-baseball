@@ -8,7 +8,7 @@ import static baseball.controller.Exception.validateAskRestartOrExitInput;
 import static baseball.controller.Exception.validateUserInput;
 
 public class Controller {
-    static int NUMBER_LENGTH = 3;
+    static int BASEBALL_GAME_NUMBER_LENGTH = 3;
     static int GAME_RESTART_OR_EXIT_RESPONSE_LENGTH = 1;
     static int GAME_RESTART = 1;
     static int GAME_EXIT = 2;
@@ -27,7 +27,7 @@ public class Controller {
     }
     private void gameStartSetting(Computer computer){
         View.gameStartMessage();
-        computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END, NUMBER_LENGTH);
+        computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END, BASEBALL_GAME_NUMBER_LENGTH);
     }
 
     private void startGame(Computer computer, User user){
@@ -38,13 +38,13 @@ public class Controller {
     }
     private boolean playGameOnce(Computer computer, User user){
         String input = View.inputUserNumber();
-        validateUserInput(input, NUMBER_LENGTH);
+        validateUserInput(input, BASEBALL_GAME_NUMBER_LENGTH);
         user.saveUserInput(input);
         int strikeNum = countStrike(computer, user);
-        if(strikeNum == NUMBER_LENGTH){
+        if(strikeNum == BASEBALL_GAME_NUMBER_LENGTH){
             boolean ask = askRestartOrExit();
             if(ask){
-                computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END, NUMBER_LENGTH);
+                computer.setRandomNumber(NUMBER_RANGE_START, NUMBER_RANGE_END, BASEBALL_GAME_NUMBER_LENGTH);
                 return true;
             }
             else{
@@ -59,7 +59,7 @@ public class Controller {
     }
 
     private boolean askRestartOrExit() {
-        View.correctAnswer(NUMBER_LENGTH);
+        View.correctAnswer(BASEBALL_GAME_NUMBER_LENGTH);
 
         String input = View.askRestartOrExit(USER_CHOICE);
         validateAskRestartOrExitInput(input, GAME_RESTART, GAME_EXIT, GAME_RESTART_OR_EXIT_RESPONSE_LENGTH);
@@ -73,7 +73,7 @@ public class Controller {
 
     private int countStrike(Computer computer, User user) {
         int count = 0;
-        for(int i=0; i<NUMBER_LENGTH; i++){
+        for(int i=0; i<BASEBALL_GAME_NUMBER_LENGTH; i++){
             if(computer.numbers.get(i) == user.numbers.get(i))
                 count++;
         }
@@ -81,7 +81,7 @@ public class Controller {
     }
     private int countBall(Computer computer, User user){
         int count = 0;
-        for(int i=0; i<NUMBER_LENGTH; i++){
+        for(int i=0; i<BASEBALL_GAME_NUMBER_LENGTH; i++){
             if(computer.numbers.get(i) != user.numbers.get(i) && computer.numbers.contains(user.numbers.get(i)))
                 count++;
         }

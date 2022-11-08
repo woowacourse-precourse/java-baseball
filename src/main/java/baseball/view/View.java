@@ -33,9 +33,9 @@ public class View {
         String input = readLine();
         return input;
     }
-    public static void correctAnswer(int numberLength){
-        System.out.println(numberLength + "스트라이크");
-        System.out.println(numberLength + CORRECT_ANSWER);
+    public static void correctAnswer(int BASEBALL_GAME_NUMBER_LENGTH){
+        System.out.println(BASEBALL_GAME_NUMBER_LENGTH + "스트라이크");
+        System.out.println(BASEBALL_GAME_NUMBER_LENGTH + CORRECT_ANSWER);
     }
     public static void printGameOverMessage(){
         System.out.println(GAME_OVER);
