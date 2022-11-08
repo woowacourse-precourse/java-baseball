@@ -34,12 +34,21 @@ public class BaseballGame {
             System.out.println(printStrikeAndBall);
 
             //스트라이크 3개가 나오면 break;
+            if(printStrikeAndBall.equals("3스트라이크")){
+                System.out.println(GAME_END_MESSAGE);
+                break;
+            }
         }
     }
     private boolean restartGame(){
+        System.out.println(GAME_RESTART_MESSAGE);
         //사용자 입력
+        User user = new User();
+        String userInput = user.userRestartInput();
 
         //1 -> Restart, 2-> Exit
+        if(userInput.equals("1"))
+            return true;
         return false;
     }
 }
