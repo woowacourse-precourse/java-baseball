@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.number;
 
 import baseball.exception.UserNumberValidator;
 import camp.nextstep.edu.missionutils.Console;
