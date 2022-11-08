@@ -8,13 +8,31 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        String computer = getRandomNumber();
+
         printStartMsg();
-        printInputMsg();
-        String userInput = getInputNumber();
+        while(true){
+            String computer = getRandomNumber();
+            startGame(computer);
+            if(!getUserRestartEndNumber()) break;
+        }
 
     }
+    public static void startGame(String randomNum){
+        while(true){
+            printInputMsg();
+            String userNumber = getInputNumber();
 
+            int strikeCount = getStrikeCount(userNumber, randomNum);
+            int ballCount = getBallCount(userNumber,randomNum);
+
+            printGameResult(ballCount,strikeCount);
+
+            if(isThreeStrike(strikeCount)){
+                printEndMsg();
+                break;
+            }
+        }
+    }
     public static String getRandomNumber(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -41,7 +59,7 @@ public class Application {
         String userInputNumber = Console.readLine();
 
         try{
-            if(isInvalidNumber(userInputNumber)){
+            if(isInvalidValue(userInputNumber)){
                 throw new IllegalArgumentException();
             }
         } catch(NumberFormatException e){
@@ -79,8 +97,9 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
-    public static boolean getUserRestartEndNumber(int num){
-
+    public static boolean getUserRestartEndNumber(){
+        String input = Console.readLine();
+        int num = Integer.parseInt(input);
         if(num==1){
             return true;
         }
