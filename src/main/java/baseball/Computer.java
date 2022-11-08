@@ -34,6 +34,7 @@ public class Computer {
         countStrike(userNumbers);
         countBall(userNumbers);
     }
+
     public void printResult() {
         StringBuilder gameResultMessage = new StringBuilder();
         if (ball > 0) {
@@ -61,6 +62,7 @@ public class Computer {
         strike = 0;
         ball = 0;
     }
+
     public Command getCommand(List<Integer> command) {
         Integer commandInt = command.get(0);
         int commandRestart = RESTART.getCommand();
