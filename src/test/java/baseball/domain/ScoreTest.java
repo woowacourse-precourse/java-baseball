@@ -32,4 +32,16 @@ public class ScoreTest {
         //then
         assertThat(strikeAndBallCount).isEqualTo(List.of(ballCount, strikeCount));
     }
+
+    @Test
+    void 횟수에_따른_정답여부_반환(){
+        //given
+        Score testScore = new Score(0,3);
+
+        //when
+        boolean isCorrect = testScore.isCorrect();
+
+        //then
+        assertThat(isCorrect).isEqualTo(true);
+    }
 }
