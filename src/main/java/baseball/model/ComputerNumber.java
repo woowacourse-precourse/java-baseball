@@ -25,8 +25,14 @@ public class ComputerNumber {
         digits = new ArrayList<>(digitSet);
     }
 
+    public Integer getDigit(int index){
+        return digits.get(index);
+    }
+
     private int getRandom(){
         return Randoms.pickNumberInRange(MIN_NUMBER,MAX_NUMBER);
     }
+
+
 
 }
