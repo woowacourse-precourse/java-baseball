@@ -52,10 +52,19 @@ public class Application {
 				user.add(Character.getNumericValue(input.charAt(i)));
 			}
 			return user;
-		}
-		else {
+		}else {
 			throw new IllegalArgumentException("올바른 값을 입력하세요");
 		}
+	}
+	
+	public static int strikeCheck(List<Integer> computer, List<Integer> user) {
+		int strike=0;
+		for(int i=0;i<3;i++) {
+			if(computer.get(i).equals(user.get(i))) {
+				strike+=1;
+			}
+		}
+		return strike;
 	}
 	
     public static void main(String[] args) {
