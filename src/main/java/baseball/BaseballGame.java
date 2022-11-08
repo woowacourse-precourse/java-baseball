@@ -14,6 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    public static boolean isResult(List<Integer> userNumber, List<Integer> computerNumber) {
+        int strikeNum = checkStrike(computerNumber, userNumber);
+        int sameNum = checkSame(computerNumber, userNumber);
+        int ballNum = sameNum - strikeNum;
+        printResult(ballNum, strikeNum);
+        return strikeNum != GAME_INPUT_LENGTH;
+    }
+
     public static int checkSame(List<Integer> computer, List<Integer> user) {
         int ballNum = 0;
         for (Integer integer : user) {
