@@ -17,14 +17,14 @@ public class ExceptionHandler {
     }
 
     static void validateOneIfGameRepeatOrTwo(String oneIfGameRepeatOrTwo) throws IllegalArgumentException {
-        if (ValidationConstant.INPUT_LIST_OF_USER_CHECK_REPEAT_GAME.contains(oneIfGameRepeatOrTwo)) {
+        if (ValidationConstant.EXAMPLE_LIST_INPUT_OF_CHECK_REPEAT_GAME.contains(oneIfGameRepeatOrTwo)) {
             return;
         }
         throw new IllegalArgumentException(ValidationMessage.USER_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
     }
 
     private static void validateOf3DigitsNumber(String userNumberOfString) {
-        boolean isMatch = Pattern.matches(ValidationConstant.USER_NUMBER_REGEX, userNumberOfString);
+        boolean isMatch = Pattern.matches(ValidationConstant.PATTERN_OF_INPUT_USER_NUMBER_REGEX, userNumberOfString);
         if (isMatch) {
             return;
         }
