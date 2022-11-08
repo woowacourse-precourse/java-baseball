@@ -32,7 +32,12 @@ public class Rule {
         return false;
     }
     private static boolean isStrike(int comNum, int userNum) {
-        return false;
+
+        if(comNum != userNum){
+            return false;
+        }
+
+        return true;
     }
 
 
