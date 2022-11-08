@@ -41,6 +41,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_0_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("000"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_0이_포함된_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("301"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
+    @Test
     void 예외_문자_입력() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
