@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Computer.calcResult;
+import static baseball.Computer.printResult;
 import static baseball.GameManager.shouldRestartGame;
 import static baseball.Number.generateRandomNumber;
 import static baseball.Number.readNum;
@@ -242,6 +243,61 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> shouldRestartGame())
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void printResult_메서드에서_2볼_출력() {
+        List<Integer> score = Arrays.asList(2, 0);
+
+        printResult(score);
+
+        String expectedResult = "2볼";
+
+        assertThat(output()).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void printResult_메서드에서_1스트라이크_출력() {
+        List<Integer> score = Arrays.asList(0, 1);
+
+        printResult(score);
+
+        String expectedResult = "1스트라이크";
+
+        assertThat(output()).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void printResult_메서드에서_1볼_1스트라이크_출력() {
+        List<Integer> score = Arrays.asList(1, 1);
+
+        printResult(score);
+
+        String expectedResult = "1볼 1스트라이크";
+
+        assertThat(output()).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void printResult_메서드에서_낫싱_출력() {
+        List<Integer> score = Arrays.asList(0, 0);
+
+        printResult(score);
+
+        String expectedResult = "낫싱";
+
+        assertThat(output()).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void printResult_메서드에서_3스트라이크_출력() {
+        List<Integer> score = Arrays.asList(0, 3);
+
+        printResult(score);
+
+        String expectedResult = "3스트라이크";
+
+        assertThat(output()).isEqualTo(expectedResult);
     }
 
     @Test
