@@ -4,6 +4,11 @@ public class Game {
 
     // 스트라이크 개수, 볼 개수를 관리하는 객체 Score
     // 게임 진행 상태
+    private static final int START = 0;
+    private static final int RUNNING = 1;
+    private static final int STOP = 2;
+
+    private int GAME_STATE = START;
 
     // init(): Computer측 랜덤 숫자 생성
 
@@ -18,4 +23,5 @@ public class Game {
 
     // input(): 유저에게 입력 받기
 
-    // updateScore(): 볼 개수와 스트라이크 개수 업데이트
+    // updateScore(): 볼 개수와 스트라이크 개수
+}
