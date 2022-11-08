@@ -6,8 +6,7 @@ public class StrikeBall {
     String output = "";
 
     StrikeBall(){
-        strike = 0;
-        ball = 0;
+        this(0,0);
     }
 
     StrikeBall(int strike, int ball){
