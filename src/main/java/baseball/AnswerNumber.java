@@ -8,18 +8,18 @@ import java.util.*;
 public class AnswerNumber {
     private List<Integer> answerNumberList;
 
-    public AnswerNumber(){
+    public AnswerNumber() {
         this.answerNumberList = new ArrayList<>();
     }
 
-    public List<Integer> getAnswerNumberList(){
+    public List<Integer> getAnswerNumberList() {
         return answerNumberList;
     }
 
-    public void RandomNumber(){
+    public void RandomNumber() {
         HashSet<Integer> numbers = new LinkedHashSet<>();
-        while (numbers.size() < Game.BALLSIZE){
-            int num = Randoms.pickNumberInRange(1,9);
+        while (numbers.size() < Game.BALLSIZE) {
+            int num = Randoms.pickNumberInRange(1, 9);
             numbers.add(num);
 
         }

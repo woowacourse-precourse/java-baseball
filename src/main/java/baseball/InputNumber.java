@@ -9,20 +9,20 @@ public class InputNumber {
 
     private List<Integer> userNumber;
 
-    public InputNumber(){
+    public InputNumber() {
         userNumber = new ArrayList<>();
     }
 
-    public List<Integer> getUserNumber(){
+    public List<Integer> getUserNumber() {
         return userNumber;
     }
 
-    public List<Integer> InputNumbers(){
-        String  user = Console.readLine();
+    public List<Integer> InputNumbers() {
+        String user = Console.readLine();
         List<Integer> inputList = new ArrayList<>();
-        for(int i = 0; i<user.length(); i++){
+        for (int i = 0; i < user.length(); i++) {
             String num = String.valueOf(user.charAt(i));
-            if(!num.equals(",") && !num.equals(" ")){
+            if (!num.equals(",") && !num.equals(" ")) {
                 inputList.add(Integer.valueOf(num));
             }
         }
@@ -30,9 +30,9 @@ public class InputNumber {
 
     }
 
-    public List<Integer> userInputNumber(){
+    public List<Integer> userInputNumber() {
         List<Integer> inputList = this.InputNumbers();
-        if(!InputNumberValidator.inputNumberTotalCheck(inputList)){
+        if (!InputNumberValidator.inputNumberTotalCheck(inputList)) {
             throw new IllegalArgumentException();
         }
         userNumber = inputList;

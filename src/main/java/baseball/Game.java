@@ -1,14 +1,15 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
     public static final int BALLSIZE = 3;
-    public static final String  RESTART = "1";
-    public static final String  GAMEEND = "2";
+    public static final String RESTART = "1";
+    public static final String GAMEEND = "2";
 
 
     private InputNumber inputNumber;
@@ -21,7 +22,7 @@ public class Game {
     private int ball;
 
 
-    public Game(){
+    public Game() {
         inputNumber = new InputNumber();
         answerNumber = new AnswerNumber();
 
@@ -32,25 +33,25 @@ public class Game {
         ball = 0;
     }
 
-    public void playGame(){
+    public void playGame() {
         System.out.println("게임을 시작합니다.");
         System.out.println("숫자를 입력해주세요.:");
         answerNumber.RandomNumber();
         answerNumberList = answerNumber.getAnswerNumberList();
-        do{
+        do {
             inputNumberList = inputNumber.userInputNumber();
             strike = 0;
             ball = 0;
             getScore();
             getHintMessage();
             inputNumberList.clear();
-        }while(!getWin());
+        } while (!getWin());
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
 
-    public void getScore(){
+    public void getScore() {
         String input = inputNumberList.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
@@ -58,38 +59,38 @@ public class Game {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        for (int i = 0; i<BALLSIZE; i++){
+        for (int i = 0; i < BALLSIZE; i++) {
             int index = answer.indexOf(input.charAt(i));
-            if(index == i){
+            if (index == i) {
                 strike++;
-            }else if(index != -1){
+            } else if (index != -1) {
                 ball++;
             }
         }
     }
 
-    public void getHintMessage(){
-        if(ball > 0){
+    public void getHintMessage() {
+        if (ball > 0) {
             System.out.print(ball + "볼 ");
         }
-        if(strike > 0){
+        if (strike > 0) {
             System.out.println(strike + "스트라이크");
         }
-        if(ball + strike == 0){
+        if (ball + strike == 0) {
             System.out.println("낫싱");
         }
         System.out.println();
 
     }
 
-    public boolean getWin(){
+    public boolean getWin() {
         return strike == BALLSIZE;
     }
 
-    public boolean askRestart(){
+    public boolean askRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String yesOrNo = Console.readLine();
-        if(!InputNumberValidator.restartOrEndNumberCheck(yesOrNo)){
+        if (!InputNumberValidator.restartOrEndNumberCheck(yesOrNo)) {
             throw new IllegalArgumentException();
         }
         return yesOrNo.equals(RESTART);

@@ -6,10 +6,10 @@ public class Application {
     public static void main(String[] args) {
         Game game = new Game();
 
-        do{
+        do {
             game.playGame();
 
-       }while (game.askRestart());
+        } while (game.askRestart());
 
     }
 }
