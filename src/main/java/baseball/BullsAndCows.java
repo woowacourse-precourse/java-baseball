@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,13 +36,15 @@ class BullsAndCows {
         List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
 
         bullsAndCowsResult.init();
+        assembleCount(userInputNumber);
+        bullsAndCowsResult.printResult();
+    }
 
+    private void assembleCount(List<Integer> userInputNumber) {
         for (int i = 0; i < computerNumber.size(); i++) {
             int userIndex = findNumberIndex(userInputNumber, computerNumber.get(i));
             bullsAndCowsResult.addCount(userIndex, i);
         }
-
-        bullsAndCowsResult.printResult();
     }
 
     boolean isContinue() {
@@ -53,9 +54,9 @@ class BullsAndCows {
         return answer.equals("1");
     }
 
-    public static int findNumberIndex(List<Integer> userInputNumber, int c) {
-        if (userInputNumber.contains(c)) {
-            return userInputNumber.indexOf(c);
+    public static int findNumberIndex(List<Integer> userInputNumber, int computerIndex) {
+        if (userInputNumber.contains(computerIndex)) {
+            return userInputNumber.indexOf(computerIndex);
         } else {
             return -1;
         }
