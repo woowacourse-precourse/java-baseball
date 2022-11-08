@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.domain.Hint;
+
 public class View {
     private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBERS = "숫자를 입력해주세요 : ";
@@ -19,5 +21,9 @@ public class View {
     public static void printGameOver() {
         System.out.println(GAME_OVER);
         System.out.println(INPUT_RESET);
+    }
+
+    public static void printHint() {
+        System.out.println(Hint.getHintByCount());
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import static baseball.constant.Constant.*;
 
 public class Rule {
-    public void getHint(List<Integer> numbers, List<Integer> computerNumbers) {
+    public void applyHint(List<Integer> numbers, List<Integer> computerNumbers) {
         Hint.init();
         for(int i=0; i<numbers.size(); i++) {
             if(numbers.get(i) == computerNumbers.get(i)) {
@@ -15,8 +15,6 @@ public class Rule {
                 Hint.addCount(Hint.BALL);
             }
         }
-
-        System.out.println(Hint.getHintByCount());
     }
 
     public boolean isReset(String number) {
