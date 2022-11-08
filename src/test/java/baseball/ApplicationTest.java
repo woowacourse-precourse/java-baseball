@@ -77,11 +77,65 @@ class ApplicationTest extends NsTest {
         String input = "abc";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        System.setIn(in);
         Throwable thrown = catchThrowable(()->getUserInputNumber());
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 유저와_컴퓨터_숫자_비교_테스트_1(){
+        List<Integer> user = List.of(1,2,3);
+        List<Integer> computer = List.of(1,2,3);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        assertThat(compareUserNumberToComputers(user, computer)).isEqualTo(0);
+
+        String msg = "3스트라이크";
+        assertThat(msg.trim()).isEqualTo(out.toString().trim());
+
+    }
+
+    @Test
+    void 유저와_컴퓨터_숫자_비교_테스트_2(){
+        List<Integer> user = List.of(1,2,3);
+        List<Integer> computer = List.of(3,2,4);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        assertThat(compareUserNumberToComputers(user, computer)).isEqualTo(1);
+
+        String msg = "1볼 1스트라이크";
+        assertThat(msg.trim()).isEqualTo(out.toString().trim());
+
+    }
+
+    @Test
+    void 유저와_컴퓨터_숫자_비교_테스트_3(){
+        List<Integer> user = List.of(1,2,3);
+        List<Integer> computer = List.of(4,5,1);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        assertThat(compareUserNumberToComputers(user, computer)).isEqualTo(1);
+
+        String msg = "1볼";
+        assertThat(msg.trim()).isEqualTo(out.toString().trim());
+
+    }
+
+    @Test
+    void 유저와_컴퓨터_숫자_비교_테스트_4(){
+        List<Integer> user = List.of(1,2,3);
+        List<Integer> computer = List.of(4,5,6);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        assertThat(compareUserNumberToComputers(user, computer)).isEqualTo(1);
+
+        String msg = "낫싱";
+        assertThat(msg.trim()).isEqualTo(out.toString().trim());
+
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
