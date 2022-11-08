@@ -10,7 +10,7 @@ public class Gamestart {
         Scanner scanner = new Scanner(System.in);
         List<Integer> playerNum = new ArrayList<>();
         String input = scanner.next();
-
+        if(input.length() != 3) throw new IllegalArgumentException("입력값이 잘못되었습니다.");
         for(String number: input.split("")){
             playerNum.add(Integer.parseInt(number));
         }
