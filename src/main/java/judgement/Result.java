@@ -16,7 +16,7 @@ public class Result {
     }
 
     public static int strikeCount(List<Integer> computer, List<Integer> user) {
-        int strike=0;
+        int strike = 0;
         for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i) == user.get(i)) {
                 strike++;
@@ -30,7 +30,7 @@ public class Result {
         int strikeCount = strikeCount(computer, user);
         int ballCount = sameNumberCount - strikeCount;
 
-        if(sameNumberCount == 0) {
+        if (sameNumberCount == 0) {
             return "낫싱";
         } else if (strikeCount == 0) {
             return ballCount + "볼";

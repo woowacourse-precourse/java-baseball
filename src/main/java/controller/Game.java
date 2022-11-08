@@ -7,13 +7,14 @@ import java.util.List;
 import createlist.Computer;
 import createlist.User;
 import validate.Check;
+
 import static judgement.Result.referee;
 
 public class Game {
 
     public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int restart=1;
+        int restart = 1;
 
         while (Check.restartNumberValidate(restart)) {
             List<Integer> computer = Computer.numberList();
