@@ -28,7 +28,7 @@ class RefereeTest {
 	void judgeStrikeTest() {
 		int ballCount = 0;
 		int strikeCount = 1;
-		Referee.judgeStrike(ballCount, strikeCount);
+		Referee.judgeGame(ballCount, strikeCount);
 
 		String result = "1스트라이크";
 		assertThat(result).isEqualTo(outputStreamCaptor.toString().trim());
@@ -39,7 +39,7 @@ class RefereeTest {
 	void judgeBallTest() {
 		int ballCount = 3;
 		int strikeCount = 0;
-		Referee.judgeBall(ballCount, strikeCount);
+		Referee.judgeGame(ballCount, strikeCount);
 
 		String result = "3볼";
 		assertThat(result).isEqualTo(outputStreamCaptor.toString().trim());
@@ -50,7 +50,7 @@ class RefereeTest {
 	void judgeNothingTest() {
 		int ballCount = 0;
 		int strikeCount = 0;
-		Referee.judgeNothing(ballCount, strikeCount);
+		Referee.judgeGame(ballCount, strikeCount);
 
 		String result = "낫싱";
 		assertThat(result).isEqualTo(outputStreamCaptor.toString().trim());
@@ -61,7 +61,7 @@ class RefereeTest {
 	void judgeBallAndStrikeTest() {
 		int ballCount = 2;
 		int strikeCount = 1;
-		Referee.judgeBallAndStrike(ballCount, strikeCount);
+		Referee.judgeGame(ballCount, strikeCount);
 
 		String result = "2볼 1스트라이크";
 		assertThat(result).isEqualTo(outputStreamCaptor.toString().trim());

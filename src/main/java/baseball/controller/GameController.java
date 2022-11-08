@@ -27,16 +27,16 @@ public class GameController {
 		while (progress) {
 			Player player = new Player(Input.getPlayerNumber());
 			GameResult gameResult = new GameResult(player.getNumbers(), computer.getNumbers());
-			Referee.getGameResult(gameResult);
+			Referee.judgeGame(gameResult.getBallCount(), gameResult.getStrikeCount());
 
-			if (isStrikeOut(gameResult)) {
+			if (isStrikeOut(gameResult.getStrikeCount())) {
 				progress = false;
 			}
 		}
 	}
 
-	private static boolean isStrikeOut(GameResult gameResult) {
-		if (gameResult.getStrikeCount() == STRIKE_OUT) {
+	private static boolean isStrikeOut(int strikeCount) {
+		if (strikeCount == STRIKE_OUT) {
 			OutputView.printGameEnd(STRIKE_OUT);
 			return true;
 		}
