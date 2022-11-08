@@ -13,7 +13,6 @@ class HintTest extends NsTest {
     void 볼의_개수가_증가하는지_확인() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         //when
         hint.incrementBall();
         hint.incrementBall();
@@ -59,7 +58,6 @@ class HintTest extends NsTest {
     public void 볼이_3개일때_출력() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         hint.incrementBall();
         hint.incrementBall();
         hint.incrementBall();
@@ -73,7 +71,6 @@ class HintTest extends NsTest {
     public void 볼이_2개일때_출력() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         hint.incrementBall();
         hint.incrementBall();
         //when
@@ -86,7 +83,6 @@ class HintTest extends NsTest {
     public void 볼이_1개일때_출력() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         hint.incrementBall();
         //when
         hint.print();
@@ -98,7 +94,6 @@ class HintTest extends NsTest {
     public void 볼2개_스트라이크1개_일때_출력() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         hint.incrementBall();
         hint.incrementBall();
         hint.incrementStrike();
@@ -112,7 +107,6 @@ class HintTest extends NsTest {
     public void 볼1개_스트라이크2개_일때_출력() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         hint.incrementBall();
         hint.incrementStrike();
         hint.incrementStrike();
@@ -126,7 +120,6 @@ class HintTest extends NsTest {
     public void 스트라이크가_3개_일때_출력() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         hint.incrementStrike();
         hint.incrementStrike();
         hint.incrementStrike();
@@ -152,7 +145,6 @@ class HintTest extends NsTest {
     public void 스트라이크가_1개_일때_출력() {
         //given
         Hint hint = new Hint();
-        hint.clearHint();
         hint.incrementStrike();
         //when
         hint.print();
