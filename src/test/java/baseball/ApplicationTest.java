@@ -3,8 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
@@ -16,19 +14,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
-    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
-
-    @BeforeEach
-    public void setUpStreams() {
-        System.setOut(new PrintStream(output));
-    }
-
-    @AfterEach
-    public void restoreStreams() {
-        System.setOut(System.out);
-        output.reset();
-    }
-
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -237,6 +222,10 @@ class ApplicationTest extends NsTest {
     @Test
     void 게임메세지검증_테스트() throws Exception {
         //given
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        PrintStream printStream = System.out;
+        System.setOut(new PrintStream(outputStreamCaptor));
+
         Computer computer = new Computer();
         Game game = new Game(computer);
         Method method = game.getClass().getDeclaredMethod("stringToIntegerList", String.class);
@@ -254,9 +243,11 @@ class ApplicationTest extends NsTest {
 
         game.setStrike(testOneStrike);
         game.setBall(testOneball);
+
         //then
         game.gameMessage();
-        assertThat(output.toString().trim()).isEqualTo("3스트라이크");
+        System.setOut(printStream);
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("3스트라이크");
     }
 
     @Test
