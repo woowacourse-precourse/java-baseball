@@ -30,15 +30,15 @@ public class Player {
         int number = Integer.parseInt(input);
 
         progressVaild();
-        return GameProgress.values()[number];
+        return GameProgress.values()[number - 1];
     }
 
     public String removeSeparator(String input) {
         return input.replaceAll(SEPARATOR_PATTERN, "");
     }
     public void numberValid(String input) {
-        if(!input.matches("[0-9]+")) {
-            throw new IllegalArgumentException("숫자가 아닌 입력이 들어왔습니다." + input);
+        if(!input.matches("[1-9]+")) {
+            throw new IllegalArgumentException("범위 숫자가 아닌 입력이 들어왔습니다." + input);
         }
     }
     public void baseballVaild(){
