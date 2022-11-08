@@ -22,4 +22,10 @@ public class Validation {
                 .count() == input.length();
     }
 
+    private boolean CheckLength(String input){
+        return input.length() == CNT_NUMBER;
+    }
+
+
+
 }
