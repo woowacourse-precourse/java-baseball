@@ -43,12 +43,23 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    public void checkInputConditionTest_BlankInput() throws Exception{
+        //given
+        String inputNumber = "";
+        //when
+        //then
+        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     public void checkInputConditionTest_MoreDigits() throws Exception {
         //given
         String inputNumber = "1234";
         //when
         //then
-        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
