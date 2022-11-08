@@ -51,7 +51,7 @@ public class Application {
         makeUserList(user, text);
         return user;
     }
-    private static void makeUserList(List<Integer> user, String text) {
+    public static List<Integer> makeUserList(List<Integer> user, String text) {
         for (int i = 0; i < text.length(); i++) {
             int value = isValidateInt(text.charAt(i), 1, 9);
             isContainUser(user, value);
@@ -60,6 +60,7 @@ public class Application {
         if (user.size() > 3) {
             throw new IllegalArgumentException();
         }
+        return user;
     }
     public static int isValidateInt(Character str, int start, int end) {
         int value = 0;
