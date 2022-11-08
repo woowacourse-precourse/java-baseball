@@ -13,6 +13,10 @@ class ErrorCheckingTest {
 
     @Test
     void checkingInputNum() {
+        boolean answer  = ErrorChecking.checkingInputNum("123");
+        assertTrue(answer);
+        boolean answerX = ErrorChecking.checkingInputNum("false");
+        assertFalse(answerX);
     }
 
     @Test
