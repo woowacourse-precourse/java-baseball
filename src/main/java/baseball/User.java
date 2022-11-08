@@ -7,13 +7,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class User {
-    private String number;
     private static final String GAME_START = "숫자 야구 게임을 시작합니다.";
     private static final String INPUT_NUMBER = "숫자를 입력해주세요 : ";
 
-    public void inputNumber() {
+    public String inputNumber() {
         System.out.print(INPUT_NUMBER);
-        number = Console.readLine();
+        String number = Console.readLine();
+        return number;
     }
 
     public void printGameStart() {
@@ -21,11 +21,11 @@ public class User {
     }
 
     public List<Integer> createUserNumber() {
-        inputNumber();
+        String number = inputNumber();
         String[] splitNumbers = number.split("");
         List<Integer> userNumbers = new ArrayList<>();
-        for (String number : splitNumbers) {
-            int numberToInt = Integer.parseInt(number);
+        for (String splitNumber : splitNumbers) {
+            int numberToInt = Integer.parseInt(splitNumber);
             userNumbers.add(numberToInt);
         }
         inputException(userNumbers);
@@ -65,7 +65,7 @@ public class User {
     }
 
     public int inputRestartNumber() {
-        number = Console.readLine();
+        String number = Console.readLine();
         int inputNumber = Integer.parseInt(number);
         return inputNumber;
     }
