@@ -20,6 +20,15 @@ class BaseballInputTest extends NsTest {
         assertThatThrownBy(BaseballInput::getUserNumber)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    void 유저가_공백이_포함된_숫자를_입력하면_예외_발생() {
+        String arg = "1 2 3";
+        final byte[] buf = command(arg);
+        System.setIn(new ByteArrayInputStream(buf));
+
+        assertThatThrownBy(BaseballInput::getUserNumber)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     void 유저가_숫자를_많게_입력하면_예외_발생() {
