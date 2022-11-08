@@ -50,7 +50,9 @@ public class Game {
     }
 
     public boolean replay() throws IllegalArgumentException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = getUserInput();
+        System.out.println(input);
 
         // Exception: 한자리 숫자가 아니거나, 1 or 2를 입력하지 않았을 경우
         if (input.length() != 1 || "12".contains(input)) {
