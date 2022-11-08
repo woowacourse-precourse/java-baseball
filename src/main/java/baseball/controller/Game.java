@@ -33,12 +33,13 @@ public class Game {
     }
 
 
-    private boolean ReGame() {
+    private static boolean ReGame() {
         OutputView.EndGameOutput();
-        if (restartInput() == RESTART) {
+        int regame = restartInput();
+        if (regame == RESTART) {
             return true;
         }
-        if (restartInput() == QUIT) {
+        if (regame == QUIT) {
             return false;
         }
         throw new IllegalArgumentException("잘못된 입력");
