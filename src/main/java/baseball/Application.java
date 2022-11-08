@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public class Application {
         String computer = getRandomNumber();
         printStartMsg();
         printInputMsg();
+        getInputNumber
     }
 
     public static String getRandomNumber(){
@@ -33,5 +35,17 @@ public class Application {
 
     public static void printInputMsg(){
         System.out.print("숫자를 입력해주세요 : ");
+    }
+    public static String getInputNumber(){
+        String userInputNumber = Console.readLine();
+
+        try{
+            if(isInvalidNumber(userInputNumber)){
+                throw new IllegalArgumentException();
+            }
+        } catch(NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        return userInputNumber;
     }
 }
