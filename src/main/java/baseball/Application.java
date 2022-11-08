@@ -90,6 +90,19 @@ public class Application {
         return false;
     }
 
+    /**
+     * 계속할지 여부를 확인
+     *
+     * @return
+     * @throws Exception
+     */
+    private static Boolean isContinue() throws Exception {
+        String input = readLine();
+        if (input.equals("1")) return true;
+        if (input.equals("2")) return false;
+        throw new IllegalArgumentException();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
