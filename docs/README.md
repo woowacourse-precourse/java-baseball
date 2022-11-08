@@ -16,9 +16,9 @@
   - [x] 받은 입력이 1 ~ 9 사이의 숫자로 구성되어있는지 검증하는 책임 할당
 
 
-- [ ] `Computer`에 의해 `PitchInput`과 비교한 결과를 저장하는 값 객체 `PitchResult`
-  - [ ] `ball`과 `strike`값 저장하는 책임 할당
-  - [ ] `ball`과 `strike` 정보를 요구사항에 맞는 문자열로 반환하는 책임 할당
+- [x] `Computer`에 의해 `PitchInput`과 비교한 결과를 저장하는 값 객체 `PitchResult`
+  - [x] `ball`과 `strike`값 저장하는 책임 할당
+  - [x] `ball`과 `strike` 정보를 요구사항에 맞는 문자열로 반환하는 책임 할당
 
 
 - [ ] 게임을 진행하는 `Application`
