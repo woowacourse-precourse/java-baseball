@@ -5,9 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class Application {
-    static List<Integer> targetNum = new ArrayList<>();
-    static int strike =0;
-    static int ball =0;
+    private static List<Integer> targetNum = new ArrayList<>();
+    private static int strike =0;
+    public static int ball =0;
 
     public static void main(String[] args) {
 
@@ -23,7 +23,7 @@ public class Application {
         System.out.println("숫자야구 게임을 시작합니다.");
     }
 
-    public static void createRandomTargetNum() {
+    private static void createRandomTargetNum() {
         while (targetNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
 
@@ -68,7 +68,7 @@ public class Application {
         }
     }
 
-    static void inputValidate(List<String> inputNum) {
+    private static void inputValidate(List<String> inputNum) {
         if(inputNum.size() != 3){
             throw new IllegalArgumentException();
         }
@@ -99,7 +99,7 @@ public class Application {
         ball=0;
     }
 
-    static void optionValidate(int option) {
+    private static void optionValidate(int option) {
         if(option !=1 && option !=2){
             throw new IllegalArgumentException();
         }
