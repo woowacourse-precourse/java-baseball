@@ -14,7 +14,7 @@ public class BaseballGame {
 
     private int strike = 0;
     private int ball = 0;
-    private boolean restart = false;
+    private boolean endgame = false;
 
     public BaseballGame(){}
 
@@ -24,7 +24,7 @@ public class BaseballGame {
 
         computerNumber.setRandom();
 
-        while(!restart){
+        while(!endgame){
             String input = userView.UserAnswer();
             userNumber.setDigits(input);
 
@@ -60,7 +60,7 @@ public class BaseballGame {
     private void ReStartGame(ComputerNumber computerNumber){
         String input = userView.RestartAnswer();
         if(input.equals("2")){
-            restart = true;
+            endgame = true;
         }else{
             computerNumber.setRandom();
         }
