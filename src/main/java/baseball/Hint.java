@@ -19,16 +19,28 @@ public class Hint {
     }
 
     private void printHint() {
+        printBall();
+        printStrike();
+        printNothing();
+        System.out.println();
+    }
+
+    private void printBall() {
         if (this.ball > 0) {
             System.out.print(this.ball + "볼 ");
         }
+    }
+
+    private void printStrike() {
         if (this.strike > 0) {
             System.out.print(this.strike + "스트라이크 ");
         }
+    }
+
+    private void printNothing(){
         if (this.ball == 0 && this.strike == 0) {
             System.out.print("낫싱");
         }
-        System.out.println();
     }
     private void countStrike(int user, int computer) {
         if (user == computer) {
