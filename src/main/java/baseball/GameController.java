@@ -34,11 +34,7 @@ public class GameController {
     }
 
     public void startGame() {
-        try {
-            playGame(RandomGenerator());
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+        playGame(RandomGenerator());
     }
 
     public void playGame(List<Integer> answer) {
@@ -47,7 +43,7 @@ public class GameController {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if (!checkInput(input)) {
-                throw new IllegalArgumentException("올바르지 않은 입력입니다");
+                throw new IllegalArgumentException("올바르지 않은 입력입니다.");
             }
             List<Integer> userInput = new ArrayList<>();
             for (int i =0; i<input.length();i++){
