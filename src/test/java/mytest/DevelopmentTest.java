@@ -67,4 +67,29 @@ public class DevelopmentTest {
         assertThatThrownBy(()->handleErrorForUserInput("343"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    /**
+     * 사용자로부터 다음 명령어 받을 때의 값
+     */
+    @Test
+    @DisplayName("사용자 입력 값이 1,2가 아닌 다른 범위의 정수인 경우")
+    void userCommandNotInCommandLists(){
+        assertThat(handleErrorForUserCommand("0"))
+                .isEqualTo(false);
+        assertThat(handleErrorForUserCommand("2h"))
+                .isEqualTo(false);
+        assertThat(handleErrorForUserCommand("12"))
+                .isEqualTo(false);
+        assertThat(handleErrorForUserCommand("wes"))
+                .isEqualTo(false);
+    }
+
+    @Test
+    @DisplayName("사용자 입력 값이 1,2가 아닌 다른 범위의 정수인 경우")
+    void userCommandIsAppropriate(){
+        assertThat(handleErrorForUserCommand("1"))
+                .isEqualTo(true);
+        assertThat(handleErrorForUserCommand("2"))
+                .isEqualTo(true);
+    }
 }
