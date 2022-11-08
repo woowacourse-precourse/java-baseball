@@ -12,7 +12,7 @@ public final class GameConstants {
     public static final int HUNDRED_START = 1;
     public static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static final String GAME_END_MESSAGE =
-            MIN_INPUT_INCLUSIVE + "개의 숫자를 모두 맞히셨습니다 !게임 종료\n";
+            BASEBALL_NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다 !게임 종료\n";
 
     public static final String ONE_BALL = "1볼 ";
     public static final String TWO_BALL = "2볼 ";
