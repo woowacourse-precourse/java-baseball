@@ -4,11 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
-import baseball.Comparison;
 
 public class User {
     private String userInput;
-    private List<Integer> computerNum;
+    List<Integer> computerNum;
     final String RECEIVE_MESSAGE = "숫자를 입력해주세요 : ";
 
     public User(List<Integer> computerNum, List<Integer> userNum) {

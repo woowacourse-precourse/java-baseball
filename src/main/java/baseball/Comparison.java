@@ -7,6 +7,7 @@ public class Comparison {
     private List<Integer> computerNum;
     private List<Integer> copyUserNum;
     private int strike;
+    private int ball;
 
     public Comparison(List<Integer> computerNum, List<Integer> userNum) {
         this.computerNum = computerNum;
@@ -36,13 +37,12 @@ public class Comparison {
         }
     }
 
-
     void getMessage(List<Integer> userNum) {
         if (copyUserNum.isEmpty()) {
             Message nothing = new Message(computerNum, userNum);
         } else {
             checkStrike(userNum);
-            Message ballStrike = new Message(strike, copyUserNum.size() - strike, computerNum, userNum);
+            getStrikeBallMessage(userNum); 
         }
     }
 
@@ -57,5 +57,10 @@ public class Comparison {
     void countStrike(int computer, int user) {
         if (computer == user)
             this.strike++;
+    }
+
+    void getStrikeBallMessage(List<Integer> userNum){
+        ball = copyUserNum.size() - strike;
+        Message ballStrike = new Message(strike, ball, computerNum, userNum);
     }
 }

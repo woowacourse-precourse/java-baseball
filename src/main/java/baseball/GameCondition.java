@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import baseball.Game;
 
 public class GameCondition {
     String condition;

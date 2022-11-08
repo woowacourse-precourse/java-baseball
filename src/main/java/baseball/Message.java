@@ -24,6 +24,10 @@ public class Message {
 
     public Message(int strike, int ball, List<Integer> computerNum, List<Integer> userNum) {
         this.computerNum = computerNum;
+        printMessage(strike, ball, userNum);
+    }
+
+    void printMessage(int strike, int ball, List<Integer> userNum){
         if (ball == 0)
             printStrike(strike, userNum);
         else if (strike == 0)

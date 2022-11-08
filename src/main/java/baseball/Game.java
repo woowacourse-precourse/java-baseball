@@ -3,10 +3,6 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.Computer;
-import baseball.User;
-import baseball.GameCondition;
-
 public class Game {
     private List<Integer> computerNum = new ArrayList<>();
     private List<Integer> userNum = new ArrayList<>();
