@@ -73,7 +73,9 @@ class Game {
             }
             ballCount = checkingBall(randomNum, inputNum, ballCount);
             strikeCount = checkingStrike(randomNum, inputNum, strikeCount);
-            System.out.println(ballCount + "볼 " + strikeCount + " 스트라이크");
+            if(ballCount >=1 || strikeCount >=1){
+                System.out.println(ballCount + "볼 " + strikeCount + " 스트라이크");
+            } else System.out.println("낫싱");
         }
 
         return true;
