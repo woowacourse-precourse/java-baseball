@@ -7,7 +7,7 @@ import static baseball.tool.DuplicateByComparison.findOverlapNumber;
 
 public class CountStrikeOrBall {
 
-    public static int getStrikeNumber(List<Integer> answerNumber, int receivedNumber) {
+    public int getStrikeNumber(List<Integer> answerNumber, int receivedNumber) {
         List<Integer> overlapNumberList = findOverlapNumber(answerNumber, receivedNumber);
         int strikeNumberCnt = 0;
 
@@ -20,7 +20,7 @@ public class CountStrikeOrBall {
         return strikeNumberCnt;
     }
 
-    public static int getBallNumber(List<Integer> answerNumber, int receivedNumber) {
+    public int getBallNumber(List<Integer> answerNumber, int receivedNumber) {
         List<Integer> overlapNumberList = findOverlapNumber(answerNumber, receivedNumber);
         int ballNumberCnt = 0;
 
