@@ -234,7 +234,7 @@ while (computer.size() < 3) {
     - 내부에서 `isPlayerNumberValid` 메서드를 릴레이 호출한다. 그 값이 `true`면 즉시 반환한다. 
     - `false`면 `IllegalArgumentException`을 발생시켜 호출자에 `throw`한다. 
   - **사용자 입력이 유효한 형식인지 확인하는 기능**
-    - `private static boolean isPlayerNumberValid(String playerNumberOrNull)`
+    - `public static boolean isPlayerNumberValid(String playerNumberOrNull)`
     - 사용자가 입력한 사용자 번호가 유효한 형식인지 확인한다.
     - 이를 위해서 아래 세 개 메서드를 도우미 함수로 사용한다.
   - **사용자 입력의 길이가 유효한지 확인하는 기능**
