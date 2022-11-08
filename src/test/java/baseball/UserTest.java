@@ -2,15 +2,17 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
 
     @Test
     void generateNumberTest(){
-        assertThat(Application.generateNumber().size() == 3);
+        assertEquals(Application.generateNumber().size(), 3);
     }
 
     @Test
@@ -22,7 +24,15 @@ public class UserTest {
         assertThatThrownBy(() -> Application.checkInput("111"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @Test
+    void getInputTest(){
+        String input = "123";
+        List<Integer> test = List.of(1, 2, 3);
+        byte[] buf = input.getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+        List<Integer> output = Application.getInput();
+        assertEquals(test, output);
+    }
     @Test
     void countAnswerTest(){
         List<Integer> answer = List.of(1, 2, 3);
@@ -33,4 +43,5 @@ public class UserTest {
         assertThat(Application.countAnswer(answer, test1)).isEqualTo(count1);
         assertThat(Application.countAnswer(answer, test2)).isEqualTo(count2);
     }
+
 }
