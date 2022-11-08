@@ -20,6 +20,7 @@ public class Game {
 
         while (!finish) {
             initResult();
+            playGame();
         }
     }
 
@@ -36,6 +37,7 @@ public class Game {
         Message.printHintMessage(strike, ball);
 
         if (strike == 3) {
+            Message.printAnswerMessage();
             restartOrFinish();
         }
     }
