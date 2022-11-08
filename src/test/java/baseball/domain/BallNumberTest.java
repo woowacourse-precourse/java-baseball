@@ -19,4 +19,18 @@ public class BallNumberTest {
             assertThat(ballNumber.get(i)).isEqualTo(ballNumberList.get(i));
         }
     }
+
+    @Test
+    public void fromStringSuccessTest() throws Exception {
+        // given
+        String ballNumberString = "263";
+
+        // when
+        BallNumber ballNumber = BallNumber.fromString(ballNumberString);
+
+        // then
+        for (int i = 0; i < 3; ++i) {
+            assertThat(ballNumber.get(i)).isEqualTo(ballNumberString.charAt(i) - '0');
+        }
+    }
 }
