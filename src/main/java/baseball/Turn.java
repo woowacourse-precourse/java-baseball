@@ -49,7 +49,7 @@ public class Turn {
         return playerNumberList;
     }
 
-    public int transformCharacterToInteger(char character){
+    public int transformCharacterToInteger(char character) {
         return character - '0';
     }
 

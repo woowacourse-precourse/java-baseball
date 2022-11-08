@@ -7,7 +7,7 @@ public class Game {
     private static final String ASK_FOR_GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String RESTART = "1";
 
-    public Game(){
+    public Game() {
     }
 
     public void start() {
