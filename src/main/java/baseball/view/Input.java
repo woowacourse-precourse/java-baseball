@@ -21,7 +21,6 @@ public class Input {
 
         validator.isValidate(number);
         return number;
-
     }
 
     public String continueOrNot() {
