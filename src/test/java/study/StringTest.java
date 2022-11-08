@@ -1,6 +1,9 @@
 package study;
 
+import domain.RandNumVO;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -45,6 +48,13 @@ public class StringTest {
         assertThatThrownBy(() -> input.charAt(5))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
+    }
+
+    @Test
+    void randNumVOTest() {
+        RandNumVO randNumVO = new RandNumVO();
+        List<Integer> randnums = randNumVO.getRandNum();
+        System.out.println(randnums);
     }
 
 }
