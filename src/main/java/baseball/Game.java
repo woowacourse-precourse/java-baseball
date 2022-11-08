@@ -59,6 +59,7 @@ public class Game {
 
     static void restartGame() {
         int temp = Integer.parseInt(Console.readLine());
+        validateNewGameInput(Collections.singletonList(temp));
         if (temp == 2)
             return;
         initializeGame();
@@ -88,6 +89,13 @@ public class Game {
         if (input.contains(0))
             throw new IllegalArgumentException();
         if (isRedundant(input))
+            throw new IllegalArgumentException();
+    }
+
+    public static void validateNewGameInput(List<Integer> input) {
+        if (input.size() != 1)
+            throw new IllegalArgumentException();
+        if (!input.contains(1) && !input.contains(2))
             throw new IllegalArgumentException();
     }
 
