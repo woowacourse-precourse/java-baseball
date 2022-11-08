@@ -18,9 +18,9 @@ public class User {
 
         checkNumberInteger(input);
         checkNumberLength(input);
-        checkNumberDigit(input);
 
-        this.input = input;
+        madeNumber(input);
+        checkNumberDigit();
     }
 
     public void inputGameState() {
@@ -50,25 +50,35 @@ public class User {
         }
     }
 
+    public boolean checkNumber(Character number) {
+        return user.contains(number);
+    }
+
     public void addNumber(Character input) {
         user.add(input);
     }
 
-    public void checkNumberDigit(String input) {
+    public void madeNumber(String input) {
         for (int i = 0; i < input.length(); i++) {
-            if (!user.contains(input.charAt(i))) {
+            if (!checkNumber(input.charAt(i))) {
                 addNumber(input.charAt(i));
             }
         }
+    }
 
+    public void checkNumberDigit() {
         if (user.size() != 3) {
             throw new IllegalArgumentException("입력한 수가 서로 다른 3자리의 수가 아닙니다.");
         }
     }
 
     public void setNumber() {
-        inputNumber();
         this.number = Integer.valueOf(this.input);
+    }
+
+    public void madeAnswer() {
+        inputNumber();
+        setNumber();
     }
 
 }
