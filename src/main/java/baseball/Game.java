@@ -88,6 +88,23 @@ public class Game {
         return true;
     }
 
+    private static boolean repeatGuessAnswer(String computer){
+        boolean isContinue = true;
+        while (isContinue){
+            isContinue = getComparationResult(computer, inputPlayerNumber());
+        }
+        return selectContinueGame();
+    }
 
+    private static boolean selectContinueGame(){
+        String isEndGame;
+        isEndGame = TextIO.In(true);
+        if(isEndGame.equals("1"))
+            return true;
+        else if (isEndGame.equals("2"))
+            return false;
+        else
+            throw new IllegalArgumentException("Invalid Continue Select");
+    }
 
 }
