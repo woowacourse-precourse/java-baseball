@@ -69,7 +69,9 @@ class ComputerTest {
         Computer computer = new Computer();
 
         String result = computer.printResult(List.of(2, 1));
+        String result2 = computer.printResult(List.of(0, 3));
 
         assertThat(result).isEqualTo("2볼 1스트라이크");
+        assertThat(result2).isEqualTo("3스트라이크");
     }
 }
