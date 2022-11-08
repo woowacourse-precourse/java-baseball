@@ -24,6 +24,14 @@ public class BaseBall {
 		gameRunLoop();
 	}
 
+	private void gameInit() {
+		printOpeningStatus();
+	}
+
+	private void printOpeningStatus() {
+		System.out.println(Constants.OPENING_STATUS);
+	}
+
 	private void gameRunLoop() {
 		while (Constants.PLAYING) {
 			if (gameRun()) {
@@ -38,35 +46,32 @@ public class BaseBall {
 		return newGameCheck();
 	}
 
-	private boolean newGameCheck() {
-		String order = confirmNextAction();
+	private void gamePrepare() {
+		makeGoal();
+	}
 
-		if (!verifyOrder(order)) {
-			throw new IllegalArgumentException();
-		}
-
-		if (order.equals(Constants.ORDER_NEW_GAME)) {
-			return Constants.GAME_START;
-		} else{
-			return Constants.GAME_EXIT;
+	private void makeGoal() {
+		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
+			int randomNum = makeNumber();
+			makeNumberOrder(this.goalArr, randomNum, idx);
+			makeNumberUsage(this.goalUsageArr, randomNum);
 		}
 	}
 
-	private boolean verifyOrder(String order) {
-		if (order.equals(Constants.ORDER_NEW_GAME) || order.equals(Constants.ORDER_GAME_EXIT)) {
-			return Constants.VERIFY;
-		} else {
-			return Constants.NOT_VERIFY;
+	private int makeNumber() {
+		int number = Randoms.pickNumberInRange(1, 9);
+		while (this.goalUsageArr[number] != 0) {
+			number = Randoms.pickNumberInRange(1, 9);
 		}
+		return number;
 	}
 
-	private String confirmNextAction() {
-		printNewGameStatus();
-		return readLine();
+	private void makeNumberOrder(int[] arr, int num, int idx) {
+		arr[idx] = num;
 	}
 
-	private void printNewGameStatus() {
-		System.out.println(Constants.NEW_GAME_MESSAGE);
+	private void makeNumberUsage(int[] arr, int num) {
+		arr[num] += 1;
 	}
 
 	private void gamePlayLoop() {
@@ -83,77 +88,6 @@ public class BaseBall {
 		return nextAction();
 	}
 
-	private boolean nextAction() {
-		if (isCompleteGoal()) {
-			printCelebrateStatus();
-			return Constants.GAME_END;
-		} else {
-			return Constants.GAME_CONTINUE;
-		}
-	}
-
-	private void printCelebrateStatus() {
-		System.out.println(Constants.CELEBRATE_MESSAGE);
-	}
-
-	private boolean isCompleteGoal() {
-		if (numStrike == Constants.NUM_DIGIT) {
-			return Constants.GAME_END;
-		} else {
-			return Constants.GAME_CONTINUE;
-		}
-	}
-
-	private void play() {
-		checkStrike();
-		checkBall();
-		printPlayStatus();
-	}
-
-	private void printPlayStatus() {
-		sb = new StringBuilder();
-		if (numBall > 0) {
-			sb.append(numBall).append(Constants.BALL);
-		}
-		if (sb.length() > 0) {
-			sb.append(Constants.SPACE);
-		}
-		if (numStrike > 0) {
-			sb.append(numStrike).append(Constants.STRIKE);
-		}
-		if (sb.length() == 0) {
-			sb.append(Constants.NOTHING);
-		}
-
-		System.out.println(sb.toString());
-	}
-
-	private void checkBall() {
-		numBall = 0;
-
-		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
-			if (isStrike[idx]) {
-				continue;
-			}
-
-			if (goalUsageArr[ballArr[idx]] != 0) {
-				numBall += 1;
-			}
-		}
-	}
-
-	private void checkStrike() {
-		isStrike = new boolean[Constants.NUM_DIGIT];
-		numStrike = 0;
-
-		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
-			if (goalArr[idx] == ballArr[idx]) {
-				isStrike[idx] = true;
-				numStrike += 1;
-			}
-		}
-	}
-
 	private void Ready() {
 		String ball = inputBall();
 		if (verifyBall(ball)) {
@@ -163,20 +97,21 @@ public class BaseBall {
 		}
 	}
 
-	private void makeBall(String ball) {
-		int ballNumber = Integer.parseInt(ball);
-
-		int pow = 0;
-		while (ballNumber >= Math.pow(10, pow)) {
-			int digit = digitNumber(ballNumber, pow);
-
-			makeNumberOrder(this.ballArr, digit, pow);
-			pow += 1;
-		}
+	private String inputBall() {
+		printSetBallStatus();
+		return setBall();
 	}
 
-	private int digitNumber(int number, int pow) {
-		return number % (int)Math.pow(10, pow + 1) / (int)Math.pow(10, pow);
+	private void printSetBallStatus() {
+		System.out.print(Constants.SET_BALL_STATUS);
+	}
+
+	private String setBall() {
+		return readLine();
+	}
+
+	private String readLine() {
+		return camp.nextstep.edu.missionutils.Console.readLine();
 	}
 
 	private boolean verifyBall(String ball) {
@@ -184,6 +119,23 @@ public class BaseBall {
 			return Constants.NOT_VERIFY;
 		} else {
 			return Constants.VERIFY;
+		}
+	}
+
+	private boolean verifyLength(String ball) {
+		if (ball.length() > Constants.NUM_DIGIT) {
+			return Constants.NOT_VERIFY;
+		} else {
+			return Constants.VERIFY;
+		}
+	}
+
+	private boolean verifyIsNumber(String ball) {
+		try {
+			int number = Integer.parseInt(ball);
+			return Constants.VERIFY;
+		} catch (NumberFormatException e) {
+			return Constants.NOT_VERIFY;
 		}
 	}
 
@@ -206,73 +158,121 @@ public class BaseBall {
 		return Constants.VERIFY;
 	}
 
-	private boolean verifyIsNumber(String ball) {
-		try {
-			int number = Integer.parseInt(ball);
-			return Constants.VERIFY;
-		} catch (NumberFormatException e) {
-			return Constants.NOT_VERIFY;
+	private void makeBall(String ball) {
+		int ballNumber = Integer.parseInt(ball);
+
+		int pow = 0;
+		while (ballNumber >= Math.pow(10, pow)) {
+			int digit = digitNumber(ballNumber, pow);
+
+			makeNumberOrder(this.ballArr, digit, pow);
+			pow += 1;
 		}
 	}
 
-	private boolean verifyLength(String ball) {
-		if (ball.length() > Constants.NUM_DIGIT) {
-			return Constants.NOT_VERIFY;
+	private int digitNumber(int number, int pow) {
+		return number % (int)Math.pow(10, pow + 1) / (int)Math.pow(10, pow);
+	}
+
+	private void play() {
+		checkStrike();
+		checkBall();
+		printPlayStatus();
+	}
+
+	private void checkStrike() {
+		isStrike = new boolean[Constants.NUM_DIGIT];
+		numStrike = 0;
+
+		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
+			if (goalArr[idx] == ballArr[idx]) {
+				isStrike[idx] = true;
+				numStrike += 1;
+			}
+		}
+	}
+
+	private void checkBall() {
+		numBall = 0;
+
+		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
+			if (isStrike[idx]) {
+				continue;
+			}
+
+			if (goalUsageArr[ballArr[idx]] != 0) {
+				numBall += 1;
+			}
+		}
+	}
+
+	private void printPlayStatus() {
+		sb = new StringBuilder();
+		if (numBall > 0) {
+			sb.append(numBall).append(Constants.BALL);
+		}
+		if (sb.length() > 0) {
+			sb.append(Constants.SPACE);
+		}
+		if (numStrike > 0) {
+			sb.append(numStrike).append(Constants.STRIKE);
+		}
+		if (sb.length() == 0) {
+			sb.append(Constants.NOTHING);
+		}
+
+		System.out.println(sb.toString());
+	}
+
+	private boolean nextAction() {
+		if (isCompleteGoal()) {
+			printCelebrateStatus();
+			return Constants.GAME_END;
 		} else {
-			return Constants.VERIFY;
+			return Constants.GAME_CONTINUE;
 		}
 	}
 
-	private String inputBall() {
-		printSetBallStatus();
-		return setBall();
+	private boolean isCompleteGoal() {
+		if (numStrike == Constants.NUM_DIGIT) {
+			return Constants.GAME_END;
+		} else {
+			return Constants.GAME_CONTINUE;
+		}
 	}
 
-	private String setBall() {
+	private void printCelebrateStatus() {
+		System.out.println(Constants.CELEBRATE_MESSAGE);
+	}
+
+	private boolean newGameCheck() {
+		String order = confirmNextAction();
+
+		if (!verifyOrder(order)) {
+			throw new IllegalArgumentException();
+		}
+
+		if (order.equals(Constants.ORDER_NEW_GAME)) {
+			return Constants.GAME_START;
+		} else{
+			return Constants.GAME_EXIT;
+		}
+	}
+
+	private String confirmNextAction() {
+		printNewGameStatus();
 		return readLine();
 	}
 
-	private String readLine() {
-		return camp.nextstep.edu.missionutils.Console.readLine();
+	private void printNewGameStatus() {
+		System.out.println(Constants.NEW_GAME_MESSAGE);
 	}
 
-	private void printSetBallStatus() {
-		System.out.print(Constants.SET_BALL_STATUS);
-	}
-
-	private void gameInit() {
-		printOpeningStatus();
-	}
-
-	private void printOpeningStatus() {
-		System.out.println(Constants.OPENING_STATUS);
-	}
-
-	private void gamePrepare() {
-		makeGoal();
-	}
-
-	private void makeGoal() {
-		for (int idx = 0; idx < Constants.NUM_DIGIT; idx++) {
-			int randomNum = makeNumber();
-			makeNumberOrder(this.goalArr, randomNum, idx);
-			makeNumberUsage(this.goalUsageArr, randomNum);
+	private boolean verifyOrder(String order) {
+		if (order.equals(Constants.ORDER_NEW_GAME) || order.equals(Constants.ORDER_GAME_EXIT)) {
+			return Constants.VERIFY;
+		} else {
+			return Constants.NOT_VERIFY;
 		}
-	}
-
-	private void makeNumberUsage(int[] arr, int num) {
-		arr[num] += 1;
-	}
-
-	private void makeNumberOrder(int[] arr, int num, int idx) {
-		arr[idx] = num;
-	}
-
-	private int makeNumber() {
-		int number = Randoms.pickNumberInRange(1, 9);
-		while (this.goalUsageArr[number] != 0) {
-			number = Randoms.pickNumberInRange(1, 9);
-		}
-		return number;
 	}
 }
