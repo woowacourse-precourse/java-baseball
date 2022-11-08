@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException{
         // TODO: 프로그램 구현
 
+        OuterLoop:
         while (true) {
             List<Integer> resultNumber = makeRandomNumber();
             while (true) {
@@ -57,10 +58,14 @@ public class Application {
         return ball;
     }
 
-    private static List<Integer> makeStringNumberToList(String inputStringNumber) {
+    private static List<Integer> makeStringNumberToList(String inputStringNumber) throws IllegalArgumentException {
+
         List<Integer> inputNumber = new ArrayList<>();
-        for(int i=0; i<inputStringNumber.length(); i++){
+        if(inputStringNumber.length() != 3) throw new IllegalArgumentException("입력값은 3자리 숫자여야 합니다.");
+
+        for (int i = 0; i < inputStringNumber.length(); i++) {
             int number = inputStringNumber.charAt(i) - '0';
+            if(number == 0) throw new IllegalArgumentException("숫자의 범위는 1-9 입니다.");
             inputNumber.add(number);
         }
         return inputNumber;
