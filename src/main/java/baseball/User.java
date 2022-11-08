@@ -9,7 +9,7 @@ public class User {
     public List<Integer> inputNumbers(String userNum) {
         user = new ArrayList<>();
         String[] nums = userNum.split("");
-        lengthInCorrectException(nums.length);
+        lengthIncorrectException(nums.length);
 
         for (String num : nums) {
             int numInt = isNumberic(num);
@@ -19,7 +19,7 @@ public class User {
         return user;
     }
 
-    public void lengthInCorrectException(int length) {
+    public void lengthIncorrectException(int length) {
         if (length != 3) {
             throw new IllegalArgumentException();
         }
