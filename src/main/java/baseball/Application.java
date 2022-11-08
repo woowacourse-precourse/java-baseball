@@ -32,6 +32,19 @@ public class Application {
         return computerNumber;
     }
 
+    // 기능 목록 4 : 같은 수가 같은 자리에 있을 경우, 스트라이크 확인
+    static int countStrike (List < Integer > computer, List < Integer > player){
+        int strike = 0;
+
+        for (int i = 0; i < player.size(); i++) {
+            if (computer.get(i) == player.get(i)) {
+                strike += 1;
+            }
+        }
+        return strike;
+    }
+
+
 
 
     public static void main(String[] args) {
