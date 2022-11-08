@@ -3,48 +3,47 @@
 
 ## 메인
 - 게임 시작 문구 출력
-- 컴퓨터 숫자 생성
 - RoundLoop
+    - 컴퓨터 숫자 생성
     - PlayLoop
-        - 결과값이 retry 인 동안 실행
-        - try 숫자 입력 요구 catch IllegalArgumentException
+        - 플레이어 입력값 요구
         - 입력값 분석
         - 분석 결과에 따른 힌트 도출
         - 분석 결과에 따른 결과 도출 (win/retry)
-        - 힌트값 + 결과값(게임 승리 문구/"") 출력
+        - 결과 출력
         - PlayLoop while (result == retry)
     - assertThat result == win
-    - try 재시작/종료 선택 요구 (재시작(1)/종료(2)) catch IllegalReArgumentException
-    - RoundLoop while restart == 재시작(1)
-- assertThat restart == 종료(2)
+    - 재시작/종료 선택 요구 (1: 재시작/2:종료)
+    - RoundLoop while restart == 1
+- assertThat restart == 2
 - 게임을 종료합니다 문구 출력
 
 ---
 ## 게임 기능
 
-### 게임 시작
-- 컴퓨터 숫자 생성 기능 
-    - 1 ~ 9 중 서로 다른 임의의 수 3개 생성 
+### S. 게임 시작
+1. 컴퓨터 숫자 생성 기능 
+    - 1 ~ 9 중 서로 다른 임의의 수 3개 생성
 
-### 게임 플레이
-- 플레이어 입력값 분석 기능
+### P. 게임 플레이
+1. 플레이어 입력값 분석 기능
     - 같은 수가 같은 자리에 있는 경우 -> 스트라이크
     - 같은 수가 다른 자리에 있는 경우 -> 볼
-- 분석 결과에 따른 힌트 도출 기능 getHint()
+2. 분석 결과에 따른 힌트 도출 기능 getHint()
     - if 볼 + 스트라이크 == 0 -> "낫싱"
     - else if 볼 == 0 -> "[1]스트라이크"
     - else if 스트라이크 == 0 -> "[0]볼"
     - else -> "[0]볼 [1]스트라이크"
-- 분석 결과에 따른 결과 도출 기능 getResult()
+3. 분석 결과에 따른 결과 도출 기능 getResult()
     - 스트라이크 == 3 -> win
     - else -> retry
-### 입력값 유효성 검사
-- IllegalArgumentException
+### E. 입력값 예외 검사
+1. 플레이어 입력값 유효성 검사 (IllegalArgumentException)
     - 게임 플레이 입력값 예외 처리
     - 1 ~ 9 값만 존재하는지 확인
     - 서로 다른 수인지 확인
     - 3자리 수인지 확인
-- IllegalReArgumentException
+2. 재시작/종료 입력값 유효성 검사 (IllegalArgumentException)
     - 종료 여부 입력값 예외 처리 
     - 1 또는 2 값만 존재하는지 확인
 

@@ -47,17 +47,15 @@ public class Application {
     }
     private static void getPlayerNum() {
         System.out.println("숫자를 입력해주세요 : ");
+        String[] playerInput = Console.readLine().split("");
+        if (playerInput.length != 3) {
+            throw new IllegalArgumentException("Input length must be 3.");
+        }
         try {
-            String[] playerInput = Console.readLine().split("");
             for (int i=0; i < playerInput.length; i++) {
                 playerNum[i] = Integer.parseInt(playerInput[i]);
             }
-            if (playerInput.length != 3) {
-                throw new IllegalArgumentException();
-            }
         } catch (Exception e) {
-            System.out.println("Error Message: Input must integers of 3 digits.");
-            e.printStackTrace();
         }
         boolean playerNumValidity = isPlayerNumValid(playerNum); // 유효성 검사
         if (playerNumValidity == false) {
@@ -66,6 +64,9 @@ public class Application {
     }
     private static boolean isPlayerNumValid(int[] playerNum) {
         boolean playerNumValidity = true;
+        if (playerNum.length != 3) {
+            playerNumValidity = false;
+        }
         for (int i = 0; i < playerNum.length; i++) {
             if (playerNum[i] < 1 || playerNum[i] > 9) {
                 playerNumValidity = false;
