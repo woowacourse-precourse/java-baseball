@@ -40,6 +40,15 @@ public class Pitch {
         return count;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder returnString = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            returnString.append(pitches.get(i));
+        }
+        return returnString.toString();
+    }
+
     private void validateInputString(String s) {
         if (s.length() != 3 | containsDuplicateCharacters(s) | !s.matches("[1-9]+")) {
             throw new IllegalArgumentException();
