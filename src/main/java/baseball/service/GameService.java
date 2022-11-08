@@ -1,51 +1,23 @@
 package baseball.service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import baseball.model.Game;
+import baseball.model.Range;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GameService {
 
-    private final int MAX_COUNT = 3;
-    private final int MAX_VALUE = 9;
-    private final int MIN_VALUE = 1;
-
-    public void validate(Game game) {
-        List<Integer> numbers = game.getNumbers();
-
-        if(numbers.size() < MAX_COUNT) {
-            throw new IllegalArgumentException("3개 미만의 숫자를 입력할 수 없습니다.");
-        }
-
-        if(numbers.size() > MAX_COUNT) {
-            throw new IllegalArgumentException("3개 초과의 숫자를 입력할 수 없습니다.");
-        }
-
-        for(int num : game.getNumbers()){
-            if (num < MIN_VALUE || num > MAX_VALUE) {
-                throw new IllegalArgumentException("1에서 9 사이의 숫자만 입력할 수 있습니다.");
-            }
-        }
-
-        boolean isDuplicated = numbers.stream()
-               .distinct()
-               .count() != numbers.size();
-
-        if(isDuplicated) {
-            throw new IllegalArgumentException("중복되는 숫자는 입력할 수 없습니다.");
-        }
-    }
+    int maxCount = Range.valueOf("MAX_COUNT").getValue();
+    int minValue = Range.valueOf("MIN_VALUE").getValue();
+    int maxValue = Range.valueOf("MAX_VALUE").getValue();
 
     public Game initAnswer(Game game) {
         List<Integer> newAnswer = new ArrayList<>();
 
-        while(newAnswer.size() < MAX_COUNT){
-            int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+        while(newAnswer.size() < maxCount){
+            int randomNumber = Randoms.pickNumberInRange(minValue, maxValue);
             if(!newAnswer.contains(randomNumber)){
                 newAnswer.add(randomNumber);
             }
@@ -94,7 +66,7 @@ public class GameService {
 
         printOutput(ball, strike);
 
-        if(strike == MAX_COUNT) {
+        if(strike == maxCount) {
             return true;
         }
 
