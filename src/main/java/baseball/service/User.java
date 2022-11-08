@@ -1,5 +1,6 @@
 package baseball.service;
 
+import static baseball.constant.Message.USER_INPUT_MESSAGE;
 import static baseball.valid.Valid.*;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -14,6 +15,7 @@ public class User {
      * @return User의 콘솔 입력
      */
     public String userInput(){
+        System.out.println(USER_INPUT_MESSAGE);
         String userInput = Console.readLine();
 
         validUserInputSize(userInput);

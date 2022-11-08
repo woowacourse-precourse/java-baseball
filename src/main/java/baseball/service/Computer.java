@@ -8,8 +8,6 @@ import java.util.List;
 import static baseball.constant.constants.*;
 
 public class Computer {
-
-
     /**
      * 컴퓨터가 생성한 난수의 각 자리수를 List에 담아 Return하는 메소드
      * @return 생성한 난수 각 자리수를 담은 List
