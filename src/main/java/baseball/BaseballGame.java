@@ -10,8 +10,6 @@ public class BaseballGame {
     private static BaseballGameInputFilter inputFilter = BaseballGameInputFilter.getInstance();
 
 
-    public String getInputNumbers(){
-        return inputFilter.readNumbers();
     private String getAnswerNumber() {
         List<Integer> answerNumbers = new ArrayList<>();
         String answerString = "";
