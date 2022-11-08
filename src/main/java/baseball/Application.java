@@ -11,7 +11,7 @@ public class Application {
             if(b == 1) {
                 continue;
             } else if (b == 2) {
-                System.out.println("게임종료");
+                System.out.println("게임 종료");
                 break;
             }
         }
