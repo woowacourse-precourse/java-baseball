@@ -99,11 +99,12 @@ class Game {
         if (ballNumber + strikeNumber == 0) {
             System.out.println("낫싱");
         } else if (strikeNumber == 3) {
+            System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else {
             if (ballNumber > 0)
-                System.out.printf("%d볼", ballNumber);
+                System.out.printf("%d볼 ", ballNumber);
             if (strikeNumber > 0)
                 System.out.printf("%d스트라이크", strikeNumber);
             System.out.println("");
