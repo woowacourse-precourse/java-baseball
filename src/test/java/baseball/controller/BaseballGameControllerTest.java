@@ -16,19 +16,20 @@ import org.junit.jupiter.api.Test;
 
 class BaseballGameControllerTest {
 
-  @Test
-  @DisplayName("중복된 수가 없는 난수 생성")
-  void getRandomNumbers() {
-    // given
-    InputService inputService = new InputService();
-    HintService hintService = new HintService();
+    @Test
+    @DisplayName("중복된 수가 없는 난수 생성")
+    void getRandomNumbers() {
+        // given
+        InputService inputService = new InputService();
+        HintService hintService = new HintService();
 
-    //  when
-    BaseballGameController baseballGameController = new BaseballGameController(inputService, hintService);
-    List<Integer> numbers = baseballGameController.generateRandomNumbers();
-    Set<Integer> numberSet = new HashSet<>(numbers);
+        //  when
+        BaseballGameController baseballGameController = new BaseballGameController(inputService,
+            hintService);
+        List<Integer> numbers = baseballGameController.generateRandomNumbers();
+        Set<Integer> numberSet = new HashSet<>(numbers);
 
-    // then
-    assertThat(numbers.size()).isEqualTo(numberSet.size());
-  }
+        // then
+        assertThat(numbers.size()).isEqualTo(numberSet.size());
+    }
 }
