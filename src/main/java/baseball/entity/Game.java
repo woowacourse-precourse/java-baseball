@@ -29,6 +29,12 @@ public class Game {
         // updateScore()
         // 게임 진행 상태 갱신
         // 결과 문구 출력
+    private void run() {
+        System.out.println(Message.INPUT_MESSAGE);
+        input();
+        updateScore();
+        printResult();
+    }
 
 
     // input(): 유저에게 입력 받기
@@ -53,5 +59,9 @@ public class Game {
         }
         String resultMessage = score.getBall() + Message.BALL + " " + score.getStrike() + Message.STRIKE;
         System.out.println(resultMessage);
+    }
+
+    private void checkRestart() {
+        GAME_STATE = player.enterAnswer();
     }
 }
