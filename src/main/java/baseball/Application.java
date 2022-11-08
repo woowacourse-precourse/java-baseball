@@ -47,24 +47,25 @@ class BaseballController {
 
     private void playGame(Numbers answer, int count) {
         ioManager.printOutput("숫자를 입력해주세요 : ");
-        String inputString = "";
 
         try {
-            inputString = ioManager.getInput();
+            String inputString = ioManager.getInput();
+            Numbers inputNumbers = baseballGame.convertToNumbers(inputString);
+
+            BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
+            ioManager.printOutput(ballCount.toString());
+
+            if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
+                gameStatus.quitProgram();
+                checkGoOrStop(ballCount);
+            }
+
         } catch (IllegalArgumentException e) {
             ioManager.printOutput(e.getMessage());
-        }
-        
-        Numbers inputNumbers = baseballGame.convertToNumbers(inputString);
+            ioManager.printOutput("게임이 종료되었습니다.");
 
-        BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
-        ioManager.printOutput(ballCount.toString());
-
-        if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
             gameStatus.quitProgram();
-            checkGoOrStop(ballCount);
         }
-
     }
 
     private void checkGoOrStop(BallCount ballCount) {
@@ -78,6 +79,9 @@ class BaseballController {
                 break;
             case "2":
                 ioManager.printOutput("게임이 종료되었습니다.");
+                gameStatus.quitProgram();
+            default :
+                ioManager.printOutput("잘못된 입력입니다. 게임이 종료되었습니다.");
                 gameStatus.quitProgram();
         }
     }
