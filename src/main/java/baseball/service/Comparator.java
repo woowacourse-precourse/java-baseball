@@ -45,4 +45,11 @@ public class Comparator {
         return false;
     }
 
+    public static boolean compareInputAndRandomNumber(Computer computer, User user) {
+        int strikeCount = checkStrike(computer, user);
+        int ballCount = checkBall(computer, user) - strikeCount;
+        boolean result = printHint(strikeCount, ballCount);
+
+        return result;
+    }
 }
