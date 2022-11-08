@@ -30,9 +30,12 @@ public class NumberMatchProcessorImpl implements NumberMatchProcessor{
 
     @Override
     public String printHint(List<Integer> targetList) {
-        if (targetList.get(0)==0 & targetList.get(1)==0) return "낫싱";
-        if (targetList.get(0)==0) return targetList.get(1)+"볼";
-        if (targetList.get(1)==0) return targetList.get(0)+"스트라이크";
-        return targetList.get(1)+"볼"+" "+targetList.get(0)+"스트라이크";
+        if (targetList.get(0) == 0 & targetList.get(1) == 0) return "낫싱";
+
+        if (targetList.get(0) == 0) return targetList.get(1) + "볼";
+
+        if (targetList.get(1) == 0) return targetList.get(0) + "스트라이크";
+
+        return targetList.get(1) + "볼" + " " + targetList.get(0) + "스트라이크";
     }
 }
