@@ -3,6 +3,9 @@ package baseball.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.vo.ValidationMsg.NOT_EXIST_NUMBER_RANGE_EXCEPTION;
+import static baseball.vo.ValidationMsg.NOT_FORMATTING_EXCEPTION;
+
 public class Parser {
 
     public List<Integer> parsePlayerNumbers(String input) {
@@ -19,7 +22,18 @@ public class Parser {
     }
 
     public int parseInt(String input) {
+        isParsable(input);
         return Integer.parseInt(input);
+    }
+
+    private void isParsable(String input) {
+        if (!validateFormatNumber(input)) {
+            throw new NumberFormatException(NOT_FORMATTING_EXCEPTION.getMessage());
+        }
+
+        if (!validateOneOrTwo(input)) {
+            throw new IllegalArgumentException(NOT_EXIST_NUMBER_RANGE_EXCEPTION.getMessage());
+        }
     }
 
     private boolean validateOneOrTwo(String input) {
