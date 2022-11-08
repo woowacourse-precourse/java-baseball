@@ -76,11 +76,20 @@ public class Application {
             int num = input % 10;
             input /= 10;
             if (randomArr[num] == i + 1) {
-                result[1] ++;
+                result[1]++;
             } else if (randomArr[num] > 0) {
-                result[0] ++;
+                result[0]++;
             }
         }
         return result;
+    }
+
+    static void printBallAndStrike(int[] ballAndStrike) {
+        String[] str = {"볼 ", "스트라이크 "};
+        for (int i = 0; i < ballAndStrike.length; i++) {
+            if (ballAndStrike[i] > 0) {
+                System.out.println(ballAndStrike[i] + str[i]);
+            }
+        }
     }
 }
