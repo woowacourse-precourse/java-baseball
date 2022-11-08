@@ -17,7 +17,7 @@ class BaseballGameHintTest extends NsTest {
     public void runMain() {}
 
     @Test
-    @DisplayName("getHint(): 1볼 1스트라이크")
+    @DisplayName("스트라이크와 볼 출력")
     void getHintStrikeAndBall(){
         String resultOutput="1볼 1스트라이크";
         BaseballGameHint baseballGameHint = new BaseballGameHint();
@@ -30,7 +30,7 @@ class BaseballGameHintTest extends NsTest {
     }
 
     @Test
-    @DisplayName("getHint(): 2스트라이크")
+    @DisplayName("스트라이크만 출력")
     void getHintOnlyStrike(){
         String resultOutput="2스트라이크";
         BaseballGameHint baseballGameHint = new BaseballGameHint();
@@ -43,7 +43,7 @@ class BaseballGameHintTest extends NsTest {
     }
 
     @Test
-    @DisplayName("getHint(): 2볼")
+    @DisplayName("볼만 출력")
     void getHintOnlyBall(){
         String resultOutput="2볼";
         BaseballGameHint baseballGameHint = new BaseballGameHint();
@@ -56,7 +56,7 @@ class BaseballGameHintTest extends NsTest {
     }
 
     @Test
-    @DisplayName("getHint(): 낫싱")
+    @DisplayName("낫싱 출력")
     void getHintNothing(){
         String resultOutput="낫싱";
         BaseballGameHint baseballGameHint = new BaseballGameHint();
@@ -69,7 +69,7 @@ class BaseballGameHintTest extends NsTest {
     }
 
     @Test
-    @DisplayName("isAnswer(): 정답일때")
+    @DisplayName("정답일때 true 반환")
     void isAnswerTrue(){
         BaseballGameHint baseballGameHint = new BaseballGameHint();
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);
@@ -81,7 +81,7 @@ class BaseballGameHintTest extends NsTest {
     }
 
     @Test
-    @DisplayName("isAnswer(): 정답이 아닐때")
+    @DisplayName("정답이 아닐때 false 반환")
     void isAnswerFalse(){
         BaseballGameHint baseballGameHint = new BaseballGameHint();
         List<Integer> testHiddenNumberList = List.of(2, 3, 5);

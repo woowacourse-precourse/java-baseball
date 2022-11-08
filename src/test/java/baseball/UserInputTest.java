@@ -36,7 +36,6 @@ class UserInputTest{
                         assertThatThrownBy(() -> userInput.inputNumber())
                                 .isInstanceOf(IllegalArgumentException.class)
                                 .hasMessageContaining("숫자만 입력 가능합니다."));
-
     }
 
     @Test
@@ -52,7 +51,6 @@ class UserInputTest{
                 assertThatThrownBy(() -> userInput.inputNumber())
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("세자리 수만 입력 가능합니다."));
-
     }
 
     @Test
@@ -68,7 +66,6 @@ class UserInputTest{
                 assertThatThrownBy(() -> userInput.inputNumber())
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("1~9사이의 값만 입력 가능합니다."));
-
     }
 
     @Test
@@ -84,7 +81,6 @@ class UserInputTest{
                 assertThatThrownBy(() -> userInput.inputNumber())
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("중복은 입력할 수 없습니다."));
-
     }
 
     @Test
@@ -112,6 +108,5 @@ class UserInputTest{
                 assertThatThrownBy(() -> userInput.inputRestartOrStop())
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessageContaining("숫자 1, 2만 입력할 수 있습니다."));
-
     }
 }
