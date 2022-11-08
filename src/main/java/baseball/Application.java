@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) {
     }
     
-    private static void print(String text) {
+    static void print(String text) {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
         
         try {
@@ -24,7 +24,7 @@ public class Application {
         
     }
     
-    private static Integer getNewAnswer() {
+    static Integer getNewAnswer() {
         List<Integer> numbers = new ArrayList<>();
         
         while (numbers.size() < 3) {
