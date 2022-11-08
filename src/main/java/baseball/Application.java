@@ -2,10 +2,13 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
@@ -23,5 +26,14 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public boolean retry() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        final int check = in.nextInt();
+        if (check == 1) {
+            return true;
+        }
+        return false;
     }
 }
