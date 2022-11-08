@@ -1,5 +1,4 @@
 package baseball;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,7 +9,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
-        start();
+        boolean exit = false;
+        while (!exit){
+            start();
+            exit = getRestartInfo();
+        }
     }
 
 
@@ -26,7 +29,7 @@ public class Application {
     }
 
     public static List<Integer> getInputNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<String> str_list = Arrays.asList(input.split(""));
         List<Integer> input_list =str_list.stream().map(s->Integer.parseInt(s)).collect(Collectors.toList());
@@ -35,42 +38,40 @@ public class Application {
     public static void start(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         boolean exit = false;
-
+        List<Integer> ans = getRandomNumber();
         while (!exit) {
-            List<Integer> ans = getRandomNumber();
             List<Integer> user = getInputNumber();
-            String[] str = new String[3];
+            List<String> str = new ArrayList<String>();
             for(int i = 0; i<ans.size(); i++) {
                 String hint = getHint(ans.get(i), i, user);
-                str[i] = hint;
+                str.add(hint);
             }
             String hint_msg = getHintMsg(str);
             System.out.println(hint_msg);
             if (hint_msg.equals("3스트라이크")){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                exit = getRestartInfo();
+                exit = true;
             }
         }
     }
     public static String getHint(Integer ans, int index, List<Integer> user){
-        String hint = "";
+        String hint = new String();
         for (int i = 0; i<user.size() ;i++){
-            if (ans.equals(user.get(i)) && index==i){
-                hint = "스트라이크";
-            } else if (ans.equals(user.get(i))){
-                hint = "볼";
-            } else{
-                hint = "낫싱";
+
+            if (ans == user.get(i) && index==i){
+                return "스트라이크";
+            } else if (ans == user.get(i)){
+                return  "볼";
             }
         }
-        return hint;
+        return "낫싱";
     }
 
-    public static String getHintMsg(String[] str) {
+    public static String getHintMsg(List<String> str) {
 
-        int ball = Collections.frequency(Arrays.asList(str), "볼");
-        int strike = Collections.frequency(Arrays.asList(str), "스트라이크");
-        int nothing = Collections.frequency(Arrays.asList(str), "낫싱");
+        int ball = Collections.frequency(str, "볼");
+        int strike = Collections.frequency(str, "스트라이크");
+        int nothing = Collections.frequency(str, "낫싱");
 
         if (nothing == 3){
             return "낫싱";
