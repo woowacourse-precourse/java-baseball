@@ -21,14 +21,14 @@ public class Computer {
         return selectNumberList;
     }
 
-    private String printResult() {
-        return "";
+    public String printResult(List<Integer> strikeBallList) {
+        return strikeBallList.get(0) + "볼 " + strikeBallList.get(1) + "스트라이크";
     }
 
     public List<Integer> getStrikeBallList(int sameNumbersCnt, int numberOfDigitCnt) {
         int strike = numberOfDigitCnt;
         int ball = sameNumbersCnt - strike;
-        return new ArrayList<>(List.of(strike, ball));
+        return new ArrayList<>(List.of(ball, strike));
     }
 
     public int checkSameNumbersCount(List<Integer> computerList, List<Integer> playerList) {
