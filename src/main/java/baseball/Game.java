@@ -16,7 +16,7 @@ public class Game {
     }
 
     public static void endOfGame() {
-        PrintLine.endGame();
+        PrintLine.endGamePrint();
     }
 
     public static List<Integer> createComputerNumberList() {

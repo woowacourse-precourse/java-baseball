@@ -39,7 +39,7 @@ public class PrintLine {
         System.out.println(AFTER_ANSWER_MESSAGE);
     }
 
-    public static void endGame() {
+    public static void endGamePrint() {
         System.out.println(END_MESSAGE);
     }
 }
