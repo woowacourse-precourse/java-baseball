@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트2() {
         assertThatThrownBy(() -> {
-            new NumberValidator().validateInputCount("1234");
+            new NumberValidator().validateInputLength("1234");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("enter a three-digit number.");
     }

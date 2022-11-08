@@ -3,9 +3,10 @@ package baseball;
 import java.util.List;
 
 public class GameJudge {
-    private int countStrike, countBall;
     private static final int COUNT_SIZE = 3;
 
+    private int countStrike, countBall;
+    
     public boolean judgeGame(List<Integer> computer, List<Integer> player) {
         getGameResult(computer, player);
         judgeGameResult(countStrike, countBall);

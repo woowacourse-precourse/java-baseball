@@ -1,6 +1,7 @@
 # 📌 기능 목록
 - **Game Init Function**
-    - Game Start Message`("숫자 야구 게임을 시작합니다.")` 출력 
+    - Game Start Message 출력
+    - `Game Start()`
 
 
 - **Generate Numbers Function**
@@ -18,8 +19,7 @@
     - 다음과 같은 입력 값을 Validate
         1. 입력 받은 수의 길이가 3이 아닐 때
         2. 입력 받은 수에 중복 값이 들어있을 때
-        3. 입력 받은 수에 0이 포함되어 있을 때
-        4. 숫자 외의 문자를 입력으로 받았을 때
+        3. 숫자 외의 문자를 입력으로 받았을 때
 
 
 - **Judge Game Result Function**
