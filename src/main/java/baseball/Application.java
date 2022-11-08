@@ -34,6 +34,13 @@ public class Application {
         return input_number;
     }
 
+    static boolean get_continue_option() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int option = Integer.parseInt(Console.readLine());
+        return (option != 1);
+    }
+
     static boolean play_game(String computer_number) {
         int strike = 0;
         String input_number;
@@ -42,13 +49,7 @@ public class Application {
             input_number = get_input();
             strike = count_strike(input_number, computer_number);
         }
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int option = Integer.parseInt(Console.readLine());
-            return (option != 1);
-        }
-        return true;
+        return get_continue_option();
     }
 
     static boolean check_legitimacy(String number) {
