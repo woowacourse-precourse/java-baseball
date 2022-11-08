@@ -5,8 +5,12 @@
    <br><br>
 2. 상대방(컴퓨터): 서로 다른 3자리수 생성
     - `camp.nextstep.edu.missionutils.Randoms` 활용
-    - `return ArrayList<Integer>`
-      <br><br>
+    - 3자리수 생성(⭕)
+      - `return ArrayList<Integer>`
+    - 잘못된 값 생성(❌)
+      - `IllegalArgumentException` 발생
+         - 서로 다른 숫자?
+   <br><br>
 3. 사용자: 숫자 입력
     - `camp.nextstep.edu.missionutils.Console` 활용
     - 3자리수 입력(⭕)
