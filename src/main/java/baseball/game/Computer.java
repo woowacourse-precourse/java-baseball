@@ -32,7 +32,7 @@ public class Computer {
                                 strikeAndBallCounts.get(BALL_COUNT))));
     }
 
-    public void updateStrikeAndBallCounts(List<Integer> strikeAndBallCounts, int strikeCount, int ballCount) {
+    private void updateStrikeAndBallCounts(List<Integer> strikeAndBallCounts, int strikeCount, int ballCount) {
         strikeAndBallCounts.set(STRIKE_COUNT, strikeCount);
         strikeAndBallCounts.set(BALL_COUNT, ballCount);
     }
