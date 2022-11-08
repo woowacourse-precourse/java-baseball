@@ -106,5 +106,10 @@ public class Application {
         else System.out.println(ballNum+"볼 "+ strikeNum+"스트라이크");
     }
 
-    
+    public static boolean threeStrikeOrNot(List<Integer> ballAndStrike){
+        if(ballAndStrike.get(1) == 3) return true;
+
+        else return false;
+    }
+
 }
