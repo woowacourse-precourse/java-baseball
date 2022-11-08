@@ -86,10 +86,12 @@ public class BaseballGameRule {
 		scoreList.set(BALL_INDEX, count);
 
 	}
-	private boolean isCharEquals(int index){
+
+	private boolean isCharEquals(int index) {
 		return playerNumber.charAt(index) == computerNumber.charAt(index);
 	}
-	private boolean isPlayerNumberContains(int index){
+
+	private boolean isPlayerNumberContains(int index) {
 		return computerNumber.indexOf(playerNumber.charAt(index)) != -1;
 	}
 

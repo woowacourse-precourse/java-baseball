@@ -9,14 +9,16 @@ public class Computer {
 	public Computer() {
 		number = getRandomNumber();
 	}
-	private Computer(String number){
-		this.number=number;
+
+	private Computer(String number) {
+		this.number = number;
 	}
 
 	public String getNumber() {
 		return number;
 	}
-	public static Computer createComputerForTest(String number){
+
+	public static Computer createComputerForTest(String number) {
 		return new Computer(number);
 	}
 

@@ -1,6 +1,6 @@
 package baseball.player;
 
-public class Player  {
+public class Player {
 
 	String number;
 
