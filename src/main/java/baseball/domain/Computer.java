@@ -29,6 +29,10 @@ public class Computer {
             return false;
         return true;
     }
+    // 게임 종료 시 모든 엘리먼트를 삭제
+    void clearRandomNumbers(){
+        this.ballCounts.clear();
+    }
     // Debug 용 출력 메소드
     void getCounts() {
         for (int i = 0; i < this.ballCounts.size(); i++) {
