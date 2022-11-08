@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 /**
  * 플레이어의 데이터 입력을 담당하는 클래스
  */
+
 public class PlayerNumberInput {
     public String inputPlayerString(){
         System.out.print("숫자를 입력해주세요 : ");

@@ -5,6 +5,7 @@ import baseball.game.NumberParser;
 import baseball.game.NumberReferee;
 import baseball.game.ComputerInput;
 import baseball.game.PlayerNumberInput;
+import baseball.printer.GamePrint;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -13,6 +14,7 @@ public class Application {
     private static final ComputerInput computerInput = new ComputerInput();
     private static final NumberReferee numberReferee = new NumberReferee();
     private static final NumberParser numberParser = new NumberParser();
+    private static final GamePrint gamePrint = new GamePrint();
 
     public static void main(String[] args) {
         startNumberBaseballGame();
@@ -20,7 +22,6 @@ public class Application {
 
     public static void startNumberBaseballGame() {
         List<Integer> computer;
-        ComputerInput computerInput = new ComputerInput();
         do {
             computer = computerInput.generateComputerNumbers();
             startGuessingPhase(computer);
@@ -36,7 +37,7 @@ public class Application {
             player = numberParser.parsePlayerNumber(input);
             strike = numberReferee.checkStrike(player, computer);
             ball = numberReferee.checkBall(player, computer);
-            printResult(strike, ball);
+            gamePrint.printGuessResult(strike, ball);
         }
     }
 
@@ -49,22 +50,5 @@ public class Application {
         return false;
     }
 
-    public static void printResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            System.out.println("낫싱");
-            return;
-        }
-        if (ball > 0) {
-            System.out.print(ball + "볼 ");
-        }
-        if (strike > 0) {
-            System.out.print(strike + "스트라이크");
-            if (strike == 3) {
-                System.out.println();
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            }
-        }
-        System.out.println();
-    }
 
 }
