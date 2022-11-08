@@ -36,4 +36,11 @@ public class GameService {
         }
         return new GameResult(strike, ball);
     }
+
+    public boolean isRetryGame(String input) {
+        input = input.trim();
+        if(!(input.equals("1") || input.equals("2")))
+            throw new IllegalArgumentException();
+        return input.equals("1");
+    }
 }
