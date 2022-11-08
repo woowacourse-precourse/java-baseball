@@ -30,6 +30,6 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        GameController.main(new String[]{});
+        Application.main(new String[]{});
     }
 }

@@ -1,5 +1,7 @@
 package baseball.util;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,19 +10,28 @@ import java.util.Set;
 public class ValidateInput {
 
     public List<Integer> validateInput(String input) {
+
         isValidateNumber(input);
+        System.out.println(1);
         isValidateSize(input);
+        System.out.println(2);
         List<Integer> inputList = inputToList(input);
+        System.out.println(3);
         isValidateDuplicate(inputList);
+        System.out.println(4);
         return inputList;
     }
 
     public void isValidateDuplicate(List<Integer> inputList) {
         Set<Integer> inputSet = new HashSet<>(inputList);
         List<Integer> setToList = new ArrayList<>(inputSet);
-        if (setToList != inputList) {
-            throw new IllegalStateException("중복된 숫자가 포함되어 있습니다.");
+        for (int i = 0; i < 3; i++) {
+            if (inputList.get(i) != setToList.get(i)) {
+                throw new IllegalStateException("중복된 숫자가 포함되어 있습니다.");
+            }
+
         }
+
     }
 
     public void isValidateSize(String input) {
