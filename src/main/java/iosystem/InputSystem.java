@@ -15,7 +15,7 @@ public class InputSystem {
     public static List<Integer> inputTryNumber(){
         System.out.print(GameMessage.TRY_CORRECT);
         String input = Console.readLine();
-        TryValidator.validate(input);
+        TrialValidator.validate(input);
         List<String> characterList = Arrays.asList(input.split(""));
         return characterList.stream().map(Integer::valueOf).collect(Collectors.toList());
     }

@@ -2,9 +2,9 @@ package iosystem;
 
 import java.util.*;
 
-public class TryValidator {
+public class TrialValidator {
 
-    private TryValidator(){
+    private TrialValidator(){
 
     }
     private static final int MAX_NUMBER_LENGTH = 3;
@@ -13,6 +13,7 @@ public class TryValidator {
     public static void validate(String input) {
         isNumberBetweenOneToNine(input);
         validateNumberLength(input);
+        validateDuplicateNumber(input);
         validateDuplicateNumber(input);
     }
 

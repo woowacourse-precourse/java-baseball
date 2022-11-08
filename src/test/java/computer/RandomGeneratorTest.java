@@ -1,6 +1,6 @@
 package computer;
 
-import iosystem.TryValidator;
+import iosystem.TrialValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -26,7 +26,7 @@ class RandomGeneratorTest {
 
         // then
         Assertions.assertAll(
-                () -> assertDoesNotThrow(()->TryValidator.validate(randomThreeNumberString))
+                () -> assertDoesNotThrow(()-> TrialValidator.validate(randomThreeNumberString))
         );
     }
 }
