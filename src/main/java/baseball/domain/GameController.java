@@ -9,10 +9,13 @@ public class GameController {
     private static Computer computer = null;
     private static User user = null;
     private static boolean keepPlaying;
-    public GameController(){
+    GameController(){
         this.computer = Computer.getInstance();
         this.user = User.getInstance();
         this.keepPlaying = true;
+    }
+    public static GameController getInstance(){
+        return gameController;
     }
     public void run(){
         // 종료 플래그가 나올 때까지 계속 실행
