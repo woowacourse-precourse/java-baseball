@@ -7,16 +7,16 @@ public class Balls {
     private static final int MAX_BALLS_SIZE = 3;
     private static final String DUPLICATED_INPUT_NUMBER_MESSAGE = "입력된 숫자의 값에 중복된 값이 포함되어서는 안됩니다.";
     private static final String INVALID_INPUT_SIZE_MESSAGE = "입력된 숫자의 값이 " + MAX_BALLS_SIZE + "개가 아닙니다.";
-    private final List<Ball> values;
+    private final List<Ball> balls;
 
-    public Balls(List<Ball> values) {
-        validateDuplicate(values);
-        validateSize(values);
-        this.values = values;
+    public Balls(List<Ball> balls) {
+        validateDuplicate(balls);
+        validateSize(balls);
+        this.balls = balls;
     }
 
     public Balls() {
-        values = new ArrayList<>();
+        balls = new ArrayList<>();
     }
 
     private void validateDuplicate(List<Ball> values) {
@@ -36,14 +36,14 @@ public class Balls {
     public Result generateResult(Balls compareBalls) {
         Result result = new Result();
 
-        List<Ball> compareValues = compareBalls.getValues();
+        List<Ball> compareValues = compareBalls.getBalls();
 
         for (int i = START_INDEX; i < MAX_BALLS_SIZE; i++) {
-            if (Objects.equals(values.get(i), compareValues.get(i))) {
+            if (Objects.equals(balls.get(i), compareValues.get(i))) {
                 result.increaseStrikeCount();
                 continue;
             }
-            if (values.contains(compareValues.get(i))) {
+            if (balls.contains(compareValues.get(i))) {
                 result.increaseBallCount();
             }
         }
@@ -51,18 +51,18 @@ public class Balls {
     }
 
     public void addBall(Ball ball) {
-        if (values.contains(ball)) {
+        if (balls.contains(ball)) {
             return;
         }
-        values.add(ball);
-        validateDuplicate(values);
+        balls.add(ball);
+        validateDuplicate(balls);
     }
 
     public boolean isSize(int size) {
-        return values.size() == size;
+        return balls.size() == size;
     }
 
-    public List<Ball> getValues() {
-        return values;
+    public List<Ball> getBalls() {
+        return balls;
     }
 }
