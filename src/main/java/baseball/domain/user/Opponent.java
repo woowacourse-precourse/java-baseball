@@ -13,6 +13,10 @@ public class Opponent {
         goal = initRandomGoal();
     }
 
+    public Opponent(List<Integer> goal) {
+        this.goal = goal;
+    }
+
     public List<Integer> initRandomGoal() {
         return Randoms.pickUniqueNumbersInRange(
                 START_NUMBER.getValue(),
@@ -23,4 +27,5 @@ public class Opponent {
     public List<Integer> getGoal() {
         return goal;
     }
+
 }

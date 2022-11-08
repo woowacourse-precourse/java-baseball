@@ -18,7 +18,7 @@ class OpponentTest {
             opponent = new Opponent();
         }
 
-        @DisplayName("각 숫자가 각각 다르다")
+        @DisplayName("각각 다른 숫자가 삽입된다")
         @RepeatedTest(5)
         void diff() {
             List<Integer> goal = opponent.getGoal();
