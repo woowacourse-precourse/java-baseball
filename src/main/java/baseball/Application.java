@@ -10,30 +10,29 @@ public class Application {
 	private static UserPlayer userPlayer;
 	private static BaseballGameModel baseballGameModel;
 	private static boolean gameStatus;
+	private static final UserInputValidator userInputValidator = new UserInputValidator();
 
 	public static void main(String[] args) {
-		String userInput;
-		List<Integer> scoreList;
 
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		gameInit();
+		while (gameStatus){
+			playGame();
+			choiceGameProgress();
+		}
 
-		// while문 -> playGame 매소드로
-		// Gameprogress 매소드로 짖속여부
-		// 1-> playGame 다시호출
-		// 2-> 완전 끝
+    }
+
+	public static void playGame() {
+		String userInput;
+		List<Integer> scoreList;
 
 		while (gameStatus) {
 			System.out.print("숫자를 입력해주세요 : ");
 			userInput = Console.readLine();
 
-			try {
-				UserInputValidator.isValidUserInput(userInput);
-				// isValidUserInput(userInput);
-			} catch (IllegalArgumentException e){
-				System.out.println(e.getMessage());
-				return;
-			}
+
+			userInputValidator.isValidUserInput(userInput);
 			userPlayer.setNumberList(userInput);
 
 			scoreList = baseballGameModel.getMatchResult();
@@ -41,62 +40,11 @@ public class Application {
 			if (baseballGameModel.isGameOver()) {
 				System.out.println(DIGIT_NUMBER.getCode()+"스트라이크");
 				System.out.println(DIGIT_NUMBER.getCode()+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-
-				choiceGameProgress();
-
-				try {
-					choiceGameProgress();
-				} catch (IllegalArgumentException e){
-					System.out.println(e.getMessage());
-					return;
-				}
-				continue;
+				break;
 			}
-
 			printMatchResult(scoreList);
 		}
-
-    }
-
-	// public static void playGame() {
-	// 	String userInput;
-	// 	List<Integer> scoreList;
-	//
-	// 	while (gameStatus) {
-	// 		System.out.print("숫자를 입력해주세요 : ");
-	// 		userInput = Console.readLine();
-	//
-	// 		try {
-	// 			UserInputValidator.isValidUserInput(userInput);
-	// 			// isValidUserInput(userInput);
-	// 		} catch (IllegalArgumentException e){
-	// 			System.out.println(e.getMessage());
-	// 			return;
-	// 		}
-	// 		userPlayer.setNumberList(userInput);
-	//
-	// 		scoreList = baseballGameModel.getMatchResult();
-	//
-	// 		if (baseballGameModel.isGameOver()) {
-	// 			System.out.println(DIGIT_NUMBER.getCode()+"스트라이크");
-	// 			System.out.println(DIGIT_NUMBER.getCode()+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
-	//
-	//
-	// 			choiceGameProgress();
-	//
-	// 			try {
-	// 				choiceGameProgress();
-	// 			} catch (IllegalArgumentException e){
-	// 				System.out.println(e.getMessage());
-	// 				return;
-	// 			}
-	// 			continue;
-	// 		}
-	//
-	// 		printMatchResult(scoreList);
-	// 	}
-	// }
+	}
 
 	public static void gameInit() {
 		ComputerPlayer computerPlayer = new ComputerPlayer();
@@ -106,11 +54,10 @@ public class Application {
 	}
 
 	public static void choiceGameProgress() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		System.out.println("게임을 새로 시작하려면 "+ GAME_RESTART.getCode()+ ", 종료하려면 "+GAME_END.getCode()+ "를 입력하세요.");
 		String gameProgressNumber = Console.readLine();
 
-		// isValidProgressNumber(gameProgressNumber);
-		UserInputValidator.isValidProgressNumber(gameProgressNumber);
+		userInputValidator.isValidProgressNumber(gameProgressNumber);
 
 		if (Integer.parseInt(gameProgressNumber) == GAME_END.getCode()) {
 			gameStatus = false;
