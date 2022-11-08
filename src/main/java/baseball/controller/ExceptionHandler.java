@@ -11,12 +11,12 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ExceptionHandler {
-    static void validateUserNumberOfString(String userNumberOfString) throws IllegalArgumentException{
+    static void validateUserNumberOfString(String userNumberOfString) throws IllegalArgumentException {
         validateOf3DigitsNumber(userNumberOfString);
         validateIsNumberOfStringHaveDifferentEach(userNumberOfString);
     }
 
-    static void validateOneIfGameRepeatOrTwo(String oneIfGameRepeatOrTwo) throws IllegalArgumentException{
+    static void validateOneIfGameRepeatOrTwo(String oneIfGameRepeatOrTwo) throws IllegalArgumentException {
         if (ValidationConstant.INPUT_LIST_OF_USER_CHECK_REPEAT_GAME.contains(oneIfGameRepeatOrTwo)) {
             return;
         }
@@ -35,8 +35,8 @@ public class ExceptionHandler {
         List<Integer> numberOfList = convertNumberOfStringToList(numberOfString);
         if (checkHaveListDuplication(numberOfList)) {
             throw new IllegalArgumentException(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
-        };
-
+        }
+        ;
     }
 
     private static boolean checkHaveListDuplication(List<Integer> numberOfList) {
@@ -56,4 +56,5 @@ public class ExceptionHandler {
                 .collect(Collectors.toList());
         return numberOfList;
     }
+
 }

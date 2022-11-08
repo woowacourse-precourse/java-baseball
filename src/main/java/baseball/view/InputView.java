@@ -15,4 +15,5 @@ public class InputView {
         String oneIfUserRepeatGameOrTwo = Console.readLine();
         return oneIfUserRepeatGameOrTwo;
     }
+
 }

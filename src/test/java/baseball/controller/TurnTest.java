@@ -105,4 +105,5 @@ public class TurnTest {
         String numberOfString = "123";
         assertThat(turn.convertNumberStringToList(numberOfString).get(0)).isEqualTo(1);
     }
+
 }

@@ -46,4 +46,5 @@ public class Target {
     boolean checkIsNumberInTargetList(int number) {
         return this.targetNumberList.contains(number);
     }
+
 }

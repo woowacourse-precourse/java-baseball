@@ -59,4 +59,5 @@ public class Game {
     void setResultGameEnd() {
         this.gameStatus = GameStatus.END;
     }
+
 }
