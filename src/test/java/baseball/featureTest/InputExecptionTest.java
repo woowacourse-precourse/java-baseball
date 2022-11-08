@@ -1,2 +1,5 @@
-package baseball.FeatureTest;public class InputExecptionTest {
+package baseball.featureTest;
+
+public class InputExecptionTest {
+
 }
