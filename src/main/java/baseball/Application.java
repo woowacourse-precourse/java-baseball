@@ -142,6 +142,10 @@ public class Application {
     public static List<Integer> guessStringToList(String userGuessString) {
         List<Integer> userGuess = new ArrayList<>();
 
+        for (int i = 0; i < 3; i++) {
+            userGuess.add(Integer.parseInt(String.valueOf(userGuessString.charAt(i))));
+        }
+
         return userGuess;
     }
 
