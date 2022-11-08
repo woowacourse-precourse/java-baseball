@@ -16,7 +16,6 @@ public class Server {
         Client.showGameStartMessage();
         while (true) {
             List<Integer> gameNumberList = makeNewGameNumber();
-            System.out.println(gameNumberList);
             boolean isNotGameOver = true;
             while (isNotGameOver) {
                 int playerGameNumber = Client.askPlayerGameNumber();
