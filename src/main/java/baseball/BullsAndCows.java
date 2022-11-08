@@ -2,8 +2,15 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static baseball.message.Message.CONTINUE_MESSAGE;
+import static baseball.message.Message.INCORRECT_FORMAT_MESSAGE;
+import static baseball.message.Message.INCORRECT_NUMBER_LENGTH_MESSAGE;
+import static baseball.message.Message.INPUT_MESSAGE;
+import static baseball.message.Message.OVERLAP_NUMBER_MESSAGE;
 
 class BullsAndCows {
     private List<Integer> computerNumber;
@@ -33,7 +40,7 @@ class BullsAndCows {
     }
 
     public void startGame() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_MESSAGE);
         String userInput = Console.readLine();
         List<Integer> userInputNumber = inputToList(userInput);
 
@@ -50,7 +57,7 @@ class BullsAndCows {
     }
 
     public boolean isContinue() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(CONTINUE_MESSAGE);
         String answer = Console.readLine();
 
         return answer.equals("1");
@@ -66,18 +73,18 @@ class BullsAndCows {
 
     public void checkIncorrectInput(String userInput) throws IllegalArgumentException {
         if (userInput.length() != 3) {
-            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
+            throw new IllegalArgumentException(INCORRECT_NUMBER_LENGTH_MESSAGE);
         }
 
         char[] charArray = userInput.toCharArray();
 
         if (isOverlap(charArray)) {
-            throw new IllegalArgumentException("서로 다른 숫자가 아닙니다.");
+            throw new IllegalArgumentException(OVERLAP_NUMBER_MESSAGE);
         }
 
         for (char c : charArray) {
             if (!isValid(c)) {
-                throw new IllegalArgumentException("1 ~ 9 사이 숫자가 아닙니다.");
+                throw new IllegalArgumentException(INCORRECT_FORMAT_MESSAGE);
             }
         }
     }
