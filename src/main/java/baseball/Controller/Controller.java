@@ -14,13 +14,12 @@ import java.util.List;
 
 public class Controller {
     Rule rule = new Rule();
-    public String gameStart()
-    {
+
+    public String gameStart() {
         List<Integer> computerAnswer = new ArrayList<>();
-        while(computerAnswer.size()<3) {
+        while (computerAnswer.size() < 3) {
             int tmp = Randoms.pickNumberInRange(1, 9);
-            if(!computerAnswer.contains(tmp))
-            {
+            if (!computerAnswer.contains(tmp)) {
                 computerAnswer.add(tmp);
             }
         }
@@ -28,20 +27,19 @@ public class Controller {
         System.out.println(Constants.GAME_START);
 
         do {
-        String input = readLine();
-        if(input.length()>=4)
-        {
-            throw new IllegalArgumentException();
-        }
-        ThrowBall throwBall = new ThrowBall(input);
-        answer = rule.ruleCheck(computerAnswer,throwBall);
-        System.out.println(answer);
-    }while(!answer.equals("3스트라이크"));
-        System.out.println(ANSWER+" "+GAME_END);
+            String input = readLine();
+            if (input.length() >= 4) {
+                throw new IllegalArgumentException();
+            }
+            ThrowBall throwBall = new ThrowBall(input);
+            answer = rule.ruleCheck(computerAnswer, throwBall);
+            System.out.println(answer);
+        } while (!answer.equals("3스트라이크"));
+        System.out.println(ANSWER + " " + GAME_END);
         return answer;
     }
 
-    public boolean gameRestart()throws IllegalArgumentException{
+    public boolean gameRestart() throws IllegalArgumentException {
         System.out.println(GAME_RESTART);
         String input = readLine();
         if (input.equals("1")) {
@@ -49,8 +47,8 @@ public class Controller {
             return true;
         } else if (input.equals("2")) {
             return false;
-        }else{
-           throw new IllegalArgumentException();
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 }
