@@ -14,6 +14,10 @@ public class Application {
             List<Integer> computer = startGame();
 
             int endGame = game(computer);
+
+            if (endStatus(endGame)){
+                break;
+            }
         }
     }
 
@@ -129,5 +133,11 @@ public class Application {
         int endGame = Integer.parseInt(Console.readLine());
 
         return endGame;
+    }
+    private static boolean endStatus(int endGame){
+        if(endGame == 2){
+            return true;
+        }
+        return false;
     }
 }
