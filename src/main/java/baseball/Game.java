@@ -30,6 +30,13 @@ public class Game {
     }
 
 
+    private void validateNumbers(List<Integer> numbers) {
+        if (numbers.size() != MAX_SCORE || new HashSet<>(numbers).size() != MAX_SCORE) {
+            throw new IllegalArgumentException("invalid input");
+        }
+    }
+
+
     private List<Integer> toIntList(String numberString) {
         List<Integer> numberList = new ArrayList<>();
 
@@ -43,6 +50,7 @@ public class Game {
         System.out.printf("숫자를 입력해주세요 : ");
         String input = readLine();
         List<Integer> userNumbers = toIntList(input);
+        validateNumbers(userNumbers);
 
         return userNumbers;
     }
