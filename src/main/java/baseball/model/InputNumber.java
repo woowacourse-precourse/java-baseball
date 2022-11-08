@@ -10,20 +10,24 @@ public class InputNumber {
 
     public static List<Integer> getValidNumberList() {
         String input = getPlayerInput();
+        System.out.println("플레이어: " + input);
         validateInputSize(input);
         validateDigitRange(input);
+
 
         List<Integer> inputList = stringToList(input);
         validateUniqueNumberList(inputList);
         return inputList;
     }
 
-    public static String getPlayerInput() {
-        return Console.readLine();
+    public static String getValidChoice() {
+        String input = getPlayerInput();
+        validateChoiceNumber(input);
+        return input;
     }
 
-    public static void printInputNumberMessage() {
-        System.out.print("숫자를 입력해주세요 : ");
+    public static String getPlayerInput() {
+        return Console.readLine();
     }
 
     private static List<Integer> stringToList(String input) {
@@ -41,37 +45,32 @@ public class InputNumber {
         }
     }
 
-    private static void validateUniqueNumber(List<Integer> numberlist, int numberIndex) {
-        for (int i = 0; i < numberlist.size(); i++) {
-            if (numberIndex == i) {
+    private static void validateUniqueNumber(List<Integer> numberList, int checkIndex) throws IllegalArgumentException {
+        for (int i = 0; i < numberList.size(); i++) {
+            if (checkIndex == i) {
                 continue;
             }
-            if (numberlist.get(numberIndex) == numberlist.get(i)) {
+            if (numberList.get(checkIndex) == numberList.get(i)) {
                 throw new IllegalArgumentException("number is cannot duplicate.");
             }
         }
     }
 
-    private static void validateInputSize(String input) {
+    private static void validateInputSize(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
             throw new IllegalArgumentException("input has to be 3 length.");
         }
     }
 
-    private static void validateDigitRange(String input) {
+    private static void validateDigitRange(String input) throws IllegalArgumentException {
         if (!Pattern.matches("^[1-9]*$", input)) {
             throw new IllegalArgumentException("digit range is a number of from 1 to 9.");
         }
     }
 
-//    public static void main(String[] args) {
-//        printInputNumberMessage();
-//        try {
-//            System.out.println(getValidNumberInput());
-//        }
-//        catch (IllegalArgumentException e){
-//            //e.printStackTrace();
-//            System.out.println("message: "+e.getMessage());
-//        }
-//    }
+    private static void validateChoiceNumber(String input) throws IllegalArgumentException {
+        if (!(input.equals("1") || input.equals("2"))) {
+            throw new IllegalArgumentException("only 1 or 2 number is possible.");
+        }
+    }
 }
