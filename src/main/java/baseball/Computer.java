@@ -21,4 +21,16 @@ public class Computer {
 
         return cnt;
     }
+
+    public int countStrike(String input) {
+        int cnt = 0;
+
+        for (int i=0; i<input.length(); i++) {
+            if( answer.charAt(i) == input.charAt(i)) {
+                cnt++;
+            }
+        }
+
+        return cnt;
+    }
 }
