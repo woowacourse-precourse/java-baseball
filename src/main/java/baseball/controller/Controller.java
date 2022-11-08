@@ -10,6 +10,7 @@ import static baseball.controller.Exception.validateUserInput;
 
 public class Controller {
     static int NUMBER_LENGTH = 3;
+    static int GAME_RESTART_OR_EXIT_RESPONSE_LENGTH = 1;
     static int GAME_RESTART = 1;
     static int GAME_EXIT = 2;
     static int NUMBER_RANGE_START = 1;
@@ -38,7 +39,7 @@ public class Controller {
     }
     private boolean playGameOnce(Computer computer, User user){
         String input = View.inputUserNumber();
-        validateUserInput(input);
+        validateUserInput(input, NUMBER_LENGTH);
         user.saveUserInput(input);
         int strikeNum = countStrike(computer, user);
         if(strikeNum == NUMBER_LENGTH){
@@ -62,7 +63,7 @@ public class Controller {
         View.correctAnswer(NUMBER_LENGTH);
 
         String input = View.askRestartOrExit(USER_CHOICE);
-        validateAskRestartOrExitInput(input, GAME_RESTART, GAME_EXIT);
+        validateAskRestartOrExitInput(input, GAME_RESTART, GAME_EXIT, GAME_RESTART_OR_EXIT_RESPONSE_LENGTH);
         if(Integer.parseInt(input) == GAME_EXIT)
             return false;
         else if(Integer.parseInt(input) == GAME_RESTART)
