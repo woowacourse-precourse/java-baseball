@@ -40,9 +40,15 @@ public class Application {
 
         private boolean gamePlay() {
             Ready();
-//            play();
+            play();
 //            return nextAction();
             return false;
+        }
+
+        private void play() {
+            checkStrike();
+            checkBall();
+            printPlayStatus();
         }
 
         private void Ready() {
