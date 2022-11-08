@@ -13,7 +13,7 @@ public class Game {
         result.put("ball", 0);
     }
 
-    public void startGame() throws IllegalArgumentException{
+    public void startGame() throws IllegalArgumentException {
         Computer computer = new Computer();
         Player player = new Player();
 

@@ -21,13 +21,13 @@ public class Player {
             char charNum = inputNum.charAt(i);
 
             // 숫자가 아닐 경우 예외
-            int ascii = (int)charNum;
-            if (ascii<48 || ascii>57) throw new IllegalArgumentException();
+            int ascii = (int) charNum;
+            if (ascii < 48 || ascii > 57) throw new IllegalArgumentException();
 
             int num = Character.getNumericValue(charNum);
 
             // 중복된 숫자가 있을경우 예외
-            if(myInputNumber.contains(num)) throw new IllegalArgumentException();
+            if (myInputNumber.contains(num)) throw new IllegalArgumentException();
 
             myInputNumber.add(num);
         }

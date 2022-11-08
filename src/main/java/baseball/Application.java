@@ -20,15 +20,12 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (checkPlayGame) {
-            // 게임 시작
             try {
                 game.startGame();
-            }
-            catch (IllegalArgumentException e) {
-               throw new IllegalArgumentException();
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException();
             }
 
-            // 게임 종료 조건 확인
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartCheckNum = Console.readLine();
             System.out.println(restartCheckNum);
