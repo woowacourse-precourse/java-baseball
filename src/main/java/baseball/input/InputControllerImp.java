@@ -26,7 +26,7 @@ public class InputControllerImp implements InputController {
 
     private boolean checkFormat(String userInput) {
         String regex = String.format(
-                "[%d-%d]{%d}$",
+                "^[%d-%d]{%d}$",
                 START_INCLUSIVE,
                 END_INCLUSIVE,
                 NUMBER_LENGTH
