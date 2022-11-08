@@ -58,4 +58,19 @@ public class Application {
         }
         return true;
     }
+
+    static boolean checkInputSameNumber(String Input) {
+        int allSameNum = 0;
+
+        for (int k = 0; k < 3; k++) {
+            int SameNumCount = Input.length() - Input.replace(String.valueOf(Input.substring(k, k + 1)), "").length();
+            allSameNum += SameNumCount;
+        }
+
+        if (allSameNum != 3) {
+            return false;
+        }
+
+        return true;
+    }
 }
