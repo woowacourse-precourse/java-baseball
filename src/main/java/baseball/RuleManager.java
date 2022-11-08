@@ -30,4 +30,12 @@ public class RuleManager {
         }
         return ballCount - countStrike(user, computerNumbers);
     }
+
+    public static void compareStrikeBall(User user, List<Long> computerNumbers) {
+        if (countStrike(user, computerNumbers) > ZERO_STRIKE_NUMBER && countBall(user, computerNumbers) > ZERO_BALL_NUMBER) {
+            if (countStrike(user, computerNumbers) < TWO_STRIKE_NUMBER && countBall(user, computerNumbers) < THREE_BALL_NUMBER) {
+                Output.printStrikeBall(countStrike(user, computerNumbers), countBall(user, computerNumbers));
+            }
+        }
+    }
 }
