@@ -43,7 +43,7 @@ public class Application {
         return String.join("", computer);
     }
 
-    private static void validateNumber(String userInput) throws IllegalArgumentException {
+    public static void validateNumber(String userInput) throws IllegalArgumentException {
         if (userInput.length() != NUM_OF_DIGIT) {
             throw new IllegalArgumentException("3자리 수를 입력해주세요");
         }
