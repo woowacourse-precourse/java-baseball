@@ -1,5 +1,8 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 //1.문한 반복: 진행 여부 1, 2
@@ -20,6 +23,18 @@ import java.util.List;
 // 둘 다 0아닌 경우
 public class Application {
 
+    //2.랜덤 3자리 숫자 저장
+    public static List<Integer> random3Number(){
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
+    }
+
     public static void startBaseballGame(){
         String again = "1";
         //1.문한 반복: 진행 여부 1, 2
@@ -29,6 +44,7 @@ public class Application {
                 break;
             }
             boolean flag=false;
+            List<Integer> computer = random3Number();
         }
     }
 
