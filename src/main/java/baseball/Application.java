@@ -49,7 +49,7 @@ public class Application {
     // +new 2-1. 들어온 수가 모두 정수인가?
     public static boolean isDigit (String inputNumberString){
         for (int i = 0; i < 3; i++) {
-            if(inputNumberString.charAt(i) >= '9' || inputNumberString.charAt(i) <= '0')
+            if(inputNumberString.charAt(i) > '9' || inputNumberString.charAt(i) <= '0')
                 return false;
         }
         return true;
