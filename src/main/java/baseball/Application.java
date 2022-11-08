@@ -94,7 +94,7 @@ class Game {
         } else if (countStrike == 3) {
             return "3스트라이크";
         } else {
-            return Integer.toString(countBall) + "볼 " + Integer.toString(countStrike) + "스트라이크";
+            return countBall + "볼 " + countStrike + "스트라이크";
         }
     }
 

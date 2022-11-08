@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     Game game = new Game();
-    AllStrike allStrike = new AllStrike();
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
