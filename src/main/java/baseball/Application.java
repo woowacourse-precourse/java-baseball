@@ -49,7 +49,13 @@ public class Application {
             }
             return strikeCnt;
         }
-        public int ball(){}
+        public int ball(List<Integer> inputNum){
+            int ballCnt=0;
+            for(int i=0;i<3;i++){
+                if(strikeResult[i]!=1&&computerNumCheck[inputNum.get(i)]==1) ballCnt++;
+            }
+            return ballCnt;
+        }
         public boolean resultPrint(){}
     }
 
