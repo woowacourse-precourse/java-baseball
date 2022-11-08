@@ -64,7 +64,7 @@ public class BaseballGame {
         }
         printHint(strikeCount, ballCount);
     }
-    
+
     public void printHint(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount > 0) { // 볼만 있는 경우
             System.out.print(ballCount+"볼\n");
