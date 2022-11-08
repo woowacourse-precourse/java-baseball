@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,28 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    @DisplayName("문자열에서 정수 리스트로 변환 테스트")
+    void 문자열_리스트_변환_테스트() throws Exception {
+        // given
+        InputValidation inputValidation = new InputValidation();
+        Method method = inputValidation.getClass().getDeclaredMethod("changeStrToList", String.class);
+        method.setAccessible(true);
+
+        // when
+        String input = "123";
+        List<Integer> inputNums = (List<Integer>) method.invoke(inputValidation, input);
+
+        // then
+        List<Integer> correct = new ArrayList<>();
+        correct.add(1);
+        correct.add(2);
+        correct.add(3);
+
+        assertThat(inputNums).isEqualTo(correct);
+    }
+
 
     @Test
     @DisplayName("사용자의 입력값 길이 테스트")
