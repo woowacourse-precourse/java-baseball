@@ -16,40 +16,96 @@ public class Computer {
     }
 
     public void init() {
-        List<Integer> list = new ArrayList<>();
-        while (list.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!list.contains(randomNumber)) {
-                list.add(randomNumber);
-            }
-        }
-        balls = BallGenerator.getBalls(list);
+        List<Integer> threeRandomNumber = getThreeRandomNumber();
+        balls = BallGenerator.getBalls(threeRandomNumber);
     }
 
-    public String getResult(List<Ball> assumtion) {
+    private List<Integer> getThreeRandomNumber() {
+        List<Integer> list = new ArrayList<>();
+        while (list.size() < 3) {
+            int randomNumber = getRandomNumber();
+            if (isContains(list, randomNumber)) {
+                continue;
+            }
+            list.add(randomNumber);
+        }
+        return list;
+    }
+
+    private int getRandomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
+    }
+
+    private boolean isContains(List<Integer> list, int randomNumber) {
+        return list.contains(randomNumber);
+    }
+
+    public String getResult(List<Ball> assumption) {
+        int strike = getStrike(assumption);
+        int ball = getBall(assumption);
+        return getAnswer(strike, ball);
+    }
+
+    private int getStrike(List<Ball> assumption) {
         int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (isStrike(balls.get(i), assumption.get(i))) strike++;
+        }
+        return strike;
+    }
+
+    private boolean isStrike(Ball ball1, Ball ball2) {
+        return isSamePosition(ball1, ball2) && isSameNumber(ball1, ball2);
+    }
+
+    private boolean isSamePosition(Ball ball1, Ball ball2) {
+        return ball1.getPosition() == ball2.getPosition();
+    }
+
+    private boolean isSameNumber(Ball ball1, Ball ball2) {
+        return ball1.getNumber() == ball2.getNumber();
+    }
+
+    private int getBall(List<Ball> assumption) {
         int ball = 0;
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                Ball ball1 = balls.get(i);
-                Ball ball2 = assumtion.get(j);
-                if (ball1.getNumber() != ball2.getNumber()) {
-                    continue;
-                }
-                if (ball1.getPosition() != ball2.getPosition()) {
-                    ball++;
-                } else {
-                    strike++;
-                }
-            }
+            ball += isBallWithPosition(assumption, i);
         }
-        if (strike == 0 && ball == 0) {
+        return ball;
+    }
+
+    private int isBallWithPosition(List<Ball> assumption, int position) {
+        for (int j = 0; j < 3; j++) {
+            if (isBall(balls.get(position), assumption.get(j))) return 1;
+        }
+        return 0;
+    }
+
+    private boolean isBall(Ball ball1, Ball ball2) {
+        return !isSamePosition(ball1, ball2) && isSameNumber(ball1, ball2);
+    }
+
+    private String getAnswer(int strike, int ball) {
+        if (isNothing(strike, ball)) {
             return "낫싱";
-        } else if (ball == 0) {
+        }
+        if (isNoBall(ball)) {
             return strike + "스트라이크";
-        } else if (strike == 0) {
+        }
+        if (isNoStrike(strike)) {
             return ball + "볼";
         }
         return ball + "볼 " + strike + "스트라이크";
+    }
+
+    private boolean isNothing(int strike, int ball) {
+        return strike == 0 && ball == 0;
+    }
+    private boolean isNoBall(int ball) {
+        return ball == 0;
+    }
+
+    private boolean isNoStrike(int strike) {
+        return strike == 0;
     }
 }

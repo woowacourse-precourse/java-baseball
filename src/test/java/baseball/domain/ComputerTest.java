@@ -26,7 +26,10 @@ class ComputerTest {
                 new Computer(List.of(Ball.of(1, 1), Ball.of(2, 2), Ball.of(3, 3))), "1스트라이크"),
             Arguments.of("{781, 123} -> 1볼",
                 List.of(Ball.of(7, 1), Ball.of(8, 2), Ball.of(1, 3)),
-                new Computer(List.of(Ball.of(1, 1), Ball.of(2, 2), Ball.of(3, 3))), "1볼")
+                new Computer(List.of(Ball.of(1, 1), Ball.of(2, 2), Ball.of(3, 3))), "1볼"),
+            Arguments.of("{312, 123} -> 3볼",
+                List.of(Ball.of(3, 1), Ball.of(1, 2), Ball.of(2, 3)),
+                new Computer(List.of(Ball.of(1, 1), Ball.of(2, 2), Ball.of(3, 3))), "3볼")
         );
     }
 
@@ -34,6 +37,6 @@ class ComputerTest {
     @MethodSource("param1")
     void test1(String description, List<Ball> balls, Computer computer, String ans) {
         String result = computer.getResult(balls);
-        Assertions.assertTrue(ans.equals(result));
+        Assertions.assertEquals(ans, result);
     }
 }
