@@ -38,8 +38,11 @@ public class SystemUtil implements Interactive {
                 IsOperationCodeCond.getInstance()
         );
 
-        if (validator.isAnyConditionsFalse(input, conditions)) {
-            throw new IllegalArgumentException();
+        Integer notPassConditionIndex = validator.getNotPassConditionIndex(input, conditions);
+
+        if (notPassConditionIndex != PASS_ALL_CONDITIONS_INDEX) {
+            Condition notPassCondition = conditions.get(notPassConditionIndex);
+            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
         }
 
         return UserAction.getEnumByValue(input);

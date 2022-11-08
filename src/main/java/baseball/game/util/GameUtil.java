@@ -18,6 +18,7 @@ public class GameUtil implements Interactive {
     private final static Validator validator = Validator.getInstance();
     private static final Integer RANDOM_RANGE_MIN = 1;
     private static final Integer RANDOM_RANGE_MAX = 9;
+
     public static final Integer STRIKE_OUT_COUNT = 3;
     public static final Integer NUMBER_SIZE = 3;
 
@@ -53,8 +54,11 @@ public class GameUtil implements Interactive {
                 AllDigitsNumberCond.getInstance()
         );
 
-        if (validator.isAnyConditionsFalse(guess, conditions)) {
-            throw new IllegalArgumentException();
+        Integer notPassConditionIndex = validator.getNotPassConditionIndex(guess, conditions);
+
+        if (notPassConditionIndex != PASS_ALL_CONDITIONS_INDEX) {
+            Condition notPassCondition = conditions.get(notPassConditionIndex);
+            throw new IllegalArgumentException(notPassCondition.getErrorMessage());
         }
 
         return guess;
