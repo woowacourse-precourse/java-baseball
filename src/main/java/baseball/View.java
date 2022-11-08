@@ -1,6 +1,9 @@
 package baseball;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class View {
 
@@ -25,14 +28,18 @@ public class View {
 
     private boolean userInputException(String input){
 
+        HashSet<Character> overlapCheck = new HashSet<>();
+
         if(input.length()!=3)return false;
 
         for(int i=0;i<input.length();i++){
             char number = input.charAt(i);
-
+            overlapCheck.add(number);
             if(number<'0'||number>'9') return false;
-
         }
+
+        if(overlapCheck.size()!=3) return false;
+
         return true;
     }
 
