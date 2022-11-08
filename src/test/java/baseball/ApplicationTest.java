@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import static baseball.service.GameService.RANDOMBALL;
+import static baseball.service.GameService.errorCheck;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,6 +22,14 @@ class ApplicationTest extends NsTest {
     @BeforeEach
     void initData() {
         NeedForGameService.initData();
+    }
+    @Test
+    void 입력수_숫자로만_존재하는지() {
+        String inputBalls = "123a";
+        boolean checkNumeric = inputBalls.matches("[+-]?\\d*(\\.\\d+)?");
+        if(!checkNumeric){
+            throw new IllegalArgumentException();
+        }
     }
     @Test
     void 랜덤수_중복유무_체크() {
