@@ -31,8 +31,7 @@ class PlayerTest {
         List<Integer> expected = List.of(5, 2, 8);
 
         //when
-        player.inputThreeNumbers(inputString);
-        List<Integer> res = player.sayThreeNumbers();
+        List<Integer> res = player.inputThreeNumbers(inputString);
 
         //then
         assertThat(res).isEqualTo(expected);
@@ -46,8 +45,7 @@ class PlayerTest {
         List<Integer> expected = List.of(4, 9, 8);
 
         //when
-        player.inputThreeNumbers(inputString);
-        List<Integer> res = player.sayThreeNumbers();
+        List<Integer> res = player.inputThreeNumbers(inputString);
 
         //then
         assertThat(res).isEqualTo(expected);
