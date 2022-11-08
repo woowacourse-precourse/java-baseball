@@ -37,14 +37,19 @@ public class Application {
         private void makeGoal() {
             for (int idx = 0; idx < NUM_DIGIT; idx++) {
                 int randomNum = makeNumber();
-//                makeNumberOrder(randomNum);
+                makeNumberOrder(randomNum, idx);
 //                makeNumberUsage(randomNum);
             }
+        }
+
+        private void makeNumberOrder(int randomNum, int idx) {
+            this.goalArr[idx] = randomNum;
         }
 
         private int makeNumber() {
             return Randoms.pickNumberInRange(1, 9);
         }
+
     }
 
     public static void main(String[] args) {
