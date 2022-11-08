@@ -87,8 +87,10 @@ public class Game {
 
     public boolean askRestart(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        inputNumber.userChoiceRestartOrEnd();
-        String yesOrNo = inputNumber.getUserNumber();
+        String yesOrNo = Console.readLine();
+        if(!InputNumberValidator.restartOrEndNumberCheck(yesOrNo)){
+            throw new IllegalArgumentException();
+        }
         return yesOrNo.equals(RESTART);
     }
 
