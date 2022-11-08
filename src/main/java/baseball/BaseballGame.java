@@ -66,8 +66,15 @@ public class BaseballGame {
 			return false;
 		}
 
-		int checkBall() {
-			return 0;
+        int checkBall(List<Integer> suggestion) {
+            int ball = 0;
+            for (int i = 0; i < answer.size(); i++) {
+                if (answer.get(i) != suggestion.get(i) && suggestion.contains(answer.get(i))) {
+                    ball++;
+                }
+            }
+            return ball;
+        }
 		}
 
 		int checkStrike() {
