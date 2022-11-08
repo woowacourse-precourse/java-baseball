@@ -6,6 +6,9 @@ public class UserNumberParser {
         int[] numbers = new int[size];
 
         for (int i = 0; i < size; i++) {
+            if (!checkRange(input, i)) {
+                throw new IllegalArgumentException();
+            }
             numbers[i] = toInt(input, i);
         }
         return numbers;
@@ -15,6 +18,10 @@ public class UserNumberParser {
         if (input.length() != size) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private Boolean checkRange(String input, int index) {
+        return '0' <= input.charAt(index) && input.charAt(index) <= '9';
     }
 
     private int toInt(String input, int index) {
