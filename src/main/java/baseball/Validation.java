@@ -10,6 +10,12 @@ import java.util.stream.Collectors;
 
 public class Validation {
 
+    public void validate(List<Integer> number) throws IllegalArgumentException {
+        validateLengthOfNumber(number);
+        validateUnlike(number);
+        validateBetweenOneAndNine(number);
+    }
+    
     public void validateLengthOfNumber(List<Integer> number) {
         if (number.size() != LENGTH_OF_NUMBER) {
             throw new IllegalArgumentException(ERR_MSG);
