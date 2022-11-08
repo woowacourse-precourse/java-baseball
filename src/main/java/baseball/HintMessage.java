@@ -13,7 +13,6 @@ public class HintMessage {
         }
         if (user.equals(com)) {
             return isFinishGame();
-//            return false;
         }
         return true;
     }
@@ -30,7 +29,6 @@ public class HintMessage {
     }
 
     public int checkBall(int number, List<Integer> com) {
-        System.out.println("number = " + number);
         if (com.contains(number)) {
             ball_Score++;
         }
