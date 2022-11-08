@@ -45,11 +45,11 @@ class BaseBallGame {
         return device;
     }
 
-    public void gameStart() {
-        Display.gameStart();
+    public void start() {
+        Display.start();
     }
 
-    public void gamePlaying() throws IllegalArgumentException {
+    public void playing() throws IllegalArgumentException {
         boolean isSolved = false;
 
         setComputerNumber(getRandomDiff3DigitNumber());
@@ -58,12 +58,12 @@ class BaseBallGame {
             isSolved = solvingProblem(computerNumber);
         }
 
-        if (reStartGame()) {
-            gamePlaying();
+        if (restart()) {
+            playing();
         }
     }
 
-    public boolean reStartGame() {
+    public boolean restart() {
         Display.QUESTIONS_ABOUT_RESTART();
         String answerToReplay = Console.readLine();
 
@@ -75,7 +75,7 @@ class BaseBallGame {
             return true;
         }
 
-        Display.gameFinish();
+        Display.finish();
         return false;
     }
 

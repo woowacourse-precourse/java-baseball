@@ -12,7 +12,7 @@ public class Display {
     private static String NOTHING = "낫싱";
     private static String INPUT_YOUR_NUMBER = "숫자를 입력해주세요 : ";
 
-    public static void gameStart() {
+    public static void start() {
         System.out.println(Display.GAME_START);
     }
 
@@ -28,7 +28,7 @@ public class Display {
         return Display.INPUT_ERROR_ABOUT_USER_NUMBER;
     }
 
-    public static void gameFinish() {
+    public static void finish() {
         System.out.println(Display.GAME_FINISH);
     }
 
