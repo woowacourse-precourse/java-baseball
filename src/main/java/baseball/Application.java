@@ -7,7 +7,33 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+        int check = 1; // while 문에 사용할 변수
+        ArrayList<Integer> computer = new ArrayList<>();
+        String user ="";
+        randomComputer(computer);
 
+        while(check==1) {
+//            System.out.println(computer);
+            System.out.print("숫자를 입력해주세요 : ");
+
+            user = Console.readLine();
+
+            // 3글자 이상의 string이 입력 될 시 에러가 나오도록 한다.
+            if(user.length()!=3){
+                throw new IllegalArgumentException();
+            }
+            printResult( calculateBall(computer,user), calculateStrike(computer,user));
+
+            if(calculateStrike(computer,user)==3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+                check = Integer.parseInt(Console.readLine());
+
+                computer.clear();
+                randomComputer(computer);
+            }
+        }
+        System.out.println("게임종료");
     }
 
      static ArrayList<Integer> randomComputer(ArrayList<Integer> computer){
