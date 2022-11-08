@@ -33,7 +33,7 @@ public class Application {
         List<String> numberList = stringToStringList(userNumbers);
         validateDigit(numberList);
         validateZero(numberList);
-        validateSize(numberList);
+        validateSize(numberList, 3);
         validateDuplication(numberList);
 
         return numberList.stream().map(Integer::parseInt).collect(Collectors.toList());
@@ -58,9 +58,9 @@ public class Application {
     }
 
 
-    private static void validateSize(List<String> numberList) {
-        if (numberList.size() != 3) {
-            throw new IllegalArgumentException("UserNumber must be three-digit number");
+    private static void validateSize(List<String> numberList, int digitSize) {
+        if (numberList.size() != digitSize) {
+            throw new IllegalArgumentException("UserNumber must be correct-digit number: " + digitSize);
         }
     }
 
