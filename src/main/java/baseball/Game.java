@@ -34,11 +34,10 @@ public class Game {
         }
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String isRestart = Console.readLine();
-        if (isRestart == "1" || isRestart == "2") {
-            return isRestart;
-        } else {
+        if (Integer.parseInt(isRestart) != 1 && Integer.parseInt(isRestart) != 2) {
             throw new IllegalArgumentException("1, 2가 아닌 입력이 들어왔습니다.");
         }
+        return isRestart;
 
 
 
