@@ -7,8 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Game {
     List<Integer> numbersPickedByComputer;
+    List<Integer> numbersPickedByUser;
 
     public void computerSelectThreeNumbers() {
         numbersPickedByComputer = new ArrayList<>();
@@ -57,6 +60,16 @@ public class Game {
             }
         }
         return true;
+    }
+
+    public void userSelectThreeNumbers() {
+        System.out.print("숫자를 입력해주세요 : ");
+        String numberString = readLine();
+        validateInputNumber(numberString);
+        numbersPickedByUser = new ArrayList<>();
+        for (int i = 0; i < numberString.length(); i++) {
+            numbersPickedByUser.add(Character.getNumericValue(numberString.charAt(i)));
+        }
     }
 
 
