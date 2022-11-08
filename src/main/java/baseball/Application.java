@@ -19,16 +19,19 @@ public class Application {
             System.out.println("숫자 야구 게임을 시작합니다.");
             threeNumber = createThreeNumbers(); // 컴퓨터가 서로 다른 3개의 수를 선택
             System.out.println(threeNumber);
-            numberPresentedByPlayer = receiveUserInput(); // 게임플레이어로 부터 숫자를 입력받고 변수에 저장
-            System.out.println(numberPresentedByPlayer);
-            // 입력받은 데이터에 대한 예외처리
-            if (!checkValidForInputThreeNumber(numberPresentedByPlayer)) {
-                throw new IllegalArgumentException("잘못된 입력입니다.");
-            } else {
-                System.out.printf("strike : %d\n",calculateTheNumberOfStrikes(threeNumber,numberPresentedByPlayer));
-                System.out.printf("ball : %d\n",calculateTheNumberOfBalls(threeNumber,numberPresentedByPlayer));
+            while (true) {
+                numberPresentedByPlayer = receiveUserInput(); // 게임플레이어로 부터 숫자를 입력받고 변수에 저장
+                // 입력받은 데이터에 대한 예외처리
+                if (!checkValidForInputThreeNumber(numberPresentedByPlayer)) {
+                    throw new IllegalArgumentException("잘못된 입력입니다.");
+                } else {
+                    int theNumberOfStrikes = calculateTheNumberOfStrikes(threeNumber,numberPresentedByPlayer);
+                    int theNumberOfBalls = calculateTheNumberOfBalls(threeNumber,numberPresentedByPlayer);
+                    if (outputFinalResultAndWhetherAllCorrect(theNumberOfStrikes,theNumberOfBalls)){
+                        break;
+                    }
+                }
             }
-
             break;
         }
     }
@@ -116,5 +119,24 @@ public class Application {
         }
         return numberOfBall;
     }
+
+    // 입력한 숫자에 대한 결과와 모두 맞혔는지 여부를 출력하는 메서드
+    public static boolean outputFinalResultAndWhetherAllCorrect(int numberOfStrikes, int numberOfBalls) {
+        if (numberOfStrikes == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else if (numberOfStrikes == 0 && numberOfBalls == 0) {
+            System.out.println("낫싱");
+        } else if (0 < numberOfStrikes && 3 > numberOfStrikes && numberOfBalls == 0) {
+            System.out.printf("%d스트라이크\n", numberOfStrikes);
+        } else if (numberOfStrikes == 0 && 0 < numberOfBalls && 3 >= numberOfBalls) {
+            System.out.printf("%d볼\n", numberOfBalls);
+        } else if (0 < numberOfStrikes && 3 > numberOfStrikes && 0 < numberOfBalls && 3 >= numberOfBalls) {
+            System.out.printf("%d볼 %d스트라이크\n", numberOfBalls, numberOfStrikes);
+        }
+        return false;
+    }
+
+
 //numberPresentedByPlayer = receivedUserInput.nextLine();
 }
