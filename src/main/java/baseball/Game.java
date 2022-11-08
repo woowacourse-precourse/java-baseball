@@ -41,7 +41,20 @@ public class Game {
             return;
         }
 
+        int newGameChoice = Game.checkNewGame();
+        if(newGameChoice == 1) {
+            computerAnswer = new Game();
+            Game.init(computerAnswer);
+        }
+    }
 
+    private static int checkNewGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1" + ", 종료하려면 2" + "를 입력하세요.");
+
+        String newGameAnswer = readLine();
+        int newGameAnswervalue = Integer.parseInt(newGameAnswer);
+        return newGameAnswervalue;
     }
 
     private static Game getAnswer() {
