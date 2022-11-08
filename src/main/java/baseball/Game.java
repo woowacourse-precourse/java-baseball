@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class Game {
 
     private static final int DIGIT = 3;
+    private static final String RESTART_COMMAND = "1";
+    private static final String EXIT_COMMAND = "2";
 
     private Computer computer;
     private Player player;
@@ -31,7 +33,6 @@ public class Game {
             printResult();
             checkIfAnswer();
         }
-
     }
 
     public void resetResult(){
@@ -39,7 +40,6 @@ public class Game {
         ball = 0;
         nothing = false;
     }
-
 
     public void makeNewRound(){
         computer.setNumber();
@@ -49,19 +49,19 @@ public class Game {
     public void checkExit(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
-        if(!userInput.equals("1") && !userInput.equals("2")){
+        if(!userInput.equals(RESTART_COMMAND) && !userInput.equals(EXIT_COMMAND)){
             throw new IllegalArgumentException();
         }
-        if (userInput.equals("1")){
+        if (userInput.equals(RESTART_COMMAND)){
             makeNewRound();
         }
-        if(userInput.equals("2")){
+        if(userInput.equals(EXIT_COMMAND)){
             EXIT = true;
         }
     }
 
     public void checkIfAnswer(){
-        if (strike == 3) {
+        if (strike == DIGIT) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             checkExit();
         }
@@ -117,17 +117,4 @@ public class Game {
     public boolean isStrike(int index) {
         return computer.getNumber().get(index) == player.getNumber().get(index);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
