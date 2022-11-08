@@ -21,14 +21,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        // 길이가 3인지
+    void 길이가_3인지_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
 
-        // 1부터 9까지의 숫자인지
+    @Test
+    void 숫자가_1부터_9까지인지_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("012"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -38,14 +39,15 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("abc"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
 
-        // 각 자리가 서로 다른 숫자인지
+    @Test
+    void 각_자리가_서로_다른_숫자인지_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("111"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
 
     @Override
     public void runMain() {
