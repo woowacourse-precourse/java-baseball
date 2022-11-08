@@ -1,16 +1,10 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-import org.assertj.core.api.Assertions;
-import org.assertj.core.api.InputStreamAssert;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +14,7 @@ class UserInterfaceTest {
     }
 
     @Nested
-    class 결과_출력_테스트 {
+    class ResultOutput {
         @Test
         void 스트라이크3() {
             assertThat(UserInterface.resultOutput(3, 0)).isEqualTo(true);
@@ -48,7 +42,7 @@ class UserInterfaceTest {
     }
 
     @Nested
-    class 게임_종료_재시작 {
+    class ExitOrRestart {
         @Test
         void 게임_재시작() {
             System.setIn(generateUserInput("1"));
@@ -71,7 +65,7 @@ class UserInterfaceTest {
     }
 
     @Nested
-    class 사용자_입력_테스트 {
+    class getUsersAnswer {
         @Test
         void 올바른_사용자_입력_테스트() {
             System.setIn(generateUserInput("123"));
