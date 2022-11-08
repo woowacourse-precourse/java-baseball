@@ -24,7 +24,9 @@ public class ComparisonNumber {
 
 
     }
-
+    public int getStrike() {
+        return this.strike;
+    }
     public String Message() {
         String result = "";
 
