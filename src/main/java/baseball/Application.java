@@ -9,15 +9,14 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         startGame();
     }
 
-    private static void startGame(){
+    private static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다");
-        boolean play=true;
-        while (play){
-            play=baseballGame();
+        boolean play = true;
+        while (play) {
+            play = baseballGame();
         }
     }
 
@@ -25,8 +24,7 @@ public class Application {
         List<Integer> computerNumList = generateComputerNum();
 
         while (true) {
-            String userNum = inputUserNum();
-            List<Integer> userNumList = splitUserNumToList(userNum);
+            List<Integer> userNumList = splitUserNumToList(inputUserNum());
             String judgeStr = judge(computerNumList, userNumList);
             System.out.println(judgeStr);
             if (judgeStr.equals("3스트라이크")) {
@@ -34,17 +32,16 @@ public class Application {
             }
         }
 
-        boolean finish=finishGame();
-        return finish;
+        return finishGame();
     }
 
     private static boolean finishGame() {
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String restart=readLine();
+        String restart = readLine();
 
-        if(!restart.equals("1") && !restart.equals("2")){
+        if (!restart.equals("1") && !restart.equals("2")) {
             throw new IllegalArgumentException();
         }
         if (restart.equals("2")) {
@@ -55,7 +52,6 @@ public class Application {
 
 
     public static String judge(List<Integer> computerNumList, List<Integer> userNumList) {
-        //수만 같으면 ball,자릿수 까지 같으면 strike
         int ball = judgeBall(computerNumList, userNumList);
         int strike = judgeStrike(computerNumList, userNumList);
 
@@ -64,7 +60,6 @@ public class Application {
         }
         if (ball != 0) {
             return ball + "볼";
-
         }
         if (strike != 0) {
             return strike + "스트라이크";
@@ -140,6 +135,5 @@ public class Application {
         }
         return computerNum;
     }
-
 
 }
