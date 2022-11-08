@@ -12,8 +12,6 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CntBallAndStrikeTest extends NsTest {
 
-    private final Application application = new Application();
-
     @Test
     void 볼이나_스트라이크가_없는_경우() throws IOException {
         List<Integer> computerNumber = new ArrayList<>(Arrays.asList(1, 2, 3));
