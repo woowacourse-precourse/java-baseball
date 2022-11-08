@@ -94,6 +94,21 @@ public class Application {
 		return result;
 	}
 	
+	public static boolean gameRestart() {
+		boolean end=true;
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+		String input=Console.readLine();
+		if(input.equals("1")) {
+			end=true;
+			return end;
+		}else if(input.equals("2")) {
+			end=false;
+			return end;
+		}else {
+			throw new IllegalArgumentException("올바른 입력이 아닙니다.");
+		}
+	}
+	
     public static void main(String[] args) {
     	
     }
