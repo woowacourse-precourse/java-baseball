@@ -12,4 +12,8 @@ public abstract class Player {
     public List<String> getSelectBalls() {
         return new ArrayList<>(selectBalls);
     }
+
+    public void clearSelectBalls() {
+        selectBalls.clear();
+    }
 }
