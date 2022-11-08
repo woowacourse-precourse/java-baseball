@@ -30,6 +30,6 @@ public class ScoreTest {
         List<Integer> strikeAndBallCount = testScore.getStrikeAndBallCount(countStatus);
 
         //then
-        assertThat(strikeAndBallCount).isEqualTo(List.of(strikeCount, ballCount));
+        assertThat(strikeAndBallCount).isEqualTo(List.of(ballCount, strikeCount));
     }
 }

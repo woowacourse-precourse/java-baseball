@@ -14,8 +14,8 @@ public class Score {
     private final int strike;
 
     public Score(int ball, int strike) {
-        this.strike = ball;
-        this.ball = strike;
+        this.strike = strike;
+        this.ball = ball;
     }
 
     public CountStatus getCountStatus() {
