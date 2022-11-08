@@ -29,7 +29,7 @@ class Game {
 
         Hint hint = new Hint(answerList);
         while (true) {
-            System.out.println(GameMessage.TYPE_USER_GUESS.message());
+            System.out.print(GameMessage.TYPE_USER_GUESS.message());
 
             List<Integer> guess = getUserGuess();
             if (isCorrect(guess))
