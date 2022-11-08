@@ -21,9 +21,28 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_입력된_숫자() {
+        //input 크기가 3초과인 경우
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        //input 크기가 3미만인 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        //input에 문자가 포함된 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        //input에 중복이 포함된 경우
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
