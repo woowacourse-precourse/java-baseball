@@ -36,7 +36,7 @@ public class User {
 
     private void checkThreeLengthNumber(String userInput) {
         if (userInput.length() != 3) {
-            throw new IllegalArgumentException("입력이 세자리 수여야 합니다.")
+            throw new IllegalArgumentException("입력이 세자리 수여야 합니다.");
         }
     }
 
@@ -44,7 +44,7 @@ public class User {
         for (int i = 0; i < 3; i++) {
             char number = userInput.charAt(i);
             if (number < '1' || number > '9') {
-                throw new IllegalArgumentException("1~9 범위의 숫자만 입력해야 합니다.")
+                throw new IllegalArgumentException("1~9 범위의 숫자만 입력해야 합니다.");
             }
         }
     }
@@ -58,7 +58,7 @@ public class User {
         }
 
         if (numberSet.size() != 3) {
-            throw new IllegalArgumentException("서로 다른 세 수를 입력해야 합니다.")
+            throw new IllegalArgumentException("서로 다른 세 수를 입력해야 합니다.");
         }
     }
 
@@ -72,7 +72,4 @@ public class User {
 
         return threeNumber;
     }
-
-
-
 }
