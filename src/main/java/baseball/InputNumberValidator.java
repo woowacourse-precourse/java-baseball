@@ -30,14 +30,6 @@ public class InputNumberValidator {
                 .count() == Game.BALLSIZE;
     }
 
-    public static boolean thereIsComma(String  inputNumber){
-        return inputNumber.contains(",");
-    }
-
-    public static boolean thereIsSpace(String  inputNumber){
-        return inputNumber.contains(" ");
-    }
-
 
 
 }
