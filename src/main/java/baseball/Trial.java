@@ -11,13 +11,16 @@ public class Trial {
     private static final int NUMBERS_SIZE = 3;
     private static final int STRIKE_SCORE = 10;
     private static final int BALL_SCORE = 1;
-    private static final String INVALID_INPUT = "잘못된 입력입니다.";
+    private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String INVALID_INPUT_MESSAGE = "잘못된 입력입니다.";
 
     public static List<Integer> inputNumbers() {
+        System.out.print(INPUT_MESSAGE);
+
         String numbersInput = Console.readLine();
 
         if (!isValidInput(numbersInput)) {
-            throw new IllegalArgumentException(INVALID_INPUT);
+            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
 
         return Arrays.stream(numbersInput.split(""))

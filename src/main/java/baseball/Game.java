@@ -10,13 +10,21 @@ import static baseball.Trial.*;
 
 public class Game {
     private static final int NUMBERS_SIZE = 3;
+    private static final String START_MESSAGE = "숫자 야구 게임을 시작합니다.";
+    private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String FINISH_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static Map<Integer, Integer> numbersMap;
     public static void start() {
+        System.out.println(START_MESSAGE);
+
         // 1. 게임을 시작할 때 3자리 숫자를 생성
         generateNumbers();
 
-        // 2. 3 스트라이크 일때 까지 게임을 진행
+        // 2. 3STRIKE 일때 까지 게임을 진행
         proceed();
+
+        // 3. 게임을 종료하고 재시작 여부를 판단
+        finish();
     }
 
     private static void generateNumbers() {
@@ -38,5 +46,11 @@ public class Game {
             result = getResultByScore(getScore(numbersMap, inputNumbers()));
             System.out.println(result.getMessage());
         }
+
+        System.out.println(THREE_STRIKE_MESSAGE);
+    }
+
+    private static void finish() {
+        System.out.println(FINISH_MESSAGE);
     }
 }
