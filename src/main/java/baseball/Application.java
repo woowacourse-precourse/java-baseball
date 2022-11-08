@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,6 +12,17 @@ public class Application {
     //git commit test
     public static void game_start_message(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+    }
+
+    public static String make_computer_number() {
+        String computer_number = "";
+        while (computer_number.length() < 3) {
+            int random_computer_digit = Randoms.pickNumberInRange(1,9);
+            if (!computer_number.contains(Integer.toString(random_computer_digit))) {
+                computer_number += Integer.toString(random_computer_digit);
+            }
+        }
+        return computer_number;
     }
 
     public static String input_number_message(){
@@ -117,7 +129,7 @@ public class Application {
         String playmore_stop_number = "1";
         do {
             //컴퓨터 숫자 생성 함수
-            String computer_number = "451";
+            String computer_number = make_computer_number();
             String[] computer_number_list = computer_number.split("");
             List<Integer> strike_ball_nothing_list = Arrays.asList(0, 0, 0);
             int three_strike_judge = 0;
