@@ -1,18 +1,25 @@
 package baseball.service;
 
-import baseball.domain.*;
-import baseball.exception.ExceptionMessage;
+import baseball.domain.Computer;
+import baseball.domain.Game;
+import baseball.domain.NumberComparator;
+import baseball.domain.Player;
 import baseball.view.OutputView;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class GameServiceTest {
+public class GameControllerTest {
 
     public final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
@@ -91,15 +98,6 @@ public class GameServiceTest {
         game.setGameResult(0, 1);
         OutputView.printGameResult(game);
         assertThat(output.toString()).contains("1볼");
-    }
-
-    @DisplayName("재시작과 종료 명령어 제외 다른 것을 입력 받았을때 예외를 던진다.")
-    @Test
-    void 명령어_예외() {
-        GameService gameService = new GameService();
-        System.setIn(generateUserInput("3"));
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, gameService::getRestartOrExitFromPlayer);
-        assertThat(exception.getMessage()).isEqualTo(ExceptionMessage.INVALID_COMMAND_DIGIT_EXCEPTION.message());
     }
 
     public static InputStream generateUserInput(String input) {
