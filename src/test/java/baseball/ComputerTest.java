@@ -15,17 +15,35 @@ public class ComputerTest {
     }
 
     @Test
+    void reset_스트라이크인지_볼인지_판별() {
+        Computer computer = new Computer();
+        computer.resetHintMap();
+        HashMap<String, Integer> result = HintMap;
+        assertThat(HintMap.get("스트라이크")).isEqualTo(0);
+        assertThat(HintMap.get("볼")).isEqualTo(0);
+        assertThat(HintMap.get("낫싱")).isEqualTo(0);
+    }
+    @Test
     void isNothing_낫싱인지_판별(){
         Computer computer = new Computer();
-        boolean result = computer.isNothing(0);
-        assertThat(result).isEqualTo(true);
+        computer.resetHintMap();
+        List<Integer> list = List.of(0, 0, 0);
+        for (int i =0; i<list.size(); i++){
+            computer.isNothing(list.get(i));
+        }
+        int result = HintMap.get("낫싱");
+        assertThat(result).isEqualTo(3);
     }
 
     @Test
     void isStrikeOrBall_스트라이크인지_볼인지_판별(){
         Computer computer = new Computer();
+        computer.resetHintMap();
         List<Integer> list = List.of(0, 0, 0);
-        HashMap<String, Integer> result = computer.isStrikeOrBall(list);
-        assertThat(result.get("볼")).isEqualTo(3);
+        for (int i =0; i<list.size(); i++){
+            computer.isStrikeOrBall(Answer.get(i), list.get(i));
+        }
+        int result = HintMap.get("볼");
+        assertThat(result).isEqualTo(3);
     }
 }

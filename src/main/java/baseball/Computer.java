@@ -14,6 +14,9 @@ public class Computer {
 
     public static void resetHintMap(){
         HintMap = new HashMap<>();
+        HintMap.put("스트라이크", 0);
+        HintMap.put("볼", 0);
+        HintMap.put("낫싱", 0);
     }
     public static List<Integer> makeAnswer(){
         List<Integer> Answer = new ArrayList<>();
@@ -23,51 +26,17 @@ public class Computer {
         return Answer;
     }
 
-//    public static boolean isNothing(List<Integer> list) {
-//        List<Boolean> checkList = new ArrayList<>();
-//        for (int i = 0; i < list.size(); i++) {
-//            checkList.add(Answer.contains(list.get(i)));
-//        }
-//        return !checkTrue(checkList);
-//    }
-    public static boolean isNothing(int num){
+    public static void isNothing(int num){
         if (!Answer.contains(num)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static HashMap<String, Integer> isStrikeOrBall(List<Integer> list){
-        HashMap<String ,Integer> StrikeOrBall = new HashMap<>();
-        List<Boolean> checkList = new ArrayList<>();
-        for(int i = 0; i < list.size(); i++){
-            checkList.add(Answer.get(i) == list.get(i));
-        }
-        StrikeOrBall.put("스트라이크", Collections.frequency(checkList, true));
-        StrikeOrBall.put("볼", Collections.frequency(checkList, false));
-
-        return StrikeOrBall;
-    }
-
-    public static void giveStrikeOrBall(List<Integer> list){
-        HashMap<String ,Integer> StrikeOrBall = isStrikeOrBall(list);
-        result = StrikeOrBall.get("볼") + "볼" + " " + StrikeOrBall.get("스트라이크") + "스트라이크";
-        if(StrikeOrBall.get("스트라이크") == 0){
-            result = StrikeOrBall.get("볼") + "볼";
-        }
-        if(StrikeOrBall.get("볼") == 0) {
-            result = StrikeOrBall.get("스트라이크") + "스트라이크";
+            HintMap.replace("낫싱", HintMap.get("낫싱")+1);
         }
     }
 
-//    public static void giveResult(List<Integer> list){
-//        if(isNothing(list)){
-//            result = "낫싱";
-//        }
-//        else{
-//            giveStrikeOrBall(list);
-//        }
-//        System.out.println(result);
-//    }
+    public static void isStrikeOrBall(int AnswerNum, int num){
+        if(AnswerNum == num){
+            HintMap.replace("스트라이크", HintMap.get("스트라이크")+1);
+        }
+        HintMap.replace("볼", HintMap.get("볼")+1);
+    }
 }
 
