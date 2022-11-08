@@ -14,7 +14,7 @@ public class Computer {
     }
 
 
-    public void init() {
+    public void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         resultNumber = makeRandomNumber();
     }
@@ -30,7 +30,7 @@ public class Computer {
         return numberList;
     }
 
-    public void startGame() {
+    public void playGame() {
         while (true) {
             List<Integer> inputNumber = makeStringNumberToList(getInputNumber());
             boolean findNumber = calculationNumber(resultNumber, inputNumber);

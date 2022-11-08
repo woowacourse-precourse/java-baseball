@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
     void 세자리의수생성기능_테스트(){
         assertSimpleTest(() -> {
             Computer computer = new Computer();
-            computer.init();
+            computer.startGame();
             assertThat(computer.getResultNumberSize()).isEqualTo(3);
         });
     }
