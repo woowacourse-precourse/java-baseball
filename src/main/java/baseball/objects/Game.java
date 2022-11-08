@@ -10,11 +10,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
-    private final Computer computer = new Computer();
-    private final Referee referee = new Referee();
-    private final Player player = new Player();
+    private final Computer computer;
+    private final Referee referee;
+    private final Player player;
     private final Validation validation = new Validation();
 
+    public Game(Computer computer, Referee referee, Player player) {
+        this.computer = computer;
+        this.referee = referee;
+        this.player = player;
+    }
 
     public boolean start() {
         computer.generateNumbers();
