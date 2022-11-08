@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.exception.InputDuplicationNumberException;
+import baseball.exception.InputNotDigitException;
+import baseball.exception.InputNotOneOrTwoException;
+import baseball.exception.InputNotThreeDigitException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -58,7 +62,7 @@ public class User {
 
     private void checkDigit(char word) {
         if (!Character.isDigit(word)) {
-            throw new IllegalArgumentException("숫자만 입력하시오.");
+            throw new InputNotDigitException();
         }
     }
 
@@ -74,19 +78,19 @@ public class User {
         }
 
         if (gameNumberList.size() != 3) {
-            throw new IllegalArgumentException("세자리로 입력하시오.");
+            throw new InputNotThreeDigitException();
         }
     }
 
     private void checkDuplication(int number, List<Integer> gameNumberList) {
         if (gameNumberList.contains(number)) {
-            throw new IllegalArgumentException("숫자를 중복없이 입력하시오.");
+            throw new InputDuplicationNumberException();
         }
     }
 
     private void checkExitNumber() {
         if (exit != 1 && exit != 2) {
-            throw new IllegalArgumentException("1또는 2만 입력하시오.");
+            throw new InputNotOneOrTwoException();
         }
     }
 }
