@@ -70,7 +70,7 @@ public class Trial {
 
     private static boolean isValidRange(String numbersInput) {
         return numbersInput.chars()
-                .noneMatch(number -> number < '1' || number > '9');
+                .allMatch(number -> number >= '1' && number <= '9');
     }
 
     private static boolean isDuplicated(String numbersInput) {

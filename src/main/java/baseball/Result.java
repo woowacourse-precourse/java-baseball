@@ -6,6 +6,7 @@ public enum Result {
     THREESTRIKE(30, "3스트라이크"),
     TWOSTRIKE(20, "2스트라이크"),
     ONESTRIKE(10, "1스트라이크"),
+    TWOBALLONESTRIKE(12, "2볼 1스트라이크"),
     ONEBALLONESTRIKE(11, "1볼 1스트라이크"),
     THREEBALL(3, "3볼"),
     TWOBALL(2, "2볼"),
