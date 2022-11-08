@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.controller.ground.PlayGround;
+import baseball.domain.input.ConsoleInputReader;
 
 import static baseball.controller.GameFlag.START;
 
@@ -17,7 +18,10 @@ public class BaseballController {
         while (gameFlag == START) {
             playGround = new PlayGround();
             playGround.playInGround();
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+            gameFlag = ConsoleInputReader.getUserOpinion();
         }
+        System.out.println("숫자 야구 게임을 종료합니다.");
     }
 }
