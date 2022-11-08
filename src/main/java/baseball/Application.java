@@ -11,6 +11,6 @@ public class Application {
         do {
             baseballGame.playGame();
             System.out.println(GameMessage.ALL_CORRECT_MESSAGE);
-        } while(baseballGame.askNewGame());
+        } while (baseballGame.askNewGame());
     }
 }
