@@ -32,25 +32,36 @@ public class Application {
         return gameInfo;
     }
 
-    // 입력받은 값이 유효한지 확인
-    private static boolean isValid(String num) {
-        // 3개의 숫자를 입력했는지 확인
-        if (num.length() != 3)
-            return false;
+    // 입력받은 것의 길이가 3인지 확인
+    private static boolean isLen3(String num) {
+        if (num.length() == 3)
+            return true;
+        return false;
+    }
 
-        // 숫자를 입력했는지 확인
+    // 숫자를 입력했는지 확인
+    private static boolean isNum(String num) {
         for (int i = 0; i < 3; i++) {
             if (num.charAt(i) < '0' || num.charAt(i) > '9')
                 return false;
         }
+        return true;
+    }
 
-        // 중복되지 않은 값을 입력했는지 확인
+    // 중복된 값을 입력했는지 확인
+    private static boolean isDuplicated(String num) {
         for (int i = 0; i < 3; i++) {
             if (num.length() - num.replace(num.valueOf(i), "").length() != 2)
-                return false;
+                return true;
         }
+        return false;
+    }
 
-        return true;
+    // 입력받은 값이 유효한지 확인
+    private static boolean isValid(String num) {
+        if (isLen3(num) && isNum(num) && !isDuplicated(num))
+            return true;
+        return false;
     }
 
     private static void playGame() {
