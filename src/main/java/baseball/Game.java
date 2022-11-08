@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
 
-    protected boolean nothing = true;
+    protected boolean nothing = false;
 
     protected int sameNumber = 0;
 
@@ -27,14 +27,14 @@ public class Game {
     public void countSameNumber(ArrayList<Integer> computer, ArrayList<Character> user) {
         for (int i = 0; i < 3; i++) {
             if (computer.contains(user.get(i) - '0')) {
-                this.nothing = false;
                 sameNumber++;
             }
         }
     }
 
     public void checkNothing() {
-        if (this.nothing) {
+        if (sameNumber == 0) {
+            this.nothing = true;
             System.out.println("낫싱");
         }
     }
