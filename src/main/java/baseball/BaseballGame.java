@@ -83,11 +83,15 @@ public class BaseballGame {
             gameControlInput = Integer.parseInt(userUtil.getInputNumber());
             validator.validateGameControlInput(gameControlInput);
 
-            if (gameControlInput == RESTART_NUM) {
-                computerNums = computerUtil.generateNumber();
-            }
+            checkRestartNumAndMakeComputerNum(gameControlInput);
         }
 
         return gameControlInput;
+    }
+
+    private void checkRestartNumAndMakeComputerNum(int gameControlInput) {
+        if (gameControlInput == RESTART_NUM) {
+            computerNums = computerUtil.generateNumber();
+        }
     }
 }
