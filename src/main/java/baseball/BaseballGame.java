@@ -32,8 +32,13 @@ public class BaseballGame {
             printHint();
             checkGameEnd();
         }
+
         printGameEndStatement();
         getPlayerOption();
+    }
+
+    public boolean getIsContinue(){
+        return isContinue;
     }
 
     private void initializeGame(){
@@ -67,7 +72,6 @@ public class BaseballGame {
         if(!input.matches(NUMERIC_VERIFICATION_PATTERN)){
             throw new IllegalArgumentException();
         }
-
     }
     private void checkLengthException(String input){
         if(input.length() != LENGTH_OF_NUMBER){
@@ -110,10 +114,6 @@ public class BaseballGame {
         }else if(input.equals("2")){
             isContinue = false;
         }
-    }
-
-    public boolean getIsContinue(){
-        return isContinue;
     }
 
     private void printGameStartStatement(){
