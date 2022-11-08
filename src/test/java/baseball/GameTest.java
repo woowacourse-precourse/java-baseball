@@ -2,6 +2,7 @@ package baseball;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import domain.Game;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -54,7 +55,7 @@ public class GameTest {
     @DisplayName("유효성 검사 1. Null 확인")
     public void generateNumberValidateIsStringNotNull() {
         Assertions.assertThatThrownBy(() -> {
-            game.generateNumberTest("");
+//            game.generateNumberTest("");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
