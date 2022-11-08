@@ -16,6 +16,10 @@ public class Result {
         }
     }
 
+    public boolean isGameEnd() {
+        return strike == CORRECT_COUNT;
+    }
+
     public boolean isNothing() {
         return strike == 0 && ball == 0;
     }

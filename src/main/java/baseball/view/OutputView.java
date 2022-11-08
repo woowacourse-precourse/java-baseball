@@ -36,4 +36,8 @@ public class OutputView {
     private static boolean isMatch(int matchCount) {
         return matchCount != NONE_MATCH;
     }
+
+    public static void endMessage() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }

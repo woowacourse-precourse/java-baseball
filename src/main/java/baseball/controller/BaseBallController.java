@@ -10,11 +10,22 @@ public class BaseBallController {
 
     public void run() {
         OutputView.startMessage();
+        playGame();
+    }
 
-        Balls userBalls = new Balls(InputView.inputNumbers());
+    private void playGame() {
+        boolean isGameEnd = false;
         Balls computerBalls = new Balls(NumberGenerator.generate());
 
-        Result result = computerBalls.match(userBalls);
-        OutputView.reportResult(result);
+        while (!isGameEnd) {
+            Result result = matchBalls(computerBalls);
+            OutputView.reportResult(result);
+            isGameEnd = result.isGameEnd();
+        }
+        OutputView.endMessage();
+    }
+
+    private Result matchBalls(Balls computerBalls) {
+        return computerBalls.match(new Balls(InputView.inputNumbers()));
     }
 }
