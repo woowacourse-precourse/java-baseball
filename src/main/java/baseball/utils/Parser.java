@@ -21,4 +21,8 @@ public class Parser {
     public int parseInt(String input) {
         return Integer.parseInt(input);
     }
+
+    private boolean validateOneOrTwo(String input) {
+        return input.equals("1") || input.equals("2");
+    }
 }
