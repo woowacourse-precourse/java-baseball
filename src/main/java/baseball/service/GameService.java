@@ -22,7 +22,7 @@ public class GameService {
         OutputUtils.printInitView();
         while (!game.isExitStatus()) {
             OutputUtils.printInputView();
-            player.setInputBall();
+            player.setInputBalls();
 
             playBaseBallGame();
             OutputUtils.printGameResultView(game);
@@ -33,6 +33,13 @@ public class GameService {
             }
             game.clearResult();
         }
+    }
+
+    public void playBaseBallGame() {
+        player.setInputBalls();
+        int strikeCount = Judge.getStrikeCount(player.getBalls(), computer.getBalls());
+        int ballCount = Judge.getBallCount(player.getBalls(), computer.getBalls());
+        game.setGameResult(strikeCount, ballCount);
     }
 
     public String getRestartOrExitFromPlayer() {
@@ -49,11 +56,5 @@ public class GameService {
         } else if (GameStatus.isExit(command)) {
             game.setExitStatus();
         }
-    }
-
-    public void playBaseBallGame() {
-        int strikeCount = Judge.getStrikeCount(player.getBall(), computer.getBall());
-        int ballCount = Judge.getBallCount(player.getBall(), computer.getBall());
-        game.setGameResult(strikeCount, ballCount);
     }
 }
