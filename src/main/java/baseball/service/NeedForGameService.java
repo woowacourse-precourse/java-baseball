@@ -36,6 +36,7 @@ public class NeedForGameService {
         ExceptionHanlder exceptionHanlder = new ExceptionHanlder();
 
         exceptionHanlder.checkInputBallSize(inputBall);
+        exceptionHanlder.checkNumber(inputBall);
         exceptionHanlder.checkSameInput(inputBall);
         exceptionHanlder.CatchNonZero(inputBall);
     }

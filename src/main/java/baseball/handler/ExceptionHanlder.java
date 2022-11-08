@@ -21,6 +21,15 @@ public class ExceptionHanlder {
         }
     }
 
+    public void checkNumber(String inputBalls) {
+
+        boolean checkNumeric = inputBalls.matches("[+-]?\\d*(\\.\\d+)?");
+        if(!checkNumeric){
+            errorCheck = 1;
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void checkSameInput(String inputBalls) {
 
         String[] inputBallArr = inputBalls.split("");
