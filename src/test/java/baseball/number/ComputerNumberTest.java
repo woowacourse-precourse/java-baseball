@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.number;
 
 import baseball.number.ComputerNumber;
 import org.junit.jupiter.api.DisplayName;
