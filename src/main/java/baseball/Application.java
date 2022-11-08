@@ -15,10 +15,13 @@ public class Application {
             playGame();
         } while (playGameAgain());
     }
+
     public static void playGame() {
         List<Integer> computerNumber = makeRandom();
         System.out.println("숫자 야구 게임을 시작합니다.");
+
         HashMap<String, Integer> score;
+
         do {
             System.out.print("숫자를 입력해주세요 : ");
             List<Integer> userNumber = splitNumber(Integer.parseInt(Console.readLine()));
@@ -30,6 +33,7 @@ public class Application {
         } while (!score.get("strike").equals(3));
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
     public static List<Integer> makeRandom() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < 3){
@@ -42,6 +46,7 @@ public class Application {
     }
     public static List<Integer> splitNumber(int number) {
         List<Integer> userNumber = new ArrayList<>();
+
         while (number > 0) {
             userNumber.add(number%10);
             number /= 10;
@@ -52,6 +57,7 @@ public class Application {
 
     public static boolean checkException(List<Integer> num) {
         String numString = num.toString().replace("[","").replace("]","").replaceAll(",","").replaceAll(" ","");
+
         if (numString.length() != 3) {
             return false;
         }
@@ -65,6 +71,7 @@ public class Application {
     }
     public static boolean containSameNumber(String numString) {
         HashMap<Character, Integer> checkSameNumber = new HashMap<>();
+
         for (int i = 0; i < numString.length(); i++) {
             if (checkSameNumber.containsKey(numString.charAt(i))) {
                 return false;
@@ -77,6 +84,7 @@ public class Application {
         HashMap<String, Integer> score = new HashMap<>();
         score.put("ball", 0);
         score.put("strike", 0);
+
         for (int i = 0; i < userNumber.size(); i++) {
             if (computerNumber.contains(userNumber.get(i))) {
                 score.put("ball", score.get("ball") + 1);
@@ -109,6 +117,7 @@ public class Application {
     public static boolean playGameAgain() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int playGameAgainNumber = Integer.parseInt(Console.readLine());
+
         if (playGameAgainNumber == 1) {
             return true;
         }
