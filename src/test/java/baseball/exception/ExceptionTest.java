@@ -1,6 +1,7 @@
-package baseball;
+package baseball.exception;
 
 
+import baseball.Application;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
