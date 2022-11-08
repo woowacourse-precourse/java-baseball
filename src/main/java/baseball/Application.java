@@ -42,7 +42,8 @@ public class Application {
    public static List<Integer> playerPick() {
       List<Integer> answer = new ArrayList<>();
       System.out.print("숫자를 입력해주세요 :");
-      int playerInput = Integer.parseInt(Console.readLine());
+      String baseballNumber = Console.readLine();
+      int playerInput = Integer.parseInt(baseballNumber);
       if (playerInput < 100 || playerInput > 999) {
          error();
       }
