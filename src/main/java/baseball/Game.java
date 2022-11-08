@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.validation.GetNumber;
+import baseball.validation.InputNumber;
 import baseball.validation.Restart;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Game {
     private SystemMessage systemMessage = new SystemMessage();
-    private GetNumber getNumber = new GetNumber();
+    private InputNumber inputNumber = new InputNumber();
     private Restart restart = new Restart();
     private List<Integer> resultNumberList;
 
@@ -46,7 +46,7 @@ public class Game {
         List<Integer> numberList = new ArrayList<>();
         String numberString = Console.readLine();
 
-        if (getNumber.getNumberValidate(numberString)) {
+        if (inputNumber.inputNumberValidate(numberString)) {
             numberList = Arrays.stream(numberString.split(""))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
