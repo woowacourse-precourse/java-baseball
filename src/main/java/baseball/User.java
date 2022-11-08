@@ -21,7 +21,7 @@ public class User {
     }
 
     private String inputThreeNumber() {
-        System.out.println("숫자를 입력해 주세요 : ");
+        System.out.printf("숫자를 입력해 주세요 : ");
 
         String userInput = Console.readLine();
 
@@ -53,7 +53,7 @@ public class User {
         Set<Character> numberSet = new HashSet<>();
 
         for (int i = 0; i < 3; i++) {
-            Character number = userInput.charAt('i');
+            Character number = userInput.charAt(i);
             numberSet.add(number);
         }
 
@@ -66,7 +66,7 @@ public class User {
         List<Integer> threeNumber = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            int number = userInput.charAt(i) - '0';
+            int number = Character.digit(userInput.charAt(i), 10);
             threeNumber.add(number);
         }
 

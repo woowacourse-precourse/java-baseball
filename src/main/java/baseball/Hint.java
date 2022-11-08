@@ -15,7 +15,7 @@ public class Hint {
         if (strike == 3) {
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return true;
+            return false;
         }
 
         if (strike == 0 && ball == 0) {
@@ -30,7 +30,7 @@ public class Hint {
         else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-        return false;
+        return true;
     }
 
     public void countBallAndStrike(List<Integer> computerNumber, List<Integer> userNumber) {
