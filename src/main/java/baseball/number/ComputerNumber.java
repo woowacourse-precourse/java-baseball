@@ -12,7 +12,7 @@ import static baseball.constant.GameConstant.BALL_END;
 
 public class ComputerNumber {
 
-    public static List<Integer> createComputerNumber() {
+    public List<Integer> createComputerNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < BALL_LEN) {
             int randomNumber = Randoms.pickNumberInRange(BALL_START, BALL_END);

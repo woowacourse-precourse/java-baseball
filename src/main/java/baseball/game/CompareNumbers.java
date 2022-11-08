@@ -10,10 +10,10 @@ import static baseball.game.BaseballGame.userNumbers;
 
 public class CompareNumbers {
 
-    public static int strike;
-    public static int ball;
+    public int strike;
+    public int ball;
 
-    public static void compareNumber(){
+    public void compareNumber(){
         int userNumber;
         int computerNumber;
         for(int i=ZERO;i<BALL_LEN;i++){
@@ -25,7 +25,7 @@ public class CompareNumbers {
         }
     }
 
-    public static void userNumberResult(){
+    public void userNumberResult(){
         if(ball==0 && strike==0) System.out.print(NOTHING);
         if(ball>0) System.out.print(ball + BALL);
         if(strike>0) System.out.print(strike + STRIKE);
@@ -33,20 +33,20 @@ public class CompareNumbers {
 
     }
 
-    public static void resetStrikeBall(){
+    public void resetStrikeBall(){
         strike=0;
         ball=0;
     }
 
-    private static boolean includeSame(int userNumber){
+    private boolean includeSame(int userNumber){
         return computerNumbers.contains(userNumber);
     }
 
-    private static void countStrike(int userNumber, int computerNumber){
+    private void countStrike(int userNumber, int computerNumber){
         if (userNumber == computerNumber) strike++;
     }
 
-    private static void countBall(int userNumber, int computerNumber){
+    private void countBall(int userNumber, int computerNumber){
         if (userNumber != computerNumber) ball++;
     }
 

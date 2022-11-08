@@ -9,9 +9,10 @@ class RestartNumberValidatorTest {
     @DisplayName("1이나 2가 아니면 IllegalArgumentException")
     @Test
     void checkValidationRestartNumber_예외() {
+        RestartNumberValidator restartNumberValidator = new RestartNumberValidator();
         String restartNumber = "3";
         Assertions.assertThrows(RuntimeException.class, () -> {
-            RestartNumberValidator.checkValidationRestartNumber(restartNumber);
+            restartNumberValidator.checkValidationRestartNumber(restartNumber);
         });
     }
 

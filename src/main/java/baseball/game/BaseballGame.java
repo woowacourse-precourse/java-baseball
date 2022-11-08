@@ -1,5 +1,8 @@
 package baseball.game;
 
+import baseball.number.ComputerNumber;
+import baseball.number.UserNumber;
+import baseball.validator.RestartNumberValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -8,21 +11,21 @@ import static baseball.constant.GameConstant.BALL_LEN;
 import static baseball.constant.GameConstant.RESTART;
 import static baseball.constant.GameMessage.END_MESSAGE;
 import static baseball.constant.GameMessage.RESTART_MESSAGE;
-import static baseball.number.ComputerNumber.createComputerNumber;
-import static baseball.validator.RestartNumberValidator.checkValidationRestartNumber;
-import static baseball.number.UserNumber.checkInputUserNumber;
 
 public class BaseballGame {
 
     public static List<Integer> computerNumbers;
     public static List<Integer> userNumbers;
-    private static CompareNumbers compareNumbers = new CompareNumbers();
+    private CompareNumbers compareNumbers = new CompareNumbers();
+    private ComputerNumber computerNumber = new ComputerNumber();
+    private UserNumber userNumber = new UserNumber();
+    private RestartNumberValidator restartNumberValidator = new RestartNumberValidator();
 
-    public static void playBaseballGame(){
-        computerNumbers = createComputerNumber();
+    public void playBaseballGame(){
+        computerNumbers = computerNumber.createComputerNumber();
         compareNumbers.resetStrikeBall();
         while (compareNumbers.strike!=BALL_LEN) {
-            userNumbers = checkInputUserNumber();
+            userNumbers = userNumber.checkInputUserNumber();
             compareNumbers.resetStrikeBall();
             compareNumbers.compareNumber();
             compareNumbers.userNumberResult();
@@ -31,14 +34,14 @@ public class BaseballGame {
         askRestartGame();
     }
 
-    private static void askRestartGame(){
+    private void askRestartGame(){
         System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
-        checkValidationRestartNumber(restartNumber);
+        restartNumberValidator.checkValidationRestartNumber(restartNumber);
         restartGame(restartNumber);
     }
 
-    private static void restartGame(String restartNumber){
+    private void restartGame(String restartNumber){
         if (restartNumber.equals(RESTART)) playBaseballGame();
     }
 

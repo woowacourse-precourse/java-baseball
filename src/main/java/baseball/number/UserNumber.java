@@ -11,7 +11,7 @@ import static baseball.constant.GameMessage.INPUT_NUMBER_MESSAGE;
 
 public class UserNumber {
 
-    public static List<Integer> inputUserNumber(){
+    public List<Integer> inputUserNumber(){
         System.out.println(INPUT_NUMBER_MESSAGE);
         String userNumber = Console.readLine();
         List<Integer> userNumberList = new ArrayList<>();
@@ -19,9 +19,10 @@ public class UserNumber {
         return userNumberList;
     }
 
-    public static List<Integer> checkInputUserNumber(){
+    public List<Integer> checkInputUserNumber(){
         List<Integer> userNumberList = inputUserNumber();
-        UserNumberValidator.checkValidationUserNumber(userNumberList);
+        UserNumberValidator userNumberValidator = new UserNumberValidator();
+        userNumberValidator.checkValidationUserNumber(userNumberList);
         return userNumberList;
     }
 
