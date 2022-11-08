@@ -13,7 +13,7 @@ public class UserInterface {
 
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            if (!validateUsersInput(input)) {
+            if (input.length() != 3 || !validateUsersInput(input)) {
                 throw new IllegalArgumentException();
             }
 
@@ -27,10 +27,6 @@ public class UserInterface {
     }
 
     public static boolean validateUsersInput(String input) {
-        if (input.length() != 3) {
-            return false;
-        }
-
         Set<Character> inputCharSet = new HashSet<>();
         for (char c : input.toCharArray()) {
             inputCharSet.add(c);
