@@ -5,11 +5,13 @@ import java.util.Set;
 
 public class CheckException {
 
-    public static void restartStatusValid(String restartStatus) throws ProcessException {
+    public static String restartStatusValid(String restartStatus) throws ProcessException {
 
         if (!(restartStatus.equals("1")) && !(restartStatus.equals("2"))) {
             throw new ProcessException("재시작 입력값이 잘못 입력되었습니다. 게임을 종료합니다.");
         }
+
+        return restartStatus;
     }
 
     public static String inputGameValid(String inputValue) throws ProcessException {
