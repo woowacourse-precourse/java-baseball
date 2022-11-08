@@ -31,7 +31,7 @@ class BaseballController {
         this.ioManager = ioManager;
         this.gameStatus = gameStatus;
         this.baseballGame = baseballGame;
-        ioManager.printOutput("숫자 야구 게임을 시작합니다.");
+        ioManager.printIntro();
     }
 
     public void run() {
@@ -47,14 +47,14 @@ class BaseballController {
     }
 
     private void playGame(Numbers answer, int count) {
-        ioManager.printOutput("숫자를 입력해주세요 : ");
+        ioManager.printRequestInput();
 
         try {
             String inputString = ioManager.getInput();
             Numbers inputNumbers = baseballGame.convertToNumbers(inputString);
 
             BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
-            ioManager.printOutput(ballCount.toString());
+            ioManager.printHint(ballCount);
 
             if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
                 gameStatus.quitProgram();
@@ -62,29 +62,48 @@ class BaseballController {
             }
 
         } catch (IllegalArgumentException e) {
-            ioManager.printOutput(e.getMessage());
-            ioManager.printOutput("게임이 종료되었습니다.");
-
+            ioManager.printError();
             gameStatus.quitProgram();
         }
     }
 
     private void checkGoOrStop(BallCount ballCount) {
-        ioManager.printOutput(COUNT_OF_NUMBERS + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        ioManager.printAllStrike(COUNT_OF_NUMBERS);
 
-        switch (ioManager.getInput()) {
-            case "1":
+        switch (OrderType.getMenuType(ioManager.getInput())) {
+            case RESTART:
                 gameStatus.restartProgram();
                 run();
                 break;
-            case "2":
-                ioManager.printOutput("게임이 종료되었습니다.");
+            case STOP:
+                ioManager.printExit();
                 gameStatus.quitProgram();
-            default :
-                ioManager.printOutput("잘못된 입력입니다. 게임이 종료되었습니다.");
+            default:
+                ioManager.printError();
                 gameStatus.quitProgram();
         }
+    }
+}
+
+enum OrderType {
+    RESTART("1"),
+    STOP("2");
+
+    private final String orderType;
+
+    OrderType(String orderType) {
+        this.orderType = orderType;
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public static OrderType getMenuType(String inputString) {
+        for (OrderType type : OrderType.values()) {
+            if (type.getOrderType().equals(inputString)) return type;
+        }
+        throw new IllegalArgumentException(Message.WRONG_ORDER_MESSAGE.toString());
     }
 }
 
@@ -169,15 +188,15 @@ class BallCount {
         String result = "";
 
         if (ball != 0) {
-            result += ball + "볼 ";
+            result += ball + Message.BALL_MESSAGE.toString();
         }
 
         if (strike != 0) {
-            result += strike + "스트라이크";
+            result += strike + Message.STRIKE_MESSAGE.toString();
         }
 
         if (result.length() == 0) {
-            result = "낫싱";
+            result = Message.NOTHING_MESSAGE.toString();
         }
 
         return result;
@@ -236,8 +255,8 @@ class Input {
     }
 }
 
-class Output {
-    public void printOutput(String message) {
+class Output<T> {
+    public void printOutput(T message) {
         System.out.println(message);
     }
 }
@@ -258,11 +277,55 @@ class IOManager {
         if (validator.isRightFormat(inputString)) {
             return inputString;
         }
-        throw new IllegalArgumentException("잘못된 입력입니다.");
+        throw new IllegalArgumentException(Message.WRONG_ORDER_MESSAGE.toString());
     }
 
-    public void printOutput(String message) {
-        output.printOutput(message);
+    public void printIntro() {
+        output.printOutput(Message.INTRO_MESSAGE);
+    }
+
+    public void printRequestInput() {
+        output.printOutput(Message.INPUT_NUMBER_MESSAGE);
+    }
+
+    public void printHint(BallCount ballCount) {
+        output.printOutput(ballCount);
+    }
+
+    public void printAllStrike(int count) {
+        output.printOutput(count + Message.SUCCESS_MESSAGE.toString());
+    }
+
+    public void printError() {
+        output.printOutput(Message.WRONG_ORDER_MESSAGE.toString() + Message.EXIT_MESSAGE.toString());
+    }
+
+    public void printExit() {
+        output.printOutput(Message.EXIT_MESSAGE);
+    }
+}
+
+enum Message {
+    INTRO_MESSAGE("숫자 야구 게임을 시작합니다."),
+    INPUT_NUMBER_MESSAGE("숫자를 입력해주세요 : "),
+    SUCCESS_MESSAGE("개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
+    WRONG_ORDER_MESSAGE("잘못된 입력입니다."),
+    EXIT_MESSAGE("게임이 종료되었습니다."),
+
+    BALL_MESSAGE("볼 "),
+    STRIKE_MESSAGE("스트라이크"),
+    NOTHING_MESSAGE("낫싱");
+
+    private final String message;
+
+    Message(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return message;
     }
 }
 
