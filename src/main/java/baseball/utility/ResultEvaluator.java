@@ -1,5 +1,6 @@
 package baseball.utility;
 
+import baseball.constant.GameConstant;
 import baseball.dto.Score;
 
 public class ResultEvaluator {
@@ -18,7 +19,9 @@ public class ResultEvaluator {
         return translateScoreToHint(getScore(computerNumber, playerNumber));
     }
 
-    private static Score getScore(String computerNumber, String playerNumber) {
+    public static Score getScore(String computerNumber, String playerNumber) {
+        assert (PlayerNumberValidator.isPlayerNumberValid(computerNumber) && PlayerNumberValidator.isPlayerNumberValid(playerNumber));
+
         int numberLength = playerNumber.length();
         int numStrikes = 0;
         int numBalls = 0;
@@ -31,14 +34,20 @@ public class ResultEvaluator {
         return new Score(numBalls, numStrikes);
     }
 
-    private static int isStrikeOrNot(String computerNumber, String playerNumber, int index) {
+    public static int isStrikeOrNot(String computerNumber, String playerNumber, int index) {
+        assert (PlayerNumberValidator.isPlayerNumberValid(computerNumber) && PlayerNumberValidator.isPlayerNumberValid(playerNumber));
+        assert (index >= 0 && index < GameConstant.VALID_NUMBER_LENGTH.getValue());
+
         if (computerNumber.charAt(index) == playerNumber.charAt(index)) {
             return 1;
         }
         return 0;
     }
 
-    private static int isBallOrNot(String computerNumber, String playerNumber, int index) {
+    public static int isBallOrNot(String computerNumber, String playerNumber, int index) {
+        assert (PlayerNumberValidator.isPlayerNumberValid(computerNumber) && PlayerNumberValidator.isPlayerNumberValid(playerNumber));
+        assert (index >= 0 && index < GameConstant.VALID_NUMBER_LENGTH.getValue());
+
         int numberLength = playerNumber.length();
         int iteratingIndex = (index + 1) % numberLength;
         int count = 0;
