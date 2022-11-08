@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Application {
-
     public static List<Integer> makeNumber(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -30,8 +29,8 @@ public class Application {
             throw new IllegalArgumentException();
         }
         //세자리 숫자 입력 시
-        for(int i=0; i<input.length(); i++){
-            int eachNumber = Integer.parseInt(String.valueOf(input.charAt(i)));
+        for(int index=0; index<3; index++){
+            int eachNumber = Integer.parseInt(String.valueOf(input.charAt(index)));
             if( inputNumber.contains(eachNumber)) {
                 System.out.println("중복된 숫자를 입력했습니다.");
                 throw new IllegalArgumentException();
@@ -45,9 +44,9 @@ public class Application {
         HashMap<String, Integer> gameResult = new HashMap<>();
         int strike = 0;
         int ball = 0;
-        for(int i=0; i<3; i++){
-            if( inputNumber.get(i) == computer.get(i) ) strike ++;
-            else if ( computer.contains(inputNumber.get(i)) ) ball++;
+        for(int index=0; index<3; index++){
+            if( inputNumber.get(index) == computer.get(index) ) strike ++;
+            else if ( computer.contains(inputNumber.get(index)) ) ball++;
         }
         gameResult.put("strike", strike);
         gameResult.put("ball", ball);
@@ -86,10 +85,10 @@ public class Application {
             inputNumber = input();
 
             gameResult = caseCheck(computer, inputNumber);
-            output(strike, ball);
-
             strike = gameResult.get("strike");
             ball = gameResult.get("ball");
+            output(strike, ball);
+
             //정답 맞췄을 시, 게임 종료 혹은 반복 가능
             if ( strike == 3) {
                 String repeat = Console.readLine();
