@@ -10,10 +10,10 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        numBaseball(computerNum());
+        playNumBaseball(getComputerNum());
     }
 
-    public static List<Integer> computerNum() {
+    public static List<Integer> getComputerNum() {
         List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -24,31 +24,36 @@ public class Application {
         return computerNum;
     }
 
-    public static void numBaseball(List<Integer> computerNum) throws IllegalArgumentException {
+    public static List<Integer> getUserNum() throws IllegalArgumentException {
         List<Integer> userNum = new ArrayList<>();
         System.out.print("숫자를 입력하세요 : ");
         char[] nums = Console.readLine().toCharArray();
 
         if (nums.length > 3 || nums[0] == nums[1] || nums[1] == nums[2] || nums[0] == nums[2]) {
-            throw new IllegalArgumentException("예외 발생");
+            throw new IllegalArgumentException("예외 발생. 게임을 종료합니다.");
         }
 
         for (int num : nums) {
             userNum.add(Character.getNumericValue(num));
         }
+        return userNum;
+    }
 
-        if (comparator(computerNum, userNum)) {
+
+    public static void playNumBaseball(List<Integer> computerNum){
+        List<Integer> userNum = getUserNum();
+        if (compareNums(computerNum, userNum)) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
             if (Integer.parseInt(Console.readLine()) == 1) {
-                numBaseball(computerNum());
+                playNumBaseball(getComputerNum());
             }
             return;
         }
-        numBaseball(computerNum);
+        playNumBaseball(computerNum);
     }
 
-    public static boolean comparator(List<Integer> computerNum, List<Integer> userNum) {
+    public static boolean compareNums(List<Integer> computerNum, List<Integer> userNum) {
         int strike = 0;
         int ball = 0;
 
