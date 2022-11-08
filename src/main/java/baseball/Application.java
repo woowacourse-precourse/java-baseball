@@ -69,8 +69,15 @@ class Game {
     static Game userAnswer() {
         System.out.print(INPUT_NUMBER_MESSAGE);
         String userInput = readLine();
+        Game.checkInputValue(userInput);
 
         return new Game(userInput);
+    }
+
+    static void checkInputValue(final String str) {
+        isEqualNumber(str);
+        isInputNumber(str);
+        isLengthThree(str);
     }
 
     static boolean isLengthThree(final String str) {
