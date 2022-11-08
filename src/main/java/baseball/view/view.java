@@ -1,11 +1,28 @@
 package baseball.view;
 
-public abstract class View {
-    public void show() {
+import camp.nextstep.edu.missionutils.Console;
 
+public abstract class View {
+    public abstract void show();
+
+    public String getResponse() {
+        return "";
     }
 
     public void printLine(String message) {
         System.out.println(message);
     }
+
+    public void print(String message) {
+        System.out.print(message);
+    }
+
+    public String readLine(String message) {
+        print(message + " : ");
+        String readLine = Console.readLine();
+        printLine("");
+
+        return readLine;
+    }
+
 }
