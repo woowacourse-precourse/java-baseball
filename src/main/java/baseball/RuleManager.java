@@ -4,6 +4,12 @@ import java.util.List;
 
 public class RuleManager {
 
+    public static final int ZERO_STRIKE_NUMBER = 0;
+    public static final int TWO_STRIKE_NUMBER = 2;
+    public static final int THREE_STRIKE_NUMBER = 3;
+    public static final int ZERO_BALL_NUMBER = 0;
+    public static final int THREE_BALL_NUMBER = 3;
+
     public static int countStrike(User user, List<Long> computerNumbers) {
         int strikeCount = 0;
         int userNumberIndex = 0;
