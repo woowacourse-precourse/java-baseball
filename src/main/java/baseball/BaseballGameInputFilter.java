@@ -28,6 +28,7 @@ public class BaseballGameInputFilter {
     }
 
     public String readNumbers(){
+        System.out.print("숫자를 입력해주세요 : ");
         String input = scanner.nextLine();
 
         if (!this.isValidLength(input)) {
