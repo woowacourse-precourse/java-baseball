@@ -26,7 +26,7 @@ public class Game {
             savePlayerNumberToReferee(player, referee);
 
             ViewService responseView = referee.answerNumber();
-            isFinished = responseView.check();
+            isFinished = responseView.countOfViewCheck();
         }
 
         return restart();

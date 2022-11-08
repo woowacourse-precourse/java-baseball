@@ -12,7 +12,7 @@ public class ViewService {
         this.ballCount = ballCount;
     }
 
-    public boolean check() {
+    public boolean countOfViewCheck() {
         if (strikeCount == 3) {
             View.end();
             return true;

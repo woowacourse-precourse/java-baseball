@@ -78,7 +78,7 @@ class RefereeTest {
 
         // when
         ViewService viewService = referee.answerNumber();
-        viewService.check();
+        viewService.countOfViewCheck();
 
         // then
         assertThat(viewService).isNotNull();

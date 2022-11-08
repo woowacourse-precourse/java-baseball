@@ -45,7 +45,7 @@ class RuleTest {
 
         // when
         ViewService viewService = rule.answerNumber(target);
-        viewService.check();
+        viewService.countOfViewCheck();
 
         // then
         assertThat(outputStream.toString()).isEqualTo(expectedString);
