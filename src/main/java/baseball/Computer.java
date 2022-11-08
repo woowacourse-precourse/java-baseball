@@ -39,4 +39,16 @@ public class Computer {
 
         return resultStrike;
     }
+
+    public Integer getGameBall(String userInput) {
+        int resultBall = 0;
+
+        for(int i = 0; i < 3; i++) {
+            if (computerAnswer.contains(userInput.charAt(i)) && computerAnswer.get(i) != userInput.charAt(i)) {
+                resultBall++;
+            }
+        }
+
+        return resultBall;
+    }
 }
