@@ -30,6 +30,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 예외_테스트_입력이_3자리가_아닌_경우_2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("41"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 예외_테스트_입력을_int로_변환이_불가능한_경우_1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("a12"))
