@@ -1,8 +1,5 @@
 package baseball;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,12 +7,11 @@ import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
-
         final int REPLAY = 1;
         final int EXIT = 2;
-        String numberPresentedByPlayer = ""; // User로부터 입력받을 숫자를 저장할 변수
+        String numberPresentedByPlayer = "";
         List<String> threeNumber = new ArrayList<>(); // 컴퓨터가 선택한 3개의 수를 저정할 리스트
-        String whetherToReplay = ""; // 새로운 게임을 시작할지 여부를 저장
+        String whetherToReplay = "";
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (true) {
@@ -23,14 +19,14 @@ public class Application {
             System.out.println(threeNumber);
             while (true) {
                 System.out.print("숫자를 입력해주세요 : ");
-                numberPresentedByPlayer = receiveUserInput(); // 게임플레이어로 부터 숫자를 입력받고 변수에 저장
+                numberPresentedByPlayer = receiveUserInput();
                 // 입력받은 데이터에 대한 예외처리
                 if (!checkValidForInputThreeNumber(numberPresentedByPlayer)) {
                     throw new IllegalArgumentException("잘못된 입력입니다.");
                 } else {
-                    int theNumberOfStrikes = calculateTheNumberOfStrikes(threeNumber,numberPresentedByPlayer);
-                    int theNumberOfBalls = calculateTheNumberOfBalls(threeNumber,numberPresentedByPlayer);
-                    if (outputFinalResultAndWhetherAllMatches(theNumberOfStrikes,theNumberOfBalls)){
+                    int theNumberOfStrikes = calculateTheNumberOfStrikes(threeNumber, numberPresentedByPlayer);
+                    int theNumberOfBalls = calculateTheNumberOfBalls(threeNumber, numberPresentedByPlayer);
+                    if (outputFinalResultAndWhetherAllMatches(theNumberOfStrikes, theNumberOfBalls)) {
                         break;
                     }
                 }
@@ -49,31 +45,26 @@ public class Application {
         }
     }
 
-    // user로부터 3개의 숫자를 입력받는 메서드
     public static String receiveUserInput() {
 
-        Scanner receivedUserInput = new Scanner(System.in); // Scanner 클래스를 통해 시스템의 입력장치로부터 읽은 Scanner 생성하여 변수에 저장
+        Scanner receivedUserInput = new Scanner(System.in);
 
-        //BufferedReader receiveInput = new BufferedReader(new InputStreamReader(System.in));
-
-        //입력 데이터 읽기
         String numbers = receivedUserInput.nextLine();
         return numbers;
     }
 
     // 컴퓨터가 1에서 9까지 서로 다른 임의의 수 3개를 선택하는 메서드
-    public static List<String> createThreeNumbers(){
+    public static List<String> createThreeNumbers() {
         List<String> threeNumbersOfComputer = new ArrayList<>();
         Random random = new Random();
         while (true) {
-            if (threeNumbersOfComputer.size() == 3){
+            if (threeNumbersOfComputer.size() == 3) {
                 break;
-            }
-            else{
-                int selectedNumberByComputer =  random.nextInt(9)+1;
+            } else {
+                int selectedNumberByComputer = random.nextInt(9) + 1;
                 String selectedNumberByComputerStringType = String.valueOf(selectedNumberByComputer);
                 // 생성된 난수가 이미 이전에 생성됐던 수가 아니라면 선택하기 (서로 다른 3개의 수이므로)
-                if (!threeNumbersOfComputer.contains(selectedNumberByComputerStringType)){
+                if (!threeNumbersOfComputer.contains(selectedNumberByComputerStringType)) {
                     threeNumbersOfComputer.add(String.valueOf(selectedNumberByComputerStringType));
                 }
             }
@@ -99,14 +90,14 @@ public class Application {
                 System.out.println("입력하신 숫자는 입력 범위를 초과합니다.");
                 System.out.println("1부터 9까지의 숫자 중 하나의 숫자들로 이루어진 3자리 숫자를 입력해주세요.");
                 return false;
-            } else if (index==0) {
-                if (input.charAt(index) == input.charAt(index+1) || input.charAt(index) == input.charAt(index+2)){
+            } else if (index == 0) {
+                if (input.charAt(index) == input.charAt(index + 1) || input.charAt(index) == input.charAt(index + 2)) {
                     System.out.println("입력하신 숫자에는 중복되는 숫자가 존재합니다.");
                     System.out.println("서로 다른 3자리 숫자를 입력해주세요.");
                     return false;
                 }
-            } else if (index==1) {
-                if (input.charAt(index) == input.charAt(index+1)) {
+            } else if (index == 1) {
+                if (input.charAt(index) == input.charAt(index + 1)) {
                     System.out.println("입력하신 숫자에는 중복되는 숫자가 존재합니다.");
                     System.out.println("서로 다른 3자리 숫자를 입력해주세요.");
                     return false;
@@ -115,35 +106,33 @@ public class Application {
         }
         return true;
     }
-    // 스트라이크 수를 계산하는 메서드
-    public static int calculateTheNumberOfStrikes(List<String> computersThreeNumbers, String usersThreeNumbers){
+
+    public static int calculateTheNumberOfStrikes(List<String> computersThreeNumbers, String usersThreeNumbers) {
         int numberOfStrikes = 0;
-        for (int index = 0; index < computersThreeNumbers.size(); index++){
+        for (int index = 0; index < computersThreeNumbers.size(); index++) {
             int ComputersNumber = Integer.valueOf(computersThreeNumbers.get(index));
             int UsersNumber = Character.getNumericValue(usersThreeNumbers.charAt(index));
-            if (ComputersNumber == UsersNumber){ // 같은 수가 같은 자리에 있으면
+            if (ComputersNumber == UsersNumber) { // 같은 수가 같은 자리에 있으면
                 numberOfStrikes += 1; // 스트라이크 수를 1증가
             }
         }
         return numberOfStrikes;
     }
 
-    // 볼 수를 계산하는 메서드
-    public static int calculateTheNumberOfBalls(List<String> computersThreeNumbers, String usersThreeNumbers){
+    public static int calculateTheNumberOfBalls(List<String> computersThreeNumbers, String usersThreeNumbers) {
         int numberOfBall = 0;
-        for (int index = 0; index < computersThreeNumbers.size(); index++){
+        for (int index = 0; index < computersThreeNumbers.size(); index++) {
             //int ComputersNumber = Integer.valueOf(computersThreeNumber.get(index));
             String UsersNumber = String.valueOf(usersThreeNumbers.charAt(index));
             int indexOfUserNumberInComputersThreeNumbers = computersThreeNumbers.indexOf(UsersNumber);
             // 해당 자리의 User의 숫자가 컴퓨터의 3개의 숫자 중 하나이고, 같은 자리가 아니라면(다른 자리에 있으면)
-            if ( indexOfUserNumberInComputersThreeNumbers != -1 && indexOfUserNumberInComputersThreeNumbers != index){
+            if (indexOfUserNumberInComputersThreeNumbers != -1 && indexOfUserNumberInComputersThreeNumbers != index) {
                 numberOfBall += 1; // 스트라이크 수를 1증가
             }
         }
         return numberOfBall;
     }
 
-    // 입력한 숫자에 대한 결과와 모두 맞혔는지 여부를 출력하는 메서드
     public static boolean outputFinalResultAndWhetherAllMatches(int numberOfStrikes, int numberOfBalls) {
         if (numberOfStrikes == 3) {
             System.out.printf("%d스트라이크\n", numberOfStrikes);
@@ -161,16 +150,17 @@ public class Application {
         return false;
     }
 
-    // 게임플레이어로 부터 입력받은 새로운 게임을 시작할지 여부에 대한 숫자 예외처리
     public static Boolean checkValidForInputWhetherReplay(String input) {
+        if (!input.matches("[+-]?\\d*(\\.\\d+)?")) {
+            return false;
+        }
         int Number = Integer.valueOf(input);
-        if (!(Number == 1 || Number == 2)){
+        if (!(Number == 1 || Number == 2)) {
             return false;
         }
         return true;
     }
 
-//numberPresentedByPlayer = receivedUserInput.nextLine();
 }
 
 
