@@ -3,6 +3,8 @@ package baseball.service;
 import baseball.repository.PlayerRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerService {
@@ -46,6 +48,21 @@ public class PlayerService {
         }else {
             throw new IllegalArgumentException();
         }
+    }
+
+    public ArrayList<Integer> checkBallCount(ArrayList<Integer> computerNumbers){
+        ArrayList<Integer> ballCount = new ArrayList<>(Arrays.asList(0,0));
+        ArrayList<Integer> playerNumbers = getPlayerNumber();
+        for (int i=0;i<3;i++) {
+            if (computerNumbers.contains(playerNumbers.get(i))){
+                ballCount.set(0,ballCount.get(0)+1);
+            }
+            if (computerNumbers.get(i) == playerNumbers.get(i)) {
+                ballCount.set(1,ballCount.get(1)+1);
+                ballCount.set(0,ballCount.get(0)-1);
+            }
+        }
+        return ballCount;
     }
 
 }
