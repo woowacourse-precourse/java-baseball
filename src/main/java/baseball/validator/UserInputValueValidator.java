@@ -2,14 +2,14 @@ package baseball.validator;
 
 import java.util.List;
 
-public class UserInputValidator {
-    private static final UserInputValidator userInputValidator = new UserInputValidator();
+public class UserInputValueValidator {
+    private static final UserInputValueValidator USER_INPUT_VALUE_VALIDATOR = new UserInputValueValidator();
 
-    public static UserInputValidator getInstance() {
-        return userInputValidator;
+    public static UserInputValueValidator getInstance() {
+        return USER_INPUT_VALUE_VALIDATOR;
     }
 
-    private UserInputValidator() {
+    private UserInputValueValidator() {
     }
 
     public void validate(List<String> inputValue) {
