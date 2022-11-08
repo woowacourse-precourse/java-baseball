@@ -14,4 +14,13 @@ public class Validator {
         Set<Integer> set = new HashSet<>(input);
         return input.size() == set.size();
     }
+
+    private static boolean checkEachNum(List<Integer> input) {
+        for (Integer i : input) {
+            if (i < 1 || i > 9) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
