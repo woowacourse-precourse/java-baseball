@@ -30,6 +30,10 @@ public class BaseballResult {
         return getStrike() + GameMessage.GAME_BALL;
     }
 
+    public boolean isThreeStrike() {
+        return getStrike() == 3;
+    }
+
     @Override
     public String toString() {
         if (getStrike() > 0 && getBall() > 0) {
