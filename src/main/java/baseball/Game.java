@@ -37,6 +37,30 @@ public class Game {
         return userInput;
     }
 
+    private static Integer getBallCount(String answer, String userInput){
+        int result = 0;
+
+        for(int i=0; i<3; i++){
+            String substring = getSubstring(answer, i);
+            result += booleanToInteger(substring.contains(getSingleString(userInput, i)));
+        }
+
+        return result;
+    }
+
+    private static Integer getStrikeCount(String answer, String userInput){
+        int result = 0;
+        for(int i=0; i<3; i++) {
+            String userInputAtom = getSingleString(userInput, i);
+            String answerAtom = getSingleString(answer, i);
+            result += booleanToInteger(userInputAtom.equals(answerAtom));
+        }
+        return result;
+    }
+
+    private static boolean getComparationResult(String answer, String userInput){
+        return printResultAndContinue(getStrikeCount(answer, userInput),getBallCount(answer, userInput));
+    }
 
 
 }
