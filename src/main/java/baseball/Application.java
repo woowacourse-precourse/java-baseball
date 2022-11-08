@@ -91,16 +91,20 @@ public class Application {
         }
         try {
             int userInputInt = Integer.parseInt(userInput);
-            if (userInputInt < 111 || userInputInt > 999) {
-                throw new IllegalArgumentException();
-            }
-            if (userInputInt % 10 == 0 || userInputInt % 100 == 0) {
-                throw new IllegalArgumentException();
-            }
+            userNumberRangeCheck(userInputInt);
         } catch (NumberFormatException numberFormatException) {
             throw new IllegalArgumentException();
         }
         return true;
+    }
+
+    public static void userNumberRangeCheck(int userInputInt) throws IllegalArgumentException {
+        if (userInputInt < 111 || userInputInt > 999) {
+            throw new IllegalArgumentException();
+        }
+        if (userInputInt % 10 == 0 || userInputInt % 100 == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void generateThreeDigitNumber() {
