@@ -19,6 +19,13 @@ Google Java Style Guide와 다른 부분만 아래 명시합니다.
 
 ---
 
+#Commit Convention
+
+AngularJS Commit Message Conventions 를 기반으로 작성 
+
+
+scope설정 시 최대한 packagename 또는 classname으로 통일 
+
 ### 4.2 블럭 들여쓰기: +4 스페이스
 
 새 블록 또는 블록과 유사한 구조(block-like construct)가 열릴 때마다 들여쓰기가 네 칸씩 증가합니다. 블록이 끝나면 들여쓰기는 이전 들여쓰기 단계로 돌아갑니다. 들여쓰기 단계는 블록 전체의 코드와
