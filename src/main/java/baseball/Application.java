@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        System.out.println(compareAns(makeAns(),getInput()).get(0));
+        playGame();
     }
 
     static List<Integer> makeAns() {
@@ -69,6 +69,24 @@ public class Application {
             info = info + result.get(0) + "볼 " + result.get(1) + "스트라이크";
         }
         System.out.println(info);
+    }
+
+    static void playGame(){
+        int end = 0;
+        List<Integer> computer = makeAns();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while (end != 2) {
+            List<Integer> result;
+            result = compareAns(computer, getInput());
+            printResult(result);
+            if (result.get(1) == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                computer = makeAns();
+                end = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+            }
+        }
     }
 
 
