@@ -13,6 +13,7 @@ public class Application {
         while(!GameOver){
             user.inputFortheGame();
             user.inputThrowsException();
+            System.out.println(computer.state(user.input));
             if(computer.isGameOver(user.input)){
                 GameOver = true;
             }
