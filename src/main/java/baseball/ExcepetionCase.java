@@ -50,7 +50,7 @@ public class ExcepetionCase {
             listDuplicateCheck.add(ASCII);
 
         }
-        for (int i = 0; i < 3 ;i ++){
+        for (int i = 0; i < listDuplicateCheck.size() ;i ++){
 
             if(Collections.frequency(listDuplicateCheck,listDuplicateCheck.get(i)) != 1){
 

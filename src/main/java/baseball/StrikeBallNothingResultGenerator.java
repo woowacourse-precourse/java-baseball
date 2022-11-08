@@ -19,8 +19,8 @@ public class StrikeBallNothingResultGenerator {
     private int ball = 0;
 
     private boolean exit = false;
-    ArrayList<int[]> playerLists = new ArrayList<int[]>();
-    ArrayList<int[]> computerLists = new ArrayList<int[]>();
+    ArrayList<Integer> playerLists = new ArrayList<>();
+    ArrayList<Integer> computerLists = new ArrayList<>();
 
 
 
@@ -33,19 +33,21 @@ public class StrikeBallNothingResultGenerator {
         computerNumber.setRandomNumber();
         computer = computerNumber.getDigits();
         InputUserNumber playerNumber = new InputUserNumber();
-        List<int[]> computerList = Collections.singletonList(player);
+
+
+
 
 
     do{
         playerNumber.UserInputValue();
         player = playerNumber.getDigits();
 
-        List<int[]> playerList = Collections.singletonList(player);
+
 
 
         for (int i = 0; i < 3; i++) {
-            this.playerLists.add(playerList.get(i));
-            this.computerLists.add(computerList.get(i));
+            this.playerLists.add(player[i]);
+            this.computerLists.add(computer[i]);
         }
 
 
