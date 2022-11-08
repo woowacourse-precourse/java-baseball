@@ -24,6 +24,22 @@ public class playGameTest extends NsTest {
         );
     }
 
+    @Test
+    void 올바르지_않은_범위_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("107"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복_입력_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
