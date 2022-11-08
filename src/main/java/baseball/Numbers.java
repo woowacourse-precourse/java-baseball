@@ -1,6 +1,9 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Numbers {
@@ -9,16 +12,26 @@ public class Numbers {
 
     private final ExclusiveDigits<PositiveDigit> exclusiveDigits;
 
-    public Numbers(List<Integer> digits) {
+    private Numbers(List<PositiveDigit> digits) {
         validateLength(digits);
-
-        List<PositiveDigit> positiveDigits = digits.stream()
-                .map(PositiveDigit::new)
-                .collect(Collectors.toList());
-        this.exclusiveDigits = new ExclusiveDigits<>(positiveDigits);
+        this.exclusiveDigits = new ExclusiveDigits<>(digits);
     }
 
-    private void validateLength(List<Integer> digits) {
+    public static Numbers fromIntegers(List<Integer> integers) {
+        return new Numbers(integers.stream()
+                .map(PositiveDigit::new)
+                .collect(Collectors.toList()));
+    }
+
+    public static Numbers randomized() {
+        Set<PositiveDigit> randomNumbers = new LinkedHashSet<>();
+        while (randomNumbers.size() != DIGITS_LENGTH) {
+            randomNumbers.add(PositiveDigit.randomized());
+        }
+        return new Numbers(new ArrayList<>(randomNumbers));
+    }
+
+    private void validateLength(List<PositiveDigit> digits) {
         if (digits.size() != DIGITS_LENGTH) {
             throw new IllegalArgumentException("숫자는 3자리여야 합니다");
         }

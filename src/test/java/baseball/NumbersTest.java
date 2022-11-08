@@ -15,8 +15,8 @@ public class NumbersTest {
         List<Integer> twoDigits = List.of(1, 2);
         List<Integer> fourDigits = List.of(1, 2, 3, 4);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(twoDigits));
-        assertThatIllegalArgumentException().isThrownBy(() -> new Numbers(fourDigits));
+        assertThatIllegalArgumentException().isThrownBy(() -> Numbers.fromIntegers(twoDigits));
+        assertThatIllegalArgumentException().isThrownBy(() -> Numbers.fromIntegers(fourDigits));
     }
 
     @Test
@@ -24,14 +24,14 @@ public class NumbersTest {
     void digits_length_is_three() {
         List<Integer> threeDigits = List.of(1, 2, 3);
 
-        assertThatNoException().isThrownBy(() -> new Numbers(threeDigits));
+        assertThatNoException().isThrownBy(() -> Numbers.fromIntegers(threeDigits));
     }
 
     @Test
     @DisplayName("숫자끼리 스트라이크를 셀 수 있다")
     void count_strikes_between_numbers() {
-        Numbers numbers = new Numbers(List.of(4, 2, 5));
-        Numbers numbers2 = new Numbers(List.of(4, 5, 6));
+        Numbers numbers = numbersFrom(4, 2, 5);
+        Numbers numbers2 = numbersFrom(4, 5, 6);
 
         assertThat(numbers.countStrikesWith(numbers2)).isEqualTo(1);
     }
@@ -39,9 +39,13 @@ public class NumbersTest {
     @Test
     @DisplayName("숫자끼리 볼을 셀 수 있다")
     void count_balls_between_numbers() {
-        Numbers numbers = new Numbers(List.of(4, 2, 5));
-        Numbers numbers2 = new Numbers(List.of(4, 5, 6));
+        Numbers numbers = numbersFrom(4, 2, 5);
+        Numbers numbers2 = numbersFrom(4, 5, 6);
 
         assertThat(numbers.countBallsWith(numbers2)).isEqualTo(1);
+    }
+
+    private Numbers numbersFrom(Integer... integers) {
+        return Numbers.fromIntegers(List.of(integers));
     }
 }

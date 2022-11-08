@@ -1,5 +1,7 @@
 package baseball;
 
+import static camp.nextstep.edu.missionutils.Randoms.*;
+
 public class PositiveDigit extends Digit {
 
     private static final int MINIMUM = 1;
@@ -10,6 +12,10 @@ public class PositiveDigit extends Digit {
     public PositiveDigit(int digit) {
         validateRanges(digit);
         this.digit = digit;
+    }
+
+    public static PositiveDigit randomized() {
+        return new PositiveDigit(pickNumberInRange(MINIMUM, MAXIMUM));
     }
 
     private void validateRanges(int digit) {
@@ -41,5 +47,12 @@ public class PositiveDigit extends Digit {
     @Override
     public int value() {
         return digit;
+    }
+
+    @Override
+    public String toString() {
+        return "PositiveDigit{" +
+                "digit=" + digit +
+                '}';
     }
 }

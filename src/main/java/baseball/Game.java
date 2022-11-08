@@ -12,7 +12,7 @@ public class Game {
     public Game(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.computerNumbers = new Computer().generateNumbers(1, 9);
+        this.computerNumbers = Numbers.randomized();
     }
 
     public void play() {
@@ -21,7 +21,7 @@ public class Game {
     }
 
     private void continuePlaying() {
-        Numbers userNumbers = new Numbers(inputView.promptNumbers());
+        Numbers userNumbers = Numbers.fromIntegers(inputView.promptNumbers());
         Long balls = userNumbers.countBallsWith(computerNumbers);
         Long strikes = userNumbers.countStrikesWith(computerNumbers);
 
