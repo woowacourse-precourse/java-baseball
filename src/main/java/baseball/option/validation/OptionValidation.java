@@ -1,6 +1,8 @@
 package baseball.option.validation;
 
 
+import baseball.option.Option;
+
 public class OptionValidation {
     private static final int OPTION_LENGTH = 1;
     public static void validate(String userInput) {
@@ -16,7 +18,8 @@ public class OptionValidation {
 
     private static void validateOption(String userInput) {
         int option = Integer.parseInt(userInput);
-        if ((option != 1) && (option != 2)) {
+
+        if ((option != Option.RESTART.getOption()) && (option != Option.END.getOption())) {
             throw new IllegalArgumentException(ExceptionMessage.OPTION_TYPE);
         }
     }

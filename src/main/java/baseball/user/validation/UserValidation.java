@@ -1,10 +1,9 @@
 package baseball.user.validation;
 
+import baseball.rule.NumberConstant;
 import java.util.stream.Stream;
 
 public class UserValidation {
-
-    private static final int NUMBER_LENGTH = 3;
     private static final String NUMBER_REGEXP = "^[0-9]+$";
 
     public static void validate(String userInput) {
@@ -20,7 +19,7 @@ public class UserValidation {
     }
 
     public static void validateNumberLength(String userInput) {
-        if (userInput.length() != NUMBER_LENGTH) {
+        if (userInput.length() != NumberConstant.NUMBER_LENGTH) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_LENGTH);
         }
     }
@@ -28,7 +27,7 @@ public class UserValidation {
     public static void validateNumberRange(String userInput) {
         boolean correctRange = Stream.of(userInput.split(""))
             .mapToInt(Integer::parseInt)
-            .allMatch((number) -> (number <= 9) && (number >= 1));
+            .allMatch((number) -> (number <= NumberConstant.MAX_DIGIT) && (number >= NumberConstant.MIN_DIGIT));
         if (!correctRange) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_RANGE);
         }

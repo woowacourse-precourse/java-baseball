@@ -1,5 +1,6 @@
 package baseball.computer.generator;
 
+import baseball.rule.NumberConstant;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,9 +8,6 @@ import java.util.List;
 
 public class RandomNumberGenerator {
     public static final int MAX_NUMBER_OF_CASE = 504;
-    public static final int MIN_DIGIT = 1;
-    public static final int MAX_DIGIT = 9;
-    public static final int NUMBER_LENGTH = 3;
     private static final HashSet<List<Integer>> numberSet = new HashSet<>();
 
     public static void initGenerator() {
@@ -19,8 +17,8 @@ public class RandomNumberGenerator {
     public static List<Integer> generateRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
 
-        while (randomNumber.size() < NUMBER_LENGTH) {
-            int randomDigit = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
+        while (randomNumber.size() < NumberConstant.NUMBER_LENGTH) {
+            int randomDigit = Randoms.pickNumberInRange(NumberConstant.MIN_DIGIT, NumberConstant.MAX_DIGIT);
             checkDuplicateDigit(randomDigit, randomNumber);
         }
 

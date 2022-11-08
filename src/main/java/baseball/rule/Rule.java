@@ -3,6 +3,7 @@ package baseball.rule;
 import java.util.List;
 
 public class Rule {
+    public static final int END_CONDITION = 3;
     private int ball;
     private int strike;
 
@@ -24,7 +25,7 @@ public class Rule {
     }
 
     public void check(List<Integer> user, List<Integer> computer) {
-        for (int userIdx = 0; userIdx < 3; userIdx++) {
+        for (int userIdx = 0; userIdx < NumberConstant.NUMBER_LENGTH; userIdx++) {
             checkStrike(user.get(userIdx), computer.get(userIdx));
             checkBall(user.get(userIdx), computer, userIdx);
         }
@@ -37,7 +38,7 @@ public class Rule {
     }
 
     private void checkBall(Integer userDigit, List<Integer> computer, int userIdx) {
-        for (int computerIdx = 0; computerIdx < 3; computerIdx++) {
+        for (int computerIdx = 0; computerIdx < NumberConstant.NUMBER_LENGTH; computerIdx++) {
             if ((userDigit.equals(computer.get(computerIdx))) && (userIdx != computerIdx)) {
                 ball++;
             }
@@ -49,6 +50,6 @@ public class Rule {
     }
 
     private boolean isThreeStrike() {
-        return strike == 3;
+        return strike == END_CONDITION;
     }
 }
