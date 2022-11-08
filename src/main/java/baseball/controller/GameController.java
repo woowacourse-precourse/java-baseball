@@ -36,16 +36,16 @@ public class GameController {
         whatToDoNext();
     }
 
-    void setGame(){
+    private void setGame(){
         gameService.setComputer();
         clearScore();
     }
 
-    void initializeGame(){
+    private void initializeGame(){
         gameStatusService = new GameStatusService();
     }
 
-    void startGame(){
+    private void startGame(){
         while(!isThreeStrike()) {
             clearScore();
             putPlayerInService(getPlayerNumbers());
@@ -54,53 +54,53 @@ public class GameController {
         }
     }
 
-    void putPlayerInService(String playerNumbers){
+    private void putPlayerInService(String playerNumbers){
         gameService.setPlayer(playerNumbers);
     }
 
-    void clearScore(){
+    private void clearScore(){
         gameService.initializeScore();
     }
 
-    String getPlayerNumbers(){
+    private String getPlayerNumbers(){
         return playerView.getPlayerOpinion();
     }
 
-    void matchGame(){
+    private void matchGame(){
         gameService.checkComputerWithPlayerNumber();
     }
 
-    void showPlayersScore(){
+    private void showPlayersScore(){
         giveScoreToView();
         printScore();
     }
 
-    void giveScoreToView(){
+    private void giveScoreToView(){
         scoreResultView.setBallCount(gameService.getBallCount());
         scoreResultView.setStrikeCount(gameService.getStrikeCount());
     }
 
-    void printScore(){
+    private void printScore(){
         scoreResultView.printScore();
     }
 
-    boolean isThreeStrike(){
+    private boolean isThreeStrike(){
         return gameService.getStrikeCount() == THREE_STRIKE;
     }
 
-    void whatToDoNext(){
+    private void whatToDoNext(){
         setGameStatus(getPlayersOpinion());
     }
 
-    String getPlayersOpinion(){
+    private String getPlayersOpinion(){
         return gameStatusView.inquireOpinion();
     }
 
-    void setGameStatus(String opinion){
+    private void setGameStatus(String opinion){
         gameStatusService.setGameStatus(opinion);
     }
 
-    boolean wantToPlay(){
+    private boolean wantToPlay(){
         return gameStatusService.getGameStatus();
     }
 }
