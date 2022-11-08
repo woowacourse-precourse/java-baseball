@@ -2,10 +2,7 @@ package baseball.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,9 +12,10 @@ class BallsTest {
     @Test
     void validateDuplicate_중복된_숫자_값이_있을때_예외가_반환되는지_테스트() {
         //given
-        List<Ball> balls = List.of(new Ball(1),
-                                   new Ball(1),
-                                   new Ball(1));
+        List<Ball> balls = new ArrayList<>();
+        balls.add(new Ball(1));
+        balls.add(new Ball(1));
+        balls.add(new Ball(1));
         //when
         Set<Ball> ballSet = new HashSet<>(balls);
         //when, then
@@ -32,9 +30,10 @@ class BallsTest {
     @Test
     void validateDuplicate_중복된_숫자_값이_없을때_Set와_List의_크기가_같은지_테스트() {
         //given
-        List<Ball> balls = List.of(new Ball(1),
-                                   new Ball(2),
-                                   new Ball(3));
+        List<Ball> balls = new ArrayList<>();
+        balls.add(new Ball(1));
+        balls.add(new Ball(2));
+        balls.add(new Ball(3));
         //when
         Set<Ball> ballSet = new HashSet<>(balls);
         //then
@@ -44,8 +43,9 @@ class BallsTest {
     @Test
     void validateSize_리스트의_사이즈가_3이_아닐_때_예외가_반환되는지_테스트() {
         //given
-        List<Ball> balls = List.of(new Ball(1),
-                                   new Ball(2));
+        List<Ball> balls = new ArrayList<>();
+        balls.add(new Ball(1));
+        balls.add(new Ball(2));
         //when
         //then
         assertThatThrownBy(() -> {
@@ -59,7 +59,8 @@ class BallsTest {
     @Test
     void addBall_숫자를_리스트에_추가할_때_이미_있는_숫자라면_리스트에_추가되지_않는지_테스트() {
         //given
-        List<Ball> balls = List.of(new Ball(1));
+        List<Ball> balls = new ArrayList<>();
+        balls.add(new Ball(1));
         Ball ball = new Ball(1);
         //when
         if (!balls.contains(ball)) {
@@ -67,6 +68,20 @@ class BallsTest {
         }
         //then
         assertThat(balls.size()).isEqualTo(1);
+    }
+
+    @Test
+    void addBall_숫자를_리스트에_추가할_때_없는_숫자라면_리스트에_추가가_잘_되는지_테스트() {
+        //given
+        List<Ball> balls = new ArrayList<>();
+        balls.add(new Ball(1));
+        Ball ball = new Ball(2);
+        //when
+        if (!balls.contains(ball)) {
+            balls.add(ball);
+        }
+        //then
+        assertThat(balls.size()).isEqualTo(2);
     }
 
     @Test
