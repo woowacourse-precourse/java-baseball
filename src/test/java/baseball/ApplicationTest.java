@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
 
+import static baseball.Application.compareUserInputToAnswer;
 import static baseball.Application.getRandomThreeDigitNumberString;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -44,6 +45,17 @@ class ApplicationTest extends NsTest {
             assertThat(checkOverlapString.length() < 2).isFalse();
         }
     }
+
+
+    @Test
+    void 사용자_입력과_정답_비교() {
+        compareUserInputToAnswer("123","321");
+        compareUserInputToAnswer("123","456");
+        compareUserInputToAnswer("123","123");
+
+        assertThat(output()).contains("2볼 1스트라이크","낫싱","3스트라이크");
+    }
+
 
     @Override
     public void runMain() {
