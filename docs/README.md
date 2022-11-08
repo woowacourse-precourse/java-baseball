@@ -13,8 +13,9 @@
 4. 잘못된 값이 입력된 예외상황을 처리한다. `IllegalArgumentException` 발생
     - [ERROR] 01 : 사용자가 아무것도 입력하지 않았을 경우
     - [ERROR] 02 : 숫자 이외의 문자가 포함되어 있을 경우
-    - [ERROR] 03 : 숫자가 3자리가 아닐 경우
-    - [ERROR] 04 : 중복되는 숫자가 입력되었을 경우
+    - [ERROR] 03 : 0이 포함되어 있을 경우
+    - [ERROR] 04 : 숫자가 3자리가 아닐 경우
+    - [ERROR] 05 : 중복되는 숫자가 입력되었을 경우
     - 주의) 해당 프로그램의 예외사항 처리 방식은 Exception 이 Throw 되기를 요구함으로 Try-Catch statement 는 포함하지 않는다. 즉, 잘못된 값이 입력 될 경우 프로그램은 Crash 한다.
 5. 사용자 숫자와 임의의 수 비교
     - 스트라이크 : 같은 수가 같은 자리에 존재
@@ -29,7 +30,7 @@
 8. 새 게임 또는 게임 종료
     - 사용자에게 새 게임을 시작할지 종료할지 묻는다.
     - 종료 시퀀스가 입력될 때까지 새 게임을 진행한다.
-    - [ERROR] 05 : 1과 2 이외에 입력될 경우. `IllegalArgumentException` 발생
+    - [ERROR] 06 : 1과 2 이외에 입력될 경우. `IllegalArgumentException` 발생
 
 
 
@@ -48,6 +49,7 @@
     - (4.6.1) 수직 빈 줄 : 빈 줄은 가독성을 향상시키기 위해서라면 어디든(예를 들면 논리적으로 코드를 구분하기 위해 문장 사이) 사용 될 수 있다.
 
 - 기타
-    - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`및 `Console` API를 사용하도록 한다. `java.util.Random`과 `java.util.Scanner`는 쓰지 않는다.
+    - `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`및 `Console` API를 사용하도록 한다. `java.util.Random`
+      과 `java.util.Scanner`는 쓰지 않는다.
     - 기능 구현 목록은 가능한 작은 단위로 나눈다
     - 해당 목록을 바탕으로 커밋한다
