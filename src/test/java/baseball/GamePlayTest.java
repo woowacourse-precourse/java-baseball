@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class GamePlayTest {
     final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     final PrintStream standardOut = System.out;
+    final GamePlay gamePlay = new GamePlay();
 
     @BeforeEach
     void setUp(){
@@ -30,13 +31,11 @@ public class GamePlayTest {
     @Test
     void 결과_값이_스트라이크() {
         // given
-        GamePlay gamePlay = new GamePlay();
-
         List<Integer> computerNumber = new ArrayList<>(Arrays.asList(1,7,4));
-        List<Integer> uesrNumber = new ArrayList<>(Arrays.asList(1,7,8));
+        List<Integer> userNumber = new ArrayList<>(Arrays.asList(1,7,8));
 
-        //when
-        gamePlay.getResult(uesrNumber,computerNumber);
+        // when
+        gamePlay.getResult(userNumber,computerNumber);
 
         // then
         Assertions.assertEquals("2스트라이크",outputStreamCaptor.toString().trim());
@@ -44,6 +43,15 @@ public class GamePlayTest {
 
     @Test
     void 결과_값이_볼(){
+        // given
+        List<Integer> computerNumber = new ArrayList<>(Arrays.asList(2,5,9));
+        List<Integer> userNumber = new ArrayList<>(Arrays.asList(5,9,2));
+
+        // when
+        gamePlay.getResult(userNumber,computerNumber);
+
+        // then
+        Assertions.assertEquals("3볼",outputStreamCaptor.toString().trim());
 
     }
     @Test
