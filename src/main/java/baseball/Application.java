@@ -1,10 +1,11 @@
 package baseball;
 
-import baseball.controller.GameController;
+import baseball.controller.BasicBaseballGame;
+import baseball.controller.GameContext;
 
 public class Application {
     public static void main(String[] args) {
-        GameController gameController = new GameController();
-        gameController.runGameMain();
+        GameContext gameContext = new GameContext(new BasicBaseballGame());
+        gameContext.runGameMain();
     }
 }
