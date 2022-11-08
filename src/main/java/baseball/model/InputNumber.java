@@ -10,7 +10,6 @@ public class InputNumber {
 
     public static List<Integer> getValidNumberList() {
         String input = getPlayerInput();
-        System.out.println("플레이어: " + input);
         validateInputSize(input);
         validateDigitRange(input);
 
