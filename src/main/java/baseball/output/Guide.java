@@ -7,6 +7,10 @@ public class Guide {
         System.out.println(START_GUIDE);
     }
 
+    public static void printInputGuide(){
+        System.out.print(INPUT_GUIDE);
+    }
+
     public static  void printEndingGuide(){
         System.out.println(END_GUIDE);
     }

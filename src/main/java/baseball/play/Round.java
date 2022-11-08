@@ -14,6 +14,7 @@ public class Round {
         Result result = new Result();
 
         do {
+            Guide.printInputGuide();
             List<Integer> userNumberList = userInput.getNumberList();
             result.updateResult(userNumberList, computerNumberList);
             result.printResult();
