@@ -1,6 +1,7 @@
 package baseball;
 
 public class Application {
+    private static final String STARTING_MENT = "숫자 야구 게임을 시작합니다.";
     private static final String REPLAY_QUESTION = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ";
     private static final int REPLAY = 1;
     private static final int NO_REPLAY = 2;
@@ -8,6 +9,8 @@ public class Application {
     public static void main(String[] args) {
 
         while (true) {
+            System.out.println(STARTING_MENT);
+
             GamePlayer.playGame();
 
             int replay = Integer.parseInt(
@@ -18,6 +21,7 @@ public class Application {
                 return;
             }
         }
+
     }
 
     private static boolean checkReplay(int replay) {

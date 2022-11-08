@@ -27,7 +27,11 @@ public class GamePlayer {
     }
 
     private static List<Integer> getPlayerInput() {
-        return Stream.of(Console.readLine().split(""))
+        final String MESSAGE = "숫자를 입력해주세요 : ";
+
+        String player_input = ConsoleInput.inputWithMessage(MESSAGE);
+
+        return Stream.of(player_input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
@@ -35,6 +39,7 @@ public class GamePlayer {
     private static void playOneTurn(Game game, List<Integer> player_number) {
         final int STRIKE_OUT = 3;
         final int NOTHING = 0;
+
         final int strike = game.getCountOfStrike(player_number);
         final int ball = game.getCountOfBall(player_number, strike);
 
