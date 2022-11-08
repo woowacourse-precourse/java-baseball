@@ -11,6 +11,42 @@ import java.util.Set;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        String startText = "숫자 야구 게임을 시작합니다.";
+        String askInputText = "숫자를 입력해주세요 : ";
+        boolean newGame = false;
+
+        printStartText(startText);
+        do {
+            int exitCode=2;
+            String input="";
+            List<Integer> computer = new ArrayList<>();
+            boolean isCorrect= false;
+
+            computer = createRandomNumber();
+            do {
+                List<Integer> user = new ArrayList<>();
+                printAskInputText(askInputText);
+                input = getInput();
+                ableToParseInt(input); // 입력받은 문자열이 세자리 숫자로 변환이 가능한지 검증
+                user = StringToIntegerList(input);// 검증 받은 문자열을 한자리씩 정수로 형변환 하고 리스트에 저장
+                checkInputThreeDifferentNumber(user);
+                isCorrect = compareAndPrintResult(computer, user);
+            }while (!isCorrect);
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            input = getInput();
+            checkInputOneOrTwo(input);
+            exitCode = Integer.parseInt(input);
+
+            if (exitCode==1){
+                newGame=true;
+            }
+            if (exitCode==2){
+                newGame=false;
+            }
+        }while (newGame);
+        System.out.println("게임 종료");
+
     }
 
     private static void printStartText(String txt) {
