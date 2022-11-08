@@ -42,7 +42,7 @@ public class Hint {
         return false;
     }
 
-    public boolean isThreeStrike() {
+    public boolean isAllStrike() {
         if (strikeCount == LENGTH_OF_NUMBER) {
             System.out.println(WIN_MSG);
             return true;
