@@ -45,7 +45,13 @@ class BaseballGame {
     }
 
     public void strikeBall() {
-
+        initalizeBall();
+        for(int i = 0; i < num_list.size(); i++) {
+            if(num_list.get(i) != my_list.get(i) && num_list.contains(my_list.get(i)))
+                ballCount += 1;
+            else if(num_list.get(i) == my_list.get(i))
+                strikeCount += 1;
+        }
     }
 
      public void message() {
