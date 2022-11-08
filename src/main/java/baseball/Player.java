@@ -3,13 +3,15 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.constants.Constant.*;
+
 public class Player {
 
   private final List<Integer> numbers;
   private final Validator validator;
 
   public Player() {
-    this.numbers = new ArrayList<>(3);
+    this.numbers = new ArrayList<>(NUMBER_LENGTH);
     this.validator = new Validator();
   }
 

@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.constants.Constant.*;
 import static baseball.constants.Exception.*;
 
 
@@ -31,7 +32,7 @@ public class Validator {
 
   public boolean isBetween(List<Integer> numbers) {
     for (int number : numbers) {
-      return number >= 1 && number <= 9;
+      return number >= RANGE_END && number <= RANGE_END;
     }
     return false;
   }
