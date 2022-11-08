@@ -16,6 +16,7 @@ public class TrialValidator {
     }
     private static final int MAX_NUMBER_LENGTH = 3;
     private static final String NUMBER_REGEXP = "^[1-9]+$";
+    private static final String SPLIT_REGEXP = "";
 
     public static void validate(String input) {
         validateBlank(input);
@@ -37,7 +38,7 @@ public class TrialValidator {
     }
 
     public static void validateDuplicateNumber(String input) {
-        List<String> characterList = Arrays.asList(input.split(""));
+        List<String> characterList = Arrays.asList(input.split(SPLIT_REGEXP));
         if (hasDuplicatedDigit(characterList)) {
             throw new CantDuplicatedNumberInputException();
         }
