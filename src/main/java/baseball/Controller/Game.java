@@ -1,10 +1,8 @@
 package baseball.Controller;
 
-import static baseball.Constant.*;
-
-import baseball.Controller.Controller;
 import baseball.Model.Computer;
 import baseball.Model.Player;
+import baseball.View.Message;
 
 public class Game {
     Computer computer;
@@ -20,15 +18,15 @@ public class Game {
     }
 
     public void playGame() throws IllegalArgumentException {
-        while(computer.strike != 3) {
-            System.out.print(GAME_GUESS);
+        while(computer.strikeCount != 3) {
+            Message.printGuessMessage();
             computer.judge(player.inputGuess());
         }
-        System.out.println(GAME_SUCCESS);
+        Message.printSuccessMessage();
     }
 
     public void replayGame() throws IllegalArgumentException {
-        System.out.println(GAME_RETRY);
+        Message.printRetryMessage();
         boolean replay = player.inputRetry();
         if(replay) {
             Controller controller = new Controller();

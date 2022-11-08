@@ -1,12 +1,11 @@
 package baseball;
 
-import static baseball.Constant.GAME_START;
-
 import baseball.Controller.Controller;
+import baseball.View.Message;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println(GAME_START);
+        Message.printStartMessage();
         Controller controller = new Controller();
         controller.run();
     }
