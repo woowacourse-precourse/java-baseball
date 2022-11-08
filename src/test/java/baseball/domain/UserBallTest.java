@@ -5,6 +5,8 @@ import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import baseball.service.UserBallService;
 
@@ -12,20 +14,14 @@ class UserBallTest {
 
 	private UserBallService userBallService = new UserBallService();
 
+	@ParameterizedTest
 	@DisplayName("스트라이크 개수가 3이면 isStrike 메서드에서 true 반환 아니면, false 를 반환한다")
-	@Test
-	void is3Strike() {
-		Integer strikeCount1 = 3;
+	@CsvSource(value = {"3, true", "2, false"})
+	void is3Strike(String strikeCount, boolean expected) {
 		UserBall userBallTrue = UserBall.createUserBall();
-		userBallTrue.updateStrikeCount(strikeCount1);
+		userBallTrue.updateStrikeCount(Integer.parseInt(strikeCount));
 		userBallTrue.updateStatus();
-		Assertions.assertThat(userBallTrue.is3Strike()).isTrue();
-
-		Integer strikeCount2 = 2;
-		UserBall userBallFalse = UserBall.createUserBall();
-		userBallFalse.updateStrikeCount(strikeCount2);
-		userBallFalse.updateStatus();
-		Assertions.assertThat(userBallFalse.is3Strike()).isFalse();
+		Assertions.assertThat(userBallTrue.is3Strike()).isEqualTo(expected);
 	}
 
 	@DisplayName("볼 개수로 updateBallCount 시 userball 의 ball 상태 변화 확인 테스트")
