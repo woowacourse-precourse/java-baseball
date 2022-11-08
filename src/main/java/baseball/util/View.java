@@ -18,7 +18,7 @@ public class View {
     }
 
     public static void printRequestPlayerGuess() {
-        System.out.println(REQUEST_GUESS_MESSAGE);
+        System.out.print(REQUEST_GUESS_MESSAGE);
     }
 
     public static void printGameFinish() {
