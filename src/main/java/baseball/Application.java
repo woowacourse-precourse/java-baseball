@@ -46,7 +46,7 @@ public class Application {
         }
 
         for (int i = 0; i < 9; i++) {
-            if (countChar(input, (char)(49 + i)) != 0) {
+            if (countChar(input, (char)(49 + i)) > 1) {
                 throw new IllegalArgumentException();
             }
         }
