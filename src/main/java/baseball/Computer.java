@@ -15,7 +15,7 @@ public class Computer {
 
         while (computerAnswer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            Character randomNumberChar = (char)(randomNumber + '0');
+            Character randomNumberChar = (char) (randomNumber + '0');
 
             if (!computerAnswer.contains(randomNumberChar)) {
                 computerAnswer.add(randomNumberChar);
@@ -35,7 +35,7 @@ public class Computer {
     public Integer getGameStrike(String userInput) {
         int resultStrike = 0;
 
-        for(int i = 0; i < GameValue.CORRECT_LENGTH; i++) {
+        for (int i = 0; i < GameValue.CORRECT_LENGTH; i++) {
             if (userInput.charAt(i) == computerAnswer.get(i)) {
                 resultStrike++;
             }
@@ -47,7 +47,7 @@ public class Computer {
     public Integer getGameBall(String userInput) {
         int resultBall = 0;
 
-        for(int i = 0; i < GameValue.CORRECT_LENGTH; i++) {
+        for (int i = 0; i < GameValue.CORRECT_LENGTH; i++) {
             if (computerAnswer.contains(userInput.charAt(i)) && computerAnswer.get(i) != userInput.charAt(i)) {
                 resultBall++;
             }
