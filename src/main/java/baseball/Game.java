@@ -68,6 +68,7 @@ public class Game {
     }
 
     public void resetCount() {
+        this.nothing = false;
         this.sameNumber = 0;
         this.ball = 0;
         this.strike = 0;
