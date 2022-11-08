@@ -31,6 +31,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void getNewAnswer_테스트() {
+        Integer newAnswer = Application.getNewAnswer();
+        assertThat(123 <= newAnswer).isTrue();
+        assertThat(newAnswer <= 987).isTrue();
+    }
+
+    @Test
     void validate_예외_테스트1() {
         assertThatThrownBy(() -> Application.validate(5))
         .isInstanceOf(IllegalArgumentException.class);
