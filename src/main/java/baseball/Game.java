@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public class Game {
     public static final int BALLSIZE = 3;
+    public static final String RESTART = "1";
+    public static final String GAMEEND = "2";
 
 
     private InputNumber inputNumber;
