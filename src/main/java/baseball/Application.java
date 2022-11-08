@@ -9,7 +9,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 
 	public static void main(String[] args) {
-
+		System.out.println("숫자 야구 게임을 시작합니다.");
+		gameMain();
+		String select = gameMain();
+		if(select.equals("restart")) {
+			gameMain();
+		}
+		if(select.equals("end")) {
+			System.out.println("게임이 종료되었습니다.");
+		}
+		
 	}
 
 	public static List<Integer> computer() {
@@ -24,6 +33,7 @@ public class Application {
 	}
 
 	public static List<Integer> user() {
+		System.out.print("숫자를 입력하세요. : ");
 		String userInput = Console.readLine();
 		String[] userInputArray = userInput.split("");
 		List<Integer> user = new ArrayList<Integer>();
@@ -81,10 +91,43 @@ public class Application {
 		}
 
 		if (ball == 3 && strike == 3) {
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			result = "win";
 		}
 
 		return result;
 	}
+	
+	public static String gameMain() {
+		List<Integer> computerDisits = computer();
+		List<Integer> userDisits = user();
+		String gameHint = compareResult(computerDisits, userDisits);
+		
+		String newHint = "";
+		while(!gameHint.equals("win")) {
+			System.out.print("숫자를 입력하세요. : " );
+			Console.readLine();
+			List<Integer> newUserDisits = user();
+			newHint = compareResult(computerDisits, newUserDisits);
+			
+		}
+		
+		String select = "";
+		if(newHint.equals("win")) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+			String selectGame = Console.readLine();
+			
+			if(selectGame.equals("1")) {
+				select = "restart";
+			}
+			if(selectGame.equals("2")) {
+				select = "end";
+			}
+			if(selectGame.equals("1") && selectGame.equals("2")) {
+				throw new IllegalArgumentException();
+			}
+		}
+		return select;
+	}
+	
 }
