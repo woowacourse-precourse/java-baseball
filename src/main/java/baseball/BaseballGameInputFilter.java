@@ -1,43 +1,64 @@
 package baseball;
 
-import java.util.List;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+
 
 public class BaseballGameInputFilter {
 
-    private final Scanner scanner = new Scanner(System.in);
+    private static BaseballGameInputFilter baseballGameInputFilter = new BaseballGameInputFilter();
+    private static int numberLength = 3;
 
-    private int numberLength = 3;
 
-    public boolean isValidLength(String input) {
-        return input.length() == this.numberLength;
+    private BaseballGameInputFilter() {}
+
+    protected static boolean isValidLength(String input) {
+        return input.length() == numberLength;
     }
 
-    public boolean isNumeric(String input) {
-        return input.matches("[1-9]]");
+    protected static boolean isNumeric(String input) {
+        return input.matches("[1-9]+");
     }
 
-    public boolean isNotDuplicated(String input) {
-        return input.length() == List.of(input.split(""))
-                .stream()
-                .distinct()
-                .count();
+    protected static boolean isNotDuplicated(String input) {
+        boolean[] isNumberOfIndex = new boolean[10];
+
+        for (char ch : input.toCharArray()){
+            if (isNumberOfIndex[Character.getNumericValue(ch)]) return false;
+            isNumberOfIndex[Character.getNumericValue(ch)] = true;
+        }
+        return true;
     }
 
-    public String readNumbers(){
-        String input = scanner.nextLine();
+    public static String readNumbers(){
+        System.out.print("숫자를 입력해주세요 : ");
 
-        if (!this.isValidLength(input)) {
+        String input = Console.readLine();
+
+        if (!isValidLength(input)) {
             throw new IllegalArgumentException();
         }
-        if (!this.isNumeric(input)) {
+        if (!isNumeric(input)) {
             throw new IllegalArgumentException();
         }
-        if (!this.isNotDuplicated(input)) {
+        if (!isNotDuplicated(input)) {
             throw new IllegalArgumentException();
         }
 
         return input;
+    }
+
+    public boolean readIsContinued() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String flag = Console.readLine();
+
+        if (flag.equals("1")) return true;
+        else if (flag.equals("2")) return false;
+
+        throw new IllegalArgumentException();
+    }
+
+    public static BaseballGameInputFilter getInstance() {
+        return baseballGameInputFilter;
     }
 
 }
