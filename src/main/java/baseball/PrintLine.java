@@ -22,15 +22,15 @@ public class PrintLine {
         System.out.println(RESTART_NUMBER_MESSAGE);
     }
 
-    public static void resultPrint(Map<String, Integer> scoreTable) {
-        if (scoreTable.get("스트라이크") == 0 && scoreTable.get("볼") == 0) {
+    public static void resultPrint(Map<String, Integer> scoreTable, String strike, String ball) {
+        if (scoreTable.get(strike) == 0 && scoreTable.get(ball) == 0) {
             System.out.print("낫싱");
         }
-        if (scoreTable.get("볼") != 0) {
-            System.out.print(scoreTable.get("볼") + "볼 ");
+        if (scoreTable.get(ball) != 0) {
+            System.out.print(scoreTable.get(strike) + ball + " ");
         }
-        if (scoreTable.get("스트라이크") != 0) {
-            System.out.print(scoreTable.get("스트라이크") + "스트라이크");
+        if (scoreTable.get(strike) != 0) {
+            System.out.print(scoreTable.get(strike) + strike);
         }
         System.out.println();
     }

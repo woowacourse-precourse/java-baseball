@@ -37,7 +37,7 @@ public class Game {
             Map<String, Integer> scoreTable = createScoreTable();
             List<Integer> userNumberList = inputUserNumber();
             matchLists(userNumberList, computerNumberList, scoreTable);
-            PrintLine.resultPrint(scoreTable);
+            PrintLine.resultPrint(scoreTable, STRIKE, BALL);
 
             if (scoreTable.get(STRIKE) == 3) {
                 PrintLine.afterAnswerPrint();
