@@ -8,6 +8,6 @@ public class Application {
         // TODO: 프로그램 구현
         Manager swJeong98 = new Manager();
 
-        while(!swJeong98.play());
+        while(swJeong98.play());
     }
 }

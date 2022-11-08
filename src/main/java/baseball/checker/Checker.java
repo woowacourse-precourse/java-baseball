@@ -21,7 +21,7 @@ public class Checker {
             set.add(temp);
         }
 
-        return set.size() != 3;
+        return set.size() != ANSWER_LENGTH;
     }
 
     public static boolean IsInvalidChoice(String user){
