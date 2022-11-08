@@ -34,16 +34,24 @@ public class Baseballgame {
 
         } while (!check.isAllStrikes());
 
-        }
-
-
-
+    }
 
     private Boolean reGame() {
         String input = "";
 
+        while (invalidInput(input)) {
+            printCheckRestartMessage();
+            input = getUserInput();
+        }
+        printCheckRestartExceptionMessage();
         return input.equals(CONTINUE);
     }
+
+    private boolean invalidInput(String input) {
+        return !input.equals(CONTINUE) && !input.equals(QUIT);
+    }
+
+
 
     private Com makeUserBalls() {
         Com userBalls = null;
@@ -86,6 +94,8 @@ public class Baseballgame {
     private void printCheckRestartMessage() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
+
+
 
 
 
