@@ -10,8 +10,8 @@ public class ComputerTest {
     List<Integer> list = List.of(2,5,3);
     @Test
     void makeAnswer_컴퓨터_정답_만들기(){
-        List<Integer> answer = makeAnswer();
-        int result = answer.size();
+        computer.makeAnswer();
+        int result = Answer.size();
         assertThat(result).isEqualTo(3);
     }
 
@@ -71,16 +71,6 @@ public class ComputerTest {
         List<Integer> list1 = List.of(1,2,3);
         computer.makeHintMap(list1);
         boolean result = computer.is3Strike();
-        assertThat(result).isEqualTo(true);
-    }
-
-    @Test
-    void askRestart_스트라이크가_3개_일때_재시작하는지_여부(){
-        computer.Answer = List.of(1,2,3);
-        computer.resetHintMap();
-        List<Integer> list1 = List.of(1,2,3);
-        computer.makeHintMap(list1);
-        boolean result = computer.askRestart();
         assertThat(result).isEqualTo(true);
     }
 }

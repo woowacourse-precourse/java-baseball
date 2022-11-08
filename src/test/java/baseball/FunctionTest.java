@@ -6,6 +6,9 @@ import static baseball.Function.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class FunctionTest {
+
+    Computer computer = new Computer();
+    Player player = new Player();
     @Test
     void addRandomNumber_리스트에_1부터_9까지의_랜덤정수_추가() {
         boolean result = false;

@@ -8,21 +8,23 @@ public class Computer {
     protected static String result;
     protected static HashMap<String, Integer> HintMap;
 
-    public Computer() {
-        this.Answer = makeAnswer();
-    }
+    public Computer() {}
 
+    public static void resetAll(){
+        Answer = new ArrayList<>();
+        resetHintMap();
+        result = "";
+    }
     public static void resetHintMap(){
         HintMap = new HashMap<>();
         HintMap.put("스트라이크", 0);
         HintMap.put("볼", 0);
     }
-    public static List<Integer> makeAnswer(){
-        List<Integer> Answer = new ArrayList<>();
+    public static void makeAnswer(){
+        Answer = new ArrayList<>();
         while(Answer.size() < 3){
             addRandomNumber(Answer);
         }
-        return Answer;
     }
 
     public static void isStrikeOrBall(int AnswerNum, int num){
@@ -67,12 +69,5 @@ public class Computer {
         return false;
     }
 
-    public static boolean askRestart(){
-        if(is3Strike()){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            return true;
-        }
-        return false;
-    }
 }
 
