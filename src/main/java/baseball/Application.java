@@ -51,7 +51,7 @@ public class Application {
 
         String userNum = Console.readLine();
 
-        for (int i=0; i<3; i++) {
+        for (int i=0; i<userNum.length(); i++) {
             userList.add(userNum.charAt(i) - '0');
         }
 
