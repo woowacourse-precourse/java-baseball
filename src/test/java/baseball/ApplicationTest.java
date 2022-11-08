@@ -113,6 +113,14 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(isThreeSrikes).isEqualTo(false);
     }
 
+    @Test
+    void 쓰리스트라이크면_true다() {
+        List<Integer> result = Arrays.asList(3, 0);
+        Boolean isThreeSrikes = isThreeStrikes(result);
+
+        Assertions.assertThat(isThreeSrikes).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
