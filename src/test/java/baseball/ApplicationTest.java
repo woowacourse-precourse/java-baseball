@@ -33,7 +33,9 @@ class ApplicationTest extends NsTest {
         input = input.replace(GAME_GET_NUMBER, "");
         input = input.replace(GAME_RESTART_OR_END, "");
         input = input.replace(" ", "");
-        return List.of(input.split("\n"));
+        List<String> result= new ArrayList<>(List.of(input.split("\n")));
+        result.remove("");
+        return result;
     }
 
     @Test
@@ -120,8 +122,7 @@ class ApplicationTest extends NsTest {
                 },
                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
         );
-
-        assertThat(onlyResult(output())).contains("3볼", "2볼", "1볼");
+        assertThat(onlyResult(output())).containsExactly("3볼", "2볼", "1볼", "3스트라이크");
     }
 
     @Test
