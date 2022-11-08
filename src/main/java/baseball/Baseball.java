@@ -16,11 +16,7 @@ public class Baseball {
         computer = new ArrayList<>();
         gameInfo = new GameInfo();
         user = "";
-        isAnswer = gameInfo.isEnd();
-    }
-
-    private void printInit() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        isAnswer = gameInfo.isAnswer();
     }
 
     private void getRandomNumbers() {
@@ -71,7 +67,6 @@ public class Baseball {
     }
 
     public void gameStart() {
-        printInit();
         getRandomNumbers();
 
         while (!isAnswer) {
