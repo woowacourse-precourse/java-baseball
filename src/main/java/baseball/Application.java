@@ -103,7 +103,7 @@ public class Application {
         do {
             inputNumber = new ArrayList<>(inputNumberOfUser());
             System.out.println(gameReferee(generatedNumber, inputNumber));
-        } while (!gameReferee(generatedNumber, inputNumber).contains("모두"));
+        } while (!gameReferee(generatedNumber, inputNumber).contains("맞히셨습니다"));
     }
     public static String selectReplay() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
