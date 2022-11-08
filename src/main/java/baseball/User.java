@@ -19,7 +19,14 @@ public class User {
                 nums.add(ball.getNumber());
             }
         }
+        validateNums(count);
         return nums;
+    }
+
+    private void validateNums(int count) {
+        if (nums.size() != count) {
+            throw new IllegalArgumentException("중복된 번호가 있습니다.");
+        }
     }
 
     public List<Integer> getInputs() {
