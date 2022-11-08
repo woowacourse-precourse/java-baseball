@@ -33,6 +33,7 @@ public class Application {
             restartNumber = Console.readLine();
             Validation.validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
+        PrintLine.endGame();
     }
 
     private static void matchLists(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable) {

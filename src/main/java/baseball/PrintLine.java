@@ -27,6 +27,9 @@ public class PrintLine {
             System.out.print(scoreTable.get("스트라이크") + "스트라이크");
         }
         System.out.println();
+    }
 
+    public static void endGame() {
+        System.out.println("게임 종료");
     }
 }
