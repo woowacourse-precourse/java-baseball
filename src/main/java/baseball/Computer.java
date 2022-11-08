@@ -7,6 +7,11 @@ import java.util.List;
 
 public class Computer {
     private List<Integer> number;
+
+    public List<Integer> getNumber() {
+        return number;
+    }
+
     public static final int NUMBER_LENGTH = 3;
 
 
@@ -25,7 +30,7 @@ public class Computer {
     }
 
 
-    public void printResult(List<Integer> playerNumber) {
+    public boolean printResult(List<Integer> playerNumber) {
         int[] strikeAndBallCount = getStrikeAndBallCount(playerNumber);
         int strike = strikeAndBallCount[0];
         int ball = strikeAndBallCount[1];
@@ -33,8 +38,10 @@ public class Computer {
         if(strike == NUMBER_LENGTH){
             System.out.println(buildResultSentence(strike, ball));
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
         }else{
             System.out.println(buildResultSentence(strike, ball));
+            return true;
         }
     }
 

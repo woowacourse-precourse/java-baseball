@@ -9,5 +9,6 @@ public class Application {
 
         BaseBall game = new BaseBall(computer, player);
         game.init();
+
     }
 }
