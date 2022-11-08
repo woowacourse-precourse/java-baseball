@@ -45,4 +45,10 @@ public class Exception {
         }
     }
 
+    public void checkReStartLength(String reStartNumber) {
+        if (reStartNumber.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
