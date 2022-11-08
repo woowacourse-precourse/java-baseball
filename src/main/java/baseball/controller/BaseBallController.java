@@ -24,7 +24,7 @@ public class BaseBallController {
 
     private void gameStart() {
         baseBallService.init();
-        Score initialScore = new Score(0, 0);
+        Score initialScore = new Score();
         playGameUntilEnd(initialScore);
         quitOrContinueGame();
     }
