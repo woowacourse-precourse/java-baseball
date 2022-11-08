@@ -54,4 +54,13 @@ public class Game {
         return cvtResult;
     }
 
+    public boolean toBeContinue() {
+        Integer number = user.getNumberToContinueGame();
+        if(number.equals(1)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
