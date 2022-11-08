@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 public class Application {
     public static void main(String[] args) {
@@ -85,7 +85,7 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             if (checkStrike(i, answerNumber, guessNumber)) {
                 ballCount.set(1, ballCount.get(1) + 1);
-            } else if (checkBall(answerNumber.get(i), answerNumber)) {
+            } else if (checkBall(guessNumber.get(i), answerNumber)) {
                 ballCount.set(0, ballCount.get(0) + 1);
             }
         }
