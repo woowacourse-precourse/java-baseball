@@ -56,7 +56,8 @@ public class Game {
     }
 
     public void setStatusByProblemSolver(){
-
+        printMessage(Settings.RESTART_REQUEST_MESSAGE);
+        status = problemSolver.chooseToRestart();
     }
 
     public Player getProblemMaker() {
