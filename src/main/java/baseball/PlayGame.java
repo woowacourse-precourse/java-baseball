@@ -47,7 +47,7 @@ public class PlayGame {
         while(methodCallCount < 3){
             int beforeStrike = strike;
 
-            countStrike(computerNumber.get(digit), userNumber.get(digit));
+            countStrike(computerNumber.get(methodCallCount), userNumber.get(digit));
             digit = exceptStrikeNumber(beforeStrike, digit);
 
             digit++;
@@ -63,7 +63,6 @@ public class PlayGame {
 
     private int exceptStrikeNumber(int beforeStrike, int digit){
         if(beforeStrike != strike){
-            computerNumber.remove(digit);
             userNumber.remove(digit);
             digit--;
         }
@@ -73,7 +72,7 @@ public class PlayGame {
     private void compareNumberForBall(){
         int compareNumberIndex = 0;
 
-        while(compareNumberIndex < computerNumber.size()){
+        while(compareNumberIndex < userNumber.size()){
             countBall(compareNumberIndex);
             compareNumberIndex++;
         }
