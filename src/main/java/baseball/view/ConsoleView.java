@@ -4,21 +4,24 @@ import static baseball.constant.Finish.getFinishByCode;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.constant.Finish;
-import baseball.exception.InvalidAnswerException;
 import baseball.hint.Hint;
 import baseball.input.InputController;
+import baseball.validator.AnswerValidator;
+import baseball.validator.FinishValidator;
 import java.util.List;
 
 public class ConsoleView implements View {
 
     private final InputController inputController;
+    private final AnswerValidator answerValidator = new AnswerValidator();
+    private final FinishValidator finishValidator = new FinishValidator();
 
     public ConsoleView(InputController inputController) {
         this.inputController = inputController;
     }
 
     @Override
-    public List<Integer> inputIntegerList() {
+    public List<Integer> inputUser() {
         String input = inputString();
         return inputController.convertToIntegerList(input);
     }
@@ -42,14 +45,13 @@ public class ConsoleView implements View {
     @Override
     public Finish inputFinishCode() {
         String input = readLine();
+        finishValidator.checkValid(input);
         return getFinishByCode(input);
     }
 
     private String inputString() {
         String input = readLine();
-        if (!inputController.checkValidAnswer(input)) {
-            throw new InvalidAnswerException();
-        }
+        answerValidator.checkValid(input);
         return input;
     }
 }

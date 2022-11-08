@@ -1,6 +1,5 @@
 package baseball.constant;
 
-import baseball.exception.InvalidFinishCodeException;
 import java.util.Arrays;
 
 public enum Finish {
@@ -18,9 +17,7 @@ public enum Finish {
     }
 
     public static Finish getFinishByCode(String code) {
-        return Arrays.stream(values()).filter(finish -> {
-                    return finish.getCode().equals(code);
-                }).findFirst()
-                .orElseThrow(InvalidFinishCodeException::new);
+        return Arrays.stream(values()).filter(finish -> finish.getCode().equals(code)).findAny()
+                .get();
     }
 }

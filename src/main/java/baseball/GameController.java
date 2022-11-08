@@ -37,7 +37,7 @@ public class GameController {
         List<Integer> computer = generateComputerNumber();
         do {
             view.printInlineMessage(INPUT_NUMBER);
-            List<Integer> user = view.inputIntegerList();
+            List<Integer> user = view.inputUser();
             Hint hint = hintCalculator.getHint(computer, user);
             view.printHint(hint);
             if (isGameFinished(hint)) {

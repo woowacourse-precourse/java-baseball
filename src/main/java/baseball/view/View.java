@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface View {
 
-    List<Integer> inputIntegerList();
+    List<Integer> inputUser();
 
     Finish inputFinishCode();
 
