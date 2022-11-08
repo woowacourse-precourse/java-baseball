@@ -48,7 +48,7 @@ public class FunctionTest extends NsTest {
     void 정답일_때_종료_여부() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("123");
+                    run("123", "2");
                     assertThat(output()).contains("종료");
                 },
                 1, 2, 3
