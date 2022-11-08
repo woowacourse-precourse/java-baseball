@@ -14,7 +14,20 @@ public class Application {
 
     static List<Integer> answerRandomNumber = new ArrayList<>();
     static void startNumberBaseballGame(){
-
+        getAnswerRandomNumber();
+        System.out.println("랜덤 숫자 부여 = " + answerRandomNumber);
+        String answer = "";
+        String oneOrTwo = "";
+        // 게임 시작
+        System.out.println("숫자 야구 게임을 시작합니다");
+        while(true){
+            System.out.print("숫자를 입력해주세요 : ");
+            answer = getAnswerCheckMessage(answerRandomNumber, getListByInputNumber(Console.readLine()));
+            System.out.println(answer);
+            if(!inputNumberIsAnswer(answer)) {
+                break;
+            }
+        }
     }
     static List<Integer> getAnswerRandomNumber(){
         // 랜덤 3자리 숫자 생성
