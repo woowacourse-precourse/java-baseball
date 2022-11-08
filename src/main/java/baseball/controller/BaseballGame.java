@@ -28,8 +28,7 @@ public class BaseballGame {
             String input = userView.UserAnswer();
             userNumber.setDigits(input);
 
-             strike = 0;
-             ball = 0;
+             ResetScore();
              CheckScore(computerNumber,userNumber);
 
             System.out.println(this);
@@ -41,6 +40,12 @@ public class BaseballGame {
         }
 
     }
+
+    private void ResetScore(){
+        strike = 0;
+        ball = 0;
+    }
+
 
     private void CheckScore(ComputerNumber computerNumber, UserNumber userNumber){
 
