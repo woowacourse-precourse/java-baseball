@@ -20,14 +20,14 @@ public class Application {
 
     private static void gameStart() {
         computerRandomNumber = computerGetRandomNumber();
-        System.out.println(computerRandomNumber);
+//        System.out.println(computerRandomNumber);
 
         playerDoing();
 
         // 1이면 다시 시작, 2이면 종료
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if(Integer.valueOf(input).equals(1)){
+        if (Integer.valueOf(input).equals(1)) {
             gameStart();
         }
     }
@@ -59,7 +59,7 @@ public class Application {
         }
 
         makeResultSentence(strikeCount, ballCount);
-        if(strikeCount != 3) {
+        if (strikeCount != 3) {
             playerDoing();
         }
     }
@@ -93,7 +93,7 @@ public class Application {
                 nothingCount += 1;
             }
         }
-        System.out.println("nothingCount : " + nothingCount);
+//        System.out.println("nothingCount : " + nothingCount);
         return nothingCount;
     }
 
@@ -105,7 +105,7 @@ public class Application {
                 strikeCount += 1;
             }
         }
-        System.out.println("strikeCount : " + strikeCount);
+//        System.out.println("strikeCount : " + strikeCount);
         return strikeCount;
     }
 
@@ -118,7 +118,7 @@ public class Application {
             }
         }
         ballCount = ballCount - strikeCount;
-        System.out.println("ballCount : " + ballCount);
+//        System.out.println("ballCount : " + ballCount);
         return ballCount;
     }
 
@@ -152,7 +152,7 @@ public class Application {
             Integer.valueOf(input);
             return true;
         } catch (IllegalArgumentException e) {
-            System.out.println("숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
+//            System.out.println("숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
             e.printStackTrace();
             return false;
         }
@@ -163,7 +163,7 @@ public class Application {
         try {
             if (input.length() != 3) {
                 checkLength = false;
-                System.out.println("숫자의 길이가 3이 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
+//                System.out.println("숫자의 길이가 3이 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
@@ -190,7 +190,7 @@ public class Application {
         try {
             if (set.size() != 3) {
                 checkRepeat = false;
-                System.out.println("서로 다른 숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
+//                System.out.println("서로 다른 숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
