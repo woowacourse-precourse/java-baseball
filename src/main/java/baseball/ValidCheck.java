@@ -24,7 +24,7 @@ public class ValidCheck {
 
     public static boolean checkRangeError(String input) {
 
-        for (int i = 0; i < ReferenceValue.TOTAL_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.SIZE; i++) {
             char value = input.charAt(i);
             int number = Character.getNumericValue(value);
 
@@ -40,7 +40,7 @@ public class ValidCheck {
     public static boolean checkSizeError(String input) {
         int size = input.length();
 
-        if (size != ReferenceValue.TOTAL_SIZE) {
+        if (size != ReferenceValue.SIZE) {
             return true;
         }
 
@@ -50,7 +50,7 @@ public class ValidCheck {
     public static boolean checkVisitedError(String input) {
         List<Integer> visitedList = new ArrayList<>();
 
-        for (int i = 0; i < ReferenceValue.TOTAL_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.SIZE; i++) {
             char value = input.charAt(i);
             int number = Character.getNumericValue(value);
 

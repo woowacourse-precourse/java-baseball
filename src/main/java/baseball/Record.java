@@ -18,7 +18,7 @@ public class Record {
         List<Integer> computerNumbers = computer.numbers;
         List<Integer> userNumbers = user.numbers;
 
-        for (int i = 0; i < ReferenceValue.TOTAL_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.SIZE; i++) {
             int computerNumber = computerNumbers.get(i);
             int userNumber = userNumbers.get(i);
 

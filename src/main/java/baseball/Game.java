@@ -9,7 +9,7 @@ import java.util.List;
 public class Game {
 
     private static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String SUCCESS_MESSAGE = ReferenceValue.TOTAL_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String SUCCESS_MESSAGE = ReferenceValue.SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String AGAIN_QUESTION_MESSAGE = "게임을 새로 시작하려면 " + ReferenceValue.AGAIN + ", 종료하려면 " + ReferenceValue.EXIT + "를 입력하세요.";
 
     List<Integer> numbers;
@@ -58,7 +58,7 @@ public class Game {
     private static List<Integer> getUserNumbers(String input) {
         List<Integer> user = new ArrayList<>();
 
-        for (int i = 0; i < ReferenceValue.TOTAL_SIZE; i++) {
+        for (int i = 0; i < ReferenceValue.SIZE; i++) {
             char currentValue = input.charAt(i);
             int number = Character.getNumericValue(currentValue);
             user.add(number);
@@ -70,7 +70,7 @@ public class Game {
     private static List<Integer> getComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
 
-        while (computer.size() < ReferenceValue.TOTAL_SIZE) {
+        while (computer.size() < ReferenceValue.SIZE) {
             int randomNumber = getPickNumber();
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
@@ -94,7 +94,7 @@ public class Game {
 
         int strikeCount = record.strikeCount;
 
-        if (strikeCount == ReferenceValue.TOTAL_SIZE) {
+        if (strikeCount == ReferenceValue.SIZE) {
             System.out.println(SUCCESS_MESSAGE);
             success = true;
         }

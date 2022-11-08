@@ -40,3 +40,11 @@
         checkVisitedError    => 중복된 값이 있는 에러 체크
         checkIsContinueError => toBeContinue 값이 옳은지 체크
         checkIsNumberError   => 입력값이 숫자 인지 체크
+
+    - ReferenceValue  (Class)
+
+        SIZE                 => 전체 사이즈, 3자리
+        START_RANGE          => 범위 최솟값
+        END_RANGE            => 범위 최댓값
+        AGAIN                => 다시 시작하는 의미의 정수값
+        EXIT                 => 게임 종료하는 의미의 정수값
