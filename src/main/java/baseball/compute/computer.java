@@ -17,7 +17,7 @@ public class computer {
         return randomnumbers;
     }
 
-    public void computeAnswer() {
+    public void isValiableAnswer() {
         try {
             List<Integer> answer = makeRandom();
         }catch(IllegalArgumentException e) {

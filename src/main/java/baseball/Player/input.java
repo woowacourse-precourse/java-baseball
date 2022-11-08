@@ -1,5 +1,6 @@
 package baseball.Player;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class input {
@@ -11,6 +12,13 @@ public class input {
             UserAnswer.add(currnum);
         }
         return UserAnswer;
+    }
+    public void isValiableAnswer() {
+        try {
+            List<Integer> UserAnswer = StringtoList(Console.readLine());
+        }catch(IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
 }
