@@ -29,4 +29,15 @@ class UserTest {
                 .hasMessageContaining("자릿수별로 각기 다른 숫자를 입력해야 합니다.");
     }
 
+    @Test
+    @DisplayName("입력에 대해서 자릿수별로 입력의 크기가 3자리보다 작은지 확인")
+    public void isInputElementsLessThenThree() {
+        String input = "1";
+
+        assertThatThrownBy(() -> {
+            user.isValidInput(input);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력이 3글자보다 작습니다. 3글자를 입력해주세요.");
+    }
+
 }
