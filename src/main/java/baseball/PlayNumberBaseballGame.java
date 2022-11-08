@@ -13,14 +13,14 @@ import baseball.InputException;
 public class PlayNumberBaseballGame {
     List<Integer> computerRandomNumbers = new ArrayList<>();
     List<Integer> playerInputNumbers = new ArrayList<>();
-    private boolean isCorrect=false;
+    private boolean isAnswer=false;
 
     public void playNumberBaseballOneGame(){
-        isCorrect=false;
+        isAnswer=false;
         computerRandomNumbers=createRandomNumberOfComputer();
         System.out.println(GameProgressLine.START_LINE.getLine());
 
-        while (!isCorrect) {
+        while (!isAnswer) {
             playerInputNumbers = getInputNumbersOfPlayer();
             String outputResultLine = compareNumbersBetweenComputerAndPlayer(computerRandomNumbers, playerInputNumbers);
             System.out.println(outputResultLine);
@@ -106,7 +106,7 @@ public class PlayNumberBaseballGame {
         String result="";
 
         if(strike==3){
-            isCorrect=true;
+            isAnswer=true;
             result = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         else if(ball==0 && strike==0){
