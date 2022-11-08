@@ -63,7 +63,7 @@ public class Application {
         if (strike == 3) {
             System.out.println("3스트라이크");
             isAnswer = true;
-        } else if (strike == 0 && ball == 3) {
+        } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         } else if (strike == 0 && ball > 0) {
             System.out.println(ball + "볼");
