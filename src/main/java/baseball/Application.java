@@ -7,7 +7,7 @@ public class Application {
             BullsAndCows bullsAndCows = new BullsAndCows(new BullsAndCowsResult());
 
             while (!bullsAndCows.getBullsAndCowsResult().isFinish()) {
-                bullsAndCows.start();
+                bullsAndCows.startGame();
             }
 
             boolean bullsAndCowsContinue = bullsAndCows.isContinue();
