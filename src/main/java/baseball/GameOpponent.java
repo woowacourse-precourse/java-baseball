@@ -8,6 +8,9 @@ public class GameOpponent {
     private List<Integer> targetNumber;
 
     public GameOpponent(){
-        this.targetNumber = Randoms.pickUniqueNumbersInRange(0, 999, 3);
+        this.targetNumber = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+    }
+    public List<Integer> getTargetNumber(){
+        return this.targetNumber;
     }
 }

@@ -1,5 +1,5 @@
 package baseball;
 
-public interface GameState {
-    public void run();
+public interface GameState{
+    public <T> T run();
 }
