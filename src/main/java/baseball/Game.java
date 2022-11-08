@@ -14,9 +14,11 @@ public class Game {
         Computer computer = new Computer();
         computer.setRandomNumber();
         startGame(computer.getComputerNumber());
+        if (finishGame())
+            startProgram();
     }
 
-    public void startGame(List<Integer> computerNumber) {
+    private void startGame(List<Integer> computerNumber) {
         User user = new User();
         String gameScore = "";
 
@@ -25,9 +27,6 @@ public class Game {
             gameScore = getHint(user.getUserNumber(), computerNumber);
             System.out.println(gameScore);
         }
-
-        if (finishGame())
-            startProgram();
     }
 
     private boolean finishGame() throws IllegalArgumentException {
