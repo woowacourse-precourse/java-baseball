@@ -44,13 +44,13 @@ public class ComputerController {
 
     private void checkStrikeAndBall(int[] playerNumbers, int[] computerNumbers) {
         for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
-            countStrike(computerNumbers, playerNumbers[i], i);
+            countStrike(computerNumbers[i], playerNumbers[i]);
             countBall(computerNumbers, playerNumbers[i], i);
         }
     }
 
-    private void countStrike(int[] computerNumbers, int playerNumber, int numberIndex) {
-        if (computerNumbers[numberIndex] == playerNumber) {
+    private void countStrike(int computerNumber, int playerNumber) {
+        if (computerNumber == playerNumber) {
             strikeCount++;
         }
     }
