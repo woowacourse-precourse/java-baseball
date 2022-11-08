@@ -1,14 +1,15 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-
+//        int nn = Integer.parseInt(Console.readLine());
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         //랜덤숫자를 리스트에 넣기
@@ -20,15 +21,14 @@ public class Application {
             }
         }
 
-//        System.out.println(computer);
+        System.out.println(computer);
 
         List<Integer> strike = new ArrayList<>();
 
         while (strike.toArray().length < 3) {
             strike = new ArrayList<>(); //스트라이크 초기화
             System.out.print("숫자를 입력해 주세요 : ");
-            Scanner sc = new Scanner(System.in);
-            int input = sc.nextInt();
+            int input = Integer.parseInt(Console.readLine());
 
             //입력한 숫자를 리스트에 넣기
             int dv = 100;
@@ -41,20 +41,20 @@ public class Application {
             }
 
             for (int i = 0; i < 3; i++) {
-                if (input_list.get(i) == computer.get(i)) {
+                if (Objects.equals(input_list.get(i), computer.get(i))) {
                     strike.add(0);
                 }
             }
 
             //볼 처리
             List<Integer> ball = new ArrayList<>();
-            if (computer.get(0) == input_list.get(1) || computer.get(0) == input_list.get(2)) {
+            if (Objects.equals(computer.get(0), input_list.get(1)) || Objects.equals(computer.get(0), input_list.get(2))) {
                 ball.add(0);
             }
-            if (computer.get(1) == input_list.get(0) || computer.get(1) == input_list.get(2)) {
+            if (Objects.equals(computer.get(1), input_list.get(0)) || Objects.equals(computer.get(1), input_list.get(2))) {
                 ball.add(0);
             }
-            if (computer.get(2) == input_list.get(0) || computer.get(2) == input_list.get(1)) {
+            if (Objects.equals(computer.get(2), input_list.get(0)) || Objects.equals(computer.get(2), input_list.get(1))) {
                 ball.add(0);
             }
 
