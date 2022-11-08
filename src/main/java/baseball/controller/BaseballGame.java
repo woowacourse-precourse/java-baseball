@@ -1,8 +1,12 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumber;
+import baseball.model.Constant.Score;
 import baseball.model.UserNumber;
 import baseball.view.UserView;
+
+import static baseball.model.Constant.Score.BALL;
+import static baseball.model.Constant.Score.STRIKE;
 
 
 public class BaseballGame {
@@ -29,8 +33,17 @@ public class BaseballGame {
              ball = 0;
 
              for(int i=0;i<CNT_NUMBER;i++){
-                 //점수 계산 함수 먼저 구현
+                 Score score = computerNumber.getScore(userNumber.getDigit(i),i);
+
+                 if(score == STRIKE){
+                     strike++;
+                 }else if(score == BALL){
+                     ball++;
+                 }
+
              }
+
+
 
         }
 
