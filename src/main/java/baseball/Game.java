@@ -10,7 +10,7 @@ public class Game {
     private AnswerNumber answerNumber;
 
     private List<String> inputNumberList;
-    private List<String> answerNumberList;
+    private List<Integer> answerNumberList;
 
     private int strike;
     private int ball;
