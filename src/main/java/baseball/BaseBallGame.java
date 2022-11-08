@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.model.BallCount;
+import baseball.service.BallCountService;
+
 import java.util.List;
 
 /**
@@ -15,8 +18,7 @@ public class BaseBallGame {
             // TODO: 게임 로직 작성
             System.out.println(Constant.INPUT_MESSAGE);
             userAnswer = BaseBallGameUtil.inputUserAnswer();
-            BallCount ballCount = new BallCount();
-            ballCount.calc(answer, userAnswer);
+            BallCount ballCount = BallCountService.calc(answer, userAnswer);
             System.out.println(ballCount.toString());
             // TODO: 게임 진행 중 콘솔로 출력되는 Comment 출력
         } while(!isFinished(answer, userAnswer));
