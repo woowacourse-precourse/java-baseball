@@ -11,14 +11,35 @@ public class Application {
     static int ballCount = 0;
     public static void main(String[] args) {
         do{
-            while(true){//strickCount!=3
-                //input
+            while(strikeCount!=3){//strickCount!=3
+                System.out.println("숫자를 입력해주세요 : ");
+                reset();
                 List<Integer> input = valueToList(Integer.parseInt(Console.readLine()));
                 strikeCount = strike(computer, input);
                 ballCount = ball(computer, input);
+                System.out.println(printCount());
             }
             //end game
-        }while(true);//replay or exit
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        } while (replay(Console.readLine()));
+        System.out.println("게임 종료");
+    }
+
+    private static boolean replay(String readLine) {
+        if (readLine.equals("1")) return true;
+        return false;
+    }
+
+    private static String printCount() {
+        if (strikeCount == 0 && ballCount == 0) return "낫싱";
+
+        if (ballCount == 0 && strikeCount != 0) return strikeCount + "스트라이크";
+
+        if (strikeCount == 0 && ballCount != 0) return ballCount + "볼";
+
+        return ballCount + "볼 " + strikeCount + "스트라이크";
+
     }
 
     public static List<Integer> valueToList(int value){
