@@ -25,6 +25,23 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         String inputNumber=Console.readLine();
 
+        try{
+            //입력한 문자열이 세자리 수가 아닐 경우
+            if(inputNumber.length()!=3){
+                throw new IllegalArgumentException();
+            }
+            else{
+                for(int i=0;i<3;++i){
+                    if(inputNumber.charAt(i)<'1' || inputNumber.charAt(i)>'9'){
+                        throw new IllegalArgumentException();
+                    }
+                }
+            }
+        }
+        catch (IllegalArgumentException e){
+            System.out.println("잘못된 값을 입력하였습니다!");
+        }
+
         for(int i=0;i<3;++i){
             playerNumber.add(inputNumber.charAt(i)-'0');
         }
