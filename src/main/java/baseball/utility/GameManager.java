@@ -35,7 +35,9 @@ public class GameManager {
         setComputerNumber(generateComputerNumber());
 
         while (isGamePlaying()) {
+            String playerNumber = getPlayerNumber();
 
+            PlayerNumberValidator.throwIllegalArgumentExceptionIfPlayerNumberNotValid(playerNumber);
         }
     }
 
