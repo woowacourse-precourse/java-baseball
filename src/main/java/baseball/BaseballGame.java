@@ -22,7 +22,7 @@ public class BaseballGame {
         this.gameResultScore = gameResultScore;
     }
 
-    public void start() {
+    public void play() {
         systemConsole.baseballStartMessage();
         conditionsBaseballGame();
     }
