@@ -12,6 +12,12 @@ public class Computer {
 
     private List<Integer> number = new ArrayList<>();
 
+    public List<Integer> getNumber() {
+        number.clear();
+        number = createNumber();
+        return number;
+    }
+    
     public List<Integer> createNumber() {
         while (number.size() < LENGTH_OF_NUMBER) {
             int pickNumberInRange = Randoms.pickNumberInRange(NUM_MIN_RANGE, NUM_MAX_RANGE);
