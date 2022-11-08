@@ -15,6 +15,7 @@ public class Application {
     public static void gameStart() {
     	List<Integer> computerPickNums = computerPick();
     	List<Integer> playerPickNums = playerPick();
+    	int strike = findStrike(computerPickNums, playerPickNums);
     	
     }
     
@@ -51,6 +52,15 @@ public class Application {
     	} catch(Exception e) {
     		e.printStackTrace();
     	}
+    }
+    public static int findStrike(List<Integer> computerPickNums, List<Integer> playerPickNums) {
+    	int strike=0;
+    	for(int i =0; i<3; i++) {
+    		if(computerPickNums.get(i)==playerPickNums.get(i)) {
+    			strike++;
+    		}
+    	}
+    	return strike;
     }
     
 }
