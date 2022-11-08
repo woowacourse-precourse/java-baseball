@@ -277,6 +277,13 @@ class ApplicationTest extends NsTest {
         BaseBallGame baseBallGame = new BaseBallGame();
         int ballCount = (int) ((Math.random() * 10000) % 10);
         int strikeCount = (int) ((Math.random() * 10000) % 10);
+        if (ballCount == 0) {
+            ballCount = 1;
+        }
+
+        if (strikeCount == 0) {
+            strikeCount = 1;
+        }
 
         //when
         baseBallGame.makeHintAndPrint(ballCount, strikeCount);
