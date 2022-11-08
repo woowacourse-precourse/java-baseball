@@ -1,7 +1,9 @@
 package baseball.util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ValidateInput {
 
@@ -9,7 +11,16 @@ public class ValidateInput {
         isValidateNumber(input);
         isValidateSize(input);
         List<Integer> inputList = inputToList(input);
+        isValidateDuplicate(inputList);
         return inputList;
+    }
+
+    public void isValidateDuplicate(List<Integer> inputList) {
+        Set<Integer> inputSet = new HashSet<>(inputList);
+        List<Integer> setToList = new ArrayList<>(inputSet);
+        if (setToList != inputList) {
+            throw new IllegalStateException("중복된 숫자가 포함되어 있습니다.");
+        }
     }
 
     public void isValidateSize(String input) {

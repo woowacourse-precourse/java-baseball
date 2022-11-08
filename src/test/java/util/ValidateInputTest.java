@@ -2,13 +2,23 @@ package util;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ValidateInputTest {
+
+    @Test
+    void validate_중복된_숫자_확인() {
+        List<Integer> inputList = new ArrayList<>();
+        inputList.add(1);
+        inputList.add(2);
+        inputList.add(3);
+
+        Set<Integer> inputSet = new HashSet<>(inputList);
+        List<Integer> result = new ArrayList<>(inputSet);
+        assertThat(result).isEqualTo(inputList);
+    }
 
     @Test
     void validate_세자리_수_인지_확인() {
