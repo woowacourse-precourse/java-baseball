@@ -7,6 +7,30 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class Application {
+    public int count_ball(ArrayList<Integer> my_num, ArrayList<Integer> com_num){
+        int ball;
+        ArrayList<Integer> mine = new ArrayList<>(com_num);
+        mine.retainAll(my_num);
+        ball = mine.size();
+        return ball;
+    }
+    public int count_strike(ArrayList<Integer> my_num, ArrayList<Integer> com_num){
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (my_num.get(i) == com_num.get(i)) strike++;
+        }return strike;
+    }
+    public void print_hint(ArrayList<Integer> my_num, ArrayList<Integer> com_num) {
+        int ball = count_ball(my_num, com_num);
+        int strike = count_strike(my_num, com_num);
+        if(ball>0){
+            System.out.printf("%d볼 ", ball-strike);}
+        if(strike>0){
+            System.out.printf("%d스트라이크", strike);
+        }
+        if(ball==0&&strike==0) System.out.print("낫싱");
+        System.out.println();
+    }
     public int compare_nums(ArrayList<Integer> my_num, ArrayList<Integer> com_num) {
         int status=3;
         boolean answer = true;
@@ -15,6 +39,10 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             status = Integer.parseInt(Console.readLine());
+        }
+        else if (!my_num.contains(com_num)) {
+            print_hint(my_num, com_num);
+            status=3;
         }
         return status;
     }
