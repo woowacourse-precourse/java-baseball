@@ -14,6 +14,14 @@ public class Application {
         return input;
     }
 
+    static List<Integer> separate(int input){
+        List<Integer> player = new ArrayList<>();
+        while(input>0){
+            player.add(input%10);
+            input = input/10;
+        }
+        return player;
+    }
 
     static List<Integer> random(){
         List<Integer> computer = new ArrayList<>();
@@ -27,10 +35,9 @@ public class Application {
     }
 
     static void game(){
-        List<Integer> computer = new ArrayList<>();
-        List<Integer> player = new ArrayList<>();
-        computer = random();
+        List<Integer> computer  = random();
         int inputInt = input();
+        List<Integer> player = separate(inputInt);
     }
 
     static boolean finish(){
