@@ -19,14 +19,16 @@ public class Referee {
 		if (ballNum > 0) {
 			gameResult = gameResult + ballNum + "볼 ";
 		}
+
 		if (strikeNum > 0) {
 			gameResult = gameResult + strikeNum + "스트라이크";
 		}
+		
 		gameResult = gameResult.trim();
 		return gameResult;
 	}
 
-	public boolean isNothing(List<Integer> computerBalls, List<Integer> playerBalls) {
+	private boolean isNothing(List<Integer> computerBalls, List<Integer> playerBalls) {
 		List<Integer> sameBalls = new LinkedList<>();
 		sameBalls.addAll(computerBalls);
 		sameBalls.retainAll(playerBalls);
@@ -37,7 +39,7 @@ public class Referee {
 		return false;
 	}
 
-	public int countStrikeNum(List<Integer> computerBalls, List<Integer> playerBalls) {
+	private int countStrikeNum(List<Integer> computerBalls, List<Integer> playerBalls) {
 		int strikeNum = 0;
 		for (int ballIdx = 0; ballIdx < computerBalls.size(); ballIdx++) {
 			int computerBall = computerBalls.get(ballIdx);
@@ -50,7 +52,7 @@ public class Referee {
 		return strikeNum;
 	}
 
-	public int countBallNum(List<Integer> computerBalls, List<Integer> playerBalls) {
+	private int countBallNum(List<Integer> computerBalls, List<Integer> playerBalls) {
 		int ballNum = 0;
 		for (int ballIdx = 0; ballIdx < computerBalls.size(); ballIdx++) {
 			int computerBall = computerBalls.get(ballIdx);
@@ -59,6 +61,7 @@ public class Referee {
 			if (!canBall(computerBalls, playerBall)) {
 				continue;
 			}
+			
 			if (computerBall != playerBall) {
 				ballNum += 1;
 			}
