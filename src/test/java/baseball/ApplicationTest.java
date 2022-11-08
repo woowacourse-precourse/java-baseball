@@ -87,6 +87,17 @@ class ApplicationTest extends NsTest {
         assertThat(Application.evaluateGuess(guess3, answer3)).isEqualTo(evaluation3);
     }
 
+//     Randoms.pickNumberInRange 에서 중복된 숫자를 줄 때 테스트
+    @Test
+    void makeAnswer_메서드_안에서_중복된_숫자가_뽑힐_시_다른_숫자가_나올_때까지_pickNumberInRange_메서드_호출() {
+        final MockedStatic<Randoms> mock = mockStatic(Randoms.class);
+        mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                .thenReturn(1, 1, 3, 3, 5);
+        List<Integer> answer = Application.makeAnswer();
+        assertThat(answer).isEqualTo(List.of(1, 3, 5));
+        mock.close();
+    }
+
     @Test
     void 잘못된_게임_진행_옵션_입력에_대한_예외_테스트() {
         assertThatThrownBy(() -> {
