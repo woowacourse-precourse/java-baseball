@@ -16,7 +16,8 @@ public class Inspector {
         return list;
     }
 
-    public String check(int correct_answer, int answer){ //사용자의 답을 체크하는 기능
+    public String check(int correct_answer, String response){ //사용자의 답을 체크하는 기능
+        int answer = Integer.parseInt(response);
         ArrayList<Integer> computer_list = new ArrayList<>();
         ArrayList<Integer> user_list = new ArrayList<>();
         ball = 0; strike = 0; result = "";
