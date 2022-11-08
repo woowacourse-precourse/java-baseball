@@ -40,29 +40,30 @@ public class GameController {
         ) throw new IllegalArgumentException();
     }
 
-    public void correctResult() {
+    public void inquiryStartOrTerminate() {
         AppView.outputLine("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        inquiryStartOrTerminate();
+        AppView.outputLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String myResponse = AppView.inputLine();
+        checkResponseNum(myResponse);
     }
 
-    public void inquiryStartOrTerminate() {
-        AppView.outputLine("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int myResponse = 0;
+    public void checkResponseNum(String myResponse) {
+        int num = 0;
         try {
-            myResponse = Integer.parseInt(AppView.inputLine());
+            num = Integer.parseInt(myResponse);
         } catch(NumberFormatException e) {
             throw new IllegalArgumentException();
         }
 
-        if(myResponse != 1 && myResponse != 2) {
+        if(num != 1 && num != 2) {
             throw new IllegalArgumentException();
         }
 
-        if(myResponse == 1) {
+        if(num == 1) {
             counterpart = new CounterpartModel();
         }
 
-        if(myResponse == 2) {
+        if(num == 2) {
             isAnswerAndTerminate = true;
         }
     }
@@ -75,7 +76,7 @@ public class GameController {
             aSetOfGame.printResult();
             if(aSetOfGame.distinguishResult()) {
                 // 정답이라면
-                correctResult();
+                inquiryStartOrTerminate();
             }
         } while(!isAnswerAndTerminate);
     }
