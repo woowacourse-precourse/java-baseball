@@ -1,9 +1,9 @@
 package baseball.Model;
 
-import baseball.Validator;
+import baseball.Utils.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.View.Constant.*;
+import static baseball.Utils.Constant.*;
 
 public class Player {
     Validator validator = new Validator();

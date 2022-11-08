@@ -3,7 +3,7 @@ package baseball.Model;
 import baseball.View.Message;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static baseball.View.Constant.*;
+import static baseball.Utils.Constant.*;
 
 public class Computer {
     Balls answer = new Balls();

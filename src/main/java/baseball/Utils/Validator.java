@@ -1,6 +1,6 @@
-package baseball;
+package baseball.Utils;
 
-import static baseball.View.Constant.*;
+import static baseball.Utils.Constant.*;
 
 public class Validator {
     public void isNumeric(String input) throws IllegalArgumentException {
