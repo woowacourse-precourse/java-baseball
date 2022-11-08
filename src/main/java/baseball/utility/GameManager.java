@@ -14,6 +14,7 @@ public class GameManager {
     private static final String TEXT_FOR_PROMPT_PLAYER_NUMBER_INPUT = "숫자를 입력해주세요 : ";
     private static final String TEXT_FOR_END_ROUND = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String THREE_STRIKE = "3스트라이크";
+    private static final String TEXT_FOR_ASK_NEW_ROUND = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private static GameManager gameManager;
 
@@ -78,5 +79,16 @@ public class GameManager {
         if (hint.equals(THREE_STRIKE)) {
             System.out.println(TEXT_FOR_END_ROUND);
         }
+    }
+
+    private boolean shouldGameContinue() {
+        System.out.println(TEXT_FOR_ASK_NEW_ROUND);
+        String input = readLine();
+
+        if (!input.equals("1") && !input.equals("2")) {
+            throw new IllegalArgumentException();
+        }
+
+        return input.equals("1");
     }
 }
