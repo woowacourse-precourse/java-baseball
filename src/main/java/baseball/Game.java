@@ -39,5 +39,9 @@ public class Game {
         if (restartOrEnd) {
             run();
         }
+
+        if (!restartOrEnd) {
+            Message.printGameOverMessage();
+        }
     }
 }
