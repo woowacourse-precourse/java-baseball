@@ -49,38 +49,29 @@ class BaseballController {
     private void playGame(Numbers answer, int count) {
         ioManager.printRequestInput();
 
-        try {
-            String inputString = ioManager.getInputNumbers();
-            Numbers inputNumbers = baseballGame.convertToNumbers(inputString);
+        String inputString = ioManager.getInputNumbers();
+        Numbers inputNumbers = baseballGame.convertToNumbers(inputString);
 
-            BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
-            ioManager.printHint(ballCount);
+        BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
+        ioManager.printHint(ballCount);
 
-            if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
-                gameStatus.quitProgram();
-                checkGoOrStop(ballCount);
-            }
-
-        } catch (IllegalArgumentException e) {
-            ioManager.printError();
+        if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
             gameStatus.quitProgram();
+            checkGoOrStop(ballCount);
         }
     }
 
     private void checkGoOrStop(BallCount ballCount) {
         ioManager.printAllStrike(COUNT_OF_NUMBERS);
 
-        try {
-            switch (OrderType.getMenuType(ioManager.getInputOrder())) {
-                case RESTART:
-                    gameStatus.restartProgram();
-                    run();
-                    break;
-                case STOP:
-                    ioManager.printExit();
-            }
-        } catch (IllegalArgumentException e) {
-            ioManager.printError();
+        switch (OrderType.getMenuType(ioManager.getInputOrder())) {
+            case RESTART:
+                gameStatus.restartProgram();
+                run();
+                break;
+            case STOP:
+                ioManager.printExit();
+                break;
         }
     }
 }
