@@ -23,6 +23,15 @@ public class Computer {
         this.answerNumber = answer;
     }
 
+    public boolean checkResult(List<Integer> guessNumber) {
+        int strikeNumber = countStrike(guessNumber);
+        int ballNumber = countBall(guessNumber);
+
+        System.out.println(resultMessage(strikeNumber, ballNumber));
+
+        return strikeNumber == 3;
+    }
+
     private int countStrike(List<Integer> guessNumber) {
         int strikeNumber = 0;
 
