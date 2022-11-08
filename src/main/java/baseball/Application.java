@@ -85,7 +85,6 @@ public class Application {
 
             }
 
-
             if (set.size() == 3){
                 return;
             }

@@ -115,6 +115,20 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    void 사용자_입력_유효성_테스트(){
+
+        String[] answer = {"999", "a23"};
+
+        for (String a: answer){
+            assertThatThrownBy(() -> Application.checkAnswer(a))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("3자리의 서로 다른 자연수를 입력하여 주세요.");
+        }
+
+
+    }
+
 
 
 
