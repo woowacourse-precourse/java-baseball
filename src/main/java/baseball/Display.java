@@ -44,15 +44,22 @@ public class Display {
         System.out.println(Display.NOTHING);
     }
 
-    public static void ball(int ball) {
-        System.out.println(ball + Display.BALL);
-    }
 
-    public static void strike(int strike) {
-        System.out.println(strike + Display.STRIKE);
-    }
+    public static void printHint(int ball, int strike) {
 
-    public static void ballAndStrike(int ball, int strike) {
-        System.out.println(ball + Display.BALL + " " + strike + Display.STRIKE);
+        String hintMessage = "";
+
+        if (ball == 0 && strike != 0) {
+            hintMessage = strike + Display.STRIKE;
+        } else if (strike == 0 && ball != 0) {
+            hintMessage = ball + Display.BALL;
+        } else if (ball != 0 && strike != 0) {
+            hintMessage = ball + Display.BALL + " " + strike + Display.STRIKE;
+        } else {
+            hintMessage = Display.NOTHING;
+        }
+
+        System.out.println(hintMessage);
+
     }
 }
