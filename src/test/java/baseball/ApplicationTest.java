@@ -128,5 +128,25 @@ class ApplicationTest extends NsTest {
                             Collections.frequency(generatedRandomNumber, generatedRandomNumber.get(2)),1)
             );
         }
+
+        @Test
+        void 베이스볼_결과_계산() {
+            List<Integer> randomNumber = List.of(1,2,3);
+
+            assertAll(
+                    ()-> assertEquals(
+                           Application.calculateBaseBallResult(randomNumber,List.of(1,2,3)), List.of(3,0)),
+                    ()-> assertEquals(
+                            Application.calculateBaseBallResult(randomNumber,List.of(1,4,3)), List.of(2,0)),
+                    ()-> assertEquals(
+                            Application.calculateBaseBallResult(randomNumber,List.of(5,6,3)), List.of(1,0)),
+                    ()-> assertEquals(
+                            Application.calculateBaseBallResult(randomNumber,List.of(5,2,1)), List.of(1,1)),
+                    ()-> assertEquals(
+                            Application.calculateBaseBallResult(randomNumber,List.of(2,1,3)), List.of(1,2)),
+                    ()-> assertEquals(
+                            Application.calculateBaseBallResult(randomNumber,List.of(7,8,9)), List.of(0,0))
+            );
+        }
     }
 }

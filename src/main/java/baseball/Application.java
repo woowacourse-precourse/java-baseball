@@ -58,4 +58,21 @@ public class Application {
         }
         return generatedRandomNumber;
     }
+
+    public static List<Integer> calculateBaseBallResult(List<Integer> randomNumber, List<Integer> input) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for(int i = 0; i < randomNumber.size(); i++){
+            int currentRandomNumberDigit = randomNumber.get(i);
+            int currentInputNumberDigit = input.get(i);
+
+            if(currentRandomNumberDigit == currentInputNumberDigit)
+                strikeCount+=1;
+            else if(randomNumber.contains(currentInputNumberDigit))
+                ballCount+=1;
+        }
+
+        return List.of(strikeCount, ballCount);
+    }
 }
