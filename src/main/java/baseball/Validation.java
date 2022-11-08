@@ -1,8 +1,10 @@
 package baseball;
 
+import java.util.HashSet;
+
 public class Validation {
     public static void validateBaseballInput(String input) {
-        if ((input.length() != 3) || hasNonDigit(input) || hasSameNumber(input)) {
+        if (hasSameWord(input) || hasNonDigit(input) || hasSameWord(input)) {
             throw new IllegalArgumentException("입력오류");
         }
     }
@@ -20,12 +22,18 @@ public class Validation {
         return false;
     }
 
-    public static boolean hasSameNumber(String input) {
-        char c1 = input.charAt(0);
-        char c2 = input.charAt(1);
-        char c3 = input.charAt(2);
+    public static boolean hasSameWord(String input) {
+        HashSet<Character> inputToHashSet = new HashSet<>();
 
-        return (c1 == c2) || (c1 == c3) || (c2 == c3);
+        stringToHashSet(input, inputToHashSet);
+
+        return input.length() != inputToHashSet.size();
+    }
+
+    public static void stringToHashSet(String input, HashSet<Character> inputToHashSet) {
+        for (int i = 0; i < input.length(); i++) {
+            inputToHashSet.add(input.charAt(i));
+        }
     }
 
     public static void validateResetInput(String input) {

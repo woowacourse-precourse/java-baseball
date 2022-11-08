@@ -48,14 +48,14 @@ class ValidationTest {
     }
 
     @Test
-    void hasSameNumber_모두_다른수인지_판별() {
-        String str1 = "123";
-        String str2 = "242";
+    void hasSameWord_모두_다른글자인지_판별() {
+        String str1 = "1234";
+        String str2 = "2421";
         String str3 = "999";
 
-        assertThat(Validation.hasSameNumber(str1)).isEqualTo(false);
-        assertThat(Validation.hasSameNumber(str2)).isEqualTo(true);
-        assertThat(Validation.hasSameNumber(str3)).isEqualTo(true);
+        assertThat(Validation.hasSameWord(str1)).isEqualTo(false);
+        assertThat(Validation.hasSameWord(str2)).isEqualTo(true);
+        assertThat(Validation.hasSameWord(str3)).isEqualTo(true);
     }
 
     @Test
