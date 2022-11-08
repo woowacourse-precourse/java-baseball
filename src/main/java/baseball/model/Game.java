@@ -17,6 +17,7 @@ public class Game {
     }
 
     public void start() {
+        Printer.printStart();
         computer.initAnswer();
         computer.makeAnswer();
         do {
@@ -26,6 +27,7 @@ public class Game {
         } while (!hintmaker.isAnswer(user.getUserData(), computer.getAnswer()));
 
         Printer.printEnd();
+        Printer.askRestart();
         String choice = Session.getRestartCondition();
         if (RESTART.equals(choice)) {
             start();
