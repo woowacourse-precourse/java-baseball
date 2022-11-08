@@ -93,3 +93,19 @@
 
 ### 요구사항
 - 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션 종료
+
+
+## getBallCount(String userNumber, String randomNumber)
+
+### 기능
+- 볼의 개수 리턴
+### 요구사항
+- Return Int/ Argument String(userNumber), String(randomNumber)
+
+## getStrikeCount(String userNumber, String randomNumber)
+
+### 기능
+- 스트라이크 개수 리턴
+
+### 요구사항
+- Return Int/ Argument String(userNumber), String(randomNumber)

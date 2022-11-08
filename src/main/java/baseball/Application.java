@@ -100,6 +100,6 @@ public class Application {
             if(tmp<1 && tmp>9) return false; // 1~9 범위 안의 수가 아닌경우
         }
         if(parsing.size()>3) return false; // 세 자리 수가 아닌 경우
-        return true;
+       return true;
     }
 }
