@@ -11,8 +11,8 @@ public class Application {
 		// TODO: 프로그램 구현
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		try {
-			gameStart();			
-		}catch(IllegalArgumentException e) {
+			gameStart();
+		} catch (IllegalArgumentException e) {
 		}
 	}
 
@@ -90,9 +90,14 @@ public class Application {
 	public static void scoreBoard(int strike, int ball) {
 		if (strike == 0 && ball == 0) {
 			System.out.println("낫싱");
-		} else {
+		}else if (strike == 0){
+			System.out.println(ball + "볼");
+		}else if (ball == 0) {
+			System.out.println(strike + "스트라이크");
+		}else{
 			System.out.println(ball + "볼" + " " + strike + "스트라이크");
 		}
+
 	}
 
 	public static void winLose(int strike, List<Integer> computerPickNums) {
