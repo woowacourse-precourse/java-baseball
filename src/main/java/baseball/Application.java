@@ -10,8 +10,9 @@ import java.util.Set;
 import java.util.stream.Stream;
 import java.util.HashSet;
 import java.util.Scanner;
+import static baseball.UserEnter.userEnterNum;
 
-public class Application {
+public class Application{
     public static void main(String[] args) {
 //        기능1. 컴퓨터 숫자선정
         int randomNumber = 0;
@@ -19,12 +20,6 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
-            int strikeNball = 0;
-            int strike = 0;
-            int ball = 0;
-            int userNumber = 0;
-            int attempt = 0;
-
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
                 randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -33,47 +28,36 @@ public class Application {
 //                    System.out.print(randomNumber); //컴퓨터 입력값 출력
                 }
             }
+            System.out.println(computer);  //컴퓨터 입력값 리스트 출력
 
     //      기능2. 참가자 입력
+            int strike = 0;
+            List <Integer> user = new ArrayList<>();
+            Set<Integer> userSet = new HashSet<>(user);;
+            int strikeNball = 0;
 
+            int ball = 0;
+            int userNumber = 0;
+            int attempt = 0;
             do {
-                strikeNball = 0;
-                strike = 0;
-                ball = 0;
-                userNumber = 0;
-                attempt = attempt+1;
-                System.out.printf("[%d차시도] 숫자를 입력해주세요: ", attempt);
-
-                userNumber = Integer.parseInt(Console.readLine());
-
-                int[] digits = Stream.of(String.valueOf(userNumber).split("")).mapToInt(Integer::parseInt).toArray();
-
-                List<Integer> user = new ArrayList<>();
-
-                for (int order = 0; order < digits.length; order++) {
-                    user.add(digits[order]);
-                }
-                Set<Integer> userSet = new HashSet<>(user);
-
-//                System.out.println("computer: " + computer);  //컴퓨터 출력물 분석용
-//                System.out.println("user: " + user);  // 유저 입력값 분석용
-//                System.out.println(userNumber); // 유저 입력값 확인용
 
 
-                if (userSet.size() != user.size()) {
-                    throw new IllegalArgumentException("중복되는 숫자를 입력할 수 없습니다.");
-                }
-                if (user.size() != 3) {
-                    throw new IllegalArgumentException("숫자 세개를 입력해주세요.");
-                }
-                if (user.contains(0)) {
-                    throw new IllegalArgumentException("1~9 사이의 숫자를 입력하셔야 합니다.");
+                try {
+                    userEnterNum();
+                } catch (UserEnter.RedundantException re) {
+                    System.err.println("에러메시지 : " + re.getMessage());
+                    re.printStackTrace();
+                } catch (UserEnter.SizeException se) {
+                    System.err.println("에러메시지 : " + se.getMessage());
+                    se.printStackTrace();
+                } catch (UserEnter.NaturalException ne) {
+                    System.err.println("에러메시지 : " + ne.getMessage());
+                    ne.printStackTrace();
                 }
 
     //      기능3. 결과값 비교
                 int i = 0;
                 int j = 0;
-
 
                 for (i = 0; i < user.toArray().length; i++) {
 
