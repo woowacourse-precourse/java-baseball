@@ -11,6 +11,7 @@ public class GamePlayer {
 
     public static void playGame() {
         Game game = new Game();
+
         try {
             while (true) {
                 List<Integer> player_number = getPlayerInput();

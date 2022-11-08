@@ -23,6 +23,7 @@ public class Game {
             if (number.contains(randomNumber)) continue;
             number.add(randomNumber);
         }
+        System.out.println(number);
         return number;
     }
 
