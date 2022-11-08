@@ -43,17 +43,19 @@ public class PlayerNumberValidator {
         return index == GameConstant.VALID_NUMBER_LENGTH.getValue();
     }
 
-    private static boolean isPlayerNumberLengthValid(String playerNumber) {
+    public static boolean isPlayerNumberLengthValid(String playerNumber) {
+        assert (playerNumber != null);
+
         return playerNumber.length() == GameConstant.VALID_NUMBER_LENGTH.getValue();
     }
 
-    private static boolean isNumericLiteralBetweenOneAndNine(char c) {
+    public static boolean isNumericLiteralBetweenOneAndNine(char c) {
         return c >= '1' && c <= '9';
     }
 
-    private static boolean isDuplicateNumericLiteral(char numericLiteral, boolean[] checkArray) {
+    public static boolean isDuplicateNumericLiteral(char numericLiteral, boolean[] checkArray) {
         assert (isNumericLiteralBetweenOneAndNine(numericLiteral));
-        assert (checkArray != null);
+        assert (checkArray != null && checkArray.length == 9);
 
         return checkArray[numericLiteral - '1'];
     }
