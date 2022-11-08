@@ -1,10 +1,9 @@
 package baseball.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Judge {
-    public static List<Integer> judge(List<Integer> quizNumber, List<Integer> userNumber) {
+    public static Judgement judge(List<Integer> quizNumber, List<Integer> userNumber) {
         int ball = 0;
         int strike = 0;
         for (int indexInUser = 0; indexInUser < 3; indexInUser++) {
@@ -15,6 +14,6 @@ public class Judge {
                 ball++;
             }
         }
-        return List.of(ball, strike);
+        return new Judgement(ball, strike);
     }
 }
