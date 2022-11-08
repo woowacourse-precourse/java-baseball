@@ -35,7 +35,7 @@ class ValidationTest {
         //given
         List<Integer> number = List.of(1, 0, 0);
         //when
-        Throwable throwable = catchThrowable(() -> validation.validateBetweenOneAndNine(number));
+        Throwable throwable = catchThrowable(() -> validation.validateNumberInRange(number));
         //then
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
     }
