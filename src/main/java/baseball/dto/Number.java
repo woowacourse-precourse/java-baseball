@@ -3,6 +3,7 @@ package baseball.dto;
 import baseball.dao.ComputerNumber;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Number {
     private static Number number;
@@ -34,6 +35,12 @@ public class Number {
 
     public List<ComputerNumber> getAll() {
         return database;
+    }
+
+    public List<ComputerNumber> findByNumber(int number) {
+        return database.stream()
+                .filter(innerComputerNumber -> innerComputerNumber.getNumber() == number)
+                .collect(Collectors.toList());
     }
 
     public ComputerNumber first() {
