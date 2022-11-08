@@ -76,18 +76,12 @@ public class BaseballGame {
         return process;
     }
 
-    public int run() {
+    public int run() throws IllegalArgumentException {
         List<Integer> computer = this.getRandomNumbers();
 
         User user = new User();
         while (true) {
-            try {
-                user.setProposal();
-            } catch (IllegalArgumentException e) {
-                System.out.print(e.getMessage());
-                System.out.println(" 게임 종료");
-                return 2;
-            }
+            user.setProposal();
             List<Integer> proposal = user.getProposal();
 
             List<Integer> result = this.checkNumber(computer, proposal);
@@ -97,13 +91,7 @@ public class BaseballGame {
             }
         }
 
-        try {
-            int process = getProcess();
-            return process;
-        } catch (IllegalArgumentException e) {
-            System.out.print(e.getMessage());
-            System.out.println(" 게임 종료");
-            return 2;
-        }
+        int process = getProcess();
+        return process;
     }
 }
