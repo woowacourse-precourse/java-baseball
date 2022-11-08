@@ -64,4 +64,8 @@ public class Result {
     private boolean isNothing() {
         return strike == 0 && ball == 0;
     }
+
+    public boolean isAllStrike() {
+        return strike == BallCollection.BALL_COUNT;
+    }
 }
