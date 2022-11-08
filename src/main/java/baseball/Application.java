@@ -146,7 +146,11 @@ class Game {
             return;
         }
 
-
+        int newGameAnswer = Game.checkNewGameStart();
+        if (newGameAnswer == Game.NEW) {
+            rightAnswer = new Game();
+            Game.init(rightAnswer);
+        }
     }
 
     private static Game getAnswer() {//2.게임 플레이어의 숫자 입력
@@ -154,6 +158,31 @@ class Game {
         String userInput = readLine();
         Game.checkInputValue(userInput);
         return new Game(userInput);
+    }
+
+    //6.게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
+    private static int checkNewGameStart() {
+        System.out.println(Game.NUMBER_COUNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 " + Game.NEW + ", 종료하려면 " + Game.QUIT + "를 입력하세요.");
+
+        String newGameAnswer = readLine();
+        return Game.getNewGameAnswerNumber(newGameAnswer);
+    }
+
+    //7.사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생시킨 후 애플리케이션 종료
+    private static int getNewGameAnswerNumber(String str) {
+        int intValue;
+        try {
+            intValue = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (intValue != 1 && intValue != 2) {
+            throw new IllegalArgumentException();
+        }
+
+        return intValue;
     }
 
     //사용자가 잘못된 값을 입력할 경우 : 길이, 숫자인지, 같은 숫자가 있는지 확인
