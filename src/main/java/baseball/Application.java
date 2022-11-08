@@ -17,6 +17,31 @@ public class Application {
         return computer;
     }
     // 2. input들어온 수가 조건에 맞는가? (input String, output boolean)
+    public static boolean isValidNumber(String inputNumber){
+        List<String> tempList = Arrays.asList(inputNumber.split(""));
+        Set<String> tempSet = new HashSet<>(tempList);
+
+        try{
+            Exception e = new IllegalArgumentException();
+            Integer.parseInt(inputNumber);
+            if (inputNumber.contains("0")) {
+                throw e;
+            }
+            else if (inputNumber.length() != 3) {
+                throw e;
+            }
+            else if (tempSet.size() != inputNumber.length()){
+                throw e;
+            }
+            else {
+                return true;
+            }
+        }
+        catch (Exception e){
+            throw new IllegalArgumentException(e);
+        }
+    }
+
     // 3. input들어온 수를 List로 (input int, output List<Integer>)
     // 4-1. 스트라이크의 개수 (input List<Integer> usernumber, List<Integer> computernumber, output int)
     // 4-2. 볼의 개수 (input List<Integer> usernumber, List<Integer> computernumber, output int)
