@@ -8,7 +8,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 	public static void main(String[] args) {
-		// TODO: 프로그램 구현
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		try {
 			gameStart();
@@ -65,10 +64,14 @@ public class Application {
 
 	public static int findStrike(List<Integer> computerPickNums, List<Integer> playerPickNums) {
 		int strike = 0;
-		for (int i = 0; i < 3; i++) {
-			if (computerPickNums.get(i) == playerPickNums.get(i)) {
-				strike++;
-			}
+		if (computerPickNums.get(0) == playerPickNums.get(0)) {
+			strike++;
+		}
+		if (computerPickNums.get(1) == playerPickNums.get(1)) {
+			strike++;
+		}
+		if (computerPickNums.get(2) == playerPickNums.get(2)) {
+			strike++;
 		}
 		return strike;
 	}
@@ -91,21 +94,20 @@ public class Application {
 		if (strike == 0 && ball == 0) {
 			System.out.println("낫싱");
 			gamePlaying(computerPickNums);
-		}else if (strike == 0){
+		} else if (strike == 0) {
 			System.out.println(ball + "볼");
 			gamePlaying(computerPickNums);
-		}else if (ball == 0 && strike!=3) {
+		} else if (ball == 0 && strike != 3) {
 			System.out.println(strike + "스트라이크");
 			gamePlaying(computerPickNums);
-		}else if (strike ==3) {
+		} else if (strike == 3) {
 			System.out.println("3스트라이크");
 			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 			gameReloader();
-		}else{
+		} else {
 			System.out.println(ball + "볼" + " " + strike + "스트라이크");
 			gamePlaying(computerPickNums);
 		}
-
 	}
 
 	public static void gameReloader() {
