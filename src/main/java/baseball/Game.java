@@ -1,8 +1,9 @@
 package baseball;
 
+import baseball.ScoreCalculator.BallOrStrike;
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,11 +23,11 @@ public class Game {
                 List<Integer> numInput = new ArrayList<>();
                 getNumInput(numInput, str);
 
-                List<Integer> score = ScoreCalculator.calScore(numComputer, numInput);
+                EnumMap<BallOrStrike, Integer> score = ScoreCalculator.calScore(numComputer, numInput);
 
                 printScore(score);
 
-                strikeCount = score.get(1);
+                strikeCount = score.get(BallOrStrike.STRIKE);
             } while (!gameEnd(strikeCount));
         } while (restart());
     }
@@ -66,9 +67,9 @@ public class Game {
         return true;
     }
 
-    private void printScore(List<Integer> score) {
-        int ballCount = score.get(0);
-        int strikeCount = score.get(1);
+    private void printScore(EnumMap<BallOrStrike, Integer> score) {
+        int ballCount = score.get(BallOrStrike.BALL);
+        int strikeCount = score.get(BallOrStrike.STRIKE);
 
         if ((ballCount == 0) && (strikeCount == 0)) {
             System.out.println("낫싱");
@@ -84,7 +85,6 @@ public class Game {
         }
 
         System.out.println();
-        return;
     }
 
     private boolean gameEnd(int strikeCount) {

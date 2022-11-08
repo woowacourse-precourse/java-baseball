@@ -1,15 +1,20 @@
 package baseball;
 
-import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 
 public class ScoreCalculator {
 
-    public static List<Integer> calScore(List<Integer> numComputer, List<Integer> input) {
-        ArrayList<Integer> result = new ArrayList<>();
+    public enum BallOrStrike {
+        BALL,
+        STRIKE
+    }
 
-        result.add(calBallCount(numComputer, input));
-        result.add(calStrikeCount(numComputer, input));
+    public static EnumMap<BallOrStrike, Integer> calScore(List<Integer> numComputer, List<Integer> input) {
+        EnumMap<BallOrStrike, Integer> result = new EnumMap<>(BallOrStrike.class);
+
+        result.put(BallOrStrike.BALL, calBallCount(numComputer, input));
+        result.put(BallOrStrike.STRIKE, calStrikeCount(numComputer, input));
 
         return result;
     }
