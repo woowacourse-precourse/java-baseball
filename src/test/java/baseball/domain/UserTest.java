@@ -48,4 +48,28 @@ class UserTest {
         assertThatThrownBy(() -> user.generateNumbers("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 빈_문자열() {
+        assertThatThrownBy(() -> user.generateNumbers(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 정수가_아닌_문자가_포함된_문자열() {
+        assertThatThrownBy(() -> user.generateNumbers("1b3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 문자열에_0_포함() {
+        assertThatThrownBy(() -> user.generateNumbers("012"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 재시작_입력() {
+        assertThatThrownBy(() -> user.generateRestart("3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
