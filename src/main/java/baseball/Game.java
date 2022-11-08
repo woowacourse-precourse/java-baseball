@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
@@ -45,5 +46,20 @@ public class Game {
             throw new IllegalArgumentException();
         if (isRedundant(input))
             throw new IllegalArgumentException();
+    }
+
+    public static List<Integer> UserInput() {
+        System.out.print(INPUT_NUMBER_MESSAGE);
+        String temp = Console.readLine();
+        List<Integer> input = splitDigits(temp);
+        isValid(input);
+        return input;
+    }
+
+    public static List<Integer> splitDigits(final String input) {
+        List<Integer> output = new ArrayList<>();
+        for (Character c : input.toCharArray())
+            output.add(Character.getNumericValue(c));
+        return output;
     }
 }
