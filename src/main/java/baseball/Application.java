@@ -14,16 +14,7 @@ public class Application {
         View view = new View();
         Game game = new Game();
         Controller controller = new Controller(computer, user, game, view);
-
-        while (controller.getGameState() == Game.GameState.RUNNING) {
-            String userInput = Console.readLine();
-            controller.setUserNumeralList(controller.toList(userInput));
-            controller.judge();
-            if (controller.getGameState() == Game.GameState.OVER) {
-
-            }
-        }
-
+        controller.runGame();
 
     }
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Game {
     public static final int ANSWER_LENGTH = 3;
+    public static final String REPLAY = "1";
+    public static final String OVER = "2";
     private GameState gameState;
     private int ballCount;
     private int strikeCount;
