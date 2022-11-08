@@ -14,9 +14,12 @@ public class BaseballController {
     private List<String> inputList = new ArrayList<>();
     public Baseball baseball = new Baseball(randomList, inputList);
     private static final int RESTART=1;
+    private static final int STRIKE_MAX=3;
+    private static final int STRIKE_MIN=0;
+    private static final int BALL_MIN=0;
 
 
-    public void startBaseballGame() {
+    public void runBaseballGame() {
 
         baseball.initBaseballGame();
         printStartMessage();
@@ -25,7 +28,7 @@ public class BaseballController {
         baseball.setComputerNumber(randomList);
         System.out.println(randomList);
 
-        while(baseball.getStrike()!=3) {
+        while(baseball.getStrike()!=STRIKE_MAX) {
             baseball.initBaseballGame();
             inputList = readInputNumber();
             baseball.setInputNumber(inputList);
@@ -85,10 +88,10 @@ public class BaseballController {
 
 
     public void result(int strike, int ball) {
-        if (strike==3) {
+        if (strike==STRIKE_MAX) {
             System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             printEndMessage();
-        } else if (strike==0 && ball==0) {
+        } else if (strike==STRIKE_MIN && ball==BALL_MIN) {
             System.out.println("낫싱");
         } else {
             System.out.println(ball+"볼 "+strike+"스트라이크");
@@ -113,7 +116,7 @@ public class BaseballController {
         baseballService.isValidNumber(number);
 
         if (number==RESTART) {
-            startBaseballGame();
+            runBaseballGame();
         }
     }
 
