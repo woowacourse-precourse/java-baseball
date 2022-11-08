@@ -36,15 +36,14 @@ public class User {
     public boolean inputOption() {
         System.out.println(GameMessage.INPUT_OPTION);
         String userInput = Console.readLine();
-        boolean gameStatus = Option.RESTART.getStatus();
 
         OptionValidation.validate(userInput);
         int option = Integer.parseInt(userInput);
 
         if (option == Option.END.getOption()) {
-            gameStatus = false;
+            return Option.END.getStatus();
         }
 
-        return gameStatus;
+        return Option.RESTART.getStatus();
     }
 }
