@@ -8,8 +8,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,8 +38,8 @@ class ApplicationTest extends NsTest {
         int inputNumber = 123;
         //when
         //then
-        assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatCode(() -> Application.checkInputCondition(inputNumber))
+                .doesNotThrowAnyException();
     }
 
     @Test
