@@ -8,7 +8,7 @@ public class OutputMessage {
     public static void numberInputMessage(){
         System.out.println(REQUEST_NUMBER_INPUT_MSG);
     }
-    public static void retryGameMessage(){
+    public static void printRetryGameMessage(){
         System.out.println(REGAME_SUGGESTION_MSG);
     }
     public static void printGameStartMessage() {

@@ -1,9 +1,16 @@
 package baseball;
 
-import static baseball.BaseballGame.*;
+import static baseball.message.OutputMessage.*;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        run();
+        GameManager gameManager = new GameManager();
+
+        printGameStartMessage(); //
+        do {
+            gameManager.playGame();
+            printRetryGameMessage();
+        } while (gameManager.retryGame());
     }
 }
