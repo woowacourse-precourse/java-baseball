@@ -17,5 +17,18 @@ public class Computer {
             computerNumbers.add(number);
         }
     }
-    // countBallAndStrike(input): 정답과 input을 비교하여 볼, 스트라이크 개수 카운트
+
+    public void countBallAndStrike(List<Integer> playerNumbers, Score score) {
+        for (int i=0; i<computerNumbers.size(); i++) {
+            int playerNumber = playerNumbers.get(i);
+
+            if(playerNumber == computerNumbers.get(i)) {
+                score.increaseStrike(1);
+                continue;
+            }
+            if(computerNumbers.contains(playerNumber)) {
+                score.increaseBall(1);
+            }
+        }
+    }
 }
