@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -238,6 +239,15 @@ class ApplicationTest extends NsTest {
 
         assertThat(true).isEqualTo(random_input.get(0) != random_input.get(1) && random_input.get(1) != random_input.get(2)
                 && random_input.get(2) != random_input.get(0));
+    }
+
+    @Test
+    void startGameTest() {
+
+        showGameStartTest();
+        playGameTest();
+        replayGameTest();
+
     }
 
     @Override
