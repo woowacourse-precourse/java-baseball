@@ -1,7 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.util.HashMap;
+import java.io.ByteArrayInputStream;
 import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 
@@ -59,6 +59,25 @@ class ApplicationTest extends NsTest {
         assertThat(Application.getMatchOutputStatement("123", "123")).isEqualTo("3스트라이크");
         assertThat(Application.getMatchOutputStatement("123", "465")).isEqualTo("낫싱");
     }
+
+
+    @Test
+    void 기능5_게임_한싸이클_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    runBaseballTest("246", "597", "539", "135");
+                    assertThat(output()).contains("낫싱", "1볼", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+
+
+    private void runBaseballTest(final String... args) {
+        System.setIn(new ByteArrayInputStream(String.join("\n", args).getBytes()));
+        Application.runBaseball();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
