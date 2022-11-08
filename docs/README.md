@@ -45,7 +45,7 @@
 - 결과적으로, 반복하는 게임 Application 클래스를 작성한다.
 - 게임 인터페이스는, 아래처럼 보이게 될 것이다.
   - ```java
-    public interface GameInterface(String gameName) {
+    interface GameInterface {
         // 게임을 시작한다. 시작 메시지를 띄워 준다.
         abstract void start();
     
@@ -54,8 +54,7 @@
     
         // 사용자에게 게임을 다시 시작할 것인지 묻는다.
         default boolean askRestart(){
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            char input = readLine();
+            // TODO : default method 구현하기
         }
     }
     
