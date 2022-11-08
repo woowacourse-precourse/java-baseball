@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -110,11 +111,16 @@ public class Application {
             return false;
         }
     }
+
+    public static void TestValidation(String s){
+        if (s.length() !=3){
+            throw new IllegalArgumentException("자리수를 맞춰 주세요");
+        }
+    }
     public static int EnterANumber() throws IllegalArgumentException{
-        int InputNumber;
-        do{
-            InputNumber = Integer.parseInt(readLine());
-        } while(InputNumber<100||InputNumber>999);
+        String UserNumber = Console.readLine();
+        TestValidation(UserNumber);
+        int InputNumber = Integer.parseInt(UserNumber);
         return InputNumber;
     }
     public static void GameLoop(){
