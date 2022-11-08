@@ -31,7 +31,7 @@ class Hint {
         strikeCnt = 0;
         ballCnt = 0;
 
-        for (int i = 0; i < Game.ANSWER_SIZE; i++) {
+        for (int i = 0; i < GameOption.ANSWER_SIZE.option(); i++) {
             if (answerList.get(i).equals(guess.get(i))) {
                 strikeCnt++;
                 continue;

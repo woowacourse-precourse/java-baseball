@@ -9,19 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static baseball.GameMessage.*;
+import static baseball.GameOption.*;
 
 class Game {
-    public static final int ANSWER_SIZE = 3;
-    public static final int MIN_ANSWER_NUMBER = 1;
-    public static final int MAX_ANSWER_NUMBER = 9;
-    public static final int REPLAY = 1;
-    public static final int EXIT = 2;
-
     private List<Integer> answerList;
 
     public void start() {
         while (true) {
-            if (play() == EXIT) {
+            if (play() == EXIT.option()) {
                 break;
             }
         }
@@ -50,16 +45,16 @@ class Game {
 
     private int getRegameOption() {
         int input = Integer.parseInt(Console.readLine());
-        if (input != REPLAY && input != EXIT)
+        if (input != REPLAY.option() && input != EXIT.option())
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_OPTION.message());
         return input;
     }
 
     private List<Integer> initAnswerList() {
         List<Integer> answerList = new ArrayList<>();
-        while (answerList.size() < ANSWER_SIZE) {
-            int randomNum = Randoms.pickNumberInRange(MIN_ANSWER_NUMBER,
-                    MAX_ANSWER_NUMBER);
+        while (answerList.size() < ANSWER_SIZE.option()) {
+            int randomNum = Randoms.pickNumberInRange(MIN_ANSWER_NUMBER.option(),
+                    MAX_ANSWER_NUMBER.option());
             if (!answerList.contains(randomNum)) {
                 answerList.add(randomNum);
             }
@@ -79,11 +74,11 @@ class Game {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
         }
 
-        if(guess.size() != ANSWER_SIZE)
+        if(guess.size() != ANSWER_SIZE.option())
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_SIZE.message());
 
         for (int g : guess) {
-            if (!(MIN_ANSWER_NUMBER <= g && g <= MAX_ANSWER_NUMBER))
+            if (!(MIN_ANSWER_NUMBER.option() <= g && g <= MAX_ANSWER_NUMBER.option()))
                 throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
         }
 
