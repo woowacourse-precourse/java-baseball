@@ -1,6 +1,12 @@
 package baseball.controller;
 
+import baseball.model.NumberValidator;
+import baseball.model.ValidateNumberLength;
+
 import java.util.List;
+import java.util.stream.IntStream;
+
+import static baseball.model.ValidateNumberLength.NUMBER_LENGTH;
 
 public class BaseballGame {
     public final int STRIKE_COUNT;
@@ -16,6 +22,10 @@ public class BaseballGame {
     }
 
     private int setBallCount(List<Integer> userNum, List<Integer> computerNum) {
-        return 0;
+        return (int) IntStream.iterate(0, i -> i + 1)
+                .limit(NUMBER_LENGTH.getNumber())
+                .filter(i -> !userNum.get(i).equals(computerNum.get(i)))
+                .filter(i -> NumberValidator.isNumberExistInList(userNum.get(i), computerNum))
+                .count();
     }
 }
