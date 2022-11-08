@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class GamePlayTest {
     final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -69,7 +68,15 @@ public class GamePlayTest {
     }
     @Test
     void 결과_값이_올_스트라이크(){
+        // given
+        List<Integer> computerNumber = new ArrayList<>(Arrays.asList(3,5,7));
+        List<Integer> userNumber = new ArrayList<>(Arrays.asList(3,5,7));
 
+        // when
+        boolean result = gamePlay.getResult(userNumber,computerNumber);
+
+        // then
+        Assertions.assertEquals(false,result);
     }
     @Test
     void 결과_값이_낫싱(){
