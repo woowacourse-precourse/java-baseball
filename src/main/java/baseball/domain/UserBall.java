@@ -5,6 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 
 public class UserBall {
+    private static final int USER_NUM_LENGTH = 3;
+    private static final int ONE = 49;
+    private static final int NINE = 57;
+    private static final String ERROR_MESSAGE = "올바른 값을 입력하세요";
+
+
+
     private ArrayList<String> inputNumber;
     public ArrayList<Integer> userNumber;
 
@@ -12,6 +19,9 @@ public class UserBall {
     public void generateUserBall(String inputString) throws IllegalArgumentException{
         inputNumber = new ArrayList<String>();
         userNumber = new ArrayList<Integer>();
+
+        makeUserNumList(inputString);
+        validationUserNum(inputNumber);
     }
 
     private void makeUserNumList(String inputString){
@@ -19,4 +29,33 @@ public class UserBall {
             inputNumber.add(String.valueOf(inputString.charAt(i)));
         }
     }
+
+    private void validationUserNum(List<String> userNumberList) throws IllegalArgumentException{
+        checkLength(userNumberList);
+        checkOneBetweenNine(userNumberList);
+        checkOverlap(userNumberList);
+    }
+
+    private void checkLength(List<String> userNumberList) throws IllegalArgumentException{
+        if(userNumberList.size() != USER_NUM_LENGTH)
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+    }
+
+    private void checkOneBetweenNine(List<String> userNumberList) throws IllegalArgumentException{
+        for (int i = 0; i < userNumberList.size(); i++){
+            int number = userNumberList.get(i).charAt(0);
+            if (number < ONE || number > NINE){
+                throw new IllegalArgumentException(ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void checkOverlap(List<String> userNumberList) throws IllegalArgumentException{
+        HashSet<String> hashSet = new HashSet<String>(userNumberList);
+
+        if(userNumberList.size() != hashSet.size()){
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+    
 }
