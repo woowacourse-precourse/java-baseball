@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.*;
@@ -63,11 +66,11 @@ class ApplicationTest extends NsTest {
 
     @Test
     void getStrikeAndBallTest() {
-        String[] computer = {"987", "123"};
-        String[] user = {"987", "321"};
+        List<String> computer = Arrays.asList("987", "123");
+        List<String> user = Arrays.asList("987", "321");
         int[][] results = {{3, 0}, {1, 2}};
         for (int iter = 0; iter < 2; iter++) {
-            assertThat(getStrikeAndBall(computer[iter], user[iter]).equals(results[iter]));
+            assertThat(getStrikeAndBall(computer.get(iter), user.get(iter)).equals(results[iter]));
         }
     }
 }
