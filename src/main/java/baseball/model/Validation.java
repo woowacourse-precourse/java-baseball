@@ -36,5 +36,4 @@ public class Validation {
         return CheckDuplicate(input) && CheckLength(input) && CheckMinToMax(input);
     }
 
-
 }

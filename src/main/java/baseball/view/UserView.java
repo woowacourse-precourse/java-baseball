@@ -33,6 +33,4 @@ public class UserView {
         return input;
     }
 
-
-
 }
