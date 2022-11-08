@@ -46,4 +46,8 @@ public class NumberBaseBallGame {
             .count();
         return countEqualBalls - strike;
     }
+
+    private boolean isEverythingRight(int strike) {
+        return strike == 3;
+    }
 }
