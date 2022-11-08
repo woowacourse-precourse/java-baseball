@@ -139,10 +139,6 @@ public class Application {
 
     public static void main(String[] args) {
         List<Integer> answer = new ArrayList<>();
-        List<Integer> user = new ArrayList<>();
-        List<Integer> ballstrike = Arrays.asList(0,0);
-        int user_input = Integer.MAX_VALUE;
-        int game_set = Integer.MAX_VALUE;
         int check_gameover = 2;
 
         game :while(check_gameover != 0) {
