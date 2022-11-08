@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -46,6 +47,24 @@ class ApplicationTest extends NsTest {
 
         assertThat(regameMethod.equals(false));
     }
+
+
+    @Test
+    void 예외_테스트_재시작_input() throws Exception {
+        Method regameMethod = Game.class.getDeclaredMethod("ReGame");
+        regameMethod.setAccessible(true);
+        try {
+            String input = "3";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            regameMethod.invoke(1);
+        } catch (InvocationTargetException e) {
+            assertThat(e.getCause().getMessage()).isEqualTo("잘못된 입력");
+        }
+
+    }
+
+
 
     @Test
     void 예외_테스트_input_자리수() {
