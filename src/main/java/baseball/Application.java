@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import camp.nextstep.edu.missionutils.*;
 import java.util.Map;
@@ -73,5 +75,18 @@ public class Application {
             input = sc.nextInt();
         }
         return input;
+    }
+
+    public static int playOneCycle(List<Integer> computersNumber) {
+        List<Integer> usersNumber = new ArrayList<>();
+        getUsersInputNumber(usersNumber);
+        Map<String, Integer> strikeBallCount = new HashMap<>() {
+            {
+                put("Strike", 0);
+                put("Ball", 0);
+            }
+        }; // 스트라이크와 볼 값을 저장할변수
+        checkEachDigit(computersNumber, usersNumber, strikeBallCount, 0);
+        return checkStrikeBallCount(strikeBallCount);
     }
 }
