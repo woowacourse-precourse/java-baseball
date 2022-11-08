@@ -20,14 +20,14 @@
 - [x] 값 입력하기
   - 콘솔로 값을 입력받는다 `Console.readLine()`
   - [x] 숫자 추측용 값 입력
-    - [ ] 숫자 추측용 값 검증
+    - [x] 숫자 추측용 값 검증
       - allowedNumbers(1~9) 숫자만 허용
       - 즉, 0은 허용되지 않는다
       - 잘못된 입력을 받을시 예외를 발생시킴 (`IllegalArgumentException`)
     - 3개 만큼의 데이터를 입력
     - `BaseballNumberBundle`에 입력값을 저장
   - [x] 게임진행여부 값 입력
-    - [ ] 게임진행여부 값 검증
+    - [x] 게임진행여부 값 검증
       - 0 or 1 숫자만 허용
       - `GameProgress`의 CONTINUE, EXIT와 대치
       - 잘못된 입력을 받을시 예외를 발생시킴 (`IllegalArgumentException`)
@@ -81,4 +81,10 @@
   - CORRECT
 
 ### 테스트
-- [ ] 기능별 테스트 작성
+- [x] 기능별 테스트 작성
+
+### 기타
+- [ ] 주석 정리 (style)
+- [ ] 자바컨벤션 확인
+  - [ ] 라인별 글자수 제한 확인
+  - [ ] 매직넘버 확인 (상수)
