@@ -81,6 +81,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 재시작_여부_입력_예외_테스트(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(()-> runException("135", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

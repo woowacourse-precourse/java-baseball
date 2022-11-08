@@ -16,4 +16,10 @@ public class ExceptionHandler {
             throw new IllegalArgumentException("입력한 값이 세자리 숫자가 아닙니다.");
         }
     }
+
+    public void checkIsValidRestartInput(String restartInput){
+        if (!"12".contains(restartInput)){
+            throw new IllegalArgumentException("입력한 값이 1이나 2가 아닙니다.");
+        }
+    }
 }

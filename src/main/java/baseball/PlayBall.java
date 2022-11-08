@@ -64,7 +64,7 @@ public class PlayBall {
     }
 
     public void whetherToRestart(String restartOptionInput) {
-        //todo exceptionHandler.checkIsValidRestartInput(restartOptionInput);
+        exceptionHandler.checkIsValidRestartInput(restartOptionInput);
 
         if (restartOptionInput.equals("1")) {
             startGame();
