@@ -8,7 +8,20 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        startGame();
+    }
+
+    public static void startGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int choice = 1;
+        while (choice == 1) {
+            List<Integer> randomInt = getRandomIntList();
+//            System.out.println(randomInt);
+            guessNumber(randomInt);
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            choice = getChoice(Console.readLine());
+        }
     }
 
     public static List<Integer> getRandomIntList() {
