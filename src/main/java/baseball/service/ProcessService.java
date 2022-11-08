@@ -17,15 +17,15 @@ public class ProcessService {
             }
         }
 
-        int prev = 0, test = 0;
-        for (int i = 0; i < input.length(); i++) {
-            int digitNum = Integer.parseInt(input.substring(i, i + 1));
-            test ^= digitNum;
-            if (test < prev) {
+        for (int i = 0; i < input.length() - 1; i++) {
+            int cur = Integer.parseInt(input.substring(i, i + 1));
+            int next = Integer.parseInt(input.substring(i + 1, i + 2));
+
+            if (cur == next) {
                 throw new IllegalArgumentException("입력은 중복되지 않아야 합니다.");
             }
-            prev = test;
         }
+
 
     }
 
