@@ -50,8 +50,8 @@ class ProblemSolverTest {
         InputStream in = new ByteArrayInputStream("1".getBytes());
         System.setIn(in);
         ProblemSolver problemSolver = new ProblemSolver();
-        int restart = problemSolver.chooseToRestart();
-        int result = 1;
+        String restart = problemSolver.chooseToRestart();
+        String result = "1";
         assertThat(result).isEqualTo(restart);
     }
 
@@ -60,8 +60,8 @@ class ProblemSolverTest {
         InputStream in = new ByteArrayInputStream("2".getBytes());
         System.setIn(in);
         ProblemSolver problemSolver = new ProblemSolver();
-        int restart = problemSolver.chooseToRestart();
-        int result = 2;
+        String restart = problemSolver.chooseToRestart();
+        String result = "2";
         assertThat(result).isEqualTo(restart);
     }
 
