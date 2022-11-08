@@ -19,14 +19,14 @@ public class Judge {
         return  (playerNumbers.equals(answer));
     }
 
-    public Hint getScoreHint() {
+    public Hint getHint() {
         if (ball == 0 && strike == 0) return Hint.NOTHING;
         if (ball == 0) return Hint.ONLY_STRIKE;
         if (strike == 0) return Hint.ONLY_BALL;
         return Hint.BALL_AND_STRIKE;
     }
 
-    public void countAllScoreOfStrikeAndBall() {
+    public void countScore() {
         for (int i = 0; i< answer.size(); i++ ) {
             countBallOrStrike(i);
         }

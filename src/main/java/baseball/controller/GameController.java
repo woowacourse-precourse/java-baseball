@@ -20,7 +20,7 @@ public class GameController {
             loadPlayerNumber();
         } while (!isGameSuccess());
 
-        isGameRestartOrStop();
+        gameRestartOrStop();
     }
 
     public void createComputerAnswer() {
@@ -45,13 +45,13 @@ public class GameController {
     }
 
     public void printSuccessOrFailHint(Boolean gameSuccess) {
-        judge.countAllScoreOfStrikeAndBall();
+        judge.countScore();
         OutputView.printHint(judge);
 
         if (gameSuccess) OutputView.printGameClear();
     }
 
-    public void isGameRestartOrStop() {
+    public void gameRestartOrStop() {
         Boolean isGameRestart = InputView.isGameRestart();
         if (isGameRestart) init();
     }

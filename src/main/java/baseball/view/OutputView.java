@@ -36,7 +36,7 @@ public class OutputView {
     }
 
     public static void printHint(Judge judge) {
-        Hint hint = judge.getScoreHint();
+        Hint hint = judge.getHint();
 
         if (hint.equals(Hint.NOTHING)) OutputView.printNothing();
         if (hint.equals(Hint.BALL_AND_STRIKE)) OutputView.printBallAndStrike(judge.getBall(), judge.getStrike());

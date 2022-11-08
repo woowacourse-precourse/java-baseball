@@ -31,13 +31,13 @@ class JudgeTest {
     }
 
     @Test
-    void countAllScoreOfStrikeAndBall_총_점수_계산() {
+    void countScore_총_점수_계산() {
         computer.setAnswer(Arrays.asList(1,2,3));
         player.setPlayerNumbers("139");
 
         Judge judge = new Judge(computer, player);
 
-        judge.countAllScoreOfStrikeAndBall();
+        judge.countScore();
         Assertions.assertEquals(judge.getStrike(), 1);
         Assertions.assertEquals(judge.getBall(), 1);
     }
