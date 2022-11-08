@@ -127,8 +127,7 @@ public class BaseBallGame {
     }
 
     public int askStopOrRegame() {
-        this.gameMessageDisplay.printStopOrRegameRequestMessage();
-        String userChoice = readLine();
+        String userChoice = getUserChoice();
         int stopOrRegame = STOP;
 
         if (isValidChoice(userChoice)) {
@@ -136,6 +135,16 @@ public class BaseBallGame {
         }
 
         return stopOrRegame;
+    }
+
+    public String getUserChoice() {
+        printStopOrRegameRequest();
+        String userChoice = readLine();
+        return userChoice;
+    }
+
+    public void printStopOrRegameRequest() {
+        this.gameMessageDisplay.printStopOrRegameRequestMessage();
     }
 
     public boolean isValidChoice(String userChoice) {
