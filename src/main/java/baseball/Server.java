@@ -14,22 +14,26 @@ public class Server {
 
     public void run() {
         Client.showGameStartMessage();
-        while (true) {
-            List<Integer> computerNumberList = makeNewGameNumber();
-            boolean isNotGameOver = true;
-            while (isNotGameOver) {
-                List<Integer> playerNumberList = Client.askPlayerNumberList();
+        boolean isOneMoreGame = true;
 
-                JudgedResultDto dto
-                    = judgeInputNumber(playerNumberList, computerNumberList);
-                Client.showJudgedResult(dto);
-                isNotGameOver = dto.getCountStrikes() != 3;
-            }
-            Client.showGameEndMessage();
-            if (!Client.askMoreGame()) {
-                return;
-            }
+        while (isOneMoreGame) {
+            playOneGame();
+            isOneMoreGame = Client.askMoreGame();
         }
+    }
+
+    private void playOneGame() {
+        List<Integer> computerNumberList = makeNewGameNumber();
+        boolean is3Strike = false;
+
+        while (!is3Strike) {
+            List<Integer> playerNumberList = Client.askPlayerNumberList();
+            JudgedResultDto dto
+                = judgeInputNumber(playerNumberList, computerNumberList);
+            Client.showJudgedResult(dto);
+            is3Strike = dto.is3Strike();
+        }
+        Client.showGameEndMessage();
     }
 
     public List<Integer> makeNewGameNumber() {

@@ -29,4 +29,8 @@ public class JudgedResultDto {
     public int getCountStrikes() {
         return countStrikes;
     }
+
+    public boolean is3Strike() {
+        return countStrikes == 3;
+    }
 }
