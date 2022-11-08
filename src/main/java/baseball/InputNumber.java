@@ -13,10 +13,7 @@ public class InputNumber {
         userNumber = new ArrayList<>() ;
     }
 
-    public List<String> userInputNumber(){
-        System.out.println("숫자를 입력해주세요.");
-        String userInput = Console.readLine();
-        userNumber.add(userInput);
+    public String getUserNumber(){
         return userNumber;
     }
 
