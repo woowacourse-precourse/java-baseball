@@ -28,6 +28,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void testCheckLength() {
+        Application app = new Application();
+        String trueNumber = "123";
+        String falseNumber = "12";
+
+        assertThat(app.checkLength(trueNumber)).isTrue();
+        assertThat(app.checkLength(falseNumber)).isFalse();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
