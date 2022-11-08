@@ -78,7 +78,7 @@ public class BaseballGame {
             isGameEnd = toSet;
         }
 
-        public boolean getIsGameEnd(){
+        public boolean getIsGameEnd() {
             return isGameEnd;
         }
     }
