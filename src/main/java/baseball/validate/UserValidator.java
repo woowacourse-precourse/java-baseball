@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 public class UserValidator {
 
     /**
-     * 야구게임 숫자를 맞출 때 입력한 값을 검증합니다.
+     * 공통 검증 로직입니다.
      */
-    public void validateNumber(String number) {
+    private void validateCommon(String number) {
         if (Pattern.matches(".*\\s.*", number)) {
             throw new IllegalArgumentException("공백은 입력할 수 없습니다.");
         }
@@ -18,6 +18,13 @@ public class UserValidator {
         if (Pattern.matches(".*\\D.*", number)) {
             throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
         }
+    }
+
+    /**
+     * 야구게임 숫자를 맞출 때 입력한 값을 검증합니다.
+     */
+    public void validateNumber(String number) {
+        validateCommon(number);
 
         if (number.length() < 3) {
             throw new IllegalArgumentException("입력의 길이가 3보다 작습니다.");
@@ -36,13 +43,7 @@ public class UserValidator {
      * 재시작 질문에서 입력한 값을 검증합니다.
      */
     public void validateRestart(String number) {
-        if (Pattern.matches(".*\\s.*", number)) {
-            throw new IllegalArgumentException("공백은 입력할 수 없습니다.");
-        }
-
-        if (Pattern.matches(".*\\D.*", number)) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
-        }
+        validateCommon(number);
 
         if (!number.equals("1") && !number.equals("2")) {
             throw new IllegalArgumentException("1 또는 2로만 입력해야 합니다.");
