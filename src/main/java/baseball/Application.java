@@ -20,15 +20,17 @@ public class Application {
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            String input = Console.readLine();
+            String input = getInput();
             validateProgramConditionInput(input);
             condition = Integer.parseInt(input);
         }
+        System.out.println("게임 종료");
     }
 
     public static void validateProgramConditionInput(String input) {
-        if(input != "1" || input != "2")
+        if(!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
+        }
     }
 
     public static void validateBaseBallInput(String input) {
