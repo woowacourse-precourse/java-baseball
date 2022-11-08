@@ -9,7 +9,7 @@ public class BaseBallGame {
     gameInit();
     System.out.println(GameMessage.GAME_START_MESSAGE.toString());
     String inputData;
-    BaseBallGameNumber gameNumber;
+    GameNumber gameNumber;
     boolean isGameOver = false;
     while (!isGameOver) {
       inputData = getUserNumberInput();
@@ -54,8 +54,8 @@ public class BaseBallGame {
     return Console.readLine();
   }
 
-  public BaseBallGameNumber createBaseBallGameNumber(String inputData) {
-    BaseBallGameNumber gameNumber = new BaseBallGameNumber();
+  public GameNumber createBaseBallGameNumber(String inputData) {
+    GameNumber gameNumber = new GameNumber();
     gameNumber.stringToGameNumber(inputData);
     return gameNumber;
   }

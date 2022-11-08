@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-  private BaseBallGameNumber gameNumber;
+  private GameNumber gameNumber;
 
   public void setAnswerNumber() {
-    gameNumber = new BaseBallGameNumber();
+    gameNumber = new GameNumber();
     List<Integer> numList = new ArrayList<>();
     int count = 0;
     while (count < 3){
@@ -22,7 +22,7 @@ public class Computer {
     gameNumber.setGameNumberByList(numList);
   }
 
-  public BaseBallGameNumber getAnswerNumber() {
+  public GameNumber getAnswerNumber() {
     return gameNumber;
   }
 }

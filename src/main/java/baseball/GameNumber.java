@@ -3,14 +3,14 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseBallGameNumber {
-
+public class GameNumber {
   private List<Integer> gameNumberList = new ArrayList<>();
 
   public void stringToGameNumber(String inputString) {
-    if (inputString.length() != 3) throwIllegalArgumentExceptionWithMessage("세자리가 아닙니다!");
+    if (inputString.length() != 3)
+      throwIllegalArgumentExceptionWithMessage("세 자리수가 아닙니다!");
     List<Integer> numbers = new ArrayList<>();
-    for(char s : inputString.toCharArray()){
+    for (char s : inputString.toCharArray()) {
       numbers.add(charToInt(s));
     }
     setGameNumberByList(numbers);
@@ -50,14 +50,6 @@ public class BaseBallGameNumber {
       throwIllegalArgumentExceptionWithMessage("0이 포함되어 있습니다.");
   }
 
-  public void printNumbers() {
-    String outputString = "";
-    for (int n : gameNumberList) {
-      outputString += n + " ";
-    }
-    System.out.println(outputString);
-  }
-
   public List<Integer> getGameNumberList() {
     return this.gameNumberList;
   }
@@ -67,6 +59,4 @@ public class BaseBallGameNumber {
     System.out.println(message);
     throw new IllegalArgumentException(message);
   }
-
-  public BaseBallGameNumber() {}
 }

@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.GameNumber;
+
 import java.util.List;
 
 public class GameResult {
@@ -7,7 +9,7 @@ public class GameResult {
   private int ballCount;
 
   public void setResultByGameNumber(
-      BaseBallGameNumber answerNumber, BaseBallGameNumber gameNumber) {
+          GameNumber answerNumber, GameNumber gameNumber) {
     List<Integer> answerNumberList = answerNumber.getGameNumberList();
     List<Integer> gameNumberList = gameNumber.getGameNumberList();
     strikeCount = 0;
