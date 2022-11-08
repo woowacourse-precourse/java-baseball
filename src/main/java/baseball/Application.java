@@ -48,7 +48,7 @@ class Game {
     }
 
 
-    private void requestAnswer() {
+    protected void requestAnswer() {
         System.out.println("숫자를 입력해주세요 : ");
         String userInput = readLine();
         // userInput을 확인한다
@@ -170,10 +170,14 @@ class Hint {
     int strike;
     int ball;
 
+    public void clear() {
+        strike = 0;
+        ball = 0;
+    }
 
-    void compareAnswer(Game guessAnswer) {
+    void compareAnswer(Game game) {
         // 게임의 정답을 가져온다.
-        List<Integer> gameAnswer = Game.getGameAnswer();
+        List<Integer> gameAnswer = game.getGameAnswer();
         // 각 자리별로 비교하면 Strike, Ball을 계산한다.
         for (int digit = 0; digit < gameAnswer.size(); digit++) {
             int curNumber = Game.getGuessNumber().get(digit);

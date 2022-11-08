@@ -127,7 +127,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 다시하실건지물어보는테스트() {
+    void 다시하실건지물어보는테스싱() {
         //given
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
