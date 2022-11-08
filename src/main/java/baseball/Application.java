@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 
+import static baseball.BaseballNumber.*;
+
 public class Application {
     public static void main(String[] args) {
         boolean play = true;
@@ -17,14 +19,14 @@ public class Application {
 
     private static void playGame() {
         List<Integer> inputNumber = new ArrayList<>();
-        List<Integer> baseballNumber = BaseballNumber.create();
+        List<Integer> baseballNumber = create();
 
         while (!baseballNumber.equals(inputNumber)) {
             inputNumber = inputNumber();
-            int strike = BaseballNumber.countStrike(baseballNumber, inputNumber);
-            int ball = BaseballNumber.countBall(baseballNumber, inputNumber);
+            int strike = countStrike(baseballNumber, inputNumber);
+            int ball = countBall(baseballNumber, inputNumber);
 
-            String message = BaseballNumber.getMessage(strike, ball);
+            String message = getMessage(strike, ball);
             System.out.println(message);
         }
 
