@@ -18,11 +18,11 @@ public class ListUtil {
     }
 
     public static List<Integer> stringToSeparatedIntegerList(String input, int INPUT_LENGTH) throws IllegalArgumentException {
-        if (userInputException.isContainLetter(input)) {
+        if (UserInputException.isContainLetter(input)) {
             throw new IllegalArgumentException("문자가 포함되어 있습니다.");
         }
 
-        if (!userInputException.isInputLength(input, INPUT_LENGTH)) {
+        if (!UserInputException.isInputLength(input, INPUT_LENGTH)) {
             throw new IllegalArgumentException("입력의 숫자의 길이가 맞지 않습니다.");
         }
 
