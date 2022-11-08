@@ -6,16 +6,16 @@ public class Game {
     private ProblemMaker problemMaker = new ProblemMaker();
     private ProblemSolver problemSolver = new ProblemSolver();
     private Result result = new Result();
-    private int status = Settings.START_STATUS;
+    private String status = Settings.START_STATUS;
 
     public void start() {
         printStartMessage();
+
         while (isStartStatus()) {
             initialize();
             solveProblem();
             requestToRestart();
         }
-
     }
 
     public void printStartMessage() {
@@ -23,7 +23,7 @@ public class Game {
     }
 
     public boolean isStartStatus() {
-        return status == Settings.START_STATUS;
+        return status.equals(Settings.START_STATUS);
     }
 
     public void initialize() {
@@ -35,6 +35,7 @@ public class Game {
         while (result.isWrongAnswer()) {
             checkAnswer();
         }
+
         System.out.println(Settings.SUCCESS_MESSAGE);
     }
 
@@ -50,6 +51,7 @@ public class Game {
 
     public void countResult() {
         List<Integer> numbers = problemSolver.getNumbers();
+
         for (int i = 0; i < Settings.SIZE_OF_NUMBERS; i++) {
             int number = numbers.get(i);
 
@@ -91,11 +93,11 @@ public class Game {
         this.result = result;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }
