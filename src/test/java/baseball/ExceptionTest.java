@@ -21,6 +21,24 @@ class ExceptionTest extends NsTest {
                 .hasMessageContaining("잘못된 값을 입력하였습니다. 게임을 종료합니다.");
     }
 
+    @DisplayName("예외 처리 테스트2 - 사용자가 3개의 숫자를 입력하지 않았을 경우")
+    @Test
+    void userInputSizeExceptionTest() {
+        //given
+        String userInput1 = "12";
+        String userInput2 = "1234";
+        HandleException handleException = new HandleException();
+
+        // when, then
+        assertThatThrownBy(() -> handleException.handleUserInputSizeException(userInput1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3개의 숫자를 입력하지 않았습니다. 게임을 종료합니다.");
+
+        assertThatThrownBy(() -> handleException.handleUserInputSizeException(userInput2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("3개의 숫자를 입력하지 않았습니다. 게임을 종료합니다.");
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
