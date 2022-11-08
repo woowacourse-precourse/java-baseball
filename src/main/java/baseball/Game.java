@@ -41,7 +41,7 @@ public class Game {
             startGame(1);
         } else if (input.equals("2")) ;
         else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Only 1 and 2 can be entered.");
         }
     }
 
