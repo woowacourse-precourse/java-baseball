@@ -126,4 +126,24 @@ public class Application {
 
         return endValue;
     }
+
+    public static void playGame() {
+        int endValue = 0;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        String randomNum = makeRandomNumber();
+
+        while (endValue == 0) {
+            System.out.println("숫자를 입력해주세요 : ");
+
+            String inputNum = readLine();
+            checkInput(inputNum);
+
+            List<Integer> printList;
+            printList = checkNumStrike(randomNum, inputNum);
+            printList = checkNumBall(randomNum, inputNum, printList);
+
+            endValue = printBallStrike(printList);
+        }
+    }
 }
