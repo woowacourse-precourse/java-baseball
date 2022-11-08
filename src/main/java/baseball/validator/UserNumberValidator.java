@@ -25,4 +25,8 @@ public class UserNumberValidator {
     public static boolean isNotZero(List<Integer> userNumberList){
         return !userNumberList.contains(ZERO);
     }
+
+    private UserNumberValidator(){
+    }
+
 }
