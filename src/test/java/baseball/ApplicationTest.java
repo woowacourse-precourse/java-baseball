@@ -107,11 +107,4 @@ class ApplicationTest extends NsTest {
         assertThat(bullsAndCowsResult.getBallCount()).isEqualTo(1);
         assertThat(bullsAndCowsResult.getStrikeCount()).isEqualTo(0);
     }
-
-    @Test
-    void 결과_출력_테스트() {
-        BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
-        bullsAndCowsResult.init();
-
-    }
 }
