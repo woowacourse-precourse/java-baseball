@@ -1,4 +1,6 @@
-package baseball;
+package baseball.service;
+
+import baseball.User;
 
 public interface BaseballGameService {
 
