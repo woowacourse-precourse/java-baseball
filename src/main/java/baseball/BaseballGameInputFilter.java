@@ -14,7 +14,7 @@ public class BaseballGameInputFilter {
     }
 
     public boolean isNumeric(String input) {
-        return input.matches("[1-9]]");
+        return input.matches("[1-9]+");
     }
 
     public boolean isNotDuplicated(String input) {
