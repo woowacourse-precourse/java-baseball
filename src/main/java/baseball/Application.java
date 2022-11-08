@@ -33,6 +33,7 @@ public class Application {
         String input = Console.readLine();
         List<String> str_list = Arrays.asList(input.split(""));
         List<Integer> input_list =str_list.stream().map(s->Integer.parseInt(s)).collect(Collectors.toList());
+        validNumber(input_list);
         return input_list;
     }
     public static void start(){
@@ -95,5 +96,15 @@ public class Application {
             return false;
         }
         return true;
+    }
+
+    private static void validNumber(final List<Integer> number) {
+        if (number.isEmpty()) {
+            throw new IllegalArgumentException("numbers cannot be empty.");
+        } else if(number.size()!=3){
+            throw new IllegalArgumentException("numbers must be 3 digits.");
+        } else if (number.size() != number.stream().distinct().count()) {
+            throw new IllegalArgumentException("Numbers must not overlap.");
+        }
     }
 }
