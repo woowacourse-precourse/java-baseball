@@ -30,13 +30,13 @@ class ApplicationTest extends NsTest {
     @Test
     void 랜덤숫자_길이확인() {
         Computer computer = new Computer();
-        assertThat(computer.createAnswerString().length()).isEqualTo(3);
+        assertThat(computer.util.createAnswerString().length()).isEqualTo(3);
     }
 
     @Test
     void 랜덤숫자_랜덤확인() {
         Computer computer = new Computer();
-        assertThat(computer.createAnswerString()).isNotEqualTo(computer.createAnswerString());
+        assertThat(computer.util.createAnswerString()).isNotEqualTo(computer.util.createAnswerString());
     }
 
     @Test
