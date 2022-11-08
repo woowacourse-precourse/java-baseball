@@ -67,11 +67,19 @@ public class Application {
     private static int calStrike(String answer, String input){
         int strike = 0;
 
+        for(int i=0; i<3; i++){
+            if(answer.charAt(i) == input.charAt(i)) strike++;
+        }
+
         return strike;
     }
 
     private static int calBall(String answer, String input){
         int ball = 0;
+
+        for(int i=0; i<3; i++){
+            if(answer.contains(input.substring(i,i+1))) ball++;
+        }
 
         return ball;
     }
@@ -94,6 +102,7 @@ public class Application {
 
             strike = calStrike(answer, input);
             ball = calBall(answer, input);
+
 
             printResult(strike, ball);
         }
