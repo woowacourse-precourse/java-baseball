@@ -48,6 +48,17 @@ public class BaseBallGameManagerTest {
     }
 
     @Test
+    void 게임_재시작_선택메시지_출력() {
+        Computer computer = new Computer(new MockRandomGenerator(1, 2, 3));
+        Player player = new Player(new MockInputReader("123", "2"));
+        BaseBallGameManager gameManager = new BaseBallGameManager(computer, player);
+        gameManager.runGame();
+
+        String[] outputLines = outputStreamCaptor.toString().split("\\R");
+        assertThat(outputLines[3]).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    @Test
     void 게임_종료시_재시작() {
         Computer computer = new Computer(new MockRandomGenerator(1, 2, 3));
         Player player = new Player(new MockInputReader("123", "1", "123", "2"));
