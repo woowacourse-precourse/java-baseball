@@ -14,8 +14,7 @@ public class Application {
 
         while (true) {
             // 새로운 문제 생성
-            answer = new ArrayList<>();
-            generateRandomNumber();
+            renewRandomNumber();
 
             // 새로운 게임 시작
             int again = game();
@@ -31,11 +30,12 @@ public class Application {
     private static int ball;
 
     /**
+     * 한 턴의 게임 실행
      * play a single game
+     * return : 1 (게임 재시작) / 2 (실행종료)
      */
     public static int game() {
         String stringInput;
-
         while (true) {
             // 숫자 입력
             System.out.print("숫자를 입력해주세요 : ");
@@ -47,10 +47,10 @@ public class Application {
             try {
                 strike = ScoreDetect.getStrikeCount(answer, numbers);
                 ball = ScoreDetect.getBallCount(answer, numbers);
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 throw new IllegalArgumentException("올바르지 않은 숫자 리스트입니다.");
             }
-            
+
             // 결과 출력
             if (strike == 3) {
                 System.out.println("3스트라이크\n" +
@@ -68,25 +68,11 @@ public class Application {
     }
 
     /**
-     * parse user's option input and return  option code
-     * getUserOption
-     */
-    public static int getUserOption(String stringInput) {
-        int number;
-        try {
-            number = Integer.parseInt(stringInput);
-            if (number != 1 && number != 2)
-                throw new IllegalArgumentException();
-        } catch (IllegalArgumentException ex) {
-            throw new IllegalArgumentException("올바르지 않은 옵션 입력입니다.");
-        }
-        return number;
-    }
-
-    /**
+     * 난수로 answer 리스트 만들기
      * generate random number
      */
-    public static void generateRandomNumber() {
+    public static void renewRandomNumber() {
+        answer = new ArrayList<>();
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!answer.contains(randomNumber)) {
@@ -96,7 +82,8 @@ public class Application {
     }
 
     /**
-     * make numbers from string input
+     * 유저의 인풋으로부터 숫자 리스트 만들기
+     * make numbers list from user's string input
      */
     public static void renewNumbers(String stringInput) {
         // 오류체크 : 숫자 수, 다른 문자 있는지?
@@ -113,13 +100,30 @@ public class Application {
         }
     }
 
+    /**
+     * 계속진행 / 실행종료 옵션 입력 확인
+     * check user's option input(1 or 2) and return option code
+     */
+    public static int getUserOption(String stringInput) {
+        int number;
+        try {
+            number = Integer.parseInt(stringInput);
+            if (number != 1 && number != 2)
+                throw new IllegalArgumentException();
+        } catch (IllegalArgumentException ex) {
+            throw new IllegalArgumentException("올바르지 않은 옵션 입력입니다.");
+        }
+        return number;
+    }
 
+    // admin - answer 반환
     public static String getAnswer() {
         return answer.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(""));
     }
 
+    // admin - numbers 반환
     public static String getNumbers() {
         return numbers.stream()
                 .map(String::valueOf)
