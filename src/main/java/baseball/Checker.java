@@ -81,6 +81,15 @@ public class Checker {
 		return isSameNumberExist;
 	}
 
+	public static boolean isSameNumberExistInRandomNumber(int number, List<Integer> randomNumber) {
+
+		if (randomNumber.contains(number)) {
+			return true;
+		}
+		return false;
+	}
+
+
 	public static void checkReStart(Computer computer, boolean isReStart) {
 
 		if (isReStart) {

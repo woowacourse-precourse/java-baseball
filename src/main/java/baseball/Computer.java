@@ -30,18 +30,10 @@ public class Computer {
 		while (randomNumber.size() < INIT_LIST_CAPACITY) {
 			int number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
-			if (!isExistNumber(number)) {
+			if (!Checker.isSameNumberExistInRandomNumber(number,randomNumber)) {
 				addRandomNumber(number);
 			}
 		}
-	}
-
-	private boolean isExistNumber(int number) {
-
-		if (randomNumber.contains(number)) {
-			return true;
-		}
-		return false;
 	}
 
 	private boolean addRandomNumber(int number) {
