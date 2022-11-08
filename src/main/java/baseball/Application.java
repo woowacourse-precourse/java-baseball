@@ -87,6 +87,15 @@ public class Application {
         }
     }
 
+    public static void wouldYouExitGame(){
+        String command = Console.readLine();
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        iscommand(command);
+        if(command.equals("1")) oneGameFinished = false;
+        if(command.equals("2")) game_over = true;
+    }
+
 
 
     public static void main(String[] args) {
