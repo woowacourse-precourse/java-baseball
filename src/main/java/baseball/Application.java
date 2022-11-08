@@ -29,6 +29,21 @@ public class Application {
         String computer = getRandomNumber();
         String userInput = Console.readLine();
         validateNum(userInput);
+        compare(computer, userInput);
+    }
+
+    public static int[] compare(String computer, String user) {
+        int[] results = {0, 0};
+        for(int iter = 0; iter < 3; iter++){
+            if(computer.charAt(iter) == user.charAt(iter)){
+                results[0]++;
+                continue;
+            }
+            if(computer.contains(String.valueOf(user.charAt(iter)))){
+                results[1]++;
+            }
+        }
+        return results;
     }
 
     private static void validateNum(String userInput) throws IllegalArgumentException {
