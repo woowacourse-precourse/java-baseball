@@ -12,6 +12,8 @@ public class Validator {
         if (!checkBaseballNumberLength()) {
             return false;
         }
+        // 입력된 값이 숫자가 아닌지
+
         // 1~9 사이의 숫자를 입력했는지
         return checkBaseballNumberRange();
     }
@@ -26,6 +28,13 @@ public class Validator {
             if (number == 0)
                 return false;
         }
+        return true;
+    }
+
+    private boolean checkBaseballNumberIsNumber() {
+        for (int i = 0; i < 3; i++)
+            if (!Character.isDigit(baseballNumber.charAt(i)))
+                return false;
         return true;
     }
 
