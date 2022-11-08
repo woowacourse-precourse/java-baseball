@@ -116,6 +116,16 @@ public class GameTest extends NsTest {
         });
     }
 
+    @Test
+    void 스트라이크가_3이면_true가_나와야_한다() {
+        assertThat(game.isGameEnd(3)).isTrue();
+    }
+
+    @Test
+    void 스트라이가_3이_아니면_false가_나와야_한다() {
+        assertThat(game.isGameEnd(1)).isFalse();
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
