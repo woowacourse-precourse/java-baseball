@@ -25,6 +25,8 @@ public class Application {
 
         String strNumber = Console.readLine();
 
+        System.out.println(strNumber);
+
         for(int idx=0; idx<strNumber.length(); idx++) {
             int intNumber = Character.getNumericValue(strNumber.charAt(idx));
             guessingNumber.add(intNumber);
