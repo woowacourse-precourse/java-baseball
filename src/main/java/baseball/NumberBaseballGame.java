@@ -114,4 +114,10 @@ public class NumberBaseballGame {
         }
         return Integer.parseInt(inputNumber);
     }
+
+    public boolean isRestartNumberException(String input) {
+        Pattern pattern = Pattern.compile("^[1-2]{1}$");
+        Matcher m = pattern.matcher(input);
+        return !m.matches();
+    }
 }
