@@ -23,4 +23,17 @@ public class Computer {
             }
         }
     }
+    // Computer 랜덤 넘버가 준비되었는지 확인하는 메소드
+    boolean isReady() {
+        if (this.ballCounts.size() < 3)
+            return false;
+        return true;
+    }
+    // Debug 용 출력 메소드
+    void getCounts() {
+        for (int i = 0; i < this.ballCounts.size(); i++) {
+            System.out.print(this.ballCounts.get(i) + " ");
+        }
+        System.out.println();
+    }
 }
