@@ -24,7 +24,32 @@ public class Application {
 
             int[] inputNumbers = getThreeInts();
 
+            int ball = 0;
+            int strike = 0;
+
+            for (int i = 0; i < 3; i++) {
+                String result = checkNumber(computer, inputNumbers, i);
+
+                if (result.equals("strike")) {
+                    strike++;
+                } else if (result.equals("ball")) {
+                    ball++;
+                }
+            }
+
+
         }
+    }
+
+    private static String checkNumber(List<Integer> computer, int[] inputNumbers, int i) {
+        for (int j = 0; j < 3; j++) {
+            if (inputNumbers[i] == computer.get(j) && i == j) {
+                return "strike";
+            } else if (inputNumbers[i] == computer.get(j)) {
+                return "ball";
+            }
+        }
+        return "nothing";
     }
 
     private static int[] getThreeInts() {
