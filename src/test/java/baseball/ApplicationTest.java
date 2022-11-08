@@ -23,7 +23,7 @@ import static org.mockito.Mockito.mockStatic;
 
 class ApplicationTest extends NsTest {
     @Test
-    void evaluationToStringTest() {
+    void evaluationToString_메서드로_추측_결과를_문자열로_반환() {
         List<Integer> evaluation1 = Arrays.asList(0, 0);
         List<Integer> evaluation2 = Arrays.asList(1, 0);
         List<Integer> evaluation3 = Arrays.asList(0, 1);
@@ -41,7 +41,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void makeAnswerTest() {
+    void makeAnswer_메서드로_1부터_9_안의_서로_다른_세자리_숫자_생성() {
         List<Integer> answer = Application.makeAnswer();
         Set<Integer> numbersInAnswer = new HashSet<>(answer);
         assertThat(numbersInAnswer).hasSize(3)
@@ -49,7 +49,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void isValidNumbersForGameTest() {
+    void isValidNumbersForGame_메서드로_1부터_9_안의_서로_다른_세자리_숫자인지_검사() {
         SoftAssertions softAssert = new SoftAssertions();
         softAssert.assertThat(Application.isValidNumbersForGame("")).isFalse();
         softAssert.assertThat(Application.isValidNumbersForGame("34a")).isFalse();
@@ -62,14 +62,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void stringToNumberListTest() {
+    void stringToNumberList_메서드로_문자열_입력을_Integer_List로_변환() {
         String numbersInString = "234";
         List<Integer> numberList = Arrays.asList(2, 3, 4);
         assertThat(Application.stringToNumberList(numbersInString)).isEqualTo(numberList);
     }
 
     @Test
-    void evaluateGuessTest() {
+    void evaluateGuess_메서드로_볼과_스트라이크의_개수를_List로_반환() {
         List<Integer> guess1 = Arrays.asList(1, 2, 3);
         List<Integer> answer1 = Arrays.asList(1, 2, 3);
         List<Integer> evaluation1 = Arrays.asList(0, 3);
