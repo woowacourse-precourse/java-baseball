@@ -78,9 +78,6 @@ class ApplicationTest extends NsTest {
     void 예외_테스트7() {
         //given
         RestartGameException restartGameException = new RestartGameException();
-        int gameStart = 1;
-        int gameEnd = 2;
-        int missNumber = 3;
         String missType = "asdasd ";
 
         //when
