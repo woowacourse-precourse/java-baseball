@@ -45,7 +45,43 @@ public class Application {
             return result;
 
         }
-        
+
+        // 같은 숫자, 자리가 몇 개 있는지 count
+        public int strike_count(List<Integer> computer, List<Integer> player) {
+            int strike = 0;
+            for (int i = 0; i < player.size(); i++) {
+                if (computer.get(i) == player.get(i)) {
+                    strike += 1;
+                }
+            }
+            return strike;
+        }
+    }
+
+    // 조건에 맞는 숫자 비교
+    public static class Choice {
+        static Compare compare = new Compare();
+
+        public static String choice(List<Integer> computer, List<Integer> player) {
+
+            int total = compare.count(computer, player);
+            int strike = compare.strike_count(computer, player);
+            int ball = total - strike;
+
+
+            // 같은 수가 같은 자리에 있으면 스트라이크
+            if (strike > 0) {
+                return strike + "스트라이크";
+                //다른 자리에 똑같이 있으면 볼
+            } else if (ball > 0) {
+                return ball + "볼";
+                //같은 수가 같은 자리에 있으면 스트라이크
+            } else if (total == 0) {
+                return "낫싱";
+            }
+            return ball + "볼" + strike + "스트라이크";
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
