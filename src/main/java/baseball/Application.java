@@ -74,4 +74,28 @@ public class Application {
         return indexAndNumber;
     }
 
+    static boolean inputNumberIsAnswer(String inputNumber){
+
+        boolean answer = false;
+
+        if(inputNumber.equals("3스트라이크")){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartOrEnd = Console.readLine();
+            if(restartOrEnd.equals("1")){
+                answerRandomNumber.clear();
+                getAnswerRandomNumber();
+                restartOrEnd = "";
+                System.out.println("랜덤 숫자 부여 = " + answerRandomNumber);
+                answer = true;
+            } else if (restartOrEnd.equals("2")) {
+                answer = false;
+            } else {
+                throw new IllegalArgumentException();
+            }
+
+        } else answer = true;
+
+        return answer;
+    }
 }
