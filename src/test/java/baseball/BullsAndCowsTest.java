@@ -11,8 +11,15 @@ class BullsAndCowsTest {
     BullsAndCows bullsAndCows = new BullsAndCows(new BullsAndCowsResult());
 
     @Test
+    void 중복_문자_확인_여부_테스트() {
+
+        char charArray[] = {'1', '1', '2'};
+        assertThat(bullsAndCows.isOverlap(charArray)).isTrue();
+    }
+
+    @Test
     void 문자열_리스트_변환_테스트() {
-        List<Integer> result = bullsAndCows.checkExceptionAndInputToList("123");
+        List<Integer> result = bullsAndCows.inputToList("123");
         assertThat(result.get(0)).isEqualTo(1);
         assertThat(result.get(1)).isEqualTo(2);
         assertThat(result.get(2)).isEqualTo(3);
