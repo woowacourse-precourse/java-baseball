@@ -24,8 +24,8 @@ public class Application {
                 CalcCount countResult = new CalcCount();
                 List<Integer> countStrBallList= countResult.CountStrike(userRandNumber, correctRandNumber);
 
-                //결과 출력
-                System.out.println(countStrBallList.get(0) + "볼 " + countStrBallList.get(1) + "스트라이크");
+                PrintOutput printResult = new PrintOutput();
+                printResult.print(countStrBallList);
 
                 IsRerun checkStatus = new IsRerun();
                 boolean isTrue = checkStatus.isFalse(gameStatus, countStrBallList);
