@@ -35,7 +35,7 @@ public class Game {
             userGuessNumbers = userNumber.userInputNumber();
             strike = 0;
             ball = 0;
-            scoreInfo();
+            countScore();
             printScoreInfo();
         } while (!endGame());
         System.out.println(SystemMessage.printEndMessage);
@@ -54,16 +54,16 @@ public class Game {
         System.out.println();
     }
 
-    public void scoreInfo() {
+    public void countScore() {
         String inputString = userGuessNumbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-        String answerString = computerAnswerNumber.stream()
+        String computerString = computerAnswerNumber.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
         for (int i = 0; i < Constants.NUMBER_LENGTH; i++) {
-            int index = inputString.indexOf(answerString.charAt(i));
+            int index = inputString.indexOf(computerString.charAt(i));
             if (index == i) {
                 strike++;
             } else if (index != -1) {
