@@ -7,7 +7,6 @@ import java.util.*;
 public class Computer {
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
-    private static final int LENGTH = 3;
 
     private static final List<Integer> computer = new ArrayList<>();
 
@@ -15,7 +14,7 @@ public class Computer {
 
         computer.clear();
 
-        while (computer.size() < LENGTH) {
+        while (computer.size() < Application.LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
