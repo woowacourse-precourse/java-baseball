@@ -16,12 +16,16 @@ public class Game {
 
     private int GAME_STATE = START;
 
-    // init(): Computer측 랜덤 숫자 생성
     public void init(){
         computer.createRandomNumber();
     }
 
-    // start(): 상태가 진행중이면, run()을 반복해서 호출
+    public void start() {
+        while(GAME_STATE != STOP) {
+            run();
+        }
+        GAME_STATE = player.enterAnswer();
+    }
 
     private void run() {
         GAME_STATE = RUNNING;
@@ -29,7 +33,6 @@ public class Game {
         input();
         updateScore();
         printResult();
-        GAME_STATE = player.enterAnswer();
     }
 
 
