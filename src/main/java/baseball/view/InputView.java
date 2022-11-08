@@ -9,22 +9,19 @@ public class InputView {
     private String INPUT_USERNUM = "숫자를 입력해주세요 : ";
     private String restartOrExit = String.format("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.",
             RESTART_NUM, EXIT_NUM);
-    private String GAME_END = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     public void GameStart() {
         System.out.println(GAMESTART);
     }
 
-    public void InputUserNum() {
+    public String InputUserNum() {
         System.out.println(INPUT_USERNUM);
+        return Console.readLine();
     }
 
     public String RestartOrExit() {
-        System.out.println(GAME_END);
         System.out.println(restartOrExit);
-        String userInputNum = Console.readLine();
-
-        return userInputNum;
+        return  Console.readLine();
     }
 
 }
