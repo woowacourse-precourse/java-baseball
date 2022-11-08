@@ -38,6 +38,14 @@ public class Player {
         return playerNumbers;
     }
 
+    public int enterAnswer() {
+        String answer = Console.readLine();
+        boolean isValid = checkAnswerValidation(answer);
+        if(!isValid) {
+            throw new IllegalArgumentException("1 또는 2를 입력해주세요.");
+        }
+        return Integer.parseInt(answer);
+    }
 
     private boolean checkAnswerValidation(String answer) {
         if(answer.equals("1")||answer.equals("2")) {
