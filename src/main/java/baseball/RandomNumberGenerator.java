@@ -2,7 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -12,19 +12,26 @@ import java.util.List;
  */
 
 public class RandomNumberGenerator {
-    public static List<Integer> randomNumberList = new LinkedList<>();
-    static int getRandomNumber(){
-        return Randoms.pickNumberInRange(1,9);
+    private static final int START_RANGE = 1;
+    private static final int END_RANGE = 9;
+    public static List<Integer> randomNumberList;
+
+    static {
+        randomNumberList = new ArrayList<>();
     }
 
-    static boolean IsInList(int number){
+    static int getRandomNumber() {
+        return Randoms.pickNumberInRange(START_RANGE, END_RANGE);
+    }
+
+    static boolean IsInList(int number) {
         return randomNumberList.contains(number);
     }
 
     static void addToRandomNumberList() {
         while (true) {
             int number = getRandomNumber();
-            if (!IsInList(number)){
+            if (!IsInList(number)) {
                 randomNumberList.add(number);
                 break;
             }
@@ -32,7 +39,7 @@ public class RandomNumberGenerator {
     }
 
     public static void generate() {
-        for(int i=0;i<3;i++) {
+        for (int i = 0; i < 3; i++) {
             addToRandomNumberList();
         }
     }
