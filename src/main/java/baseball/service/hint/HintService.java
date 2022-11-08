@@ -1,5 +1,7 @@
 package baseball.service.hint;
 
+import static baseball.controller.GameController.RANDOM_NUMBER_SIZE;
+
 import java.util.List;
 
 public class HintService {
@@ -57,8 +59,8 @@ public class HintService {
     if (strikeCount != 0) {
       System.out.println(strikeCount + "스트라이크");
     }
-    if (strikeCount == 3) {
-      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    if (strikeCount == RANDOM_NUMBER_SIZE) {
+      System.out.println(RANDOM_NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
   }
 }
