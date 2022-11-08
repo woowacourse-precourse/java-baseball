@@ -73,4 +73,12 @@ public class Hint {
 
         return resultString.substring(0, resultString.length() - 1);
     }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
 }
