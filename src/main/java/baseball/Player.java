@@ -21,8 +21,20 @@ public class Player {
         return suggestion;
     }
 
-    boolean validSuggestion() {
-        return false;
+    boolean validSuggestion(String suggestion) {
+        int SUGGESTION_LENGTH = 3;
+        String INVALID_NUMBER = "0";
+        if (suggestion.length() != SUGGESTION_LENGTH) {
+            return false;
+        }
+        if (suggestion.contains(INVALID_NUMBER)) {
+            return false;
+        }
+        boolean isNumeric = suggestion.chars().allMatch(Character::isDigit);
+        if (!isNumeric) {
+            return false;
+        }
+        return true;
     }
 
     boolean continueGame() {
