@@ -12,14 +12,14 @@ public class ValidCheck {
         if (!Pattern.matches(pattern, inputNumber)) {
             throw new IllegalArgumentException();
         }
-        if (InputNumberHash.size()!=3) {
+        if (InputNumberHash.size() != 3) {
             throw new IllegalArgumentException();
         }
         return null;
     }
 
     static void checkExceptionIsContinue(String inputNumber) throws IllegalArgumentException {
-        if (inputNumber.equals("1")||inputNumber.equals("2")) {
+        if (inputNumber.equals("1") || inputNumber.equals("2")) {
             return;
         }
         throw new IllegalArgumentException();

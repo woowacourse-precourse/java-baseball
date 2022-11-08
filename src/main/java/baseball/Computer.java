@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Computer {
-    private static HashMap<Integer,Integer> RandomNumberHash = new HashMap<>();
+    private static HashMap<Integer, Integer> RandomNumberHash = new HashMap<>();
 
     static HashMap<Integer, Integer> generateRandomNumber() {
         List<Integer> computer = new ArrayList<>();
@@ -17,7 +17,7 @@ public class Computer {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
-                RandomNumberHash.put(randomNumber,i);
+                RandomNumberHash.put(randomNumber, i);
                 i++;
             }
         }
