@@ -1,6 +1,7 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import validation.InputException;
 
 import java.util.List;
 
