@@ -75,11 +75,18 @@ public class BaseballGame {
             }
             return ball;
         }
-		}
 
-		int checkStrike() {
-			return 0;
-		}
+        int checkStrike(List<Integer> suggestion) {
+            int strike = 0;
+            for (int i = 0; i < answer.size(); i++) {
+                if (answer.get(i) == suggestion.get(i)) {
+                    strike++;
+                }
+            }
+            return strike;
+        }
+
+    }
 
 		boolean isGameEnd() {
 			return false;
