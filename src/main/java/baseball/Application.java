@@ -44,13 +44,14 @@ class baseball {
 	public void getUserInputNum() {
 		userNumList.clear();
 		System.out.println("숫자를 입력해주세요 : ");
-		int n = Integer.parseInt(Console.readLine());
+		int inputNum = 0;
+		inputNum = Integer.parseInt(Console.readLine());
 
-		if (n > 999 || n < 100) {
+		if (inputNum > 999 || inputNum < 100) {
 			throw new IllegalArgumentException("자리수를 확인해주세요");
 		}
 
-		int userNum = n;
+		int userNum = inputNum;
 		int one = userNum / 100;
 		int two = userNum / 10 % 10;
 		int three = userNum % 10;
@@ -107,7 +108,13 @@ class baseball {
 
 	public int repeatGame() {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		return Integer.parseInt(Console.readLine());
+		int inputNum = 0;
+		inputNum = Integer.parseInt(Console.readLine());
+		
+		if(inputNum < 1 || inputNum > 2) {
+			throw new IllegalArgumentException("새로시작 1, 종료 2");
+		}
+		return inputNum;
 	}
 
 }
