@@ -36,10 +36,10 @@ public class Game {
 
     public void playGame() {
         computerNumbers = computer.pickRandomNumbers();
-        userNumbers = user.inputNumbers();
+        userNumbers = user.inputUserNumbers();
 
         while (!referee.judgeReferee(computerNumbers, userNumbers)) {
-            userNumbers = user.inputNumbers();
+            userNumbers = user.inputUserNumbers();
         }
     }
 

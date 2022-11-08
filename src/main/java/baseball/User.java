@@ -16,14 +16,14 @@ public class User {
     static final char MAX_NUM_CHAR = '9';
 
 
-    private String inputNum;
+    private String inputUserNum;
     private List<Integer> userNumbers;
 
-    public List<Integer> inputNumbers() {
+    public List<Integer> inputUserNumbers() {
         System.out.println(INPUT_MESSAGE);
         resetUserNumbers();
-        inputNum = Console.readLine();
-        toList(inputNum);
+        inputUserNum = Console.readLine();
+        toList(inputUserNum);
         exceptionHandling(userNumbers);
 
         return userNumbers;
