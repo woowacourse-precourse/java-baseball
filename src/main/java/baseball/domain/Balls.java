@@ -53,9 +53,13 @@ public class Balls {
 		int number1 = numbers.get(0);
 		int number2 = numbers.get(1);
 		int number3 = numbers.get(2);
-		if (number1 == number2 || number1 == number3 || number2 == number3) {
+		if (isDuplicate(number1, number2, number3)) {
 			throw new IllegalArgumentException(Constants.BALLS_VALIDATE_ERR_MSG);
 		}
+	}
+
+	private boolean isDuplicate(int number1, int number2, int number3) {
+		return number1 == number2 || number1 == number3 || number2 == number3;
 	}
 
 	private List<BallNumber> mapToBalls(List<Integer> numbers) {
