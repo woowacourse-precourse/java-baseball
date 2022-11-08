@@ -39,7 +39,7 @@ public class Application {
     }
 
     public static boolean isUserInputLengthConstant(int minLength, int maxLength, String userInput) {
-        if (userInput.length() < minLength && userInput.length() > maxLength) {
+        if (userInput.length() < minLength || userInput.length() > maxLength) {
             return false;
         }
 
