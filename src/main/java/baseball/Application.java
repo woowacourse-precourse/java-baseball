@@ -25,7 +25,7 @@ public class Application {
 
     }
 
-    private static String createRandomNumber() {
+    public static String createRandomNumber() {
         String answer = new String();
 
         while (answer.length() < 3) {

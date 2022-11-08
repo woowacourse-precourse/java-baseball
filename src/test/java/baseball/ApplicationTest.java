@@ -69,6 +69,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 랜덤_숫자_생성() {
+        String number = Application.createRandomNumber();
+        assertThat(number.length()).isEqualTo(3);
+        assertThat(number.charAt(0)).isNotEqualTo(number.charAt(1)).isNotEqualTo(number.charAt(2));
+        assertThat(number.charAt(1)).isNotEqualTo(number.charAt(2));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
