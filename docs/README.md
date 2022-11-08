@@ -5,7 +5,7 @@
 - [x] 컴퓨터의 서로 다른 임의의 수 3개를 선택한다. - Computer.selectNumbers()
     - [x] 랜덤한 수를 받는다. - Ball.getRandomNumber()
 - [x] 컴퓨터는 입력한 숫자에 대한 결과를 출력한다. - Computer.printResult()
-    - [x] 컴퓨터는 스트라이크, 볼을 리스트로 변환한다. - Computer.getStrikeBallList()
+    - [x] 컴퓨터는 볼, 스트라이크를 리스트로 변환한다. - Computer.getBallStrikeList()
         - [x] 플레이어는 입력받은 값을 리스트로 변환한다. - Player.StringToList()
             - [x] 잘못된 값이 입력되는것을 검사한다. - Player.checkWrongInput()
             - [x] 입력을 받을 수 있다. - Player.getInput()

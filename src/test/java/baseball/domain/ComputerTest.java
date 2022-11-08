@@ -54,17 +54,17 @@ class ComputerTest {
     }
 
     @Test
-    void 스트라이크_볼_리스트_변환() {
+    void 볼_스트라이크_리스트_변환() {
 
         Computer computer = new Computer();
 
-        List<Integer> strikeBallList = computer.getStrikeBallList(3, 1);
+        List<Integer> strikeBallList = computer.getBallStrikeList(3, 1);
 
         assertThat(strikeBallList).containsExactly(2, 1);
     }
 
     @Test
-    void 스트라이크_볼_출력() {
+    void 볼_스타라이크_출력() {
 
         Computer computer = new Computer();
 

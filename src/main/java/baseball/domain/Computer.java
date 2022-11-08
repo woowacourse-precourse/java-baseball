@@ -25,7 +25,7 @@ public class Computer {
         return strikeBallList.get(0) + "볼 " + strikeBallList.get(1) + "스트라이크";
     }
 
-    public List<Integer> getStrikeBallList(int sameNumbersCnt, int numberOfDigitCnt) {
+    public List<Integer> getBallStrikeList(int sameNumbersCnt, int numberOfDigitCnt) {
         int strike = numberOfDigitCnt;
         int ball = sameNumbersCnt - strike;
         return new ArrayList<>(List.of(ball, strike));
