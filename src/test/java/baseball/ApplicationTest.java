@@ -21,9 +21,33 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 너무_긴_값() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 너무_짧은_값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("11"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 중복된_값() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("999"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 문자열() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("asd"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
