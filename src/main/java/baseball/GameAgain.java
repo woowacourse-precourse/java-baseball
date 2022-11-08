@@ -14,6 +14,6 @@ public class GameAgain {
             runAgain = false;
         }
 
-        return runAgagin;
+        return runAgain;
     }
 }
