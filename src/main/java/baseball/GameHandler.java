@@ -12,6 +12,7 @@ public class GameHandler {
     private static final String NOTHING = "낫싱";
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
+
     public static List<Integer> computerNumber;
     public static List<Integer> inputNumber;
     public static List<Integer> compareResult;
@@ -20,9 +21,11 @@ public class GameHandler {
         computerNumber = new ArrayList<>(3);
         inputNumber = new ArrayList<>(3);
         compareResult = new ArrayList<>(2);
+        System.out.println(GAME_START);
     }
 
     public void inputHandler() {
+        System.out.println(INSERT_NUMBER);
         String input = Console.readLine();
         // validation check
         for(char c : input.toCharArray()) {
