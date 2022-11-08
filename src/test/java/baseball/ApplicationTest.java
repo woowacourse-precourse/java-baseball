@@ -210,7 +210,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 볼검증_테스트() throws Exception{
+    void 볼검증_테스트() throws Exception {
         //given
         Computer computer = new Computer();
         Game game = new Game(computer);
@@ -235,7 +235,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 게임메세지검증_테스트() throws Exception{
+    void 게임메세지검증_테스트() throws Exception {
         //given
         Computer computer = new Computer();
         Game game = new Game(computer);
@@ -259,7 +259,17 @@ class ApplicationTest extends NsTest {
         assertThat(output.toString().trim()).isEqualTo("3스트라이크");
     }
 
-
+    @Test
+    void 게임재시작검증_테스트() {
+        //given
+        Controller controller = new Controller();
+        //when
+        String test = "3";
+        //then
+        assertThatThrownBy(() -> controller.isValidateInput(test))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Input is wrong.");
+    }
 
     @Override
     public void runMain() {
