@@ -34,4 +34,14 @@ public class BaseballService {
         }
     }
 
+    //입력받은 숫자의 리스트에 1~9까지의 숫자가 아닌 그 외의 범위의 숫자가 존재할 경우 예외처리
+    public void isValidInputRange(List<String> inputNumber) {
+        for(String input: inputNumber) {
+            int number = Integer.parseInt(input);
+            if (number < RANGE_START || RANGE_END > 9) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
 }
