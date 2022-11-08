@@ -39,7 +39,7 @@ public class User {
         return Pattern.matches(pattern, inputNumber);
     }
 
-    public boolean isUniqueDigits(String inputNumber) {
+    private boolean isUniqueDigits(String inputNumber) {
         List<Integer> checkNumbers = new ArrayList<>();
 
         for (int i = STARTING_INDEX; i < MAX_LENGTH_OF_NUMBER; i++) {
