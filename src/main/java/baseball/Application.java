@@ -98,7 +98,20 @@ public class Application {
         return false;
     }
 
-
+    /**
+     * 게임승리시 재시작할지 종료할지 받은 값을 처리
+     * @param gameModeInput 게임 승리 후 입력 재시작(1)/종료(2)
+     * @return 재시작시 true, 종료시 false
+     */
+    public static boolean isValidGameModeInput(String gameModeInput){
+        if (gameModeInput.equals("1")){
+            return true;
+        } else if (gameModeInput.equals("2")) {
+            return false;
+        }else {
+            throw new IllegalArgumentException();
+        }
+    }
     public static void main(String[] args) {
         List<Integer> computer = generateThreeDifferentNum();
         String playerInput = Console.readLine();
