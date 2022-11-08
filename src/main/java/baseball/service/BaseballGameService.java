@@ -2,6 +2,7 @@ package baseball.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,12 +44,11 @@ public class BaseballGameService {
 
     private Integer ballChecker(List<Integer> userInput, List<Integer> answerNumbers) {
         Integer ball = 0;
-        Integer strikeAndBall = 0;
-        for (int i = 0; i < userInput.size(); i++) {
-            if (answerNumbers.contains(userInput.get(i))) {
-                strikeAndBall += 1;
-            }
-        }
+
+        int strikeAndBall = (int)userInput.stream()
+                .filter(s -> answerNumbers.contains(s))
+                .count();
+
         ball = strikeAndBall - strikeChecker(userInput, answerNumbers);
 
         return ball;
