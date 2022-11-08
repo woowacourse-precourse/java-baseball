@@ -1,25 +1,38 @@
 package baseball;
 
 import java.util.ArrayList;
-
 import java.util.List;
-import java.util.Scanner;
 import camp.nextstep.edu.missionutils.Randoms;
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Console;
+
+public class Application {
+	public static void main(String[] args) {
+		baseball baseball_game = new baseball();
+	}
+}
 
 class baseball {
-
-	Scanner number = new Scanner(System.in);
-	List<Integer> tmp_List = new ArrayList<>(3);
-	List<Integer> correct = new ArrayList<>(3);
-	int inputnum;
+	private List<Integer> userNumList = new ArrayList<>(3);
+	private List<Integer> correct = new ArrayList<>(3);
 
 	baseball() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		game();
 	}
 
-	void getrandomNum() {
+	private void game() {
+		do {
+			getRandomNum();
+			getUserInputNum();
+			compare();
+			while (!result()) {
+				getUserInputNum();
+				compare();
+			}
+		} while (repeatGame() == 1);
+	}
+
+	public void getRandomNum() {
 		while (correct.size() < 3) {
 			int randomNumber = Randoms.pickNumberInRange(1, 9);
 			if (!correct.contains(randomNumber)) {
@@ -28,76 +41,38 @@ class baseball {
 		}
 	}
 
-	int repeat_game() {
-		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-		int n = Integer.parseInt(readLine());
-		return n;
-	}
-
-	void get_user_input_num() {
-
-		tmp_List.clear();
+	public void getUserInputNum() {
+		userNumList.clear();
 		System.out.println("숫자를 입력해주세요 : ");
-		int n = Integer.parseInt(readLine());
+		int n = Integer.parseInt(Console.readLine());
 
 		if (n > 999 || n < 100) {
 			throw new IllegalArgumentException("자리수를 확인해주세요");
 		}
 
-		int user_num = n;
-
-		int one = user_num / 100;
-		int two = user_num / 10 % 10;
-		int three = user_num % 10;
+		int userNum = n;
+		int one = userNum / 100;
+		int two = userNum / 10 % 10;
+		int three = userNum % 10;
 
 		for (int cipher = 0; cipher < 3; cipher++) {
 			if (cipher == 0) {
-				tmp_List.add(cipher, one);
+				userNumList.add(cipher, one);
 			} else if (cipher == 1) {
-				tmp_List.add(cipher, two);
+				userNumList.add(cipher, two);
 			} else if (cipher == 2) {
-				tmp_List.add(cipher, three);
+				userNumList.add(cipher, three);
 			}
 		}
 	}
 
-	void game() {
-		do {
-			getrandomNum();
-			get_user_input_num();
-			compare();
-			while (!result()) {
-				get_user_input_num();
-				compare();
-			}
-		} while (repeat_game() == 1);
-	}
-
-	boolean result() {
-		int cnt = 0;
-
-		for (int cipher = 0; cipher < 3; cipher++) {
-			if (tmp_List.get(cipher) == correct.get(cipher)) {
-				cnt++;
-			}
-		}
-		if (cnt == 3) {
-			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-			tmp_List.clear();
-			correct.clear();
-			return true;
-		}
-		return false;
-	}
-
-	void compare() {
+	public void compare() {
 		int ball = 0;
 		int strike = 0;
-		int cipher;
-		for (cipher = 0; cipher < 3; cipher++) {
-			if (tmp_List.get(cipher) == correct.get(cipher)) {
+		for (int cipher = 0; cipher < 3; cipher++) {
+			if (userNumList.get(cipher) == correct.get(cipher)) {
 				strike++;
-			} else if (tmp_List.contains(correct.get(cipher))) {
+			} else if (userNumList.contains(correct.get(cipher))) {
 				ball++;
 			}
 		}
@@ -111,10 +86,28 @@ class baseball {
 			System.out.println("낫싱");
 		}
 	}
-}
 
-public class Application {
-	public static void main(String[] args) {
-		baseball baseball_game = new baseball();
+	public boolean result() {
+		int cnt = 0;
+
+		for (int cipher = 0; cipher < 3; cipher++) {
+			if (userNumList.get(cipher) == correct.get(cipher)) {
+				cnt++;
+			}
+		}
+
+		if (cnt == 3) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			userNumList.clear();
+			correct.clear();
+			return true;
+		}
+		return false;
 	}
+
+	public int repeatGame() {
+		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+		return Integer.parseInt(Console.readLine());
+	}
+
 }
