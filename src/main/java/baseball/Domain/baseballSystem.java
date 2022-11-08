@@ -1,6 +1,6 @@
-package baseball.Controller;
+package baseball.Domain;
 
-import baseball.Model.Constant;
+import baseball.Util.Constant;
 
 import java.util.List;
 
@@ -8,29 +8,30 @@ public class baseballSystem {
 
     private final List<Integer> userInputNumber;
     private final List<Integer> computerAnswerNumber;
-    private int strikeNumber;
-    private int ballNumber;
-    private boolean winTheGame;
-    private boolean nothingInNumber;
+    private static int strikeNumber;
+    private static int ballNumber;
+    private static boolean winTheGame;
+    private static boolean nothingInNumber;
 
     public baseballSystem(List<Integer> userInputNumber, List<Integer> computerAnswerNumber) {
         this.userInputNumber = userInputNumber;
         this.computerAnswerNumber = computerAnswerNumber;
+        prepareGameStatus();
     }
 
-    public int getBallNumber() {
+    public static int getBallNumber() {
         return ballNumber;
     }
 
-    public int getStrikeNumber() {
+    public static int getStrikeNumber() {
         return strikeNumber;
     }
 
-    public boolean isWinTheGame() {
+    public static boolean isWinTheGame() {
         return winTheGame;
     }
 
-    public boolean isNothingInNumber() {
+    public static boolean isNothingInNumber() {
         return nothingInNumber;
     }
 
