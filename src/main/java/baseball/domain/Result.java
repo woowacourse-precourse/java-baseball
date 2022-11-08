@@ -15,13 +15,13 @@ public class Result {
         }
     }
 
+    public int get(ResultType resultType) {
+        return this.result.get(resultType);
+    }
+
     public void add(ResultType resultType) {
         Integer added = this.result.get(resultType) + 1;
         this.result.put(resultType, added);
-    }
-
-    public int get(ResultType resultType) {
-        return this.result.get(resultType);
     }
 
     public boolean isNothing() {
