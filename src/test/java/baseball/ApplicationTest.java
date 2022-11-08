@@ -19,28 +19,28 @@ class ApplicationTest extends NsTest {
 
         @Test
         @DisplayName("0볼 0스트라이크 결과 테스트")
-        void 결과테스트_낫싱() {
+        void case1() {
             Result result = new Result(0, 0);
             assertThat(result.toString()).isEqualTo("낫싱");
         }
 
         @Test
         @DisplayName("1볼 0스트라이크 결과 테스트")
-        void 결과테스트_1볼() {
+        void case2() {
             Result result = new Result(0, 1);
             assertThat(result.toString()).isEqualTo("1볼");
         }
 
         @Test
         @DisplayName("0볼 1스트라이크 결과 테스트")
-        void 결과테스트_1스트라이크() {
+        void case3() {
             Result result = new Result(1, 0);
             assertThat(result.toString()).isEqualTo("1스트라이크");
         }
 
         @Test
         @DisplayName("1볼 1스트라이크 결과 테스트")
-        void 결과테스트_1볼_1스트라이크() {
+        void case4() {
             Result result = new Result(1, 1);
             assertThat(result.toString()).isEqualTo("1볼 1스트라이크");
         }
@@ -100,7 +100,7 @@ class ApplicationTest extends NsTest {
         class ExceptionTest {
 
             @Test
-            @DisplayName("")
+            @DisplayName("특수문자가 입력된다")
             void case1() {
                 assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException(" "))
@@ -109,7 +109,7 @@ class ApplicationTest extends NsTest {
             }
 
             @Test
-            @DisplayName("")
+            @DisplayName("숫자가 아닌 문자가 입력된다")
             void case2() {
                 assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("hello"))
@@ -118,7 +118,7 @@ class ApplicationTest extends NsTest {
             }
 
             @Test
-            @DisplayName("")
+            @DisplayName("길이가 초과된 숫자가 입력된다")
             void case3() {
                 assertSimpleTest(() ->
                     assertThatThrownBy(() -> runException("1234"))
@@ -151,7 +151,7 @@ class ApplicationTest extends NsTest {
                         run("312", "123", "1", "645", "456", "1", "987", "789", "2");
                         assertThat(output()).contains("3볼", "2볼 1스트라이크", "3스트라이크", "게임 종료");
                     },
-                    1, 2, 3,4,5,6,7,8,9
+                    1, 2, 3, 4, 5, 6, 7, 8, 9
                 );
             }
 
