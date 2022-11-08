@@ -6,9 +6,9 @@ public class Set {
 
     List<String> computerAnswer;
     List<String> userAnswer;
+    Calculator calculator;
     int ball = 0;
     int strike = 0;
-    Calculator calculator;
 
     public Set(List<String> computerAnswer, List<String> userAnswer) {
         calculator = new Calculator(computerAnswer, userAnswer);

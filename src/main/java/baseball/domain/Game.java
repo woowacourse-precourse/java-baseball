@@ -16,12 +16,11 @@ public class Game {
         isFirstGame = true;
         this.user = new User();
         this.computer = new Computer();
+        message.initialGameMessage();
     }
 
     public void startGame() {
         computerAnswer = computer.getComputerAnswer();
-        message.initialGameMessage();
-
         boolean isCorrectSet = false;
         while (!isCorrectSet) {
             isCorrectSet = startSet();
