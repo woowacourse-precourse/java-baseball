@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.HashSet;
+import java.util.List;
 
+import static baseball.Application.generateComputerNumber;
 import static baseball.Application.welcomeMessage;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -35,12 +38,22 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 안내메시지_테스트(){
-        String msg = "숫자 야구 게임을 시작합니다.\r\n";
+        String msg = "숫자 야구 게임을 시작합니다.";
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         welcomeMessage();
-        assertThat(msg).isEqualTo(out.toString());
+        assertThat(msg).isEqualTo(out.toString().trim());
     }
+
+   @Test
+   void 랜덤숫자생성_테스트(){
+       List<Integer> randomNumbers = generateComputerNumber();
+       assertThat(new HashSet<>(randomNumbers).size()).isEqualTo(randomNumbers.size());
+       for (Integer i:randomNumbers) {
+           int digit = i.intValue();
+           assertThat(digit).isBetween(1,9);
+       }
+   }
 
     @Override
     public void runMain() {
