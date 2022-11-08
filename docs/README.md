@@ -36,14 +36,6 @@
 - `constant` : 상수와 메시지를 관리하는 패키지
   - `GameConstant`
   - `GameMessage`
-- `exception` : 사용자 입력 값에 대한 검증 클래스 관리하는 패키지
-  - `RestartNumberValidator`
-    - `checkValidationRestartNumber`
-  - `UserNumberValidator`
-    - `checkValidationUserNumber`
-    - `isDifferent`
-    - `isThreeNumber`
-    - `isNotZero`
 - `game` : 야구게임이 진행되는 주 클래스를 관리하는 패키지
   - `BaseballGame`
     - `playBaseballGame`
@@ -61,3 +53,11 @@
   - `UserNumber`
     - `inputUserNumber`
     - `checkInputUserNumber`
+- `validator` : 사용자 입력 값에 대한 검증 클래스 관리하는 패키지
+  - `RestartNumberValidator`
+    - `checkValidationRestartNumber`
+  - `UserNumberValidator`
+    - `checkValidationUserNumber`
+    - `isDifferent`
+    - `isThreeNumber`
+    - `isNotZero`
