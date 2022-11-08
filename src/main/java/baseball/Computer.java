@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Computer {
     private List<Integer> answer = new ArrayList<>();
     private boolean isGameEnd = false;
 
-    public void ready(){
+    public void ready() {
         setAnswer();
         setIsGameEnd(false);
     }

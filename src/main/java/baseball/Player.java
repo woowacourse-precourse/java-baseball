@@ -52,10 +52,10 @@ public class Player {
     private boolean validContinueGame(String input) {
         final String CONTINUE_GAME = "1";
         final String FINISH_GAME = "2";
-        if (input.equals(CONTINUE_GAME)){
+        if (input.equals(CONTINUE_GAME)) {
             return true;
         }
-        if (input.equals(FINISH_GAME)){
+        if (input.equals(FINISH_GAME)) {
             return true;
         }
         return false;
