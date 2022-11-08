@@ -22,8 +22,9 @@ class PlayTest extends NsTest {
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
     }
 
+
+
     @Override
     public void runMain() {
-        Application.main(new String[]{});
     }
 }
