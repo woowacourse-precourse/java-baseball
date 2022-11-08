@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import java.util.Objects;
-import java.util.Optional;
 
 public class Result {
     private int ball = 0;

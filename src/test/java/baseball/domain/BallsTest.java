@@ -12,7 +12,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 public class BallsTest {
@@ -49,13 +48,13 @@ public class BallsTest {
     @DisplayName("3단계 : play Strike")
     @Test
     public void playStrikeTest() {
-        assertThat(balls.play(0,new Ball(1))).isEqualTo(Optional.of(Judgement.STRIKE));
+        assertThat(balls.play(0,new Ball(1))).isEqualTo(Judgement.STRIKE);
     }
 
     @DisplayName("3단계 : play Ball")
     @Test
     public void playBallTest() {
-        assertThat(balls.play(0, new Ball(2))).isEqualTo(Optional.of(Judgement.BALL));
+        assertThat(balls.play(0, new Ball(2))).isEqualTo(Judgement.BALL);
     }
 
     private static Stream<Arguments> generateForException() {
