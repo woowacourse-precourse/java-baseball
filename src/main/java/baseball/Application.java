@@ -40,6 +40,9 @@ class Array {
 class Game {
 
     private static final String INPUT_NUMBER_MESSAGE = "숫자를 입력해 주세요 : ";
+    private static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    //private static final String NEW_GAME_CHECK_MESSAGE = "게임을 새로 시작하려면 " + Game.NEW_GAME + ", 종료하려면 " + Game.QUIT_GAME + "를 입력하세요.";
+    private static final String NEW_GAME_CHECK_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     int[] number = new int[3];
 
@@ -64,6 +67,33 @@ class Game {
         for (int i = 0; i < 3; i++) {
             number[i] = Integer.parseInt(str.charAt(i) + "");
         }
+    }
+
+    public static void init(Game gameAnswer) {
+        Game answer = Game.userAnswer();
+
+        Hint hint = new Hint();
+        int[] count = hint.hintResult(answer, gameAnswer);
+        hint.hintMessage(count);
+
+        if (hint.strike != 3) {
+            Game.init(gameAnswer);
+            return;
+        }
+
+        int newGameAnswer = Game.newGameStart();
+        if (newGameAnswer == 1) {
+            gameAnswer = new Game();
+            Game.init(gameAnswer);
+        }
+    }
+
+    static int newGameStart() {
+        System.out.println(SUCCESS_MESSAGE);
+        System.out.println(NEW_GAME_CHECK_MESSAGE);
+
+        String newGameAnswer = readLine();
+        return 1;
     }
 
     static Game userAnswer() {
