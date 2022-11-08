@@ -6,9 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-//***함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.***
-//11/07 디버깅, 리팩토링(한 번에 한 가지 일만, 최대한 작게), 코드 컨벤션, 커밋 컨벤션, 테스트 케이스 추가(11/08로)
-//11/08 리팩토링, 코드 컨벤션, 테스트 케이스 추가하기()
 public class Application {
     public static void main(String[] args) {
         playGame();
@@ -16,15 +13,16 @@ public class Application {
 
     public static void playGame() {
         List<Integer> whatComputerInputs = new ArrayList<>();
-        boolean startAgain = false;
+        boolean isGameFinished = false;
+
         System.out.println(Referee.START_GAME.ordered());
         putRandomNumbersTo(whatComputerInputs);
-        while (startAgain == false) {
+        while (isGameFinished == false) {
             List<Integer> whatClientInputs = getWhatClientInputs();
             checkNothing(whatComputerInputs, whatClientInputs);
-            startAgain = shoutBallsAndStrikes(whatComputerInputs, whatClientInputs);
+            isGameFinished = shoutBallsAndStrikes(whatComputerInputs, whatClientInputs);
         }
-        if (startAgain == true) {
+        if (isGameFinished == true) {
             String finishOrRestart = askFinishOrRestart();
             confirmFinishOrRestart(finishOrRestart);
         }
@@ -44,10 +42,9 @@ public class Application {
     }
 
     public static List<Integer> getWhatClientInputs() {
-        String guessedNumbers;
-        guessedNumbers = inputThreeDistinctNumbers();
+        String guessedNumbers = inputThreeDistinctNumbers();
         isValid(guessedNumbers);
-        List<Integer> whatClientInputs = stringToIntegerList(guessedNumbers);
+        List<Integer> whatClientInputs = makeStringToIntegerList(guessedNumbers);
         return whatClientInputs;
     }
 
@@ -57,7 +54,7 @@ public class Application {
         return answeredNumbers;
     }
 
-    public static List<Integer> stringToIntegerList(String numbers) {
+    public static List<Integer> makeStringToIntegerList(String numbers) {
         String[] temporaryArray = numbers.split("");
         List<Integer> guessedNumbers = new ArrayList<>();
         for (String stringNumber : temporaryArray) {
@@ -67,22 +64,42 @@ public class Application {
     }
 
     public static void isValid(String whatClientInputs) {
-        if (whatClientInputs.isBlank() || whatClientInputs.length() != 3) {
+        try {
+            throwExceptionWhenItIsBlank(whatClientInputs);
+            throwExceptionWhenLengthIsNotThree(whatClientInputs);
+            throwExceptionWhenDigitsAreSame(whatClientInputs);
+            throwExceptionWhenItIsNotNumber(whatClientInputs);
+        } catch (Exception exit_program) {
             makeException();
         }
+    }
+
+    public static void throwExceptionWhenItIsBlank(String whatClientInputs) {
+        if (whatClientInputs.isBlank()) {
+            makeException();
+        }
+    }
+
+    public static void throwExceptionWhenLengthIsNotThree(String whatClientInputs) {
+        if (whatClientInputs.length() != 3) {
+            makeException();
+        }
+    }
+
+    public static void throwExceptionWhenDigitsAreSame(String whatClientInputs) {
         if (whatClientInputs.charAt(0) == whatClientInputs.charAt(1)
                 || whatClientInputs.charAt(1) == whatClientInputs.charAt(2)
                 || whatClientInputs.charAt(0) == whatClientInputs.charAt(2)) {
             makeException();
         }
-        isNumber(whatClientInputs);
     }
 
-    public static void isNumber(String certainNumber) {
+    public static void throwExceptionWhenItIsNotNumber(String certainNumber) {
         boolean numberOrNot = false;
         for (int characterIndex = 0; characterIndex < certainNumber.length(); characterIndex++) {
             //ASCII Code ((int)'0')==48, ((int)'9'==57)
-            if ((int) certainNumber.charAt(characterIndex) >= 48 || (int) certainNumber.charAt(characterIndex) <= 57) {
+            if ((int) certainNumber.charAt(characterIndex) >= 48
+                    || (int) certainNumber.charAt(characterIndex) <= 57) {
                 numberOrNot = true;
             }
         }
@@ -92,7 +109,7 @@ public class Application {
     }
 
     public static void makeException() {
-        IllegalArgumentException exit_program = new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+        IllegalArgumentException exit_program = new IllegalArgumentException();
         throw exit_program;
     }
 
@@ -125,48 +142,40 @@ public class Application {
     }
 
     public static boolean shoutBallsAndStrikes(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
-        if (speakThreeStrike(numbersToGetRight, guessedNumbers)) {
-            return speakThreeStrike(numbersToGetRight, guessedNumbers);
-        }
-        speakBall(numbersToGetRight, guessedNumbers);
-        speakStrike(numbersToGetRight, guessedNumbers);
-        speakBallAndStrike(numbersToGetRight, guessedNumbers);
-        return false;
-    }
-
-    public static boolean speakThreeStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
-        int strike = countStrikes(numbersToGetRight, guessedNumbers);
+        int strike = countStrikes(numbersToGetRight,guessedNumbers);
+        int ball = countBalls(numbersToGetRight,guessedNumbers);
         if (strike == 3) {
-            System.out.println(strike + Referee.STRIKE.ordered());
-            return true;
-        } else {
-            return false;
+            return declareThreeStrike(strike, ball);
         }
-    }
-
-    public static boolean speakBall(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
-        int ball = countBalls(numbersToGetRight, guessedNumbers);
-        if (ball != 0 && ball == 0) {
-            System.out.println(ball + Referee.BALL.ordered());
+        if (ball != 0 && strike == 0) {
+            return declareBall(strike, ball);
         }
-        return false;
-    }
-
-    public static boolean speakStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
-        int ball = countBalls(numbersToGetRight, guessedNumbers);
-        int strike = countStrikes(numbersToGetRight, guessedNumbers);
         if (ball == 0 && strike != 0) {
-            System.out.println(strike + Referee.STRIKE.ordered());
+            return declareStrike(strike, ball);
+        }
+        if (ball != 0 && strike != 0) {
+            return declareBallAndStrike(strike, ball);
         }
         return false;
     }
 
-    public static boolean speakBallAndStrike(List<Integer> numbersToGetRight, List<Integer> guessedNumbers) {
-        int ball = countBalls(numbersToGetRight, guessedNumbers);
-        int strike = countStrikes(numbersToGetRight, guessedNumbers);
-        if (ball != 0 && strike != 0) {
-            System.out.println(ball + Referee.BALL.ordered() + strike + Referee.STRIKE.ordered());
-        }
+    public static boolean declareThreeStrike(int strike, int ball) {
+        System.out.println(strike + Referee.STRIKE.ordered());
+        return true;
+    }
+
+    public static boolean declareBall(int strike, int ball) {
+        System.out.println(ball + Referee.BALL.ordered());
+        return false;
+    }
+
+    public static boolean declareStrike(int strike, int ball) {
+        System.out.println(strike + Referee.STRIKE.ordered());
+        return false;
+    }
+
+    public static boolean declareBallAndStrike(int strike, int ball) {
+        System.out.println(ball + Referee.BALL.ordered() + strike + Referee.STRIKE.ordered());
         return false;
     }
 
@@ -178,8 +187,6 @@ public class Application {
     }
 
     public static void confirmFinishOrRestart(String finishOrRestart) {
-
-
         if (Integer.parseInt(finishOrRestart) == 2) {
             return;
         }
@@ -191,7 +198,6 @@ public class Application {
             makeException();
         }
     }
-
 }
 
 enum Referee {
