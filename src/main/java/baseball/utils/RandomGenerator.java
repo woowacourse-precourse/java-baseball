@@ -1,12 +1,12 @@
 package baseball.utils;
 
-import java.util.Random;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public abstract class RandomGenerator {
-    private static final Random random = new Random();
+    private static final int MIN_BOUND = 1;
     private static final int MAX_BOUND = 9;
 
     public static int generateRandomNumber() {
-        return random.nextInt(MAX_BOUND) + 1;
+        return Randoms.pickNumberInRange(MIN_BOUND, MAX_BOUND);
     }
 }
