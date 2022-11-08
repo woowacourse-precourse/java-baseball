@@ -9,7 +9,6 @@ public class Executor {
 
     private static  final int RESTART = 1;
     private static final int EXIT = 2;
-
     private BaseballResult guessResult;
     private final Checker checker = new Checker();
     private boolean flag = true;

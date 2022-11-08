@@ -20,7 +20,9 @@ public class BaseballResult {
         }
         return  ballAndStrike();
     }
-
+    public boolean isALLCorrect() {
+        return result.containsKey(STRIKE) && result.get(STRIKE) == ANSWER_COUNT;
+    }
     private String ballAndStrike() {
         if(!result.containsKey(STRIKE)) {
             return result.get(BALL) + "볼";
@@ -31,9 +33,6 @@ public class BaseballResult {
             String strike = result.get(STRIKE) + "스트라이크";
             return  ball + ' ' + strike;
         }
-    }
-    public boolean isALLCorrect() {
-        return result.containsKey(STRIKE) && result.get(STRIKE) == ANSWER_COUNT;
     }
 
 }
