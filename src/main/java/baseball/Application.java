@@ -27,8 +27,14 @@ public class Application {
         return playerNum;
     }
 
+    public static boolean DuplicateInput(String num){
+        char num1 = num.charAt(0);
+        char num2 = num.charAt(1);
+        char num3 = num.charAt(2);
+        return (num1 == num2 || num2 == num3 || num1 == num3);
+    }
     public static boolean InvalidInput(String num){
-        return num.length() != 3;
+        return (num.length() != 3) || DuplicateInput(num);
     }
     public static String CompareNum(ArrayList<Integer> answer, ArrayList<Integer> playerNum){
         String result = "";
@@ -89,8 +95,6 @@ public class Application {
     public static void main(String[] args) {
 //        System.out.println(answer);
         Execute();
-
-
         // TODO: 프로그램 구현
     }
 }
