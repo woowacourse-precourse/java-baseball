@@ -7,40 +7,30 @@ import java.util.Set;
 
 public final class Validator {
 
-    public static boolean isValidLength(int number){
-        int index = number;
-
-        if (index<100 || index > 999){
-            return false;
+    public static void isValidNumber(String userNumber) throws  IllegalArgumentException{
+        if (Integer.parseInt(userNumber)<100 || Integer.parseInt(userNumber) > 999){
+            throw new IllegalArgumentException();
         }
-        return true;
+        if (userNumber.contains("0")){
+            throw new IllegalArgumentException();
+        }
     }
-    public static boolean isDupilicated(int number){
+    public static boolean isDupilicated(String UserNumber){
         List<Character> checkDulicate = new ArrayList<>();
 
-        for (int len = String.valueOf(number).length(), i= 0; i < len; i++){
-            checkDulicate.add(String.valueOf(number).charAt(i));
+        for (int len = UserNumber.length(), i= 0; i < len; i++){
+            checkDulicate.add(UserNumber.charAt(i));
         }
-        Set<Character> chaekSet = new HashSet<>(checkDulicate);
-        if (checkDulicate.size()!= chaekSet.size()){
+        Set<Character> checkSet = new HashSet<>(checkDulicate);
+        if (checkDulicate.size()!= checkSet.size()){
             return false;
         }
         return true;
     }
-    public static boolean isNumeric(int number){
-        String s = String.valueOf(number);
-        char[] c = new char[s.length()];
+    public static void isRestartGame(int command) throws IllegalArgumentException{
+        if (command == 1 || command ==2){
 
-        for (int len = s.length(), i = 0; i < len; i++){
-            c[i] = s.charAt(i);
         }
-        for (char check : c){
-            if (check >= 48&& check<=57){
-                continue;
-            } else{
-                return false;
-            }
-        }
-        return true;
+        throw new IllegalArgumentException();
     }
 }
