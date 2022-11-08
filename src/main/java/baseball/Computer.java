@@ -2,33 +2,40 @@ package baseball;
 
 public class Computer {
     private String answer;
-    private int ball;
-    private int strike;
 
     public Computer(String answer) {
         this.answer = answer;
     }
 
     public String getHint(String inputNumber) {
-        ball = 0;
-        strike = 0;
-        for(int i=0; i<inputNumber.length(); i++) {
-            char c = inputNumber.charAt(i);
-            checkHintOf(c, i);
-        }
-        return getHintMessage();
+        int strike = countStrike(inputNumber);
+        int ball = countAll(inputNumber) - strike;
+        return getHintMessage(strike, ball);
     }
 
-    private void checkHintOf(char c, int index) {
-        if(answer.charAt(index) == c) {
-            strike++;
+    private int countStrike(String input) {
+        int count = 0;
+        for(int i=0; i<input.length(); i++) {
+            char c = input.charAt(i);
+            if(answer.charAt(i) == c) {
+                count++;
+            }
         }
-        else if(answer.contains(String.valueOf(c))) {
-            ball++;
-        }
+        return count;
     }
 
-    private String getHintMessage() {
+    private int countAll(String input) {
+        int count = 0;
+        for(int i=0; i<input.length(); i++) {
+            char c = input.charAt(i);
+            if(answer.contains(String.valueOf(c))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private String getHintMessage(int strike, int ball) {
         if(ball == 0 && strike == 0) {
             return "낫싱";
         }
