@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Arrays;
+import java.util.Random;
 
 public class BaseBall {
 	private int[] goalArr;
@@ -47,6 +49,9 @@ public class BaseBall {
 	}
 
 	private void gamePrepare() {
+		goalArr = new int[Constants.NUM_DIGIT];
+		goalUsageArr = new int[Constants.NUM_BOUNDARY];
+		ballArr = new int[Constants.NUM_DIGIT];
 		makeGoal();
 	}
 
