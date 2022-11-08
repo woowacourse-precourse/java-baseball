@@ -12,6 +12,20 @@ public class User extends Player {
 
     }
 
+    private void validUserInput(String userInput) {
+        if (!isSelectRightNumber(userInput)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (hasNotInputNumber(userInput)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (hasDuplicateBall(userInput)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private boolean isSelectRightNumber(String userInput) {
         return userInput.length() == 3;
     }
