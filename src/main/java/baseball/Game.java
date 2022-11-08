@@ -11,6 +11,8 @@ public class Game {
     static final String SOME_CORRECT = "%d볼 %d스트라이크\n";
     static final String ALL_CORRECT = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     static final String END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    static final int AGAIN_GAME = 1;
+    static final int EXIT_GAME = 2;
 
     private Computer computer = new Computer();
     private User user = new User();
@@ -45,7 +47,7 @@ public class Game {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Computer.NUMBER_LENGTH; i++) {
             int idx = userNumberString.indexOf(computerNumString.charAt(i));
 
             if (idx == i) {
@@ -63,9 +65,9 @@ public class Game {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException();
         }
-        if (flag == 1) {
+        if (flag == AGAIN_GAME) {
             return true;
-        } else if (flag == 2) {
+        } else if (flag == EXIT_GAME) {
             return false;
         } else {
             throw new IllegalArgumentException();
@@ -73,7 +75,7 @@ public class Game {
     }
 
     void printMessage(int strike, int ball) {
-        if (strike == 3) {
+        if (strike == Computer.NUMBER_LENGTH) {
             System.out.println(ALL_CORRECT);
         } else if (strike == 0 && ball == 0) {
             System.out.println(NOTHING);

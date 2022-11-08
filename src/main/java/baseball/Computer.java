@@ -11,7 +11,7 @@ public class Computer {
 
     static final int FIRST_NUM = 1;
     static final int LAST_NUM = 9;
-    static final int MAX_DIGIT = 3;
+    static final int NUMBER_LENGTH = 3;
 
     public List<Integer> makeComputerNumber() {
         List<Integer> computerNumber = makeRandomNumber();
@@ -28,7 +28,7 @@ public class Computer {
     public List<Integer> makeRandomNumber() {
         List<Integer> randomNum = new ArrayList<>();
 
-        for (int i = 0; i < MAX_DIGIT; i++) {
+        for (int i = 0; i < NUMBER_LENGTH; i++) {
             randomNum.add(Randoms.pickNumberInRange(FIRST_NUM, LAST_NUM));
         }
 
