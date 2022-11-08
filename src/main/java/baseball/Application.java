@@ -6,13 +6,12 @@ public class Application {
     private static final String QUIT = "2";
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        boolean isApplicationRun = true;
-        while (isApplicationRun) {
+        boolean isApplicationRun;
+        do {
             Game.startGame();
-            String input = Game.ResetGameOrQuit();
+            String input = Game.resetGameOrQuit();
             isApplicationRun = isAppRun(input);
-        }
+        } while (isApplicationRun);
     }
 
     private static boolean isAppRun(String input) {

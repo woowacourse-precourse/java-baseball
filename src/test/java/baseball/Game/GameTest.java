@@ -16,7 +16,7 @@ class GameTest {
         String invalidInput = "3";
         InputStream in = new ByteArrayInputStream(invalidInput.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> Game.ResetGameOrQuit()).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> Game.resetGameOrQuit()).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("시작하려면 1, 종료하려면 2 둘 중 하나를 입력해주세요");
     }
 }
