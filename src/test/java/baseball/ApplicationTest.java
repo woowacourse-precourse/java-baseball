@@ -8,7 +8,27 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ApplicationTest extends NsTest {
+    @Test
+    void Strike_Test() {
+        List<Integer> computerInput = List.of(1, 2, 3);
+        List<Integer> userInput = List.of(3, 2, 9);
+        List<Integer> result = List.of(1);
+        assertThat(Application.checkStrike(computerInput, userInput)).isEqualTo(result);
+    }
+
+    @Test
+    void Ball_Test() {
+        List<Integer> computerInput = List.of(1, 2, 3);
+        List<Integer> userInput = List.of(3, 2, 9);
+        List<Integer> strikeIndex = Application.checkStrike(computerInput, userInput);
+        int result = 1;
+        assertThat(Application.checkBall(computerInput, userInput, strikeIndex)).isEqualTo(result);
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
