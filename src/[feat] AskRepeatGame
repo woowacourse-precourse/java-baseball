@@ -1,0 +1,17 @@
+package baseball;
+
+import java.util.Scanner;
+
+import static java.lang.Integer.parseInt;
+
+public class AskRepeatGame {
+  
+    public static int askReGame(Scanner scan){
+        int repeat;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        repeat = parseInt(scan.nextLine());
+
+        return repeat;
+    }
+}
