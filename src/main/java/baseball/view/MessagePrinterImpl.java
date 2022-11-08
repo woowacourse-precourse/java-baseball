@@ -3,12 +3,12 @@ package baseball.view;
 public class MessagePrinterImpl implements MessagePrinter{
     @Override
     public void printGameStart() {
-        System.out.println(MessagesForPrint.GAMESTART.getMessage());
+        System.out.println(MessagesForPrint.GAME_START.getMessage());
     }
 
     @Override
     public void printReqGameNumbersInput() {
-        System.out.printf(MessagesForPrint.INPUTNUMBER.getMessage());
+        System.out.printf(MessagesForPrint.INPUT_NUMBER.getMessage());
     }
 
     @Override
