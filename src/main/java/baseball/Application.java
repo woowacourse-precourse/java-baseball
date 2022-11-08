@@ -15,6 +15,9 @@ public class Application {
 }
 
 class Baseball {
+    private final int NUMBER_SIZE = 3;
+    private final int BALL_INDEX = 0;
+    private final int STRIKE_INDEX = 1;
     private List<Integer> computerNumber = new ArrayList<>();
     private List<Integer> playerNumber = new ArrayList<>();
     private List<Integer> baseballCount = List.of(0, 0);
@@ -43,7 +46,7 @@ class Baseball {
     }
 
     public void pickRandomNumber() {
-        for (int i = 0; i < 3;) {
+        for (int i = 0; i < NUMBER_SIZE;) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
                 computerNumber.add(randomNumber);
@@ -66,7 +69,7 @@ class Baseball {
     }
     public void playerNumberList(String getPlayerNumber) {
         int playerNum = Integer.parseInt(getPlayerNumber);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             playerNumber.add(playerNum % 10);
             playerNum /= 10;
         }
@@ -80,7 +83,7 @@ class Baseball {
         }
     }
     public boolean playerNumberOverLength (String getPlayerNumber) {
-        boolean getException = (getPlayerNumber.length() != 3);
+        boolean getException = (getPlayerNumber.length() != NUMBER_SIZE);
         return getException;
     }
     public boolean playerNumberGetChar (String getPlayerNumber) {
@@ -90,8 +93,8 @@ class Baseball {
     }
 
     public void comparisonPlayerComputer() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
+            for (int j = 0; j < NUMBER_SIZE; j++) {
                 comparisonNumber(playerNumber.get(i), computerNumber.get(j), i, j);
             }
         }
@@ -99,9 +102,9 @@ class Baseball {
     public void comparisonNumber(int playerNumber, int computerNumber, int i, int j) {
         if (playerNumber == computerNumber) {
             if (i == j) {
-                countBaseball(0);
+                countBaseball(STRIKE_INDEX);
             } else {
-                countBaseball(1);
+                countBaseball(BALL_INDEX);
             }
         }
     }
@@ -112,7 +115,7 @@ class Baseball {
     }
 
     public void printBaseballScore() {
-        if (baseballCount.get(0) == 0 && baseballCount.get(1) == 0) {
+        if (baseballCount.get(STRIKE_INDEX) == 0 && baseballCount.get(BALL_INDEX) == 0) {
             System.out.print("낫싱");
         } else {
             printBall();
@@ -120,19 +123,19 @@ class Baseball {
         }
     }
     public void printStrike() {
-        if (baseballCount.get(0) != 0) {
-            System.out.printf("%d스트라이크", baseballCount.get(0));
+        if (baseballCount.get(STRIKE_INDEX) != 0) {
+            System.out.printf("%d스트라이크", baseballCount.get(STRIKE_INDEX));
         }
     }
     public void printBall() {
-        if (baseballCount.get(1) != 0) {
-            System.out.printf("%d볼 ", baseballCount.get(1));
+        if (baseballCount.get(BALL_INDEX) != 0) {
+            System.out.printf("%d볼 ", baseballCount.get(BALL_INDEX));
         }
     }
 
     public boolean rightAnswer() {
         boolean success = false;
-        if (baseballCount.get(0) == 3) {
+        if (baseballCount.get(STRIKE_INDEX) == 3) {
             success = true;
         }
         return !success;
@@ -151,13 +154,18 @@ class Baseball {
         boolean option;
         if (optionNumber.equals("1")) {
             option = true;
-            this.computerNumber.clear();
-            this.playerNumber.clear();
+            listClear();
         } else if (optionNumber.equals("2")) {
             option = false;
         } else {
             throw new IllegalArgumentException("옵션값이 아닙니다.");
         }
         return !option;
+    }
+    public void listClear() {
+        this.computerNumber.clear();
+        this.playerNumber.clear();
+        this.baseballCount.set(BALL_INDEX, 0);
+        this.baseballCount.set(STRIKE_INDEX, 0);
     }
 }
