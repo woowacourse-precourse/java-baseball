@@ -60,4 +60,12 @@ public class Hint {
         return strike + "스트라이크";
     }
 
+    public boolean isAllStrike() {
+        if (this.strike == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
