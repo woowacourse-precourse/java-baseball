@@ -18,7 +18,9 @@ public class Application {
             my_num.add(num % 10);
             num/=10;
         }Collections.reverse(my_num);
-        
+        if (my_num.size() != 3) {
+            throw new IllegalArgumentException("값 잘못입력했어요.");
+        }
         return my_num;
     }
     public ArrayList<Integer> make_computer_number() {
