@@ -44,4 +44,11 @@ public class BaseballService {
         }
     }
 
+    //입력받은 숫자의 리스트에 중복이 존재할 경우 예외처리
+    public void isDuplicate(List<String> inputNumber, String number) {
+        if (inputNumber.contains(number)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
