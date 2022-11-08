@@ -76,4 +76,12 @@ public class Application {
         return 0;
     }
 
+    // 8. Judge ball
+    public static int judgeBall(String currentNumberOfInput, String numberOfTheAnswerInSameIndex, String answer) {
+        if (answer.contains(currentNumberOfInput) && !numberOfTheAnswerInSameIndex.equals(currentNumberOfInput)) {
+            return 1;
+        }
+        return 0;
+    }
+
 }
