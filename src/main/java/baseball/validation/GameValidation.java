@@ -16,7 +16,7 @@ public final class GameValidation {
         ConvertUserInputToList();
     }
 
-    public void ConvertUserInputToList() {
+    private void ConvertUserInputToList() {
         userInputList = new ArrayList<>();
 
         for(int i = 0; i < userInput.length(); i++) {
@@ -32,7 +32,7 @@ public final class GameValidation {
         throw new IllegalArgumentException();
     }
 
-    public boolean isCheckLength() {
+    private boolean isCheckLength() {
         if (userInput.length() == GameValue.CORRECT_LENGTH) {
             return true;
         }
@@ -40,7 +40,7 @@ public final class GameValidation {
         throw new IllegalArgumentException();
     }
 
-    public boolean isAllCorrectNumber() {
+    private boolean isAllCorrectNumber() {
         userInputList.forEach(str -> {
             if (!(GameValue.START_NUMBER <= str  && str <= GameValue.END_NUMBER)) {
                 throw new IllegalArgumentException();
@@ -50,7 +50,7 @@ public final class GameValidation {
         return true;
     }
 
-    public boolean isNotDuplicateNumber() {
+    private boolean isNotDuplicateNumber() {
         Set<Character> userInputSet = new HashSet<>(userInputList);
 
         if (userInputSet.size() == 3) {
