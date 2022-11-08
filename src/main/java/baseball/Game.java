@@ -22,30 +22,32 @@ public class Game {
     }
 
     public void play() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = getUserInput();
-        System.out.println(userInput);
+        while(isFinished()) {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = getUserInput();
+            System.out.println(userInput);
 
-        List<Integer> user = getUserNumber(userInput);
+            List<Integer> user = getUserNumber(userInput);
 
-        // count stikes & balls
-        int strikes = countStrikes(user,computer);
-        int balls = countBalls(user,computer);
+            // count stikes & balls
+            int strikes = countStrikes(user, computer);
+            int balls = countBalls(user, computer);
 
-        // print: X strikes, X balls  OR  낫싱
-        if (balls > 0) {
-            System.out.print(balls+"볼 ");
-        }
-        if (strikes > 0) {
-            System.out.print(strikes+"스트라이크");
-        }
-        if (balls + strikes == 0) {
-            System.out.print("낫싱");
-        }
-        System.out.println(); // 한줄 내리기
+            // print: X strikes, X balls  OR  낫싱
+            if (balls > 0) {
+                System.out.print(balls + "볼 ");
+            }
+            if (strikes > 0) {
+                System.out.print(strikes + "스트라이크");
+            }
+            if (balls + strikes == 0) {
+                System.out.print("낫싱");
+            }
+            System.out.println(); // 한줄 내리기
 
-        if (strikes == 3) {
-            setFinished();
+            if (strikes == 3) {
+                setFinished();
+            }
         }
     }
 

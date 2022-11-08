@@ -6,9 +6,7 @@ public class Application {
         do {
             game = new Game();
 
-            while(!game.isFinished()) {
-                game.play();
-            }
+            game.play();
 
             if(!game.replay()) { game = null; };
 
