@@ -93,14 +93,22 @@ public class Application {
     }
 
 
+    static class Answer{
+        List<Integer> answerList;
+
+        public Answer(List<Integer> answerList) {
+            this.answerList = answerList;
+        }
+    }
     public static void baseballGame() {
-        List<Integer> answerList = generateRandomNumber(3);
+        Answer answer = new Answer(generateRandomNumber(3));
+
         int[] judg = new int[]{0, 0};
         while (judg[1] != 3) {
             System.out.print("숫자를 입력해주세요 : ");
             try {
                 Nums nums = new Nums(Console.readLine());
-                judg = judgment(nums.inputNums, answerList);
+                judg = judgment(nums.inputNums,answer.answerList);
                 System.out.println(printJudge(judg));
             } catch (Exception e) {
                 throw new IllegalArgumentException(e.getMessage());
