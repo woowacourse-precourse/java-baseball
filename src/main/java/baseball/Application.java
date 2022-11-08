@@ -11,7 +11,7 @@ public class Application {
         // TODO: 프로그램 구현
         playGame();
 
-        System.out.println("게임을 종료합니다.");
+        System.out.println("게임 종료");
     }
 
     public static List<Integer> selectNumbers() {
