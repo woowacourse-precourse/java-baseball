@@ -19,22 +19,25 @@ public class Baseball {
         isAnswer = gameInfo.isAnswer();
     }
 
+    private void addNumberToList(int randomNum) {
+        if (!computer.contains(randomNum)) {
+            computer.add(randomNum);
+        }
+    }
+
     private void getRandomNumbers() {
         while (computer.size() < LEN) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNum)) {
-                computer.add(randomNum);
-            }
+            addNumberToList(Randoms.pickNumberInRange(1, 9));
         }
     }
 
     private boolean isAllDigit() {
         boolean result = true;
 
-        for (int i = 0; i < user.length() && result; i++) {
-            result = Character.isDigit(user.charAt(i) - '0');
+        for (int i = 0; i < LEN && result; i++) {
+            result = Character.isDigit(user.charAt(i));
         }
-        return (result);
+        return result;
     }
 
     private void CheckValidNumber() {
@@ -51,15 +54,18 @@ public class Baseball {
         user = Console.readLine();
     }
 
+    private void setResult(int comIdx, int userIdx) {
+        if (comIdx == userIdx) {
+            gameInfo.addStrike();
+        }
+        else if (comIdx >= 0) {
+            gameInfo.addBall();
+        }
+    }
+
     private void compareNumber() {
         for (int i = 0; i < LEN; i++) {
-            int loc = computer.indexOf(user.charAt(i) - '0');
-            if (loc == i) {
-                gameInfo.addStrike();
-            }
-            else if (loc >= 0) {
-                gameInfo.addBall();
-            }
+            setResult(computer.indexOf(user.charAt(i) - '0'), i);
         }
     }
 
@@ -82,10 +88,8 @@ public class Baseball {
             compareNumber();
             printResult();
             isAnswer = gameInfo.isAnswer();
-            if (isAnswer) {
-                printEnd();
-            }
         }
+        printEnd();
     }
 
 
