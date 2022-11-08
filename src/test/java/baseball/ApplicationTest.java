@@ -88,6 +88,28 @@ class ApplicationTest extends NsTest {
         assertThat(third).isGreaterThan(0);
     }
 
+    @Test
+    public void isValidUserNumbers_입력의_유효성_검증_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("isValidUserNumbers", String.class);
+        method.setAccessible(true);
+
+        //given
+        String firstNumbers = "144";
+        String secondNumbers = "143";
+        String thirdNumbers = "054";
+
+        //when
+        boolean firstResult = (boolean)method.invoke(new Application(), firstNumbers);
+        boolean secondResult = (boolean)method.invoke(new Application(), secondNumbers);
+        boolean thirdResult = (boolean)method.invoke(new Application(), thirdNumbers);
+
+        //then
+        assertThat(firstResult).isEqualTo(false);
+        assertThat(secondResult).isEqualTo(true);
+        assertThat(thirdResult).isEqualTo(false);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
