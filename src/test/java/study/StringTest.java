@@ -2,9 +2,30 @@ package study;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
+
+    @Test
+    void isValidNumber() throws IllegalArgumentException{
+        String input = "122";
+        String[] inputList = new String[input.length()];
+        for(int i=0; i<input.length(); i++){
+            inputList[i] = Character.toString(input.charAt(i));
+        }
+        List<String> list = new ArrayList<>(List.of(inputList));
+        Set<String> set = new HashSet<>(list);
+        boolean result = false;
+        if (set.size() != list.size()) {
+            result = true;
+        }
+        assertThat(result).isEqualTo(true);
+    }
 
     @Test
     void split_메서드로_주어진_값을_구분() {

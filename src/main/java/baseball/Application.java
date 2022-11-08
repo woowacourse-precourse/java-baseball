@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -27,7 +29,7 @@ class Game {
         end();
     }
 
-    public static void end() throws IllegalArgumentException{
+    public static void end() throws IllegalArgumentException {
         while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String select = Console.readLine();
@@ -79,16 +81,22 @@ class Game {
         return inputNumber;
     }
 
-    public static void isValidLength(String input) throws IllegalArgumentException{
+    public static void isValidLength(String input) throws IllegalArgumentException {
         if (input.length() != 3) {
             throw new IllegalArgumentException("입력된 값이 세자리 수가 아닙니다.");
         }
     }
 
-    public static void isValidNumber(String input) throws IllegalArgumentException{
-        char[] inputCharList = input.toCharArray();
-        if (inputCharList[0] == inputCharList[1] ||
-                inputCharList[0] == inputCharList[2] || inputCharList[1] == inputCharList[2]) {
+    public static void isValidNumber(String input) throws IllegalArgumentException {
+        String[] inputList = new String[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            inputList[i] = Character.toString(input.charAt(i));
+        }
+
+        List<String> list = new ArrayList<>(List.of(inputList));
+        Set<String> set = new HashSet<>(list);
+
+        if (set.size() != list.size()) {
             throw new IllegalArgumentException("입력된 값에 중복된 숫자가 있습니다.");
         }
     }
