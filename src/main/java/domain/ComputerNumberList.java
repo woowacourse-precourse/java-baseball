@@ -16,7 +16,7 @@ public class ComputerNumberList {
         generateNewComputerRandomNumber();
     }
 
-    private List<Number> getComputerRandomNumber() {
+    private List<Number> newComputerRandomNumber() {
         List<Number> computerNumberList = new ArrayList<>();
 
         while (computerNumberList.size() < NUMBER_SIZE) {
@@ -29,10 +29,10 @@ public class ComputerNumberList {
     }
 
     public void generateNewComputerRandomNumber() {
-        this.computerNumber = getComputerRandomNumber();
+        this.computerNumber = newComputerRandomNumber();
     }
 
-    public List<Number> getComputerNumber(){
+    public List<Number> getComputerNumber() {
         return computerNumber;
     }
 }
