@@ -43,8 +43,6 @@ public class BaseballGameController {
         if (playerInput.equals("1")) {
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
 }
