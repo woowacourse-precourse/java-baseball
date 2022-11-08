@@ -19,6 +19,10 @@ public class Game {
         System.out.print("숫자를 입력해주세요 : ");
         user.inputNumber();
         user.validateNumber();
+
+        Hint hint = computer.getHint(user.getNumber());
+        String hintMessage = hint.getHintMessage();
+        System.out.println(hintMessage);
     }
 
 }
