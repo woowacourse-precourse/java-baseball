@@ -33,8 +33,15 @@ public class BaseballService {
 
     public boolean checkGameStatus() {
         if (strike == Constant.LENGTH) {
-            return false;
+            return checkRestart();
         }
+        return true;
+    }
+
+    public boolean checkRestart() {
+        System.out.println(Constant.GAME_OVER_MESSAGE);
+        System.out.print(Constant.CHECK_RESTART_MESSAGE);
+        String checkRestartNumber = Console.readLine();
         return true;
     }
 
