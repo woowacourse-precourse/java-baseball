@@ -104,7 +104,7 @@ public class Computer {
     }
 
     public boolean isNotThreeStrike(String hint){
-        if(hint.equals("3스트라이크")){
+        if(hint.equals(HintInfo.THREESTRIKE.getTitle())){
             return false;
         }
         return true;
