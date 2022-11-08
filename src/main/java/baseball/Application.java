@@ -1,7 +1,15 @@
 package baseball;
 
+import baseball.play.GameProgressFlow;
+
+import static baseball.print.OutputStatement.informStartNumberBaseballGame;
+
 public class Application {
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        GameProgressFlow gameProgressFlow = new GameProgressFlow();
+
+        informStartNumberBaseballGame();
+        gameProgressFlow.startGame();
     }
 }
