@@ -24,7 +24,7 @@ public class ComputerBaseball {
         return numberList;
     }
 
-    public void resetNumeberList() {
+    public void resetNumberList() {
         numberList.clear();
         initNumbers();
     }

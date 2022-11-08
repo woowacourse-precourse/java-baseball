@@ -40,6 +40,6 @@ public class BaseballService {
     }
 
     public void resetNumberList() {
-        computerBaseball.resetNumeberList();
+        computerBaseball.resetNumberList();
     }
 }
