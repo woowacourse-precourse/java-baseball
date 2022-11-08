@@ -36,9 +36,6 @@ public class User {
     public void inputRestart() {
         restart = Integer.parseInt(readLine());
         validateInputRestart(Integer.toString(restart));
-        if (restart != 1 && restart != 2) {
-            throw new IllegalArgumentException("1(재시작) 또는 2(종료)를 입력해주세요.");
-        }
     }
 
     public int getRestart() {
