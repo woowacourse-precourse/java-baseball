@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameProcess {
@@ -15,15 +16,39 @@ public class GameProcess {
     // 게임 시작
     public static void start() {
         // 랜덤수 생성
-        List<Integer> randomNum = RandomNum.generate();
+        List<Integer> randomNumList = RandomNum.generate();
 
+        boolean answer = false;
+        getInputNum(randomNumList, answer);
+    }
+
+    // 수 입력 받기
+    public static void getInputNum(List<Integer> randomNumList, boolean answer) {
         System.out.print("숫자를 입력해주세요 : ");
 
         // 사용자 입력값 받기
         String inputNum = Console.readLine();
-        
+
         // 입력값 검증
         Vailidator.checkInputNum(inputNum);
+
+        // 정답 확인
+        checkAnswer(randomNumList, inputNum, answer);
+
     }
 
+    // 정답 체크
+    public static void checkAnswer(List<Integer> randomNumList, String inputNum, boolean answer) {
+        List<Integer> inputNumList = new ArrayList<>();
+        String[] inputNumArr = inputNum.split("");
+        for(String s : inputNumArr) {
+            inputNumList.add(Integer.parseInt(s));
+        }
+
+        answer = Answer.isAnswer(randomNumList, inputNumList);
+
+        if (!answer) {
+            getInputNum(randomNumList, answer);
+        }
+    }
 }
