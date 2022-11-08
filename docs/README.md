@@ -41,6 +41,19 @@
 
 <br/>
 
+### Score
+야구게임 1턴의 점수 구현  
+
+- [ ] ball count와 strike count를 포함하여 생성
+- [ ] getter 구현
+  - ball getter
+  - strike getter
+- [ ] toString() 구현
+  - 점수 표기 형식으로 출력할 수 있도록
+  - ex) "낫싱" or "n볼 m스트라이크" 등 출력 요구사항 참고
+
+<br/>
+
 ### GameUtil
 게임의 진행, 규칙과 직접적 연관이 없는 기능 구현
 
