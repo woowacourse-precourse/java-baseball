@@ -92,6 +92,20 @@ public class BaseBallGame {
         return strikeCount;
     }
 
+    private int calculateBall(String userInputValue) {
+        int ballCount = 0;
+        for (int searchIndex = 0; searchIndex < MAX_LENGTH; searchIndex++) {
+            String cut = String.valueOf(userInputValue.charAt(searchIndex));
+            String randomValueSplit = String.valueOf(randomNumber.charAt(searchIndex));
+            if (randomNumber.contains(cut)
+                    && !randomValueSplit.equals(cut)) {
+                ballCount++;
+            }
+        }
+
+        return ballCount;
+    }
+
     public boolean isAnswer() {
         return false;
     }
