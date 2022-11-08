@@ -22,8 +22,8 @@ public class Application {
                 int ball = check_ball(strike, same);
 
                 check_message(ball, strike);
-
             }
+            end_message();
         }
     }
     public static void start(){
@@ -90,7 +90,7 @@ public class Application {
 
     }
     public static void end_message(){
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
     public static int end_game(){
 
