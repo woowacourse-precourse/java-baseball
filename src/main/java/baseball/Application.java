@@ -184,8 +184,6 @@ public class Application {
     private static int PlayGame(ArrayList<Integer> answerNumberArrayList) {
         Boolean finishResult = false;
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
         // 게임이 끝나지 않았으면 게임을 반복한다.
         while (!finishResult) {
             // 게임 플레이어에게 숫자를 입력 받는다.
@@ -210,6 +208,9 @@ public class Application {
 
     private static void Solution() {
         int keepPlaying = 1;
+
+        // 숫자 야구 게임 시작을 알리는 출력
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         // 게임 플레이어가 종료를 원하기 전까지 게임을 반복한다.
         while (keepPlaying == 1) {
