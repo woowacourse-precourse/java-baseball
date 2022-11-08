@@ -39,6 +39,12 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) > 57 || input.charAt(i) < 49) {
+                throw new IllegalArgumentException();
+            }
+        }
+
         return input;
     }
 
