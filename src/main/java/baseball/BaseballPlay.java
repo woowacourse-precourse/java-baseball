@@ -10,11 +10,13 @@ public class BaseballPlay {
     ComputerNumber computerNumber = new ComputerNumber(ComputerNumber.generateRandomNumberSet());
     List<BallNumber> computerNumbers = computerNumber.getGameNumberSet();
 
+    public void playBaseball(PlayerNumber playerNumber) {
+        playSwing(playerNumber);
+    }
+
     public Map<Swing, Integer> playSwing(PlayerNumber playerNumber) {
         initSwingResult();
-        while (swingResult.get(Swing.STRIKE) == 3) {
-            compareWithComputerNumber(playerNumber);
-        }
+        compareWithComputerNumber(playerNumber);
         return swingResult;
     }
 
@@ -32,10 +34,12 @@ public class BaseballPlay {
     }
 
     private void checkStrikeBall(int index, List<BallNumber> computerNumbers, List<BallNumber> playerNumbers) {
-        if (computerNumbers.get(index) == playerNumbers.get(index)) {
+        if (computerNumbers.get(index).equals(playerNumbers.get(index))) {
             playStrike();
         }
-        playBall();
+        else {
+            playBall();
+        }
     }
 
     private void playStrike() {
