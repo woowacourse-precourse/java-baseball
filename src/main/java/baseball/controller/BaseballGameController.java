@@ -9,7 +9,6 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballGameController {
-
     private static final InputView inputView = InputView.INSTANCE;
     private static final OutputView outputView = OutputView.INSTANCE;
 
