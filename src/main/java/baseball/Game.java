@@ -37,6 +37,7 @@ public class Game {
 
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
