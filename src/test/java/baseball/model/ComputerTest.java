@@ -10,7 +10,7 @@ class ComputerTest {
 
     @Test
     @DisplayName("3자리 숫자를 생성할 수 있다.")
-    public void generateNumbers_Success() {
+    void generateNumbers_Success() {
         Computer computer = new Computer();
         List<Integer> numbers = computer.getNumbers();
 

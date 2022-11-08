@@ -42,17 +42,10 @@ class UmpireTest {
         assertThat(umpire.is3Strike()).isFalse();
     }
 
-//    private User getUserBySetInput(String input) {
-//        User user = new User();
-//        System.setIn(new ByteArrayInputStream(input.getBytes()));
-//        user.inputNumber();
-//        return user;
-//    }
-
     private String getComputerNumber(Computer computer) {
         List<Integer> computerNumbers = computer.getNumbers();
         StringBuilder sb = new StringBuilder();
-        for(Integer computerNumber : computerNumbers) {
+        for (Integer computerNumber : computerNumbers) {
             sb.append(computerNumber);
         }
         return sb.toString();
@@ -60,10 +53,10 @@ class UmpireTest {
 
     private String getUserInputNot3Strike(List<Integer> computerNumbers) {
         StringBuilder sb = new StringBuilder();
-        while(true) {
+        while (true) {
             List<Integer> userNumbers = generateNumbers();
-            if(!userNumbers.equals(computerNumbers)) {
-                for(Integer userNumber : userNumbers) {
+            if (!userNumbers.equals(computerNumbers)) {
+                for (Integer userNumber : userNumbers) {
                     sb.append(userNumber);
                 }
                 break;
@@ -74,12 +67,13 @@ class UmpireTest {
 
     private List<Integer> generateNumbers() {
         List<Integer> userNumbers = new ArrayList<>();
-        while(userNumbers.size() < 3) {
+        while (userNumbers.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
-            if(userNumbers.contains(number)) continue;
+            if (userNumbers.contains(number)) {
+                continue;
+            }
             userNumbers.add(number);
         }
         return userNumbers;
     }
-
 }

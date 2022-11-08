@@ -2,20 +2,12 @@ package baseball.model;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.io.ByteArrayInputStream;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
-
-//    private User getUserBySetInput(String input) {
-//        User user = new User();
-//        System.setIn(new ByteArrayInputStream(input.getBytes()));
-//        user.inputNumber();
-//        return user;
-//    }
 
     @Nested
     @DisplayName("inputNumber 메서드 : ")
@@ -28,7 +20,7 @@ class UserTest {
             String input = "123";
             user.addUserNumbers(input);
             List<Integer> numbers = user.getNumbers();
-            assertThat(numbers).contains(1,2,3);
+            assertThat(numbers).contains(1, 2, 3);
         }
 
         @Test
@@ -55,5 +47,4 @@ class UserTest {
             assertThatThrownBy(() -> user.addUserNumbers(input)).isInstanceOf(IllegalArgumentException.class);
         }
     }
-
 }

@@ -17,8 +17,8 @@ public class Umpire {
     }
 
     public void decideCount(List<Integer> computerNumbers, List<Integer> userNumbers) {
-        for(int idx = 0; idx < userNumbers.size(); idx++) {
-            if(isStrike(computerNumbers, userNumbers.get(idx), idx)) {
+        for (int idx = 0; idx < userNumbers.size(); idx++) {
+            if (isStrike(computerNumbers, userNumbers.get(idx), idx)) {
                 strikeCount++;
             } else if (isBall(computerNumbers, userNumbers.get(idx))) {
                 ballCount++;
@@ -27,14 +27,14 @@ public class Umpire {
     }
 
     private boolean isStrike(List<Integer> computerNumbers, int userNumber, int idx) {
-        if(computerNumbers.get(idx) == userNumber) {
+        if (computerNumbers.get(idx) == userNumber) {
             return true;
         }
         return false;
     }
 
     private boolean isBall(List<Integer> computerNumbers, int userNumber) {
-        if(computerNumbers.contains(userNumber)) {
+        if (computerNumbers.contains(userNumber)) {
             return true;
         }
         return false;

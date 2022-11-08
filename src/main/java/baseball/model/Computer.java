@@ -14,9 +14,11 @@ public class Computer {
     }
 
     private void generateNumbers() {
-        while(numbers.size() < 3) {
+        while (numbers.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
-            if(numbers.contains(number)) continue;
+            if (numbers.contains(number)) {
+                continue;
+            }
             numbers.add(number);
         }
     }

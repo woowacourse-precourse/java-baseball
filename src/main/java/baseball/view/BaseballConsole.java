@@ -26,17 +26,16 @@ public class BaseballConsole {
 
     public static void printStrikeBallCount(int strikeCount, int ballCount) {
         StringBuilder sb = new StringBuilder();
-        if(strikeCount == 0 && ballCount == 0) {
+        if (strikeCount == 0 && ballCount == 0) {
             sb.append("낫싱");
         }
-        if(ballCount != 0) {
+        if (ballCount != 0) {
             sb.append(ballCount).append("볼 ");
         }
-        if(strikeCount != 0) {
+        if (strikeCount != 0) {
             sb.append(strikeCount).append("스트라이크 ");
         }
         sb.append("\n");
         System.out.print(sb.toString());
     }
-
 }
