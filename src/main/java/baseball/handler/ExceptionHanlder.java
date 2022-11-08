@@ -5,9 +5,6 @@ import baseball.service.GameService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.service.GameService.BALL_NUMBERS;
-
-
 public class ExceptionHanlder {
     public void checkInputBallSize(String inputball){
         List<Integer> checksize;

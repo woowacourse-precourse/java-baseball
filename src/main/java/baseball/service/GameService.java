@@ -40,7 +40,7 @@ public class GameService {
             initData();
             PlayGameController.run();
         }
-        if(Integer.valueOf(selectNumber)==2) System.out.println("게임 종료");
+        if(Integer.valueOf(selectNumber)==2) return;
     }
     public static void checkInput() {
         System.out.print("숫자를 입력해주세요 : ");
@@ -95,15 +95,11 @@ public class GameService {
         userball.clear();
     }
     public static void checkStrike(){
-        int prevstrike = strike;
-
         for(int i = 0; i < BALL_NUMBERS; i++){
             if(RANDOMBALL.get(i) == userball.get(i)) strike++;
         }
     }
     public static void checkBall(){
-        int prevball = ball;
-
         for(int i=0; i< BALL_NUMBERS; i++){
             countBalls(i);
         }
