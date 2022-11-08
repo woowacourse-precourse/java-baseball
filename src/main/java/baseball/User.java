@@ -15,6 +15,12 @@ public class User {
   public void inputThrowsException(){
     if(input.length() != 3){
       throw new IllegalArgumentException();
+    }else if(!input.matches("[1-9]+")){
+      throw new IllegalArgumentException();
+    }else if(input.charAt(0) == input.charAt(1)
+        || input.charAt(1) == input.charAt(2)
+        || input.charAt(2) == input.charAt(0)){
+      throw new IllegalArgumentException();
     }
   }
 
