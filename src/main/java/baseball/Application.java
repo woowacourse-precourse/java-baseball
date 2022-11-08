@@ -68,11 +68,24 @@ public class Application {
             System.out.println("낫싱");
     }
 
-    public static void main(String[] args) {
-        computer = chooseNumByComputer();
-        while (true) {
-            user = getUserInput();
-            if (checkAnswer()) break;
+    private static Boolean checkUserContinue() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Integer userAnswer = Integer.parseInt(Console.readLine());
+        switch (userAnswer){
+            case 1: return true;
+            case 2: return false;
+            default: throw new IllegalArgumentException();
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        computer = chooseNumByComputer();
+        do {
+            while (true) {
+                user = getUserInput();
+                if (checkAnswer()) break;
+            }
+        }while(checkUserContinue());
     }
 }
