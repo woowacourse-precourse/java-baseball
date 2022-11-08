@@ -8,60 +8,62 @@ public class Game {
     private Result result = new Result();
     private int status = Settings.START_STATUS;
 
-    public void start(){
-        while(isStartStatus()){
-            result.initialize();
-            problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
-            printlnMessage(Settings.START_MESSAGE);
-            while(result.isWrongAnswer()){
-                requestAnswer();
-                checkAnswer();
-            }
-            printlnMessage(Settings.SUCCESS_MESSAGE);
-            setStatusByProblemSolver();
+    public void start() {
+        printStartMessage();
+        while (isStartStatus()) {
+            initialize();
+            solveProblem();
+            requestToRestart();
         }
 
     }
 
-    public void printMessage(String message){
-        System.out.print(message);
+    public void printStartMessage() {
+        System.out.println(Settings.START_MESSAGE);
     }
 
-    public void printlnMessage(String message){
-        System.out.println(message);
-    }
-
-    public boolean isStartStatus(){
+    public boolean isStartStatus() {
         return status == Settings.START_STATUS;
     }
 
-    public void requestAnswer(){
-        printMessage(Settings.ANSWER_REQUEST_MESSAGE);
-        problemSolver.solveProblem(Settings.SIZE_OF_NUMBERS);
-    }
-
-    public void checkAnswer(){
+    public void initialize() {
         result.initialize();
-        countResult();
-        printlnMessage(result.createResultMessage());
+        problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
     }
 
-    public void countResult(){
+    public void solveProblem() {
+        while (result.isWrongAnswer()) {
+            checkAnswer();
+        }
+        System.out.println(Settings.SUCCESS_MESSAGE);
+    }
+
+    public void checkAnswer() {
+        result.initialize();
+
+        System.out.print(Settings.ANSWER_REQUEST_MESSAGE);
+        problemSolver.solveProblem(Settings.SIZE_OF_NUMBERS);
+
+        countResult();
+        System.out.println(result.createResultMessage());
+    }
+
+    public void countResult() {
         List<Integer> numbers = problemSolver.getNumbers();
-        for(int i = 0;i<Settings.SIZE_OF_NUMBERS;i++){
+        for (int i = 0; i < Settings.SIZE_OF_NUMBERS; i++) {
             int number = numbers.get(i);
 
-            if(problemMaker.isSameAtGivenLocation(number, i)){
+            if (problemMaker.isSameAtGivenLocation(number, i)) {
                 result.increaseStrikeCount();
-            }else if(problemMaker.hasNumber(number)){
+            } else if (problemMaker.hasNumber(number)) {
                 result.increaseBallCount();
             }
         }
 
     }
 
-    public void setStatusByProblemSolver(){
-        printlnMessage(Settings.RESTART_REQUEST_MESSAGE);
+    public void requestToRestart() {
+        System.out.println(Settings.RESTART_REQUEST_MESSAGE);
         status = problemSolver.chooseToRestart();
     }
 
