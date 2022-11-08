@@ -81,7 +81,30 @@ public class Application {
         return isAnswer;
     }
 
+    private static void restartGame() {
+        String restartOrNot;
+
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        restartOrNot = Console.readLine();
+        isValidInputAboutRestart(restartOrNot);
+
+        if (restartOrNot.equals("1")) {
+            playGame();
+        } else if (restartOrNot.equals("1")){
+            return;
+        }
+    }
+
+    private static void isValidInputAboutRestart(String restartOrNot) {
+        if (restartOrNot.equals("1") || restartOrNot.equals("2")) {
+            return;
+        } else {
+            throw new IllegalArgumentException("잘못된 입력 입니다. 프로그램을 종료합니다.");
+        }
+    }
+
     public static void main(String[] args) {
         playGame();
+        restartGame();
     }
 }
