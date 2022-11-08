@@ -9,6 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("상대방(컴퓨터)의 랜덤한 숫자 생성하기")
 class ComputerTest {
 
+    private static final int MIN = 1;
+    private static final int MAX = 9;
     private Computer computer;
 
     @BeforeEach
@@ -27,7 +29,9 @@ class ComputerTest {
     @Test
     @DisplayName("각 자리수는 1~9까지의 숫자만 사용")
     public void randomNumberHasOnlyOneToNine() {
-        assertThat(this.computer.getRandomNumbers()).isNotIn(0).isNotIn(10);
+        for (Integer number : computer.getRandomNumbers()) {
+            assertThat(number).isBetween(MIN, MAX);
+        }
     }
 
     @Test
