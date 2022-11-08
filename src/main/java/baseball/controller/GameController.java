@@ -16,8 +16,9 @@ public class GameController {
         initGame();
         do {
             playGame();
-            checkRestartWhenMaxStrike();
-        } while (game.isExitStatus());
+            String command = checkRestartWhenMaxStrike();
+            setActionOfRestartAndExit(command);
+        } while (!game.isExitStatus());
     }
 
     public void initGame() {
@@ -30,18 +31,6 @@ public class GameController {
 
         playBaseBall();
         OutputView.printGameResult(game);
-
-        game.clearResult();
-    }
-
-    public void checkRestartWhenMaxStrike() {
-        if (game.isMaxStrike()) {
-            OutputView.printFinish();
-            OutputView.printRestart();
-
-            String command = getRestartResponse();
-            setActionOfRestartAndExit(command);
-        }
     }
 
     private void playBaseBall() {
@@ -50,6 +39,14 @@ public class GameController {
         game.setGameResult(strikeCount, ballCount);
     }
 
+    public String checkRestartWhenMaxStrike() {
+        if (!game.isMaxStrike()) {
+           return GameStatus.PROGRESS.number();
+        }
+        OutputView.printFinish();
+        OutputView.printRestart();
+        return getRestartResponse();
+    }
 
     private String getRestartResponse() {
         String command = Console.readLine();
@@ -57,10 +54,20 @@ public class GameController {
         return command;
     }
 
-    private void setActionOfRestartAndExit(String command) {
+    public void setActionOfRestartAndExit(String command) {
+        isRestartGenerateNewComputer(command);
+        isExitSetGameStatus(command);
+        game.clearResult();
+    }
+
+    private void isRestartGenerateNewComputer(String command) {
         if (GameStatus.isRestart(command)) {
             computer = new Computer();
-        } else {
+        }
+    }
+
+    private void isExitSetGameStatus(String command) {
+        if (GameStatus.isExit(command)) {
             game.setExitStatus();
         }
     }

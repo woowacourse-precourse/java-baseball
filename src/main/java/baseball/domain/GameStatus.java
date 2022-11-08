@@ -17,14 +17,18 @@ public enum GameStatus {
 
     public static boolean hasValue(String num) {
         return Arrays.stream(GameStatus.values())
-                .anyMatch(x -> x.commandNum().equals(num));
+                .anyMatch(x -> x.number().equals(num));
     }
 
     public static boolean isRestart(String input) {
         return input.equals(RESTART.number);
     }
 
-    public String commandNum() {
+    public static boolean isExit(String input) {
+        return input.equals(EXIT.number);
+    }
+
+    public String number() {
         return number;
     }
 }
