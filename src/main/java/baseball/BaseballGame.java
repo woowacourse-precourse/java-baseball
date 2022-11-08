@@ -27,8 +27,8 @@ public class BaseballGame {
         }
     }
 
-    private void addRandomNumbers(int number){
-        if(!randomNumbers.isContaining(number)){
+    private void addRandomNumbers(int number) {
+        if (!randomNumbers.isContaining(number)) {
             randomNumbers.add(number);
         }
     }
@@ -59,8 +59,7 @@ public class BaseballGame {
         } while (counts.get(2) != 3);
     }
 
-    public boolean checkRetry() {
-        String retry = inputView.inputRetry();
+    public boolean checkRetry(String retry) {
         return validateStringToInteger(retry) == 1;
     }
 
