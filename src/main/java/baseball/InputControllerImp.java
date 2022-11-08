@@ -10,7 +10,7 @@ import java.util.List;
 public class InputControllerImp implements InputController {
 
     @Override
-    public boolean checkValid(String userInput) {
+    public boolean checkValidAnswer(String userInput) {
         return checkFormat(userInput) && checkDistinct(userInput);
     }
 
