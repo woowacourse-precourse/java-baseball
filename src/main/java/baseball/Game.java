@@ -53,8 +53,17 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1" + ", 종료하려면 2" + "를 입력하세요.");
 
         String newGameAnswer = readLine();
-        int newGameAnswervalue = Integer.parseInt(newGameAnswer);
-        return newGameAnswervalue;
+        int newGameAnswerValue;
+        try {
+            newGameAnswerValue = Integer.parseInt(newGameAnswer);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        if (newGameAnswerValue !=1 && newGameAnswerValue !=2) {
+            throw new IllegalArgumentException();
+        }
+
+        return newGameAnswerValue;
     }
 
     private static Game getAnswer() {
