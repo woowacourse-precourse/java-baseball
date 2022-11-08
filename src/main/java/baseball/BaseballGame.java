@@ -112,6 +112,17 @@ public class BaseballGame {
                 throw new IllegalArgumentException("입력값의 범위가 잘못됐습니다.");
             }
         }
+        for (int i = 0; i < 3; i++) {
+            for (int j = i + 1; j < 3; j++) {
+                checkDuplicate(input.charAt(i), input.charAt(j));
+            }
+        }
+    }
+
+    public void checkDuplicate(char a, char b) {
+        if (a == b) {
+            throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+        }
     }
 
     public void validateIfReplayInput(String input) {
