@@ -2,6 +2,8 @@ package baseball.score;
 
 import java.util.List;
 
+import static baseball.score.ScoreStatus.*;
+
 public class Score {
 
     private Integer ball;
@@ -25,10 +27,10 @@ public class Score {
     public void countTotalScore(final List<ScoreStatus> scoreStatusList){
 
         for (ScoreStatus scoreStatus : scoreStatusList) {
-            if (scoreStatus.equals(ScoreStatus.STRIKE)){
+            if (scoreStatus.equals(STRIKE)){
                 strike++;
             }
-            if (scoreStatus.equals(ScoreStatus.BALL)){
+            if (scoreStatus.equals(BALL)){
                 ball ++;
             }
         }
@@ -37,16 +39,24 @@ public class Score {
     public String printMessage(){
         String resultString ="";
         if (hasnotAnyBallAndStrike()){
-            return ScoreStatus.NOTHING.getMessage();
+            return NOTHING.getMessage();
         }
-        if (ball !=0){
-            resultString += resultString + ball +ScoreStatus.BALL.getMessage();
+        if (hasBall()){
+            resultString += ball + BALL.getMessage();
         }
-        if (strike !=0){
-            resultString += strike +ScoreStatus.STRIKE.getMessage();
+        if (hasStrike()){
+            resultString += strike + STRIKE.getMessage();
         }
 
         return resultString;
+    }
+
+    private boolean hasStrike() {
+        return strike != 0;
+    }
+
+    private boolean hasBall() {
+        return ball != 0;
     }
 
     private boolean hasnotAnyBallAndStrike() {
