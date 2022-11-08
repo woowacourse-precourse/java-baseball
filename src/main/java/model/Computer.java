@@ -23,7 +23,6 @@ public class Computer {
 				count++;
 			}
 		} // 서로 다른 맞춰야 하는 수
-		System.out.println(Arrays.toString(guessnumber));
 
 		this.guessnumber = guessnumber;
 	}

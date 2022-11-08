@@ -10,7 +10,7 @@ public class Application {
 		while (isgame) {
 			Computer computer = new Computer();
 			computer.setnumber();
-			
+
 			Play play = new Play();
 			play.playgame(computer.getnumber());
 			isgame = play.replay_game();

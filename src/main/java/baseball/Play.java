@@ -12,7 +12,7 @@ public class Play {
 			User user = new User();
 			user.setnumber();
 			answer = user.getnumber();
-			
+
 			Check_answer check_answer = new Check_answer();
 
 			strike = check_answer.check_strike(answer, guessnumber);
@@ -20,7 +20,7 @@ public class Play {
 			result_print(strike, ball);
 		}
 	}
-	
+
 	public void result_print(int strike, int ball) {
 		String print_string = "";
 		if (strike == 0 && ball == 0) {
@@ -37,7 +37,7 @@ public class Play {
 		}
 		System.out.println(print_string);
 	}
-	
+
 	public boolean replay_game() {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
