@@ -11,18 +11,18 @@ public class ComputerNumberTest {
     @Test
     void 컴퓨터수_범위_테스트() {
         //when
-        List<Integer> computerNum = Application.createComputerNumber();
+        List<Integer> computerNum = GameModel.createComputerNumber();
         //then
-        assertThat(computerNum.stream().allMatch(v->1<=v && v<=9)).isTrue();
+        assertThat(computerNum.stream().allMatch(v -> 1 <= v && v <= 9)).isTrue();
     }
+
     @Test
     void 컴퓨터수_서로다른수_테스트() {
         //given
         Set<Integer> numbers = new HashSet<>();
         //when
-        List<Integer> computerNum = Application.createComputerNumber();
-        computerNum.stream().
-                forEach(v->numbers.add(v));
+        List<Integer> computerNum = GameModel.createComputerNumber();
+        numbers.addAll(computerNum);
         //then
         assertThat(numbers.size()).isEqualTo(3);
     }
