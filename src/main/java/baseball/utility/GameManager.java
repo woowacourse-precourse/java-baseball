@@ -12,6 +12,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class GameManager {
     private static final String TEXT_FOR_START_GAME = "숫자 야구 게임을 시작합니다.";
     private static final String TEXT_FOR_PROMPT_PLAYER_NUMBER_INPUT = "숫자를 입력해주세요 : ";
+    private static final String TEXT_FOR_END_ROUND = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String THREE_STRIKE = "3스트라이크";
 
     private static GameManager gameManager;
 
@@ -70,4 +72,11 @@ public class GameManager {
         return readLine();
     }
 
+    private void processGameFlowAccordingToHint(String hint) {
+        assert (hint != null);
+
+        if (hint.equals(THREE_STRIKE)) {
+            System.out.println(TEXT_FOR_END_ROUND);
+        }
+    }
 }
