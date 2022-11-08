@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PlayerTest {
     Player player;
     CheckException check;
-    static final int MAX_SIZE = 3;
 
     @BeforeEach
     void setUp() {
@@ -43,7 +42,7 @@ public class PlayerTest {
         player.decideNumbers("456");
         assertThat(player.getNumbers().size())
                 .as("숫자길이가 3이  아닙니다.")
-                .isEqualTo(MAX_SIZE);
+                .isEqualTo(GameStatus.MAX_SIZE.getValue());
     }
 
     @ParameterizedTest

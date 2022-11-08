@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ComputerTest {
     Computer computer;
-    static final int MAX_SIZE = 3;
 
     @BeforeEach
     void setUp() {
@@ -20,6 +19,6 @@ public class ComputerTest {
     void testWithComputerSourceLength() {
         assertThat(computer.getNumbers().size())
                 .as("숫자 길이가 3이 아닙니다.")
-                .isEqualTo(MAX_SIZE);
+                .isEqualTo(GameStatus.MAX_SIZE.getValue());
     }
 }

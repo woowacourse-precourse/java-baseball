@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class Judge {
     private final Computer computer;
     private final Player player;
-    private static final int MAX_SIZE = 3;
-
     private final CheckException check;
 
     public Judge() {
@@ -28,7 +26,7 @@ public class Judge {
         int strike = 0;
         int ball = 0;
 
-        for (int i = 0; i < MAX_SIZE; i++) {
+        for (int i = 0; i < GameStatus.MAX_SIZE.getValue(); i++) {
             if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
                 strike++;
             } else if (computerNumbers.contains(playerNumbers.get(i))) {

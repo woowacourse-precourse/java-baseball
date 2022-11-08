@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Computer {
     private final ArrayList<Integer> numbers;
-    private static final int MAX_SIZE = 3;
 
     public Computer() {
         this.numbers = makeRandomNumbers();
@@ -15,7 +14,7 @@ public class Computer {
     public ArrayList<Integer> makeRandomNumbers() {
         ArrayList<Integer> numbers = new ArrayList<>();
 
-        while (numbers.size() < MAX_SIZE) {
+        while (numbers.size() < GameStatus.MAX_SIZE.getValue()) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!numbers.contains(randomNumber)) {
                 numbers.add(randomNumber);
