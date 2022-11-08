@@ -11,4 +11,8 @@ public class PlayerNumberValidator {
     private static boolean isPlayerNumberLengthValid(String playerNumber) {
         return playerNumber.length() == GameConstant.VALID_NUMBER_LENGTH.getValue();
     }
+
+    private static boolean isNumericLiteralBetweenOneAndNine(char c) {
+        return c >= '1' && c <= '9';
+    }
 }
