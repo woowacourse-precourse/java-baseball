@@ -21,11 +21,13 @@ public class BaseBallGameNumber {
   }
 
   private int stringToInt(String inputString) {
+    int gameNumber = 0;
     try {
-      return Integer.parseInt(inputString);
+      gameNumber = Integer.parseInt(inputString);
     } catch (NumberFormatException e) {
       throwIllegalArgumentExceptionWithMessage("숫자가 아닙니다!");
     }
+    return gameNumber;
   }
 
   private void setBaseBallGameNum(int gameNumber) {
@@ -66,7 +68,7 @@ public class BaseBallGameNumber {
   private void throwIllegalArgumentExceptionWithMessage(String message)
       throws IllegalArgumentException {
     System.out.println(message);
-    throw new IllegalStateException(message);
+    throw new IllegalArgumentException(message);
   }
 
   public BaseBallGameNumber() {}
