@@ -8,6 +8,14 @@ public class BaseballGame {
     private static final char BEGIN_RANGE = '1';
     private static final char END_RANGE = '9';
 
+    public void play() {
+        printStartMessage();
+
+        do {
+            game();
+        } while (isReplay());
+    }
+
     private boolean isReplay() {
         String command = selectCommand();
 
