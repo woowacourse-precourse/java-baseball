@@ -12,9 +12,9 @@ import java.util.stream.Stream;
 
 public class Application {
     public static void main(String[] args) {
-        new BaseballController(new IOManager(new Input(), new Output()),
+        new BaseballController(new IOManager(new Input(), new Output(), new Validator()),
                 new GameStatus(),
-                new BaseballGame(new Validator(), new Computer(new NumbersGenerator(), new Numbers()), new Player(new Numbers())))
+                new BaseballGame(new Computer(new NumbersGenerator(), new Numbers()), new Player(new Numbers())))
                 .run();
     }
 }
@@ -46,21 +46,25 @@ class BaseballController {
     }
 
     private void playGame(Numbers answer, int count) {
+        ioManager.printOutput("숫자를 입력해주세요 : ");
+        String inputString = "";
+
         try {
-            ioManager.printOutput("숫자를 입력해주세요 : ");
-            Numbers inputNumbers = baseballGame.convertToNumbers(ioManager.getInput());
-
-            BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
-            ioManager.printOutput(ballCount.toString());
-
-            if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
-                gameStatus.quitProgram();
-                checkGoOrStop(ballCount);
-            }
-
+            inputString = ioManager.getInput();
         } catch (IllegalArgumentException e) {
             ioManager.printOutput(e.getMessage());
         }
+        
+        Numbers inputNumbers = baseballGame.convertToNumbers(inputString);
+
+        BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
+        ioManager.printOutput(ballCount.toString());
+
+        if (ballCount.isAllStrike(COUNT_OF_NUMBERS)) {
+            gameStatus.quitProgram();
+            checkGoOrStop(ballCount);
+        }
+
     }
 
     private void checkGoOrStop(BallCount ballCount) {
@@ -80,12 +84,10 @@ class BaseballController {
 }
 
 class BaseballGame {
-    Validator validator;
     Computer computer;
     Player player;
 
-    BaseballGame(Validator validator, Computer computer, Player player) {
-        this.validator = validator;
+    BaseballGame(Computer computer, Player player) {
         this.computer = computer;
         this.player = player;
     }
@@ -95,10 +97,7 @@ class BaseballGame {
     }
 
     public Numbers convertToNumbers(String inputString) {
-        if (validator.isRightFormat(inputString)) {
-            return player.parseToNumbers(inputString);
-        }
-        throw new IllegalArgumentException("잘못된 입력입니다.");
+        return player.parseToNumbers(inputString);
     }
 
     public BallCount countBall(Numbers answer, Numbers inputNumbers) {
@@ -220,14 +219,20 @@ class Output {
 class IOManager {
     Input input;
     Output output;
+    Validator validator;
 
-    IOManager(Input input, Output output) {
+    IOManager(Input input, Output output, Validator validator) {
         this.input = input;
         this.output = output;
+        this.validator = validator;
     }
 
     public String getInput() {
-        return input.input();
+        String inputString = input.input();
+        if (validator.isRightFormat(inputString)) {
+            return inputString;
+        }
+        throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
     public void printOutput(String message) {
