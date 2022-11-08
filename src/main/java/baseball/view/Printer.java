@@ -36,4 +36,7 @@ public class Printer {
     public static void printEnd() {
         System.out.println(END_MESSAGE);
     }
+    public static void askRestart(){
+        System.out.println(RESTART_MESSAGE);
+    }
 }
