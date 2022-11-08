@@ -42,40 +42,4 @@ public class GameTest {
         assertThat(expectedOutput).isEqualTo(realOutput);
 
     }
-
-    @Test
-    void getResultOfPlayerGuess_볼_스트라이크_개수에_따른_결과문구_반환(){
-        List<List<Integer>> ballStrikeInput = List.of(
-                List.of(0, 3),
-                List.of(0, 2),
-                List.of(3, 0),
-                List.of(2, 1),
-                List.of(0, 0)
-        );
-        List<String> expectedOutput = List.of(
-                "3스트라이크",
-                "2스트라이크",
-                "3볼",
-                "2볼 1스트라이크",
-                "낫싱"
-        );
-
-        List<String> realOutput = ballStrikeInput.stream()
-                .map(ballStrike -> Game.getResultOfPlayerGuess(ballStrike.get(0), ballStrike.get(1)))
-                .collect(Collectors.toList());
-
-        assertThat(expectedOutput).isEqualTo(realOutput);
-    }
-
-    @Test
-    void isAllStrike_올스트라이크인_경우_참(){
-        List<Integer> strikeCnts = List.of(3, 2);
-        List<Boolean> expectedOutput = List.of(true, false);
-
-        List<Boolean> realOutput = strikeCnts.stream()
-                .map(cnt -> Game.isAllStrike(cnt))
-                .collect(Collectors.toList());
-
-        assertThat(expectedOutput).isEqualTo(realOutput);
-    }
 }
