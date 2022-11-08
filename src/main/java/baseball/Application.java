@@ -111,7 +111,7 @@ public class Application {
 
         else return false;
     }
-    
+
     public static int getRegameNum(){
         String regameNumber = readLine();
         int intValue;
@@ -126,4 +126,8 @@ public class Application {
         return intValue;
     }
 
+    public static boolean regameOrNot(int regameNumber){
+        if(regameNumber == 1) return true;
+        else return false;
+    }
 }
