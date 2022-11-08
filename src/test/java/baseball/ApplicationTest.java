@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +29,41 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 숫자_0_입력_예외_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("120"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자_이외_값_입력_예외_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abd"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 컴퓨터_게임_준비_테스트(){
+        Computer computer = new Computer();
+        computer.ready();
+        assertThat(computer.getIsGameEnd()).isEqualTo(false);
+    }
+
+    @Test
+    void 컴퓨터_게임_결과_주기_테스트(){
+        Computer computer = new Computer();
+        computer.ready();
+        List<Integer> suggestion = new ArrayList<>();
+        suggestion.add(1);
+        suggestion.add(2);
+        suggestion.add(3);
+        computer.giveResult(suggestion);
+        assertThat(output()).containsAnyOf("낫싱", "스트라이크", "볼");
     }
 
     @Override
