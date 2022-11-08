@@ -20,6 +20,9 @@ public class InputValidator {
 
     private static Set<Character> duplicateChecker;
 
+    private InputValidator() {
+    }
+
     public static void validate(String input) {
         isAllNumber(input);
         isThreeWords(input);
@@ -65,7 +68,7 @@ public class InputValidator {
 
     private static void checkDuplicateNumber(String input) {
         addToSet(input);
-        ifHasSameNumberThrowException();
+        ifDifferentSizeThrowException();
     }
 
     private static void addToSet(String input) {
@@ -75,13 +78,13 @@ public class InputValidator {
         }
     }
 
-    private static void ifHasSameNumberThrowException() {
-        if (validate()) {
+    private static void ifDifferentSizeThrowException() {
+        if (isDifferentSize()) {
             throw new IllegalArgumentException(CANNOT_INPUT_DUPLICATE_NUMBER);
         }
     }
 
-    private static boolean validate() {
+    private static boolean isDifferentSize() {
         return duplicateChecker.size() != MAX_BASEBALL_SIZE;
     }
 
