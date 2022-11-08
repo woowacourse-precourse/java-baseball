@@ -35,11 +35,15 @@ public class User {
 
     private boolean isRightRangeNumber() {
         for (int i = 0; i < Const.NUMBER_LENGTH; i++){
-            if (!('0' < userInput.charAt(i) && userInput.charAt(i) <= '9')){
+            if (!isValidRangeNumber(i)){
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean isValidRangeNumber(int i) {
+        return ('0' < userInput.charAt(i) && userInput.charAt(i) <= '9');
     }
 
     private boolean isDuplicate(){
