@@ -5,6 +5,10 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import baseball.controller.MatchJudgmentController;
+import baseball.model.ComputerPlayer;
+import baseball.model.UserPlayer;
+
 public class BaseballGameModelTest {
 
 	@DisplayName("게임모델 작동 테스트")
@@ -12,7 +16,7 @@ public class BaseballGameModelTest {
 	void runGameModel() {
 	//	given
 		ComputerPlayer computerPlayer = new ComputerPlayer();
-		BaseballGameModel baseballGameModel = new BaseballGameModel(computerPlayer);
+		MatchJudgmentController baseballGameModel = new MatchJudgmentController(computerPlayer);
 		UserPlayer userPlayer = UserPlayer.getInstance();
 
 	//	when

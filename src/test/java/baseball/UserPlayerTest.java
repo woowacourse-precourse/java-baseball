@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import baseball.model.UserPlayer;
+
 public class UserPlayerTest {
 	@DisplayName("객체 생성 테스트")
 	@Test

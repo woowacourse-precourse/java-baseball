@@ -1,14 +1,17 @@
-package baseball;
+package baseball.controller;
 
 import static baseball.GameRules.*;
 
 import java.util.List;
 
+import baseball.UserInputValidator;
+import baseball.model.ComputerPlayer;
+import baseball.model.UserPlayer;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameController {
 	private final UserPlayer userPlayer;
-	private BaseballGameModel baseballGameModel;
+	private MatchJudgmentController matchJudgmentController;
 	private boolean gameStatus;
 	private final UserInputValidator userInputValidator;
 
@@ -27,7 +30,7 @@ public class BaseballGameController {
 	}
 	public void gameInit() {
 		ComputerPlayer computerPlayer = new ComputerPlayer();
-		baseballGameModel = new BaseballGameModel(computerPlayer);
+		matchJudgmentController = new MatchJudgmentController(computerPlayer);
 		gameStatus = true;
 	}
 
@@ -42,9 +45,9 @@ public class BaseballGameController {
 			userInputValidator.isValidUserInput(userInput);
 			userPlayer.setNumberList(userInput);
 
-			scoreList = baseballGameModel.getMatchResult();
+			scoreList = matchJudgmentController.getMatchResult();
 
-			if (baseballGameModel.isGameOver()) {
+			if (matchJudgmentController.isGameOver()) {
 				System.out.println(DIGIT_NUMBER.getCode()+"스트라이크");
 				System.out.println(DIGIT_NUMBER.getCode()+"개의 숫자를 모두 맞히셨습니다! 게임 종료");
 				break;

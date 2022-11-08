@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import baseball.model.ComputerPlayer;
+
 public class ComputerPlayerTest {
 
 	@DisplayName("상대플레이어의 숫자갯수 테스트")
