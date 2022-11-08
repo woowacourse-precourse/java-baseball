@@ -18,12 +18,12 @@ public class BaseballComputer {
 
     public void start(){
         createRandomNumber();
-        init();
+        runGame();
     }
 
-    private void init(){
+    private void runGame(){
         while (true){
-            gameMessage.inputNumberToComputerMessage();
+            gameMessage.printInputNumberToComputerMessage();
             String answer = userInputNumberInGame();
             findingException.checkOutOfInputNumber(answer);
 
@@ -32,7 +32,7 @@ public class BaseballComputer {
             }
             break;
         }
-        gameMessage.printRestartOrEnd();
+        gameMessage.printRestartOrEndMessage();
         int choice = findingException.checkOutOfChoiceNumber(inputRestartOrEnd());
 
         if(choice == 1){
@@ -75,11 +75,11 @@ public class BaseballComputer {
         checkHitNumber.add(strike);
 
 
-        printHitStatus(checkHitNumber);
+        gameMessage.printHintMessage(checkHitNumber);
 
         // 게임 승리
         if(strike == 3){
-            gameMessage.endGameMessage();
+            gameMessage.printEndGameMessage();
             return true;
         }
 
@@ -91,25 +91,4 @@ public class BaseballComputer {
         return changeType.StringToInt(beforeIntChange);
     }
 
-    private void printHitStatus(List<Integer> hitStatus){
-        //아무것도 없을 때
-        if(hitStatus.get(0) == 0 && hitStatus.get(1) == 0){
-            System.out.println("낫싱");
-        }
-
-        //ball만 있을 때
-        if(hitStatus.get(1) == 0 && hitStatus.get(0) != 0){
-            System.out.println(hitStatus.get(0) + "볼");
-        }
-
-        //strike만 있을 때
-        if(hitStatus.get(0) == 0 && hitStatus.get(1) != 0){
-            System.out.println(hitStatus.get(1) + "스트라이크");
-        }
-
-        //둘 다 있을 때
-        if(hitStatus.get(0) != 0 && hitStatus.get(1) != 0){
-            System.out.println(hitStatus.get(0) + "볼 " + hitStatus.get(1) + "스트라이크");
-        }
-    }
 }
