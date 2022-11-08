@@ -21,6 +21,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임종료_후_재시작2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "1", "123", "597", "329", "579", "2");
+                    assertThat(output()).contains("3스트라이크", "게임 종료", "낫싱", "2볼 1스트라이크", "1스트라이크", "3스트라이크", "게임 종료", "게임 종료");
+                },
+                1, 2, 3, 5, 7, 9
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
