@@ -144,6 +144,29 @@ public class ImplementTest extends NsTest{
         assertEquals(answer, captor.toString().trim());
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {"1:2:3:1:2:3,0/3", "1:2:3:1:2:4,0/2", "1:2:3:1:4:5,0/1", "1:2:3:4:5:6,0/0",
+    "1:2:3:2:4:5,1/0", "1:2:3:2:3:4,2/0", "1:2:3:2:3:1,3/0", "1:2:3:1:3:4,1/1"})
+    void judge_test(final String input, final String expected) {
+        int ball = 0;
+        int strike = 1;
+        final String[] inputs = input.split(":");
+        final String[] expectedsInString = expected.split("/");
+        int[] expectedsInInteger = new int[2];
+        List<Integer> userInput = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
+        for(int inputsindex = 0; inputsindex < 3; inputsindex++) {
+            userInput.add(Integer.parseInt(inputs[inputsindex]));
+        }
+        for(int answerindex = 3; answerindex < 6; answerindex++) {
+            answer.add(Integer.parseInt(inputs[answerindex]));
+        }
+        expectedsInInteger[ball] = Integer.parseInt(expectedsInString[ball]);
+        expectedsInInteger[strike] = Integer.parseInt(expectedsInString[strike]);
+        assertEquals(Referee.judge(userInput, answer)[0], expectedsInInteger[0]);
+        assertEquals(Referee.judge(userInput, answer)[1], expectedsInInteger[1]);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
