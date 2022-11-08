@@ -9,9 +9,10 @@ public class Computer {
     private int strikeCount; // 플레이어가 입력한 숫자의 대한 결과 중 스트라이크 개수
     private int ballCount; // 플레이어가 입력한 숫자의 대한 결과 중 볼 개수
 
-    public Computer() // 객체 생성 시, 자동으로 컴퓨터 숫자가 정해짐
-    {
+    public void initComputer() {
         generateComputerNumberList();
+        strikeCount = 0;
+        ballCount = 0;
     }
 
     private void generateComputerNumberList() // 무작위로 컴퓨터 숫자 정함
@@ -25,6 +26,7 @@ public class Computer {
         }
         this.computerNumberList = numberList;
     }
+
 
     public int countStrike(ArrayList<Integer> input) // 스트라이크 개수 파악
     {
