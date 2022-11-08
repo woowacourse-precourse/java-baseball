@@ -15,12 +15,13 @@ public class BullsAndCows {
     public BullsAndCows() {
         progressService = new ProgressService();
         validation = new NumberValidation();
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
     public void playGame() {
 
         while (!progressService.isEnd()) {
-            System.out.println(PROGRESS_MESSAGE);
+            System.out.print(PROGRESS_MESSAGE);
             String userInput = Console.readLine();
             validation.validateUserInput(userInput);
 
@@ -28,6 +29,7 @@ public class BullsAndCows {
             System.out.println(message);
         }
 
+        System.out.println(CLEAR_MESSAGE);
         System.out.println(ASK_QUIT);
 
         String userInput = Console.readLine();

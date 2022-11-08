@@ -2,14 +2,14 @@ package baseball.message;
 
 public enum GameProgressMessage {
     ASK_QUIT(
-            "====Game Over... Please Enter If You want to====\n" +
-                    "[restart : 1 | exit : 2]"
+            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
     ),
     PROGRESS_MESSAGE(
-            "====Please Enter The Number You are Guessing!===="
+            "숫자를 입력해주세요 : "
     ),
     RESTART("재시작"),
-    END("게임 종료");
+    CLEAR_MESSAGE("3개의 숫자를 모두 맞히셨습니다! 게임 종료"),
+    END("게임을 종료합니다.");
 
     private final String message;
 
