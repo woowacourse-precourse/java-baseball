@@ -1,15 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     public static List<Integer> randomNumber;
-
 
     public static class BaseBall{
         public int ball;
@@ -138,7 +134,6 @@ public class Application {
 
         return true;
     }
-
 
     public static void GetRandomNumber(){
         randomNumber = new ArrayList<>();
