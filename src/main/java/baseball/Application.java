@@ -87,24 +87,27 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         //First commit
-
-        //컴퓨터 숫자 생성 함수
-        String computer_number = "451";
-        String[] computer_number_list = computer_number.split("");
-        int three_strike_judge = 0;
-
+        game_start_message();
+        String playmore_stop_number = "1";
         do {
-            String input_number = input_number_message();
-            String[] input_number_list = input_number.split("");
+            //컴퓨터 숫자 생성 함수
+            String computer_number = "451";
+            String[] computer_number_list = computer_number.split("");
             List<Integer> strike_ball_nothing_list = Arrays.asList(0, 0, 0);
-            add_ball_index(input_number_list, computer_number_list, strike_ball_nothing_list);
-            add_strike_index(input_number_list, computer_number_list, strike_ball_nothing_list);
-            result_message(strike_ball_nothing_list);
-            three_strike_judge = three_strike_judgement(strike_ball_nothing_list);
-            three_strike_message(three_strike_judge);
-        } while (three_strike_judge == 0);
+            int three_strike_judge = 0;
 
-        String playmore_stop_number = decide_newgame_endgame();
+            do {
+                String input_number = input_number_message();
+                String[] input_number_list = input_number.split("");
+                strike_ball_nothing_list = Arrays.asList(0, 0, 0);
+                add_ball_index(input_number_list, computer_number_list, strike_ball_nothing_list);
+                add_strike_index(input_number_list, computer_number_list, strike_ball_nothing_list);
+                result_message(strike_ball_nothing_list);
+                three_strike_judge = three_strike_judgement(strike_ball_nothing_list);
+                three_strike_message(three_strike_judge);
+            } while (three_strike_judge == 0);
 
+            playmore_stop_number = decide_newgame_endgame();
+        } while (playmore_stop_number.equals("1"));
     }
 }
