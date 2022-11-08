@@ -4,38 +4,49 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         Baseball baseball = new Baseball();
-        String optionNumber;
-        boolean option;
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        do {
-            baseball.pickRandomNumber();
-            do {
-                baseball.getPlayerNumber();
-                baseball.comparisonPlayerComputer();
-                baseball.printBaseballScore();
-            } while (!baseball.rightAnswer());
-            baseball.printGameOver();
-            optionNumber = baseball.gameRestartOrEnd();
-            option = baseball.optionRestartOrEnd(optionNumber);
-        } while (!option);
+        baseball.gameStart();
     }
 }
 
 class Baseball {
-    private List<Integer> computerNumber = List.of(0, 0, 0);
-    private List<Integer> playerNumber = List.of(0, 0, 0);
+    private List<Integer> computerNumber = new ArrayList<>();
+    private List<Integer> playerNumber = new ArrayList<>();
     private List<Integer> baseballCount = List.of(0, 0);
+
+    public void gameStart() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean option;
+        do {
+            pickRandomNumber();
+            gameInProgress();
+            option = gameEnd();
+        } while (option);
+    }
+    public void gameInProgress() {
+        do {
+            getPlayerNumber();
+            comparisonPlayerComputer();
+            printBaseballScore();
+        } while (rightAnswer());
+    }
+    public boolean gameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        String optionNumber= gameRestartOrEnd();
+        boolean option = optionRestartOrEnd(optionNumber);
+        return option;
+    }
 
     public void pickRandomNumber() {
         for (int i = 0; i < 3;) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumber.contains(randomNumber)) {
-                computerNumber.set(i, randomNumber);
+                computerNumber.add(randomNumber);
                 i++;
             }
         }
@@ -49,14 +60,14 @@ class Baseball {
             System.out.print("숫자를 입력해주세요 :");
             getPlayerNumber = br.readLine();
             getPlayerNumberError(getPlayerNumber);
+            playerNumberList(getPlayerNumber);
         } catch (Exception e) {
         }
-        playerNumberList(getPlayerNumber);
     }
     public void playerNumberList(String getPlayerNumber) {
         int playerNum = Integer.parseInt(getPlayerNumber);
         for (int i = 0; i < 3; i++) {
-            playerNumber.set(i, (playerNum % 10));
+            playerNumber.add(playerNum % 10);
             playerNum /= 10;
         }
     }
@@ -124,10 +135,7 @@ class Baseball {
         if (baseballCount.get(0) == 3) {
             success = true;
         }
-        return success;
-    }
-    public void printGameOver() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        return !success;
     }
     public String gameRestartOrEnd() {
         String optionNumber = null;
@@ -143,11 +151,13 @@ class Baseball {
         boolean option;
         if (optionNumber.equals("1")) {
             option = true;
+            this.computerNumber.clear();
+            this.playerNumber.clear();
         } else if (optionNumber.equals("2")) {
             option = false;
         } else {
             throw new IllegalArgumentException("옵션값이 아닙니다.");
         }
-        return option;
+        return !option;
     }
 }
