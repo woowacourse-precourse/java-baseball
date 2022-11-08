@@ -30,6 +30,12 @@ public class ExceptionTest {
     }
 
     @Test
+    void 숫자입력_2개() {
+        assertThatThrownBy(() -> exception.createNumberInputException("12"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 숫자입력3개_3개가아님() {
         assertThatThrownBy(() -> exception.createNumberInputException("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -41,4 +47,23 @@ public class ExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void GameRestart_1_입력() {
+        assertThatCode(() -> exception.restartException(1))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void GameRestart_2_입력() {
+
+        assertThatCode(() -> exception.restartException(2))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void GameRestart_3_입력() {
+
+        assertThatThrownBy(() -> exception.restartException(3))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
