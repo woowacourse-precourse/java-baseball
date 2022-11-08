@@ -10,7 +10,7 @@ public class Validator {
     private static final int VALID_INPUT_DIGIT = 3;
     private static final String VALID_INPUT_TYPE = "^[1-9]{3}$";
 
-    private static List<Integer> validateUserInput(String userInput) {
+    public static List<Integer> validateUserInput(String userInput) {
         validateDigit(userInput);
         validateType(userInput);
         validateDuplicates(userInput);
