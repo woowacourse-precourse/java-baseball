@@ -12,4 +12,10 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateLength(String numbers, int length) {
+        if (numbers.length() != length) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
