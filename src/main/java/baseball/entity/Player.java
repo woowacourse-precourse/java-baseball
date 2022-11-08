@@ -18,10 +18,10 @@ public class Player {
         for (int i=0; i<input.length(); i++) {
             playerNumbers.add(input.charAt(i)-'0');
         }
-        boolean isValid = validateNumber(playerNumbers);
+        boolean isValid = checkNumberValidation(playerNumbers);
     }
 
-    private boolean validateNumber(List<Integer> playerNumbers) {
+    private boolean checkNumberValidation(List<Integer> playerNumbers) {
         if(playerNumbers.stream().distinct().count()!=3) {
             return false;
         }
