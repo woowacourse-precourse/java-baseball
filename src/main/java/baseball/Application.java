@@ -67,6 +67,16 @@ public class Application {
 		return strike;
 	}
 	
+	public static int ballCheck(List<Integer> computer, List<Integer> user) {
+		int ball=0;
+		for(int i=0;i<3;i++) {
+			if(computer.contains(user.get(i)) && computer.get(i)!=user.get(i)) {
+				ball+=1;
+			}
+		}
+		return ball;
+	}
+	
     public static void main(String[] args) {
     	
     }
