@@ -1,5 +1,7 @@
 package baseball.view;
 
+import static baseball.exception.InputException.*;
+
 import baseball.exception.InputException;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -11,12 +13,12 @@ public class InputView {
 
     public static String selectUserNumberInput() {
         System.out.print(USER_INPUT_MESSAGE);
-        return InputException.validUserNumberException(Console.readLine());
+        return validUserNumberException(Console.readLine());
     }
 
     public static boolean selectEndOrRestartInput() {
         System.out.println(END_OR_RESTART_MESSAGE);
-        return getEndOrRestart(InputException.validRestartNumberException(Console.readLine()));
+        return getEndOrRestart(validRestartNumberException(Console.readLine()));
     }
 
     private static boolean getEndOrRestart(String restartNumber) {
