@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -58,6 +59,10 @@ class ApplicationTest extends NsTest {
 
     @Test
     void checkMatchNumber() {
+        List<Integer> randNum = Arrays.asList(1,2,3);
+        List<Integer> userNum = Arrays.asList(1,2,3);
+        Map<String, Integer> output = Application.checkMatchNumber(randNum, userNum);
+        assertThat(output.get("스트라이크")).isEqualTo(3);
     }
 
     @Test
