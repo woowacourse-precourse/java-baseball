@@ -15,10 +15,7 @@ public class NumberBaseBallGame {
         while (strike < NUMBER_LENGTH) {
             System.out.print(GETTING_USER_NUMBER_MESSAGE);
             getUserNumber();
-            printNothing();
-            printBall();
-            printStrike();
-            System.out.println();
+            printMessage();
         }
         System.out.println(GAME_END_MESSAGE);
     }
@@ -31,6 +28,15 @@ public class NumberBaseBallGame {
         strike = user.strike(computer);
         ball = user.ball(computer);
     }
+    protected void printMessage(){
+        printNothing();
+        printBall();
+        if(strike > 0){
+            System.out.print(" ");
+        }
+        printStrike();
+        System.out.println();
+    }
     protected void printNothing() {
         if (strike == 0 && ball == 0) {
             System.out.print(NOTHING_MESSAGE);
@@ -39,9 +45,6 @@ public class NumberBaseBallGame {
     protected void printBall() {
         if (ball > 0) {
             System.out.print(ball + BALL_MESSAGE);
-            if(strike > 0){
-                System.out.print(" ");
-            }
         }
     }
     protected void printStrike() {
