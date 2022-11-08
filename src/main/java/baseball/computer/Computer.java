@@ -1,5 +1,7 @@
 package baseball.computer;
 
+import baseball.computer.generator.NumberGenerator;
+import baseball.computer.generator.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Computer {
     }
 
     public void initComputer() {
-        gameNumber = RandomNumberGenerator.getRandomNumber();
+        gameNumber = NumberGenerator.getNumber();
     }
 
     public List<Integer> getGameNumber() {

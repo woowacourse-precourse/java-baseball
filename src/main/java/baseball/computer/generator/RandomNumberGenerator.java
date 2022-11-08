@@ -1,4 +1,4 @@
-package baseball.computer;
+package baseball.computer.generator;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
