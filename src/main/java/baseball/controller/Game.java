@@ -43,4 +43,24 @@ public class Game {
         }
         return result;
     }
+
+    // 모두 맞춘 경우
+    public static boolean clear(Baseball game) {
+        if (game.getStrike()==3) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean getShutDownCheck() {
+        int input = 0;
+        Printer.showShutDownCheck();
+        try {
+            input = Integer.parseInt(readLine());
+            vaildShutDownInput(input);
+        } catch (NumberFormatException e) {
+        }
+        vaildShutDownInput(input);
+        return input==1;
+    }
 }
