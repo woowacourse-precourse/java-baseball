@@ -29,7 +29,7 @@ public class User {
         }
     }
 
-    public int input() {
+    private int input() {
         String inputString = Console.readLine();
         checkInput(inputString);
 

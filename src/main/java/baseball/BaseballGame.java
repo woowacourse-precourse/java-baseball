@@ -50,7 +50,7 @@ public class BaseballGame {
         } else if (strikeCnt == 0) {
             gameResult = ballCntString+BALL_STR;
         } else {
-            gameResult = ballCntString+"볼 "+strikeCntString+"스트라이크";
+            gameResult = ballCntString+BALL_STR+" "+strikeCntString+STRIKE_STR;
         }
 
         System.out.println(gameResult);
