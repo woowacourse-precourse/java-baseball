@@ -30,13 +30,13 @@ public class NumberBaseballGame {
             inputNumber = changeStringToList(userInput);
 
             Score userScore = new Score();
-            playGame(userScore);
+            playGame(userScore, computerNumber, inputNumber);
 
             String result = getResult(userScore);
             System.out.println(result);
 
             if (userScore.getStrike() == 3) {
-                System.out.println(RESTART_TEXT);
+                System.out.println(RESULT_TEXT);
                 break;
             }
         }
@@ -56,7 +56,7 @@ public class NumberBaseballGame {
         return changedList;
     }
 
-    public void playGame(Score score) {
+    public void playGame(Score score, List<Integer> computerNumber, List<Integer> inputNumber) {
         for (int i=0; i<3; i++) {
             if (Objects.equals(computerNumber.get(i), inputNumber.get(i))) {
                 score.setStrike(score.getStrike() + 1);
@@ -85,7 +85,7 @@ public class NumberBaseballGame {
             result.append(strike);
             result.append(STRIKE_TEXT);
         }
-        return result.toString();
+        return result.substring(0, result.length() - 1);
     }
 
     public boolean restartGame(String restartFlag) {
