@@ -18,4 +18,8 @@ public class User {
         validator.validateNumber(number);
     }
 
+    public String getNumber() {
+        return number;
+    }
+
 }
