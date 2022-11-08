@@ -40,6 +40,7 @@ public class Application {
             }
         } while (game.restartOrStop(game.restartOrStopInput()) == 1);
         // 2를 입력한 경우, 종료한다.
+        ㄴ
         System.exit(0);
 
     }
@@ -101,6 +102,7 @@ class Game {
         }
 
         if (userInput.equals("2")) {
+            System.out.println("게임 종료");
             return 2;
         }
 
