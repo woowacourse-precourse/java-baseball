@@ -1,5 +1,5 @@
 package ui;
 
 public interface Input {
-    String scan(final int PURPOSE, final int MAX_LEN);
+    String scan(final String PURPOSE, final int MAX_LEN);
 }
