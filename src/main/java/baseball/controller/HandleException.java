@@ -12,4 +12,14 @@ public class HandleException{
             System.out.println("잘못된 값을 입력하였습니다. 게임을 종료합니다.");
         }
     }
+
+    public void handleRestartOrExitNumberException(int restartORExit) {
+        try {
+            if (1 > restartORExit || restartORExit > 2) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 값을 입력하였습니다. 게임을 종료합니다.");
+        }
+    }
 }
