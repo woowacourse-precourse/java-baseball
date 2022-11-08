@@ -81,8 +81,9 @@ public class GameHost extends BaseballNumber {
     public void setBaseballNumber() {
         Set<Integer> checkValidNumber = new HashSet<>();
         Random random = new Random();
+        final int BASEBALL_LENGTH = 3;
 
-        while (checkValidNumber.size() != 3) {
+        while (checkValidNumber.size() != BASEBALL_LENGTH) {
             int randomNum = random.nextInt(9) + 1;
             checkValidNumber.add(randomNum);
         }
