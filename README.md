@@ -153,3 +153,173 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+# 기능 목록 (최종 업데이트: 2022.11.08)
+
+## 어플리케이션 설계
+
+## 1. 클래스 `GameManager`
+
+### 클래스 설명
+- 게임의 진행을 관리하는 클래스이다. 싱글턴 패턴으로 사용된다.
+- 게임을 시작하고, 사용자로부터 입력을 받아 결과를 보여주고, 게임을 계속 진행하거나 종료한다.
+- 단, 사용자 입력의 유효성을 검증하거나, 사용자 입력의 결과를 계산하는 등의 게임 진행 밖의 책임은 다른 클래스에 위임한다. 
+
+### 멤버 변수
+  - `private GameStatus gameStatus`: 현재 게임의 진행 상태를 나타내며, 실행 중(`PLAYING`)과 정지(`STOPPED`)로 구분된다.  
+  - `private String computerNumber`: 게임의 각 회차(round)마다 사용자가 맞혀야 하는 컴퓨터 번호를 저장한다.
+
+### 정적 변수
+  - `private static GameManager gameManager`: 싱글턴 패턴으로 생성된 `GameManager` 인스턴스를 저장한다.
+
+### 멤버 메서드
+- **생성자**
+  - `private GameManager()` 
+- **싱글턴 인스턴스를 반환하는 기능**
+  - `public GameManager getGameManager()`
+  - 싱글턴 `GameManager` 인스턴스를 반환한다.
+  - 어플리케이션이 시작될 때 `Program` 클래스의 `main` 함수에서 오직 한 번 호출된다.
+- **게임을 실행하는 기능**
+  - `public void runGame()`
+  - 어플리케이션을 시작할 때, `main` 함수에서 호출되면서 게임을 개시한다.
+  - 게임을 진행하기 위한 메서드(사용자 입력 받아오기, 입력값 검증 등)를 내부적으로 호출한다.
+  - 사용자가 게임 완전 종료를 명령할 때까지 본 함수의 호출은 종료되지 않는다.
+- **게임의 실행 상태를 확인하는 기능**
+  - `private boolean isGamePlaying()`
+  - 게임이 실행 중(`this.gameStatus == PLAYING`)일 경우 `true`를 반환한다.
+  - 게임이 중지 상태(`this.gameStatus == STOPPED`)일 경우 `false`를 반환한다.
+- **컴퓨터 번호를 생성하는 기능**
+  - `private String generateComputerNumber()`
+  - 게임의 각 회차(round)마다 사용자가 맞혀야 하는, 서로 다른 숫자 세 개로 된 번호를 생성한다.
+- **새로운 컴퓨터 번호를 설정하는 기능**
+  - `private void setComputerNumber(String computerNumber)`
+  - 새로운 컴퓨터 번호를 인자로 받아 `this.ComputerNumber`에 설정한다.
+  - 새로운 회차(round)가 시작될 때마다 호출된다.
+- **사용자 번호 입력을 받아오는 기능**
+  - `private String getPlayerNumber()`
+  - 표준 입력 스트림(`System.in`)으로부터 사용자 입력을 받아온다.
+  - 사용자가 입력한 번호는 `runGame` 메서드 내에서 유효성 검사를 위해 즉시 `PlayerNumberValidator` 클래스에 전달된다.
+- **힌트 결과에 따라 게임 흐름을 제어하는 기능**
+  - `private void processGameFlowAccordingToHint(String hint)`
+  - 사용자 번호와 컴퓨터 번호를 대조한 결과가 `3스트라이크`가 아니면 현재 회차(round)가 계속 진행되도록 즉시 게임 흐름 제어를 `runGame`에 반환한다.
+  - 만약 `3스트라이크`라면 사용자가 컴퓨터 번호를 맞췄음을 표준 출력 스트림에 알린다.
+  - 그 후 `shouldPlayContinue` 메서드를 내부 호출하여 사용자가 게임을 계속 진행하길 희망하는지 확인한다.
+  - 마지막으로 사용자의 게임 계속 여부를 `stopOrContinueGame` 메서드에 전달함으로써 게임 흐름 제어권을 옮긴다.   
+- **사용자의 게임의 계속 진행 희망 여부를 확인하는 기능**
+  - `private boolean shouldPlayContinue()`
+  - 표준 입력 스트림으로부터 사용자의 게임 계속 진행 희망 여부를 받아와서 확인한다.
+  - 사용자가 계속 진행을 선택했으면(`1`을 눌렀으면) `true`, 아니라면(`2`를 눌렀으면) `false`를 반환한다.
+  - 사용자가 잘못된 입력(`1` 또는 `2` 외의 입력)을 전달했을 경우 `IllegalArgumentException`을 발생시킨다.
+- **사용자의 게임 계속 진행 희망 여부에 따라 게임 진행 상태를 변경하는 기능**
+  - `private void stopOrContinueGame(boolean shouldGameContinue)`
+  - 사용자가 게임 중지를 선택했을 경우 `changeGameStatusToStop`을 내부 호출하여 게임 진행 상태를 변경한다.
+  - 사용자가 게임 계속 진행을 선택했을 경우, 새 회차(round)를 진행하기 위해 `generateComputerNumber`와 `setComputerNumber`를 차례로 호출하여 새로운 컴퓨터 번호를 지정한다.
+- **게임의 진행 상태를 중지로 변경하는 기능**
+  - `private void changeGameStatusToStop()`
+  - 게임의 진행 상태(`this.gameStatus`)를 중지(`STOPPED`)로 변경한다.
+
+---
+
+## 2. 클래스 `PlayerNumberValidator`
+
+### 클래스 설명
+  - `GameManager`가 사용자로부터 받은 번호가 게임에서 허용하는 형식인지 확인하는 클래스이다.
+  - 본 클래스의 모든 메서드는 정적이며, 인스턴스 또한 생성할 수 없다.
+
+### 동작 (정적 메서드)
+  - **사용자 입력이 유효하지 않으면 예외를 발생시키는 기능**
+    - `public static void throwIllegalArgumentExceptionIfPlayerNumberNotValid(String playerNumberOrNull)`
+    - 내부에서 `isPlayerNumberValid` 메서드를 릴레이 호출한다. 그 값이 `true`면 즉시 반환한다. 
+    - `false`면 `IllegalArgumentException`을 발생시켜 호출자에 `throw`한다. 
+  - **사용자 입력이 유효한 형식인지 확인하는 기능**
+    - `public static boolean isPlayerNumberValid(String playerNumberOrNull)`
+    - 사용자가 입력한 사용자 번호가 유효한 형식인지 확인한다.
+    - 이를 위해서 아래 세 개 메서드를 도우미 함수로 사용한다.
+  - **사용자 입력의 길이가 유효한지 확인하는 기능**
+    - `public static boolean isPlayerNumberLengthValid(String playerNumber)`
+    - 사용자 번호의 길이가 게임에서 유효하다고 취급하는 길이인지 확인한다.
+    - 유효한 길이의 값은 열거형 `GameConstant`의 `VALID_NUMBER_LENGTH`의 `value` 멤버 변수에 지정되어 있다.
+  - **문자열의 한 문자가 1~9 범위 숫자인지 확인하는 기능**
+    - `public static boolean isNumericLiteralBetweenOneAndNine(char c)`
+    - 사용자 번호의 한 문자가 1에서 9의 양 끝을 포함하는 사이의 숫자인지 확인한다.
+    - 인자 `char c`가 1~9 사이 숫자면 `true`, 그렇지 않으면 `false`를 반환한다.
+  - **숫자 중복 여부를 확인하는 기능**
+    - `public static boolean isDuplicateNumericLiteral(char numericLiteral, boolean[] checkArray)`
+    - 사용자 번호의 한 숫자가 이미 앞쪽에서 그 존재가 확인된 숫자인지 확인한다.
+    - 호출 시 전달되는 인자 `numericLiteral`은 1~9 사이의 숫자라고 전제한다. 
+
+---
+
+## 3. 클래스 `ResultEvaluator`
+
+### 클래스 설명
+- 컴퓨터 번호와 사용자 번호를 대조하여 결과(볼 및 스트라이크 개수)를 계산하고, 그 결과를 '힌트' 문자열로 반환하는 클래스이다.
+- 본 클래스의 모든 메서드는 정적이며, 인스턴스 또한 생성할 수 없다.
+
+### 동작 (정적 메서드)
+- **'힌트'를 반환하는 기능**
+  - `public static String getHint(String computerNumber, String playerNumber)`
+  - 내부적으로 `getScore`를 호출하여 점수를 계산하고, 이 점수를 `translateScoreToHint`를 통해 일정한 형식의 문자열(예: "3스트라이크", "낫싱", "1볼 2스트라이크" 등)로 변환하여 호출자에 반환한다.
+  - 이 함수의 호출자인 `GameManager`는 반드시 **유효한** 컴퓨터 번호와 **유효한** 사용자 번호를 인자로 전달해야 한다.
+- **컴퓨터 번호와 사용자 번호를 대조하여 점수를 계산하는 기능**
+  - `public static Score getScore(String computerNumber, String playerNumber)`
+  - 컴퓨터 번호와 사용자 번호를 대조하여 볼과 스트라이크 개수를 계산한다.
+  - 계산된 값을 기반으로 `Score` 타입 개체를 생성 및 반환한다.
+- **특정 숫자의 '스트라이크' 여부를 판단하는 기능**
+  - `public static int isStrikeOrNot(String computerNumber, String playerNumber, int index)`
+  - 사용자 번호의 특정 색인(`index`)에 위치한 숫자가, 컴퓨터 번호의 같은 색인에 위치할 경우, `스트라이크`라는 의미로 `1`을 반환한다. 그렇지 않을 경우, `0`을 반환한다. 
+- **특정 숫자의 '볼' 여부를 판단하는 기능**
+  - `public static int isBallOrNot(String computerNumber, String playerNumber, int index)`
+  - 사용자 번호의 특정 색인(`index`)에 위치한 숫자가, 컴퓨터 번호의 특정 색인(`index`)을 **제외한** 나머지 색인 어딘가에 존재할 경우, `볼`이라는 의미로 `1`을 반환한다. 그렇지 않을 경우, `0`을 반환한다.
+- **점수를 힌트 문자열로 변환하는 기능** 
+  - `public static String translateScoreToHint(Score score)`
+  - `Score` 타입의 점수를 인자로 받아 이를 일정 형식의 힌트 문자열로 변환한다.
+    - 볼의 개수가 `n`, 스트라이크 개수가 `m`일 경우 `n볼 m스트라이크` 형식의 문자열로 변환된다.
+    - `n`과 `m` 중 어느 하나만 0일 경우, 0인 쪽은 문자열로 나타내지 않는다.
+    - 예를 들어 볼이 0개이며 스트라이크가 2개일 경우, `2스트라이크` 문자열로 변환한다.
+    - `n`과 `m` 모두 0일 경우, `낫싱` 문자열을 반환한다. 
+
+---
+
+## 4. 클래스 `Score` (DTO 클래스)
+
+### 클래스 설명
+- 각 회차의 컴퓨터 번호와 사용자 입력 번호를 대조한 결과를 저장하는 DTO(Data Transfer Object) 클래스이다.
+
+### 상태 (멤버 변수)
+  - `private final int numBalls`: 사용자가 획득한 '볼' 개수
+  - `private final int numStrikes`: 사용자가 획득한 '스트라이크' 개수
+
+### 동작 (멤버 메서드)
+- **생성자**
+  - `public Score(int numBalls, int numStrikes)`
+  - 컴퓨터 번호와 사용자 입력 번호를 대조한 결과(볼과 스트라이크 개수)를 매개변수로 받아 새로운 인스턴스를 생성 및 반환한다.
+- **사용자 점수에서 '볼' 개수를 반환하는 기능**
+  - `public int getBallCount()`
+  - 인스턴스에 저장된 볼 개수를 반환한다.
+- **사용자 점수에서 '스트라이크' 개수를 반환하는 기능**
+  - `public int getStrikeCount()`
+  - 인스턴스에 저장된 스트라이크 개수를 반환한다.
+
+---
+
+## 5. 열거형 `GameStatus`
+
+### 클래스 설명
+- 게임의 진행 상황을 나타내는 열거형 클래스이다.
+### 값
+- `PLAYING`: 게임이 진행 중임을 뜻하는 값이다.
+- `STOPPED`: 게임이 완전 종료(실행 중지) 상태임을 뜻하는 값이다.
+
+---
+
+## 6. 열거형 `GameConstant`
+
+### 클래스 설명
+- 어플리케이션 전체에서 공통적으로 사용되는 값을 정의한 열거형 클래스이다.
+- 열거형의 각 값은 실제 `int` 값을 나타내는 `value`를 멤버 변수로 가진다.  
+### 값
+  - `VALID_NUMBER_LENGTH`: 유효한 컴퓨터/사용자 번호의 길이를 나타내는 값이다.
+    - 실제 정수 값은 기본 `3`으로 설정되어 있다.
