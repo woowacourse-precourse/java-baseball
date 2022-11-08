@@ -12,11 +12,17 @@ public class Balls {
         balls = new ArrayList<>();
     }
 
-    public boolean validateBallsSize() {
+    public boolean equalBallsSize() {
         if(balls.size()==BALL_SIZE){
             return true;
         }
         return false;
+    }
+
+    public void validatePlayerBallSize(){
+        if(balls.size()!=BALL_SIZE){
+            throw new IllegalArgumentException(NOT_BALL_SIZE);
+        }
     }
 
     public boolean hasBall(Ball ball) {

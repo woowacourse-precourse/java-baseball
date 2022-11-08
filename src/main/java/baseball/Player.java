@@ -18,9 +18,8 @@ public class Player {
 
     public Balls createBalls() {
         List<Ball> balls = createBallByInput(inputPlayerNumber());
-        balls.stream()
-                .forEach(ball -> playerBalls.addBall(ball));
-        playerBalls.validateBallsSize();
+        balls.forEach(ball -> playerBalls.addBall(ball));
+        playerBalls.validatePlayerBallSize();;
 
         return playerBalls;
     }
@@ -31,7 +30,7 @@ public class Player {
                 .collect(Collectors.toList());
     }
 
-    private List<String> inputPlayerNumber() {
+    public List<String> inputPlayerNumber() {
         OutputView.requestInputNumber();
         String playerCandidateNumber = InputView.inputPlayerNumber();
         return Arrays.asList(playerCandidateNumber.split(""));
