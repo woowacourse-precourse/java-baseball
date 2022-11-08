@@ -21,21 +21,22 @@ public class BaseballComputer {
     }
 
     private void init(){
-        gameMessage.inputNumberToComputerMessage();
-        String answer = userInputNumberInGame();
-        checkOutOfInputNumber(answer);
+        while (true){
+            gameMessage.inputNumberToComputerMessage();
+            String answer = userInputNumberInGame();
+            checkOutOfInputNumber(answer);
 
-        if(!checkHitNumber(answer)){
-            init();
+            if(!checkHitNumber(answer)){
+                continue;
+            }
+            break;
         }
-
         gameMessage.printRestartOrEnd();
         int choice =checkOutOfChoiceNumber(inputRestartOrEnd());
 
         if(choice == 1){
             start();
         }
-        return ;
     }
     private void checkOutOfInputNumber(String answer){
         if(answer.length() != 3){
