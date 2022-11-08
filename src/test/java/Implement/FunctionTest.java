@@ -2,15 +2,17 @@ package Implement;
 
 import baseball.Application;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class FunctionTest{
+public class FunctionTest extends NsTest {
 
     @Test
     void 리스트에_3자리_생성() {
@@ -40,5 +42,21 @@ public class FunctionTest{
         List<String> player = List.of("4", "5", "6");
         String giveHint = Application.checkAnswerAndGiveHint(computer,player);
         assertThat(giveHint).isEqualTo("낫싱");
+    }
+
+    @Test
+    void 정답일_때_종료_여부() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123");
+                    assertThat(output()).contains("종료");
+                },
+                1, 2, 3
+        );
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
