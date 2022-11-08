@@ -18,4 +18,16 @@ public class BaseballNumber {
 
         return baseballNumber;
     }
+
+    public static int countStrike(List<Integer> baseballNumber, List<Integer> inputNumber) {
+        return 0;
+    }
+
+    public static int countBall(List<Integer> baseballNumber, List<Integer> inputNumber) {
+        return 0;
+    }
+
+    public static void printMessage(int strike, int ball) {
+
+    }
 }
