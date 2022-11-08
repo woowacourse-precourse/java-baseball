@@ -10,6 +10,19 @@ import java.util.Arrays;
 
 public class JudgeGame {
 
+    public static boolean verifyAnswer(List<Integer> inputNumberList, List<Integer> computerNumberList){
+
+        int strikeCounter = verifyStrike(inputNumberList, computerNumberList);
+        int ballCounter = verifyBall(inputNumberList, computerNumberList);
+
+        if (!verifyRestart(strikeCounter)) {
+            return false;
+        }
+
+        OutputView.printGameResult(strikeCounter, ballCounter);
+        return true;
+    }
+
     public static List<String> getInputNumberList(String input){
         String[] inputNumberArray = input.split("");
         List<String> inputNumberList = new ArrayList<>();
@@ -54,6 +67,5 @@ public class JudgeGame {
         ValidationUtil.validateInputRestart(input);
         return false;
         }
-    }
 
 }
