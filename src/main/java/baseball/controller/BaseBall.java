@@ -13,10 +13,10 @@ public class BaseBall {
     
     public void start() {
         OutputView.printApplicationStartMessage();
-        playBaseBallGameUntilEnd();
+        playBaseBallGame();
     }
     
-    private void playBaseBallGameUntilEnd() {
+    private void playBaseBallGame() {
         int selectedNumberForRestart = RESTART_NUMBER;
         
         while (isBaseBallGameRestart(selectedNumberForRestart)) {
