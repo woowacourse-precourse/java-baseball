@@ -10,11 +10,16 @@ public class Game {
 	private static RandomNumber userNumber;
 	private static List<Integer> computerNumberList;
 	private static List<Integer> userNumberList;
-	private static String regexCode = "^[1-2]$";
+	private static final String regex = "^[1-2]$";
 	private static final String GAMESTARTSTRING = "숫자 야구 게임을 시작합니다.";
 	private static final String USERINPUTSTRING = "숫자를 입력해주세요 : ";
+	private static final String BALLSTRING = "볼";
+	private static final String STRIKESTRING = "스트라이크";
+	private static final String NOTHINGSTRING = "낫싱";
 	private static final String GAMECLEARSTRING = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 	private static final String GAMEENDSTRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	private static final String SUCCESSSTRING = "3스트라이크";
+	private static final String GAMECODEWRONGSTRING = "1과 2 중에 다시 입력해주세요.";
 
 	public Game() {}
 	
@@ -35,7 +40,7 @@ public class Game {
 
 				String compareResultStr = compareNumber();
 				printStr(compareResultStr);
-				if (compareResultStr.equals("3스트라이크")) {
+				if (compareResultStr.equals(SUCCESSSTRING)) {
 					printStr(GAMECLEARSTRING);
 					break;
 				}
@@ -48,7 +53,7 @@ public class Game {
 					gameCode = Integer.parseInt(codeStr);
 					break;
 				}
-				printStr("1과 2 중에 다시 입력해주세요.");
+				printStr(GAMECODEWRONGSTRING);
 			}
 		}
 	}
@@ -74,20 +79,20 @@ public class Game {
 		}
 
 		if (ball == 0 && strike == 0) {
-			resStr = "낫싱";
+			resStr = NOTHINGSTRING;
 		}
 		if (ball != 0) {
-			resStr = ball + "볼 ";
+			resStr = ball + BALLSTRING + " ";
 		}
 		if (strike != 0) {
-			resStr += strike + "스트라이크";
+			resStr += strike + STRIKESTRING;
 		}
 
 		return resStr;
 	}
 
 	private static boolean checkGameCode(String gameCodeStr) {
-		if (gameCodeStr.matches(regexCode)) {
+		if (gameCodeStr.matches(regex)) {
 			return true;
 		}
 		return false;
