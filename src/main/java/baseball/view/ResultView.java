@@ -1,4 +1,6 @@
-package baseball;
+package baseball.view;
+
+import baseball.model.PlayResult;
 
 public class ResultView {
     public void printResult(PlayResult playResult){

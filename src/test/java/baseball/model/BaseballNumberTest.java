@@ -1,5 +1,6 @@
-package baseball;
+package baseball.model;
 
+import baseball.model.BaseballNumber;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
