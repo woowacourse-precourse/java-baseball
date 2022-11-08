@@ -17,9 +17,9 @@ public class BaseballGameBoard {
 
     private static void startGame() {
         List<Integer> numberGeneratedByComputer = new ComputerNumberGenerator().VALIDATED_NUM;
-        do {
-            new OutputView()
-        }while ()
+//        do {
+//            new OutputView()
+//        }while ()
     }
 
     private static boolean exit() throws IllegalArgumentException {
