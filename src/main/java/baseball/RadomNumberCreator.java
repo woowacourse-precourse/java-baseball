@@ -7,8 +7,8 @@ import java.util.List;
 
 public class RadomNumberCreator {
 
-    public String makeRandomNumber() {
-        StringBuilder sb = new StringBuilder();
+    public List<Integer> makeRandomNumber() {
+
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -16,9 +16,6 @@ public class RadomNumberCreator {
                 computer.add(randomNumber);
             }
         }
-        for(int c : computer){
-            sb.append(c);
-        }
-        return sb.toString();
+        return computer;
     }
 }

@@ -2,8 +2,6 @@ package baseball;
 
 
 import camp.nextstep.edu.missionutils.Console;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,17 +29,14 @@ public class InputHandler {
         if(!errorHandler.isRange(myNumList)){
             throw new IllegalArgumentException();
         }
-//        if(!errorHandler.isNotDuplicated(myNumList)){
-//            throw new IllegalArgumentException();
-//        }
-        return myNum;
-    }
-    public int getRestartNum() {
-        try {
-            int restartNum = Integer.parseInt(Console.readLine());
-            return restartNum;
-        }catch (NumberFormatException e){
+        if(!errorHandler.isNotDuplicated(myNumList)){
             throw new IllegalArgumentException();
         }
+        return myNum;
+    }
+    public String getRestartNum() {
+        String restartNum = Console.readLine();
+
+        return restartNum;
     }
 }

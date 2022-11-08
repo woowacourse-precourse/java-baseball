@@ -1,6 +1,7 @@
 package baseball;
 
-import java.io.IOException;
+
+import java.util.List;
 
 public class BaseBallGame {
 
@@ -8,7 +9,8 @@ public class BaseBallGame {
     static OutputHandler outputHandler = new OutputHandler();
 
 
-    public void baseballGame(String randomNum) {
+    public void baseballGame(List<Integer> randomNum) {
+
         while(true) {
             String myNum = inputHandler.getInput_returnMyNum();
 
@@ -21,20 +23,24 @@ public class BaseBallGame {
             }
         }
     }
-    public static int findStrike(String comNum, String myNum) {
+    public static int findStrike(List<Integer> comNum, String myNumList) {
+
         int strikeCnt = 0;
-        for(int i=0; i<comNum.length(); i++){
-            if(myNum.charAt(i)==comNum.charAt(i)){
-                strikeCnt +=1;
+        char[] myNum = myNumList.toCharArray();
+
+        for (int i = 0; i < comNum.size(); i++) {
+            if (comNum.indexOf(Character.getNumericValue(myNum[i])) == i) {
+                strikeCnt += 1;
             }
         }
         return strikeCnt;
     }
 
-    public int findBall(String comNum, String myNum, int strikeCnt) {
-        int ballCnt = 0 ;
-        for(int i=0; i<comNum.length(); i++){
-            if(myNum.contains(comNum.substring(i, i+1))){
+    public int findBall(List<Integer> comNum, String myNumList, int strikeCnt) {
+        int ballCnt = 0;
+        char[] myNum = myNumList.toCharArray();
+        for(int i=0; i<comNum.size(); i++){
+            if(comNum.contains(Character.getNumericValue(myNum[i]))){
                 ballCnt +=1;
             }
         }

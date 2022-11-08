@@ -1,6 +1,5 @@
 package baseball;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ErrorHandler {
@@ -32,7 +31,6 @@ public class ErrorHandler {
     }
 
     public boolean isRange(List<Integer> baseball) {
-        boolean[] duplicate = new boolean[10];
         for (int i : baseball) {
             if (i < 1 || i > 9) return false;
         }

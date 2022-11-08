@@ -24,7 +24,7 @@ public class OutputHandler {
             System.out.println(ball+"볼");
         }
         else{
-            System.out.println(ball+"볼"+" "+strike + "스트라이크");
+            System.out.println(ball+"볼 "+strike + "스트라이크");
         }
     }
 }
