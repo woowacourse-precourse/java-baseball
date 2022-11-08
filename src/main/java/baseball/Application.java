@@ -3,13 +3,12 @@ package baseball;
 import baseball.controller.GameController;
 
 public class Application {
-    private static final int PICK_NUMBER_LENGTH = 3;
-
     public static void main(String[] args) {
         boolean isPlayAgain = true;
         GameController controller = new GameController();
 
         controller.showTutorial();
+        controller.addComputerNumbersForTest();
 
         while(isPlayAgain) {
             executeGame(controller);
@@ -23,7 +22,9 @@ public class Application {
         boolean gameResult = false;
 
         while (!gameResult) {
-            String gameNumber = controller.showPickThreeDigitNumbers();
+            controller.addComputerNumber();
+
+            String gameNumber = controller.showPickThreeDigitNumber();
             gameResult = controller.showSelectNumberResult(gameNumber);
         }
     }
