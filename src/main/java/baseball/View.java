@@ -4,6 +4,26 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class View {
 
+    public String getUserInput() {
+        String input = Console.readLine();
+        Boolean isValid = validateUserInput(input);
+
+        if (!isValid) {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
+
+    public String getUserResponse() {
+        String input = Console.readLine();
+        Boolean isValid = validateUserResponse(input);
+
+        if (!isValid) {
+            throw new IllegalArgumentException();
+        }
+        return input;
+    }
+
     public void printInitMsg() {
         String msg = "숫자 야구 게임을 시작합니다.";
         System.out.println(msg);
