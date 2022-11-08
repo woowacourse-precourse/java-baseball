@@ -5,12 +5,22 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static baseball.Application.computer;
+import static baseball.Application.selectNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void 상대방_숫자_개수_확인(){
+        selectNumber();
+        assertThat(computer.size()).isEqualTo(3);
+    }
+
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(

@@ -91,7 +91,7 @@ public class Application {
         }
     }
 
-    private static void selectNumber() {
+    public static void selectNumber() {
         computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -99,6 +99,5 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-//        System.out.println(computer);
     }
 }
