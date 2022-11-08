@@ -43,7 +43,7 @@ public class Application {
         throw new IllegalArgumentException();
     }
 
-    public static String isValid(String readLine) {
+    public static String isValidUserInput(String readLine) {
         boolean isNumeric = Pattern.matches("^[0-9]*$", readLine);
         boolean isTriple = (readLine.length() == 3);
         boolean isDifferentEach = ((readLine.charAt(0) != readLine.charAt(1))
@@ -117,7 +117,7 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
 
         return Arrays
-                .stream(isValid(Console.readLine()).split(""))
+                .stream(isValidUserInput(Console.readLine()).split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
