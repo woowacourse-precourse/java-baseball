@@ -3,19 +3,23 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args){
         System.out.println("숫자 야구 게임을 시작합니다.");
+        boolean newGame = true;
 
-        List<Integer> computer = makeComputer();
-        List<Integer> user = inputNumber();
-        checkAnswer(computer, user);
+        while(newGame){
+            List<Integer> computer = makeComputer();
+            List<Integer> user = inputNumber();
+            checkAnswer(computer, user);
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String command = Console.readLine();
+            newGame = restartGame(command);
+        }
     }
 
     public static List<Integer> makeComputer(){
@@ -85,6 +89,9 @@ public class Application {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return;
         }
+
+        user = inputNumber();
+        checkAnswer(computer, user);
     }
     public static void printResult(int ball, int strike){
         StringBuilder sb = new StringBuilder();
@@ -103,5 +110,13 @@ public class Application {
             sb.append(strike + "스트라이크");
         }
         System.out.println(sb.toString());
+    }
+    public static boolean restartGame(String command){
+        isCorrectType("^[1-2]$", command);
+
+        if(Objects.equals(command, "1")){
+            return true;
+        }
+        return false;
     }
 }
