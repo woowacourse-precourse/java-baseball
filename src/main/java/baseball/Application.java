@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Application {
@@ -20,5 +22,24 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInputNumber = bf.readLine();
+        verifyUserNumber(userInputNumber);
+    }
+
+    private static String verifyUserNumber(String number) {
+        Scanner s = new Scanner(System.in);
+        if (number.length() != 3) {
+            throw new IllegalArgumentException("잘못된 입력입니다. 3자리 숫자를 입력해주세요.");
+        }
+        if (number.contains("0")) {
+            throw new IllegalArgumentException("숫자 0은 포함될 수 없습니다.");
+        }
+        if (!number.contains("0") && number.length() < 3) {
+            return number;
+        }
+        return number;
     }
 }
