@@ -21,6 +21,8 @@ public class Application {
     // 2. 숫자 입력 기능
     static void getSettingGuessingNumber(List<Integer> guessingNumber) {
 
+        System.out.print("숫자를 입력해주세요 : ");
+
         String strNumber = Console.readLine();
 
         for(int idx=0; idx<strNumber.length(); idx++) {
