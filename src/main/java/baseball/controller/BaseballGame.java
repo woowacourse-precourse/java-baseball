@@ -24,6 +24,8 @@ public class BaseballGame {
         boolean endGame = false;
         while(!endGame){
             initNumber = view.gameView();
+
+            gm.validatePermissionPattern(initNumber);
             player = new BallNumber(gm.toList(initNumber));
             playerNumber = player.getBallNumbers();
 
