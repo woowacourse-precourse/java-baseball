@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import static baseball.utils.RandomUtil.*;
 
 import java.util.List;
 
@@ -44,5 +45,12 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+    @Test
+    public void random_different_test(){
+        //when
+        int[] computerNumbers = createRandomNumberList();
+        //then
+        assertThat(computerNumbers).doesNotHaveDuplicates();
     }
 }

@@ -1,7 +1,9 @@
 package baseball.exception.errors;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserNumberException {
     public void exception(int input) {
@@ -16,12 +18,17 @@ public class UserNumberException {
         }
     }
 
-    private boolean checkDuplicate(int input) {
+    public boolean checkDuplicate(int input) {
         List<Integer> userNumbers = new ArrayList<>();
         while (input == 0) {
             userNumbers.add(input % 10);
             input /= 10;
         }
         return userNumbers.size() < 3;
+    }
+    public List<Integer> intToList(int input) {
+        return Arrays.stream(String.valueOf(input).split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
