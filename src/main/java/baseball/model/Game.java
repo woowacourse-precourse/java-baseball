@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Game {
 
+    private GameService gameService = new GameService();
+
     private List<Integer> numbers;
 
     public Game() {}
@@ -14,11 +16,7 @@ public class Game {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
-    public void setNumbers(List<Integer> numbers) {
-        this.numbers = numbers;
+    public boolean compare(Game userInput){
+        return gameService.compareAnswer(this.numbers, userInput.numbers);
     }
 }

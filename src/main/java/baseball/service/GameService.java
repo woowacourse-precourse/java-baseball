@@ -3,7 +3,6 @@ package baseball.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.model.Game;
 import baseball.model.Range;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,7 +12,7 @@ public class GameService {
     int minValue = Range.valueOf("MIN_VALUE").getValue();
     int maxValue = Range.valueOf("MAX_VALUE").getValue();
 
-    public Game initAnswer(Game game) {
+    public List<Integer> initAnswer() {
         List<Integer> newAnswer = new ArrayList<>();
 
         while(newAnswer.size() < maxCount){
@@ -23,12 +22,10 @@ public class GameService {
             }
         }
 
-        game.setNumbers(newAnswer);
-
-        return game;
+        return newAnswer;
     }
 
-    public Game initInput(Game game, String inputStr) {
+    public List<Integer> initInput(String inputStr) {
         List<Integer> list = new ArrayList<>();
 
         for(int i = 0; i < inputStr.length(); i++){
@@ -39,17 +36,12 @@ public class GameService {
             }
         }
 
-        game.setNumbers(list);
-
-        return game;
+        return list;
     }
 
-    public boolean compareAnswer(Game answer, Game userInput) {
+    public boolean compareAnswer(List<Integer> answerList, List<Integer> userList) {
         int ball = 0;
         int strike = 0;
-
-        List<Integer> answerList = answer.getNumbers();
-        List<Integer> userList = userInput.getNumbers();
 
         for(int index = 0; index < answerList.size(); index++){
             int answerNum = answerList.get(index);

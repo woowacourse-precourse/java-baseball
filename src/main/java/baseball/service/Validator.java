@@ -1,14 +1,12 @@
 package baseball.service;
 
-import baseball.model.Game;
 import baseball.model.Range;
 
 import java.util.List;
 
 public class Validator {
 
-    public void validate(Game game) {
-        List<Integer> numbers = game.getNumbers();
+    public void validate(List<Integer> numbers) {
 
         int maxCount = Range.valueOf("MAX_COUNT").getValue();
         int minValue = Range.valueOf("MIN_VALUE").getValue();
@@ -22,7 +20,7 @@ public class Validator {
             throw new IllegalArgumentException("3개 초과의 숫자를 입력할 수 없습니다.");
         }
 
-        for(int num : game.getNumbers()){
+        for(int num : numbers) {
             if (num < minValue || num > maxValue) {
                 throw new IllegalArgumentException("1에서 9 사이의 숫자만 입력할 수 있습니다.");
             }
