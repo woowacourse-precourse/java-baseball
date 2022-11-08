@@ -84,4 +84,24 @@ class HintTest {
         assertThat(hint.getStrikeCount()).isEqualTo(0);
     }
 
+    @Test
+    public void 스트라이크가_3개인지_확인() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(1, 3, 5);
+        List<Integer> userNumber_true = List.of(1, 3, 5);
+        List<Integer> userNumber_false = List.of(1, 3, 5);
+        //when
+        hint.giveHint(computerNumber, userNumber_true);
+        boolean threeStrike_true = hint.isThreeStrike();
+
+        hint.initHint();
+
+        hint.giveHint(computerNumber, userNumber_false);
+        boolean threeStrike_false = hint.isThreeStrike();
+        //then
+        assertThat(threeStrike_true).isTrue();
+        assertThat(threeStrike_false).isTrue();
+
+    }
+
 }
