@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static String createRandomNumber() {
@@ -27,7 +29,17 @@ public class Application {
         System.out.print("숫자를 입력해주세요 : ");
 
         String baseballNumber = Console.readLine();
+        validateBaseballNumber(baseballNumber);
+
         return baseballNumber;
+    }
+
+    public static String inputRestartNumber() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String restartNumber = Console.readLine();
+        return restartNumber;
     }
 
     public static int getStrike(String randomNumber, String baseballNumber) {
@@ -79,6 +91,39 @@ public class Application {
         return str.equals("3스트라이크");
     }
 
+    public static void checkLength(String baseballNumber) {
+        // 세 자릿수가 아닌 경우 예외 처리
+        if (baseballNumber.length() != 3) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
+    }
+
+    public static void checkNumber(String baseballNumber) {
+        // 1 ~ 9 사이의 숫자가 아닌 경우 예외 처리
+        for (int i = 0; i < 3; i++) {
+            if (baseballNumber.charAt(i) < '1' || baseballNumber.charAt(i) > '9') {
+                throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+            }
+        }
+    }
+
+    public static void checkDuplicate(String baseballNumber) {
+        // 중복이 있는 경우 예외 처리
+        Set<Character> hashSet = new HashSet<>();
+        for (int i = 0; i < 3; i++) {
+            hashSet.add(baseballNumber.charAt(i));
+        }
+        if (hashSet.size() < 3) {
+            throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        }
+    }
+
+    public static void validateBaseballNumber(String baseballNumber) {
+        checkLength(baseballNumber);
+        checkNumber(baseballNumber);
+        checkDuplicate(baseballNumber);
+    }
+
     public static void baseballGame() {
         String randomNumber = "";
         String restartNumber = "";
@@ -91,15 +136,20 @@ public class Application {
     }
 
     public static String startGame(String randomNumber) {
+        String restartNumber = "";
         String baseballNumber = "";
         String hint = "";
 
-        do {
+        while (true) {
             baseballNumber = inputBaseballNumber();
             hint = getHint(randomNumber, baseballNumber);
 
-        } while (!isGameOver(hint));
-        return "";
+            if (isGameOver(hint)) {
+                restartNumber = inputRestartNumber();
+                break;
+            }
+        }
+        return restartNumber;
     }
 
     public static void main(String[] args) {
