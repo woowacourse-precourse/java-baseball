@@ -20,23 +20,10 @@ public class BaseballGame {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
+            playGame();
 
-            List<Integer> answer = inputAnswer();
-            Result result = computer.compareAnswer(answer);
-
-            System.out.println(result);
-
-            if (result.isAnswer()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-                String command = inputCommand();
-
-                if (command.equals(COMMAND_CONTINUE)) {
-                    computer.reset();
-                } else if (command.equals(COMMAND_END)) {
-                    break;
-                }
+            if (isEndOfGame()) {
+                break;
             }
         }
     }
@@ -60,6 +47,32 @@ public class BaseballGame {
         return line;
     }
 
+    private void playGame() {
+        while (true) {
+            System.out.print("숫자를 입력해주세요 : ");
+
+            List<Integer> answer = inputAnswer();
+            Result result = computer.compareAnswer(answer);
+
+            System.out.println(result);
+
+            if (result.isAnswer()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+    }
+
+    private boolean isEndOfGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+        String command = inputCommand();
+
+        if (command.equals(COMMAND_CONTINUE)) {
+            computer.reset();
+        }
+        return command.equals(COMMAND_END);
+    }
+
     private void validateAnswer(String answer) {
         if (answer.length() == 0) {
             throw new IllegalArgumentException("값이 입력되지 않았습니다.");
@@ -73,7 +86,7 @@ public class BaseballGame {
     }
 
     private void validateCommand(String command) {
-        if (command.equals(COMMAND_CONTINUE) || command.equals(COMMAND_END)) {
+        if (!command.equals(COMMAND_CONTINUE) && !command.equals(COMMAND_END)) {
             throw new IllegalArgumentException("명령은 1 또는 2만 입력 가능합니다.");
         }
     }
