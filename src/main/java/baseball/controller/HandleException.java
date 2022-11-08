@@ -20,6 +20,12 @@ public class HandleException {
         }
     }
 
+    public void handleUserInputSizeException(String userInput) {
+        if (userInput.length() != 3) {
+            throw new IllegalArgumentException("3개의 숫자를 입력하지 않았습니다. 게임을 종료합니다.");
+        }
+    }
+
     public void handleRestartOrExitNumberException(int restartORExit) {
         if (1 > restartORExit || restartORExit > 2) {
             throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 게임을 종료합니다.");
