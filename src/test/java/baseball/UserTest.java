@@ -45,4 +45,54 @@ class UserTest {
             user.inputNumber("121");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 스트라이크_증가_테스트() {
+        User user = new User();
+        user.inputNumber("123");
+
+        user.addStrike();
+
+        assertThat(user.getStrike()).isEqualTo(1);
+    }
+
+    @Test
+    void 볼_증가_테스트() {
+        User user = new User();
+        user.inputNumber("123");
+
+        user.addBall();
+
+        assertThat(user.getBall()).isEqualTo(1);
+    }
+
+    @Test
+    void 정답시_종료_변환_테스트() {
+        User user = new User();
+        user.inputNumber("123");
+
+        user.correctAnswer();
+
+        assertThat(user.isEnd()).isTrue();
+    }
+
+    @Test
+    void 리셋_정답_초기화_테스트() {
+        User user = new User();
+        user.inputNumber("123");
+
+        user.reset();
+
+        assertThat(user.getAnswers()).isEmpty();
+    }
+
+    @Test
+    void 리셋_종료_초기화_테스트() {
+        User user = new User();
+        user.inputNumber("123");
+
+        user.reset();
+
+        assertThat(user.isEnd()).isFalse();
+    }
 }
