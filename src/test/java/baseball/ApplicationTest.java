@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.io.ByteArrayOutputStream;
@@ -64,6 +65,44 @@ class ApplicationTest extends NsTest {
 
         assertThat(answer).isEqualTo(dupCheck);
     }
+
+    @Test
+    void validRestartOrEndInput1() {
+        //given
+        Game game = new Game();
+        String userInput = "1";
+
+        int validRestartOrEndInput = game.validRestartOrEndInput(userInput);
+
+        assertThat(validRestartOrEndInput).isEqualTo(1);
+    }
+
+    @Test
+    void validRestartOrEndInput2() {
+        //given
+        Game game = new Game();
+        String userInput = "2";
+
+        int validRestartOrEndInput = game.validRestartOrEndInput(userInput);
+
+        assertThat(validRestartOrEndInput).isEqualTo(2);
+    }
+
+
+    @Test
+    void validRestartOrEndInput3() {
+        //given
+        Game game = new Game();
+        String userInput = "3";
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            game.validRestartOrEndInput(userInput);
+        });
+        String message = exception.getMessage();
+
+        assertThat(message).isEqualTo("1 또는 2의 값만 입력이 가능합니다.");
+    }
+
 
     @Test
     void Strike테스트() {

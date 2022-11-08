@@ -19,6 +19,24 @@ public class Application {
          * 사용자가 값을 잘못 입력하면 IllegalArgumentException을 발생시킨 후 에플리케이션은 종료되어야한다.
          * */
 
+        Game game = new Game();
+        Hint hint = new Hint();
+        game.printGameStartMessage();
+
+        // 기본 게임 로직
+        while (hint.strike == 3) {
+            game.requestAnswer();
+            hint.compareAnswer(game);
+            hint.showResult();
+            hint.clear();
+        }
+        if (hint.strike == 3) {
+            game.printWinMessage();
+            game.printReGameMessage();
+
+        }
+
+
     }
 
 }
@@ -47,9 +65,26 @@ class Game {
         guessNumber = userInput;
     }
 
+    public String restartOrStopInput() {
+        // 다시 시작할건지 입력받음.
+        return readLine();
+    }
+
+    public int validRestartOrEndInput(String userInput) {
+        if (userInput.equals("1")) {
+            return 1;
+        }
+
+        if (userInput.equals("2")) {
+            return 2;
+        }
+
+        throw new IllegalArgumentException("1 또는 2의 값만 입력이 가능합니다.");
+
+    }
 
     protected void requestAnswer() {
-        System.out.println("숫자를 입력해주세요 : ");
+        printUserInputMessage();
         String userInput = readLine();
         // userInput을 확인한다
         Game.validInputValue(userInput);
