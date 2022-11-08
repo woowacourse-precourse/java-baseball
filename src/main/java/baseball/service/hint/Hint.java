@@ -2,8 +2,8 @@ package baseball.service.hint;
 
 public class Hint {
 
-  private int strikeCount;
-  private int ballCount;
+  private final int strikeCount;
+  private final int ballCount;
 
   public int getStrikeCount() {
     return strikeCount;
