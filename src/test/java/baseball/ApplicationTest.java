@@ -138,4 +138,23 @@ class ApplicationTest extends NsTest {
 
         assertThat(output()).contains("3볼");
     }
+    
+    // 스트라이크 테스트
+    @Test
+    void 스트라이크_테스트() {
+        List comList = new ArrayList<>();
+        List userList = new ArrayList<>();
+
+        comList.add(1);
+        comList.add(2);
+        comList.add(3);
+
+        userList.add(1);
+        userList.add(2);
+        userList.add(4);
+
+        Application.score(comList, userList);
+
+        assertThat(output()).contains("2스트라이크");
+    }
 }
