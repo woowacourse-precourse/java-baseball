@@ -14,6 +14,8 @@ public class Application {
         while (true) {
             List<Integer> computer = createRandomNumbers();
 
+            startGame(computer);
+
             boolean startOrEnd = checkContinue();
 
             if (startOrEnd == false) {
@@ -56,7 +58,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String inputNumber = Console.readLine();
 
-        int inputStartOrEnd = Integer.parseInt(inputNumber);
+        int inputStartOrEnd = toInt(inputNumber);
 
         if (inputStartOrEnd == 2) {
             return false;
@@ -122,5 +124,13 @@ public class Application {
             }
         }
         return randomNumbers;
+    }
+
+    public static int toInt(String inputNumber) {
+        try {
+            return Integer.parseInt(inputNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalStateException();
+        }
     }
 }
