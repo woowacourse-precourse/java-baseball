@@ -1,4 +1,4 @@
-package baseball.config;
+package baseball.view;
 
 public class PrintOutput {
     private static final String START_ORDER = "숫자 야구 게임을 시작합니다.";

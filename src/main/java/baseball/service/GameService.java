@@ -3,7 +3,7 @@ package baseball.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import baseball.config.PrintOutput;
+import baseball.view.PrintOutput;
 import baseball.controller.PlayGameController;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,7 +11,7 @@ import camp.nextstep.edu.missionutils.Console;
 import static baseball.service.NeedForGameService.*;
 
 public class GameService {
-    public final static List<Integer> RANDOMBALL = new ArrayList<>();
+    public static final List<Integer> RANDOMBALL = new ArrayList<>();
     public static final int BALLCOUNTS = 3;
     public static List<Integer> userBall = new ArrayList<>();
     public static int strike, ball, errorCheck = 0;
@@ -45,14 +45,14 @@ public class GameService {
         PrintOutput.finishOrder();
         String isContinue = Console.readLine();
 
-        if(Integer.valueOf(isContinue) == 1) {
+        if(Integer.parseInt(isContinue) == 1) {
             initData();
             RANDOMBALL.clear();
             userBall.clear();
             PlayGameController.run();
         }
 
-        if(Integer.valueOf(isContinue) == 2) return;
+        if(Integer.parseInt(isContinue) == 2) return;
     }
 
     public static List<Integer> makeRandomBall() {

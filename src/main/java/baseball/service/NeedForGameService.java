@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.config.PrintOutput;
+import baseball.view.PrintOutput;
 import baseball.handler.ExceptionHanlder;
 
 import java.util.ArrayList;
