@@ -88,6 +88,13 @@ class ApplicationTest extends NsTest {
         assertThat(result[1]).isEqualTo(3);
     }
 
+    @Test
+    void 유효한_게임시작_번호(){
+        String input = "1";
+        int result = Game.getNewGameAnswer(input);
+        assertThat(result).isEqualTo(1);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
