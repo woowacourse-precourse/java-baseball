@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class Turn {
     private static final int NUMBER_OF_INPUT_DIGITS = 3;
+    private static final int STRIKE_OUT_NUMBER = 3;
     private static final String BALL_MESSAGE = "볼";
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String NOTHING_MESSAGE = "낫싱";
@@ -17,7 +18,6 @@ public class Turn {
     private static final String SIZE_NOT_THREE_EXCEPTION_MESSAGE = "3개의 숫자를 입력해주세요.";
     private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "1에서 9까지의 숫자를 입력해 주세요.";
     private static final String DUPLICATE_NUMBERS_EXCEPTION_MESSAGE = "서로 다른 숫자를 입력해주세요.";
-    private static final int STRIKE_OUT_NUMBER = 3;
 
     private List<Integer> playerNumberList;
     private int numberOfBalls;
