@@ -7,8 +7,10 @@ public class View {
     private static final String RESULT_CORRECT ="3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String ASK_KEEP_PLAYING ="게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    public static String getUserInput() throws IllegalArgumentException {
+    public static void printStart() {
         System.out.println(START);
+    }
+    public static String getUserInput() throws IllegalArgumentException {
         System.out.print(INPUT);
         String input = Console.readLine().trim();
         if (!Validator.isNumber(input)) {
