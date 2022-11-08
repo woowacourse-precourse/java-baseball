@@ -17,6 +17,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.MockedStatic;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -99,6 +101,15 @@ public class ImplementTest extends NsTest{
         InputStream in = new ByteArrayInputStream(userInputString.getBytes());
         System.setIn(in);
         assertThat(Input.whileRunning()).isEqualTo(answer);
+    }
+
+    @ParameterizedTest
+    @DisplayName("각 판정별 결과 출력 테스트")
+    @CsvSource(value = {"0:0,낫싱", "1:0,1스트라이크", "0:1,1볼", "1:1,1볼 1스트라이크"})
+    void printResult_test(final String input, final String expected) {
+        final String[] inputs = input.split(":");
+        Output.printResult(Integer.parseInt(inputs[0]), Integer.parseInt(inputs[1]));
+        assertEquals(expected, captor.toString().trim());
     }
 
     @Override
