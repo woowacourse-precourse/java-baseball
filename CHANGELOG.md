@@ -1,0 +1,30 @@
+- docs(README): 제출 전 정리 내용 추가
+- docs(docs/README): 개발 회고 작성
+- style: 코드 컨벤션 적용
+- style(Application): TODO 주석 삭제
+- feat(GameOperator): 예외처리 기능 적용
+- refactor(exception):REFACTOR 예외처리 기능 리팩토링
+- feat(exception):GREEN 게임종료 후 예외처리 기능 구현
+- test(exception):RED 게임종료 후 예외처리 기능 테스트
+- feat(exception):GREEN 게임 중 예외처리 기능 구현
+- test(exception):RED 게임 중 예외처리 기능 테스트
+- feat(exception):GREEN 공통예외 처리 기능 구현
+- style(exception): 테스트 내 오타 수정
+- test(exception):RED 공통예외 처리 기능 테스트
+- style(GameOperator): 들여쓰기 수정
+- refactor(GameOperator):REFACTOR 운영 기능 리팩토링
+- feat(GameOperator):GREEN 게임 운영 기능 구현
+- test(GameOperator):RED 게임 운영 기능 테스트 수정
+- test(GameOperator):RED 게임 운영 기능 테스트
+- feat(GuideSentences):게임 안내문 Enum 생성
+- refactor(QuestionNumberSetter):REFACTOR 숫자비교 리팩토링
+- feat(QuestionNumberSetter): GREEN 숫자 비교 기능 구현
+- test(QuestionNumberSetter): RED 숫자 비교 기능 테스트
+- refactor(QuestionNumberSetter): REFACTOR 리팩토링 수행
+- feat(QuestionNumberSetter): GREEN 랜덤숫자결정 기능 구현
+- test(QuestionNumberSetter): RED 랜덤숫자결정 기능 테스트
+- feat(ComparingResult): 숫자 비교 결과 Enum 생성
+- docs(README): 기능 정리 및 개발 방식 작성
+- test(StringTest): 테스트 관련 연습
+- docs(test): JUnit5, AssertJ, TDD 내용 정리
+- feat: setup precourse baseball project
