@@ -25,21 +25,16 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         String inputNumber=Console.readLine();
 
-        try{
-            //입력한 문자열이 세자리 수가 아닐 경우
-            if(inputNumber.length()!=3){
-                throw new IllegalArgumentException();
-            }
-            else{
-                for(int i=0;i<3;++i){
-                    if(inputNumber.charAt(i)<'1' || inputNumber.charAt(i)>'9'){
-                        throw new IllegalArgumentException();
-                    }
+        //입력한 문자열이 세자리 수가 아닐 경우
+        if(inputNumber.length()!=3){
+            throw new IllegalArgumentException();
+        }
+        else{
+            for(int i=0;i<3;++i){
+                if(inputNumber.charAt(i)<'1' || inputNumber.charAt(i)>'9'){
+                    throw new IllegalArgumentException();
                 }
             }
-        }
-        catch (IllegalArgumentException e){
-            System.out.println("잘못된 값을 입력하였습니다!");
         }
 
         for(int i=0;i<3;++i){
@@ -74,5 +69,25 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        while(gameSwitch==1){
+            pickRandomNumber();	
+
+            while(strike<3){
+                inputPlayerNumber();
+                result();	
+            }
+
+            strike=0;
+            ball=0;
+
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            gameSwitch=Integer.parseInt(Console.readLine());
+            if(gameSwitch!=1 && gameSwitch!=2){
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
