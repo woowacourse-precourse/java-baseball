@@ -1,7 +1,11 @@
 package baseball;
 
+import java.time.LocalDateTime;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LocalDateTime now = LocalDateTime.now();
+        BaseBallGame bg = new BaseBallGame();
+        bg.run();
     }
 }
