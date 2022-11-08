@@ -1,11 +1,9 @@
 package baseball.view;
 
-import java.util.List;
-
 public interface View {
     void initialStart();
-    void requestGuess();
+    String requestGuess();
     void result(int ball, int strike);
     void end();
-    void askRetry();
+    boolean askRetry();
 }
