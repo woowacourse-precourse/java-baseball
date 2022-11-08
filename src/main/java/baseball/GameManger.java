@@ -9,7 +9,7 @@ public class GameManger {
     public static int strikeCount;
     public static int ballCount;
 
-    public static final int ANSWER = 3; //answer
+    public static final int ANSWER = 3;
 
     public GameManger(){
         computerAnswer = CreateRandomNumber.getComputerAnswer();
