@@ -6,10 +6,6 @@ import java.util.HashSet;
 import java.util.stream.IntStream;
 
 public class Computer {
-    private static final String BALL_FORMAT = "%d볼 ";
-    private static final String STRIKE_FORMAT = "%d스트라이크";
-    private static final String NOTHING = "낫싱";
-
     private String answer;
 
     public void setAnswer() {
@@ -31,15 +27,15 @@ public class Computer {
         int strike = countStrike(input);
 
         if (ball == 0 && strike == 0) {
-            System.out.print(NOTHING);
+            System.out.print(Format.NOTHING.format());
         }
 
         if (ball > 0) {
-            System.out.printf(BALL_FORMAT, ball);
+            System.out.printf(Format.BALL.format(), ball);
         }
 
         if (strike > 0) {
-            System.out.printf(STRIKE_FORMAT, strike);
+            System.out.printf(Format.STRIKE.format(), strike);
         }
 
         System.out.println();
@@ -66,5 +62,19 @@ public class Computer {
                 count();
 
         return strike;
+    }
+
+    private enum Format{
+        BALL("%d볼 "),
+        STRIKE("%d스트라이크"),
+        NOTHING("낫싱")
+        ;
+        private final String format;
+        Format(String format){
+            this.format = format;
+        }
+        private String format(){
+            return format;
+        }
     }
 }
