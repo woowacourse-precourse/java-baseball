@@ -128,6 +128,9 @@ public class Game {
             if (computer.contains(number)) count++;
         }
 
+        // 스트라이크가 있으면 중복되므로 빼준다.
+        count -= countStrikes(user, computer);
+
         return count;
     }
 }
