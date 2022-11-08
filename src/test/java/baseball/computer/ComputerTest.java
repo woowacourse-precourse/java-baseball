@@ -18,7 +18,7 @@ public class ComputerTest {
     @Test
     void 설정_숫자_확인() {
         // given
-        List<Integer> settingNumber = List.of(1,2,3);
+        List<Integer> settingNumber = List.of(1, 2, 3);
 
         // when
         NumberGenerator.setTestNumber(settingNumber);
@@ -31,7 +31,7 @@ public class ComputerTest {
     @Test
     void 설정_숫자_1회용_확인() {
         // given
-        List<Integer> settingNumber = List.of(1,2,3);
+        List<Integer> settingNumber = List.of(1, 2, 3);
 
         // when
         NumberGenerator.setTestNumber(settingNumber);

@@ -1,7 +1,6 @@
 package baseball.computer;
 
 import baseball.computer.generator.NumberGenerator;
-import baseball.computer.generator.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.List;
 

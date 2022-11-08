@@ -1,10 +1,10 @@
 package baseball.option.validation;
 
-
 import baseball.option.Option;
 
 public class OptionValidation {
     private static final int OPTION_LENGTH = 1;
+
     public static void validate(String userInput) {
         validateLength(userInput);
         validateOption(userInput);

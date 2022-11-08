@@ -28,6 +28,7 @@ public class BaseballGame {
 
     private void playGame() {
         boolean completeGame = false;
+
         while (!completeGame) {
             user.inputNumber();
             completeGame = rule.getResult(user.getGameNumber(), computer.getGameNumber());

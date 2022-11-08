@@ -5,8 +5,10 @@ import baseball.GameMessage;
 public class RuleOutput {
     private static final int ZERO = 0;
     private static final int THREE = 3;
+
     public static void showResult(int ball, int strike) {
         showNothing(ball, strike);
+
         if (strike == Rule.END_CONDITION) {
             showStrike(strike);
             System.out.println(GameMessage.GAME_END);
