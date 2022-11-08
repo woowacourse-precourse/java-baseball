@@ -26,9 +26,27 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
+                assertThatThrownBy(() -> BullsAndCows.checkExceptionAndInputToList("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BullsAndCows.checkExceptionAndInputToList("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> BullsAndCows.checkExceptionAndInputToList("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 문자열_리스트_변환_테스트() {
+        List<Integer> result = BullsAndCows.checkExceptionAndInputToList("123");
+        assertThat(result.get(0)).isEqualTo(1);
+        assertThat(result.get(1)).isEqualTo(2);
+        assertThat(result.get(2)).isEqualTo(3);
     }
 
     @Override
@@ -57,5 +75,4 @@ class ApplicationTest extends NsTest {
         int numberIndex = BullsAndCows.findNumberIndex(userInputNumber, 2);
         assertThat(numberIndex).isEqualTo(-1);
     }
-
 }
