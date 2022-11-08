@@ -1,9 +1,5 @@
 package baseball;
 
-import baseball.input.InputNum;
-import baseball.input.InputReplay;
-import baseball.result.ResultPrinter;
-
 public class BaseballGame {
     public void run() {
         final String RUN_TEXT = "숫자 야구 게임을 시작합니다.";
