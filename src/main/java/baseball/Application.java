@@ -17,6 +17,9 @@ public class Application {
         // TODO: 게임 재시작 여부 판단
         System.out.println(Constant.RESTART_COMMENT);
         int restartCommand = Integer.parseInt(Console.readLine());
+        if (restartCommand != Constant.RESTART_NUMBER && restartCommand != Constant.STOP_NUMBER) {
+            throw new IllegalArgumentException();   // 예외 처리
+        }
         return restartCommand == Constant.RESTART_NUMBER;
     }
 }
