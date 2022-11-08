@@ -13,7 +13,7 @@ public class Player {
 
     public List<Integer> suggest() {
         String input = input();
-        if (!validSuggestion()) {
+        if (!validSuggestion(input)) {
             throw new IllegalArgumentException();
         }
         List<Integer> suggestion;
