@@ -39,13 +39,19 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(set.size()).isEqualTo(targetNum.size());
     }
 
-//    @Test
-//    @DisplayName("랜덤숫자가 3개 선택되었는지 확인")
-//    void RandomNumSize(){
-//        Application.createRandomTargetNum();
-//
-//        Assertions.assertThat(Application.targetNum.size()).isEqualTo(3);
-//    }
+    @Test
+    @DisplayName("랜덤숫자가 3개 선택되었는지 확인")
+    void RandomNumSize() throws Exception {
+        Application app= new Application();
+        Method createRandomTargetNum = app.getClass().getDeclaredMethod("createRandomTargetNum");
+        createRandomTargetNum.setAccessible(true);
+        createRandomTargetNum.invoke(app);
+
+        Field targetField = app.getClass().getDeclaredField("targetNum");
+        targetField.setAccessible(true);
+        List<Integer> targetNum = (List<Integer>) targetField.get(app);
+        Assertions.assertThat(targetNum.size()).isEqualTo(3);
+    }
 
 //    @Test
 //    @DisplayName("사용자 잘못된 값 입력시 오류 발생")
