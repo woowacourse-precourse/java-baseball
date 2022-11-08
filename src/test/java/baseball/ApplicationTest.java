@@ -57,6 +57,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("유저 입력 숫자의 길이 유효성 테스트")
+    void checkNumberSizeUnder() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("23"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     @DisplayName("재시작 커맨드에 예상치 못한 입력 예외처리 테스트")
     void checkRestartCommend() {
         assertRandomNumberInRangeTest(
