@@ -48,9 +48,25 @@ public class Player {
     }
 
     private boolean isDifferentNumber(String number) {
-        return number.charAt(0) != number.charAt(1)
-                && number.charAt(0) != number.charAt(2)
-                && number.charAt(1) != number.charAt(2);
+        for (int i = 0; i < number.length(); i++) {
+            if (countDigitNumberinNumber(number, number.charAt(i)) > 1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private int countDigitNumberinNumber(String number, char digit) {
+        int count = 0;
+
+        for (int i = 0; i < number.length(); i++) {
+            if (number.charAt(i) == digit) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public boolean restart() {
