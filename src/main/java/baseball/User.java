@@ -6,9 +6,6 @@ public class User {
     private static final int NumberLength = 3;
     private static String userNumber;
 
-    User() {
-    }
-
     public String getUserNumber() {
         return userNumber;
     }

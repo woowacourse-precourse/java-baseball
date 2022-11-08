@@ -17,32 +17,48 @@ public class Game {
         Calculator = new Calculator();
     }
 
-    public void start() {
-        Output.printStartMsg();
-        do {
-            Computer.setComputerNumber();
-            while (true) {
-                Output.printInputMsg();
-                User.setUserNumber();
-                Calculator.calculateNum(Computer.getComputerNumber(), User.getUserNumber());
-                Output.printOutput(Calculator.getBallNum(), Calculator.getStrikeNum());
-                if (checkThreeStrike(Calculator.getStrikeNum())) {
-                    Output.printEndMsg();
-                    getStartFlag();
-                    break;
-                }
-            }
-        } while (checkEndGame());
+    public Game(String computerNum) {
+        Computer = new Computer(computerNum);
+        User = new User();
+        Calculator = new Calculator();
     }
-    public void getNumfromUser(){
 
+    public void start() {
+        insertInput();
+        showHint();
+        checkCorrectNum();
+        IsEnd();
     }
+    public void IsEnd(){
+        if (!checkEndGame()) {
+            new Game().start();
+        }
+    }
+    public void checkCorrectNum(){
+        if (checkThreeStrike(Calculator.getStrikeNum())) {
+            Output.printEndMsg();
+            setStartFlag();
+        } else {
+            new Game(Computer.getComputerNumber()).start();
+        }
+    }
+
+    public void insertInput() {
+        Output.printInputMsg();
+        User.setUserNumber();
+    }
+
+    public void showHint() {
+        Calculator.calculateNum(Computer.getComputerNumber(), User.getUserNumber());
+        Output.printOutput(Calculator.getBallNum(), Calculator.getStrikeNum());
+    }
+
     public Boolean checkThreeStrike(int StrikeNum) {
         return StrikeNum == NumberLength;
     }
 
-    public void getStartFlag() {
-        startFlag = Integer.parseInt(Console.readLine());
+    public void setStartFlag() {
+        startFlag = Input.getStartFlag();
     }
 
     public boolean checkEndGame() {

@@ -6,13 +6,9 @@ public class Calculator {
     private static int ballNum = 0;
     private static int strikeNum = 0;
 
-    Calculator() {
-    }
-
     public int getBallNum() {
         return ballNum;
     }
-
     public int getStrikeNum() {
         return strikeNum;
     }
@@ -20,7 +16,6 @@ public class Calculator {
     public void addBall() {
         ballNum++;
     }
-
     public void addStrike() {
         strikeNum++;
     }
@@ -28,7 +23,6 @@ public class Calculator {
     public boolean IsBall(int computerOneNumber, String userNumber) {
         return userNumber.contains(Integer.toString(computerOneNumber));
     }
-
     public boolean IsStrike(int computerOneNumber, int userOneNumber) {
         return computerOneNumber == userOneNumber;
     }

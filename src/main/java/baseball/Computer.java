@@ -8,13 +8,15 @@ public class Computer {
     private static final int NumberLength = 3;
     private static String computerNumber;
 
-    Computer() {
+    Computer(){
+        setComputerNumber();
     }
-
+    Computer(String computerNumber){
+        this.computerNumber = computerNumber;
+    }
     public void setComputerNumber() {
         computerNumber = getRandomDifferentNumber();
     }
-
     public String getComputerNumber() {
         return computerNumber;
     }
@@ -22,7 +24,6 @@ public class Computer {
     public int getRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
-
     public String getRandomDifferentNumber() {
         String number = "";
         HashSet<Integer> differentNumSet = new HashSet<>();
