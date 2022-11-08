@@ -19,20 +19,20 @@ public class Game {
         return new Game(computer, user);
     }
 
-    public boolean run() {
+    public void run() {
         while (true) {
             user.guess();
             Status status = computer.status(user);
             System.out.println(status);
             if (status.correct()) {
-                System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", Numbers.LENGTH);
-                System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", RESTART, EXIT);
-                return restart();
+                break;
             }
         }
     }
 
     public boolean restart() {
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료\n", Numbers.LENGTH);
+        System.out.printf("게임을 새로 시작하려면 %d, 종료하려면 %d를 입력하세요.\n", RESTART, EXIT);
         try {
             int input = Integer.parseInt(Console.readLine());
             return restart(input);

@@ -6,7 +6,8 @@ public class Application {
         boolean restart = true;
         while (restart) {
             Game game = Game.start(user);
-            restart = game.run();
+            game.run();
+            restart = game.restart();
         }
     }
 }
