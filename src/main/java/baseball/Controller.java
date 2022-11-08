@@ -4,12 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Controller {
     private View view;
-
     private Model computer;
     private Model user;
 
     public void initialize() {
         this.view = new View();
+        this.computer = new Model(makeRandomNumber());
+        this.user = new Model();
+    }
+
+    public String makeRandomNumber(){
         String randomNumber = "";
         while (true) {
             randomNumber = String.valueOf(Randoms.pickNumberInRange(111, 999));
@@ -17,8 +21,7 @@ public class Controller {
                 break;
             }
         }
-        this.computer = new Model(randomNumber);
-        this.user = new Model();
+        return randomNumber;
     }
 
     public String[] splitNumber(String number) {
@@ -57,6 +60,7 @@ public class Controller {
             if (terminateGame(results[1])) {
                 return;
             }
+            makeRandomNumber();
         }
     }
 
