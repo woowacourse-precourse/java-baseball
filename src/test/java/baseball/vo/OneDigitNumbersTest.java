@@ -1,10 +1,13 @@
 package baseball.vo;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("OneDigitNumbers 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -61,6 +64,15 @@ public class OneDigitNumbersTest {
         OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
 
         assertThat(oneDigitNumbers.contains(1)).isTrue();
+    }
+
+    @ParameterizedTest(name = "숫자 유효성 체크 => {0}")
+    @ValueSource(ints = {2, 21, 210, 212, 220, 221, 222, 2134, 2243})
+    void 숫자_유효성_체크(int number) {
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(number);
+
+        assertThatThrownBy(oneDigitNumbers::validate)
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
