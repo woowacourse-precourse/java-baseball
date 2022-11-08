@@ -22,9 +22,9 @@ public enum PrintData {
 
     public static final void printStringData(String label){
         String enumField;
-        for(PrintData printDataValue : PrintData.values()){
+        for (PrintData printDataValue : PrintData.values()){
             enumField = printDataValue.toString();
-            if(enumField.equals(label)) {
+            if (enumField.equals(label)) {
                 System.out.print(printDataValue.printResult);
             }
         }

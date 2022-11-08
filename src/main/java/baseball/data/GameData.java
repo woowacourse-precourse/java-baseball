@@ -18,5 +18,5 @@ public class GameData {
     public static final String RESTART = "1";
     public static final String GAME_OVER = "2";
 
-    private GameData() { }
+    private GameData () { }
 }

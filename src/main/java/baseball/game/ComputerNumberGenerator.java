@@ -13,10 +13,10 @@ public class ComputerNumberGenerator {
         List<Integer> computer = new ArrayList<>(0);
         int randomNumber;
 
-        while(computer.size() < GameData.GAME_SIZE){
+        while (computer.size() < GameData.GAME_SIZE){
             randomNumber = Randoms.pickNumberInRange(GameData.MINIMUM_NUMBER,
                 GameData.MAXIMUM_NUMBER);
-            if(!computer.contains(randomNumber)){ // 숫자가 겹치는지 검사
+            if (!computer.contains(randomNumber)){ // 숫자가 겹치는지 검사
                 computer.add(randomNumber);
             }
         }

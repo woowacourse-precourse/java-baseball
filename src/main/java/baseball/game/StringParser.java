@@ -34,9 +34,11 @@ public class StringParser {
      * @param parsedNumbers 플레이어가 입력한 숫자 리스트
      * @throws IllegalArgumentException
      */
-    public void checkPlayerIntegerExceptions(List<Integer> parsedNumbers) throws IllegalArgumentException{
+    public void checkPlayerIntegerExceptions(List<Integer> parsedNumbers)
+        throws IllegalArgumentException{
+
         Set<Integer> playerNumbersHashSet = new HashSet<>(parsedNumbers);
-        if(playerNumbersHashSet.size() != parsedNumbers.size()){
+        if (playerNumbersHashSet.size() != parsedNumbers.size()){
             throw new IllegalArgumentException("중복된 숫자가 있습니다.");
         }
     }
@@ -50,7 +52,7 @@ public class StringParser {
         List<Integer> tempNumbers = new ArrayList<>();
         int divider = GameData.DIVIDE_INITIATE;
         int tempAnswer = 0;
-        while(divider > 0){
+        while (divider > 0){
             tempAnswer = dividend / divider; // 자랏수 임시 저장
             tempNumbers.add(tempAnswer); // 리스트에 자릿수 저장
             dividend = dividend - tempAnswer * divider; // 가장 왼쪽의 자릿값을 빼기
@@ -70,9 +72,9 @@ public class StringParser {
 
     public void checkIsDigitPlayerNumberString(String playerNumberString){
         char oneCharacter;
-        for(int index = 0; index < playerNumberString.length(); index ++ ){
+        for (int index = 0; index < playerNumberString.length(); index ++ ){
             oneCharacter = playerNumberString.charAt(index);
-            if(!Character.isDigit(oneCharacter)){
+            if (!Character.isDigit(oneCharacter)){
                 throw new IllegalArgumentException("숫자만 입력해주세요.");
             }
         }

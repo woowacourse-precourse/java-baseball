@@ -11,7 +11,8 @@ import java.util.List;
 
 public class Application {
     private static final PlayerNumberInput playerNumberInput = new PlayerNumberInput();
-    private static final ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
+    private static final ComputerNumberGenerator computerNumberGenerator
+        = new ComputerNumberGenerator();
     private static final NumberComparer numberComparer = new NumberComparer();
     private static final StringParser stringParser = new StringParser();
     private static final ResultPrint resultPrint = new ResultPrint();
@@ -24,6 +25,7 @@ public class Application {
 
     public static void startNumberBaseballGame() {
         List<Integer> computer;
+
         do {
             computer = computerNumberGenerator.generateComputerNumbers();
             startGuessingPhase(computer);
@@ -39,12 +41,12 @@ public class Application {
         List<Integer> player;
         int strike = 0;
         int ball;
+
         while (strike != GameData.GAME_SIZE) {
             String input = playerNumberInput.inputPlayerString(); // 문자열 형식으로 플레이어의 숫자 입력
             player = stringParser.parsePlayerNumber(input);
             strike = numberComparer.checkStrike(player, computer);
             ball = numberComparer.checkBall(player, computer);
-
             resultPrint.printGuessResult(strike, ball); // 스트라이크와 볼 개수에 맞춰 출력
         }
     }
@@ -55,6 +57,7 @@ public class Application {
      */
     public static boolean startQuestioningPhase() {
         String restartString = playerNumberInput.inputRestartString();
+
         stringParser.checkExceptionsPlayerRestartString(restartString);
         if(stringParser.checkPlayerRestartString(restartString)){
             return true;
