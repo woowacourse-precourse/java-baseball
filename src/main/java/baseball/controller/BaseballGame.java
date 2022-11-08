@@ -1,7 +1,6 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumber;
-import baseball.model.Constant.Score;
 import baseball.model.UserNumber;
 import baseball.view.UserView;
 

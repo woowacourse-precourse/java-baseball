@@ -14,9 +14,7 @@ public class ComputerNumber {
     private static final int MAX_NUMBER = 9;
     private List<Integer> digits;
 
-    public ComputerNumber(){
-
-    }
+    public ComputerNumber(){}
 
     public void setRandom(){
 
@@ -27,14 +25,6 @@ public class ComputerNumber {
         }
 
         digits = new ArrayList<>(digitSet);
-    }
-
-    public Integer getDigit(int index){
-        return digits.get(index);
-    }
-
-    private int getRandom(){
-        return Randoms.pickNumberInRange(MIN_NUMBER,MAX_NUMBER);
     }
 
     public Score getScore(int userNumber, int index){
@@ -50,9 +40,10 @@ public class ComputerNumber {
         }
 
         return NOTHING;
-
     }
 
-
+    private int getRandom(){
+        return Randoms.pickNumberInRange(MIN_NUMBER,MAX_NUMBER);
+    }
 
 }
