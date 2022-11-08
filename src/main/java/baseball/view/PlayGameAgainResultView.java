@@ -1,27 +1,16 @@
 package baseball.view;
 
 public class PlayGameAgainResultView extends View {
-    private final int input;
-    private boolean response = false;
+    private final boolean isQuit;
 
-    public PlayGameAgainResultView(int input) {
-        this.input = input;
+    public PlayGameAgainResultView(boolean isQuit) {
+        this.isQuit = isQuit;
     }
 
     @Override
     public void show() {
-        if (this.input == 2) {
+        if (this.isQuit) {
             printLine("게임 종료");
-            this.response = false;
-
-            return;
         }
-
-        this.response = true;
-    }
-
-    @Override
-    public boolean getResponseToBoolean() {
-        return this.response;
     }
 }
