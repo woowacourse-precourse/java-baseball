@@ -1,18 +1,17 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.regex.Pattern;
 
-public class BaseBallGame {
+public class BaseballGame {
     private int answerLength;
 
     private final int NOT_INCLUDED = 0;
 
     private int[] answer;
 
-    public BaseBallGame(int answerLength) {
+    public BaseballGame(int answerLength) {
         this.answerLength = answerLength;
     }
 

@@ -6,12 +6,14 @@ public class GameController {
 
     public void start() {
 
-        BaseBallGame baseBallGame = new BaseBallGame(3);
+        int answerLength = 3;
+        boolean userContinue = true;
+        BaseballGame baseBallGame = new BaseballGame(answerLength);
 
         baseBallGame.useGeneratedAnswer();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (true) {
+        while (userContinue) {
 
             System.out.print("숫자를 입력해주세요 : ");
 
@@ -19,22 +21,28 @@ public class GameController {
 
             System.out.println(printResult(gameResult));
 
-            if (gameResult.getStrike()==3) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if (gameResult.getStrike() == answerLength) {
+                baseBallGame = new BaseballGame(3);
+                baseBallGame.useGeneratedAnswer();
+
+                System.out.println(answerLength + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int userContinue = Integer.parseInt(Console.readLine());
-                if (userContinue == 1) {
-                    baseBallGame = new BaseBallGame(3);
-                    baseBallGame.useGeneratedAnswer();
-                    continue;
-                }
-                if (userContinue == 2) {
-                    break;
-                }
+                userContinue = askUserContinue();
             }
         }
+
     }
 
+    private boolean askUserContinue() {
+        int userContinue = Integer.parseInt(Console.readLine());
+        if (userContinue == 1) {
+            return true;
+        }
+        if (userContinue == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException("잘못된 입력입니다");
+    }
 
     public String printResult(BaseballGameResultDto baseballResultDto) {
         int ball = baseballResultDto.getBall();

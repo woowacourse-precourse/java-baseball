@@ -1,13 +1,11 @@
 package baseball;
 
-import baseball.BaseBallGame;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class BaseBallGameTest {
+public class BaseballGameTest {
     @Test
     void DTO를_입력받아_결과값을_출력() {
         //given
@@ -23,7 +21,7 @@ public class BaseBallGameTest {
 
     @Test
     void 잘못된_사용자_입력시_예외_발생() {
-        BaseBallGame bg = new BaseBallGame(3);
+        BaseballGame bg = new BaseballGame(3);
         assertThatThrownBy(() -> {
             bg.submitAnswer("예외발생");
         }).isInstanceOf(IllegalArgumentException.class);
@@ -43,7 +41,7 @@ public class BaseBallGameTest {
         //answer is "137"
         int[] testAnswer = {0, 1, 0, 2, 0, 0, 0, 3, 0, 0};
 
-        BaseBallGame firstGame = new BaseBallGame(3);
+        BaseballGame firstGame = new BaseballGame(3);
         GameController gc = new GameController();
 
         //when
