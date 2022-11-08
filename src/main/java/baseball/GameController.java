@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.constant.Finish.RESTART;
 import static baseball.constant.Message.FINISH_GAME;
+import static baseball.constant.Message.INPUT_NUMBER;
 import static baseball.constant.Message.RESTART_GAME;
 import static baseball.constant.Message.START_GAME;
 
@@ -37,6 +38,7 @@ public class GameController {
     private void playGame() {
         List<Integer> computer = numberGenerator.generateComputerNumber();
         do {
+            view.printInlineMessage(INPUT_NUMBER);
             List<Integer> user = view.inputIntegerList();
             Hint hint = hintCalculator.getHint(computer, user);
             view.printHint(hint);

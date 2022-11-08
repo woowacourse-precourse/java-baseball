@@ -12,5 +12,7 @@ public interface View {
 
     void printHint(Hint hint);
 
+    void printInlineMessage(String message);
+
     void printMessage(String message);
 }

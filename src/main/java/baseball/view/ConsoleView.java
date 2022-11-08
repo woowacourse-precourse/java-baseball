@@ -19,20 +19,29 @@ public class ConsoleView implements View {
         this.inputController = inputController;
     }
 
+    @Override
     public List<Integer> inputIntegerList() {
         String input = inputString();
         return inputController.convertToIntegerList(input);
     }
 
+    @Override
     public void printHint(Hint hint) {
         String hintMessage = convertHint(hint);
         System.out.println(hintMessage);
     }
 
+    @Override
+    public void printInlineMessage(String message) {
+        System.out.print(message);
+    }
+
+    @Override
     public void printMessage(String message) {
         System.out.println(message);
     }
 
+    @Override
     public Finish inputFinishCode() {
         String input = readLine();
         return getFinishByCode(input);
