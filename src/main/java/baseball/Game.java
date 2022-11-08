@@ -6,26 +6,26 @@ public class Game {
 
     Hitter hitter = new Hitter();
     Pitcher pitcher = new Pitcher();
-    Judge judge = new Judge();
+    Referee referee = new Referee();
 
     public void start() {
         boolean stopFlag = false;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (!stopFlag) {
-            stopFlag = service(stopFlag);
+            stopFlag = gameService(stopFlag);
         }
     }
 
-    private boolean service(boolean stopFlag) {
+    private boolean gameService(boolean stopFlag) {
         System.out.print("숫자를 입력해주세요 ");
         String input = Console.readLine();
         pitcher.setNumber(input);
 
-        int ball = judge.countBall(hitter.getNumber(), pitcher.getNumber());
-        int strike = judge.countStrike(hitter.getNumber(), pitcher.getNumber());
+        int ball = referee.countBall(hitter.getNumber(), pitcher.getNumber());
+        int strike = referee.countStrike(hitter.getNumber(), pitcher.getNumber());
 
-        if (ball == 0 && strike == 0) {
+        if (referee.isNothing(ball, strike)) {
             System.out.println("낫싱");
             return false;
         }
