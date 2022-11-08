@@ -12,6 +12,4 @@ public class Score {
         strike += strikeCnt;
     }
 
-    // increaseBall(int n)
-    // increaseStrike(int n)
 }
