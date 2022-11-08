@@ -8,7 +8,7 @@ public class Console implements View{
 
     @Override
     public void requestGuess() {
-
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     @Override
