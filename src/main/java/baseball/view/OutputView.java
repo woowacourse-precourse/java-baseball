@@ -24,6 +24,8 @@ public class OutputView {
         if (strike > 0) {
             result += strike + STRIKE_MESSAGE;
         }
+
+        result = result.trim();
         System.out.println(result);
 
         return result;
