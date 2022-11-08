@@ -1,6 +1,7 @@
 package baseball.utility;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.*;
 
 public class Utility {
     public static final String BALL = "볼";
@@ -14,12 +15,18 @@ public class Utility {
     public static int ANSWER_LENGTH = 3;
 
     public static String makeThreeRandomNumber(){
-        StringBuilder sb = new StringBuilder("");
+        Set<Integer> set = new HashSet<Integer>();
 
-        while (sb.length() < ANSWER_LENGTH) {
+        while (set.size() < ANSWER_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            sb.append(Integer.toString(randomNumber));
+            set.add(randomNumber);
         }
+
+        StringBuilder sb = new StringBuilder("");
+        for(Integer elem : set) {
+            sb.append(Integer.toString(elem));
+        }
+
         return sb.toString();
     }
 }
