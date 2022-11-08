@@ -2,9 +2,11 @@ package baseball;
 
 import baseball.io.Input;
 import baseball.io.Output;
+import baseball.model.BallCount;
 import baseball.model.Numbers;
 
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BaseBall {
     private static final int NUMBER_MIN_VALUE = 1;
@@ -28,6 +30,9 @@ public class BaseBall {
         if (playerNumbers.isEmpty()) {
             throw new IllegalArgumentException();
         }
+
+        BallCount bc = ballCount(computerNumbers, playerNumbers.get());
+        output.ballCount(bc);
     }
 
     private Optional<Numbers> getPlayerNumbers() {
@@ -50,5 +55,19 @@ public class BaseBall {
         return Optional.of(
                 new Numbers(playerNumbers)
         );
+    }
+
+    private BallCount ballCount(Numbers computerNumbers, Numbers playerNumbers) {
+        AtomicInteger strike = new AtomicInteger();
+        AtomicInteger ball = new AtomicInteger();
+
+        computerNumbers.indexedForEach((computerNumber, i) -> {
+            playerNumbers.indexedForEach((playerNumber, j) -> {
+                if (!computerNumber.equals(playerNumber)) return;
+                if (i.equals(j)) strike.addAndGet(1);
+                else ball.addAndGet(1);
+            });
+        });
+        return new BallCount(strike.get(), ball.get());
     }
 }
