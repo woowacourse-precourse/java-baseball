@@ -15,8 +15,8 @@
   
 ### 2. Checker Class
 
-- 사용자가 잘못된 값을 입력했다면 예외를 발생시키는 기능
-  `Checker.throwWrongInputException()`
+- 사용자가 잘못된 값을 입력했는지 확인하는 기능
+  `Checker.IsWrongInput()`
 - 사용자의 입력과 컴퓨터의 정답을 비교하는 기능
   `Checker.CompareUserInputWithAnswer()`
 
