@@ -6,6 +6,8 @@ public class Constants {
 	public static final int MIN_NUMBER = 1;
 	public static final int NUMBER_SIZE = 3;
 
+	public static final String NUMBERS_REGEX = "^[1-9]{3}$";
+
 	public static final String STRIKE_MSG = "스트라이크";
 	public static final String BALL_MSG = "볼";
 	public static final String NOTHING_MSG = "낫싱";
