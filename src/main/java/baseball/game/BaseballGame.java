@@ -13,6 +13,7 @@ import static baseball.userInterface.Output.*;
 public class BaseballGame {
     private static final int END_GAME_CONDITION = 3;
     private static final int DO_NOT_PLAY_AGAIN_CONDITION = 2;
+    private static final int PROGRAM_EXIT = 0;
     private boolean isPlayAgain = true;
 
     public BaseballGame() {
@@ -21,19 +22,26 @@ public class BaseballGame {
 
     public void start() {
         do {
-            play();
+            int programState = play();
+            if (programState == 0){
+                return;
+            }
             askPlayAgain();
         } while (isPlayAgain);
     }
 
-    private void play() {
+    private int play() {
         List<Integer> answer = createThreeRandomNumbers();
         Score userScore;
         do {
             List<Integer> userInput = getUserInput();
+            if (userInput.equals(List.of(0))){
+                return 0;
+            }
             userScore = scoreCalculator(answer, userInput);
             printScore(userScore);
         } while(!isWin(userScore));
+        return 1;
     }
 
     public boolean isWin(Score userScore) {
@@ -47,6 +55,10 @@ public class BaseballGame {
 
     private void askPlayAgain() {
         int isPlayAgainCode = getIsPlayAgainCode();
+        if (isPlayAgainCode == 0) {
+            isPlayAgain = false;
+            return;
+        }
         if (isPlayAgainCode == DO_NOT_PLAY_AGAIN_CONDITION) {
             isPlayAgain = false;
         }

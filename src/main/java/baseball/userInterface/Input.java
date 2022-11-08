@@ -15,7 +15,7 @@ public class Input {
             validateUserInput(userInput);
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
-            System.exit(0);
+            return List.of(0);
         }
         return parseStringToList(userInput);
     }
@@ -27,7 +27,7 @@ public class Input {
             validateIsPlayAgainCode(isPlayAgainCode);
         } catch (IllegalArgumentException error) {
             System.out.println(error.getMessage());
-            System.exit(0);
+            return 0;
         }
         return Integer.parseInt(isPlayAgainCode);
     }
