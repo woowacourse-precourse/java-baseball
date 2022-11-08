@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +10,10 @@ public class Application {
     private static List<Integer> computer = new ArrayList<>();
     static int strikeCount = 0;
     static int ballCount = 0;
+
     public static void main(String[] args) {
-        do{
-            while(strikeCount!=3){//strickCount!=3
+        do {
+            while (strikeCount != 3) {//strickCount!=3
                 System.out.println("숫자를 입력해주세요 : ");
                 reset();
                 List<Integer> input = valueToList(Integer.parseInt(Console.readLine()));
@@ -42,7 +44,7 @@ public class Application {
 
     }
 
-    public static List<Integer> valueToList(int value){
+    public static List<Integer> valueToList(int value) {
         List<Integer> list = new ArrayList<>();
 
         while (value / 10 != 0) {
@@ -52,6 +54,7 @@ public class Application {
         list.add(0, value % 10);
         return list;
     }
+
     private static int ball(List<Integer> computer, List<Integer> input) {
         int ball = 0;
         for (int i = 0; i < computer.size(); i++)
@@ -65,9 +68,18 @@ public class Application {
             if (computer.get(i).equals(input.get(i))) strike++;
         return strike;
     }
+
     private static void reset() {
         strikeCount = 0;
         ballCount = 0;
         computer.clear();
+        generateNum();
+    }
+
+    public static void generateNum() {
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) computer.add(randomNumber);
+        }
     }
 }
