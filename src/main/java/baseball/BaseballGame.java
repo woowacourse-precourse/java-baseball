@@ -31,4 +31,13 @@ public class BaseballGame {
         }
     }
 
+    public static void exceptionNoNumber(String Input) {
+        for (int i = 0; i < Input.length(); i++) {
+            char temp = Input.charAt(i);
+            if (!Character.isDigit(temp)) {
+                throw new IllegalArgumentException(Message.ERROR_MSG);
+            }
+        }
+    }
+
 }
