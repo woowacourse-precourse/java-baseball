@@ -42,10 +42,10 @@ public class User {
             throw new IllegalArgumentException();
     }
 
-    void checkRightType(){
+    void checkRightType() {
         char[] inputChar = userInput.toCharArray();
-        for(Character c : inputChar){
-            if(!Character.isDigit(c)) throw new IllegalArgumentException();
+        for (Character c : inputChar) {
+            if (!Character.isDigit(c)) throw new IllegalArgumentException();
         }
     }
 
