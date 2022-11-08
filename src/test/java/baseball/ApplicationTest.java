@@ -35,7 +35,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void generateAnswer_And_isValidInput_Test() {
+    void 정답생성_후_유효성_검증() {
         String answer = application.generateAnswer();
 
         try {
