@@ -41,6 +41,14 @@ class InputNumberExceptionCheckerTest {
 
     @Test
     void isValidRestartNumber() {
+        InputNumberExceptionChecker inputNumberExceptionChecker;
+        inputNumberExceptionChecker = new InputNumberExceptionChecker();
+        assertThat(inputNumberExceptionChecker.isValidRestartNumber(1))
+                .isEqualTo(true);
+        assertThat(inputNumberExceptionChecker.isValidRestartNumber(2))
+                .isEqualTo(true);
+        assertThat(inputNumberExceptionChecker.isValidRestartNumber(3))
+                .isEqualTo(false);
     }
 
     @Test
