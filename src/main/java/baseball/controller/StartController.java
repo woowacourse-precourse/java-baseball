@@ -13,6 +13,12 @@ public class StartController {
         startEndGameView.startGamePrint();
     }
 
+    public void run() {
+        do {
+            startGame();
+        } while(askOneMore() != EXIT_CODE);
+    }
+
     public void startGame() {
         Computer computer = new Computer();
         GameController gameController = new GameController();
