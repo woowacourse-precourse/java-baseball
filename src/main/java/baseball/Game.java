@@ -19,6 +19,10 @@ public class Game {
     public void play() {
         List<Integer> randomNumbers = computer.getRandomNumbers();
 
+        GameJudgement gameJudgement = new GameJudgement();
+
         List<Integer> playerInputNumbers = player.getInputNumberAsList();
+
+        boolean gameEnd = gameJudgement.judge(randomNumbers, playerInputNumbers);
     }
 }
