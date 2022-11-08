@@ -19,8 +19,19 @@ public class Application {
     public static int calculationNumber(List<Integer> resultNumber ,String inputStringNumber){
         List<Integer> inputNumber = makeStringNumberToList(inputStringNumber);
         int strike = countStrike(resultNumber, inputNumber);
-
+        int ball = countBall(resultNumber, inputNumber);
         return strike;
+    }
+
+    private static int countBall(List<Integer> resultNumber, List<Integer> inputNumber) {
+        int ball = 0;
+        for(int i =0; i<3; i++){
+            int curNumber = resultNumber.get(i);
+            if(inputNumber.contains(curNumber) && resultNumber.get(i) != inputNumber.get(i)){
+                ball++;
+            }
+        }
+        return ball;
     }
 
     private static List<Integer> makeStringNumberToList(String inputStringNumber) {
