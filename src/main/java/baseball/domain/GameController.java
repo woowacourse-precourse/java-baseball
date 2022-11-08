@@ -18,6 +18,8 @@ public class GameController {
 
     public static GameController getInstance() {
         if (instance == null) instance = new GameController();
+        // 재호출 시 종료 플래그 초기화
+        instance.keepPlaying = true;
         return instance;
     }
 
