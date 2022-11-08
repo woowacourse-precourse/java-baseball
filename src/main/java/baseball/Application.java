@@ -11,24 +11,24 @@ public class Application {
     public static void main(String[] args) {
         ResponseMessage.startGame();
         Number computer = new Number();
+        playGame(computer);
+    }
 
-        while (gameExecution != STOP_PROGRAM) {
-            int strikeNumber = playGame(computer);
+    private static void playGame(Number computer) {
+        int strikeNumber;
+        do {
+            ResponseMessage.inputNumber();
+            Number user = new Number(Console.readLine());
+            Exception.handleException(user.getUserNumbers());
+
+            Baseball baseball = new Baseball(computer.getComputers(), user.getUserNumbers());
+            strikeNumber = baseball.getStrike();
+            System.out.println(baseball.getScore());
+
             stopGame(strikeNumber);
             stopProgram();
             computer = restartGame(computer);
-        }
-    }
-
-    private static int playGame(Number computer) {
-        ResponseMessage.inputNumber();
-        Number user = new Number(Console.readLine());
-        Exception.handleException(user.getUserNumbers());
-
-        Baseball baseball = new Baseball(computer.getComputers(), user.getUserNumbers());
-        System.out.println(baseball.getScore());
-
-        return baseball.getStrike();
+        } while (gameExecution != STOP_PROGRAM);
     }
 
     private static void stopGame(int strikeNumber) {
