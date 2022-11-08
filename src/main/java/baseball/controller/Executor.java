@@ -22,7 +22,7 @@ public class Executor {
             guessResult = compareNumber(computerRandomBaseball, userInputNumber);
             if(guessResult.isALLCorrect()) {
                 String resultString = guessResult.getResult();
-                System.out.println(resultString);
+                Printer.printMessage(resultString);
                 Printer.isALLCorrect();
                 askRestart();
             }
