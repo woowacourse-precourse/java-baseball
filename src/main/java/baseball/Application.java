@@ -50,8 +50,18 @@ public class Application {
         }
 
         private boolean newGameCheck() {
+            String order = confirmNextAction();
+
+            if (verifyOrder(order)) {
+
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        private String confirmNextAction() {
             printNewGameStatus();
-            int order =
+            return readLine();
         }
 
         private void gamePlayLoop() {
