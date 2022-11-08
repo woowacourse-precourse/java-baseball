@@ -10,7 +10,6 @@ import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ScoreBoardTest {
@@ -42,8 +41,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("1스트라이크 발생")
-    void strikeCase1() {
+    void 원스트라이크() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(1, 4, 5));
         assertThat(scoreResult.getStrike()).isEqualTo(1);
         assertThat(scoreResult.getBall()).isEqualTo(0);
@@ -54,8 +52,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("2스트라이크 발생")
-    void strikeCase2() {
+    void 투스트라이크() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(1, 2, 4));
         assertThat(scoreResult.getStrike()).isEqualTo(2);
         assertThat(scoreResult.getBall()).isEqualTo(0);
@@ -66,8 +63,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("3스트라이크 발생")
-    void strikeCase3() {
+    void 쓰리스트라이크() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(1, 2, 3));
         assertThat(scoreResult.getStrike()).isEqualTo(3);
         assertThat(scoreResult.getBall()).isEqualTo(0);
@@ -80,8 +76,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("1볼 발생")
-    void ballCase1() {
+    void 원볼() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(3, 4, 5));
         assertThat(scoreResult.getStrike()).isEqualTo(0);
         assertThat(scoreResult.getBall()).isEqualTo(1);
@@ -92,8 +87,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("2볼 발생")
-    void ballCase2() {
+    void 투볼() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(2, 3, 5));
         assertThat(scoreResult.getStrike()).isEqualTo(0);
         assertThat(scoreResult.getBall()).isEqualTo(2);
@@ -104,8 +98,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("3볼 발생")
-    void ballCase3() {
+    void 쓰리볼() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(2, 3, 1));
         assertThat(scoreResult.getStrike()).isEqualTo(0);
         assertThat(scoreResult.getBall()).isEqualTo(3);
@@ -116,8 +109,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("1스트라이크 1볼 발생")
-    void strikeAndBallCase1() {
+    void 원볼_원스트라이크() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(2, 4, 3));
         assertThat(scoreResult.getStrike()).isEqualTo(1);
         assertThat(scoreResult.getBall()).isEqualTo(1);
@@ -128,8 +120,7 @@ class ScoreBoardTest {
     }
 
     @Test
-    @DisplayName("1스트라이크 2볼 발생")
-    void strikeAndBallCase2() {
+    void 투볼_원스트라이크() {
         ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(2, 1, 3));
         assertThat(scoreResult.getStrike()).isEqualTo(1);
         assertThat(scoreResult.getBall()).isEqualTo(2);
@@ -137,5 +128,16 @@ class ScoreBoardTest {
 
         showGameMessage.gameResult(scoreResult);
         assertThat(getOutput()).isEqualTo("2볼 1스트라이크");
+    }
+
+    @Test
+    void 낫싱() {
+        ScoreResult scoreResult = scoreBoard.getScoreResult(makeNumberBalls(4, 5, 6));
+        assertThat(scoreResult.getStrike()).isEqualTo(0);
+        assertThat(scoreResult.getBall()).isEqualTo(0);
+        assertThat(scoreResult.getScoreResultType()).isEqualTo(ScoreResultType.NOTHING);
+
+        showGameMessage.gameResult(scoreResult);
+        assertThat(getOutput()).isEqualTo("낫싱");
     }
 }

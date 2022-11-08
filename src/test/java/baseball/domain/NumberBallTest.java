@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import baseball.util.GameExceptionMessage;
 import java.util.stream.IntStream;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class NumberBallTest {
@@ -14,22 +13,19 @@ class NumberBallTest {
     }
 
     @Test
-    @DisplayName("0으로 공 생성 예외 발생")
-    void case1() {
+    void 숫자_0_공_생성_예외_발생() {
         assertThatThrownBy(() -> makeNumberBall(0)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(GameExceptionMessage.ENTER_NUMBER_FROM_ONE_TO_NINE);
     }
 
     @Test
-    @DisplayName("9이상 숫자로 공 생성 예외 발생")
-    void case2() {
+    void 숫자_9이상_공_생성_예외_발생() {
         assertThatThrownBy(() -> makeNumberBall(15)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(GameExceptionMessage.ENTER_NUMBER_FROM_ONE_TO_NINE);
     }
 
     @Test
-    @DisplayName("공 생성 성공")
-    void case3() {
+    void 공_생성_성공() {
         IntStream.range(1, 10).forEach((idx) -> assertDoesNotThrow(() -> makeNumberBall(idx)));
         IntStream.range(1, 10).forEach((idx) -> assertThat(makeNumberBall(idx).getNumber()).isEqualTo(idx));
     }
