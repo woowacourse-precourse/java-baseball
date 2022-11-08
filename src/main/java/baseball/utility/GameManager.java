@@ -38,6 +38,9 @@ public class GameManager {
             String playerNumber = getPlayerNumber();
 
             PlayerNumberValidator.throwIllegalArgumentExceptionIfPlayerNumberNotValid(playerNumber);
+
+            String hint = ResultEvaluator.getHint(this.computerNumber, playerNumber);
+            System.out.println(hint);
         }
     }
 
