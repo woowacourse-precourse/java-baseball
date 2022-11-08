@@ -31,7 +31,7 @@ public class BaseBall {
     
     private void playBaseBallGameOnce() {
         compareBallsRepeatedly(new BaseBallGame());
-        baseBallGameEndMessagePrint();
+        printBaseBallGameEndMessage();
     }
     
     private void compareBallsRepeatedly(final BaseBallGame baseBallGame) {
@@ -70,7 +70,7 @@ public class BaseBall {
         return referee.isBaseBallGameEnd();
     }
     
-    private void baseBallGameEndMessagePrint() {
+    private void printBaseBallGameEndMessage() {
         OutputView.baseBallGameEndMessagePrint();
     }
     
