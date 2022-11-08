@@ -17,4 +17,17 @@ public class Game {
         }
         return nums;
     }
+
+    /** 사용자 입력값을 정수 ArrayList 반환 */
+    private static List<Integer> getNumsArr(int num) {
+        List<Integer> numsArr = Arrays.asList(0,0,0);
+
+        vaildNum(num);
+
+        for (int i=0; i<numsArr.size(); i++){
+            numsArr.set(2 - i, num % 10);
+            num = num/10;
+        }
+        return numsArr;
+    }
 }
