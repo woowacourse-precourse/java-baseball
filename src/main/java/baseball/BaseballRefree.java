@@ -16,4 +16,14 @@ public class BaseballRefree {
         this.setAnswerNumberFlags();
     }
 
+
+    private int getBallCount(String numbers){
+        int count = 0;
+
+        for (char ch : numbers.toCharArray()) {
+            if (answerNumberFlags[Character.getNumericValue(ch)]) count += 1;
+        }
+
+        return count;
+    }
 }
