@@ -1,8 +1,8 @@
-package baseball;
+package baseball.domain;
 
-import static baseball.BallStatus.STRIKE;
-import static baseball.BallStatus.BALL;
-import static baseball.BallStatus.NOTHING;
+import static baseball.domain.BallStatus.STRIKE;
+import static baseball.domain.BallStatus.BALL;
+import static baseball.domain.BallStatus.NOTHING;
 
 import java.util.Comparator;
 import java.util.HashMap;

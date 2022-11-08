@@ -1,6 +1,11 @@
-package baseball;
+package baseball.game;
 
-import static baseball.NumberGenerator.createNonDuplicateNumbers;
+import static baseball.utils.NumberGenerator.createNonDuplicateNumbers;
+
+import baseball.domain.Balls;
+import baseball.domain.CompareResult;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 public class BaseballGame {
 

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.RepeatedTest;
+
+import baseball.domain.Balls;
 
 @DisplayNameGeneration(
 	DisplayNameGenerator.ReplaceUnderscores.class

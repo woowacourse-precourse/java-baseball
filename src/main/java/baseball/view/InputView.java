@@ -1,11 +1,12 @@
-package baseball;
+package baseball.view;
 
-import static baseball.InputValidation.*;
+import static baseball.utils.InputValidation.validateIsAllDigit;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import baseball.game.GameOption;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
