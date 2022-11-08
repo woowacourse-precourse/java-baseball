@@ -6,6 +6,10 @@ import java.util.Set;
 
 public class Validator {
 
+    public static boolean validateInput(List<Integer> input) {
+        return checkLength(input) && checkDuplication(input) && checkEachNum(input);
+    }
+
     private static boolean checkLength(List<Integer> input) {
         return input.size() == 3;
     }
