@@ -3,7 +3,7 @@ package baseball;
 public class Application {
 
     public static void main(String[] args) {
-        ComputerNumGenerator computerNum = new ComputerNumGenerator();
-
+        int[] computerNums = new ComputerNumGenerator().nums;
+        int[] userNums = new UserNumGenerator().nums;
     }
 }
