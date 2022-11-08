@@ -31,37 +31,37 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-//    @Nested
-//    class 숫자_검사_메소드_테스트 {
-//        @Test
-//        void case1() {
-//            List<Integer> numberList = List.of(1, 2, 3);
-//            boolean result = true;
-//            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case2() {
-//            List<Integer> numberList = List.of(1);
-//            boolean result = false;
-//            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case3() {
-//            List<Integer> numberList = List.of(1, 2, 2);
-//            boolean result = false;
-//            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
-//        }
-//
-//        @Test
-//        void case4() {
-//            List<Integer> numberList = List.of(1, 2, 0);
-//            boolean result = false;
-//            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
-//        }
-//    }
-//
+    @Nested
+    class CheckNumberValid {
+        @Test
+        void case1() {
+            List<Integer> numberList = List.of(1, 2, 3);
+            boolean result = true;
+            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<Integer> numberList = List.of(1);
+            boolean result = false;
+            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<Integer> numberList = List.of(1, 2, 2);
+            boolean result = false;
+            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            List<Integer> numberList = List.of(1, 2, 0);
+            boolean result = false;
+            assertThat(Operator.isCorrectNumber(numberList)).isEqualTo(result);
+        }
+    }
+
     @Test
     void 랜덤_숫자_생성() {
         Computer computer = new Computer();
