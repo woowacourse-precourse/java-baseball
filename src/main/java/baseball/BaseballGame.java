@@ -49,7 +49,18 @@ public class BaseballGame {
 		}
 
 		void giveResult() {
-
+		
+		void giveResult(List<Integer> suggestion) {
+			final int MAX_STRIKE = 3;
+			int strike = checkStrike(suggestion);
+			int ball = checkBall(suggestion);
+			if (ball != 0 ) System.out.print(ball+"볼 ");
+			if (strike != 0) System.out.print(strike+"스트라이크");
+			if (ball==0 && strike==0)System.out.print("낫싱");
+			System.out.println("");
+			if (strike == MAX_STRIKE) {
+				setGameEnd(true);
+			}
 		}
 
 		boolean isAnswer() {
