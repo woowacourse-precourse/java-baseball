@@ -3,8 +3,8 @@ package baseball.service;
 import baseball.domain.BaseBallGame;
 import baseball.utils.ArrayParser;
 import baseball.utils.Constants;
-import baseball.utils.InputValueValidator;
 import baseball.utils.RandomNumber;
+import baseball.utils.validators.UserInputValidator;
 import baseball.view.BaseBallGameView;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -69,18 +69,8 @@ public class BaseballGameService {
         BaseBallGameView.printRequestNumber();
         String input = Console.readLine();
 
-        if(!validateGameInput(input)){
-            throw new IllegalArgumentException();
-        }
+        UserInputValidator.validateGameInput(input);
 
         game.setUserInput(ArrayParser.stringToIntegerList(input));
-    }
-
-    private boolean validateGameInput(String input){
-        boolean isNumberOnly = InputValueValidator.isNumberOnly(input);
-        boolean isNoDuplicated = InputValueValidator.isNoDuplicatedValue(input);
-        boolean isLengthCorrect = InputValueValidator.isLengthCorrect(input, Constants.BASEBALL_GAME_NUMBER_LENGTH);
-
-        return isNumberOnly && isNoDuplicated && isLengthCorrect;
     }
 }

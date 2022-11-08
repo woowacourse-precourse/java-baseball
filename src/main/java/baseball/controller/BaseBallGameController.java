@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.service.BaseballGameService;
 import baseball.utils.Constants;
-import baseball.utils.InputValueValidator;
+import baseball.utils.validators.UserInputValidator;
 import baseball.view.BaseBallGameView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -43,19 +43,8 @@ public class BaseBallGameController {
     private int getRetryInput() throws IllegalArgumentException{
         String retry = Console.readLine();
 
-        if(!validateRetryInput(retry)){
-            throw new IllegalArgumentException();
-        }
+        UserInputValidator.validateRetryInput(retry);
 
         return Integer.parseInt(retry);
     }
-
-    private boolean validateRetryInput(String input){
-        boolean isOnlyNumber = InputValueValidator.isNumberOnly(input);
-        boolean isOneLength = InputValueValidator.isLengthCorrect(input, 1);
-        boolean isRetryValue = InputValueValidator.isContainValues(input, Constants.BASEBALL_GAME_END);
-
-        return (isOnlyNumber && isOneLength && isRetryValue);
-        }
-
 }
