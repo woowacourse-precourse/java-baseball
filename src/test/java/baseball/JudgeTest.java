@@ -42,4 +42,15 @@ public class JudgeTest {
         sameNumberCount = judge.countSameNumber(computerNumbers, playerNumbers);
         assertThat(sameNumberCount).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("힌트 출력 기능 테스트")
+    public void printGameOver() {
+        int strikeCount = judge.countStrike(computerNumbers, playerNumbers);
+        int sameNumberCount = judge.countSameNumber(computerNumbers, playerNumbers);
+        int ballCount = sameNumberCount - strikeCount;
+
+        String hint = judge.printHint(strikeCount, ballCount);
+        assertThat(hint.equals("1볼 1스트라이크")).isTrue();
+    }
 }
