@@ -32,7 +32,7 @@ public class View {
             }
             return s;
         } catch (IllegalArgumentException e) {
-            return String.valueOf(e);
+            throw e;
         }
     }
 
