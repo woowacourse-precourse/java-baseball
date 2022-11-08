@@ -6,43 +6,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 기능 목록
- * BullsAndCows 클래스 (숫자야구 게임 담당 객체) 구성
- * - computerNumber : 컴퓨터가 만든 서로 다른 3자리 수를 저장
- * - BullsAndCowsResult : 게임 결과를 저장하는 객체
- * - start() : 숫자 야구 게임을 시작
- *   - 사용자로 부터 조건에 맞는 입력을 받고 (입력이 올바르지 않으면 예외 발생) 볼/스트라이크 개수를 BullsAndCowsResult 객체에 저장
- *   - main 메소드에서 BullsAndCowsResult 의 finish() 메소드를 통해 반복
- * - isContinue() : 게임을 다시 진행할지 여부를 반환
- *   - 사용자로부터 1 또는 2의 문자를 입력받고 이를 통해 게임 종료/다시 시작 여부를 반환
- *   - main 메소드에서 while 문 마지막에 구현
- *
- * BullsAndCowsResult 클래스 (숫자야구 게임 결과 담당 객체) 구성
- * - ballCount : 볼 갯수를 저장하는 객체
- * - strikeCount : 스트라이크 갯수를 저장하는 객체
- * - init() : 사용자로부터 값을 입력받을 때 마다 볼/스트라이크 갯수를 초기화
- * - addCount() : 컴퓨터의 숫자와 사용자의 숫자를 비교하여 볼/스트라이크 개수를 집계
- * - printResult() : 집계한 볼/스트라이크 갯수를 요구사항에 맞게 출력
- * - finish() : 3 스트라이크(게임 끝)인 경우를 확인
- *
- ** 기능 구현
- * 1. 컴퓨터가 1 ~ 9 까지 서로 다른 임의의 수 3개를 선택
- *   1-1. 요구사항에 나와있는 라이브러리를 사용하여 구현한다.
- *
- * 2. 사용자로부터 입력받기
- *   2-1. 예외 사항 처리
- *      a) 자릿수가 3자리가 아닌 경우
- *      b) 각 자리수가 중복이 아닌 경우
- *      c) 각 자리수가 1 ~ 9 가 아닌 경우
- *
- * 3. 볼/스트라이크 여부 확인
- *   3-1. 숫자 포함 여부를 인덱스로 판단
- *   3-2. 얻은 인덱스를 별도의 BullsAndCowsResult 객체를 통해 판단
- *
- * 4. 게임이 끝난 경우
- *   4-1. 사용자로부터 다시 문자열을 입력받아 종료/다시 시작 여부를 확인
- **/
-
 public class Application {
     public static void main(String[] args) {
 
