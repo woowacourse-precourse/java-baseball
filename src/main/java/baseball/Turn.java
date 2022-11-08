@@ -43,9 +43,14 @@ public class Turn {
     public List<Integer> transformPlayerInputToList(String playerInput) {
         List<Integer> playerNumberList = new ArrayList<>();
         for (int index = 0; index < playerInput.length(); index++) {
-            playerNumberList.add(playerInput.charAt(index) - '0');
+            int inputInInteger = transformCharacterToInteger(playerInput.charAt(index));
+            playerNumberList.add(inputInInteger);
         }
         return playerNumberList;
+    }
+
+    public int transformCharacterToInteger(char character){
+        return character - '0';
     }
 
     public void validatePlayerNumberList(List<Integer> playerNumberList) {

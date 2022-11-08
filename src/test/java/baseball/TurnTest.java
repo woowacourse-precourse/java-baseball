@@ -46,6 +46,14 @@ public class TurnTest extends NsTest {
     }
 
     @Test
+    void transformCharacterToInteger_test_transforming_character_to_integer() {
+        Turn turn = new Turn();
+        char character = '3';
+        int resultOutput = 3;
+        assertThat(turn.transformCharacterToInteger(character)).isEqualTo(resultOutput);
+    }
+
+    @Test
     void validatePlayerNumberList_test_input_length_larger_than_3(){
         Turn turn = new Turn();
         List<Integer> testInput = List.of(1, 2, 3, 4);
