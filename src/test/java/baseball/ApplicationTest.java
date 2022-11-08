@@ -21,10 +21,66 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_4자리숫자() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_4자리문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a cd"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_3자리문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("sdf"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1과 9 사이의 정수가 아닌 다른 문자가 들어있습니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_2자리문자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("l;"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_2자리숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("56"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
+        );
+    }
+
+
+    @Test
+    void 예외_테스트_중복된숫자() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("112"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("숫자를 중복하여 입력하셨습니다.")
+        );
+    }
+
+    @Test
+    void 예외_테스트_0포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("806"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining("1과 9 사이의 정수가 아닌 다른 문자가 들어있습니다.")
         );
     }
 
