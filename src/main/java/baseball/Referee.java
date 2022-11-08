@@ -27,7 +27,7 @@ public class Referee {
         return isAnswer;
     }
 
-    public Referee Judge(List<Integer> userNumber){
+    public Referee judge(List<Integer> userNumber){
         List<Integer> computerNumber = computer.getComputerNumber();
 
         for (int i = 0; i < userNumber.size(); i++){

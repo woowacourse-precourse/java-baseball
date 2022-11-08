@@ -13,9 +13,10 @@ public class PlayBall {
         if (this.playBallUI == null){
             this.playBallUI = new PlayBallUI();
         }
+
         setComputerNumber();
         playBallUI.startInterface();
-        handleUserInput();
+        controlGame();
     }
 
     public void setComputerNumber(){
@@ -23,14 +24,14 @@ public class PlayBall {
         computer.setComputerRandomNumber();
     }
 
-    public void handleUserInput(){
+    public void controlGame(){
         boolean isGameOver = false;
 
         while(!isGameOver){
             String userNumberInput = playBallUI.takeUserNumberInput();
             checkUserInput(userNumberInput);
 
-            this.referee = judgeUserNumber(userNumberInput);
+            referee = judgeUserNumber(userNumberInput);
             int strike = referee.getStrike();
             int ball = referee.getBall();
             playBallUI.showJudgeMessage(strike, ball);
@@ -39,6 +40,7 @@ public class PlayBall {
         }
 
         playBallUI.showAnswerMessage();
+        String restartOptionInput = playBallUI.takeRestartOptionInput();
     }
 
     public void checkUserInput(String userNumberInput){
@@ -56,6 +58,6 @@ public class PlayBall {
             userNumber.add(userNumberInput.charAt(i) - '0');
         }
 
-        return referee.Judge(userNumber);
+        return referee.judge(userNumber);
     }
 }
