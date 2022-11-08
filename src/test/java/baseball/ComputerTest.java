@@ -60,4 +60,14 @@ public class ComputerTest {
         assertThat(HintMap.get("볼")).isEqualTo(1);
     }
 
+    @Test
+    void giveResult_플레이어에게_힌트_출력(){
+        Computer computer = new Computer();
+        computer.Answer = List.of(1,2,3);
+        computer.resetHintMap();
+        List<Integer> list = List.of(2,5,3);
+        computer.makeHintMap(list);
+        computer.giveHint();
+        assertThat(computer.result).isEqualTo("1볼 1스트라이크");
+    }
 }

@@ -45,5 +45,20 @@ public class Computer {
             checkPlayerAnswer(Answer.get(i), list.get(i));
         }
     }
+
+    public static void giveHint(){
+        result = HintMap.get("볼") + "볼" + " " + HintMap.get("스트라이크") + "스트라이크";
+        if(HintMap.get("스트라이크") == 0){
+            result = HintMap.get("볼") + "볼";
+        }
+        if(HintMap.get("볼") == 0) {
+            result = HintMap.get("스트라이크") + "스트라이크";
+        }
+        if(HintMap.get("스트라이크") == 0 && HintMap.get("볼") == 0) {
+            result = "낫싱";
+        }
+        System.out.println(result);
+    }
+
 }
 

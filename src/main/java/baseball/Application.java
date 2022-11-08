@@ -7,6 +7,10 @@ public class Application {
         Computer computer = new Computer();
         System.out.println(computer.Answer);
         Player player = new Player();
+
         player.guessAnswer();
+        computer.resetHintMap();
+        computer.makeHintMap(player.Answer);
+        computer.giveHint();
     }
 }
