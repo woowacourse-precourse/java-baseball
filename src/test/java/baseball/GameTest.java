@@ -3,6 +3,7 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import domain.Game;
+import domain.ValidityChecker;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -26,10 +27,11 @@ public class GameTest {
 
     private static ByteArrayOutputStream outContent;
     private static PrintStream originalOut;
+    private ValidityChecker checker = new ValidityChecker();
 
     @BeforeEach
     void setUp() {
-        game = new Game("1");
+        game = new Game(3);
     }
 
     //  String 상태로 내가 넣어준 테스트용 input을 바이트 코드로 바꾸어 준다.
@@ -39,9 +41,7 @@ public class GameTest {
 
     //  input값을 String으로 대체하여 Test를 실행하기 위한 Test용 코드
     private void generateNumberForTest(String input) {
-        if (game.validateChecker(input)) {
-            throw new IllegalArgumentException("1, 또는 2를 입력해야 합니다.");
-        }
+        checker.validateRepalyGameInput(input);
     }
 
     private Scanner generateScanner(String inputString) {
@@ -55,7 +55,7 @@ public class GameTest {
     @DisplayName("유효성 검사 1. Null 확인")
     public void generateNumberValidateIsStringNotNull() {
         Assertions.assertThatThrownBy(() -> {
-//            game.generateNumberTest("");
+            generateNumberForTest("");
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -67,8 +67,8 @@ public class GameTest {
     public void generateNumberValidateIsStringOne(String inputString) {
         scanner = generateScanner(inputString);
         assertThatThrownBy(() -> generateNumberForTest(scanner.toString()))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("1, 또는 2를 입력해야 합니다.");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1, 또는 2를 입력해야 합니다.");
     }
 
     @Order(3)
@@ -78,8 +78,8 @@ public class GameTest {
     public void generateNumberValidateIsStringUnavailable(String inputString) {
         scanner = generateScanner(inputString);
         assertThatThrownBy(() -> generateNumberForTest(scanner.toString()))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("1, 또는 2를 입력해야 합니다.");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1, 또는 2를 입력해야 합니다.");
     }
 
     @Order(4)
@@ -89,8 +89,8 @@ public class GameTest {
     public void generateNumberValidateRandomTest(String inputString) {
         scanner = generateScanner(inputString);
         assertThatThrownBy(() -> generateNumberForTest(scanner.toString()))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("1, 또는 2를 입력해야 합니다.");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("1, 또는 2를 입력해야 합니다.");
 
     }
 }
