@@ -15,8 +15,7 @@ public class Referee {
         for (int i = 0; i < targetNum.size(); i++) {
             if (targetNum.get(i).equals(userInput.get(i))) {
                 strike++;
-            }
-            else {
+            } else {
                 ball++;
             }
         }
@@ -30,6 +29,7 @@ public class Referee {
     public int getStrike() {
         return this.strike;
     }
+
     public String resultMessage() {
         String result = "";
         if (ball == 0 && strike == 0) {
