@@ -20,6 +20,7 @@ public class Game {
     private static final String GAME_END_STRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String SUCCESS_STRING = "3스트라이크";
     private static final String GAME_CODE_WRONG_STRING = "1과 2 중에 다시 입력해주세요.";
+    private static final int NUMBER_SIZE = 3;
     private static int strike;
     private static int ball;
 
@@ -51,7 +52,7 @@ public class Game {
         while (true) {
             printStr(USER_INPUT_STRING);
             userNumber = new RandomNumber();
-            userNumber.createUserRandomNumber();;
+            userNumber.createUserRandomNumber();
             userNumberList = new ArrayList<>(userNumber.getRandomNumberList());
 
             resetCount();
@@ -79,7 +80,7 @@ public class Game {
     }
 
     private static void compareNumber() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUMBER_SIZE; i++) {
             int computerNum = computerNumberList.get(i);
             int userNum = userNumberList.get(i);
 
