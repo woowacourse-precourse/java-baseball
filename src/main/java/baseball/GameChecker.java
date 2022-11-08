@@ -15,12 +15,12 @@ public class GameChecker {
 
     public void askContinue(){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String restart= Console.readLine();
+        String userInput= Console.readLine();
 
-        if(restart.equals("2")){
+        if(userInput.equals("2")){
             this.restartGame =false;
         }
-        else if(!restart.equals("1")){
+        else if(!userInput.equals("1")){
             IllegalArgumentException e=new IllegalArgumentException("재시작 입력 오류");
             throw e;
         }

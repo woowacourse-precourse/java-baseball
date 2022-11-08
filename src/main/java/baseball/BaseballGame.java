@@ -3,8 +3,7 @@ package baseball;
 public class BaseballGame {
     Computer com;
     User user;
-    int strike;
-    int ball;
+    int strike,ball;
 
     BaseballGame(){
         this.com=new Computer();
