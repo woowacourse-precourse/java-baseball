@@ -12,22 +12,21 @@ public class Digit {
         this.index = index;
         this.digitNumber = digitNumber;
     }
-
-    private ScoreStatus isBallOrStrikeOrNothing(final Digit trial){
-        if (isStrike(trial)) {
+    public ScoreStatus isBallOrStrikeOrNothing(final Digit digit){
+        if (Boolean.TRUE.equals(isStrike(digit))) {
             return ScoreStatus.STRIKE;
         }
 
-        if (isBall(trial)) {
+        if (Boolean.TRUE.equals(isBall(digit))) {
             return ScoreStatus.BALL;
         }
         return ScoreStatus.NOTHING;
     }
 
-    private boolean isStrike(final Digit trial) {
+    private Boolean isStrike(final Digit trial) {
         return this.equals(trial);
     }
-    public boolean isBall(final Digit trial) {
+    public Boolean isBall(final Digit trial) {
         return this.digitNumber.equals(trial.digitNumber);
     }
 
@@ -62,8 +61,6 @@ public class Digit {
 
     @Override
     public String toString() {
-        return "Ball{ trialIndex=" + index +
-                ", digitNumber=" + digitNumber +
-                '}';
+        return index +":"+ digitNumber + ", ";
     }
 }
