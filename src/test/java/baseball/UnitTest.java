@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 class UnitTest extends NsTest {
 
     @Test
-    void 컴퓨터_생성_세자리_난수_적정성_검토(){
+    void 컴퓨터_생성_세자리_난수_적정성_검토() {
         ComputerNumber computerNumber = new ComputerNumber();
         Integer hundredNumber = computerNumber.computerNumberList.get(0);
         Integer tenNumber = computerNumber.computerNumberList.get(1);
@@ -25,14 +25,14 @@ class UnitTest extends NsTest {
 
         assertThat(hundredNumber).isBetween(1, 9);
         assertThat(tenNumber).isBetween(1, 9);
-        assertThat(number).isBetween(1,9);
+        assertThat(number).isBetween(1, 9);
         assertThat(hundredNumber).isNotEqualTo(tenNumber);
         assertThat(hundredNumber).isNotEqualTo(number);
         assertThat(tenNumber).isNotEqualTo(number);
     }
 
     @Test
-    void 스트라이크_및_볼_개수_출력값_검증(){
+    void 스트라이크_및_볼_개수_출력값_검증() {
         List<Integer> inputNumList = new ArrayList<>();
         List<Integer> computerNumList = new ArrayList<>();
 
@@ -52,7 +52,7 @@ class UnitTest extends NsTest {
     }
 
     @Test
-    void 사용자_입력_값과_컴퓨터_생성값_간_비교(){
+    void 사용자_입력_값과_컴퓨터_생성값_간_비교() {
         List<Integer> inputNumList = new ArrayList<>();
         List<Integer> computerNumList = new ArrayList<>();
 
@@ -67,7 +67,6 @@ class UnitTest extends NsTest {
         boolean getGameResult = JudgeGame.verifyAnswer(inputNumList, computerNumList);
 
         assertThat(getGameResult).isEqualTo(true);
-
     }
 
     @Test

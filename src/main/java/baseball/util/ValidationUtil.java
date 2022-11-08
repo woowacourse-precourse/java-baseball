@@ -3,11 +3,10 @@ package baseball.util;
 import baseball.controller.GameController;
 
 public class ValidationUtil {
-
-    public static boolean validateInputNumber(String input) {
-        if (input.length()==3 && (!input.contains("0"))
+    public static void validateInputNumber(String input) {
+        if (input.length() == 3 && (!input.contains("0"))
                 && validateIsDigit(input) && validateDuplicateNumber(input)) {
-            return true;
+            return;
         }
         throw new IllegalArgumentException();
     }
@@ -22,30 +21,26 @@ public class ValidationUtil {
         return false;
     }
 
-    private static boolean validateDuplicateNumber(String input){
+    private static boolean validateDuplicateNumber(String input) {
         char[] charArray = input.toCharArray();
         if (charArray[0] == charArray[1] || charArray[0] == charArray[2]
-                || charArray[1] == charArray[2]){
+                || charArray[1] == charArray[2]) {
             return false;
         }
         return true;
     }
 
-    public static void validateInputRestart(String input){
-        if (!input.equals("1") && !input.equals("2")){
+    public static void validateInputRestart(String input) {
+        if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
         }
-
-        if (input.equals("1")){
+        if (input.equals("1")) {
             GameController gameController = new GameController();
             gameController.startGame();
         }
-
-        if (input.equals("2")){
+        if (input.equals("2")) {
             return;
         }
     }
-
-
 }
 

@@ -11,16 +11,16 @@ public class ComputerNumber {
     public Integer number;
     public List<Integer> computerNumberList = new ArrayList<>();
 
-    public ComputerNumber(){
+    public ComputerNumber() {
         hundredNumber = Randoms.pickNumberInRange(1, 9);
         tenNumber = Randoms.pickNumberInRange(1, 9);
         number = Randoms.pickNumberInRange(1, 9);
         getComputerNumberList();
     }
 
-    public void getComputerNumberList(){
-        while(hundredNumber.equals(tenNumber) || hundredNumber.equals(number)
-                || tenNumber.equals(number)){
+    public void getComputerNumberList() {
+        while (hundredNumber.equals(tenNumber) || hundredNumber.equals(number)
+                || tenNumber.equals(number)) {
             hundredNumber = Randoms.pickNumberInRange(1, 9);
             tenNumber = Randoms.pickNumberInRange(1, 9);
             number = Randoms.pickNumberInRange(1, 9);
