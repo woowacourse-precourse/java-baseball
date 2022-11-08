@@ -11,8 +11,8 @@ import static baseball.Message.*;
 
 public class UserNumber {
     public List<Integer> validate(String input) {
-
         Set<Integer> inputSet = new HashSet<>();
+        List<Integer> inputDigits = new ArrayList<>();
         CharacterIterator it = new StringCharacterIterator(input);
 
         while (it.current() != CharacterIterator.DONE) {
@@ -20,18 +20,19 @@ public class UserNumber {
                 throw new IllegalArgumentException();
             }
             inputSet.add(Character.getNumericValue(it.current()));
+            inputDigits.add(Character.getNumericValue(it.current()));
+            it.next();
         }
 
-        if(inputSet.size() != 3 || inputSet.contains(Integer.valueOf(0))){
+        if(inputSet.size() != INPUT_SIZE || inputSet.contains(Integer.valueOf(0))){
             throw new IllegalArgumentException();
         }
-
-        List<Integer> inputDigits = new ArrayList<>(inputSet);
 
         return inputDigits;
     }
 
-    public void judge(List<Integer> inputDigits, List<Integer> secretDigits) {
+    public int judge(List<Integer> inputDigits, List<Integer> secretDigits) {
+
         int ballCount = 0;
         int strikeCount = 0;
 
@@ -41,6 +42,8 @@ public class UserNumber {
         }
 
         printJudgement(ballCount, strikeCount);
+
+        return strikeCount;
     }
 
 
@@ -71,15 +74,16 @@ public class UserNumber {
         }
 
         if (ballCount != 0 && strikeCount == 0) {
-            System.out.println(ballCount +HINT_BALL);
+            System.out.println(ballCount + HINT_BALL);
+            return;
         }
 
         if (ballCount != 0 && strikeCount != 0) {
-            System.out.print(ballCount +HINT_BALL+" ");
+            System.out.print(ballCount + HINT_BALL + " ");
         }
 
         if (strikeCount != 0) {
-            System.out.println(strikeCount +HINT_STRIKE);
+            System.out.println(strikeCount + HINT_STRIKE);
         }
     }
 }
