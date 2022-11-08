@@ -5,8 +5,11 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static baseball.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseBallTest extends NsTest {
 
@@ -33,6 +36,16 @@ public class BaseBallTest extends NsTest {
         String printMessage = "숫자를 입력하세요 :";
         userNumberMessagePrint();
         assertThat(output()).isEqualTo(printMessage);
+    }
+
+    @Test
+    @DisplayName("컴퓨터의 수와 사용자의 수의 strike 갯수를 구하기")
+    void checkStrikeNumberTest(){
+        List<Integer> computerNumbers = List.of(2,3,4);
+        List<Integer> userNumbers = List.of(2,5,4);
+        int strikeOfNumbers = checkStrikeNumbers(computerNumbers,userNumbers);
+
+        assertThat(strikeOfNumbers).isEqualTo(2);
     }
 
     @Override
