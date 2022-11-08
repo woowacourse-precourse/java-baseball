@@ -31,7 +31,14 @@ class BallsTest {
 
     @Test
     void validateDuplicate_중복된_숫자_값이_없을때_Set와_List의_크기가_같은지_테스트() {
-
+        //given
+        List<Ball> balls = List.of(new Ball(1),
+                                   new Ball(2),
+                                   new Ball(3));
+        //when
+        Set<Ball> ballSet = new HashSet<>(balls);
+        //then
+        assertThat(balls.size()).isEqualTo(ballSet.size());
     }
 
     @Test
