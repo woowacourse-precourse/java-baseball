@@ -1,6 +1,6 @@
-package Error;
+package error;
 
-import static MathUtils.Digit.findDigitNumber;
+import static mathUtils.Digit.findDigitNumber;
 
 public class RandomError {
 

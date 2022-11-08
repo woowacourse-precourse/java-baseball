@@ -1,4 +1,4 @@
-package MathUtils;
+package mathUtils;
 
 public class Digit {
 
