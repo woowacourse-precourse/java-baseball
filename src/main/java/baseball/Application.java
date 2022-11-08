@@ -40,7 +40,7 @@ public class Application {
     }
 
     static List<Integer> compareAns(List<Integer> computer, int[] userInput) {
-        List<Integer> ans = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         int strike = 0;
         int ball = 0;
         for (int i = 0; i < 3; i++) {
@@ -52,10 +52,27 @@ public class Application {
             }
         }
         ball -= strike;
-        ans.add(ball);
-        ans.add(strike);
-        return ans;
+        result.add(ball);
+        result.add(strike);
+        return result;
     }
+
+    static void printResult(List<Integer> result) {
+        String info = "";
+        if (result.get(0).equals(0) && result.get(1).equals(0)) {
+            info += "낫싱";
+        } else if (result.get(1).equals(0)) {
+            info = info + result.get(0) + "볼";
+        } else if (result.get(0).equals(0)) {
+            info = info + result.get(1) + "스트라이크";
+        } else {
+            info = info + result.get(0) + "볼 " + result.get(1) + "스트라이크";
+        }
+        System.out.println(info);
+    }
+
+
+
 
 
 
