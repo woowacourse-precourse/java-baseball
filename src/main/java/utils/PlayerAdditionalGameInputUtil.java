@@ -14,7 +14,7 @@ public class PlayerAdditionalGameInputUtil {
 		return additionalGameState;
 	}
 
-	private static void checkOtherInputException(String additionalGameState) {
+	public static void checkOtherInputException(String additionalGameState) {
 		if (additionalGameState.equals("1")) {
 			return;
 		}
