@@ -11,7 +11,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RandomNumber {
 	private static List<Integer> randomNumber;
 	private static String regex = "^[1-9]{3}$";
-	private static int NUMBERSIZE = 3;
+	private static final int NUMBERSIZE = 3;
 
 	public RandomNumber() {
 	}
@@ -22,7 +22,7 @@ public class RandomNumber {
 
 	public void createRandomNumber() {
 		Set<Integer> randomNumberSet = new LinkedHashSet<>();
-		while (randomNumberSet.size() < 3) {
+		while (randomNumberSet.size() < NUMBERSIZE) {
 			int pickNumber = Randoms.pickNumberInRange(1, 9);
 			if (!randomNumberSet.contains(pickNumber)) {
 				randomNumberSet.add(pickNumber);
@@ -40,7 +40,7 @@ public class RandomNumber {
 			throw new IllegalArgumentException();
 		}
 		randomNumber = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < NUMBERSIZE; i++) {
 			randomNumber.add(userInput.charAt(i) - '0');
 		}
 	}
