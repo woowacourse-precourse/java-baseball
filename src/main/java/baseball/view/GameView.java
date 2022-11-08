@@ -3,33 +3,44 @@ package baseball.view;
 import baseball.utils.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class GameView {
-    private String GAME_START = "숫자 야구 게임을 시작합니다.";
-    private String GAME_SET = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private String INPUT_NUMBER = "숫자를 입력해주세요 : ";
-    private InputValidation inputValidation;
+    private static String GAME_START = "숫자 야구 게임을 시작합니다.";
+    private static String INPUT_NUMBER = "숫자를 입력해주세요 : ";
+    private static InputValidation inputValidation;
 
-    private void gameStartMessage(){
+    public void gameStartMessage() {
         System.out.println(GAME_START);
     }
 
-    private String getInputNumber(){
+    public static int getInputNumber() {
         System.out.println(INPUT_NUMBER);
         String input = Console.readLine();
         inputValidation.validationNumber(input);
-        return input;
+        return Integer.parseInt(input);
     }
 
-    public String gameReStart(){
-        System.out.println(GAME_SET);
-        String number = Console.readLine();
-        inputValidation.isNumeric(number);
-        return number;
+    public static ArrayList<Integer> userNumber() {
+        int user = getInputNumber();
 
+        ArrayList<Integer> userInput = new ArrayList<>();
+        while (user != 0) {
+            userInput.add(user % 10);
+            user /= 10;
+        }
+        Collections.reverse(userInput);
+
+        return userInput;
     }
 
+
+    public static void exitMessage(int game){
+        if(game == 2){
+            System.out.println("프로그램이 종료됩니다.");
+        }
+    }
 
 
 }
