@@ -7,7 +7,7 @@ public class CheckException {
     public static final int RESTART = 1;
     public static final int EXIT = 2;
     public void validateConsistsOfNumber(String input) {
-        String pattern = "^[0-9]*$";
+        String pattern = "^[1-9]*$";
         boolean result = Pattern.matches(pattern, input);
 
         if (!result) {
