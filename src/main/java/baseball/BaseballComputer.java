@@ -23,6 +23,7 @@ public class BaseballComputer {
     private void init(){
         gameMessage.inputNumberToComputerMessage();
         String answer = userInputNumberInGame();
+        checkOutOfInputNumber(answer);
 
         if(!checkHitNumber(answer)){
             init();
@@ -37,7 +38,7 @@ public class BaseballComputer {
         return ;
     }
     private void checkOutOfInputNumber(String answer){
-        if(answer.length() == 3){
+        if(answer.length() != 3){
             throw new IllegalArgumentException("out of input number");
         }
     }
