@@ -22,6 +22,9 @@ public class Application {
                 String userNumber = Console.readLine();
                 List<Integer> userNumberList = validateUserNumber(userNumber);
 
+
+                matchLists(userNumberList, computerNumberList, scoreTable);
+
                 if (scoreTable.get("스트라이크") == 3) {
                     break;
                 }
@@ -31,6 +34,19 @@ public class Application {
             restartNumber = Console.readLine();
             validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
+    }
+
+    private static void matchLists(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable) {
+        for (Integer userNumber : userNumberList) {
+            if (computerNumberList.contains(userNumber)) {
+                if (userNumberList.indexOf(userNumber) == computerNumberList.indexOf(userNumber)) {
+                    scoreTable.put("스트라이크", scoreTable.get("스트라이크") + 1);
+                }
+                else {
+                    scoreTable.put("볼", scoreTable.get("볼") + 1);
+                }
+            }
+        }
     }
 
     private static Map<String, Integer> createScoreTable() {
