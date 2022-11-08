@@ -13,14 +13,15 @@ public class View {
         }
     }
 
-    public int inputInt() {
-        int number;
+    public String inputInt() {
+        String s;
         try {
-            number = Integer.parseInt(Console.readLine());
-            return number;
+            // 형변환 check
+            s = Console.readLine();
+            Integer.parseInt(s);
+            return s;
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
-            return -1;
+            return String.valueOf(e);
         }
     }
 
