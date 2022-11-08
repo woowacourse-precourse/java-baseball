@@ -22,4 +22,10 @@ public class PrintMessage {
         }
     }
 
+    public static void printHintNothing(int numberOfStrike, int numberOfBall) {
+        if (numberOfStrike == 0 && numberOfBall == 0) {
+            System.out.print("낫싱");
+        }
+    }
+
 }
