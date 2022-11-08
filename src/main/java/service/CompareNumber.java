@@ -31,14 +31,15 @@ public class CompareNumber {
 
     private boolean printHint(int strikeCount, int ballCount) {
         if (ballCount > NO_COUNT) {
-            System.out.println(ballCount + "볼" + " ");
+            System.out.print(ballCount + "볼" + " ");
         }
         if (strikeCount > NO_COUNT) {
-            System.out.println(strikeCount + "스트라이크");
+            System.out.print(strikeCount + "스트라이크");
         }
         if (ballCount + strikeCount == NO_COUNT) {
-            System.out.println("낫싱");
+            System.out.print("낫싱");
         }
+        System.out.print("\n");
         if (strikeCount == CORRECT_ANSWER) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
