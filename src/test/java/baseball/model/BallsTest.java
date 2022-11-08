@@ -43,14 +43,14 @@ class BallsTest {
     @DisplayName("스트라이크 3개")
     @Test
     void strike_3() {
-        Result result = balls.match(new Balls("123"));
+        GameResult result = balls.match(new Balls("123"));
         assertThat(result.getStrike()).isEqualTo(3);
     }
 
     @DisplayName("스트라이크 1개 볼 2개")
     @Test
     void strike_1_ball_2() {
-        Result result = balls.match(new Balls("132"));
+        GameResult result = balls.match(new Balls("132"));
         assertThat(result.getStrike()).isEqualTo(1);
         assertThat(result.getBall()).isEqualTo(2);
     }
@@ -58,7 +58,7 @@ class BallsTest {
     @DisplayName("스트라이크 0개 볼 0개")
     @Test
     void nothing() {
-        Result result = balls.match(new Balls("456"));
+        GameResult result = balls.match(new Balls("456"));
         assertThat(result.getStrike()).isEqualTo(0);
         assertThat(result.getBall()).isEqualTo(0);
     }

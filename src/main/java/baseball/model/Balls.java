@@ -64,8 +64,8 @@ public class Balls {
         balls.add(ball);
     }
 
-    public Result match(Balls balls) {
-        Result result = new Result();
+    public GameResult match(Balls balls) {
+        GameResult result = new GameResult();
         for (Ball ball : balls.getBalls()) {
             result.add(match(ball));
         }

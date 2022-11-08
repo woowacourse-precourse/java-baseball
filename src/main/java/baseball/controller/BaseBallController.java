@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.model.Balls;
 import baseball.model.NumberGenerator;
-import baseball.model.Result;
+import baseball.model.GameResult;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -33,14 +33,14 @@ public class BaseBallController {
         Balls computerBalls = new Balls(NumberGenerator.generate());
 
         while (!isGameEnd) {
-            Result result = matchBalls(computerBalls);
+            GameResult result = matchBalls(computerBalls);
             OutputView.reportResult(result);
             isGameEnd = result.isGameEnd();
         }
         OutputView.endMessage();
     }
 
-    private Result matchBalls(Balls computerBalls) {
+    private GameResult matchBalls(Balls computerBalls) {
         return computerBalls.match(new Balls(InputView.inputNumbers()));
     }
 }

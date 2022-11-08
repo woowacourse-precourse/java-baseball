@@ -1,6 +1,6 @@
 package baseball.model;
 
-public class Result {
+public class GameResult {
 
     private static final int CORRECT_COUNT = 3;
 

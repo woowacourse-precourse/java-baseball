@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.model.Result;
+import baseball.model.GameResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class OutputView {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public static void reportResult(Result result) {
+    public static void reportResult(GameResult result) {
         if (result.isNothing()) {
             System.out.println("낫싱");
             return;
