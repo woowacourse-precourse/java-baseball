@@ -4,6 +4,7 @@ public class UserBaseBall {
 
     private static final int MIN_NUM = 1;
     private static final int MAX_NUM = 9;
+    private static final int numberLength = 3;
     private static String userBallNumber;
     private static int[] duplicateNumer;
 
@@ -15,7 +16,6 @@ public class UserBaseBall {
     }
 
     public void setUserBallNumber(String userBallNumber) {
-
         validateNumber(userBallNumber);
         this.userBallNumber = userBallNumber;
     }
@@ -26,7 +26,7 @@ public class UserBaseBall {
         if (numberRange(userBallNumber)) {
             throw new IllegalArgumentException("숫자의 입력범위를 초과하였습니다.");
         } else if (numberLength(userBallNumber)) {
-            throw new IllegalArgumentException("야구공 입력 개수를 만족하지 못 하였습니다.");
+            throw new IllegalArgumentException("야구공 입력 개수를 만족하지 못하였습니다.");
         } else if (numberDuplicate(userBallNumber)) {
             throw new IllegalArgumentException("중복된 숫자는 입력 할 수 없습니다.");
         } else if (numberIsDigit(userBallNumber)) {
@@ -72,7 +72,7 @@ public class UserBaseBall {
     }
 
     private boolean numberLength(String numbers) {
-        if (numbers.length() != 3) {
+        if (numbers.length() != numberLength) {
             return true;
         } else {
             return false;
