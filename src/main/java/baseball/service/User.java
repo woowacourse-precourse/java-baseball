@@ -20,7 +20,12 @@ public class User {
         validUserInputNotNumber(userInput);
         validDuplicateNumber(userInput);
 
-        return Console.readLine();
+        return userInput;
+    }
+    public String userRestartInput(){
+        String userInput = Console.readLine();
+        validRestartNumber(userInput);
+        return userInput;
     }
 
     /**
