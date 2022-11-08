@@ -30,7 +30,7 @@ class Baseball {
             pickRandomNumber(computerNumber);
             gameInProgress(computerNumber);
             option = gameEnd();
-        } while (!option);
+        } while (option);
     }
     public void gameInProgress(List<Character> computerNumber) {
         String playerNumber;
@@ -159,6 +159,6 @@ class Baseball {
         } else {
             throw new IllegalArgumentException("옵션값이 아닙니다.");
         }
-        return !option;
+        return option;
     }
 }
