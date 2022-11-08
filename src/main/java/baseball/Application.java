@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import net.bytebuddy.dynamic.DynamicType;
+//import java.lang.IllegalArgumentException;
 
 public class Application {
 
@@ -54,8 +54,8 @@ public class Application {
     }
 
     public static void SizeCompare(List<Integer> user){
-        if(user.size()!=3 && Exception_Status==true){
-            IllegalArgumentException();
+        if(user.size()!=3){
+            if(Exception_Status == true) IllegalArgumentException();
         }
     }
 
@@ -83,7 +83,7 @@ public class Application {
     public static boolean CompareResult(int strike){
         if (strike<3) return true;
         else {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return false;
         }
     }
@@ -118,7 +118,7 @@ public class Application {
             if(!Exception_Status) break;
             status = Compare(computer, Input);
         };
-        GameOver();
+        if(Exception_Status) GameOver();
     }
 
     public static void GameOver(){
