@@ -13,10 +13,13 @@ public class BallGenerator {
         return getBallList(s);
     }
 
+    private static void isValidLength(String s) {
+        if (s.length() != 3) throw new IllegalArgumentException();
+    }
+
     public static List<Ball> getBalls(List<Integer> arr) {
         return getBallList(arr);
     }
-
     private static List<Ball> getBallList(List<Integer> arr) {
         List<Ball> result = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -28,6 +31,11 @@ public class BallGenerator {
         return result;
     }
 
+    private static void isValidRange(int number) {
+        if (number < 1 || number > 9) throw new IllegalArgumentException();
+    }
+
+
     private static List<Ball> getBallList(String s) {
         List<Ball> result = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -37,13 +45,5 @@ public class BallGenerator {
             result.add(ball);
         }
         return result;
-    }
-
-    private static void isValidRange(int number) {
-        if (number < 1 || number > 9) throw new IllegalArgumentException();
-    }
-
-    private static void isValidLength(String s) {
-        if (s.length() != 3) throw new IllegalArgumentException();
     }
 }

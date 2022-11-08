@@ -4,6 +4,7 @@ import baseball.domain.Ball;
 import baseball.domain.BallGenerator;
 import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -14,7 +15,12 @@ public class Application {
         while(true) {
             System.out.print("숫자를 입력해주세요 : ");
             String s = Console.readLine();
-            List<Ball> balls = BallGenerator.getBalls(s);
+            List<Ball> balls = new ArrayList<>();
+            try {
+               balls = BallGenerator.getBalls(s);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException();
+            }
             String result = computer.getResult(balls);
             System.out.println(result);
             if ("3스트라이크".equals(result)) {
