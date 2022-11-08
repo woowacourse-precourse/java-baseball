@@ -13,7 +13,7 @@ public class Game {
     private InputNumber inputNumber;
     private AnswerNumber answerNumber;
 
-    private List<String> inputNumberList;
+    private List<Integer> inputNumberList;
     private List<Integer> answerNumberList;
 
     private int strike;
