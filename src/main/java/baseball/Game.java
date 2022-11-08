@@ -57,8 +57,7 @@ public class Game {
             int index = input.indexOf(answer.charAt(i));
             if(index == i){
                 strike++;
-            }
-            if(index != -1){
+            }else if(index != -1){
                 ball++;
             }
         }
