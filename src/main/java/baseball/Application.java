@@ -20,11 +20,7 @@ public class Application {
 
             printStartMessage();
             computerAnswerList = createComputerLength3IntegerAnswerToList();
-            /* ¿¹½Ã
-            computerAnswerList.add(7);
-            computerAnswerList.add(1);
-            computerAnswerList.add(3);
-            */
+       
 
             while (countStrike!=3){
 
@@ -43,7 +39,7 @@ public class Application {
             userEndingResponse = getUserNumberToInteger();
             countStrike = 0;
         }
-        // TODO: ÇÁ·Î±×·¥ ±¸Çö
+        // TODO: í”„ë¡œê·¸ë¨ êµ¬í˜„
     }
 
     public static List<Integer> createComputerLength3IntegerAnswerToList(){
@@ -58,10 +54,10 @@ public class Application {
     }
 
     public static void printStartMessage(){
-        System.out.println("¼ıÀÚ ¾ß±¸ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+        System.out.println("ìˆ«ì ì•¼êµ¬ ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
     }
     public static void printGetInputMessage(){
-        System.out.print("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä : ");
+        System.out.print("ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” : ");
     }
     public static int getUserNumberToInteger() {
         String userAnswer = Console.readLine();
@@ -79,24 +75,24 @@ public class Application {
     }
     public static void checkIllegalInputForBaseballGame(int input){
 
-        // 1. 3ÀÚ¸®°¡ ¾Æ´Ò °æ¿ì
+        // 1. 3ìë¦¬ê°€ ì•„ë‹ ê²½ìš°
         String inputStr = String.valueOf(input);
         int lengthOfInput = inputStr.length();
         if (lengthOfInput != 3)
-            throw new IllegalArgumentException("¼ıÀÚÀÇ ¾î´À ÀÚ¸®¿¡µµ 0ÀÌ Æ÷ÇÔµÇÁö ¾Ê´Â 3ÀÚ¸®ÀÇ ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À.");
+            throw new IllegalArgumentException("ìˆ«ìì˜ ì–´ëŠ ìë¦¬ì—ë„ 0ì´ í¬í•¨ë˜ì§€ ì•ŠëŠ” 3ìë¦¬ì˜ ìˆ«ìë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤.");
 
         List<Character> appearedNumList = new ArrayList<>();
         for (int inputStringIndex = 0; inputStringIndex < lengthOfInput; inputStringIndex++){
 
-            // 2. °ª¿¡ 1-9 ÀÌ¿ÜÀÇ °ªÀÌ Æ÷ÇÔµÇ¾îÀÖÀ» ¶§
+            // 2. ê°’ì— 1-9 ì´ì™¸ì˜ ê°’ì´ í¬í•¨ë˜ì–´ìˆì„ ë•Œ
             char tmpInputStr = inputStr.charAt(inputStringIndex);
             if (tmpInputStr < 49 || tmpInputStr > 58)
                 // 1: 49, 9: 57
-                throw new IllegalArgumentException("1~9 »çÀÌÀÇ ¼ıÀÚ¸¸ °¡´ÉÇÕ´Ï´Ù.");
+                throw new IllegalArgumentException("1~9 ì‚¬ì´ì˜ ìˆ«ìë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 
-            // 3. 3ÀÚ¸® ¼ö Áß Áßº¹ÀÌ ÀÖÀ» ¶§
+            // 3. 3ìë¦¬ ìˆ˜ ì¤‘ ì¤‘ë³µì´ ìˆì„ ë•Œ
             if (appearedNumList.contains(tmpInputStr))
-                throw new IllegalArgumentException("3ÀÚ¸®ÀÇ ¼ıÀÚ Áß Áßº¹µÇ´Â °ªÀÌ Á¸ÀçÇØ¼­´Â ¾ÈµË´Ï´Ù.");
+                throw new IllegalArgumentException("3ìë¦¬ì˜ ìˆ«ì ì¤‘ ì¤‘ë³µë˜ëŠ” ê°’ì´ ì¡´ì¬í•´ì„œëŠ” ì•ˆë©ë‹ˆë‹¤.");
             else
                 appearedNumList.add(tmpInputStr);
         }
@@ -115,8 +111,8 @@ public class Application {
         return 3 - notStrikeList.size();
     }
     public static void printEndingMessage(){
-        System.out.println("3°³ÀÇ ¼ıÀÚ¸¦ ¸ğµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓ Á¾·á\n" +
-                            "°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+        System.out.println("3ê°œì˜ ìˆ«ìë¥¼ ëª¨ë‘ ë§íˆì…¨ìŠµë‹ˆë‹¤! ê²Œì„ ì¢…ë£Œ\n" +
+                            "ê²Œì„ì„ ìƒˆë¡œ ì‹œì‘í•˜ë ¤ë©´ 1, ì¢…ë£Œí•˜ë ¤ë©´ 2ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
     }
     public static int countBall(List<Integer> computerAnswer,
                                  List<Integer> userAnswer,
@@ -131,14 +127,14 @@ public class Application {
     public static void printUserScore(int countStrike, int countBall){
         if (countStrike!=0) {
             if (countStrike == 3 || countBall == 0)
-                System.out.println(countStrike + "½ºÆ®¶óÀÌÅ©");
+                System.out.println(countStrike + "ìŠ¤íŠ¸ë¼ì´í¬");
             else
-                System.out.println(countBall+"º¼ "+countStrike+"½ºÆ®¶óÀÌÅ©");
+                System.out.println(countBall+"ë³¼ "+countStrike+"ìŠ¤íŠ¸ë¼ì´í¬");
         } else {
             if (countBall != 0)
-                System.out.println(countBall+"º¼");
+                System.out.println(countBall+"ë³¼");
             else
-                System.out.println("³´½Ì");
+                System.out.println("ë‚«ì‹±");
         }
     }
 }
