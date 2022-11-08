@@ -11,4 +11,8 @@ public class User {
         user = new ArrayList<>();
     }
 
+    public Integer stringToInteger(String input){
+        return Integer.parseInt(input);
+    }
+
 }
