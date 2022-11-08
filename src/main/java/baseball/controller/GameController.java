@@ -1,9 +1,6 @@
 package baseball.controller;
 
-import baseball.view.PickThreeDigitNumberView;
-import baseball.view.SelectPlayGameAgain;
-import baseball.view.TutorialView;
-import baseball.view.View;
+import baseball.view.*;
 
 import java.util.regex.Pattern;
 
@@ -17,18 +14,23 @@ public class GameController {
         View view = new PickThreeDigitNumberView();
         view.show();
 
-        return view.getResponse();
+        return view.getResponseToString();
     }
 
     public boolean showSelectNumberResult(String input) {
-        return false;
+        validateInput("^[1-9]{3}", "중복되는 숫자가 없고 0이 아닌 3자리의 숫자를 입력해주세요.");
+
+        View view = new SelectNumberResult(input);
+        view.show();
+
+        return view.getResponseToBoolean();
     }
 
     public String showSelectPlayGameAgain() {
         View view = new SelectPlayGameAgain();
         view.show();
 
-        return view.getResponse();
+        return view.getResponseToString();
     }
 
     public boolean getPlayGameAgainResult(String input) {
