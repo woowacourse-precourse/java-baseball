@@ -8,7 +8,7 @@ public class Application {
 
         do{
             game.playGame();
-        }while (game.askResrat());
+       }while (game.askRestart());
 
 
 
