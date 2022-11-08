@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
 public class Numbers {
 
     private static final int NUMBER_SIZE = 3;
+    private static final String NUMBER_SIZE_EXCEPTION = "숫자는 " + NUMBER_SIZE + "개여야 합니다.";
+    private static final String DIFFERENT_EACH_NUMBER_EXCEPTION = "서로 다른 " + NUMBER_SIZE + "개의 숫자여야 합니다.";
     private final List<Number> numbers;
 
     public Numbers(Integer... ints) {
@@ -27,13 +29,13 @@ public class Numbers {
 
     private void validateNumbersSize(List<Number> numberList) {
         if (numberList.size() != NUMBER_SIZE) {
-            throw new IllegalArgumentException("숫자는 " + NUMBER_SIZE + "개여야 합니다.");
+            throw new IllegalArgumentException(NUMBER_SIZE_EXCEPTION);
         }
     }
 
     private void validateDifferentEachNumber(List<Number> numberList) {
         if (numberList.stream().distinct().count() != NUMBER_SIZE) {
-            throw new IllegalArgumentException("서로 다른 " + NUMBER_SIZE + "개의 숫자여야 합니다.");
+            throw new IllegalArgumentException(DIFFERENT_EACH_NUMBER_EXCEPTION);
         }
     }
 
