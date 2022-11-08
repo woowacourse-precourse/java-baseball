@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +87,7 @@ public class BaseballGame {
 
 class Player {
     String input() {
-        return "";
+        return Console.readLine();
     }
 
     List<Integer> suggest() {
