@@ -17,4 +17,9 @@ public class Computer {
         }
         return randomNumbers;
     }
+
+    public String generateCountResult(List<Integer> randomNumbers, List<Integer> userNumbers){
+        Calculator calculator = new Calculator(randomNumbers, userNumbers);
+        return calculator.calculate();
+    }
 }
