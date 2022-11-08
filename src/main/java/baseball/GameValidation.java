@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.resource.GameValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,4 +30,13 @@ public final class GameValidation {
         throw new IllegalArgumentException();
     }
 
+    public boolean isAllCorrectNumber() {
+        userInputList.forEach(str -> {
+            if (!(GameValue.START_NUMBER <= str  && str <= GameValue.END_NUMBER)) {
+                throw new IllegalArgumentException();
+            }
+        });
+
+        return true;
+    }
 }
