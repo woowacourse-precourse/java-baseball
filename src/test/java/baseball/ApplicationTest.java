@@ -85,16 +85,16 @@ class ApplicationTest extends NsTest {
             List<Integer> computerNumber = List.of(1, 2, 3);
             compareNumber.setComputer(computerNumber);
 
-            assertFalse(compareNumber.gameRun(List.of(1, 3, 0)));
-            assertFalse(compareNumber.gameRun(List.of(1, 4, 5)));
-            assertFalse(compareNumber.gameRun(List.of(4, 5, 1)));
+            assertFalse(compareNumber.compareStart(List.of(1, 3, 0)));
+            assertFalse(compareNumber.compareStart(List.of(1, 4, 5)));
+            assertFalse(compareNumber.compareStart(List.of(4, 5, 1)));
         }
 
         @Test
         void 모든_숫자를_맞출_시_true_반환() {
             List<Integer> computerNumber = List.of(1, 2, 3);
             compareNumber.setComputer(computerNumber);
-            assertTrue(compareNumber.gameRun(List.of(1, 2, 3)));
+            assertTrue(compareNumber.compareStart(List.of(1, 2, 3)));
         }
     }
 
