@@ -22,6 +22,7 @@ public class UserBall {
 
         makeUserNumList(inputString);
         validationUserNum(inputNumber);
+        toIntegerArray();
     }
 
     private void makeUserNumList(String inputString){
@@ -57,5 +58,10 @@ public class UserBall {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
-    
+
+    private void toIntegerArray(){
+        for (int i = 0; i < USER_NUM_LENGTH; i++){
+            userNumber.add(Integer.valueOf(inputNumber.get(i)));
+        }
+    }
 }
