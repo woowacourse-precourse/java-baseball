@@ -5,6 +5,7 @@ import baseball.domain.Referee;
 import baseball.facade.ComputerFacade;
 import baseball.facade.RefereeFacade;
 import baseball.facade.UserFacade;
+import baseball.view.View;
 
 public class GameServiceImpl implements GameService {
     private final UserFacade userFacade = new UserFacade();
@@ -19,6 +20,9 @@ public class GameServiceImpl implements GameService {
     public void playGame() {
 
         do {
+            // 게임 시작 메시지
+            View.startGame();
+
             // 볼, 스트라이크 초기화
             referee.clear();
 
