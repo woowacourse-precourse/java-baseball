@@ -59,6 +59,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 재시작_입력_유효성_검증_테스트() {
+        List<Integer> input = new ArrayList<>();
+        input.add(3);
+        assertThatThrownBy(() -> Game.validateNewGameInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
