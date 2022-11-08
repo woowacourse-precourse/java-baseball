@@ -17,7 +17,7 @@ public class Game {
             initGame();
             while (strike != MAX_STRIKE) {
                 player.initNumbers();
-                // 컴퓨터와 플레이어 수 비교
+                checkComputerAndPlayer();
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             isGameEnd = isGameExit();
@@ -34,7 +34,7 @@ public class Game {
     private void checkComputerAndPlayer() {
         strike = checkStrike(computer.getNumbers(), player.getNumbers());
         ball = checkBall(computer.getNumbers(), player.getNumbers());
-        // 결과에 대한 출력
+        resultPrint();
     }
 
     private int checkStrike(List<Integer> computers, List<Integer> players) {
