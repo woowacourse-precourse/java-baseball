@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Computer {
     private List<Integer> computerNumbers;
+    private Hint hint;
 
     public void createRandomNumber() {
         computerNumbers = new ArrayList<>();
@@ -18,6 +19,47 @@ public class Computer {
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);
             }
+        }
+    }
+
+    public Hint getHint(String number) {
+        hint = new Hint();
+
+        for (int index = 0; index < 3; index++) {
+            countHint(index, number.charAt(index) - '0');
+        }
+
+        return hint;
+    }
+
+    /**
+     * 각 자리수를 비교하며 ball과 strike를 증가시키는 메서드
+     */
+    private void countHint(int index, int number) {
+        if (isContainsNumber(number)) {
+            int computerIndex = computerNumbers.indexOf(number);
+
+            if (isEqualIndex(computerIndex, index)) {
+                hint.increaseStrike();
+            } else {
+                hint.increaseBall();
+            }
+        }
+    }
+
+    private boolean isContainsNumber(int number) {
+        if (computerNumbers.contains(number)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isEqualIndex(int computerIndex, int index) {
+        if (computerIndex == index) {
+            return true;
+        } else {
+            return false;
         }
     }
 
