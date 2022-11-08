@@ -28,6 +28,17 @@ class Game
     // 게임의 큰 틀, 혹은 흐름을 가지고 있는 함수
     void init()
     {
+        // 매 게임마다의 시작 여부 결정 변수
+        int playMode = 1; // 맨 처음에는 자동으로 게임 시작
 
+        while(playMode == 1) {
+            // 컴퓨터 정답 생성
+            computer = setComputerAnswer(computer);
+
+        }
+    }
+
+    List<Integer> setComputerAnswer(List<Integer> computer) {
+        return computer;
     }
 }
