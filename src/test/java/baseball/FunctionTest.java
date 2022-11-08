@@ -35,21 +35,24 @@ public class FunctionTest {
         assertThat(comNumber.get(1)).isNotEqualTo(comNumber.get(2));
     }
 
-    @DisplayName("게임이 끝나고 재시작 및 종료에 대한 사용자 입력이 올바른지 검사한 후 검사결과 테스트")
-    @Test
-    void replayOrStopExceptionCheckTest() {
-        InputError inputError = new InputError();
-        String answer = "2";
-        assertThat(inputError.replayOrStopExceptionCheck(answer)).isEqualTo(answer);
-    }
-
-    @DisplayName("게임 중 사용자 입력이 올바른지 검사한 후 검사결과 테스트")
-    @Test
-    void userNumberInputExceptionCheckTest() {
-        InputError inputError = new InputError();
-        String answer = "981";
-        assertThat(inputError.userNumberInputExceptionCheck(answer)).isEqualTo(answer);
-    }
+//    @DisplayName("게임이 끝나고 재시작 및 종료에 대한 사용자 입력이 올바른지 검사한 후 검사결과 테스트")
+//    @Test
+//    void replayOrStopExceptionCheckTest() {
+//
+//
+//        InputError inputError = new InputError();
+//        String answer = "2";
+//
+//        assertThat(inputError.replayOrStopExceptionCheck(answer)).isEqualTo(answer);
+//    }
+//
+//    @DisplayName("게임 중 사용자 입력이 올바른지 검사한 후 검사결과 테스트")
+//    @Test
+//    void userNumberInputExceptionCheckTest() {
+//        InputError inputError = new InputError();
+//        String answer = "981";
+//        assertThat(inputError.userNumberInputExceptionCheck(answer)).isEqualTo(answer);
+//    }
 
     @DisplayName("게임 중 사용자의 숫자 입력을 리스트 저장 테스트")
     @Test
