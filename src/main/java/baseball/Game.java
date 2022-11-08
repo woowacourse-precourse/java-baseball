@@ -86,11 +86,11 @@ public class Game {
         }
     }
 
-    private static boolean checkInputLength(String str){
+    static boolean checkInputLength(String str){
         return str.length() == 3;
     }
 
-    private static boolean checkInputNumber(String str){
+    static boolean checkInputNumber(String str){
         try{
             int numberValue = Integer.parseInt(str);
         } catch(NumberFormatException e){
@@ -100,14 +100,15 @@ public class Game {
         return !Function.checkArrayContain(numberArray, '0');
     }
 
-    private static boolean checkEqualNumber(String str){
+    static boolean checkEqualNumber(String str){
         char[] checkEqual = new char[str.length()];
-        char[] word = new char[str.length()];
+        char[] word = Function.getCharArrayToString(str);
 
         for (int i = 0; i < str.length(); i++){
             if (Function.checkArrayContain(checkEqual, word[i])){
                 return false;
             }
+            checkEqual[i] = word[i];
         }
         return true;
     }
