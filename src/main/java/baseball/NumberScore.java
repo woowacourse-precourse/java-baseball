@@ -10,16 +10,15 @@ import java.util.stream.Stream;
 public class NumberScore {
     public static Map<String, Integer> numberCount(int userNumber, List<Integer> randomList, int loopFrequency) {
 
-        int[] arrNum = Stream.of(String.valueOf(userNumber).split("")).mapToInt(Integer::parseInt).toArray();
-        List<Integer> userList=Arrays.stream(arrNum).boxed().collect(Collectors.toList());
+        int[] userList = Stream.of(String.valueOf(userNumber).split("")).mapToInt(Integer::parseInt).toArray();
+        // List<Integer> userList=Arrays.stream(arrNum).boxed().collect(Collectors.toList());
 
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < loopFrequency; i++) {
-
-            if (userList.get(i) == randomList.get(i)){
+        for (int i = 0; i <= loopFrequency; i++) {
+            if (userList[i] == randomList.get(i)){
                 strike +=1;
-            } else if (randomList.contains(userList.get(i))) {
+            } else if (randomList.contains(userList[i])) {
                 ball +=1;
             }
         }

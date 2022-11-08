@@ -4,25 +4,30 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.Map;
 
-import static baseball.NumberScore.numberCount;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int loopFrequency = 3;
+        int loopFrequency = 2;
         gameFirstStart();
-        List<Integer> randomNumber = NumberManagement.randomNumberMake(loopFrequency);
         boolean gameRunning = true;
-
+        boolean randomInit = false;
+        List<Integer> randomNumber = NumberManagement.randomNumberMake(loopFrequency);
         while (gameRunning) {
             int userNumber = gameStart();
+            if (randomInit){
+                randomNumber = NumberManagement.randomNumberMake(loopFrequency);
+                randomInit=false;
+            }
 
 
             Map<String, Integer> result = NumberScore.numberCount(userNumber, randomNumber, loopFrequency);
             boolean resultCheck = GameResult.resultCase(result);
             if (resultCheck) {
                 gameRunning = gameRestart();
-                randomNumber = NumberManagement.randomNumberMake(loopFrequency);
+                randomInit=true;
+                randomNumber.clear();
+                result.clear();
             }
         }
     }
