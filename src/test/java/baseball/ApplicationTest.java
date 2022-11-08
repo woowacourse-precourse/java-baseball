@@ -1,11 +1,16 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static baseball.Application.compareUserInputToAnswer;
 import static baseball.Application.getRandomThreeDigitNumberString;
+import static baseball.Application.restartGame;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -56,6 +61,14 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("2볼 1스트라이크","낫싱","3스트라이크");
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "3", "asd", "11", "12", "1345", " "})
+    void 게임재시작_사용자입력_예외_테스트(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() ->  restartGame())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Override
     public void runMain() {
