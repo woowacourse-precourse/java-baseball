@@ -11,6 +11,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 class Game {
+    public Map<String, Integer> result;
+
+    public Game() {
+        result = new HashMap<>();
+        result.put("strike", 0);
+        result.put("ball", 0);
+    }
+
     public void startGame() {
         // 컴퓨터 객체
         Computer computer = new Computer();
@@ -22,17 +30,16 @@ class Game {
         computer.makeRandomNumber();
         System.out.println("컴퓨터 랜덤숫자 : " + computer.myNumberList);
 
-
         while (true) {
+            // result 초기화
+
             // 사용자로부터 숫자 입력받기
             player.inputNumber();
             System.out.println("사용자 핸덤숫자 : " + player.myInputNumber);
 
-            System.out.println("사용자 랜덤 숫자 무한 인풋...");
-            return;
-
             // 숫자 비교하기
-
+            compareNumbers(computer.myNumberList, player.myInputNumber);
+            System.out.println("숫자 비교" + result);
 
             // 출력하기
 
@@ -42,7 +49,24 @@ class Game {
     }
 
     public void compareNumbers(List<Integer> comNum, List<Integer> userNum) {
+        for (int i = 0; i < 3; i++) {
+            int eachUserNum = userNum.get(i);
+            int eachComNum = comNum.get(i);
 
+            if (eachComNum == eachUserNum) {
+                System.out.println("스트라이크");
+                result.replace("strike", result.get("strike") + 1);
+                continue;
+            }
+
+            if (comNum.contains(eachUserNum)) {
+                System.out.println("볼");
+                result.replace("ball", result.get("ball") + 1);
+                continue;
+            }
+
+            System.out.println("낫싱");
+        }
     }
 
     public void printCompareResult() {
