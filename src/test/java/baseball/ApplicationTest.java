@@ -19,6 +19,16 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+    @Test
+    void my_test_example(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246","2");
+                    assertThat(output()).contains("3스트라이크","게임 종료");
+                },
+                2,4,6
+        );
+    }
 
     @Test
     void 예외_테스트() {
@@ -30,6 +40,10 @@ class ApplicationTest extends NsTest {
 
     @Override
     public void runMain() {
-        Application.main(new String[]{});
+        try {
+            Application.main(new String[]{});
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
