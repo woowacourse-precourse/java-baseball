@@ -6,4 +6,10 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateNumber(int number, int min, int max) {
+        if (number < min || number > max) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
