@@ -71,7 +71,7 @@ public class BaseBall {
     }
     
     private void printBaseBallGameEndMessage() {
-        OutputView.baseBallGameEndMessagePrint();
+        OutputView.printBaseBallGameEndMessage();
     }
     
     private int selectedNumberForRestart() {

@@ -57,7 +57,7 @@ public class OutputView {
         return scores.get(resultIndex) == MIN_SCORES_INDEX;
     }
     
-    public static void baseBallGameEndMessagePrint() {
+    public static void printBaseBallGameEndMessage() {
         System.out.println(BASEBALL_GAME_END_MESSAGE);
     }
 }
