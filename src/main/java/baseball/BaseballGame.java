@@ -29,7 +29,7 @@ public class BaseballGame {
     }
 
 
-    class Computer{
+		List<Integer> suggestion = new ArrayList<>();
         List<Integer> setRandomNumber(){
             List<Integer> computer = new ArrayList<>();
             while (computer.size() < 3) {
@@ -41,9 +41,11 @@ public class BaseballGame {
             return computer;
         }
 
-        void receiveSuggestion(){
-
-        }
+		void setSuggestion(List<Integer> suggestion) {
+			for (int i = 0; i < this.suggestion.size(); i++) {
+				this.suggestion.set(i, suggestion.get(i));
+			}
+		}
 
         void giveResult(){
 
