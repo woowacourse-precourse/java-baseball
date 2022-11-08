@@ -81,27 +81,63 @@ public class Application {
         return inputList;
     }
 
+    static boolean compareStrikes(List<Integer> input, List<Integer> answer){
+        int size = input.size();
+        int thrown = 0, answerIdx = 0;
+        List<Integer> BallStrike = Arrays.asList(0, 0);
+
+        for (int i = 0; i < size; i++) {
+            thrown = input.get(i);
+            if ((answerIdx = answer.indexOf(thrown)) != -1) {
+                BallStrike = judgeBallStrike(i, answerIdx, BallStrike);
+            }
+        }
+
+        if (BallStrike.get(0) != 0) {
+            System.out.print(BallStrike.get(0) + "볼");
+        }
+        if (BallStrike.get(1) != 0) {
+            if (BallStrike.get(0) != 0) {
+                System.out.print(" ");
+            }
+            System.out.print(BallStrike.get(1) + "스트라이크");
+        }
+        if (BallStrike.get(0) == 0 && BallStrike.get(1) == 0) {
+            System.out.print("낫싱");
+        }
+        System.out.println();
+
+        if (BallStrike.get(1) == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        } else
+            return false;
+    }
+
+    static List<Integer> judgeBallStrike(int thrownIdx, int answerIdx, List<Integer> BallStrike){
+        if (thrownIdx == answerIdx) {
+            BallStrike.set(1, BallStrike.get(1) + 1);
+        } else {
+            BallStrike.set(0, BallStrike.get(0) + 1);
+        }
+        return BallStrike;
+    }
+
     public static void main(String[] args) {
 
         String inputString = inputAnswer();
         List<Integer> thrownBalls = castToInteger(inputString);
         List<Integer> Answer = createAnswer();
+        boolean isThreeStrikes = false;
+        System.out.println("숫자 야구 게임을 시작합니다");
 
-        //for debugging
-        System.out.print("Input: ");
-        for (Integer i : thrownBalls) {
-            System.out.print(i);
+        while (!isThreeStrikes){
+            inputString = inputAnswer();
+            thrownBalls = castToInteger(inputString);
+            isThreeStrikes = compareStrikes(thrownBalls, Answer);
         }
-        System.out.println();
-        System.out.print("Answer: ");
-        for (Integer i : Answer) {
-            System.out.print(i);
-        }
-        System.out.println();
-        //
 
-        while (true){
-            break;
-        }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
     }
 }
