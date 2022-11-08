@@ -1,6 +1,5 @@
 package baseball.system;
 
-import static baseball.util.Constant.ERROR_CONSIST_OF_NUM;
 import static baseball.util.Constant.ERROR_INPUT;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
