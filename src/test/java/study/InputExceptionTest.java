@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ExceptionTest {
+public class InputExceptionTest {
 
     @Test
     void isDigits_메소드로_숫자인지_리턴() {
