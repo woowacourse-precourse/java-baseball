@@ -1,6 +1,8 @@
-package baseball.service;
+package baseball;
 
 
+import baseball.service.AnswerCheck;
+import baseball.service.Computer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
