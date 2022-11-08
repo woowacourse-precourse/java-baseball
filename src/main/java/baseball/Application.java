@@ -25,7 +25,8 @@ public class Application {
             while(b){
                 System.out.print("숫자를 입력해주세요 : ");
                 String number = Console.readLine();
-                int num = inputException(number);
+                inputException(number);
+                int num = Integer.parseInt(number);
                 input[0] = num/100;
                 input[1] = (num - input[0]*100)/10;
                 input[2] = (num - input[0]*100 - input[1]*10);
@@ -93,12 +94,11 @@ public class Application {
             ball++;
     }
 
-   private static int inputException(String number) {
+   private static void inputException(String number) {
         if(number != null && !number.matches("-?\\d+"))
             throw new IllegalArgumentException("숫자 입력 오류");
         if(number.length() != 3)
             throw new IllegalArgumentException("숫자 입력 오류");
-        return Integer.parseInt(number);
     }
     private static void makeAnswer() {
         List<Integer> computer = new ArrayList<>();
@@ -107,9 +107,9 @@ public class Application {
             if(!computer.contains(randomNumber))
                 computer.add(randomNumber);
         }
-        /*for(int i = 0 ; i < computer.size(); i++) {
+        for(int i = 0 ; i < computer.size(); i++) {
             System.out.print(computer.get(i) + " ");
             answer[i] = computer.get(i);
-        }*/
+        }
     }
 }
