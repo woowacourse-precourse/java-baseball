@@ -16,7 +16,23 @@ public class Application {
         Random random = new Random();
         return random.nextInt(9) + 1;
     }
-    
+
+    // 기능 목록 3 : 1부터 9까지 서로 다른 3자리 수 생성
+    static List<Integer> makeThreeNumber() {
+        List<Integer> computerNumber = new ArrayList<>();
+
+        while (computerNumber.size() < 3) {
+            int randomNumbers = randomValue();
+            if (computerNumber.contains(randomNumbers)) {
+                continue;
+            } else {
+                computerNumber.add(randomNumbers);
+            }
+        }
+        return computerNumber;
+    }
+
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
