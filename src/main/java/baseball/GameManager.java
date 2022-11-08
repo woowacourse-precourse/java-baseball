@@ -54,9 +54,20 @@ public class GameManager {
 
             Class cls = Class.forName("jdk.internal.module.IllegalAccessLogger");
             Field logger = cls.getDeclaredField("logger");
+            /*
+            지정된 Java 변수에 참조값을 저장
+            저장되는 x 가 null 이거나 필드 유형과 불일치할 경우 정의되지 X
+             */
             u.putObjectVolatile(cls, u.staticFieldOffset(logger), null);
-        } catch (Exception e) {
+        } catch (IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
             // ignore
         }
     }
+
+    /*
+    Field : getDeclaredField ?
+    Java Reflection 을 사용하면 특정 인스턴스의 멤버 변수, 메소드 등에 접근할 수 있다.
+    멤버변수에 접근할 수 있는 방법으로 getFields 메소드를 사용하는데, 이는 public 멤버변수에만 접근이 가능하다
+    private 을 포함한 모든 멤버변수에 접근하기 위해선 getDeclaredField 메소드를 사용한다.
+     */
 }
