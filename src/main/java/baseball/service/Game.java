@@ -111,5 +111,6 @@ public class Game {
         if (menu.chooseRestart()) {
             start();
         }
+        View.printEnd();
     }
 }
