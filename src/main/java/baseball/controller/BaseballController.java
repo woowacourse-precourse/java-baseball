@@ -44,8 +44,10 @@ public class BaseballController {
             List<Integer> userNumbers = inputView.requestInput();
 
             String countResult = computer.generateCountResult(randomNumbers, userNumbers);
+            outputView.showGameMessage(countResult);
             flowController.setSubGameFlag(countResult);
         }
+        flowController.setSubGameFlag();
         outputView.showGameMessage(ANSWER);
     }
 }

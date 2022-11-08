@@ -31,6 +31,8 @@ public class FlowController {
         return this.subGameFlag;
     }
 
-
+    public void setSubGameFlag(){
+        this.subGameFlag = true;
+    }
 
 }
