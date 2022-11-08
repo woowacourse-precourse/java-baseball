@@ -38,6 +38,12 @@ class ApplicationTest extends NsTest {
         assertThat(checkDuplicate.size()).isEqualTo(3);
     }
 
+    @Test
+    void 기능2_사용자넘버_테스트 () {
+        assertThatThrownBy(() -> Application.checkUserNumbersValidation("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
