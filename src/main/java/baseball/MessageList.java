@@ -12,6 +12,10 @@ public class MessageList {
     static final String STRIKE = "스트라이크";
     static final String NO_COUNT = "";
 
+    static final String CONTINUE = "1";
+    static final String GAME_END = "3스트라이크";
+
+
     public static String setStrikeMessage(int strikes) {
         String strikeMessage = strikes + STRIKE;
         if (strikes == 0) {

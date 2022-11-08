@@ -44,7 +44,7 @@ public class BaseBallGame {
         System.out.println(MessageList.RESTART_OR_END);
         String input = Console.readLine();
         InputException.validRestartInput(input);
-        if (input.contains("1")) {
+        if (input.contains(MessageList.CONTINUE)) {
             return true;
         }
         return false;
@@ -58,14 +58,14 @@ public class BaseBallGame {
     }
 
     private boolean isEnd(String message) {
-        return message.contains("게임 종료");
+        return message.contains(MessageList.GAME_END);
     }
 
     public String checkMessage(String message) {
         if (message.isEmpty()) {
             message = MessageList.NOTHING;
         }
-        if (message.contains("3스트라이크")) {
+        if (message.contains(MessageList.GAME_END)) {
             message += MessageList.ALL_CORRECT;
         }
         return message;
