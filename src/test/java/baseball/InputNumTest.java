@@ -13,10 +13,10 @@ public class InputNumTest {
         @Test
         void case1() {
             String input = "112";
-            InputNum i = new InputNum();
+            InputNum inputNum = new InputNum();
 
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> i.validateInput(input, 3))
+                    assertThatThrownBy(() -> inputNum.validateInput(input, 3))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -24,10 +24,10 @@ public class InputNumTest {
         @Test
         void case2() {
             String input = "1234";
-            InputNum i = new InputNum();
+            InputNum inputNum = new InputNum();
 
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> i.validateInput(input, 3))
+                    assertThatThrownBy(() -> inputNum.validateInput(input, 3))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
@@ -35,10 +35,10 @@ public class InputNumTest {
         @Test
         void case3() {
             String input = "e34";
-            InputNum i = new InputNum();
+            InputNum inputNum = new InputNum();
 
             assertSimpleTest(() ->
-                    assertThatThrownBy(() -> i.validateInput(input, 3))
+                    assertThatThrownBy(() -> inputNum.validateInput(input, 3))
                             .isInstanceOf(IllegalArgumentException.class)
             );
         }
