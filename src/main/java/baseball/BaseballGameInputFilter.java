@@ -19,6 +19,7 @@ public class BaseballGameInputFilter {
 
     public boolean isNotDuplicated(String input) {
         boolean[] isNumberOfIndex = new boolean[10];
+
         for (char ch : input.toCharArray()){
             if (isNumberOfIndex[Character.getNumericValue(ch)]) return false;
             isNumberOfIndex[Character.getNumericValue(ch)] = true;
