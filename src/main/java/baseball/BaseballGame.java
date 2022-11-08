@@ -22,9 +22,22 @@ public class BaseballGame {
 
     public BaseballGame() {}
 
+    public void startGame() {
+        Number playerNum = new Number();
+        Number computerNum = new Number();
+
+        computerNum.setRandomNumber();
+        computer = computerNum.getDigits();
+
+        while(!exit) {
+            playerNum.inputAnswer();
+            player = playerNum.getDigits();
+        }
+    }
+
     private void calculateScore() {
         for(int i=0;i<CNT;i++) {
-            int score = StrikeOrBall(player[i], i);
+            int score = isStrikeOrBall(player[i], i);
             if(score == BALL_NUM) {
                 ball++;
                 continue;
@@ -64,7 +77,7 @@ public class BaseballGame {
         return pattern.matcher(input).matches();
     }
 
-    private int StrikeOrBall(int num, int index) {
+    private int isStrikeOrBall(int num, int index) {
         for(int i=0;i<CNT;i++) {
             if(computer[i] == num && i == index) {
                 return STRIKE_NUM;
