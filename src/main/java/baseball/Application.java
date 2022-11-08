@@ -8,7 +8,17 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-
+        while (true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> answer = makeAnswer();
+            baseballGame(answer);
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String userInput = Console.readLine();
+            if (userInput.equals("2"))
+                break;
+            if (!userInput.equals("1"))
+                throw new IllegalArgumentException();
+        }
     }
 
     public static List<Integer> makeAnswer() {
