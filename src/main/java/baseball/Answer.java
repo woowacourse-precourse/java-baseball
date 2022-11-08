@@ -1,28 +1,32 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Answer {
     private List<Integer> answers;
 
-    public Answer(List<Integer> answers) {
-        this.answers = answers;
+    public Answer() {
+        this.answers = new ArrayList<>();
     }
 
 
-    public List<Integer> makeAnswers() {
+    public void makeAnswers() {
 
-        while (this.answers.size() < 3) {
+        while (answers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!this.answers.contains(randomNumber)) {
-                this.answers.add(randomNumber);
+            if (!answers.contains(randomNumber)) {
+                answers.add(randomNumber);
             }
         }
-        return this.answers;
     }
 
     public List<Integer> getAnswers() {
         return answers;
+    }
+
+    public void resetAnswers() {
+        this.answers.clear();
     }
 }
