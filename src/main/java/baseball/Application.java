@@ -13,7 +13,7 @@ public class Application {
         playNumBaseball(getComputerNum());
     }
 
-    public static List<Integer> getComputerNum() {
+    static List<Integer> getComputerNum() {
         List<Integer> computerNum = new ArrayList<>();
         while (computerNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -24,7 +24,7 @@ public class Application {
         return computerNum;
     }
 
-    public static List<Integer> getUserNum() throws IllegalArgumentException {
+    static List<Integer> getUserNum() throws IllegalArgumentException {
         List<Integer> userNum = new ArrayList<>();
         System.out.print("숫자를 입력하세요 : ");
         char[] nums = Console.readLine().toCharArray();
@@ -40,7 +40,7 @@ public class Application {
     }
 
 
-    public static void playNumBaseball(List<Integer> computerNum){
+    static void playNumBaseball(List<Integer> computerNum){
         List<Integer> userNum = getUserNum();
         if (compareNums(computerNum, userNum)) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
@@ -53,7 +53,7 @@ public class Application {
         playNumBaseball(computerNum);
     }
 
-    public static boolean compareNums(List<Integer> computerNum, List<Integer> userNum) {
+    static boolean compareNums(List<Integer> computerNum, List<Integer> userNum) {
         int strike = 0;
         int ball = 0;
 
