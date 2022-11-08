@@ -29,6 +29,7 @@ public class Application {
 
 class Game {
 
+
     // 1. 난수 발생 메서드 구현
     public ArrayList<Integer> makingRandomNum() {
         ArrayList<Integer> randomNum = new ArrayList<>();
@@ -82,6 +83,19 @@ class Game {
             }
         }
         return ballCount;
+    }
+
+    public boolean keepGoing(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String keepGoing = Console.readLine();
+        if (!keepGoing.equals("1") && !keepGoing.equals("2")){
+            try {
+                throw new IllegalArgumentException("잘못 입력하셨습니다");
+            }catch (IllegalArgumentException e){
+                return false;
+            }
+        }else return keepGoing.equals("1");
+
     }
 }
 
