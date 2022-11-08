@@ -27,11 +27,11 @@ public class GameController {
             computer.initRandomNumbers();
         computer.getCounts();
         List<Integer> answer = user.inputUserAnswer();
-        while (!getScore(answer)) answer = user.inputUserAnswer();
+        while (!isClear(answer)) answer = user.inputUserAnswer();
         computer.clearRandomNumbers();
     }
 
-    boolean getScore(List<Integer> input){
+    boolean isClear(List<Integer> input){
 
         int strike = myList.countSameLocationValues(input, computer.getBallCounts());
         int ball = myList.countDiffLocationValues(input, computer.getBallCounts());
