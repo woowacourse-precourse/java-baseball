@@ -15,7 +15,6 @@ public class Application {
     static List<Integer> answerRandomNumber = new ArrayList<>();
     static void startNumberBaseballGame(){
         getAnswerRandomNumber();
-        System.out.println("랜덤 숫자 부여 = " + answerRandomNumber);
         String answer = "";
         String oneOrTwo = "";
         // 게임 시작
@@ -35,9 +34,6 @@ public class Application {
             int randomNumber = Randoms.pickNumberInRange(1,9);
             if(!answerRandomNumber.contains(randomNumber)){
                 answerRandomNumber.add(randomNumber);
-            }
-            else{
-                System.out.println("랜덤숫자 중복됨. 다시 부여.");
             }
         }
         return answerRandomNumber;
@@ -74,8 +70,6 @@ public class Application {
 
         Collections.reverse(listByInputNumber);
 
-        System.out.println("입력 숫자 = "+listByInputNumber);
-
         return listByInputNumber;
     }
 
@@ -99,7 +93,6 @@ public class Application {
                 answerRandomNumber.clear();
                 getAnswerRandomNumber();
                 restartOrEnd = "";
-                System.out.println("랜덤 숫자 부여 = " + answerRandomNumber);
                 answer = true;
             } else if (restartOrEnd.equals("2")) {
                 answer = false;
