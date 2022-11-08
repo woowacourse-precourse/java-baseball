@@ -11,7 +11,8 @@ public class PlayerNumberInput extends Input {
     public PlayerNumberInput() {
     }
 
-    public String inputPlayerNumber() {
+    @Override
+    public String inputNumber() {
         input = readLine();
         validation.isValidateInput(input);
         return input;

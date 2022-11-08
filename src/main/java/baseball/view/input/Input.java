@@ -1,8 +1,8 @@
 package baseball.view.input;
 
-public class Input {
-    String input;
-
+abstract class Input {
     public Input() {
     }
+
+    public abstract String inputNumber();
 }

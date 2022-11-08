@@ -32,7 +32,7 @@ public class BaseBallGameController {
     public void getPlayerNumberInput() {
         PrintGuideMessage.printInputMessage();
         PlayerNumberInput playerNumberInput = new PlayerNumberInput();
-        String input = playerNumberInput.inputPlayerNumber();
+        String input = playerNumberInput.inputNumber();
         baseBallGame.createPlayerNumber(input);
     }
 
@@ -45,7 +45,7 @@ public class BaseBallGameController {
     public boolean getRestartNumberInput() {
         PrintGuideMessage.printRestartMessage();
         RestartNumberInput restartNumberInput = new RestartNumberInput();
-        String input = restartNumberInput.inputReplayNumber();
+        String input = restartNumberInput.inputNumber();
         if (input.equals(RESTART)) {
             return true;
         }

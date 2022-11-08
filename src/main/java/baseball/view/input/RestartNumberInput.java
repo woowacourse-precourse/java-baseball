@@ -11,7 +11,8 @@ public class RestartNumberInput extends Input {
     public RestartNumberInput() {
     }
 
-    public String inputReplayNumber() {
+    @Override
+    public String inputNumber() {
         input = readLine();
         validation.isValidateReplayInput(input);
         return input;
