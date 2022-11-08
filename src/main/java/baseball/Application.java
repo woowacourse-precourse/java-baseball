@@ -16,7 +16,7 @@ public class Application {
         }
     }
 */
-    /*
+    
     public static String Random() {
         Set<String> rand = new HashSet<>();
         while (rand.size() != 3) {
@@ -25,8 +25,8 @@ public class Application {
 
         return String.join("", rand);
     }
-*/
-    
+
+
    public static boolean print(List<Integer> ball) {
         if (ball.get(0) == 3) {
             System.out.println("3스트라이크");
