@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +12,14 @@ public class GameManager {
     }
 
     static void onGame() {
-        List<Integer> computer = createComputerValue();
+        List<Integer> computer = Computer.createNewValue();
 
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            List<Integer> compareResult = Game.compareWithComputer(input, computer);
-            String compareResultString = Game.resultToString(compareResult);
+            // 입력 예외처리
+            List<Integer> compareResult = Computer.compareWithInput(input, computer);
+            String compareResultString = Computer.resultToString(compareResult);
             System.out.println(compareResultString);
 
             if (compareResultString.equals("3스트라이크")) {
@@ -41,17 +41,5 @@ public class GameManager {
             return;
         }
         // 입력 예외처리
-    }
-
-
-    static List<Integer> createComputerValue() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
     }
 }

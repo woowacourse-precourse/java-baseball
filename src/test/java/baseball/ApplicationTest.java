@@ -35,14 +35,14 @@ class ApplicationTest extends NsTest {
         String input = "123";
         List<Integer> computer = List.of(2, 9, 3);
         List<Integer> result = List.of(1, 1);
-        assertThat(Game.compareWithComputer(input, computer)).isEqualTo(result);
+        assertThat(Computer.compareWithInput(input, computer)).isEqualTo(result);
     }
 
     @Test
     void 비교결과출력_테스트() {
         List<Integer> compareResult = List.of(1, 1);
         String result = "1볼 1스트라이크";
-        assertThat(Game.resultToString(compareResult)).isEqualTo(result);
+        assertThat(Computer.resultToString(compareResult)).isEqualTo(result);
     }
 
     @Override
