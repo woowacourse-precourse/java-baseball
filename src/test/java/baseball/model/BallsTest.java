@@ -1,6 +1,5 @@
-package baseball.service;
+package baseball.model;
 
-import baseball.model.Result;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RefereeTest {
+class BallsTest {
 
     @Test
     void generateResult_컴퓨터의_값과_플레이어의_값이_2볼_1스트라이크일_경우_결과가_잘_반환되는지_테스트() {
