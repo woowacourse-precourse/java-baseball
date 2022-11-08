@@ -101,7 +101,7 @@ public class Application {
         return false;
     }
 
-    private static void validateRestartOrEnd(String userInput) throws IllegalArgumentException {
+    public static void validateRestartOrEnd(String userInput) throws IllegalArgumentException {
         if (!userInput.matches("[1-2]")) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }

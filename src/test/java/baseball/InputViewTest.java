@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static baseball.Application.*;
-import static baseball.Application.isDuplicate;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -47,4 +47,16 @@ class InputViewTest {
                     validateNumber(userInput));
         }
     }
+
+    @Test
+    @DisplayName("1과 2가 아닌 값을 입력했을 때 예외 처리를 잘 하는지")
+    void validateRestartOrEndExceptionTest(){
+        List<String> userInputList = Arrays.asList("0", "12", " ");
+        for (int i = 0; i < 3; i++) {
+            String userInput = userInputList.get(i);
+            assertThatIllegalArgumentException().isThrownBy(() ->
+                    validateRestartOrEnd(userInput));
+        }
+    }
+
 }
