@@ -2,6 +2,12 @@
 
 ***
 
+## 기능 구현 과정 블로깅
+
+***
+
+[[우테코 프리코스] 2주차 미션 : 숫자 야구 게임 회고록](https://velog.io/@rg970604/%EC%9A%B0%ED%85%8C%EC%BD%94-%ED%94%84%EB%A6%AC%EC%BD%94%EC%8A%A4-2%EC%A3%BC%EC%B0%A8-%EB%AF%B8%EC%85%98-%EC%88%AB%EC%9E%90-%EC%95%BC%EA%B5%AC-%EA%B2%8C%EC%9E%84-%ED%9A%8C%EA%B3%A0%EB%A1%9D)
+
 ## 패키지 구조 정리
 
 ***
@@ -24,7 +30,7 @@
     - PrintResult.java (결과 값을 전달받아 화면에 출력하는 역할 담당)
     - UserInput.java (게임 진행에 필요한 유저 입력값을 받아 변환, 게임 시작 및 종료 여부 입력을 받음)
 - util
-    - Validator.java (검증 로직들을 담당) 
+    - Validator.java (검증 로직들을 담당)
 - Application.java (실제 게임 실행을 담당)
 
 ## 클래스별 기능 정리
