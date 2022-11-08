@@ -1,12 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -94,6 +95,42 @@ class ApplicationTest extends NsTest {
         void NumberToIntegerList_IncludingZero_Passed() {
             List<Integer> result = List.of(1, 0, 2);
             assertThat(Application.NumberToIntegerList(102)).isEqualTo(result);
+        }
+    }
+
+    @Nested
+    class PrintJudgeResultTest {
+        private final PrintStream standardOut = System.out;
+        private final OutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+        @BeforeEach
+        void setup() {
+            System.setOut(new PrintStream(outputStreamCaptor));
+        }
+
+        @AfterEach
+        void tearDown() {
+            System.setOut(standardOut);
+        }
+
+        String output(int strike, int ball) {
+            Application.printJudgeResult(strike, ball);
+            return outputStreamCaptor.toString().trim();
+        }
+
+        @Test
+        void printJudgeResult_ThreeBallTwoStrike_Passed() {
+            assertThat(output(2, 3)).isEqualTo("3볼 2스트라이크");
+        }
+
+        @Test
+        void printJudgeResult_Nothing_Passed() {
+            assertThat(output(0, 0)).isEqualTo("낫싱");
+        }
+
+        @Test
+        void printJudgeResult_ThreeStrike_Passed() {
+            assertThat(output(3, 0)).isEqualTo("3스트라이크");
         }
     }
 }
