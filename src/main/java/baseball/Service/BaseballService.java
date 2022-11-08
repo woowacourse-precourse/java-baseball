@@ -51,4 +51,11 @@ public class BaseballService {
         }
     }
 
+    //프로그램 종료시 재시작/종료를 구분하는 수 입력받았을 때 1or2가 아니면 예외처리
+    public void isValidNumber(int number) {
+        if (number!=RESTART && number!=END) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
