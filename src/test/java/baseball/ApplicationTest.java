@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.*;
@@ -41,6 +42,14 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    @Test
+    @DisplayName("랜덤으로 설정한 숫자는 3자리 수이고 각 자리 숫자는 1과 9사이다")
+    void getRandomNumberTest(){
+        String number = getRandomNumber();
+        assertThat(number.length()).isEqualTo(3);
+        assertThat(number.matches("[1-9][1-9][1-9]")).isEqualTo(true);
+
+    }
     @Test
     void getStrikeAndBallTest() {
         List<String> computer = Arrays.asList("987", "123");

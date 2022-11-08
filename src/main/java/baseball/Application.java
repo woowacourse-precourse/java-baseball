@@ -32,7 +32,7 @@ public class Application {
         }
     }
 
-    private static String getRandomNumber() {
+    public static String getRandomNumber() {
         List<String> computer = new ArrayList<>();
         while (computer.size() < NUM_OF_DIGIT) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUM, MAX_RANGE_NUM);
