@@ -29,12 +29,16 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
-            System.out.print("숫자를 입력해주세요 : ");
-            int num = sc.nextInt();
-            List<Integer> numList = returnList(num);
-            int result = checkNum(computer, numList);
-            if (result == 2)
+            try{
+                System.out.print("숫자를 입력해주세요 : ");
+                int num = sc.nextInt();
+                List<Integer> numList = returnList(num);
+                int result = checkNum(computer, numList);
+                if (result == 2)
+                    System.exit(0);
+            }catch (IllegalArgumentException e){
                 System.exit(0);
+            }
         }
     }
 
