@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.model.ValidateNumber;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -27,5 +29,9 @@ public class BaseballGame {
                 .filter(i -> !userNum.get(i).equals(computerNum.get(i)))
                 .filter(i -> computerNum.contains(userNum.get(i)))
                 .count();
+    }
+
+    public boolean matchedAllNumber() {
+        return NUMBER_LENGTH.getNumber() == STRIKE_COUNT;
     }
 }
