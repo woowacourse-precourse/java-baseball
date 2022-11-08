@@ -47,6 +47,7 @@ public class Application {
         int hundreds = Randoms.pickNumberInRange(1, 9);
         int tens = createTensDifferentFrom(hundreds);
         int ones = createOnesDifferentFrom(hundreds, tens);
+
         return List.of(hundreds, tens, ones);
     }
 
