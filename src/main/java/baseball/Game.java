@@ -5,6 +5,7 @@ public class Game {
     private static Game instance;
 
     private Computer computer;
+    private User user;
     private Round round;
 
     private Game() {}
@@ -16,21 +17,22 @@ public class Game {
         return instance;
     }
 
-    public void turnOnGame() {
-        this.computer = Computer.getComputer();
-        this.round = Round.getRound();
+    public void turnOnGame(Computer computer, User user) {
+        this.computer = computer;
+        this.user = user;
+        this.round = Round.getRound(computer, user);
         Print.printGameStart();
     }
 
     public void startNewGame() {
-        this.computer.pickNewRandomNumbers();
+        this.computer.pickRandomNumbers();
         playGame();
         Print.printGameEnd();
     }
 
     private void playGame() {
         do {
-            round.startNewRound(computer);
+            round.startNewRound();
         } while (!round.isThreeStrike());
     }
 

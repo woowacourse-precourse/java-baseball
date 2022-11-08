@@ -5,15 +5,31 @@ import java.util.List;
 
 public class Numbers {
 
+    private static final int NUMBER_COUNT = 3;
+
     private final String ERROR_MESSAGE_THREE_DIGITS = "3자리 숫자를 입력해주세요.";
     private final String ERROR_MESSAGE_DUPLICATE_NUMBER = "각각 다른 숫자를 입력해주세요.";
 
-    private List<Number> numbers = new ArrayList<>();
+    private final List<Number> numberList = new ArrayList<>();
 
-    public Numbers(int input) {
-        validateThreeDigits(input);
-        validateDuplicateNumber(input);
-        createNumberList(input);
+    private Numbers() {
+    }
+
+    public static Numbers createNumbers(int input) {
+        Numbers numbers = new Numbers();
+
+        numbers.validateThreeDigits(input);
+        numbers.validateDuplicateNumber(input);
+
+        numbers.createNumberList(input);
+
+        return numbers;
+    }
+
+    public static Numbers createRandomNumbers() {
+        Numbers numbers = new Numbers();
+        numbers.pickNewRandomNumbers();
+        return numbers;
     }
 
     private void validateThreeDigits(int input) {
@@ -39,7 +55,7 @@ public class Numbers {
     }
 
     private void createNumberList(int input) {
-        for (int exponent = 2; exponent >= 0; exponent--) {
+        for (int exponent = NUMBER_COUNT - 1; exponent >= 0; exponent--) {
             int decimalNumber = (int) Math.pow(10, exponent);
             int number = input / decimalNumber;
 
@@ -51,10 +67,26 @@ public class Numbers {
 
     private void addNumber(int numberInt) {
         Number number = Number.createNumber(numberInt);
-        numbers.add(number);
+        numberList.add(number);
+    }
+
+
+    private void pickNewRandomNumbers() {
+        for (int index = 0; index < NUMBER_COUNT; index++) {
+            numberList.add(newRandomNumber());
+        }
+    }
+
+    private Number newRandomNumber() {
+        Number newRandomNumber;
+        //랜덤 숫자 중복 방지
+        do {
+            newRandomNumber = Number.createRandomNumber();
+        } while (numberList.contains(newRandomNumber));
+        return newRandomNumber;
     }
 
     public Number findNumber(int index) {
-        return numbers.get(index);
+        return numberList.get(index);
     }
 }

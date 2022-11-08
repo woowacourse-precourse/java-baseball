@@ -4,38 +4,53 @@ import org.mockito.exceptions.misusing.CannotVerifyStubOnlyMock;
 
 public class Round {
 
+    private final int COUNT_NUMBER = 3;
+
     private static Round instance;
 
-    private Numbers numbers;
+    private User user;
+    private Computer computer;
     private Hints hints;
 
     private Round() {}
 
-    public static Round getRound() {
+    public static Round getRound(Computer computer, User user) {
         if (instance == null){
             instance = new Round();
         }
+        instance.computer = computer;
+        instance.user = user;
         return instance;
     }
 
-    public void startNewRound(Computer computer)  {
+    public void startNewRound()  {
         Print.printRoundStart();
         readNumbers();
-        getHints(computer);
+        getHints();
         Print.printRoundResult(hints);
     }
 
     private void readNumbers() {
         int inputInt = Input.readInt();
-        numbers = new Numbers(inputInt);
+        user.inputNewNumbers(inputInt);
     }
 
-    private void getHints(Computer computer) {
+    private void getHints() {
         hints = new Hints();
-        for (int index = 0; index < 3; index++) {
-            Hint hint = getHint(index, computer);
+        for (int index = 0; index < COUNT_NUMBER; index++) {
+            Hint hint = getHint(index);
             hints.addHint(hint);
         }
+    }
+
+    private Hint getHint(int index) {
+        if (isStrike(index)) {
+            return Hint.STRIKE;
+        }
+        if (isBall(index)) {
+            return Hint.BALL;
+        }
+        return Hint.NOTHING;
     }
 
     public boolean isThreeStrike(){
@@ -43,17 +58,7 @@ public class Round {
         return (countStrike == 3);
     }
 
-    private Hint getHint(int index, Computer computer) {
-        if (isStrike(index, computer)) {
-            return Hint.STRIKE;
-        }
-        if (isBall(index, computer)) {
-            return Hint.BALL;
-        }
-        return Hint.NOTHING;
-    }
-
-    private boolean isBall(int index, Computer computer) {
+    private boolean isBall(int index) {
         // 이전 인덱스 : 0 -> 2
         int prevIndex = (index + 2) % 3;
         // 이후 인덱스 : 2 -> 0
@@ -61,7 +66,7 @@ public class Round {
 
         Number prevComputerNumber = computer.findComputerNumber(prevIndex);
         Number nextComputerNumber = computer.findComputerNumber(nextIndex);
-        Number userNumber = numbers.findNumber(index);
+        Number userNumber = user.findUserNumber(index);
         
         boolean isPrevBall = userNumber.equals(prevComputerNumber);
         boolean isNextBall = userNumber.equals(nextComputerNumber);
@@ -69,8 +74,8 @@ public class Round {
         return  isPrevBall || isNextBall;
     }
 
-    private boolean isStrike(int index, Computer computer) {
+    private boolean isStrike(int index) {
         return computer.findComputerNumber(index)
-                .equals(numbers.findNumber(index));
+                .equals(user.findUserNumber(index));
     }
 }

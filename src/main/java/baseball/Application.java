@@ -2,10 +2,16 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
+
         Game game = Game.getGame();
-        game.turnOnGame();
+        Computer computer = Computer.getComputer();
+        User user = User.getUser();
+
+        game.turnOnGame(computer, user);
+
         do {
             game.startNewGame();
         } while (game.replayGame());
+
     }
 }
