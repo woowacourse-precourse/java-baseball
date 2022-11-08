@@ -11,7 +11,7 @@ public class GameManager {
     private static HashMap<Character, Integer> resultHash = new HashMap<>();
     private static Boolean isContinue = true;
 
-    void init() {
+    static void init() {
         randomNumberHash = Computer.generateRandomNumber();
     }
 
@@ -19,6 +19,9 @@ public class GameManager {
         resultHash = newResultHash;
     }
 
+    static HashMap<Integer, Integer> getRandomNumberHash() {
+        return randomNumberHash;
+    }
 
     static void setRandomNumberHash(HashMap<Integer, Integer> newRandomNumberHash) {
         randomNumberHash = newRandomNumberHash;

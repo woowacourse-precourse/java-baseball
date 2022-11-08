@@ -46,6 +46,14 @@ class ApplicationTest extends NsTest {
 
     @Nested
     class GameManagerTest {
+
+        @Test
+        void testInitialize() {
+            assertThat(GameManager.getRandomNumberHash()).isEqualTo(new HashMap<Integer, Integer>());
+            GameManager.init();
+            assertThat(GameManager.getRandomNumberHash()).isNotEqualTo(new HashMap<Integer, Integer>());
+        }
+
         @Test
         void scanNumber() {
             String input = "123";
