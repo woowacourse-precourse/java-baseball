@@ -10,22 +10,22 @@ public class Validator {
     }
 
     public static boolean checkLength(List<Integer> inputNumberList) {
-        return inputNumberList.size() == GameConstants.NUMBER_LENGTH;
+        return inputNumberList.size() == Constants.NUMBER_LENGTH;
     }
 
     public static boolean checkNumberRange(List<Integer> inputNumberList) {
         return inputNumberList.stream()
-                .filter(number -> GameConstants.MIN_NUMBER <= number && number <= GameConstants.MAX_NUMBER)
-                .count() == GameConstants.NUMBER_LENGTH;
+                .filter(number -> Constants.MIN_NUMBER <= number && number <= Constants.MAX_NUMBER)
+                .count() == Constants.NUMBER_LENGTH;
     }
 
     public static boolean checkDuplicateNumber(List<Integer> inputNumberList) {
         return inputNumberList.stream()
                 .distinct()
-                .count() == GameConstants.NUMBER_LENGTH;
+                .count() == Constants.NUMBER_LENGTH;
     }
 
     public static boolean checkRestartException(String restart) {
-        return restart.equals(GameConstants.RESTART) || restart.equals(GameConstants.QUIT);
+        return restart.equals(Constants.RESTART) || restart.equals(Constants.QUIT);
     }
 }
