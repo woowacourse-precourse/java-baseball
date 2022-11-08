@@ -21,13 +21,10 @@ public class Computer {
     }
 
     public void madeNumber() {
-        while (check.size() != 3) {
-            int number = randNumber();
-
-            if (check.size() == 0) {
-                addNumber(number);
-            } else if (!checkNumber(number)) {
-                addNumber(number);
+        while (check.size() < 3) {
+            int randomNumber = randNumber();
+            if (!check.contains(randomNumber)) {
+                addNumber(randomNumber);
             }
         }
     }
