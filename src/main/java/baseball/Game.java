@@ -1,13 +1,15 @@
 package baseball;
 import java.util.*;
+
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
 
-    public void startGame(String[] input) throws IllegalAccessException {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+    List<Integer> computer;
 
-        // 컴퓨터 숫자 생성
+    public Game(){
+        // 게임 시작 시 컴퓨터 숫자 생성
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -15,6 +17,14 @@ public class Game {
                 computer.add(randomNumber);
             }
         }
+    }
+    
+    public void startGame() throws IllegalAccessException {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+
+
+        String[] input = Console.readLine().split("");
 
         // 사용자가 잘못된 값을 입력할 경우
         if(input.length != 3){
