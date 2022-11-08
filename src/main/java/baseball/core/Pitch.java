@@ -18,4 +18,12 @@ public class Pitch {
         this.pitches = generateIntegers(3);
         return this;
     }
+
+    public Pitch update(String s) {
+        this.pitches = Arrays.asList(s.split(""))
+                .stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        return this;
+    }
 }
