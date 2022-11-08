@@ -21,7 +21,7 @@ public class View {
         }
     }
 
-    public String inputInt() {
+    public String inputNumber() {
         String s;
         try {
             // 형변환 check
