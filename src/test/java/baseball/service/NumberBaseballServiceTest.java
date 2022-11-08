@@ -31,10 +31,10 @@ public class NumberBaseballServiceTest {
 
         // when
         // then
-        assertThatThrownBy(() -> numberBaseballService.inputUserAnswer(outOfRangeInput))
+        assertThatThrownBy(() -> numberBaseballService.createResultList(outOfRangeInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NUMERIC_INPUT_EXCEPTION);
-        assertThatThrownBy(() -> numberBaseballService.inputUserAnswer(nonNumericInput))
+        assertThatThrownBy(() -> numberBaseballService.createResultList(nonNumericInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NUMERIC_INPUT_EXCEPTION);
     }
@@ -46,7 +46,7 @@ public class NumberBaseballServiceTest {
         String normalInput = "123";
 
         // when
-        numberBaseballService.inputUserAnswer(normalInput);
+        numberBaseballService.createResultList(normalInput);
     }
 
     @DisplayName("사용자 입력이 3글자가 아니라면 IllegalArgumentException 예외 발생 테스트")
@@ -57,7 +57,7 @@ public class NumberBaseballServiceTest {
 
         // when
         // then
-        assertThatThrownBy(() -> numberBaseballService.inputUserAnswer(tooManyInput))
+        assertThatThrownBy(() -> numberBaseballService.createResultList(tooManyInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.NUMERIC_LENGTH_EXCEPTION);
     }
@@ -70,7 +70,7 @@ public class NumberBaseballServiceTest {
 
         // when
         // then
-        assertThatThrownBy(() -> numberBaseballService.inputUserAnswer(sameNumberInput))
+        assertThatThrownBy(() -> numberBaseballService.createResultList(sameNumberInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.SAME_NUMBER_EXCEPTION);
     }
