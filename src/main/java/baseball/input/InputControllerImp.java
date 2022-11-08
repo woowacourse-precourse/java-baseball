@@ -11,9 +11,9 @@ import java.util.List;
 public class InputControllerImp implements InputController {
 
     @Override
-    public List<Integer> convertToIntegerList(String userInput) {
+    public List<Integer> convertToIntegerList(String input) {
         List<Integer> user = new ArrayList<>();
-        for (char digit : userInput.toCharArray()) {
+        for (char digit : input.toCharArray()) {
             int number = Integer.parseInt(String.valueOf(digit));
             user.add(number);
         }
