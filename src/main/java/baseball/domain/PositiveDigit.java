@@ -2,7 +2,7 @@ package baseball.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.*;
 
-public class PositiveDigit extends Digit {
+public class PositiveDigit {
 
     private static final int MINIMUM = 1;
     private static final int MAXIMUM = 9;
@@ -42,17 +42,5 @@ public class PositiveDigit extends Digit {
     @Override
     public int hashCode() {
         return digit;
-    }
-
-    @Override
-    public int value() {
-        return digit;
-    }
-
-    @Override
-    public String toString() {
-        return "PositiveDigit{" +
-                "digit=" + digit +
-                '}';
     }
 }
