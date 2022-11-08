@@ -21,6 +21,49 @@ public class Game {
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
 
+    static void initializeGame() {
+        ball = 0;
+        strike = 0;
+        List<Integer> target = Game.RandomNumber();
+        GameProcess(target);
+    }
+
+    static void GameProcess(List<Integer> target) {
+        while (strike < 3) {
+            ball = 0;
+            strike = 0;
+            List<Integer> answer = Game.UserInput();
+            compareDigits(target, answer);
+            displayResult();
+        }
+        if (strike == 3)
+            displayResult();
+    }
+
+    public static void displayResult() {
+        if (strike == 3) {
+            System.out.println(strike + STRIKE_MESSAGE);
+            System.out.println(SUCCESS_MESSAGE);
+            System.out.println(RESTART_MESSAGE);
+            restartGame();
+        }
+        else if (strike == 0 && ball == 0)
+            System.out.println(NOTHING_MESSAGE);
+        else if (strike == 0)
+            System.out.println(ball + BALL_MESSAGE);
+        else if (ball == 0)
+            System.out.println(strike + STRIKE_MESSAGE);
+        else
+            System.out.println(ball + BALL_MESSAGE + " " + strike + STRIKE_MESSAGE);
+    }
+
+    static void restartGame() {
+        int temp = Integer.parseInt(Console.readLine());
+        if (temp == 2)
+            System.exit(0);
+        initializeGame();
+    }
+
     public static List<Integer> RandomNumber() {
         List<Integer> output = new ArrayList<>();
         while (output.size() < COUNT) {
