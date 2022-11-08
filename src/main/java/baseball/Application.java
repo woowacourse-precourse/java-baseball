@@ -5,12 +5,15 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         ResultView resultView = new ResultView();
+        InputView inputView = new InputView();
+        inputView.printStartGame();
 
         while (true) {
             Game game = new Game();
             boolean isEnd = false;
             while (!isEnd) {
-                PlayResult playResult = game.playGame(Console.readLine().split(""));
+                BaseballNumber baseballNumber = new BaseballNumber(Console.readLine());
+                PlayResult playResult = game.playGame(baseballNumber);
                 resultView.printResult(playResult);
                 isEnd = playResult.success();
             }
