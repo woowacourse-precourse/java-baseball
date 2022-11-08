@@ -1,7 +1,10 @@
 package baseball;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.regex.Pattern;
+
 
 import static constants.GameConstant.*;
 public class BaseballGame {
@@ -39,4 +42,34 @@ public class BaseballGame {
             initializeGame();
         }
     }
+
+    public static void validateInputNumber(String playerNumber) throws IllegalArgumentException {
+        validateNumberOrNotNumber(playerNumber, PATTERN);
+        validateNumberLength(playerNumber, constants.GameConstant.GAME_NUMBER_LENGTH);
+        validateNumberRepeat(playerNumber);
+    }
+
+    public static void validateNumberOrNotNumber(String playerNumber, String regexPattern) {
+        boolean regex = Pattern.matches(regexPattern, playerNumber);
+        if (!regex) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
+    public static void validateNumberLength(String playerNumber, int numberLength) {
+        if (playerNumber.length() != numberLength) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateNumberRepeat(String playerNumber) {
+        HashSet<String> setNumber = new HashSet<>(
+                Arrays.asList(playerNumber.split(""))
+        );
+        if (setNumber.size() != playerNumber.length()) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
