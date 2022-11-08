@@ -76,7 +76,14 @@ public class Game {
     private boolean isGameExit() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String exitStr = Console.readLine();
-        // 입력에 대한 예외 처리
+        checkGameExitStr(exitStr);
         return exitStr.equals("2");
+    }
+
+    private void checkGameExitStr(String str) {
+        if (str.equals("1") || str.equals("2")) {
+            return;
+        }
+        throw new IllegalArgumentException();
     }
 }
