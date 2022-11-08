@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.regex.Pattern;
 
-public class InputReplay implements Input{
+public class InputReplay implements Input {
 
     @Override
     public String input(int size) {
@@ -18,7 +18,7 @@ public class InputReplay implements Input{
 
     @Override
     public void validateInput(String input, int size) {
-        Pattern p = Pattern.compile("[1-2]{"+size+"}");
+        Pattern p = Pattern.compile("[1-2]{" + size + "}");
         if (!p.matcher(input).matches()) {
             throw new IllegalArgumentException();
         }
