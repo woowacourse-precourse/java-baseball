@@ -4,7 +4,6 @@ import baseball.domain.Computer;
 import baseball.domain.User;
 import baseball.view.View;
 
-
 import static baseball.controller.Exception.validateAskRestartOrExitInput;
 import static baseball.controller.Exception.validateUserInput;
 
