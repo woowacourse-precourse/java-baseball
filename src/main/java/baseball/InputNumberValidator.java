@@ -27,12 +27,17 @@ public class InputNumberValidator {
                 .count() == 3;
     }
 
-    public static boolean repeatNumberCheck(String inputNumber){
+    public static boolean repeatNumberCheck(String inputNumber) {
         List<String> inputNumbers = new ArrayList<>();
         inputNumbers.add(inputNumber);
         return inputNumbers.stream()
                 .distinct()
                 .count() == 3;
+    }
+
+    public static boolean thereIsComma(String inputNumber){
+        return inputNumber.contains(",");
+    }
 
 
 
