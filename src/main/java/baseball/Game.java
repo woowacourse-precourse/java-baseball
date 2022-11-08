@@ -55,7 +55,7 @@ public class Game {
         System.out.println(input);
 
         // Exception: 한자리 숫자가 아니거나, 1 or 2를 입력하지 않았을 경우
-        if (input.length() != 1 || "12".contains(input)) {
+        if (input.length() != 1 || !"12".contains(input)) {
             throw new IllegalArgumentException("1 또는 2를 입력해주세요");
         }
 
