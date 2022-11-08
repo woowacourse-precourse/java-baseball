@@ -22,18 +22,18 @@ public class Player {
                 && doesNotHaveDuplicateInputElement(playerInput)
                 && hasOnlyNaturalNumberAsInput(playerInput);
     }
-    static boolean isInputSizeEqualToAnswerSize(String playerInput){
+    private static boolean isInputSizeEqualToAnswerSize(String playerInput){
         return playerInput.length() == Game.ANSWER_SIZE;
     }
 
-    static boolean doesNotHaveDuplicateInputElement(String playerInput){
+    private static boolean doesNotHaveDuplicateInputElement(String playerInput){
         List<String> guessTokenList = Arrays.asList(playerInput.split(""));
         Set<String> guessTokenSet = new HashSet<>(guessTokenList);
 
         return guessTokenList.size() == guessTokenSet.size();
     }
 
-    static boolean hasOnlyNaturalNumberAsInput(String playerInput){
+    private static boolean hasOnlyNaturalNumberAsInput(String playerInput){
         char maxValueOfGame = Character.forDigit(Game.MAX_NUMBER_OF_ANSWER, 10);
         char minValueOfGame = Character.forDigit(Game.MIN_NUMBER_OF_ANSWER, 10);
         char[] guessTokenArray = playerInput.toCharArray();
