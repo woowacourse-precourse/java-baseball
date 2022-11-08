@@ -5,6 +5,8 @@ import baseball.view.OutputView;
 
 public class Game {
 
+    private static final int GAME_FINISH_CRITERIA = 3;
+
     private final InputView inputView;
     private final OutputView outputView;
     private final Numbers computerNumbers;
@@ -22,11 +24,11 @@ public class Game {
 
     private void continuePlaying() {
         Numbers userNumbers = Numbers.fromIntegers(inputView.promptNumbers());
+
         Long balls = userNumbers.countBallsWith(computerNumbers);
         Long strikes = userNumbers.countStrikesWith(computerNumbers);
-
         outputView.printResult(balls, strikes);
-        if (strikes == 3) {
+        if (strikes == GAME_FINISH_CRITERIA) {
             outputView.printGameFinish();
             return;
         }
