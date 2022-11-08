@@ -51,4 +51,12 @@ public class BaseballResponse {
 		return builder.toString().strip();
 	}
 
+	public int getStrike() {
+		return strike;
+	}
+
+	public int getBall() {
+		return ball;
+	}
+
 }
