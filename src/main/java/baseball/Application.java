@@ -56,9 +56,7 @@ public class Application {
             i++;
         }
 
-        System.out.println("strike: " + strike);
-        System.out.println("ball: " + ball);
-//        System.out.println(outputFormat(strike, ball));
+        System.out.println(outputFormat(strike, ball));
 
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -102,4 +100,16 @@ public class Application {
         return ball;
     }
 
+    public static String outputFormat(int strike, int ball) {
+
+        if (ball > 0 && strike > 0) {
+            return ball + "볼 " + strike + "스트라이크";
+        } else if (ball > 0) {
+            return ball + "볼";
+        } else if (strike > 0) {
+            return strike + "스트라이크";
+        } else {
+            return "낫싱";
+        }
+    }
 }

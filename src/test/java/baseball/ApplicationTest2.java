@@ -43,7 +43,7 @@ class ApplicationTest2 extends NsTest {
     void 볼_점수_계산() {
         String input = "123";
         List<Integer> computer = List.of(1, 3, 5);
-    1    assertEquals(1, Application.ballCount(input, computer));
+        assertEquals(1, Application.ballCount(input, computer));
     }
 
     @Override
