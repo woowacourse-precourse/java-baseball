@@ -3,13 +3,13 @@ package baseball;
 import java.util.HashSet;
 
 public class User {
+
     private static final int NumberLength = 3;
     private static String userNumber;
 
     public String getUserNumber() {
         return userNumber;
     }
-
     public void setUserNumber() {
         userNumber = Input.getInput();
         inputValidation(userNumber);
@@ -17,6 +17,15 @@ public class User {
 
     public boolean checkNumLength(String num) {
         return num.length() == NumberLength;
+    }
+
+    public boolean checkNumRange(String num) {
+        for (int i = 0; i < num.length(); i++) {
+            if (!(num.charAt(i) >= 1 && num.charAt(0) <= 9)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean checkNumFormat(String num) {
@@ -37,7 +46,8 @@ public class User {
     }
 
     public void inputValidation(String num) {
-        if (!checkNumFormat(num) || !checkNumLength(num) || !checkNumDuplication(num)) {
+        if (!checkNumFormat(num) || !checkNumLength(num) || !checkNumDuplication(num)
+            || !checkNumRange(num)) {
             throw new IllegalArgumentException("잘못된 숫자 입력입니다.");
         }
     }

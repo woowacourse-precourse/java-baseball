@@ -45,6 +45,14 @@ public class ExceptionTest {
     }
 
     @Test
+    void 숫자_범위_테스트() {
+        String Usernumber = "012";
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+            () -> user.inputValidation(Usernumber));
+        assertThat(e.getMessage()).isEqualTo("잘못된 숫자 입력입니다.");
+    }
+
+    @Test
     void 종료_여부_입력_테스트() {
         int StartFlag = 3;
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
@@ -52,11 +60,6 @@ public class ExceptionTest {
         assertThat(e.getMessage()).isEqualTo("잘못된 숫자 입력입니다.");
     }
 
-    @Test
-    void 정답_입력_테스트() {
-        int UserInput = 3;
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-            () -> game.checkEndGame(UserInput));
-        assertThat(e.getMessage()).isEqualTo("잘못된 숫자 입력입니다.");
-    }
+
+
 }
