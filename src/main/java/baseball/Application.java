@@ -108,6 +108,12 @@ public class Application {
         return 0;
     }
 
+    static int replayGame() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return Integer.parseInt(Console.readLine());
+    }
+
     static int compare(String computer, String user) {
         int strike = 0;
         int ball = 0;
@@ -119,6 +125,9 @@ public class Application {
             }
         }
         resultMessage(strike, ball);
+        if (strike == 3) {
+            return replayGame();
+        }
         return 0;
     }
 
@@ -135,6 +144,11 @@ public class Application {
             if (cmd != 0) {
                 break;
             }
+        }
+        if (cmd == 1) {
+            run();
+        } else if (cmd == 2) {
+            return;
         }
     }
 
