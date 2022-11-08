@@ -53,7 +53,7 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void Game_findStrike과정검증_출력문형식검증() {
+    void Game_findStrike과정_출력문검증() {
 
         /**
          * 3스트라이크
