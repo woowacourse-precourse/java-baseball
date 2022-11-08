@@ -4,8 +4,11 @@ import baseball.model.Balls;
 import baseball.model.Result;
 
 public class OutputView {
+
+    private static final String INIT_SIGN = "숫자 야구 게임을 시작합니다.";
+
     public static void init() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(INIT_SIGN);
     }
 
     public static void print(Result result) {
