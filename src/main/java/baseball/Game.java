@@ -1,8 +1,9 @@
 package baseball;
 
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
-import static baseball.constants.Message.STRIKE_MESSAGE;
+import static baseball.constants.Message.*;
 
 public class Game {
 
@@ -37,6 +38,12 @@ public class Game {
 
   public boolean is3Strike(String hint) {
     return hint.equals(3+STRIKE_MESSAGE);
+  }
+
+  public void playGame() {
+    setAnswer();
+    guessNumber();
+    OutputView.printEndMessage();
   }
 
 }
