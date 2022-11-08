@@ -16,5 +16,4 @@ public class ScoreBoard {
     public int getBall() {
         return ball;
     }
-
 }

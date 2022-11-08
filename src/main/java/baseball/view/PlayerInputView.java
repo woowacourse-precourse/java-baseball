@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class PlayerInputView {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String ASK_USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -25,8 +23,7 @@ public class PlayerInputView {
         Player userSelectNumbers = getUserSelectNumbers(line);
         return userSelectNumbers;
     }
-
-    private static void validateUserInput(String playerInput) {
+    public static void validateUserInput(String playerInput) {
         validateNumbersLength(playerInput);
         validateDuplicateNumber(playerInput);
         validateOnlyNumber(playerInput);
@@ -47,10 +44,6 @@ public class PlayerInputView {
         if (!playerInput.matches(POSSBILE_CHARACTER))
             throw new IllegalArgumentException("Invalid input character");
     }
-
-
-
-
     private static Player getUserSelectNumbers(String userInput) {
         List<Integer> userSelectNumbers = Arrays.stream(line.split(""))
                 .map(element-> Integer.parseInt(element))

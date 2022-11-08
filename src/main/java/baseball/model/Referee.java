@@ -12,6 +12,7 @@ public class Referee {
     public Referee(List<Integer> computerSelectNumbers) {
         this.computerSelectNumbers = computerSelectNumbers;
     }
+
     public ScoreBoard giveScore(Player player) {
         List<Integer> playerSelectNumbers = player.getUserSelectNumbers();
         int strike = 0;

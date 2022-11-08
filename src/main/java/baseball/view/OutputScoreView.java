@@ -21,6 +21,7 @@ public class OutputScoreView {
 
     private static String getNoneMessage(int ball, int strike) {
         String msg = "";
+
         if (!(ball == 0 && strike == 0))
             return msg;
         msg += NONE_MESSAGE;
@@ -29,6 +30,7 @@ public class OutputScoreView {
 
     private static String getStrikeMessage(int strike) {
         String msg = "";
+
         if (strike == 0)
             return msg;
         msg += strike;
@@ -38,6 +40,7 @@ public class OutputScoreView {
 
     private static String getSpaceMessage(int ball, int strike) {
         String msg = "";
+
         if (ball != 0)
             msg = " ";
         return msg;
@@ -45,6 +48,7 @@ public class OutputScoreView {
 
     private static String getBallMessage(int ball) {
         String msg = "";
+
         if (ball == 0) {
             return msg;
         }
