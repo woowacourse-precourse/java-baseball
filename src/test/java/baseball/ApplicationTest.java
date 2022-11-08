@@ -33,7 +33,7 @@ class ApplicationTest extends NsTest {
         input = input.replace(GAME_GET_NUMBER, "");
         input = input.replace(GAME_RESTART_OR_END, "");
         input = input.replace(" ", "");
-        List<String> result= new ArrayList<>(List.of(input.split("\n")));
+        List<String> result = new ArrayList<>(List.of(input.split("\n")));
         result.remove("");
         return result;
     }
@@ -96,7 +96,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
     @Test
     void endGameTest_예외_숫자가_아닌_입력() {
         String notValidInput = "X";
@@ -115,10 +114,9 @@ class ApplicationTest extends NsTest {
     @Test
     void inGameTest_볼_갯수_세기() {
         String[] inputs = {"312", "234", "345", ANSWER1, END_GAME};
-        List<String> outputs = new ArrayList<>();
         assertRandomNumberInRangeTest(
                 () -> {
-                    run(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4]);
+                    run(inputs);
                 },
                 ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
         );
@@ -127,62 +125,55 @@ class ApplicationTest extends NsTest {
 
     @Test
     void inGameTest_스트라이크_갯수_세기() {
-
+        String[] inputs = {"145", "124", "123", END_GAME};
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(inputs);
+                },
+                ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
+        );
+        assertThat(onlyResult(output())).containsExactly("1스트라이크", "2스트라이크", "3스트라이크");
     }
+
 
     @Test
     void inGameTest_매치되지_않음() {
-
+        String[] inputs = {"456", ANSWER1, END_GAME};
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(inputs);
+                },
+                ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
+        );
+        assertThat(onlyResult(output())).containsExactly("낫싱", "3스트라이크");
     }
 
     @Test
     void inGameTest_정답_입력() {
-
+        String[] inputs = {ANSWER1, END_GAME};
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(inputs);
+                },
+                ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
+        );
+        assertThat(onlyResult(output())).containsExactly("3스트라이크");
     }
 
     @Test
-    void inGameTest_생성된_숫자가_중복되지_않는_세자리_숫자() {
-
-    }
-
-    @Test
-    void printTest_게임_시작_문구() {
-
-    }
-
-    @Test
-    void printTest_정답_입력시_문구() {
-
-    }
-
-    @Test
-    void printTest_볼_only_문구() {
-
-    }
-
-    @Test
-    void printTest_스트라이크_only_문구() {
-
-    }
-
-    @Test
-    void printTest_볼_and_스트라이크_문구() {
-
-    }
-
-    @Test
-    void printTest_낫싱_문구() {
-
-    }
-
-    @Test
-    void printTest_게임_재시작_문구() {
-
-    }
-
-    @Test
-    void printTest_숫자_입력_요구_문구() {
-
+    void printTest_기본_게임_진행_문구() {
+        String[] inputs = {ANSWER1, END_GAME};
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run(inputs);
+                },
+                ANSWER1_ARR[0], ANSWER1_ARR[1], ANSWER1_ARR[2]
+        );
+        assertThat(output()).contains(
+                GAME_START,
+                GAME_GET_NUMBER,
+                GAME_CORRECT_ANSWER,
+                GAME_RESTART_OR_END);
     }
 
 
@@ -211,6 +202,33 @@ class ApplicationTest extends NsTest {
 
 
 */
+
+
+    @Test
+    void inGameTest_생성된_숫자가_중복되지_않는_세자리_숫자() {
+
+    }
+
+
+    @Test
+    void printTest_볼_only_문구() {
+
+    }
+
+    @Test
+    void printTest_스트라이크_only_문구() {
+
+    }
+
+    @Test
+    void printTest_볼_and_스트라이크_문구() {
+
+    }
+
+    @Test
+    void printTest_낫싱_문구() {
+
+    }
 
 
     @Override
