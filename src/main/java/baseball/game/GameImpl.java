@@ -35,4 +35,10 @@ public class GameImpl implements Game{
     score = new Score();
     score.compareTwoNumber(computerPlayer.getComputerNumberList(), userPlayer.getUserNumberList());
   }
+
+  @Override
+  public void GameResult(){
+    Result result = new Result(score.getStrikeCount(), score.getBallCount());
+    System.out.println(result.getResults());
+  }
 }
