@@ -83,7 +83,7 @@ public class Application {
 
 	public static void number0To9(String number) {
 		for (int i = 0; i < 3; i++) {
-			if (number.charAt(i) < '0' && number.charAt(i) > '9') {
+			if (number.charAt(i) < '0' || number.charAt(i) > '9') {
 				makeException();
 			}
 		}
