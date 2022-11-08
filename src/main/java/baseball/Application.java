@@ -1,4 +1,10 @@
 package baseball;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /* 기능목록정리
       1. 숫자야구게임 시작문구 출력
       2. 정답인 랜덤 숫자 3개 지정
@@ -17,5 +23,17 @@ public class Application {
         while(true){
 
         }
+    }
+
+    public static List<Integer> generateRandomNum() {
+        List<Integer> computer = new ArrayList<>();
+        while(computer.size() < 3){
+            int randomNum = Randoms.pickNumberInRange(1,9);
+            if(!computer.contains(randomNum)){
+                computer.add(randomNum);
+            }
+
+        }
+        return computer;
     }
 }
