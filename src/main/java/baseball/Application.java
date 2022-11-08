@@ -43,6 +43,21 @@ class Game {
         return Console.readLine();
     }
 
+    public boolean comparingNum(ArrayList<Integer> randomNum, int strikeCount){
+        while(strikeCount != 3){
+            int ballCount = 0;
+            strikeCount = 0;
+            String inputNum = inputNum();
+            if (!ErrorChecking.errorChecking(inputNum)){
+                return false;
+            }
+            ballCount = checkingBall(randomNum, inputNum, ballCount);
+            strikeCount = checkingStrike(randomNum, inputNum, strikeCount);
+            System.out.println(ballCount + "볼 " + strikeCount + " 스트라이크");
+        }
+        return true;
+    }
+
     // 3. strike 개수 검사 메소드
     public int checkingStrike(ArrayList<Integer> randomNum, String inputNum, int strikeCount){
         for(int i = 0; i < 3; i ++){
