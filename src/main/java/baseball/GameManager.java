@@ -18,6 +18,9 @@ public class GameManager {
     static void setResultHash(HashMap<Character, Integer> newResultHash){
         resultHash = newResultHash;
     }
+    static boolean getIsContinue(){
+        return isContinue;
+    }
     static HashMap<Integer, Integer> scanNumber() {
         inputNumberHash.clear();
         System.out.print("숫자를 입력해주세요 : ");

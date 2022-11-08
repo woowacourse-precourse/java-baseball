@@ -98,6 +98,35 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
+        void scanIsContinue() {
+            String input = "1";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            GameManager.scanIsContinue();
+            assertThat(GameManager.getIsContinue()).isEqualTo(true);
+        }
+
+        @Test
+        void scanIsContinue2() {
+            String input = "2";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            GameManager.scanIsContinue();
+            assertThat(GameManager.getIsContinue()).isEqualTo(false);
+        }
+
+        @Test
+        void scanIsContinue3() {
+            String input = "3";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> GameManager.scanIsContinue())
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+
+        @Test
         void judgeNumber() {
             String input = "123";
             OutputStream out = new ByteArrayOutputStream();
@@ -110,24 +139,26 @@ class ApplicationTest extends NsTest {
             ArrayList<Integer> numArray = new ArrayList<>(result.values());
             assertThat(numArray.stream().mapToInt(Integer::intValue).sum()).isEqualTo(3);
         }
+
         @Test
         void printResult() {
             HashMap<Character, Integer> resultHash = new HashMap<>();
-            resultHash.put('S',1);
-            resultHash.put('B',1);
-            resultHash.put('O',1);
+            resultHash.put('S', 1);
+            resultHash.put('B', 1);
+            resultHash.put('O', 1);
             GameManager.setResultHash(resultHash);
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
             GameManager.printResult();
             assertThat(out.toString()).isEqualTo("1볼 1스트라이크\n");
         }
+
         @Test
         void printResult2() {
             HashMap<Character, Integer> resultHash = new HashMap<>();
-            resultHash.put('S',3);
-            resultHash.put('B',0);
-            resultHash.put('O',0);
+            resultHash.put('S', 3);
+            resultHash.put('B', 0);
+            resultHash.put('O', 0);
             GameManager.setResultHash(resultHash);
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
