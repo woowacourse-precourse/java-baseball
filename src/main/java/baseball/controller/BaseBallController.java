@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.view.AllStrikeView;
 import baseball.model.Computer;
 import baseball.model.Referee;
+import baseball.view.OutputScoreView;
 import baseball.view.PlayerInputView;
 import baseball.vo.Player;
 import baseball.vo.ScoreBoard;
@@ -18,6 +19,7 @@ public class BaseBallController {
         {
             Player player = PlayerInputView.selectNumbers();
             ScoreBoard scoreBoard = referee.giveScore(player);
+            OutputScoreView.outputScoreBoard(scoreBoard);
             System.out.println(scoreBoard.getBall());
             System.out.println(scoreBoard.getStrike());
         }
