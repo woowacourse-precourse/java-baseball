@@ -78,12 +78,6 @@ class ApplicationTest extends NsTest {
         assertThat(exceptCnt).isEqualTo(0);
     }
 
-//    @Test
-//    void 풀이함수_테스트1() {
-//        BaseBallGame baseBallGame = BaseBallGame.getGame();
-//        baseBallGame.solvingProblem(333);
-//    }
-
     @Test
     void 입력값_중복체크_테스트1() {
         boolean isPure = baseBallGame.isDiffDigitNumber("123");
