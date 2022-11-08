@@ -24,9 +24,9 @@ public final class GameValidation {
         }
     }
 
-    public boolean isAllCheck() {
+    public void isAllCheck() {
         if (isCheckLength() && isAllCorrectNumber() && isNotDuplicateNumber()) {
-            return true;
+            return;
         }
 
         throw new IllegalArgumentException();

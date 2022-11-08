@@ -22,7 +22,7 @@ public class User {
         this.userRestartNumber = userRestartNumber;
     }
 
-    public boolean inputBaseballNumber() {
+    public void inputBaseballNumber() {
         String userInput;
 
         System.out.print(GameMessage.INPUT_NUMBER_MESSAGE);
@@ -30,18 +30,18 @@ public class User {
 
         setUserBaseballNumber(userInput);
 
-        return isValidInputUserBaseballNumber();
+        isValidInputUserBaseballNumber();
     }
 
-    private boolean isValidInputUserBaseballNumber() {
+    private void isValidInputUserBaseballNumber() {
         GameValidation gameValidation = new GameValidation();
 
         gameValidation.setUserInput(this.userBaseballNumber);
 
-        return gameValidation.isAllCheck();
+        gameValidation.isAllCheck();
     }
 
-    public boolean inputRestartNumber() {
+    public void inputRestartNumber() {
         String userInput;
 
         System.out.println(GameMessage.ASK_RESTART_GAME);
@@ -49,13 +49,13 @@ public class User {
 
         setUserRestartNumber(userInput);
 
-        return isCheckRestart();
+        isCheckRestart();
     }
 
-    private boolean isCheckRestart() {
+    private void isCheckRestart() {
         AskValidation askValidation = new AskValidation();
 
-        return askValidation.isCheckRestartInput(this.userRestartNumber);
+        askValidation.isCheckRestartInput(this.userRestartNumber);
     }
 
     public boolean getRestartStatus() {

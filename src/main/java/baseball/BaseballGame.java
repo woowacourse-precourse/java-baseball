@@ -10,7 +10,9 @@ public class BaseballGame {
     }
 
     public boolean askNewGame() {
-        if (user.inputRestartNumber() && user.getRestartStatus()) {
+        user.inputRestartNumber();
+
+        if (user.getRestartStatus()) {
             return true;
         }
 

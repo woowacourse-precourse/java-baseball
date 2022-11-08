@@ -3,10 +3,10 @@ package baseball.validation;
 import baseball.resource.AskRestartValue;
 
 public final class AskValidation {
-    public boolean isCheckRestartInput(String userInput) {
+    public void isCheckRestartInput(String userInput) {
         if (userInput.equals(AskRestartValue.RESTART_GAME)
                 || userInput.equals(AskRestartValue.END_GAME)) {
-            return true;
+            return;
         }
 
         throw new IllegalArgumentException();
