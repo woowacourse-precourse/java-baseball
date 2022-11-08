@@ -34,4 +34,19 @@ public class Count {
     public void addStrike() {
         this.strike += 1;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder returnString = new StringBuilder();
+        if (this.ball > 0) {
+            returnString.append(this.ball + "볼 ");
+        }
+        if (this.strike > 0) {
+            returnString.append(this.strike + "스트라이크");
+        }
+        if (returnString.length() == 0) {
+            returnString.append("낫싱");
+        }
+        return returnString.toString().strip();
+    }
 }
