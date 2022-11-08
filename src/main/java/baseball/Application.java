@@ -82,7 +82,25 @@ class Game
 
     List<Integer> checkGameUserInput(String input, List<Integer> user) {
         // implement
+        throwExceptionIfNeeded(input.length() == maxLen, "입력값의 길이가 조건에 일치하지 않습니다.");
 
+        char c;
+        user.clear();
+        for(int i = 0; i < 3; ++i) {
+            c = input.charAt(i);
+            // c의 범위는 1 ~ 9여야 한다.
+            throwExceptionIfNeeded(c >= 49 && c <= 57, "입력값의 범위가 조건에 일치하지 않습니다.");
+            // 서로 다른 세 수여야만 한다.
+            throwExceptionIfNeeded(!user.contains(c-48), "입력값들 중 중복된 값이 있습니다.");
+            user.add(c - 48); // char c to int
+        }
         return user;
+    }
+
+    // Exception Throwing function
+    void throwExceptionIfNeeded(boolean status, String message) {
+        if(status == false) {
+            throw new IllegalArgumentException(message);
+        }
     }
 }
