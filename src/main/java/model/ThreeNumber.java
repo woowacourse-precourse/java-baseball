@@ -27,7 +27,7 @@ public class ThreeNumber {
         return myList.get(index);
     }
 
-    public boolean contains(int num, int index) {
+    public boolean contains(int num) {
         if(myList.contains(num)) {
             return true;
         }
