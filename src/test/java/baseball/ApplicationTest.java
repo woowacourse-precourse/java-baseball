@@ -38,6 +38,16 @@ class ApplicationTest extends NsTest {
         assertThat(app.checkLength(falseNumber)).isFalse();
     }
 
+    @Test
+    void testCheckIsDigit() {
+        Application app = new Application();
+        String trueNumber = "123";
+        String falseNumber = "a2b";
+
+        assertThat(app.checkIsDigit(trueNumber)).isTrue();
+        assertThat(app.checkIsDigit(falseNumber)).isFalse();
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
