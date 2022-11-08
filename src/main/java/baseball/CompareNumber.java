@@ -50,7 +50,7 @@ public class CompareNumber {
         return false;
     }
 
-    public boolean gameRun(List<Integer> user) {
+    public boolean compareStart(List<Integer> user) {
         setUp(user);
         isSameNumber();
         return numberToSResult();
