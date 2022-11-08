@@ -25,7 +25,7 @@ public class Game {
             Status status = computer.status(user);
             System.out.println(status);
             if (status.correct()) {
-                break;
+                return;
             }
         }
     }
