@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static baseball.Constants.*;
 import static baseball.View.*;
 
 public class Application {
@@ -15,8 +16,8 @@ public class Application {
 
     private static String getRandomNumber(){
         List<String> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (computer.size() < NUM_OF_DIGIT) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUM, MAX_RANGE_NUM);
             if (!computer.contains(randomNumber)) {
                 computer.add(String.valueOf(randomNumber));
             }
@@ -34,20 +35,20 @@ public class Application {
 
     public static int[] compare(String computer, String user) {
         int[] results = {0, 0};
-        for(int iter = 0; iter < 3; iter++){
+        for(int iter = 0; iter < NUM_OF_DIGIT; iter++){
             if(computer.charAt(iter) == user.charAt(iter)){
-                results[0]++;
+                results[STRIKE_IDX]++;
                 continue;
             }
             if(computer.contains(String.valueOf(user.charAt(iter)))){
-                results[1]++;
+                results[BALL_IDX]++;
             }
         }
         return results;
     }
 
     private static void validateNum(String userInput) throws IllegalArgumentException {
-        if(userInput.length() != 3)
+        if(userInput.length() != NUM_OF_DIGIT)
             throw new IllegalArgumentException("3자리 수를 입력해주세요");
         if(!isNumeric(userInput))
             throw new IllegalArgumentException("1과 9사이의 숫자를 입력해주세요");
@@ -56,7 +57,7 @@ public class Application {
     }
 
     public static boolean isNumeric(String input) {
-       for(int iter = 0; iter < input.length(); iter++){
+       for(int iter = 0; iter < NUM_OF_DIGIT; iter++){
            char c = input.charAt(iter);
            if(c < '1' || c > '9'){
                return false;
@@ -68,7 +69,7 @@ public class Application {
     public static boolean isDuplicate(String input) {
         List<Integer> list = new ArrayList<>();
         String [] strList = input.split("");
-        for(int iter = 0; iter < input.length(); iter++){
+        for(int iter = 0; iter < NUM_OF_DIGIT; iter++){
             list.add(Integer.parseInt(strList[iter]));
         }
         Set<Integer> set = new HashSet<>(list);
