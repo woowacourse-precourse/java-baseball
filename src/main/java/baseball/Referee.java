@@ -2,7 +2,7 @@ package baseball;
 
 import java.util.List;
 
-public class Judge {
+public class Referee {
 
     public int countBall(List<Integer> hitterNumber, List<Integer> pitcherNumber) {
         int count = 0;
