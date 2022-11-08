@@ -21,7 +21,7 @@ public class Game {
     }
 
     private void initGame() {
-        // 컴퓨터가 서로 다른 임의의 수 3개 선택
+        computer.initNumbers();
         isGameEnd = false;
         strike = 0;
         ball = 0;
