@@ -11,6 +11,7 @@ public class User extends Player {
 
     @Override
     public void selectBalls() {
+        clearSelectBalls();
         Message.SELECT_BALLS.print();
 
         String userInput = Console.readLine();
