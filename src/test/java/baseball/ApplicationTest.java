@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -24,38 +25,45 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("랜덤숫자가 서로다른 숫자를 가지고 있는지 확인")
-    void createRandomTargetNum(){
-        Application.createRandomTargetNum();
-        Set<Integer> set = new HashSet<>(Application.targetNum);
+    void createRandomTargetNum() throws Exception{
+        Application app= new Application();
+        Method createRandomTargetNum = app.getClass().getDeclaredMethod("createRandomTargetNum");
+        createRandomTargetNum.setAccessible(true);
+        createRandomTargetNum.invoke(app);
 
-        Assertions.assertThat(set.size()).isEqualTo(Application.targetNum.size());
+        Field targetField = app.getClass().getDeclaredField("targetNum");
+        targetField.setAccessible(true);
+        List<Integer> targetNum = (List<Integer>) targetField.get(app);
+        Set<Integer> set = new HashSet<>(targetNum);
+
+        Assertions.assertThat(set.size()).isEqualTo(targetNum.size());
     }
 
-    @Test
-    @DisplayName("랜덤숫자가 3개 선택되었는지 확인")
-    void RandomNumSize(){
-        Application.createRandomTargetNum();
+//    @Test
+//    @DisplayName("랜덤숫자가 3개 선택되었는지 확인")
+//    void RandomNumSize(){
+//        Application.createRandomTargetNum();
+//
+//        Assertions.assertThat(Application.targetNum.size()).isEqualTo(3);
+//    }
 
-        Assertions.assertThat(Application.targetNum.size()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("사용자 잘못된 값 입력시 오류 발생")
-    void badInputException(){
-        Assertions.assertThatThrownBy(()->
-                Application.inputValidate(List.of("1234")))
-                        .isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(()->
-                        Application.inputValidate(List.of("112")))
-                .isInstanceOf(IllegalArgumentException.class);
-
-        Assertions.assertThatThrownBy(()->
-                        Application.inputValidate(List.of("103")))
-                .isInstanceOf(IllegalArgumentException.class);
-
-
-    }
+//    @Test
+//    @DisplayName("사용자 잘못된 값 입력시 오류 발생")
+//    void badInputException(){
+//        Assertions.assertThatThrownBy(()->
+//                Application.inputValidate(List.of("1234")))
+//                        .isInstanceOf(IllegalArgumentException.class);
+//
+//        Assertions.assertThatThrownBy(()->
+//                        Application.inputValidate(List.of("112")))
+//                .isInstanceOf(IllegalArgumentException.class);
+//
+//        Assertions.assertThatThrownBy(()->
+//                        Application.inputValidate(List.of("103")))
+//                .isInstanceOf(IllegalArgumentException.class);
+//
+//
+//    }
 
     @Test
     @DisplayName("1을 입력하면 게임 재시작 , 2는 종료")
@@ -104,10 +112,6 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-//        assertSimpleTest(() ->
-//                assertThatThrownBy((ThrowableAssert.ThrowingCallable) catchThrowable(() -> runException("1234")))
-//                        .isInstanceOf(Exception.class)
-//        );
         Assertions.assertThatThrownBy(()-> runException("1234"))
                 .isInstanceOf(Exception.class);
 
