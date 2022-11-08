@@ -8,7 +8,7 @@ public class WrongValueInputTest {
     @Test
     void 문자열입력시_예외발생(){
         checkWrongValueInput("가나다");
-        checkWrongValueInput("   ");
+        checkWrongValueInput("hello");
     }
     @Test
     void 잘못된_자리수_입력시_예외발생(){
