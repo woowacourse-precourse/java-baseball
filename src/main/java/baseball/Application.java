@@ -28,6 +28,11 @@ public class Application {
 
             int strike = strike(computerNumber, playerNumber);
 
+            if (strike == 3) {
+                end(run);
+                break;
+            }
+
             int ball = ball(computerNumber, playerNumber);
 
             hint(strike, ball);
@@ -112,6 +117,25 @@ public class Application {
             System.out.println(ball + "볼");
         } else {
             System.out.println("낫싱");
+        }
+    }
+
+    public static void end(boolean run) {
+        System.out.println("3스트라이크");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String num = Console.readLine();
+        System.out.println("num: " + num);
+
+        if (num.equals("1")) {
+            start();
+        }
+        else if (num.equals("2")) {
+            run = false;
+        }
+        else {
+            throw new IllegalArgumentException();
         }
     }
 
