@@ -17,9 +17,8 @@ public class Application {
                 List<Integer> player = input_number();
                 wrong_number(player);
 
-                strike = check_strike(computer,player);
-                int same = same(computer, player);
-                int ball = check_ball(strike, same);
+                strike = check_strike(computer, player);
+                int ball = check_ball(computer, player);
 
                 check_message(ball, strike);
             }
@@ -71,7 +70,9 @@ public class Application {
         }
         return result;
     }
-    public static int check_ball(int strike, int same){
+    public static int check_ball(List<Integer> computer_number, List<Integer> player_number){
+        int strike = check_strike();
+        int same = same();
         int ball = same - strike;
         return ball;
     }
