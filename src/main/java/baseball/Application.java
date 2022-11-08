@@ -103,4 +103,25 @@ public class Application {
         }
         
     }
+    
+    static List<Integer> getGameResult(Integer answer, Integer userAnswer) {
+        int ball = 0;
+        int strike = 0;
+        
+        String answerString = String.valueOf(answer);
+        String userAnswerString = String.valueOf(userAnswer);
+        
+        for (int index = 0; index < userAnswerString.length(); index++) {
+            Character targetChar = userAnswerString.charAt(index);
+            
+            if (targetChar == answerString.charAt(index)) {
+                strike++;
+            } else if (answerString.contains(targetChar.toString())) {
+                ball++;
+            }
+            
+        }
+        
+        return List.of(ball, strike);
+    }
 }
