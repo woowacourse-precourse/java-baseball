@@ -75,7 +75,7 @@ public class Application {
     }
     public static void checkIllegalInputForBaseballGame(int input){
 
-        // 1. 3자리가 아닐 경우
+        // 3자리가 아니라 1자리 2자리 등등 추가 되었을 때
         String inputStr = String.valueOf(input);
         int lengthOfInput = inputStr.length();
         if (lengthOfInput != 3)
@@ -84,13 +84,13 @@ public class Application {
         List<Character> appearedNumList = new ArrayList<>();
         for (int inputStringIndex = 0; inputStringIndex < lengthOfInput; inputStringIndex++){
 
-            // 2. 값에 1-9 이외의 값이 포함되어있을 때
+            //0이나 문자 등 1-9말고 다른 값들이 입력 되었을 때
             char tmpInputStr = inputStr.charAt(inputStringIndex);
             if (tmpInputStr < 49 || tmpInputStr > 58)
                 // 1: 49, 9: 57
                 throw new IllegalArgumentException("1~9 사이의 숫자만 가능합니다.");
 
-            // 3. 3자리 수 중 중복이 있을 때
+            // 3. 111 222 112 같이 중복된 값이 존재 할 때
             if (appearedNumList.contains(tmpInputStr))
                 throw new IllegalArgumentException("3자리의 숫자 중 중복되는 값이 존재해서는 안됩니다.");
             else
