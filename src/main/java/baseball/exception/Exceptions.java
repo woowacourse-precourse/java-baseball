@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Exceptions {
-    private static final int NUMBER_ZERO = 0;
+    private static final int NUMBER_ONE = 1;
     private static final int NUMBER_NINE = 9;
     private static final int NUMBER_SIZE = 3;
     private static final int COUNT_NUMBER = 1;
@@ -36,7 +36,7 @@ public class Exceptions {
     public static boolean isDigit(String request) {
         for (int i = 0; i < request.length(); i++) {
             int askii = request.charAt(i) - '0';
-            if (askii < NUMBER_ZERO || askii > NUMBER_NINE) {
+            if (askii < NUMBER_ONE || askii > NUMBER_NINE) {
                 return false;
             }
         }
