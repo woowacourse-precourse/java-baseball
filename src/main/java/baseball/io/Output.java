@@ -10,19 +10,21 @@ public class Output {
     private static final String STRIKE = "스트라이크";
 
     public void printStrikeBall(List<Integer> strikeBall) {
+        StringBuilder sb = new StringBuilder();
         if (strikeBall.get(0) == 0 && strikeBall.get(1) == 0) {
-            System.out.println(NOTHING);
+            sb.append(NOTHING);
         }
-        exceptNothing(strikeBall);
+        exceptNothing(strikeBall, sb);
+        System.out.println(sb);
     }
 
-    private static void exceptNothing(List<Integer> strikeBall) {
+    private static void exceptNothing(List<Integer> strikeBall, StringBuilder sb) {
         if (strikeBall.get(1) != 0 && strikeBall.get(0) == 0) {
-            System.out.println(strikeBall.get(1) + BALL);
+            sb.append(strikeBall.get(1)).append(BALL);
         } else if (strikeBall.get(1) == 0 && strikeBall.get(0) != 0) {
-            System.out.println(strikeBall.get(0) + STRIKE);
+            sb.append(strikeBall.get(0)).append(STRIKE);
         } else if (strikeBall.get(1) != 0 && strikeBall.get(0) != 0) {
-            System.out.println(strikeBall.get(1) + BALL_SPACE + strikeBall.get(0) + STRIKE);
+            sb.append(strikeBall.get(1)).append(BALL_SPACE).append(strikeBall.get(0)).append(STRIKE);
         }
     }
 }
