@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -78,7 +79,10 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("랜덤한 숫자들 생성")
     void makeRandomNumbers() {
-
+        ArrayList<Integer> computerNumber = new ArrayList<>();
+        Application.makeRandomNumbers(computerNumber);
+        assertThat(computerNumber.size()).isEqualTo(3);
+        assertThat(computerNumber.stream().allMatch(v->v>=1&&v<=9)).isTrue();
     }
 
     @Test
