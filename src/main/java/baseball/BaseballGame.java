@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class BaseballGame {
@@ -37,5 +39,23 @@ public class BaseballGame {
             return (ball + "볼");
         }
         return ("낫싱");
+    }
+
+    public boolean gameEnd() {
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
+
+            String response = Console.readLine();
+            if (response.equals("1")) {
+                Computer.createGameNumber();
+                return true;
+            }
+            if (response.equals("2")) {
+                return false;
+            }
+            throw new IllegalArgumentException("올바른 숫자가 아닙니다. 1 또는 2를 입력하세요.");
+        }
+        return true;
     }
 }
