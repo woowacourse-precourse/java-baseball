@@ -49,7 +49,7 @@ public class MessageTest {
 
 	@Test
 	public void 올바르지_않은_입력_문구(){
-		assertThat(Message.INVALID_INPUT.getMsg()).isEqualTo("올바르지 않은 입력입니다. 게임을 종료합니다.");
-		assertThat(Message.INVALID_INPUT.getMsg()).isNotEqualTo("숫자 야구 게임을 시작합니다.");
+		assertThat(Message.INVALID_INPUT_END_GAME.getMsg()).isEqualTo("올바르지 않은 입력입니다. 게임을 종료합니다.");
+		assertThat(Message.INVALID_INPUT_END_GAME.getMsg()).isNotEqualTo("숫자 야구 게임을 시작합니다.");
 	}
 }
