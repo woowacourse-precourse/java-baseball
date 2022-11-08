@@ -6,13 +6,18 @@ import java.util.Scanner;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Game {
-    
+
+    boolean finished;
+
     public Game() {
         title();
+        finished = false;
     }
+
     private void title() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
+
     public void play() {
         System.out.println("숫자를 입력해주세요 : ");
         String userInput = getUserInput();
@@ -36,8 +41,11 @@ public class Game {
         }
         System.out.println(); // 한줄 내리기
 
-
+        if (strikes == 3) {
+            setFinished();
+        }
     }
+
     public boolean end() {
         String input = getUserInput();
         if (input.length() != 1) {
@@ -54,6 +62,15 @@ public class Game {
         return true;
     }
 
+    private void setFinished(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        this.finished = true;
+    }
+
+    private boolean isFinished() {
+        return finished;
+    }
+
     private List<Integer> getComputerNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -65,6 +82,7 @@ public class Game {
 
         return computer;
     }
+
     private String getUserInput() throws IllegalArgumentException {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
@@ -76,6 +94,7 @@ public class Game {
 
         return input;
     }
+
     private List<Integer> getUserNumber(String user) throws IllegalArgumentException {
         // Exception: not 3 Number
         if (user.length() != 3) {
