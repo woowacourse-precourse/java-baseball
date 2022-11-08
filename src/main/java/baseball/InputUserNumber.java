@@ -11,6 +11,8 @@ public class InputUserNumber {
 
         int playerNumString = Integer.parseInt(Console.readLine());
 
+        if
+
 
 
         List<Integer> userNumber = new ArrayList<>();
