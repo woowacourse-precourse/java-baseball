@@ -118,6 +118,39 @@ public class GameTest {
         }
     }
 
+    @Nested
+    class 영포함여부_테스트 {
+        @Test
+        void 영포함여부_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputContainZeroMethod = Game.class.getDeclaredMethod("checkUserInputContainZero", String.class);
+            checkUserInputContainZeroMethod.setAccessible(true);
+            boolean isNumber = (boolean) checkUserInputContainZeroMethod.invoke(game, "132");
+            assertThat(isNumber).isEqualTo(false);
+        }
 
+        @Test
+        void 영포함여부_테스트2_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputContainZeroMethod = Game.class.getDeclaredMethod("checkUserInputContainZero", String.class);
+            checkUserInputContainZeroMethod.setAccessible(true);
+            boolean isNumber = (boolean) checkUserInputContainZeroMethod.invoke(game, "1332");
+            assertThat(isNumber).isEqualTo(false);
+        }
+
+        @Test
+        void 영포함여부_테스트3_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputContainZeroMethod = Game.class.getDeclaredMethod("checkUserInputContainZero", String.class);
+            checkUserInputContainZeroMethod.setAccessible(true);
+            boolean isNumber = (boolean) checkUserInputContainZeroMethod.invoke(game, "");
+            assertThat(isNumber).isEqualTo(false);
+        }
+
+        @Test
+        void 영포함여부_테스트4_false() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputContainZeroMethod = Game.class.getDeclaredMethod("checkUserInputContainZero", String.class);
+            checkUserInputContainZeroMethod.setAccessible(true);
+            boolean isNumber = (boolean) checkUserInputContainZeroMethod.invoke(game, "103");
+            assertThat(isNumber).isEqualTo(true);
+        }
+    }
 
 }
