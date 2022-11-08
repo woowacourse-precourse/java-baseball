@@ -36,7 +36,7 @@ public class BaseballService {
         System.out.println("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
-        if (validateInput(input)) {
+        if (!validateInput(input)) {
             throw new IllegalArgumentException();
         }
 
