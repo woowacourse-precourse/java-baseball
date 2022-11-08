@@ -63,7 +63,6 @@ public class Application {
             int tempIndex = input.indexOf(answer);
 
             index++;
-
             if (tempIndex < 0)
                 continue;
 
@@ -78,23 +77,26 @@ public class Application {
         return strike == 3;
     }
     public static void printBallStrike(int strike, int ball) {
-        if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return ;
-        }
-
         if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
             return ;
         }
 
         if (ball > 0)
-            System.out.print(new StringBuilder().append(ball).append("볼").append(" "));
+            System.out.print(new StringBuilder().append(ball).append("볼"));
+
+        if (ball > 0 && strike > 0)
+            System.out.print(" ");
 
         if (strike > 0)
             System.out.print(new StringBuilder().append(strike).append("스트라이크"));
 
         System.out.println();
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return ;
+        }
     }
     public static void playGame(List<Integer> gameAnswer) {
         boolean result = false;
