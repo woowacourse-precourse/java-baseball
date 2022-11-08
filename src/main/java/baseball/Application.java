@@ -54,6 +54,7 @@ public class Application {
         String input = Console.readLine().trim();
         if (!isNumber(input)) {
             return input.chars()
+                    .map(i-> i-'0')
                     .boxed()
                     .collect(Collectors.toList());
         }
