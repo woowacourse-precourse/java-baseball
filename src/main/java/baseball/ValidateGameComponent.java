@@ -4,6 +4,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ValidateGameComponent {
+    public static final int RESTART = 1;
+    public static final int END = 2;
+    public static final boolean NOT_VALID = false;
+
+    public static void validUserRestartOrEndGame(int userInput) {
+        if (userInput != RESTART && userInput != END) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static boolean validNumberLength(String baseballNumber) {
         if (baseballNumber.length() != 3) {
             throw new IllegalArgumentException();
