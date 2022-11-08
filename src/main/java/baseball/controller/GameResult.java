@@ -6,20 +6,20 @@ public class GameResult {
 	private int ballCount;
 	private int strikeCount;
 
-	public GameResult(List<Integer> playerNumbers, List<Integer> randomNumbers) {
-		this.ballCount = setBallCount(playerNumbers, randomNumbers);
-		this.strikeCount = setStrikeCount(playerNumbers, randomNumbers);
+	public GameResult(List<Integer> playerNumbers, List<Integer> computerNumbers) {
+		this.ballCount = setBallCount(playerNumbers, computerNumbers);
+		this.strikeCount = setStrikeCount(playerNumbers, computerNumbers);
 	}
 
-	private int setBallCount(List<Integer> playerNumbers, List<Integer> randomNumbers) {
+	private int setBallCount(List<Integer> playerNumbers, List<Integer> computerNumbers) {
 		return (int) playerNumbers.stream()
-			.filter(playerNumber -> GameResultType.isBall(playerNumber, playerNumbers, randomNumbers))
+			.filter(playerNumber -> GameResultType.isBall(playerNumber, playerNumbers, computerNumbers))
 			.count();
 	}
 
-	private int setStrikeCount(List<Integer> playerNumbers, List<Integer> randomNumbers) {
+	private int setStrikeCount(List<Integer> playerNumbers, List<Integer> computerNumbers) {
 		return (int) playerNumbers.stream()
-			.filter(playerNumber -> GameResultType.isStrike(playerNumber, playerNumbers, randomNumbers))
+			.filter(playerNumber -> GameResultType.isStrike(playerNumber, playerNumbers, computerNumbers))
 			.count();
 	}
 

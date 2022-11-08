@@ -24,7 +24,6 @@ public class GameController {
 
 	private static void playGame(Computer computer) {
 		boolean progress = true;
-
 		while (progress) {
 			Player player = new Player(Input.getPlayerNumber());
 			GameResult gameResult = new GameResult(player.getNumbers(), computer.getNumbers());

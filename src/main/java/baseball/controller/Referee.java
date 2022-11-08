@@ -2,7 +2,7 @@ package baseball.controller;
 
 import baseball.view.OutputView;
 
-public class Judge {
+public class Referee {
 	public static void getGameResult(GameResult gameResult) {
 		int ballCount = gameResult.getBallCount();
 		int strikeCount = gameResult.getStrikeCount();

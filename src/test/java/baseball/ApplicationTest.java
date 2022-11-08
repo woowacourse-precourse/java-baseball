@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class ApplicationTest extends NsTest {
 	@Nested
-	class assertRandomNumberInRangeTest {
+	class assertComputerInRangeTest {
 		@Test
 		void 게임종료_후_재시작() {
 			assertRandomNumberInRangeTest(
