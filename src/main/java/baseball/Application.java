@@ -11,11 +11,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-//        List<String> problem = pickNumber();
-        List<String> problem = new ArrayList<>();
-        problem.add("1");
-        problem.add("3");
-        problem.add("5");
+        List<String> problem = pickNumber();
+
         boolean notAnswer = true;
         while (notAnswer) {
             String number = Console.readLine();
@@ -30,11 +27,7 @@ public class Application {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 notAnswer = reGame();
                 // notAnswer이 false라면 problem이 변해도 while문이 돌지 않음
-//                problem = pickNumber();
-                problem = new ArrayList<>();
-                problem.add("5");
-                problem.add("8");
-                problem.add("9");
+                problem = pickNumber();
 
             } else if (result.get(0).equals("Not")){
                 System.out.println("낫싱");
@@ -52,10 +45,7 @@ public class Application {
                 String b = result.get(1);
                 System.out.println(String.format("%s볼 %s스트라이크",b,s));
             }
-
         }
-
-
     }
 
     /**
@@ -157,6 +147,7 @@ public class Application {
         } else if (restart.equals("2")) {
             return false;
         } else {
+            // 호옥시... 다른 숫자가 나온다면 에러내기
             System.out.println("1과 2만 입력 가능합니다.");
             throw new IllegalArgumentException();
         }
