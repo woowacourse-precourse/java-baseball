@@ -4,35 +4,36 @@ public class Result {
     private int ballCount;
     private int strikeCount;
 
-    public void initialize(){
+    public void initialize() {
         ballCount = 0;
         strikeCount = 0;
     }
 
-    public void increaseBallCount(){
+    public void increaseBallCount() {
         ballCount++;
     }
 
-    public void increaseStrikeCount(){
+    public void increaseStrikeCount() {
         strikeCount++;
     }
 
-    public String createResultMessage(){
+    public String createResultMessage() {
         String resultMessage = "";
 
-        if(ballCount==0 && strikeCount==0){
+        if (ballCount == 0 && strikeCount == 0) {
             resultMessage = Settings.NOTHING;
-        }else if(ballCount>0 && strikeCount==0){
+        } else if (ballCount > 0 && strikeCount == 0) {
             resultMessage = ballCount + Settings.BALL;
-        }else if(ballCount==0 && strikeCount>0){
+        } else if (ballCount == 0 && strikeCount > 0) {
             resultMessage = strikeCount + Settings.STRIKE;
-        }else if(ballCount>0 && strikeCount>0){
+        } else if (ballCount > 0 && strikeCount > 0) {
             resultMessage = ballCount + Settings.BALL + " " + strikeCount + Settings.STRIKE;
         }
 
         return resultMessage;
     }
-    public boolean isWrongAnswer(){
+
+    public boolean isWrongAnswer() {
         return strikeCount < 3;
     }
 
