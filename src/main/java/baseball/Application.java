@@ -61,10 +61,10 @@ public class Application {
             return true;
     }
 
-    public static boolean isExistDuplicate(List<Integer> player){
-        int hundreds = player.get(0);
-        int tens = player.get(1);
-        int units = player.get(2);
+    public static boolean isExistDuplicate(String inputPlayerNum){
+        int hundreds = inputPlayerNum.charAt(0)-'0';
+        int tens = inputPlayerNum.charAt(1)-'0';
+        int units = inputPlayerNum.charAt(2)-'0';
 
         if(hundreds == tens || hundreds == units || tens == units)
             return true;
