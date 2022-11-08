@@ -1,6 +1,6 @@
-package baseball.controller;
+package baseball.model;
 
-public class FlowController {
+public class Flow {
     private final static String ANSWER = "3스트라이크\n";
 
     private boolean gameFlag = true;

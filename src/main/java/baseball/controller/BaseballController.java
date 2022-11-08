@@ -1,6 +1,7 @@
 package baseball.controller;
 
 import baseball.model.Computer;
+import baseball.model.Flow;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,18 +13,18 @@ public class BaseballController {
     private final InputView inputView;
     private final OutputView outputView;
     private final Computer computer;
-    private final FlowController flowController;
+    private final Flow flow;
 
-    public BaseballController(InputView inputView, OutputView outputView, Computer computer,FlowController flowController) {
+    public BaseballController(InputView inputView, OutputView outputView, Computer computer, Flow flow) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.computer = computer;
-        this.flowController = flowController;
+        this.flow = flow;
     }
 
     public void runGame() {
         outputView.showGameMessage(START);
-        while (flowController.getGameFlag()) {
+        while (flow.getGameFlag()) {
 
             List<Integer> randomNumbers = computer.generateRandomNumbers();
 
@@ -32,12 +33,12 @@ public class BaseballController {
             outputView.showGameMessage(QUESTION);
 
             Boolean isAgain = inputView.questionInput();
-            flowController.setGameFlag(isAgain);
+            flow.setGameFlag(isAgain);
         }
     }
 
     public void runSubGame(List<Integer> randomNumbers) {
-        while (flowController.getSubGameFlag()) {
+        while (flow.getSubGameFlag()) {
 
             outputView.showGameMessage(REQUEST);
 
@@ -45,9 +46,9 @@ public class BaseballController {
 
             String countResult = computer.generateCountResult(randomNumbers, userNumbers);
             outputView.showGameMessage(countResult);
-            flowController.setSubGameFlag(countResult);
+            flow.setSubGameFlag(countResult);
         }
-        flowController.setSubGameFlag();
+        flow.setSubGameFlag();
         outputView.showGameMessage(ANSWER);
     }
 }
