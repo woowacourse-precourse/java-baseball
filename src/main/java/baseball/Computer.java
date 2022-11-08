@@ -1,6 +1,7 @@
 package baseball;
 
 import static baseball.Command.RESTART;
+import static baseball.Command.EXIT;
 import static baseball.Range.START;
 import static baseball.Range.END;
 
@@ -60,10 +61,13 @@ public class Computer {
         strike = 0;
         ball = 0;
     }
-    public boolean isRestart(List<Integer> command) {
+    public Command getCommand(List<Integer> command) {
         Integer commandInt = command.get(0);
-        int restart = RESTART.getCommand();
-        return commandInt.equals(restart);
+        int commandRestart = RESTART.getCommand();
+        if (commandInt.equals(commandRestart)) {
+            return RESTART;
+        }
+        return EXIT;
     }
 
     private int getRandomNumber() {
