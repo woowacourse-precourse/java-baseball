@@ -15,7 +15,8 @@ public class Validator {
 	public static void validateGameProceedNumber(String gameProceedNumber) {
 		if (!hasValidGameProceedNumberLength(gameProceedNumber)) {
 			throw new IllegalArgumentException(ERROR_INVALID_USER_PROGRESS_INPUT_LENGTH);
-		} else if (!isValidGameProceedNumber(gameProceedNumber)) {
+		}
+		if (!isValidGameProceedNumber(gameProceedNumber)) {
 			throw new IllegalArgumentException(ERROR_INVALID_USER_PROGRESS_INPUT);
 		}
 	}
@@ -33,11 +34,14 @@ public class Validator {
 
 		if (!hasValidSizeOfBaseballNumberList(baseballNumberList)) {
 			throw new IllegalArgumentException(ERROR_INVALID_USER_BASEBALL_INPUT_LENGTH);
-		} else if (!hasOnlyNumeric(baseballNumberList)) {
+		}
+		if (!hasOnlyNumeric(baseballNumberList)) {
 			throw new IllegalArgumentException(ERROR_INVALID_USER_BASEBALL_INPUT_ASCII);
-		} else if (!hasOnlyUniqueElements(baseballNumberList)) {
+		}
+		if (!hasOnlyUniqueElements(baseballNumberList)) {
 			throw new IllegalArgumentException(ERROR_INVALID_USER_BASEBALL_INPUT_DISTINCT);
-		} else if (hasZeroNumber(baseballNumberList)) {
+		}
+		if (hasZeroNumber(baseballNumberList)) {
 			throw new IllegalArgumentException(ERROR_INVALID_USER_BASEBALL_INPUT_ZERO_VALUE);
 		}
 	}
