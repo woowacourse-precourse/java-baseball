@@ -17,6 +17,10 @@ public class Application {
         return computerNumber;
     }
 
+    public static boolean isNumeric(String s) {
+        return s.chars().allMatch(Character::isDigit);
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
