@@ -17,13 +17,13 @@ public class GameManager {
         InputNumberHash.clear();
         System.out.println("숫자를 입력해주세요 : ");
         String numberString = Console.readLine();
-        ValidCheck.checkExceptionNumber(numberString, InputNumberHash);
         int index=0;
         for (char character: numberString.toCharArray()) {
             index++;
             int digit = character-'0';
             InputNumberHash.put(digit, index);
         }
+        ValidCheck.checkExceptionNumber(numberString, InputNumberHash);
         return InputNumberHash;
     }
 
