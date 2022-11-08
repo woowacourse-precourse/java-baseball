@@ -14,14 +14,14 @@ public class Ball {
 
     private void validateRange(int ballNumber) {
         if (ballNumber < MIN_NUMBER) {
-            throw new IllegalStateException(NOT_ALLOWED_UNDER_MIN_NUMBER);
+            throw new IllegalArgumentException(NOT_ALLOWED_UNDER_MIN_NUMBER);
         }
         if (ballNumber > MAX_NUMBER) {
-            throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_NUMBER);
+            throw new IllegalArgumentException((NOT_ALLOWED_OVER_MAX_NUMBER);
         }
     }
 
-    public int getBallNumber(){
+    public int getBallNumber() {
         return ballNumber;
     }
 }
