@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Game {
+    public static final int BALLSIZE = 3;
+
 
     private InputNumber inputNumber;
     private AnswerNumber answerNumber;
@@ -53,7 +55,7 @@ public class Game {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-경        for (int i = 0; i<3; i++){
+        for (int i = 0; i<BALLSIZE; i++){
             int index = answer.indexOf(input.charAt(i));
             if(index == i){
                 strike++;
@@ -77,7 +79,7 @@ public class Game {
     }
 
     public boolean getWin(){
-        return strike == 3;
+        return strike == BALLSIZE;
     }
 
     public boolean askResrat(){
