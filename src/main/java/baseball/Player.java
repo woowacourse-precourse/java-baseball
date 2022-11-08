@@ -36,8 +36,11 @@ public class Player {
     }
 
     private boolean isValidScope(String number) {
+        char minDigitNumber = '1';
+        char maxDigitNumber = '9';
+
         for (int i = 0; i < 3; i++) {
-            if (!(number.charAt(i) >= '1' && number.charAt(i) <= '9')) {
+            if (!(number.charAt(i) >= minDigitNumber && number.charAt(i) <= maxDigitNumber)) {
                 return false;
             }
         }
