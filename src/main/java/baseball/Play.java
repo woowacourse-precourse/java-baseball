@@ -3,6 +3,7 @@ package baseball;
 import static baseball.Constant.ASK_RESTART_MSG;
 import static baseball.Constant.ERR_MSG;
 import static baseball.Constant.EXIT;
+import static baseball.Constant.GAME_START_MSG;
 import static baseball.Constant.RESTART;
 
 import baseball.player.Computer;
@@ -20,6 +21,14 @@ public class Play {
         this.user = user;
         this.computer = computer;
         this.hint = hint;
+    }
+
+    public void run() {
+        System.out.println(GAME_START_MSG);
+        do {
+            List<Integer> computerNumber = computer.getNumber();
+            playGame(computerNumber);
+        } while (isRestart());
     }
 
     public void playGame(List<Integer> computerNumber) {
