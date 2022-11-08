@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.BaseballResult;
 import baseball.resource.AskRestartValue;
 import baseball.resource.GameMessage;
 import baseball.validation.AskValidation;
@@ -22,9 +23,20 @@ public class BaseballGame {
 
     public void playGame() {
         User user = new User();
+        Computer computer = new Computer();
+        BaseballResult baseballResult = new BaseballResult();
+        boolean correctFlag = false;
 
-        while (user.inputBaseballNumber()) {
-            System.out.println("test");
+        computer.createAnswer();
+
+        while (!correctFlag) {
+            user.inputBaseballNumber();
+            baseballResult = computer.getCalculateAnswer(user.getUserBaseballNumber());
+            System.out.println(baseballResult);
+
+            if (baseballResult.isThreeStrike()) {
+                correctFlag = true;
+            }
         }
     }
 }
