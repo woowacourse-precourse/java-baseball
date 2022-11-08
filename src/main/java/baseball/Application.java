@@ -15,7 +15,6 @@ public class Application {
         private int[] goalArr;
         private int[] goalUsageArr;
         private int[] ballArr;
-        private int[] ballUsageArr;
 
         private boolean[] isStrike;
         private int numBall;
@@ -24,7 +23,6 @@ public class Application {
             goalArr = new int[NUM_DIGIT];
             goalUsageArr = new int[NUM_BOUNDARY];
             ballArr = new int[NUM_DIGIT];
-            ballUsageArr = new int[NUM_BOUNDARY];
         }
 
         public void game() {
@@ -57,7 +55,15 @@ public class Application {
         private void checkBall() {
             numBall = 0;
 
+            for (int idx = 0; idx < NUM_DIGIT; idx++) {
+                if (isStrike[idx]) {
+                    continue;
+                }
 
+                if (goalUsageArr[ballArr[idx]] != 0) {
+                    numBall += 1;
+                }
+            }
         }
 
         private void checkStrike() {
@@ -87,8 +93,6 @@ public class Application {
                 int digit = digitNumber(ballNumber, pow);
 
                 makeNumberOrder(this.ballArr, digit, pow);
-                makeNumberUsage(this.ballUsageArr, digit);
-
                 pow += 1;
             }
         }
