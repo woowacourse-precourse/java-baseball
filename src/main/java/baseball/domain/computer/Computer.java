@@ -6,8 +6,8 @@ import java.util.*;
 import static baseball.utils.Constants.*;
 
 public class Computer {
-    private NumberGenerator numberGenerator;
     private List<Integer> randomNumbers;
+    private NumberGenerator numberGenerator;
 
     public Computer(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;

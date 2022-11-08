@@ -8,11 +8,10 @@ import java.util.List;
 import static baseball.utils.Constants.*;
 
 public class GameHint {
-    private Computer computer;
-    private Player player;
-
     private int strikeScore;
     private int ballScore;
+    private Computer computer;
+    private Player player;
 
     private GameHint(Computer computer, Player player) {
         this.computer = computer;
