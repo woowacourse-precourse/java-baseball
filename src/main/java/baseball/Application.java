@@ -20,7 +20,8 @@ public class Application {
         return computer;
     }
     //[플레이어] 서로 다른 3개의 숫자 입력
-    public static List<Integer> input(List<Integer> inputNumber){
+    public static List<Integer> input(){
+        List<Integer> inputNumber = new ArrayList<>();
         String input = Console.readLine();
         //[예외처리]
         //세자리 숫자 이외의 입력 시
@@ -43,7 +44,7 @@ public class Application {
         }
         return inputNumber;
     }
-    //[기능] 2번 : 스트라이크, 볼 갯수 판별
+    //[기능] 스트라이크, 볼 갯수 판별
     public static HashMap<String, Integer> caseCheck(List<Integer> computer, List<Integer>inputNumber) {
         HashMap<String, Integer> gameResult = new HashMap<>();
         int strike = 0;
@@ -79,19 +80,21 @@ public class Application {
 
         while (true) {
 
-            List<Integer> inputNumber = new ArrayList<>();
+            //변수 초기 설정
+            List<Integer> inputNumber;
+            HashMap<String, Integer> gameResult;
             int strike = 0;
             int ball = 0;
-            
+
             //컴퓨터가 3자리 숫자 생성
             makeNumber(computer);
 
             //플레이어가 3자리 숫자 입력
             System.out.print("숫자를 입력해주세요 : ");
-            input(inputNumber);
+            inputNumber = input();
             
             //야구게임 결과 (ex 2스트라이크 1볼) 저장
-            HashMap<String, Integer> gameResult = caseCheck(computer, inputNumber);
+            gameResult = caseCheck(computer, inputNumber);
             strike = gameResult.get("strike");
             ball = gameResult.get("ball");
             
