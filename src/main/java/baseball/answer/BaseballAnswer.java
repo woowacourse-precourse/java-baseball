@@ -1,7 +1,6 @@
 package baseball.answer;
 
 import baseball.gametype.BaseballType;
-import baseball.response.BaseballResponse;
 import basedomain.answer.Answer;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

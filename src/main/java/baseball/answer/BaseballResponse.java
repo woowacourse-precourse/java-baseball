@@ -1,4 +1,4 @@
-package baseball.response;
+package baseball.answer;
 
 import java.util.ArrayList;
 import java.util.List;
