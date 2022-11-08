@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.participant.Pitcher;
+import baseball.service.BaseballGameConsole;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballGameConsole gameConsole = new BaseballGameConsole();
+        Pitcher codesver = new Pitcher("codesver");
+        gameConsole.startWithPitcher(codesver);
     }
 }
