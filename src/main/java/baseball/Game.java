@@ -11,6 +11,23 @@ public class Game {
 
     int MAX_SCORE = 3;
 
+    public void start() {
+        Score score = new Score(MAX_SCORE);
+        List<Integer> user;
+        List<Integer> computer = getRandomNumbers();
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        do {
+            user = getInputNumbers();
+
+            score.updateTotalScore(computer, user);
+            score.print();
+
+        } while (!score.isAllStrike());
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 
     private boolean isDigit(Character CharNumber) {
         return Character.isDigit(CharNumber);
