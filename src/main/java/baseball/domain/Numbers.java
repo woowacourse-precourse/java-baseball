@@ -1,6 +1,7 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Numbers {
@@ -13,6 +14,24 @@ public class Numbers {
         validateSize(numbers);
         validateDuplication(numbers);
         this.numbers = new ArrayList<>(numbers);
+    }
+
+    public List<Number> getNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
+
+    public int getBallCount(Numbers computer) {
+        return (int) numbers.stream()
+                .filter(number -> computer.getNumbers().contains(number))
+                .filter(number -> computer.getNumbers().indexOf(number) != numbers.indexOf(number))
+                .count();
+    }
+
+    public int getStrikeCount(Numbers computer) {
+        return (int) numbers.stream()
+                .filter(number -> computer.getNumbers().contains(number))
+                .filter(number -> computer.getNumbers().indexOf(number) == numbers.indexOf(number))
+                .count();
     }
 
     private void validateSize(List<Number> numbers) {

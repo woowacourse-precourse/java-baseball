@@ -12,15 +12,20 @@ import java.util.stream.IntStream;
 
 public class Game {
     private static final StringBuilder RESULT = new StringBuilder();
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
     private static final String BLANK = "";
+    private static final String SPACING = " ";
     private static final int INITIALIZE = 0;
+    private static final int EMPTY = 0;
 
     private Game() {
     }
 
     public static void start() {
         Numbers computer = new Numbers(getComputerInput());
-        play();
+        play(computer);
     }
 
     private static List<Number> getComputerInput() {
@@ -30,10 +35,11 @@ public class Game {
                 .collect(Collectors.toList());
     }
 
-    private static void play() {
+    private static void play(Numbers computer) {
         RESULT.setLength(INITIALIZE);
         View.printInputRequest();
         Numbers player = new Numbers(getPlayerInput());
+        compare(computer, player);
     }
 
     private static List<Number> getPlayerInput() {
@@ -47,6 +53,32 @@ public class Game {
     private static void checkBlank(String input) {
         if (input.equals(BLANK)) {
             throw new IllegalArgumentException("값이 입력되지 않았습니다.");
+        }
+    }
+
+    private static void compare(Numbers computer, Numbers player) {
+        checkBall(computer, player);
+        checkStrike(computer, player);
+        checkNothing();
+    }
+
+    private static void checkBall(Numbers computer, Numbers player) {
+        int ballCount = player.getBallCount(computer);
+        if (ballCount > EMPTY) {
+            RESULT.append(ballCount).append(BALL).append(SPACING);
+        }
+    }
+
+    private static void checkStrike(Numbers computer, Numbers player) {
+        int strikeCount = player.getStrikeCount(computer);
+        if (strikeCount > EMPTY) {
+            RESULT.append(strikeCount).append(STRIKE);
+        }
+    }
+
+    private static void checkNothing() {
+        if (RESULT.length() == EMPTY) {
+            RESULT.append(NOTHING);
         }
     }
 }
