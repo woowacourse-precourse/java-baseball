@@ -23,4 +23,8 @@ public class GameController {
         }
         return INSTANCE;
     }
+
+    public void play() {
+        gameService.startGame();
+    }
 }
