@@ -3,13 +3,13 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class BaseballGame {
     private static final String GAME_STARTS_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GET_USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_ENDS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final Integer GAME_RESTART = 1;
     private static final String GET_USER_NEXT_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String NO_BALL_NO_STRIKE = "낫싱";
     private static final String  STRIKE_TEXT = "스트라이크";
@@ -17,47 +17,64 @@ public class BaseballGame {
 
     private static final Integer ZERO = 0;
     private static final Integer NUMBERS_OF_ARRAY = 3;
+
     private static final String INTEGER_NUMBER_REGEX = "^[1-9]*$";
+    private static final String COMMANDS_LIST = "^[1-2]*$";
+
 
     private static final RandomNumberGenerator computer = new RandomNumberGenerator();
 
     BaseballGame() {
-        System.out.print(GAME_STARTS_MESSAGE); // 게임 시작 문구
+        System.out.print(GAME_STARTS_MESSAGE);
+        computer.generate();
+        startGame();
+    }
+    BaseballGame(String nextGame){
         computer.generate();
         startGame();
     }
 
     public static void startGame() {
         UserScore user = new UserScore();
-
-        // 숫자 입력 받고 숫자 맞히기
+        System.out.println(computer.randomNumberList);
         proceedGame(user);
 
-        // 다음 command
+        System.out.println(GAME_ENDS_MESSAGE);
+        getNextCommand();
+    }
 
+    private static boolean handleErrorForUserCommand(String command){
+        boolean isInCommandsList = Pattern.matches(command, COMMANDS_LIST);
+        boolean isOneDigitInteger = command.length()==1;
+
+        return isInCommandsList && isOneDigitInteger;
+    }
+    private static void getNextCommand(){
+        System.out.println(GET_USER_NEXT_COMMAND_MESSAGE);
+        String userCommand = Console.readLine();
+
+        if (!handleErrorForUserCommand(userCommand)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (Integer.parseInt(userCommand) == GAME_RESTART) {
+            new BaseballGame("new game");
+        }
+        // TODO: UserCommand==2인경우 종료에 대한 코드 작성 고민
     }
 
     private static void proceedGame(UserScore user) {
         String userInput;
 
-        // 숫자 입력 받으며 숫자 맞히기 게임 진행
-        while (true) {
+        while (user.getStrike() != NUMBERS_OF_ARRAY) {
             user.init();
             System.out.print(GET_USER_INPUT_MESSAGE);
             userInput = Console.readLine();
 
-            // 사용자 입력에 따른 에러 처리
             ArrayList<Integer> userInputArray = handleErrorForUserInput(userInput);
 
-            // 볼, 스트라이크 개수 맞추기
             countBallsAndStrikes(user, userInputArray);
-
-            // 답에 대한 결과 보여주기
             showUserAnswerStatus(user);
-
-            if(user.getStrike()==3){
-                break;
-            }
         }
     }
     private static void showUserAnswerStatus(UserScore user){
@@ -104,7 +121,7 @@ public class BaseballGame {
         return Pattern.matches(INTEGER_NUMBER_REGEX, value);
     }
     private static boolean isThreeDigit(String value){
-        return value.length()==3;
+        return value.length() == NUMBERS_OF_ARRAY;
     }
 
     private static ArrayList<Integer> toIntArray(String intValue){
