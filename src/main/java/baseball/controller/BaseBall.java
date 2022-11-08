@@ -12,8 +12,12 @@ public class BaseBall {
     private static final int RESTART_NUMBER = 1;
     
     public void start() {
-        OutputView.printApplicationStartMessage();
+        printApplicationStartMessage();
         playBaseBallGame();
+    }
+    
+    private void printApplicationStartMessage() {
+        OutputView.printApplicationStartMessage();
     }
     
     private void playBaseBallGame() {
