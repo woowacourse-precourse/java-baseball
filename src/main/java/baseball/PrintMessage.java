@@ -28,4 +28,11 @@ public class PrintMessage {
         }
     }
 
+    public static void printHint(int numberOfStrike, int numberOfBall) {
+        printHintBall(numberOfBall);
+        printHintStrike(numberOfStrike);
+        printHintNothing(numberOfStrike, numberOfBall);
+        System.out.println();
+    }
+
 }
