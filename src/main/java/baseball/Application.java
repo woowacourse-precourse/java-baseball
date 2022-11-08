@@ -4,7 +4,6 @@ import java.lang.System;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -22,7 +21,7 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             // Start game
-            start_game();
+            startGame();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String input = Console.readLine();
             // either restart the game or terminates the program
@@ -35,7 +34,7 @@ public class Application {
         } while (true);
     }
 
-    private static void start_game() {
+    private static void startGame() {
         // generate unique 3-digit random number
         target = new ArrayList<>();
         while (target.size() < 3) {
@@ -77,8 +76,8 @@ public class Application {
     // form up the string to inform user the result of guessing
     private static void check() {
         result = "";
-        check_strike();
-        check_ball();
+        checkStrike();
+        checkBall();
         if (strike > 0)
             result += Integer.toString(strike) + "스트라이크";
         if (strike == 3)
@@ -94,7 +93,7 @@ public class Application {
     }
 
     // check strike count
-    private static void check_strike() {
+    private static void checkStrike() {
         strike = 0;
         for (int i = 0; i < 3; ++i) {
             if (target.get(i).equals(user.get(i))) {
@@ -106,7 +105,7 @@ public class Application {
     }
 
     // check ball count
-    private static void check_ball() {
+    private static void checkBall() {
         ball = 0;
         for (int i = 0; i < 3; ++i) {
             Integer tmp = user.get(i);
