@@ -12,8 +12,7 @@ public class Application {
     final static int NUMBER_SIZE = 3;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        // 출력: 숫자 야구 게임을 시작합니다.
+        System.out.println("숫자 야구 게임을 시작합니다.");
         Application newGame = new Application();
         newGame.startGame();
     }
