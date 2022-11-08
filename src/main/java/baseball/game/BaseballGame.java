@@ -4,10 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BaseballGame {
 
-    private List<String> computerNumList;
+    private List<Integer> computerNumList;
 
     private String receiveInput() {
         String inputNum;
@@ -15,13 +16,17 @@ public class BaseballGame {
         return inputNum;
     }
 
-    private List<String> makeInputNumList(String inputNum) {
-        String[] inputNumArray = inputNum.split("");
-        List<String> inputNumList = new ArrayList<>(Arrays.asList(inputNumArray));
+
+    private List<Integer> makeInputNumList(String inputNum) {
+        String[] inputStringArray = inputNum.split("");
+        List<String> inputStringList = new ArrayList<>(Arrays.asList(inputStringArray));
+        List<Integer> inputNumList = inputStringList.stream().map(s->Integer.parseInt(s)).collect(Collectors.toList());
         return inputNumList;
     }
 
-    private void makeErrorCheckingInputSize(List<String> inputNumArray) {
+
+
+    private void makeErrorCheckingInputSize(List<Integer> inputNumArray) {
         try {
             if (inputNumArray.size() > 3)
                 throw new IllegalArgumentException();
@@ -34,27 +39,27 @@ public class BaseballGame {
     private void makeComputerNumList() {
         computerNumList = new ArrayList<>();
         while (computerNumList.size() < 3) {
-            String randomNumber = Integer.toString(Randoms.pickNumberInRange(1, 9));
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumList.contains(randomNumber)) {
                 computerNumList.add(randomNumber);
             }
         }
     }
 
-    private int checkBall(List<String> inputNumList) {
-        List<String> checkBallNumList = new ArrayList<>();
+    private int checkBall(List<Integer> inputNumList) {
+        List<Integer> checkBallNumList = new ArrayList<>();
         checkBallNumList = inputNumList;
         checkBallNumList.retainAll(computerNumList);
         return checkBallNumList.size();
     }
 
-    private int checkStrike(List<String> inputNumList) {
+    private int checkStrike(List<Integer> inputNumList) {
         int strikeNum = 0;
         if (checkBall(inputNumList) < 1) {
             return 0;
         }
         for (int i = 0; i < inputNumList.size(); i++) {
-            if (inputNumList.get(i).equals(computerNumList.get(i))) {
+            if (inputNumList.get(i) == computerNumList.get(i)) {
                 strikeNum++;
             }
         }
@@ -89,7 +94,7 @@ public class BaseballGame {
         int checkBall;
         int checkStrike;
         String receiveInput;
-        List<String> inputNumList;
+        List<Integer> inputNumList;
         makeComputerNumList();
         while(true){
             System.out.print("숫자를 입력해주세요 : ");
@@ -102,5 +107,4 @@ public class BaseballGame {
             selectGameRestart(checkStrike);
         }
     }
-
 }
