@@ -1,10 +1,8 @@
 package baseball;
 
 
+import static baseball.Constant.GAME_END;
 import static baseball.Constant.GAME_START;
-
-import camp.nextstep.edu.missionutils.Console;
-import java.util.Map;
 
 public class Application {
 
@@ -14,22 +12,18 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println(GAME_START);
 
-        Map<Integer, Integer> computer = Player.createComputerNumber();
-
-        String readLine = Console.readLine();
-        Map<Integer, Integer> user = Input.inputUserNumber(readLine);
-
-        Hint.loopHint(user, computer);
-
-
-        Game.playGame();
-
-
-
-
-
+        Game game = new Game();
+        game.playGame();
+        end();
+        return;
 
     }
 
+    public static void  end() {
+
+        System.out.println(GAME_END);
+        return;
+
+    }
 
 }

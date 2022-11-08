@@ -19,16 +19,16 @@ public class AppConfig{
         return new Hint();
     }
 
-    public Hint getCountStrike() { return new Hint(); }
-    public Hint getCountBall() { return new Hint(); }
-    public Hint getCountNothing() { return new Hint(); }
 
     public Print printResult() {
-        return new Print(new Hint());
+        return new Print();
     }
 
     public Game playGame() {
-        return new Game(
-                new Print(new Hint()));
+        return new Game();
+    }
+
+    public Application end() {
+        return new Application();
     }
 }

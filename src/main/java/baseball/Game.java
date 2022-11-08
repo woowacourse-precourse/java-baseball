@@ -25,6 +25,7 @@ public class Game {
         }
         while ( !recursionGame() );
 
+
         String result = baseball.printResult().toString();
 
         System.out.println(result);
@@ -38,6 +39,8 @@ public class Game {
     private static boolean recursionGame() {
 
         String readLine = Console.readLine();
+
+        if (Integer.valueOf(readLine).equals(2)) {     end();     }
 
         Hint.loopHint(Input.inputUserNumber(readLine), Player.createComputerNumber());
         String result = Print.printResult().toString();
