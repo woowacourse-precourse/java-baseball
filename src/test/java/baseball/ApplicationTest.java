@@ -16,13 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 재시작_입력_오류() {
-        String playerAnswer = "1234";
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                Computer.validateNumber(playerAnswer));
-        assertEquals(LENGTH_ERROR_MESSAGE, exception.getMessage());
-    }
-    @Test
     void 입력_길이_오류() {
         String playerAnswer = "1234";
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
