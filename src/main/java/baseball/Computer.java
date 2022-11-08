@@ -24,10 +24,18 @@ public class Computer {
         }
     }
 
+    private void setIsGameEnd(boolean toSet) {
+        isGameEnd = toSet;
+    }
+
+    public boolean getIsGameEnd() {
+        return isGameEnd;
+    }
+
     public void giveResult(List<Integer> suggestion) {
         final int MAX_STRIKE = 3;
-        int strike = checkStrike(suggestion);
         int ball = checkBall(suggestion);
+        int strike = checkStrike(suggestion);
         if (ball != 0) System.out.print(ball + "볼 ");
         if (strike != 0) System.out.print(strike + "스트라이크");
         if (ball == 0 && strike == 0) System.out.print("낫싱");
@@ -57,11 +65,5 @@ public class Computer {
         return strike;
     }
 
-    private void setIsGameEnd(boolean toSet) {
-        isGameEnd = toSet;
-    }
 
-    public boolean getIsGameEnd() {
-        return isGameEnd;
-    }
 }

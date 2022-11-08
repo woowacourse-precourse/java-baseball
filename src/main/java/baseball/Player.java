@@ -7,10 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Player {
-    private String input() {
-        return Console.readLine();
-    }
-
     public List<Integer> suggest() {
         String input = input();
         if (!validSuggestion(input)) {
@@ -19,6 +15,10 @@ public class Player {
         List<Integer> suggestion;
         suggestion = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
         return suggestion;
+    }
+
+    private String input() {
+        return Console.readLine();
     }
 
     private boolean validSuggestion(String suggestion) {
