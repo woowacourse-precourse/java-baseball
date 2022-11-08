@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerNumberGenerator implements NumberGenerator{
+public class RandomNumberGenerator implements NumberGenerator{
 
   public List<Integer> generate(){
     List<Integer> computer = new ArrayList<>();
