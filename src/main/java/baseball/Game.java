@@ -3,6 +3,8 @@ package baseball;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import static baseball.constants.Constant.*;
+import static baseball.constants.Exception.*;
 import static baseball.constants.Message.*;
 
 public class Game {
@@ -44,6 +46,26 @@ public class Game {
     setAnswer();
     guessNumber();
     OutputView.printEndMessage();
+  }
+
+  public boolean isRestart() {
+    String restart = InputView.getRestartStatus();
+    if (restart.equals(RESTART)) {
+      return true;
+    }
+    else if (restart.equals(STOP)) {
+      return false;
+    }
+    else {
+      throw new IllegalArgumentException(INVALID_RESTART_INPUT_ERROR);
+    }
+  }
+
+  public void playBaseballGame() {
+    playGame();
+    if (isRestart()) {
+      playGame();
+    }
   }
 
 }
