@@ -1,7 +1,6 @@
 package baseball.gameRule;
 
-import baseball.GameFormatter;
-import baseball.gameRule.GameRule;
+import baseball.config.GameFormatter;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashSet;

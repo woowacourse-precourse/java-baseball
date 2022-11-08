@@ -1,4 +1,4 @@
-package baseball;
+package baseball.config;
 
 public class GameStatusUtil {
     /**
@@ -7,7 +7,7 @@ public class GameStatusUtil {
      * @param input
      * @return GameStatus
      */
-    static GameStatus setGameStatus(String input) {
+    public static GameStatus setGameStatus(String input) {
         GameStatus status;
         switch (input) {
             case "1":
@@ -23,11 +23,11 @@ public class GameStatusUtil {
         return status;
     }
 
-    static boolean isStopStatus(GameStatus status) {
+    public static boolean isStopStatus(GameStatus status) {
         return status.equals(GameStatus.STOP);
     }
 
-    static void validateExceptionStatus(GameStatus status) {
+    public static void validateExceptionStatus(GameStatus status) {
         if (status.equals(GameStatus.EXCEPTION)){
             throw new IllegalArgumentException();
         }

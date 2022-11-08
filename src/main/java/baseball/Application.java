@@ -4,6 +4,9 @@ import baseball.component.Computer;
 import baseball.component.Targetable;
 import baseball.gameRule.GameRule;
 import baseball.gameRule.GameRuleDetail;
+import baseball.config.GameFormatter;
+import baseball.config.GameStatus;
+import baseball.config.GameStatusUtil;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
