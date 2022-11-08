@@ -34,19 +34,21 @@ public class ExecuteGame extends IllegalArgumentException{
 
     // 게임 중 값을 입력 받아 출력하는 함수
     // 잘못된 값을 입력했을 경우 에러 메시지 출력 후 `IllegalArgumentException`을 발생
-    public boolean getUserValidInput() {
+    public String getUserValidInput() {
         try {
             while (true) {
-                ps.println("숫자를 입력해주세요: ");
-                String userInput = scanner.nextLine();
-                if (InputValidator.isValidInput(userInput)) {
-                    ps.println("잘못된 값을 입력했습니다!\n0을 제외한 서로 다른 3개의 숫자를 연속하여 입력해주세요.");
-                    break;
-                }
-            } throw new IllegalArgumentException();
+            ps.println("숫자를 입력해주세요: ");
+            String userValidInput = scanner.nextLine();
+            if (!InputValidator.isValidInput(userValidInput)) {
+                ps.println("잘못된 값을 입력했습니다!\n0을 제외한 서로 다른 3개의 숫자를 연속하여 입력해주세요.\n프로그램을 재시작해주세요.");
+                throw new IllegalArgumentException();
+            }
+            return userValidInput;
         } catch (IllegalArgumentException e) {
-            return false;
+            System.exit(0);
+            throw e;
         }
+    }
 
     }
 
