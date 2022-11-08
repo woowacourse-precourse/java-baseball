@@ -13,7 +13,7 @@ public class GameController {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
-    public void gameProcess() {
+    public void proceedGame() {
         boolean gameState = true;
         while (gameState) {
             outputView.printStartGame();
