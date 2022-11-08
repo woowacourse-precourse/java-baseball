@@ -8,7 +8,7 @@
     - User
     - Computer 
     - Referee
-  - Exception
+  - validation
     - InputException
     
 
@@ -45,7 +45,7 @@
   - [x] 재시작 결정 문구: 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.
 
 
-- Exception
+- InputException
 - [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
   - [x] 1~9 외의 글자를 입력
   - [x] 3자리를 넘어간 글자수 입력
