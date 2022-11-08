@@ -1,6 +1,7 @@
 package baseball.serviceImpl;
 
-import baseball.service.DigitGenerator;
+import baseball.service.DigitGeneratorImpl;
+import baseball.util.Digits;
 import baseball.util.GameMessage;
 import baseball.util.GameStatus;
 import baseball.domain.StrikeAndBallDomain;
@@ -15,7 +16,7 @@ public class GameService {
 
         GameStatus restartOrEnd = GameStatus.START;
         while (restartOrEnd != GameStatus.END) {
-            List<Integer> computer = randomThreeDigit(new ComputerDigitGeneratorService());
+            List<Integer> computer = getComputerDigits(new ComputerDigitGeneratorService());
             figureOutComputerDigits(computer);
             restartOrEnd = getRestartOrEndGame();
         }
@@ -25,7 +26,7 @@ public class GameService {
         boolean answer = false;
         while (!answer) {
             sendMassage(GameMessage.INPUT_NUMBER);
-            List<Integer> user = getUserInput();
+            List<Integer> user = getUserDigits();
             answer = calculationDigits(computer, user);
         }
     }
@@ -71,7 +72,7 @@ public class GameService {
     }
 
     private List<Integer> inputToDigits(String input) throws IllegalArgumentException {
-        boolean[] visited = new boolean[10];
+        boolean[] visited = new boolean[Digits.LAST.getDigit() + 1];
         List<Integer> values = new ArrayList<>();
 
         for (int i = 0; i < input.length(); i++) {
@@ -81,17 +82,25 @@ public class GameService {
         return values;
     }
 
-    private List<Integer> getUserInput() throws IllegalArgumentException {
-        String input = Console.readLine();
+    private boolean isValid(String digits) {
         String isDigitRegex = "[1-9]{3,3}";
+        return digits.matches(isDigitRegex);
+    }
 
-        if (input.matches(isDigitRegex)) {
-            return inputToDigits(input);
+    private List<Integer> digits(String digits) {
+        if (isValid(digits)) {
+            return inputToDigits(digits);
         }
         throw new IllegalArgumentException();
     }
 
-    public List<Integer> randomThreeDigit(DigitGenerator generator) {
-        return generator.generator();
+    private List<Integer> getUserDigits() throws IllegalArgumentException {
+        String userDigits = Console.readLine();
+        return digits(userDigits);
+    }
+
+    public List<Integer> getComputerDigits(DigitGeneratorImpl generator) throws IllegalArgumentException {
+        String computerDigits = generator.generator();
+        return digits(computerDigits);
     }
 }
