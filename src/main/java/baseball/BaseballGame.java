@@ -19,20 +19,22 @@ public class BaseballGame {
         while (!threeStrike) {
             // TODO 2-1. 사용자 입력 받기
             System.out.print("숫자를 입력해주세요 : ");
-
             String newInput = new String(Console.readLine());
+
             // TODO 2-2. 예외 처리하기
             checkInputFormat(newInput);
+
             // TODO 2-3. 스트라이크, 볼 갯수 계산
             if (strikeAndBall(newInput)) {
                 threeStrike = true;
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
                 // TODO 3. 게임을 종료한 후 게임을 다시 시작할건지 종료할건지 선택하는 부분
                 gameRestart = checkRestartGame();
             }
         }
-        System.out.println(gameRestart);
+
         return gameRestart;
     }
 
@@ -98,6 +100,4 @@ public class BaseballGame {
         }
         return restartInput.charAt(0) == '1';
     }
-
-
 }
