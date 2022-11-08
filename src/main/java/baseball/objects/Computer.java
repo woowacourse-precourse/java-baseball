@@ -5,12 +5,10 @@ import java.util.List;
 
 public class Computer {
 
-    private final NumberGenerator numberGenerator;
-    private final List<Integer> numbers;
+    private final NumberGenerator numberGenerator = new NumberGenerator();
+    private final List<Integer> numbers = new ArrayList<>();
 
-    public Computer(NumberGenerator generateNumber) {
-        this.numberGenerator = generateNumber;
-        this.numbers = new ArrayList<>();
+    public Computer() {
         generateNumbers();
     }
 
@@ -18,11 +16,11 @@ public class Computer {
         numberGenerator.generate(numbers);
     }
 
-    public List<Integer> getNumbers() {
-        return this.numbers;
-    }
-
     public void giveNumbersToReferee(Referee referee) {
         referee.receiveComputerNumbers(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 }
