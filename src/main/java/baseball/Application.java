@@ -3,8 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Application {
     public static List<Integer> generateGameAnswer() {
@@ -33,8 +32,13 @@ public class Application {
         return false;
     }
     public static boolean checkRepeatNumber(String input) {
-        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2))
-            return true;
+        String[] numbers = input.split("");
+        Set<String> keys = new HashSet<>();
+        for (String number : numbers) {
+            if (keys.contains(number))
+                return true;
+            keys.add(number);
+        }
         return false;
     }
     public static boolean validInput(String input) {
