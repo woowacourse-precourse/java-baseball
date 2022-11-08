@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -32,19 +33,18 @@ public class Application {
 
     // 숫자 3개 입력 받기
     public static int[] getUserNumbers() {
-        System.out.println("숫자를 입력해주세요 : ");
-        String userInput = new java.util.Scanner(System.in).nextLine();
+        // 1~9 3자리 숫자 입력 받기
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
 
         // 숫자인지 확인
-        if (userInput.matches("^[1-9]*$")) {
-            System.out.println("숫자가 아닙니다.");
-            return getUserNumbers();
+        if (!userInput.matches("^[1-9]*$")) {
+            throw new IllegalArgumentException();
         }
 
         // 숫자가 3개인지 확인
         if (userInput.length() != 3) {
-            System.out.println("3자리 숫자가 아닙니다.");
-            return getUserNumbers();
+            throw new IllegalArgumentException();
         }
 
         // 숫자 input 을 int[] 로 변환
@@ -55,8 +55,7 @@ public class Application {
 
         // 숫자가 중복된 건 없는지 확인
         if (userNumbers[0] == userNumbers[1] || userNumbers[0] == userNumbers[2] || userNumbers[1] == userNumbers[2]) {
-            System.out.println("중복된 숫자가 있습니다.");
-            return getUserNumbers();
+            throw new IllegalArgumentException();
         }
 
         return userNumbers;
@@ -65,6 +64,7 @@ public class Application {
     // 상대방의 숫자와 비교
     public static void compareNumbers(int[] computerNumbers, int[] userNumbers) {
        if (computerNumbers[0] == userNumbers[0] && computerNumbers[1] == userNumbers[1] && computerNumbers[2] == userNumbers[2]) {
+           System.out.println("3스트라이크");
            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
            exitGame();
        }
@@ -76,7 +76,7 @@ public class Application {
     // 게임 종료
     public static void exitGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = new java.util.Scanner(System.in).nextLine();
+        String userInput = Console.readLine();
         if (userInput.equals("1")) {
             gameStart();
         } else if (userInput.equals("2")) {
@@ -106,9 +106,9 @@ public class Application {
         } else if (ball == 0) {
             System.out.println(strike + "스트라이크");
         } else {
-            System.out.println(strike + "스트라이크 " + ball + "볼");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
 
-        getUserNumbers();
+        compareNumbers(computerNumbers, getUserNumbers());
     }
 }
