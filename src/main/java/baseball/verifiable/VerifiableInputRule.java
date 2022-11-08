@@ -1,6 +1,6 @@
 package baseball.verifiable;
 
 @FunctionalInterface
-public interface VerifiableRule {
+public interface VerifiableInputRule {
     boolean validates(String input);
 }

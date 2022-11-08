@@ -2,11 +2,11 @@ package baseball.verifiable;
 
 import static baseball.BaseballConstants.TEN_DECIMAL;
 
-public class CheckInputRange implements VerifiableRule {
+public class InputNumberInRange implements VerifiableInputRule {
     private final char lowerNumber;
     private final char upperNumber;
 
-    public CheckInputRange(int lowerNumber, int upperNumber) {
+    public InputNumberInRange(int lowerNumber, int upperNumber) {
         this.lowerNumber = intToChar(lowerNumber);
         this.upperNumber = intToChar(upperNumber);
     }

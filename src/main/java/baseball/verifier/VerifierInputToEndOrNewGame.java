@@ -1,13 +1,13 @@
 package baseball.verifier;
 
-import baseball.verifiable.CheckInputLength;
-import baseball.verifiable.CheckInputRange;
+import baseball.verifiable.InputNumberEqualLength;
+import baseball.verifiable.InputNumberInRange;
 
 import static baseball.BaseballConstants.*;
 
 public class VerifierInputToEndOrNewGame extends Verifier {
     public VerifierInputToEndOrNewGame() {
-        this.addRule(new CheckInputLength(INPUT_END_OR_NEW_GAME_LENGTH_MAX));
-        this.addRule(new CheckInputRange(INPUT_END_OR_NEW_GAME_LOWER_NUMBER, INPUT_END_OR_NEW_GAME_UPPER_NUMBER));
+        this.addRule(new InputNumberEqualLength(INPUT_END_OR_NEW_GAME_LENGTH_MAX));
+        this.addRule(new InputNumberInRange(INPUT_END_OR_NEW_GAME_LOWER_NUMBER, INPUT_END_OR_NEW_GAME_UPPER_NUMBER));
     }
 }

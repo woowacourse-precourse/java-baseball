@@ -1,14 +1,14 @@
 package baseball.verifier;
 
-import baseball.verifiable.VerifiableRule;
+import baseball.verifiable.VerifiableInputRule;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Verifier {
-    List<VerifiableRule> rules = new ArrayList<>();
+    List<VerifiableInputRule> rules = new ArrayList<>();
 
-    public void addRule(VerifiableRule rule) {
+    public void addRule(VerifiableInputRule rule) {
         rules.add(rule);
     }
 

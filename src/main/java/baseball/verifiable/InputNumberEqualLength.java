@@ -1,9 +1,9 @@
 package baseball.verifiable;
 
-public class CheckInputLength implements VerifiableRule {
+public class InputNumberEqualLength implements VerifiableInputRule {
     private final int restrictedLength;
 
-    public CheckInputLength(int restrictedLength) {
+    public InputNumberEqualLength(int restrictedLength) {
         this.restrictedLength = restrictedLength;
     }
 

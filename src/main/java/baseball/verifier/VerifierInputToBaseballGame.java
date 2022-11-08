@@ -1,15 +1,15 @@
 package baseball.verifier;
 
-import baseball.verifiable.CheckDuplicatedInput;
-import baseball.verifiable.CheckInputLength;
-import baseball.verifiable.CheckInputRange;
+import baseball.verifiable.InputNumberHasDuplication;
+import baseball.verifiable.InputNumberEqualLength;
+import baseball.verifiable.InputNumberInRange;
 
 import static baseball.BaseballConstants.*;
 
 public class VerifierInputToBaseballGame extends Verifier {
     public VerifierInputToBaseballGame() {
-        this.addRule(new CheckInputLength(DIGIT_MAX));
-        this.addRule(new CheckInputRange(LOWER_NUMBER, UPPER_NUMBER));
-        this.addRule(new CheckDuplicatedInput());
+        this.addRule(new InputNumberEqualLength(DIGIT_MAX));
+        this.addRule(new InputNumberInRange(LOWER_NUMBER, UPPER_NUMBER));
+        this.addRule(new InputNumberHasDuplication());
     }
 }
