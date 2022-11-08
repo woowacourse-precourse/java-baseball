@@ -34,7 +34,7 @@ public class ValidationUtil {
     public static void validateInputRestart(String input){
         if (input.equals("1")){
             GameController gameController = new GameController();
-            gameController.startGame();
+            //gameController.startGame();
         }
 
         if (input.equals("2")){

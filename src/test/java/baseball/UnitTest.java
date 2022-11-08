@@ -84,6 +84,24 @@ class UnitTest extends NsTest {
         assertThat(ballCounter).isEqualTo(2);
     }
 
+    @Test
+    void 사용자_입력_값과_컴퓨터_생성값_간_비교(){
+        List<Integer> inputNumList = new ArrayList<>();
+        List<Integer> computerNumList = new ArrayList<>();
+
+        inputNumList.add(3);
+        inputNumList.add(6);
+        inputNumList.add(9);
+
+        computerNumList.add(9);
+        computerNumList.add(6);
+        computerNumList.add(3);
+
+        boolean getGameResult = JudgeGame.verifyAnswer(inputNumList, computerNumList);
+
+        assertThat(getGameResult).isEqualTo(true);
+
+    }
 
     @Override
     public void runMain() {
