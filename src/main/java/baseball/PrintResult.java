@@ -1,22 +1,24 @@
 package baseball;
 
-
 public class PrintResult {
 
-    public static boolean validateSameNumber(int target, int num) {
-        if(target == num) {
-            return true;
+    public static int countStrike(int[] target, int[] userNum) {
+        int strike = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (target[i] == userNum[i]) {
+                strike++;
+            }
         }
-        return false;
+        return strike;
     }
 
-    public static boolean countBall(int[] target, int userNum) {
+    public static boolean countBall(int[] target, int userNum, int userIndex) {
         for(int i=0; i<3; i++) {
-            if(validateSameNumber(target[i], userNum)) {
+            if(i != userIndex && target[i] == userNum) {
                 return true;
             }
         }
         return false;
     }
-
 }
