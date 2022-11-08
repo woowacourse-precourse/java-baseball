@@ -19,10 +19,6 @@ public class PlayNumberBaseballGame {
         return computer;
     }
 
-    public String outputGameStartStatement() {
-        return "숫자 야구 게임을 시작합니다.";
-    }
-
     public String compareNumbersBetweenComputerAndPlayer(List<Integer> computer, List<Integer> player) {
         String compareResult = "";
         int strike = 0;
@@ -87,9 +83,7 @@ public class PlayNumberBaseballGame {
         return result;
     }
 
-    public String outputAskPlayNewGameStatement(){
-        return "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    }
+
 
     public boolean isNewGame(int playerAnswer){
         if(playerAnswer==1) {
