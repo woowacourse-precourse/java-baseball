@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {
@@ -15,8 +13,10 @@ public class Computer {
 		int[] guessnumber = new int[3];
 		boolean[] visited = new boolean[10];
 		int count = 0;
+		
 		while (count < 3) {
 			int num = Randoms.pickNumberInRange(1, 9);
+			
 			if (!visited[num]) {
 				visited[num] = true;
 				guessnumber[count] = num;

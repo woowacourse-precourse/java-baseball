@@ -6,7 +6,7 @@ import model.User;
 public class Play {
 	public static final String start_print = "숫자 야구 게임을 시작합니다.";
 	public static final String end_print = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-	
+		
 	public void playgame(int[] guessnumber) {
 		System.out.println(start_print);
 		int strike = 0, ball = 0;
@@ -25,8 +25,9 @@ public class Play {
 		}
 	}
 
-	public void result_print(int strike, int ball) {
+	private void result_print(int strike, int ball) {
 		String print_string = "";
+		
 		if (strike == 0 && ball == 0) {
 			print_string = "낫싱";
 		} else if (strike == 3) {
@@ -39,6 +40,7 @@ public class Play {
 				print_string += strike + "스트라이크";
 			}
 		}
+		
 		System.out.println(print_string);
 	}
 
