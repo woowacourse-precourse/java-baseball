@@ -18,14 +18,19 @@ public class GameService {
         game = new Game();
         computer = new Computer();
         user = new User();
+
+        playGame();
+    }
+
+    private static void playGame() {
         while (game.getStrikeCount() != 3) {
-            playGame();
+            playOnePhase();
             printResultMessage(game.getBallCount(), game.getStrikeCount());
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private static void playGame() {
+    private static void playOnePhase() {
         game.initializeGame();
         user.setUserNumbers(getUserNumbers());
         compareNumbers(computer.getNumbers(), user.getUserNumbers());
