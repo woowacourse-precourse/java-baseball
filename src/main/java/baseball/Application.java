@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
@@ -34,23 +33,26 @@ public class Application {
         }
 
         private boolean gamePlay() {
-//            Ready();
+            Ready();
 //            play();
 //            return nextAction();
             return false;
         }
 
         private boolean Ready() {
-//            String player = inputPlayer();
-//            if (verifyPlayer(player)) {
-//                makePlayer();
-//            } else {
-//                throw new IllegalArgumentException();
-//            }
-            return false;
+            String Ball = inputBall();
+            if (verifyBall(Ball)) {
+                makeBall();
+            } else {
+                throw new IllegalArgumentException();
+            }
         }
 
-        private String inputPlayer() {
+        private boolean verifyBall(String player) {
+
+        }
+
+        private String inputBall() {
             printSetBallStatus();
             return setBall();
         }
