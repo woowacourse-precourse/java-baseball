@@ -15,7 +15,7 @@ public class GameManager {
 
     static HashMap<Integer, Integer> scanNumber() {
         InputNumberHash.clear();
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String numberString = Console.readLine();
         int index=0;
         for (char character: numberString.toCharArray()) {
