@@ -74,12 +74,50 @@ public class Application {
         numberCheckCount.add(strikeCount);
     }
 
+    // 6.숫자 판단 결과
+    static int getNoticeResult(List<Integer>numberCheckCount) {
+
+        // 각 결과 수
+        int nCount = numberCheckCount.get(0);
+        int bCount = numberCheckCount.get(1);
+        int sCount = numberCheckCount.get(2);
+
+        String noticeResult = "";
+
+        // 낫싱인 경우
+        if(nCount == 1) {
+            System.out.println("낫싱");
+            return -1;
+        }
+
+        // 볼이 있는 경우
+        if(bCount > 0) {
+            noticeResult = bCount + "볼" + " ";
+        }
+
+        // 스트라이크가 있는 경우
+        if(sCount > 0) {
+            noticeResult = noticeResult + sCount + "스트라이크";
+
+            // 모두 맞힌 경우
+            if(sCount == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return 1;
+            }
+        }
+
+        System.out.println(noticeResult);
+        return -1;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNumber = new ArrayList<>();
         List<Integer> guessingNumber = new ArrayList<>();
         List<Integer> numberCheckCount = new ArrayList<>();
+
+        int gameResult = 0;
         
         // 상대 숫자 생성 함수 호출
         getSettingComputerNumber(computerNumber);
@@ -90,11 +128,14 @@ public class Application {
         // 낫싱 판단 함수 호출
         checkNoting(computerNumber,guessingNumber,numberCheckCount);
 
-        // 볼 판단 함수 호출
+        // 볼 판단 함수 호출주석 제거
         checkBall(computerNumber,guessingNumber,numberCheckCount);
 
         // 스트라이크 판단 함수 호출
         checkStrike(computerNumber,guessingNumber,numberCheckCount);
+
+        // 숫자 판단 결과 함수 호출
+        gameResult = getNoticeResult(numberCheckCount);
     }
 }
 
