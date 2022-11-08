@@ -1,12 +1,9 @@
 package baseball.controller;
 
-import baseball.model.NumberValidator;
-import baseball.model.ValidateNumberLength;
-
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static baseball.model.ValidateNumberLength.NUMBER_LENGTH;
+import static baseball.model.ValidateNumber.NUMBER_LENGTH;
 
 public class BaseballGame {
     public final int STRIKE_COUNT;
