@@ -12,6 +12,10 @@ public class PrintService {
     }
 
     public void printStrikeBallResult(List<Integer> counts) {
+        System.out.println(getResultString(counts));
+    }
+
+    public String getResultString(List<Integer> counts) {
         StringBuilder resultStringBuilder = new StringBuilder();
         boolean spacing = false;
 
@@ -34,7 +38,7 @@ public class PrintService {
             resultStringBuilder.append("낫싱");
         }
 
-        System.out.println(resultStringBuilder);
+        return resultStringBuilder.toString();
     }
 
     public void printGameEnd() {
