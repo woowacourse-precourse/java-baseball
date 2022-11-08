@@ -6,7 +6,7 @@ public class View {
     public static String gameStartMessage = "숫자 야구 게임을 시작합니다.";
     public static String USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     public static String GAME_OVER = "게임 종료";
-    public static String CORRECT_ANSWER = "개의 숫자를 모두 맞히셨습니다. 게임 종료";
+    public static String CORRECT_ANSWER = "개의 숫자를 모두 맞히셨습니다! 게임 종료";
     public static void printGameStartMessage(){
         System.out.println(gameStartMessage);
     }
