@@ -1,6 +1,6 @@
-package baseball.baseballgame;
+package baseball.model;
 
-import baseball.baseballgame.balls.Balls;
+import baseball.model.balls.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;

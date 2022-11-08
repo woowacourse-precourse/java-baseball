@@ -2,6 +2,8 @@ package baseball.baseballgame.ball;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import baseball.model.ball.Ball;
+import baseball.model.ball.BallNumber;
 import org.junit.jupiter.api.Test;
 
 public class BallTest {

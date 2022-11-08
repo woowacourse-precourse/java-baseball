@@ -1,4 +1,4 @@
-package baseball.inputview;
+package baseball.view.inputview;
 
 import camp.nextstep.edu.missionutils.Console;
 

@@ -1,4 +1,4 @@
-package baseball.baseballgame;
+package baseball.model;
 
 import static java.util.stream.Collectors.toList;
 

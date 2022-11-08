@@ -1,7 +1,7 @@
-package baseball.baseballgame.balls;
+package baseball.model.balls;
 
-import baseball.baseballgame.ball.Ball;
-import baseball.baseballgame.ball.BallNumber;
+import baseball.model.ball.Ball;
+import baseball.model.ball.BallNumber;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

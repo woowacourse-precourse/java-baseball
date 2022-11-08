@@ -1,4 +1,4 @@
-package baseball.outview;
+package baseball.view.outview;
 
 import java.util.List;
 

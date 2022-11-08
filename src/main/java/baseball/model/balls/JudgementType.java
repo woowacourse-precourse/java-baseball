@@ -1,4 +1,4 @@
-package baseball.baseballgame.balls;
+package baseball.model.balls;
 
 import java.util.EnumMap;
 

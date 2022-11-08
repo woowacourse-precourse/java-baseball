@@ -1,9 +1,9 @@
-package baseball.baseballgame.Controller;
+package baseball.controller;
 
-import baseball.baseballgame.BaseBallGame;
-import baseball.baseballgame.GameOverChecker;
-import baseball.inputview.InputView;
-import baseball.outview.OutView;
+import baseball.model.BaseBallGame;
+import baseball.model.GameOverChecker;
+import baseball.view.inputview.InputView;
+import baseball.view.outview.OutView;
 import java.util.List;
 
 public class BaseBallGameController {

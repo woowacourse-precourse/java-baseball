@@ -2,7 +2,7 @@ package baseball.InputView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import baseball.inputview.InputViewValidator;
+import baseball.view.inputview.InputViewValidator;
 import org.junit.jupiter.api.Test;
 
 public class InputViewValidatorTest {
