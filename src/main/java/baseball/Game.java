@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 public class Game {
 
-    protected int state = 1;
-
     protected boolean nothing = true;
 
-    protected int same_cnt = 0;
+    protected int sameNumber = 0;
 
     protected int strike = 0;
     protected int ball = 0;
@@ -18,7 +16,6 @@ public class Game {
     }
 
     public void end() {
-        this.state = 2;
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
@@ -32,7 +29,7 @@ public class Game {
         for (int i = 0; i < 3; i++) {
             if (computer.contains(user.get(i) - '0')) {
                 this.nothing = false;
-                same_cnt++;
+                sameNumber++;
             }
         }
 
@@ -51,7 +48,7 @@ public class Game {
     }
 
     public void countBall() {
-        this.ball = this.same_cnt - this.strike;
+        this.ball = this.sameNumber - this.strike;
     }
 
     public void printResult() {
@@ -72,7 +69,7 @@ public class Game {
     }
 
     public void resetCount() {
-        this.same_cnt = 0;
+        this.sameNumber = 0;
         this.ball = 0;
         this.strike = 0;
     }
