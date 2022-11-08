@@ -129,6 +129,24 @@ class ApplicationTest extends NsTest {
         System.setIn(sysInBackup);
     }
 
+    @Test
+    public void getBallNumber_볼의_개수에_대한_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("getBallNumber", List.class, String.class);
+        method.setAccessible(true);
+
+        //given
+        List<Integer> givenComputerNumbers = List.of(9, 5, 3);
+        String givenUserNumbers = "593";
+        int expected = 2;
+
+        //when
+        int invoke = (int)method.invoke(new Application(), givenComputerNumbers, givenUserNumbers);
+
+        //then
+        assertThat(invoke).isEqualTo(expected);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
