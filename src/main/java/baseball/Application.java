@@ -74,8 +74,13 @@ public class Application {
     }
 
     public static void validNotNumber(String inputNum) {
-
+        for (int i = 0; i < 3; i++) {
+            if (inputNum.charAt(i) < '1' || inputNum.charAt(i) > '9') {
+                throw new IllegalArgumentException();
+            }
+        }
     }
+
     public static void toInteger(String inputNum) {
     }
     public static void StrikeOrBall() {
