@@ -112,6 +112,9 @@ public class Application {
         if (playGameAgainNumber == 1) {
             return true;
         }
-        return false;
+        if (playGameAgainNumber == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException();
     }
 }
