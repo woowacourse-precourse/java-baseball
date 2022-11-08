@@ -1,5 +1,8 @@
 package baseball.validator;
 
+import baseball.exception.CantBlankOrNullInputException;
+import baseball.exception.OnlyNumberConsistOneOrTwoInputException;
+
 import java.util.Objects;
 
 public class RetryValidator {
@@ -11,18 +14,18 @@ public class RetryValidator {
 
     public static void validate(String input) {
         validateBlank(input);
-        isNumberBetweenOneToNine(input);
+        isNumberOneOrTwo(input);
     }
 
-    public static void isNumberBetweenOneToNine(String input) {
+    public static void isNumberOneOrTwo(String input) {
         if (!input.matches(NUMBER_REGEXP)) {
-            throw new IllegalArgumentException("1~2사이의 1자리 수만 입력할 수 있습니다.");
+            throw new OnlyNumberConsistOneOrTwoInputException();
         }
     }
 
     private static void validateBlank(final String input){
         if (isBlank(input)){
-            throw new IllegalArgumentException("null 이나 빈값이 들어올 수 없습니다.");
+            throw new CantBlankOrNullInputException();
         }
     }
 

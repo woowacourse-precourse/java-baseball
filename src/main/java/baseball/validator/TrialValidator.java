@@ -1,6 +1,9 @@
 package baseball.validator;
 
 import baseball.exception.CantBlankOrNullInputException;
+import baseball.exception.CantDuplicatedNumberInputException;
+import baseball.exception.OnlyNumberConsistBetweenOneToNineInputException;
+import baseball.exception.OnlyThreeNumberInputException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,20 +26,20 @@ public class TrialValidator {
 
     public static void isNumberBetweenOneToNine(String input) {
         if (!input.matches(NUMBER_REGEXP)) {
-            throw new IllegalArgumentException("1~9사이의 숫자로만 이루어진 수를 입력할 수 있습니다.");
+            throw new OnlyNumberConsistBetweenOneToNineInputException();
         }
     }
 
     public static void validateNumberLength(String input) {
         if (input.length() != MAX_NUMBER_LENGTH) {
-            throw new IllegalArgumentException("3자리 수만 입력할 수 있습니다.");
+            throw new OnlyThreeNumberInputException();
         }
     }
 
     public static void validateDuplicateNumber(String input) {
         List<String> characterList = Arrays.asList(input.split(""));
         if (hasDuplicatedDigit(characterList)) {
-            throw new IllegalArgumentException("자리수 간 중복된 수를 가질 수 없습니다.");
+            throw new CantDuplicatedNumberInputException();
         }
     }
 
