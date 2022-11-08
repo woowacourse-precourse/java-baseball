@@ -8,10 +8,17 @@ public class Application {
     public static void main(String[] args) {
         boolean game = true;
         start();
+
         while(game) {
             List<Integer> computer = make_number();
+            int strike = 0;
+
+            while(strike != 3){
             List<Integer> player = input_number();
             wrong_number(player);
+
+                strike = check_strike(computer,player);
+            }
         }
     }
     public static void start(){
@@ -41,8 +48,14 @@ public class Application {
             throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 종료합니다.");
         }
     }
-    public static int check_strike(){
-
+    public static int check_strike(List<Integer> computer_number, List<Integer> player_number){
+        int strike = 0;
+        for(int i = 0; i < player_number.size(); i++){
+            if(computer_number.get(i) == player_number.get(i)){
+                strike += 1;
+            }
+        }
+        return strike;
     }
     public static int check_ball(){
 
