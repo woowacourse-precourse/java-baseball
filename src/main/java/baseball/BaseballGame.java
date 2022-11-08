@@ -11,7 +11,7 @@ public class BaseballGame {
     private boolean isContinue = true;
     private int ballCount = 0;
     private int strikeCount = 0;
-    private Rival computer;
+    private final Rival computer;
     private List<Integer> player;
 
     BaseballGame(){
