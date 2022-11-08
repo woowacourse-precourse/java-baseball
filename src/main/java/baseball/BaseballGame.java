@@ -50,6 +50,7 @@ public class BaseballGame {
         player = new ArrayList<>();
         String input = Console.readLine();
 
+        checkNonNumericException(input);
         checkLengthException(input);
         checkDuplicationException(input);
 
@@ -61,6 +62,13 @@ public class BaseballGame {
         }
     }
 
+    private void checkNonNumericException(String input){
+        final String NUMERIC_VERIFICATION_PATTERN = "^[1-9]+$";
+        if(!input.matches(NUMERIC_VERIFICATION_PATTERN)){
+            throw new IllegalArgumentException();
+        }
+
+    }
     private void checkLengthException(String input){
         if(input.length() != LENGTH_OF_NUMBER){
             throw new IllegalArgumentException();
