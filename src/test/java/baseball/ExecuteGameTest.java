@@ -13,7 +13,7 @@ public class ExecuteGameTest {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(INPUT.getBytes());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(outputStream);
-        ExecuteGame executeGame = new ExecuteGame(inputStream, ps);
+        ExecuteGame executeGame = new ExecuteGame();
 
         boolean result = executeGame.canRepeatGame();
         String output = outputStream.toString();
@@ -30,7 +30,7 @@ public class ExecuteGameTest {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(INPUT.getBytes());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(outputStream);
-        ExecuteGame executeGame = new ExecuteGame(inputStream, ps);
+        ExecuteGame executeGame = new ExecuteGame();
 
         boolean result = executeGame.canRepeatGame();
         String output = outputStream.toString();
@@ -47,7 +47,7 @@ public class ExecuteGameTest {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(FINISH_GAME.getBytes());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(outputStream);
-        ExecuteGame executeGame = new ExecuteGame(inputStream, ps);
+        ExecuteGame executeGame = new ExecuteGame();
         boolean result = executeGame.canRepeatGame();
         String output = outputStream.toString();
         assertThat(output).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
@@ -61,7 +61,7 @@ public class ExecuteGameTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(outputStream);
 
-        ExecuteGame executeGame = new ExecuteGame(inputStream, ps);
+        ExecuteGame executeGame = new ExecuteGame();
         boolean result = executeGame.canRepeatGame();
         String output = outputStream.toString();
         assertThat(output).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");

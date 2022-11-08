@@ -7,8 +7,7 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        PrintStream ps = new PrintStream(System.out);
-        ExecuteGame executeGame = new ExecuteGame(System.in, ps);
+        ExecuteGame executeGame = new ExecuteGame();
 
         do {
         executeGame.play();
