@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-
     private Hint hint = new Hint();
     private List<Integer> randomNumbers = new ArrayList<>();
 
