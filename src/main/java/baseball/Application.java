@@ -64,4 +64,8 @@ public class Application {
         }
         return arr;
     }
+    static int[] initRandomValue(){
+        int randomValue = getRandomValue();
+        return getIntToArr(randomValue);
+    }
 }
