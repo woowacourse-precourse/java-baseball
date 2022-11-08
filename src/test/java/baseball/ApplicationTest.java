@@ -60,6 +60,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 스트라이크_볼_가능한_케이스_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "178", "156", "136", "315", "351", "135", "2");
+                    assertThat(output()).contains("낫싱", "1스트라이크", "1볼 1스트라이크", "2스트라이크",
+                            "2볼 1스트라이크", "3볼", "3스트라이크", "게임 종료");
+                },
+                1,3,5
+        );
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
