@@ -9,6 +9,7 @@ public class Application {
     private static final int RANDOM_NUMBER_DIGIT_SIZE = 3;
 
     public static void main(String[] args) {
+        int condition = 1;
         String input = getInput();
         validateInput(input);
 
@@ -46,6 +47,10 @@ public class Application {
         }
 
         return parseIntResultList;
+    }
+
+    public static List<Integer> convertInputToBaseBallInput(String input){
+        return(convertCharListToIntList(tokenizeString(input)));
     }
 
     public static List<Integer> generateRandomNumber(int digitSize) {
@@ -88,5 +93,24 @@ public class Application {
             return strikeCount+"스트라이크";
         else
             return ballCount+"볼"+" "+strikeCount+"스트라이크";
+    }
+
+    public static void baseBallStart() {
+        List<Integer> randomNumber = generateRandomNumber(RANDOM_NUMBER_DIGIT_SIZE);
+        List<Integer> currentBaseBallResult;
+
+        while(true){
+            String input = getInput();
+
+            validateInput(input);
+            List<Integer> baseBallInput = convertInputToBaseBallInput(input);
+
+            currentBaseBallResult = calculateBaseBallResult(randomNumber, baseBallInput);
+
+            System.out.println(convertBaseBallResultToConsoleOutputString(currentBaseBallResult));
+
+            if(currentBaseBallResult.get(0) == RANDOM_NUMBER_DIGIT_SIZE)
+                break;
+        }
     }
 }
