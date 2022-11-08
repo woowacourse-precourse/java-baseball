@@ -46,10 +46,9 @@ public class PlayBall {
     }
 
     public void checkUserInput(String userNumberInput){
-
-
         exceptionHandler.checkIsNoneZeroDigit(userNumberInput);
         exceptionHandler.checkIsValidLength(userNumberInput);
+        exceptionHandler.checkIsUniqueNumbers(userNumberInput);
     }
 
     public Referee judgeUserNumber(String userNumberInput){

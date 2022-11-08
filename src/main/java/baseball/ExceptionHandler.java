@@ -14,10 +14,22 @@ public class ExceptionHandler {
         }
     }
 
-
     public void checkIsValidLength(String userNumber){
         if (userNumber.length() != 3){
             throw new IllegalArgumentException("입력한 값이 세자리 숫자가 아닙니다.");
+        }
+    }
+
+    public void checkIsUniqueNumbers(String userNumber){
+        for (int i = 0; i < userNumber.length(); i++){
+            char ch = userNumber.charAt(i);
+            long charCount = userNumber.chars()
+                    .filter(c->c==ch)
+                    .count();
+
+            if (charCount > 1){
+                throw new IllegalArgumentException("서로 다른 세자리 수를 입력해야 합니다.");
+            }
         }
     }
 
