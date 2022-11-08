@@ -13,13 +13,13 @@ public class Exception {
 
   public boolean isValidMyInput(String inputNumberString) {
     if (!isValidLength(inputNumberString)) {
-      throw new IllegalArgumentException("세자리가 아님");
+      throw new IllegalArgumentException();
     }
     if (!isNumeric(inputNumberString)) {
-      throw new IllegalArgumentException("숫자가 아닌 문자 입력");
+      throw new IllegalArgumentException();
     }
     if (!isAnotherNumber(inputNumberString)) {
-      throw new IllegalArgumentException("중복된 수 입력");
+      throw new IllegalArgumentException();
     }
     return true;
   }
@@ -59,6 +59,6 @@ public class Exception {
     if (restartOrExitNumber.equals(EXIT_NUMBER)) {
       return false;
     }
-    throw new IllegalArgumentException("잘못 입력하셨습니다.");
+    throw new IllegalArgumentException();
   }
 }
