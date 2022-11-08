@@ -12,20 +12,17 @@ import java.util.List;
 public class ComputerNumber {
 
     public List<Integer> getComputerRandomNumber() {
-        List<Integer> computerNumber = new ArrayList<>();
-        while (computerNumber.size() < NumberNaming.MAX_NUMBER_SIZE) {
-            createRandomNumber(computerNumber, Randoms.pickNumberInRange(NumberNaming.MIN_RANGE_NUM, NumberNaming.MAX_RANGE_NUM));
+        List<Integer> computerNumberList = new ArrayList<>(Collections.emptyList());
+        while (computerNumberList.size() < NumberNaming.MAX_NUMBER_SIZE) {
+            createRandomNumber(computerNumberList);
         }
-        return computerNumber = Collections.unmodifiableList(computerNumber);
+        return Collections.unmodifiableList(computerNumberList);
     }
 
-    public void createRandomNumber(List<Integer> RandomNumberList, int number) {
+    private void createRandomNumber(List<Integer> RandomNumberList) {
+        int number = Randoms.pickNumberInRange(NumberNaming.MIN_RANGE_NUM, NumberNaming.MAX_RANGE_NUM);
         if (!RandomNumberList.contains(number)) {
             RandomNumberList.add(number);
         }
     }
 }
-
-
-
-
