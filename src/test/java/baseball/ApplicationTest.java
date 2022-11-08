@@ -99,6 +99,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void should_ThrowException_When_UserIsDigitFalse() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
