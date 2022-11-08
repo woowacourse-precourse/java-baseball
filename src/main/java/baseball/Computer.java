@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.ConstValue.*;
+import static baseball.ConstValue.MAX_RANGE_NUMBER;
+import static baseball.ConstValue.MIN_RANGE_NUMBER;
+import static baseball.ConstValue.NUMBERS_LENGTH;
 
 public class Computer {
 
@@ -15,13 +17,13 @@ public class Computer {
     }
 
     public void pickRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < NUMBERS_LENGTH) {
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < NUMBERS_LENGTH) {
             int randomNumber = Randoms.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
-            if (! numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
+            if (! randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
             }
         }
-        putNumber(numbers);
+        putNumber(randomNumbers);
     }
 }

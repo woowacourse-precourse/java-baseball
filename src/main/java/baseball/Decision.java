@@ -8,45 +8,28 @@ public class Decision {
 
     public static boolean out = false;
     private static boolean playing = true;
-    private static HashMap<String, Integer> scoreBoard;
 
     public static void call() {
-        scoreBoard = Score.total();
-
-        if (threeStrikeOut()) {
+        //Score score = new Score();
+        Score.makeScore();
+        if (Score.threeStrikeOut()) {
             Message.onlyStrikeCount();
             out();
             return;
         }
-        if (ballAndStrikeCount()) {
+        if (Score.ballAndStrikeCount()) {
             Message.ballAndStrikeCount();
             return;
         }
-        if (onlyBallCount()) {
+        if (Score.onlyBallCount()) {
             Message.onlyBallCount();
             return;
         }
-        if (onlyStrikeCount()) {
+        if (Score.onlyStrikeCount()) {
             Message.onlyStrikeCount();
             return;
         }
         Message.notThing();
-    }
-
-    private static boolean threeStrikeOut() {
-        return scoreBoard.get(STRIKE).equals(THREE_STRIKE_OUT);
-    }
-
-    private static boolean onlyBallCount() {
-        return !scoreBoard.get(BALL).equals(NO_COUNT) && scoreBoard.get(STRIKE).equals(NO_COUNT);
-    }
-
-    private static boolean onlyStrikeCount() {
-        return scoreBoard.get(BALL).equals(NO_COUNT) && !scoreBoard.get(STRIKE).equals(NO_COUNT);
-    }
-
-    private static boolean ballAndStrikeCount() {
-        return !scoreBoard.get(BALL).equals(NO_COUNT) && !scoreBoard.get(STRIKE).equals(NO_COUNT);
     }
 
     private static void out() {
