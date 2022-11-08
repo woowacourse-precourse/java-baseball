@@ -3,6 +3,8 @@ package baseball.controller;
 import baseball.model.Computer;
 import baseball.model.User;
 
+import java.util.List;
+
 
 public class GamePlay {
     public static boolean restart = false;
@@ -12,7 +14,7 @@ public class GamePlay {
     public void playContinuous() {
         while (true) {
             System.out.print("숫자를 입력하세요: ");
-            int[] guessNumbers = typingNumber();
+            List<Integer> guessNumbers = typingNumber();
             match(guessNumbers);
             if (restart && restartGame()) {
                 break;
@@ -26,7 +28,7 @@ public class GamePlay {
         playContinuous();
     }
 
-    public int[] typingNumber() {
+    public List<Integer> typingNumber() {
         return user.inputNumber();
     }
 
@@ -38,7 +40,7 @@ public class GamePlay {
         return restartFlag;
     }
 
-    public void match(int[] guessNumbers) {
+    public void match(List<Integer> guessNumbers) {
         computer.compare(guessNumbers);
 
         if (computer.getStrikeCount() == 3) {

@@ -1,11 +1,10 @@
 package baseball.util;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Util {
-    public static boolean isDuplicated(int[] numbers) {
-        long count = Arrays.stream(numbers).distinct().count();
-        return numbers.length == count;
+    public static boolean isNotDuplicated(List<Integer> numberList, int number) {
+        return !numberList.contains(number);
     }
 
     public static void isCorrectInput(String numbers) {
@@ -16,7 +15,6 @@ public class Util {
         if (!numbers.matches("-?\\d+(\\.\\d+)?")) {
             throw new IllegalArgumentException("숫자만 입력하세요.");
         }
-
     }
 
     public static void isCorrectInputRestartNumber(int number) {

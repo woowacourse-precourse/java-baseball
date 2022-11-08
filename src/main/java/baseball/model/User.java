@@ -4,13 +4,17 @@ import baseball.controller.GamePlay;
 import baseball.util.Util;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
-    public int[] inputNumber() {
-        int[] inputNumbers = new int[3];
+    public List<Integer> inputNumber() {
+        List<Integer> inputNumbers = new ArrayList<>();
         String readLine = Console.readLine();
         Util.isCorrectInput(readLine);
+
         for (int i = 0; i < 3; i++) {
-            inputNumbers[i] = Integer.parseInt(readLine.substring(i, i + 1));
+            inputNumbers.add(Integer.parseInt(readLine.substring(i, i + 1)));
         }
         return inputNumbers;
     }

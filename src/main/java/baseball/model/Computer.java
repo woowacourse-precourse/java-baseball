@@ -1,31 +1,29 @@
 package baseball.model;
 
-import baseball.controller.GamePlay;
 import baseball.util.Util;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Computer {
     private int ballCount = 0;
     private int strikeCount = 0;
-    private int[] numbers = new int[3];
+    private ArrayList<Integer> numberList;
 
     public void generateNumber() {
-        do {
-            numbers = pickNumbers();
-        } while (!Util.isDuplicated(numbers));
+        numberList = new ArrayList<>();
+        while (numberList.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (Util.isNotDuplicated(numberList, randomNumber)) {
+                numberList.add(randomNumber);
+            }
+        }
     }
 
-    private int[] pickNumbers() {
-        return Arrays.stream(new int[3])
-                .map(num -> Randoms.pickNumberInRange(1, 9))
-                .toArray();
-    }
-
-    public void compare(int[] guessNumbers) {
-        for (int i = 0; i < numbers.length; i++) {
-            search(guessNumbers[i], i);
+    public void compare(List<Integer> guessNumbers) {
+        for (int i = 0; i < guessNumbers.size(); i++) {
+            search(guessNumbers.get(i), i);
         }
 
         hintPrint();
@@ -49,13 +47,13 @@ public class Computer {
     }
 
     private void search(int guessNumber, int index) {
-        if (guessNumber == numbers[index]) {
+        if (guessNumber == numberList.get(index)) {
             strikeCount++;
             return;
         }
 
-        for (int i = 0; i < numbers.length; i++) {
-            if (guessNumber == numbers[i]) {
+        for (Integer integer : numberList) {
+            if (guessNumber == integer) {
                 ballCount++;
             }
         }
@@ -65,7 +63,7 @@ public class Computer {
         return strikeCount;
     }
 
-    public int[] getNumbers() {
-        return numbers;
+    public ArrayList<Integer> getNumberList() {
+        return numberList;
     }
 }
