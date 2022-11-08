@@ -12,7 +12,9 @@
   `Manager.getUserInput()`
 - 게임의 재시작 또는 종료 여부를 사용자에게 묻는 기능
   `Manager.checkContinuity()`
-  
+- 스트라이크, 볼에 대해 결과를 사용자에게 알려주는 기능
+  `Manager.printResult()`
+
 ### 2. Checker Class
 
 - 사용자가 게임 중 잘못된 값을 입력했는지 확인하는 기능
