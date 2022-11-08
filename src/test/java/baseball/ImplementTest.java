@@ -187,6 +187,15 @@ public class ImplementTest extends NsTest{
         }
     }
 
+    @Tag("유저 인풋 예외 테스트")
+    @Test
+    @DisplayName("정답후 재시작용 인풋 예외 테스트")
+    void checkAfterGameInput_test() {
+        int wrongInput = 3;
+        assertThatThrownBy(() -> ExceptionChecker.checkAfterGameInput(wrongInput))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
