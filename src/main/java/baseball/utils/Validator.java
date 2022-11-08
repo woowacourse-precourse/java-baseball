@@ -25,4 +25,11 @@ public class Validator {
                 .distinct()
                 .count() == input.length();
     }
+
+    public boolean isRightNumber(String input) {
+        int digit = Integer.parseInt(String.valueOf(input));
+        if (digit == 1 || digit == 2)
+            return true;
+        return false;
+    }
 }
