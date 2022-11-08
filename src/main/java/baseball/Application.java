@@ -4,13 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Application {
-    private static boolean userWantsToPlay = true;
-
     public static void main(String[] args) {
         System.out.println(Message.GREETING);
-        while (userWantsToPlay) {
+        do {
             playBall();
-        }
+        } while (playOn());
     }
 
     private static void playBall() {
@@ -25,15 +23,14 @@ public class Application {
             strikeOut = Score.SCORE.strikeOut();
         }
         System.out.println(Message.CONGRATULATIONS);
-        playOn();
     }
 
-    private static void playOn() {
+    private static boolean playOn() {
         System.out.println(Message.PROMPT_PLAY_ON);
         String input = Console.readLine();
         if (!input.matches("^[12]$")) {
             throw new IllegalArgumentException();
         }
-        userWantsToPlay = input.equals("1");
+        return input.equals("1");
     }
 }
