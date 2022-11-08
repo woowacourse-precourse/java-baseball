@@ -54,7 +54,6 @@ public class Application {
         boolean allStrike = false;
         strike = scoreMap.get("스트라이크");
         ball = scoreMap.get("볼");
-
         if ((strike > 0) && (ball > 0)) {
             System.out.printf("%d볼 %d스트라이크%n",ball,strike);
         } else if ((strike > 0) && (ball == 0)) {
@@ -89,7 +88,6 @@ public class Application {
         boolean gamePoint;
         List<Integer> splitUserNumber;
         Map<String, Integer> scoreMap;
-
         System.out.println(computerNumber);
         while(stopPoint) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -130,7 +128,6 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         List<Integer> computerNumber = pickComputerNumber();
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame(computerNumber);
 
