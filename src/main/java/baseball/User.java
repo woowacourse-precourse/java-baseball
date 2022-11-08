@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class User {
-
+    final static int INPUT_LOWER_BOUND = 100;
+    final static int INPUT_UPPER_BOUND = 999;
+    final static int REPLAY_INPUT_TRUE = 1;
+    final static int REPLAY_INPUT_FALSE = 2;
     List<Integer> userInputList = new ArrayList<>();
 
     public User() {
@@ -36,7 +39,7 @@ public class User {
         try {
             int userInt = Integer.parseInt(userInput);
             int userIntLength = String.valueOf(userInt).length();
-            if (userIntLength != 3 || userInt < 0 || userInt > 999 || isDuplicatedInput(userInput)) {
+            if (userIntLength != 3 || userInt < INPUT_LOWER_BOUND || userInt > INPUT_UPPER_BOUND || isDuplicatedInput(userInput)) {
                 throw new NumberFormatException();
             }
             return true;
@@ -68,7 +71,7 @@ public class User {
         try {
             int userInt = Integer.parseInt(userInput);
             int userIntLength = String.valueOf(userInt).length();
-            if (userIntLength != 1 || (userInt != 1 && userInt != 2)) {
+            if (userIntLength != 1 || (userInt != REPLAY_INPUT_TRUE && userInt != REPLAY_INPUT_FALSE)) {
                 throw new NumberFormatException();
             }
             return true;
