@@ -2,6 +2,7 @@ package baseball.contorller;
 
 import baseball.domain.Ball;
 import baseball.domain.Config;
+import baseball.domain.Flag;
 import baseball.service.GameService;
 import baseball.view.Views;
 import camp.nextstep.edu.missionutils.Console;
@@ -27,6 +28,8 @@ public class GameController {
         while (!service.isAnswer()) {
             checkHint();
         }
+        Views.END_VIEW.getView().view();
+        restart();
     }
 
     public void checkHint() {
@@ -55,4 +58,10 @@ public class GameController {
         return string.length() != Config.MAX_BALLS_SIZE;
     }
 
+
+    private void restart() {
+        Views.RESTART_VIEW.getView().view();
+        String input = Console.readLine();
+        Flag.getFlag(input).accept(this);
+    }
 }
