@@ -112,6 +112,29 @@ class ApplicationTest extends NsTest {
                 1, 3, 5
         );
     }
+    @Test
+    void 종료오류() {
+        try {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "3");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        } catch (IllegalArgumentException e) {
+            assertThat(e).isInstanceOf(IllegalArgumentException.class);
+        }
+        try {
+            assertRandomNumberInRangeTest(
+                    () -> {
+                        run("246", "135", "12");
+                    },
+                    1, 3, 5, 5, 8, 9
+            );
+        } catch (IllegalArgumentException e) {
+            assertThat(e).isInstanceOf(IllegalArgumentException.class);
+        }
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
