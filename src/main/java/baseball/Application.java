@@ -20,6 +20,7 @@ public class Application {
             v validateNumber 메서드
             v isNumberValidMaxSize 메서드
             v isNumberValidRange 메서드
+            v convertInputAsNumber
 
 
         - Game 클래스

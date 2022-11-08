@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class User implements Number {
@@ -14,6 +15,13 @@ public class User implements Number {
     @Override
     public List<Integer> get() {
 
+    }
+
+    public static List<Integer> convertInputAsNumber(String inputNumber) {
+        validateNumber(inputNumber);
+        return Stream.of(inputNumber.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public static void validateNumber (String number) {
