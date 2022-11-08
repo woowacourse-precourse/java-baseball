@@ -22,7 +22,7 @@ public class Input {
     System.out.print("숫자를 입력해주세요 : ");
     String userInput = readLine();
 
-    if (!validateAnswerFormat(userInput)) {
+    if (!isValidAnswer(userInput)) {
       throw new IllegalArgumentException();
     }
 
@@ -54,7 +54,7 @@ public class Input {
    * @param string the string to be checked.
    * @return true if string is a different number of three digits.
    */
-  private static boolean validateAnswerFormat(String string) {
+  private static boolean isValidAnswer(String string) {
     return string.length() == 3
         && isNumeric(string)
         && isDistinct(string)
