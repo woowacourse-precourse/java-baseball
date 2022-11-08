@@ -10,5 +10,11 @@ public class BaseballGame {
         return userNumber;
     }
 
+    public static String requireRestartNumber() {
+        System.out.println(Message.RESTART_MSG);
+        String restartNumber = Console.readLine();
+        return restartNumber;
+    }
+
 
 }
