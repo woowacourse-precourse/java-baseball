@@ -1,13 +1,13 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -50,6 +50,22 @@ class ApplicationTest extends NsTest {
 
         //then
         assertThat(out.toString()).isEqualTo(message);
+    }
+
+    @Test
+    public void createComputerNumbers_반환하는_리스트_사이즈_3인지에_대한_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("createComputerNumbers");
+        method.setAccessible(true);
+
+        //given
+        final int listSize = 3;
+
+        //when
+        List<Integer> invoke = (List<Integer>)method.invoke(new Application());
+
+        //then
+        assertThat(invoke.size()).isEqualTo(listSize);
     }
 
     @Override
