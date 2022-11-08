@@ -14,7 +14,7 @@ public class Application {
             List<Integer> computerNumberList = Game.createComputerNumberList();
             tryOnceForAnswer(computerNumberList);
 
-        } while (tryAgain());
+        } while (tryAgainGame());
         PrintLine.endGame();
     }
 
@@ -33,7 +33,7 @@ public class Application {
         }
     }
 
-    private static boolean tryAgain() {
+    private static boolean tryAgainGame() {
         PrintLine.putRestartNumberPrint();
         String restartNumber = Console.readLine();
         Validation.validateRestartNumber(restartNumber);
