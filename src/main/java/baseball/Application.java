@@ -22,15 +22,59 @@ public class Application {
         return computer;
     }
 
-    static void getUserNumber() {
+    static void errorMessage() {
+        System.out.println("IllegalArgumentException 발생!");
+        System.out.println("어플리케이션을 종료합니다.");
+    }
+    static boolean checkLength(String str, int num) throws IllegalArgumentException {
+        boolean result = true;
+        try {
+            if (str.length() != num) {
+                result = false;
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            errorMessage();
+        }
+        return result;
+    }
+
+    static boolean checkRange(String strNumber, int index) {
+        boolean result = true;
+        try {
+            if (strNumber.charAt(index) - '0' < 1 || strNumber.charAt(index) - '0' > 9) {
+                result = false;
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            errorMessage();
+        }
+        return result;
+
+
+    }
+
+    static boolean getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String strNumber = Console.readLine();
+        List<Integer> userNumber = new ArrayList<>();
+        if (!checkLength(strNumber, 3)) {
+            return false;
+        }
+        for (int i = 0; i < strNumber.length(); i++) {
+            if (!checkRange(strNumber, i)) {
+                return false;
+            }
+        }
+        return true;
     }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         startMessage();
         List<Integer> computer = makeNumber();
-        getUserNumber();
-    }
+        if (!getUserNumber()) {
+            return;
+        }
 }
