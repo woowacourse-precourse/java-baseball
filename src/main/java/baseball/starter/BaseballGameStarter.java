@@ -35,7 +35,7 @@ public class BaseballGameStarter {
             if (referee.judgement(computerGeneratedValue, userInputValue).get("strikeCount") == 3) {
                 referee.sayGameEnded();
                 option = Console.readLine();
-                UserInputValueValidator.getInstance().validate(List.of(option));
+                UserInputValueValidator.getInstance().validateToAskingContinueGame(option);
             }
         }
 
