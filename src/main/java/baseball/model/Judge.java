@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Judge {
 
@@ -31,5 +32,28 @@ public class Judge {
         return attack.get(index).baseballContain(defend);
     }
 
+    public String judge() {
+
+        int strike = (int) IntStream.range(0, 3).filter(this::isStrike).count();
+        int ball = (int) IntStream.range(0, 3).filter(this::isBall).count();
+
+        String result = "";
+        if (ball != 0) {
+            result += ball + "볼";
+        }
+
+        if (strike != 0) {
+            if (!result.equals("")) {
+                result += " ";
+            }
+            result += strike + "스트라이크";
+        }
+
+        if (result.equals("")) {
+            return "낫싱";
+        }
+
+        return result;
+    }
 
 }
