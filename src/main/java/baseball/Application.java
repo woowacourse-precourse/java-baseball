@@ -44,7 +44,7 @@ public class Application {
 		List<Integer> answer = new ArrayList<>();
 		System.out.print("숫자를 입력해주세요 :");
 		int playerInput = Integer.parseInt(Console.readLine());
-		if (playerInput < 0 || playerInput > 999) {
+		if (playerInput < 100 || playerInput > 999) {
 			error();
 		}
 		int numOne = (int) (playerInput / 100) % 10;
