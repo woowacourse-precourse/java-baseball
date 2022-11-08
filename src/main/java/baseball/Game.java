@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Game {
 
     boolean finished;
+    static Scanner sc = new Scanner(System.in);
 
     public Game() {
         title();
@@ -83,8 +84,7 @@ public class Game {
     }
 
     private String getUserInput() throws IllegalArgumentException {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+        String input = sc.next();
 
         for(char c : input.toCharArray()) {
             if (c < 48 || 57 < c)
