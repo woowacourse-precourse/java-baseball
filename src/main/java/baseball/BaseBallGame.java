@@ -7,23 +7,31 @@ public class BaseBallGame {
     String VALUE_IS_CORRECT = "볼";
     String INDEX_VALUE_ARE_WRONG = "낫싱";
 
-    // 컴퓨터가 제시한 배열
-//    ArrayList<Integer> computer;
-
     String computer;
     Map<String, Integer> result = new HashMap<String, Integer>();
+
+    public BaseBallGame(String computer) {
+        this.computer = computer;
+    }
+
+    public void playBaseBall(String input) {
+            BaseBallGame baseBallGame = new BaseBallGame(computer);
+            Map<String, Integer> scores = baseBallGame.calculateScores(input);
+            System.out.println(getResultAsString(scores));
+    }
+
     // 스트라이크, 볼, 낫싱 점수를 map으로 저장하는 함수
     public Map<String, Integer> calculateScores(String input) {
 
         for (int i = 0; i < input.length(); i++) {
-            int userDigit =  input.charAt(i);
+            int userDigit = input.charAt(i);
             int findIndex = computer.indexOf(userDigit);
 
             if (i == findIndex) {
                 saveScore(result, INDEX_VALUE_ARE_CORRECT);
             } else if (findIndex != -1) {
                 saveScore(result, VALUE_IS_CORRECT);
-            } else if (findIndex == -1){
+            } else if (findIndex == -1) {
                 saveScore(result, INDEX_VALUE_ARE_WRONG);
             }
         }
@@ -31,7 +39,7 @@ public class BaseBallGame {
     }
 
 
-    public static void saveScore(Map<String, Integer> map, String key) {
+    public void saveScore(Map<String, Integer> map, String key) {
         int score = 1;
         if (!map.containsKey(key)) {
             map.put(key, 1);
@@ -60,8 +68,8 @@ public class BaseBallGame {
     }
 
 
-    public boolean isRightAnswer() {
-        if(this.result.containsKey(INDEX_VALUE_ARE_CORRECT) && this.result.get(INDEX_VALUE_ARE_CORRECT) == 3) {
+    public boolean isRightAnswer(Map<String, Integer> scores) {
+        if(scores.containsKey(INDEX_VALUE_ARE_CORRECT) && scores.get(INDEX_VALUE_ARE_CORRECT) == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료!");
             return true;
         } else {
@@ -69,4 +77,5 @@ public class BaseBallGame {
             return false;
         }
     }
+
 }
