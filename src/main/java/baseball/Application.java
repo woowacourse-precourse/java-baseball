@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,12 @@ public class Application {
         return player;
     }
 
+    static void verifyPlayer(List<Integer> player){
+        if(player.size() != 3 || (player.contains(0))) throw new IllegalArgumentException();
+        if(player.get(0) == player.get(1) || player.get(0) == player.get(1) || player.get(1) == player.get(2)) throw new IllegalArgumentException();
+        return;
+    }
+
     static List<Integer> random(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -38,6 +45,7 @@ public class Application {
         List<Integer> computer  = random();
         int inputInt = input();
         List<Integer> player = separate(inputInt);
+        verifyPlayer(player);
     }
 
     static boolean finish(){
