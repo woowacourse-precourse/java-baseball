@@ -9,6 +9,36 @@ import java.util.Map;
 
 public class BaseballGame {
 
+    public void play() {
+        printStartMessage();
+        while (true) {
+            String answer = generateAnswer();
+            playRound(answer);
+            boolean doReplay = selectIfReplay();
+            if (!doReplay) {
+                break;
+            }
+        }
+    }
+
+    public void playRound(String answer) {
+        while (true) {
+            printInputMessage();
+            String userInput = getUserInput();
+            Map<String, Integer> score = gradeScore(answer, userInput);
+            printScore(score.get("strike"), score.get("ball"));
+            if (score.get("strike") == 3) {
+                break;
+            }
+        }
+    }
+
+    public boolean selectIfReplay() {
+        printEndMessage();
+        String userInput = getUserInput();
+        return userInput.equals("1");
+    }
+
     public void printStartMessage() {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
