@@ -17,36 +17,40 @@ public class RandomNumberGenerator {
         numberSet.clear();
     }
 
-    public static List<Integer> generateRandomNumbers() {
-        List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < NUMBER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
+    public static List<Integer> generateRandomNumber() {
+        List<Integer> randomNumber = new ArrayList<>();
+
+        while (randomNumber.size() < NUMBER_LENGTH) {
+            int randomDigit = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
+            if (!randomNumber.contains(randomDigit)) {
+                randomNumber.add(randomDigit);
             }
         }
-        return randomNumbers;
+
+        return randomNumber;
     }
 
     public static List<Integer> getRandomNumber() {
         int numberCase = 0;
-        List<Integer> randomNumbers = new ArrayList<>();
+        List<Integer> randomNumber = new ArrayList<>();
         boolean generationComplete = false;
+
         while ((numberCase < MAX_NUMBER_OF_CASE) && !generationComplete) {
-            randomNumbers = generateRandomNumbers();
-            generationComplete = checkDuplicateNumbers(randomNumbers);
+            randomNumber = generateRandomNumber();
+            generationComplete = checkDuplicateNumber(randomNumber);
             numberCase++;
         }
-        return randomNumbers;
+
+        return randomNumber;
     }
 
-    private static boolean checkDuplicateNumbers(List<Integer> randomNumbers) {
-        boolean noDuplicatedNumbers = false;
-        String generatedNumbers = randomNumbers.stream().map(String::valueOf).collect(Collectors.joining());
-        if (!numberSet.contains(generatedNumbers)) {
-            numberSet.add(generatedNumbers);
-            noDuplicatedNumbers = true;
+    private static boolean checkDuplicateNumber(List<Integer> randomNumber) {
+        boolean noDuplicatedNumber = false;
+        String generatedNumber = randomNumber.stream().map(String::valueOf).collect(Collectors.joining());
+        if (!numberSet.contains(generatedNumber)) {
+            numberSet.add(generatedNumber);
+            noDuplicatedNumber = true;
         }
-        return noDuplicatedNumbers;
+        return noDuplicatedNumber;
     }
 }

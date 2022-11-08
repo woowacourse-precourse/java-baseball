@@ -23,7 +23,7 @@ public class RandomNumberGeneratorTest {
     @Test
     void 난수_0_확인() {
         for (int testNumbers = 0; testNumbers < RandomNumberGenerator.MAX_NUMBER_OF_CASE; testNumbers++) {
-            List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
+            List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumber();
             assertThat(gameNumbers.contains(0)).isEqualTo(false);
         }
     }
@@ -31,7 +31,7 @@ public class RandomNumberGeneratorTest {
     @Test
     void 자릿수의_길이_확인() {
         for (int testNumbers = 0; testNumbers < RandomNumberGenerator.MAX_NUMBER_OF_CASE; testNumbers++) {
-            List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
+            List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumber();
             assertThat(gameNumbers.size()).isEqualTo(3);
         }
     }
@@ -56,7 +56,7 @@ public class RandomNumberGeneratorTest {
     }
 
     private static boolean isDigitAOtherNumber() {
-        List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
+        List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumber();
         HashSet<Integer> numberSet = new HashSet<>();
 
         for (Integer number : gameNumbers) {
