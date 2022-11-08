@@ -2,15 +2,14 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
 
-    static BufferedReader br;
     static boolean result;
     static boolean restart;
 
@@ -21,33 +20,33 @@ public class Application {
     static int ball;
 
     public static void main(String[] args) throws IOException {
-        br = new BufferedReader(new InputStreamReader(System.in));
-        start(br);
+        start();
         while (!restart) {
-            restart(br);
+            restart();
         }
     }
 
-    public static void start(BufferedReader br) throws IOException {
+    public static void start() throws IOException {
         System.out.println("숫자 야구 게임을 시작합니다.");
         selectNumber();
         while (!result) {
-            inputNumber(br);
+            inputNumber();
             checkNumber(numbers);
         }
     }
 
-    public static void restart(BufferedReader br) throws IOException {
+    public static void restart() throws IOException {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String[] temp = br.readLine().split("");
-        if (temp.length >= 2) {
-            throw new IllegalArgumentException();
-        }
-        int choice = Integer.parseInt(temp[0]);
-        if (choice == 1) {
+        String input = readLine();
+
+        if(input.equals("1")){
             result = false;
-            start(br);
-        } else restart = true;
+            start();
+        }else if(input.equals("2")){
+            restart = true;
+        }else{
+            throw new IllegalArgumentException("잘못 입력하셨습니다.");
+        }
     }
 
     public static void checkNumber(List<Integer> numbers) {
@@ -81,16 +80,19 @@ public class Application {
     }
 
 
-    public static void inputNumber(BufferedReader br) throws IOException {
+    public static void inputNumber() throws IOException {
         System.out.print("숫자를 입력해 주세요 : ");
-        String[] temp = br.readLine().split("");
-        if (temp.length >= 4) {
-            throw new IllegalArgumentException();
-        }
+        String input = readLine();
         numbers = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            numbers.add(Integer.parseInt(temp[i]));
+
+        for(int i=0; i<input.length(); i++){
+            numbers.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         }
+
+        if (numbers.size() >= 4) {
+            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
+        }
+
     }
 
     public static void selectNumber() {
@@ -101,5 +103,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        System.out.println(computer);
     }
 }
