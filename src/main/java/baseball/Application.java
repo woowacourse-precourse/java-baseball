@@ -8,6 +8,9 @@ public class Application {
 
         }
 
+        private void gameInit() {
+            printOpeningStatus();
+        }
     }
 
     public static void main(String[] args) {
