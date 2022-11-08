@@ -12,12 +12,14 @@ class Game {
     public static final int MAX_ANSWER_SIZE = 3;
     public static final int MIN_ANSWER_NUMBER = 1;
     public static final int MAX_ANSWER_NUMBER = 9;
+    public static final int REPLAY = 1;
+    public static final int EXIT = 2;
 
     private List<Integer> answerList;
 
     public void start() {
         while (true) {
-            if (play() == 2) {
+            if (play() == EXIT) {
                 break;
             }
         }
@@ -40,7 +42,15 @@ class Game {
 
         System.out.println(GameMessage.CORRECT.message());
         System.out.println(GameMessage.REPLAY_OR_END.message());
-        return Integer.parseInt(Console.readLine());
+
+        return getRegameOption();
+    }
+
+    private int getRegameOption() {
+        int input = Integer.parseInt(Console.readLine());
+        if(input != REPLAY && input != EXIT)
+            throw new IllegalArgumentException("1 혹은 2를 입력하지 않으셨습니다.");
+        return input;
     }
 
     private List<Integer> initAnswerList() {
@@ -59,9 +69,15 @@ class Game {
 
     public List<Integer> getUserGuess() {
         String input = Console.readLine();
-        return Arrays.stream(input.split(""))
+        List<Integer> guess = Arrays.stream(input.split(""))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
+
+        for(int g : guess){
+            if(!(1 <= g && g <= 9))
+                throw new IllegalArgumentException("입력 숫자 범위는 1~9 여야 합니다.");
+        }
+        return guess;
     }
 
     private boolean isCorrect(List<Integer> guess) {
