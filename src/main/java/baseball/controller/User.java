@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import baseball.model.Baseball;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
 

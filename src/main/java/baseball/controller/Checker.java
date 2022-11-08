@@ -4,7 +4,6 @@ import baseball.model.Baseball;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Checker {
     private static final String STRIKE = "스트라이크";

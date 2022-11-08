@@ -5,12 +5,7 @@ import baseball.view.Printer;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
 public class Executor {
-    private static Computer computer;
     private static Checker checker = new Checker();
 
     private static  final int RESTART = 1;
