@@ -2,7 +2,7 @@ package baseball.exception;
 
 import baseball.controller.Game;
 
-public class Exception {
+public class BaseballException {
     public static void vaildNum(int num){
         if (num < 100 || num > 999) {
             throw new IllegalArgumentException("3개의 숫자를 입력해 주십시오.");
