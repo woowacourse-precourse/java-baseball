@@ -29,4 +29,25 @@ public class VaildatorTest {
         boolean result = validator.checkBaseballNumber();
         assertThat(result).isFalse();
     }
+
+    @Test
+    void Vaildator_오답_4자리입력() {
+        validator = new Validator("1234");
+        boolean result = validator.checkBaseballNumber();
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void Vaildator_오답_2자리입력() {
+        validator = new Validator("34");
+        boolean result = validator.checkBaseballNumber();
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void Vaildator_오답_2자리문자입력() {
+        validator = new Validator("ㅁㅁ");
+        boolean result = validator.checkBaseballNumber();
+        assertThat(result).isFalse();
+    }
 }
