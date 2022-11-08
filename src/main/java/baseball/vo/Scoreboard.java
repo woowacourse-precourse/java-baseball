@@ -47,7 +47,6 @@ public class Scoreboard {
         return this.scoreboard.get(1);
     }
 
-
     public List<Integer> toList() {
         return this.scoreboard;
     }
