@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.List;
 
@@ -101,7 +102,11 @@ public class BaseballTest {
 
     @Nested
     class FunctionList6{
-
+        @Test
+        void 정답_입력시까지_반복여부_테스트(){
+            boolean answer = Application.inputNumberIsAnswer("2볼");
+            assertThat(answer).isEqualTo(true); // true시 계속 진행
+        }
     }
 
 }
