@@ -13,7 +13,7 @@ public class Input {
             pattern = Pattern.compile(regex);
             this.range=range;
         }
-        else throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+        else throw new IllegalArgumentException("잘못된 범위입니다.");
     }
     public String playInput(){
         String input = Console.readLine();

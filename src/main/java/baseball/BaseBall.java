@@ -1,7 +1,7 @@
 package baseball;
-
+import java.util.List;
 public class BaseBall {
-    private String answer="";
+    private List<Integer> answer;
     private Input input;
     private Random random;
     private int range;
@@ -13,13 +13,14 @@ public class BaseBall {
     }
     private void start() {answer=random.pick();}
     public void play() {
-        String playInput;
+        String playInput,answerToString;
         start();
+        answerToString=answer.toString().replaceAll("[^0-9]","");
         do{
             System.out.print("숫자를 입력해주세요 : ");
             playInput=input.playInput();
             point(playInput);
-        }while (!answer.equals(playInput));
+        }while (!answerToString.equals(playInput));
         end();
     }
     private void end() {
@@ -34,13 +35,13 @@ public class BaseBall {
         }
     }
     private void point(String playInput){
-        int strikePoint=0;
-        int ballPoint=0;
+        int strikePoint=0,ballPoint=0,checkNum;
         for(int i=0; i<range; i++){
-            if(answer.indexOf(playInput.charAt(i)) == i){
+            checkNum=Character.getNumericValue(playInput.charAt(i));
+            if(answer.indexOf(checkNum) == i){
                 strikePoint=strikePoint+1;
             }
-            else if(answer.indexOf(playInput.charAt(i)) != -1){
+            else if(answer.contains(checkNum)){
                 ballPoint=ballPoint+1;
             }
         }
