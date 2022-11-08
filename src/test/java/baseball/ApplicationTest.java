@@ -64,6 +64,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void should_Success_When_ComputerDuplicate() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("123", "2");
+                    assertThat(output()).contains("3스트라이크", "게임 종료");
+                },
+                1, 2, 2, 2, 2, 2, 3
+        );
+    }
+
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
