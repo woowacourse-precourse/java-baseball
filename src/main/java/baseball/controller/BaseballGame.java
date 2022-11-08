@@ -1,8 +1,12 @@
 package baseball.controller;
 
 import baseball.model.ComputerNumberGenerator;
+import baseball.model.StatusCode;
+import baseball.view.InputView;
 
 import java.util.List;
+
+import static baseball.model.StatusCode.*;
 
 public class BaseballGame {
 
@@ -13,12 +17,16 @@ public class BaseballGame {
     }
 
     private static void startGame() {
-//        List<Integer> numberGeneratedByComputer = new ComputerNumberGenerator();
-
+        List<Integer> numberGeneratedByComputer = new ComputerNumberGenerator().VALIDATED_NUM;
 
     }
 
-    private static boolean exit() {
-        return true;
+    private static boolean exit() throws IllegalArgumentException {
+        String gameEndNumber = InputView.gameEndInput();
+        if (gameEndNumber.equals(RESTART.getCode()))
+            return false;
+        if (gameEndNumber.equals(QUIT.getCode()))
+            return true;
+        throw new IllegalArgumentException();
     }
 }
