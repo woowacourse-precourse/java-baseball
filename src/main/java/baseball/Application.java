@@ -17,13 +17,13 @@ public class Application {
 //        기능1. 컴퓨터 숫자선정
 
         int restart = 1;
-        Random random = new Random();
-        User user = new User();
-        Exceptions exceptions = new Exceptions();
+        Random random = new Random();   //Random numbers output;
+        User user = new User();         //User numbers output;
+        Exceptions exceptions = new Exceptions();   //Exceptions check;
+        Comparison comparison = new Comparison();       //random and user comparison;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         random.randomNum();
-
         ;
 
         try {
@@ -42,7 +42,7 @@ public class Application {
             System.err.println("에러메시지 : " + ne.getMessage());
             ne.printStackTrace();
         }
-
+        Comparison.comNuser();
 
 //        do {
 //
