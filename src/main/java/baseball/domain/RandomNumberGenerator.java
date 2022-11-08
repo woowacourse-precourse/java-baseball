@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RandomNumberGenerator {
 
-    private static final int SIZE = 3;
+    public static final int SIZE = 3;
     private static final int START_INCLUSIVE = 1;
     private static final int END_INCLUSIVE = 9;
 

@@ -1,5 +1,6 @@
 package baseball.util;
 
+import baseball.domain.RandomNumberGenerator;
 import java.util.List;
 
 public class InputVerifier {
@@ -42,7 +43,7 @@ public class InputVerifier {
 
     public boolean isSizeValid() {
         List<Integer> inputArray = StringToArrayList.convert(input);
-        return inputArray.size() == 3;
+        return inputArray.size() == RandomNumberGenerator.SIZE;
     }
 
     public boolean notContainZero() {
