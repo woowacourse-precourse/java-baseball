@@ -41,7 +41,28 @@ public class Application {
         res.add(ball);
         return res;
     }
-
+    public static int validate(int strike,int ball){
+        if(strike == 3){
+            System.out.printf("3스트라이크\n");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if(strike == 3){
+                System.out.printf("3스트라이크\n");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return 1;
+            }
+            if(strike == 0 && ball == 0){
+                System.out.printf("낫싱\n");
+                return 0;
+            }
+            System.out.printf("%d볼 %d스트라이크\n",ball,strike);
+        }
+        if(strike == 0 && ball == 0){
+            System.out.printf("낫싱\n");
+            return 0;
+        }
+        System.out.printf("%d볼 %d스트라이크\n",ball,strike);
+        return 0;
+    }
     public static void main(String[] args) throws Exception {
 
     }
