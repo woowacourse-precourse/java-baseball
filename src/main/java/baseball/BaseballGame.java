@@ -35,8 +35,42 @@ public class BaseballGame {
             messageUtil.printInputMsg();
             String userInput = userUtil.getInputNumber();
             List<Integer> userNums = validator.validateInputNum(userInput);
+
+            ResultCount result = compareNumber(computerNums, userNums);
+            int ball = result.ballCount;
+            int strike = result.strikeCount;
+            messageUtil.printResultMsg(ball, strike);
         }
 
     }
 
+    public ResultCount compareNumber(List<Integer> computerNums, List<Integer> userNums) {
+        int ball = 0, strike = 0;
+
+        for (int i = 0; i < INPUT_LENGTH; i++) {
+            int computerNum = computerNums.get(i);
+            int userNum = userNums.get(i);
+
+            if (computerNum == userNum) {
+                strike++;
+                continue;
+            }
+
+            if (computerNums.contains(userNum)) {
+                ball++;
+            }
+        }
+
+        return new ResultCount(ball, strike);
+    }
+
+    private static class ResultCount {
+        int ballCount;
+        int strikeCount;
+
+        public ResultCount(int ballCount, int strikeCount) {
+            this.ballCount = ballCount;
+            this.strikeCount = strikeCount;
+        }
+    }
 }
