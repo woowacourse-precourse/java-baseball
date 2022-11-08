@@ -2,7 +2,7 @@ package baseball.model;
 
 public class RestartOrExitRequest {
 
-	private int type;
+	private final int type;
 
 	private RestartOrExitRequest(int type) {
 		this.type = type;

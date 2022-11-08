@@ -9,8 +9,8 @@ public class BaseballResponse {
 	private static final String NOTHING = "낫싱";
 	private static final int MAX_COUNT = 3;
 
-	private int strike;
-	private int ball;
+	private final int strike;
+	private final int ball;
 
 	private BaseballResponse(int strike, int ball) {
 		this.strike = strike;
