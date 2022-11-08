@@ -1,30 +1,37 @@
 package baseball.exception;
 
 public class PlayException {
-    private static final String PERMIT_RANGE = "[1-2]+";
+    private static final String PERMIT_NUMBER_REGEX = "[1-2]+";
+    private static final int PERMIT_NUMBER_LENGTH = 1;
 
-    public void askAfterResultException(String input) {
-        checkSize(input);
-        checkRange(input);
+    public void askAfterResultException(String numberTypeOfString) {
+        isRightLength(numberTypeOfString);
+        isRightNumber(numberTypeOfString);
     }
 
-    public void checkSize(String input) {
-        if (!isSizeOK(input)) {
+    public void isRightLength(String numberTypeOfString) {
+        if (!isUserInputLengthPermitted(numberTypeOfString)) {
             throw new IllegalArgumentException("하나의 숫자만 입력하셔야 합니다.");
         }
     }
 
-    public void checkRange(String endingInput) {
-        if (!isRangeOK(endingInput)) {
+    public void isRightNumber(String numberOfString) {
+        if (!isUserInputContainsOnlyPermittedNumbers(numberOfString)) {
             throw new IllegalArgumentException("1~2 까지의 숫자만 입력하셔야합니다.");
         }
     }
 
-    public boolean isSizeOK(String input) {
-        return input.length() == 1;
+    public boolean isUserInputLengthPermitted(String numberTypeOfString) {
+        if (numberTypeOfString.length() != PERMIT_NUMBER_LENGTH) {
+            return false;
+        }
+        return true;
     }
 
-    public boolean isRangeOK(String input) {
-        return input.matches(PERMIT_RANGE);
+    public boolean isUserInputContainsOnlyPermittedNumbers(String numberTypeOfString) {
+        if (!numberTypeOfString.matches(PERMIT_NUMBER_REGEX)) {
+            return false;
+        }
+        return true;
     }
 }
