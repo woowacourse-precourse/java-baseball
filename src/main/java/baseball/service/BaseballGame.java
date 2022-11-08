@@ -30,7 +30,8 @@ public class BaseballGame {
             //Computer User 비교
             Referee refereeService = new Referee();
             int[] count = refereeService.getJudgementCount(computer,user);
-            refereeService.printStrikeAndBall(count);
+            String printStrikeAndBall = refereeService.printStrikeAndBall(count);
+            System.out.println(printStrikeAndBall);
 
             //스트라이크 3개가 나오면 break;
         }
