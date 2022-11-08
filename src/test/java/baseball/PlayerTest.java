@@ -1,10 +1,10 @@
 package baseball;
 
-import static baseball.Model.Player.Player.validateChoice;
+import static baseball.model.player.Player.validateChoice;
 
-import baseball.Model.Computer.Answer;
-import baseball.Model.Player.BaseBallNumber;
-import baseball.Model.Player.Player;
+import baseball.model.computer.Answer;
+import baseball.model.player.BaseBallNumber;
+import baseball.model.player.Player;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

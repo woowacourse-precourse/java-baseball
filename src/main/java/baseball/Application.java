@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.Model.Game;
+import baseball.model.Game;
 
 public class Application {
 

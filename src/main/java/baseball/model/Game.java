@@ -1,8 +1,8 @@
-package baseball.Model;
+package baseball.model;
 
-import baseball.Model.Computer.Answer;
-import baseball.Model.Computer.Computer;
-import baseball.Model.Player.Player;
+import baseball.model.computer.Answer;
+import baseball.model.computer.Computer;
+import baseball.model.player.Player;
 
 public final class Game {
 

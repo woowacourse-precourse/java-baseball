@@ -1,6 +1,6 @@
-package baseball.Model.Computer;
+package baseball.model.computer;
 
-import baseball.Model.Player.BaseBallNumber;
+import baseball.model.player.BaseBallNumber;
 import java.util.ArrayList;
 import java.util.List;
 

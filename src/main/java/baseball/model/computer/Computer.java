@@ -1,4 +1,4 @@
-package baseball.Model.Computer;
+package baseball.model.computer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;

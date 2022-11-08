@@ -1,6 +1,6 @@
-package baseball.Model.Player;
+package baseball.model.player;
 
-import baseball.Model.Computer.Answer;
+import baseball.model.computer.Answer;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.stream.Collectors;
