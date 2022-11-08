@@ -11,7 +11,7 @@ class ComparisonTest {
 
     public ComparisonTest(){
         Game game = new Game();
-        game.setUserInputNumber(456);
+        game.setUserInputNumber(657);
         game.setRandomNumber(456);
 
         this.comparison = new Comparison(game, 3);
@@ -27,9 +27,17 @@ class ComparisonTest {
 
     @Test
     void 스트라이크_개수_반환(){
-        int result = 3;
+        int result = 1;
         int strikeCount = comparison.getStrikeCount();
 
         Assertions.assertThat(strikeCount).isEqualTo(result);
+    }
+
+    @Test
+    void 볼_개수_반환(){
+        int result = 1;
+        int ballCount = comparison.getBallCount();
+
+        Assertions.assertThat(ballCount).isEqualTo(result);
     }
 }
