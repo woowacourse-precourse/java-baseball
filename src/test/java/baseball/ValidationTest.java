@@ -16,23 +16,23 @@ class ValidationTest {
         String str5 = "322";
 
         assertDoesNotThrow(() -> {
-            Validation.validateResetInput(str1);
+            Validation.validateBaseballInput(str1);
         });
 
         assertDoesNotThrow(() -> {
-            Validation.validateResetInput(str2);
+            Validation.validateBaseballInput(str2);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateResetInput(str3);
+            Validation.validateBaseballInput(str3);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateResetInput(str4);
+            Validation.validateBaseballInput(str4);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateResetInput(str5);
+            Validation.validateBaseballInput(str5);
         });
     }
 
@@ -41,10 +41,12 @@ class ValidationTest {
         String str1 = "1.2";
         String str2 = "my";
         String str3 = "232";
+        String str4 = "";
 
         assertThat(Validation.hasNonDigit(str1)).isEqualTo(true);
         assertThat(Validation.hasNonDigit(str2)).isEqualTo(true);
         assertThat(Validation.hasNonDigit(str3)).isEqualTo(false);
+        assertThat(Validation.hasNonDigit(str4)).isEqualTo(false);
     }
 
     @Test
@@ -52,10 +54,12 @@ class ValidationTest {
         String str1 = "1234";
         String str2 = "2421";
         String str3 = "999";
+        String str4 = "";
 
         assertThat(Validation.hasSameWord(str1)).isEqualTo(false);
         assertThat(Validation.hasSameWord(str2)).isEqualTo(true);
         assertThat(Validation.hasSameWord(str3)).isEqualTo(true);
+        assertThat(Validation.hasSameWord(str4)).isEqualTo(false);
     }
 
     @Test
