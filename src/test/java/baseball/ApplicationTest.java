@@ -13,11 +13,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @Test
     void 게임시작_메시지출력() {
-        assertSimpleTest(
+        assertRandomNumberInRangeTest(
                 () -> {
-                    run();
+                    run("246", "417", "462", "426", "428" ,"2");
                     assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
-                }
+                },
+                4, 2, 8
         );
     }
 
@@ -26,9 +27,6 @@ class ApplicationTest extends NsTest {
         Computer computer = new Computer();
         computer.setComputerRandomNumber();
         List<Integer> testNumber1 = computer.getComputerNumber();
-
-        System.out.println(testNumber1);
-
         assertThat(testNumber1.size()).isEqualTo(3);
     }
 
@@ -36,7 +34,7 @@ class ApplicationTest extends NsTest {
     void 판정결과_출력(){
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "417", "462", "426", "428");
+                    run("246", "417", "462", "426", "428" ,"2");
                     assertThat(output()).contains("2볼", "1스트라이크", "1볼 1스트라이크", "2스트라이크", "3스트라이크");
                 },
                 4, 2, 8
@@ -47,7 +45,7 @@ class ApplicationTest extends NsTest {
     void 정답메시지_출력(){
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "417", "462", "426", "428");
+                    run("246", "417", "462", "426", "428", "2");
                     assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 },
                 4, 2, 8
