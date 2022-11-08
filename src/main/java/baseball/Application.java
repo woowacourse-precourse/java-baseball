@@ -1,12 +1,12 @@
 package baseball;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) throws IllegalArgumentException{
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
 
         ComputerNum computer = new ComputerNum();
         Init_game init = new Init_game();
