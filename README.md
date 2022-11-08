@@ -153,3 +153,18 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 기능 목록
+- NumberHandler 클래스
+  - 난수 생성 기능 추가
+  - 사용자 숫자 입력 기능 추가
+  - 사용자가 숫자 외의 문자 입력시 예외처리 기능 추가
+  - 사용자가 중복 숫자 입력시 예외처리 기능 추가
+  - 사용자가 숫자 3개 입력 불만족시 예외처리 기능 추가
+  - 사용자가 숫자 0 입력시 예외처리 기능 추가
+- BaseballDecision 클래스
+  - 숫자야구 판정 후 결과 보관기능 추가
+  - 판정 결과 출력 기능 추가
+- Application
+  - 게임진행, 게임 종료, 게임 재시작 기능 추가
+  
