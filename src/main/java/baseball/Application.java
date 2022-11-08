@@ -10,7 +10,26 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> computer = makeRandomInteger();
+        // TODO: 프로그램 구현
+        boolean isGameOver = false;
+
+        while (!isGameOver) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            List<Integer> computer = makeRandomInteger();
+
+            // 게임 실행
+            if (gaming(computer)) {
+
+            }
+        }
+    }
+    // 게임 시작
+    public static boolean gaming(List<Integer> computer) {
+        boolean notGameOver = true;
+        while(notGameOver){
+            List<Integer> user = inputNumber();
+        }
+        return true;
     }
     // 숫자 입력
     public static List<Integer> inputNumber() {
