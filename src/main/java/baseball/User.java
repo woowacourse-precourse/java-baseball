@@ -9,16 +9,23 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 public class User {
-    static List<Integer> user = new ArrayList<>();
-    Set<Integer> userSet = new HashSet<>(user);
+    static List<Integer> player = new ArrayList<>();
+    static Set<Integer> userSet = new HashSet<>(player);
 
+    static int playerNumber = 0;
 
     public static void enterNum() {
-            int userNumber = 0;
-            System.out.println("숫자를 입력해주세요: ");
-            userNumber =Integer.parseInt(Console.readLine());
 
-            int[] digits = Stream.of(String.valueOf(userNumber).split("")).mapToInt(Integer::parseInt).toArray();
-            user = new ArrayList<>();
+        System.out.println("숫자를 입력해주세요: ");
+        playerNumber = Integer.parseInt(Console.readLine());
+
+        int[] digits = Stream.of(String.valueOf(playerNumber).split("")).mapToInt(Integer::parseInt).toArray();
+        player = new ArrayList<>();
+
+
+        for (int order = 0; order < digits.length; order++) {
+            player.add(digits[order]);
         }
+        userSet = new HashSet<>(player);
+    }
 }

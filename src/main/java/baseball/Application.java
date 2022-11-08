@@ -1,15 +1,6 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
-import java.util.HashSet;
-import java.util.Scanner;
+import static baseball.User.*;
 
 public class Application {
     int randomNumber = 0;
@@ -24,11 +15,15 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
         random.randomNum();
-        ;
 
         try {
             User.enterNum();
-            System.out.println(user);       //유저 입력값
+
+            System.out.println(User.player);       //유저 입력값
+            System.out.println(playerNumber);       //유저 비교값
+
+            System.out.println(userSet.size());
+            System.out.println(player.size());
 
             exceptions.exceptionTest();
 
@@ -43,7 +38,7 @@ public class Application {
             ne.printStackTrace();
         }
         Comparison.comNuser();
-
+    }
 //        do {
 //
 //
@@ -102,5 +97,5 @@ public class Application {
 //    }
 //
 
-    }
+
 }
