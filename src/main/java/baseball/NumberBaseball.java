@@ -65,10 +65,20 @@ public class NumberBaseball {
         return true;
     }
 
-    private int countStrike(int[] MyAnswer){
+    public int countStrike(int[] MyAnswer){
         int result = 0;
         for(int i = 0; i < 3; i++){
             if(MyAnswer[i] == CorrectAnswer.get(i)){
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public int countBall(int[] MyAnswer) {
+        int result = 0;
+        for (int i = 0; i < 3; i++) {
+            if (CorrectAnswer.contains(MyAnswer[i])) {
                 result++;
             }
         }

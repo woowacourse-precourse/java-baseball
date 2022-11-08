@@ -29,4 +29,27 @@ class NumberBaseballTest {
         assertThat(test3.countStrike(testanswer)).isEqualTo(1);
     }
 
+    @Test
+    public void testCountStrike2(){
+        NumberBaseball test4 = new NumberBaseball();
+        test4.setAnswer(1,2,3);
+        int[] testanswer = {3, 1, 2};
+        assertThat(test4.countStrike(testanswer)).isEqualTo(0);
+    }
+
+    @Test
+    public void testCountBall(){
+        NumberBaseball test5 = new NumberBaseball();
+        test5.setAnswer(1,2,3);
+        int[] testanswer = {1, 4, 2};
+        assertThat(test5.countBall(testanswer)).isEqualTo(2);
+    }
+    @Test
+    public void testCountBall2(){
+        NumberBaseball test6 = new NumberBaseball();
+        test6.setAnswer(1,2,3);
+        int[] testanswer = {3, 2, 1};
+        assertThat(test6.countBall(testanswer)).isEqualTo(3);
+    }
+
 }
