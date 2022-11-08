@@ -15,12 +15,13 @@ public class BaseBallGame {
 
     ComputerNumber computerNumber = new ComputerNumber();
     public void start() {
-        List<Integer> computer = computerNumber.getComputerRandomNumber();
+        List<Integer> Computer = computerNumber.getComputerRandomNumber();
         while(true){
             String inputNumber = SystemOutput.printUserInput();
+            UserNumber userNumber = new UserNumber(inputNumber);
             List<Integer> userNumberList = UserNumber.getUserNumber(inputNumber);
 
-            if(getResult(userNumberList, computer) == 3)
+            if(getResult(userNumberList, Computer) == 3)
                 break;
         }
         String input = Console.readLine();
