@@ -62,8 +62,16 @@ public class Application {
         }
 
         if (strike == 3) {
-            System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            printResult(ball, strike);
             return true;
+        }
+        printResult(ball, strike);
+        return false;
+    }
+
+    static void printResult(int ball, int strike) {
+        if (strike == 3) {
+            System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         }
         else if (ball == 0 && strike == 0) {
             System.out.println("낫싱");
@@ -77,7 +85,5 @@ public class Application {
         else if (ball == 0 && strike != 0) {
             System.out.println(String.valueOf(strike) + "스트라이크");
         }
-        return false;
     }
-
 }
