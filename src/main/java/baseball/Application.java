@@ -50,7 +50,7 @@ class BaseballController {
         ioManager.printRequestInput();
 
         try {
-            String inputString = ioManager.getInput();
+            String inputString = ioManager.getInputNumbers();
             Numbers inputNumbers = baseballGame.convertToNumbers(inputString);
 
             BallCount ballCount = baseballGame.countBall(answer, inputNumbers);
@@ -70,17 +70,17 @@ class BaseballController {
     private void checkGoOrStop(BallCount ballCount) {
         ioManager.printAllStrike(COUNT_OF_NUMBERS);
 
-        switch (OrderType.getMenuType(ioManager.getInput())) {
-            case RESTART:
-                gameStatus.restartProgram();
-                run();
-                break;
-            case STOP:
-                ioManager.printExit();
-                gameStatus.quitProgram();
-            default:
-                ioManager.printError();
-                gameStatus.quitProgram();
+        try {
+            switch (OrderType.getMenuType(ioManager.getInputOrder())) {
+                case RESTART:
+                    gameStatus.restartProgram();
+                    run();
+                    break;
+                case STOP:
+                    ioManager.printExit();
+            }
+        } catch (IllegalArgumentException e) {
+            ioManager.printError();
         }
     }
 }
@@ -208,6 +208,7 @@ class Validator {
     private static List<Character> inputs = new ArrayList<>();
 
     public boolean isRightFormat(String inputString) {
+        inputs.clear();
         if (isThree(inputString) && isDuplicate(inputString)) {
             return true;
         }
@@ -222,12 +223,10 @@ class Validator {
         char[] input = inputString.toCharArray();
         for (char number : input) {
             if (inputs.contains(number)) {
-                inputs.clear();
                 return false;
             }
             inputs.add(number);
         }
-        inputs.clear();
         return true;
     }
 }
@@ -272,12 +271,16 @@ class IOManager {
         this.validator = validator;
     }
 
-    public String getInput() {
+    public String getInputNumbers() {
         String inputString = input.input();
         if (validator.isRightFormat(inputString)) {
             return inputString;
         }
         throw new IllegalArgumentException(Message.WRONG_ORDER_MESSAGE.toString());
+    }
+
+    public String getInputOrder() {
+        return input.input();
     }
 
     public void printIntro() {
