@@ -8,14 +8,9 @@ public class Validator {
     }
 
     public boolean checkBaseballNumber() {
-        // 3자리인지
-        if (!checkBaseballNumberLength()) {
-            return false;
-        }
-        // 입력된 값이 숫자가 아닌지
-
-        // 1~9 사이의 숫자를 입력했는지
-        return checkBaseballNumberRange();
+        return checkBaseballNumberLength() &&
+            checkBaseballNumberIsNumber() &&
+            checkBaseballNumberRange();
     }
 
     private boolean checkBaseballNumberLength() {
