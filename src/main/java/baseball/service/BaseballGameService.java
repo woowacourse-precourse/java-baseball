@@ -32,16 +32,21 @@ public class BaseballGameService {
     }
 
     public void playBaseballGame() {
-        boolean isPlay = true;
-        while (isPlay) {
+        boolean isEnd = true;
+        while (isEnd) {
             score = new Score(0, 0);
             play();
-
-            if (score.getStrike() == RESULT_COUNT) {
-                System.out.println(RESULT_COUNT + GAME_SUCCESS.getMessage());
-                isPlay = false;
-            }
+            isEnd = isSuccess();
         }
+    }
+
+    private boolean isSuccess() {
+        if (score.getStrike() == RESULT_COUNT) {
+            System.out.println(RESULT_COUNT + GAME_SUCCESS.getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     private void play() {
