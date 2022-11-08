@@ -22,4 +22,8 @@ public class Computer {
             }
         }
     }
+
+    public List<Integer> getComputer() {
+        return computer;
+    }
 }
