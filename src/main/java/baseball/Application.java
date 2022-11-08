@@ -2,31 +2,31 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+import org.assertj.core.util.Arrays;
 
 public class Application {
     static boolean restartGame = true;
     static boolean repeatUserInput = true;
+    static List<Integer> countedNumber;
 
     //  구현시 주의 사항
     //  1) indent의 depth가 3을 넘지 않도록 하기
     //  2) 3항 연산자 사용 금지
     //  3) 메소드가 한 가지 일만 하도록 최대한 작게 만들기
     //  4) 주어진 라이브러리 사용
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalArgumentException {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         while (restartGame) {
-            try {
-                baseballGame();
-            } catch (Exception e) {
-                throw new IllegalArgumentException(e);
-            }
+            baseballGame();
         }
     }
 
     //  야구 게임을 실행하는 메소드
     //  전체적인 흐름을 담당
-    public static void baseballGame() throws Exception {
+    public static void baseballGame() throws IllegalArgumentException {
         int[] randomNumber = generateRandomNumber();
         int[] userInputNumber = new int[3];
         repeatUserInput = true;
@@ -52,21 +52,19 @@ public class Application {
     //  숫자는 반드시 1 ~ 9사이의 범위
     //  랜덤 세부 구현은 camp.nextstep.edu.missionutils.Randoms 이용
     public static int[] generateRandomNumber() {
-        int[] res = new int[3];
-        int before = 0;
+        List<Integer> intList = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
             int holder = Randoms.pickNumberInRange(1, 9);
             //  같은 숫자가 나오지 않도록
-            if (before == holder) {
+            if (intList.contains(holder)) {
                 i--;
                 continue;
             }
-            res[i] = holder;
-            before = holder;
+            intList.add(holder);
         }
 
-        return res;
+        return intList.stream().mapToInt(i -> i).toArray();
     }
 
     //  유저로부터 입력받는 기능
@@ -114,10 +112,12 @@ public class Application {
     //  스트라이크와 볼 갯수를 구하는 메소드
     public static void checkScore(int[] randomNumber, int[] userInput) {
         int score = 0;
+        countedNumber = new ArrayList<>();
 
         for (int i = 0; i < randomNumber.length; i++) {
             if (randomNumber[i] == userInput[i]) {
                 score += 10;
+                countedNumber.add(userInput[i]);
                 continue;
             }
 
@@ -132,8 +132,13 @@ public class Application {
         int res = 0;
 
         for (int i = 0; i < randomNum.length; i++) {
+            if (countedNumber.contains(randomNum[i])) {
+                continue;
+            }
+
             if (userInputNum == randomNum[i]) {
                 res++;
+                countedNumber.add(userInputNum);
             }
         }
 
