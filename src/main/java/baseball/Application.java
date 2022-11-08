@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    class Baseball {
-        List<Integer> computerNum;
-        int[] computerNumCheck = new int[10];
-        int[] strikeResult = new int[3];
+    static class Baseball {
+        static List<Integer> computerNum;
+        static int[] computerNumCheck = new int[10];
+        static int[] strikeResult = new int[3];
 
         public void clear(){
             computerNumCheck=new int[10];
@@ -98,8 +98,24 @@ public class Application {
         }
     }
 
+    public static int restart()throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String input = bf.readLine();
+        return Integer.parseInt(input);
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int nextGame = 1;
 
+        while (nextGame == 1) {
+            Baseball baseball = new Baseball();
+            baseball.clear();
+            if (baseball.startGame()) {
+                System.out.println("게임종료");
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                nextGame=restart();
+            }
+        }
     }
 }

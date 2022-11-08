@@ -1,0 +1,59 @@
+[33mcommit 321246591e1ceb9c2d9b33a3cb81514b33442831[m[33m ([m[1;36mHEAD -> [m[1;32mYh0sun[m[33m, [m[1;31morigin/Yh0sun[m[33m)[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:47:52 2022 +0900
+
+    feat : clear method add
+
+[33mcommit 1ec4ad049a27e8766152a0bdfc28d655f01d1f8b[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:46:56 2022 +0900
+
+    feat : startGame method add
+
+[33mcommit 204a948953e873a8feb6518ec3295c85b124a3b8[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:46:04 2022 +0900
+
+    feat : resultPrint method add
+
+[33mcommit 710c69caed205f884debb5bd5f36268d957689d9[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:43:45 2022 +0900
+
+    feat : ball method add
+
+[33mcommit 1520326740db56ffb734b385166363f2857feb22[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:42:30 2022 +0900
+
+    feat : Bas컴ístrike method add
+
+[33mcommit 9f97877228d3a5377587f96ecf2db01a8a968e01[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:41:03 2022 +0900
+
+    feat : Bas컴퓨íinput처리 method 만추가
+
+[33mcommit 20eedb189e385c27ee9d5e5fa64a02f1e977165c[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:39:57 2022 +0900
+
+    feat : Bas컴퓨터수(램덤수) method 만추가
+
+[33mcommit 7a993d72484fb4bd7f26500ac55ef019c7d59daa[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:36:38 2022 +0900
+
+    feat : BaseBall 클래스
+
+[33mcommit 539d9fa734cd28df969b3ee5bfc609ed4341f21e[m
+Author: Yh0sun <hy770819@naver.com>
+Date:   Tue Nov 8 19:28:18 2022 +0900
+
+    docs : 기능리스트 목록
+
+[33mcommit 313e8f1b82c419013c957c106060824e60020884[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: woowabrie <buyong.jo@woowahan.com>
+Date:   Mon Oct 31 16:34:33 2022 +0900
+
+    feat: setup precourse baseball project
