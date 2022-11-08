@@ -1,20 +1,20 @@
 package baseball.domain.baseball_number;
 
+import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballNumberTest {
 
     @Test
     void 정답_숫자_리스트_안에_ball의_조건을_만족하는_SingleNumber가_있을_경우_1을_반환한다() {
         BaseballNumber baseballNumber = new BaseballNumber(0, 1);
-        List<BaseballNumber> answer = BaseballNumberListGenerator.baseballNumberList("213");
+        List<BaseballNumber> answer = baseballNumberList("213");
 
         assertThat(baseballNumber.equalsOnlyNumber(answer)).isTrue();
     }
@@ -22,7 +22,7 @@ class BaseballNumberTest {
     @Test
     void 정답_숫자_리스트_안에_ball의_조건을_만족하는_SingleNumber가_없을_경우_0을_반환한다() {
         BaseballNumber baseballNumber = new BaseballNumber(0, 1);
-        List<BaseballNumber> answer = BaseballNumberListGenerator.baseballNumberList("243");
+        List<BaseballNumber> answer = baseballNumberList("243");
 
         assertThat(baseballNumber.equalsOnlyNumber(answer)).isFalse();
     }
