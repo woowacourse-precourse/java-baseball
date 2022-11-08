@@ -56,8 +56,8 @@ public class Application {
     public static void play369Game() {
         List<Integer> answer = makeAnswer();
 
-        boolean guessCorrectness = false;
-        while ( !guessCorrectness ) {
+        boolean isGuessCorrect = false;
+        while ( !isGuessCorrect ) {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if ( !isValidNumbersForGame(input) ) {
@@ -68,7 +68,7 @@ public class Application {
             System.out.println(evaluationToString(evaluation));
             if ( isEqualToAnswer(evaluation) ) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                guessCorrectness = true;
+                isGuessCorrect = true;
             }
         }
     }
