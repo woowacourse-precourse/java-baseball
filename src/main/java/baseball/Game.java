@@ -19,6 +19,6 @@ public class Game {
     public void play() {
         List<Integer> randomNumbers = computer.getRandomNumbers();
 
-        player.getInputNumbersFromConsole();
+        List<Integer> playerInputNumbers = player.getInputNumberAsList();
     }
 }
