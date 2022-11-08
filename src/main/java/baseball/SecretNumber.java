@@ -13,16 +13,16 @@ public class SecretNumber {
     }
 
     public void generateSecretDigits() {
-        List<Integer> candidateList = new ArrayList<>();
+        List<Integer> candidateDigits = new ArrayList<>();
 
-        while (candidateList.size() < 3) {
+        while (candidateDigits.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!candidateList.contains(randomNumber)) {
-                candidateList.add(randomNumber);
+            if (!candidateDigits.contains(randomNumber)) {
+                candidateDigits.add(randomNumber);
             }
         }
 
-        secretDigits = candidateList;
+        secretDigits = candidateDigits;
     }
 
     public List<Integer> getSecretDigits() {
