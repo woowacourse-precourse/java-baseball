@@ -18,7 +18,14 @@ class GameTest {
         List<Integer> userNumeralList = Arrays.asList(1, 2, 3);
         game.countStrike(computerNumeralList, userNumeralList);
         assertThat(game.getStrikeCount()).isEqualTo(2);
-
     }
 
+    @Test
+    public void 볼_카운트_테스트(){
+        Game game = new Game();
+        List<Integer> computerNumeralList = Arrays.asList(4, 1, 2);
+        List<Integer> userNumeralList = Arrays.asList(1, 2, 4);
+        game.countBall(computerNumeralList, userNumeralList);
+        assertThat(game.getBallCount()).isEqualTo(3);
+    }
 }
