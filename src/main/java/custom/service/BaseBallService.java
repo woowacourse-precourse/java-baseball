@@ -18,17 +18,7 @@ public class BaseBallService {
     }
 
     public Response init() {
-        List<Integer> list = new ArrayList<>();
-        while (list.size() < 3) {
-            int temp = Randoms.pickNumberInRange(0, 9);
-            if (list.contains(temp)) {
-                continue;
-            }
-            list.add(temp);
-        }
-        String number = list.stream()
-            .map(String::valueOf)
-            .collect(Collectors.joining(""));
+        String number = makeUniqueRandomNumber();
         table.setNumber(number);
         return Response.keepOf("데이터 생성 완료");
     }
@@ -42,6 +32,27 @@ public class BaseBallService {
             return Response.retryOf(message);
         }
         return Response.keepOf(message);
+    }
+
+    public Response isKeepGo(ReTry reTry) {
+        if (reTry.equals(ReTry.YES)) {
+            return Response.keepOf("다시 시작");
+        }
+        return Response.endOf("종료");
+    }
+
+    private String makeUniqueRandomNumber() {
+        List<Integer> list = new ArrayList<>();
+        while (list.size() < 3) {
+            int temp = Randoms.pickNumberInRange(0, 9);
+            if (list.contains(temp)) {
+                continue;
+            }
+            list.add(temp);
+        }
+        return list.stream()
+            .map(String::valueOf)
+            .collect(Collectors.joining(""));
     }
 
     private Score calculateScore(String input) {
@@ -58,13 +69,6 @@ public class BaseBallService {
             }
         }
         return new Score(scoreOfStrike, scoreOfBall);
-    }
-
-    public Response isKeepGo(ReTry reTry) {
-        if (reTry.equals(ReTry.YES)) {
-            return Response.keepOf("다시 시작");
-        }
-        return Response.endOf("종료");
     }
 
     private String generateMessage(int scoreOfStrike, int scoreOfBall) {
