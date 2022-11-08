@@ -15,9 +15,13 @@ public class Application {
     public static void main(String[] args) {
         computerNumber = createComputerNumber();
         try {
-            do{
-                List<Integer> playerNumber = getPlayerNumber(); //숫자 아니면 예외 발생
-                isValidNumber(playerNumber); //유효하지 않으면 예외 발생
+            do {
+                List<Integer> userInput = getUserInput();
+                if (!isValidNumber(userInput)) {
+                    throw new IllegalArgumentException();
+                }
+                List<Integer> playerNumber = userInput; //유효하지 않으면 예외 발생
+
                 System.out.println(playerNumber);
                 Map<String, Integer> resultMap = checkAnswer(computerNumber, playerNumber);
                 System.out.println(giveHint(resultMap)); //힌트 출력
