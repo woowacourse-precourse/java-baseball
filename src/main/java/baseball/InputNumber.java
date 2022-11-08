@@ -7,10 +7,10 @@ import java.util.List;
 
 public class InputNumber {
 
-    private List<String> userNumber;
+    private String userNumber;
 
     public InputNumber(){
-        userNumber = new ArrayList<>() ;
+        userNumber = "";
     }
 
     public String getUserNumber(){
