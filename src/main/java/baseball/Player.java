@@ -29,6 +29,7 @@ public class Player {
             throw new IllegalArgumentException(Constants.ERROR_DUPLICATE_NUM);
         }
     }
+
     public boolean wantRestart() {
         System.out.println(Constants.ENTER_RESTART_FLAG);
         int restartFlag = Integer.parseInt(Console.readLine());
