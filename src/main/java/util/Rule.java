@@ -40,5 +40,18 @@ public class Rule {
         return true;
     }
 
+    private static void printResult(int nBalls, int nStrikes){
+        if (nBalls > 0){
+            System.out.print(nBalls + "볼 ");
+        }
+        if (nStrikes > 0){
+            System.out.print(nStrikes + "스트라이크");
+        }
+        if (nBalls == 0 && nStrikes == 0){
+            System.out.print("낫싱");
+        }
+        System.out.println();
+    }
+
 
 }
