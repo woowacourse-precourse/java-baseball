@@ -42,7 +42,7 @@ public class HintService {
     return false;
   }
 
-  public boolean isNotEnd(Hint hint) {
+  public boolean isContinue(Hint hint) {
     return hint.getStrikeCount() != 3;
   }
 

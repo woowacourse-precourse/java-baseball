@@ -27,7 +27,7 @@ public class GameController {
       List<Integer> playerNumbers = inputService.getPlayerNumbers();
       hint = hintService.getHint(computerNumbers, playerNumbers);
       hintService.printHint(hint);
-    } while (hintService.isNotEnd(hint));
+    } while (hintService.isContinue(hint));
   }
 
   private List<Integer> getRandomNumbers() {
