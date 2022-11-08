@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Settings {
-    public static ArrayList<Integer> makeNumber(){
-        ArrayList<Integer> computer = new ArrayList<>();
+    public static List<Integer> makeNumber(){
+        List<Integer> computer = new ArrayList<>();
 
         while(computer.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1,9);
@@ -20,7 +21,7 @@ public class Settings {
     }
 
     public static int inputUser(){
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
 
         if(input.length() !=3){
@@ -40,11 +41,11 @@ public class Settings {
         return Integer.parseInt(input);
     }
 
+    // 사용자가 입력한 수 ArrayList에 저장
     public static ArrayList<Integer> userNumber(){
         int user = inputUser();
 
-        ArrayList<Integer> userInput = new ArrayList<>(3);
-
+        ArrayList<Integer> userInput = new ArrayList<>();
         while(user != 0){
             userInput.add(user%10);
             user /= 10;
