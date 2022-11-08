@@ -51,21 +51,21 @@ public class Hint {
     }
 
     public String getMessage() {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder message = new StringBuilder();
 
         if (strikeCnt == 0 && ballCnt == 0) {
             return NOTHING;
         }
 
         if (ballCnt > 0) {
-            stringBuilder.append(ballCnt).append(BALL).append(BLANK);
+            message.append(ballCnt).append(BALL).append(BLANK);
         }
 
         if (strikeCnt > 0) {
-            stringBuilder.append(strikeCnt).append(STRIKE);
+            message.append(strikeCnt).append(STRIKE);
         }
 
-        return stringBuilder.toString().trim();
+        return message.toString().trim();
     }
 
     public boolean isMaxStrike() {
