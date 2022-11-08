@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -71,6 +73,33 @@ public class Application {
     // 중복되는 수 있는지 확인
     public static boolean isNotDuplicated(List<Integer> playerNumber) {
         return Set.copyOf(playerNumber).size() == DIGITS;
+    }
+
+
+    //4. 플레이어 수와 컴퓨터 수 비교하기
+    public static Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer>  playerNumber){
+        Map<String, Integer> resultMap = new HashMap<>();
+        //N자리수 비교
+        for(int i=0; i<DIGITS ;i++){
+            if(computerNumber.contains(playerNumber.get(i))) { // 포함하는지
+                checkBallOrStrike(computerNumber.get(i), playerNumber.get(i), resultMap);
+                continue;
+            }
+            int oldValue = resultMap.getOrDefault("nothing", 0);
+            resultMap.put("nothing", oldValue+1);
+
+        }
+        return resultMap;
+    }
+    // 컴퓨터 수가 플레이어 수 포함한다면, 볼인지 스트라이크인지 확인하기
+    public static void checkBallOrStrike (Integer computerNum, Integer playerNum, Map<String, Integer> resultMap){
+        if(computerNum == playerNum){ //일치하는지
+            int oldValue = resultMap.getOrDefault("strike", 0);
+            resultMap.put("strike", oldValue+1);
+        }
+        int oldValue = resultMap.getOrDefault("ball", 0);
+        resultMap.put("ball", oldValue+1);
+
     }
 
 
