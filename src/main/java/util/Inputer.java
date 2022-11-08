@@ -14,7 +14,6 @@ public class Inputer {
     }
 
     public List<Integer> getInput() throws IllegalArgumentException{
-        System.out.print("숫자를 입력해주세요 : ");
         String rareinput = Console.readLine();
         List<Integer> result = null;
         if(!flag) {
