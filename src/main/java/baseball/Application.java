@@ -20,8 +20,9 @@ public class Application {
             Integer ball = 0;
             while(strike!=3) {
                 user.clear();
-                user = makeListofUser();
-
+                user = makeListOfUser();
+                strike = checkStrike(computer,user);
+                ball = checkBall(computer,user);
             }
 
 
@@ -34,8 +35,16 @@ public class Application {
         return;
     }
 
+    private static Integer checkStrike(List<Integer> computer, List<Integer> user) {
+        Integer strike = 0;
+        for(int i = 0; i<3; i++){
+            if(computer.get(i).equals(user.get(i))) strike++;
+        }
+        return strike;
+    }
+
     private static List<Integer> makeListOfUser() {
-        List<Integer> user = new ArrayList<>();
+        List<Integer> user;
         try{
             System.out.println("숫자를 입력해주세요 : ");
             String input = sc.nextLine();
