@@ -1,5 +1,6 @@
-package baseball;
+package baseball.service;
 
+import baseball.User;
 import baseball.service.BaseballGameService;
 import baseball.service.impl.BaseballGameServiceImpl;
 import org.junit.jupiter.api.BeforeEach;

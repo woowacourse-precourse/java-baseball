@@ -1,4 +1,4 @@
-package baseball;
+package baseball.service;
 
 import baseball.service.ComputerService;
 import baseball.service.impl.ComputerServiceImpl;
