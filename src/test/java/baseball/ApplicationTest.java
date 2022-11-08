@@ -198,7 +198,22 @@ class ApplicationTest extends NsTest {
                 assertThat(gameResultMessage).isEqualTo("낫싱");
             }
         }
+        @Test
+        void 스트라이크가_3개면_성공() {
+            Map<String, Integer> gameResult = new HashMap<>();
+            gameResult.put("ball", 0);
+            gameResult.put("strike", 3);
 
+            assertThat(testGame.isSuccess(gameResult)).isTrue();
+        }
+        @Test
+        void 스트라이크가_3개아니면_실패() {
+            Map<String, Integer> gameResult = new HashMap<>();
+            gameResult.put("ball", 2);
+            gameResult.put("strike", 1);
+
+            assertThat(testGame.isSuccess(gameResult)).isFalse();
+        }
     }
 
     @Nested
