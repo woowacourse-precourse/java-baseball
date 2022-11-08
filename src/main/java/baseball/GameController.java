@@ -31,7 +31,7 @@ public class GameController {
             throwBall();
             player.ballCount(goal.getGoalNumber());
             message.ballCountMessage(player.getBall(), player.getStrike());
-        } while (!strikeOut());
+        } while (!player.strikeOut());
         message.endGameMessage();
     }
 
@@ -41,12 +41,5 @@ public class GameController {
 
         player = new Player();
         player.setPlayerNumber(inputNumber);
-    }
-
-    static boolean strikeOut() {
-        if (player.getStrike() == 3) {
-            return true;
-        }
-        return false;
     }
 }

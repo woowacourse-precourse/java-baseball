@@ -60,6 +60,13 @@ public class Player {
         }
     }
 
+    public boolean strikeOut() {
+        if (this.strike == 3) {
+            return true;
+        }
+        return false;
+    }
+
     public Integer getStrike() {
         return this.strike;
     }
