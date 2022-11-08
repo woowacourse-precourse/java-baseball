@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,8 +19,8 @@ public class Application {
                 Map<String, Integer> scoreTable = createScoreTable();
                 PrintLine.putUserNumber();
                 String userNumber = Console.readLine();
-                List<Integer> userNumberList = Validation.validateUserNumber(userNumber);
-
+                Validation.validateUserNumber(userNumber);
+                List<Integer> userNumberList = stringToIntegerList(userNumber);
 
                 matchLists(userNumberList, computerNumberList, scoreTable);
                 PrintLine.printResult(scoreTable);
@@ -34,6 +35,11 @@ public class Application {
             Validation.validateRestartNumber(restartNumber);
         } while (restartNumber.equals("1"));
         PrintLine.endGame();
+    }
+
+    private static List<Integer> stringToIntegerList(String numbers) {
+        String[] arr = numbers.split("");
+        return Arrays.stream(arr).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private static void matchLists(List<Integer> userNumberList, List<Integer> computerNumberList, Map<String, Integer> scoreTable) {

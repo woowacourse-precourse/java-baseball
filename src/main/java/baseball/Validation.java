@@ -1,10 +1,7 @@
 package baseball;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Validation {
 
@@ -20,13 +17,11 @@ public class Validation {
         validateRange(restartNumber, RESTART_NUMBER_RANGE);
     }
 
-    public static List<Integer> validateUserNumber(String userNumbers) {
+    public static void validateUserNumber(String userNumbers) {
         validateDigit(userNumbers);
         validateSize(userNumbers, USER_NUMBER_DIGIT_SIZE);
         validateRange(userNumbers, USER_NUMBER_RANGE);
         validateDuplication(userNumbers);
-
-        return stringToIntegerList(userNumbers);
     }
 
     private static void validateRange(String numbers, String regex) {
@@ -65,10 +60,5 @@ public class Validation {
         if (checkMap.containsValue(2) || checkMap.containsValue(3)) {
             throw new IllegalArgumentException("UserNumber has duplicate number");
         }
-    }
-
-    private static List<Integer> stringToIntegerList(String numbers) {
-        String[] arr = numbers.split("");
-        return Arrays.stream(arr).map(Integer::parseInt).collect(Collectors.toList());
     }
 }
