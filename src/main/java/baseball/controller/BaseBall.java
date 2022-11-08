@@ -21,7 +21,7 @@ public class BaseBall {
         
         while (isBaseBallGameRestart(selectedNumberForRestart)) {
             playBaseBallGameOnce();
-            selectedNumberForRestart = inputNumberForRestart();
+            selectedNumberForRestart = selectedNumberForRestart();
         }
     }
     
@@ -62,8 +62,12 @@ public class BaseBall {
         return InputView.inputUserBalls();
     }
     
-    private static int inputNumberForRestart() {
-        SelectedNumberForRestartDTO selectedNumberForRestartDTO = InputView.inputNumberForRestart();
+    private static int selectedNumberForRestart() {
+        SelectedNumberForRestartDTO selectedNumberForRestartDTO = inputNumberForRestart();
         return selectedNumberForRestartDTO.getSelectedNumberForRestart();
+    }
+    
+    private static SelectedNumberForRestartDTO inputNumberForRestart() {
+        return InputView.inputNumberForRestart();
     }
 }
