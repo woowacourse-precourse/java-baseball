@@ -8,11 +8,11 @@ import java.util.List;
 public class RandomNumbers {
     private static final int RANDOM_NUMBERS_LENGTH = 3;
 
-    public List<Integer> createRandomIntListWithoutDuplication() {
+    public static List<Integer> createRandomIntListWithoutDuplication(int startNum, int endNum) {
         List<Integer> randomNumberList = new ArrayList<>();
         int randomNumber;
         while (randomNumberList.size() < RANDOM_NUMBERS_LENGTH){
-            randomNumber = Randoms.pickNumberInRange(1, 9);
+            randomNumber = Randoms.pickNumberInRange(startNum, endNum);
             if(!randomNumberList.contains(randomNumber)){
                 randomNumberList.add(randomNumber);
             }
