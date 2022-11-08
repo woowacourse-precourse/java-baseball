@@ -40,7 +40,7 @@ public class Application {
         List<Integer> playerPickNums = playerPick();
         int strike = findStrike(computerPickNums, playerPickNums);
         int ball = findball(computerPickNums, playerPickNums);
-        scoreBoard(strike, ball, computerPickNums);
+            게임종료_후_재시작(strike, ball, computerPickNums);    
         }
 
     public static List<Integer> playerPick() {
@@ -48,16 +48,16 @@ public class Application {
         System.out.print("숫자를 입력해주세요 :");
         int playerInput = Integer.parseInt(Console.readLine());
         if (playerInput < 100 || playerInput > 999) {
-            error();
+            예외_테스트();
         }
         int numOne = (int) (playerInput / 100) % 10;
         int numTwo = (int) (playerInput / 10) % 10;
         int numThree = playerInput % 10;
         if (numOne == 0 || numTwo == 0 || numThree == 0) {
-            error();
+            예외_테스트();
         }
         if (numOne == numTwo || numTwo == numThree || numThree == numOne) {
-        	error();
+            예외_테스트();
         }
         answer.add(numOne);
         answer.add(numTwo);
@@ -65,7 +65,7 @@ public class Application {
         return answer;
     }
 
-    public static void error() {
+    public static void 예외_테스트() {
         throw new IllegalArgumentException();
     }
 
@@ -106,7 +106,7 @@ public class Application {
         return ball;
     }
 
-    public static void scoreBoard(int strike, int ball, List<Integer> computerPickNums) {
+    public static void 게임종료_후_재시작(int strike, int ball, List<Integer> computerPickNums) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             gamePlaying(computerPickNums);
@@ -133,7 +133,7 @@ public class Application {
             gameStart();
         } else if (coin == 2) {
         } else {
-            error();
+            예외_테스트();
         }
     }
 }
