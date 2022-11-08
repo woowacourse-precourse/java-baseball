@@ -11,27 +11,31 @@ public class ComputerService {
     private final static int MAX_RANGE = 9;
     private final static int MAX_SIZE = 3;
 
-    List<Integer> computerNumber = new ArrayList<>();
+    List<Integer> numbers = new ArrayList<>();
 
     public List<Integer> createComputerNumber() {
-        computerNumber = new ArrayList<>();
+        clearNumbers();
         while (isMaxSize()) {
             addComputerNumber(Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE));
         }
-        return computerNumber;
+        return numbers;
+    }
+
+    private void clearNumbers() {
+        numbers = new ArrayList<>();
     }
 
     private boolean isMaxSize() {
-        return computerNumber.size() < MAX_SIZE;
+        return numbers.size() < MAX_SIZE;
     }
 
     private void addComputerNumber(int number) {
         if (isNotContains(number)) {
-            computerNumber.add(number);
+            numbers.add(number);
         }
     }
 
     private boolean isNotContains(int number) {
-        return !computerNumber.contains(number);
+        return !numbers.contains(number);
     }
 }
