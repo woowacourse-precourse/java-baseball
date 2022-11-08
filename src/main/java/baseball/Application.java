@@ -112,3 +112,27 @@ class Game {
         return true;
     }
 }
+
+class Hint {
+    int ball;
+    int strike;
+
+    int[] hintResult(Game answer, Game rightAnswer) {
+        int nowNumber;
+
+
+        for (int i = 0; i < 3; i++) {
+            nowNumber = answer.number[i];
+
+            if (!Array.isArrayContains(rightAnswer.number, nowNumber)) {
+                continue;
+            }
+            if (i == Array.inputIndexValue(rightAnswer.number, nowNumber)) {
+                this.strike++;
+                continue;
+            }
+            this.ball++;
+        }
+        return new int[]{ball, strike};
+    }
+}
