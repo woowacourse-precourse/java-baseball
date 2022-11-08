@@ -32,7 +32,7 @@ public class Util {
 
         Iterator iter = set.iterator();
 
-        while(iter.hasNext()) {
+        while (iter.hasNext()) {
             sb.append(iter.next());
         }
 

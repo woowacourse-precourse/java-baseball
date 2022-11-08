@@ -16,7 +16,8 @@ public class Exception {
 
         for (int i = 0; i < input.length(); i++) {
             char cur = input.charAt(i);
-            if (cur < '1' || cur > '9') throw new IllegalArgumentException(ErrorMessage.EXCEPTION_NOT_SCOPE_INPUT.getValue());
+            if (cur < '1' || cur > '9')
+                throw new IllegalArgumentException(ErrorMessage.EXCEPTION_NOT_SCOPE_INPUT.getValue());
         }
     }
 
