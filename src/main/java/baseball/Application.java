@@ -13,11 +13,15 @@ public class Application {
         private static final boolean VERIFY = true;
 
         private int[] goalArr;
-        private int[] usageArr;
+        private int[] goalUsageArr;
+        private int[] ballArr;
+        private int[] ballUsageArr;
 
         public BaseBall() {
             goalArr = new int[NUM_DIGIT];
-            usageArr = new int[NUM_BOUNDARY];
+            goalUsageArr = new int[NUM_BOUNDARY];
+            ballArr = new int[NUM_DIGIT];
+            ballUsageArr = new int[NUM_BOUNDARY];
         }
 
         public void game() {
@@ -41,17 +45,34 @@ public class Application {
             return false;
         }
 
-        private boolean Ready() {
-            String Ball = inputBall();
-            if (verifyBall(Ball)) {
-//                makeBall();
+        private void Ready() {
+            String ball = inputBall();
+            if (verifyBall(ball)) {
+                makeBall(ball);
             } else {
                 throw new IllegalArgumentException();
             }
         }
 
+        private void makeBall(String ball) {
+            int ballNumber = Integer.parseInt(ball);
+
+            int pow = 0;
+            while (ballNumber >= Math.pow(10, pow)) {
+                int digit = digitNumber(ballNumber, pow);
+
+
+
+                pow += 1;
+            }
+        }
+
+        private int digitNumber(int number, int pow) {
+            return number % (int)Math.pow(10, pow + 1) / (int)Math.pow(10, pow);
+        }
+
         private boolean verifyBall(String ball) {
-            if (!verifyLength(ball) || !verifyIsNumber(ball) || !verifyInBoundary()) {
+            if (!verifyLength(ball) || !verifyIsNumber(ball)) {
                 return NOT_VERIFY;
             } else {
                 return VERIFY;
@@ -103,17 +124,17 @@ public class Application {
         private void makeGoal() {
             for (int idx = 0; idx < NUM_DIGIT; idx++) {
                 int randomNum = makeNumber();
-                makeNumberOrder(randomNum, idx);
-                makeNumberUsage(randomNum);
+                makeNumberOrder(this.ballArr, randomNum, idx);
+                makeNumberUsage(this.ballUsageArr, randomNum);
             }
         }
 
-        private void makeNumberUsage(int randomNum) {
-            this.usageArr[randomNum] += 1;
+        private void makeNumberUsage(int[] arr, int randomNum) {
+            arr[randomNum] += 1;
         }
 
-        private void makeNumberOrder(int randomNum, int idx) {
-            this.goalArr[idx] = randomNum;
+        private void makeNumberOrder(int[] arr, int randomNum, int idx) {
+            arr[idx] = randomNum;
         }
 
         private int makeNumber() {
