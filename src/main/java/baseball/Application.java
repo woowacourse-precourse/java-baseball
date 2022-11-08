@@ -54,7 +54,7 @@ public class Application {
             // 결과 출력
             if (strike == 3) {
                 System.out.println("3스트라이크\n" +
-                        "개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                        "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
                         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 // 사용자 입력 받기
                 stringInput = Console.readLine().strip();
@@ -129,5 +129,4 @@ public class Application {
                 .map(String::valueOf)
                 .collect(Collectors.joining(""));
     }
-
 }
