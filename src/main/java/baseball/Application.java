@@ -67,29 +67,30 @@ public class Application {
         return result;
     }
 
-    static boolean getUserNumber() {
+    static String getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String strNumber = Console.readLine();
         List<Integer> userNumber = new ArrayList<>();
         if (!checkLength(strNumber, 3)) {
-            return false;
+            return null;
         }
         for (int i = 0; i < strNumber.length(); i++) {
             if (!checkRange(strNumber, i)) {
-                return false;
+                return null;
             }
         }
         if (!checkDupllication(strNumber)) {
-            return false;
+            return null;
         }
-        return true;
+        return strNumber;
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         startMessage();
         List<Integer> computer = makeNumber();
-        if (!getUserNumber()) {
+        if (getUserNumber() == null) {
             return;
         }
     }
+}
