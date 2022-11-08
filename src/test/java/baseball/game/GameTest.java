@@ -5,9 +5,11 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.Map;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
@@ -113,14 +115,6 @@ public class GameTest extends NsTest {
             ));
             assertThat(output()).contains("낫싱");
         });
-    }
-
-    @Test
-    void 스트라이크가_3이면_true가_나와야_한다() {
-        assertThat(game.isGameEnd(Map.of(
-                "볼", 0,
-                "스트라이크", 3
-        ))).isTrue();
     }
 
     @Test
