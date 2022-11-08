@@ -49,9 +49,9 @@ public class ComputerTest {
     void 스트라이크의_수를_반환합니다() {
         int strikeCount = 1;
         int ballCount = 0;
-        String resultMessage = computer.getResultMessage(strikeCount, ballCount);
+        String hint = computer.getHint(strikeCount, ballCount);
 
-        assertThat(resultMessage)
+        assertThat(hint)
                 .isEqualTo(strikeCount + STRIKE.getHint());
     }
 
@@ -59,9 +59,9 @@ public class ComputerTest {
     void 볼의_수를_반환합니다() {
         int strikeCount = 0;
         int ballCount = 2;
-        String resultMessage = computer.getResultMessage(strikeCount, ballCount);
+        String hint = computer.getHint(strikeCount, ballCount);
 
-        assertThat(resultMessage)
+        assertThat(hint)
                 .isEqualTo(ballCount + BALL.getHint());
     }
 
@@ -69,9 +69,9 @@ public class ComputerTest {
     void 스트라이크와_볼의_수를_반환합니다() {
         int strikeCount = 1;
         int ballCount = 2;
-        String resultMessage = computer.getResultMessage(strikeCount, ballCount);
+        String hint = computer.getHint(strikeCount, ballCount);
 
-        assertThat(resultMessage)
+        assertThat(hint)
                 .isEqualTo(ballCount + BALL.getHint() + " " + strikeCount + STRIKE.getHint());
     }
 
@@ -79,9 +79,9 @@ public class ComputerTest {
     void 스트라이크를_3개를_반환합니다() {
         int strikeCount = 3;
         int ballCount = 0;
-        String resultMessage = computer.getResultMessage(strikeCount, ballCount);
+        String hint = computer.getHint(strikeCount, ballCount);
 
-        assertThat(resultMessage)
+        assertThat(hint)
                 .isEqualTo(THREE_NUMBERS_RIGHT_GAME_OVER);
     }
 
@@ -89,9 +89,9 @@ public class ComputerTest {
     void 낫싱을_반환합니다() {
         int strikeCount = 0;
         int ballCount = 0;
-        String resultMessage = computer.getResultMessage(strikeCount, ballCount);
+        String hint = computer.getHint(strikeCount, ballCount);
 
-        assertThat(resultMessage)
+        assertThat(hint)
                 .isEqualTo(NOTHING.getHint());
     }
 }

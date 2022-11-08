@@ -33,20 +33,20 @@ public class Game {
         List<Integer> playerBalls;
         List<Integer> computerBalls = computer.getComputerBalls();
         List<Integer> strikeAndBallResults = new ArrayList<>(Arrays.asList(0, 0));
-        String resultMessage;
+        String hint;
         do {
             playerBalls = playerTurn();
-            resultMessage = computerTurn(computerBalls, playerBalls, strikeAndBallResults);
+            hint = computerTurn(computerBalls, playerBalls, strikeAndBallResults);
             initializeStrikeAndBallResults(strikeAndBallResults);
-        } while (!isGameOver(resultMessage));
+        } while (!isGameOver(hint));
     }
 
     private boolean isContinue() {
         return Integer.parseInt(player.getPlayerAnswer()) == CONTINUE_GAME;
     }
 
-    private boolean isGameOver(String resultMessage) {
-        return resultMessage.equals(THREE_NUMBERS_RIGHT_GAME_OVER);
+    private boolean isGameOver(String hint) {
+        return hint.equals(THREE_NUMBERS_RIGHT_GAME_OVER);
     }
 
     private void initializeStrikeAndBallResults(List<Integer> strikeAndBallResults) {
@@ -56,12 +56,12 @@ public class Game {
 
     private String computerTurn(List<Integer> computerBalls, List<Integer> playerBalls,
             List<Integer> strikeAndBallResults) {
-        String resultMessage;
+        String hint;
         computer.countStrikeAndBallResults(computerBalls, playerBalls, strikeAndBallResults);
-        resultMessage = computer.getResultMessage(strikeAndBallResults.get(STRIKE_COUNT),
+        hint = computer.getHint(strikeAndBallResults.get(STRIKE_COUNT),
                 strikeAndBallResults.get(BALL_COUNT));
-        computer.printResultMessage(resultMessage);
-        return resultMessage;
+        computer.printHint(hint);
+        return hint;
     }
 
     private List<Integer> playerTurn() {

@@ -50,7 +50,7 @@ public class Computer {
         return count;
     }
 
-    public String getResultMessage(int strikeCount, int ballCount) {
+    public String getHint(int strikeCount, int ballCount) {
         if (strikeCount == COMPUTER_BALLS_SIZE) {
             return THREE_NUMBERS_RIGHT_GAME_OVER;
         }
@@ -66,7 +66,7 @@ public class Computer {
         return NOTHING.getHint();
     }
 
-    public void printResultMessage(String resultMessage) {
-        output.printMessage(resultMessage);
+    public void printHint(String hint) {
+        output.printMessage(hint);
     }
 }
