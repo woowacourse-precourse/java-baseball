@@ -8,8 +8,7 @@ import java.util.Set;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -71,6 +70,14 @@ class ApplicationTest extends NsTest {
         assertThat(intToArr[2]).isEqualTo(1);
     }
 
+    @Test
+    void 볼_스트라이크_계산하기() {
+        int input =321;
+        int[] randoms = {0,3,2,1,0,0,0,0,0,0};
+        int[] result = Application.compareToNum(input, randoms);
+        assertThat(result[0]).isEqualTo(2);
+        assertThat(result[1]).isEqualTo(1);
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
