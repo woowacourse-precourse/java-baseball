@@ -14,6 +14,10 @@ public class Hitter {
         generateNumber();
     }
 
+    public void makeNumber() {
+        generateNumber();
+    }
+
     public List<Integer> getNumber() {
         return number;
     }
