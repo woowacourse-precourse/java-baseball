@@ -19,31 +19,14 @@ public class Application {
             GetUserNumber userInput = new GetUserNumber();
             String userRandNumber = userInput.inputUserNumber();
 
-            // count STRIKE
-            int countStrike = 0;
-            for (int i = 0; i < correctRandNumber.size(); i++) {
-                int eachUserNumber = userRandNumber.charAt(i) - '0';
-                if (eachUserNumber == correctRandNumber.get(i)) {
-                    countStrike++;
-                }
-            }
-
-            //count BALL
-            int countBall = 0;
-            for (int i = 0; i < correctRandNumber.size(); i++) {
-                int eachUserNumber = userRandNumber.charAt(i) - '0';
-                if (eachUserNumber == correctRandNumber.get(i)) {
-                    countBall = countBall;
-                } else if (correctRandNumber.contains(eachUserNumber)) {
-                    countBall++;
-                }
-            }
+            CalcCount countResult = new CalcCount();
+            List<Integer> countStrBallList= countResult.CountStrike(userRandNumber, correctRandNumber);
 
             //결과 출력
-            System.out.println(countBall + "볼 " + countStrike + "스트라이크");
+            System.out.println(countStrBallList.get(0) + "볼 " + countStrBallList.get(1) + "스트라이크");
 
             //게임 진행 판단
-            if (countStrike == 3) {
+            if (countStrBallList.get(1) == 3) {
                 System.out.println("3개의 숫자를 모두 맞히였습니다! 게임 종료");
                 gameStatus = false;
             }
