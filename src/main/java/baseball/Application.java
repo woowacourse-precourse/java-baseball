@@ -53,4 +53,33 @@ public class Application {
             num.add(inputNum.charAt(i) - '0');
         }
     }
+
+    private static String compareNumber() {
+        String resStr = "";
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < 3; i++) {
+            int computerNum = target.get(i);
+            int userNum = num.get(i);
+
+            if (computerNum == userNum) {
+                strike++;
+            } else if (target.contains(userNum)) {
+                ball++;
+            }
+        }
+
+        if (ball == 0 && strike == 0) {
+            resStr = "낫싱";
+        }
+        if (ball != 0) {
+            resStr = ball + "볼 ";
+        }
+        if (strike != 0) {
+            resStr += strike + "스트라이크";
+        }
+
+        return resStr;
+    }
 }
