@@ -21,9 +21,9 @@ class BaseballNumberTest {
   }
 
   @Test
-  @DisplayName("컴퓨터가 생성하는 각 자리 숫자는 1에서 9사이의 숫자입니다.")
+  @DisplayName("야구 게임의 각 자리 숫자는 1에서 9사이의 숫자입니다.")
   @Tag("number")
-  void number_between_1_and_9() {
+  void number_is_between_1_and_9() {
     assertTrue(1 <= number && number <= 9, () -> NUMBER_ERROR_MESSAGE);
   }
 
