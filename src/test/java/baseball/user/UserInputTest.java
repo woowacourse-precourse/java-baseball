@@ -1,10 +1,11 @@
 package baseball.user;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import baseball.user.UserInput;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +17,9 @@ public class UserInputTest {
     @Test
     @DisplayName("올바른 게임 인풋")
     void validInput() {
-        Integer[] expected = new Integer[]{1, 2, 3};
+        List<Integer> expected = Arrays.asList(1, 2, 3);
         testInput = "123";
-        assertArrayEquals(expected, userInput.pitching());
+        assertIterableEquals(userInput.pitching(), expected);
     }
 
     @Test

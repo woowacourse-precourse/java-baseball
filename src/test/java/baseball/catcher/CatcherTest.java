@@ -3,16 +3,18 @@ package baseball.catcher;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import baseball.GameResult;
-import baseball.catcher.Catcher;
 import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CatcherTest {
 
+    // catcher.getAnswer() 테스트를 위한 상수
+    /*
     private final static Integer DIGIT_LOWER_BOUND = 1;
     private final static Integer DIGIT_UPPER_BOUND = 9;
     private final static Integer ANS_SIZE = 3;
+     */
     private Catcher catcher;
 
 
@@ -21,7 +23,7 @@ public class CatcherTest {
     void countingBallTest() {
         catcher = new Catcher(() -> Arrays.asList(3, 2, 1));
         catcher.initRandomNumbers();
-        GameResult gameResult = catcher.catching(new Integer[]{1, 2, 3});
+        GameResult gameResult = catcher.catching(Arrays.asList(1, 2, 3));
         assertEquals(2, gameResult.getBallCount());
     }
 
@@ -30,7 +32,7 @@ public class CatcherTest {
     void countingStrikeTest() {
         catcher = new Catcher(() -> Arrays.asList(3, 2, 1));
         catcher.initRandomNumbers();
-        GameResult gameResult = catcher.catching(new Integer[]{1, 2, 3});
+        GameResult gameResult = catcher.catching(Arrays.asList(1, 2, 3));
         assertEquals(1, gameResult.getStrikeCount());
     }
 

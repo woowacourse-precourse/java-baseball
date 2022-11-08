@@ -6,15 +6,17 @@ import static baseball.BaseBallGame.GAME_RESTART;
 
 import baseball.user.pitcher.Pitcher;
 import baseball.user.util.InputReader;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserInput implements Pitcher, OptionSelector {
 
     private static final Integer INPUT_LOWER_BOUND = 123;
     private static final Integer INPUT_UPPER_BOUND = 987;
-
+    private static final Integer OPERAND = 100;
+    private static final Integer RADIX_DECIMAL = 10;
     private final InputReader inputReader;
 
     public UserInput(InputReader inputReader) {
@@ -35,12 +37,12 @@ public class UserInput implements Pitcher, OptionSelector {
     }
 
     @Override
-    public Integer[] pitching() {
+    public List<Integer> pitching() {
         Integer input = getValidInput();
         checkLengthThree(input);
-        Integer[] inputArray = integerToIntegerArray(input);
-        checkDigitValidation(inputArray);
-        return inputArray;
+        List<Integer> inputList = integerToIntegerList(input);
+        checkDigitValidation(inputList);
+        return inputList;
     }
 
     private Integer getValidInput() {
@@ -62,31 +64,31 @@ public class UserInput implements Pitcher, OptionSelector {
         throw new IllegalArgumentException();
     }
 
-    private Integer[] integerToIntegerArray(Integer input) {
-        Integer[] inputArray = new Integer[GAME_NUMBER_LENGTH];
-        int idx = GAME_NUMBER_LENGTH - 1;
-        int operand = 10;
-        while (input > 0) {
-            inputArray[idx--] = input % operand;
-            input = input / operand;
+    private List<Integer> integerToIntegerList(Integer input) {
+        List<Integer> inputList = new ArrayList<>();
+        int operand = OPERAND;
+        while (operand > 0) {
+            inputList.add(input / operand);
+            input = input % operand;
+            operand = operand / RADIX_DECIMAL;
         }
-        return inputArray;
+        return inputList;
     }
 
-    private void checkDigitValidation(final Integer[] inputArray) {
-        checkUniqueDigitRule(inputArray);
-        checkNonZeroDigitRule(inputArray);
+    private void checkDigitValidation(final List<Integer> inputList) {
+        checkUniqueDigitRule(inputList);
+        checkNonZeroDigitRule(inputList);
     }
 
-    private void checkUniqueDigitRule(final Integer[] inputArray) {
-        Set<Integer> uniqueDigits = new HashSet<>(Arrays.asList(inputArray));
+    private void checkUniqueDigitRule(final List<Integer> inputList) {
+        Set<Integer> uniqueDigits = new HashSet<>(inputList);
         if (uniqueDigits.size() < GAME_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void checkNonZeroDigitRule(final Integer[] inputArray) {
-        for (Integer input : inputArray) {
+    private void checkNonZeroDigitRule(final List<Integer> inputList) {
+        for (Integer input : inputList) {
             checkIfZero(input);
         }
     }

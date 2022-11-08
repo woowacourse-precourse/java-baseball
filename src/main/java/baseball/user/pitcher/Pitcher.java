@@ -1,6 +1,8 @@
 package baseball.user.pitcher;
 
+import java.util.List;
+
 public interface Pitcher {
 
-    Integer[] pitching();
+    List<Integer> pitching();
 }
