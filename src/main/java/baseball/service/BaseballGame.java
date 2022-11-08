@@ -25,9 +25,11 @@ public class BaseballGame {
             //User 입력
             System.out.println(USER_INPUT_MESSAGE);
             String userStr = userService.userInput();
-            List<Integer> userNumber = userService.getUserNumber(userStr);
+            List<Integer> user = userService.getUserNumber(userStr);
 
             //Computer User 비교
+            Referee refereeService = new Referee();
+            int[] count = refereeService.getJudgementCount(computer,user);
 
             //스트라이크 3개가 나오면 break;
         }
