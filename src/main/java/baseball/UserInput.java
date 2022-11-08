@@ -8,11 +8,11 @@ public class UserInput {
 
     private List<Integer> number = new ArrayList<Integer>();
 
-    public void input() {
+    public void input(Scanner sc) {
         System.out.print("숫자를 입력해주세요 : ");
 
-        Scanner sc = new Scanner(System.in);
-        String inputString = sc.next();
+        //Scanner sc = new Scanner(System.in);
+        String inputString = sc.nextLine();
 
         if (check_input(inputString) == false) {
             throw new IllegalArgumentException();
