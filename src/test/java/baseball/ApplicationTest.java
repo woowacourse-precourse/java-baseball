@@ -1,11 +1,14 @@
 package baseball;
 
 import baseball.constant.MessageConst;
+import baseball.constant.NumberConst;
 import baseball.validation.InputValidation;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -138,9 +141,32 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining(MessageConst.INPUT_DUPLICATE_EXCEPTION_MSG);
     }
 
+    @Test
+    @DisplayName("재시작/종료 시 사용자의 입력값 검증 테스트")
+    void 재시작_종료_시_사용자_입력값_테스트() throws Exception {
+        // given
+        BaseballGame baseballGame = new BaseballGame();
+        Method method = baseballGame.getClass().getDeclaredMethod("checkStrikeCount", int.class);
+        method.setAccessible(true);
+
+        // when, then
+        try {
+            command("3");
+            method.invoke(baseballGame, NumberConst.MAX_STRIKE);
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException())
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(MessageConst.GAME_CONTROL_EXCEPTION_MSG);
+        }
+    }
 
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    private void command(final String... args) {
+        final byte[] buf = String.join("\n", args).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
     }
 }
