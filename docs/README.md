@@ -10,4 +10,4 @@
             - [x] 잘못된 값이 입력되는것을 검사한다. - Player.checkWrongInput()
             - [x] 입력을 받을 수 있다. - Player.getInput()
         - [x] 몇개의 숫자가 같은지 알 수 있다. - Computer.checkSameNumbersCount()
-        - [ ] 같은 자릿수인지 알 수 있다. - Computer.checkSameNumberOfDigit()
+        - [x] 같은 자릿수인지 알 수 있다. - Computer.checkSameNumberOfDigit()

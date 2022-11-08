@@ -39,4 +39,17 @@ class ComputerTest {
 
         assertThat(sameCnt).isEqualTo(2);
     }
+
+    @Test
+    void 같은_자릿수_검사_테스트() {
+
+        Computer computer = new Computer();
+
+        List<Integer> computerList = List.of(1, 5, 3);
+        List<Integer> playerList = List.of(1, 2, 4);
+
+        int sameCnt = computer.checkSameNumberOfDigit(computerList, playerList);
+
+        assertThat(sameCnt).isEqualTo(1);
+    }
 }
