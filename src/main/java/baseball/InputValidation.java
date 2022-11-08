@@ -11,7 +11,7 @@ public class InputValidation {
     public void validateInputValue(String inputValue) {
         validateValueLength(inputValue);
         validateValueType(inputValue);
-        validateIsDiffrentValue(inputValue);
+        validateIsDifferentValue(inputValue);
         validateIsZero(inputValue);
     }
 
@@ -35,7 +35,7 @@ public class InputValidation {
         }
     }
 
-    private void validateIsDiffrentValue(String inputNumber) {
+    private void validateIsDifferentValue(String inputNumber) {
         List<String> numList = new ArrayList<>(List.of(inputNumber.split("")));
         if (numList.size() != numList.stream().distinct().count()) {
             throw new IllegalArgumentException("서로 다른 숫자만 입력 가능합니다.");
