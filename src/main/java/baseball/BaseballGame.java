@@ -78,13 +78,13 @@ public class BaseballGame {
 
     public int run() throws IllegalArgumentException {
         List<Integer> computer = this.getRandomNumbers();
-
         User user = new User();
+
         while (true) {
             user.setProposal();
             List<Integer> proposal = user.getProposal();
-
             List<Integer> result = this.checkNumber(computer, proposal);
+
             if (user.confirm(result)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
