@@ -5,16 +5,30 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO : 같은 수가 같은 자리에 있으면 스트라이크, 다른 자리에 있으면 볼, 같은 수가 전혀 없으면 낫싱이란 힌트를 출력
+        // TODO : 힌트 출력 함수화
         List<Integer> computer = makeRandomNumberList();
         List<String> playerAnswer = inputPlayerAnswerList();
 
-        System.out.println("playerAnswer : " + playerAnswer);
-        System.out.println("computer : " + computer);
+        int strike = 0;
+        int ball = 0;
+        for(int i = 0; i < 3; i++){
+            if (Objects.equals(computer.get(i), Integer.valueOf(playerAnswer.get(i)))){
+                strike++;
+            }
+            if (!Objects.equals(computer.get(i), Integer.valueOf(playerAnswer.get(i))) && computer.contains(Integer.valueOf(playerAnswer.get(i)))){
+                ball++;
+            }
+        }
+        int nothing = (3 - strike - ball);
+        System.out.println(strike);
+        System.out.println(ball);
+        System.out.println(nothing);
     }
+
 
     public static List<Integer> makeRandomNumberList(){
         List<Integer> computer = new ArrayList<>();
