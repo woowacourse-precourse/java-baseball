@@ -43,7 +43,7 @@ public class BaseBall {
         }
     }
     
-    private static boolean isBaseBallGameEnd(final Referee referee) {
+    private boolean isBaseBallGameEnd(final Referee referee) {
         return referee.isBaseBallGameEnd();
     }
     
@@ -66,12 +66,12 @@ public class BaseBall {
         return InputView.inputUserBalls();
     }
     
-    private static int selectedNumberForRestart() {
+    private int selectedNumberForRestart() {
         SelectedNumberForRestartDTO selectedNumberForRestartDTO = inputNumberForRestart();
         return selectedNumberForRestartDTO.getSelectedNumberForRestart();
     }
     
-    private static SelectedNumberForRestartDTO inputNumberForRestart() {
+    private SelectedNumberForRestartDTO inputNumberForRestart() {
         return InputView.inputNumberForRestart();
     }
 }
