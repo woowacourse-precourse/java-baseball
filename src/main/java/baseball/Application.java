@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -10,7 +11,7 @@ public class Application {
     public static void main(String[] args) {
         String computerNumbers = getRandomNumbers();
         String userNumbers = readLine();
-        checkUserNumbersValidation(userNumbers);
+        userNumbers = checkUserNumbersValidation(userNumbers);
     }
 
     public static String getRandomNumbers() {
@@ -24,8 +25,8 @@ public class Application {
         return randomNumbers.toString().replaceAll("[^0-9]","");
     }
 
-    public static void checkUserNumbersValidation(String userNumbers) {
-        userNumbers.replaceAll("[^0-9]","");
+    public static String checkUserNumbersValidation(String userNumbers) {
+        userNumbers = userNumbers.replaceAll("[^0-9]","");
         if (userNumbers.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
@@ -34,6 +35,13 @@ public class Application {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
+
+        HashSet<Character> checkDuplicate = new HashSet<>();
+        userNumbers.chars().forEach(item -> checkDuplicate.add((char) item));
+        if (checkDuplicate.size() != 3) {
+            throw new IllegalArgumentException("서로 다른 3자리 숫자를 입력해주세요.");
+        }
+        return userNumbers;
     }
 
 
