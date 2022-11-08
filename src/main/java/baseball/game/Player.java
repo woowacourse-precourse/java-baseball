@@ -12,6 +12,7 @@ public class Player {
     public BaseballNumberBundle inputBaseballNumbers() {
         List<Integer> list = new ArrayList<Integer>();
 
+        System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();  // 사용자로부터 3개의 숫자값을 입력받음
         input = removeSeparator(input);
         for(String s : input.split("")) {
