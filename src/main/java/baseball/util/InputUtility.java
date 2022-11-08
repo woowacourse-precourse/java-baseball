@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputUtility {
 
@@ -11,6 +13,12 @@ public class InputUtility {
         String input = Console.readLine();
         validationTest(input, type);
         return input;
+    }
+
+    public static List<Integer> parsingNumber(String input) {
+        return Stream.of(input.split(""))
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
     }
 
 
