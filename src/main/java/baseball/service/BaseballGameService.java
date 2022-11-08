@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static baseball.vo.GameInterfaceMsg.GAME_START;
+import static baseball.vo.GameInterfaceMsg.REQUEST_INPUT;
 
 public class BaseballGameService {
     private static final int START_INCLUSIVE = 1;
@@ -28,6 +29,12 @@ public class BaseballGameService {
     private void setPlayer() {
         String playerInput = Console.readLine();
         player = new Player(parser.parsePlayerNumbers(playerInput));
+    }
+
+    private void play() {
+        System.out.print(REQUEST_INPUT.getMessage());
+        setPlayer();
+        computeScore(computer.getResult(), player.getPlayerNumbers());
     }
 
     private void computeScore(List<Integer> result, List<Integer> playerNumbers) {
