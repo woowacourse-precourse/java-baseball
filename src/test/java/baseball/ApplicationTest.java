@@ -10,6 +10,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
+    void 스트라이크볼_판정테스트() {
+        assertRandomNumberInRangeTest(
+                ()->{
+                    run("567","123","692","952","246","146","2");
+                    assertThat(output()).contains("1볼","1스트라이크","1볼","낫싱","2스트라이크","3스트라이크");
+                    },
+                1,4,6,7,8
+        );
+    }
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
@@ -32,4 +42,6 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+
 }
