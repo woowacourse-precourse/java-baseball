@@ -65,11 +65,19 @@ class ApplicationTest extends NsTest {
     }
 
     // 숫자 중복 테스트
-
     @Test
     void 사용자_숫자_중복_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    // 숫자 여부 테스트
+    @Test
+    void 사용자_숫자_여부_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("가나다"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
