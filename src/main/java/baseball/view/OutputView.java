@@ -8,6 +8,7 @@ public class OutputView {
     }
 
     public static String printRequestNumber() {
+        System.out.println("숫자를 입력해주세요.");
         String input = Console.readLine();
         return input;
     }
