@@ -18,8 +18,4 @@ public class GenerateNumber {
             uniqueNumber.append(num);
         return uniqueNumber;
     }
-
-    public StringBuilder getUniqueNumber() {
-        return uniqueNumber;
-    }
 }
