@@ -16,11 +16,11 @@ public class Referee {
         strike = 0;
         strikeCount(userNum, computerNum);
         ballCount(userNum, computerNum);
-        System.out.println("ball: " + getBall());
-        System.out.println("strike: " + getStrike());
+
+        UserOutput.RefereeMessage(ball, strike);
 
         if (strike == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            UserOutput.userWinMessage();
             return false;
         }
         return true;
