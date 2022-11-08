@@ -13,15 +13,15 @@ public abstract class View {
         return false;
     }
 
-    public void printLine(String message) {
+    public static void printLine(String message) {
         System.out.println(message);
     }
 
-    public void print(String message) {
+    public static void print(String message) {
         System.out.print(message);
     }
 
-    public String readLine(String message) {
+    public static String readLine(String message) {
         print(message + " : ");
         String readLine = Console.readLine();
         printLine("");
