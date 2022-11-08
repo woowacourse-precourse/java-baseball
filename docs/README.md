@@ -132,14 +132,14 @@
             - 전체 반복문의 실행여부를 체크하는 boolean 값을 false 로 변환 
 ```
 ### 기능 목록에서 사용 되는 메서드 
-| 메서드명 | 설명 |  완료 여부  |  
-|---|:---:|:---:|
-| getRandomValue | 중복되지 않는 1 ~ 9 숫자로 구성된 랜덤한 세자리 숫자를 반환  | x |  
-| getInputValue | 값을 입력 받고 해당 값이 유효한 숫자인지 를 유효성 validationOfInput 를 통해 검증 한후 유효하면 해당 숫자을 반환 아니면 IllegalArgumentException 을 발생시킨다.  | x |  
-| validationOfInput | 매겨변수로 받은 값이 중복되지않은 1 ~ 9 의 숫자로 구성된 세자리 숫자인지의 여부를 boolean 형태로 반환 | x |  
-| getIntToArr | 세자리 숫자를 배열로 만들어서 반환 | x |  
-| initRandomValue | getRandomValue 과 getIntToArr 메서드를 사용하여 랜덤 값을 배열로 반환 | x |  
-| compareToNum | 두 배열을 사용하여 볼,스트라이크 의 순으로 각 개수를 배열에 담아 반환한다. | x |  
-| printBallAndStrike | 매개변수를 받을 배열을 가지고 볼,스트라이크의 개수를 출력문에 맞게 출력 | x |  
-| isCorrect | 3스트라이크 여부 를 boolean 형태로 반환 | x |  
-| Main | 프로그램을 실행 시키는 전체적인 로직을 수행한다. | x |  
+| 메서드명 | 설명 | 완료 여부 |  
+|---|:---:|:-----:|
+| getRandomValue | 중복되지 않는 1 ~ 9 숫자로 구성된 랜덤한 세자리 숫자를 반환  |   O   |  
+| getInputValue | 값을 입력 받고 해당 값이 유효한 숫자인지 를 유효성 validationOfInput 를 통해 검증 한후 유효하면 해당 숫자을 반환 아니면 IllegalArgumentException 을 발생시킨다.  |   O   |  
+| validationOfInput | 매겨변수로 받은 값이 중복되지않은 1 ~ 9 의 숫자로 구성된 세자리 숫자인지의 여부를 boolean 형태로 반환 |   O   |  
+| getIntToArr | 세자리 숫자를 배열로 만들어서 반환 |   x   |  
+| initRandomValue | getRandomValue 과 getIntToArr 메서드를 사용하여 랜덤 값을 배열로 반환 |   x   |  
+| compareToNum | 두 배열을 사용하여 볼,스트라이크 의 순으로 각 개수를 배열에 담아 반환한다. |   x   |  
+| printBallAndStrike | 매개변수를 받을 배열을 가지고 볼,스트라이크의 개수를 출력문에 맞게 출력 |   x   |  
+| isCorrect | 3스트라이크 여부 를 boolean 형태로 반환 |   x   |  
+| Main | 프로그램을 실행 시키는 전체적인 로직을 수행한다. |   x   |  

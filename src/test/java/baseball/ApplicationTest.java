@@ -59,6 +59,7 @@ class ApplicationTest extends NsTest {
         boolean valid = Application.validationOfInput("asd");
         assertThat(valid).isFalse();
     }
+
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->

@@ -46,12 +46,22 @@ public class Application {
         }
         return true;
     }
-    static int getInputValue(){
+
+    static int getInputValue() {
         String input = Console.readLine();
         boolean valid = validationOfInput(input);
         if (!valid) {
             throw new IllegalArgumentException();
         }
         return Integer.parseInt(input);
+    }
+
+    static int[] getIntToArr(int num) {
+        int[] arr = new int[10];
+        for (int i = 0; i < 3; i++) {
+            arr[num % 10] = i + 1;
+            num /= 10;
+        }
+        return arr;
     }
 }
