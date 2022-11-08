@@ -3,7 +3,9 @@ package baseball;
 import baseball.resource.GameValue;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public final class GameValidation {
     private String userInput;
@@ -38,5 +40,15 @@ public final class GameValidation {
         });
 
         return true;
+    }
+
+    public boolean isNotDuplicateNumber() {
+        Set<Character> userInputSet = new HashSet<>(userInputList);
+
+        if (userInputSet.size() == 3) {
+            return true;
+        }
+
+        throw new IllegalArgumentException();
     }
 }
