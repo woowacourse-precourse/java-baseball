@@ -52,7 +52,73 @@ public class NumberGenerator {
         }
     }
 
+    private static NumberGenerator getAnswer() {
+        System.out.print(GET_NUMBER_MESSAGE);
+        String userInput = readLine();
+        NumberGenerator.checkInputValue(userInput);
 
+        return new NumberGenerator(userInput);
+    }
 
+    private static int checkNewGameStart() {
+        System.out.println(SUCCESS_MESSAGE);
+        System.out.println(NEW_GAME_CHECK_MESSAGE);
 
+        String newGameAnswer = readLine();
+        return Application.getNewGameAnswerNumber(newGameAnswer);
+        return NumberGenerator.getNewGameAnswerNumber(newGameAnswer);
+    }
+
+    private static int getNewGameAnswerNumber(String str) {
+        int intValue;
+        try {
+            intValue = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+
+        if (intValue != 1 && intValue != 2) {
+            throw new IllegalArgumentException();
+        }
+
+        return intValue;
+    }
+
+    public String toString() {
+        return "number: " + this.number[0] + this.number[1] + this.number[2];
+    }
+    static void checkInputValue(final String str) {
+        if (!NumberGenerator.checkInputLength(str)) {
+            throw new IllegalArgumentException();
+        }
+        if (!NumberGenerator.checkInputNumber(str)) {
+            throw new IllegalArgumentException();
+        }
+        if (!NumberGenerator.checkEqualNumber(str)) {
+            throw new IllegalArgumentException();
+        }
+    }
+    static boolean checkInputLength(final String str) {
+        return str.length() == NumberGenerator.NUMBER_LENGTH;
+    }
+    static boolean checkInputNumber(String str) {
+        try {
+            int numberValue = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        char[] numberArray = Array.getCharArrayFromString(str);
+        return !Array.checkArrayContains(numberArray, '0');
+    }
+    static boolean checkEqualNumber(String str) {
+        char[] checkEqual = new char[str.length()];
+        char[] word = Array.getCharArrayFromString(str);
+        for (int i = 0; i < str.length(); i++) {
+            if (Array.checkArrayContains(checkEqual, word[i])) {
+                return false;
+            }
+            checkEqual[i] = word[i];
+        }
+        return true;
+    }
 }
