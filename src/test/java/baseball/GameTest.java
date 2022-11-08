@@ -57,7 +57,7 @@ class GameTest extends NsTest {
     void case4() {
         String action = "4";
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> Game.validateAction(action))
+                assertThatThrownBy(() -> EndGame.validateAction(action))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
