@@ -1,8 +1,10 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -37,5 +39,24 @@ public class Application {
         return false;
     }
 
-    private 
+    private static List<Integer> inputNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        List<Integer> digitList = new ArrayList<>();
+        Set<Integer> digitSet = new HashSet<>();
+        try {
+            int number = in.nextInt();
+            while (number != 0) {
+                final int digit = number % 10;
+                digitList.add(digit);
+                digitSet.add(digit);
+                number /= 10;
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        if (digitList.size() != 3 || digitSet.size() != 3) {
+            throw new IllegalArgumentException();
+        }
+        return digitList;
+    }
 }
