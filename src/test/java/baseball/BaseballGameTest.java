@@ -20,6 +20,16 @@ public class BaseballGameTest {
     }
 
     @Test
+    void 사용자가_게임_완료시_재시작여부_입력받음() {
+        //given
+        GameController gc = new GameController();
+
+        assertThat(gc.submitContinue("1")).isEqualTo(1);
+        assertThatThrownBy(() -> {
+            gc.submitContinue("예외발생");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
     void 잘못된_사용자_입력시_예외_발생() {
         BaseballGame bg = new BaseballGame(3);
         assertThatThrownBy(() -> {
