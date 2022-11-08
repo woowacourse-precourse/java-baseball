@@ -11,6 +11,7 @@ public class Application {
     static OutputHandler outputHandler;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     public static void main(String[] args) throws IOException {
+
         inputHandler = new InputHandler();
         outputHandler = new OutputHandler();
         baseBallGame = new BaseBallGame();
@@ -20,7 +21,7 @@ public class Application {
         while (true) {
             String comNum = radomNumberCreator.makeRandomNumber();
 
-            // TODO: 사용자 수 입력 - 도메인테스트
+
             baseBallGame.baseballGame(comNum);
 
             outputHandler.printRestart_orExit();

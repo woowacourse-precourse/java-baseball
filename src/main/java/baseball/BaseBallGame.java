@@ -10,6 +10,7 @@ public class BaseBallGame {
     static InputHandler inputHandler = new InputHandler();
     static OutputHandler outputHandler = new OutputHandler();
 
+
     public void baseballGame(String randomNum) throws IOException {
         while(true) {
             String myNum = inputHandler.getInput_returnMyNum();
@@ -17,7 +18,6 @@ public class BaseBallGame {
             int strike = findStrike(randomNum, myNum);
             int ball = findBoll(randomNum, myNum, strike);
 
-            //Todo : 3스트라이크 조건 분리하기
             outputHandler.Strike_andBall_result_print(strike, ball);
             if(strike==3 && ball==0){
                 break;

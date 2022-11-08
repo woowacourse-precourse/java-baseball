@@ -17,16 +17,18 @@ public class InputHandler {
         outputHandler.printGetUserNumber();
 
         String myNum = br.readLine();
-
+        if(!errorHandler.isAllDigit(myNum)){
+            throw new IllegalArgumentException();
+        }
         List<Integer> myNumList = new ArrayList<>();
         for(int i=0; i< myNum.length(); i++){
             myNumList.add(Integer.parseInt(myNum.substring(i,i+1)));
         }
         if(!errorHandler.isLengthSizeis3(myNumList)){
-            throw new IllegalArgumentException("숫자는 세자리 수여야 합니다.");
+            throw new IllegalArgumentException();
         }
         if(!errorHandler.isNotDuplicated(myNumList)){
-            throw new IllegalArgumentException("중복된 수를 입력하였습니다.");
+            throw new IllegalArgumentException();
         }
         return myNum;
     }
@@ -36,7 +38,7 @@ public class InputHandler {
             System.out.println("입력 수 : " + restartNum);
             return restartNum;
         }catch (NumberFormatException e){
-            throw new IllegalArgumentException("숫자를 입력해주세요");
+            throw new IllegalArgumentException();
         }
     }
 }

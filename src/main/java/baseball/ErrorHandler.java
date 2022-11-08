@@ -1,5 +1,6 @@
 package baseball;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ErrorHandler {
@@ -17,6 +18,15 @@ public class ErrorHandler {
             }else{
                 return false;
             }
+        }
+        return true;
+    }
+
+    public boolean isAllDigit(String input)  {
+        try {
+            Integer.parseInt(input);
+        }catch (NumberFormatException e){
+            return false;
         }
         return true;
     }
