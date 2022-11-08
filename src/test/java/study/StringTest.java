@@ -38,16 +38,16 @@ public class StringTest extends NsTest{
                 .isInstanceOf(IllegalArgumentException.class);
 
         int num2 = -3;
-        assertThatThrownBy(() -> checkFinish(num1))
+        assertThatThrownBy(() -> checkFinish(num2))
                 .isInstanceOf(IllegalArgumentException.class);
 
 
         int num3 = 1561651;
-        assertThatThrownBy(() -> checkFinish(num1))
+        assertThatThrownBy(() -> checkFinish(num2))
                 .isInstanceOf(IllegalArgumentException.class);
 
         String num4 = "종료";
-        assertThatThrownBy(() -> checkFinish(num1))
+        assertThatThrownBy(() -> checkFinish(Integer.parseInt(num4)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
