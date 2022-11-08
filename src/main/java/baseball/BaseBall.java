@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,8 +29,13 @@ public class BaseBall {
         }
     }
 
-    public void validateInputType() {
-        
+    public void validateInputType(String input) {
+        List<String> checkNumberList = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
+        Arrays.stream(input.split(""))
+                .filter(number -> !checkNumberList.contains(number))
+                .forEach(number -> {
+                    throw new IllegalArgumentException("올바르지 않은 입력이 있습니다.");
+                });
     }
 
     public void validateInputUnique() {
