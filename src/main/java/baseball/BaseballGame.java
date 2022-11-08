@@ -61,9 +61,9 @@ public class BaseballGame {
     }
 
     public void printHint(int strikeCount, int ballCount) {
-        if (strikeCount == 0 && ballCount != 0) { // 볼만 있는 경우
+        if (strikeCount == 0 && ballCount > 0) { // 볼만 있는 경우
             System.out.print(ballCount+"볼\n");
-        } else if (strikeCount != 0 && ballCount == 0) { // 스트라이크만 있는 경우
+        } else if (strikeCount > 0 && ballCount == 0) { // 스트라이크만 있는 경우
             System.out.print(strikeCount+"스트라이크\n");
         } else if (strikeCount == 0 && ballCount == 0) { // 낫싱
             System.out.print("낫싱\n");
@@ -78,6 +78,19 @@ public class BaseballGame {
     private void endGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         isPlayerWin=true;
+        restartGame();
+    }
+
+    public boolean restartGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals('1')) {
+            return true;
+        } else if (input.equals('2')) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("1 또는 2를 입력하세요..");
+        }
     }
 
     public void startGame() {
