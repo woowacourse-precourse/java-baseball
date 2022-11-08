@@ -2,6 +2,7 @@ package baseball.applications;
 
 import baseball.domain.Computer;
 import baseball.domain.Game;
+import baseball.views.Input;
 
 public class GameService {
     private volatile static GameService INSTANCE;
@@ -23,6 +24,15 @@ public class GameService {
     public void startGame() {
         computerNumber = Computer.getRandomNumberString();
         Game game = new Game();
+
+        playGame(game);
+    }
+
+    private void playGame(Game game) {
+        String userNumber = Input.input();
+        game.compare(userNumber, computerNumber);
+
+
     }
 
 }
