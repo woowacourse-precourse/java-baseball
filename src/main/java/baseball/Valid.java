@@ -3,6 +3,8 @@ package baseball;
 public class Valid {
 
 	private static final int DIGIT_LENGTH = 3;
+	private static final String RESTART = "1";
+	private static final String DO_NOT_RESTART = "2";
 	private static final String EXCEPTION_MESSAGE = "값을 잘못 입력했습니다. 게임을 종료합니다.";
 
 	public static String validInputNumber(String inputNumber) {
@@ -30,8 +32,8 @@ public class Valid {
 	}
 
 	private static boolean isNaturalNumber(String inputNumber) {
-		for (int index = 0; index < inputNumber.length(); index++) {
-			int digit = inputNumber.charAt(index) - '0';
+		for (int digitIndex = 0; digitIndex < inputNumber.length(); digitIndex++) {
+			int digit = inputNumber.charAt(digitIndex) - '0';
 			if (!(digit > 0 && digit < 10)) {
 				return false;
 			}
@@ -53,7 +55,7 @@ public class Valid {
 	}
 
 	private static boolean isOneOrTwo(String inputNumber) {
-		if (inputNumber.equals("1") || inputNumber.equals("2")) {
+		if (inputNumber.equals(RESTART) || inputNumber.equals(DO_NOT_RESTART)) {
 			return true;
 		}
 		return false;
