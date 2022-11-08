@@ -8,6 +8,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         String computer = getRandomNumber();
+        printStartMsg();
     }
 
     public static String getRandomNumber(){
@@ -23,5 +24,9 @@ public class Application {
             sb.append(x);
         }
         return sb.toString();
+    }
+
+    public static void printStartMsg(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 }
