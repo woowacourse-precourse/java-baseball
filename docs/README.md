@@ -1,5 +1,3 @@
-# README
-
 # Util
 
 ## InputUtility
