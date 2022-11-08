@@ -29,6 +29,7 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    //기능목록 1,7번
     @Test
     @DisplayName("출력 문자열 확인")
     void 시작종료_출력() {

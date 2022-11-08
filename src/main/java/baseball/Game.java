@@ -13,6 +13,7 @@ public class Game {
     private final Score score =new Score();
     private Status status;
 
+    //게임 실행부분(재실행 여부 확인 포함)
     public void start() {
         do {
             initGame();
@@ -20,16 +21,16 @@ public class Game {
         } while (user.scanWantReplayingGame());
     }
 
+    //실질적 게임 실행
     private void play() {
         System.out.println(START_MSG);
 
         while (status == Playing) {
             user.scanUserNums();
             score.setUserNums(user.getNums());
-            score.calculateAndShowResult();
+            score.calculateAndShowHint();
             status = score.checkingStatus();
         }
-
         System.out.println(GAME_FINISH_MSG);
     }
 

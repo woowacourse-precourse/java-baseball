@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Computer extends Player {
 
+    //컴퓨터의 랜덤 숫자 설정
     public void setRandNums() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {

@@ -17,6 +17,8 @@ public class functionTest {
     Score score = new Score();
     Computer computer = new Computer();
 
+
+    //기능목록2
     @Test
     @DisplayName("1.컴퓨터 숫자는 세 자리 이다.")
     void 컴퓨터_숫자_LengthCheck() {
@@ -45,7 +47,7 @@ public class functionTest {
         assertFalse(hasRangeError);
     }
 
-
+    //기능목록3
     @Test
     @DisplayName("1.유저의 숫자는 1~9사이여야 한다")
     void 유저의_숫자_RangeCheck() {
@@ -70,6 +72,7 @@ public class functionTest {
         assertThrows(IllegalArgumentException.class, () -> user.checkingNums("1234"));
     }
 
+    //기능목록4
     @Test
     @DisplayName("1.유저의 결과 계산_Strike")
     void 유저_결과_계산_Strike() {
@@ -95,6 +98,7 @@ public class functionTest {
         assertEquals(0, score.getBallCnt());
     }
 
+    //기능목록5
     @Test
     @DisplayName("1.유저와 결과를 출력한다._스트라이크")
     void 유저_결과_출력_Strike() {
@@ -127,6 +131,7 @@ public class functionTest {
         assertEquals("3볼", out.toString().trim());
     }
 
+    //기능목록 7
     @Test
     @DisplayName("게임 재실행 여부 확인중 유저 인풋값 에러")
     void 유저_재실행여부_인풋에러() {
@@ -156,7 +161,7 @@ public class functionTest {
     private void calculateAndShowResult(List<Integer> input) {
         score.setAnswerNums(List.of(2, 5, 8));
         score.setUserNums(input);
-        score.calculateAndShowResult();
+        score.calculateAndShowHint();
     }
 
     private OutputStream getOutputStream() {

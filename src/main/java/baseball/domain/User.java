@@ -9,6 +9,7 @@ import static constant.Constants.*;
 
 public class User extends Player {
 
+    //user 숫자 스캔
     public void scanUserNums() {
         System.out.print(INPUT_MSG);
         String inputNums = Console.readLine();
@@ -16,7 +17,8 @@ public class User extends Player {
         setNums(inputsToList(inputNums));
     }
 
-    public boolean scanWantReplayingGame(){
+    //게임 종료 시점에서 유저의 게임 진행 여부를 확인
+    public boolean scanWantReplayingGame() {
         System.out.println(CHECKING_REPLAYING_MSG);
         int userStatus = Integer.parseInt(Console.readLine());
 
@@ -25,12 +27,14 @@ public class User extends Player {
         else throw new IllegalArgumentException();
     }
 
+    //에러가 있다면 예외 발생
     public void checkingNums(String inputNums) {
         if (isErrorInputNums(inputNums)) {
             throw new IllegalArgumentException();
         }
     }
 
+    //예외 조건
     private boolean isErrorInputNums(String inputNums) {
         List<Integer> inputNumsList = new ArrayList<>();
         //3개의 숫자가 들어오지 않은 경우
@@ -48,6 +52,7 @@ public class User extends Player {
         return false;
     }
 
+    //String 문자열 Integer 형 리스트 반환
     public List<Integer> inputsToList(String inputNums) {
         List<Integer> inputNumsList = new ArrayList<>();
         for (int i = 0; i < ballSize; i++) {
