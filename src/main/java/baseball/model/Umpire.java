@@ -9,6 +9,7 @@ public class Umpire {
     private int ball = 0;
 
     public String gameResult(List<Integer> computerNum, List<Integer> playerNum) {
+        initCount();
         checkStrike(computerNum, playerNum);
 
         if (strike == 0 && ball == 0) {
@@ -38,10 +39,15 @@ public class Umpire {
 
     public void checkBall(List<Integer> computerNum, List<Integer> playerNum) {
         for (int num : playerNum) {
-            if (computerNum.contains(playerNum)) {
+            if (computerNum.contains(num)) {
                 this.ball++;
             }
         }
+    }
+
+    public void initCount() {
+        this.strike = 0;
+        this.ball = 0;
     }
 
     public int getStrike() {

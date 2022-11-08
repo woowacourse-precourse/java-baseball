@@ -37,7 +37,7 @@ public class PlayerInputValidator {
     }
 
     public static void restartOrEndValidate(String input) throws IllegalArgumentException {
-        if (input.equals("1") || input.equals("2")) {
+        if (!(input.equals("1") || input.equals("2"))) {
             throw new IllegalArgumentException();
         }
     }

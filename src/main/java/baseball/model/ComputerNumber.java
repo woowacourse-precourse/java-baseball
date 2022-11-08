@@ -6,12 +6,13 @@ import java.util.List;
 public class ComputerNumber {
     private List<Integer> computerNum = new ArrayList<>();
 
-    public ComputerNumber(List<Integer> computerNum) {
+    public void setComputerNum() {
         ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
         this.computerNum = computerNumberGenerator.numGenerate(computerNum);
     }
 
     public List<Integer> getComputerNum() {
+        setComputerNum();
         return computerNum;
     }
 

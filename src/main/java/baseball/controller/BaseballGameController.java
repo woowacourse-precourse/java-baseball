@@ -13,26 +13,27 @@ import java.util.List;
 public class BaseballGameController {
     public void play() {
         boolean gameFlag = true;
+        OutputView.startGameMessage();
 
         while (gameFlag) {
-            OutputView.startGameMessage();
             startGame();
             gameFlag = restartOrEnd();
         }
+        OutputView.endGameMessage();
     }
 
     public void startGame() {
-        int strikeCount = 0;
-        List<Integer> computerNumList = new ArrayList<>();
-        ComputerNumber computerNum = new ComputerNumber(computerNumList);
-        PlayerNumber playerNum = new PlayerNumber();
+        ComputerNumber computerNumber = new ComputerNumber();
+        PlayerNumber playerNumber = new PlayerNumber();
         Umpire umpire = new Umpire();
+        List<Integer> computerNum = computerNumber.getComputerNum();
 
-        while (strikeCount != 3) {
-            String baseballGameResult = umpire.gameResult(computerNum.getComputerNum(), playerNum.getPlayerNum());
+        while (umpire.getStrike() != 3) {
+            List<Integer> playerNum = playerNumber.getPlayerNum();
+            String baseballGameResult = umpire.gameResult(computerNum, playerNum);
             System.out.println(baseballGameResult);
-            strikeCount = umpire.getStrike();
         }
+        OutputView.clearGameMessage();
     }
 
     public boolean restartOrEnd() {

@@ -10,7 +10,7 @@ public class PlayerNumber {
 
     private List<Integer> playerNum = new ArrayList<>();
 
-    public PlayerNumber() {
+    public void setPlayerNumber() {
         String playerInput = InputView.inputNumberMessage();
 
         PlayerInputValidator.inputValidate(playerInput);
@@ -18,6 +18,7 @@ public class PlayerNumber {
     }
 
     public List<Integer> getPlayerNum() {
+        setPlayerNumber();
         return playerNum;
     }
 
