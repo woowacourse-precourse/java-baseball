@@ -1,5 +1,5 @@
 # 🔗 기능 목록
-## 1. Application
+## 1. Application ✅
 ### main
     - BaseBallGame 객체 생성
     - logic 실행 (예외 발생 시 catch)
