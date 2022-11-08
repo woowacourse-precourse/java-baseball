@@ -5,6 +5,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+    private static String RESTART_OPTION = "1";
+    private static String EXIT_OPTION = "2";
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         startGame();
@@ -33,15 +35,15 @@ public class Application {
             throw new IllegalArgumentException("잘못된 입력: 1 혹은 2를 입력해주세요.");
         }
 
-        if (selection.equals("1")) {
+        if (selection.equals(RESTART_OPTION)) {
             startGame();
-        } else if (selection.equals("2")) {
+        } else if (selection.equals(EXIT_OPTION)) {
             System.out.println("게임 종료");
         }
     }
 
     static boolean isValidSelection(String selection){
-        List<String> candidates = List.of("1", "2");
+        List<String> candidates = List.of(RESTART_OPTION, EXIT_OPTION);
         return  candidates.contains(selection);
     }
 }
