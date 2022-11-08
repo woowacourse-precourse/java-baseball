@@ -35,6 +35,9 @@ public class Application {
             playerNumberArrayList.add(Integer.parseInt(letter));
         }
 
+        // 게임 플레이어가 입력한 숫자를 출력한다.
+        System.out.println("숫자를 입력해주세요 : "+playerString);
+
         // 게임 플레이어가 입력한 숫자가 유효하지 않으면 예외를 발생한다.
         CheckPlayerNumberValidation(playerNumberArrayList);
 
