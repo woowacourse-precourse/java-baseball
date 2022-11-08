@@ -10,6 +10,8 @@ public class NumberValidator {
     private static final String WRONG_LENGTH_INPUT_MESSAGE = "숫자 세 자리를 입력해주세요.";
     private static final String WRONG_RANGE_INPUT_MESSAGE = "1 ~ 9 사이의 숫자만 입력 가능합니다.";
     private static final String DUPLICATE_NUMBER_INPUT_MESSAGE = "서로 다른 세 자리의 숫자만 입력 가능합니다.";
+    private static final char BASEBALL_GAME_START_NUMBER_CHAR = '1';
+    private static final char BASEBALL_GAME_END_NUMBER_CHAR = '9';
 
     public int[] toValidateData(String inputNumber) {
         if (!isTreeLetters(inputNumber)) {
@@ -28,7 +30,17 @@ public class NumberValidator {
     }
 
     public boolean isNumericSting(String inputNumber) {
-        return inputNumber.chars().allMatch(Character::isDigit);
+        for (int i = 0; i < inputNumber.length(); i++) {
+            if (!isBetween1And9(inputNumber.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isBetween1And9(char checkChar) {
+        return checkChar >= BASEBALL_GAME_START_NUMBER_CHAR && checkChar <= BASEBALL_GAME_END_NUMBER_CHAR;
     }
 
     public boolean isDifferentCharacters(String inputNumber) {
