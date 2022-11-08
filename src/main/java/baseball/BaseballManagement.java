@@ -17,7 +17,7 @@ public class BaseballManagement {
                 NumberCheck numberCheck = new NumberCheck();
                 UserNumber userNumber = new UserNumber(Input.inputNumber());
                 numberCheck.checkLocationNumbers(userNumber, computerRandomNumber);
-                ScoreConfirmation.confirm(numberCheck);
+                MatchScore.compareMatchScore(numberCheck);
                 isThreeStrike = isMatchThreeStrike(numberCheck);
             }
             Output.printGameOverMessage();
