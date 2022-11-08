@@ -1,7 +1,5 @@
 package baseball.core;
 
-import baseball.core.Computer;
-import baseball.core.BallStrike;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -31,8 +29,8 @@ class ComputerTest {
             BallStrike res = opponent.answer(numList);
 
             //then
-            assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
-            assertThat(expected.getStrikeCount()).isEqualTo(expected.getStrikeCount());
+            assertThat(res.getBallCount()).isEqualTo(expected.getBallCount());
+            assertThat(res.getStrikeCount()).isEqualTo(expected.getStrikeCount());
         }
 
         @Test
@@ -48,8 +46,8 @@ class ComputerTest {
             BallStrike res = opponent.answer(numList);
 
             //then
-            assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
-            assertThat(expected.getStrikeCount()).isEqualTo(expected.getStrikeCount());
+            assertThat(res.getBallCount()).isEqualTo(expected.getBallCount());
+            assertThat(res.getStrikeCount()).isEqualTo(expected.getStrikeCount());
         }
 
         @Test
@@ -65,8 +63,8 @@ class ComputerTest {
             BallStrike res = opponent.answer(numList);
 
             //then
-            assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
-            assertThat(expected.getStrikeCount()).isEqualTo(expected.getStrikeCount());
+            assertThat(res.getBallCount()).isEqualTo(expected.getBallCount());
+            assertThat(res.getStrikeCount()).isEqualTo(expected.getStrikeCount());
         }
 
         @Test
@@ -82,8 +80,8 @@ class ComputerTest {
             BallStrike res = opponent.answer(numList);
 
             //then
-            assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
-            assertThat(expected.getStrikeCount()).isEqualTo(expected.getStrikeCount());
+            assertThat(res.getBallCount()).isEqualTo(expected.getBallCount());
+            assertThat(res.getStrikeCount()).isEqualTo(expected.getStrikeCount());
         }
 
         @Test
@@ -99,8 +97,8 @@ class ComputerTest {
             BallStrike res = opponent.answer(numList);
 
             //then
-            assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
-            assertThat(expected.getStrikeCount()).isEqualTo(expected.getStrikeCount());
+            assertThat(res.getBallCount()).isEqualTo(expected.getBallCount());
+            assertThat(res.getStrikeCount()).isEqualTo(expected.getStrikeCount());
         }
 
         @Test
@@ -116,9 +114,8 @@ class ComputerTest {
             BallStrike res = opponent.answer(numList);
 
             //then
-            assertThat(expected.getBallCount()).isEqualTo(expected.getBallCount());
-            assertThat(expected.getStrikeCount()).isEqualTo(expected.getStrikeCount());
+            assertThat(res.getBallCount()).isEqualTo(expected.getBallCount());
+            assertThat(res.getStrikeCount()).isEqualTo(expected.getStrikeCount());
         }
     }
-
 }
