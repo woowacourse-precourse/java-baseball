@@ -3,27 +3,21 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
-    int response;
+    String response;
     boolean result;
-    boolean oneMore=true;
 
     public void request(){
-        System.out.println("숫자를 입력해주세요 : ");
-        response = Integer.parseInt(Console.readLine());
+        System.out.print("숫자를 입력해주세요 : ");
+        this.response = Console.readLine();
     }
 
     public void pass(String answer){
         if(answer.equals("3스트라이크")){
             result = true;
         }else {
-            System.out.println("숫자를 입력해주세요 : ");
-            response = Integer.parseInt(Console.readLine());
+            System.out.print("숫자를 입력해주세요 : ");
+            response = Console.readLine();
             result = false;
         }
-    }
-
-    public boolean one_more_time(int num){
-        if(num==2) oneMore = false;
-        return oneMore;
     }
 }
