@@ -5,10 +5,60 @@ import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    class BaseballInputException {
+        @Test
+        void 중복된_입력() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("112"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("중복된 입력입니다")
+            );
+        }
+
+        @Test
+        void 영문자_입력() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("abc"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력이 영어입니다")
+            );
+        }
+
+        @Test
+        void 한글_입력() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("우테코"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("입력이 한글입니다")
+            );
+        }
+
+        @Test
+        void 숫자_0_입력() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("102"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("0을 입력했습니다")
+            );
+        }
+
+        @Test
+        void 공백_입력() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("1 2"))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessageContaining("공백이 존재합니다")
+            );
+        }
+    }
+
+
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -32,4 +82,5 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
 }
