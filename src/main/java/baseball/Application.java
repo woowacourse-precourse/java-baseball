@@ -23,6 +23,8 @@ public class Application {
       String userInput = enterNumber();
       checkCorrectInput(userInput);
 
+      String result = getResult(userInput, computer);
+      System.out.println(result);
     }
   }
 
@@ -66,5 +68,53 @@ public class Application {
         throw new IllegalArgumentException("숫자가 아닌 입력이므로 종료합니다.");
       }
     }
+  }
+
+  public String getResult(String userInput, List<Integer> answer) {
+    String[] userInputArray = userInput.split("");
+
+    int strikeCount = countStrike(userInputArray, answer);
+    int ballCount = countBall(userInputArray, answer);
+
+    ballCount -= strikeCount;
+
+    return getResultSentence(strikeCount, ballCount);
+  }
+
+  public String getResultSentence(int strikeCount, int ballCount){
+    if ((strikeCount == 0) && (ballCount == 0)) {
+      return "낫싱";
+    } else if (strikeCount == 3) {
+      return "3스트라이크";
+    } else {
+      StringBuilder result = new StringBuilder();
+      if (ballCount != 0) {
+        result.append(ballCount).append("볼 ");
+      }
+      if (strikeCount != 0) {
+        result.append(strikeCount).append("스트라이크");
+      }
+      return result.toString();
+    }
+  }
+
+  public int countStrike(String[] userInputArray, List<Integer> answer){
+    int strikeCount = 0;
+    for (int i = 0; i < userInputArray.length; i++) {
+      if (answer.get(i) == Integer.parseInt(userInputArray[i])) {
+        strikeCount++;
+      }
+    }
+    return strikeCount;
+  }
+
+  public int countBall(String[] userInputArray, List<Integer> answer){
+    int ballCount = 0;
+    for (String number : userInputArray) {
+      if (answer.contains(Integer.parseInt(number))) {
+        ballCount++;
+      }
+    }
+    return ballCount;
   }
 }
