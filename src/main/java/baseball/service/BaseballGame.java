@@ -1,7 +1,9 @@
-package baseball.constant;
+package baseball.service;
 
-import static baseball.service.Message.GAME_START_MESSAGE;
-import static baseball.service.Message.PROGRAM_END_MESSAGE;
+import java.util.List;
+
+import static baseball.constant.Message.GAME_START_MESSAGE;
+import static baseball.constant.Message.PROGRAM_END_MESSAGE;
 
 public class BaseballGame {
     public void start(){
@@ -16,6 +18,9 @@ public class BaseballGame {
     }
     private void startGame(){
         //Computer 난수 생성
+        Computer comService = new Computer();
+        List<Integer> computer = comService.getRandomNumber();
+
         while(true) {
             //User 입력
 
