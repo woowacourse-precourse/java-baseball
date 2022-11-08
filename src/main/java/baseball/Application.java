@@ -153,13 +153,11 @@ public class Application {
     private static boolean playerInputCheck() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        boolean checkInput = false;
+        boolean checkInput = true;
 
         if (isInteger(input)) {
-            checkInput = isLengthThree(input);
-//            System.out.println("isLengthThree 의 checkInput : " + checkInput);
-            checkInput = isNumberDifferent(checkInput, input);
-//            System.out.println("isNumberDifferent 의 checkInput : " + checkInput);
+            isLengthThree(input);
+            isNumberDifferent(input);
         }
         return checkInput;
     }
@@ -175,44 +173,21 @@ public class Application {
         }
     }
 
-    private static boolean isLengthThree(String input) {
-        boolean checkLength = true;
-        try {
-            if (input.length() != 3) {
-                checkLength = false;
-//                System.out.println("숫자의 길이가 3이 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+    private static void isLengthThree(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("숫자의 길이가 3이 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
         }
-        return checkLength;
     }
 
-    private static boolean isNumberDifferent(boolean middleCheck, String input) {
+    private static void isNumberDifferent(String input) {
         Set<Integer> set = new LinkedHashSet<>();
         for (int i = 0; i < input.length(); i++) {
             set.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         }
 
-        if (middleCheck) {
-            middleCheck = isRepeat(set);
+        if (set.size() != 3) {
+            throw new IllegalArgumentException("서로 다른 숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
         }
         playerInputNumber = new ArrayList<>(set);
-        return middleCheck;
-    }
-
-    private static boolean isRepeat(Set<Integer> set) {
-        boolean checkRepeat = true;
-        try {
-            if (set.size() != 3) {
-                checkRepeat = false;
-//                System.out.println("서로 다른 숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        return checkRepeat;
     }
 }
