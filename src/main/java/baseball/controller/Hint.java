@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.view.OutputView;
+
 import java.util.List;
 
 import static baseball.model.Constant.NUM_SIZE;
@@ -17,6 +19,37 @@ public class Hint {
             if (computer.contains(user.get(i))) {
                 ball += 1;
             }
+        }
+    }
+
+    public void ResultHint() {
+        NothingHint();
+        BallHint();
+        StrikeHint();
+        BallStrikeHint();
+    }
+
+    private void NothingHint() {
+        if (strike == 0 && ball == 0) {
+            OutputView.NothingOutput();
+        }
+    }
+
+    private void BallHint() {
+        if (strike == 0 && ball != 0) {
+            OutputView.BallOutput(ball);
+        }
+    }
+
+    private void StrikeHint() {
+        if (strike != 0 && ball == 0) {
+            OutputView.StrikeOutput(strike);
+        }
+    }
+
+    private void BallStrikeHint() {
+        if (strike != 0 && ball != 0) {
+            OutputView.BallStrikeOutput(ball, strike);
         }
     }
 }

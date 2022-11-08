@@ -12,16 +12,17 @@ import static baseball.view.InputView.restartInput;
 public class Game {
     List<Integer> computer = new ComputerGenerate().computer;
     List<Integer> user = new ArrayList<>();
-    String result = "";
+    int result = 0;
 
     public Game() {
-        while (!result.equals("3스트라이크")) {
+        while (result != 3) {
             user = new UserGenerate().user;
-            Hint hint = new Hint(computer,user);
-            OutputView.HintOutput(hint.strike,hint.ball);
-            System.out.println(result);
+            System.out.println(computer);
+            Hint hint = new Hint(computer, user);
+            hint.ResultHint();
+            result = hint.strike;
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        OutputView.EndGameOutput();
         restartInput();
     }
 
