@@ -96,7 +96,7 @@ public class Application {
         } else if (ball == 0) {
             return strike + STRIKE_MESSAGE;
         } else if (strike == 0) {
-            return ball + BALL_MESSAGE;
+            return ball + BALL_MESSAGE.trim();
         }
 
         return ball + BALL_MESSAGE + strike + STRIKE_MESSAGE;
