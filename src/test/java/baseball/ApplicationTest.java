@@ -53,6 +53,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void should_PrintResult_When_ZeroMatchNumber() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("678", "891", "123", "2");
+                    assertThat(output()).contains("낫싱", "낫싱", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
