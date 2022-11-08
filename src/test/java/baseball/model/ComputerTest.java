@@ -5,11 +5,10 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest extends NsTest {
     private Computer computer = new Computer();
@@ -17,8 +16,8 @@ class ComputerTest extends NsTest {
     @Test
     public void 서로다른_3자리의_숫자() {
         computer.generateNumber();
-        int[] generatedNumbers = computer.getNumbers();
-        long distinctNumberCount = Arrays.stream(generatedNumbers).distinct().count();
+        List<Integer> numberList = computer.getNumberList();
+        long distinctNumberCount = numberList.stream().distinct().count();
 
         Assertions.assertEquals(distinctNumberCount, 3);
     }
