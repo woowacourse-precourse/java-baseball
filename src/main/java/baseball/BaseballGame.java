@@ -2,6 +2,13 @@ package baseball;
 
 public class BaseballGame {
 
+    public static void Round() {
+        Computer BaseballComputerTarget = new Computer();
+        BaseballComputerTarget.makeTarget();
+
+        Game(BaseballComputerTarget.target);
+    }
+    
     public static void Game(int[] target) {
         boolean result = false;
 
