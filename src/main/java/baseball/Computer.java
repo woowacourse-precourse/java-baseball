@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.BaseballResult;
+import baseball.resource.GameValue;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class Computer {
     public Integer getGameStrike(String userInput) {
         int resultStrike = 0;
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < GameValue.CORRECT_LENGTH; i++) {
             if (userInput.charAt(i) == computerAnswer.get(i)) {
                 resultStrike++;
             }
@@ -43,7 +44,7 @@ public class Computer {
     public Integer getGameBall(String userInput) {
         int resultBall = 0;
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < GameValue.CORRECT_LENGTH; i++) {
             if (computerAnswer.contains(userInput.charAt(i)) && computerAnswer.get(i) != userInput.charAt(i)) {
                 resultBall++;
             }
