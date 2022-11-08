@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.model.Goal;
+import baseball.model.Player;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Collections;
 import java.util.List;
@@ -76,6 +77,38 @@ class ApplicationTest extends NsTest {
         }
 
         assertThat(goalNumber.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 볼카운트_테스트_스트라이크아웃() {
+        Player player = new Player();
+        player.setPlayerNumber("123");
+        List<Integer> goalNumber = List.of(1,2,3);
+
+        player.ballCount(goalNumber);
+        assertThat(player.strikeOut()).isTrue();
+    }
+
+    @Test
+    void 볼카운트_테스트_1() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("541", "412", "312", "145", "124", "123", "2");
+                    assertThat(output()).contains("1볼", "2볼", "3볼", "1스트라이크", "2스트라이크", "3스트라이크");
+                },
+                1,2,3,1,2,3
+        );
+    }
+
+    @Test
+    void 볼카운트_테스트_2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("134", "213", "123", "2");
+                    assertThat(output()).contains("1볼 1스트라이크", "2볼 1스트라이크", "3스트라이크");
+                },
+                1,2,3,1,2,3
+        );
     }
 
     @Override
