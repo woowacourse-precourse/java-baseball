@@ -33,19 +33,19 @@ public class BaseballGame {
             printResult(result);
             game = checkThreeStrike(result);
 
-            if (result.getStrike() == 3 && game == 1) {
+            // 스트라이크 3회, 숫자 1 입력시 게임 재시작
+            if (restart(result, game)) {
                 computer = initAnswerNumber();
             }
 
-            if (result.getStrike() == 3 && game == 2) {
+            // 스트라이크 3회, 숫자 2 입력시 게임 종료
+            if (gameOver(result,game)) {
                 System.out.println("게임 종료");
             }
-
         }
 
 
     }
-
     // 컴퓨터의 숫자 초기화
     public List<Integer> initAnswerNumber() {
         List<Integer> answerNumber = new ArrayList<>();
@@ -186,5 +186,21 @@ public class BaseballGame {
         }
     }
 
+    // 게임 종료
+    private boolean gameOver(Baseball result, int game) {
+        if (result.getStrike() == 3 && game == 2) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+    // 게임 재시작
+    private boolean restart(Baseball result, int game) {
+        if (result.getStrike() == 3 && game == 1) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
