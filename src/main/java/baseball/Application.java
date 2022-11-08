@@ -62,6 +62,7 @@ public class Application {
         }
     }*/
 
+/*
     public static int getUser() {
         user = sc.nextInt(); // user 입력받기
         String string_user = Integer.toString(user);
@@ -78,8 +79,9 @@ public class Application {
 
         return user;
     }
+*/
 
-/*    public static void playgame(String str_user) {
+    public static void playgame(String str_user) {
         int i, j;
         str_com = Integer.toString(computer);
         for (i = 0; i < str_com.length(); i++) {
@@ -94,7 +96,7 @@ public class Application {
                 }
             }
         }
-    }*/
+    }
 
 /*    public static void score() {
         if (strike == 3) {
