@@ -19,4 +19,11 @@ public class Hint {
         return false;
     }
 
+    public boolean isBall(List<Integer> computerNumber, int userNumber) {
+        if (computerNumber.contains(userNumber)) {
+            return true;
+        }
+        return false;
+    }
+
 }
