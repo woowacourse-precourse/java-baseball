@@ -10,6 +10,7 @@ public class BaseballComputer {
     private List<Integer> computerNumber = new ArrayList<>(); // 3자리수
     ChangingType changeType = new ChangingType();
     GameMessage gameMessage = new GameMessage();
+    FindingException findingException = new FindingException();
 
     private String userInputNumberInGame(){
         return Console.readLine();
@@ -24,7 +25,7 @@ public class BaseballComputer {
         while (true){
             gameMessage.inputNumberToComputerMessage();
             String answer = userInputNumberInGame();
-            checkOutOfInputNumber(answer);
+            findingException.checkOutOfInputNumber(answer);
 
             if(!checkHitNumber(answer)){
                 continue;
@@ -32,23 +33,11 @@ public class BaseballComputer {
             break;
         }
         gameMessage.printRestartOrEnd();
-        int choice =checkOutOfChoiceNumber(inputRestartOrEnd());
+        int choice = findingException.checkOutOfChoiceNumber(inputRestartOrEnd());
 
         if(choice == 1){
             start();
         }
-    }
-    private void checkOutOfInputNumber(String answer){
-        if(answer.length() != 3){
-            throw new IllegalArgumentException("OutOfBoundsException. you input 3 number");
-        }
-    }
-
-    private int checkOutOfChoiceNumber(int choice){
-        if(1 > choice || choice > 2){
-            throw new IllegalArgumentException("OutOfBoundsException. you input 1 or 2");
-        }
-        return choice;
     }
 
     private void createRandomNumber() {
