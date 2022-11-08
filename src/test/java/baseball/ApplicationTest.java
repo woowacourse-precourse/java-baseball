@@ -3,6 +3,10 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static baseball.LetsPlayBall.*;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,5 +35,34 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void Strike(){
+        List<Integer> userNum = Arrays.asList(1,2,3);
+        List<Integer> comNum = Arrays.asList(1,2,3);
+
+        int strike = strikeCount(userNum,comNum);
+        int result = 1;
+
+        assertThat(strike).isEqualTo(result);
+    }
+    void Ball(){
+        List<Integer> userNum = Arrays.asList(1,2,3);
+        List<Integer> comNum = Arrays.asList(2,4,1);
+
+        int ball = ballCount(userNum,comNum);
+        int result = 2;
+
+        assertThat(ball).isEqualTo(result);
+    }
+    @Test
+    void Noting() {
+        List<Integer> userNum = Arrays.asList(1,2,3);
+        List<Integer> comNum = Arrays.asList(4,5,6);
+
+        Boolean Nothing;
+        Nothing = nothingCount(userNum, comNum);
+        assertThat(Nothing).isEqualTo(false);
     }
 }
