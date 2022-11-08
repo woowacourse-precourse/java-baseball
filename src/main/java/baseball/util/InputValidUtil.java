@@ -20,7 +20,7 @@ public class InputValidUtil {
 	private boolean isNumber(int[] inputNumInts) {
 		for (int i = 0; i < 3; i++) {
 			if (1 > inputNumInts[i] || 9 < inputNumInts[i]) {
-				throw new IllegalArgumentException(ErrorConst.NUMBER_ERROR);
+				throw new IllegalArgumentException(ErrorConst.NOT_NUMBER_ERROR);
 			}
 		}
 		return true;
