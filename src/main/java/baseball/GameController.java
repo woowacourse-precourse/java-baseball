@@ -30,7 +30,7 @@ public class GameController {
         view.printMessage(START_GAME);
     }
 
-    public void playGame() {
+    private void playGame() {
         List<Integer> computer = numberGenerator.generateComputerNumber();
         do {
             List<Integer> user = view.inputIntegerList();
