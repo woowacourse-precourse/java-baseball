@@ -24,9 +24,19 @@ public class Application {
                 exitGame();
             }
 
-            Boolean isSameNumber = compareComputerAndUserNums(randomNumberByUser, randomNumberByComputer);
-            if(!isSameNumber){
+            Boolean isSameNumber = compareComputerAndUserNums(randomNumberByUser,
+                randomNumberByComputer);
+            if (!isSameNumber) {
                 continue;
+            }
+
+            String input = exitOrRestart();
+            if (input.equals("1")) {
+                continue;
+            } else if (input.equals("2")) {
+                break;
+            } else {
+                exitGame();
             }
         }
 
@@ -83,25 +93,34 @@ public class Application {
         for (int i = 0; i < 3; i++) {
             if (randomNumberByComputer.get(i) == randomNumberByUser.get(i)) {
                 strike += 1;
-            } else if(randomNumberByComputer.contains(randomNumberByUser.get(i))){
+            } else if (randomNumberByComputer.contains(randomNumberByUser.get(i))) {
                 ball += 1;
             }
 
         }
-        if (strike == 0 && ball ==0){
+        if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        } else if(ball == 0){
+        } else if (ball == 0) {
             System.out.println(strike + "스트라이크");
-        } else if(strike == 0){
+        } else if (strike == 0) {
             System.out.println(ball + "스트라이크");
-        } else{
+        } else {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
 
-        if(strike == 3){
+        if (strike == 3) {
             return true;
         }
         return false;
+    }
+
+    private static String exitOrRestart() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String input = Console.readLine();
+
+        return input;
     }
 
 }
