@@ -1,6 +1,7 @@
 package baseball.constants;
 
 public class Constant {
+
 	private Constant() {}
 
 	public static final int MIN_RANDOM_NUMBER = 1;

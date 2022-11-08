@@ -1,6 +1,9 @@
 package baseball.constants;
 
 public class Message {
+
+	private Message() {}
+
 	public static final String NOTHING_MESSAGE = "낫싱";
 	public static final String BALL_MESSAGE = "볼 ";
 	public static final String STRIKE_MESSAGE = "스트라이크";
