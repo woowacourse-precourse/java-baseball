@@ -17,7 +17,9 @@ public class ExceptionHandler {
     }
 
     static void validateOneIfGameRepeatOrTwo(String oneIfGameRepeatOrTwo) throws IllegalArgumentException{
-
+        if (ValidationConstant.INPUT_LIST_OF_USER_CHECK_REPEAT_GAME.contains(oneIfGameRepeatOrTwo)) {
+            throw new IllegalArgumentException(ValidationMessage.USER_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
+        }
     }
 
     private static void validateOf3DigitsNumber(String userNumberOfString) {
