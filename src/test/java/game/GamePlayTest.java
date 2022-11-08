@@ -31,7 +31,7 @@ class GamePlayTest {
     }
 
     @Test
-    void provideHintMessage() {
+    void provideHintMessage_힌트메시지_출력과_정답여부반환_검증() {
         List<Integer> temporaryAnswer = List.of(8, 7, 4);
         List<Integer> temporaryUserAnswer = List.of(1, 2, 3);
         assertThat(GamePlay.provideHintMessage(temporaryAnswer,temporaryUserAnswer)).isFalse();
