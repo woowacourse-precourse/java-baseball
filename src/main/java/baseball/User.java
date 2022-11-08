@@ -8,9 +8,11 @@ import java.util.List;
 
 public class User {
     private static List<Integer> number;
+
     public User() {
-        number=new ArrayList<>();
+        number = new ArrayList<>();
     }
+
     public void makeUserNumber() {
         clear();
         System.out.print(Texts.USER_INPUT_NUMBER);
@@ -24,9 +26,10 @@ public class User {
         }
 
     }
+
     public List<Integer> getNumber() {
         List<Integer> copyNumber = new ArrayList<>();
-        for(int i : number) copyNumber.add(i);
+        for (int i : number) copyNumber.add(i);
         return copyNumber;
     }
 
