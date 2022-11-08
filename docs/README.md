@@ -55,6 +55,7 @@
     - `includeSame`
     - `countStrike`
     - `countBall`
+- `number` : 야구게임에 필요한 숫자를 관리하는 패키지
   - `ComputerNumber`
     - `createComputerNumber`
   - `UserNumber`
