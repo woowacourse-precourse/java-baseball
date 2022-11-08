@@ -27,6 +27,65 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 예외_영어입력()
+    {
+        assertSimpleTest(()->
+            assertThatThrownBy(()-> runException("abc"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_중복숫자입력()
+    {
+        assertSimpleTest(()->
+            assertThatThrownBy(()-> runException("113"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_중복숫자입력2()
+    {
+        assertSimpleTest(()->
+            assertThatThrownBy(()-> runException("131"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_한글입력()
+    {
+        assertSimpleTest(()->
+            assertThatThrownBy(()-> runException("유준혁"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_두자리수만입력()
+    {
+        assertSimpleTest(()->
+            assertThatThrownBy(()-> runException("12"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자야구도중_1입력()
+    {
+        assertSimpleTest(()->
+            assertThatThrownBy(()-> runException("1"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자야구도중_2입력()
+    {
+        assertSimpleTest(()->
+            assertThatThrownBy(()-> runException("2"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
