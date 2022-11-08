@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static baseball.Application.*;
@@ -36,6 +37,17 @@ class ApplicationTest extends NsTest {
         assertThat(userInputNumber.get(0)).isEqualTo(expectResultInputNumber.get(0));
         assertThat(userInputNumber.get(1)).isEqualTo(expectResultInputNumber.get(1));
         assertThat(userInputNumber.get(2)).isEqualTo(expectResultInputNumber.get(2));
+    }
+
+    @Test
+    void numberBaseballGame_메서드로_스트라이크_볼_낫싱_개수_비교() {
+        List<Integer> computerCreateNumber = new ArrayList<>(Arrays.asList(3, 2, 1));
+        List<Integer> userInputNumber = new ArrayList<>(Arrays.asList(3, 4, 2));
+        List<Integer> userInputNumberNotMatch = new ArrayList<>(Arrays.asList(5, 6, 7));
+        int matchStrike = numberBaseballGame(computerCreateNumber, userInputNumber);
+        int notMatchStrike = numberBaseballGame(computerCreateNumber, userInputNumberNotMatch);
+        assertThat(matchStrike).isEqualTo(1);
+        assertThat(notMatchStrike).isEqualTo(0);
     }
 
     @Test
