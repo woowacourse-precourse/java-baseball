@@ -55,4 +55,11 @@ public class Referee {
         }
         return count;
     }
+
+    public boolean isCorrect() {
+        if (strikeCount == MAX_SIZE) {
+            return true;
+        }
+        return false;
+    }
 }
