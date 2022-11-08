@@ -18,9 +18,22 @@ public class Application {
         int num;
         for (char c : input.toCharArray()) {
             num = Character.getNumericValue(c);
+            if (player.contains(num)) {
+                throw new IllegalArgumentException("[ERROR] 04 : 중복되는 숫자가 입력되었습니다.");
+            }
             player.add(num);
         }
         return player;
+    }
+
+    public static void playerNumException(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 01 : 아무것도 입력하지 않았습니다.");
+        } else if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("[ERROR] 02 : 숫자 이외의 문자가 포함되어 있습니다.");
+        } else if (input.length() != 3) {
+            throw new IllegalArgumentException("[ERROR] 03 : 숫자가 3자리가 아닙니다.");
+        }
     }
 
 
