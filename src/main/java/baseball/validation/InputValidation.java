@@ -17,15 +17,17 @@ public class InputValidation {
      */
     public List<Integer> validateInputNum(String input) {
         validateInputLength(input);
-
-        List<Integer> inputNums = Arrays.stream(input.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
+        List<Integer> inputNums = changeStrToList(input);
         validateInputRange(inputNums);
         validateInputDuplicated(inputNums);
 
         return inputNums;
+    }
+
+    private List<Integer> changeStrToList(String input) {
+        return Arrays.stream(input.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     /**
