@@ -6,7 +6,7 @@ public class Ball {
     private final String numberBall;
     private static final String THREE_NUMBER_REGULAR_EXPRESSION = "\\d{3}";
     public static final String EXCEPTION_MESSAGE_FOR_INVALID_FORM = "세 자리 숫자만 가능합니다.";
-    public static final String EXCEPTION_MESSAGE_FOR_DUPLICATE = "숫자가 중복되지 않아야 합니다.";
+    public static final String EXCEPTION_MESSAGE_FOR_DUPLICATION = "숫자가 중복되지 않아야 합니다.";
 
     public Ball(String numberBall) {
         validateForm(numberBall);
@@ -21,12 +21,12 @@ public class Ball {
     }
 
     private void validateDuplication(String numberBall) {
-        if (hasDuplicates(numberBall)) {
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE_FOR_DUPLICATE);
+        if (isContainingDuplication(numberBall)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_FOR_DUPLICATION);
         }
     }
 
-    private boolean hasDuplicates(String number) {
+    private boolean isContainingDuplication(String number) {
         return number.length() != number.chars()
                 .distinct()
                 .count();
@@ -56,7 +56,8 @@ public class Ball {
     public int compareByValue(Ball ball) {
         String expectedBall = ball.toString();
         return (int) expectedBall.chars()
-                .filter(x -> numberBall.chars().anyMatch(y -> x == y))
+                .filter(expectedChar -> numberBall.chars().
+                        anyMatch(actualChar -> expectedChar == actualChar))
                 .count();
     }
 }

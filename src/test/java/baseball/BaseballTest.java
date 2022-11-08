@@ -56,7 +56,7 @@ class BaseballTest {
 
                     assertThatThrownBy(() -> new Ball(duplicateNumber))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessageContaining(Ball.EXCEPTION_MESSAGE_FOR_DUPLICATE);
+                            .hasMessageContaining(Ball.EXCEPTION_MESSAGE_FOR_DUPLICATION);
                 }
             }
         }
@@ -169,6 +169,7 @@ class BaseballTest {
                     int listSize = list.size();
 
                     method.invoke(computer, list, containedString);
+                    method.invoke(computer, list, containedString);
 
                     assertThat(list.size()).isEqualTo(listSize);
                 }
@@ -216,10 +217,10 @@ class BaseballTest {
             String randomNumber = (String) method.invoke(computer, lengthOfThree);
 
             assertThat(randomNumber.matches(threeNumberRegularExpression)).isTrue();
-            assertThat(isContainingDuplicate(randomNumber)).isFalse();
+            assertThat(isContainingDuplication(randomNumber)).isFalse();
         }
 
-        private boolean isContainingDuplicate(String number) {
+        private boolean isContainingDuplication(String number) {
             return number.length() != number.chars()
                     .distinct()
                     .count();
