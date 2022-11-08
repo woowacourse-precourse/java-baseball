@@ -70,8 +70,12 @@ public class GameBoard {
         BallCount ballCount = new BallCount();
 
         ballCount.validateBallCount(randomNumbers, inputBaseballNumbers);
-        ballCounts.add(ballCount);
+        updateBallCounts(ballCount);
         return ballCount.toString();
+    }
+
+    public void updateBallCounts(BallCount ballCount) {
+        ballCounts.add(ballCount);
     }
 
 }
