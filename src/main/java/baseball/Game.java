@@ -54,4 +54,20 @@ public class Game {
         }
         return count;
     }
+
+    private void resultPrint() {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (ball == 0) {
+            System.out.printf("%d스트라이크\n", strike);
+            return;
+        }
+        if (strike == 0) {
+            System.out.printf("%d볼\n", ball);
+            return;
+        }
+        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+    }
 }
