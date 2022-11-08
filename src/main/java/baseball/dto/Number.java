@@ -1,12 +1,12 @@
 package baseball.dto;
 
 import baseball.dao.ComputerNumber;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Number {
     private static Number number;
-    private static final List<ComputerNumber> database = new ArrayList<>();
+    private static final List<ComputerNumber> database = new LinkedList<>();
 
     private Number() {
 
@@ -28,10 +28,17 @@ public class Number {
         return database.remove(computerNumber);
     }
 
+    public boolean deleteAll(List<ComputerNumber> computerNumbers) {
+        return database.retainAll(computerNumbers);
+    }
+
     public List<ComputerNumber> getAll() {
         return database;
     }
 
+    public ComputerNumber first() {
+        return database.get(0);
+    }
     public ComputerNumber latest() {
         return database.get(database.size() - 1);
     }
