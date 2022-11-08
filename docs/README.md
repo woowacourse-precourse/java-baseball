@@ -1,6 +1,8 @@
 ### 기능 목록 
 
 - 랜덤 숫자를 생성하는 기능
+  - Numbers 클래스
+    - 숫자 정보를 담고 있는 클래스
   - NextStepNumberGenerator 클래스의 generateRandomNumber 메서드
     - 1~9 사이의 숫자
     - 숫자 3개를 생성
