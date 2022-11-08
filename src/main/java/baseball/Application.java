@@ -99,7 +99,9 @@ public class Application {
         if (computerNumList.get(computerIdx) == userNumList.get(userIdx)) {
             if (computerIdx == userIdx) {
                 strikeCnt++;
-            } else {
+            }
+
+            if (computerIdx != userIdx) {
                 ballCnt++;
             }
         }
