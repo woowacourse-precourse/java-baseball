@@ -6,8 +6,8 @@ public class Referee {
 
     private static RandomNumber randomNum;
 
-    public static void generateRandom() {
-        randomNum = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
+    public static void generateRandom(int inputLength) {
+        randomNum = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>(), inputLength);
     }
 
     public static String calculateAnswer(String userInput) {

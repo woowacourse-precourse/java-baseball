@@ -3,7 +3,6 @@ package baseball;
 public class RandomNumber {
 
     private static String randomValue;
-    private static final int CORRECT_INPUT_LENGTH = 3;
 
     public RandomNumber(String randomValue) {
         this.randomValue = randomValue;
@@ -11,7 +10,7 @@ public class RandomNumber {
 
     public int countDuplicate(String userInput) {
         int ballNum = 0;
-        for (int i = 0; i < CORRECT_INPUT_LENGTH; i++) {
+        for (int i = 0; i < randomValue.length(); i++) {
             if (randomValue.indexOf(userInput.charAt(i)) != -1) {
                 ballNum++;
             }
@@ -21,7 +20,7 @@ public class RandomNumber {
 
     public int countExactSame(String userInput) {
         int strikeCnt = 0;
-        for (int i = 0; i < CORRECT_INPUT_LENGTH; i++) {
+        for (int i = 0; i < randomValue.length(); i++) {
             if (userInput.charAt(i) == randomValue.charAt(i)) {
                 strikeCnt++;
             }

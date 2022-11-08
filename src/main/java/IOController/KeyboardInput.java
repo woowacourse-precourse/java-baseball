@@ -30,13 +30,13 @@ public class KeyboardInput {
     }
 
     private static void checkInputLength(String input) {
-        if (input.length() != CORRECT_INPUT_LENGTH) {
+        if (input.length() != inputSize) {
             throw new IllegalArgumentException("input length is not three.");
         }
     }
 
     private static void checkInputIsNumNonZero(String input) {
-        for (int i = 0; i < CORRECT_INPUT_LENGTH; i++) {
+        for (int i = 0; i < inputSize; i++) {
             if (!(input.charAt(i) >= '1' && input.charAt(i) <= '9')) {
                 throw new IllegalArgumentException("input contains which is not number.");
             }
