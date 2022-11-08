@@ -18,7 +18,7 @@ public class Validator {
             throw new IllegalArgumentException(ErrorMessage.NUMBER_NOT_IN_RANGE.message());
         }
         if (!isAllDifferent(input)) {
-            throw new IllegalArgumentException(ErrorMessage.NUMBER_SAME_NUMBER.message);
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_SAME_NUMBER.message());
         }
     }
 
