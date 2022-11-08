@@ -1,4 +1,4 @@
-package baseball;
+package baseball.vo;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,13 +34,31 @@ public class OneDigitNumbers implements Iterable<Integer> {
 
         return this.oneDigitNumbers.size();
     }
+    
+    public int indexOf(int index) {
+        return this.oneDigitNumbers.indexOf(index);
+    }
+
+    public boolean contains(int number) {
+        return this.oneDigitNumbers.contains(number);
+    }
 
     public List<Integer> toList() {
         return this.oneDigitNumbers;
     }
 
-    public int indexOf(int index) {
-        return this.oneDigitNumbers.indexOf(index);
+    public void validate() {
+        if (this.size() != 3) {
+            throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
+        }
+
+        if (this.size(true) != 3) {
+            throw new IllegalArgumentException("각각의 3자리 숫자가 중복되지 않게 입력해주세요.");
+        }
+
+        if (!this.oneDigitNumbers.stream().allMatch(oneDigitNumber -> oneDigitNumber > 0)) {
+            throw new IllegalArgumentException("각가의 3자리 숫자에 0이 포함되지 않게 입력해주세요.");
+        }
     }
 
     private List<Integer> splitFrom(int number) {

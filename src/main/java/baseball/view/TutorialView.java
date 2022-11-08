@@ -1,11 +1,13 @@
-package baseball.utils;
+package baseball.view;
 
-import camp.nextstep.edu.missionutils.Console;
+public class TutorialView extends View {
+    @Override
+    public void show() {
+        this.introDescription();
+        this.howToPlayDescription();
+    }
 
-import java.util.List;
-
-public class ConsoleUtil {
-    public static void printIntro() {
+    private void introDescription() {
         printLine("┏━━━━━━━━━━┓");
         printLine("   숫자 야구");
         printLine("┗━━━━━━━━━━┛");
@@ -14,7 +16,7 @@ public class ConsoleUtil {
         printLine("");
     }
 
-    public static void printHowToPlay() {
+    private void howToPlayDescription() {
         printLine("┏━━━━━━━━━━┓");
         printLine("   게임 소개");
         printLine("┗━━━━━━━━━━┛");
@@ -27,44 +29,8 @@ public class ConsoleUtil {
         printLine(" - 789를 입력했을 때 컴퓨터는 '낫싱' 이라고 알려줘요.");
         printLine("");
         printLine("이렇게 컴퓨터가 알려준 힌트를 통해 3자리의 숫자를 입력하여 컴퓨터가 생각하는 숫자를 맞추면 돼요.");
-        printLine("중복되는 숫자가 없는 3자리의 숫자를 입력하는 것을 잊지 마세요.");
+        printLine("중복되는 숫자와 0이 없는 3자리의 숫자를 입력하는 것을 잊지 마세요.");
         printLine("이제 게임을 시작해볼까요?");
         printLine("");
-    }
-
-    public static void printFinish(int strikePoint) {
-        printLine(strikePoint + "개의 숫자를 모두 맞히셨습니다!");
-    }
-
-    public static void printQuit() {
-        printLine("게임 종료");
-    }
-
-    public static String printThreeDigitNumberEnterQuestion() {
-        return printQuestionAndWaitAnswer("숫자를 입력해주세요");
-    }
-
-    public static String printGameRestartQuestion() {
-        return printQuestionAndWaitAnswer("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
-    }
-
-    private static String printQuestionAndWaitAnswer(String message) {
-        print(message + " : ");
-        String readLine = readLine();
-        printLine("");
-
-        return readLine;
-    }
-
-    public static void printLine(String message) {
-        System.out.println(message);
-    }
-
-    private static void print(String message) {
-        System.out.print(message);
-    }
-
-    private static String readLine() {
-        return Console.readLine();
     }
 }

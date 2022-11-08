@@ -1,14 +1,15 @@
-package baseball;
+package baseball.vo;
 
-import baseball.utils.GameUtil;
 import org.junit.jupiter.api.*;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@DisplayName("Scoreboard 테스트")
+@DisplayName("OneDigitNumbers 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class OneDigitNumbersTest {
     void 숫자_분할() {
@@ -19,7 +20,7 @@ public class OneDigitNumbersTest {
     }
 
     @Nested
-    class 숫자_길이_확인{
+    class 숫자_길이_확인 {
         @Test
         void 중복_제거() {
             List<Integer> numbers = List.of(9,8,8);
@@ -50,6 +51,31 @@ public class OneDigitNumbersTest {
     }
 
     @Test
+    void 인덱스로_엘리먼트_찾기() {
+        List<Integer> numbers = List.of(1, 2, 3);
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
+
+        assertThat(oneDigitNumbers.indexOf(1)).isEqualTo(0);
+    }
+
+    @Test
+    void 원소_포함_여부() {
+        List<Integer> numbers = List.of(1, 2, 3);
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
+
+        assertThat(oneDigitNumbers.contains(1)).isTrue();
+    }
+
+    @ParameterizedTest(name = "숫자 유효성 체크 => {0}")
+    @ValueSource(ints = {2, 21, 210, 212, 220, 221, 222, 2134, 2243})
+    void 숫자_유효성_체크(int number) {
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(number);
+
+        assertThatThrownBy(oneDigitNumbers::validate)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 반복문() {
         List<Integer> numbers = List.of(1, 2, 3);
         OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
@@ -60,13 +86,5 @@ public class OneDigitNumbersTest {
         }
 
         assertThat(afterNumbers).containsExactly(1, 2, 3);
-    }
-
-    @Test
-    void 인덱스로_엘리먼트_찾기() {
-        List<Integer> numbers = List.of(1, 2, 3);
-        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(numbers);
-
-        assertThat(oneDigitNumbers.indexOf(1)).isEqualTo(1);
     }
 }

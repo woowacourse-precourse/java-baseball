@@ -1,4 +1,4 @@
-package baseball;
+package baseball.vo;
 
 public class TwoNumbers {
     private final OneDigitNumbers oneDigitComputerNumbers;
@@ -7,6 +7,8 @@ public class TwoNumbers {
     public TwoNumbers(int computer, int player) {
         this.oneDigitComputerNumbers = new OneDigitNumbers(computer);
         this.oneDigitPlayerNumbers = new OneDigitNumbers(player);
+
+        this.oneDigitPlayerNumbers.validate();
     }
 
     public Scoreboard compare() {

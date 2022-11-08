@@ -1,10 +1,9 @@
-package baseball;
+package baseball.vo;
 
 import org.junit.jupiter.api.*;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 @DisplayName("Scoreboard 테스트")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)

@@ -1,4 +1,4 @@
-package baseball;
+package baseball.vo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,6 @@ public class Scoreboard {
     public int getStrikePoint() {
         return this.scoreboard.get(1);
     }
-
 
     public List<Integer> toList() {
         return this.scoreboard;
