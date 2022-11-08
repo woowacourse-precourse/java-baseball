@@ -124,5 +124,4 @@ public class Game {
             System.out.print(strike + "스트라이크");
         System.out.println("");
     }
-
 }
