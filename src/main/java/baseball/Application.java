@@ -57,6 +57,16 @@ public class Application {
     }
     public static void validNumber(String inputNum) {
 
+        validLength(inputNum);
+        validDuplication(inputNum);
+        validNotNumber(inputNum);
+    }
+    public static void validLength(String inputNum) {
+    }
+    public static void validDuplication(String inputNum) {
+    }
+    public static void validNotNumber(String inputNum) {
+
     }
     public static void toInteger(String inputNum) {
     }
