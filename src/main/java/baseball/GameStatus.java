@@ -16,15 +16,12 @@ public class GameStatus {
             }
         }
 
-        if(!this.nothing){
-            for(int i = 0 ; i < inputNumbers.length; i++){
-                if(i == computer.indexOf(inputNumbers[i])){ //스트라이크인 경우
-                    this.strike++;
-                } else if (computer.contains(inputNumbers[i])) {
-                    this.ball++; //볼인 경우
-                }
+        for(int i = 0 ; i < inputNumbers.length; i++){
+            if(!this.nothing && i == computer.indexOf(inputNumbers[i])){ //스트라이크인 경우
+                this.strike++;
+            } else if (!this.nothing && computer.contains(inputNumbers[i])) {
+                this.ball++; //볼인 경우
             }
         }
-
     }
 }
