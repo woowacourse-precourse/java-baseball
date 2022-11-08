@@ -92,7 +92,13 @@ public class Application {
     public static void end_message(){
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
-    public static int end_game(){
+    public static boolean end_game(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        char decision = Console.readLine().charAt(0);
 
+        if(decision == '1') {
+            return true;
+        }
+        return false;
     }
 }
