@@ -39,8 +39,12 @@ public class BaseBallGame {
     }
 
     public void prepareGame() {
-        this.success = false;
+        initializeSuccess();
         setComputerNumbers();
+    }
+
+    public void initializeSuccess() {
+        this.success = false;
     }
 
     public void setComputerNumbers() {
