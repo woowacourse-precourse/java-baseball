@@ -27,3 +27,9 @@
 
 
 - 문자열의 야구 숫자 검증
+
+## 리팩토링 목록
+- DecimalNumber Wrapper class 분리
+
+
+- BaseballNumber class 분리
