@@ -57,13 +57,16 @@ class BallsTest {
     }
 
     @Test
-    void validateNumberRange_숫자가_1부터_9사이의_범위에서_벗어났을때_예외를_던지는지_테스트() {
-
-    }
-
-    @Test
-    void addBall_숫자를_리스트에_추가할_때_리스트에_추가가_잘_되는지_테스트() {
-
+    void addBall_숫자를_리스트에_추가할_때_이미_있는_숫자라면_리스트에_추가되지_않는지_테스트() {
+        //given
+        List<Ball> balls = List.of(new Ball(1));
+        Ball ball = new Ball(1);
+        //when
+        if (!balls.contains(ball)) {
+            balls.add(ball);
+        }
+        //then
+        assertThat(balls.size()).isEqualTo(1);
     }
 
     @Test
