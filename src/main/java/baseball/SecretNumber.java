@@ -16,13 +16,17 @@ public class SecretNumber {
         List<Integer> candidateDigits = new ArrayList<>();
 
         while (candidateDigits.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!candidateDigits.contains(randomNumber)) {
-                candidateDigits.add(randomNumber);
-            }
+            addSingleDigit(candidateDigits);
         }
 
         secretDigits = candidateDigits;
+    }
+
+    private static void addSingleDigit(List<Integer> candidateDigits) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!candidateDigits.contains(randomNumber)) {
+            candidateDigits.add(randomNumber);
+        }
     }
 
     public List<Integer> getSecretDigits() {

@@ -13,6 +13,17 @@ public class UserNumber {
 
     public List<Integer> validate(String input) {
 
+        LinkedHashSet<Integer> inputSet = inputStringToLinkedHashSet(input);
+
+        isDigitsValid(inputSet);
+
+        inputDigits = new ArrayList<>(inputSet);
+
+        return inputDigits;
+    }
+
+    private static LinkedHashSet<Integer> inputStringToLinkedHashSet(String input) {
+
         LinkedHashSet<Integer> inputSet = new LinkedHashSet<>();
 
         CharacterIterator it = new StringCharacterIterator(input);
@@ -27,13 +38,13 @@ public class UserNumber {
             it.next();
         }
 
+        return inputSet;
+    }
+
+    private static void isDigitsValid(LinkedHashSet<Integer> inputSet) {
         if (inputSet.size() != INPUT_SIZE || inputSet.contains(Integer.valueOf(0))) {
             throw new IllegalArgumentException();
         }
-
-        inputDigits = new ArrayList<>(inputSet);
-
-        return inputDigits;
     }
 
     public void setSecretDigits(List<Integer> secretDigits) {
@@ -46,8 +57,8 @@ public class UserNumber {
         int strikeCount = 0;
 
         for (int i = 0; i < INPUT_SIZE; i++) {
-            ballCount += judgeBall(inputDigits.get(i), i);
-            strikeCount += judgeStrike(inputDigits.get(i), secretDigits.get(i));
+            ballCount += judgeBall(i);
+            strikeCount += judgeStrike(i);
         }
 
         printJudgement(ballCount, strikeCount);
@@ -56,8 +67,9 @@ public class UserNumber {
     }
 
 
-    private int judgeBall(Integer inputDigit, int index) {
+    private int judgeBall(int index) {
 
+        Integer inputDigit = inputDigits.get(index);
         Integer secretDigit = secretDigits.get(index);
 
         if (inputDigit != secretDigit && secretDigits.contains(inputDigit)) {
@@ -67,7 +79,10 @@ public class UserNumber {
         return 0;
     }
 
-    private int judgeStrike(Integer inputDigit, Integer secretDigit) {
+    private int judgeStrike(int index) {
+
+        Integer inputDigit = inputDigits.get(index);
+        Integer secretDigit = secretDigits.get(index);
 
         if (inputDigit == secretDigit) {
             return 1;
