@@ -6,20 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExceptionHanlder {
+
     public void checkInputBallSize(String inputball){
-        List<Integer> checksize;
+
         int checkindex = 0;
+        List<Integer> checksize;
         checksize = GameService.makeRandomBall();
 
         for(int i : checksize) {
             checkindex++;
         }
+
         if(checkindex != inputball.length()){
             throw new IllegalArgumentException();
         }
     }
+
     //변수 다시보기
     public void checkSameInput(String inputball){
+
         boolean doublecheck = true;
         String[] inputballarr = inputball.split("");
 
@@ -33,12 +38,14 @@ public class ExceptionHanlder {
     }
 
     public void nonZero(String inputball) {
+
         List<Integer> checkballs = new ArrayList<>();
         String[] inputballarr = inputball.split("");
 
-        for(int i=0; i<inputball.length(); i++){
+        for(int i = 0; i < inputball.length(); i++){
             checkballs.add(Integer.valueOf(inputballarr[i]));
         }
+
         if(checkballs.contains(0)){
             throw new IllegalArgumentException();
         }

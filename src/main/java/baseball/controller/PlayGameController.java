@@ -1,10 +1,12 @@
 package baseball.controller;
 
 import baseball.service.GameService;
+import baseball.service.NeedForGameService;
 
 public class PlayGameController {
     public static void run(){
-        GameService.startOrder();
-        GameService.inputOrder();
+        NeedForGameService.startOrder();
+        GameService.makeRandomBall();
+        GameService.CatchException();
     }
 }
