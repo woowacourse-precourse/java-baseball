@@ -18,4 +18,19 @@ public class NumberJudgment {
         }
         return sameNumberCount;
     }
+
+    public int getSameIndexCount(List<Integer> userNumberList) { // 같은 인덱스에 있는가?
+        int sameIndexCount = 0;
+
+        for(Map.Entry<Integer, Integer> numberEntry : computerSameNumberIndex.entrySet()) {
+            int computerSameNumber = numberEntry.getKey();
+            int computerSameIndex = numberEntry.getValue();
+
+            if (userNumberList.indexOf(computerSameNumber) == computerSameIndex) {
+                sameIndexCount++;
+            }
+        }
+
+        return sameIndexCount;
+    }
 }
