@@ -20,53 +20,65 @@ public class Game {
 	private static final String GAMEENDSTRING = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private static final String SUCCESSSTRING = "3스트라이크";
 	private static final String GAMECODEWRONGSTRING = "1과 2 중에 다시 입력해주세요.";
+	private static int strike;
+	private static int ball;
 
-	public Game() {}
-	
-	public void playGame() {
+	public Game() {
+	}
+
+	public void startGame() {
 		printStr(GAMESTARTSTRING);
 		int gameCode = 1;
+		playGame(gameCode);
+	}
 
+	private static void playGame(int gameCode) {
 		while (gameCode != 2) {
 			computerNumber = new RandomNumber();
 			computerNumber.createRandomNumber();
 			computerNumberList = new ArrayList<>(computerNumber.getRandomNumberList());
 
-			while (true) {
-				printStr(USERINPUTSTRING);
-				userNumber = new RandomNumber();
-				userNumber.checkUserInput();
-				userNumberList = new ArrayList<>(userNumber.getRandomNumberList());
+			guessNumber();
+			gameCode = endGame(gameCode);
+		}
+	}
 
-				String compareResultStr = compareNumber();
-				printStr(compareResultStr);
-				if (compareResultStr.equals(SUCCESSSTRING)) {
-					printStr(GAMECLEARSTRING);
-					break;
-				}
-			}
+	private static void guessNumber() {
+		while (true) {
+			printStr(USERINPUTSTRING);
+			userNumber = new RandomNumber();
+			userNumber.checkUserInput();
+			userNumberList = new ArrayList<>(userNumber.getRandomNumberList());
 
-			while (true) {
-				printStr(GAMEENDSTRING);
-				String codeStr = Console.readLine();
-				if (checkGameCode(codeStr)) {
-					gameCode = Integer.parseInt(codeStr);
-					break;
-				}
-				printStr(GAMECODEWRONGSTRING);
+			resetCount();
+			compareNumber();
+			String compareResultStr = createCompareResultStr();
+			printStr(compareResultStr);
+			if (compareResultStr.equals(SUCCESSSTRING)) {
+				printStr(GAMECLEARSTRING);
+				break;
 			}
 		}
+	}
+
+	private static int endGame(int gameCode) {
+		while (true) {
+			printStr(GAMEENDSTRING);
+			String codeStr = Console.readLine();
+			if (checkGameCode(codeStr)) {
+				gameCode = Integer.parseInt(codeStr);
+				break;
+			}
+			printStr(GAMECODEWRONGSTRING);
+		}
+		return gameCode;
 	}
 
 	private static void printStr(String str) {
 		System.out.println(str);
 	}
 
-	private static String compareNumber() {
-		String resStr = "";
-		int strike = 0;
-		int ball = 0;
-
+	private static void compareNumber() {
 		for (int i = 0; i < 3; i++) {
 			int computerNum = computerNumberList.get(i);
 			int userNum = userNumberList.get(i);
@@ -77,9 +89,18 @@ public class Game {
 				ball++;
 			}
 		}
+	}
 
+	private static void resetCount() {
+		strike = 0;
+		ball = 0;
+	}
+
+	private static String createCompareResultStr() {
+		String resStr = "";
 		if (ball == 0 && strike == 0) {
 			resStr = NOTHINGSTRING;
+			return resStr;
 		}
 		if (ball != 0) {
 			resStr = ball + BALLSTRING + " ";
