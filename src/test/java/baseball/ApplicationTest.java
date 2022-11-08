@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest extends NsTest {
 
-    static String ANSWER1 = "135";
-    static String ANSWER2 = "397";
+    static String ANSWER1 = "123";
+    static String ANSWER2 = "456";
     static int[] ANSWER1_ARR = Arrays.stream(ANSWER1.split("")).mapToInt(Integer::parseInt).toArray();
     static int[] ANSWER2_ARR = Arrays.stream(ANSWER2.split("")).mapToInt(Integer::parseInt).toArray();
 
@@ -45,13 +45,14 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 게임종료_후_재시작() {
+        String[] inputs = {"987", ANSWER1, RESTART_GAME, "485", ANSWER2, END_GAME};
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1", "597", "589", "2");
+                    run(inputs);
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
-        );
+                ANSWER1_ARR[0], ANSWER1_ARR[1],ANSWER1_ARR[2],ANSWER2_ARR[0],ANSWER2_ARR[1],ANSWER2_ARR[2]
+                );
     }
 
     @Test
@@ -231,7 +232,7 @@ class ApplicationTest extends NsTest {
         List<Character> userInputList = List.of('1', '2', '4');
         HashMap<String, Integer> map = Compare.compareWithAnswer(answerList,userInputList);
         HashMap<String, Integer> answerMap=new HashMap<>();
-        answerMap.put(BALL, 1);
+        answerMap.put(BALL, 0);
         answerMap.put(STRIKE, 2);
         answerMap.put(NOTHING, 0);
         assertThat(map).isEqualTo(answerMap);
