@@ -20,14 +20,15 @@ public class BaseballController {
 
 
     public void runBaseballGame() {
-
         baseball.initBaseballGame();
         printStartMessage();
+        startGame();
+        endGame();
+    }
 
+    public void startGame() {
         randomList = baseballService.createRandomNumber();
         baseball.setComputerNumber(randomList);
-        System.out.println(randomList);
-
         while(baseball.getStrike()!=STRIKE_MAX) {
             baseball.initBaseballGame();
             inputList = readInputNumber();
@@ -37,9 +38,10 @@ public class BaseballController {
 
             result(baseball.getStrike(), baseball.getBall());
         }
+    }
 
+    public void endGame() {
         int answer = Integer.parseInt(Console.readLine());
-
         gameExit(answer);
     }
 
