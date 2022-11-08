@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.domain.BaseballGameResult;
+
 public interface OutputView {
     void printGameStartMessage();
 
@@ -9,5 +11,5 @@ public interface OutputView {
 
     void print3StrikeMessage();
 
-    void printBSOResult(int[] resultBSO);
+    void printBaseballGameResult(BaseballGameResult result);
 }

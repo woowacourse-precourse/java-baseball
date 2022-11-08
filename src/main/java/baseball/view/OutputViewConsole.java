@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.domain.BaseballGameResult;
+
 public class OutputViewConsole implements OutputView {
     private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GET_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
@@ -8,8 +10,6 @@ public class OutputViewConsole implements OutputView {
     private static final String NOTHING_MESSAGE = "낫싱";
     private static final String THREE_STRIKE_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final int BALL = 0;
-    private static final int STRIKE = 1;
 
     @Override
     public void printGameStartMessage() {
@@ -32,16 +32,16 @@ public class OutputViewConsole implements OutputView {
     }
 
     @Override
-    public void printBSOResult(int[] resultBSO) {
-        if (resultBSO[BALL] == 0 && resultBSO[STRIKE] == 0) {
+    public void printBaseballGameResult(BaseballGameResult result) {
+        if (result.getBall() == 0 && result.getStrike() == 0) {
             System.out.println(NOTHING_MESSAGE);
             return;
         }
-        if (resultBSO[BALL] != 0) {
-            System.out.print(resultBSO[BALL] + BALL_MESSAGE);
+        if (result.getBall() != 0) {
+            System.out.print(result.getBall() + BALL_MESSAGE);
         }
-        if (resultBSO[STRIKE] != 0) {
-            System.out.print(resultBSO[STRIKE] + STRIKE_MESSAGE);
+        if (result.getStrike() != 0) {
+            System.out.print(result.getStrike() + STRIKE_MESSAGE);
         }
         System.out.println();
     }
