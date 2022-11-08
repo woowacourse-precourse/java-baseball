@@ -30,12 +30,12 @@ public class Game {
     public void playGame() {
         List<Integer> playerBalls;
         List<Integer> computerBalls = computer.getComputerBalls();
-        List<Integer> strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
+        List<Integer> strikeAndBallResults = new ArrayList<>(Arrays.asList(0, 0));
         String resultMessage;
         do {
             playerBalls = playerTurn();
-            resultMessage = computerTurn(computerBalls, playerBalls, strikeAndBallCounts);
-            initializeStrikeAndBallCounts(strikeAndBallCounts);
+            resultMessage = computerTurn(computerBalls, playerBalls, strikeAndBallResults);
+            initializeStrikeAndBallResults(strikeAndBallResults);
         } while (!isGameOver(resultMessage));
     }
 
@@ -47,17 +47,17 @@ public class Game {
         return resultMessage.equals(SystemMessage.THREE_NUMBERS_RIGHT_GAME_OVER);
     }
 
-    private void initializeStrikeAndBallCounts(List<Integer> strikeAndBallCounts) {
-        strikeAndBallCounts.set(STRIKE_COUNT, 0);
-        strikeAndBallCounts.set(BALL_COUNT, 0);
+    private void initializeStrikeAndBallResults(List<Integer> strikeAndBallResults) {
+        strikeAndBallResults.set(STRIKE_COUNT, 0);
+        strikeAndBallResults.set(BALL_COUNT, 0);
     }
 
     private String computerTurn(List<Integer> computerBalls, List<Integer> playerBalls,
-            List<Integer> strikeAndBallCounts) {
+            List<Integer> strikeAndBallResults) {
         String resultMessage;
-        computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
-        resultMessage = computer.getResultMessage(strikeAndBallCounts.get(STRIKE_COUNT),
-                strikeAndBallCounts.get(BALL_COUNT));
+        computer.countStrikeAndBallResults(computerBalls, playerBalls, strikeAndBallResults);
+        resultMessage = computer.getResultMessage(strikeAndBallResults.get(STRIKE_COUNT),
+                strikeAndBallResults.get(BALL_COUNT));
         System.out.println(resultMessage);
         return resultMessage;
     }

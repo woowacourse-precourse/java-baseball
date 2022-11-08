@@ -15,29 +15,29 @@ public class ComputerTest {
     private Computer computer;
     private List<Integer> computerBalls;
     private List<Integer> playerBalls;
-    private List<Integer> strikeAndBallCounts;
+    private List<Integer> strikeAndBallResults;
 
     @BeforeEach
     void initial() {
         computer = new Computer();
         computerBalls = new ArrayList<>(Arrays.asList(4, 7, 3));
         playerBalls = new ArrayList<>(Arrays.asList(7, 4, 3));
-        strikeAndBallCounts = new ArrayList<>(Arrays.asList(0, 0));
+        strikeAndBallResults = new ArrayList<>(Arrays.asList(0, 0));
     }
 
     @Test
     void 스트라이크의_수를_카운트합니다() {
-        computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
+        computer.countStrikeAndBallResults(computerBalls, playerBalls, strikeAndBallResults);
 
-        assertThat(strikeAndBallCounts.get(STRIKE_COUNT))
+        assertThat(strikeAndBallResults.get(STRIKE_COUNT))
                 .isEqualTo(1);
     }
 
     @Test
     void 볼의_수를_카운트합니다() {
-        computer.calculateStrikeAndBallCounts(computerBalls, playerBalls, strikeAndBallCounts);
+        computer.countStrikeAndBallResults(computerBalls, playerBalls, strikeAndBallResults);
 
-        assertThat(strikeAndBallCounts.get(BALL_COUNT))
+        assertThat(strikeAndBallResults.get(BALL_COUNT))
                 .isEqualTo(2);
     }
 }

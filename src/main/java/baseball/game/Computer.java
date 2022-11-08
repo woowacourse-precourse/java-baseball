@@ -22,19 +22,19 @@ public class Computer {
         return ballGenerator.createComputerBalls();
     }
 
-    public void calculateStrikeAndBallCounts(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallCounts) {
+    public void countStrikeAndBallResults(List<Integer> computerBalls, List<Integer> playerBalls, List<Integer> strikeAndBallResults) {
         playerBalls.stream()
                 .filter(ball -> computerBalls.stream().anyMatch(Predicate.isEqual(ball)))
-                .forEach(ball -> updateStrikeAndBallCounts(strikeAndBallCounts,
+                .forEach(ball -> updateStrikeAndBallResults(strikeAndBallResults,
                         getCount(playerBalls.indexOf(ball) == computerBalls.indexOf(ball),
-                                strikeAndBallCounts.get(STRIKE_COUNT)),
+                                strikeAndBallResults.get(STRIKE_COUNT)),
                         getCount(playerBalls.indexOf(ball) != computerBalls.indexOf(ball),
-                                strikeAndBallCounts.get(BALL_COUNT))));
+                                strikeAndBallResults.get(BALL_COUNT))));
     }
 
-    private void updateStrikeAndBallCounts(List<Integer> strikeAndBallCounts, int strikeCount, int ballCount) {
-        strikeAndBallCounts.set(STRIKE_COUNT, strikeCount);
-        strikeAndBallCounts.set(BALL_COUNT, ballCount);
+    private void updateStrikeAndBallResults(List<Integer> strikeAndBallResults, int strikeCount, int ballCount) {
+        strikeAndBallResults.set(STRIKE_COUNT, strikeCount);
+        strikeAndBallResults.set(BALL_COUNT, ballCount);
     }
 
     private int getCount(boolean condition, int count) {
