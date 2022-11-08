@@ -6,13 +6,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Computer {
     private BaseballNumberBundle victoryNumbers;
-    public Computer() {
-        setRandomVictoryNumbers();
-    }
+    public Computer() {}
     public GameResult checkAnswer(BaseballNumberBundle answer) {
         GameResult result = new GameResult();
         List<Integer> answerList = answer.getList();

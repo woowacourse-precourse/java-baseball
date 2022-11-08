@@ -16,6 +16,7 @@ class ComputerTest {
     @Test
     void 서로다른_세가지숫자를_생성() {
         Computer computer = new Computer();
+        computer.setRandomVictoryNumbers();
         List<Integer> list = computer.getVictoryNumbers().getList();
         Set<Integer> set = new HashSet<Integer>();
 
