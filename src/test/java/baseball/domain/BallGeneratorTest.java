@@ -18,7 +18,8 @@ class BallGeneratorTest {
             Arguments.of("숫자가 아닌 입력은 에러 출력", "ㄱㄴㄷ"),
             Arguments.of("숫자가 아닌 입력은 에러 출력", "가나다"),
             Arguments.of("숫자가 아닌 입력은 에러 출력", "가23"),
-            Arguments.of("숫자가 아닌 입력은 에러 출력", "#23")
+            Arguments.of("숫자가 아닌 입력은 에러 출력", "#23"),
+            Arguments.of("숫자가 아닌 입력은 에러 출력", "abc")
         );
     }
 
