@@ -10,10 +10,7 @@ public class InputNumberValidator {
                 && rangeCheck(inputNumber)
                 && repeatNumberCheck(inputNumber);
     }
-    public static boolean inputNumberCorrection(String inputNumber){
-        return thereIsSpace(inputNumber)
-                && thereIsComma(inputNumber);
-    }
+
     public static boolean restartOrEndNumberCheck(String inputNumber){
         return inputNumber.equals(Game.RESTART) || inputNumber.equals(Game.GAMEEND);
     }
