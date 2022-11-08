@@ -7,7 +7,11 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        startGame();
+        try {
+            startGame();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -23,6 +27,7 @@ public class Application {
             }
         }
 
+        // System.out.println(computerNumberList);
         return computerNumberList;
     }
 
@@ -143,7 +148,7 @@ public class Application {
     /**
      * 게임을 시작 / 진행
      */
-    private static void startGame() {
+    private static void startGame() throws IllegalArgumentException {
         String userInput;
         List<Integer> userInputList;
         List<Integer> computerNumberList;
@@ -152,23 +157,21 @@ public class Application {
 
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        while (true) {
-            System.out.print("숫자를 입력해주세요 :");
+        computerNumberList = getThreeRandomNumbersList();
+        while (isNewGame) {
+            System.out.print("숫자를 입력해주세요 : ");
             userInput = Console.readLine();
+            try {
+                validateUserInput(userInput);
+                userInputList = getStringInputToList(userInput);
 
-            validateUserInput(userInput);
-
-            userInputList = getStringInputToList(userInput);
-            computerNumberList = getThreeRandomNumbersList();
-
-            canStartNewGame = printGameResult(userInputList, computerNumberList);
-
-            if (canStartNewGame) {
-                isNewGame = getUserGoStop();
-            }
-
-            if (!isNewGame) {
-                break;
+                canStartNewGame = printGameResult(userInputList, computerNumberList);
+                if (canStartNewGame) {
+                    computerNumberList = getThreeRandomNumbersList();
+                    isNewGame = getUserGoStop();
+                }
+            } catch (IllegalArgumentException e) {
+                throw e;
             }
         }
     }
@@ -184,11 +187,9 @@ public class Application {
         if (userInput.equals("1")) {
             return true;
         } else if (userInput.equals("2")) {
-            System.out.println("게임 종료\n");
             return false;
         } else {
             throw new IllegalArgumentException();
         }
     }
-
 }
