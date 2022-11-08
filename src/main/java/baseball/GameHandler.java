@@ -25,6 +25,7 @@ public class GameHandler {
         computerNumber = new ArrayList<>();
         inputNumber = new ArrayList<>(3);
         compareResult = new ArrayList<>(2);
+        compareNumber();
         System.out.println(GAME_START);
     }
 
@@ -46,7 +47,7 @@ public class GameHandler {
         }
     }
 
-    public void compareNumber() {
+    private void compareNumber() {
         int strike = 0, ball = 0, number;
         for(int i = 0; i < 3; i++) {
             number = inputNumber.get(i);
@@ -60,7 +61,7 @@ public class GameHandler {
         compareResult.add(ball);
     }
 
-    public String getResult() {
+    public void getResult() {
         StringBuilder sb = new StringBuilder();
         int strike = compareResult.get(0), ball = compareResult.get(1);
         if(strike == 0 && ball == 0) {
@@ -76,7 +77,7 @@ public class GameHandler {
             sb.append(String.format("\n%s\n%s\n", GAME_END, GAME_RESTART));
             isGameEnd = true;
         }
-        return sb.toString();
+        System.out.println(sb);
     }
 
     public boolean askEnd() {
