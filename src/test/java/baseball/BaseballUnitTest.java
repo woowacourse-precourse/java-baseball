@@ -32,6 +32,14 @@ class BaseballUnitTest extends NsTest{
         );
     }
 
+    @Test
+    void 유저_입력_숫자인지_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12s"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
