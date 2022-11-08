@@ -50,7 +50,8 @@ public class Application {
         }
 
         private boolean newGameCheck() {
-
+            printNewGameStatus();
+            int order =
         }
 
         private void gamePlayLoop() {
@@ -213,6 +214,10 @@ public class Application {
         }
 
         private String setBall() {
+            return readLine();
+        }
+
+        private String readLine() {
             return camp.nextstep.edu.missionutils.Console.readLine();
         }
 
