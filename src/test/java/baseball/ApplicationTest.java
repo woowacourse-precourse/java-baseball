@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,6 +22,23 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+
+    @Test
+    void 랜덤값_생성() {
+        int randomValue = Application.getRandomValue();
+        int len = 0;
+        Set<Integer> set = new HashSet<>();
+        for (; randomValue > 0; len++) {
+            int num = randomValue % 10;
+            randomValue /= 10;
+            set.add(num);
+        }
+
+        assertThat(len).isEqualTo(3);
+        assertThat(set.size()).isEqualTo(3);
+
+    }
+
 
     @Test
     void 예외_테스트() {
