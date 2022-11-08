@@ -46,8 +46,9 @@ public class ValidateGameComponent {
     }
 
     public static boolean validNumberOutRange(String baseballNumber) {
-        char[] userInputList = baseballNumber.toCharArray();
-        for (char userChar : userInputList) {
+        char userChar = ' ';
+        for (int i = 0; i < baseballNumber.length(); i++) {
+            userChar = baseballNumber.charAt(i);
             if (userChar < '1' || userChar > '9') {
                 throw new IllegalArgumentException();
             }
