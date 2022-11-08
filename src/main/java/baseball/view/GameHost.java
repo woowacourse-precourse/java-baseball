@@ -1,6 +1,6 @@
 package baseball.view;
 
-import static baseball.controller.BaseballGameController.NUM_LENGTH;
+import static baseball.controller.BaseballController.NUM_LENGTH;
 
 public class GameHost {
     public static void startPrint() {
