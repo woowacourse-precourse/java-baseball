@@ -13,7 +13,6 @@ public class ResultTest {
     
     @DisplayName("게임 종료 테스트")
     @Test
-
     void result_3Strike_Test() {
         Balls computerBalls = new Balls(new ArrayList<>(Arrays.asList(1, 2, 3)));
         Balls playerBalls = new Balls(new ArrayList<>(Arrays.asList(1, 2, 3)));
@@ -23,7 +22,6 @@ public class ResultTest {
 
     @DisplayName("낫싱 테스트")
     @Test
-
     void result_Nothing_Test() {
         Balls computerBalls = new Balls(new ArrayList<>(Arrays.asList(1, 2, 3)));
         Balls playerBalls = new Balls(new ArrayList<>(Arrays.asList(1, 2, 3)));
@@ -33,7 +31,6 @@ public class ResultTest {
 
     @DisplayName("스트라이크 테스트")
     @Test
-
     void result_Strike_Test() {
         Balls computerBalls = new Balls(new ArrayList<>(Arrays.asList(1, 2, 3)));
         Balls playerBalls = new Balls(new ArrayList<>(Arrays.asList(4, 5, 6)));
@@ -43,7 +40,6 @@ public class ResultTest {
 
     @DisplayName("볼 테스트")
     @Test
-
     void result_Ball_Test() {
         Balls computerBalls = new Balls(new ArrayList<>(Arrays.asList(1, 2, 3)));
         Balls playerBalls = new Balls(new ArrayList<>(Arrays.asList(2, 3, 5)));
