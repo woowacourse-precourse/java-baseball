@@ -91,7 +91,6 @@ class ApplicationTest extends NsTest {
         private BaseBallService baseBallService = baseballController.getBaseBallServiceForTest();
         private OutputView outputView = baseballController.getOutputViewForTest();
 
-
         @Test
         @DisplayName("낫싱 출력 테스트")
         void checkNothingTest() {
@@ -137,6 +136,18 @@ class ApplicationTest extends NsTest {
 
             String result = getResult();
             String expectedResult = "3볼";
+            assertThat(result).isEqualTo(expectedResult);
+        }
+
+        @Test
+        @DisplayName("게임 출력 테스트 926 -> 3스트라이크")
+        void checkOutputTest_926() {
+            baseBallService.userInputSave("926");
+            baseBallService.setComputerNumberList(List.of(9, 2, 6));
+            baseBallService.saveResult();
+
+            String result = getResult();
+            String expectedResult = "3스트라이크";
             assertThat(result).isEqualTo(expectedResult);
         }
 
