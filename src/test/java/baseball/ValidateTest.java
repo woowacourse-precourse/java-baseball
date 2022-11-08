@@ -50,7 +50,7 @@ class ValidateTest {
 	@Test
 	void isNumeric_메서드가_숫자에_대해_true_리턴_실패(){
 		String input = "123ab";
-		assertThat(Validate.isNumeric(input)).isEqualTo(true);
+		assertThat(Validate.isNumeric(input)).isEqualTo(false);
 	}
 
 	@Test
