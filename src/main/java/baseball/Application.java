@@ -73,4 +73,14 @@ public class Application {
 
         return true;
     }
+
+    static void checkInput(String Input) {
+        if (!checkInputLength(Input)) {
+            throw new IllegalArgumentException();
+        } else if (!checkInputAllNumber(Input)) {
+            throw new IllegalArgumentException();
+        } else if (!checkInputSameNumber(Input)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
