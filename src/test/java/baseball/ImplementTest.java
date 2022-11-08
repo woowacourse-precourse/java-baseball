@@ -25,11 +25,16 @@ public class ImplementTest extends NsTest{
         }
     }
 
+    @DisplayName("정답 여부에 따른 게임 종료여부 테스트")
     @Test
-    void 정답시_게임종료_선언_테스트() {
+    void isFinish_test() {
         int strike = 3;
+        int ball = 1;
         assertThat(GameManager.isFinish(strike)).isEqualTo(true);
+        assertThat(GameManager.isFinish(strike-ball)).isEqualTo(false);
     }
+
+    
 
     @Override
     public void runMain() {
