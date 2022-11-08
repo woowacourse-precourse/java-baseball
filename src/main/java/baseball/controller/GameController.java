@@ -1,9 +1,21 @@
 package baseball.controller;
 
+import baseball.service.GameService;
 import baseball.view.*;
 import java.util.regex.Pattern;
 
 public class GameController {
+    public void addComputerNumber() {
+        GameService service = new GameService();
+        service.addComputerNumber();
+    }
+    public void addComputerNumbersForTest() {
+        GameService service = new GameService();
+
+        service.addComputerNumber(135);
+        service.addComputerNumber(589);
+    }
+
     public void showTutorial() {
         View view = new TutorialView();
         view.show();
