@@ -5,16 +5,13 @@ import baseball.input.inputImpl.InputConsole;
 import baseball.player.playerImpl.Computer;
 import baseball.player.playerImpl.GamePlayer;
 import baseball.player.playerMember.PlayerNumbers;
+import baseball.uitls.Hints;
 import baseball.uitls.RandomNumber;
 import baseball.validate.ValidateNumber;
 import baseball.view.ViewConsole;
 import baseball.view.Viewable;
 
-import java.util.List;
-
 public class NumberBaseBall implements PlayAble {
-    private final int STRIKE_INDEX = 1;
-    private final int STRIKE_OUT = 3;
     private final int GAME_END_NUMBER = 2;
 
     private boolean stopGame = false;
@@ -50,9 +47,9 @@ public class NumberBaseBall implements PlayAble {
         view.printInput();
         int inputNumber = input.acceptInt();
         gamePlayer = new GamePlayer(new PlayerNumbers(inputNumber));
-        List<Integer> hints = computer.judge(gamePlayer.getPlayerNumbers());
+        Hints hints = computer.judge(gamePlayer.getPlayerNumbers());
         view.printHint(hints);
-        if (hints.get(STRIKE_INDEX) == STRIKE_OUT) {
+        if (hints.isStrikeOut()) {
             this.stopGame = true;
         }
     }
