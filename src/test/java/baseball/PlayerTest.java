@@ -10,33 +10,33 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
     @Test
     public void playerAnswerSizeShouldBeThree() {
-        Player player = new Player();
         List<String> playerAnswer = List.of("1234".split(""));
-        assertThatThrownBy(() -> player.validate(playerAnswer))
+        Answer answer = new Answer();
+        assertThatThrownBy(() -> answer.lengthThree(playerAnswer))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void playerAnswerDigitsShouldBeNumber() {
-        Player player = new Player();
         List<String> playerAnswer = List.of("abc".split(""));
-        assertThatThrownBy(() -> player.validate(playerAnswer))
+        Answer answer = new Answer();
+        assertThatThrownBy(() -> answer.isNumberFromOneToNine(playerAnswer))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void playerAnswerDigitsShouldBeNonZero() {
-        Player player = new Player();
         List<String> playerAnswer = List.of("012".split(""));
-        assertThatThrownBy(() -> player.validate(playerAnswer))
+        Answer answer = new Answer();
+        assertThatThrownBy(() -> answer.isNumberFromOneToNine(playerAnswer))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void playerAnswerDigitsShouldBeDistinct() {
-        Player player = new Player();
         List<String> playerAnswer = List.of("112".split(""));
-        assertThatThrownBy(() -> player.validate(playerAnswer))
+        Answer answer = new Answer();
+        assertThatThrownBy(() -> answer.distinct(playerAnswer))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

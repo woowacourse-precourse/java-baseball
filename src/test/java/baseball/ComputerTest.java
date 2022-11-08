@@ -21,7 +21,7 @@ class ComputerTest {
     void digitsShouldBeInRangeOneToNine() {
         Boolean inRange = true;
 
-        for (String stringDigit : computerAnswer){
+        for (String stringDigit : computerAnswer) {
             Integer digit = Integer.parseInt(stringDigit);
             if (digit < 1 || digit > 9) {
                 inRange = false;
@@ -48,12 +48,14 @@ class ComputerTest {
 
     @Test
     void giveHintTest() {
-        List<String> playerAnswer = new ArrayList<>();
+        List<String> answer = new ArrayList<>();
         List<String> hint = new ArrayList<>();
 
-        playerAnswer.add(computerAnswer.get(2));
-        playerAnswer.add(computerAnswer.get(1));
-        playerAnswer.add(computerAnswer.get(0));
+        answer.add(computerAnswer.get(2));
+        answer.add(computerAnswer.get(1));
+        answer.add(computerAnswer.get(0));
+        Answer playerAnswer = new Answer(answer);
+
         hint.add("2");
         hint.add("1");
 

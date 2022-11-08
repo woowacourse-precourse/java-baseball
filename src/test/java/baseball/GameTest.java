@@ -16,7 +16,7 @@ class GameTest {
         hint.add("0");
 
         String nothing = game.makeAnnouncement(hint);
-        assertEquals("낫싱",nothing);
+        assertEquals("낫싱", nothing);
     }
 
     @Test

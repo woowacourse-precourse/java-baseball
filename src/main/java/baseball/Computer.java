@@ -27,7 +27,7 @@ public class Computer {
         }
     }
 
-    public List<String> giveHint(List<String> playerAnswer) {
+    public List<String> giveHint(Answer playerAnswer) {
         List<String> ballAndStrike = new ArrayList<>();
 
         Integer ball = getBall(playerAnswer);
@@ -39,22 +39,22 @@ public class Computer {
         return ballAndStrike;
     }
 
-    public Integer getBall(List<String> playerAnswer) {
+    public Integer getBall(Answer playerAnswer) {
         Integer ball = 0;
-        for (String digit : playerAnswer) {
+        for (String digit : playerAnswer.list) {
             ball += contained(digit);
         }
         return ball;
     }
 
     public Integer contained(String digit) {
-        if(this.computerAnswer.contains(digit)) {
+        if (this.computerAnswer.contains(digit)) {
             return 1;
         }
         return 0;
     }
 
-    public Integer getStrike(List<String> playerAnswer) {
+    public Integer getStrike(Answer playerAnswer) {
         Integer strike = 0;
         for (int i = 0; i < 3; i++) {
             strike += correspond(playerAnswer, i);
@@ -62,8 +62,9 @@ public class Computer {
         return strike;
     }
 
-    public Integer correspond(List<String> playerAnswer, int i) {
-        if (playerAnswer.get(i).equals(this.computerAnswer.get(i))) {
+    public Integer correspond(Answer playerAnswer, int i) {
+        List<String> answer = playerAnswer.list;
+        if (answer.get(i).equals(this.computerAnswer.get(i))) {
             return 1;
         }
         return 0;

@@ -14,34 +14,25 @@ public class Game {
         this.computer = new Computer();
         this.player = new Player();
 
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(Constant.START_MESSAGE);
     }
 
     public void play() {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(Constant.REQUEST_INPUT_ANSWER);
         try {
-            playerInput();
+            Answer playerAnswer = this.player.inputAnswer();
+            List<String> hint = this.computer.giveHint(playerAnswer);
+            printHint(hint);
         } catch (IllegalArgumentException e) {
             this.again = false;
             throw new IllegalArgumentException();
         }
     }
 
-    public void playerInput() throws IllegalArgumentException {
-        List<String> playerAnswer = this.player.inputAnswer();
-        computerGiveHint(playerAnswer);
-    }
-
-    public void computerGiveHint(List<String> playerAnswer) {
-        List<String> hint = this.computer.giveHint(playerAnswer);
-        printHint(hint);
-    }
-
     public void printHint(List<String> hint) {
         String announcement = makeAnnouncement(hint);
         System.out.println(announcement);
-
-        if (hint.get(1).equals("3")) {
+        if (hint.get(1).equals(Constant.ANSWER_SIZE)) {
             answerCorrect();
         }
     }
@@ -49,10 +40,9 @@ public class Game {
     public String makeAnnouncement(List<String> hint) {
         String ball = concatBall(hint.get(0));
         String strike = concatStrike(hint.get(1));
-
         if (ball.equals("")) {
             if (strike.equals("")) {
-                return "낫싱";
+                return Constant.NOTHING;
             }
             return strike;
         }
@@ -66,19 +56,19 @@ public class Game {
         if (ball.equals("0")) {
             return "";
         }
-        return ball.concat("볼");
+        return ball.concat(Constant.BALL);
     }
 
     public String concatStrike(String strike) {
         if (strike.equals("0")) {
             return "";
         }
-        return strike.concat("스트라이크");
+        return strike.concat(Constant.STRIKE);
     }
 
     public void answerCorrect() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(Constant.CORRECT_MESSAGE);
+        System.out.println(Constant.ASK_RESTART_MESSAGE);
         askPlayAgain();
     }
 
@@ -92,7 +82,7 @@ public class Game {
             this.again = false;
             return;
         }
-        System.out.println("잘못 입력하셨습니다. 게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println("잘못 입력하셨습니다. " + Constant.ASK_RESTART_MESSAGE);
         askPlayAgain();
     }
 }
