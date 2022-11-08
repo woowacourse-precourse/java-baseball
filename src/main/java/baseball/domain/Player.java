@@ -7,6 +7,7 @@ import static baseball.vo.ValidationMsg.NUMBER_RANGE_EXCEPTION;
 public class Player {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
+    private static final int NUMBERS_COUNT = 3;
 
     private final List<Integer> playerNumbers;
 
@@ -16,6 +17,10 @@ public class Player {
 
     public List<Integer> getPlayerNumbers() {
         return playerNumbers;
+    }
+
+    private boolean validateNumbersSize(List<Integer> numbers) {
+        return numbers.size() != NUMBERS_COUNT;
     }
 
     private void validateNumberRange(int number) {
