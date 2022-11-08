@@ -7,7 +7,6 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-
     }
 
      static ArrayList<Integer> randomComputer(ArrayList<Integer> computer){
@@ -19,4 +18,12 @@ public class Application {
         } return computer;
     }
 
+    static ArrayList<Integer> convertStringToInt(String user){
+        ArrayList<Integer> intAnswer = new ArrayList<>();
+        String[] splitNumber = user.split("");
+        for ( String number : splitNumber ) {
+            intAnswer.add(Integer.parseInt(number));
+        }
+        return intAnswer;
+    }
 }
