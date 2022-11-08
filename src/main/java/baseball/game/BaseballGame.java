@@ -8,10 +8,6 @@ import static baseball.constant.GameConstant.BALL_LEN;
 import static baseball.constant.GameConstant.RESTART;
 import static baseball.constant.GameMessage.END_MESSAGE;
 import static baseball.constant.GameMessage.RESTART_MESSAGE;
-import static baseball.game.CompareNumbers.compareNumber;
-import static baseball.game.CompareNumbers.resetStrikeBall;
-import static baseball.game.CompareNumbers.strike;
-import static baseball.game.CompareNumbers.userNumberResult;
 import static baseball.number.ComputerNumber.createComputerNumber;
 import static baseball.validator.RestartNumberValidator.checkValidationRestartNumber;
 import static baseball.number.UserNumber.checkInputUserNumber;
@@ -20,15 +16,16 @@ public class BaseballGame {
 
     public static List<Integer> computerNumbers;
     public static List<Integer> userNumbers;
+    private static CompareNumbers compareNumbers = new CompareNumbers();
 
     public static void playBaseballGame(){
         computerNumbers = createComputerNumber();
-        resetStrikeBall();
-        while (strike!=BALL_LEN) {
+        compareNumbers.resetStrikeBall();
+        while (compareNumbers.strike!=BALL_LEN) {
             userNumbers = checkInputUserNumber();
-            resetStrikeBall();
-            compareNumber();
-            userNumberResult();
+            compareNumbers.resetStrikeBall();
+            compareNumbers.compareNumber();
+            compareNumbers.userNumberResult();
         }
         System.out.println(END_MESSAGE);
         restartGame();
