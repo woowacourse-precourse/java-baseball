@@ -23,10 +23,16 @@ public class OutputSentense {
 
     public String Question(String str, int gameTypeNumber) throws IllegalArgumentException {
         System.out.println(str);
-        String myNumber = Console.readLine();
-        if (myNumber.length() != gameTypeNumber) {
+        String myNumber="123";// = Console.readLine();
+        try {
+            myNumber = Console.readLine();
+        } catch (Exception e) {
             throw new IllegalArgumentException();
         }
+        if ( myNumber == null || myNumber.length() != gameTypeNumber) {
+            throw new IllegalArgumentException();
+        }
+        Integer.parseInt(myNumber);
         return myNumber;
     }
 
