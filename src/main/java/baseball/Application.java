@@ -8,12 +8,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
 
-    public static String input(){
-        System.out.print("숫자를 입력해주세요 : ");
-        String input = Console.readLine();
-        checkInput(input);
-        return input;
+    public static int reDO(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String status = Console.readLine();
+        return Integer.parseInt(status);
     }
+
 
     public static Boolean isThree(String number){
         if(number.length()==3)
@@ -86,20 +86,24 @@ public class Application {
 
     public static void runGame(){
         List<Integer> computer = RandomNum();
-        System.out.println(computer);
         String result="";
-        while(!result.equals("3 스트라이크")){
-            String number = input();
+        while(!result.equals("3스트라이크")){
+            System.out.print("숫자를 입력해주세요 : ");
+            String number = Console.readLine();
+            checkInput(number);
             result = gameResult(Compare(computer,UserNum(number)));
             System.out.println(result);
         }
-
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        runGame();
-
-
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int choice = 1;
+        while(choice == 1) {
+            runGame();
+            choice = reDO();
+        }
     }
 }
