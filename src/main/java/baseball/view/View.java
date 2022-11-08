@@ -36,5 +36,5 @@ public class View {
         System.out.printf(REPLAY_MESSAGE);
     }
 
-    public void printGameStart() {System.out.printf(GAME_START_MESSAGE)};
+    public void printGameStart() {System.out.printf(GAME_START_MESSAGE);}
 }
