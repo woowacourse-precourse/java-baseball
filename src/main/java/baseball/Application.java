@@ -30,13 +30,22 @@ public class Application {
     private static int[] getThreeInts() {
         String input = Console.readLine();
 
+        if (input.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+
         int inputNumber = Integer.parseInt(input);
         int[] inputNumbers = new int[3];
 
         inputNumbers[0] = inputNumber / 100;
         inputNumbers[1] = (inputNumber / 10) % 10;
         inputNumbers[2] = inputNumber % 10;
-        
+
+        for (int i = 0; i < 3; i++) {
+            if (inputNumbers[i] == 0) {
+                throw new IllegalArgumentException();
+            }
+        }
         return inputNumbers;
     }
 
