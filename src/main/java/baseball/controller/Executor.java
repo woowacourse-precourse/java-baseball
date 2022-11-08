@@ -5,9 +5,9 @@ import baseball.view.Printer;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.HashMap;
-public class Executor {
 
-    private static  final int RESTART = 1;
+public class Executor {
+    private static final int RESTART = 1;
     private static final int EXIT = 2;
     private BaseballResult guessResult;
     private final Checker checker = new Checker();
@@ -19,10 +19,10 @@ public class Executor {
             Printer.inputNumber();
             Baseball userInputNumber = inputUserBaseball();
             guessResult = compareNumber(computerRandomBaseball, userInputNumber);
-            if(guessResult.isALLCorrect()) {
+            if(guessResult.isAllCorrect()) {
                 String resultString = guessResult.getResult();
                 Printer.printMessage(resultString);
-                Printer.isALLCorrect();
+                Printer.allCorrect();
                 int restartAnswer = askRestart();
                 processRestartAnswer(restartAnswer);
             }else {
@@ -30,18 +30,17 @@ public class Executor {
                 Printer.printMessage(resultString);
             }
         }
-
     }
-    private Baseball createComputerRandomNumber() {
+    public Baseball createComputerRandomNumber(){
         return new Computer().createRandomBaseball();
-    }
-    public Baseball inputUserBaseball() {
-        User user = new User();
-        return user.getInput();
     }
     public BaseballResult compareNumber(Baseball computerBaseball, Baseball userBaseball) {
         HashMap<String, Integer> check_result = checker.start(computerBaseball, userBaseball);
         return new BaseballResult(check_result);
+    }
+    public Baseball inputUserBaseball() {
+        User user = new User();
+        return user.getInput();
     }
     public int askRestart() {
         Printer.askRestart();

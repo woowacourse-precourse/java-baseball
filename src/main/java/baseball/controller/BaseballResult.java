@@ -18,20 +18,22 @@ public class BaseballResult {
         if(result.isEmpty()) {
             return NOTHING;
         }
-        return  ballAndStrike();
+        return ballAndStrike();
     }
-    public boolean isALLCorrect() {
+    public boolean isAllCorrect() {
         return result.containsKey(STRIKE) && result.get(STRIKE) == ANSWER_COUNT;
     }
-    private String ballAndStrike() {
+
+    public String ballAndStrike() {
         if(!result.containsKey(STRIKE)) {
             return result.get(BALL) + "볼";
-        }else if(result.get(STRIKE) == ANSWER_COUNT) {
+        }else if(result.get(STRIKE) == ANSWER_COUNT){
             return result.get(STRIKE) + "스트라이크";
-        }else {
+        }
+        else{
             String ball = result.get(BALL) + "볼";
             String strike = result.get(STRIKE) + "스트라이크";
-            return  ball + ' ' + strike;
+            return ball + ' ' + strike;
         }
     }
 
