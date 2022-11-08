@@ -15,17 +15,17 @@ public class BaseballGame {
     }
 
     private int setStrikeCount(List<Integer> userNum, List<Integer> computerNum) {
-        return (int) IntStream.iterate(0, i -> i + 1)
+        return (int) IntStream.iterate(0, index -> index + 1)
                 .limit(NUMBER_LENGTH.getNumber())
-                .filter(i -> userNum.get(i).equals(computerNum.get(i)))
+                .filter(index -> userNum.get(index).equals(computerNum.get(index)))
                 .count();
     }
 
     private int setBallCount(List<Integer> userNum, List<Integer> computerNum) {
-        return (int) IntStream.iterate(0, i -> i + 1)
+        return (int) IntStream.iterate(0, index -> index + 1)
                 .limit(NUMBER_LENGTH.getNumber())
-                .filter(i -> !userNum.get(i).equals(computerNum.get(i)))
-                .filter(i -> computerNum.contains(userNum.get(i)))
+                .filter(index -> !userNum.get(index).equals(computerNum.get(index)))
+                .filter(index -> computerNum.contains(userNum.get(index)))
                 .count();
     }
 
