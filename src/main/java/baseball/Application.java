@@ -20,6 +20,8 @@ public class Application {
             game(computer);
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             newgame = Console.readLine();
+            if (!newgame.equals("1") && !newgame.equals("2"))
+                throw new IllegalArgumentException();
             if (newgame.equals("2"))
                 System.out.println("게임 종료");
         }
@@ -31,6 +33,8 @@ public class Application {
             HashMap<String, Integer> resultMap;
             System.out.println("숫자를 입력해주세요 : ");
             user = setUserNumber();
+            if (user.size() != 3)
+                throw new IllegalArgumentException();
             resultMap = getCompareResult(user, computer);
             printResult(resultMap);
             if (isAllCorrect(resultMap)) {
@@ -56,7 +60,7 @@ public class Application {
         String answer = Console.readLine();
         for (String s : answer.split("")) {
             number = Integer.parseInt(s);
-            if (user.contains(number) || user.size()>3)
+            if (user.contains(number))
                 throw new IllegalArgumentException();
             user.add(number);
         }
