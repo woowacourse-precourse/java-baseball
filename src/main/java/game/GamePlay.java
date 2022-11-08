@@ -32,15 +32,35 @@ public class GamePlay {
         }
         return JUDGEMENT_IS_NOTHING;
     }
+
+    public static void printHintMessage(int ball, int strike){
+        if(ball==0&&strike==0){
+            System.out.println("낫싱");
+        } else if(ball!=0){
+            System.out.println(ball+"볼 "+strike+"스트라이크");
+        }else{
+            System.out.println(strike+"스트라이크");
+        }
+
+    }
     public static boolean provideHintMessage(List<Integer> answer, List<Integer> userInput){
         boolean isAnswer = false;
         int ball = 0;
         int strike = 0;
 
-        for(int userChar : userInput){
-            // TODO: 2022/11/08 answer과 userChar비교해 ball, strike 여부 판단하는 함수 : 리턴값에 따라 ball이나 strike 증가
+        for(int i = 0; i< answer.size();i++){
+            int userChar =answer.get(i);
+            int judgement = judgeBallOrStrike(answer,userChar,i);
+            if(judgement==JUDGEMENT_IS_STRIKE){
+                strike++;
+            } else if (judgement==JUDGEMENT_IS_BALL) {
+                ball++;
+            }
         }
-
+        printHintMessage(ball,strike);
+        if(strike==3){
+            isAnswer = true;
+        }
         return isAnswer;
     }
 
