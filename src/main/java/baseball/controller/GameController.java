@@ -10,21 +10,16 @@ public class GameController {
     private static final int MAXIMUM_NUMBER = 9;
 
     GameService gameService = new GameService();
-    SystemMessage systemMessage = new SystemMessage();
 
     public void startGame() {
 
-        systemMessage.showStartMessage();
         gameService.setGame(GAME_NUMBER_DIGIT, MINIMUM_NUMBER, MAXIMUM_NUMBER);
 
-        while (true) {
+         do {
             gameService.getUserInputs();
             gameService.countStrikeAndBall();
 
-            if (gameService.makeResult()) {
-                break;
-            }
-        }
+        } while (!gameService.makeResult());
 
         if (gameService.restartOrExit()) {
             startGame();
