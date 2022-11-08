@@ -43,25 +43,29 @@ public class Application {
 
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            //askNewGame();
-        }
-        else if (strike == 0 && ball == 0) {
+            askNewGame();
+        } else if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
             guessWithUser();
-        }
-        else if (strike != 0 && ball == 0) {
+        } else if (strike != 0 && ball == 0) {
             System.out.println(strike + "스트라이크");
             guessWithUser();
-        }
-        else if (strike == 0 && ball != 0) {
+        } else if (strike == 0 && ball != 0) {
             System.out.println(ball + "볼");
             guessWithUser();
-        }
-        else if (strike != 0 && ball != 0) {
+        } else if (strike != 0 && ball != 0) {
             System.out.println(strike + "스트라이크 " + ball + "볼");
             guessWithUser();
         }
 
+    }
+
+    public static void askNewGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            start();
+        }
     }
 
     private static int checkStrikeOrBall(int i, int digit) {
