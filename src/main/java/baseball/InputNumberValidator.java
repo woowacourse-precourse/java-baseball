@@ -14,6 +14,10 @@ public class InputNumberValidator {
 
 
 
+    public static boolean inputNumberCorrection(String inputNumber){
+        return thereIsSpace(inputNumber)
+                && thereIsComma(inputNumber);
+    }
     public static boolean restartOrEndNumberCheck(String inputNumber){
         return inputNumber.equals("1") || inputNumber.equals("2");
     }
