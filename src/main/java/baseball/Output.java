@@ -7,15 +7,15 @@ public class Output {
     }
 
     public static void printStrikeBall(int strike, int ball) {
-        System.out.println(strike + " 스트라이크 " + ball + " 볼");
+        System.out.println(ball + "볼 " + strike + "스트라이크");
     }
 
     public static void printStrike(int strike) {
-        System.out.println(strike + " 스트라이크");
+        System.out.println(strike + "스트라이크");
     }
 
     public static void printBall(int ball) {
-        System.out.println(ball + " 볼");
+        System.out.println(ball + "볼");
     }
 
     public static void printFourBall() {
