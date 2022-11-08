@@ -124,6 +124,10 @@ class Hint {
     int ball;
     int strike;
 
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
+
     int[] hintResult(Game answer, Game rightAnswer) {
         int nowNumber;
 
@@ -141,5 +145,18 @@ class Hint {
             this.ball++;
         }
         return new int[]{ball, strike};
+    }
+
+    void hintMessage(int[] hint) {
+        if(hint[0] != 0){
+            System.out.print(hint[0] + BALL + " ");
+        }
+        if(hint[1] != 0){
+            System.out.print(hint[1] + STRIKE + " ");
+        }
+        if(hint[0] == 0 && hint[1] == 0) {
+            System.out.println(NOTHING);
+        }
+        System.out.println();
     }
 }
