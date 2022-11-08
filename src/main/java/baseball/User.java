@@ -44,10 +44,10 @@ public class User {
     public boolean inputRestartNumber() {
         String userInput;
 
-        System.out.print(GameMessage.ASK_RESTART_GAME);
+        System.out.println(GameMessage.ASK_RESTART_GAME);
         userInput = Console.readLine();
 
-        setUserRestartNumber(this.userRestartNumber);
+        setUserRestartNumber(userInput);
 
         return isCheckRestart();
     }
