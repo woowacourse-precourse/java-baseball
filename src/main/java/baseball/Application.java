@@ -16,25 +16,23 @@ class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
         char[] randomNumber = makeRandomNumbers();
         char[] inputNumer;
-        while(true){
+        while (true) {
             inputNumer = inputNumbers();
-            if(printResult(inputNumer,randomNumber))
+            if (printResult(inputNumer, randomNumber))
                 break;
         }
         endGame();
     }
 
     public static void endGame() {
-        while(true){
+        while (true) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String select = Console.readLine();
-            if(select.equals("1")){
+            if (select.equals("1")) {
                 startGame();
-            }
-            else if(select.equals("2")){
+            } else if (select.equals("2")) {
                 return;
-            }
-            else{
+            } else {
                 throw new IllegalArgumentException("1과 2만 입력 가능합니다.");
             }
         }
