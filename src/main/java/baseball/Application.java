@@ -2,40 +2,46 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Application {
-    static Scanner sc = new Scanner(System.in);
-    static Integer restartCounter;
     public static void main(String[] args) {
+        Integer restartCounter;
+        Scanner sc = new Scanner(System.in);
         do{
             System.out.println("숫자 야구 게임을 시작합니다.");
-            List<Integer> computer = randomNumberGenerator(); //컴퓨터의 랜덤 숫자 생성
-
-            List<Integer> user;
+            List<Integer> computer = randomNumberGenerator();
+            List<Integer> user ;
             Integer strike = 0;
-            Integer ball = 0;
+            Integer ball;
             while(strike!=3) {
-                user.clear();
-                user = makeListOfUser();
+                String input = getInputByUser(sc);
+                user = makeListOfUser(input);
                 strike = checkStrike(computer,user);
                 ball = checkBall(computer,user);
                 ball -= strike;
                 printResult(strike,ball);
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-
-
-
-            sc =
-
-
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            restartCounter= Integer.parseInt(sc.nextLine());
         }while(restartCounter==1);
 
         return;
+    }
+
+    private static String getInputByUser(Scanner sc) throws IllegalArgumentException{
+        System.out.println("숫자를 입력해주세요 :");
+        String input = sc.nextLine();
+        validateInputString(input);
+
+        return input;
     }
 
     private static void printResult(Integer strike, Integer ball) {
@@ -43,14 +49,16 @@ public class Application {
             System.out.println("낫싱");
             return;
         }
-        if(ball!=0){
+        if(ball!= 0 && strike == 0){
             System.out.println(ball+"볼");
             return;
         }
-        if(strike!=0){
+        if(strike!=0 && ball == 0){
             System.out.println(strike+"스트라이크");
             return ;
         }
+        System.out.println(ball+"볼 "+strike+"스트라이크");
+        return ;
     }
 
     private static Integer checkBall(List<Integer> computer, List<Integer> user) {
@@ -69,18 +77,11 @@ public class Application {
         return strike;
     }
 
-    private static List<Integer> makeListOfUser() {
+    private static List<Integer> makeListOfUser(String input) {
         List<Integer> user;
-        try{
-            System.out.println("숫자를 입력해주세요 : ");
-            String input = sc.nextLine();
-            validateInputString(input);
-            String[] splits = input.split("");
-            user = changeStringArrToIntegerList(splits);
-            validateList(user);
-        }catch (IllegalArgumentException e){
-            throw e;
-        }
+        String[] splits = input.split("");
+        user = changeStringArrToIntegerList(splits);
+        validateList(user);
         return user;
     }
 
@@ -113,9 +114,7 @@ public class Application {
         return temp;
     }
 
-
-
     public static void validateInputString(String s){
-        if(s.length()>3) throw new IllegalArgumentException();
+        if(s.length()>3) throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
     }
 }

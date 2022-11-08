@@ -7,8 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import static baseball.Application.validateInputString;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseBallTest {
 
@@ -37,7 +40,11 @@ public class BaseBallTest {
     @Test
     @DisplayName("입력받은 문자열 검증")
     public void validateInputStringTest(){
-
+        //given
+        String input = "1234";
+        //when
+        //then
+        assertThatThrownBy(()->validateInputString(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
 
