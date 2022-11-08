@@ -33,6 +33,7 @@ public class Game {
         List<Integer> input = getInput();
 
         getResult(input);
+        Message.printHintMessage(strike, ball);
 
         if (strike == 3) {
             restartOrFinish();
