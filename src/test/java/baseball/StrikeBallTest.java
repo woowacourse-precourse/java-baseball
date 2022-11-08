@@ -99,6 +99,22 @@ public class StrikeBallTest extends NsTest{
         assertThat(countStrike.get("strike")).isEqualTo(3);
     }
 
+    @Test
+    void 스트라이크_개수_계산시_볼_개수_업데이트(){
+        List<Integer> input = List.of(1,2,3);
+        List<Integer> answer = List.of(1,5,2);
+
+        Counter counter = new Counter(input, answer);
+        Map<String, Integer> countBall = counter.countBall();
+        assertThat(countBall.get("ball")).isEqualTo(2);
+
+        Map<String, Integer> countStrike = counter.countStrike();
+
+        assertThat(countStrike.get("strike")).isEqualTo(1);
+        assertThat(countStrike.get("ball")).isEqualTo(1);
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
