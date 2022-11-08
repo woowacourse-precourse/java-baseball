@@ -48,12 +48,13 @@ public class BaseBallServiceImpl implements BaseBallService{
     }
     @Override
     public String inputString() {
-        return Console.readLine();
+        String input = Console.readLine();
+        verification.onlyNumberVerification(input);
+        return input;
     }
     @Override
     public void verify(String input) {
         verification.lengthVerification(input);
-        verification.onlyNumberVerification(input);
         verification.rangeVerification(input);
         verification.uniqueNumberVerification(input);
     }
