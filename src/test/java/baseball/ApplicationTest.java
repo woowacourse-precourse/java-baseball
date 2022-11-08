@@ -40,6 +40,13 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void readline으로_입력시_Scanner와_달리_공백을_포함() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("4 1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
