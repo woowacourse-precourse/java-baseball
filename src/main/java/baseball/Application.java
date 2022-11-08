@@ -26,18 +26,20 @@ public class Application {
         // 기본 게임 로직
 
         do {
-            while (hint.strike == 3) {
+            hint.clear();
+            while (hint.strike < 3) {
+                hint.clear();
                 game.requestAnswer();
                 hint.compareAnswer(game);
                 hint.showResult();
-                hint.clear();
             }
             if (hint.strike == 3) {
                 game.printWinMessage();
                 game.printReGameMessage();
             }
         } while (game.restartOrStop(game.restartOrStopInput()) == 1);
-
+        // 2를 입력한 경우, 종료한다.
+        System.exit(0);
 
     }
 
@@ -110,6 +112,7 @@ class Game {
         String userInput = readLine();
         // userInput을 확인한다
         Game.validInputValue(userInput);
+        Game.printUserInput(userInput);
 
         // userInput을 List<Int> 형태로 type-casting한다.
         List<Integer> userInputList = parseIntList(userInput);
@@ -220,6 +223,9 @@ class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    public static void printUserInput(String userInput) {
+        System.out.println(userInput);
+    }
 }
 
 class Hint {
@@ -234,7 +240,7 @@ class Hint {
 
     void compareAnswer(Game game) {
         // 게임의 정답을 가져온다.
-        List<Integer> gameAnswer = Game.getGameAnswer();
+        List<Integer> gameAnswer = game.getGameAnswer();
         // 각 자리별로 비교하면 Strike, Ball을 계산한다.
         for (int digit = 0; digit < gameAnswer.size(); digit++) {
             int curNumber = Game.getGuessNumber().get(digit);
