@@ -143,8 +143,12 @@ class Game
     }
 
     int checkPlayModeInput(String input) {
-        // implement
+        // 문자열의 길이는 1이여야 한다.( 1, 2만 들어와야 한다. )
+        throwExceptionIfNeeded(input.length() == 1, "입력값의 길이가 조건에 일치하지 않습니다.");
+        char c = input.charAt(0);
 
-        return 0;
+        // 1 또는 2이여만 한다.
+        throwExceptionIfNeeded(c == '1' || c == '2', "입력값의 범위가 조건에 일치하지 않습니다.");
+        return c - 48;
     }
 }
