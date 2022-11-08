@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.regex.Pattern;
+
 public class GameController {
 
     public void start() {
@@ -13,7 +15,11 @@ public class GameController {
         baseballGame.useGeneratedAnswer();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-        while (true) {
+
+        boolean userContinue = true;
+
+        while (userContinue) {
+            int input = 0;
 
             System.out.print("숫자를 입력해주세요 : ");
 
@@ -24,19 +30,26 @@ public class GameController {
             if (gameResult.getStrike()==answerLength) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                int userContinue = Integer.parseInt(Console.readLine());
-                if (userContinue == 1) {
-                    baseballGame = new BaseballGame(answerLength);
-                    baseballGame.useGeneratedAnswer();
-                    continue;
-                }
-                if (userContinue == 2) {
-                    break;
-                }
+
+                input = submitContinue(Console.readLine());
+            }
+
+            if (input == 1) {
+                baseballGame.useGeneratedAnswer();
+            }
+            if (input == 2) {
+                userContinue = false;
             }
         }
     }
 
+    public int submitContinue(String number) {
+        String regex = "^[1-2]{1}";
+        if (!Pattern.matches(regex, number)) {
+            throw new IllegalArgumentException("입력 값이 잘못되었습니다");
+        }
+        return Integer.parseInt(number);
+    }
 
     public String printResult(BaseballGameResultDto baseballResultDto) {
         int ball = baseballResultDto.getBall();
