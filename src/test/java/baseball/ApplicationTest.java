@@ -113,8 +113,8 @@ class ApplicationTest extends NsTest {
             System.setOut(standardOut);
         }
 
-        String output(int strike, int ball) {
-            Application.printJudgeResult(strike, ball);
+        String output(int ball, int strike) {
+            Application.printJudgeResult(ball, strike);
             return outputStreamCaptor.toString().trim();
         }
 
