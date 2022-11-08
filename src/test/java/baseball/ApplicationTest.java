@@ -9,9 +9,14 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
+    Judge judge;
+    CheckNumber checkNumber;
+    @Test
+    void 볼3_확인(){
+        assertThat("1스트라이크").isEqualTo(judge.judgement(Arrays.asList(1,2,3),Arrays.asList(7,5,3)));
+    }
 
     @Test
     void 볼과_스트라이크_수의_합(){
@@ -32,7 +37,6 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
@@ -40,7 +44,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
