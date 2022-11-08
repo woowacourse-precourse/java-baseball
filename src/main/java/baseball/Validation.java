@@ -13,7 +13,7 @@ public class Validation {
     public void validate(List<Integer> number) throws IllegalArgumentException {
         validateLengthOfNumber(number);
         validateUnlike(number);
-        validateBetweenOneAndNine(number);
+        validateNumberInRange(number);
     }
     
     public void validateLengthOfNumber(List<Integer> number) {
@@ -29,7 +29,7 @@ public class Validation {
         }
     }
 
-    public void validateBetweenOneAndNine(List<Integer> number) {
+    public void validateNumberInRange(List<Integer> number) {
         for (Integer subNumber : number) {
             if (subNumber < NUM_MIN_RANGE || NUM_MAX_RANGE < subNumber) {
                 throw new IllegalArgumentException(ERR_MSG);
