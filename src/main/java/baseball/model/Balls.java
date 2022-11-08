@@ -26,8 +26,8 @@ public class Balls {
         }
     }
 
-    private void validateSize(List<Ball> values) {
-        if (values.size() == MAX_BALLS_SIZE) {
+    private void validateSize(List<Ball> balls) {
+        if (balls.size() == MAX_BALLS_SIZE) {
             return;
         }
         throw new IllegalArgumentException(INVALID_INPUT_SIZE_MESSAGE);
@@ -35,11 +35,12 @@ public class Balls {
 
     public Result generateResult(Balls compareBalls) {
         Result result = new Result();
-
         List<Ball> compareValues = compareBalls.getBalls();
 
         for (int i = START_INDEX; i < MAX_BALLS_SIZE; i++) {
-            if (Objects.equals(balls.get(i), compareValues.get(i))) {
+            Ball ball = balls.get(i);
+            Ball compareBall = compareValues.get(i);
+            if (ball.equals(compareBall)) {
                 result.increaseStrikeCount();
                 continue;
             }
