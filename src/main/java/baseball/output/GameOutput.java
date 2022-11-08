@@ -15,7 +15,7 @@ public abstract class GameOutput {
     }
 
     public static void inputUserNumberMessageOutput() {
-        System.out.println(INPUT_USER_NUMBER_MESSAGE);
+        System.out.print(INPUT_USER_NUMBER_MESSAGE);
     }
 
     public static void gameClearMessageOutput() {
