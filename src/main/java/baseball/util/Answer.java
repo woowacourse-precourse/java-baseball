@@ -10,7 +10,7 @@ import java.util.List;
  * @CreateAt : 2022/11/08
  */
 public class Answer {
-    // TODO: 랜덤 숫자(정답) 생성
+    // 랜덤 숫자(정답) 생성
     public static List<Integer> create() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < Constant.LENGTH_OF_NUMBER) {

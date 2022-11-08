@@ -20,7 +20,7 @@ public class BaseBallGameController {
         this.ballCountService = ballCountService;
     }
 
-    // TODO: 데이터 입력받아, 랜덤 숫자와 같은 형태로 형태변환
+    // 데이터 입력받아, 랜덤 숫자와 같은 형태로 형태변환
     public List<Integer> inputUserAnswer() {
         String input = Console.readLine();
         isException(!input.matches("[" + Constant.ANSWER_MIN_DIGIT + "-" + Constant.ANSWER_MAX_DIGIT + "]*"),
@@ -40,8 +40,8 @@ public class BaseBallGameController {
         return !answer.equals(userAnswer);
     }
 
+    // 게임 재시작 여부 판단
     public boolean isRestart() {
-        // TODO: 게임 재시작 여부 판단
         int restartCommand = inputRestartCommand();
         isException(restartCommand != Constant.RESTART_NUMBER && restartCommand != Constant.STOP_NUMBER,
                 ArgumentExceptionMessage.COMMAND_NOT_FOUND);

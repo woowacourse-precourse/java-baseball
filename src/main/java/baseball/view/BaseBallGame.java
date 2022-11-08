@@ -17,7 +17,7 @@ public class BaseBallGame {
         this.baseBallGameController = baseBallGameController;
     }
 
-    // TODO: 게임 실행부 작성
+    // 게임 실행
     public void start() {
         System.out.println(Constant.START_MESSAGE);
         do {
@@ -25,6 +25,7 @@ public class BaseBallGame {
         } while (isRestart());
     }
 
+    // 게임 실행 1회
     private void playGame() {
         List<Integer> answer = Answer.create();
         List<Integer> userAnswer = List.of(0, 0, 0);
@@ -36,6 +37,7 @@ public class BaseBallGame {
         System.out.println(Constant.FINISH_MESSAGE);
     }
 
+    // 게임 재시작 여부 판단
     public boolean isRestart() {
         System.out.println(Constant.RESTART_COMMENT);
         return baseBallGameController.isRestart();

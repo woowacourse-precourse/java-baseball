@@ -2,7 +2,6 @@ package baseball;
 
 import baseball.controller.BaseBallGameController;
 import baseball.service.BallCountService;
-import baseball.util.Constant;
 import baseball.view.BaseBallGame;
 
 public class Application {
