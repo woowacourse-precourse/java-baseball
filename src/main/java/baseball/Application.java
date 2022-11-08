@@ -55,6 +55,9 @@ public class Application {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
+        if(input.contains("0")){
+            throw new IllegalArgumentException();
+        }
         if (input.charAt(0) == input.charAt(1)) {
             throw new IllegalArgumentException();
         } else if (input.charAt(0) == input.charAt(2)) {
@@ -62,6 +65,7 @@ public class Application {
         } else if (input.charAt(1) == input.charAt(2)) {
             throw new IllegalArgumentException();
         }
+
     }
 
     public static void validateContinueEnd(int newGame) {
