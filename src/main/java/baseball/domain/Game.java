@@ -4,6 +4,10 @@ public class Game {
     private static int ballCount;
     private static int strikeCount;
 
+    public Game() {
+        initializeGame();
+    }
+
     public void initializeGame() {
         ballCount = 0;
         strikeCount = 0;
