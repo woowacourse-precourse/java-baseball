@@ -109,6 +109,10 @@ public class Application {
 		}
 	}
 	
+	public static void endGame() {
+		System.out.println("게임을 종료합니다!");
+	}
+	
     public static void main(String[] args) {
     	
     }
