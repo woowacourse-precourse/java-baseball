@@ -49,7 +49,7 @@ public class GamePlay {
         int strike = 0;
 
         for(int i = 0; i< answer.size();i++){
-            int userChar =answer.get(i);
+            int userChar =userInput.get(i);
             int judgement = judgeBallOrStrike(answer,userChar,i);
             if(judgement==JUDGEMENT_IS_STRIKE){
                 strike++;
