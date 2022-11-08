@@ -94,21 +94,45 @@ public class Application {
         }
     }
 
-    static boolean playNewGame() {
-    }
-
-
-    static boolean isAllStrike() {
-    }
-
     static boolean isNothing() {
-    }
-
-    static int getBall() {
+        if (!computer.contains(user.get(0)) && !computer.contains(user.get(1)) && !computer.contains(user.get(2))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     static int getStrike() {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            if (user.get(i) == computer.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
     }
+
+    static int getBall() {
+        int ball = 0;
+        for (int i = 0; i < 3; i++) {
+            if (user.get(i) != computer.get(i) && computer.contains(user.get(i))) {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    static boolean isAllStrike() {
+        if (computer.equals(user)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static boolean playNewGame() {
+    }
+
 
     static void printBallStrike(int ball, int strike) {
     }
