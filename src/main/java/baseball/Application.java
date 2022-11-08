@@ -81,7 +81,7 @@ public class Application {
     }
 */
 
-    public static void playgame(String str_user) {
+/*    public static void playgame(String str_user) {
         int i, j;
         str_com = Integer.toString(computer);
         for (i = 0; i < str_com.length(); i++) {
@@ -96,9 +96,9 @@ public class Application {
                 }
             }
         }
-    }
+    }*/
 
-/*    public static void score() {
+    public static void score() {
         if (strike == 3) {
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -110,5 +110,5 @@ public class Application {
             System.out.println(ball + "볼");
         else
             System.out.println(ball + "볼 " + strike + "스트라이크");
-    }*/
+    }
 }
