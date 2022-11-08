@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NumberHandler {
 
@@ -20,5 +22,10 @@ public class NumberHandler {
         return randomNumberList;
     }
 
-
+    public static List<Integer> splitNumber(int numbers) { // 123 -> [1, 2, 3]
+        return Stream
+                .of(String.valueOf(numbers).split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
 }
