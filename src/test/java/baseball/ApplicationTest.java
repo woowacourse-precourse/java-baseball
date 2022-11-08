@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +16,27 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void createNumber_메서드로_값의_개수가_3개인지_판별 () {
+    void createNumber_메서드로_값의_개수가_3개인지_판별() {
         List<Integer> computerCreateNumber = new ArrayList<>();
         createRandomNumber(computerCreateNumber);
         assertThat(computerCreateNumber.size()).isEqualTo(3);
     }
 
+    @Test
+    void inputUserNumber_메서드로_값을_입력_받을수_있는지_검증() {
+        List<Integer> userInputNumber = new ArrayList<>();
+        String input = "321";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        userInputNumber = inputUserNumber();
+        List<Integer> expectResultInputNumber = new ArrayList<>();
+        expectResultInputNumber.add(3);
+        expectResultInputNumber.add(2);
+        expectResultInputNumber.add(1);
+        assertThat(userInputNumber.get(0)).isEqualTo(expectResultInputNumber.get(0));
+        assertThat(userInputNumber.get(1)).isEqualTo(expectResultInputNumber.get(1));
+        assertThat(userInputNumber.get(2)).isEqualTo(expectResultInputNumber.get(2));
+    }
 
     @Test
     void 게임종료_후_재시작() {
