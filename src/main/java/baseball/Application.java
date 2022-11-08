@@ -23,7 +23,7 @@ public class Application {
     }
 
     /* 재시작, 종료 판별 메소드 구현*/
-    public static int JudgeInputNum(int inputNum){
+    private static int JudgeInputNum(int inputNum){
         while(true){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             if(inputNum == 1 )
@@ -34,7 +34,7 @@ public class Application {
         }
     }
     /* 난수 발생 메소드 구현 */
-    public static List<Integer> makeRandomNum(){
+    private static List<Integer> makeRandomNum(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -59,7 +59,7 @@ public class Application {
     }
 
     /* 사용자 입력 메소드 구현*/
-    public static String inputNum(){
+    private static String inputNum(){
         String str = readLine();
         String result = handleException(str);
         return result;
