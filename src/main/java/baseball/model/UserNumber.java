@@ -28,4 +28,8 @@ public class UserNumber {
             numbers.add(number);
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
