@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 public class Application {
     static boolean isPlaying = true;
+
     // 1. 랜덤 넘버 생성기.(input void, output List<Integer>)
     public static ArrayList<Integer> computerNumberMaker(){
         ArrayList<Integer> computer = new ArrayList<>();
@@ -16,6 +17,7 @@ public class Application {
         }
         return computer;
     }
+
     // 2. input들어온 수가 조건에 맞는가? (input String, output boolean)
     public static boolean isValidNumber(String inputNumber){
         List<String> tempList = Arrays.asList(inputNumber.split(""));
@@ -43,6 +45,14 @@ public class Application {
     }
 
     // 3. input들어온 수를 List로 (input int, output List<Integer>)
+    public static ArrayList<Integer> inputNumberMaker(int inputNumber){
+        ArrayList<Integer> user = new ArrayList<>();
+        for(int i = 2; i >= 0; i --){
+            user.add((int)(inputNumber / Math.pow(10,i)));
+            inputNumber = (int)(inputNumber % Math.pow(10,i));
+        }
+        return user;
+    }
     // 4-1. 스트라이크의 개수 (input List<Integer> usernumber, List<Integer> computernumber, output int)
     // 4-2. 볼의 개수 (input List<Integer> usernumber, List<Integer> computernumber, output int)
     // 5. 매회 player 가 input을 넣을때마다 출력해야 할 것들 만들어줄 함수 (input int strikenum, int ballnum, output String)
