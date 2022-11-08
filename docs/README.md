@@ -51,7 +51,7 @@
    - 동작: camp.nextstep.edu.missionutils.Console.readLine() 기능 사용
 5. 입력이 정수로 변환이 가능한지 검증하는 기능
    - 파라미터: 콘솔창에서 입력 받은 스트링
-   - 리턴:
+   - 리턴: 정수형 리스트
    - 동작: 
      - try catch 구문 안에서 parseInt를 사용해 입력 받은 문자열 변환 시도
      - 에러인 경우 throw IllegalArgumentException
