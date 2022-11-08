@@ -25,11 +25,16 @@ public class Application {
       List<Integer> computerPickNums = new ArrayList<>();
       while (computerPickNums.size() < 3) {
          int randomNumber = Randoms.pickNumberInRange(1, 9);
-         if (!computerPickNums.contains(randomNumber)) {
-            computerPickNums.add(randomNumber);
-         }
+         pushComNum(randomNumber, computerPickNums);
       }
       return computerPickNums;
+   }
+   
+   public static void pushComNum(int randNumber, List<Integer> computerPickNums) {
+	   if (!computerPickNums.contains(randomNumber)) {
+		   computerPickNums.add(randomNumber);
+	   }
+	   
    }
 
    public static void gamePlaying(List<Integer> computerPickNums) {
