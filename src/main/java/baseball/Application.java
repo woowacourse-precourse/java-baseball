@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -24,9 +26,9 @@ public class Application {
     private static int start(int randomNumber, int inputNumber) {
         int strike = 0;
         while (strike != 3){
-            int [] result = Game.getScore(randomNumber, inputNumber);
+            ArrayList<Integer> result = Game.getScore(randomNumber, inputNumber);
             getScoreMessage(result);
-            strike = result[1];
+            strike = result.get(1);
             if(strike==3){
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
@@ -42,17 +44,17 @@ public class Application {
         return inputNumber;
     }
 
-    private static void getScoreMessage(int[] result) {
-        if(result[0]!=0 && result[1]==0){
-            System.out.println(result[0] + "볼");
+    private static void getScoreMessage(ArrayList<Integer> result) {
+        if(result.get(0)!=0 && result.get(1)==0){
+            System.out.println(result.get(0) + "볼");
         }
-        if(result[0]!=0 && result[1]!=0){
-            System.out.println(result[0] + "볼 "+result[1]+"스트라이크");
+        if(result.get(0)!=0 && result.get(1)!=0){
+            System.out.println(result.get(0) + "볼 "+result.get(1)+"스트라이크");
         }
-        if(result[0]==0 && result[1]!=0){
-            System.out.println(result[1] + "스트라이크");
+        if(result.get(0)==0 && result.get(1)!=0){
+            System.out.println(result.get(1) + "스트라이크");
         }
-        if(result[0]==0 && result[1]==0){
+        if(result.get(0)==0 && result.get(1)==0){
             System.out.println("낫싱");
         }
     }
@@ -69,6 +71,5 @@ public class Application {
         int inputNumber = Number.rangeCheck(); //입력한 숫자 예외 확인
         return inputNumber;
     }
-
 
 }

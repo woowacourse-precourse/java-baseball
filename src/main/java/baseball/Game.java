@@ -9,47 +9,58 @@ import java.util.Collections;
 public class Game {
     static int strike =0;
     static int ball = 0;
-    static int [] result = new int[2];
-    public static int[] getScore(int randomNumber, int inputNumber){
-        int [] answer = new int[3];
-        int [] userNumber = new int [3];
-        answer[0] = randomNumber/100;
-        randomNumber %= 100;
-        answer[1] = randomNumber/10;
-        randomNumber %= 10;
-        answer[2] = randomNumber;
+    static ArrayList<Integer> result = new ArrayList<>(2);
+    public static ArrayList<Integer> getScore(int randomNumber, int inputNumber){
+        ArrayList<Integer> answer = new ArrayList<>(3);
+        ArrayList<Integer> userNumber = new ArrayList<>(3);
 
-        userNumber[0] = inputNumber/100;
+        answer.clear();
+        userNumber.clear();
+        result.clear();
+        answer.add(randomNumber/100);
+        randomNumber %= 100;
+        answer.add(randomNumber/10);
+        randomNumber %= 10;
+        answer.add(randomNumber);
+        System.out.println("answer.get(0)"+answer.get(0)+"answer.get(1)"+answer.get(1)+"answer.get(2)"+answer.get(2));
+
+        userNumber.add(inputNumber/100);
         inputNumber %= 100;
-        userNumber[1] = inputNumber/10;
+        userNumber.add(inputNumber/10);
         inputNumber %=10;
-        userNumber[2] = inputNumber;
-        result[0] = getBall(answer, userNumber);
-        result[1] = getStrike(answer, userNumber);
+        userNumber.add(inputNumber);
+        System.out.println("userNumber.get(0)"+userNumber.get(0)+"userNumber.get(1)"+userNumber.get(1)+"userNumber.get(2)"+userNumber.get(2));
+
+        result.add(getBall(answer,userNumber));
+        result.add(getStrike(answer,userNumber));
+        System.out.println("result.get(0) = "+result.get(0)+"result.get(1) = "+result.get(1));
+
         return result;
     }
 
-    private static int getBall(int[] answer, int[] userNumber) {
-        ball =0;
-        if(answer[0]==userNumber[1] || answer[0]==userNumber[2]){
+    private static int getBall(ArrayList<Integer> answer, ArrayList<Integer> userNumber) {
+        ball = 0;
+        if(answer.get(0)==userNumber.get(1) || answer.get(0)==userNumber.get(2)){
             ball++;
         }
-        if(answer[1]==userNumber[0] || answer[1]==userNumber[2]){
+        if(answer.get(1)==userNumber.get(0) || answer.get(1)==userNumber.get(2)){
             ball++;
         }
-        if(answer[2]==userNumber[0] || answer[2]==userNumber[1]){
+        if(answer.get(2)==userNumber.get(0) || answer.get(2)==userNumber.get(1)){
             ball++;
         }
+        System.out.println("ball "+ ball);
         return ball;
     }
 
-    private static int getStrike(int [] answer, int [] userNumber){
+    private static int getStrike(ArrayList<Integer> answer, ArrayList<Integer> userNumber){
         strike =0;
         for (int i = 0; i < 3; i++) {
-            if(answer[i]==userNumber[i]){
+            if(answer.get(i)==userNumber.get(i)){
                 strike++;
             }
         }
+        System.out.println("strike "+ strike);
         return strike;
     }
 

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSetting {
-    
     public static int getRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
