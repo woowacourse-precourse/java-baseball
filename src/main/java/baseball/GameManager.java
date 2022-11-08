@@ -5,20 +5,20 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.stream.IntStream;
 
 import static baseball.Constants.*;
-import static baseball.User.inputUserNumber;
 import static baseball.message.ExceptionMessage.ILLEGAL_ERR_MSG;
 import static baseball.message.OutputMessage.*;
 import static baseball.message.OutputMessage.printGameSetMessage;
 
 public class GameManager {
     Computer computer = new Computer();
+    User user = new User();
     public void playGame() {
         int strikeResult;
         int ballResult;
         String computerNumberResult = computer.randomNumberResult(); //
         do {
             printNumberInputMessage();
-            String userInput = inputUserNumber();
+            String userInput = user.inputUserNumber();
             ballResult = countBall(userInput, computerNumberResult);
             strikeResult = countStrike(userInput, computerNumberResult);
             printResult(ballResult, strikeResult);
