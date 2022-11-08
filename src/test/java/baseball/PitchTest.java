@@ -1,6 +1,7 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -16,6 +17,20 @@ class PitchTest extends NsTest {
         assertThat(pitch.getNumber(2)).isEqualTo(6);
     }
 
+    @Test
+    public void IllegalGenerate() {
+        assertThatThrownBy(()->runException("24s")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void IllegalGenerateWithSpace() {
+        assertThatThrownBy(()->runException("24 ")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void IllegalGenerateWithZero() {
+        assertThatThrownBy(()->runException("240")).isInstanceOf(IllegalArgumentException.class);
+    }
     @Override
     protected void runMain() {
         pitch = new Pitch();
