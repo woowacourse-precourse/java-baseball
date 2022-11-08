@@ -78,6 +78,7 @@ public class GameManager {
 
         if (hint.equals(THREE_STRIKE)) {
             System.out.println(TEXT_FOR_END_ROUND);
+            stopOrContinueGame(shouldGameContinue());
         }
     }
 
