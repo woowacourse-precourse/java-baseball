@@ -37,14 +37,21 @@ public class NumberBaseball {
 
         do{ // repeat until victory
             System.out.print("숫자를 입력해주세요 : ");
-            // convert numbers from Ascii to integer value
+
             String input = Console.readLine();
             // check the input value
-            if(!checkInput(input)){
+            if(checkInput(input)){
+                // convert numbers from Ascii to integer value
+                MyAnswer[0] = input.charAt(0) - 48;
+                MyAnswer[1] = input.charAt(1) - 48;
+                MyAnswer[2] = input.charAt(2) - 48;
+
+            }
+            else{ // wrong input, throw exception
                 throw new IllegalArgumentException();
             }
         }
-        while ();
+        while (!judgeBall(MyAnswer));
 
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
