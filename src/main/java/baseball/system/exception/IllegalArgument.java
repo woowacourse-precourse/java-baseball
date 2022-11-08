@@ -2,7 +2,7 @@ package baseball.system.exception;
 
 public class IllegalArgument {
     public static void outOfRange(int start,int end){
-        throw new IllegalArgumentException(String.format("입력에 %d~%d 사이의 숫자를 벗어나는 문자가 있습니다.",start,end));
+        throw new IllegalArgumentException(String.format("입력이 지정된 범위를 벗어났습니다.(%d ~ %d 사이의 값들로 입력)",start,end));
     }
 
     public static void notNNumbers(int count){

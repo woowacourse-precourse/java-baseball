@@ -16,7 +16,7 @@ public class NumberComparison {
     }
 
     public boolean startComparison(List<Integer> userNumbers) {
-        initNumberComparison(userNumbers);
+        initializeNumberComparison(userNumbers);
 
         checkEachDigit();
 
@@ -29,7 +29,7 @@ public class NumberComparison {
         return false;
     }
 
-    private void initNumberComparison(List<Integer> userNumbers) {
+    private void initializeNumberComparison(List<Integer> userNumbers) {
         this.userNumbers = userNumbers;
         strikeCount = 0;
         ballCount = 0;

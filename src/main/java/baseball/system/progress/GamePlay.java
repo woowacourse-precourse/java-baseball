@@ -13,7 +13,6 @@ public class GamePlay {
     }
 
     public void playGame() {
-        //TODO : 설명 적기
         NumberComparison numberComparison = new NumberComparison(computer.getComputerNumbers());
 
         for (; ; ) {

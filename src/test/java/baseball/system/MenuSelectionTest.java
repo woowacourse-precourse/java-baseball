@@ -41,19 +41,19 @@ public class MenuSelectionTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("0"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력에 1~2 사이의 숫자를 벗어나는 문자가 있습니다.")
+                        .hasMessage("입력이 지정된 범위를 벗어났습니다.(1 ~ 2 사이의 값들로 입력)")
         );
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력에 1~2 사이의 숫자를 벗어나는 문자가 있습니다.")
+                        .hasMessage("입력이 지정된 범위를 벗어났습니다.(1 ~ 2 사이의 값들로 입력)")
         );
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("asd"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("입력에 1~2 사이의 숫자를 벗어나는 문자가 있습니다.")
+                        .hasMessage("입력이 지정된 범위를 벗어났습니다.(1 ~ 2 사이의 값들로 입력)")
         );
     }
     @Override

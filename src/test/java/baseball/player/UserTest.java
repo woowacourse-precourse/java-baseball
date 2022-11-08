@@ -30,14 +30,14 @@ public class UserTest {
     void 유저_문자_입력_예외처리(){
         assertThatThrownBy(()-> user.setUser("12a"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("입력에 1~9 사이의 숫자를 벗어나는 문자가 있습니다.");
+                .hasMessage("입력이 지정된 범위를 벗어났습니다.(1 ~ 9 사이의 값들로 입력)");
     }
 
     @Test
     void 유저_0_입력_예외처리(){
         assertThatThrownBy(()-> user.setUser("012"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("입력에 1~9 사이의 숫자를 벗어나는 문자가 있습니다.");
+                .hasMessage("입력이 지정된 범위를 벗어났습니다.(1 ~ 9 사이의 값들로 입력)");
     }
 
     @Test
