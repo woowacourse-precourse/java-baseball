@@ -36,6 +36,11 @@ public class BaseballComputer {
         }
         return ;
     }
+    private void checkOutOfInputNumber(String answer){
+        if(answer.length() == 3){
+            throw new IllegalArgumentException("out of input number");
+        }
+    }
 
     private int checkOutOfChoiceNumber(int choice){
         if(1 > choice || choice > 2){
