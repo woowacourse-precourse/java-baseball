@@ -10,17 +10,13 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-            Operator op = new Operator();
-            op.playGameReady();
-            op.playGame();
-            op.playGameEnd();
-            if(op.getRestart()) main(new String[0]);
-//        try {
-//
-//        } catch (IllegalArgumentException e) {
-//            // throw new IllegalArgumentException();
-//        }
-
+        Operator op = new Operator();
+        op.playGameReady();
+        op.playGame();
+        op.playGameEnd();
+        if (op.getRestart()) {
+            main(new String[0]);
+        }
     }
 }
 
@@ -36,7 +32,7 @@ class Computer {
             }
         }
         number = numberList;
-        System.out.println("컴퓨터 생성숫자: " + number);
+        // System.out.println("컴퓨터 생성숫자: " + number);
     }
 
     public List<Integer> getNumber() {
@@ -56,18 +52,18 @@ class Player {
         if (isNumberic) {
             num = Integer.parseInt(s);
         } else {
-            throw new IllegalArgumentException(); // 숫자가 아닌 문자열을 입력했을 경우.
+            throw new IllegalArgumentException();
         }
         while (num > 0) {
             numberList.add(num % 10);
             num /= 10;
         }
-        if (!Operator.isCorrectNumber(numberList)) { // 서로 다른 1~9까지의 3자리 수가 아닐 경우.
+        if (!Operator.isCorrectNumber(numberList)) {
             throw new IllegalArgumentException();
         }
         Collections.reverse(numberList);
         number = numberList;
-        //System.out.println("플레이어 입력 숫자: " + number);
+        // System.out.println("플레이어 입력 숫자: " + number);
     }
 
     public void showInputStatement() {
@@ -102,17 +98,11 @@ class Operator {
     }
 
     public void playGame() throws IllegalArgumentException {
-//        showStartStatement();
-//        computer.setNumber();
-
         while (!correctAnswer) {
             player.inputNumber();
             compareNumber();
             showResult();
         }
-
-//        showRestartStatement();
-//        inputWhetherToRestart();
     }
 
     public void playGameEnd() {
