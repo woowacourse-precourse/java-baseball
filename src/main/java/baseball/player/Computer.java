@@ -13,4 +13,8 @@ public class Computer extends Player {
             }
         }
     }
+
+    public void clearSelectBalls() {
+        super.clearSelectBalls();
+    }
 }
