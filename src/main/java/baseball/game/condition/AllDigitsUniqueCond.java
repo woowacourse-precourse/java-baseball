@@ -1,5 +1,6 @@
 package baseball.game.condition;
 
+import baseball.error.GameError;
 import baseball.validation.Condition;
 
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import static baseball.game.util.GameUtil.NUMBER_SIZE;
 public class AllDigitsUniqueCond implements Condition {
 
     private static final Condition instance = new AllDigitsUniqueCond();
+    private static final GameError error = GameError.NUMBER_DUPLICATED;
 
     public static Condition getInstance() {
         return instance;
@@ -27,5 +29,10 @@ public class AllDigitsUniqueCond implements Condition {
         }
 
         return numbers.size() == guess.length();
+    }
+
+    @Override
+    public String getErrorMessage() {
+        return error.getMessage();
     }
 }
