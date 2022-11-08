@@ -31,6 +31,7 @@ public class BaseballGameController implements GameController {
                 input = inputer.getInput();
                 sig = comparator.doIntCompare(randnumVO.getRandNum(), input);
                 validateGame();
+                checkGameOver();
             }
         } catch(IllegalArgumentException e){
             e.printStackTrace();
@@ -51,9 +52,6 @@ public class BaseballGameController implements GameController {
 
     private void validateGame() {
         String result = "";
-        if(sig.get(1) == 3) {
-            flag = false;
-        }
         if(sig.get(0) > 0) {
             result += sig.get(0)+"볼 ";
         }
@@ -64,6 +62,12 @@ public class BaseballGameController implements GameController {
             result = "낫싱";
         }
         System.out.println(result);
+    }
+
+    private void checkGameOver(){
+        if(sig.get(1) == 3) {
+            flag = false;
+        }
     }
 
 
