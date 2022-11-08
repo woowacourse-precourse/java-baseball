@@ -22,8 +22,9 @@ public class OutputView {
         if (strikeCounter == 0 & ballCounter > 0){
             System.out.println(ballCounter+"볼");
         }
-
-        System.out.println("낫싱");
+        if (strikeCounter == 0 & ballCounter == 0){
+            System.out.println("낫싱");
+        }
     }
 
     public static void printGameClear(){
