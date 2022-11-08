@@ -3,14 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 
-public class UserNumGenerator extends IllegalArgumentException {
-    public int[] nums;
-
+public class UserNumGenerator extends NumGenerator {
     public UserNumGenerator() {
         this.nums = pickThreeNum();
     }
 
-    public static int[] pickThreeNum() {
+    public static int[] pickThreeNum() throws IllegalArgumentException {
         System.out.print("숫자를 입력해주세요 : ");
         String numString = Console.readLine();
         int[] nums = stringToIntArray(numString);
@@ -31,7 +29,4 @@ public class UserNumGenerator extends IllegalArgumentException {
             .allMatch(num -> 1 <= num && num <= 9);
     }
 
-    public static boolean isNotSame(int[] nums) {
-        return nums[0] != nums[1] && nums[1] != nums[2] && nums[0] != nums[2];
-    }
 }
