@@ -1,30 +1,30 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class ComputerNumber {
 
-    private List<Integer> computerNumber;
+    private List<Integer> randomBallNumber;
 
     public ComputerNumber() {
-        computerNumber = new ArrayList<>();
+        randomBallNumber = new ArrayList<>();
     }
 
     public List<Integer> getComputerNumber() {
-        return computerNumber;
+        return randomBallNumber;
     }
 
-    public void makeComputerNumber() {
+    public void makeRandomNumber() {
         HashSet<Integer> randomNumbers = new LinkedHashSet<>();
-        while (randomNumbers.size() < GameConstants.NUMBER_LENGTH) {
-            int number = Randoms.pickNumberInRange(GameConstants.MIN_NUMBER, GameConstants.MAX_NUMBER);
+        while (randomNumbers.size() < Constants.NUMBER_LENGTH) {
+            int number = Randoms.pickNumberInRange(Constants.MIN_NUMBER, Constants.MAX_NUMBER);
             randomNumbers.add(number);
         }
-        computerNumber = new ArrayList<>(randomNumbers);
+        randomBallNumber = new ArrayList<>(randomNumbers);
     }
 }
