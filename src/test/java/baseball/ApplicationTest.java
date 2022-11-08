@@ -6,10 +6,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.io.PrintStream;
 
 class ApplicationTest extends NsTest {
     @Test
@@ -90,6 +92,18 @@ class ApplicationTest extends NsTest {
         hint.compareAnswer(game);
         assertThat(hint.strike).isEqualTo(3);
     }
+
+    @Test
+    void 게임시작테스트() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        Game game = new Game();
+
+        game.printGameStartMessage();
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("숫자 야구 게임을 시작합니다.");
+    }
+
 
     @Test
     void Ball테스트() {

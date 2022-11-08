@@ -38,9 +38,11 @@ class Game {
     public static void setGameAnswer(List<Integer> randomNumber) {
         gameAnswer = randomNumber;
     }
+
     public static List<Integer> getGuessNumber() {
         return guessNumber;
     }
+
     public static void setGuessNumber(List<Integer> userInput) {
         guessNumber = userInput;
     }
@@ -143,6 +145,10 @@ class Game {
     public int getRandomNumber() {
         // 1 ~ 9 범위의 난수를 return하는 함수.
         return pickNumberInRange(1, 9);
+    }
+
+    public void printGameStartMessage() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
 }
