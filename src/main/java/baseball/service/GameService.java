@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameService {
-    public Boolean addComputerNumber() {
+    public boolean addComputerNumber() {
         return addComputerNumber(pickNumber(3));
     }
-    public Boolean addComputerNumber(int number) {
+    public boolean addComputerNumber(int number) {
         Number dto = Number.getInstance();
 
         return dto.insert(new ComputerNumber(number));
