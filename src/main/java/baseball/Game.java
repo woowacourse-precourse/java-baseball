@@ -15,6 +15,7 @@ public class Game {
     private static final String OUTPUT_START = "숫자 야구 게임을 시작합니다.";
     private static final String OUTPUT_SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String OUTPUT_RESTART_OR_QUIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String EXCEPTION_MESSAGE = "Please answer 1 or 2.";
 
     private int strike;
     private int ball;
@@ -104,7 +105,7 @@ public class Game {
         List<String> inputList = new ArrayList<>(Arrays.asList(new String[]{"1", "2"}));
         boolean inputValidation = inputList.contains(quitInput);
         if(!inputValidation) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 

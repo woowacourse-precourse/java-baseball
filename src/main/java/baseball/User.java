@@ -7,6 +7,7 @@ public class User {
     private static final int NUMBER_LENGTH = 3;
     private static final String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
     private static final Pattern INPUT_REGEX = Pattern.compile("[1-9]{3,3}");
+    private static final String EXCEPTION_MESSAGE = "Please enter a three-digit natural number consisting of 1 to 9.";
     int userNumber;
 
     public User() {}
@@ -38,13 +39,13 @@ public class User {
 
     private void validateInputRegex(String input) {
         if(!INPUT_REGEX.matcher(input).matches()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 
     private static void validateInputLength(String input) {
         if(input.length() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
 }
