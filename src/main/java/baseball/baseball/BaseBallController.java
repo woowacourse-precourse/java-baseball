@@ -71,7 +71,7 @@ public class BaseBallController {
     }
 
     private boolean checkNumber(char temp) {
-        if(temp < '0' || temp > '9'){
+        if(temp < '1' || temp > '9'){
             return false;
         }else {
             return true;
