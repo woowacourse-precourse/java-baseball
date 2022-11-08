@@ -81,6 +81,20 @@ public class Application {
         return resultMap;
     }
 
+    public static void DropHintToUser(HashMap<String, Integer> resultMap) {
+        if (resultMap.isEmpty()) {
+            System.out.println(STRING_NOTHING);
+        }
+        else {
+            List<String> keyList = new ArrayList<>(resultMap.keySet());
+            keyList.sort(String::compareTo);  // sort by key before printing hints
+            for (String key : keyList) {
+                System.out.print( resultMap.get(key) + key + " " );
+            }
+            System.out.println(" ");
+        }
+    }
+
     public static void BaseballGame() {
         int gameStatus = GAME_PROGRESS;
 
