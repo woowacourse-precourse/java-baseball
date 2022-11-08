@@ -19,6 +19,16 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+    @Test
+    void 게임플레이() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "135", "1", "597", "153", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 1, 5, 3
+        );
+    }
 
     @Test
     void 예외_테스트() {
@@ -28,6 +38,27 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("aaa"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
