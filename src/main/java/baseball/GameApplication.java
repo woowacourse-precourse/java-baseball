@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class GameApplication {
+    private static final int ZERO = 0;
+    private static final int THREE_STRIKE = 3;
+    private static final String EXIT = "2";
     private static final String GAME_START_SENTENCE = "숫자 야구 게임을 시작합니다.";
     private static final String RESTART_OR_EXIT_SENTENCE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String NOTHING_SENTENCE = "낫싱";
@@ -23,36 +26,31 @@ public class GameApplication {
 
     // 게임 애플리케이션 시작 메소드
     public void gameStart() {
-        while (true) {
+        do {
             baseballGame();
             System.out.println(RESTART_OR_EXIT_SENTENCE);
-            if (restartOrExit()) break;
-        }
+        } while (restartOrExit());
     }
 
     // 하나의 야구숫자게임을 진행하는 메소드
     private void baseballGame() {
         System.out.println(GAME_START_SENTENCE);
 
-        GameNumber computerNumber = new GameNumber();
-        GameNumber userNumber = new GameNumber();
-        GameNumber resultNumber = new GameNumber();
+        Number number = new Number();
 
         // 컴퓨터의 랜덤 숫자 저장
-        computer = computerNumber.getComputerNumber();
-
-        while (true) {
+        computer = number.getComputerNumber();
+        do {
             // 사용자의 랜덤 숫자 저장
-            user = userNumber.getUserNumber();
+            user = number.getUserNumber();
             // 결과 저장
-            result = resultNumber.getResult(computer, user);
+            result = number.getResult(computer, user);
 
             // 결과 프린트
             System.out.println(printResult(result));
 
             // 3스트라이크 시 게임 종료
-            if (executeApplication(result)) break;
-        }
+        } while (executeApplication(result));
     }
 
     // 재시작 || 종료를 입력하는 메소드
@@ -62,10 +60,10 @@ public class GameApplication {
         // 예외처리
         isRightInput(input);
 
-        if (input.equals("2")) {
-            return true;
+        if (input.equals(EXIT)) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     // 입력 문자가 1과2 이외의 것일 경우, 자바 정규식 사용
@@ -79,15 +77,15 @@ public class GameApplication {
     public String printResult(int[] result) {
         StringBuilder sb = new StringBuilder();
         // result[0] = strike, result[1] = ball
-        if (isSame(0, result[0]) && isSame(0, result[1])) { // strike ball 둘다 0인 경우
+        if (isSame(ZERO, result[0]) && isSame(ZERO, result[1])) { // strike ball 둘다 0인 경우
             sb.append(NOTHING_SENTENCE);
             return sb.toString();
         }
-        if (isSame(0, result[1])) { // ball 이 0인 경우
+        if (isSame(ZERO, result[1])) { // ball 이 0인 경우
             sb.append(result[0] + STRIKE_SENTENCE);
             return sb.toString();
         }
-        if (isSame(0, result[0])) { // strike 가 0인 경우
+        if (isSame(ZERO, result[0])) { // strike 가 0인 경우
             sb.append(result[1] + BALL_SENTENCE);
             return sb.toString();
         }
@@ -97,11 +95,11 @@ public class GameApplication {
 
     // 3스트라이크 시 프로그램 진행/종료 결정하는 메소드
     public boolean executeApplication(int[] result) {
-        if (isSame(3, result[0])) { // strike == 3
+        if (isSame(THREE_STRIKE, result[0])) { // strike == 3
             System.out.println(RIGHT_ANSWER_SENTENCE);
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     // 파라미터 두개를 비교하는 메소드
