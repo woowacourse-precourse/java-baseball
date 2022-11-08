@@ -47,5 +47,14 @@ public class UnitTest {
         Assertions.assertThat(scoreThree).isEqualTo("2 0");
     }
 
+    // 7. Judge strike
+    @Test
+    void judgeStrikeTest() {
+        int caseOne = Application.judgeStrike("1", "1", "123");
+        int caseTwo = Application.judgeStrike("1", "0", "230");
+
+        Assertions.assertThat(caseOne).isEqualTo(1);
+        Assertions.assertThat(caseTwo).isEqualTo(0);
+    }
 
 }
