@@ -16,5 +16,5 @@ public class PlayerNumberTest {
         assertThatThrownBy(() -> Application.getPlayerNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
 }

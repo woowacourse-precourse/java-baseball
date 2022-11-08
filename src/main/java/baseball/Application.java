@@ -65,8 +65,13 @@ public class Application {
     public static boolean isCorrectSize(List<Integer> playerNumber){
         return playerNumber.size() == DIGITS;
     }
+    // 범위 안의 수인지 확인
+    public static boolean isInRange(List<Integer> playerNumber){
+        return playerNumber.stream()
+                .allMatch(v->
+                        RANDOM_MIN<=v && v<= RANDOM_MAX);
+    }
 
-    // 2-2. 유효성 체크 : 1-9 사이의 /서로 다른 / 세 자리 수인지
 
 
 
