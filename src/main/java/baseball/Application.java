@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.w3c.dom.ls.LSOutput;
 
@@ -25,9 +26,9 @@ public class Application {
             }
         }
 
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("숫자를 입력해주세요 : ");
-        String userInputNumber = bf.readLine();
+        String userInputNumber = Console.readLine();
         verifyUserNumber(userInputNumber);
 
         List<String> userNumberList = List.of(userInputNumber.split(""));
@@ -35,7 +36,7 @@ public class Application {
         int continueNum = CntBallAndStrike(computer, userNumberList);
         while (continueNum == 1) {
             System.out.print("숫자를 입력해주세요 : ");
-            userInputNumber = bf.readLine();
+            userInputNumber = Console.readLine();
             verifyUserNumber(userInputNumber);
             userNumberList = List.of(userInputNumber.split(""));
 
@@ -43,7 +44,7 @@ public class Application {
         }
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String options = bf.readLine();
+        String options = Console.readLine();
         gameRestartOrOver(options);
     }
 
@@ -52,7 +53,6 @@ public class Application {
 //        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 //        String options = bf.readLine();
         if (options.equals("1")) {
-            System.out.println("게임 시작");
             startGame();
         }
         if (options.equals("2")) {
