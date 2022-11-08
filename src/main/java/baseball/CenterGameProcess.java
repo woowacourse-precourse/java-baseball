@@ -12,6 +12,7 @@ public class CenterGameProcess {
         List<Integer> myNumberList = output.InputNumberList(myNumber);
         int countStrike = count.Strike(myNumberList, computer);
         int countBall = count.Ball(myNumberList, computer);
-        
+        output.showMessage(output.scoreBoard(countStrike, countBall));
+
     }
 }
