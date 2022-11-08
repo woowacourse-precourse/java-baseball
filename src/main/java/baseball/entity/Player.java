@@ -19,6 +19,9 @@ public class Player {
             playerNumbers.add(input.charAt(i)-'0');
         }
         boolean isValid = checkNumberValidation(playerNumbers);
+        if(!isValid) {
+            throw new IllegalArgumentException("올바른 숫자를 입력해 주세요.");
+        }
     }
 
     private boolean checkNumberValidation(List<Integer> playerNumbers) {
