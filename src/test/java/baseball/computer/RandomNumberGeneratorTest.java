@@ -1,6 +1,7 @@
 package baseball.computer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import baseball.computer.generator.RandomNumberGenerator;
 import java.util.HashSet;
@@ -39,21 +40,24 @@ public class RandomNumberGeneratorTest {
 
     @Test
     void 중복_없는_모든_케이스_확인() {
+        // given
         int numberCase = 0;
         List<Integer> numbers;
         HashSet<List<Integer>> numbersHash = new HashSet<>();
 
+        // when then
         for (; numberCase < RandomNumberGenerator.MAX_NUMBER_OF_CASE; numberCase++) {
             numbers = RandomNumberGenerator.getRandomNumber();
             assertThat(numbersHash.contains(numbers)).isEqualTo(false);
             numbersHash.add(numbers);
         }
-        checkOverCase(numbersHash);
+        checkOverCase();
     }
 
-    private static void checkOverCase(HashSet<List<Integer>> numberHash) {
-        List<Integer> overCase = RandomNumberGenerator.getRandomNumber();
-        assertThat(numberHash.contains(overCase)).isEqualTo(true);
+    private static void checkOverCase() {
+        // when, then
+        assertThatThrownBy(RandomNumberGenerator::getRandomNumber)
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     private static boolean isDigitAOtherNumber() {
