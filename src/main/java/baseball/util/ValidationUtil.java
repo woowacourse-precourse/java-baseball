@@ -29,6 +29,13 @@ public class ValidationUtil {
         return true;
     }
 
+    public static boolean validateInputRestart(String input){
+        if (!input.equals("1") || !input.equals("2")){
+            return false;
+        }
+        return true;
+    }
+
 
 }
 
