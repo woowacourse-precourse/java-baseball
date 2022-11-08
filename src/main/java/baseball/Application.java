@@ -49,6 +49,28 @@ public class Application {
     public static String tryGuess(List<Integer> answerNumber) {
         String result = "wrong";
 
+        List<Integer> userGuess = userInput();
+        if (userGuess.isEmpty()) {
+            return "error";
+        }
+
+        List<Integer> ballCount = checkBallCount(answerNumber, userGuess);
+
+        int ball = ballCount.get(0), strike = ballCount.get(1);
+
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            result = "right";
+        } else if (strike == 0) {
+            System.out.println(ball + "볼");
+        } else if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+        } else {
+            System.out.println(ball + "볼 " + strike + "스트라이크");
+        }
+
         return result;
     }
 
