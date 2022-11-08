@@ -15,13 +15,16 @@ public class GameController {
     public void startGame() {
 
         systemMessage.showStartMessage();
+        gameService.setGame(GAME_NUMBER_DIGIT, MINIMUM_NUMBER, MAXIMUM_NUMBER);
 
-        do {
-            gameService.setGame(GAME_NUMBER_DIGIT, MINIMUM_NUMBER, MAXIMUM_NUMBER);
+        while (true) {
             gameService.getUserInputs();
             gameService.countStrikeAndBall();
 
-        } while (!gameService.makeResult());
+            if (gameService.makeResult()) {
+                break;
+            }
+        }
 
         if (gameService.restartOrExit()) {
             startGame();

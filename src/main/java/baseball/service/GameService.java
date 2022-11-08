@@ -22,7 +22,6 @@ public class GameService {
 
     public void setGame(int digit, int minNumber, int maxNumber) {
         master = new Master(NumberGenerator.createRandomNumbers(digit, minNumber, maxNumber));
-        master.initCount();
     }
 
     public void getUserInputs() {
@@ -46,7 +45,7 @@ public class GameService {
             }
         }
 
-        systemMessage.showBallCounts(master.getStrikeCount(), master.getBallCount());
+        systemMessage.showBallCounts(master.getBallCount(), master.getStrikeCount());
     }
 
     public Boolean makeResult() {
@@ -57,12 +56,13 @@ public class GameService {
             return true;
         }
 
+        master.initCount();
         return false;
     }
 
     public Boolean restartOrExit() {
-        String userInput = Console.readLine();
         requestMessage.requestRestartOrExit();
+        String userInput = Console.readLine();
 
         if (userInput.equals("1")) {
             return true;
