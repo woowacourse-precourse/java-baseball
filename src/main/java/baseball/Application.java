@@ -54,6 +54,9 @@ public class Application {
         }
 
         makeResultSentence(strikeCount, ballCount);
+        if(strikeCount != 3) {
+            playerDoing();
+        }
     }
 
     private static void makeResultSentence(int strikeCount, int ballCount) {
