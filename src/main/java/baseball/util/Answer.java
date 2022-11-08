@@ -14,7 +14,7 @@ public class Answer {
     public static List<Integer> create() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < Constant.LENGTH_OF_NUMBER) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(Constant.ANSWER_MIN_DIGIT, Constant.ANSWER_MAX_DIGIT);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }

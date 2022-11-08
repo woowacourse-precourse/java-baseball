@@ -1,16 +1,14 @@
 package baseball;
 
+import baseball.controller.BaseBallGameController;
+import baseball.service.BallCountService;
 import baseball.util.Constant;
 import baseball.view.BaseBallGame;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println(Constant.START_MESSAGE);
-        BaseBallGame baseBallGame = new BaseBallGame();
-        do {
-            // TODO: 게임 시작
-            baseBallGame.start();
-        } while (baseBallGame.isRestart());
+        BaseBallGame baseBallGame = new BaseBallGame(new BaseBallGameController(new BallCountService()));
+        baseBallGame.start();   // 게임 시작
     }
 }

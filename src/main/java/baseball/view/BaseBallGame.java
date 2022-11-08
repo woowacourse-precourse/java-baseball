@@ -1,8 +1,6 @@
 package baseball.view;
 
 import baseball.controller.BaseBallGameController;
-import baseball.model.BallCount;
-import baseball.service.BallCountService;
 import baseball.util.Answer;
 import baseball.util.Constant;
 
@@ -13,28 +11,33 @@ import java.util.List;
  * @CreateAt : 2022/11/08
  */
 public class BaseBallGame {
+    private final BaseBallGameController baseBallGameController;
+
+    public BaseBallGame(BaseBallGameController baseBallGameController) {
+        this.baseBallGameController = baseBallGameController;
+    }
+
     // TODO: 게임 실행부 작성
     public void start() {
-        List<Integer> answer = Answer.create();
-        List<Integer> userAnswer;
+        System.out.println(Constant.START_MESSAGE);
         do {
-            // TODO: 게임 로직 작성
-            System.out.println(Constant.INPUT_MESSAGE);
-            userAnswer = BaseBallGameController.inputUserAnswer();
-            BallCount ballCount = BallCountService.calc(answer, userAnswer);
-            System.out.println(ballCount.toString());
-            // TODO: 게임 진행 중 콘솔로 출력되는 Comment 출력
-        } while(!isFinished(answer, userAnswer));
+            playGame();   // 게임 시작
+        } while (isRestart());
+    }
+
+    private void playGame() {
+        List<Integer> answer = Answer.create();
+        List<Integer> userAnswer = List.of(0, 0, 0);
+        while(baseBallGameController.isFinish(answer,userAnswer)){
+            System.out.print(Constant.INPUT_MESSAGE);
+            userAnswer = baseBallGameController.inputUserAnswer();
+            System.out.println(baseBallGameController.calcBallCount(answer, userAnswer));
+        }
         System.out.println(Constant.FINISH_MESSAGE);
     }
 
-    // TODO: 게임 종료 여부 판단
-    private boolean isFinished(List<Integer> answer, List<Integer> userAnswer) {
-        // TODO: input data와 answer가 같은지 비교
-        return answer.equals(userAnswer);
-    }
-
     public boolean isRestart() {
-        return BaseBallGameController.isRestart();
+        System.out.println(Constant.RESTART_COMMENT);
+        return baseBallGameController.isRestart();
     }
 }
