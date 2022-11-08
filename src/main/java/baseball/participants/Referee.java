@@ -15,76 +15,50 @@ public class Referee {
     }
 
     public void judge(StrikeZone pitchZone, StrikeZone swingZone) {
-        int strike;
-        int ball;
-
         String pitches = pitchZone.toString();
         String swings = swingZone.toString();
 
-        strike = countStrike(pitches, swings);
-        ball = countBall(pitches, swings);
+        int strike = 0;
+        int ball = 0;
+        List<Integer> usedSwingIndices = new ArrayList<>();
+
+        for (int pitchIndex = 0; pitchIndex < pitches.length(); pitchIndex++) {
+            if (isStrike(pitches.charAt(pitchIndex), swings.charAt(pitchIndex))) {  // Strike 판단
+                usedSwingIndices.add(pitchIndex);
+                strike += 1;
+                continue;
+            }
+
+            String pitch = Character.toString(pitches.charAt(pitchIndex));
+            int swingIndex = judgeBall(pitch, swings, usedSwingIndices);    // Ball 판단
+            if (swingIndex != -1) {
+                usedSwingIndices.add(swingIndex);
+                ball += 1;
+            }
+        }
 
         printJudgement(strike, ball);
         winsGame = (strike == WIN_CONDITION);
     }
 
-    private Integer countStrike(String pitches, String swings) {
-        int strike = 0;
-        for (int idx = 0; idx < pitches.length(); idx++) {
-            if (isStrike(pitches.charAt(idx), swings.charAt(idx))) {
-                strike += 1;
-            }
-        }
-        return strike;
-    }
-
-    private Integer countBall(String pitches, String swings) {
-        List<Integer> swingIndicesCountedAsStrike = new ArrayList<>();
-        for (int idx = 0; idx < pitches.length(); idx++) {
-            if (isStrike(pitches.charAt(idx), swings.charAt(idx))) {
-                swingIndicesCountedAsStrike.add(idx);
-            }
-        }
-
-        int ball = 0;
-        List<Integer> swingIndicesCountedAsBall = new ArrayList<>();
-        for (int pitchIndex = 0; pitchIndex < pitches.length(); pitchIndex++) {
-            String pitch = Character.toString(pitches.charAt(pitchIndex));
-            if (swingIndicesCountedAsStrike.contains(pitchIndex)) {
-                continue;
-            }
-            int swingIndex = 0;
-            while (true) {
-                swingIndex = swings.indexOf(pitch, swingIndex);
-                if (swingIndex == -1) { // 같은 숫자가 없다면
-                    break;
-                }
-                if (swingIndicesCountedAsStrike.contains(swingIndex)) {
-                    swingIndex += 1;
-                    continue;
-                }
-                if (swingIndicesCountedAsBall.contains(swingIndex)) {
-                    swingIndex += 1;
-                    continue;
-                }
-                if (isStrike(pitchIndex, swingIndex)) {
-                    swingIndicesCountedAsBall.add(swingIndex);
-                    break;
-                }
-                ball += 1;
-                swingIndicesCountedAsBall.add(swingIndex);
+    private Integer judgeBall(String pitch, String swings, List<Integer> usedSwingIndices) {
+        int swingIndex = 0;
+        while (true) {
+            swingIndex = swings.indexOf(pitch, swingIndex);
+            if (swingIndex == -1) { // 같은 숫자가 없다면
                 break;
             }
+            if (usedSwingIndices.contains(swingIndex)) {
+                swingIndex += 1;
+                continue;
+            }
+            return swingIndex;
         }
-        return ball;
+        return -1;
     }
 
     private boolean isStrike(char pitch, char swing) {
         return pitch == swing;
-    }
-
-    private boolean isStrike(int pitchIndex, int swingIndex) {
-        return pitchIndex == swingIndex;
     }
 
     private void printJudgement(int strike, int ball) {
