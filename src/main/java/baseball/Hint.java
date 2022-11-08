@@ -2,12 +2,9 @@ package baseball;
 
 import java.util.List;
 
-class Hint {
-    private static final String NOTHING = "낫싱";
-    private static final String STRIKE = "%s스트라이크";
-    private static final String BALL = "%s볼";
-    private static final String STRIKE_AND_BALL = "%s볼 %s스트라이크";
+import static baseball.HintMessage.*;
 
+class Hint {
     private List<Integer> answerList;
     private int strikeCnt = 0;
     private int ballCnt = 0;
@@ -19,15 +16,15 @@ class Hint {
     public String retrieve(List<Integer> guess) {
         countStrikeAndBall(guess);
         if (strikeCnt == 0 && ballCnt == 0) {
-            return NOTHING;
+            return NOTHING.message();
         }
         if (strikeCnt > 0 && ballCnt == 0) {
-            return String.format(STRIKE, strikeCnt);
+            return String.format(STRIKE.message(), strikeCnt);
         }
         if (strikeCnt == 0 && ballCnt > 0) {
-            return String.format(BALL, ballCnt);
+            return String.format(BALL.message(), ballCnt);
         }
-        return String.format(STRIKE_AND_BALL, ballCnt, strikeCnt);
+        return String.format(STRIKE_AND_BALL.message(), ballCnt, strikeCnt);
     }
 
     private void countStrikeAndBall(List<Integer> guess) {

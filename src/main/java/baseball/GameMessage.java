@@ -6,7 +6,7 @@ enum GameMessage {
     REPLAY_OR_END("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
     TYPE_USER_GUESS("숫자를 입력해주세요 : ");
 
-    private String message;
+    private final String message;
 
     GameMessage(String message){
         this.message = message;
