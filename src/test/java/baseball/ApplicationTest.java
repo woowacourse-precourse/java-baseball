@@ -154,6 +154,17 @@ class ApplicationTest extends NsTest {
 
         assertThat(output().contains("3스트라이크"));
     }
+
+    @Test
+    void 스트라이크_볼_3개초과_테스트() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method isTrialCorrect = Application.class.getDeclaredMethod("isTrialCorrect", int.class, int.class);
+        isTrialCorrect.setAccessible(true);
+
+        InvocationTargetException exception = assertThrows(InvocationTargetException.class,
+                ()-> isTrialCorrect.invoke(application, 2, 2));
+
+        assertThat(exception.getCause().getMessage()).isEqualTo("잘못된 스트라이크/볼 카운트가 입력되었습니다.");
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
