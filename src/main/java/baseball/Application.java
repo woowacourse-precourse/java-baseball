@@ -38,7 +38,7 @@ public class Application {
     }
 
     public static List<Integer> getUserInputNumber() throws IllegalArgumentException{
-        System.out.print("숫자를 입력해주세요 :");
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = readLine();
         List<Integer> userInputList = new ArrayList<>();
         if (userInput.length() != 3) {
