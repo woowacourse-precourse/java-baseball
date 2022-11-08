@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -57,7 +58,7 @@ public class BaseBallGame {
             return false;
         }
 
-        if (isNumeric(inputValue)) {
+        if (isNumeric(inputValue) && !isDuplicate(inputValue)) {
             return true;
         }
 
@@ -84,6 +85,12 @@ public class BaseBallGame {
         }
 
         return true;
+    }
+
+    private boolean isDuplicate(String inputValue) {
+        long count = Arrays.stream(inputValue.split("")).distinct().count();
+
+        return inputValue.length() != count;
     }
 
     public void checkResult() {
