@@ -24,16 +24,14 @@ public class ComputerTest {
 
     @Test
     void 정답_숫자_유효성_검사() {
-        computer.generateNewRandomAnswer();
         List<Integer> numbers = computer.getAnswerNumber();
         assertThat(computer.isValidNumber(numbers)).isTrue();
     }
 
     @Test
     void 정답_숫자와_비교_결과_검사() {
-        computer.generateNewRandomAnswer();
         List<Integer> numbers = computer.getAnswerNumber();
-        assertThat(computer.compareWithAnswer(numbers)).isEqualTo(Arrays.asList(3, 0));
+        assertThat(computer.compareWithAnswer(numbers)).isEqualTo(Arrays.asList(0, 3));
     }
 
 }

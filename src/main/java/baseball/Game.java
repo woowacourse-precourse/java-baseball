@@ -34,7 +34,6 @@ public class Game {
         System.out.println(GAME_START_MESSAGE);
         user = new User();
         computer = new Computer();
-        computer.generateNewRandomAnswer();
     }
 
     public String getResultCvtToStr(List<Integer> result) {
