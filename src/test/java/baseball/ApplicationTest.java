@@ -72,7 +72,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 사용자_null_값_검증() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException(null))
+                assertThatThrownBy(() -> runException((String)null))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
