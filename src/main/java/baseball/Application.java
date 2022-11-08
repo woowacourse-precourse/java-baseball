@@ -19,11 +19,11 @@ public class Application {
             String answer = generator.getNumber();
 
             // 사용자가 정답을 입력할 때 까지 다음을 반복함
-            boolean isCollectNumber = false;
-            while (!isCollectNumber) {
+            boolean isCorrectNumber = false;
+            while (!isCorrectNumber) {
                 String expected = IOProcessor.getUserInput("숫자를 입력해주세요 :", " ");
                 Validator.validate(expected);
-                isCollectNumber = referee.decision(expected, answer);
+                isCorrectNumber = referee.decision(expected, answer);
                 System.out.println(referee.getDecisionResultString());
             }
 
