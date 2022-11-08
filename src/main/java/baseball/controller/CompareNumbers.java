@@ -1,22 +1,15 @@
 package baseball.controller;
 
-import baseball.model.User;
 import baseball.view.OutputView;
-
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CompareNumbers {
 
-    User user = new User();
-
     public int compareNumbers(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
-        for (int i = 0; i < 3; i++) {
-            countStrike(userNumberList.get(i), computerNumberList.get(i));
-            countBall(userNumberList.get(i), computerNumberList.get(i), computerNumberList);
-        }
 
-        int strike = user.getStrike();
-        int ball = user.getBall();
+        int strike = countStrike(userNumberList, computerNumberList);
+        int ball = countBall(userNumberList, computerNumberList);
 
         if (strike != 3) {
             OutputView.printHint(ball, strike);
@@ -25,17 +18,23 @@ public class CompareNumbers {
         return strike;
     }
 
-    public void countStrike(int userNumber, int computerNumber) {
-        if (userNumber == computerNumber) {
-            user.addStrike();
-        }
-    }
-
-    public void countBall(int userNumber, int computerNumber, ArrayList<Integer> computerNumberList) {
-        if (computerNumberList.contains(userNumber)) {
-            if (userNumber != computerNumber) {
-                user.addBall();
+    public int countStrike(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (userNumberList.get(i) == computerNumberList.get(i)) {
+                strikeCount++;
             }
         }
+        return strikeCount;
+    }
+
+    public int countBall(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
+        int ballCount = 0;
+        for (int i = 0; i < userNumberList.size(); i++) {
+            if (!Objects.equals(computerNumberList.get(i), userNumberList.get(i)) && computerNumberList.contains(userNumberList.get(i))) {
+                ballCount++;
+            }
+        }
+        return ballCount;
     }
 }
