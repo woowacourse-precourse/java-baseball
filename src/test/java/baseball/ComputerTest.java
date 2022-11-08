@@ -70,4 +70,15 @@ public class ComputerTest {
         computer.giveHint();
         assertThat(computer.result).isEqualTo("1볼 1스트라이크");
     }
+
+    @Test
+    void is3Strike_스트라이크가_3개_인지_판별(){
+        Computer computer = new Computer();
+        computer.Answer = List.of(1,2,3);
+        computer.resetHintMap();
+        List<Integer> list = List.of(1,2,3);
+        computer.makeHintMap(list);
+        boolean result = computer.is3Strike();
+        assertThat(result).isEqualTo(true);
+    }
 }

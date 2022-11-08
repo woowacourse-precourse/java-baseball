@@ -60,5 +60,12 @@ public class Computer {
         System.out.println(result);
     }
 
+    public static boolean is3Strike(){
+        if(HintMap.get("스트라이크") == 3){
+            return true;
+        }
+        return false;
+    }
+
 }
 
