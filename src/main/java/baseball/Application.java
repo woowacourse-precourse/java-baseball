@@ -38,7 +38,7 @@ class Game {
         return randomNum;
     }
 
-    // 1. 참여자 숫자 입력 메서드
+    // 2. 참여자 숫자 입력 메서드
     public String inputNum(){
         return Console.readLine();
     }
@@ -49,7 +49,7 @@ class ErrorChecking{
     public static boolean errorChecking(String inputNum){
         return checkingInputNum(inputNum) && checkingContaingZero(inputNum) && checkingDigit(inputNum);
     }
-    // 2. 참여자 입력 숫자 점검
+    // 1. 참여자 입력 숫자 점검
     public static boolean checkingInputNum(String inputNum) {
         try {
             Integer.parseInt(inputNum);
@@ -63,7 +63,7 @@ class ErrorChecking{
         return true;
     }
 
-    // 3. 참여자가 입력 숫자가 세 자리 숫자인지 확인하는 메서드
+    // 2. 참여자가 입력 숫자가 세 자리 숫자인지 확인하는 메서드
     public static boolean checkingDigit(String inputNum){
         if(inputNum.length() !=3){
             try {
@@ -75,6 +75,7 @@ class ErrorChecking{
         return true;
     }
 
+    // 3. 참여자가 입력한 숫자가 0을 포함하는지 확인하는 메서드
     public static boolean checkingContaingZero(String inputNum){
         if(inputNum.contains("0")){
             try {
