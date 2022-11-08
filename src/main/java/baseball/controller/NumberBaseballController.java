@@ -28,6 +28,10 @@ public class NumberBaseballController {
 
     public void inputUserAnswer() {
         List<Integer> resultList = numberBaseballService.inputUserAnswer(numberBaseballView.inputUserAnswer());
+        printGameResult(resultList);
+    }
+
+    private void printGameResult(List<Integer> resultList) {
         GameResult gameResult = new GameResult(resultList);
         GuessResultStatus resultType = numberBaseballView.printResult(gameResult);
         determineNextMove(resultType);
