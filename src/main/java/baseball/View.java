@@ -13,6 +13,22 @@ public class View {
         this.scanner = scanner;
     }
 
+    public int restOrExit(){
+        String input = scanner.nextLine();
+
+        if(resetOrExitException(input)){
+            return Integer.parseInt(input);
+        }
+        else {
+            throw new IllegalArgumentException("입력값 오류로 인하여 프로그램을 종료합니다");
+        }
+    }
+
+    public boolean resetOrExitException(String input){
+        if(input.equals("1")||input.equals("2"))return true;
+        else return false;
+    }
+
 
     public String userRequestNumber(){
 
