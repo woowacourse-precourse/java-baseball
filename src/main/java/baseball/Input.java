@@ -14,8 +14,6 @@ public class Input {
     // 입력 기능
     public static Map<Integer, Integer> inputUserNumber(String userLine) {
         Map<Integer, Integer> userRepository = new HashMap<>();
-
-
         validationCheck(userLine);
 
         for ( int keyIndex = 0; keyIndex < MAX_INDEX; keyIndex++ ) {

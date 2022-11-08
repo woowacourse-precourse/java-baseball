@@ -22,9 +22,8 @@ public class Hint {
 
 
     // 힌트 기능 동작
-    public static void loopHint(Map<Integer, Integer> userNumber, Map<Integer, Integer> computerNumber) {
+    public static Hint loopHint(Map<Integer, Integer> userNumber, Map<Integer, Integer> computerNumber) {
         for (int key = 0; key < MAX_INDEX; key++) {
-
 
             int userValue = userNumber.get(key);
             int computerValue = computerNumber.get(key);
@@ -33,14 +32,10 @@ public class Hint {
             countBall(computerNumber, userValue);
         }
 
+        return new Hint();
     }
 
-    private static int countBall(Map<Integer, Integer> computerNumber, int userValue) {
-        if (computerNumber.containsValue(userValue)) {
-            ball++;
-        }
-        return ball;
-    }
+
 
     public static int countStrike(Integer userValue, Integer computerValue) {
 
@@ -48,5 +43,12 @@ public class Hint {
             strike++;
         }
         return strike;
+    }
+
+    public static int countBall(Map<Integer, Integer> computerNumber, int userValue) {
+        if (computerNumber.containsValue(userValue)) {
+            ball++;
+        }
+        return ball;
     }
 }

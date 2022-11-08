@@ -4,8 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 
 // 역할 관리자 : 의존성 연결을 책임지기, DIP
-public class AppConfig{
-
+public class AppConfig {
 
     public Map<Integer, Integer> createComputerNumber() {
 
@@ -21,15 +20,12 @@ public class AppConfig{
     }
 
 
-    public Print printResult() {
-        return new Print();
+    public String printResult() {
+        return new Print().printResult();
     }
 
-    public static Game game() {
+    public Game game() {
         return new Game();
     }
-
-    public Application end() {
-        return new Application();
-    }
 }
+

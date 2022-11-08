@@ -11,7 +11,7 @@ public class Print{
         int countStrike = getStrike();
         int countBall = getBall();
 
-        if ( countStrike > 0 && countBall > 0){
+        if ( countStrike > 0 && countBall > 0 && countBall < 3)  {
             result = String.format("%d볼 %d스트라이크", countBall, countStrike);
         }
         if (countStrike > 0) {

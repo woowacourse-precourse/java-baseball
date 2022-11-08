@@ -8,7 +8,7 @@ public class Constant {
     public static final int MAX_INDEX = 3;
 
 
-    public static final String STRIKE = "3스트라이크";
+    public static final String STRIKE = String.format("%d스트라이크", 3);
 
     public static final String VICTORY = "\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
 

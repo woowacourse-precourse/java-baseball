@@ -6,6 +6,7 @@ import static baseball.Constant.GAME_OVER;
 import static baseball.Constant.GAME_START;
 import static baseball.Constant.STRIKE;
 import static baseball.Constant.VICTORY;
+import static baseball.Input.inputUserNumber;
 import static baseball.Player.createComputerNumber;
 import static java.lang.Integer.parseInt;
 
@@ -14,68 +15,49 @@ import java.util.Map;
 
 public class Game {
 
-    public static Map<Integer, Integer>  computer = createComputerNumber();
+    private static Map<Integer, Integer> computerBoot = createComputerNumber();
 
 
     // 게임 반복 기능
-    public static void playGame() {
-        createComputerNumber();
-
-        while ( !recursionGame() ) {
-            recursionGame();
-
-            String result = Print.printResult().toString();
-
-            System.out.println(result);
-
-            if (recursionGame()) {
-                victory();
-
-                System.out.println(GAME_OVER);
-            }
-            break;
-        }
-
-    }
-
-
-    public static boolean recursionGame() {
+    public static boolean playGame() {
 
         String readLine = Console.readLine();
-
-        if (parseInt(readLine) == 1) {
-            createComputerNumber();
-            Game.playGame();
-        }
-        if (parseInt(readLine) == 2) {
-            System.out.println(GAME_END);
-            return recursionGame() == true;
-        }
-
-        Map<Integer, Integer> user = Input.inputUserNumber(readLine);
-        Hint.loopHint( user,  computer);
+        Map<Integer, Integer> user = inputUserNumber(readLine);
+        Hint.loopHint(user, computerBoot);
 
         String result = Print.printResult();
         System.out.println(result);
-        boolean recursion = result.equals(STRIKE);
+        boolean recursion = result == STRIKE;
+
+        while ( !recursion ) {
+
+            readLine = Console.readLine();
+            user = inputUserNumber(readLine);
+            Hint.loopHint(user, computerBoot);
+            result = Print.printResult();
+            System.out.println(result);
+            recursion = result.equals(STRIKE);
+        }
+        victory();
+        System.out.println(GAME_OVER);
+
+        readLine = Console.readLine();
+        chooseReboot(readLine);
 
         return recursion;
     }
 
-
-    private void rebootGame() {
-
-        if (Integer.valueOf(Console.readLine()).equals(1)) {
+    private static String chooseReboot (String readLine) {
+        if (parseInt(readLine) == 1) {
             System.out.println(GAME_START);
-            playGame();
+            Game.playGame();
         }
-        if (Integer.valueOf(Console.readLine()).equals(2)) {
-            return;
+        while (parseInt(readLine) == 2) {
+            System.out.println(GAME_END);
+            break;
         }
-
-        return;
+        return GAME_END;
     }
-
 
     // 게임 종료 기능 - 승리
     private static String victory() {
