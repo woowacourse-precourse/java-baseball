@@ -27,7 +27,6 @@ public class Game {
     private Computer computer = new Computer();;
     private User user = new User();
 
-
     public Game() {
     }
     public void play() {
@@ -39,7 +38,7 @@ public class Game {
             initializeUserNumber();
             initializeBallCount();
 
-            seperateNumberToDigits();
+            separateNumberToDigits();
             calculateBallCount();
             printBallCount();
 
@@ -123,7 +122,7 @@ public class Game {
         System.out.println(result);
     }
 
-    private void seperateNumberToDigits() {
+    private void separateNumberToDigits() {
         randomDigits = getSplitList(randomNumber);
         userDigits = getSplitList(userNumber);
     }

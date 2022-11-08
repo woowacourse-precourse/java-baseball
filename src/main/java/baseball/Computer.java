@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-
     private static final int NUMBER_LENGTH = 3;
     private static final int DIGIT_MIN = 1;
     private static final int DIGIT_MAX = 9;
@@ -15,7 +14,7 @@ public class Computer {
     }
 
     public void setRandomNumber() {
-        List<String> digitsList = getThreeDifferentRandomDigits();
+        List<String> digitsList = getRandomDigits();
         randomNumber = joinDigitsTogether(digitsList);
     }
 
@@ -23,7 +22,7 @@ public class Computer {
         return randomNumber;
     }
 
-    private static List<String> getThreeDifferentRandomDigits() {
+    private static List<String> getRandomDigits() {
         List<String> digitsList = new ArrayList<>();
         while(digitsList.size() < NUMBER_LENGTH) {
             String digit = getRandomDigit();
