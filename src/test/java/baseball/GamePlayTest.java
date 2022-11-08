@@ -141,11 +141,24 @@ public class GamePlayTest {
         assertThatThrownBy(()-> numberException.validDuplicateNumber(userInput))
         //then
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
     @Test
-    void 사용자의_숫자가_숫자로만_구성(){
-
+    void 사용자의_숫자가_범위내에서_구성(){
+        // given
+        String userInput = "015";
+        // when
+        assertThatThrownBy(()-> numberException.validContainLetter(userInput))
+                //then
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 재시작_선택(){
+        // given
+        String optionInput = "3";
+        // when
+        assertThatThrownBy(() -> numberException.validOption(optionInput))
+        //then
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
