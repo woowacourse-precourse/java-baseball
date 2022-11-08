@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Application {
 
     static void baseballProgram() {
         List<Integer> computerNumber = generateComputerNumber();
-        ballCount result = new ballCount(0, 0);
+        ballCount result;
         do {
             String userNumber = inputUserNumber();
             result = calculateResult(computerNumber, userNumber);
@@ -84,7 +85,8 @@ public class Application {
 
     static class ballCount {
         int strike, ball;
-        ballCount (int strike, int ball) {
+
+        ballCount(int strike, int ball) {
             this.strike = strike;
             this.ball = ball;
         }
