@@ -7,17 +7,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class User {
-    private static Scanner scanner = new Scanner(System.in);
 
     public Baseball getInput() {
         String input = Console.readLine();
-        int inputNumber = strToInteger(input);
+        int inputNumber = strToInt(input);
         List<Integer> userNumber = mappingToList(inputNumber);
         return new  Baseball(userNumber);
     }
 
-    private static int strToInteger(String input) {
-        Integer num = Integer.valueOf(input);
+    private static int strToInt(String input) {
+        int num = Integer.valueOf(input);
         return num;
     }
     private static List<Integer> mappingToList(int inputNumber) {
