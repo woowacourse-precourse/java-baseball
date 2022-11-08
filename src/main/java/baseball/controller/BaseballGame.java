@@ -19,7 +19,6 @@ public class BaseballGame {
         Output.baseballStartMessage();
 
         do {
-            System.out.println(correctNumber);
             String input = inputView.inputNumber();
             resetScore();
             compareNumber(input);
