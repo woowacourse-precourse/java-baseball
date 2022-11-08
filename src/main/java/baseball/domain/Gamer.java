@@ -18,7 +18,7 @@ public class Gamer {
 
     public String inputReset() {
         String inputReset = Console.readLine();
-        isNumber(inputReset);
+        validatesResetNumber(inputReset);
         return inputReset;
     }
 }
