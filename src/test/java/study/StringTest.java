@@ -1,3 +1,9 @@
+/*
+어떻게 하면 test를 할 수 있는지에 대한 공부 자료다.
+input으로 입력할 수 있는 많은 경우의 수를 넣고 결과를 예측해보자.
+만약 결과가 일치하지 않으면 무언가 잘못 돌아가고 있다는 것이다.
+attertThat이 처음이니 면밀히 보고 익히도록 노력하자.
+ */
 package study;
 
 import org.junit.jupiter.api.Test;
