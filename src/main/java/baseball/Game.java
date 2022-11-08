@@ -42,7 +42,7 @@ public class Game {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInput = Console.readLine();
         if (!checkInputPlayGame(userInput)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력이 잘못되어 게임을 종료합니다.");
         }
         return userInput.equals("1");
     }
@@ -93,7 +93,7 @@ public class Game {
 
     private static List<Integer> createSecretNumber() {
         List<Integer> secretNumber = new ArrayList<>();
-        while (secretNumber.size() < 3) {
+        while (secretNumber.size() < NUMBER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!secretNumber.contains(randomNumber)) {
                 secretNumber.add(randomNumber);
@@ -104,13 +104,13 @@ public class Game {
 
     private static void checkUserInput(String userInputNumber){
         if (!checkUserInputLength(userInputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력된 숫자의 길이가 잘못되어 게임을 종료합니다.");
         } else if (checkUserInputContainZero(userInputNumber)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력된 숫자에 0이 포함되어 있어 게임을 종료합니다.");
         } else if (!checkUserInputNumber(userInputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자가 아닌 문자가 입력되어 게임을 종료합니다.");
         } else if (!checkUserInputDuplicateNumber(userInputNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자가 입력되어 게임을 종료합니다.");
         }
     }
 
@@ -125,7 +125,7 @@ public class Game {
     private static boolean checkUserInputNumber(String userInputNumber) {
         try {
             int numberValue = Integer.parseInt(userInputNumber);
-            if (numberValue / 100 == 0) {
+            if (numberValue / (int) Math.pow(10, NUMBER_SIZE-1) == 0) {
                 return false;
             }
         } catch (NumberFormatException e) {
@@ -145,6 +145,4 @@ public class Game {
     private static boolean checkInputPlayGame(String userInput) {
         return userInput.equals("1") || userInput.equals("2");
     }
-
-
 }

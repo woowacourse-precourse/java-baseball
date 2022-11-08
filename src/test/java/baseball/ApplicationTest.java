@@ -28,6 +28,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
 //    @Test
 //    void 게임_테스트() {
 //        assertRandomNumberInRangeTest(
@@ -38,15 +46,7 @@ class ApplicationTest extends NsTest {
 //                1, 3, 2, 4, 1, 9
 //        );
 //    }
-
-    @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
+//
 //    @Test
 //    void 예외_테스트2() {
 //        assertSimpleTest(() ->
@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
 //    @Test
 //    void 예외_테스트3() {
 //        assertSimpleTest(() ->
-//                assertThatThrownBy(() -> runException("-12"))
+//                assertThatThrownBy(() -> runException("+12"))
 //                        .isInstanceOf(IllegalArgumentException.class)
 //        );
 //    }
