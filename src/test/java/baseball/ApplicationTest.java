@@ -52,9 +52,9 @@ class ApplicationTest extends NsTest {
 
         }
 
-        @DisplayName("세자리수가 아닌 경우 정상적으로 예외처리 되는지 테스트")
         @ParameterizedTest
         @ValueSource(strings = {"9325", "12", "31", "1", "34718", "56"})
+        @DisplayName("세자리수가 아닌 경우 정상적으로 예외처리 되는지 테스트")
         void isValidNumber_NotThreeDigitNumber_ExceptionThrown(String input) {
             assertThatThrownBy(() -> Application.isValidNumber(input)).isInstanceOf(IllegalArgumentException.class);
 
