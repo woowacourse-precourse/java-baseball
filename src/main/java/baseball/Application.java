@@ -31,8 +31,29 @@ public class Application {
 
             findPoint(randomValue, input, ballStrikeNum);
 
+            success = printPoint(ballStrikeNum);
         }
     }
+    private static boolean printPoint(HashMap<String, Integer> ballStrikeNum) {
+        if (ballStrikeNum.get("ballNum") == 0 && ballStrikeNum.get("strikeNum") == 0) {
+            System.out.println("낫싱");
+            return true;
+        } else if (ballStrikeNum.get("ballNum") != 0 && ballStrikeNum.get("strikeNum") == 0) {
+            System.out.println(ballStrikeNum.get("ballNum") + "볼");
+            return true;
+        } else if (ballStrikeNum.get("ballNum") == 0 && ballStrikeNum.get("strikeNum") != 0) {
+            System.out.println(ballStrikeNum.get("strikeNum") + "스트라이크");
+            if (ballStrikeNum.get("strikeNum") == 3) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return false;
+            }
+        } else {
+            System.out.println(ballStrikeNum.get("ballNum") + "볼 " + ballStrikeNum.get("strikeNum") + "스트라이크");
+            return true;
+        }
+        return true;
+    }
+
     private static void findPoint(List<Integer> randomValue, String input, HashMap<String, Integer> ballStrikeNum) {
         for (int i = 0; i < 3; i++) {
             char charNum = input.charAt(i);
