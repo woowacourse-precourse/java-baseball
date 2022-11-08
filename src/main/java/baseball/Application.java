@@ -63,11 +63,14 @@ public class Application {
     public static void DuplicationTest(List<Integer> user){
         int cnt = 0;
         int pointer = 0;
-        while(pointer<3){
-            if (user.contains(user.get(pointer))) cnt++;
-            pointer++;
+
+        for(int i=1; i<3; i++){
+            cnt += CompareInteger(user.get(i), user.get(pointer++)) ;
+            if(i==2){
+                cnt += CompareInteger(user.get(i), user.get(0));
+            }
         }
-        if(cnt>1) IllegalArgumentException();
+        if(cnt>0) IllegalArgumentException();
     }
 
     public static boolean Compare(List<Integer> computer, List<Integer> Input) {
@@ -171,6 +174,7 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
+        System.out.println(computer);
         System.out.println("숫자 야구게임을 시작합니다.");
         return computer;
     }
