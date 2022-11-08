@@ -58,8 +58,7 @@ public class BaseBallGame {
         while (!this.success) {
             String userInput = getUserInput();
             if (!isValidInput(userInput)) {
-                String errorMessage = this.inputValidator.getErrorMessage();
-                throw new IllegalArgumentException(errorMessage);
+                raiseError();
             }
             setUserNumbers(userInput);
             printGameResult();
@@ -82,6 +81,11 @@ public class BaseBallGame {
 
     public boolean isValidInput(String userInput) {
         return inputValidator.validateInput(userInput);
+    }
+
+    public void raiseError() {
+        String errorMessage = this.inputValidator.getErrorMessage();
+        throw new IllegalArgumentException(errorMessage);
     }
 
     public void setUserNumbers(String userInput) {
@@ -144,8 +148,7 @@ public class BaseBallGame {
         int stopOrRegame = Integer.parseInt(userChoice);
 
         if (!isValidChoice(userChoice)) {
-            String errorMessage = this.inputValidator.getErrorMessage();
-            throw new IllegalArgumentException(errorMessage);
+            raiseError();
         }
 
         return stopOrRegame;
