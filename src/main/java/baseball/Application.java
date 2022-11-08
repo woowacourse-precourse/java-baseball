@@ -25,11 +25,10 @@ public class Application {
             //결과 출력
             System.out.println(countStrBallList.get(0) + "볼 " + countStrBallList.get(1) + "스트라이크");
 
-            //게임 진행 판단
-            if (countStrBallList.get(1) == 3) {
-                System.out.println("3개의 숫자를 모두 맞히였습니다! 게임 종료");
-                gameStatus = false;
-            }
+            IsRerun checkStatus = new IsRerun();
+            boolean isTrue = checkStatus.isFalse(gameStatus, countStrBallList);
+            gameStatus = isTrue;
+
         }
     }
 }
