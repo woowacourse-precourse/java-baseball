@@ -1,17 +1,15 @@
-package baseball.controller;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.stream.IntStream;
 
+import static baseball.Computer.*;
 import static baseball.Constants.*;
-import static baseball.domain.Computer.*;
-import static baseball.domain.User.*;
+import static baseball.User.*;
 import static baseball.message.ExceptionMessage.*;
 import static baseball.message.OutputMessage.*;
 
 public class BaseballGame {
-
     public static void run(){
         printGameStartMessage(); //
         do {
@@ -19,10 +17,11 @@ public class BaseballGame {
             retryGameMessage();
         } while (retryGame());
     }
+
     private static void playGame() {
         int strikeResult;
         int ballResult;
-        String computerNumberResult = computerRandomNumberResult();
+        String computerNumberResult = randomNumberResult(); //
         do {
             numberInputMessage();
             String userNumberResult = inputUserNumber();
@@ -39,6 +38,7 @@ public class BaseballGame {
         } while (strikeResult != 3);
         printGameSetMessage();
     }
+
     private static boolean retryGame() {
         String reGameInput = Console.readLine();
         if (reGameInput.equals("1")) {
