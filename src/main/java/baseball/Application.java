@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import net.bytebuddy.dynamic.DynamicType;
 
 public class Application {
 
@@ -117,10 +118,12 @@ public class Application {
             if(!Exception_Status) break;
             status = Compare(computer, Input);
         };
+        GameOver();
+    }
+
+    public static void GameOver(){
         status = true;
-        while(status && Exception_Status){
-            status = NewGameStart();
-        };
+        NewGameStart();
     }
 
     public static boolean NewGameStart(){
