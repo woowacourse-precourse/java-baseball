@@ -21,6 +21,17 @@ class GameTest extends NsTest {
         );
     }
 
+    @Test
+    void gameRunning_Test2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "135", "1", "597", "589", "1", "895", "1", "478", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "3스트라이크", "3스트라이크", "게임 종료");
+                },
+                1, 3, 3, 3, 3, 5, 5, 8, 9, 8, 9, 5, 4, 7, 8
+        );
+    }
+
 
     /* 게임 3자리 숫자 Input 부분 Test */
     @Test
