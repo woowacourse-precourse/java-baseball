@@ -2,7 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class BullsAndCows {
@@ -35,7 +37,7 @@ class BullsAndCows {
     public void startGame() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
-        List<Integer> userInputNumber = checkExceptionAndInputToList(userInput);
+        List<Integer> userInputNumber = inputToList(userInput);
 
         bullsAndCowsResult.init();
         assembleCount(userInputNumber);
@@ -64,33 +66,46 @@ class BullsAndCows {
         }
     }
 
-    public List<Integer> checkExceptionAndInputToList(String userInput) throws IllegalArgumentException {
+    public void checkIncorrectInput(String userInput) throws IllegalArgumentException {
         if (userInput.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
 
-        List<Integer> userInputNumber = new ArrayList<>();
+        char[] charArray = userInput.toCharArray();
 
+        if (isOverlap(charArray)) {
+            throw new IllegalArgumentException("서로 다른 숫자가 아닙니다.");
+        }
+
+        for (char c : charArray) {
+            if (!isValid(c)) {
+                throw new IllegalArgumentException("1 ~ 9 사이 숫자가 아닙니다.");
+            }
+        }
+    }
+
+    public boolean isOverlap(char[] charArray) {
+
+        return Arrays.asList(charArray)
+                .stream().distinct().findAny().isEmpty();
+    }
+
+    public List<Integer> inputToList(String userInput) {
+
+        checkIncorrectInput(userInput);
+
+        List<Integer> userInputNumber = new ArrayList<>();
         char[] charArray = userInput.toCharArray();
 
         for (char c : charArray) {
             int number = (int) c - '0';
-
-            if (!isValidNumber(number)) {
-                throw new IllegalArgumentException("1 ~ 9 사이 숫자가 아닙니다.");
-            }
-
-            if (userInputNumber.contains(number)) {
-                throw new IllegalArgumentException("서로 다른 숫자가 아닙니다.");
-            }
-
             userInputNumber.add(number);
         }
 
         return userInputNumber;
     }
 
-    public boolean isValidNumber(int number) {
-        return 1 <= number && number <= 9;
+    public boolean isValid(char userInputUnit) {
+        return '1' <= userInputUnit && userInputUnit <= '9';
     }
 }
