@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.Model.Computer;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -10,9 +11,11 @@ public class Simulation {
     static final String START_MSG = "숫자 야구 게임을 시작합니다.";
     static final String INPUT_REQ = "숫자를 입력해주세요 : ";
     static final String END_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    Computer computer = new Computer();
 
     public void simulate() {
-        List<Integer> randomNumList = createNumber();
+        List<Integer> randomNumList = computer.createNumber();
+
         while (true) {
             List<Integer> inputNumList = inputNumber();
             List<Integer> strikeBallList = checkStrikeBall(randomNumList, inputNumList);
@@ -27,16 +30,7 @@ public class Simulation {
     }
 
 
-    public List<Integer> createNumber() {
-        List<Integer> numberList = new ArrayList<>();
-        while (numberList.size() < 3) {
-            int randomNum = Randoms.pickNumberInRange(1, 9);
-            if (!numberList.contains(randomNum)) {
-                numberList.add(randomNum);
-            }
-        }
-        return numberList;
-    }
+
 
     public List<Integer> inputNumber() {
         List<Integer> numberList = new ArrayList<>();
