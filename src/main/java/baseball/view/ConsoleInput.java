@@ -13,7 +13,7 @@ public class ConsoleInput implements Input {
 
     @Override
     public Numbers getNumber() {
-        System.out.println(Constants.INPUT_PALCE_HOLDER);
+        System.out.print(Constants.INPUT_PALCE_HOLDER);
         String input = Console.readLine();
         Validator.validateUserInput(input);
         Numbers Number = toNumbers(input);
