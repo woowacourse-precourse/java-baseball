@@ -20,4 +20,9 @@ public class BaseballGame {
         return camp.nextstep.edu.missionutils.Console.readLine();
     }
 
+    public static boolean correctInputNumber(String ballCount) {
+        System.out.println(ballCount);
+        return ANSWER_THREE_STRIKE.equals(ballCount);
+    }
+
 }
