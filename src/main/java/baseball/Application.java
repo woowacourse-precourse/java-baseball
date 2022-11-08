@@ -6,11 +6,30 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
-public class Application {
-    private static final int BALL = 0;
-    private static final int STRIKE = 1;
+enum Baseball {
+    BALL(0, "볼"), STRIKE(1, "스트라이크");
 
+    private final int index;
+    private final String name;
+
+    private Baseball(int index, String name) {
+        this.index = index;
+        this.name = name;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Application {
     private static final String EXIT = "2";
+    private static Baseball ball = Baseball.BALL;
+    private static Baseball strike = Baseball.STRIKE;
 
     public static void main(String[] args) {
         String option;
@@ -62,14 +81,14 @@ public class Application {
         StringBuilder sb = new StringBuilder();
 
         if ( hasBall(evaluation) ) {
-            sb.append(evaluation.get(BALL)).append("볼");
+            sb.append(evaluation.get(ball.getIndex())).append(ball.getName());
         }
 
         if ( hasStrike(evaluation) ) {
             if ( hasBall(evaluation) ) {
                 sb.append(" ");
             }
-            sb.append(evaluation.get(STRIKE)).append("스트라이크");
+            sb.append(evaluation.get(strike.getIndex())).append(strike.getName());
         }
 
         if ( sb.length() == 0 ) {
@@ -80,11 +99,11 @@ public class Application {
     }
 
     public static boolean hasBall (List<Integer> evaluation) {
-        return evaluation.get(BALL) > 0;
+        return evaluation.get(ball.getIndex()) > 0;
     }
 
     public static boolean hasStrike (List<Integer> evaluation) {
-        return evaluation.get(STRIKE) > 0;
+        return evaluation.get(strike.getIndex()) > 0;
     }
 
     /**
