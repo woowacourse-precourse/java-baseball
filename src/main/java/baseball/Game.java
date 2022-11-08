@@ -50,5 +50,98 @@ public class Game {
         }
     }
 
+    public void play(){
+        while(true){
+            swing();
+            if(state == 1) {
+                initGame();
+                state = 0;
+            }
+            if(state == 2){
+                break;
+            }
+        }
+    }
+
+    public void swing(){
+        while(ballCount.get(1) < 3){
+            buildUser();
+            judge();
+            showBallCount();
+        }
+        endGame();
+    }
+
+    public void showBallCount(){
+        String message = new String();
+        String ball = ballCount.get(0).toString();
+        String strike = ballCount.get(1).toString();
+
+        if(!ball.equals("0")){
+            message += ball + "볼";
+        }
+        if(!strike.equals("0")){
+            if(!message.equals("")) message += " ";
+            message += strike+"스트라이크";
+        }
+        if(ball.equals("0") && strike.equals("0")){
+            message += "낫싱";
+        }
+        System.out.println(message);
+    }
+
+    public void judge(){
+        ballCount = new ArrayList<Integer>(List.of(0,0));
+        for(int index=0; index<3; index++){
+            if(!judgeStrike(index)){
+                judgeBall(index);
+            }
+        }
+    }
+
+    public boolean judgeStrike(int index){
+        boolean strike = computer.get(index) == user.get(index);
+        if(strike){
+            ballCount.set(1, ballCount.get(1)+1);
+        }
+        return strike;
+    }
+
+    public void judgeBall(int index){
+        boolean ball = computer.contains(user.get(index));
+        if(ball){
+            ballCount.set(0, ballCount.get(0) +1);
+        }
+    }
+
+    public void buildUser(){
+        user = new ArrayList<Integer>();
+        System.out.print("숫자를 입력해주세요 : ");
+        readUser();
+    }
+
+    public void readUser(){
+        String userStr = readLine();
+        if(userStr.length() != 3) {
+            throw new IllegalArgumentException("입력값은 세자리로 이뤄져야 합니다.");
+        }
+
+        for(int idx=0; idx<userStr.length(); idx++){
+            int nowInt = userStr.charAt(idx) - '0';
+            if(nowInt < 1 || nowInt > 9){
+                throw  new IllegalArgumentException("입력값은 1에서 9 사이 수로 이뤄져야 합니다.");
+            }
+            if(user.contains(nowInt)){
+                throw new IllegalArgumentException("입력값은 서로 다른 3개의 수로 이뤄져야 합니다.");
+            }
+
+            user.add(nowInt);
+        }
+
+    }
+
+    public void endGame(){
+
+    }
 
 }
