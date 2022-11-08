@@ -20,7 +20,7 @@ public class ExceptionHandler {
         if (ValidationConstant.EXAMPLE_LIST_INPUT_OF_CHECK_REPEAT_GAME.contains(oneIfGameRepeatOrTwo)) {
             return;
         }
-        throw new IllegalArgumentException(ValidationMessage.USER_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
+        throw new IllegalArgumentException(ValidationMessage.USER_INPUT_FOR_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
     }
 
     private static void validateOf3DigitsNumber(String userNumberOfString) {
@@ -28,13 +28,13 @@ public class ExceptionHandler {
         if (isMatch) {
             return;
         }
-        throw new IllegalArgumentException(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+        throw new IllegalArgumentException(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
     }
 
     private static void validateIsNumberOfStringHaveDifferentEach(String numberOfString) {
         List<Integer> numberOfList = convertNumberOfStringToList(numberOfString);
         if (checkHaveListDuplication(numberOfList)) {
-            throw new IllegalArgumentException(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+            throw new IllegalArgumentException(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
         }
         ;
     }

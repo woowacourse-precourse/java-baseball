@@ -19,7 +19,7 @@ public class ExceptionHandlerTest {
             String userNumberOfString = "12";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+                    .hasMessageContaining(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
         }
 
         @Test
@@ -28,7 +28,7 @@ public class ExceptionHandlerTest {
             String userNumberOfString = "1234";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+                    .hasMessageContaining(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
         }
 
         @Test
@@ -37,7 +37,7 @@ public class ExceptionHandlerTest {
             String userNumberOfString = "12a";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+                    .hasMessageContaining(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
         }
 
         @Test
@@ -46,7 +46,7 @@ public class ExceptionHandlerTest {
             String userNumberOfString = "12a";
             assertThatThrownBy(() -> ExceptionHandler.validateUserNumberOfString(userNumberOfString))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+                    .hasMessageContaining(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
         }
     }
 
@@ -60,7 +60,7 @@ public class ExceptionHandlerTest {
             String oneIfGameRepeatOrTwo = "11";
             assertThatThrownBy(() -> ExceptionHandler.validateOneIfGameRepeatOrTwo(oneIfGameRepeatOrTwo))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ValidationMessage.USER_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
+                    .hasMessageContaining(ValidationMessage.USER_INPUT_FOR_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
         }
 
         @Test
@@ -69,7 +69,7 @@ public class ExceptionHandlerTest {
             String oneIfGameRepeatOrTwo = "a";
             assertThatThrownBy(() -> ExceptionHandler.validateOneIfGameRepeatOrTwo(oneIfGameRepeatOrTwo))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(ValidationMessage.USER_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
+                    .hasMessageContaining(ValidationMessage.USER_INPUT_FOR_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
         }
     }
 
