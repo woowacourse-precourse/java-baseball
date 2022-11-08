@@ -106,6 +106,13 @@ public class Application {
             return false;
         }
     }
+    private static int EnterANumber(){
+        int InputNumber;
+        do{
+            InputNumber = Integer.parseInt(readLine());
+        } while(InputNumber<100||InputNumber>999);
+        return InputNumber;
+    }
     private static void GameLoop(){
         int CorrectAnswer = AllocationOfNumber();
         int UserDefinedNumber = 0;
@@ -113,21 +120,22 @@ public class Application {
         do {
             System.out.print("숫자를 입력해주세요 : ");
 
-            UserDefinedNumber = Integer.parseInt(readLine());
+            UserDefinedNumber = EnterANumber();
         } while(!GameResult(CorrectAnswer,UserDefinedNumber));
     }
 
-    private static boolean GameRestart(){
+    private static boolean GameRestart() {
         int UserIntention = 0;
 
         System.out.println("3스트라이크");
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        UserIntention = Integer.parseInt(readLine());
 
-        if(UserIntention==1) return true;
-        else if(UserIntention==2) return false;
+        while (UserIntention != 1 && UserIntention != 2) {
+            UserIntention = Integer.parseInt(readLine());
+        }
+        if (UserIntention == 1) return true;
         else return false;
     }
 
