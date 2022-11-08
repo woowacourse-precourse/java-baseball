@@ -1,9 +1,10 @@
 package baseball;
 
-import static baseball.game.BaseballGame.playBaseballGame;
+import baseball.game.BaseballGame;
 
 public class Application {
     public static void main(String[] args) {
-        playBaseballGame();
+        BaseballGame baseballGame = new BaseballGame();
+        baseballGame.playBaseballGame();
     }
 }
