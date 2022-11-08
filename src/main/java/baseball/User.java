@@ -66,7 +66,9 @@ public class User {
         return Objects.equals(userInput, "1");
     }
 
-    /** 게임 재시작에 대한 사용자 입력을 받아 boolean 값을 리턴하는 메소드 */
+    /**
+     * 게임 재시작에 대한 사용자 입력을 받아 boolean 값을 리턴하는 메소드
+     */
     public boolean getUserReplayInput() {
         String userInput = Console.readLine();
         if (validateUserReplayInput(userInput)) {
