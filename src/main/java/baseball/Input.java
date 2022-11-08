@@ -31,6 +31,24 @@ public class Input {
   }
 
   /**
+   * Scan input from console to restart game.
+   * @return true if input is 1, false if input is 2.
+   * @exception IllegalArgumentException if input is not in 1 or 2.
+   */
+  public static boolean restart() {
+    System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    String input = readLine();
+
+    if (input.equals("1")) {
+      return true;
+    } else if (input.equals("2")) {
+      return false;
+    }
+
+    throw new IllegalArgumentException();
+  }
+
+  /**
    * Verify string is the same format as the correct answer.
    * @param string the string to be checked.
    * @return true if string is a different number of three digits.
