@@ -8,20 +8,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static int strikeCount;
+    private static int ballCount;
     private static final int threeDigits = 999;
 
     public static void main(String[] args) throws IOException {
+        List playerNumbers = new ArrayList();
 
-        String playerNumbers = Console.readLine();
+        System.out.print("숫자를 입력해주세요 : ");
+        String playerNumber = Console.readLine();
+        for(int i =0; i<3; i++) {
+            char numChar = playerNumber.charAt(i);
+            playerNumbers.add(numChar);
+        }
+
         isValidLength(playerNumbers);
 
         List computerNumbers = RandomNum();
+
+
+
+        System.out.println("playerNumbers::"+playerNumbers);
         System.out.println("computerNumbers::"+computerNumbers);
+
+        isStrike(playerNumbers, computerNumbers);
+
+
+        System.out.println("strikecount::"+strikeCount);
 
 
     }
 
-    //랜덤 세자리 수 생성 함수
     public static List RandomNum(){
         List numList = new ArrayList<>();
         for(int i=0; i<3; i++) {
@@ -35,9 +52,20 @@ public class Application {
         return numList;
     }
 
-    public static void isValidLength(String playerNumber) {
-        if(playerNumber.length() != 3) {
+    public static void isValidLength(List playerNumber) {
+        if(playerNumber.size() != 3) {
             throw new IllegalArgumentException("사용자의 숫자가 세자리보다 크거나 작다.");
+        }
+    }
+
+    public static void isStrike(List playerNums, List computerNums) {
+        for(int i=0; i<3; i++) {
+            int playerNum = Integer.parseInt(String.valueOf(playerNums.get(i)));
+            int computerNum = Integer.parseInt(String.valueOf(computerNums.get(i)));
+
+            if (playerNum == computerNum) {
+                strikeCount++;
+            }
         }
     }
 }
