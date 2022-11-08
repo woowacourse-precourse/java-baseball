@@ -34,7 +34,7 @@ public class Application {
     }
 
     public static int[] compare(String computer, String user) {
-        int[] results = {0, 0};
+        int[] results = new int[2];
         for(int iter = 0; iter < NUM_OF_DIGIT; iter++){
             if(computer.charAt(iter) == user.charAt(iter)){
                 results[STRIKE_IDX]++;
