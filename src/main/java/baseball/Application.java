@@ -32,4 +32,18 @@ public class Application {
         }
         return computer;
     }
+
+    public static void playGame(List<Integer> computerNumberList){
+        boolean threeStrike;
+
+        do{
+            List<Integer> userNumberList = userChoiceNumbers();
+            List<Integer> ballAndStrike = compareComputerAndUser(computerNumberList, userNumberList);
+            printResult(ballAndStrike);
+
+            threeStrike = threeStrikeOrNot(ballAndStrike); // 3스트라이크 인지 아닌지 검사 -> 3스트라이크면 true -> do-while 종료
+
+        }while(!threeStrike);
+    }
+    
 }
