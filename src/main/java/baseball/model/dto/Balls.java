@@ -1,11 +1,9 @@
 package baseball.model.dto;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Balls {
+    private static final int START_INDEX = 0;
     private static final int MAX_BALLS_SIZE = 3;
     private static final int MIN_BALL_NUMBER = 1;
     private static final int MAX_BALL_NUMBER = 9;
@@ -45,6 +43,23 @@ public class Balls {
                 throw new IllegalArgumentException(INVALID_INPUT_RANGE_MESSAGE);
             }
         }
+    }
+
+    public Result generateResult(Balls compareBalls) {
+        Result result = new Result();
+
+        List<Integer> compareValues = compareBalls.getValues();
+
+        for (int i = START_INDEX; i < MAX_BALLS_SIZE; i++) {
+            if (Objects.equals(values.get(i), compareValues.get(i))) {
+                result.increaseStrikeCount();
+                continue;
+            }
+            if (values.contains(compareValues.get(i))) {
+                result.increaseBallCount();
+            }
+        }
+        return result;
     }
 
     public void addBall(int number) {
