@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PlayerTest {
 
@@ -35,6 +36,9 @@ class PlayerTest {
 
         List<Integer> inputList = player.StringToList("123");
         assertThat(inputList).isEqualTo(List.of(1, 2, 3));
+        assertThatThrownBy(() -> player.StringToList("가나다"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("잘못된 입력입니다.");
     }
 
 }
