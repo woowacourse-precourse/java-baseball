@@ -3,7 +3,7 @@ package baseball;
 public class Results {
 
     public static final int COUNT_CRITERIA = 0;
-    public static final int THREE_STRIKE_CRITERIA_COUNT = 0;
+    public static final int THREE_STRIKE_CRITERIA_COUNT = 3;
 
     public static boolean isThreeStrike(int strike) {
         return strike == THREE_STRIKE_CRITERIA_COUNT;
