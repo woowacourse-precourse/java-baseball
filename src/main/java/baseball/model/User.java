@@ -1,6 +1,6 @@
 package baseball.model;
 
-public class UserNumber {
+public class User {
 
     public int strike = 0;
     public int ball = 0;

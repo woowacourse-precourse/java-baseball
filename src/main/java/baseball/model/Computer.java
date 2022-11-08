@@ -4,7 +4,7 @@ import baseball.controller.RandomNumberGenerator;
 
 import java.util.ArrayList;
 
-public class ComputerNumber {
+public class Computer {
     private static RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
     public ArrayList<Integer> makeComputerNumber() {
