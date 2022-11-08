@@ -1,4 +1,6 @@
-package baseball.message;
+package message;
+
+import java.util.List;
 
 public class OutputMessage {
 
@@ -11,6 +13,7 @@ public class OutputMessage {
     private static final String GAME_STRIKE = "스트라이크";
     private static final String GAME_OUT = "아웃";
     private static final String GAME_NOTHING = "낫싱";
+    private StringBuilder sb;
 
     public void startMessage() {
         System.out.println(START_MESSAGE);
@@ -24,5 +27,15 @@ public class OutputMessage {
         System.out.println(GAME_RESTART_MESSAGE);
     }
 
-    public void setWinMessage() { System.out.println(WIN_MESSAGE); }
+    public void setWinMessage() {
+        System.out.println(WIN_MESSAGE);
+    }
+
+    public void userInputBaseBall(List<Integer> userInputList) {
+        sb = new StringBuilder();
+        for (int i : userInputList) {
+            sb.append(i);
+        }
+        System.out.println(sb.toString());
+    }
 }
