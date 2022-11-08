@@ -24,4 +24,10 @@ class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateDuplicateNumberTest() {
+        List<Integer> playerNumbers = Arrays.asList(1, 1, 2);
+        assertThatThrownBy(() -> new Player(playerNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
