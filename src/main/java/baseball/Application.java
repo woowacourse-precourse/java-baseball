@@ -22,10 +22,12 @@ public class Application {
         computerRandomNumber = computerGetRandomNumber();
 //        System.out.println(computerRandomNumber);
 
+        playerTurn();
         gameRestart();
     }
 
     private static void gameRestart() {
+        if (!restartFlag) {
             return;
         }
 
@@ -36,16 +38,16 @@ public class Application {
         if (Integer.valueOf(input).equals(1)) {
             check = true;
         }
-        if(Integer.valueOf(input).equals(2)){
+        if (Integer.valueOf(input).equals(2)) {
             check = false;
         }
 
-        if(check){
+        if (check) {
             gameStart();
         }
     }
 
-    private static void playerDoing() {
+    private static void playerTurn() {
         boolean isNumberAvailable = playerInputCheck();
 //        System.out.println("playerInputNumber 의 isNumberAvailable : " + isNumberAvailable);
         // 입력한 값이 잘못된 값이면 종료함
@@ -74,7 +76,7 @@ public class Application {
 
         makeResultSentence(strikeCount, ballCount);
         if (strikeCount != 3) {
-            playerDoing();
+            playerTurn();
         }
     }
 
@@ -96,7 +98,7 @@ public class Application {
             sentence.append("스트라이크");
         }
 
-        System.out.println(sentence.toString());
+        System.out.println(sentence);
     }
 
     private static int nothingOutput() {
