@@ -21,4 +21,8 @@ public class Answer {
         }
         return this.answers;
     }
+
+    public List<Integer> getAnswers() {
+        return answers;
+    }
 }

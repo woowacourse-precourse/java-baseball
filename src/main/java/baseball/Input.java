@@ -47,4 +47,9 @@ public class Input {
             return false;
         }
     }
+
+    public List<Integer> getInputs() {
+
+        return inputs;
+    }
 }
