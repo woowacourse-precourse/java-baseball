@@ -2,9 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * 입력 관련 기능을 처리하는 클래스

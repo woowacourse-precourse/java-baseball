@@ -3,7 +3,6 @@ package baseball;
 
 import java.util.stream.Stream;
 import org.assertj.core.api.Assertions;
-import org.assertj.core.util.Streams;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -51,14 +50,10 @@ public class MultiDigitNumberTest {
                 for (int i = 0; i < 1000; i++) {
                     boolean flag = true;
 
-                    try {
-                        if (!MultiDigitNumber.validateConsistOfThreeDigit(i) ||
-                            !MultiDigitNumber.validateEachSingleDigitIsNotDuplicate(
-                                Stream.of(String.valueOf(i).split("")).toArray(Integer[]::new))) {
+                    if (!MultiDigitNumber.validateConsistOfThreeDigit(i)
+                        || !MultiDigitNumber.validateEachSingleDigitIsNotDuplicate(
+                        Stream.of(String.valueOf(i).split("")).toArray(Integer[]::new))) {
 
-                            flag = false;
-                        }
-                    } catch (IllegalArgumentException e) {
                         flag = false;
                     }
 
@@ -66,6 +61,7 @@ public class MultiDigitNumberTest {
                         new MultiDigitNumber(i);
                     } else {
                         int finalI = i;
+
                         Assertions.assertThatThrownBy(() -> new MultiDigitNumber(finalI))
                             .isInstanceOf(IllegalArgumentException.class);
                     }

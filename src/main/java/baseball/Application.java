@@ -1,8 +1,5 @@
 package baseball;
 
-import java.util.Scanner;
-import org.junit.jupiter.api.Test;
-
 public class Application {
 
     public static void main(String[] args) {

@@ -1,10 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * 한 주기의 게임 운영을 담당하는 클래스
  */

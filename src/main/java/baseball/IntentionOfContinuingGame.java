@@ -1,9 +1,6 @@
 package baseball;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * 게임 종료 후 선택지 목록 정의한 enum
