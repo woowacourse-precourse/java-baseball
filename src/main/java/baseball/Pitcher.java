@@ -4,21 +4,21 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BaseBall {
+public class Pitcher {
 
-    Set<Integer> gameBall = new Ball().getNumber();
-    Set<Integer> userBall = new HashSet<>();
+    Set<Integer> number = new HashSet<>();
 
-    public void startGame() {
-        String input = Console.readLine();
-        readNumber(input);
+    public Pitcher() {
     }
 
-    public void readNumber(String input) {
+    public Set<Integer> getNumber() {
+        return number;
+    }
+
+    public void setNumber(String input) {
         validateInputSize(input);
         validateInputType(input);
         validateInputUnique(input);
@@ -26,7 +26,7 @@ public class BaseBall {
         Set<Integer> userNumber = Arrays.stream(input.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toSet());
-        userBall.addAll(userNumber);
+        number.addAll(userNumber);
     }
 
     public void validateInputSize(String input) {
@@ -52,7 +52,4 @@ public class BaseBall {
         }
     }
 
-    public Set<Integer> getUserBall() {
-        return userBall;
-    }
 }

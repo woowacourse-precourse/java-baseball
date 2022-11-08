@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Ball {
+public class Hitter {
 
     private Set<Integer> number;
 
-    public Ball() {
+    public Hitter() {
         generateNumber();
     }
 
