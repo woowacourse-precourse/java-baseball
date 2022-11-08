@@ -1,5 +1,7 @@
 package baseball;
 
+import util.Constants;
+
 public class Game {
 
     private Computer computer;
@@ -11,7 +13,7 @@ public class Game {
     }
 
     public void printStart() {
-
+        System.out.println(Constants.GAME_START);
     }
 
     public void startGame() {
