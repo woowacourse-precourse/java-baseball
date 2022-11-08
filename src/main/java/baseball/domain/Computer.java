@@ -14,7 +14,7 @@ public class Computer {
     List<Integer> numbers;
     boolean[] checkNumbers;
 
-    public void pickRandomNumbers() {
+    public List<Integer> pickRandomNumbers() {
         numbers = new ArrayList<>();
         checkNumbers = new boolean[9];
 
@@ -26,6 +26,7 @@ public class Computer {
             numbers.add(pickedNumber);
             checkNumbers[pickedNumber - 1] = true;
         }
+        return numbers;
     }
 
     private boolean checkDuplicate(int number) {
