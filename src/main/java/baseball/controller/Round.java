@@ -13,5 +13,8 @@ public class Round {
         UserNumber userNumber = new UserNumber();
         userNumber.input();
         List<Integer> result = Judge.judge(quizNumber.getNumbers(), userNumber.getNumbers());
+        int ball = result.get(0);
+        int strike = result.get(1);
+        view.result(ball, strike);
     }
 }
