@@ -10,9 +10,6 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
-        String computerNumbers = getRandomNumbers();
-        String userNumbers = readLine();
-        userNumbers = checkUserNumbersValidation(userNumbers);
     }
 
     public static String getRandomNumbers() {
@@ -77,6 +74,18 @@ public class Application {
         return matchedNumbers.toString().replaceAll("[^0-9]","");
     }
 
+    public static void runBaseball() {
+        String computerNumbers = getRandomNumbers();
+        String outputStatement = "";
+        while (!outputStatement.equals("3스트라이크")) {
+            System.out.println("숫자를 입력해주세요 : ");
+            String userNumbers = readLine();
+            userNumbers = checkUserNumbersValidation(userNumbers);
+            outputStatement = getMatchOutputStatement(computerNumbers, userNumbers);
+            System.out.println(outputStatement);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }
 
 
