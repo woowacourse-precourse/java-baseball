@@ -11,7 +11,7 @@ public class GameNumber {
     private final List<Integer> numberListByDigit;
 
     public static GameNumber makeInstance(String input) {
-        validateInput(input);
+        InputValidator.validateGameNumberInput(input);
 
         List<Integer> integerList = new ArrayList<>();
         for(int i = 0; i < input.length(); i++) {
@@ -28,39 +28,6 @@ public class GameNumber {
     private GameNumber(List<Integer> integerList) {
         numberListByDigit = new ArrayList<>();
         numberListByDigit.addAll(integerList);
-    }
-
-    private static void validateInput(String input) {
-        checkNumberLength(input);
-        checkAllDigit1To9(input);
-        checkAllDigitNotDuplicate(input);
-    }
-
-    private static void checkNumberLength(String input) {
-        if(input == null || input.length() != GAME_NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void checkAllDigit1To9(String input) {
-        if(input == null || !input.matches("^[1-9]+")) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void checkAllDigitNotDuplicate(String input) {
-        if(input == null) {
-            throw new IllegalArgumentException();
-        }
-
-        for(int i = 0; i < input.length() - 1; i++) {
-            char currentChar = input.charAt(i);
-            String nextToTail = input.substring(i + 1);
-
-            if(nextToTail.indexOf(currentChar) != -1) {
-                throw new IllegalArgumentException();
-            }
-        }
     }
 
     private static List<Integer> makeRandomOneDigitIntListWithNoDuplicate() {
