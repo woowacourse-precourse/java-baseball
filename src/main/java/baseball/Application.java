@@ -6,7 +6,7 @@ public class Application {
         while (true) {
             BullsAndCows bullsAndCows = new BullsAndCows(new BullsAndCowsResult());
 
-            while (!bullsAndCows.bullsAndCowsResult.finish()) {
+            while (!bullsAndCows.getBullsAndCowsResult().isFinish()) {
                 bullsAndCows.start();
             }
 
