@@ -1,7 +1,7 @@
 package baseball;
 
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.*;
@@ -41,18 +41,18 @@ public class Application {
 
 	public static String makeRandomNumber() {
 		String result = "";
-		int temp = 0;
-		List<Integer> numberList = new LinkedList<>();
+		int randomNumber = 0;
+		List<Integer> numberList = new ArrayList<>();
 
 		for (int i = 1; i < 10; i++)
 			numberList.add(i);
 
 		for (int i = 0; i < 3; i++) {
-			temp = Randoms.pickNumberInRange(1, 9);
+			randomNumber = Randoms.pickNumberInRange(1, 9);
 			
-			while (numberList.contains(temp)) {
-				numberList.remove(numberList.indexOf(temp));
-				result += temp;
+			while (numberList.contains(randomNumber)) {
+				numberList.remove(numberList.indexOf(randomNumber));
+				result += randomNumber;
 			}
 		}
 
