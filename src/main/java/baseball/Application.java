@@ -2,8 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -47,6 +46,15 @@ public class Application {
             if (digit == '0') {
                 throw new IllegalArgumentException("each digit only allows 1~9");
             }
+        }
+
+        List<Character> inputDataList = new ArrayList<>();
+        for (char digit : inputData.toCharArray()) {
+            inputDataList.add(digit);
+        }
+        Set<Character> inputDataSet = new HashSet<>(inputDataList);
+        if (inputDataList.size() != inputDataSet.size()) {
+            throw new IllegalArgumentException("all digits are unique");
         }
     }
 }
