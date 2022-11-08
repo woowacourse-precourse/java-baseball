@@ -1,7 +1,15 @@
 package baseball;
 
+import baseball.baseball.BaseballGame;
+import baseball.baseball.RandomBaseballGame;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RandomBaseballGame randomBaseballGame = new RandomBaseballGame(new BaseballGame());
+        GameConsole gameConsole = new GameConsole();
+
+        ConsoleRandomBaseballGame consoleGame = new ConsoleRandomBaseballGame(randomBaseballGame, gameConsole);
+
+        consoleGame.play();
     }
 }
