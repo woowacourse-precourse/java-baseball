@@ -20,16 +20,20 @@ public class Computer {
   }
 
   public String state(String input){
+    if(isNothing(input)){
+      return NOTHING;
+    }
     String result = "";
     if(getBallCount(input) > 0){
       result += String.format(BALL, getBallCount(input));
     }
     if(getStrikeCount(input) > 0){
+      if(!result.isEmpty()){
+        result += " ";
+      }
       result += String.format(STRIKE, getStrikeCount(input));
     }
-    if(isNothing(input)){
-      return NOTHING;
-    }
+
     return result;
   }
 
