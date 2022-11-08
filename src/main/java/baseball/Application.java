@@ -10,7 +10,17 @@ import java.util.Scanner;
 public class Application {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        while (true) {
+            int playResult = 0;
+            playResult = playOneGame();
+
+            if (playResult == 1) {
+                continue;
+            }
+            if (playResult == 2) {
+                break;
+            }
+        }
     }
 
     public static void getComputersRandomNumber(List<Integer> computersNumber) {
