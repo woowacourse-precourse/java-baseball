@@ -63,7 +63,7 @@ public class GameController {
         strike = ListUtil.countSameLocationValues(input, computerNumbers);
         ball = ListUtil.countDiffLocationValues(input, computerNumbers);
 
-        if (strike == 3) return true;
+        if (strike == LIST_SIZE) return true;
         return false;
     }
 
