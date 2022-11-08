@@ -45,17 +45,17 @@ public class GameService {
     public static void selectContinue() {
         PrintOutput.finishOrder();
         String isContinue = Console.readLine();
-        isContinueGame(Integer.parseInt(isContinue));
+        isContinueGame(isContinue);
     }
 
-    public static void isContinueGame(int num) {
-        if(num == 1) {
+    public static void isContinueGame(String num) {
+        if(Objects.equals(num, "1")) {
             initData();
             RANDOMBALL.clear();
             userBall.clear();
             PlayGameController.run();
         }
-        if(num == 2) return;
+        if(Objects.equals(num, "2")) return;
 
         throw new IllegalArgumentException();
     }
