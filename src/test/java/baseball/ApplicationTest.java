@@ -84,7 +84,7 @@ class ApplicationTest extends NsTest {
         String missType = "asdasd ";
 
         //when
-        boolean gameState = restartGameException.hasRestartNumber(missType);
+        boolean gameState = restartGameException.isRestartNumber(missType);
 
         //then
         assertThat(gameState).isEqualTo(true);
