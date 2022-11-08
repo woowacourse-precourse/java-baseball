@@ -38,4 +38,10 @@ public class ListUtil {
                 .filter(number -> answer.contains(number))
                 .count();
     }
+
+    static public int countSameNumberInSameLocationInLists(List<Integer> guess, List<Integer> answer) {
+        return (int) IntStream.range(0, 3)
+                .filter(index -> answer.get(index) == guess.get(index))
+                .count();
+    }
 }

@@ -75,7 +75,7 @@ class ListUtilTest {
 
             String input = "1a3";
             //When
-            assertThatThrownBy(() -> ListUtil.stringToSeparatedIntegerList(input,3))
+            assertThatThrownBy(() -> ListUtil.stringToSeparatedIntegerList(input, 3))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -87,14 +87,14 @@ class ListUtilTest {
 
             String input = "1234";
             //When
-            assertThatThrownBy(() -> ListUtil.stringToSeparatedIntegerList(input,3))
+            assertThatThrownBy(() -> ListUtil.stringToSeparatedIntegerList(input, 3))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
 
     @Nested
     @DisplayName("두 리스트 안에 같은 숫자의 갯수를 세는 메소드")
-    class countBall {
+    class countSameNumberInLists {
         @Test
         @DisplayName("중복이 없을 때")
         void countZeroVerboseTest() throws Exception {
@@ -120,6 +120,49 @@ class ListUtilTest {
 
             //Then
             assertThat(cnt).isEqualTo(2);
+        }
+    }
+
+    @Nested
+    @DisplayName("같은 위치에 같은 숫자가 있는지 찾는 메서드")
+    class countSameNumberInSameLocationInLists {
+        @Test
+        @DisplayName("겹치는 숫자가 없을 때")
+        void countNoStrike() throws Exception {
+            List<Integer> answer = List.of(1, 2, 3);
+            List<Integer> guess = List.of(3, 1, 2);
+
+            //When
+            Integer cnt = ListUtil.countSameNumberInSameLocationInLists(guess, answer);
+
+            //Then
+            assertThat(cnt).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("겹치는 숫자가 2개일 때")
+        void count2Strike() throws Exception {
+            List<Integer> answer = List.of(1, 2, 3);
+            List<Integer> guess = List.of(6, 2, 3);
+
+            //When
+            Integer cnt = ListUtil.countSameNumberInSameLocationInLists(guess, answer);
+
+            //Then
+            assertThat(cnt).isEqualTo(2);
+        }
+
+        @Test
+        @DisplayName("겹치는 숫자가 3개일 때")
+        void countAllStrike() throws Exception {
+            List<Integer> answer = List.of(1, 2, 3);
+            List<Integer> guess = List.of(1, 2, 3);
+
+            //When
+            Integer cnt = ListUtil.countSameNumberInSameLocationInLists(guess, answer);
+
+            //Then
+            assertThat(cnt).isEqualTo(3);
         }
     }
 }
