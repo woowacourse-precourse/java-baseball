@@ -5,12 +5,12 @@ import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BaseballService {
     private ArrayList<Integer> computerNumbers;
+    private ArrayList<Integer> playerNumbers;
     private final Validator validator;
 
     public BaseballService() {
@@ -33,5 +33,14 @@ public class BaseballService {
         System.out.print(Constant.INPUT_NUMBER_MESSAGE);
         String numbers = Console.readLine();
         validator.validatePlayerNumber(numbers);
+        parseStringToArrayList(numbers);
+    }
+
+    public void parseStringToArrayList(String numbers) {
+        List<Integer> numberList = Arrays.stream(numbers.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        ArrayList<Integer> userNumber = new ArrayList<>(numberList);
+        playerNumbers = new ArrayList<>(userNumber);
     }
 }
