@@ -37,4 +37,13 @@ public class Game {
         Set<Integer> set = new HashSet<>(input);
         return set.size() < input.size();
     }
+
+    public static void isValid(List<Integer> input) {
+        if (input.size() != COUNT)
+            throw new IllegalArgumentException();
+        if (input.contains(0))
+            throw new IllegalArgumentException();
+        if (isRedundant(input))
+            throw new IllegalArgumentException();
+    }
 }
