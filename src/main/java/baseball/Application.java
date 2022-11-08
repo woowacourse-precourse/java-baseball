@@ -11,6 +11,13 @@ public class Application {
         return makeThreeNumber();
     }
 
+    // 기능 목록 2 : 1부터 9까지의 랜덤한 값 생성
+    static int randomValue() {
+        Random random = new Random();
+        return random.nextInt(9) + 1;
+    }
+
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
