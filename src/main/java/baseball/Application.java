@@ -53,8 +53,26 @@ public class Application {
         }
         return user;
     }
+
     // 4-1. 스트라이크의 개수 (input List<Integer> usernumber, List<Integer> computernumber, output int)
+    public static int strikeNumber(ArrayList<Integer> inputNumberList, ArrayList<Integer> computerNumber){
+        int strike = 0;
+        for(int i = 0; i < 3; i ++){
+            if (inputNumberList.get(i).equals(computerNumber.get(i)))
+                strike ++;
+        }
+        return strike;
+    }
+
     // 4-2. 볼의 개수 (input List<Integer> usernumber, List<Integer> computernumber, output int)
+    public static int ballNumber(ArrayList<Integer> inputNumberList, ArrayList<Integer> computerNumber){
+        int ball = 0;
+        for(int i = 0; i < 3; i ++){
+            if (computerNumber.contains(inputNumberList.get(i)) && !inputNumberList.get(i).equals(computerNumber.get(i)))
+                ball ++;
+        }
+        return ball;
+    }
     // 5. 매회 player 가 input을 넣을때마다 출력해야 할 것들 만들어줄 함수 (input int strikenum, int ballnum, output String)
     // 6. main 함수 꾸미기
     public static void main(String[] args) {
