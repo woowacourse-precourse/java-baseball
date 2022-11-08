@@ -67,6 +67,11 @@ public class ExcepetionCase {
 
     }
 
-
+    public boolean oneOrTwo(String player) {
+        if( player == "1" || player == "2" ) {
+            return true;
+        }
+        return false;
+    }
 
 }

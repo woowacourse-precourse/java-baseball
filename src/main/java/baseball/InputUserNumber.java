@@ -28,6 +28,9 @@ public class InputUserNumber {
         setDigits(input);
     }
 
+    public int[] getDigits() {
+        return this.eachdigit;
+    }
 
 
 

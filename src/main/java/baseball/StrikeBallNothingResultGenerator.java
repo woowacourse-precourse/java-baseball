@@ -1,7 +1,9 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class StrikeBallNothingResultGenerator {
@@ -13,26 +15,33 @@ public class StrikeBallNothingResultGenerator {
     private int[] player;
     private int[] computer;
 
-    private int strike;
-    private int ball;
+    private int strike = 0;
+    private int ball = 0;
 
-
+    private boolean exit = false;
     ArrayList<int[]> playerLists = new ArrayList<int[]>();
     ArrayList<int[]> computerLists = new ArrayList<int[]>();
 
 
+
     public void Match() {
+
     }
 
-    public void Match(int[] player, int[] computer) {
-        this.player = player;
-        this.computer = computer;
-        this.strike = 0;
-        this.ball = 0;
+    public void startGame() {
+        GenerateRandomNumber computerNumber = new GenerateRandomNumber();
+        computerNumber.setRandomNumber();
+        computer = computerNumber.getDigits();
+        InputUserNumber playerNumber = new InputUserNumber();
+        List<int[]> computerList = Collections.singletonList(player);
 
 
-        List<int[]> playerList = Arrays.asList(player);
-        List<int[]> computerList = Arrays.asList(computer);
+    do{
+        playerNumber.UserInputValue();
+        player = playerNumber.getDigits();
+
+        List<int[]> playerList = Collections.singletonList(player);
+
 
         for (int i = 0; i < 3; i++) {
             this.playerLists.add(playerList.get(i));
@@ -40,9 +49,26 @@ public class StrikeBallNothingResultGenerator {
         }
 
 
+
+
+        resetScore();
+        countStrike();
+        printResult();
+
+        if(strike == 3) {
+            inputExit();
+            computerNumber.setRandomNumber();
+            computer = computerNumber.getDigits();
+        }
+
+
+        } while(!exit);
     }
 
-
+    private void resetScore() {
+        strike = 0;
+        ball = 0;
+    }
     public void countStrike() {
 
         for (int position = 0; position < 3; position++) {
@@ -86,5 +112,17 @@ public class StrikeBallNothingResultGenerator {
         return stringMaker.toString();
     }
 
+
+    private void inputExit() {
+    ExcepetionCase exception = new ExcepetionCase();
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if(!exception.oneOrTwo(input)) {
+            throw new IllegalArgumentException();
+        }
+        if("2".equals(input)) {
+            exit = true;
+        }
+    }
 
 }
