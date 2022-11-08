@@ -19,10 +19,8 @@ import java.lang.reflect.Method;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ServiceTest {
 
@@ -252,6 +250,7 @@ public class ServiceTest {
         //then
         assertEquals(2, lastAnswer);
     }
+
 
     @DisplayName("정답을 체크하는 메서드 테스트")
     @Test

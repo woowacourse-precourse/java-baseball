@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class Application {
     public static void main(String[] args) {
         Service service = new Service();
+
         int numberLengthCondition = 3;
         Pattern numberPatternCondition = Pattern.compile("^[1-9]*$");
         boolean isMaintains = true;
