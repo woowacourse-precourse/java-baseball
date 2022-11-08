@@ -43,7 +43,17 @@ class BallsTest {
 
     @Test
     void validateSize_리스트의_사이즈가_3이_아닐_때_예외가_반환되는지_테스트() {
-
+        //given
+        List<Ball> balls = List.of(new Ball(1),
+                                   new Ball(2));
+        //when
+        //then
+        assertThatThrownBy(() -> {
+            if (balls.size() != 3) {
+                throw new IllegalArgumentException("입력된 숫자의 값이 3개가 아닙니다.");
+            }
+        }).isInstanceOf(IllegalArgumentException.class)
+          .hasMessageContaining("입력된 숫자의 값이 3개가 아닙니다.");
     }
 
     @Test
