@@ -48,6 +48,9 @@ public class Application {
         for (int i = 0; i < userInput.length(); i++) {
             try{
                 int digit = returnOneDigit(userInput, i);
+                if (userInputList.contains(digit)) {
+                    throw new IllegalArgumentException();
+                }
                 userInputList.add(digit);
             }catch (Exception e){
                 throw new IllegalArgumentException();
