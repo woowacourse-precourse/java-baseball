@@ -13,6 +13,8 @@ public class Application {
 
     public static void main(String[] args) {
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        startGame();
     }
 
 
@@ -142,12 +144,47 @@ public class Application {
         int strike = getStrike(computerNum, userNum);
 
         printResult(ball, strike);
+        isRightAnswerAndContinue(computerNum, userNum);
     }
     //5. 컴퓨터 숫자 설정하고 게임 진행 method
     public static void startGame(){
         computerNum = getComputerNum();
         Game();
     }
+
+
+    //6. 정답인지 아닌지 판별한 다음 게임 재시작할지 종료할지 결정
+    public static void isRightAnswerAndContinue(List<Integer> computerNum, List<Integer> userNum){
+        if(computerNum.equals(userNum)){
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            ContinueOrEnd();
+        }
+        else{
+            userNum.clear();
+            Game();
+        }
+    }
+
+    public static void ContinueOrEnd(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String option = Console.readLine();
+        if(option.equals("1")){
+            System.out.println(1);
+            startGame();
+        }
+        else if(option.equals("2")){
+            System.out.println(2);
+            endGame();
+        }
+        else{
+            throw new IllegalArgumentException("잘못된 값이 입력되었습니다.");
+        }
+    }
+    public static boolean endGame(){
+        return true;
+    }
+
+
 
 
 
