@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.*;
@@ -31,5 +32,29 @@ public class Application{
     		cnt*=10;
     	}
     	return result;
+    }
+    
+    public static int comparison(String comNum,String userNum) {
+    	int strikeCount = 0;
+    	int ballCount = 0;
+    	String[] comNumSet = comNum.split("");
+    	String[] userNumSet = userNum.split("");
+    	HashSet<String> hash = new HashSet<>();
+    	
+    	for(int i=0;i<3;i++) {
+    		hash.add(comNumSet[i]);
+    		hash.add(userNumSet[i]);
+    		if(comNumSet[i].equals(userNumSet[i]))
+    			strikeCount++;
+    	}
+    	
+    	ballCount = 6-hash.size()-strikeCount;
+    	
+    	if(ballCount>0)
+    		System.out.print(ballCount+"볼 ");
+    	if(strikeCount>0)
+    		System.out.print(strikeCount+"스트라이크 ");
+    	
+    	return strikeCount;	
     }
 }
