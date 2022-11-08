@@ -11,11 +11,15 @@ public class ThrowBall {
     private int strikeCount;
 
     public Boolean decideBall(ArrayList<Integer> computerBall, ArrayList<Integer> userBall){
+        ballAndStrikeInit();
+        ballAndStrikeCount(computerBall, userBall);
+
+        return printResult();
+    }
+
+    private void ballAndStrikeInit() {
         ballCount = INIT_COUNT;
         strikeCount = INIT_COUNT;
-
-        ballAndStrikeCount(computerBall, userBall);
-        return printResult();
     }
 
     private void ballAndStrikeCount(ArrayList<Integer> computerBall, ArrayList<Integer> userBall){
