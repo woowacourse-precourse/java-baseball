@@ -26,7 +26,6 @@ public class Game {
             user.editNumberString(Session.getThreeNumbers());
         } while (!hintmaker.isAnswer(user.getUserData(), computer.getAnswer()));
 
-        Printer.printEnd();
         Printer.askRestart();
         String choice = Session.getRestartCondition();
         if (RESTART.equals(choice)) {
