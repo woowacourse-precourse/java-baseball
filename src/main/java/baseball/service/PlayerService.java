@@ -15,6 +15,7 @@ public class PlayerService {
 
     public ArrayList<Integer> inputPlayerNumber() {
         ArrayList<Integer> playerNumberList = new ArrayList<>();
+        System.out.print("숫자를 입력해주세요 : ");
         String playerNumbers = Console.readLine();
         gameService.checkInputPlayerNumber(playerNumbers);
         for (int i=0;i<3;i++) {
