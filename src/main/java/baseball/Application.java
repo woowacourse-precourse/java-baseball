@@ -7,6 +7,6 @@ public class Application {
         do {
             newGame = new BaseballGame();
             newGame.startGame();
-        } while (newGame.restartGame());
+        } while (!newGame.isLastGame); // 마지막 게임이 아닐 경우 반복
     }
 }

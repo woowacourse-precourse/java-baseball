@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballGame {
     List<Integer> targetNumber;
     protected boolean isPlayerWin=false;
+    protected boolean isLastGame=true;
 
     public void generateTargetNumber() {
         this.targetNumber = new ArrayList<>();
@@ -46,7 +47,7 @@ public class BaseballGame {
     public void compareWithTargetNum(String input) {
         int strikeCount=0;
         int ballCount=0;
-        // System.out.println(targetNumber);
+        System.out.println(targetNumber);
 
 
         for(int order=0; order<3; order++){
@@ -83,13 +84,13 @@ public class BaseballGame {
         restartGame();
     }
 
-    public boolean restartGame() {
+    public void restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if (input.equals('1')) {
-            return true;
-        } else if (input.equals('2')) {
-            return false;
+        if (input.equals("1")) {
+            isLastGame=false;
+        } else if (input.equals("2")) {
+            isLastGame=true;
         } else {
             throw new IllegalArgumentException("1 또는 2를 입력하세요..");
         }
