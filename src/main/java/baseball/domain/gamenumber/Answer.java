@@ -1,8 +1,8 @@
-package baseball.domain.game_number;
+package baseball.domain.gamenumber;
 
-import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberListOfRandomNumbers;
+import static baseball.domain.baseballnumber.BaseballNumberListGenerator.baseballNumberListOfRandomNumbers;
 
-import baseball.domain.baseball_number.BaseballNumber;
+import baseball.domain.baseballnumber.BaseballNumber;
 import java.util.List;
 
 public class Answer {

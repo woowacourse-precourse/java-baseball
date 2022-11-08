@@ -1,13 +1,13 @@
-package baseball.domain.game_number;
+package baseball.domain.gamenumber;
 
-import baseball.domain.baseball_number.BaseballNumber;
+import baseball.domain.baseballnumber.BaseballNumber;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
+import static baseball.domain.baseballnumber.BaseballNumberListGenerator.baseballNumberList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

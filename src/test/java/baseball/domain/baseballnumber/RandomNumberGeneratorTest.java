@@ -1,6 +1,6 @@
-package baseball.domain.baseball_number;
+package baseball.domain.baseballnumber;
 
-import static baseball.domain.baseball_number.RandomNumberGenerator.randomNumbers;
+import static baseball.domain.baseballnumber.RandomNumberGenerator.randomNumbers;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;

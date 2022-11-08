@@ -1,4 +1,4 @@
-package baseball.domain.baseball_number;
+package baseball.domain.baseballnumber;
 
 import java.util.List;
 import java.util.stream.Collectors;

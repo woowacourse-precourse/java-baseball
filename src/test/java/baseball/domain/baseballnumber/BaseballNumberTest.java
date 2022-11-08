@@ -1,6 +1,6 @@
-package baseball.domain.baseball_number;
+package baseball.domain.baseballnumber;
 
-import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
+import static baseball.domain.baseballnumber.BaseballNumberListGenerator.baseballNumberList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -34,6 +34,4 @@ class BaseballNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("입력 숫자의 범위는 1~9 입니다.");
     }
-
-
 }

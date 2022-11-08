@@ -4,9 +4,9 @@ import static baseball.service.StartOptions.RESTART;
 import static baseball.service.StartOptions.START;
 import static baseball.service.StartOptions.STOP;
 
-import baseball.domain.game_number.Answer;
-import baseball.domain.game_number.CountResult;
-import baseball.domain.game_number.Guess;
+import baseball.domain.gamenumber.Answer;
+import baseball.domain.gamenumber.CountResult;
+import baseball.domain.gamenumber.Guess;
 import baseball.view.print.MessagePrinter;
 import baseball.view.scanner.NumberScanner;
 

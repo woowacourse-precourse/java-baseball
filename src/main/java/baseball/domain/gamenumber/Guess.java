@@ -1,11 +1,11 @@
-package baseball.domain.game_number;
+package baseball.domain.gamenumber;
 
-import baseball.domain.baseball_number.BaseballNumber;
+import baseball.domain.baseballnumber.BaseballNumber;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static baseball.domain.baseball_number.BaseballNumberListGenerator.baseballNumberList;
+import static baseball.domain.baseballnumber.BaseballNumberListGenerator.baseballNumberList;
 
 public class Guess {
 
