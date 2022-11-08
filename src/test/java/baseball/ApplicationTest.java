@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.model.ComputerNumber;
 import baseball.model.PlayerNumber;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -52,6 +53,38 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> PlayerNumber.isDifferentPlayerNumber("122"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 숫자_비교_볼_검증테스트(){
+        Validator validator = new Validator();
+        String ComputerNumber = "123";
+        String PlayerNumber = "451";
+
+        int[] resultBall = validator.getNumberCompare(ComputerNumber,PlayerNumber);
+        assertThat(resultBall[0]).isEqualTo(1);
+
+    }
+
+    @Test
+    void 숫자_비교_스트라이크_검증테스트(){
+        Validator validator = new Validator();
+        String ComputerNumber = "123";
+        String PlayerNumber = "124";
+
+        int[] resultStrike = validator.getNumberCompare(ComputerNumber,PlayerNumber);
+        assertThat(resultStrike[1]).isEqualTo(2);
+
+    }
+    @Test
+    void 숫자_비교_볼_스트라이크_검증테스트(){
+        Validator validator = new Validator();
+        String ComputerNumber = "123";
+        String PlayerNumber = "243";
+
+        int[] resultCount = validator.getNumberCompare(ComputerNumber,PlayerNumber);
+        assertThat(resultCount[0]).isEqualTo(1);
+        assertThat(resultCount[1]).isEqualTo(1);
     }
 
     @Test
