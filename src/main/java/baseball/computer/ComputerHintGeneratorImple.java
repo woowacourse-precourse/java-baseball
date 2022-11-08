@@ -18,11 +18,14 @@ public class ComputerHintGeneratorImple implements ComputerHintGenerator {
     }
 
     private void countStrikeAndBall(List<Integer> userInputNumbers, List<Integer> gameComputerNumbers) {
+
         clearBeforeCountingData();
+
         for (int idx = 0; idx < NUMBERS_MAX_LENGTH; idx++) {
             countStrike(userInputNumbers.get(idx), gameComputerNumbers.get(idx));
             countBall(userInputNumbers.get(idx), gameComputerNumbers.get(idx), gameComputerNumbers);
         }
+
     }
 
     private void clearBeforeCountingData() {
@@ -36,16 +39,20 @@ public class ComputerHintGeneratorImple implements ComputerHintGenerator {
         }
     }
 
-    private void countBall(Integer userInputNumbersElement, Integer gameComputerNumbersElement, List<Integer> gameComputerNumbers) {
-        if (notEquals(userInputNumbersElement,gameComputerNumbersElement)) {
+    private void countBall(Integer userInputNumbersElement
+            , Integer gameComputerNumbersElement
+            , List<Integer> gameComputerNumbers) {
+
+        if (notEquals(userInputNumbersElement, gameComputerNumbersElement)) {
             if (gameComputerNumbers.contains(userInputNumbersElement)) {
                 ball_count++;
             }
         }
+
     }
 
-    private boolean notEquals(Integer a,Integer b){
-        if(a.equals(b)) return false;
+    private boolean notEquals(Integer a, Integer b) {
+        if (a.equals(b)) return false;
         return true;
     }
 
@@ -56,7 +63,8 @@ public class ComputerHintGeneratorImple implements ComputerHintGenerator {
         } else if (isBallCase()) {
             return createHintMessage(this.ball_count, Notice.BALL_NOTICE);
         } else if (isStrikeAndBall()) {
-            return createHintMessage(this.ball_count, Notice.BALL_NOTICE) + " "
+            return createHintMessage(this.ball_count, Notice.BALL_NOTICE)
+                    + " "
                     + createHintMessage(this.strike_count, Notice.STRIKE_NOTICE);
         }
         return Notice.NOTHING_NOTICE;
@@ -73,23 +81,20 @@ public class ComputerHintGeneratorImple implements ComputerHintGenerator {
 
 
     private boolean isStrikeCase() {
-        if (this.strike_count > 0 && this.ball_count == 0) {
-            return true;
-        }
+        if (this.strike_count > 0 && this.ball_count == 0) return true;
+
         return false;
     }
 
     private boolean isBallCase() {
-        if (this.ball_count > 0 && this.strike_count == 0) {
-            return true;
-        }
+        if (this.ball_count > 0 && this.strike_count == 0) return true;
+
         return false;
     }
 
     private boolean isStrikeAndBall() {
-        if (this.ball_count > 0 && this.strike_count > 0) {
-            return true;
-        }
+        if (this.ball_count > 0 && this.strike_count > 0) return true;
+
         return false;
     }
 }
