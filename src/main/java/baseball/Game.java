@@ -65,7 +65,7 @@ public class Game {
 
     public void getHintMessage(){
         if(ball > 0){
-            System.out.println(ball + "볼");
+            System.out.print(ball + "볼 ");
         }
         if(strike > 0){
             System.out.println(strike + "스트라이크");
