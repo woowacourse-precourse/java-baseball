@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Application {
+public class Application{
     public static List<String> input_valid_set = Arrays.asList("1","2","3","4","5","6","7","8","9");
     public static List<String> terminate_valid_set = Arrays.asList("1","2");
     private List<Integer> answer;
@@ -35,7 +35,19 @@ public class Application {
                 return false;
         }
 
-        return false;
+        return true;
+    }
+
+    public void readLine(boolean onGame){
+        this.input_text = Console.readLine();
+        if(onGame) {
+            if(checkValidInput(input_valid_set))
+                throw new IllegalArgumentException();
+        }
+        else{
+            if(checkValidInput(terminate_valid_set))
+                throw new IllegalArgumentException();
+        }
     }
 
     public void playGame() {
@@ -46,10 +58,14 @@ public class Application {
         Application app = new Application();
 
         System.out.println("숫자 야구 게임을 시작합니다.");
-
-        while(true){
-            app.playGame();
+        try {
+            while (true) {
+                app.playGame();
+            }
         }
-
+        catch (IllegalArgumentException ex) {
+            System.out.println("Invalid Input.");
+            System.exit(0);
+        }
     }
 }
