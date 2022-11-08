@@ -35,7 +35,7 @@ class ApplicationTest extends NsTest {
     @Test
     public void checkInputConditionTest_NormalCase() throws Exception {
         //given
-        int inputNumber = 123;
+        String inputNumber = "123";
         //when
         //then
         assertThatCode(() -> Application.checkInputCondition(inputNumber))
@@ -45,7 +45,7 @@ class ApplicationTest extends NsTest {
     @Test
     public void checkInputConditionTest_MoreDigits() throws Exception {
         //given
-        int inputNumber = 1234;
+        String inputNumber = "1234";
         //when
         //then
         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber)).isInstanceOf(IllegalArgumentException.class);
@@ -54,7 +54,7 @@ class ApplicationTest extends NsTest {
     @Test
     public void checkInputConditionTest_LessDigits() throws Exception {
         //given
-        int inputNumber = 12;
+        String inputNumber = "12";
         //when
         //then
         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
     @Test
     public void checkInputConditionTest_RedundantNumber() throws Exception {
         //given
-        int inputNumber = 122;
+        String inputNumber = "122";
         //when
         //then
         assertThatThrownBy(() -> Application.checkInputCondition(inputNumber))
@@ -74,10 +74,10 @@ class ApplicationTest extends NsTest {
     @Test
     public void convertIntegerIntoListTest() throws Exception {
         //given
-        int number = 123;
+        String inputNumber = "123";
         List<Integer> actual = Arrays.asList(1, 2, 3);
         //when
-        List<Integer> expected = Application.convertIntegerIntoList(number);
+        List<Integer> expected = Application.convertIntegerIntoList(inputNumber);
 
         //then
         assertEquals(expected, actual);
