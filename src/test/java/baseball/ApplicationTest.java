@@ -21,7 +21,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void CustomTestCase1(){
+    void customTestCase1(){
         assertRandomNumberInRangeTest(
             () -> {
                 run("175", "247", "427", "1", "374", "958", "985", "1", "263", "265", "256", "156", "2");
@@ -32,7 +32,18 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void CustomTestCase2(){
+    void readmeCase(){
+        assertRandomNumberInRangeTest(
+            () -> {
+                run("123", "145", "671", "216", "713", "1", "123", "415", "419", "491", "2");
+                assertThat(output()).contains("1볼 1스트라이크", "1볼", "2볼", "1스트라이크", "3스트라이크", "2볼 1스트라이크", "게임 종료");
+            },
+            7, 1, 3, 4, 9, 1
+        );
+    }
+
+    @Test
+    void customTestCase2(){
         assertRandomNumberInRangeTest(
             () -> {
                 assertThatThrownBy(() -> runException("315", "153", "513", "0"))
