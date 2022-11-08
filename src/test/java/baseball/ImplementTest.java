@@ -70,10 +70,10 @@ public class ImplementTest extends NsTest{
     @Test
     @DisplayName("게임 종료후 인풋 예외 테스트")
     void isAgain_exception_test() {
-        String wrong_input = "2";
+        String wrong_input = "rr";
         InputStream in = new ByteArrayInputStream(wrong_input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() -> runException(wrong_input))
+        assertThatThrownBy(() -> GameManager.isAgain(true))
             .isInstanceOf(IllegalArgumentException.class
         );
     }
