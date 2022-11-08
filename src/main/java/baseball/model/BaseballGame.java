@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,11 @@ public class BaseballGame {
 
     public BaseballGame() {
         balls = new Balls();
+        playing = true;
+    }
+
+    public BaseballGame(List<Integer> balls) {
+        this.balls = new Balls(balls);
         playing = true;
     }
 
