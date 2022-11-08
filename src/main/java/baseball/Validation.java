@@ -4,17 +4,17 @@ import java.util.HashSet;
 
 public class Validation {
     public static void validateBaseballInput(String input) {
-        if ((input.length() != 3) || hasNonDigit(input) || hasSameWord(input)) {
+        if ((input.length() != 3) || hasNotFromOneToNine(input) || hasSameWord(input)) {
             throw new IllegalArgumentException("입력오류");
         }
     }
 
-    public static boolean hasNonDigit(String input) {
+    public static boolean hasNotFromOneToNine(String input) {
         char c;
 
         for (int i = 0; i < input.length(); i++) {
             c = input.charAt(i);
-            if (!Character.isDigit(c)) {
+            if ((c < '1') || ('9' < c)) {
                 return true;
             }
         }

@@ -37,16 +37,23 @@ class ValidationTest {
     }
 
     @Test
-    void hasNonDigit_모두_숫자인지_판별() {
+    void hasNotFromOneToNine_모두_숫자인지_판별() {
         String str1 = "1.2";
         String str2 = "my";
         String str3 = "232";
         String str4 = "";
+        String str5 = "012";
+        String str6 = "901";
+        String str7 = "abc";
 
-        assertThat(Validation.hasNonDigit(str1)).isEqualTo(true);
-        assertThat(Validation.hasNonDigit(str2)).isEqualTo(true);
-        assertThat(Validation.hasNonDigit(str3)).isEqualTo(false);
-        assertThat(Validation.hasNonDigit(str4)).isEqualTo(false);
+        assertThat(Validation.hasNotFromOneToNine(str1)).isEqualTo(true);
+        assertThat(Validation.hasNotFromOneToNine(str2)).isEqualTo(true);
+        assertThat(Validation.hasNotFromOneToNine(str3)).isEqualTo(false);
+        assertThat(Validation.hasNotFromOneToNine(str4)).isEqualTo(false);
+        assertThat(Validation.hasNotFromOneToNine(str5)).isEqualTo(true);
+        assertThat(Validation.hasNotFromOneToNine(str6)).isEqualTo(true);
+        assertThat(Validation.hasNotFromOneToNine(str7)).isEqualTo(true);
+
     }
 
     @Test
