@@ -31,6 +31,17 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void should_PrintResult_When_OnlyBall() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("312", "345", "315", "123", "2");
+                    assertThat(output()).contains("3볼", "1볼", "2볼", "3스트라이크", "게임 종료");
+                },
+                1, 2, 3
+        );
+    }
+
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
