@@ -4,6 +4,13 @@ public class InputException {
 
     private static final int LENGTH = 3;
 
+    public static void userInputValidationCheck(String input){
+        if(isThreeLength(input) && isInteger(input)){
+            return;
+        }
+        throw new IllegalArgumentException("잘못된 값을 입력했습니다.");
+    }
+
     private static boolean isThreeLength(String input){
         return input.length() == LENGTH;
     }
