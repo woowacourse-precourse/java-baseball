@@ -19,26 +19,30 @@ public class Application {
     static int strick;
     static int ball;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         start();
+    }
+
+    public static void start(){
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        selectNumber();
+        System.out.println(computer);
+        while (!result) {
+            System.out.print("숫자를 입력해 주세요 : ");
+            inputNumber();
+            disitException(numbers.size());
+
+            checkNumber(numbers);
+            System.out.println(outputResult());
+        }
         while (!restart) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             restart();
         }
     }
 
-    public static void start() throws IOException {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        selectNumber();
-        while (!result) {
-            inputNumber();
-            checkNumber(numbers);
-        }
-    }
-
-    public static void restart() throws IOException {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    public static void restart(){
         String input = readLine();
-
         if(input.equals("1")){
             result = false;
             start();
@@ -60,7 +64,6 @@ public class Application {
                 }
             }
         }
-       System.out.println(outputResult());
     }
 
     public static String outputResult() {
@@ -79,20 +82,18 @@ public class Application {
         return null;
     }
 
-
-    public static void inputNumber() throws IOException {
-        System.out.print("숫자를 입력해 주세요 : ");
+    public static void inputNumber(){
         String input = readLine();
         numbers = new ArrayList<>();
-
         for(int i=0; i<input.length(); i++){
             numbers.add(Integer.parseInt(String.valueOf(input.charAt(i))));
         }
+    }
 
-        if (numbers.size() >= 4) {
+    public static void disitException(int size){
+        if(size != 3){
             throw new IllegalArgumentException("3자리의 숫자를 입력해주세요.");
         }
-
     }
 
     public static void selectNumber() {
@@ -103,6 +104,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
     }
+
 }
