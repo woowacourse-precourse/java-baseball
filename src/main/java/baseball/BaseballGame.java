@@ -11,6 +11,33 @@ public class BaseballGame {
     protected boolean isPlayerWin=false;
     protected boolean isLastGame=true;
 
+    public void start() {
+        generateTargetNumber();
+        while(this.isPlayerWin==false){
+            Input newInput = new Input();
+            String userNumber = newInput.getUserNumber();
+            compareWithTargetNum(userNumber);
+        }
+    }
+
+    public void end() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        this.isPlayerWin=true;
+        restart();
+    }
+
+    public void restart() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            this.isLastGame=false;
+        } else if (input.equals("2")) {
+            this.isLastGame=true;
+        } else {
+            throw new IllegalArgumentException("1 또는 2를 입력하세요..");
+        }
+    }
+
     public void generateTargetNumber() {
         this.targetNumber = new ArrayList<>();
         while(targetNumber.size() < 3) {
@@ -37,7 +64,7 @@ public class BaseballGame {
         }
         printHint(strikeCount, ballCount);
     }
-
+    
     public void printHint(int strikeCount, int ballCount) {
         if (strikeCount == 0 && ballCount > 0) { // 볼만 있는 경우
             System.out.print(ballCount+"볼\n");
@@ -50,33 +77,6 @@ public class BaseballGame {
         }
         if (strikeCount==3) {
             this.end();
-        }
-    }
-
-    public void start() {
-        generateTargetNumber();
-        while(this.isPlayerWin==false){
-            Input newInput = new Input();
-            String userNumber = newInput.getUserNumber();
-            compareWithTargetNum(userNumber);
-        }
-    }
-
-    public void end() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        this.isPlayerWin=true;
-        restart();
-    }
-
-    public void restart() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String input = Console.readLine();
-        if (input.equals("1")) {
-            this.isLastGame=false;
-        } else if (input.equals("2")) {
-            this.isLastGame=true;
-        } else {
-            throw new IllegalArgumentException("1 또는 2를 입력하세요..");
         }
     }
 }
