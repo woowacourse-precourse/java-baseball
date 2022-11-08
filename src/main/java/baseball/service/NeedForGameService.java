@@ -14,7 +14,6 @@ public class NeedForGameService {
     }
 
     public static int callErrorOrder() {
-        PrintOutput.errorOrder();
         return 1;
     }
 

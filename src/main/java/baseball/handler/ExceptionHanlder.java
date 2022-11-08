@@ -5,17 +5,20 @@ import baseball.service.GameService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.service.GameService.RANDOMBALL;
+import static baseball.service.GameService.errorcheck;
+
 public class ExceptionHanlder {
     public void checkInputBallSize(String inputballs) {
 
         int checkindex = 0;
-        List<Integer> randomballsize = GameService.makeRandomBall();;
 
-        for(int i : randomballsize) {
+        for(int i = 0 ; i<inputballs.length(); i++) {
             checkindex++;
         }
 
-        if(checkindex != inputballs.length()) {
+        if(checkindex != RANDOMBALL.size()) {
+            errorcheck = 1;
             throw new IllegalArgumentException();
         }
     }
@@ -30,6 +33,7 @@ public class ExceptionHanlder {
         if(inputballarr[0].equals(inputballarr[2])) sameinputcheck = false;
 
         if(!sameinputcheck){
+            errorcheck = 1;
             throw new IllegalArgumentException();
         }
     }
@@ -44,6 +48,7 @@ public class ExceptionHanlder {
         }
 
         if(checknonzero.contains(0)) {
+            errorcheck = 1;
             throw new IllegalArgumentException();
         }
     }

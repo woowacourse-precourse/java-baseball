@@ -18,9 +18,7 @@ public class GameService {
 
     public static void CatchRandomBall() {
         while(strike != 3){
-            try {   checkInput();
-            } catch (IllegalArgumentException e){   errorcheck = callErrorOrder();
-            }
+            checkInput();
             if(errorcheck == 1) break;
             findRandomBall();
 
