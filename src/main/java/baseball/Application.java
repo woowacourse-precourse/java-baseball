@@ -56,4 +56,15 @@ class Game {
         return true;
     }
 
+    // 3. 참여자가 입력 숫자가 세 자리 숫자인지 확인하는 메서드
+    public boolean checkingDigit(String inputNum){
+        if(inputNum.length() !=3){
+            try {
+                throw new IllegalArgumentException("세 자리 정수를 입력해주세요");
+            } catch (IllegalArgumentException e){
+                return false;
+            }
+        }
+        return true;
+    }
 }
