@@ -17,8 +17,8 @@ public class GameController {
     private static final String NOTHING_KOR ="낫싱";
 
     private static final int DIGITS = GameRule.DIGITS.getValue();
-    private static final String COMMAND_RESTART = GameRule.COMMAND_RESTART.getValue()+"";
-    private static final String COMMAND_END = GameRule.COMMAND_END.getValue()+"";
+    private static final String COMMAND_RESTART = GameRule.COMMAND_RESTART.toString();
+    private static final String COMMAND_END = GameRule.COMMAND_END.toString();
 
     public void generate() {
         //1. 컴퓨터 수 생성

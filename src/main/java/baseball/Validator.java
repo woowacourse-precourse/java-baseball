@@ -7,8 +7,8 @@ public class Validator {
     private static final int DIGITS = GameRule.DIGITS.getValue();
     private static final int RANDOM_MIN = GameRule.RANDOM_MIN.getValue();
     private static final int RANDOM_MAX = GameRule.RANDOM_MAX.getValue();
-    private static final String COMMAND_RESTART = GameRule.COMMAND_RESTART.getValue()+"";
-    private static final String COMMAND_END = GameRule.COMMAND_END.getValue()+"";
+    private static final String COMMAND_RESTART = GameRule.COMMAND_RESTART.toString();
+    private static final String COMMAND_END = GameRule.COMMAND_END.toString();
 
     public static boolean isNumber(String input) {
         return input.chars()
