@@ -21,27 +21,32 @@ public class Game {
     }
 
     public static void start() {
-
+        isRepeat = true;
+        System.out.println(GuideMessage.START.message);
     }
 
     public static void end() {
-
+        isRepeat = false;
     }
 
     public static void checkRestart(String flag) {
-
+        if (Objects.equals(flag, Game.END_GAME_FLAG)) {
+            Game.end();
+        }
+        Game.isRestart = true;
     }
 
     public static void printCongratsMessage() {
-
+        List<String> congratsMessage = List.of(GuideMessage.ANSWER.message, GuideMessage.END.message);
+        System.out.println(String.join(" ", congratsMessage));
     }
 
     public static void printInputMessage() {
-
+        System.out.print(GuideMessage.INPUT.message);
     }
 
     public static void printRepeatMessage() {
-
+        System.out.println(GuideMessage.REPEAT.message);
     }
 
 }
