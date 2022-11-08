@@ -6,9 +6,6 @@ import java.util.List;
 
 public class Game {
     private static final String ENTER_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String BALL_MESSAGE = "볼";
-    private static final String STRIKE_MESSAGE = "스트라이크";
-    private static final String NOTHING_MESSAGE = "낫싱";
     private static final String END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String RESTART = "1";
@@ -41,7 +38,7 @@ public class Game {
     public static void printHint(int strike, int ball) {
         validateStrikeBall(strike, ball);
         if (strike == 0 && ball == 0) {
-            System.out.println(NOTHING_MESSAGE);
+            System.out.println(Hint.NOTHING.message());
         }
         if (strike == 0 && ball > 0) {
             printBall(ball);
@@ -61,16 +58,20 @@ public class Game {
     }
 
     public static void printBall(int ball) {
-        System.out.println(ball + BALL_MESSAGE);
+        System.out.print(ball);
+        System.out.println(Hint.BALL.message());
     }
 
     public static void printStrike(int strike) {
-        System.out.println(strike + STRIKE_MESSAGE);
+        System.out.print(strike);
+        System.out.println(Hint.STRIKE.message());
     }
 
     public static void printStrikeBall(int strike, int ball) {
-        System.out.print(ball + BALL_MESSAGE + " ");
-        System.out.println(strike + STRIKE_MESSAGE);
+        System.out.print(ball);
+        System.out.print(Hint.BALL.message());
+        System.out.print(" " + strike);
+        System.out.println(Hint.STRIKE.message());
     }
 
     public static void askRestart() {
