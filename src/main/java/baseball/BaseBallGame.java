@@ -4,25 +4,26 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBallGame {
   private Computer computer = new Computer();
+  private int tryCount = 0;
 
   public void start() {
     gameInit();
     System.out.println(GameMessage.GAME_START_MESSAGE.getMessage());
-    String inputData;
     GameNumber gameNumber;
+    GameResult result = new GameResult();
     boolean isGameOver = false;
     while (!isGameOver) {
-      inputData = getUserNumberInput();
-      gameNumber = createBaseBallGameNumber(inputData);
-      if (gameNumber == null) isGameOver = true;
-      else {
-        GameResult result = new GameResult();
-        result.setResultByGameNumber(computer.getAnswerNumber(), gameNumber);
-        System.out.println(result.getResultString());
-        if (result.isAnswer()) {
-          System.out.println(GameNumber.NUMBER_DIGIT + GameMessage.GAME_FINISH_MESSAGE.getMessage());
-          isGameOver = !checkRestart();
-        }
+      tryCount++;
+      gameNumber = getUserNumberInput();
+      result.setResultByGameNumber(computer.getAnswerNumber(), gameNumber);
+      System.out.println(result.getResultString());
+      if (result.isAnswer()) {
+        System.out.println(
+            tryCount
+                + "번의 시도끝에 "
+                + GameNumber.NUMBER_DIGIT
+                + GameMessage.GAME_FINISH_MESSAGE.getMessage());
+        isGameOver = !checkRestart();
       }
     }
   }
@@ -46,14 +47,15 @@ public class BaseBallGame {
 
   private void gameInit() {
     computer.setAnswerNumber();
+    tryCount = 0;
   }
 
-  private String getUserNumberInput() {
+  private GameNumber getUserNumberInput() {
     System.out.print(GameMessage.START_INPUT_MESSAGE.getMessage());
-    return Console.readLine();
+    return createGameNumber(Console.readLine());
   }
 
-  public GameNumber createBaseBallGameNumber(String inputData) {
+  private GameNumber createGameNumber(String inputData) {
     GameNumber gameNumber = new GameNumber();
     gameNumber.setGameNumberByString(inputData);
     return gameNumber;
