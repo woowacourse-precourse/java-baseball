@@ -110,4 +110,11 @@ public class Application {
 
         System.out.println(printText);
     }
+    private static List<Integer> StringToIntegerList(String input){
+        List<Integer> result = new ArrayList<>();
+        for (int i=0; i<input.length();i++){
+            result.add(Character.getNumericValue(input.charAt(i)));
+        }
+        return result;
+    }
 }
