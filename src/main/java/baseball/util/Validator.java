@@ -4,6 +4,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
+    public void validatePlayerNumber(String numbers) {
+        for (int i = 0; i < numbers.length(); i++) {
+            int number = charToInt(numbers.charAt(i));
+            validateIsDigit(numbers.charAt(i));
+            validateNumber(number, Constant.MIN, Constant.MAX);
+        }
+        validateLength(numbers, Constant.LENGTH);
+        validateDuplication(numbers);
+    }
+
+    public int charToInt(char number) {
+        return Integer.parseInt(String.valueOf(number));
+    }
+
     public void validateIsDigit(Character number) {
         if (!Character.isDigit(number)) {
             throw new IllegalArgumentException();

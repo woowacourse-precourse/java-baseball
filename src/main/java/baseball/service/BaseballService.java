@@ -32,5 +32,6 @@ public class BaseballService {
     public void inputPlayerNumber() {
         System.out.print(Constant.INPUT_NUMBER_MESSAGE);
         String numbers = Console.readLine();
+        validator.validatePlayerNumber(numbers);
     }
 }
