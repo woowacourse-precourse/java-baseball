@@ -1,17 +1,14 @@
 package baseball;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static baseball.ComputerRandomNumbersFactory.*;
 
 public class UserNumber {
 
     private static final int NUMBER_LENGTH_CRITERIA_ZERO = 0;
     private static final int NUMBER_DIVIDE_CRITERIA_TEN = 10;
-    private static final int NUMBER_SIZE_CRITERIA_THREE = 3;
-    private static final String REPLACE_CRITERIA = "";
-    private static final String DELETE_CRITERIA = " ";
+    private static final String USER_NUMBER_SPACE = " ";
 
     private final List<Integer> userNumbers;
 
@@ -20,22 +17,27 @@ public class UserNumber {
     }
 
     private List<Integer> validate(String userNumbers) {
-        String newUserNumbers = validateBlank(userNumbers);
-        validateNumberCount(newUserNumbers);
-        Integer newTypeUserNumbers = validateNumber(newUserNumbers);
-        return validateDuplication(newTypeUserNumbers);
+        validateEmpty(userNumbers);
+        validateBlank(userNumbers);
+        validateNumberCount(userNumbers);
+        Integer newTypeUserNumbers = validateNumber(userNumbers);
+        return validateOverlap(newTypeUserNumbers);
     }
 
-    private String validateBlank(String userNumbers) {
-        String newUserNumbers = userNumbers.trim().replace(DELETE_CRITERIA, REPLACE_CRITERIA);
-        if (newUserNumbers.length() == NUMBER_LENGTH_CRITERIA_ZERO) {
+    private void validateEmpty(String userNumbers) {
+        if (userNumbers.length() == NUMBER_LENGTH_CRITERIA_ZERO) {
             throw new IllegalArgumentException("입력을 하지 않았습니다.");
         }
-        return newUserNumbers;
+    }
+
+    private void validateBlank(String userNumbers) {
+        if (userNumbers.contains(USER_NUMBER_SPACE)) {
+            throw new IllegalArgumentException("입력 값의 공백이 포함 되어있습니다.");
+        }
     }
 
     private void validateNumberCount(String newUserNumber) {
-        if (newUserNumber.length() != NUMBER_SIZE_CRITERIA_THREE) {
+        if (newUserNumber.length() != NUMBER_MAX_LENGTH) {
             throw new IllegalArgumentException("숫자의 갯수가 다릅니다.");
         }
     }
@@ -48,16 +50,31 @@ public class UserNumber {
         }
     }
 
-    private List<Integer> validateDuplication(Integer newTypeUserNumbers) {
-        Set<Integer> numbers = new LinkedHashSet<>();
-        while (newTypeUserNumbers > NUMBER_LENGTH_CRITERIA_ZERO) {
-            numbers.add(newTypeUserNumbers % NUMBER_DIVIDE_CRITERIA_TEN);
-            newTypeUserNumbers /= NUMBER_DIVIDE_CRITERIA_TEN;
-        }
-        if (numbers.size() != NUMBER_SIZE_CRITERIA_THREE) {
+    private List<Integer> validateOverlap(Integer newTypeUserNumbers) {
+        Set<Integer> deduplication = separate(newTypeUserNumbers);
+        if (deduplication.size() != NUMBER_MAX_LENGTH) {
             throw new IllegalArgumentException("중복된 값이 있습니다.");
         }
-        return new ArrayList<>(numbers);
+        List<Integer> numbers = new ArrayList<>(deduplication);
+        Collections.reverse(numbers);
+        return numbers;
+    }
+
+    private Set<Integer> separate(Integer newTypeUserNumbers) {
+        Set<Integer> deduplication = new LinkedHashSet<>();
+        while (newTypeUserNumbers > NUMBER_LENGTH_CRITERIA_ZERO) {
+            int newTypeUserNumber = newTypeUserNumbers % NUMBER_DIVIDE_CRITERIA_TEN;
+            validateNumberRange(newTypeUserNumber);
+            deduplication.add(newTypeUserNumber);
+            newTypeUserNumbers /= NUMBER_DIVIDE_CRITERIA_TEN;
+        }
+        return deduplication;
+    }
+
+    private void validateNumberRange(Integer newTypeUserNumber) {
+        if (newTypeUserNumber > MAX_NUMBER || newTypeUserNumber < MIN_NUMBER) {
+            throw new IllegalArgumentException("숫자 범위가 벗어났습니다.");
+        }
     }
 
     public List<Integer> getUserNumbers() {
