@@ -1,5 +1,6 @@
 package baseball.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Rule {
@@ -19,6 +20,17 @@ public class Rule {
     }
 
     public List<Integer> decideStrikeOrBall() {
+        List<Integer> result = new ArrayList<>();
+        result.add(countStrike(result));
+        result.add(countBall(result));
+        return result;
+    }
+
+    private int countStrike(List<Integer> result) {
+
+    }
+
+    private int countBall(List<Integer> result) {
 
     }
 }
