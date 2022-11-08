@@ -16,6 +16,17 @@ public class ProcessService {
                 throw new IllegalArgumentException("입력은 1 ~ 9 사이의 값이어야만 합니다.");
             }
         }
+
+        int prev = 0, test = 0;
+        for (int i = 0; i < input.length(); i++) {
+            int digitNum = Integer.parseInt(input.substring(i, i + 1));
+            test ^= digitNum;
+            if (test < prev) {
+                throw new IllegalArgumentException("입력은 중복되지 않아야 합니다.");
+            }
+            prev = test;
+        }
+
     }
 
     public void validateEndInput(String input) throws IllegalArgumentException {
