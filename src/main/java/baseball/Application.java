@@ -29,8 +29,76 @@ class Array {
 
         return charArray;
     }
+    static int getIndexFromValue(final int[] arr, final int value) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == value) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
+}
 
+class Score {
+    int ball, strike;
+
+    private static final String BALL= "볼";
+    private static final String STRIKE= "스트라이크";
+    private static final String NOTHING= "낫싱";
+
+    public String toString() {
+        return "ball: " + this.ball + ", strike: " + this.strike;
+    }
+
+    private void addBallCount() {
+        this.ball++;
+    }
+
+    private void addStrikeCount() {
+        this.strike++;
+    }
+
+    //3.같은 수가 같은 자리에 있는가? 다른 자리에 있는가? (같은 자리에 -> 스트라이크,다른 자리에 -> 볼)
+
+    void compareAnswer(Game answer, Game rightAnswer) {
+        int nowNumber;
+
+        for (int i = 0; i < Game.NUMBER_COUNT; i++) {
+            nowNumber = answer.number[i];
+
+            if (!Array.checkArrayContains(rightAnswer.number, nowNumber)) {
+                continue;
+            }
+            if (i == Array.getIndexFromValue(rightAnswer.number, nowNumber)) {
+                addStrikeCount();
+                continue;
+            }
+
+            addBallCount();
+        }
+    }
+
+    //4. 결과 출력 (스트라이크=0 볼=0 이면 낫싱)
+    void showResult() {
+        String result = "";
+        if (this.ball != 0) {
+            result += this.ball + BALL;
+        }
+
+        if (this.strike != 0) {
+            if (this.ball != 0) {
+                result += " ";
+            }
+            result += this.strike + STRIKE;
+        }
+
+        if (result.equals("")) {
+            result = NOTHING;
+        }
+
+        System.out.println(result);
+    }
 }
 
 
@@ -68,6 +136,15 @@ class Game {
 
     public static void init(Game rightAnswer) {
         Game answer = Game.getAnswer();
+
+        Score sc = new Score();
+        sc.compareAnswer(answer, rightAnswer);
+        sc.showResult();
+
+        if (sc.strike != Game.NUMBER_COUNT) {//모두 맞히지 못한 경우
+            Game.init(rightAnswer);
+            return;
+        }
 
 
     }
