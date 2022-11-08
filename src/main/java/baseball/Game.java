@@ -1,44 +1,41 @@
 package baseball;
 
 import IOController.InputOutputController;
-import IOController.ScreenOutput;
-import IOController.KeyboardInput;
 
 public class Game {
 
     private static final int ENDGAME = 1;
-    private static final int PLAYAGAINMODE = 2;
-    private static final int PLAYINGMODE = 1;
+    private static final int PLAY_AGAIN_MODE = 2;
+    private static final int PLAYING_MODE = 1;
+    private static int inputLength;
 
     public Game() {
-        ScreenOutput.printGameStart();
+        InputOutputController.outputStartMessage();
     }
 
-    public int startAndPlayAgain(InputOutputController ioController, int numberLength) {
+    public int startAndPlayAgain(int numberLength) {
+        inputLength = numberLength;
         Referee.generateRandom(numberLength);
-        progress(ioController);
-        return checkContinueMode(ioController);
+        progress();
+        return checkContinueMode();
     }
 
-    private static void progress(InputOutputController ioController) {
+    private static void progress() {
         while (true) {
-            //Screen.printInputNumber();
-            ioController.outputInputMessage();
-            //String RefereeResult = Screen.printCalculateResult( Referee.calculateAnswer(User.inputValue(1)));
-            String RefereeResult = ioController.outputResultMessage( Referee.calculateAnswer(ioController.inputGet(PLAYINGMODE)));
-            if (RefereeResult.equals("3스트라이크")) {
+            InputOutputController.outputInputMessage();
+            String RefereeResult = InputOutputController.outputResultMessage(Referee.calculateAnswer(
+                    InputOutputController.inputGet(PLAYING_MODE)));
+            if (RefereeResult.equals(inputLength + "스트라이크")) {
                 break;
             }
         }
     }
-/// 지금 inputValue에서 원래 게임 실행 중 모드, 게임 한번 더 모드에 대한 인자가 중간에 사라져버려서 신경안쓰면 큰일난다.
-    private static int checkContinueMode(InputOutputController ioController) {
-        ioController.outputEndingMessage();
-        //Screen.printEndingMessage();
-        if (ioController.inputGet(PLAYAGAINMODE).equals("1")) {
-            return PLAYAGAINMODE;
+
+    private static int checkContinueMode() {
+        InputOutputController.outputEndingMessage();
+        if (InputOutputController.inputGet(PLAY_AGAIN_MODE).equals("1")) {
+            return PLAY_AGAIN_MODE;
         }
         return ENDGAME;
     }
-
 }

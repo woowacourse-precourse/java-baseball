@@ -5,7 +5,7 @@ public class RandomNumber {
     private static String randomValue;
 
     public RandomNumber(String randomValue) {
-        this.randomValue = randomValue;
+        RandomNumber.randomValue = randomValue;
     }
 
     public int countDuplicate(String userInput) {

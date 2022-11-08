@@ -1,28 +1,20 @@
 package IOController;
 
-import java.security.Key;
-
 public class InputOutputController {
 
-    private KeyboardInput user;
-    private ScreenOutput screen;
     private static int outputType;
     private static int inputType;
-    private static int inputSize;
     private static final int INPUT_CONSOLEMODE = 1;
     private static final int OUTPUT_CONSOLEMODE = 1;
 
-
     public InputOutputController(Integer InputType, Integer OutputType, Integer inputSize) {
-        //나중엔 type 에 따라 어떤 버전의 input, output 을 사용할 지 정하자 (enum 활용?)
-        this.inputSize= inputSize;
         if (OutputType == OUTPUT_CONSOLEMODE) {
             this.outputType = OUTPUT_CONSOLEMODE;
-            screen = new ScreenOutput();
+            ScreenOutput screen = new ScreenOutput(inputSize);
         }
         if (InputType == INPUT_CONSOLEMODE) {
             this.inputType = INPUT_CONSOLEMODE;
-            user= new KeyboardInput(inputSize);
+            KeyboardInput user = new KeyboardInput(inputSize);
         }
     }
 
@@ -30,7 +22,6 @@ public class InputOutputController {
         if (outputType == OUTPUT_CONSOLEMODE) {
             ScreenOutput.printGameStart();
         }
-        //콘솔이 아닌 다른 모드가 생성되면 여기에 추가만 해준다는 느낌으로
     }
 
     public static void outputInputMessage() {
@@ -54,9 +45,8 @@ public class InputOutputController {
 
     public static String inputGet(int playMode) {
         if (inputType == INPUT_CONSOLEMODE) {
-           return KeyboardInput.inputValue(playMode);
+            return KeyboardInput.inputValue(playMode);
         }
         return "";
     }
-
 }

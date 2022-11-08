@@ -6,7 +6,11 @@ public class ScreenOutput {
     private static final int INPUT_NUMBER_MODE = 2;
     private static final int GAME_END_MODE = 3;
     private static final int CALCULATED_OUTPUT_MODE = 4;
+    private static int inputSize;
 
+    ScreenOutput(int inputLength) {
+        inputSize = inputLength;
+    }
 
     public static void printGameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -17,7 +21,7 @@ public class ScreenOutput {
     }
 
     public static void printEndingMessage() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(inputSize + "개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     public static String printCalculateResult(String calculatedResult) {
@@ -25,7 +29,7 @@ public class ScreenOutput {
         return calculatedResult;
     }
 
-    public static String testComputerPrint(int mode, String input) {
+    public static void testComputerPrint(int mode, String input) {
         if (mode == GAME_START_MODE) {
             printGameStart();
         } else if (mode == INPUT_NUMBER_MODE) {
@@ -35,6 +39,5 @@ public class ScreenOutput {
         } else if (mode == CALCULATED_OUTPUT_MODE) {
             printCalculateResult(input);
         }
-        return "";
     }
 }

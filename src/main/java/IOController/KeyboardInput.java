@@ -1,18 +1,18 @@
 package IOController;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.HashSet;
 
 public class KeyboardInput {
 
     private static int inputSize;
     private static final int PLAYING_MODE = 1;
     private static final int PLAY_AGAIN_MODE = 2;
-    private static final int CORRECT_INPUT_LENGTH = 3;
 
     public KeyboardInput(int inputSize) {
         KeyboardInput.inputSize = inputSize;
     }
-//inputsize만 넣고 아직은
+
     public static String inputValue(int whatMode) {
         return (validateInput(whatMode, Console.readLine()));
     }
@@ -44,9 +44,12 @@ public class KeyboardInput {
     }
 
     private static void checkInputDuplicated(String input) {
-        if (input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2) || input.charAt(0) == input.charAt(
-            2)) {
-            throw new IllegalArgumentException("input contains duplicated input.");
+        HashSet<Character> setOfInput = new HashSet<>();
+        for (int i = 0; i < inputSize; i++) {
+            if (setOfInput.contains(input.charAt(i))) {
+                throw new IllegalArgumentException("input contains duplicated input.");
+            }
+            setOfInput.add(input.charAt(i));
         }
     }
 
