@@ -40,18 +40,16 @@ public class NumberBaseball {
             // convert numbers from Ascii to integer value
             String input = Console.readLine();
             // check the input value
-            if(){
-
-            }
-            else{
-
+            if(!checkInput(input)){
+                throw new IllegalArgumentException();
             }
         }
         while ();
+
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    private boolean checkInput(String input){
+    public boolean checkInput(String input){
         // get String as an input
         // length check
         if(input.length() >= 4){
@@ -65,6 +63,16 @@ public class NumberBaseball {
             }
         }
         return true;
+    }
+
+    private int countStrike(int[] MyAnswer){
+        int result = 0;
+        for(int i = 0; i < 3; i++){
+            if(MyAnswer[i] == CorrectAnswer.get(i)){
+                result++;
+            }
+        }
+        return result;
     }
 
 }
