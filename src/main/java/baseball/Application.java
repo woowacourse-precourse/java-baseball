@@ -27,4 +27,10 @@ public class Application {
     public static String[] split(String string){
         return string.split("");
     }
+
+    public static int toInt(String input){
+        return Integer.parseInt(input);
+    }
+
+    
 }
