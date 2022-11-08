@@ -47,6 +47,7 @@ public class BaseBallTest {
         assertThatThrownBy(()->validateInputString(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
+
     @Test
     @DisplayName("볼 체크")
     public void ballTest(){
@@ -72,6 +73,21 @@ public class BaseBallTest {
 
         //when
         Assertions.assertThat(strike).isEqualTo(3);
+    }
+
+
+    @Test
+    public void 문자열로부터_변환된_정수_리스트_검증(){
+        //given
+        String s = "456";
+        String[] splits = s.split("");
+
+        //when
+        List<Integer> integers = changeStringArrToIntegerList(splits);
+        List<Integer> integerList = List.of(4,5,6);
+
+        //then
+        assertThat(integers).isEqualTo(integerList);
     }
 
 
