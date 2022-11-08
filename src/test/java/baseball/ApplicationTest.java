@@ -58,6 +58,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("입력 숫자의 갯수가 다를 경우 확인")
+    void validateNumberCountTest() {
+        String input = "1234";
+        assertThatThrownBy(() -> new UserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자의 갯수가 다릅니다.");
+    }
+
+    @Test
+    @DisplayName("입력값이 숫자가 아닌 경우 확인")
+    void validateNumberTest() {
+        String input = "!@a";
+        assertThatThrownBy(() -> new UserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("숫자가 아닙니다.");
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
