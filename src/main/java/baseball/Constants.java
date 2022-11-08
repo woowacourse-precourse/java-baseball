@@ -8,7 +8,6 @@ public class Constants {
     public final static int GAME_OVER_NO = 1;
     public final static int GAME_OVER_YES = 2;
 
-
     // 예외사항 메세지
     public final static String ONLY_NUMBER_EXCEPTION = "숫자로 이루어진 값이 아닙니다.";
     public final static String NUMBER_LENGTH_EXCEPTION = ANSWER_NUM_CNT + "자리 자연수가 아닙니다.";
