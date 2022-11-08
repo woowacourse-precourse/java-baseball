@@ -14,8 +14,10 @@ public class Application {
 
     public static void playGame() {
         List<Integer> targetNumber = createTargetNumber();
+
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
+
             String input = Console.readLine();
             validateGuessedNumber(input);
             List<Integer> guessedNumber = parseGuessedNumber(input);
