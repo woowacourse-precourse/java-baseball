@@ -5,10 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.constant.constants.*;
+
 public class Computer {
-    final int START_NUMBER = 1;
-    final int END_NUMBER = 9;
-    final int NUMBER_LIMIT_LENGTH = 3;
+
 
     /**
      * 컴퓨터가 생성한 난수의 각 자리수를 List에 담아 Return하는 메소드

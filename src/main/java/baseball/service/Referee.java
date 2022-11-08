@@ -2,11 +2,9 @@ package baseball.service;
 
 import java.util.List;
 
-public class Referee {
-    final String STRIKE = "스트라이크";
-    final String BALL = "볼";
-    final String NOTHING = "낫싱";
+import static baseball.constant.constants.*;
 
+public class Referee {
     /**
      * User와 Computer의 숫자를 비교하여 Strike, Ball 갯수를 구하는 메소드
      * @param computer computer가 생성한 random 수
@@ -16,11 +14,12 @@ public class Referee {
     public int[] getJudgementCount(List<Integer> computer, List<Integer> user){
         int strike = 0, ball = 0;
 
-        for(int i=0;i<computer.size();i++){
-            if(computer.get(i) == user.get(i))
+        for(int i=0;i<NUMBER_LIMIT_LENGTH;i++){
+            if(computer.get(i) == user.get(i)) {
                 strike++;
-            else if(user.contains(computer.get(i)))
+            }else if(user.contains(computer.get(i))) {
                 ball++;
+            }
         }
         return new int[]{strike,ball};
     }

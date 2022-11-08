@@ -22,9 +22,15 @@ public class User {
 
         return userInput;
     }
+
+    /**
+     * 유저의 게임 재시작 여부를 입력받는 메소드
+     * @return user의 콘솔 입력
+     */
     public String userRestartInput(){
         String userInput = Console.readLine();
         validRestartNumber(userInput);
+
         return userInput;
     }
 
@@ -36,6 +42,6 @@ public class User {
     public List<Integer> getUserNumber(String userNumber){
         String[] split = userNumber.split("");
 
-        return Arrays.stream(split).map(c->Integer.valueOf(c)).collect(Collectors.toList());
+        return Arrays.stream(split).map(Integer::valueOf).collect(Collectors.toList());
     }
 }
