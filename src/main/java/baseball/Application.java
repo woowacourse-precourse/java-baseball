@@ -17,10 +17,10 @@ public class Application {
 
         printStartText(startText);
         do {
-            int exitCode=2;
-            String input="";
+            int exitCode = 2;
+            String input = "";
             List<Integer> computer = new ArrayList<>();
-            boolean isCorrect= false;
+            boolean isCorrect = false;
 
             computer = createRandomNumber();
             do {
@@ -31,20 +31,20 @@ public class Application {
                 user = StringToIntegerList(input);// 검증 받은 문자열을 한자리씩 정수로 형변환 하고 리스트에 저장
                 checkInputThreeDifferentNumber(user);
                 isCorrect = compareAndPrintResult(computer, user);
-            }while (!isCorrect);
+            } while (!isCorrect);
 
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             input = getInput();
             checkInputOneOrTwo(input);
             exitCode = Integer.parseInt(input);
 
-            if (exitCode==1){
-                newGame=true;
+            if (exitCode == 1) {
+                newGame = true;
             }
-            if (exitCode==2){
-                newGame=false;
+            if (exitCode == 2) {
+                newGame = false;
             }
-        }while (newGame);
+        } while (newGame);
         System.out.println("게임 종료");
 
     }
@@ -146,9 +146,10 @@ public class Application {
 
         System.out.println(printText);
     }
-    private static List<Integer> StringToIntegerList(String input){
+
+    private static List<Integer> StringToIntegerList(String input) {
         List<Integer> result = new ArrayList<>();
-        for (int i=0; i<input.length();i++){
+        for (int i = 0; i < input.length(); i++) {
             result.add(Character.getNumericValue(input.charAt(i)));
         }
         return result;
