@@ -18,6 +18,14 @@ public class Set {
         countStrike();
     }
 
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
+
     private void setUserAnswer(List<String> userInput) {
         this.userAnswer = userInput;
     }

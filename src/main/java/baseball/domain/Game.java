@@ -33,8 +33,8 @@ public class Game {
 
         List<String> userAnswer = user.getUserAnswer();
         Set set = new Set(computerAnswer, userAnswer);
-        int ball = set.ball;
-        int strike = set.strike;
+        int ball = set.getBall();
+        int strike = set.getStrike();
 
         message.gameResultMessage(ball, strike);
         return (strike == 3);
