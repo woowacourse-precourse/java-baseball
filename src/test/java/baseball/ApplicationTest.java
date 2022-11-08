@@ -43,6 +43,15 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void 아무_입력도_받지_않는_경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("\n"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
