@@ -6,19 +6,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomNumber {
-    public List<Integer> get(){
-        List<Integer> randomNumberList = new ArrayList<>();
-        for (int digit = 0; digit < 3; digit++){
-            randomNumberList.add(getValidateNumber(randomNumberList));
-        }
-        return randomNumberList;
+    List<Integer> randomNumberList;
+
+    public RandomNumber(){
+        this.randomNumberList = getRandomNumberList();
     }
 
-    private int getValidateNumber(List<Integer> randomNumberList){
-        int newNumber = Randoms.pickNumberInRange(1, 9);
-        while (randomNumberList.contains(newNumber)){
-            newNumber = Randoms.pickNumberInRange(1, 9);
+    public int getNumberOfStrike(List<Integer> userNumberList){
+        int numberOfStrike = 0;
+        for (int digit = 0; digit < this.randomNumberList.size(); digit++){
+            if (this.randomNumberList.get(digit).equals(userNumberList.get(digit))){
+                numberOfStrike += 1;
+            }
         }
-        return newNumber;
+        return numberOfStrike;
+    }
+
+    public int getNumberOfBall(List<Integer> userNumberList){
+        int numberOfBall = 0;
+        for (Integer userNumber : userNumberList){
+            if (this.randomNumberList.contains(userNumber)){
+                numberOfBall += 1;
+            }
+        }
+        return numberOfBall;
+    }
+
+    private List<Integer> getRandomNumberList(){
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 }
