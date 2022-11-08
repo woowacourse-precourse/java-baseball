@@ -11,6 +11,7 @@ public class BaseballInput {
 
     public List<Integer> inputNumList;
 
+
     public void userInputGame() {
         String userInput = receiveInput();
         makeInputNumList(userInput);

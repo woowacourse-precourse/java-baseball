@@ -2,7 +2,7 @@ package baseball.game;
 
 public class BaseballResult {
 
-    public static int ballNum;
+    public int ballNum;
     public int strikeNum;
 
     private void showBallResult() {
