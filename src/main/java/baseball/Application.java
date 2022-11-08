@@ -1,8 +1,10 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /* 기능목록정리
@@ -21,6 +23,11 @@ public class Application {
     public static void playGame(){
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
+            System.out.println("숫자를 입력해주세요 : ");
+            String input = Console.readLine();
+            String[] inputList = input.split("");
+            int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
+
 
         }
     }
