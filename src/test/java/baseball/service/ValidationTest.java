@@ -3,6 +3,8 @@ package baseball.service;
 import org.junit.jupiter.api.Test;
 
 import static baseball.service.Validation.isValidNumber;
+import static baseball.service.Validation.isValidReStart;
+
 import static org.assertj.core.api.Assertions.*;
 
 class ValidationTest {
@@ -23,5 +25,14 @@ class ValidationTest {
         boolean flag = isValidNumber(input);
 
         assertThat(flag).isTrue();
+    }
+
+    @Test
+    void 유효하지_않은_재입력이_들어왔을_때_예외발생() {
+        String[] inputs = {"삼사d", "1 2", "343", "1234", "12삼", "", " ", "360", "0", "3"};
+        for (String number : inputs) {
+            assertThatThrownBy(() -> isValidReStart(number))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 }
