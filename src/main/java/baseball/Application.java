@@ -92,4 +92,11 @@ public class Application {
             }
         }
     }
+
+    static boolean isCorrect(int[] ballAndStrike) {
+        if (ballAndStrike[1] == 3) {
+            return true;
+        }
+        return false;
+    }
 }
