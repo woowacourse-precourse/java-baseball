@@ -27,7 +27,7 @@ public class Application {
                 gameWin = outputOfPitchingResult(result);
             }
             else {
-                System.out.println("입력값이 잘못되었습니다.");
+                throw new IllegalArgumentException("");
             }
         }
 
