@@ -31,7 +31,7 @@ class UserTest {
     @Test
     void 예상숫자가_아닌_공백_입력() {
         User user = new User();
-        String userInput = " ";
+        String userInput = "  ";
         assertThatThrownBy(() -> {
             boolean result = user.validateUserGuessInput(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
@@ -68,6 +68,15 @@ class UserTest {
     void 다시플레이_여부_문자열값(){
         User user = new User();
         String userInput = "000abc";
+        assertThatThrownBy(() -> {
+            boolean result = user.validateUserGuessInput(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 예상숫자_중복(){
+        User user = new User();
+        String userInput = "122";
         assertThatThrownBy(() -> {
             boolean result = user.validateUserGuessInput(userInput);
         }).isInstanceOf(IllegalArgumentException.class);

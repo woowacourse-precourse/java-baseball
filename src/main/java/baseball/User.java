@@ -36,13 +36,20 @@ public class User {
         try {
             int userInt = Integer.parseInt(userInput);
             int userIntLength = String.valueOf(userInt).length();
-            if (userIntLength != 3 || userInt < 0 || userInt > 999) {
+            if (userIntLength != 3 || userInt < 0 || userInt > 999 || isDuplicatedInput(userInput)) {
                 throw new NumberFormatException();
             }
             return true;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean isDuplicatedInput(String userInput){
+        char firstNumber = userInput.charAt(0);
+        char secondNumber = userInput.charAt(1);
+        char thirdNumber = userInput.charAt(2);
+        return firstNumber == secondNumber || secondNumber == thirdNumber || firstNumber == thirdNumber;
     }
 
     private boolean checkUserReplayInput(String userInput) {
