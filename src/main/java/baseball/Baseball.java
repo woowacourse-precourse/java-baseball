@@ -17,7 +17,21 @@ public class Baseball {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         user_answer = Integer.parseInt(Console.readLine());
 
-        if(user_answer==2) run = false;
+        if(user_answer==2)
+            run = false;
+        if(user_answer==1)
+            run = true;
+        else
+            reconfirm();
+    }
+
+    public void reconfirm(){
+        System.out.println("1 또는 2 중에서만 입력해주세요.");
+        user_answer = Integer.parseInt(Console.readLine());
+        if(user_answer==2)
+            run = false;
+        if(user_answer==1)
+            run = true;
     }
 
     public boolean isNum(String response){
