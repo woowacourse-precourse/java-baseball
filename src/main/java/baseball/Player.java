@@ -16,13 +16,14 @@ public class Player {
         System.out.println(inputNum);
 
         // 3자리 숫자가 아닌경우 예외
-        if (inputNum.length() != 3) {
-            throw new IllegalArgumentException();
-        }
-
+        if (inputNum.length() != 3) throw new IllegalArgumentException();
 
         for (int i = 0; i < 3; i++) {
             int num = Character.getNumericValue(inputNum.charAt(i));
+
+            // 중복된 숫자가 있을경우 예외
+            if(myInputNumber.contains(num)) throw new IllegalArgumentException();
+
             myInputNumber.add(num);
         }
     }
