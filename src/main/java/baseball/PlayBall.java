@@ -24,13 +24,17 @@ public class PlayBall {
     }
 
     public void handleUserInput(){
-        boolean isGameOver = true;
+        boolean isGameOver = false;
 
-        while(isGameOver){
+        while(!isGameOver){
             String userNumberInput = playBallUI.takeUserInput();
-
             checkUserInput(userNumberInput);
+
             this.referee = judgeUserNumber(userNumberInput);
+            int strike = referee.getStrike();
+            int ball = referee.getBall();
+            playBallUI.showJudgeMessage(strike, ball);
+
             isGameOver = referee.isAnswer();
         }
 
