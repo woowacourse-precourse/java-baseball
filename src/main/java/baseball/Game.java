@@ -30,6 +30,14 @@ public class Game {
 		while (!exit) {
 			playerNumber.getAnswer();
 			player = playerNumber.getNumber();
+
+			resetScore();
+			score();
+			printResult();
+
+			if (strike == COUNT_NUMBER) {
+				ExitOrRestart(computerNumber);
+			}
 		}
 	}
 
@@ -47,6 +55,11 @@ public class Game {
 		}
 	}
 
+	private void resetScore() {
+		strike = 0;
+		ball = 0;
+	}
+
 	private String StrikeOrBall(int num, int index) {
 		for (int i = 0; i < COUNT_NUMBER; i++) {
 			if (computer[i] == num && i == index) {
@@ -57,6 +70,13 @@ public class Game {
 			}
 		}
 		return NOT_MATCH_WORD;
+	}
+
+	private void printResult() {
+		System.out.println(getResult());
+		if (strike == COUNT_NUMBER) {
+			System.out.println(THREE_STRIKE_MESSAGE);
+		}
 	}
 	
 	private String getResult() {
@@ -77,4 +97,26 @@ public class Game {
 		return result;
 	}
 	
+	private void ExitOrRestart(Number computerNumber) {
+		String input = inputExit();
+		if (END_GAME.equals(input)) {
+			exit = true;
+		} else {
+			computerNumber.setRandomNumber();
+			computer = computerNumber.getNumber();
+		}
+	}
+	
+	private String inputExit() {
+		System.out.println(END_MESSAGE);
+		String input = Console.readLine();
+		if(!checkInput(input)) {
+			throw new IllegalArgumentException();
+		}
+		return input;
+	}
+	
+	private boolean checkInput(String input) {
+		return input.equals(NEW_GAME) || input.equals(END_GAME);
+	}
 }
