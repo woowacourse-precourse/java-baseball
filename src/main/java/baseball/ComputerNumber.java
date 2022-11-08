@@ -14,6 +14,7 @@ public class ComputerNumber {
     List<Integer> computerNumber = new ArrayList<>();
 
     public List<Integer> createComputerNumber() {
+        computerNumber = new ArrayList<>();
         while (isMaxSize()) {
             addComputerNumber(Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE));
         }
