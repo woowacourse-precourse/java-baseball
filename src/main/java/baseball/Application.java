@@ -30,9 +30,16 @@ public class Application {
         final int escapeNumberLength = 1;
         //게임 재시작시 입력 수를 1,2로 설정하 였기 때문에 예외처리시 필요한 수는 1이다.
 
-        System.out.println(output.start);
-        output.setRandomNumber(computer, gameTypeNumber);
-        new CenterGameProcess(computer, gameTypeNumber);
+        while (true) {
+            System.out.println(output.start);
+            output.setRandomNumber(computer, gameTypeNumber);
+            new CenterGameProcess(computer, gameTypeNumber);
+            int escapeNumber = output.escape(output.Question(output.restart, escapeNumberLength));
+            int escapeGame = escapeGame(escapeNumber);
+            if (escapeGame == 2) {
+                break;
+            }
+        }
 
     }
 }
