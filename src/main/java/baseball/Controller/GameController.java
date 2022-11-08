@@ -51,7 +51,12 @@ public class GameController {
         if(input.equals("1")) {
             selectRandomNumber();
             gaming();
+            return;
         }
+        else if(input.equals("2"))
+            return;
+
+        throw new IllegalArgumentException();
     }
 
     public List<Integer> inputNumber() {
