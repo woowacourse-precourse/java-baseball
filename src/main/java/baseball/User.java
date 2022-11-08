@@ -11,6 +11,8 @@ public class User {
 
     static final String INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     static final int MAX_SIZE = 3;
+    static final char MIN_NUM_CHAR = '1';
+    static final char MAX_NUM_CHAR = '9';
 
     private String inputNum;
     private List<Integer> userNumbers;
@@ -43,5 +45,16 @@ public class User {
         Set<Integer> userNumbersSet = new HashSet<>(userNumbers);
 
         return userNumbersSet.size() == userNumbers.size();
+    }
+
+    public boolean checkInteger(List<Integer> userNumbers) {
+        for (int index = 0; index < userNumbers.size(); index++) {
+            int userNum = userNumbers.get(index);
+            char userNumChar = (char) userNum;
+            if (userNumChar < MIN_NUM_CHAR || userNumChar > MAX_NUM_CHAR) {
+                return false;
+            }
+        }
+        return true;
     }
 }
