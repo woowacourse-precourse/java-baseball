@@ -7,6 +7,10 @@ public class Application {
     public static final int END = 2;
 
     public static void main(String[] args) {
+        Game game = new Game();
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        game.playGame();
+        restartOrEndGame();
     }
 
     public static void restartOrEndGame() {
