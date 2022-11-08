@@ -1,7 +1,24 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * Baseball game application.
+ *
+ * @author Davin An
+ * @version 2.0
+ */
 public class Application {
 
+    /**
+     * Generates a 3 digit random number without duplicates.
+     *
+     * @return A random number in a List structure
+     */
     public static List<Integer> randomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -13,6 +30,12 @@ public class Application {
         return computer;
     }
 
+    /**
+     * Converts string input into a List structure.
+     *
+     * @param input User input
+     * @return Player's number in a List structure
+     */
     public static List<Integer> playerNumber(String input) {
         List<Integer> player = new ArrayList<>();
         int num;
@@ -26,6 +49,11 @@ public class Application {
         return player;
     }
 
+    /**
+     * Tests for Exceptions 1-3 on the player's number.
+     *
+     * @param input User input
+     */
     public static void playerNumException(String input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 01 : 아무것도 입력하지 않았습니다.");
@@ -36,6 +64,14 @@ public class Application {
         }
     }
 
+
+    /**
+     * Compares the random number and player's number.
+     *
+     * @param computer Randomly generated number
+     * @param player   Player's number
+     * @return True if two numbers are equal. False otherwise
+     */
     public static boolean evaluate(List<Integer> computer, List<Integer> player) {
         int strike = 0;
         int ball = 0;
@@ -50,6 +86,12 @@ public class Application {
         return (strike == 3);
     }
 
+    /**
+     * Prints out the results of the evaluation in Nothing, Balls, and Strikes.
+     *
+     * @param strike Number of strikes the player has
+     * @param ball   Number of balls the player has
+     */
     public static void printResult(int strike, int ball) {
         if ((strike == 0) && (ball == 0)) {
             System.out.println("낫싱");
@@ -62,6 +104,11 @@ public class Application {
         }
     }
 
+    /**
+     * Tests for Exception 5 on the player's exit sequence.
+     *
+     * @param input User input
+     */
     public static void exitSequenceException(String input) {
         if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException("[ERROR] 05 : 잘못된 값이 입력되었습니다.");
@@ -69,6 +116,11 @@ public class Application {
     }
 
 
+    /**
+     * Main method for where each game begins.
+     *
+     * @param args Console arguments
+     */
     public static void main(String[] args) {
         String input;
         List<Integer> computer;
