@@ -27,8 +27,18 @@ public class Application {
             System.out.println("숫자를 입력해주세요 : ");
             String input = readLine();
 
+            HashMap<String, Integer> ballStrikeNum = initializeBallStrikePoint();
+
         }
     }
+
+    private static HashMap<String, Integer> initializeBallStrikePoint() {
+        HashMap<String, Integer> ballStrikeNum = new HashMap<>();
+        ballStrikeNum.put("ballNum", 0);
+        ballStrikeNum.put("strikeNum", 0);
+        return ballStrikeNum;
+    }
+
 
     private static List<Integer> getRandomValue() {
         List<Integer> computer = new ArrayList<>();
