@@ -7,6 +7,7 @@ public class BaseballNumber {
     private final int ballNumber;
 
     public BaseballNumber(int ballNumber) {
+        validateBallNumber(ballNumber);
         this.ballNumber = ballNumber;
     }
 
