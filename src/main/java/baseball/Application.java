@@ -28,8 +28,10 @@ public class Application {
             String[] inputList = input.split("");
             int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
 
-
         }
+    }
+    private static void printNumberStatus(Integer[] inputList, List<Integer> computer){
+
     }
 
     public static List<Integer> generateRandomNum() {
@@ -43,4 +45,7 @@ public class Application {
         }
         return computer;
     }
+
+
+
 }
