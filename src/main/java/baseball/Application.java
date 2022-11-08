@@ -76,6 +76,17 @@ public class Application {
         return numsOfEqualNumber - strike;
     }
 
+    public static boolean youWantMoreGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String choice = readLine();
+        if (choice.equals("1")) {
+            return true;
+        } else if (choice.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
