@@ -21,5 +21,6 @@ public class GameController {
 
     public void start() {
         service.startGame();
+        Views.INITIAL_VIEW.getView().view();
     }
 }
