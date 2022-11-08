@@ -17,11 +17,11 @@ public class Application {
 
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        pcNum = genPcNum();  // 컴퓨터 숫자 생성
         do {
+            pcNum = genPcNum();  // 컴퓨터 숫자 생성
             playGame();
             getRestartNum();  // 게임 재시작 여부 확인
-        } while (restart == "1");
+        } while (restart.equals("1"));
         assertThat(restart).isEqualTo("2");  // 게임 종료 여부 확인
         System.out.println("게임을 종료합니다.");
     }
@@ -38,9 +38,10 @@ public class Application {
     private static int[] getUmpire(int[] playerNum, int[] pcNum) {        
         int[] judgement = {0, 0};  // judgement = {볼, 스트라이크}
         for (int i=0; i < playerNum.length; i++) {
-            if (playerNum[i] == pcNum[i]) {
+            int digit = playerNum[i];
+            if (digit == pcNum[i]) {
                 judgement[1] += 1;
-            } else if (Arrays.asList(pcNum).contains(playerNum[i])) {
+            } else if (Arrays.stream(pcNum).anyMatch(j -> j == digit)) {
                 judgement[0] += 1;
             }
         }    
@@ -93,20 +94,21 @@ public class Application {
     }
     private static void getPlayerNum() {
         System.out.println("숫자를 입력해주세요 : ");
-        String[] playerInput = Console.readLine().split("");
-        if (playerInput.length != 3) {
-            throw new IllegalArgumentException("Input should be a length of 3.");
-        }
-        for (int i=0; i < playerInput.length; i++) {
-            try {
+        try {
+            String[] playerInput = Console.readLine().split("");
+            for (int i=0; i < playerInput.length; i++) {
                 playerNum[i] = Integer.parseInt(playerInput[i]);
-            } catch (Exception e) {
-                throw new IllegalArgumentException("Input should be integers.");
             }
+            if (playerInput.length != 3) {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception e) {
+            System.out.println("Error Message: Input must integers of 3 digits.");
+            e.printStackTrace();
         }
         boolean playerNumValidity = isPlayerNumValid(playerNum); // 유효성 검사
         if (playerNumValidity == false) {
-            throw new IllegalArgumentException("Input should be 3 different integers in range of 1 to 9.");
+            throw new IllegalArgumentException("Input must be 3 different integers in range of 1 to 9.");
         }
     }
     private static void playGame() {
@@ -115,14 +117,20 @@ public class Application {
             judgement = getUmpire(playerNum, pcNum);  // 플레이어 입력값 분석
             hint = getHint(judgement);  // 분석 결과에 따른 힌트 도출
             result = getResult(judgement);  // 분석 결과에 따른 결과 도출
+            printResults();  // 결과 출력
         } while (result == "retry");
     }
     private static void getRestartNum() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         restart = Console.readLine();
-        if (restart != "1" || restart != "2") {
+        if (!restart.equals("1") && !restart.equals("2")) {
             throw new IllegalArgumentException("Input should only be '1' or '2'.");
         }
-
+    }
+    private static void printResults() {
+        System.out.println(hint);
+        if (result == "win") {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 }
