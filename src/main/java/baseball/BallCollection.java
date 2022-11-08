@@ -44,6 +44,14 @@ public class BallCollection {
         return new BallCollection(balls);
     }
 
+    public Integer get(int index) {
+        return balls.get(index);
+    }
+
+    public boolean contains(Integer number) {
+        return balls.contains(number);
+    }
+
     public int size() {
         return this.balls.size();
     }
