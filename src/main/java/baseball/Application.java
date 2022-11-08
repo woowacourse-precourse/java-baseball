@@ -75,6 +75,10 @@ public class Application {
         return result;
     }
 
+    public static boolean isGameOver(String str) {
+        return str.equals("3스트라이크");
+    }
+
     public static void baseballGame() {
         String randomNumber = "";
         String restartNumber = "";
@@ -90,10 +94,11 @@ public class Application {
         String baseballNumber = "";
         String hint = "";
 
-        while (true) {
+        do {
             baseballNumber = inputBaseballNumber();
             hint = getHint(randomNumber, baseballNumber);
-        }
+
+        } while (!isGameOver(hint));
         return "";
     }
 
