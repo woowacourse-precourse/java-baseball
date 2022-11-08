@@ -25,8 +25,10 @@ public class Computer {
         return "";
     }
 
-    private List<Integer> compareNumbers() {
-        return new ArrayList<>();
+    public List<Integer> getStrikeBallList(int sameNumbersCnt, int numberOfDigitCnt) {
+        int strike = numberOfDigitCnt;
+        int ball = sameNumbersCnt - strike;
+        return new ArrayList<>(List.of(strike, ball));
     }
 
     public int checkSameNumbersCount(List<Integer> computerList, List<Integer> playerList) {
