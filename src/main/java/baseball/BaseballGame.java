@@ -36,7 +36,7 @@ public class BaseballGame {
     }
 
     void finishEntireGame() {
-
+        System.out.println("게임을 완전히 종료합니다.");
     }
 
 
