@@ -1,11 +1,11 @@
 package baseball;
 
-public class CheckValidArgument {
-    private final int MAX_NUMBER_SIZE = 3;
+public class CheckingValidArgument {
+    private final int maxNumberSize = 3;
 
     // 세자리 숫자인지 점검
     public void isMaxSize(String number) throws IllegalArgumentException {
-        if (number.length() != MAX_NUMBER_SIZE) {
+        if (number.length() != maxNumberSize) {
             throw new IllegalArgumentException();
         }
     }
@@ -14,7 +14,7 @@ public class CheckValidArgument {
     public void isNumber(String number) {
         try {
             Integer.parseInt(number);
-        } catch (IllegalArgumentException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }

@@ -4,7 +4,7 @@ public class Application {
     public static void main(String[] args) {
         // 게임 객체 인스턴스화
         NumberBaseballGame numberBaseballGame = new NumberBaseballGame();
-        CheckValidArgument checkValidArgument = new CheckValidArgument();
+        CheckingValidArgument checkingValidArgument = new CheckingValidArgument();
 
         // 게임 시작
         numberBaseballGame.gameStart();
@@ -16,9 +16,9 @@ public class Application {
             String number = numberBaseballGame.inputNumber();
 
             // 예외 처리 1 : 올바른 숫자가 입력됐는가?
-            checkValidArgument.isNumber(number);
+            checkingValidArgument.isNumber(number);
             // 예외 처리 2 : 숫자가 세자리 숫자인가?
-            checkValidArgument.isMaxSize(number);
+            checkingValidArgument.isMaxSize(number);
 
             // 입력한 숫자를 기반으로 게임 결과 계산하기
             numberBaseballGame.countGameResults();
