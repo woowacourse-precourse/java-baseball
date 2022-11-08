@@ -16,6 +16,7 @@ import static baseball.util.BaseballConst.MAX_BALL_COUNT;
 
 public class Player {
 
+    public static final int OUT_OF_RANGE_NUMBER = 0;
     private String inputString;
 
     public List<Integer> inputThreeNumbers(String inputString) throws BaseballException {
@@ -43,7 +44,7 @@ public class Player {
     }
 
     private void validateEachNumberRange(Set<Integer> numSet) {
-        if (numSet.contains(0)) {
+        if (numSet.contains(OUT_OF_RANGE_NUMBER)) {
             throw new EachInputNumberOutOfRangeException(inputString);
         }
     }
