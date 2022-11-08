@@ -29,4 +29,15 @@ public class BaseballGame {
 
         output.printEndingMessage();
     }
+
+    public boolean exit() {
+        String inputNumber = input.inputNumberGameRestartOrExit();
+        input.inputRestartOrExitNumberValid(inputNumber);
+
+        if (inputNumber.equals("1")) {
+            return false;
+        }
+
+        return true;
+    }
 }
