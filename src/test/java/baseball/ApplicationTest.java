@@ -52,6 +52,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void 사용자_최초_입력값이_정답인_경우() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "2");
+                    assertThat(output()).contains("3스트라이크", "게임 종료");
+                },
+                1, 3, 5
+        );
+    }
+    
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
