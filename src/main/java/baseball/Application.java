@@ -25,6 +25,7 @@ public class Application {
             Exceptions.isValidReGameAnswer(reGameAnswer);
             startOrEnd = Integer.parseInt(reGameAnswer);
         }
+        System.out.println(GAME_OVER_MESSAGE);
     }
 
     public static List<Integer> pickUniqueNumbersInRange(
