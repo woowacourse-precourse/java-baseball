@@ -44,13 +44,13 @@ public class Application {
         List<Integer> user = new ArrayList<>();
 
         if (isNumberValidate(number) == false) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.");
         }
 
         for (int i = 0; i < number.length(); i++) {
             int numberToInt = Integer.parseInt(String.valueOf(number.charAt(i)));
             if (user.contains(numberToInt)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("중복된 숫자는 잘못된 입력값입니다.");
             }
             user.add(numberToInt);
         }
@@ -99,7 +99,7 @@ public class Application {
 
     public static void checkSize(List<Integer> user) {
         if (user.size() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
         }
     }
 
@@ -127,7 +127,7 @@ public class Application {
         } else if (restart == 2) {
             return false;
         } else if (restart != 1 || restart != 2) {
-            throw new IllegalArgumentException("정상적인 값이 아닙니다");
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
         }
 
         return false;
