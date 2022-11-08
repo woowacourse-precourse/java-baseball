@@ -7,6 +7,12 @@ import java.util.Set;
 
 public class UserException {
 
+    public static void checkUserInputException(String userInputNumber) {
+        if (isDuplication(userInputNumber) || isNotLength3(userInputNumber) || isNotInt(userInputNumber) || isContainZero(userInputNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static boolean isDuplication(String userInputNumber) {
         Set<String> deduplication = new HashSet<>(List.of(userInputNumber.split("")));
         return deduplication.size() != 3;
