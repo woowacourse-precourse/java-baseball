@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     static public String answer = null;
     static  Scanner sc = new Scanner(System.in);
-   /*
+
     public static String inputCheck(String input) {
         if (input.length() >= 4) {
             System.out.println("뭐가 틀렸는데");
@@ -15,8 +15,8 @@ public class Application {
             return input;
         }
     }
-*/
-    
+
+
     public static String Random() {
         Set<String> rand = new HashSet<>();
         while (rand.size() != 3) {
