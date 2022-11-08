@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("유저 입력에 중복이 없는지 테스트")
-    void checkDuplicate() {
+    void checkDuplicateTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("118"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -46,7 +46,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("유저 입력에 공백이 포함되어 있는지 테스트")
-    void checkSpace() {
+    void checkSpaceTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1 4"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -55,7 +55,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("유저 입력에 숫자가 아닌것이 있는지 테스트")
-    void checkNumber() {
+    void checkNumberTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("2!3"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("유저 입력 숫자의 길이 유효성 테스트")
-    void checkNumberSizeUnder() {
+    void checkNumberSizeUnderTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("23"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -73,7 +73,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     @DisplayName("재시작 커맨드에 예상치 못한 입력 예외처리 테스트")
-    void checkRestartCommend() {
+    void checkRestartCommendTest() {
         assertRandomNumberInRangeTest(
                 () -> {
                     assertThatThrownBy(() -> run("246", "135", "1", "597", "589", "3"))

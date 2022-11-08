@@ -14,7 +14,7 @@ public class UserTest {
 
     @Test
     @DisplayName("유저 입력 String List 변환 테스트")
-    void userInputToList() {
+    void userInputToListTest() {
         final int COUNT = 3;
         user.setUserNumber("123");
         List<Integer> answer = List.of(1, 2, 3);
@@ -25,28 +25,28 @@ public class UserTest {
 
     @Test
     @DisplayName("유저 입력에 중복이 없는지 테스트")
-    void checkDuplicate() {
+    void checkDuplicateTest() {
         String userInput = "446";
         assertThat(user.checkDuplicateNumber(userInput)).isTrue();
     }
 
     @Test
     @DisplayName("유저 입력에 숫자가 아닌것이 있는지 테스트")
-    void checkNumber() {
+    void checkNumberTest() {
         String userInput = "a12";
         assertThat(user.checkNumber(userInput)).isTrue();
     }
 
     @Test
     @DisplayName("유저 입력의 숫자가 3개가 아닌지 테스트")
-    void checkNumberSize() {
+    void checkNumberSizeTest() {
         String userInput = "6254";
         assertThat(user.checkNumberSize(userInput)).isTrue();
     }
 
     @Test
     @DisplayName("유저 입력에 공백이 있는지 테스트")
-    void checkSpace() {
+    void checkSpaceTest() {
         String userInput = "5 2";
         assertThat(user.checkSpace(userInput)).isTrue();
     }

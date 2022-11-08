@@ -14,7 +14,7 @@ public class BaseBallTest {
 
     @Test
     @DisplayName("숫자 야구 게임 테스트")
-    public void getResultGame() {
+    public void getResultGameTest() {
         baseBallService.initGame();
         baseBallService.userInputSave("123");
 

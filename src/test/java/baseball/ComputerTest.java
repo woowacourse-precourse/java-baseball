@@ -14,7 +14,7 @@ public class ComputerTest {
 
     @Test
     @DisplayName("컴퓨터 숫자 생성 개수 테스트")
-    void randomGenerate() {
+    void randomGenerateTest() {
         final int COUNT = 3;
         computer.randomGenerate();
         assertThat(computer.getComputerNumberList().size()).isEqualTo(COUNT);
@@ -22,7 +22,7 @@ public class ComputerTest {
 
     @Test
     @DisplayName("게임 초기화시 난수 다르게 생성 됐는지 테스트")
-    void resetGame() {
+    void resetGameTest() {
         computer.randomGenerate();
         List<Integer> beforeReset = computer.getComputerNumberList();
         String beforeResetString = String.join("", beforeReset.toString());
