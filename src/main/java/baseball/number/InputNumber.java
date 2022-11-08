@@ -1,8 +1,8 @@
-package baseball.ballnumber;
+package baseball.number;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputBallNumber {
+public class InputNumber {
 
     private static final int BALL_NUMBER_LENGTH = 3;
 
