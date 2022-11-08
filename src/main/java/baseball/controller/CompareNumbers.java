@@ -11,9 +11,7 @@ public class CompareNumbers {
         int strike = countStrike(userNumberList, computerNumberList);
         int ball = countBall(userNumberList, computerNumberList);
 
-        if (strike != 3) {
-            OutputView.printHint(ball, strike);
-        }
+        OutputView.printHint(ball, strike);
 
         return strike;
     }
