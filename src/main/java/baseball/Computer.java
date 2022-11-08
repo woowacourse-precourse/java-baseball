@@ -33,4 +33,19 @@ public class Computer {
 
         return strikeNumber;
     }
+
+    private int countBall(List<Integer> guessNumber) {
+        int ballNumber = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (Objects.equals(answerNumber.get(i), guessNumber.get(i))) {
+                continue;
+            }
+            if (answerNumber.contains(guessNumber.get(i))) {
+                ballNumber++;
+            }
+        }
+
+        return ballNumber;
+    }
 }
