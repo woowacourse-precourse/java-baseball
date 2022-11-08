@@ -21,6 +21,25 @@ public class NumberBaseBallGame {
         computer.selectBalls();
     }
 
+    private void processingGameResult() {
+        List<String> userSelectedBalls = user.getSelectBalls();
+        List<String> computerSelectedBalls = computer.getSelectBalls();
+
+        if (isNothing(userSelectedBalls, computerSelectedBalls)) {
+            Message.NOTHING.print();
+            return;
+        }
+
+        int strike = getStrike(userSelectedBalls, computerSelectedBalls);
+        int ball = getBall(userSelectedBalls, computerSelectedBalls, strike);
+        Message.printGameResult(strike, ball);
+
+        if (isEverythingRight(strike)) {
+            Message.END.print();
+            this.isEnd = true;
+        }
+    }
+
     private boolean isNothing(List<String> userSelectBalls, List<String> computerSelectBalls) {
         return userSelectBalls.stream()
             .noneMatch(computerSelectBalls::contains);
