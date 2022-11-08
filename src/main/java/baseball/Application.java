@@ -24,16 +24,19 @@ public class Application {
         game.printGameStartMessage();
 
         // 기본 게임 로직
-        while (hint.strike == 3) {
-            game.requestAnswer();
-            hint.compareAnswer(game);
-            hint.showResult();
-            hint.clear();
-        }
-        if (hint.strike == 3) {
-            game.printWinMessage();
-            game.printReGameMessage();
-        }
+
+        do {
+            while (hint.strike == 3) {
+                game.requestAnswer();
+                hint.compareAnswer(game);
+                hint.showResult();
+                hint.clear();
+            }
+            if (hint.strike == 3) {
+                game.printWinMessage();
+                game.printReGameMessage();
+            }
+        } while (game.restartOrStop(game.restartOrStopInput()) == 1);
 
 
     }
@@ -231,7 +234,7 @@ class Hint {
 
     void compareAnswer(Game game) {
         // 게임의 정답을 가져온다.
-        List<Integer> gameAnswer = game.getGameAnswer();
+        List<Integer> gameAnswer = Game.getGameAnswer();
         // 각 자리별로 비교하면 Strike, Ball을 계산한다.
         for (int digit = 0; digit < gameAnswer.size(); digit++) {
             int curNumber = Game.getGuessNumber().get(digit);
