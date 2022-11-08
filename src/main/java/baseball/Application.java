@@ -23,31 +23,33 @@ public class Application {
             }
         }
     }
+
     // 재시작 메서드
-    public static boolean wantReGame(){
+    public static boolean wantReGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        while(true) {
+        while (true) {
             String reGameInput = Console.readLine();
-            if( reGameInput.equals("1")){
+            if (reGameInput.equals("1")) {
                 return true;
-            }
-            else if(reGameInput.equals("2")){
+            } else if (reGameInput.equals("2")) {
                 return false;
-            }else {
+            } else {
                 throw new IllegalArgumentException();
             }
         }
 
     }
+
     // 게임 시작
     public static boolean gaming(List<Integer> computer) {
         boolean notGameOver = true;
-        while(notGameOver){
+        while (notGameOver) {
             List<Integer> user = inputNumber();
-            notGameOver = !compareNum(user,computer);
+            notGameOver = !compareNum(user, computer);
         }
         return true;
     }
+
     // 숫자 비교
     public static boolean compareNum(List<Integer> computer, List<Integer> user) {
         int strikeCount = countStrike(computer, user);
@@ -55,16 +57,18 @@ public class Application {
 
         return isGameOverPrint(strikeCount, ballCount);
     }
+
     // 볼 개수 계산
     public static int countBall(List<Integer> computerNum, List<Integer> userNum) {
         int ballCount = 0;
-        for(int i=0; i< computerNum.size(); i++) {
-            if(computerNum.contains(userNum.get(i))){
+        for (int i = 0; i < computerNum.size(); i++) {
+            if (computerNum.contains(userNum.get(i))) {
                 ballCount++;
             }
         }
         return ballCount;
     }
+
     // 스트라이크 개수 계산
     public static int countStrike(List<Integer> computerNum, List<Integer> userNum) {
         int strikeCount = 0;
@@ -75,27 +79,26 @@ public class Application {
         }
         return strikeCount;
     }
+
     // 비교한 숫자 결과 출력
     public static boolean isGameOverPrint(int strikeCount, int ballCount) {
-        if(strikeCount==3) {
+        if (strikeCount == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
-        if(ballCount== 0 && strikeCount == 0 ){
+        if (ballCount == 0 && strikeCount == 0) {
             System.out.println("낫싱");
-        }
-        else if(strikeCount!=0 && ballCount!=0) {
-            System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
-        }
-        else if(strikeCount==0 && ballCount!=0){
-            System.out.println(ballCount+"볼");
-        }
-        else if(strikeCount!=0 && ballCount==0){
-            System.out.println(strikeCount+"스트라이크");
+        } else if (strikeCount != 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+        } else if (strikeCount == 0 && ballCount != 0) {
+            System.out.println(ballCount + "볼");
+        } else if (strikeCount != 0 && ballCount == 0) {
+            System.out.println(strikeCount + "스트라이크");
         }
         return false;
     }
+
     // 숫자 입력
     public static List<Integer> inputNumber() {
 
@@ -104,6 +107,7 @@ public class Application {
         System.out.println(user);
         return user;
     }
+
     // 예외 처리 후 String to List<Integer>
     public static List<Integer> stringToListInteger(String num) {
         List<Integer> userInputNum = new ArrayList<>();
@@ -112,6 +116,7 @@ public class Application {
         }
         return userInputNum;
     }
+
     // 입력 예외 처리
     public static List<Integer> inputExeption() {
         List<Integer> userInputNum;
@@ -136,6 +141,7 @@ public class Application {
         userInputNum = stringToListInteger(num);
         return userInputNum;
     }
+
     public static boolean inputExeptionIsDifferent(String num) {
         Set strSet = new HashSet();
         strSet.add(num.charAt(0));
@@ -153,6 +159,7 @@ public class Application {
         isDigit = Character.isDigit(num.charAt(0)) && Character.isDigit(num.charAt(1)) && Character.isDigit(num.charAt(2));
         return isDigit;
     }
+
     // 난수 발생기
     public static List<Integer> makeRandomInteger() {
         List<Integer> computer = new ArrayList<>();
