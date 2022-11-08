@@ -38,4 +38,15 @@ class HintTest {
         assertThat(ball_false).isFalse();
     }
 
+    @Test
+    public void 힌트_정확성_확인_3스트라이크() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(1, 3, 5);
+        List<Integer> userNumber = List.of(1, 3, 5);
+        //when
+        hint.giveHint(computerNumber, userNumber);
+        //then
+        assertThat(hint.getStrikeCount()).isEqualTo(3);
+    }
+
 }
