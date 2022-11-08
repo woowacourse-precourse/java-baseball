@@ -22,7 +22,7 @@ public class Application {
 
 
 
-                PlayingBaseball round = new PlayingBaseball(numberComputer, numberPlayer);
+                PlayBaseball round = new PlayBaseball(numberComputer, numberPlayer);
                 round.countStrikes();
                 round.countBalls();
                 round.printResult();

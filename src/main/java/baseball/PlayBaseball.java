@@ -1,22 +1,22 @@
 package baseball;
 
 
-class PlayingBaseball {
-    private final String numberOfComputer;
-    private final String numberOfPlayer;
+class PlayBaseball {
+    private final String numberComputer;
+    private final String numberPlayer;
     private final int LENGTH = 3;
     private int strike = 0;
     private int ball = 0;
 
 
-    PlayingBaseball (String numberComputer, String numberPlayer) {
-        this.numberOfComputer = numberComputer;
-        this.numberOfPlayer = numberPlayer;
+    PlayBaseball (String numberComputer, String numberPlayer) {
+        this.numberComputer = numberComputer;
+        this.numberPlayer = numberPlayer;
     }
 
     void countStrikes () {
         for (int i = 0; i < LENGTH; i++) {
-            if (numberOfComputer.charAt(i) == numberOfPlayer.charAt(i)) {
+            if (numberComputer.charAt(i) == numberPlayer.charAt(i)) {
                 strike += 1;
             }
         }
@@ -24,11 +24,11 @@ class PlayingBaseball {
 
     void countBalls () {
         for (int i = 0; i < LENGTH; i++) {
-            String temp = String.valueOf(numberOfPlayer.charAt(i));
-            if (numberOfComputer.contains(temp)) {
+            String temp = String.valueOf(numberPlayer.charAt(i));
+            if (numberComputer.contains(temp)) {
                 ball += 1;
             }
-            if (numberOfPlayer.charAt(i) == numberOfComputer.charAt(i)) {
+            if (numberPlayer.charAt(i) == numberComputer.charAt(i)) {
                 ball -= 1;
             }
         }
