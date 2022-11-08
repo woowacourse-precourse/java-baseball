@@ -5,11 +5,16 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constants.GAME_START_MESSAGE;
+import static baseball.Constants.INPUT_NUMBER_MESSAGE;
+import static baseball.Constants.INPUT_GAME_OVER_YN_MESSAGE;
+import static baseball.Constants.GAME_OVER_NO;
+
 public class GameProcess {
 
     // 게임 최초 시작
     public static void newStart() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println(GAME_START_MESSAGE);
         start();
     }
 
@@ -24,7 +29,7 @@ public class GameProcess {
 
     // 수 입력 받기
     public static void getInputNum(List<Integer> randomNumList, boolean answer) {
-        System.out.print("숫자를 입력해주세요 : ");
+        System.out.print(INPUT_NUMBER_MESSAGE);
 
         // 사용자 입력값 받기
         String inputNum = Console.readLine();
@@ -53,7 +58,7 @@ public class GameProcess {
 
         // 정답인 경우, 종료 구분값 받기
         if (answer) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(INPUT_GAME_OVER_YN_MESSAGE);
             String inputOverYn = Console.readLine();
 
             // 입력값 검증
@@ -66,7 +71,7 @@ public class GameProcess {
     }
 
     private static void isOver(int overYnNum) {
-        if (overYnNum == 1) {
+        if (overYnNum == GAME_OVER_NO) {
             start();
         }
     }

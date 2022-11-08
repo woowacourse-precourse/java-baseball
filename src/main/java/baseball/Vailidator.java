@@ -3,6 +3,18 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Constants.ANSWER_NUM_CNT;
+import static baseball.Constants.ANSWER_NUM_RANGE_START;
+import static baseball.Constants.ANSWER_NUM_RANGE_END;
+import static baseball.Constants.GAME_OVER_NO;
+import static baseball.Constants.GAME_OVER_YES;
+
+import static baseball.Constants.ONLY_NUMBER_EXCEPTION;
+import static baseball.Constants.NUMBER_LENGTH_EXCEPTION;
+import static baseball.Constants.NUMBER_RANGE_EXCEPTION;
+import static baseball.Constants.NUMBER_DUPLICATE_EXCEPTION;
+import static baseball.Constants.OVER_YN_EXCEPTION;
+
 public class Vailidator {
 
     // 사용자 입력값 검증 - 랜덤수
@@ -18,14 +30,14 @@ public class Vailidator {
         try {
             int inputNum = Integer.parseInt(inputNumStr);
         } catch (Exception e) {
-            throw new IllegalArgumentException("숫자로 이루어진 값이 아닙니다.");
+            throw new IllegalArgumentException(ONLY_NUMBER_EXCEPTION);
         }
     }
 
     // 3자리 수
     public static void checkInputNumLength(String inputNumStr) {
-        if (inputNumStr.length() != 3) {
-            throw new IllegalArgumentException("3자리 자연수가 아닙니다.");
+        if (inputNumStr.length() != ANSWER_NUM_CNT) {
+            throw new IllegalArgumentException(NUMBER_LENGTH_EXCEPTION);
         }
     }
 
@@ -34,8 +46,8 @@ public class Vailidator {
         String[] numArr = inputNumStr.split("");
         for (String s : numArr) {
             int num = Integer.parseInt(s);
-            if (num < 1) {
-                throw new IllegalArgumentException("각자리 수가 1에서 9까지의 수로 이루어진 값이 아닙니다.");
+            if (num < ANSWER_NUM_RANGE_START || num > ANSWER_NUM_RANGE_END) {
+                throw new IllegalArgumentException(NUMBER_RANGE_EXCEPTION);
             }
         }
     }
@@ -47,7 +59,7 @@ public class Vailidator {
         for (String s : numArr) {
             int num = Integer.parseInt(s);
             if (numList.contains(num)) {
-                throw new IllegalArgumentException("각자리 수는 중복될 수 없습니다.");
+                throw new IllegalArgumentException(NUMBER_DUPLICATE_EXCEPTION);
             }
             numList.add(num);
         }
@@ -55,8 +67,8 @@ public class Vailidator {
 
     // 사용자 입력값 검증 - 종료여부 구분값
     public static void checkInputOverYn(int overYnNum) {
-        if (!(overYnNum == 1 || overYnNum == 2)) {
-            throw new IllegalArgumentException("입력값이 1 또는 2가 아닙니다.");
+        if (!(overYnNum == GAME_OVER_NO || overYnNum == GAME_OVER_YES)) {
+            throw new IllegalArgumentException(OVER_YN_EXCEPTION);
         }
     }
 }

@@ -1,7 +1,11 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static baseball.Constants.BALL;
+import static baseball.Constants.NOTHING;
+import static baseball.Constants.STRIKE;
+import static baseball.Constants.CORRECT_ANSWER_MESSAGE;
 
 public class Answer {
 
@@ -16,23 +20,23 @@ public class Answer {
         boolean answer = false;
 
         if (strikeCnt == 0 && ballCnt != 0) {
-            System.out.println(ballCnt + "볼");
+            System.out.println(ballCnt + BALL);
         }
 
         if (strikeCnt != 0 && ballCnt == 0) {
-            System.out.println(strikeCnt + "스트라이크");
+            System.out.println(strikeCnt + STRIKE);
         }
 
         if (strikeCnt == 0 && ballCnt == 0) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
         }
 
         if (strikeCnt != 0 && ballCnt != 0) {
-            System.out.println(ballCnt + "볼 " + strikeCnt + "스트라이크");
+            System.out.println(ballCnt + BALL + " " + strikeCnt + STRIKE);
         }
 
         if (strikeCnt == 3) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(CORRECT_ANSWER_MESSAGE);
             answer = true;
         }
 
