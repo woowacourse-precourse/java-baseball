@@ -18,8 +18,6 @@ public class GameNumber {
     GameNumberValidator.checkNumbersValid(gameNumberList);
   }
 
-
-
   public List<Integer> getGameNumberList() {
     return this.gameNumberList;
   }

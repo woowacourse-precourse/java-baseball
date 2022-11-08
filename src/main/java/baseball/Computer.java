@@ -12,9 +12,9 @@ public class Computer {
     gameNumber = new GameNumber();
     List<Integer> numList = new ArrayList<>();
     int count = 0;
-    while (count < 3){
-      int randomNumber = Randoms.pickNumberInRange(1,9);
-      if(!numList.contains(randomNumber)){
+    while (count < 3) {
+      int randomNumber = Randoms.pickNumberInRange(1, 9);
+      if (!numList.contains(randomNumber)) {
         numList.add(randomNumber);
         count++;
       }

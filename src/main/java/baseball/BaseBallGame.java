@@ -28,17 +28,17 @@ public class BaseBallGame {
   }
 
   // 재시작 할 것인지 체크
-  private boolean checkRestart(){
+  private boolean checkRestart() {
     System.out.println(GameMessage.CHECK_RESTART_MESSAGE.toString());
     while (true) {
       String input = Console.readLine();
-      switch (input){
+      switch (input) {
         case "1":
           gameInit();
           return true;
-        case "2" :
+        case "2":
           return false;
-        default :
+        default:
           System.out.println(GameMessage.IS_INVALID_VALUE.toString());
       }
     }

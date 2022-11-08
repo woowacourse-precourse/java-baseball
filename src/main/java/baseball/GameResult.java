@@ -1,15 +1,12 @@
 package baseball;
 
-import baseball.GameNumber;
-
 import java.util.List;
 
 public class GameResult {
   private int strikeCount;
   private int ballCount;
 
-  public void setResultByGameNumber(
-          GameNumber answerNumber, GameNumber gameNumber) {
+  public void setResultByGameNumber(GameNumber answerNumber, GameNumber gameNumber) {
     List<Integer> answerNumberList = answerNumber.getGameNumberList();
     List<Integer> gameNumberList = gameNumber.getGameNumberList();
     strikeCount = 0;
@@ -20,7 +17,7 @@ public class GameResult {
   public void printResult() {
     String result = "";
     if (strikeCount + ballCount == 0) result += "낫싱";
-    else  {
+    else {
       if (ballCount != 0) result += ballCount + "볼 ";
       if (strikeCount != 0) result += strikeCount + "스트라이크";
     }
