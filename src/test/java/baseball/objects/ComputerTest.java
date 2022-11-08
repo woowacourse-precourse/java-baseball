@@ -14,7 +14,7 @@ class ComputerTest {
 
     @BeforeEach
     public void setUp() {
-        this.computer = new Computer(new NumberGenerator());
+        this.computer = new Computer();
     }
 
     @Test
