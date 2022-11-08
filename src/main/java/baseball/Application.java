@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,10 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<String> problem = pickNumber();
+//        List<String> problem = new ArrayList<>();
+//        problem.add("1");
+//        problem.add("3");
+//        problem.add("5");
         boolean notAnswer = true;
         while (notAnswer) {
             String number = Console.readLine();
@@ -20,10 +25,32 @@ public class Application {
 
             List<String> result = getResult(number, problem);
 
-            if (result.get(0) == "Success") {
+            if (result.get(0).equals("Success")) {
                 System.out.println("3스트라이크");
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                reGame();
+                notAnswer = reGame();
+                // notAnswer이 false라면 problem이 변해도 while문이 돌지 않음
+                problem = pickNumber();
+//                problem = new ArrayList<>();
+//                problem.add("5");
+//                problem.add("8");
+//                problem.add("9");
+
+            } else if (result.get(0).equals("Not")){
+                System.out.println("낫싱");
+
+            } else if (result.get(0).equals("0")){
+                String b = result.get(1);
+                System.out.println(String.format("%s볼",b));
+
+            } else if (result.get(1).equals("0")) {
+                String s = result.get(0);
+                System.out.println(String.format("%s스트라이크",s));
+
+            } else {
+                String s = result.get(0);
+                String b = result.get(1);
+                System.out.println(String.format("%s볼 %s스트라이크",b,s));
             }
 
         }
@@ -59,29 +86,27 @@ public class Application {
     public static List<String> getResult(String number, List<String> problem) {
         List<String> result = new ArrayList<>();
 
-        int s = 0;
-        int b = 0;
+        Integer s = 0;
+        Integer b = 0;
 
         for (int i = 0; i < 3; i++) {
             String value = String.valueOf(number.charAt(i));
             // Strike, Ball 판별
-            if (problem.contains(value) && problem.get(i) == value) {
-                s++;
+            if (problem.contains(value) && problem.get(i).equals(value)) {
+                s += 1;
             } else if (problem.contains(value)) {
-                b++;
-            }
-
-            // Strike, Ball의 수에 따라 Return할 결과 저장
-            if (s == 3) {
-                result.add("Success");
-            } else if (s == 0 && b == 0) {
-                result.add("Not");
-            } else {
-                result.add(String.valueOf(s));
-                result.add(String.valueOf(b));
+                b += 1;
             }
         }
-
+        // Strike, Ball의 수에 따라 Return할 결과 저장
+        if (s == 3) {
+            result.add("Success");
+        } else if (s == 0 && b == 0) {
+            result.add("Not");
+        } else {
+            result.add(String.valueOf(s));
+            result.add(String.valueOf(b));
+        }
         return result;
     }
 
@@ -118,8 +143,23 @@ public class Application {
         }
     }
 
-    public static void reGame() {
-
+    /**
+     * 재시작 여부를 확인하는 함수
+     * 재시작한다면 true를 반환하고 끝낸다면 false를 반환하여 notAnswer에 재할당
+     * @return boolean
+     */
+    public static boolean reGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restart = Console.readLine();
+        System.out.println(restart);
+        if (restart.equals("1")) {
+            return true;
+        } else if (restart.equals("2")) {
+            return false;
+        } else {
+            System.out.println("1과 2만 입력 가능합니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
 
