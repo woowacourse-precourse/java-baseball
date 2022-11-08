@@ -1,6 +1,6 @@
 package baseball;
 
-import static baseball.View.Constant.MAX_LENGTH;
+import static baseball.View.Constant.*;
 
 public class Validator {
     public void isNumeric(String input) throws IllegalArgumentException {
@@ -18,7 +18,7 @@ public class Validator {
     }
 
     public void checkRange(int input) throws IllegalArgumentException {
-        if(input < 1 || input > 9 ) {
+        if(input < MIN_DIGIT || input > MAX_DIGIT ) {
             throw new IllegalArgumentException("guess between 1 ~ 9.");
         }
     }

@@ -3,15 +3,15 @@ package baseball.Model;
 import baseball.View.Message;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import static baseball.View.Constant.MAX_LENGTH;
+import static baseball.View.Constant.*;
 
 public class Computer {
     Balls answer = new Balls();
     public int strikeCount, ballCount;
 
     public void randNumber() {
-        while(answer.getSize() < 3) {
-            int num = Randoms.pickNumberInRange(1, 9);
+        while(answer.getSize() < MAX_LENGTH) {
+            int num = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
             answer.add(num);
         }
     }

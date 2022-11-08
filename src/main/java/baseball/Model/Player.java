@@ -3,7 +3,7 @@ package baseball.Model;
 import baseball.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
-import static baseball.View.Constant.MAX_LENGTH;
+import static baseball.View.Constant.*;
 
 public class Player {
     Validator validator = new Validator();

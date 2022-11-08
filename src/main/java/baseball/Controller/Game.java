@@ -18,7 +18,7 @@ public class Game {
     }
 
     public void playGame() throws IllegalArgumentException {
-        while(computer.strikeCount != 3) {
+        while (computer.strikeCount != 3) {
             Message.printGuessMessage();
             computer.judge(player.inputGuess());
         }
@@ -28,7 +28,7 @@ public class Game {
     public void replayGame() throws IllegalArgumentException {
         Message.printRetryMessage();
         boolean replay = player.inputRetry();
-        if(replay) {
+        if (replay) {
             Controller controller = new Controller();
             controller.run();
         }
