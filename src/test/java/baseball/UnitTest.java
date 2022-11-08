@@ -57,4 +57,13 @@ public class UnitTest {
         Assertions.assertThat(caseTwo).isEqualTo(0);
     }
 
+    // 8. Judge ball
+    @Test
+    void judgeBallTest() {
+        int caseOne = Application.judgeBall("1", "2", "213");
+        int caseTwo = Application.judgeBall("1", "0", "230");
+
+        Assertions.assertThat(caseOne).isEqualTo(1);
+        Assertions.assertThat(caseTwo).isEqualTo(0);
+    }
 }
