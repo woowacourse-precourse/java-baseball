@@ -1,7 +1,7 @@
 package baseball;
 
 import org.junit.jupiter.api.*;
-
+import utils.InputUtils;
 import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
@@ -10,36 +10,32 @@ public class GameHostTest {
     @Nested
     class TestIsValidBaseballNumber {
         GameHost gameHost = new GameHost();
+        @Test
+        @DisplayName("난수가 세 자리인지 확인")
+        void case1() {
+            gameHost.setBaseballNumber();
+            List<Integer> baseballNumber = gameHost.getBaseballNumber();
+            boolean result = InputUtils.isBaseballNumberLength3(baseballNumber);
+            assertThat(result).isTrue();
+        }
 
-//        @Test
-//        @DisplayName("세 자리 난수 생성 시 예외 처리에 대해 테스트합니다.")
-//        void case1() {
-//            gameHost.setBaseballNumber();
-//            List<Integer> baseballNumber = gameHost.getBaseballNumber();
-//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-//            assertThat(result).isTrue();
-//        }
-//
-//        @Test
-//        void case2() {
-//            List<Integer> baseballNumber = List.of(1, 2, 3, 4);
-//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-//            assertThat(result).isFalse();
-//        }
-//
-//        @Test
-//        void case3() {
-//            List<Integer> baseballNumber = List.of(1, 1, 2);
-//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-//            assertThat(result).isFalse();
-//        }
-//
-//        @Test
-//        void case4() {
-//            List<Integer> baseballNumber = List.of(0, 1, 2);
-//            boolean result = gameHost.isValidBaseballNumber(baseballNumber);
-//            assertThat(result).isFalse();
-//        }
+        @Test
+        @DisplayName("난수의 각 자리가 1~9 범위 사이에 있는지 확인")
+        void case2() {
+            gameHost.setBaseballNumber();
+            List<Integer> baseballNumber = gameHost.getBaseballNumber();
+            boolean result = InputUtils.isValidRange(baseballNumber);
+            assertThat(result).isTrue();
+        }
+
+        @Test
+        @DisplayName("난수에 중복되는 수가 있는지 확인")
+        void case3() {
+            gameHost.setBaseballNumber();
+            List<Integer> baseballNumber = gameHost.getBaseballNumber();
+            boolean result = InputUtils.isNotDuplicatedNumber(baseballNumber);
+            assertThat(result).isTrue();
+        }
     }
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)

@@ -3,7 +3,6 @@ package baseball;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import java.util.InputMismatchException;
 import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,8 +25,7 @@ public class PlayerTest {
         void case2() {
             String playerInput = "31895";
             assertThatThrownBy(() -> player.isValidBaseballNumber(playerInput))
-                    .isInstanceOf(InputMismatchException.class)
-                    .hasMessageContaining("3자리 수를 입력해주세요");
+                    .isInstanceOf(IllegalArgumentException.class);
         }
 
 
@@ -36,8 +34,7 @@ public class PlayerTest {
         void case3() {
             String playerInput = "35";
             assertThatThrownBy(() -> player.isValidBaseballNumber(playerInput))
-                    .isInstanceOf(InputMismatchException.class)
-                    .hasMessageContaining("3자리 수를 입력해주세요");
+                    .isInstanceOf(IllegalArgumentException.class);
 
         }
 
@@ -46,8 +43,7 @@ public class PlayerTest {
         void case4() {
             String playerInput = "숫자말고문자";
             assertThatThrownBy(() -> player.isValidBaseballNumber(playerInput))
-                    .isInstanceOf(NumberFormatException.class)
-                    .hasMessageContaining("숫자만 입력해주세요");
+                    .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
@@ -55,8 +51,7 @@ public class PlayerTest {
         void case5() {
             String playerInput = "114";
             assertThatThrownBy(() -> player.isValidBaseballNumber(playerInput))
-                    .isInstanceOf(InputMismatchException.class)
-                    .hasMessageContaining("중복된 수를 입력할 수 없습니다");
+                    .isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
@@ -64,8 +59,7 @@ public class PlayerTest {
         void case6() {
             String playerInput = "104";
             assertThatThrownBy(() -> player.isValidBaseballNumber(playerInput))
-                    .isInstanceOf(InputMismatchException.class)
-                    .hasMessageContaining("1~9까지의 수를 입력해주세요");
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
