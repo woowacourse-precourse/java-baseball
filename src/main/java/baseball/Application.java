@@ -59,7 +59,12 @@ class Game{
             to_print+=strike;
             to_print+="스트라이크";
         }
-        System.out.println(to_print);
+        if(to_print==""){
+            System.out.println("낫싱");
+        }else{
+            System.out.println(to_print);
+        }
+
     }
     public void check(){
         strike_num=0;
