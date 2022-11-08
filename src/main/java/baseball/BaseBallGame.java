@@ -54,7 +54,7 @@ public class BaseBallGame {
 
     public void guessComputerNumbersUntilSuccess() {
         while (!this.success) {
-            String userInput = requestUserInput();
+            String userInput = getUserInput();
             if (isValidInput(userInput)) {
                 setUserNumbers(userInput);
                 printGameResult();
@@ -62,7 +62,7 @@ public class BaseBallGame {
         }
     }
 
-    public String requestUserInput() {
+    public String getUserInput() {
         printInputRequest();
         String userInput = Console.readLine();
         return userInput;
