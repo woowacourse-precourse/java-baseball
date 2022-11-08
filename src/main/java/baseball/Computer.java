@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.Numbers.MIN;
+import static baseball.Numbers.MAX;
 import static baseball.Numbers.LENGTH;
 
 public class Computer {
@@ -14,22 +16,26 @@ public class Computer {
         this.answer = answer;
     }
 
-    public static Computer generateAnswer() {
+    public static Computer of(int... answer) {
+        return new Computer(Numbers.of(answer));
+    }
+
+    public static Computer create() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
         }
-        return new Computer(new Numbers(answer));
+        return new Computer(Numbers.of(answer));
     }
 
     public Status status(User user) {
         return new Status(strike(user), ball(user));
     }
 
-    public int strike(User user) {
+    private int strike(User user) {
         int countStrike = 0;
         for (int i = 0; i < LENGTH; i++) {
             if (answer.get(i) == user.guess.get(i)) {
@@ -39,7 +45,7 @@ public class Computer {
         return countStrike;
     }
 
-    public int ball(User user) {
+    private int ball(User user) {
         int countBall = 0;
         for (int i = 0; i < LENGTH; i++) {
             int findIndex = answer.indexOf(user.guess.get(i));
