@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +16,12 @@ public class NumberBaseballGame {
 
     public void startGame() {
         System.out.println(START_TEXT);
+        computerNumber = answer.generateAnswer();
 
         while (true) {
-            computerNumber = answer.generateAnswer();
+            System.out.println(INPUT_TEXT);
+            String userInput = Console.readLine();
+            UserInputException.checkUserInput(userInput);
         }
     }
 }
