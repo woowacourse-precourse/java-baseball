@@ -67,10 +67,6 @@ class Hint {
     int ball;
 
 
-    private void addStrikeCount() {
-        this.strike++;
-    }
-
     void compareAnswer(Game guessAnswer) {
         // 게임의 정답을 가져온다.
         List<Integer> gameAnswer = guessAnswer.getGameAnswer();
@@ -81,14 +77,31 @@ class Hint {
             if (isStrike(gameAnswer, curNumber, digit)) {
                 addStrikeCount();
             }
-
-
+            if (isBall(gameAnswer, curNumber, digit)) {
+                addBallCount();
+            }
         }
+    }
+
+    private void addStrikeCount() {
+        this.strike++;
+    }
+
+    private void addBallCount() {
+        this.ball++;
     }
 
     private boolean isStrike(List<Integer> gameAnswer, int number, int index) {
         // 해당 인덱스의 리스트 안에 있는 원소와 숫자를 비교하여 같으면 Strike 이다.
         if (gameAnswer.get(index) == number) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBall(List<Integer> gameAnswer, int number, int index) {
+        // 원소가 리스트 안에 있고 해당 인덱스에 있지 않으면, Ball 이다.
+        if (gameAnswer.contains(number) && gameAnswer.get(index) != number) {
             return true;
         }
         return false;
