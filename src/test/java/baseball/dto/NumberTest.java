@@ -17,7 +17,7 @@ public class NumberTest {
 
         assertThat(dto.insert(new ComputerNumber(123))).isTrue();
 
-        ComputerNumber dao = dto.latest();
+        ComputerNumber dao = dto.getLatest();
 
         assertThat(dao.getNumber()).isEqualTo(123);
         assertThat(dto.getAll().size()).isEqualTo(1);

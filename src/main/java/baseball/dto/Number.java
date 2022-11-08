@@ -36,17 +36,17 @@ public class Number {
     public List<ComputerNumber> getAll() {
         return database;
     }
-
+    
     public List<ComputerNumber> findByNumber(int number) {
         return database.stream()
                 .filter(innerComputerNumber -> innerComputerNumber.getNumber() == number)
                 .collect(Collectors.toList());
     }
 
-    public ComputerNumber first() {
+    public ComputerNumber getOldest() {
         return database.get(0);
     }
-    public ComputerNumber latest() {
+    public ComputerNumber getLatest() {
         return database.get(database.size() - 1);
     }
 }
