@@ -27,6 +27,9 @@ public class View {
             // 형변환 check
             s = Console.readLine();
             Integer.parseInt(s);
+            if(s.length()>3){
+                throw new IllegalArgumentException();
+            }
             return s;
         } catch (IllegalArgumentException e) {
             return String.valueOf(e);
