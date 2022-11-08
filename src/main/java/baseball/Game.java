@@ -121,18 +121,14 @@ public class Game {
 
         String userStr = readLine();
         validateUser(userStr);
-        setUser(userStr);
     }
 
     public void printInputMessage(){
         System.out.print(inputMessage);
     }
 
-    public void setUser(String userStr){
-        for(int index=0;index<userStr.length();index++){
-            int userInt = userStr.charAt(index) - '0';
-            user.add(userInt);
-        }
+    public void setUser(int nowInt){
+        user.add(nowInt);
     }
 
     public void validateUser(String userStr){
@@ -148,11 +144,13 @@ public class Game {
             if(user.contains(nowInt)){
                 throw new IllegalArgumentException("입력값은 서로 다른 3개의 수로 이뤄져야 합니다.");
             }
+
+            setUser(nowInt);
         }
     }
 
-    public Integer confirmRestart(){
-        int input = Integer.parseInt(readLine());
+    public Integer confirmRestart(String readStr){
+        int input = Integer.parseInt(readStr);
         if(input != 1 && input != 2){
             throw new IllegalArgumentException("1 혹은 2 이외의 값이 입력되었습니다.");
         }
@@ -162,7 +160,7 @@ public class Game {
 
     public void restart(){
         System.out.println(restartMessage);
-        state = confirmRestart();
+        state = confirmRestart(readLine());
     }
 
     public void printEndMessage(){
