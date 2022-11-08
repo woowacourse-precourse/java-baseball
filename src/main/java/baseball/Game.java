@@ -1,4 +1,5 @@
 package baseball;
+
 import java.util.List;
 
 public class Game {
@@ -15,11 +16,18 @@ public class Game {
     public void run() {
         List<Integer> comNumber = computerRandomNumber.makeComputerNumber();
 
-        do{
+        do {
             userInputToList.userNumList(UserInput.userNumberInput());
-        }while (referee.refereeCheck(userInputToList.getUserNum(), comNumber));
+        } while (referee.refereeCheck(userInputToList.getUserNum(), comNumber));
 
-        if(UserInput.replayOrStop().equals("1"))
+        if (!isRestartOrStop(UserInput.restartOrStop()))
             run();
+    }
+
+    private boolean isRestartOrStop(String answer) {
+        if (answer.equals("1"))
+            return false;
+
+        return true;
     }
 }

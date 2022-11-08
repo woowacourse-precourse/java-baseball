@@ -16,7 +16,7 @@ public class UserInput {
         return userNum;
     }
 
-    public static String replayOrStop() {
+    public static String restartOrStop() {
         UserOutput.userChoiceReplayOrStopMessage();
         String choice = Console.readLine();
         InputError.replayOrStopExceptionCheck(choice);
