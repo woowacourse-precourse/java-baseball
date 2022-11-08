@@ -15,7 +15,7 @@ import java.util.List;
 
 class ApplicationTest extends NsTest {
     @Test
-    void getResult_메서드_결과가_2볼() {
+    void calcResult_메서드_결과가_2볼() {
         List<Integer> result = calcResult(123, 234);
 
         int ballCount = result.get(0);
@@ -26,7 +26,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void getResult_메서드_결과가_1볼_1스트라이크() {
+    void calcResult_메서드_결과가_1볼_1스트라이크() {
         List<Integer> result = calcResult(293, 234);
 
         int ballCount = result.get(0);
@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void getResult_메서드_결과가_2스트라이크() {
+    void calcResult_메서드_결과가_2스트라이크() {
         List<Integer> result = calcResult(423, 523);
 
         int ballCount = result.get(0);
@@ -48,7 +48,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void getResult_메서드_결과가_낫싱() {
+    void calcResult_메서드_결과가_낫싱() {
         List<Integer> result = calcResult(123, 456);
 
         int ballCount = result.get(0);
@@ -60,7 +60,7 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void generateOpponentNumber_메서드의_리턴_값은_세_자리_수() {
+    void generateRandomNumber_메서드의_리턴_값은_세_자리_수() {
         int opponentNumber = generateRandomNumber();
 
         int length = (int) (Math.log10(opponentNumber) + 1);
@@ -68,7 +68,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void generateOpponentNumber_메서드의_리턴_값의_각_숫자는_1부터_9까지의_숫자로_구성() {
+    void generateRandomNumber_메서드의_리턴_값의_각_숫자는_1부터_9까지의_숫자로_구성() {
         int opponentNumber = generateRandomNumber();
 
         List<Integer> numList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -81,7 +81,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void generateOpponentNumber_메서드의_리턴_값의_각_숫자는_중복되지_않음() {
+    void generateRandomNumber_메서드의_리턴_값의_각_숫자는_중복되지_않음() {
         int opponentNumber = generateRandomNumber();
 
         List<Integer> numList = new ArrayList<>();
