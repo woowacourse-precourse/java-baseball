@@ -1,6 +1,5 @@
 package baseball;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -46,8 +45,6 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return userNumber;
-
-
     }
     static int ballCheck(List<Integer> computerNumber,List<Integer>userNumber)
     {
