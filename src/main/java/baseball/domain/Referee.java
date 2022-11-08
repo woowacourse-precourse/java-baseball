@@ -38,12 +38,16 @@ public class Referee {
     }
     
     private void increaseScore(final BallStatus ballStatus) {
-        Score score = ballStatusScores.get(ballStatus);
+        Score score = matchingBallScore(ballStatus);
         ballStatusScores.put(ballStatus, score.increase());
     }
     
+    private Score matchingBallScore(final BallStatus ballStatus) {
+        return ballStatusScores.get(ballStatus);
+    }
+    
     public boolean isBaseBallGameEnd() {
-        Score score = ballStatusScores.get(BallStatus.STRIKE);
+        Score score = matchingBallScore(BallStatus.STRIKE);
         return score.isGameEnd();
     }
     
