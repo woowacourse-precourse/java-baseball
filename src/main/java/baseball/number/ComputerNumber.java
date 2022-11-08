@@ -12,6 +12,8 @@ import static baseball.constant.GameConstant.BALL_END;
 
 public class ComputerNumber {
 
+    public List<Integer> computerNumbers;
+
     public List<Integer> createComputerNumber() {
         List<Integer> computerNumbers = new ArrayList<>();
         while (computerNumbers.size() < BALL_LEN) {

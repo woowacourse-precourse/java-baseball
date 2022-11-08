@@ -11,6 +11,8 @@ import static baseball.constant.GameMessage.INPUT_NUMBER_MESSAGE;
 
 public class UserNumber {
 
+    public List<Integer> userNumbers;
+
     public List<Integer> inputUserNumber(){
         System.out.println(INPUT_NUMBER_MESSAGE);
         String userNumber = Console.readLine();

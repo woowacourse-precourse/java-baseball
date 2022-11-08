@@ -1,25 +1,25 @@
 package baseball.game;
 
+import java.util.List;
+
 import static baseball.constant.GameConstant.BALL_LEN;
 import static baseball.constant.GameConstant.ZERO;
 import static baseball.constant.GameMessage.BALL;
 import static baseball.constant.GameMessage.NOTHING;
 import static baseball.constant.GameMessage.STRIKE;
-import static baseball.game.BaseballGame.computerNumbers;
-import static baseball.game.BaseballGame.userNumbers;
 
 public class CompareNumbers {
 
     public int strike;
     public int ball;
 
-    public void compareNumber(){
+    public void compareNumber(List<Integer> userNumbers,List<Integer> computerNumbers){
         int userNumber;
         int computerNumber;
         for(int i=ZERO;i<BALL_LEN;i++){
             userNumber = userNumbers.get(i);
             computerNumber = computerNumbers.get(i);
-            if (!includeSame(userNumber)) continue;
+            if (!includeSame(userNumber,computerNumbers)) continue;
             countStrike(userNumber,computerNumber);
             countBall(userNumber,computerNumber);
         }
@@ -38,7 +38,7 @@ public class CompareNumbers {
         ball=0;
     }
 
-    private boolean includeSame(int userNumber){
+    private boolean includeSame(int userNumber, List<Integer> computerNumbers){
         return computerNumbers.contains(userNumber);
     }
 
