@@ -9,13 +9,16 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        String menu = "";
+        String menu = "1";
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         while (!menu.equals("2")) {
             gameStart();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             menu = Console.readLine();
+            if (Integer.parseInt(menu) > 2 || Integer.parseInt(menu) < 0) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
