@@ -26,7 +26,7 @@ public class User {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
         List<Integer> inputNum = new ArrayList<>();
-        for (int idx = 0; idx < INPUT_LENGTH; idx++) {
+        for (int idx = 0; idx < input.length(); idx++) {
             inputNum.add(input.charAt(idx) - '0');
         }
 
