@@ -29,6 +29,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("NextBehavior 테스트: 1,2 외에 값을 입력하면 IllegalArgumentException")
+    void nextBehaviorExceptionTest () throws Exception {
+        assertThatThrownBy(()->new NextBehavior("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("Guess 테스트: 조건 외에 값을 입력하면 IllegalArgumentException")
+    void guessExceptionTest () throws Exception {
+        assertThatThrownBy(()->new Guess("89"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->new Guess("506"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->new Guess("998"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

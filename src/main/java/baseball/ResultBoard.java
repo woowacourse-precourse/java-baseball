@@ -26,11 +26,11 @@ public class ResultBoard {
             strikeResult = strikeResult.concat("스트라이크");
             totalResult.add(strikeResult);
         }
-        if(ball!=0&& strike!=0){
+        if (ball != 0 && strike != 0) {
             List<String> space = List.of(" ");
-            totalResult.addAll(1,space);
+            totalResult.addAll(1, space);
         }
-        if(ball!=0 || strike!=0) {
+        if (ball != 0 || strike != 0) {
             totalResult.add("\n");
         }
     }
