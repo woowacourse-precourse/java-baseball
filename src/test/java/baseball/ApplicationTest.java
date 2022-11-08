@@ -26,13 +26,13 @@ class ApplicationTest extends NsTest {
             OutputStream out = new ByteArrayOutputStream();
             System.setOut(new PrintStream(out));
 
-            testGame.gameMessageDisplay.printGameStartMessage();
+            testGame.printGameStart();
 
-            String actualOutputWhenStartGame = out.toString()
+            String actualOutput = out.toString()
                     .replace(System.getProperty("line.separator").toString(), "");
 
-            String expectedOutputWhenStartGame = "숫자 야구 게임을 시작합니다.";
-            assertThat(actualOutputWhenStartGame).isEqualTo(actualOutputWhenStartGame);
+            String expectedOutput = "숫자 야구 게임을 시작합니다.";
+            assertThat(actualOutput).isEqualTo(actualOutput);
         }
     }
     @Nested
