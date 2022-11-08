@@ -32,5 +32,9 @@ public class Validation {
         return AnswerPattern.matcher(input).matches();
     }
 
+    public boolean CheckString(String input){
+        return CheckDuplicate(input) && CheckLength(input) && CheckMinToMax(input);
+    }
+
 
 }
