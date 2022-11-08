@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -62,12 +63,22 @@ public class Application {
      */
     String initComputerAnswer() {
         StringBuffer answer = new StringBuffer();
-        // 1~9까지 숫자 중 shuffle 한 다음, 앞의 3개의 수를 반환
-        List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        for (Integer uniqueNum : list) {
-            answer.append(uniqueNum);
+        // pickNumberInRange를 이용하는 함수를 호출해 문자열로 변환 후 반환
+        for(Integer num : getRandomNumberList()){
+            answer.append(num);
         }
         return answer.toString();
+    }
+
+    List<Integer> getRandomNumberList(){
+        List<Integer> list = new ArrayList<>();
+        while(list.size() < 3){
+            int randNum = Randoms.pickNumberInRange(1, 9);
+            if(!list.contains(randNum)){
+                list.add(randNum);
+            }
+        }
+        return list;
     }
 
     /**
