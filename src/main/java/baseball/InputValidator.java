@@ -18,8 +18,8 @@ public class InputValidator {
         HashSet tempSet = new HashSet();
         for (Integer integer : digits)
             if (!tempSet.add(integer)) {
-                return true;
+                return false;
             }
-        return false ;
+        return true;
     }
 }
