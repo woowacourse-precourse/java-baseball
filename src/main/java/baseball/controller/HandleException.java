@@ -7,6 +7,9 @@ public class HandleException{
                 if (userInput.charAt(i) < 48 || userInput.charAt(i) > 57) {
                     throw new IllegalArgumentException();
                 }
+                if (i != userInput.indexOf(userInput.charAt(i))) {
+                    throw new IllegalArgumentException();
+                }
             }
         } catch (IllegalArgumentException e) {
             System.out.println("잘못된 값을 입력하였습니다. 게임을 종료합니다.");
