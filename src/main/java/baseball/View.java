@@ -19,7 +19,7 @@ public class View {
 		if (!Validator.isNumber(input)) {
 			throw new IllegalArgumentException();
 		}
-		
+
 		return input;
 	}
 
