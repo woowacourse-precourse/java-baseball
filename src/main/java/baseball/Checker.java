@@ -89,7 +89,6 @@ public class Checker {
 		return false;
 	}
 
-
 	public static void checkReStart(Computer computer, boolean isReStart) {
 
 		if (isReStart) {

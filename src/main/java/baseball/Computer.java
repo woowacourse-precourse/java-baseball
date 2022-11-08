@@ -30,7 +30,7 @@ public class Computer {
 		while (randomNumber.size() < INIT_LIST_CAPACITY) {
 			int number = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 
-			if (!Checker.isSameNumberExistInRandomNumber(number,randomNumber)) {
+			if (!Checker.isSameNumberExistInRandomNumber(number, randomNumber)) {
 				addRandomNumber(number);
 			}
 		}

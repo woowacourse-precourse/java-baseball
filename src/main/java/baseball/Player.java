@@ -3,8 +3,6 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Player {
 	private static final int UNIT_HUNDRED = 100;
 	private static final int UNIT_TEN = 10;
