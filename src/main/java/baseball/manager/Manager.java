@@ -38,28 +38,24 @@ public class Manager {
 
     public boolean play(){
         answer = makeThreeRandomNumber();
-        try{
-            do{
-                System.out.print(INPUT_MENT);
-                userInput = readLine();
-                if(IsInvalidInput(userInput))
-                    throw new IllegalArgumentException("입력 규칙 위반");
+        do{
+            System.out.print(INPUT_MENT);
+            userInput = readLine();
+            if(IsInvalidInput(userInput))
+                throw new IllegalArgumentException("입력 규칙 위반");
 
-                List<Integer> list = CalculateBallAndStrike(userInput, answer);
-                printResult(list);
-            }while(CompareUserInputWithAnswer(userInput, answer) != 1);
+            List<Integer> list = CalculateBallAndStrike(userInput, answer);
+            printResult(list);
+        }while(CompareUserInputWithAnswer(userInput, answer) != 1);
 
-            System.out.println(ENDING);
-            System.out.println(CONTINUE_MENT);
+        System.out.println(ENDING);
+        System.out.println(CONTINUE_MENT);
 
-            choice = readLine();
-            if(IsInvalidChoice(choice))
-                throw new IllegalArgumentException("선택 규칙 위반");
-            if(choice.charAt(0) == '2') return false;
-        }catch(IllegalArgumentException e){
-            System.out.println("사용자 입력이 잘못되어 프로그램이 종료됩니다.");
+        choice = readLine();
+        if(IsInvalidChoice(choice))
+            throw new IllegalArgumentException("선택 규칙 위반");
+        if(choice.charAt(0) == '2')
             return false;
-        }
         return true;
     }
 }
