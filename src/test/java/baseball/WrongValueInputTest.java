@@ -36,7 +36,7 @@ public class WrongValueInputTest {
     assertThrows(
         IllegalArgumentException.class,
         () -> {
-          gameNumber.stringToGameNumber(inputString);
+          gameNumber.setGameNumberByString(inputString);
         });
   }
 }

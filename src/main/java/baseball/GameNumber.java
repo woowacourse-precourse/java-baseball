@@ -7,7 +7,7 @@ public class GameNumber {
   public static final int NUMBER_DIGIT = 3;
   private List<Integer> gameNumberList = new ArrayList<>();
 
-  public void stringToGameNumber(String inputString) {
+  public void setGameNumberByString(String inputString) {
     List<Integer> numbers = new ArrayList<>();
     for (char s : inputString.toCharArray()) numbers.add(GameNumberValidator.checkIsInt(s));
     setGameNumberByList(numbers);

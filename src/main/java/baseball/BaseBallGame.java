@@ -56,7 +56,7 @@ public class BaseBallGame {
 
   public GameNumber createBaseBallGameNumber(String inputData) {
     GameNumber gameNumber = new GameNumber();
-    gameNumber.stringToGameNumber(inputData);
+    gameNumber.setGameNumberByString(inputData);
     return gameNumber;
   }
 
