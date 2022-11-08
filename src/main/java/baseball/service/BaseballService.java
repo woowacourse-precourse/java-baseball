@@ -69,4 +69,14 @@ public class BaseballService {
             strike += 1;
         }
     }
+
+    public void outputHint() {
+        if (strike == Constant.LENGTH) {
+            System.out.println(strike + Constant.STRIKE);
+        } else if (ball == Constant.ZERO && strike == Constant.ZERO) {
+            System.out.println(Constant.NOTHING);
+        } else {
+            System.out.println(ball + Constant.BALL + strike + Constant.STRIKE);
+        }
+    }
 }
