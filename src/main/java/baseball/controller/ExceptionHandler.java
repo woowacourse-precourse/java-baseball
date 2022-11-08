@@ -1,13 +1,56 @@
 package baseball.controller;
 
+import baseball.constant.ValidationConstant;
+import baseball.constant.ValidationMessage;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 public class ExceptionHandler {
     static void validateUserNumberOfString(String userNumberOfString) throws IllegalArgumentException{
-        if (userNumberOfString.length() != 3) {
-            throw new IllegalArgumentException("서로 다른 세 자리의 숫자를 입력해야 합니다.");
-        }
+        validateOf3DigitsNumber(userNumberOfString);
+        validateIsNumberOfStringHaveDifferentEach(userNumberOfString);
     }
 
     static void validateOneIfGameRepeatOrTwo(String oneIfGameRepeatOrTwo) throws IllegalArgumentException{
 
+    }
+
+    private static void validateOf3DigitsNumber(String userNumberOfString) {
+        boolean isMatch = Pattern.matches(ValidationConstant.USER_NUMBER_REGEX, userNumberOfString);
+        if (isMatch) {
+            return;
+        }
+        throw new IllegalArgumentException(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+    }
+
+    private static void validateIsNumberOfStringHaveDifferentEach(String numberOfString) {
+        List<Integer> numberOfList = convertNumberOfStringToList(numberOfString);
+        if (checkHaveListDuplication(numberOfList)) {
+            throw new IllegalArgumentException(ValidationMessage.USER_NUMBER_RULE_ANNOUNCEMENT);
+        };
+
+    }
+
+    private static boolean checkHaveListDuplication(List<Integer> numberOfList) {
+        Set<Integer> numberOfSet = new HashSet<>(numberOfList);
+        int sizeOfOriginNumber = numberOfList.size();
+        int sizeAfterDeleteDuplication = numberOfSet.size();
+        if (sizeOfOriginNumber == sizeAfterDeleteDuplication) {
+            return false;
+        }
+        return true;
+    }
+
+    private static List<Integer> convertNumberOfStringToList(String numberOfString) {
+        List<String> numberOfStringList = new ArrayList<>(Arrays.asList(numberOfString.split("")));
+        List<Integer> numberOfList = numberOfStringList.stream()
+                .map(Integer::new)
+                .collect(Collectors.toList());
+        return numberOfList;
     }
 }
