@@ -7,8 +7,10 @@ import java.util.List;
 
 public class NumberToListChanger {
 
+    public static final String SEPARATOR = "";
+
     public static List<Integer> change(String userInputNumbers) {
-        return Arrays.stream(userInputNumbers.split(""))
+        return Arrays.stream(userInputNumbers.split(SEPARATOR))
                 .map(Integer::valueOf)
                 .collect(toList());
     }
