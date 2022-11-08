@@ -15,9 +15,7 @@ public class View {
     private final int digit;
 
     private static class ViewHolder {
-
         private static final View INSTANCE = new View(initValue);
-
     }
 
     private View(int digit) {
