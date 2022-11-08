@@ -11,7 +11,7 @@ public class Computer {
 
     private static final int ANSWER_LENGTH = 3;
     private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBEr = 9;
+    private static final int MAX_NUMBER = 9;
 
     private List<Integer> answer;
 
@@ -27,7 +27,7 @@ public class Computer {
         Set<Integer> answerSet = new HashSet<>();
 
         while (answerSet.size() != ANSWER_LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBEr);
+            int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
             answerSet.add(randomNumber);
         }
 
