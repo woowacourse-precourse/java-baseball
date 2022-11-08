@@ -2,6 +2,8 @@ package baseball.core;
 
 import java.util.List;
 
+import static baseball.util.BaseballConst.MAX_BALL_COUNT;
+
 public class Computer {
 
     private List<Integer> randomNumbers;
@@ -14,7 +16,7 @@ public class Computer {
         int ballCount = 0;
         int strikeCount = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < MAX_BALL_COUNT; i++) {
             int number = threeNumbers.get(i);
 
             if (isStrike(i, number)) {
