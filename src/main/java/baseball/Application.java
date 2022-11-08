@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,13 +14,13 @@ public class Application {
 
     static void startGame() {
         String randomThree = getRandomThree();
-//        System.out.println(randomThree);
+
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String s = Console.readLine();
 
             isNotLengthThree(s);
-            isNotNemeric(s);
+            isNotNumeric(s);
 
             printResult(s,randomThree);
 
@@ -40,7 +39,7 @@ public class Application {
         }
     }
 
-    static void isNotNemeric(String s) {
+    static void isNotNumeric(String s) {
         for (int i=0;i<3;i++) {
             char c = s.charAt(i);
             if ('0' > c || '9' < c){
@@ -68,25 +67,32 @@ public class Application {
         int strike = 0;
         int ball = 0;
         for (int i=0;i<3;i++) {
-            for (int j=0;j<3;j++) {
-                if (input.charAt(i) == randomThree.charAt(j)) {
-                    if (i == j) {
-                        strike++;
-                        continue;
-                    }
-                    ball++;
-                }
+            int index = randomThree.indexOf(input.charAt(i));
+            if (index == i) {
+                strike++;
+                continue;
+            }
+            if (index >= 0) {
+                ball++;
             }
         }
+        printStrikeBall(strike, ball);
+    }
+
+    static void printStrikeBall(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
-        } else if (strike > 0 && ball == 0) {
-            System.out.println(strike+"스트라이크");
-        } else if (strike == 0 && ball > 0) {
-            System.out.println(ball+"볼");
-        } else {
-            System.out.println(ball+"볼 "+strike+"스트라이크");
+            return;
         }
+        if (strike > 0 && ball == 0) {
+            System.out.println(strike+"스트라이크");
+            return;
+        }
+        if (strike == 0 && ball > 0) {
+            System.out.println(ball+"볼");
+            return;
+        }
+        System.out.println(ball+"볼 "+strike+"스트라이크");
     }
 
     static void chooseResetOrExit() {
