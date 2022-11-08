@@ -14,10 +14,11 @@ public class BaseballNumberListGenerator {
 
     public static List<BaseballNumber> baseballNumberList(String inputNumber) {
         return IntStream.range(0, 3)
-                .mapToObj(idx -> new BaseballNumber(
-                        idx,
-                        Integer.parseInt(inputNumber.substring(idx, idx + 1))
-                ))
+                .mapToObj(idx ->
+                        new BaseballNumber(
+                                idx,
+                                Integer.parseInt(inputNumber.substring(idx, idx + 1))
+                        ))
                 .collect(Collectors.toList());
     }
 }

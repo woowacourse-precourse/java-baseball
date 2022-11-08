@@ -18,8 +18,8 @@ public final class BaseballNumber {
     }
 
     public boolean equalsOnlyNumber(List<BaseballNumber> baseballNumbers) {
-        for (BaseballNumber baseballNumber : baseballNumbers) {
-            if ((position != baseballNumber.position) && (number == baseballNumber.number)) {
+        for (BaseballNumber that : baseballNumbers) {
+            if ((position != that.position) && (number == that.number)) {
                 return true;
             }
         }
