@@ -27,7 +27,7 @@ public class Application {
         System.out.println(userInput);
         List<Integer> user = new ArrayList<>();
         String[] userInputCharArray = userInput.split("");
-        if(userInputCharArray.length > 3) throw new IllegalArgumentException();
+        if(userInputCharArray.length != 3) throw new IllegalArgumentException();
         for(String s : userInputCharArray){
             if(user.contains(Integer.parseInt(s))){
                 throw new IllegalArgumentException();
