@@ -39,12 +39,12 @@ class UnitTest extends NsTest {
 
         String inputNum = "123";
         List<String> answerList = new ArrayList<>();
-        answerList.add("1");
-        answerList.add("2");
-        answerList.add("3");
+        answerList.add(1);
+        answerList.add(2);
+        answerList.add(3);
 
         if (ValidationUtil.validateInputNumber(inputNum)){
-            List<String> inputNumList = new ArrayList<>();
+            List<Integer> inputNumList = new ArrayList<>();
             inputNumList = JudgeGame.getInputNumberList(inputNum);
             assertThat(inputNumList).isEqualTo(answerList);
         }

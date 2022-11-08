@@ -23,10 +23,13 @@ public class JudgeGame {
         return true;
     }
 
-    public static List<String> getInputNumberList(String input){
-        String[] inputNumberArray = input.split("");
-        List<String> inputNumberList = new ArrayList<>();
-        inputNumberList = Arrays.asList(inputNumberArray);
+    public static List<Integer> getInputNumberList(String input){
+        List<Integer> inputNumberList = new ArrayList<>();
+        String[] inputList = input.split("");
+        for (String inputNumber : inputList) {
+            Integer integerNumber = Integer.parseInt(inputNumber);
+            inputNumberList.add(integerNumber);
+        }
         return inputNumberList;
     }
 
