@@ -10,6 +10,44 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BallNumberTest {
 
+    BallNumber expectBallNumber = new BallNumber(0, 1);
+
+    @Test
+    void 스트라이크_테스트() {
+        //given
+        BallNumber actualBallNumber = new BallNumber(0, 1);
+
+        //when
+        BallStatus ballStatus = expectBallNumber.compareToBallNumber(actualBallNumber);
+
+        //then
+        Assertions.assertThat(ballStatus).isEqualTo(BallStatus.STRIKE);
+    }
+
+    @Test
+    void 볼_테스트() {
+        //given
+        BallNumber actualBallNumber = new BallNumber(1, 1);
+
+        //when
+        BallStatus ballStatus = expectBallNumber.compareToBallNumber(actualBallNumber);
+
+        //then
+        Assertions.assertThat(ballStatus).isEqualTo(BallStatus.BALL);
+    }
+
+    @Test
+    void 낫띵_테스트() {
+        //given
+        BallNumber actualBallNumber = new BallNumber(1, 2);
+
+        //when
+        BallStatus ballStatus = expectBallNumber.compareToBallNumber(actualBallNumber);
+
+        //then
+        Assertions.assertThat(ballStatus).isEqualTo(BallStatus.NOTHING);
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"0", "10"})
     void 숫자_입력_범위_초과_BallNumber_객체_생성시_예외_발생(String number) {

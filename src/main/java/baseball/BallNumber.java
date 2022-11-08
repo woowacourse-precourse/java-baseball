@@ -24,6 +24,26 @@ public class BallNumber {
         return number;
     }
 
+    public BallStatus compareToBallNumber(BallNumber ballNumber) {
+        if (this.equals(ballNumber)) {
+            return BallStatus.STRIKE;
+        }
+        if (ballCheck(ballNumber)) {
+            return BallStatus.BALL;
+        }
+        return BallStatus.NOTHING;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        BallNumber ballNumber = (BallNumber) obj;
+        return this.number.equals(ballNumber.number) && this.index == ballNumber.index;
+    }
+
+    private boolean ballCheck(BallNumber ballNumber) {
+        return this.number.equals(ballNumber.number);
+    }
+
     private void isNotDigitExceptionCheck(String number) {
         boolean isNotDigit = number.chars().anyMatch(c -> !Character.isDigit(c));
         if (isNotDigit) {
