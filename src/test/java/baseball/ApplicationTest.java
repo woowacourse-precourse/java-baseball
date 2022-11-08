@@ -124,12 +124,12 @@ class ApplicationTest extends NsTest {
         List<Integer> input7 = List.of(1, 1, 1);
 
         assertThat(Application.printCount(input)).isEqualTo("3스트라이크");
-        assertThat(Application.printCount(input)).isEqualTo("3볼");
-        assertThat(Application.printCount(input)).isEqualTo("낫싱");
-        assertThat(Application.printCount(input)).isEqualTo("1스트라이크 2볼");
-        assertThat(Application.printCount(input)).isEqualTo("1스트라이크");
-        assertThat(Application.printCount(input)).isEqualTo("1볼");
-        assertThat(Application.printCount(input)).isEqualTo("1스트라이크 1볼");
+        assertThat(Application.printCount(input2)).isEqualTo("3볼");
+        assertThat(Application.printCount(input3)).isEqualTo("낫싱");
+        assertThat(Application.printCount(input4)).isEqualTo("1스트라이크 2볼");
+        assertThat(Application.printCount(input5)).isEqualTo("1스트라이크");
+        assertThat(Application.printCount(input6)).isEqualTo("1볼");
+        assertThat(Application.printCount(input7)).isEqualTo("1스트라이크 1볼");
 
     }
 }

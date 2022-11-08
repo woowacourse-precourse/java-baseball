@@ -87,6 +87,24 @@ public class Application {
         }
     }
 
+    public static String printCount(List<Integer> count) {
+        String result = "";
+
+        if (count.get(2) == 3) {
+            result += "낫싱";
+        }else if (count.get(0) != 0) {
+            result += count.get(0) + "스트라이크";
+            if(count.get(1) != 0) {
+                result  = result + " " + count.get(1) + "볼";
+                return result;
+            }
+        }
+        if (count.get(1) != 0) {
+            result = result + count.get(1) + "볼";
+        }
+        return result;
+    }
+
     public static boolean isRestart(String input) throws IllegalArgumentException{
         if (input.equals("1"))
             return true;
