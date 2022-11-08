@@ -6,6 +6,14 @@ import baseball.view.OutputView;
 
 import static baseball.Const.*;
 
+/**
+ * 프로그램 전체 흐름
+ * 1. 게임 시작문 출력
+ * 2. 숫자 입력 후 볼, 스트라이크 횟수 확인
+ * 3. 게임 결과 출력
+ * 4. 3스트라이크이면 게임 종료문 출력 후 재시작, 종료 선택 아니면 다시 숫자 입력
+ * 5. 재시작 시 List에 있는 랜덤 숫자 비우고 다시 시작
+ */
 public class PlayGameController {
 
     private final GameService gameService;
@@ -17,20 +25,20 @@ public class PlayGameController {
     }
 
     public void run() {
-        outputView.startGame(); //게임 시작문 출력
-        Result strikeAndBall = gameService.checkStrikeAndBall(); //숫자 입력 후 볼, 스트라이크 횟수 체크
-        outputView.result(strikeAndBall); //게임 결과 출력
+        outputView.startGame();
+        Result strikeAndBall = gameService.checkStrikeAndBall();
+        outputView.result(strikeAndBall);
 
         int strike = strikeAndBall.getStrike();
         String choiceRestartOrQuitGame = "";
-        if (strike == THREE_STRIKE) { //3스트라이크 == 게임 종료문 출력 후 재시작, 종료 선택
+        if (strike == THREE_STRIKE) {
             choiceRestartOrQuitGame = gameService.inputOneOrTwo();
             gameService.isNotRestartedAndQuitedGame(choiceRestartOrQuitGame);
         }
-        if (strike != THREE_STRIKE) { //3스트라이크 아니면 다시 입력
+        if (strike != THREE_STRIKE) {
             run();
         }
-        if (choiceRestartOrQuitGame.equals(RESTART_GAME)) { //재시작 시 리스트에 있는 숫자 비우고 다시 시작, 아니면 종료
+        if (choiceRestartOrQuitGame.equals(RESTART_GAME)) {
             gameService.clearRandomBallNumber();
             run();
         }
