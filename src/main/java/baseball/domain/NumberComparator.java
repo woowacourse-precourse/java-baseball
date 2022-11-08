@@ -4,9 +4,10 @@ import baseball.common.Constant;
 
 import java.util.List;
 
-public final class Judge {
 
-    private Judge() {}
+public final class NumberComparator {
+
+    private NumberComparator() {}
 
     public static int getStrikeCount(List<Integer> computer, List<Integer> player) {
         int strike = 0;

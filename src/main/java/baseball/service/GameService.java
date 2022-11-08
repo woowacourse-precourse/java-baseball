@@ -37,8 +37,8 @@ public class GameService {
 
     public void playBaseBallGame() {
         player.setInputBalls();
-        int strikeCount = Judge.getStrikeCount(player.getBalls(), computer.getBalls());
-        int ballCount = Judge.getBallCount(player.getBalls(), computer.getBalls());
+        int strikeCount = NumberComparator.getStrikeCount(player.getBalls(), computer.getBalls());
+        int ballCount = NumberComparator.getBallCount(player.getBalls(), computer.getBalls());
         game.setGameResult(strikeCount, ballCount);
     }
 
