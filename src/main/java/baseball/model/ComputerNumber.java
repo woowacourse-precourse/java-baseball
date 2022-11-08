@@ -5,8 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-import static baseball.model.Constant.Score.NOTHING;
-import static baseball.model.Constant.Score.STRIKE;
+import static baseball.model.Constant.Score.*;
 
 public class ComputerNumber {
     private static final int CNT_NUMBER = 3;
@@ -35,7 +34,7 @@ public class ComputerNumber {
             if(ComputerNum == userNumber && i == index){
                 return STRIKE;
             }else if(ComputerNum == userNumber){
-                return BAll;
+                return BALL;
             }
         }
 
