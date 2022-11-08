@@ -11,5 +11,6 @@ public class BaseballController {
 
     public void Start() {
         baseballService.gameStart();
+        baseballService.generateComputerNumber();
     }
 }
