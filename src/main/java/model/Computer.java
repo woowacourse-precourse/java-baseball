@@ -111,7 +111,7 @@ public class Computer {
     }
 
 
-    public void checkThreeNum2GameOfUser(int numOfCompare) {
+    public void checkThreeInputNumOfUser2Game(int numOfCompare) {
         ArrayList<Integer> splitNumOfCompare = splitEachDigitOfNum(numOfCompare);
         checkStrikeBall(splitNumOfCompare);
     }

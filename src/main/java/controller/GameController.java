@@ -39,7 +39,7 @@ public class GameController {
 
     public void isRightNumOfUser2Computer() {
         int numInputOfUser = user.getNumSelecUser();
-        computer.checkThreeNum2GameOfUser(numInputOfUser);
+        computer.checkThreeInputNumOfUser2Game(numInputOfUser);
     }
 
     public boolean isEndGame() {
