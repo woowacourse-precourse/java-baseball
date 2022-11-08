@@ -1,14 +1,14 @@
-package createnumberlist;
+package createlist;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static validate.check.checkSize;
+import static validate.check.userListSize;
 import static validate.check.isNumberValidate;
 
 
 public class user {
-    public static List<Integer> createUserNumberList(String number) {
+    public static List<Integer> UserNumber(String number) {
         List<Integer> user = new ArrayList<>();
 
         if (isNumberValidate(number) == false) {
@@ -23,7 +23,7 @@ public class user {
             user.add(numberToInt);
         }
 
-        checkSize(user);
+        userListSize(user);
 
         return user;
     }
