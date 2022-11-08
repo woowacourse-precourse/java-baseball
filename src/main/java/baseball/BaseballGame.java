@@ -29,6 +29,8 @@ public class BaseballGame {
     public void playGame() {
         User user = new User();
 
-        user.inputUserBaseballNumber();
+        while (user.inputBaseballNumber()) {
+            System.out.println("test");
+        }
     }
 }

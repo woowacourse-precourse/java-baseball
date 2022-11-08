@@ -11,7 +11,7 @@ public class User {
         this.userBaseballNumber = userBaseballNumber;
     }
 
-    public boolean inputUserNumber() {
+    public boolean inputBaseballNumber() {
         String userInput;
 
         System.out.print(GameMessage.INPUT_NUMBER_MESSAGE);
