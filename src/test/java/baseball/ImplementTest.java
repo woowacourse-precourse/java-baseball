@@ -24,6 +24,13 @@ public class ImplementTest extends NsTest{
                 .isLessThan(10);
         }
     }
+
+    @Test
+    void 정답시_게임종료_선언_테스트() {
+        int strike = 3;
+        assertThat(GameManager.isFinish(strike)).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
