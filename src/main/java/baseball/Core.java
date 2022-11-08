@@ -57,7 +57,14 @@ public class Core {
 		return false;
 	}
 
-	public void checkRestart() {
+	public void checkFinish() {
+		if (user.strike == 3) {
+			View.finish();
+			checkRestart();
+		}
+	}
+
+	private void checkRestart() {
 		int userInput = Integer.parseInt(Console.readLine());
 		checkException(userInput);
 		if (userInput == 1) {
