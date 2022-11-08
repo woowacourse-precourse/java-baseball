@@ -9,7 +9,6 @@ import java.util.LinkedHashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("[BaseballCalculator 클래스 테스트]")
 class BaseballCalculatorTest {
 
     final BaseballCalculator bc = new BaseballCalculator();
@@ -22,12 +21,10 @@ class BaseballCalculatorTest {
         return answer;
     }
 
-    @DisplayName("단위 메소드 테스트")
     @Nested
     class Test1 {
 
         @ParameterizedTest
-        @DisplayName("strikeJudgement 메소드가 잘 실행되는가?")
         @CsvSource(value={"1,3,5:2,1,6:0","1,2,3:1,2,9:2","1,2,3:1,3,7:1"}, delimiter=':')
         void strikeJudgementTest(
                 final String inputNum,
@@ -42,7 +39,6 @@ class BaseballCalculatorTest {
         }
 
         @ParameterizedTest
-        @DisplayName("ballJudgement 메소드가 잘 실행되는가?")
         @CsvSource(value={"1,2,3:2,3,1:3","1,2,3:1,2,3:0","1,2,3:1,3,7:1"}, delimiter=':')
         void ballJudgementTest(
                 final String inputNum,

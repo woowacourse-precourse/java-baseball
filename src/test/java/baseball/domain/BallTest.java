@@ -8,16 +8,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("[Ball 클래스 테스트]")
 class BallTest {
 
-    @DisplayName("단위 메소드 테스트")
     @Nested
     class Test1 {
         final Ball ball = new Ball();
 
         @Test
-        @DisplayName("ball 객체가 잘 생성실되었는가?")
         void ball() {
             assertAll(
                     () -> assertNotNull(ball),
@@ -26,7 +23,6 @@ class BallTest {
         }
 
         @ParameterizedTest()
-        @DisplayName("ball 객체의 ball 메소드가 잘 실행되는가?")
         @ValueSource(ints = {1, 2, 3, 4, 0, 7})
         void addStrike(final int num) {
             ball.putBall(num);
@@ -34,7 +30,6 @@ class BallTest {
         }
 
         @Test
-        @DisplayName("ball 객체의 clearBall 메소드가 잘 실행되는가?")
         void clearStrike() {
             ball.clearBall();
             assertEquals(ball.ball(), 0);
@@ -42,7 +37,6 @@ class BallTest {
     }
 
     @Test
-    @DisplayName("통합적으로 Ball 클래스가 제대로 실행되는가?")
     void IntegratedTest() {
         final var ball1 = new Ball();
         final var ball2 = new Ball();

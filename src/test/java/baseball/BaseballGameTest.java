@@ -35,7 +35,6 @@ class BaseballGameTest {
         }
 
         @Test
-        @DisplayName("랜덤 값이 제대로 실행 되는가?")
         void test1() {
             Iterator<Character> iteration = bg.getCorrectNum().iterator();
 
@@ -47,7 +46,6 @@ class BaseballGameTest {
         }
 
         @Test
-        @DisplayName("ball과 strike는 제대로 계산이 되는가?")
         void test2() {
 
             final var lst = new LinkedHashSet<Character>();
@@ -63,7 +61,6 @@ class BaseballGameTest {
         }
 
         @Test
-        @DisplayName("값이 제대로 삭제가 되는가?")
         void test3() {
             bg.resetNum();
             assertEquals(bg.getCorrectNum().size(), 0);
