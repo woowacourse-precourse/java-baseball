@@ -43,6 +43,13 @@ class ApplicationTest extends NsTest {
         assertThat(computer.countBall("412")).isEqualTo(2);
         assertThat(computer.countBall("312")).isEqualTo(3);
     }
+
+    @Test
+    void 스트라이크갯수확인() {
+        Computer computer = new Computer("123");
+        assertThat(computer.countStrike("425")).isEqualTo(1);
+        assertThat(computer.countStrike("143")).isEqualTo(2);
+        assertThat(computer.countStrike("123")).isEqualTo(3);
     }
 
     @Override
