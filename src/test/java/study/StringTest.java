@@ -42,9 +42,9 @@ public class StringTest {
     void charAt_메서드_사용시_문자열의_길이보다_큰_숫자_위치의_문자를_찾을_때_예외_발생() {
         String input = "abc";
 
-        assertThatThrownBy(() -> input.charAt(5))
+        assertThatThrownBy(() -> input.charAt(4))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range: 5");
+                .hasMessageContaining("String index out of range: 4");
     }
 
 }
