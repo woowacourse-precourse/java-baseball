@@ -10,8 +10,7 @@ public class AnswerTest {
     @Test
     void 올바른_인덱스를_반환() {
         //given
-        AnswerGenerator answerGenerator = new AnswerGenerator();
-        List<Integer> tempNums = answerGenerator.generateAnswer();
+        List<Integer> tempNums = AnswerGenerator.generateAnswer();
         Answer testAnswer = new Answer(tempNums);
 
         //when
@@ -25,8 +24,7 @@ public class AnswerTest {
     @Test
     void 올바른_포함여부를_반환() {
         //given
-        AnswerGenerator answerGenerator = new AnswerGenerator();
-        List<Integer> tempNums = answerGenerator.generateAnswer();
+        List<Integer> tempNums = AnswerGenerator.generateAnswer();
         Answer testAnswer = new Answer(tempNums);
 
         //when
