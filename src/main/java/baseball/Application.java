@@ -50,6 +50,27 @@ public class Application {
         return splitList;
     }
 
+    public static List<Integer> callReferee(List<Integer> randomNumberList, List<Integer> userNumberList) {
+        int strike = 0;
+        int ball = 0;
+        List<Boolean> isBallList = new ArrayList<>(List.of(false, false, false, false, false, false, false, false, false, false));
+
+        for (int i = 0; i < 3; i++) {
+            if (randomNumberList.get(i).equals(userNumberList.get(i))) {
+                strike++;
+            }
+            else {
+                isBallList.set(randomNumberList.get(i), true);
+            }
+        }
+        for (int userNumber: userNumberList) {
+            if(isBallList.get(userNumber)) {
+                ball++;
+            }
+        }
+        return new ArrayList<>(List.of(strike, ball));
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumberList = makeRandomNumber();
@@ -60,5 +81,6 @@ public class Application {
             throw new IllegalArgumentException();
         }
         List<Integer> userNumberList = splitIntToList(userNumber);
+        List<Integer> strikeBall = callReferee(randomNumberList, userNumberList);
     }
 }
