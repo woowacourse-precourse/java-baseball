@@ -42,7 +42,7 @@ public class Application {
     }*/
 
 
-    public static void computer() {
+/*    public static void computer() {
         int cnt = 0;
         computer = (int) (Math.random() * 899) + 100; // 100~999 중 1개 선택
         str_com = "";
@@ -60,9 +60,9 @@ public class Application {
             else
                 break;
         }
-    }
+    }*/
 
-/*    public static int getUser() {
+    public static int getUser() {
         user = sc.nextInt(); // user 입력받기
         String string_user = Integer.toString(user);
         if(user < 100 || user > 999)
@@ -77,7 +77,7 @@ public class Application {
         }
 
         return user;
-    }*/
+    }
 
 /*    public static void playgame(String str_user) {
         int i, j;
