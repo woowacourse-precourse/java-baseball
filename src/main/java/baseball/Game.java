@@ -47,7 +47,7 @@ public class Game {
             return "낫싱";
         }
         if (strike == Computer.BallsLength) {
-            return strike + "스트라이크\n" + Computer.BallsLength + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+            return strike + "스트라이크\n" + Computer.BallsLength + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
         }
         if (ball == 0) {
             return strike + "스트라이크";
