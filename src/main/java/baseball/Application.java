@@ -12,31 +12,46 @@ public class Application {
     static boolean Exception_Status = true;
     static boolean status = true;
     public static List<Integer> InputNumber () {
-        List<Integer> user = new ArrayList<>();
         String[] userNumber;
+        List<Integer> user;
 
         System.out.println("숫자를 입력해주세요 : ");
 
         userNumber = Console.readLine().split("");
+        user = StringtoInteger_Input(userNumber);
+        SizeCompare(user);
+
+        return user;
+    }
+
+    public static List<Integer> StringtoInteger_Input(String [] userNumber){
+
+        List<Integer> user = new ArrayList<>();
+
         for(int i=0; i<userNumber.length; i++){
-            if(userNumber[i].equalsIgnoreCase(" "));
+            if(userNumber[i].equalsIgnoreCase(" ") || userNumber[i].equalsIgnoreCase(","));
             else if(Integer.parseInt(userNumber[i]) >= 1 && Integer.parseInt(userNumber[i]) <= 9) {
                 user.add(Integer.parseInt(userNumber[i]));
             }
-            else IllegalArgumentException();
+            else {
+                IllegalArgumentException();
+            }
         }
+        return user;
+    }
+
+    public static void SizeCompare(List<Integer> user){
         if(user.size()!=3 && Exception_Status==true){
             IllegalArgumentException();
         }
-        return user;
     }
 
     public static boolean Compare(List<Integer> computer, List<Integer> Input) {
         int strike = 0;
         int ball = 0;
         for(int i=0; i<computer.size(); i++){
-            ball += Counting(i, computer, Input).get(0);
-            strike += Counting(i, computer, Input).get(1);
+            ball += BallCount(i, computer, Input).get(0);
+            strike += BallCount(i, computer, Input).get(1);
         }
 
         if (strike+ball==0) System.out.println("낫싱");
@@ -48,7 +63,7 @@ public class Application {
             return false;
         }
     }
-    public static List<Integer> Counting(int index, List<Integer> computer, List<Integer> Input){
+    public static List<Integer> BallCount(int index, List<Integer> computer, List<Integer> Input){
         List<Integer> count = new ArrayList<>();
         int ball = 0;
         int strike = 0;
