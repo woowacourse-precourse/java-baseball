@@ -9,9 +9,8 @@ public class Game {
     private final PrintWindow printWindow;
     private Computer computer;
 
-    public Game(PrintWindow printWindow, Computer computer) {
+    public Game(PrintWindow printWindow) {
         this.printWindow = printWindow;
-        this.computer = computer;
     }
 
     public void gamePlay(){
