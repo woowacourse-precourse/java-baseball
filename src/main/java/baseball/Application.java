@@ -25,12 +25,8 @@ public class Application {
         return sb.toString();
     }
 
-    public static String getNumbers() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-
-        // 3글자가 아닐 경우는 잘못된 값이다
-        if (userInput.length() != 3) {
+    public static void validateUserNumbers(String userNumbers) {
+        if (userNumbers.length() != 3) {
             throw new IllegalArgumentException();
         }
 
@@ -38,8 +34,8 @@ public class Application {
         Set<Character> characterSet = new TreeSet<>();
 
         // 입력된 문자가 숫자인지 검증한다
-        for (int i = 0; i < userInput.length(); i++) {
-            char currentChar = userInput.charAt(i);
+        for (int i = 0; i < userNumbers.length(); i++) {
+            char currentChar = userNumbers.charAt(i);
             if (currentChar < '1' || currentChar > '9') {
                 throw new IllegalArgumentException();
             }
@@ -50,8 +46,6 @@ public class Application {
         if (characterSet.size() != 3) {
             throw new IllegalArgumentException();
         }
-
-        return userInput;
     }
 
     public static String getResult(String answer, String userInput) {
@@ -86,9 +80,12 @@ public class Application {
         String answer = generateRandomNumbers();
 
         while (true) {
-            String userNumber = getNumbers();
+            System.out.print("숫자를 입력해주세요 : ");
+            String userNumbers = Console.readLine();
 
-            String result = getResult(answer, userNumber);
+            validateUserNumbers(userNumbers);
+
+            String result = getResult(answer, userNumbers);
 
             System.out.println(result);
             if (result.equals("3스트라이크")) {
@@ -110,7 +107,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다");
+        System.out.println("숫자 야구 게임을 시작합니다.");
         boolean isGameContinued = true;
         while (isGameContinued) {
             isGameContinued = manageGame();

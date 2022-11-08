@@ -6,13 +6,11 @@
 
 반환값은 길이가 3인 String 자료형을 반환한다.
 
-### getNumbers 메소드
+### validateUserNumber 메소드
 
-Console API을 통해 서로 다른 3자리의 수를 입력받아 해당 문자열을 반환하는 메소드
+Console API을 통해 서로 다른 3자리의 수를 입력받은 문자열이 올바른 입력인지 검증하는 메소드이다.
 
-이때 잘못된 값이 입력될 때 IllegalArgumentException을 throw한다.
-
-반환값은 서로 다른 3개의 숫자가 있는 길이 3의 String 자료형을 반환한다.
+이때 잘못된 값이라고 확인되면 IllegalArgumentException을 throw한다.
 
 ### getResult 메소드
 
