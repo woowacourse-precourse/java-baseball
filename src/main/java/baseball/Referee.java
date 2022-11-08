@@ -7,13 +7,11 @@ public class Referee {
     private int strike;
 
     public Referee() {
-        ball = 0;
-        strike = 0;
+        initBallAndStrike();
     }
 
     public boolean refereeCheck(List<Integer> userNum, List<Integer> computerNum) {
-        ball = 0;
-        strike = 0;
+        initBallAndStrike();
         strikeCount(userNum, computerNum);
         ballCount(userNum, computerNum);
 
@@ -40,6 +38,11 @@ public class Referee {
                     ball++;
             }
         }
+    }
+
+    private void initBallAndStrike() {
+        ball = 0;
+        strike = 0;
     }
 
     public int getBall() {
