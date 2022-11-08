@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.constant.Message;
+import baseball.constant.Rule;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,8 @@ public class Computer {
     public void createAnswerNumber() {
         List<Integer> answer = new ArrayList<>();
 
-        while (answer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (answer.size() < Rule.NUMBER_SIZE) {
+            int randomNumber = Randoms.pickNumberInRange(Rule.MIN_DIGIT_NUMBER, Rule.MAX_DIGIT_NUMBER);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
@@ -29,13 +30,13 @@ public class Computer {
 
         System.out.println(resultMessage(strikeNumber, ballNumber));
 
-        return strikeNumber == 3;
+        return strikeNumber == Rule.SUCCESS_STRIKE_COUNT;
     }
 
     private int countStrike(List<Integer> guessNumber) {
         int strikeNumber = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Rule.NUMBER_SIZE; i++) {
             if (Objects.equals(answerNumber.get(i), guessNumber.get(i))) {
                 strikeNumber++;
             }
@@ -47,7 +48,7 @@ public class Computer {
     private int countBall(List<Integer> guessNumber) {
         int ballNumber = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Rule.NUMBER_SIZE; i++) {
             if (Objects.equals(answerNumber.get(i), guessNumber.get(i))) {
                 continue;
             }

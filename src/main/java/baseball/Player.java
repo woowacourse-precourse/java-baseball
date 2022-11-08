@@ -3,6 +3,7 @@ package baseball;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import baseball.constant.Message;
+import baseball.constant.Rule;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class Player {
         exceptionHandler(guessNumberString);
 
         List<Integer> guessNumber = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Rule.NUMBER_SIZE; i++) {
             guessNumber.add(guessNumberString.charAt(i) - '0');
         }
 
@@ -32,15 +33,13 @@ public class Player {
     }
 
     private boolean isValidSize(String number) {
-        return number.length() == 3;
+        return number.length() == Rule.NUMBER_SIZE;
     }
 
     private boolean isValidScope(String number) {
-        char minDigitNumber = '1';
-        char maxDigitNumber = '9';
-
-        for (int i = 0; i < 3; i++) {
-            if (!(number.charAt(i) >= minDigitNumber && number.charAt(i) <= maxDigitNumber)) {
+        for (int i = 0; i < Rule.NUMBER_SIZE; i++) {
+            if (!(number.charAt(i) >= Character.forDigit(Rule.MIN_DIGIT_NUMBER, 10)
+                    && number.charAt(i) <= Character.forDigit(Rule.MAX_DIGIT_NUMBER, 10))) {
                 return false;
             }
         }
