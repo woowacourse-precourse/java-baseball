@@ -100,8 +100,24 @@ public class Application {
         }
         int oldValue = resultMap.getOrDefault("ball", 0);
         resultMap.put("ball", oldValue+1);
-
     }
 
+
+    //5. 비교한 결과 문자열로 만들기
+    public static String giveHint(Map<String, Integer> resultMap){
+        List<String> answer = new ArrayList<>();
+        if(resultMap.containsKey("ball")) {
+            answer.add(String.format("%d볼",resultMap.get("ball") ));
+        }
+        if(resultMap.containsKey("strike")) {
+            answer.add(String.format("%d스트라이크", resultMap.get("strike") ));
+        }
+        if(resultMap.containsKey("nothing")
+                && resultMap.get("nothing").equals(3)) {
+            answer.add("낫싱");
+        }
+
+        return String.join(" ",answer).trim();
+    }
 
 }
