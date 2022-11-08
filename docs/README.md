@@ -1,7 +1,8 @@
 ## ✅ 기능 목록
 
-- 예외 처리 메서드(잘못된 입력을 예외 처리)
-- 정답 생성 메서드(주어진 요구 사항에 있는 라이브러리 활용)
-- 숫자 입력 메서드
-- 비교 및 출력 메서드
-- 추후 필요에 따라 추가
+- Exception Handling & Checking Validation Method (Handle exception with invalid input)
+- Answer Creation Method (Use Randoms library)
+- Number Input Method (Use Console library)
+- Cast-String-to-Integer Method
+- Comparison Method (Compare input number and created answer)
+- Rerun-Or-Not Method (Judge to rerun the application or not)
