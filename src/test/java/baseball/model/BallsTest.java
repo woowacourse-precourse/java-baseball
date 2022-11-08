@@ -88,15 +88,21 @@ class BallsTest {
     void generateResult_컴퓨터의_값과_플레이어의_값이_2볼_1스트라이크일_경우_결과가_잘_반환되는지_테스트() {
         //given
         Result result = new Result();
-        List<Integer> computerValues = List.of(1, 2, 3);
-        List<Integer> playerValues = List.of(1, 3, 2);
+        List<Ball> computerBalls = new ArrayList<>();
+        computerBalls.add(new Ball(1));
+        computerBalls.add(new Ball(2));
+        computerBalls.add(new Ball(3));
+        List<Ball> playerBalls = new ArrayList<>();
+        playerBalls.add(new Ball(1));
+        playerBalls.add(new Ball(3));
+        playerBalls.add(new Ball(2));
         //when
-        for (int i = 0; i < computerValues.size(); i++) {
-            if (Objects.equals(computerValues.get(i), playerValues.get(i))) {
+        for (int i = 0; i < computerBalls.size(); i++) {
+            if (Objects.equals(computerBalls.get(i), playerBalls.get(i))) {
                 result.increaseStrikeCount();
                 continue;
             }
-            if (computerValues.contains(playerValues.get(i))) {
+            if (computerBalls.contains(playerBalls.get(i))) {
                 result.increaseBallCount();
             }
         }
