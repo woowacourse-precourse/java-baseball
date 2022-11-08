@@ -2,16 +2,15 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class GameManager {
-    static void start() {
+public class Game {
+    public static void start() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        onGame();
+        running();
     }
 
-    static void onGame() {
+    static void running() {
         List<Integer> computer = Computer.createNewValue();
 
         while (true) {
@@ -28,14 +27,14 @@ public class GameManager {
             }
         }
 
-        afterGame();
+        afterRound();
     }
 
-    static void afterGame() {
+    static void afterRound() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
-            onGame();
+            running();
         }
         if (input.equals("2")) {
             return;
