@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.model.ComputerNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,14 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    }
+
+    @Test
+    void 컴퓨터숫자_랜덤_생성(){
+        ComputerNumber computerNumber = new ComputerNumber();
+        computerNumber.setGameClearNumber();
+
+        assertThat(computerNumber.getComputerNumber().length()).isEqualTo(3);
     }
 
     @Test
