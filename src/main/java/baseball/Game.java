@@ -5,7 +5,8 @@ import baseball.model.dto.GameStatus;
 import baseball.model.dto.Result;
 import baseball.model.Computer;
 import baseball.model.Player;
-import baseball.model.Referee;
+import baseball.view.Input;
+import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
@@ -17,13 +18,11 @@ public class Game {
 
     private final Computer computer;
     private final Player player;
-    private final Referee referee;
 
-    public Game(Computer computer, Player player, Referee referee) {
-        System.out.println(START_GAME_MESSAGE);
+    public Game(Computer computer, Player player) {
+        Output.println(START_GAME_MESSAGE);
         this.computer = computer;
         this.player = player;
-        this.referee = referee;
     }
 
     public void startGame() {
@@ -31,8 +30,9 @@ public class Game {
         GameStatus gameStatus = new GameStatus(GAME_RESTART_STATUS);
 
         while (true) {
-            Balls playerBalls = player.generatePlayerBalls();
-            Result result = referee.doJudge(computerBalls, playerBalls);
+            Balls playerBalls = player.generatePlayerBalls(Input.inputValue());
+            Result result = computerBalls.generateResult(playerBalls);
+            Output.printResult(result);
 
             if (result.isGameOver()) {
                 gameStatus.changeStatus(Console.readLine());
