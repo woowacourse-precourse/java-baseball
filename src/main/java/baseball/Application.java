@@ -15,10 +15,10 @@ public class Application {
         public BaseBall(List<Integer> userNumber){
             CountStrike(userNumber);
             this.ball = CountSameNum(userNumber) - strike;
-            GetOutputResult();
+            GetResult();
         }
 
-        private void GetOutputResult(){
+        private void GetResult(){
             result = "";
             if(this.ball != 0)
                 result += ball + "볼 ";
