@@ -43,10 +43,6 @@ public class BaseBall {
         }
     }
     
-    private boolean isBaseBallGameEnd(final Referee referee) {
-        return referee.isBaseBallGameEnd();
-    }
-    
     private Referee compareBallsOnce(final BaseBallGame baseBallGame) {
         final Referee referee = playResult(baseBallGame);
         OutputView.printResult(new ScoresDTO(referee));
@@ -64,6 +60,10 @@ public class BaseBall {
     
     private UserNumbersDTO inputUserBalls() {
         return InputView.inputUserBalls();
+    }
+    
+    private boolean isBaseBallGameEnd(final Referee referee) {
+        return referee.isBaseBallGameEnd();
     }
     
     private int selectedNumberForRestart() {
