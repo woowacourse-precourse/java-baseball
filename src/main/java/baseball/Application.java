@@ -29,7 +29,7 @@ public class Application {
         List<Integer> userInputNumber = new ArrayList<>();
         String inputNumber = readLine();
         if(inputNumber.length() != 3) {
-            throw new IllegalArgumentException("입력 받은 숫자의 개수가 3개가 아닙니다.");
+            throw new IllegalArgumentException();
         }
 
         String[] inputNumberSplitArray = inputNumber.split("");
@@ -37,7 +37,7 @@ public class Application {
             if (!userInputNumber.contains(Integer.parseInt(inputNumberSplitArray[i]))) {
                 userInputNumber.add(Integer.parseInt(inputNumberSplitArray[i]));
             } else {
-                throw new IllegalArgumentException("중복된 숫자가 포함되어 있습니다.");
+                throw new IllegalArgumentException();
             }
         }
 
@@ -50,7 +50,7 @@ public class Application {
         int ball = COUNT_INITALIZE;
         for(int i = 0; i < computerNumber.size(); i++)
         {
-            if(computerNumber.get(i) == userNumber.get(i)) {
+            if(computerNumber.get(i).equals(userNumber.get(i))) {
                 strike++;
             }
             else if(userNumber.contains(computerNumber.get(i)))
@@ -83,9 +83,9 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computerCreateNumber = createRandomNumber();
         int gameContinue = gameRestart;
         while(gameContinue != gameEnd) {
+            List<Integer> computerCreateNumber = createRandomNumber();
             List<Integer> userInputNumber = new ArrayList<>();
             int strikeCount = COUNT_INITALIZE;
 
@@ -95,7 +95,6 @@ public class Application {
                     strikeCount = numberBaseballGame(computerCreateNumber,userInputNumber);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
                 break;
             }
 
