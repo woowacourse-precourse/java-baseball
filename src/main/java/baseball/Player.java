@@ -17,6 +17,11 @@ public class Player {
         }
         return convertStringToIntegerList(consoleInput);
     }
+    static List<Integer> convertStringToIntegerList(String consoleInput) {
+        return Arrays.stream(consoleInput.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
     static boolean isValidInput(String consoleInput){
         return isInputSizeEqualToAnswerSize(consoleInput)
                 && doesNotHaveDuplicateInputElement(consoleInput)
@@ -46,9 +51,4 @@ public class Player {
         return true;
     }
 
-    static List<Integer> convertStringToIntegerList(String consoleInput) {
-        return Arrays.stream(consoleInput.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
 }
