@@ -33,6 +33,7 @@ class Game {
             String select = Console.readLine();
             if (select.equals("1")) {
                 startGame();
+                return;
             } else if (select.equals("2")) {
                 return;
             } else {
