@@ -23,4 +23,10 @@ public class GameImpl implements Game{
     userPlayer = new User();
   }
 
+  @Override
+  public void GameStart() {
+    final String START_MESSAGE = "숫자를 입력해주세요 : ";
+    System.out.print(START_MESSAGE);
+    userPlayer.createUserInput();
+  }
 }
