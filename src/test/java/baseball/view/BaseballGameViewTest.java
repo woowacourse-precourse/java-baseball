@@ -4,15 +4,16 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 
 class BaseballGameViewTest {
 
-    BaseballGameView baseballGameView = new BaseballGameView();
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    BaseballGameView baseballGameView = new BaseballGameView();
 
     @BeforeEach
     public void setUpStream() {

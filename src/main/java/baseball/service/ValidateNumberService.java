@@ -13,7 +13,7 @@ public class ValidateNumberService {
     private final static String ERROR_NUMBER_LENGTH_NOT_THREE = "Input의 길이가 3이 아닙니다.";
     private final static String ERROR_RESTART_INPUT_NOT_ONE_OR_TWO = "Restart Input이 1 혹은 2가 아닙니다.";
 
-    public static void validateUserInput(String userInput) throws IllegalArgumentException{
+    public static void validateUserInput(String userInput) throws IllegalArgumentException {
         validateDigitRangeFromOneToNine(userInput);
         validateDuplicatedDigitExists(userInput);
         validateNumberLengthThree(userInput);
@@ -30,6 +30,7 @@ public class ValidateNumberService {
             throw new IllegalArgumentException(ERROR_DIGIT_RANGE_NOT_FROM_ONE_TO_NINE);
         }
     }
+
     private static void validateDuplicatedDigitExists(String userInput) {
         List<String> digits = new ArrayList<>(Arrays.asList(userInput.split("")));
         HashSet<String> set = new HashSet<>();
