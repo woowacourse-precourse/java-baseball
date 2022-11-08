@@ -11,6 +11,11 @@ public class Validation {
     private static final String RESTART_NUMBER_RANGE = "^[1-2]{1}";
     private static final int RESTART_NUMBER_DIGIT_SIZE = 1;
 
+    private static final String RANGE_ERROR_MESSAGE = "Number is out of range";
+    private static final String DIGIT_ERROR_MESSAGE = "Number must be digit";
+    private static final String SIZE_ERROR_MESSAGE = "Number must be correct-digit size: ";
+    private static final String DUPLICATION_ERROR_MESSAGE = "UserNumber has duplicate number";
+
     public static void validateRestartNumber(String restartNumber) {
         validateDigit(restartNumber);
         validateSize(restartNumber, RESTART_NUMBER_DIGIT_SIZE);
@@ -27,7 +32,7 @@ public class Validation {
     private static void validateRange(String numbers, String regex) {
 
         if (!Pattern.matches(regex, numbers)) {
-            throw new IllegalArgumentException("Number is out of range");
+            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 
@@ -39,14 +44,14 @@ public class Validation {
 
     private static void checkDigit(char number) {
         if (!Character.isDigit(number)) {
-            throw new IllegalArgumentException("Number must be digit");
+            throw new IllegalArgumentException(DIGIT_ERROR_MESSAGE);
         }
     }
 
 
     private static void validateSize(String numbers, int digitSize) {
         if (numbers.length() != digitSize) {
-            throw new IllegalArgumentException("Number must be correct-digit size: " + digitSize);
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE + digitSize);
         }
     }
 
@@ -58,7 +63,7 @@ public class Validation {
         }
 
         if (checkMap.containsValue(2) || checkMap.containsValue(3)) {
-            throw new IllegalArgumentException("UserNumber has duplicate number");
+            throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
         }
     }
 }
