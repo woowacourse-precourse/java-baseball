@@ -104,7 +104,18 @@ public class Application {
             throw new IllegalArgumentException("3개 숫자만 입력해주세요.");
         }
     }
-
+    // 경기가 끝난 후 "재시작"일 때 1, "종료"일 때 2 반환
+    public static class Playagain {
+        public boolean playagain(){
+            System.out.println("축하합니다! 경기를 다시 시작하겠습니까? 다시 시작 : 1, 게임 종료 : 2");
+            Scanner scanner = new Scanner(System.in);
+            char answer = scanner.next().charAt(0);
+            if(answer == '1'){
+                return true;
+            }
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
