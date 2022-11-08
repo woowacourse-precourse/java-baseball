@@ -17,7 +17,7 @@ public class Application {
             Game game = new Game();
             boolean isEnd = false;
             while (!isEnd) {
-                BaseballNumber baseballNumber = new BaseballNumber(Console.readLine());
+                BaseballNumber baseballNumber = new BaseballNumber(inputView.inputUserNumber());
                 PlayResult playResult = game.playGame(baseballNumber);
                 resultView.printResult(playResult);
                 isEnd = playResult.success();
