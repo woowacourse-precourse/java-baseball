@@ -42,10 +42,9 @@ public class Application {
     private void checkGameFinished() {
         if (!user.getUserReplayInput()) {
             isGameFinished = true;
-        } else {
-            computer.pickRandomNumber();
-            printStartGame();
+            return;
         }
-
+        computer.pickRandomNumber();
+        printStartGame();
     }
 }
