@@ -47,16 +47,12 @@ public class BaseBallGame implements GameInterface {
     }
 
     /**
-     * 게임의 재시작 여부에 따라, 게임을 끝내거나 재시작합니다.
+     * 게임의 재시작 여부에 따라, True 혹은 false 를 반환합니다.
      */
     @Override
-    public void end() {
+    public boolean end() {
         boolean flag = askRestart();
-        if (flag) {
-
-        } else {
-
-        }
+        return flag;
     }
 
     /**
