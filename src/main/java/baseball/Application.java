@@ -42,6 +42,7 @@ public class Application {
     }
 
     static String inputUserNumber() {
+        System.out.printf("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
         if (!isValidate(userNumber))
             throwException();
