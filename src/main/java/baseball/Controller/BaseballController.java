@@ -9,7 +9,11 @@ public class BaseballController {
     public void gameStart() {
         baseballService.gameStartMessage();
 
-        baseballService.gameInProgress();
+        int choiceNumber = 0;
+
+        do {
+            choiceNumber = baseballService.gameInProgress();
+        } while (choiceNumber == 1);
 
     }
 }

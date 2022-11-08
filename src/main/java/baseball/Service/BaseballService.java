@@ -11,7 +11,7 @@ public class BaseballService {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void gameInProgress() {
+    public int gameInProgress() {
         List<Integer> computer = pickThreeNumbers();
         System.out.println(computer.toString());
 
@@ -20,6 +20,15 @@ public class BaseballService {
         while (!resultOfGuess(computer, user)) {
             user = guessThreeNumbers();
         }
+
+        // 1or 2 입력 받기
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int choiceInput = Integer.parseInt(Console.readLine());
+
+        // 잘못된 값 입력하면 예외 던지기
+
+        return choiceInput;
+
     }
 
     public List<Integer> pickThreeNumbers() {
@@ -106,8 +115,6 @@ public class BaseballService {
         if (user.get(2) == computer.get(0) || user.get(2) == computer.get(1)) {
             ball++;
         }
-        System.out.println("ball : " + ball);
-
         if (strike != 0 && ball != 0) {
             System.out.println(ball + "볼 " + strike + "스트라이크");
         }
