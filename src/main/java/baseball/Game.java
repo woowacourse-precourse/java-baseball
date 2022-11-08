@@ -26,7 +26,7 @@ public class Game {
             comparisonNumber.checkResult(computer.getComputerNumber(), User.getUserNumber());
             System.out.println(comparisonNumber.Message());
             if (comparisonNumber.getStrike() == 3) {
-                System.out.println("정답입니다.");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
         }
