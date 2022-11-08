@@ -32,14 +32,14 @@
 ### 요구사항
 - Return : void / Argument : void
 
-## getInputNumber(String num)
+## getInputNumber()
 
 ### 기능
 - 사용자 입력 값 받기
 
 ### 요구사항
 - `camp.nextstep.edu.missionutils.Console`의 readLine() 사용하기
-- Return : void / Argument : String
+- Return : String / Argument : void
 
 
 ## printGameResult(int ballCount, int strikeCount)
