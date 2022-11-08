@@ -1,7 +1,7 @@
 package baseball.domain;
 
-import baseball.domain.factory.ComputerBallsFactory;
 import baseball.domain.ballscreatestrategy.RandomBallsCreateStrategy;
+import baseball.domain.factory.ComputerBallsFactory;
 
 import java.util.List;
 
