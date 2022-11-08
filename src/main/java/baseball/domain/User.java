@@ -7,10 +7,6 @@ import java.util.List;
 public class User {
 
     public List<String> getUserAnswer() {
-        return inputUserAnswer();
-    }
-
-    private List<String> inputUserAnswer() {
         return Input.inputNumber();
     }
 
