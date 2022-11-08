@@ -20,4 +20,8 @@ public class Game {
             }
         }
     }
+
+    public List<Integer> getNumberList() {
+        return numberList;
+    }
 }
