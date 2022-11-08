@@ -1,8 +1,8 @@
 package baseball;
 
-import baseball.model.dto.Balls;
-import baseball.model.dto.GameStatus;
-import baseball.model.dto.Result;
+import baseball.model.Balls;
+import baseball.model.GameStatus;
+import baseball.model.Result;
 import baseball.model.Computer;
 import baseball.model.Player;
 import baseball.view.Input;

@@ -1,4 +1,4 @@
-package baseball.model.dto;
+package baseball.model;
 
 public class Result {
     private static final int ZERO_COUNT = 0;

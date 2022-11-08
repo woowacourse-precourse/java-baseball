@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.model.dto.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Computer {

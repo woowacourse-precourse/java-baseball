@@ -1,4 +1,4 @@
-package baseball.model.dto;
+package baseball.model;
 
 import java.util.*;
 

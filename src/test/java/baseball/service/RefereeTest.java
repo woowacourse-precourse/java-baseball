@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.model.dto.Result;
+import baseball.model.Result;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package baseball.model.dto;
+package baseball.model;
 
 public class GameStatus {
     public static final String INVALID_GAME_STATUS_INPUT_VALUE_MESSAGE = "게임 상태는 재시작:1, 종료:2 중에서 입력해야 합니다";

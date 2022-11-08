@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.model.dto.Result;
+import baseball.model.Result;
 
 public final class Output {
     private static final String NOTHING_MESSAGE = "낫싱";

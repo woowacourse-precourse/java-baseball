@@ -1,6 +1,6 @@
 package baseball.service;
 
-import baseball.model.dto.Balls;
+import baseball.model.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
 
