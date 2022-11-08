@@ -28,7 +28,7 @@ public class Game {
             String userInput = Console.readLine();
             validator.isValidNumber(userInput);
 
-            int[] result = Compare.do(comNum, userInput);
+            int[] result = Compare.excutue(comNum, userInput);
             strike = result[0];
             ball = result[1];
 

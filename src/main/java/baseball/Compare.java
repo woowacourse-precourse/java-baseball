@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Compare {
 
-    public static int[] do(List<Integer> comNum, String userInput) {
+    public static int[] excutue(List<Integer> comNum, String userInput) {
         int strike = 0;
         int ball = 0;
 
