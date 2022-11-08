@@ -5,7 +5,7 @@ import baseball.result.ResultType;
 public class Emcee {
 
     public void showStartingGuide(String playerName) {
-        String guide = "숫자 야구 게임을 시작합니다!\n" +
+        String guide = "숫자 야구 게임을 시작합니다.\n" +
                 "타자는 3자리 숫자를 정합니다.\n" +
                 "투수는 3자리 숫자를 던져서 타자를 3진 아웃 시키면 됩니다!\n" +
                 "타자가 생각하는 3자리 숫자를 맞추면 3진 아웃입니다.\n" +
