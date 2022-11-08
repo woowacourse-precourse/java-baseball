@@ -14,12 +14,12 @@ public class Computer {
 
 
 //    final List<Integer> computerNumList;
-    public static List<Integer> comNumList(){
+    public  List<Integer> comNumList() {
         List<Integer> computerNumList = new ArrayList<>();
-        while(computerNumList.size()<3){
-        int num = Randoms.pickNumberInRange(1, 9);
-            if(!computerNumList.contains(num)){
-                computerNumList.add(num);
+        while( computerNumList.size() < size){
+        int comNum = Randoms.pickNumberInRange(startNum, endNum);
+            if( ! computerNumList.contains (comNum)) {
+                computerNumList.add(comNum);
             }
         }
         return computerNumList;

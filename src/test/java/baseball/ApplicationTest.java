@@ -47,5 +47,6 @@ class ApplicationTest extends NsTest {
             assertThat(com.comNumList().get(i)).isBetween(1,9);
         }
     }
-    
+
+
 }

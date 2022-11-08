@@ -7,9 +7,12 @@ import java.util.List;
 
 public class User {
     //숫자 입력
-    String inputNum;
     String[] inputArray;
-    int i=0;
+    List<Integer> userNumList;
+
+    int reStartNum;
+
+    int i; //리스트 입력을위한 반복횟수 초기화용 상수
     int size =3;
 
     public String userNumLengthCheck () {
@@ -27,7 +30,8 @@ public class User {
             return inputArray;
     }
     public List<Integer> userNumList (String[] inputArray){
-        List<Integer> userNumList = new ArrayList<>();
+        userNumList = new ArrayList<>();
+        i=0;
         while(userNumList.size() < size){
             if(! userNumList.contains(Integer.parseInt(inputArray[i]))) {
                 userNumList.add(Integer.parseInt(inputArray[i]));
@@ -36,13 +40,18 @@ public class User {
         }   return userNumList;
     }
 
+    public boolean restart (){
+        reStartNum =Integer.parseInt(Console.readLine());
+        if(reStartNum==1){
+            return true;
+        } else if (reStartNum==2) {
+            return false;
+        }else {
+            throw new IllegalArgumentException();
+        }
+    }
 
 
-    //    public static List<Integer> userList (int userNum){
-//        for(int i =0;i<userNumSize;i++){
-//           return List.add(i);
-//        }
-//    }
 
 
 
