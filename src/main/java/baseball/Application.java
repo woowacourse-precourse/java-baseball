@@ -77,7 +77,7 @@ public class Application {
         }
     }
 
-    private static Integer getElementBallAndStrike(List<Integer> computer, Integer index, Integer element) {
+    private static Integer getElementBallOrStrike(List<Integer> computer, Integer index, Integer element) {
         //볼인 경우 1, 스트라이크인 경우 2, 아무것도 아닌 경우 0을 반환
         for (int i = 0; i < computer.size(); i++) {
             if (i != index && element == computer.get(i)) {
@@ -87,6 +87,16 @@ public class Application {
             }
         }
         return 0;
+    }
+
+    private static List<Integer> getUserAnswerBallAndStrike(List<Integer> computer, List<Integer> userAnswer) {
+        List<Integer> ballAndStrike = Arrays.asList(0, 0, 0);
+        for(int i = 0; i < userAnswer.size(); i++) {
+            int ballOrStrike = getElementBallOrStrike(computer, i, userAnswer.get(i));
+            ballAndStrike.set(ballOrStrike, ballAndStrike.get(i) + 1);
+        }
+
+        return ballAndStrike;
     }
 
 }
