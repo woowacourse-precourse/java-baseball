@@ -5,7 +5,7 @@ import java.util.List;
 
 public class result {
 
-    public static String resultJudgement(List<Integer> computer, List<Integer> user) {
+    public static String referee(List<Integer> computer, List<Integer> user) {
         int sameNumberCount = compareNumberComputerWithUser(computer, user);
         int strikeCount = strikeCount(computer, user);
         int ballCount = sameNumberCount - strikeCount;
