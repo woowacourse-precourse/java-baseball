@@ -9,6 +9,9 @@ import baseball.view.OutputView;
 
 
 public class BaseballGame {
+    private final static int NOTHING = 0;
+    private final static int OUT = 3;
+
     private Computer computer;
     private Player player;
 
@@ -40,11 +43,11 @@ public class BaseballGame {
     }
 
     private boolean isCorrect(int strike) {
-        return strike == 3;
+        return strike == OUT;
     }
 
     private void printResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
+        if (strike == NOTHING && ball == NOTHING) {
             OutputView.printNothing();
             return;
         }
