@@ -16,15 +16,15 @@ public class User {
         number = Console.readLine();
     }
 
-    public void GameStart() {
+    public void printGameStart() {
         System.out.println(GAME_START);
     }
 
     public List<Integer> createUserNumber() {
         inputNumber();
-        String[] splitNumber = number.split("");
+        String[] splitNumbers = number.split("");
         List<Integer> userNumbers = new ArrayList<>();
-        for (String number : splitNumber) {
+        for (String number : splitNumbers) {
             int numberToInt = Integer.parseInt(number);
             userNumbers.add(numberToInt);
         }
@@ -33,10 +33,10 @@ public class User {
     }
 
     public void inputException(List<Integer> userNumbers) {
-        int userNumbersSize = userNumbers.size();
         if (!isDeduplication(userNumbers)) {
             throw new IllegalArgumentException();
         }
+        int userNumbersSize = userNumbers.size();
         if (userNumbersSize != 3) {
             throw new IllegalArgumentException();
         }
