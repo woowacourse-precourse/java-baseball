@@ -14,7 +14,6 @@ public class Application {
         System.out.println("숫자 야구 게임은 컴퓨터가 생성한 임의의 1-9사이의 3자리 수를 맞추는 게임입니다.");
         System.out.println("숫자가 포함되어 있으나 자리가 틀렸을 경우에는 볼, 숫자와 자리가 일치할 경우에는 스트라이크로 표기됩니다.");
         startGame();
-        gameRestartOrOver();
     }
 
     public static void startGame() throws IOException {
@@ -42,13 +41,16 @@ public class Application {
 
             continueNum = CntBallAndStrike(computer, userNumberList);
         }
-    }
 
-    private static void gameRestartOrOver() throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String options = bf.readLine();
+        gameRestartOrOver(options);
+    }
 
+    public static void gameRestartOrOver(String options) throws IOException {
+//        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//        String options = bf.readLine();
         if (options.equals("1")) {
             System.out.println("게임 시작");
             startGame();
@@ -112,9 +114,6 @@ public class Application {
         }
         if (number.contains("0")) {
             throw new IllegalArgumentException("숫자 0은 포함될 수 없습니다.");
-        }
-        if (!number.contains("0") && number.length() < 3) {
-            return number;
         }
         return number;
     }
