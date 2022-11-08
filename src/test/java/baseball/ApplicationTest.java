@@ -3,11 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.lang.reflect.Method;
-import java.util.Iterator;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -108,6 +105,28 @@ class ApplicationTest extends NsTest {
         assertThat(firstResult).isEqualTo(false);
         assertThat(secondResult).isEqualTo(true);
         assertThat(thirdResult).isEqualTo(false);
+    }
+
+    @Test
+    public void inputUserNumbers_입력에_관한_문구_정상_출력_테스트() throws Exception {
+        //reflection
+        Method method = Application.class.getDeclaredMethod("inputUserNumbers");
+        method.setAccessible(true);
+
+        //given
+        final String message = "숫자를 입력해주세요 : ";
+
+        //when
+        InputStream sysInBackup = System.in; // System.in을 원래대로 복구하기 위해 선언
+        ByteArrayInputStream in = new ByteArrayInputStream("123".getBytes());
+        System.setIn(in);
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        method.invoke(new Application());
+
+        //then
+        assertThat(out.toString()).isEqualTo(message);
+        System.setIn(sysInBackup);
     }
 
     @Override
