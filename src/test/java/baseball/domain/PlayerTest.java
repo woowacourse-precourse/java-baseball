@@ -23,4 +23,30 @@ public class PlayerTest {
         assertThat(player.getBallNumber().get(1)).isEqualTo(2);
         assertThat(player.getBallNumber().get(2)).isEqualTo(3);
     }
+
+    @Test
+    public void readWeatherReGameTrueSuccessTest() throws Exception {
+        // given
+        String input = "1";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when
+        boolean result = player.readWhetherReGame();
+
+        // then
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    public void readWeatherReGameFalseSuccessTest2() throws Exception {
+        // given
+        String input = "2";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        // when
+        boolean result = player.readWhetherReGame();
+
+        // then
+        assertThat(result).isEqualTo(false);
+    }
 }
