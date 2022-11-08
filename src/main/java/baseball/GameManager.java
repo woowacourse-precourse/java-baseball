@@ -19,6 +19,11 @@ public class GameManager {
         resultHash = newResultHash;
     }
 
+
+    static void setRandomNumberHash(HashMap<Integer, Integer> newRandomNumberHash) {
+        randomNumberHash = newRandomNumberHash;
+    }
+
     static boolean getIsContinue() {
         return isContinue;
     }

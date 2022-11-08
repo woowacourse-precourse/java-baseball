@@ -105,6 +105,25 @@ class ApplicationTest extends NsTest {
         }
 
         @Test
+        void judgeNumber2() {
+            HashMap<Character, Integer> expectedResultHash = new HashMap<>();
+            expectedResultHash.put('S', 1);
+            expectedResultHash.put('B', 2);
+            expectedResultHash.put('O', 0);
+            HashMap<Integer, Integer> randomNumberHash = new HashMap<>();
+            randomNumberHash.put(1, 1);
+            randomNumberHash.put(2, 3);
+            randomNumberHash.put(3, 2);
+            String input = "123";
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            GameManager.scanNumber();
+            GameManager.setRandomNumberHash(randomNumberHash);
+            HashMap<Character, Integer> result = GameManager.judgeResult();
+            assertThat(result).isEqualTo(expectedResultHash);
+        }
+
+        @Test
         void printResult() {
             HashMap<Character, Integer> resultHash = new HashMap<>();
             resultHash.put('S', 1);
