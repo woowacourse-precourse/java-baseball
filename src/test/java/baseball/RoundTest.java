@@ -19,6 +19,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RoundTest {
 
     private static Computer computer;
+    private static User user;
     private static int computerNumbers;
     private static int computerNumber1;
     private static int computerNumber2;
@@ -47,13 +48,13 @@ public class RoundTest {
                 notIncludeNumber.add(number);
             }
         }
+
+        user = User.getUser();
     }
 
     @BeforeEach
     void beforeEach() {
-        Computer computer = Computer.getComputer();
-        User user = User.getUser();
-        round = Round.getRound(computer, user);
+        round = Round.getRound();
     }
 
     @DisplayName(value = "라운드 시작 시 입력 숫자 Numbers에 담기는지 테스트")
@@ -63,11 +64,7 @@ public class RoundTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        round.startNewRound();
-
-        Field field = Round.class.getDeclaredField("user");
-        field.setAccessible(true);
-        User user = (User) field.get(round);
+        round.startNewRound(user, computer);
 
         for (int i = 0; i < 3; i++) {
             assertThat(user.findUserNumber(i).getNumber())
@@ -82,7 +79,7 @@ public class RoundTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(() -> round.startNewRound())
+        assertThatThrownBy(() -> round.startNewRound(user, computer))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -93,7 +90,7 @@ public class RoundTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        round.startNewRound();
+        round.startNewRound(user, computer);
 
         Field field = Round.class.getDeclaredField("hints");
         field.setAccessible(true);
@@ -112,7 +109,7 @@ public class RoundTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        round.startNewRound();
+        round.startNewRound(user, computer);
 
         Field field = Round.class.getDeclaredField("hints");
         field.setAccessible(true);

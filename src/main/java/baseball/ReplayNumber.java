@@ -14,7 +14,7 @@ public class ReplayNumber {
 
     private void validateRange(int input) {
         if ((input != REPLAY_YES) && (input != REPLAY_NO)) {
-            throw new IllegalArgumentException("0 혹은 1만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(Errors.REPLAY_NUMBER_RANGE.getValue());
         }
     }
 

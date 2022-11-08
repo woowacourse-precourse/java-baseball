@@ -20,7 +20,7 @@ public class Game {
     public void turnOnGame(Computer computer, User user) {
         this.computer = computer;
         this.user = user;
-        this.round = Round.getRound(computer, user);
+        this.round = Round.getRound();
         Print.printGameStart();
     }
 
@@ -32,7 +32,7 @@ public class Game {
 
     private void playGame() {
         do {
-            round.startNewRound();
+            round.startNewRound(user, computer);
         } while (!round.isThreeStrike());
     }
 

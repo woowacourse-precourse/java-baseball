@@ -8,46 +8,42 @@ public class Round {
 
     private static Round instance;
 
-    private User user;
-    private Computer computer;
     private Hints hints;
 
     private Round() {}
 
-    public static Round getRound(Computer computer, User user) {
+    public static Round getRound() {
         if (instance == null){
             instance = new Round();
         }
-        instance.computer = computer;
-        instance.user = user;
         return instance;
     }
 
-    public void startNewRound()  {
+    public void startNewRound(User user, Computer computer)  {
         Print.printRoundStart();
-        readNumbers();
-        getHints();
+        readNumbers(user);
+        getHints(user, computer);
         Print.printRoundResult(hints);
     }
 
-    private void readNumbers() {
+    private void readNumbers(User user) {
         int inputInt = Input.readInt();
         user.inputNewNumbers(inputInt);
     }
 
-    private void getHints() {
+    private void getHints(User user, Computer computer) {
         hints = new Hints();
         for (int index = 0; index < COUNT_NUMBER; index++) {
-            Hint hint = getHint(index);
+            Hint hint = getHint(index, user, computer);
             hints.addHint(hint);
         }
     }
 
-    private Hint getHint(int index) {
-        if (isStrike(index)) {
+    private Hint getHint(int index, User user, Computer computer) {
+        if (isStrike(index, user, computer)) {
             return Hint.STRIKE;
         }
-        if (isBall(index)) {
+        if (isBall(index, user, computer)) {
             return Hint.BALL;
         }
         return Hint.NOTHING;
@@ -58,7 +54,7 @@ public class Round {
         return (countStrike == 3);
     }
 
-    private boolean isBall(int index) {
+    private boolean isBall(int index, User user, Computer computer) {
         // 이전 인덱스 : 0 -> 2
         int prevIndex = (index + 2) % 3;
         // 이후 인덱스 : 2 -> 0
@@ -74,7 +70,7 @@ public class Round {
         return  isPrevBall || isNextBall;
     }
 
-    private boolean isStrike(int index) {
+    private boolean isStrike(int index, User user, Computer computer) {
         return computer.findComputerNumber(index)
                 .equals(user.findUserNumber(index));
     }

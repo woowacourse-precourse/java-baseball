@@ -7,8 +7,6 @@ public class Number {
     private final static int RANDOM_NUMBER_MIN = 1;
     private final static int RANDOM_NUMBER_MAX = 9;
 
-    private final String ERROR_MESSAGE_SIZE = "숫자는 0~9 사이 값만 입력가능합니다.";
-
     private int number;
 
     private Number(int number) {
@@ -27,7 +25,7 @@ public class Number {
 
     private void validateSize(int number) {
         if ((number < 1) || (number > 9)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_SIZE);
+            throw new IllegalArgumentException(Errors.NUMBER_RANGE.getValue());
         }
     }
 

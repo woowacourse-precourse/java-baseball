@@ -7,9 +7,6 @@ public class Numbers {
 
     private static final int NUMBER_COUNT = 3;
 
-    private final String ERROR_MESSAGE_THREE_DIGITS = "3자리 숫자를 입력해주세요.";
-    private final String ERROR_MESSAGE_DUPLICATE_NUMBER = "각각 다른 숫자를 입력해주세요.";
-
     private final List<Number> numberList = new ArrayList<>();
 
     private Numbers() {
@@ -34,13 +31,13 @@ public class Numbers {
 
     private void validateThreeDigits(int input) {
         if ((input < 111) || (input > 999)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_THREE_DIGITS);
+            throw new IllegalArgumentException(Errors.NUMBERS_THREE_DIGITS.getValue());
         }
     }
 
     private void validateDuplicateNumber(int input) {
         if (checkDuplicateNumber(input)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_DUPLICATE_NUMBER);
+            throw new IllegalArgumentException(Errors.NUMBERS_DUPLICATE_NUMBER.getValue());
         }
     }
 
