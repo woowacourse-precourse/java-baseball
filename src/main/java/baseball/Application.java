@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Application {
     public static List<Integer> computernumber = new ArrayList<>();
+
     public static void checkstrikeball(List<Integer> personnumber){
         int strikecount=0;
         int ballcount=0;
@@ -18,23 +19,28 @@ public class Application {
                 ballcount++;
             }
         }
-
+        tellresult(strikecount,ballcount);
     }
 
     public static void tellresult(int strikecount, int ballcount){
         if(strikecount==3){
             System.out.println(strikecount+"스트라이크");
+            resetorend();
         }
         if(strikecount==0&&ballcount==0){
             System.out.println("낫씽");
+            enternumber();
         }
         if(strikecount==0){
             System.out.println(ballcount+"볼");
+            enternumber();
         }
         if(ballcount==0){
             System.out.println(strikecount+"스트라이크");
+            enternumber();
         }
         System.out.println(ballcount+"볼 "+strikecount+"스트라이크");
+        enternumber();
     }
 
     public static void enternumber(){
