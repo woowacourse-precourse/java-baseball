@@ -36,9 +36,6 @@ public class Application {
             }
 
         }
-        System.out.println(computer.get(0));
-        System.out.println(computer.get(1));
-        System.out.println(computer.get(2));
         return computer;
     }
 
@@ -53,6 +50,7 @@ public class Application {
 
             // 입력값 검증
             validateCase(inputList);
+            validateDifferentNums(inputList);
 
             int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
 
@@ -111,8 +109,12 @@ public class Application {
             throw new IllegalArgumentException();
     }
 
+    private static void validateDifferentNums(String[] inputList){
+        String input = Arrays.toString(inputList);
 
-
-
-
+        for(int i =0 ; i< inputList.length;i++){
+            if(input.indexOf(inputList[i]) != input.lastIndexOf(inputList[i]))
+                throw new IllegalArgumentException();
+        }
+    }
 }
