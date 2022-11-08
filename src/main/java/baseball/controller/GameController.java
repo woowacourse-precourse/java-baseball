@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.BallStrikeResult;
 import baseball.model.GameNumber;
 
+import baseball.model.RestartMode;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -18,12 +19,14 @@ public class GameController {
     }
 
     public void runGame() {
+        RestartMode restartInput;
         do {
             outputView.printStartGameAlert();
             oppositeNumber = GameNumber.getRandomInstance();
 
             repeatGetInputAndCompare();
-        } while(getAndProcessRestartInput());
+            restartInput = getAndProcessRestartInput();
+        } while(restartInput.shouldGameRestart());
     }
 
     private void repeatGetInputAndCompare() {
@@ -38,11 +41,14 @@ public class GameController {
 
     private GameNumber getAndProcessGameNumberInput() {
         outputView.printInputNumberAlert();
-        return inputView.readGameNumberInput();
+        String inputString = inputView.readInput();
+
+        return GameNumber.getInstance(inputString);
     }
 
-    private boolean getAndProcessRestartInput() {
+    private RestartMode getAndProcessRestartInput() {
         outputView.printAfterGameEndAlert();
-        return inputView.readRestartInput().shouldGameRestart();
+        String inputString = inputView.readInput();
+        return RestartMode.makeInstance(inputString);
     }
 }
