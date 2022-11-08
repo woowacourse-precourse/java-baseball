@@ -12,6 +12,7 @@ public class Game {
     private static final int SUCCESS = 3;
 
     private final Rule rule;
+    private List<Integer> result;
     private boolean isEnd;
 
     public Game() {
@@ -20,7 +21,7 @@ public class Game {
     }
 
     public void run() {
-        InputView.printStartMessage();
+        OutputView.printStartMessage();
         while (true) {
             isEnd = process();
             if(isEnd) {
@@ -35,13 +36,13 @@ public class Game {
     }
 
     private List<Integer> getResult() {
-        rule.getNumber();
+        rule.getNumberByPlayer();
         return rule.decideStrikeOrBall();
     }
 
     private boolean process() {
         init();
-        List<Integer> result = getResult();
+        result = getResult();
         //다 맞았다면
         if (result.get(0) == SUCCESS) {
             int reStartFlag = processSucess();
@@ -64,6 +65,9 @@ public class Game {
 
     private int processSucess() {
         OutputView.printSuccessMessage();
-        return InputView.reStart();
+        String input = InputView.read();
+        if (Validation.isValidReStart(input)) {
+            return Integer.parseInt(input);
+        }
     }
 }
