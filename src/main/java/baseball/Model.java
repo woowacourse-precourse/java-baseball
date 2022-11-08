@@ -1,17 +1,17 @@
 package baseball;
 
 public class Model {
-    private int number;
+    private String number;
 
-    public Model(int number) {
+    public Model(String number) {
         this.number = number;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 }
