@@ -49,6 +49,6 @@ public class ValidatorOfInputValue {
     }
 
     private boolean isRightStatus(String userInputStatus) {
-        return Integer.parseInt(userInputStatus) == RESTART || Integer.parseInt(userInputStatus) == TERMINATE;
+        return Integer.parseInt(userInputStatus) == PLAY || Integer.parseInt(userInputStatus) == TERMINATE;
     }
 }

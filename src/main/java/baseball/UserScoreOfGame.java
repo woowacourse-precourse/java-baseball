@@ -32,7 +32,7 @@ public class UserScoreOfGame {
             message += ball + RESULT_BALL_MESSAGE + " ";
         }
         if (strike != 0) {
-            message += strike + RESULT_STRIKE_MESSAGE;
+            message += strike + RESULT_STRIKE_MESSAGE + " ";
         }
         return message;
     }
