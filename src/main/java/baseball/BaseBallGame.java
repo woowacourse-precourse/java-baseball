@@ -18,17 +18,17 @@ public class BaseBallGame {
     }
 
     public void run() {
-        ComputerRandomNumber computerRandomNumber = new ComputerRandomNumber();
-        List<Integer> computerNumber = computerRandomNumber.randomNumbers();
+        Computer computer = new Computer();
+        List<Integer> computerNumber = computer.randomNumbers();
         System.out.println("숫자 야구 게임을 시작합니다.");
         Game game = new Game(computerNumber);
-        UserInputNumber userInputNumber = new UserInputNumber();
+        User user = new User();
 
         while (true) {
             System.out.printf("숫자를 입력해주세요 : ");
             String userNum = Console.readLine();
 
-            List<Integer> userNumber = userInputNumber.inputNumbers(userNum);
+            List<Integer> userNumber = user.inputNumbers(userNum);
             String answer = game.gameRun(userNumber);
 
             if (answer.equals("게임 종료")) break;
