@@ -42,7 +42,6 @@ public class Application {
         for(int i = 0; i < input.length(); i++){
             user.add(input.charAt(i) - '0');
         }
-
         return user;
     }
 
@@ -55,5 +54,18 @@ public class Application {
             }
         }
         return strike;
+    }
+
+    static int ball(List<Integer> computer, List<Integer> user){
+        int ball = 0;
+
+        for (int i = 0; i < user.size(); i++) {
+            if (Objects.equals(computer.get(i), user.get(i))){
+                continue;
+            } else if (user.contains(computer.get(i))){
+                ball += 1;
+            }
+        }
+        return ball;
     }
 }
