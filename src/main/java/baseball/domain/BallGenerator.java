@@ -13,6 +13,21 @@ public class BallGenerator {
         return getBallList(s);
     }
 
+    public static List<Ball> getBalls(List<Integer> arr) {
+        return getBallList(arr);
+    }
+
+    private static List<Ball> getBallList(List<Integer> arr) {
+        List<Ball> result = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int number = arr.get(i);
+            isValidRange(number);
+            Ball ball = Ball.of(number, i+1);
+            result.add(ball);
+        }
+        return result;
+    }
+
     private static List<Ball> getBallList(String s) {
         List<Ball> result = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
