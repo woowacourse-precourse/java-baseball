@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Game {
@@ -18,7 +20,7 @@ public class Game {
                 // 컴퓨터와 플레이어 수 비교
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            // 게임 다시 시작 or 완전 종료 선택
+            isGameEnd = isGameExit();
         }
     }
 
@@ -69,5 +71,12 @@ public class Game {
             return;
         }
         System.out.printf("%d볼 %d스트라이크\n", ball, strike);
+    }
+
+    private boolean isGameExit() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String exitStr = Console.readLine();
+        // 입력에 대한 예외 처리
+        return exitStr.equals("2");
     }
 }
