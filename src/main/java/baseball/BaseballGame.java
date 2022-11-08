@@ -30,6 +30,12 @@ public class BaseballGame {
         exceptionSameNumber(Input);
     }
 
+    public static void exceptionRestartNumber(String Input) {
+        exceptionOneNumber(Input);
+        exceptionNoNumber(Input);
+        exceptionNotRestartNumber(Input);
+    }
+
     public static void exceptionZeroNumber(String Input) {
         for (int i = 0; i < Input.length(); i++) {
             if (Input.charAt(i) == '0') {
