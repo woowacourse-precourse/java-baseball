@@ -24,8 +24,13 @@ public class Game {
         System.out.print(VALID_CNT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        if (Console.readLine().equals("2")) {
+        String input = Console.readLine();
+        if (input.equals("2")) {
             gameOver();
+            return;
+        }
+        if (!input.equals("1")) {
+            throw new IllegalArgumentException("1, 2 중 하나를 골라야 합니다.");
         }
     }
 
