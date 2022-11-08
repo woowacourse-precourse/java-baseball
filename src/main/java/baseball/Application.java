@@ -15,7 +15,7 @@ public class Application {
         startGame();
     }
 
-    private static void startGame() throws IOException {
+    public static void startGame() throws IOException {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -36,7 +36,7 @@ public class Application {
         gameRestartOrOver();
     }
 
-    private static void gameRestartOrOver() throws IOException {
+    public static void gameRestartOrOver() throws IOException {
         Scanner options = new Scanner(System.in);
         int inputOption = options.nextInt();
         if (inputOption == 1) {
@@ -51,7 +51,7 @@ public class Application {
         }
     }
 
-    private static void CntBallAndStrike(List<Integer> computer, List<String> userNumberList) throws IOException {
+    public static void CntBallAndStrike(List<Integer> computer, List<String> userNumberList) throws IOException {
         int ballCnt = 0;
         int strikeCnt = 0;
 
@@ -101,7 +101,7 @@ public class Application {
         }
     }
 
-    private static String verifyUserNumber(String number) {
+    public static String verifyUserNumber(String number) {
         Scanner s = new Scanner(System.in);
         if (number.length() != 3) {
             throw new IllegalArgumentException("잘못된 입력입니다. 3자리 숫자를 입력해주세요.");
