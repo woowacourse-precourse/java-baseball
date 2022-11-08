@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BaseballScore {
     private final int ALL_STRIKE = BaseballNumber.NUMBER_COUNT;
-    private final int NOTHING = 0;
+    private final int NONE = 0;
 
     private final String STRIKE_STRING = "스트라이크";
     private final String BALL_STRING = "볼";
@@ -13,13 +13,17 @@ public class BaseballScore {
     private final String ALL_STRIKE_MESSAGE = Integer.toString(ALL_STRIKE) + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
 
     private int strikes;
-    private int ball;
+    private int balls;
 
 
-    BaseballScore(int strikes, int ball) {
+    BaseballScore(int strikes, int balls) {
+        if (strikes < 0 || balls < 0 || strikes + balls > ALL_STRIKE) {
+            throw new IllegalArgumentException();
+        }
         this.strikes = strikes;
-        this.ball = ball;
+        this.balls = balls;
     }
+
 
     @Override
     public String toString() {
@@ -29,11 +33,11 @@ public class BaseballScore {
 
         List<String> stringList = new ArrayList<>();
 
-        if (ball != NOTHING) {
-            stringList.add(Integer.toString(ball) + BALL_STRING);
+        if (get_balls() != NONE) {
+            stringList.add(Integer.toString(balls) + BALL_STRING);
         }
 
-        if (strikes != NOTHING) {
+        if (strikes != NONE) {
             if (stringList.size() > 0) {
                 stringList.add(" ");
             }
@@ -48,11 +52,20 @@ public class BaseballScore {
     }
 
     public boolean is_nothing() {
-        return this.strikes == NOTHING && this.ball == NOTHING;
+        return this.strikes == NONE && this.balls == NONE;
     }
 
     public boolean is_all_strike() {
         return strikes == ALL_STRIKE;
     }
+
+    public int get_strikes() {
+        return this.strikes;
+    }
+
+    public int get_balls() {
+        return this.balls;
+    }
+
 
 }
