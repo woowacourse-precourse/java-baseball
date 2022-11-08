@@ -2,6 +2,11 @@ package study;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
@@ -45,6 +50,49 @@ public class StringTest {
         assertThatThrownBy(() -> input.charAt(5))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
+    }
+
+    @Test
+    void concat_문자열_뒤에_문자열_추가하기() {
+        String input = "Hello";
+        String result = input.concat(" World!");
+
+        assertThat(result).isEqualTo("Hello World!");
+    }
+
+    @Test
+    void contains_문자열을_포함하고_있는지_확인() {
+        String input = "Choi Seungwon";
+
+        assertThat(input.contains("Choi")).isEqualTo(true);
+    }
+
+    @Test
+    void endsWith_문자열이_지정된_문자열로_끝나는지_확인() {
+        String input = "wonny@email.com";
+
+        assertThat(input.endsWith("@email.com")).isEqualTo(true);
+    }
+
+    @Test
+    void replaceAll_지정된_문자열과_일치하는_모든_문자열_변경() {
+        String input = "AAABBBABAB";
+        String result = "AAAbbbAbAb";
+
+        assertThat(input.replaceAll("B", "b"));
+    }
+
+    @Test
+    void join_리스트_문자열_변환_테스트() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        String listStream = list.stream()
+                        .map(number -> number.toString())
+                        .collect(Collectors.joining());
+
+        assertThat(String.join("", listStream)).isEqualTo("123");
     }
 
 }

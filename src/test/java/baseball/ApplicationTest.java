@@ -1,10 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+
+import static camp.nextstep.edu.missionutils.test.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -26,6 +27,38 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 게임_반복여부_입력_안내_문구_출력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("135", "2");
+                    assertThat(output()).contains("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                },
+                1, 3, 5
+        );
+    }
+
+    @Test
+    void 게임_반복여부_입력_문자_포함_예외_테스트() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(() -> run("135", "a"), 1, 3, 5))
+                        .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_반복여부_입력_갈이_예외_테스트() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(() -> run("135", "12"), 1, 3, 5))
+                        .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 게임_반복여부_입력_범위_예외_테스트() {
+        assertThatThrownBy(() ->
+                assertRandomNumberInRangeTest(() -> run("135", "3"), 1, 3, 5))
+                        .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
