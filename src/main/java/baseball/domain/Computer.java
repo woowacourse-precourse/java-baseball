@@ -9,6 +9,7 @@ public class Computer {
     private List<Integer> ballCounts = new ArrayList<>();
 
     void initRandomNumbers() {
+        this.clearRandomNumbers();
         while (this.ballCounts.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!this.ballCounts.contains(randomNumber)) {
@@ -19,12 +20,6 @@ public class Computer {
 
     List<Integer> getBallCounts() {
         return this.ballCounts;
-    }
-
-    // Computer 랜덤 넘버가 준비되었는지 확인하는 메소드
-    boolean isReady() {
-        if (this.ballCounts.size() < 3) return false;
-        return true;
     }
 
     // 게임 종료 시 모든 엘리먼트를 삭제
