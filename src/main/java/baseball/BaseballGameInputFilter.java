@@ -29,6 +29,7 @@ public class BaseballGameInputFilter {
 
     public String readNumbers(){
         System.out.print("숫자를 입력해주세요 : ");
+
         String input = scanner.nextLine();
 
         if (!this.isValidLength(input)) {
@@ -42,6 +43,17 @@ public class BaseballGameInputFilter {
         }
 
         return input;
+    }
+
+    public boolean readReparticipation() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        String flag = scanner.nextLine();
+
+        if (flag == "1") return true;
+        else if (flag == "2") return false;
+
+        throw new IllegalArgumentException();
     }
 
 }
