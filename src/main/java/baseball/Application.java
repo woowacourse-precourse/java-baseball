@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -35,6 +36,55 @@ public class Application {
         return computer;
     }
 
+    public static String inputMethod(boolean flag, String input){
+        //3.입력
+        // 입력 예외처리
+        // 잘못 입력하면 프로그램 종료
+        try {
+            System.out.println("숫자를 입력해주세요 : ");
+            input = Console.readLine();
+
+            if (input.length() != 3 || input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2) || input.charAt(0) < '1' || input.charAt(0) > '9' || input.charAt(1) < '1' || input.charAt(1) > '9' || input.charAt(2) < '1' || input.charAt(2) > '9') {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            flag=true;
+            throw new IllegalArgumentException();
+        }
+        if(flag){
+            return "inputError";
+        }
+        return input;
+    }
+
+    // 스트라이크, 볼 카운트 클래스
+    public static class BaseBallCnt{
+        int strcnt;
+        int ballcnt;
+
+        public BaseBallCnt(int strcnt, int ballcnt) {
+            this.strcnt = strcnt;
+            this.ballcnt = ballcnt;
+        }
+    }
+
+    public static String userStart(boolean flag, String again, List<Integer> computer){
+        //무한 반복
+        while (true) {
+            String input="";
+            input = inputMethod(flag, input);
+            if(input.equals("inputError")){ return "inputError";}
+
+            BaseBallCnt baseBallCnt = new BaseBallCnt(0,0);
+            baseBallValid(baseBallCnt, computer, input);
+
+            again = baseBallPrint(baseBallCnt, again);
+            if(!again.equals("")){
+                return again;
+            }
+        }
+    }
+
     public static void startBaseballGame(){
         String again = "1";
         //1.문한 반복: 진행 여부 1, 2
@@ -45,6 +95,12 @@ public class Application {
             }
             boolean flag=false;
             List<Integer> computer = random3Number();
+
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            again = userStart(flag, again, computer);
+            if(again.equals("inputError")){
+                return;
+            }
         }
     }
 
