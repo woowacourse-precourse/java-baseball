@@ -13,19 +13,24 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        // 랜덤한 숫자 받아온 후 컴퓨터 리스트에 값 추가
-        List<Integer> computer = addToRandomNumberList();
-
         while (true) {
-
-            // 사용자에게 숫자 입력받기
-            String user_number = getTheUserToInputNumber();
-            // 사용자의 숫자가 3자리가 아닌 경우 예외 처리
-            exceptionIfNumberIsNotThreeDigits(user_number.length());
-            // 사용자가 입력한 숫자를 사용자 리스트에 추가
-            List<Integer> user = addTheNumberEnteredByTheUserList(user_number);
-            // 스트라이크 개수 확인
-            int strike = CheckTheNumberOfStrikes(user,computer);
+            // 랜덤한 숫자 받아온 후 컴퓨터 리스트에 값 추가
+            List<Integer> computer = addToRandomNumberList();
+            while (true) {
+                // 사용자에게 숫자 입력받기
+                String user_number = getTheUserToInputNumber();
+                // 사용자의 숫자가 3자리가 아닌 경우 예외 처리
+                exceptionIfNumberIsNotThreeDigits(user_number.length());
+                // 사용자가 입력한 숫자를 사용자 리스트에 추가
+                List<Integer> user = addTheNumberEnteredByTheUserList(user_number);
+                // 스트라이크 개수 확인스트라이크 개수 확인
+                int strike = CheckTheNumberOfStrikes(user, computer);
+                // 3스트라이크 시 1게임 종료
+                if (strike == 3) {
+                    System.out.println("3스트라이크");
+                    break;
+                }
+            }
         }
     }
 
