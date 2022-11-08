@@ -9,17 +9,16 @@
 0. junit5 의 테스트 방법을 공부한다.
 
 ```
-기존에 아무생각없이 그냥 @Autowired로 주입받아서 테스트 돌리던거를 그대로 구현하려고 보니까 에러가 났다. 
-springTest
+console 입력값을 테스트하는 방법을 찾아야 한다. 
+assertThat 메소드로 값들을 비교하여 테스트한다. 
 ```
 
 1. 게임 진행을 위해 loop 문이 무조건 필요하다. &rarr; loop 문을 안써도 괜찮지 않을까?
 2. input과 output은 camp package의 Console 객체를 활용한다! (*이것도 싱글톤으로 구현되어있다*)
-3. state pattern을 적용시켜보자! 
-   1. 사용자 input 
-   2. 결과 도출 
-   3. 정답 or 다시(1번 생태로) 
-   4. 게임 다시 시작 혹은 종료
+3. 사용자 input 
+4. 결과 도출 
+5. 정답 or 다시(원 생태로) 
+6. 게임 다시 시작 혹은 종료
 
 ## 게임 상태 종류
 1. input 상태 &rarr; 입력을 받기 위해 기다리는 상태
@@ -28,11 +27,12 @@ springTest
 
 ## 기능 구현 리스트 
 
-- [ ] 상대방 난수 생성 구현
-- [ ] game state interface 구조 확인
-- [ ] game Manager에서 상태별로 state 분기
-- [ ] 지속해서 run 진행
-- [ ] 끝나는 조건에서 분기처리 진행
+- [x] 상대방 난수 생성 구현
+- [x] game state interface 구조 확인 -- state 패턴 적용 X
+- [x] game Manager에서 상태별로 state 분기
+- [x] 지속해서 run 진행
+- [x] 사용자 클래스 생성 
+- [x] 끝나는 조건에서 분기처리 진행
 
 
 

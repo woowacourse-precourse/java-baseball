@@ -42,4 +42,21 @@ public class InputValidator {
         }
     }
 
+    private static void validateisOneOrTwo(int number){
+        if(!(number == 1 || number == 2)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static int validateRedo(String number){
+        try{
+            int redo = Integer.parseInt(number);
+            validateisOneOrTwo(redo);
+            return redo;
+        }
+        catch(Exception e){
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

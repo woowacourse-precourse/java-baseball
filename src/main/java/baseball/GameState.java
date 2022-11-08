@@ -1,5 +1,8 @@
 package baseball;
 
-public interface GameState{
-    public <T> T run();
+public enum GameState {
+    GAME_STATE,
+    REDO,
+    END,
+    SHUT_DOWN;
 }

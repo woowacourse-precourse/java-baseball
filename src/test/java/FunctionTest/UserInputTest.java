@@ -1,13 +1,12 @@
 package FunctionTest;
 
-import baseball.UserInput;
+import baseball.Util.InputHandler;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class UserInputTest {
-    UserInput userInput = new UserInput();
     @Test
     void 인풋테스트(){
-        assertThat(userInput.run()).isEqualTo("r");
+        assertThat(InputHandler.getUserInput()).isEqualTo("r");
     }
 }

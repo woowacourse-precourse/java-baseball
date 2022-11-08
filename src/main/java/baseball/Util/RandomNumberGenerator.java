@@ -15,7 +15,6 @@ public class RandomNumberGenerator {
         List<Integer> randomNumbers = new ArrayList<>();
         while(randomNumbers.size() < NUMBER_SIZE){
             int nextNumber = Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
-            System.out.println(nextNumber);
             if(!randomNumbers.contains(nextNumber))
                 randomNumbers.add(nextNumber);
         }
