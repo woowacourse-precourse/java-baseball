@@ -23,6 +23,9 @@ public class NumberBaseballTest extends NumberBaseball{
         assertThrows(IllegalArgumentException.class, () -> {
             Validator.validateUserNumber("133");
         });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Validator.validateUserNumber("asd");
+        });
         numberBaseball.compareComputerNumberWith(inputString);
         assertThat(numberBaseball.getGameResult().length() > 0).isTrue();
     }

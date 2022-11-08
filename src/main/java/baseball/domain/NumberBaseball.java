@@ -44,13 +44,6 @@ public class NumberBaseball {
         makeGameResult();
     }
 
-    private void countBall() {
-        this.ball = (int)IntStream.range(0, userNumber.length())
-                .filter(index -> computerNumber.
-                        contains(Character.toString(userNumber.charAt(index))))
-                .count() - this.strike;
-    }
-
     private void countStrike() {
         this.strike = (int)IntStream.range(0, userNumber.length())
                 .filter(index -> computerNumber.charAt(index) ==
@@ -58,11 +51,16 @@ public class NumberBaseball {
                 .count();
     }
 
+    private void countBall() {
+        this.ball = (int)IntStream.range(0, userNumber.length())
+                .filter(index -> computerNumber.
+                        contains(Character.toString(userNumber.charAt(index))))
+                .count() - this.strike;
+    }
+
     private void checkEnd() {
         if (this.strike == 3)
             isEnd = true;
-        else
-            isEnd = false;
     }
 
     private void makeGameResult() {

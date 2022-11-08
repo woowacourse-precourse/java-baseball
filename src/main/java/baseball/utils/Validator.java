@@ -1,7 +1,7 @@
 package baseball.utils;
 
 public class Validator {
-    private static final int GAME_NUMBER = 3;
+    private static final int GAME_NUMBER_SIZE = 3;
 
     public static void validateUserNumber(String input) {
         if (!hasDifferentNumbers(input))
@@ -10,6 +10,8 @@ public class Validator {
             throw new IllegalArgumentException("숫자는 3개만 입력해야 합니다.");
         if (hasZero(input))
             throw new IllegalArgumentException("숫자는 1부터 9까지만 입력 가능합니다.");
+        if (hasNotNumbers(input))
+            throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
     }
 
     private static boolean hasDifferentNumbers(String numbers) {
@@ -22,11 +24,20 @@ public class Validator {
     }
 
     private static boolean isSameAsGameNumberSize(int numberSize) {
-        return numberSize == GAME_NUMBER;
+        return numberSize == GAME_NUMBER_SIZE;
     }
 
     private static boolean hasZero(String input) {
         return input.chars().filter(value -> (value != '0'))
                 .count() != input.length();
+    }
+
+    private static boolean hasNotNumbers(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (Exception e) {
+            return true;
+        }
+        return false;
     }
 }
