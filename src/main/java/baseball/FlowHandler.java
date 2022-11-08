@@ -4,21 +4,22 @@ import java.util.List;
 
 public class FlowHandler {
 
-	private IOHandler io = new IOHandler();
+	private OutputHandler output = new OutputHandler();
+	private InputHandler input = new InputHandler();
 	private BaseballNumberGenerator generator = new BaseballNumberGenerator();
 
 	public int runGame() {
 		List<Integer> baseballNumber = generator.getBaseballNumber();
 		Grader grader = new Grader(baseballNumber);
-		io.printInitMessage();
+		output.printInitMessage();
 		while (true) {
-			io.printInputMessage();
-			List<Integer> inputList = io.getInputList();
+			output.printInputMessage();
+			List<Integer> inputList = input.getInputList();
 			Score score = grader.getScore(inputList);
-			io.printScore(score);
+			output.printScore(score);
 			if (grader.isCorrect(score)) {
-				io.printGameEndMessage();
-				return io.getRestartInt();
+				output.printGameEndMessage();
+				return input.getRestartInt();
 			}
 		}
 	}

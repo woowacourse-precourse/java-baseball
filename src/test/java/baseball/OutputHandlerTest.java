@@ -11,9 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class IOHandlerTest {
+class OutputHandlerTest {
 
-	final IOHandler io = new IOHandler();
+	final OutputHandler io = new OutputHandler();
 	final OutputStream outputStream = new ByteArrayOutputStream();
 
 	@BeforeEach
