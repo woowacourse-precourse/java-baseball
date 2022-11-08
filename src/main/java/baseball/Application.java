@@ -23,6 +23,12 @@ public class Application {
 
     public boolean CheckInput(String number){
 
+        for (int i = 0; i < number.length(); i++){  // 서로 다른 숫자인지 확인하는 부분
+            if (number.indexOf(number.charAt(i)) != i) {
+                throw new IllegalArgumentException();
+            }
+        }
+
         int tempNum = Integer.parseInt(number);
 
         if (100 <= tempNum && tempNum < 1000){
