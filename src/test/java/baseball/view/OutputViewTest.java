@@ -22,7 +22,6 @@ class OutputViewTest {
 
 	@Test
 	void printUserBallStatus() {
-
 		UserBall userBall = UserBall.createUserBall();
 		userBall.updateStrikeCount(3);
 		userBall.updateStatus();

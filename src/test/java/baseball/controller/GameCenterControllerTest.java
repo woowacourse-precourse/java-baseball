@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 import org.assertj.core.api.Assertions;
@@ -20,6 +21,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 class GameCenterControllerTest extends NsTest {
 
 	private GameCenterController gameCenterController = new GameConfig().config();
+
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 	@DisplayName("GameCenterController 의 startApplication() 테스트1")
 	@Test
