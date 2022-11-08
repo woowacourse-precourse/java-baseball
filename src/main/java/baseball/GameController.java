@@ -47,7 +47,7 @@ public class GameController {
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if (!checkInput(input)) {
-                throw new IllegalStateException("올바르지 않은 입력입니다");
+                throw new IllegalArgumentException("올바르지 않은 입력입니다");
             }
             List<Integer> userInput = new ArrayList<>();
             for (int i =0; i<input.length();i++){
@@ -95,7 +95,7 @@ public class GameController {
         String input = Console.readLine();
         Pattern pattern = Pattern.compile("[1-2]");
         if (input.length() > 1 || !pattern.matcher(input).matches()){
-            throw new IllegalStateException("올바르지 않은 입력입니다");
+            throw new IllegalArgumentException("올바르지 않은 입력입니다");
         }
         if (input.equals("1")){
             startGame();
