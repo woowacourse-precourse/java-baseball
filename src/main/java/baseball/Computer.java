@@ -20,6 +20,9 @@ public class Computer {
 
   public String state(String input){
     String result = "";
+    if(getBallCount(input) > 0){
+      result += String.format(BALL, getBallCount(input));
+    }
     if(getStrikeCount(input) > 0){
       result += String.format(STRIKE, getStrikeCount(input));
     }
@@ -31,6 +34,24 @@ public class Computer {
       return true;
     }
     return false;
+  }
+  public boolean isBall(int number, int index){
+    if(!isStrike(number, index)){
+      if(answer.contains(number)){
+        return true;
+      }
+    }
+    return false;
+  }
+  public int getBallCount(String input){
+    int count = 0;
+    for(int i=0; i<answer.size(); i++){
+      int number = input.charAt(i) - '0';
+      if(isBall(number, i)){
+        count += 1;
+      }
+    }
+    return count;
   }
 
   public int getStrikeCount(String input){
