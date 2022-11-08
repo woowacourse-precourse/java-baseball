@@ -23,7 +23,7 @@ public class Application {
 
         while (!game.isEnd(input)) {
             input = Console.readLine();
-            Validation.validateBaseballInput(input);
+            Validation.baseballInput(input);
             game.play(input);
         }
     }
@@ -33,7 +33,7 @@ public class Application {
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         input = Console.readLine();
-        Validation.validateResetInput(input);
+        Validation.resultInput(input);
 
         return Integer.parseInt(input);
     }

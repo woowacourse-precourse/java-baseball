@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ValidationTest {
     @Test
-    void validateBaseballInput_게임규격외_예외발생() {
+    void baseballInput_게임규격외_예외발생() {
         String str1 = "290";
         String str2 = "321";
         String str3 = "";
@@ -16,28 +16,28 @@ class ValidationTest {
         String str5 = "322";
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateBaseballInput(str1);
+            Validation.baseballInput(str1);
         });
 
         assertDoesNotThrow(() -> {
-            Validation.validateBaseballInput(str2);
+            Validation.baseballInput(str2);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateBaseballInput(str3);
+            Validation.baseballInput(str3);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateBaseballInput(str4);
+            Validation.baseballInput(str4);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateBaseballInput(str5);
+            Validation.baseballInput(str5);
         });
     }
 
     @Test
-    void hasNotFromOneToNine_모두_숫자인지_판별() {
+    void hasNotFromOneToNine_모두_0부터9사이인지_판별() {
         String str1 = "1.2";
         String str2 = "my";
         String str3 = "232";
@@ -70,26 +70,26 @@ class ValidationTest {
     }
 
     @Test
-    void validateResetInput_1과2빼면_예외발생() {
+    void resetInput_1과2빼면_예외발생() {
         String str1 = "1";
         String str2 = "2";
         String str3 = "";
         String str4 = "424";
 
         assertDoesNotThrow(() -> {
-            Validation.validateResetInput(str1);
+            Validation.resultInput(str1);
         });
 
         assertDoesNotThrow(() -> {
-            Validation.validateResetInput(str2);
+            Validation.resultInput(str2);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateResetInput(str3);
+            Validation.resultInput(str3);
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Validation.validateResetInput(str4);
+            Validation.resultInput(str4);
         });
     }
 }
