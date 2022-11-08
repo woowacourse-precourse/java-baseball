@@ -6,4 +6,6 @@ import java.util.List;
 public abstract class Player {
 
     private final List<String> selectBalls = new ArrayList<>();
+
+    public abstract void selectBalls();
 }
