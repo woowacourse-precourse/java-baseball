@@ -129,6 +129,15 @@ class ApplicationTest extends NsTest {
 
     }
 
+    @Test
+    void userInput이_공백일_경우_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
