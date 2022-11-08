@@ -2,9 +2,7 @@ package baseball.model;
 
 import org.junit.jupiter.api.Test;
 
-import static baseball.service.UserNumValidatorService.isThreelen;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class HintReqTest {
 

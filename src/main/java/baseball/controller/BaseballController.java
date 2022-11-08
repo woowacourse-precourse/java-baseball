@@ -10,7 +10,7 @@ public class BaseballController {
     public static void baseball(){
         GameHost.startPrint();
         do{
-            runGame.run();
+            RunGame.run();
         }while (!ExitStatusService.exit(Input.exitStatus()));
     }
 
