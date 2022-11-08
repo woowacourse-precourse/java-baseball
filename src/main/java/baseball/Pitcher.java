@@ -1,9 +1,9 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Pitcher {
     private Validator validator;
@@ -13,7 +13,7 @@ public class Pitcher {
     }
 
     public List<Integer> pitch() {
-        String pitchValue = Console.readLine();
+        String pitchValue = readLine();
         validator.validatePitchValue(pitchValue);
         return convertInputToIntegerList(pitchValue);
     }
@@ -27,7 +27,7 @@ public class Pitcher {
     }
 
     public Integer selectGameRestartOrEnd() {
-        String gameProcessValue = Console.readLine();
+        String gameProcessValue = readLine();
         validator.validateGameProcessValue(gameProcessValue);
         return Integer.valueOf(gameProcessValue);
     }
