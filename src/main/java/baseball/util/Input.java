@@ -9,9 +9,6 @@ import java.util.Set;
 
 public class Input {
 
-    public Input() {
-    }
-
     public static List<String> inputNumber() {
         List<String> inputNumberList = List.of(Console.readLine().split(""));
         isValidNumber(inputNumberList);
@@ -32,7 +29,7 @@ public class Input {
     }
 
     private static void isValidReplayNumber(String inputNumber) {
-        if (!inputNumber.matches("[12]")) {
+        if (!inputNumber.equals("1") && !inputNumber.equals("2")) {
             throw new IllegalArgumentException();
         }
     }

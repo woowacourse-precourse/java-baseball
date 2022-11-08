@@ -24,7 +24,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트1() {
+    void 사용자_숫자_입력_예외_테스트1() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트2() {
+    void 사용자_숫자_입력_예외_테스트2() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("   "))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -40,7 +40,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트3() {
+    void 사용자_숫자_입력_예외_테스트3() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("3  "))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -48,13 +48,75 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트4() {
+    void 사용자_숫자_입력_예외_테스트4() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("  4"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트1() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "11"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트2() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "22"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트3() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , " "), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트4() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "1 "), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트5() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , " 2"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트6() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "aa"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 사용자_리플레이_의사_입력값_예외_테스트7() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> assertRandomNumberInRangeTest(
+                        () -> run("321", "123" , "12"), 1, 2, 3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
@@ -134,16 +196,20 @@ class ApplicationTest extends NsTest {
                     run("592", "925", "734", "1", "374", "592", "2");
                     assertThat(output()).isEqualTo(
                             "숫자 야구 게임을 시작합니다.\n" +
-                                    "숫자를 입력해주세요 : 낫싱\n" +
-                                    "숫자를 입력해주세요 : 낫싱\n" +
-                                    "숫자를 입력해주세요 : 3스트라이크\n" +
-                                    "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n" +
-                                    "숫자 야구 게임을 시작합니다.\n" +
-                                    "숫자를 입력해주세요 : 낫싱\n" +
-                                    "숫자를 입력해주세요 : 3스트라이크\n" +
-                                    "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
-                                    "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                            "숫자를 입력해주세요 : " +
+                            "낫싱\n" +
+                            "숫자를 입력해주세요 : " +
+                            "낫싱\n" +
+                            "숫자를 입력해주세요 : " +
+                            "3스트라이크\n" +
+                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n" +
+                            "숫자를 입력해주세요 : " +
+                            "낫싱\n" +
+                            "숫자를 입력해주세요 : " +
+                            "3스트라이크\n" +
+                            "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n" +
+                            "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 },
                 7, 3, 4, 5, 9, 2
         );

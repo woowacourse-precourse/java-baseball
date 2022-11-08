@@ -10,18 +10,15 @@ public class Game {
     User user;
     Computer computer;
     List<String> computerAnswer;
-    boolean isFirstGame;
 
     public Game() {
-        isFirstGame = true;
         this.user = new User();
         this.computer = new Computer();
+        message.initialGameMessage();
     }
 
     public void startGame() {
         computerAnswer = computer.getComputerAnswer();
-        message.initialGameMessage();
-
         boolean isCorrectSet = false;
         while (!isCorrectSet) {
             isCorrectSet = startSet();
@@ -33,6 +30,7 @@ public class Game {
 
     private boolean startSet() {
         message.askPlayerInputAnswer();
+
         List<String> userAnswer = user.getUserAnswer();
         Set set = new Set(computerAnswer, userAnswer);
         int ball = set.ball;
