@@ -39,12 +39,6 @@ public class ComputerThreeNumber extends ThreeNumber{
 
             check += findDuplicate(randomNumber);
         }
-
-        System.out.println("size: " + myList.size());
-
-        for(int i = 0; i < myList.size(); i++) {
-            System.out.print(myList.get(i) + " ");
-        }
     }
 
     public int findDuplicate(int num) {
