@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -60,6 +62,28 @@ class ApplicationTest extends NsTest {
         assertThat(userInput.check_input(input2)).isEqualTo(false);
         assertThat(userInput.check_input(input3)).isEqualTo(false);
         assertThat(userInput.check_input(input4)).isEqualTo(false);
+    }
+
+    @Test
+    void check_strike() {
+        Result result = new Result();
+        List<Integer> baseball = List.of(1,2,3);
+        List<Integer> input1 = List.of(1,2,3);
+        List<Integer> input2 = List.of(1,2,4);
+        List<Integer> input3 = List.of(4,5,3);
+        List<Integer> input4 = List.of(4,5,6);
+
+        result.countStrike(baseball, input1);
+        assertThat(result.getStrike()).isEqualTo(3);
+
+        result.countStrike(baseball, input2);
+        assertThat(result.getStrike()).isEqualTo(2);
+
+        result.countStrike(baseball, input3);
+        assertThat(result.getStrike()).isEqualTo(1);
+
+        result.countStrike(baseball, input4);
+        assertThat(result.getStrike()).isEqualTo(0);
     }
 
     @Override
