@@ -28,4 +28,7 @@ public class GameContinuity {
     this.continuity = input.equals(RESTART);
   }
 
+  public Boolean getContinuity() {
+    return this.continuity;
+  }
 }
