@@ -7,28 +7,37 @@ import java.util.List;
 
 public class InputNumber {
 
-    private String userNumber;
+    private List<Integer> userNumber;
 
     public InputNumber(){
-        userNumber = "";
+        userNumber = new ArrayList<>();
     }
 
-    public String getUserNumber(){
+    public List<Integer> getUserNumber(){
         return userNumber;
     }
 
-    public void userInputNumber(){
-        System.out.print("숫자를 입력해주세요 : ");
-        userNumber = Console.readLine();
+    public List<Integer> userInputNumber(){
+        System.out.println("숫자를 입력해주세요 : ");
+        String  user = Console.readLine();
+        List<Integer> inputList = new ArrayList<>();
+        for(int i = 0; i<user.length(); i++){
+            String num = String.valueOf(user.charAt(i));
+            if(!num.equals(",") && !num.equals(" ")){
+                inputList.add((int) user.charAt(i));
+            }
+        }
+        return inputList;
+
     }
 
-    public void userInputBallNumber(){
-        userInputNumber();
-        if(!InputNumberValidator.inputNumberCorrection(userNumber)){
-            userNumber = userNumber.replaceAll(",","");
-            userNumber = userNumber.replaceAll(" ","");
+    public List<Integer> userInputBallNumber(){
+        List<Integer> inputList = userInputNumber();
+        if(!InputNumberValidator.inputNumberTotalCheck(inputList)){
+            throw new IllegalArgumentException();
         }
-        userNumber = inputNumberCheck();
+        userNumber = inputList;
+        return userNumber;
     }
 
     public void userChoiceRestartOrEnd(){
@@ -37,14 +46,8 @@ public class InputNumber {
     }
 
 
-
-    public void userInputNumber(){
-        System.out.print("숫자를 입력해주세요 : ");
-        userNumber = Console.readLine();
-    }
-
     public String inputNumberCheck(){
-        if(InputNumberValidator.inputNumberTotalCheck(userNumber)){
+        if(!InputNumberValidator.inputNumberTotalCheck(userNumber)){
             throw new IllegalArgumentException();
         }
         return userNumber;
@@ -56,6 +59,5 @@ public class InputNumber {
         }
         return userNumber;
     }
-
 
 }
