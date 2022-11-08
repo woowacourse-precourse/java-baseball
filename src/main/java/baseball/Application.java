@@ -22,7 +22,9 @@ public class Application {
 
 
     static boolean restartGameYn = false;
+
     static boolean exitGameYn = false;
+
 
     public static String makeTargetNum() {
 
@@ -98,13 +100,15 @@ public class Application {
 
         if (str.equals("2")) {
             exitGameYn = true;
-
+            return;
         }
 
         if (str.equals("1")) {
             restartGameYn = true;
-
+            return;
         }
+
+        throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
 
     }
 
