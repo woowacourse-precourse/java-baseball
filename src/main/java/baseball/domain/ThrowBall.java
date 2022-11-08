@@ -10,11 +10,12 @@ public class ThrowBall {
     private int ballCount;
     private int strikeCount;
 
-    public void decideBall(ArrayList<Integer> computerBall, ArrayList<Integer> userBall){
+    public Boolean decideBall(ArrayList<Integer> computerBall, ArrayList<Integer> userBall){
         ballCount = INIT_COUNT;
         strikeCount = INIT_COUNT;
 
         ballAndStrikeCount(computerBall, userBall);
+        return printResult();
     }
 
     private void ballAndStrikeCount(ArrayList<Integer> computerBall, ArrayList<Integer> userBall){
@@ -29,5 +30,34 @@ public class ThrowBall {
                 continue;
             }
         }
+    }
+
+    private Boolean printResult(){
+        if (strikeCount == 3){
+            OutputView.printHomeRun(strikeCount);
+            return false;
+        }
+
+        if (ballCount == 0 && strikeCount == 0) {
+            OutputView.printNothingMessage();
+            return true;
+        }
+
+        if (ballCount > 0 && strikeCount > 0) {
+            OutputView.printBallAndStrikeMessage(ballCount, strikeCount);
+            return true;
+        }
+
+        if (ballCount > 0) {
+            OutputView.printOnlyBallMessage(ballCount);
+            return true;
+        }
+
+        if (strikeCount > 0) {
+            OutputView.printOnlyStrikeMessage(strikeCount);
+            return true;
+        }
+
+        return true;
     }
 }
