@@ -30,7 +30,7 @@ public class Game {
         this.target.reset();
         Turn turn = new Turn(this.target);
         turn.repeatToEnd();
-        OutputView.announceEndOfThisGame();
+        OutputView.informEndOfThisGame();
         checkIsUserRepeatGame();
     }
 
