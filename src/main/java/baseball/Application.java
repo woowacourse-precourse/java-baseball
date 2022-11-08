@@ -34,19 +34,19 @@ public class Application {
             }
         }
         threeStrike = 0;
-        System.out.println(computer);
+
         while (threeStrike == 0) {
             System.out.print("숫자를 입력해 주세요 : ");
             String player = Console.readLine();
             if (player.length() != 3) {
                 throw new IllegalArgumentException();
             }
-            baseballGame(computer, player);
+            baseballCount(computer, player);
         }
     }
 
 
-    private static void baseballGame(List<Integer> computer, String player) {
+    private static void baseballCount(List<Integer> computer, String player) {
         int ball = 0;
         int strike = 0;
 
