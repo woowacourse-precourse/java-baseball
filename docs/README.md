@@ -1,12 +1,12 @@
 ## 기능 구현 목록
 1. 입력값 확인<br>
-✅ 입력값 받기
-✅ 입력값 integer 로 변환
+✅ 입력값 받기<br>
+✅ 입력값 integer 로 변환<br>
 ✅ 3자리의 수 길이 3자리 확인<br>
 ✅ 전부 숫자인지 확인<br>
 ✅ 서로 다른 숫자인지 확인<br>
 ✅ 종료/재시작 구분 숫자 1, 2 중 하나 인지 확인<br>
-[] 입력값 오류 시 IllegalArgumentException 발생 후 프로그램 종료<br>
+✅ 입력값 오류 시 IllegalArgumentException 발생 후 프로그램 종료<br>
 ✅ 맞춰야 하는 3자리 숫자 만들기 (random)
 3. 게임 구현<br>
 ✅ ball , strike 개수 변수 선언 <br>
