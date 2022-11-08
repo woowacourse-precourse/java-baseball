@@ -1,9 +1,8 @@
 package baseball;
 
+import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public class BaseBallGame {
     private final String REGAME = "1";
@@ -35,7 +34,7 @@ public class BaseBallGame {
             System.out.printf("숫자를 입력해주세요 : ");
             String userNum = Console.readLine();
             List<Integer> userNumber = user.inputNumbers(userNum);
-            if (compareNumber.gameRun(userNumber)) {
+            if (compareNumber.compareStart(userNumber)) {
                 break;
             }
         }
