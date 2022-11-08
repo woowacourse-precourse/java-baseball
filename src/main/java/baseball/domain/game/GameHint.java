@@ -4,6 +4,7 @@ import baseball.domain.computer.Computer;
 import baseball.domain.player.Player;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static baseball.utils.Constants.*;
 
@@ -26,19 +27,34 @@ public class GameHint {
     }
 
     private void compareNumbers() {
-        List<Integer> computerNum = computer.getRandomNumbers();
-        List<Integer> playerNum = player.getInputNumbers();
+        List<Integer> computerNums = computer.getRandomNumbers();
+        List<Integer> playerNums = player.getInputNumbers();
 
-        for (int i = 0; i < BASEBALL_DIGIT_LENGTH; i++) {
-            if (computerNum.get(i).equals(playerNum.get(i))) {
-                strikeScore += 1;
-                continue;
-            }
+        strikeScore = calculateStrikeScore(computerNums, playerNums);
+        ballScore = calculateBallScore(computerNums, playerNums);
+    }
 
-            if (computerNum.contains(playerNum.get(i))) {
-                ballScore += 1;
-            }
-        }
+    private int calculateStrikeScore(List<Integer> computerNums, List<Integer> playerNums) {
+        return (int) IntStream
+                .range(0, BASEBALL_DIGIT_LENGTH)
+                .filter(i -> isStrike(computerNums.get(i), (playerNums.get(i))))
+                .count();
+    }
+
+    private int calculateBallScore(List<Integer> computerNums, List<Integer> playerNums) {
+        return (int) IntStream
+                .range(0, BASEBALL_DIGIT_LENGTH)
+                .filter(i -> !isStrike(computerNums.get(i), (playerNums.get(i))))
+                .filter(i -> isBall(computerNums, playerNums.get(i)))
+                .count();
+    }
+
+    private boolean isStrike(Integer computerNum, Integer playerNum) {
+        return computerNum.equals(playerNum);
+    }
+
+    private boolean isBall(List<Integer> computerNum, Integer playerNum) {
+        return computerNum.contains(playerNum);
     }
 
     public int getStrikeScore() {
