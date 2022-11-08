@@ -42,6 +42,27 @@ class ApplicationTest extends NsTest {
         assertThat(number.length).isNotEqualTo(1);
     }
 
+    @Test
+    void 사용자_입력값_3글자(){
+        String num = "123";
+        boolean result = Game.isLengthThree(num);
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 사용자_입력값_모두_숫자(){
+        String num = "123";
+        boolean result = Game.isInputNumber(num);
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 사용자_입력값_중복_제거(){
+        String num="125";
+        boolean result = Game.isEqualNumber(num);
+        assertThat(result).isEqualTo(true);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
