@@ -6,7 +6,7 @@ import java.util.List;
 
 public class InputUserNumber {
 
-    public List<Integer> playerNumber(){
+    public static List<Integer> playerNumber(){
 
 
         int playerNumString = Integer.parseInt(Console.readLine());
