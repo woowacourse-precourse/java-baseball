@@ -2,6 +2,7 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -82,5 +83,16 @@ public class Application {
         } else if (!checkInputSameNumber(Input)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static List<Integer> checkNumStrike(String nowRandomNumber, String userInputNum) {
+        List<Integer> printList = Arrays.asList(0, 0);
+
+        for (int i = 0; i < 3; i++) {
+            if (nowRandomNumber.charAt(i) == userInputNum.charAt(i)) {
+                printList.set(1, printList.get(1) + 1);
+            }
+        }
+        return printList;
     }
 }
