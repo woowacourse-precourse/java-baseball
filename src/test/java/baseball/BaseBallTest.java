@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static baseball.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,6 +57,18 @@ public class BaseBallTest extends NsTest {
         int ballOfNumbers = checkedBallNumbers(computerNumbers,userNumbers);
 
         assertThat(ballOfNumbers).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("스트라이크와 볼의 정확한 갯수 구하기")
+    void calculatedStrikeBallNumberTest(){
+        Map<String,Integer> checkedBaseballNumbers = calculatedStrikeBallNumber(2,3);
+        Map<String, Integer> result = new HashMap<>(){{
+            put("strike",2);
+            put("ball",1);
+        }};
+
+        assertThat(checkedBaseballNumbers).isEqualTo(result);
     }
 
     @Override
