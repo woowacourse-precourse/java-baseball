@@ -31,6 +31,11 @@ public class Application {
             int intNumber = Character.getNumericValue(strNumber.charAt(idx));
             guessingNumber.add(intNumber);
         }
+
+        // 9.예외처리
+        if (!(guessingNumber.size() == 3)){
+            throw new IllegalArgumentException();
+        }
     }
 
     // 3.낫싱 판단
