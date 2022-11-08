@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -95,7 +96,7 @@ public class Application {
     public static boolean checkStrike(int i, List<Integer> answerNumber, List<Integer> guessNumber) {
         boolean isStrike = false;
 
-        if (answerNumber.get(i) == guessNumber.get(i)) {
+        if (answerNumber.get(i).equals(guessNumber.get(i))) {
             isStrike = true;
         }
 
