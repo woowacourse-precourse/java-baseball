@@ -25,11 +25,11 @@ class CoinTest {
         //when
         //then
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Users("0"));
+                .isThrownBy(() -> new Coin("0"));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Users("3"));
+                .isThrownBy(() -> new Coin("3"));
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new Users("-"));
+                .isThrownBy(() -> new Coin("-"));
     }
 
     @Test
