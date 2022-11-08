@@ -29,6 +29,14 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    void ExceptionOfAnswer() {
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("3"))
+                    .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
