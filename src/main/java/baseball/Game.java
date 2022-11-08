@@ -3,9 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static baseball.GameMessage.*;
@@ -65,6 +63,16 @@ class Game {
 
     public List<Integer> getUserGuess() {
         String input = Console.readLine();
+        List<Integer> guess = formatInputToGuess(input);
+
+        validateInputDuplicate(guess);
+        validateInputSize(guess);
+        validateInputRange(guess);
+
+        return guess;
+    }
+
+    private List<Integer> formatInputToGuess(String input) {
         List<Integer> guess;
         try {
             guess = Arrays.stream(input.split(""))
@@ -73,16 +81,29 @@ class Game {
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
         }
+        return guess;
+    }
 
-        if(guess.size() != ANSWER_SIZE.option())
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_SIZE.message());
-
+    private void validateInputRange(List<Integer> guess) {
         for (int g : guess) {
             if (!(MIN_ANSWER_NUMBER.option() <= g && g <= MAX_ANSWER_NUMBER.option()))
                 throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_RANGE.message());
         }
+    }
 
-        return guess;
+    private void validateInputSize(List<Integer> guess) {
+        if (guess.size() != ANSWER_SIZE.option())
+            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_SIZE.message());
+    }
+
+    private void validateInputDuplicate(List<Integer> guess) {
+        Set<Integer> inputSet = new HashSet<>();
+        for (Integer num : guess) {
+            if (inputSet.contains(num)) {
+                throw new IllegalArgumentException(ILLEGAL_ARGUMENT_GUESS_DUPLICATE.message());
+            }
+            inputSet.add(num);
+        }
     }
 
     private boolean isCorrect(List<Integer> guess) {

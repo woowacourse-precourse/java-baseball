@@ -7,6 +7,7 @@ enum GameMessage {
     TYPE_USER_GUESS("숫자를 입력해주세요 : "),
     ILLEGAL_ARGUMENT_GUESS_RANGE("입력 숫자 범위는 1~9 여야 합니다."),
     ILLEGAL_ARGUMENT_GUESS_SIZE("입력 숫자는 3개여야 합니다."),
+    ILLEGAL_ARGUMENT_GUESS_DUPLICATE("입력 숫자는 중복되선 안됩니다."),
     ILLEGAL_ARGUMENT_OPTION("1 혹은 2를 입력하지 않으셨습니다.");
 
     private final String message;
