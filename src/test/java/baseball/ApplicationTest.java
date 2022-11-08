@@ -104,6 +104,42 @@ class ApplicationTest extends NsTest {
             assertThat(result).isEqualTo(OutputView.NOTTING_MESSAGE);
         }
 
+        @Test
+        @DisplayName("게임 출력 테스트 142 -> 2볼 1스트라이크")
+        void checkOutputTest_142() {
+            baseBallService.userInputSave("124");
+            baseBallService.setComputerNumberList(List.of(1, 4, 2));
+            baseBallService.saveResult();
+
+            String result = getResult();
+            String expectedResult = "2볼 1스트라이크";
+            assertThat(result).isEqualTo(expectedResult);
+        }
+
+        @Test
+        @DisplayName("게임 출력 테스트 125 -> 1스트라이크")
+        void checkOutputTest_125() {
+            baseBallService.userInputSave("528");
+            baseBallService.setComputerNumberList(List.of(1, 2, 7));
+            baseBallService.saveResult();
+
+            String result = getResult();
+            String expectedResult = "1스트라이크";
+            assertThat(result).isEqualTo(expectedResult);
+        }
+
+        @Test
+        @DisplayName("게임 출력 테스트 479 -> 3볼")
+        void checkOutputTest_479() {
+            baseBallService.userInputSave("794");
+            baseBallService.setComputerNumberList(List.of(4, 7, 9));
+            baseBallService.saveResult();
+
+            String result = getResult();
+            String expectedResult = "3볼";
+            assertThat(result).isEqualTo(expectedResult);
+        }
+
         private String getResult() {
             String result = "";
 
