@@ -1,14 +1,13 @@
 package baseball;
 
 public class GameManager {
-    private GameOpponent gameOpponent;
 
+    private GameState gameState;
     public GameManager(){
-        this.gameOpponent = new GameOpponent();
     }
 
     public void run(){ // initialize game state and run the game.
-        // TODO
+
     }
 
 }
