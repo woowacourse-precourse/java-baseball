@@ -9,6 +9,10 @@ public class Referee {
         this.score = new int[2];
     }
 
+    /*
+    * 정답(answer)과 사용자 입력(expected)을 비교하여 판정함
+    * score[0]: 볼의 수, score[1]: 스트라이크의 수
+    */
     public boolean decision(String expected, String answer) {
         List<Character> expectedDigits = new ArrayList<>(3); // 사용자가 입력한 수의 각 자릿수 저장
         List<Character> answerDigits = new ArrayList<>(3);   // 정답의 각 자릿수 저장
@@ -30,6 +34,9 @@ public class Referee {
         return (score[1] == 3);
     }
 
+    /*
+    * 판정 내용을 문자열로 구성하여 반환
+    */
     public String buildDecisionString() {
         StringBuilder sb = new StringBuilder();
 
@@ -49,6 +56,9 @@ public class Referee {
         return sb.toString();
     }
 
+    /*
+    * 판정 정보를 저장하는 score 배열을 초기화 (모두 0으로)
+    */
     private void cleanScore() {
         Arrays.fill(this.score, 0);
     }

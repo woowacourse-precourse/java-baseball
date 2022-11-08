@@ -13,6 +13,9 @@ public class GameNumberGenerator {
         this.numbers = numbers;
     }
 
+    /*
+    * 무작위로 발생한 서로 다른 3개의 수로 구성된 수열을 List<Integer>로 구성함
+    */
     public String getNumber() {
         while(numbers.size() < 3) {
             int number = RandomNumberGenerator.getNumber();
@@ -23,6 +26,9 @@ public class GameNumberGenerator {
         return this.getNumberString();
     }
 
+    /*
+    * 구성된 List<Integer>를 문자열의 형태로 반환함
+    */
     private String getNumberString() {
         StringBuilder sb = new StringBuilder();
         for(int number : numbers) {
