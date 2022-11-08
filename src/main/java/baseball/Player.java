@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 public class Player {
   private ArrayList<Integer> numbers;
   private static final int MAX_SIZE = 3;
+  public static final int RESTART = 1;
+  public static final int EXIT = 2;
 
   public String inputNumbers(){
     System.out.print("숫자를 입력해주세요 : ");
@@ -54,6 +56,17 @@ public class Player {
   public void validateOverlap(){
     if(this.numbers.size() != MAX_SIZE){
       throw new IllegalArgumentException("중복된 숫자가 있으면 안됩니다.");
+    }
+  }
+
+  public void validateGameStatusData(String input){
+    try{
+      int result = Integer.parseInt(input);
+      if(result != RESTART && result != EXIT){
+        throw new RuntimeException();
+      }
+    }catch(Exception e){
+      throw new IllegalArgumentException("0 또는 1을 입력해야 합니다.");
     }
   }
 
