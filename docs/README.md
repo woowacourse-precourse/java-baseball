@@ -18,7 +18,7 @@
    - 조건: 각 자리 수가 모두 다른 숫자인지 중복 확인하며 생성.
      1. enterNumber(): 각 자리 숫자가 모두 다른 세 자리 난수를 입력. 만약 잘못된 값을 입력할 경우 IllegalArgumentException 예외처리.
      2. checkInvalid(): 올바른 입력 값인지 확인.
-     3. checkDuplicate(): 각 자리 숫자가 중복되는지 여부 확인.
+     3. isDuplicate(): 각 자리 숫자가 중복되는지 여부 확인.
      4. isDigitNumber(): 각 자리 숫자가 numeric 값인지 여부 확인.
      5. convertStrToList(): String 타입을 List로 바꾸어 리턴.
 ---
