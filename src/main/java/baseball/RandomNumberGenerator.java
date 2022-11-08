@@ -31,7 +31,7 @@ public class RandomNumberGenerator {
         }
     }
 
-    public void generate() {
+    public static void generate() {
         for(int i=0;i<3;i++) {
             addToRandomNumberList();
         }
