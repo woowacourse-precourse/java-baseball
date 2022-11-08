@@ -1,12 +1,20 @@
 package baseball;
 
 public class MatchResult {
+
     int ball;
     int strike;
 
     public MatchResult(int ball, int strike) {
         this.ball = ball;
         this.strike = strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+    public int getStrike() {
+        return strike;
     }
 
     public void print(){
@@ -24,6 +32,7 @@ public class MatchResult {
         }
         System.out.print(System.lineSeparator());
     }
+
     public boolean isCorrect(){
         return (strike == 3);
     }

@@ -39,7 +39,6 @@ public class BaseballNumber {
                 ball++;
             }
         }
-
         MatchResult matchResult = new MatchResult(ball,strike);
         return matchResult;
     }

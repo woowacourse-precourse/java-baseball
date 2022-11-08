@@ -21,4 +21,13 @@ class BaseballNumberTest {
         Assertions.assertThat(Integer.parseInt(createdNumber)).isInstanceOf(Integer.class);
     }
 
+    @Test
+    public void matchTest(){
+        BaseballNumber baseballNumber = new BaseballNumber();
+        baseballNumber.setNumber("123");
+        MatchResult matchResult = baseballNumber.match("137");
+        Assertions.assertThat(matchResult.getBall()).isEqualTo(1);
+        Assertions.assertThat(matchResult.getStrike()).isEqualTo(1);
+    }
+
 }
