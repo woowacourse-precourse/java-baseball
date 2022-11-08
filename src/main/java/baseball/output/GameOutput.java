@@ -31,5 +31,19 @@ public abstract class GameOutput {
         System.out.println(FINISH_MESSAGE);
     }
 
+    public static String makeGameResult(GameResult gameResult) {
+        String output = "";
+        if (gameResult.getStrike() == 0 && gameResult.getBall() == 0)
+            return NOTHING;
 
+        if (gameResult.getStrike() != 0)
+            output = gameResult.getStrike() + "스트라이크";
+        if (gameResult.getBall() > 0)
+            output = gameResult.getBall() + "볼 " + output;
+        return output.trim();
+    }
+
+    public static void gameResultOutput(GameResult gameResult) {
+        System.out.println(makeGameResult(gameResult));
+    }
 }
