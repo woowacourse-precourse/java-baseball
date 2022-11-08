@@ -9,6 +9,8 @@ public class Computer {
     private static final String BALL = "볼";
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
+    private static final String GAME_OVER = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String GAME_RESTART_OR_STOP = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private String[] compareResult;
     private static List<Integer> computerNumbers = new ArrayList<>();
     private int ballCount;
@@ -92,13 +94,14 @@ public class Computer {
         while (true) {
             compareGameScore();
             if (strikeCount == 3) {
+                printStrike();
                 printGameOver();
                 computerNumbers.clear();
                 user.restartGame();
                 break;
             }
             if (ballCount > 0 && strikeCount > 0) {
-                System.out.println(ballCount + "볼" + " " + strikeCount + "스트라이크");
+                System.out.println(ballCount + BALL + " " + strikeCount + STRIKE);
             }
             printStrike();
             printBall();
@@ -108,25 +111,25 @@ public class Computer {
     }
 
     public void printGameOver() {
-        System.out.println("3스트라이크");
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(GAME_OVER);
+        System.out.println(GAME_RESTART_OR_STOP);
     }
+
     public void printStrike() {
         if (ballCount == 0 && strikeCount > 0) {
-            System.out.println(strikeCount + "스트라이크");
+            System.out.println(strikeCount + STRIKE);
         }
     }
 
     public void printBall() {
         if (strikeCount == 0 && ballCount > 0) {
-            System.out.println(ballCount + "볼");
+            System.out.println(ballCount + BALL);
         }
     }
 
     public void printNothing() {
         if (nothingCount == 3) {
-            System.out.println("낫싱");
+            System.out.println(NOTHING);
         }
     }
 }
