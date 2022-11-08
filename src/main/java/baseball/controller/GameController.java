@@ -17,7 +17,7 @@ public class GameController {
     }
 
     public boolean showSelectNumberResult(String input) {
-        validateInput("^[1-9]{3}", input);
+        validateInput("^[1-9]{3}$", input);
 
         View view = new SelectNumberResult(parseInt(input));
         view.show();
@@ -33,7 +33,12 @@ public class GameController {
     }
 
     public boolean getPlayGameAgainResult(String input) {
-        return true;
+        validateInput("^[1-2]{1}$", input);
+
+        View view = new PlayGameAgainResult(parseInt(input));
+        view.show();
+
+        return view.getResponseToBoolean();
     }
 
     public static void validateInput(String regex, String input) {
