@@ -12,10 +12,13 @@ public class GameController {
     OutputView outputView = new OutputView();
 
     public void gameProcess() {
-        outputView.printStartGame();
-        computerController.startGame(gameNumber);
-        repeatGuessingAnswer();
-        askRestartGame();
+        boolean gameState = true;
+        while (gameState) {
+            outputView.printStartGame();
+            computerController.startGame(gameNumber);
+            repeatGuessingAnswer();
+            gameState = askRestartGame();
+        }
     }
 
     private void repeatGuessingAnswer() {
@@ -33,9 +36,9 @@ public class GameController {
         }
     }
 
-    private void askRestartGame() {
+    private boolean askRestartGame() {
         String answer = inputView.enterAnswerRestartGame();
-        wantRestartGame(answer);
+        return wantRestartGame(answer);
     }
 
     private boolean wantRestartGame(String answer) {
