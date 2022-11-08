@@ -119,6 +119,37 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        List<Integer> computerNumber, playerNumber;
+        List<Integer> computerCompare, playCompare;
+//        List<Integer>
+        String computerString = "";
+
+        // 숫자 입력 받기
+        Compare compare = new Compare();
+        RandomNum randomNum = new RandomNum();
+        Choice choice = new Choice();
+        Input input = new Input();
+        Playagain playagain = new Playagain();
+        boolean again = true;
+
+        computerNumber = randomNum.create();
+        playerNumber = input.playerNum();
+
+        computerString = choice.choice(computerNumber,playerNumber);
+
+        System.out.println(computerString);
+
+        while(again) {
+            List<Integer> finish = randomNum.create();
+            String result ="";
+            while (!result.equals("3스트라이크")) {
+                result = Choice.choice(computerNumber, input.playerNum());
+                System.out.println(result);
+            }
+            again = playagain.playagain();
+        }
     }
+
 }
+    
 
