@@ -27,11 +27,11 @@ public class Application {
 
             List<Integer> userInput = checkAndConvertUserInput(Console.readLine());
 
-            Integer ball =calculationBall(computerOutput, userInput);
+            Integer ball = calculateBall(computerOutput, userInput);
 
-            Integer strike =calculationStrike(computerOutput, userInput);
+            Integer strike = calculateStrike(computerOutput, userInput);
 
-            String result =currentSituation(ball, strike);
+            String result = currentSituation(ball, strike);
 
             System.out.println(result);
 
@@ -63,7 +63,7 @@ public class Application {
                 .boxed()
                 .collect(toList());
     }
-    public static Integer calculationBall(List<Integer> computer, List<Integer> user) {
+    public static Integer calculateBall(List<Integer> computer, List<Integer> user) {
         Integer ball = 0;
         for(int i = 0; i < computer.size(); i++){
             if(user.contains(computer.get(i)) && !computer.get(i).equals(user.get(i)))
@@ -71,7 +71,7 @@ public class Application {
         }
         return ball;
     }
-    public static Integer calculationStrike(List<Integer> computer,List<Integer> user){
+    public static Integer calculateStrike(List<Integer> computer,List<Integer> user){
         Integer strike = 0;
         for(int i = 0;i<computer.size();i++){
             if(computer.get(i).equals(user.get(i)))
