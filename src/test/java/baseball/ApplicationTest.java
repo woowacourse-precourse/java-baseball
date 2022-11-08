@@ -34,6 +34,13 @@ class ApplicationTest extends NsTest {
         assertThat(numSet.size()).isEqualTo(computer.size());
     }
     @Test
+    void 사용자_입력_리스트_생성() {
+        List<Integer> user = new ArrayList<>();
+        String test = "123";
+        List<Integer> list = List.of(1,2,3);
+        assertThat(Application.makeUserList(user, test)).isEqualTo(list);
+    }
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
