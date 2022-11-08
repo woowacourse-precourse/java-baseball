@@ -9,8 +9,6 @@ import java.util.List;
 public class BaseBallGame {
     // TODO: 게임 실행부 작성
     public void start() {
-        // TODO: 게임 진행시 처음에만 출력되는 Comment 출력
-        System.out.println(Constant.START_MESSAGE);
         List<Integer> answer = BaseBallGameUtil.createAnswerByLength(Constant.LENGTH_OF_NUMBER);
         List<Integer> userAnswer;
         do {
