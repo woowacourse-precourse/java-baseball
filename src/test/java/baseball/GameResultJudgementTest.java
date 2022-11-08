@@ -2,7 +2,7 @@ package baseball;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-가import domain.GameResultJudgement;
+import domain.GameResultJudgement;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
