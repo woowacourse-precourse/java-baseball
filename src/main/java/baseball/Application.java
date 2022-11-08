@@ -14,13 +14,18 @@ public class Application {
         String inputStringNumber = Console.readLine();
         calculationNumber(resultNumber, inputStringNumber);
 
+
     }
 
-    public static int calculationNumber(List<Integer> resultNumber ,String inputStringNumber){
+    public static boolean calculationNumber(List<Integer> resultNumber ,String inputStringNumber){
         List<Integer> inputNumber = makeStringNumberToList(inputStringNumber);
         int strike = countStrike(resultNumber, inputNumber);
         int ball = countBall(resultNumber, inputNumber);
-        return strike;
+        printResult(strike, ball);
+        if(strike == 3){
+            return false;
+        }
+        return true;
     }
 
     private static int countBall(List<Integer> resultNumber, List<Integer> inputNumber) {
@@ -44,7 +49,15 @@ public class Application {
     }
 
     private static void printResult(int strike, int ball) {
-
+        if(strike == 0 && ball == 0){
+            System.out.println("낫싱");
+        }else if(strike == 0){
+            System.out.println(ball + "볼");
+        }else if(ball == 0){
+            System.out.println(strike + "스트라이크");
+        }else{
+            System.out.println(strike + "스트라이크 " + ball + "볼");
+        }
     }
 
     private static int countStrike(List<Integer> resultNumber, List<Integer> inputNumber) {
