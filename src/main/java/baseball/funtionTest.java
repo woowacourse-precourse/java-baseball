@@ -39,11 +39,11 @@ public class funtionTest {
         String tmp2 ="112";
         String tmp3 ="123";
         assertThrows(IllegalArgumentException.class,() -> {
-            input_num_exception_test(tmp);
+            input_number_exception_test(tmp);
         });
 
         assertThrows(IllegalArgumentException.class,() -> {
-            input_num_exception_test(tmp2);
+            input_number_exception_test(tmp2);
         });
 
         /*
