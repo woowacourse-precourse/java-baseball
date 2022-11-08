@@ -65,4 +65,14 @@ public class BaseballController {
             throw new IllegalArgumentException("입력은 1 또는 2만 가능합니다.");
         }
     }
+
+    // 단일 테스트를 위한 서비스 getter
+    public BaseBallService getBaseBallServiceForTest() {
+        return baseBallService;
+    }
+
+    // 단일 테스트를 위한 OutputView getter
+    public OutputView getOutputViewForTest() {
+        return outputView;
+    }
 }
