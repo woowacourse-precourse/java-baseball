@@ -31,6 +31,13 @@ public class BaseballService {
         computerNumbers = new ArrayList<>(randomNumberList);
     }
 
+    public boolean checkGameStatus() {
+        if (strike == Constant.LENGTH) {
+            return false;
+        }
+        return true;
+    }
+
     public void inputPlayerNumber() {
         System.out.print(Constant.INPUT_NUMBER_MESSAGE);
         String numbers = Console.readLine();
