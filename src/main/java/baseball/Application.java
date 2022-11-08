@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -35,14 +36,22 @@ public class Application {
 
         return result;
     }
-    public static boolean checkVal(String num) {
+    public static boolean checkLength(String num) {
         return num.length() != 3;
     }
 
+    public static void checkContinuous(String num) {
+        HashSet<String> num_set = new HashSet<>();
+        for (int i=0; i< num.length(); i++) {
+            num_set.add(String.valueOf(num.charAt(i)));
+        }
+        if(num_set.size() != num.length()) throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다");
+    }
     public static List<Integer> inputNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputNum = Console.readLine();
-        if (checkVal(inputNum)) throw new IllegalArgumentException("Invalid input");
+        if (checkLength(inputNum)) throw new IllegalArgumentException("Invalid input");
+        checkContinuous(inputNum);
         List<Integer> arrayTrial = splitAnswerNumber(inputNum);
         return arrayTrial;
     }
