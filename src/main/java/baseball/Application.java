@@ -19,6 +19,7 @@ public class Application {
     	int ball = findball(computerPickNums, playerPickNums);
     	String score = scoreBoard(strike, ball);
     	System.out.println(score);
+    	winLose(strike);
     	
     	
     }
@@ -86,5 +87,12 @@ public class Application {
     		return ball+"볼"+" "+strike+"스트라이크";
     	}
     }
-    
+    public static void winLose(int strike) {
+    	if(strike == 3 ) {
+    		System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    		//처음부터 재시작 여부 
+    	}else {
+    		//사용자 숫자 입력부터 재시작
+    	}
+    }
 }
