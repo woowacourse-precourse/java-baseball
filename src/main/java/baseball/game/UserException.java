@@ -10,4 +10,9 @@ public class UserException {
         Set<String> deduplication = new HashSet<>(List.of(userInputNumber.split("")));
         return deduplication.size() != 3;
     }
+
+    private static boolean isNotLength3(String userInputNumber) {
+        int length = userInputNumber.length();
+        return length != 3;
+    }
 }
