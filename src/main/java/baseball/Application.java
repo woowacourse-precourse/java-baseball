@@ -110,4 +110,41 @@ public class Application {
         return 2;
     }
 
+    private void playGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        List<Integer> computer = getRandomNumberList();
+        int result = 0;
+
+        do {
+            System.out.print("숫자를 입력해주세요 : ");
+            String userInput = getUserInput();
+            validate(userInput);
+            List<Integer> userAnswer = convertStringToIntegerList(userInput);
+
+            List<Integer> ballAndStrike = getUserAnswerBallAndStrike(computer, userAnswer);
+            System.out.println(parseResult(ballAndStrike));
+            result = getResult(ballAndStrike);
+        } while (result != 0);
+
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+    }
+
+    private String parseResult(List<Integer> ballAndStrike) {
+        if(ballAndStrike.get(0) == 3) {
+            return "낫싱";
+        }
+
+        String parsedResult = "";
+
+        if (ballAndStrike.get(1) > 0) {
+            parsedResult += ballAndStrike.get(1) + "볼 ";
+        }
+
+        if (ballAndStrike.get(2) > 0) {
+            parsedResult += ballAndStrike.get(2) + "스트라이크 ";
+        }
+
+        return parsedResult;
+    }
+
 }
