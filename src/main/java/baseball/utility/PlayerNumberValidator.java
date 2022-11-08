@@ -3,9 +3,19 @@ package baseball.utility;
 import baseball.constant.GameConstant;
 
 public class PlayerNumberValidator {
+    private static final String ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE = "올바르지 않은 사용자 입력";
 
     private PlayerNumberValidator() {
 
+    }
+
+    public static void throwIllegalArgumentExceptionIfPlayerNumberNotValid(String playerNumberOrNull) {
+        if (isPlayerNumberValid(playerNumberOrNull)) {
+            return;
+        }
+        throw new IllegalArgumentException(
+                String.format("%s. 입력된 값 = %s", ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE, playerNumberOrNull)
+        );
     }
 
     private static boolean isPlayerNumberValid(String playerNumberOrNull) {
