@@ -47,7 +47,7 @@ class InputValidatorTest {
   @Test
   void isValidNumber() {
     String testCase1 = "112";
-    String testCase2 = "0";
+    String testCase2 = "000";
     String testCase3 = "9a";
     String testCase4 = "092";
     String testCase5 = "9A1";
@@ -60,12 +60,6 @@ class InputValidatorTest {
     Assertions.assertThatThrownBy(() -> InputValidator.isValidNumber(testCase4))
             .isInstanceOf(IllegalArgumentException.class);
     Assertions.assertThatThrownBy(() -> InputValidator.isValidNumber(testCase5))
-            .isInstanceOf(IllegalArgumentException.class);
-  }
-
-  @Test
-  void isValidButton() {
-    Assertions.assertThatThrownBy(() -> InputValidator.isValidButton("a"))
             .isInstanceOf(IllegalArgumentException.class);
   }
 }
