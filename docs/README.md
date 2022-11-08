@@ -40,7 +40,7 @@
 - [ ] 검증에 사용되는 Pattern을 가지고 있는 enum
 
 
-- [ ] 메시지 출력에 사용되는 message를 가지고 있는 enum
+- [x] 메시지 출력에 사용되는 message를 가지고 있는 enum
 
 
 - [ ] 재시작에 사용되는 flag를 가지고 있는 enum
