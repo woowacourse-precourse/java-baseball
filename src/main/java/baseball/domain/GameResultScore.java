@@ -13,7 +13,7 @@ public class GameResultScore {
     private static final String RESTART_INPUT = "플레이어가 숫자 1 또는 2가 아닌 다른 값을 입력하였습니다.";
 
     public String getGameNumber(List<Integer> computer) {
-        Referee referee = new Referee(new Ball(), new Strike(), new CorrectCount());
+        Referee referee = new Referee(new Ball(), new Strike(), new TotalIncludedNumbers());
         Player player = new Player();
         String gameResultNumber;
 

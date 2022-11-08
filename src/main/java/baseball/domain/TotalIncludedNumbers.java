@@ -2,14 +2,14 @@ package baseball.domain;
 
 import java.util.List;
 
-public class CorrectCount {
+public class TotalIncludedNumbers {
     public int compare(List<Integer> computer, List<Integer> player) {
-        int definiteNumber = 0;
+        int countNumber = 0;
         for (int playerNumber : player) {
             if (computer.contains(playerNumber)) {
-                definiteNumber++;
+                countNumber++;
             }
         }
-        return definiteNumber;
+        return countNumber;
     }
 }
