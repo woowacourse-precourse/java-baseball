@@ -51,12 +51,13 @@
 ------------------
 
 #### ✅ PlayerService
-| 이름                | 설명                  | 구분                    | I / O                                        | 비고  |
-|:------------------|:--------------------|:----------------------|:---------------------------------------------|:----|
-| PlayerRepository  | 플레이어 숫자 관련 저장소      | 객체 (PlayerRepository) |                                              | -   |
-| setPlayerNumber   | 플레이어가 입력한 숫자 정보 저장  | 메서드                   | input - ArrayList<Integer> playerNumberList  | -   |
-| inputPlayerNumber | 플레이어에게 숫자 3개를 입력 받음 | 메서드                   | output - ArrayList<Integer> playerNumberList | -   |
-| getPlayerNumber   | 플레이어의 숫자 정보 확인      | 메서드                   | output - ArrayList<Integer> playerNumberList | -   |
+| 이름                 | 설명                  | 구분                    | I / O                                        | 비고  |
+|:-------------------|:--------------------|:----------------------|:---------------------------------------------|:----|
+| PlayerRepository   | 플레이어 숫자 관련 저장소      | 객체 (PlayerRepository) |                                              | -   |
+| setPlayerNumber    | 플레이어가 입력한 숫자 정보 저장  | 메서드                   | input - ArrayList<Integer> playerNumberList  | -   |
+| inputPlayerNumber  | 플레이어에게 숫자 3개를 입력 받음 | 메서드                   | output - ArrayList<Integer> playerNumberList | -   |
+| getPlayerNumber    | 플레이어의 숫자 정보 확인      | 메서드                   | output - ArrayList<Integer> playerNumberList | -   |
+| inputRestartAnswer | 게임 재시작 여부 입력        | 메서드                   | output - Boolean - True/False                | -   |
 
 
 #### ✅ ComputerService
