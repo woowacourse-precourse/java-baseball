@@ -13,14 +13,19 @@ public class BaseballGame {
     private static final String NOTHING_STR = "낫싱";
     private static final String END_RESULT_STR = "3스트라이크";
 
-    List<Integer> randomList = new ArrayList<>();
+    List<Integer> randomList;
     String gameResult;
     int ballCnt = 0;
     int strikeCnt = 0;
 
     public BaseballGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        randomList = new ArrayList<>();
         createNumber();
+    }
+
+    public List<Integer> getRandomList() {
+        return randomList;
     }
 
     private void createNumber() {
