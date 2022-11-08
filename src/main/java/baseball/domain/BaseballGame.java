@@ -26,7 +26,7 @@ public class BaseballGame {
     public void play() {
         List<Integer> userNumbers;
         while (score.getStrikeCount() < THREE_DIGITS) {
-            System.out.println(Korean.PLEASE_ENTER_NUMBER);
+            System.out.print(Korean.PLEASE_ENTER_NUMBER_MESSAGE);
             final String userInput = readLine();
 
             validateUserInputType(userInput);
@@ -97,22 +97,22 @@ public class BaseballGame {
         final StringBuilder stringBuilder = new StringBuilder();
 
         if (strikeCount == 0 && ballCount == 0) {
-            return Korean.NOTHING;
+            return Korean.NOTHING_MESSAGE;
         }
         if (ballCount != 0) {
             stringBuilder.append(ballCount)
-                    .append(Korean.BALL);
+                    .append(Korean.BALL_MESSAGE);
         }
         if (strikeCount != 0) {
             stringBuilder.append(strikeCount)
-                    .append(Korean.STRIKE);
+                    .append(Korean.STRIKE_MESSAGE);
         }
 
         return stringBuilder.toString();
     }
 
     public void printGameOverMessage() {
-        System.out.println(Korean.GAME_OVER);
+        System.out.println(Korean.GAME_OVER_MESSAGE);
     }
 
     public static Builder builder() {
@@ -141,11 +141,12 @@ public class BaseballGame {
     public void test(String userInput) {
         List<Integer> userNumbers;
         while (score.getStrikeCount() < THREE_DIGITS) {
-            System.out.println(Korean.PLEASE_ENTER_NUMBER);
+            System.out.println(Korean.PLEASE_ENTER_NUMBER_MESSAGE);
 
             validateUserInputType(userInput);
             userNumbers = toList(userInput);
             validateUserNumbers(userNumbers);
+            break;
         }
     }
 }
