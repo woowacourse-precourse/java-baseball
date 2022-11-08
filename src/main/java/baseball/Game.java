@@ -10,6 +10,7 @@ public class Game {
 
     public void start(){
         while(isStartStatus()){
+            result.initialize();
             problemMaker.makeProblem(Settings.SIZE_OF_NUMBERS);
             printMessage(Settings.START_MESSAGE);
             while(result.isWrongAnswer()){
