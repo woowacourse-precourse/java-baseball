@@ -25,14 +25,16 @@ public class View {
         }
     }
 
-    public void printResult(int check, int number) {
+    public void printResult(int ball, int strike) {
         try {
-            if (check == 0) {
+            if (ball == 0 && strike == 0) {
                 System.out.println("낫싱");
-            } else if (check == 1) {
-                System.out.print(number + "볼");
-            } else if (check == 2) {
-                System.out.print(number + "스트라이크");
+            } else if (strike == 0) {
+                System.out.println(ball + "볼");
+            } else if (ball == 0) {
+                System.out.println(strike + "스트라이크");
+            } else {
+                System.out.println(ball + "볼 " + strike + "스트라이크");
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e);
