@@ -46,7 +46,7 @@ public class CompareResult {
 		}
 		return occurrences.keySet()
 			.stream()
-			.filter(BallStatus::isStrikeOrBall)
+			.filter(BallStatus::isNotNothing)
 			.sorted(Comparator.comparing(BallStatus::getStatus))
 			.map(this::formatStatus)
 			.collect(Collectors.toList());

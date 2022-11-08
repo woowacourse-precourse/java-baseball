@@ -49,7 +49,7 @@ public class Balls {
 	public BallStatus compareTo(final Ball other) {
 		return balls.stream()
 			.map(ball -> ball.compareTo(other))
-			.filter(BallStatus::isStrikeOrBall)
+			.filter(BallStatus::isNotNothing)
 			.findFirst()
 			.orElse(BallStatus.NOTHING);
 	}

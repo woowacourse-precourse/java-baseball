@@ -13,7 +13,7 @@ public enum BallStatus {
 		return status;
 	}
 
-	public boolean isStrikeOrBall() {
-		return this == STRIKE || this == BALL;
+	public boolean isNotNothing() {
+		return this != NOTHING;
 	}
 }
