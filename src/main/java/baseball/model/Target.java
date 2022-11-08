@@ -34,11 +34,11 @@ public class Target {
     }
 
     void setOneNumber(int indexOfList) {
-        boolean isInTargetNumberList = true;
+        boolean isAlreadyInTargetNumberList = true;
         int randomNumber = 0;
-        while (isInTargetNumberList) {
+        while (isAlreadyInTargetNumberList) {
             randomNumber = Randoms.pickNumberInRange(1, 9);
-            isInTargetNumberList = checkIsNumberInTargetList(randomNumber);
+            isAlreadyInTargetNumberList = checkIsNumberInTargetList(randomNumber);
         }
         this.targetNumberList.set(indexOfList, randomNumber);
     }
