@@ -33,6 +33,7 @@ public class GameService {
     private void play() {
         game.initScore();
         user.setUserNumbers(getUserInput());
+        calculateScore();
     }
 
     private int[] getUserInput() throws IllegalArgumentException {
@@ -40,4 +41,23 @@ public class GameService {
         String input = Console.readLine();
         return parse.parseUserNumber(input, size);
     }
+
+    private void calculateScore() {
+        for (int i = 0; i < size; i++) {
+            calculate(game.gameNumbers(), user.getUserNumbers(), i);
+        }
+    }
+
+    private void calculate(int[] gameNumber, int[] userNumber, int index) {
+        int temp = -1;
+        for (int i = 0; i < gameNumber.length; i++) {
+            if (gameNumber[i] == userNumber[index]) {
+                temp = i;
+                break;
+            }
+        }
+        addScore();
+    }
+
+    private void addScore(){}
 }
