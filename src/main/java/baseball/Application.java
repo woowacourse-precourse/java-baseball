@@ -13,6 +13,7 @@ public class Application {
 
     /**
      * 게임 플레이어가 입력한 숫자의 유효성을 검증해준다.
+     * 1에서 9까지 서로 다른 임의의 수 3개인지 검증
      * @param playerNumberArrayList
      */
     private static void CheckPlayerNumberValidation(ArrayList<Integer> playerNumberArrayList) {
@@ -31,7 +32,7 @@ public class Application {
 
     /**
      * Console API를 사용하여 게임 플레이어에게 숫자를 입력 받는다.
-     * @return 게임 플레이어가 입력한 숫자를 ArrayList로 return한다.
+     * @return 게임 플레이어가 입력한 숫자를 ArrayList로 return 한다.
      */
     private static ArrayList<Integer> GetPlayerNumber() {
         String playerString = Console.readLine();
@@ -54,7 +55,7 @@ public class Application {
 
     /**
      * 1에서 9까지 서로 다른 임의의 수 3개의 정답 숫자를 생성한다.
-     * @return 정답 숫자를 ArrayList로 return한다.
+     * @return 정답 숫자를 ArrayList로 return 한다.
      */
     private static ArrayList<Integer> CreateAnswerNumber() {
         ArrayList<Integer> answerNumberArrayList = new ArrayList<>();
@@ -118,7 +119,7 @@ public class Application {
         HashSet<Integer> wrongPlayerNumberSet = new HashSet<>();
         HashSet<Integer> answerNumberSet = new HashSet<>();
 
-        // 플레이어가 틀린 숫자의 집합과 스트라이크를 제외한 정답의 집합을 만든다.
+        // 플레이어가 틀린 숫자의 집합과 정답 숫자의 집합을 만든다.
         ArrayList<Integer> wrongNumberIndexArrayList = strikeResultLinkedHashMap.get("wrongNumberIndexArrayList");
         for (Integer I : wrongNumberIndexArrayList) {
             wrongPlayerNumberSet.add(playerNumberArrayList.get(I));
