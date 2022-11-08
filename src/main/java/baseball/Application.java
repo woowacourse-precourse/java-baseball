@@ -13,6 +13,8 @@ public class Application {
         private static final boolean VERIFY = true;
         private static final boolean GAME_END = true;
         private static final boolean GAME_CONTINUE = false;
+        private static final boolean GAME_START = false;
+        private static final boolean GAME_EXIT = true;
 
         private int[] goalArr;
         private int[] goalUsageArr;
@@ -57,11 +59,21 @@ public class Application {
             } else {
                 throw new IllegalArgumentException();
             }
+
+            if (order.equals(1)) {
+                return GAME_START;
+            } else if(order.equals(2)){
+                return GAME_EXIT;
+            }
         }
 
         private String confirmNextAction() {
             printNewGameStatus();
             return readLine();
+        }
+
+        private void printNewGameStatus() {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
 
         private void gamePlayLoop() {
