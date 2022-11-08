@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class BaseballResultTest {
+class BaseballScoreCalculationTest {
     @Test
     void 선택한_숫자가_올_스트라이크() {
         List<Integer> answerNumbers = new ArrayList<>();
