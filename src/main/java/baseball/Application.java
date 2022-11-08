@@ -43,9 +43,13 @@ class Game {
             System.out.println("숫자 비교" + result);
 
             // 출력하기
-
+            String printResult = printCompareResult();
 
             // 출력 결과값이 다 맞췄다면 break;
+            if (printResult.equals("3스트라이크")) {
+                break;
+            }
+
         }
     }
 
@@ -60,25 +64,74 @@ class Game {
             int eachComNum = comNum.get(i);
 
             if (eachComNum == eachUserNum) {
-                System.out.println("스트라이크");
+                //System.out.println("스트라이크");
                 result.replace("strike", result.get("strike") + 1);
                 continue;
             }
 
             if (comNum.contains(eachUserNum)) {
-                System.out.println("볼");
+                //System.out.println("볼");
                 result.replace("ball", result.get("ball") + 1);
                 continue;
             }
 
-            System.out.println("낫싱");
+            //System.out.println("낫싱");
         }
     }
 
-    public void printCompareResult() {
-        System.out.println("test : 프린트함수 호출");
-    }
+    public String printCompareResult() {
+        if (result.get("strike") == 0 && result.get("ball") == 0) {
+            System.out.println("낫싱");
+            return "낫싱";
+        }
 
+        if (result.get("strike") == 0 && result.get("ball") == 1) {
+            System.out.println("1볼");
+            return "1볼";
+        }
+
+        if (result.get("strike") == 0 && result.get("ball") == 2) {
+            System.out.println("2볼");
+            return "2볼";
+        }
+
+        if (result.get("strike") == 0 && result.get("ball") == 3) {
+            System.out.println("3볼");
+            return "3볼";
+        }
+
+        if (result.get("strike") == 1 && result.get("ball") == 0) {
+            System.out.println("1스트라이크");
+            return "1스트라이크";
+        }
+
+        if (result.get("strike") == 1 && result.get("ball") == 1) {
+            System.out.println("1볼 1스트라이크");
+            return "1볼 1스트라이크";
+        }
+
+        if (result.get("strike") == 1 && result.get("ball") == 2) {
+            System.out.println("2볼 1스트라이크");
+            return "2볼 1스트라이크";
+        }
+
+        if (result.get("strike") == 2 && result.get("ball") == 0) {
+            System.out.println("2스트라이크");
+            return "2스트라이크";
+        }
+
+        if (result.get("strike") == 2 && result.get("ball") == 1) {
+            System.out.println("1볼 2스트라이크");
+            return "1볼 2스트라이크";
+        }
+
+        if (result.get("strike") == 3 && result.get("ball") == 0) {
+            System.out.println("3스트라이크");
+            return "3스트라이크";
+        }
+
+        return "";
+    }
 }
 
 class Computer {
