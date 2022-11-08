@@ -26,7 +26,7 @@ public class Application {
         String command;
 
         do {
-            GameMessagePrinter.printStart();
+            GameMessagePrinter.printGameStart();
             game.run();
             GameMessagePrinter.printGameWin();
 
