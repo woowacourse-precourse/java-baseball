@@ -1,4 +1,4 @@
-package baseball.domain.Generator;
+package baseball.domain.generator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

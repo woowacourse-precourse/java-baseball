@@ -1,7 +1,6 @@
-package baseball.domain.Validator;
+package baseball.domain.validator;
 
 import baseball.domain.model.request.UserInputRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

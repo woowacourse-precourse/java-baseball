@@ -1,4 +1,4 @@
-package baseball.domain.Validator;
+package baseball.domain.validator;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;

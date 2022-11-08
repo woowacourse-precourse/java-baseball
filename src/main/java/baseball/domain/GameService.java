@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.domain.Generator.GameGenerator;
+import baseball.domain.generator.GameGenerator;
 import baseball.domain.model.Game;
 import baseball.domain.model.Result;
 import baseball.domain.model.UserInput;
