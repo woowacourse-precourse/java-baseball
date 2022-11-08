@@ -63,15 +63,27 @@ public class Referee {
 	}
 
 	private String judgeResult(int numberOfBalls, int numberOfStrikes) {
-		if (numberOfBalls == 0 && numberOfStrikes == 0) {
+		if (isNothing(numberOfBalls, numberOfStrikes)) {
 			return NOTHING_MESSAGE;
 		}
-		if (numberOfBalls == 0) {
+		if (isStrike(numberOfBalls)) {
 			return String.format(STRIKE_MESSAGE, numberOfStrikes);
 		}
-		if (numberOfStrikes == 0) {
+		if (isBall(numberOfStrikes)) {
 			return String.format(BALL_MESSAGE, numberOfBalls);
 		}
 		return String.format(BALL_STRIKE_MESSAGE, numberOfBalls, numberOfStrikes);
+	}
+
+	private boolean isBall(int numberOfStrikes) {
+		return numberOfStrikes == 0;
+	}
+
+	private boolean isStrike(int numberOfBalls) {
+		return numberOfBalls == 0;
+	}
+
+	private boolean isNothing(int numberOfBalls, int numberOfStrikes) {
+		return isStrike(numberOfBalls) && isBall(numberOfStrikes);
 	}
 }
