@@ -36,11 +36,10 @@ public class Number {
     }
 
     public void changeStringToSet(String userInput) {
-        if (!isValidInput(userInput)) {
-            throw new IllegalArgumentException();
+        int number = 0;
+        if (isValidInput(userInput)) {
+            number = Integer.parseInt(userInput);
         }
-        int number = Integer.parseInt(userInput);
-
         while (number > 0) {
             int n = number % 10;
             userInputNumber.add(n);
@@ -51,10 +50,11 @@ public class Number {
 
     public boolean isValidInput(String userInput) {
         if (!(isValidLength(userInput) && isValidString(userInput) && isNotDuplicate(userInput))) {
-            return false;
+            throw new IllegalArgumentException();
         }
         return true;
     }
+
     public boolean isValidLength(String userInput) {
         if (userInput.length() != 3) {
             return false;
@@ -63,8 +63,8 @@ public class Number {
     }
 
     public boolean isValidString(String userInput) {
-        for (int i = 0; i < userInput.length(); i++) {
-            if (userInput.charAt(i) > 57 || userInput.charAt(i) < 49) {
+        for (int location = 0; location < userInput.length(); location++) {
+            if (userInput.charAt(location) > 57 || userInput.charAt(location) < 49) {
                 return false;
             }
         }
@@ -73,8 +73,8 @@ public class Number {
 
     public boolean isNotDuplicate(String userInput) {
         Set<String> userInputSet = new HashSet<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            String str = String.valueOf(userInput.charAt(i));
+        for (int location = 0; location < userInput.length(); location++) {
+            String str = String.valueOf(userInput.charAt(location));
             userInputSet.add(str);
         }
         if (userInputSet.size() != 3) {

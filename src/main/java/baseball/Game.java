@@ -25,10 +25,12 @@ public class Game {
             resetData();
         }
     }
+
     public void proceedGame() {
         number.userInput();
         userInput = number.userInputNumber;
         checkAnswer();
+        printResult();
         userInput.clear();
     }
 
@@ -44,7 +46,6 @@ public class Game {
                 ball++;
             }
         }
-        printResult();
     }
 
     public boolean isBall(Integer userInputNumber) {
@@ -55,7 +56,9 @@ public class Game {
     }
 
     public boolean isStrike(Integer userInputNumber) {
-        if (computer.indexOf(userInputNumber) == userInput.indexOf(userInputNumber)) {
+        int computerNumberLocation = computer.indexOf(userInputNumber);
+        int userNumberLocation = userInput.indexOf(userInputNumber);
+        if (computerNumberLocation == userNumberLocation) {
             return true;
         }
         return false;
@@ -89,14 +92,14 @@ public class Game {
     public void restart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if (input.equals("2")) {
-            end = true;
-            computer.clear();
-        }
         if (input.equals("1")) {
             userInput.clear();
             computer.clear();
             setRandomNumber();
+        }
+        if (input.equals("2")) {
+            end = true;
+            computer.clear();
         }
         if (!input.equals("1") && !input.equals("2")) {
             throw new IllegalArgumentException();
