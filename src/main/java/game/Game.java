@@ -21,14 +21,14 @@ public class Game {
         } while (waiting());
     }
 
-    public void initialize() {
+    private void initialize() {
         computer.clearNumbers();
         computer.setNumbers();
         user.clearNumbers();
         hint.clearHint();
     }
 
-    public void play(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    private void play(List<Integer> computerNumbers, List<Integer> userNumbers) {
 
         while (!isThreeStrike()) {
             hint.clearHint();
@@ -42,11 +42,11 @@ public class Game {
         stop();
     }
 
-    public void stop() {
+    private void stop() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    public boolean waiting() {
+    private boolean waiting() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int waitingInput = Integer.parseInt(Console.readLine());
 
@@ -60,7 +60,7 @@ public class Game {
         throw new IllegalArgumentException("잘못된 값을 입력하였습니다. 게임 종료");
     }
 
-    public void checkBallAndStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
+    private void checkBallAndStrike(List<Integer> computerNumbers, List<Integer> userNumbers) {
 
         for (int i = STARTING_INDEX; i < MAX_LENGTH_OF_NUMBER; i++) {
 
@@ -75,7 +75,7 @@ public class Game {
         }
     }
 
-    public boolean isThreeStrike() {
+    private boolean isThreeStrike() {
 
         if (hint.getStrike() == 3) {
             return true;

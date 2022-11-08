@@ -33,6 +33,10 @@ public class User {
         }
     }
 
+    public void clearNumbers() {
+        numbers.clear();
+    }
+
     private boolean isCorrectRange(String inputNumber) {
         String pattern = "[1-9]{1,3}";
 
@@ -51,9 +55,5 @@ public class User {
         }
 
         return true;
-    }
-
-    public void clearNumbers() {
-        numbers.clear();
     }
 }
