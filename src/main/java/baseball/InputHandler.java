@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
 
-	private InputValidator inputValidator = new InputValidator();
+	private static InputValidator inputValidator = new InputValidator();
 
 	public List<Integer> getInputList() {
 		String ansString = Console.readLine();
