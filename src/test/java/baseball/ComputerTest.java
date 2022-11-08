@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 class ComputerTest {
 
 	@Test
-	@DisplayName("컴퓨터가 던진 3개의 공 중복 검증")
-	void 컴퓨터가_던진_3개의공_중복_검증() {
+	@DisplayName("컴퓨터가 던진 3개의 랜덤 공 중복 검증")
+	void 랜덤값_중복_검증() {
 		// given
 		Computer computer = new Computer();
 		// when
@@ -36,8 +36,8 @@ class ComputerTest {
 	}
 
 	@Test
-	@DisplayName("컴퓨터가 던진 공 각각의 바운더리 검증")
-	void 컴퓨터가_던진_공_각각의_바운더리_검증() {
+	@DisplayName("컴퓨터가 던진 3개의 랜덤 공 바운더리 검증")
+	void 랜덤값_바운더리_검증() {
 		// given
 		Computer computer = new Computer();
 		int upperBound = 9;
