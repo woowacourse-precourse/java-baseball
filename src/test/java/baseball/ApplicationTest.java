@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     Application game = new Application();
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -53,11 +54,11 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 사용자_입력과_정답_비교() {
-        game.compareUserInputToAnswer("123","321");
-        game.compareUserInputToAnswer("123","456");
-        game.compareUserInputToAnswer("123","123");
+        game.compareUserInputToAnswer("123", "321");
+        game.compareUserInputToAnswer("123", "456");
+        game.compareUserInputToAnswer("123", "123");
 
-        assertThat(output()).contains("2볼 1스트라이크","낫싱","3스트라이크");
+        assertThat(output()).contains("2볼 1스트라이크", "낫싱", "3스트라이크");
     }
 
     @ParameterizedTest
@@ -65,12 +66,12 @@ class ApplicationTest extends NsTest {
     void 게임재시작_사용자입력_예외_테스트(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThatThrownBy(() ->  game.restartGame())
+        assertThatThrownBy(() -> game.restartGame())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"012", "233", "asd", "111", "12", "1345","1", " "})
+    @ValueSource(strings = {"012", "233", "asd", "111", "12", "1345", "1", " "})
     void 게임시작후_예외_테스트(String input) {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);

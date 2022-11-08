@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Application {
-    private String answer ="";
+    private String answer = "";
 
     public static void main(String[] args) {
         Application game = new Application();
