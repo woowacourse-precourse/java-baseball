@@ -19,4 +19,11 @@ public class TextIO {
     public static void Outln(String text){
         System.out.println(text);
     }
+    private static boolean validate(String input){
+        //숫자만으로 이루어졌는지 길이가 적합한지 체크
+        if(input.length() == 3 && input.matches("[1-9]+"))
+            return true;
+        else
+            return false;
+    }
 }
