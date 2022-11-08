@@ -12,4 +12,8 @@ public class Score {
     public int getBallCount() {
         return this.numBalls;
     }
+
+    public int getStrikeCount() {
+        return numStrikes;
+    }
 }
