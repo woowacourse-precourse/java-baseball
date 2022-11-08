@@ -1,6 +1,6 @@
 package baseball.game;
 
-import baseball.data.BaseballData;
+import baseball.data.GameData;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
  * 1. 입력받은 문자열에서 입력 오류가 있는지 검사.
  * 2. 오류가 없으면 정수형으로 변환 후 리스트에 옮긴다.
  */
-public class NumberParser {
+public class StringParser {
 
     /**
      * 문자열로 입력받은 플레이어의 숫자를 리스트로 변환해서 전달.
@@ -49,22 +49,22 @@ public class NumberParser {
      */
     public List<Integer> divideNumbers(int dividend){
         List<Integer> tempNumbers = new ArrayList<>();
-        int divider = BaseballData.DIVIDE_INITIATE;
+        int divider = GameData.DIVIDE_INITIATE;
         int tempAnswer = 0;
         while(divider > 0){
             tempAnswer = dividend / divider; // 자랏수 임시 저장
             tempNumbers.add(tempAnswer); // 리스트에 자릿수 저장
             dividend = dividend - tempAnswer * divider; // 가장 왼쪽의 자릿값을 빼기
-            divider = divider / BaseballData.DIVIDE_TARGET; // 자릿수 한칸 이동
+            divider = divider / GameData.DIVIDE_TARGET; // 자릿수 한칸 이동
         }
         return tempNumbers;
     }
 
     public void checkPlayerStringException(String playerNumberString){
         checkIsDigitPlayerNumberString(playerNumberString);
-        if(playerNumberString.length() > BaseballData.GAME_SIZE){
+        if(playerNumberString.length() > GameData.GAME_SIZE){
             throw new IllegalArgumentException("너무 많은 글자를 입력했습니다.");
-        } else if(playerNumberString.length() < BaseballData.GAME_SIZE){
+        } else if(playerNumberString.length() < GameData.GAME_SIZE){
             throw new IllegalArgumentException("너무 적은 글자를 입력했습니다.");
         }
     }
@@ -80,16 +80,16 @@ public class NumberParser {
     }
 
     public void checkExceptionsPlayerRestartString(String playerRestartString){
-        if(playerRestartString.length() != BaseballData.RESTART_SIZE){
+        if(playerRestartString.length() != GameData.RESTART_SIZE){
             throw new IllegalArgumentException("한 글자만 입력해주세요.");
-        }else if(!(playerRestartString.equals(BaseballData.RESTART)) &&
-            !(playerRestartString.equals(BaseballData.GAME_OVER))){
+        }else if(!(playerRestartString.equals(GameData.RESTART)) &&
+            !(playerRestartString.equals(GameData.GAME_OVER))){
                 throw new IllegalArgumentException("1과 2의 입력만 허용 됩니다.");
         }
     }
 
     public boolean checkPlayerRestartString(String playerRestartString){
-        if(playerRestartString.equals(BaseballData.RESTART)){
+        if(playerRestartString.equals(GameData.RESTART)){
             return true;
         }
         return false;
