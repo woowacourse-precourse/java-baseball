@@ -12,7 +12,7 @@ public class CheckException {
         }
     }
 
-    public static void inputGameValid(String inputValue) throws ProcessException {
+    public static String inputGameValid(String inputValue) throws ProcessException {
 
         if (inputValue.length() != 3) {
             throw new ProcessException("입력값의 길이가 다릅니다. 게임을 종료합니다.");
@@ -25,6 +25,8 @@ public class CheckException {
         if (!isDiffAllDigits(inputValue)) {
             throw new ProcessException("입력값에 중복이 있습니다. 게임을 종료합니다.");
         }
+
+        return inputValue;
     }
 
     private static boolean isNumeric(String inputValue) {
