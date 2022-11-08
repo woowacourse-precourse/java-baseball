@@ -22,9 +22,8 @@ public class UserNumber {
         System.out.println(SystemMessage.GAME_START_MESSAGE);
         List<Integer> inputNumbers = new ArrayList<>();
         String inputNumber = Console.readLine();
-        if(userNumberException.checkException(inputNumber)) {
-            throw new IllegalArgumentException();
-        }
+        userNumberException.checkException(inputNumber);
+
         for (int i = 0; i < SystemMessage.NUMBER_SIZE; i++) {
             int number = inputNumber.charAt(i) - '0';
             inputNumbers.add(number);

@@ -4,10 +4,9 @@ public class RestartGameException {
     private final String GAME_RESTART = "1";
     private final String GAME_END = "2";
 
-    public boolean isRestartNumber(String number) { // 수정
+    public void isRestartNumber(String number) { // 수정
         if (!(number.equals(GAME_RESTART) || number.equals(GAME_END))) {
-            return true;
+            throw new IllegalArgumentException();
         }
-        return false;
     }
 }

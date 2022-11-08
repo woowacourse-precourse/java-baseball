@@ -46,9 +46,7 @@ public class Game {
     public boolean checkRestartGame() {
         System.out.println(SystemMessage.GAME_CONTINUE_MESSAGE);
         String inputNumber = Console.readLine();
-        if (restartGameException.isRestartNumber(inputNumber)) {
-            throw new IllegalArgumentException();
-        }
+        restartGameException.isRestartNumber(inputNumber);
 //        if (inputNumber == 1) {
 //            return true;
 //        }

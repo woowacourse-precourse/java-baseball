@@ -1,19 +1,18 @@
 package baseball;
 
 public class UserNumberException {
-    public boolean checkException(String numbers) {
+    public void checkException(String numbers) {
         if (validateNumberLength(numbers)) {
-            return true;
+            throw new IllegalArgumentException();
         }
         if (isNumber(numbers)) {
-            return true;
+            throw new IllegalArgumentException();
         }
 
         int number = numbers.charAt(0);
         if (hasDuplicatedNumber(number, numbers)) {
-            return true;
+            throw new IllegalArgumentException();
         }
-        return false;
     }
 
     public boolean validateNumberLength(String numbers) {
