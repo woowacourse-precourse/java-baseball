@@ -10,22 +10,21 @@ public class Game {
     public static void run() {
 
         boolean status = Game.playGame();
-        List<Integer> answer = Answer.createAnswer();
+        List<Integer> answers = Answer.createAnswer();
 
         while (status) {
 
             System.out.println("숫자를 입력해주세요 : ");
             String number = Console.readLine();
-            List<Integer> digitList = Convert.convertNumberToDigit(number);
 
-            List<Integer> countList = new ArrayList<>();    // Index ( 0 : BALL / 1 : STRIKE )
-            countList.add(Count.countBall(answer, digitList));
-            countList.add(Count.countStrike(answer, digitList));
+            List<Integer> digitList = Convert.convertNumberToDigit(number);
+            List<Integer> countList = Count.calculateCount(answers, digitList) ;
+
             Count.showCount(countList);
 
             if (Answer.checkAnswer(countList)) {
                 status = Game.restartGame();
-                answer = Answer.createAnswer();
+                answers = Answer.createAnswer();
             }
 
         }

@@ -25,43 +25,26 @@ public class Count {
 
     }
 
-    public static Integer countBall(List<Integer> answer, List<Integer> digitList) {
+    public static List<Integer> calculateCount(List<Integer> answerList, List<Integer> digitList) { // Index ( 0 : BALL / 1 : STRIKE )
 
-        int count = 0;
+        int ball = 0, strike = 0;
 
         for (int i = 0; i < digitList.size(); i++) {
 
+            int answer = answerList.get(i);
             int digit = digitList.get(i);
 
-            for (int j = 0; j < answer.size(); j++) {
-
-                if (answer.get(j) == digit && i != j) {
-                    count++;
-                }
-
+            if (answer == digit) {
+                strike += 1;
+            } else if (answerList.contains(digit)) {
+                ball += 1;
             }
+
         }
+
+        List<Integer> count = List.of(ball, strike);
 
         return count;
     }
 
-    public static Integer countStrike(List<Integer> answer, List<Integer> digitList) {
-
-        int count = 0;
-
-        for (int i = 0; i < digitList.size(); i++) {
-
-            int digit = digitList.get(i);
-
-            for (int j = 0; j < answer.size(); j++) {
-
-                if (answer.get(j) == digit && i == j) {
-                    count++;
-                }
-
-            }
-        }
-
-        return count;
-    }
 }

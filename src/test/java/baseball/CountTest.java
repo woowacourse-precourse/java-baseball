@@ -10,22 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class CountTest {
 
     @Test
-    void countBall() {
+    void calculateCount() {
 
         List<Integer> answer = List.of(1, 2, 3);
         List<Integer> digitList = List.of(1, 3, 2);
+        List<Integer> result = List.of(2, 1);
 
-        assertThat(Count.countBall(answer, digitList)).isEqualTo(2);
-
-    }
-
-    @Test
-    void countStrike() {
-
-        List<Integer> answer = List.of(1, 2, 3);
-        List<Integer> digitList = List.of(1, 2, 3);
-
-        assertThat(Count.countStrike(answer, digitList)).isEqualTo(3);
+        assertThat(Count.calculateCount(answer, digitList)).isEqualTo(result);
 
     }
 }
