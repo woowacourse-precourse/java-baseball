@@ -62,4 +62,21 @@ public class Game {
             output.add(Character.getNumericValue(c));
         return output;
     }
+
+    public static void addStrikeCount() {
+        strike++;
+    }
+
+    public static void addBallCount() {
+        ball++;
+    }
+
+    public static void compareDigits(List<Integer> computer, List<Integer> user) {
+        for (int i = 0; i < COUNT; i++) {
+            if (user.get(i).equals(computer.get(i)))
+                addStrikeCount();
+            else if (user.contains(computer.get(i)))
+                addBallCount();
+        }
+    }
 }
