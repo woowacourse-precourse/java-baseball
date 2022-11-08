@@ -13,13 +13,14 @@ public class Round {
     private final int STRIKE_TO_WIN = 3;
     private final Validator validator = new Validator();
     private final RandomGenerator randomGenerator = new RandomGenerator();
+    private final Judge judge = new Judge();
 
     public void play(View view) throws IllegalArgumentException {
         List<Integer> quizNumber = randomGenerator.randomGenerate();
         while (true) {
             List<Integer> userNumber = toIntegerList(view.requestGuess());
             validator.validate(userNumber);
-            Judgement judgement = Judge.judge(quizNumber, userNumber);
+            Judgement judgement = judge.doJudge(quizNumber, userNumber);
             view.result(judgement.getBall(), judgement.getStrike());
             if (judgement.getStrike() == STRIKE_TO_WIN) {
                 break;

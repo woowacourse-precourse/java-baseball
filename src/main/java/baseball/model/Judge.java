@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.List;
 
 public class Judge {
-    public static Judgement judge(List<Integer> quizNumber, List<Integer> userNumber) {
+    public Judgement doJudge(List<Integer> quizNumber, List<Integer> userNumber) {
         int ball = 0;
         int strike = 0;
         for (int indexInUser = 0; indexInUser < 3; indexInUser++) {
