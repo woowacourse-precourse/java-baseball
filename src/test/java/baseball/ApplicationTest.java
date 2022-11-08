@@ -57,6 +57,22 @@ class ApplicationTest extends NsTest {
 	}
 
 	@Test
+	@DisplayName("3개 이상의 숫자 입력시 예외처리")
+	void 네개이상_숫자입력_예외처리() throws IllegalArgumentException {
+		String testNumberString = "1234";
+		InputStream inputStream = new ByteArrayInputStream(testNumberString.getBytes());
+
+		String inputString = new BufferedReader(
+			new InputStreamReader(inputStream, StandardCharsets.UTF_8))
+			.lines()
+			.collect(Collectors.joining("\n"));
+
+		assertThatThrownBy(()->new User(inputString))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("숫자를 총 3개 입력해주세요.");
+	}
+
+	@Test
 	void 게임종료_후_재시작() {
 		assertRandomNumberInRangeTest(
 			() -> {

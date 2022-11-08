@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,17 +17,10 @@ class User {
 		validationNumbersInteger();    //입력받은게 모두 숫자인지 확인.
 	}
 
-	public void generateNumbers(String stringNumbers) {
-		int intNumbers = 0;
-		try{
-			intNumbers = Integer.parseInt(stringNumbers);
-		} catch (IllegalArgumentException e){
-			System.out.println("3자리의 숫자 외엔 입력할 수 없습니다.");
+	public void generateNumbers(String stringNumbers){
+		for (int i=0;i<stringNumbers.length();i++){
+			numbers.add(Integer.parseInt(stringNumbers.substring(i,i+1)));
 		}
-
-		numbers.add(intNumbers / 100);
-		numbers.add((intNumbers % 100) / 10);
-		numbers.add((intNumbers % 100) % 10);
 	}
 
 	public List<Integer> getNumbers() {
@@ -40,7 +34,6 @@ class User {
 	}
 
 	public void validationNumbersInteger() throws IllegalArgumentException {
-
 		for (int i = 0; i < numbers.size(); i++) {
 			if (numbers.get(i) < 1 || numbers.get(i) > 9) throw new IllegalArgumentException("1부터 9까지의 숫자만 입력해주세요.");
 		}
