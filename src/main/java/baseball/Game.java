@@ -29,6 +29,7 @@ public class Game {
     }
 
     private void playGame() {
+        Message.printInputMessage();
         List<Integer> input = getInput();
 
         getResult(input);
