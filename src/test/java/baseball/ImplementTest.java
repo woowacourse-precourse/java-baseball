@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -75,6 +76,16 @@ public class ImplementTest extends NsTest{
         assertThatThrownBy(() -> runException(wrong_input))
             .isInstanceOf(IllegalArgumentException.class
         );
+    }
+
+    @Test
+    @DisplayName("게임중 유저입력 read 테스트")
+    void whileRunning_test() {
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1,3,5));
+        String userInputString = "135";
+        InputStream in = new ByteArrayInputStream(userInputString.getBytes());
+        System.setIn(in);
+        assertThat(Input.whileRunning()).isEqualTo(answer);
     }
 
     @Override
