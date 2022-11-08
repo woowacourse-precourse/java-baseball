@@ -8,7 +8,7 @@ public class Application {
         GameController controller = new GameController();
 
         //controller.showTutorial();
-        //controller.addComputerNumbersForTest();
+        controller.addComputerNumbersForTest();
 
         while(isPlayAgain) {
             controller.addComputerNumber();
