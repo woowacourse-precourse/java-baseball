@@ -17,12 +17,11 @@ public class Application {
         // TODO: 프로그램 구현
         while (true) {
             gameProcess();
-            int quitCommand = selectReplay();
-            if (quitCommand == 2) {
+            int selectReplayCommand = selectReplay();
+            if (selectReplayCommand == 2) {
                 break;
             }
         };
-        System.out.println("나오면사망");
     }
 
     public static List<Integer> generateNumber() {
@@ -33,7 +32,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println(computer);
         return computer;
     }
 
@@ -104,39 +102,21 @@ public class Application {
 
         do {
             inputNumber = new ArrayList<>(inputNumberOfUser());
-            System.out.println("뭔데이건"+gameReferee(generatedNumber, inputNumber));
+            System.out.println(gameReferee(generatedNumber, inputNumber));
         } while (!gameReferee(generatedNumber, inputNumber).contains("3스트라이크"));
     }
 
-//    public static String selectReplay() {
-//        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//        String action = Console.readLine();
-//        System.out.println("셀렉리플액션"+action);
-//        if (action.equals("2")) {
-//            System.out.println("게임 종료");
-//            return action;
-//        }
-//        if (action.equals("1")) {
-//            gameProcess();
-//            return action;
-//        } else {
-//            throw new IllegalArgumentException();
-//        }
-//    }
     public static int selectReplay() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         int action = Integer.parseInt(Console.readLine());
 
         if (action == 2) {
             System.out.println("게임 종료");
-            System.out.println("나가기"+action);
             return action;
         }
         if (action == 1) {
-            System.out.println("계속하기"+action);
             return action;
         } else {
-            System.out.println("에러발생");
             throw new IllegalArgumentException();
         }
     }
