@@ -22,7 +22,8 @@ public class BaseballGame {
             while (!refree.judge(inputFilter.readNumbers())) {
                 continue;
             }
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println(String.format(
+                    "%d개의 숫자를 모두 맞히셨습니다! 게임 종료", BaseballGameRule.LENGTH.getValue()));
             isContinued = inputFilter.readIsContinued();
         }
     }
@@ -31,8 +32,10 @@ public class BaseballGame {
         List<Integer> answerNumbers = new ArrayList<>();
         String answerString = "";
 
-        while (answerNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1,9);
+        while (answerNumbers.size() < BaseballGameRule.LENGTH.getValue()) {
+            int randomNumber = Randoms.pickNumberInRange(
+                    BaseballGameRule.RANGEFROM.getValue(), BaseballGameRule.RANGETO.getValue());
+
             if (!answerNumbers.contains(randomNumber)) {
                 answerString += String.valueOf(randomNumber);
                 answerNumbers.add(randomNumber);

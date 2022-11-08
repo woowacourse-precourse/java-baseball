@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class BaseballGameInputFilter {
 
     private static BaseballGameInputFilter baseballGameInputFilter = new BaseballGameInputFilter();
-    private static int numberLength = 3;
+    private static int numberLength = BaseballGameRule.LENGTH.getValue();
 
 
     private BaseballGameInputFilter() {}
@@ -16,7 +16,8 @@ public class BaseballGameInputFilter {
     }
 
     protected static boolean isNumeric(String input) {
-        return input.matches("[1-9]+");
+        return input.matches(String.format("[%d-%d]+",
+                BaseballGameRule.RANGEFROM.getValue(), BaseballGameRule.RANGETO.getValue()));
     }
 
     protected static boolean isNotDuplicated(String input) {
