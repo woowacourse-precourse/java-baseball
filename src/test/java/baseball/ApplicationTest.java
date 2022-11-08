@@ -18,8 +18,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     @Test
     void createNumber_메서드로_값의_개수가_3개인지_판별() {
-        List<Integer> computerCreateNumber = new ArrayList<>();
-        createRandomNumber(computerCreateNumber);
+        List<Integer> computerCreateNumber = createRandomNumber();
         assertThat(computerCreateNumber.size()).isEqualTo(3);
     }
 
