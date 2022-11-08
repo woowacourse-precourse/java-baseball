@@ -35,24 +35,27 @@ public class InputControllerImpTest {
     }
 
     @Test
-    void 답입력은_세자리여야함() {
+    void 답입력은_세자리수여야함() {
         // given
         String userInput1 = "123";
         String userInput2 = "";
         String userInput3 = "1234";
         String userInput4 = "12";
+        String userInput5 = "1 3";
 
         // when
         boolean result1 = inputController.checkValidAnswer(userInput1);
         boolean result2 = inputController.checkValidAnswer(userInput2);
         boolean result3 = inputController.checkValidAnswer(userInput3);
         boolean result4 = inputController.checkValidAnswer(userInput4);
+        boolean result5 = inputController.checkValidAnswer(userInput5);
 
         // then
         assertThat(result1).isTrue();
         assertThat(result2).isFalse();
         assertThat(result3).isFalse();
         assertThat(result4).isFalse();
+        assertThat(result5).isFalse();
     }
 
     @Test
