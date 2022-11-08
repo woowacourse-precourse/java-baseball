@@ -30,11 +30,11 @@ class Input {
         char[] numberArray = number.toCharArray();
 
         if (number.length() != LENGTH) {
-            throw new IllegalArgumentException("3자리가 아닙니다.");
+            throw new IllegalArgumentException("3자리 숫자가 아닙니다.");
         }
         for (char c : numberArray) {
             if ((int) c < INT_CHAR_1 || (int) c > INT_CHAR_9) {
-                throw new IllegalArgumentException("1과 9 사이 정수를 제외한 다른 문자가 들어있습니다.");
+                throw new IllegalArgumentException("1과 9 사이의 정수가 아닌 다른 문자가 들어있습니다.");
             }
         }
         for (int i = 0; i < LENGTH; i++) {

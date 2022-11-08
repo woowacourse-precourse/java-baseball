@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("3자리가 아닙니다.")
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
         );
     }
 
@@ -34,7 +34,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("a cd"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("3자리가 아닙니다.")
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
         );
     }
 
@@ -43,7 +43,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("sdf"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("1과 9 사이 정수를 제외한 다른 문자가 들어있습니다.")
+                        .hasMessageContaining("1과 9 사이의 정수가 아닌 다른 문자가 들어있습니다.")
         );
     }
 
@@ -52,7 +52,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("l;"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("3자리가 아닙니다.")
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
         );
     }
 
@@ -61,7 +61,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("56"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("3자리가 아닙니다.")
+                        .hasMessageContaining("3자리 숫자가 아닙니다.")
         );
     }
 
@@ -80,7 +80,7 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("806"))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessageContaining("1과 9 사이 정수를 제외한 다른 문자가 들어있습니다.")
+                        .hasMessageContaining("1과 9 사이의 정수가 아닌 다른 문자가 들어있습니다.")
         );
     }
 
