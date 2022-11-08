@@ -1,7 +1,5 @@
 package baseball;
 
-import javax.xml.validation.Validator;
-
 public class Ball {
 
     public static final int BEGIN = 1;
@@ -21,6 +19,6 @@ public class Ball {
         if(number >= BEGIN && number <= END) {
             return;
         }
-        throw new IllegalArgumentException("유효한 숫자 범위가 아닙니다.")
+        throw new IllegalArgumentException("유효한 숫자 범위가 아닙니다.");
     }
 }

@@ -11,7 +11,7 @@ public class Computer {
     public List<Integer> createNums(int count) {
         nums.clear();
         while (nums.size() < count) {
-            Ball ball = new Ball(createNums());
+            Ball ball = new Ball(createNum());
             if(!nums.contains(ball.getNumber())) {
                 nums.add(ball.getNumber());
             }
