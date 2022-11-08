@@ -50,6 +50,7 @@ public class PlayNumberBaseballGame {
 
         String inputLine = Console.readLine();
         InputException.inputNotThreeNumberException(inputLine);
+        InputException.inputHasSameCharException(inputLine);
 
         List<Integer> player = new ArrayList<>();
         for(int location = 0; location<inputLine.length(); location++){

@@ -7,6 +7,18 @@ public class InputException {
         }
     }
 
+    public static void inputHasSameCharException(String input) throws IllegalArgumentException{
+        inputEmptyException(input);
+
+        for(int location=0; location<input.length(); location++){
+            char inputChar = input.charAt(location);
+            long sameCharCount = input.chars().filter(ch->ch==inputChar).count();
+            if(sameCharCount>1){
+                throw new IllegalArgumentException("inputHasSameCharException");
+            }
+        }
+    }
+
     public static void inputNotThreeNumberException(String input) throws IllegalArgumentException{
         inputEmptyException(input);
 
