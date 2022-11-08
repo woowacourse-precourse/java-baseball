@@ -35,9 +35,7 @@ public class UserInput {
         return userInputList;
     }
 
-    public static boolean isRetry() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String userInput = Console.readLine();
+    public static boolean isRetry(String userInput) {
         if (userInput == "1") {
             return true;
         } else {
