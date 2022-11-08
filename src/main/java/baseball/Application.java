@@ -39,12 +39,7 @@ class Game{
 //        this.game_restart_flag=1;
 
     }
-    public String Input(){
-        String user_num="";
-        System.out.print("숫자를 입력해 주세요 : ");
-        user_num=camp.nextstep.edu.missionutils.Console.readLine();
-        return user_num;
-    }
+
     public int isBall(int ball_check_num){
         if(ball_check_num==1){
             return 1;
@@ -123,6 +118,12 @@ class Game{
             throw  new IllegalArgumentException();
         }
     }
+    public String Input(){
+        String user_num="";
+        System.out.print("숫자를 입력해 주세요 : ");
+        user_num=camp.nextstep.edu.missionutils.Console.readLine();
+        return user_num;
+    }
     public void check(){
         strike_num=0;
         ball_num=0;
@@ -154,9 +155,7 @@ class Game{
             }
 
         }
-        System.out.println(targetNumber);
-        System.out.println(strike_num);
-        System.out.println(ball_num);
+
 
 
     }
