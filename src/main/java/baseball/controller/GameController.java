@@ -32,9 +32,13 @@ public class GameController {
             computerController.provideHint();
 
             correctAnswer = computerController.isThreeStrike();
-            if (correctAnswer) {
-                outputView.printEndGame();
-            }
+            sendEndMessageIfTrue(correctAnswer);
+        }
+    }
+
+    private void sendEndMessageIfTrue(boolean correctAnswer) {
+        if (correctAnswer) {
+            outputView.printEndGame();
         }
     }
 
