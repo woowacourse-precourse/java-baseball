@@ -17,22 +17,21 @@ public class InputNumber {
         return userNumber;
     }
 
-    public List<Integer> userInputNumber(){
-        System.out.println("숫자를 입력해주세요 : ");
+    public List<Integer> InputNumbers(){
         String  user = Console.readLine();
         List<Integer> inputList = new ArrayList<>();
         for(int i = 0; i<user.length(); i++){
             String num = String.valueOf(user.charAt(i));
             if(!num.equals(",") && !num.equals(" ")){
-                inputList.add((int) user.charAt(i));
+                inputList.add(Integer.valueOf(num));
             }
         }
         return inputList;
 
     }
 
-    public List<Integer> userInputBallNumber(){
-        List<Integer> inputList = userInputNumber();
+    public List<Integer> userInputNumber(){
+        List<Integer> inputList = this.InputNumbers();
         if(!InputNumberValidator.inputNumberTotalCheck(inputList)){
             throw new IllegalArgumentException();
         }
