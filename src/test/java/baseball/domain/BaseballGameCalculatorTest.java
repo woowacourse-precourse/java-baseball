@@ -12,11 +12,12 @@ class BaseballGameCalculatorTest {
         //given
         BaseballNumber answer = BaseballNumber.createByUserInput("234");
         List<String> testUserInputList = List.of("123", "467", "259", "231", "234");
-        List<int[]> expectedResultList = List.of(new int[]{2, 0}, new int[]{1, 0}, new int[]{0, 1}
-                , new int[]{0, 2}, new int[]{0, 3});
+        List<BaseballGameResult> expectedResultList = List.of(new BaseballGameResult(2, 0)
+                , new BaseballGameResult(1, 0), new BaseballGameResult(0, 1)
+                , new BaseballGameResult(0, 2), new BaseballGameResult(0, 3));
 
         //when
-        List<int[]> calculateResultList = new ArrayList<>();
+        List<BaseballGameResult> calculateResultList = new ArrayList<>();
         for (String input : testUserInputList) {
             calculateResultList.add(
                     BaseballGameCalculator.calculateBallStrikeCount(BaseballNumber.createByUserInput(input), answer));
