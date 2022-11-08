@@ -10,7 +10,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumber {
 	private static List<Integer> randomNumber;
-	private static String regex = "^[1-9]{3}$";
+	private static final String regex = "^[1-9]{3}$";
 	private static final int NUMBERSIZE = 3;
 
 	public RandomNumber() {
