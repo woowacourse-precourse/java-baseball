@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 // 1부터 9까지 서로 다른 수로 이루어진 3자리의 수를 맞추는 게임
@@ -106,15 +107,14 @@ public class Game {
     }
 
     private void findBallAndStrike() {
-        int ball, strike = 0;
+        int ball = 0, strike = 0;
 
-        // strike
         for (int i = 0; i < LENGTH; i++) {
             if (user.get(i) == computer.get(i))
                 strike++;
+            else if (computer.contains(user.get(i)))
+                ball++;
         }
-
-        ball = getIntersection().size() - strike;
 
         if (ball == 0 && strike == 0)
             System.out.print("낫싱");
@@ -125,11 +125,4 @@ public class Game {
         System.out.println("");
     }
 
-    private List<Integer> getIntersection() {
-        List<Integer> copy = new ArrayList<>();
-        for (int u : user)
-            copy.add(u);
-        copy.retainAll(computer); // copy는 교집합을 원소로 갖는 리스트가 된다.
-        return copy;
-    }
 }
