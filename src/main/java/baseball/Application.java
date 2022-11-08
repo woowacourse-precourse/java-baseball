@@ -12,7 +12,11 @@ public class Application {
         String menu = "";
         System.out.println("숫자 야구 게임을 시작합니다.");
 
-        gameStart();
+        while (!menu.equals("2")) {
+            gameStart();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            menu = Console.readLine();
+        }
     }
 
     public static List<Integer> makeRandomNumber() {
