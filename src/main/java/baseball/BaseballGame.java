@@ -11,7 +11,7 @@ public class BaseballGame {
     private static List<Integer> targetlist;
     private static List<Integer> numlist;
 
-    private static String regexCode = "^[1-2]$";
+    private static final String regexCode = "^[1-2]$";
 
     public BaseballGame() {
     }
