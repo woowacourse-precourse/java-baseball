@@ -30,7 +30,7 @@ public class BaseballGameController implements GameController {
             while(flag){
                 input = inputer.getInput();
                 sig = comparator.doIntCompare(randnumVO.getRandNum(), input);
-                validateGame();
+                printGame();
                 checkGameOver();
             }
         } catch(IllegalArgumentException e){
@@ -50,7 +50,7 @@ public class BaseballGameController implements GameController {
         }
     }
 
-    private void validateGame() {
+    private void printGame() {
         String result = "";
         if(sig.get(0) > 0) {
             result += sig.get(0)+"볼 ";
