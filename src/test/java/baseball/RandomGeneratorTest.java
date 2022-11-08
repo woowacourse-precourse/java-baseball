@@ -37,7 +37,7 @@ class RandomGeneratorTest {
 
         for (int i = 0; i < 500; i++) {
             RandomGenerator randomGenerator = new RandomGenerator();
-            RandomNumber randNum = randomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
+            RandomNumber randNum = randomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>(),4);
             Assertions.assertThat(randNum.randomNumInChar(0)).isNotEqualTo(randNum.randomNumInChar(1));
             Assertions.assertThat(randNum.randomNumInChar(1)).isNotEqualTo(randNum.randomNumInChar(2));
             Assertions.assertThat(randNum.randomNumInChar(0)).isNotEqualTo(randNum.randomNumInChar(2));

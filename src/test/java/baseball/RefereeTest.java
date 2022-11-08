@@ -35,7 +35,7 @@ class RefereeTest {
     @Test
     @Order(2)
     void ReferenceTestDoesNotReturnNull() {
-        RandomNumber randomnumber = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
+        RandomNumber randomnumber = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>(),3);
         //Referee.testReferee("126", randomnumber);
         Assertions.assertThat(Referee.testReferee("126", randomnumber)).isNotEqualTo("");
     }
@@ -44,7 +44,7 @@ class RefereeTest {
     @Order(3)
     void ReferenceTestDoesNotReturnSomethingElse100Times() {
         for (int i = 0; i < 100; i++) {
-            RandomNumber randomnumber = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>());
+            RandomNumber randomnumber = RandomGenerator.generateRandom(new StringBuilder(), new ArrayList<Integer>(),3);
             String output = Referee.testReferee("126", randomnumber);
             ArrayList<String> lineUps = new ArrayList<>(
                 Arrays.asList("낫싱", "1볼", "2볼", "3볼", "1볼 1스트라이크", "2볼 1스트라이크", "1스트라이크", "2스트라이크", "3스트라이크"));
