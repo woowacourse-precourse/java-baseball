@@ -40,6 +40,10 @@ class Game
 
             // 게임 시작 - 입력받는 루프 돌 예정
             playBaseballGame();
+            System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            // 기능 6 : 다 맞았을 때 재시작/종료 여부 입력받기 - implement
+            String input = readLine();
+            playMode = checkPlayModeInput(input);
         }
     }
 
@@ -136,5 +140,11 @@ class Game
         result.add(balls);
         result.add(strikes);
         return result;
+    }
+
+    int checkPlayModeInput(String input) {
+        // implement
+
+        return 0;
     }
 }

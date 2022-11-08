@@ -38,6 +38,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 게임_시작_종료_입력_테스트() {
+        assertThat(game.checkPlayModeInput("1")).isEqualTo(1);
+        assertThat(game.checkPlayModeInput("2")).isEqualTo(2);
+
+        assertThatThrownBy(() -> game.checkPlayModeInput("1456"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값의 길이가 조건에 일치하지 않습니다.");
+
+        assertThatThrownBy(() -> game.checkPlayModeInput("!"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력값의 범위가 조건에 일치하지 않습니다.");
+    }
+
+    @Test
     void 사용자_입력_에러_테스트() {
         assertThatThrownBy(() -> game.checkGameUserInput("1456", new ArrayList<Integer>()))
                 .isInstanceOf(IllegalArgumentException.class)
