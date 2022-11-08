@@ -3,18 +3,23 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
         boolean again = true;
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while(again){
             List<Integer> computer = createRandomNum();
             String result = "";
+
             while(!result.equals("3스트라이크")){
-                result = judge(computer, playerNum());
+                List<Integer> player = playerNum();
+                wrongAnswer(computer, player);
+                result = judge(computer, player);
                 System.out.println(result);
             }
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -85,5 +90,10 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    public static void wrongAnswer(List<Integer>computerNum, List<Integer> playerNum) {
+        if (computerNum.size() != playerNum.size())
+            throw new IllegalArgumentException("잘못된 값을 입력하셨습니다. 종료합니다.");
     }
 }
