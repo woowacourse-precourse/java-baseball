@@ -18,4 +18,8 @@ public class GameManager {
         }
         return gameManager;
     }
+
+    private boolean isGamePlaying() {
+        return this.gameStatus == GameStatus.PLAYING;
+    }
 }
