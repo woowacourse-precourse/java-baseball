@@ -15,16 +15,16 @@ public class InputControllerImpTest {
     }
 
     @Test
-    void 사용자입력은_1부터_9로만_이루어져야함() {
+    void 답입력은_1부터_9로만_이루어져야함() {
         // given
         String userInput1 = "123";
         String userInput2 = "023";
         String userInput3 = "230";
 
         // when
-        boolean result1 = inputController.checkValid(userInput1);
-        boolean result2 = inputController.checkValid(userInput2);
-        boolean result3 = inputController.checkValid(userInput3);
+        boolean result1 = inputController.checkValidAnswer(userInput1);
+        boolean result2 = inputController.checkValidAnswer(userInput2);
+        boolean result3 = inputController.checkValidAnswer(userInput3);
 
         // then
         assertThat(result1).isTrue();
@@ -33,7 +33,7 @@ public class InputControllerImpTest {
     }
 
     @Test
-    void 사용자입력은_세자리여야함() {
+    void 답입력은_세자리여야함() {
         // given
         String userInput1 = "123";
         String userInput2 = "";
@@ -41,10 +41,10 @@ public class InputControllerImpTest {
         String userInput4 = "12";
 
         // when
-        boolean result1 = inputController.checkValid(userInput1);
-        boolean result2 = inputController.checkValid(userInput2);
-        boolean result3 = inputController.checkValid(userInput3);
-        boolean result4 = inputController.checkValid(userInput4);
+        boolean result1 = inputController.checkValidAnswer(userInput1);
+        boolean result2 = inputController.checkValidAnswer(userInput2);
+        boolean result3 = inputController.checkValidAnswer(userInput3);
+        boolean result4 = inputController.checkValidAnswer(userInput4);
 
         // then
         assertThat(result1).isTrue();
@@ -54,17 +54,17 @@ public class InputControllerImpTest {
     }
 
     @Test
-    void 사용자입력은_서로_다른_수로만_이루어져야함() {
+    void 답입력은_서로_다른_수로만_이루어져야함() {
         String userInput1 = "123";
         String userInput2 = "111";
         String userInput3 = "112";
         String userInput4 = "211";
 
         // when
-        boolean result1 = inputController.checkValid(userInput1);
-        boolean result2 = inputController.checkValid(userInput2);
-        boolean result3 = inputController.checkValid(userInput3);
-        boolean result4 = inputController.checkValid(userInput4);
+        boolean result1 = inputController.checkValidAnswer(userInput1);
+        boolean result2 = inputController.checkValidAnswer(userInput2);
+        boolean result3 = inputController.checkValidAnswer(userInput3);
+        boolean result4 = inputController.checkValidAnswer(userInput4);
 
         // then
         assertThat(result1).isTrue();
@@ -74,7 +74,7 @@ public class InputControllerImpTest {
     }
 
     @Test
-    void 사용자입력은_숫자여야함() {
+    void 답입력은_숫자여야함() {
         // given
         String userInput1 = "123";
         String userInput2 = "a12";
@@ -82,10 +82,10 @@ public class InputControllerImpTest {
         String userInput4 = "1 0";
 
         // when
-        boolean result1 = inputController.checkValid(userInput1);
-        boolean result2 = inputController.checkValid(userInput2);
-        boolean result3 = inputController.checkValid(userInput3);
-        boolean result4 = inputController.checkValid(userInput4);
+        boolean result1 = inputController.checkValidAnswer(userInput1);
+        boolean result2 = inputController.checkValidAnswer(userInput2);
+        boolean result3 = inputController.checkValidAnswer(userInput3);
+        boolean result4 = inputController.checkValidAnswer(userInput4);
 
         // then
         assertThat(result1).isTrue();
@@ -95,7 +95,7 @@ public class InputControllerImpTest {
     }
 
     @Test
-    void 사용자입력은_양수여야함() {
+    void 답입력은_양수여야함() {
         // given
         String userInput1 = "-12";
         String userInput2 = "0";
@@ -103,10 +103,10 @@ public class InputControllerImpTest {
         String userInput4 = "-1-";
 
         // when
-        boolean result1 = inputController.checkValid(userInput1);
-        boolean result2 = inputController.checkValid(userInput2);
-        boolean result3 = inputController.checkValid(userInput3);
-        boolean result4 = inputController.checkValid(userInput4);
+        boolean result1 = inputController.checkValidAnswer(userInput1);
+        boolean result2 = inputController.checkValidAnswer(userInput2);
+        boolean result3 = inputController.checkValidAnswer(userInput3);
+        boolean result4 = inputController.checkValidAnswer(userInput4);
 
         // then
         assertThat(result1).isFalse();
