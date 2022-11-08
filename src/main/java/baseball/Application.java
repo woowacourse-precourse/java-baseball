@@ -12,6 +12,19 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
+
+    // 5. 맞으면 유저에게 1 또는 2를 받아서 새로 게임을 시작할지, 게임을 끝낼지 결정
+    public static boolean isGameRetry(String retry) {
+        if (retry.equals("1")) {
+            return true;
+        } else if (retry.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
     // 1. 컴퓨터의 수 생성
     public static List<Integer> computerNumber() {
         List<Integer> computer = new ArrayList<>();
