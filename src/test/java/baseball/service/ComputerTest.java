@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.model.Ball;
 import baseball.model.Balls;
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.Test;
@@ -15,10 +16,10 @@ class ComputerTest {
 
         //when
         while (!computerBalls.isSize(3)) {
-            computerBalls.addBall(Randoms.pickNumberInRange(1, 9));
+            computerBalls.addBall(new Ball(Randoms.pickNumberInRange(1, 9)));
         }
         //then
-        assertThat(computerBalls.getValues()
+        assertThat(computerBalls.getBalls()
                                 .size()).isEqualTo(3);
     }
 }

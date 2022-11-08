@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.model.Ball;
 import baseball.model.Balls;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,10 @@ class PlayerTest {
     @Test
     void generatePlayerBalls_중복값이_있을_때_예외를_던지는지_테스트() {
         //given
-        List<Integer> playerValues = List.of(1, 1, 1);
+        List<Ball> playerValues = new ArrayList<>();
+        playerValues.add(new Ball(1));
+        playerValues.add(new Ball(1));
+        playerValues.add(new Ball(1));
         //when
         //then
         assertThatThrownBy(() -> {
@@ -26,7 +30,9 @@ class PlayerTest {
     @Test
     void generatePlayerBalls_입력_값의_길이가_3이_아닐_경우_예외를_던지는지_테스트() {
         //given
-        List<Integer> playerValues = List.of(1, 2);
+        List<Ball> playerValues = new ArrayList<>();
+        playerValues.add(new Ball(1));
+        playerValues.add(new Ball(2));
         //when
         //then
         assertThatThrownBy(() -> {
