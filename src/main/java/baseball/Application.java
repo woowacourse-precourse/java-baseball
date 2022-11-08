@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
     public static List<Integer> setComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
@@ -33,6 +35,21 @@ public class Application {
     public static boolean isItWrongNumber(List<Integer> userStringNumber) {
         int numbersOfUniqueNumber = new HashSet<>(userStringNumber).size();
         return (userStringNumber.size() != 3) || (numbersOfUniqueNumber != 3);
+    }
+
+    public static List<Integer> setUserNumber() {
+        String tempNumber = readLine();
+        List<Integer> userNumber = new ArrayList<>();
+
+        if (!isNumeric(tempNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        userNumber = convertStringToList(tempNumber);
+        if (isItWrongNumber(userNumber)) {
+            throw new IllegalArgumentException();
+        }
+        return userNumber;
     }
 
     public static void main(String[] args) {
