@@ -44,19 +44,19 @@ public class TurnScore {
             return;
         }
         if (checkIsStrikesZero()) {
-            this.resultTurn = ResultTurn.OnlyBalls;
+            this.resultTurn = ResultTurn.ONLY_BALLS;
             return;
         }
         if (checkIsBallsZero()) {
-            this.resultTurn = ResultTurn.OnlyStrikes;
+            this.resultTurn = ResultTurn.ONLY_STRIKES;
             return;
         }
-        this.resultTurn = ResultTurn.StrikesAndBalls;
+        this.resultTurn = ResultTurn.STRIKES_AND_BALLS;
     }
 
     public boolean checkIsOut() {
         if (this.strikes == 3) {
-            this.resultTurn = ResultTurn.Out;
+            this.resultTurn = ResultTurn.OUT;
             return true;
         }
         return false;
@@ -64,7 +64,7 @@ public class TurnScore {
 
     public boolean checkIsNothing() {
         if (checkIsBallsZero() && checkIsStrikesZero()) {
-            this.resultTurn = ResultTurn.Nothing;
+            this.resultTurn = ResultTurn.NOTHING;
             return true;
         }
         return false;

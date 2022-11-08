@@ -7,7 +7,7 @@ import baseball.view.OutputView;
 import java.util.List;
 
 public class Game {
-    private GameStatus gameStatus = GameStatus.InProgress;
+    private GameStatus gameStatus = GameStatus.IN_PROGRESS;
     private Target target;
 
     public Game() {
@@ -35,7 +35,7 @@ public class Game {
     }
 
     boolean checkIsGameStatusInProgress() {
-        return this.gameStatus == GameStatus.InProgress;
+        return this.gameStatus == GameStatus.IN_PROGRESS;
     }
 
     void checkIsUserRepeatGame() {
@@ -53,10 +53,10 @@ public class Game {
     }
 
     void setResultGameInProgress() {
-        this.gameStatus = GameStatus.InProgress;
+        this.gameStatus = GameStatus.IN_PROGRESS;
     }
 
     void setResultGameEnd() {
-        this.gameStatus = GameStatus.End;
+        this.gameStatus = GameStatus.END;
     }
 }

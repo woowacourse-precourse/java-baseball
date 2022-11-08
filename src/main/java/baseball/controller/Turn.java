@@ -40,7 +40,7 @@ public class Turn {
 
     boolean checkCanRepeat() {
         ResultTurn resultTurn = this.turnScore.getResultTurn();
-        return resultTurn != ResultTurn.Out;
+        return resultTurn != ResultTurn.OUT;
     }
 
     void compareWithTarget(List<Integer> numberOfList) {
@@ -108,19 +108,19 @@ public class Turn {
         int balls = turnScore.getBalls();
         int strikes = turnScore.getStrikes();
 
-        if (resultTurn == ResultTurn.Out) {
+        if (resultTurn == ResultTurn.OUT) {
             OutputView.printResultTurnOfOut();
             return;
         }
-        if (resultTurn == ResultTurn.Nothing) {
+        if (resultTurn == ResultTurn.NOTHING) {
             OutputView.printResultTurnOfNothing();
             return;
         }
-        if (resultTurn == ResultTurn.OnlyBalls) {
+        if (resultTurn == ResultTurn.ONLY_BALLS) {
             OutputView.printResultTurnOfOnlyBalls(balls);
             return;
         }
-        if (resultTurn == ResultTurn.OnlyStrikes) {
+        if (resultTurn == ResultTurn.ONLY_STRIKES) {
             OutputView.printResultTurnOfOnlyStrikes(strikes);
             return;
         }

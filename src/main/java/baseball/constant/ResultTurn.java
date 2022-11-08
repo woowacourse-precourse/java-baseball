@@ -1,9 +1,9 @@
 package baseball.constant;
 
 public enum ResultTurn {
-    Nothing,
-    OnlyStrikes,
-    OnlyBalls,
-    StrikesAndBalls,
-    Out;
+    NOTHING,
+    ONLY_STRIKES,
+    ONLY_BALLS,
+    STRIKES_AND_BALLS,
+    OUT;
 }
