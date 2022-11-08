@@ -18,7 +18,7 @@ public class PlayerNumberValidator {
         );
     }
 
-    private static boolean isPlayerNumberValid(String playerNumberOrNull) {
+    public static boolean isPlayerNumberValid(String playerNumberOrNull) {
         if (playerNumberOrNull == null) {
             return false;
         }
