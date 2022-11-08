@@ -43,7 +43,7 @@ public class Application {
         int answer = 0, digit = 1;
 
         Collections.reverse(answerList);
-        for(Integer number : answerList) {
+        for (Integer number : answerList) {
             answer += number * digit;
             digit *= 10;
         }
@@ -81,12 +81,12 @@ public class Application {
     }
 
     public static void checkNegativeNumber(String userString) {
-        if(userString.contains("-"))
+        if (userString.contains("-"))
             throw new IllegalArgumentException("입력은 양수여야 합니다.");
     }
 
     public static void checkZeroInNumber(String userString) {
-        if(userString.contains("0"))
+        if (userString.contains("0"))
             throw new IllegalArgumentException("입력은 1부터 9까지의 수로 이루어져야 합니다.");
     }
 
@@ -121,9 +121,9 @@ public class Application {
 
         int userChoice = userStringToInteger(Console.readLine());
 
-        if (userChoice == 1)
+        if (userChoice == Constants.CONTINUE_GAME)
             return false;
-        if (userChoice == 2)
+        if (userChoice == Constants.EXIT_GAME)
             return true;
 
         throw new IllegalArgumentException("잘못된 입력값입니다.");
