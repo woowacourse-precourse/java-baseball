@@ -29,7 +29,6 @@ public class GameNumber {
 
     public void setComputerNumbers(List<Integer> computerNumbers) {
         this.computerNumbers = computerNumbers;
-        System.out.println("computerNumbers" + Arrays.toString(new List[]{computerNumbers}));
     }
 
     public List<Integer> getComputerNumbers() {
