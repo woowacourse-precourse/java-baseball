@@ -32,6 +32,11 @@ public class GameJudgement {
     }
 
     public void printResult(int strike, int ball) {
+        if (strike == ZERO_COUNT && ball == ZERO_COUNT) {
+            Message.printNothingMessage();
+            return;
+        }
+
         if (ball != ZERO_COUNT) {
             System.out.print(ball);
             Message.printBallMessage();

@@ -11,6 +11,7 @@ public class Message {
 
     public static final String STRIKE_MESSAGE = "스트라이크 ";
     public static final String BALL_MESSAGE = "볼 ";
+    public static final String NOTHING_MESSAGE = "낫싱 ";
 
     public static void printInitialGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
@@ -26,5 +27,9 @@ public class Message {
 
     public static void printBallMessage() {
         System.out.print(BALL_MESSAGE);
+    }
+
+    public static void printNothingMessage() {
+        System.out.println(NOTHING_MESSAGE);
     }
 }

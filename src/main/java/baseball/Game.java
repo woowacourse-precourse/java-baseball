@@ -19,10 +19,6 @@ public class Game {
     public void play() {
         List<Integer> randomNumbers = computer.getRandomNumbers();
 
-        for (int i = 0; i < randomNumbers.size(); i++) {
-            System.out.println(randomNumbers.get(i));
-        }
-
         GameJudgement gameJudgement = new GameJudgement();
 
         boolean gameEnd;
