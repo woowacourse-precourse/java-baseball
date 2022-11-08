@@ -1,7 +1,6 @@
 package utils;
 
 import baseball.digit.Digit;
-import baseball.game.GameMessage;
 import baseball.validator.RetryValidator;
 import baseball.validator.TrialValidator;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,6 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 import static utils.ConvertUtil.convertDigit;
+import static utils.OutputUtil.printRetryGame;
+import static utils.OutputUtil.printTryCorrect;
 
 public class InputUtil {
 
@@ -16,7 +17,7 @@ public class InputUtil {
     }
 
     public static List<Digit> inputTryNumber(){
-        System.out.print(GameMessage.TRY_CORRECT.getMessage());
+        printTryCorrect();
         String input = Console.readLine();
         TrialValidator.validate(input);
         return convertDigit(input);
@@ -25,7 +26,7 @@ public class InputUtil {
 
 
     public static Boolean inputRetryNumber(){
-        System.out.print(GameMessage.RETRY_GAME.getMessage());
+        printRetryGame();
         String input = Console.readLine();
         RetryValidator.validate(input);
         int isRetrySignalNumber = Integer.parseInt(input);

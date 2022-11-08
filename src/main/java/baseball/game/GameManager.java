@@ -9,9 +9,9 @@ import utils.InputUtil;
 
 import java.util.List;
 
-import static baseball.game.GameMessage.END_GAME;
-import static baseball.game.GameMessage.START_GAME;
 import static utils.ConvertUtil.convertDigit;
+import static utils.OutputUtil.printGameEnd;
+import static utils.OutputUtil.printGameStart;
 
 public class GameManager {
 
@@ -31,7 +31,7 @@ public class GameManager {
     }
 
     public void start(){
-        System.out.println(START_GAME.getMessage());
+        printGameStart();
         boolean inputRetryNumber = true;
         while (inputRetryNumber){
             init();
@@ -49,7 +49,7 @@ public class GameManager {
             score.countTotalScore(scoreResultList);
             score.printScore();
             if (isEndGame()){
-                System.out.println(END_GAME.getMessage());
+                printGameEnd();
                 return;
             }
             score.clear();
