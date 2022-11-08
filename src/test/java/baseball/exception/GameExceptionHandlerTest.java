@@ -59,6 +59,16 @@ public class GameExceptionHandlerTest {
     }
 
     @Test
+    @DisplayName("게임 진행 중 예외 - 서로 다른 수가 아닌 경우")
+    void handleNumberDuplicateExceptionTest() {
+        String sameNumberInput = "122";
+
+        assertThatThrownBy(() -> {
+            GameExceptionHandler.handleNumberDuplicateException(sameNumberInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("게임 종료 후 예외 - 1 또는 2가 아닌 경우")
     void handleRestartInputExceptionTest() {
         String notOneOrTwoNumber = "3";

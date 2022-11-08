@@ -1,5 +1,8 @@
 package baseball.exception;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class GameExceptionHandler {
 
     public static void handleNotNumberException(String input) throws IllegalArgumentException {
@@ -27,6 +30,16 @@ public class GameExceptionHandler {
         }
     }
 
+    public static void handleNumberDuplicateException(String input)
+            throws IllegalArgumentException {
+        Set<String> checkDuplicateSet = new HashSet<>();
+        for (String oneChar : input.split("")) {
+            if (checkDuplicateSet.add(oneChar) == false) {
+                throw new IllegalArgumentException("Input number has duplicated numbers.");
+            }
+        }
+    }
+
     public static void handleRestartInputException(String input) throws IllegalArgumentException {
         if (input.matches("^[1-2]$") == false) {
             throw new IllegalArgumentException("Input number is not 1 or 2.");
@@ -43,6 +56,7 @@ public class GameExceptionHandler {
 
         handleNotThreeNumbersException(input);
         handleIncludeZeroException(input);
+        handleNumberDuplicateException(input);
     }
 
     public static void handleAfterGameOverException(String input) throws IllegalArgumentException {
