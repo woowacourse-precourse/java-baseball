@@ -27,8 +27,7 @@ public class Application {
             int strikeCount = getStrikeCount(userNumber, randomNum);
             int ballCount = getBallCount(userNumber, randomNum);
             printGameResult(ballCount, strikeCount);
-
-            if (isThreeStrike(strikeCount)) {
+            if(isThreeStrike(strikeCount)) {
                 printEndMsg();
                 break;
             }
@@ -62,7 +61,7 @@ public class Application {
 
         String userInputNumber = Console.readLine();
         try {
-            if (!isInvalidValue(userInputNumber)) {
+            if(!isInvalidValue(userInputNumber)) {
                 throw new IllegalArgumentException();
             }
         } catch (NumberFormatException e) {
@@ -74,11 +73,11 @@ public class Application {
     public static void printGameResult(int ballCount, int strikeCount) {
         StringBuilder result = new StringBuilder();
 
-        if (ballCount != 0) {
+        if(ballCount != 0) {
             result.append(ballCount + "볼");
         }
-        if (strikeCount != 0) {
-            if (result.length() != 0) {
+        if(strikeCount != 0) {
+            if(result.length() != 0) {
                 result.append(" ");
             }
             result.append(strikeCount + "스트라이크");
@@ -91,7 +90,7 @@ public class Application {
     }
 
     public static boolean isThreeStrike(int strikeCount) {
-        if (strikeCount == 3) {
+        if(strikeCount == 3) {
             return true;
         }
         return false;
@@ -105,11 +104,11 @@ public class Application {
     public static boolean getUserRestartEndNumber() {
         String input = Console.readLine();
         int num = Integer.parseInt(input);
-        if (num == 1) {
+        if (num == 1){
             return true;
         } else if (num == 2)
             return false;
-        else {
+        else{
             throw new IllegalArgumentException();
         }
     }
@@ -117,13 +116,13 @@ public class Application {
     public static boolean isInvalidValue(String userInputNum) {
         int inputNumber = Integer.parseInt(userInputNum);
 
-        if (inputNumber < 100 || inputNumber > 999) { // 세자리
+        if(inputNumber < 100 || inputNumber > 999) { // 세자리
             return false;
         }
 
         String[] splitNumber = userInputNum.split("");
-        for (String number : splitNumber) {
-            if (Collections.frequency(Arrays.asList(splitNumber), number) != 1) { // 중복숫자
+        for(String number : splitNumber) {
+            if(Collections.frequency(Arrays.asList(splitNumber), number) != 1) { // 중복숫자
                 return false;
             }
         }
@@ -133,8 +132,8 @@ public class Application {
     public static int getBallCount(String userNumber, String randomNumber) {
         int ballCount = 0;
         int strikeCount = getStrikeCount(userNumber, randomNumber);
-        for (String number : userNumber.split("")) {
-            if (randomNumber.contains(number)) {
+        for(String number : userNumber.split("")) {
+            if(randomNumber.contains(number)) {
                 ballCount++;
             }
         }
@@ -143,8 +142,8 @@ public class Application {
 
     public static int getStrikeCount(String userNumber, String randomNumber) {
         int strikeCount = 0;
-        for (int i = 0; i < 3; i++) {
-            if (userNumber.charAt(i) == randomNumber.charAt(i)) {
+        for(int i = 0; i < 3; i++) {
+            if(userNumber.charAt(i) == randomNumber.charAt(i)) {
                 strikeCount++;
             }
         }
