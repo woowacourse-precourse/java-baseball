@@ -46,6 +46,7 @@ public class Calculator {
     private void count(int userNumber){
         if(randomNumbers.indexOf(userNumber) == userNumbers.indexOf(userNumber)){
             ballAndStrike.countStrike();
+            return;
         }
         ballAndStrike.countBall();
     }
