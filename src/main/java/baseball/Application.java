@@ -33,11 +33,11 @@ public class Application {
         CntBallAndStrike(computer, userNumberList);
 
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        gameRestartOrOver();
+        Scanner options = new Scanner(System.in);
+        gameRestartOrOver(options);
     }
 
-    public static void gameRestartOrOver() throws IOException {
-        Scanner options = new Scanner(System.in);
+    private static void gameRestartOrOver(Scanner options) throws IOException {
         int inputOption = options.nextInt();
         if (inputOption == 1) {
             System.out.println("게임 시작");
