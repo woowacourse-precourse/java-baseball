@@ -30,15 +30,8 @@ public class BallCount {
         return strike;
     }
 
-    public void setStrike(int strike) {
-        this.strike = strike;
-    }
-
     public int getBall() {
         return ball;
     }
 
-    public void setBall(int ball) {
-        this.ball = ball;
-    }
 }
