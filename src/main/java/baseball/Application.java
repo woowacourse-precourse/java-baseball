@@ -33,6 +33,32 @@ public class Application {
         }
     }
 
+    public static void getNumber(List<Integer> user){
+        user.clear();
+        System.out.print("숫자를 입력해주세요 : ");
+        String pitching = Console.readLine();
+
+        isvalid(pitching);
+
+        for(int i=0;i<3;i++) {
+            user.add(Integer.parseInt(String.valueOf(pitching.charAt(i))));
+        }
+    }
+
+    public static void isvalid(String pitching){
+        if(pitching.length() != 3) throw new IllegalArgumentException("잘못된 입력입니다.");
+        if(!ConsistedOfValidNumber(pitching)) throw new IllegalArgumentException("잘못된 입력입니다.");
+    }
+
+    public static boolean ConsistedOfValidNumber(String pitching){
+        if(pitching.charAt(0)==pitching.charAt(1) || pitching.charAt(1)==pitching.charAt(2) || pitching.charAt(0)==pitching.charAt(2)) return false;
+        for(int i=0;i<3;i++){
+            int ascii = pitching.charAt(i);
+            if (!(49<=ascii && ascii<=57)) return false;//1~9
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) {
         List<Integer> computer = new ArrayList<>();
