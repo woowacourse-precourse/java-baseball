@@ -32,8 +32,9 @@ public class Application {
         System.out.println("computerNumbers::"+computerNumbers);
 
         isStrike(playerNumbers, computerNumbers);
+        isBall(playerNumbers, computerNumbers);
 
-
+        System.out.println("ballcount::"+ballCount);
         System.out.println("strikecount::"+strikeCount);
 
 
@@ -68,4 +69,16 @@ public class Application {
             }
         }
     }
+
+    public static void isBall(List playerNums, List computerNums) {
+        for(int i=0; i<3; i++) {
+            int playerNum = Integer.parseInt(String.valueOf(playerNums.get(i)));
+            int computerNum = Integer.parseInt(String.valueOf(computerNums.get(i)));
+
+            if(computerNums.contains(playerNum) && playerNum != computerNum) {
+                ballCount++;
+            }
+        }
+    }
+
 }
