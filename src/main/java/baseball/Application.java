@@ -32,6 +32,7 @@ public class Application {
 
     /**
      * 사용자로부터 입력을 받음
+     *
      * @return
      */
     private static String getUserNumber() {
@@ -41,23 +42,26 @@ public class Application {
 
     /**
      * 사용자로부터 받은 입력이 주어진 규칙에 맞는지 확인
+     *
      * @param input
      * @return
      */
-    private static Boolean isValidInput (String input) {
+    private static Boolean isValidInput(String input) {
         if (input.length() != 3) return false;
         if (!input.matches("[0-9]+")) return false;
-        if (input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2) || input.charAt(0) == input.charAt(2)) return false;
+        if (input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2) || input.charAt(0) == input.charAt(2))
+            return false;
         return true;
     }
 
     /**
      * 사용자의 입력과 목표 숫자를 서로 비교하여, 스트라이크, 볼, 낫싱 여부를 확인합니다.
+     *
      * @param target
      * @param input
      * @return
      */
-    private static List<Integer> compareTwoNumbers (String target, String input) {
+    private static List<Integer> compareTwoNumbers(String target, String input) {
         List<Integer> result = Arrays.asList(0, 0);
 
         for (int i = 0; i < input.length(); i++) {
@@ -73,6 +77,17 @@ public class Application {
         }
 
         return result;
+    }
+
+    /**
+     * 3스트라이크 여부를 확인
+     *
+     * @param strikes
+     * @return
+     */
+    private static Boolean isThreeStrikes(List<Integer> strikes) {
+        if (strikes.get(0) == 3 && strikes.get(1) == 0) return true;
+        return false;
     }
 
     public static void main(String[] args) {
