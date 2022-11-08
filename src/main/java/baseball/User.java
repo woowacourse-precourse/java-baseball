@@ -9,27 +9,24 @@ public class User {
     protected String input;
     protected int number;
 
-    protected int game_state;
+    protected boolean game_state = true;
 
-    ArrayList<Character> check = new ArrayList<>();
+    ArrayList<Character> user = new ArrayList<>();
 
     public void inputNumber() {
         String input = readLine();
 
         checkNumberInteger(input);
         checkNumberLength(input);
-        checkNumberDigit(input);
 
-        this.input = input;
+        madeNumber(input);
+        checkNumberDigit();
     }
 
     public void inputGameState() {
         String input = readLine();
-
-        if (input.equals("1")) {
-            this.game_state = 1;
-        } else if (input.equals("2")) {
-            this.game_state = 2;
+        if (input.equals("2")) {
+            this.game_state = false;
         } else if (!input.equals("1") || !input.equals("2")) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
@@ -44,7 +41,6 @@ public class User {
     }
 
     public void checkNumberLength(String input) {
-
         if (input.length() == 0) {
             throw new IllegalArgumentException("입력한 수가 없습니다.");
         } else if (input.length() != 3) {
@@ -52,25 +48,35 @@ public class User {
         }
     }
 
-    public void addNumber(Character input) {
-        check.add(input);
+    public boolean checkNumber(Character number) {
+        return user.contains(number);
     }
 
-    public void checkNumberDigit(String input) {
+    public void addNumber(Character input) {
+        user.add(input);
+    }
+
+    public void madeNumber(String input) {
         for (int i = 0; i < input.length(); i++) {
-            if (!check.contains(input.charAt(i))) {
+            if (!checkNumber(input.charAt(i))) {
                 addNumber(input.charAt(i));
             }
         }
+    }
 
-        if (check.size() != 3) {
+    public void checkNumberDigit() {
+        if (user.size() != 3) {
             throw new IllegalArgumentException("입력한 수가 서로 다른 3자리의 수가 아닙니다.");
         }
     }
 
     public void setNumber() {
-        inputNumber();
         this.number = Integer.valueOf(this.input);
+    }
+
+    public void madeAnswer() {
+        inputNumber();
+        setNumber();
     }
 
 }
