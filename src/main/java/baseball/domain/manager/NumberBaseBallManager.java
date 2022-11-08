@@ -144,7 +144,7 @@ public class NumberBaseBallManager {
         int strike = result.getStrike();
         
         if (ball == 0 && strike == 0) {
-            return "낫싱\n";
+            return "낫싱";
         }
 
         StringBuilder sb = new StringBuilder();
