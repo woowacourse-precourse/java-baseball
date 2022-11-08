@@ -30,7 +30,7 @@ public class Input {
             throw new IllegalArgumentException("잘못된 입력값입니다. 3자리의 수를 입력해주세요");
         }
         for(int i=0; i<playerNumber.length(); i++) {
-            if (!(('1' <= playerNumber.charAt(i)) && (playerNumber.charAt(i) <= '9'))) {
+            if (playerNumber.charAt(i) == '0') {
                 throw new IllegalArgumentException("잘못된 입력값입니다. 1-9로 이뤄진 수를 입력해주세요");
             }
         }
