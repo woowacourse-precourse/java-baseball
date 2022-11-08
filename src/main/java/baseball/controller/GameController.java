@@ -43,7 +43,7 @@ public class GameController {
         outputView.printInputNumberAlert();
         String inputString = inputView.readInput();
 
-        return GameNumber.getInstance(inputString);
+        return GameNumber.makeInstance(inputString);
     }
 
     private RestartMode getAndProcessRestartInput() {

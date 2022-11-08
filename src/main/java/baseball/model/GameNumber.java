@@ -10,12 +10,12 @@ public class GameNumber {
 
     private final List<Integer> numberListByDigit;
 
-    public static GameNumber getInstance(String input) {
+    public static GameNumber makeInstance(String input) {
         validateInput(input);
 
         List<Integer> integerList = new ArrayList<>();
         for(int i = 0; i < input.length(); i++) {
-            integerList.add((int) input.charAt(i) - '0');
+            integerList.add(input.charAt(i) - '0');
         }
 
         return new GameNumber(integerList);
@@ -31,12 +31,12 @@ public class GameNumber {
     }
 
     private static void validateInput(String input) {
-        checkExactNumberLength(input);
+        checkNumberLength(input);
         checkAllDigit1To9(input);
         checkAllDigitNotDuplicate(input);
     }
 
-    private static void checkExactNumberLength(String input) {
+    private static void checkNumberLength(String input) {
         if(input == null || input.length() != GAME_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
@@ -49,6 +49,10 @@ public class GameNumber {
     }
 
     private static void checkAllDigitNotDuplicate(String input) {
+        if(input == null) {
+            throw new IllegalArgumentException();
+        }
+
         for(int i = 0; i < input.length() - 1; i++) {
             char currentChar = input.charAt(i);
             String nextToTail = input.substring(i + 1);
@@ -71,6 +75,7 @@ public class GameNumber {
         return output;
     }
 
+    @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
         for(int i = 0; i < GAME_NUMBER_LENGTH; i++) {

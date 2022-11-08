@@ -18,7 +18,7 @@ class ApplicationTest extends NsTest {
         void illegalGetGameNumberInstanceByStringTest1() {
             String input = "122";
 
-            assertThatThrownBy(() -> GameNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.makeInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -26,7 +26,7 @@ class ApplicationTest extends NsTest {
         void illegalGetGameNumberInstanceByStringTest2() {
             String input = "1234";
 
-            assertThatThrownBy(() -> GameNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.makeInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -34,7 +34,7 @@ class ApplicationTest extends NsTest {
         void illegalGetGameNumberInstanceByStringTest3() {
             String input = "91";
 
-            assertThatThrownBy(() -> GameNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.makeInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -42,7 +42,7 @@ class ApplicationTest extends NsTest {
         void illegalGetGameNumberInstanceByStringTest4() {
             String input = "102";
 
-            assertThatThrownBy(() -> GameNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.makeInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -50,7 +50,7 @@ class ApplicationTest extends NsTest {
         void illegalGetGameNumberInstanceByStringTest5() {
             String input = "112";
 
-            assertThatThrownBy(() -> GameNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.makeInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -58,7 +58,7 @@ class ApplicationTest extends NsTest {
         void illegalGetGameNumberInstanceByStringTest6() {
             String input = "1가2";
 
-            assertThatThrownBy(() -> GameNumber.getInstance(input))
+            assertThatThrownBy(() -> GameNumber.makeInstance(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -66,7 +66,7 @@ class ApplicationTest extends NsTest {
         void legalGetGameNumberInstanceByStringTest1() {
             String input = "123";
             String  result = "123";
-            assertThat(GameNumber.getInstance(input).toString())
+            assertThat(GameNumber.makeInstance(input).toString())
                     .isEqualTo(result);
         }
     }
@@ -183,8 +183,8 @@ class ApplicationTest extends NsTest {
     class GameNumberCompareToTest {
         @Test
         void GameNumberCompareToTest1() {
-            GameNumber number1 = GameNumber.getInstance("924");
-            GameNumber number2 = GameNumber.getInstance("123");
+            GameNumber number1 = GameNumber.makeInstance("924");
+            GameNumber number2 = GameNumber.makeInstance("123");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 1);
@@ -194,8 +194,8 @@ class ApplicationTest extends NsTest {
 
         @Test
         void GameNumberCompareToTest2() {
-            GameNumber number1 = GameNumber.getInstance("425");
-            GameNumber number2 = GameNumber.getInstance("456");
+            GameNumber number1 = GameNumber.makeInstance("425");
+            GameNumber number2 = GameNumber.makeInstance("456");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,1, 1);
@@ -205,8 +205,8 @@ class ApplicationTest extends NsTest {
 
         @Test
         void GameNumberCompareToTest3() {
-            GameNumber number1 = GameNumber.getInstance("123");
-            GameNumber number2 = GameNumber.getInstance("789");
+            GameNumber number1 = GameNumber.makeInstance("123");
+            GameNumber number2 = GameNumber.makeInstance("789");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 0);
@@ -216,8 +216,8 @@ class ApplicationTest extends NsTest {
 
         @Test
         void GameNumberCompareToTest4() {
-            GameNumber number1 = GameNumber.getInstance("954");
-            GameNumber number2 = GameNumber.getInstance("954");
+            GameNumber number1 = GameNumber.makeInstance("954");
+            GameNumber number2 = GameNumber.makeInstance("954");
 
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 3);
