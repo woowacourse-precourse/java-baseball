@@ -40,7 +40,7 @@ public class Application {
             throw exception;
         }
     }
-    private static void checkInputNumber(List<Integer> numbers){
+    private static void checkInputThreeDifferentNumber(List<Integer> numbers){
         Set<Integer> numberSet = new HashSet<>(numbers);
         if (numbers.size()!=3 || numberSet.size()!=3){
             IllegalArgumentException exception = new IllegalArgumentException();
