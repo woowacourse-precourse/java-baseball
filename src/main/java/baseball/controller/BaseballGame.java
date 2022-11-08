@@ -28,7 +28,7 @@ public class BaseballGame {
         return (int) IntStream.iterate(0, i -> i + 1)
                 .limit(NUMBER_LENGTH.getNumber())
                 .filter(i -> !userNum.get(i).equals(computerNum.get(i)))
-                .filter(i -> NumberValidator.isNumberExistInList(userNum.get(i), computerNum))
+                .filter(i -> computerNum.contains(userNum.get(i)))
                 .count();
     }
 }
