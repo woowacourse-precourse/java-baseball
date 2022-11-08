@@ -9,4 +9,8 @@ public class User {
     private List<Integer> number = new ArrayList<>();
     private Validation validation;
 
+    public User(Validation validation) {
+        this.validation = validation;
+    }
+    
 }
