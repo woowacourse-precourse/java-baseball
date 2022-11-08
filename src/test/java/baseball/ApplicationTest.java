@@ -19,6 +19,39 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
+    @Test
+    void 다른값을_게임종료로_한다면() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("246","513","135","3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 볼만_출력하는지() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "513", "135", "2");
+                    assertThat(output()).contains("낫싱", "3볼", "3스트라이크", "게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+    @Test
+    void 예외_테스트_제로() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("203"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 예외_테스트_길이가작은경우() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("23"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Test
     void 예외_테스트() {
