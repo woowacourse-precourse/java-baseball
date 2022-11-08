@@ -15,14 +15,14 @@ public class RandomNumberGeneratorTest {
 
     @Test
     void 난수_각자릿수_확인() {
-        for (int testNumbers = 0; testNumbers < 100; testNumbers++) {
+        for (int testNumbers = 0; testNumbers < RandomNumberGenerator.MAX_NUMBER_OF_CASE; testNumbers++) {
             assertThat(isDigitAOtherNumber()).isEqualTo(true);
         }
     }
 
     @Test
     void 난수_0_확인() {
-        for (int testNumbers = 0; testNumbers < 100; testNumbers++) {
+        for (int testNumbers = 0; testNumbers < RandomNumberGenerator.MAX_NUMBER_OF_CASE; testNumbers++) {
             List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
             assertThat(gameNumbers.contains(0)).isEqualTo(false);
         }
@@ -30,7 +30,7 @@ public class RandomNumberGeneratorTest {
 
     @Test
     void 자릿수의_길이_확인() {
-        for (int testNumbers = 0; testNumbers < 100; testNumbers++) {
+        for (int testNumbers = 0; testNumbers < RandomNumberGenerator.MAX_NUMBER_OF_CASE; testNumbers++) {
             List<Integer> gameNumbers = RandomNumberGenerator.generateRandomNumbers();
             assertThat(gameNumbers.size()).isEqualTo(3);
         }
@@ -40,14 +40,14 @@ public class RandomNumberGeneratorTest {
     void 중복_없는_모든_케이스_확인() {
         int numberCase = 0;
         List<Integer> numbers;
-        HashSet<List<Integer>> numberHash = new HashSet<>();
+        HashSet<List<Integer>> numbersHash = new HashSet<>();
 
         for (; numberCase < RandomNumberGenerator.MAX_NUMBER_OF_CASE; numberCase++) {
             numbers = RandomNumberGenerator.getRandomNumber();
-            assertThat(numberHash.contains(numbers)).isEqualTo(false);
-            numberHash.add(numbers);
+            assertThat(numbersHash.contains(numbers)).isEqualTo(false);
+            numbersHash.add(numbers);
         }
-        checkOverCase(numberHash);
+        checkOverCase(numbersHash);
     }
 
     private static void checkOverCase(HashSet<List<Integer>> numberHash) {

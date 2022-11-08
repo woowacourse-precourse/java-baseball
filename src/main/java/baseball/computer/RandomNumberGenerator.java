@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 public class RandomNumberGenerator {
     public static final int MAX_NUMBER_OF_CASE = 504;
+    public static final int MIN_DIGIT = 1;
+    public static final int MAX_DIGIT = 9;
+    public static final int NUMBER_LENGTH = 3;
     private static final HashSet<String> numberSet = new HashSet<>();
 
     public static void initGenerator() {
@@ -16,8 +19,8 @@ public class RandomNumberGenerator {
 
     public static List<Integer> generateRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while (randomNumbers.size() < NUMBER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(MIN_DIGIT, MAX_DIGIT);
             if (!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
