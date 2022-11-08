@@ -14,6 +14,20 @@ public class ValidateGameComponent {
         }
     }
 
+    public static boolean validateNumber(String input) {
+        boolean validResult = true;
+        if (validNumberLength(input) == NOT_VALID) {
+            validResult = false;
+        }
+        if (validNumberOutRange(input) == NOT_VALID) {
+            validResult = false;
+        }
+        if (validNumberDuplicate(input) == NOT_VALID) {
+            validResult = false;
+        }
+        return validResult;
+    }
+
     public static boolean validNumberLength(String baseballNumber) {
         if (baseballNumber.length() != 3) {
             throw new IllegalArgumentException();
