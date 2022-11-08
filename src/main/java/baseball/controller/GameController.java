@@ -13,7 +13,6 @@ public class GameController {
 
     public static void run() {
         init();
-//        start();
         do {
             start();
         } while (wantRestart());
