@@ -11,7 +11,7 @@ import java.util.List;
       1. 숫자야구게임 시작문구 출력
       2. 정답인 랜덤 숫자 3개 지정
       3. 입력값 받기(Integer[]로 형변환
-      4. 스트라이크, 볼, 낫띵인지 판단하는 함수
+      4. 스트라이크, 볼, 낫띵인지 판단하는 함수 / response를 보내주는 함수
       5. 재시작(1), 종료(2) 구현
       6. 예외처리 / IllegalArgumentException 처리
       7. 테스트 코드 작성 후 검증
@@ -46,12 +46,9 @@ public class Application {
             String[] inputList = input.split("");
             int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
 
-            printNumberStatus(inputNums, computer);
         }
     }
-    private static void saveNumberStatus(int[] inputNums, List<Integer> computer){
-        GameStatus gameStatus = new GameStatus();
-
+    private static void saveNumberStatus(int[] inputNums, List<Integer> computer, GameStatus gameStatus){
         for(int i =0 ; i<inputNums.length; i++){
             if(!computer.contains(inputNums[i])){
                 gameStatus.nothing = true;
@@ -66,7 +63,22 @@ public class Application {
             }
         }
     }
+    private static String responseNumberStatus(GameStatus gameStatus){
+        StringBuilder sb = new StringBuilder();
 
+        if(gameStatus.nothing){
+            return "낫띵";
+        }
+        else{
+            if(gameStatus.ball > 0){
+                sb.append(gameStatus.ball).append("볼 ");
+            }
+            if(gameStatus.strike > 0){
+                sb.append(gameStatus.strike).append("스트라이크 ");
+            }
+        }
+        return sb.toString();
+    }
     public static class GameStatus{
         Boolean nothing = false;
         Integer strike = 0;
