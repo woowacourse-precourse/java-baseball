@@ -29,17 +29,35 @@ public class Application {
         }
     }
 
+    // 3.낫싱 판단
+    static void checkNoting(List<Integer>computerNumber,List<Integer>guessingNumber,List<Integer>numberCheckCount) {
+
+        for(int idx=0; idx<3; idx++) {
+            int checkNumber = guessingNumber.get(idx);
+            if(computerNumber.contains(checkNumber)) {
+                numberCheckCount.add(0);
+                return;
+            }
+        }
+
+        numberCheckCount.add(1);
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         List<Integer> computerNumber = new ArrayList<>();
         List<Integer> guessingNumber = new ArrayList<>();
+        List<Integer> numberCheckCount = new ArrayList<>();
         
         // 상대 숫자 생성 함수 호출
         getSettingComputerNumber(computerNumber);
 
         // 숫자 입력 함수 호출
         getSettingGuessingNumber(guessingNumber);
+
+        // 낫싱 판단 함수 호출
+        checkNoting(computerNumber,guessingNumber,numberCheckCount);
     }
 }
 
