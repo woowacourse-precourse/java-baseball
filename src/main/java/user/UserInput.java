@@ -1,7 +1,6 @@
 package user;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +36,7 @@ public class UserInput {
     }
 
     public static boolean isRetry(String userInput) {
-        if (userInput == "1") {
-            return true;
-        } else {
-            return false;
-        }
+        return userInput.equals("1");
     }
 
 }
