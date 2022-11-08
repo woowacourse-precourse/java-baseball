@@ -14,7 +14,6 @@ public class BaseballGameController {
     public static final String NEXT_GAME_INPUT_ERROR_MSG = "[ERROR] 1 또는 2를 입력해주세요";
 
     private static final String PLAYER_NEXT_GAME_INPUT_REGEX = "^[12]$";
-    private static final String PLAYER_NUMBER_INPUT_REGEX = "^([1-9])(?!\\1)([1-9])(?!(\\1|\\2))([1-9])$";
 
 
     public void startGame(){
@@ -27,13 +26,17 @@ public class BaseballGameController {
 
     public void playSingleGame(BaseballGameRule baseballGameRule){
 
-        List<Integer> computerNumbers = GameUtils.generateNonDuplicatedRandomNumberList(1, 9, 3);
+        List<Integer> computerNumbers = GameUtils
+                .generateNonDuplicatedRandomNumberList(baseballGameRule.START_NUMBER,
+                        baseballGameRule.END_NUMBER,
+                        baseballGameRule.PLAY_NUMBER_LIST_SIZE);
+
         List<Integer> playerNumbers;
         Score playerScore;
 
         baseballGameRule.setComputerNumbers(computerNumbers);
         do{
-            playerNumbers = readPlayerNumbers();
+            playerNumbers = readPlayerNumbers(baseballGameRule.PLAYER_NUMBER_INPUT_REGEX);
             playerScore = baseballGameRule.generatePlayerScore(playerNumbers);
             printBallStrikeCountScore(playerScore);
 
@@ -43,10 +46,10 @@ public class BaseballGameController {
     }
 
 
-    private List<Integer> readPlayerNumbers(){
+    private List<Integer> readPlayerNumbers(String inputRegex){
         System.out.print("숫자를 입력해주세요 : ");
         String playerInputString = Console.readLine();
-        validatePlayerNumberInput(playerInputString);
+        validatePlayerNumberInput(playerInputString, inputRegex);
 
         List<Integer> playerNumbers = new ArrayList<>();
         for(int index = 0; index < playerInputString.length(); index++){
@@ -73,8 +76,8 @@ public class BaseballGameController {
         return false;
     }
 
-    private void validatePlayerNumberInput(String playerInput) throws IllegalArgumentException{
-        if( !playerInput.matches(PLAYER_NUMBER_INPUT_REGEX) ){
+    private void validatePlayerNumberInput(String playerInput, String inputRegex) throws IllegalArgumentException{
+        if( !playerInput.matches(inputRegex) ){
             throw new IllegalArgumentException(PLAYER_NUMBER_INPUT_ERROR_MSG);
         }
     }

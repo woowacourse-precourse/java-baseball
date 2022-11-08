@@ -5,6 +5,12 @@ import java.util.List;
 
 public class BaseballGameRule {
 
+    public final int START_NUMBER = 1;
+    public final int END_NUMBER = 9;
+    public final int PLAY_NUMBER_LIST_SIZE = 3;
+    public final String PLAYER_NUMBER_INPUT_REGEX = "^([1-9])(?!\\1)([1-9])(?!(\\1|\\2))([1-9])$";
+
+
     private List<Integer> computerNumbers;
 
     public BaseballGameRule(){
