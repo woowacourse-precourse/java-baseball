@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    private static final int NUMBER_OF_BASEBALL = 3;
     private static final String SEPARATOR_PATTERN = "[\n]*[\t]*[ ]*[.]*[,]*[/]*";
 
     public BaseballNumberBundle inputBaseballNumbers() {
@@ -48,7 +49,7 @@ public class Player {
     }
 
     public void baseballValid(List<Integer> list) {
-        if (list.size() > 3) {
+        if (list.size() > NUMBER_OF_BASEBALL) {
             throw new IllegalArgumentException();
         }
     }
