@@ -18,12 +18,10 @@ public class startGame {
             try {
                 newInputNumber = inputNumber.makeInputNumber();
             } catch (IllegalArgumentException e) {
-                System.out.println(e);
                 throw e;
             }
 
             if(baseball.printCase.makePrintCase(newAnswerNumber, newInputNumber)) {
-//                int chooseNumber = in.nextInt();
                 String num = Console.readLine();
                 int chooseNumber = Integer.parseInt(num);
 
