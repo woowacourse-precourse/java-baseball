@@ -136,12 +136,12 @@ BUILD SUCCESSFUL in 0s
 
 ```java
 List<Integer> computer = new ArrayList<>();
-while (computer.size() < 3) {
-    int randomNumber = Randoms.pickNumberInRange(1, 9);
-    if (!computer.contains(randomNumber)) {
+        while (computer.size() < 3) {
+        int randomNumber = Randoms.pickNumberInRange(1, 9);
+        if (!computer.contains(randomNumber)) {
         computer.add(randomNumber);
-    }
-}
+        }
+        }
 ```
 
 ---
@@ -153,3 +153,39 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 기능 목록
+* Application
+  * main() 어플리케이션 실행
+  
+<br>
+  
+* BaseballComputer
+  * userInputNumberInGame() 사용자 입력
+  * start() 게임시작
+  * runGame() 게임진행
+  * createRandomNumber() 서로 다른 3자리의 수 생성
+  * checkHitNumber() 숫자가 맞는지 확인 후 결과값 리턴
+  * inputRestartOrEnd() 게임 종료 또는 재시작
+  
+<br>
+
+* ChangingType
+  * StringToInt() String타입 int타입으로 변환
+  * StringArrToIntArr() String타입 배열 int타입 배열로 변환
+
+<br>
+
+* FindingException
+  * checkOutOfInputNumber() 입력값 범위 확인 기능
+  * checkOutOfChoiceNumber() 선택 숫자 범위 확인 기능
+
+<br>
+
+* GameMessage
+  * printStartGameMessage() 게임 시작 메시지 출력
+  * printEndGameMessage() 게임 종료 메시지 출력
+  * printInputNumberToComputerMessage() 사용자 입력 메시지 출력
+  * printRestartOrEndMessage() 재시작 또는 종료 메시지 출력
+  * printHintMessage() 입력값에 따른 맞춘 상태 출력
