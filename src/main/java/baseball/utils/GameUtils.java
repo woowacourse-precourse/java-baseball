@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GameUtils {
 
-    public static List<Integer> generateThreeRandomNumbers(){
+    public static List<Integer> generateNonDuplicatedRandomNumberList(int startNumber, int endNumber, int listSize){
         List<Integer> randomNumbers = new ArrayList<>();
         while(randomNumbers.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);

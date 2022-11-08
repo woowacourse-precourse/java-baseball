@@ -27,7 +27,7 @@ public class BaseballGameController {
 
     public void playSingleGame(BaseballGameRule baseballGameRule){
 
-        List<Integer> computerNumbers = GameUtils.generateThreeRandomNumbers();
+        List<Integer> computerNumbers = GameUtils.generateNonDuplicatedRandomNumberList(1, 9, 3);
         List<Integer> playerNumbers;
         Score playerScore;
 
