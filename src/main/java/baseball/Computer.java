@@ -16,4 +16,13 @@ public class Computer {
     }
   }
 
+  public boolean isGameOver(String input){
+    for(int i = 0; i<answer.size(); i++){
+      if(answer.get(i) != input.charAt(i)){
+        return false;
+      }
+    }
+    return true;
+  }
+
 }
