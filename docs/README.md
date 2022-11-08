@@ -83,3 +83,17 @@
 | checkInputPlayerNumber | 플레이어가 입력한 숫자가 유효한지 확인<br> 예외 발생시 IllegalArgumentException 발생 | input - String inputPlayerNumbers |                                              | -   |
 | checkRestartAnswer     | 게임 재시작 입력이 유효한지 확인<br> 예외 발생시 IllegalArgumentException 발생    | input - String playerAnswer       |                                              | -   |
 
+
+### 💻 Controller 정의
+
+------------------
+
+
+#### ✅ BaseballController
+| 이름                  | 설명                                        | 구분   | I / O                       | 비고  |
+|:--------------------|:------------------------------------------|:-----|:----------------------------|:----|
+| gameStart           | 게임의 메인 루프                                 | 메서드  |                             | -   |
+| initGame            | 게임의 시작에 앞서 컴퓨터의 정답을 정한다                   | 메서드  |                             | -   |
+| confirmGameRestart  | 정답을 맞출 시 필요한 메시지를 출력한다. 게임의 재시작 여부를 리턴한다. | 메서드  | output - boolean            | -   |
+| checkStrikeNumber   | 스트라이크의 갯수를 구한다.                           | 메서드  | output - (int) strikeNumber | -   |
+| inputPlayerNumber   | 플레이어에게 숫자를 입력받아 저장한다                      | 메서드  | -                           | -   |
