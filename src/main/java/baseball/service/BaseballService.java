@@ -1,6 +1,7 @@
 package baseball.service;
 
 import baseball.util.Constant;
+import baseball.util.Validator;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,6 +11,11 @@ import java.util.Set;
 
 public class BaseballService {
     private ArrayList<Integer> computerNumbers;
+    private final Validator validator;
+
+    public BaseballService() {
+        validator = new Validator();
+    }
 
     public void gameStart() {
         System.out.println(Constant.GAME_START_MESSAGE);
