@@ -1,4 +1,4 @@
-package baseball.score;
+package baseball.domain.score;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -10,8 +10,6 @@ public class Score {
   public void compareTwoNumber(List<Integer> computer, List<Integer> user) {
     setStrikeCount(computer, user);
     setBallCount(computer, user);
-    System.out.println("computer :" + computer);
-    System.out.println("user : " + user);
   }
 
   private void setStrikeCount(List<Integer> computer, List<Integer> user) {

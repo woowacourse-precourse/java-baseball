@@ -1,4 +1,4 @@
-package baseball.score;
+package baseball.domain.score;
 
 public class Result {
   private final Integer strikeCount;

@@ -1,9 +1,9 @@
-package baseball.game;
+package baseball.domain.game;
 
-import baseball.player.Computer;
-import baseball.player.User;
-import baseball.score.Result;
-import baseball.score.Score;
+import baseball.domain.player.Computer;
+import baseball.domain.player.User;
+import baseball.domain.score.Result;
+import baseball.domain.score.Score;
 
 public class GameImpl implements Game{
   public Computer computerPlayer;

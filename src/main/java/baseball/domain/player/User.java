@@ -1,4 +1,4 @@
-package baseball.player;
+package baseball.domain.player;
 
 import baseball.utils.Input;
 import baseball.utils.Regex;

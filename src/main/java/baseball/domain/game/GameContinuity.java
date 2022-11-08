@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.domain.game;
 
 import baseball.utils.Input;
 

@@ -1,6 +1,6 @@
-package baseball.player;
+package baseball.domain.player;
 
-import baseball.number.Number;
+import baseball.domain.number.Number;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
