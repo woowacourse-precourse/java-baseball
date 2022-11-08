@@ -71,7 +71,6 @@ public class GameNumber {
             }
         }
 
-        Collections.reverse(output);
         return output;
     }
 
