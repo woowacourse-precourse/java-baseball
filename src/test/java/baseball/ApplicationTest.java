@@ -19,7 +19,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     }
-    @Test
+    /*@Test
     void my_test_example(){
         assertRandomNumberInRangeTest(
                 () -> {
@@ -28,7 +28,7 @@ class ApplicationTest extends NsTest {
                 },
                 2,4,6
         );
-    }
+    }*/
 
     @Test
     void 예외_테스트() {
