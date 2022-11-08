@@ -17,7 +17,7 @@ public class Rule {
     public ViewService answerNumber(List<Integer> target) {
         for (int index = 0; index < target.size(); index++) {
             Integer value = target.get(index);
-            contains(index, value);
+            ballAndStrikeCount(index, value);
         }
 
         ViewService gameMessage = new ViewService(strikeCount, ballCount);
@@ -30,7 +30,7 @@ public class Rule {
         this.ballCount = 0;
     }
 
-    private void contains(int index, Integer value) {
+    private void ballAndStrikeCount(int index, Integer value) {
         if (ballAndStrikeService.containsExactly(value, index)) {
             strikeCount += 1;
             return;
