@@ -13,7 +13,7 @@ public class NeedForGameService {
         PrintOutput.startOrder();
     }
 
-    static void initData() {
+    public static void initData() {
         strike = 0;
         ball = 0;
         errorCheck = 0;

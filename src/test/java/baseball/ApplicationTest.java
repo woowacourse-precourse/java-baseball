@@ -1,19 +1,27 @@
 package baseball;
 
 import baseball.service.GameService;
+import baseball.service.NeedForGameService;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import static baseball.service.GameService.RANDOMBALL;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+    @BeforeEach
+    void initData() {
+        NeedForGameService.initData();
+    }
     @Test
     void 랜덤수_중복유무_체크() {
         List<Integer> randomballs;
