@@ -8,6 +8,7 @@ import java.util.List;
 
 public class InputNumber {
     String userBaseBallNumber;
+    String reStartNumber;
     List<Integer> computerBaseBallNumber = new ArrayList<>();
 
 
@@ -24,5 +25,8 @@ public class InputNumber {
         userBaseBallNumber = Console.readLine();
     }
 
+    public void inputReStartNumber() {
+        reStartNumber = Console.readLine();
+    }
 
 }
