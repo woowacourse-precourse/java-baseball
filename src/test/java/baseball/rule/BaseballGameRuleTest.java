@@ -1,5 +1,6 @@
 package baseball.rule;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import baseball.player.Computer;
@@ -45,6 +46,34 @@ class BaseballGameRuleTest {
 		Computer computer = Computer.createComputerForTest("123");
 		BaseballGameRule baseballGameRule = new BaseballGameRule(player, computer);
 		baseballGameRule.isPlayerNumberValidate();
+	}
+	@Test
+	void 야구게임점수_테스트_3스트라이크(){
+		Player player = new Player();
+		player.insertNumber("123");
+		Computer computer = Computer.createComputerForTest("123");
+		BaseballGameRule baseballGameRule = new BaseballGameRule(player,computer);
+		String score = baseballGameRule.getScore();
+		assertEquals("30",score);
+
+	}
+	@Test
+	void 야구게임점수_테스트_낫띵(){
+		Player player = new Player();
+		player.insertNumber("123");
+		Computer computer = Computer.createComputerForTest("456");
+		BaseballGameRule baseballGameRule = new BaseballGameRule(player,computer);
+		String score = baseballGameRule.getScore();
+		assertEquals("00",score);
+	}
+	@Test
+	void 야구게임점수_테스트_1스트라이크_2볼(){
+		Player player = new Player();
+		player.insertNumber("123");
+		Computer computer = Computer.createComputerForTest("132");
+		BaseballGameRule baseballGameRule = new BaseballGameRule(player,computer);
+		String score = baseballGameRule.getScore();
+		assertEquals("12",score);
 	}
 
 
