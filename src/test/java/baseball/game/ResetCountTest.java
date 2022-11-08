@@ -1,6 +1,5 @@
 package baseball.game;
 
-import baseball.player.Player;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,8 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ResetCountTest {
-    static Player player = new Player();
-    static Player opponent = new Player();
     static int strike=2;
     static int ball=1;
     public void initialize(){

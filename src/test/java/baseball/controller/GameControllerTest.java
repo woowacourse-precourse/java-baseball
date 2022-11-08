@@ -3,7 +3,6 @@ package baseball.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import baseball.game.Game;
 import baseball.player.Player;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ import java.util.List;
 
 public class GameControllerTest {
     static Player player = new Player();
-    Player opponent = new Player();
+    static final String DELIMITER="";
     public static InputStream generateUserInput(String userInput){
         return new ByteArrayInputStream(userInput.getBytes());
     }
@@ -23,7 +22,7 @@ public class GameControllerTest {
         System.setIn(inPlayer);
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String userNumbers = bf.readLine();
-        return player.transform(Arrays.asList(userNumbers.split("")), Integer::parseInt);
+        return player.transform(Arrays.asList(userNumbers.split(DELIMITER)), Integer::parseInt);
     }
     @Test
     public void check_Game_Condition_Ongoing_Test() throws IOException {
@@ -33,6 +32,7 @@ public class GameControllerTest {
 
         int strikeCount=0;
         int ballCount=0;
+        int count=1;
 
         String answer="678";
         String guess="678";
@@ -42,10 +42,10 @@ public class GameControllerTest {
 
         for(int computerNumber:opponentNumbers){
             if(playerNumbers.indexOf(computerNumber)!=opponentNumbers.indexOf(computerNumber)&&playerNumbers.indexOf(computerNumber)!=NOT_Found){
-                ballCount+=1;
+                ballCount+=count;
             }
             if(playerNumbers.indexOf(computerNumber)==opponentNumbers.indexOf(computerNumber)){
-                strikeCount+=1;
+                strikeCount+=count;
             }
         }
         assertThat(strikeCount).isEqualTo(END_CONDITION);
@@ -56,6 +56,7 @@ public class GameControllerTest {
         final int END_CONDITION=3;
         int strikeCount=0;
         int ballCount=0;
+        int count=1;
 
         String answer="678";
         String guess="678";
@@ -64,10 +65,10 @@ public class GameControllerTest {
         List<Integer> playerNumbers=preparePlayer(guess);
         for(int computerNumber:opponentNumbers){
             if(playerNumbers.indexOf(computerNumber)!=opponentNumbers.indexOf(computerNumber)&&playerNumbers.indexOf(computerNumber)!=NOT_Found){
-                ballCount+=1;
+                ballCount+=count;
             }
             if(playerNumbers.indexOf(computerNumber)==opponentNumbers.indexOf(computerNumber)){
-                strikeCount+=1;
+                strikeCount+=count;
             }
         }
         assertThat(strikeCount).isEqualTo(END_CONDITION);
@@ -83,7 +84,9 @@ public class GameControllerTest {
         assertThat(userChoice).isEqualTo(restart);
     }
     public static void isWrongInput(int state){
-        if(state<1 || state>2){
+        int properInputOne=1;
+        int properInputTwo=2;
+        if(state<properInputOne || state>properInputTwo){
             throw new IllegalArgumentException();
         }
     }
