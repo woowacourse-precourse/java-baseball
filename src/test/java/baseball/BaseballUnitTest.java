@@ -26,8 +26,10 @@ class BaseballUnitTest extends NsTest{
 
     @Test
     void 유저_입력_범위테스트(){
-        assertThatThrownBy(() -> runException("102"))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("102"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Override
