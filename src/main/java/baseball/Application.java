@@ -103,7 +103,7 @@ public class Application {
             message = message + " ";
         }
         if (strike != 0) {
-            message = message + strike + " 스트라이크";
+            message = message + strike + "스트라이크";
         }
         if (ball == 0 && strike == 0) {
             message = "낫싱";
