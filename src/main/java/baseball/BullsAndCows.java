@@ -6,6 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class BullsAndCows {
     private List<Integer> computerNumber;
@@ -86,8 +88,17 @@ class BullsAndCows {
 
     public boolean isOverlap(char[] charArray) {
 
-        return Arrays.asList(charArray)
-                .stream().distinct().findAny().isEmpty();
+        for (int i = 0; i < charArray.length; i++) {
+
+            for (int j = 0; j < charArray.length && j != i; j++) {
+
+                if (charArray[i] == charArray[j]) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public List<Integer> inputToList(String userInput) {
@@ -98,11 +109,15 @@ class BullsAndCows {
         char[] charArray = userInput.toCharArray();
 
         for (char c : charArray) {
-            int number = (int) c - '0';
+            int number = charToInt(c);
             userInputNumber.add(number);
         }
 
         return userInputNumber;
+    }
+
+    public int charToInt(char c) {
+        return (int) c - '0';
     }
 
     public boolean isValid(char userInputUnit) {
