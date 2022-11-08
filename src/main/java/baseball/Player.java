@@ -10,7 +10,7 @@ public class Player {
 
 
     public String getNumber() {
-        return number;
+        return this.number;
     }
 
     public void setNumber(String input) {
