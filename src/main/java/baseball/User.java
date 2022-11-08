@@ -9,12 +9,12 @@ public class User {
 
 
     public String userInput() {
-        String userInput = readLine();
+        String inputValue = readLine();
 
-        return inputValidtor(userInput);
+        return inputValidtor(inputValue);
     }
 
-    public static String inputValidtor(String inputValue) {
+    public String inputValidtor(String inputValue) {
 
 
         if (inputValue.length() != 3) {
