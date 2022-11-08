@@ -11,7 +11,7 @@ class UserTest {
         User userNumber = new User();
         userNumber.inputNumber("123");
 
-        assertThat(userNumber.getNumber().size()).isEqualTo(3);
+        assertThat(userNumber.getNumbers().size()).isEqualTo(3);
     }
 
     @Test
