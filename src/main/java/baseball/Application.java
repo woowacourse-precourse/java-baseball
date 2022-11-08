@@ -29,8 +29,21 @@ public class Application {
 
             HashMap<String, Integer> ballStrikeNum = initializeBallStrikePoint();
 
+            findPoint(randomValue, input, ballStrikeNum);
+
         }
     }
+    private static void findPoint(List<Integer> randomValue, String input, HashMap<String, Integer> ballStrikeNum) {
+        for (int i = 0; i < 3; i++) {
+            char charNum = input.charAt(i);
+            if (randomValue.indexOf(Character.getNumericValue(charNum)) == i) {
+                ballStrikeNum.put("strikeNum", ballStrikeNum.get("strikeNum") + 1);
+            } else if (randomValue.contains(Character.getNumericValue(charNum))) {
+                ballStrikeNum.put("ballNum", ballStrikeNum.get("ballNum") + 1);
+            }
+        }
+    }
+
 
     private static HashMap<String, Integer> initializeBallStrikePoint() {
         HashMap<String, Integer> ballStrikeNum = new HashMap<>();
