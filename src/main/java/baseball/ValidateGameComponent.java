@@ -16,6 +16,9 @@ public class ValidateGameComponent {
 
     public static boolean validateNumber(String input) {
         boolean validResult = true;
+        if (validNumberNotNull(input) == NOT_VALID) {
+            validResult = false;
+        }
         if (validNumberLength(input) == NOT_VALID) {
             validResult = false;
         }
