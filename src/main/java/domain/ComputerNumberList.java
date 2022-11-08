@@ -9,7 +9,7 @@ public class ComputerNumberList {
     public List<Number> computerNumber;
 
     public ComputerNumberList() {
-        this.computerNumber = getComputerRandomNumber();
+        generateNewComputerRandomNumber();
     }
 
     private List<Number> getComputerRandomNumber() {
