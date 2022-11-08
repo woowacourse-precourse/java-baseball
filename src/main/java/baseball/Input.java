@@ -8,7 +8,7 @@ public class Input {
         String inputStr = Console.readLine();
         checkNumberOnly(inputStr);
         checkLength(inputStr);
-        checkNumber(inputStr);
+        checkSameNumber(inputStr);
         return inputStr;
     }
 
@@ -18,7 +18,7 @@ public class Input {
         }
     }
 
-    public void checkNumber(String inputStr) {
+    public void checkSameNumber(String inputStr) {
         if ( (inputStr.charAt(0) == inputStr.charAt(1))
                 || (inputStr.charAt(1) == inputStr.charAt(2))
                 || (inputStr.charAt(0) == inputStr.charAt(2))
