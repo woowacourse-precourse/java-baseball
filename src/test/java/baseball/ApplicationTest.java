@@ -77,7 +77,7 @@ class ApplicationTest extends NsTest {
         void randomGameNumberGeneratorTest1() {
             String  result = "154";
             assertRandomNumberInRangeTest(
-                    () -> assertThat(GameNumber.getRandomInstance().toString())
+                    () -> assertThat(GameNumber.makeRandomInstance().toString())
                             .isEqualTo(result),
                     1, 5, 4, 5, 8, 9
             );
@@ -87,7 +87,7 @@ class ApplicationTest extends NsTest {
         void randomGameNumberGeneratorTest2() {
             String result = "158";
             assertRandomNumberInRangeTest(
-                    () -> assertThat(GameNumber.getRandomInstance().toString())
+                    () -> assertThat(GameNumber.makeRandomInstance().toString())
                             .isEqualTo(result),
                     1, 1, 5, 5, 8, 9
             );
@@ -97,7 +97,7 @@ class ApplicationTest extends NsTest {
         void randomGameNumberGeneratorTest3() {
             String result = "158";
             assertRandomNumberInRangeTest(
-                    () -> assertThat(GameNumber.getRandomInstance().toString())
+                    () -> assertThat(GameNumber.makeRandomInstance().toString())
                             .isEqualTo(result),
                     1, 1, 5, 1, 5, 8, 9
             );

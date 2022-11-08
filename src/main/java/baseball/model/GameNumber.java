@@ -21,7 +21,7 @@ public class GameNumber {
         return new GameNumber(integerList);
     }
 
-    public static GameNumber getRandomInstance() {
+    public static GameNumber makeRandomInstance() {
         return new GameNumber(makeRandomOneDigitIntListWithNoDuplicate());
     }
 

@@ -22,7 +22,7 @@ public class GameController {
         RestartMode restartInput;
         do {
             outputView.printStartGameAlert();
-            oppositeNumber = GameNumber.getRandomInstance();
+            oppositeNumber = GameNumber.makeRandomInstance();
             repeatGetInputAndCompare();
 
             restartInput = getAndProcessRestartInput();
