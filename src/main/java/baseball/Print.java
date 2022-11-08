@@ -11,15 +11,13 @@ public class Print{
         int countStrike = getStrike();
         int countBall = getBall();
 
-        if ( countStrike > 0 && countBall > 0 && countBall < 3)  {
+        if ( countStrike > 0 && countBall > 0 && countBall < 3 && countStrike < 3)  {
             result = String.format("%d볼 %d스트라이크", countBall, countStrike);
         }
-        if (countStrike > 0) {
+        if (countStrike > 0 && countStrike == 3) {
             result = String.format("%d스트라이크", countStrike);
         }
-        if (0 < countBall && countBall < 3) {
-            result = String.format("%d볼", countBall);
-        }
+
         if (countStrike == 0 && countBall == 0) {
             result = "낫싱";
         }

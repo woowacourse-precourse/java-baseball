@@ -7,8 +7,9 @@ import java.util.Map;
 
 public class Hint {
 
-    public static int strike;
-    public static int ball;
+    public static int strike = 0;
+    public static int ball = 0;
+
 
 
 
@@ -42,12 +43,16 @@ public class Hint {
         if (userValue.equals(computerValue)) {
             strike++;
         }
+        if (strike > 3) { strike = 1; }
         return strike;
     }
 
     public static int countBall(Map<Integer, Integer> computerNumber, int userValue) {
         if (computerNumber.containsValue(userValue)) {
             ball++;
+        }
+        if (ball > 3) {
+            ball = 0;
         }
         return ball;
     }

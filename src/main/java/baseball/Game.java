@@ -16,12 +16,22 @@ import java.util.Map;
 public class Game {
 
     private static Map<Integer, Integer> computerBoot = createComputerNumber();
+    private static Map<Integer, Integer> computerReboot = createComputerNumber();
 
 
     // 게임 반복 기능
     public static boolean playGame() {
 
         String readLine = Console.readLine();
+        boolean recursion = isRecursion(readLine);
+
+        readLine = Console.readLine();
+        chooseReboot(readLine);
+
+        return recursion;
+    }
+
+    private static boolean isRecursion(String readLine) {
         Map<Integer, Integer> user = inputUserNumber(readLine);
         Hint.loopHint(user, computerBoot);
 
@@ -40,21 +50,43 @@ public class Game {
         }
         victory();
         System.out.println(GAME_OVER);
-
-        readLine = Console.readLine();
-        chooseReboot(readLine);
-
         return recursion;
     }
 
     private static String chooseReboot (String readLine) {
         if (parseInt(readLine) == 1) {
             System.out.println(GAME_START);
-            Game.playGame();
-        }
-        while (parseInt(readLine) == 2) {
-            System.out.println(GAME_END);
-            break;
+            readLine = Console.readLine();
+            Map<Integer, Integer> user = inputUserNumber(readLine);
+            Hint.loopHint(user, computerReboot);
+
+            String result = Print.printResult();
+            System.out.println(result);
+            boolean recursion = result == STRIKE;
+
+            while ( !recursion ) {
+
+                readLine = Console.readLine();
+                if (parseInt(readLine) == 2) {
+                    System.out.println(GAME_END);
+                    break;
+                }
+                user = inputUserNumber(readLine);
+                Hint.loopHint(user, computerReboot);
+                result = Print.printResult();
+                System.out.println(result);
+                recursion = result.equals(STRIKE);
+            }
+            victory();
+            System.out.println(GAME_OVER);
+
+            readLine = Console.readLine();
+
+            while (parseInt(readLine) == 2) {
+                System.out.println(GAME_END);
+                break;
+            }
+
         }
         return GAME_END;
     }
