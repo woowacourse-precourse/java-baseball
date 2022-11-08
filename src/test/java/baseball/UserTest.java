@@ -19,7 +19,6 @@ public class UserTest {
         System.setIn(in);
 
         user.input();
-        user.exception();
 
         List<Integer> list = List.of(1, 2, 3);
         assertThat(user.userNumber()).isEqualTo(list);
@@ -31,9 +30,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        user.input();
-
-        assertThatIllegalArgumentException().isThrownBy(() -> user.exception());
+        assertThatIllegalArgumentException().isThrownBy(() -> user.input());
     }
 
     @Test
@@ -42,9 +39,7 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        user.input();
-
-        assertThatIllegalArgumentException().isThrownBy(() -> user.exception());
+        assertThatIllegalArgumentException().isThrownBy(() -> user.input());
     }
 
     @Test
@@ -53,8 +48,6 @@ public class UserTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        user.input();
-
-        assertThatIllegalArgumentException().isThrownBy(() -> user.exception());
+        assertThatIllegalArgumentException().isThrownBy(() -> user.input());
     }
 }

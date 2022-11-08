@@ -10,17 +10,18 @@ class User {
     int userNum;
 
     public User() {
-        this.user = new ArrayList<>();
         this.userNum = 0;
     }
 
     void input() {
         userNum = Integer.parseInt(readLine());
+        exception();
     }
 
     void exception() {
         int tmp = userNum;
 
+        user = new ArrayList<>();
         while(tmp > 0) {
             user.add(0, tmp % 10);
             tmp = tmp / 10;
