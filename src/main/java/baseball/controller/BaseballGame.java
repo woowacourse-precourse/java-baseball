@@ -40,12 +40,12 @@ public class BaseballGame {
                      ball++;
                  }
 
-                 System.out.println(this);
-                 if(strike == CNT_NUMBER){
-                     System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                     ReStartGame(computerNumber);
-                 }
              }
+            System.out.println(this);
+            if(strike == CNT_NUMBER){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                ReStartGame(computerNumber);
+            }
 
         }
 
