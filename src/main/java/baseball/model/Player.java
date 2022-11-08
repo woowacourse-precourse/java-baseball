@@ -15,10 +15,6 @@ public class Player {
         this.ball = 0;
     }
 
-    public List<Integer> getPlayerNumber() {
-        return this.playerNumber;
-    }
-
     public void setPlayerNumber(String inputNumber) {
         checkInputStyle(inputNumber);
         setNumber(inputNumber);
