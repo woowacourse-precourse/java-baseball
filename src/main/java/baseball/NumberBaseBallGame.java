@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.player.Computer;
 import baseball.player.User;
+import java.util.List;
 
 public class NumberBaseBallGame {
 
@@ -16,5 +17,10 @@ public class NumberBaseBallGame {
     private void selectBalls() {
         user.selectBalls();
         computer.selectBalls();
+    }
+
+    private boolean isNothing(List<String> userSelectedBalls, List<String> computerSelectedBalls) {
+        return userSelectedBalls.stream()
+            .noneMatch(computerSelectedBalls::contains);
     }
 }
