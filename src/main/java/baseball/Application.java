@@ -9,9 +9,9 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        int restart = 0;
+        int restart=1;
 
-        while (restart != 2) {
+        while (restartNumberValidate(restart)) {
             List<Integer> computer = computerNumberList();
             String result = "";
             while (!result.equals("3스트라이크")) {
@@ -118,5 +118,18 @@ public class Application {
         }
 
         return true;
+    }
+
+    public static boolean restartNumberValidate(int restart) {
+
+        if (restart == 1) {
+            return true;
+        } else if (restart == 2) {
+            return false;
+        } else if (restart != 1 || restart != 2) {
+            throw new IllegalArgumentException("정상적인 값이 아닙니다");
+        }
+
+        return false;
     }
 }
