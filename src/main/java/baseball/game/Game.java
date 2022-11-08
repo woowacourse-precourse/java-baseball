@@ -13,17 +13,19 @@ public class Game {
 
     private final Computer computer;
     private final Player player;
+    private final Output output;
 
     public Game() {
         this.computer = new Computer();
         this.player = new Player();
+        this.output = new Output();
     }
 
     public void startGame() {
-        System.out.println(SystemMessage.START_NUMBER_BASEBALL_GAME);
+        output.printWelcomeMessage();
         do {
             playGame();
-            System.out.println(SystemMessage.RESTART_GAME_OR_END);
+            output.printRestartMessage();
         } while (isContinue());
     }
 
@@ -58,12 +60,12 @@ public class Game {
         computer.countStrikeAndBallResults(computerBalls, playerBalls, strikeAndBallResults);
         resultMessage = computer.getResultMessage(strikeAndBallResults.get(STRIKE_COUNT),
                 strikeAndBallResults.get(BALL_COUNT));
-        System.out.println(resultMessage);
+        output.printResultMessage(resultMessage);
         return resultMessage;
     }
 
     private List<Integer> playerTurn() {
-        System.out.print(SystemMessage.ENTER_NUMBER);
+        output.printEnterNumberMessage();
         return player.getPlayerBalls();
     }
 }
