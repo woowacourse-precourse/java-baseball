@@ -30,14 +30,14 @@ public class ThreeNumberService {
         reset();
     }
 
-    public void playGame() {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
+    public boolean playGame() {
         inputData();
 
         judgeResult(user.getMyList());
 
         printResult();
+
+        return isEnd();
     }
 
     public void inputData() {
@@ -102,6 +102,16 @@ public class ThreeNumberService {
         else if(0 < strike && strike < 3)
         {
             System.out.println(strike + "스트라이크");
+        }
+    }
+
+    public boolean isEnd() {
+        if(strike == 3) {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
