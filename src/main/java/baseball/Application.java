@@ -96,6 +96,7 @@ public class Application {
         if(computerNum == playerNum){ //일치하는지
             int oldValue = resultMap.getOrDefault("strike", 0);
             resultMap.put("strike", oldValue+1);
+            return;
         }
         int oldValue = resultMap.getOrDefault("ball", 0);
         resultMap.put("ball", oldValue+1);
