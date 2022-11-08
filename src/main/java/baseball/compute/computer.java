@@ -16,5 +16,12 @@ public class computer {
         }
         return randomnumbers;
     }
-    
+
+    public void computeAnswer() {
+        try {
+            List<Integer> answer = makeRandom();
+        }catch(IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
 }
