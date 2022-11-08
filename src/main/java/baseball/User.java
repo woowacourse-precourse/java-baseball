@@ -25,23 +25,23 @@ public class User {
 	}
 
 	private void validateNumberLength(String number) {
-		if(number.trim().length() != Game.DIGIT_NUMBER) {
+		if (number.trim().length() != Game.DIGIT_NUMBER) {
 			throw new IllegalArgumentException(Message.INVALID_ARGUMENT_EXCEPTION_MESSAGE);
 		}
 	}
 
 	private void validateNumberList(List<String> numberList) {
-		if(numberList.get(0).equals("0")) {
+		if (numberList.get(0).equals("0")) {
 			throw new IllegalArgumentException(Message.INVALID_ARGUMENT_EXCEPTION_MESSAGE);
 		}
 	}
 
 	public void calculateBallAndStrike(List<String> opponentNumberList) {
 		for(String number : numberList) {
-			if(numberList.indexOf(number) == opponentNumberList.indexOf(number)) {
+			if (numberList.indexOf(number) == opponentNumberList.indexOf(number)) {
 				strike++;
 			}
-			if(opponentNumberList.indexOf(number) != -1 && numberList.indexOf(number) != opponentNumberList.indexOf(number)) {
+			if (opponentNumberList.indexOf(number) != -1 && numberList.indexOf(number) != opponentNumberList.indexOf(number)) {
 				ball++;
 			}
 		}
