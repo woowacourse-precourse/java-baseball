@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UserInputTest {
     @Test
-    void generatePlayerBalls_길이_예외_테스트() {
+    void inputTest_길이_예외_테스트() {
         //given
         List<Integer> playerValues = List.of(1, 2, 3, 4);
         //when
@@ -21,7 +21,7 @@ public class UserInputTest {
     }
 
     @Test
-    void generatePlayerBalls_중복_예외_테스트() {
+    void inputTest_중복_예외_테스트() {
         //given
         List<Integer> playerValues = List.of(1, 2, 2);
         //when
@@ -32,7 +32,7 @@ public class UserInputTest {
     }
 
     @Test
-    void generatePlayerBalls_input_status_테스트() {
+    void inputTest_input_status_테스트() {
         //given
         String input = "3";
         //when
