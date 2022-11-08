@@ -27,7 +27,12 @@ public class Client {
     public static int askPlayerGameNumber() throws IllegalArgumentException {
         System.out.print(MSG_ASK_PLAYER_GAME_NUMBER);
 
-        String line = Console.readLine();
+        String line;
+        try {
+            line = Console.readLine();
+        } catch (NoSuchElementException e) {
+            throw new IllegalArgumentException();
+        }
 
         int originalLength = line.length();
         line = line.strip();
@@ -77,7 +82,12 @@ public class Client {
     public static boolean askMoreGame() throws IllegalArgumentException {
         System.out.println(MSG_ASK_MORE_GAME);
 
-        String line = Console.readLine();
+        String line;
+        try {
+            line = Console.readLine();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
 
         if (line.equals(ANSWER_ONE_MORE_GAME)) {
             return true;
