@@ -39,8 +39,11 @@
 - GameController 클래스
     - InputException, Player, Game, view 클래스들을 활용하여 숫자 야구 게임 시물레이션을 담당
   
-- view 클래스
-  - 콘솔 내 입출력을 담당
+- Inputview 클래스
+  - 콘솔 내 입력을 담당
+
+- outputview 클래스
+  - 콘솔 내 출력을 담당
 
 ## 1️⃣  InputException 클래스
 - 함수 구성
@@ -68,12 +71,21 @@
 
 ## 3️⃣  Game 클래스
 - 함수 구성
+  
   - judgeState
     - 상대방과 플레이어의 숫자 리스트를 비교하여 스트라이크와 볼을 집계
   - countStrike
     - 같은 위치에 같은 숫자가 있는지 검사하여 스트라이크 수를 집계
   - countBall
     - 다른 위치에 같은 숫자가 있는지 검사하여 볼 수를 집계
+  - prepareComputer
+    - 상대방(컴퓨터)의 숫자 리스트를 초기화
+  - preparePlayer
+    - 플레이어(사용자)의 숫자 리스트를 초기화
+  - showResult
+    - 스트라이크와 볼의 집계 결과를 반환
+  - isFinished
+    - 게임의 종료여부를 판별
     
 ## 4️⃣  Computer 클래스
 - 함수 구성
@@ -84,9 +96,20 @@
   - createRandomNumbers
     - 상대방(컴퓨터)의 숫자 리스트를 생성
 
-## 5️⃣  View 클래스
--함수 구성
-
-## 6️⃣  GameController 클래스
+## 5️⃣  InputView 클래스
 - 함수 구성
+  - noticeGameStart
+  - requestEnteringNumbers
+  - requestMoreGame
+
+## 6️⃣  OutputView 클래스
+- 함수 구성
+  - showMessage
+  - showSuccessMessage
+
+## 7️⃣  GameController 클래스
+- 함수 구성
+  - setGameState
+  - startGame
+  - chooseGameState
  
