@@ -10,32 +10,29 @@ import java.util.List;
 
 
 public class Application {
-    static int[] input = new int[3];
-    static int[] answer = new int[3];
-    static int ball = 0;
-    static int strike = 0;
-    static boolean gameProceed = true;
-    static boolean b = true;
+   static int strike = 0;
+   static int ball = 0;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
+        boolean gameProceed = true;
+        boolean b = true;
         System.out.println("숫자야구게임을 시작합니다.");
         while(gameProceed){
-            makeAnswer();
+            int[] answer = makeAnswer();
             while(b){
                 System.out.print("숫자를 입력해주세요 : ");
                 String number = Console.readLine();
                 inputException(number);
                 int num = Integer.parseInt(number);
+                int[] input = new int[3];
                 input[0] = num/100;
                 input[1] = (num - input[0]*100)/10;
                 input[2] = (num - input[0]*100 - input[1]*10);
 
-                ball = 0;
-                strike = 0;
+                int[] score = new int[2];   // 첫번째 방에 strike, 두번째방에 ball
 
-                checkBallStrike();
-                checkEndGame();
+                score = checkBallStrike(answer, input);
+                b = checkEndGame(score[1], score[0]);
             }
 
             if(newGame())
@@ -60,11 +57,11 @@ public class Application {
             throw new IllegalArgumentException("숫자 입력 오류");
     }
 
-    private static void checkEndGame() {
+    private static  boolean checkEndGame(int ball, int strike) {
         if(strike == 3){
             System.out.println(strike + "스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            b = false;
+            return false;
         }
         else {
             if(ball > 0)
@@ -75,23 +72,27 @@ public class Application {
                 System.out.print("낫싱");
 
             System.out.println();
+            return true;
         }
     }
 
 
-    private static void checkBallStrike() {
+    private static int[] checkBallStrike(int[] answer, int input[]) {
+        int[] score = new int[2];
         if(answer[0] == input[0])
-            strike++;
+            score[0]++;
         else if (answer[0] == input[1] || answer[0] == input[2])
-            ball++;
+            score[1]++;
         if(answer[1] == input[1])
-            strike++;
+            score[0]++;
         else if (answer[1] == input[0] || answer[1] == input[2])
-            ball++;
+            score[1]++;
         if(answer[2] == input[2])
-            strike++;
+            score[0]++;
         else if (answer[2] == input[0] || answer[2] == input[1])
-            ball++;
+            score[1]++;
+
+        return score;
     }
 
    private static void inputException(String number) {
@@ -100,16 +101,17 @@ public class Application {
         else if(number.length() != 3)
             throw new IllegalArgumentException("숫자 입력 오류");
     }
-    private static void makeAnswer() {
+    private static int[] makeAnswer() {
         List<Integer> computer = new ArrayList<>();
         while(computer.size() < 3){
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if(!computer.contains(randomNumber))
                 computer.add(randomNumber);
         }
+        int[] answer = new int[computer.size()];
         for(int i = 0 ; i < computer.size(); i++) {
-            //System.out.print(computer.get(i) + " ");
             answer[i] = computer.get(i);
         }
+        return answer;
     }
 }
