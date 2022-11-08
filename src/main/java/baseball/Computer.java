@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.Numbers.MIN;
-import static baseball.Numbers.MAX;
 import static baseball.Numbers.LENGTH;
 
 public class Computer {
@@ -23,7 +21,7 @@ public class Computer {
     public static Computer create() {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < LENGTH) {
-            int randomNumber = Randoms.pickNumberInRange(MIN, MAX);
+            int randomNumber = Randoms.pickNumberInRange(Numbers.MIN, Numbers.MAX);
             if (!answer.contains(randomNumber)) {
                 answer.add(randomNumber);
             }
