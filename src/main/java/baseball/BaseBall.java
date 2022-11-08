@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,8 +39,12 @@ public class BaseBall {
                 });
     }
 
-    public void validateInputUnique() {
-
+    public void validateInputUnique(String input) {
+        Set<String> set = Arrays.stream(input.split(""))
+                .collect(Collectors.toSet());
+        if (set.size() < 3) {
+            throw new IllegalArgumentException("입력중 같은 문자가 있습니다.");
+        }
     }
 
     public Set<Integer> getUserBall() {
