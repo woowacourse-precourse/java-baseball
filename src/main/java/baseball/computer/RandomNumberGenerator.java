@@ -4,14 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RandomNumberGenerator {
     public static final int MAX_NUMBER_OF_CASE = 504;
     public static final int MIN_DIGIT = 1;
     public static final int MAX_DIGIT = 9;
     public static final int NUMBER_LENGTH = 3;
-    private static final HashSet<String> numberSet = new HashSet<>();
+    private static final HashSet<List<Integer>> numberSet = new HashSet<>();
 
     public static void initGenerator() {
         numberSet.clear();
@@ -50,11 +49,12 @@ public class RandomNumberGenerator {
 
     private static boolean checkDuplicateNumber(List<Integer> randomNumber) {
         boolean noDuplicatedNumber = false;
-        String generatedNumber = randomNumber.stream().map(String::valueOf).collect(Collectors.joining());
-        if (!numberSet.contains(generatedNumber)) {
-            numberSet.add(generatedNumber);
+
+        if (!numberSet.contains(randomNumber)) {
+            numberSet.add(randomNumber);
             noDuplicatedNumber = true;
         }
+
         return noDuplicatedNumber;
     }
 }
