@@ -14,6 +14,15 @@ public class Validator {
         validateDuplication(numbers);
     }
 
+    public void validateRestartNumber(String numbers) {
+        for (int i = 0; i < numbers.length(); i++) {
+            int number = charToInt(numbers.charAt(i));
+            validateIsDigit(numbers.charAt(i));
+            validateNumber(number, Constant.RESTART, Constant.EXIT);
+        }
+        validateLength(numbers, Constant.LENGTH_RESTART);
+    }
+
     public int charToInt(char number) {
         return Integer.parseInt(String.valueOf(number));
     }

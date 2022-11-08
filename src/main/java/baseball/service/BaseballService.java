@@ -42,6 +42,7 @@ public class BaseballService {
         System.out.println(Constant.GAME_OVER_MESSAGE);
         System.out.print(Constant.CHECK_RESTART_MESSAGE);
         String checkRestartNumber = Console.readLine();
+        validator.validateRestartNumber(checkRestartNumber);
         return true;
     }
 
