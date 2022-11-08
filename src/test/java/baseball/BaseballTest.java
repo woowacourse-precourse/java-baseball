@@ -3,6 +3,7 @@ package baseball;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -81,9 +82,26 @@ public class BaseballTest {
     @Nested
     class FunctionList5{
         @Test
-        void HashMap_생성_기능(){
-
+        void HashMap_생성_기능_테스트1(){
+            List<Integer> inputNumber = List.of(7,8,9);
+            HashMap<Integer,Integer> map = Application.getNumberAndIndexByList(inputNumber);
+            assertThat(map.get(inputNumber.get(0))).isEqualTo(0);
+            assertThat(map.get(inputNumber.get(1))).isEqualTo(1);
+            assertThat(map.get(inputNumber.get(2))).isEqualTo(2);
         }
+        @Test
+        void HashMap_생성_기능_테스트2(){
+            List<Integer> inputNumber = List.of(9,8,7);
+            HashMap<Integer,Integer> map = Application.getNumberAndIndexByList(inputNumber);
+            assertThat(map.get(inputNumber.get(0))).isEqualTo(0);
+            assertThat(map.get(inputNumber.get(1))).isEqualTo(1);
+            assertThat(map.get(inputNumber.get(2))).isEqualTo(2);
+        }
+    }
+
+    @Nested
+    class FunctionList6{
+
     }
 
 }
