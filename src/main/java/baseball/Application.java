@@ -84,7 +84,7 @@ public class Application {
         public boolean resultPrint(int ballCnt, int strikeCnt) {
             if (strikeCnt == 3) {
                 System.out.println("3스트라이크");
-                System.out.print("3개의 숫자를 모두 맞히셨습니다! ");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 return true;
             } else if (strikeCnt == 0 && ballCnt == 0) {
                 System.out.println("낫싱");
@@ -106,11 +106,11 @@ public class Application {
         while (nextGame == 1) {
             baseball.clear();
             if (baseball.startGame()) {
-                System.out.println("게임종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
                 String input = Console.readLine();
                 nextGame = Integer.parseInt(input);
             }
         }
+        System.out.println("게임 종료");
     }
 }
