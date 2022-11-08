@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.domain.Computer;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,16 @@ class ApplicationTest extends NsTest {
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
                 },
                 1, 3, 5, 5, 8, 9
+        );
+    }
+
+    @Test
+    void 컴퓨터_숫자_랜덤_생성_테스트() {
+        Computer computer = new Computer();
+
+        assertThat(computer.getNumbers().size()).isEqualTo(3);
+        computer.getNumbers().forEach(number ->
+                assertThat(number).isBetween(1, 9)
         );
     }
 
