@@ -2,8 +2,11 @@ package baseball.domain.manager;
 
 import baseball.constant.GameMessage;
 import baseball.constant.GameStatus;
+import baseball.domain.computer.Computer;
 import baseball.domain.user.User;
 import baseball.util.BallCount;
+
+import java.io.IOException;
 
 public class NumberBaseBallManager {
 
@@ -69,6 +72,60 @@ public class NumberBaseBallManager {
         }
     }
 
+    public void start() throws IOException {
+        while (status!=GameStatus.FINISHED) {
+            System.out.println(selectMessage());
+
+            Computer computer = initComputer();
+
+            playGame(computer);
+
+            determineToContinue();
+        }
+    }
+
+    private Computer initComputer() {
+        Computer computer = new Computer();
+        computer.initialize();
+        status = GameStatus.INITIALIZED;
+
+        return computer;
+    }
+    public void playGame(Computer computer) throws IOException {
+        status = GameStatus.IN_GAME;
+
+        while (status==GameStatus.IN_GAME) {
+            System.out.print(selectMessage());
+            communicate(computer);
+        }
+
+        System.out.println(GameMessage.GAME_OVER.getValue());
+    }
+
+    private void communicate(Computer computer)
+            throws IOException,IllegalArgumentException {
+        String userAnswer = user.answer();
+        validate(userAnswer);
+        BallCount result = computer.calculateBallCount(userAnswer);
+        System.out.println(selectResultOutput(result));
+        checkResult(result);
+    }
+
+    private void determineToContinue() throws IOException {
+        System.out.println(selectMessage());
+        String responseToContinue = user.answer();
+        validate(responseToContinue);
+        determineToContinue(Character.getNumericValue(responseToContinue.charAt(0)));
+    }
+
+    public void determineToContinue(int response) {
+        if( response == 1 ) {
+            status=GameStatus.RESTART;
+            return;
+        }
+        status=GameStatus.FINISHED;
+    }
+
     public String selectMessage() {
         if (getStatus() == GameStatus.NOT_INITIALIZED) {
             return GameMessage.START_GAME.getValue();
@@ -76,14 +133,10 @@ public class NumberBaseBallManager {
         if (getStatus() == GameStatus.IN_GAME) {
             return GameMessage.QUESTION_TO_GUESS_NUMBER.getValue();
         }
-        if (getStatus() == GameStatus.OVER) {
-            return GameMessage.GAME_OVER.getValue();
-        }
         if (getStatus() == GameStatus.PENDING) {
             return GameMessage.QUESTION_TO_CONTINUE.getValue();
         }
 
-        
         return null;
     }
 

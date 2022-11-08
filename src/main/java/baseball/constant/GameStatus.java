@@ -6,5 +6,5 @@ public enum GameStatus {
     INITIALIZED,
     IN_GAME,
     PENDING,
-    OVER
+    FINISHED
 }
