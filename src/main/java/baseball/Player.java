@@ -15,7 +15,7 @@ public class Player {
     return Console.readLine();
   }
 
-  public static String inputGameStatusData(){
+  public String inputGameStatusData(){
     System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     return String.valueOf(Console.readLine());
   }
@@ -59,12 +59,13 @@ public class Player {
     }
   }
 
-  public void validateGameStatusData(String input){
+  public int validateGameStatusData(String input){
     try{
       int result = Integer.parseInt(input);
       if(result != RESTART && result != EXIT){
         throw new RuntimeException();
       }
+      return result;
     }catch(Exception e){
       throw new IllegalArgumentException("0 또는 1을 입력해야 합니다.");
     }

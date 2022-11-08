@@ -34,4 +34,8 @@ public class Judge {
     }
     return new Result(strike, ball);
   }
+
+  public int decideGameContinue(){
+    return this.player.validateGameStatusData(this.player.inputGameStatusData());
+  }
 }
