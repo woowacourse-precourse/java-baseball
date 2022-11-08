@@ -14,7 +14,7 @@ public class Game {
     public String restartGame() {
         System.out.println("새 게임을 시작하려면 1, 완전 종료하실려면 2를 입력해주세요");
         String input = Console.readLine();
-        if (input.charAt(0) == 1 || input.charAt(0) == 2) {
+        if (input.charAt(0) == '1' || input.charAt(0) == '2') {
             return input;
         }
         throw new IllegalArgumentException();
