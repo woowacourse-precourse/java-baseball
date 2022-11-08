@@ -30,8 +30,15 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     void 랜덤숫자_랜덤확인() {  
+    void 랜덤숫자_랜덤확인() {
         Util util = new Util();
         assertThat(util.createAnswerString()).isNotEqualTo(util.createAnswerString());
+    }
+
+    @Test
+    void 볼갯수확인() {
+        Computer computer = new Computer("123");
+        assertThat(computer.countBall("412")).isEqualTo(2);
     }
 
     @Override
