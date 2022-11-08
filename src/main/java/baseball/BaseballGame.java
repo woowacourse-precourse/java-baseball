@@ -23,7 +23,6 @@ public class BaseballGame {
             if (isFinished(result)) {
                 break;
             }
-            baseballService.resetNumberList();
         }
 
     }
@@ -32,7 +31,10 @@ public class BaseballGame {
         if (result.isStrikeOut()) {
             String input = view.inputExitOrRestart();
             GameOption gameOption = createGameOption(input);
-            return gameOption.equals(GameOption.EXIT);
+            if (gameOption.equals(GameOption.EXIT)) {
+                return true;
+            }
+            baseballService.resetNumberList();
         }
         return false;
     }
