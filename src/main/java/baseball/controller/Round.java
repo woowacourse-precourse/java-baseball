@@ -22,5 +22,6 @@ public class Round {
             }
         }
         view.end();
+        view.askRetry();
     }
 }
