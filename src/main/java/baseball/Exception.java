@@ -40,7 +40,7 @@ public class Exception {
         playerNumber.stream()
                 .filter(n -> !items.add(n))
                 .collect(Collectors.toSet());
-        if (items.isEmpty()) {
+        if (items.size() != 3) {
             throw new IllegalArgumentException();
         }
     }

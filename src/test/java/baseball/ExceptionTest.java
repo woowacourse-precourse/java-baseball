@@ -56,6 +56,7 @@ class ExceptionTest {
                 assertThatThrownBy(() -> Exception.checkNumbersLength(testInput))
         );
     }
+
     @Test
     void check_nummber_length_under_three() {
         List<Integer> testInput = List.of(1, 2);
