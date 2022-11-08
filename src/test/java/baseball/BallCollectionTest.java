@@ -44,4 +44,32 @@ public class BallCollectionTest {
         assertThat(balls).isInstanceOf(BallCollection.class);
         assertThat(balls.size()).isEqualTo(BallCollection.BALL_COUNT);
     }
+
+    @Test
+    @DisplayName("문자열 값을 BallCollection 객체로 변환")
+    public void ChangeStringToBallIfStringIsValid() throws Exception {
+        String numbers = "123";
+        BallCollection balls = BallCollection.stringToBallCollection(numbers);
+
+        assertThat(balls).isInstanceOf(BallCollection.class);
+    }
+
+    @Test
+    @DisplayName("BallCollection 특정위치의 값 가져오기")
+    public void GetTheElementAtTheSpecifiedPositionInBallCollection() throws Exception {
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        BallCollection balls = new BallCollection(numbers);
+
+        assertThat(balls.get(0)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("특정값이 BallCollection 에 있는지 확인")
+    public void CheckThatBallCollectionContainsTheSpecifiedElement() throws Exception {
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        BallCollection balls = new BallCollection(numbers);
+
+        assertThat(balls.contains(1)).isTrue();
+        assertThat(balls.contains(4)).isFalse();
+    }
 }
