@@ -57,6 +57,12 @@ class ApplicationTest extends NsTest {
         Assertions.assertThat(isValidInput(num).equals(false));
     }
 
+    @Test
+    void 사용자_입력은_서로_다른_숫자이다() {
+        String num = "112";
+        Assertions.assertThat(isValidInput(num).equals(false));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
