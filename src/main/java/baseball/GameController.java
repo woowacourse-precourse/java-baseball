@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GameController {
-    
+
     private static List<Integer> computerNumber;
     private static boolean isPlaying = true;
     private static final String STRIKE ="strike";
@@ -16,16 +16,16 @@ public class GameController {
     private static final String NOTHING ="nothing";
     private static final String NOTHING_KOR ="낫싱";
 
-    private static final int DIGITS = Rule.DISITS.getValue();
-    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.getValue()+"";
-    private static final String COMMAND_END = Rule.COMMAND_END.getValue()+"";
+    private static final int DIGITS = GameRule.DIGITS.getValue();
+    private static final String COMMAND_RESTART = GameRule.COMMAND_RESTART.getValue()+"";
+    private static final String COMMAND_END = GameRule.COMMAND_END.getValue()+"";
 
     public void generate() {
         //1. 컴퓨터 수 생성
-        computerNumber = Model.createComputerNumber();
+        computerNumber = GameModel.createComputerNumber();
         do {
             //2.플레이어수 생성(예외)
-            List<Integer> playerNumber = Model.createPlayerNumber();
+            List<Integer> playerNumber = GameModel.createPlayerNumber();
             //3. 플레이어 수 비교하기
             Map<String, Integer> resultMap = checkAnswer(computerNumber, playerNumber);
             //4.힌트 출력하기
@@ -86,7 +86,7 @@ public class GameController {
 
     public static void restartOrEnd(String input) {
         if (input.equals(COMMAND_RESTART)) {
-            computerNumber = Model.createComputerNumber();
+            computerNumber = GameModel.createComputerNumber();
         }
         if (input.equals(COMMAND_END)) {
             isPlaying = false;

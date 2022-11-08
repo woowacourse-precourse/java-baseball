@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameModel {
-    private static final int DIGITS = Rule.DISITS.getValue();
-    private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
-    private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
+    private static final int DIGITS = GameRule.DIGITS.getValue();
+    private static final int RANDOM_MIN = GameRule.RANDOM_MIN.getValue();
+    private static final int RANDOM_MAX = GameRule.RANDOM_MAX.getValue();
     public static List<Integer> createComputerNumber() {
         List<Integer> computerNumber = new ArrayList<>();
         while (computerNumber.size() < DIGITS) {

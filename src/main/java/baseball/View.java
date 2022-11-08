@@ -16,8 +16,7 @@ public class View {
         }
         return input;
     }
-
-
+    
     public static void printHint(String hint) {
         System.out.println(hint);
     }

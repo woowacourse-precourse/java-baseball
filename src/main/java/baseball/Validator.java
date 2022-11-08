@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Validator {
-    private static final int DIGITS = Rule.DISITS.getValue();
-    private static final int RANDOM_MIN = Rule.RANDOM_MIN.getValue();
-    private static final int RANDOM_MAX = Rule.RANDOM_MAX.getValue();
-    private static final String COMMAND_RESTART = Rule.COMMAND_RESTART.getValue()+"";
-    private static final String COMMAND_END = Rule.COMMAND_END.getValue()+"";
+    private static final int DIGITS = GameRule.DIGITS.getValue();
+    private static final int RANDOM_MIN = GameRule.RANDOM_MIN.getValue();
+    private static final int RANDOM_MAX = GameRule.RANDOM_MAX.getValue();
+    private static final String COMMAND_RESTART = GameRule.COMMAND_RESTART.getValue()+"";
+    private static final String COMMAND_END = GameRule.COMMAND_END.getValue()+"";
 
     public static boolean isNumber(String input) {
         return input.chars()
