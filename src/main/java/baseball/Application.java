@@ -92,7 +92,7 @@ public class Application {
         return result;
     }
 
-    public static void main(String[] args) {
+    public static void playBaseball() {
         System.out.println("숫자 야구 게임을 시작합니다.");
         List<Integer> randomNumberList = makeRandomNumber();
         String result;
@@ -111,6 +111,17 @@ public class Application {
                 break;
             }
             System.out.println(result);
+        }
+    }
+
+    public static void main(String[] args) {
+        while (true) {
+            playBaseball();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String replayCommand = readLine();
+            if (replayCommand.equals("2")) {
+                break;
+            }
         }
     }
 }
