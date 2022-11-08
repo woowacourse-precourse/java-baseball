@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.domain.game;
 
 public enum Digits {
     ZERO(0), FIRST(1), LAST(9), SIZE(3);

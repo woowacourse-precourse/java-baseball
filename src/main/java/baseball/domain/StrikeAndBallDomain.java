@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.util.GameMessage;
+import baseball.domain.game.GameMessage;
 
 import java.util.List;
 

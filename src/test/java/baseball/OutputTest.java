@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.domain.StrikeAndBallDomain;
-import baseball.util.GameMessage;
+import baseball.domain.game.GameMessage;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class OutputTest extends NsTest {
     }
 
     @BeforeEach
-    public void each(){
+    public void each() {
         strikeAndBallDomain = new StrikeAndBallDomain();
     }
 

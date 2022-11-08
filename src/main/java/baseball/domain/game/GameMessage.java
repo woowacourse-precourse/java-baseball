@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.domain.game;
 
 import baseball.domain.StrikeAndBallDomain;
 
@@ -33,7 +33,7 @@ public enum GameMessage {
     }
 
     /*값이 계속 바뀌기 때문에 초기화 필수*/
-    private static void initMessage(){
+    private static void initMessage() {
         GameMessage.BALL_AND_STRIKE.setMassage("%d볼 %d스트라이크\n");
     }
 

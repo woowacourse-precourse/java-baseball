@@ -1,9 +1,9 @@
 package baseball.serviceImpl;
 
 import baseball.service.DigitGeneratorImpl;
-import baseball.util.Digits;
-import baseball.util.GameMessage;
-import baseball.util.GameStatus;
+import baseball.domain.game.Digits;
+import baseball.domain.game.GameMessage;
+import baseball.domain.game.GameStatus;
 import baseball.domain.StrikeAndBallDomain;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -94,7 +94,7 @@ public class GameService {
         throw new IllegalArgumentException();
     }
 
-    private String userInput(){
+    private String userInput() {
         return Console.readLine();
     }
 
@@ -103,7 +103,7 @@ public class GameService {
     }
 
     public List<Integer> getComputerDigits(DigitGeneratorImpl generator) throws IllegalArgumentException {
-        String computerDigits = generator.generator();
+        String computerDigits = generator.generate();
         return digits(computerDigits);
     }
 }

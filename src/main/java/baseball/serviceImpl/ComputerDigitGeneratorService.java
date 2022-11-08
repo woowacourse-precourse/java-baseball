@@ -1,7 +1,7 @@
 package baseball.serviceImpl;
 
 import baseball.service.DigitGeneratorImpl;
-import baseball.util.Digits;
+import baseball.domain.game.Digits;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class ComputerDigitGeneratorService implements DigitGeneratorImpl {
     }
 
     @Override
-    public String generator() {
+    public String generate() {
         List<Integer> digits = new ArrayList<>();
         while (digits.size() < Digits.SIZE.getDigit()) {
             int randomNumber = Randoms.pickNumberInRange(Digits.FIRST.getDigit(),
