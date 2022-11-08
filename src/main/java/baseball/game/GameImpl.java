@@ -57,4 +57,8 @@ public class GameImpl implements Game{
     return this.flag;
   }
 
+  @Override
+  public boolean isStrike(){
+    return this.score.getStrikeCount() == 3;
+  }
 }
