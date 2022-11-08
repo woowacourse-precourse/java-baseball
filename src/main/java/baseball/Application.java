@@ -49,10 +49,7 @@ public class Application {
         int nothing = (3 - strike - ball);
 
         if (nothing != 3){
-            if (strike == 3) {
-                return null;
-            }
-            else if (ball == 0) {
+            if (ball == 0) {
                 return (strike + "스트라이크");
             }
             else if (strike == 0) {
@@ -67,17 +64,17 @@ public class Application {
         }
     }
 
-    public static void repeatGame(List<Integer> computer) {
+    public static String repeatGame(List<Integer> computer) {
         boolean flag = true;
         while (flag){
             List<String> player = inputPlayerAnswerList();
             String hint = checkAnswerAndGiveHint(computer, player);
-            if (hint == null){
+            System.out.println(hint);
+            if (hint.contains("3스트라이크")){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 flag = false;
             }
-            else {
-                System.out.println(hint);
-            }
         }
+        return "종료";
     }
 }
