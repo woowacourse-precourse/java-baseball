@@ -47,4 +47,8 @@ public class NumberBaseballGame {
         }
         return computerNumber;
     }
+
+    public void askPlayerToInputNumber() {
+        System.out.println("숫자를 입력해주세요 : ");
+    }
 }
