@@ -14,7 +14,7 @@ public class ValidatorTest {
     class InvalidNumberTest {
         @DisplayName("IllegalArgumentException 테스트")
         @ParameterizedTest
-        @ValueSource(strings = {"1234", "1!3", "12", "", "a72", "803", "886", "919", "141", "332", "277"})
+        @ValueSource(strings = {"1234", "1!3", "12", "", "a72", "803", "ㅎ2염", "886", "919", "141", "333", "277"})
         void illegalArgumentExceptionTest(String input) {
             assertThatThrownBy(() -> Validator.check(input))
                     .isInstanceOf(IllegalArgumentException.class);
@@ -22,7 +22,7 @@ public class ValidatorTest {
 
         @DisplayName("1과 9 사이의 세 자리 수 테스트")
         @ParameterizedTest
-        @ValueSource(strings = {"1234", "1!3", "12", "", "a72", "803"})
+        @ValueSource(strings = {"1234", "1!3", "12", "", "a72", "803", "ㅎ2염"})
         void threeNumbersTest(String input) {
             boolean result = Validator.hasThreeDigits(input);
             assertThat(result).isFalse();
@@ -30,7 +30,7 @@ public class ValidatorTest {
 
         @DisplayName("중복 여부 테스트")
         @ParameterizedTest
-        @ValueSource(strings = {"886", "919", "141", "332", "277"})
+        @ValueSource(strings = {"886", "919", "141", "333", "277"})
         void uniquenessTest(String input) {
             boolean result = Validator.hasDifferentDigits(input);
             assertThat(result).isFalse();
