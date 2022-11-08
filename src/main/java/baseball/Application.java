@@ -10,31 +10,47 @@ public class Application {
         // TODO: 프로그램 구현
 
         playGame();
+
     }
 
     static List<Integer> makeAns() {
         List<Integer> computer = new ArrayList<>();
+        computer.add(1);
+        computer.add(3);
+        computer.add(5);
 
+
+        /*
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
+        */
+
         return computer;
     }
 
     static int[] getInput() {
-        System.out.print("숫자를 입력해주세요 : ");
-
+        System.out.println("숫자를 입력해주세요 : ");
         int[] userInput = new int[3];
         int idx = 2;
-        int input = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
 
-        while (input > 0) {
-            userInput[idx] = input % 10;
-            input /= 10;
-            idx -= 1;
+        try {
+            int input = Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
+            if (input > 999) {
+                throw new IllegalArgumentException();
+            }
+
+            while (input > 0) {
+                userInput[idx] = input % 10;
+                input /= 10;
+                idx -= 1;
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.exit(0);
         }
         return userInput;
     }
@@ -71,7 +87,7 @@ public class Application {
         System.out.println(info);
     }
 
-    static void playGame(){
+    static void playGame() {
         int end = 0;
         List<Integer> computer = makeAns();
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -88,11 +104,6 @@ public class Application {
             }
         }
     }
-
-
-
-
-
 
 
 }
