@@ -38,8 +38,8 @@ public class Player {
         return playerNumbers;
     }
 
-    // validateAnswer(): 입력받은 재시작 여부 답변에 대한 유효성 검증
-    public boolean checkAnswerValidation(String answer) {
+
+    private boolean checkAnswerValidation(String answer) {
         if(answer.equals("1")||answer.equals("2")) {
             return true;
         }
