@@ -19,7 +19,6 @@ public class ComputerPlayerTest {
 		List<Integer> computerNumbers = computerPlayer.getNumberList();
 
 		// then
-		System.out.println("computerNumbers = " + computerNumbers);
 		assertThat(computerNumbers.size()).isEqualTo(GameRules.DIGIT_NUMBER.getCode());
 	}
 

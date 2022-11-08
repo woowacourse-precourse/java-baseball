@@ -7,14 +7,13 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameController {
-	private UserPlayer userPlayer;
+	private final UserPlayer userPlayer;
 	private BaseballGameModel baseballGameModel;
 	private boolean gameStatus;
 	private final UserInputValidator userInputValidator;
 
-	public BaseballGameController(UserPlayer userPlayer, BaseballGameModel baseballGameModel, UserInputValidator userInputValidator) {
+	public BaseballGameController(UserPlayer userPlayer, UserInputValidator userInputValidator) {
 		this.userPlayer = userPlayer;
-		this.baseballGameModel = baseballGameModel;
 		this.userInputValidator = userInputValidator;
 		System.out.println("숫자 야구 게임을 시작합니다.");
 	}
@@ -25,6 +24,11 @@ public class BaseballGameController {
 			playGame();
 			choiceGameProgress();
 		}
+	}
+	public void gameInit() {
+		ComputerPlayer computerPlayer = new ComputerPlayer();
+		baseballGameModel = new BaseballGameModel(computerPlayer);
+		gameStatus = true;
 	}
 
 	public void playGame() {
@@ -47,13 +51,6 @@ public class BaseballGameController {
 			}
 			printMatchResult(scoreList);
 		}
-	}
-
-	public void gameInit() {
-		ComputerPlayer computerPlayer = new ComputerPlayer();
-		userPlayer = UserPlayer.getInstance();
-		baseballGameModel = new BaseballGameModel(computerPlayer);
-		gameStatus = true;
 	}
 
 	public void choiceGameProgress() {
