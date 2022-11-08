@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball;
 
 import java.io.IOException;
 import java.util.List;

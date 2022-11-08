@@ -1,6 +1,5 @@
-package baseball.service;
+package baseball;
 
-import baseball.exception.CheckException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball;
 
 import java.util.Arrays;
 import java.util.List;
