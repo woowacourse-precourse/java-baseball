@@ -19,9 +19,11 @@ public class ComputerCalculate {
 
     int strikeCount(String userInput, List<Integer> computerMadeNumbers){
         int strikeCount = 0;
-        for(int numbersIndex = 0; numbersIndex < gameCount; numbersIndex++){
-            int userValue = Integer.parseInt(userInput.substring(numbersIndex,numbersIndex+1));
-            if(userValue == computerMadeNumbers.get(numbersIndex)){
+        for(int numberIndex = 0; numberIndex < gameCount; numberIndex++){
+            int userValue = Integer.parseInt(userInput.substring(numberIndex,numberIndex+1));
+            int computersPickNumber = computerMadeNumbers.get(numberIndex);
+
+            if(isStrike(userValue,computersPickNumber)){
                 strikeCount++;
             }
         }
@@ -32,11 +34,19 @@ public class ComputerCalculate {
         int ballCount = 0;
         for(int numberIndex = 0; numberIndex < gameCount; numberIndex++){
             int userValue = Integer.parseInt(userInput.substring(numberIndex,numberIndex+1));
-            boolean isNotStrike = !(userValue == computerMadeNumbers.get(numberIndex));
-            if(isNotStrike && computerMadeNumbers.contains(userValue)){
+            int computersPickNumber = computerMadeNumbers.get(numberIndex);
+
+            if(isBall(userValue,computersPickNumber,computerMadeNumbers)){
                 ballCount++;
             }
         }
         return ballCount;
+    }
+    boolean isStrike(int userValue, Integer computersPickNumber){
+        return userValue == computersPickNumber;
+    }
+
+    boolean isBall(int userValue, Integer computersPickNumber, List<Integer> computerMadeNumbers){
+        return !isStrike(userValue,computersPickNumber) && computerMadeNumbers.contains(userValue);
     }
 }
