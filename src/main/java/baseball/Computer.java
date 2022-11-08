@@ -1,7 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import org.junit.platform.commons.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +61,7 @@ public class Computer {
     public int getStrike() {
         return strikeCnt;
     }
+
     public void setStrike(int s) {
         strikeCnt = s;
     }
