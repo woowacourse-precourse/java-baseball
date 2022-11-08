@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,13 +22,16 @@ public class startGame {
             }
 
             if(baseball.printCase.makePrintCase(newAnswerNumber, newInputNumber)) {
-                int chooseNumber = in.nextInt();
+//                int chooseNumber = in.nextInt();
+                String num = Console.readLine();
+                int chooseNumber = Integer.parseInt(num);
 
                 if(chooseNumber == 1) {
                     returnNumber = 1;
                     break;
                 } else {
                     returnNumber = 2;
+                    System.out.println("게임종료");
                     break;
                 }
             }
