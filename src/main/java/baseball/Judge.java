@@ -11,22 +11,16 @@ public class Judge {
     }
 
     /**
-     *
      * @param guess user's guess
      * @return count list (ball, strike)
      */
     public List<Integer> judgeUserGuess(List<Integer> guess) {
         int strikeCount = countStrike(guess);
-        int ballCount = countBall(guess) - strikeCount;
+        int ballCount = ListUtil.countSameNumberInLists(guess, ANSWER) - strikeCount;
 
         return List.of(ballCount, strikeCount);
     }
 
-    private int countBall(List<Integer> guess) {
-        return (int) guess.stream()
-                .filter(number -> ANSWER.contains(number))
-                .count();
-    }
 
     private int countStrike(List<Integer> guess) {
         return (int) IntStream.range(0, 3)

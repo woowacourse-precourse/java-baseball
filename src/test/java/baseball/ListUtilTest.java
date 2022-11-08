@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -88,6 +89,37 @@ class ListUtilTest {
             //When
             assertThatThrownBy(() -> ListUtil.stringToSeparatedIntegerList(input,3))
                     .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Nested
+    @DisplayName("두 리스트 안에 같은 숫자의 갯수를 세는 메소드")
+    class countBall {
+        @Test
+        @DisplayName("중복이 없을 때")
+        void countZeroVerboseTest() throws Exception {
+            //Given
+            List<Integer> answer = List.of(1, 2, 3);
+            List<Integer> guess = List.of(4, 5, 6);
+
+            //When
+            int cnt = ListUtil.countSameNumberInLists(guess, answer);
+
+            //Then
+            assertThat(cnt).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("중복이 2개일 때")
+        void count2VerboseTest() throws Exception {
+            List<Integer> answer = List.of(1, 2, 3);
+            List<Integer> guess = List.of(3, 2, 5);
+
+            //When
+            int cnt = ListUtil.countSameNumberInLists(guess, answer);
+
+            //Then
+            assertThat(cnt).isEqualTo(2);
         }
     }
 }
