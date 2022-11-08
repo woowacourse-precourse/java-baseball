@@ -2,6 +2,15 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseballOutput.printGameStart();
+        do {
+            Baseball baseball = new Baseball();
+            baseball.playGame();
+        } while (does_user_want_play_again());
+    }
+
+    public static boolean does_user_want_play_again() {
+        Integer play_code = BaseballInput.getPlayCode();
+        return play_code.equals(PlayCode.PLAY_AGAIN.getCode());
     }
 }
