@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -116,7 +115,7 @@ public class Application {
      * @return
      * @throws Exception
      */
-    private static Boolean isContinue() throws Exception {
+    private static Boolean isContinue() {
         String input = readLine();
         if (input.equals("1")) return true;
         if (input.equals("2")) return false;
@@ -128,34 +127,32 @@ public class Application {
      */
     private static void simulateGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        try {
-            // 게임 1회마다 한 번씩
-            while (true) {
-                String userInput = "";
-                String targetNumber = "";
-                targetNumber = generateGoalNumber();
 
-                // 숫자를 맞추도록 시도한다.
-                while (true) {
-                    System.out.println("숫자를 입력해주세요 : ");
-                    userInput = getUserNumber();
-                    if (!isValidInput(targetNumber)) {
-                        throw new IllegalArgumentException();
-                    }
-                    List<Integer> compared = compareTwoNumbers(targetNumber, userInput);
-                    printTrialResult(compared);
-                    if (isThreeStrikes(compared)) {
-                        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                        break;
-                    }
+        // 게임 1회마다 한 번씩
+        while (true) {
+            String userInput = "";
+            String targetNumber = "";
+            targetNumber = generateGoalNumber();
+
+            // 숫자를 맞추도록 시도한다.
+            while (true) {
+                System.out.print("숫자를 입력해주세요 : ");
+                userInput = getUserNumber();
+                if (!isValidInput(userInput)) {
+                    throw new IllegalArgumentException();
                 }
-                if (!isContinue()) {
+                List<Integer> compared = compareTwoNumbers(targetNumber, userInput);
+                printTrialResult(compared);
+                if (isThreeStrikes(compared)) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                     break;
                 }
             }
-        } catch (Exception e) {
-
+            if (!isContinue()) {
+                break;
+            }
         }
+
     }
 
     public static void main(String[] args) {
