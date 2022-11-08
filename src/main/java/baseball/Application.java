@@ -84,6 +84,35 @@ public class Application {
         }
     }
 
+    public static String baseBallPrint(BaseBallCnt baseBallCnt, String again){
+        //2) 출력
+        // 3스트라이크이면 3개의 숫자를 모두 맞히셨습니다! 게임 종료 , // 카운트 초기화, 진행 여부 입력, 중단
+        // 스트라이크, 볼 모두0이면 낫싱
+        // 스트라이크0이고 볼 0아니면  출력
+        // 스트라이크 0 아니거볼 0 이면 출력
+        // 둘 다 0아니면
+        if (baseBallCnt.strcnt == 3) {
+            System.out.println(baseBallCnt.strcnt+"스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            again = Console.readLine();
+            return again;
+        }
+        if (baseBallCnt.strcnt == 0 && baseBallCnt.ballcnt == 0) {
+            System.out.println("낫싱");
+        }
+        if (baseBallCnt.strcnt==0 && baseBallCnt.ballcnt != 0) {
+            System.out.println(baseBallCnt.ballcnt + "볼");
+        }
+        if (baseBallCnt.strcnt != 0 && baseBallCnt.ballcnt==0) {
+            System.out.println(baseBallCnt.strcnt + "스트라이크");
+        }
+        if(baseBallCnt.strcnt!=0 && baseBallCnt.ballcnt!=0){
+            System.out.println(baseBallCnt.ballcnt + "볼 " + baseBallCnt.strcnt + "스트라이크");
+        }
+        return "";
+    }
+
     public static String userStart(boolean flag, String again, List<Integer> computer){
         //무한 반복
         while (true) {
