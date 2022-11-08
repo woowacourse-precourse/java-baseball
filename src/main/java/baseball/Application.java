@@ -2,6 +2,7 @@ package baseball;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: í”„ë¡œê·¸ëž¨ êµ¬í˜„
+        // TODO: ÇÁ·Î±×·¥ ±¸Çö
+    	Game.start();
     }
 }
