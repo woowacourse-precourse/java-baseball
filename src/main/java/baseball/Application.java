@@ -11,6 +11,8 @@ public class Application {
         private static final boolean PLAYING = true;
         private static final boolean NOT_VERIFY = false;
         private static final boolean VERIFY = true;
+        private static final boolean GAME_END = true;
+        private static final boolean GAME_CONTINUE = false;
 
         private int[] goalArr;
         private int[] goalUsageArr;
@@ -45,8 +47,16 @@ public class Application {
         private boolean gamePlay() {
             Ready();
             play();
-//            return nextAction();
-            return false;
+            return nextAction();
+        }
+
+        private boolean nextAction() {
+            if (isCompleteGoal()) {
+                printCelebrateStatus();
+                return GAME_END;
+            } else {
+                return GAME_CONTINUE;
+            }
         }
 
         private void play() {
