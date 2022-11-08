@@ -16,6 +16,7 @@ public class Executor {
     public static void startGame() {
         Baseball computerRandomBaseball = new Computer().createRandomBaseball();
         Printer.gameStart();
+        flag = true;
         while(flag) {
             Printer.inputNumber();
             result = guessNumber(computerRandomBaseball);
