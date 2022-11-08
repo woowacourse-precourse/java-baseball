@@ -9,5 +9,9 @@ public class GameContinuity {
 
   private Boolean continuity = false;
 
-
+  public GameContinuity(){
+    printGameContinuityMessage();
+    continuityInput();
+  }
+  
 }
