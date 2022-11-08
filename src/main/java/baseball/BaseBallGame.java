@@ -11,7 +11,6 @@ public class BaseBallGame {
     public static final String STRIKE = "strike";
     public static final String BALL = "ball";
     public static final int REGAME = 1;
-    public static final int STOP = 2;
 
     GameMessageDisplay gameMessageDisplay;
     Validator inputValidator;
