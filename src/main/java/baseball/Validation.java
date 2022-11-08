@@ -1,7 +1,6 @@
 package baseball;
 
-public class InputCheck {
-
+public class Validation {
     public static boolean isInputError(String input) {
         return (input.length() != 3) || hasNonDigit(input) || hasSameNumber(input);
     }
