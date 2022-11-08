@@ -127,6 +127,9 @@ public class Application {
             if (checkEnd(strikeCount)) {
                 break;
             }
+            if (strikeCount == 3) {
+                randomNum = makeRandomNum();
+            }
         }
     }
 }
