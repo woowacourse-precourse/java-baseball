@@ -1,8 +1,8 @@
 package baseball;
 
 import baseball.gametype.BaseballType;
-import baseball.input.ConsoleInput;
-import baseball.output.ConsoleOutput;
+import device.input.ConsoleInput;
+import device.output.ConsoleOutput;
 
 public class Application {
     public static void main(String[] args) {

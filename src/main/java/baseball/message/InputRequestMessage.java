@@ -1,4 +1,4 @@
-package baseball.input;
+package baseball.message;
 
 import basedomain.message.Message;
 

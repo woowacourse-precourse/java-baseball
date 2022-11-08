@@ -1,4 +1,4 @@
-package baseball.input;
+package device.input;
 
 import baseball.exception.ExceptionMessage;
 import basedomain.input.Input;

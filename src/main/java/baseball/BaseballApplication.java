@@ -2,8 +2,8 @@ package baseball;
 
 import baseball.exception.ExceptionMessage;
 import baseball.gametype.BaseballType;
-import baseball.input.InputRequestMessage;
-import baseball.output.OutputMessage;
+import baseball.message.InputRequestMessage;
+import baseball.message.OutputMessage;
 import baseball.question.BaseballQuestion;
 import basedomain.input.Input;
 import basedomain.output.Output;
