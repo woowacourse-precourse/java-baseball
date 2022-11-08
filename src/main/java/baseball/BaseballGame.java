@@ -3,6 +3,8 @@ package baseball;
 import java.util.List;
 
 public class BaseballGame {
+    private static final String RESTART = "1";
+
     ComputerNumberGenerator computerNumberGenerator = new ComputerNumberGenerator();
     Input input = new Input();
     Output output = new Output();
@@ -40,7 +42,7 @@ public class BaseballGame {
         String inputNumber = input.inputNumberGameRestartOrExit();
         input.inputRestartOrExitNumberValid(inputNumber);
 
-        if (inputNumber.equals("1")) {
+        if (inputNumber.equals(RESTART)) {
             return false;
         }
 
