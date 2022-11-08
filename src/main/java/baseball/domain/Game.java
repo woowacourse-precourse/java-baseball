@@ -3,13 +3,11 @@ package baseball.domain;
 import baseball.view.Output;
 
 public class Game {
-    private final static int RESTART = 1;
-
     private final Player player;
     private final Computer computer;
 
-    public Game() {
-        this.player = new Player();
+    public Game(Player player) {
+        this.player = player;
         this.computer = new Computer();
     }
 
@@ -20,9 +18,6 @@ public class Game {
             computer.provideHintTo(player);
         }
         Output.printGameClear();
-    }
-
-    public boolean dosePlayerWantNewGame() {
-        return player.chooseRestartOrExit() == RESTART;
+        player.chooseRestartOrExit();
     }
 }

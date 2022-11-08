@@ -6,9 +6,16 @@ import java.util.ArrayList;
 
 public class Player {
     private final static Input input = new Input();
+    private final static int RESTART = 1;
 
-    public int chooseRestartOrExit() {
-        return input.readPlayerChoice();
+    private int wantNewGameOrExit = RESTART;
+
+    public void chooseRestartOrExit() {
+        wantNewGameOrExit =  input.readPlayerChoice();
+    }
+
+    public boolean wantNewGame() {
+        return wantNewGameOrExit == RESTART;
     }
 
     public ArrayList<Integer> guessNumbers() {
