@@ -80,9 +80,38 @@ class ApplicationTest extends NsTest {
     void 게임_결과_객체_초기화() {
 
         BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+
         bullsAndCowsResult.init();
 
         assertThat(bullsAndCowsResult.getBallCount()).isEqualTo(0);
         assertThat(bullsAndCowsResult.getStrikeCount()).isEqualTo(0);
+    }
+
+    @Test
+    void 볼_스트라이크_갯수_추가_테스트() {
+
+        BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+
+        bullsAndCowsResult.init();
+        bullsAndCowsResult.addCount(-1, 1);
+        assertThat(bullsAndCowsResult.getBallCount()).isEqualTo(0);
+        assertThat(bullsAndCowsResult.getStrikeCount()).isEqualTo(0);
+
+        bullsAndCowsResult.init();
+        bullsAndCowsResult.addCount(1, 1);
+        assertThat(bullsAndCowsResult.getBallCount()).isEqualTo(0);
+        assertThat(bullsAndCowsResult.getStrikeCount()).isEqualTo(1);
+
+        bullsAndCowsResult.init();
+        bullsAndCowsResult.addCount(1, 21);
+        assertThat(bullsAndCowsResult.getBallCount()).isEqualTo(1);
+        assertThat(bullsAndCowsResult.getStrikeCount()).isEqualTo(0);
+    }
+
+    @Test
+    void 결과_출력_테스트() {
+        BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+        bullsAndCowsResult.init();
+
     }
 }
