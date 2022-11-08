@@ -23,7 +23,25 @@ public class Application {
             userInputNumber();
             if (userNumberList.size() == 0) return;
 
-            System.out.println(roundResult());
+            String roundResult = roundResult();
+            System.out.println(roundResult);
+
+            if (answerNumberList.equals(userNumberList)) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                break;
+            }
+        }
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartNumber = Console.readLine();
+
+        gameStartOrStop(restartNumber);
+    }
+
+    private static void gameStartOrStop(String restartNumber) {
+        if (restartNumber.equals("1")) {
+            baseball();
+        } else if (restartNumber.equals("2")) {
+            System.out.println("게임을 종료합니다.");
         }
     }
 
