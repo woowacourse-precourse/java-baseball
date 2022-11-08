@@ -10,12 +10,23 @@ public class CompareNumbers {
 
     public CompareNumbers(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
         countStrike(userNumberList, computerNumberList);
+        countBall(userNumberList, computerNumberList);
     }
 
     public void countStrike(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
         for (int i = 0; i < 3; i++) {
             if (userNumberList.get(i) == computerNumberList.get(i)) {
                 userNumber.addStrike();
+            }
+        }
+    }
+
+    public void countBall(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
+        for (int i = 0; i < 3; i++) {
+            if (computerNumberList.contains(userNumberList.get(i))) {
+                if (userNumberList.get(i) != computerNumberList.get(i)) {
+                    userNumber.addBall();
+                }
             }
         }
     }
