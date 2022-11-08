@@ -99,4 +99,17 @@ class ApplicationTest extends NsTest {
         assertThat(Application.countCount(computer, input8)).isEqualTo(List.of(0, 2, 1));
         assertThat(Application.countCount(computer, input9)).isEqualTo(List.of(1, 1, 1));
     }
+
+    @Test
+    void isRestart_게임을_한번_더_할지_결정_1과2_이외의_값입력시_예외발생() {
+        String input = "1";
+        String input2 = "2";
+        String input3 = "a";
+
+        assertThat(Application.isRestart(input)).isEqualTo(true);
+        assertThat(Application.isRestart(input2)).isEqualTo(false);
+        assertThatThrownBy(() -> Application.isRestart(input3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1, 2 이외의 값을 입력했습니다.");
+    }
 }
