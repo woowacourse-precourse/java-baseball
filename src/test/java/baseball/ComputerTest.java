@@ -29,7 +29,7 @@ public class ComputerTest {
   }
 
   @ParameterizedTest
-  @MethodSource("provideBallCountAndStrikeCountAndActualOutput")
+  @MethodSource("provideStrikeCountAndBallCountAndActualOutput")
   void 컴퓨터는_올바른_힌트를_출력하는가(int strikeCount, int ballCount, String actualOutput) {
 
     // given
@@ -42,11 +42,10 @@ public class ComputerTest {
     assertEquals(outContent.toString(), actualOutput);
   }
 
-  static Stream<Arguments> provideBallCountAndStrikeCountAndActualOutput() {
+  static Stream<Arguments> provideStrikeCountAndBallCountAndActualOutput() {
     return Stream.of(
       Arguments.of(0, 3, "3볼\n"),
       Arguments.of(1, 2, "2볼 1스트라이크\n"),
-      Arguments.of(2, 1, "1볼 2스트라이크\n"),
       Arguments.of(3, 0, "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"),
       Arguments.of(0, 1, "1볼\n"),
       Arguments.of(0, 2, "2볼\n"),
