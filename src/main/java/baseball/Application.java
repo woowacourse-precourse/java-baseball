@@ -17,9 +17,16 @@ public class Application {
         for (int i : computer) {
             System.out.print(i);
         }
-        input = getNumber();
-        List<Integer> answer = compareNumber(input, computer);
-        printResult(answer.get(1), answer.get(0));
+
+        while (true) {
+            input = getNumber();
+            List<Integer> answer = compareNumber(input, computer);
+            printResult(answer.get(1), answer.get(0));
+
+            if (quit(answer.get(0))) {
+                break;
+            }
+        }
     }
 
     public static List<Integer> makeRandomNumber() {
@@ -75,6 +82,14 @@ public class Application {
                 System.out.print(strike + "스트라이크");
             }
             System.out.println();
+        }
+    }
+
+    public static boolean quit(int strike) {
+        if (strike == 3) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
