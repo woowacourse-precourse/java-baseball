@@ -4,6 +4,7 @@ import baseball.util.Util;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Application {
 
@@ -42,14 +43,13 @@ public class Application {
         if (input.length() != 3) {
             throw new IllegalArgumentException("input length must be three.");
         }
-        if (!validRange(input)) {
+        if (!Pattern.matches("^[1-9]*$", input)) {
             throw new IllegalArgumentException("input must be in 1to9.");
         }
         if (isOverlap(input)) {
             throw new IllegalArgumentException("input cannot be overlap.");
         }
     }
-
     private static boolean isEnd(String comment) {
         return comment.contains("게임 종료");
     }
