@@ -2,7 +2,7 @@
 
 1. 3자리로 된 난수생성
 
-2. 잘못된 입력값을 입력했을 때 IllegalArgumentException를 발생시킬  기능 생성
+2. 잘못된 입력값을 입력했을 때 IllegalArgumentException를 발생시킬 기능 생성
  
 3. 낫싱인지 여부를 알려주는 메소드를 생성
 
