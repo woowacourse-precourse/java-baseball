@@ -12,7 +12,8 @@ public class Util {
         return Stream.of(inputNumbers.split("")).mapToInt(Integer::parseInt).toArray();
     }
 
-    public static List<Integer> toList(int[] numbers) {
+    public static List<Integer> toList(String inputNumbers) {
+        int[] numbers = toIntArray(inputNumbers);
         return Arrays.stream(numbers)
                 .boxed()
                 .collect(Collectors.toList());
