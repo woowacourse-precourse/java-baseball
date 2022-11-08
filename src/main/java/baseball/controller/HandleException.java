@@ -1,7 +1,7 @@
 package baseball.controller;
 
 public class HandleException{
-    public void UserInputNumberException(String userInput) {
+    public void handleUserInputNumberException(String userInput) {
         try {
             for (int i = 0; i < userInput.length(); i++) {
                 if (userInput.charAt(i) < 48 || userInput.charAt(i) > 57) {
