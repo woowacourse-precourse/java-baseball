@@ -3,6 +3,7 @@ package baseball.service;
 import baseball.domain.GameResult;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +12,12 @@ import java.util.stream.Collectors;
 public class GameService {
 
     public List<Integer> makeRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> answerNumbers = new ArrayList<>();
+        while (answerNumbers.size() < 3) {
+            int randNumber = Randoms.pickNumberInRange(1, 9);
+            if (!answerNumbers.contains(randNumber))    answerNumbers.add(randNumber);
+        }
+        return answerNumbers;
     }
 
     public String validateUserInput(String userInput) {
