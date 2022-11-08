@@ -36,12 +36,45 @@ public class GameService {
     }
 
     public boolean compareAnswer(List<Integer> computer, List<Integer> user) {
+        int strikeCount = 0;
+        int ballCount = 0;
+
+        for (int index = 0; index < computer.size(); index++) {
+            int answerNum = computer.get(index);
+            int userNum = user.get(index);
+
+            if (answerNum == userNum) {
+                strikeCount++;
+            }
+
+            if (answerNum != userNum && computer.contains(userNum)) {
+                ballCount++;
+            }
+        }
+
+        printHint(strikeCount, ballCount);
+
+        if (strikeCount == NUMBER_LIMIT) {
+            return true;
+        }
 
         return false;
     }
 
     public void printHint(int strikeCount, int ballCount) {
+        StringBuilder sb = new StringBuilder();
 
+        if (ballCount > 0) {
+            sb.append(ballCount + "볼 ");
+        }
+        if (strikeCount > 0) {
+            sb.append(strikeCount + "스트라이크");
+        }
+        if (strikeCount == 0 && ballCount == 0) {
+            sb.append("낫싱");
+        }
+
+        System.out.println(sb.toString());
     }
 
 }
