@@ -12,19 +12,24 @@ public class GameMessageDisplay {
     public static final String BALL_MESSAGE = "볼";
     public static final String STRIKE_MESSAGE = "스트라이크";
     public static final String SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+
     public void printGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
     }
+
     public void printInputRequestMessage() {
         System.out.print(INPUT_REQUEST_MESSAGE);
     }
+
     public void printStopOrRegameRequestMessage() {
         System.out.println(STOP_OR_REGAME_REQUEST_MESSAGE);
     }
+
     public void printGameResultMessage(Map<String, Integer> gameResult) {
         String gameResultMessage = getGameResultMessage(gameResult);
         System.out.println(gameResultMessage);
     }
+
     public String getGameResultMessage(Map<String, Integer> gameResult) {
         int ball = gameResult.get(BALL);
         int strike = gameResult.get(STRIKE);
