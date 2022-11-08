@@ -27,6 +27,10 @@ public class Application {
         OutputSentense output = new OutputSentense();
         List<Integer> computer = new ArrayList<>();
         final int gameTypeNumber = 3;
+        final int escapeNumberLength = 1;
+        //게임 재시작시 입력 수를 1,2로 설정하 였기 때문에 예외처리시 필요한 수는 1이다.
+
+        System.out.println(output.start);
 
     }
 }
