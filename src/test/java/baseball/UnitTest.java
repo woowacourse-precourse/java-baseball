@@ -66,4 +66,21 @@ public class UnitTest {
         Assertions.assertThat(caseOne).isEqualTo(1);
         Assertions.assertThat(caseTwo).isEqualTo(0);
     }
+
+    // 9. Get the result of the current turn
+    @Test
+    void getResultOfTheCurrentTurnTest() {
+        String caseOne = Application.getResultOfTheCurrentTurn("0 0");
+        String caseTwo = Application.getResultOfTheCurrentTurn("0 3");
+        String caseThree = Application.getResultOfTheCurrentTurn("0 1");
+        String caseFour = Application.getResultOfTheCurrentTurn("1 0");
+        String caseFive = Application.getResultOfTheCurrentTurn("1 1");
+
+        Assertions.assertThat(caseOne).isEqualTo("낫싱");
+        Assertions.assertThat(caseTwo).isEqualTo("3스트라이크");
+        Assertions.assertThat(caseThree).isEqualTo("1스트라이크");
+        Assertions.assertThat(caseFour).isEqualTo("1볼");
+        Assertions.assertThat(caseFive).isEqualTo("1볼 1스트라이크");
+
+    }
 }
