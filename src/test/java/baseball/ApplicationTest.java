@@ -144,6 +144,16 @@ class ApplicationTest extends NsTest {
 
         assertThat(exception.getCause().getMessage()).isEqualTo("0 또는 중복되는 수가 입력되었습니다.");
     }
+
+    @Test
+    void 스트라이크3_테스트() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method isTrialCorrect = Application.class.getDeclaredMethod("isTrialCorrect", int.class, int.class);
+        isTrialCorrect.setAccessible(true);
+
+        boolean isAnswerValid = (boolean) isTrialCorrect.invoke(application, 0, 3);
+
+        assertThat(output().contains("3스트라이크"));
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
