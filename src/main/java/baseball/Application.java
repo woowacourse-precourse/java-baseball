@@ -67,4 +67,43 @@ class Game {
 
         return new Game(userInput);
     }
+
+    static boolean isLengthThree(final String str) {
+        if(str.length() != 3) {
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+
+    static boolean isInputNumber(String str) {
+        for(int i=0;i<str.length();i++){
+            isCharNumber(str, i);
+        }
+        return true;
+    }
+
+    static boolean isCharNumber(String str, int index) {
+        if(!Character.isDigit(str.charAt(index))) {
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+
+    static boolean isEqualNumber(String str) {
+        char[] check = new char[str.length()];
+        for(int i=0;i<str.length();i++) {
+            check[i] = str.charAt(i);
+        }
+        isCharEqualNumber(check);
+        return true;
+    }
+
+    static boolean isCharEqualNumber(char[] check) throws IllegalArgumentException {
+        for(int i=0;i<check.length-1;i++){
+            if(check[i] == check[i+1]){
+                throw new IllegalArgumentException();
+            }
+        }
+        return true;
+    }
 }
