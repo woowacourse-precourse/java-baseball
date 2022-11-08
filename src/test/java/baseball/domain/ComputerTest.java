@@ -28,5 +28,14 @@ class ComputerTest {
         assertThat(randomNumber).isNotIn(0).isNotIn(10);
     }
 
+    @Test
+    @DisplayName("각 자리수는 각기 다른 숫자가 사용되어야 함")
+    public void randomNumberElementsAllUnique() {
+        Computer computer = new Computer();
+        List<Integer> randomNumber = computer.getnerateRandomNumber();
+
+        assertThat(randomNumber).doesNotHaveDuplicates();
+    }
+
 
 }
