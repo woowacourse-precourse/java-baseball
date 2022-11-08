@@ -5,7 +5,6 @@ public enum NumberStatus {
     MIN_NUMBER(0),
     ANSWER_MIN_NUMBER(1),
     ANSWER_MIN_NUMBER_CHAR(49),
-
     ANSWER_MAX_NUMBER(9),
     ANSWER_MAX_NUMBER_CHAR(57);
 

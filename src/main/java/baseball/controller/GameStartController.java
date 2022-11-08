@@ -5,6 +5,7 @@ import baseball.status.ControlNumberStatus;
 import baseball.status.ExceptionStatus;
 import baseball.status.HintStatus;
 import baseball.view.View;
+
 public class GameStartController {
     private static void controlGame() {
         View.printRestartOrStop();

@@ -1,7 +1,6 @@
 package baseball.status;
 
 public enum HintStatus {
-
     ANSWER("3스트라이크"),
     STRIKE("스트라이크"),
     BALL("볼"),
