@@ -2,27 +2,23 @@ package baseball;
 
 import computer.Computer;
 import iosystem.InputSystem;
-import user.User;
 
 import java.util.List;
 
-import static baseball.GameMessage.*;
+import static baseball.GameMessage.END_GAME;
 import static baseball.GameMessage.START_GAME;
 
 public class Game {
 
-    private User user;
     private Computer computer;
     private Score score;
 
     public Game() {
-        this.user = new User();
         this.computer = new Computer();
         this.score = new Score();
     }
 
     public void init() {
-        this.user = new User();
         this.computer = new Computer();
         this.score = new Score();
     }
