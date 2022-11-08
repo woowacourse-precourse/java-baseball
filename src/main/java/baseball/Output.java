@@ -1,13 +1,6 @@
 package baseball;
 
-import java.util.List;
-
 public class Output {
-    private final Hint hint;
-
-    public Output() {
-        hint = new Hint();
-    }
 
     public static void askRestart() {
         System.out.println(Message.RESTART.getMessage());
