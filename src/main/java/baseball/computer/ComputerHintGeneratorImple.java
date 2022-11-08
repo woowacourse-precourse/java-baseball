@@ -37,11 +37,16 @@ public class ComputerHintGeneratorImple implements ComputerHintGenerator {
     }
 
     private void countBall(Integer userInputNumbersElement, Integer gameComputerNumbersElement, List<Integer> gameComputerNumbers) {
-        if (!userInputNumbersElement.equals(gameComputerNumbersElement)) {
+        if (notEquals(userInputNumbersElement,gameComputerNumbersElement)) {
             if (gameComputerNumbers.contains(userInputNumbersElement)) {
                 ball_count++;
             }
         }
+    }
+
+    private boolean notEquals(Integer a,Integer b){
+        if(a.equals(b)) return false;
+        return true;
     }
 
 
