@@ -58,12 +58,6 @@ class OutputTest extends NsTest {
     }
 
     @Test
-    public void 출력_1볼_2스트라이크_테스트() {
-        String expectOutput = "1볼 2스트라이크";
-        checkExpect(1, 2, expectOutput);
-    }
-
-    @Test
     public void 출력_2볼_0스트라이크_테스트() {
         String expectOutput = "2볼 0스트라이크";
         checkExpect(2, 0, expectOutput);
