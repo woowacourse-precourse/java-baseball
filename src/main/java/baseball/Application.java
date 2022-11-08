@@ -19,6 +19,26 @@ public class Application {
         return input_number;
     }
 
+    public static void input_number_error(String input_number, String[] input_number_list) {
+
+        for (int input_number_digit_value = 0; input_number_digit_value < 3; input_number_digit_value++) {
+            String available_number = "123456789";
+            if (!available_number.contains(Character.toString(input_number.charAt(input_number_digit_value)))) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        if (input_number_list.length != 3) {
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < input_number_list.length; i++) {
+            if (Collections.frequency(Arrays.asList(input_number_list), input_number_list[i]) > 1) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
     public static int three_strike_judgement(List<Integer> strike_ball_nothing_list) {
         int strike_count = Collections.frequency(strike_ball_nothing_list, 2);
         if (strike_count == 3) {
@@ -99,6 +119,7 @@ public class Application {
             do {
                 String input_number = input_number_message();
                 String[] input_number_list = input_number.split("");
+                input_number_error(input_number, input_number_list);
                 strike_ball_nothing_list = Arrays.asList(0, 0, 0);
                 add_ball_index(input_number_list, computer_number_list, strike_ball_nothing_list);
                 add_strike_index(input_number_list, computer_number_list, strike_ball_nothing_list);
