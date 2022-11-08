@@ -16,12 +16,13 @@ public class Computer {
     }
 
     public void setRandomNumber() {
-        Set<String> digitsSet = new HashSet<>();
-        while(digitsSet.size() < NUMBER_LENGTH) {
+        List<String> digitsList = new ArrayList<>();
+        while(digitsList.size() < NUMBER_LENGTH) {
             String digit = String.valueOf(Randoms.pickNumberInRange(1,9));
-            digitsSet.add(digit);
+            if(!digitsList.contains(digit)) {
+                digitsList.add(digit);
+            }
         }
-        List<String> digitsList = new ArrayList<>(digitsSet);
         randomNumber = Integer.parseInt(String.join("", digitsList));
     }
 
