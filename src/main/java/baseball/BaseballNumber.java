@@ -32,7 +32,15 @@ public class BaseballNumber {
     }
 
     public static int countBall(List<Integer> baseballNumber, List<Integer> inputNumber) {
-        return 0;
+        int count = 0;
+        for (Integer digit : baseballNumber) {
+            int baseballIndex = baseballNumber.indexOf(digit);
+            int inputIndex = inputNumber.indexOf(digit);
+            if (inputNumber.contains(digit) && baseballIndex != inputIndex) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static void printMessage(int strike, int ball) {
