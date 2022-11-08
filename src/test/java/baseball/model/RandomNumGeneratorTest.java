@@ -10,7 +10,7 @@ import java.util.Set;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-public class randomNumGeneratorTest {
+public class RandomNumGeneratorTest {
 
     @Test
     public void numSizeTest() {
