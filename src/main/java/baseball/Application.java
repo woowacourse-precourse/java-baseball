@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
+
     }
 
      static ArrayList<Integer> randomComputer(ArrayList<Integer> computer){
@@ -18,6 +19,19 @@ public class Application {
         } return computer;
     }
 
+    static void printResult(int ball, int strike ){
+        StringBuilder sb = new StringBuilder();
+        if(ball ==0 && strike == 0){
+            sb.append("낫싱");
+        }
+        if(ball!=0){
+            sb.append(ball).append("볼 ");
+        }
+        if(strike!=0){
+            sb.append(strike).append("스트라이크");
+        }
+        System.out.println(sb.toString());
+    }
 
     static int calculateStrike(ArrayList<Integer> computer, String user){
         ArrayList<Integer> intAnswer = convertStringToInt(user);
