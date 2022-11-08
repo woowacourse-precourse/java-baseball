@@ -17,8 +17,17 @@ public class GameController {
     public void run(){
         // 종료 플래그가 나올 때까지 계속 실행
         while(keepPlaying){
-//            playGame();
+            playGame();
 //            requestNewGame();
         }
+    }
+    void playGame() {
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        if (!computer.isReady())
+            computer.initRandomNumbers();
+        computer.getCounts();
+        List<Integer> answer = user.inputUserAnswer();
+//        while (!getScore(answer)) answer = user.inputUserAnswer();
+        computer.clearRandomNumbers();
     }
 }
