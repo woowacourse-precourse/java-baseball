@@ -56,7 +56,6 @@ public class Application {
         }
     }
     public static String getHint(Integer ans, int index, List<Integer> user){
-        String hint = new String();
         for (int i = 0; i<user.size() ;i++){
 
             if (ans == user.get(i) && index==i){
