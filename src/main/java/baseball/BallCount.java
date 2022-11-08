@@ -13,6 +13,11 @@ public class BallCount {
     public BallCount() {
     }
 
+    public void calc(List<Integer> answer, List<Integer> userAnswer) {
+        countStrike(answer, userAnswer);
+        countBall(answer, userAnswer);
+    }
+
     // TODO: stirke 계산
     private void countStrike(List<Integer> answer, List<Integer> userAnswer) {
         this.strike = 0;
