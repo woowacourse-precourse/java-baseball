@@ -16,7 +16,7 @@ public class Player {
 
         List<Integer> playerInputList = new ArrayList<>();
 
-        if (checkWrongInput(input)) throw new IllegalStateException("잘못된 입력입니다.");
+        if (checkWrongInput(input)) throw new IllegalArgumentException("잘못된 입력입니다.");
 
         for (char inputOfDigit : input.toCharArray()) playerInputList.add(inputOfDigit-'0');
 
