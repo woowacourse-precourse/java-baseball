@@ -2,21 +2,21 @@ package baseball;
 
 
 class PlayBaseball {
-    private final String numberComputer;
-    private final String numberPlayer;
-    private final int LENGTH = 3;
+    private final String computerNumber;
+    private final String playerNumber;
+    private final static int LENGTH = 3;
     private int strike = 0;
     private int ball = 0;
 
 
-    PlayBaseball (String numberComputer, String numberPlayer) {
-        this.numberComputer = numberComputer;
-        this.numberPlayer = numberPlayer;
+    PlayBaseball (String computerNumber, String playerNumber) {
+        this.computerNumber = computerNumber;
+        this.playerNumber = playerNumber;
     }
 
     void countStrikes () {
         for (int i = 0; i < LENGTH; i++) {
-            if (numberComputer.charAt(i) == numberPlayer.charAt(i)) {
+            if (computerNumber.charAt(i) == playerNumber.charAt(i)) {
                 strike += 1;
             }
         }
@@ -24,17 +24,17 @@ class PlayBaseball {
 
     void countBalls () {
         for (int i = 0; i < LENGTH; i++) {
-            String temp = String.valueOf(numberPlayer.charAt(i));
-            if (numberComputer.contains(temp)) {
+            String temp = String.valueOf(playerNumber.charAt(i));
+            if (computerNumber.contains(temp)) {
                 ball += 1;
             }
-            if (numberPlayer.charAt(i) == numberComputer.charAt(i)) {
+            if (playerNumber.charAt(i) == computerNumber.charAt(i)) {
                 ball -= 1;
             }
         }
     }
 
-    void printResult () {
+    void printBallCounts () {
         if (strike == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -49,7 +49,7 @@ class PlayBaseball {
         System.out.println(ball+"볼 "+strike+"스트라이크");
     }
 
-    boolean has3Strikes () {
+    boolean check3Strikes () {
         if(strike == 3) {
             return true;
         }

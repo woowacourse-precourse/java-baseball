@@ -1,41 +1,29 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Application {
     public static void main(String[] args) {
-        boolean restart = true;
+        boolean agreeRestart;
 
         do {
-
-
-            String numberComputer = Input.computer();
-            boolean notThreeStrikes = true;
-            boolean flag;
+            String computerNumber = Input.computer();
+            boolean has3Strikes;
 
             do {
-                String numberPlayer = Input.player();
-                Input.checkError(numberPlayer);
-
-
-
-                PlayBaseball game = new PlayBaseball(numberComputer, numberPlayer);
+                String playerNumber = Input.player();
+                Input.checkError(playerNumber);
+                PlayBaseball game = new PlayBaseball(computerNumber, playerNumber);
                 game.countStrikes();
                 game.countBalls();
-                game.printResult();
-                notThreeStrikes = !game.has3Strikes();
-            } while (notThreeStrikes);
+                game.printBallCounts();
+                has3Strikes = game.check3Strikes();
+            } while (!has3Strikes);
 
+            boolean isValidReply;
             do {
                 Restart reply = new Restart();
-                restart = reply.decide();
-                flag = reply.isValid();
-            } while (!flag);
-
-
-
-        } while (restart);
+                agreeRestart = reply.decideRestart();
+                isValidReply = reply.checkValidity();
+            } while (!isValidReply);
+        } while (agreeRestart);
     }
-
-
 }

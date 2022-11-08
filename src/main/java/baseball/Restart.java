@@ -7,19 +7,19 @@ class Restart {
     private final static String NO = "2";
     private final String reply;
 
-    Restart () {
+    Restart (){
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         this.reply = Console.readLine();
     }
 
-    boolean decide() {
+    boolean decideRestart() {
         if (reply.equals(YES)) {
             return true;
         }
         return false;
     }
 
-    boolean isValid() {
+    boolean checkValidity() {
         if(reply.equals(YES) || reply.equals(NO)) {
             return true;
         }
