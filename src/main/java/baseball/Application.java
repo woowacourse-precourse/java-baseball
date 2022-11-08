@@ -38,4 +38,42 @@ public class Application {
         return numberList;
     }
 
+    // 4. Guess number
+    public static String guessNumber() {
+        System.out.println("숫자를 입력해주세요: ");
+        return Console.readLine();
+    }
+
+    // 5. IllegalArgumentException handler
+    public static boolean isInputNumberValid(String inputNumber) {
+
+        // 길이 제한
+        if (inputNumber.length() != 3) {
+            throw new IllegalArgumentException("게임 종료");
+        }
+
+        String[] digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
+        // 유효한 문자
+        HashSet<Boolean> checkResult = new HashSet<Boolean>();
+
+        for (char n : inputNumber.toCharArray()) {
+            checkResult.add(Arrays.stream(digits).anyMatch(String.valueOf(n)::contains));
+        }
+
+        if (checkResult.contains(false)) {
+            throw new IllegalArgumentException("게임 종료");
+        }
+
+        return true;
+    }
+
+    // 7. Judge strike
+    public static int judgeStrike(String currentNumberOfInput, String numberOfTheAnswerInSameIndex, String answer) {
+        if (answer.contains(currentNumberOfInput) && numberOfTheAnswerInSameIndex.equals(currentNumberOfInput)) {
+            return 1;
+        }
+        return 0;
+    }
+
 }
