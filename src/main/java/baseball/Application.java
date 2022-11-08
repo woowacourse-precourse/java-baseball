@@ -9,10 +9,26 @@ public class Application {
     private static final int RANDOM_NUMBER_DIGIT_SIZE = 3;
 
     public static void main(String[] args) {
-        int condition = 1;
-        String input = getInput();
-        validateInput(input);
+        startGame();
+    }
 
+    public static void startGame() {
+        int condition = 1;
+        while(condition == 1){
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            baseBallStart();
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String input = Console.readLine();
+            validateProgramConditionInput(input);
+            condition = Integer.parseInt(input);
+        }
+    }
+
+    public static void validateProgramConditionInput(String input) {
+        if(input != "1" || input != "2")
+            throw new IllegalArgumentException();
     }
 
     public static void validateInput(String input) {
