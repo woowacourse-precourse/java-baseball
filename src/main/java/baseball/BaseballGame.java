@@ -40,11 +40,12 @@ public class BaseballGame {
             int ball = result.ballCount;
             int strike = result.strikeCount;
             messageUtil.printResultMsg(ball, strike);
-        }
 
+            gameControlNum = checkStrikeCount(strike);
+        }
     }
 
-    public ResultCount compareNumber(List<Integer> computerNums, List<Integer> userNums) {
+    private ResultCount compareNumber(List<Integer> computerNums, List<Integer> userNums) {
         int ball = 0, strike = 0;
 
         for (int i = 0; i < INPUT_LENGTH; i++) {
@@ -72,5 +73,21 @@ public class BaseballGame {
             this.ballCount = ballCount;
             this.strikeCount = strikeCount;
         }
+    }
+
+    private int checkStrikeCount(int strike) {
+        int gameControlInput = RESTART_NUM;
+
+        if (strike == MAX_STRIKE) {
+            messageUtil.printSuccessMsg();
+            gameControlInput = Integer.parseInt(userUtil.getInputNumber());
+            validator.validateGameControlInput(gameControlInput);
+
+            if (gameControlInput == RESTART_NUM) {
+                computerNums = computerUtil.generateNumber();
+            }
+        }
+
+        return gameControlInput;
     }
 }
