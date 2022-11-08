@@ -1,4 +1,4 @@
-package baseball.dto;
+package baseball.bo;
 
 public class ExitFlag {
     static final int INITIAL_FLAG = 1;

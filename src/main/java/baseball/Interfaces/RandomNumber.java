@@ -1,4 +1,4 @@
-package baseball.vo;
+package baseball.Interfaces;
 
 import java.util.List;
 

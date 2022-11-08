@@ -1,12 +1,13 @@
-package baseball.vo;
+package baseball.bo;
 
+import baseball.Interfaces.RandomNumber;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class UserNumber implements RandomNumber{
+public class UserNumber implements RandomNumber {
     private final List<Integer> userNumbers;
 
     public UserNumber(String input) {

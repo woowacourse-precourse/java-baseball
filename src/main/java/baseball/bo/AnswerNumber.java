@@ -1,10 +1,11 @@
-package baseball.vo;
+package baseball.bo;
 
+import baseball.Interfaces.RandomNumber;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnswerNumber implements RandomNumber{
+public class AnswerNumber implements RandomNumber {
     private final List<Integer> answerNumbers;
 
     public AnswerNumber() {

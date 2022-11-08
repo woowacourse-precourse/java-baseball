@@ -1,10 +1,10 @@
 package baseball;
 
 import baseball.controller.InfoPrinter;
-import baseball.controller.NumberController;
-import baseball.dto.ExitFlag;
-import baseball.vo.AnswerNumber;
-import baseball.vo.UserNumber;
+import baseball.bo.ExitFlag;
+import baseball.bo.StrikesAndBalls;
+import baseball.bo.AnswerNumber;
+import baseball.bo.UserNumber;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import java.util.List;
@@ -18,15 +18,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Nested
-    class NumberControllerTest {
+    class StrikesAndBallsTest {
 
         @Test
         void strikesAndBallsCase1() {
             List<Integer> input = List.of(1, 2, 3);
             List<Integer> computers = List.of(3, 4, 5);
             List<Integer> expected = List.of(0, 1);
-            List<Integer> real = NumberController.calcStrikesAndBalls(input, computers);
-            assertThat(real).isEqualTo(expected);
+            StrikesAndBalls strikesAndBalls = new StrikesAndBalls(0, 0);
+
+            strikesAndBalls.calcStrikesAndBalls(input, computers);
+            assertThat(strikesAndBalls.getStrikesAndBalls()).isEqualTo(expected);
         }
 
         @Test
@@ -34,8 +36,10 @@ class ApplicationTest extends NsTest {
             List<Integer> input = List.of(2, 7, 3);
             List<Integer> computers = List.of(2, 7, 3);
             List<Integer> expected = List.of(3, 0);
-            List<Integer> real = NumberController.calcStrikesAndBalls(input, computers);
-            assertThat(real).isEqualTo(expected);
+            StrikesAndBalls strikesAndBalls = new StrikesAndBalls(0, 0);
+
+            strikesAndBalls.calcStrikesAndBalls(input, computers);
+            assertThat(strikesAndBalls.getStrikesAndBalls()).isEqualTo(expected);
         }
 
         @Test
@@ -43,8 +47,10 @@ class ApplicationTest extends NsTest {
             List<Integer> input = List.of(1, 5, 2);
             List<Integer> computers = List.of(5, 1, 2);
             List<Integer> expected = List.of(1, 2);
-            List<Integer> real = NumberController.calcStrikesAndBalls(input, computers);
-            assertThat(real).isEqualTo(expected);
+            StrikesAndBalls strikesAndBalls = new StrikesAndBalls(0, 0);
+
+            strikesAndBalls.calcStrikesAndBalls(input, computers);
+            assertThat(strikesAndBalls.getStrikesAndBalls()).isEqualTo(expected);
         }
     }
 
