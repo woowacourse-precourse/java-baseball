@@ -7,7 +7,7 @@ public class GameView {
     }
 
     public static final void printInputNotice() {
-        System.out.printf("숫자를 입력해주세요 : ");
+        System.out.printf("숫자를 입력해주세요 : "); //반드시 출력 후 개행되지 않아야 한다
     }
 
     public static final void printHint(String hintMessage) {
