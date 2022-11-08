@@ -16,6 +16,7 @@ public class BaseballGame {
     private int ball = 0;
 
     public void startGame() {
+        Output.baseballStartMessage();
 
         while (!exit) {
             String input = inputView.inputNumber();
