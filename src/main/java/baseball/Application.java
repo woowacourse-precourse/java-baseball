@@ -20,8 +20,7 @@ public class Application {
         } else if(input.equals("2")){
             isRepeate = false;
         } else{
-            System.out.println("Hello");
-            //throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Wrong input");
         }
 
         return isRepeate;
@@ -40,12 +39,29 @@ public class Application {
         return answer;
     }
 
-    private static void checkDuplicateNum(String input){
-        // TODO: 입력값 중 중복숫자 여부 확인
+    private static boolean checkDuplicateNum(String input){
+        boolean isDuplicate = false;
+
+        if(input.substring(1,3).contains(input.substring(0,1))){
+            isDuplicate = true;
+        }
+        if(input.substring(0,2).contains(input.substring(2,3))){
+            isDuplicate=true;
+        }
+
+        return isDuplicate;
     }
 
     private static void checkException(String input){
-        // TODO: 입력값이 예외인지 확인, 예외일시 IllegalArgumentException 발생
+        if(input.length() != 3){
+            throw new IllegalArgumentException("Wrong length");
+        }
+        if(!input.matches("^[0-9]+$")){
+            throw new IllegalArgumentException("Input must be number");
+        }
+        if(checkDuplicateNum(input)){
+            throw new IllegalArgumentException("Input can't duplicate");
+        }
     }
 
     private static int calStrike(String answer, String input){
@@ -71,6 +87,7 @@ public class Application {
         int ball = 0;
 
         while(strike < 3){
+            System.out.print("Input number: ");
             input = readLine();
 
             checkException(input);
@@ -87,11 +104,16 @@ public class Application {
         String answer;
 
         System.out.println("Start Baseball Game!");
-        do {
-            answer = makeAnswer();
-            playBaseball(answer);
+        try{
+            do {
+                answer = makeAnswer();
+                playBaseball(answer);
 
-        } while(checkRepeate());
+            } while(checkRepeate());
+
+        } catch(IllegalArgumentException e){
+            System.out.println(e);
+        }
         System.out.println("Game end");
     }
 }
