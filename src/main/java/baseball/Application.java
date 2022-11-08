@@ -1,10 +1,11 @@
 package baseball;
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 class game{
-    List<Integer> computer;
+    List<Integer> computer = new ArrayList<>();
     List<Integer> my_num_list = new ArrayList<>();
     int my_num;
     int ball_cnt;
@@ -20,7 +21,6 @@ class game{
         strike_cnt=0;
     }
     public void setComputerNum(){
-        this.computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
@@ -30,7 +30,10 @@ class game{
     }
     public void get_My_num(){
         System.out.print("숫자를 입력해주세요 : ");
-        my_num = sc.nextInt();
+        my_num = Integer.parseInt(Console.readLine());
+        if (my_num >= 1000){
+            throw new IllegalArgumentException();
+        }
         makeMynumToList();
     }
     public void ball_counter(){
@@ -55,7 +58,7 @@ class game{
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
             System.out.println("게임을 새로 시작하려면 1,종료하려면 2를 입력하세요.");
-            setEnd_gamer(sc.nextInt());
+            setEnd_gamer(Integer.parseInt(Console.readLine()));
         }else{
             if(ball_cnt==0){
                 System.out.printf("%d스트라이크\n",strike_cnt);
@@ -99,6 +102,7 @@ public class Application {
                 if (baseball.end_gamer==1) {
                     break;
                 }else if(baseball.end_gamer==2){
+                    System.out.println("게임 종료");
                     break loopout;
                 }
             }
