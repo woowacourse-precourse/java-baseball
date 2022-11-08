@@ -32,7 +32,7 @@ public class Application {
 
 
     //2. 플레이어 수 입력받기
-    public static String getPlayerNumber () throws IllegalArgumentException {
+    public static String getPlayerNumber() throws IllegalArgumentException {
         String input = Console.readLine().trim();
         if(isValidNumber(input)){
             return input;
@@ -60,6 +60,10 @@ public class Application {
     public static boolean isNumber(String input) {
         return input.chars()
                 .allMatch(Character::isDigit) ;
+    }
+    // N자리 수인지 확인
+    public static boolean isCorrectSize(List<Integer> playerNumber){
+        return playerNumber.size() == DIGITS;
     }
 
     // 2-2. 유효성 체크 : 1-9 사이의 /서로 다른 / 세 자리 수인지
