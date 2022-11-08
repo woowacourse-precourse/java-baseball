@@ -32,11 +32,23 @@ class ApplicationTest extends NsTest {
         assertThat(testNumber1.size()).isEqualTo(3);
     }
 
-    @Test void 숫자비교_출력(){
+    @Test
+    void 판정결과_출력(){
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "417", "462", "426", "428");
                     assertThat(output()).contains("2볼", "1스트라이크", "1볼 1스트라이크", "2스트라이크", "3스트라이크");
+                },
+                4, 2, 8
+        );
+    }
+
+    @Test
+    void 정답메시지_출력(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "417", "462", "426", "428");
+                    assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 },
                 4, 2, 8
         );
