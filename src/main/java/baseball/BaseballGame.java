@@ -3,8 +3,28 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
+    private static final String REPLAY = "1";
+    private static final String EXIT = "2";
     private static final char BEGIN_RANGE = '1';
     private static final char END_RANGE = '9';
+
+    private boolean isReplay() {
+        String command = selectCommand();
+
+        if (command.equals(REPLAY)) {
+            return true;
+        }
+        if (command.equals(EXIT)) {
+            return false;
+        }
+
+        throw new IllegalArgumentException("올바른 입력이 아닙니다.");
+    }
+
+    private String selectCommand() {
+        String command = Console.readLine();
+        return command;
+    }
 
     private void game() {
         BallCollection computer = BallCollection.createComputerNumbers();
