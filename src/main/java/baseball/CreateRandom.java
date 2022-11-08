@@ -1,6 +1,6 @@
 package baseball;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import camp.nextstep.edu.missionutils.Randoms;
 
 class CreateRandom {
     int[] randomNumbers;
@@ -17,7 +17,7 @@ class CreateRandom {
     private void fillArray(int i) {
         int random;
         while (i < 3) {
-            random = pickNumberInRange(0, 9);
+            random = Randoms.pickNumberInRange(0, 9);
             boolean check = checkIfDuplicatedNumber(random);
             if (check) continue;
 

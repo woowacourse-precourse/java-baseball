@@ -2,22 +2,25 @@ package baseball;
 
 public class ScoreJudge {
     private NumsInputFromUser input;
-    private int strike, ball, nothing;
-    private final static String NOTHING_MESSAGE = "낫싱";
-    private final static String STRIKE_MESSAGE  = "스트라이크";
-    private final static String BALL_MESSAGE    = "볼";
+    private int strike;
+    private int ball;
+    private int nothing;
+
+    private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String STRIKE_MESSAGE  = "스트라이크";
+    private static final String BALL_MESSAGE    = "볼";
 
     public ScoreJudge() {
         this.input  = new NumsInputFromUser();
     }
 
-    public void Initializer() {
+    public void initializer() {
         strike   = 0;
         ball     = 0;
         nothing  = 0;
     }
 
-    public String Judge(int[] randomNums) {
+    public String judge(int[] randomNums) {
          int[] inputNums = input.getInputNumForGame();
 
          computeScore(inputNums, randomNums);

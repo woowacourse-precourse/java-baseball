@@ -30,7 +30,7 @@ public class ScoreJudgeTest {
         ByteArrayInputStream in = new ByteArrayInputStream("231".getBytes());
         System.setIn(in);
 
-        String judge = scoreJudge.Judge(arr);
+        String judge = scoreJudge.judge(arr);
         assertThat(judge).isEqualTo("3볼");
     }
 
@@ -40,7 +40,7 @@ public class ScoreJudgeTest {
         ByteArrayInputStream in = new ByteArrayInputStream("132".getBytes());
         System.setIn(in);
 
-        String judge = scoreJudge.Judge(arr);
+        String judge = scoreJudge.judge(arr);
         assertThat(judge).isEqualTo("2볼 1스트라이크");
     }
 
@@ -50,7 +50,7 @@ public class ScoreJudgeTest {
         ByteArrayInputStream in = new ByteArrayInputStream("123".getBytes());
         System.setIn(in);
 
-        String judge = scoreJudge.Judge(arr);
+        String judge = scoreJudge.judge(arr);
         assertThat(judge).isEqualTo("3스트라이크");
     }
 
@@ -60,7 +60,7 @@ public class ScoreJudgeTest {
         ByteArrayInputStream in = new ByteArrayInputStream("456".getBytes());
         System.setIn(in);
 
-        String judge = scoreJudge.Judge(arr);
+        String judge = scoreJudge.judge(arr);
         assertThat(judge).isEqualTo("낫싱");
     }
 }
