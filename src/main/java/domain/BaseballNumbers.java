@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import java.util.stream.IntStream;
 
 public class BaseballNumbers {
     public static final int SIZE = 3;
@@ -57,20 +57,22 @@ public class BaseballNumbers {
         }
     }
 
+    private int getStrikeCount(BaseballNumbers otherNumbers){
+        return (int) IntStream.range(0,BaseballNumbers.SIZE)
+                .filter(index -> otherNumbers.numbers.get(index).equals(numbers.get(index)))
+                .count();
+    }
+
+    private int getBallCount(BaseballNumbers otherNumbers){
+        return (int) IntStream.range(0, BaseballNumbers.SIZE)
+                .filter(index -> numbers.contains(otherNumbers.numbers.get(index)))
+                .filter(index -> !numbers.get(index).equals(otherNumbers.numbers.get(index)))
+                .count();
+    }
+
     public RoundResult compareTo(BaseballNumbers otherNumbers){
-        Integer ballCount = 0;
-        Integer strikeCount = 0;
-        for(int index = 0; index < BaseballNumbers.SIZE; index++){
-            BaseballNumber otherDigit = otherNumbers.numbers.get(index);
-            BaseballNumber myDigit = this.numbers.get(index);
-            if(myDigit.equals(otherDigit)){
-                strikeCount++;
-                continue;
-            }
-            if(this.numbers.contains(otherDigit)){
-                ballCount++;
-            }
-        }
+        int strikeCount = getStrikeCount(otherNumbers);
+        int ballCount = getBallCount(otherNumbers);
         return RoundResult.of(ballCount, strikeCount);
     }
 }
