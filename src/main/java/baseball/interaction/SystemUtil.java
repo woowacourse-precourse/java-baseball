@@ -3,7 +3,7 @@ package baseball.interaction;
 import baseball.message.Message;
 import baseball.system.enums.UserAction;
 import baseball.validation.Condition;
-import baseball.system.condition.IsOperationCodeCond;
+import baseball.validation.system.IsOperationCodeCond;
 import baseball.validation.Validator;
 import camp.nextstep.edu.missionutils.Console;
 

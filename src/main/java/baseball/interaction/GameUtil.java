@@ -2,9 +2,9 @@ package baseball.interaction;
 
 import baseball.validation.Validator;
 import baseball.validation.Condition;
-import baseball.game.condition.AllDigitsUniqueCond;
-import baseball.game.condition.AllDigitsNumberCond;
-import baseball.game.condition.LengthMatchCond;
+import baseball.validation.game.AllDigitsUniqueCond;
+import baseball.validation.game.AllDigitsNumberCond;
+import baseball.validation.game.LengthMatchCond;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
