@@ -29,9 +29,9 @@ public class AnswerResultJudgement {
     public String getResult(String input){
         int strikeCnt=countStrike(input);
         int ballCnt=countBall(input);
-        return printInfo(new int[]{ballCnt, strikeCnt});
+        return printResult(new int[]{ballCnt, strikeCnt});
     }
-    public String printInfo(int[] result){
+    public String printResult(int[] result){
         if(result[0]==0 && result[1]==0){
             return "낫싱";
         }
