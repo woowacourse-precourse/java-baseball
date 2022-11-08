@@ -28,10 +28,8 @@ public class GameController {
         while (!correctAnswer) {
             String inputString = inputView.enterGameNumber();
             gameNumber.setInputString(inputString);
-            computerController.compareNumbers(gameNumber);
-            computerController.provideHint();
 
-            correctAnswer = computerController.isThreeStrike();
+            correctAnswer = computerController.proceedComputerToDo(gameNumber);
             sendEndMessageIfTrue(correctAnswer);
         }
     }

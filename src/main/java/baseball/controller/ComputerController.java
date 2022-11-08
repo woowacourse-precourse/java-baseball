@@ -22,19 +22,31 @@ public class ComputerController {
         gameNumber.setComputerNumbers();
     }
 
-    public void compareNumbers(GameNumber gameNumber) {
+    public boolean proceedComputerToDo(GameNumber gameNumber) {
         int[] playerNumbers = gameNumber.getPlayerNumbers();
         int[] computerNumbers = gameNumber.getComputerNumbers();
+
+        compareNumbers(playerNumbers, computerNumbers);
+
+        return isThreeStrike();
+    }
+
+    private void compareNumbers(int[] playerNumbers, int[] computerNumbers) {
         initCount();
-        for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
-            countStrike(computerNumbers, playerNumbers[i], i);
-            countBall(computerNumbers, playerNumbers[i], i);
-        }
+        checkStrikeAndBall(playerNumbers, computerNumbers);
+        provideHint();
     }
 
     private void initCount() {
         strikeCount = INIT_ZERO;
         ballCount = INIT_ZERO;
+    }
+
+    private void checkStrikeAndBall(int[] playerNumbers, int[] computerNumbers) {
+        for (int i = 0; i < BASEBALL_GAME_NUMBER_LENGTH; i++) {
+            countStrike(computerNumbers, playerNumbers[i], i);
+            countBall(computerNumbers, playerNumbers[i], i);
+        }
     }
 
     private void countStrike(int[] computerNumbers, int playerNumber, int numberIndex) {
@@ -84,7 +96,7 @@ public class ComputerController {
         return NULL_MESSAGE;
     }
 
-    public boolean isThreeStrike() {
+    private boolean isThreeStrike() {
         return strikeCount == BASEBALL_SUCCESS_STRIKE_COUNT;
     }
 }
