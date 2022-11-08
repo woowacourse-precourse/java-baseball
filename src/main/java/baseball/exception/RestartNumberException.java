@@ -14,7 +14,7 @@ public class RestartNumberException {
 		String stringRestartNumber = Integer.toString(restartNumber);
 		String stringExitNumber = Integer.toString(exitNumber);
 		if (!inputRestartNumber.equals(stringRestartNumber) && !inputRestartNumber.equals(stringExitNumber)) {
-			String limitRestartNumberBoundary = String.format("[ERROR] %s혹은 %s숫자만 입력해 주시기 바랍니다.",
+			String limitRestartNumberBoundary = String.format("[ERROR] %s혹은 %s숫자만 입력이 가능합니다.",
 				stringRestartNumber, stringExitNumber);
 			throw new IllegalArgumentException(limitRestartNumberBoundary);
 		}
