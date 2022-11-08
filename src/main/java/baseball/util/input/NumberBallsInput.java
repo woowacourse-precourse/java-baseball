@@ -16,19 +16,13 @@ public class NumberBallsInput {
     }
 
     public void validate(String numberBallsInput) {
-        if (!supportsNumberBallsInputLength(numberBallsInput)) {
-            throw new IllegalArgumentException(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
+        if (supportsNumberBallsInputLength(numberBallsInput) &&
+                hasNumber(numberBallsInput) &&
+                !includesDuplicateNumber(numberBallsInput)
+        ) {
+            return;
         }
-
-        try {
-            hasNumber(numberBallsInput);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
-        }
-
-        if (includesDuplicateNumber(numberBallsInput)) {
-            throw new IllegalArgumentException(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
-        }
+        throw new IllegalArgumentException(GameExceptionMessage.ENTER_THREE_DIFFERENT_NUMBER);
     }
 
     private boolean includesDuplicateNumber(String numberBallsInput) {
@@ -38,12 +32,17 @@ public class NumberBallsInput {
         return !supportsNumberBallsInputLength(exceptDuplicateUserInput);
     }
 
-    private void hasNumber(String numberBallsInput) {
-        Integer.parseInt(numberBallsInput);
+    private boolean hasNumber(String numberBallsInput) {
+        try {
+            Integer.parseInt(numberBallsInput);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private boolean supportsNumberBallsInputLength(String numberBallsInput) {
-        return numberBallsInput.length() == BALL_COUNT;
+        return !numberBallsInput.isBlank() && numberBallsInput.length() == BALL_COUNT;
     }
 
     public List<NumberBall> toNumberBalls() {
