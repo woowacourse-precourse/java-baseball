@@ -35,5 +35,9 @@ public class Game {
 
     public void askRestartOrEnd() {
         boolean restartOrEnd = player.getRestartOrEnd();
+
+        if (restartOrEnd) {
+            run();
+        }
     }
 }
