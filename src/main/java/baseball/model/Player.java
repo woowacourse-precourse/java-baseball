@@ -16,11 +16,11 @@ public class Player {
     }
 
     public void setPlayerNumber(String inputNumber) {
-        checkInputStyle(inputNumber);
+        checkInputError(inputNumber);
         setNumber(inputNumber);
     }
 
-    public void checkInputStyle(String inputNumber) {
+    public void checkInputError(String inputNumber) {
         String REGEX = "^[1-9]*";
 
         if (inputNumber.length() != 3 || !inputNumber.matches(REGEX)) {

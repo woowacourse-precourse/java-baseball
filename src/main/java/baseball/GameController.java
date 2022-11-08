@@ -28,17 +28,17 @@ public class GameController {
 
     static void playGame() {
         do {
-            throwBall();
+            inputNumber();
             player.ballCount(goal.getGoalNumber());
             message.ballCountMessage(player.getBall(), player.getStrike());
         } while (!player.strikeOut());
         message.endGameMessage();
     }
 
-    static void throwBall() {
-        String inputNumber = message.inputNumberMessage();
+    static void inputNumber() {
+        String playerNumber = message.inputNumberMessage();
 
         player = new Player();
-        player.setPlayerNumber(inputNumber);
+        player.setPlayerNumber(playerNumber);
     }
 }
