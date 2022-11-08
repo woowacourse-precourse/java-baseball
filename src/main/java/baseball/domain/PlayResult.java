@@ -10,6 +10,10 @@ public class PlayResult {
 		this.strikeCount = strikeCount;
 	}
 
+	public boolean isEnd() {
+		return this.strikeCount == Constants.NUMBER_SIZE;
+	}
+
 	@Override
 	public String toString() {
 		if (ballCount == 0 && strikeCount == 0) {
