@@ -3,6 +3,7 @@ package baseball.model;
 public class GameResult {
 
     private static final int CORRECT_COUNT = 3;
+    private static final int NONE_MATCH = 0;
 
     private int strike;
     private int ball;
@@ -22,7 +23,7 @@ public class GameResult {
     }
 
     public boolean isNothing() {
-        return strike == 0 && ball == 0;
+        return strike == NONE_MATCH && ball == NONE_MATCH;
     }
 
     public int getStrike() {
