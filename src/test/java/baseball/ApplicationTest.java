@@ -24,10 +24,18 @@ class ApplicationTest extends NsTest {
     void 입력값_내_중복_발생() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("789", "456", "123", "111", "133", "122", "132", "2");
-                    assertThat(output()).contains("낫싱", "낫싱", "2볼 1스트라이크", "2볼 1스트라이크", "1볼 2스트라이크", "3스트라이크", "게임 종료");
+                    run("111", "222", "333", "133", "122", "132", "2");
+                    assertThat(output()).contains("2볼 1스트라이크", "2볼 1스트라이크", "2볼 1스트라이크", "1볼 2스트라이크", "3스트라이크", "게임 종료");
                 },
                 1, 3, 2
+        );
+    }
+
+    @Test
+    void 예외_문자_입력() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abc"))
+                        .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
