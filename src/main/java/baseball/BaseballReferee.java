@@ -3,9 +3,6 @@ package baseball;
 import java.util.List;
 
 public class BaseballReferee {
-    private List<Integer> computer;
-    private List<Integer> user;
-
     int strike;
     int ball;
 
@@ -15,11 +12,8 @@ public class BaseballReferee {
     }
 
     public BaseballReferee(List<Integer> computer, List<Integer> user) {
-        this.computer = computer;
-        this.user = user;
-
-        ball = this.countBall();
-        strike = this.countStrike();
+        ball = countBall(computer, user);
+        strike = countStrike(computer, user);
 
         printResult();
     }
@@ -37,21 +31,21 @@ public class BaseballReferee {
         return false;
     }
 
-    public int countStrike() {
+    public int countStrike(List<Integer> computer, List<Integer> user) {
         for (int i = 0; i < computer.size(); i += 1) {
             if (computer.get(i) == user.get(i)) this.strike += 1;
         }
         return this.strike;
     }
 
-    public int countBall() {
+    public int countBall(List<Integer> computer, List<Integer> user) {
         for (int i = 0; i < computer.size(); i += 1) {
-            this.ball += hasBall(i);
+            this.ball += hasBall(computer, user, i);
         }
         return this.ball;
     }
 
-    private int hasBall(int i) {
+    private int hasBall(List<Integer> computer, List<Integer> user, int i) {
         int count = 0;
         for (int j = 0; j < computer.size(); j += 1) {
             if (i == j) continue;
