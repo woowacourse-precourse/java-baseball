@@ -131,5 +131,6 @@ public class Application {
             if (currentBaseBallResult.get(0) == RANDOM_NUMBER_DIGIT_SIZE)
                 break;
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }
