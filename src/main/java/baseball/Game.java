@@ -27,7 +27,17 @@ public class Game {
     public void playStage(List<Integer> computerNums, int count) {
         while (true) {
             List<Integer> userNums = user.createNums(user.getInputs(), MAX_BALL_COUNT);
+            Hint hint = new Hint(userNums, computerNums, count);
+            if (isStageEnded(hint.getStrike())) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
         }
     }
+
+    private boolean isStageEnded(int strike) {
+        return strike == MAX_BALL_COUNT;
+    }
+
 }
 
