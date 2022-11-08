@@ -3,12 +3,14 @@
 
 - [x] 1부터 9까지 랜덤 숫자를 생성 : 총 3개의 랜덤 숫자를 생성해서 3자리 숫자
     - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용
+
 - [] `숫자를 입력해주세요 : ` 문구 출력하기
-- [] 유저 숫자 입력받기
+- [x] 유저 숫자 입력받기
     - 입력 값 출력 메소드는 `missionutils.Console 의 readLine()`을 활용
     - [] 입력받은 숫자가 세자리가 아닌 경우 IllegalArgumentException -> 프로세스 종료
     - [] 숫자가 1보다 작거나 9보다 클 경우 IllegalArgumentException -> 프로세스 종료
     - [] 중복된 숫자가 있으면 IllegalArgumentException -> 프로세스 종료
+    - [x] 입력받은 것이 숫자 이외에 것일 경우 IllegalArgumentException -> 프로세스 종료
 - [] `게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.` 문구 출력
     - 입력 값 출력 메소드는 `missionutils.Console 의 readLine()`을 활용
     - [] 만약 1이 입력된 경우 새 게임 시작
