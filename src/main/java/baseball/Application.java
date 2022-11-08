@@ -48,7 +48,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
+        OutputString("숫자 야구 게임을 시작합니다.", true);
         StartGame();
     }
 
@@ -123,7 +123,8 @@ public class Application {
     3.같은 숫자가 2개이상 포함된 경우
      */
     public static boolean CheckMandatory(String userInput){
-        if(userInput.length() != 3) return false;
+        if(userInput.length() != 3)
+            return false;
 
         boolean[] checkSameNumArray = new boolean[10];
         for(int i =0 ; i < 3; i++){
