@@ -12,10 +12,14 @@ public class Simulation {
         List<Integer> randomNumList = createNumber();
         while (true){
             List<Integer> inputNumList = inputNumber();
-            List<Integer> tmpResult = checkStrikeBall(randomNumList, inputNumList);
-//            returnMiddleResult();
-            break;
+            List<Integer> strikeBallList = checkStrikeBall(randomNumList, inputNumList);
+            String result = getResult(strikeBallList);
+            System.out.println(result);
+            if (strikeBallList.get(0) == 3){
+                break;
+            }
         }
+//        reSimulate()
     }
 
     public List<Integer> createNumber() {
@@ -73,5 +77,21 @@ public class Simulation {
         return tmpResult;
     }
 
-
+    public String getResult(List<Integer> strikeBallList) {
+        int strike = strikeBallList.get(0);
+        int ball = strikeBallList.get(1);
+        String strResult = "낫싱";
+        if (strike == 0) {
+            if (ball != 0) {
+                strResult = ball + "볼";
+            } else {
+                if (ball != 0) {
+                    strResult = strike + "스트라이크 " + ball + "볼";
+                } else {
+                    strResult = strike + "스트라이크";
+                }
+            }
+        }
+        return strResult;
+    }
 }
