@@ -102,6 +102,17 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료","게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
 
+        String input2 = "6";
+        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
+        System.setIn(in2);
+
+        assertThatThrownBy(() -> Application.askContinue())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("숫자 1,2중 하나로 입력해야 합니다.");
+
+
+
+
     }
 
 
