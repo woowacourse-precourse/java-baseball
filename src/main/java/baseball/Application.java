@@ -34,14 +34,15 @@ class BaseballGame {
     //숫자 3개를 임의로 추출 하고 컴퓨터에 해당하는 변수에 할당하는 기능
 
 
-    boolean checkErrorNumber(List<Integer> list) {
-        if (list.size() > 3) {
-            return false;
+    void checkErrorNumber(List<Integer> list){
+        if (list.size() != 3) {
+            System.out.println("입력한 숫자의 크기가 3자릿수로 맞춰주세요.");
+            throw new IllegalArgumentException();
         }
         if (list.size() != list.stream().distinct().count()){
-            return false;
+            System.out.println("중복된 숫자가 있습니다. 다시 입력해주세요.");
+            throw new IllegalArgumentException();
         }
-        return true;
     }
 
 
@@ -130,10 +131,7 @@ class BaseballGame {
             }
 
             userNumberList = splitNumber(number);
-
-            if (!checkErrorNumber(userNumberList)) {
-                throw new IllegalArgumentException();
-            }
+            checkErrorNumber(userNumberList);
 
             List<Integer> checkList = compareList(computerNumberList, userNumberList);
             printResult(checkList);

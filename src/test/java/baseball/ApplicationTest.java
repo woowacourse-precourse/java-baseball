@@ -27,9 +27,27 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+    @Test
+    void 예외_테스트_숫자3개_미만(){
+        assertSimpleTest(()->
+                assertThatThrownBy(()-> runException("12")).isInstanceOf(IllegalArgumentException.class));
+    }
+
    @Test
    void 중복_테스트(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("111")).isInstanceOf(IllegalArgumentException.class));
+    }
 
+    @Test
+    void 재시작하지_않고_종료(){
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("246", "135", "2");
+                    assertThat(output()).contains("낫싱", "3스트라이크","게임 종료");
+                },
+                1, 3, 5, 5, 8, 9
+        );
     }
 
     @Override
