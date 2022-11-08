@@ -13,7 +13,7 @@ public class BaseballGame {
 
     public void start() {
         generateTargetNumber();
-        while(this.isPlayerWin==false){
+        while (this.isPlayerWin==false) {
             Input newInput = new Input();
             String userNumber = newInput.getUserNumber();
             compareWithTargetNum(userNumber);
@@ -40,7 +40,7 @@ public class BaseballGame {
 
     public void generateTargetNumber() {
         this.targetNumber = new ArrayList<>();
-        while(targetNumber.size() < 3) {
+        while (targetNumber.size() < 3) {
             int randomNumber=Randoms.pickNumberInRange(1, 9);
             if (!targetNumber.contains(randomNumber)) {
                 targetNumber.add(randomNumber);
@@ -52,7 +52,7 @@ public class BaseballGame {
         int strikeCount=0;
         int ballCount=0;
 
-        for(int order=0; order<3; order++){
+        for (int order=0; order<3; order++) {
             int targetDigit = targetNumber.get(order);
             int inputDigit = input.charAt(order)-'0';
 

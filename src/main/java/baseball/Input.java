@@ -28,9 +28,9 @@ public class Input {
     }
 
     public void checkNumberOnly(String inputStr){
-        for(int index=0; index<inputStr.length(); index++){
+        for (int index=0; index<inputStr.length(); index++) {
             char inputDigit=inputStr.charAt(index);
-            if (Character.isDigit(inputDigit) == false){
+            if (Character.isDigit(inputDigit) == false) {
                 throw new IllegalArgumentException("숫자를 입력하세요.");
             }
         }
