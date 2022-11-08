@@ -35,7 +35,7 @@ public class UserNumber {
 
     private void validateBlank(String inputNumber) {
         if (inputNumber.contains(" ")) {
-            throw new IllegalArgumentException("공백이 포함되어있습니다.");
+            throw new IllegalArgumentException("입력에 공백이 포함되어있습니다.");
         }
     }
 
