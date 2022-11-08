@@ -8,10 +8,6 @@
 
 - 게임을 본격적으로 시작하는 기능
   `Manager.play()`
-- 사용자의 입력을 받는 기능
-  `Manager.getUserInput()`
-- 게임의 재시작 또는 종료 여부를 사용자에게 묻는 기능
-  `Manager.checkContinuity()`
 - 스트라이크, 볼에 대해 결과를 사용자에게 알려주는 기능
   `Manager.printResult()`
 

@@ -8,6 +8,7 @@ import java.util.*;
 public class Manager {
     private String userInput;
     private String answer;
+    private String choice;
     public Manager(){
         System.out.println(OPENING);
     }
@@ -33,5 +34,32 @@ public class Manager {
         if(sb.length() > 0){
             System.out.println(sb.toString());
         }
+    }
+
+    public boolean play(){
+        answer = makeThreeRandomNumber();
+        try{
+            do{
+                System.out.print(INPUT_MENT);
+                userInput = readLine();
+                if(IsInvalidInput(userInput))
+                    throw new IllegalArgumentException("입력 규칙 위반");
+
+                List<Integer> list = CalculateBallAndStrike(userInput, answer);
+                printResult(list);
+            }while(CompareUserInputWithAnswer(userInput, answer) != 1);
+
+            System.out.println(ENDING);
+            System.out.println(CONTINUE_MENT);
+
+            choice = readLine();
+            if(IsInvalidChoice(choice))
+                throw new IllegalArgumentException("선택 규칙 위반");
+            
+        }catch(IllegalArgumentException e){
+            System.out.println("사용자 입력이 잘못되어 프로그램이 종료됩니다.");
+            return false;
+        }
+        return true;
     }
 }
