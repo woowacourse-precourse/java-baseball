@@ -17,6 +17,15 @@ public class Application {
         boolean continueGame = true;
         while (continueGame) {
             List<Integer> randomValue = getRandomValue();
+            playGame(randomValue);
+        }
+    }
+
+    private static void playGame(List<Integer> randomValue) {
+        boolean success = true;
+        while (success) {
+            System.out.println("숫자를 입력해주세요 : ");
+            String input = readLine();
 
         }
     }
