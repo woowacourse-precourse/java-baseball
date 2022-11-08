@@ -1,8 +1,11 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+import static baseball.Constants.END_NUM;
 import static baseball.Constants.GAME_INPUT_LENGTH;
 import static baseball.Constants.RESTART_INPUT_LENGTH;
+import static baseball.Constants.RESTART_NUM;
+
 import baseball.Constants.Message;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,4 +69,9 @@ public class BaseballGame {
         }
     }
 
+    public static void exceptionNotRestartNumber(String Input) {
+        if (!Input.equals(Integer.toString(RESTART_NUM)) && !Input.equals(Integer.toString(END_NUM))) {
+            throw new IllegalArgumentException(Message.ERROR_MSG);
+        }
+    }
 }
