@@ -16,8 +16,12 @@ public class IOProcessorTest {
     void get_user_input_test() {
         systemIn("123");
         String input = IOProcessor.getUserInput("", "");
-
         assertThat(input)
                 .isEqualTo("123");
+
+        systemIn("456");
+        input = IOProcessor.getUserInput("", "");
+        assertThat(input)
+                .isEqualTo("456");
     }
 }
