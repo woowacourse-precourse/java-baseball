@@ -36,4 +36,15 @@ public class BaseballRefree {
 
         return count;
     }
+
+    private void announceResult(int ballCount, int strikeCount) {
+        String statement = "";
+
+        if (ballCount-strikeCount > 0) statement += String.format("%d볼", ballCount-strikeCount);
+        if (statement.length() > 0 && strikeCount > 0) statement += " ";
+        if (strikeCount > 0) statement += String.format("%d스트라이크", strikeCount);
+        if (statement.length() == 0) statement = "낫싱";
+
+        System.out.println(statement);
+    }
 }
