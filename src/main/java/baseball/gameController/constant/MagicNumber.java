@@ -1,4 +1,4 @@
-package baseball.game.constant;
+package baseball.gameController.constant;
 
 public class MagicNumber {
     public static final String RENEW = "1";

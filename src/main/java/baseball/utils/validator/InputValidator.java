@@ -3,8 +3,8 @@ package baseball.utils.validator;
 import java.util.HashSet;
 import java.util.regex.Pattern;
 
-import static baseball.game.constant.MagicNumber.END;
-import static baseball.game.constant.MagicNumber.RENEW;
+import static baseball.gameController.constant.MagicNumber.END;
+import static baseball.gameController.constant.MagicNumber.RENEW;
 
 public class InputValidator {
 

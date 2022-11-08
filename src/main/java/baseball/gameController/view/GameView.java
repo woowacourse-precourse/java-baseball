@@ -1,4 +1,4 @@
-package baseball.game.view;
+package baseball.gameController.view;
 
 public class GameView {
 
