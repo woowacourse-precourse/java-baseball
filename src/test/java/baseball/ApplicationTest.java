@@ -115,6 +115,17 @@ class ApplicationTest extends NsTest {
         assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("숫자를 입력해주세요  :  ".trim());
     }
 
+    @Test
+    void 정답입니다출력테스트() {
+        //given
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(byteArrayOutputStream));
+        Game game = new Game();
+
+        game.printWinMessage();
+        assertThat(byteArrayOutputStream.toString().trim()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
 
     @Test
     void Ball테스트() {
