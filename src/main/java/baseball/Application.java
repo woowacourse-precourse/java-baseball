@@ -68,7 +68,11 @@ public class Application {
     }
 
     public static void validDuplication(String inputNum) {
+        if (inputNum.charAt(0) == inputNum.charAt(1) || inputNum.charAt(1) == inputNum.charAt(2) || inputNum.charAt(0) == inputNum.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
     }
+
     public static void validNotNumber(String inputNum) {
 
     }
