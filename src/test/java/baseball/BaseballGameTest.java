@@ -9,11 +9,14 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BaseballGameTest {
+
     private static BaseballGame baseballGame;
+
     @BeforeAll
     static void initAll() {
         baseballGame = new BaseballGame();
     }
+
     @Test
     void 랜덤숫자_3자리_생성_테스트() throws Exception {
         Method method = baseballGame.getClass().getDeclaredMethod("makeRandomNumbers");
@@ -51,5 +54,4 @@ class BaseballGameTest {
         result = (boolean) method.invoke(baseballGame, List.of(2, 4, 5), 425);
         assertThat(result).isEqualTo(false);
     }
-
 }

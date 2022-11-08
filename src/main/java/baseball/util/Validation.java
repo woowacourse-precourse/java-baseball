@@ -1,6 +1,7 @@
 package baseball.util;
 
 public class Validation {
+
     public static void validateInput(String inputString) {
         try {
             Integer.parseInt(inputString);

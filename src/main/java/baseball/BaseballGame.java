@@ -21,7 +21,6 @@ public class BaseballGame {
     }
 
     private List<Integer> makeRandomNumbers() {
-
         List<Integer> numbers = new ArrayList<>();
 
         while (numbers.size() < 3) {

@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class OutputViewTest {
+
     OutputStream outputFromComputer() {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
