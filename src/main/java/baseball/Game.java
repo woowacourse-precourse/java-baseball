@@ -9,10 +9,12 @@ public class Game {
 
     boolean finished;
     static Scanner sc = new Scanner(System.in);
+    private List<Integer> computer;
 
     public Game() {
         title();
         finished = false;
+        computer = getComputerNumber();
     }
 
     private void title() {
@@ -24,7 +26,6 @@ public class Game {
         String userInput = getUserInput();
         System.out.println(userInput);
 
-        List<Integer> computer = getComputerNumber();
         List<Integer> user = getUserNumber(userInput);
 
         // count stikes & balls
