@@ -29,6 +29,7 @@ public class BaseballGameTest {
             gc.submitContinue("예외발생");
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
     @Test
     void 잘못된_사용자_입력시_예외_발생() {
         BaseballGame bg = new BaseballGame(3);
