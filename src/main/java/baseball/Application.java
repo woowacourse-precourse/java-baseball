@@ -1,5 +1,11 @@
 package baseball;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Application {
 
 
@@ -10,8 +16,15 @@ public class Application {
     }
 
     private static String makeAnswer(){
-        String answer = "";
-        // TODO: 랜덤 세자리 수 선택
+
+        List<Integer> answerList = new ArrayList<>();
+        while(answerList.size()<3){
+            int tempNum = pickNumberInRange(1, 9);
+            if(!answerList.contains(tempNum)) answerList.add(tempNum);
+        }
+
+        String answer = answerList.toString().replaceAll("[^0-9]","");
+        System.out.println(answer);
         return answer;
     }
 
@@ -50,7 +63,6 @@ public class Application {
 
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         String answer;
 
         System.out.println("숫자 야구 게임을 시작합니다.");
