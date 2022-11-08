@@ -23,7 +23,7 @@ public class Computer {
     public void madeNumber() {
         while (computer.size() < 3) {
             int randomNumber = randomNumber();
-            if (!computer.contains(randomNumber)) {
+            if (!checkNumber(randomNumber)) {
                 addNumber(randomNumber);
             }
         }
