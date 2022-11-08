@@ -1,6 +1,8 @@
 package baseball.player;
 
+import baseball.Message;
 import baseball.Valid;
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -9,7 +11,13 @@ public class User extends Player {
 
     @Override
     public void selectBalls() {
+        Message.SELECT_BALLS.print();
 
+        String userInput = Console.readLine();
+        validUserInput(userInput);
+
+        List<String> selectBalls = List.of(userInput.split(""));
+        selectBalls.forEach(this::selectBall);
     }
 
     private void validUserInput(String userInput) {
