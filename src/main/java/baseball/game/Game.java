@@ -34,4 +34,9 @@ public class Game {
     public boolean isFinished(){
         return strikeCount!=ANSWER;
     }
+    public void initializeStrikeAndBallCount(){
+        strikeCount=NO_COUNT;
+        ballCount=NO_COUNT;
+    }
+
 }
