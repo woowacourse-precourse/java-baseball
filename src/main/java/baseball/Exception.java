@@ -13,6 +13,13 @@ public class Exception {
         }
     }
 
+    public void checkNumberRange(String userBaseBallNumber) throws IllegalArgumentException {
+        for (int i = 0; i < userBaseBallNumber.length(); i++) {
+            if (!(userBaseBallNumber.charAt(i) >= '1' && userBaseBallNumber.charAt(i) <= '9')) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 
 
 }
