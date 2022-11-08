@@ -5,6 +5,7 @@ import java.util.List;
 public class GameResult {
     private static final int STRIKE_INDEX = 0;
     private static final int BALL_INDEX = 1;
+
     private int strike;
     private int ball;
 
