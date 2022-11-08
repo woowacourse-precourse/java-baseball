@@ -55,6 +55,7 @@ public class Application {
     public static int readEndStep() {
         //1 또는 2를 입력받는다.
         String endStep = Console.readLine();
+        if (endStep.length() != 1) throw new IllegalArgumentException("끝내기 입력 오류");
         int selectedNum = (int) (endStep.charAt(0) - '0');
 
         //1 또는 2이면 반환하고, 아니면 예외를 던진다.
