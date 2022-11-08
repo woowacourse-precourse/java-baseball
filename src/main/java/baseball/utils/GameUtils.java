@@ -9,8 +9,8 @@ public class GameUtils {
 
     public static List<Integer> generateNonDuplicatedRandomNumberList(int startNumber, int endNumber, int listSize){
         List<Integer> randomNumbers = new ArrayList<>();
-        while(randomNumbers.size() < 3){
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
+        while(randomNumbers.size() < listSize){
+            int randomNumber = Randoms.pickNumberInRange(startNumber, endNumber);
             if(!randomNumbers.contains(randomNumber)) {
                 randomNumbers.add(randomNumber);
             }
