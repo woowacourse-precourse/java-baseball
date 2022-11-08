@@ -48,5 +48,21 @@ public class BaseballService {
 
         return user;
     }
-    
+
+
+    public boolean validateInput(String input) {
+        if (areThreeLength(input)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean areThreeLength(String input) {
+        if (input.length() <= 3) {
+            return true;
+        }
+
+        return false;
+    }
 }
