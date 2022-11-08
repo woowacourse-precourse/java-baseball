@@ -157,7 +157,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("유저 번호와 컴퓨터 번호의 게임 결과 확인 테스트")
     void 유저_번호와_컴퓨터_번호의_게임_결과_확인_테스트() {
         List<Integer> computerNumber = List.of(1, 2, 4);
-        int[] userNumber = {1, 4, 3};
+        List<Integer> userNumber = List.of(1, 4, 3);
         assertThat(getGameResult(computerNumber, userNumber)).containsExactly(1, 1);
     }
 
