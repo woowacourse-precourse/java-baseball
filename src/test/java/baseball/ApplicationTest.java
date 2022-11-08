@@ -75,4 +75,14 @@ class ApplicationTest extends NsTest {
         int numberIndex = BullsAndCows.findNumberIndex(userInputNumber, 2);
         assertThat(numberIndex).isEqualTo(-1);
     }
+
+    @Test
+    void 게임_결과_객체_초기화() {
+
+        BullsAndCowsResult bullsAndCowsResult = new BullsAndCowsResult();
+        bullsAndCowsResult.init();
+
+        assertThat(bullsAndCowsResult.getBallCount()).isEqualTo(0);
+        assertThat(bullsAndCowsResult.getStrikeCount()).isEqualTo(0);
+    }
 }
