@@ -52,13 +52,17 @@ public class Application {
 
     public static void checkInput(String input) {
         int num = Integer.parseInt(input);
-        if (num < 100 || num > 999) throw new IllegalArgumentException("입력 값의 허용 범위를 넘습니다.");
+        if (num < 123 || num > 987) throw new IllegalArgumentException();
         HashSet<Character> eachNums = new HashSet<>();
+
+        // 각 자리 수에 0이 있는지 확인.
+        if (eachNums.contains('0')) throw new IllegalArgumentException();
+
         // 각 자리 수에 중복이 있는지 확인.
         for (int i = 0; i < input.length(); i++) {
             eachNums.add(input.charAt(i));
         }
-        if (eachNums.size() != 3) throw new IllegalArgumentException("입력된 수에 중복된 숫자가 있습니다.");
+        if (eachNums.size() != 3) throw new IllegalArgumentException();
     }
 
     public static ArrayList<Integer> getRandomNumbers() {
