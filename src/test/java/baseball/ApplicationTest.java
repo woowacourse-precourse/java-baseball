@@ -6,6 +6,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
@@ -57,6 +60,33 @@ class ApplicationTest extends NsTest {
                 .hasMessageContaining(MessageConst.INPUT_LENGTH_EXCEPTION_MSG);
     }
 
+    @Test
+    @DisplayName("사용자의 입력값 범위 테스트")
+    void 사용자_입력_범위_테스트() {
+        // given
+        InputValidation inputValidation = new InputValidation();
+        List<Integer> userCorrectInput = new ArrayList<>();
+        List<Integer> userWrongInput = new ArrayList<>();
+
+        // when
+        userCorrectInput.add(1);
+        userCorrectInput.add(2);
+        userCorrectInput.add(3);
+
+        userWrongInput.add(0);
+        userWrongInput.add(1);
+        userWrongInput.add(2);
+
+        // then
+        assertThatCode(() ->
+                inputValidation.validateInputRange(userCorrectInput))
+                .doesNotThrowAnyException();
+
+        assertThatThrownBy(() ->
+                inputValidation.validateInputRange(userWrongInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(MessageConst.INPUT_RANGE_EXCEPTION_MSG);
+    }
 
     @Override
     public void runMain() {
