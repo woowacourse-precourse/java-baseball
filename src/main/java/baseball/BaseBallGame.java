@@ -22,7 +22,7 @@ public class BaseBallGame {
     }
 
     public List<Integer> isContainNumber(List<Integer> computer, int randomNum){
-        if (computer.contains(randomNum) == false) {
+        if (!computer.contains(randomNum)) {
             computer.add(randomNum);
         }
         return computer;
@@ -32,20 +32,29 @@ public class BaseBallGame {
         user = new ArrayList<>();
         String[] nums = userNum.split("");
 
+        lengthInCorrectException(nums.length);
 
-        if (nums.length != 3) {
-            throw new IllegalArgumentException();
-        }
         for (String num : nums) {
             int numInt = Integer.parseInt(num);
-            if (user.contains(numInt)) {
-                throw new IllegalArgumentException();
-            } else {
-                user.add(numInt);
-            }
+            isContainNumberException(user, numInt);
+            user.add(numInt);
         }
         return user;
     }
+
+    public void lengthInCorrectException(int length){
+        if(length != 3){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void isContainNumberException(List<Integer> nums, int num){
+        if(nums.contains(num)){
+            throw new IllegalArgumentException();
+        }
+    }
+
+
 
     public List<Integer> findNumber(List<Integer> computer, List<Integer> user) {
         int strike = 0;
@@ -64,6 +73,8 @@ public class BaseBallGame {
         strikeAndBall.add(ball);
         return strikeAndBall;
     }
+
+
 
     public String numberToString(List<Integer> strikeAndBall) {
         int strike = strikeAndBall.get(0);
