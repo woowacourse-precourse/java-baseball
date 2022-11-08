@@ -1,13 +1,18 @@
-package baseball;
+package IOController;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class User {
+public class KeyboardInput {
 
+    private static int inputSize;
     private static final int PLAYING_MODE = 1;
     private static final int PLAY_AGAIN_MODE = 2;
     private static final int CORRECT_INPUT_LENGTH = 3;
 
+    public KeyboardInput(int inputSize) {
+        KeyboardInput.inputSize = inputSize;
+    }
+//inputsize만 넣고 아직은
     public static String inputValue(int whatMode) {
         return (validateInput(whatMode, Console.readLine()));
     }
