@@ -35,7 +35,7 @@ public class Application {
         }
     }
 //유저 입력으로 더 게임을 할지 말지 결정
-    private static Integer selectPlayMoreGame() {
+    public static Integer selectPlayMoreGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
         String s = Console.readLine();
@@ -43,7 +43,7 @@ public class Application {
         return userInput;
     }
 
-    private static int playBaseBallGameOneCycle(List<Integer> randomNumber) {
+    public static int playBaseBallGameOneCycle(List<Integer> randomNumber) {
         System.out.print("숫자를 입력해주세요 : ");
         List<Integer> userInput = getUserInput();
         Map<String, Integer> outputManager = checkMatchNumber(randomNumber,userInput);
@@ -53,7 +53,7 @@ public class Application {
         return strike;
     }
 
-    private static void printResult(Integer strike, Integer ball) {
+    public static void printResult(Integer strike, Integer ball) {
         if(ball ==0&& strike ==0){
             System.out.println("낫싱");
         }else if(strike ==0){
@@ -65,7 +65,7 @@ public class Application {
         }
     }
 
-    private static Map<String, Integer> checkMatchNumber(List<Integer> randomNumber, List<Integer> userInput) {
+    public static Map<String, Integer> checkMatchNumber(List<Integer> randomNumber, List<Integer> userInput) {
         Map<String, Integer> outputManager = new HashMap<>();
         int ballCount = 0;
         int strikeCount = 0;
@@ -78,7 +78,7 @@ public class Application {
         return outputManager;
     }
 
-    private static int getStrikeCount(List<Integer> randomNumber, List<Integer> userInput, int strikeCount, Integer number) {
+    public static int getStrikeCount(List<Integer> randomNumber, List<Integer> userInput, int strikeCount, Integer number) {
         if(randomNumber.contains(number)){
             if(randomNumber.indexOf(number)== userInput.indexOf(number)){
                 strikeCount++;
@@ -87,7 +87,7 @@ public class Application {
         return strikeCount;
     }
 
-    private static int getBallCount(List<Integer> randomNumber,List<Integer> userInput, int ballCount, Integer number) {
+    public static int getBallCount(List<Integer> randomNumber,List<Integer> userInput, int ballCount, Integer number) {
         if (randomNumber.contains(number)) {
             if(randomNumber.indexOf(number)!=userInput.indexOf(number))
             ballCount++;
@@ -95,14 +95,14 @@ public class Application {
         return ballCount;
     }
 
-    private static List<Integer> getUserInput() {
+    public static List<Integer> getUserInput() {
         ArrayList<Integer> result = new ArrayList<>();
         String userInputString = Console.readLine();
         checkUserInput(result, userInputString);
         return result;
     }
 
-    private static void checkUserInput(ArrayList<Integer> result, String userInputString) {
+    public static void checkUserInput(ArrayList<Integer> result, String userInputString) {
         if (userInputString.length() != 3) {
             throw new IllegalArgumentException();
         }
@@ -122,14 +122,14 @@ public class Application {
         return computer;
     }
 
-    private static void makeRandomNumbers(List<Integer> computer) {
+    public static void makeRandomNumbers(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             addRandomOneNumber(computer, randomNumber);
         }
     }
 
-    private static void addRandomOneNumber(List<Integer> computer, int randomNumber) {
+    public static void addRandomOneNumber(List<Integer> computer, int randomNumber) {
         if (!computer.contains(randomNumber)) {
             computer.add(randomNumber);
         }
