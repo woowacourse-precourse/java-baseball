@@ -16,7 +16,7 @@ public class Game {
 
     public void run() {
         createComputerAnswer();
-        userInit();
+        initializeUser();
 
         while(true){
             inputUserNumbers();
@@ -37,7 +37,7 @@ public class Game {
         }
     }
 
-    private void userInit() {
+    private void initializeUser() {
         for (int i = 0; i < LENGTH; i++)
             user.add(0);
     }
