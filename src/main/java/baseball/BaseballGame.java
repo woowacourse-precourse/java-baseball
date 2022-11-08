@@ -27,19 +27,9 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    void finishOneGame() {
-
-    }
-
-    boolean continueGame() {
-        return false;
-    }
-
     void finishEntireGame() {
         System.out.println("게임을 완전히 종료합니다.");
     }
-
-
 }
 
 
