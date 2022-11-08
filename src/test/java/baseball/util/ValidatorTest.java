@@ -30,4 +30,10 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void isRestartCommand_입력값이_0이나_1이_아닌_경우() {
+        assertThatThrownBy(() -> Validator.isRestartCommand(3))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
