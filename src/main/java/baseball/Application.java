@@ -15,8 +15,21 @@ public class Application {
         int[] strikeResult = new int[3];
 
         public void clear(){}
-        public boolean startGame(){}
-        public List<Integer> makeComputerNum(){}
+        public boolean startGame() throws IOException {
+
+        }
+        public List<Integer> makeComputerNum() {
+            List<Integer> computerNum = new ArrayList<>();
+
+            while (computerNum.size() < 3) {
+                int randomNumber = Randoms.pickNumberInRange(1, 9);
+                if (!computerNum.contains(randomNumber)) {
+                    computerNum.add(randomNumber);
+                    computerNumCheck[randomNumber] = 1;
+                }
+            }
+            return computerNum;
+        }
         public List<Integer> toInputNum(){}
         public int strike(){}
         public int ball(){}
