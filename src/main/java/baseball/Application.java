@@ -64,7 +64,7 @@ public class Application {
     }
 
     public static void validLength(String inputNum) {
-        if (inputNum.length() > 3) {
+        if (inputNum.length() != 3) {
             throw new IllegalArgumentException();
         }
     }
