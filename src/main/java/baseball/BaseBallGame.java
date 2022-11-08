@@ -46,6 +46,36 @@ public class BaseBallGame implements GameInterface {
         return readLine();
     }
 
+
+    /**
+     * 검증이 완료된 문자열과 난수를 입력받고, 숫자 야구 룰에 따른 결과를 반환합니다.
+     */
+    public void getUserHit(String validatedInput, String computerNum) {
+        int strike = 0;
+        int ball = 0;
+        int out = 0;
+        for (int i = 0; i < 3; i++) {
+            System.out.println(computerNum.charAt(3));
+            if (computerNum.charAt(i) == validatedInput.charAt(i)) {
+                strike += 1;
+            } else {
+                if (validatedInput.indexOf(computerNum.charAt(i)) != -1) {
+                    ball += 1;
+                } else {
+                    out += 1;
+                }
+            }
+        }
+
+        if (strike == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        } else {
+            System.out.println("스트라이크 : " + strike + ", 볼 :" + ball + ", Out: " + out);
+        }
+    }
+
+
     /**
      * 게임의 재시작 여부에 따라, True 혹은 false 를 반환합니다.
      */
@@ -75,7 +105,7 @@ public class BaseBallGame implements GameInterface {
      */
     @Override
     public boolean validateInput(String input) {
-        return input.length() == 3;
+        return input.length() <= 3;
     }
 
     /**
@@ -98,6 +128,8 @@ public class BaseBallGame implements GameInterface {
             start();
             String input = getUserInput();
             exceptionHandler(validateInput(input));
+            String computerNum = getComputerNum();
+            getUserHit(input, computerNum);
 
         }
 
