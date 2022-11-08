@@ -51,7 +51,9 @@ public class BaseBallGame {
     }
 
     private String takeTurn(List<Integer> computer, List<Integer> inputNumbers) {
-        String message = countBall(computer, inputNumbers) + countStrike(computer, inputNumbers);
+        int ballCount = countBall(computer, inputNumbers);
+        int strikeCount = countStrike(computer, inputNumbers);
+        String message = MessageList.setBallMessage(ballCount) + MessageList.setStrikeMessage(strikeCount);
         return checkMessage(message);
     }
 
@@ -69,24 +71,24 @@ public class BaseBallGame {
         return message;
     }
 
-    public String countStrike(List<Integer> computer, List<Integer> inputNumbers) {
-        int strikes = 0;
+    public int countStrike(List<Integer> computer, List<Integer> inputNumbers) {
+        int strikeCount = 0;
         for (int i = 0; i < 3; i++) {
             if (computer.get(i).equals(inputNumbers.get(i))) {
-                strikes++;
+                strikeCount++;
             }
         }
-        return MessageList.setStrikeMessage(strikes);
+        return strikeCount;
     }
 
-    public String countBall(List<Integer> computer, List<Integer> inputNumbers) {
-        int balls = 0;
+    public int countBall(List<Integer> computer, List<Integer> inputNumbers) {
+        int ballCount = 0;
         for (int i = 0; i < 3; i++) {
             Integer inputNumber = inputNumbers.get(i);
             if (!computer.get(i).equals(inputNumber) && computer.contains(inputNumber)) {
-                balls++;
+                ballCount++;
             }
         }
-        return MessageList.setBallMessage(balls);
+        return ballCount;
     }
 }
