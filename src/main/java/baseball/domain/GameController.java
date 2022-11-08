@@ -18,7 +18,7 @@ public class GameController {
         // 종료 플래그가 나올 때까지 계속 실행
         while(keepPlaying){
             playGame();
-//            requestNewGame();
+            requestNewGame();
         }
     }
     void playGame() {
@@ -44,5 +44,9 @@ public class GameController {
             return true;
         }
         return false;
+    }
+
+    void requestNewGame(){
+        if ( user.inputKeepPlaying() == 2 ) keepPlaying = false;
     }
 }
