@@ -8,10 +8,12 @@ public class NumberBaseBallGame {
 
     private final User user;
     private final Computer computer;
+    private boolean isEnd;
 
     public NumberBaseBallGame(User user, Computer computer) {
         this.user = user;
         this.computer = computer;
+        this.isEnd = false;
     }
 
     private void selectBalls() {
