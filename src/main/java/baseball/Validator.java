@@ -3,18 +3,17 @@ package baseball;
 import java.util.List;
 import java.util.Set;
 
-public class Validator {
-    private static final int DIGITS = GameRule.DIGITS.getValue();
-    private static final int RANDOM_MIN = GameRule.RANDOM_MIN.getValue();
-    private static final int RANDOM_MAX = GameRule.RANDOM_MAX.getValue();
-    private static final String COMMAND_RESTART = GameRule.COMMAND_RESTART.toString();
-    private static final String COMMAND_END = GameRule.COMMAND_END.toString();
+import static baseball.GameRule.DIGITS;
+import static baseball.GameRule.RANDOM_MIN;
+import static baseball.GameRule.RANDOM_MAX;
+import static baseball.GameRule.COMMAND_RESTART;
+import static baseball.GameRule.COMMAND_END;
 
+public class Validator {
     public static boolean isNumber(String input) {
         return input.chars()
                 .allMatch(Character::isDigit);
     }
-
 
     public static boolean isValidNumber(List<Integer> playerNumber) {
         return isCorrectSize(playerNumber) &&
@@ -29,7 +28,7 @@ public class Validator {
     public static boolean isInRange(List<Integer> playerNumber) {
         return playerNumber.stream()
                 .allMatch(v ->
-                        RANDOM_MIN <= v && v <= RANDOM_MAX);
+                        RANDOM_MIN<= v && v <= RANDOM_MAX);
     }
     // iii. 숫자 중복 체크
     public static boolean isNotDuplicated(List<Integer> playerNumber) {
