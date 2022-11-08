@@ -9,8 +9,7 @@ public enum Hint {
     B2("2볼"),
     B3("3볼"),
     B1S1("1볼 1스트라이크"),
-    B2S1("2볼 1스트라이크")
-    ;
+    B2S1("2볼 1스트라이크");
 
     private final String label;
 
