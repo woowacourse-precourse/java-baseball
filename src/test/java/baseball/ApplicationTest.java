@@ -32,6 +32,18 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("111"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("012"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+            assertThatThrownBy(() -> runException("str"))
+                .isInstanceOf(IllegalArgumentException.class)
+        );
     }
 
     @Nested
