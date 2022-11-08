@@ -14,7 +14,21 @@ public class BallGenerator {
     }
 
     private static void isValidLength(String s) {
-        if (s.length() != 3) throw new IllegalArgumentException();
+        if (isLengthNotThree(s)) throw new IllegalArgumentException();
+    }
+
+    private static boolean isLengthNotThree(String s) {
+        return s.length() != 3;
+    }
+
+    private static List<Ball> getBallList(String s) {
+        List<Integer> a = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int number = s.charAt(i) - '0';
+            isValidRange(number);
+            a.add(number);
+        }
+        return getBallList(a);
     }
 
     public static List<Ball> getBalls(List<Integer> arr) {
@@ -33,17 +47,5 @@ public class BallGenerator {
 
     private static void isValidRange(int number) {
         if (number < 1 || number > 9) throw new IllegalArgumentException();
-    }
-
-
-    private static List<Ball> getBallList(String s) {
-        List<Ball> result = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            int number = s.charAt(i) - '0';
-            isValidRange(number);
-            Ball ball = Ball.of(number, i+1);
-            result.add(ball);
-        }
-        return result;
     }
 }
