@@ -12,6 +12,31 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         print("숫자 야구 게임을 시작합니다.\n");
+        
+        boolean isOver = false;
+        
+        while (!isOver) {
+            isOver = startNewGame();
+        }
+        
+    }
+    
+    static boolean startNewGame() {
+        Integer userAnswerNumber = null;
+        userAnswerNumber = getIntegerInput();
+        print("\n");
+        
+        boolean isOver;
+        
+        if (userAnswerNumber == 1) {
+            isOver = false;
+        } else if (userAnswerNumber == 2) {
+            isOver = true;
+        } else {
+            throw new IllegalArgumentException();
+        }
+        
+        return isOver;
     }
     
     static void print(String text) {
