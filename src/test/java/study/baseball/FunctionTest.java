@@ -108,4 +108,33 @@ class FunctionTest{
             assertThat(functionTest.GetHint(number, input)).isEqualTo(result);
         }
     }
+
+    @Nested
+    class PrintHintTest {
+
+        private Application functionTest = new Application();
+
+        @Test
+        void case1() {
+            ArrayList<Integer> pitchResult = new ArrayList<>(Arrays.asList(0, 0));
+            assertThat(functionTest.PrintHint(pitchResult)).isEqualTo("낫싱");
+        }
+
+        @Test
+        void case2() {
+            ArrayList<Integer> pitchResult = new ArrayList<>(Arrays.asList(0, 3));
+            assertThat(functionTest.PrintHint(pitchResult)).isEqualTo("3스트라이크");
+        }
+        @Test
+        void case3() {
+            ArrayList<Integer> pitchResult = new ArrayList<>(Arrays.asList(1, 1));
+            assertThat(functionTest.PrintHint(pitchResult)).isEqualTo("1볼 1스트라이크");
+        }
+
+        @Test
+        void case4() {
+            ArrayList<Integer> pitchResult = new ArrayList<>(Arrays.asList(2, 0));
+            assertThat(functionTest.PrintHint(pitchResult)).isEqualTo("2볼");
+        }
+    }
 }

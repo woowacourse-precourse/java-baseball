@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
@@ -59,5 +61,20 @@ public class Application {
         return tempReturn;
     }
 
+    public String PrintHint(ArrayList<Integer> pitchResult){
 
+        if (pitchResult.get(0) == 0 && pitchResult.get(1) == 0) {
+            return "낫싱";
+        } else if (pitchResult.get(0) == 0) {
+            return Integer.toString(pitchResult.get(1)) + "스트라이크";
+        } else if (pitchResult.get(1) == 0) {
+            return Integer.toString(pitchResult.get(0)) + "볼";
+        } else {
+            return Integer.toString(pitchResult.get(0)) + "볼 " + Integer.toString(pitchResult.get(1)) + "스트라이크";
+        }
+    }
+
+    public String MakeRandomNum(){
+        return Integer.toString(Randoms.pickNumberInRange(100, 999));
+    }
 }
