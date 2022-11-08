@@ -99,6 +99,7 @@ public class Application {
         while (flag){
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String restartOrEnd = Console.readLine();
+            System.out.println(restartOrEnd);
             if (Objects.equals(restartOrEnd, "1")){
                 List<Integer> computerturn = Game.makeRandomNumberList();
                 Game.oneGameSet(computerturn);
