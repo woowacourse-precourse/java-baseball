@@ -2,6 +2,8 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Controller {
     private View view;
     private Model computer;
@@ -13,12 +15,12 @@ public class Controller {
         this.user = new Model();
     }
 
-    public String makeRandomNumber(){
+    public String makeRandomNumber() {
         String randomNumber = "";
-        while (true) {
-            randomNumber = String.valueOf(Randoms.pickNumberInRange(111, 999));
-            if(!randomNumber.contains("0")){
-                break;
+        for (int i = 0; i < 3; i++) {
+            String temp = String.valueOf(Randoms.pickNumberInRange(1, 9));
+            if (!randomNumber.contains("temp")) {
+                randomNumber += temp;
             }
         }
         return randomNumber;
@@ -46,9 +48,9 @@ public class Controller {
 
     public void runGame() {
         initialize();
-        System.out.println(computer.getNumber());
         view.printLine("숫자 야구 게임을 시작합니다.");
         while (true) {
+            System.out.println("컴퓨터 숫자 : " + computer.getNumber());
             view.print("숫자를 입력해주세요 : ");
             String userNumber = view.inputNumber();
             user.setNumber(userNumber);
@@ -60,7 +62,6 @@ public class Controller {
             if (terminateGame(results[1])) {
                 return;
             }
-            makeRandomNumber();
         }
     }
 
@@ -73,6 +74,7 @@ public class Controller {
             checkNumber = view.inputNumber();
 
             if (checkNumber.equals("1")) {
+                computer.setNumber(makeRandomNumber());
                 return false;
             } else if (checkNumber.equals("2")) {
                 return true;
