@@ -4,6 +4,7 @@ import baseball.settings.Controller;
 
 public class Application {
     public static void main(String[] args) {
-        Controller.start();
+        Controller controller = new Controller();
+        controller.start();
     }
 }

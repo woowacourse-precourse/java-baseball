@@ -17,7 +17,6 @@ public class ResultViewer {
         message.append(getSpace());
         message.append(getStrikeMessage());
         message.append(getNothingMessage());
-
         System.out.println(message);
     }
 
