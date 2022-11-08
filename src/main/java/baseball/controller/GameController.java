@@ -2,8 +2,8 @@ package baseball.controller;
 
 import baseball.model.BallStrikeResult;
 import baseball.model.GameNumber;
-
 import baseball.model.RestartMode;
+
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
