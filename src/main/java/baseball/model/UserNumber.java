@@ -13,7 +13,7 @@ public class UserNumber {
     }
 
     public void validate(String input) throws IllegalArgumentException {
-        if (input.length() > 3) {
+        if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
 
