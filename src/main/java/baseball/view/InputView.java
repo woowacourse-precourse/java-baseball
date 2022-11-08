@@ -16,52 +16,52 @@ public class InputView {
     private final static String END = "2";
     private final static String PATTERN = "^[0-9]{3}$";
 
-    public List<Integer> requestInput(){
+    public List<Integer> requestInput() {
         String userInput = Console.readLine();
-        if (validateUserInputIsNumber(userInput) && validateUserInputIsDuplicated(userInput)){
+        if (validateUserInputIsNumber(userInput) && validateUserInputIsDuplicated(userInput)) {
             return convertStringToIntegerList(userInput);
         }
         return null;
     }
 
-    public Boolean questionInput(){
+    public Boolean questionInput() {
         String userInput = Console.readLine();
-        if(validateUserInputIsStartOrEnd(userInput)){
+        if (validateUserInputIsStartOrEnd(userInput)) {
             return checkAgainGame(userInput);
         }
         return null;
     }
 
-    private boolean validateUserInputIsNumber(String userInput){
-        if (Pattern.matches(PATTERN,userInput)){
+    private boolean validateUserInputIsNumber(String userInput) {
+        if (Pattern.matches(PATTERN, userInput)) {
             return true;
         }
         throw new IllegalArgumentException(USER_INPUT_NON_NUMBER_EXCEPTION);
     }
 
-    private boolean validateUserInputIsDuplicated(String userInput){
+    private boolean validateUserInputIsDuplicated(String userInput) {
         HashSet<String> userInputSet = new HashSet<>(List.of(userInput.split("")));
-        if(userInputSet.size() == VALID_SIZE){
+        if (userInputSet.size() == VALID_SIZE) {
             return true;
         }
         throw new IllegalArgumentException(USER_INPUT_DUPLICATED_NUMBER_EXCEPTION);
     }
 
-    private boolean validateUserInputIsStartOrEnd(String userInput){
-        if (userInput.equals(RE_START) || userInput.equals(END)){
+    private boolean validateUserInputIsStartOrEnd(String userInput) {
+        if (userInput.equals(RE_START) || userInput.equals(END)) {
             return true;
         }
         throw new IllegalArgumentException(USER_INPUT_END_EXCEPTION);
     }
 
-    private List<Integer> convertStringToIntegerList(String userInput){
+    private List<Integer> convertStringToIntegerList(String userInput) {
         return Stream.of(userInput.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    private boolean checkAgainGame(String userInput){
-        if (userInput.equals("1")){
+    private boolean checkAgainGame(String userInput) {
+        if (userInput.equals("1")) {
             return true;
         }
         return false;

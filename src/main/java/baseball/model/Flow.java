@@ -6,32 +6,32 @@ public class Flow {
     private boolean gameFlag = true;
     private boolean subGameFlag = true;
 
-    public void setGameFlag(boolean isAgain){
-        if (isAgain){
+    public void setGameFlag(boolean isAgain) {
+        if (isAgain) {
             this.gameFlag = true;
         }
-        if (!isAgain){
+        if (!isAgain) {
             this.gameFlag = false;
         }
     }
 
-    public void setSubGameFlag(String countResult){
-        if (countResult.equals(ANSWER)){
+    public void setSubGameFlag(String countResult) {
+        if (countResult.equals(ANSWER)) {
             this.subGameFlag = false;
             return;
         }
         this.subGameFlag = true;
     }
 
-    public Boolean getGameFlag(){
+    public Boolean getGameFlag() {
         return this.gameFlag;
     }
 
-    public Boolean getSubGameFlag(){
+    public Boolean getSubGameFlag() {
         return this.subGameFlag;
     }
 
-    public void setSubGameFlag(){
+    public void setSubGameFlag() {
         this.subGameFlag = true;
     }
 
