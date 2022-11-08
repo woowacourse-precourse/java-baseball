@@ -13,10 +13,6 @@ public class Score {
         this.strike = 0;
     }
 
-    public Integer getBall() {
-        return ball;
-    }
-
     public Integer getStrike() {
         return strike;
     }
