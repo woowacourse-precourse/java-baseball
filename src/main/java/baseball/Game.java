@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Game {
 
+    protected int state = 1;
+
     protected boolean nothing = false;
 
     protected int sameNumber = 0;
@@ -59,6 +61,7 @@ public class Game {
         } else if (this.ball == 0) {
             System.out.println(this.strike + "스트라이크");
             if (this.strike == 3) {
+                this.state = 2;
                 end();
             }
         }
