@@ -45,7 +45,6 @@ public class ExecuteGame extends IllegalArgumentException {
 
     public void play() {
         String computer = RandomNumberMaker.computer();
-        System.out.println(computer);
         BaseBallGame baseBallGame = new BaseBallGame(computer);
         do {
             String userInput = getUserValidInput();
