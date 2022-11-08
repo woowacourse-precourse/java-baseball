@@ -8,7 +8,6 @@ import view.GameView;
 
 public class GameController {
     private BaseballNumbers computerNumbers;
-    private BaseballNumbers userNumbers;
 
     public GameController(){}
 
@@ -18,7 +17,7 @@ public class GameController {
             createComputerNumbers();
             runRound();
             GameView.printEndMessage();
-        }while(inputUserCommand().isRestart());
+        }while(Command.findByValue(Console.readLine()) == Command.RESTART);
     }
 
     private void runRound(){
@@ -37,9 +36,5 @@ public class GameController {
 
     private BaseballNumbers inputUserNumbers(){
         return BaseballNumbers.getUserNumbers(Console.readLine());
-    }
-
-    public static Command inputUserCommand(){
-        return new Command(Console.readLine());
     }
 }

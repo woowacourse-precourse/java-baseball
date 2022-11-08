@@ -1,26 +1,29 @@
 package domain;
 
-public class Command {
-    private final String RESTART = "1";
-    private final String EXIT = "2";
+import java.util.HashMap;
+import java.util.Map;
+
+public enum Command {
+    RESTART("1"),
+    EXIT("2");
+
     private final String value;
 
-    public Command(String inputCommand){
-        validateInput(inputCommand);
-        this.value = inputCommand;
+    private Command(String value){
+        this.value = value;
     }
 
-    private void validateInput(String inputCommand){
-        if(inputCommand.equals(RESTART) || inputCommand.equals(EXIT)){
-           return;
+    private static final Map<String, Command> map = new HashMap<>();
+    static{
+        for(Command command : Command.values()){
+            map.put(command.value, command);
         }
-        throw new IllegalArgumentException("1또는 2를 입력해야합니다.");
     }
 
-    public boolean isRestart(){
-        if(value.equals(RESTART)){
-            return true;
+    public static Command findByValue(String inputCommand){
+        if(!map.containsKey(inputCommand)){
+            throw new IllegalArgumentException(String.format("%s또는 %s를 입력해야합니다.", RESTART.value, EXIT.value));
         }
-        return false;
+        return map.get(inputCommand);
     }
 }
