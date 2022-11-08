@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.GameResult;
 import baseball.enums.GuessResultStatus;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,11 +16,11 @@ public class NumberBaseballViewTest {
     @Test
     void printResult_allCases_success() {
         // given
-        GameResult correctResult = new GameResult(3, 0);
-        GameResult nothingResult = new GameResult(0, 0);
-        GameResult strikeAndBallResult = new GameResult(2, 1);
-        GameResult strikeOnlyResult = new GameResult(1, 0);
-        GameResult ballOnlyResult = new GameResult(0, 2);
+        GameResult correctResult = new GameResult(List.of(3, 0));
+        GameResult nothingResult = new GameResult(List.of(0, 0));
+        GameResult strikeAndBallResult = new GameResult(List.of(2, 1));
+        GameResult strikeOnlyResult = new GameResult(List.of(1, 0));
+        GameResult ballOnlyResult = new GameResult(List.of(0, 2));
 
         // when
         // then
