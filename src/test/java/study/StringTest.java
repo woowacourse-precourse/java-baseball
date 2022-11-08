@@ -1,6 +1,12 @@
 package study;
 
+import domain.RandNumVO;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
+import util.Inputer;
+import util.impl.InputValueComparator;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -47,4 +53,24 @@ public class StringTest {
                 .hasMessageContaining("String index out of range: 5");
     }
 
+    @Test
+    void randNumVOTest() {
+        RandNumVO randNumVO = new RandNumVO();
+        List<Integer> randnums = randNumVO.getRandNum();
+        System.out.println(randnums);
+    }
+
+    @Test
+    void comparatorTest(){
+        InputValueComparator inputValueComparator = new InputValueComparator();
+
+        assertThat(inputValueComparator.doIntCompare(List.of(1,2,3), List.of(1,2,4))).
+                isEqualTo(List.of(0,2,0));
+        assertThat(inputValueComparator.doIntCompare(List.of(1,2,3), List.of(9,2,4))).
+                isEqualTo(List.of(0,1,0));
+        assertThat(inputValueComparator.doIntCompare(List.of(1,2,3), List.of(4,2,1))).
+                isEqualTo(List.of(1,1,0));
+        assertThat(inputValueComparator.doIntCompare(List.of(1,2,3), List.of(6,5,4))).
+                isEqualTo(List.of(0,0,1));
+    }
 }
