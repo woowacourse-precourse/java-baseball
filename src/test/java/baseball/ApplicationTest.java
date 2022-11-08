@@ -38,19 +38,19 @@ class ApplicationTest extends NsTest {
     @Test
     @DisplayName("입력의 길이가 3이 아닌 경우 ")
     public void inputLenNot3() throws Exception{
-        assertThatThrownBy(()-> Application.validationAndConvert("1234"))
+        assertThatThrownBy(()-> Application.checkAndConvertUserInput("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     @DisplayName("서로 다른 3개의 수가 아닌 경우")
     public void duplicationNumber() throws Exception{
-        assertThatThrownBy(()-> Application.validationAndConvert("133"))
+        assertThatThrownBy(()-> Application.checkAndConvertUserInput("133"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     @DisplayName("수가 아닌 입력이 있는 경우")
     public void NotNumber() throws Exception{
-        assertThatThrownBy(()->Application.validationAndConvert("a12"))
+        assertThatThrownBy(()->Application.checkAndConvertUserInput("a12"))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
