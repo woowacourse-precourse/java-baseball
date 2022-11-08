@@ -14,7 +14,7 @@ public class Printer {
 
     public void printBallCount(Result result) {
         if (result.isNothing()) {
-            System.out.print("낫싱");
+            System.out.println("낫싱");
             return;
         }
         if (result.getBallCount() != 0) {
