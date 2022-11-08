@@ -114,8 +114,10 @@ public class Application {
         if (input.equals("1")){
             return true;
         }
-        else{
+        else if(input.equals("2")) {
             return false;
+        }else {
+            throw new IllegalArgumentException();
         }
     }
 
