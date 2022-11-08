@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -27,6 +28,11 @@ public class Application {
             list.add(Character.getNumericValue(s.charAt(i)));
         }
         return list;
+    }
+
+    public static boolean isItWrongNumber(List<Integer> userStringNumber) {
+        int numbersOfUniqueNumber = new HashSet<>(userStringNumber).size();
+        return (userStringNumber.size() != 3) || (numbersOfUniqueNumber != 3);
     }
 
     public static void main(String[] args) {
