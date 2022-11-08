@@ -1,4 +1,4 @@
-package Implement;
+package implement;
 
 import baseball.Application;
 
