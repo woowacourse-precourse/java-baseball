@@ -9,7 +9,8 @@ public final class Output {
     private static final String GAME_OVER_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String GAME_RESTART_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
-    private Output() {}
+    private Output() {
+    }
 
     public static void print(String message) {
         System.out.print(message);
@@ -18,6 +19,7 @@ public final class Output {
     public static void println(String message) {
         System.out.println(message);
     }
+
     public static void printResult(Result result) {
         StringBuilder resultBuilder = new StringBuilder();
         if (result.hasNothing()) {

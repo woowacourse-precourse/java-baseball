@@ -20,6 +20,7 @@ public class Ball {
         }
         throw new IllegalArgumentException(INVALID_INPUT_RANGE_MESSAGE);
     }
+
     @Override
     public boolean equals(Object o) {
         if (o == null) {

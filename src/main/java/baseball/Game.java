@@ -1,10 +1,6 @@
 package baseball;
 
-import baseball.model.Balls;
-import baseball.model.GameStatus;
-import baseball.model.Result;
-import baseball.model.Computer;
-import baseball.model.Player;
+import baseball.model.*;
 import baseball.view.Input;
 import baseball.view.Output;
 import camp.nextstep.edu.missionutils.Console;
