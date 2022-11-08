@@ -11,7 +11,7 @@ public class User {
 
     protected int game_state;
 
-    ArrayList<Character> check = new ArrayList<>();
+    ArrayList<Character> user = new ArrayList<>();
 
     public void inputNumber() {
         String input = readLine();
@@ -53,17 +53,17 @@ public class User {
     }
 
     public void addNumber(Character input) {
-        check.add(input);
+        user.add(input);
     }
 
     public void checkNumberDigit(String input) {
         for (int i = 0; i < input.length(); i++) {
-            if (!check.contains(input.charAt(i))) {
+            if (!user.contains(input.charAt(i))) {
                 addNumber(input.charAt(i));
             }
         }
 
-        if (check.size() != 3) {
+        if (user.size() != 3) {
             throw new IllegalArgumentException("입력한 수가 서로 다른 3자리의 수가 아닙니다.");
         }
     }
