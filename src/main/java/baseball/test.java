@@ -5,12 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Application {
-    public static void main(String[] args) throws IOException {
+public class test {
+//    main(String[] args) throws IOException
+    public static void  gameStart() throws IOException {
         Scanner scan = new Scanner(System.in);
         int strike = 0;
         int ball = 0;
@@ -92,6 +91,7 @@ public class Application {
                         return;
                     }
                 }
+
             }
 
             strike = 0;
@@ -102,5 +102,8 @@ public class Application {
 
         } //while end
     }
-
+    public static void main(String[] args) throws IOException {
+        gameStart();
+    }
 }
+
