@@ -44,7 +44,6 @@ public class Application {
             if (Objects.equals(com.get(i), player.get(i))) strike ++;
             else if (player.contains(com.get(i))) ball ++;
         }
-        ball -= strike;
 
         if (ball > 0 && strike > 0)
             result = ball + "볼 " + strike + "스트라이크";
@@ -60,12 +59,23 @@ public class Application {
 
     public static void run(){
         ArrayList<Integer> computer = generateNum();
-        ArrayList<Integer> player = userInput();
+        String result = "";
 
-        System.out.println(computer);
-        System.out.println(player);
+        while (!result.equals("3스트라이크")){
+            result = getResult(computer, userInput());
+            System.out.println(result);
+        }
+        stop();
+    }
 
-        System.out.println(getResult(computer, player));
+    public static void stop(){
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String cmd = Console.readLine();
+        System.out.println(cmd);
+        if(cmd.equals("1")) run();
+        else if(cmd.equals("2")) System.out.println("게임 종료");
+        else System.out.println("Invalid input");
     }
 
 
