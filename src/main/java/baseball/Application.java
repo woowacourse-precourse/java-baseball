@@ -12,32 +12,25 @@ public class Application {
         GetUserNumber userInput = new GetUserNumber();
         String userRandNumber = userInput.inputUserNumber();
 
-        // make random number
-        List<Integer> correct = new ArrayList<>();
-
-        while (correct.size() < 3) {
-            int randNumber = Randoms.pickNumberInRange(1, 9);
-            if (!correct.contains(randNumber)) {
-                correct.add(randNumber);
-            }
-        }
+        GenerateRandNumber generateNumber = new GenerateRandNumber();
+        List<Integer> correctRandNumber = generateNumber.arrayNum();
 
         // count STRIKE
         int countStrike = 0;
-        for(int i=0; i<correct.size(); i++) {
+        for(int i=0; i<correctRandNumber.size(); i++) {
             int eachUserNumber = userRandNumber.charAt(i) - '0';
-            if (eachUserNumber == correct.get(i)) {
+            if (eachUserNumber == correctRandNumber.get(i)) {
                 countStrike ++;
             }
         }
 
         //count BALL
         int countBall = 0;
-        for(int i=0; i<correct.size(); i++) {
+        for(int i=0; i<correctRandNumber.size(); i++) {
             int eachUserNumber = userRandNumber.charAt(i) - '0';
-            if (eachUserNumber == correct.get(i)) {
+            if (eachUserNumber == correctRandNumber.get(i)) {
                 countBall = countBall;
-            } else if (correct.contains(eachUserNumber)) {
+            } else if (correctRandNumber.contains(eachUserNumber)) {
                 countBall ++;
             }
         }
