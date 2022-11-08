@@ -49,4 +49,15 @@ class HintTest {
         assertThat(hint.getStrikeCount()).isEqualTo(3);
     }
 
+    @Test
+    public void 힌트_정확성_확인_3볼() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(1, 3, 5);
+        List<Integer> userNumber = List.of(3, 5, 1);
+        //when
+        hint.giveHint(computerNumber, userNumber);
+        //then
+        assertThat(hint.getBallCount()).isEqualTo(3);
+    }
+
 }
