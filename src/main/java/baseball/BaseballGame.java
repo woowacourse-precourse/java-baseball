@@ -9,22 +9,23 @@ public class BaseballGame {
         this.com=new Computer();
     }
 
+    public void playing(){
+        this.user=new User();
+        do {
+            user.inputUser();
+            checkPoint();
+            printAnswer();
+        }while(!checkAnswer());
+    }
+
     public void initialzeScore(){
         this.strike=0;
         this.ball=0;
     }
 
-    public void playing(){
-        this.user=new User();
-        do {
-            initialzeScore();
-            user.inputUser();
-            checkPoint();
-            printAnswer();
-        }while(checkAnswer());
-    }
-
     public void checkPoint(){
+        initialzeScore();
+
         for(int idx=0;idx<3;idx++){
             int user_at=this.user.value.charAt(idx)-'0';
             if(user_at==this.com.value.get(idx)) {
@@ -54,7 +55,7 @@ public class BaseballGame {
     }
 
     public boolean checkAnswer(){
-        if(this.strike!=3){
+        if(this.strike==3){
             return true;
         }
         else{
