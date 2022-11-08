@@ -13,14 +13,14 @@ public final class RandomNumGenerator {
     }
 
     public static int makeDistinctRandomNumWithSize(int sizeLimit) {
-        List<Integer> splittedRandomNums = new ArrayList<>();
+        List<Integer> splitRandomNums = new ArrayList<>();
         int size;
         do {
             int randomDigit = makeRandomDigit();
-            splittedRandomNums.add(randomDigit);
-            size = ListUtility.getDistinctCountInIntegerList(splittedRandomNums);
+            splitRandomNums.add(randomDigit);
+            size = ListUtility.getDistinctCountInIntegerList(splitRandomNums);
         } while (size < sizeLimit);
-        return ListUtility.mergeDistinctIntegerInList(splittedRandomNums);
+        return ListUtility.mergeDistinctIntegerInList(splitRandomNums);
     }
 
     private static int makeRandomDigit() {
