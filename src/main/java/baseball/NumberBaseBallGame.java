@@ -21,7 +21,7 @@ public class NumberBaseBallGame {
 			String playerInput = Input.readLine();
 			Validate.checkCorrectInput(playerInput);
 			judge = Judge.checkScore(computer.getTargetNumber(), makeStringToList(playerInput));
-			System.out.println(judge.printHint());
+			printScore(judge.printHint());
 		}while(!judge.isThreeStrike());
 	}
 
@@ -37,19 +37,17 @@ public class NumberBaseBallGame {
 		System.out.println(Message.GAME_START.getMsg());
 	}
 
+	public void printScore(String message){
+		System.out.println(message);
+	}
+
 	public boolean playAgain(){
 		askRestartMessage();
 		String input = Input.readLine();
-		isRestartCodeInvalid(input);
+		Validate.checkRestartCodeValid(input);
 		return input.equals(String.valueOf(Constant.RESTART.getNumber()));
 	}
 
-	public void isRestartCodeInvalid(String input){
-		if (!input.equals(String.valueOf(Constant.RESTART.getNumber()))
-			&& !input.equals(String.valueOf(Constant.END_GAME.getNumber()))){
-			throw new IllegalArgumentException(Message.INVALID_INPUT_END_GAME.getMsg());
-		}
-	}
 
 	public static ArrayList<Integer> makeStringToList(String number){
 		ArrayList<Integer> playerInputNumber = new ArrayList<>();

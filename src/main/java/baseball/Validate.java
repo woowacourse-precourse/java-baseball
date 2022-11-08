@@ -31,6 +31,14 @@ public class Validate {
 		}
 	}
 
+
+	public static void checkRestartCodeValid(String input){
+		if (!input.equals(String.valueOf(Constant.RESTART.getNumber()))
+			&& !input.equals(String.valueOf(Constant.END_GAME.getNumber()))){
+			throw new IllegalArgumentException(Message.INVALID_INPUT_END_GAME.getMsg());
+		}
+	}
+
 	public static boolean isNumeric(String number){
 		try{
 			Integer.parseInt(number);
