@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static baseball.constant.ConstantValue.*;
@@ -76,6 +77,13 @@ public class GameManager {
         return Arrays.stream(number.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public void validatePermissionPattern(String input){
+        String permissionPattern = "^[1-9]*$";
+        if(!Pattern.matches(permissionPattern, input)){
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
     }
 
     public List<Integer> createComputerNumber(){
