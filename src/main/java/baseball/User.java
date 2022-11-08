@@ -20,6 +20,16 @@ public class User {
         if (inputValue.length() != 3) {
             throw new IllegalArgumentException("3자리 양식에 맞게 입력하세요");
         }
+
+        if (inputValue.length() == 0){
+            throw new IllegalArgumentException("0은 불가능합니다");
+        }
+
+        for(int i = 0; i < inputValue.length(); i++){
+            if(inputValue.charAt(i) == ' '){
+                throw new IllegalArgumentException("공백은 불가능합니다");
+            }
+        }
         return inputValue;
     }
 
