@@ -43,7 +43,7 @@ public class Score {
             resultString += resultString + ball +ScoreStatus.BALL.getMessage();
         }
         if (strike !=0){
-            resultString += resultString + strike +ScoreStatus.STRIKE.getMessage();
+            resultString += strike +ScoreStatus.STRIKE.getMessage();
         }
 
         return resultString;
