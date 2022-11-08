@@ -44,7 +44,7 @@ public class Application {
     }
 
     static void isKeepSmallGaming() {
-        if (strike == 3 && ball == 0) {
+        if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             keepSmallGaming = false;
         } else {
