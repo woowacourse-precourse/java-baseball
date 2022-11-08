@@ -33,5 +33,5 @@
   - [x] 입력받는 기능
 - Game 클래스
   - [x] 모든 클래스의 객체 생성하여 게임 실행하는 기능
-- GameGuide 클래스
+- OutputMessage Enum
   - [x] Game 클래스에서 사용되는 게임 안내 문자열 출력 기능
