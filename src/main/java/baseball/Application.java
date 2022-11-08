@@ -10,6 +10,7 @@ public class Application {
         do {
             numberBaseballGame();
         } while(prepareGame.isGameExit());
+        System.out.println("게임 종료");
     }
 
     private static void numberBaseballGame(){
