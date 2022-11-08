@@ -2,11 +2,16 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+
 
 class ApplicationTest extends NsTest {
     @Test
@@ -53,5 +58,38 @@ class ApplicationTest extends NsTest {
                 },
                 4, 5, 6, 1, 2, 3
         );
+    }
+    
+    @ParameterizedTest
+    @ValueSource(strings = {"111", "222", "333"})
+    void 중복된_수_(String no) {
+        // given
+        // when
+        // then
+        assertThatThrownBy(() -> new BaseballNumber(no))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("잘못된 수를 입력하셨습니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "22", "4444", "125125134", " "})
+    void 범위_오류(String no) {
+        // given
+        // when
+        // then
+        assertThatThrownBy(() -> new BaseballNumber(no))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("잘못된 수를 입력하셨습니다.");
+    }
+    
+    @ParameterizedTest
+    @ValueSource(strings = {"안녕", "asd2", "vfs"})
+    void 수가_아닌_입력(String no) {
+        // given
+        // when
+        // then
+        assertThatThrownBy(() -> new BaseballNumber(no))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("잘못된 수를 입력하셨습니다.");
     }
 }
