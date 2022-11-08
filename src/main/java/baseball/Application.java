@@ -14,13 +14,7 @@ public class Application {
     
     public static void gameStart() {
     	List<Integer> computerPickNums = computerPick();
-    	List<Integer> playerPickNums = playerPick();
-    	int strike = findStrike(computerPickNums, playerPickNums);
-    	int ball = findball(computerPickNums, playerPickNums);
-    	String score = scoreBoard(strike, ball);
-    	System.out.println(score);
-    	winLose(strike);
-    	
+    	gamePlaying(computerPickNums);
     	
     }
     
@@ -33,6 +27,16 @@ public class Application {
     	    }
     	}
     	return computerPickNums;
+    }
+    
+    public static void gamePlaying(List<Integer> computerPickNums) {
+    	List<Integer> playerPickNums = playerPick();
+    	int strike = findStrike(computerPickNums, playerPickNums);
+    	int ball = findball(computerPickNums, playerPickNums);
+    	String score = scoreBoard(strike, ball);
+    	System.out.println(score);
+    	winLose(strike);
+    	
     }
     public static List<Integer> playerPick() {
     	List<Integer> playerPickNums = new ArrayList();
