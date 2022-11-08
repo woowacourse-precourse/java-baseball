@@ -21,7 +21,7 @@ public class RandomNumber {
     }
 
     private static int nonPermissionExistNumber(int random_number){
-        int sub_random=0;
+        int sub_random=Randoms.pickNumberInRange(1,9);
         while (sub_random!=random_number){
             sub_random= Randoms.pickNumberInRange(1, 9);
 
