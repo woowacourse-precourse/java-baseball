@@ -17,7 +17,10 @@ public class Application {
         boolean continueGame = true;
         while (continueGame) {
             List<Integer> randomValue = getRandomValue();
+
             playGame(randomValue);
+
+            continueGame = continueOrEnd();
         }
     }
 
@@ -34,6 +37,17 @@ public class Application {
             success = printPoint(ballStrikeNum);
         }
     }
+    private static boolean continueOrEnd() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        int newGame = Integer.parseInt(readLine());
+
+        if (newGame == 2) {
+            System.out.println("게임 종료");
+            return false;
+        }
+        return true;
+    }
+
     private static boolean printPoint(HashMap<String, Integer> ballStrikeNum) {
         if (ballStrikeNum.get("ballNum") == 0 && ballStrikeNum.get("strikeNum") == 0) {
             System.out.println("낫싱");
