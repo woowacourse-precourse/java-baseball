@@ -153,3 +153,21 @@ while (computer.size() < 3) {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+### 구현할 기능 목록
+- Game 클래스
+  - 게임 시작
+  - 게임 초기화
+  - 컴퓨터와 플레이어 수 비교
+    - 비교 후 결과 처리
+    - 컴퓨터가 선택한 3개의 수를 모두 맞히면 게임 종료
+  - 게임 종료 후 게임 다시 시작 or 완전 종료 선택
+- Computer 클래스
+  - 서로 다른 임의의 수 3개 선택
+  - 컴퓨터 숫자 가져오기
+- Player 클래스
+  - 플레이어가 서로 다른 수 3개 입력
+  - 플레이어 숫자 가져오기
+- 올바르지 않은 입력에 대한 예외 처리
