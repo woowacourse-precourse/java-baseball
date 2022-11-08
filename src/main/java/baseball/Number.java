@@ -10,7 +10,7 @@ public class Number {
     private static final int NUM_LENGTH = 3;
 
     public static int readNum() {
-        System.out.print("숫자를 입력해주세요 : ");
+        printGuideMessage();
 
         int inputNum;
         try {
@@ -39,6 +39,30 @@ public class Number {
         validateNum(opponentNumber);
 
         return opponentNumber;
+    }
+
+    public static List<Integer> threeDigitsToNumList(int number) {
+        List<Integer> eachDigits = new ArrayList<>();
+
+        int denominator = 100;
+        for (int index = 0; index < NUM_LENGTH; index++) {
+            eachDigits.add(number / denominator);
+
+            number %= denominator;
+            denominator /= 10;
+        }
+        return eachDigits;
+    }
+
+    public static int numListToThreeDigits(List<Integer> eachDigits) {
+        int threeDigits = 0;
+        for (int index = 0; index < NUM_LENGTH - 1; index++) {
+            threeDigits += eachDigits.get(index);
+            threeDigits *= 10;
+        }
+        threeDigits += eachDigits.get(2);
+
+        return threeDigits;
     }
 
     private static void validateNum(int number) {
@@ -79,28 +103,7 @@ public class Number {
         }
     }
 
-    public static List<Integer> threeDigitsToNumList(int number) {
-        List<Integer> eachDigits = new ArrayList<>();
-
-        int denominator = 100;
-        for (int index = 0; index < NUM_LENGTH; index++) {
-            eachDigits.add(number / denominator);
-
-            number %= denominator;
-            denominator /= 10;
-        }
-        return eachDigits;
+    private static void printGuideMessage() {
+        System.out.print("숫자를 입력해주세요 : ");
     }
-
-    public static int numListToThreeDigits(List<Integer> eachDigits) {
-        int threeDigits = 0;
-        for (int index = 0; index < NUM_LENGTH - 1; index++) {
-            threeDigits += eachDigits.get(index);
-            threeDigits *= 10;
-        }
-        threeDigits += eachDigits.get(2);
-
-        return threeDigits;
-    }
-
 }
