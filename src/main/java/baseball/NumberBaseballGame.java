@@ -24,7 +24,7 @@ public class NumberBaseballGame {
         computerNumber = answer.generateAnswer();
 
         while (true) {
-            System.out.println(INPUT_TEXT);
+            System.out.print(INPUT_TEXT);
             String userInput = Console.readLine();
             UserInputException.checkUserNumberInput(userInput);
             inputNumber = changeStringToList(userInput);
