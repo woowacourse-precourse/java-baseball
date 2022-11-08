@@ -131,7 +131,7 @@ public class Application {
     public static void chooseToEndGameOrContinue() {
         String choiceToPlayOrEndTheGame = Console.readLine();
         if (choiceToPlayOrEndTheGame.equals("1")) {
-            playTheGame();
+//            playTheGame();
         } else if (choiceToPlayOrEndTheGame.equals("2")) {
             System.out.println("게임 종료");
         }
