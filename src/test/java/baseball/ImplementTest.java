@@ -103,6 +103,7 @@ public class ImplementTest extends NsTest{
         assertThat(Input.whileRunning()).isEqualTo(answer);
     }
 
+    @Tag("판정 결과 출력 테스트")
     @ParameterizedTest
     @DisplayName("각 판정별 결과 출력 테스트")
     @CsvSource(value = {"0:0,낫싱", "1:0,1스트라이크", "0:1,1볼", "1:1,1볼 1스트라이크"})
@@ -110,6 +111,19 @@ public class ImplementTest extends NsTest{
         final String[] inputs = input.split(":");
         Output.printResult(Integer.parseInt(inputs[0]), Integer.parseInt(inputs[1]));
         assertEquals(expected, captor.toString().trim());
+    }
+
+    @Tag("판정 결과 출력 테스트")
+    @Test
+    @DisplayName("3스트라이크일 경우 결과 출력 테스트")
+    void printResult_3_strike_test() {
+        String answer = "3스트라이크"
+            + System.lineSeparator()
+            + "3개의 숫자를 모두 맞히셨습니다! 게임 종료"
+            + System.lineSeparator()
+            + "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+        Output.printResult(3, 0);
+        assertEquals(answer, captor.toString().trim());
     }
 
     @Override
