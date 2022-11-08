@@ -14,6 +14,7 @@ public class PlayBall {
             this.playBallUI = new PlayBallUI();
         }
 
+        exceptionHandler = new ExceptionHandler();
         setComputerNumber();
         playBallUI.startInterface();
         controlGame();
@@ -41,10 +42,11 @@ public class PlayBall {
 
         playBallUI.showAnswerMessage();
         String restartOptionInput = playBallUI.takeRestartOptionInput();
+        whetherToRestart(restartOptionInput);
     }
 
     public void checkUserInput(String userNumberInput){
-        exceptionHandler = new ExceptionHandler();
+
 
         exceptionHandler.checkIsDigit(userNumberInput);
         exceptionHandler.checkIsValidLength(userNumberInput);
@@ -59,5 +61,13 @@ public class PlayBall {
         }
 
         return referee.judge(userNumber);
+    }
+
+    public void whetherToRestart(String restartOptionInput) {
+        //todo exceptionHandler.checkIsValidRestartInput(restartOptionInput);
+
+        if (restartOptionInput.equals("1")) {
+            startGame();
+        }
     }
 }
