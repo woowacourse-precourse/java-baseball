@@ -11,7 +11,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class NumberTest extends NsTest{
+public class NumberTest extends NsTest {
     @RepeatedTest(5)
     @DisplayName("상대 숫자의 자릿수가 3인지 확인")
     void validateOpponentNumberDigits() {

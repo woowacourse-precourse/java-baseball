@@ -52,16 +52,6 @@ class GameTest extends NsTest {
         );
     }
 
-    @Test
-    @DisplayName("예외: 게임 재실행(1) 혹은 종료(2)가 아닌 다른 문자 입력한 경우")
-    void case4() {
-        String action = "4";
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> EndGame.validateAction(action))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
