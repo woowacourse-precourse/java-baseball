@@ -15,7 +15,12 @@ public class ComputerNumber {
     computerNumber = new ArrayList<>();
   }
 
+  private void init(){
+    computerNumber.clear();
+  }
+
   public void setComputerNumber() {
+    init();
     while (computerNumber.size() < MAX_NUMBER_SIZE) {
       int randomNumber = Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
       if (!computerNumber.contains(randomNumber)) {
