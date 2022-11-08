@@ -21,9 +21,9 @@ public class Application {
             if(!createComputerNum(computerNum))
                 throw new IllegalArgumentException("컴퓨터가 랜덤수를 생성하지 못하였습니다.");
 
-            List<Integer> playerNum = new ArrayList<>(inputPlayerNum());
-
-            checkValidPlayerNum(playerNum);
+            List<Integer> playerNum = new ArrayList<>();
+            String inputPlayerNum = inputPlayerNum();
+            checkValidPlayerNum(inputPlayerNum);
 
             StrikeBallResult strikeBallResult = comparePlayerAndComputer(playerNum, computerNum);
             notifyGameResult(strikeBallResult);
@@ -48,15 +48,10 @@ public class Application {
             return false;
     }
 
-    public static List<Integer> inputPlayerNum(){
-        List<Integer> player = new ArrayList<>();
+    public static String inputPlayerNum(){
         System.out.print("숫자를 입력해주세요 : ");
         String playerNum = Console.readLine();
-
-        for (int i = 0; i < playerNum.length(); i++) {
-            player.add(playerNum.charAt(i)-'0');
-        }
-        return player;
+        return playerNum;
     }
 
     public static boolean isValidLength(int playerNumLength){
@@ -96,7 +91,10 @@ public class Application {
         if(!isValidLength(inputPlayerNum.length()))
             throw new IllegalArgumentException("사용자가 잘못된 길이의 값을 입력하였습니다.");
 
-        if(isExistDuplicate(player))
+        if(!isNumber(inputPlayerNum))
+            throw new IllegalArgumentException("사용자가 숫자가 아닌 값을 입력하였습니다.");
+
+        if(isExistDuplicate(inputPlayerNum))
             throw new IllegalArgumentException("사용자가 중복된 숫자를 입력하였습니다.");
 
         return true;
@@ -105,12 +103,12 @@ public class Application {
     public static StrikeBallResult comparePlayerAndComputer(List<Integer> player , List<Integer> computer){
         StrikeBallResult strikeBallResult = new StrikeBallResult();
 
-        int playerUnits = player.get(0);
-        int computerUnits = computer.get(0);
+        int playerUnits = player.get(2);
+        int computerUnits = computer.get(2);
         int playerTens = player.get(1);
         int computerTens = computer.get(1);
-        int playerHundreds = player.get(2);
-        int computerHundreds = computer.get(2);
+        int playerHundreds = player.get(0);
+        int computerHundreds = computer.get(0);
 
         if(playerUnits == computerUnits)
             strikeBallResult.strike();
@@ -131,13 +129,16 @@ public class Application {
     }
 
     public static void notifyGameResult(StrikeBallResult strikeBallResult){
-        if(strikeBallResult.getStrikeCnt() == 3){
+        int strikeCnt = strikeBallResult.strikeCnt;
+        int ballCnt = strikeBallResult.ballCnt;
+
+        if(strikeCnt == 3){
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        }else if(strikeBallResult.getStrikeCnt() + strikeBallResult.getBallCnt() == 0){
+        }else if(strikeCnt + ballCnt == 0){
             System.out.println("낫싱");
-        }else if(strikeBallResult.getBallCnt() == 0){
+        }else if(ballCnt == 0){
             System.out.println(strikeBallResult.getStrikeCnt() + "스트라이크" );
         }else{
             System.out.println(strikeBallResult.getBallCnt() + "볼 " + strikeBallResult.getStrikeCnt() + "스트라이크");
