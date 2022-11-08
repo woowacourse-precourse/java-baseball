@@ -18,7 +18,7 @@ public class UserNumber {
         }
 
         for (int i = 0; i < 3; i++) {
-            int number = Integer.valueOf(input.charAt(i));
+            int number = input.charAt(i) - '0';
             if (number < 1 || number > 9) {
                 throw new IllegalArgumentException();
             }
