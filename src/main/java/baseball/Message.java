@@ -9,11 +9,22 @@ public class Message {
     public static final String DUPLICATE_NUMBER_EXCEPTION_MESSAGE = "입력된 수에 중복이 있습니다. 각각 다른 숫자를 입력해주세요.";
     public static final String ZERO_INCLUDED_EXCEPTION_MESSAGE = "입력된 수에 0이 포함되어 있습니다. 0을 제외한 1부터 9 사이의 수를 입력해주세요.";
 
+    public static final String STRIKE_MESSAGE = "스트라이크 ";
+    public static final String BALL_MESSAGE = "볼 ";
+
     public static void printInitialGameStartMessage() {
         System.out.println(GAME_START_MESSAGE);
     }
 
     public static void printInputNumbersMessage() {
         System.out.print(INPUT_NUMBERS_MESSAGE);
+    }
+
+    public static void printStrikeMessage() {
+        System.out.print(STRIKE_MESSAGE);
+    }
+
+    public static void printBallMessage() {
+        System.out.print(BALL_MESSAGE);
     }
 }

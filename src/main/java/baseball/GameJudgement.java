@@ -22,10 +22,31 @@ public class GameJudgement {
             }
         }
 
+        printResult(strike, ball);
+
         if (strike == THREE_STRIKE) {
             return true;
         }
 
         return false;
+    }
+
+    public void printResult(int strike, int ball) {
+        if (ball != ZERO_COUNT) {
+            System.out.print(ball);
+            Message.printBallMessage();
+        }
+
+        if (strike == ZERO_COUNT) {
+            System.out.println();
+            return;
+        }
+
+        if (strike != ZERO_COUNT) {
+            System.out.print(strike);
+            Message.printStrikeMessage();
+        }
+
+        System.out.println();
     }
 }
