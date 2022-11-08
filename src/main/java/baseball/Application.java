@@ -107,6 +107,10 @@ public class Application {
     public static boolean checkBall(int targetNumber, List<Integer> answerNumber) {
         boolean isBall = false;
 
+        if (answerNumber.contains(targetNumber)) {
+            isBall = true;
+        }
+
         return isBall;
     }
 
