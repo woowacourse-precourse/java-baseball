@@ -1,29 +1,22 @@
 package baseball;
 
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static baseball.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BaseBallTest {
-    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+public class BaseBallTest extends NsTest {
+
 
     @Test
     @DisplayName("야구게임 시작 메세지 출력하기")
     void printBaseballGameMessage(){
-        System.setOut(new PrintStream(output));
-
-        String displayMessage = "숫자 야구 게임을 시작합니다.\n";
+        String displayMessage = "숫자 야구 게임을 시작합니다.";
         baseballGameStart();
-        assertThat(output.toString()).isEqualTo(displayMessage);
-
-        System.setOut(System.out);
-        output.reset();
+        assertThat(output()).isEqualTo(displayMessage);
     }
 
     @Test
@@ -37,13 +30,13 @@ public class BaseBallTest {
     @Test
     @DisplayName("사용자의 숫자 를물어는 함수")
     void printUserNumberMessage(){
-        System.setOut(new PrintStream(output));
-
-        String printMessage = "숫자를 입력하세요 : ";
+        String printMessage = "숫자를 입력하세요 :";
         userNumberMessagePrint();
-        assertThat(output.toString()).isEqualTo(printMessage);
+        assertThat(output()).isEqualTo(printMessage);
+    }
 
-        System.setOut(System.out);
-        output.reset();
+    @Override
+    protected void runMain() {
+        Application.main(new String[]{});
     }
 }
