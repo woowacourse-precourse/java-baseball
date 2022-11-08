@@ -32,11 +32,11 @@ public class NumberBaseBall {
             NumberLogicCheck(playerNumList);
 
             List<Integer> judgeList = judge(computerNumList, playerNumList);
+            System.out.println(hint(judgeList));
             if (judgeList.get(0) == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             }
-
         }
     }
     // 숫자 로직 체크
@@ -80,6 +80,7 @@ public class NumberBaseBall {
 
         return checkList;
     }
+
     int countStrike(int strikeCount, List<Integer> computerNumberList, List<Integer> userNumberList) {
         int idx = 0;
         while (idx < computerNumberList.size()) {
@@ -99,4 +100,19 @@ public class NumberBaseBall {
         }
         return ballCount;
     }
+    // hint
+    String hint(List<Integer> checkList) {
+        String playerHint;
+        if (checkList.get(0) > 0 && checkList.get(1) > 0) {
+            playerHint = checkList.get(1) + "볼 " + "" + checkList.get(0) + "스트라이크";
+        } else if (checkList.get(0) == 0 && checkList.get(1) > 0) {
+            playerHint = checkList.get(1) + "볼 ";
+        } else if (checkList.get(0) > 0 && checkList.get(1) == 0) {
+            playerHint = checkList.get(0) + "스트라이크";
+        } else {
+            playerHint = "낫싱";
+        }
+        return playerHint;
+    }
+
 }
