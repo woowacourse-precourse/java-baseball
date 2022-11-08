@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -62,6 +63,27 @@ public class Application {
         if (!(inputCode == 1 || inputCode == 2)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean compareAndPrintResult(List<Integer> computer, List<Integer> input) {
+        boolean result = false;
+        int strikeCount = 0;
+        int ballCount = 0;
+        for (int i = 0; i < input.size(); i++) {
+            int sameNumberIndex = computer.indexOf(input.get(i)); // if not found, indexOf function will return -1
+            if (sameNumberIndex == i && sameNumberIndex != -1) {
+                strikeCount++;
+            }
+            if (sameNumberIndex != i && sameNumberIndex != -1) {
+                ballCount++;
+            }
+        }
+        printComparisonResult(strikeCount, ballCount);
+        if (strikeCount == 3) {
+            result = true;
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+        return result;
     }
 
     private static void printComparisonResult(int strikeCount, int ballCount) {
