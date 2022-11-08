@@ -57,4 +57,29 @@ public class FunctionTest {
 
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    void 재시작_테스트() {
+        BaseballGame baseballGame = new BaseballGame();
+        Boolean result = baseballGame.checkRetry("1");
+
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 종료_테스트() {
+        BaseballGame baseballGame = new BaseballGame();
+        Boolean result = baseballGame.checkRetry("2");
+
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void 재시작_종료_에러_테스트() {
+        BaseballGame baseballGame = new BaseballGame();
+
+        assertThatThrownBy(() -> baseballGame.checkRetry("49"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("1 혹은 2가 입력되어야 합니다.");
+    }
 }
