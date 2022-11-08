@@ -2,7 +2,6 @@ package baseball.domain.manager;
 
 import baseball.constant.GameStatus;
 import baseball.util.BallCount;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -172,5 +171,30 @@ class NumberBaseBallManagerTest {
 
         //then
         assertThat(baseballManager.getStatus()).isNotEqualTo(GameStatus.PENDING);
+    }
+
+    @DisplayName("0볼 0스트라이크인 경우 낫싱을 반환")
+    @Test
+    void givenZero_whenDescribeResult_thenReturn낫싱() {
+        //given
+        BallCount result = new BallCount(0, 0);
+
+        //when
+        String str = baseballManager.selectResultOutput(result);
+
+        //then
+        assertThat(str).contains("낫싱");
+    }
+    @DisplayName("결과값에 따라 올바른 출력")
+    @Test
+    void givenBallCount_whenDescribeResult_thenReturnResult() {
+        //given
+        BallCount result = new BallCount(1, 1);
+
+        //when
+        String str = baseballManager.selectResultOutput(result);
+
+        //then
+        assertThat(str).contains("1볼 1스트라이크");
     }
 }

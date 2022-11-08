@@ -2,11 +2,8 @@ package baseball.domain.manager;
 
 import baseball.constant.GameMessage;
 import baseball.constant.GameStatus;
-import baseball.domain.computer.Computer;
 import baseball.domain.user.User;
 import baseball.util.BallCount;
-
-import java.io.IOException;
 
 public class NumberBaseBallManager {
 
@@ -71,6 +68,27 @@ public class NumberBaseBallManager {
             status = GameStatus.PENDING;
         }
     }
+
+    public String selectResultOutput(BallCount result) {
+        int ball = result.getBall();
+        int strike = result.getStrike();
+
+        if (ball == 0 && strike == 0) {
+            return "낫싱\n";
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        if (result.getBall() > 0) {
+            sb.append(result.getBall()).append(GameMessage.BALL.getValue());
+        }
+
+        if (result.getStrike() > 0) {
+            sb.append(result.getStrike()).append(GameMessage.STRIKE.getValue());
+        }
+
+        return sb.toString();
+   }
 
     public GameStatus getStatus(){
         return this.status;
