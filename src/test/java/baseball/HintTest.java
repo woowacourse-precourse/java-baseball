@@ -72,4 +72,16 @@ class HintTest {
         assertThat(hint.getStrikeCount()).isEqualTo(1);
     }
 
+    @Test
+    public void 힌트_정확성_확인_0볼_0스트라이크() throws Exception {
+        //given
+        List<Integer> computerNumber = List.of(1, 3, 5);
+        List<Integer> userNumber = List.of(2, 4, 8);
+        //when
+        hint.giveHint(computerNumber, userNumber);
+        //then
+        assertThat(hint.getBallCount()).isEqualTo(0);
+        assertThat(hint.getStrikeCount()).isEqualTo(0);
+    }
+
 }
