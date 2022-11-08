@@ -80,5 +80,9 @@ public class Checkout {
         return false;
     }
 
+    private boolean compareStrikeAndBall(Checkout result) {
+        return this.strike.equals(result.strike) && this.ball.equals(result.ball);
+    }
+
 
 }

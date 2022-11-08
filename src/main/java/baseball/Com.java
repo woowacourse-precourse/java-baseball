@@ -14,7 +14,7 @@ public class Com {
     private final List<Ball> balls;
 
     public Com(List<Ball> balls) {
-
+        validate(balls);
         this.balls = balls;
     }
 
