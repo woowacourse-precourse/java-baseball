@@ -62,4 +62,35 @@ class NumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("3자리 수가 아닙니다.");
     }
+
+    private int convertToNumber(List<Integer> digitNumbers) {
+        return digitNumbers.get(0)*100 + digitNumbers.get(1)*10 + digitNumbers.get(2);
+    }
+
+    @Test
+    public void 세자리_수로_생성했을_때_첫번째_숫자가_일치한다() {
+        int randomDigitNumber = convertToNumber(digitNumbers);
+        Number number = new Number(randomDigitNumber);
+
+        Digit firstDigit = new Digit(digitNumbers.get(0));
+        assertThat(number.first).isEqualTo(firstDigit);
+    }
+
+    @Test
+    public void 세자리_수로_생성했을_때_두번째_숫자가_일치한다() {
+        int randomDigitNumber = convertToNumber(digitNumbers);
+        Number number = new Number(randomDigitNumber);
+
+        Digit secondDigit = new Digit(digitNumbers.get(1));
+        assertThat(number.second).isEqualTo(secondDigit);
+    }
+
+    @Test
+    public void 세자리_수로_생성했을_때_세번째_숫자가_일치한다() {
+        int randomDigitNumber = convertToNumber(digitNumbers);
+        Number number = new Number(randomDigitNumber);
+
+        Digit thirdDigit = new Digit(digitNumbers.get(2));
+        assertThat(number.third).isEqualTo(thirdDigit);
+    }
 }
