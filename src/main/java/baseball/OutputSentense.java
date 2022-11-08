@@ -46,5 +46,23 @@ public class OutputSentense {
         return a;
     }
 
+    public String scoreBoard(int countStrike, int countBall) {
+        String sentense;
+        String strStrike = String.valueOf(countStrike);
+        String strBall = String.valueOf(countBall);
+        if (countStrike == 0 && countBall == 0)
+            sentense = nothing;
+
+        else if (countStrike == 0 && !(countBall == 0))
+            sentense = strBall + ball;
+
+        else if (!(countStrike == 0) && countBall == 0) {
+            sentense = strStrike + strike;
+        } else {
+            sentense = strBall + ball + " " + strStrike + strike;
+        }
+        return sentense;
+    }
+
 
 }
