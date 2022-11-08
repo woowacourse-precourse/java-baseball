@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import static baseball.model.BaseBall.MAX_BASEBALL_SIZE;
 
 public class InputValidator {
+    public static final String CONTINUE_COMMAND = "1";
+
     private static final String CANNOT_INPUT_DUPLICATE_NUMBER = "중복된 값을 입력할 수 없습니다.";
     private static final String INPUT_THREE_NUMBERS = "3자리의 숫자를 입력해주세요.";
     private static final String CANNOT_INPUT_ZERO = "숫자 0은 입력할 수 없습니다.";
@@ -14,6 +16,7 @@ public class InputValidator {
     private static final String NUMBER_REGEX = "^[0-9]+$";
     private static final String CANNOT_INPUT_EXCEPT_NUMBER = "입력은 숫자 이외의 다른 문자가 포함될 수 없습니다.";
     private static final String INPUT_ONE_OR_TWO = "1 또는 2를 입력해주세요.";
+    private static final String QUIT_COMMAND = "2";
 
     private static Set<Character> duplicateChecker;
 
@@ -82,15 +85,15 @@ public class InputValidator {
         return duplicateChecker.size() != MAX_BASEBALL_SIZE;
     }
 
-    public static void validateOneOrTwo(String input) {
-        if (isOneOrTwo(input)) {
+    public static void validateCommand(String input) {
+        if (isContinueOrQuitCommand(input)) {
             return;
         }
 
         throw new IllegalArgumentException(INPUT_ONE_OR_TWO);
     }
 
-    private static boolean isOneOrTwo(String input) {
-        return input.equals("1") || input.equals("2");
+    private static boolean isContinueOrQuitCommand(String input) {
+        return input.equals(CONTINUE_COMMAND) || input.equals(QUIT_COMMAND);
     }
 }

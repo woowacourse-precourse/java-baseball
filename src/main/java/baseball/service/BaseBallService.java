@@ -22,7 +22,7 @@ public class BaseBallService {
         return baseBall.compareAnswer(numbers);
     }
 
-    public void validateOneOrTwo(String input) {
-        InputValidator.validateOneOrTwo(input);
+    public void validateQuitOrContinueCommand(String input) {
+        InputValidator.validateCommand(input);
     }
 }

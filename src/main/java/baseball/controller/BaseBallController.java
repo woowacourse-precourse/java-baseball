@@ -8,10 +8,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Objects;
 
+import static baseball.util.InputValidator.CONTINUE_COMMAND;
+
 public class BaseBallController {
-
-    private static final String CONTINUE_COMMAND = "1";
-
     private final BaseBallService baseBallService;
 
     public BaseBallController(BaseBallService baseBallService) {
@@ -63,7 +62,7 @@ public class BaseBallController {
 
     private void inputAndDecideQuitOrContinue() {
         String input = Console.readLine();
-        baseBallService.validateOneOrTwo(input);
+        baseBallService.validateQuitOrContinueCommand(input);
         quitOrContinue(input);
     }
 
