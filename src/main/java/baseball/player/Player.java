@@ -24,4 +24,8 @@ public abstract class Player {
     boolean isSelectBall(String ball) {
         return selectBalls.contains(ball);
     }
+
+    void selectBall(String ball) {
+        selectBalls.add(ball);
+    }
 }
