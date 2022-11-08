@@ -21,7 +21,6 @@ public class Application {
         do {
             List<Integer> randomNumberList = new ArrayList<>();
             putInRandomNumber(randomNumberList);
-
             playGame(randomNumberList);
             endGame();
 
@@ -35,7 +34,7 @@ public class Application {
 
     public static void playGame(List<Integer> randomNumberList) {
 
-        while(true) {
+        while (true) {
 
             String numberString = putInNumber();
 
