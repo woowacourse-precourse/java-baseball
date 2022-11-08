@@ -16,9 +16,7 @@ public class GameController {
 
         while (true){
             String input = OutputView.printRequestNumber();
-            if (!ValidationUtil.validateInputNumber(input)){
-                break;
-            }
+            ValidationUtil.validateInputNumber(input);
             List<Integer> inputNumberList = JudgeGame.getInputNumberList(input);
 
             if (!JudgeGame.verifyAnswer(inputNumberList, computerNumberList)){

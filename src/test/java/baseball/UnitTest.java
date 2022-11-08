@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class UnitTest extends NsTest {
 
-    @Test
+    /* @Test
     void 세자리_수_입력값_적정성_검토() {
 
         String examNum1 = "1234";
@@ -29,16 +29,18 @@ class UnitTest extends NsTest {
         boolean return3 = ValidationUtil.validateInputNumber(examNum3);
         boolean return4 = ValidationUtil.validateInputNumber(examNum4);
 
-        assertThat(return1).isEqualTo(false);
-        assertThat(return2).isEqualTo(false);
-        assertThat(return3).isEqualTo(false);
-        assertThat(return4).isEqualTo(false);
-    }
+        assertThat(return1).isInstanceOf(RuntimeException.class);
+        assertThat(return2).isInstanceOf(RuntimeException.class);
+        assertThat(return3).isInstanceOf(RuntimeException.class);
+        assertThat(return4).isInstanceOf(RuntimeException.class);
+    } */
 
+    /*
+    @Test
     void 세자리_수_입력값_적정성_검토_후_리스트_변환(){
 
         String inputNum = "123";
-        List<String> answerList = new ArrayList<>();
+        List<Integer> answerList = new ArrayList<>();
         answerList.add(1);
         answerList.add(2);
         answerList.add(3);
@@ -48,13 +50,14 @@ class UnitTest extends NsTest {
             inputNumList = JudgeGame.getInputNumberList(inputNum);
             assertThat(inputNumList).isEqualTo(answerList);
         }
-    }
+    }*/
 
+    @Test
     void 컴퓨터_생성_세자리_난수_적정성_검토(){
         ComputerNumber computerNumber = new ComputerNumber();
         Integer hundredNumber = computerNumber.computerNumberList.get(0);
-        Integer tenNumber = computerNumber.computerNumberList.get(0);
-        Integer number = computerNumber.computerNumberList.get(0);
+        Integer tenNumber = computerNumber.computerNumberList.get(1);
+        Integer number = computerNumber.computerNumberList.get(2);
 
         assertThat(hundredNumber).isBetween(1, 9);
         assertThat(tenNumber).isBetween(1, 9);

@@ -32,6 +32,10 @@ public class ValidationUtil {
     }
 
     public static void validateInputRestart(String input){
+        if (!input.equals("1") && !input.equals("2")){
+            throw new IllegalArgumentException();
+        }
+
         if (input.equals("1")){
             GameController gameController = new GameController();
             gameController.startGame();
@@ -40,8 +44,6 @@ public class ValidationUtil {
         if (input.equals("2")){
             return;
         }
-
-        throw new IllegalArgumentException();
     }
 
 
