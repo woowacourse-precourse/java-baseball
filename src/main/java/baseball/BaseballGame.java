@@ -23,33 +23,15 @@ public class BaseballGame {
     private static final String GAME_RESTART = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private int restartNumber;
 
-    public List<Integer> input() {
-        System.out.print(INPUT_NUMBER);
-        String inputNumber = Console.readLine();
-
-        return stringToIntegerList(inputNumber);
-    }
-
-    public List<Integer> stringToIntegerList(String inputNumber) {
-        List<Integer> number = new ArrayList<>();
-
-        for (int digit = 0; digit < inputNumber.length(); digit++) {
-            number.add(Integer.parseInt(String.valueOf(inputNumber.charAt(digit))));
-        }
-        return number;
-    }
-
     public void gameStart() {
-        restartNumber = 0;
-
         Computer computer = new Computer();
         List<Integer> computerNumber = computer.makeRandomNumber();
+        restartNumber = 0;
 
-        while(restartNumber == 0) {
+        while (restartNumber == 0) {
             Number number = new Number(input());
             makeResult(number, computerNumber);
         }
-
         System.out.println(GAME_RESTART);
         Flag flag = new Flag(Console.readLine());
 
@@ -70,7 +52,7 @@ public class BaseballGame {
         }
         if (judgement.strike == 3) {
             System.out.print("\n" + GAME_END);
-            restartNumber++;
+            restartNumber += 1;
         }
         if (judgement.strike == 0 && judgement.ball == 0) {
             System.out.print(NOTHING);
@@ -78,7 +60,7 @@ public class BaseballGame {
         System.out.print("\n");
     }
 
-    public void judge(Number number, List<Integer> computerNumber,  Judgement judgement) {
+    public void judge(Number number, List<Integer> computerNumber, Judgement judgement) {
         int computerDigit, myDigit;
 
         for (int index = 0; index < 3; index++) {
@@ -92,5 +74,22 @@ public class BaseballGame {
                 judgement.ball += 1;
             }
         }
+    }
+
+    public List<Integer> input() {
+        System.out.print(INPUT_NUMBER);
+        String inputNumber = Console.readLine();
+
+        return stringToIntegerList(inputNumber);
+    }
+
+    public List<Integer> stringToIntegerList(String inputNumber) {
+        List<Integer> number = new ArrayList<>();
+
+        for (int digit = 0; digit < inputNumber.length(); digit++) {
+            number.add(Integer.parseInt(String.valueOf(inputNumber.charAt(digit))));
+        }
+
+        return number;
     }
 }
