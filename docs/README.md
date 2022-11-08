@@ -34,15 +34,9 @@
 
 ### 테스트 기능 구현
 
-- [ ] controller 패키지의 메서드 테스트 
 > - [x] BaseballGame 클래스 메서드 테스트
-> - [ ] BaseballGameBoard 클래스 메서드 테스트
-
-
-- [ ] model 패키지의 메서드 테스트
 > - [x] ComputerNumberGenerator 클래스 메서드 테스트
-> - [x] NumberValidator 클래스 메서드 테스트
-> - [ ] UserNumberGenerator 클래스 메서드 테스트
+
 
 </div>
 </details>
