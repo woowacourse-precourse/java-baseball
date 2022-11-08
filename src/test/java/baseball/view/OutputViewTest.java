@@ -21,7 +21,7 @@ class OutputViewTest {
 	}
 
 	@Test
-	void printUserBallStatus() {
+	void printUserBallStatusTest() {
 		UserBall userBall = UserBall.createUserBall();
 		userBall.updateStrikeCount(3);
 		userBall.updateStatus();
@@ -31,7 +31,7 @@ class OutputViewTest {
 	}
 
 	@Test
-	void printSuccess() {
+	void printSuccessTest() {
 		outputView.printSuccess();
 		assertThat(outContent.toString()).contains("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 	}

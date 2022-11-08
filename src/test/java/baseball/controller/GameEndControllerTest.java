@@ -31,7 +31,7 @@ class GameEndControllerTest {
 
 	@ParameterizedTest(name = "스트라이크 개수가 3이면 isAnswer 메서드에서 true 반환 아니면, false 를 반환한다")
 	@CsvSource(value = {"3, true", "2, false"})
-	void isAnswer(Integer strikeCount, boolean expected) {
+	void isAnswerTest(Integer strikeCount, boolean expected) {
 		UserBall userBall = UserBall.createUserBall();
 		userBall.updateStrikeCount(strikeCount);
 		userBall.updateStatus();
