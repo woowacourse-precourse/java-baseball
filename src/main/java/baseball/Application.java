@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.service.BaseballGameService;
+import baseball.service.impl.BaseballGameServiceImpl;
+import baseball.service.ComputerService;
+import baseball.service.impl.ComputerServiceImpl;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -9,6 +13,8 @@ import static baseball.Message.*;
 public class Application {
 
     private final static int MAX_SIZE = 3;
+    private final static String RESTART = "1";
+    private final static String EXIT = "2";
 
     private final static ComputerService computerService = new ComputerServiceImpl();
     private final static BaseballGameService baseballGameService = new BaseballGameServiceImpl();
@@ -40,7 +46,7 @@ public class Application {
     }
 
     private static void endGame(User user) {
-        if (user.isEnd()) {
+        if (isEnd(user)) {
             showMessage(GAME_END);
             showMessage(RESTART_OR_EXIT);
             String request = Console.readLine();
@@ -48,10 +54,14 @@ public class Application {
         }
     }
 
+    private static boolean isEnd(User user) {
+        return user.isEnd();
+    }
+
     private static void requestCheck(User user, String request) {
-        if (request.equals("1")) {
+        if (request.equals(RESTART)) {
             user.reset();
-        } else if (!request.equals("2")) {
+        } else if (!request.equals(EXIT)) {
             throw new IllegalArgumentException();
         }
     }
@@ -86,6 +96,6 @@ public class Application {
     }
 
     private static boolean isCorrectAnswer(User user) {
-        return user.getStrike() - user.getBall() == MAX_SIZE;
+        return user.getStrike() - user.getBall() == MAX_SIZE && user.getStrike() == MAX_SIZE;
     }
 }
