@@ -12,14 +12,4 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public static boolean checkTwoNumbersAreSame(int num1,int num2){
-        if(num1 ==num2){
-            return true;
-        }
-        return false;
-    }
-
-
-
-
 }
