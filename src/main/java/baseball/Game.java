@@ -41,8 +41,7 @@ public class Game {
                     strike++;
                 }
             }
-            System.out.println(userinput);
-            System.out.println(comNum);
+            
             if (ball==0 && strike==0){
                 printWindow.resultNothingPrint();
                 continue;
