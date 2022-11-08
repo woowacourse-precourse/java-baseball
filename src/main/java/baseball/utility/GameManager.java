@@ -7,8 +7,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class GameManager {
     private static final String TEXT_FOR_START_GAME = "숫자 야구 게임을 시작합니다.";
+    private static final String TEXT_FOR_PROMPT_PLAYER_NUMBER_INPUT = "숫자를 입력해주세요 : ";
 
     private static GameManager gameManager;
 
@@ -55,6 +58,11 @@ public class GameManager {
 
     private void setComputerNumber(String computerNumber) {
         this.computerNumber = computerNumber;
+    }
+
+    private String getPlayerNumber() {
+        System.out.print(TEXT_FOR_PROMPT_PLAYER_NUMBER_INPUT);
+        return readLine();
     }
 
 }
