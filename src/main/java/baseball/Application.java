@@ -14,6 +14,7 @@ public class Application{
         }
         catch (IllegalArgumentException e){
             System.out.println("error : " + e.getMessage());
+            throw e;
         }
     }
 
