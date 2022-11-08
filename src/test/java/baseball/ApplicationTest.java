@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -158,7 +159,12 @@ class ApplicationTest extends NsTest {
     void 유저_번호와_컴퓨터_번호의_게임_결과_확인_테스트() {
         List<Integer> computerNumber = List.of(1, 2, 4);
         List<Integer> userNumber = List.of(1, 4, 3);
-        assertThat(getGameResult(computerNumber, userNumber)).containsExactly(1, 1);
+        HashMap<String, Integer> result = new HashMap<>() {{
+            put("볼", 1);
+            put("스트라이크", 1);
+        }};
+
+        assertThat(getGameResult(computerNumber, userNumber)).isEqualTo(result);
     }
 
     @Override
