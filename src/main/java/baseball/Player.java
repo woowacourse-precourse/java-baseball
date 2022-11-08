@@ -17,4 +17,8 @@ public class Player {
     public void addNumber(int number){
         numbers.add(number);
     }
+
+    public void initialize(){
+        numbers.clear();
+    }
 }
