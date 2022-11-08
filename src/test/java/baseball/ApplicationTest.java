@@ -1,6 +1,7 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -32,4 +33,19 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
+
+    Computer com;
+
+    @BeforeEach
+    void setup(){
+        com= new Computer();
+    }
+    @Test
+    void 컴퓨터숫자생성(){
+        assertThat(com.comNumList()).size().isEqualTo(3);
+        for(int i = 0; i < 3; i++){
+            assertThat(com.comNumList().get(i)).isBetween(1,9);
+        }
+    }
+    
 }
