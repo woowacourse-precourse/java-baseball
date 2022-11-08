@@ -24,4 +24,13 @@ public class Ball {
     public int getBallNumber() {
         return ballNumber;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        Ball ball = (Ball) o;
+        return ballNumber == ball.ballNumber;
+    }
 }
