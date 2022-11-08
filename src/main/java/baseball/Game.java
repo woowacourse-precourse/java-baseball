@@ -32,7 +32,8 @@ public class Game {
         answerNumber.RandomNumber();
         answerNumberList = answerNumber.getAnswerNumberList();
         do{
-            inputNumberList = inputNumber.userInputNumber();
+            inputNumber.userInputNumber();
+            inputNumberList.add(inputNumber.getUserNumber());
             strike = 0;
             ball = 0;
             getScore();
