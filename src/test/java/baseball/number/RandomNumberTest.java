@@ -1,4 +1,4 @@
-package baseball.ballnumber;
+package baseball.number;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class RandomBallNumberTest {
+class RandomNumberTest {
 
-    RandomBallNumber randomBallNumber;
+    RandomNumber randomNumber;
 
     @BeforeEach
     void init() {
-        randomBallNumber = new RandomBallNumber();
+        randomNumber = new RandomNumber();
     }
 
     @Test
     void 랜덤숫자_길이_테스트() {
-        List<String> randomNumbers = randomBallNumber.createRandomNumber();
+        List<String> randomNumbers = randomNumber.createRandomNumber();
         Assertions.assertThat(randomNumbers.size()).isSameAs(3);
     }
 }
