@@ -16,12 +16,12 @@ public class Game {
 
     private int GAME_STATE = START;
 
-    public void init(){
+    public void init() {
         computer.createRandomNumber();
     }
 
     public void start() {
-        while(GAME_STATE != STOP) {
+        while (GAME_STATE != STOP) {
             run();
         }
         GAME_STATE = player.enterAnswer();
@@ -42,17 +42,17 @@ public class Game {
     }
 
     // updateScore(): 볼 개수와 스트라이크 개수
-    private void updateScore(){
+    private void updateScore() {
         computer.countBallAndStrike(player.getPlayerNumbers(), score);
     }
 
-    private void printResult(){
-        if(score.getBall()==0 && score.getStrike()==0) {
+    private void printResult() {
+        if (score.getBall() == 0 && score.getStrike() == 0) {
             System.out.println(Message.NOTHING);
             return;
         }
-        if(score.getStrike()==3) {
-            System.out.println(score.getStrike()+Message.STRIKE);
+        if (score.getStrike() == 3) {
+            System.out.println(score.getStrike() + Message.STRIKE);
             GAME_STATE = STOP;
             return;
         }
@@ -60,8 +60,8 @@ public class Game {
         System.out.println(resultMessage);
     }
 
-    public boolean checkStopGame(){
-        if(GAME_STATE == STOP) {
+    public boolean checkStopGame() {
+        if (GAME_STATE == STOP) {
             return true;
         }
         return false;

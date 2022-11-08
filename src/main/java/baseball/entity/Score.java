@@ -8,6 +8,7 @@ public class Score {
     public void increaseBall(int ballCnt) {
         ball += ballCnt;
     }
+
     public void increaseStrike(int strikeCnt) {
         strike += strikeCnt;
     }
