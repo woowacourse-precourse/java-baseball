@@ -15,6 +15,7 @@ public enum State {
 
     private String number;
     private boolean start;
+    private static Optional<State> state;
 
     State(String number, boolean start) {
         this.number = number;
@@ -32,12 +33,13 @@ public enum State {
     private static final Map<String, State> numbers = Collections.unmodifiableMap(Stream.of(values())
             .collect(Collectors.toMap(State::getNumber, Function.identity())));
 
-    public static boolean isValidNumber(String number) {
-        return Optional.ofNullable(numbers.get(number)).isPresent();
-    }
-
     public static State getState(String number) {
         InputValidator.validateStateNumber(number);
-        return Optional.ofNullable(numbers.get(number)).get();
+        return state.get();
+    }
+
+    public static boolean isValidNumber(String number) {
+        state = Optional.ofNullable(numbers.get(number));
+        return state.isPresent();
     }
 }
