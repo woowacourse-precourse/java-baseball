@@ -9,5 +9,6 @@ public class Game {
 
     public void play() {
         view.initialStart();
+        round.play();
     }
 }
