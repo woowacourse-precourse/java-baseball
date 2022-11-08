@@ -10,6 +10,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
+    @Test
+    void 적은_숫자_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("14"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 숫자_제외_예외_테스트() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("aaa"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
@@ -25,22 +42,6 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 적은_숫자_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("14"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
-    void 숫자_제외_예외_테스트() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("aaa"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
