@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
     }
     @Test
     void 입력수_숫자로만_존재하는지() {
-        String inputBalls = "123a";
+        String inputBalls = "123";
         boolean checkNumeric = inputBalls.matches("[+-]?\\d*(\\.\\d+)?");
         if(!checkNumeric){
             throw new IllegalArgumentException();

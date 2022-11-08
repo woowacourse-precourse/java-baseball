@@ -51,7 +51,7 @@ public class ExceptionHanlder {
         String[] inputBallArr = inputBalls.split("");
 
         for(int i = 0; i < inputBalls.length(); i++) {
-            checkNonZero.add(Integer.valueOf(inputBallArr[i]));
+            checkNonZero.add(Integer.parseInt(inputBallArr[i]));
         }
 
         if(checkNonZero.contains(0)) {
