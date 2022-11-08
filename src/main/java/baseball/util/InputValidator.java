@@ -2,6 +2,7 @@ package baseball.util;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import static baseball.model.BaseBall.MAX_BASEBALL_SIZE;
 
@@ -10,13 +11,26 @@ public class InputValidator {
     private static final String INPUT_THREE_NUMBERS = "3자리의 숫자를 입력해주세요.";
     private static final String CANNOT_INPUT_ZERO = "숫자 0은 입력할 수 없습니다.";
     public static final char ZERO = '0';
+    public static final String NUMBER_REGEX = "^[0-9]+$";
+    public static final String CANNOT_INPUT_EXCEPT_NUMBER = "입력은 숫자 이외의 다른 문자가 포함될 수 없습니다.";
 
     private static Set<Character> duplicateChecker;
 
     public static void validate(String input) {
+        isAllNumber(input);
         isThreeWords(input);
         hasZero(input);
         checkDuplicateNumber(input);
+    }
+
+    private static void isAllNumber(String input) {
+        if (isExceptNumber(input)) {
+            throw new IllegalArgumentException(CANNOT_INPUT_EXCEPT_NUMBER);
+        }
+    }
+
+    private static boolean isExceptNumber(String input) {
+        return !Pattern.matches(NUMBER_REGEX, input);
     }
 
     private static void isThreeWords(String input) {

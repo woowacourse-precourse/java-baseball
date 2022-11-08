@@ -31,4 +31,12 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("숫자 이외의 문자를 입력하면 예외를 발생시킨다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"a34", "1a2", "98i", "ㅣ98", "4ㅜ5", "67;", "9+8"})
+    void validateNumber(String input) {
+        assertThatThrownBy(() -> InputValidator.validate(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
