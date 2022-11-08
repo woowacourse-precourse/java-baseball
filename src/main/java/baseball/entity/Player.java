@@ -10,10 +10,10 @@ public class Player {
 
     public void enterInput() {
         String input = Console.readLine();
-        // changeInputToNumbers(input);
+         changeInputToNumbers(input);
     }
 
-    private void changeInputToNumber(String input) {
+    private void changeInputToNumbers(String input) {
         playerNumbers = new ArrayList<>();
         for (int i=0; i<input.length(); i++) {
             playerNumbers.add(input.charAt(i)-'0');
