@@ -44,7 +44,28 @@ public class Application {
     }
 
     public static boolean scoreCalculation(String input, List<Integer> computer) {
-        return false;
+
+        int strike = 0;
+        int ball = ballCount(input, computer);
+
+        int i = 0;
+        for (Integer e : computer) {
+            if (strikeInspection(Character.getNumericValue(input.charAt(i)), e)) {
+                strike++;
+            }
+            i++;
+        }
+
+        System.out.println("strike: " + strike);
+        System.out.println("ball: " + ball);
+//        System.out.println(outputFormat(strike, ball));
+
+        if (strike == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return false;
+        }
+
+        return true;
     }
 
     public static void inputException(String input){
@@ -65,6 +86,20 @@ public class Application {
             return true;
         }
         return false;
+    }
+
+    public static int ballCount(String input, List<Integer> computer) {
+        int ball = 0;
+        if (Character.getNumericValue(input.charAt(0)) == computer.get(1) || Character.getNumericValue(input.charAt(0)) == computer.get(2)) {
+            ball++;
+        }
+        if (Character.getNumericValue(input.charAt(1)) == computer.get(0) || Character.getNumericValue(input.charAt(1)) == computer.get(2)) {
+            ball++;
+        }
+        if (Character.getNumericValue(input.charAt(2)) == computer.get(0) || Character.getNumericValue(input.charAt(2)) == computer.get(1)) {
+            ball++;
+        }
+        return ball;
     }
 
 }
