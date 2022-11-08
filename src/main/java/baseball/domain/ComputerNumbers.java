@@ -35,7 +35,7 @@ public class ComputerNumbers {
         if (computerNumbers.size() != BASEBALL_MAX_SIZE.getValue()) {
             throw new IllegalArgumentException("숫자는 3자리이어야 합니다");
         }
-        for (Integer number:computerNumbers) {
+        for (Integer number : computerNumbers) {
             if (number == UNAVAILABLE_NUMBER) {
                 throw new IllegalArgumentException("1-9의 숫자만 가능합니다");
             }

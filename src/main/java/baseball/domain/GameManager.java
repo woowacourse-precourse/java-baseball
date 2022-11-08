@@ -8,7 +8,8 @@ public class GameManager {
     private final int GAME_RESTART = GameFlow.GAME_RESTART.getValue();
     private BaseballGame game;
 
-    public GameManager() {}
+    public GameManager() {
+    }
 
     public void run() {
         do {

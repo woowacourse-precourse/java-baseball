@@ -5,12 +5,14 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import static baseball.type.BaseballBound.*;
+
 public class Computer {
     private final ComputerNumbers computerNumbers;
 
     public Computer() {
         this.computerNumbers = new ComputerNumbers(createRandomNumbers());
     }
+
     public Computer(List<Integer> numbers) {
         this.computerNumbers = new ComputerNumbers(numbers);
     }
@@ -32,6 +34,6 @@ public class Computer {
         int strikes = computerNumbers.countStrikes(baseballNumbers);
         int balls = computerNumbers.countBalls(baseballNumbers);
 
-        return new Hint(strikes,balls);
+        return new Hint(strikes, balls);
     }
 }
