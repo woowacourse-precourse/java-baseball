@@ -16,7 +16,7 @@ class UserTest {
         boolean exceptionTest = false;
         try {
             String test = "1234";
-            user.checkValidate(test);
+            user.checkInputValidate(test);
         } catch (IllegalArgumentException e) {
             exceptionTest = true;
         }
@@ -28,7 +28,7 @@ class UserTest {
         boolean exceptionTest = false;
         try {
             String test = "23";
-            user.checkValidate(test);
+            user.checkInputValidate(test);
         } catch (IllegalArgumentException e) {
             exceptionTest = true;
         }
@@ -40,7 +40,7 @@ class UserTest {
         boolean exceptionTest = false;
         try {
             String test = "234";
-            user.checkValidate(test);
+            user.checkInputValidate(test);
         } catch (IllegalArgumentException e) {
             exceptionTest = true;
         }
@@ -52,7 +52,7 @@ class UserTest {
         boolean exceptionTest = false;
         try {
             String test = "130";
-            user.checkValidate(test);
+            user.checkInputValidate(test);
         } catch (IllegalArgumentException e) {
             exceptionTest = true;
         }
@@ -64,7 +64,7 @@ class UserTest {
         boolean exceptionTest = false;
         try {
             String test = "891";
-            user.checkValidate(test);
+            user.checkInputValidate(test);
         } catch (IllegalArgumentException e) {
             exceptionTest = true;
         }
@@ -76,7 +76,7 @@ class UserTest {
         boolean exceptionTest = false;
         try {
             String test = "911";
-            user.checkValidate(test);
+            user.checkInputValidate(test);
         } catch (IllegalArgumentException e) {
             exceptionTest = true;
         }
@@ -87,7 +87,7 @@ class UserTest {
         boolean exceptionTest = false;
         try {
             String test = "912";
-            user.checkValidate(test);
+            user.checkInputValidate(test);
         } catch (IllegalArgumentException e) {
             exceptionTest = true;
         }

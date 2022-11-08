@@ -14,7 +14,7 @@ public class User {
         return Console.readLine();
     }
 
-    public void checkValidate(String input) {
+    public void checkInputValidate(String input) {
         validateInputRange(input);
         checkDuplicatedNumber(input);
         validateContainZero(input);

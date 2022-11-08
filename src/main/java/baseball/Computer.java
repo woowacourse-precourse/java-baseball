@@ -29,7 +29,6 @@ public class Computer {
                 .collect(Collectors.joining());
     }
 
-    // 해당 함수의 역할은 3자리 서로 다른 IntegerList 를 받아서 sTring으로 바꾼다
     public String randomNumberToStringResult() {
         return randomNumberListToString(generateRandomNumber());
     }

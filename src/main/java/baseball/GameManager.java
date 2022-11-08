@@ -5,9 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.stream.IntStream;
 
 import static baseball.Constants.*;
-import static baseball.message.ExceptionMessage.ILLEGAL_ERR_MSG;
+import static baseball.message.ExceptionMessage.*;
 import static baseball.message.OutputMessage.*;
-import static baseball.message.OutputMessage.printGameSetMessage;
 
 public class GameManager {
     Computer computer = new Computer();
@@ -19,7 +18,7 @@ public class GameManager {
         do {
             printNumberInputMessage();
             String userInput = user.inputUserNumber();
-            user.checkValidate(userInput);
+            user.checkInputValidate(userInput);
             ballResult = countBall(userInput, computerNumberResult);
             strikeResult = countStrike(userInput, computerNumberResult);
             printResult(ballResult, strikeResult);
@@ -54,7 +53,7 @@ public class GameManager {
             System.out.print(strike+ "스트라이크 ");
         }
     }
-    // 유저에게 게임을 다시할껀지 물어봄
+
     public String inputReGameStartNumber() {
         return Console.readLine();
     }
