@@ -63,6 +63,7 @@ public class Computer {
     public void giveHintToUser() {
         if (isNothing()) {
             System.out.println("낫싱");
+            return ;
         }
         printStrikeBall();
     }
