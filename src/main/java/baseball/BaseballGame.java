@@ -22,6 +22,8 @@ public class BaseballGame {
     private static final Integer NUMBERS_OF_ARRAY = 3;
     private static final Integer GAME_RESTART = 1;
     private static final String INTEGER_NUMBER_REGEX = "^[1-9]*$";
+
+    private static final Integer COMMAND_INPUT_LENGTH = 1;
     private static final List<Integer> COMMANDS_LIST = Arrays.asList(1,2);
 
 
@@ -46,13 +48,15 @@ public class BaseballGame {
         getNextCommand();
     }
 
-    private static boolean handleErrorForUserCommand(String command){
-        boolean isOneDigitInteger = command.length()==1;
-        boolean isInCommandsList = COMMANDS_LIST.contains(Integer.parseInt(command));
-
-        return isInCommandsList && isOneDigitInteger;
+    public static boolean handleErrorForUserCommand(String command) {
+        boolean isOneDigitInteger = command.length() == COMMAND_INPUT_LENGTH;
+        if(!isOneDigitInteger){
+            return false;
+        }
+        return COMMANDS_LIST.contains(Integer.parseInt(command));
     }
-    private static void getNextCommand(){
+
+    public static void getNextCommand(){
         System.out.println(GET_USER_NEXT_COMMAND_MESSAGE);
         String userCommand = Console.readLine();
 
