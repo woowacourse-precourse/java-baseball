@@ -24,7 +24,6 @@ public class BaseballGameBoard {
         boolean matchedAllNumber;
         do {
             numberGeneratedByUser = new UserNumberGenerator().VALIDATED_NUM;
-            System.out.println(numberGeneratedByComputer);
             game = new BaseballGame(numberGeneratedByUser, numberGeneratedByComputer);
             new OutputView(game).printGameResult();
             matchedAllNumber = game.matchedAllNumber();
