@@ -12,6 +12,7 @@ public class Game {
 	private Opponent opponent = new Opponent();
 	private User user = new User();
 	private Compute compute = new Compute();
+
 	public void start() {
 		opponent.generateAnswerNumber();
 		do {
