@@ -4,7 +4,7 @@ public class UserInput {
 
     public static boolean isValidUserInput(String userInput) {
 
-        return hasNotCharacter(userInput) && isRightLength(userInput) && isRightRange(userInput) && isDiffer(userInput);
+        return hasNotCharacter(userInput) && isRightLength(userInput) && isRightRange(userInput) && isNotDuplicate(userInput);
     }
 
     private static boolean hasNotCharacter(String userInput){
@@ -38,17 +38,29 @@ public class UserInput {
         return true;
     }
 
-    private static boolean isDiffer(String userInput){
+    private static boolean isNotDuplicate(String userInput){
 
-        for (int i=0; i<userInput.length()-1; i++){
-            int curValue = Character.getNumericValue(userInput.charAt(i));
-            int nextValue = Character.getNumericValue(userInput.charAt(i+1));
-            if (curValue == nextValue){
+        for (int i= 0; i<userInput.length(); i++){
+            if (isSame(i, userInput)){
                 return false;
             }
         }
 
         return true;
+    }
+
+    private static boolean isSame(int curIndex, String userInput) {
+
+        for (int i=0; i<userInput.length(); i++){
+
+            int curValue = Character.getNumericValue(userInput.charAt(curIndex));
+            int nextValue = Character.getNumericValue(userInput.charAt(i));
+            if (i != curIndex && curValue == nextValue){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static boolean isValidGameStateInput(String userInput) {
