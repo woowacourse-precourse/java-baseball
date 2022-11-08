@@ -26,7 +26,7 @@ public class UserInputException {
         return true;
     }
 
-    public static void checkUserNumberInput(String inputNumber) {
+    public static boolean checkUserNumberInput(String inputNumber) {
         if (!checkLength((inputNumber))) {
             throw new IllegalArgumentException();
         }
@@ -36,11 +36,13 @@ public class UserInputException {
         if (!isNumberDuplicated(inputNumber)) {
             throw new IllegalArgumentException();
         }
+        return true;
     }
 
-    public static void checkUserRestartInput(String restartFlag) {
+    public static boolean checkUserRestartInput(String restartFlag) {
         if (!restartFlag.equals("1") && !restartFlag.equals("2")) {
             throw new IllegalArgumentException();
         }
+        return true;
     }
 }
