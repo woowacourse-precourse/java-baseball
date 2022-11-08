@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
@@ -51,6 +53,8 @@ public class Application {
 
             String answer = Console.readLine();
 
+            checkAnswer(answer);
+
             strike = checkStrike(computer_num,answer);
 
             ball = checkBall(computer_num,answer);
@@ -65,6 +69,31 @@ public class Application {
 
         return askContinue();
     }
+
+
+
+    public static void checkAnswer(String answer) {
+
+        Set<Integer> set = new HashSet<Integer>();
+
+        if (answer.length() == 3){
+            for (int i =0; i<3; i++){
+
+                if (Character.isDigit(answer.charAt(i))){
+                    set.add(answer.charAt(i)- '0');
+                }
+
+            }
+
+
+            if (set.size() == 3){
+                return;
+            }
+        }
+        throw new IllegalArgumentException("3자리의 서로 다른 자연수를 입력하여 주세요.");
+    }
+
+
 
 
 
