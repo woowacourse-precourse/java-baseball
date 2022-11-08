@@ -29,7 +29,7 @@ public class ComputerTest {
 
         computer.resetGame();
         List<Integer> afterReset = computer.getComputerNumberList();
-        String afterResetString =  String.join("", afterReset.toString());
+        String afterResetString = String.join("", afterReset.toString());
 
         assertThat(beforeResetString).isNotEqualTo(afterResetString);
     }
