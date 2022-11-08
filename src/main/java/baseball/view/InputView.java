@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.Button;
 import baseball.dto.InputParameters;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -23,9 +24,9 @@ public class InputView {
         return new InputParameters(hits);
     }
 
-    public static String printRestartButton(){
+    public static Button printRestartButton(){
         System.out.println(RESTART_GUIDE);
 
-        return Console.readLine();
+        return new Button(Console.readLine());
     }
 }

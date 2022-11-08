@@ -26,6 +26,7 @@ public class BallNumbers {
         if (strike(round, roundBall)) {
             return MAX;
         }
+
         if (ball(round, roundBall)) {
             return 1;
         }

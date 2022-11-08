@@ -7,11 +7,8 @@ import baseball.view.ResultView;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public class GameFrame {
-    private static final Pattern BUTTON = Pattern.compile("^[1-2]$");
-    public static final String RE_START = "1";
 
     public void startGuide() {
         InputView.printGuide();
@@ -24,31 +21,27 @@ public class GameFrame {
         String result = BaseBallResult.hitResult(hitTypeResult);
 
         if (BaseBallResult.end(hitTypeResult)) {
-            ResultView.ballProcess(result);
+            ballProcess(result);
             ResultView.endGreeting();
             reStartHandle(InputView.printRestartButton());
             return;
         }
 
-        ResultView.ballProcess(result);
+        ballProcess(result);
         start(baseBallGame, homeRunNumbers);
     }
 
-    public void reStartHandle(String button) {
-        wrong(button);
+    private void ballProcess(String result) {
+        ResultView.ballProcess(result);
+    }
 
+    public void reStartHandle(Button button) {
         press(button);
     }
 
-    private void press(String restart) {
-        if (restart.matches(RE_START)) {
+    private void press(Button button) {
+        if (button.reStart()) {
             restart();
-        }
-    }
-
-    private void wrong(String restart) {
-        if (!BUTTON.matcher(restart).matches()) {
-            throw new BallInputException("1과 2이외의 문자가 들어왔습니다.");
         }
     }
 
