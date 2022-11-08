@@ -19,7 +19,7 @@ public class DigitNumber {
 
     public static DigitNumber getInstance(int digit) {
         DigitNumber.initValue = digit;
-        DigitNumber instance = DigitNumber.DigitNumberHolder.INSTANCE;
+        DigitNumber instance = DigitNumberHolder.INSTANCE;
         DigitNumber.initValue = null;
         return instance;
     }
