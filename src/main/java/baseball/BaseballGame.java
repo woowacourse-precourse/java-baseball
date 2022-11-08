@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import static baseball.Constants.GAME_INPUT_LENGTH;
 import baseball.Constants.Message;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseballGame {
     public static String requireUserNumber() {
@@ -37,6 +39,16 @@ public class BaseballGame {
             if (!Character.isDigit(temp)) {
                 throw new IllegalArgumentException(Message.ERROR_MSG);
             }
+        }
+    }
+
+    public static void exceptionSameNumber(String Input) {
+        List<Character> user = new ArrayList<>();
+        for (int i = 0; i < Input.length(); i++) {
+            if (user.contains(Input.charAt(i))) {
+                throw new IllegalArgumentException(Message.ERROR_MSG);
+            }
+            user.add(Input.charAt(i));
         }
     }
 
