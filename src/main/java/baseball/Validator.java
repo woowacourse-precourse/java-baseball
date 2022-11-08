@@ -5,8 +5,15 @@ import org.assertj.core.api.ThrowableAssert;
 import java.util.HashSet;
 
 public class Validator {
+    public static final String LENGTH_ERROR_MESSAGE = "3자리 수가 아닙니다";
+    public static final String NUMERIC_ERROR_MESSAGE = "숫자가 아닙니다";
+    public static final String CONTAINS_ZERO_ERROR_MESSAGE = "0이 포함되어 있습니다";
+    public static final String DUPLICATE_ERROR_MESSAGE = "중복되는 숫자가 있습니다";
+    public static final String INVALID_CHOICE_ERROR_MESSAGE = "1 또는 2를 입력해야 합니다";
     public static final boolean VALIDATE_SUCCESS = true;
     public static final int LENGTH_LIMIT = 3;
+    public static final String REGAME_CHOICE = "1";
+    public static final String STOP_CHOICE = "2";
 
     public boolean isThreeLetters(String userInput) {
         if (userInput.length() == LENGTH_LIMIT){
@@ -42,23 +49,23 @@ public class Validator {
 
     public boolean validateInput(String userInput) {
         if (!isThreeLetters(userInput)) {
-            throw new IllegalArgumentException("3자리 수가 아닙니다");
+            throw new IllegalArgumentException(LENGTH_ERROR_MESSAGE);
         }
         if (!isNumeric(userInput)) {
-            throw new IllegalArgumentException("숫자가 아닙니다");
+            throw new IllegalArgumentException(NUMERIC_ERROR_MESSAGE);
         }
         if (ContainsZero(userInput)) {
-            throw new IllegalArgumentException("0이 포함되어 있습니다");
+            throw new IllegalArgumentException(CONTAINS_ZERO_ERROR_MESSAGE);
         }
         if (hasDuplicateNumber(userInput)) {
-            throw new IllegalArgumentException("중복되는 숫자가 있습니다");
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
         return VALIDATE_SUCCESS;
     }
 
     public boolean validateChoice(String userChoice) {
-        if (!userChoice.equals("1") && !userChoice.equals("2")) {
-            throw new IllegalArgumentException("1 또는 2를 입력해야 합니다");
+        if (!userChoice.equals(REGAME_CHOICE) && !userChoice.equals(STOP_CHOICE)) {
+            throw new IllegalArgumentException(INVALID_CHOICE_ERROR_MESSAGE);
         }
         return VALIDATE_SUCCESS;
     }
