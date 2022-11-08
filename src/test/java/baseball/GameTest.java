@@ -108,6 +108,15 @@ public class GameTest extends NsTest {
         assertThat(baseballScore.getResult()).isEqualTo("낫싱");
     }
 
+    @Test
+    void 출력_테스트() {
+        BaseballGame baseballGame = new BaseballGame();
+        String output = "출력 테스트 메시지";
+
+        baseballGame.printMessage(output);
+
+        assertThat(output()).isEqualTo(output);
+    }
     @Override
     protected void runMain() {
         Application.main(new String[]{});
