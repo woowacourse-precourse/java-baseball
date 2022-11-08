@@ -98,6 +98,13 @@ public class Application {
         }
     }
 
+    // 예외 처리
+    public static void checkSize(String input) {
+        if (input.length() != 3) {
+            throw new IllegalArgumentException("3개 숫자만 입력해주세요.");
+        }
+    }
+
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
