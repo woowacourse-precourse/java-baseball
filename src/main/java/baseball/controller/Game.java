@@ -42,7 +42,7 @@ public class Game {
         // 결과 출력
         System.out.println(printRoundResult(result));
         // 종료 체크
-        if (clear(result)) {
+        if (isClear(result)) {
             Printer.showClear();
             return;
         } else {

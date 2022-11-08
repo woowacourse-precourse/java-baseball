@@ -38,6 +38,7 @@ public class Number {
         return numsArr;
     }
 
+    /** 정답 배열과 비교하여 Baseball 반환 */
     static Baseball checkAnswer(List<Integer> answer, List<Integer> input) {
         Baseball result = new Baseball();
         // strike 판별
@@ -51,8 +52,8 @@ public class Number {
         return result;
     }
 
-    // 모두 맞춘 경우
-    public static boolean clear(Baseball game) {
+    /** 모두 맞췄는지 boolean */
+    public static boolean isClear(Baseball game) {
         if (game.getStrike()==3) {
             return true;
         }
