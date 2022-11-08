@@ -16,7 +16,7 @@ public class OutputViewTest {
         Balls com = new Balls(List.of(4, 2, 5));
         Balls player = new Balls(List.of(4, 5, 2));
         CompareResult result = com.compareTo(player);
-        OutputView.display(result);
+        OutputView.displayCompareResult(result);
     }
 
     @DisplayName("결과 화면 출력 테스트 - 3스트라이크")
@@ -25,7 +25,7 @@ public class OutputViewTest {
         Balls com = new Balls(List.of(4, 2, 5));
         Balls player = new Balls(List.of(4, 2, 5));
         CompareResult result = com.compareTo(player);
-        OutputView.display(result);
+        OutputView.displayCompareResult(result);
     }
 
     @DisplayName("결과 화면 출력 테스트 - 낫싱")
@@ -34,6 +34,6 @@ public class OutputViewTest {
         Balls com = new Balls(List.of(4, 2, 5));
         Balls player = new Balls(List.of(7, 8, 9));
         CompareResult result = com.compareTo(player);
-        OutputView.display(result);
+        OutputView.displayCompareResult(result);
     }
 }

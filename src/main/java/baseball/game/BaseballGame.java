@@ -13,6 +13,12 @@ public class BaseballGame {
 
     private Balls answer;
 
+    private final GameStatus gameStatus;
+
+    public BaseballGame() {
+        this.gameStatus = new GameStatus();
+    }
+
     public void play() {
         setUp();
         process();
@@ -22,18 +28,24 @@ public class BaseballGame {
     private void setUp() {
         System.out.println(START_GAME_MESSAGE);
         answer = new Balls(createNonDuplicateNumbers());
+        gameStatus.initStatus();
     }
 
     private void process() {
-        while (true) {
-            Balls player = new Balls(InputView.getBallNumbers());
-            CompareResult result = answer.compareTo(player);
-            OutputView.display(result);
-
-            if (result.isGameEnd()) {
-                break;
-            }
+        while (!isGameEnd()) {
+            CompareResult result = compareBallNumbers();
+            OutputView.displayCompareResult(result);
+            gameStatus.setStatus(result);
         }
+    }
+
+    private CompareResult compareBallNumbers() {
+        Balls player = new Balls(InputView.getBallNumbers());
+        return answer.compareTo(player);
+    }
+
+    private boolean isGameEnd() {
+        return gameStatus.isGameEnd();
     }
 
     private void askForNewGame() {
