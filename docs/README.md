@@ -6,6 +6,6 @@
   - 게임 종료 후 재시작 여부를 확인한다.
 
 - 유저
-  - 유저가 직접 입력한 세 자리의 숫자를 List에 가지고 있다.
+  - 입력받은 세 자리의 숫자를 List에 가지고 있다.
     - 세 글자가 아닌 입력에 IllegalArgumentException을 발생시킨다.
     - 숫자가 아닌 입력에 IllegalArgumentException을 발생시킨다.
