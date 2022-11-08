@@ -12,8 +12,8 @@ public class AnswerNumber {
         answerNumber = new ArrayList<>();
     }
 
-    public List<String> saveAnswerNumber(){
-        return saveAnswerNumber;
+    public List<Integer> getAnswerNumberList(){
+        return answerNumberList;
     }
 
     public void RandomNumber(){
