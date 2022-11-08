@@ -12,14 +12,14 @@ public class Game {
         this.computer = computer;
     }
 
-    public void setUp(List<Integer> user){
+    public void userInputSetUp(List<Integer> user) {
         this.strike = 0;
         this.ball = 0;
         this.user = user;
 
     }
 
-    public void isSameNumber(){
+    public void isSameNumber() {
         for (int i = 0; i < computer.size(); i++) {
             if (computer.get(i) == user.get(i)) {
                 strike++;
@@ -29,7 +29,7 @@ public class Game {
         }
     }
 
-    public String numberToString() {
+    public String numberToSResult() {
         String answer;
         if (strike == 3) {
             System.out.printf("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -46,9 +46,9 @@ public class Game {
         return answer;
     }
 
-    public String gameRun(List<Integer> user){
-        setUp(user);
+    public String gameRun(List<Integer> user) {
+        userInputSetUp(user);
         isSameNumber();
-        return numberToString();
+        return numberToSResult();
     }
 }
