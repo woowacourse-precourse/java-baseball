@@ -22,16 +22,23 @@ public class Viewer {
             String inputNumber = Console.readLine();
             Response answer = baseBallController.matchNumber(inputNumber);
             System.out.println(answer.getMessage());
-            if (answer.getGameStatus().equals(GameStatus.RETRY)) {
-                System.out.println(PrintTemplate.GOOD_JOB.getMessage());
-                System.out.println(PrintTemplate.IF_RETRY.getMessage());
-                String retryInput = Console.readLine();
-                Response retryAnswer = baseBallController.isKeepGo(retryInput);
-                if (retryAnswer.getGameStatus().equals(GameStatus.EXIT)) {
-                    break;
-                }
-                baseBallController.init();
+            if (!requestRetry(answer)) {
+                break;
             }
         }
+    }
+
+    private boolean requestRetry(Response answer) {
+        if (answer.getGameStatus().equals(GameStatus.RETRY)) {
+            System.out.println(PrintTemplate.GOOD_JOB.getMessage());
+            System.out.println(PrintTemplate.IF_RETRY.getMessage());
+            String retryInput = Console.readLine();
+            Response retryAnswer = baseBallController.isKeepGo(retryInput);
+            if (retryAnswer.getGameStatus().equals(GameStatus.EXIT)) {
+                return false;
+            }
+            baseBallController.init();
+        }
+        return true;
     }
 }
