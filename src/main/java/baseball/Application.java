@@ -67,7 +67,7 @@ public class Application {
         System.out.println("숫자를 입력해주세요 : ");
         String userNum = Console.readLine();
         List<Integer> userNumbers = new ArrayList<>();
-        if (userNumbers.size() != 3) {
+        if (userNum.length() != 3) {
             throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
         }
 
