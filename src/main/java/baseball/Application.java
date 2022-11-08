@@ -3,6 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -14,8 +17,8 @@ class Game {
 
     public static void startGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        char[] randomNumber = makeRandomNumbers();
-        char[] inputNumer;
+        List<Integer> randomNumber = makeRandomNumbers();
+        List<Integer> inputNumer;
         while (true) {
             inputNumer = inputNumbers();
             if (printResult(inputNumer, randomNumber))
@@ -38,51 +41,41 @@ class Game {
         }
     }
 
-    public static char[] makeRandomNumbers() {
-        char[] randomNumber = new char[3];
-        int[] numbers = new int[3];
+    public static List<Integer> makeRandomNumbers() {
+        List<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            numbers[i] = makeARandomNumber(numbers);
+            makeARandomNumber(numbers);
         }
 
-        for (int i = 0; i < 3; i++) {
-            randomNumber[i] = (char) ('0' + numbers[i]);
-        }
-
-        return randomNumber;
+        return numbers;
     }
 
     // 중복을 확인해 숫자 한개 생성
-    public static int makeARandomNumber(int[] numbers) {
+    public static void makeARandomNumber(List<Integer> numbers) {
         int num = 0;
 
         while (true) {
             num = Randoms.pickNumberInRange(1, 9);
-            if (!isInNumbers(numbers, num)) {
-                break;
+            if (!numbers.contains(num)) {
+                numbers.add(num);
+                return;
             }
         }
-
-        return num;
     }
 
-    public static boolean isInNumbers(int[] numbers, int num) {
-        for (int i = 0; i < numbers.length; i++) {
-            if (num == numbers[i])
-                return true;
-        }
-        return false;
-    }
-
-    public static char[] inputNumbers() {
+    public static List<Integer> inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
         String inputString = Console.readLine();
 
         isValidLength(inputString);
         isValidNumber(inputString);
 
-        return inputString.toCharArray();
+        List<Integer> inputNumber = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            inputNumber.add((int) (inputString.charAt(i) - '0'));
+        }
+        return inputNumber;
     }
 
     public static void isValidLength(String input) {
@@ -99,7 +92,7 @@ class Game {
         }
     }
 
-    public static boolean printResult(char[] inputNumber, char[] randomNumber) {
+    public static boolean printResult(List<Integer> inputNumber, List<Integer> randomNumber) {
         int ballNumber = countBall(inputNumber, randomNumber);
         int strikeNumber = countStrike(inputNumber, randomNumber);
 
@@ -118,18 +111,18 @@ class Game {
         return false;
     }
 
-    public static int countStrike(char[] inputNumber, char[] randomNumber) {
+    public static int countStrike(List<Integer> inputNumber, List<Integer> randomNumber) {
         int strikeNumber = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (inputNumber[i] == randomNumber[i])
+            if (inputNumber.get(i) == randomNumber.get(i))
                 strikeNumber++;
         }
 
         return strikeNumber;
     }
 
-    public static int countBall(char[] inputNumber, char[] randomNumber) {
+    public static int countBall(List<Integer> inputNumber, List<Integer> randomNumber) {
         int ballNumber = 0;
 
         for (int i = 0; i < 3; i++) {
@@ -140,11 +133,11 @@ class Game {
         return ballNumber;
     }
 
-    public static boolean compareOtherPositionNumber(char[] inputNumber, char[] randomNumber, int index) {
+    public static boolean compareOtherPositionNumber(List<Integer> inputNumber, List<Integer> randomNumber, int index) {
         for (int i = 0; i < 3; i++) {
             if (i == index)
                 continue;
-            if (inputNumber[index] == randomNumber[i])
+            if (inputNumber.get(index) == randomNumber.get(i))
                 return true;
         }
 
