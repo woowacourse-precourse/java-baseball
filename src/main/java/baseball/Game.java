@@ -49,17 +49,7 @@ public class Game {
 
             initializeBallCount();
             setDigits();
-
-            for(int i=0; i<NUMBER_LENGTH; i++) {
-                if(randomDigits.get(i).equals(userDigits.get(i))) {
-                    strike++;
-                }
-                for(int k=0; k<NUMBER_LENGTH; k++) {
-                    if(i != k && randomDigits.get(i).equals(userDigits.get(k))) {
-                        ball++;
-                    }
-                }
-            }
+            calculateBallCount();
             printOutResult();
 
             if(strike == NUMBER_LENGTH) {
@@ -69,6 +59,27 @@ public class Game {
                 handleQuit();
                 handleRestart();
             }
+        }
+    }
+
+    private void calculateBallCount() {
+        for(int i=0; i<NUMBER_LENGTH; i++) {
+            calculateStrike(i);
+            calculateBall(i);
+        }
+    }
+
+    private void calculateBall(int index) {
+        for(int k=0; k<NUMBER_LENGTH; k++) {
+            if(index != k && randomDigits.get(index).equals(userDigits.get(k))) {
+                ball++;
+            }
+        }
+    }
+
+    private void calculateStrike(int index) {
+        if(randomDigits.get(index).equals(userDigits.get(index))) {
+            strike++;
         }
     }
 
