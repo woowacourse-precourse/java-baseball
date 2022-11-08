@@ -9,7 +9,6 @@ import java.util.List;
 
 import static baseball.Application.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BaseBallTest extends NsTest {
 
@@ -40,12 +39,22 @@ public class BaseBallTest extends NsTest {
 
     @Test
     @DisplayName("컴퓨터의 수와 사용자의 수의 strike 갯수를 구하기")
-    void checkStrikeNumberTest(){
+    void checkStrikeNumbersTest(){
         List<Integer> computerNumbers = List.of(2,3,4);
         List<Integer> userNumbers = List.of(2,5,4);
         int strikeOfNumbers = checkStrikeNumbers(computerNumbers,userNumbers);
 
         assertThat(strikeOfNumbers).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("컴퓨터의 수와 사용자의 수의 ball 갯수를 구하기")
+    void checkedBallNumbersTest(){
+        List<Integer> computerNumbers = List.of(2,3,9);
+        List<Integer> userNumbers = List.of(7,6,2);
+        int ballOfNumbers = checkedBallNumbers(computerNumbers,userNumbers);
+
+        assertThat(ballOfNumbers).isEqualTo(1);
     }
 
     @Override
