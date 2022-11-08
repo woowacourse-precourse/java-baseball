@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.Game;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 

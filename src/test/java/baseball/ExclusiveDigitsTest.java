@@ -9,6 +9,10 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import baseball.domain.Digit;
+import baseball.domain.ExclusiveDigits;
+import baseball.domain.PositiveDigit;
+
 public class ExclusiveDigitsTest {
 
     @Test
