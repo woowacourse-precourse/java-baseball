@@ -11,7 +11,11 @@ public class BaseballGame {
     private static final String GET_USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_ENDS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String GET_USER_NEXT_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String NO_BALL_NO_STRIKE = "낫싱";
+    private static final String  STRIKE_TEXT = "스트라이크";
+    private static final String BALL_TEXT = "볼";
 
+    private static final Integer ZERO = 0;
     private static final Integer NUMBERS_OF_ARRAY = 3;
     private static final String INTEGER_NUMBER_REGEX = "^[1-9]*$";
 
@@ -27,6 +31,7 @@ public class BaseballGame {
         UserScore user = new UserScore();
 
         // 숫자 입력 받고 숫자 맞히기
+        proceedGame(user);
 
         // 다음 command
 
@@ -48,6 +53,29 @@ public class BaseballGame {
             countBallsAndStrikes(user, userInputArray);
 
             // 답에 대한 결과 보여주기
+            showUserAnswerStatus(user);
+
+            if(user.getStrike()==3){
+                break;
+            }
+        }
+    }
+    private static void showUserAnswerStatus(UserScore user){
+        int ball = user.getBall();
+        int strike = user.getStrike();
+
+        if(ball == ZERO){
+            if (strike == ZERO){
+                System.out.println(NO_BALL_NO_STRIKE);
+            }else{
+                System.out.println(strike + STRIKE_TEXT);
+            }
+        }else{
+            if(strike == ZERO){
+                System.out.println(ball + BALL_TEXT);
+            }else{
+                System.out.println(ball + BALL_TEXT + strike + " " + STRIKE_TEXT);
+            }
         }
     }
 
