@@ -30,4 +30,15 @@ class ValidationTest {
         assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    public void 숫자가_1과_9사이의_숫자로_이루어져_있는지_확인() throws Exception {
+        //given
+        List<Integer> number = List.of(1, 0, 0);
+        //when
+        Throwable throwable = catchThrowable(() -> validation.validateBetweenOneAndNine(number));
+        //then
+        assertThat(throwable).isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
