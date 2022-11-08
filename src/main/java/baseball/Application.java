@@ -34,7 +34,7 @@ public class Application {
         while (endGame) {
             System.out.print("숫자를 입력해주세요 : ");
             input = Console.readLine();
-//            inputException(input);
+            inputException(input);
             endGame = scoreCalculation(input, computer);
         }
 
@@ -47,6 +47,16 @@ public class Application {
         return false;
     }
 
-//    public static void inputException(String input)
+    public static void inputException(String input){
+
+        //입력 예외 사항
+        if (input.length() != 3 || input.contains("0")) {
+            throw new IllegalArgumentException("1에서 9까지 서로 다른 임의의 수 3개를 선택해야 합니다. ex) 671");
+        }
+
+        if (input.charAt(0) == input.charAt(1) || input.charAt(0) == input.charAt(2) || input.charAt(1) == input.charAt(2)) {
+            throw new IllegalArgumentException("1에서 9까지 서로 다른 임의의 수 3개를 선택해야 합니다. ex) 671");
+        }
+    }
 
 }
