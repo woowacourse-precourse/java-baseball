@@ -3,40 +3,43 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class BaseballGame {
     private static final String GAME_STARTS_MESSAGE = "숫자 야구 게임을 시작합니다.";
     private static final String GET_USER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
     private static final String GAME_ENDS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final Integer GAME_RESTART = 1;
+
     private static final String GET_USER_NEXT_COMMAND_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     private static final String NO_BALL_NO_STRIKE = "낫싱";
     private static final String  STRIKE_TEXT = "스트라이크";
     private static final String BALL_TEXT = "볼";
 
     private static final Integer ZERO = 0;
     private static final Integer NUMBERS_OF_ARRAY = 3;
-
+    private static final Integer GAME_RESTART = 1;
     private static final String INTEGER_NUMBER_REGEX = "^[1-9]*$";
-    private static final String COMMANDS_LIST = "^[1-2]*$";
+    private static final List<Integer> COMMANDS_LIST = Arrays.asList(1,2);
 
 
     private static final RandomNumberGenerator computer = new RandomNumberGenerator();
 
-    BaseballGame() {
+    public BaseballGame() {
         System.out.print(GAME_STARTS_MESSAGE);
         computer.generate();
         startGame();
     }
-    BaseballGame(String nextGame){
+
+    BaseballGame(String nextGameStarts){
         computer.generate();
         startGame();
     }
 
     public static void startGame() {
         UserScore user = new UserScore();
-        System.out.println(computer.randomNumberList);
         proceedGame(user);
 
         System.out.println(GAME_ENDS_MESSAGE);
@@ -44,8 +47,8 @@ public class BaseballGame {
     }
 
     private static boolean handleErrorForUserCommand(String command){
-        boolean isInCommandsList = Pattern.matches(command, COMMANDS_LIST);
         boolean isOneDigitInteger = command.length()==1;
+        boolean isInCommandsList = COMMANDS_LIST.contains(Integer.parseInt(command));
 
         return isInCommandsList && isOneDigitInteger;
     }
@@ -60,7 +63,6 @@ public class BaseballGame {
         if (Integer.parseInt(userCommand) == GAME_RESTART) {
             new BaseballGame("new game");
         }
-        // TODO: UserCommand==2인경우 종료에 대한 코드 작성 고민
     }
 
     private static void proceedGame(UserScore user) {
@@ -91,7 +93,7 @@ public class BaseballGame {
             if(strike == ZERO){
                 System.out.println(ball + BALL_TEXT);
             }else{
-                System.out.println(ball + BALL_TEXT + strike + " " + STRIKE_TEXT);
+                System.out.println(ball + BALL_TEXT + " " + strike + STRIKE_TEXT);
             }
         }
     }

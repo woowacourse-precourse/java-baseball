@@ -9,11 +9,6 @@ public class UserScore {
         strikeCount = 0;
     }
 
-    public void set(int b, int s) {
-        ballCount = b;
-        strikeCount = s;
-    }
-
     public int getBall() {
         return this.ballCount;
     }

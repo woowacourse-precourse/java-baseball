@@ -5,12 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-    컴퓨터가 1~9 사이의 임의의 정수 난수 3개를 선택하는 클래스이다.
-    1~9 사이의 정수를 총 3번 추출한다.
-    중복되는 값이 있어서는 안 된다.
- */
-
 public class RandomNumberGenerator {
     private static final int START_RANGE = 1;
     private static final int END_RANGE = 9;

@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class DevelopmentTest {
     /**
-     * 컴퓨터가 임의의 난수 3개 생성
+     * 컴퓨터가 임의의 난수 3개 생성,
      * 임의의 난수 3개 확인하기
      */
     @Test
@@ -27,6 +27,9 @@ public class DevelopmentTest {
                 .containsAnyElementsOf(List.of(1,2,3,4,5,6,7,8,9));
     }
 
+    /**
+     * 사용자의 입력값 에러 처리
+     */
     @Test
     void userInput_정확한_숫자를_입력하는_경우(){
         assertThat(BaseballGame.handleErrorForUserInput("352"))
