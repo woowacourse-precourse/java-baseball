@@ -20,8 +20,9 @@ public class Game {
     }
 
     public void play() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         String userInput = getUserInput();
+        System.out.println(userInput);
 
         List<Integer> computer = getComputerNumber();
         List<Integer> user = getUserNumber(userInput);
