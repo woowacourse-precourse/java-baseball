@@ -1,8 +1,7 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Computer {
 
@@ -22,7 +21,7 @@ public class Computer {
 
     private List<Integer> getThreeRandomNumber() {
         List<Integer> list = new ArrayList<>();
-        while (list.size() < 3) {
+        while (isLengthLessThenThree(list)) {
             int randomNumber = getRandomNumber();
             if (isContains(list, randomNumber)) {
                 continue;
@@ -30,6 +29,10 @@ public class Computer {
             list.add(randomNumber);
         }
         return list;
+    }
+
+    private boolean isLengthLessThenThree(List<Integer> list) {
+        return list.size() < 3;
     }
 
     private int getRandomNumber() {
