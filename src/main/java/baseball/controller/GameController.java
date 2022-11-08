@@ -38,6 +38,23 @@ public class GameController {
     public int checkRestartorExit() {
         int selection = 0;
 
+        boolean isValid = false;
+        while (!isValid) {
+            try {
+                String input = Console.readLine();
+                selection = Integer.parseInt(input);
+            } catch (NumberFormatException ne) {
+                throw new IllegalArgumentException(USER_SELECT_ERROR);
+            }
+
+            if (selection != RESTART_GAME && selection != QUIT_GAME) {
+                System.out.println(USER_SELECT_ERROR + " 다시 입력하십시오.");
+            }
+
+            if (selection == RESTART_GAME || selection == QUIT_GAME) {
+                isValid = true;
+            }
+        }
 
         return selection;
     }
