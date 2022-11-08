@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 public class ExceptionHandler {
     static void validateUserNumberOfString(String userNumberOfString) throws IllegalArgumentException {
-        validateOf3DigitsNumber(userNumberOfString);
-        validateIsNumberOfStringHaveDifferentEach(userNumberOfString);
+        validateHaveNumber3Digits(userNumberOfString);
+        validateIsNumberOfStringNotHaveDuplicatedNumber(userNumberOfString);
     }
 
     static void validateOneIfGameRepeatOrTwo(String oneIfGameRepeatOrTwo) throws IllegalArgumentException {
@@ -23,15 +23,15 @@ public class ExceptionHandler {
         throw new IllegalArgumentException(ValidationMessage.USER_INPUT_FOR_CHECK_REPEAT_GAME_RULE_ANNOUNCEMENT);
     }
 
-    private static void validateOf3DigitsNumber(String userNumberOfString) {
-        boolean isMatch = Pattern.matches(ValidationConstant.PATTERN_OF_INPUT_USER_NUMBER_REGEX, userNumberOfString);
-        if (isMatch) {
+    private static void validateHaveNumber3Digits(String userNumberOfString) {
+        boolean isMatchWithValidationPattern = Pattern.matches(ValidationConstant.PATTERN_OF_INPUT_USER_NUMBER_REGEX, userNumberOfString);
+        if (isMatchWithValidationPattern) {
             return;
         }
         throw new IllegalArgumentException(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
     }
 
-    private static void validateIsNumberOfStringHaveDifferentEach(String numberOfString) {
+    private static void validateIsNumberOfStringNotHaveDuplicatedNumber(String numberOfString) {
         List<Integer> numberOfList = convertNumberOfStringToList(numberOfString);
         if (checkHaveListDuplication(numberOfList)) {
             throw new IllegalArgumentException(ValidationMessage.USER_INPUT_NUMBER_RULE_ANNOUNCEMENT);
