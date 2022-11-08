@@ -47,9 +47,7 @@ public class Application {
             }
         } // end of While
 
-        database.addData(new Data(LocalDateTime.now(), tryCount));
-        gameOutput.printFinishLog();
-        database.showAllData();
+        finishGame();
     }
 
     public String generateAnswer() {
@@ -84,6 +82,12 @@ public class Application {
         answer = generateAnswer();
         database.addData(new Data(LocalDateTime.now(), tryCount));
         tryCount = 0;
+    }
+
+    public void finishGame() {
+        database.addData(new Data(LocalDateTime.now(), tryCount));
+        gameOutput.printFinishLog();
+        database.showAllData();
     }
 
     public static void main(String[] args) {
