@@ -79,6 +79,9 @@ public class Application {
         int a = userNumbers.get(0);
         int b = userNumbers.get(1);
         int c = userNumbers.get(2);
+        if (a == 0 || b == 0 || c == 0) {
+            throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
+        }
         if (a == b || a == c || b == c) {
             throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
         }
