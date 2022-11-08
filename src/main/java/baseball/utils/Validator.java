@@ -7,6 +7,7 @@ import static baseball.utils.Constants.*;
 
 public class Validator {
     public static final String NUMBER_NUMERIC_REGEX = "^[1-9]{3}$";
+    public static final String RESTART_NUMERIC_REGEX = "^[1-2]{1}$";
     public static final String ZERO = "0";
 
     public static boolean validateNumberInput(String input) {
@@ -27,6 +28,14 @@ public class Validator {
         }
 
         return true;
+    }
+
+    public static boolean validateRestartInput(String input) {
+        if (input.matches(RESTART_NUMERIC_REGEX)) {
+            return true;
+        }
+
+        throw new IllegalArgumentException();
     }
 
     private static boolean isNumeric(String input) {
