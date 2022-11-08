@@ -7,7 +7,15 @@ public class Game {
     Hitter hitter = new Hitter();
     Pitcher pitcher = new Pitcher();
     Judge judge = new Judge();
-    
+
+    public void start() {
+        boolean stopFlag = false;
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (!stopFlag) {
+            stopFlag = service(stopFlag);
+        }
+    }
 
     private boolean service(boolean stopFlag) {
         System.out.print("숫자를 입력해주세요 ");
