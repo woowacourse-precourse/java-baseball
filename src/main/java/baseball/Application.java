@@ -11,7 +11,7 @@ public class Application {
         gameStart();
     }
 
-    private static String getRandomThreeDigitNumberString() {
+    public static String getRandomThreeDigitNumberString() {
         List<String> computer = new ArrayList<>();
         while (computer.size() < 3) {
             String randomNumber = Randoms.pickNumberInRange(1, 9)+"";
@@ -23,16 +23,15 @@ public class Application {
         return String.join("",  computer);
     }
 
-    private static String userInput() {
+    public static String userInput() {
         System.out.print("숫자를 입력해주세요 : ");
         String userInputString = Console.readLine();
-        System.out.println(userInputString);
 
         userInputValidation(userInputString);
         return userInputString;
     }
 
-    private static void userInputValidation(String userInputString) {
+    public static void userInputValidation(String userInputString) {
         String pattern = "^[1-9]{3}$";
         if (!Pattern.matches(pattern, userInputString)) {
             throw new IllegalArgumentException();
@@ -48,7 +47,7 @@ public class Application {
         }
     }
 
-    private static int compareUserInputToAnswer(String userInput, String answer) {
+    public static int compareUserInputToAnswer(String userInput, String answer) {
         int strike = 0;
         int ball = 0;
 
@@ -81,7 +80,7 @@ public class Application {
         return true;
     }
 
-    private static boolean restartGame() {
+    public static boolean restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInputString = Console.readLine();
         if (userInputString.equals("1")) {
