@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserInputNumberList {
-    public List<Number> userInputNumberList;
+    private List<Number> userInputNumberList;
 
     public UserInputNumberList() {
     }
@@ -28,5 +28,8 @@ public class UserInputNumberList {
         } else {
             return inputList;
         }
+    }
+    public List<Number> getUserInputNumberList(){
+        return this.userInputNumberList;
     }
 }

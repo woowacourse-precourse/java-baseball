@@ -13,7 +13,7 @@ public class BaseballGame {
     public BaseballGame() {
         this.computerNumberList = new ComputerNumberList();
         this.userNumberList = new UserInputNumberList();
-        this.compareNumber = new CompareNumber(computerNumberList.computerNumber);
+        this.compareNumber = new CompareNumber(computerNumberList.getComputerNumber());
     }
 
     public void gameStart() {
@@ -32,7 +32,7 @@ public class BaseballGame {
         String userInput = Console.readLine();
 
         this.userNumberList.setUserInputNumberList(userInput);
-        compareNumber.setUserNumber(userNumberList.userInputNumberList);
+        compareNumber.setUserNumber(userNumberList.getUserInputNumberList());
     }
 
     private boolean reRunStatus(boolean correctiveStatus) {
@@ -44,7 +44,7 @@ public class BaseballGame {
             if (userInput.equals("1")) {
                 correctiveStatus = false;
                 computerNumberList.generateNewComputerRandomNumber();
-                compareNumber.setComputerNumber(computerNumberList.computerNumber);
+                compareNumber.setComputerNumber(computerNumberList.getComputerNumber());
             } else if (userInput.equals("2")) {
                 System.out.println("게임을 종료합니다.");
             }

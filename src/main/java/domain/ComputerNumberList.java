@@ -6,7 +6,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class ComputerNumberList {
-    public List<Number> computerNumber;
+    private List<Number> computerNumber;
 
     public ComputerNumberList() {
         generateNewComputerRandomNumber();
@@ -26,6 +26,10 @@ public class ComputerNumberList {
 
     public void generateNewComputerRandomNumber() {
         this.computerNumber = getComputerRandomNumber();
+    }
+
+    public List<Number> getComputerNumber(){
+        return computerNumber;
     }
 }
 
