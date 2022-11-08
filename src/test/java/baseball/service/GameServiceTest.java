@@ -1,5 +1,6 @@
 package baseball.service;
 
+import baseball.vo.OneDigitNumbers;
 import baseball.vo.Scoreboard;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -29,5 +30,17 @@ public class GameServiceTest {
         Scoreboard scoreboard = service.compareComputerNumberWith(123);
 
         assertThat(scoreboard.toList()).containsExactly(0, 3);
+    }
+
+    @Test
+    void 숫자_랜덤_생성() {
+        int number = GameService.pickNumber(3);
+        OneDigitNumbers oneDigitNumbers = new OneDigitNumbers(number);
+
+        assertThat(number).isNotNegative();
+        assertThat(oneDigitNumbers)
+                .allMatch(num -> (num >= 1 && num <= 9))
+                .doesNotHaveDuplicates()
+                .hasSize(3);
     }
 }
