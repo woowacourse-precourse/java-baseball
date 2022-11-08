@@ -1,5 +1,45 @@
 # 미션 - 숫자 야구
 
+## ✏️ 미션을 통해 새로 배운 내용
+
+- 미션을 해결하기 전, 관련 내용을 먼저 학습한 후 직접 적용해 보려 노력하였습니다.
+- 자세한 내용은 `docs/` 디렉토리 내 .md 파일에 정리되어 있습니다.
+
+##### <학습 내용>
+
+- [AssertJ](./docs/AboutAssertJ.md) (`docs/AboutAssertJ.md`)
+- [JUnit 5](./docs/AboutJUnit5.md) (`docs/AboutJUnit5.md`)
+- [TDD](./docs/AboutTDD.md) (`docs/AboutTDD.md`)
+
+
+
+## 📄 미션 요구 사항 확인
+
+#### <기능 요구 사항>
+
+- [x] 숫자 야구 게임 기능 구현
+- [x] IllegalArgumentException 반영
+- [x] 출력 내용 양식 적용
+
+#### <프로그래밍 요구 사항>
+
+- [x] 1주차 미션과 동일한 요구 사항 모두 적용
+- [x] [Java 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/master/styleguide/java) 적용
+- [x] 인덴트 제한 적용
+- [x] 3항 연산자 사용 X
+- [x] 함수(또는 메소드) 한 가지 일만 하도록 최대한 작게 설정
+- [x] 테스트 코드를 통한 기능 동작 확인
+- [x] 주어진 라이브러리 활용 (camp.nextstep.edu.missionutils)
+
+#### <과제 진행 요구 사항>
+
+- [x] [java-baseball](https://github.com/woowacourse-precourse/java-baseball) 저장소 Fork & Clone 후 시작
+- [x] 기능 구현 전 `docs/README.md`에 기능 목록 추가
+- [x] 기능 목록에 맞추어 커밋
+- [x] 커밋 메세지 컨벤션 반영
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
