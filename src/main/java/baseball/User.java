@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class User {
-
+    private static final int NUMBER_LENGTH = 3;
     private static final String OUTPUT_ENTER_NUMBER = "숫자를 입력해주세요 : ";
     private static final Pattern INPUT_REGEX = Pattern.compile("[1-9]{3,3}");
     int userNumber;
@@ -13,14 +13,13 @@ public class User {
 
     public void setUserNumber() {
         System.out.print(OUTPUT_ENTER_NUMBER);
-        String input = Console.readLine();
-        getValidation(input);
+        String input = inputUserNumber();
+        validateInput(input);
         this.userNumber = Integer.parseInt(input);
     }
-
     // method only for test code
     public void setUserNumber(String input) {
-        getValidation(input);
+        validateInput(input);
         this.userNumber = Integer.parseInt(input);
     }
 
@@ -28,22 +27,24 @@ public class User {
         return userNumber;
     }
 
-    private void getValidation(String input) {
-        getLengthValidation(input);
-        getTypeValidation(input);
+    private static String inputUserNumber() {
+        return Console.readLine();
     }
 
-    private void getTypeValidation(String input) {
+    private void validateInput(String input) {
+        validateInputLength(input);
+        validateInputRegex(input);
+    }
+
+    private void validateInputRegex(String input) {
         if(!INPUT_REGEX.matcher(input).matches()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void getLengthValidation(String input) {
-        if(input.length() != 3) {
+    private static void validateInputLength(String input) {
+        if(input.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
-
-
 }
