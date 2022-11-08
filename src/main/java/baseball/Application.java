@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,19 +16,19 @@ public class Application {
         System.out.println("숫자 야구 게임을 시작합니다.");
         System.out.print("숫자를 입력해주세요 : ");
         String userNumber = Console.readLine();
-        List<String> userNumberList = validateUserNumber(userNumber);
+        List<Integer> userNumberList = validateUserNumber(userNumber);
 
 
     }
 
-    public static List<String> validateUserNumber(String userNumbers) {
+    public static List<Integer> validateUserNumber(String userNumbers) {
         List<String> numberList = stringToStringList(userNumbers);
         validateDigit(numberList);
         validateZero(numberList);
         validateSize(numberList);
         validateDuplication(numberList);
 
-        return numberList;
+        return numberList.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private static void validateZero(List<String> numberList) {
