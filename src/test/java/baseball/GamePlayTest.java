@@ -56,6 +56,15 @@ public class GamePlayTest {
     }
     @Test
     void 결과_값이_볼과_스트라이크(){
+        // given
+        List<Integer> computerNumber = new ArrayList<>(Arrays.asList(3,6,8));
+        List<Integer> userNumber = new ArrayList<>(Arrays.asList(3,8,9));
+
+        // when
+        gamePlay.getResult(userNumber,computerNumber);
+
+        // then
+        Assertions.assertEquals("1볼 1스트라이크",outputStreamCaptor.toString().trim());
 
     }
     @Test
