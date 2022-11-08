@@ -2,9 +2,9 @@ package baseball.service;
 
 import baseball.domain.Computer;
 import baseball.domain.User;
+import baseball.utils.CheckException;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameService {
@@ -24,6 +24,6 @@ public class GameService {
     private static List<Integer> getUserNumbers() throws IllegalArgumentException {
         System.out.print("숫자를 입력해 주세요 : ");
         String input = Console.readLine();
-        return new ArrayList<>();
+        return CheckException.checkUserInput(input);
     }
 }
