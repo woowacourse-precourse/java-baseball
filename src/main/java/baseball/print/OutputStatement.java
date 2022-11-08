@@ -9,7 +9,7 @@ public class OutputStatement {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static void printNotSing() {
+    private static void printNotSing() {
         System.out.println("낫싱");
     }
 
