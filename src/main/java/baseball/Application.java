@@ -22,66 +22,34 @@ public class Application {
         return computer.toString().replaceAll("[^0-9]", "");
     }
 
-    static void errorMessage(String error) {
-        System.out.printf("IllegalArgumentException 발생! : %s ", error);
-        System.out.println("어플리케이션을 종료합니다.");
+    static void checkLength(String str, int num) {
+        if (str.length() != num) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    static boolean checkLength(String str, int num) throws IllegalArgumentException {
-        boolean result = true;
-        try {
-            if (str.length() != num) {
-                result = false;
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            errorMessage("입력하신 숫자가 3자리가 아닙니다.");
+    static void checkRange(String strNumber, int index) {
+        if (strNumber.charAt(index) - '0' < 1 || strNumber.charAt(index) - '0' > 9) {
+            throw new IllegalArgumentException();
         }
-        return result;
     }
 
-    static boolean checkRange(String strNumber, int index) {
-        boolean result = true;
-        try {
-            if (strNumber.charAt(index) - '0' < 1 || strNumber.charAt(index) - '0' > 9) {
-                result = false;
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            errorMessage("입력하신 숫자의 범위가 1~9가 아닙니다.");
+    static void checkDuplication(String strNumber) {
+        if (strNumber.charAt(0) == strNumber.charAt(1) || strNumber.charAt(0) == strNumber.charAt(2)
+                || strNumber.charAt(1) == strNumber.charAt(2)) {
+            throw new IllegalArgumentException();
         }
-        return result;
-    }
-
-    static boolean checkDuplication(String strNumber) {
-        boolean result = true;
-        try {
-            if (strNumber.charAt(0) == strNumber.charAt(1) || strNumber.charAt(0) == strNumber.charAt(2)
-                    || strNumber.charAt(1) == strNumber.charAt(2)) {
-                result = false;
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            errorMessage("입력하신 숫자에 중복이 있습니다.");
-        }
-        return result;
     }
 
     static String getUserNumber() {
         System.out.print("숫자를 입력해주세요 : ");
         String strNumber = Console.readLine();
         List<Integer> userNumber = new ArrayList<>();
-        if (!checkLength(strNumber, 3)) {
-            return null;
-        }
+        checkLength(strNumber, 3);
         for (int i = 0; i < strNumber.length(); i++) {
-            if (!checkRange(strNumber, i)) {
-                return null;
-            }
+            checkRange(strNumber, i);
         }
-        if (!checkDuplication(strNumber)) {
-            return null;
-        }
+        checkDuplication(strNumber);
         return strNumber;
     }
 
@@ -111,7 +79,11 @@ public class Application {
     static int replayGame() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Integer.parseInt(Console.readLine());
+        int cmd = Integer.parseInt(Console.readLine());
+        if (cmd != 1 && cmd != 2) {
+            throw new IllegalArgumentException();
+        }
+        return cmd;
     }
 
     static int compare(String computer, String user) {
