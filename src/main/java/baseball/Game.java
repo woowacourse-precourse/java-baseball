@@ -30,11 +30,11 @@ public class Game {
         return selectedNums;
     }
 
-    public List<Integer> getBallStrikeResult(List<Integer> playerGuess){
+    public GameResult getBallStrikeResult(List<Integer> playerGuess){
         int strike = countStrike(playerGuess);
         int ball = countNumbersContainedInAnswer(playerGuess) - strike;
 
-        return List.of(ball, strike);
+        return new GameResult(ball, strike);
     }
 
     private int countNumbersContainedInAnswer(List<Integer> playerGuess){
