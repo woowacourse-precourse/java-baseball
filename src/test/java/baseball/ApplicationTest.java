@@ -33,15 +33,4 @@ class ApplicationTest extends NsTest {
     public void runMain() {
         Application.main(new String[]{});
     }
-    @Test
-    void ComputerNumCheck(){
-        assertThat(Computer.getNumber_List()).isEqualTo(Computer.number_List);
-    }
-
-    @Test
-    void strike_countCheck(){
-        Computer.setNumber();
-
-        assertThat(User.strike_count()).isEqualTo();
-    }
 }
