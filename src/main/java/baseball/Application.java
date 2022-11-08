@@ -24,7 +24,7 @@ public class Application {
     }
 
     public static boolean checkNumberLength(int userNumber) {
-        return 100 <= userNumber && userNumber <= 999;
+        return !(100 <= userNumber && userNumber <= 999);
     }
 
     public static boolean checkDuplication(int userNumber) {
@@ -40,11 +40,25 @@ public class Application {
         return false;
     }
 
+    public static List<Integer> splitIntToList(int originalInt) {
+        List<Integer> splitList = new ArrayList<>();
+        while (originalInt > 0) {
+            int digit = originalInt % 10;
+            splitList.add(0, digit);
+            originalInt /= 10;
+        }
+        return splitList;
+    }
+
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        List<Integer> randomNumber = makeRandomNumber();
+        List<Integer> randomNumberList = makeRandomNumber();
         int userNumber = askNumber();
-        boolean falsyLengthFlag = checkNumberLength(userNumber);
+        boolean lengthViolationFlag = checkNumberLength(userNumber);
         boolean duplicationFlag = checkDuplication(userNumber);
+        if (lengthViolationFlag || duplicationFlag) {
+            throw new IllegalArgumentException();
+        }
+        List<Integer> userNumberList = splitIntToList(userNumber);
     }
 }
