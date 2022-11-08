@@ -26,7 +26,6 @@ public class GameService {
             if(strike != 3) initData();
         }
         if(errorCheck == 0) selectContinue();
-        if(errorCheck == 1) return;
     }
 
     public static void checkInput() {
