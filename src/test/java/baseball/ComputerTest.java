@@ -20,7 +20,6 @@ public class ComputerTest extends NsTest {
     @Test
     void 컴퓨터_숫자_길이_테스트() {
         String randomNumbers = computer.getRandomNumbers();
-
         assertThat(randomNumbers.length()).isEqualTo(3);
     }
 

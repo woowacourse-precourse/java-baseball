@@ -11,9 +11,9 @@ public class Application {
             Game game = new Game();
             game.play();
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String repeat = Console.readLine();
-            GameRepeatInputException.verify(repeat);
-            if (repeat.equals(QUIT_GAME_CONDITION)) {
+            String repeatOption = Console.readLine();
+            GameRepeatInputException.verify(repeatOption);
+            if (repeatOption.equals(QUIT_GAME_CONDITION)) {
                 break;
             }
         }

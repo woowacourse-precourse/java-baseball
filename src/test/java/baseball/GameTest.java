@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameTest extends NsTest {
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
@@ -63,5 +62,4 @@ public class GameTest extends NsTest {
                 1, 2, 3
         );
     }
-
 }

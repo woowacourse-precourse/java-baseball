@@ -55,7 +55,9 @@ public class Game {
             resultMessage = Integer.toString(result.get(BALL)).concat("볼 ");
         }
         if (result.get(STRIKE) > 0) {
-            resultMessage = resultMessage.concat(Integer.toString(result.get(STRIKE)).concat("스트라이크"));
+            resultMessage = resultMessage
+                    .concat(Integer.toString(result.get(STRIKE))
+                            .concat("스트라이크"));
         }
         if (resultMessage.length() == 0) {
             resultMessage = "낫싱";

@@ -31,6 +31,7 @@ public class Computer {
         }
         return false;
     }
+
     private static Integer pickRandomNumber() {
         return Randoms.pickNumberInRange(1, 9);
     }
