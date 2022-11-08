@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.view.validator.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,33 +12,15 @@ import java.util.stream.Collectors;
 public class InputView {
 
     private static final String GET_NUMBER_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final int NUMBER_MAX_RANGE = 3;
     private static final String NUMBER_SEPARATE_DELIMITER = "";
-    private static final String NUMBER_RANGE = "^[1-9]*$";
     private static final String YES_OR_NO_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
     private static final String YES = "1";
-    private static final String NO = "2";
 
     public static List<Integer> getInput() {
         System.out.print(GET_NUMBER_MESSAGE);
         String numbers = Console.readLine();
-        validate(numbers);
+        InputValidator.validate(numbers);
         return toInteger(numbers);
-    }
-
-    private static void validate(String input) {
-        if (!Pattern.matches(NUMBER_RANGE, input)) {
-            throw new IllegalArgumentException();
-        }
-        if (input.length() != NUMBER_MAX_RANGE) {
-            throw new IllegalArgumentException();
-        }
-        String[] numbers = separate(input);
-        Set<String> ballNums = new HashSet<>(Arrays.asList(numbers));
-
-        if (ballNums.size() != numbers.length) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private static List<Integer> toInteger(String numbers) {
@@ -53,14 +36,8 @@ public class InputView {
     public static boolean yesOrNo() {
         System.out.println(YES_OR_NO_MESSAGE);
 
-        String input = Console.readLine();
-        validateInput(input);
-        return input.equals(YES);
-    }
-
-    private static void validateInput(String input) {
-        if (!input.equals(YES) && !input.equals(NO)) {
-            throw new IllegalArgumentException();
-        }
+        String choice = Console.readLine();
+        InputValidator.validateUserChoice(choice);
+        return choice.equals(YES);
     }
 }
