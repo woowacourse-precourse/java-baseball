@@ -13,9 +13,9 @@ public class User {
         List<Integer> guess = new ArrayList<>();
         CheckException checkException = new CheckException();
         String[] inputArray = Console.readLine().split("");
+        checkException.validateInputLength(inputArray);
         while(true) {
             try {
-                checkException.validateInputLength(inputArray);
                 checkException.validateInputNum(inputArray);
                 checkException.validateInputDistinct(inputArray);
 
