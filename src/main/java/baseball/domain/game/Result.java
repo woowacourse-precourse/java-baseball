@@ -23,15 +23,12 @@ public class Result {
         }
 
         StringBuilder result = new StringBuilder();
-
         if (gameHint.getBallScore() > 0) {
-            result.append(gameHint.getBallScore());
-            result.append(BALL);
+            result.append(gameHint.getBallScore()).append(BALL);
         }
 
         if (gameHint.getStrikeScore() > 0) {
-            result.append(gameHint.getStrikeScore());
-            result.append(STRIKE);
+            result.append(gameHint.getStrikeScore()).append(STRIKE);
         }
 
         return result.toString().trim();
