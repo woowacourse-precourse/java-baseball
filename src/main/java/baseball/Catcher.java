@@ -13,10 +13,9 @@ public class Catcher {
 
     public Catcher(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
-        initRandomNumbers();
     }
 
-    private void initRandomNumbers() {
+    public void initRandomNumbers() {
         answer = numberGenerator.generateNumber();
     }
 

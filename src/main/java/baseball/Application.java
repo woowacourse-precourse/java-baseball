@@ -1,10 +1,11 @@
 package baseball;
 
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        try {
 
+    public static void main(String[] args) {
+        try {
+            BaseBallGame baseBallGame = new BaseBallGame();
+            baseBallGame.startGame();
         } catch (IllegalArgumentException ie) {
             throw ie;
         } catch (Exception e) {
