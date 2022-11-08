@@ -27,7 +27,26 @@ public class User {
         this.numList = inputNumList;
     }
 
-    private boolean exceptionCheck(String str) {
+    public static boolean exceptionCheck(String str) {
+
+        char[] chars = str.toCharArray();
+
+        // input이 3자리 숫자가 아닌 경우
+        if (chars.length!=3)
+            return true;
+
+        // input에 숫자가 아닌게 포함되어있을 경우
+        for (int i=0; i<chars.length; i++) {
+            if (!Character.isDigit(chars[i])) {
+                return true;
+            }
+        }
+
+        // input에 중복되는 숫자가 있을 경우
+        if ((chars[0] == chars[1]) || (chars[1] == chars[2]) || (chars[0] == chars[2])) {
+            return true;
+        }
+        return false;
     }
 
     public List<Integer> getNumList() {
