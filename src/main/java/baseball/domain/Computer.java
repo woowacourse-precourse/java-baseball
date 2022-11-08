@@ -12,9 +12,6 @@ public class Computer {
     final static int COMPUTER_NUMBER_SIZE = 3;
     List<String> computerAnswer;
 
-    public Computer() {
-    }
-
     public List<String> getComputerAnswer() {
         generateComputerAnswer();
         return computerAnswer;

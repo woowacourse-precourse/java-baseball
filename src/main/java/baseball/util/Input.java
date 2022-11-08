@@ -9,9 +9,6 @@ import java.util.Set;
 
 public class Input {
 
-    public Input() {
-    }
-
     public static List<String> inputNumber() {
         List<String> inputNumberList = List.of(Console.readLine().split(""));
         isValidNumber(inputNumberList);
