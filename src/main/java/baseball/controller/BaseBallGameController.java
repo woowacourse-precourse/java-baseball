@@ -40,7 +40,7 @@ public class BaseBallGameController {
         }
     }
 
-    private int getRetryInput() throws IllegalArgumentException{
+    private int getRetryInput(){
         String retry = Console.readLine();
 
         UserInputValidator.validateRetryInput(retry);

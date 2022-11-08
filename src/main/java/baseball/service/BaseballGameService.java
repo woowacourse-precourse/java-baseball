@@ -65,7 +65,7 @@ public class BaseballGameService {
         return (game.getAnswer().get(answerIndex).equals(game.getUserInput().get(inputIndex)));
     }
 
-    private void getUserGameInput() throws IllegalArgumentException{
+    private void getUserGameInput(){
         BaseBallGameView.printRequestNumber();
         String input = Console.readLine();
 
