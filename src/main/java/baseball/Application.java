@@ -25,11 +25,11 @@ public class Application {
         while(true) {
             System.out.print("숫자를 입력해주세요 :");
 
-            List<Integer> user = validation(Console.readLine());
+            List<Integer> userInput = checkAndConvertUserInput(Console.readLine());
 
-            Integer ball =calculationBall(computerOutput, user);
+            Integer ball =calculationBall(computerOutput, userInput);
 
-            Integer strike =calculationStrike(computerOutput, user);
+            Integer strike =calculationStrike(computerOutput, userInput);
 
             String result =currentSituation(ball, strike);
             System.out.println(result);
@@ -44,5 +44,18 @@ public class Application {
             }
         }
         return computer;
+    }
+
+    public static List<Integer> checkAndConvertUserInput(String input){
+        if (input.length() != 3)  throw new IllegalArgumentException();
+        Set<Integer> result = input.chars()
+                .filter(c->(c >= '1' && c <= '9'))
+                .map(c -> c - '0').boxed()
+                .collect(toSet());
+        if (result.size() != 3) throw new IllegalArgumentException();
+        return input.chars()
+                .map(c -> c - '0')
+                .boxed()
+                .collect(toList());
     }
 }
