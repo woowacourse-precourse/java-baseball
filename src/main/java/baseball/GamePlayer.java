@@ -1,8 +1,5 @@
 package baseball;
 
-import baseball.Exception.EndOfGameException;
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,18 +9,16 @@ public class GamePlayer {
     public static void playGame() {
         Game game = new Game();
 
-        try {
-            while (true) {
-                List<Integer> player_number = getPlayerInput();
+        while (true) {
+            List<Integer> player_number = getPlayerInput();
 
-                validatePlayer_number(player_number);
+            validatePlayer_number(player_number);
 
-                playOneTurn(game, player_number);
+            boolean is_out = playOneTurn(game, player_number);
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (is_out) return;
         }
+
     }
 
     private static List<Integer> getPlayerInput() {
@@ -36,7 +31,7 @@ public class GamePlayer {
                 .collect(Collectors.toList());
     }
 
-    private static void playOneTurn(Game game, List<Integer> player_number) {
+    private static boolean playOneTurn(Game game, List<Integer> player_number) {
         final int STRIKE_OUT = 3;
         final int NOTHING = 0;
 
@@ -44,13 +39,15 @@ public class GamePlayer {
         final int ball = game.getCountOfBall(player_number, strike);
 
         if (strike == STRIKE_OUT) {
-            throw new EndOfGameException();
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         } else if (strike == NOTHING && ball == NOTHING) {
-            System.out.println("NOTHING");
+            System.out.println("낫싱");
         } else {
-            System.out.println(strike + "스트라이크 , " + ball + "볼");
+            System.out.println(ball + "볼 " + strike + "스트라이크");
         }
-
+        return false;
     }
 
     private static void validatePlayer_number(List<Integer> player_number) {
