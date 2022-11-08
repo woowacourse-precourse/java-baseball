@@ -43,7 +43,11 @@ public class BaseballService {
         System.out.print(Constant.CHECK_RESTART_MESSAGE);
         String checkRestartNumber = Console.readLine();
         validator.validateRestartNumber(checkRestartNumber);
-        return true;
+        if (checkRestartNumber.equals("1")) {
+            this.generateComputerNumber();
+            return true;
+        }
+        return false;
     }
 
     public void inputPlayerNumber() {
