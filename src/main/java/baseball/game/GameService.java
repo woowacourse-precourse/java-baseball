@@ -62,6 +62,12 @@ public class GameService {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
+    public boolean restart() {
+        String gameOverNumber = Console.readLine();
+        UserException.checkGameOverException(gameOverNumber);
+        return gameOverNumber.equals("1");
+    }
+
     public enum Hint {
         STRIKE("스트라이크"),
         BALL("볼"),
