@@ -38,6 +38,10 @@ class Game {
         return randomNum;
     }
 
+    // 1. 참여자 숫자 입력 메서드
+    public String inputNum(){
+        return Console.readLine();
+    }
     // 2. 참여자 입력 숫자 점검
     public boolean checkingInputNum(String inputNum) {
         try {
