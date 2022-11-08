@@ -6,7 +6,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class computer {
-    private List<Integer> makeRandom() {
+    public static List<Integer> Answer;
+    private static List<Integer> makeRandom() {
         List<Integer> randomnumbers = new ArrayList<>();
         while (randomnumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,9 +18,10 @@ public class computer {
         return randomnumbers;
     }
 
-    public void isValiableAnswer() {
+    public static void isValiableAnswer() {
         try {
             List<Integer> answer = makeRandom();
+            Answer = answer;
         }catch(IllegalArgumentException e) {
             e.printStackTrace();
         }

@@ -1,12 +1,17 @@
 package baseball.compute;
 
+import baseball.Application;
+
 public class cycle {
-    public void restart(int sign) {
-        if (sign == 1) {
-            //다시 시작
+    public static void restart(String sign) {
+        if (sign.equals("1")) {
+            Application.game();
         }
-        if (sign == 2) {
-            //완전종료
+        else if(sign.equals("2")) {
+            System.out.println("게임 종료");
+        }else {
+            System.out.println("1이나 2를 입력해주세요.");
         }
+
     }
 }

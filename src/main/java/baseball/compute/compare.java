@@ -3,12 +3,29 @@ package baseball.compute;
 import java.util.*;
 
 public class compare {
-    int Strike = 0;
-    int Ball = 0;
-    boolean Nothing = true;
+    private int Strike = 0;
+    private int Ball = 0;
+    private boolean Nothing = true;
 
-    compare(List<Integer> Answer, List<Integer> UsersAnswer){
-        isBall(Answer, UsersAnswer);
+    public compare(){
+        this.Strike = 0;
+        this.Ball = 0;
+        this.Nothing = true;
+    }
+
+    public void printStrike(){
+        System.out.println("Strike:"+this.Strike);
+    }
+    public void printBall(){
+        System.out.println("Ball:"+this.Ball);
+    }
+    public void printNothing(){
+        System.out.println("Nothing:"+this.Nothing);
+    }
+
+    public boolean isfullStrike(){
+        if(this.Strike == 3) return true;
+        return false;
     }
 
     public void isStrike(List<Integer> Answer, List<Integer> UsersAnswer) {
@@ -26,14 +43,31 @@ public class compare {
         int count = 0;
         for(int i = 0 ; i < 3; i++) {
             int u = UsersAnswer.get(i);
-            if (Answer.contains(i)) {
+            if (Answer.contains(u)) {
+                //System.out.println("포함됨"+u);
                 count++;
             }
         }
-        this.Ball = 0;
+        this.Ball = count - this.Strike;
     }
     public void isNothing(){
-        if (this.Strike == 0 && this.Ball == 0) { this.Nothing = true;}
-        else { this.Nothing == false;}
+        if (this.Strike == 0 && this.Ball == 0) { this.Nothing = true; }
+        else {this. Nothing = false; }
     }
+
+    public String PrintInfo(){
+        String output = "";
+        if (this.Ball >= 1){
+            output += this.Ball + "볼 ";
+        }
+
+        if(this.Strike >= 1){
+            output += this.Strike + "스트라이크";
+        }
+        if (this.Ball == 0 && this.Strike == 0) {
+            output += "낫싱";
+        }
+        return output;
+    }
+
 }
