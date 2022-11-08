@@ -38,4 +38,10 @@ public class User {
     public boolean checkSize(List<Integer> userNumbers) {
         return userNumbers.size() == MAX_SIZE;
     }
+
+    public boolean checkDuplicate(List<Integer> userNumbers) {
+        Set<Integer> userNumbersSet = new HashSet<>(userNumbers);
+
+        return userNumbersSet.size() == userNumbers.size();
+    }
 }
