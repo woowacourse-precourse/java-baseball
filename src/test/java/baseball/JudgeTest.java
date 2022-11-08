@@ -82,4 +82,57 @@ class JudgeTest {
 		assertThat(expectBalls).isEqualTo(judge.getBall());
 	}
 
+	@Test
+	void printHint_메서드_테스트_2스트라이크(){
+		Judge judge;
+		ArrayList<Integer> targetNumber = new ArrayList<>(Arrays.asList(1,2,3));
+		ArrayList<Integer> playerInputNumber = new ArrayList<>(Arrays.asList(1,2,4));
+		judge = Judge.checkScore(targetNumber, playerInputNumber);
+		assertThat(judge.printHint()).isEqualTo(2 + Message.STRIKE.getMsg());
+	}
+
+	@Test
+	void printHint_메서드_테스트_2볼(){
+		Judge judge;
+		ArrayList<Integer> targetNumber = new ArrayList<>(Arrays.asList(1,2,3));
+		ArrayList<Integer> playerInputNumber = new ArrayList<>(Arrays.asList(4,1,2));
+		judge = Judge.checkScore(targetNumber, playerInputNumber);
+		assertThat(judge.printHint()).isEqualTo(2 + Message.BALL.getMsg());
+	}
+
+	@Test
+	void printHint_메서드_테스트_낫싱(){
+		Judge judge;
+		ArrayList<Integer> targetNumber = new ArrayList<>(Arrays.asList(1,2,3));
+		ArrayList<Integer> playerInputNumber = new ArrayList<>(Arrays.asList(4,5,6));
+		judge = Judge.checkScore(targetNumber, playerInputNumber);
+		assertThat(judge.printHint()).isEqualTo(Message.NOTHING.getMsg());
+	}
+
+	@Test
+	void printHint_메서드_테스트_1볼_1스트라이크(){
+		Judge judge;
+		ArrayList<Integer> targetNumber = new ArrayList<>(Arrays.asList(1,2,3));
+		ArrayList<Integer> playerInputNumber = new ArrayList<>(Arrays.asList(1,5,2));
+		judge = Judge.checkScore(targetNumber, playerInputNumber);
+		assertThat(judge.printHint()).isEqualTo(1+Message.BALL.getMsg()+" "+1+Message.STRIKE.getMsg());
+	}
+
+	@Test
+	void printHint_메서드_테스트_3스트라이크(){
+		Judge judge;
+		ArrayList<Integer> targetNumber = new ArrayList<>(Arrays.asList(1,2,3));
+		ArrayList<Integer> playerInputNumber = new ArrayList<>(Arrays.asList(1,2,3));
+		judge = Judge.checkScore(targetNumber, playerInputNumber);
+		assertThat(judge.isThreeStrike()).isEqualTo(true);
+	}
+	@Test
+	void printHint_메서드_테스트_3스트라이크_아님(){
+		Judge judge;
+		ArrayList<Integer> targetNumber = new ArrayList<>(Arrays.asList(1,2,3));
+		ArrayList<Integer> playerInputNumber = new ArrayList<>(Arrays.asList(1,2,4));
+		judge = Judge.checkScore(targetNumber, playerInputNumber);
+		assertThat(judge.isThreeStrike()).isEqualTo(false);
+	}
+
 }
