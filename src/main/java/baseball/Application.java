@@ -82,12 +82,12 @@ public class Application {
 
     public static void checkNegativeNumber(String userString) {
         if (userString.contains("-"))
-            throw new IllegalArgumentException("입력은 양수여야 합니다.");
+            throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
     }
 
     public static void checkZeroInNumber(String userString) {
         if (userString.contains("0"))
-            throw new IllegalArgumentException("입력은 1부터 9까지의 수로 이루어져야 합니다.");
+            throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
     }
 
     public static void checkLengthAndDuplication(String userString) {
@@ -96,10 +96,10 @@ public class Application {
             numberSet.add(userString.charAt(i));
 
         if (userString.length() != Constants.NUMBER_SIZE)
-            throw new IllegalArgumentException("입력은 3자리 숫자여야 합니다.");
+            throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
 
         if (numberSet.size() != Constants.NUMBER_SIZE)
-            throw new IllegalArgumentException("입력은 서로 다른 3자리 숫자여야 합니다.");
+            throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
     }
 
     public static int userStringToInteger(String userString) {
@@ -108,7 +108,7 @@ public class Application {
         try {
             userNumber = Integer.parseInt(userString);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("입력은 숫자여야 합니다.");
+            throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
         }
 
         return userNumber;
@@ -126,7 +126,7 @@ public class Application {
         if (userChoice == Constants.EXIT_GAME)
             return true;
 
-        throw new IllegalArgumentException("잘못된 입력값입니다.");
+        throw new IllegalArgumentException(Constants.INPUT_ERROR_MESSAGE);
     }
 
     public static int countStrikes(int userNumber, int answerNumber) {
