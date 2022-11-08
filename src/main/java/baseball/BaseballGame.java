@@ -2,6 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import domain.Computer;
+import domain.Flag;
 import domain.Number;
 
 import java.util.ArrayList;
@@ -50,10 +51,11 @@ public class BaseballGame {
         }
 
         System.out.println(GAME_RESTART);
+        Flag flag = new Flag(Console.readLine());
 
-        if (Console.readLine().equals("1")) {
+        if (flag.isRestart()) {
             gameStart();
-        };
+        }
     }
 
     public void makeResult(Number number, List<Integer> computerNumber) {
