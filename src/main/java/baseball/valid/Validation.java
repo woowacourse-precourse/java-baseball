@@ -5,26 +5,19 @@ import java.util.Set;
 
 public class Validation {
 
-    private String readLine;
-
-    public Validation(String readLine) {
-        this.readLine = readLine;
-        validNumbers();
-    }
-
-    private void validNumbers() {
-        if (!isDigit() || readLine.length() != 3) {
+    public void validNumbers(String readLine) {
+        if (!isDigit(readLine) || readLine.length() != 3) {
             throw new IllegalArgumentException("Number is Not Valid Exception!!");
         }
 
-        duplicatedValid();
+        duplicatedValid(readLine);
     }
 
-    private boolean isDigit() {
-        return this.readLine.chars().allMatch(Character::isDigit);
+    private boolean isDigit(String readLine) {
+        return readLine.chars().allMatch(Character::isDigit);
     }
 
-    private void duplicatedValid() {
+    private void duplicatedValid(String readLine) {
         Set<String> set = new HashSet<>();
 
         for (String word : readLine.split("")) {
@@ -36,5 +29,9 @@ public class Validation {
         set.clear();
     }
 
-
+    public void restartNumberValid(String readLine) {
+        if (!(Integer.valueOf(readLine).equals(1) && Integer.valueOf(readLine).equals(0))) {
+            throw new IllegalArgumentException("Number is Not Valid Exception!!");
+        }
+    }
 }

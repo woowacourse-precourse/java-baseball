@@ -1,11 +1,19 @@
 package baseball.valid;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ValidationTest {
+
+    private Validation validation;
+
+    @BeforeEach
+    public void beforeEach() {
+        this.validation = new Validation();
+    }
 
     @Test
     @DisplayName("입력 데이터의 유효성 검사 테스트 -> 유효성에 맞지 않는 데이터가 들어오면 IllegalArgumentException 예외 발생")
@@ -14,7 +22,7 @@ class ValidationTest {
         String data = "ab";
 
         // when && then
-        assertThatThrownBy(() -> new Validation(data))
+        assertThatThrownBy(() -> validation.validNumbers(data))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Number is Not Valid Exception!!");
     }
@@ -26,7 +34,7 @@ class ValidationTest {
         String data = "122";
 
         // when && then
-        assertThatThrownBy(() -> new Validation(data))
+        assertThatThrownBy(() -> validation.validNumbers(data))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Number is Not Valid Exception!!");
     }
