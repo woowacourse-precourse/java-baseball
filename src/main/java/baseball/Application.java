@@ -16,4 +16,16 @@ public class Application {
         int[] userNumbers = getUserNumbers();
         compareNumbers(computerNumbers, userNumbers);
     }
+
+    // 랜덤한 숫자 3개 고르기
+    public static int[] getRandomNumbers() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer.stream().mapToInt(i -> i).toArray();
+    }
 }
