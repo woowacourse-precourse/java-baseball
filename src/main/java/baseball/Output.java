@@ -3,18 +3,25 @@ package baseball;
 import java.util.List;
 
 public class Output {
-    private Hint hint;
+    private final Hint hint;
 
-    public static void askRestart(){
+    public Output() {
+        hint = new Hint();
+    }
+
+    public static void askRestart() {
         System.out.println(Message.RESTART.getMessage());
     }
 
-    public static void getNumber(){
-        System.out.println(Message.INPUT_ASK);
+    public static void getNumber() {
+        System.out.println(Message.INPUT_ASK.getMessage());
     }
 
-    public void giveHint(List<Integer> playerAnswer, List<Integer> answer){
-        System.out.println(hint.compareNumber(playerAnswer, answer));
+    public void giveHint(String content) {
+        System.out.println(content);
     }
 
+    public static void endGame() {
+        System.out.println(Message.SELECT_END.getMessage());
+    }
 }

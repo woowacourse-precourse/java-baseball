@@ -1,40 +1,26 @@
 package baseball;
 
-import java.util.List;
-
 public class Game {
     private Computer computer;
     private Hint hint;
     private Output output;
 
     public Game() {
-        computer = new Computer();
-        hint = new Hint();
-        output = new Output();
+        this.computer = new Computer();
+        this.hint = new Hint();
+        this.output = new Output();
     }
 
-    public void playGame() {
-        while (true) {
-            List<Integer> answer = computer.decideAnswer();
-            List<Integer> playerAnswer = Input.getInput();
-            output.giveHint(playerAnswer, answer);
-            if (hint.getStrike() == Range.DIGIT) {
-                askGameRestart();
-                break;
-            }
-        }
+    public Computer getComputer() {
+        return computer;
     }
 
-    private void askGameRestart(){
-        Output.askRestart();
-        int value = Input.getRestart();
-        if(value == GameMode.GAME_END){
-            return;
-        }else if(value==GameMode.GAME_RESTART){
-            playGame();
-        }else{
-            throw new IllegalArgumentException();
-        }
+    public Hint getHint() {
+        return hint;
+    }
+
+    public Output getOutput() {
+        return output;
     }
 
 }
