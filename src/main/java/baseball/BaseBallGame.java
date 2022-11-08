@@ -12,12 +12,12 @@ import java.util.stream.IntStream;
 
 
 class BaseBallGame {
-    private static BaseBallGame device = new BaseBallGame();
+    private static final BaseBallGame device = new BaseBallGame();
 
-    private static int GOAL = 3;
-    private static int ZERO = 0;
-    public static String RESTART = "1";
-    public static String EXIT = "2";
+    private static final int GOAL = 3;
+    private static final int ZERO = 0;
+    public static final String RESTART = "1";
+    public static final String EXIT = "2";
 
     private static String userNumber = "";
     private static String computerNumber = "";
