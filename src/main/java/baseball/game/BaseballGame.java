@@ -28,13 +28,18 @@ public class BaseballGame {
             compareNumbers.userNumberResult();
         }
         System.out.println(END_MESSAGE);
-        restartGame();
+        askRestartGame();
     }
 
-    public static void restartGame(){
+    public static void askRestartGame(){
         System.out.println(RESTART_MESSAGE);
         String restartNumber = Console.readLine();
         checkValidationRestartNumber(restartNumber);
+        restartGame(restartNumber);
+    }
+
+    public static void restartGame(String restartNumber){
         if (restartNumber.equals(RESTART)) playBaseballGame();
     }
+
 }
