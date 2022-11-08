@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class BaseballResultTest {
+class BaseballResultTest {
     @Test
     void 선택한_숫자가_올_스트라이크() {
         List<Integer> answerNumbers = new ArrayList<>();
@@ -18,11 +18,11 @@ public class BaseballResultTest {
 
         BaseballResult baseballResult = new BaseballResult();
 
-        BaseballScore result = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(3, 0);
 
-        assertEquals(result.get_strikes(), expected.get_strikes());
-        assertEquals(result.get_balls(), expected.get_balls());
+        assertEquals(score.getBalls(), expected.getStrikes());
+        assertEquals(score.getBalls(), expected.getBalls());
     }
 
     @Test
@@ -44,10 +44,10 @@ public class BaseballResultTest {
 
         BaseballResult baseballResult = new BaseballResult();
 
-        BaseballScore result = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(0, 0);
-        assertEquals(result.get_strikes(), expected.get_strikes());
-        assertEquals(result.get_balls(), expected.get_balls());
+        assertEquals(score.getStrikes(), expected.getStrikes());
+        assertEquals(score.getBalls(), expected.getBalls());
     }
 
 
@@ -73,10 +73,10 @@ public class BaseballResultTest {
 
         BaseballResult baseballResult = new BaseballResult();
 
-        BaseballScore result = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(2, 0);
-        assertEquals(result.get_strikes(), expected.get_strikes());
-        assertEquals(result.get_balls(), expected.get_balls());
+        assertEquals(score.getStrikes(), expected.getStrikes());
+        assertEquals(score.getBalls(), expected.getBalls());
     }
 
     @Test
@@ -101,10 +101,10 @@ public class BaseballResultTest {
 
         BaseballResult baseballResult = new BaseballResult();
 
-        BaseballScore result = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(0, 2);
-        assertEquals(result.get_strikes(), expected.get_strikes());
-        assertEquals(result.get_balls(), expected.get_balls());
+        assertEquals(score.getStrikes(), expected.getStrikes());
+        assertEquals(score.getBalls(), expected.getBalls());
     }
 
     @Test
@@ -129,10 +129,10 @@ public class BaseballResultTest {
 
         BaseballResult baseballResult = new BaseballResult();
 
-        BaseballScore result = baseballResult.getBaseballScore(computerNumbers, userNumbers);
+        BaseballScore score = baseballResult.getBaseballScore(computerNumbers, userNumbers);
         BaseballScore expected = new BaseballScore(1, 2);
-        assertEquals(result.get_strikes(), expected.get_strikes());
-        assertEquals(result.get_balls(), expected.get_balls());
+        assertEquals(score.getStrikes(), expected.getStrikes());
+        assertEquals(score.getBalls(), expected.getBalls());
     }
 
 }

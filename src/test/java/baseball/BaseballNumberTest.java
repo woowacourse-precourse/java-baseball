@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
-public class BaseballNumberTest {
+class BaseballNumberTest {
     @Test
     void 정수_리스트를_인자로_받는_생성자() {
         List<Integer> numbers = new ArrayList<>();
@@ -35,13 +35,15 @@ public class BaseballNumberTest {
 
     @Test
     void 숫자가_아닌_글자가_포함되면_예외_발생() {
-        List<String> numbers = new ArrayList<>();
+        List<String> notANumberList = new ArrayList<>();
 
         for (int count = 1; count <= BaseballNumber.NUMBER_COUNT; count++) {
-            numbers.add(String.valueOf((char) ('a' + count - 1)));
+            notANumberList.add(String.valueOf((char) ('a' + count - 1)));
         }
 
-        assertThatThrownBy(() -> new BaseballNumber(String.join("", numbers)))
+        String notANumberString = String.join("", notANumberList);
+
+        assertThatThrownBy(() -> new BaseballNumber(notANumberString))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(BaseballNumber.NOT_A_NUMBER_EXCEPTION_MESSAGE);
     }
@@ -145,7 +147,7 @@ public class BaseballNumberTest {
         boolean expected = true;
 
         for (int index = 0; index < BaseballNumber.NUMBER_COUNT; index++) {
-            boolean result = baseballNumber.is_number_in_index_equal_to(index, numbers.get(index));
+            boolean result = baseballNumber.isNumberInIndexEqualTo(index, numbers.get(index));
             assertThat(result).isEqualTo(expected);
         }
 
@@ -161,8 +163,7 @@ public class BaseballNumberTest {
         BaseballNumber baseballNumber = new BaseballNumber(numbers);
 
         boolean expected = false;
-        boolean result = baseballNumber.is_number_in_index_equal_to
-                (BaseballNumber.NUMBER_COUNT - 1, -1);
+        boolean result = baseballNumber.isNumberInIndexEqualTo(BaseballNumber.NUMBER_COUNT - 1, -1);
         assertThat(result).isEqualTo(expected);
     }
 

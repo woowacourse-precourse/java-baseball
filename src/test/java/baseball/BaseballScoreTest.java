@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class BaseballScoreTest {
+class BaseballScoreTest {
     @Test
     void 스트라이크_수가_유효하지_않으면_예외_발생() {
         assertThatThrownBy(() -> new BaseballScore(-1, 2))
@@ -33,8 +33,6 @@ public class BaseballScoreTest {
                 + System.lineSeparator()
                 + Integer.toString(BaseballNumber.NUMBER_COUNT)
                 + "개의 숫자를 모두 맞히셨습니다! 게임 종료";
-//        String expected = "3스트라이크\n"
-//                + "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
         assertEquals(result, expected);
     }
 

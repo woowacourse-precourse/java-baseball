@@ -1,4 +1,4 @@
 package baseball;
 
-public class BaseballOutputTest {
+class BaseballOutputTest {
 }

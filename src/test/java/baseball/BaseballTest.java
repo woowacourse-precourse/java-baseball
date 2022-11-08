@@ -1,4 +1,4 @@
 package baseball;
 
-public class BaseballTest {
+class BaseballTest {
 }
