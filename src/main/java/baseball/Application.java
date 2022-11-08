@@ -13,6 +13,6 @@ public class Application {
         boolean isGameState = true;
         do {
             game.startGame();
-        }while (game.c()); //메서드를 통해서 boolean값 받기
+        }while (game.continueGame()); //메서드를 통해서 boolean값 받기
     }
 }

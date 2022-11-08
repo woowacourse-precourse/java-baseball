@@ -58,7 +58,7 @@ public class Game {
         return isRestart;
     }
 
-    public boolean c() {
+    public boolean continueGame() {
         return isRestart;
     }
 }
