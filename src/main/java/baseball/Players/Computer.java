@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Computer {
 
-    static final int NUMBER_LIST_SIZE = 3;
+    private static final int GAME_NUMBERS_SIZE = 3;
 
     public List<Integer> getNumberList() {
         List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < NUMBER_LIST_SIZE) {
+        while (computerNumbers.size() < GAME_NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerNumbers.contains(randomNumber)) {
                 computerNumbers.add(randomNumber);

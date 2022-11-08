@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Judge {
 
-    static final int GAME_COUNT = 3;
+    private static final int GAME_COUNTS = 3;
     private final List<Integer> userNumbers;
     private final List<Integer> computerNumbers;
 
@@ -16,7 +16,7 @@ public class Judge {
 
     int countStrike() {
         int strikeCnt = 0;
-        for (int i = 0; i < GAME_COUNT; i++) {
+        for (int i = 0; i < GAME_COUNTS; i++) {
             if (userNumbers.get(i) == computerNumbers.get(i)) {
                 strikeCnt++;
             }
@@ -26,12 +26,12 @@ public class Judge {
 
     int countBall() {
         int ballCnt = 0;
-        for (int i = 0; i < GAME_COUNT; i++) {
+        for (int i = 0; i < GAME_COUNTS; i++) {
             // 다음 index 값과 비교, index가 Game_Count를 넘으면 0으로 돌아감
-            if (userNumbers.get(i) == computerNumbers.get((i + 1) % GAME_COUNT)) {
+            if (userNumbers.get(i) == computerNumbers.get((i + 1) % GAME_COUNTS)) {
                 ballCnt++;
             // 다음 index 값과 다를 경우, 다음 다음 index 값과 비교
-            } else if (userNumbers.get(i) == computerNumbers.get((i + 2) % GAME_COUNT)) {
+            } else if (userNumbers.get(i) == computerNumbers.get((i + 2) % GAME_COUNTS)) {
                 ballCnt++;
             }
         }
