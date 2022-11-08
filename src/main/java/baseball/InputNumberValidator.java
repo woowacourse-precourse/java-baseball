@@ -14,7 +14,15 @@ public class InputNumberValidator {
     public static boolean StringIndexOutOfRange(String inputNumber){
         return inputNumber.length() == 3;
     }
-    ㅑ
+
+    public static boolean rangeCheck(String inputNumber){
+        int input = Integer.parseInt(inputNumber);
+        List<Integer> inputNumbers = new ArrayList<>();
+        inputNumbers.add(input);
+        return inputNumbers.stream()
+                .filter(number -> 1 <= number && number <= 9)
+                .count() == 3;
+    }
 
 
 }
