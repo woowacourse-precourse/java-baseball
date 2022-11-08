@@ -21,6 +21,14 @@ public class Application {
         return s.chars().allMatch(Character::isDigit);
     }
 
+    public static List<Integer> convertStringToList(String s) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            list.add(Character.getNumericValue(s.charAt(i)));
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
