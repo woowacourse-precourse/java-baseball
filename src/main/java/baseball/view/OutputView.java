@@ -13,10 +13,15 @@ public class OutputView {
     }
 
     public void printGameResult() {
-        printBallCount();
+        printOnlyBallCount();
         printOnlyStrikeCount();
         printBallAndStrike();
         printNothing();
+    }
+
+    private void printOnlyBallCount() {
+        if (BALL_COUNT != 0 && STRIKE_COUNT == 0)
+            System.out.println(BALL_COUNT + "볼");
     }
 
     private void printOnlyStrikeCount() {
