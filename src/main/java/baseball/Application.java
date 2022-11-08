@@ -14,7 +14,7 @@ public class Application {
 
     }
     public static void playGame() {
-
+        List<Integer> computerNumber = makeRandom();
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             System.out.print("숫자를 입력해주세요 : ");
@@ -27,6 +27,16 @@ public class Application {
         while () {
             //게임 종료
         }
+    }
+    public static List<Integer> makeRandom() {
+        List<Integer> computerNumber = new ArrayList<>();
+        while (computerNumber.size() < 3){
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computerNumber.contains(randomNumber)) {
+                computerNumber.add(randomNumber);
+            }
+        }
+        return computerNumber;
     }
 
     public static boolean checkException(int num) {
