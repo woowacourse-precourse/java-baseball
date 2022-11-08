@@ -17,7 +17,7 @@ public enum Command {
             }
         }
 
-        throw new IllegalArgumentException("잘못된 값을 입력하였습니다.");
+        throw new IllegalArgumentException("올바르지 않은 형식의 재시작 커맨드를 입력하셨습니다.");
     }
 
     private static boolean checkCommand(Command command, String input) {
