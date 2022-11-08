@@ -16,11 +16,11 @@ public class BaseballGameController {
         computer = new Computer();
         inputView = new InputView();
         outputView = new OutputView();
+        outputView.printGameStart();
     }
 
     public void start() {
 
-        outputView.printGameStart();
         computer.generateComputerNumberThree();
         play();
         outputView.printGameEnd();
