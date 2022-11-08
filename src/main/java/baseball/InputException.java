@@ -8,6 +8,7 @@ public class InputException {
     }
 
     private static boolean isAllNumber(String number) {
+        // 사용자가 입력한 값이 모두 숫자인지 확인하는 메소드
         for (int i = 0; i < number.length(); i++) {
             if (!Character.isDigit(number.charAt(i))) {
                 return false;

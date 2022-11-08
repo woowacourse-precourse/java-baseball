@@ -51,6 +51,7 @@ public class Game {
     }
 
     public void play(Score score, List<Integer> userNumber, List<Integer> computerNumber) {
+        // 사용자가 입력한 숫자에서 볼과 스트라이크를 반영하는 메소드
         for (int i = 0; i < Constant.NUMBER_LENGTH; i++) {
             if (userNumber.get(i).equals(computerNumber.get(i))) {
                 score.setStrike(score.getStrike() + 1);
