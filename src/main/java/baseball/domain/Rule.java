@@ -20,7 +20,7 @@ public class Rule {
         }
     }
 
-    public boolean isReset(String number) {
-        return number.equals(RESET_GAME);
+    public boolean isReset(Gamer gamer) {
+        return gamer.inputReset().equals(RESET_GAME);
     }
 }

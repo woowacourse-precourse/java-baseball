@@ -26,7 +26,7 @@ public class Game {
         }
 
         printGameOver();
-        if (rule.isReset(gamer.inputReset())) {
+        if (rule.isReset(gamer)) {
             play();
         }
     }
