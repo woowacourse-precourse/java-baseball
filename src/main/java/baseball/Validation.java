@@ -1,5 +1,7 @@
 package baseball;
 
+import static baseball.Constant.MAX_INDEX;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,23 +44,27 @@ public class Validation {
 
 
     private static void rangeCheck(String validation)  {
-        if (Integer.parseInt(validation) < 100 || Integer.parseInt(validation) > 999) {
+        int toInteger = Integer.parseInt(validation);
+        if ( 2 < toInteger && toInteger < 102 || toInteger > 987) {
             throw new IllegalArgumentException("서로 다른 수로 이루어진 세자리 수를 입력해주세요.");
         }
     }
 
     private static void duplicateCheck(String validation) {
 
-        char checkDuplicateZero = validation.charAt(0);
-        char checkDuplicateOne = validation.charAt(1);
-        char checkDuplicateTwo = validation.charAt(2);
+        if (validation.length() >= MAX_INDEX){
+            char checkDuplicateZero = validation.charAt(0);
+            char checkDuplicateOne = validation.charAt(1);
+            char checkDuplicateTwo = validation.charAt(2);
 
-        // 중복 검사
-        if (checkDuplicateZero == checkDuplicateOne
-                || checkDuplicateZero == checkDuplicateTwo
-                || checkDuplicateOne == checkDuplicateTwo) {
-            throw new IllegalArgumentException("서로 다른 수로 이루어진 세자리 수를 입력해주세요.");
+            if (checkDuplicateZero == checkDuplicateOne
+                    || checkDuplicateZero == checkDuplicateTwo
+                    || checkDuplicateOne == checkDuplicateTwo) {
+                throw new IllegalArgumentException("서로 다른 수로 이루어진 세자리 수를 입력해주세요.");
+            }
         }
+
+
     }
 
 }
