@@ -16,11 +16,11 @@ public class Game {
 
     public void run() {
         List<Integer> input = new ArrayList<>(), result = new ArrayList<>();
-        String cvtResult = new String();
+        String cvtResult = "";
 
         start();
 
-        while(!cvtResult.equals(END_CONDITION)) {
+        while (!cvtResult.equals(END_CONDITION)) {
             System.out.print(USER_NUMBER_INPUT_MESSAGE);
             input = user.getInputNumbers();
             result = computer.compareWithAnswer(input);
@@ -38,29 +38,23 @@ public class Game {
     }
 
     public String getResultCvtToStr(List<Integer> result) {
-        String cvtResult = new String("");
-        if(result.get(0)!=0) {
+        String cvtResult = "";
+        if (result.get(0) != 0) {
             cvtResult += result.get(0) + BALL_MESSAGE;
         }
-        if(!cvtResult.equals("")) {
+        if (!cvtResult.equals("")) {
             cvtResult += " ";
         }
-        if(result.get(1)!=0) {
+        if (result.get(1) != 0) {
             cvtResult += result.get(1) + STRIKE_MESSAGE;
         }
-        if(cvtResult.equals("")) {
+        if (cvtResult.equals("")) {
             cvtResult += NOTHING_MESSAGE;
         }
         return cvtResult;
     }
 
     public boolean toBeContinue() {
-        Integer number = user.getNumberToContinueGame();
-        if(number.equals(1)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return user.getNumberToContinueGame().equals(1);
     }
 }

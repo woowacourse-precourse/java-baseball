@@ -5,12 +5,10 @@ public class Application {
     public static Game game;
 
     public static void main(String[] args) {
-        boolean isContinue;
         do {
             game = new Game();
             game.run();
             System.out.println(GAME_RESTART_MESSAGE);
-            isContinue = game.toBeContinue();
-        }while(isContinue);
+        } while (game.toBeContinue());
     }
 }
