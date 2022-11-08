@@ -65,4 +65,11 @@ public class Application {
             result.append("낫싱");
         }
     }
+
+    public static boolean isThreeStrike(int strikeCount){
+        if(strikeCount == 3){
+            return true;
+        }
+        return false;
+    }
 }
