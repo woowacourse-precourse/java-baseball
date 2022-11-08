@@ -1,6 +1,6 @@
 package baseball.io;
 
-import baseball.exception.InputNotNumberException;
+import baseball.exception.InputNotNumberOrZeroException;
 import baseball.exception.InputSameNumberException;
 import baseball.exception.InputWrongNumberOfDigitsException;
 import baseball.exception.InputWrongReGameNumberException;
@@ -55,7 +55,7 @@ public class Input {
 
     private void checkUserNumIsNumber(String inputNum) {
         if(!inputNum.matches(REGEX)) {
-            throw new InputNotNumberException();
+            throw new InputNotNumberOrZeroException();
         }
     }
 
