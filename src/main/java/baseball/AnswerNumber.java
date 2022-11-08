@@ -6,8 +6,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class AnswerNumber {
-    private List<String> answerNumber;
-    private List<String> saveAnswerNumber = new ArrayList<>();
+    private List<Integer> answerNumberList;
 
     public AnswerNumber(){
         answerNumber = new ArrayList<>();
@@ -18,9 +17,9 @@ public class AnswerNumber {
     }
 
     public void RandomNumber(){
-        HashSet<String> numbers = new HashSet<>();
-        while (numbers.size() < 4){
-            String num = String.valueOf(pickNumberInRange(1,9));
+        HashSet<Integer> numbers = new LinkedHashSet<>();
+        while (numbers.size() < 3){
+            int num = Randoms.pickNumberInRange(1,9);
             numbers.add(num);
             if(restartNumberValidator()){
                 numbers.clear();
