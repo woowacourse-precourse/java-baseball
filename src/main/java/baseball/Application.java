@@ -113,4 +113,14 @@ public class Application {
         }
         return ballCount-strikeCount;
     }
+
+    public static int getStrikeCount(String userNumber, String randomNumber){
+        int strikeCount = 0;
+        for(int i=0;i<3;i++){
+            if(userNumber.charAt(i)==randomNumber.charAt(i)){
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 }
