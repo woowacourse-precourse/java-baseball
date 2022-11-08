@@ -15,6 +15,7 @@ public class Application {
         while (restart) {
             List<Integer> computer = computerRandomnumber.NumberCreate();
             String result = "";
+            System.out.println("숫자 야구 게임을 시작합니다.");
             while (!result.equals("3스트라이크")) {
                 result = StrikeBallNothingResultGenerator.ResultJudgement(computer, InputUserNumber.playerNumber());
                 System.out.println(result);
