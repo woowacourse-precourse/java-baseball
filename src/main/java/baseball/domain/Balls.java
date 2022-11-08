@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.exception.NumberExceptionUtils;
+import baseball.exception.NumberValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +25,10 @@ public class Balls {
     }
 
     public static void validateBall(String number) {
-        NumberExceptionUtils.isDigit(number);
-        NumberExceptionUtils.isPositiveDigits(number);
-        NumberExceptionUtils.isThreeDigits(number);
-        NumberExceptionUtils.isNotDuplicateNumber(number);
+        NumberValidator.isDigit(number);
+        NumberValidator.isPositiveDigits(number);
+        NumberValidator.isThreeDigits(number);
+        NumberValidator.isNotDuplicateNumber(number);
     }
 
     public List<Integer> asList() {

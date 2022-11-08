@@ -2,32 +2,31 @@ package baseball.exception;
 
 import baseball.domain.GameStatus;
 
-
+import static baseball.common.Constant.DIGITS;
 import static baseball.exception.ExceptionMessage.*;
 
-public class NumberExceptionUtils {
-    private static final String DIGITS = "^[0-9]+$";
+public class NumberValidator {
 
-    public static void isNotDuplicateNumber(String num) {
-        if (num.chars().distinct().count() != 3) {
+    public static void isNotDuplicateNumber(String number) {
+        if (number.chars().distinct().count() != 3) {
             throw new IllegalArgumentException(DUPLICATE_DIGIT_EXCEPTION.message());
         }
     }
 
-    public static void isThreeDigits(String num) {
-        if (num.length() != 3) {
+    public static void isThreeDigits(String number) {
+        if (number.length() != 3) {
             throw new IllegalArgumentException(INVALID_DIGIT_EXCEPTION.message());
         }
     }
 
-    public static void isPositiveDigits(String num) {
-        if (Integer.parseInt(num) <= 0) {
+    public static void isPositiveDigits(String number) {
+        if (Integer.parseInt(number) <= 0) {
             throw new IllegalArgumentException(NEGATIVE_DIGIT_EXCEPTION.message());
         }
     }
 
-    public static void isDigit(String num) {
-        if (!num.matches(DIGITS)) {
+    public static void isDigit(String number) {
+        if (!number.matches(DIGITS)) {
             throw new IllegalArgumentException(INVALID_CHARACTER_EXCEPTION.message());
         }
     }

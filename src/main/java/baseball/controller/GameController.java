@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.*;
-import baseball.exception.NumberExceptionUtils;
+import baseball.exception.NumberValidator;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -53,7 +53,7 @@ public class GameController {
 
     private String getRestartResponse() {
         String command = Console.readLine();
-        NumberExceptionUtils.isValidCommandDigit(command);
+        NumberValidator.isValidCommandDigit(command);
         return command;
     }
 

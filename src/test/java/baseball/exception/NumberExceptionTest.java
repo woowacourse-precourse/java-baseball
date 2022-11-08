@@ -14,7 +14,7 @@ public class NumberExceptionTest {
     void 중복_숫자_예외_테스트() {
         String number = "323";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberExceptionUtils.isNotDuplicateNumber(number);
+            NumberValidator.isNotDuplicateNumber(number);
         });
         assertThat(exception.getMessage()).isEqualTo(DUPLICATE_DIGIT_EXCEPTION.message());
     }
@@ -24,7 +24,7 @@ public class NumberExceptionTest {
     void 글자수_예외_테스트() {
         String number = "12345";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberExceptionUtils.isThreeDigits(number);
+            NumberValidator.isThreeDigits(number);
         });
         assertThat(exception.getMessage()).isEqualTo(INVALID_DIGIT_EXCEPTION.message());
     }
@@ -35,7 +35,7 @@ public class NumberExceptionTest {
     void 음수_예외_테스트() {
         String number = "-123";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberExceptionUtils.isPositiveDigits(number);
+            NumberValidator.isPositiveDigits(number);
         });
         assertThat(exception.getMessage()).isEqualTo(NEGATIVE_DIGIT_EXCEPTION.message());
     }
@@ -45,7 +45,7 @@ public class NumberExceptionTest {
     void 특수문자_예외_테스트() {
         String number = "ㄱㄴㄷ@";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberExceptionUtils.isDigit(number);
+            NumberValidator.isDigit(number);
         });
         assertThat(exception.getMessage()).isEqualTo(INVALID_CHARACTER_EXCEPTION.message());
     }
@@ -55,7 +55,7 @@ public class NumberExceptionTest {
     void 명령어_예외_테스트() {
         String number = "3";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            NumberExceptionUtils.isValidCommandDigit(number);
+            NumberValidator.isValidCommandDigit(number);
         });
         assertThat(exception.getMessage()).isEqualTo(INVALID_COMMAND_DIGIT_EXCEPTION.message());
     }
