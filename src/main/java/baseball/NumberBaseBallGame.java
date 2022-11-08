@@ -19,8 +19,20 @@ public class NumberBaseBallGame {
         computer.selectBalls();
     }
 
-    private boolean isNothing(List<String> userSelectedBalls, List<String> computerSelectedBalls) {
-        return userSelectedBalls.stream()
-            .noneMatch(computerSelectedBalls::contains);
+    private boolean isNothing(List<String> userSelectBalls, List<String> computerSelectBalls) {
+        return userSelectBalls.stream()
+            .noneMatch(computerSelectBalls::contains);
+    }
+
+    private int getStrike(List<String> userSelectBalls, List<String> computerSelectBalls) {
+        int strike = 0;
+        for (int i = 0; i < 3; i++) {
+            String userSelectBall = userSelectBalls.get(i);
+            String computerSelectBall = computerSelectBalls.get(i);
+            if (userSelectBall.equals(computerSelectBall)) {
+                strike++;
+            }
+        }
+        return strike;
     }
 }
