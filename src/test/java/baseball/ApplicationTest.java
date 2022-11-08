@@ -15,18 +15,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    @Test
-    void 상대방_사용자_결과값_판단(){
-        selectNumber();
-
-        List<Integer> numbers1 = new ArrayList<>();
-        numbers1.add(3);
-        numbers1.add(5);
-        numbers1.add(2);
-        checkNumber(numbers1);
-
-        assertThat(outputResult().isEmpty()).isFalse();
-    }
 
     @Test
     void 상대방_숫자_개수_확인(){
