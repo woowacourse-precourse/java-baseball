@@ -47,7 +47,8 @@ public class Game {
         return userInput.equals("1");
     }
 
-    private static void checkOneDigitNumberCount(Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
+    private static void checkOneDigitNumberCount
+            (Integer number, Integer index, List<Integer> secretNumber, List<Integer> hitCount) {
         if (secretNumber.get(index.intValue()).equals(number)) {
             hitCount.set(0, hitCount.get(0)+1);
         } else if (secretNumber.contains(number)) {
@@ -56,7 +57,8 @@ public class Game {
     }
 
 
-    private static void checkTotalNumberCount(Integer totalNumber, List<Integer> secretNumber, List<Integer> hitCount) {
+    private static void checkTotalNumberCount
+            (Integer totalNumber, List<Integer> secretNumber, List<Integer> hitCount) {
         for (int i = 0; i < NUMBER_SIZE; i++) {
             Integer number = Integer.parseInt(String.valueOf(totalNumber.toString().charAt(i)));
             checkOneDigitNumberCount(number, i, secretNumber, hitCount);
@@ -133,7 +135,10 @@ public class Game {
     }
 
     private static boolean checkUserInputDuplicateNumber(String userInputNumber) {
-        int distinctCount = (int) Arrays.stream(userInputNumber.split("")).distinct().count();
+        int distinctCount = (int) Arrays
+                .stream(userInputNumber.split(""))
+                .distinct()
+                .count();
         return userInputNumber.length() == distinctCount;
     }
 
