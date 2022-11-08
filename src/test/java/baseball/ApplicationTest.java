@@ -46,6 +46,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void compueterNumbers_가_3자리로_구성() {
+        List<Integer> computerNumbers = ComputerUtil.getComputerNumbers();
+
+        assertThat(computerNumbers.size()).isEqualTo(3);
+    }
+
+    @Test
     void 정수가_아닌_입력_주어지면_예외발생() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("abc"))
