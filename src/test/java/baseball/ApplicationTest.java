@@ -1,20 +1,14 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static baseball.Application.generateAnswer;
-import static baseball.Application.getInputAsList;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -63,36 +57,6 @@ class ApplicationTest extends NsTest {
                 .distinct()
                 .count()
             ).isEqualTo(3);
-        }
-    }
-
-    @Nested
-    @DisplayName("유저 인풋 테스트")
-    class UserInputTest {
-
-        String input = "123";
-        List<Integer> result = Arrays.stream(input.split(""))
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
-
-        @BeforeEach
-        void beforeEach() {
-            InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-            System.setIn(inputStream);
-        }
-
-        @Test
-        @DisplayName("리스트 형식으로 변환")
-        void checkInputToList() {
-            assertThat(getInputAsList()).isEqualTo(result);
-        }
-
-        @Test
-        @DisplayName("중복된 값이 들어간 경우")
-        void checkDuplication() {
-            assertSimpleTest(() -> assertThatThrownBy(
-                () -> runException("111")
-            ).isInstanceOf(IllegalArgumentException.class));
         }
     }
 
