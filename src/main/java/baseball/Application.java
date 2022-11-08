@@ -46,4 +46,17 @@ public class Application {
 
         return computer;
     }
+
+    private static int[] match(List<Integer> computer, List<Integer> human){
+        int[] result = {0, 0, 0};
+
+        for (int i = 0; i < 3; i++){
+            if(computer.get(i) == human.get(i)) result[1]++;
+            else if(human.contains(computer.get(i))) result[0]++;
+        }
+
+        if(result[0] == 0 && result[1] == 0) result[2] = 1;
+
+        return result;
+    }
 }
