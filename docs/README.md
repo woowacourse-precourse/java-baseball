@@ -14,3 +14,9 @@
     - [x] 입력 값이 1개가 아니면 에러가 발생한다. - `IllegalArgumentException`
     - [x] 숫자가 아닌 값이 입력되면 에러가 발생한다. - `IllegalArgumentException`
     - [x] 입력 값이 범위(1~2)를 벗어나면 에러가 발생한다. - `IllegalArgumentException`
+
+## 리팩토링 목록
+- 원시값 포장: Number
+- 문자열 포장: 상수 사용
+- 일급 콜렉션 적용: Numbers
+- 메소드 책임 최소화
