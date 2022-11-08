@@ -13,6 +13,21 @@ public class BallNumbers {
         this.ballNumbers = ballNumbers;
     }
 
+    public BallStatus compareToBallNumber(BallNumber ballNumber) {
+        return this.ballNumbers.stream()
+                .map(b -> b.compareToBallNumber(ballNumber))
+                .filter(BallStatus::isNotNothing)
+                .findFirst()
+                .orElse(BallStatus.NOTHING);
+    }
+
+    public GameResult compareToBallNumbers(BallNumbers ballNumbers) {
+        GameResult gameResult = new GameResult();
+        ballNumbers.ballNumbers
+                .forEach(b -> gameResult.report(this.compareToBallNumber(b)));
+        return gameResult;
+    }
+
     private void duplicatedIndexExceptionCheck(List<BallNumber> ballNumbers) {
         int notDuplicatedIndexSize = getNotDuplicatedIndexSize(ballNumbers);
         if (notDuplicatedIndexSize != 3) {
