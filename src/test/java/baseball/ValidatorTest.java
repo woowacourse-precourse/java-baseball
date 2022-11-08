@@ -50,4 +50,18 @@ public class ValidatorTest {
         boolean result = validator.isValidString("a21");
         assertThat(result).isFalse();
     }
+
+    @Test
+    void 오답_문자입력(){
+        validator = new Validator();
+        boolean result = validator.isRightNumber("ab");
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void 오답_1과2외의숫자입력(){
+        validator = new Validator();
+        boolean result = validator.isRightNumber("3");
+        assertThat(result).isFalse();
+    }
 }

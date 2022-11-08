@@ -33,9 +33,21 @@ public class Validator {
     }
 
     public boolean isRightNumber(String input) {
-        int digit = Integer.parseInt(String.valueOf(input));
-        if (digit == 1 || digit == 2)
-            return true;
+        if(isExitNumInteger(input)){
+            int digit = Integer.parseInt(String.valueOf(input));
+            if (digit == 1 || digit == 2)
+                return true;
+        }
         return false;
+    }
+
+    public boolean isExitNumInteger(String input) {
+        char check;
+        for(int i = 0; i<input.length(); i++){
+            check = input.charAt(i);
+            if(check < 48 || check > 58)
+                return false;
+        }
+        return true;
     }
 }
