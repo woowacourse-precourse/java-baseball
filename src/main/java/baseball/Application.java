@@ -1,5 +1,6 @@
 package baseball;
 
+import domain.Game;
 import ui.ConsoleInput;
 import ui.ConsoleOutput;
 import ui.Input;
