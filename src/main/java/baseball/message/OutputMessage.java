@@ -12,16 +12,17 @@ public class OutputMessage {
     private static final String GAME_OUT = "아웃";
     private static final String GAME_NOTHING = "낫싱";
 
-    private void startMessage() {
+    public void startMessage() {
         System.out.println(START_MESSAGE);
     }
 
-    private void userInputMessage() {
+    public void userInputMessage() {
         System.out.println(USER_INPUT_MESSAGE);
     }
 
-    private void gameRestartMessage() {
+    public void gameRestartMessage() {
         System.out.println(GAME_RESTART_MESSAGE);
     }
 
+    public void setWinMessage() { System.out.println(WIN_MESSAGE); }
 }
