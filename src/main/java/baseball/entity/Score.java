@@ -12,4 +12,11 @@ public class Score {
         strike += strikeCnt;
     }
 
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }
