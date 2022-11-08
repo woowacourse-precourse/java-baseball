@@ -23,7 +23,7 @@ public class GameManager {
         BallStrikeResult result;
         do {
             GameNumber inputNumber = getAndProcessGameNumberInput();
-            result = oppositeNumber.compareTo(inputNumber);
+            result = inputNumber.countBallStrike(oppositeNumber);
             printBallStrikeResult(result);
         } while(!result.doesWin());
         printGameEndAlert();

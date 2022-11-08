@@ -80,7 +80,7 @@ public class GameNumber {
         return result.toString();
     }
 
-    public BallStrikeResult compareTo(GameNumber oth) {
+    public BallStrikeResult countBallStrike(GameNumber oth) {
         BallStrikeResult result = new BallStrikeResult();
         for(int i = 0; i < this.numberListByDigit.size(); i++) {
             countBallStrikeOnIdx(result, oth, i);

@@ -187,7 +187,7 @@ class ApplicationTest extends NsTest {
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 1);
 
-            assertThat(number1.compareTo(number2)).isEqualTo(result);
+            assertThat(number1.countBallStrike(number2)).isEqualTo(result);
         }
 
         @Test
@@ -198,7 +198,7 @@ class ApplicationTest extends NsTest {
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,1, 1);
 
-            assertThat(number1.compareTo(number2)).isEqualTo(result);
+            assertThat(number1.countBallStrike(number2)).isEqualTo(result);
         }
 
         @Test
@@ -209,7 +209,7 @@ class ApplicationTest extends NsTest {
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 0);
 
-            assertThat(number1.compareTo(number2)).isEqualTo(result);
+            assertThat(number1.countBallStrike(number2)).isEqualTo(result);
         }
 
         @Test
@@ -220,7 +220,7 @@ class ApplicationTest extends NsTest {
             BallStrikeResult result = new BallStrikeResult();
             addBallAndStrikeCount(result,0, 3);
 
-            assertThat(number1.compareTo(number2)).isEqualTo(result);
+            assertThat(number1.countBallStrike(number2)).isEqualTo(result);
         }
     }
 
