@@ -6,7 +6,7 @@ public class Game {
 
     Hitter hitter = new Hitter();
     Pitcher pitcher = new Pitcher();
-    Judge judge = new Judge();
+    Referee referee = new Referee();
 
     public void start() {
         boolean stopFlag = false;
@@ -22,10 +22,10 @@ public class Game {
         String input = Console.readLine();
         pitcher.setNumber(input);
 
-        int ball = judge.countBall(hitter.getNumber(), pitcher.getNumber());
-        int strike = judge.countStrike(hitter.getNumber(), pitcher.getNumber());
+        int ball = referee.countBall(hitter.getNumber(), pitcher.getNumber());
+        int strike = referee.countStrike(hitter.getNumber(), pitcher.getNumber());
 
-        if (ball == 0 && strike == 0) {
+        if (referee.isNothing(ball, strike)) {
             System.out.println("낫싱");
             return false;
         }
