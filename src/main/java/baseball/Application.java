@@ -9,11 +9,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
-        // scan user input
-        System.out.println("서로다른 세 숫자를 입력하세요");
-        String userRandNumber = Console.readLine();
-        System.out.println(userRandNumber);
+        GetUserNumber userInput = new GetUserNumber();
+        String userRandNumber = userInput.inputUserNumber();
 
         // make random number
         List<Integer> correct = new ArrayList<>();
