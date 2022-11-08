@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.Model.Computer.Answer;
+import baseball.Model.Player.BaseBallNumber;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;

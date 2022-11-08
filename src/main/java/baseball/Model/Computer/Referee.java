@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Model.Computer;
 
 import java.util.List;
 import java.util.stream.IntStream;
