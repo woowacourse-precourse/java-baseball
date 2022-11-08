@@ -2,7 +2,6 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +25,6 @@ public class Application {
             }
         }
 
-//        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("숫자를 입력해주세요 : ");
         String userInputNumber = Console.readLine();
         verifyUserNumber(userInputNumber);
@@ -49,9 +47,6 @@ public class Application {
     }
 
     public static void gameRestartOrOver(String options) throws IOException {
-//        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-//        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-//        String options = bf.readLine();
         if (options.equals("1")) {
             startGame();
         }
