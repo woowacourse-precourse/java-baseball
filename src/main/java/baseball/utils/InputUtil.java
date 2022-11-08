@@ -7,9 +7,6 @@ public class InputUtil {
     public static int[] getUserNumberInput() {
         int[] userNumber = new int[3];
         String input = Console.readLine();
-        /* 예외 처리
-
-         */
         String[] beforeArray = input.split("");
         for (int i = 0; i < 3; i++) {
             userNumber[i] = stringToInteger(beforeArray[i]);
@@ -23,5 +20,17 @@ public class InputUtil {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
+    }
+
+    private static boolean refreshOrExit() {
+        String input = Console.readLine();
+        int num = stringToInteger(input);
+        if (num == 1) {
+            return true;
+        }
+        if (num == 2) {
+            return false;
+        } else
+            throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 }
