@@ -35,4 +35,12 @@ public class Exception {
         }
         return true;
     }
+
+    public static void checkValidInputForBaseball(String input) {
+        if (isValidLength(input) && isValidRange(input) && !hasDuplicateValue(input)) {
+            return;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }

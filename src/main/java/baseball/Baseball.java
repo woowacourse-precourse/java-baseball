@@ -16,7 +16,8 @@ public class Baseball {
         while (true) {
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
-            // 입력 예외처리
+            Exception.checkValidInputForBaseball(input);
+
             List<Integer> compareResult = Computer.compareWithInput(input, computerValue);
             String compareResultString = Computer.resultToString(compareResult);
             System.out.println(compareResultString);
