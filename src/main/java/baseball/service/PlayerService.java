@@ -51,6 +51,7 @@ public class PlayerService {
 
     /**
      * 플레이어를 가져온다.
+     *
      * @return 플레이어
      */
     public Player getPlayer() {
@@ -65,11 +66,21 @@ public class PlayerService {
      */
     private List<Integer> getNumbersToList(String[] inputNumbers) {
         List<Integer> numbers = new ArrayList<>(Collections.emptyList());
+        addNumberToList(inputNumbers, numbers);
+        return numbers;
+    }
+
+    /**
+     * 플레이어가 입력한 숫자를 리스트에 추가한다.
+     *
+     * @param inputNumbers 입력한 플레이어의 숫자들
+     * @param numbers      저장된 플레이어의 숫자들
+     */
+    private void addNumberToList(String[] inputNumbers, List<Integer> numbers) {
         for (int i = 0; i < LIST_SIZE; i++) {
             String inputNumber = checkDigit(inputNumbers[i]);
             int addNumber = numberToInt(numbers, inputNumber);
             numbers.add(addNumber);
         }
-        return numbers;
     }
 }
