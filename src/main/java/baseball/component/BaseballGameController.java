@@ -32,7 +32,7 @@ public class BaseballGameController {
         baseballGameRule.setComputerNumbers(computerNumbers);
         do{
             playerNumbers = readPlayerNumbers();
-            playerScore = baseballGameRule.verifyPlayerScore(playerNumbers);
+            playerScore = baseballGameRule.generatePlayerScore(playerNumbers);
             printBallStrikeCountScore(playerScore);
 
         }while(!baseballGameRule.isWin(playerScore));

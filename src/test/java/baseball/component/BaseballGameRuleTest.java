@@ -18,7 +18,7 @@ class BaseballGameRuleTest {
         BaseballGameRule baseballGameRule = new BaseballGameRule();
         baseballGameRule.setComputerNumbers(computerNumbers);
 
-        List<Integer> result = baseballGameRule.verifyPlayerScore(playerNumbers);
+        List<Integer> result = baseballGameRule.generatePlayerScore(playerNumbers);
 
         assertThat(result).isEqualTo(List.of(0, 0));
     }
@@ -32,7 +32,7 @@ class BaseballGameRuleTest {
         BaseballGameRule baseballGameRule = new BaseballGameRule();
         baseballGameRule.setComputerNumbers(computerNumbers);
 
-        List<Integer> result = baseballGameRule.verifyPlayerScore(playerNumbers);
+        List<Integer> result = baseballGameRule.generatePlayerScore(playerNumbers);
 
         assertThat(result).isEqualTo(List.of(2, 1));
     }
@@ -46,7 +46,7 @@ class BaseballGameRuleTest {
         BaseballGameRule baseballGameRule = new BaseballGameRule();
         baseballGameRule.setComputerNumbers(computerNumbers);
 
-        List<Integer> result = baseballGameRule.verifyPlayerScore(playerNumbers);
+        List<Integer> result = baseballGameRule.generatePlayerScore(playerNumbers);
 
         assertThat(result).isEqualTo(List.of(0, 3));
     }

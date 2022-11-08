@@ -25,14 +25,14 @@ public class BaseballGameRule {
      * @return playerScore.get(0) : ball 수
      *         playerScore.get(1) : strike 수
      */
-    public List<Integer> verifyPlayerScore(List<Integer> playerNumbers){
-        int ballCount = verifyBalls(playerNumbers);
-        int strikeCount = verifyStrikes(playerNumbers);
+    public List<Integer> generatePlayerScore(List<Integer> playerNumbers){
+        int ballCount = countBalls(playerNumbers);
+        int strikeCount = countStrikes(playerNumbers);
         List<Integer> playerScore = List.of(ballCount, strikeCount);
         return playerScore;
     }
 
-    private int verifyBalls(List<Integer> playerNumbers) {
+    private int countBalls (List<Integer> playerNumbers) {
 
         int ballCount = 0;
         for(int index = 0; index<computerNumbers.size(); index++){
@@ -45,7 +45,7 @@ public class BaseballGameRule {
         return ballCount;
     }
 
-    private int verifyStrikes(List<Integer> playerNumbers) {
+    private int countStrikes(List<Integer> playerNumbers) {
 
         int strikeCount = 0;
         for(int index = 0; index<computerNumbers.size(); index++){
