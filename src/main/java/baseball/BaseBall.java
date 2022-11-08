@@ -49,7 +49,7 @@ public class BaseBall {
     }
     private void score(int strikePoint, int ballPoint) {
         String board;
-        if(strikePoint == range)    board="3스트라이크\n"+range+"개의 숫자를 모두 맞히셨습니다.!";
+        if(strikePoint == range)    board=range+"스트라이크\n"+range+"개의 숫자를 모두 맞히셨습니다.!";
         else if(ballPoint+strikePoint == 0)  board="낫싱";
         else if(strikePoint !=0 && ballPoint == 0)  board=strikePoint+"스트라이크";
         else if(ballPoint !=0 && strikePoint ==0)   board=ballPoint+"볼";
