@@ -10,6 +10,7 @@ import baseball.printer.ResultPrint;
 import java.util.List;
 
 public class Application {
+
     private static final PlayerNumberInput playerNumberInput = new PlayerNumberInput();
     private static final ComputerNumberGenerator computerNumberGenerator
         = new ComputerNumberGenerator();
@@ -33,11 +34,11 @@ public class Application {
     }
 
     /**
-     * 컴퓨터가 생성한 숫자가 무엇인지 알아 맞추는 단계<br>
-     * 스트라이크가 3개면 재시작할지 물어보는 단게로 넘어감
+     * 컴퓨터가 생성한 숫자가 무엇인지 알아 맞추는 단계<br> 스트라이크가 3개면 재시작할지 물어보는 단게로 넘어감
+     *
      * @param computer 컴퓨터가 생성한 정수 3개 리스트
      */
-    public static void startGuessingPhase(List<Integer> computer){
+    public static void startGuessingPhase(List<Integer> computer) {
         List<Integer> player;
         int strike = 0;
         int ball;
@@ -53,13 +54,14 @@ public class Application {
 
     /**
      * 게임을 재시작할지 물어보는 단계
+     *
      * @return true: 재시작, false: 프로그램 종료.
      */
     public static boolean startQuestioningPhase() {
         String restartString = playerNumberInput.inputRestartString();
 
         stringParser.checkExceptionsPlayerRestartString(restartString);
-        if(stringParser.checkPlayerRestartString(restartString)){
+        if (stringParser.checkPlayerRestartString(restartString)) {
             return true;
         }
         return false;

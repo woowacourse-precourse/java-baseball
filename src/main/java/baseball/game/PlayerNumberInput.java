@@ -9,13 +9,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class PlayerNumberInput {
 
-    public String inputPlayerString(){
+    public String inputPlayerString() {
         try {
             PrintData.printStringData("INPUT_STRING");
             String playerString = Console.readLine();
             return playerString;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("입력이 없습니다");
         }
     }
@@ -26,8 +25,7 @@ public class PlayerNumberInput {
             PrintData.printLine();
             String restartString = Console.readLine();
             return restartString;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("입력이 없습니다");
         }
     }

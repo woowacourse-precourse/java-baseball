@@ -11,18 +11,17 @@ public enum PrintData {
     INPUT_STRING("숫자를 입력해주세요 : "),
     ALL_STRIKES(GameData.GAME_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 종료"),
     RESTART("게임을 새로 시작하려면 " + GameData.RESTART + ", 종료하려면 "
-        + GameData.GAME_OVER + "를 입력하세요")
-    ;
+        + GameData.GAME_OVER + "를 입력하세요");
 
     private final String printResult;
 
-    PrintData(String result){
+    PrintData(String result) {
         this.printResult = result;
     }
 
-    public static final void printStringData(String label){
+    public static final void printStringData(String label) {
         String enumField;
-        for (PrintData printDataValue : PrintData.values()){
+        for (PrintData printDataValue : PrintData.values()) {
             enumField = printDataValue.toString();
             if (enumField.equals(label)) {
                 System.out.print(printDataValue.printResult);
@@ -30,11 +29,11 @@ public enum PrintData {
         }
     }
 
-    public static final void printLine(){
+    public static final void printLine() {
         System.out.println();
     }
 
-    public static final void printSpace(){
+    public static final void printSpace() {
         System.out.print(" ");
     }
 }

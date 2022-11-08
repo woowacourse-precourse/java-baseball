@@ -6,6 +6,7 @@ import baseball.data.PrintData;
  * 출력을 담당하는 클래스
  */
 public class ResultPrint {
+
     public static void printGuessResult(int strike, int ball) {
         if (strike == 0 && ball == 0) {
             PrintData.printStringData("NOTHING");

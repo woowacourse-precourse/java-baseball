@@ -7,27 +7,27 @@ import java.util.List;
  */
 public class NumberComparer {
 
-    public int checkStrike(List<Integer> player, List<Integer> computer){
+    public int checkStrike(List<Integer> player, List<Integer> computer) {
         int strike = 0;
         int computerNumber;
         int playerNumber;
 
-        for (int number = 0; number < player.size(); number ++ ){
+        for (int number = 0; number < player.size(); number++) {
             computerNumber = computer.get(number);
             playerNumber = player.get(number);
-            if(computerNumber == playerNumber){ // 자리 위치까지 일치하는지 체크
+            if (computerNumber == playerNumber) { // 자리 위치까지 일치하는지 체크
                 strike++;
             }
         }
         return strike;
     }
 
-    public int checkBall(List<Integer> player, List<Integer> computer){
+    public int checkBall(List<Integer> player, List<Integer> computer) {
         int strike = checkStrike(player, computer);
         int ball = 0;
 
-        for (Integer number : player){
-            if (computer.contains(number)){
+        for (Integer number : player) {
+            if (computer.contains(number)) {
                 ball++;
             }
         }
