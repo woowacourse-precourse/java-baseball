@@ -16,9 +16,7 @@ public class ForLoopTest {
     @Test
     @DisplayName("For Loop 시간이 For-Each Loop 에 걸리는 시간보다 큰가")
     void is_time_taken_to_for_loop_is_bigger_than_forEach_loop() {
-        List<Integer> list = IntStream.range(0, 1000)
-                .boxed()
-                .collect(Collectors.toList());
+        List<Integer> list = IntStream.range(0, 1000).boxed().collect(Collectors.toList());
 
         long forEachTimeTaken = measureTimeOf(() -> {
             for (Integer integer : list) {
@@ -32,11 +30,16 @@ public class ForLoopTest {
             }
         });
 
-        System.out.printf("For Loop 시간 = %d ns = %f ms\n", forLoopTimeTaken, (double)forLoopTimeTaken / TEN_POWER_SIX);
-        System.out.printf("For-Each Loop 시간 = %d ns = %f ms\n", forEachTimeTaken, (double)forEachTimeTaken / TEN_POWER_SIX);
-        System.out.printf("차이 = %f ms\n", (double)Math.abs(forEachTimeTaken - forLoopTimeTaken) / TEN_POWER_SIX);
+        printDifference(forEachTimeTaken, forLoopTimeTaken);
 
         assertThat(forEachTimeTaken).isGreaterThanOrEqualTo(forLoopTimeTaken);
+    }
+
+    private void printDifference(long forEachTimeTaken, long forLoopTimeTaken) {
+        System.out.printf("For Loop 시간 = %d ns = %f ms\n", forLoopTimeTaken, (double)forLoopTimeTaken / TEN_POWER_SIX);
+        System.out.printf("For-Each Loop 시간 = %d ns = %f ms\n", forEachTimeTaken,
+                (double)forEachTimeTaken / TEN_POWER_SIX);
+        System.out.printf("차이 = %f ms\n", (double)Math.abs(forEachTimeTaken - forLoopTimeTaken) / TEN_POWER_SIX);
     }
 
     private long measureTimeOf(Runnable runnable) {
