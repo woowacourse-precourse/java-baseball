@@ -31,4 +31,7 @@ public class Game {
             ballCount+=COUNT;
         }
     }
+    public boolean isFinished(){
+        return strikeCount!=ANSWER;
+    }
 }
