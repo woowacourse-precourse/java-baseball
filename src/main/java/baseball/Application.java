@@ -18,6 +18,7 @@ public class Application {
         private int[] ballUsageArr;
 
         private boolean[] isStrike;
+        private int numBall;
 
         public BaseBall() {
             goalArr = new int[NUM_DIGIT];
@@ -51,6 +52,12 @@ public class Application {
             checkStrike();
             checkBall();
             printPlayStatus();
+        }
+
+        private void checkBall() {
+            numBall = 0;
+
+
         }
 
         private void checkStrike() {
@@ -157,7 +164,11 @@ public class Application {
         }
 
         private int makeNumber() {
-            return Randoms.pickNumberInRange(1, 9);
+            int number = Randoms.pickNumberInRange(1, 9);
+            while (this.goalUsageArr[number] != 0) {
+                number = Randoms.pickNumberInRange(1, 9);
+            }
+            return number;
         }
 
     }
