@@ -12,15 +12,14 @@ public class BaseballGameController implements GameController {
     private int conut = 0;
     private RandNumVO randnumVO;
     private Comparator comparator;
-    private List<Integer> input;
-    private List<Integer> sig;
+    private List<Integer> input;    // 입력
+    private List<Integer> sig;      // 입력에 대한 스트라이크, 볼 정보
     private Inputer inputer;
     private boolean flag;
 
     public BaseballGameController(RandNumVO randnumVO, Comparator comparator) {
         this.randnumVO = randnumVO;
         this.comparator = comparator;
-        this.sig = new ArrayList<Integer>(List.of(0,0,0));
         this.inputer = new Inputer();
         this.flag = true;
     }
@@ -29,7 +28,9 @@ public class BaseballGameController implements GameController {
     public void doGame() {
         try{
             while(flag){
-
+                input = inputer.getInput();
+                sig = comparator.doIntCompare(randnumVO.getRandNum(), input);
+                validateGame();
             }
         } catch(IllegalArgumentException e){
             e.printStackTrace();
@@ -48,10 +49,21 @@ public class BaseballGameController implements GameController {
         }
     }
 
-    private void checkGameOver() {
-        if(input.get(1) == 3) {
+    private void validateGame() {
+        String result = "";
+        if(sig.get(1) == 3) {
             flag = false;
         }
+        if(sig.get(0) > 0) {
+            result += sig.get(0)+"볼 ";
+        }
+        if(sig.get(1) > 0){
+            result += sig.get(1)+"스트라이크 ";
+        }
+        if(sig.get(2) == 1){
+            result = "낫싱";
+        }
+        System.out.println(result);
     }
 
 
