@@ -5,15 +5,15 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
 
-    private static int HundredsExtract(int NumberToUse){
+    public static int HundredsExtract(int NumberToUse){
         return NumberToUse/100;
     }
 
-    private static int TensExtract(int NumberToUse){
+    public static int TensExtract(int NumberToUse){
         return (NumberToUse/10)%10;
     }
 
-    private static int UnitsExtract(int NumberToUse){
+    public static int UnitsExtract(int NumberToUse){
         return NumberToUse%10;
     }
 
@@ -42,37 +42,28 @@ public class Application {
         return TemporaryNumber;
     }
 
-    private static int StrikeCount(int CorrectAnswer,int UserDefinedNumber){
+    public static int StrikeCount(int[] CorrectAnswer_array,int[] UserDefinedNumber_array){
         int result = 0;
 
-        if(HundredsExtract(CorrectAnswer)==HundredsExtract(UserDefinedNumber)) result++;
-        if(TensExtract(CorrectAnswer)==TensExtract(UserDefinedNumber)) result++;
-        if(UnitsExtract(CorrectAnswer)==UnitsExtract(UserDefinedNumber)) result++;
+        if(CorrectAnswer_array[0]==UserDefinedNumber_array[0]) result++;
+        if(CorrectAnswer_array[1]==UserDefinedNumber_array[1]) result++;
+        if(CorrectAnswer_array[2]==UserDefinedNumber_array[2]) result++;
 
         return result;
     }
 
-    private static int BallCount(int CorrectAnswer,int UserDefinedNumber){
-        int CorrectHundreds,CorrectTens,CorrectUnits = 0;
-        int UserHundreds,UserTens,UserUnits = 0;
+    public static int BallCount(int[] CorrectAnswer_array,int[] UserDefinedNumber_array){
         int result = 0;
 
-        CorrectHundreds = HundredsExtract(CorrectAnswer);
-        CorrectTens = TensExtract(CorrectAnswer);
-        CorrectUnits = UnitsExtract(CorrectAnswer);
 
-        UserHundreds = HundredsExtract(UserDefinedNumber);
-        UserTens = TensExtract(UserDefinedNumber);
-        UserUnits = UnitsExtract(UserDefinedNumber);
-
-        if(CorrectHundreds==UserTens||CorrectHundreds==UserUnits) result++;
-        if(CorrectTens==UserHundreds||CorrectTens==UserUnits) result++;
-        if(CorrectUnits==UserHundreds||CorrectUnits==UserTens) result++;
+        if(CorrectAnswer_array[0]==UserDefinedNumber_array[1]||CorrectAnswer_array[0]==UserDefinedNumber_array[2]) result++;
+        if(CorrectAnswer_array[1]==UserDefinedNumber_array[0]||CorrectAnswer_array[1]==UserDefinedNumber_array[2]) result++;
+        if(CorrectAnswer_array[2]==UserDefinedNumber_array[0]||CorrectAnswer_array[2]==UserDefinedNumber_array[1]) result++;
 
         return result;
     }
 
-    private static void OutputResult(int Strike,int Ball){
+    public static void OutputResult(int Strike,int Ball){
         if(Strike==0&&Ball==0){
             System.out.println("낫싱");
         }
@@ -87,15 +78,25 @@ public class Application {
         }
     }
 
-    private static void GameStart(){
+    public static void GameStart(){
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    private static boolean GameResult(int CorrectAnswer, int UserDefinedNumber){
+    public static boolean GameResult(int CorrectAnswer, int UserDefinedNumber){
         int Strike, Ball = 0;
+        int[] CorrectAnswer_array = new int[3];
+        int [] UserDefinedNumber_array = new int[3];
 
-        Strike = StrikeCount(CorrectAnswer,UserDefinedNumber);
-        Ball = BallCount(CorrectAnswer,UserDefinedNumber);
+        CorrectAnswer_array[0] = HundredsExtract(CorrectAnswer);
+        CorrectAnswer_array[1] = TensExtract(CorrectAnswer);
+        CorrectAnswer_array[2] = UnitsExtract(CorrectAnswer);
+
+        UserDefinedNumber_array[0] = HundredsExtract(UserDefinedNumber);
+        UserDefinedNumber_array[1] = TensExtract(UserDefinedNumber);
+        UserDefinedNumber_array[2] = UnitsExtract(UserDefinedNumber);
+
+        Strike = StrikeCount(CorrectAnswer_array,UserDefinedNumber_array);
+        Ball = BallCount(CorrectAnswer_array,UserDefinedNumber_array);
 
         OutputResult(Strike,Ball);
 
@@ -106,14 +107,14 @@ public class Application {
             return false;
         }
     }
-    private static int EnterANumber(){
+    public static int EnterANumber() throws IllegalArgumentException{
         int InputNumber;
         do{
             InputNumber = Integer.parseInt(readLine());
         } while(InputNumber<100||InputNumber>999);
         return InputNumber;
     }
-    private static void GameLoop(){
+    public static void GameLoop(){
         int CorrectAnswer = AllocationOfNumber();
         int UserDefinedNumber = 0;
 
@@ -124,7 +125,7 @@ public class Application {
         } while(!GameResult(CorrectAnswer,UserDefinedNumber));
     }
 
-    private static boolean GameRestart() {
+    public static boolean GameRestart() {
         int UserIntention = 0;
 
         System.out.println("3스트라이크");
@@ -139,11 +140,12 @@ public class Application {
         else return false;
     }
 
-    private static void GameOver(){
+    public static void GameOver(){
         System.out.println("게임 종료");
     }
-    private static void GameMain(){
-        int CorrectAnswer = AllocationOfNumber();
+
+    public static void main(String[] args) {
+        // TODO: 프로그램 구현
 
         GameStart();
         do{
@@ -152,9 +154,5 @@ public class Application {
 
         GameOver();
 
-    }
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        GameMain();
     }
 }
