@@ -43,7 +43,7 @@ class Computer {
 class Player {
     private List<Integer> number;
 
-    public void inputNumber() {
+    public void inputNumber() throws IllegalArgumentException {
         showInputStatement();
         List<Integer> numberList = new ArrayList<>();
         int num;
@@ -90,7 +90,7 @@ class Operator {
         restart = true;
     }
 
-    public void playGame() {
+    public void playGame() throws IllegalArgumentException {
         showStartStatement();
         computer.setNumber();
         while (!correctAnswer) {
@@ -147,7 +147,7 @@ class Operator {
         return true;
     }
 
-    public void inputWhetherToRestart() {
+    public void inputWhetherToRestart() throws IllegalArgumentException {
         String inputString = Console.readLine();
         if (inputString.equals("1")) {
             restart = true;
