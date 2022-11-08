@@ -6,27 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 숫자 야구 게임 관리
-public class NumberBaseballGameServer {
+public class Server {
 
     private static final int GAME_NUMBER_RANGE_MAX = 9;
     private static final int GAME_NUMBER_RANGE_MIN = 1;
     private static final int COUNT_GAME_NUMBER = 3;
 
     public void run() {
-        NumberBaseballGameClient.showGameStartMessage();
+        Client.showGameStartMessage();
         while (true) {
             List<Integer> gameNumberList = makeNewGameNumber();
+            System.out.println(gameNumberList);
             boolean isNotGameOver = true;
             while (isNotGameOver) {
-                int playerGameNumber = NumberBaseballGameClient.askPlayerGameNumber();
+                int playerGameNumber = Client.askPlayerGameNumber();
 
-                NumberBaseballGameJudgedResultDto judgedResultDto
+                JudgedResultDto dto
                     = judgeInputNumber(playerGameNumber, gameNumberList);
-                NumberBaseballGameClient.showJudgedResult(judgedResultDto);
-                isNotGameOver = judgedResultDto.countStrikes != 3;
+                Client.showJudgedResult(dto);
+                isNotGameOver = dto.countStrikes != 3;
             }
-            NumberBaseballGameClient.showGameEndMessage();
-            if (!NumberBaseballGameClient.askMoreGame()) {
+            Client.showGameEndMessage();
+            if (!Client.askMoreGame()) {
                 return;
             }
         }
@@ -44,7 +45,7 @@ public class NumberBaseballGameServer {
         return gameNumberList;
     }
 
-    public NumberBaseballGameJudgedResultDto judgeInputNumber(int inputNumber,
+    public JudgedResultDto judgeInputNumber(int inputNumber,
         List<Integer> gameNumberList) {
         int countBalls = 0, countStrikes = 0;
 
@@ -63,7 +64,7 @@ public class NumberBaseballGameServer {
             ++countBalls;
         }
 
-        NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+        JudgedResultDto judgedResultDto = new JudgedResultDto();
         judgedResultDto.countBalls = countBalls;
         judgedResultDto.countStrikes = countStrikes;
         return judgedResultDto;

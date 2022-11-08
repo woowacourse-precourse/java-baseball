@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("출력 메시지 및 입력 관리 기능 테스트")
-class NumberBaseballGameClientTest {
+class ClientTest {
 
     private PrintStream standardOut;
     private OutputStream captor;
@@ -47,7 +47,7 @@ class NumberBaseballGameClientTest {
 
     @Test
     void 게임_시작_메시지는_출력스트림에_정상_저장된다() {
-        NumberBaseballGameClient.showGameStartMessage();
+        Client.showGameStartMessage();
         assertThat(output()).isEqualTo("숫자 야구 게임을 시작합니다.");
     }
 
@@ -59,7 +59,7 @@ class NumberBaseballGameClientTest {
         void 정상_입력은_에러를_던지지_않고_정상작동한다() {
             input("321");
             int expected = 321;
-            int actual = NumberBaseballGameClient.askPlayerGameNumber();
+            int actual = Client.askPlayerGameNumber();
             assertThat(output()).isEqualTo("숫자를 입력해주세요 : ");
             assertThat(actual).isEqualTo(expected);
         }
@@ -68,7 +68,7 @@ class NumberBaseballGameClientTest {
         void 입력이_문자라면_IllegalArgumentException이_발생한다() {
             input("간다스");
             assertThatThrownBy(
-                NumberBaseballGameClient::askPlayerGameNumber
+                Client::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -76,7 +76,7 @@ class NumberBaseballGameClientTest {
         void 입력이_4글자_이상이면_IllegalArgumentException이_발생한다() {
             input("4321");
             assertThatThrownBy(
-                NumberBaseballGameClient::askPlayerGameNumber
+                Client::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -84,7 +84,7 @@ class NumberBaseballGameClientTest {
         void 입력이_0글자_이하라면_IllegalArgumentException이_발생한다() {
             input("");
             assertThatThrownBy(
-                NumberBaseballGameClient::askPlayerGameNumber
+                Client::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -92,7 +92,7 @@ class NumberBaseballGameClientTest {
         void 입력에_중복된_숫자가_있다면_IllegalArgumentException이_발생한다() {
             input("424");
             assertThatThrownBy(
-                NumberBaseballGameClient::askPlayerGameNumber
+                Client::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -100,7 +100,7 @@ class NumberBaseballGameClientTest {
         void 공백문자만_입력되면_IllegalArgumentException이_발생한다() {
             input(" ");
             assertThatThrownBy(
-                NumberBaseballGameClient::askPlayerGameNumber
+                Client::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -108,7 +108,7 @@ class NumberBaseballGameClientTest {
         void 숫자와_공백이_같이_입력되면_IllegalArgumentException이_발생한다() {
             input("123 ");
             assertThatThrownBy(
-                NumberBaseballGameClient::askPlayerGameNumber
+                Client::askPlayerGameNumber
             ).isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -119,55 +119,55 @@ class NumberBaseballGameClientTest {
 
         @Test
         void 결과가_3스트라이크로_주어지면_그대로_정상출력한다() {
-            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            JudgedResultDto judgedResultDto = new JudgedResultDto();
             judgedResultDto.countBalls = 0;
             judgedResultDto.countStrikes = 3;
 
-            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+            Client.showJudgedResult(judgedResultDto);
 
             assertThat(output()).isEqualTo("3스트라이크");
         }
 
         @Test
         void 결과가_2스트라이크로_주어지면_그대로_정상출력한다() {
-            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            JudgedResultDto judgedResultDto = new JudgedResultDto();
             judgedResultDto.countBalls = 0;
             judgedResultDto.countStrikes = 2;
 
-            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+            Client.showJudgedResult(judgedResultDto);
 
             assertThat(output()).isEqualTo("2스트라이크");
         }
 
         @Test
         void 결과가_2볼_1스트라이크로_주어지면_그대로_정상출력한다() {
-            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            JudgedResultDto judgedResultDto = new JudgedResultDto();
             judgedResultDto.countBalls = 2;
             judgedResultDto.countStrikes = 1;
 
-            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+            Client.showJudgedResult(judgedResultDto);
 
             assertThat(output()).isEqualTo("2볼 1스트라이크");
         }
 
         @Test
         void 결과가_3볼로_주어지면_그대로_정상출력한다() {
-            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            JudgedResultDto judgedResultDto = new JudgedResultDto();
             judgedResultDto.countBalls = 3;
             judgedResultDto.countStrikes = 0;
 
-            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+            Client.showJudgedResult(judgedResultDto);
 
             assertThat(output()).isEqualTo("3볼");
         }
 
         @Test
         void 결과가_낫싱으로_주어지면_그대로_정상출력한다() {
-            NumberBaseballGameJudgedResultDto judgedResultDto = new NumberBaseballGameJudgedResultDto();
+            JudgedResultDto judgedResultDto = new JudgedResultDto();
             judgedResultDto.countBalls = 0;
             judgedResultDto.countStrikes = 0;
 
-            NumberBaseballGameClient.showJudgedResult(judgedResultDto);
+            Client.showJudgedResult(judgedResultDto);
 
             assertThat(output()).isEqualTo("낫싱");
         }
@@ -175,7 +175,7 @@ class NumberBaseballGameClientTest {
 
     @Test
     void 게임_종료_메시지는_출력스트림에_정상_저장된다() {
-        NumberBaseballGameClient.showGameEndMessage();
+        Client.showGameEndMessage();
         assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
@@ -187,7 +187,7 @@ class NumberBaseballGameClientTest {
         void 한_게임_더_할지_묻는_메시지가_정상출력되고_한_게임_더_한다() {
             input("1");
             boolean expected = true;
-            boolean actual = NumberBaseballGameClient.askMoreGame();
+            boolean actual = Client.askMoreGame();
             assertThat(actual).isEqualTo(expected);
             assertThat(output()).isEqualTo("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         }
@@ -196,7 +196,7 @@ class NumberBaseballGameClientTest {
         void 게임을_더이상_하지_않는다() {
             input("2");
             boolean expected = false;
-            boolean actual = NumberBaseballGameClient.askMoreGame();
+            boolean actual = Client.askMoreGame();
             assertThat(actual).isEqualTo(expected);
         }
 
@@ -204,7 +204,7 @@ class NumberBaseballGameClientTest {
         void 문자가_입력되어_IllegalArgumentException으로_처리한다() {
             input("문자");
             assertThatThrownBy(
-                NumberBaseballGameClient::askMoreGame
+                Client::askMoreGame
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -212,7 +212,7 @@ class NumberBaseballGameClientTest {
         void 숫자1이나_2말고_다른_숫자가_입력되어_IllegalArgumentException으로_처리한다() {
             input("5");
             assertThatThrownBy(
-                NumberBaseballGameClient::askMoreGame
+                Client::askMoreGame
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -220,7 +220,7 @@ class NumberBaseballGameClientTest {
         void 입력으로_받아온_값이_없는_경우에는_IllegalArgumentException으로_처리한다() {
             input("");
             assertThatThrownBy(
-                NumberBaseballGameClient::askMoreGame
+                Client::askMoreGame
             ).isInstanceOf(IllegalArgumentException.class);
         }
     }

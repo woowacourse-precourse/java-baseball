@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("숫자야구게임 관리")
-class NumberBaseballGameServerTest {
+class ServerTest {
 
     @Nested
     @DisplayName("숫자야구게임의 흐름과 순서 관리 기능")
@@ -71,7 +71,7 @@ class NumberBaseballGameServerTest {
 
         @Override
         protected void runMain() {
-            new NumberBaseballGameServer().run();
+            new Server().run();
         }
     }
 
@@ -81,7 +81,7 @@ class NumberBaseballGameServerTest {
 
         @Test
         void 게임숫자는_3자리의_숫자입니다() {
-            List<Integer> gameNumberList = new NumberBaseballGameServer().makeNewGameNumber();
+            List<Integer> gameNumberList = new Server().makeNewGameNumber();
             int expectedGameNumberList = 3;
             int actualGameNumberList = gameNumberList.size();
             assertThat(actualGameNumberList).isEqualTo(expectedGameNumberList);
@@ -89,7 +89,7 @@ class NumberBaseballGameServerTest {
 
         @Test
         void 게임숫자는_서로_다른_숫자로_구성되어_있습니다() {
-            List<Integer> gameNumberList = new NumberBaseballGameServer().makeNewGameNumber();
+            List<Integer> gameNumberList = new Server().makeNewGameNumber();
             boolean expectedIsDuplicated = false;
             boolean actualIsDuplicated = false;
 
@@ -111,8 +111,8 @@ class NumberBaseballGameServerTest {
             int playerInputNumber = 234;
             int expectCountStrikes = 2, expectCountBalls = 0;
 
-            NumberBaseballGameJudgedResultDto actualJudgedResultDto =
-                new NumberBaseballGameServer()
+            JudgedResultDto actualJudgedResultDto =
+                new Server()
                     .judgeInputNumber(playerInputNumber, gameNumberList);
 
             boolean expectedResult = true;
@@ -131,8 +131,8 @@ class NumberBaseballGameServerTest {
             int playerInputNumber = 479;
             int expectCountStrikes = 3, expectCountBalls = 0;
 
-            NumberBaseballGameJudgedResultDto actualJudgedResultDto =
-                new NumberBaseballGameServer()
+            JudgedResultDto actualJudgedResultDto =
+                new Server()
                     .judgeInputNumber(playerInputNumber, gameNumberList);
 
             boolean expectedResult = true;
@@ -151,8 +151,8 @@ class NumberBaseballGameServerTest {
             int playerInputNumber = 186;
             int expectCountStrikes = 0, expectCountBalls = 0;
 
-            NumberBaseballGameJudgedResultDto actualJudgedResultDto =
-                new NumberBaseballGameServer()
+            JudgedResultDto actualJudgedResultDto =
+                new Server()
                     .judgeInputNumber(playerInputNumber, gameNumberList);
 
             boolean expectedResult = true;
@@ -171,8 +171,8 @@ class NumberBaseballGameServerTest {
             int playerInputNumber = 392;
             int expectCountStrikes = 0, expectCountBalls = 3;
 
-            NumberBaseballGameJudgedResultDto actualJudgedResultDto =
-                new NumberBaseballGameServer()
+            JudgedResultDto actualJudgedResultDto =
+                new Server()
                     .judgeInputNumber(playerInputNumber, gameNumberList);
 
             boolean expectedResult = true;
@@ -191,8 +191,8 @@ class NumberBaseballGameServerTest {
             int playerInputNumber = 329;
             int expectCountStrikes = 1, expectCountBalls = 2;
 
-            NumberBaseballGameJudgedResultDto actualJudgedResultDto =
-                new NumberBaseballGameServer()
+            JudgedResultDto actualJudgedResultDto =
+                new Server()
                     .judgeInputNumber(playerInputNumber, gameNumberList);
 
             boolean expectedResult = true;

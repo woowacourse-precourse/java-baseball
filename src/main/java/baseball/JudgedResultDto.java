@@ -1,6 +1,6 @@
 package baseball;
 
-public class NumberBaseballGameJudgedResultDto {
+public class JudgedResultDto {
 
     public int countBalls;
     public int countStrikes;

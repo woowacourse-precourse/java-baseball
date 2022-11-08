@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
 
 // 출력 메시지 및 입력 관리
-public class NumberBaseballGameClient {
+public class Client {
 
     public static final String MSG_GAME_START = "숫자 야구 게임을 시작합니다.";
     public static final String MSG_ASK_PLAYER_GAME_NUMBER = "숫자를 입력해주세요 : ";
@@ -17,7 +17,7 @@ public class NumberBaseballGameClient {
     public static final String ANSWER_ONE_MORE_GAME = "1";
     public static final String ANSWER_NO_MORE_GAME = "2";
 
-    private NumberBaseballGameClient() {
+    private Client() {
     }
 
     public static void showGameStartMessage() {
@@ -54,7 +54,7 @@ public class NumberBaseballGameClient {
         return playerGameNumber;
     }
 
-    public static void showJudgedResult(NumberBaseballGameJudgedResultDto judgedResultDto) {
+    public static void showJudgedResult(JudgedResultDto judgedResultDto) {
         int countStrikes = judgedResultDto.countStrikes;
         int countBalls = judgedResultDto.countBalls;
 
@@ -66,7 +66,6 @@ public class NumberBaseballGameClient {
         String resultMessage = "";
         if (countBalls != 0) {
             resultMessage += countBalls + MSG_JUDGED_RESULT_BALLS + " ";
-
         }
         if (countStrikes != 0) {
             resultMessage += countStrikes + MSG_JUDGED_RESULT_STRIKES;
