@@ -7,29 +7,29 @@ class Game{
     public int game_clear=0;
     int strike_num=0;
     int ball_num=0;
-    int[] arr;
+    int[] target_check;
 //    public static int game_restart_flag;
     public Game(){
         this.strike_num=0;
         this.ball_num=0;
         this.game_clear=0;
         System.out.println("숫자 야구 게임을 시작합니다.");
-        arr=new int[10];
+        target_check=new int[10];
         int num1=camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(1, 9);
-        arr[num1]=1;
+        target_check[num1]=1;
         int num2=0;
         int num3=0;
         while(true){
             num2=camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
-            if(arr[num2]!=1){
-                arr[num2]=1;
+            if(target_check[num2]!=1){
+                target_check[num2]=1;
                 break;
             }
         }
         while(true){
             num3=camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
-            if(arr[num3]!=1){
-                arr[num3]=1;
+            if(target_check[num3]!=1){
+                target_check[num3]=1;
                 break;
             }
         }
@@ -64,7 +64,7 @@ class Game{
             }
         }
         for(int i=0;i<10;++i){
-            if(ball_check[i]==arr[i]){
+            if(ball_check[i]==target_check[i]){
                 ball_num+=isBall(ball_check[i]);
             }
         }
