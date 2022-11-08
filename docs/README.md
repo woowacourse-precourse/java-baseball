@@ -31,5 +31,12 @@
 ### 숫자 야구 게임 반복 기능
 - [x] 게임 새로 시작할 지 반복 기능
 
+
+### 테스트 기능 구현
+
+- [ ] controller 클래스의 메서드 테스트 
+> - [ ] BaseballGame 클래스 메서드 테스트
+> - [ ] BaseballGameBoard 클래스 메서드 테스트
+
 </div>
 </details>
