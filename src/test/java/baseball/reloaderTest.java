@@ -1,4 +1,4 @@
-package baseball.reloaderTest.java;
+package baseball;
 
 import baseball.config.AppConfig;
 import camp.nextstep.edu.missionutils.test.NsTest;
