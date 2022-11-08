@@ -44,6 +44,8 @@ public class GameManager {
 
             String hint = ResultEvaluator.getHint(this.computerNumber, playerNumber);
             System.out.println(hint);
+
+            processGameFlowAccordingToHint(hint);
         }
     }
 
