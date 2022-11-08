@@ -6,13 +6,9 @@ public class Application {
 
         game.start();
 
-        try {
+        while (game.again) {
             game.play();
-        } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 값이 입력되어 애플리케이션을 종료합니다.");
-            return;
         }
-
 
     }
 }

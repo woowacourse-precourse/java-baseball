@@ -17,10 +17,13 @@ public class Game {
         System.out.println("숫자 야구 게임을 시작합니다.");
     }
 
-    public void play() throws IllegalArgumentException {
-        while (this.again) {
-            System.out.println("숫자를 입력해주세요 : ");
+    public void play() {
+        System.out.print("숫자를 입력해주세요 : ");
+        try {
             playerInput();
+        } catch (IllegalArgumentException e) {
+            this.again = false;
+            throw new IllegalArgumentException();
         }
     }
 
