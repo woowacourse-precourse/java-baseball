@@ -24,7 +24,6 @@ public class Player extends InputOutput {
             if (!balls.contains(randomNumber))
                 balls.add(randomNumber);
         }
-        System.out.println(balls);
     }
 
     public List<Integer> getStrikes(Player pitcher){
