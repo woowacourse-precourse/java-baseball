@@ -5,7 +5,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.NoSuchElementException;
 
+import static baseball.constants.Message.*;
+
 public class Reader {
+
 	public static String getUserBaseBallNumber() {
 		String userBaseballNumber = getUserInput();
 
@@ -26,7 +29,7 @@ public class Reader {
 		try {
 			return Console.readLine();
 		} catch (NoSuchElementException e) {
-			throw new IllegalArgumentException("[Error] 아무것도 아닌 입력은 입력이 될 수 없습니다.");
+			throw new IllegalArgumentException(ERROR_NOTHING_CANT_BE_INPUT);
 		}
 	}
 }

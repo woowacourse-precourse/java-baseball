@@ -8,11 +8,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+import static baseball.constants.Constant.*;
+
 public class Computer {
-	private static final int MIN_RANDOM_NUMBER = 1;
-	private static final int MAX_RANDOM_NUMBER = 9;
-	private static final int MAX_ANSWER_COUNT = 3;
-	private static final int MIN_START_SEQ = 0;
 
 	private List<Integer> answerBaseballNumberList = new ArrayList<>();
 	private List<Integer> playerBaseballNumberList = new ArrayList<>();
@@ -42,7 +40,6 @@ public class Computer {
 		}
 
 		return new ArrayList<>(randomNumbers);
-//		return Randoms.pickUniqueNumbersInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER, MAX_ANSWER_COUNT);
 	}
 
 	public boolean isAnswer(Player player) {
