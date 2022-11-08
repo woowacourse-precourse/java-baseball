@@ -25,4 +25,8 @@ public class Game {
 
         return count;
     }
+
+    public static boolean nothing(int strikeCounter, int ballCounter){
+        return strikeCounter == 0 && ballCounter == 0;
+    }
 }
