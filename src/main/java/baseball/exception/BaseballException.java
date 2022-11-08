@@ -10,7 +10,9 @@ public class BaseballException {
     }
 
     public static void vaildShutDownInput(int num){
-        if (num!= Game.getNewGameCode() && num!=Game.getShutDownCode()) {
+        if (num==Game.getNewGameCode() || num==Game.getShutDownCode()) {
+
+        } else {
             throw new IllegalArgumentException("잘못된 입력입니다.");
         }
     }
