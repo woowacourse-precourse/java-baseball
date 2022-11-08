@@ -12,7 +12,7 @@ public class Simulation {
         List<Integer> randomNumList = createNumber();
         while (true){
             List<Integer> inputNumList = inputNumber();
-//            checkStrikeBallOut();
+            List<Integer> tmpResult = checkStrikeBall(randomNumList, inputNumList);
 //            returnMiddleResult();
             break;
         }
@@ -56,7 +56,21 @@ public class Simulation {
         if (firstNum==secondNum || secondNum==thirdNum || thirdNum==firstNum){
             throw new IllegalArgumentException();
         }
+    }
 
+    public List<Integer> checkStrikeBall(List<Integer> randomNumList , List<Integer> inputNumList ) {
+        int strike = 0;
+        int ball = 0;
+        for (int i = 0; i<3; i++){
+            if (randomNumList.get(i)==inputNumList.get(i)){
+                strike++;
+            }
+            else if (randomNumList.contains( inputNumList.get(i) )){
+                ball++;
+            }
+        }
+        List<Integer> tmpResult = new ArrayList<>(List.of(strike,ball));
+        return tmpResult;
     }
 
 
