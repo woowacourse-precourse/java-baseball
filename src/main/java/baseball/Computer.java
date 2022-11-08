@@ -28,7 +28,6 @@ public class Computer {
 
     public void numberCompare() {
         createRandomNumber();
-        System.out.println(computerNumbers);
         User user = new User();
         List<Integer> userNumbers = user.createUserNumber();
         compareResult = new String[3];
