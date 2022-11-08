@@ -4,10 +4,15 @@ import static baseball.domain.BaseballNumber.BASEBALL_NUMBER_UPPER_BOUND;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+@DisplayName("BaseballNumber 클래스")
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BaseballNumberTest {
 
     @ParameterizedTest

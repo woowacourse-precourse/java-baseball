@@ -15,11 +15,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@DisplayName("BaseballNumbers 클래스")
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BaseballNumbersTest {
 
     private static BaseballNumbers generateBaseballNumbers(int ballA, int ballB, int ballC) {
@@ -44,7 +49,7 @@ class BaseballNumbersTest {
     }
 
     @ParameterizedTest(name = "컴퓨터가 [9, 3, 1]일 때 {0}이 입력된 경우 결과는 {1}")
-    @MethodSource("baseball.domain.BaseballNumbersTest#baseballGameNumbersAndGameResult")
+    @MethodSource("baseballGameNumbersAndGameResult")
     void play_메서드는_사용자의_값이_입력된_경우_컴퓨터와의_게임_결과를_리턴한다(BaseballNumbers player, BaseballGameResult expectGameResult) {
         final BaseballNumbers computer = generateBaseballNumbers(9, 3, 1);
         BaseballGameResult gameResult = computer.play(player);

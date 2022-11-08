@@ -10,8 +10,13 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("InputView 클래스")
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class InputViewTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     private final InputView sut = InputView.INSTANCE;

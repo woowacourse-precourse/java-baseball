@@ -7,11 +7,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("BaseballGameMachine 클래스")
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class BaseballGameMachineTest {
     private BaseballGameMachine sut;
-    BaseballNumbers computer;
+    private BaseballNumbers computer;
 
     private BaseballNumbers generateBaseballNumbers(int ballA, int ballB, int ballC) {
         return new BaseballNumbers(List.of(
