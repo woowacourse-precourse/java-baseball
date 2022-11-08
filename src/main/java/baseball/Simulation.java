@@ -8,6 +8,8 @@ import java.util.List;
 public class Simulation {
     static final String START_MSG = "숫자 야구 게임을 시작합니다.";
     static final String INPUT_REQ = "숫자를 입력해주세요 : ";
+    static final String END_MSG = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
     public void simulate(){
         List<Integer> randomNumList = createNumber();
         while (true){
@@ -16,11 +18,13 @@ public class Simulation {
             String result = getResult(strikeBallList);
             System.out.println(result);
             if (strikeBallList.get(0) == 3){
+                System.out.println(END_MSG);
                 break;
             }
         }
-//        reSimulate()
+        reSimulate();
     }
+
 
     public List<Integer> createNumber() {
         List<Integer> numberList = new ArrayList<>();
@@ -84,14 +88,21 @@ public class Simulation {
         if (strike == 0) {
             if (ball != 0) {
                 strResult = ball + "볼";
-            } else {
+            }
+        } else {
                 if (ball != 0) {
-                    strResult = strike + "스트라이크 " + ball + "볼";
+                    strResult = ball + "볼 " + strike + "스트라이크" ;
                 } else {
                     strResult = strike + "스트라이크";
                 }
-            }
         }
         return strResult;
+    }
+
+    public void reSimulate(){
+        String inputCheck = Console.readLine();
+        if (inputCheck.equals("1")) {
+            simulate();
+        }
     }
 }
