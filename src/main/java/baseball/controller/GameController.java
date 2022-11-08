@@ -34,7 +34,7 @@ public class GameController {
         do {
             GameNumber inputNumber = getAndProcessGameNumberInput();
             result = inputNumber.countBallStrike(oppositeNumber);
-            outputView.printBallStrikeResult(result);
+            outputView.println(result.toString());
         } while(!result.doesWin());
         outputView.printGameEndAlert();
     }
