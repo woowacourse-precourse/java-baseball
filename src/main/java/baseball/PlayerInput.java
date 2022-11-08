@@ -16,9 +16,7 @@ public class PlayerInput {
         List<Integer> playerNumber = new ArrayList<>();
         System.out.print(INPUT_MESSAGE);
         String playerInputs = Console.readLine();
-        if(!Pattern.matches(NUMBER_PATTERN, playerInputs)) {
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE + Game.TERMINATE_MESSAGE);
-        }
+        validatePlayerNumber(playerInputs);
         for (String playerInput : playerInputs.split("")) {
             playerNumber.add(Integer.parseInt(playerInput));
         }
@@ -31,5 +29,17 @@ public class PlayerInput {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE + Game.TERMINATE_MESSAGE);
         }
         return gameProgress;
+    }
+
+    private static void validatePlayerNumber(String playerInputs) {
+        if(!Pattern.matches(NUMBER_PATTERN, playerInputs)) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE + Game.TERMINATE_MESSAGE);
+        }
+
+        for (int i = 0; i < playerInputs.length(); i ++) {
+            if(playerInputs.indexOf(playerInputs.charAt(i)) == i) {
+                throw new IllegalArgumentException(EXCEPTION_MESSAGE);
+            }
+        }
     }
 }
