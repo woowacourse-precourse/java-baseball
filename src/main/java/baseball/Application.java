@@ -33,5 +33,16 @@ public class Application {
                 countStrike ++;
             }
         }
+
+        //count BALL
+        int ballStrike = 0;
+        for(int i=0; i<correct.size(); i++) {
+            int eachUserNumber = userRandNumber.charAt(i) - '0';
+            if (eachUserNumber == correct.get(i)) {
+                ballStrike = ballStrike;
+            } else if (correct.contains(eachUserNumber)) {
+                ballStrike ++;
+            }
+        }
     }
 }
