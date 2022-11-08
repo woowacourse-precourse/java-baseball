@@ -24,8 +24,6 @@ public class Computer {
       Number randomNumber = new Number();
       this.computer.add(randomNumber.getNumber());
     }
-
-    System.out.println(computer);
   }
 
   private Integer getSetSize(){

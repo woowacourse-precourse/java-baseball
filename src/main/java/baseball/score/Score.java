@@ -10,6 +10,8 @@ public class Score {
   public void compareTwoNumber(List<Integer> computer, List<Integer> user) {
     setStrikeCount(computer, user);
     setBallCount(computer, user);
+    System.out.println("computer :" + computer);
+    System.out.println("user : " + user);
   }
 
   private void setStrikeCount(List<Integer> computer, List<Integer> user) {
