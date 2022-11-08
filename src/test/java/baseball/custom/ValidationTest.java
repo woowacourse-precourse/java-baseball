@@ -4,9 +4,9 @@ import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class ValidationTest extends NsTest {
 
@@ -15,6 +15,7 @@ class ValidationTest extends NsTest {
 		assertSimpleTest(() ->
 				assertThatThrownBy(() -> runException("자바서버개발자이성호"))
 						.isInstanceOf(IllegalArgumentException.class)
+						.hasMessageContaining("number value")
 		);
 	}
 
@@ -23,6 +24,7 @@ class ValidationTest extends NsTest {
 		assertSimpleTest(() ->
 				assertThatThrownBy(() -> runException("JavaServerDeveloper"))
 						.isInstanceOf(IllegalArgumentException.class)
+						.hasMessageContaining("number value")
 		);
 	}
 
@@ -31,6 +33,7 @@ class ValidationTest extends NsTest {
 		assertSimpleTest(() ->
 				assertThatThrownBy(() -> runException("777"))
 						.isInstanceOf(IllegalArgumentException.class)
+						.hasMessageContaining("number value")
 		);
 	}
 
@@ -39,9 +42,39 @@ class ValidationTest extends NsTest {
 		assertSimpleTest(() ->
 				assertThatThrownBy(() -> runException("1279"))
 						.isInstanceOf(IllegalArgumentException.class)
+						.hasMessageContaining("number value")
 		);
 	}
 
+	@Test
+	void 만약_재도전_조건이_1또는2외의_숫자가_나온경우(){
+		try{
+		assertRandomNumberInRangeTest(
+				() -> {
+					run("246", "135", "3");
+				},
+				1, 3, 5, 5, 8, 9
+		);
+		}catch (IllegalArgumentException e){
+			assertThat(e.getMessage()).contains("condition");
+		}
+
+	}
+
+	@Test
+	void 만약_재도전_조건이_숫자가_아닌_경우(){
+		try{
+			assertRandomNumberInRangeTest(
+					() -> {
+						run("246", "135", "retry");
+					},
+					1, 3, 5, 5, 8, 9
+			);
+		}catch (IllegalArgumentException e){
+			assertThat(e.getMessage()).contains("condition");
+		}
+
+	}
 
 
 	@Override
