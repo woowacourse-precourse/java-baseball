@@ -3,7 +3,6 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.sql.Array;
 import java.util.*;
 
 public class Application {
@@ -14,6 +13,7 @@ public class Application {
             playGame();
             reGame = getReGame();
         } while (reGame == 1);
+        System.out.println("게임 종료");
     }
 
     public static List<Integer> getRandomNumberList() {
