@@ -1,7 +1,7 @@
 package baseball.service;
 
-import baseball.ballnumber.InputBallNumber;
-import baseball.ballnumber.RandomBallNumber;
+import baseball.number.InputNumber;
+import baseball.number.RandomNumber;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,14 +17,14 @@ class GameServiceTest {
 
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
     GameService gameService;
-    InputBallNumber inputBallNumber;
-    RandomBallNumber randomBallNumber;
+    InputNumber inputNumber;
+    RandomNumber randomNumber;
 
     @BeforeEach
     void before() {
-        inputBallNumber = new InputBallNumber();
-        randomBallNumber = new RandomBallNumber();
-        gameService = new GameService(inputBallNumber, randomBallNumber);
+        inputNumber = new InputNumber();
+        randomNumber = new RandomNumber();
+        gameService = new GameService(inputNumber, randomNumber);
         System.setOut(new PrintStream(output));
     }
 
@@ -36,9 +36,11 @@ class GameServiceTest {
 
     @Test
     void 숫자_클리어_테스트() {
-        randomBallNumber.createRandomNumber();
+        randomNumber.createRandomNumber();
+        assertThat(randomNumber.getRandomNumbers().size()).isSameAs(3);
+
         gameService.clearRandomBallNumber();
-        assertThat(randomBallNumber.getRandomNumbers().size()).isSameAs(0);
+        assertThat(randomNumber.getRandomNumbers().size()).isSameAs(0);
     }
 
     @Test
