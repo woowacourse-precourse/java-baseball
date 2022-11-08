@@ -40,4 +40,18 @@ public class Game {
     private void updateScore(){
         computer.countBallAndStrike(player.getPlayerNumbers(), score);
     }
+
+    private void printResult(){
+        if(score.getBall()==0 && score.getStrike()==0) {
+            System.out.println(Message.NOTHING);
+            return;
+        }
+        if(score.getStrike()==3) {
+            System.out.println(score.getStrike()+Message.STRIKE);
+            GAME_STATE = STOP;
+            return;
+        }
+        String resultMessage = score.getBall() + Message.BALL + " " + score.getStrike() + Message.STRIKE;
+        System.out.println(resultMessage);
+    }
 }
