@@ -9,13 +9,13 @@ public class Baseball {
 
     public void play() {
         BaseballNumber computerNumbers = BaseballNumber.getComputerPickedNumbers();
-        boolean is_all_strike;
+        boolean isAllStrike;
         do {
             BaseballNumber userNumber = BaseballInput.getUserNumber();
             BaseballScore roundScore = baseballResult.getBaseballScore(computerNumbers, userNumber);
             System.out.println(roundScore.toString());
-            is_all_strike = roundScore.is_all_strike();
-        } while (!is_all_strike);
+            isAllStrike = roundScore.isAllStirke();
+        } while (!isAllStrike);
     }
 
 

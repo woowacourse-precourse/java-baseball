@@ -27,13 +27,13 @@ public class BaseballScore {
 
     @Override
     public String toString() {
-        if (is_nothing()) {
+        if (isNothing()) {
             return NOTHING_MESSAGE;
         }
 
         List<String> stringList = new ArrayList<>();
 
-        if (get_balls() != NONE) {
+        if (getBalls() != NONE) {
             stringList.add(Integer.toString(balls) + BALL_STRING);
         }
 
@@ -44,26 +44,26 @@ public class BaseballScore {
             stringList.add(Integer.toString(strikes) + STRIKE_STRING);
         }
 
-        if (is_all_strike()) {
+        if (isAllStirke()) {
             stringList.add(System.lineSeparator() + ALL_STRIKE_MESSAGE);
         }
 
         return String.join("", stringList);
     }
 
-    public boolean is_nothing() {
+    public boolean isNothing() {
         return this.strikes == NONE && this.balls == NONE;
     }
 
-    public boolean is_all_strike() {
+    public boolean isAllStirke() {
         return strikes == ALL_STRIKE;
     }
 
-    public int get_strikes() {
+    public int getStrikes() {
         return this.strikes;
     }
 
-    public int get_balls() {
+    public int getBalls() {
         return this.balls;
     }
 
