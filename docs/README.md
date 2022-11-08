@@ -7,7 +7,8 @@
 ### 2. 숫자 입력
     - String getNumber() :
         camp.nextstep.edu.missionutils.Console 라이브러리의
-            Readline 함수로 유저에게 세자리 숫자를 입력 받음
+            Readline 함수로 유저에게 세자리 숫자를 입력 받음,
+        사용자가 잘못된 값을 입력할 경우 IllegalArgumentException 발
 ### 3. 숫자 비교
     - List<Integer> compareNumber(String input, List<Integer> computer) :
         사용자가 입력한 숫자와 makeRandomNumber()로 생성한 숫자를 비교하고
@@ -23,3 +24,5 @@
     - void gameStart() :
         게임 시작 함수로 위의 기능 함수를 모두 담으며 메인 함수에서 실행되며
             quit 함수가 true를 반환하면 종료
+### 7. 게임 재시작 또는 종료
+    - 유저가 컴퓨터의 숫자를 맞추면 게임을 종료여부 묻는 기능 메인 함수에 구현
