@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.*;
 
 public class InputView {
@@ -8,17 +10,15 @@ public class InputView {
     private static final int NUMBER_LENGTH = 3;
 
     public static List<Integer> getUserInput() {
-        Scanner scanner = new Scanner(System.in);
         System.out.printf(INPUT_NUMBER_MESSAGE);
-        String userInput = scanner.nextLine();
+        String userInput = Console.readLine();
         userInputValidationCheck(userInput);
         return stringToList(userInput);
     }
 
     public static String restartGame() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(SELECT_RESTART_MESSAGE);
-        String userInput = scanner.nextLine();
+        String userInput = Console.readLine();
         userInputRestartValidationCheck(userInput);
         return userInput;
     }
