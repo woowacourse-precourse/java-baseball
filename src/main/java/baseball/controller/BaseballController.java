@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.io.option.ReGameOption;
 import baseball.io.Input;
 import baseball.io.Output;
 import baseball.message.OutPutMessage;
@@ -36,8 +37,9 @@ public class BaseballController {
 
     private boolean decideReGameOrEndGame() {
         output.printMessageWithEnter(OutPutMessage.ASK_TRY_AGAIN);
-        boolean result = input.inputReGameOrEndGame();
-        return result;
+        String result = input.inputReGameNumber();
+        ReGameOption reGameOption = ReGameOption.checkValidateOption(result);
+        return ReGameOption.reGameOrEndGame(reGameOption);
     }
 
     private boolean isNotGameClear() {

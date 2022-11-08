@@ -3,7 +3,6 @@ package baseball.io;
 import baseball.exception.InputNotNumberOrZeroException;
 import baseball.exception.InputSameNumberException;
 import baseball.exception.InputWrongNumberOfDigitsException;
-import baseball.exception.InputWrongReGameNumberException;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -28,10 +27,9 @@ public class Input {
         return inputNumList;
     }
 
-    public boolean inputReGameOrEndGame() {
+    public String inputReGameNumber() {
         String number = inputNumber();
-        checkValidationOfReGameNum(number);
-        return isReGameOrEndGame(number);
+        return number;
     }
 
     private String inputNumber() {
@@ -81,19 +79,4 @@ public class Input {
         }
         return inputNumList;
     }
-
-    private void checkValidationOfReGameNum(String number) {
-        if(number.equals(RE_GAME) || number.equals(END_GAME)) {
-            return;
-        }
-        throw new InputWrongReGameNumberException();
-    }
-
-    private boolean isReGameOrEndGame(String number) {
-        if(number.equals(RE_GAME)) {
-            return true;
-        }
-        return false;
-    }
-
 }
