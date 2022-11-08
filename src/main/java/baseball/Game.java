@@ -67,7 +67,7 @@ public class Game {
         this.finished = true;
     }
 
-    private boolean isFinished() {
+    public boolean isFinished() {
         return finished;
     }
 

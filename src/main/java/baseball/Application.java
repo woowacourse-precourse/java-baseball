@@ -5,8 +5,11 @@ public class Application {
         Game game;
         do {
             game = new Game();
-            game.play();
 
+            while(!game.isFinished()) {
+                game.play();
+            }
+            
             if(game.end()) { game = null; };
 
         } while(game != null);
