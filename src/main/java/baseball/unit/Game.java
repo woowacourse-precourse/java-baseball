@@ -4,6 +4,7 @@ import baseball.setting.Setting;
 import baseball.ui.OutputText;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -18,12 +19,9 @@ public class Game {
 
 
     public boolean playAndIsNotStrike(){
-        int countStrike = 0;
-        int countBall = 0;
-
         List<Integer> counts = calculate(inputGuessNumber());
-        countStrike = counts.get(0);
-        countBall = counts.get(1);
+        int countStrike = counts.get(0);
+        int countBall = counts.get(1);
 
         return isNotStrike(countStrike, countBall);
     }
@@ -66,7 +64,6 @@ public class Game {
     }
 
     private List<Integer> calculate(List<Integer> inputNumber){
-        List<Integer> res = new ArrayList<>();
         int countStrike = 0;
         int countBall = 0;
 
@@ -75,16 +72,14 @@ public class Game {
             int iNum = inputNumber.get(i);
 
             if(cNum == iNum){
-                countStrike++;
+                countStrike += 1;
             }
             else if(computerNumber.contains(iNum)){
-                countBall++;
+                countBall += 1;
             }
         }
-        res.add(countStrike);
-        res.add(countBall);
 
-        return res;
+        return Arrays.asList(countStrike, countBall);
     }
 
     private boolean isNotStrike(int countStrike, int countBall){
