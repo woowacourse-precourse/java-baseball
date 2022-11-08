@@ -17,6 +17,13 @@ public class BaseballGame {
         return restartNumber;
     }
 
+    public static void exceptionZeroNumber(String Input) {
+        for (int i = 0; i < Input.length(); i++) {
+            if (Input.charAt(i) == '0') {
+                throw new IllegalArgumentException(Message.ERROR_MSG);
+            }
+        }
+    }
 
     public static void exceptionThreeNumber(String Input) {
         if (Input.length() != GAME_INPUT_LENGTH) {
