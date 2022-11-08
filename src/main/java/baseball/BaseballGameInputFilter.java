@@ -1,11 +1,11 @@
 package baseball;
 
 import java.util.List;
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
+
 
 public class BaseballGameInputFilter {
 
-    private final Scanner scanner = new Scanner(System.in);
 
     private int numberLength = 3;
 
@@ -30,7 +30,7 @@ public class BaseballGameInputFilter {
     public String readNumbers(){
         System.out.print("숫자를 입력해주세요 : ");
 
-        String input = scanner.nextLine();
+        String input = Console.readLine();
 
         if (!this.isValidLength(input)) {
             throw new IllegalArgumentException();
@@ -47,8 +47,8 @@ public class BaseballGameInputFilter {
 
     public boolean readReparticipation() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String flag = Console.readLine();
 
-        String flag = scanner.nextLine();
 
         if (flag == "1") return true;
         else if (flag == "2") return false;
