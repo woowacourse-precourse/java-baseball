@@ -11,9 +11,9 @@ public class TrialValidator {
     private static final String NUMBER_REGEXP = "^[1-9]+$";
 
     public static void validate(String input) {
+        validateBlank(input);
         isNumberBetweenOneToNine(input);
         validateNumberLength(input);
-        validateDuplicateNumber(input);
         validateDuplicateNumber(input);
     }
 
@@ -38,5 +38,15 @@ public class TrialValidator {
 
     private static boolean hasDuplicatedDigit(List<String> characterList) {
         return characterList.size() != characterList.stream().distinct().count();
+    }
+
+    private static void validateBlank(final String input){
+        if (isBlank(input)){
+            throw new IllegalArgumentException("null 이나 빈값이 들어올 수 없습니다.");
+        }
+    }
+
+    private static boolean isBlank(String input) {
+        return Objects.isNull(input) || input.isEmpty();
     }
 }

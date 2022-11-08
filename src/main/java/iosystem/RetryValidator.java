@@ -1,5 +1,7 @@
 package iosystem;
 
+import java.util.Objects;
+
 public class RetryValidator {
 
     private RetryValidator(){
@@ -7,8 +9,9 @@ public class RetryValidator {
     }
     private static final String NUMBER_REGEXP = "^[1-2]";
 
-    public static void validate(String userInput) {
-        isNumberBetweenOneToNine(userInput);
+    public static void validate(String input) {
+        validateBlank(input);
+        isNumberBetweenOneToNine(input);
     }
 
     public static void isNumberBetweenOneToNine(String input) {
@@ -17,4 +20,13 @@ public class RetryValidator {
         }
     }
 
+    private static void validateBlank(final String input){
+        if (isBlank(input)){
+            throw new IllegalArgumentException("null 이나 빈값이 들어올 수 없습니다.");
+        }
+    }
+
+    private static boolean isBlank(String input) {
+        return Objects.isNull(input) || input.isEmpty();
+    }
 }

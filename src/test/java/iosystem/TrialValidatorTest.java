@@ -75,6 +75,10 @@ class TrialValidatorTest {
     @DisplayName("예외 처리: null 입력")
     @NullAndEmptySource
     void inputNullNumberTest(String input) {
-        //todo
+        // when
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> RetryValidator.validate(input));
+
+        // then
+        assertEquals("null 이나 빈값이 들어올 수 없습니다.", exception.getMessage());
     }
 }
