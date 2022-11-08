@@ -19,7 +19,7 @@ public class Judge {
 
     public void compareComputerAndPlayer(List<Ball> playerBalls) {
         result.initBallAndStrike();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < playerBalls.size(); i++) {
             computerBalls.contains(playerBalls.get(i));
             calculateStrikeAndBall(computerBalls, playerBalls, i);
         }
