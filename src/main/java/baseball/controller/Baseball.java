@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.State;
+import baseball.constant.State;
 import baseball.model.Computer;
 import baseball.model.Hint;
 import baseball.model.Player;

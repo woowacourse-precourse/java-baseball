@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 import baseball.validator.InputValidator;
 

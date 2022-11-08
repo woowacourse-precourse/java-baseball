@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constant.Message;
 import baseball.validator.InputValidator;
 import org.junit.jupiter.api.Test;
 

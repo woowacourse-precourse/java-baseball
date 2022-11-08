@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.Config;
+import baseball.constant.Config;
 
 public class OutputView {
     public static final String START = "숫자 야구 게임을 시작합니다.";

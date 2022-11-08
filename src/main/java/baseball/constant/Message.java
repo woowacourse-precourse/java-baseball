@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public class Message {
     public static final String TYPE_EXCEPTION = "숫자를 입력해주세요.";

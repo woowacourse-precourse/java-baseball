@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.State;
+import baseball.constant.State;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {

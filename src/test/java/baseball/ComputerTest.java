@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.constant.Config;
 import baseball.model.Computer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

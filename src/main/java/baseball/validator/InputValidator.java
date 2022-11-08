@@ -1,8 +1,8 @@
 package baseball.validator;
 
-import baseball.Config;
-import baseball.Message;
-import baseball.State;
+import baseball.constant.Config;
+import baseball.constant.Message;
+import baseball.constant.State;
 
 import java.util.Arrays;
 import java.util.HashSet;

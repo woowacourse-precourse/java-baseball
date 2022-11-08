@@ -1,4 +1,4 @@
-package baseball;
+package baseball.constant;
 
 public class Config {
     public static final int DIGIT_SIZE = 3;
