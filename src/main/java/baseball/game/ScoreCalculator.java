@@ -8,6 +8,7 @@ import static baseball.config.GameConstants.BASEBALL_NUMBER_LENGTH;
  * 순수하게 점수를 계산하는 책임만을 가지고 있는 클래스이다
  */
 final class ScoreCalculator {
+    private static final int ZERO = 0;
     private final Digits player;
     private final Digits computer;
 
@@ -34,8 +35,8 @@ final class ScoreCalculator {
      */
 
     public Ball getBall() {
-        return Ball.from(IntStream.range(0, BASEBALL_NUMBER_LENGTH)
-                .reduce(0, this::updateTotalBallCount));
+        return Ball.from(IntStream.range(ZERO, BASEBALL_NUMBER_LENGTH)
+                .reduce(ZERO, this::updateTotalBallCount));
     }
 
     private int updateTotalBallCount(int totalBall, int index) {
@@ -53,8 +54,8 @@ final class ScoreCalculator {
     }
 
     public Strike getStrike() {
-        return Strike.from(IntStream.range(0, BASEBALL_NUMBER_LENGTH)
-                .reduce(0, this::updateTotalStrikeCount));
+        return Strike.from(IntStream.range(ZERO, BASEBALL_NUMBER_LENGTH)
+                .reduce(ZERO, this::updateTotalStrikeCount));
     }
 
     private int updateTotalStrikeCount(int totalStrike, int index) {

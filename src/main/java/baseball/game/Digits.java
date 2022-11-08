@@ -9,6 +9,7 @@ import static baseball.config.GameConstants.DIGITS_OUT_OF_INDEX;
  * Digit의 배열을 감싼 일급 컬렉션입니다
  */
 class Digits {
+    private static final int START_INDEX = 0;
     private final List<Digit> digitList;
 
     Digits() {
@@ -68,7 +69,7 @@ class Digits {
      * @param digit 가장 왼쪽에 추가될 정수 객체
      */
     public void appendToLeft(Digit digit) {
-        digitList.add(0, digit);
+        digitList.add(START_INDEX, digit);
     }
 
     /**

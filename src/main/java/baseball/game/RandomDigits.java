@@ -1,6 +1,9 @@
 package baseball.game;
 
 import static baseball.config.GameConstants.BASEBALL_NUMBER_LENGTH;
+import static baseball.config.GameConstants.DIGIT_END;
+import static baseball.config.GameConstants.DIGIT_START;
+import static baseball.config.GameConstants.HUNDRED_START;
 
 /**
  * 컴퓨터에 의해서 랜덤하게 만들어진 숫자를 가지고 있는 클래스
@@ -24,7 +27,7 @@ final class RandomDigits extends Digits {
 
     private void generateRandom() {
         //100의 자리에서는 0이 올 수 없기에 미리 1부터 9까지 추가해둠
-        append(random.pickRandomInRange(1, 9));
+        append(random.pickRandomInRange(HUNDRED_START, DIGIT_END));
         while (isSmallerThanLimit()) {
             tryToAppend();
         }
@@ -36,7 +39,7 @@ final class RandomDigits extends Digits {
 
     private void tryToAppend() {
         //10,1의 자리에서는 0이 올 수 있기에 0부터 9까지 뽑음
-        Digit randomNumber = random.pickRandomInRange(0, 9);
+        Digit randomNumber = random.pickRandomInRange(DIGIT_START, DIGIT_END);
         if (!contains((randomNumber))) {
             append(randomNumber);
         }
