@@ -39,7 +39,7 @@ public class InputNumbers {
         if (!isValidDigit(numbers)) {
             throw new IllegalArgumentException(INVALID_INPUT_VALUE);
         }
-        if (!duplicateNumber(numbers)) {
+        if (!isDuplicateNumber(numbers)) {
             throw new IllegalArgumentException(DUPLICATE_INPUT_VALUE);
         }
         return true;
@@ -60,7 +60,7 @@ public class InputNumbers {
         return true;
     }
 
-    private static boolean duplicateNumber(String numbers) {
+    private static boolean isDuplicateNumber(String numbers) {
         for (int idx = INITIAL_NUMBER; idx < numbers.length(); idx++) {
             if (numberCount(numbers, numbers.charAt(idx)) != NOT_DUPLICATE_NUMBER) {
                 return false;
