@@ -19,6 +19,7 @@ class ApplicationTest extends NsTest {
                 1, 3, 5, 5, 8, 9
         );
     void 랜덤숫자_길이확인(){
+    void 랜덤숫자_길이확인() {
         Util util = new Util();
         assertThat(util.createAnswerString().length()).isEqualTo(3);
     }
@@ -38,7 +39,10 @@ class ApplicationTest extends NsTest {
     @Test
     void 볼갯수확인() {
         Computer computer = new Computer("123");
+        assertThat(computer.countBall("452")).isEqualTo(1);
         assertThat(computer.countBall("412")).isEqualTo(2);
+        assertThat(computer.countBall("312")).isEqualTo(3);
+    }
     }
 
     @Override
