@@ -44,7 +44,7 @@ public class Game {
 		if(ball == 0 && strike == 0) {
 			System.out.println(Message.NOTHING_MESSAGE);
 		} else {
-			System.out.println(ballResult + " " + strikeResult);
+			System.out.println((ballResult + " " + strikeResult).stripLeading());
 		}
 	}
 
