@@ -5,8 +5,8 @@
 ## FLOW CHART
 ![flowchart](https://user-images.githubusercontent.com/92911823/199688763-8738bed9-18c4-4557-93e5-31ce57c84d22.jpg)
 1. 게임 시작
-    1. 게임보드 생성
-    2. 랜덤넘버로 BaseballNumbers 생성 ->camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 이용
+    1. 게임보드 생성 o (BaseballGame.startGame())
+    2. 랜덤넘버로 BaseballNumbers 생성 ->camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange() 이용 o (GameBoard.createRandomNumbers())
 2. 입력 ->camp.nextstep.edu.missionutils.Console의 readLine() 이용
     1. 유효성 검사 성공 o (BaseballNumbers.createBaseballNumbers(readline))
         1. 숫자인 경우 (true)
