@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static baseball.Utill.SetToList;
+
 public class Computer {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 9;
@@ -23,10 +25,6 @@ public class Computer {
             targetSet.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
         }
         this.targetNumList = SetToList(targetSet);
-    }
-
-    public List<Integer> SetToList(Set<Integer> target) {
-        return new ArrayList<>(target);
     }
 
     public List<Integer> getTargetNumber() {
