@@ -25,13 +25,17 @@ public class Game {
         Computer computer = new Computer();
         int gameRound = 0;
         while (gameRound != 1) {
-            View.getInputMessage();
-            player = new Player();
+            readyPlayer();
             swingBat(computer.getComputerNumbersList(), player.getPlayerNumbersList());
             gameRound = setResultGame();
             View.getResultGameMessage(gameRound,this.getBall(),this.getStrike());
         }
         checkRestartGame();
+    }
+
+    private void readyPlayer() {
+        View.getInputMessage();
+        player = new Player();
     }
 
     private void swingBat(List<Integer> computerNumbers, List<Integer> playerNumbers) {
