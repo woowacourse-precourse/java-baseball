@@ -31,6 +31,8 @@ public class Application {
                 String input = Console.readLine();
                 List<Integer> inputNum = toInputNum(input);
 
+
+                if(input.length()>3) throw new IllegalArgumentException();
                 strikeResultClear();
 
                 int strikeCnt = strike(inputNum);
