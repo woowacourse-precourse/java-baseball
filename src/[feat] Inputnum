@@ -1,0 +1,43 @@
+package baseball;
+
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Inputnum {
+    
+    public static String InsertNum(Scanner scan){
+        String num;
+
+        System.out.print("숫자를 입력해 주세요 : ");
+        num = scan.nextLine();
+
+        return num;
+    }
+   
+    public static List<Integer> Randomnum(){
+        List<Integer> computer = new ArrayList<>();
+
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+
+        return computer;
+    }
+
+ 
+    public static String changeString(List<Integer> computer){
+        String computerNum = "";
+
+        for (int item : computer){
+            computerNum += item; 
+        }
+
+        return computerNum;
+    }
+}
