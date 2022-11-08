@@ -12,11 +12,12 @@ public class GameController {
     private final Referee referee;
 
     public GameController() {
-        player = new Player();
-        opponent = new Opponent();
-        referee = new Referee();
+        this.player = new Player();
+        this.opponent = new Opponent();
+        this.referee = new Referee();
     }
     public void run() {
+        System.out.println(START_GAME);
         do {
             readyForGame();
             startGame();
