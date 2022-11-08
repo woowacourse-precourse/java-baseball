@@ -110,6 +110,30 @@ class ApplicationTest extends NsTest {
             ArrayList<Integer> numArray = new ArrayList<>(result.values());
             assertThat(numArray.stream().mapToInt(Integer::intValue).sum()).isEqualTo(3);
         }
+        @Test
+        void printResult() {
+            HashMap<Character, Integer> resultHash = new HashMap<>();
+            resultHash.put('S',1);
+            resultHash.put('B',1);
+            resultHash.put('O',1);
+            GameManager.setResultHash(resultHash);
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            GameManager.printResult();
+            assertThat(out.toString()).isEqualTo("1볼 1스트라이크\n");
+        }
+        @Test
+        void printResult2() {
+            HashMap<Character, Integer> resultHash = new HashMap<>();
+            resultHash.put('S',3);
+            resultHash.put('B',0);
+            resultHash.put('O',0);
+            GameManager.setResultHash(resultHash);
+            OutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+            GameManager.printResult();
+            assertThat(out.toString()).isEqualTo("3스트라이크\n");
+        }
     }
 
     @Nested
