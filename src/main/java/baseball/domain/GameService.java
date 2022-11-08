@@ -23,9 +23,11 @@ public class GameService {
         List<Integer> gameNumbers = game.getGameNumbers();
 
         for (int i = 0; i < userInputs.size(); i++) {
-            if (userInputs.get(i) == gameNumbers.get(i)) {
+            String judgment = decideStrikeOrBall(userInputs.get(i), gameNumbers.get(i));
+            if (judgment == "strike") {
                 strike++;
-            } else if (gameNumbers.contains(userInputs.get(i))) {
+            }
+            if (judgment == "ball") {
                 ball++;
             }
         }
@@ -35,6 +37,24 @@ public class GameService {
         }
 
         return new Result(strike, ball, isOut);
+    }
+
+    private String decideStrikeOrBall(Integer userInput, Integer gameNumber) {
+        if (isStrike(userInput, gameNumber)) {
+            return "strike";
+        }
+        if (isBall(userInput)) {
+            return "ball";
+        }
+        return "";
+    }
+
+    private boolean isStrike(int userNum, int gameNum) {
+        return (userNum == gameNum);
+    }
+
+    private boolean isBall(int userNum) {
+        return game.getGameNumbers().contains(userNum);
     }
 
     private boolean isOut(int strike) {
