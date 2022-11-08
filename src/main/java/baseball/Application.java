@@ -61,10 +61,7 @@ public class Application {
     public static int CntBallAndStrike(List<Integer> computer, List<String> userNumberList) throws IOException {
         int ballCnt = 0;
         int strikeCnt = 0;
-
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        String userInputNumber;
-        List<String> userNumberListMethodList;
+        
         for (int i = 0; i < computer.size(); i++) {
             if (computer.contains(Integer.parseInt(userNumberList.get(i))) && !computer.get(i).equals(Integer.parseInt(userNumberList.get(i)))) {
                 ballCnt++;
