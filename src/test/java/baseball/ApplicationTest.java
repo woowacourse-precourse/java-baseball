@@ -49,6 +49,7 @@ class ApplicationTest extends NsTest {
 
         @Test
         void testInitialize() {
+            GameManager.setRandomNumberHash(new HashMap<Integer, Integer>());
             assertThat(GameManager.getRandomNumberHash()).isEqualTo(new HashMap<Integer, Integer>());
             GameManager.init();
             assertThat(GameManager.getRandomNumberHash()).isNotEqualTo(new HashMap<Integer, Integer>());
