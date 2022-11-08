@@ -1,8 +1,10 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static baseball.Application.generateGoalNumber;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +28,12 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 목표_숫자가_세자리_숫자인지_확인한다() {
+        String num = generateGoalNumber();
+        Assertions.assertThat(num.length()).isEqualTo(3);
     }
 
     @Override
