@@ -1,5 +1,9 @@
 package baseball;
 
+import baseball.domain.Balls;
+import baseball.domain.Computer;
+import baseball.domain.Player;
+import baseball.domain.Result;
 import baseball.input.InputReader;
 import baseball.message.Message;
 import baseball.utils.Command;

@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.domain.Computer;
+import baseball.domain.Player;
 import baseball.input.InputReader;
 
 public class Application {
