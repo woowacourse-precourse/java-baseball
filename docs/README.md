@@ -40,7 +40,7 @@
 
 
 - [ ] model 패키지의 메서드 테스트
-> - [ ] ComputerNumberGenerator 클래스 메서드 테스트
+> - [x] ComputerNumberGenerator 클래스 메서드 테스트
 > - [ ] NumberValidator 클래스 메서드 테스트
 > - [ ] UserNumberGenerator 클래스 메서드 테스트
 
