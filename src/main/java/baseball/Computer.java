@@ -8,12 +8,13 @@ public class Computer {
     private static final int NumberLength = 3;
     private static String computerNumber;
 
-    Computer(){
+    Computer() {
         setComputerNumber();
     }
-    Computer(String computerNumber){
+    Computer(String computerNumber) {
         this.computerNumber = computerNumber;
     }
+
     public void setComputerNumber() {
         computerNumber = getRandomDifferentNumber();
     }

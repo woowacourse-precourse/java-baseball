@@ -9,6 +9,7 @@ public class Input {
         inputNumber = Console.readLine();
         return inputNumber;
     }
+
     public static int getStartFlag() {
         int startFlag;
         startFlag= Integer.parseInt(Console.readLine());

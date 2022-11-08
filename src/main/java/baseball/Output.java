@@ -10,9 +10,11 @@ public class Output {
     public static void printStartMsg() {
         System.out.println(StartSymbol);
     }
-
     public static void printInputMsg() {
         System.out.print(InputSymbol);
+    }
+    public static void printEndMsg() {
+        System.out.println(EndSymbol);
     }
 
     public static void printOutput(int ballNum, int strikeNum) {
@@ -28,7 +30,4 @@ public class Output {
         System.out.println();
     }
 
-    public static void printEndMsg() {
-        System.out.println(EndSymbol);
-    }
 }

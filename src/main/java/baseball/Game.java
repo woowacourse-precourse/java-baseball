@@ -16,7 +16,6 @@ public class Game {
         User = new User();
         Calculator = new Calculator();
     }
-
     public Game(String computerNum) {
         Computer = new Computer(computerNum);
         User = new User();
@@ -29,19 +28,6 @@ public class Game {
         checkCorrectNum();
         IsEnd();
     }
-    public void IsEnd(){
-        if (!checkEndGame()) {
-            new Game().start();
-        }
-    }
-    public void checkCorrectNum(){
-        if (checkThreeStrike(Calculator.getStrikeNum())) {
-            Output.printEndMsg();
-            setStartFlag();
-        } else {
-            new Game(Computer.getComputerNumber()).start();
-        }
-    }
 
     public void insertInput() {
         Output.printInputMsg();
@@ -51,6 +37,21 @@ public class Game {
     public void showHint() {
         Calculator.calculateNum(Computer.getComputerNumber(), User.getUserNumber());
         Output.printOutput(Calculator.getBallNum(), Calculator.getStrikeNum());
+    }
+
+    public void checkCorrectNum(){
+        if (checkThreeStrike(Calculator.getStrikeNum())) {
+            Output.printEndMsg();
+            setStartFlag();
+        } else {
+            new Game(Computer.getComputerNumber()).start();
+        }
+    }
+
+    public void IsEnd(){
+        if (!checkEndGame()) {
+            new Game().start();
+        }
     }
 
     public Boolean checkThreeStrike(int StrikeNum) {
