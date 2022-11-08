@@ -37,6 +37,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void validate_예외_테스트2() {
+        assertThatThrownBy(() -> Application.validate(110))
+        .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void getGameResult_테스트1() {
         assertThat(Application.getGameResult(123, 123)).isEqualTo(List.of(0, 3));
     }
