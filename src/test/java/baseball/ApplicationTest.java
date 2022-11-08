@@ -2,6 +2,7 @@ package baseball;
 
 import static baseball.Computer.calcResult;
 import static baseball.Number.generateRandomNumber;
+import static baseball.Number.readNum;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,11 +10,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 class ApplicationTest extends NsTest {
+    public static InputStream generateUserInput(String input) {
+        return new ByteArrayInputStream(input.getBytes());
+    }
+
     @Test
     void calcResult_메서드_결과가_2볼() {
         List<Integer> result = calcResult(123, 234);
@@ -96,72 +104,99 @@ class ApplicationTest extends NsTest {
 
     @Test
     void readNum_메서드에서_1_부터_9_이외의_입력_case_1() {
+        InputStream in = generateUserInput("1 4");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1 4"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_1_부터_9_이외의_입력_case_2() {
+        InputStream in = generateUserInput("13가");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("13가"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_길이가_잘못된_입력_case_1() {
+        InputStream in = generateUserInput("1343");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("1343"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_길이가_잘못된_입력_case_2() {
+        InputStream in = generateUserInput("43");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("43"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_중복된_입력_case_1() {
+        InputStream in = generateUserInput("772");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("772"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_중복된_입력_case_2() {
+        InputStream in = generateUserInput("212");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("212"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_중복된_입력_case_3() {
+        InputStream in = generateUserInput("899");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("899"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_올바르지_않은_입력_case_1() {
+        InputStream in = generateUserInput("80 9");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("80 9"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
 
     @Test
     void readNum_메서드에서_올바르지_않은_입력_case_2() {
+        InputStream in = generateUserInput("89 9");
+        System.setIn(in);
+
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("89 9"))
+                assertThatThrownBy(() -> readNum())
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
