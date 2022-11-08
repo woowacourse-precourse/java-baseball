@@ -48,13 +48,17 @@ public class Application {
             allStrike = !compareBall();
         }
     }
+    static void readUser() {
+        String strArray[];
+
+        strArray = getUser();
+        setUser(strArray);
+    }
 
     static boolean playNewGame() {
     }
 
 
-    static void readUser() {
-    }
 
     static String[] getUser() {
     }
