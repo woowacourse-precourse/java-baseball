@@ -6,16 +6,25 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        List<Integer> baseballNumber = BaseballNumber.create();
-        List<Integer> inputNumber = new ArrayList<>();
+        boolean play = true;
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        while (play) {
+            playGame();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            play = checkContinue();
+        }
+    }
 
+    private static void playGame() {
+        List<Integer> inputNumber = new ArrayList<>();
+        List<Integer> baseballNumber = BaseballNumber.create();
         while (!baseballNumber.equals(inputNumber)) {
             inputNumber = inputNumber();
-            int strike = BaseballNumber.countStrike(baseballNumber,inputNumber);
-            int ball = BaseballNumber.countBall(baseballNumber,inputNumber);
+            int strike = BaseballNumber.countStrike(baseballNumber, inputNumber);
+            int ball = BaseballNumber.countBall(baseballNumber, inputNumber);
             BaseballNumber.printMessage(strike, ball);
         }
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료");
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
     private static List<Integer> inputNumber() {
@@ -56,5 +65,17 @@ public class Application {
         if (inputDataList.size() != inputDataSet.size()) {
             throw new IllegalArgumentException("all digits are unique");
         }
+    }
+
+    private static boolean checkContinue() {
+        String inputData = Console.readLine();
+        if (inputData.equals("1")) {
+            return true;
+        }
+        if (inputData.equals("2")) {
+            return false;
+        }
+        //0,1외의 숫자가 들어왔을경우 Exception 처리
+        throw new IllegalArgumentException("enter 1 or 2");
     }
 }
