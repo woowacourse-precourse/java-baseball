@@ -10,10 +10,14 @@ public class Game {
 
     private final Computer computer = new Computer();
     private final Player player = new Player();
+    private final Score score = new Score();
 
     private int GAME_STATE = START;
 
     // init(): Computer측 랜덤 숫자 생성
+    public void init() {
+         Computer.createRandomNumber();
+    }
 
     // start(): 상태가 진행중이면, run()을 반복해서 호출
 
