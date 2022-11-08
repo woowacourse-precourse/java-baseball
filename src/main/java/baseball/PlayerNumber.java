@@ -13,8 +13,8 @@ public class PlayerNumber {
     }
 
     private void validateBallNumberSetSize(List<BallNumber> ballNumberSet) {
-        if (ballNumberSet.size() != BALL_NUMBER_SET_SIZE) {
-            throw new IllegalArgumentException(BALL_NUMBER_SET_OUT_OF_RANGE);
+        if (ballNumberSet.size() != MessageUtils.BALL_SET_SIZE) {
+            throw new IllegalArgumentException(MessageUtils.NUMBER_SIZE_OUT_OF_RANGE_MESSAGE);
         }
     }
 
