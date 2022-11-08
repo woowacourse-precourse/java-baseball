@@ -10,4 +10,10 @@ public class PrintMessage {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
+    public static void printHintBall(int numberOfBall) {
+        if (numberOfBall != 0) {
+            System.out.printf("%d볼 ", numberOfBall);
+        }
+    }
+
 }
