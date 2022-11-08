@@ -62,5 +62,32 @@ public class Game {
         return printResultAndContinue(getStrikeCount(answer, userInput),getBallCount(answer, userInput));
     }
 
+    private static boolean printResultAndContinue(Integer strike, Integer ball){
+        StringBuilder printResult = new StringBuilder();
+        if (strike == 0 && ball == 0){
+            TextIO.Outln("낫싱");
+            return true;
+        }
+        if (strike == 3){
+            printResult.append(strike);
+            printResult.append("스트라이크\n");
+            printResult.append("3개의 숫자를 모두 맞히셨습니다! 게임 종료\n");
+            printResult.append("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println(printResult);
+            return false;
+        }
+        if (strike < 3 && ball != 0){
+            printResult.append(ball);
+            printResult.append("볼 ");
+        }
+        if (strike != 0){
+            printResult.append(strike);
+            printResult.append("스트라이크");
+        }
+        System.out.println(printResult);
+        return true;
+    }
+
+
 
 }
