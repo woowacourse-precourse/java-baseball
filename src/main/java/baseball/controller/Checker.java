@@ -7,22 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Checker {
-    private static final int ANSWER_COUNT = 3;
     private static final String STRIKE = "스트라이크";
-    private static final String BALL = "볼";
-    private static final String NOTHING = "낫싱";
-    private static final int ZERO = 0;
-    private static final String RESTART = "1";
-    private static final String EXIT = "2";
-    private Map<String, Integer> result;
+    private static final String BALL = "r볼";
+    private HashMap<String, Integer> result;
     private Baseball computer;
 
-    public Map<String, Integer> start(Baseball computer, Baseball user) {
+    public HashMap<String, Integer> start(Baseball computer, Baseball user) {
         this.computer = computer;
         result = compare(user);
         return result;
     }
-    public Map<String, Integer> compare(Baseball userNumber) {
+    public HashMap<String, Integer> compare(Baseball userNumber) {
         HashMap<String, Integer> result = new HashMap<>();
         for(int i = 0; i < userNumber.size(); i++) {
             if(isStrike(i, userNumber)) {
