@@ -45,6 +45,18 @@ public class Application {
 		return valid;
 	}
 	
+	public static List<Integer> userNumber(String input) {
+		List<Integer> user = new ArrayList<>();
+		if(userNumberValidation(input)) {
+			for(int i=0;i < 3; i++) {
+				user.add(Character.getNumericValue(input.charAt(i)));
+			}
+			return user;
+		}else {
+			throw new IllegalArgumentException("올바른 값을 입력하세요");
+		}
+	}
+	
     public static void main(String[] args) {
     	
     }
