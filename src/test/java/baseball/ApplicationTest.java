@@ -90,4 +90,45 @@ class ApplicationTest extends NsTest {
         int ball = Application.calculateBall(computer,user);
         assertThat(ball).isEqualTo(3);
     }
+    @Test
+    @DisplayName("0 스트라이크 경우 ")
+    public void noStrikeScenario() throws Exception{
+        List<Integer> computer  = List.of(1,2,5);
+        List<Integer> user = List.of(4,5,6);
+
+        int strike = Application.calculateStrike(computer,user);
+        assertThat(strike).isEqualTo(0);
+
+    }
+
+    @Test
+    @DisplayName("1 스트라이크 경우 ")
+    public void oneStrikeScenario() throws Exception{
+        List<Integer> computer  = List.of(1,5,4);
+        List<Integer> user = List.of(4,5,6);
+
+        int strike = Application.calculateStrike(computer,user);
+        assertThat(strike).isEqualTo(1);
+
+    }
+    @Test
+    @DisplayName("2 스트라이크 경우 ")
+    public void twoStrikeScenario() throws Exception{
+        List<Integer> computer  = List.of(4,5,7);
+        List<Integer> user = List.of(4,5,6);
+
+        int strike = Application.calculateStrike(computer,user);
+        assertThat(strike).isEqualTo(2);
+
+    }
+    @Test
+    @DisplayName("3 스트라이크 경우 ")
+    public void threeStrikeScenario() throws Exception{
+        List<Integer> computer  = List.of(4,5,6);
+        List<Integer> user = List.of(4,5,6);
+
+        int strike = Application.calculateStrike(computer,user);
+        assertThat(strike).isEqualTo(3);
+
+    }
 }
