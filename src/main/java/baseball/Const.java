@@ -2,6 +2,7 @@ package baseball;
 
 public class Const {
     public static final Integer SIZE = 3;
+    public static final Integer THREE_STRIKE = 3;
     public static final String WRONG_INPUT = "잘못된 입력입니다.";
     public static final String INPUT_REQUEST = "숫자를 입력해주세요 : ";
     public static final String START = "숫자 야구 게임을 시작합니다.";

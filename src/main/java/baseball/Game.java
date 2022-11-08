@@ -8,15 +8,18 @@ import static baseball.Const.INPUT_REQUEST;
 import static baseball.Const.NOTHING;
 import static baseball.Const.RESTART;
 import static baseball.Const.START;
-import static baseball.Const.SIZE;
 import static baseball.Const.STRIKE;
+import static baseball.Const.THREE_STRIKE;
 
 public class Game {
-    private Balls computer;
-    private Balls user;
+    private CollectionBalls computer;
+    private CollectionBalls user;
     private Result result;
 
     public Game() {
+        computer = new CollectionBalls();
+        user = new CollectionBalls();
+        result = new Result();
     }
 
     public void run() {
@@ -27,10 +30,7 @@ public class Game {
         } while (restart());
     }
 
-    public void play() {
-        this.computer = new Balls();
-        this.user = new Balls();
-        this.result = new Result();
+    private void play() {
         this.computer.generate();
 
         do {
@@ -38,48 +38,47 @@ public class Game {
             this.user.convertInputToBall(Console.readLine());
             this.result.clear();
             this.result.getCompareResult(this.computer, this.user);
-        } while (!judgeToEnd());
+        } while (judgeToRestart());
     }
 
-    public boolean judgeToEnd() {
+    private boolean judgeToRestart() {
         if (result.getStrike() == 0 && result.getBall() == 0) {
             System.out.println(NOTHING);
         }
 
         if (!(result.getStrike() == 0 && result.getBall() == 0)) {
-            printBall();
-            printStrike();
-            System.out.println();
+            System.out.println(result);
+//            System.out.print(getOutputStatementOfBall());
+//            System.out.println(getOutputStatementOfStrike());
         }
 
-        if (result.getStrike() == SIZE) {
+        if (result.getStrike() == THREE_STRIKE) {
             System.out.println(CORRECT);
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 
-    public void printBall() {
+    private String getOutputStatementOfBall() {
         if (result.getBall() != 0) {
-            System.out.print(result.getBall() + BALL);
+            return (result.getBall() + BALL);
         }
+
+        return "";
     }
 
-    public void printStrike() {
+    private String getOutputStatementOfStrike() {
         if (result.getStrike() != 0) {
-            System.out.print(result.getStrike() + STRIKE);
+            return (result.getStrike() + STRIKE);
         }
+
+        return "";
     }
 
-    public boolean restart() {
+    private boolean restart() {
         System.out.println(RESTART);
-        Integer input = Integer.parseInt(Console.readLine());
 
-        if (input == 1) {
-            return true;
-        }
-
-        return false;
+        return Integer.parseInt(Console.readLine()) == 1;
     }
 }

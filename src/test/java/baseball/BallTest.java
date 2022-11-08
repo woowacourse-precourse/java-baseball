@@ -4,7 +4,7 @@ import static baseball.Const.WRONG_INPUT;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
-class BallTest {
+public class BallTest {
 
     @Test
     void Random으로_숫자_생성() {

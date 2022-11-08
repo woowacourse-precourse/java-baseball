@@ -5,10 +5,10 @@ import java.util.List;
 import static baseball.Const.SIZE;
 import static baseball.Const.WRONG_INPUT;
 
-public class Balls {
+public class CollectionBalls { // name
     private List<Ball> ballList;
 
-    public Balls() {
+    public CollectionBalls() {
         this.ballList = new ArrayList<>();
     }
 
@@ -16,16 +16,18 @@ public class Balls {
         this.ballList.add(ball);
     }
 
-    public boolean checkDuplicate(Ball ball) {
+    public boolean isDuplicate(Ball ball) {
         return ballList.contains(ball);
     }
 
     public void generate() {
+        ballList.clear();
+
         while (this.ballList.size() != SIZE) {
             Ball ball = new Ball();
             ball.generate();
 
-            if (!checkDuplicate(ball)) {
+            if (!isDuplicate(ball)) {
                 ballList.add(ball);
             }
         }
@@ -35,7 +37,7 @@ public class Balls {
         return this.ballList;
     }
 
-    public void convertInputToBall(String input) throws IllegalArgumentException {
+    public void convertInputToBall(String input) {
         ballList.clear();
 
         if (input.length() != SIZE) {

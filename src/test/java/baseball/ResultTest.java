@@ -54,8 +54,8 @@ public class ResultTest {
     }
 
     Result getResult(String stringOfProblem, String stringOfInput) {
-        Balls problem = new Balls();
-        Balls input = new Balls();
+        CollectionBalls problem = new CollectionBalls();
+        CollectionBalls input = new CollectionBalls();
         problem.convertInputToBall(stringOfProblem);
         input.convertInputToBall(stringOfInput);
         Result result = new Result();
