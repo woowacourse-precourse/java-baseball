@@ -16,27 +16,27 @@ public class ComputerTest {
     @DisplayName("컴퓨터가 생성한 숫자가 1과 9 사이의 서로 다른 세 자리 수인지 확인")
     @Nested
     class NumberTest {
-        List<Integer> computerNumbers = Computer.createThreeDigitNumber();
+        List<Integer> computerNumber = Computer.createThreeDigitNumber();
 
         @DisplayName("세 자리 수 테스트")
         @Test
         void lengthTest() {
-            assertThat(computerNumbers.size()).isEqualTo(3);
+            assertThat(computerNumber.size()).isEqualTo(3);
         }
 
-        @DisplayName("숫자 범위 테스트")
+        @DisplayName("각 자리의 숫자 범위 테스트")
         @Test
         void rangeTest() {
-            boolean isBetweenOneAndNine = computerNumbers.stream()
-                    .allMatch(number -> number >= 1 && number <= 9);
+            boolean isBetweenOneAndNine = computerNumber.stream()
+                    .allMatch(valueOfDigit -> valueOfDigit >= 1 && valueOfDigit <= 9);
             assertThat(isBetweenOneAndNine).isTrue();
         }
 
         @DisplayName("중복 여부 테스트")
         @Test
         void uniquenessTest() {
-            Set<Integer> numbersToBeTested = new HashSet<>(computerNumbers);
-            assertThat(computerNumbers.size()).isEqualTo(3);
+            Set<Integer> numberToBeTested = new HashSet<>(computerNumber);
+            assertThat(numberToBeTested.size()).isEqualTo(3);
         }
     }
 
