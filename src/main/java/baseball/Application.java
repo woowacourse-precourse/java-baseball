@@ -63,4 +63,15 @@ public class Application {
         checkNumberRange(numbers);
         checkNumberDuplicate(numbers);
     }
+
+    // 게임이 끝난 후 입력받는 수가 1또는 2가 맞는지 검증하는 기능
+    public static boolean checkProgramFinished(String programFinishNumber) {
+        if (programFinishNumber.equals("1")) {
+            return true;
+        } else if (programFinishNumber.equals("2")) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("1또는 2를 입력해 주세요.");
+        }
+    }
 }
