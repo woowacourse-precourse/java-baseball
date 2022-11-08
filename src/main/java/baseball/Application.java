@@ -3,6 +3,8 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Application {
     public static class IllegalArgumentException extends RuntimeException {
@@ -74,7 +76,17 @@ public class Application {
 
     private static ArrayList<Integer> calculateResults(
             ArrayList<Integer> targetNumbers, ArrayList<Integer> playerNumbers) {
-        return null;
+        int numberOfBalls = 0;
+        int numberOfStrikes = 0;
+
+        for (int i = 0; i < playerNumbers.size(); i++) {
+            if (Objects.equals(playerNumbers.get(i), targetNumbers.get(i))) {
+                numberOfStrikes++;
+            } else if (targetNumbers.contains(playerNumbers.get(i))) {
+                numberOfBalls++;
+            }
+        }
+        return new ArrayList<>(Arrays.asList(numberOfBalls, numberOfStrikes));
     }
 
     private static void printResults(Integer numberOfBalls, Integer numberOfStrikes) {
