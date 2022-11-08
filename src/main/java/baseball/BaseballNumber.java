@@ -4,6 +4,9 @@ import java.util.List;
 
 
 public class BaseballNumber {
+    private static final int DIGIT = 3;
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 9;
     private List<Integer> number;
 
     public BaseballNumber() {
@@ -28,13 +31,13 @@ public class BaseballNumber {
     }
 
     public void validateRange(int num) {
-        if (num > 9 || num < 1) {
+        if (num > MAX_RANGE || num < MIN_RANGE) {
             throw new IllegalArgumentException("입력된 숫자가 범위를 초과했습니다.");
         }
     }
 
     public void validateDigit(List<Integer> nums) {
-        if (nums.size() != 3) {
+        if (nums.size() != DIGIT) {
             throw new IllegalArgumentException("세 자리 수가 아닙니다.");
         }
     }
