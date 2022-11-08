@@ -1,7 +1,9 @@
 package baseball.validation;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validation {
     private static final ArrayList<String> listOfNumbers = new ArrayList<>(List.of(new String[]{"1","2","3","4","5","6","7","8","9"}));
@@ -10,6 +12,14 @@ public class Validation {
     public void validationNumbers(String[] numbers){
         isNotANumber(numbers);
         isThreeWord(numbers);
+        redundantOrNot(numbers);
+    }
+
+    private void redundantOrNot(String[] numbers) {
+        Set<String> set = new LinkedHashSet<>(List.of(numbers));
+        if(set.size() != 3){
+            throw new IllegalArgumentException("중복된 숫자를 입력하셨습니다.");
+        }
     }
 
     // 숫자인데 입력이 없거나 한자리수, 두자리수, 세자리 초과인 경우
