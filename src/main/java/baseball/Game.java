@@ -30,4 +30,11 @@ public class Game {
         }
         return output;
     }
+
+    public static boolean isRedundant(List<Integer> input) {
+        if (input == null)
+            return false;
+        Set<Integer> set = new HashSet<>(input);
+        return set.size() < input.size();
+    }
 }
