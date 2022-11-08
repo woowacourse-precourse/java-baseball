@@ -44,7 +44,7 @@
 ### Score
 야구게임 1턴의 점수 구현  
 
-- [ ] ball count와 strike count를 포함하여 생성
+- [x] ball count와 strike count를 포함하여 생성
 - [ ] getter 구현
   - ball getter
   - strike getter
