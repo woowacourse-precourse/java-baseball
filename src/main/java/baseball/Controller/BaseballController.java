@@ -25,6 +25,7 @@ public class BaseballController {
 
         randomList = baseballService.createRandomNumber();
         baseball.setComputerNumber(randomList);
+        System.out.println(randomList);
 
         while(baseball.getStrike()!=3) {
             inputList = readInputNumber();
@@ -58,16 +59,10 @@ public class BaseballController {
 
     //스트라이크 또는 볼 판정
     public void countStrikeOrBall(List<String> randomNumber, List<String> inputNumber) {
-        int strikeCount=0;
-        int ballCount=0;
-
         for(String number: inputNumber) {
-            strikeCount = countStrike(randomNumber, inputNumber, number, baseball.getStrike());
-            ballCount = countBall(randomNumber, inputNumber, number, baseball.getBall());
+            baseball.setStrike(countStrike(randomNumber, inputNumber, number, baseball.getStrike()));
+            baseball.setBall(countBall(randomNumber, inputNumber, number, baseball.getBall()));
         }
-
-        baseball.setStrike(strikeCount);
-        baseball.setBall(ballCount);
     }
 
 
