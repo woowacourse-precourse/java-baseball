@@ -58,8 +58,18 @@ class ComputerTest {
 
         Computer computer = new Computer();
 
-        List<Integer> strikeBallList = computer.getStrikeBallList(2, 1);
+        List<Integer> strikeBallList = computer.getStrikeBallList(3, 1);
 
-        assertThat(strikeBallList).containsExactly(1, 1);
+        assertThat(strikeBallList).containsExactly(2, 1);
+    }
+
+    @Test
+    void 스트라이크_볼_출력() {
+
+        Computer computer = new Computer();
+
+        String result = computer.printResult(List.of(2, 1));
+
+        assertThat(result).isEqualTo("2볼 1스트라이크");
     }
 }
