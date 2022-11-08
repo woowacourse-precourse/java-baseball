@@ -1,6 +1,7 @@
 package baseball;
 
 public class Sentence {
+
     public static final String OK = "1";
     public static final String NO = "2";
     public static final String STRIKE = "스트라이크";

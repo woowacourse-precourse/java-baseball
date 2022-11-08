@@ -2,6 +2,7 @@ package baseball;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
+
 import static baseball.Function.changeStringtoList;
 import static baseball.Player.*;
 import static org.assertj.core.api.Assertions.*;
@@ -20,7 +21,7 @@ public class PlayerTest {
     }
 
     @Test
-    void guessAnswer_정답_예측_메소드(){
+    void guessAnswer_정답_예측_메소드() {
         String input = "123";
         try {
             isValidAnswer(input);
@@ -28,6 +29,6 @@ public class PlayerTest {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        assertThat(player.Answer).isEqualTo(List.of(1,2,3));
+        assertThat(player.Answer).isEqualTo(List.of(1, 2, 3));
     }
 }
