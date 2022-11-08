@@ -2,17 +2,20 @@ package baseball;
 
 import java.util.List;
 
-public class Game {
+public class CompareNumber {
     private int strike;
     private int ball;
     private List<Integer> computer;
     private List<Integer> user;
 
-    public Game(List<Integer> computer) {
+    public CompareNumber() {
+    }
+
+    public void setComputer(List<Integer> computer) {
         this.computer = computer;
     }
 
-    public void userInputSetUp(List<Integer> user) {
+    public void setUp(List<Integer> user) {
         this.strike = 0;
         this.ball = 0;
         this.user = user;
@@ -29,11 +32,11 @@ public class Game {
         }
     }
 
-    public String numberToSResult() {
+    public boolean numberToSResult() {
         String answer;
         if (strike == 3) {
-            System.out.printf("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return "게임 종료";
+            System.out.println("3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
         } else if (strike != 0 && ball != 0) {
             answer = ball + "볼 " + strike + "스트라이크";
         } else if (strike != 0) {
@@ -43,11 +46,12 @@ public class Game {
         } else {
             answer = "낫싱";
         }
-        return answer;
+        System.out.println(answer);
+        return false;
     }
 
-    public String gameRun(List<Integer> user) {
-        userInputSetUp(user);
+    public boolean gameRun(List<Integer> user) {
+        setUp(user);
         isSameNumber();
         return numberToSResult();
     }
