@@ -8,8 +8,25 @@ public class RandomNumberMaker {
         int[] numbers = new int[size];
 
         for (int i = 0; i < size; i++) {
-            numbers[i] = Randoms.pickNumberInRange(start, end);
+            numbers[i] = getUniqueNumber(numbers, i, start, end);
         }
         return numbers;
+    }
+
+    private static int getUniqueNumber(int[] numbers, int index, int start, int end) {
+        int randomNumber = Randoms.pickNumberInRange(start, end);
+        while (!isUnique(numbers, index, randomNumber)) {
+            randomNumber = Randoms.pickNumberInRange(start, end);
+        }
+        return randomNumber;
+    }
+
+    private static Boolean isUnique(int[] numbers, int index, int randomNumber) {
+        for (int i = 0; i < index; i++) {
+            if (numbers[i] == randomNumber) {
+                return false;
+            }
+        }
+        return true;
     }
 }
