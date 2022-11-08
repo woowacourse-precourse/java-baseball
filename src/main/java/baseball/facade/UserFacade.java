@@ -27,7 +27,8 @@ public class UserFacade {
 
         validationService.validateNumberLength(VALUE_SIZE, list);
         validationService.validateDuplicate(list, VALUE_SIZE);
-
+        validationService.validateRange(list);
+        
         return list;
     }
 }

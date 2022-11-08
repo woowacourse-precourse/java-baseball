@@ -3,12 +3,25 @@ package baseball.service.validation;
 import baseball.exception.IllegalInputException;
 import baseball.exception.IllegalSizeException;
 import baseball.exception.InputDuplicationException;
+import baseball.exception.OutOfRangeException;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ValidationServiceImpl implements ValidationService {
+
+    @Override
+    public void validateRange(List<Integer> list) {
+        if (hasZero(list)) {
+            throw OutOfRangeException.EXCEPTION;
+        }
+    }
+
+    public boolean hasZero(List<Integer> list) {
+        return list.stream()
+            .anyMatch(it -> it == 0);
+    }
 
     @Override
     public void validateNumberLength(int size, List<Integer> list) {
