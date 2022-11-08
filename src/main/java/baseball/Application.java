@@ -51,5 +51,43 @@ public class Application {
         return digit;
     }
 
+    public static int compareUserNumberToComputers(List<Integer> userInput, List<Integer> computer){
+        // 3스트라이크로 종료될 경우 0을 리턴.
+        // 그렇지 않은 경우, 1을 리턴.
+        int balls = 0;
+        int strikes = 0;
+        for (int i=0;i<userInput.size();i++){
+            Integer digit = userInput.get(i);
+            if (!computer.contains(digit))
+                continue;
+            if (digit.equals(computer.get(i))) {
+                strikes += 1;
+                continue;
+            }
+            balls += 1;
+        }
+
+        printBallsAndStrikes(balls,strikes);
+        if (strikes == 3) {
+            return 0;
+        }
+        return 1;
+    }
+    public static void printBallsAndStrikes(int balls, int strikes){
+        if (balls == 0) {
+            if (strikes == 0) {
+                System.out.println("낫싱");
+            }
+            System.out.println(strikes+"스트라이크");
+            return;
+        }
+
+        System.out.print(balls+"볼");
+        if (strikes!=0){
+            System.out.print(" "+strikes+"스트라이크");
+        }
+        System.out.println();
+    }
+
 
 }
