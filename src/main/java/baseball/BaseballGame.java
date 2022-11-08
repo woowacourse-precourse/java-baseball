@@ -10,7 +10,14 @@ public class BaseballGame {
     public static List<Integer> comNum;
     public static List<Integer> userNumers;
 
-
+    public void playGame(){
+        System.out.println("숫자를 입력해주세요 : ");
+        Computer.createGameNumber();
+        User.inputGameNumber();
+        User.validateUserNum();
+        ballCount();
+        hintPrint();
+    }
 
     public static void ballCount(){
         strike = 0;
@@ -41,7 +48,7 @@ public class BaseballGame {
         return ("낫싱");
     }
 
-    public boolean gameEnd() {
+    public static boolean gameEnd() {
         if (strike == 3) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
