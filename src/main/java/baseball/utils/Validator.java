@@ -4,9 +4,15 @@ import java.util.Arrays;
 
 public class Validator {
     public boolean isValidString(String input) {
-        return isRightLength(input) && isRightRange(input) && isDuplicate(input);
+        return isRightLength(input) && isInteger(input) && isRightRange(input) && isDuplicate(input);
     }
 
+    private boolean isInteger(String input){
+        for (int i = 0; i < 3; i++)
+            if (!Character.isDigit(input.charAt(i)))
+                return false;
+        return true;
+    }
     private boolean isRightLength(String input) {
         return input.length() == 3;
     }
