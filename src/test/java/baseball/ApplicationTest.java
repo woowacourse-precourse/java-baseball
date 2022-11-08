@@ -9,21 +9,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     @Test
-    void 게임종료_후_재시작() {
+    void Input_Exception_Test() {
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    assertThatThrownBy(() -> runException("246", "135", "1", "597", "589", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
                 },
                 1, 3, 5, 5, 8, 9
         );
     }
 
     @Test
-    void 예외_테스트() {
+    void Exception_Test_OverSize() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void Exception_Test_SubSize() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("12"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
