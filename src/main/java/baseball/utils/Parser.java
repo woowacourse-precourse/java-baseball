@@ -25,4 +25,13 @@ public class Parser {
     private boolean validateOneOrTwo(String input) {
         return input.equals("1") || input.equals("2");
     }
+
+    private boolean validateFormatNumber(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }
