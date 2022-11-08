@@ -11,7 +11,7 @@ public class BaseballModel {
 		this.answer = answer;
 	}
 
-	public void resetCount(){
+	public void initCount(){
 		strike = 0;
 		ball = 0;
 	}

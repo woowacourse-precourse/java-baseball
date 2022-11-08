@@ -15,18 +15,18 @@ public class BaseballController {
 	private final int RESTART_ANSWER_LENGTH = 1;
 
 	public void start(){
-		do{
+		do {
 			proceedGame();
-		}while(restartCheck());
+		} while (restartCheck());
 	}
 
 	private void proceedGame() {
 		OutputView.printGameStartMessage();
 		BaseballModel baseballModel = initGame();
 		do {
-			Validator tryInputValidator = new TryValidator(InputView.tryAnswerInput(), ANSWER_LENGTH);
-			baseballModel.resetCount();
-			answerCheck(tryInputValidator.INPUT_VALUE, baseballModel);
+			Validator validator = new TryValidator(InputView.tryAnswerInput(), ANSWER_LENGTH);
+			baseballModel.initCount();
+			answerCheck(validator.INPUT_VALUE, baseballModel);
 			OutputView.printTryResult(baseballModel);
 		} while (!isGameWin(baseballModel));
 		OutputView.printGameWinMessage();
