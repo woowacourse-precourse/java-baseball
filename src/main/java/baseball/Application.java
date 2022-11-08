@@ -15,5 +15,7 @@ public class Application {
             game = Integer.parseInt(Console.readLine());
             game = Settings.restartExcetion(game);
         } while(game==1);
+
+        Settings.exitMessage(game);
     }
 }
