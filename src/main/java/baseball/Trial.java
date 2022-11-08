@@ -49,6 +49,16 @@ public class Trial {
         return score;
     }
 
+    public static int inputRestartOption() {
+        String option = Console.readLine();
+
+        if (!isValidOption(option)) {
+            throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
+        }
+
+        return Integer.parseInt(option);
+    }
+
     private static boolean isValidInput(String numbersInput) {
         return isValidLength(numbersInput) && !isDuplicated(numbersInput)
                 && isValidRange(numbersInput);
@@ -67,5 +77,9 @@ public class Trial {
         return numbersInput.chars()
                 .distinct()
                 .count() != NUMBERS_SIZE;
+    }
+
+    private static boolean isValidOption(String option) {
+        return option.equals("1") || option.equals("2");
     }
 }
