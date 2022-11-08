@@ -47,4 +47,14 @@ public class BaseballRefree {
 
         System.out.println(statement);
     }
+
+    public boolean judge(String numbers){
+        int ballCount = getBallCount(numbers);
+        int strikeCount = getStrikeCount(numbers);
+
+        announceResult(ballCount, strikeCount);
+
+        return strikeCount == answerNumber.length();
+    }
+
 }
