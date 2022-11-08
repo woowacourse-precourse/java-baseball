@@ -150,7 +150,14 @@ public class Application {
     private Integer getReGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String choice = Console.readLine();
+        validateReGame(choice);
         return Integer.parseInt(choice);
+    }
+
+    private void validateReGame(String choice) {
+        if (choice.equals("1") || choice.equals("2")) {
+            throw new IllegalArgumentException("올바른 입력값이 아닙니다.");
+        }
     }
 
 }
