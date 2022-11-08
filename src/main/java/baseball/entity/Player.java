@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private static List<Integer> playerNumbers = new ArrayList<>();
+    private List<Integer> playerNumbers;
 
     public void enterInput() {
         String input = Console.readLine();
@@ -14,11 +14,21 @@ public class Player {
     }
 
     private void changeInputToNumber(String input) {
+        playerNumbers = new ArrayList<>();
         for (int i=0; i<input.length(); i++) {
             playerNumbers.add(input.charAt(i)-'0');
         }
+        boolean isValid = validateNumber(playerNumbers);
     }
 
-    // validateNumber(): 입력받은 숫자에 대한 유효성 검증
+    private boolean validateNumber(List<Integer> playerNumbers) {
+        if(playerNumbers.stream().distinct().count()!=3) {
+            return false;
+        }
+        if(playerNumbers.stream().allMatch(number -> (number<1 || number>9))){
+            return false;
+        }
+        return true;
+    }
     // validateAnswer(): 입력받은 재시작 여부 답변에 대한 유효성 검증
 }
