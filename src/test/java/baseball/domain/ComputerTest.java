@@ -52,4 +52,14 @@ class ComputerTest {
 
         assertThat(sameCnt).isEqualTo(1);
     }
+
+    @Test
+    void 스트라이크_볼_리스트_변환() {
+
+        Computer computer = new Computer();
+
+        List<Integer> strikeBallList = computer.getStrikeBallList(2, 1);
+
+        assertThat(strikeBallList).containsExactly(1, 1);
+    }
 }
