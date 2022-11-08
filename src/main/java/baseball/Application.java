@@ -36,6 +36,12 @@ public class Application {
         }
     }
 
+    public static void checkModeNumberValidate(String inputModeNum) {
+        if (!inputModeNum.equals("1") && !inputModeNum.equals("2")) {
+            throw new IllegalArgumentException("잘못된 모드 입력값");
+        }
+    }
+
     public static void checkInputNumberValidate(String inputNumber) {
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("입력값의 길이가 잘못되었습니다.");

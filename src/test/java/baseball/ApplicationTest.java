@@ -74,6 +74,20 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 모드_입력_예외_테스트() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.checkModeNumberValidate("3");
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.checkModeNumberValidate("1abc");
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Application.checkModeNumberValidate("abcd");
+        });
+    }
+
+
+    @Test
     void 입력_예외_테스트() {
         assertThrows(IllegalArgumentException.class, () -> {
             Application.checkInputNumberValidate("112");
