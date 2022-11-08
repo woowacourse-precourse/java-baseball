@@ -1,40 +1,41 @@
 package baseball;
 
-import java.util.ArrayList;
+import camp.nextstep.edu.missionutils.Randoms;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import java.util.ArrayList;
 
 public class Computer {
     protected int answer;
-    ArrayList<Integer> check = new ArrayList<>();
+    ArrayList<Integer> computer = new ArrayList<>();
 
-    public int randNumber() {
-        return pickNumberInRange(1, 9);
+    public int randomNumber() {
+        return Randoms.pickNumberInRange(1, 9);
     }
 
     public boolean checkNumber(Integer number) {
-        return check.contains(number);
+        return computer.contains(number);
     }
 
     public void addNumber(Integer number) {
-        check.add(number);
+        computer.add(number);
     }
 
     public void madeNumber() {
-        while (check.size() != 3) {
-            int number = randNumber();
-
-            if (check.size() == 0) {
-                addNumber(number);
-            } else if (!checkNumber(number)) {
-                addNumber(number);
+        while (computer.size() < 3) {
+            int randomNumber = randomNumber();
+            if (!checkNumber(randomNumber)) {
+                addNumber(randomNumber);
             }
         }
     }
 
-    public void setAnswer() {
+    public void setNumber() {
+        this.answer = computer.get(0) * 100 + computer.get(1) * 10 + computer.get(2);
+    }
+
+    public void madeAnswer() {
         madeNumber();
-        this.answer = (check.get(0) * 100) + (check.get(1) * 10) + check.get(2);
+        setNumber();
     }
 
 }
