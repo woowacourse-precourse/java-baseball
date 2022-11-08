@@ -15,8 +15,10 @@
   
 ### 2. Checker Class
 
-- 사용자가 잘못된 값을 입력했는지 확인하는 기능
-  `Checker.IsWrongInput()`
+- 사용자가 게임 중 잘못된 값을 입력했는지 확인하는 기능
+  `Checker.IsInvalidInput()`
+- 사용자가 게임 끝난 후 잘못된 값을 입력했는지 확인하는 기능
+  `Checker.IsInvalidChoice()`
 - 사용자의 입력과 컴퓨터의 정답을 비교하는 기능
   `Checker.CompareUserInputWithAnswer()`
 
