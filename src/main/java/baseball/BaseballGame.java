@@ -90,10 +90,11 @@ public class BaseballGame {
             isGameEnd = toSet;
         }
 
-		boolean isGameEnd() {
-			return false;
-		}
-	}
+        public boolean getIsGameEnd(){
+            return isGameEnd;
+        }
+    }
+}
 
 	class Player {
 		String input() {
