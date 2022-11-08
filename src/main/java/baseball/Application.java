@@ -1,4 +1,7 @@
 package baseball;
+
+import java.util.List;
+
 //1.문한 반복: 진행 여부 1, 2
 //2.랜덤 3자리 숫자 저장
 //무한 반복
@@ -16,7 +19,21 @@ package baseball;
 // 스트라이크 0 아니거볼 0 이면 출력
 // 둘 다 0아닌 경우
 public class Application {
+
+    public static void startBaseballGame(){
+        String again = "1";
+        //1.문한 반복: 진행 여부 1, 2
+        //2.랜덤 3자리 숫자 저장
+        while (again.equals("1")) {
+            if (again.equals("2")) {
+                break;
+            }
+            boolean flag=false;
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        startBaseballGame();
     }
 }
