@@ -37,12 +37,16 @@
 ## PR 전 체크사항
 
 - [x] README.md에 구현할 기능 목록을 정리해서 추가했는가
-- [ ] 들여쓰기는 2 spaces가 아닌, 4 spaces로 구현했는가
-- [ ] indent는 2까지만 사용했는가
-- [ ] 3항 연산자를 쓰지 않았는가
-- [ ] System.exit 메소드를 사용하지 않았는가
-- [ ] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시켰는가
-- [ ] Application의 패키지 구조와 구현은 변경하지 않았는가
-- [ ] Randoms 및 Console API를 사용하여 구현했는가
-- [ ] 프로그래밍 요구 사항을 모두 따랐는가
-- [ ] PR을 보내고 이메일을 보냈는가
+- [x] 들여쓰기는 2 spaces가 아닌, 4 spaces로 구현했는가
+- [x] indent는 2까지만 사용했는가
+- [x] 3항 연산자를 쓰지 않았는가
+- [ ] 함수(또는 메서드)가 한 가지 일만 하도록 했는가
+- [x] JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
+- [x] System.exit 메소드를 사용하지 않았는가
+- [x] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시켰는가
+- [x] Application의 패키지 구조와 구현은 변경하지 않았는가
+- [x] Randoms 및 Console API를 사용하여 구현했는가
+- [x] 프로그래밍 요구 사항을 모두 따랐는가
+- [x] 열 제한 120으로 했는가
+- [x] 들여쓰기 지속은 최소 +8 spaces로 했는가
+
