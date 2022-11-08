@@ -46,6 +46,14 @@ class ApplicationTest2 extends NsTest {
         assertEquals(1, Application.ballCount(input, computer));
     }
 
+    // outputFormat()
+    @Test
+    void 게임결과_출력_형식() {
+        int strike = 1;
+        int ball = 2;
+        assertEquals("2볼 1스트라이크", Application.outputFormat(strike, ball));
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
