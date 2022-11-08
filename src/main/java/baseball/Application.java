@@ -107,9 +107,9 @@ public class Application {
             if(!computer.contains(randomNumber))
                 computer.add(randomNumber);
         }
-        for(int i = 0 ; i < computer.size(); i++) {
+        /*for(int i = 0 ; i < computer.size(); i++) {
             System.out.print(computer.get(i) + " ");
             answer[i] = computer.get(i);
-        }
+        }*/
     }
 }
