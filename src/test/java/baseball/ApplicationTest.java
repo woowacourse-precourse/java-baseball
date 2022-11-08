@@ -2,6 +2,9 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -9,8 +12,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
+
     @Test
-    void 게임종료_후_재시작() {
+    void 예외처리_테스트1() {
+        String str = "1";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Application.handleException(str))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+    @Test
+    void 테스트1(){
+        String expected = "3스트라이크";
+        String solution = "345";
+        List<Integer> answer = new ArrayList<>(Arrays.asList(3, 4, 5));
+        String result = Application.BaseBallScore(answer,solution);
+        assertThat(result).contains(expected);
+    }
+    @Test
+    void 테스트2(){
+        String expected = "3볼";
+        String solution = "413";
+        List<Integer> answer = new ArrayList<>(Arrays.asList(3, 4, 1));
+        String result = Application.BaseBallScore(answer,solution);
+        assertThat(result).contains(expected);
+    }
+
+    @Test
+    void 테스트3(){
+        String expected = "낫싱";
+        String solution = "567";
+        List<Integer> answer = new ArrayList<>(Arrays.asList(1, 2, 3));
+        String result = Application.BaseBallScore(answer,solution);
+        assertThat(result).contains(expected);
+    }
+    @Test
+    void 게임_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
