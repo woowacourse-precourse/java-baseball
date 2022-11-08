@@ -42,9 +42,13 @@ public class Application {
 
         private String Ready() {
             printSetBallStatus();
-//            String ball = setBall();
+            String ball = setBall();
 //            return trimBall(ball);
             return "";
+        }
+
+        private String setBall() {
+            return camp.nextstep.edu.missionutils.Console.readLine();
         }
 
         private void printSetBallStatus() {
