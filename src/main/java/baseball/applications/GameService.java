@@ -34,6 +34,13 @@ public class GameService {
         game.compare(userNumber, computerNumber);
 
         Output.result(game.getStrike(), game.getBall());
+        endGame(game);
+    }
+
+    private void endGame(Game game) {
+        if (game.checkEnd()) {
+            playGame(game);
+        }
     }
 
 }
