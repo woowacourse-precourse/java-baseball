@@ -8,6 +8,8 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.Scanner;
+
 class ApplicationTest extends NsTest {
     @Test
     void 게임종료_후_재시작() {
@@ -65,6 +67,14 @@ class ApplicationTest extends NsTest {
 
         assertThat(app.isStrike("123","123")).isTrue();
         assertThat(app.isStrike("123","321")).isFalse();
+    }
+
+    @Test
+    void testIsStop() {
+        Application app = new Application();
+
+        assertThat(app.isStop("2")).isTrue();
+        assertThat(app.isStop("1")).isFalse();
     }
     @Override
     public void runMain() {
