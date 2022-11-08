@@ -3,8 +3,12 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 public class GenerateRandomNumber {
     private static final int NUMBER = 3;
@@ -32,6 +36,9 @@ public class GenerateRandomNumber {
                 .mapToInt(i -> i)
                 .toArray();
     }
+
+
+
 
 
 
