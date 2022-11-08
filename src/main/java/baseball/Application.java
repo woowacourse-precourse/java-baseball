@@ -64,4 +64,12 @@ public class Application {
         }
         return ball;
     }
+    public static Integer calculationStrike(List<Integer> computer,List<Integer> user){
+        Integer strike = 0;
+        for(int i = 0;i<computer.size();i++){
+            if(computer.get(i).equals(user.get(i)))
+                strike +=1;
+        }
+        return strike;
+    }
 }
