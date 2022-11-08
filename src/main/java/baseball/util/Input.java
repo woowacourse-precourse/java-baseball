@@ -29,7 +29,7 @@ public class Input {
     }
 
     private static void isValidReplayNumber(String inputNumber) {
-        if (!inputNumber.matches("[12]")) {
+        if (!inputNumber.equals("1") && !inputNumber.equals("2")) {
             throw new IllegalArgumentException();
         }
     }
