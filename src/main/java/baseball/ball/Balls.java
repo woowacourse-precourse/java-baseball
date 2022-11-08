@@ -16,7 +16,7 @@ public class Balls {
         if(balls.size()==BALL_SIZE){
             return true;
         }
-        throw new IllegalArgumentException(NOT_BALL_SIZE);
+        return false;
     }
 
     public boolean hasBall(Ball ball) {
