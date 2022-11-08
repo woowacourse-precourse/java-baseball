@@ -104,7 +104,7 @@ public class Application {
 
     public static Integer getResult(List<Integer> ballAndStrike) {
         //정답인 경우 1, n 볼 m 스트라이크의 경우 2, 낫싱인 경우 0을 반환
-        if (ballAndStrike.get(1) == 3) {
+        if (ballAndStrike.get(2) == 3) {
             return 1;
         } else if (ballAndStrike.get(0) == 3) {
             return 0;
