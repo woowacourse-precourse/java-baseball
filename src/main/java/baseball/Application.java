@@ -24,8 +24,8 @@ public class Application {
         }
     }
 
-    public static void checkEndGameInput(String userInputString) throws IllegalArgumentException {
-        if (userInputString.equals("1")||userInputString.equals("2")) {
+    public static void checkEndGameInput(String endGameInputString) throws IllegalArgumentException {
+        if (!(endGameInputString.equals("1")||endGameInputString.equals("2"))) {
             throw new IllegalArgumentException();
         }
     }
