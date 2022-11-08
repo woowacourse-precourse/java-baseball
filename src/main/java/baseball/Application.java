@@ -57,8 +57,13 @@ public class Application {
         int strike = 0;
         int ball = 0;
 
-        strike = checkStrike(playerInput, answer);
-        ball = checkBall(playerInput, answer);
+        for (int i = 0; i < playerInput.length(); i++) {
+            if (playerInput.charAt(i) == answer.charAt(i)) {
+                strike++;
+            } else if (answer.contains(String.valueOf(playerInput.charAt(i)))) {
+                ball++;
+            }
+        }
 
         if (strike == 3) {
             System.out.println("3스트라이크");
@@ -74,30 +79,6 @@ public class Application {
         }
 
         return isAnswer;
-    }
-
-    private static int checkStrike(String playerInput, String answer) {
-        int strike = 0;
-
-        for (int i = 0; i < playerInput.length(); i++) {
-            if (playerInput.charAt(i) == answer.charAt(i)) {
-                strike++;
-            }
-        }
-
-        return strike;
-    }
-
-    private static int checkBall(String playerInput, String answer) {
-        int ball = 0;
-
-        for (int i = 0; i < playerInput.length(); i++) {
-            if (answer.contains(String.valueOf(playerInput.charAt(i)))) {
-                ball++;
-            }
-        }
-
-        return ball;
     }
 
     public static void main(String[] args) {
