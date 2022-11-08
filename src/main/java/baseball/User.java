@@ -3,7 +3,7 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInputNumber {
+public class User {
     private List<Integer> user;
 
     public List<Integer> inputNumbers(String userNum) {
