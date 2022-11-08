@@ -24,7 +24,8 @@ public class Executor {
                 String resultString = guessResult.getResult();
                 Printer.printMessage(resultString);
                 Printer.isALLCorrect();
-                askRestart();
+                int restartAnswer = askRestart();
+                processRestartAnswer(restartAnswer);
             }
         }
 
@@ -40,16 +41,21 @@ public class Executor {
         HashMap<String, Integer> check_result = checker.start(computerBaseball, userBaseball);
         return new BaseballResult(check_result);
     }
-    public void askRestart() {
+    public int askRestart() {
         Printer.askRestart();
-        String s = Console.readLine();
-        int reStart = Integer.parseInt(s);
+        int restart = getRestart();
+        return restart;
+    }
+    public void processRestartAnswer(int reStart) {
         if(reStart == RESTART) {
             startGame();
         }else if(reStart != EXIT) {
-            askRestart();
-        }else {
             flag = false;
         }
+    }
+    public int getRestart() {
+        String s = Console.readLine();
+        int reStart = Integer.parseInt(s);
+        return reStart;
     }
 }
