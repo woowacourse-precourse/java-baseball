@@ -12,6 +12,10 @@ import java.util.stream.Collectors;
 
 public class CompareResult {
 
+    private static final int MAX_STATUS_SIZE = 3;
+
+    private static final int INITIAL_STATUS_COUNT = 1;
+
     private final Map<BallStatus, Integer> occurrences;
 
     public CompareResult() {
@@ -19,7 +23,7 @@ public class CompareResult {
     }
 
     public void addResult(BallStatus ballStatus) {
-        occurrences.merge(ballStatus, 1, Integer::sum);
+        occurrences.merge(ballStatus, INITIAL_STATUS_COUNT, Integer::sum);
     }
 
     public int getStrikes() {
@@ -32,12 +36,12 @@ public class CompareResult {
 
     public boolean isAllNothing() {
         return occurrences.containsKey(NOTHING)
-            && occurrences.get(NOTHING) == 3;
+            && occurrences.get(NOTHING) == MAX_STATUS_SIZE;
     }
 
     public boolean isAllStrikes() {
         return occurrences.containsKey(STRIKE)
-            && occurrences.get(STRIKE) == 3;
+            && occurrences.get(STRIKE) == MAX_STATUS_SIZE;
     }
 
     public List<String> getResults() {

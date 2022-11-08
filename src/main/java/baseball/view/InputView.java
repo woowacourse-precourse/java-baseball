@@ -11,13 +11,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private static final String GET_BALL_NUMBERS = "숫자를 입력해주세요 : ";
+    private static final String GET_BALL_NUMBERS_MESSAGE
+        = "숫자를 입력해주세요 : ";
 
-    private static final String GET_GAME_OPTION
+    private static final String GAME_OPTION_MESSAGE
         = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static List<Integer> getBallNumbers() {
-        System.out.print(GET_BALL_NUMBERS);
+        System.out.print(GET_BALL_NUMBERS_MESSAGE);
         String ballNumbers = Console.readLine();
         validateIsAllDigit(ballNumbers);
 
@@ -27,7 +28,7 @@ public class InputView {
     }
 
     public static GameOption getGameOption() {
-        System.out.println(GET_GAME_OPTION);
+        System.out.println(GAME_OPTION_MESSAGE);
         String gameOption = Console.readLine();
         validateIsAllDigit(gameOption);
         return GameOption.of(Integer.parseInt(gameOption));
