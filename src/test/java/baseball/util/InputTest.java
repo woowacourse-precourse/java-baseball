@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,12 +13,10 @@ class InputTest {
 
     private Input aInput;
     private InputStream inputStream;
-    private Scanner scanner;
 
     @BeforeEach
     void setUp() {
         aInput = new Input();
-        scanner = new Scanner(System.in);
     }
 
     private static InputStream generateInput(String input) {
