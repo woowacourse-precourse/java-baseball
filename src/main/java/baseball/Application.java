@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    private static int strikeCount;
-    private static int ballCount;
+    private static int strikeCount = 0;
+    private static int ballCount = 0;
     private static final int threeDigits = 999;
 
     public static void main(String[] args) throws IOException {
@@ -34,10 +34,22 @@ public class Application {
         isStrike(playerNumbers, computerNumbers);
         isBall(playerNumbers, computerNumbers);
 
-        System.out.println("ballcount::"+ballCount);
-        System.out.println("strikecount::"+strikeCount);
+        if(ballCount == 0 && strikeCount > 0) {
+            System.out.println(strikeCount+"스트라이크");
 
+        } else if(ballCount > 0 && strikeCount ==0){
+            System.out.println(ballCount+"볼");
 
+        } else if(ballCount > 0 && strikeCount > 0) {
+            System.out.println(ballCount+"볼 "+strikeCount+"스트라이크");
+
+        } else if(ballCount ==0 && strikeCount ==0) {
+            System.out.println("낫싱");
+
+        } else if (strikeCount == 3) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
     }
 
     public static List RandomNum(){
