@@ -1,4 +1,4 @@
-package runGame;
+package baseball;
 
 import runGame.GameStarter;
 
