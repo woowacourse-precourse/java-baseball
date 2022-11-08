@@ -2,8 +2,7 @@ package baseball.service;
 
 import java.util.List;
 
-import static baseball.constant.Message.GAME_START_MESSAGE;
-import static baseball.constant.Message.PROGRAM_END_MESSAGE;
+import static baseball.constant.Message.*;
 
 public class BaseballGame {
     public void start(){
@@ -22,7 +21,10 @@ public class BaseballGame {
         List<Integer> computer = comService.getRandomNumber();
 
         while(true) {
+            User userService = new User();
             //User 입력
+            System.out.println(USER_INPUT_MESSAGE);
+            String user = userService.userInput(); // ->List<Integer> 형태로 바꿔야함
 
             //Computer User 비교
 
