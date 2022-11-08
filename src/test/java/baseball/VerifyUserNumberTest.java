@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class VerifyUserNumberTest {
-    private final Application application = new Application();
 
     @Test void 사용자가_입력한_숫자가_3자리가_아닐_경우() {
         String input = "12345";
