@@ -21,13 +21,13 @@ public class Judgement {
   }
 
   private List<Integer> getSameNumbers(List<Integer> myNumbers, List<Integer> computerNumbers) {
-    List<Integer> sameNumberList = new ArrayList<>();
+    List<Integer> sameNumbers = new ArrayList<>();
     for (int numberIndex = 0; numberIndex < MAX_NUMBER_SIZE; numberIndex++) {
       if (computerNumbers.contains(myNumbers.get(numberIndex))) {
-        sameNumberList.add(myNumbers.get(numberIndex));
+        sameNumbers.add(myNumbers.get(numberIndex));
       }
     }
-    return sameNumberList;
+    return sameNumbers;
   }
 
   private boolean isStrike(int sameNumber, List<Integer> myNumbers, List<Integer> computerNumbers) {
