@@ -1,7 +1,11 @@
 package baseball;
 
+import baseball.controller.BaseBallController;
+import baseball.service.BaseBallService;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BaseBallController controller = new BaseBallController(new BaseBallService());
+        controller.run();
     }
 }
