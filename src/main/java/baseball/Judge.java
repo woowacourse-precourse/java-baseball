@@ -3,39 +3,39 @@ package baseball;
 import java.util.ArrayList;
 
 public class Judge {
-  private final Computer computer;
-  private final Player player;
-  private static final int MAX_SIZE = 3;
+    private final Computer computer;
+    private final Player player;
+    private static final int MAX_SIZE = 3;
 
-  public Judge(){
-    this.player = new Player();
-    this.computer = new Computer();
-  }
-
-  public ArrayList<Integer> getPlayerNumbers(){
-    this.player.decideNumbers(this.player.inputNumbers());
-    return this.player.getNumbers();
-  }
-
-  public ArrayList<Integer> getComputerNumbers(){
-    return this.computer.getNumbers();
-  }
-
-  public Result compareBalls(ArrayList<Integer> playerNumbers, ArrayList<Integer> computerNumbers){
-    int strike = 0;
-    int ball = 0;
-
-    for(int i = 0; i < MAX_SIZE; i++){
-      if(playerNumbers.get(i).equals(computerNumbers.get(i))) {
-        strike ++;
-      } else if (computerNumbers.contains(playerNumbers.get(i))) {
-        ball++;
-      }
+    public Judge() {
+        this.player = new Player();
+        this.computer = new Computer();
     }
-    return new Result(strike, ball);
-  }
 
-  public int decideGameContinue(){
-    return this.player.validateGameStatusData(this.player.inputGameStatusData());
-  }
+    public ArrayList<Integer> getPlayerNumbers() {
+        this.player.decideNumbers(this.player.inputNumbers());
+        return this.player.getNumbers();
+    }
+
+    public ArrayList<Integer> getComputerNumbers() {
+        return this.computer.getNumbers();
+    }
+
+    public Result compareBalls(ArrayList<Integer> playerNumbers, ArrayList<Integer> computerNumbers) {
+        int strike = 0;
+        int ball = 0;
+
+        for (int i = 0; i < MAX_SIZE; i++) {
+            if (playerNumbers.get(i).equals(computerNumbers.get(i))) {
+                strike++;
+            } else if (computerNumbers.contains(playerNumbers.get(i))) {
+                ball++;
+            }
+        }
+        return new Result(strike, ball);
+    }
+
+    public int decideGameContinue() {
+        return this.player.validateGameStatusData(this.player.inputGameStatusData());
+    }
 }
