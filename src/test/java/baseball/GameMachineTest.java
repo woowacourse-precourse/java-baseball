@@ -1,5 +1,6 @@
 package baseball;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -45,7 +46,8 @@ public class GameMachineTest {
     }
 
     @Nested
-    class gamer_의_입력값으로_ball_인지_strike인지_판별하고_game의_ball_count_를_업데이트한다 {
+    @DisplayName("gamer_의_입력값으로_ball_인지_strike인지_판별하고_game의_ball_count_를_업데이트한다")
+    class BallCountUpdateTest {
         @Test
         void 볼_0개_스트라이크_0개() {
             // Given
@@ -97,7 +99,8 @@ public class GameMachineTest {
     }
 
     @Nested
-    class gamer에게_입력받은_값이 {
+    @DisplayName("gamer에게_입력받은_값이")
+    class ReplayAskTest {
         @Test
         void replay_값이면_true를_반환하고() {
             // Given
