@@ -64,12 +64,16 @@ public class BaseBallGame {
 
     public String getUserInput() {
         printInputRequest();
-        String userInput = Console.readLine();
+        String userInput = readLine();
         return userInput;
     }
 
     public void printInputRequest() {
         this.gameMessageDisplay.printInputRequestMessage();
+    }
+
+    public String readLine() {
+        return Console.readLine();
     }
 
     public boolean isValidInput(String userInput) {
@@ -124,7 +128,7 @@ public class BaseBallGame {
 
     public int askStopOrRegame() {
         this.gameMessageDisplay.printStopOrRegameRequestMessage();
-        String userChoice = Console.readLine();
+        String userChoice = readLine();
         int stopOrRegame = STOP;
 
         if (isValidChoice(userChoice)) {
