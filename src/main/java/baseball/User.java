@@ -19,12 +19,30 @@ public class User {
                 .map(number -> Integer.parseInt(number))
                 .collect(Collectors.toList());
 
-        if(!isValidNumbers(inputNumbers)) {
+        if(!isValidNumber(inputNumbers)) {
             throw new IllegalArgumentException();
         }
 
         return inputNumbers;
     }
+
+
+    public Integer getNumberToContinueGame() {
+        String userInput = readLine();
+
+        if(!isValidInput(userInput)) {
+            throw new IllegalArgumentException();
+        }
+
+        Integer inputNumber = Integer.parseInt(userInput);
+
+        if(!isValidNumber(inputNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        return inputNumber;
+    }
+
 
     public boolean isValidInput(List<String> input) {
         try {
@@ -36,7 +54,17 @@ public class User {
         }
     }
 
-    public boolean isValidNumbers(List<Integer> numbers) {
+    public boolean isValidInput(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+//            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean isValidNumber(List<Integer> numbers) {
         if(numbers.size() != 3)
             return false;
         for(Integer number: numbers) {
@@ -48,4 +76,12 @@ public class User {
         }
         return true;
     }
+
+    public boolean isValidNumber(Integer number) {
+        if(number < 1 || number > 2) {
+            return false;
+        }
+        return true;
+    }
+
 }
