@@ -62,7 +62,11 @@ public class Application {
         validNotNumber(inputNum);
     }
     public static void validLength(String inputNum) {
+        if (inputNum.length() > 3) {
+            throw new IllegalArgumentException();
+        }
     }
+
     public static void validDuplication(String inputNum) {
     }
     public static void validNotNumber(String inputNum) {
