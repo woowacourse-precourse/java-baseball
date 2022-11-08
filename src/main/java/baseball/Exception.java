@@ -3,10 +3,10 @@ package baseball;
 public class Exception {
 
     public static boolean isException(String number) {
-        if (isNumber(number)) {
+        if (!isNumber(number)) {
             return true;
         }
-        if (isThreeNumber(number)) {
+        if (!isThreeNumber(number)) {
             return true;
         }
         if (isRedundancy(number)) {
