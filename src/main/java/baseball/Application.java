@@ -11,7 +11,7 @@ public class Application {
     static boolean keepSmallGaming = true;
     static int strike, ball;
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             playSmallGame();
@@ -19,7 +19,7 @@ public class Application {
         } while (keepGaming);
     }
 
-    static boolean isKeepGaming() {
+    static void isKeepGaming() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String endGame = Console.readLine();
         if (endGame.equals("1")) {
@@ -29,30 +29,27 @@ public class Application {
         } else {
             throw new IllegalArgumentException("잘못된 값을 입력하여 프로그램을 종료합니다.");
         }
-        return keepGaming;
     }
 
     static void playSmallGame() {
-        do {
-            List<Integer> comNumbers = new ArrayList<>();
-            List<Integer> userNumbers = new ArrayList<>();
-            generateNumber();
+        List<Integer> comNumbers = generateNumber();
+        List<Integer> userNumbers;
 
-            inputNumber();
+        do {
+            userNumbers = inputNumber();
             calc(userNumbers, comNumbers);
             printAResult(ball, strike);
             isKeepSmallGaming();
         } while (keepSmallGaming);
     }
 
-    static boolean isKeepSmallGaming() {
+    static void isKeepSmallGaming() {
         if (strike == 3 && ball == 0) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             keepSmallGaming = false;
         } else {
             keepSmallGaming = true;
         }
-        return keepSmallGaming;
     }
 
     static List<Integer> generateNumber() {
