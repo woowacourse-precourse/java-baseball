@@ -26,8 +26,7 @@ public class View {
         try {
             // 형변환 check
             s = Console.readLine();
-            Integer.parseInt(s);
-            if(s.length()>3){
+            if(s.length() > 3 || !s.matches("^[1-9]+$")){
                 throw new IllegalArgumentException();
             }
             return s;
