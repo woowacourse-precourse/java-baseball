@@ -9,7 +9,7 @@ public class Util {
         }
     }
     public static void isNumber(String inputNumber) {
-        for (int i=0; i<inputNumber.length();i++) {
+        for (int i=0; i < inputNumber.length(); i++) {
             char number = inputNumber.charAt(i);
             char startNum = (char)(MIN_NUM+'0');
             char endNum = (char)(MAX_NUM+'0');
@@ -20,7 +20,7 @@ public class Util {
         }
     }
     public static void isSameEachNumber(String inputNumber) {
-        for (int i=0; i<inputNumber.length()-1;i++) {
+        for (int i=0; i < inputNumber.length() - 1; i++) {
             String eachNumber = inputNumber.substring(i+1);
             if (eachNumber.contains(Character.toString(inputNumber.charAt(i)))) {
                 throw new IllegalArgumentException();
