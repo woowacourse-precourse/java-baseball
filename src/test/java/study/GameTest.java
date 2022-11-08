@@ -23,7 +23,7 @@ class GameTest {
     void 게임_시작_컴퓨터_랜덤_생성() {
         Game game = new Game();
         game.doGame();
-        System.out.println(game.getComputerNums().getNums());
+    //    System.out.println(game.getComputerNums().getNums());
     }
 
   //  @ParameterizedTest
@@ -33,8 +33,8 @@ class GameTest {
         System.setIn(in);
         Game game = new Game();
         game.doGame();
-        System.out.println(game.getPlayerNums().getNums());
-        System.out.println(game.getComputerNums().getNums());
+      //  System.out.println(game.getPlayerNums().getNums());
+      //  System.out.println(game.getComputerNums().getNums());
     }
 
  //   @Test

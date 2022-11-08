@@ -6,6 +6,8 @@ import static baseball.Constraint.CONTINUE;
 import static baseball.Constraint.NOTHING;
 import static baseball.Constraint.OPENING_MENT;
 
+import baseball.rules.Ball;
+import baseball.rules.Strike;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
@@ -24,9 +26,6 @@ public class Game {
 
     public void doGame() throws IllegalArgumentException{
         this.computerNums.setNums();
-        // ===================
-        //System.out.print(this.computerNums.getNums());
-        // ===================
         do {
             playerNums.setNums();
         } while (compare());
@@ -41,21 +40,12 @@ public class Game {
     private boolean compare() {
         Ball ball = new Ball(this.computerNums, this.playerNums);
         Strike strike = new Strike(this.computerNums, this.playerNums);
-        ball.calculator();
-        strike.calculator();
-        if (ball.getBallNums() == 0 && strike.getStrikeNums() == 0) {
+        if (ball.getNums() == 0 && strike.getNums() == 0) {
             System.out.println(NOTHING);
         }
-        return strike.getStrikeNums() != 3;
+        return strike.getNums() != 3;
     }
 
-    public ComputerNums getComputerNums() {
-        return computerNums;
-    }
-
-    public PlayerNums getPlayerNums() {
-        return playerNums;
-    }
 
     public boolean askContinue() {
         System.out.println(ASK_CONTINUE_MENT);
