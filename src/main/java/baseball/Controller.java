@@ -12,8 +12,8 @@ import static baseball.Rule.COMMAND_END;
 
 public class Controller {
 
-    private List<Integer> computerNumber;
-    private boolean isPlaying = true;
+    private static List<Integer> computerNumber;
+    private static boolean isPlaying = true;
 
     private static final String STRIKE ="strike";
     private static final String STRIKE_KOR ="스트라이크";
@@ -46,7 +46,7 @@ public class Controller {
 //        }while(!isCorrect(resultMap));
 //    }
 
-    public void generate() {
+    public static void generate() {
         View.printStart();
         computerNumber = Model.createComputerNumber();
         do {
@@ -60,7 +60,7 @@ public class Controller {
         }while(isPlaying);
     }
 
-    public Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
+    public static Map<String, Integer> checkAnswer(List<Integer> computerNumber, List<Integer> playerNumber) {
         Map<String, Integer> resultMap = new HashMap<>();
         for (int i = 0; i < DIGITS ; i++) {
             if (computerNumber.contains(playerNumber.get(i))) {
@@ -74,7 +74,7 @@ public class Controller {
     }
 
     //볼인지 스트라이크인지 확인하기
-    public void checkBallOrStrike(Integer computerNum, Integer playerNum, Map<String, Integer> resultMap) {
+    public static void checkBallOrStrike(Integer computerNum, Integer playerNum, Map<String, Integer> resultMap) {
         if (computerNum.equals(playerNum)) {
             int oldValue = resultMap.getOrDefault(STRIKE, 0);
             resultMap.put(STRIKE, oldValue + 1);
@@ -84,7 +84,7 @@ public class Controller {
         resultMap.put(BALL, oldValue + 1);
     }
 
-    public String createHint(Map<String, Integer> resultMap) {
+    public static String createHint(Map<String, Integer> resultMap) {
         List<String> answer = new ArrayList<>();
         if (resultMap.containsKey(BALL)) {
             answer.add(String.format("%d%s", resultMap.get(BALL), BALL_KOR));
@@ -100,11 +100,11 @@ public class Controller {
         return String.join(" ", answer).trim();
     }
 
-    public boolean isCorrect(Map<String, Integer> resultMap) {
+    public static boolean isCorrect(Map<String, Integer> resultMap) {
         return resultMap.containsKey(STRIKE) && resultMap.get(STRIKE) == DIGITS;
     }
 
-    public void restartOrEnd(String input) {
+    public static void restartOrEnd(String input) {
         if (input.equals(COMMAND_RESTART)) {
             computerNumber = Model.createComputerNumber();
         }
