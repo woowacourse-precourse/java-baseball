@@ -35,7 +35,8 @@ public class BaseballGame {
         OutputView.printResult(userScore);
         if (answer.isUserCorrect(userScore)) {
             OutputView.printGameEnd();
-        } else if (!answer.isUserCorrect(userScore)) {
+        }
+        if (!answer.isUserCorrect(userScore)) {
             guessAnswer(answer);
         }
     }
