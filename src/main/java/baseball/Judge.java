@@ -3,8 +3,8 @@ package baseball;
 import java.util.ArrayList;
 
 public class Judge {
-  private Computer computer;
-  private Player player;
+  private final Computer computer;
+  private final Player player;
   private static final int MAX_SIZE = 3;
 
   public Judge(){
