@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.List;
+
 public class ExceptionBaseball {
     public static final boolean USER_LENGTH_NOT_3 = true;
     public static final boolean ALPHA_IN_USER = true;

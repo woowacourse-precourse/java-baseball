@@ -1,7 +1,8 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import camp.nextstep.edu.missionutils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,47 +18,63 @@ public class Application {
         }
         return userNumList;
     }
+
+    public static List<Integer> getUserNum() {
+        String userNum = readLine();
+        if (inputErrorHandle(userNum) > 0)
+            return null;
+        return getStringToIntegerList(userNum);
+    }
+
+    public static int inputErrorHandle(String userNum) {
+        if (ExceptionBaseball.checkUserNumAlpha(userNum)) {
+            System.out.println(INPUT_ERROR);
+            return 1;
+        } else if (ExceptionBaseball.checkUserNumLength(userNum)) {
+            System.out.println(LENGTH_ERROR);
+            return 2;
+        }
+        return 0;
+    }
+
+    public static void showBallCount(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+        } else if (ball > 0) {
+            System.out.printf("%d볼 ", ball);
+        } else if (strike > 0) {
+            System.out.printf("%d스트라이크\n", strike);
+        }
+    }
     public static int showPrompt(List<Integer> answer) {
-        List<Integer> userNumList;
-        String userNum = null;
-        while (true) {
+        List<Integer> userNum;
+        boolean result = false;
+        while (result == false) {
             System.out.println("숫자를 입력해주세요 : ");
-            userNum = Console.readLine();
-            userNumList = getStringToIntegerList(userNum);
-            if (ExceptionBaseball.checkUserNumAlpha(userNum)) {
-                System.out.println(INPUT_ERROR);
+            if ((userNum = getUserNum()) == null)
                 continue;
-            } else if (ExceptionBaseball.checkUserNumLength(userNum)) {
-                System.out.println(LENGTH_ERROR);
-                continue;
-            }
-            int strike = CheckBallCount.countStrike(userNumList, answer);
-            int ball = CheckBallCount.countBall(userNumList, answer);
-            if (ball == 0 && strike == 0) {
-                System.out.println("낫싱");
-            } else if (ball > 0) {
-                System.out.printf("%d볼 ", ball);
-            } else if (strike > 0) {
-                System.out.printf("%d스트라이크\n", strike);
-            }
+            int strike = CheckBallCount.countStrike(userNum, answer);
+            int ball = CheckBallCount.countBall(userNum, answer);
+            showBallCount(ball, strike);
             if (strike == 3) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-                break;
+                result = true;
             }
         }
-        while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            try {
-                int ExitOrNew = Integer.parseInt(Console.readLine());
-                if (ExitOrNew != 1 && ExitOrNew != 2) {
-                    System.out.println("1 혹은 2를 입력해주세요");
-                    continue;
-                }
-                return ExitOrNew;
-            } catch (Exception e) {
-                System.out.println("숫자를 입력해주세요");
-            }
-        }
+//        while (true) {
+//            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+//            try {
+//                int ExitOrNew = Integer.parseInt(readLine());
+//                if (ExitOrNew != 1 && ExitOrNew != 2) {
+//                    System.out.println("1 혹은 2를 입력해주세요");
+//                    continue;
+//                }
+//                return ExitOrNew;
+//            } catch (Exception e) {
+//                System.out.println("숫자를 입력해주세요");
+//            }
+//        }
+        return 1;
     }
 
     public static List<Integer> getAnswer() {
