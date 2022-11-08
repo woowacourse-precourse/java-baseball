@@ -48,6 +48,16 @@ class ApplicationTest extends NsTest {
         assertThat(app.checkIsDigit(falseNumber)).isFalse();
     }
 
+    @Test
+    void testCreateAnswer() {
+        String answer = Application.createAnswer();
+
+        assertThat(answer.length()).isEqualTo(3);
+        for (int i=0; i<3; i++){
+            assertThat(answer.charAt(i)).isLessThanOrEqualTo('9');
+            assertThat(answer.charAt(i)).isGreaterThanOrEqualTo('1');
+        }
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
