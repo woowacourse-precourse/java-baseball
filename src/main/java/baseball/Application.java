@@ -4,7 +4,6 @@ public class Application {
 
     public static String OK = "1";
     public static String NO = "2";
-
     public static void playBall (Computer computer, Player player){
         player.guessAnswer();
         computer.resetHintMap();
@@ -34,15 +33,13 @@ public class Application {
         else if(player.ResponseOfRestart.equals(NO)){
             System.out.println("게임 종료");
         }
-        else {
-            // 예외 처리
-        }
     }
 
     public static void resetGame(Computer computer, Player player){
         computer.resetAll();
         player.resetAll();
     }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");

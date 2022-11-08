@@ -22,17 +22,15 @@ public class Player {
     public static void guessAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
         String input = Console.readLine();
-        try {
-            isValidAnswer(input);
-            Answer = changeStringtoList(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        isValidAnswer(input);
+        Answer = changeStringtoList(input);
     }
 
     public static void responseRestart(){
         ResponseOfRestart = Console.readLine();
+        if(!ResponseOfRestart.equals("1") && !ResponseOfRestart.equals("2")){
+            throw new IllegalArgumentException("게임 종료");
+        }
     }
-
 
 }
