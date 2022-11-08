@@ -32,15 +32,17 @@ public class RandomNumberGenerator {
     }
 
     public static List<Integer> getRandomNumber() {
-        int numberCase = 0;
+        int numberCase = 1;
         List<Integer> randomNumber = new ArrayList<>();
         boolean generationComplete = false;
 
-        while ((numberCase < MAX_NUMBER_OF_CASE) && !generationComplete) {
+        while ((numberCase <= MAX_NUMBER_OF_CASE) && !generationComplete) {
             randomNumber = generateRandomNumber();
             generationComplete = checkDuplicateNumber(randomNumber);
             numberCase++;
         }
+
+        GenerationValidate.validate(numberCase);
 
         return randomNumber;
     }
