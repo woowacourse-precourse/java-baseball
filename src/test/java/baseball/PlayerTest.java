@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import static baseball.Player.*;
+import static baseball.SystemMessage.INVALID_LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -36,13 +37,13 @@ public class PlayerTest {
         String input = "12";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-
-        boolean exceptionCatched = false;
+        
+        String valid_message = "";
         try {
             getAnswer();
         } catch (IllegalArgumentException e) {
-            exceptionCatched = true;
+            valid_message = e.getMessage();
         }
-        assertTrue(exceptionCatched);
+        assertThat(valid_message).isEqualTo(INVALID_LENGTH);
     }
 }
