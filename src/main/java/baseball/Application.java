@@ -48,15 +48,28 @@ class RandomNumber {
 
 // 플레이어 입력값
 class playerNumberChoice {
+
     public List<Integer> plyerNuber() {
         System.out.println("숫자를 입력하세요");
-        String userNum = Console.readLine();
-        String[] s = userNum.split("");
         List<Integer> playerNum = new ArrayList<>();
-        for (int i = 0; i < userNum.length(); i++) {
-            playerNum.add(Integer.parseInt(s[i]));
+        PlayAgain playAgain = new PlayAgain();
+        boolean again = true;
+        try {
+            String userNum = Console.readLine();
+
+            String[] s = userNum.split("");
+
+            for (int i = 0; i < userNum.length(); i++) {
+                playerNum.add(Integer.parseInt(s[i]));
+            }
+
+            System.out.println("내 숫자= " + playerNum);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 값을 입력하여 자동 종료됩니다.");
+            System.exit(0);
         }
-        System.out.println("내 숫자= " + playerNum);
+
         return playerNum;
     }
 }
@@ -98,7 +111,7 @@ class RefereeCheck {
         } else if (ballNumber == 0) {
             return strikeNumber + "스트라이크";
         }
-        return ballNumber + "볼" + strikeNumber + "스트라이크";
+        return ballNumber + "볼" + " " + strikeNumber + "스트라이크";
     }
 }
 
