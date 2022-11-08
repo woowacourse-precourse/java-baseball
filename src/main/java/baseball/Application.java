@@ -1,8 +1,14 @@
 package baseball;
 
 public class Application {
-    private static BaseballGame game = new BaseballGame();
+
+    private static int start = 1;
+
     public static void main(String[] args) {
-        game.GameStart();
+        BaseballGame game = new BaseballGame();
+        while(start!=2){
+            start = game.GameStart();
+        }
+
     }
 }

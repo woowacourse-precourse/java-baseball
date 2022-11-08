@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Generator {
 
-    public HashMap<Character,Integer> computer;
+    public static HashMap<Character,Integer> computer;
     private static StringBuilder sb;
 
     public HashMap<Character,Integer> Generator(){
@@ -26,11 +26,10 @@ public class Generator {
              else{
                  sb.append(randomNumber);
              }
-
          }
     }
 
-    public boolean IsException(char number,int index){
+    public static boolean IsException(char number,int index){
         if(computer.containsKey(number))return true;
         else computer.put(number,index);
         return false;
