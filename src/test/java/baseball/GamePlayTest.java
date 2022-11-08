@@ -80,7 +80,15 @@ public class GamePlayTest {
     }
     @Test
     void 결과_값이_낫싱(){
+        // given
+        List<Integer> computerNumber = new ArrayList<>(Arrays.asList(1,5,9));
+        List<Integer> userNumber = new ArrayList<>(Arrays.asList(2,4,8));
 
+        // when
+        gamePlay.getResult(userNumber,computerNumber);
+
+        // then
+        Assertions.assertEquals("낫싱",outputStreamCaptor.toString().trim());
     }
     @Test
     void 컴퓨터의_숫자가_3자리(){
