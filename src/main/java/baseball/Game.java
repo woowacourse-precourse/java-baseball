@@ -25,7 +25,7 @@ public class Game {
             while (status == RUNNING) {
                 // 1. 게임을 시작할 때 3자리 숫자를 생성
                 generateNumbers();
-                System.out.println(numbersMap);
+
                 // 2. 3STRIKE 일때 까지 게임을 진행
                 proceed();
 
