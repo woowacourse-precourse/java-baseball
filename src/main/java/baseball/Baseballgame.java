@@ -22,8 +22,13 @@ public class Baseballgame {
     }
 
     public void game() {
-        Balls comBalls;
-        Result result;
+        Ball comBalls;
+        Checkout check;
+
+        do {
+            printUserInputMessage();
+
+        } while ();
 
         }
 
@@ -33,6 +38,11 @@ public class Baseballgame {
 
         return input.equals(CONTINUE);
     }
+
+    private String getUserInput() {
+        return readLine();
+    }
+
 
     private void printUserInputMessage() {
         System.out.print("숫자를 입력해주세요 : ");
