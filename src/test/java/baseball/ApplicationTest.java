@@ -64,6 +64,20 @@ class ApplicationTest extends NsTest {
             dummyHashmap.put(3,3);
             assertThat(ValidCheck.checkExceptionNumber("123", dummyHashmap)).isNull();
         }
+        @Test
+        void testIsContinue() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> ValidCheck.checkExceptionIsContinue("1234"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
+        @Test
+        void testIsContinue2() {
+            assertSimpleTest(() ->
+                    assertThatThrownBy(() -> ValidCheck.checkExceptionIsContinue("a"))
+                            .isInstanceOf(IllegalArgumentException.class)
+            );
+        }
     }
     @Nested
     class GameManagerTest {
