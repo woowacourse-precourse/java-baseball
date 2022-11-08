@@ -3,6 +3,7 @@ package baseball.controller;
 import java.util.HashSet;
 
 public class Exception {
+    static String CHECK_NUMBER_REGEX = "[0-9]+";
     static void validateAskRestartOrExitInput(String input, int GAME_RESTART, int GAME_EXIT, int GAME_RESTART_OR_EXIT_RESPONSE_LENGTH) {
         validateInputIsNumeric(input);
         validateInputLength(input, GAME_RESTART_OR_EXIT_RESPONSE_LENGTH);
@@ -15,7 +16,7 @@ public class Exception {
     }
 
     static void validateInputIsNumeric(String input){
-        if(!input.matches("[0-9]+"))
+        if(!input.matches(CHECK_NUMBER_REGEX))
             throw new IllegalArgumentException("숫자로 이루어진 입력이 아닙니다.");
     }
     static void validateInputLength(String input, int LENGTH){
