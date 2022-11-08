@@ -67,9 +67,9 @@ class BaseballGame {
             System.out.println("게임을 새로 시작하시려면 1, 종료하려면 2를 입력하세요.");
             reStart = Integer.parseInt(Console.readLine());
             if(reStart == 1)
-                this.end = 0;
-            else
                 this.end = 1;
+            else
+                this.end = 2;
         }
         else {
             if(ballCount == 0) {
@@ -109,9 +109,9 @@ public class Application {
                 baseballGame.writeMyNumList();
                 baseballGame.strikeBall();
                 baseballGame.message();
-                if(baseballGame.end == 0)
+                if(baseballGame.end == 1)
                     break;
-                else if(baseballGame.end == 1) {
+                else if(baseballGame.end == 2) {
                     System.out.println("게임 종료");
                     break loop;
                 }
