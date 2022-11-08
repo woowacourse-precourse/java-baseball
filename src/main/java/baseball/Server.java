@@ -63,6 +63,10 @@ public class Server {
             ++countBalls;
         }
 
-        return new JudgedResultDto(countBalls, countStrikes);
+        if(countBalls == 0 && countStrikes == 0)
+            return JudgedResultDto.makeNothingDto();
+        if(countBalls == 0 && countStrikes == 3)
+            return JudgedResultDto.make3StrikeDto();
+        return JudgedResultDto.makeNormalDto(countBalls, countStrikes);
     }
 }

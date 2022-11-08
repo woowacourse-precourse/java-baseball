@@ -110,7 +110,7 @@ class ServerTest {
             List<Integer> gameNumberList = List.of(2, 3, 9);
             int playerInputNumber = 234;
 
-            JudgedResultDto expectedDto = new JudgedResultDto(0, 2);
+            JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(0, 2);
             JudgedResultDto actualDto =
                 new Server().judgeInputNumber(playerInputNumber, gameNumberList);
 
@@ -129,7 +129,7 @@ class ServerTest {
             List<Integer> gameNumberList = List.of(4, 7, 9);
             int playerInputNumber = 479;
 
-            JudgedResultDto expectedDto = new JudgedResultDto(0, 3);
+            JudgedResultDto expectedDto = JudgedResultDto.make3StrikeDto();
             JudgedResultDto actualDto =
                 new Server().judgeInputNumber(playerInputNumber, gameNumberList);
 
@@ -146,7 +146,7 @@ class ServerTest {
             List<Integer> gameNumberList = List.of(2, 3, 9);
             int playerInputNumber = 186;
 
-            JudgedResultDto expectedDto = new JudgedResultDto(0, 0);
+            JudgedResultDto expectedDto = JudgedResultDto.makeNothingDto();
             JudgedResultDto actualDto =
                 new Server().judgeInputNumber(playerInputNumber, gameNumberList);
 
@@ -163,7 +163,7 @@ class ServerTest {
             List<Integer> gameNumberList = List.of(2, 3, 9);
             int playerInputNumber = 392;
 
-            JudgedResultDto expectedDto = new JudgedResultDto(3, 0);
+            JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(3, 0);
             JudgedResultDto actualDto =
                 new Server().judgeInputNumber(playerInputNumber, gameNumberList);
 
@@ -180,7 +180,7 @@ class ServerTest {
             List<Integer> gameNumberList = List.of(2, 3, 9);
             int playerInputNumber = 329;
 
-            JudgedResultDto expectedDto = new JudgedResultDto(2, 1);
+            JudgedResultDto expectedDto = JudgedResultDto.makeNormalDto(2, 1);
             JudgedResultDto actualDto =
                 new Server().judgeInputNumber(playerInputNumber, gameNumberList);
 

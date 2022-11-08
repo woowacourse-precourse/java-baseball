@@ -119,7 +119,7 @@ class ClientTest {
 
         @Test
         void 결과가_3스트라이크로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto(0, 3);
+            JudgedResultDto judgedResultDto = JudgedResultDto.make3StrikeDto();
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -128,7 +128,7 @@ class ClientTest {
 
         @Test
         void 결과가_2스트라이크로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto(0, 2);
+            JudgedResultDto judgedResultDto = JudgedResultDto.makeNormalDto(0, 2);
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -137,7 +137,7 @@ class ClientTest {
 
         @Test
         void 결과가_2볼_1스트라이크로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto(2, 1);
+            JudgedResultDto judgedResultDto = JudgedResultDto.makeNormalDto(2, 1);
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -146,7 +146,7 @@ class ClientTest {
 
         @Test
         void 결과가_3볼로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto(3, 0);
+            JudgedResultDto judgedResultDto = JudgedResultDto.makeNormalDto(3, 0);
 
             Client.showJudgedResult(judgedResultDto);
 
@@ -155,7 +155,7 @@ class ClientTest {
 
         @Test
         void 결과가_낫싱으로_주어지면_그대로_정상출력한다() {
-            JudgedResultDto judgedResultDto = new JudgedResultDto(0, 0);
+            JudgedResultDto judgedResultDto = JudgedResultDto.makeNothingDto();
 
             Client.showJudgedResult(judgedResultDto);
 
