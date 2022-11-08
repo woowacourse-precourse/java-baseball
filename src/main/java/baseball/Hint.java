@@ -29,17 +29,11 @@ public class Hint {
     }
 
     public boolean isStrike(List<Integer> computerNumber, int userNumber, int index) {
-        if (computerNumber.get(index) == userNumber) {
-            return true;
-        }
-        return false;
+        return (computerNumber.get(index) == userNumber);
     }
 
     public boolean isBall(List<Integer> computerNumber, int userNumber) {
-        if (computerNumber.contains(userNumber)) {
-            return true;
-        }
-        return false;
+        return (computerNumber.contains(userNumber));
     }
 
     public boolean isAllStrike() {
@@ -51,11 +45,7 @@ public class Hint {
     }
 
     public boolean isNothing() {
-        if (strikeCount == 0 && ballCount == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (strikeCount == 0 && ballCount == 0);
     }
 
     public String printHint() {
