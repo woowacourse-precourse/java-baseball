@@ -113,9 +113,11 @@ public class Application {
         while (true) {
             String input = getNumber();
             List<Integer> cnt = compareNumber(input, computer);
-
-            printResult(cnt.get(1), cnt.get(0));
-            if (quit(cnt.get(0))) {
+            int ball = cnt.get(1);
+            int strike = cnt.get(0);
+            
+            printResult(ball, strike);
+            if (quit(strike)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 break;
             }
