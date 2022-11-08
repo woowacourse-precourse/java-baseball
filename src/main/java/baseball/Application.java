@@ -92,4 +92,21 @@ public class Application {
 
         throw new IllegalArgumentException("1, 2 이외의 값을 입력했습니다.");
     }
+
+    public static void playGame() {
+        List<Integer> computer;
+        boolean start = true;
+
+        while (start) {
+            computer = selectNumbers();
+
+            repeatCorrect(computer);
+
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+            String restart = Console.readLine();
+
+            start = isRestart(restart);
+        }
+    }
 }
