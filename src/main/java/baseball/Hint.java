@@ -52,7 +52,7 @@ public class Hint {
     // 볼 (같은 수 == 같은 수 && 같은 자리 != 같은 자리)
     public static int countBall(Integer userValue, Integer userKey, Integer computerValue, Integer computerKey) {
 
-        if ( userKey != computerKey && userValue.equals(computerValue)) {
+        if ( userKey != computerKey && userValue == computerValue ) {
             ball++;
         }
 

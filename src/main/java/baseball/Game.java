@@ -1,9 +1,11 @@
 package baseball;
 
 
+
 import static baseball.Application.end;
 import static baseball.Constant.GAME_END;
 import static baseball.Constant.GAME_OVER;
+import static baseball.Constant.GAME_START;
 import static baseball.Constant.STRIKE;
 import static baseball.Constant.VICTORY;
 
@@ -11,9 +13,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
 
-    public static AppConfig baseball = new AppConfig();
-
-
+    static AppConfig baseBall = new AppConfig();
 
 
     // 게임 반복 기능
@@ -26,21 +26,22 @@ public class Game {
         while ( !recursionGame() );
 
 
-        String result = baseball.printResult().toString();
+        String result = baseBall.printResult().toString();
 
         System.out.println(result);
-        victory();
 
-        System.out.println(GAME_OVER);
+        if (recursionGame()){
+            victory();
 
+            System.out.println(GAME_OVER);
+
+        }
         return rebootGame();
     }
 
     private static boolean recursionGame() {
 
         String readLine = Console.readLine();
-
-        if (Integer.valueOf(readLine).equals(2)) {     end();     }
 
         Hint.loopHint(Input.inputUserNumber(readLine), Player.createComputerNumber());
         String result = Print.printResult().toString();
@@ -52,10 +53,11 @@ public class Game {
 
     private static String rebootGame() {
 
-        if (Console.readLine().equals(1)) {
+        if (Integer.valueOf(Console.readLine()).equals(1)) {
+            System.out.println(GAME_START);
             playGame();
         }
-        if (Console.readLine().equals(2)) {
+        if (Integer.valueOf(Console.readLine()).equals(2)) {
             end();
         }
 
