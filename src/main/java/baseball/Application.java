@@ -14,7 +14,7 @@ public class Application {
     static String str_user;
     static Scanner sc;
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         sc = new Scanner(System.in);
@@ -39,10 +39,10 @@ public class Application {
             }
         }
         sc.close();
-    }
+    }*/
 
 
-/*    public static void computer() {
+    public static void computer() {
         int cnt = 0;
         computer = (int) (Math.random() * 899) + 100; // 100~999 중 1개 선택
         str_com = "";
@@ -60,7 +60,7 @@ public class Application {
             else
                 break;
         }
-    }*/
+    }
 
 /*    public static int getUser() {
         user = sc.nextInt(); // user 입력받기
