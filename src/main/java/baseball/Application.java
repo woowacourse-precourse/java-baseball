@@ -20,18 +20,20 @@ public class Application {
         computerRandomNumber = computerGetRandomNumber();
         System.out.println(computerRandomNumber);
 
-        boolean isNumberAvailable = playerInputNumber();
+        boolean isNumberAvailable = playerInputCheck();
         System.out.println("playerInputNumber 의 isNumberAvailable : " + isNumberAvailable);
         // 입력한 값이 잘못된 값이면 종료함
-        if(!isNumberAvailable){
+        if (!isNumberAvailable) {
             return;
         }
 
         // 결과값을 출력
         System.out.println("결과값 출력 예정");
 
+
         // 1이면 다시 시작, 2이면 종료료
     }
+
     private static List<Integer> computerGetRandomNumber() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -43,25 +45,24 @@ public class Application {
         return computer;
     }
 
-    private static boolean playerInputNumber() {
+    private static boolean playerInputCheck() {
         String input = Console.readLine();
-        boolean checkNumber = false;
+        boolean checkInput = false;
 
-        if(isInteger(input)){
-            checkNumber = isLengthThree(input);
-            System.out.println("isLengthThree 의 checkNumber : " + checkNumber);
-            checkNumber = isNumberDifferent(checkNumber, input);
-            System.out.println("isNumberDifferent 의 checkNumber : " + checkNumber);
+        if (isInteger(input)) {
+            checkInput = isLengthThree(input);
+            System.out.println("isLengthThree 의 checkInput : " + checkInput);
+            checkInput = isNumberDifferent(checkInput, input);
+            System.out.println("isNumberDifferent 의 checkInput : " + checkInput);
         }
-        return checkNumber;
+        return checkInput;
     }
 
     private static boolean isInteger(String input) {
-        try{
+        try {
             Integer.valueOf(input);
             return true;
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
             e.printStackTrace();
             return false;
@@ -70,14 +71,13 @@ public class Application {
 
     private static boolean isLengthThree(String input) {
         boolean checkLength = true;
-        try{
-            if(input.length() != 3){
+        try {
+            if (input.length() != 3) {
                 checkLength = false;
                 System.out.println("숫자의 길이가 3이 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
                 throw new IllegalArgumentException();
             }
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
         return checkLength;
@@ -89,7 +89,7 @@ public class Application {
             set.add(input.charAt(i));
         }
 
-        if(middleCheck){
+        if (middleCheck) {
             middleCheck = isRepeat(set);
         }
         return middleCheck;
@@ -97,14 +97,13 @@ public class Application {
 
     private static boolean isRepeat(Set<Character> set) {
         boolean checkRepeat = true;
-        try{
-            if(set.size() != 3){
+        try {
+            if (set.size() != 3) {
                 checkRepeat = false;
                 System.out.println("서로 다른 숫자가 아닌 잘못된 값을 입력했습니다. 게임을 종료합니다.");
                 throw new IllegalArgumentException();
             }
-        }
-        catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
         return checkRepeat;
