@@ -24,4 +24,9 @@ public class InputException {
         Set<String> uniqueNumber = new HashSet<>(separatedInput);
         return uniqueNumber.size()!=PROPER_LENGTH;
     }
+    public static void isWrongUserInput(String userInput){
+        if((containZero(userInput))||(isNotProperLetter(userInput))||(isNotProperLength(userInput))||(isDuplicate(userInput))){
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
 }
