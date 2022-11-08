@@ -7,8 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+
 
 public class GameTest {
     Game game = new Game();
@@ -180,4 +183,20 @@ public class GameTest {
         }
     }
 
+    @Nested
+    class 사용자입력체크_테스트 {
+        @Test
+        void 사용자입력체크_테스트1_정상() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputMethod = Game.class.getDeclaredMethod("checkUserInput", String.class);
+            checkUserInputMethod.setAccessible(true);
+            checkUserInputMethod.invoke(game, "325");
+        }
+
+        @Test
+        void 사용자입력체크_테스트2_정상() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+            Method checkUserInputMethod = Game.class.getDeclaredMethod("checkUserInput", String.class);
+            checkUserInputMethod.setAccessible(true);
+            checkUserInputMethod.invoke(game, "129");
+        }
+    }
 }
