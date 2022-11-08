@@ -12,9 +12,38 @@ public class Application {
     static List<Integer> target;
     static List<Integer> num;
     private static String regex = "^[1-9]{3}$";
+    private static String regexCode = "^[1-2]$";
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        System.out.println("숫자 야구 게임을 시작합니다.");
+        int gameCode = 1;
+
+        while (gameCode != 2) {
+            setTarget();
+
+            while (true) {
+                System.out.println("숫자를 입력해주세요 : ");
+                checkInput();
+                String compareResultStr = compareNumber();
+                System.out.println(compareResultStr);
+                if (compareResultStr.equals("3스트라이크")) {
+                    System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                    break;
+                }
+            }
+
+            while (true) {
+                System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                String codeStr = Console.readLine();
+                if (checkGameCode(codeStr)) {
+                    gameCode = Integer.parseInt(codeStr);
+                    break;
+                }
+                System.out.println("1과 2 중에 다시 입력해주세요.");
+            }
+        }
+
     }
 
     static void setTarget() {
@@ -81,5 +110,12 @@ public class Application {
         }
 
         return resStr;
+    }
+
+    private static boolean checkGameCode(String gameCodeStr) {
+        if (gameCodeStr.matches(regexCode)) {
+            return true;
+        }
+        return false;
     }
 }
