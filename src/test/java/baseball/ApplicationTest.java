@@ -48,6 +48,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 볼_스트라이크_출력_테스트() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("234", "567", "891", "271", "273");
+                    assertThat(output()).contains("1볼 1스트라이크", "1볼", "낫싱", "2스트라이크", "3스트라이크");
+                },
+                2, 7, 3
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
