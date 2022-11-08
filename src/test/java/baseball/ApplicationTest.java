@@ -32,14 +32,6 @@ class ApplicationTest extends NsTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
-    //각 클래스별로 테스트를 나누기 위해서 공백으로 구분
-
-    @Test
-    void 숫자_동일여부_테스트(){
-        assertTrue(Application.checkTwoNumbersAreSame(1,1));
-        assertFalse(Application.checkTwoNumbersAreSame(1,3));
-    }
-
 
     @Override
     public void runMain() {
