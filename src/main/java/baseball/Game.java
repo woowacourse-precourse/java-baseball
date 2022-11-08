@@ -16,7 +16,8 @@ public class Game {
         } while (!getResult());
     }
 
-    public static void countStrikeBall(List<Integer> computerAnswer, List<Integer> playerAnswer) {
+    public static void countStrikeBall(List<Integer> computerAnswer, String playerAnswerStr) {
+        List<Integer> playerAnswer = Computer.stringToIntegerList(playerAnswerStr);
         strike = 0;
         ball = 0;
         for (int i = 0; i < NUMBER_SIZE; i++) {

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ApplicationTest extends NsTest {
     @Test
     void 입력_길이_오류() {
-        List<Integer> playerAnswer = List.of(1, 2, 3, 4);
+        String playerAnswer = "1234";
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 Computer.validateNumber(playerAnswer));
         assertEquals(LENGTH_ERROR_MESSAGE, exception.getMessage());
@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 입력_중복_오류() {
-        List<Integer> playerAnswer = List.of(1, 3, 3);
+        String playerAnswer = "133";
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 Computer.validateNumber(playerAnswer));
         assertEquals(DUPLICATE_ERROR_MESSAGE, exception.getMessage());
@@ -33,7 +33,7 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 입력_값_오류1() {
-        List<Integer> playerAnswer = List.of(1, 2, 0);
+        String playerAnswer = "12p";
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 Computer.validateNumber(playerAnswer));
         assertEquals(INPUT_ERROR_MESSAGE, exception.getMessage());
