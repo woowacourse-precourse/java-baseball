@@ -1,6 +1,7 @@
 package study.player.playerMember;
 
 import baseball.player.playerMember.PlayerNumbers;
+import baseball.uitls.Hints;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,10 +15,10 @@ class PlayerNumbersTest {
         PlayerNumbers baseNumber = new PlayerNumbers(123);
         PlayerNumbers compareNumber = new PlayerNumbers(123);
 
-        List<Integer> hints = baseNumber.makeHints(compareNumber);
+        Hints hints = baseNumber.makeHints(compareNumber);
 
-        Assertions.assertThat(hints)
-                    .containsExactly(0, 3);
+        Assertions.assertThat(hints.getStrike())
+                .isEqualTo(3);
     }
 
     @Test
@@ -25,10 +26,10 @@ class PlayerNumbersTest {
         PlayerNumbers baseNumber = new PlayerNumbers(123);
         PlayerNumbers compareNumber = new PlayerNumbers(214);
 
-        List<Integer> hints = baseNumber.makeHints(compareNumber);
+        Hints hints = baseNumber.makeHints(compareNumber);
 
-        Assertions.assertThat(hints)
-                    .containsExactly(2, 0);
+        Assertions.assertThat(hints.getBall())
+                .isEqualTo(2);
     }
 
     @Test
@@ -36,9 +37,11 @@ class PlayerNumbersTest {
         PlayerNumbers baseNumber = new PlayerNumbers(123);
         PlayerNumbers compareNumber = new PlayerNumbers(456);
 
-        List<Integer> hints = baseNumber.makeHints(compareNumber);
+        Hints hints = baseNumber.makeHints(compareNumber);
 
-        Assertions.assertThat(hints)
-                .containsExactly(0, 0);
+        Assertions.assertThat(hints.getBall())
+                .isEqualTo(0);
+        Assertions.assertThat(hints.getStrike())
+                .isEqualTo(0);
     }
 }
