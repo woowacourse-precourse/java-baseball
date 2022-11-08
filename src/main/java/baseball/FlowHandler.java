@@ -4,9 +4,9 @@ import java.util.List;
 
 public class FlowHandler {
 
-	private OutputHandler output = new OutputHandler();
-	private InputHandler input = new InputHandler();
-	private BaseballNumberGenerator generator = new BaseballNumberGenerator();
+	private static BaseballNumberGenerator generator = new BaseballNumberGenerator();
+	private static OutputHandler output = new OutputHandler();
+	private static InputHandler input = new InputHandler();
 
 	public int runGame() {
 		List<Integer> baseballNumber = generator.getBaseballNumber();
