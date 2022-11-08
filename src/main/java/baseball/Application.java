@@ -25,6 +25,13 @@ public class Application {
 
       String result = getResult(userInput, computer);
       System.out.println(result);
+
+      if (isAnswer(result)) {
+        if (wantRestart().equals("2")) {
+          break;
+        }
+        computer = initComputer();
+      }
     }
   }
 
@@ -116,5 +123,22 @@ public class Application {
       }
     }
     return ballCount;
+  }
+
+  public boolean isAnswer(String result) {
+    if (result.equals("3스트라이크")) {
+      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+      return true;
+    }
+    return false;
+  }
+
+  public String wantRestart() {
+    System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    String userInput = Console.readLine();
+    if (!(userInput.equals("1")) && !(userInput.equals("2"))) {
+      throw new IllegalArgumentException("잘못된 입력이므로 종료합니다.");
+    }
+    return userInput;
   }
 }
