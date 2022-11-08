@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    BaseBallGame baseBallGame = BaseBallGame.getGame();
+    BaseBallGame baseBallGame = BaseBallGame.getDevice();
 
     @Test
     void 게임종료_후_재시작() {
