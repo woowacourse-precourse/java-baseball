@@ -68,4 +68,10 @@ public class Result {
     public boolean isAllStrike() {
         return strike == BallCollection.BALL_COUNT;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Result result = (Result) obj;
+        return this.ball == result.ball && this.strike == result.strike;
+    }
 }
