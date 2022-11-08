@@ -52,6 +52,15 @@ class ApplicationTest extends NsTest {
         assertThat(output()).isEqualTo("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
+    @Test
+    void 입력값_유효성_테스트1_true() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method isAnswerNumberValid = Application.class.getDeclaredMethod("isAnswerNumberValid", int.class);
+        isAnswerNumberValid.setAccessible(true);
+
+        boolean isAnswerValid = (boolean) isAnswerNumberValid.invoke(application,123);
+
+        assertThat(isAnswerValid).isEqualTo(true);
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
