@@ -8,6 +8,11 @@ public class Computer {
     List<Integer> answer = new ArrayList<>();
     boolean isGameEnd = false;
 
+    void ready(){
+        setAnswer();
+        setIsGameEnd(false);
+    }
+
     void setAnswer() {
         answer.clear();
         while (answer.size() < 3) {
