@@ -31,9 +31,20 @@ public class Baseball {
         }
     }
 
+    private boolean isValidNumber() {
+        if (input.length() != 3) {
+            return false;
+        }
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     private void readNumbers() {
-        String number = Console.readLine();
+        input = Console.readLine();
     }
 
     public void gameStart() {
