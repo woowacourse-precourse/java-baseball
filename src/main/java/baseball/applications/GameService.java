@@ -27,6 +27,13 @@ public class GameService {
         Game game = new Game();
 
         playGame(game);
+        restartGame(game);
+    }
+
+    private void restartGame(Game game) {
+        if (game.resume(Input.askContinue())) {
+            startGame();
+        }
     }
 
     private void playGame(Game game) {
