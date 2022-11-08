@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static baseball.message.ResultMessage.BALL;
-import static baseball.message.ResultMessage.STRIKE;
+import static baseball.message.ScoreMessage.BALL;
+import static baseball.message.ScoreMessage.STRIKE;
 
 public class ScoreService {
 

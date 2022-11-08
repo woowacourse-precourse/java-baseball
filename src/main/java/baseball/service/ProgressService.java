@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 import static baseball.message.GameProgressMessage.END;
 import static baseball.message.GameProgressMessage.RESTART;
-import static baseball.message.ResultMessage.NOTHING;
+import static baseball.message.ScoreMessage.NOTHING;
 import static baseball.util.GameCode.*;
 
 public class ProgressService {

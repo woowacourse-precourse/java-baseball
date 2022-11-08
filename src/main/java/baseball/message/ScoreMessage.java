@@ -1,13 +1,13 @@
 package baseball.message;
 
-public enum ResultMessage {
+public enum ScoreMessage {
     STRIKE("스트라이크"),
     BALL("볼"),
     NOTHING("낫싱");
 
     public final String message;
 
-    ResultMessage(String message) {
+    ScoreMessage(String message) {
         this.message = message;
     }
 

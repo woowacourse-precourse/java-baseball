@@ -9,7 +9,7 @@ import org.mockito.MockedStatic;
 
 import static baseball.message.GameProgressMessage.END;
 import static baseball.message.GameProgressMessage.RESTART;
-import static baseball.message.ResultMessage.*;
+import static baseball.message.ScoreMessage.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
@@ -64,7 +64,7 @@ class ProgressServiceTest {
 
     @Nested
     @DisplayName("올바른 메시지가 나오는지 검증")
-    class getResultMessageOfGuessNumber {
+    class getScoreMessageOfGuessNumber {
         @Test
         @DisplayName("123-123 3스트라이크")
         void case1() {
