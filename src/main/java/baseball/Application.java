@@ -54,13 +54,6 @@ public class Application {
                 .map(s->Integer.valueOf(s))
                 .collect(Collectors.toList());
     }
-    public static List<Integer> getUserAnswer() {
-        String input = Console.readLine();
-        if (!validateGameInput(input))
-            throwIllegalArgumentException();
-        List<Integer> userAnswer = convertInputToList(input);
-        return userAnswer;
-    }
     public static boolean checkBallStrike(List<Integer> gameAnswer, List<Integer> input) {
         int strike = 0;
         int ball = 0;
@@ -101,7 +94,13 @@ public class Application {
         boolean result = false;
         while (!result) {
             System.out.print("숫자를 입력해주세요 : ");
-            result = checkBallStrike(gameAnswer, getUserAnswer());
+            String input = Console.readLine();
+
+            if (!validateGameInput(input))
+                throwIllegalArgumentException();
+
+            List<Integer> userAnswer = convertInputToList(input);
+            result = checkBallStrike(gameAnswer, userAnswer);
         }
     }
     public static boolean checkRestart(String input) {
