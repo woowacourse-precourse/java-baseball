@@ -14,6 +14,8 @@ public class ComputerController {
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼";
     private static final String NOTHING_MESSAGE = "낫싱";
+    private static final String NULL_MESSAGE = "";
+    private static final String SPACING_MESSAGE = " ";
     private int strikeCount;
     private int ballCount;
     OutputView outputView = new OutputView();
@@ -61,18 +63,18 @@ public class ComputerController {
 
     private String getBallHintMessage() {
         if (ballCount > 0) {
-            return ballCount + BALL_MESSAGE + " ";
+            return ballCount + BALL_MESSAGE + SPACING_MESSAGE;
         }
 
-        return "";
+        return NULL_MESSAGE;
     }
 
     private String getStrikeHintMessage() {
         if (strikeCount > 0) {
-            return strikeCount + STRIKE_MESSAGE + " ";
+            return strikeCount + STRIKE_MESSAGE + SPACING_MESSAGE;
         }
 
-        return "";
+        return NULL_MESSAGE;
     }
 
     private String getNotingHintMessage() {
@@ -80,7 +82,7 @@ public class ComputerController {
             return NOTHING_MESSAGE;
         }
 
-        return "";
+        return NULL_MESSAGE;
     }
 
     public boolean isThreeStrike() {
