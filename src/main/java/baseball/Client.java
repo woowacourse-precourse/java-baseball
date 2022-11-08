@@ -54,23 +54,20 @@ public class Client {
     }
 
     public static void showJudgedResult(JudgedResultDto dto) {
-        int countStrikes = dto.getCountStrikes();
-        int countBalls = dto.getCountBalls();
+        String resultMessage;
 
-        if (countBalls == 0 && countStrikes == 0) {
-            System.out.println(MSG_JUDGED_RESULT_NOTHING);
-            return;
+        if (dto.isNothing()) {
+            resultMessage = MSG_JUDGED_RESULT_NOTHING;
+        } else if (dto.isOnlyBalls()) {
+            resultMessage = dto.getCountBalls() + MSG_JUDGED_RESULT_BALLS;
+        } else if (dto.isOnlyStrikes()) {
+            resultMessage = dto.getCountStrikes() + MSG_JUDGED_RESULT_STRIKES;
+        } else {
+            resultMessage = dto.getCountBalls() + MSG_JUDGED_RESULT_BALLS
+                    + " " + dto.getCountStrikes() + MSG_JUDGED_RESULT_STRIKES;
         }
 
-        String resultMessage = "";
-        if (countBalls != 0) {
-            resultMessage += countBalls + MSG_JUDGED_RESULT_BALLS + " ";
-        }
-        if (countStrikes != 0) {
-            resultMessage += countStrikes + MSG_JUDGED_RESULT_STRIKES;
-        }
-
-        System.out.println(resultMessage.strip());
+        System.out.println(resultMessage);
     }
 
     public static void showGameEndMessage() {

@@ -33,4 +33,16 @@ public class JudgedResultDto {
     public boolean is3Strike() {
         return countStrikes == 3;
     }
+
+    public boolean isNothing() {
+        return countBalls == 0 && countStrikes == 0;
+    }
+
+    public boolean isOnlyBalls() {
+        return countBalls > 0 && countStrikes == 0;
+    }
+
+    public boolean isOnlyStrikes() {
+        return countBalls == 0 && countStrikes > 0;
+    }
 }
