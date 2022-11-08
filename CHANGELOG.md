@@ -1,0 +1,20 @@
+- refactor(application): change access modifiers and final and static
+- refactor(controller): change place of showStartMessage for just showing one time
+- feat(application): add function to start baseball application
+- feat(controller): add function to operate game
+- add(service): add function to restart or exit game
+- feat(service): add function to make results
+- feat(view): add function to print request and system messages
+- feat(service): add function to count strike and ball
+- refactor(service): change function name not for duplicate
+- feat(service): add function to get user numbers
+- feat(utils): change method access modifier to use validateUserInput
+- feat(utils): add function to validate input numbers
+- feat(view): add function to print request message to input numbers
+- refactor(vo): add vo to handle user's values
+- refactor(service): change function to initialize master's values
+- feat(service): add function to prepare for game start
+- refactor(vo): add vo to handle master's values
+- feat(utils): add function to generate random numbers
+- docs(readme): add function list
+- feat: setup precourse baseball project
