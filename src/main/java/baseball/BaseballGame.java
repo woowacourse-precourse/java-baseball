@@ -32,6 +32,14 @@ public class BaseballGame {
         while(!exit) {
             playerNum.inputAnswer();
             player = playerNum.getDigits();
+
+            resetScore();
+            calculateScore();
+            printResult();
+
+            if(strike == CNT) {
+                readyToExit(computerNum);
+            }
         }
     }
 
