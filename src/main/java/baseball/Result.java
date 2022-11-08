@@ -34,4 +34,34 @@ public class Result {
 
         return new Result(ball, strike);
     }
+
+    public void printResult() {
+        System.out.println(getMessage());
+    }
+
+    private String getMessage() {
+        if (isNothing()) {
+            return NOTHING_WORD;
+        }
+        if (isBall()) {
+            return ball + BALL_WORD;
+        }
+        if (isStrike()) {
+            return strike + STRIKE_WORD;
+        }
+
+        return ball + BALL_WORD + " " + strike + STRIKE_WORD;
+    }
+
+    private boolean isStrike() {
+        return strike != 0 && ball == 0;
+    }
+
+    private boolean isBall() {
+        return strike == 0 && ball != 0;
+    }
+
+    private boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
 }
