@@ -53,3 +53,43 @@
 
 ### validateCount()
 - count가 0보다 작거나 전체 개수 보다 크면 IllegalArgumentException 발생
+
+## Assertions 분석
+
+### assertSimpleTest()
+- assertTimeoutPreemptively(SIMPLE_TEST_TIMEOUT, executable)
+- 테스트가 SIMPLE_TEST_TIMEOUT 안에 실행되는지 테스트
+
+> assertTimeoutPreemptively() : Executable을 실행해 TIMEOUT이 지나는 순간 테스트를 종료해 테스트가 성공한지 확인
+
+### assertRandomTest()
+- 테스트가 RANDOM_TEST_TIMEOUT 안에 제대로 실행되는지 테스트
+- MockedStatic 객체를 이용해 static 메소드 테스트
+- verification이 실행되면 value값들 Return
+
+> 왜 MockedStatic을 썼을까 궁금했다.
+> 
+> Mockito는 final과 static 메서드를 mocking 하는걸 지원하지 않음
+> 
+> mocking은 이 static mock이 생성된 쓰레드에만 영향을 미치며 다른 쓰레드에서 이 객체를 사용하는 건 안전하지 않다.
+> 이 객체의 ScopedMock.close()가 호출되면 static mock이 해제된다. 이 객체가 닫히지 않으면 static mock 객체는 시작 쓰레드에서 활성 상태로 유지된다.
+> 따라서 예를 들어 JUnit 규칙이나 확장을 사용해 명시적으로 관리되는 경우가 아니면 try-with-resources 문 안에서 이 객체를 만드는 것이 좋다.
+
+### assertRandomNumberInListTest
+- pickNumberInList(anyList())가 RANDOM_TEST_TIMEOUT 안에 제대로 실행되는지 테스트
+
+> 특정한 값이 아닌 임의이 값에 대해 실행하고 싶을 때 ArgumentMatchers를 이용해 인자 값을 지정하면 된다.
+> 
+> Matchers 클래스는 anyList()뿐 아니라 anyInt(), anyString(), anyLong() 등 다양한 메서드를 제공한다.
+
+### assertRandomNumberInRangeTest
+- pickNumberInRange(anyInt(), anyInt())가 RANDOM_TEST_TIMEOUT 안에 제대로 실행되는지 테스트
+
+### assertRandomUniqueNumbersInRangeTest
+- pickUniqueNumbersInRange(anyInt(), anyInt(), anyInt())가 RANDOM_TEST_TIMEOUT 안에 제대로 실행되는지 테스트
+
+### assertShuffleTest
+- shuffle(anyList())가 RANDOM_TEST_TIMEOUT 안에 제대로 실행되는지 테스트
+
+참고:
+- https://onlyfor-me-blog.tistory.com/445
