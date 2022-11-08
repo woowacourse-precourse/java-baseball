@@ -47,10 +47,10 @@ public class BaseballService {
     public boolean reStart() {
         System.out.println(TRY_AGAIN_MESSAGE);
         String restart = Input.inputUserNumber();
-        if (restart.equals("1")) {
+        if (restart.equals(SYSTEM_RESTART)) {
             return true;
         }
-        if (restart.equals("2")) {
+        if (restart.equals(SYSTEM_SHUTDOWN)) {
             return false;
         }
         throw new IllegalArgumentException();
