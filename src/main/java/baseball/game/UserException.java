@@ -1,5 +1,6 @@
 package baseball.game;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,5 +24,9 @@ public class UserException {
             return true;
         }
         return false;
+    }
+
+    private static boolean isContainZero(String userInputNumber) {
+        return Arrays.asList(userInputNumber.split("")).contains("0");
     }
 }
