@@ -19,6 +19,7 @@ public class startGame {
                 newInputNumber = inputNumber.makeInputNumber();
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
+                throw e;
             }
 
             if(baseball.printCase.makePrintCase(newAnswerNumber, newInputNumber)) {
