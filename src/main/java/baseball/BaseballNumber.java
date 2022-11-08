@@ -6,7 +6,6 @@ import java.util.List;
 public class BaseballNumber {
     protected List<Integer> baseballNumber;
 
-
     public List<Integer> getBaseballNumber() {
         return baseballNumber;
     }

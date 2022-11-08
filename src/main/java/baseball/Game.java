@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import utils.InputUtils;
@@ -31,7 +32,7 @@ public class Game {
             try {
                 playerInput = isValidPlayerInput();
             } catch (IllegalArgumentException exception) {
-                exception.printStackTrace();
+                exception.notify();
                 continue;
             }
             return playerInput == 1;
@@ -40,7 +41,7 @@ public class Game {
 
     public Integer isValidPlayerInput() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String playerInput = scanner.nextLine();
+        String playerInput = scanner.nextLine().trim();
 
         if (!InputUtils.isDigit(playerInput) || !InputUtils.isDigitInValidRange(playerInput)) {
             throw new IllegalArgumentException();
@@ -74,7 +75,8 @@ public class Game {
             System.out.println(hint);
 
             if (isGameEnd(hint)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                System.out.println("3개의 숫자를 모두 맞히셨습니다!");
+                System.out.println("게임 종료");
                 break;
             }
         }
@@ -82,7 +84,7 @@ public class Game {
 
     public String getPlayerBaseballNumber() {
         System.out.println("숫자를 입력해주세요 :");
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 }
 
