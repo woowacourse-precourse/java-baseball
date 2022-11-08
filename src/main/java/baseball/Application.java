@@ -32,23 +32,26 @@ class Game {
     // 1. 난수 발생 메서드 구현
     public ArrayList<Integer> makingRandomNum() {
         ArrayList<Integer> randomNum = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        while (randomNum.get(0).equals(randomNum.get(1)) || randomNum.get(0).equals(randomNum.get(2)) || randomNum.get(1).equals(randomNum.get(2))) {
+            randomNum.clear();
+            randomNum.add(Randoms.pickNumberInRange(1, 9));
+            randomNum.add(Randoms.pickNumberInRange(1, 9));
             randomNum.add(Randoms.pickNumberInRange(1, 9));
         }
         return randomNum;
     }
 
     // 2. 참여자 숫자 입력 메서드
-    public String inputNum(){
+    public String inputNum() {
         return Console.readLine();
     }
 
-    public boolean comparingNum(ArrayList<Integer> randomNum, int strikeCount){
-        while(strikeCount != 3){
+    public boolean comparingNum(ArrayList<Integer> randomNum, int strikeCount) {
+        while (strikeCount != 3) {
             int ballCount = 0;
             strikeCount = 0;
             String inputNum = inputNum();
-            if (!ErrorChecking.errorChecking(inputNum)){
+            if (!ErrorChecking.errorChecking(inputNum)) {
                 return false;
             }
             ballCount = checkingBall(randomNum, inputNum, ballCount);
@@ -59,33 +62,34 @@ class Game {
     }
 
     // 3. strike 개수 검사 메소드
-    public int checkingStrike(ArrayList<Integer> randomNum, String inputNum, int strikeCount){
-        for(int i = 0; i < 3; i ++){
-            if (randomNum.get(i) == inputNum.charAt(i) - '0') strikeCount ++;
+    public int checkingStrike(ArrayList<Integer> randomNum, String inputNum, int strikeCount) {
+        for (int i = 0; i < 3; i++) {
+            if (randomNum.get(i) == inputNum.charAt(i) - '0') strikeCount++;
         }
         return strikeCount;
     }
 
     // 4. ball 개수 검사 메소드
-    public int checkingBall(ArrayList<Integer> randomNum, String inputNum, int ballCount){
+    public int checkingBall(ArrayList<Integer> randomNum, String inputNum, int ballCount) {
         StringBuilder SrandomNum = new StringBuilder();
-        for(int num : randomNum){
+        for (int num : randomNum) {
             SrandomNum.append(num);
         }
         String comparing = SrandomNum.toString();
-        for(int i = 0; i < 3; i++){
-            if (comparing.contains(String.valueOf(inputNum.charAt(i))) && comparing.charAt(i) != inputNum.charAt(i)){
-                ballCount ++;
+        for (int i = 0; i < 3; i++) {
+            if (comparing.contains(String.valueOf(inputNum.charAt(i))) && comparing.charAt(i) != inputNum.charAt(i)) {
+                ballCount++;
             }
         }
         return ballCount;
     }
 }
 
-class ErrorChecking{
-    public static boolean errorChecking(String inputNum){
+class ErrorChecking {
+    public static boolean errorChecking(String inputNum) {
         return checkingInputNum(inputNum) && checkingContaingZero(inputNum) && checkingDigit(inputNum);
     }
+
     // 1. 참여자 입력 숫자 점검
     public static boolean checkingInputNum(String inputNum) {
         try {
@@ -101,11 +105,11 @@ class ErrorChecking{
     }
 
     // 2. 참여자가 입력 숫자가 세 자리 숫자인지 확인하는 메서드
-    public static boolean checkingDigit(String inputNum){
-        if(inputNum.length() !=3){
+    public static boolean checkingDigit(String inputNum) {
+        if (inputNum.length() != 3) {
             try {
                 throw new IllegalArgumentException("세 자리 정수를 입력해주세요");
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 return false;
             }
         }
@@ -113,11 +117,11 @@ class ErrorChecking{
     }
 
     // 3. 참여자가 입력한 숫자가 0을 포함하는지 확인하는 메서드
-    public static boolean checkingContaingZero(String inputNum){
-        if(inputNum.contains("0")){
+    public static boolean checkingContaingZero(String inputNum) {
+        if (inputNum.contains("0")) {
             try {
                 throw new IllegalArgumentException("각 자릿수에는 0이 들어가지 않습니다.");
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 return false;
             }
         }
