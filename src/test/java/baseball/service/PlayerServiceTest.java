@@ -20,5 +20,14 @@ class PlayerServiceTest {
         playerService.setPlayerNumber(playerInputNumbers);
         assertThat(playerService.getPlayerNumber()).isEqualTo(playerInputNumbers);
     }
+    @Test
+    @DisplayName("ballCount Test")
+    void checkBallCount() {
+        ArrayList<Integer> computerNumbers = new ArrayList<>(Arrays.asList(3,2,5));
+        ArrayList<Integer> playerNumbers = new ArrayList<>(Arrays.asList(9,2,3));
+        PlayerService playerService = new PlayerService();
+        playerService.setPlayerNumber(playerNumbers);
+        assertThat(playerService.checkBallCount(computerNumbers)).isEqualTo(Arrays.asList(1,1));
+    }
 
 }
