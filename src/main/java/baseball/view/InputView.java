@@ -15,7 +15,7 @@ public class InputView {
     }
 
     public String InputUserNum() {
-        System.out.println(INPUT_USERNUM);
+        System.out.print(INPUT_USERNUM);
         return Console.readLine();
     }
 
