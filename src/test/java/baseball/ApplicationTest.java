@@ -1,6 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.HashMap;
+import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -26,6 +28,14 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 기능1_랜덤넘버_테스트 () {
+        HashSet<Character> checkDuplicate = new HashSet<>();
+        String computerNumber = Application.getRandomNumbers();
+        computerNumber.chars().forEach(item -> checkDuplicate.add((char) item));
+        assertThat(checkDuplicate.size()).isEqualTo(3);
     }
 
     @Override

@@ -8,23 +8,24 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Application {
     public static void main(String[] args) {
-        String computerNumbers = getRandomNumbers(3);
+        String computerNumbers = getRandomNumbers();
         String userNumbers = readLine();
         checkUserNumbersValidation(userNumbers);
     }
 
-    private static String getRandomNumbers(int numbers) {
+    public static String getRandomNumbers() {
         List<Integer> randomNumbers = new ArrayList<>();
-        while (randomNumbers.size() < numbers) {
+        while (randomNumbers.size() < 3) {
             Integer tempNumber = pickNumberInRange(1, 9);
             if (!randomNumbers.contains(tempNumber)) {
                 randomNumbers.add(tempNumber);
             }
         }
-        return randomNumbers.toString();
+        return randomNumbers.toString().replaceAll("[^0-9]","");
     }
 
-    private static void checkUserNumbersValidation(String userNumbers) {
+    public static void checkUserNumbersValidation(String userNumbers) {
+        userNumbers.replaceAll("[^0-9]","");
         if (userNumbers.length() != 3) {
             throw new IllegalArgumentException("3자리 숫자를 입력해주세요.");
         }
@@ -34,5 +35,7 @@ public class Application {
             throw new IllegalArgumentException("숫자를 입력해주세요.");
         }
     }
+
+
 }
 
