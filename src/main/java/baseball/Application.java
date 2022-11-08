@@ -9,6 +9,8 @@ public class Application {
         private static final int NUM_DIGIT = 3;
         private static final int NUM_BOUNDARY = 10;
         private static final boolean PLAYING = true;
+        private static final boolean NOT_VERIFY = false;
+        private static final boolean VERIFY = true;
 
         private int[] goalArr;
         private int[] usageArr;
@@ -42,14 +44,18 @@ public class Application {
         private boolean Ready() {
             String Ball = inputBall();
             if (verifyBall(Ball)) {
-                makeBall();
+//                makeBall();
             } else {
                 throw new IllegalArgumentException();
             }
         }
 
-        private boolean verifyBall(String player) {
-
+        private boolean verifyBall(String ball) {
+            if (!verifyLength(ball) || !verifyTrim(ball) || !verifyIsNumber(ball) || !verifyInBoundary()) {
+                return NOT_VERIFY;
+            } else {
+                return VERIFY;
+            }
         }
 
         private String inputBall() {
