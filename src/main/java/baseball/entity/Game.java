@@ -23,17 +23,13 @@ public class Game {
 
     // start(): 상태가 진행중이면, run()을 반복해서 호출
 
-    // run():
-        // 문구 출력
-        // input()
-        // updateScore()
-        // 게임 진행 상태 갱신
-        // 결과 문구 출력
     private void run() {
+        GAME_STATE = RUNNING;
         System.out.println(Message.INPUT_MESSAGE);
         input();
         updateScore();
         printResult();
+        GAME_STATE = player.enterAnswer();
     }
 
 
@@ -61,7 +57,4 @@ public class Game {
         System.out.println(resultMessage);
     }
 
-    private void checkRestart() {
-        GAME_STATE = player.enterAnswer();
-    }
 }
