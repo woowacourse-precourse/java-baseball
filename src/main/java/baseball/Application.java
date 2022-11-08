@@ -52,7 +52,8 @@ public class Application {
 				user.add(Character.getNumericValue(input.charAt(i)));
 			}
 			return user;
-		}else {
+		}
+		else {
 			throw new IllegalArgumentException("올바른 값을 입력하세요");
 		}
 	}
