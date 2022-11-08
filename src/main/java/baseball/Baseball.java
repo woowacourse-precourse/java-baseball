@@ -6,6 +6,12 @@ import static baseball.utils.RandomUtil.*;
 
 public class Baseball {
     public void startGame() {
+        while(true) {
+            refactorGame();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        }
+    }
+    public void refactorGame() {
         int[] computerNumbers = createRandomNumberList();
 
         while (true) {
