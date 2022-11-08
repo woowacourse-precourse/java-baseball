@@ -16,10 +16,6 @@ public class Game {
         System.out.println("숫자를 입력해주세요 :");
     }
 
-    public void EndGame() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    }
-
     public int toStrike(List<Integer> toList, List<Integer> computer) {
 
         int strikenum = 0;
@@ -66,43 +62,41 @@ public class Game {
 
     public void allCorrect() {
 
+        while (true) {
+            List<Integer> computerInput = computer.computerNum();
+            System.out.println(computerInput);
+            inputNumber();
+            String UserInput = user.userInput();
+            List<Integer> toUserInput = user.tolistUser(UserInput);
+            System.out.println(toUserInput);
 
-        List<Integer> computerInput = computer.computerNum();
-        System.out.println(computerInput);
-        String UserInput = user.userInput();
+            int toStrike = toStrike(toUserInput, computerInput);
+            int toBall = toBall(toUserInput, computerInput);
 
-        String userIn = new String();
-        List<Integer> toUserInput = user.tolistUser(userIn);
-//        System.out.println(toUserInput);
+            resultHint(toStrike, toBall);
 
-        int toStrike = toStrike(toUserInput, computerInput);
-        int toBall = toBall(toUserInput, computerInput);
-
-        resultHint(toStrike, toBall);
-
-        if (toStrike == 3) {
-            succesGame();
+            if (toStrike == 3) {
+                succesGame();
+                break;
+            }
         }
     }
+        public int validatorNumber() {
 
-    public int validatorNumber(){
+            restartGameV();
 
-        restartGameV();
+            String restartGame = user.restartGame();
+            int startAndEnd = user.startAndEnd(restartGame);
 
-        String restartGame = user.restartGame();
-        String userInputNum = new String();
-        int startAndEnd = user.startAndEnd(userInputNum);
+            if (startAndEnd == 1) {
+                System.out.println("게임 새로 시작합니다");
+                return 1;
+            }
+            if (startAndEnd == 2) {
+                System.out.println("게임 종료 합니다");
+                return 2;
+            }
 
-        if(startAndEnd == 1){
-            System.out.println("게임 새로 시작합니다");
-
+            return startAndEnd;
         }
-        if(startAndEnd == 2){
-            System.out.println("게임 종료 합니다");
-            return 2;
-        }
-
-        return startAndEnd;
-    }
-
 }

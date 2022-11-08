@@ -7,6 +7,11 @@ public class Application {
         game.startGame();
 
 
-
+        while(true){
+            game.allCorrect();
+            if(game.validatorNumber() == 1){
+                continue;
+            }
+        }
     }
 }
