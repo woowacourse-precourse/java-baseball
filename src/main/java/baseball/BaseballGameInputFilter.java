@@ -47,13 +47,12 @@ public class BaseballGameInputFilter {
         return input;
     }
 
-    public boolean readReparticipation() {
+    public boolean readIsContinued() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String flag = Console.readLine();
 
-
-        if (flag == "1") return true;
-        else if (flag == "2") return false;
+        if (flag.equals("1")) return true;
+        else if (flag.equals("2")) return false;
 
         throw new IllegalArgumentException();
     }
