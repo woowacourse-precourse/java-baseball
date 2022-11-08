@@ -91,6 +91,93 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    @DisplayName("BaseballGame 클래스 테스트")
+    class BaseballGameTest {
+
+        @Nested
+        @DisplayName("예외 테스트")
+        class ExceptionTest {
+
+            @Test
+            @DisplayName("")
+            void case1() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException(" "))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
+            @DisplayName("")
+            void case2() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("hello"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+
+            @Test
+            @DisplayName("")
+            void case3() {
+                assertSimpleTest(() ->
+                    assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+                );
+            }
+        }
+
+        @Nested
+        @DisplayName("정상 동작 테스트")
+        class NormalTest {
+
+            @Test
+            @DisplayName("1회 시도 후 종료")
+            void case1() {
+                assertRandomNumberInRangeTest(
+                    () -> {
+                        run("567", "2");
+                        assertThat(output()).contains("3스트라이크", "게임 종료");
+                    },
+                    5, 6, 7
+                );
+            }
+
+            @Test
+            @DisplayName("3연속 연속 시도 후 종료")
+            void case2() {
+                assertRandomNumberInRangeTest(
+                    () -> {
+                        run("312", "123", "1", "645", "456", "1", "987", "789", "2");
+                        assertThat(output()).contains("3볼", "2볼 1스트라이크", "3스트라이크", "게임 종료");
+                    },
+                    1, 2, 3,4,5,6,7,8,9
+                );
+            }
+
+            @Test
+            @DisplayName("모든 케이스 출력")
+            void case3() {
+                assertRandomNumberInRangeTest(
+                    () -> {
+                        run("256", "216", "312", "134", "132", "156", "126", "123", "2");
+                        assertThat(output()).contains(
+                            "1볼",
+                            "2볼",
+                            "3볼",
+                            "1볼 1스트라이크",
+                            "2볼 1스트라이크",
+                            "1스트라이크",
+                            "2스트라이크",
+                            "3스트라이크",
+                            "게임 종료");
+                    },
+                    1, 2, 3
+                );
+            }
+        }
+    }
+
     @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
