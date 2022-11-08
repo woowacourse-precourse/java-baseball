@@ -17,10 +17,10 @@ public final class GameValidation {
     }
 
     private void ConvertUserInputToList() {
-        userInputList = new ArrayList<>();
+        this.userInputList = new ArrayList<>();
 
-        for(int i = 0; i < userInput.length(); i++) {
-            userInputList.add(userInput.charAt(i));
+        for(int i = 0; i < this.userInput.length(); i++) {
+            this.userInputList.add(this.userInput.charAt(i));
         }
     }
 
