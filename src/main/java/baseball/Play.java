@@ -14,17 +14,16 @@ public class Play {
 	public void playgame(int[] guessnumber) {
 		System.out.println(start_print);
 		int strike = 0, ball = 0;
-		int[] answer = null;
-
+		
 		while (strike != 3) {
 			User user = new User();
 			user.setnumber();
-			answer = user.getnumber();
+			int[] input = user.getnumber();
 
 			Check_answer check_answer = new Check_answer();
 
-			strike = check_answer.check_strike(answer, guessnumber);
-			ball = check_answer.check_ball(answer, guessnumber);
+			strike = check_answer.check_strike(input, guessnumber);
+			ball = check_answer.check_ball(input, guessnumber);
 			result_print(strike, ball);
 		}
 	}
