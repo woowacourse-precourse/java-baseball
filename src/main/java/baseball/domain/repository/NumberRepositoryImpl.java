@@ -1,4 +1,4 @@
-package baseball.domain.entity;
+package baseball.domain.repository;
 
 import java.util.ArrayList;
 import java.util.List;

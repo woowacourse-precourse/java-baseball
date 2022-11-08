@@ -1,4 +1,4 @@
-package baseball.domain.entity;
+package baseball.domain.repository;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
