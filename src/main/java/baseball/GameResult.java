@@ -12,7 +12,7 @@ public class GameResult {
     List<Integer> gameNumberList = gameNumber.getGameNumberList();
     strikeCount = 0;
     ballCount = 0;
-    calculateStrike(answerNumberList, gameNumberList);
+    calculateResult(answerNumberList, gameNumberList);
   }
 
   public void printResult() {
@@ -32,7 +32,7 @@ public class GameResult {
     return strikeCount == 3;
   }
 
-  private void calculateStrike(List<Integer> answerNumberList, List<Integer> gameNumberList) {
+  private void calculateResult(List<Integer> answerNumberList, List<Integer> gameNumberList) {
     for (int i = 0; i < answerNumberList.size(); i++) {
       for (int j = 0; j < gameNumberList.size(); j++) {
         if (answerNumberList.get(i) == gameNumberList.get(j)) {
