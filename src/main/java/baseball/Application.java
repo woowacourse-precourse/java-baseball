@@ -87,6 +87,7 @@ public class Application {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String userInputString = Console.readLine();
         if (userInputString.equals("1")) {
+            this.answer = getRandomThreeDigitNumberString();
             return true;
         } else if (userInputString.equals("2")) {
             return false;
