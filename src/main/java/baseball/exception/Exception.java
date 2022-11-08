@@ -38,15 +38,15 @@ public class Exception {
         }
     }
 
-    private static void validateIsNumeric(String input, char startNum, char endNum) {
+    private static void validateIsNumeric(String input, char startNumber, char endNumber) {
         for (int i = 0; i < 3; i++) {
-            checkInterval(input.charAt(i), startNum, endNum);
+            checkInterval(input.charAt(i), startNumber, endNumber);
         }
     }
 
-    private static void checkInterval(char input, char startNum, char endNum) {
-        if (input < startNum || input > endNum) {
-            throw new IllegalArgumentException(startNum + "~" + endNum + "사이의 숫자만 입력해주세요.");
+    private static void checkInterval(char input, char startNumber, char endNumber) {
+        if (input < startNumber || input > endNumber) {
+            throw new IllegalArgumentException(startNumber + "~" + endNumber + "사이의 숫자만 입력해주세요.");
         }
     }
 
