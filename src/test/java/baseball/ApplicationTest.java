@@ -9,16 +9,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
-    @Test
-    void 게임시작_전_문구출력() {
-        run();
-        assertThat(output()).contains("숫자 야구 게임을 시작합니다.");
-    }
 
     @Test
-    void 게임시작_사용자입력값_문구출력() {
-        run();
-        assertThat(output()).contains("숫자를 입력해주세요 :");
+    void 게임시작_문구출력() {
+        assertRandomNumberInRangeTest(
+            () -> {
+                run( "135", "2");
+                assertThat(output()).contains("숫자 야구 게임을 시작합니다.", "숫자를 입력해주세요 :");
+            },
+            1, 3, 5
+        );
     }
 
     @Test
