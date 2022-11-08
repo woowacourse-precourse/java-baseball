@@ -11,6 +11,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     Application application = new Application();
@@ -99,6 +100,17 @@ class ApplicationTest extends NsTest {
         boolean inputValidity = (boolean) method.invoke(application,"156");
 
         assertThat(inputValidity).isEqualTo(true);
+    }
+
+    @Test
+    void 입력값_유효성_테스트2_except() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Method method = Application.class.getDeclaredMethod("isInputValid", String.class);
+        method.setAccessible(true);
+
+        InvocationTargetException exception = assertThrows(InvocationTargetException.class,
+                ()-> method.invoke(application, "1234"));
+
+        assertThat(exception.getCause().getMessage()).isEqualTo("제한범위를 벗어나는 값을 입력했습니다.");
     }
     @Override
     public void runMain() {
