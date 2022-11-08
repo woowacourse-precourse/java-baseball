@@ -8,52 +8,59 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 
-    private final Game game;
-    private final Player player;
-    private Computer computer;
-
-    public GameController() {
-        game = new Game();
-        player = new Player();
-        computer = new Computer();
-    }
+    private final Game game = new Game();
+    private final Player player = new Player();
+    private Computer computer = new Computer();
 
     public void run() {
+        initGame();
+        do {
+            playGame();
+            checkRestartWhenMaxStrike();
+        } while (game.isExitStatus());
+    }
+
+    public void initGame() {
         OutputView.printInit();
-        while (!game.isExitStatus()) {
-            OutputView.printInput();
-            player.setInputBalls();
+    }
 
-            playBaseBallGame();
-            OutputView.printGameResult(game);
+    public void playGame() {
+        OutputView.printInput();
+        player.setInputBalls();
 
-            if (game.isMaxStrike()) {
-                String command = getRestartOrExitFromPlayer();
-                setActionOfRestartAndExit(command);
-            }
-            game.clearResult();
+        playBaseBall();
+        OutputView.printGameResult(game);
+
+        game.clearResult();
+    }
+
+    public void checkRestartWhenMaxStrike() {
+        if (game.isMaxStrike()) {
+            OutputView.printFinish();
+            OutputView.printRestart();
+
+            String command = getRestartResponse();
+            setActionOfRestartAndExit(command);
         }
     }
 
-    public void playBaseBallGame() {
-        player.setInputBalls();
+    private void playBaseBall() {
         int strikeCount = NumberComparator.getStrikeCount(player.getBalls(), computer.getBalls());
         int ballCount = NumberComparator.getBallCount(player.getBalls(), computer.getBalls());
         game.setGameResult(strikeCount, ballCount);
     }
 
-    public String getRestartOrExitFromPlayer() {
-        OutputView.printFinish();
-        OutputView.printRestart();
+
+    private String getRestartResponse() {
         String command = Console.readLine();
         NumberExceptionUtils.isValidCommandDigit(command);
         return command;
     }
 
-    public void setActionOfRestartAndExit(String command) {
+    private void setActionOfRestartAndExit(String command) {
         if (GameStatus.isRestart(command)) {
             computer = new Computer();
-        } else if (GameStatus.isExit(command)) {
+        } else {
             game.setExitStatus();
         }
     }
