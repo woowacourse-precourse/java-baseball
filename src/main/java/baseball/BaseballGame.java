@@ -1,8 +1,8 @@
 package baseball;
 
 public class BaseballGame {
-    Computer computer;
-    Player player;
+    private Computer computer;
+    private Player player;
 
     BaseballGame(Computer computer, Player player) {
         this.computer = computer;
@@ -18,7 +18,7 @@ public class BaseballGame {
         finishEntireGame();
     }
 
-    void playOneGame() {
+    private void playOneGame() {
         computer.ready();
         while (!computer.isGameEnd) {
             System.out.print("숫자를 입력해주세요 : ");
@@ -27,7 +27,7 @@ public class BaseballGame {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 
-    void finishEntireGame() {
+    private void finishEntireGame() {
         System.out.println("게임을 완전히 종료합니다.");
     }
 }

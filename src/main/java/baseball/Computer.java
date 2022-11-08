@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
-    List<Integer> answer = new ArrayList<>();
-    boolean isGameEnd = false;
+    private List<Integer> answer = new ArrayList<>();
+    private boolean isGameEnd = false;
 
-    void ready(){
+    public void ready(){
         setAnswer();
         setIsGameEnd(false);
     }
 
-    void setAnswer() {
+    private void setAnswer() {
         answer.clear();
         while (answer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -23,7 +23,7 @@ public class Computer {
         }
     }
 
-    void giveResult(List<Integer> suggestion) {
+    public void giveResult(List<Integer> suggestion) {
         final int MAX_STRIKE = 3;
         int strike = checkStrike(suggestion);
         int ball = checkBall(suggestion);
@@ -36,7 +36,7 @@ public class Computer {
         }
     }
 
-    int checkBall(List<Integer> suggestion) {
+    private int checkBall(List<Integer> suggestion) {
         int ball = 0;
         for (int i = 0; i < answer.size(); i++) {
             if (answer.get(i) != suggestion.get(i) && suggestion.contains(answer.get(i))) {
@@ -46,7 +46,7 @@ public class Computer {
         return ball;
     }
 
-    int checkStrike(List<Integer> suggestion) {
+    private int checkStrike(List<Integer> suggestion) {
         int strike = 0;
         for (int i = 0; i < answer.size(); i++) {
             if (answer.get(i) == suggestion.get(i)) {
@@ -56,7 +56,7 @@ public class Computer {
         return strike;
     }
 
-    void setIsGameEnd(boolean toSet) {
+    private void setIsGameEnd(boolean toSet) {
         isGameEnd = toSet;
     }
 

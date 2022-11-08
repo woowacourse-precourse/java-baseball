@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Player {
-    String input() {
+    private String input() {
         return Console.readLine();
     }
 
@@ -21,7 +21,7 @@ public class Player {
         return suggestion;
     }
 
-    boolean validSuggestion(String suggestion) {
+    private boolean validSuggestion(String suggestion) {
         int SUGGESTION_LENGTH = 3;
         String INVALID_NUMBER = "0";
         if (suggestion.length() != SUGGESTION_LENGTH) {
@@ -49,7 +49,7 @@ public class Player {
         return false;
     }
 
-    boolean validContinueGame(String input) {
+    private boolean validContinueGame(String input) {
         final String CONTINUE_GAME = "1";
         final String FINISH_GAME = "2";
         if (input.equals(CONTINUE_GAME)){
