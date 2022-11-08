@@ -27,7 +27,19 @@ public class BaseBallServiceImpl implements BaseBallService{
 
     @Override
     public List<Integer> selectRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(startRange,endRange,count);
+
+        int count = 0;
+        List<Integer> uniqueNumbers = new ArrayList<>();
+
+        while(count < this.count){
+            int randomNumber = Randoms.pickNumberInRange(startRange,endRange);
+
+            if(!uniqueNumbers.contains(randomNumber)){
+                uniqueNumbers.add(randomNumber);
+                count +=1;
+            }
+        }
+        return uniqueNumbers;
     }
 
     @Override
