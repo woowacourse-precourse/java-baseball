@@ -13,8 +13,8 @@ public class GameService {
         Computer computer = game.getComputer();
         Hint hint = game.getHint();
         Output output = game.getOutput();
+        List<Integer> answer = computer.decideAnswer();
         while (true) {
-            List<Integer> answer = computer.decideAnswer();
             List<Integer> playerAnswer = Input.getInput();
             output.giveHint(hint.compareNumber(playerAnswer, answer));
             if (hint.getStrike() == Range.DIGIT) {
