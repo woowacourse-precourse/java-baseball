@@ -1,3 +1,17 @@
+package baseball.controller;
+
+import baseball.domain.Baseball;
+import baseball.view.Printer;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static baseball.controller.Computer.createRandomNums;
+import static baseball.exception.BaseballException.*;
+import static baseball.view.Printer.*;
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Game {
     private static int newGameCode = 1;
     private static int shutDownCode = 2;
@@ -6,6 +20,18 @@ public class Game {
     }
     public static int getShutDownCode() {
         return shutDownCode;
+    }
+
+    /** 게임 시작 */
+    public static void startGame() {
+        showMessageStartGame();
+        List<Integer> answer = createRandomNums();
+        startRound(answer);
+        if (getShutDownCheck()) {
+            startGame();
+        } else {
+            showGameEnd();
+        }
     }
 
     /** 게임 라운드 시작 */
