@@ -40,6 +40,10 @@ public class User {
     private boolean isCorrectRange(String inputNumber) {
         String pattern = "[1-9]{1,3}";
 
+        if (inputNumber.length() != 3) {
+            return false;
+        }
+
         return Pattern.matches(pattern, inputNumber);
     }
 
