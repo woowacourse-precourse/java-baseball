@@ -18,6 +18,9 @@ public class Application {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             randomNumberByUser = inputNumberByUser();
+            for(int n : randomNumberByUser){
+                System.out.print(n);
+            }
 
             if (checkException(randomNumberByUser)) {
                 exitGame();
