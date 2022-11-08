@@ -14,7 +14,7 @@ public class Application {
      *
      * @return
      */
-    private static String generateGoalNumber() {
+    public static String generateGoalNumber() {
         StringBuilder sb = new StringBuilder();
         HashSet<Integer> numsLib = new HashSet<>();
         while (numsLib.size() < 3) {
@@ -34,7 +34,7 @@ public class Application {
      *
      * @return
      */
-    private static String getUserNumber() {
+    public static String getUserNumber() {
         String result = readLine();
         return result;
     }
@@ -45,7 +45,7 @@ public class Application {
      * @param input
      * @return
      */
-    private static Boolean isValidInput(String input) {
+    public static Boolean isValidInput(String input) {
         if (input.length() != 3) return false;
         if (!input.matches("[0-9]+")) return false;
         if (input.charAt(0) == input.charAt(1) || input.charAt(1) == input.charAt(2) || input.charAt(0) == input.charAt(2))
@@ -60,7 +60,7 @@ public class Application {
      * @param input
      * @return
      */
-    private static List<Integer> compareTwoNumbers(String target, String input) {
+    public static List<Integer> compareTwoNumbers(String target, String input) {
         List<Integer> result = Arrays.asList(0, 0);
 
         for (int i = 0; i < input.length(); i++) {
@@ -83,7 +83,7 @@ public class Application {
      *
      * @param input
      */
-    private static void printTrialResult(List<Integer> input) {
+    public static void printTrialResult(List<Integer> input) {
         if (input.get(0) == 0 && input.get(1) == 0) {
             System.out.println("낫싱");
             return;
@@ -104,7 +104,7 @@ public class Application {
      * @param strikes
      * @return
      */
-    private static Boolean isThreeStrikes(List<Integer> strikes) {
+    public static Boolean isThreeStrikes(List<Integer> strikes) {
         if (strikes.get(0) == 3 && strikes.get(1) == 0) return true;
         return false;
     }
@@ -115,7 +115,7 @@ public class Application {
      * @return
      * @throws Exception
      */
-    private static Boolean isContinue() {
+    public static Boolean isContinue() {
         String input = readLine();
         if (input.equals("1")) return true;
         if (input.equals("2")) return false;
@@ -125,7 +125,7 @@ public class Application {
     /**
      * 숫자야구 게임 시뮬레이션
      */
-    private static void simulateGame() {
+    public static void simulateGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
 
         // 게임 1회마다 한 번씩
