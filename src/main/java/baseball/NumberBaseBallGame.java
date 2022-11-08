@@ -12,4 +12,9 @@ public class NumberBaseBallGame {
         this.user = user;
         this.computer = computer;
     }
+
+    private void selectBalls() {
+        user.selectBalls();
+        computer.selectBalls();
+    }
 }
