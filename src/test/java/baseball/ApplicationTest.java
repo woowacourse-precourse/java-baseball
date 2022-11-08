@@ -60,6 +60,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void checkEndGameInputTest() {
+        String errorCase = "3";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            checkEndGameInput(errorCase);
+        });
+    }
+
+    @Test
     void checkBallTest() {
         List<Integer> answer = List.of(3,1,2);
         List<Integer> userInput = List.of(1,7,5);
@@ -116,7 +124,6 @@ class ApplicationTest extends NsTest {
         Set<Integer> answerSet = new HashSet<>(answerList);
         assertEquals(answerList.size(),answerSet.size());
     }
-
 
     @Override
     public void runMain() {
