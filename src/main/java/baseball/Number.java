@@ -55,6 +55,10 @@ public class Number {
 		setNumber(input);
 	}
 	
+	public void getAnswer(String str) {
+		setNumber(str);
+	}
+	
 	private boolean checkInputValue(String str) {
 		if(!checkInputLength(str) || !checkInputPattern(str) || !checkInputDuplicate(str)) {
 			return false;
