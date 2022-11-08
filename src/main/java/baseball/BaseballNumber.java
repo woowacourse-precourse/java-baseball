@@ -1,5 +1,7 @@
 package baseball;
+
 import camp.nextstep.edu.missionutils.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,19 +28,19 @@ public class BaseballNumber {
         this.computerNumber = number.toString();
     }
 
-    public MatchResult match(String guessNumber){
+    public MatchResult match(String guessNumber) {
         int ball = 0;
         int strike = 0;
-        for(int i = 0; i < 3; i++){
-            if(guessNumber.charAt(i) == this.computerNumber.charAt(i)){
+        for (int i = 0; i < 3; i++) {
+            if (guessNumber.charAt(i) == this.computerNumber.charAt(i)) {
                 strike++;
                 continue;
             }
-            if(this.computerNumber.contains(guessNumber.substring(i,i+1))){
+            if (this.computerNumber.contains(guessNumber.substring(i, i + 1))) {
                 ball++;
             }
         }
-        return new MatchResult(ball,strike);
+        return new MatchResult(ball, strike);
     }
 }
 
