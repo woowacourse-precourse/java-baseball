@@ -5,8 +5,6 @@
 # 프리코스 2주차 미션 - 숫자 야구
 ![Generic badge](https://img.shields.io/badge/language-java-green.svg)
 > 서로 다른 세 자리 수로 이루어진 숫자를 맞히는 게임입니다.
-
-게임 gif 넣기
 <br>
 
 ## 목차
