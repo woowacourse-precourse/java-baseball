@@ -33,30 +33,27 @@ public class GameManager {
     public void start(){
         System.out.println(START_GAME.getMessage());
         boolean inputRetryNumber = true;
-        boolean correctAnswer = false;
         while (inputRetryNumber){
             init();
-            while (!correctAnswer){
-                correctAnswer = play();
-            }
+            play();
             inputRetryNumber = checkRestart();
-            correctAnswer = false;
         }
     }
 
-    public boolean play(){
-        List<Digit> inputDigitNumber = InputUtil.inputTryNumber();
-        List<Integer> targetNumber = computer.getTargetNumber();
-        Digits digitTragetList = new Digits(convertDigit(targetNumber));
-        List<ScoreStatus> scoreResultList = digitTragetList.checkAllDigits(new Digits(inputDigitNumber));
-        score.countTotalScore(scoreResultList);
-        score.printScore();
-        if (isEndGame()){
-            System.out.println(END_GAME.getMessage());
-            return true;
+    public void play(){
+        while (true){
+            List<Digit> inputDigitNumber = InputUtil.inputTryNumber();
+            List<Integer> targetNumber = computer.getTargetNumber();
+            Digits digitTragetList = new Digits(convertDigit(targetNumber));
+            List<ScoreStatus> scoreResultList = digitTragetList.checkAllDigits(new Digits(inputDigitNumber));
+            score.countTotalScore(scoreResultList);
+            score.printScore();
+            if (isEndGame()){
+                System.out.println(END_GAME.getMessage());
+                return;
+            }
+            score.clear();
         }
-        score.clear();
-        return false;
     }
 
     public boolean checkRestart(){
