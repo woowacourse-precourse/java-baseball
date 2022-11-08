@@ -56,6 +56,18 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("재시작 커맨드에 예상치 못한 입력 예외처리 테스트")
+    void checkRestartCommend() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    assertThatThrownBy(() -> run("246", "135", "1", "597", "589", "3"))
+                            .isInstanceOf(IllegalArgumentException.class);
+                },
+                1, 3, 5, 5, 8, 9
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
