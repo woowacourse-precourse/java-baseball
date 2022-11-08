@@ -40,6 +40,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("입력값에 공백이 포함되는 경우 확인")
+    void validateBlankTest() {
+        String input = " ";
+        assertThatThrownBy(() -> new UserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력 값의 공백이 포함 되어있습니다.");
+    }
+
+    @Test
+    @DisplayName("입력이 아무것도 없는 경우 확인")
+    void validateEmptyTest() {
+        String input = "";
+        assertThatThrownBy(() -> new UserNumber(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("입력을 하지 않았습니다.");
+    }
+
+    @Test
     void 게임종료_후_재시작() {
         assertRandomNumberInRangeTest(
                 () -> {
