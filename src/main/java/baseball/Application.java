@@ -11,7 +11,7 @@ public class Application {
         List<Integer> computer = new ArrayList<>();
         List<Integer> user = new ArrayList<>();
 
-        computer = getNumberOfComputer(computer);
+        getNumberOfComputer(computer);
 
         String ballCount = "";
         while (isNeedReEnter(ballCount)) {
@@ -30,14 +30,13 @@ public class Application {
         return restartOrNot;
     }
 
-    private static List<Integer> getNumberOfComputer(List<Integer> computer) {
+    private static void getNumberOfComputer(List<Integer> computer) {
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computer.contains(randomNumber)) {
                 computer.add(randomNumber);
             }
         }
-        return computer;
     }
 
     private static boolean isValidStringInputOfUser(String stringInputOfUser) throws IllegalArgumentException {
@@ -183,7 +182,7 @@ public class Application {
 
     private static void preSettingToRestartGame(List<Integer> computer, List<Integer> user) {
         computer.clear();
-        computer = getNumberOfComputer(computer);
+        getNumberOfComputer(computer);
         user.clear();
     }
 
