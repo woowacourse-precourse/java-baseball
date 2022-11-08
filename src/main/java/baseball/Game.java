@@ -21,7 +21,7 @@ public class Game {
     }
 
     public void play() {
-        while(isFinished()) {
+        while(!isFinished()) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = getUserInput();
             System.out.println(userInput);
