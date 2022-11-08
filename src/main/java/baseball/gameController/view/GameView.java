@@ -7,7 +7,7 @@ public class GameView {
     }
 
     public static final void printInputNotice() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.printf("숫자를 입력해주세요 : ");
     }
 
     public static final void printHint(String hintMessage) {
