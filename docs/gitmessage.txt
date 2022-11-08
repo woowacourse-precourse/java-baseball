@@ -1,0 +1,18 @@
+# min's commit message template
+# 제목은 대문자로 시작합니다.
+# 본문과 푸터는 선택 사항 입니다.
+#######제목#######
+
+#######본문#######
+
+#######푸터#######
+
+##################
+feat (feature)
+fix (bug fix)
+docs (documentation)
+style (formatting, missing semi colons, …)
+refactor
+test (when adding missing tests)
+chore (maintain)
+##################
