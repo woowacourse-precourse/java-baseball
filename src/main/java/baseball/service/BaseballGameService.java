@@ -19,7 +19,6 @@ public class BaseballGameService {
         computer = new Computer();
     }
 
-    //유저의 게임내 숫자 맞추는 인풋 받기
     public void readUserInput() {
         String input = Console.readLine();
         Validate.inputValidate(input);
@@ -30,12 +29,10 @@ public class BaseballGameService {
         pitchResult.setResult(userInput, computer.getNumbers());
     }
 
-    // 위에서 받은 인풋 검증
     public boolean isKeepThrow() {
         return !(pitchResult.isThreeStrike());
     }
 
-    //흐름 처리 메서드
     public void throwBaseball() {
         readUserInput();
         setBallStatus();
