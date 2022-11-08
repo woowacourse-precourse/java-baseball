@@ -1,4 +1,4 @@
-package baseball;
+package baseball.Controller;
 
 public class Controller {
     Game game = new Game();

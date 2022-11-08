@@ -1,5 +1,6 @@
-package baseball;
+package baseball.Model;
 
+import baseball.Validator;
 import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.Constant.MAX_LENGTH;

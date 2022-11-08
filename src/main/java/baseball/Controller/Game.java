@@ -1,6 +1,10 @@
-package baseball;
+package baseball.Controller;
 
 import static baseball.Constant.*;
+
+import baseball.Controller.Controller;
+import baseball.Model.Computer;
+import baseball.Model.Player;
 
 public class Game {
     Computer computer;
