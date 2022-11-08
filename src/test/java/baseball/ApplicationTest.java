@@ -30,6 +30,34 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 스트라이크_볼_테스트() {
+        int[] strikeBall = new int[2];
+        for (int i = 0; i <= 8; ++i) {
+            for (int j = 0; j <= 8; ++j) {
+                for (int k = 0; k <= 2; ++k) {
+                    for (int l = 0; l <= 2; ++l) {
+                        int strikeBefore = strikeBall[0], ballBefore = strikeBall[1];
+                        Application.addStrikeBall((char)('1'+i), (char)('1'+j), k, l, strikeBall);
+                        int strikeAfter = strikeBall[0], ballAfter = strikeBall[1];
+                        if (i == j) {
+                            if (k == l) {
+                                assertThat(strikeAfter - strikeBefore).isEqualTo(1);
+                                assertThat(ballAfter - ballBefore).isEqualTo(0);
+                            } else {
+                                assertThat(strikeAfter - strikeBefore).isEqualTo(0);
+                                assertThat(ballAfter - ballBefore).isEqualTo(1);
+                            }
+                        } else {
+                            assertThat(strikeAfter - strikeBefore).isEqualTo(0);
+                            assertThat(ballAfter - ballBefore).isEqualTo(0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
     void 입력_예외_테스트() {
         assertThrows(IllegalArgumentException.class, () -> {
             Application.checkInputNumberValidate("112");

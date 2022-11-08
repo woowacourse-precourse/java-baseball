@@ -5,6 +5,18 @@ public class Application {
 
     }
 
+    public static void addStrikeBall(char computerRandomNumberElement, char inputNumberElement,
+                                     int compIdx, int inputIdx, int[] strikeBall) {
+        if (computerRandomNumberElement != inputNumberElement) {
+            return;
+        }
+        if (compIdx == inputIdx) {
+            strikeBall[0]++;
+        } else {
+            strikeBall[1]++;
+        }
+    }
+
     public static void checkInputNumberValidate(String inputNumber) {
         if (inputNumber.length() != 3) {
             throw new IllegalArgumentException("입력값의 길이가 잘못되었습니다.");
