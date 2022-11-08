@@ -18,6 +18,9 @@ class ApplicationTest extends NsTest {
                 },
                 1, 3, 5, 5, 8, 9
         );
+    void 랜덤숫자_길이확인(){
+        Util util = new Util();
+        assertThat(util.createAnswerString().length()).isEqualTo(3);
     }
 
     @Test
@@ -26,6 +29,9 @@ class ApplicationTest extends NsTest {
                 assertThatThrownBy(() -> runException("1234"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    void 랜덤숫자_랜덤확인() {  
+        Util util = new Util();
+        assertThat(util.createAnswerString()).isNotEqualTo(util.createAnswerString());
     }
 
     @Override
