@@ -51,8 +51,9 @@ public class Application {
     public static int createTensDifferentFrom(int hundreds) {
         while (true) {
             int tens = Randoms.pickNumberInRange(1, 9);
-            if (hundreds != tens)
+            if (hundreds != tens) {
                 return tens;
+            }
         }
     }
 
