@@ -32,7 +32,7 @@ public class Game {
             System.out.print(INPUT_NUMBER_MESSAGE);
             String userNumber = Console.readLine();
             handleException(userNumber);
-            String result = Referee.getJudgement(computer, User.getUserNumber(userNumber));
+            String result = Referee.getJudgement(computer, User.getNumber(userNumber));
             System.out.println(result);
 
             if (result.equals(3 + STRIKE)) {
