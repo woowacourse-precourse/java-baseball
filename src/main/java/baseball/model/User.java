@@ -25,4 +25,7 @@ public class User {
         return user;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
