@@ -3,6 +3,7 @@ package baseball;
 import java.util.List;
 import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 public class NumberBaseball {
     private List<Integer> CorrectAnswer;
@@ -31,6 +32,39 @@ public class NumberBaseball {
         //CorrectAnswer = Randoms.pickUniqueNumbersInRange(0,9,3);
     }
 
+    public void playBall(){
+        int[] MyAnswer = new int[3];
 
+        do{ // repeat until victory
+            System.out.print("숫자를 입력해주세요 : ");
+            // convert numbers from Ascii to integer value
+            String input = Console.readLine();
+            // check the input value
+            if(){
+
+            }
+            else{
+
+            }
+        }
+        while ();
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    private boolean checkInput(String input){
+        // get String as an input
+        // length check
+        if(input.length() >= 4){
+            return false;
+        }
+        // ascii value check
+        for(int i = 0; i < 3; i++){
+            if((input.charAt(i) < 48)
+                    || (input.charAt(i) > 57)){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
