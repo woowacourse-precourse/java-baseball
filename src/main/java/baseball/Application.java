@@ -6,7 +6,11 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 함수화
+        List<Integer> computer = makeRandomNumberList();
+        System.out.println("computer : " + computer);
+    }
+
+    public static List<Integer> makeRandomNumberList(){
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -14,6 +18,6 @@ public class Application {
                 computer.add(randomNumber);
             }
         }
-        System.out.println("computer" + computer);
+        return computer;
     }
 }
