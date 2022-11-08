@@ -8,10 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -101,11 +98,14 @@ public class GamePlayTest {
         List<Integer> computerNumberList = computerNumber.generateNumber();
         //then
         assertThat(computerNumberList.size()).isEqualTo(3);
-
     }
     @Test
     void 컴퓨터의_숫자가_중복(){
-
+        // given, when
+        List<Integer> computerNumberList = computerNumber.generateNumber();
+        Set<Integer> uniqueList = new HashSet<>(computerNumberList);
+        //then
+        assertThat(uniqueList.size()).isEqualTo(3);
     }
     @Test
     void 컴퓨터의_숫자가_숫자로만_구성(){
