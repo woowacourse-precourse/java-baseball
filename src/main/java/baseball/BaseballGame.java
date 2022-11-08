@@ -4,20 +4,26 @@ import java.util.List;
 
 import static utils.PlayerAdditionalGameInputUtil.readAdditionalGameQuestion;
 import static utils.PlayerBallsInputUtil.readBalls;
-import static baseball.BaseballGameConst.*;
+import static baseball.BaseballGameConstants.*;
 
 public class BaseballGame {
 
-	private Computer computer = new Computer();
-	private Player player = new Player();
-	private Referee referee = new Referee();
+	private Computer computer;
+	private Player player;
+	private Referee referee;
 
 	private List<Integer> playerBalls;
 	private List<Integer> computerBalls;
 	private boolean firstRound;
 
-	public void gameStart() {
+	public BaseballGame(Computer computer, Player player, Referee referee) {
+		this.computer = computer;
+		this.player = player;
+		this.referee = referee;
+		firstRound = true;
+	}
 
+	public void gameStart() {
 		System.out.println("숫자 야구 게임을 시작합니다.");
 		int gameState = ING;
 		while (true) {
@@ -55,6 +61,7 @@ public class BaseballGame {
 	private int decideAdditionalGame() {
 		System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 		String nextGameState = readAdditionalGameQuestion();
+		
 		if (nextGameState.equals("1")) {
 			return ADDITIONAL_GAME;
 		}
