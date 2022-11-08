@@ -259,6 +259,8 @@ class ApplicationTest extends NsTest {
         assertThat(output.toString().trim()).isEqualTo("3스트라이크");
     }
 
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
