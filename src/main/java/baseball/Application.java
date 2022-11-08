@@ -9,7 +9,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
 
 	public static void main(String[] args) {
-		// TODO: 프로그램 구현
 
 	}
 
@@ -41,54 +40,51 @@ public class Application {
 		return user;
 	}
 
-	public static int ball(List<String> computer, List<String> user) {
-		int ball = 0;
-		for (int userIndex = 0; userIndex < user.size(); userIndex++) {
-			int userNumber = user.indexOf(userIndex);
-			if (computer.contains(userNumber)) {
-				ball++;
-			}
-		}
-		return ball;
-	}
-
-	public static String compareResult(List<String> computer, List<String> user) {
+	public static String compareResult(List<Integer> computerList, List<Integer> userList) {
 		String result = "";
-		
+
 		int ball = 0;
-		for (int userIndex = 0; userIndex < user.size(); userIndex++) {
-			int userNumber = user.indexOf(userIndex);
-			if (computer.contains(userNumber)) {
+		for (int userIndex = 0; userIndex < userList.size(); userIndex++) {
+			int userNumber = userList.indexOf(userIndex);
+			if (computerList.contains(userNumber)) {
 				ball++;
 			}
 		}
-		
+
 		int strike = 0;
 		for (int index = 0; index < 3; index++) {
-			int userNumber = user.indexOf(index);
-			int computerNumber = computer.indexOf(index);
+			int userNumber = userList.indexOf(index);
+			int computerNumber = computerList.indexOf(index);
 			if (userNumber == computerNumber) {
 				strike++;
 			}
 		}
-		
-		if (ball != 0 && strike !=0) {
-			result = ball + "볼" + " " +  strike + "스트라이크";
+
+		if (ball != 0 && strike != 0) {
+			System.out.println(ball + "볼" + " " + strike + "스트라이크");
+			result = "ball & strike";
 		}
-		
-		if(ball != 0 && strike == 0) {
-			result = ball + "볼";
+
+		if (ball != 0 && strike == 0) {
+			System.out.println(ball + "볼");
+			result = "strike";
 		}
-		
-		if(ball == 0 && strike != 0) {
-			result = strike + "스트라이크";
+
+		if (ball == 0 && strike != 0) {
+			System.out.println(strike + "스트라이크");
+			result = "ball";
 		}
-		
-		if(ball == 0 && strike == 0) {
-			result = "낫싱";
+
+		if (ball == 0 && strike == 0) {
+			System.out.println("낫싱");
+			result = "nothing";
 		}
-		
+
+		if (ball == 3 && strike == 3) {
+			System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+			result = "win";
+		}
+
 		return result;
 	}
-
 }
