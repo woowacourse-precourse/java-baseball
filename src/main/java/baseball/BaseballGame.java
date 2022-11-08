@@ -14,6 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
+    public static void Game() {
+        List<Integer> computerNumber = initComputerNumber();
+        List<Integer> userNumber;
+        do {
+            userNumber = initUserNumber();
+        } while (isResult(userNumber, computerNumber));
+    }
+
     public static boolean isResult(List<Integer> userNumber, List<Integer> computerNumber) {
         int strikeNum = checkStrike(computerNumber, userNumber);
         int sameNum = checkSame(computerNumber, userNumber);
