@@ -12,6 +12,7 @@ public class Application {
 
     static BufferedReader br;
     static boolean result;
+    static boolean restart;
 
     static List<Integer> computer;
     static List<Integer> numbers;
@@ -21,11 +22,31 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
+        start(br);
+        while(!restart){
+            restart(br);
+        }
+    }
+    public static void start(BufferedReader br) throws IOException {
+        System.out.println("숫자 야구 게임을 시작합니다.");
         selectNumber();
         while(!result){
             inputNumber(br);
             checkNumber(numbers);
         }
+    }
+
+    private static void restart(BufferedReader br) throws IOException {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String[] temp = br.readLine().split("");
+        if(temp.length >= 2){
+            throw new IllegalArgumentException();
+        }
+        int choice = Integer.parseInt(temp[0]);
+        if(choice == 1){
+            result = false;
+            start(br);
+        } else restart = true;
     }
 
     private static void checkNumber(List<Integer> numbers) {
