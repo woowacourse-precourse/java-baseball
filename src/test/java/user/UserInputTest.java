@@ -10,7 +10,7 @@ class UserInputTest {
     @Test
     void changeUserInputToList_문자열을_배열로_올바르게_변환하는지_검증() {
         String userInput = "123";
-        List<Integer> userInputToList = List.of(1,2,3);
+        List<Integer> userInputToList = List.of(1, 2, 3);
 
         assertThat(UserInput.changeUserInputToList(userInput)).isEqualTo(userInputToList);
     }
