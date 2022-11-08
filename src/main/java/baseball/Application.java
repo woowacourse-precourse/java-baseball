@@ -164,12 +164,16 @@ public class Application {
     private static int PlayAgain() {
         int result = 0;
 
+        // 게임 반복 의사를 묻는 출력
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
         // 게임 플레이어가 입력한 숫자가 1 또는 2가 아니면 입력을 다시 받는다.
         while (true) {
             String playerString = Console.readLine();
             result = Integer.parseInt(playerString);
 
             if (result == 1 || result == 2) {
+                System.out.println(result);
                 break;
             }
         }
