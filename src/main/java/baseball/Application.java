@@ -14,9 +14,14 @@ public class Application {
         int[] computerNumCheck = new int[10];
         int[] strikeResult = new int[3];
 
-        public void clear() {
+        public void clear(){
+            computerNumCheck=new int[10];
         }
-
+        public void strikeResultClear(){
+            for(int i=0;i<3;i++){
+                strikeResult[i]=0;
+            }
+        }
         public boolean startGame() throws IOException {
             computerNum = makeComputerNum();
 
@@ -25,6 +30,8 @@ public class Application {
                 BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
                 String input =bf.readLine();
                 List<Integer> inputNum = toInputNum(input);
+
+                strikeResultClear();
 
                 int strikeCnt=strike(inputNum);
                 int ballCnt=ball(inputNum);
