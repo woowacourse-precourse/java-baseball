@@ -10,11 +10,11 @@ public class Numbers {
 
     private static final int DIGITS_LENGTH = 3;
 
-    private final ExclusiveDigits<PositiveDigit> exclusiveDigits;
+    private final ExclusivePositiveDigits exclusiveDigits;
 
     private Numbers(List<PositiveDigit> digits) {
         validateLength(digits);
-        this.exclusiveDigits = new ExclusiveDigits<>(digits);
+        this.exclusiveDigits = new ExclusivePositiveDigits(digits);
     }
 
     public static Numbers fromIntegers(List<Integer> integers) {
