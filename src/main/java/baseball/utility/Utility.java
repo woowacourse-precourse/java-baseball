@@ -12,5 +12,14 @@ public class Utility {
     public static final String CONTINUE_MENT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public static int ANSWER_LENGTH = 3;
-    
+
+    public static String makeThreeRandomNumber(){
+        StringBuilder sb = new StringBuilder("");
+
+        while (sb.length() < ANSWER_LENGTH) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            sb.append(Integer.toString(randomNumber));
+        }
+        return sb.toString();
+    }
 }
