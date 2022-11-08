@@ -22,7 +22,7 @@ public class PlayerTest {
 
     @ParameterizedTest
     @DisplayName("잘못된 입력이 들어왔을 때 IllegalArgumentException 예외 테스트")
-    @ValueSource(strings = {"abc", "122", "a12", "133", "1224", "a1"})
+    @ValueSource(strings = {"abc", "122", "a12", "133", "1224", "a1", "012"})
     void testWithValueSource(String stringArg) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> player.decideNumbers(stringArg));
     }
