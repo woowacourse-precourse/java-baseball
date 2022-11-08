@@ -7,7 +7,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-
+    static final int LENGTH = 3;
 
     private static boolean checkRepeate(){
         boolean isRepeate = true;
@@ -30,7 +30,7 @@ public class Application {
     private static String makeAnswer(){
 
         List<Integer> answerList = new ArrayList<>();
-        while(answerList.size()<3){
+        while(answerList.size()<LENGTH){
             int tempNum = pickNumberInRange(1, 9);
             if(!answerList.contains(tempNum)) answerList.add(tempNum);
         }
@@ -53,7 +53,7 @@ public class Application {
     }
 
     private static void checkException(String input){
-        if(input.length() != 3){
+        if(input.length() != LENGTH){
             throw new IllegalArgumentException("Wrong length");
         }
         if(!input.matches("^[0-9]+$")){
@@ -67,7 +67,7 @@ public class Application {
     private static int calStrike(String answer, String input){
         int strike = 0;
 
-        for(int i=0; i<3; i++){
+        for(int i=0; i<LENGTH; i++){
             if(answer.charAt(i) == input.charAt(i)) strike++;
         }
 
@@ -77,7 +77,7 @@ public class Application {
     private static int calBall(String answer, String input){
         int ball = 0;
 
-        for(int i=0; i<3; i++){
+        for(int i=0; i<LENGTH; i++){
             if(answer.contains(input.substring(i,i+1))) ball++;
         }
 
@@ -99,7 +99,6 @@ public class Application {
                 result += strike + "스트라이크 ";
             }
         }
-
         System.out.println(result);
     }
 
@@ -109,7 +108,7 @@ public class Application {
         int strike = 0;
         int ball = 0;
 
-        while(strike < 3){
+        while(strike < LENGTH){
             System.out.print("숫자를 입력해주세요 : ");
             input = readLine();
 
