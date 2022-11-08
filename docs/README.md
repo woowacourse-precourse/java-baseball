@@ -11,3 +11,18 @@
 5. 결과를 출력하는 기능
 6. 게임 종료 및 재시작을 묻고 실행하는 기능
    - [예외] 1과 2 이외의 입력이 들어오는 경우
+7. 숫자 게임 프로그램 구현
+
+
+## ⌨ 프로그램 구현
+
+1. 게임 종료 여부를 판단할 <code>exit</code>변수 만들기
+2. <code>exit</code>이 <code>true</code>가 될 때까지 아래 무한 반복
+   1. 정답 여부를 판단할 <code>collect</code>변수 만들기
+   2. computer의 숫자 만들기
+   3. <code>collect</code>이 <code>true</code>가 될 때까지 아래 무한 반복
+      1. user의 정답 입력받기
+      2. strike 개수 세기
+      3. ball 개수 세기
+      4. strike와 ball 개수로 결과 판단하기 -> <code>collect</code>변수에 결과 담기
+   4. 정답 맞혔으면, 게임 종료할지 여부 입력받기 -> <code>exit</code>변수에 결과 담기
