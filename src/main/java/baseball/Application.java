@@ -3,6 +3,8 @@ package baseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -39,6 +41,19 @@ class Game
     }
 
     List<Integer> setComputerAnswer(List<Integer> computer) {
+        // 컴퓨터 리스트의 내용물 비운다.
+        computer.clear();
+
+        // 랜덤 값 받을 정수 선언
+        int randomNumber;
+
+        // 크기가 3이 될 때까지
+        while(computer.size() < 3) {
+            randomNumber = pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
         return computer;
     }
 }
