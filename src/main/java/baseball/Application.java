@@ -77,4 +77,18 @@ public class Application {
         }
     }
 
+    private static List<Integer> getElementBallAndStrike(List<Integer> computer, Integer index, Integer element) {
+        List<Integer> ballAndStrike = Arrays.asList(0, 0);
+
+        for (int i = 0; i < computer.size(); i++) {
+            if (i != index && element == computer.get(i)) {
+                ballAndStrike.set(0, ballAndStrike.get(0) + 1);
+            } else if (i == index && element == computer.get(i)) {
+                ballAndStrike.set(1, ballAndStrike.get(1) + 1);
+            }
+        }
+
+        return ballAndStrike;
+    }
+
 }
