@@ -5,14 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class ResultData {
-    private List<Integer> gameNumberList = new ArrayList<>();
-    private List<Integer> userNumberList = new ArrayList<>();
-    private int strike = 0;
-    private int ball = 0;
+    private final List<Integer> gameNumberList;
+    private int strike;
+    private int ball;
 
     public ResultData(List<Integer> gameNumberList, List<Integer> userNumberList, int strike, int ball) {
         this.gameNumberList = gameNumberList;
-        this.userNumberList = userNumberList;
         this.strike = strike;
         this.ball = ball;
         List<Integer> strikeNumberList = new ArrayList<>();

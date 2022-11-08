@@ -3,20 +3,16 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-
         System.out.println("숫자 야구 게임을 시작합니다.");
         if (gamePlaying() != 2) {
             gamePlaying();
         }
-
     }
 
     public static List<Integer> pickGameNumber() {
@@ -36,17 +32,16 @@ public class Application {
 
     public static List<Integer> inputGameNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        List<Integer> userNumberList = new ArrayList<>();
+        List<Integer> userNumberList;
         String inputNum = readLine();
-        userNumberList = checkInput_userNumber(inputNum, 3);
+        userNumberList = checkInput_userNumber(inputNum);
         return userNumberList;
-
     }
 
-    public static List<Integer> checkInput_userNumber(String str, int size) {
-        List<Integer> userNumberList = new ArrayList<>();
+    public static List<Integer> checkInput_userNumber(String str) {
+        List<Integer> userNumberList;
         checkFormat(str);
-        checkSize(str, size);
+        checkSize(str);
         userNumberList = checkNotEqual(str);
         return userNumberList;
     }
@@ -59,8 +54,8 @@ public class Application {
         }
     }
 
-    public static void checkSize(String str, int size) {
-        if (str.length() != size) {
+    public static void checkSize(String str) {
+        if (str.length() != 3) {
             throw new IllegalArgumentException("3개의 숫자를 입력해주세요.");
         }
     }
@@ -105,13 +100,6 @@ public class Application {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String gameCode = readLine();
-        int restartGame = checkGameCode(gameCode);
-        return restartGame;
+        return checkGameCode(gameCode);
     }
-
-
-
-
-
-
 }
