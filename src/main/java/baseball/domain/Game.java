@@ -1,4 +1,4 @@
-package domain;
+package baseball.domain;
 
 public class Game {
 
@@ -13,6 +13,7 @@ public class Game {
     public int[] getComputerNumber() {
         return computerNumber;
     }
+
     public void initStrike() {
         strike = 0;
     }

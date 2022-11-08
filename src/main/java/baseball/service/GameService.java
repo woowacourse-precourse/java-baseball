@@ -3,8 +3,8 @@ package baseball.service;
 import baseball.utils.PrintMessage;
 import baseball.utils.RandomNumber;
 import camp.nextstep.edu.missionutils.Console;
-import domain.Game;
-import domain.User;
+import baseball.domain.Game;
+import baseball.domain.User;
 
 
 public class GameService {
@@ -34,7 +34,8 @@ public class GameService {
         user.setUserNumber(userNumbers);
         getScore();
     }
-    private int[] getUserNumbers() throws IllegalArgumentException{
+
+    private int[] getUserNumbers() throws IllegalArgumentException {
         String input = Console.readLine();
 
         return inGame.userInputToInt(input);
