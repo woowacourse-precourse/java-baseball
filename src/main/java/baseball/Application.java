@@ -41,7 +41,7 @@ public class Application {
         validateDigit(userNumbers);
         validateSize(userNumbers, 3);
         validateRange(userNumbers, "^[1-9]*$");
-        validateDuplication(numberList);
+        validateDuplication(userNumbers);
 
         return numberList.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
@@ -72,10 +72,10 @@ public class Application {
         }
     }
 
-    private static void validateDuplication(List<String> numberList) {
-        HashMap<String, Integer> checkMap = new HashMap<>();
+    private static void validateDuplication(String numbers) {
+        HashMap<Character, Integer> checkMap = new HashMap<>();
 
-        for (String number : numberList) {
+        for (char number : numbers.toCharArray()) {
             checkMap.put(number, checkMap.getOrDefault(number, 0) + 1);
         }
 
