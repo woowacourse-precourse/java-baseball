@@ -1,16 +1,16 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     public final ComputerNumber computerNumber;
     public final UserNumber userNumber;
 
-    private List<Integer> userInputNumberList;
+    private List<Integer> userGuessNumbers;
     private List<Integer> computerNumberList;
 
     private int strike;
@@ -20,7 +20,7 @@ public class Game {
         computerNumber = new ComputerNumber();
         userNumber = new UserNumber();
 
-        userInputNumberList = new ArrayList<>();
+        userGuessNumbers = new ArrayList<>();
         computerNumberList = new ArrayList<>();
         strike = 0;
         ball = 0;
@@ -28,11 +28,11 @@ public class Game {
 
     public void startPlaying() {
         System.out.println(SystemMessage.printStartMessage);
-        computerNumber.makeComputerNumber();
+        computerNumber.makeRandomNumber();
         computerNumberList = computerNumber.getComputerNumber();
         do {
             UserNumber userNumber = new UserNumber();
-            userInputNumberList = userNumber.userInputNumber();
+            userGuessNumbers = userNumber.userInputNumber();
             strike = 0;
             ball = 0;
             scoreInfo();
@@ -55,14 +55,14 @@ public class Game {
     }
 
     public void scoreInfo() {
-        String inputString = userInputNumberList.stream()
+        String inputString = userGuessNumbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
         String answerString = computerNumberList.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        for (int i = 0; i < GameConstants.NUMBER_LENGTH; i++) {
+        for (int i = 0; i < Constants.NUMBER_LENGTH; i++) {
             int index = inputString.indexOf(answerString.charAt(i));
             if (index == i) {
                 strike++;
@@ -73,7 +73,7 @@ public class Game {
     }
 
     public boolean endGame() {
-        return strike == GameConstants.NUMBER_LENGTH;
+        return strike == Constants.NUMBER_LENGTH;
     }
 
     public boolean retryOrQuit() {
@@ -82,6 +82,6 @@ public class Game {
         if (!Validator.checkRestartException(restart)) {
             throw new IllegalArgumentException();
         }
-        return restart.equals(GameConstants.RESTART);
+        return restart.equals(Constants.RESTART);
     }
 }
