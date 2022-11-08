@@ -10,13 +10,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     @Test
-    void 게임종료_후_재시작() {
+    void continue_exit_test() {     // 게임 재시작 or 종료 테스트
         assertRandomNumberInRangeTest(
                 () -> {
-                    run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    run("123", "134", "135", "1", "567","589", "2");
+                    assertThat(output()).contains("1볼 1스트라이크", "2스트라이크", "3스트라이크",
+                            "1스트라이크", "3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
+                1, 3, 5, 5, 8, 9            // 랜덤 넘버가 135, 589
         );
     }
 
