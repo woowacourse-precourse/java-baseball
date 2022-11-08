@@ -70,6 +70,18 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"012", "233", "asd", "111", "12", "1345","1", " "})
+    void 게임시작후_예외_테스트(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
