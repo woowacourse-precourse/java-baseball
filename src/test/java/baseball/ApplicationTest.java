@@ -62,6 +62,34 @@ class ApplicationTest extends NsTest {
         assertThat(answer).isEqualTo(dupCheck);
     }
 
+    @Test
+    void Strike테스트() {
+        Game game = new Game();
+        List<Integer> gameAnswer = game.getGameAnswer();
+        // Strike : 1
+        List<Integer> guessOneCorrect = new ArrayList<>();
+        // Strike : 3
+        List<Integer> pseudoAnswer = new ArrayList<>();
+
+        for (int number = 0; number < gameAnswer.size(); number++) {
+            // 모든 3자리 숫자가 똑같다.
+            pseudoAnswer.add(gameAnswer.get(number));
+            // 가운데 숫자만 똑같다. (역순)
+            guessOneCorrect.add(gameAnswer.get(2 - number));
+        }
+
+        Hint hint = new Hint();
+        game.guessNumber = guessOneCorrect;
+        hint.compareAnswer(game);
+        assertThat(hint.strike).isEqualTo(1);
+
+        // initialize
+        hint.strike = 0;
+        game.guessNumber = pseudoAnswer;
+        hint.compareAnswer(game);
+        assertThat(hint.strike).isEqualTo(3);
+    }
+
 
     @Override
     public void runMain() {

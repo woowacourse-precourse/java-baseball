@@ -23,8 +23,8 @@ public class Application {
 }
 
 class Game {
-
     private static List<Integer> gameAnswer;
+    public static List<Integer> guessNumber;
 
     Game() {
         gameAnswer = getGameRandomNumber();
@@ -42,18 +42,58 @@ class Game {
         while (gameRandomNumber.size() < 3) {
             int randomNumber = getRandomNumber();
             // Random Number가 list 원소에 포함되어 있지 않다면, 추가한다.
-            if (!gameRandomNumber.contains(randomNumber)) {
-                gameRandomNumber.add(randomNumber);
-            }
+            nonDuplicateAddElement(gameRandomNumber, randomNumber);
         }
 
         return gameRandomNumber;
+    }
+
+    private static void nonDuplicateAddElement(List<Integer> gameRandomNumber, int randomNumber) {
+        if (!gameRandomNumber.contains(randomNumber)) {
+            gameRandomNumber.add(randomNumber);
+        }
     }
 
     public int getRandomNumber() {
         // 1 ~ 9 범위의 난수를 return하는 함수.
         return pickNumberInRange(1, 9);
     }
+
+}
+
+class Hint {
+    // 플레이어가 유추한 3자리 답과 비교해 Stike, Ball을 알려주는 힌트 클래스이다.
+    int strike;
+    int ball;
+
+
+    private void addStrikeCount() {
+        this.strike++;
+    }
+
+    void compareAnswer(Game guessAnswer) {
+        // 게임의 정답을 가져온다.
+        List<Integer> gameAnswer = guessAnswer.getGameAnswer();
+        // 각 자리별로 비교하면 Strike, Ball을 계산한다.
+        for (int digit = 0; digit < gameAnswer.size(); digit++) {
+            int curNumber = guessAnswer.guessNumber.get(digit);
+
+            if (isStrike(gameAnswer, curNumber, digit)) {
+                addStrikeCount();
+            }
+
+
+        }
+    }
+
+    private boolean isStrike(List<Integer> gameAnswer, int number, int index) {
+        // 해당 인덱스의 리스트 안에 있는 원소와 숫자를 비교하여 같으면 Strike 이다.
+        if (gameAnswer.get(index) == number) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
 
