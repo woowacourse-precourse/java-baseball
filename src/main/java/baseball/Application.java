@@ -41,12 +41,24 @@ public class Application {
     public static String playGame(List<Integer> computer){
         System.out.println("숫자 야구 게임을 시작합니다.");
         while(true){
+            GameStatus gameStatus = new GameStatus();
+
             System.out.println("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             String[] inputList = input.split("");
             int[] inputNums = Arrays.stream(inputList).mapToInt(Integer::valueOf).toArray();
 
+            saveNumberStatus(inputNums, computer,gameStatus);
+            String response = responseNumberStatus(gameStatus);
+            System.out.println(response);
+
+            if(gameStatus.strike == 3){
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임종료 \n"+
+                        "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+                break;
+            }
         }
+        return Console.readLine();
     }
     private static void saveNumberStatus(int[] inputNums, List<Integer> computer, GameStatus gameStatus){
         for(int i =0 ; i<inputNums.length; i++){
