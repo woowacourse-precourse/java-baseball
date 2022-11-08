@@ -1,11 +1,28 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class NumberBaseball {
+    public static void newGame() {
+        String ranNum = "" + getRandomThreeDigitNumber();
+        String usersNum = null;
+        String ballCount = "";
+
+        while (!ballCount.equals("3스트라이크")) {
+            System.out.print("숫자를 입력해주세요 : ");
+            usersNum = Console.readLine();
+            if (!isCorrectNumber(usersNum)) {
+                throw new IllegalArgumentException("잘못된 인자를 입력 받았습니다.");
+            }
+            ballCount = judgeBallCount(ranNum, usersNum);
+            System.out.println(ballCount);
+        }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
     private static int getRandomThreeDigitNumber() {
         List<Integer> possible = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         int ret = 0;
